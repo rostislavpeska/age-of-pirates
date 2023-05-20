@@ -1,0 +1,74 @@
+<animfile>
+  <definebone>bone_flag_civ</definebone>
+  <definebone>bone_garrisonflag</definebone>
+  <definebone>bone_front_wake</definebone>
+  <definebone>bone_front_foam</definebone>
+  <definebone>bone_hitpointbar</definebone>
+  <definebone>bone_smoke_01</definebone>
+  <definebone>bone_smoke_02</definebone>
+  <definebone>bone_rightpaddle_foam</definebone>
+  <definebone>bone_leftpaddle_foam</definebone>
+  <definebone>bone_rightpaddle</definebone>
+  <definebone>bone_leftpaddle</definebone>
+  <definebone>bone_sailsmallA</definebone>
+  <definebone>bone_sailsmallB</definebone>
+  <definebone>bone_sailsmediumA</definebone>
+  <definebone>bone_sailsmediumB</definebone>
+  <definebone>bone_sailback</definebone>
+  <definebone>bone_muzzlel01</definebone>
+  <definebone>bone_muzzlel02</definebone>
+  <definebone>bone_muzzlel03</definebone>
+  <definebone>bone_muzzlel04</definebone>
+  <definebone>bone_muzzlel05</definebone>
+  <definebone>bone_muzzlel06</definebone>
+  <definebone>bone_muzzler01</definebone>
+  <definebone>bone_muzzler02</definebone>
+  <definebone>bone_muzzler03</definebone>
+  <definebone>bone_muzzler04</definebone>
+  <definebone>bone_muzzler05</definebone>
+  <definebone>bone_muzzler06</definebone>
+  <attachment>engineSmoke<component>Smoke<assetreference type="popcornFx"><file>smoke\steamer_engineSmoke.pkfx</file></assetreference></component><anim>None<component>Smoke</component></anim></attachment>
+  <attachment>IdleWaterFoam<component>Idlefoam<assetreference type="popcornFx"><file>water_effects\idle_waterFoam_large.pkfx</file></assetreference></component><anim>None<component>Idlefoam</component></anim></attachment>
+  <attachment>MoveWaterFoam<component>Movefoam<assetreference type="popcornFx"><file>water_effects\move_waterFoam_large.pkfx</file></assetreference></component><anim>None<component>Movefoam</component></anim></attachment>
+  <attachment>MoveWaterFoam_small<component>Movefoam<assetreference type="popcornFx"><file>water_effects\move_waterFoam_small.pkfx</file></assetreference></component><anim>None<component>Movefoam</component></anim></attachment>
+  <attachment>DeathWaterFoam<component>Deathfoam<assetreference type="popcornFx"><file>water_effects\death_waterFoam_Xlarge.pkfx</file></assetreference></component><anim>None<component>Deathfoam</component></anim></attachment>
+  <attachment>Death_EXP<component>exp<assetreference type="popcornFx"><file>units\spc\fire_ship\Exp_frigate_ship.pkfx</file></assetreference></component><anim>None<component>exp</component></anim></attachment>
+  <attachment>Death_EXP_Wood<component>exp2<assetreference type="popcornFx"><file>projectiles\ship_debris_wood.pkfx</file></assetreference></component><anim>None<component>exp2</component></anim></attachment>
+  <attachment>Fishing_net<component>fishing_net<assetreference type="GrannyModel"><file>units\attachments\fishing_net</file></assetreference></component><anim>Idle<assetreference type="GrannyAnim"><file>units\attachments\fishing_net_caravel</file></assetreference><component>fishing_net</component></anim></attachment>
+  <attachment>embers_attachment_A<component>embers_A<assetreference type="ParticleSystem"><file>effects\fire\embers_A.prt</file></assetreference></component><anim>Idle<component>embers_A</component></anim></attachment>
+  <attachment>smoke_A<component>white_smoke1<assetreference type="ParticleSystem"><file>effects\smoke\white_smoke_A.prt</file></assetreference></component><anim>Idle<component>white_smoke1</component></anim></attachment>
+  <attachment>train_smoke_plume1<component>train_smoke_plume1<assetreference type="ParticleSystem"><file>effects\smoke\train_smoke_plume1.particle</file></assetreference></component><anim>Idle<component>train_smoke_plume1</component></anim></attachment>
+  <attachment>train_smoke_plume2<component>train_smoke_plume2<assetreference type="ParticleSystem"><file>effects\smoke\train_smoke_plume2.particle</file></assetreference></component><anim>Idle<component>train_smoke_plume2</component></anim></attachment>
+  <attachment>train_smoke_plume3<component>train_smoke_plume3<assetreference type="ParticleSystem"><file>effects\smoke\train_smoke_plume3.particle</file></assetreference></component><anim>Idle<component>train_smoke_plume3</component></anim></attachment>
+  <attachment>train_smoke_plume4<component>train_smoke_plume4<assetreference type="ParticleSystem"><file>effects\smoke\train_smoke_plume4.particle</file></assetreference></component><anim>Idle<component>train_smoke_plume4</component></anim></attachment>
+  <attachment>train_smoke_plume5<component>train_smoke_plume5<assetreference type="ParticleSystem"><file>effects\smoke\train_smoke_plume5.particle</file></assetreference></component><anim>Idle<component>train_smoke_plume5</component></anim></attachment>
+  
+  <attachment>flameThrow<component>emitter<assetreference type="popcornFx"><file>units\george_crushington\flameThrow.pkfx</file></assetreference></component><anim>None<component>emitter</component></anim></attachment>
+  
+  <component>steamer<logic type="LowPoly"><normal><logic type="Destruction"><p1><assetreference type="GrannyModel"><file>units\naval\steamer\piratesteamer_damaged</file></assetreference></p1><p99><assetreference type="GrannyModel"><file>units\naval\steamer\piratesteamer</file></assetreference></p99></logic></normal><lowpoly><assetreference type="GrannyModel"><file>units\naval\steamer\piratesteamer_low</file></assetreference></lowpoly></logic><decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture><width>10.00</width><height>16.00</height><xoffset>0.00</xoffset><zoffset>-1.60</zoffset></decal></component>
+  <component>steamerDeath<assetreference type="GrannyModel"><file>units\naval\steamer\piratesteamer_damaged</file></assetreference></component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>units\naval\steamer\steamer_idle</file></assetreference><component>steamer</component><simskeleton><model>units\naval\steamer\piratesteamer_damaged</model></simskeleton><attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="engineSmoke" frombone="MASTER" tobone="bone_smoke_01" syncanims="0"></attach><attach a="engineSmoke" frombone="MASTER" tobone="bone_smoke_02" syncanims="0"></attach><attach a="embers_attachment_A" frombone="MASTER" tobone="bone_smoke_01" syncanims="0"></attach><attach a="embers_attachment_A" frombone="MASTER" tobone="bone_smoke_02" syncanims="0"></attach></anim>
+  <anim>RangedAttack<assetreference type="GrannyAnim"><file>units\naval\steamer\steamer_idle</file><tag type="Attack">0.45</tag></assetreference><component>steamer</component><simskeleton><model>units\naval\steamer\piratesteamer_damaged</model></simskeleton><attach a="engineSmoke" frombone="MASTER" tobone="bone_smoke_01" syncanims="0"></attach><attach a="engineSmoke" frombone="MASTER" tobone="bone_smoke_02" syncanims="0"></attach><attach a="embers_attachment_A" frombone="MASTER" tobone="bone_smoke_01" syncanims="0"></attach><attach a="embers_attachment_A" frombone="MASTER" tobone="bone_smoke_02" syncanims="0"></attach></anim>
+  
+  <anim>Bombard_ranged_idle<assetreference type="GrannyAnim"><file>units\naval\steamer\steamer_idle</file><tag type="Attack">0.23</tag>
+    
+    <tag type="SpecificSoundSet" set="FlameThrower" checkvisible="1">0.2</tag>
+    <tag type="SpecificSoundSet" set="FireShipExplode" checkvisible="1">0.35</tag>
+    <tag type="Particles" particlename="flamethrower">0.0</tag><tag type="Particles" particlename="flamethrower">0.05</tag><tag type="Particles" particlename="flamethrower">0.15</tag><tag type="Particles" particlename="flamethrower">0.20</tag><tag type="Particles" particlename="flamethrower">0.25</tag><tag type="Particles" particlename="flamethrower">0.30</tag><tag type="Particles" particlename="flamethrower">0.35</tag><tag type="Particles" particlename="flamethrower">0.40</tag><tag type="Particles" particlename="flamethrower">0.45</tag><tag type="Particles" particlename="flamethrower">0.50</tag><tag type="Particles" particlename="flamethrower">0.55</tag><tag type="Particles" particlename="flamethrower">0.60</tag><tag type="Particles" particlename="flamethrower">0.65</tag><tag type="Particles" particlename="flamethrower">0.70</tag><tag type="Particles" particlename="flamethrower">0.75</tag><tag type="Particles" particlename="flamethrower">0.80</tag><tag type="Particles" particlename="flamethrower">0.85</tag><tag type="Particles" particlename="flamethrower">0.90</tag><tag type="Particles" particlename="flamethrower">0.95</tag><tag type="Particles" particlename="flamethrower">1.0</tag>
+    </assetreference>
+    <component>steamer</component><simskeleton><model>units\naval\steamer\piratesteamer_damaged</model></simskeleton>
+    
+    <attach a="flameThrow" frombone="ATTACHPOINT" tobone="bone_front_foam" syncanims="0"></attach>
+    <attach a="flameThrow" frombone="ATTACHPOINT" tobone="bone_front_wake" syncanims="0"></attach>
+    <attach a="flameThrow" frombone="ATTACHPOINT" tobone="bone_master" syncanims="0"></attach>
+    
+    
+
+  </anim>
+
+  
+  
+  <anim>Walk<assetreference type="GrannyAnim"><file>units\naval\steamer\steamer_walk</file></assetreference><component>steamer</component><simskeleton><model>units\naval\steamer\piratesteamer_damaged</model></simskeleton><attach a="MoveWaterFoam_small" frombone="ATTACHPOINT" tobone="bone_rightpaddle_foam" syncanims="0"></attach><attach a="MoveWaterFoam_small" frombone="ATTACHPOINT" tobone="bone_leftpaddle_foam" syncanims="0"></attach><attach a="engineSmoke" frombone="MASTER" tobone="bone_smoke_01" syncanims="0"></attach><attach a="engineSmoke" frombone="MASTER" tobone="bone_smoke_02" syncanims="0"></attach><attach a="embers_attachment_A" frombone="MASTER" tobone="bone_smoke_01" syncanims="0"></attach><attach a="embers_attachment_A" frombone="MASTER" tobone="bone_smoke_02" syncanims="0"></attach></anim>
+  <anim>Death<component>steamerDeath</component><attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="Death_EXP" frombone="ATTACHPOINT" tobone="bone_center" syncanims="0"></attach><attach a="Death_EXP" frombone="ATTACHPOINT" tobone="bone_master" syncanims="0"></attach><attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="bone_center" syncanims="0"></attach><attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="bone_master" syncanims="0"></attach></anim>
+  <anim>GatherFish<assetreference type="GrannyAnim"><file>units\naval\steamer\steamer_idle</file><tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.89</tag></assetreference><component>steamer</component><simskeleton><model>units\naval\steamer\piratesteamer_damaged</model></simskeleton><attach a="Fishing_net" frombone="MASTER" tobone="MASTER" syncanims="0"></attach></anim>
+</animfile>

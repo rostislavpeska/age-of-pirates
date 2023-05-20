@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>23</width>
+	<height>22</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="138" posx="7.8976" posz="0.7575" orientx="-0.0005" orienty="-0.0000" orientz="-1.0000">TownCenter</unit>
+		<unit variation="130" posx="5.4924" posz="-17.8979" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">ypSPCIndianFortCorner</unit>
+		<unit variation="164" posx="-10.6250" posz="-15.4890" orientx="-0.3829" orienty="0.0000" orientz="-0.9238">ypSPCIndianFortWallLarge</unit>
+		<unit variation="130" posx="-6.9334" posz="-17.6077" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">ypSPCIndianFortCorner</unit>
+		<unit variation="60" posx="-0.5660" posz="-17.1695" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">ypSPCIndianFortGate</unit>
+		<unit variation="164" posx="8.7423" posz="-15.3580" orientx="0.3827" orienty="0.0000" orientz="-0.9239">ypSPCIndianFortWallLarge</unit>
+		<unit variation="130" posx="-16.0603" posz="-14.5417" orientx="-0.7076" orienty="0.0000" orientz="-0.7066">ypSPCIndianFortCorner</unit>
+		<unit variation="130" posx="14.7082" posz="-14.3091" orientx="0.7065" orienty="0.0000" orientz="-0.7077">ypSPCIndianFortCorner</unit>
+		<unit variation="164" posx="-16.5524" posz="-8.6094" orientx="-0.9240" orienty="0.0000" orientz="-0.3825">ypSPCIndianFortWallLarge</unit>
+		<unit variation="178" posx="-4.6057" posz="-12.1594" orientx="-0.0000" orienty="-0.0039" orientz="1.0000">deHyena</unit>
+		<unit variation="164" posx="17.1629" posz="-7.9421" orientx="0.9238" orienty="0.0000" orientz="-0.3828">ypSPCIndianFortWallLarge</unit>
+		<unit variation="115" posx="8.0000" posz="-11.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="74" posx="-8.0000" posz="-9.0000" orientx="-0.3577" orienty="0.0000" orientz="0.9338">ypTreeCeylon</unit>
+		<unit variation="5" posx="10.0000" posz="-9.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="71" posx="-10.0000" posz="-7.0000" orientx="0.4275" orienty="0.0000" orientz="0.9040">ypTreeCeylon</unit>
+		<unit variation="66" posx="8.0000" posz="-7.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="126" posx="6.0000" posz="-7.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="35" posx="12.0000" posz="-7.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="130" posx="-18.9289" posz="-4.0984" orientx="-1.0000" orienty="0.0000" orientz="0.0003">ypSPCIndianFortCorner</unit>
+		<unit variation="164" posx="-18.3171" posz="0.4133" orientx="-1.0000" orienty="0.0000" orientz="0.0002">ypSPCIndianFortWallLarge</unit>
+		<unit variation="130" posx="19.6165" posz="-3.1625" orientx="1.0000" orienty="0.0000" orientz="-0.0003">ypSPCIndianFortCorner</unit>
+		<unit variation="66" posx="-12.0000" posz="-3.0000" orientx="0.5335" orienty="0.0000" orientz="0.8458">ypTreeCeylon</unit>
+		<unit variation="164" posx="19.3950" posz="1.2250" orientx="1.0000" orienty="0.0000" orientz="-0.0001">ypSPCIndianFortWallLarge</unit>
+		<unit variation="239" posx="-14.0000" posz="-1.0000" orientx="-0.6843" orienty="0.0000" orientz="-0.7292">ypTreeCeylon</unit>
+		<unit variation="117" posx="-14.0000" posz="1.0000" orientx="-0.9054" orienty="0.0000" orientz="-0.4246">ypTreeCeylon</unit>
+		<unit variation="128" posx="-10.0000" posz="1.0000" orientx="0.5266" orienty="0.0000" orientz="0.8501">ypTreeCeylon</unit>
+		<unit variation="130" posx="19.7150" posz="5.1218" orientx="1.0000" orienty="0.0000" orientz="-0.0003">ypSPCIndianFortCorner</unit>
+		<unit variation="130" posx="-19.7568" posz="4.9382" orientx="-1.0000" orienty="0.0000" orientz="0.0003">ypSPCIndianFortCorner</unit>
+		<unit variation="70" posx="-14.0000" posz="5.0000" orientx="-0.9815" orienty="0.0000" orientz="0.1916">ypTreeCeylon</unit>
+		<unit variation="254" posx="-2.0000" posz="9.0000" orientx="0.1426" orienty="0.0000" orientz="-0.9898">MineSalt</unit>
+		<unit variation="164" posx="-16.7859" posz="9.5889" orientx="-0.9238" orienty="0.0000" orientz="0.3829">ypSPCIndianFortWallLarge</unit>
+		<unit variation="164" posx="17.1963" posz="10.1110" orientx="0.9239" orienty="0.0000" orientz="0.3826">ypSPCIndianFortWallLarge</unit>
+		<unit variation="170" posx="10.0000" posz="11.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="130" posx="-15.9511" posz="15.1439" orientx="-0.7066" orienty="0.0000" orientz="0.7076">ypSPCIndianFortCorner</unit>
+		<unit variation="130" posx="16.6331" posz="16.1727" orientx="0.7076" orienty="0.0000" orientz="0.7066">ypSPCIndianFortCorner</unit>
+		<unit variation="164" posx="-9.4536" posz="16.4518" orientx="-0.3825" orienty="0.0000" orientz="0.9240">ypSPCIndianFortWallLarge</unit>
+		<unit variation="164" posx="10.5852" posz="16.8434" orientx="0.3828" orienty="0.0000" orientz="0.9238">ypSPCIndianFortWallLarge</unit>
+		<unit variation="130" posx="4.8569" posz="19.4201" orientx="0.0003" orienty="0.0000" orientz="1.0000">ypSPCIndianFortCorner</unit>
+		<unit variation="164" posx="0.5913" posz="18.7807" orientx="0.0002" orienty="0.0000" orientz="1.0000">ypSPCIndianFortWallLarge</unit>
+		<unit variation="130" posx="-4.4642" posz="19.4512" orientx="0.0003" orienty="0.0000" orientz="1.0000">ypSPCIndianFortCorner</unit>
+		<unit variation="50" posx="-14.2167" posz="-13.2541" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deTowerTreasureReward</unit>
+		<unit variation="86" posx="13.9632" posz="-12.7597" orientx="0.7071" orienty="0.0000" orientz="0.7071">deTowerTreasureReward</unit>
+		<unit variation="145" posx="-14.8902" posz="13.7796" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">deTowerTreasureReward</unit>
+		<unit variation="208" posx="15.1341" posz="15.4785" orientx="-0.7071" orienty="0.0000" orientz="0.7071">deTowerTreasureReward</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_beach_street_90_ground">
+			<block startx="-5" startz="-6" endx="-5" endz="-6"></block>
+			<block startx="-5" startz="1" endx="-5" endz="1"></block>
+			<block startx="-4" startz="-6" endx="-4" endz="-5"></block>
+			<block startx="-4" startz="-2" endx="-4" endz="1"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="1"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="1"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="1"></block>
+			<block startx="0" startz="-6" endx="0" endz="1"></block>
+			<block startx="-6" startz="2" endx="-6" endz="4"></block>
+			<block startx="-5" startz="2" endx="-5" endz="6"></block>
+			<block startx="-4" startz="2" endx="-4" endz="2"></block>
+			<block startx="-4" startz="5" endx="-4" endz="7"></block>
+			<block startx="-3" startz="6" endx="-3" endz="7"></block>
+			<block startx="-2" startz="7" endx="-2" endz="8"></block>
+			<block startx="-1" startz="7" endx="-1" endz="8"></block>
+			<block startx="0" startz="6" endx="0" endz="8"></block>
+			<block startx="1" startz="2" endx="1" endz="2"></block>
+			<block startx="1" startz="5" endx="1" endz="8"></block>
+			<block startx="2" startz="2" endx="2" endz="8"></block>
+			<block startx="3" startz="2" endx="3" endz="8"></block>
+			<block startx="4" startz="2" endx="4" endz="7"></block>
+			<block startx="5" startz="2" endx="5" endz="2"></block>
+			<block startx="6" startz="2" endx="6" endz="3"></block>
+			<block startx="7" startz="2" endx="7" endz="5"></block>
+			<block startx="8" startz="2" endx="8" endz="5"></block>
+			<block startx="1" startz="-6" endx="1" endz="1"></block>
+			<block startx="2" startz="-6" endx="2" endz="1"></block>
+			<block startx="3" startz="-3" endx="3" endz="1"></block>
+			<block startx="4" startz="-3" endx="4" endz="1"></block>
+			<block startx="5" startz="-3" endx="5" endz="1"></block>
+			<block startx="6" startz="-3" endx="6" endz="1"></block>
+			<block startx="7" startz="-2" endx="7" endz="1"></block>
+			<block startx="8" startz="-2" endx="8" endz="1"></block>
+			<block startx="-5" startz="-10" endx="-5" endz="-7"></block>
+			<block startx="-4" startz="-11" endx="-4" endz="-7"></block>
+			<block startx="-3" startz="-11" endx="-3" endz="-7"></block>
+			<block startx="-2" startz="-11" endx="-2" endz="-7"></block>
+			<block startx="-1" startz="-11" endx="-1" endz="-7"></block>
+			<block startx="0" startz="-11" endx="0" endz="-7"></block>
+			<block startx="1" startz="-11" endx="1" endz="-7"></block>
+			<block startx="2" startz="-9" endx="2" endz="-7"></block>
+			<block startx="3" startz="-7" endx="3" endz="-7"></block>
+			<block startx="9" startz="-1" endx="9" endz="1"></block>
+			<block startx="9" startz="3" endx="9" endz="4"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

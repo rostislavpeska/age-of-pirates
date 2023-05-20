@@ -1,0 +1,47 @@
+<animfile>
+  <definebone>bone_muzzlel01</definebone>
+  <definebone>bone_muzzlel02</definebone>
+  <definebone>bone_muzzlel03</definebone>
+  <definebone>bone_muzzlel04</definebone>
+  <definebone>bone_muzzlel05</definebone>
+  <definebone>bone_muzzler01</definebone>
+  <definebone>bone_muzzler02</definebone>
+  <definebone>bone_muzzler03</definebone>
+  <definebone>bone_muzzler04</definebone>
+  <definebone>bone_muzzler05</definebone>
+  <definebone>bone_debris_1a</definebone>
+  <definebone>bone_debris_1b</definebone>
+  <definebone>bone_debris_1c</definebone>
+  <definebone>bone_debris_2a</definebone>
+  <definebone>bone_debris_2b</definebone>
+  <definebone>bone_debris_2c</definebone>
+  <definebone>bone_debris_3a</definebone>
+  <definebone>bone_debris_3b</definebone>
+  <definebone>bone_debris_3c</definebone>
+  <definebone>bone_debris_4a</definebone>
+  <definebone>bone_debris_4b</definebone>
+  <definebone>bone_debris_4c</definebone>
+  <definebone>bone_debris_5a</definebone>
+  <definebone>bone_debris_5b</definebone>
+  <definebone>bone_debris_6a</definebone>
+  <definebone>bone_debris_6b</definebone>
+  <definebone>bone_debris_6c</definebone>
+  <definebone>bone_master</definebone>
+  <definebone>bone_debris_7a</definebone>
+  <definebone>bone_debris_7b</definebone>
+  <definebone>bone_debris_7c</definebone>
+  <definebone>bone_debris_7d</definebone>
+  <definebone>boneimpact05</definebone>
+  <definebone>bone_sail04</definebone>
+  <definebone>bone_garrisonflag</definebone>
+  <attachment>IdleWaterFoam<component>Idlefoam<assetreference type="popcornFx"><file>water_effects\idle_waterFoam_large.pkfx</file></assetreference></component><anim>None<component>Idlefoam</component></anim></attachment>
+  <attachment>MoveWaterFoam<component>Movefoam<assetreference type="popcornFx"><file>water_effects\move_waterFoam_large.pkfx</file></assetreference></component><anim>None<component>Movefoam</component></anim></attachment>
+  <attachment>DeathWaterFoam<component>Deathfoam<assetreference type="popcornFx"><file>water_effects\death_waterFoam_large.pkfx</file></assetreference></component><anim>None<component>Deathfoam</component></anim></attachment>
+  <attachment>Death_EXP<component>exp<assetreference type="popcornFx"><file>units\spc\fire_ship\Exp_ship.pkfx</file></assetreference></component><anim>None<component>exp</component></anim></attachment>
+  <attachment>Death_EXP_Wood<component>exp2<assetreference type="popcornFx"><file>projectiles\ship_debris_wood.pkfx</file></assetreference></component><anim>None<component>exp2</component></anim></attachment>
+  <component>Frigate<logic type="LowPoly"><normal><logic type="Destruction"><p1><assetreference type="GrannyModel"><file>units\asians\naval\fuchuan\spcfuchuan_damaged</file></assetreference></p1><p99><assetreference type="GrannyModel"><file>units\asians\naval\fuchuan\spcfuchuan</file></assetreference></p99></logic></normal><lowpoly><assetreference type="GrannyModel"><file>units\asians\naval\fuchuan\spcfuchuan</file></assetreference></lowpoly></logic><decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture><width>7.00</width><height>15.00</height><xoffset>0.00</xoffset><zoffset>0.00</zoffset></decal><watersplash><texture>units\naval\colony_ship\colony_ship_hullmask</texture><width>11.00</width><height>11.00</height></watersplash></component>
+  <component>death<assetreference type="GrannyModel"><file>units\asians\naval\fuchuan\spcfuchuan_damaged</file></assetreference><decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture><width>12.00</width><height>20.00</height><xoffset>0.00</xoffset><zoffset>-1.50</zoffset></decal></component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>units\asians\naval\fuchuan\fuchuan_idle</file></assetreference><component>Frigate</component><attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
+  <anim>Death<component>death</component><attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="Death_EXP" frombone="ATTACHPOINT" tobone="bone_sail04" syncanims="0"></attach><attach a="Death_EXP" frombone="ATTACHPOINT" tobone="boneimpact05" syncanims="0"></attach><attach a="Death_EXP_Wood" frombone="ATTACHPOINT" tobone="bone_sail04" syncanims="0"></attach><attach a="Death_EXP_Wood" frombone="ATTACHPOINT" tobone="boneimpact05" syncanims="0"></attach></anim>
+  <anim>Walk<assetreference type="GrannyAnim"><file>units\asians\naval\fuchuan\fuchuan_walk</file></assetreference><component>Frigate</component><attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
+</animfile>

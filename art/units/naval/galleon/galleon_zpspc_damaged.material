@@ -1,0 +1,70 @@
+<material>
+  <submaterial name="matA">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\galleon\textures\galleonzpspc_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\naval\galleon\textures\galleon_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\naval\galleon\textures\galleon_mata_masks">
+      </texture>
+      <texture name="Details" override="units\naval\galleon\textures\galleon_mata_details">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\naval\galleon\textures\galleon_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\naval\galleon\textures\galleon_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\naval\galleon\textures\galleon_mata_masks">
+      </texture>
+      <texture name="Details" override="units\naval\galleon\textures\galleon_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matB">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\galleon\textures\galleon_spc_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="units\naval\galleon\textures\galleon_spc_matb_normals">
+      </texture>
+      <texture name="Masks" override="units\naval\galleon\textures\galleon_spc_matb_masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\naval\galleon\textures\galleon_spc_01_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="units\naval\galleon\textures\galleon_spc_matb_normals">
+      </texture>
+      <texture name="Masks" override="units\naval\galleon\textures\galleon_spc_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="objects\spc\igc_shipwreck\textures\debris01_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="objects\spc\igc_shipwreck\textures\debris01_mata_normals">
+      </texture>
+      <texture name="Masks" override="objects\spc\igc_shipwreck\textures\debris01_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

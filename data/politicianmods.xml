@@ -1,0 +1,62 @@
+<politicianmods>
+  <zpconsulatepiratesblackbeard portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/blackbeard.png">
+  </zpconsulatepiratesblackbeard>
+  <zpconsulatepiratesgrace portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/grace.png">
+  </zpconsulatepiratesgrace>
+  <zpbigconsulatebritishclone portraitfilename="ui\ingame\politicians\consulate_british" portraitfilenamewpf="resources/images/icons/politicians/consulate_british.png">
+  </zpbigconsulatebritishclone>
+  <zpbigconsulateportugueseclone portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_portuguese.png">
+  </zpbigconsulateportugueseclone>
+  <zpbigconsulatedutchclone portraitfilename="ui\ingame\politicians\consulate_dutch" portraitfilenamewpf="resources/images/icons/politicians/consulate_dutch.png">
+  </zpbigconsulatedutchclone>
+  <zpbigconsulaterussiansclone portraitfilename="ui\ingame\politicians\consulate_russians" portraitfilenamewpf="resources/images/icons/politicians/consulate_russians.png">
+  </zpbigconsulaterussiansclone>
+  <zpbigconsulatespanishclone portraitfilename="ui\ingame\politicians\consulate_spanish" portraitfilenamewpf="resources/images/icons/politicians/consulate_spanish.png">
+  </zpbigconsulatespanishclone>
+  <zpbigconsulatefrenchclone portraitfilename="ui\ingame\politicians\consulate_french" portraitfilenamewpf="resources/images/icons/politicians/consulate_french.png">
+  </zpbigconsulatefrenchclone>
+  <zpbigconsulateottomansclone portraitfilename="ui\ingame\politicians\consulate_ottomans" portraitfilenamewpf="resources/images/icons/politicians/consulate_ottomans.png">
+  </zpbigconsulateottomansclone>
+  <zpbigconsulategermansclone portraitfilename="ui\ingame\politicians\consulate_germans" portraitfilenamewpf="resources/images/icons/politicians/consulate_germans.png">
+  </zpbigconsulategermansclone>
+  <zpbigconsulatejapaneseclone portraitfilename="ui\ingame\politicians\consulate_japanese" portraitfilenamewpf="resources/images/icons/politicians/consulate_japanese.png">
+  </zpbigconsulatejapaneseclone>
+  <zpconsulatepiratesblackcaesar portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/blackcaesar.png">
+  </zpconsulatepiratesblackcaesar>
+  <zpconsulatemaltesevenetians portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/venetian_fraction.png">
+  </zpconsulatemaltesevenetians>
+  <zpconsulatemalteseflorentians portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/florentian_fraction.png">
+  </zpconsulatemalteseflorentians>
+  <zpconsulatemaltesejerusalem portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/jerusalem_fraction.png">
+  </zpconsulatemaltesejerusalem>
+  <zpconsulatewokousaofeng portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/saofeng.png">
+  </zpconsulatewokousaofeng>
+  <zpconsulatewokoutakanobu portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/takanobu.png">
+  </zpconsulatewokoutakanobu>
+  <zpconsulatewokoumadameching portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/madameching.png">
+  </zpconsulatewokoumadameching>
+  <zpbigconsulatechinaeuropean portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_chinese.png">
+  </zpbigconsulatechinaeuropean>
+  <zpbigconsulatejapaneseeuropean portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_japanese.png">
+  </zpbigconsulatejapaneseeuropean>
+  <zpbigconsulateindiaeuropean portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_india.png">
+  </zpbigconsulateindiaeuropean>
+  <zpconsulatenatmaya portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_maya.png">
+  </zpconsulatenatmaya>
+  <zpconsulatenatzapotec portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_zapotec.png">
+  </zpconsulatenatzapotec>
+  <zpconsulatenatjesuit portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_jesuit.png">
+  </zpconsulatenatjesuit>
+  <zpconsulatejewishamericans portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/jewish_americans.png">
+  </zpconsulatejewishamericans>
+  <zpconsulatejewishgermans portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/jewish_germans.png">
+  </zpconsulatejewishgermans>
+  <zpconsulatejewishrussians portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/jewish_russians.png">
+  </zpconsulatejewishrussians>
+  <zpconsulatemaltesecentraleuropeans portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/prague_fraction.png">
+  </zpconsulatemaltesecentraleuropeans>
+  <zpconsulatescientistnemo portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/politician_nemo.png">
+  </zpconsulatescientistnemo>
+  <zpconsulatescientistvalentine portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/politician_valentine.png">
+  </zpconsulatescientistvalentine>
+</politicianmods>

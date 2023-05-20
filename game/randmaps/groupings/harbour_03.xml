@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>24</width>
+	<height>18</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="170" posx="12.9282" posz="-11.6423" orientx="-0.4505" orienty="0.0000" orientz="0.8928">ShorelineRockBigNE</unit>
+		<unit variation="169" posx="-13.2887" posz="-12.9863" orientx="-0.9239" orienty="0.0000" orientz="0.3827">NativePirates</unit>
+		<unit variation="40" posx="4.0491" posz="-11.9035" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="113" posx="7.7189" posz="-11.3435" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">HarbourPathBlock</unit>
+		<unit variation="152" posx="0.1189" posz="-11.7831" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="143" posx="-15.6860" posz="-8.0159" orientx="-0.4436" orienty="0.0000" orientz="0.8962">ShorelineRockBigNE</unit>
+		<unit variation="55" posx="-15.5372" posz="-11.5043" orientx="-0.7071" orienty="0.0000" orientz="0.7071">NativePirates</unit>
+		<unit variation="185" posx="-14.6855" posz="-9.3374" orientx="0.3827" orienty="0.0000" orientz="-0.9239">HarbourPathBlock</unit>
+		<unit variation="32" posx="-18.0789" posz="-9.5653" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">HarbourPathBlock</unit>
+		<unit variation="213" posx="5.1086" posz="-7.6080" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCPortCenter</unit>
+		<unit variation="217" posx="-2.0792" posz="-9.5762" orientx="-1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="108" posx="6.9394" posz="-10.4115" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="25" posx="-7.8410" posz="-7.5946" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCPortSocket</unit>
+		<unit variation="232" posx="10.9499" posz="-9.7106" orientx="0.3827" orienty="0.0000" orientz="-0.9239">HarbourPathBlock</unit>
+		<unit variation="229" posx="-20.0522" posz="-6.9815" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">HarbourPathBlock</unit>
+		<unit variation="118" posx="-13.4168" posz="-9.6478" orientx="-0.7071" orienty="0.0000" orientz="0.7071">NativePirates</unit>
+		<unit variation="232" posx="13.5137" posz="-7.3690" orientx="0.9239" orienty="0.0000" orientz="-0.3827">HarbourPathBlock</unit>
+		<unit variation="92" posx="-13.0656" posz="-6.7539" orientx="1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="121" posx="-11.9053" posz="-3.5613" orientx="0.0415" orienty="0.0000" orientz="-0.9991">zpHarbourPlatform</unit>
+		<unit variation="25" posx="-2.1994" posz="-5.9020" orientx="-1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="47" posx="-12.5798" posz="-4.0723" orientx="0.7071" orienty="0.0000" orientz="-0.7071">HarbourPathBlock</unit>
+		<unit variation="121" posx="11.7677" posz="-2.8440" orientx="-0.9995" orienty="0.0000" orientz="-0.0321">zpHarbourPlatform</unit>
+		<unit variation="13" posx="-0.9550" posz="-2.3974" orientx="-0.0384" orienty="0.0000" orientz="-0.9993">zpHarbourPlatform</unit>
+		<unit variation="190" posx="-6.0267" posz="-2.7386" orientx="-0.0889" orienty="0.0000" orientz="-0.9960">zpHarbourPlatform</unit>
+		<unit variation="34" posx="5.1694" posz="-2.6988" orientx="-0.0394" orienty="0.0000" orientz="-0.9992">zpHarbourPlatform</unit>
+		<unit variation="143" posx="-3.5186" posz="-3.0033" orientx="0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="91" posx="-20.8203" posz="-3.4163" orientx="-1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="192" posx="13.5682" posz="-2.1072" orientx="0.9239" orienty="0.0000" orientz="0.3827">HarbourPathBlock</unit>
+		<unit variation="23" posx="3.4515" posz="-1.1991" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
+		<unit variation="136" posx="9.2679" posz="-2.2286" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsColony</unit>
+		<unit variation="8" posx="-6.7903" posz="-2.6863" orientx="0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="61" posx="-9.9482" posz="-2.4292" orientx="0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="97" posx="5.2481" posz="0.1136" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
+		<unit variation="231" posx="7.5224" posz="-0.1086" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsColony</unit>
+		<unit variation="102" posx="-11.7801" posz="2.9781" orientx="-0.9989" orienty="0.0000" orientz="-0.0463">zpHarbourPlatform</unit>
+		<unit variation="83" posx="-6.1773" posz="-0.2000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
+		<unit variation="151" posx="-20.1981" posz="0.3416" orientx="-0.9239" orienty="0.0000" orientz="0.3827">HarbourPathBlock</unit>
+		<unit variation="72" posx="8.4288" posz="0.1137" orientx="-0.7071" orienty="0.0000" orientz="0.7071">NativePirates</unit>
+		<unit variation="142" posx="13.4027" posz="1.8679" orientx="0.9239" orienty="0.0000" orientz="0.3827">HarbourPathBlock</unit>
+		<unit variation="216" posx="-0.6832" posz="4.7325" orientx="-0.9990" orienty="0.0000" orientz="-0.0436">zpHarbourPlatform</unit>
+		<unit variation="14" posx="-18.2528" posz="3.1839" orientx="-0.3827" orienty="0.0000" orientz="0.9239">HarbourPathBlock</unit>
+		<unit variation="193" posx="3.8011" posz="6.7351" orientx="-0.9942" orienty="0.0000" orientz="0.1079">zpHarbourShip</unit>
+		<unit variation="225" posx="-4.3241" posz="6.0318" orientx="-0.7445" orienty="0.0000" orientz="0.6676">zpHarbourShip</unit>
+		<unit variation="82" posx="-14.2467" posz="5.5634" orientx="-0.3827" orienty="0.0000" orientz="0.9239">HarbourPathBlock</unit>
+		<unit variation="196" posx="11.1738" posz="4.8577" orientx="0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="160" posx="8.7467" posz="7.8597" orientx="0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="162" posx="-0.9878" posz="9.5397" orientx="0.0343" orienty="0.0000" orientz="0.9994">zpHarbourPlatform</unit>
+		<unit variation="177" posx="-10.5778" posz="7.8311" orientx="-0.3827" orienty="0.0000" orientz="0.9239">HarbourPathBlock</unit>
+		<unit variation="194" posx="-3.0528" posz="8.9759" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="94" posx="5.2978" posz="8.5630" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="151" posx="1.2012" posz="8.5574" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="68" posx="-6.9358" posz="8.7781" orientx="-0.3827" orienty="0.0000" orientz="0.9239">HarbourPathBlock</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

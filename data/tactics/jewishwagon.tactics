@@ -1,0 +1,37 @@
+<tactics>
+  <action>
+    <name stringid="112252">Heal</name>
+    <type>AutoRangedModify</type>
+    <maxrange>15</maxrange>
+    <modifyabstracttype>LogicalTypeHealed</modifyabstracttype>
+    <persistent>1</persistent>
+    <modifytype>HealRate</modifytype>
+    <modifyamount>8</modifyamount>
+    <modifytargetlimit>50</modifytargetlimit>
+    <restricttoidleunits>1</restricttoidleunits>
+    <modelattachment>effects\areaheal.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="43019">AutoGather</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="38133">RangedAttack</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>RangedAttack</anim>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.5</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>Arrow</projectile>
+    <rate type="Unit">1.0 </rate>
+  </action>
+  <tactic>Normal<action>AutoGather</action><action>Heal</action><action>RangedAttack</action></tactic>
+</tactics>

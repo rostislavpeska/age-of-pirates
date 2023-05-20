@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>8</width>
+	<height>12</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="31" posx="2.7930" posz="-6.7722" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">GroundPropsYuk</unit>
+		<unit variation="41" posx="-1.0000" posz="1.0000" orientx="-0.8228" orienty="-0.0000" orientz="-0.5684">MineSalt</unit>
+		<unit variation="33" posx="4.3982" posz="4.6444" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">GroundPropsYuk</unit>
+		<unit variation="233" posx="2.0151" posz="7.8533" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="204" posx="-3.5662" posz="8.6736" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="AfricaDesert\ground_sand1_afriDesert">
+			<block startx="-4" startz="-6" endx="-4" endz="-5"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="-5"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-5"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="-5"></block>
+			<block startx="-4" startz="-4" endx="-4" endz="3"></block>
+			<block startx="-3" startz="-4" endx="-3" endz="3"></block>
+			<block startx="-2" startz="-4" endx="-2" endz="3"></block>
+			<block startx="-1" startz="-4" endx="-1" endz="3"></block>
+			<block startx="0" startz="-4" endx="0" endz="3"></block>
+			<block startx="1" startz="-4" endx="1" endz="3"></block>
+			<block startx="2" startz="-4" endx="2" endz="3"></block>
+			<block startx="3" startz="-4" endx="3" endz="3"></block>
+			<block startx="0" startz="-6" endx="0" endz="-5"></block>
+			<block startx="1" startz="-6" endx="1" endz="-5"></block>
+			<block startx="2" startz="-6" endx="2" endz="-5"></block>
+			<block startx="3" startz="-6" endx="3" endz="-5"></block>
+			<block startx="-4" startz="4" endx="-4" endz="5"></block>
+			<block startx="-3" startz="4" endx="-3" endz="5"></block>
+			<block startx="-2" startz="4" endx="-2" endz="5"></block>
+			<block startx="-1" startz="4" endx="-1" endz="5"></block>
+			<block startx="0" startz="4" endx="0" endz="5"></block>
+			<block startx="1" startz="4" endx="1" endz="5"></block>
+			<block startx="2" startz="4" endx="2" endz="5"></block>
+			<block startx="3" startz="4" endx="3" endz="5"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

@@ -1,0 +1,114 @@
+<tactics>
+  <action>
+    <name stringid="69776">SpawnPrivateer</name>
+    <type>Spawn</type>
+    <rate type="Privateer">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnQueenAnne</name>
+    <type>Spawn</type>
+    <rate type="zpSPCQueenAnne">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnBlackPearl</name>
+    <type>Spawn</type>
+    <rate type="zpSPCBlackPearl">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnNeptune</name>
+    <type>Spawn</type>
+    <rate type="zpSPCNeptuneGalley">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnQueenAnneProxy</name>
+    <type>Spawn</type>
+    <rate type="zpSPCQueenAnneProxy">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnBlackPearlProxy</name>
+    <type>Spawn</type>
+    <rate type="zpSPCBlackPearlProxy">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnNeptuneProxy</name>
+    <type>Spawn</type>
+    <rate type="zpSPCNeptuneGalleyProxy">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnWokouJunk</name>
+    <type>Spawn</type>
+    <rate type="ypWokouJunk">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnWokouSteamer</name>
+    <type>Spawn</type>
+    <rate type="zpWokouSteamer">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnWokouFuchuan</name>
+    <type>Spawn</type>
+    <rate type="zpWokouFuchuan">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnWokouFireJunk</name>
+    <type>Spawn</type>
+    <rate type="ypFireship">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69155">Heal</name>
+    <type>Heal</type>
+    <maxrange>12</maxrange>
+    <rate type="Ship">10.0 </rate>
+    <anim>RangedAttack</anim>
+  </action>
+   <action>
+    <name stringid="69776">SpawnSubmarine</name>
+    <type>Spawn</type>
+    <rate type="zpSubmarine">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnNautilus</name>
+    <type>Spawn</type>
+    <rate type="zpNautilus">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <tactic>Normal<action>Heal</action><action>SpawnPrivateer</action><action>SpawnQueenAnne</action><action>SpawnBlackPearl</action><action>SpawnNeptune</action><action>SpawnWokouFireJunk</action><action>SpawnSubmarine</action><action>SpawnNautilus</action></tactic>
+</tactics>

@@ -1,0 +1,220 @@
+<!-- converted from XMB to XML -->
+
+<animfile>
+	<definebone>Bip01 Prop1</definebone>
+	<definebone>Bip01 Prop2</definebone>
+	<submodel>
+		we_Villager
+		<component>
+			Villager
+				<assetreference type="GrannyModel">
+					<file>buildings\mill\w_mill_3age</file>
+				</assetreference>
+			<decal>
+				<effecttype>default</effecttype>
+				<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
+				<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+				<width>1.0</width>
+				<height>1.0</height>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<assetreference type="GrannyAnim">
+				<file>buildings\mill\w_mill_3age_idle</file>
+			</assetreference>
+			<component>Villager</component>
+		</anim>
+	</submodel>
+	<submodel>
+		we_Villager_Female
+		<component>
+			Villager
+				<assetreference type="GrannyModel">
+					<file>buildings\mill\east_mill_age2</file>
+				</assetreference>
+			<decal>
+				<effecttype>default</effecttype>
+				<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
+				<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+				<width>1.0</width>
+				<height>1.0</height>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<assetreference type="GrannyAnim">
+				<file>buildings\mill\east_mill_age2_idle</file>
+			</assetreference>
+			<component>Villager</component>
+		</anim>
+	</submodel>
+	<submodel>
+		we_Villager_Black
+		<component>
+			Villager
+				<assetreference type="GrannyModel">
+					<file>buildings\mill\east_mill_age3</file>
+				</assetreference>
+			<decal>
+				<effecttype>default</effecttype>
+				<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
+				<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+				<width>1.0</width>
+				<height>1.0</height>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<assetreference type="GrannyAnim">
+				<file>buildings\mill\east_mill_age3</file>
+			</assetreference>
+			<component>Villager</component>
+		</anim>
+	</submodel>
+	<submodel>
+		we_Villager_Female_Black
+		<component>
+			Villager
+				<assetreference type="GrannyModel">
+					<file>buildings\mill\generic_mill</file>
+				</assetreference>
+			<decal>
+				<effecttype>default</effecttype>
+				<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
+				<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+				<width>1.0</width>
+				<height>1.0</height>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<assetreference type="GrannyAnim">
+				<file>buildings\mill\generic_mill_idle</file>
+			</assetreference>
+			<component>Villager</component>
+		</anim>
+	</submodel>
+	<submodel>
+		ee_Villager
+		<component>
+			Villager
+				<assetreference type="GrannyModel">
+					<file>buildings\mill\med\age_2\m_mill_2</file>
+				</assetreference>
+			<decal>
+				<effecttype>default</effecttype>
+				<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
+				<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+				<width>1.0</width>
+				<height>1.0</height>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<assetreference type="GrannyAnim">
+				<file>buildings\mill\med\age_2\m_mill_2_idle</file>
+			</assetreference>
+			<component>Villager</component>
+		</anim>
+	</submodel>
+	<submodel>
+		ee_Villager_Female
+		<component>
+			Villager
+				<assetreference type="GrannyModel">
+					<file>buildings\mill\med\age_3\m_mill_3</file>
+				</assetreference>
+			<decal>
+				<effecttype>default</effecttype>
+				<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
+				<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+				<width>1.0</width>
+				<height>1.0</height>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<assetreference type="GrannyAnim">
+				<file>buildings\mill\med\age_3\m_mill_3_idle</file>
+			</assetreference>
+			<component>Villager</component>
+		</anim>
+	</submodel>
+	<submodel>
+		ee_Villager_Black
+		<component>
+			Villager
+				<assetreference type="GrannyModel">
+					<file>buildings\mill\WEST\AGE_2\west_mill_age2</file>
+				</assetreference>
+			<decal>
+				<effecttype>default</effecttype>
+				<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
+				<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+				<width>1.0</width>
+				<height>1.0</height>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<assetreference type="GrannyAnim">
+				<file>buildings\mill\WEST\AGE_2\west_mill_age2_idle</file>
+			</assetreference>
+			<component>Villager</component>
+		</anim>
+	</submodel>
+	<submodel>
+		ee_Villager_Female_Black
+		<component>
+			Villager
+				<assetreference type="GrannyModel">
+					<file>buildings\mill\WEST\AGE_3\west_mill_age3</file>
+				</assetreference>
+			<decal>
+				<effecttype>default</effecttype>
+				<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
+				<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+				<width>1.0</width>
+				<height>1.0</height>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<assetreference type="GrannyAnim">
+				<file>buildings\mill\WEST\AGE_3\west_mill_age3_idle</file>
+			</assetreference>
+			<component>Villager</component>
+		</anim>
+	</submodel>
+	<component>
+		ModelComp
+				<logic type="Variation">
+					<data>
+						<submodelref ref="we_Villager"/>
+					</data>
+					<data>
+						<submodelref ref="we_Villager_Female"/>
+					</data>
+					<data>
+						<submodelref ref="we_Villager_Black"/>
+					</data>
+					<data>
+						<submodelref ref="we_Villager_Female_Black"/>
+					</data>
+					<data>
+						<submodelref ref="ee_Villager"/>
+					</data>
+					<data>
+						<submodelref ref="ee_Villager_Female"/>
+					</data>
+					<data>
+						<submodelref ref="ee_Villager_Black"/>
+					</data>
+					<data>
+						<submodelref ref="ee_Villager_Female_Black"/>
+					</data>
+
+				</logic>
+	</component>
+</animfile>

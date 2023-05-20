@@ -1,0 +1,46 @@
+<protounitsounddef>
+  <protounit name="zpNatSoheiArcher">
+    <soundtype name="Grunt">
+      <soundset name="GenericMaleGrunt">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="GenericMaleDeath">
+      </soundset>
+    </soundtype>
+    <soundtype name="Select">
+      <soundset name="JapaneseYumiSelect">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <targetlogic>
+        <choice name="default">
+          <soundset name="JapaneseYumiAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="enemy">
+          <soundset name="JapaneseYumiAttack">
+          </soundset>
+        </choice>
+        <choice name="build">
+        </choice>
+        <choice name="Huntable">
+        </choice>
+        <choice name="Tree">
+        </choice>
+        <choice name="AbstractMine">
+        </choice>
+        <choice name="AbstractFarm">
+        </choice>
+        <choice name="AbstractResourceCrate">
+        </choice>
+        <choice name="AbstractFruit">
+        </choice>
+      </targetlogic>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="MilitaryBirth">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

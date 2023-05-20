@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<attachment>
+		caravel
+		<include>units\naval\caravel_ship\caravel_ship.xml</include>
+	</attachment>
+	<component>
+		caravel_comp
+		<assetreference type="GrannyModel">
+			<file>effects\projectiles\arrow</file>
+		</assetreference>
+		<decal>
+			<effecttype>default</effecttype>
+			<width>5.00</width>
+			<height>8.00</height>
+		</decal>
+		<attach a="caravel" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"/>
+	</component>
+	<anim>
+		Idle
+		<component>caravel_comp</component>
+	</anim>
+	<anim>
+		Walk
+		<component>caravel_comp</component>
+	</anim>
+</animfile>

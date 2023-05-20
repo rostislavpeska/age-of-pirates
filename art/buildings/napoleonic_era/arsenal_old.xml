@@ -1,0 +1,26 @@
+<!-- converted from XMB to XML -->
+
+<animfile>
+	<component>
+		ModelComp
+			<logic type="Variation">
+				<v0>
+					<assetreference type="GrannyModel">
+						<file>buildings\arsenal\WEST\AGE_3\w_arsenal_3age</file>
+					</assetreference>
+					<decal>
+						<effecttype>default</effecttype>
+						<texture>buildings\arsenal\WEST\AGE_3\West Arsenal Ground</texture>
+						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+						<width>9.55</width>
+						<height>9.55</height>
+						<xoffset>0.50</xoffset>
+					</decal>
+				</v0>
+			</logic>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

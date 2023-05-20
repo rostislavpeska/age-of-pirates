@@ -1,0 +1,4 @@
+<animfile>
+  <component>test<assetreference type="GrannyModel"><file>terrain\spc\RockBridgeDead</file></assetreference><decal><effecttype>bump</effecttype><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><bumptexture>shadows_selections\flat_normal_black_spec</bumptexture><width>8.00</width><height>4.00</height><xoffset>0.00</xoffset><zoffset>-0.80</zoffset></decal></component>
+  <anim>Idle<component>test</component></anim>
+</animfile>

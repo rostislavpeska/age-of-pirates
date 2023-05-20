@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tactics>
+  <action>
+    <name stringid="68958">ChemistryInfantry</name>
+    <type>AutoRangedModify</type>
+    <persistent>1</persistent>
+    <modifyabstracttype>AbstractGunpowderTrooper</modifyabstracttype>
+    <modifymultiplier>1.10</modifymultiplier>
+    <modifytype>UnitDamage</modifytype>
+  </action>
+  <action>
+    <name stringid="68958">ChemistryCavalry</name>
+    <type>AutoRangedModify</type>
+    <persistent>1</persistent>
+    <modifyabstracttype>AbstractGunpowderCavalry</modifyabstracttype>
+    <modifymultiplier>1.10</modifymultiplier>
+    <modifytype>UnitDamage</modifytype>
+  </action>
+  <action>
+    <name stringid="68958">ChemistryArtillery</name>
+    <type>AutoRangedModify</type>
+    <persistent>1</persistent>
+    <modifyabstracttype>AbstractArtillery</modifyabstracttype>
+    <modifymultiplier>1.05</modifymultiplier>
+    <modifytype>UnitDamage</modifytype>
+  </action>
+
+
+  <action>
+    <name stringid="68960">BiologyInfantry</name>
+    <type>AutoRangedModify</type>
+    <persistent>1</persistent>
+    <modifyabstracttype>AbstractInfantry</modifyabstracttype>
+    <modifymultiplier>1.1</modifymultiplier>
+    <modifytype>MaxHP</modifytype>
+  </action>
+  <action>
+    <name stringid="68960">BiologyCavalry</name>
+    <type>AutoRangedModify</type>
+    <persistent>1</persistent>
+    <modifyabstracttype>AbstractCavalry</modifyabstracttype>
+    <modifymultiplier>1.1</modifymultiplier>
+    <modifytype>MaxHP</modifytype>
+  </action>
+
+  <action>
+    <name stringid="68960">Architecture</name>
+    <type>AutoRangedModify</type>
+    <persistent>1</persistent>
+    <modifyabstracttype>Building</modifyabstracttype>
+    <modifymultiplier>1.15</modifymultiplier>
+    <modifytype>MaxHP</modifytype>
+  </action>
+
+  <action>
+    <name stringid="68960">MachineryArtillery</name>
+    <type>AutoRangedModify</type>
+    <persistent>1</persistent>
+    <modifyabstracttype>AbstractArtillery</modifyabstracttype>
+    <modifymultiplier>1.1</modifymultiplier>
+    <modifytype>MaxHP</modifytype>
+  </action>
+  <action>
+    <name stringid="68960">MachineryShips</name>
+    <type>AutoRangedModify</type>
+    <persistent>1</persistent>
+    <modifyabstracttype>AbstractWarShip</modifyabstracttype>
+    <modifymultiplier>1.1</modifymultiplier>
+    <modifytype>MaxHP</modifytype>
+  </action>
+
+  <action>
+    <name stringid="68960">Astronomy</name>
+    <type>AutoRangedModify</type>
+    <persistent>1</persistent>
+    <modifyabstracttype>AbstractWarShip</modifyabstracttype>
+    <modifymultiplier>1.15</modifymultiplier>
+    <modifytype>Speed</modifytype>
+  </action>
+
+  <action>
+    <name stringid="43294">AutoGatherCoin</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+  </action>
+
+
+  <tactic>TacticMachinery
+    <action>MachineryArtillery</action>
+    <action>MachineryShips</action>
+    <protounitcommand>zpTacticMachinery</protounitcommand>
+    <transition>
+        <tactic>TacticAstronomy</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticEconomy</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticBiology</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticChemistry</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticArchitecture</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+  </tactic>
+  <tactic>TacticChemistry
+    <action>ChemistryInfantry</action>
+    <action>ChemistryCavalry</action>
+    <action>ChemistryArtillery</action>
+    <protounitcommand>zpTacticChemistry</protounitcommand>
+    <transition>
+        <tactic>TacticAstronomy</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticEconomy</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticMachinery</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticBiology</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticArchitecture</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+</tactic>
+<tactic>TacticBiology
+    <action>BiologyInfantry</action>
+    <action>BiologyCavalry</action>
+    <protounitcommand>zpTacticBiology</protounitcommand>
+    <transition>
+        <tactic>TacticAstronomy</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticEconomy</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticMachinery</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticChemistry</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticArchitecture</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+</tactic>
+<tactic>TacticArchitecture
+    <action>Architecture</action>
+    <protounitcommand>zpTacticArchitecture</protounitcommand>
+    <transition>
+        <tactic>TacticAstronomy</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticEconomy</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticBiology</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticChemistry</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticMachinery</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+</tactic>
+<tactic>TacticAstronomy
+    <action>Astronomy</action>
+    <protounitcommand>zpTacticAstronomy</protounitcommand>
+    <transition>
+        <tactic>TacticArchitecture</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticEconomy</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticBiology</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticChemistry</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticMachinery</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+</tactic>
+<tactic>TacticEconomy
+    <action>AutoGatherCoin</action>
+    <protounitcommand>zpTacticEconomy</protounitcommand>
+    <transition>
+        <tactic>TacticArchitecture</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticAstronomy</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticBiology</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticChemistry</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticMachinery</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+</tactic>
+</tactics>

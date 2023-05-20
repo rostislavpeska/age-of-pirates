@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_main</definebone>
+	<definebone>bone_market</definebone>
+    <attachment>
+		market
+		<include>buildings\market\west market standin.xml</include>
+	</attachment>
+	<component>
+        ModelComp
+        <assetreference type="GrannyModel">
+            <file>buildings\trading_post\tradingport</file>
+        </assetreference>
+        <attach a="market" frombone="bone_main" tobone="bone_market" syncanims="0"/>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

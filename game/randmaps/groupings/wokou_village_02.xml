@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>10</width>
+	<height>12</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="173" posx="3.0877" posz="-7.4274" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNativeHouseWokou</unit>
+		<unit variation="45" posx="1.0416" posz="-7.7339" orientx="-0.3843" orienty="-0.0000" orientz="-0.9232">NativeTownObstruction</unit>
+		<unit variation="45" posx="0.5290" posz="-8.5825" orientx="-0.3843" orienty="-0.0000" orientz="-0.9232">NativeTownObstruction</unit>
+		<unit variation="39" posx="-5.0131" posz="-7.2655" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSocketWokou</unit>
+		<unit variation="28" posx="8.6681" posz="-7.1700" orientx="0.7083" orienty="-0.0000" orientz="0.7059">LeanTo</unit>
+		<unit variation="226" posx="4.7090" posz="-5.1748" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseWokou</unit>
+		<unit variation="45" posx="2.3329" posz="-3.9182" orientx="-0.3843" orienty="-0.0000" orientz="-0.9232">NativeTownObstruction</unit>
+		<unit variation="45" posx="8.0764" posz="-3.9816" orientx="-0.3843" orienty="-0.0000" orientz="-0.9232">NativeTownObstruction</unit>
+		<unit variation="45" posx="-1.6136" posz="-2.1992" orientx="-0.3843" orienty="-0.0000" orientz="-0.9232">NativeTownObstruction</unit>
+		<unit variation="132" posx="7.6217" posz="-4.9751" orientx="1.0000" orienty="0.0000" orientz="-0.0033">dePropsResourceCratesGold</unit>
+		<unit variation="196" posx="7.7663" posz="-3.8473" orientx="-1.0000" orienty="-0.0000" orientz="0.0016">NativeWokou</unit>
+		<unit variation="72" posx="-8.1249" posz="-0.4820" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseWokou</unit>
+		<unit variation="45" posx="-9.8063" posz="0.7347" orientx="-0.3843" orienty="-0.0000" orientz="-0.9232">NativeTownObstruction</unit>
+		<unit variation="45" posx="-3.7942" posz="1.2252" orientx="-0.3843" orienty="-0.0000" orientz="-0.9232">NativeTownObstruction</unit>
+		<unit variation="132" posx="1.8730" posz="-2.8583" orientx="-0.9245" orienty="0.0000" orientz="-0.3813">dePropsResourceCratesGold</unit>
+		<unit variation="85" posx="9.6985" posz="-2.7629" orientx="-0.3842" orienty="-0.0000" orientz="-0.9232">NativeWokou</unit>
+		<unit variation="11" posx="0.8492" posz="0.9385" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseWokou</unit>
+		<unit variation="128" posx="7.3368" posz="0.3075" orientx="-0.0000" orienty="0.0000" orientz="1.0000">zpNativeHouseWokou</unit>
+		<unit variation="45" posx="8.0676" posz="1.8736" orientx="-0.3843" orienty="-0.0000" orientz="-0.9232">NativeTownObstruction</unit>
+		<unit variation="205" posx="-5.2254" posz="-1.3304" orientx="-0.7082" orienty="0.0000" orientz="-0.7060">dePropsResourceCratesGold</unit>
+		<unit variation="136" posx="4.1130" posz="1.4801" orientx="-0.7071" orienty="0.0000" orientz="0.7071">ypPropsJapaneseBanner</unit>
+		<unit variation="237" posx="-4.6420" posz="1.7738" orientx="-0.3814" orienty="-0.0000" orientz="0.9244">Campfire</unit>
+		<unit variation="1" posx="-8.2343" posz="4.4629" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseWokou</unit>
+		<unit variation="243" posx="6.1069" posz="5.6388" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseWokou</unit>
+		<unit variation="89" posx="2.8224" posz="2.9239" orientx="-0.7014" orienty="0.0000" orientz="-0.7128">ypSMZenAccessorySnow</unit>
+		<unit variation="45" posx="5.2086" posz="6.5913" orientx="-0.3843" orienty="-0.0000" orientz="-0.9232">NativeTownObstruction</unit>
+		<unit variation="45" posx="-1.8075" posz="5.7487" orientx="-0.3843" orienty="-0.0000" orientz="-0.9232">NativeTownObstruction</unit>
+		<unit variation="45" posx="-7.5277" posz="5.3785" orientx="-0.3843" orienty="-0.0000" orientz="-0.9232">NativeTownObstruction</unit>
+		<unit variation="116" posx="1.3583" posz="4.3627" orientx="0.7071" orienty="0.0000" orientz="-0.7071">ypPropsJapaneseBanner</unit>
+		<unit variation="3" posx="9.3910" posz="3.6407" orientx="0.7061" orienty="0.0000" orientz="-0.7081">ypPropsJapaneseGarden</unit>
+		<unit variation="10" posx="-5.0939" posz="4.0053" orientx="0.9232" orienty="0.0000" orientz="-0.3843">NativeWokou</unit>
+		<unit variation="14" posx="-4.0361" posz="7.5162" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">zpNativeHouseWokou</unit>
+		<unit variation="118" posx="-0.8721" posz="5.7370" orientx="0.9233" orienty="-0.0000" orientz="-0.3840">dePropsResourceCratesGold</unit>
+		<unit variation="111" posx="3.5845" posz="8.2968" orientx="0.1551" orienty="0.0000" orientz="-0.9879">PropKingfisher</unit>
+		<unit variation="3" posx="9.5343" posz="5.7486" orientx="-0.7081" orienty="0.0000" orientz="-0.7061">ypPropsJapaneseGarden</unit>
+		<unit variation="128" posx="-3.7932" posz="5.0039" orientx="0.3811" orienty="0.0000" orientz="-0.9245">NativeWokou</unit>
+		<unit variation="247" posx="0.0819" posz="8.3727" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeHouseWokou</unit>
+		<unit variation="252" posx="2.0522" posz="7.2844" orientx="0.7084" orienty="0.0000" orientz="0.7058">NativeWokou</unit>
+		<unit variation="3" posx="5.0272" posz="10.1807" orientx="-0.7081" orienty="0.0000" orientz="-0.7061">ypPropsJapaneseGarden</unit>
+		<unit variation="3" posx="2.9255" posz="10.0188" orientx="0.7061" orienty="0.0000" orientz="-0.7081">ypPropsJapaneseGarden</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

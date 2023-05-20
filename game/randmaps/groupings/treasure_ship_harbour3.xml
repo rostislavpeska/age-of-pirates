@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>18</width>
+	<height>13</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="49" posx="-4.5004" posz="-10.0410" orientx="-0.7062" orienty="0.0000" orientz="0.7080">zpHarbourPlatform</unit>
+		<unit variation="203" posx="-7.6863" posz="-7.0528" orientx="0.6952" orienty="0.0000" orientz="0.7188">zpHarbourPlatform</unit>
+		<unit variation="250" posx="-1.3789" posz="-6.5997" orientx="0.6767" orienty="0.0000" orientz="-0.7363">zpHarbourPlatform</unit>
+		<unit variation="250" posx="13.9120" posz="-3.6958" orientx="0.6767" orienty="0.0000" orientz="-0.7362">zpHarbourPlatform</unit>
+		<unit variation="250" posx="4.0604" posz="-1.4946" orientx="-0.6767" orienty="0.0000" orientz="0.7363">zpHarbourPlatform</unit>
+		<unit variation="250" posx="10.9032" posz="-0.4824" orientx="0.7362" orienty="0.0000" orientz="0.6767">zpHarbourPlatform</unit>
+		<unit variation="144" posx="11.8990" posz="3.9600" orientx="-0.0408" orienty="0.0000" orientz="0.9992">ShorelineRockBigNE</unit>
+		<unit variation="49" posx="7.5986" posz="2.5300" orientx="0.7062" orienty="0.0000" orientz="-0.7080">zpHarbourPlatform</unit>
+		<unit variation="149" posx="-9.5136" posz="7.5220" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SocketTradeRoute</unit>
+		<unit variation="203" posx="4.0824" posz="5.9166" orientx="-0.6952" orienty="0.0000" orientz="-0.7188">zpHarbourPlatform</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

@@ -1,0 +1,18 @@
+<!-- converted from XMB to XML -->
+
+<animfile>
+	<component>
+		ModelComp
+			<logic type="Variation">
+				<v0>
+					<assetreference type="GrannyModel">
+						<file>buildings\wall\wall_tower_u1</file>
+					</assetreference>
+				</v0>
+			</logic>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

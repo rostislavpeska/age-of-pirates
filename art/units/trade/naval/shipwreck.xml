@@ -1,0 +1,6 @@
+<animfile>
+  <definebone>bone_debris01a</definebone>
+  <attachment>IdleWaterFoam<component>foam3<assetreference type="popcornFx"><file>fire\fire_a.pkfx</file></assetreference></component><anim>None<component>foam3</component></anim></attachment>
+  <component>ModelComp<assetreference type="GrannyModel"><file>objects\spc\IGC_shipwreck\debris02</file></assetreference><decal><effecttype>default</effecttype><width>0.50</width><height>2.00</height></decal></component>
+  <anim>Idle<component>ModelComp</component></anim>
+</animfile>

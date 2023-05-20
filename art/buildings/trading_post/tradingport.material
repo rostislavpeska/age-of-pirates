@@ -1,0 +1,112 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\trading_post\trade_socket_age1\textures\trade_socket_age1_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\trading_post\trade_socket_age1\textures\trade_socket_age1_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\trading_post\trade_socket_age1\textures\trade_socket_age1_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\sioux\sioux_props\sx_props\textures\sx_props01_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\sioux\sioux_props\sx_props\textures\sx_props01_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\sioux\sioux_props\sx_props\textures\sx_props01_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\natives\lakota\coup_rider\textures\coup_rider_shield_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\natives\lakota\coup_rider\textures\coup_rider_shield_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\natives\lakota\coup_rider\textures\coup_rider_shield_mata_masks">
+      </texture>
+      <texture name="Details" override="units\natives\lakota\coup_rider\textures\coup_rider_shield_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\trading_post\trade_socket_age1\textures\trade_socket_age1_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\trading_post\trade_socket_age1\textures\trade_socket_age1_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\trading_post\trade_socket_age1\textures\trade_socket_age1_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matf">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\sioux\sioux_hc_corral\textures\sioux_hc_corral_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\sioux\sioux_hc_corral\textures\sioux_hc_corral_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\sioux\sioux_hc_corral\textures\sioux_hc_corral_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matg">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\sioux\sioux_hc_corral\textures\sioux_hc_corral_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\sioux\sioux_hc_corral\textures\sioux_hc_corral_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\sioux\sioux_hc_corral\textures\sioux_hc_corral_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="math">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\sioux\sioux_props\sx_props\textures\sx_props01_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\sioux\sioux_props\sx_props\textures\sx_props01_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\sioux\sioux_props\sx_props\textures\sx_props01_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mati">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\trade_route_marker_a\textures\antler_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\trade_route_marker_a\textures\antler_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\trade_route_marker_a\textures\antler_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "300468" displayNameID = "300467" loadDetails="300469" largeMapName = "zpdeadsea"
+    imagepath = "ui\random_map\deadsea\deadsea_mini" cannotReplace = "" loadBackground="ui\random_map\deadsea\deadsea_map">
+   <loadss>ui\random_map\deadsea\deadsea_01</loadss>
+   <loadss>ui\random_map\deadsea\deadsea_02</loadss>
+   <loadss>ui\random_map\deadsea\deadsea_03</loadss>
+</mapinfo>

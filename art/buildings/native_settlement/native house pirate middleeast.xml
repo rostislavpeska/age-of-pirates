@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_prop</definebone>
+		<component>
+		house
+		<logic type="Variation">
+			<variationid0>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\africa\nafrica_kasbah</file>
+					<replacetexture>
+						<from>buildings\native_settlement\africa\africa_north\textures\nafrica_kasbah_mata_BaseColor</from>
+						<to>buildings\native_settlement\africa\africa_north\textures\pirate_kasbah_mata_BaseColor</to>
+					</replacetexture>
+					<replacetexture>
+						<from>buildings\native_settlement\africa\africa_north\textures\nafrica_kasbah_matb_BaseColor</from>
+						<to>buildings\native_settlement\africa\africa_north\textures\pirate_kasbah_matb_BaseColor</to>
+					</replacetexture>
+				</assetreference>
+			</variationid0>
+			<variationid1>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\africa\east_somali_house_03</file>
+				</assetreference>
+			</variationid1>
+			<variationid2>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\africa\east_somali_house_04</file>
+				</assetreference>
+			</variationid2>
+			<variationid3>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\africa\east_somali_house_05</file>
+				</assetreference>
+			</variationid3>
+			<variationid4>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\africa\east_somali_house_06</file>
+				</assetreference>
+			</variationid4>
+			<variationid5>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\africa\east_somali_port</file>
+				</assetreference>
+			</variationid5>
+		</logic>
+		<decal>
+			<effecttype>default</effecttype>
+			<texture>nuggets\dropped_resource\dropped_resource_decalA</texture>
+			<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+			<width>8.00</width>
+			<height>8.00</height>
+		</decal>
+	</component>
+	<anim>
+		Idle
+		<component>house</component>
+	</anim>
+</animfile>

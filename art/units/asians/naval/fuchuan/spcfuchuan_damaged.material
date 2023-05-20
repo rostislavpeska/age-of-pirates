@@ -1,0 +1,42 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\asians\naval\fuchuan\textures\spcfuchuan_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\asians\naval\fuchuan\textures\fuchuan_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\asians\naval\fuchuan\textures\fuchuan_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\asians\naval\fuchuan\textures\fuchuan_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\asians\naval\fuchuan\textures\spcfuchuan_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\asians\naval\fuchuan\textures\fuchuan_matB_Normals">
+      </texture>
+      <texture name="Masks" override="units\asians\naval\fuchuan\textures\fuchuan_matB_Masks">
+      </texture>
+      <texture name="Details" override="units\asians\naval\fuchuan\textures\fuchuan_matB_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

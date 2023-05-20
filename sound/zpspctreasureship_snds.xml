@@ -1,0 +1,24 @@
+<protounitsounddef>
+  <protounit name="zpSPCTreasureShip">
+    <soundtype name="Select">
+      <soundset name="ChineseHuangSelect">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="ShipDeath">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="ShipBirth">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <soundset name="ChineseHuangAcknowledge">
+      </soundset>
+    </soundtype>
+    <soundtype name="Exists">
+      <soundset name="AmbienceShip">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

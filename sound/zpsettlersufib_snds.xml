@@ -1,0 +1,128 @@
+<protounitsounddef>
+  <protounit name="zpSettlerSufiB">
+    <soundtype name="Select">
+      <variationlogic>
+        <choice name="0">
+          <soundset name="DEBerberVMSelect">
+          </soundset>
+        </choice>
+        <choice name="1">
+          <soundset name="DEBerberVFSelect">
+          </soundset>
+        </choice>
+      </variationlogic>
+    </soundtype>
+    <soundtype name="Grunt">
+      <variationlogic>
+        <choice name="0">
+          <soundset name="GenericMaleGrunt">
+          </soundset>
+        </choice>
+        <choice name="1">
+          <soundset name="GenericFemaleGrunt">
+          </soundset>
+        </choice>
+      </variationlogic>
+    </soundtype>
+    <soundtype name="Death">
+      <variationlogic>
+        <choice name="0">
+          <soundset name="GenericMaleDeath">
+          </soundset>
+        </choice>
+        <choice name="1">
+          <soundset name="GenericFemaleDeath">
+          </soundset>
+        </choice>
+      </variationlogic>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="SettlerBirth">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <variationlogic>
+        <choice name="0">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="DEBerberVMAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="DEBerberVMAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="build">
+              <soundset name="DEBerberVMBuild">
+              </soundset>
+            </choice>
+            <choice name="Huntable">
+              <soundset name="DEBerberVMGatherMeat">
+              </soundset>
+            </choice>
+            <choice name="Tree">
+              <soundset name="DEBerberVMGatherWood">
+              </soundset>
+            </choice>
+            <choice name="AbstractMine">
+              <soundset name="DEBerberVMGatherCoin">
+              </soundset>
+            </choice>
+            <choice name="AbstractFarm">
+              <soundset name="DEBerberVMFarmer">
+              </soundset>
+            </choice>
+            <choice name="AbstractResourceCrate">
+              <soundset name="DEBerberVMAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="AbstractFruit">
+              <soundset name="DEBerberVMGatherMeat">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="1">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="DEBerberVFAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="DEBerberVFAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="build">
+              <soundset name="DEBerberVFBuild">
+              </soundset>
+            </choice>
+            <choice name="Huntable">
+              <soundset name="DEBerberVFGatherMeat">
+              </soundset>
+            </choice>
+            <choice name="Tree">
+              <soundset name="DEBerberVFGatherWood">
+              </soundset>
+            </choice>
+            <choice name="AbstractMine">
+              <soundset name="DEBerberVFGatherCoin">
+              </soundset>
+            </choice>
+            <choice name="AbstractFarm">
+              <soundset name="DEBerberVFFarmer">
+              </soundset>
+            </choice>
+            <choice name="AbstractResourceCrate">
+              <soundset name="DEBerberVFAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="AbstractFruit">
+              <soundset name="DEBerberVFGatherMeat">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+      </variationlogic>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

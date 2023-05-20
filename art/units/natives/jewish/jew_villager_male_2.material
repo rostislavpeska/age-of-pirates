@@ -1,0 +1,18 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\natives\jewish\textures\jew_villager_male_2_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\villagers\med_villager_male_2\textures\med_villager_male_2_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\villagers\med_villager_male_2\textures\med_villager_male_2_mata_masks">
+      </texture>
+      <texture name="Details" override="units\natives\jewish\textures\jew_villager_male_2_mata_details">
+      </texture>
+      <float name="AO Intensity" override="0.0000">
+      </float>
+    </parameters>
+  </submaterial>
+</material>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<submodel>
+        Wokou3
+		<attachment>sword<component>sword<assetreference type="GrannyModel"><file>units\mercenaries\barbary_corsair\barbary_corsair_sword</file></assetreference></component><anim>Idle<component>sword</component></anim></attachment>
+        <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\asians\mercenaries\wokou_pirate\wokou</file></assetreference><attach a="sword" frombone="MASTER" tobone="BIP01 PROP1" syncanims="1"></attach></normal><lowpoly><assetreference type="GrannyModel"><file>units\asians\mercenaries\wokou_pirate\lp_wokou</file></assetreference><attach a="sword" frombone="MASTER" tobone="BIP01 PROP1" syncanims="1"></attach></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\infantry\Charge\dopplesoldner_charge_attackA</file></assetreference><component>ModelComp</component><attach a="shovel" frombone="Bip01 Prop2" tobone="Bip01 Prop2" syncanims="0"></attach></anim>
+    </submodel>
+	<submodel>
+		Wokou4
+        <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\asians\mercenaries\wokou_pirate\wokou</file></assetreference><attach a="sword" frombone="MASTER" tobone="BIP01 PROP1" syncanims="1"></attach></normal><lowpoly><assetreference type="GrannyModel"><file>units\asians\mercenaries\wokou_pirate\lp_wokou</file></assetreference><attach a="sword" frombone="MASTER" tobone="BIP01 PROP1" syncanims="1"></attach></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawA_idleA</file></assetreference><assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawA_idleB</file></assetreference><assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawA_idleC</file></assetreference><assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawA_idleD</file></assetreference><assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawA_idleE</file></assetreference><assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawA_idleF</file></assetreference><component>ModelComp</component></anim>
+	</submodel>
+	<submodel>
+		Ronin1
+        <attachment>wazikashi<component>wazikashi</component><anim>Idle<component>wazikashi</component></anim></attachment>
+        <attachment>katana<component>katana<assetreference type="GrannyModel"><file>units\asians\japanese\kensei\samuraikatana</file></assetreference></component><anim>Idle<component>katana</component></anim></attachment>
+        <component>ModelComp<logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\asians\mercenaries\wayward_ronin\wayward_ronin</file></assetreference><attach a="wazikashi" frombone="bone_wazikashi" tobone="bip01 Prop2" syncanims="0"></attach><attach a="katana" frombone="bone_katana" tobone="bip01 Prop1" syncanims="0"></attach></normal><lowpoly><assetreference type="GrannyModel"><file>units\asians\mercenaries\wayward_ronin\wayward_ronin_lp</file></assetreference><attach a="wazikashi" frombone="bone_wazikashi" tobone="bip01 Prop2" syncanims="0"></attach><attach a="katana" frombone="bone_katana" tobone="bip01 Prop1" syncanims="0"></attach></lowpoly></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_64x64</texture><selectedtexture>shadows_selections\selection_circle_64x64</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <component>ModelCompNoSword<assetreference type="GrannyModel"><file>units\asians\mercenaries\wayward_ronin\wayward_ronin</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle00</file></assetreference><assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle01</file></assetreference><assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle02</file></assetreference><assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle03</file></assetreference><assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle04</file></assetreference><assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle05</file></assetreference><component>ModelComp</component><attach a="shovel" frombone="Bip01 Prop2" tobone="bip01 Prop2" syncanims="0"></attach></anim>
+    </submodel>
+    <submodel>
+		Ronin2
+        <component>ModelComp<logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\asians\mercenaries\wayward_ronin\wayward_ronin</file></assetreference><attach a="wazikashi" frombone="bone_wazikashi" tobone="bip01 Prop2" syncanims="0"></attach><attach a="katana" frombone="bone_katana" tobone="bip01 Prop1" syncanims="0"></attach></normal><lowpoly><assetreference type="GrannyModel"><file>units\asians\mercenaries\wayward_ronin\wayward_ronin_lp</file></assetreference><attach a="wazikashi" frombone="bone_wazikashi" tobone="bip01 Prop2" syncanims="0"></attach><attach a="katana" frombone="bone_katana" tobone="bip01 Prop1" syncanims="0"></attach></lowpoly></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_64x64</texture><selectedtexture>shadows_selections\selection_circle_64x64</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <component>ModelCompNoSword<assetreference type="GrannyModel"><file>units\asians\mercenaries\wayward_ronin\wayward_ronin</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\mercs\samurai\samurai_attackC</file></assetreference><assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle01</file></assetreference><assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle02</file></assetreference><assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle03</file></assetreference><assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle04</file></assetreference><assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle05</file></assetreference><component>ModelComp</component><attach a="shovel" frombone="Bip01 Prop2" tobone="bip01 Prop2" syncanims="0"></attach></anim>
+    </submodel>
+	<submodel>
+		Monk1
+        <attachment>shovel<component>shovel<assetreference type="GrannyModel"><file>units\spc\pirates\attachment_shovel</file></assetreference></component><anim>Idle<component>shovel</component></anim></attachment>
+        <component>ModelComp<assetreference type="GrannyModel"><file>units\asians\mercenaries\blind_monk\Blind_Monk</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget1Idle00</file><weight>90</weight></assetreference><component>ModelComp</component><attach a="shovel" frombone="" tobone="bip01 Prop2" syncanims="0"></attach><attach a="yumi_bow_2" frombone="PROP1" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
+    </submodel>
+    <submodel>
+        Monk2
+        <component>ModelComp<assetreference type="GrannyModel"><file>units\asians\mercenaries\blind_monk\Blind_Monk</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle00</file></assetreference><assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle01</file></assetreference><assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle02</file></assetreference><assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle03</file></assetreference><assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle04</file></assetreference><assetreference type="GrannyAnim"><file>units\asians\mercenaries\blind_monk\blindMonk_nugget2Idle05</file></assetreference><component>ModelComp</component><attach a="yumi_bow_2" frombone="PROP1" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
+    </submodel>
+	<submodel>
+		Monk3
+		<attachment>blowgun<component>blowgun<assetreference type="GrannyModel"><file>units\spc\outlaws\outlaw_blowgun_gun</file></assetreference></component><anim>Idle<component>blowgun</component></anim></attachment>
+        <attachment>shovel<component>shovel<assetreference type="GrannyModel"><file>units\spc\pirates\attachment_shovel</file></assetreference></component><anim>Idle<component>shovel</component></anim></attachment>
+        <attachment>yumi_bow<component>yumi_bow<assetreference type="GrannyModel"><file>units\asians\mercenaries\blind_monk\yumi_MONK_Bow</file></assetreference></component><anim>Idle<component>yumi_bow</component></anim></attachment>
+        <attachment>arrow_attachment<anim>Idle<component></component></anim><include>units\asians\consulate\shinobi\arrow.xml</include></attachment>
+        <attachment>flaming_arrow<anim>Idle<component></component></anim><include>units\asians\consulate\shinobi\fire_arrow.xml</include></attachment>
+        <attachment>yumi_bow_2<component>yumi_bow<assetreference type="GrannyModel"><file>units\asians\mercenaries\blind_monk\yumi_MONK_Bow2</file></assetreference></component><anim>Idle<component>yumi_bow</component></anim></attachment>
+        <component>ModelComp<assetreference type="GrannyModel"><file>units\asians\mercenaries\blind_monk\Blind_Monk</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>nuggets\pirates\pirate3_idleA</file></assetreference><assetreference type="GrannyAnim"><file>nuggets\pirates\pirate3_idleb</file></assetreference><assetreference type="GrannyAnim"><file>nuggets\pirates\pirate3_idlec</file></assetreference><assetreference type="GrannyAnim"><file>nuggets\pirates\pirate3_idled</file></assetreference><assetreference type="GrannyAnim"><file>nuggets\pirates\pirate3_idleE</file></assetreference><component>ModelComp</component></anim>
+    </submodel>
+    <submodel>
+		Palm1
+		<component>
+			Palm1
+			<logic type="LowPoly">
+					<normal>
+						<assetreference type="GrannyModel">
+							<file>Terrain\trees\tree_borneo_palm_01</file>
+						</assetreference>
+					</normal>
+					<lowpoly>
+						<assetreference type="GrannyModel">
+							<file>Terrain\trees\tree_borneo_palm_01</file>
+						</assetreference>
+					</lowpoly>
+				</logic>
+			<decal>
+				<effecttype>default</effecttype>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<component>Palm1</component>
+		</anim>
+	</submodel>
+	<submodel>
+		Palm2
+		<component>
+			Palm2
+			<logic type="LowPoly">
+					<normal>
+						<assetreference type="GrannyModel">
+							<file>Terrain\trees\tree_borneo_canopy_01</file>
+						</assetreference>
+					</normal>
+					<lowpoly>
+						<assetreference type="GrannyModel">
+							<file>Terrain\trees\tree_borneo_canopy_01</file>
+						</assetreference>
+					</lowpoly>
+				</logic>
+			<decal>
+				<effecttype>default</effecttype>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<component>Palm2</component>
+		</anim>
+	</submodel>
+	<component>
+		<logic type="Variation">
+			<data>
+				<submodelref ref="Wokou3"/>
+			</data>
+			<data>
+				<submodelref ref="Wokou4"/>
+			</data>
+			<data>
+				<submodelref ref="Ronin1"/>
+			</data>
+            <data>
+				<submodelref ref="Ronin2"/>
+			</data>
+			<data>
+				<submodelref ref="Monk1"/>
+			</data>
+			<data>
+				<submodelref ref="Monk2"/>
+			</data>
+			<data>
+				<submodelref ref="Monk3"/>
+			</data>
+            <data>
+				<submodelref ref="Palm1"/>
+			</data>
+			<data>
+				<submodelref ref="Palm2"/>
+			</data>
+		</logic>
+	</component>
+</animfile>

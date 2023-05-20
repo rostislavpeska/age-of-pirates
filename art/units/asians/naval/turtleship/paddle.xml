@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<component>
+		ModelComp
+		<assetreference type="GrannyModel">
+			<file>units\asians\naval\TurtleShip\Paddles</file>
+		</assetreference>
+	</component>
+	<anim>
+		Idle
+		<assetreference type="GrannyAnim">
+			<file>units\asians\naval\tekkousen\tekkousen_idle</file>
+		</assetreference>
+		<component>ModelComp</component>
+		
+	</anim>
+	<anim>
+		Walk
+		<assetreference type="GrannyAnim">
+			<file>units\asians\naval\tekkousen\tekkousen_walk</file>
+		</assetreference>
+		<component>ModelComp</component>
+		
+	</anim>
+	<anim>
+		Death
+		<assetreference type="GrannyAnim">
+			<file>units\naval\galleon\galleon_deathAnim</file>
+		</assetreference>
+		<component>Death</component>
+	</anim>
+</animfile>

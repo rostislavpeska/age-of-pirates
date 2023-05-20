@@ -1,0 +1,30 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\artillery\tank\textures\irontank_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\artillery\tank\textures\irontank_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\artillery\tank\textures\irontank_mata_masks">
+      </texture>
+      <texture name="Details" override="units\artillery\tank\textures\tank_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\artillery\tank\textures\tank_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="units\artillery\tank\textures\tank_matb_normals">
+      </texture>
+      <texture name="Masks" override="units\artillery\tank\textures\tank_matb_masks">
+      </texture>
+      <texture name="Details" override="units\artillery\tank\textures\tank_matb_details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

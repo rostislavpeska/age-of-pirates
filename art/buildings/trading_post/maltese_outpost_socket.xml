@@ -1,0 +1,4 @@
+<animfile>
+  <component>ModelComp<assetreference type="GrannyModel"><file>buildings\trading_post\socket_sudanese\socket_sudanese</file></assetreference><decal><effecttype>bump</effecttype><texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><bumptexture>shadows_selections\flat_normal_black_spec</bumptexture><width>10.00</width><height>10.00</height><xoffset>0.00</xoffset></decal></component>
+  <anim>Idle<component>ModelComp</component></anim>
+</animfile>

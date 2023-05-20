@@ -1,0 +1,76 @@
+<material>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\generic_props\textures\generic_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\generic_props\textures\generic_props_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\generic_props\textures\generic_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\military_props\textures\military_props_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\military_props\textures\military_props_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\military_props\textures\military_props_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mata">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\xebec\textures\xebec_zpspc_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\xebec\textures\xebec_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\xebec\textures\xebec_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\xebec\textures\xebec_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\xebec\textures\xebec_zpspc_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\xebec\textures\xebec_matb_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\xebec\textures\xebec_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\xebec\textures\xebec_zpspc_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\xebec\textures\xebec_matb_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\xebec\textures\xebec_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

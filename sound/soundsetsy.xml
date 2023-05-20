@@ -1,0 +1,2226 @@
+<soundsetdef>
+  <soundset name="ChineseVillagerM_Select" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerM_Select1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseVillagerM_Select2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseVillagerM_Select3.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseVillagerM_Select4.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerF_Select" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerF_Select1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseVillagerF_Select2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseVillagerF_Select3.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseVillagerF_Select4.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerM_Select" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerM_Select1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianVillagerM_Select2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianVillagerM_Select3.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianVillagerM_Select4.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerF_Select" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerF_Select1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianVillagerF_Select2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianVillagerF_Select3.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianVillagerF_Select4.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerM_Select" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerM_Select1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseVillagerM_Select2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseVillagerM_Select3.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseVillagerM_Select4.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerF_Select" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerF_Select1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseVillagerF_Select2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseVillagerF_Select3.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseVillagerF_Select4.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerM_Acknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerM_Move1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseVillagerM_Move2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseVillagerM_Move3.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseVillagerM_Move4.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerM_Attack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerM_Attack.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerM_Build" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerM_Build.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerM_GatherMeat" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerM_Hunt.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerM_GatherWood" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerM_Wood.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerM_Farm" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerM_Farm.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerM_GatherCoin" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerM_Gather.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerM_GatherFruit" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerM_Forage.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerF_Acknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerF_Move1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseVillagerF_Move2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseVillagerF_Move3.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseVillagerF_Move4.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerF_Attack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerF_Attack.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerF_Build" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerF_Build.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerF_GatherMeat" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerF_Hunt.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerF_GatherWood" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerF_Wood.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerF_Farm" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerF_Farm.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerF_GatherCoin" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerF_Gather.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseVillagerF_GatherFruit" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseVillagerF_Forage.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerM_Acknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerM_Move1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianVillagerM_Move2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianVillagerM_Move3.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianVillagerM_Move4.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerM_Attack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerM_Attack.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerM_Build" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerM_Build.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerM_GatherMeat" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerM_Hunt.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerM_GatherWood" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerM_Wood.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerM_Farm" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerM_Farm.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerM_GatherCoin" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerM_Gather.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerM_GatherFruit" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerM_Forage.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerF_Acknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerF_Move1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianVillagerF_Move2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianVillagerF_Move3.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianVillagerF_Move4.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerF_Attack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerF_Attack.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerF_Build" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerF_Build.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerF_GatherMeat" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerF_Hunt.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerF_GatherWood" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerF_Wood.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerF_Farm" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerF_Farm.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerF_GatherCoin" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerF_Gather.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianVillagerF_GatherFruit" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianVillagerF_Forage.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerM_Acknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerM_Move1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseVillagerM_Move2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseVillagerM_Move3.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseVillagerM_Move4.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerM_Attack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerM_Attack.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerM_Build" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerM_Build.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerM_GatherMeat" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerM_Hunt.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerM_GatherWood" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerM_Wood.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerM_Farm" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerM_Farmer.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerM_GatherCoin" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerM_Gather.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerM_GatherFruit" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerM_Forager.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerF_Acknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerF_Move1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseVillagerF_Move2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseVillagerF_Move3.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseVillagerF_Move4.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerF_Attack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerF_Attack.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerF_Build" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerF_Build.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerF_GatherMeat" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerF_Hunt.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerF_GatherWood" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerF_Wood.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerF_Farm" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerF_Farm.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerF_GatherCoin" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerF_Gather.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseVillagerF_GatherFruit" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseVillagerF_Forager.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseMonkAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseMonkAttack.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseMonkSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseMonkSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseMonkSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseMonkSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseMonkAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseMonkMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseMonkMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseMonkMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseMonkClaim" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseMonkClaim.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseMonkDisabled" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseMonkDisabled.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseMonkRevived" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseMonkRevived.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseDiscipleAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseDiscipleAttack.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseDiscipleSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseDiscipleSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseDiscipleSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseDiscipleSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseDiscipleAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseDiscipleMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseDiscipleMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseDiscipleMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseDiscipleClaim" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseDiscipleClaim.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseDiscipleDisabled" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseDiscipleDisabled.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseDiscipleRevived" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseDiscipleRevived.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianMonkAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianMonkAttack.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianMonkSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianMonkSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianMonkSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianMonkSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianMonkAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianMonkMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianMonkMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianMonkMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianMonkClaim" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianMonkClaim.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianMonkDisabled" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianMonkDisabled.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianMonkRevived" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianMonkRevived.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseMonkAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseMonkAttack.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseMonkSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseMonkSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseMonkSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseMonkSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseMonkAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseMonkMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseMonkMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseMonkMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseMonkClaim" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseMonkClaim.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseMonkDisabled" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseMonkDisabled.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseMonkRevived" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseMonkRevived.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseArquebusierAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseArquebusierAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseArquebusierAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseArquebusierAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseArquebusierSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseArquebusierSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseArquebusierSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseArquebusierSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseArquebusierAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseArquebusierMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseArquebusierMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseArquebusierMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseChangdaoAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseChangdaoAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChangdaoAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChangdaoAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseChangdaoSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseChangdaoSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChangdaoSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChangdaoSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseChangdaoAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseChangdaoMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChangdaoMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChangdaoMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseChenAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseChenAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChenAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChenAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseChenSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseChenSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChenSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChenSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseChenAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseChenMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChenMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChenMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseChuKoNuAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseChuKoNuAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChuKoNuAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChuKoNuAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseChuKoNuSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseChuKoNuSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChuKoNuSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChuKoNuSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseChuKoNuAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseChuKoNuMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChuKoNuMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseChuKoNuMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseFishingBoatSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseFishingBoatSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseFishingBoatSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseFishingBoatSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseFishingBoatAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseFishingBoatMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseFishingBoatMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseFishingBoatMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseFlameThrowerAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseFlameThrowerAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseFlameThrowerAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseFlameThrowerAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseFlameThrowerSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseFlameThrowerSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseFlameThrowerSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseFlameThrowerSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseFlameThrowerAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseFlameThrowerMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseFlameThrowerMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseFlameThrowerMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseFlyingCrowAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseFlyingCrowAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseFlyingCrowAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseFlyingCrowAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseFlyingCrowSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseFlyingCrowSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseFlyingCrowSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseFlyingCrowSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseFlyingCrowAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseFlyingCrowMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseFlyingCrowMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseFlyingCrowMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseHandMortarAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseHandMortarAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseHandMortarAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseHandMortarAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseHandMortarSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseHandMortarSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseHandMortarSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseHandMortarSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseHandMortarAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseHandMortarMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseHandMortarMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseHandMortarMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseHuangAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseHuangAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseHuangAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseHuangAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseHuangSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseHuangSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseHuangSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseHuangSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseHuangAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseHuangMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseHuangMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseHuangMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseIronFlailAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseIronFlailAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseIronFlailAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseIronFlailAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseIronFlailSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseIronFlailSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseIronFlailSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseIronFlailSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseIronFlailAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseIronFlailMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseIronFlailMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseIronFlailMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseIronTroopAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseIronTroopAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseIronTroopAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseIronTroopAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseIronTroopSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseIronTroopSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseIronTroopSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseIronTroopSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseIronTroopAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseIronTroopMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseIronTroopMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseIronTroopMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseKeshikAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseKeshikAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseKeshikAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseKeshikAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseKeshikSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseKeshikSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseKeshikSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseKeshikSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseKeshikAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseKeshikMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseKeshikMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseKeshikMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseMeteorHammerAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseMeteorHammerAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseMeteorHammerAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseMeteorHammerAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseMeteorHammerSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseMeteorHammerSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseMeteorHammerSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseMeteorHammerSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseMeteorHammerAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseMeteorHammerMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseMeteorHammerMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseMeteorHammerMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseMongolScoutAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseMongolScoutAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseMongolScoutAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseMongolScoutAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseMongolScoutSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseMongolScoutSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseMongolScoutSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseMongolScoutSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseMongolScoutAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseMongolScoutMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseMongolScoutMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseMongolScoutMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseQiangPikemanAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseQiangPikemanAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseQiangPikemanAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseQiangPikemanAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseQiangPikemanSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseQiangPikemanSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseQiangPikemanSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseQiangPikemanSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseQiangPikemanAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseQiangPikemanMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseQiangPikemanMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseQiangPikemanMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseShipsAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseShipsAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseShipsAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseShipsAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseShipsSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseShipsSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseShipsSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseShipsSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseShipsAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseShipsMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseShipsMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseShipsMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseSteppeRiderAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseSteppeRiderAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseSteppeRiderAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseSteppeRiderAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseSteppeRiderSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseSteppeRiderSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseSteppeRiderSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseSteppeRiderSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChineseSteppeRiderAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ChineseSteppeRiderMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseSteppeRiderMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ChineseSteppeRiderMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianArsonistAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianArsonistAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianArsonistAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianArsonistAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianArsonistSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianArsonistSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianArsonistSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianArsonistSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianArsonistAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianArsonistMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianArsonistMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianArsonistMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianEdwardsonAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianEdwardsonAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianEdwardsonAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianEdwardsonAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianEdwardsonSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianEdwardsonSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianEdwardsonSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianEdwardsonSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianEdwardsonAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianEdwardsonMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianEdwardsonMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianEdwardsonMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianFishingBoatSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianFishingBoatSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianFishingBoatSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianFishingBoatSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianFishingBoatAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianFishingBoatMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianFishingBoatMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianFishingBoatMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianFlailElephantAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianFlailElephantAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianFlailElephantAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianFlailElephantAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianFlailElephantSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianFlailElephantSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianFlailElephantSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianFlailElephantSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianFlailElephantAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianFlailElephantMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianFlailElephantMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianFlailElephantMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianGurkhaAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianGurkhaAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianGurkhaAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianGurkhaAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianGurkhaSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianGurkhaSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianGurkhaSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianGurkhaSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianGurkhaAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianGurkhaMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianGurkhaMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianGurkhaMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianHowdahAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianHowdahAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianHowdahAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianHowdahAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianHowdahSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianHowdahSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianHowdahSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianHowdahSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianHowdahAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianHowdahMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianHowdahMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianHowdahMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianJatLancerAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianJatLancerAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianJatLancerAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianJatLancerAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianJatLancerSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianJatLancerSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianJatLancerSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianJatLancerSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianJatLancerAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianJatLancerMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianJatLancerMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianJatLancerMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianMahoutAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianMahoutAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianMahoutAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianMahoutAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianMahoutSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianMahoutSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianMahoutSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianMahoutSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianMahoutAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianMahoutMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianMahoutMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianMahoutMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianShahAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianShahMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianShahMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianShahMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianShahSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianShahSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianShahSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianShahSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianNanibAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianNanibAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianNanibAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianNanibAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianNanibSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianNanibSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianNanibSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianNanibSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianNanibAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianNanibMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianNanibMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianNanibMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianPravarAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianPravarAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianPravarAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianPravarAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianPravarSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianPravarSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianPravarSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianPravarSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianPravarAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianPravarMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianPravarMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianPravarMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianRajputAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianRajputAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianRajputAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianRajputAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianRajputSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianRajputSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianRajputSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianRajputSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianRajputAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianRajputMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianRajputMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianRajputMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianSepoyAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianSepoyAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSepoyAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSepoyAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianSepoySelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianSepoySelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSepoySelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSepoySelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianSepoyAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianSepoyMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSepoyMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSepoyMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianShipsAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianShipsAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianShipsAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianShipsAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianShipsSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianShipsSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianShipsSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianShipsSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianShipsAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianShipsMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianShipsMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianShipsMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianSiegeElephantAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianSiegeElephantAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSiegeElephantAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSiegeElephantAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianSiegeElephantSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianSiegeElephantSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSiegeElephantSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSiegeElephantSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianSiegeElephantAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianSiegeElephantMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSiegeElephantMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSiegeElephantMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianSowarAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianSowarAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSowarAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSowarAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianSowarSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianSowarSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSowarSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSowarSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianSowarAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianSowarMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSowarMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianSowarMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianThuggeeAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianThuggeeAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianThuggeeAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianThuggeeAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianThuggeeSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianThuggeeSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianThuggeeSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianThuggeeSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianThuggeeAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianThuggeeMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianThuggeeMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianThuggeeMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianTigerClawAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianTigerClawAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianTigerClawAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianTigerClawAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianTigerClawSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianTigerClawSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianTigerClawSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianTigerClawSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianTigerClawAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianTigerClawMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianTigerClawMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianTigerClawMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianZamburakAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianZamburakAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianZamburakAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianZamburakAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianZamburakSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianZamburakSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianZamburakSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianZamburakSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="IndianZamburakAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\IndianZamburakMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianZamburakMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\IndianZamburakMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseAshigaruAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseAshigaruAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseAshigaruAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseAshigaruAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseAshigaruSelect" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseAshigaruSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseAshigaruSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseAshigaruSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseAshigaruAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseAshigaruMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseAshigaruMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseAshigaruMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseDaimyoAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseDaimyoAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseDaimyoAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseDaimyoAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseDaimyoSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseDaimyoSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseDaimyoSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseDaimyoSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseDaimyoAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseDaimyoMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseDaimyoMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseDaimyoMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseFishingBoatSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseFishingBoatSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseFishingBoatSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseFishingBoatSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseFishingBoatAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseFishingBoatMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseFishingBoatMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseFishingBoatMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseKichiroAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseKichiroAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseKichiroAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseKichiroAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseKichiroSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseKichiroSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseKichiroSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseKichiroSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseKichiroAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseKichiroMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseKichiroMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseKichiroMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseMorutaruAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseMorutaruAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseMorutaruAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseMorutaruAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseMorutaruSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseMorutaruSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseMorutaruSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseMorutaruSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseMorutaruAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseMorutaruMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseMorutaruMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseMorutaruMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseMototadaAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseMototadaAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseMototadaAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseMototadaAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseMototadaSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseMototadaSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseMototadaSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseMototadaSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseMototadaAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseMototadaMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseMototadaMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseMototadaMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseNaginataAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseNaginataAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseNaginataAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseNaginataAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseNaginataSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseNaginataSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseNaginataSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseNaginataSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseNaginataAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseNaginataMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseNaginataMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseNaginataMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapanesePirateAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapanesePirateAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapanesePirateAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapanesePirateAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapanesePirateSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapanesePirateSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapanesePirateSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapanesePirateSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapanesePirateAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapanesePirateMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapanesePirateMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapanesePirateMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseFlamingArrowAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseFlamingArrowAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseFlamingArrowAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseFlamingArrowAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseFlamingArrowSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseFlamingArrowSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseFlamingArrowSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseFlamingArrowSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseFlamingArrowAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseFlamingArrowMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseFlamingArrowMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseFlamingArrowMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseSamuraiAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseSamuraiAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseSamuraiAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseSamuraiAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseSamuraiSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseSamuraiSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseSamuraiSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseSamuraiSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseSamuraiAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseSamuraiMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseSamuraiMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseSamuraiMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseShinobiAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseShinobiAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseShinobiAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseShinobiAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseShinobiSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseShinobiSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseShinobiSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseShinobiSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseShinobiAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseShinobiMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseShinobiMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseShinobiMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseShipsAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseShipsAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseShipsAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseShipsAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseShipsSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseShipsSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseShipsSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseShipsSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseShipsAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseShipsMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseShipsMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseShipsMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseSoheiAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseSoheiAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseSoheiAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseSoheiAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseSoheiSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseSoheiSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseSoheiSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseSoheiSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseSoheiAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseSoheiMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseSoheiMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseSoheiMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseTokugawaAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseTokugawaAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseTokugawaAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseTokugawaAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseTokugawaSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseTokugawaSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseTokugawaSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseTokugawaSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseTokugawaAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseTokugawaMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseTokugawaMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseTokugawaMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseYabusameAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseYabusameAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYabusameAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYabusameAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseYabusameSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseYabusameSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYabusameSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYabusameSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseYabusameAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseYabusameMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYabusameMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYabusameMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseYamabushiAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseYamabushiAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYamabushiAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYamabushiAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseYamabushiSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseYamabushiSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYamabushiSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYamabushiSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseYamabushiAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseYamabushiMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYamabushiMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYamabushiMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseYumiAttack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseYumiAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYumiAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYumiAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseYumiSelect" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseYumiSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYumiSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYumiSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JapaneseYumiAcknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\JapaneseYumiMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYumiMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\JapaneseYumiMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Example_Sound_Set_UI_StrategyWarning" volume="1.0000" maxnum="1" distance="1.0000">
+    <sound filename="xpack\ui\StrategyWarning.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="BlackPantherSelect" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\BlackPantherSelect.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="BlackPantherAcknowledge" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\BlackPantherMove.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="BlackPantherDie" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\BlackPantherDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="BlackPantherGrunt" volume="0.6000" maxnum="1" distance="1.0000">
+    <sound filename="ypack\BlackPantherGrunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\BlackPantherGrunt2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="LionSelect" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\LionSelect.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="LionGrunt" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\LionGrunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\LionGrunt2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="LionDeath" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\LionDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="LionMove" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\Lionmove.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="SnowLeopardSelect" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\SnowLeopardSelect.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="SnowLeopardGrunt" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\SnowLeopardGrunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\SnowLeopardGrunt2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="SnowLeopardDeath" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\SnowLeopardDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="SnowLeopardMove" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\SnowLeopardmove.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="TigerSelect" volume="0.5000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\TigerSelect.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="TigerGrunt" volume="0.5000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\TigerGrunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\TigerGrunt2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="TigerDeath" volume="0.5000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\TigerDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="TigerMove" volume="0.5000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\Tigermove.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="RhinoSelect" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\RhinoSelect.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="RhinoGrunt" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\RhinoGrunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\RhinoGrunt2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="RhinoDeath" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\RhinoDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="RhinoMove" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\Rhinomove.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="KDragonSelect" volume="0.4000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\KDragonSelect.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="KDragonGrunt" volume="0.4000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\KDragonGrunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\KDragonGrunt2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="KDragonDeath" volume="0.4000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\KDragonDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="KDragonMove" volume="0.4000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\KDragonmove.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MacaqueSelect" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\MacaqueSelect.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MacaqueGrunt" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\MacaqueGrunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\MacaqueGrunt2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MacaqueDeath" volume="0.5000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\MacaqueDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MacaqueMove" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\Macaquemove.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="OrcaGrunt" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\OrcaGrunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\OrcaGrunt2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="OrcaDeath" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\OrcaDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="SharkGrunt" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\SharkGrunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\SharkGrunt2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="SharkDeath" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\SharkDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="PandaSelect" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\PandaSelect.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="PandaGrunt" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\PandaGrunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\PandaGrunt2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="PandaDeath" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\PandaDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="PandaMove" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\Pandamove.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="OrangutanSelect" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\OrangutanSelect.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="OrangutanGrunt" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\OrangutanGrunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\OrangutanGrunt2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="OrangutanDeath" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\OrangutanDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="OrangutanMove" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\OragutanMove.wav" volume="0.5000">
+    </sound>
+  </soundset>
+  <soundset name="WBuffaloSelect" volume="0.4000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\WBuffaloSelect.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="WBuffaloDeath" volume="0.4000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\WBuffaloDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="WBuffaloMove" volume="0.4000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\WBuffalomove.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="YakSelect" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\YakSelect.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="YakDeath" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\YakDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="YakMove" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\Yakmove.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="GoatSelect" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\goatSelect.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="GoatDeath" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\goatDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="GoatMove" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\goatmove.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ElephantDeath" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ElephantDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MPSheepDeath" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\MPSheepDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="GSalamanderDeath" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\GSalamanderDeath.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="AmbienceMonastery" volume="0.5000" maxnum="1" distance="1.0000">
+    <sound filename="ypack\Buildings\JapaneseMonastery.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="AmbienceBorneo" volume="0.3000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\Environment\Borneo\Borneo_1.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="AmbienceDeccan" volume="0.3000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\Environment\Deccan\DeccanAmbience_1.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="AmbienceHonshu" volume="0.3000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\Environment\Honshu\Honshu_1.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="AmbienceYellowRiver" volume="0.3000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\Environment\YellowRiver\YellowRiver_1.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="LoaChenAnchorFist" volume="0.8500" maxnum="4" distance="1.0000">
+    <sound filename="ypack\UI\AnchorFist.wav" volume="0.8000">
+    </sound>
+  </soundset>
+  <soundset name="PowerIceCream" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\UI\IceCreamTruck.wav" volume="0.7000">
+    </sound>
+  </soundset>
+  <soundset name="PowerAttackAura" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\UI\AttackAura.wav" volume="0.5000">
+    </sound>
+  </soundset>
+  <soundset name="PowerInvulnerability" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\UI\Invulnerability.wav" volume="0.5000">
+    </sound>
+  </soundset>
+  <soundset name="GeneralKichiro7Spears" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\UI\7Spears.wav" volume="0.7000">
+    </sound>
+  </soundset>
+  <soundset name="GeneralKichiroSmokeBomb" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\UI\SmokeBomb.wav" volume="0.8000">
+    </sound>
+  </soundset>
+  <soundset name="PowerGoodFortune" volume="1.0000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\UI\HealUnits.wav" volume="0.7000">
+    </sound>
+  </soundset>
+  <soundset name="PowerAttackBlessing" volume="1.0000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\UI\AttackBonus.wav" volume="0.7000">
+    </sound>
+  </soundset>
+  <soundset name="PowerInformers" volume="1.0000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\UI\Informers.wav" volume="0.7000">
+    </sound>
+  </soundset>
+  <soundset name="PowerCeaseFire" volume="1.0000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\UI\CeaseFire.wav" volume="0.7000">
+    </sound>
+  </soundset>
+  <soundset name="AgeAdvanceY" volume="1.0000" maxnum="1" distance="1.0000">
+    <sound filename="ypack\UI\Age-Up.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="AmbienceCeylon" volume="0.3000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\Environment\Ceylon\Ceylon_1.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="AmbienceHimalayas" volume="0.3000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\Environment\Himalayas\Himalayas_1.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="AmbienceMongolia" volume="0.3000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\Environment\Mongolia\Mongolia_1.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="PowerStun" volume="1.0000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\UI\Stun.wav" volume="0.5000">
+    </sound>
+  </soundset>
+  <soundset name="PowerSmokeBomb" volume="1.0000" maxnum="1" distance="1.0000">
+    <sound filename="ypack\UI\SmokeBomb.wav" volume="0.8000">
+    </sound>
+  </soundset>
+  <soundset name="PowerSabotage" volume="1.0000" maxnum="1" distance="1.0000">
+    <sound filename="ypack\UI\Sabatoge.wav" volume="0.8000">
+    </sound>
+  </soundset>
+  <soundset name="PowerFlyingKick" volume="1.0000" maxnum="1" distance="1.0000">
+    <sound filename="ypack\UI\FlyingKick.wav" volume="0.6000">
+    </sound>
+  </soundset>
+  <soundset name="PowerCriticalStrike" volume="1.0000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\UI\CriticalStrike.wav" volume="0.5000">
+    </sound>
+  </soundset>
+  <soundset name="PowerDivineStrike" volume="1.0000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\UI\DivineStrike.wav" volume="0.5000">
+    </sound>
+  </soundset>
+  <soundset name="PowerStomp" volume="0.6000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\UI\Stomp.wav" volume="0.7000">
+    </sound>
+  </soundset>
+  <soundset name="PowerEvade" volume="1.0000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\UI\Evade.wav" volume="0.5000">
+    </sound>
+  </soundset>
+  <soundset name="PowerConvertDisciple" volume="1.0000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\UI\ConvertDiciple.wav" volume="0.5000">
+    </sound>
+  </soundset>
+  <soundset name="CamelGrunt" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="GenericMale1Grunt1.wav" volume="0.8500">
+    </sound>
+    <sound filename="GenericMale2Grunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="GenericMale3Grunt1.wav" volume="0.9000">
+    </sound>
+    <sound filename="GenericMale4Grunt1.wav" volume="0.9500">
+    </sound>
+    <sound filename="GenericMale5Grunt1.wav" volume="0.9000">
+    </sound>
+    <sound filename="GenericMale6Grunt1.wav" volume="0.8000">
+    </sound>
+    <sound filename="GenericMale7Grunt1.wav" volume="0.8000">
+    </sound>
+    <sound filename="GenericMale8Grunt1.wav" volume="0.8500">
+    </sound>
+    <sound filename="GenericMale9Grunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="GenericMale10Grunt1.wav" volume="0.9500">
+    </sound>
+    <sound filename="ypack\CamelGrunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\CamelGrunt2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\CamelGrunt3.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\CamelGrunt4.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ElephantGrunt" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="GenericMale1Grunt1.wav" volume="0.8500">
+    </sound>
+    <sound filename="GenericMale2Grunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="GenericMale3Grunt1.wav" volume="0.9000">
+    </sound>
+    <sound filename="GenericMale4Grunt1.wav" volume="0.9500">
+    </sound>
+    <sound filename="GenericMale5Grunt1.wav" volume="0.9000">
+    </sound>
+    <sound filename="GenericMale6Grunt1.wav" volume="0.8000">
+    </sound>
+    <sound filename="GenericMale7Grunt1.wav" volume="0.8000">
+    </sound>
+    <sound filename="GenericMale8Grunt1.wav" volume="0.8500">
+    </sound>
+    <sound filename="GenericMale9Grunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="GenericMale10Grunt1.wav" volume="0.9500">
+    </sound>
+    <sound filename="ypack\ElephantGrunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ElephantGrunt2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ElephantGrunt3.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ElephantGrunt4.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="WildElephantGrunt" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\ElephantGrunt1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ElephantGrunt2.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ElephantGrunt3.wav" volume="1.0000">
+    </sound>
+    <sound filename="ypack\ElephantGrunt4.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="TorchSwingLoud" volume="0.6000" maxnum="4" distance="1.0000">
+    <sound filename="TorchSwing1.wav" volume="1.0000">
+    </sound>
+    <sound filename="TorchSwing2.wav" volume="1.0000">
+    </sound>
+    <sound filename="TorchSwing3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ChakramThrow" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\chakram.wav" volume="0.5500">
+    </sound>
+  </soundset>
+  <soundset name="FlameThrower" volume="1.0000" maxnum="10" distance="1.0000">
+    <sound filename="ypack\flamethrower.wav" volume="0.5000">
+    </sound>
+  </soundset>
+  <soundset name="Swordwhip" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\swordwhip.wav" volume="0.5000">
+    </sound>
+  </soundset>
+  <soundset name="HC_Elephant" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\HC_Sounds\Elephant\ElephantAmbient1.wav" volume="0.7000">
+    </sound>
+    <sound filename="ypack\HC_Sounds\Elephant\ElephantAmbient2.wav" volume="0.4000">
+    </sound>
+    <sound filename="blank.wav" volume="0.4000">
+    </sound>
+    <sound filename="blank.wav" volume="0.4000">
+    </sound>
+  </soundset>
+  <soundset name="HC_Camel" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\HC_Sounds\Camel\CamelAmbient1.wav" volume="0.4000">
+    </sound>
+    <sound filename="blank.wav" volume="0.4000">
+    </sound>
+    <sound filename="blank.wav" volume="0.4000">
+    </sound>
+  </soundset>
+  <soundset name="FlamingArrow" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\flamingarrow.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="FlailElephant" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ypack\Flailephant.wav" volume="0.6000">
+    </sound>
+    <sound filename="ypack\Flailephant2.wav" volume="0.6000">
+    </sound>
+  </soundset>
+  <soundset name="TradeSiteSilkRoad" volume="0.8500" maxnum="4" distance="1.0000">
+    <sound filename="ypack\UI\TradeSiteSilkRoad.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="WonderDestroyed" volume="0.6000" maxnum="3" distance="1.0000">
+    <sound filename="ypack\UI\WonderDeath.wav" volume="0.7000">
+    </sound>
+  </soundset>
+  <soundset name="MarqueeAppear" volume="1.0000" maxnum="2" distance="1.0000">
+    <sound filename="ui\marqueeappear.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ReticleDisappear" volume="1.0000" maxnum="2" distance="1.0000">
+    <sound filename="ui\reticledisappear.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="ReticleIconChange" volume="1.0000" maxnum="2" distance="1.0000">
+    <sound filename="ui\reticlechangestate.wav" volume="0.0000">
+    </sound>
+  </soundset>
+  <soundset name="HoverObject" volume="1.0000" maxnum="2" distance="1.0000">
+    <sound filename="ui\hoverobject_short.wav" volume="0.5000">
+    </sound>
+  </soundset>
+  <soundset name="zpAmbienceSteamer" volume="0.5000" maxnum="5" distance="1.0000">
+    <sound filename="ambient\steamer\steamer.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerM_Select" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\Hello_M.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerF_Select" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\Hello_F.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerM_Acknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\confirm_M.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerF_Acknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\confirm_F.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerM_Build" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\build_M.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerF_Build" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\build_F.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerM_GatherWood" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\wood_M.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerF_GatherWood" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\wood_F.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerM_GatherMeat" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\meat_M.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerF_GatherMeat" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\meat_F.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerM_GatherFruit" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\fruit_M.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerF_GatherFruit" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\fruit_F.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerM_Farm" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\farm_M.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerF_Farm" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\farm_F.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerM_Attack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\confirm_M.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerF_Attack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\confirm_F.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerM_GatherCoin" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\gold_M.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="JewishVillagerF_GatherCoin" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="hebrew\gold_F.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Submarine_Dive" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="shipmove2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+</soundsetdef>

@@ -1,0 +1,131 @@
+<animfile>
+  <definebone>bone_debris_1a</definebone>
+  <definebone>bone_debris_1b</definebone>
+  <definebone>bone_debris_1c</definebone>
+  <definebone>bone_debris_1d</definebone>
+  <definebone>bone_debris_1e</definebone>
+  <definebone>bone_debris_2a</definebone>
+  <definebone>bone_debris_2b</definebone>
+  <definebone>bone_debris_2c</definebone>
+  <definebone>bone_debris_3a</definebone>
+  <definebone>bone_debris_3b</definebone>
+  <definebone>bone_debris_3c</definebone>
+  <definebone>bone_debris_3d</definebone>
+  <definebone>bone_debris_3e</definebone>
+  <submodel>
+    Outpost lvl1
+    <attachment>
+        collapse_smoke
+        <component>
+            collapse_smoke<assetreference type="popcornFx"><file>smoke\collapse_smoke_3x3.pkfx</file></assetreference>
+        </component>
+        <anim>Idle<component>collapse_smoke</component></anim>
+    </attachment>
+    <component>
+        Outpost_1
+        <logic type="LowPoly">
+            <normal>
+                <logic type="Destruction">
+                    <p1>
+                        <assetreference type="GrannyModel"><file>buildings\spc\inca_outpost\spc_inca_outpost_damaged</file></assetreference>
+                    </p1>
+                    <p99>
+                        <assetreference type="GrannyModel" shape="asian_outpost"><file>buildings\spc\inca_outpost\spc_inca_outpost</file></assetreference>
+                    </p99>
+                </logic>
+            </normal>
+            <lowpoly>
+                <assetreference type="GrannyModel" shape="asian_outpost"><file>buildings\spc\inca_outpost\spc_inca_outpost</file></assetreference>
+            </lowpoly>
+        </logic>
+        <decal><effecttype>bump</effecttype><texture>buildings\spc\inca_outpost\spc_inca_outpost_ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><bumptexture>buildings\spc\inca_outpost\spc_inca_outpost_ground_bumpmap</bumptexture><width>5.50</width><height>5.50</height></decal>
+    </component>
+    <component>
+        Outpost_1_Death
+        <logic type="LowPoly">
+            <normal>
+                <assetreference type="GrannyModel"><file>buildings\spc\inca_outpost\spc_inca_outpost_damaged</file></assetreference>
+            </normal>
+            <lowpoly>
+                <assetreference type="GrannyModel"><file>buildings\spc\inca_outpost\spc_inca_outpost</file></assetreference>
+            </lowpoly>
+        </logic>
+    </component>
+    <anim>
+        Idle<component>Outpost_1</component><simskeleton><model>buildings\spc\inca_outpost\spc_inca_outpost_damaged</model></simskeleton>
+    </anim>
+    <anim>
+        RangedAttack<assetreference type="GrannyAnim"><file>animation_library\building\ranged_attack</file><tag type="Attack">0.98</tag><tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag></assetreference>
+        <component>Outpost_1</component><simskeleton><model>buildings\spc\inca_outpost\spc_inca_outpost_damaged</model></simskeleton>
+    </anim>
+    <anim>
+        RangedAttackShip<assetreference type="GrannyAnim"><file>animation_library\building\ranged_attack</file><tag type="Attack">0.98</tag><tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag></assetreference>
+        <component>Outpost_1</component><simskeleton><model>buildings\spc\inca_outpost\spc_inca_outpost_damaged</model></simskeleton>
+    </anim>
+    <anim>Death<component>Outpost_1_Death</component><attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
+</submodel>
+
+<submodel>
+    sub_construction_stage_01
+    <component>
+        construction_stage_01<assetreference type="GrannyModel"><file>buildings\constructions\2x2_stage1</file></assetreference>
+        <decal>
+            <effecttype>bump</effecttype><texture>buildings\constructions\2x2_construction_decal</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture><width>7.00</width><height>7.00</height>
+        </decal>
+    </component>
+    <anim>Idle<component>construction_stage_01</component></anim>
+</submodel>
+<submodel>
+    sub_construction_stage_02
+    <component>
+        construction_stage_02<assetreference type="GrannyModel"><file>buildings\constructions\2x2_stage2</file></assetreference>
+    </component>
+    <anim>Idle<component>construction_stage_02</component></anim>
+</submodel>
+<submodel>
+    Outpost lvl1_con2
+    <attachment>
+        con
+        <component>
+            scaffolding<assetreference type="GrannyModel"><file>buildings\spc\inca_outpost\spc_inca_outpost</file></assetreference>
+        </component>
+        <anim>Idle<component>scaffolding</component></anim>
+    </attachment>
+    <component>
+        Outpost_1<assetreference type="GrannyModel"><file>buildings\constructions\2x2_stage3</file></assetreference>
+        <decal>
+            <effecttype>bump</effecttype><texture>buildings\constructions\2x2_construction_decal</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture><width>7.00</width><height>7.00</height>
+        </decal>
+        <attach a="con" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </component>
+    <anim>Idle<component>Outpost_1</component></anim>
+</submodel>
+<component>
+    ypoutpostasian
+    <logic type="Tech">
+        <none>
+            <logic type="BuildingCompletion">
+                <p0><submodelref ref="sub_construction_stage_01"></submodelref></p0>
+                <p33><submodelref ref="sub_construction_stage_02"></submodelref></p33>
+                <p66><submodelref ref="Outpost lvl1_con2"></submodelref></p66>
+                <p100><submodelref ref="Outpost lvl1"></submodelref></p100>
+            </logic>
+        </none>
+        <frontieroutpost>
+            <logic type="BuildingCompletion">
+                <p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="Outpost lvl1_con2"></submodelref></p66>
+                <p100><submodelref ref="Outpost lvl1"></submodelref></p100>
+            </logic>
+        </frontieroutpost>
+        <fortifiedoutpost>
+            <logic type="BuildingCompletion">
+                <p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="Outpost lvl1_con2"></submodelref></p66>
+                <p100><submodelref ref="Outpost lvl1"></submodelref></p100>
+            </logic>
+        </fortifiedoutpost>
+    </logic>
+</component>
+
+</animfile>

@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "300170" displayNameID = "300108" loadDetails="300169" largeMapName = "zptortuga"
+    imagepath = "ui\random_map\tortuga\tortuga_mini" cannotReplace = "" loadBackground="ui\random_map\tortuga\tortuga_map">
+   <loadss>ui\random_map\tortuga\tortuga_01</loadss>
+   <loadss>ui\random_map\tortuga\tortuga_02</loadss>
+   <loadss>ui\random_map\tortuga\tortuga_03</loadss>
+</mapinfo>

@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>15</width>
+	<height>15</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="168" posx="-3.6595" posz="-13.2684" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCRailwayProps</unit>
+		<unit variation="144" posx="-2.1439" posz="-12.6092" orientx="-0.7071" orienty="0.0000" orientz="0.7071">SPCRailwayProps</unit>
+		<unit variation="24" posx="5.0442" posz="-12.2292" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropWingC</unit>
+		<unit variation="217" posx="10.1918" posz="-9.5680" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropWingCshort</unit>
+		<unit variation="166" posx="0.4938" posz="-13.7933" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCMineProps</unit>
+		<unit variation="166" posx="6.5605" posz="-13.9403" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCMineProps</unit>
+		<unit variation="166" posx="10.4339" posz="-13.8742" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCMineProps</unit>
+		<unit variation="165" posx="-5.4431" posz="-10.7073" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="165" posx="2.4429" posz="-11.1875" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="122" posx="-8.3266" posz="-11.7761" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="73" posx="-6.5764" posz="-11.5559" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="122" posx="-4.3618" posz="-11.7072" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="153" posx="-9.6111" posz="-10.5193" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropFence</unit>
+		<unit variation="75" posx="-4.3432" posz="-10.3566" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCRailwayProps</unit>
+		<unit variation="73" posx="-2.8513" posz="-11.6420" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="242" posx="-0.9428" posz="-10.0640" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">SPCRailwayProps</unit>
+		<unit variation="183" posx="-4.1496" posz="-10.0471" orientx="0.9239" orienty="0.0000" orientz="0.3827">SPCRailwayProps</unit>
+		<unit variation="145" posx="-4.5064" posz="-9.7610" orientx="-0.9239" orienty="0.0000" orientz="0.3827">SPCRailwayProps</unit>
+		<unit variation="165" posx="-10.1066" posz="-7.2659" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="165" posx="9.0560" posz="-8.9408" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="209" posx="-8.6911" posz="-8.6296" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCRailwayProps</unit>
+		<unit variation="153" posx="6.3438" posz="-7.8789" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">SPCRailwayProps</unit>
+		<unit variation="73" posx="-11.9986" posz="-8.1504" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropFence</unit>
+		<unit variation="122" posx="-13.2076" posz="-6.6548" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="97" posx="-7.8663" posz="-7.9522" orientx="0.3827" orienty="0.0000" orientz="0.9239">deNatEUPropVilMale</unit>
+		<unit variation="2" posx="-5.8176" posz="-7.5468" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropVilMale</unit>
+		<unit variation="204" posx="5.7151" posz="-8.4895" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropVilLeaders</unit>
+		<unit variation="142" posx="7.0065" posz="-7.2848" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">deNatEUPropVilMale</unit>
+		<unit variation="165" posx="9.5021" posz="-3.9120" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="78" posx="-7.9710" posz="-5.6513" orientx="0.3827" orienty="0.0000" orientz="-0.9239">deNatEUPropVilMale</unit>
+		<unit variation="179" posx="-6.2853" posz="-5.5115" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">deNatEUPropVilMale</unit>
+		<unit variation="71" posx="0.9368" posz="-1.5802" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpWeaponFactoryWinter</unit>
+		<unit variation="165" posx="-4.8698" posz="-1.3382" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="165" posx="2.6893" posz="-2.2823" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="165" posx="-10.8182" posz="-1.1170" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="73" posx="-13.1203" posz="-4.4022" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="236" posx="10.8416" posz="-2.3732" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCRailwayProps</unit>
+		<unit variation="219" posx="-11.4658" posz="-3.8558" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCRailwayProps</unit>
+		<unit variation="236" posx="9.0605" posz="-2.6701" orientx="0.0000" orienty="0.0039" orientz="-1.0000">TrainTracks</unit>
+		<unit variation="52" posx="12.4368" posz="-2.7118" orientx="0.0000" orienty="0.0039" orientz="-1.0000">TrainTracks</unit>
+		<unit variation="165" posx="9.4146" posz="-0.0166" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="122" posx="-13.2414" posz="-2.4025" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="95" posx="-8.2089" posz="-1.9662" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropCannon</unit>
+		<unit variation="73" posx="-13.2100" posz="-0.7289" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="99" posx="14.2838" posz="-0.3104" orientx="-0.7071" orienty="0.0000" orientz="0.7071">SPCRailwayProps</unit>
+		<unit variation="29" posx="9.7795" posz="4.0175" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropWingCshort</unit>
+		<unit variation="108" posx="-11.8621" posz="-0.2378" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCRailwayProps</unit>
+		<unit variation="182" posx="-7.5950" posz="-1.8786" orientx="0.0000" orienty="0.0039" orientz="-1.0000">TrainTracks</unit>
+		<unit variation="50" posx="-4.2929" posz="-1.8957" orientx="0.0000" orienty="0.0039" orientz="-1.0000">TrainTracks</unit>
+		<unit variation="165" posx="-0.9553" posz="2.8391" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="36" posx="-4.2291" posz="0.5604" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCRailwayProps</unit>
+		<unit variation="232" posx="12.2013" posz="1.1747" orientx="-0.9239" orienty="0.0000" orientz="0.3827">SPCRailwayProps</unit>
+		<unit variation="29" posx="-12.4343" posz="4.6194" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropWingCshort</unit>
+		<unit variation="166" posx="-3.5146" posz="1.1773" orientx="0.3827" orienty="0.0000" orientz="-0.9239">SPCMineProps</unit>
+		<unit variation="165" posx="-6.9949" posz="4.4398" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="78" posx="-9.6882" posz="4.3763" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="165" posx="10.2388" posz="6.6153" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="39" posx="-4.3946" posz="4.5291" orientx="0.3827" orienty="0.0000" orientz="-0.9239">deNatEUPropVilMale</unit>
+		<unit variation="2" posx="-7.0574" posz="4.4471" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCRailwayProps</unit>
+		<unit variation="121" posx="-8.0676" posz="5.3328" orientx="0.3827" orienty="0.0000" orientz="-0.9239">SPCRailwayProps</unit>
+		<unit variation="28" posx="-3.3055" posz="4.0414" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">deNatEUPropVilLeaders</unit>
+		<unit variation="212" posx="-5.2586" posz="6.1631" orientx="-0.7071" orienty="0.0000" orientz="0.7071">SPCRailwayProps</unit>
+		<unit variation="202" posx="1.3203" posz="6.2158" orientx="-0.7071" orienty="0.0000" orientz="0.7071">SPCRailwayProps</unit>
+		<unit variation="172" posx="-7.4027" posz="6.1188" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCRailwayProps</unit>
+		<unit variation="166" posx="-2.5127" posz="7.2621" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCMineProps</unit>
+		<unit variation="253" posx="-2.6921" posz="6.5255" orientx="0.3827" orienty="0.0000" orientz="-0.9239">SPCMineProps</unit>
+		<unit variation="129" posx="0.5655" posz="10.9361" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSocketScientists</unit>
+		<unit variation="73" posx="-8.1420" posz="7.7299" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="73" posx="-5.2055" posz="7.7163" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="122" posx="-2.5961" posz="7.8188" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="122" posx="3.8214" posz="7.8558" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="73" posx="6.8569" posz="7.9406" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="253" posx="-5.8096" posz="11.1453" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropStatue</unit>
+		<unit variation="253" posx="7.7241" posz="11.1765" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropStatue</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
+			<block startx="-5" startz="-1" endx="-5" endz="0"></block>
+			<block startx="-4" startz="-4" endx="-4" endz="0"></block>
+			<block startx="-3" startz="-4" endx="-3" endz="-2"></block>
+			<block startx="-3" startz="0" endx="-3" endz="0"></block>
+			<block startx="-2" startz="-4" endx="-2" endz="-4"></block>
+			<block startx="-2" startz="-1" endx="-2" endz="0"></block>
+			<block startx="-1" startz="-4" endx="-1" endz="-3"></block>
+			<block startx="0" startz="-4" endx="0" endz="-4"></block>
+			<block startx="-4" startz="1" endx="-4" endz="1"></block>
+			<block startx="-3" startz="1" endx="-3" endz="3"></block>
+			<block startx="-2" startz="2" endx="-2" endz="2"></block>
+			<block startx="-1" startz="1" endx="-1" endz="3"></block>
+			<block startx="0" startz="1" endx="0" endz="2"></block>
+			<block startx="1" startz="2" endx="1" endz="2"></block>
+			<block startx="1" startz="-4" endx="1" endz="-3"></block>
+			<block startx="2" startz="-4" endx="2" endz="-4"></block>
+			<block startx="2" startz="-2" endx="2" endz="-1"></block>
+			<block startx="3" startz="-4" endx="3" endz="-4"></block>
+			<block startx="4" startz="-4" endx="4" endz="-3"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

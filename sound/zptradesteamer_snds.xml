@@ -1,0 +1,8 @@
+<protounitsounddef>
+  <protounit name="zpTradeSteamer">
+    <soundtype name="Exists">
+      <soundset name="zpAmbienceSteamer">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

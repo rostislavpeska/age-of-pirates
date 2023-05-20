@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<attachment>
+		market
+		<include>buildings\market\west market standin.xml</include>
+	</attachment>
+	<component>
+		ModelComp
+		<logic type="Tech">
+			<none>
+				<logic type="LowPoly">
+					<normal>
+						<assetreference type="GrannyModel">
+							<file>buildings\cabin\cabin</file>
+						</assetreference>
+					</normal>
+					<lowpoly>
+						<assetreference type="GrannyModel">
+							<file>buildings\cabin\cabin</file>
+						</assetreference>
+					</lowpoly>
+				</logic>
+				<decal>
+					<effecttype>bump</effecttype>
+					<texture>buildings\market\market_ground_generic_basecolor</texture>
+					<bumptexture>buildings\market\market_ground_generic_normals</bumptexture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>10.00</width>
+					<height>10.00</height>
+				</decal>
+			</none>
+			<zpUpdatePort1>
+				<logic type="LowPoly">
+					<normal>
+						<assetreference type="GrannyModel">
+							<file>homecity\buildings_west\dock_version_a</file>
+						</assetreference>
+					</normal>
+					<lowpoly>
+						<assetreference type="GrannyModel">
+							<file>homecity\buildings_west\dock_version_a</file>
+						</assetreference>
+					</lowpoly>
+				</logic>
+				<decal>
+					<effecttype>bump</effecttype>
+					<texture>buildings\market\market_ground_generic_basecolor</texture>
+					<bumptexture>buildings\market\market_ground_generic_normals</bumptexture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>10.00</width>
+					<height>10.00</height>
+				</decal>
+			</zpUpdatePort1>
+			<zpUpdatePort2>			
+				<assetreference type="GrannyModel">
+					<file>effects\projectiles\arrow</file>
+				</assetreference>
+				<attach a="market" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"/>
+				<decal>
+					<effecttype>bump</effecttype>
+					<texture>buildings\market\market_ground_generic_basecolor</texture>
+					<bumptexture>buildings\market\market_ground_generic_normals</bumptexture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>10.00</width>
+					<height>10.00</height>
+				</decal>
+			</zpUpdatePort2>
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

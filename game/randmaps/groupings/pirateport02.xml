@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>13</width>
+	<height>8</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="193" posx="-4.3590" posz="-1.1722" orientx="-0.9991" orienty="0.0000" orientz="-0.0435">zpHarbourPlatform</unit>
+		<unit variation="196" posx="2.5471" posz="-0.2693" orientx="0.1719" orienty="0.0000" orientz="-0.9851">zpHarbourPlatform</unit>
+		<unit variation="106" posx="7.1833" posz="0.5446" orientx="0.9942" orienty="0.0000" orientz="0.1072">zpHarbourPlatform</unit>
+		<unit variation="35" posx="0.3992" posz="3.2857" orientx="-0.0341" orienty="0.0000" orientz="-0.9994">zpHarbourShip</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

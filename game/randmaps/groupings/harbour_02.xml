@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>15</width>
+	<height>28</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="179" posx="-18.0000" posz="-29.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">FishMahi</unit>
+		<unit variation="95" posx="-5.1044" posz="-18.3446" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">HarbourPathBlock</unit>
+		<unit variation="244" posx="1.0011" posz="-18.3478" orientx="0.7071" orienty="0.0000" orientz="-0.7071">HarbourPathBlock</unit>
+		<unit variation="186" posx="-1.7773" posz="-19.6753" orientx="0.3827" orienty="0.0000" orientz="-0.9239">HarbourPathBlock</unit>
+		<unit variation="48" posx="-1.5701" posz="-15.2256" orientx="-0.9962" orienty="0.0000" orientz="0.0871">ShorelineRockBigCJ</unit>
+		<unit variation="75" posx="2.8565" posz="-15.8821" orientx="0.9239" orienty="0.0000" orientz="-0.3827">HarbourPathBlock</unit>
+		<unit variation="253" posx="0.5210" posz="-13.1524" orientx="0.9991" orienty="0.0000" orientz="0.0435">zpHarbourPlatform</unit>
+		<unit variation="129" posx="-8.0126" posz="-15.4364" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">HarbourPathBlock</unit>
+		<unit variation="250" posx="-5.7473" posz="-12.9486" orientx="-0.1129" orienty="0.0000" orientz="-0.9936">zpHarbourPlatform</unit>
+		<unit variation="143" posx="-9.9159" posz="-11.1849" orientx="0.9906" orienty="0.0000" orientz="-0.1368">zpHarbourPlatform</unit>
+		<unit variation="80" posx="6.3191" posz="-10.1899" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCPortSocket</unit>
+		<unit variation="44" posx="-4.6211" posz="-9.2606" orientx="-0.2751" orienty="0.0000" orientz="-0.9614">zpHarbourShip</unit>
+		<unit variation="216" posx="-2.8497" posz="-12.3619" orientx="-0.7071" orienty="0.0000" orientz="0.7071">NativePirates</unit>
+		<unit variation="48" posx="-9.9429" posz="-11.8560" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="76" posx="2.1290" posz="-11.6231" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="155" posx="0.3424" posz="-7.4013" orientx="0.9956" orienty="0.0000" orientz="0.0941">zpHarbourPlatform</unit>
+		<unit variation="110" posx="1.7883" posz="-8.2626" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="251" posx="-10.3531" posz="-7.7852" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="81" posx="9.5611" posz="-5.3962" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="23" posx="5.7877" posz="-5.3988" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="196" posx="3.1206" posz="-5.5283" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="34" posx="0.3933" posz="-1.6074" orientx="-0.9879" orienty="0.0000" orientz="0.1551">zpHarbourPlatform</unit>
+		<unit variation="248" posx="11.1566" posz="-3.9603" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="191" posx="-10.3636" posz="-3.7293" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="153" posx="11.8841" posz="-1.0242" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="86" posx="7.4037" posz="0.5986" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCPortCenter</unit>
+		<unit variation="14" posx="-7.6918" posz="2.7042" orientx="0.9613" orienty="-0.0000" orientz="0.2754">zpHarbourShip</unit>
+		<unit variation="246" posx="-9.9050" posz="0.5623" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="1" posx="1.1752" posz="4.9487" orientx="-0.1471" orienty="0.0000" orientz="-0.9891">zpHarbourPlatform</unit>
+		<unit variation="95" posx="11.4454" posz="2.9664" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="18" posx="-5.2086" posz="5.9625" orientx="-0.1913" orienty="0.0000" orientz="-0.9815">zpHarbourPlatform</unit>
+		<unit variation="249" posx="-10.0774" posz="4.4993" orientx="-1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="1" posx="-12.0077" posz="7.7837" orientx="-0.1471" orienty="0.0000" orientz="-0.9891">zpHarbourPlatform</unit>
+		<unit variation="120" posx="-9.5485" posz="7.5482" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">HarbourPathBlock</unit>
+		<unit variation="116" posx="9.6837" posz="6.7440" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="127" posx="8.6165" posz="8.1055" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativePirates</unit>
+		<unit variation="102" posx="8.7859" posz="9.7039" orientx="0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="104" posx="-10.1866" posz="9.7695" orientx="-1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="140" posx="-3.9063" posz="12.7276" orientx="-0.8390" orienty="0.0000" orientz="0.5441">ShorelineRockBigCJ</unit>
+		<unit variation="22" posx="3.2547" posz="8.3878" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativePirates</unit>
+		<unit variation="245" posx="4.6095" posz="11.7256" orientx="0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="103" posx="-8.6505" posz="13.0929" orientx="-0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="73" posx="-5.4157" posz="15.1002" orientx="-0.3827" orienty="0.0000" orientz="0.9239">HarbourPathBlock</unit>
+		<unit variation="55" posx="-1.7490" posz="14.9342" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="251" posx="1.5030" posz="14.0341" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

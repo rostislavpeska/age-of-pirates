@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>4</width>
+	<height>5</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="33" posx="2.2410" posz="-2.7281" orientx="0.9239" orienty="-0.0000" orientz="-0.3827">GroundPropsYuk</unit>
+		<unit variation="33" posx="-1.5570" posz="-2.9888" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">GroundPropsYuk</unit>
+		<unit variation="33" posx="3.0417" posz="0.2769" orientx="0.7071" orienty="-0.0000" orientz="0.7071">GroundPropsYuk</unit>
+		<unit variation="33" posx="0.6349" posz="2.6837" orientx="-0.3827" orienty="-0.0000" orientz="0.9239">GroundPropsYuk</unit>
+		<unit variation="33" posx="-2.2014" posz="1.2775" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">GroundPropsYuk</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="AfricaDesert\ground_sand1_afriDesert">
+			<block startx="-2" startz="-2" endx="-2" endz="2"></block>
+			<block startx="-1" startz="-2" endx="-1" endz="2"></block>
+			<block startx="0" startz="-2" endx="0" endz="2"></block>
+			<block startx="1" startz="-2" endx="1" endz="2"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

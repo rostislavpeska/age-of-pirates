@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="matA">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\castle_regicide\textures\castle_zen_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\castle_regicide\textures\castle_regicide_matA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\castle_regicide\textures\castle_regicide_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matB">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\china\fencewalls01\textures\fencewalls01_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\china\fencewalls01\textures\fencewalls01_matB_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\china\fencewalls01\textures\fencewalls01_matB_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

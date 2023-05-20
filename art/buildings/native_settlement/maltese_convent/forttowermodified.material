@@ -1,0 +1,78 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\maltese_convent\textures\maltese_tower_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\spc\fort\textures\spc_fort_tower_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\spc\fort\textures\spc_fort_tower_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings\spc\fort\textures\spc_fort_tower_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\spc\fort\textures\spc_fort_wall_medium_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\spc\fort\textures\spc_fort_wall_medium_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\spc\fort\textures\spc_fort_wall_medium_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\spc\fort\textures\spc_fort_wall_barracks_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\spc\fort\textures\spc_fort_wall_barracks_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\spc\fort\textures\spc_fort_wall_barracks_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\generic_props\textures\generic_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\generic_props\textures\generic_props_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\generic_props\textures\generic_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\spc\indian_fort\indian_fort walls\textures\indian_ft_large_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\spc\indian_fort\indian_fort walls\textures\indian_ft_large_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\spc\indian_fort\indian_fort walls\textures\indian_ft_large_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matf">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\spc\fort\textures\spc_fort_tower_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\spc\fort\textures\spc_fort_tower_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\spc\fort\textures\spc_fort_tower_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings\spc\fort\textures\spc_fort_tower_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

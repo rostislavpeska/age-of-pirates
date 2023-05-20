@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_prop</definebone>
+		<component>
+		house
+		<logic type="Variation">
+			<variationid0>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\maltese_convent\maltese_church_01</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<texture>buildings\cathedral\cathedral_age4_ground_BaseColor</texture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>10.00</width>
+					<height>7.00</height>
+					<xoffset>0.00</xoffset>
+					<zoffset>0.00</zoffset>
+				</decal>
+			</variationid0>
+			<variationid1>
+				<assetreference type="GrannyModel">
+					<file>War of the Triple Alliance\Delta\AURs\New Buildings\aos house2</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<texture>buildings\cathedral\cathedral_age4_ground_BaseColor</texture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>6.00</width>
+					<height>6.00</height>
+					<xoffset>0.00</xoffset>
+					<zoffset>0.00</zoffset>
+				</decal>
+			</variationid1>
+			<variationid2>
+				<assetreference type="GrannyModel">
+					<file>War of the Triple Alliance\Delta\AURs\New Buildings\aos church</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<texture>buildings\cathedral\cathedral_age4_ground_BaseColor</texture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>8.00</width>
+					<height>8.00</height>
+					<xoffset>0.00</xoffset>
+					<zoffset>0.00</zoffset>
+				</decal>
+			</variationid2>
+			<variationid3>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\maltese_convent\fortgatemodified</file>
+					
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>8.00</width>
+					<height>8.00</height>
+					<xoffset>0.00</xoffset>
+					<zoffset>0.00</zoffset>
+				</decal>
+			</variationid3>
+			<variationid4>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\maltese_convent\fortcornermodified</file>
+					
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>8.00</width>
+					<height>8.00</height>
+					<xoffset>0.00</xoffset>
+					<zoffset>0.00</zoffset>
+				</decal>
+			</variationid4>
+			<variationid5>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\maltese_convent\fortmodified</file>
+					
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>8.00</width>
+					<height>8.00</height>
+					<xoffset>0.00</xoffset>
+					<zoffset>0.00</zoffset>
+				</decal>
+			</variationid5>
+			<variationid6>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\maltese_convent\forttowermodified</file>
+					
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>8.00</width>
+					<height>8.00</height>
+					<xoffset>0.00</xoffset>
+					<zoffset>0.00</zoffset>
+				</decal>
+			</variationid6>
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>house</component>
+	</anim>
+</animfile>

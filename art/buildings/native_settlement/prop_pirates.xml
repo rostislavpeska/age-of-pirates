@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<submodel>
+		Sitting
+		<component>
+			Sitting
+			<assetreference type="GrannyModel">
+				<file>units\spc\pirates\pirate_2</file>
+			</assetreference>
+			<decal>
+				<effecttype>default</effecttype>
+				<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+				<width>1.00</width>
+				<height>1.00</height>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<assetreference type="GrannyAnim">
+				<file>nuggets\outlaw_kidnap\kidnap_outlawA_idleE</file>
+			</assetreference>
+			<component>Sitting</component>
+		</anim>
+	</submodel>
+	<submodel>
+		Digging
+		<attachment>
+			shovel
+			<include>nuggets\pirates\attachment_shovel.xml</include>
+		</attachment>
+		<component>
+			Digging
+			<assetreference type="GrannyModel">
+				<file>units\spc\pirates\pirate_1a</file>
+			</assetreference>
+			<decal>
+				<effecttype>default</effecttype>
+				<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+				<width>1.00</width>
+				<height>1.00</height>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<assetreference type="GrannyAnim">
+				<file>nuggets\pirates\pirate_diga</file>
+				<weight>90</weight>
+			</assetreference>
+			<assetreference type="GrannyAnim">
+				<file>nuggets\pirates\pirate_dig_boreda</file>
+				<weight>10</weight>
+			</assetreference>
+			<component>Digging</component>
+			<attach a="shovel" frombone="Bip01 Prop2" tobone="bip01 Prop2" syncanims="0"/>
+		</anim>
+	</submodel>
+	<submodel>
+		Fighting1
+		<attachment>
+			sword
+			<component>
+				sword
+				<assetreference type="GrannyModel">
+					<file>units\mercenaries\barbary_corsair\barbary_corsair_sword</file>
+				</assetreference>
+			</component>
+			<anim>
+				Idle
+				<component>sword</component>
+			</anim>
+		</attachment>
+		<component>
+			Fighting1
+			<assetreference type="GrannyModel">
+				<file>units\spc\pirates\pirate_3a</file>
+			</assetreference>
+			<decal>
+				<effecttype>default</effecttype>
+				<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+				<width>1.00</width>
+				<height>1.00</height>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<assetreference type="GrannyAnim">
+				<file>animation_library\infantry\Charge\dopplesoldner_charge_attackA</file>
+				<tag type="Attack">0.50</tag>
+			</assetreference>
+			<assetreference type="GrannyAnim">
+				<file>animation_library\infantry\Charge\dopplesoldner_charge_attackB</file>
+				<tag type="Attack">0.53</tag>
+				<tag type="SpecificSoundSet" checkvisible="1" set="MeleeHitFlesh">0.47</tag>
+			</assetreference>
+			<assetreference type="GrannyAnim">
+				<file>animation_library\infantry\Charge\dopplesoldner_charge_attackC</file>
+				<tag type="Attack">0.71</tag>
+			</assetreference>
+			<component>Fighting1</component>
+			<attach a="sword" frombone="ATTACHPOINT" tobone="R HAND" syncanims="1"/>
+		</anim>
+	</submodel>
+	<submodel>
+		Fighting2
+		<attachment>
+			sword
+			<component>
+				sword
+				<assetreference type="GrannyModel">
+					<file>units\mercenaries\barbary_corsair\barbary_corsair_sword</file>
+				</assetreference>
+			</component>
+			<anim>
+				Idle
+				<component>sword</component>
+			</anim>
+		</attachment>
+		<component>
+			Fighting2
+			<assetreference type="GrannyModel">
+				<file>units\spc\pirates\pirate_2</file>
+			</assetreference>
+			<decal>
+				<effecttype>default</effecttype>
+				<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+				<width>1.00</width>
+				<height>1.00</height>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<assetreference type="GrannyAnim">
+				<file>animation_library\infantry\Charge\dopplesoldner_charge_attackC</file>
+				<tag type="Attack">0.71</tag>
+			</assetreference>
+			<assetreference type="GrannyAnim">
+				<file>animation_library\infantry\Charge\dopplesoldner_charge_attackA</file>
+				<tag type="Attack">0.50</tag>
+			</assetreference>
+			<assetreference type="GrannyAnim">
+				<file>animation_library\infantry\Charge\dopplesoldner_charge_attackB</file>
+				<tag type="Attack">0.53</tag>
+				<tag type="SpecificSoundSet" checkvisible="1" set="MeleeHitFlesh">0.47</tag>
+			</assetreference>
+			<component>Fighting2</component>
+			<attach a="sword" frombone="ATTACHPOINT" tobone="R HAND" syncanims="1"/>
+		</anim>
+	</submodel>
+	<submodel>
+		CrateCoin1
+		<component>
+			CrateCoin1
+			<assetreference type="GrannyModel">
+				<file>buildings\props_colony\gold_a_bucket</file>
+			</assetreference>
+			<decal>
+				<effecttype>default</effecttype>
+				<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+				<width>1.00</width>
+				<height>1.00</height>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<component>CrateCoin1</component>
+		</anim>
+	</submodel>
+	<submodel>
+		CrateCoin2
+		<component>
+			CrateCoin2
+			<assetreference type="GrannyModel">
+				<file>buildings\props_colony\gold_b_bucket</file>
+			</assetreference>
+			<decal>
+				<effecttype>default</effecttype>
+				<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+				<width>1.00</width>
+				<height>1.00</height>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<component>CrateCoin2</component>
+		</anim>
+	</submodel>
+	<submodel>
+		Palm1
+		<component>
+			Palm1
+			<logic type="LowPoly">
+					<normal>
+						<assetreference type="GrannyModel">
+							<file>terrain\trees\tree_palm1_a</file>
+						</assetreference>
+					</normal>
+					<lowpoly>
+						<assetreference type="GrannyModel">
+							<file>terrain\trees\tree_lp_palm1_a</file>
+						</assetreference>
+					</lowpoly>
+				</logic>
+			<decal>
+				<effecttype>default</effecttype>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<component>Palm1</component>
+		</anim>
+	</submodel>
+	<submodel>
+		Palm2
+		<component>
+			Palm2
+			<logic type="LowPoly">
+					<normal>
+						<assetreference type="GrannyModel">
+							<file>terrain\trees\tree_palm_b</file>
+						</assetreference>
+					</normal>
+					<lowpoly>
+						<assetreference type="GrannyModel">
+							<file>terrain\trees\tree_lp_palm_b</file>
+						</assetreference>
+					</lowpoly>
+				</logic>
+			<decal>
+				<effecttype>default</effecttype>
+			</decal>
+		</component>
+		<anim>
+			Idle
+			<component>Palm2</component>
+		</anim>
+	</submodel>
+	<component>
+		<logic type="Variation">
+			<data>
+				<submodelref ref="Sitting"/>
+			</data>
+			<data>
+				<submodelref ref="Digging"/>
+			</data>
+			<data>
+				<submodelref ref="Fighting1"/>
+			</data>
+			<data>
+				<submodelref ref="Fighting2"/>
+			</data>
+			<data>
+				<submodelref ref="CrateCoin2"/>
+			</data>
+			<data>
+				<submodelref ref="CrateCoin1"/>
+			</data>
+			<data>
+				<submodelref ref="Palm1"/>
+			</data>
+			<data>
+				<submodelref ref="Palm2"/>
+			</data>
+		</logic>
+	</component>
+</animfile>

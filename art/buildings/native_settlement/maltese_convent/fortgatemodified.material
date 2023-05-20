@@ -1,0 +1,38 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\maltese_convent\textures\maltese_gate_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings/spc/fort/textures/spc_fort_gate_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings/spc/fort/textures/spc_fort_gate_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity/home_city_props/generic_props/textures/generic_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity/home_city_props/generic_props/textures/generic_props_Normals">
+      </texture>
+      <texture name="Masks" override="homecity/home_city_props/generic_props/textures/generic_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity/home_city_props/props_additional/military_props/textures/military_props_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity/home_city_props/props_additional/military_props/textures/military_props_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity/home_city_props/props_additional/military_props/textures/military_props_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

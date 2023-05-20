@@ -1,0 +1,33 @@
+<animfile>
+    <definebone>bone_FX01</definebone>
+    <attachment>RocketThrust
+        <component>Emitter1
+            <assetreference type="popcornFx">
+                <file>water_effects\monitor_shockwave.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>Emitter1</component>
+        </anim>
+    </attachment>
+    <attachment>thrustTrail
+        <component>emitter1
+            <assetreference type="ParticleSystem">
+                <file>effects\projectiles\rocket_thrustTrail.particle</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>Emitter1</component>
+        </anim>
+    </attachment>
+    <component>ModelComp
+        <assetreference type="GrannyModel">
+            <file>effects\projectiles\zptorpedo\torpedo</file>
+        </assetreference>
+    </component>
+    <anim>Idle
+        <component>ModelComp</component>
+        <attach a="RocketThrust" frombone="ATTACHPOINT" tobone="bone_FX01" syncanims="0"></attach>
+        <attach a="thrustTrail" frombone="ATTACHPOINT" tobone="bone_FX01" syncanims="0"></attach>
+    </anim>
+</animfile>

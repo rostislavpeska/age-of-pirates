@@ -1,0 +1,24 @@
+<protounitsounddef>
+  <protounit name="zpCastleZen">
+    <soundtype name="Select">
+      <soundset name="UI_Select_Building_Monastery">
+      </soundset>
+    </soundtype>
+    <soundtype name="SelectSecondary">
+      <soundset name="UI_Select_Building_Fort">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="BuildingDestruction">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="UI_Select_Building_Monastery">
+      </soundset>
+    </soundtype>
+    <soundtype name="Ambient">
+      <soundset name="AmbienceMonastery">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

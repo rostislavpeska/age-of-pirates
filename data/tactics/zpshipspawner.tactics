@@ -1,0 +1,12 @@
+<tactics>
+  <action>
+    <name stringid="69776">SpawnPrivateer</name>
+    <type>Spawn</type>
+    <rate type="Privateer">1.0</rate>
+    <animationrate>1</animationrate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+ <tactic>Normal<action>SpawnPrivateer</action></tactic>
+</tactics>

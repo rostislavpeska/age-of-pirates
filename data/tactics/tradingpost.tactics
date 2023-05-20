@@ -1,0 +1,249 @@
+<tactics>
+  <action>
+    <name stringid="38133">RangedAttack</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>RangedAttack</anim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.01</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>InvisibleProjectile</projectile>
+    <impacteffect>effects\impacts\gun</impacteffect>
+    <rate type="Unit">1.0</rate>
+    <instantballistics>1</instantballistics>
+    <active>0</active>
+  </action>
+  <action>
+    <name stringid="38133">RangedGarrisonAttack</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>RangedAttack</anim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.01</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <damagefactorcap>10</damagefactorcap>
+    <scalebycontainedunits>1</scalebycontainedunits>
+    <projectile>InvisibleProjectile</projectile>
+    <impacteffect>effects\impacts\gun</impacteffect>
+    <rate type="Unit">1.0</rate>
+    <instantballistics>1</instantballistics>
+    <active>0</active>
+  </action>
+  <action>
+    <name stringid="110597">ChargeRangedAttack</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <chargeaction>1</chargeaction>
+    <anim>RangedAttack</anim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.01</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>InvisibleProjectile</projectile>
+    <impacteffect>effects\impacts\gun</impacteffect>
+    <rate type="Unit">1.0</rate>
+    <instantballistics>1</instantballistics>
+    <active>0</active>
+  </action>
+  <action>
+    <name stringid="48954">HPAura</name>
+    <type>AutoRangedModify</type>
+    <active>0</active>
+    <maxrange>24</maxrange>
+    <modifyabstracttype>Unit</modifyabstracttype>
+    <persistent>1</persistent>
+    <modifytype>MaxHP</modifytype>
+    <modifymultiplier>1.10</modifymultiplier>
+    <modelattachment>effects\chiefpower\chiefpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="42914">MaintainNatBlackwoodArcher</name>
+    <type>Maintain</type>
+    <rate type="NatBlackwoodArcher">5.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="42915">MaintainNativeSharktoothBowman</name>
+    <type>Maintain</type>
+    <rate type="NatSharktoothBowman">5.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="42916">MaintainNatClubman</name>
+    <type>Maintain</type>
+    <rate type="NatClubman">5.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="42917">MaintainNatHolcanSpearman</name>
+    <type>Maintain</type>
+    <rate type="NatHolcanSpearman">5.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="42918">MaintainNatAxeRider</name>
+    <type>Maintain</type>
+    <rate type="NatAxeRider">2.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="42918">MaintainNatAxeRiderDogSoldier</name>
+    <type>Maintain</type>
+    <rate type="NatAxeRiderDogSoldier">1.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="42919">MaintainNatTomahawk</name>
+    <type>Maintain</type>
+    <rate type="NatTomahawk">3.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="42919">MaintainNatMantlet</name>
+    <type>Maintain</type>
+    <rate type="NatMantlet">2.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="42920">MaintainNatBolasWarrior</name>
+    <type>Maintain</type>
+    <rate type="NatBolasWarrior">3.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="42920">MaintainNatHuaminca</name>
+    <type>Maintain</type>
+    <rate type="NatHuaminca">2.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="42921">MaintainNatTracker</name>
+    <type>Maintain</type>
+    <rate type="NatTracker">4.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="42922">MaintainNatHorseArcher</name>
+    <type>Maintain</type>
+    <rate type="NatHorseArcher">3.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="42923">MaintainNatRifleman</name>
+    <type>Maintain</type>
+    <rate type="NatRifleman">4.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="42924">MaintainNatBlogunWarrior</name>
+    <type>Maintain</type>
+    <rate type="NatBlowgunWarrior">5.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="42925">MaintainNatJaguarWarrior</name>
+    <type>Maintain</type>
+    <rate type="NatJaguarWarrior">3.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="42925">MaintainNatEagleWarrior</name>
+    <type>Maintain</type>
+    <rate type="NatEagleWarrior">2.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherXP</name>
+    <type>AutoGather</type>
+    <active>0</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherGold</name>
+    <type>AutoGather</type>
+    <active>0</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherXPNative</name>
+    <type>AutoGather</type>
+    <active>0</active>
+    <persistent>1</persistent>
+    <restricttonativesettlements>1</restricttonativesettlements>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherInfluence</name>
+    <type>AutoGather</type>
+    <active>0</active>
+    <persistent>1</persistent>
+    <restricttonativesettlements>1</restricttonativesettlements>
+  </action>
+  <action>
+    <name stringid="48954">UniversityAutoGatherBonus</name>
+    <type>AutoRangedModify</type>
+    <maxrange>30</maxrange>
+    <modifyprotoid>deUniversity</modifyprotoid>
+    <persistent>1</persistent>
+    <singleunit>1</singleunit>
+    <nostack>1</nostack>
+    <modifytype>AutoGatherAbsolute</modifytype>
+    <modifyamount>0.35</modifyamount>
+  </action>
+  <action>
+    <name stringid="43294">zpAutoGatherCoin</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+  </action>
+  <tactic>Normal<attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action priority="100">RangedGarrisonAttack</action><action priority="100">RangedAttack</action><action priority="100">ChargeRangedAttack</action><action>HPAura</action><action>MaintainNatBlackwoodArcher</action><action>MaintainNativeSharktoothBowman</action><action>MaintainNatClubman</action><action>MaintainNatHolcanSpearman</action><action>MaintainNatAxeRider</action><action>MaintainNatAxeRiderDogSoldier</action><action>MaintainNatTomahawk</action><action>MaintainNatMantlet</action><action>MaintainNatBolasWarrior</action><action>MaintainNatHuaminca</action><action>MaintainNatTracker</action><action>MaintainNatHorseArcher</action><action>MaintainNatRifleman</action><action>MaintainNatBlogunWarrior</action><action>MaintainNatJaguarWarrior</action><action>MaintainNatEagleWarrior</action><action>AutoGatherXP</action><action>AutoGatherGold</action><action>AutoGatherXPNative</action><action>AutoGatherInfluence</action><action>UniversityAutoGatherBonus</action></tactic>
+   <tactic>zpCoinGather<action>zpAutoGatherCoin</action><transition><tactic>Normal</tactic><length>2</length><exit>1</exit></transition><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action priority="100">RangedGarrisonAttack</action><action priority="100">RangedAttack</action><action priority="100">ChargeRangedAttack</action><action>HPAura</action><action>MaintainNatBlackwoodArcher</action><action>MaintainNativeSharktoothBowman</action><action>MaintainNatClubman</action><action>MaintainNatHolcanSpearman</action><action>MaintainNatAxeRider</action><action>MaintainNatAxeRiderDogSoldier</action><action>MaintainNatTomahawk</action><action>MaintainNatMantlet</action><action>MaintainNatBolasWarrior</action><action>MaintainNatHuaminca</action><action>MaintainNatTracker</action><action>MaintainNatHorseArcher</action><action>MaintainNatRifleman</action><action>MaintainNatBlogunWarrior</action><action>MaintainNatJaguarWarrior</action><action>MaintainNatEagleWarrior</action><action>AutoGatherXP</action><action>AutoGatherGold</action><action>AutoGatherXPNative</action><action>AutoGatherInfluence</action><action>UniversityAutoGatherBonus</action></tactic>
+</tactics>

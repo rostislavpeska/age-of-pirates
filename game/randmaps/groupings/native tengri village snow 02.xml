@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>14</width>
+	<height>13</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="14" posx="-1.9950" posz="-7.5653" orientx="-0.0006" orienty="0.0000" orientz="-1.0000">dePropsColonyAfrica</unit>
+		<unit variation="174" posx="2.9200" posz="-7.1282" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">deSMTengriGuards</unit>
+		<unit variation="92" posx="3.6222" posz="-6.1683" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCMudTrail</unit>
+		<unit variation="77" posx="9.4628" posz="-6.8364" orientx="0.4718" orienty="0.0000" orientz="-0.8817">ypSMJesuitAccessory</unit>
+		<unit variation="174" posx="-7.3109" posz="-4.4752" orientx="-0.0005" orienty="-0.0000" orientz="-1.0000">deSocketTengri</unit>
+		<unit variation="10" posx="2.9321" posz="-4.0133" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="55" posx="9.3980" posz="-4.6251" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Campfire</unit>
+		<unit variation="231" posx="6.4643" posz="-4.5454" orientx="0.3837" orienty="0.0000" orientz="0.9235">deUnderbrushDesertAlt</unit>
+		<unit variation="3" posx="1.4850" posz="-5.1116" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="150" posx="-1.1274" posz="-4.9354" orientx="0.3820" orienty="0.0021" orientz="-0.9242">Horse</unit>
+		<unit variation="115" posx="3.1105" posz="-5.5237" orientx="-0.9870" orienty="0.0032" orientz="0.1610">Horse</unit>
+		<unit variation="150" posx="6.4712" posz="-5.8211" orientx="-0.7066" orienty="-0.0000" orientz="0.7076">Horse</unit>
+		<unit variation="10" posx="7.1083" posz="-1.6995" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="205" posx="-0.9308" posz="-2.5413" orientx="0.7071" orienty="0.0000" orientz="-0.7071">dePropsAnimalsSmallHerdable</unit>
+		<unit variation="231" posx="-0.1976" posz="-3.9392" orientx="0.0011" orienty="0.0000" orientz="1.0000">deUnderbrushDesertAlt</unit>
+		<unit variation="199" posx="10.3040" posz="-2.7933" orientx="0.9239" orienty="0.0000" orientz="-0.3827">deSMTengriGuards</unit>
+		<unit variation="41" posx="-1.2971" posz="-0.7577" orientx="0.9239" orienty="0.0000" orientz="-0.3827">FirewoodPile</unit>
+		<unit variation="5" posx="-4.7004" posz="-1.1138" orientx="0.0000" orienty="0.0000" orientz="1.0000">deSMTengriBanner</unit>
+		<unit variation="6" posx="-6.3940" posz="-1.0842" orientx="0.0000" orienty="0.0000" orientz="1.0000">deSMTengriBanner</unit>
+		<unit variation="8" posx="-7.7679" posz="-1.0826" orientx="0.0000" orienty="0.0000" orientz="1.0000">deSMTengriBanner</unit>
+		<unit variation="7" posx="-9.6059" posz="-1.0863" orientx="0.0000" orienty="0.0000" orientz="1.0000">deSMTengriBanner</unit>
+		<unit variation="4" posx="-11.0177" posz="-1.0983" orientx="0.0000" orienty="0.0000" orientz="1.0000">deSMTengriBanner</unit>
+		<unit variation="6" posx="10.3534" posz="-0.6568" orientx="1.0000" orienty="0.0000" orientz="-0.0003">PropsCave</unit>
+		<unit variation="41" posx="-10.1522" posz="1.0284" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deSMTengriGuards</unit>
+		<unit variation="113" posx="-3.8531" posz="1.9962" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Campfire</unit>
+		<unit variation="252" posx="10.1778" posz="1.4959" orientx="0.9239" orienty="0.0000" orientz="-0.3827">UnderbrushMongolia</unit>
+		<unit variation="245" posx="-5.8951" posz="1.2822" orientx="0.9240" orienty="0.0000" orientz="-0.3824">deSMTengriGuy</unit>
+		<unit variation="0" posx="-10.1125" posz="1.6112" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock2</unit>
+		<unit variation="159" posx="3.5218" posz="0.6796" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNativeTempleTengri</unit>
+		<unit variation="10" posx="-0.8237" posz="4.2620" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="10" posx="4.8151" posz="4.2728" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="10" posx="-5.5047" posz="4.1500" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="166" posx="-1.6962" posz="1.5482" orientx="-0.9239" orienty="0.0000" orientz="-0.3826">deSMTengriMan</unit>
+		<unit variation="171" posx="9.2836" posz="3.3858" orientx="0.0000" orienty="0.0000" orientz="1.0000">deSMTengriGuy</unit>
+		<unit variation="0" posx="-10.0024" posz="4.7322" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock2</unit>
+		<unit variation="1" posx="-8.4139" posz="4.5239" orientx="0.3826" orienty="0.0000" orientz="0.9239">deSMTengriTent</unit>
+		<unit variation="158" posx="-5.0683" posz="3.5899" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deSMTengriGuy</unit>
+		<unit variation="169" posx="-4.6511" posz="4.6525" orientx="0.7073" orienty="0.0000" orientz="-0.7069">deSMTengriWoman</unit>
+		<unit variation="1" posx="-3.2327" posz="4.4263" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">deSMTengriBanner</unit>
+		<unit variation="205" posx="2.4049" posz="5.4876" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">dePropsAnimalsSmallHerdable</unit>
+		<unit variation="164" posx="8.3190" posz="5.8650" orientx="0.9239" orienty="0.0000" orientz="0.3826">UnderbrushTexasGrass</unit>
+		<unit variation="107" posx="-0.9928" posz="5.8821" orientx="-0.6345" orienty="0.0000" orientz="-0.7729">SMNWStoryTelling</unit>
+		<unit variation="150" posx="6.3040" posz="5.7451" orientx="0.9239" orienty="0.0000" orientz="-0.3827">dePropsResourceCratesWood</unit>
+		<unit variation="164" posx="-8.7661" posz="7.6403" orientx="0.0001" orienty="0.0000" orientz="-1.0000">UnderbrushTexasGrass</unit>
+		<unit variation="6" posx="4.2448" posz="7.2556" orientx="0.3829" orienty="0.0000" orientz="0.9238">PropsColony</unit>
+		<unit variation="12" posx="-7.1743" posz="7.9662" orientx="-0.9239" orienty="0.0000" orientz="0.3826">dePropsColonyAfrica</unit>
+		<unit variation="22" posx="-8.7911" posz="8.2303" orientx="-1.0000" orienty="0.0000" orientz="0.0001">deSMTengriBanner</unit>
+		<unit variation="1" posx="0.8223" posz="8.2857" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deSMTengriTent</unit>
+		<unit variation="0" posx="-4.4264" posz="7.8990" orientx="0.3827" orienty="0.0000" orientz="-0.9239">deSMTengriTent</unit>
+		<unit variation="202" posx="6.6259" posz="7.7149" orientx="-0.8232" orienty="0.0000" orientz="0.5677">deSPCTreeOakProp</unit>
+		<unit variation="0" posx="-0.8916" posz="9.6367" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="rockies\groundsnow6_roc">
+			<block startx="-7" startz="-1" endx="-7" endz="0"></block>
+			<block startx="-6" startz="-3" endx="-6" endz="2"></block>
+			<block startx="-5" startz="-4" endx="-5" endz="2"></block>
+			<block startx="-4" startz="-4" endx="-4" endz="2"></block>
+			<block startx="-3" startz="-4" endx="-3" endz="2"></block>
+			<block startx="-2" startz="-5" endx="-2" endz="2"></block>
+			<block startx="-1" startz="-5" endx="-1" endz="2"></block>
+			<block startx="0" startz="-5" endx="0" endz="-1"></block>
+			<block startx="0" startz="1" endx="0" endz="2"></block>
+			<block startx="1" startz="-5" endx="1" endz="2"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="-6"></block>
+			<block startx="0" startz="-6" endx="0" endz="-6"></block>
+			<block startx="-6" startz="3" endx="-6" endz="3"></block>
+			<block startx="-5" startz="3" endx="-5" endz="5"></block>
+			<block startx="-4" startz="3" endx="-4" endz="6"></block>
+			<block startx="-3" startz="3" endx="-3" endz="6"></block>
+			<block startx="-2" startz="3" endx="-2" endz="5"></block>
+			<block startx="-1" startz="3" endx="-1" endz="4"></block>
+			<block startx="0" startz="3" endx="0" endz="5"></block>
+			<block startx="1" startz="3" endx="1" endz="5"></block>
+			<block startx="2" startz="3" endx="2" endz="6"></block>
+			<block startx="3" startz="3" endx="3" endz="6"></block>
+			<block startx="4" startz="3" endx="4" endz="5"></block>
+			<block startx="2" startz="-4" endx="2" endz="2"></block>
+			<block startx="3" startz="-5" endx="3" endz="2"></block>
+			<block startx="4" startz="-5" endx="4" endz="2"></block>
+			<block startx="5" startz="-4" endx="5" endz="2"></block>
+			<block startx="6" startz="0" endx="6" endz="1"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

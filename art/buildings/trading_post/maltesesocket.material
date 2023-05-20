@@ -1,0 +1,38 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\trading_post\socket_sudanese\textures\socket_sudanese_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\trading_post\socket_sudanese\textures\socket_sudanese_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\trading_post\socket_sudanese\textures\socket_sudanese_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\ethiopia\ethiopia_market_props\textures\ethiopia_market_props_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\ethiopia\ethiopia_market_props\textures\ethiopia_market_props_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\ethiopia\ethiopia_market_props\textures\ethiopia_market_props_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

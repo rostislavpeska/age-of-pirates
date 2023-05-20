@@ -1,0 +1,120 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\battleship\textures\lineship_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\battleship\textures\battleship_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\battleship\textures\battleship_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\battleship\textures\battleship_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\battleship\textures\lineship_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\battleship\textures\battleship_matb_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\battleship\textures\battleship_matb_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\battleship\textures\lineship_matb_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\battleship\textures\lineship_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\battleship\textures\battleship_matb_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\battleship\textures\battleship_matb_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\battleship\textures\lineship_matb_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\generic_props\textures\generic_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\generic_props\textures\generic_props_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\generic_props\textures\generic_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\military_props\textures\military_props_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\military_props\textures\military_props_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\military_props\textures\military_props_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matf">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\asians\chinese\hand_mortar\textures\handmortar_1_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\asians\chinese\hand_mortar\textures\handmortar_1_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\asians\chinese\hand_mortar\textures\handmortar_1_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matg">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\explorers\textures\b_musket_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\explorers\textures\b_musket_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\explorers\textures\b_musket_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="math">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\galleon\textures\galleon_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\galleon\textures\galleon_matB_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\galleon\textures\galleon_matB_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\galleon\textures\galleon_matB_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mati">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\steamer\textures\steamer_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\steamer\textures\steamer_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\steamer\textures\steamer_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\steamer\textures\steamer_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

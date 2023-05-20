@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "300344" displayNameID = "300343" loadDetails="300345" largeMapName = "zpburma"
+    imagepath = "ui\random_map\burma\burma_mini" cannotReplace = "" loadBackground="ui\random_map\burma\burma_map">
+   <loadss>ui\random_map\burma\burma_01</loadss>
+   <loadss>ui\random_map\burma\burma_02</loadss>
+   <loadss>ui\random_map\burma\burma_03</loadss>
+</mapinfo>

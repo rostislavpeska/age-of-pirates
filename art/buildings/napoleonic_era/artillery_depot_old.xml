@@ -1,0 +1,27 @@
+<!-- converted from XMB to XML -->
+
+<animfile>
+	<component>
+		ModelComp
+			<logic type="Variation">
+				<v0>
+					<assetreference type="GrannyModel">
+						<file>buildings\artillery_depot\WEST\AGE_3\West_artillery_depot_age3</file>
+					</assetreference>
+					<decal>
+						<effecttype>default</effecttype>
+						<texture>buildings\artillery_depot\WEST\AGE_3\artillery_depot_ground</texture>
+						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+						<width>9.50</width>
+						<height>9.50</height>
+						<xoffset>0.00</xoffset>
+						<zoffset>0.00</zoffset>
+					</decal>
+				</v0>
+			</logic>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

@@ -1,0 +1,110 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_matA_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_01_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_01_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_01_matA_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_02_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_02_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_02_matA_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_03_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_03_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_03_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_MatB_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_MatB_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_MatB_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_01_MatB_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_01_MatB_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_01_MatB_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_02_MatB_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_02_MatB_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_02_MatB_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_03_MatB_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_03_MatB_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_east\ee_russian_factory\textures\ee_russian_factory_03_MatB_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\russian\Icicles\Textures\Icicles_v2_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\russian\Icicles\Textures\Icicles_v2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\russian\Icicles\Textures\Icicles_v2_mata_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="homecity\russian\Icicles\Textures\Icicles_v2_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\russian\Icicles\Textures\Icicles_v2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\russian\Icicles\Textures\Icicles_v2_mata_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="homecity\russian\Icicles\Textures\Icicles_v2_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\russian\Icicles\Textures\Icicles_v2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\russian\Icicles\Textures\Icicles_v2_mata_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="homecity\russian\Icicles\Textures\Icicles_v2_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\russian\Icicles\Textures\Icicles_v2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\russian\Icicles\Textures\Icicles_v2_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

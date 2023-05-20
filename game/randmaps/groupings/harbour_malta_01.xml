@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>16</width>
+	<height>19</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="103" posx="6.4146" posz="-15.4423" orientx="-0.9731" orienty="0.0000" orientz="0.2303">ShorelineRockBigNE</unit>
+		<unit variation="32" posx="-2.9110" posz="-10.0603" orientx="-1.0000" orienty="0.0000" orientz="0.0000">IGCShipwreck</unit>
+		<unit variation="11" posx="6.6919" posz="-9.2974" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsColony</unit>
+		<unit variation="179" posx="-10.6292" posz="-6.0992" orientx="0.2104" orienty="0.0000" orientz="-0.9776">zpHarbourPlatform</unit>
+		<unit variation="23" posx="3.2824" posz="-7.9685" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">deNatEUPropVilFemale</unit>
+		<unit variation="205" posx="-6.9630" posz="-4.5976" orientx="0.9815" orienty="0.0000" orientz="0.1916">zpHarbourPlatform</unit>
+		<unit variation="165" posx="2.6444" posz="-5.5671" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropVilGuards</unit>
+		<unit variation="35" posx="-1.9944" posz="-3.4355" orientx="-0.1305" orienty="0.0000" orientz="0.9914">zpHarbourPlatform</unit>
+		<unit variation="161" posx="6.7906" posz="2.1569" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">SocketTradeRoute</unit>
+		<unit variation="137" posx="-6.9445" posz="0.7271" orientx="-1.0000" orienty="0.0000" orientz="0.0092">zpHarbourPlatform</unit>
+		<unit variation="244" posx="-6.5037" posz="5.9944" orientx="-0.9814" orienty="0.0000" orientz="0.1918">zpHarbourPlatform</unit>
+		<unit variation="203" posx="-10.4742" posz="5.9025" orientx="-0.9993" orienty="0.0000" orientz="0.0369">zpHarbourShip</unit>
+		<unit variation="172" posx="-4.3943" posz="9.9936" orientx="0.1978" orienty="0.0000" orientz="0.9802">zpHarbourPlatform</unit>
+		<unit variation="1" posx="0.5998" posz="9.0968" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsColony</unit>
+		<unit variation="253" posx="3.3780" posz="10.2767" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropVilFemale</unit>
+		<unit variation="167" posx="-3.7333" posz="12.9416" orientx="-0.9857" orienty="0.0000" orientz="0.1685">zpHarbourShip</unit>
+		<unit variation="235" posx="-11.2087" posz="12.0834" orientx="0.2648" orienty="0.0000" orientz="0.9643">zpHarbourPlatform</unit>
+		<unit variation="4" posx="1.4006" posz="12.3411" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsColony</unit>
+		<unit variation="112" posx="-6.0137" posz="12.4980" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativePirates</unit>
+	</units>
+	<tiles>
+		<tilegroup type="Underwater" subtype="Carolinas\Underwater2">
+			<block startx="-8" startz="-9" endx="-8" endz="-8"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

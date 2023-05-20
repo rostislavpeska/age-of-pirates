@@ -1,0 +1,42 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\asians\spc\treasure_ship\textures\spc_treasure_ship_stage_final_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\asians\spc\treasure_ship\textures\spc_treasure_ship_stage_final_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\asians\spc\treasure_ship\textures\spc_treasure_ship_stage_final_mata_masks">
+      </texture>
+      <float name="Lift Metallic" override="0.2050">
+      </float>
+      <float name="AO Intensity" override="0.6790">
+      </float>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\asians\spc\treasure_ship\textures\spc_treasure_ship_stage_final_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="units\asians\spc\treasure_ship\textures\spc_treasure_ship_stage_final_matb_normals">
+      </texture>
+      <texture name="Masks" override="units\asians\spc\treasure_ship\textures\spc_treasure_ship_stage_final_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\china_spc_ship\hull\textures\hulldragon_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\china_spc_ship\hull\textures\hulldragon_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\china_spc_ship\hull\textures\hulldragon_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

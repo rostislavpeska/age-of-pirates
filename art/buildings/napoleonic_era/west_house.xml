@@ -1,0 +1,124 @@
+<!-- converted from XMB to XML -->
+
+<animfile>
+	<component>
+		ModelComp
+			<logic type="Variation">
+				<v0>
+					<assetreference type="GrannyModel">
+						<file>buildings\house\WEST\AGE_1\West_Quarters_Age1_A</file>
+					</assetreference>
+					<decal>
+						<effecttype>bump</effecttype>
+						<texture>buildings\house\WEST\AGE_1\House_Ground</texture>
+						<selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
+						<bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+						<width>6.00</width>
+						<height>6.00</height>
+					</decal>
+				</v0>
+				<v1>
+					<assetreference type="GrannyModel">
+						<file>buildings\house\WEST\AGE_1\West_Quarters_Age1_B</file>
+					</assetreference>
+					<decal>
+						<effecttype>bump</effecttype>
+						<texture>buildings\house\WEST\AGE_1\House_Ground</texture>
+						<selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
+						<bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+						<width>6.00</width>
+						<height>6.00</height>
+					</decal>
+				</v1>
+				<v2>
+					<assetreference type="GrannyModel">
+						<file>buildings\house\WEST\AGE_1\West_Quarters_Age1_C</file>
+					</assetreference>
+					<decal>
+						<effecttype>bump</effecttype>
+						<texture>buildings\house\WEST\AGE_1\House_Ground</texture>
+						<selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
+						<bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+						<width>6.00</width>
+						<height>6.00</height>
+					</decal>
+				</v2>
+				<v3>
+					<assetreference type="GrannyModel">
+						<file>buildings\house\WEST\AGE_2\west_quarters_age2_a</file>
+					</assetreference>
+					<decal>
+						<effecttype>default</effecttype>
+						<texture>buildings\house\west\age_1\House_Ground</texture>
+						<selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
+						<width>6.00</width>
+						<height>6.00</height>
+					</decal>
+				</v3>
+				<v4>
+					<assetreference type="GrannyModel">
+						<file>buildings\house\WEST\AGE_2\west_quarters_age2_b</file>
+					</assetreference>
+					<decal>
+						<effecttype>default</effecttype>
+						<texture>buildings\house\west\age_1\House_Ground</texture>
+						<selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
+						<width>6.00</width>
+						<height>6.00</height>
+					</decal>
+				</v4>
+				<v5>
+					<assetreference type="GrannyModel">
+						<file>buildings\house\WEST\AGE_2\west_quarters_age2_c</file>
+					</assetreference>
+					<decal>
+						<effecttype>default</effecttype>
+						<texture>buildings\house\west\age_1\House_Ground</texture>
+						<selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
+						<width>6.00</width>
+						<height>6.00</height>
+					</decal>
+				</v5>
+				<v6>
+					<assetreference type="GrannyModel">
+						<file>buildings\house\WEST\AGE_3\west_quarters_age3_a</file>
+					</assetreference>
+					<decal>
+						<effecttype>default</effecttype>
+						<texture>buildings\house\west\age_1\House_Ground</texture>
+						<selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
+						<width>7.00</width>
+						<height>7.00</height>
+					</decal>
+				</v6>
+				<v7>
+					<assetreference type="GrannyModel">
+						<file>buildings\house\WEST\AGE_3\west_quarters_age3_b</file>
+					</assetreference>
+					<decal>
+						<effecttype>default</effecttype>
+						<texture>buildings\house\west\age_1\House_Ground</texture>
+						<selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
+						<width>7.00</width>
+						<height>7.00</height>
+					</decal>
+				</v7>
+				<v8>
+					<assetreference type="GrannyModel">
+						<file>buildings\house\WEST\AGE_3\west_quarters_age3_c</file>
+					</assetreference>
+					<decal>
+						<effecttype>default</effecttype>
+						<texture>buildings\house\west\age_1\House_Ground</texture>
+						<selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
+						<width>7.00</width>
+						<height>7.00</height>
+					</decal>
+				</v8>
+			</logic>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

@@ -1,0 +1,24 @@
+<protounitsounddef>
+  <protounit name="zpWokouFuchuan">
+    <soundtype name="Select">
+      <soundset name="ChineseVillagerF_Select">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="ShipDeath">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="ShipBirth">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <soundset name="ChineseVillagerF_Acknowledge">
+      </soundset>
+    </soundtype>
+    <soundtype name="Exists">
+      <soundset name="AmbienceShip">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

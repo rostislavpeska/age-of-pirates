@@ -1,0 +1,24 @@
+<protounitsounddef>
+  <protounit name="zpSPCLineSHip">
+    <soundtype name="Select">
+      <soundset name="MorganBlackSelect">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="ShipDeath">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="ShipBirth">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <soundset name="MorganBlackFlagshipAcknowledge">
+      </soundset>
+    </soundtype>
+    <soundtype name="Exists">
+      <soundset name="AmbienceShip">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

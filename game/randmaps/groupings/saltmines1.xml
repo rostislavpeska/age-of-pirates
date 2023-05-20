@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>18</width>
+	<height>17</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="37" posx="-6.3699" posz="-16.5513" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="45" posx="9.7225" posz="-17.4117" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="53" posx="10.0629" posz="-18.2387" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="95" posx="10.5567" posz="-15.0682" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="253" posx="10.6510" posz="-14.9879" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="118" posx="11.8132" posz="-12.1454" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="7" posx="1.2915" posz="-12.1627" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="68" posx="6.0654" posz="-18.5414" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="166" posx="13.5117" posz="-10.3656" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="203" posx="12.4011" posz="-10.4489" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="119" posx="3.7328" posz="-10.4564" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="11" posx="-2.5858" posz="-8.8621" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="1" posx="13.1407" posz="-8.9965" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="189" posx="6.7783" posz="-7.9946" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="143" posx="-5.0000" posz="-8.0000" orientx="0.2314" orienty="0.0000" orientz="-0.9728">MineSalt</unit>
+		<unit variation="90" posx="-8.6935" posz="-6.1342" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="11" posx="7.9132" posz="-7.4357" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="111" posx="14.2629" posz="-7.2690" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="226" posx="15.1013" posz="-6.1089" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="122" posx="-7.6891" posz="-4.9004" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="132" posx="14.5324" posz="-5.6952" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="28" posx="13.5070" posz="-4.5146" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="232" posx="2.7338" posz="-4.1878" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="137" posx="10.5946" posz="-3.1431" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="11" posx="7.1288" posz="-2.3915" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="3" posx="7.0670" posz="-2.6266" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="87" posx="6.1747" posz="-3.1639" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="163" posx="2.7721" posz="-3.8071" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="184" posx="1.7671" posz="-2.0993" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="207" posx="1.8993" posz="-2.6538" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="38" posx="2.6192" posz="-3.7941" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="187" posx="-5.0000" posz="-2.0000" orientx="0.5891" orienty="0.0000" orientz="-0.8081">MineSalt</unit>
+		<unit variation="80" posx="0.8729" posz="-0.7809" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="2" posx="-0.9230" posz="-0.8095" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="150" posx="8.1016" posz="-0.8029" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="188" posx="-4.5378" posz="-0.3462" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="124" posx="-2.4884" posz="-0.3495" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="65" posx="-2.7743" posz="-1.2918" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="109" posx="3.6996" posz="-1.4580" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="241" posx="5.9984" posz="-1.7062" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="111" posx="1.9404" posz="-0.4208" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="182" posx="1.9034" posz="-0.8143" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="225" posx="0.2518" posz="1.4171" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="79" posx="-4.9260" posz="0.8599" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="137" posx="-3.7380" posz="0.9001" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="161" posx="-3.6555" posz="3.2171" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="255" posx="-6.7346" posz="3.6223" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="69" posx="-7.1252" posz="3.6029" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="38" posx="-3.5382" posz="2.2237" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="231" posx="-7.7674" posz="5.6189" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="160" posx="-6.7964" posz="5.9016" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="252" posx="-7.6152" posz="6.5803" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="48" posx="-7.5577" posz="6.9438" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">RiverPropsYuk</unit>
+		<unit variation="116" posx="-3.0000" posz="8.0000" orientx="-0.5093" orienty="0.0000" orientz="0.8606">MineSalt</unit>
+		<unit variation="250" posx="-11.0000" posz="10.0000" orientx="0.1168" orienty="-0.0000" orientz="0.9932">MineSalt</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="AfricaDesert\ground_sand1_afriDesert">
+			<block startx="-9" startz="-8" endx="-9" endz="-2"></block>
+			<block startx="-8" startz="-8" endx="-8" endz="-2"></block>
+			<block startx="-7" startz="-8" endx="-7" endz="-2"></block>
+			<block startx="-6" startz="-8" endx="-6" endz="-2"></block>
+			<block startx="-5" startz="-8" endx="-5" endz="-2"></block>
+			<block startx="-4" startz="-8" endx="-4" endz="-2"></block>
+			<block startx="-3" startz="-8" endx="-3" endz="-2"></block>
+			<block startx="-9" startz="7" endx="-9" endz="8"></block>
+			<block startx="-8" startz="7" endx="-8" endz="8"></block>
+			<block startx="-7" startz="7" endx="-7" endz="8"></block>
+			<block startx="-6" startz="7" endx="-6" endz="8"></block>
+			<block startx="-5" startz="7" endx="-5" endz="8"></block>
+			<block startx="-4" startz="7" endx="-4" endz="8"></block>
+			<block startx="-3" startz="7" endx="-3" endz="8"></block>
+			<block startx="-9" startz="-1" endx="-9" endz="6"></block>
+			<block startx="-8" startz="-1" endx="-8" endz="6"></block>
+			<block startx="-7" startz="-1" endx="-7" endz="6"></block>
+			<block startx="-6" startz="-1" endx="-6" endz="6"></block>
+			<block startx="-5" startz="-1" endx="-5" endz="6"></block>
+			<block startx="-4" startz="-1" endx="-4" endz="6"></block>
+			<block startx="-3" startz="-1" endx="-3" endz="6"></block>
+			<block startx="-2" startz="-1" endx="-2" endz="6"></block>
+			<block startx="-1" startz="-1" endx="-1" endz="6"></block>
+			<block startx="-2" startz="7" endx="-2" endz="8"></block>
+			<block startx="-1" startz="7" endx="-1" endz="8"></block>
+			<block startx="-2" startz="-8" endx="-2" endz="-2"></block>
+			<block startx="-1" startz="-8" endx="-1" endz="-2"></block>
+			<block startx="0" startz="-8" endx="0" endz="-2"></block>
+			<block startx="1" startz="-8" endx="1" endz="-3"></block>
+			<block startx="2" startz="-8" endx="2" endz="-4"></block>
+			<block startx="3" startz="-8" endx="3" endz="-4"></block>
+			<block startx="4" startz="-8" endx="4" endz="-5"></block>
+			<block startx="5" startz="-8" endx="5" endz="-5"></block>
+			<block startx="6" startz="-8" endx="6" endz="-6"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="AfricaDesert\ground_sand2_afriDesert">
+			<block startx="0" startz="-1" endx="0" endz="6"></block>
+			<block startx="1" startz="-1" endx="1" endz="6"></block>
+			<block startx="2" startz="-1" endx="2" endz="6"></block>
+			<block startx="3" startz="-1" endx="3" endz="-1"></block>
+			<block startx="4" startz="3" endx="4" endz="5"></block>
+			<block startx="5" startz="0" endx="5" endz="0"></block>
+			<block startx="0" startz="7" endx="0" endz="8"></block>
+			<block startx="1" startz="7" endx="1" endz="8"></block>
+			<block startx="2" startz="7" endx="2" endz="8"></block>
+			<block startx="6" startz="0" endx="6" endz="0"></block>
+			<block startx="1" startz="-2" endx="1" endz="-2"></block>
+			<block startx="2" startz="-3" endx="2" endz="-2"></block>
+			<block startx="3" startz="-3" endx="3" endz="-2"></block>
+			<block startx="4" startz="-4" endx="4" endz="-2"></block>
+			<block startx="5" startz="-4" endx="5" endz="-2"></block>
+			<block startx="6" startz="-5" endx="6" endz="-3"></block>
+			<block startx="7" startz="-8" endx="7" endz="-3"></block>
+			<block startx="8" startz="-8" endx="8" endz="-4"></block>
+		</tilegroup>
+		<tilegroup type="Shoreline" subtype="california\groundshore1_cal">
+			<block startx="3" startz="0" endx="3" endz="6"></block>
+			<block startx="4" startz="-1" endx="4" endz="1"></block>
+			<block startx="5" startz="-1" endx="5" endz="-1"></block>
+			<block startx="3" startz="7" endx="3" endz="8"></block>
+			<block startx="4" startz="7" endx="4" endz="8"></block>
+			<block startx="6" startz="-1" endx="6" endz="-1"></block>
+			<block startx="7" startz="-1" endx="7" endz="-1"></block>
+			<block startx="8" startz="-1" endx="8" endz="-1"></block>
+			<block startx="6" startz="-2" endx="6" endz="-2"></block>
+			<block startx="7" startz="-2" endx="7" endz="-2"></block>
+			<block startx="8" startz="-3" endx="8" endz="-2"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="AfricaDesert\ground_rock1_afriDesert">
+			<block startx="5" startz="1" endx="5" endz="6"></block>
+			<block startx="5" startz="7" endx="5" endz="8"></block>
+			<block startx="6" startz="7" endx="6" endz="8"></block>
+			<block startx="7" startz="7" endx="7" endz="8"></block>
+			<block startx="8" startz="7" endx="8" endz="8"></block>
+			<block startx="6" startz="1" endx="6" endz="6"></block>
+			<block startx="7" startz="0" endx="7" endz="6"></block>
+			<block startx="8" startz="0" endx="8" endz="6"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="AfricaDesert\ground_dirt1_afriDesert">
+			<block startx="4" startz="2" endx="4" endz="2"></block>
+			<block startx="4" startz="6" endx="4" endz="6"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

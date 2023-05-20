@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\natives\maltese\textures\maltese_rider_a_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\alain\textures\spc_alain_magnan _mata_normals">
+      </texture>
+      <texture name="Masks" override="units\spc\alain\textures\spc_alain_magnan _mata_masks">
+      </texture>
+      <texture name="Details" override="units\spc\alain\textures\spc_alain_magnan _mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_prop</definebone>
+		<component>
+		house
+		<logic type="Variation">
+			<variationid0>
+				<assetreference type="GrannyModel">
+					<file>buildings\asian_civs\spc\war_tent\Asian_war_tent\asian_war_tent_01</file>
+				</assetreference>
+			</variationid0>
+			<variationid1>
+				<assetreference type="GrannyModel">
+					<file>buildings\asian_civs\spc\war_tent\Asian_war_tent\asian_war_tent_02</file>
+				</assetreference>
+			</variationid1>
+			<variationid2>
+				<assetreference type="GrannyModel">
+					<file>buildings\asian_civs\spc\war_tent\Asian_war_tent\asian_war_tent_03</file>
+				</assetreference>
+			</variationid2>
+			<variationid3>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\jesuit_house_01</file>
+					<replacetexture>
+						<from>buildings\native_settlement\jesuit_house_01\textures\jesuit_house_01_mata_BaseColor</from>
+						<to>buildings\native_settlement\jesuit_house_01\textures\wokou_house_01_mata_BaseColor</to>
+					</replacetexture>
+					<replacetexture>
+						<from>buildings\native_settlement\jesuit_house_03\textures\jesuit_house_03_mata_BaseColor</from>
+						<to>buildings\native_settlement\jesuit_house_03\textures\wokou_house_03_mata_BaseColor</to>
+					</replacetexture>
+				</assetreference>
+			</variationid3>
+			<variationid4>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\jesuit_house_02</file>
+					<replacetexture>
+						<from>buildings\native_settlement\jesuit_house_01\textures\jesuit_house_01_mata_BaseColor</from>
+						<to>buildings\native_settlement\jesuit_house_01\textures\wokou_house_01_mata_BaseColor</to>
+					</replacetexture>
+					<replacetexture>
+						<from>buildings\native_settlement\jesuit_house_03\textures\jesuit_house_03_mata_BaseColor</from>
+						<to>buildings\native_settlement\jesuit_house_03\textures\wokou_house_03_mata_BaseColor</to>
+					</replacetexture>
+				</assetreference>
+			</variationid4>
+			<variationid5>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\jesuit_house_03</file>
+					<replacetexture>
+						<from>buildings\native_settlement\jesuit_house_01\textures\jesuit_house_01_mata_BaseColor</from>
+						<to>buildings\native_settlement\jesuit_house_01\textures\wokou_house_01_mata_BaseColor</to>
+					</replacetexture>
+					<replacetexture>
+						<from>buildings\native_settlement\jesuit_house_03\textures\jesuit_house_03_mata_BaseColor</from>
+						<to>buildings\native_settlement\jesuit_house_03\textures\wokou_house_03_mata_BaseColor</to>
+					</replacetexture>
+				</assetreference>
+			</variationid5>
+			<variationid6>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\jesuit_house_04</file>
+					<replacetexture>
+						<from>buildings\native_settlement\jesuit_house_01\textures\jesuit_house_01_mata_BaseColor</from>
+						<to>buildings\native_settlement\jesuit_house_01\textures\wokou_house_01_mata_BaseColor</to>
+					</replacetexture>
+					<replacetexture>
+						<from>buildings\native_settlement\jesuit_house_03\textures\jesuit_house_03_mata_BaseColor</from>
+						<to>buildings\native_settlement\jesuit_house_03\textures\wokou_house_03_mata_BaseColor</to>
+					</replacetexture>
+				</assetreference>
+			</variationid6>
+			<variationid7>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\jesuit_house_05</file>
+					<replacetexture>
+						<from>buildings\native_settlement\jesuit_house_01\textures\jesuit_house_01_mata_BaseColor</from>
+						<to>buildings\native_settlement\jesuit_house_01\textures\wokou_house_01_mata_BaseColor</to>
+					</replacetexture>
+					<replacetexture>
+						<from>buildings\native_settlement\jesuit_house_03\textures\jesuit_house_03_mata_BaseColor</from>
+						<to>buildings\native_settlement\jesuit_house_03\textures\wokou_house_03_mata_BaseColor</to>
+					</replacetexture>
+				</assetreference>
+			</variationid7>
+			<variationid8>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\jesuit_house_06</file>
+					<replacetexture>
+						<from>buildings\native_settlement\jesuit_house_01\textures\jesuit_house_01_mata_BaseColor</from>
+						<to>buildings\native_settlement\jesuit_house_01\textures\wokou_house_01_mata_BaseColor</to>
+					</replacetexture>
+					<replacetexture>
+						<from>buildings\native_settlement\jesuit_house_03\textures\jesuit_house_03_mata_BaseColor</from>
+						<to>buildings\native_settlement\jesuit_house_03\textures\wokou_house_03_mata_BaseColor</to>
+					</replacetexture>
+				</assetreference>
+			</variationid8>
+			<variationid9>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\jesuit_house_07</file>
+					<replacetexture>
+						<from>buildings\native_settlement\jesuit_house_01\textures\jesuit_house_01_mata_BaseColor</from>
+						<to>buildings\native_settlement\jesuit_house_01\textures\wokou_house_01_mata_BaseColor</to>
+					</replacetexture>
+					<replacetexture>
+						<from>buildings\native_settlement\jesuit_house_03\textures\jesuit_house_03_mata_BaseColor</from>
+						<to>buildings\native_settlement\jesuit_house_03\textures\wokou_house_03_mata_BaseColor</to>
+					</replacetexture>
+				</assetreference>
+			</variationid9>
+			<variationid10>
+				<assetreference type="GrannyModel">
+					<file>buildings\asian_civs\spc\japanese_outpost\Asian_outpost\asian_outpost</file>
+				</assetreference>
+			</variationid10>
+			<variationid11>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\zen_entrance_01</file>
+				</assetreference>
+			</variationid11>
+		</logic>
+		<decal>
+			<effecttype>default</effecttype>
+			<texture>buildings\native_settlement\japan_decal_01</texture>
+			<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+			<width>8.00</width>
+			<height>8.00</height>
+		</decal>
+	</component>
+	<anim>
+		Idle
+		<component>house</component>
+	</anim>
+</animfile>

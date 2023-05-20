@@ -1,0 +1,39 @@
+<!-- converted from XMB to XML -->
+
+<animfile>
+	<component>
+		ModelComp
+			<logic type="Variation">
+				<v0>
+					<assetreference type="GrannyModel">
+						<file>buildings\house\WEST\AGE_1\west_house_g_2</file>
+					</assetreference>
+					<decal>
+						<effecttype>bump</effecttype>
+						<texture>buildings\house\WEST\AGE_1\House_Ground</texture>
+						<selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
+						<bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+						<width>6.00</width>
+						<height>6.00</height>
+					</decal>
+				</v0>
+				<v1>
+					<assetreference type="GrannyModel">
+						<file>buildings\house\WEST\AGE_1\west_house_g_3</file>
+					</assetreference>
+					<decal>
+						<effecttype>bump</effecttype>
+						<texture>buildings\house\WEST\AGE_1\House_Ground</texture>
+						<selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
+						<bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+						<width>6.00</width>
+						<height>6.00</height>
+					</decal>
+				</v1>
+			</logic>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

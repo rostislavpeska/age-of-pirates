@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>13</width>
+	<height>13</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="9" posx="0.0680" posz="-11.1436" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="5" posx="10.6964" posz="-11.3967" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="6" posx="9.8721" posz="-12.1501" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="6" posx="6.6141" posz="-12.0566" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="208" posx="3.4722" posz="-7.0846" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="208" posx="7.0872" posz="-8.4409" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="2" posx="2.0562" posz="-8.8924" orientx="0.0000" orienty="0.0000" orientz="1.0000">NativeHouseNootka</unit>
+		<unit variation="41" posx="8.3802" posz="-8.4258" orientx="1.0000" orienty="0.0000" orientz="0.0000">NativeHouseNootka</unit>
+		<unit variation="136" posx="-4.7139" posz="-6.5305" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SocketNootka</unit>
+		<unit variation="128" posx="7.1429" posz="-3.0965" orientx="-0.9977" orienty="0.0000" orientz="0.0678">SMBuffaloCookpot</unit>
+		<unit variation="208" posx="3.4274" posz="0.0149" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="208" posx="6.3211" posz="-0.9639" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="13" posx="10.6174" posz="-0.5232" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="208" posx="-7.3080" posz="2.5964" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="208" posx="5.2262" posz="2.6953" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">NativeTownObstruction</unit>
+		<unit variation="208" posx="-4.4476" posz="1.6441" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="3" posx="-8.4676" posz="1.9660" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="11" posx="-10.1288" posz="0.8076" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="14" posx="2.7464" posz="0.0497" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="120" posx="-6.6696" posz="0.1764" orientx="-0.9905" orienty="0.0000" orientz="0.1378">SMBuffaloPickerSitting</unit>
+		<unit variation="15" posx="6.7085" posz="3.5941" orientx="-0.9894" orienty="0.0000" orientz="0.1455">SMBuffaloStoryTelling</unit>
+		<unit variation="208" posx="-1.5774" posz="5.6012" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="7" posx="-7.0349" posz="5.4439" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="9" posx="2.7162" posz="4.3025" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="13" posx="9.0751" posz="4.8914" orientx="0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="9" posx="-1.7831" posz="5.1655" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="164" posx="0.9220" posz="5.2637" orientx="-0.0743" orienty="0.0000" orientz="-0.9972">SMBuffaloMixerPoker</unit>
+		<unit variation="8" posx="-7.7368" posz="6.0757" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="84" posx="-4.2771" posz="7.6180" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativeHouseNootka</unit>
+		<unit variation="58" posx="4.2133" posz="6.6942" orientx="-0.9981" orienty="0.0000" orientz="0.0615">SMBuffaloFence</unit>
+		<unit variation="8" posx="-8.0696" posz="9.5380" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="rockies\groundsnow6_roc">
+			<block startx="-6" startz="1" endx="-6" endz="2"></block>
+			<block startx="-5" startz="0" endx="-5" endz="2"></block>
+			<block startx="-4" startz="0" endx="-4" endz="2"></block>
+			<block startx="-3" startz="-1" endx="-3" endz="2"></block>
+			<block startx="-2" startz="-1" endx="-2" endz="2"></block>
+			<block startx="-1" startz="-2" endx="-1" endz="2"></block>
+			<block startx="0" startz="-4" endx="0" endz="2"></block>
+			<block startx="1" startz="-5" endx="1" endz="2"></block>
+			<block startx="2" startz="-5" endx="2" endz="2"></block>
+			<block startx="-5" startz="3" endx="-5" endz="3"></block>
+			<block startx="-4" startz="3" endx="-4" endz="4"></block>
+			<block startx="-3" startz="3" endx="-3" endz="4"></block>
+			<block startx="-2" startz="3" endx="-2" endz="3"></block>
+			<block startx="-1" startz="3" endx="-1" endz="3"></block>
+			<block startx="3" startz="-5" endx="3" endz="1"></block>
+			<block startx="4" startz="-4" endx="4" endz="-1"></block>
+			<block startx="5" startz="-3" endx="5" endz="-2"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="great_lakes\groundforest_snow_gl">
+			<block startx="-2" startz="-2" endx="-2" endz="-2"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="rockies\ground1_roc">
+			<block startx="-4" startz="-1" endx="-4" endz="-1"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

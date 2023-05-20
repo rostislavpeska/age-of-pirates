@@ -1,0 +1,33 @@
+<!-- converted from XMB to XML -->
+
+<animfile>
+	<component>
+		ModelComp
+			<logic type="Variation">
+				<v0>
+					<assetreference type="GrannyModel">
+						<file>buildings\house\OLD\east_house_age2_a</file>
+					</assetreference>
+				</v0>
+				<v1>
+					<assetreference type="GrannyModel">
+						<file>buildings\house\OLD\east_house_age2_b</file>
+					</assetreference>
+				</v1>
+				<v2>
+					<assetreference type="GrannyModel">
+						<file>buildings\house\OLD\east_house_age2_c</file>
+					</assetreference>
+				</v2>
+				<v3>
+					<assetreference type="GrannyModel">
+						<file>buildings\house\OLD\east_house_age3_a</file>
+					</assetreference>
+				</v3>
+			</logic>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

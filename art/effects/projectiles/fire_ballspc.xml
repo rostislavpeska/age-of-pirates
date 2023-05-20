@@ -1,0 +1,7 @@
+<animfile>
+  <!--<attachment>fire_trail<component>trail emitter<assetreference type="ParticleSystem"><file>effects\projectiles\flamingArrow_trail.particle</file></assetreference></component><anim>Idle<component>trail emitter</component></anim></attachment>-->
+  <attachment>explosion<component>fire explosion<assetreference type="popcornFx"><file>units\spc\fire_ship\Exp_fire_ship.pkfx</file></assetreference></component><anim>Idle<component>fire explosion</component></anim></attachment>
+  <attachment>fire<component>fire emitter<assetreference type="popcornFx"><file>units\artillery\flamethrower\flamethrower_flames.pkfx</file></assetreference></component><anim>Idle<component>fire emitter</component></anim></attachment>
+  <component>ball<assetreference type="GrannyModel"><file>effects\impacts\directional_arrow</file></assetreference><attach a="fire" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="explosion" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></component>
+  <anim>Idle<component>ball</component></anim>
+</animfile>

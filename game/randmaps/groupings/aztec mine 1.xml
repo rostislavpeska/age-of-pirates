@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>10</width>
+	<height>11</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="204" posx="1.1853" posz="-9.9516" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="82" posx="-0.8244" posz="-5.6384" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">NativeHouseAztec</unit>
+		<unit variation="198" posx="4.2884" posz="-8.9081" orientx="-0.8518" orienty="0.0000" orientz="-0.5238">SMIncanFence</unit>
+		<unit variation="6" posx="-3.7413" posz="-7.2654" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="45" posx="3.3412" posz="-7.2971" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="131" posx="-6.8298" posz="-5.6562" orientx="0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
+		<unit variation="24" posx="-4.8227" posz="-5.1035" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="10" posx="-5.1717" posz="-5.5187" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="7" posx="-3.5653" posz="-4.4185" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="2" posx="5.2805" posz="2.1453" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">dePropRock</unit>
+		<unit variation="150" posx="-7.7445" posz="1.5776" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="72" posx="-5.1286" posz="0.4906" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="43" posx="-3.6434" posz="5.2038" orientx="-0.1434" orienty="0.0000" orientz="-0.9897">SMIncanCookpot</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

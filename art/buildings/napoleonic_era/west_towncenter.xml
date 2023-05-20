@@ -1,0 +1,39 @@
+<!-- converted from XMB to XML -->
+
+<animfile>
+	<component>
+		ModelComp
+			<logic type="Variation">
+				<v0>
+					<assetreference type="GrannyModel">
+						<file>buildings\town_center\west_towncenter_1age</file>
+					</assetreference>
+					<decal>
+						<effecttype>bump</effecttype>
+						<texture>buildings\town_center\west_tc_ground_age3</texture>
+						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+						<bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+						<width>12.00</width>
+						<height>12.00</height>
+					</decal>
+				</v0>
+				<v1>
+					<assetreference type="GrannyModel">
+						<file>buildings\town_center\west_towncenter_3age</file>
+					</assetreference>
+					<decal>
+						<effecttype>bump</effecttype>
+						<texture>buildings\town_center\west_tc_ground_age3</texture>
+						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+						<bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+						<width>12.00</width>
+						<height>12.00</height>
+					</decal>
+				</v1>
+			</logic>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

@@ -1,0 +1,89 @@
+<!-- converted from XMB to XML -->
+
+<animfile>
+	<component>
+		building
+		<logic type="Variation">
+
+				<data>
+					<assetreference type="GrannyModel">
+						<file>War of the Triple Alliance\Delta\AURs\Buildings\house6</file>
+					</assetreference>
+					<decal>
+						<effecttype>default</effecttype>
+						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
+						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+						<width>8</width>
+						<height>8</height>
+						<xoffset>0.00</xoffset>
+						<zoffset>0.00</zoffset>	
+					</decal>
+				</data>
+
+				<data>
+					<assetreference type="GrannyModel">
+						<file>War of the Triple Alliance\Delta\AURs\New Buildings\customs</file>
+					</assetreference>
+					<decal>
+						<effecttype>default</effecttype>
+						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
+						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+						<width>6</width>
+						<height>6</height>
+						<xoffset>0.00</xoffset>
+						<zoffset>0.00</zoffset>	
+					</decal>
+				</data>
+
+				<data>
+					<assetreference type="GrannyModel">
+						<file>War of the Triple Alliance\Delta\AURs\New Buildings\constable</file>
+					</assetreference>
+					<decal>
+						<effecttype>default</effecttype>
+						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
+						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+						<width>4</width>
+						<height>4</height>
+						<xoffset>0.00</xoffset>
+						<zoffset>0.00</zoffset>	
+					</decal>
+				</data>
+
+				<data>
+					<assetreference type="GrannyModel">
+						<file>War of the Triple Alliance\Delta\AURs\Buildings\southmosque</file>
+					</assetreference>
+					<decal>
+						<effecttype>default</effecttype>
+						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
+						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+						<width>10</width>
+						<height>10</height>
+						<xoffset>0.00</xoffset>
+						<zoffset>0.00</zoffset>	
+					</decal>
+				</data>
+
+				<data>
+					<assetreference type="GrannyModel">
+						<file>War of the Triple Alliance\Delta\AURs\New Buildings\workshop</file>
+					</assetreference>
+					<decal>
+						<effecttype>default</effecttype>
+						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
+						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+						<width>10</width>
+						<height>10</height>
+						<xoffset>0.00</xoffset>
+						<zoffset>0.00</zoffset>	
+					</decal>
+				</data>
+
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>

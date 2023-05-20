@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "300179" displayNameID = "300178" loadDetails="300180" largeMapName = "zpmalta"
+    imagepath = "ui\random_map\malta\malta_mini" cannotReplace = "" loadBackground="ui\random_map\malta\malta_map">
+   <loadss>ui\random_map\malta\malta_01</loadss>
+   <loadss>ui\random_map\malta\malta_02</loadss>
+   <loadss>ui\random_map\malta\malta_03</loadss>
+</mapinfo>

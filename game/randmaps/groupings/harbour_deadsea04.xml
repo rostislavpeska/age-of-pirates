@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>11</width>
+	<height>17</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="204" posx="-4.4877" posz="-13.5263" orientx="1.0000" orienty="0.0000" orientz="-0.0000">RiverPropsYuk</unit>
+		<unit variation="33" posx="-6.9135" posz="-11.8643" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">GroundPropsYuk</unit>
+		<unit variation="204" posx="-5.5197" posz="-9.4265" orientx="1.0000" orienty="0.0000" orientz="-0.0000">RiverPropsYuk</unit>
+		<unit variation="225" posx="-3.6484" posz="-11.8283" orientx="0.3966" orienty="0.0000" orientz="0.9180">ypSMSaltpeterMan</unit>
+		<unit variation="33" posx="0.4439" posz="-10.4664" orientx="0.0000" orienty="0.0000" orientz="1.0000">GroundPropsYuk</unit>
+		<unit variation="137" posx="-6.4225" posz="-6.4217" orientx="0.0488" orienty="0.0000" orientz="-0.9988">zpHarbourPlatform</unit>
+		<unit variation="103" posx="4.8165" posz="-4.6931" orientx="-0.9992" orienty="0.0000" orientz="-0.0393">zpHarbourPlatform</unit>
+		<unit variation="103" posx="-1.8419" posz="-5.4490" orientx="0.9992" orienty="0.0000" orientz="0.0393">zpHarbourPlatform</unit>
+		<unit variation="125" posx="0.7295" posz="-0.9461" orientx="1.0000" orienty="0.0000" orientz="-0.0000">SocketTradeRoute</unit>
+		<unit variation="137" posx="-4.4583" posz="-1.4982" orientx="-0.9988" orienty="0.0000" orientz="-0.0488">zpHarbourPlatform</unit>
+		<unit variation="137" posx="-4.6442" posz="2.1363" orientx="0.9988" orienty="0.0000" orientz="0.0488">zpHarbourPlatform</unit>
+		<unit variation="103" posx="-4.1402" posz="7.1209" orientx="0.0393" orienty="0.0000" orientz="-0.9992">zpHarbourPlatform</unit>
+		<unit variation="137" posx="-9.2924" posz="7.0683" orientx="0.0488" orienty="0.0000" orientz="-0.9988">zpHarbourPlatform</unit>
+		<unit variation="204" posx="5.7729" posz="8.5427" orientx="1.0000" orienty="0.0000" orientz="-0.0000">RiverPropsYuk</unit>
+		<unit variation="33" posx="2.9457" posz="9.9185" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">GroundPropsYuk</unit>
+		<unit variation="33" posx="-1.2531" posz="11.5627" orientx="0.9239" orienty="0.0000" orientz="-0.3827">GroundPropsYuk</unit>
+		<unit variation="232" posx="-4.9565" posz="12.3882" orientx="0.9983" orienty="0.0000" orientz="0.0586">zpHarbourPlatform</unit>
+		<unit variation="204" posx="-3.5760" posz="13.7122" orientx="1.0000" orienty="0.0000" orientz="-0.0000">RiverPropsYuk</unit>
+		<unit variation="137" posx="5.0723" posz="10.9118" orientx="-0.7830" orienty="0.0000" orientz="0.6221">ypSMSaltpeterMan</unit>
+		<unit variation="158" posx="-1.2890" posz="13.1390" orientx="-0.8622" orienty="0.0000" orientz="0.5065">ypSMSaltpeterMan</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="AfricaDesert\ground_dirt1_afriDesert">
+			<block startx="-5" startz="-8" endx="-5" endz="-2"></block>
+			<block startx="-4" startz="-8" endx="-4" endz="-2"></block>
+			<block startx="-3" startz="-8" endx="-3" endz="-2"></block>
+			<block startx="-2" startz="-8" endx="-2" endz="-2"></block>
+			<block startx="-1" startz="-8" endx="-1" endz="-2"></block>
+			<block startx="0" startz="-8" endx="0" endz="-2"></block>
+			<block startx="1" startz="-8" endx="1" endz="-2"></block>
+			<block startx="2" startz="-8" endx="2" endz="-2"></block>
+			<block startx="3" startz="-8" endx="3" endz="-2"></block>
+			<block startx="4" startz="-8" endx="4" endz="-2"></block>
+			<block startx="-5" startz="-1" endx="-5" endz="6"></block>
+			<block startx="-4" startz="-1" endx="-4" endz="6"></block>
+			<block startx="-5" startz="7" endx="-5" endz="8"></block>
+			<block startx="-4" startz="7" endx="-4" endz="8"></block>
+			<block startx="-3" startz="7" endx="-3" endz="8"></block>
+			<block startx="-2" startz="7" endx="-2" endz="8"></block>
+			<block startx="-1" startz="7" endx="-1" endz="8"></block>
+			<block startx="0" startz="7" endx="0" endz="8"></block>
+			<block startx="1" startz="7" endx="1" endz="8"></block>
+			<block startx="2" startz="7" endx="2" endz="8"></block>
+			<block startx="3" startz="7" endx="3" endz="8"></block>
+			<block startx="4" startz="7" endx="4" endz="8"></block>
+			<block startx="-3" startz="-1" endx="4" endz="6"></block>
+			<block startx="5" startz="-1" endx="5" endz="6"></block>
+			<block startx="5" startz="7" endx="5" endz="8"></block>
+			<block startx="5" startz="-8" endx="5" endz="-2"></block>
+		</tilegroup>
+		<heights>
+			<tiles x="-5" z="-8">0.008 0.036 0.036 0.036 0.036 0.036 0.036 0.036 0.036 0.036 0.036 </tiles>
+			<tiles x="-5" z="-7">0.015 0.036 0.036 0.036 0.036 0.036 0.036 0.036 0.036 0.036 0.036 </tiles>
+			<tiles x="-5" z="-6">0.008 0.014 -0.058 0.071 0.086 0.086 0.086 0.085 0.028 -0.007 0.056 </tiles>
+			<tiles x="-5" z="-5">0.016 0.084 0.237 0.284 0.284 0.284 0.284 0.284 0.276 0.219 0.062 </tiles>
+			<tiles x="-5" z="-4">0.032 0.054 0.285 0.288 0.288 0.288 0.288 0.288 0.287 0.280 0.089 </tiles>
+			<tiles x="-5" z="-3">0.040 0.151 0.288 0.288 0.288 0.288 0.288 0.288 0.288 0.280 0.097 </tiles>
+			<tiles x="-5" z="-2">0.040 0.192 0.288 0.288 0.288 0.288 0.288 0.288 0.288 0.278 0.097 </tiles>
+			<tiles x="-5" z="-1">0.040 0.192 0.288 0.288 0.288 0.288 0.288 0.288 0.288 0.278 0.097 </tiles>
+			<tiles x="-5" z="0">0.040 0.192 0.288 0.288 0.288 0.288 0.288 0.288 0.288 0.278 0.097 </tiles>
+			<tiles x="-5" z="1">0.040 0.192 0.288 0.288 0.288 0.288 0.288 0.288 0.288 0.278 0.097 </tiles>
+			<tiles x="-5" z="2">0.040 0.192 0.288 0.288 0.288 0.288 0.288 0.288 0.288 0.278 0.097 </tiles>
+			<tiles x="-5" z="3">0.040 0.192 0.288 0.288 0.288 0.288 0.288 0.288 0.288 0.278 0.097 </tiles>
+			<tiles x="-5" z="4">0.040 0.163 0.288 0.288 0.288 0.288 0.288 0.288 0.288 0.269 0.093 </tiles>
+			<tiles x="-5" z="5">0.040 0.083 0.288 0.288 0.288 0.288 0.288 0.288 0.287 0.194 0.055 </tiles>
+			<tiles x="-5" z="6">0.040 0.031 0.155 0.229 0.232 0.232 0.232 0.231 0.143 0.050 0.040 </tiles>
+			<tiles x="-5" z="7">0.032 0.013 -0.195 -0.175 -0.175 -0.175 -0.175 -0.175 -0.206 0.013 0.044 </tiles>
+			<tiles x="-5" z="8">0.016 0.013 -0.219 -0.219 -0.219 -0.219 -0.219 -0.219 -0.219 0.013 0.052 </tiles>
+		</heights>
+	</tiles>
+</grouping>

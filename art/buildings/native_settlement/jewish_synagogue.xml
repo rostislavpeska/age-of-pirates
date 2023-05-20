@@ -1,0 +1,21 @@
+<animfile>
+  <component>
+    Berber Buildings
+    <logic type="Variation">
+        <data>
+            <logic type="LowPoly">
+                <normal>
+                  <assetreference type="GrannyModel">
+                    <file>buildings\native_settlement\africa\nafrica_minaret</file>
+                    <replacetexture>
+                      <from>buildings\native_settlement\africa\africa_north\textures\nafrica_minaret_BaseColor</from>
+                      <to>buildings\native_settlement\textures\synagogue_tower_BaseColor</to>
+                    </replacetexture>
+                  </assetreference>
+                </normal>
+            </logic>
+        </data>
+    </logic>
+</component>
+<anim>Idle<component>Berber Buildings</component></anim>
+</animfile>

@@ -1,0 +1,8 @@
+<tacticdisplay>
+  <unittype>Factory</unittype>
+  <unittype>deHanoverFactory</unittype>
+  <unittype>deUniversity</unittype>
+  <unittype tech="DEHCAutarky">deHouseInca</unittype>
+  <unittype>zpSubmarine</unittype>
+  <unittype>zpNautilus</unittype>
+</tacticdisplay>

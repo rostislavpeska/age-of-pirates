@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_prop</definebone>
+	<attachment>
+		dutch_shed
+		<component>
+			dutch_shed
+			<assetreference type="GrannyModel">
+				<file>homecity\dutch\dutch_shed</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>dutch_shed</component>
+		</anim>
+	</attachment>
+	<anim>
+		Idle
+		<component>dutch_shed</component>
+	</anim>
+</animfile>

@@ -1,0 +1,15 @@
+<powermods>
+  <power name="PowerGreekFire" type="UnitAction">
+    <displaynameid>300006</displaynameid>
+    <rolloverid>300007</rolloverid>
+    <icon>resources\images\icons\command\greekfire.png</icon>
+    <minimapeventtime sendalertto="player">1</minimapeventtime>
+    <activetime>60</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="2" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>Ship</abstractattacktargettype>
+    <abstractattacktargettype>Dock</abstractattacktargettype>
+    <abstractattacktargettype>WaterGuardian</abstractattacktargettype>
+    <unitaction>FlameAttack</unitaction>
+  </power>
+</powermods>

@@ -1,0 +1,5 @@
+<placementrules>
+  <distanceatmostfromsocket linkunit="true" distance="2" successstringid="26011" occupiedstringid="25991" errorstringid="25984">TradePostSocket</distanceatmostfromsocket>
+  <distanceatleastfromtype player="enemy" foundation="any" distance="65" errorstringid="25521">FirstTC</distanceatleastfromtype>
+  <distanceatmostfromtype player="team" foundation="any" distance="75" errorstringid="46622" norushonly="true">FirstTC</distanceatmostfromtype>
+</placementrules>

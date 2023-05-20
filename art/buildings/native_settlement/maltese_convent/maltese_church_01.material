@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\maltese_convent\textures\maltese_church_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\jesuit_church_01\textures\jesuit_church_matA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\jesuit_church_01\textures\jesuit_church_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

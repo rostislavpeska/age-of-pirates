@@ -1,0 +1,60 @@
+<animfile>
+  <definebone>bone_wheel03</definebone>
+  <definebone>bone_wheel04</definebone>
+  <definebone>bone_attach_horse_a</definebone>
+  <definebone>bone_attach_horse_b</definebone>
+  <definebone>HS Bone Hoof Back Rt</definebone>
+  <definebone>HS Bone Hoof Back Lt</definebone>
+  <definebone>HS Bone Master</definebone>
+  <definebone>HS Bone Master</definebone>
+  <definebone>bone_wheel01</definebone>
+  <definebone>bone_wheel02</definebone>
+  <submodel>Covered_Wagon
+    <attachment>horse
+        <component>horse</component>
+        <include>units\villagers\covered_wagon\covered_wagon_horse.xml</include>
+    </attachment>
+    <attachment>horse2
+        <component>horse2</component>
+        <include>units\villagers\covered_wagon\covered_wagon_horse2.xml</include>
+    </attachment>
+    <component>wagon
+        <linksection>
+            <linkoffset>0</linkoffset>
+            <linkcomponent>covered_wagon_horse</linkcomponent>
+            <linkcomponent>covered_wagon_horse2</linkcomponent>
+            <linkcomponent>covered_wagon_m0</linkcomponent>
+            <linkconstraint>0</linkconstraint>
+        </linksection>
+        <linksection>
+            <linkoffset>-1.6</linkoffset>
+            <linkcomponent>covered_wagon</linkcomponent>
+            <linkcomponent>covered_wagon_m1</linkcomponent>
+            <linkconstraint>1</linkconstraint>
+        </linksection>
+        <linksection>
+            <linkoffset>-2.0</linkoffset>
+            <linkconstraint>1</linkconstraint>
+        </linksection>
+        <linksection>
+            <linkoffset>-3.0</linkoffset>
+            <linkconstraint>1</linkconstraint>
+        </linksection>
+        <logic type="LowPoly">
+            <normal>
+                <assetreference type="GrannyModel">
+                    <file>units\natives\jewish\jewish_wagon</file>
+                </assetreference>
+            </normal>
+            <lowpoly>
+                <assetreference type="GrannyModel">
+                    <file>units\natives\jewish\jewish_wagon</file>
+                </assetreference>
+            </lowpoly>
+        </logic>
+        <decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture><selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture><width>2.00</width><height>4.00</height></decal><watersplash><texture>units\artillery\cannon\wheel_B</texture><width>1.75</width><height>2.00</height></watersplash><attach a="horse" frombone="hotspot" tobone="bone_attach_horse_a" syncanims="1"></attach><attach a="horse2" frombone="hotspot" tobone="bone_attach_horse_b" syncanims="1"></attach></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>units\villagers\covered_wagon\covered_wagon_idle</file><weight>10</weight></assetreference><assetreference type="GrannyAnim"><file>units\villagers\covered_wagon\covered_wagon_idle</file><weight>10</weight></assetreference><assetreference type="GrannyAnim"><file>units\villagers\covered_wagon\covered_wagon_idle</file><weight>10</weight></assetreference><assetreference type="GrannyAnim"><file>units\villagers\covered_wagon\covered_wagon_idle</file><weight>15</weight></assetreference><assetreference type="GrannyAnim"><file>units\villagers\covered_wagon\covered_wagon_idle</file><weight>25</weight></assetreference><assetreference type="GrannyAnim"><file>units\villagers\covered_wagon\covered_wagon_idle</file><weight>45</weight></assetreference><component>wagon</component></anim>
+        <anim>RangedAttack<assetreference type="GrannyAnim"><file>units\villagers\covered_wagon\covered_wagon_idle</file><tag type="Attack">0.45</tag><tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.45</tag></assetreference><component>wagon</component></anim><anim>Walk<assetreference type="GrannyAnim"><file>units\villagers\covered_wagon\covered_wagon_walk</file><tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof1">0.10</tag><tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof2">0.27</tag><tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof3">0.44</tag><tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof4">0.61</tag><tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof2">0.78</tag><tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof3">0.94</tag></assetreference><component>wagon</component></anim>
+        <anim>Death<assetreference type="GrannyAnim"><file>animation_library\wagon\wagon_death</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.50</tag><tag type="SpecificSoundSet" checkvisible="1" set="CartBreak">0.03</tag><tag type="SpecificSoundSet" checkvisible="1" set="Thud">0.04</tag></assetreference><component>wagon</component></anim></submodel>
+    <component>wagon<submodelref ref="Covered_Wagon"></submodelref></component>
+</animfile>

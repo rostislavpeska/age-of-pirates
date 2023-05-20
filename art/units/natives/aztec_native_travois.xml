@@ -1,0 +1,25 @@
+<animfile>
+        <component>
+            az_travois
+            <logic type="LowPoly">
+                <normal>
+                    <assetreference type="GrannyModel"><file>units\trade\indian_travois\aztec_travois</file></assetreference>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel"><file>units\trade\indian_travois\aztec_travois</file></assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture><selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture><width>2.00</width><height>4.00</height>
+            </decal>
+        </component>
+        <anim>
+            Walk<assetreference type="GrannyAnim"><file>units\trade\indian_travois\aztec_travois_ani\walk</file></assetreference><component>az_travois</component>
+        </anim>
+        <anim>
+            Idle<assetreference type="GrannyAnim"><file>units\trade\indian_travois\aztec_travois_ani\idle</file></assetreference><component>az_travois</component>
+        </anim>
+        <anim>
+            Death<assetreference type="GrannyAnim"><file>units\trade\indian_travois\aztec_travois_ani\death</file></assetreference><component>az_travois</component>
+        </anim>
+</animfile>

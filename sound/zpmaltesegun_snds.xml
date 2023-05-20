@@ -1,0 +1,20 @@
+<protounitsounddef>
+  <protounit name="zpMalteseGun">
+    <soundtype name="Select">
+      <soundset name="UI_Building_Military">
+      </soundset>
+    </soundtype>
+    <soundtype name="SelectSecondary">
+      <soundset name="UI_Select_Building_Outpost">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="BuildingDestruction">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="UI_Select_Building_Outpost">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

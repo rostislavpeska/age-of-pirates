@@ -1,0 +1,32 @@
+<protounitsounddef>
+  <protounit name="zpIronTank">
+    <soundtype name="Select">
+      <soundset name="DEItalianTankSelect">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="Explosion">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <targetlogic>
+        <choice name="default">
+          <soundset name="DEItalianTankAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="enemy">
+          <soundset name="DEItalianTankAttack">
+          </soundset>
+        </choice>
+      </targetlogic>
+    </soundtype>
+    <soundtype name="Exists">
+      <soundset name="TruckExist">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="MilitaryBirth">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

@@ -1,0 +1,24 @@
+<protounitsounddef>
+  <protounit name="zpSubmarine">
+    <soundtype name="Select">
+      <soundset name="BritishPrivateerSelect">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="ShipDeath">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="ShipBirth">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <soundset name="BritishPrivateerAcknowledge">
+      </soundset>
+    </soundtype>
+    <soundtype name="Exists">
+      <soundset name="AmbienceShip">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

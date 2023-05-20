@@ -1,0 +1,266 @@
+=========
+2 January 
+
+- attacks with >2 warships in age 2 (still >3 in Age3+)
+- attacks enemy warship if there's no dock
+- we check if there are any nearby warships and if we have less than 2 or 3, depending on age (to build more)
+- Prioritize ships in the following order - Age3: Caravel, Frigate, Monitor, Galleon. Age4: Frigate, Caravel, Monitor, Galleon.
+- Hard and above on water spawn maps makes 2 docks Age 1 and 2, 4 Age 3 and above. Below Hard makes 1 and 2, respectfully
+- 3 More Frigate or 1-3 Caravel or equivalent amount of war ships than enemy depending on difficulty
+- If it's a good time to fish, try to build a forward dock
+- Don't fish until age2 transition. Unless it's an island map. Then it's always a good time (after age up)
+- Docks are high priority on island maps
+- Make new dock location if enemy navy is stronger than ours and too close to dock
+- Removes transport penalty as Age advances
+- Make new dock location (newNavyVec) if enemy navy is spotted
+- Add position influence for towers to build near docks on water maps
+ - Weight towers to stay very close to center point, unless it's a navy map, then go far away
+
+==========
+3 January
+
+- Naval "exploration" turns into patrols with multiple warships
+- Warships prioritized over fishing boats for exploration
+- Desired number of transport ships increases through ages. 
+
+- On island maps expand the tower exclusion radius 
+- Build towers near docks
+- Weight towers to stay very close to center point, unless it's an island map, then go far away
+- tower spacing increased (on island maps)
+
+- Desired number of transport ships increases through ages. 
+
+==========
+4 January
+
+- Set warship priority high on island maps (above fishing ships; fishing ship priority lowered)
+- Fix to transport distance calculation
+- Picks new dock positions other than the starting position 
+- If it's an island map, town centers weighted to go near docks and coast (away from start)
+- Tower position tweaked
+
+==========
+5 January
+
+Changes will include AssertiveWall tag to track changes in-code (no effect to gameplay)
+Transport distance penalty increased slightly
+No dock building until age2 transition
+
+==========
+6 January
+
+If it's an island map we want to build more towers, including during transition
+Hard and below allowed to make +1 more towers on island maps (still below build limit)
+put a higher priority on towering first dock on island maps
+Get a new dock position for two minutes after the first one encunters danger
+agingTo2Monitor - allows us to start building during transition
+
+==========
+7 January
+
+Tweaks to tower placement
+Started Ceylon logic to transport villagers
+
+==========
+11 January
+
+Fix to dock placement
+Adjustment to tower placement
+
+==========
+12 January
+
+Naval unit shipments are rated more valuable on island maps
+Don't choose Philosopher age up on island maps. Swapped inventor for governor (governor and quartermaster are only choices now on island maps)
+More tweaks to dock placement
+
+==========
+13 January
+
+throttle military production for first 9-12 minutes on island maps
+More tweaks to dock placement
+
+==========
+18 January
+
+USA age up choices adjusted for island maps
+Dock build radius grows if it can't find more spots to build
+second dock placement delayed (by time)
+enabled wagon monitor during age up to age 2
+add warships, fishing boats, and forts to attack plan options. includes varied warship minimums to attack
+
+==========
+19 January
+
+Give asian civs higher settler target during age up since they can continue training
+stage artillery near docks and coast on island maps
+adds artillery to water defend plan on all naval maps
+
+==========
+23 January
+
+Minor change to warship prioritization so ai builds more frigates in age 3
+Sophistication added to warship attack plans. AI calculates desired fleet size based on target type (native fleets scaled accordingly)
+Check for forts and towers and make galleons & monitors depending on what the enemy has
+Naval attack time buffer removed (AI can constantly attack on water if it can find a target)
+
+==========
+23 January
+
+Add position influence for forts building near docks on island maps
+tweaked values to tower placement near docks
+Increased galleon shipment value
+Tweaked new dock postioning values
+research tower upgrade tech a little earlier on island maps
+reserve resources for fishing boats on island maps
+
+==========
+27 January
+
+If enemy are too close to fishing ships, they retreat to forts, tc's, towers, or docks
+Wagon building issue fixed (workaround)
+
+==========
+29 January
+
+Reordered warship attack plans to attack/Raid: Forts, Warships, Fishing boats, Docks, Towers
+Attack manager altered to allow for simultaneous land and navy attacks
+
+==========
+11 February
+
+Created AssertiveWall file to place all new functions in (should help with merging any future updates)
+Added check to allow the AI to try making attack plans again after a certain amount of time even if there is an existing attack plan
+  This is an attempt to fix the lack of attacks coming from the AI in lategame
+Enabled Walls to be build, and sets a large build radius on island maps (seawall)
+
+==========
+14 February
+
+Walls changed to build ring around docks
+
+==========
+16 February
+
+Don't send military units on island maps if we aren't under attack
+Galleon shipment regarded as more valuable if there are enemy towers
+AI won't wait to age on island maps
+
+==========
+15 March
+
+Updates incorporated into aiHCCards
+Updates incorporated into aimilitary
+Updates incorporated into aiSetup
+
+Official March updates incorporated
+Tweaked dock placement while under threat
+Adjusted defense reflex to apply to any enemy units on the same island (needs more testing)
+Toned down the walls
+Adjusted the reset mechanism for failed attack transports (still needs work)
+Enabled forward bases to be built without a fort under certain conditions
+
+==========
+17 March
+
+Fixed tower positioning so towers more likely to build along coast
+Method of military throttling changed, and now takes into account rush vs boom civs
+Reduced the number of artillery in the naval defense plan
+fix to defense reflex (needs more work)
+Potential improvement to attacking
+
+==========
+23 March
+
+Adapted Ceylon Nomad start to standard games
+
+==========
+24 March
+
+Enabled Ceylon migration on Swahili
+Method of military throttling changed again, and now varies across all ages & boom/rush levels
+Dock building slowed down
+Tweaked tower build limits 
+Numerous improvements/fixes to Ceylon
+
+==========
+29 March
+
+Treaty decks now exclude commerce age military unit shipments in 20 min treaty games (formarly >20)
+Unit shipments blocked within 5 mins of treaty end (down from 10)
+Treaty shipments less likely to send economic improvements
+Attack intervals decreased to 1 minute on hardest and expert (down from 2) and 2 minutes on hard (down from 2.5)
+Fishing boat range increased on island maps 
+Fishing boat priority increased when leading on water (per visible warships)
+
+==========
+8 April
+
+Don't build too many more towers than docks
+
+
+
+
+
+
+
+cUnitStanceDefensive
+
+
+
+
+
+
+==========
+Rave Reviews:
+"actually pretty decent" 
+"like, it has its quirks"
+-KG19991380
+
+"Oh boi"
+-AlistairJah
+
+"Sadly, it seems it still has problems"
+-EntombedCurve02
+
+
+
+
+
+
+
+To do:
+Further develop the naval AI
+  fix attack plan transport
+  stop caravels from fishing so much
+
+Change the attack/retreat conditions
+Develop a new attack model
+Change the formations to mimic historical formations
+Do something with the military that normally just stages under the TC
+Create multiple armies/attack plans
+Create a raiding force
+Rework the forward base
+Add defensive fortifications and walls
+
+
+
+Garrison fishing boats
+Varied fishing strategies
+Return units from ancillary islands
+PressTheAttack if winning
+  -> Should already be there
+Japanese fishing boat attacking
+USA age 3 age up options maybe change to tennessee/new hampshire
+
+
+ceylon: 
+//started as villagerTransportMonitor within aiCore
+//when natural resources start dwindling and/or space starts dwindling
+//-> move idle villagrs to mainland
+//- use ceylon transport code as baseline
+building a new set of functions
+need a new building monitor that cas accept different bases
+maybe just go through building queue and move stuff to new island? starts line 4207
+
+

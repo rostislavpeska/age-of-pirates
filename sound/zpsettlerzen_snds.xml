@@ -1,0 +1,128 @@
+<protounitsounddef>
+  <protounit name="zpSettlerZen">
+    <soundtype name="Select">
+      <variationlogic>
+        <choice name="0">
+          <soundset name="JapaneseVillagerM_Select">
+          </soundset>
+        </choice>
+        <choice name="1">
+          <soundset name="JapaneseVillagerF_Select">
+          </soundset>
+        </choice>
+      </variationlogic>
+    </soundtype>
+    <soundtype name="Grunt">
+      <variationlogic>
+        <choice name="0">
+          <soundset name="GenericMaleGrunt">
+          </soundset>
+        </choice>
+        <choice name="1">
+          <soundset name="GenericFemaleGrunt">
+          </soundset>
+        </choice>
+      </variationlogic>
+    </soundtype>
+    <soundtype name="Death">
+      <variationlogic>
+        <choice name="0">
+          <soundset name="GenericMaleDeath">
+          </soundset>
+        </choice>
+        <choice name="1">
+          <soundset name="GenericFemaleDeath">
+          </soundset>
+        </choice>
+      </variationlogic>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="SettlerBirth">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <variationlogic>
+        <choice name="0">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="JapaneseVillagerM_Acknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="JapaneseVillagerM_Attack">
+              </soundset>
+            </choice>
+            <choice name="build">
+              <soundset name="JapaneseVillagerM_Build">
+              </soundset>
+            </choice>
+            <choice name="Huntable">
+              <soundset name="JapaneseVillagerM_GatherMeat">
+              </soundset>
+            </choice>
+            <choice name="Tree">
+              <soundset name="JapaneseVillagerM_GatherWood">
+              </soundset>
+            </choice>
+            <choice name="AbstractMine">
+              <soundset name="JapaneseVillagerM_GatherCoin">
+              </soundset>
+            </choice>
+            <choice name="AbstractFarm">
+              <soundset name="JapaneseVillagerM_Farm">
+              </soundset>
+            </choice>
+            <choice name="AbstractResourceCrate">
+              <soundset name="JapaneseVillagerM_Acknowledge">
+              </soundset>
+            </choice>
+            <choice name="AbstractFruit">
+              <soundset name="JapaneseVillagerM_GatherFruit">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="1">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="JapaneseVillagerF_Acknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="JapaneseVillagerF_Attack">
+              </soundset>
+            </choice>
+            <choice name="build">
+              <soundset name="JapaneseVillagerF_Build">
+              </soundset>
+            </choice>
+            <choice name="Huntable">
+              <soundset name="JapaneseVillagerF_GatherMeat">
+              </soundset>
+            </choice>
+            <choice name="Tree">
+              <soundset name="JapaneseVillagerF_GatherWood">
+              </soundset>
+            </choice>
+            <choice name="AbstractMine">
+              <soundset name="JapaneseVillagerF_GatherCoin">
+              </soundset>
+            </choice>
+            <choice name="AbstractFarm">
+              <soundset name="JapaneseVillagerF_Farm">
+              </soundset>
+            </choice>
+            <choice name="AbstractResourceCrate">
+              <soundset name="JapaneseVillagerF_Acknowledge">
+              </soundset>
+            </choice>
+            <choice name="AbstractFruit">
+              <soundset name="JapaneseVillagerF_GatherFruit">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+      </variationlogic>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

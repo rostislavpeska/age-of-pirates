@@ -1,0 +1,79 @@
+<animfile>
+  <definebone>bone_flag_civ</definebone>
+  <definebone>bone_muzzlel01</definebone>
+  <definebone>bone_muzzlel02</definebone>
+  <definebone>bone_muzzlel03</definebone>
+  <definebone>bone_muzzlel04</definebone>
+  <definebone>bone_muzzlel05</definebone>
+  <definebone>bone_muzzlel06</definebone>
+  <definebone>bone_muzzler01</definebone>
+  <definebone>bone_muzzler02</definebone>
+  <definebone>bone_muzzler03</definebone>
+  <definebone>bone_muzzler04</definebone>
+  <definebone>bone_muzzler05</definebone>
+  <definebone>bone_muzzler06</definebone>
+  <definebone>bone_debris_1a</definebone>
+  <definebone>bone_debris_1b</definebone>
+  <definebone>bone_debris_2a</definebone>
+  <definebone>bone_debris_2b</definebone>
+  <definebone>bone_debris_3a</definebone>
+  <definebone>bone_debris_3b</definebone>
+  <definebone>bone_debris_3c</definebone>
+  <definebone>bone_debris_4a</definebone>
+  <definebone>bone_debris_4b</definebone>
+  <definebone>bone_debris_4c</definebone>
+  <definebone>bone_debris_4d</definebone>
+  <definebone>bone_debris_5a</definebone>
+  <definebone>bone_debris_6a</definebone>
+  <definebone>bone_debris_6b</definebone>
+  <definebone>bone_center</definebone>
+  <definebone>bone_master</definebone>
+  <definebone>bone_front_foam</definebone>
+  <definebone>bone_front_wake</definebone>
+
+  <attachment>flameThrow<component>emitter<assetreference type="popcornFx"><file>units\george_crushington\flameThrow.pkfx</file></assetreference></component><anim>None<component>emitter</component></anim></attachment>
+
+  <attachment>IdleWaterFoam<component>Idlefoam<assetreference type="popcornFx"><file>water_effects\idle_waterFoam_large.pkfx</file></assetreference></component><anim>None<component>Idlefoam</component></anim></attachment>
+  <attachment>MoveWaterFoam<component>Movefoam<assetreference type="popcornFx"><file>water_effects\move_waterFoam_large.pkfx</file></assetreference></component><anim>None<component>Movefoam</component></anim></attachment>
+  <attachment>DeathWaterFoam<component>foam<assetreference type="popcornFx"><file>water_effects\death_waterFoam_large.pkfx</file></assetreference></component><anim>None<component>foam</component></anim></attachment>
+  <attachment>Death_EXP<component>exp<assetreference type="popcornFx"><file>units\spc\fire_ship\Exp_ship.pkfx</file></assetreference></component><anim>None<component>exp</component></anim></attachment>
+  <attachment>Death_EXP_Wood<component>exp<assetreference type="popcornFx"><file>projectiles\ship_debris_wood.pkfx</file></assetreference></component><anim>None<component>exp</component></anim></attachment>
+  <component>fluyt<logic type="LowPoly"><normal><logic type="Destruction"><p1><assetreference type="GrannyModel">
+  <file>units\naval\fluyt\spcfluyt_damaged</file>
+  
+  </assetreference></p1><p99><assetreference type="GrannyModel" shape="ship_fluyt"><file>units\naval\fluyt\spcfluyt</file></assetreference></p99></logic></normal><lowpoly><assetreference type="GrannyModel" shape="ship_fluyt"><file>units\naval\fluyt\spcfluyt</file></assetreference></lowpoly></logic><decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture><width>10.00</width><height>16.00</height><xoffset>0.00</xoffset><zoffset>-1.60</zoffset></decal></component>
+  <component>fluytDeath<assetreference type="GrannyModel"><file>units\naval\fluyt\spcfluyt_damaged</file>
+  
+  
+  
+  </assetreference></component>
+
+  <anim>Idle<assetreference type="GrannyAnim"><file>units\naval\fluyt\fluyt_idle</file></assetreference><component>fluyt</component><simskeleton><model>units\naval\fluyt\spcfluyt_damaged</model></simskeleton><attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
+ 
+ 
+  <anim>RangedAttack<assetreference type="GrannyAnim"><file>units\naval\fluyt\fluyt_idle</file><tag type="Attack">0.45</tag>
+    
+    </assetreference>
+    <component>fluyt</component><simskeleton><model>units\naval\fluyt\spcfluyt_damaged</model></simskeleton>  
+    
+
+  </anim>
+  <anim>Bombard_ranged_idle<assetreference type="GrannyAnim"><file>units\naval\fluyt\fluyt_idle</file><tag type="Attack">0.23</tag>
+    
+    <tag type="SpecificSoundSet" set="FlameThrower" checkvisible="1">0.2</tag>
+    <tag type="SpecificSoundSet" set="FireShipExplode" checkvisible="1">0.35</tag>
+    <tag type="Particles" particlename="flamethrower">0.0</tag><tag type="Particles" particlename="flamethrower">0.05</tag><tag type="Particles" particlename="flamethrower">0.15</tag><tag type="Particles" particlename="flamethrower">0.20</tag><tag type="Particles" particlename="flamethrower">0.25</tag><tag type="Particles" particlename="flamethrower">0.30</tag><tag type="Particles" particlename="flamethrower">0.35</tag><tag type="Particles" particlename="flamethrower">0.40</tag><tag type="Particles" particlename="flamethrower">0.45</tag><tag type="Particles" particlename="flamethrower">0.50</tag><tag type="Particles" particlename="flamethrower">0.55</tag><tag type="Particles" particlename="flamethrower">0.60</tag><tag type="Particles" particlename="flamethrower">0.65</tag><tag type="Particles" particlename="flamethrower">0.70</tag><tag type="Particles" particlename="flamethrower">0.75</tag><tag type="Particles" particlename="flamethrower">0.80</tag><tag type="Particles" particlename="flamethrower">0.85</tag><tag type="Particles" particlename="flamethrower">0.90</tag><tag type="Particles" particlename="flamethrower">0.95</tag><tag type="Particles" particlename="flamethrower">1.0</tag>
+    </assetreference>
+    <component>fluyt</component><simskeleton><model>units\naval\fluyt\spcfluyt_damaged</model></simskeleton>
+    
+    <attach a="flameThrow" frombone="ATTACHPOINT" tobone="bone_front_foam" syncanims="0"></attach>
+    <attach a="flameThrow" frombone="ATTACHPOINT" tobone="bone_front_wake" syncanims="0"></attach>
+    <attach a="flameThrow" frombone="ATTACHPOINT" tobone="bone_master" syncanims="0"></attach>
+    
+    
+
+  </anim>
+
+  <anim>Walk<assetreference type="GrannyAnim"><file>units\naval\fluyt\fluyt_walk</file></assetreference><component>fluyt</component><simskeleton><model>units\naval\fluyt\spcfluyt_damaged</model></simskeleton><attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
+  <anim>Death<component>fluytDeath</component><attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="Death_EXP" frombone="ATTACHPOINT" tobone="bone_center" syncanims="0"></attach><attach a="Death_EXP" frombone="ATTACHPOINT" tobone="bone_master" syncanims="0"></attach><attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="bone_center" syncanims="0"></attach><attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="bone_master" syncanims="0"></attach></anim>
+</animfile>

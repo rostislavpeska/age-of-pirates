@@ -1,0 +1,243 @@
+<tactics>
+  <action>
+    <name stringid="38133">RangedAttack</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>RangedAttack</anim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.01</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>InvisibleProjectile</projectile>
+    <impacteffect>effects\impacts\gun</impacteffect>
+    <rate type="Unit">1.0 </rate>
+    <instantballistics>1</instantballistics>
+  </action>
+  <action>
+    <name stringid="38119">CannonAttack</name>
+    <type>Attack</type>
+    <active>0</active>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>RangedAttack</anim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>120</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>Cannonball</projectile>
+    <impacteffect>effects\impacts\cannon</impacteffect>
+    <rate type="Unit">1.0</rate>
+    <throw>1</throw>
+    <outerdamageareadistance>.25</outerdamageareadistance>
+    <outerdamageareafactor>.20</outerdamageareafactor>
+    <areasortmode>Directional</areasortmode>
+    <perfectaccuracy>1</perfectaccuracy>
+    <targetground>1</targetground>
+    <numberbounces>1</numberbounces>
+    <basedamagecap>1</basedamagecap>
+  </action>
+  <action>
+    <name stringid="38121">AntiShipAttack</name>
+    <type>Attack</type>
+    <active>0</active>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>RangedAttack</anim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>120</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>Cannonball</projectile>
+    <impacteffect>effects\impacts\cannon</impacteffect>
+    <perfectaccuracy>1</perfectaccuracy>
+    <rate type="AbstractWarship">1.0</rate>
+  </action>
+  <action>
+    <name stringid="38118">BuildingAttack</name>
+    <type>Attack</type>
+    <active>0</active>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>RangedAttack</anim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>120</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>Cannonball</projectile>
+    <impacteffect>effects\impacts\cannon</impacteffect>
+    <rate type="Building">1.0</rate>
+    <throw>1</throw>
+    <outerdamageareadistance>.25</outerdamageareadistance>
+    <outerdamageareafactor>.20</outerdamageareafactor>
+    <areasortmode>Directional</areasortmode>
+    <perfectaccuracy>1</perfectaccuracy>
+    <targetground>1</targetground>
+    <numberbounces>1</numberbounces>
+    <basedamagecap>1</basedamagecap>
+    <hidefromstats>1</hidefromstats>
+  </action>
+  <action>
+    <name stringid="69158">SpawnGatlingGun</name>
+    <type>Spawn</type>
+    <rate type="xpGatlingGun">2.0</rate>
+    <singleuse>1</singleuse>
+    <animationrate>1</animationrate>
+    <active>0</active>
+    <persistent>1</persistent>
+  </action>
+  
+  <action>
+    <name stringid="48943">ExtraBounty</name>
+    <type>AutoRangedModify</type>
+    <active>0</active>
+    <maxrange>24</maxrange>
+    <persistent>1</persistent>
+    <modifytype>Bounty</modifytype>
+    <modifymultiplier>2</modifymultiplier>
+    <modelattachment>effects\chiefpower\chiefpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="112433">ExtraDamageInfantry</name>
+    <type>AutoRangedModify</type>
+    <active>0</active>
+    <maxrange>32</maxrange>
+    <modifyabstracttype>AbstractInfantry</modifyabstracttype>
+    <persistent>1</persistent>
+    <nostack>1</nostack>
+    <modifytype>BaseDamage</modifytype>
+    <modifymultiplier>1.25</modifymultiplier>
+    <modelattachment>effects\chiefpower\chiefpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="112432">ExtraDamageCavalry</name>
+    <type>AutoRangedModify</type>
+    <active>0</active>
+    <maxrange>32</maxrange>
+    <modifyabstracttype>AbstractCavalry</modifyabstracttype>
+    <persistent>1</persistent>
+    <nostack>1</nostack>
+    <modifytype>BaseDamage</modifytype>
+    <modifymultiplier>1.25</modifymultiplier>
+    <modelattachment>effects\chiefpower\chiefpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="112435">ExtraHPInfantry</name>
+    <type>AutoRangedModify</type>
+    <active>0</active>
+    <maxrange>32</maxrange>
+    <modifyabstracttype>AbstractInfantry</modifyabstracttype>
+    <persistent>1</persistent>
+    <nostack>1</nostack>
+    <modifytype>BaseHP</modifytype>
+    <modifymultiplier>1.25</modifymultiplier>
+    <modelattachment>effects\chiefpower\chiefpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="112434">ExtraHPCavalry</name>
+    <type>AutoRangedModify</type>
+    <active>0</active>
+    <maxrange>32</maxrange>
+    <modifyabstracttype>AbstractCavalry</modifyabstracttype>
+    <persistent>1</persistent>
+    <nostack>1</nostack>
+    <modifytype>BaseHP</modifytype>
+    <modifymultiplier>1.25</modifymultiplier>
+    <modelattachment>effects\chiefpower\chiefpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="48943">ExtraBuildBounty</name>
+    <type>AutoRangedModify</type>
+    <active>0</active>
+    <maxrange>41</maxrange>
+    <modifyabstracttype>BuildingClass</modifyabstracttype>
+    <persistent>1</persistent>
+    <targetunbuilt>1</targetunbuilt>
+    <modifytype>BuildBounty</modifytype>
+    <modifymultiplier>2</modifymultiplier>
+  </action>
+
+  <action>
+    <name stringid="300297">MaintainSoheiInf</name>
+    <type>Maintain</type>
+    <rate type="zpNatSoheiProxy">1.0 </rate>
+    <active>1</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="300298">MaintainSoheiArcher</name>
+    <type>Maintain</type>
+    <rate type="zpNatSoheiArcher">1.0 </rate>
+    <active>1</active>
+    <persistent>1</persistent>
+  </action>
+
+  <tactic>SoheiInf
+    <protounitcommand>TacticSoheiInf</protounitcommand>
+    <active>1</active>
+    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+    <action priority="100">AntiShipAttack</action>
+    <action priority="75">CannonAttack</action>
+    <action priority="25">RangedAttack</action>
+    <action>MaintainSoheiInf</action>
+    <action>Spawn</action>
+    <action>ExtraBounty</action>
+    <action>ExtraBuildBounty</action>
+    <action>ExtraDamageInfantry</action>
+    <action>ExtraDamageCavalry</action>
+    <action>ExtraHPInfantry</action>
+    <action>ExtraHPCavalry</action>  
+    <transition>
+      <tactic>SoheiArcher</tactic>
+      <length>2</length>
+      <exit>1</exit>
+    </transition>
+  </tactic>
+ 
+
+  <tactic>SoheiArcher
+    <protounitcommand>TacticSoheiArcher</protounitcommand>
+    <active>1</active>
+    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+    <action priority="100">AntiShipAttack</action>
+    <action priority="75">CannonAttack</action>
+    <action priority="25">RangedAttack</action>
+    <action>MaintainSoheiArcher</action>
+    <action>Spawn</action>
+    <action>ExtraBounty</action>
+    <action>ExtraBuildBounty</action>
+    <action>ExtraDamageInfantry</action>
+    <action>ExtraDamageCavalry</action>
+    <action>ExtraHPInfantry</action>
+    <action>ExtraHPCavalry</action>  
+    <transition>
+      <tactic>SoheiInf</tactic>
+      <length>2</length>
+      <exit>1</exit>
+    </transition>
+  </tactic>
+
+
+</tactics>

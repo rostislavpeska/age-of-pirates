@@ -1,0 +1,50 @@
+<material>
+  <submaterial name="matA">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\castle_regicide\textures\castle_zen_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\castle_regicide\textures\castle_regicide_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\castle_regicide\textures\castle_regicide_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matB">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\china\fencewalls01\textures\fencewalls01_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\china\fencewalls01\textures\fencewalls01_matb_normals">
+      </texture>
+      <texture name="Masks" override="homecity\china\fencewalls01\textures\fencewalls01_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="maty">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

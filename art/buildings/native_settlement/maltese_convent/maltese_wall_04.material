@@ -1,0 +1,10 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings/native_settlement/maltese_convent/textures/maltese_wall_04_mata_BaseColor">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

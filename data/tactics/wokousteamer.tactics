@@ -1,0 +1,75 @@
+<tactics>
+  <action>
+    <name stringid="38133">RangedAttack</name>
+    <type>BroadsideAttack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>Idle</anim>
+    <idleanim>Idle</idleanim>
+    <projectile>Cannonball</projectile>
+    <numberprojectiles>1</numberprojectiles>
+    <impacteffect>effects\impacts\cannon</impacteffect>
+    <accuracy>1.0</accuracy>
+    <maxheight>0</maxheight>
+    <accuracyreductionfactor>0.5</accuracyreductionfactor>
+    <aimbonus>5</aimbonus>
+    <rate type="All">1.0 </rate>
+    <areasortmode>Directional</areasortmode>
+    <targetground>1</targetground>
+    <basedamagecap>1</basedamagecap>
+    <perfectaccuracy>1</perfectaccuracy>
+    <unrandomizecannonrof>1</unrandomizecannonrof>
+  </action>
+  <action>
+    <name stringid="38133">RangedAttackContained</name>
+    <type>BroadsideAttack</type>
+    <active>0</active>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>Idle</anim>
+    <idleanim>Idle</idleanim>
+    <projectile>Cannonball</projectile>
+    <numberprojectiles>1</numberprojectiles>
+    <impacteffect>effects\impacts\cannon</impacteffect>
+    <accuracy>1.0</accuracy>
+    <maxheight>0</maxheight>
+    <accuracyreductionfactor>0.5</accuracyreductionfactor>
+    <aimbonus>5</aimbonus>
+    <scalebycontainedunittype>
+      <rate type="deMinuteman">0.1</rate>
+    </scalebycontainedunittype>
+    <damagefactorcap>1.6</damagefactorcap>
+    <rate type="All">1.0 </rate>
+    <areasortmode>Directional</areasortmode>
+    <targetground>1</targetground>
+    <basedamagecap>1</basedamagecap>
+    <perfectaccuracy>1</perfectaccuracy>
+    <unrandomizecannonrof>1</unrandomizecannonrof>
+  </action>
+  <action>
+    <name stringid="69148">Discover</name>
+    <type>Discover</type>
+    <anim>GatherFish</anim>
+    <maxrange>0.2</maxrange>
+    <rate type="AbstractNuggetWater">1.0</rate>
+  </action>
+  <action>
+    <dbaction>BoatManager</dbaction>
+    <name stringid="69156">BoatManager</name>
+    <type>BoatManager</type>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="69147">Build</name>
+    <type>Build</type>
+    <anim>GatherFish</anim>
+    <maxrange>0.2</maxrange>
+    <rate type="Dock">1.0</rate>
+  </action>
+  <tactic>Normal<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action>Discover</action><action>Build</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
+  <tactic>Line<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action>Discover</action><action>Build</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
+  <tactic>Wedge<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action>Discover</action><action>Build</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
+  <tactic>Square<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action>Discover</action><action>Build</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
+  <tactic>Circle<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action>Discover</action><action>Build</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
+  <tactic>NoFormation<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action>Discover</action><action>Build</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
+</tactics>

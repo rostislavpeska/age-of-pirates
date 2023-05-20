@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>11</width>
+	<height>14</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="235" posx="2.4440" posz="-9.4662" orientx="0.6640" orienty="0.0000" orientz="0.7477">zpHarbourPlatform</unit>
+		<unit variation="46" posx="-3.1320" posz="-4.5613" orientx="0.6847" orienty="0.0000" orientz="0.7288">zpHarbourPlatform</unit>
+		<unit variation="235" posx="-8.0266" posz="0.1712" orientx="0.6647" orienty="0.0000" orientz="0.7471">zpHarbourPlatform</unit>
+		<unit variation="97" posx="4.2297" posz="5.1755" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">SocketTradeRoute</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

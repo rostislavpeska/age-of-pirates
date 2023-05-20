@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<attachment>
+		canoe
+		<include>units\naval\canoe\canoe.xml</include>
+	</attachment>
+	<component>
+		canoe_comp
+		<assetreference type="GrannyModel">
+			<file>effects\projectiles\arrow</file>
+		</assetreference>
+		<decal>
+			<effecttype>default</effecttype>
+
+			<width>5.00</width>
+			<height>8.00</height>
+		</decal>
+		<attach a="canoe" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"/>
+	</component>
+	<anim>
+		Idle
+		<component>canoe_comp</component>
+	</anim>
+	<anim>
+		Walk
+		<component>canoe_comp</component>
+	</anim>
+	<anim>
+		GatherFish
+		<component>canoe_comp</component>
+	</anim>
+  	<anim>
+	  	Death
+		<component>canoe_comp</component>
+	</anim>
+  	<anim>
+	  	RangedAttack
+		<component>canoe_comp</component>
+	</anim>
+  	<anim>
+	  	Raze_Attack
+		<component>canoe_comp</component>
+	</anim>
+  	<anim>
+  		Raze_Idle
+		<component>canoe_comp</component>
+	</anim>
+</animfile>

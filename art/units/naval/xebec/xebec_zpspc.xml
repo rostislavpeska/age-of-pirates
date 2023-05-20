@@ -1,0 +1,76 @@
+<animfile>
+  <definebone>bone_garrisonflag</definebone>
+  <definebone>bone_front_wake</definebone>
+  <definebone>bone_front_foam</definebone>
+  <definebone>bone_hitpointbar</definebone>
+  <definebone>bone_banner_a1</definebone>
+  <definebone>bone_banner_a2</definebone>
+  <definebone>bone_banner_a3</definebone>
+  <definebone>bone_sailMedium_00</definebone>
+  <definebone>bone_sailMedium_01</definebone>
+  <definebone>bone_sailMedium_02</definebone>
+  <definebone>bone_sailLarge_00</definebone>
+  <definebone>bone_sailLarge_01</definebone>
+  <definebone>bone_sailLarge_02</definebone>
+  <definebone>bone_sailSmall_00</definebone>
+  <definebone>bone_sailSmall_01</definebone>
+  <definebone>bone_sailSmall_02</definebone>
+  <definebone>bone_muzzleL01</definebone>
+  <definebone>bone_muzzleL02</definebone>
+  <definebone>bone_muzzleL03</definebone>
+  <definebone>bone_muzzleL04</definebone>
+  <definebone>bone_muzzleL05</definebone>
+  <definebone>bone_muzzleL06</definebone>
+  <definebone>bone_muzzleL07</definebone>
+  <definebone>bone_muzzleR01</definebone>
+  <definebone>bone_muzzleR02</definebone>
+  <definebone>bone_muzzleR03</definebone>
+  <definebone>bone_muzzleR04</definebone>
+  <definebone>bone_muzzleR05</definebone>
+  <definebone>bone_muzzleR06</definebone>
+  <definebone>bone_muzzleR07</definebone>
+  <attachment>IdleWaterFoam<component>Idlefoam<assetreference type="popcornFx"><file>water_effects\idle_waterFoam_large.pkfx</file></assetreference></component><anim>None<component>Idlefoam</component></anim></attachment>
+  <attachment>MoveWaterFoam<component>Movefoam<assetreference type="popcornFx"><file>water_effects\move_waterFoam_large.pkfx</file></assetreference></component><anim>None<component>Movefoam</component></anim></attachment>
+  <attachment>DeathWaterFoam<component>Deathfoam<assetreference type="popcornFx"><file>water_effects\death_waterFoam_Xlarge.pkfx</file></assetreference></component><anim>None<component>Deathfoam</component></anim></attachment>
+  <attachment>Death_EXP<component>exp<assetreference type="popcornFx"><file>units\spc\fire_ship\Exp_frigate_ship.pkfx</file></assetreference></component><anim>None<component>exp</component></anim></attachment>
+  <attachment>Death_EXP_Wood<component>exp2<assetreference type="popcornFx"><file>projectiles\ship_debris_wood.pkfx</file></assetreference></component><anim>None<component>exp2</component></anim></attachment>
+  <attachment>Fishing_net<component>fishing_net<assetreference type="GrannyModel"><file>units\attachments\fishing_net</file></assetreference></component><anim>Idle<assetreference type="GrannyAnim"><file>units\attachments\fishing_net_caravel</file></assetreference><component>fishing_net</component></anim></attachment>
+  <attachment>civflag_a1<component>flag<assetreference type="ClothFlag"><flag><blending>alphatest_color</blending><specialtexture>buildings\flags\pennant_xebec</specialtexture><width>2.00</width><height>1.75</height></flag></assetreference></component><anim>Idle<component>flag</component></anim></attachment>
+  <attachment>pendentflag<component>flag<assetreference type="ClothFlag"><flag><blending>alphatest_color</blending><texture>buildings\flags\pendent01</texture><width>2.00</width><height>1.00</height></flag></assetreference></component><anim>Idle<component>flag</component></anim></attachment>
+  <attachment>civ_flag<component>flag<assetreference type="ClothFlag"><flag><blending>alphatest_nocolor</blending><texture>objects\flags\barbary_pirate</texture><width>2.00</width><height>1.50</height></flag></assetreference></component><anim>Idle<component>flag</component></anim></attachment>
+  <component>xebec<logic type="Destruction"><p1><assetreference type="GrannyModel">
+    <file>units\naval\xebec\xebec_zpspc_damaged</file>
+    <!--<replacetexture>
+    <from>units\naval\xebec\textures\xebec_mata_BaseColor</from>
+    <to>units\naval\xebec\textures\xebec_zpspc_mata_BaseColor</to>
+  </replacetexture>
+  <replacetexture>
+    <from>units\naval\xebec\textures\xebec_matb_BaseColor</from>
+    <to>units\naval\xebec\textures\xebec_zpspc_matb_BaseColor</to>
+  </replacetexture>
+  <replacetexture>
+    <from>units\naval\xebec\textures\xebec_matb_Details</from>
+    <to></to>
+  </replacetexture>-->
+  </assetreference></p1><p99><assetreference type="GrannyModel"><file>units\naval\xebec\xebec_zpspc</file></assetreference></p99></logic><decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture><width>12.00</width><height>20.00</height><xoffset>0.00</xoffset><zoffset>1.50</zoffset></decal><watersplash><texture>units\naval\colony_ship\colony_ship_hullmask</texture><width>11.00</width><height>11.00</height></watersplash></component>
+  <component>xebecDeath<assetreference type="GrannyModel">
+    <file>units\naval\xebec\xebec_zpspc_damaged</file>
+    <!--<replacetexture>
+    <from>units\naval\xebec\textures\xebec_mata_BaseColor</from>
+    <to>units\naval\xebec\textures\xebec_zpspc_mata_BaseColor</to>
+  </replacetexture>
+  <replacetexture>
+    <from>units\naval\xebec\textures\xebec_matb_BaseColor</from>
+    <to>units\naval\xebec\textures\xebec_zpspc_matb_BaseColor</to>
+  </replacetexture>
+  <replacetexture>
+    <from>units\naval\xebec\textures\xebec_matb_Details</from>
+    <to></to>
+  </replacetexture>-->
+  </assetreference><decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture><width>12.00</width><height>20.00</height><xoffset>0.00</xoffset><zoffset>1.50</zoffset></decal></component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>units\naval\xebec\xebec_idle</file></assetreference><component>xebec</component><simskeleton><model>units\naval\xebec\xebec_zpspc_damaged</model></simskeleton><attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="pendentflag" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach><attach a="civ_flag" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"></attach></anim>
+  <anim>RangedAttack<assetreference type="GrannyAnim"><file>units\naval\xebec\xebec_idle</file><tag type="Attack">0.45</tag></assetreference><component>xebec</component><simskeleton><model>units\naval\xebec\xebec_zpspc_damaged</model></simskeleton><attach a="pendentflag" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach><attach a="civ_flag" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"></attach></anim>
+  <anim>Walk<assetreference type="GrannyAnim"><file>units\naval\xebec\xebec_walk</file></assetreference><component>xebec</component><simskeleton><model>units\naval\xebec\xebec_zpspc_damaged</model></simskeleton><attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="pendentflag" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach><attach a="civ_flag" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"></attach></anim>
+  <anim>Death<assetreference type="GrannyAnim"><file>units\naval\xebec\xebec_death</file></assetreference><component>xebec</component><attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="Death_EXP" frombone="ATTACHPOINT" tobone="bone_master" syncanims="0"></attach><attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="bone_master" syncanims="0"></attach></anim>
+  <anim>GatherFish<assetreference type="GrannyAnim"><file>units\naval\xebec\xebec_idle</file><tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.89</tag></assetreference><component>xebec</component><simskeleton><model>units\naval\xebec\xebec_zpspc_damaged</model></simskeleton><attach a="Fishing_net" frombone="MASTER" tobone="MASTER" syncanims="0"></attach><attach a="pendentflag" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach><attach a="civ_flag" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"></attach></anim>
+</animfile>

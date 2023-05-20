@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>15</width>
+	<height>16</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="239" posx="6.4505" posz="-13.9819" orientx="-0.0000" orienty="-0.0077" orientz="1.0000">SPCCasualties</unit>
+		<unit variation="44" posx="2.6046" posz="-15.5498" orientx="-0.9242" orienty="0.0021" orientz="0.3818">SPCCasualties</unit>
+		<unit variation="10" posx="4.8717" posz="-15.4134" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">PropsColony</unit>
+		<unit variation="70" posx="2.7591" posz="-14.1143" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativePirates</unit>
+		<unit variation="90" posx="7.5226" posz="-9.5722" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="148" posx="1.7181" posz="-9.4745" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="148" posx="0.1889" posz="-13.0643" orientx="0.9239" orienty="0.0000" orientz="-0.3827">NativeTownObstruction</unit>
+		<unit variation="155" posx="2.7961" posz="-11.6640" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Campfire</unit>
+		<unit variation="67" posx="11.0721" posz="-11.9252" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Skulls</unit>
+		<unit variation="186" posx="5.8322" posz="-10.9460" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHousePirate</unit>
+		<unit variation="152" posx="0.2104" posz="-9.7027" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">NativePirates</unit>
+		<unit variation="221" posx="12.5040" posz="-6.2439" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpNativeHousePirate</unit>
+		<unit variation="127" posx="5.3190" posz="-6.1396" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpNativeHousePirate</unit>
+		<unit variation="186" posx="1.7477" posz="-7.9143" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpNativeHousePirate</unit>
+		<unit variation="140" posx="-1.6576" posz="-8.9503" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Skulls</unit>
+		<unit variation="186" posx="-7.3178" posz="-5.6655" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpNativeHousePirate</unit>
+		<unit variation="236" posx="8.9444" posz="-5.1452" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="104" posx="6.4153" posz="-4.1956" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpNativeHousePirate</unit>
+		<unit variation="108" posx="0.2407" posz="-4.1767" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">zpNativeHousePirate</unit>
+		<unit variation="104" posx="2.8634" posz="-5.3097" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">zpNativeHousePirate</unit>
+		<unit variation="192" posx="-4.1067" posz="-6.7222" orientx="-0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropCannon</unit>
+		<unit variation="6" posx="5.0285" posz="-6.2139" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPirateFlag</unit>
+		<unit variation="104" posx="-2.7399" posz="-3.0849" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">zpNativeHousePirate</unit>
+		<unit variation="3" posx="-5.9824" posz="-3.2455" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">PropsColony</unit>
+		<unit variation="104" posx="-5.4159" posz="-2.0337" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">zpNativeHousePirate</unit>
+		<unit variation="104" posx="7.5504" posz="-1.4615" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpNativeHousePirate</unit>
+		<unit variation="143" posx="5.1183" posz="-3.1726" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">NativePirates</unit>
+		<unit variation="127" posx="-6.5892" posz="1.7414" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpNativeHousePirate</unit>
+		<unit variation="104" posx="-6.6359" posz="-0.1703" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeHousePirate</unit>
+		<unit variation="96" posx="8.0680" posz="1.3505" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpNativeHousePirate</unit>
+		<unit variation="180" posx="4.4353" posz="2.7062" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="165" posx="-8.6173" posz="-1.0433" orientx="0.0006" orienty="0.0142" orientz="-0.9999">SPCCasualties</unit>
+		<unit variation="107" posx="-0.2449" posz="0.1755" orientx="0.3827" orienty="0.0000" orientz="-0.9239">NativePirates</unit>
+		<unit variation="188" posx="5.7789" posz="-1.6541" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">NativePirates</unit>
+		<unit variation="226" posx="1.3848" posz="-1.0048" orientx="-0.9239" orienty="0.0000" orientz="0.3827">NativePirates</unit>
+		<unit variation="104" posx="-4.7775" posz="2.7433" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpNativeHousePirate</unit>
+		<unit variation="134" posx="14.6410" posz="2.0913" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="104" posx="5.2703" posz="2.6363" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">zpNativeHousePirate</unit>
+		<unit variation="0" posx="-9.2315" posz="1.1209" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
+		<unit variation="32" posx="5.0703" posz="0.3697" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">NativePirates</unit>
+		<unit variation="145" posx="13.3386" posz="4.3459" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpNativeHousePirate</unit>
+		<unit variation="213" posx="0.7386" posz="4.6092" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">zpNativeHousePirate</unit>
+		<unit variation="41" posx="-7.7859" posz="9.1705" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">zpSocketPirates</unit>
+		<unit variation="37" posx="-7.3034" posz="5.4555" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Skulls</unit>
+		<unit variation="226" posx="9.9495" posz="7.0951" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Skulls</unit>
+	</units>
+	<tiles></tiles>
+</grouping>
