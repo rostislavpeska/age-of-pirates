@@ -73,6 +73,11 @@
       <param name="TechID" dispname="$$22311$$Tech" vartype="tech">0</param>
       <expression>trTechStatusResearching(%PlayerID%, %TechID%)</expression>
     </condition>
+    <condition name="Tech Researching (XS)">
+      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+      <param name="TechID" dispname="$$22311$$Tech" vartype="string">TechName</param>
+      <expression>trTechStatusResearching(%PlayerID%, %TechID%)</expression>
+    </condition>
     <condition name="Tech Status Equals">
       <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
       <param name="TechID" dispname="$$22311$$Tech" vartype="tech">0</param>
@@ -812,6 +817,12 @@
     <effect name="Set Tech Status">
       <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
       <param name="TechID" dispname="$$22311$$Tech" vartype="tech">0</param>
+      <param name="Status" dispname="$$22340$$Status" vartype="techstatus">2</param>
+      <command>trTechSetStatus(%PlayerID%, %TechID%, %Status%);</command>
+    </effect>
+    <effect name="Set Tech Status (XS)">
+      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+      <param name="TechID" dispname="$$22311$$Tech" vartype="string">TechName</param>
       <param name="Status" dispname="$$22340$$Status" vartype="techstatus">2</param>
       <command>trTechSetStatus(%PlayerID%, %TechID%, %Status%);</command>
     </effect>
