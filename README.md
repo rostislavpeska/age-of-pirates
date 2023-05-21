@@ -2,6 +2,7 @@
 
 ## Table of contents
 
+- [Table of contents](#table-of-contents)
 - [About](#about)
 - [Installation](#installation)
 - [Team](#team)
@@ -146,7 +147,7 @@ Once you're sure that your changes are ready, you can merge your branch with the
 - Type a title and a description for your pull request and click on `Create pull request` again. For example, if your commits are mostly about fixing bugs, you can write something like "Fixed X bugs" and add more information in the description.
 - Ping me and I will merge your branch with the main project.
 
-### 3. Updating your local copy
+#### 3. Updating your local copy
 
 If you want to update your local copy with the latest changes from the main project, you need to pull the changes.
 
@@ -154,3 +155,19 @@ If you want to update your local copy with the latest changes from the main proj
 - Click on `Terminal` and then `New Terminal`.
 - Type `git pull origin main` and press `Enter`.
 - Type `git push` and press `Enter`.
+
+#### 4. Viewing the history of changes
+
+- Open the `age-of-pirates` folder in Visual Studio Code.
+- Press `Ctrl-Shift-G` (or click on the Git icon on the left side of the screen).
+- Click on the history icon at the top (the clock icon).
+
+![Git history icon](/docs/assets/git-history-icon.png)
+
+- You can click on any commit to see the files that were added/modified/removed in that commit.
+
+![Git history](/docs/assets/git-history.png)
+
+- Next to each file, you can click on the `Previous` button to see the differences from the previous commit.
+
+![Commit diff](/docs/assets/commit-diff.png)
