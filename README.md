@@ -153,3 +153,4 @@ If you want to update your local copy with the latest changes from the main proj
 - Open the `age-of-pirates` folder in Visual Studio Code.
 - Click on `Terminal` and then `New Terminal`.
 - Type `git pull origin main` and press `Enter`.
+- Type `git push` and press `Enter`.
