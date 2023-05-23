@@ -73,11 +73,6 @@
       <param name="TechID" dispname="$$22311$$Tech" vartype="tech">0</param>
       <expression>trTechStatusResearching(%PlayerID%, %TechID%)</expression>
     </condition>
-    <condition name="Tech Researching (XS)">
-      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
-      <param name="TechID" dispname="$$22311$$Tech" vartype="string">TechName</param>
-      <expression>trTechStatusResearching(%PlayerID%, %TechID%)</expression>
-    </condition>
     <condition name="Tech Status Equals">
       <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
       <param name="TechID" dispname="$$22311$$Tech" vartype="tech">0</param>
@@ -479,6 +474,19 @@
       <param name="MyBool" dispname="YesNo" vartype="bool">True</param>
       <expression>kbIsPlayerHuman(%Player%)==%MyBool%</expression>
     </condition>
+    <condition name="ZP Tech Researching (XS)">
+      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+      <param name="TechID" dispname="$$22311$$Tech" vartype="string">TechName</param>
+      <expression>trTechStatusResearching(%PlayerID%, %TechID%)</expression>
+    </condition>
+    <condition name="ZP Pick Consulate Partner (Condition)">
+      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+      <expression>trTechStatusResearching(%PlayerID%, cTechzpPickConsulateTechAvailable)</expression>
+    </condition>
+    <condition name="ZP Pick Pirate Fraction (Condition)">
+      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+      <expression>trTechStatusResearching(%PlayerID%, cTechzpTheBlackFlag)</expression>
+    </condition>
 
 <!--MODDED END-->
 
@@ -817,12 +825,6 @@
     <effect name="Set Tech Status">
       <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
       <param name="TechID" dispname="$$22311$$Tech" vartype="tech">0</param>
-      <param name="Status" dispname="$$22340$$Status" vartype="techstatus">2</param>
-      <command>trTechSetStatus(%PlayerID%, %TechID%, %Status%);</command>
-    </effect>
-    <effect name="Set Tech Status (XS)">
-      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
-      <param name="TechID" dispname="$$22311$$Tech" vartype="string">TechName</param>
       <param name="Status" dispname="$$22340$$Status" vartype="techstatus">2</param>
       <command>trTechSetStatus(%PlayerID%, %TechID%, %Status%);</command>
     </effect>
@@ -2142,6 +2144,29 @@
 	    <command>trUnitSelectClear();</command>
       <command>trUnitSelectByID(1*%SrcObject%);</command>
       <command>trUnitChangeInArea(%FromPlayerID%, %ToPlayerID%, kbGetProtoUnitID("%FromType%"),"%ToProto%", %Dist%);</command>
+    </effect>
+    <effect name="ZP Set Tech Status (XS)">
+      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+      <param name="TechID" dispname="$$22311$$Tech" vartype="string">TechName</param>
+      <param name="Status" dispname="$$22340$$Status" vartype="techstatus">2</param>
+      <command>trTechSetStatus(%PlayerID%, %TechID%, %Status%);</command>
+    </effect>
+
+    <effect name="ZP Pick Consulate Partner (Effect)">
+      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+      <command>if(trPlayerCivilization(%PlayerID%, "Japanese")==true){</command>
+      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOnJapanese, 2);}</command>
+      <command>if(trPlayerCivilization(%PlayerID%, "Chinese")==true){</command>
+      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOnChinese, 2);}</command>
+      <command>if(trPlayerCivilization(%PlayerID%, "Indians")==true){</command>
+      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOnIndian, 2);}</command>
+    </effect>
+    <effect name="ZP Pick Pirate Fraction (Effect)">
+      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOffPirates, 2);</command>
+      <command>if(trPlayerCivilization(%PlayerID%, "DEItalians")==true){</command>
+      <command>trTechSetStatus(%PlayerID%, cTechzpItalianSettlerBallance, 2);}</command>
+
     </effect>
   </effects>
 </trigger>

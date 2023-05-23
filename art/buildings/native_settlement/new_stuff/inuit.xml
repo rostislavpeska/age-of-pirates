@@ -1,0 +1,94 @@
+<animfile>
+    <definebone>fish</definebone>
+    <definebone>ashanti_prop</definebone>
+    <attachment>Igloo2
+        <component>Igloo2
+            <assetreference type="GrannyModel">
+                <file>buildings\native_settlement\new_stuff\inuit_settlement\Igloo2</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>Igloo2</component>
+        </anim>
+    </attachment>
+    <attachment>bass
+        <include>units\animals\fish\bass.xml</include>
+    </attachment>
+    <attachment>water
+        <component>water
+            <assetreference type="GrannyModel">
+                <file>buildings\inuit_ice_fishing_hole\water</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>water</component>
+        </anim>
+    </attachment>
+    <attachment>icefishinghole
+        <component>icefishinghole
+            <assetreference type="GrannyModel">
+                <file>buildings\inuit_ice_fishing_hole\icefishinghole</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>icefishinghole</component>
+        </anim>
+    </attachment>
+    <attachment>smoke
+        <component>smoke
+            <assetreference type="ParticleSystem">
+                <file>effects\smoke\white_smoke_a.particle</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>smoke</component>
+        </anim>
+    </attachment>
+    <component>wigwam
+        <logic type="Variation">
+            <data>
+                <assetreference type="GrannyModel">
+                    <file>buildings\native_settlement\new_stuff\inuit_settlement\Igloo1</file>
+                </assetreference>
+                <attach a="Igloo2" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+            </data>
+            <data>
+                <assetreference type="GrannyModel">
+                    <file>buildings\native_ruins\insuksuk_a</file>
+                </assetreference>
+            </data>
+            <data>
+                <assetreference type="GrannyModel">
+                    <file>buildings\native_ruins\insuksuk_b</file>
+                </assetreference>
+            </data>
+            <data>
+                <assetreference type="GrannyModel">
+                    <file>buildings\native_ruins\insuksuk_c</file>
+                </assetreference>
+            </data>
+            <data>
+                <assetreference type="GrannyModel">
+                    <file>buildings\native_settlement\new_stuff\inuit_settlement\insuksuk</file>
+                </assetreference>
+            </data>
+            <data>
+                <assetreference type="GrannyModel">
+                    <file>buildings\inuit_ice_fishing_hole\attachment_Model</file>
+                </assetreference>
+                <attach a="bass" frombone="MASTER" tobone="fish" syncanims="0"></attach>
+                <attach a="icefishinghole" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+                <attach a="water" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+            </data>
+        </logic>
+        <decal>
+            <effecttype>default</effecttype>
+            <selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
+            <width>4.0</width>
+            <height>4.0</height>
+        </decal>
+    </component>
+    <anim>Idle
+        <component>wigwam</component>
+    </anim>
+</animfile>

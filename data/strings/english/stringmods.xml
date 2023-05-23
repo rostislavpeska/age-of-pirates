@@ -563,6 +563,15 @@
       <string _locid="300560">Seawolf</string>
       <string _locid="300561">Turtle</string>
       <string _locid="300562">ZP Nautilus</string>
+      <string _locid="300563">ZP Socket Inuits</string>
+      <string _locid="300564">Inuit Village</string>
+      <string _locid="300565">ZP House Inuit</string>
+      <string _locid="300566">ZP Inuit Vilagers</string>
+      <string _locid="300567">Harpooner</string>
+      <string _locid="300568">ZP Inuit Harpooner</string>
+      <string _locid="300569">Harpoon</string>
+      <string _locid="300570">Husky</string>
+      <string _locid="300571">ZP Inuit Husky</string>
     </language>
   </stringtable>
 </stringmods>

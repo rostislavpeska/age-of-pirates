@@ -113,6 +113,7 @@
     <dbid>40005</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
       <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
@@ -137,12 +138,15 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPirates</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOnJapanese" type="Normal">
     <dbid>40006</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
     <effects>
       <effect type="TechStatus" status="obtainable">zpBigConsulatePortugueseClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigConsulateDutchClone</effect>
@@ -166,12 +170,15 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnJapanese</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOnChinese" type="Normal">
     <dbid>40020</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
     <effects>
       <effect type="TechStatus" status="obtainable">zpBigConsulateRussiansClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigConsulateBritishClone</effect>
@@ -195,12 +202,15 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnChinese</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOnIndian" type="Normal">
     <dbid>40021</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
     <effects>
       <effect type="TechStatus" status="obtainable">zpBigConsulateBritishClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigConsulateFrenchClone</effect>
@@ -224,6 +234,8 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnIndian</effect>
     </effects>
   </tech>
 
@@ -7673,6 +7685,19 @@
     <effects>
       <effect type="Data" amount="-1.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNautilus</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeInuits" type="Normal">
+    <dbid>40262</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatInuitHarpooner</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpInuitDogVillager</target>
       </effect>
     </effects>
   </tech>
