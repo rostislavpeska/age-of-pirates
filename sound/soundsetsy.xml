@@ -2223,4 +2223,28 @@
     <sound filename="shipmove2.wav" volume="1.0000">
     </sound>
   </soundset>
+  <soundset name="Inuit_Military_Select" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="inuit\InuitMilitarySelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitMilitarySelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitMilitarySelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Inuit_Military_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="inuit\InuitMilitaryOrder1.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitMilitaryOrder2.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitMilitaryOrder3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Inuit_Military_Attack" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="inuit\InuitMilitaryAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitMilitaryAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitMilitaryAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
 </soundsetdef>

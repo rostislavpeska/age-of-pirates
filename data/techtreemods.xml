@@ -7699,6 +7699,127 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpInuitDogVillager</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Canoe</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatInuitHuntingDogs</effect>
+      <effect type="TechStatus" status="obtainable">zpNatInuitInsuksuks</effect>
+      <effect type="TechStatus" status="obtainable">zpChampionInuit</effect>
+      <effect type="TechStatus" status="obtainable">zpNatInuitBlizzardBravers</effect>
+      <effect type="TechStatus" status="obtainable">zpWarriorSocietyInuit</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatInuitHuntingDogs" type="Normal">
+    <dbid>40263</dbid>
+    <displaynameid>300574</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Food">75.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\NatInuitHuntingDogs.png</icon>
+    <rollovertextid>300575</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" action="Gather" amount="1.25" subtype="WorkRate" unittype="Huntable" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatInuitInsuksuks" type="Normal">
+    <dbid>40264</dbid>
+    <displaynameid>300576</displaynameid>
+    <cost resourcetype="Wood">80.0000</cost>
+    <cost resourcetype="Food">50.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\NatInsuksuks.png</icon>
+    <rollovertextid>300577</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="6.00" subtype="LOS" relativity="Absolute">
+        <target type="ProtoUnit">Building</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatInuitBlizzardBravers" type="Normal">
+    <dbid>40265</dbid>
+    <displaynameid>300578</displaynameid>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\NatBlizzardBravers.png</icon>
+    <rollovertextid>300579</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="MaximumVelocity" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractInfantry</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpWarriorSocietyInuit" type="Normal">
+    <dbid>40266</dbid>
+    <displaynameid>300580</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">75.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\warrior_society\warrior_society.png</icon>
+    <rollovertextid>300581</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatInuitHarpooner</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatInuitHarpooner</target>
+      </effect>
+      <effect type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300582">
+      </effect>
+      <effect type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300584" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpChampionInuit" type="Normal">
+    <dbid>40267</dbid>
+    <displaynameid>300585</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\champion_natives\champion_natives.png</icon>
+    <rollovertextid>300581</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+      <techstatus status="Active">zpWarriorSocietyInuit</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatInuitHarpooner</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatInuitHarpooner</target>
+      </effect>
+      <effect type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300583">
+      </effect>
+      <effect type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300584" reqtech="ImpLegendaryNativesShadow">
+      </effect>
     </effects>
   </tech>
   

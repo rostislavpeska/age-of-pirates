@@ -572,6 +572,20 @@
       <string _locid="300569">Harpoon</string>
       <string _locid="300570">Husky</string>
       <string _locid="300571">ZP Inuit Husky</string>
+      <string _locid="300572">Inuit pet, can gather food from huntables.</string>
+      <string _locid="300573">Native warrior with a harpoon</string>
+      <string _locid="300574">Inuit Hunting Dogs</string>
+      <string _locid="300575">Villagers gather food from huntables faster.</string>
+      <string _locid="300576">Insuksuks</string>
+      <string _locid="300577">Increases building line of sight</string>
+      <string _locid="300578">Blizzard Bravers</string>
+      <string _locid="300579">All infantry moves on snow faster</string>
+      <string _locid="300580">Inuit Warrior Society</string>
+      <string _locid="300581">Increases Inuit units attack and hitpoints</string>
+      <string _locid="300582">Elite Harpooner</string>
+      <string _locid="300583">Champion Harpooner</string>
+      <string _locid="300584">Legendary Harpooner</string>
+      <string _locid="300585">Champion Inuit</string>
     </language>
   </stringtable>
 </stringmods>
