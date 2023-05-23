@@ -586,6 +586,14 @@
       <string _locid="300583">Champion Harpooner</string>
       <string _locid="300584">Legendary Harpooner</string>
       <string _locid="300585">Champion Inuit</string>
+      <string _locid="300586">Qamutiik</string>
+      <string _locid="300587">ZP Qamutiik</string>
+      <string _locid="300588">Inuit Dog Sledding Artillery</string>
+      <string _locid="300589">Inuit Expansion</string>
+      <string _locid="300590">Unlocks more Inuit units and techs</string>
+      <string _locid="300591">Elite Qamutiik</string>
+      <string _locid="300592">Champion Qamutiik</string>
+      <string _locid="300593">Legendary Qamutiik</string>
     </language>
   </stringtable>
 </stringmods>

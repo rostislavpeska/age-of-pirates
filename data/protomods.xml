@@ -232,7 +232,8 @@
     <train row ="0" page ="0" column ="3">zpIronTank</train>
     <train row ="0" page ="0" column ="4">zpNautilusProxy</train>
     <train row ="0" page ="0" column ="1">zpNatInuitHarpooner</train>
-    <train row ="0" page ="0" column ="1">zpInuitDogVillager</train>
+    <train row ="0" page ="0" column ="3">zpInuitDogVillager</train>
+    <train row ="0" page ="0" column ="2">zpInuitTorchman</train>
 
     <tech row="0" page="0" column="2">zpTrainPrivateer1</tech>
     <tech row="0" page="1" column="2">zpNatHonoredPirate</tech>
@@ -300,6 +301,7 @@
     <tech row="0" page="2" column="3">zpNatInuitBlizzardBravers</tech>
     <tech row="0" page="1" column="1">zpWarriorSocietyInuit</tech>
     <tech row="0" page="1" column="1">zpChampionInuit</tech>
+    <tech row="0" page="1" column="1">zpNatInuitInfluence</tech>
 
    
 
@@ -342,6 +344,7 @@
     <train row ="0" page ="0" column ="86">zpNatCossack</train>
     <train row ="0" page ="0" column ="87">zpNatHoopThrower</train>
     <train row ="0" page ="0" column ="88">zpNatInuitHarpooner</train>
+    <train row ="0" page ="0" column ="89">zpInuitTorchman</train>
   </unit>
   <unit id ="20004" name ="zpNatPirate">
 		<dbid>20004</dbid>
@@ -11443,7 +11446,7 @@
     <animfile>buildings\trading_post\native_outpost_socket.xml</animfile>
     <minimapicon>ui\minimap\n</minimapicon>
     <capturedminimapicon>ui\minimap\n_c</capturedminimapicon>
-    <portraiticon>resources\art\units\natives\pirate_natives.png</portraiticon>
+    <portraiticon>resources\art\units\natives\settlement_inuit.png</portraiticon>
     <rollovertextid>32940</rollovertextid>
     <shortrollovertextid>32940</shortrollovertextid>
     <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
@@ -11779,7 +11782,7 @@
     <shortrollovertextid>300572</shortrollovertextid>
     <initialhitpoints>150.0000</initialhitpoints>
     <maxhitpoints>150.0000</maxhitpoints>
-    <los>14.0000</los>
+    <los>25.0000</los>
     <unitaitype>Civilian</unitaitype>
     <trainpoints>20.0000</trainpoints>
     <buildlimit>10</buildlimit>
@@ -11856,6 +11859,108 @@
       <name>Hunting</name>
       <rate type="Herdable">1.000000</rate>
       <rate type="Huntable">1.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20127" name="zpInuitTorchman">
+    <dbid>20127</dbid>
+    <displaynameid>300586</displaynameid>
+    <editornameid>300587</editornameid>
+    <subciv>InuitNatives</subciv>
+    <populationcount>0</populationcount>
+    <obstructionradiusx>0.7900</obstructionradiusx>
+    <obstructionradiusz>0.7900</obstructionradiusz>
+    <formationcategory>Mobile</formationcategory>
+    <maxvelocity>7.0000</maxvelocity>
+    <maxrunvelocity>5.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\artillery\inuit_qamutiik\inuit_qamutiik.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>cav</physicsinfo>
+    <icon>resources\art\units\natives\qamutiik_icon.png</icon>
+    <portraiticon>resources\art\units\natives\qamutiik_portrait.png</portraiticon>
+    <rollovertextid>300588</rollovertextid>
+    <shortrollovertextid>300588</shortrollovertextid>
+    <initialhitpoints>250.0000</initialhitpoints>
+    <maxhitpoints>250.0000</maxhitpoints>
+    <buildlimit>5</buildlimit>
+    <los>25.0000</los>
+    <projectileprotounit>Arrow</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>35.0000</trainpoints>
+    <bounty>13.0000</bounty>
+    <buildbounty>13.0000</buildbounty>
+    <cost resourcetype="Food">140.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <allowedage>3</allowedage>
+    <armor type="Hand" value="0.1000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractCavalry</unittype>
+	  <unittype>AbstractSiegeTrooper</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractRangedCavalry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>inuitsleig.tactics</tactics>
+    <protoaction>
+      <name>BowAttack</name>
+      <damage>10.000000</damage>
+      <damagetype>Ranged</damagetype>
+	  <minrange>3.000000</minrange>
+      <maxrange>12.000000</maxrange>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.600000</damagebonus>
+      <damagebonus type="AbstractHeavyInfantry">3.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>45.000000</damage>
+      <damagetype>Siege</damagetype>
+	  <maxrange>24.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>HandAttack</name>
+      <damage>23.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.600000</damagebonus>
+      <damagebonus type="AbstractHeavyInfantry">3.000000</damagebonus>
     </protoaction>
   </unit>
 

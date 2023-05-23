@@ -3,7 +3,7 @@
   <definebone>bone_hat</definebone>
   <definebone>BIP01 PROP1</definebone>
   <attachment>torch<include>effects\projectiles\torch.xml</include></attachment>
-  <attachment>rifle<component>rifle<assetreference type="GrannyModel"><file>units\natives\attachment_blowgun</file></assetreference></component><anim>Idle<component>rifle</component></anim></attachment>
+  <attachment>rifle<component>rifle<assetreference type="GrannyModel"><file>units\natives\attachment_harpoon</file></assetreference></component><anim>Idle<component>rifle</component></anim></attachment>
   <attachment>pickaxe<component>pickaxe<assetreference type="GrannyModel"><file>units\attachments\pickaxe_villager</file></assetreference></component><anim>Idle<component>pickaxe</component></anim></attachment>
   <attachment>axe<component>axe<assetreference type="GrannyModel"><file>units\attachments\axe_villager</file></assetreference></component><anim>Idle<component>axe</component></anim></attachment>
   <attachment>hammer<component>hammer<assetreference type="GrannyModel"><file>units\attachments\hammer_villager</file></assetreference></component><anim>Idle<component>hammer</component></anim></attachment>

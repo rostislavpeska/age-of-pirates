@@ -4477,6 +4477,8 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatHoopThrower" culture="none" newname="300516">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300584">
+      </effect>
     </effects>
   </tech>
   <tech name="AANativeStartingTechsPI">
@@ -7708,6 +7710,10 @@
       <effect type="TechStatus" status="obtainable">zpNatInuitBlizzardBravers</effect>
       <effect type="TechStatus" status="obtainable">zpWarriorSocietyInuit</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">NativeTreatyInuit</effect>
+      <effect type="TechStatus" status="obtainable">DEIndianFriendshipInuit</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyInuit</effect>
+      <effect type="TechStatus" status="obtainable">zpNatInuitInfluence</effect>
     </effects>
   </tech>
   <tech name="zpNatInuitHuntingDogs" type="Normal">
@@ -7789,6 +7795,16 @@
       </effect>
       <effect type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300584" reqtech="ImpLegendaryNativesShadow">
       </effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpInuitTorchman</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpInuitTorchman</target>
+      </effect>
+      <effect type="SetName" proto="zpInuitTorchman" culture="none" newname="300591">
+      </effect>
+      <effect type="SetName" proto="zpInuitTorchman" culture="none" newname="300593" reqtech="ImpLegendaryNativesShadow">
+      </effect>
     </effects>
   </tech>
   <tech name="zpChampionInuit" type="Normal">
@@ -7820,8 +7836,92 @@
       </effect>
       <effect type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300584" reqtech="ImpLegendaryNativesShadow">
       </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpInuitTorchman</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpInuitTorchman</target>
+      </effect>
+      <effect type="SetName" proto="zpInuitTorchman" culture="none" newname="300592">
+      </effect>
+      <effect type="SetName" proto="zpInuitTorchman" culture="none" newname="300593" reqtech="ImpLegendaryNativesShadow">
+      </effect>
     </effects>
   </tech>
+  <tech name="NativeTreatyInuit" type="Normal">
+    <dbid>40268</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatInuitHarpooner" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="DEIndianFriendshipInuit" type="Normal">
+    <dbid>40269</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatInuitHarpooner" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
+      <effect type="TechStatus" status="active">zpChampionInuit</effect>
+    </effects>
+  </tech>
+  <tech name="ypNativeTradeTreatyInuit" type="Normal">
+    <dbid>40270</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpNatInuitInfluence" type ="Normal">
+		<dbid>40271</dbid>
+		<displaynameid>300589</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\inuit_igloo_big.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>300590</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpInuitTorchman</target>
+      </effect>
+      <effect type="Data" amount="4.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatInuitHarpooner</target>
+      </effect>
+    </effects>
+	</tech>
   
 
 
