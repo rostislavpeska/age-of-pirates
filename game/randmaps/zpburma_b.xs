@@ -3,6 +3,7 @@
 include "mercenaries.xs";
 include "ypAsianInclude.xs";
 include "ypKOTHInclude.xs";
+include "zpPiratesInclude.xs";
 
 void main(void)
 {
@@ -1371,6 +1372,8 @@ rmClearClosestPointConstraints();
     
 // ------Triggers--------//
 
+zpAddPiratesFeatures();
+
 int tch0=1671; // tech operator
 
 // Starting techs
@@ -1388,206 +1391,6 @@ rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
-
-// Italian Vilager Balance
-
-for (k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("Italian Vilager Balance"+k);
-rmAddTriggerCondition("ZP Player Civilization");
-rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("Civilization","DEItalians");
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4423+tch0); //operator
-rmSetTriggerEffectParamInt("Status",2);
-rmSetTriggerPriority(2);
-rmSetTriggerActive(false);
-rmSetTriggerRunImmediately(false);
-rmSetTriggerLoop(false);
-}
-
-for (k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("Italian Gondola Balance"+k);
-rmAddTriggerCondition("Tech Status Equals");
-rmSetTriggerConditionParamInt("PlayerID",k);
-rmSetTriggerConditionParamInt("TechID",4832);
-rmSetTriggerConditionParamInt("Status",2);
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4427+tch0); //operator
-rmSetTriggerEffectParamInt("Status",2);
-rmSetTriggerPriority(2);
-rmSetTriggerActive(false);
-rmSetTriggerRunImmediately(false);
-rmSetTriggerLoop(false);
-}
-
-// Update ports
-
-rmCreateTrigger("I Update Ports");
-rmAddTriggerCondition("Player Unit Count");
-rmSetTriggerConditionParamInt("PlayerID",0);
-rmSetTriggerConditionParam("Protounit","zpChinaTreasureShip");
-rmSetTriggerConditionParam("Op",">=");
-rmSetTriggerConditionParamInt("Count",1);
-for (i=1; <= cNumberNonGaiaPlayers) {
-      rmAddTriggerEffect("Set Tech Status");
-      rmSetTriggerEffectParamInt("PlayerID",i);
-      rmSetTriggerEffectParamFloat("TechID",4335+tch0); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-    }
-rmSetTriggerPriority(4);
-rmSetTriggerActive(true);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(false);
-
-// Consulate - Tradingpost politician switcher
-
-for (k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("Activate Consulate Japan"+k);
-rmAddTriggerCondition("ZP Player Civilization");
-rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("Civilization","Japanese");
-rmAddTriggerCondition("Tech Researching");
-rmSetTriggerConditionParamFloat("TechID",4188+tch0); //operator
-rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4274+tch0); //operator
-rmSetTriggerEffectParamInt("Status",0);
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4245+tch0); //operator
-rmSetTriggerEffectParamInt("Status",0);
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4176+tch0); //operator
-rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("ZP Pick Consulate Tech");
-rmSetTriggerEffectParamInt("Player",k);
-rmSetTriggerPriority(4);
-rmSetTriggerActive(false);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(true);
-}
-
-for (k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("Activate Consulate China"+k);
-rmAddTriggerCondition("ZP Player Civilization");
-rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("Civilization","Chinese");
-rmAddTriggerCondition("Tech Researching");
-rmSetTriggerConditionParamFloat("TechID",4188+tch0); //operator
-rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4274+tch0); //operator
-rmSetTriggerEffectParamInt("Status",0);
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4245+tch0); //operator
-rmSetTriggerEffectParamInt("Status",0);
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4177+tch0); //operator
-rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("ZP Pick Consulate Tech");
-rmSetTriggerEffectParamInt("Player",k);
-rmSetTriggerPriority(4);
-rmSetTriggerActive(false);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(true);
-}
-
-for (k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("Activate Consulate India"+k);
-rmAddTriggerCondition("ZP Player Civilization");
-rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("Civilization","Indians");
-rmAddTriggerCondition("Tech Researching");
-rmSetTriggerConditionParamFloat("TechID",4188+tch0); //operator
-rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4274+tch0); //operator
-rmSetTriggerEffectParamInt("Status",0);
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4245+tch0); //operator
-rmSetTriggerEffectParamInt("Status",0);
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4178+tch0); //operator
-rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("ZP Pick Consulate Tech");
-rmSetTriggerEffectParamInt("Player",k);
-rmSetTriggerPriority(4);
-rmSetTriggerActive(false);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(true);
-}
-
-for (k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("Activate Wokou"+k);
-rmAddTriggerCondition("Tech Researching");
-rmSetTriggerConditionParamFloat("TechID",4261+tch0); //operator
-rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4274+tch0); //operator
-rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4176+tch0); //operator
-rmSetTriggerEffectParamInt("Status",0);
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4177+tch0); //operator
-rmSetTriggerEffectParamInt("Status",0);
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4178+tch0); //operator
-rmSetTriggerEffectParamInt("Status",0);
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4245+tch0); //operator
-rmSetTriggerEffectParamInt("Status",0);
-rmAddTriggerEffect("ZP Pick Consulate Tech");
-rmSetTriggerEffectParamInt("Player",k);
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
-rmSetTriggerPriority(4);
-rmSetTriggerActive(false);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(true);
-}
-
-// Specific for human players
-
-for(k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("Human Check Plr"+k);
-rmAddTriggerCondition("ZP PLAYER Human");
-rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("MyBool", "true");
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4174+tch0); //operator
-rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japan"+k));
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Wokou"+k));
-rmSetTriggerPriority(4);
-rmSetTriggerActive(true);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(false);
-}
 
 // Privateer training
 
