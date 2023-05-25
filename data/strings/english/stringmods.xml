@@ -563,6 +563,37 @@
       <string _locid="300560">Seawolf</string>
       <string _locid="300561">Turtle</string>
       <string _locid="300562">ZP Nautilus</string>
+      <string _locid="300563">ZP Socket Inuits</string>
+      <string _locid="300564">Inuit Village</string>
+      <string _locid="300565">ZP House Inuit</string>
+      <string _locid="300566">ZP Inuit Vilagers</string>
+      <string _locid="300567">Harpooner</string>
+      <string _locid="300568">ZP Inuit Harpooner</string>
+      <string _locid="300569">Harpoon</string>
+      <string _locid="300570">Husky</string>
+      <string _locid="300571">ZP Inuit Husky</string>
+      <string _locid="300572">Inuit pet, can gather food from huntables.</string>
+      <string _locid="300573">Native warrior with a harpoon</string>
+      <string _locid="300574">Inuit Hunting Dogs</string>
+      <string _locid="300575">Villagers gather food from huntables faster.</string>
+      <string _locid="300576">Insuksuks</string>
+      <string _locid="300577">Increases building line of sight</string>
+      <string _locid="300578">Blizzard Bravers</string>
+      <string _locid="300579">All infantry moves on snow faster</string>
+      <string _locid="300580">Inuit Warrior Society</string>
+      <string _locid="300581">Increases Inuit units attack and hitpoints</string>
+      <string _locid="300582">Elite Harpooner</string>
+      <string _locid="300583">Champion Harpooner</string>
+      <string _locid="300584">Legendary Harpooner</string>
+      <string _locid="300585">Champion Inuit</string>
+      <string _locid="300586">Qamutiik</string>
+      <string _locid="300587">ZP Qamutiik</string>
+      <string _locid="300588">Inuit Dog Sledding Artillery</string>
+      <string _locid="300589">Inuit Expansion</string>
+      <string _locid="300590">Unlocks more Inuit units and techs</string>
+      <string _locid="300591">Elite Qamutiik</string>
+      <string _locid="300592">Champion Qamutiik</string>
+      <string _locid="300593">Legendary Qamutiik</string>
     </language>
   </stringtable>
 </stringmods>
