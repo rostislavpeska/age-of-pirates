@@ -70,6 +70,17 @@ minInterval 5
         xsEnableRule("nativeWagonMonitor");
         xsEnableRule("submarineTactics");
     }
+
+    if (getGaiaUnitCount(cUnitTypezpNativeHouseInuit) > 0)
+    {
+        xsEnableRule("zpInuitTechMonitor");
+
+    }
+    if (getGaiaUnitCount(cUnitTypezpNativeHouseMaltese) > 0)
+    {
+        xsEnableRule("zpMalteseTechMonitor");
+
+    }
     
     xsDisableSelf();
 }
@@ -1278,4 +1289,93 @@ minInterval 30
       }
     }
   }
+}
+
+//==============================================================================
+// ZP Inuit Tech Monitor
+//==============================================================================
+rule zpInuitTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketInuits, cUnitStateAny) == 0)
+      {
+      return; // Player has no Inuit socket.
+      }
+
+      // Inuit Influence
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpNatInuitInfluence,
+      []() -> bool { return (kbGetAge() >= cAge2 ); },
+      cUnitTypeTradingPost);
+
+      // Inuit Umiaks
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpInuitUmiaks,
+      []() -> bool { return ((kbTechGetStatus(cTechzpNatInuitInfluence) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Inuit Aurora
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpInuitFriends,
+      []() -> bool { return ((kbTechGetStatus(cTechzpNatInuitInfluence) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
+// ZP Maltese Tech Monitor
+//==============================================================================
+rule zpMalteseTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketMaltese, cUnitStateAny) == 0)
+      {
+      return; // Player has no Maltese socket.
+      }
+
+      // Maltese Venetians
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpNatMalteseExplorationFleet,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateMalteseVenetians) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatMalteseExpeditionaryFleet,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateMalteseVenetians) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Maltese Florentians
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatMalteseBanking,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateMalteseFlorentians) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatMalteseFactory,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateMalteseFlorentians) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Maltese Jerusalem
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatMalteseFort,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateMalteseJerusalem) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatMalteseOutposts,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateMalteseJerusalem) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Maltese Central Europe
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpMalteseMarksmen,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateMalteseCentralEuropeans) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpMalteseCannons,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateMalteseCentralEuropeans) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
 }
