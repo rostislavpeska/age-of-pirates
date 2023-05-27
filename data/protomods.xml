@@ -10376,11 +10376,13 @@
 		<flag>DoNotShowOnMiniMap</flag>
 		<flag>Tracked</flag>
   </unit>
-  <unit id="20111" name="zpNatHoopThrower">
-    <dbid>20111</dbid>
+  <unit id="2514" name="zpNatHoopThrower">
+    <dbid>3089</dbid>
     <displaynameid>33478</displaynameid>
     <editornameid>300505</editornameid>
     <subciv>zpScientists</subciv>
+    <populationcount>0</populationcount>
+    <buildlimit>12</buildlimit>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
@@ -10388,7 +10390,7 @@
     <maxrunvelocity>6.2500</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\spc\hoop_thrower\hoop_thrower.xml</animfile>
+    <animfile>units\infantry_ranged\hoop_thrower\hoop_thrower.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\spc\hoop_thrower\hoop_thrower_icon.png</icon>
@@ -10403,9 +10405,8 @@
     <trainpoints>42.0000</trainpoints>
     <bounty>13.0000</bounty>
     <buildbounty>13.0000</buildbounty>
-    <buildlimit>12</buildlimit>
     <cost resourcetype="Wood">50.0000</cost>
-    <cost resourcetype="Gold">65.0000</cost>
+    <cost resourcetype="Gold">75.0000</cost>
     <allowedage>1</allowedage>
     <armor type="Ranged" value="0.3500">
     </armor>
@@ -10430,7 +10431,6 @@
     <unittype>HasBountyValue</unittype>
     <unittype>Ranged</unittype>
     <unittype>AbstractSiegeTrooper</unittype>
-    <unittype>AbstractNativeWarrior</unittype>
     <unittype>AbstractCavalryInfantry</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
     <unittype>AbstractRangedInfantry</unittype>
@@ -10458,8 +10458,8 @@
     <sharedbuildlimitunittypes>
       <unittype>zpNatHoopThrowerProxy</unittype>
       <unittype>zpNatHoopThrower</unittype>
-    <tactics>dehoopthrower.tactics</tactics>
     </sharedbuildlimitunittypes>
+    <tactics>dehoopthrower.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
       <damage>25.000000</damage>
