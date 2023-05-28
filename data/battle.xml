@@ -685,14 +685,6 @@
   <squadmode>
     <name>zpShipDive</name>
     <tactic>zpDive</tactic>
-    <armorbonus>
-      <damagetype>Siege</damagetype>
-      <value>0.80</value>
-    </armorbonus>
-    <armorbonus>
-      <damagetype>Ranged</damagetype>
-      <value>0.60</value>
-    </armorbonus>
     <allowautopick>0</allowautopick>
     <unittype>Ship</unittype>
     <targetunittype>All</targetunittype>
@@ -711,14 +703,6 @@
   <squadmode>
     <name>zpShipProtectDock</name>
     <tactic>zpProtectDock</tactic>
-    <armorbonus>
-      <damagetype>Siege</damagetype>
-      <value>0.80</value>
-    </armorbonus>
-    <armorbonus>
-      <damagetype>Ranged</damagetype>
-      <value>0.60</value>
-    </armorbonus>
     <allowautopick>0</allowautopick>
     <unittype>Ship</unittype>
     <targetunittype>All</targetunittype>

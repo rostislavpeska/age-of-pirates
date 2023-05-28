@@ -573,7 +573,7 @@
       <string _locid="300570">Husky</string>
       <string _locid="300571">ZP Inuit Husky</string>
       <string _locid="300572">Inuit pet, can gather food from huntables.</string>
-      <string _locid="300573">Native warrior with a harpoon</string>
+      <string _locid="300573">Native warrior equipped with an automatic harpoon</string>
       <string _locid="300574">Inuit Hunting Dogs</string>
       <string _locid="300575">Villagers gather food from huntables faster.</string>
       <string _locid="300576">Insuksuks</string>
@@ -594,6 +594,17 @@
       <string _locid="300591">Elite Qamutiik</string>
       <string _locid="300592">Champion Qamutiik</string>
       <string _locid="300593">Legendary Qamutiik</string>
+      <string _locid="300594">Inuit Feeders</string>
+      <string _locid="300595">Attracts Caribous Herds directly to the middle of your settlement.</string>
+      <string _locid="300596">Umiak</string>
+      <string _locid="300597">ZP Umiak</string>
+      <string _locid="300598">Bering Strait Umiaks</string>
+      <string _locid="300599">Aurora</string>
+      <string _locid="300600">Attracts Champion warriors from other native tribes</string>
+      <string _locid="300601">Ships Inuit War Canoes</string>
+      <string _locid="300602">Strong attack, very efficient for fishing and especially whaling</string>
+      <string _locid="300603">Ice Fishing Hole</string>
+      <string _locid="300604">ZP Fishing Hole</string>
     </language>
   </stringtable>
 </stringmods>

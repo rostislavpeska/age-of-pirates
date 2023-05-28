@@ -18,15 +18,15 @@ void main(void)
 
    if (rmAllocateSubCivs(3) == true)
    {
-		subCiv0=rmGetCivID("nootka");
-      rmEchoInfo("subCiv0 is nootka "+subCiv0);
+		subCiv0=rmGetCivID("inuitnatives");
+      rmEchoInfo("subCiv0 is inuitnatives "+subCiv0);
       if (subCiv0 >= 0)
-         rmSetSubCiv(0, "nootka");
+         rmSetSubCiv(0, "inuitnatives");
 
-      subCiv1=rmGetCivID("tengri");
-      rmEchoInfo("subCiv1 is tengri "+subCiv1);
+      subCiv1=rmGetCivID("inuitnatives");
+      rmEchoInfo("subCiv1 is inuitnatives "+subCiv1);
       if (subCiv1 >= 0)
-			rmSetSubCiv(1, "tengri");
+			rmSetSubCiv(1, "inuitnatives");
   
 		subCiv2=rmGetCivID("zpscientists");
 		rmEchoInfo("subCiv2 is zpscientists "+subCiv2);
@@ -111,8 +111,8 @@ void main(void)
 
    //Socket Constraints
    int avoidSocket = rmCreateClassDistanceConstraint("avoid socket", rmClassID("Socket"), 10.0);
-   int avoidSocketLong=rmCreateTypeDistanceConstraint("avoid socket long", "deSocketTengri", 50.0);
-   int avoidSocketLongNootka=rmCreateTypeDistanceConstraint("avoid socket long nootka", "SocketNootka", 50.0);
+   int avoidSocketLong=rmCreateTypeDistanceConstraint("avoid socket long", "zpSocketInuits", 50.0);
+   int avoidSocketLongNootka=rmCreateTypeDistanceConstraint("avoid socket long nootka", "zpSocketInuits", 50.0);
    int avoidSocketLongTrade=rmCreateTypeDistanceConstraint("avoid socket long trade", "SocketTradeRoute", 50.0);
 
    // Bonus Area Constraints
@@ -607,13 +607,13 @@ rmBuildArea(bonusIsland2);
          rmPlaceObjectDefAtPoint(socketID2, 0, socketLoc2);
    }
 
-   // Tengri
+   // Inuit West
 
-   if (subCiv1 == rmGetCivID("tengri"))
+   if (subCiv1 == rmGetCivID("inuitnatives"))
    {  
       int tengri1VillageID = -1;
       int tengri1VillageType = rmRandInt(1,5);
-      tengri1VillageID = rmCreateGrouping("tengri1 city", "native tengri village snow 0"+tengri1VillageType);
+      tengri1VillageID = rmCreateGrouping("tengri1 city", "native inuit village 0"+tengri1VillageType);
       rmAddGroupingConstraint(tengri1VillageID, avoidTC);
       rmAddGroupingConstraint(tengri1VillageID, avoidCW);
       rmAddGroupingConstraint(tengri1VillageID, avoidImpassableLand);
@@ -627,7 +627,7 @@ rmBuildArea(bonusIsland2);
 
       int tengri2VillageID = -1;
       int tengri2VillageType = rmRandInt(1,5);
-      tengri2VillageID = rmCreateGrouping("tengri2 city", "native tengri village snow 0"+tengri2VillageType);
+      tengri2VillageID = rmCreateGrouping("tengri2 city", "native inuit village 0"+tengri2VillageType);
       rmAddGroupingConstraint(tengri2VillageID, avoidTC);
       rmAddGroupingConstraint(tengri2VillageID, avoidCW);
       rmAddGroupingConstraint(tengri2VillageID, avoidImpassableLand);
@@ -654,11 +654,11 @@ rmBuildArea(bonusIsland2);
 
    // Nootka
 
-   if (subCiv0 == rmGetCivID("nootka"))
+   if (subCiv0 == rmGetCivID("inuitnatives"))
    {  
       int nootka1VillageID = -1;
       int nootka1VillageType = rmRandInt(1,5);
-      nootka1VillageID = rmCreateGrouping("nootka1 city", "native nootka village snow "+nootka1VillageType);
+      nootka1VillageID = rmCreateGrouping("nootka1 city", "native inuit village 0"+nootka1VillageType);
       rmAddGroupingConstraint(nootka1VillageID, avoidTC);
       rmAddGroupingConstraint(nootka1VillageID, avoidCW);
       rmAddGroupingConstraint(nootka1VillageID, avoidImpassableLand);
@@ -671,7 +671,7 @@ rmBuildArea(bonusIsland2);
 
       int nootka2VillageID = -1;
       int nootka2VillageType = rmRandInt(1,5);
-      nootka2VillageID = rmCreateGrouping("nootka2 city", "native nootka village snow "+nootka2VillageType);
+      nootka2VillageID = rmCreateGrouping("nootka2 city", "native inuit village 0"+nootka2VillageType);
       rmAddGroupingConstraint(nootka2VillageID, avoidTC);
       rmAddGroupingConstraint(nootka2VillageID, avoidCW);
       rmAddGroupingConstraint(nootka2VillageID, avoidImpassableLand);
@@ -1747,7 +1747,6 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
-
 
 // Testing
 /*
