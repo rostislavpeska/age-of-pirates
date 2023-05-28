@@ -10217,7 +10217,7 @@
     <animfile>homecity\homecity_gatherpoint_naval.xml</animfile>
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
-    <civflagoverride>objects\flags\thecircle</civflagoverride>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
     <rollovertextid>34099</rollovertextid>
     <shortrollovertextid>34100</shortrollovertextid>
     <los>4.0000</los>
@@ -10267,7 +10267,7 @@
     <animfile>homecity\homecity_gatherpoint_naval.xml</animfile>
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
-    <civflagoverride>objects\flags\thecircle</civflagoverride>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
     <rollovertextid>34099</rollovertextid>
     <shortrollovertextid>34100</shortrollovertextid>
     <los>4.0000</los>
@@ -12140,7 +12140,7 @@
     <maxrunvelocity>7.25000</maxrunvelocity>
     <movementtype>air</movementtype>
     <turnrate>3.0000</turnrate>
-    <animfile>buildings\modern\props_ingame\zeppelin\zeppelin.xml</animfile>
+    <animfile>units\balloons\airship.xml</animfile>
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\artillery\tank\tank_icon.png</icon>
     <portraiticon>resources\art\units\artillery\tank\tank_portrait.png</portraiticon>
