@@ -934,10 +934,10 @@ rmSetTriggerConditionParam("Civilization","Japanese");
 rmAddTriggerCondition("ZP Tech Researching (XS)");
 rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
 rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("ZP Set Tech Status (XS)");
+/*rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPirates"); //operator
-rmSetTriggerEffectParamInt("Status",0);
+rmSetTriggerEffectParamInt("Status",0);*/
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnJapanese"); //operator
@@ -958,10 +958,10 @@ rmSetTriggerConditionParam("Civilization","Chinese");
 rmAddTriggerCondition("ZP Tech Researching (XS)");
 rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
 rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("ZP Set Tech Status (XS)");
+/*rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPirates"); //operator
-rmSetTriggerEffectParamInt("Status",0);
+rmSetTriggerEffectParamInt("Status",0);*/
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnChinese"); //operator
@@ -982,10 +982,10 @@ rmSetTriggerConditionParam("Civilization","Indians");
 rmAddTriggerCondition("ZP Tech Researching (XS)");
 rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
 rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("ZP Set Tech Status (XS)");
+/*rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPirates"); //operator
-rmSetTriggerEffectParamInt("Status",0);
+rmSetTriggerEffectParamInt("Status",0);*/
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnIndian"); //operator
@@ -1007,7 +1007,7 @@ rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPirates"); //operator
 rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("ZP Set Tech Status (XS)");
+/*rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnIndian"); //operator
 rmSetTriggerEffectParamInt("Status",0);
@@ -1018,19 +1018,13 @@ rmSetTriggerEffectParamInt("Status",0);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnJapanese"); //operator
-rmSetTriggerEffectParamInt("Status",0);
+rmSetTriggerEffectParamInt("Status",0);*/
 rmAddTriggerEffect("ZP Pick Consulate Tech");
 rmSetTriggerEffectParamInt("Player",k);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
-/*rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japan"+k));
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));*/
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);

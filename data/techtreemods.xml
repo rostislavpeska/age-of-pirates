@@ -2239,7 +2239,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>     
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMaltese</effect>     
     </effects>
   </tech>
   <tech name="zpNatMalteseExpeditionaryFleet" type="Normal">
@@ -3010,6 +3012,8 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokou</effect>
     </effects>
   </tech>
   <tech name="zpWokouCheapShipyard" type="Normal">
@@ -5295,6 +5299,8 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
   </tech>
   <tech name="zpConsulateNatZapotec" type="Normal">
@@ -5748,6 +5754,8 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffJewish</effect>
     </effects>
   </tech>
   <tech name="DEVeteranRiflemenShadow">
@@ -6184,7 +6192,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>    
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>  
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMalteseLand</effect>  
     </effects>
   </tech>
   <tech name="zpMalteseMarksmen" type="Normal">
@@ -6490,6 +6500,8 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateScientistValentine</effect>
+    
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientists</effect>
     </effects>
   </tech>
   <tech name="zpConsulateScientistNemo" type="Normal">
