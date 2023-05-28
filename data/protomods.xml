@@ -11817,7 +11817,6 @@
     <unittype>HasBountyValue</unittype>
     <unittype>Ranged</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ValidIdleVillager</unittype>
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Economic</unittype>
