@@ -1,0 +1,30 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\war_canoe\textures\bowman_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\war_canoe\textures\bowman_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\war_canoe\textures\bowman_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\war_canoe\textures\bowman_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\war_canoe\textures\bowman_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\war_canoe\textures\bowman_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\war_canoe\textures\bowman_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\war_canoe\textures\bowman_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

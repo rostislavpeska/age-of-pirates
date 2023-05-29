@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>12</width>
+	<height>15</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="148" posx="-1.0972" posz="-12.2483" orientx="0.0001" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="243" posx="-1.0456" posz="-11.5958" orientx="-0.7069" orienty="-0.0000" orientz="-0.7073">UnderbrushYukon</unit>
+		<unit variation="131" posx="-5.9562" posz="-12.8507" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="131" posx="-9.1384" posz="-8.5640" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="131" posx="6.1368" posz="-11.0981" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="131" posx="0.2832" posz="-8.2698" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="131" posx="-0.5073" posz="-14.2744" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="158" posx="-0.3114" posz="-9.8730" orientx="0.7073" orienty="0.0000" orientz="-0.7069">TanningRack</unit>
+		<unit variation="108" posx="-5.3937" posz="-10.7366" orientx="-0.0001" orienty="0.0000" orientz="1.0000">zpNativeHouseInuit</unit>
+		<unit variation="131" posx="-5.0054" posz="-7.4931" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="131" posx="7.0927" posz="-7.6835" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="77" posx="-7.9811" posz="-8.6238" orientx="0.3825" orienty="0.0000" orientz="0.9240">PropsNative</unit>
+		<unit variation="98" posx="-9.8071" posz="-8.8630" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="131" posx="-5.5498" posz="-5.1314" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="108" posx="3.8242" posz="-9.0095" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseInuit</unit>
+		<unit variation="56" posx="8.6295" posz="-7.0989" orientx="-0.3830" orienty="0.0000" orientz="0.9237">UnderbrushYukon</unit>
+		<unit variation="41" posx="-0.9473" posz="-7.0402" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpIceFishingHole</unit>
+		<unit variation="131" posx="0.7434" posz="-2.1964" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="158" posx="-1.6320" posz="-5.0004" orientx="0.7072" orienty="0.0000" orientz="-0.7070">zpInuitVilProp</unit>
+		<unit variation="53" posx="7.5107" posz="-6.0267" orientx="0.9240" orienty="0.0000" orientz="-0.3825">zpInuitVilProp</unit>
+		<unit variation="66" posx="10.1823" posz="-3.2059" orientx="0.9240" orienty="0.0000" orientz="-0.3824">GroundPropsYuk</unit>
+		<unit variation="131" posx="5.0513" posz="-0.5474" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="21" posx="-0.3013" posz="-3.7438" orientx="-0.0001" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="194" posx="-5.9998" posz="-0.3961" orientx="-1.0000" orienty="-0.0000" orientz="-0.0001">zpSocketInuits</unit>
+		<unit variation="146" posx="5.5094" posz="-0.8412" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseInuit</unit>
+		<unit variation="131" posx="-1.2007" posz="2.7830" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="131" posx="7.6727" posz="2.9819" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="131" posx="-8.2167" posz="7.4527" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="131" posx="6.4457" posz="6.9574" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="158" posx="-3.5152" posz="5.6337" orientx="-0.3825" orienty="0.0000" orientz="-0.9240">TanningRack</unit>
+		<unit variation="77" posx="3.8042" posz="5.2258" orientx="0.3825" orienty="0.0000" orientz="0.9240">PropsNative</unit>
+		<unit variation="66" posx="8.3946" posz="6.2977" orientx="1.0000" orienty="0.0000" orientz="0.0003">GroundPropsYuk</unit>
+		<unit variation="131" posx="-1.9292" posz="8.3208" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="95" posx="-6.0892" posz="7.4449" orientx="-0.9238" orienty="-0.0000" orientz="-0.3829">PropsNative</unit>
+		<unit variation="98" posx="-10.2344" posz="6.7724" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">PropsNative</unit>
+		<unit variation="95" posx="1.7388" posz="6.1554" orientx="-1.0000" orienty="-0.0000" orientz="-0.0003">PropsNative</unit>
+		<unit variation="243" posx="-3.6473" posz="7.7898" orientx="-0.7069" orienty="-0.0000" orientz="-0.7073">UnderbrushYukon</unit>
+		<unit variation="108" posx="3.8694" posz="8.2184" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseInuit</unit>
+		<unit variation="167" posx="-1.1414" posz="8.8220" orientx="1.0000" orienty="0.0000" orientz="0.0001">PropsNative</unit>
+		<unit variation="108" posx="-6.2490" posz="9.5222" orientx="0.0001" orienty="0.0000" orientz="-1.0000">zpNativeHouseInuit</unit>
+		<unit variation="131" posx="3.2357" posz="12.8000" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="66" posx="2.1400" posz="12.8674" orientx="0.7068" orienty="0.0000" orientz="0.7074">GroundPropsYuk</unit>
+		<unit variation="131" posx="-6.7383" posz="14.4158" orientx="-0.9237" orienty="0.0000" orientz="-0.3831">NativeTownObstruction</unit>
+		<unit variation="66" posx="-1.8282" posz="13.3593" orientx="-0.0004" orienty="0.0000" orientz="1.0000">GroundPropsYuk</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="yukon\ground1_yuk">
+			<block startx="-6" startz="-7" endx="-6" endz="0"></block>
+			<block startx="-5" startz="-7" endx="-5" endz="0"></block>
+			<block startx="-4" startz="-7" endx="-4" endz="-7"></block>
+			<block startx="-4" startz="-5" endx="-4" endz="0"></block>
+			<block startx="-3" startz="-7" endx="-3" endz="0"></block>
+			<block startx="-2" startz="-7" endx="-2" endz="0"></block>
+			<block startx="-1" startz="-7" endx="-1" endz="-7"></block>
+			<block startx="-1" startz="-5" endx="-1" endz="-5"></block>
+			<block startx="-1" startz="-2" endx="-1" endz="0"></block>
+			<block startx="0" startz="-7" endx="0" endz="0"></block>
+			<block startx="1" startz="-7" endx="1" endz="-6"></block>
+			<block startx="1" startz="-3" endx="1" endz="0"></block>
+			<block startx="2" startz="-7" endx="2" endz="-6"></block>
+			<block startx="2" startz="-3" endx="2" endz="-2"></block>
+			<block startx="3" startz="-7" endx="3" endz="-4"></block>
+			<block startx="3" startz="-2" endx="3" endz="-2"></block>
+			<block startx="-6" startz="1" endx="-6" endz="7"></block>
+			<block startx="-5" startz="1" endx="-5" endz="3"></block>
+			<block startx="-5" startz="5" endx="-5" endz="7"></block>
+			<block startx="-4" startz="1" endx="-4" endz="3"></block>
+			<block startx="-4" startz="6" endx="-4" endz="7"></block>
+			<block startx="-3" startz="1" endx="-3" endz="3"></block>
+			<block startx="-3" startz="6" endx="-3" endz="7"></block>
+			<block startx="-2" startz="1" endx="-2" endz="7"></block>
+			<block startx="-1" startz="1" endx="-1" endz="7"></block>
+			<block startx="0" startz="1" endx="0" endz="7"></block>
+			<block startx="1" startz="1" endx="1" endz="3"></block>
+			<block startx="1" startz="6" endx="1" endz="7"></block>
+			<block startx="2" startz="1" endx="2" endz="3"></block>
+			<block startx="2" startz="5" endx="2" endz="7"></block>
+			<block startx="3" startz="1" endx="3" endz="7"></block>
+			<block startx="4" startz="1" endx="4" endz="7"></block>
+			<block startx="5" startz="1" endx="5" endz="7"></block>
+			<block startx="4" startz="-7" endx="4" endz="0"></block>
+			<block startx="5" startz="-7" endx="5" endz="0"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="yukon\ground3x_yuk">
+			<block startx="-4" startz="-6" endx="-4" endz="-6"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="-6"></block>
+			<block startx="3" startz="-1" endx="3" endz="-1"></block>
+			<block startx="1" startz="5" endx="1" endz="5"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="yukon\ground3_yuk">
+			<block startx="-1" startz="-4" endx="-1" endz="-3"></block>
+			<block startx="1" startz="-5" endx="1" endz="-4"></block>
+			<block startx="2" startz="-5" endx="2" endz="-4"></block>
+			<block startx="2" startz="-1" endx="2" endz="0"></block>
+			<block startx="3" startz="-3" endx="3" endz="-3"></block>
+			<block startx="3" startz="0" endx="3" endz="0"></block>
+			<block startx="-5" startz="4" endx="-5" endz="4"></block>
+			<block startx="-4" startz="4" endx="-4" endz="5"></block>
+			<block startx="-3" startz="4" endx="-3" endz="5"></block>
+			<block startx="1" startz="4" endx="1" endz="4"></block>
+			<block startx="2" startz="4" endx="2" endz="4"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

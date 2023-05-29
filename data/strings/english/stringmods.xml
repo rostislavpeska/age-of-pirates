@@ -553,7 +553,7 @@
       <string _locid="300550">Experimental Tank</string>
       <string _locid="300551">Leonardo's Model</string>
       <string _locid="300552">The First Cold War</string>
-      <string _locid="300553">Two continents - Asia and America - separated by Bering's Strait. The real end of the world and a perfect place for inventors and technical revolutionaries. \n\nSettlements: Inventor's Workshop, Tengri, Noottka</string>
+      <string _locid="300553">Two continents - Asia and America - separated by Bering's Strait. The real end of the world and a perfect place for inventors and technical revolutionaries. \n\nSettlements: Inventor's Workshop, Inuits</string>
       <string _locid="300554">The First Cold War: Use the latest technical inventions to gain an advantage over the enemy.</string>
       <string _locid="300555">ZP Airship</string>
       <string _locid="300556">Wokou Pacific Allies have arrived.</string>
@@ -563,6 +563,48 @@
       <string _locid="300560">Seawolf</string>
       <string _locid="300561">Turtle</string>
       <string _locid="300562">ZP Nautilus</string>
+      <string _locid="300563">ZP Socket Inuits</string>
+      <string _locid="300564">Inuit Village</string>
+      <string _locid="300565">ZP House Inuit</string>
+      <string _locid="300566">ZP Inuit Vilagers</string>
+      <string _locid="300567">Harpooner</string>
+      <string _locid="300568">ZP Inuit Harpooner</string>
+      <string _locid="300569">Harpoon</string>
+      <string _locid="300570">Husky</string>
+      <string _locid="300571">ZP Inuit Husky</string>
+      <string _locid="300572">Inuit pet, can gather food from huntables.</string>
+      <string _locid="300573">Native warrior equipped with an automatic harpoon</string>
+      <string _locid="300574">Inuit Hunting Dogs</string>
+      <string _locid="300575">Villagers gather food from huntables faster.</string>
+      <string _locid="300576">Insuksuks</string>
+      <string _locid="300577">Increases building line of sight</string>
+      <string _locid="300578">Blizzard Bravers</string>
+      <string _locid="300579">All infantry moves on snow faster</string>
+      <string _locid="300580">Inuit Warrior Society</string>
+      <string _locid="300581">Increases Inuit units attack and hitpoints</string>
+      <string _locid="300582">Elite Harpooner</string>
+      <string _locid="300583">Champion Harpooner</string>
+      <string _locid="300584">Legendary Harpooner</string>
+      <string _locid="300585">Champion Inuit</string>
+      <string _locid="300586">Qamutiik</string>
+      <string _locid="300587">ZP Qamutiik</string>
+      <string _locid="300588">Inuit Dog Sledding Artillery</string>
+      <string _locid="300589">Inuit Expansion</string>
+      <string _locid="300590">Unlocks more Inuit units and techs</string>
+      <string _locid="300591">Elite Qamutiik</string>
+      <string _locid="300592">Champion Qamutiik</string>
+      <string _locid="300593">Legendary Qamutiik</string>
+      <string _locid="300594">Inuit Feeders</string>
+      <string _locid="300595">Attracts Caribous Herds directly to the middle of your settlement.</string>
+      <string _locid="300596">Umiak</string>
+      <string _locid="300597">ZP Umiak</string>
+      <string _locid="300598">Bering Strait Umiaks</string>
+      <string _locid="300599">Aurora</string>
+      <string _locid="300600">Attracts Champion warriors from other native tribes</string>
+      <string _locid="300601">Ships Inuit War Canoes</string>
+      <string _locid="300602">Strong attack, very efficient for fishing and especially whaling</string>
+      <string _locid="300603">Ice Fishing Hole</string>
+      <string _locid="300604">ZP Fishing Hole</string>
     </language>
   </stringtable>
 </stringmods>

@@ -113,6 +113,7 @@
     <dbid>40005</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
       <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
@@ -137,12 +138,15 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPirates</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOnJapanese" type="Normal">
     <dbid>40006</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
     <effects>
       <effect type="TechStatus" status="obtainable">zpBigConsulatePortugueseClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigConsulateDutchClone</effect>
@@ -166,12 +170,15 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnJapanese</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOnChinese" type="Normal">
     <dbid>40020</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
     <effects>
       <effect type="TechStatus" status="obtainable">zpBigConsulateRussiansClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigConsulateBritishClone</effect>
@@ -195,12 +202,15 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnChinese</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOnIndian" type="Normal">
     <dbid>40021</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
     <effects>
       <effect type="TechStatus" status="obtainable">zpBigConsulateBritishClone</effect>
       <effect type="TechStatus" status="obtainable">zpBigConsulateFrenchClone</effect>
@@ -224,6 +234,8 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnIndian</effect>
     </effects>
   </tech>
 
@@ -750,7 +762,7 @@
    <tech name="zpPickConsulateTechAvailable" type="Normal">
     <dbid>40031</dbid>
     <displaynameid>65108</displaynameid>
-    <researchpoints>0.1000</researchpoints>
+    <researchpoints>0.2000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\ingame\politicians\consulate_openrelations.png</icon>
     <icontexturecoords>.001953125 .001953125 .611328125 .6015625</icontexturecoords>
@@ -869,7 +881,7 @@
   <tech name ="zpTheBlackFlag" type ="Normal">
 		<dbid>40036</dbid>
 		<displaynameid>300085</displaynameid>
-  	<researchpoints>0.1000</researchpoints>
+  	<researchpoints>0.2000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\dance-pirates.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
@@ -2152,7 +2164,7 @@
   <tech name ="zpMalteseCross" type ="Normal">
 		<dbid>40055</dbid>
 		<displaynameid>300142</displaynameid>
-  	<researchpoints>0.1000</researchpoints>
+  	<researchpoints>0.2000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\dance-malta.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
@@ -2227,7 +2239,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>     
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMaltese</effect>     
     </effects>
   </tech>
   <tech name="zpNatMalteseExpeditionaryFleet" type="Normal">
@@ -2618,7 +2632,7 @@
   <tech name ="zpBlackmailing" type ="Normal">
 		<dbid>40106</dbid>
 		<displaynameid>300201</displaynameid>
-  	<researchpoints>0.1000</researchpoints>
+  	<researchpoints>0.2000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\dance-pirates.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
@@ -2998,6 +3012,8 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokou</effect>
     </effects>
   </tech>
   <tech name="zpWokouCheapShipyard" type="Normal">
@@ -4465,6 +4481,8 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatHoopThrower" culture="none" newname="300516">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300584">
+      </effect>
     </effects>
   </tech>
   <tech name="AANativeStartingTechsPI">
@@ -5209,7 +5227,7 @@
   <tech name="zpPickNativeConsulateTechAvailable" type="Normal">
     <dbid>40191</dbid>
     <displaynameid>300369</displaynameid>
-    <researchpoints>0.1000</researchpoints>
+    <researchpoints>0.2000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\azteccity.png</icon>
     <icontexturecoords>.001953125 .001953125 .611328125 .6015625</icontexturecoords>
@@ -5281,6 +5299,8 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
   </tech>
   <tech name="zpConsulateNatZapotec" type="Normal">
@@ -5651,7 +5671,7 @@
   <tech name ="zpJewishStar" type ="Normal">
 		<dbid>40204</dbid>
 		<displaynameid>300425</displaynameid>
-  	<researchpoints>0.1000</researchpoints>
+  	<researchpoints>0.2000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\jewishstar_big.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
@@ -5734,6 +5754,8 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffJewish</effect>
     </effects>
   </tech>
   <tech name="DEVeteranRiflemenShadow">
@@ -6170,7 +6192,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>    
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>  
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMalteseLand</effect>  
     </effects>
   </tech>
   <tech name="zpMalteseMarksmen" type="Normal">
@@ -6430,7 +6454,7 @@
   <tech name ="zpPickScientist" type ="Normal">
 		<dbid>40226</dbid>
 		<displaynameid>300486</displaynameid>
-  	<researchpoints>0.1000</researchpoints>
+  	<researchpoints>0.2000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\dance-malta.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
@@ -6476,6 +6500,8 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateScientistValentine</effect>
+    
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientists</effect>
     </effects>
   </tech>
   <tech name="zpConsulateScientistNemo" type="Normal">
@@ -7676,7 +7702,314 @@
       </effect>
     </effects>
   </tech>
-  
+  <tech name="zpNativeInuits" type="Normal">
+    <dbid>40262</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatInuitHarpooner</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpInuitDogVillager</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Canoe</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatInuitHuntingDogs</effect>
+      <effect type="TechStatus" status="obtainable">zpNatInuitInsuksuks</effect>
+      <effect type="TechStatus" status="obtainable">zpChampionInuit</effect>
+      <effect type="TechStatus" status="obtainable">zpNatInuitBlizzardBravers</effect>
+      <effect type="TechStatus" status="obtainable">zpWarriorSocietyInuit</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">NativeTreatyInuit</effect>
+      <effect type="TechStatus" status="obtainable">DEIndianFriendshipInuit</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyInuit</effect>
+      <effect type="TechStatus" status="obtainable">zpNatInuitInfluence</effect>
+      <effect type="TechStatus" status="obtainable">zpInuitFeeders</effect>
+      <effect type="TechStatus" status="obtainable">zpInuitUmiaks</effect>
+      <effect type="TechStatus" status="obtainable">zpInuitFriends</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatInuitHuntingDogs" type="Normal">
+    <dbid>40263</dbid>
+    <displaynameid>300574</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Food">75.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\NatInuitHuntingDogs.png</icon>
+    <rollovertextid>300575</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" action="Gather" amount="1.25" subtype="WorkRate" unittype="Huntable" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatInuitInsuksuks" type="Normal">
+    <dbid>40264</dbid>
+    <displaynameid>300576</displaynameid>
+    <cost resourcetype="Wood">80.0000</cost>
+    <cost resourcetype="Food">50.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\NatInsuksuks.png</icon>
+    <rollovertextid>300577</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="6.00" subtype="LOS" relativity="Absolute">
+        <target type="ProtoUnit">Building</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatInuitBlizzardBravers" type="Normal">
+    <dbid>40265</dbid>
+    <displaynameid>300578</displaynameid>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\NatBlizzardBravers.png</icon>
+    <rollovertextid>300579</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="MaximumVelocity" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractInfantry</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpWarriorSocietyInuit" type="Normal">
+    <dbid>40266</dbid>
+    <displaynameid>300580</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">75.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\warrior_society\warrior_society.png</icon>
+    <rollovertextid>300581</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatInuitHarpooner</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatInuitHarpooner</target>
+      </effect>
+      <effect type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300582">
+      </effect>
+      <effect type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300584" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpInuitTorchman</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpInuitTorchman</target>
+      </effect>
+      <effect type="SetName" proto="zpInuitTorchman" culture="none" newname="300591">
+      </effect>
+      <effect type="SetName" proto="zpInuitTorchman" culture="none" newname="300593" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpChampionInuit" type="Normal">
+    <dbid>40267</dbid>
+    <displaynameid>300585</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\champion_natives\champion_natives.png</icon>
+    <rollovertextid>300581</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+      <techstatus status="Active">zpWarriorSocietyInuit</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatInuitHarpooner</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatInuitHarpooner</target>
+      </effect>
+      <effect type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300583">
+      </effect>
+      <effect type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300584" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpInuitTorchman</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpInuitTorchman</target>
+      </effect>
+      <effect type="SetName" proto="zpInuitTorchman" culture="none" newname="300592">
+      </effect>
+      <effect type="SetName" proto="zpInuitTorchman" culture="none" newname="300593" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="NativeTreatyInuit" type="Normal">
+    <dbid>40268</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatInuitHarpooner" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="DEIndianFriendshipInuit" type="Normal">
+    <dbid>40269</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatInuitHarpooner" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
+      <effect type="TechStatus" status="active">zpChampionInuit</effect>
+    </effects>
+  </tech>
+  <tech name="ypNativeTradeTreatyInuit" type="Normal">
+    <dbid>40270</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpNatInuitInfluence" type ="Normal">
+		<dbid>40271</dbid>
+		<displaynameid>300589</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\inuit_igloo_big.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>300590</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpInuitTorchman</target>
+      </effect>
+      <effect type="Data" amount="4.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatInuitHarpooner</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpInuitUmiaks" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpInuitFriends" page="2" column="7">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="zpInuitFeeders" type="Normal">
+    <dbid>40265</dbid>
+    <displaynameid>300594</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\Inuit_Feeders.png</icon>
+    <rollovertextid>300595</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="Caribou" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpInuitUmiaks" type="Normal">
+    <dbid>40266</dbid>
+    <displaynameid>300598</displaynameid>
+    <cost resourcetype="Wood">600.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\umiaks.png</icon>
+    <rollovertextid>300601</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="zpInuitWarCanoe" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpInuitFriends" type="Normal">
+    <dbid>40267</dbid>
+    <displaynameid>300599</displaynameid>
+    <cost resourcetype="Food">1200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\aurora.png</icon>
+    <rollovertextid>300600</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="deNatTatarArcher" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="NatTracker" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">DENatDisciplinedTengri</effect>
+      <effect type="TechStatus" status="active">DENatHonoredTengri</effect>
+      <effect type="TechStatus" status="active">WarriorSocietyCree</effect>
+      <effect type="TechStatus" status="active">ChampionCree</effect>
+    </effects>
+  </tech>
 
 
   

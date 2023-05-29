@@ -1,0 +1,18 @@
+<animfile>
+  <definebone>Bip01 Prop2</definebone>
+  <definebone>bone_quiver</definebone>
+  <definebone>bone_bow</definebone>
+  <definebone>Bip01 Prop1</definebone>
+  <attachment>arrow_attachment<anim>Idle<component></component></anim><include>units\attachments\arrow.xml</include></attachment>
+  <attachment>quivers<include>units\natives\iroquois\alarm_warrior\alarm_warrior_quivers.xml</include></attachment>
+  <attachment>bows<include>units\natives\iroquois\alarm_warrior\alarm_warrior_bows.xml</include></attachment>
+  <attachment>flaming_arrow<component>emitter<assetreference type="ParticleSystem"><file>effects\fire\arrowFire_Longbow.particle</file></assetreference></component><anim>Idle<component>emitter</component></anim></attachment>
+  <component>ModelComp<assetreference type="GrannyModel"><file>units\naval\war_canoe\inuitbowman</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal><attach a="bows" frombone="bone_bow" tobone="Bip01 Prop1" syncanims="0"></attach><attach a="quivers" frombone="bone_quiver" tobone="SPINE1" syncanims="0"></attach></component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\naval\war_canoe\bowman\idle</file></assetreference><component>ModelComp</component><attach a="arrow_attachment" frombone="MASTER" tobone="Bip01 Prop2" syncanims="0"></attach></anim>
+  <anim>Walk<assetreference type="GrannyAnim"><file>animation_library\naval\war_canoe\bowman\walk</file></assetreference><component>ModelComp</component><attach a="arrow_attachment" frombone="MASTER" tobone="Bip01 Prop2" syncanims="0"></attach></anim>
+  <anim>GatherFish<assetreference type="GrannyAnim"><file>animation_library\naval\war_canoe\bowman\fish</file></assetreference><component>ModelComp</component></anim>
+  <anim>Death<assetreference type="GrannyAnim"><file>animation_library\naval\war_canoe\bowman\death</file></assetreference><component>ModelComp</component><attach a="arrow_attachment" frombone="MASTER" tobone="Bip01 Prop2" syncanims="0"></attach></anim>
+  <anim>RangedAttack<assetreference type="GrannyAnim"><file>animation_library\naval\war_canoe\bowman\rangeattack1</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\naval\war_canoe\bowman\rangeattack2</file></assetreference><component>ModelComp</component><attach a="arrow_attachment" frombone="MASTER" tobone="Bip01 Prop2" syncanims="0"></attach></anim>
+  <anim>Raze_Attack<assetreference type="GrannyAnim"><file>animation_library\naval\war_canoe\bowman\rangeattack1</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\naval\war_canoe\bowman\rangeattack2</file></assetreference><component>ModelComp</component><attach a="flaming_arrow" frombone="Bone01" tobone="R HAND" syncanims="0"></attach><attach a="arrow_attachment" frombone="MASTER" tobone="Bip01 Prop2" syncanims="0"></attach></anim>
+  <anim>Raze_Idle<assetreference type="GrannyAnim"><file>animation_library\naval\war_canoe\bowman\raze_idle</file></assetreference><component>ModelComp</component><attach a="flaming_arrow" frombone="Bone01" tobone="R HAND" syncanims="0"></attach><attach a="arrow_attachment" frombone="MASTER" tobone="Bip01 Prop2" syncanims="0"></attach></anim>
+</animfile>

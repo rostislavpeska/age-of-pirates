@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\natives\attachment_harpoon\textures\attachment_harpoon_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\natives\attachment_blowgun\textures\attachment_blowgun_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\natives\attachment_blowgun\textures\attachment_blowgun_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
