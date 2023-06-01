@@ -1,7 +1,57 @@
 <animfile>
-  <component>ModelComp<assetreference type="GrannyModel"><file>units\balloons\airship</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_64x64</selectedtexture><width>5.00</width><height>5.00</height></decal></component>
-  <anim>Idle<assetreference type="GrannyAnim"><file>units\balloons\airship</file></assetreference><component>ModelComp</component></anim>
-  <anim>Walk<assetreference type="GrannyAnim"><file>units\balloons\airship</file></assetreference><component>ModelComp</component></anim>
-  <anim>Death<assetreference type="GrannyAnim"><file>units\balloons\airship</file><tag type="SpecificSoundSet" checkvisible="1" set="CannonImpactFlesh">0.52</tag></assetreference><component>ModelComp</component></anim>
-  <anim>Bored<assetreference type="GrannyAnim"><file>units\balloons\airship</file></assetreference><component>ModelComp</component></anim>
+  <definebone>bone_debris_1a</definebone>
+  <definebone>bone_debris_1b</definebone>
+  <definebone>bone_debris_2a</definebone>
+  <definebone>bone_debris_2b</definebone>
+  <definebone>bone_debris_3a</definebone>
+  <definebone>bone_debris_3b</definebone>
+  <definebone>bone_debris_3c</definebone>
+  <definebone>bone_debris_4a</definebone>
+  <definebone>bone_debris_4b</definebone>
+  <definebone>bone_debris_4c</definebone>
+  <definebone>bone_debris_4d</definebone>
+  <definebone>bone_debris_5a</definebone>
+  <definebone>bone_debris_6a</definebone>
+  <definebone>bone_debris_6b</definebone>
+
+	<component>ModelComp
+		<assetreference type="GrannyModel">
+			<file>units\balloons\airship</file>
+		</assetreference>
+		<decal>
+			<effecttype>default</effecttype>
+			<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
+			<selectedtexture>shadows_selections\selection_circle_64x64</selectedtexture>
+			<width>5.00</width>
+			<height>5.00</height>
+		</decal>
+	</component>
+	<anim>Idle
+		<assetreference type="GrannyAnim">
+			<file>units\balloons\airship</file>
+		</assetreference>
+		<component>ModelComp</component>
+		<simskeleton><model>units\naval\fluyt\spcfluyt_damaged</model></simskeleton>
+	</anim>
+	<anim>Walk
+		<assetreference type="GrannyAnim">
+			<file>units\balloons\airship</file>
+		</assetreference>
+		<component>ModelComp</component>
+		<simskeleton><model>units\naval\fluyt\spcfluyt_damaged</model></simskeleton>
+	</anim>
+	<anim>Death
+		<assetreference type="GrannyAnim">
+			<file>units\balloons\airship</file>
+			<tag type="SpecificSoundSet" checkvisible="1" set="CannonImpactFlesh">0.52</tag>
+		</assetreference>
+		<component>ModelComp</component>
+	</anim>
+	<anim>Bored
+		<assetreference type="GrannyAnim">
+			<file>units\balloons\airship</file>
+		</assetreference>
+		<component>ModelComp</component>
+		<simskeleton><model>units\naval\fluyt\spcfluyt_damaged</model></simskeleton>
+	</anim>
 </animfile>

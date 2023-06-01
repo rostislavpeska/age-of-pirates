@@ -12141,13 +12141,15 @@
     <turnrate>3.0000</turnrate>
     <animfile>units\balloons\airship.xml</animfile>
     <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <buildlimit>1</buildlimit>
     <icon>resources\art\units\artillery\tank\tank_icon.png</icon>
     <portraiticon>resources\art\units\artillery\tank\tank_portrait.png</portraiticon>
     <rollovertextid>124702</rollovertextid>
     <shortrollovertextid>124701</shortrollovertextid>
-    <initialhitpoints>1750.0000</initialhitpoints>
-    <maxhitpoints>1750.0000</maxhitpoints>
-    <los>30.0000</los>
+    <initialhitpoints>3000.0000</initialhitpoints>
+    <maxhitpoints>3000.0000</maxhitpoints>
+    <los>60.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <trainpoints>45.0000</trainpoints>
@@ -12155,7 +12157,8 @@
     <buildbounty>300.0000</buildbounty>
     <cost resourcetype="Wood">1500.0000</cost>
     <cost resourcetype="Gold">1500.0000</cost>
-    <allowedage>1</allowedage>
+    <maxcontained>50</maxcontained>
+    <allowedage>2</allowedage>
     <armor type="Ranged" value="0.5000">
     </armor>
     <armor type="Hand" value="0.5000">
@@ -12164,7 +12167,6 @@
     </armor>
     <roundeltiercount>1</roundeltiercount>
     <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWalls</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
@@ -12175,27 +12177,28 @@
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>Economic</unittype>
-
+    <unittype>Transport</unittype>
     <unittype>MilitaryBuilding</unittype>
     <unittype>Unit</unittype>
 
-    <unittype>HasBountyValue</unittype>
-    <unittype>CountsTowardEconomicScore</unittype>
     <flag>CollidesWithProjectiles</flag>
-    <flag>StartsAtFullEfficiency</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>NoIdleActions</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>Doppled</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>FlattenGround</flag>
-    <flag>InitialGarrisonOnly</flag>
-    <flag>Tracked</flag>
-    <flag>BuildingShowTactics</flag>
+    <flag>HeroName1</flag>
     <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+
     <flag>FlyingUnit</flag>
+    <flag>ForceBuildingData</flag>
+    <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="7">Delete</command>
