@@ -2149,5 +2149,14 @@
       <param name="Status" dispname="$$22340$$Status" vartype="techstatus">2</param>
       <command>trTechSetStatus(%PlayerID%, %TechID%, %Status%);</command>
     </effect>
+    <effect name="ZP Include">
+      <param name="Foldername" dispname="Age of Pirates folder" vartype="string">age-of-pirates</param>
+      <param name="Local" dispname="Local" vartype="bool">true</param>
+      <param name="Filename" dispname="TR script" vartype="string">zptrigtest</param>
+      <param name="Notice" dispname="IMPORTANT:" vartype="string">Use for testing purposes only.</param>
+      <command>}}</command>
+      <command>include "../mods/local/%Foldername%/game/randmaps/triggers/%Filename%.xs";</command>
+      <command>rule %Filename% active { if (true) { xsDisableSelf();</command>
+    </effect>
   </effects>
 </trigger>
