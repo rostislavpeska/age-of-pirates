@@ -37,4 +37,8 @@
     <ability>dePowerRoundelExplodeAttack<rof>10</rof><castonself>true</castonself></ability>
     <ability>dePowerRoundelCascadeAttack<rof>10</rof><castonself>true</castonself></ability>
   </zpirontankproxy>
+  <zpairship>
+    <ability>zpPowerFireBomb<rof>30</rof></ability>
+    <ability>zpMustardGas<rof>30</rof></ability>
+  </zpairship>
 </abilitymods>

@@ -12,4 +12,38 @@
     <abstractattacktargettype>WaterGuardian</abstractattacktargettype>
     <unitaction>FlameAttack</unitaction>
   </power>
+  <power name="zpPowerFireBomb" type="UnitAction">
+    <displaynameid>300607</displaynameid>
+    <rolloverid>300609</rolloverid>
+    <icon>resources\images\icons\command\firebomb.png</icon>
+    <minimapeventtime sendalertto="player">1</minimapeventtime>
+    <activetime>30</activetime>
+    <radius>6.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>Building</abstractattacktargettype>
+    <unitaction>LongRangeAttack</unitaction>
+  </power>
+  <power name="zpMustardGas" type="UnitAction">
+    <displaynameid>300608</displaynameid>
+    <rolloverid>300610</rolloverid>
+    <icon>resources\images\icons\command\poison_bomb.png</icon>
+    <minimapeventtime sendalertto="player">1</minimapeventtime>
+    <activetime>30</activetime>
+    <radius>20.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>All</abstractattacktargettype>
+    <unitaction>PoisonBomb</unitaction>
+  </power>
+  <!--<power name="zpMustardGas" type="TempUnit">
+    <displaynameid>300608</displaynameid>
+    <rolloverid>300610</rolloverid>
+    <icon>resources\images\icons\command\poison_bomb.png</icon>
+    <minimapeventtime sendalertto="ally">1</minimapeventtime>
+    <activetime>30</activetime>
+    <createunit quantity="10" radius="20" delay="0.0">zpmustardgas</createunit>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <rangeindicatorprotoid radius="12.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
+    <allowduringnorush>0</allowduringnorush>
+    <startsoundset listenertype="All">MustardGas</startsoundset>
+  </power>-->
 </powermods>

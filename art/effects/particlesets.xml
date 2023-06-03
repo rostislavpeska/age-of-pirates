@@ -1,0 +1,190 @@
+<particlesetdef>
+	<particleset name="musketshot">
+		<particle filename="weapon_fire\musket_fire_A.pkfx" bone="R Hand"></particle>
+		<particle filename="weapon_fire\musket_spark_A.pkfx" bone="R Hand"></particle>
+		<particle filename="weapon_fire\musket_flair_A.pkfx" bone="R Hand"></particle>
+		<particle filename="weapon_fire\musket_smoke_A.pkfx" bone="R Hand"></particle>
+	</particleset>
+	<particleset name="rifleshot">
+		<particle filename="weapon_fire\musket_fire_A.pkfx" bone="R Hand"></particle>
+		<particle filename="weapon_fire\musket_spark_A.pkfx" bone="R Hand"></particle>
+		<particle filename="weapon_fire\musket_flair_A.pkfx" bone="R Hand"></particle>
+		<particle filename="weapon_fire\musket_smoke_A.pkfx" bone="R Hand"></particle>
+	</particleset>
+	<particleset name="rifleshot_left">
+		<particle filename="weapon_fire\musket_fire_A.pkfx" bone="L Hand"></particle>
+		<particle filename="weapon_fire\musket_spark_A.pkfx" bone="L Hand"></particle>
+		<particle filename="weapon_fire\musket_flair_A.pkfx" bone="L Hand"></particle>
+		<particle filename="weapon_fire\musket_smoke_A.pkfx" bone="L Hand"></particle>
+	</particleset>
+	<particleset name="navelcannon">
+		<particle filename="units\artillery\cannon\building_cannon_shot.pkfx"></particle>
+	</particleset>
+	<particleset name="mortarmuzzle">
+		<particle filename="units\artillery\cannon\cannon_small_smoking_barrel.pkfx" bone="launchpoint"></particle>
+		<particle filename="units\artillery\cannon\galleycannon_small_smoke_puff_ring.pkfx" bone="launchpoint"></particle>
+		<particle filename="units\artillery\cannon\cannon_small_barrel_explosion.pkfx" bone="launchpoint"></particle>
+		<particle filename="units\artillery\cannon\cannon_small_sparks.pkfx" bone="launchpoint"></particle>
+		<particle filename="units\artillery\cannon\galleycannon_small_smoke_puff_a.pkfx" bone="launchpoint"></particle>
+		<particle filename="units\artillery\cannon\galleycannon_small_smoke_puff_b.pkfx" bone="launchpoint"></particle>
+	</particleset>
+	<particleset name="smallCannonMuzzle">
+		<particle filename="units\artillery\cannon\building_cannon_shot.pkfx" bone="launchpoint"></particle>
+	</particleset>
+	<particleset name="pistolshot_left">
+		<particle filename="weapon_fire\pistol_fire_A.pkfx" bone="L Hand"></particle>
+	</particleset>
+	<particleset name="pistolshot_right">
+		<particle filename="weapon_fire\pistol_fire_A.pkfx" bone="R Hand"></particle>
+	</particleset>
+	<particleset name="CooperShot">
+		<particle filename="effects\weapon_fire\revpistol_fire_A.particle" bone="bone_CooperShot"></particle>
+		<particle filename="effects\weapon_fire\revpistol_flare_A.particle" bone="bone_CooperShot"></particle>
+		<particle filename="effects\weapon_fire\revpistol_smoke_A.particle" bone="bone_CooperShot"></particle>
+		<particle filename="effects\weapon_fire\revpistol_spark_A.particle" bone="bone_CooperShot"></particle>
+	</particleset>
+	<particleset name="building_rifle_shot">
+		<particle filename="weapon_fire\musket_fire_A.pkfx" bone="R Hand"></particle>
+		<particle filename="weapon_fire\musket_smoke_A.pkfx" bone="R Hand"></particle>
+		<particle filename="weapon_fire\musket_flair_A.pkfx" bone="R Hand"></particle>
+	</particleset>
+	<particleset name="building_cannon_shot">
+		<particle filename="units\artillery\cannon\building_cannon_shot.pkfx"></particle>
+	</particleset>
+	<particleset name="bullet_impact_wood">
+		<particle filename="impacts\bullet_impact_wood_debris.pkfx"></particle>
+		<particle filename="impacts\bullet_impact_wood_smoke.pkfx"></particle>
+	</particleset>
+	<particleset name="mortar_impact_wood">
+		<particle filename="impacts\mortar_impact_wood.pkfx"></particle>
+		<particle filename="projectiles\building_debris_wood_flyout.pkfx"></particle>
+	</particleset>
+	<particleset name="cannonball_impact_wood">
+		<particle filename="impacts\cannonball_impact_wood.pkfx"></particle>
+		<particle filename="projectiles\building_debris_wood_flyout.pkfx"></particle>
+	</particleset>
+	<particleset name="bullet_impact_stone">
+		<particle filename="impacts\bullet_impact_wood_debris.pkfx"></particle>
+		<particle filename="impacts\bullet_impact_wood_smoke.pkfx"></particle>
+	</particleset>
+	<particleset name="mortar_impact_stone">
+		<particle filename="impacts\mortar_impact_stone.pkfx"></particle>
+		<particle filename="projectiles\building_debris_stone.pkfx"></particle>
+	</particleset>
+	<particleset name="cannonball_impact_stone">
+		<particle filename="impacts\cannonball_impact_stone.pkfx"></particle>
+		<particle filename="projectiles\building_debris_stone.pkfx"></particle>
+	</particleset>
+	<particleset name="torch_impact_stone">
+		<particle filename="impacts\torch_impact_stone.pkfx"></particle>
+	</particleset>
+	<particleset name="arrowhit_solidsurface">
+		<particle filename="effects\projectiles\arrow_sprite.particle"></particle>
+	</particleset>
+	<particleset name="mortar_impact_rooftile">
+		<particle filename="impacts\mortar_impact_rooftile.pkfx"></particle>
+		<particle filename="projectiles\building_debris_tileroof.pkfx"></particle>
+	</particleset>
+	<particleset name="cannonball_impact_rooftile">
+		<particle filename="impacts\cannonball_impact_rooftile.pkfx"></particle>
+		<particle filename="projectiles\building_debris_tileroof.pkfx"></particle>
+	</particleset>
+	<particleset name="bullet_impact_flesh">
+		<particle filename="impacts\bullet_impact_flesh_debris.pkfx"></particle>
+	</particleset>
+	<particleset name="mortar_impact_flesh">
+		<particle filename="impacts\mortar_impact_flesh.pkfx"></particle>
+	</particleset>
+	<particleset name="cannonball_impact_flesh">
+		<particle filename="impacts\cannonball_impact_flesh.pkfx"></particle>
+	</particleset>
+	<particleset name="dynamite_impact_flesh">
+		<particle filename="impacts\bullet_impact_flesh_debris.pkfx"></particle>
+	</particleset>
+	<particleset name="arrowhit_flesh">
+		<particle filename="effects\projectiles\arrow_sprite.particle"></particle>
+		<particle filename="impacts\bullet_impact_flesh_debris.pkfx"></particle>
+	</particleset>
+	<particleset name="bullet_impact_snow">
+		<particle filename="impacts\bullet_impact_snow.pkfx"></particle>
+	</particleset>
+	<particleset name="mortar_impact_snow">
+		<particle filename="impacts\mortar_impact_snow.pkfx"></particle>
+	</particleset>
+	<particleset name="cannonball_impact_snow">
+		<particle filename="impacts\cannonball_impact_snow.pkfx"></particle>
+	</particleset>
+	<particleset name="bullet_impact_grass">
+		<particle filename="impacts\bullet_impact_wood_smoke.pkfx"></particle>
+		<particle filename="impacts\bullet_impact_wood_debris.pkfx"></particle>
+	</particleset>
+	<particleset name="mortar_impact_grass">
+		<particle filename="impacts\mortar_impact_grass.pkfx"></particle>
+	</particleset>
+	<particleset name="cannonball_impact_grass_light">
+		<particle filename="impacts\cannonball_impact_grass_light.pkfx"></particle>
+	</particleset>
+	<particleset name="cannonball_impact_grass2">
+		<particle filename="impacts\cannonball_impact_grass.pkfx"></particle>
+	</particleset>
+	<particleset name="cannonball_impact_grass">
+		<particle filename="impacts\cannonball_impact_grass.pkfx"></particle>
+	</particleset>
+	<particleset name="mortar_impact_sand">
+		<particle filename="impacts\mortar_impact_sand.pkfx"></particle>
+	</particleset>
+	<particleset name="cannonball_impact_sand">
+		<particle filename="impacts\cannonball_impact_sand.pkfx"></particle>
+	</particleset>
+	<particleset name="mortar_impact_rock">
+		<particle filename="impacts\mortar_impact_rock.pkfx"></particle>
+	</particleset>
+	<particleset name="cannonball_impact_rock">
+		<particle filename="impacts\cannonball_impact_rock.pkfx"></particle>
+	</particleset>
+	<particleset name="bullet_impact_dirt">
+		<particle filename="impacts\bullet_impact_wood_smoke.pkfx"></particle>
+		<particle filename="impacts\bullet_impact_wood_debris.pkfx"></particle>
+	</particleset>
+	<particleset name="mortar_impact_dirt">
+		<particle filename="impacts\mortar_impact_dirt.pkfx"></particle>
+	</particleset>
+	<particleset name="cannonball_impact_dirt">
+		<particle filename="impacts\cannonball_impact_dirt.pkfx"></particle>
+	</particleset>
+	<particleset name="cannonball_impact_dirt2">
+		<particle filename="impacts\cannonball_impact_dirt.pkfx"></particle>
+	</particleset>
+	<particleset name="bullet_impact_water">
+		<particle filename="impacts\bullet_impact_water.pkfx"></particle>
+	</particleset>
+	<particleset name="mortar_impact_water">
+		<particle filename="impacts\mortar_impact_water.pkfx"></particle>
+	</particleset>
+	<particleset name="cannonball_impact_water">
+		<particle filename="impacts\mortar_impact_water.pkfx"></particle>
+	</particleset>
+	<particleset name="arrowhit_water">
+		<particle filename="effects\water_effects\teeny_splash_drops.particle"></particle>
+		<particle filename="effects\water_effects\teeny_splash_ring.particle"></particle>
+	</particleset>
+	<particleset name="watersplash_med">
+		<particle filename="impacts\flesh_impact_water.pkfx"></particle>
+	</particleset>
+	<particleset name="grenade_impact_generic">
+		<particle filename="impacts\grenade_impact_generic.pkfx"></particle>
+	</particleset>
+	<particleset name="cannonball_impact_gen">
+		<particle filename="impacts\cannonball_impact_gen.pkfx"></particle>
+	</particleset>
+	<particleset name="mortar_impact_gen">
+		<particle filename="impacts\mortar_impact_wood.pkfx"></particle>
+	</particleset>
+	<particleset name="archerTorch"></particleset>
+	<particleset name="lionDanceSmokeScreen">
+		<particle filename="smoke\smoke_screen_red.pkfx"></particle>
+	</particleset>
+	<particleset name="mustard_gas">
+		<particle filename="effects\impacts\mustardgas.particle"></particle>
+	</particleset>
+</particlesetdef>

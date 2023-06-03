@@ -1,23 +1,62 @@
 <animfile>
-  <definebone>bone_debris_1a</definebone>
-  <definebone>bone_debris_1b</definebone>
-  <definebone>bone_debris_2a</definebone>
-  <definebone>bone_debris_2b</definebone>
-  <definebone>bone_debris_3a</definebone>
-  <definebone>bone_debris_3b</definebone>
-  <definebone>bone_debris_3c</definebone>
-  <definebone>bone_debris_4a</definebone>
-  <definebone>bone_debris_4b</definebone>
-  <definebone>bone_debris_4c</definebone>
-  <definebone>bone_debris_4d</definebone>
-  <definebone>bone_debris_5a</definebone>
-  <definebone>bone_debris_6a</definebone>
-  <definebone>bone_debris_6b</definebone>
-
+ <definebone>bone_fire01</definebone>
+	<definebone>bone_fire02</definebone>
+	<definebone>bone_fire03</definebone>
+	<definebone>bone_fire04</definebone>
+	<definebone>bone_fire05</definebone>
+	<definebone>bone_fire06</definebone>
+	<definebone>bone_fire07</definebone>
+	<definebone>bone_fire08</definebone>
+	<definebone>bone_fire09</definebone>
+	<definebone>bone_fire10</definebone>
+	<definebone>bone_fire11</definebone>
+	<definebone>bone_fire12</definebone>
+	<definebone>bone_launchpoint</definebone>
+	<definebone>bone_propeller_L</definebone>
+	<definebone>bone_propeller_R</definebone>
+	<attachment>propellerR
+		<component>propellerR
+			<assetreference type="GrannyModel">
+				<file>units\balloons\propeller_Model</file>
+			</assetreference>
+		</component>
+		<anim>Idle
+			<assetreference type="GrannyAnim">
+				<file>units\balloons\propeller_Idle</file>
+			</assetreference>
+			<component>propellerR</component>
+		</anim>
+		<anim>GrenadeAttack
+			<assetreference type="GrannyAnim">
+				<file>units\balloons\propeller_Idle</file>
+			</assetreference>
+			<component>propellerR</component>
+		</anim>
+		<anim>BombAttack
+			<assetreference type="GrannyAnim">
+				<file>units\balloons\propeller_Idle</file>
+			</assetreference>
+			<component>propellerR</component>
+		</anim>
+		<anim>Death
+			<assetreference type="GrannyAnim">
+				<file>units\balloons\propeller_Idle</file>
+			</assetreference>
+			<component>propellerR</component>
+		</anim>
+		<anim>Walk
+			<assetreference type="GrannyAnim">
+				<file>units\balloons\propeller_Anim</file>
+			</assetreference>
+			<component>propellerR</component>
+		</anim>
+	</attachment>
 	<component>ModelComp
 		<assetreference type="GrannyModel">
 			<file>units\balloons\airship</file>
 		</assetreference>
+		<attach a="propellerR" frombone="ATTACHPOINT" tobone="bone_propeller_L" syncanims="1"></attach>
+		<attach a="propellerR" frombone="ATTACHPOINT" tobone="bone_propeller_R" syncanims="1"></attach>
 		<decal>
 			<effecttype>default</effecttype>
 			<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
@@ -28,17 +67,47 @@
 	</component>
 	<anim>Idle
 		<assetreference type="GrannyAnim">
-			<file>units\balloons\airship</file>
+			<file>units\balloons\balloon_idle</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<simskeleton><model>units\naval\fluyt\spcfluyt_damaged</model></simskeleton>
+		<simskeleton>
+			<model>units\balloons\airship</model>
+			<damagetemplate>units\balloons\airship.dmg</damagetemplate>
+		</simskeleton>
+	</anim>
+	<anim>
+		GrenadeAttack
+		<assetreference type="GrannyAnim">
+			<file>units\balloons\balloon_idle</file>
+			<tag type="Attack">0.02</tag>
+		</assetreference>
+		<component>ModelComp</component>
+		<simskeleton>
+			<model>units\balloons\airship</model>
+			<damagetemplate>units\balloons\airship.dmg</damagetemplate>
+		</simskeleton>
+	</anim>
+	<anim>
+		BombAttack
+		<assetreference type="GrannyAnim">
+			<file>units\balloons\balloon_idle</file>
+			<tag type="Attack">0.02</tag>
+		</assetreference>
+		<component>ModelComp</component>
+		<simskeleton>
+			<model>units\balloons\airship</model>
+			<damagetemplate>units\balloons\airship.dmg</damagetemplate>
+		</simskeleton>
 	</anim>
 	<anim>Walk
 		<assetreference type="GrannyAnim">
-			<file>units\balloons\airship</file>
+			<file>units\balloons\balloon_idle</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<simskeleton><model>units\naval\fluyt\spcfluyt_damaged</model></simskeleton>
+		<simskeleton>
+			<model>units\balloons\airship</model>
+			<damagetemplate>units\balloons\airship.dmg</damagetemplate>
+		</simskeleton>
 	</anim>
 	<anim>Death
 		<assetreference type="GrannyAnim">
@@ -52,6 +121,9 @@
 			<file>units\balloons\airship</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<simskeleton><model>units\naval\fluyt\spcfluyt_damaged</model></simskeleton>
+		<simskeleton>
+			<model>units\balloons\airship</model>
+			<damagetemplate>units\balloons\airship.dmg</damagetemplate>
+		</simskeleton>
 	</anim>
 </animfile>

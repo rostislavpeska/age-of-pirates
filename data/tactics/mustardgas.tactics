@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<tactics>
+	<action>
+		<name stringid="38142">TrampleHandAttack</name>
+		<type>TruckAttack</type>
+		<maxrange>8</maxrange>
+		<rate type="All">1.0 </rate>
+		<attackaction>1</attackaction>
+		<handlogic>1</handlogic>
+		<speedboost>1</speedboost>
+		<anim>Idle</anim>
+		<idleanim>Idle</idleanim>
+		<damage>6.5</damage>
+		<rof>1.0</rof>
+		<targetspeedboost>1</targetspeedboost>
+		<basedamagecap>1</basedamagecap>
+		<persistent>1</persistent>
+		<projectile>InvisibleProjectileNoTracer</projectile>
+	</action>
+	<tactic>
+		Melee
+		<action>TrampleHandAttack</action>
+		<runaway>0</runaway>
+		<idleanim>Idle</idleanim>
+		<boredanim>Idle</boredanim>
+		<deathanim>Death</deathanim>
+		<walkanim>Idle</walkanim>
+		<joganim>Idle</joganim>
+		<runanim>Idle</runanim>
+	</tactic>
+</tactics>
