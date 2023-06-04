@@ -266,30 +266,8 @@ highFrequency
     }
 }
 
-rule TurnOnPirates2Check
-active
-runImmediately
-highFrequency
-{
-    xsDisableSelf();
-    // Activate only if there are >= 4 NonGaia players.
-    int numPlayers = 0;
-    for (playerID = 1; < 9)
-    {
-        if (kbIsPlayerValid(playerID) == true)
-        {
-            numPlayers++;
-        }
-    }
-
-    if (numPlayers >= 4)
-    {
-        xsEnableRule("TurnOnPirates2");
-    }
-}
-
 rule TurnOnPirates2
-inactive
+active
 highFrequency
 runImmediately
 {
