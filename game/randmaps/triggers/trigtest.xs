@@ -133,8 +133,8 @@ highFrequency
 
 rule TrainPrivateer1ON
 inactive
-runImmediately
 highFrequency
+runImmediately
 {
     int socketOwner = getSocketOwner(cSocket1ID);
     if (trCountUnitsInArea("" + cSocket1ID, socketOwner, "zpPrivateerProxy", cSocketRadius) >= 1)
@@ -148,10 +148,10 @@ highFrequency
 
 rule TrainPrivateer1OFF
 inactive
-runImmediately
 highFrequency
+runImmediately
 {
-    if (trTimeMS() - cActivationTime * 1000 >= 5000)
+    if (trTime() - cActivationTime >= 5)
     {
         xsEnableRule("TrainPrivateer1ON");
         xsDisableSelf();
@@ -160,11 +160,11 @@ highFrequency
 
 rule TrainPrivateer1TIME
 inactive
-runImmediately
 highFrequency
+runImmediately
 {
     int socketOwner = getSocketOwner(cSocket1ID);
-    if (trTimeMS() - cActivationTime * 1000 >= 500)
+    if (trTime() - cActivationTime >= 2)
     {
         trTechSetStatus(socketOwner, cTechzpPrivateerBuildLimitReduceShadow, cTechStatusActive);
         trTechSetStatus(socketOwner, cTechzpTrainPrivateer1, cTechStatusUnobtainable);
@@ -192,7 +192,7 @@ inactive
 runImmediately
 highFrequency
 {
-    if (trTimeMS() - cActivationTime * 1000 >= 5000)
+    if (trTime() - cActivationTime >= 5)
     {
         xsEnableRule("TrainQueenAnne1ON");
         xsDisableSelf();
@@ -205,7 +205,7 @@ runImmediately
 highFrequency
 {
     int socketOwner = getSocketOwner(cSocket1ID);
-    if (trTimeMS() - cActivationTime * 1000 >= 500)
+    if (trTime() - cActivationTime >= 2)
     {
         trTechSetStatus(socketOwner, cTechzpReducePirateShipsBuildLimit, cTechStatusActive);
         xsDisableSelf();
@@ -232,7 +232,7 @@ inactive
 runImmediately
 highFrequency
 {
-    if (trTimeMS() - cActivationTime * 1000 >= 5000)
+    if (trTime() - cActivationTime >= 5)
     {
         xsEnableRule("TrainBlackPearl1ON");
         xsDisableSelf();
@@ -290,8 +290,8 @@ highFrequency
 
 rule TurnOnPirates2
 inactive
-runImmediately
 highFrequency
+runImmediately
 {
     int socketOwner = getSocketOwner(cSocket2ID);
     if (socketOwner >= 1)
@@ -311,8 +311,8 @@ highFrequency
 
 rule TurnOffPirates2
 inactive
-runImmediately
 highFrequency
+runImmediately
 {
     int socketOwner = getSocketOwner(cSocket2ID);
     if (socketOwner <= 0)
@@ -340,8 +340,8 @@ highFrequency
 
 rule TrainPrivateer2ON
 inactive
-runImmediately
 highFrequency
+runImmediately
 {
     int socketOwner = getSocketOwner(cSocket2ID);
     if (trCountUnitsInArea("" + cSocket2ID, socketOwner, "zpPrivateerProxy", cSocketRadius) >= 1)
@@ -355,10 +355,10 @@ highFrequency
 
 rule TrainPrivateer2OFF
 inactive
-runImmediately
 highFrequency
+runImmediately
 {
-    if (trTimeMS() - cActivationTime * 1000 >= 5000)
+    if (trTime() - cActivationTime >= 5)
     {
         xsEnableRule("TrainPrivateer2ON");
         xsDisableSelf();
@@ -367,11 +367,11 @@ highFrequency
 
 rule TrainPrivateer2TIME
 inactive
-runImmediately
 highFrequency
+runImmediately
 {
     int socketOwner = getSocketOwner(cSocket2ID);
-    if (trTimeMS() - cActivationTime * 1000 >= 500)
+    if (trTime() - cActivationTime >= 2)
     {
         trTechSetStatus(socketOwner, cTechzpPrivateerBuildLimitReduceShadow, cTechStatusActive);
         trTechSetStatus(socketOwner, cTechzpTrainPrivateer2, cTechStatusUnobtainable);
@@ -399,7 +399,7 @@ inactive
 runImmediately
 highFrequency
 {
-    if (trTimeMS() - cActivationTime * 1000 >= 5000)
+    if (trTime() - cActivationTime >= 5)
     {
         xsEnableRule("TrainQueenAnne2ON");
         xsDisableSelf();
@@ -412,7 +412,7 @@ runImmediately
 highFrequency
 {
     int socketOwner = getSocketOwner(cSocket2ID);
-    if (trTimeMS() - cActivationTime * 1000 >= 500)
+    if (trTime() - cActivationTime >= 2)
     {
         trTechSetStatus(socketOwner, cTechzpReducePirateShipsBuildLimit, cTechStatusActive);
         xsDisableSelf();
@@ -439,7 +439,7 @@ inactive
 runImmediately
 highFrequency
 {
-    if (trTimeMS() - cActivationTime * 1000 >= 5000)
+    if (trTime() - cActivationTime >= 5)
     {
         xsEnableRule("TrainBlackPearl2ON");
         xsDisableSelf();
@@ -466,7 +466,7 @@ inactive
 runImmediately
 highFrequency
 {
-    if (trTimeMS() - cActivationTime * 1000 >= 5000)
+    if (trTime() - cActivationTime >= 5)
     {
         xsEnableRule("TrainNeptuneGalley2ON");
         xsDisableSelf();
