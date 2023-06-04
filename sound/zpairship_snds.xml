@@ -1,0 +1,46 @@
+<protounitsounddef>
+  <protounit name="zpAirship">
+    <soundtype name="Select">
+      <soundset name="WarwickSelect">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="ShipDeath">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="ShipBirth">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <targetlogic>
+        <choice name="default">
+          <soundset name="WarwickAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="enemy">
+          <soundset name="WarwickAttack">
+          </soundset>
+        </choice>
+        <choice name="build">
+        </choice>
+        <choice name="Huntable">
+        </choice>
+        <choice name="Tree">
+        </choice>
+        <choice name="AbstractMine">
+        </choice>
+        <choice name="AbstractFarm">
+        </choice>
+        <choice name="AbstractResourceCrate">
+        </choice>
+        <choice name="AbstractFruit">
+        </choice>
+      </targetlogic>
+    </soundtype>
+    <soundtype name="Exists">
+      <soundset name="AmbienceShip">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

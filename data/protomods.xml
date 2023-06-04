@@ -12123,17 +12123,14 @@
     <flag>VisibleUnderFogIfGaia</flag>
     <flag>Tracked</flag>
   </unit>
-
-
-
-   <unit id="20130" name="zpAirship">
+  <unit id="20130" name="zpAirship">
     <dbid>20118</dbid>
     <subciv>zpScientists</subciv>
-    <displaynameid>300555</displaynameid>
-    <editornameid>300605</editornameid>
+    <displaynameid>300605</displaynameid>
+    <editornameid>300555</editornameid>
     <populationcount>8</populationcount>
-    <obstructionradiusx>2.9900</obstructionradiusx>
-    <obstructionradiusz>2.9900</obstructionradiusz>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
     <formationcategory>Protected</formationcategory>
     <maxvelocity>5.00000</maxvelocity>
     <maxrunvelocity>7.00000</maxrunvelocity>
@@ -12143,12 +12140,12 @@
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <buildlimit>1</buildlimit>
-    <icon>resources\art\units\artillery\tank\tank_icon.png</icon>
-    <portraiticon>resources\art\units\artillery\tank\tank_portrait.png</portraiticon>
+    <icon>resources\art\units\natives\airship_icon.png</icon>
+    <portraiticon>resources\art\units\natives\airship_portrait.png</portraiticon>
     <rollovertextid>124702</rollovertextid>
     <shortrollovertextid>124701</shortrollovertextid>
-    <initialhitpoints>3000.0000</initialhitpoints>
-    <maxhitpoints>3000.0000</maxhitpoints>
+    <initialhitpoints>5000.0000</initialhitpoints>
+    <maxhitpoints>5000.0000</maxhitpoints>
     <los>60.0000</los>
     <projectileprotounit>MortarShell</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -12187,25 +12184,18 @@
     <unittype>AbstractSiegeTrooper</unittype>
     <unittype>Ranged</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
-
-
     <flag>CollidesWithProjectiles</flag>
     <flag>DontRotateObstruction</flag>
     <flag>ApplyHandicapTraining</flag>
-    <flag>NavalUnit</flag>
-
     <flag>NoFadeOnDeath</flag>
     <flag>FadeOutDecalOnDeath</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>HeroName1</flag>
     <flag>HasGatherPoint</flag>
-    <flag>AllowAutoGarrison</flag>
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
-
     <flag>FlyingUnit</flag>
-
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
@@ -12216,8 +12206,8 @@
       <name>BombAttack</name>
       <damage>80.000000</damage>
       <damagetype>Siege</damagetype>
-      <minrange>5.000000</minrange>
-      <maxrange>6.000000</maxrange>
+      <minrange>2.000000</minrange>
+      <maxrange>3.000000</maxrange>
       <rof>5.000000</rof>
       <damagecap>160.000000</damagecap>
       <damagebonus type="Building">10.000000</damagebonus>
@@ -12237,11 +12227,11 @@
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
     <protoaction>
-      <name>LongRangeAttack</name>
+      <name>FireBomb</name>
       <damage>250.000000</damage>
       <damagetype>Siege</damagetype>
-      <minrange>5.000000</minrange>
-      <maxrange>6.000000</maxrange>
+      <minrange>6.000000</minrange>
+      <maxrange>7.000000</maxrange>
       <rof>20.000000</rof>
       <damagecap>400.000000</damagecap>
       <damagebonus type="Building">10.000000</damagebonus>
@@ -12253,16 +12243,90 @@
     </protoaction>
     <protoaction>
       <name>PoisonBomb</name>
-      <damage>250.000000</damage>
+      <damage>50.000000</damage>
       <damagetype>Siege</damagetype>
-      <minrange>5.000000</minrange>
-      <maxrange>6.000000</maxrange>
+      <minrange>6.000000</minrange>
+      <maxrange>7.000000</maxrange>
       <rof>20.000000</rof>
-      <damagecap>400.000000</damagecap>
-      <damagearea>250.000000</damagearea>
+      <damagecap>150.000000</damagecap>
+      <damagearea>15.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="AbstractVillager">2.000000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+    </protoaction>
+  </unit>
+<unit id="20131" name="zpMustardGas">
+    <dbid>20131</dbid>
+    <displaynameid>300612</displaynameid>
+    <obstructionradiusx>0.1000</obstructionradiusx>
+    <wanderdistance>10</wanderdistance>
+    <idletimeout>1.0000</idletimeout>
+    <maxvelocity>1.000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <lifespan>4.0000</lifespan>
+    <movementtype>land</movementtype>
+    <obstructionradiusx>0.0000</obstructionradiusx>
+    <obstructionradiusz>0.0000</obstructionradiusz>
+    <formationcategory>Mobile</formationcategory>
+    <movementtype>land</movementtype>
+    <turnrate>6.0000</turnrate>
+    <animfile>War of the Triple Alliance\Units\Great War\mustardgas.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>cav</physicsinfo>
+    <initialhitpoints>2000.0000</initialhitpoints>
+    <maxhitpoints>2000.0000</maxhitpoints>
+    <los>3.0000</los>
+    <trainpoints>15.0000</trainpoints>
+    <unitaitype>HandCombative</unitaitype>
+    <bounty>0.0000</bounty>
+    <resourcedecay>0.7500</resourcedecay>
+    <resourcesubtype>meat</resourcesubtype>
+    <unittype>NatureClass</unittype>
+    <unittype>AnimalPrey</unittype>
+    <unittype>Resource</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <flag>ConstrainOrientation</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>RMCanRotate</flag>
+    <flag>VisibleUnderFogOnlyAfterSeen</flag>
+    <flag>Tracked</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoHPBar</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>Wanders</flag>
+    <flag>Invulnerable</flag>
+    <tactics>mustardgas.tactics</tactics>
+    <protoaction>
+      <name>TrampleHandAttack</name>
+      <damage>0.0500000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>2.000000</rof>
+      <damagecap>1.5000000</damagecap>
+      <damagearea>10.000000</damagearea>
+      <damagebonus type="Abstractvillager">0.500000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>Attaching</name>
+      <damage>0.200000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.000000</rof>
     </protoaction>
   </unit>
 
@@ -13159,74 +13223,6 @@
       <damageflags>GAIAEnemy</damageflags>
       <damagebonus type="AbstractVillager">2.000000</damagebonus>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
-    </protoaction>
-  </unit>
-
-  <unit id="" name="zpMustardGas">
-    <dbid></dbid>
-    <displaynameid>300612</displaynameid>
-    <obstructionradiusx>0.1000</obstructionradiusx>
-    <wanderdistance>10</wanderdistance>
-    <idletimeout>1.0000</idletimeout>
-    <maxvelocity>1.000</maxvelocity>
-    <maxrunvelocity>6.0000</maxrunvelocity>
-    <lifespan>4.0000</lifespan>
-    <movementtype>land</movementtype>
-    <obstructionradiusx>0.0000</obstructionradiusx>
-    <obstructionradiusz>0.0000</obstructionradiusz>
-    <formationcategory>Mobile</formationcategory>
-    <movementtype>land</movementtype>
-    <turnrate>6.0000</turnrate>
-    <animfile>War of the Triple Alliance\Units\Great War\mustardgas.xml</animfile>
-    <impacttype>Flesh</impacttype>
-    <physicsinfo>cav</physicsinfo>
-    <initialhitpoints>2000.0000</initialhitpoints>
-    <maxhitpoints>2000.0000</maxhitpoints>
-    <los>3.0000</los>
-    <trainpoints>15.0000</trainpoints>
-    <unitaitype>HandCombative</unitaitype>
-    <bounty>0.0000</bounty>
-    <resourcedecay>0.7500</resourcedecay>
-    <resourcesubtype>meat</resourcesubtype>
-    <unittype>NatureClass</unittype>
-    <unittype>AnimalPrey</unittype>
-    <unittype>Resource</unittype>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeLandMilitary</unittype>
-    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <flag>ConstrainOrientation</flag>
-    <flag>DieAtZeroResources</flag>
-    <flag>NoHPBar</flag>
-    <flag>DoNotValidateResourceInventory</flag>
-    <flag>DontRotateObstruction</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>ObscuredByUnits</flag>
-    <flag>RMCanRotate</flag>
-    <flag>VisibleUnderFogOnlyAfterSeen</flag>
-    <flag>Tracked</flag>
-    <flag>ForceToGaia</flag>
-    <flag>NotSelectable</flag>
-    <flag>NoHPBar</flag>
-    <flag>ColorTransformNonGaia</flag>
-    <flag>Wanders</flag>
-    <tactics>mustardgas.tactics</tactics>
-    <flag>Invulnerable</flag>
-    <protoaction>
-        <name>TrampleHandAttack</name>
-        <damage>0.500000</damage>
-        <damagetype>Hand</damagetype>
-        <ROF>2.000000</ROF>
-        <damagecap>5.000000</damagecap>
-        <damagearea>10.000000</damagearea>
-        <damagebonus type='Abstractvillager'>0.500000</damagebonus>
-        <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
 

@@ -39,6 +39,6 @@
   </zpirontankproxy>
   <zpairship>
     <ability>zpPowerFireBomb<rof>30</rof></ability>
-    <ability>zpMustardGas<rof>30</rof></ability>
+    <ability>zpMustardGas<rof>10</rof></ability>
   </zpairship>
 </abilitymods>

@@ -5,7 +5,7 @@
 		<name stringid="38142">TrampleHandAttack</name>
 		<type>TruckAttack</type>
 		<maxrange>8</maxrange>
-		<rate type="All">1.0 </rate>
+		<rate type="LogicalTypeGarrisonInShips">1.0 </rate>
 		<attackaction>1</attackaction>
 		<handlogic>1</handlogic>
 		<speedboost>1</speedboost>
@@ -18,15 +18,17 @@
 		<persistent>1</persistent>
 		<projectile>InvisibleProjectileNoTracer</projectile>
 	</action>
-	<tactic>
-		Melee
-		<action>TrampleHandAttack</action>
-		<runaway>0</runaway>
-		<idleanim>Idle</idleanim>
-		<boredanim>Idle</boredanim>
-		<deathanim>Death</deathanim>
-		<walkanim>Idle</walkanim>
-		<joganim>Idle</joganim>
-		<runanim>Idle</runanim>
-	</tactic>
+		<action>
+		<name stringid="38134">Attaching</name>
+		<type>Attaching</type>
+		<maxrange>10.75</maxrange>
+		<rate type="All">1.0 </rate>
+		<attackaction>1</attackaction>
+		<handlogic>1</handlogic>
+		<speedboost>1</speedboost>
+		<anim>HandAttack</anim>
+		<idleanim>CombatIdle</idleanim>
+		<singleuse>1</singleuse>
+	</action>
+	<tactic>Melee<action priority="100">TrampleHandAttack</action><attacktype>LogicalTypeHandUnitsAttack</attacktype><autoattacktype>LogicalTypeHandUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeHandUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget></tactic>
 </tactics>

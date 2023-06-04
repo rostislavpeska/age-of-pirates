@@ -613,6 +613,8 @@
       <string _locid="300610">Drops a mustard gas bomb which slowly causes significant damage to all nearby units.</string>
       <string _locid="300611">ZP Propeller Test</string>
       <string _locid="300612">ZP Mustard Gas</string>
+      <string _locid="300613">Airship Broadside Attack</string>
+      <string _locid="300614">Zeppelin</string>
     </language>
   </stringtable>
 </stringmods>
