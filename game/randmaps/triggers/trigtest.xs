@@ -450,3 +450,76 @@ highFrequency
         xsDisableSelf();
     }
 }
+
+rule ActivateConsulates
+active
+runImmediately
+highFrequency
+{
+    for (playerID = 1; < 9)
+    {
+        if (kbIsPlayerValid(playerID) == false)
+        {
+            break;
+        }
+
+        if (kbIsPlayerHuman(playerID) == false)
+        {
+            continue;
+        }
+
+        if (trTechStatusCheck(playerID, cTechzpIsPirateMap, cTechStatusActive) == false)
+        {
+            trTechSetStatus(playerID, cTechzpIsPirateMap, cTechStatusActive);
+        }
+
+        // Activate_Consulate_Japan Activate_Consulate_China Activate_Consulate_India Activate_Tortuga
+        if (kbGetCivForPlayer(playerID) == cCivChinese
+            || kbGetCivForPlayer(playerID) == cCivIndians
+            || kbGetCivForPlayer(playerID) == cCivJapanese)
+        {
+            if (trTechStatusResearching(playerID, cTechzpPickConsulateTechAvailable) == true)
+            {
+                if (kbGetCivForPlayer(playerID) == cCivChinese)
+                {
+                    trTechSetStatus(playerID, cTechzpTurnConsulateOnChinese, cTechStatusActive);
+                }
+                else if (kbGetCivForPlayer(playerID) == cCivIndians)
+                {
+                    trTechSetStatus(playerID, cTechzpTurnConsulateOnIndian, cTechStatusActive);
+                }
+                else if (kbGetCivForPlayer(playerID) == cCivJapanese)
+                {
+                    trTechSetStatus(playerID, cTechzpTurnConsulateOnJapanese, cTechStatusActive);
+                }
+
+                if (trCurrentPlayer() == playerID)
+                {
+                    uiConsulateUIInSelected();
+                }
+            }
+        }
+
+        if (trTechStatusResearching(playerID, cTechzpTheBlackFlag) == true)
+        {
+            trTechSetStatus(playerID, cTechzpTurnConsulateOffPirates, cTechStatusActive);
+
+            if (trCurrentPlayer() == playerID)
+            {
+                uiConsulateUIInSelected();
+            }
+
+            if (kbGetCivForPlayer(playerID) == cCivDEItalians
+                && trTechStatusCheck(playerID, cTechzpItalianSettlerBallance, cTechStatusActive) == false)
+            {
+                trTechSetStatus(playerID, cTechzpItalianSettlerBallance, cTechStatusActive);
+            }
+
+            if (trTechStatusCheck(playerID, cTechDEHCGondolas, cTechStatusActive) == true
+                && trTechStatusCheck(playerID, cTechzpItalianGondolaBallance, cTechStatusActive) == false)
+            {
+                trTechSetStatus(playerID, cTechzpItalianGondolaBallance, cTechStatusActive);
+            }
+        }
+    }
+}
