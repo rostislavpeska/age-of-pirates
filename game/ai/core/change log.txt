@@ -198,6 +198,19 @@ Fishing boat priority increased when leading on water (per visible warships)
 
 Don't build too many more towers than docks
 
+==========
+29 May
+
+-- Lots of old changes --
+Added support for Age of Pirates
+Added some pirate specific features
+All changes are either in aiPirateRules.xs or tied to gIsPirateMap
+-------------------------
+Wall radius changed to base size + rand number between 0-20
+Switched around some USA federal state age ups
+Applicable civs now should build a livestock pen under certain conditions
+Added pirate scripts to build native buildings using native villagers (in progress)
+
 
 
 
@@ -251,7 +264,7 @@ Return units from ancillary islands
 PressTheAttack if winning
   -> Should already be there
 Japanese fishing boat attacking
-USA age 3 age up options maybe change to tennessee/new hampshire
+
 
 
 ceylon: 

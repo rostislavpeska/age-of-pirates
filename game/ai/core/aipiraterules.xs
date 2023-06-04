@@ -39,6 +39,7 @@ minInterval 5
     if (getGaiaUnitCount(cUnitTypezpNativeHouseJewish) > 0)
     {
         xsEnableRule("maintainJewishSettlers");
+        xsEnableRule("jewishBuildingMonitor");
     }
     if ((getGaiaUnitCount(cUnitTypezpSPCBlueMosque) > 0) || (getGaiaUnitCount(cUnitTypezpSPCGreatMosque) > 0))
     {
@@ -47,6 +48,7 @@ minInterval 5
         xsEnableRule("SufiBigButtonMonitor");
         xsEnableRule("SufiTechMonitor");
         xsEnableRule("SufiWhiteFortManager");
+        xsEnableRule("zenSufiBuildingMonitor");
     }
     if (getGaiaUnitCount(cUnitTypezpSPCGreatBuddha) > 0)
     {
@@ -54,6 +56,7 @@ minInterval 5
         xsEnableRule("ZenBigButtonMonitor");
         xsEnableRule("ZenTechMonitor");
         xsEnableRule("nativeWagonMonitor");
+        xsEnableRule("zenSufiBuildingMonitor");
     }
     if (getGaiaUnitCount(cUnitTypezpNativeAztecTempleA) > 0)
     {
@@ -61,6 +64,7 @@ minInterval 5
         xsEnableRule("zpNativeAztecBigButtonMonitor");
         xsEnableRule("nativeWagonMonitor");
         xsEnableRule("zpAztecTechMonitor");
+        xsEnableRule("aztecBuildingMonitor");
     }
     if (getGaiaUnitCount(cUnitTypezpWeaponFactoryWinter) > 0)
     {
@@ -70,8 +74,186 @@ minInterval 5
         xsEnableRule("nativeWagonMonitor");
         xsEnableRule("submarineTactics");
     }
+
+    if (getGaiaUnitCount(cUnitTypezpNativeHouseInuit) > 0)
+    {
+        xsEnableRule("zpInuitTechMonitor");
+
+    }
+    if (getGaiaUnitCount(cUnitTypezpNativeHouseMaltese) > 0)
+    {
+        xsEnableRule("zpMalteseTechMonitor");
+
+    }
     
     xsDisableSelf();
+}
+
+//==============================================================================
+// zenSufi Building Monitor
+//==============================================================================
+rule zenSufiBuildingMonitor
+inactive
+minInterval 5
+{
+   int towerCount = kbUnitCount(cMyID, gTowerUnit, cUnitStateAlive);
+   int planID = -1;
+
+   // =================
+   // First look at Zen
+   // =================
+   int zenVillager = getUnit(cUnitTypezpSettlerZen, cPlayerRelationSelf, cUnitStateAlive);
+   int sufiVillager = getUnit(cUnitTypezpSettlerSufi, cPlayerRelationSelf, cUnitStateAlive);
+   if (zenVillager > 0 || sufiVillager > 0)
+   {
+      // Check for desired number of paddys and towers. Allow native to build +1 more than we want (via >=)
+      int zenTowerLimit = kbGetBuildLimit(cMyID, cUnitTypeYPOutpostAsian);
+      int zenTowerCount = kbUnitCount(cMyID, cUnitTypeYPOutpostAsian, cUnitStateABQ);
+      if (gNumTowers >= towerCount && zenTowerCount < zenTowerLimit)
+      {
+         planID = createSimpleBuildPlan(cUnitTypeYPOutpostAsian, 1, 99, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 0);
+         if (zenVillager > 0)
+         {
+            aiPlanAddUnitType(planID, cUnitTypezpSettlerZen, 1, 1, 1);
+         }
+         else if (sufiVillager > 0)
+         {
+            aiPlanAddUnitType(planID, cUnitTypezpSettlerSufi, 1, 1, 1);
+         }
+         else
+         {  // Shouldn't ever get here, but just in case
+            aiPlanDestroy(planID);
+         }
+         //createLocationBuildPlan(YPOutpostAsian, 1, 70, false, cMilitaryEscrowID, vector position = cInvalidVector, int numberBuilders = 1)
+      }
+
+      // For now just build one rice paddy. The logic to build mills/plantations is fairly involved and difficult
+      // to slip into
+      int zenPaddyLimit = 1;
+      int zenPaddyCount = kbUnitCount(cMyID, cUnitTypeypRicePaddy, cUnitStateABQ);
+      if (zenPaddyCount < zenPaddyLimit)
+      {
+         planID = createSimpleBuildPlan(cUnitTypeypRicePaddy, 1, 99, true, cEconomyEscrowID, kbBaseGetMainID(cMyID), 0);
+         if (zenVillager > 0)
+         {
+            aiPlanAddUnitType(planID, cUnitTypezpSettlerZen, 1, 1, 1);
+         }
+         else if (sufiVillager > 0)
+         {
+            aiPlanAddUnitType(planID, cUnitTypezpSettlerSufi, 1, 1, 1);
+         }
+         else
+         {  // Shouldn't ever get here, but just in case
+            aiPlanDestroy(planID);
+         }
+      }
+   }
+
+   // =================
+   // Now look at SufiB
+   // =================
+   int sufiBVillager = getUnit(cUnitTypezpSettlerSufiB, cPlayerRelationSelf, cUnitStateAlive);
+   if (sufiBVillager > 0)
+   {
+      // Check for desired number of towers. Allow native to build +1 more than we want (via >=)
+      int sufiBTowerLimit = kbGetBuildLimit(cMyID, cUnitTypezpArabianTower);
+      int sufiBTowerCount = kbUnitCount(cMyID, cUnitTypezpArabianTower, cUnitStateABQ);
+      if (gNumTowers >= towerCount && sufiBTowerCount < sufiBTowerLimit)
+      {
+         planID = createSimpleBuildPlan(cUnitTypezpArabianTower, 1, 59, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 0);
+         if (sufiBVillager > 0)
+         {
+            aiPlanAddUnitType(planID, cUnitTypezpSettlerSufiB, 1, 1, 1);
+         }
+         else
+         {  // Shouldn't ever get here, but just in case
+            aiPlanDestroy(planID);
+         }
+      }
+   }
+}
+
+//==============================================================================
+// Aztec Building Monitor
+//==============================================================================
+rule aztecBuildingMonitor
+inactive
+minInterval 5
+{
+   int towerCount = kbUnitCount(cMyID, gTowerUnit, cUnitStateAlive);
+   int planID = -1;
+
+   // =================
+   // Now Aztec
+   // =================
+   int AztecVillager = getUnit(cUnitTypezpSettlerAztec, cPlayerRelationSelf, cUnitStateAlive);
+   if (AztecVillager > 0)
+   {
+      // Check for desired number of farms, estates, and towers. Allow native to build +1 more than we want (via >=)
+      int AztecTowerLimit = kbGetBuildLimit(cMyID, cUnitTypezpAztecOutpost);
+      int AztecTowerCount = kbUnitCount(cMyID, cUnitTypezpAztecOutpost, cUnitStateABQ);
+      if (gNumTowers >= towerCount && AztecTowerCount < AztecTowerLimit)
+      {
+         planID = createSimpleBuildPlan(cUnitTypezpAztecOutpost, 1, 99, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 0);
+         if (AztecVillager > 0)
+         {
+            aiPlanAddUnitType(planID, cUnitTypezpSettlerAztec, 1, 1, 1);
+         }
+         else
+         {  // Shouldn't ever get here, but just in case
+            aiPlanDestroy(planID);
+         }
+      }
+
+      // The build limit for the water temple is 1, so don't bother looking it up
+      int AztecTempleLimit = 1;
+      int AztecTempleCount = kbUnitCount(cMyID, cUnitTypezpWaterTemple, cUnitStateABQ);
+      if (AztecTempleCount < AztecTempleLimit)
+      {
+         planID = createSimpleBuildPlan(cUnitTypezpWaterTemple, 1, 99, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 0);
+         if (AztecVillager > 0)
+         {
+            aiPlanAddUnitType(planID, cUnitTypezpSettlerAztec, 1, 1, 1);
+         }
+         else
+         {  // Shouldn't ever get here, but just in case
+            aiPlanDestroy(planID);
+         }
+      }
+   }
+}
+
+//==============================================================================
+// Jewish Building Monitor
+//==============================================================================
+rule jewishBuildingMonitor
+inactive
+minInterval 5
+{
+   int planID = -1;
+
+   // =================
+   // Now Jewish
+   // =================
+   int jewishVillager = getUnit(cUnitTypezpNatSettlerJewish, cPlayerRelationSelf, cUnitStateAlive);
+   if (jewishVillager > 0)
+   {
+      // The build limit for the Academy is 1, so don't bother looking it up
+      int AcademyLimit = 1;
+      int AcademyCount = kbUnitCount(cMyID, cUnitTypezpAcademy, cUnitStateABQ);
+      if (AcademyCount < AcademyLimit)
+      {
+         planID = createSimpleBuildPlan(cUnitTypezpAcademy, 1, 90, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 0);
+         if (jewishVillager > 0)
+         {
+            aiPlanAddUnitType(planID, cUnitTypezpNatSettlerJewish, 1, 1, 1);
+         }
+         else
+         {  // Shouldn't ever get here, but just in case
+            aiPlanDestroy(planID);
+         }
+      }
+   }
 }
 
 //==============================================================================
@@ -1278,4 +1460,93 @@ minInterval 30
       }
     }
   }
+}
+
+//==============================================================================
+// ZP Inuit Tech Monitor
+//==============================================================================
+rule zpInuitTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketInuits, cUnitStateAny) == 0)
+      {
+      return; // Player has no Inuit socket.
+      }
+
+      // Inuit Influence
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpNatInuitInfluence,
+      []() -> bool { return (kbGetAge() >= cAge2 ); },
+      cUnitTypeTradingPost);
+
+      // Inuit Umiaks
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpInuitUmiaks,
+      []() -> bool { return ((kbTechGetStatus(cTechzpNatInuitInfluence) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Inuit Aurora
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpInuitFriends,
+      []() -> bool { return ((kbTechGetStatus(cTechzpNatInuitInfluence) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
+// ZP Maltese Tech Monitor
+//==============================================================================
+rule zpMalteseTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketMaltese, cUnitStateAny) == 0)
+      {
+      return; // Player has no Maltese socket.
+      }
+
+      // Maltese Venetians
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpNatMalteseExplorationFleet,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateMalteseVenetians) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatMalteseExpeditionaryFleet,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateMalteseVenetians) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Maltese Florentians
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatMalteseBanking,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateMalteseFlorentians) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatMalteseFactory,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateMalteseFlorentians) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Maltese Jerusalem
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatMalteseFort,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateMalteseJerusalem) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatMalteseOutposts,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateMalteseJerusalem) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Maltese Central Europe
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpMalteseMarksmen,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateMalteseCentralEuropeans) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpMalteseCannons,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateMalteseCentralEuropeans) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
 }

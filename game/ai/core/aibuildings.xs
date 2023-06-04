@@ -3656,6 +3656,8 @@ minInterval 5
       if (socketID == bestNativeSocketID)
       {
          gLastClaimNativeMissionTime = time;
+      // AssertiveWall: Only for troubleshooting purposes. Pings the place the AI is trying to build a native TP
+      // sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, socketPosition);
       }
       else
       {

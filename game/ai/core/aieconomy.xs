@@ -2959,6 +2959,33 @@ minInterval 15
    vector mainBaseVec = cInvalidVector;
    int time = xsGetTime();
 
+   // AssertiveWall: Build a livestock pen under certain conditions
+   int numPens = 0;
+   if (civIsAfrican() == false &&
+       cMyCiv != cCivDEMexicans &&
+       civIsNative() == false &&
+       cMyCiv != cCivJapanese && cMyCiv != cCivSPCJapanese && cMyCiv != cCivSPCJapaneseEnemy)
+   {
+      mainBaseVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+      numCattle = getUnitCountByLocation(cUnitTypeHerdable, cPlayerRelationAny, cUnitStateAny, mainBaseVec, 60.0);
+      if (btRushBoom >= 0.5 && kbGetAge() < cAge3) // Rushing stance, go away until Age 3
+      {
+         return;
+      }
+      else if (btRushBoom >= 0.0 && numCattle >= 8)
+      {
+         numPens = 1;
+      }
+      else if (btRushBoom < 0.0 && numCattle >= 4)
+      {
+         numPens = 1;
+      }
+      if (numPens > kbUnitCount(cMyID, gLivestockPenUnit, cUnitStateABQ))
+      {
+         createSimpleBuildPlan(gLivestockPenUnit, numPens, 50, true, cEconomyEscrowID, kbBaseGetMainID(cMyID), 1);
+      }
+   }
+
    // Don't slaughter cattle early on.
    if (((time < 900000) &&
         ((time < 500000) || ((gTimeToFarm == false) && (kbUnitCount(cMyID, cUnitTypeFarm, cUnitStateAlive) <= 0) &&
@@ -2975,8 +3002,8 @@ minInterval 15
       return;
    }
 
-   mainBaseVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
-   numCattle = getUnitCountByLocation(cUnitTypeHerdable, cPlayerRelationAny, cUnitStateAny, mainBaseVec, 60.0);
+   //mainBaseVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   //numCattle = getUnitCountByLocation(cUnitTypeHerdable, cPlayerRelationAny, cUnitStateAny, mainBaseVec, 60.0);
 
    if (numCattle <= 0)
    {
