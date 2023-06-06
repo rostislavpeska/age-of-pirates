@@ -735,22 +735,5 @@
     <unavailableicon>resources\images\icons\command\zp_surface.png</unavailableicon>
     <rolloverstringid>300472</rolloverstringid>
   </squadmode>
-  <squadmode>
-    <name>zpAirshipNormal</name>
-    <tactic>AirshipNormal</tactic>
-    <unittype>Ship</unittype>
-    <targetunittype>All</targetunittype>
-    <stance>StandGround</stance>
-    <formationtype>Line</formationtype>
-    <formationboxlinespacing>0.8</formationboxlinespacing>
-    <formationboxsubgroupspacing>1.5</formationboxsubgroupspacing>
-    <maxnumberformationlines>1</maxnumberformationlines>
-    <cooldowntime>5000</cooldowntime>
-    <transitiontimein>500</transitiontimein>
-    <activeicon>resources\images\icons\command\skyship_standard.png</activeicon>
-    <availableicon>resources\images\icons\command\skyship_standard.png</availableicon>
-    <unavailableicon>resources\images\icons\command\skyship_standard.png</unavailableicon>
-    <rolloverstringid>300472</rolloverstringid>
-  </squadmode>
 
 </battles>

@@ -1,11 +1,15 @@
 <protounitsounddef>
   <protounit name="zpAirship">
     <soundtype name="Select">
-      <soundset name="WarwickSelect">
+      <soundset name="NathanielBlackEnglishSelect">
       </soundset>
     </soundtype>
     <soundtype name="Death">
       <soundset name="ShipDeath">
+      </soundset>
+    </soundtype>
+    <soundtype name="Grunt">
+      <soundset name="NathanielBlackGrunt">
       </soundset>
     </soundtype>
     <soundtype name="Creation">
@@ -15,11 +19,11 @@
     <soundtype name="Acknowledge">
       <targetlogic>
         <choice name="default">
-          <soundset name="WarwickAcknowledge">
+          <soundset name="NathanielBlackEnglishAcknowledge">
           </soundset>
         </choice>
         <choice name="enemy">
-          <soundset name="WarwickAttack">
+          <soundset name="NathanielBlackEnglishAttack">
           </soundset>
         </choice>
         <choice name="build">
@@ -39,7 +43,7 @@
       </targetlogic>
     </soundtype>
     <soundtype name="Exists">
-      <soundset name="AmbienceShip">
+      <soundset name="AirshipEngine">
       </soundset>
     </soundtype>
   </protounit>

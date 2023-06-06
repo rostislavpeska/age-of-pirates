@@ -605,16 +605,27 @@
       <string _locid="300602">Strong attack, very efficient for fishing and especially whaling</string>
       <string _locid="300603">Ice Fishing Hole</string>
       <string _locid="300604">ZP Fishing Hole</string>
-      <string _locid="300605">Airship</string>
-      <string _locid="300606">Bomb Attack</string>
-      <string _locid="300607">Fire Bomb</string>
-      <string _locid="300608">Poison Bomb</string>
-      <string _locid="300609">Drops an especially destructive fire bomb</string>
-      <string _locid="300610">Drops a mustard gas bomb which slowly causes significant damage to all nearby units.</string>
+      <string _locid="300605">Experimental Airship</string>
+      <string _locid="300606">Crow Attack</string>
+      <string _locid="300607">Exploding Crow</string>
+      <string _locid="300608">Poisoned Crow</string>
+      <string _locid="300609">Destructive flying crow. Especially effective against buildings.</string>
+      <string _locid="300610">Mustard gas flying crow which slowly causes significant damage to all nearby units including yours.</string>
       <string _locid="300611">ZP Propeller Test</string>
       <string _locid="300612">ZP Mustard Gas</string>
       <string _locid="300613">Airship Broadside Attack</string>
-      <string _locid="300614">Zeppelin</string>
+      <string _locid="300614">A Darkling Plain</string>
+      <string _locid="300615">Flying Fortress. Can transport units and can be repaired in dock as a standard ship. Explodes after taking signifficant damage.</string>
+      <string _locid="300616">Nadzimoyo Khora</string>
+      <string _locid="300617">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Airship \n\nPioneer of aviation and air pirate. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nAir Attack, Mustard Gas</string>
+      <string _locid="300618">ZP Airship Proxy</string>
+      <string _locid="300619">Air Attack</string>
+      <string _locid="300620">Equips your airship with flying crows and, it a special anti-airship attack and improves it's hitpoints.</string>
+      <string _locid="300621">Mustard Gas</string>
+      <string _locid="300622">Adds your airship a special attack ability and improves it's current attack and hitpoints.</string>
+      <string _locid="300623">Airship</string>
+      <string _locid="300624">Reconnaissance Mission</string>
+      <string _locid="300625">Shows enemy positions on the map</string>
     </language>
   </stringtable>
 </stringmods>

@@ -76,7 +76,7 @@
 			</assetreference>
 			<component>propellerR</component>
 		</anim>
-		<anim>Walk
+		<anim animlengthoverride="0.5000">Walk
 			<assetreference type="GrannyAnim">
 				<file>units\balloons\propeller_Anim</file>
 			</assetreference>
@@ -84,36 +84,11 @@
 		</anim>
 	</attachment>
 	<component>ModelComp
-		<logic type="Tech">
-			<none>
-				<assetreference type="GrannyModel">
-					<file>units\balloons\transport_airship</file>
-				</assetreference>
-			</none>
-			<zpbattleairship>
-				<assetreference type="GrannyModel">
-					<file>units\balloons\airship</file>
-				</assetreference>
-			</zpbattleairship>
-		</logic>
+		<assetreference type="GrannyModel">
+			<file>units\balloons\airship</file>
+		</assetreference>
 		<attach a="propellerR" frombone="ATTACHPOINT" tobone="bone_propeller_L" syncanims="1"></attach>
 		<attach a="propellerR" frombone="ATTACHPOINT" tobone="bone_propeller_R" syncanims="1"></attach>
-		<decal>
-			<effecttype>default</effecttype>
-			<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
-			<selectedtexture>shadows_selections\selection_circle_64x64</selectedtexture>
-			<width>5.00</width>
-			<height>5.00</height>
-		</decal>
-	</component>
-	<component>DestructionModel
-		<assetreference type="GrannyModel">
-			<file>units\balloons\airship_damaged</file>
-		</assetreference>
-		<attach a="propellerR" frombone="ATTACHPOINT" tobone="bone_propeller_L" syncanims="0"></attach>
-		<attach a="propellerR" frombone="ATTACHPOINT" tobone="bone_propeller_R" syncanims="0"></attach>
-		<attach a="Explosion" frombone="ATTACHPOINT" tobone="bone_explosion02" syncanims="0"></attach>
-		<attach a="Explosion" frombone="ATTACHPOINT" tobone="bone_explosion01" syncanims="0"></attach>
 		<decal>
 			<effecttype>default</effecttype>
 			<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
@@ -133,7 +108,7 @@
 		GrenadeAttack
 		<assetreference type="GrannyAnim">
 			<file>units\balloons\airship_idle</file>
-			<tag type="Attack">0.01</tag>
+			<tag type="Attack">0.02</tag>
 		</assetreference>
 		<component>ModelComp</component>
 		
@@ -142,7 +117,7 @@
 		BombAttack
 		<assetreference type="GrannyAnim">
 			<file>units\balloons\airship_idle</file>
-			<tag type="Attack">0.01</tag>
+			<tag type="Attack">0.02</tag>
 		</assetreference>
 		<component>ModelComp</component>
 		
@@ -174,9 +149,13 @@
 			<tag type="Particles" particlename="wcsmallexp_04">0.09</tag>
 			<tag type="Particles" particlename="wclargeexp">0.12</tag>
 		</assetreference>
-		<component>DestructionModel</component>
-
+		<component>ModelComp</component>
+		<simskeleton>
+			<model>units\balloons\airship</model>
+			<damagetemplate>units\balloons\airship.dmg</damagetemplate>
+		</simskeleton>
 		<attach a="Death_EXP" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
 		<attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="bone_explosion01" syncanims="0"></attach>
+		<attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="bone_explosion02" syncanims="0"></attach>
 	</anim>
 </animfile>

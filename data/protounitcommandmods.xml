@@ -108,6 +108,17 @@
     <command>unitSetTactic("TacticEconomy")</command>
   </protounitcommand>
   <protounitcommand>
+    <name>zpAirshipExploration</name>
+    <icon>resources\images\icons\command\telescope.png</icon>
+    <associatedpower>zpAirshipLighthouse</associatedpower>
+    <castpower>
+    </castpower>
+    <rollovertextid>300625</rollovertextid>
+    <disabledrollovertextid>300625</disabledrollovertextid>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
+  <protounitcommand>
     <name>zpTheBlackFlag</name>
     <command>void researchByID (4193, 1); void researchByID (4193, 2); void researchByID (4193, 3); void researchByID (4193, 4); void researchByID (4193, 5); void researchByID (4193, 6); void researchByID (4193, 7); void researchByID (4193, 8);</command>
     <icon>resources\images\icons\techs\nat_blackflag.png</icon>

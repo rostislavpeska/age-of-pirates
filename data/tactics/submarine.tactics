@@ -84,6 +84,12 @@
         <basedamagecap>1</basedamagecap>
         <perfectaccuracy>1</perfectaccuracy>
     </action>
+    <action>
+        <dbaction>BoatManager</dbaction>
+        <name stringid="69156">BoatManager</name>
+        <type>BoatManager</type>
+        <persistent>1</persistent>
+    </action>
 
     <action>
         <name stringid="69148">Discover</name>
@@ -120,6 +126,7 @@
         <protounitcommand>zpTacticSurface</protounitcommand>
         <action>GatlingAttack</action>
         <action>Discover</action>
+        <action>BoatManager</action>
         <transition>
             <tactic>zpStealth</tactic>
             <length>2</length>

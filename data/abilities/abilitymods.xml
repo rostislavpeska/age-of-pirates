@@ -30,15 +30,16 @@
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpwokoufuchuan>
   <zpirontank>
-    <ability>dePowerRoundelExplodeAttack<rof>10</rof><castonself>true</castonself></ability>
-    <ability>dePowerRoundelCascadeAttack<rof>10</rof><castonself>true</castonself></ability>
+    <ability>dePowerRoundelExplodeAttack<tech>zpIronTanks</tech><rof>10</rof><castonself>true</castonself></ability>
+    <ability>dePowerRoundelCascadeAttack<tech>zpIronTanks</tech><rof>10</rof><castonself>true</castonself></ability>
   </zpirontank>
   <zpirontankproxy>
     <ability>dePowerRoundelExplodeAttack<rof>10</rof><castonself>true</castonself></ability>
     <ability>dePowerRoundelCascadeAttack<rof>10</rof><castonself>true</castonself></ability>
   </zpirontankproxy>
   <zpairship>
-    <ability>zpPowerFireBomb<rof>30</rof></ability>
-    <ability>zpMustardGas<rof>10</rof></ability>
+    <ability>zpAirshipLighthouse<rof>60</rof><castonself>true</castonself></ability>
+    <ability>zpPowerFireBomb<tech>zpBattleAirship</tech><rof>30</rof></ability>
+    <ability>zpMustardGas<tech>zpMustardGas</tech><rof>60</rof></ability>
   </zpairship>
 </abilitymods>

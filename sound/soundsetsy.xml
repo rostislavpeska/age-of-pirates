@@ -2271,4 +2271,12 @@
     <sound filename="inuit\InuitWarChiefAttack3.wav" volume="1.0000">
     </sound>
   </soundset>
+  <soundset name="Mustardgas" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ambient\effects\fx_exp_nerve_gas_1.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="AirshipEngine" volume="0.3000" maxnum="4" distance="1.0000">
+    <sound filename="ambient\effects\fx_mov_bomber_2.wav" volume="1.0000">
+    </sound>
+  </soundset>
 </soundsetdef>
