@@ -66,6 +66,7 @@ minInterval 5
     {
         xsEnableRule("MaintainScientistShips");
         xsEnableRule("MaintainScientistTanks");
+        xsEnableRule("MaintainScientistAirship");
         xsEnableRule("zpScientistTechMonitor");
         xsEnableRule("nativeWagonMonitor");
         xsEnableRule("submarineTactics");
@@ -1158,6 +1159,14 @@ mininterval 60
       []() -> bool { return ((kbTechGetStatus(cTechzpConsulateScientistValentine) == cTechStatusActive) && ( kbGetAge() >= cAge4 )); },
       cUnitTypeTradingPost);
 
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpBattleAirship,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateScientistkhora) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpMustardGas,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateScientistkhora) == cTechStatusActive) && ( kbGetAge() >= cAge4 )); },
+      cUnitTypeTradingPost);
+
   if (canDisableSelf == true)
       {
           xsDisableSelf();
@@ -1378,4 +1387,68 @@ mininterval 60
           xsDisableSelf();
       }
   
+}
+
+//==============================================================================
+// Maintain Airship in Scientist Trading Post
+//==============================================================================
+
+rule MaintainScientistAirship
+inactive
+minInterval 30
+{
+  const int list_size = 1;
+  static int proxy_list = -1;
+  static int ship_list = -1;
+
+  if (kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0)
+   {
+      return;
+   }
+
+   if (kbTechGetStatus(cTechzpBattleAirship) == cTechStatusActive)
+   {
+
+      if (proxy_list == -1)
+      {
+         proxy_list = xsArrayCreateInt(list_size, -1, "List of Scientist Airship Proxies");
+         ship_list = xsArrayCreateInt(list_size, -1, "List of Scientist Airships");
+
+         xsArraySetInt(proxy_list, 0, cUnitTypezpAirshipProxy);
+         xsArraySetInt(ship_list, 0, cUnitTypezpAirship);
+      }
+
+      for(i = 0; < xsArrayGetSize(proxy_list))
+      {
+         int proxy = xsArrayGetInt(proxy_list, i);
+         int ship = xsArrayGetInt(ship_list, i);
+         
+         int maintain_plan = aiPlanGetIDByTypeAndVariableType(cPlanTrain, cTrainPlanUnitType, proxy, true);
+         int number_to_maintain = kbGetBuildLimit(cMyID, ship) - kbUnitCount(cMyID, ship);
+
+         if (maintain_plan == -1)
+         {
+            if (kbProtoUnitAvailable(proxy) == true)
+            {
+            maintain_plan = aiPlanCreate("Maintain " + kbGetProtoUnitName(proxy), cPlanTrain);
+            aiPlanSetVariableInt(maintain_plan, cTrainPlanUnitType, 0, proxy);
+            aiPlanSetVariableBool(maintain_plan, cTrainPlanUseMultipleBuildings, 0, false);
+            aiPlanSetVariableInt(maintain_plan, cTrainPlanNumberToMaintain, 0, number_to_maintain);
+            aiPlanSetVariableInt(maintain_plan, cTrainPlanBatchSize, 0, 1);
+            aiPlanSetActive(maintain_plan, true);
+            }
+         }
+         else
+         {
+            if (kbProtoUnitAvailable(proxy) == true)
+            {
+            aiPlanSetVariableInt(maintain_plan, cTrainPlanNumberToMaintain, 0, number_to_maintain);
+            }
+            else
+            {
+            aiPlanDestroy(maintain_plan);
+            }
+         }
+      }
+   }
 }

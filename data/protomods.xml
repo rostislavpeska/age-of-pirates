@@ -10436,6 +10436,7 @@
     <unittype>CountsTowardMilitaryScore</unittype>
     <unittype>AbstractRangedInfantry</unittype>
     <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
     <unittype>ConvertsHerds</unittype>
     <unittype>Military</unittype>
     <unittype>UnitClass</unittype>
@@ -12273,7 +12274,7 @@
     </protoaction>
     <protoaction>
       <name>ExplosionAttack</name>
-      <damage>100.000000</damage>
+      <damage>500.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>0.00001</rof>
       <maxrange>10.000000</maxrange>
