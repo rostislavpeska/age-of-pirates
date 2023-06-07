@@ -12261,14 +12261,14 @@
     </protoaction>
     <protoaction>
       <name>PoisonBomb</name>
-      <damage>150.000000</damage>
+      <damage>40.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>30.000000</maxrange>
       <minrange>10.000000</minrange>
       <maxheight>1.000000</maxheight>
       <rof>5.000000</rof>
-      <damagecap>150.000000</damagecap>
-      <damagearea>15.000000</damagearea>
+      <damagecap>100.000000</damagecap>
+      <damagearea>30.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
     <protoaction>
@@ -12340,11 +12340,11 @@
     <tactics>mustardgas.tactics</tactics>
     <protoaction>
       <name>TrampleHandAttack</name>
-      <damage>0.2000000</damage>
+      <damage>40.0000000</damage>
       <damagetype>Hand</damagetype>
       <rof>2.000000</rof>
-      <damagecap>3.5000000</damagecap>
-      <damagearea>10.000000</damagearea>
+      <damagecap>100.0000000</damagecap>
+      <damagearea>30.000000</damagearea>
       <damagebonus type="Abstractvillager">0.500000</damagebonus>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
       <damageflags>GAIAEnemy</damageflags>

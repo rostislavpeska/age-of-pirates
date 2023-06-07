@@ -30,4 +30,16 @@
 		Idle
 		<component>rain</component>
 	</anim>
+	<anim>
+		HandAttack
+		<assetreference type="GrannyAnim">
+			<file>animation_library\range\defend\longbow_defend_melee_A</file>
+			<tag type="Attack">0.1</tag>
+			<tag type="Attack">0.3</tag>
+			<tag type="Attack">0.5</tag>
+			<tag type="Attack">0.7</tag>
+			<tag type="Attack">0.9</tag>
+		</assetreference>
+		<component>ball</component>
+	</anim>
 </animfile>

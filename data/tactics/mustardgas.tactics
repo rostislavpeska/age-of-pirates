@@ -3,13 +3,13 @@
 <tactics>
 	<action>
 		<name stringid="38142">TrampleHandAttack</name>
-		<type>TruckAttack</type>
+		<type>Attack</type>
 		<maxrange>8</maxrange>
 		<rate type="LogicalTypeGarrisonInShips">1.0 </rate>
 		<attackaction>1</attackaction>
 		<handlogic>1</handlogic>
 		<speedboost>1</speedboost>
-		<anim>Idle</anim>
+		<anim>HandAttack</anim>
 		<idleanim>Idle</idleanim>
 		<damage>6.5</damage>
 		<rof>1.0</rof>
