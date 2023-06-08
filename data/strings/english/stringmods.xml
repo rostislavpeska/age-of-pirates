@@ -503,7 +503,7 @@
       <string _locid="300499">Test Building 5</string>
       <string _locid="300500">Gatling Gun</string>
       <string _locid="300501">Protect Dock \nSubmerged submarine stands to protects dock or fleet formation and doesn't move around the map.</string>
-      <string _locid="300502">ZP Scientists Factory</string>
+      <string _locid="300502">ZP Scientists Factory Winter</string>
       <string _locid="300503">Weapon Factory</string>
       <string _locid="300504">Native Building</string>
       <string _locid="300505">ZP Scientists Fire Thrower</string>
@@ -626,6 +626,10 @@
       <string _locid="300623">Airship</string>
       <string _locid="300624">Reconnaissance Mission</string>
       <string _locid="300625">Shows enemy positions on the map</string>
+      <string _locid="300626">Wokou Settlement Water Flag</string>
+      <string _locid="300627">ZP NAT Wokou Water Flag 1</string>
+      <string _locid="300628">ZP NAT Wokou Water Flag 2</string>
+      <string _locid="300629">ZP Scientists Factory Summer</string>
     </language>
   </stringtable>
 </stringmods>

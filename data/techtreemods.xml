@@ -2613,7 +2613,7 @@
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">ypWokouJunk</target>
       </effect>
-      <effect type="Data" action="SpawnWokouJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpPirateWaterSpawnFlag1">
+      <effect type="Data" action="SpawnWokouJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpWokouWaterSpawnFlag1">
         <target type="Player">
         </target>
       </effect>
@@ -2628,7 +2628,7 @@
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">ypWokouJunk</target>
       </effect>
-      <effect type="Data" action="SpawnWokouJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpPirateWaterSpawnFlag2">
+      <effect type="Data" action="SpawnWokouJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpWokouWaterSpawnFlag2">
         <target type="Player">
         </target>
       </effect>
@@ -5042,7 +5042,7 @@
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">ypFireship</target>
       </effect>
-      <effect type="Data" action="SpawnWokouFireJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpPirateWaterSpawnFlag1">
+      <effect type="Data" action="SpawnWokouFireJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpWokouWaterSpawnFlag1">
         <target type="Player">
         </target>
       </effect>
@@ -5057,7 +5057,7 @@
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">ypFireship</target>
       </effect>
-      <effect type="Data" action="SpawnWokouFireJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpPirateWaterSpawnFlag2">
+      <effect type="Data" action="SpawnWokouFireJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpWokouWaterSpawnFlag2">
         <target type="Player">
         </target>
       </effect>
