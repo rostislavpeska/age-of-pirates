@@ -875,7 +875,18 @@ rmClearClosestPointConstraints();
 
 // ------Triggers--------//
 
-zpInclude("trigtest");
+if (devMode) {
+   zpInclude("trigtest");
+} else {
+   rmCreateTrigger("ZP_Tortuga");
+   rmAddTriggerEffect("ZP Tortuga");
+   rmSetTriggerEffectParamFloat("SocketRadius", 35.0);
+   rmSetTriggerEffectParamFloat("ConversionRadius", 100.0);
+   rmSetTriggerEffectParam("Socket1", "5");
+   rmSetTriggerEffectParam("Socket2", "56");
+   rmSetTriggerEffectParam("Flag1Protounit", "zpPirateWaterSpawnFlag1");
+   rmSetTriggerEffectParam("Flag2Protounit", "zpPirateWaterSpawnFlag2");
+}
 
 // AI Pirate Captains
 

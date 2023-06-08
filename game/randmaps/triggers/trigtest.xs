@@ -473,7 +473,6 @@ highFrequency
             trTechSetStatus(playerID, cTechzpIsPirateMap, cTechStatusActive);
         }
 
-        // Activate_Consulate_Japan Activate_Consulate_China Activate_Consulate_India Activate_Tortuga
         if (kbGetCivForPlayer(playerID) == cCivChinese
             || kbGetCivForPlayer(playerID) == cCivIndians
             || kbGetCivForPlayer(playerID) == cCivJapanese)

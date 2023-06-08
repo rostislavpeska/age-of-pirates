@@ -1,4 +1,4 @@
-extern const bool devMode = true;
+extern const bool devMode = false;
 
 // Inject the specified TR script.
 void zpInclude(string filename = "", string foldername = "age-of-pirates")
