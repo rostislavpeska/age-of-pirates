@@ -466,7 +466,7 @@ bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
          rmPlaceGroupingAtLoc(piratesVillageID, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1)), 1);
 
         int piratewaterflagID1 = rmCreateObjectDef("pirate water flag 1");
-         rmAddObjectDefItem(piratewaterflagID1, "zpPirateWaterSpawnFlag1", 1, 1.0);
+         rmAddObjectDefItem(piratewaterflagID1, "zpWokouWaterSpawnFlag1", 1, 1.0);
          rmAddClosestPointConstraint(flagLandShort);
 
          vector closeToVillage1 = rmFindClosestPointVector(ControllerLoc1, rmXFractionToMeters(1.0));
@@ -497,7 +497,7 @@ bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
             rmPlaceGroupingAtLoc(piratesVillageID2, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc2)), 1);
          
             int piratewaterflagID2 = rmCreateObjectDef("pirate water flag 2");
-            rmAddObjectDefItem(piratewaterflagID2, "zpPirateWaterSpawnFlag2", 1, 1.0);
+            rmAddObjectDefItem(piratewaterflagID2, "zpWokouWaterSpawnFlag2", 1, 1.0);
             rmAddClosestPointConstraint(flagLandShort);
 
             vector closeToVillage2 = rmFindClosestPointVector(ControllerLoc2, rmXFractionToMeters(1.0));
@@ -1823,14 +1823,14 @@ rmAddTriggerEffect("Convert Units in Area");
 rmSetTriggerEffectParam("SrcObject","3");
 rmSetTriggerEffectParamInt("SrcPlayer",0);
 rmSetTriggerEffectParamInt("TrgPlayer",k);
-rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag1");
+rmSetTriggerEffectParam("UnitType","zpWokouWaterSpawnFlag1");
 rmSetTriggerEffectParamInt("Dist",100);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1off_Player"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
 rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1ON_Plr"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
@@ -1848,14 +1848,14 @@ rmAddTriggerEffect("Convert Units in Area");
 rmSetTriggerEffectParam("SrcObject","3");
 rmSetTriggerEffectParamInt("SrcPlayer",k);
 rmSetTriggerEffectParamInt("TrgPlayer",0);
-rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag1");
+rmSetTriggerEffectParam("UnitType","zpWokouWaterSpawnFlag1");
 rmSetTriggerEffectParamInt("Dist",100);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1on_Player"+k));
 rmAddTriggerEffect("Disable Trigger");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
 rmAddTriggerEffect("Disable Trigger");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1ON_Plr"+k));
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
@@ -1878,7 +1878,7 @@ if (cNumberNonGaiaPlayers >= 4){
    rmSetTriggerEffectParam("SrcObject","56");
    rmSetTriggerEffectParamInt("SrcPlayer",0);
    rmSetTriggerEffectParamInt("TrgPlayer",k);
-   rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag2");
+   rmSetTriggerEffectParam("UnitType","zpWokouWaterSpawnFlag2");
    rmSetTriggerEffectParamInt("Dist",100);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates2off_Player"+k));
@@ -1903,7 +1903,7 @@ if (cNumberNonGaiaPlayers >= 4){
    rmSetTriggerEffectParam("SrcObject","56");
    rmSetTriggerEffectParamInt("SrcPlayer",k);
    rmSetTriggerEffectParamInt("TrgPlayer",0);
-   rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag2");
+   rmSetTriggerEffectParam("UnitType","zpWokouWaterSpawnFlag2");
    rmSetTriggerEffectParamInt("Dist",100);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates2on_Player"+k));
@@ -2032,6 +2032,7 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
 
 // Testing
 
