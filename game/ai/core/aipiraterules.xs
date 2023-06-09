@@ -90,6 +90,32 @@ minInterval 5
 }
 
 //==============================================================================
+// Airship Ability Monitor
+//==============================================================================
+rule airShipAbilityMonitor
+inactive
+minInterval 12
+{
+   int airshipID = getUnit(zpUnitTypeAirship, cMyID, cUnitStateAlive);
+   
+   if (airshipID >= 0)
+   {
+      // Check if the ability is off cooldown.
+      if (aiCanUseAbility(zpairshipability, cProtoPowerPowerLOS) == true)
+      {
+         vector airshipLoc = kbUnitGetPosition(airshipID)
+         // Look for nearby units to use the ability on
+         int enemyID = getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+            cUnitStateAlive, airshipLoc, 20.0)
+         if (enemyID >= 0)
+         {
+            aiTaskUnitSpecialPower(airshipID, cProtoPowerPowerLongRange, targetIDmonitor, cInvalidVector);
+         }
+      }
+   }
+}
+
+//==============================================================================
 // zenSufi Building Monitor
 //==============================================================================
 rule zenSufiBuildingMonitor
