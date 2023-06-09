@@ -10218,7 +10218,7 @@
     <animfile>homecity\homecity_gatherpoint_naval.xml</animfile>
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
-    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
+    <civflagoverride>objects\flags\hydra</civflagoverride>
     <rollovertextid>34099</rollovertextid>
     <shortrollovertextid>34100</shortrollovertextid>
     <los>4.0000</los>
@@ -10268,7 +10268,7 @@
     <animfile>homecity\homecity_gatherpoint_naval.xml</animfile>
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
-    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
+    <civflagoverride>objects\flags\hydra</civflagoverride>
     <rollovertextid>34099</rollovertextid>
     <shortrollovertextid>34100</shortrollovertextid>
     <los>4.0000</los>
@@ -12269,7 +12269,7 @@
       <maxheight>1.000000</maxheight>
       <rof>5.000000</rof>
       <damagecap>100.000000</damagecap>
-      <damagearea>30.000000</damagearea>
+      <damagearea>10.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
     <protoaction>
@@ -12341,10 +12341,10 @@
     <tactics>mustardgas.tactics</tactics>
     <protoaction>
       <name>TrampleHandAttack</name>
-      <damage>40.0000000</damage>
+      <damage>30.0000000</damage>
       <damagetype>Hand</damagetype>
       <rof>2.000000</rof>
-      <damagecap>100.0000000</damagecap>
+      <damagecap>70.0000000</damagecap>
       <damagearea>30.000000</damagearea>
       <damagebonus type="Abstractvillager">0.500000</damagebonus>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
@@ -12452,7 +12452,7 @@
     <animfile>homecity\homecity_gatherpoint_naval.xml</animfile>
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
-    <civflagoverride>objects\flags\pirate</civflagoverride>
+    <civflagoverride>objects\flags\wokou</civflagoverride>
     <rollovertextid>34099</rollovertextid>
     <shortrollovertextid>34100</shortrollovertextid>
     <los>4.0000</los>
@@ -12502,7 +12502,7 @@
     <animfile>homecity\homecity_gatherpoint_naval.xml</animfile>
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
-    <civflagoverride>objects\flags\pirate</civflagoverride>
+    <civflagoverride>objects\flags\wokou</civflagoverride>
     <rollovertextid>34099</rollovertextid>
     <shortrollovertextid>34100</shortrollovertextid>
     <los>4.0000</los>
