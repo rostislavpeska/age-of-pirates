@@ -33,15 +33,15 @@ void main(void)
 		if (subCiv0 >= 0)
 		rmSetSubCiv(0, "natpirates");
 
-		subCiv1=rmGetCivID("natpirates");
-		rmEchoInfo("subCiv1 is natpirates "+subCiv1);
+		subCiv1=rmGetCivID("zpscientists"); // PLACING SCIENTISTS INSTEAD OF PIRATES
+		rmEchoInfo("subCiv1 is zpscientists "+subCiv1);
 		if (subCiv1 >= 0)
-		rmSetSubCiv(1, "natpirates");
+		rmSetSubCiv(1, "zpscientists");
 
-		subCiv2=rmGetCivID("natpirates");
-		rmEchoInfo("subCiv2 is natpirates "+subCiv2);
+		subCiv2=rmGetCivID("zpscientists"); // PLACING SCIENTISTS INSTEAD OF PIRATES
+		rmEchoInfo("subCiv2 is zpscientists "+subCiv2);
 		if (subCiv2 >= 0)
-		rmSetSubCiv(2, "natpirates");
+		rmSetSubCiv(2, "zpscientists");
 
 		subCiv3=rmGetCivID("natpirates");
 		rmEchoInfo("subCiv2 is natpirates "+subCiv2);
@@ -173,9 +173,8 @@ void main(void)
 	int avoidNativesFar = rmCreateClassDistanceConstraint("avoid natives far", classNatives , 18.0);
 	int avoidImportantItem = rmCreateClassDistanceConstraint("secrets etc avoid each other", rmClassID("importantItem"), 50.0);
 	int avoidAll=rmCreateTypeDistanceConstraint("avoid all", "all", 4.0);
-	int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true, 3.5);
+	int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true, 10.5);
 	int ferryOnShore = rmCreateTerrainMaxDistanceConstraint("ferry v. water", "water", true, 21.0);
-	int seekWater8 = rmCreateTerrainDistanceConstraint("avoid water long", "Land", true, 5.0);
 
 	// The following is a Pie constraint, defined in a large "majority of the pie plate" area, to make sure Water spawn flags place inside it.  Everyone should be near the mouth of the bay
 	int circleConstraint=rmCreatePieConstraint("semi-circle Constraint", 0.5, 0.5, 0, rmZFractionToMeters(0.49), rmDegreesToRadians(270), rmDegreesToRadians(70));  //rmZFractionToMeters(0.47)- this number defines how far out from .5, .5 the center of the pie sections go. 
@@ -218,7 +217,44 @@ void main(void)
 	rmAddAreaInfluenceSegment(bigIslandID, 0.19, 0.62, 0.58, 0.20);  //Segment 3 - long lower // last # was .22, .67, .58, .20 // -- Changed 3-10-06
 	rmAddAreaInfluenceSegment(bigIslandID, 0.20, 0.5, 0.34, 0.21);  //Segment 4 - short lower bit // last was .20, .44, .36, .21
   	
+	// Make island tips to allow for AI to land ships there 
+	int northIslandID=rmCreateArea("north island tip");
+	rmSetAreaSize(northIslandID, 0.04);				//Defines island's size.
+	rmSetAreaCoherence(northIslandID, 0.8);				//Determines raggedness of island's coastline.  Lower the number, more the blobby.
+	rmSetAreaBaseHeight(northIslandID, 1.5);
+	rmSetAreaSmoothDistance(northIslandID, 5);
+	rmSetAreaMix(northIslandID, islandTerrainMix);
+	rmAddAreaTerrainLayer(northIslandID, "caribbean\ground_shoreline1_crb", 0, 5);
+	rmAddAreaTerrainLayer(northIslandID, "caribbean\ground_shoreline2_crb", 5, 10);
 
+	rmAddAreaToClass(northIslandID, classIsland);
+	rmSetAreaObeyWorldCircleConstraint(northIslandID, false);
+	rmSetAreaElevationType(northIslandID, cElevTurbulence);
+	rmSetAreaElevationVariation(northIslandID, 4.0);
+	rmSetAreaElevationMinFrequency(northIslandID, 0.09);
+	rmSetAreaElevationOctaves(northIslandID, 3);
+	rmSetAreaElevationPersistence(northIslandID, 0.2);
+	rmSetAreaElevationNoiseBias(northIslandID, 1);
+	rmSetAreaLocation(northIslandID, 0.62, 0.78);
+
+	int southIslandID=rmCreateArea("south island tip");
+	rmSetAreaSize(southIslandID, 0.04);				//Defines island's size.
+	rmSetAreaCoherence(southIslandID, 0.8);				//Determines raggedness of island's coastline.  Lower the number, more the blobby.
+	rmSetAreaBaseHeight(southIslandID, 1.5);
+	rmSetAreaSmoothDistance(southIslandID, 5);
+	rmSetAreaMix(southIslandID, islandTerrainMix);
+	rmAddAreaTerrainLayer(southIslandID, "caribbean\ground_shoreline1_crb", 0, 5);
+	rmAddAreaTerrainLayer(southIslandID, "caribbean\ground_shoreline2_crb", 5, 10);
+
+	rmAddAreaToClass(southIslandID, classIsland);
+	rmSetAreaObeyWorldCircleConstraint(southIslandID, false);
+	rmSetAreaElevationType(southIslandID, cElevTurbulence);
+	rmSetAreaElevationVariation(southIslandID, 4.0);
+	rmSetAreaElevationMinFrequency(southIslandID, 0.09);
+	rmSetAreaElevationOctaves(southIslandID, 3);
+	rmSetAreaElevationPersistence(southIslandID, 0.2);
+	rmSetAreaElevationNoiseBias(southIslandID, 1);
+	rmSetAreaLocation(southIslandID, 0.19, 0.62);
 
 
 	 		
@@ -331,7 +367,7 @@ void main(void)
       rmSetObjectDefMinDistance(controllerID1, 0.0);
 	  rmSetObjectDefMaxDistance(controllerID1, 30.0);
       rmAddObjectDefConstraint(controllerID1, avoidImpassableLand);
-	  rmAddObjectDefConstraint(controllerID1, seekWater8);
+	  rmAddObjectDefConstraint(controllerID1, nearWater10);
       rmAddObjectDefConstraint(controllerID1, ferryOnShore); 
 	  rmAddObjectDefConstraint(controllerID1, avoidAll);
       rmPlaceObjectDefAtLoc(controllerID1, 0, 0.77, 0.75);
@@ -342,7 +378,7 @@ void main(void)
       rmSetObjectDefMinDistance(controllerID2, 0.0);
 	  rmSetObjectDefMaxDistance(controllerID2, 30.0);
       rmAddObjectDefConstraint(controllerID2, avoidImpassableLand);
-	  rmAddObjectDefConstraint(controllerID2, seekWater8);
+	  rmAddObjectDefConstraint(controllerID2, nearWater10);
       rmAddObjectDefConstraint(controllerID2, ferryOnShore); 
 	  rmAddObjectDefConstraint(controllerID2, avoidAll);
       rmPlaceObjectDefAtLoc(controllerID2, 0, 0.15, 0.33);
@@ -353,19 +389,21 @@ void main(void)
 
 	if (whichVariation == 1 || whichVariation == 2 || whichVariation == 3) 
 	{
-		if (subCiv1 == rmGetCivID("natpirates"))
+		// PLACING SCIENTISTS INSTEAD OF PIRATES
+
+		if (subCiv1 == rmGetCivID("zpscientists"))
 		{  
 			int piratesVillageID = -1;
 			int piratesVillageType = rmRandInt(1,2);
-			piratesVillageID = rmCreateGrouping("pirate city", "pirate_village0"+piratesVillageType);
+			piratesVillageID = rmCreateGrouping("scientist city", "Scientist_Lab03");
 
 			rmSetGroupingMinDistance(piratesVillageID, 0.0);
 			rmSetGroupingMaxDistance(piratesVillageID, 20.0);
-			rmAddGroupingConstraint(piratesVillageID, seekWater8);
+			rmAddGroupingConstraint(piratesVillageID, nearWater10);
 			rmPlaceGroupingAtLoc(piratesVillageID, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1)), 1);
 
-			int piratewaterflagID1 = rmCreateObjectDef("pirate water flag 1");
-			rmAddObjectDefItem(piratewaterflagID1, "zpPirateWaterSpawnFlag1", 1, 1.0);
+			int piratewaterflagID1 = rmCreateObjectDef("scientist water flag 1");
+			rmAddObjectDefItem(piratewaterflagID1, "zpNativeWaterSpawnFlag1", 1, 1.0);
 			rmAddClosestPointConstraint(villageEdgeConstraint);
 			rmAddClosestPointConstraint(flagLand);
 
@@ -375,7 +413,7 @@ void main(void)
 			rmClearClosestPointConstraints();
 
 			int pirateportID1 = -1;
-			pirateportID1 = rmCreateGrouping("pirate port 1", "pirateport01");
+			pirateportID1 = rmCreateGrouping("scientist port 1", "pirateport01");
 			rmAddClosestPointConstraint(villageEdgeConstraint);
 			rmAddClosestPointConstraint(portOnShore);
 
@@ -385,19 +423,21 @@ void main(void)
 			rmClearClosestPointConstraints();
 		}	
 
-		if (subCiv2 == rmGetCivID("natpirates"))
+		// PLACING SCIENTISTS INSTEAD OF PIRATES
+
+		if (subCiv2 == rmGetCivID("zpscientists"))
 		{  
             int piratesVillageID2 = -1;
             int piratesVillage2Type = 3-piratesVillageType;
-            piratesVillageID2 = rmCreateGrouping("pirate city 2", "pirate_village0"+piratesVillage2Type);
+            piratesVillageID2 = rmCreateGrouping("scientist city 2", "Scientist_Lab03");
 
 			rmSetGroupingMinDistance(piratesVillageID2, 0.0);
 			rmSetGroupingMaxDistance(piratesVillageID2, 20.0);
-			rmAddGroupingConstraint(piratesVillageID2, seekWater8);
+			rmAddGroupingConstraint(piratesVillageID2, nearWater10);
             rmPlaceGroupingAtLoc(piratesVillageID2, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc2)), 1);
          
-            int piratewaterflagID2 = rmCreateObjectDef("pirate water flag 2");
-            rmAddObjectDefItem(piratewaterflagID2, "zpPirateWaterSpawnFlag2", 1, 1.0);
+            int piratewaterflagID2 = rmCreateObjectDef("scientist water flag 2");
+            rmAddObjectDefItem(piratewaterflagID2, "zpNativeWaterSpawnFlag2", 1, 1.0);
             rmAddClosestPointConstraint(villageEdgeConstraint);
             rmAddClosestPointConstraint(flagLand);
 
@@ -407,7 +447,7 @@ void main(void)
             rmClearClosestPointConstraints();
 
             int pirateportID2 = -1;
-            pirateportID2 = rmCreateGrouping("pirate port 2", "pirateport02");
+            pirateportID2 = rmCreateGrouping("scientist port 2", "pirateport02");
             rmAddClosestPointConstraint(villageEdgeConstraint);
             rmAddClosestPointConstraint(portOnShore);
 
@@ -458,7 +498,7 @@ void main(void)
 		rmSetObjectDefMinDistance(controllerID3, 0.0);
 		rmSetObjectDefMaxDistance(controllerID3, 40.0);
 		rmAddObjectDefConstraint(controllerID3, avoidImpassableLand);
-		//rmAddObjectDefConstraint(controllerID3, seekWater8);
+		//rmAddObjectDefConstraint(controllerID3, nearWater10);
 		//rmAddObjectDefConstraint(controllerID3, avoidAll);
 		rmAddObjectDefConstraint(controllerID3, ferryOnShore); 
 		rmPlaceObjectDefAtLoc(controllerID3, 0, pirate3X, pirate3Y);
@@ -473,7 +513,7 @@ void main(void)
 		rmSetObjectDefMaxDistance(controllerID4, 40.0);
 		rmAddObjectDefConstraint(controllerID4, avoidImpassableLand);
 		rmAddObjectDefConstraint(controllerID4, ferryOnShore); 
-		//rmAddObjectDefConstraint(controllerID4, seekWater8);
+		//rmAddObjectDefConstraint(controllerID4, nearWater10);
 		//rmAddObjectDefConstraint(controllerID4, avoidAll);
 		rmPlaceObjectDefAtLoc(controllerID4, 0, pirate4X, pirate4Y);
 		vector ControllerLoc4 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID4, 0));
@@ -487,7 +527,7 @@ void main(void)
 
 		rmSetGroupingMinDistance(piratesVillageID3, 0.0);
 		rmSetGroupingMaxDistance(piratesVillageID3, 20.0);
-		rmAddGroupingConstraint(piratesVillageID3, seekWater8);
+		rmAddGroupingConstraint(piratesVillageID3, nearWater10);
 		rmPlaceGroupingAtLoc(piratesVillageID3, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc3)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3)), 1);
 		
 		int piratewaterflagID3 = rmCreateObjectDef("pirate water flag 3");
@@ -519,7 +559,7 @@ void main(void)
 
 		rmSetGroupingMinDistance(piratesVillageID4, 0.0);
 		rmSetGroupingMaxDistance(piratesVillageID4, 20.0);
-		rmAddGroupingConstraint(piratesVillageID4, seekWater8);
+		rmAddGroupingConstraint(piratesVillageID4, nearWater10);
 		rmPlaceGroupingAtLoc(piratesVillageID4, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc4)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc4)), 1);
 		
 		int piratewaterflagID4 = rmCreateObjectDef("pirate water flag 4");
@@ -760,7 +800,7 @@ void main(void)
 
 	// Scattered MINES
 	int goldID = rmCreateObjectDef("random gold");
-	rmAddObjectDefItem(goldID, "minegold", 1, 0);
+	rmAddObjectDefItem(goldID, "deShipRuins", 1, 0);
 	rmSetObjectDefMinDistance(goldID, 0.0);
 	rmSetObjectDefMaxDistance(goldID, rmXFractionToMeters(0.5));
 	rmAddObjectDefConstraint(goldID, avoidTC);
@@ -768,6 +808,7 @@ void main(void)
 	rmAddObjectDefConstraint(goldID, avoidAll);
 	rmAddObjectDefConstraint(goldID, avoidCoin);
     rmAddObjectDefConstraint(goldID, avoidImpassableLand);
+	rmAddObjectDefConstraint(goldID, nearWater10);
 	rmPlaceObjectDefInArea(goldID, 0, bigIslandID, cNumberNonGaiaPlayers*3);
 
 	// Scattered BERRRIES		

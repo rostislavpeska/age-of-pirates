@@ -74,20 +74,131 @@ minInterval 5
         xsEnableRule("zpScientistTechMonitor");
         xsEnableRule("nativeWagonMonitor");
         xsEnableRule("submarineTactics");
+        xsEnableRule("airShipAbilityMonitor")
+        xsEnableRule("airshipManager")
     }
 
     if (getGaiaUnitCount(cUnitTypezpNativeHouseInuit) > 0)
     {
         xsEnableRule("zpInuitTechMonitor");
-
     }
     if (getGaiaUnitCount(cUnitTypezpNativeHouseMaltese) > 0)
     {
         xsEnableRule("zpMalteseTechMonitor");
-
     }
     
     xsDisableSelf();
+}
+
+//==============================================================================
+// Airship Manager
+//==============================================================================
+rule airshipManager
+inactive
+minInterval 12
+{  // Looks for any active attack or defend plan and adds the airship to it. Based on isdefendingorattacking
+   int numPlans = aiPlanGetActiveCount();
+   int existingPlanID = -1;
+
+   if (getUnit(cUnitTypezpAirship) < 0)
+   {
+      return;
+   }
+   
+   for (int i = 0; i < numPlans; i++)
+   {
+      existingPlanID = aiPlanGetIDByActiveIndex(i);
+      if (aiPlanGetType(existingPlanID) != cPlanCombat)
+      {
+         continue;
+      }
+      if (aiPlanGetVariableInt(existingPlanID, cCombatPlanCombatType, 0) == cCombatPlanCombatTypeDefend)
+      {
+         if ((existingPlanID != gExplorerControlPlan) &&
+             (existingPlanID != gLandDefendPlan0) && 
+             (existingPlanID != gLandReservePlan) && 
+             (existingPlanID != gHealerPlan) && 
+             (existingPlanID != gNavyRepairPlan) && 
+             (existingPlanID != gNavyDefendPlan) &&
+             (existingPlanID != gCoastalGunPlan))
+         {
+            aiPlanAddUnitType(existingPlanID, cUnitTypezpAirship, 1, 1, 200);
+         }
+      }
+      else // Attack plan.
+      {
+         if ((aiPlanGetParentID(existingPlanID) < 0) && // No parent so not a reinforcing child plan.
+             (existingPlanID != gCoastalGunPlan))
+         {
+            aiPlanAddUnitType(existingPlanID, cUnitTypezpAirship, 1, 1, 200);
+         }
+      }
+   }
+}
+
+//==============================================================================
+// Pirate Ship Ability Monitor
+//==============================================================================
+rule pirateShipAbilityMonitor
+inactive
+minInterval 12
+{
+   int pirateShipID = getUnit(zpSPCQueenAnne, cMyID, cUnitStateAlive);
+   vector pirateShipLoc = cInvalidVector;
+   if (pirateShipID > 0)
+   {
+      pirateShipLoc = kbUnitGetPosition(pirateShipID);
+      if (aiCanUseAbility(pirateShipID, cProtoPowerFlameAttack) == true)
+      {
+         // Look for nearby units to use the ability on
+         enemyID = getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+            cUnitStateAlive, pirateShipLoc, 20.0);
+         if (enemyID >= 0)
+         {
+            aiTaskUnitSpecialPower(pirateShipID, cProtoPowerFlameAttack, enemyID, cInvalidVector);
+         }
+         pirateShipID = 0;
+      }
+   }
+   // If we didn't find the flagship, keep looking for others
+   if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(zpSPCBlackPearl, cMyID, cUnitStateAlive);
+   }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(zpSPCNeptuneGalley, cMyID, cUnitStateAlive);
+   }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(zpWokouFuchuan, cMyID, cUnitStateAlive);
+   }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(zpSPCTreasureShip, cMyID, cUnitStateAlive);
+   }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(zpMalteseRiggedShip, cMyID, cUnitStateAlive);
+   }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(zpSPCLineShip, cMyID, cUnitStateAlive);
+   }
+   if (pirateShipID > 0)
+   {
+      pirateShipLoc = kbUnitGetPosition(pirateShipID);
+      if (aiCanUseAbility(pirateShipID, cProtoPowerBroadsideAttack) == true)
+      {
+         // Look for nearby units to use the ability on
+         enemyID = getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+            cUnitStateAlive, pirateShipLoc, 20.0);
+         if (enemyID >= 0)
+         {
+            aiTaskUnitSpecialPower(airshipID, cProtoPowerBroadsideAttack, enemyID, cInvalidVector);
+         }
+      }
+   }
 }
 
 //==============================================================================
@@ -97,20 +208,46 @@ rule airShipAbilityMonitor
 inactive
 minInterval 12
 {
-   int airshipID = getUnit(zpUnitTypeAirship, cMyID, cUnitStateAlive);
+   int airshipID = getUnit(cUnitTypezpAirship, cMyID, cUnitStateAlive);
+   int enemyID = 0;
+   vector enemyLoc = cInvalidVector;
+   int friendlyNum = 0;
    
    if (airshipID >= 0)
    {
-      // Check if the ability is off cooldown.
-      if (aiCanUseAbility(zpairshipability, cProtoPowerPowerLOS) == true)
+      vector airshipLoc = kbUnitGetPosition(airshipID)
+      // Check for fire bomb, then poison, then explosion
+      if (aiCanUseAbility(airshipID, cProtoPowerPowerFireBomb) == true)
       {
-         vector airshipLoc = kbUnitGetPosition(airshipID)
          // Look for nearby units to use the ability on
-         int enemyID = getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
-            cUnitStateAlive, airshipLoc, 20.0)
+         enemyID = getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia,
+            cUnitStateAlive, airshipLoc, 20.0);
          if (enemyID >= 0)
          {
-            aiTaskUnitSpecialPower(airshipID, cProtoPowerPowerLongRange, targetIDmonitor, cInvalidVector);
+            aiTaskUnitSpecialPower(airshipID, cProtoPowerPowerFireBomb, enemyID, cInvalidVector);
+         }
+      }
+
+      if (aiCanUseAbility(airshipID, cProtoPowerPowerPoisonBomb) == true && enemyID < 0)
+      {
+         enemyID = getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+            cUnitStateAlive, airshipLoc, 20.0);
+         enemyLoc = kbUnitGetPosition(enemyID);
+         friendlyNum = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly, cUnitStateAlive, 
+            enemyLoc, 14.0);
+         if (enemyID >= 0 && friendlyNum <= 0)
+         {
+            aiTaskUnitSpecialPower(airshipID, cProtoPowerPowerPoisonBomb, enemyID, cInvalidVector);
+         }
+      }
+
+      if (aiCanUseAbility(airshipID, cProtoPowerPowerExplosionAttack) == true && enemyID < 0)
+      {
+         enemyID = getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+            cUnitStateAlive, airshipLoc, 20.0);
+         if (enemyID >= 0)
+         {
+            aiTaskUnitSpecialPower(airshipID, cProtoPowerPowerExplosionAttack, enemyID, cInvalidVector);
          }
       }
    }
