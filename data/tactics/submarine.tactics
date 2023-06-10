@@ -84,6 +84,12 @@
         <basedamagecap>1</basedamagecap>
         <perfectaccuracy>1</perfectaccuracy>
     </action>
+    <action>
+        <dbaction>BoatManager</dbaction>
+        <name stringid="69156">BoatManager</name>
+        <type>BoatManager</type>
+        <persistent>1</persistent>
+    </action>
 
     <action>
         <name stringid="69148">Discover</name>
@@ -99,7 +105,18 @@
         <active>1</active>
         <persistent>1</persistent>
     </action>
-    
+    <action>
+        <name stringid="112435">ExtraHPSubmarine</name>
+        <type>AutoRangedModify</type>
+        <active>1</active>
+        <maxrange>1</maxrange>
+        <modifyabstracttype>AbstractWarShip</modifyabstracttype>
+        <persistent>1</persistent>
+        <modifyself>1</modifyself>
+        <nostack>1</nostack>
+        <modifytype>BaseHP</modifytype>
+        <modifymultiplier>2.50</modifymultiplier>
+    </action>   
 
 
     <!--TACTICS-->
@@ -109,6 +126,7 @@
         <protounitcommand>zpTacticSurface</protounitcommand>
         <action>GatlingAttack</action>
         <action>Discover</action>
+        <action>BoatManager</action>
         <transition>
             <tactic>zpStealth</tactic>
             <length>2</length>
@@ -150,9 +168,10 @@
     <tactic>zpDive
         <action priority="100">CannonAttackDived</action>
         <protounitcommand>zpTacticDive</protounitcommand>
-        <armoroverride type="Ranged" value="10.2000"></armoroverride>
         <action>Discover</action>
         <action priority="25">ShuntAttack</action>
+        <action>ExtraHPSubmarine</action>
+
         <transition>
             <tactic>zpStealth</tactic>
             <length>0.3</length>
@@ -193,6 +212,7 @@
         <action>Stealth</action>
         <protounitcommand>zpTacticStealth</protounitcommand>
         <action>Discover</action>
+        <action>ExtraHPSubmarine</action>
         <transition>
             <tactic>zpDive</tactic>
             <length>0.3</length>
@@ -235,9 +255,10 @@
     <tactic>zpProtectDock
         <action priority="100">CannonAttackDived</action>
         <protounitcommand>zpTacticProtectDock</protounitcommand>
-        <armoroverride type="Ranged" value="10.2000"></armoroverride>
         <action>Discover</action>
         <action priority="25">ShuntAttack</action>
+        <action>ExtraHPSubmarine</action>
+
         <transition>
             <tactic>zpStealth</tactic>
             <length>0.3</length>

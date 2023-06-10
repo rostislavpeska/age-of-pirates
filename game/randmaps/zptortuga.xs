@@ -112,6 +112,7 @@ void main(void)
    //Socket Constraints
    int avoidSocket = rmCreateClassDistanceConstraint("avoid socket", rmClassID("Socket"), 10.0);
    int avoidSocketLong=rmCreateTypeDistanceConstraint("avoid socket long", "Socket", 50.0);
+   int avoidSocketLongCarib=rmCreateTypeDistanceConstraint("avoid socket long carib", "SocketCaribs", 50.0);
 
    // Bonus Area Constraints
    int avoidBonusIslands=rmCreateClassDistanceConstraint("stuff avoids bonus islands", classBonusIsland, 30.0);
@@ -611,7 +612,7 @@ rmAddObjectDefConstraint(TCID, playerEdgeConstraint);
 rmAddObjectDefConstraint(TCID, avoidImpassableLand);
 rmAddObjectDefConstraint(TCID, playersAwayPort);
 rmAddObjectDefConstraint(TCID, avoidBonusIslands);
-rmAddObjectDefConstraint(TCID, avoidSocket);
+rmAddObjectDefConstraint(TCID, avoidSocketLongCarib);
 
 
   
@@ -881,9 +882,9 @@ int tch0=1671; // tech operator
 rmCreateTrigger("Starting Techs");
 rmSwitchToTrigger(rmTriggerID("Starting techs"));
 for(i=1; <= cNumberNonGaiaPlayers) {
-rmAddTriggerEffect("Set Tech Status");
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",i);
-rmSetTriggerEffectParamFloat("TechID",3645); // DEEneableTradeRouteWater
+rmSetTriggerEffectParam("TechID","cTechDEEnableTradeRouteWater"); // DEEneableTradeRouteWater
 rmSetTriggerEffectParamInt("Status",2);
 }
 rmSetTriggerPriority(4);
@@ -898,9 +899,9 @@ rmCreateTrigger("Italian Vilager Balance"+k);
 rmAddTriggerCondition("ZP Player Civilization");
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParam("Civilization","DEItalians");
-rmAddTriggerEffect("Set Tech Status");
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4423+tch0); //operator
+rmSetTriggerEffectParam("TechID","cTechzpItalianSettlerBallance");
 rmSetTriggerEffectParamInt("Status",2);
 rmSetTriggerPriority(2);
 rmSetTriggerActive(false);
@@ -910,13 +911,13 @@ rmSetTriggerLoop(false);
 
 for (k=1; <= cNumberNonGaiaPlayers) {
 rmCreateTrigger("Italian Gondola Balance"+k);
-rmAddTriggerCondition("Tech Status Equals");
+rmAddTriggerCondition("ZP Tech Status Equals (XS)");
 rmSetTriggerConditionParamInt("PlayerID",k);
-rmSetTriggerConditionParamInt("TechID",4832);
+rmSetTriggerConditionParam("TechID","cTechDEHCGondolas");
 rmSetTriggerConditionParamInt("Status",2);
-rmAddTriggerEffect("Set Tech Status");
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4427+tch0); //operator
+rmSetTriggerEffectParam("TechID","cTechzpItalianGondolaBallance");
 rmSetTriggerEffectParamInt("Status",2);
 rmSetTriggerPriority(2);
 rmSetTriggerActive(false);
@@ -931,16 +932,16 @@ rmCreateTrigger("Activate Consulate Japan"+k);
 rmAddTriggerCondition("ZP Player Civilization");
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParam("Civilization","Japanese");
-rmAddTriggerCondition("Tech Researching");
-rmSetTriggerConditionParamFloat("TechID",4188+tch0); //operator
+rmAddTriggerCondition("ZP Tech Researching (XS)");
+rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
 rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("Set Tech Status");
+/*rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4175+tch0); //operator
-rmSetTriggerEffectParamInt("Status",0);
-rmAddTriggerEffect("Set Tech Status");
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPirates"); //operator
+rmSetTriggerEffectParamInt("Status",0);*/
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4176+tch0); //operator
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnJapanese"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("ZP Pick Consulate Tech");
 rmSetTriggerEffectParamInt("Player",k);
@@ -955,16 +956,16 @@ rmCreateTrigger("Activate Consulate China"+k);
 rmAddTriggerCondition("ZP Player Civilization");
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParam("Civilization","Chinese");
-rmAddTriggerCondition("Tech Researching");
-rmSetTriggerConditionParamFloat("TechID",4188+tch0); //operator
+rmAddTriggerCondition("ZP Tech Researching (XS)");
+rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
 rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("Set Tech Status");
+/*rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4175+tch0); //operator
-rmSetTriggerEffectParamInt("Status",0);
-rmAddTriggerEffect("Set Tech Status");
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPirates"); //operator
+rmSetTriggerEffectParamInt("Status",0);*/
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4177+tch0); //operator
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnChinese"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("ZP Pick Consulate Tech");
 rmSetTriggerEffectParamInt("Player",k);
@@ -979,16 +980,16 @@ rmCreateTrigger("Activate Consulate India"+k);
 rmAddTriggerCondition("ZP Player Civilization");
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParam("Civilization","Indians");
-rmAddTriggerCondition("Tech Researching");
-rmSetTriggerConditionParamFloat("TechID",4188+tch0); //operator
+rmAddTriggerCondition("ZP Tech Researching (XS)");
+rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
 rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("Set Tech Status");
+/*rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4175+tch0); //operator
-rmSetTriggerEffectParamInt("Status",0);
-rmAddTriggerEffect("Set Tech Status");
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPirates"); //operator
+rmSetTriggerEffectParamInt("Status",0);*/
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4178+tch0); //operator
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnIndian"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("ZP Pick Consulate Tech");
 rmSetTriggerEffectParamInt("Player",k);
@@ -1000,37 +1001,31 @@ rmSetTriggerLoop(true);
 
 for (k=1; <= cNumberNonGaiaPlayers) {
 rmCreateTrigger("Activate Tortuga"+k);
-rmAddTriggerCondition("Tech Researching");
-rmSetTriggerConditionParamFloat("TechID",4193+tch0); //operator
+rmAddTriggerCondition("ZP Tech Researching (XS)");
+rmSetTriggerConditionParam("TechID","cTechzpTheBlackFlag"); //operator
 rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("Set Tech Status");
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4175+tch0); //operator
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPirates"); //operator
 rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("Set Tech Status");
+/*rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4176+tch0); //operator
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnIndian"); //operator
 rmSetTriggerEffectParamInt("Status",0);
-rmAddTriggerEffect("Set Tech Status");
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4177+tch0); //operator
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnChinese"); //operator
 rmSetTriggerEffectParamInt("Status",0);
-rmAddTriggerEffect("Set Tech Status");
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4178+tch0); //operator
-rmSetTriggerEffectParamInt("Status",0);
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnJapanese"); //operator
+rmSetTriggerEffectParamInt("Status",0);*/
 rmAddTriggerEffect("ZP Pick Consulate Tech");
 rmSetTriggerEffectParamInt("Player",k);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
-/*rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japan"+k));
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));*/
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
@@ -1044,9 +1039,9 @@ rmCreateTrigger("Human Check Plr"+k);
 rmAddTriggerCondition("ZP PLAYER Human");
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParam("MyBool", "true");
-rmAddTriggerEffect("Set Tech Status");
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4174+tch0); //operator
+rmSetTriggerEffectParam("TechID","cTechzpIsPirateMap"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japan"+k));
@@ -1070,9 +1065,9 @@ rmSetTriggerConditionParamInt("PlayerID",0);
 rmSetTriggerConditionParam("Protounit","deTradingGalleon");
 rmSetTriggerConditionParam("Op",">=");
 rmSetTriggerConditionParamInt("Count",1);
-rmAddTriggerEffect("Set Tech Status");
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",0);
-rmSetTriggerEffectParamFloat("TechID",4189+tch0); //operator
+rmSetTriggerEffectParam("TechID","cTechzpUpdatePort1"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
@@ -1085,9 +1080,9 @@ rmSetTriggerConditionParamInt("PlayerID",0);
 rmSetTriggerConditionParam("Protounit","deTradingFluyt");
 rmSetTriggerConditionParam("Op",">=");
 rmSetTriggerConditionParamInt("Count",1);
-rmAddTriggerEffect("Set Tech Status");
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",0);
-rmSetTriggerEffectParamFloat("TechID",4190+tch0); //operator
+rmSetTriggerEffectParam("TechID","cTechzpUpdatePort2"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
@@ -1115,9 +1110,9 @@ rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("Op",">=");
    rmSetTriggerConditionParamInt("Count",1);
-   rmAddTriggerEffect("Set Tech Status");
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
-   rmSetTriggerEffectParamFloat("TechID",4222+tch0); //operator
+   rmSetTriggerEffectParam("TechID","cTechzpTrainPrivateer2"); //operator
    rmSetTriggerEffectParamInt("Status",2);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2OFF_Plr"+k));
@@ -1141,13 +1136,13 @@ rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
    rmSwitchToTrigger(rmTriggerID("TrainPrivateer2TIME_Plr"+k));
    rmAddTriggerCondition("Timer");
    rmSetTriggerConditionParamFloat("Param1",0.5);
-   rmAddTriggerEffect("Set Tech Status");
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
-   rmSetTriggerEffectParamFloat("TechID",4217+tch0); //operator
+   rmSetTriggerEffectParam("TechID","cTechzpPrivateerBuildLimitReduceShadow"); //operator
    rmSetTriggerEffectParamInt("Status",2);
-   rmAddTriggerEffect("Set Tech Status");
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
-   rmSetTriggerEffectParamFloat("TechID",4222+tch0); //operator
+   rmSetTriggerEffectParam("TechID","cTechzpTrainPrivateer2"); //operator
    rmSetTriggerEffectParamInt("Status",0);
    rmSetTriggerPriority(4);
    rmSetTriggerActive(false);
@@ -1163,9 +1158,9 @@ rmSetTriggerConditionParam("UnitType","zpPrivateerProxy");
 rmSetTriggerConditionParamInt("Dist",35);
 rmSetTriggerConditionParam("Op",">=");
 rmSetTriggerConditionParamInt("Count",1);
-rmAddTriggerEffect("Set Tech Status");
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4204+tch0); //operator
+rmSetTriggerEffectParam("TechID","cTechzpTrainPrivateer1"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1OFF_Plr"+k));
@@ -1189,13 +1184,13 @@ rmSetTriggerLoop(false);
 rmSwitchToTrigger(rmTriggerID("TrainPrivateer1TIME_Plr"+k));
 rmAddTriggerCondition("Timer");
 rmSetTriggerConditionParamFloat("Param1",0.5);
-rmAddTriggerEffect("Set Tech Status");
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4217+tch0); //operator
+rmSetTriggerEffectParam("TechID","cTechzpPrivateerBuildLimitReduceShadow"); //operator
 rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("Set Tech Status");
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",4204+tch0); //operator
+rmSetTriggerEffectParam("TechID","cTechzpTrainPrivateer1"); //operator
 rmSetTriggerEffectParamInt("Status",0);
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
@@ -1232,9 +1227,9 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSwitchToTrigger(rmTriggerID("UniqueShip2TIMEPlr"+k));
    rmAddTriggerCondition("Timer");
    rmSetTriggerConditionParamFloat("Param1",0.5);
-   rmAddTriggerEffect("Set Tech Status");
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
-   rmSetTriggerEffectParamFloat("TechID",4229+tch0); //operator
+   rmSetTriggerEffectParam("TechID","cTechzpReducePirateShipsBuildLimit"); //operator
    rmSetTriggerEffectParamInt("Status",2);
    rmSetTriggerPriority(4);
    rmSetTriggerActive(false);
@@ -1249,9 +1244,9 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("Op",">=");
    rmSetTriggerConditionParamInt("Count",1);
-   rmAddTriggerEffect("Set Tech Status");
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
-   rmSetTriggerEffectParamFloat("TechID",4224+tch0); //operator
+   rmSetTriggerEffectParam("TechID","cTechzpTrainQueenAnne2"); //operator
    rmSetTriggerEffectParamInt("Status",2);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip2TIMEPlr"+k));
@@ -1280,9 +1275,9 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("Op",">=");
    rmSetTriggerConditionParamInt("Count",1);
-   rmAddTriggerEffect("Set Tech Status");
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
-   rmSetTriggerEffectParamFloat("TechID",4226+tch0); //operator
+   rmSetTriggerEffectParam("TechID","cTechzpTrainBlackPearl2"); //operator
    rmSetTriggerEffectParamInt("Status",2);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip2TIMEPlr"+k));
@@ -1311,9 +1306,9 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("Op",">=");
    rmSetTriggerConditionParamInt("Count",1);
-   rmAddTriggerEffect("Set Tech Status");
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
-   rmSetTriggerEffectParamFloat("TechID",4228+tch0); //operator
+   rmSetTriggerEffectParam("TechID","cTechzpTrainNeptune2"); //operator
    rmSetTriggerEffectParamInt("Status",2);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip2TIMEPlr"+k));
@@ -1339,9 +1334,9 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSwitchToTrigger(rmTriggerID("UniqueShip1TIMEPlr"+k));
    rmAddTriggerCondition("Timer");
    rmSetTriggerConditionParamFloat("Param1",0.5);
-   rmAddTriggerEffect("Set Tech Status");
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
-   rmSetTriggerEffectParamFloat("TechID",4229+tch0); //operator
+   rmSetTriggerEffectParam("TechID","cTechzpReducePirateShipsBuildLimit"); //operator
    rmSetTriggerEffectParamInt("Status",2);
    rmSetTriggerPriority(4);
    rmSetTriggerActive(false);
@@ -1357,9 +1352,9 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("Op",">=");
    rmSetTriggerConditionParamInt("Count",1);
-   rmAddTriggerEffect("Set Tech Status");
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
-   rmSetTriggerEffectParamFloat("TechID",4223+tch0); //operator
+   rmSetTriggerEffectParam("TechID","cTechzpTrainQueenAnne1"); //operator
    rmSetTriggerEffectParamInt("Status",2);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
@@ -1389,9 +1384,9 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("Op",">=");
    rmSetTriggerConditionParamInt("Count",1);
-   rmAddTriggerEffect("Set Tech Status");
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
-   rmSetTriggerEffectParamFloat("TechID",4225+tch0); //operator
+   rmSetTriggerEffectParam("TechID","cTechzpTrainBlackPearl1"); //operator
    rmSetTriggerEffectParamInt("Status",2);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
@@ -1421,9 +1416,9 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("Op",">=");
    rmSetTriggerConditionParamInt("Count",1);
-   rmAddTriggerEffect("Set Tech Status");
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
-   rmSetTriggerEffectParamFloat("TechID",4227+tch0); //operator
+   rmSetTriggerEffectParam("TechID","cTechzpTrainNeptune1"); //operator
    rmSetTriggerEffectParamInt("Status",2);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
@@ -1596,23 +1591,23 @@ pirateCaptain = rmRandInt(1,3);
 
 if (pirateCaptain==1)
    {
-      rmAddTriggerEffect("Set Tech Status");
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParamFloat("TechID",4172+tch0);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesBlackbeard"); //operator
       rmSetTriggerEffectParamInt("Status",2);
    }
 if (pirateCaptain==2)
    {
-      rmAddTriggerEffect("Set Tech Status");
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParamFloat("TechID",4173+tch0);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesGrace"); //operator
       rmSetTriggerEffectParamInt("Status",2);
    }
 if (pirateCaptain==3)
    {
-      rmAddTriggerEffect("Set Tech Status");
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParamFloat("TechID",4203+tch0);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesBlackCaesar"); //operator
       //rmSetTriggerEffectParamInt("TechID",cTechDEHCFedBearFlagRevolt); //TEST
       rmSetTriggerEffectParamInt("Status",2);
    }

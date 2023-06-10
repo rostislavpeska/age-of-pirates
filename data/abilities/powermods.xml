@@ -12,4 +12,87 @@
     <abstractattacktargettype>WaterGuardian</abstractattacktargettype>
     <unitaction>FlameAttack</unitaction>
   </power>
+  <power name="zpPowerFireBomb" type="UnitAction">
+    <displaynameid>300607</displaynameid>
+    <rolloverid>300609</rolloverid>
+    <icon>resources\images\icons\command\firebomb.png</icon>
+    <minimapeventtime sendalertto="player">1</minimapeventtime>
+    <activetime>30</activetime>
+    <radius>6.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>All</abstractattacktargettype>
+    <unitaction>FireBomb</unitaction>
+  </power>
+  <power name="zpMustardGas" type="UnitAction">
+    <displaynameid>300608</displaynameid>
+    <rolloverid>300610</rolloverid>
+    <icon>resources\images\icons\command\poison_bomb.png</icon>
+    <minimapeventtime sendalertto="player">1</minimapeventtime>
+    <activetime>30</activetime>
+    <radius>20.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>LogicalTypeGarrisonInShips</abstractattacktargettype>
+    <unitaction>PoisonBomb</unitaction>
+  </power>
+  <power name="zpAirshipLighthouse" type="GeneralEffect">
+    <displaynameid>300624</displaynameid>
+    <rolloverid>300625</rolloverid>
+    <timerrolloverid>300624</timerrolloverid>
+    <icon>resources\images\icons\command\telescope.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>10</activetime>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="AbstractDock">
+      <target type="Player">
+      </target>
+    </effect>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="TradingPost">
+      <target type="Player">
+      </target>
+    </effect>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="Outpost">
+      <target type="Player">
+      </target>
+    </effect>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="FortFrontier">
+      <target type="Player">
+      </target>
+    </effect>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="Blockhouse">
+      <target type="Player">
+      </target>
+    </effect>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="WarHut">
+      <target type="Player">
+      </target>
+    </effect>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="NoblesHut">
+      <target type="Player">
+      </target>
+    </effect>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="deIncaStronghold">
+      <target type="Player">
+      </target>
+    </effect>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="ypCastle">
+      <target type="Player">
+      </target>
+    </effect>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="deTower">
+      <target type="Player">
+      </target>
+    </effect>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="dePalace">
+      <target type="Player">
+      </target>
+    </effect>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="Ship">
+      <target type="Player">
+      </target>
+    </effect>
+    <messagealertplayerrelation>none</messagealertplayerrelation>
+    <placement forceonmap="1" ally="">unit</placement>
+    <allowduringnorush>1</allowduringnorush>
+    <startsoundset>UI_Select_Building_Firepit</startsoundset>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+  </power>
 </powermods>

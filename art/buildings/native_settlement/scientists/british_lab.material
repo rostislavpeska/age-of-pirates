@@ -1,0 +1,38 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\french\french_manufacturing_plant\textures\french_manufacturing_plant_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\french\french_manufacturing_plant\textures\french_manufacturing_plant_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\french\french_manufacturing_plant\textures\french_manufacturing_plant_matA_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="homecity\dutch\dutch_manufacturing_plant\textures\dutch_manufacturing_plant_01_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\dutch\dutch_manufacturing_plant\textures\dutch_manufacturing_plant_01_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\dutch\dutch_manufacturing_plant\textures\dutch_manufacturing_plant_01_mata_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="homecity\dutch\dutch_manufacturing_plant\textures\dutch_manufacturing_plant_02_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\dutch\dutch_manufacturing_plant\textures\dutch_manufacturing_plant_02_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\dutch\dutch_manufacturing_plant\textures\dutch_manufacturing_plant_02_mata_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="homecity\dutch\dutch_manufacturing_plant\textures\dutch_manufacturing_plant_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\dutch\dutch_manufacturing_plant\textures\dutch_manufacturing_plant_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\dutch\dutch_manufacturing_plant\textures\dutch_manufacturing_plant_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

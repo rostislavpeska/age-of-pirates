@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<tactics>
+	<action>
+		<name stringid="38142">TrampleHandAttack</name>
+		<type>Attack</type>
+		<maxrange>8</maxrange>
+		<rate type="LogicalTypeGarrisonInShips">1.0 </rate>
+		<attackaction>1</attackaction>
+		<handlogic>1</handlogic>
+		<speedboost>1</speedboost>
+		<anim>HandAttack</anim>
+		<idleanim>Idle</idleanim>
+		<damage>6.5</damage>
+		<rof>1.0</rof>
+		<targetspeedboost>1</targetspeedboost>
+		<basedamagecap>1</basedamagecap>
+		<persistent>1</persistent>
+		<projectile>InvisibleProjectileNoTracer</projectile>
+	</action>
+		<action>
+		<name stringid="38134">Attaching</name>
+		<type>Attaching</type>
+		<maxrange>10.75</maxrange>
+		<rate type="All">1.0 </rate>
+		<attackaction>1</attackaction>
+		<handlogic>1</handlogic>
+		<speedboost>1</speedboost>
+		<anim>HandAttack</anim>
+		<idleanim>CombatIdle</idleanim>
+		<singleuse>1</singleuse>
+	</action>
+	<tactic>Melee<action priority="100">TrampleHandAttack</action><attacktype>LogicalTypeHandUnitsAttack</attacktype><autoattacktype>LogicalTypeHandUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeHandUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget></tactic>
+</tactics>

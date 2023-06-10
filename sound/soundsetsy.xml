@@ -2223,4 +2223,60 @@
     <sound filename="shipmove2.wav" volume="1.0000">
     </sound>
   </soundset>
+  <soundset name="Inuit_Military_Select" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="inuit\InuitMilitarySelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitMilitarySelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitMilitarySelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Inuit_Military_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="inuit\InuitMilitaryOrder1.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitMilitaryOrder2.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitMilitaryOrder3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Inuit_Military_Attack" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="inuit\InuitMilitaryAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitMilitaryAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitMilitaryAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Inuit_Ship_Select" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="inuit\InuitWarChiefSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitWarChiefSelect2.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitWarChiefSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Inuit_Ship_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="inuit\InuitWarChiefOrder1.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitWarChiefOrder2.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitWarChiefOrder3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Inuit_Ship_Attack" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="inuit\InuitWarChiefAttack1.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitWarChiefAttack2.wav" volume="1.0000">
+    </sound>
+    <sound filename="inuit\InuitWarChiefAttack3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Mustardgas" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ambient\effects\fx_exp_nerve_gas_1.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="AirshipEngine" volume="0.3000" maxnum="4" distance="1.0000">
+    <sound filename="ambient\effects\fx_mov_bomber_2.wav" volume="1.0000">
+    </sound>
+  </soundset>
 </soundsetdef>

@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\balloons\airship_textures\airship_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\balloons\airship_textures\airship_Normals">
+      </texture>
+      <texture name="Masks" override="units\balloons\airship_textures\airship_Masks">
+      </texture>
+      <texture name="Details" override="units\balloons\airship_textures\airship_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
