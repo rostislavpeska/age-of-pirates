@@ -42,4 +42,10 @@
     <ability>zpPowerFireBomb<tech>zpBattleAirship</tech><rof>30</rof></ability>
     <ability>zpMustardGas<tech>zpMustardGas</tech><rof>30</rof></ability>
   </zpairship>
+  <zpsubmarine>
+    <ability>zpPowerShunt<rof>60</rof></ability>
+  </zpsubmarine>
+  <zpnautilus>
+    <ability>zpPowerShunt<rof>60</rof></ability>
+  </zpnautilus>
 </abilitymods>

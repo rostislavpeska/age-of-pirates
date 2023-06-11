@@ -81,10 +81,7 @@
         <numberprojectiles>1</numberprojectiles>
         <displayednumberprojectiles>6</displayednumberprojectiles>
         <impacteffect>effects\impacts\gun</impacteffect>
-        <rate type="Building">1.0 </rate>
-        <rate type="LogicalTypeGarrisonInShips">1.0 </rate>
-        <rate type="Guardian">1.0 </rate>
-        <rate type="zpAirship">1.0 </rate>
+        <rate type="All">1.0 </rate>
         <instantballistics>1</instantballistics>
         <basedamagecap>1</basedamagecap>
         <perfectaccuracy>1</perfectaccuracy>
@@ -126,48 +123,10 @@
 
     <!--TACTICS-->
 
-    <tactic>zpDive
-        <protounitcommand>zpTacticDive</protounitcommand>
-        <action priority="100">CannonAttackDived</action>
-        <action priority="2">ShuntAttack</action>
-        <action>Discover</action>
-        <transition>
-            <tactic>zpStealth</tactic>
-            <length>0.3</length>
-            <exit>1</exit>
-        </transition>
-        <transition>
-            <tactic>zpSurface</tactic>
-            <anim>SurfaceAnim</anim>
-            <length>2</length>
-            <exit>1</exit>
-        </transition>
-        <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
-        <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
-        <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
-        <runaway>0</runaway>
-        <speedmodifier>0.8</speedmodifier>
-        <maxhpmodifier>2.0</maxhpmodifier>
-        <action>ExtraSpeed</action>
-        <autoretarget>1</autoretarget>
-        <idleanim>Dived</idleanim>
-        <boredanim>Dived</boredanim>
-        <deathanim>Death_dived</deathanim>
-        <walkanim>Dived</walkanim>
-        <joganim>Dived</joganim>
-        <runanim>Dived</runanim>
-        <idleanim>Dived</idleanim>
-        <boredanim>Dived</boredanim>
-        <walkanim>Dived</walkanim>
-        <joganim>Dived</joganim>
-        <runanim>Dived</runanim>
-    </tactic>
-
     <tactic>zpSurface
+        <action>CannonAttackSurfaced</action>
         <protounitcommand>zpTacticSurface</protounitcommand>
-        <action priotity="25">GatlingAttack</action>
-        <action priotity="100">CannonAttackSurfaced</action>
-        <action priority="2">ShuntAttack</action>
+        <action>GatlingAttack</action>
         <action>Discover</action>
         <action>BoatManager</action>
         <transition>
@@ -178,6 +137,12 @@
         </transition>
         <transition>
             <tactic>zpDive</tactic>
+            <length>2</length>
+            <anim>DiveAnim</anim>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>zpProtectDock</tactic>
             <length>2</length>
             <anim>DiveAnim</anim>
             <exit>1</exit>
@@ -202,10 +167,54 @@
         <runanim>Idle</runanim>
     </tactic>
 
-    <tactic>zpStealth
-        <protounitcommand>zpTacticStealth</protounitcommand>
-        <action>Stealth</action>
+    <tactic>zpDive
+        <action priority="100">CannonAttackDived</action>
+        <protounitcommand>zpTacticDive</protounitcommand>
         <action>Discover</action>
+        <action priority="25">ShuntAttack</action>
+        <action>ExtraHPSubmarine</action>
+
+        <transition>
+            <tactic>zpStealth</tactic>
+            <length>0.3</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>zpProtectDock</tactic>
+            <length>0.3</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>zpSurface</tactic>
+            <anim>SurfaceAnim</anim>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+        <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+        <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+        <runaway>0</runaway>
+        <speedmodifier>0.8</speedmodifier>
+        <action>ExtraSpeed</action>
+        <autoretarget>1</autoretarget>
+        <idleanim>Dived</idleanim>
+        <boredanim>Dived</boredanim>
+        <deathanim>Death_dived</deathanim>
+        <walkanim>Dived</walkanim>
+        <joganim>Dived</joganim>
+        <runanim>Dived</runanim>
+        <idleanim>Dived</idleanim>
+        <boredanim>Dived</boredanim>
+        <walkanim>Dived</walkanim>
+        <joganim>Dived</joganim>
+        <runanim>Dived</runanim>
+    </tactic>
+
+    <tactic>zpStealth
+        <action>Stealth</action>
+        <protounitcommand>zpTacticStealth</protounitcommand>
+        <action>Discover</action>
+        <action>ExtraHPSubmarine</action>
         <transition>
             <tactic>zpDive</tactic>
             <length>0.3</length>
@@ -216,14 +225,16 @@
         <transition>
             <tactic>zpSurface</tactic>
             <anim>SurfaceAnim</anim>
-            <length>2.0</length>
+            <length>2</length>
             <exit>1</exit>
-            <automatic>1</automatic>
-            <commandautomatic>1</commandautomatic>
+        </transition>
+        <transition>
+            <tactic>zpProtectDock</tactic>
+            <length>0.3</length>
+            <exit>1</exit>
         </transition>
         <checkifcanstealth range="25.0">1</checkifcanstealth>
         <speedmodifier>0.6</speedmodifier>
-        <maxhpmodifier>2.0</maxhpmodifier>
         <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
         <attacktype>LogicalTypeHandUnitsAttack</attacktype>
         <action>ExtraSpeed</action>
@@ -242,11 +253,13 @@
         <runanim>Dived</runanim>
     </tactic>
 
-    <!--<tactic>zpProtectDock
-        <protounitcommand>zpTacticProtectDock</protounitcommand>
+    <tactic>zpProtectDock
         <action priority="100">CannonAttackDived</action>
-        <action priority="2">ShuntAttack</action>
+        <protounitcommand>zpTacticProtectDock</protounitcommand>
         <action>Discover</action>
+        <action priority="25">ShuntAttack</action>
+        <action>ExtraHPSubmarine</action>
+
         <transition>
             <tactic>zpStealth</tactic>
             <length>0.3</length>
@@ -257,8 +270,6 @@
             <anim>SurfaceAnim</anim>
             <length>2</length>
             <exit>1</exit>
-            <automatic>1</automatic>
-            <commandautomatic>1</commandautomatic>
         </transition>
         <transition>
             <tactic>zpDive</tactic>
@@ -283,5 +294,5 @@
         <walkanim>Dived</walkanim>
         <joganim>Dived</joganim>
         <runanim>Dived</runanim>
-    </tactic>-->
+    </tactic>
 </tactics>

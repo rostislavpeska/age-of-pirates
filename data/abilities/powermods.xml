@@ -7,9 +7,10 @@
     <activetime>60</activetime>
     <radius>10.0</radius>
     <placement forceonmap="2" enemy="" allowgaia="">unit</placement>
-    <abstractattacktargettype>Ship</abstractattacktargettype>
-    <abstractattacktargettype>Dock</abstractattacktargettype>
+    <abstractattacktargettype>LogicalTypeNavalMilitary</abstractattacktargettype>
+    <abstractattacktargettype>AbstractDock</abstractattacktargettype>
     <abstractattacktargettype>WaterGuardian</abstractattacktargettype>
+    <abstractattacktargettype>AbstractFishingBoat</abstractattacktargettype>
     <unitaction>FlameAttack</unitaction>
   </power>
   <power name="zpPowerFireBomb" type="UnitAction">
@@ -94,5 +95,17 @@
     <allowduringnorush>1</allowduringnorush>
     <startsoundset>UI_Select_Building_Firepit</startsoundset>
     <alwaysaddtoplayer>1</alwaysaddtoplayer>
+  </power>
+  <power name="zpPowerShunt" type="UnitAction">
+    <displaynameid>124809</displaynameid>
+    <rolloverid>300631</rolloverid>
+    <icon>resources\images\icons\command\submarine_ram.png</icon>
+    <minimapeventtime sendalertto="player">1</minimapeventtime>
+    <activetime>8</activetime>
+    <radius>5.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>LogicalTypeNavalMilitary</abstractattacktargettype>
+    <abstractattacktargettype>AbstractDock</abstractattacktargettype>
+    <unitaction>ShuntAttack</unitaction>
   </power>
 </powermods>
