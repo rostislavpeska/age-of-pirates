@@ -8088,6 +8088,25 @@
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpAirship" relativity ="Absolute">
 				<target type ="Player"></target>
 			</effect>
+      <effect type="Data" action="AirshipAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirshipAI</target>
+      </effect>
+      <effect type="Data" action="BombAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirshipAI</target>
+      </effect>
+      <effect type="Data" action="FireBomb" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirshipAI</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpAirshipAI</target>
+      </effect>
+      <effect type="SetName" proto="zpAirshipAI" culture="none" newname="300623">
+      </effect>
+      <effect type="SetName" proto="zpAirshipAIProxy" culture="none" newname="300623">
+      </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpAirshipAI" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
     </effects>
   </tech>
   <tech name="zpMustardGas" type="Normal">
@@ -8115,6 +8134,29 @@
       </effect>
       <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpAirship</target>
+      </effect>
+      <effect type="Data" action="PoisonBomb" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirshipAI</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpAirshipAI</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpAirshipAI</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAIAirshipSetup" type="Normal">
+    <dbid>40251</dbid>
+    <status>UNOBTAINABLE</status>
+
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirshipProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirshipAIProxy</target>
       </effect>
     </effects>
   </tech>
