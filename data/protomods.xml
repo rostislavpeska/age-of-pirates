@@ -2597,7 +2597,7 @@
     <tactics>lineship.tactics</tactics>
     <protoaction>
       <name>BroadsideAttack</name>
-      <damage>50.000000</damage>
+      <damage>32.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>40.000000</maxrange>
       <rof>0.050000</rof> 
@@ -2608,7 +2608,7 @@
     </protoaction>
     <protoaction>
       <name>RangedAttack</name>
-      <damage>100.000000</damage>
+      <damage>80.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>32.000000</maxrange>
       <rof>0.500000</rof>
@@ -3285,10 +3285,24 @@
     <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
-    <tactics>lineship.tactics</tactics>
+    <tactics>zptreasureship.tactics</tactics>
+    <protoaction>
+      <name>LongRangeAttack</name>
+      <damage>150.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>65.000000</maxrange>
+      <rof>0.500000</rof>
+      <damagecap>400.000000</damagecap>
+      <damagebonus type="Building">5.000000</damagebonus>
+      <damagearea>6.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractVillager">0.200000</damagebonus>
+      <damagebonus type="AbstractDock">0.200000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+    </protoaction>
     <protoaction>
       <name>BroadsideAttack</name>
-      <damage>50.000000</damage>
+      <damage>32.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>40.000000</maxrange>
       <rof>0.050000</rof> 
@@ -3299,7 +3313,7 @@
     </protoaction>
     <protoaction>
       <name>RangedAttack</name>
-      <damage>100.000000</damage>
+      <damage>80.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>32.000000</maxrange>
       <rof>0.500000</rof>
@@ -12200,11 +12214,9 @@
     <cost resourcetype="Gold">2000.0000</cost>
     <maxcontained>50</maxcontained>
     <allowedage>2</allowedage>
-    <armor type="Hand" value="1.0000">
+    <armor type="Hand" value="0.7500">
     </armor>
-    <armor type="Ranged" value="0.5000">
-    </armor>
-    <armor type="Siege" value="0.5000">
+    <armor type="Siege" value="0.7500">
     </armor>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
@@ -12712,11 +12724,9 @@
     <cost resourcetype="Gold">2000.0000</cost>
     <maxcontained>50</maxcontained>
     <allowedage>2</allowedage>
-    <armor type="Hand" value="1.0000">
+    <armor type="Hand" value="0.7500">
     </armor>
-    <armor type="Ranged" value="0.5000">
-    </armor>
-    <armor type="Siege" value="0.5000">
+    <armor type="Siege" value="0.7500">
     </armor>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
