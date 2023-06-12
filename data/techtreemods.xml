@@ -8149,7 +8149,6 @@
   <tech name="zpAIAirshipSetup" type="Normal">
     <dbid>40251</dbid>
     <status>UNOBTAINABLE</status>
-
     <flag>Shadow</flag>
     <effects>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
