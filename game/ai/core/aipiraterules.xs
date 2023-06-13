@@ -201,6 +201,7 @@ minInterval 12
             }
          }
       }
+      pirateShipID = 0;
    }
 
    // If we didn't find the flagship, keep looking for others
