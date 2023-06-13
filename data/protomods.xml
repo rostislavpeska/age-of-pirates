@@ -235,6 +235,7 @@
     <train row ="0" page ="0" column ="3">zpInuitDogVillager</train>
     <train row ="0" page ="0" column ="2">zpInuitTorchman</train>
     <train row ="0" page ="0" column ="4">zpAirshipProxy</train>
+    <train row ="0" page ="0" column ="5">zpAirshipAIProxy</train>
 
     <tech row="0" page="0" column="2">zpTrainPrivateer1</tech>
     <tech row="0" page="1" column="2">zpNatHonoredPirate</tech>
@@ -409,6 +410,7 @@
 		<unittype>CountsTowardMilitaryScore</unittype>
 		<unittype>AbstractHandInfantry</unittype>
 		<unittype>ConvertsHerds</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
 		<flag>CollidesWithProjectiles</flag>
 		<flag>ApplyHandicapTraining</flag>
 		<flag>CorpseDecays</flag>
@@ -420,7 +422,7 @@
 		<command page ="10" column ="1">Stop</command>
 		<command page ="10" column ="0">Garrison</command>
 		<command page ="10" column ="2">Delete</command>
-		<tactics>swordsman.tactics</tactics>
+		<tactics>zpbuccaneer.tactics</tactics>
 		<protoaction>
 			<name>BuildingAttack</name>
 			<damage>8.000000</damage>
@@ -450,6 +452,19 @@
 			<damagetype>Hand</damagetype>
 			<rof>1.500000</rof>
 		</protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>12.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>6.000000</minrange>
+      <maxrange>20.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">0.750000</damagebonus>
+    </protoaction>
 	</unit>
   <unit id ="20005" name ="zpNativeHousePirate">
 		<dbid>20005</dbid>
@@ -1442,6 +1457,7 @@
     <flag>AllowOverPopCap</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="7">Delete</command>
@@ -1508,6 +1524,7 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
   </unit>
   <unit name="Privateer">
     <sharedbuildlimitunittypes>
@@ -1892,6 +1909,7 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
   </unit>
   <unit id="20030" name="zpSPCBlackPearlProxy">
     <dbid>20030</dbid>
@@ -1956,6 +1974,7 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
   </unit>
   <unit id="20031" name="zpSPCNeptuneGalleyProxy">
     <dbid>20031</dbid>
@@ -2020,6 +2039,7 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
   </unit>
   <unit id="20032" name="zpGuardianCanoe">
     <dbid>20032</dbid>
@@ -2390,6 +2410,7 @@
     <flag>Tracked</flag>
     <flag>VisibleUnderFogIfGaia</flag>
     <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
     <command page="10" column="7">Delete</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
@@ -2576,7 +2597,7 @@
     <tactics>lineship.tactics</tactics>
     <protoaction>
       <name>BroadsideAttack</name>
-      <damage>50.000000</damage>
+      <damage>32.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>40.000000</maxrange>
       <rof>0.050000</rof> 
@@ -2587,7 +2608,7 @@
     </protoaction>
     <protoaction>
       <name>RangedAttack</name>
-      <damage>100.000000</damage>
+      <damage>80.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>32.000000</maxrange>
       <rof>0.500000</rof>
@@ -3264,10 +3285,24 @@
     <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
-    <tactics>lineship.tactics</tactics>
+    <tactics>zptreasureship.tactics</tactics>
+    <protoaction>
+      <name>LongRangeAttack</name>
+      <damage>150.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>65.000000</maxrange>
+      <rof>0.500000</rof>
+      <damagecap>400.000000</damagecap>
+      <damagebonus type="Building">5.000000</damagebonus>
+      <damagearea>6.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractVillager">0.200000</damagebonus>
+      <damagebonus type="AbstractDock">0.200000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+    </protoaction>
     <protoaction>
       <name>BroadsideAttack</name>
-      <damage>50.000000</damage>
+      <damage>32.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>40.000000</maxrange>
       <rof>0.050000</rof> 
@@ -3278,7 +3313,7 @@
     </protoaction>
     <protoaction>
       <name>RangedAttack</name>
-      <damage>100.000000</damage>
+      <damage>80.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>32.000000</maxrange>
       <rof>0.500000</rof>
@@ -3500,6 +3535,7 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
   </unit>
   <unit name="ypWokouJunk">
     <sharedbuildlimitunittypes>
@@ -4141,6 +4177,7 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
   </unit>
   <unit id="20047" name="zpSocketSPCZen">
     <dbid>20047</dbid>
@@ -4383,10 +4420,10 @@
     </protoaction>
   </unit>
   <unit name="Dock">
-    <train row="0" page="0" column="10">ypFireship</train>
+    <train row ="0" page ="0" column ="11">ypFireship</train>
   </unit>
   <unit name="dePort">
-    <train row="0" page="0" column="10">ypFireship</train>
+    <train row ="0" page ="0" column ="11">ypFireship</train>
   </unit>
   <unit id="20050" name="zpWokouFuchuanProxy">
     <dbid>20050</dbid>
@@ -4449,6 +4486,7 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
   </unit>
   <unit id ="20051" name ="NativeWokou">
 		<dbid>20051</dbid>
@@ -6831,6 +6869,7 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
   </unit>
   <unit name="ypFireship">
     <sharedbuildlimitunittypes>
@@ -9946,12 +9985,12 @@
     <rollovertextid>300477</rollovertextid>
     <shortrollovertextid>300478</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>1200.0000</initialhitpoints>
-    <maxhitpoints>1200.0000</maxhitpoints>
+    <initialhitpoints>1000.0000</initialhitpoints>
+    <maxhitpoints>1000.0000</maxhitpoints>
     <los>32.0000</los>
     <projectileprotounit>zpTorpedo</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
-    <trainpoints>40.0000</trainpoints>
+    <trainpoints>0.1000</trainpoints>
     <buildlimit>2</buildlimit>
     <bounty>80.0000</bounty>
     <buildbounty>80.0000</buildbounty>
@@ -9962,8 +10001,9 @@
     <allowedage>3</allowedage>
     <decay delay="0.0000" duration="0.0000">
     </decay>
-    <armor type="Ranged" value="0.5000">
+    <armor type="Ranged" value="0.7500">
     </armor>
+    <initialtactic>zpSurface</initialtactic>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
@@ -10003,7 +10043,7 @@
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
-    <command page="0" column="2">zpTacticSurface</command>
+    <command page="0" column="3">zpTacticSurface</command>
     <command page="0" column="1">zpTacticDive</command>
     <command page="0" column="0">zpTacticStealth</command>
     <command page="8" column="4">ToggleStealth</command>
@@ -10016,7 +10056,6 @@
       <name>CannonAttackDived</name>
       <damage>70.000000</damage>
       <damagetype>Siege</damagetype>
-      <minrange>5.000000</minrange>
       <maxrange>30.000000</maxrange>
       <rof>1.000000</rof>
       <damagecap>600.000000</damagecap>
@@ -10029,7 +10068,6 @@
       <name>CannonAttackSurfaced</name>
       <damage>70.000000</damage>
       <damagetype>Siege</damagetype>
-      <minrange>0.000000</minrange>
       <maxrange>30.000000</maxrange>
       <rof>1.000000</rof>
       <damagecap>600.000000</damagecap>
@@ -10039,13 +10077,23 @@
     </protoaction>
     <protoaction>
       <name>ShuntAttack</name>
-      <damage>150.000000</damage>
+      <damage>250.000000</damage>
       <damagetype>Hand</damagetype>
-      <maxrange>6.000000</maxrange>
+      <maxrange>4.000000</maxrange>
       <rof>2.000000</rof>
       <damagecap>700.000000</damagecap>
       <damagearea>3.000000</damagearea>
-      <damagebonus type="Ship">2.500000</damagebonus>
+      <damagebonus type="AbstractWarShip">2.500000</damagebonus>
+      <damagebonus type="Canoe">0.400000</damagebonus>
+      <damagebonus type="xpWarCanoe">0.400000</damagebonus>
+      <damagebonus type="xpTlalocCanoe">0.400000</damagebonus>
+      <damagebonus type="zpInuitWarCanoe">0.400000</damagebonus>
+      <damagebonus type="Frigate">2.000000</damagebonus>
+      <damagebonus type="Monitor">2.000000</damagebonus>
+      <damagebonus type="deMercBattleship">2.000000</damagebonus>
+      <damagebonus type="ypTekkousen">2.000000</damagebonus>
+      <damagebonus type="zpSPCTreasureship">2.000000</damagebonus>
+      <damagebonus type="ypFuchuan">2.000000</damagebonus>
       <damageflags>GAIAEnemy</damageflags>
       <basedamagecap>1</basedamagecap>
     </protoaction>
@@ -10064,7 +10112,6 @@
       <damagebonus type="AbstractCavalry">0.2500000</damagebonus>
       <damagebonus type="AbstractLightInfantry">0.1500000</damagebonus>
       <damagebonus type="Building">0.75000</damagebonus>
-      <damagebonus type="Ship">0.500000</damagebonus>
       <damagebonus type="xpArrowKnight">0.500000</damagebonus>
       <damagebonus type="deMalteseGun">2.500000</damagebonus>
     </protoaction>
@@ -10206,6 +10253,7 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
   </unit>
   <unit id="20107" name="zpNativeWaterSpawnFlag1">
     <dbid>20107</dbid>
@@ -10772,7 +10820,7 @@
     <subciv>zpScientists</subciv>
     <displaynameid>300550</displaynameid>
     <editornameid>300543</editornameid>
-    <populationcount>8</populationcount>
+    <populationcount>4</populationcount>
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Protected</formationcategory>
@@ -11249,12 +11297,12 @@
     <rollovertextid>300477</rollovertextid>
     <shortrollovertextid>300478</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>1200.0000</initialhitpoints>
-    <maxhitpoints>1200.0000</maxhitpoints>
+    <initialhitpoints>1000.0000</initialhitpoints>
+    <maxhitpoints>1000.0000</maxhitpoints>
     <los>32.0000</los>
     <projectileprotounit>zpTorpedo</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
-    <trainpoints>40.0000</trainpoints>
+    <trainpoints>0.1000</trainpoints>
     <buildlimit>1</buildlimit>
     <bounty>80.0000</bounty>
     <buildbounty>80.0000</buildbounty>
@@ -11265,7 +11313,7 @@
     <allowedage>3</allowedage>
     <decay delay="0.0000" duration="0.0000">
     </decay>
-    <armor type="Ranged" value="0.5000">
+    <armor type="Ranged" value="0.7500">
     </armor>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
@@ -11303,6 +11351,7 @@
     <flag>NavalUnit</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
+    <initialtactic>zpSurface</initialtactic>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
@@ -11310,7 +11359,7 @@
     <command page="0" column="1">zpTacticDive</command>
     <command page="0" column="0">zpTacticStealth</command>
     <command page="8" column="4">ToggleStealth</command>
-     <tactics>submarine.tactics</tactics>
+    <tactics>submarine.tactics</tactics>
     <sharedbuildlimitunittypes>
         <unittype>zpNautilusProxy</unittype>
         <unittype>zpNautilus</unittype>
@@ -11319,7 +11368,6 @@
       <name>CannonAttackDived</name>
       <damage>70.000000</damage>
       <damagetype>Siege</damagetype>
-      <minrange>5.000000</minrange>
       <maxrange>30.000000</maxrange>
       <rof>1.000000</rof>
       <damagecap>600.000000</damagecap>
@@ -11332,7 +11380,6 @@
       <name>CannonAttackSurfaced</name>
       <damage>70.000000</damage>
       <damagetype>Siege</damagetype>
-      <minrange>0.000000</minrange>
       <maxrange>30.000000</maxrange>
       <rof>1.000000</rof>
       <damagecap>600.000000</damagecap>
@@ -11342,13 +11389,23 @@
     </protoaction>
     <protoaction>
       <name>ShuntAttack</name>
-      <damage>200.000000</damage>
+      <damage>250.000000</damage>
       <damagetype>Hand</damagetype>
-      <maxrange>6.000000</maxrange>
+      <maxrange>4.000000</maxrange>
       <rof>2.000000</rof>
       <damagecap>700.000000</damagecap>
       <damagearea>3.000000</damagearea>
-      <damagebonus type="Ship">2.500000</damagebonus>
+      <damagebonus type="AbstractWarShip">2.500000</damagebonus>
+      <damagebonus type="Canoe">0.400000</damagebonus>
+      <damagebonus type="xpWarCanoe">0.400000</damagebonus>
+      <damagebonus type="xpTlalocCanoe">0.400000</damagebonus>
+      <damagebonus type="zpInuitWarCanoe">0.400000</damagebonus>
+      <damagebonus type="Frigate">2.000000</damagebonus>
+      <damagebonus type="Monitor">2.000000</damagebonus>
+      <damagebonus type="deMercBattleship">2.000000</damagebonus>
+      <damagebonus type="ypTekkousen">2.000000</damagebonus>
+      <damagebonus type="zpSPCTreasureship">2.000000</damagebonus>
+      <damagebonus type="ypFuchuan">2.000000</damagebonus>
       <damageflags>GAIAEnemy</damageflags>
       <basedamagecap>1</basedamagecap>
     </protoaction>
@@ -11432,6 +11489,7 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
   </unit>
   <unit id="20121" name="zpSocketInuits">
     <dbid>20121</dbid>
@@ -12156,11 +12214,9 @@
     <cost resourcetype="Gold">2000.0000</cost>
     <maxcontained>50</maxcontained>
     <allowedage>2</allowedage>
-    <armor type="Hand" value="1.0000">
+    <armor type="Hand" value="0.7500">
     </armor>
-    <armor type="Ranged" value="0.5000">
-    </armor>
-    <armor type="Siege" value="0.5000">
+    <armor type="Siege" value="0.7500">
     </armor>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
@@ -12204,6 +12260,8 @@
     <sharedbuildlimitunittypes>
       <unittype>zpAirship</unittype>
       <unittype>zpAirshipProxy</unittype>
+      <unittype>zpAirshipAI</unittype>
+      <unittype>zpAirshipAIProxy</unittype>
     </sharedbuildlimitunittypes>
     <detonationprotoaction>ExplosionAttack</detonationprotoaction>
     <detonationcommand>deDepotDetonate</detonationcommand>
@@ -12435,10 +12493,13 @@
     <flag>BuildingExtendedDeathAnim</flag>
     <flag>DoNotDamageTrees</flag>
     <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
     <sharedbuildlimitunit>zpAirship</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
       <unittype>zpAirship</unittype>
       <unittype>zpAirshipProxy</unittype>
+      <unittype>zpAirshipAI</unittype>
+      <unittype>zpAirshipAIProxy</unittype>
     </sharedbuildlimitunittypes>
   </unit>
   <unit id="20133" name="zpWokouWaterSpawnFlag1">
@@ -12628,6 +12689,252 @@
     <flag>InvulnerableIfGaia</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>RMCanRotate</flag>
+  </unit>
+  <unit name="HomeCityWaterSpawnFlag">
+    <tactics>hcwaterflag.tactics</tactics>
+  </unit>
+  <unit id="20137" name="zpAirshipAI">
+    <dbid>20137</dbid>
+    <displaynameid>300605</displaynameid>
+    <editornameid>300633</editornameid>
+    <obstructionradiusx>2.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>5.00000</maxvelocity>
+    <maxrunvelocity>7.00000</maxrunvelocity>
+    <movementtype>air</movementtype>
+    <turnrate>3.0000</turnrate>
+    <animfile>units\balloons\airship.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <buildlimit>1</buildlimit>
+    <icon>resources\art\units\natives\airship_icon.png</icon>
+    <portraiticon>resources\art\units\natives\airship_portrait.png</portraiticon>
+    <rollovertextid>300615</rollovertextid>
+    <shortrollovertextid>300615</shortrollovertextid>
+    <initialhitpoints>2500.0000</initialhitpoints>
+    <maxhitpoints>2500.0000</maxhitpoints>
+    <los>60.0000</los>
+    <projectileprotounit>MortarShell</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>45.0000</trainpoints>
+    <bounty>500.0000</bounty>
+    <buildbounty>500.0000</buildbounty>
+    <cost resourcetype="Wood">2000.0000</cost>
+    <cost resourcetype="Gold">2000.0000</cost>
+    <maxcontained>50</maxcontained>
+    <allowedage>2</allowedage>
+    <armor type="Hand" value="0.7500">
+    </armor>
+    <armor type="Siege" value="0.7500">
+    </armor>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Ship</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractSiegeTrooper</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>Aircraft</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>FlyingUnit</flag>
+    <flag>NoTieToGround</flag>
+    <flag>DetonationDeath</flag>
+    <flag>BuildingExtendedDeathAnim</flag>
+    <flag>DoNotDamageTrees</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <sharedbuildlimitunittypes>
+      <unittype>zpAirship</unittype>
+      <unittype>zpAirshipAI</unittype>
+      <unittype>zpAirshipProxy</unittype>
+      <unittype>zpAirshipAIProxy</unittype>
+    </sharedbuildlimitunittypes>
+    <detonationprotoaction>ExplosionAttack</detonationprotoaction>
+    <detonationcommand>deDepotDetonate</detonationcommand>
+    <detonationhitpointthreshold>0.2500</detonationhitpointthreshold>
+    <detonationhitpointdecay>1.0000</detonationhitpointdecay>
+    <autoattackrange>10.0000</autoattackrange>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>airship.tactics</tactics>
+    <protoaction>
+      <name>BombAttack</name>
+      <damage>80.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <minrange>10.000000</minrange>
+      <rof>5.000000</rof>
+      <maxheight>1.000000</maxheight>
+      <damagecap>160.000000</damagecap>
+      <damagearea>3.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="Building">5.000000</damagebonus>
+      <damagebonus type="AbstractDock">0.200000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
+      <damagebonus type="Ship">2.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>AirshipAttack</name>
+      <damage>200.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>15.000000</maxrange>
+      <rof>1.000000</rof>
+      <damagecap>160.000000</damagecap>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>FireBomb</name>
+      <damage>250.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <minrange>10.000000</minrange>
+      <maxheight>1.000000</maxheight>
+      <rof>5.000000</rof>
+      <damagecap>400.000000</damagecap>
+      <damagearea>15.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="Building">10.000000</damagebonus>
+      <damagebonus type="AbstractDock">0.200000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damagebonus type="Ship">2.000000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>PoisonBomb</name>
+      <damage>40.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <minrange>10.000000</minrange>
+      <maxheight>1.000000</maxheight>
+      <rof>5.000000</rof>
+      <damagecap>100.000000</damagecap>
+      <damagearea>10.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>ExplosionAttack</name>
+      <damage>500.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>0.00001</rof>
+      <maxrange>10.000000</maxrange>
+      <damagebonus type="LogicalTypeGarrisonInShips">10.000000</damagebonus>
+      <damagearea>10.000000</damagearea>
+      <damageflags>SelfAllyEnemy</damageflags>
+    </protoaction>
+  </unit>
+  <unit id="20138" name="zpAirshipAIProxy">
+    <dbid>20138</dbid>
+    <subciv>zpScientists</subciv>
+    <displaynameid>300605</displaynameid>
+    <editornameid>300618</editornameid>
+    <obstructionradiusx>2.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>5.00000</maxvelocity>
+    <maxrunvelocity>7.00000</maxrunvelocity>
+    <movementtype>air</movementtype>
+    <turnrate>3.0000</turnrate>
+    <animfile>units\balloons\airship.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <buildlimit>1</buildlimit>
+    <icon>resources\art\units\natives\airship_icon.png</icon>
+    <portraiticon>resources\art\units\natives\airship_portrait.png</portraiticon>
+    <rollovertextid>300615</rollovertextid>
+    <shortrollovertextid>300615</shortrollovertextid>
+    <initialhitpoints>5000.0000</initialhitpoints>
+    <maxhitpoints>5000.0000</maxhitpoints>
+    <los>60.0000</los>
+    <projectileprotounit>MortarShell</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>45.0000</trainpoints>
+    <bounty>500.0000</bounty>
+    <buildbounty>500.0000</buildbounty>
+    <cost resourcetype="Wood">2000.0000</cost>
+    <cost resourcetype="Gold">2000.0000</cost>
+    <maxcontained>50</maxcontained>
+    <allowedage>2</allowedage>
+    <armor type="Hand" value="1.0000">
+    </armor>
+    <armor type="Ranged" value="0.5000">
+    </armor>
+    <armor type="Siege" value="0.5000">
+    </armor>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Transport</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractSiegeTrooper</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>Aircraft</unittype>
+    <unittype>AbstractBannerArmy</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>FlyingUnit</flag>
+    <flag>NoTieToGround</flag>
+    <flag>DetonationDeath</flag>
+    <flag>BuildingExtendedDeathAnim</flag>
+    <flag>DoNotDamageTrees</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <sharedbuildlimitunit>zpAirship</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpAirship</unittype>
+      <unittype>zpAirshipProxy</unittype>
+      <unittype>zpAirshipAI</unittype>
+      <unittype>zpAirshipAIProxy</unittype>
+    </sharedbuildlimitunittypes>
   </unit>
 
 <!--TEST-->
@@ -13525,9 +13832,5 @@
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
     </protoaction>
   </unit>
-
-  
-
-   
 
 </protomods>
