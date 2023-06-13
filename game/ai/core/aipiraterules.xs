@@ -19,6 +19,7 @@ minInterval 5
     // Initializes all pirate functions if this is a pirate map
     // Add always active rules here
     xsEnableRule("CaribTPMonitor");
+    xsEnableRule("pirateShipAbilityMonitor");
 
     // Test to check if this script gets run
     //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbGetMapCenter());
@@ -146,6 +147,9 @@ minInterval 12
    int pirateShipID = getUnit(cUnitTypezpSPCQueenAnne, cMyID, cUnitStateAlive);
    int enemyID = -1;
    vector pirateShipLoc = cInvalidVector;
+   int enemyCount = 0;
+   bool longBombard = false;
+
    if (pirateShipID > 0)
    {
       pirateShipLoc = kbUnitGetPosition(pirateShipID);
@@ -158,9 +162,47 @@ minInterval 12
          {
             aiTaskUnitSpecialPower(pirateShipID, cProtoPowerPowerGreekFire, enemyID, cInvalidVector);
          }
-         pirateShipID = 0;
+      }
+      pirateShipID = 0;
+   }
+   if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(cUnitTypezpSubmarine, cMyID, cUnitStateAlive);
+      if (pirateShipID > 0)
+      {
+         pirateShipLoc = kbUnitGetPosition(pirateShipID);
+         if (aiCanUseAbility(pirateShipID, cProtoPowerdePowerShunt) == true)
+         {
+            // Look for nearby units to use the ability on. Only ram when there are 1-2 enemies nearby
+            enemyID = getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, pirateShipLoc, 15.0);
+            enemyCount = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, pirateShipLoc, 25.0);
+            if (enemyID >= 0 && enemyCount <= 2)
+            {
+               aiTaskUnitSpecialPower(pirateShipID, cProtoPowerdePowerShunt, enemyID, cInvalidVector);
+            }
+         }
+      }
+      pirateShipID = getUnit(cUnitTypezpNautilus, cMyID, cUnitStateAlive);
+      if (pirateShipID > 0)
+      {
+         pirateShipLoc = kbUnitGetPosition(pirateShipID);
+         if (aiCanUseAbility(pirateShipID, cProtoPowerdePowerShunt) == true)
+         {
+            // Look for nearby units to use the ability on. Only ram when there are 1-2 enemies nearby
+            enemyID = getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, pirateShipLoc, 15.0);
+            enemyCount = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, pirateShipLoc, 25.0);
+            if (enemyID >= 0 && enemyCount <= 2)
+            {
+               aiTaskUnitSpecialPower(pirateShipID, cProtoPowerdePowerShunt, enemyID, cInvalidVector);
+            }
+         }
       }
    }
+
    // If we didn't find the flagship, keep looking for others
    if (pirateShipID < 0)
    {
@@ -169,6 +211,7 @@ minInterval 12
    else if (pirateShipID < 0)
    {
       pirateShipID = getUnit(cUnitTypezpSPCNeptuneGalley, cMyID, cUnitStateAlive);
+      longBombard = true;
    }
    else if (pirateShipID < 0)
    {
@@ -177,6 +220,7 @@ minInterval 12
    else if (pirateShipID < 0)
    {
       pirateShipID = getUnit(cUnitTypezpSPCTreasureShip, cMyID, cUnitStateAlive);
+      longBombard = true;
    }
    else if (pirateShipID < 0)
    {
@@ -193,10 +237,23 @@ minInterval 12
       {
          // Look for nearby units to use the ability on
          enemyID = getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
-            cUnitStateAlive, pirateShipLoc, 20.0);
+            cUnitStateAlive, pirateShipLoc, 28.0);
          if (enemyID >= 0)
          {
             aiTaskUnitSpecialPower(pirateShipID, cProtoPowerPowerBroadside, enemyID, cInvalidVector);
+         }
+      }
+      if (longBombard == true)
+      {
+         if (aiCanUseAbility(pirateShipID, cProtoPowerPowerLongRange) == true)
+         {
+            // Look for nearby buildings to use the ability on
+            enemyID = getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, pirateShipLoc, 65.0);
+            if (enemyID >= 0)
+            {
+               aiTaskUnitSpecialPower(pirateShipID, cProtoPowerPowerLongRange, enemyID, cInvalidVector);
+            }
          }
       }
    }
@@ -1454,7 +1511,7 @@ mininterval 60
 {
    if (kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0)
       {
-      return; // Player has no Aztec socket.
+      return; // Player has no Scientist socket.
       }
 
       // Scientist Academy
