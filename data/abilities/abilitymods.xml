@@ -43,10 +43,10 @@
     <ability>zpMustardGas<tech>zpMustardGas</tech><rof>30</rof></ability>
   </zpairship>
   <zpsubmarine>
-    <ability>zpPowerShunt<rof>60</rof></ability>
+    <ability>zpPowerShunt<allowwhilestealthed>true</allowwhilestealthed><rof>60</rof></ability>
   </zpsubmarine>
   <zpnautilus>
-    <ability>zpPowerShunt<rof>60</rof></ability>
+    <ability>zpPowerShunt<allowwhilestealthed>true</allowwhilestealthed><rof>60</rof></ability>
   </zpnautilus>
   <zpairshipai>
     <ability>zpAirshipLighthouse<rof>60</rof><castonself>true</castonself></ability>

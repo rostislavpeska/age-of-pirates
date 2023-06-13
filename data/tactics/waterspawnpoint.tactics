@@ -96,7 +96,7 @@
   </action>
    <action>
     <name stringid="69776">SpawnSubmarine</name>
-    <type>Maintain</type>
+    <type>Spawn</type>
     <rate type="zpSubmarine">1.0</rate>
     <active>1</active>
     <persistent>0</persistent>
@@ -104,7 +104,7 @@
   </action>
   <action>
     <name stringid="69776">SpawnNautilus</name>
-    <type>Maintain</type>
+    <type>Spawn</type>
     <rate type="zpNautilus">1.0</rate>
     <active>1</active>
     <persistent>0</persistent>

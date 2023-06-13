@@ -9985,12 +9985,12 @@
     <rollovertextid>300477</rollovertextid>
     <shortrollovertextid>300478</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>1000.0000</initialhitpoints>
-    <maxhitpoints>1000.0000</maxhitpoints>
+    <initialhitpoints>1100.0000</initialhitpoints>
+    <maxhitpoints>1100.0000</maxhitpoints>
     <los>32.0000</los>
     <projectileprotounit>zpTorpedo</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
-    <trainpoints>0.1000</trainpoints>
+    <trainpoints>40.0000</trainpoints>
     <buildlimit>2</buildlimit>
     <bounty>80.0000</bounty>
     <buildbounty>80.0000</buildbounty>
@@ -10054,9 +10054,9 @@
     </sharedbuildlimitunittypes>
     <protoaction>
       <name>CannonAttackDived</name>
-      <damage>70.000000</damage>
+      <damage>50.000000</damage>
       <damagetype>Siege</damagetype>
-      <maxrange>30.000000</maxrange>
+      <maxrange>25.000000</maxrange>
       <rof>1.000000</rof>
       <damagecap>600.000000</damagecap>
       <damagebonus type="Ship">2.000000</damagebonus>
@@ -10066,9 +10066,9 @@
     </protoaction>
     <protoaction>
       <name>CannonAttackSurfaced</name>
-      <damage>70.000000</damage>
+      <damage>50.000000</damage>
       <damagetype>Siege</damagetype>
-      <maxrange>30.000000</maxrange>
+      <maxrange>25.000000</maxrange>
       <rof>1.000000</rof>
       <damagecap>600.000000</damagecap>
       <damagebonus type="Ship">2.000000</damagebonus>
@@ -10077,10 +10077,10 @@
     </protoaction>
     <protoaction>
       <name>ShuntAttack</name>
-      <damage>250.000000</damage>
+      <damage>140.000000</damage>
       <damagetype>Hand</damagetype>
       <maxrange>4.000000</maxrange>
-      <rof>2.000000</rof>
+      <rof>3.000000</rof>
       <damagecap>700.000000</damagecap>
       <damagearea>3.000000</damagearea>
       <damagebonus type="AbstractWarShip">2.500000</damagebonus>
@@ -10088,6 +10088,8 @@
       <damagebonus type="xpWarCanoe">0.400000</damagebonus>
       <damagebonus type="xpTlalocCanoe">0.400000</damagebonus>
       <damagebonus type="zpInuitWarCanoe">0.400000</damagebonus>
+      <damagebonus type="zpSubmarine">0.400000</damagebonus>
+      <damagebonus type="zpNautilus">0.400000</damagebonus>
       <damagebonus type="Frigate">2.000000</damagebonus>
       <damagebonus type="Monitor">2.000000</damagebonus>
       <damagebonus type="deMercBattleship">2.000000</damagebonus>
@@ -10103,7 +10105,7 @@
       <damage>20.000000</damage>
       <damagetype>Siege</damagetype>
       <minrange>0.000000</minrange>
-      <maxrange>24.000000</maxrange>
+      <maxrange>25.000000</maxrange>
       <rof>0.500000</rof> <!-- Lines up perfectly with audio -->
       <damagecap>60.000000</damagecap>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
@@ -11297,12 +11299,12 @@
     <rollovertextid>300477</rollovertextid>
     <shortrollovertextid>300478</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>1000.0000</initialhitpoints>
-    <maxhitpoints>1000.0000</maxhitpoints>
+    <initialhitpoints>1100.0000</initialhitpoints>
+    <maxhitpoints>1100.0000</maxhitpoints>
     <los>32.0000</los>
     <projectileprotounit>zpTorpedo</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
-    <trainpoints>0.1000</trainpoints>
+    <trainpoints>40.0000</trainpoints>
     <buildlimit>1</buildlimit>
     <bounty>80.0000</bounty>
     <buildbounty>80.0000</buildbounty>
@@ -11366,9 +11368,9 @@
     </sharedbuildlimitunittypes>
     <protoaction>
       <name>CannonAttackDived</name>
-      <damage>70.000000</damage>
+      <damage>50.000000</damage>
       <damagetype>Siege</damagetype>
-      <maxrange>30.000000</maxrange>
+      <maxrange>25.000000</maxrange>
       <rof>1.000000</rof>
       <damagecap>600.000000</damagecap>
       <damagebonus type="Ship">2.000000</damagebonus>
@@ -11378,9 +11380,9 @@
     </protoaction>
     <protoaction>
       <name>CannonAttackSurfaced</name>
-      <damage>70.000000</damage>
+      <damage>50.000000</damage>
       <damagetype>Siege</damagetype>
-      <maxrange>30.000000</maxrange>
+      <maxrange>25.000000</maxrange>
       <rof>1.000000</rof>
       <damagecap>600.000000</damagecap>
       <damagebonus type="Ship">2.000000</damagebonus>
@@ -11389,10 +11391,10 @@
     </protoaction>
     <protoaction>
       <name>ShuntAttack</name>
-      <damage>250.000000</damage>
+      <damage>140.000000</damage>
       <damagetype>Hand</damagetype>
       <maxrange>4.000000</maxrange>
-      <rof>2.000000</rof>
+      <rof>3.000000</rof>
       <damagecap>700.000000</damagecap>
       <damagearea>3.000000</damagearea>
       <damagebonus type="AbstractWarShip">2.500000</damagebonus>
@@ -11400,6 +11402,8 @@
       <damagebonus type="xpWarCanoe">0.400000</damagebonus>
       <damagebonus type="xpTlalocCanoe">0.400000</damagebonus>
       <damagebonus type="zpInuitWarCanoe">0.400000</damagebonus>
+      <damagebonus type="zpSubmarine">0.400000</damagebonus>
+      <damagebonus type="zpNautilus">0.400000</damagebonus>
       <damagebonus type="Frigate">2.000000</damagebonus>
       <damagebonus type="Monitor">2.000000</damagebonus>
       <damagebonus type="deMercBattleship">2.000000</damagebonus>
@@ -11415,7 +11419,7 @@
       <damage>20.000000</damage>
       <damagetype>Siege</damagetype>
       <minrange>0.000000</minrange>
-      <maxrange>24.000000</maxrange>
+      <maxrange>25.000000</maxrange>
       <rof>0.500000</rof> <!-- Lines up perfectly with audio -->
       <damagecap>60.000000</damagecap>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
@@ -12689,9 +12693,6 @@
     <flag>InvulnerableIfGaia</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>RMCanRotate</flag>
-  </unit>
-  <unit name="HomeCityWaterSpawnFlag">
-    <tactics>hcwaterflag.tactics</tactics>
   </unit>
   <unit id="20137" name="zpAirshipAI">
     <dbid>20137</dbid>
