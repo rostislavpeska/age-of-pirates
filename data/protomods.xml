@@ -12324,7 +12324,7 @@
     </protoaction>
     <protoaction>
       <name>PoisonBomb</name>
-      <damage>40.000000</damage>
+      <damage>60.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>30.000000</maxrange>
       <minrange>10.000000</minrange>
@@ -12403,7 +12403,7 @@
     <tactics>mustardgas.tactics</tactics>
     <protoaction>
       <name>TrampleHandAttack</name>
-      <damage>30.0000000</damage>
+      <damage>60.0000000</damage>
       <damagetype>Hand</damagetype>
       <rof>2.000000</rof>
       <damagecap>70.0000000</damagecap>
@@ -12829,7 +12829,7 @@
     </protoaction>
     <protoaction>
       <name>PoisonBomb</name>
-      <damage>40.000000</damage>
+      <damage>60.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>30.000000</maxrange>
       <minrange>10.000000</minrange>
@@ -12853,7 +12853,7 @@
   <unit id="20138" name="zpAirshipAIProxy">
     <dbid>20138</dbid>
     <subciv>zpScientists</subciv>
-    <displaynameid>300605</displaynameid>
+    <displaynameid>300633</displaynameid>
     <editornameid>300618</editornameid>
     <obstructionradiusx>2.0000</obstructionradiusx>
     <obstructionradiusz>2.0000</obstructionradiusz>

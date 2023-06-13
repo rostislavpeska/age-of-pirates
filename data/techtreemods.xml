@@ -8078,7 +8078,7 @@
       <effect type="Data" action="FireBomb" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpAirship</target>
       </effect>
-      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+      <effect type="Data" amount="1.5" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpAirship</target>
       </effect>
       <effect type="SetName" proto="zpAirship" culture="none" newname="300623">
@@ -8097,7 +8097,7 @@
       <effect type="Data" action="FireBomb" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpAirshipAI</target>
       </effect>
-      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+      <effect type="Data" amount="1.5" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpAirshipAI</target>
       </effect>
       <effect type="SetName" proto="zpAirshipAI" culture="none" newname="300623">

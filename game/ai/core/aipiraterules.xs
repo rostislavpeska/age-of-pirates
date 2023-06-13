@@ -19,6 +19,7 @@ minInterval 5
     // Initializes all pirate functions if this is a pirate map
     // Add always active rules here
     xsEnableRule("CaribTPMonitor");
+    xsEnableRule("pirateShipAbilityMonitor");
 
     // Test to check if this script gets run
     //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbGetMapCenter());
@@ -74,7 +75,7 @@ minInterval 5
         xsEnableRule("zpScientistTechMonitor");
         xsEnableRule("nativeWagonMonitor");
         xsEnableRule("submarineTactics");
-        xsEnableRule("airShipAbilityMonitor");
+        xsEnableRule("airshipAbilityMonitor");
         xsEnableRule("airshipManager");
     }
 
@@ -144,22 +145,65 @@ inactive
 minInterval 12
 {
    int pirateShipID = getUnit(cUnitTypezpSPCQueenAnne, cMyID, cUnitStateAlive);
+   int enemyID = -1;
    vector pirateShipLoc = cInvalidVector;
+   int enemyCount = 0;
+   bool longBombard = false;
+
    if (pirateShipID > 0)
    {
       pirateShipLoc = kbUnitGetPosition(pirateShipID);
       if (aiCanUseAbility(pirateShipID, cProtoPowerPowerGreekFire) == true)
       {
          // Look for nearby units to use the ability on
-         int enemyID = getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+         enemyID = getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
             cUnitStateAlive, pirateShipLoc, 20.0);
          if (enemyID >= 0)
          {
             aiTaskUnitSpecialPower(pirateShipID, cProtoPowerPowerGreekFire, enemyID, cInvalidVector);
          }
-         pirateShipID = 0;
       }
+      pirateShipID = 0;
    }
+   if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(cUnitTypezpSubmarine, cMyID, cUnitStateAlive);
+      if (pirateShipID > 0)
+      {
+         pirateShipLoc = kbUnitGetPosition(pirateShipID);
+         if (aiCanUseAbility(pirateShipID, cProtoPowerdePowerShunt) == true)
+         {
+            // Look for nearby units to use the ability on. Only ram when there are 1-2 enemies nearby
+            enemyID = getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, pirateShipLoc, 15.0);
+            enemyCount = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, pirateShipLoc, 45.0);
+            if (enemyID >= 0 && enemyCount <= 2)
+            {
+               aiTaskUnitSpecialPower(pirateShipID, cProtoPowerdePowerShunt, enemyID, cInvalidVector);
+            }
+         }
+      }
+      pirateShipID = getUnit(cUnitTypezpNautilus, cMyID, cUnitStateAlive);
+      if (pirateShipID > 0)
+      {
+         pirateShipLoc = kbUnitGetPosition(pirateShipID);
+         if (aiCanUseAbility(pirateShipID, cProtoPowerdePowerShunt) == true)
+         {
+            // Look for nearby units to use the ability on. Only ram when there are 1-2 enemies nearby
+            enemyID = getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, pirateShipLoc, 15.0);
+            enemyCount = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, pirateShipLoc, 45.0);
+            if (enemyID >= 0 && enemyCount <= 2)
+            {
+               aiTaskUnitSpecialPower(pirateShipID, cProtoPowerdePowerShunt, enemyID, cInvalidVector);
+            }
+         }
+      }
+      pirateShipID = 0;
+   }
+
    // If we didn't find the flagship, keep looking for others
    if (pirateShipID < 0)
    {
@@ -168,6 +212,7 @@ minInterval 12
    else if (pirateShipID < 0)
    {
       pirateShipID = getUnit(cUnitTypezpSPCNeptuneGalley, cMyID, cUnitStateAlive);
+      longBombard = true;
    }
    else if (pirateShipID < 0)
    {
@@ -176,6 +221,7 @@ minInterval 12
    else if (pirateShipID < 0)
    {
       pirateShipID = getUnit(cUnitTypezpSPCTreasureShip, cMyID, cUnitStateAlive);
+      longBombard = true;
    }
    else if (pirateShipID < 0)
    {
@@ -192,10 +238,23 @@ minInterval 12
       {
          // Look for nearby units to use the ability on
          enemyID = getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
-            cUnitStateAlive, pirateShipLoc, 20.0);
+            cUnitStateAlive, pirateShipLoc, 28.0);
          if (enemyID >= 0)
          {
             aiTaskUnitSpecialPower(pirateShipID, cProtoPowerPowerBroadside, enemyID, cInvalidVector);
+         }
+      }
+      if (longBombard == true)
+      {
+         if (aiCanUseAbility(pirateShipID, cProtoPowerPowerLongRange) == true)
+         {
+            // Look for nearby buildings to use the ability on
+            enemyID = getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, pirateShipLoc, 65.0);
+            if (enemyID >= 0)
+            {
+               aiTaskUnitSpecialPower(pirateShipID, cProtoPowerPowerLongRange, enemyID, cInvalidVector);
+            }
          }
       }
    }
@@ -204,7 +263,7 @@ minInterval 12
 //==============================================================================
 // Airship Ability Monitor
 //==============================================================================
-/*rule airShipAbilityMonitor
+rule airshipAbilityMonitor
 inactive
 minInterval 12
 {
@@ -215,20 +274,20 @@ minInterval 12
    
    if (airshipID >= 0)
    {
-      vector airshipLoc = kbUnitGetPosition(airshipID)
+      vector airshipLoc = kbUnitGetPosition(airshipID);
       // Check for fire bomb, then poison, then explosion
-      if (aiCanUseAbility(airshipID, cProtoPowerPowerFireBomb) == true)
+      if (aiCanUseAbility(airshipID, cProtoPowerzpPowerFireBomb) == true)
       {
          // Look for nearby units to use the ability on
          enemyID = getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia,
             cUnitStateAlive, airshipLoc, 20.0);
          if (enemyID >= 0)
          {
-            aiTaskUnitSpecialPower(airshipID, cProtoPowerPowerFireBomb, enemyID, cInvalidVector);
+            aiTaskUnitSpecialPower(airshipID, cProtoPowerzpPowerFireBomb, enemyID, cInvalidVector);
          }
       }
 
-      if (aiCanUseAbility(airshipID, cProtoPowerPowerPoisonBomb) == true && enemyID < 0)
+      if (aiCanUseAbility(airshipID, cProtoPowerzpMustardGas) == true && enemyID < 0)
       {
          enemyID = getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
             cUnitStateAlive, airshipLoc, 20.0);
@@ -237,21 +296,11 @@ minInterval 12
             enemyLoc, 14.0);
          if (enemyID >= 0 && friendlyNum <= 0)
          {
-            aiTaskUnitSpecialPower(airshipID, cProtoPowerPowerPoisonBomb, enemyID, cInvalidVector);
-         }
-      }
-
-      if (aiCanUseAbility(airshipID, cProtoPowerPowerExplosionAttack) == true && enemyID < 0)
-      {
-         enemyID = getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
-            cUnitStateAlive, airshipLoc, 20.0);
-         if (enemyID >= 0)
-         {
-            aiTaskUnitSpecialPower(airshipID, cProtoPowerPowerExplosionAttack, enemyID, cInvalidVector);
+            aiTaskUnitSpecialPower(airshipID, cProtoPowerzpMustardGas, enemyID, cInvalidVector);
          }
       }
    }
-}*/
+}
 
 //==============================================================================
 // zenSufi Building Monitor
@@ -468,7 +517,7 @@ minInterval 3
          nearbyEnFound = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, shipLoc, 45.0); // Submarine range is 30
          if (nearbyEnFound > 0)
          {
-            subTactic = cTacticzpDive;
+            subTactic = cTacticzpStealth;
             aiUnitSetTactic(shipID, subTactic);
          }
          else
@@ -1459,11 +1508,11 @@ mininterval 60
 //==============================================================================
 rule zpScientistTechMonitor
 inactive
-mininterval 60
+mininterval 1
 {
    if (kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0)
       {
-      return; // Player has no Aztec socket.
+      return; // Player has no Scientist socket.
       }
 
       // Scientist Academy
@@ -1509,7 +1558,7 @@ mininterval 60
 }
 
 //==============================================================================
-// Maintain Proxies in Scientist Trading Post
+// Maintain Submarine Proxies in Scientist Trading Post
 //==============================================================================
 
 rule MaintainScientistShips
@@ -1729,7 +1778,7 @@ mininterval 60
 
 rule MaintainScientistAirship
 inactive
-minInterval 30
+minInterval 1
 {
   const int list_size = 1;
   static int proxy_list = -1;
@@ -1740,8 +1789,10 @@ minInterval 30
       return;
    }
 
-   if (kbTechGetStatus(cTechzpBattleAirship) == cTechStatusActive)
+   if ( kbGetAge() <= cAge2 )
    {
+      return;
+   }
 
       if (proxy_list == -1)
       {
@@ -1783,6 +1834,6 @@ minInterval 30
             aiPlanDestroy(maintain_plan);
             }
          }
-      }
+      
    }
 }
