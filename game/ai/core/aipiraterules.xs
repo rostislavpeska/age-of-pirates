@@ -177,7 +177,7 @@ minInterval 12
             enemyID = getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
                cUnitStateAlive, pirateShipLoc, 15.0);
             enemyCount = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
-               cUnitStateAlive, pirateShipLoc, 25.0);
+               cUnitStateAlive, pirateShipLoc, 45.0);
             if (enemyID >= 0 && enemyCount <= 2)
             {
                aiTaskUnitSpecialPower(pirateShipID, cProtoPowerdePowerShunt, enemyID, cInvalidVector);
@@ -194,7 +194,7 @@ minInterval 12
             enemyID = getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
                cUnitStateAlive, pirateShipLoc, 15.0);
             enemyCount = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
-               cUnitStateAlive, pirateShipLoc, 25.0);
+               cUnitStateAlive, pirateShipLoc, 45.0);
             if (enemyID >= 0 && enemyCount <= 2)
             {
                aiTaskUnitSpecialPower(pirateShipID, cProtoPowerdePowerShunt, enemyID, cInvalidVector);
