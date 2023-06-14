@@ -517,7 +517,7 @@ minInterval 3
          nearbyEnFound = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, shipLoc, 45.0); // Submarine range is 30
          if (nearbyEnFound > 0)
          {
-            subTactic = cTacticzpDive;
+            subTactic = cTacticzpStealth;
             aiUnitSetTactic(shipID, subTactic);
          }
          else
@@ -1508,7 +1508,7 @@ mininterval 60
 //==============================================================================
 rule zpScientistTechMonitor
 inactive
-mininterval 60
+mininterval 1
 {
    if (kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0)
       {
@@ -1558,7 +1558,7 @@ mininterval 60
 }
 
 //==============================================================================
-// Maintain Proxies in Scientist Trading Post
+// Maintain Submarine Proxies in Scientist Trading Post
 //==============================================================================
 
 rule MaintainScientistShips
@@ -1778,7 +1778,7 @@ mininterval 60
 
 rule MaintainScientistAirship
 inactive
-minInterval 30
+minInterval 1
 {
   const int list_size = 1;
   static int proxy_list = -1;
@@ -1789,8 +1789,10 @@ minInterval 30
       return;
    }
 
-   if (kbTechGetStatus(cTechzpBattleAirship) == cTechStatusActive)
+   if ( kbGetAge() <= cAge2 )
    {
+      return;
+   }
 
       if (proxy_list == -1)
       {
@@ -1832,6 +1834,6 @@ minInterval 30
             aiPlanDestroy(maintain_plan);
             }
          }
-      }
+      
    }
 }
