@@ -2602,7 +2602,7 @@ minInterval 2
    }
 
    if ((cMyCiv != cCivIndians) && (cMyCiv != cCivSPCIndians) &&
-       (cMyCiv != cCivJapanese) && (cMyCiv != cCivSPCJapanese) && (cMyCiv == cCivSPCJapaneseEnemy))
+       (cMyCiv != cCivJapanese) && (cMyCiv != cCivSPCJapanese) && (cMyCiv != cCivSPCJapaneseEnemy))
    {
       xsEnableRule("slaughterMonitor");
    }
