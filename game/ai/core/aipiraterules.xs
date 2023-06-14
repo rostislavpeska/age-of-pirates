@@ -267,7 +267,7 @@ rule airshipAbilityMonitor
 inactive
 minInterval 12
 {
-   int airshipID = getUnit(cUnitTypezpAirship, cMyID, cUnitStateAlive);
+   int airshipID = getUnit(cUnitTypezpAirshipAI, cMyID, cUnitStateAlive);
    int enemyID = 0;
    vector enemyLoc = cInvalidVector;
    int friendlyNum = 0;
