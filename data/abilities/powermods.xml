@@ -108,4 +108,17 @@
     <abstractattacktargettype>AbstractDock</abstractattacktargettype>
     <unitaction>ShuntAttack</unitaction>
   </power>
+
+  <power name="zpPowerConvertShip" type="UnitAction">
+    <displaynameid>80577</displaynameid>
+    <rolloverid>80578</rolloverid>
+    <icon>resources\images\icons\abilities\ability_convert.png</icon>
+    <minimapeventtime sendalertto="player">1</minimapeventtime>
+    <activetime>12</activetime>
+    <radius>5.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>LogicalTypeNavalMilitary</abstractattacktargettype>
+    <unitaction>ConvertShip</unitaction>
+    <allowduringnorush>0</allowduringnorush>
+  </power>
 </powermods>

@@ -221,7 +221,7 @@
       <string _locid="300218">The Iron Fleet</string>
       <string _locid="300219">Ships a mighty Madame Ching's Flagship.</string>
       <string _locid="300220">Destroyer</string>
-      <string _locid="300221">Uniue Japanese steam powered warship with special flame attack.</string>
+      <string _locid="300221">Unique steam powered warship able to train hoop throwers and detect submarines and other stealth units.</string>
       <string _locid="300222">Steam powered warship.</string>
       <string _locid="300223">Hydra</string>
       <string _locid="300224">ZP Socket SPC Zen</string>
@@ -412,7 +412,7 @@
       <string _locid="300408">Jewish House</string>
       <string _locid="300409">ZP NAT House Jewish</string>
       <string _locid="300410">ZP Jewish Flag</string>
-      <string _locid="300411">Jewish Settler</string>
+      <string _locid="300411">Settlement Militia</string>
       <string _locid="300412">ZP Nat Jewish Settler</string>
       <string _locid="300413">Pessah</string>
       <string _locid="300414">Torah</string>
@@ -633,7 +633,7 @@
       <string _locid="300630">ZP EU Palace Wing</string>
       <string _locid="300631">Submarine dives and rams enemy ship. Strong bonus against advanced wooden ships like Frigate or Monitor.</string>
       <string _locid="300632">ZP Test Submarine Pirate</string>
-      <string _locid="300633">ZP Airship NO TRANSPORT</string>
+      <string _locid="300633">Experimental Airship</string>
     </language>
   </stringtable>
 </stringmods>
