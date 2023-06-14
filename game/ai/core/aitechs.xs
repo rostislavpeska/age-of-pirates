@@ -713,15 +713,15 @@ int chooseAmericanFederalState()
       for (i = 0; i < numFederalStateChoices; i++)
       {
          federalState = aiGetPoliticianListByIndex(cAge3, i);
-         if (gStartOnDifferentIslands == true)
-         {
-            if (federalState == cTechDEPoliticianFederalMaryland) 
+         //if (gStartOnDifferentIslands == true)
+         //{  // AssertiveWall: AI can't really make use of Maryland, so follow old rule
+         /*   if (federalState == cTechDEPoliticianFederalMaryland) 
             {
                xsArraySetInt(gAmericanFederalStates, numValidFederalStates, federalState);
                numValidFederalStates++;
             }
          }
-         else if ((federalState != cTechDEPoliticianFederalIndiana) &&
+         else*/ if ((federalState != cTechDEPoliticianFederalIndiana) &&
              (federalState != cTechDEPoliticianFederalMaryland))
          {
             xsArraySetInt(gAmericanFederalStates, numValidFederalStates, federalState);
@@ -735,7 +735,8 @@ int chooseAmericanFederalState()
       for (i = 0; i < numFederalStateChoices; i++)
       {
          federalState = aiGetPoliticianListByIndex(cAge4, i);
-         if ((federalState != cTechDEPoliticianFederalVermont) &&
+         // AssertiveWall: Allow Vermont, I like Vermont
+         if (//(federalState != cTechDEPoliticianFederalVermont) &&
              (federalState != cTechDEPoliticianFederalCalifornia))
          {
             xsArraySetInt(gAmericanFederalStates, numValidFederalStates, federalState);
@@ -747,8 +748,11 @@ int chooseAmericanFederalState()
    case cAge4:
    {
       for (i = 0; i < numFederalStateChoices; i++)
-      {  // AssertiveWall: take connecticut on island maps
-         federalState = aiGetPoliticianListByIndex(cAge5, i);
+      {  // AssertiveWall: Allow all of them, they're all good in different ways
+         xsArraySetInt(gAmericanFederalStates, numValidFederalStates, federalState);
+         numValidFederalStates++;
+         
+         /*federalState = aiGetPoliticianListByIndex(cAge5, i);
          if (gStartOnDifferentIslands == true)
          {
             if (federalState == cTechDEPoliticianFederalConnecticut)
@@ -764,8 +768,8 @@ int chooseAmericanFederalState()
             {
             xsArraySetInt(gAmericanFederalStates, numValidFederalStates, federalState);
             numValidFederalStates++;
-         }
-      }
+            }
+         }*/
       }
       break;
    }

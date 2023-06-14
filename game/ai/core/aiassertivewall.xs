@@ -67,6 +67,7 @@ int getRandomIslandBase(int numberIslands = -1)
 //==============================================================================
 /* getIslandCount
    AssertiveWall: Returns how many islands we have settled
+   ** not in use **
 */
 //==============================================================================
 
@@ -89,6 +90,7 @@ int getIslandCount()
 //==============================================================================
 /* isIslandNeeded
    AssertiveWall: Checks if this is a good time to occupy another island
+   ** not in use **
 */
 //==============================================================================
 
@@ -172,6 +174,7 @@ void villagerFerry(int pickup = -1, int dropoff = -1, int villagerNumber = -1)
 /* getRandomIsland
    AssertiveWall: Searches through tiles around your island and gives a location 
    of the closest island that's not another player's starting island
+   ** not in use **
 */
 //==============================================================================
 
@@ -249,6 +252,8 @@ vector getRandomIsland()
 
    Note: Need to make the base on the near side of the island, not the center
 
+   ** not in use **
+
 */
 //==============================================================================
 int createNewIslandBase(vector newIsland = cInvalidVector, int totalIslands = -1)
@@ -279,6 +284,7 @@ int createNewIslandBase(vector newIsland = cInvalidVector, int totalIslands = -1
 /* islandBuildSelector
    AssertiveWall: This rule monitors our settled islands and sets gMainBaseID
    to one that makes sense
+   ** not in use **
 */
 //==============================================================================
 rule islandBuildSelector
@@ -327,6 +333,7 @@ minInterval 30
 //==============================================================================
 /* islandHopper
    AssertiveWall: This rule monitors new island building and calls villager transports
+   ** not in use **
 */
 //==============================================================================
 rule islandHopper
@@ -387,6 +394,7 @@ minInterval 20
    AssertiveWall: Original wall building AI the rest are based on. 
    
    Don't use this one
+   ** not in use **
 */
 //==============================================================================
 
@@ -594,10 +602,11 @@ minInterval 10
    }
    
    int wallPlanID = aiPlanCreate("WallInBase", cPlanBuildWall);
-   float wallRadius = 30.0 + aiRandFloat(20.0);   // AssertiveWall: used to set wall ring size
+   int baseID = kbBaseGetMainID(cMyID);
+   float wallRadius = kbBaseGetDistance(cMyID, baseID) + aiRandFloat(20.0);   // AssertiveWall: used to set wall ring size
    int gateNumber = aiRandInt(4) + 3;           // AssertiveWall: sets number of gates
    int mapWidth = kbGetMapXSize();
-   vector wallCenter = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   vector wallCenter = kbBaseGetLocation(cMyID, baseID);
 
 
    if (wallPlanID != -1)
@@ -610,14 +619,14 @@ minInterval 10
       
       aiPlanSetVariableFloat(wallPlanID, cBuildWallPlanWallRingRadius, 0, wallRadius);
       aiPlanSetVariableInt(wallPlanID, cBuildWallPlanNumberOfGates, 0, gateNumber);
-      aiPlanSetBaseID(wallPlanID, kbBaseGetMainID(cMyID));
+      aiPlanSetBaseID(wallPlanID, baseID);
       aiPlanSetEscrowID(wallPlanID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlanID, 60);
       aiPlanSetActive(wallPlanID, true);
       sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
       // Enable our wall gap rule, too.
       //xsEnableRule("fillInWallGaps");
-      debugBuildings("Enabling Wall Plan for Base ID: " + kbBaseGetMainID(cMyID));
+      debugBuildings("Enabling Wall Plan for Base ID: " + baseID);
    }
    xsDisableSelf();
 }
