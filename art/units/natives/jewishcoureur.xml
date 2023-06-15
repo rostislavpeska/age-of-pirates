@@ -659,7 +659,7 @@
         </attachment>
         <component>ModelComp
             <assetreference type="GrannyModel">
-                <file>units\villagers\ee_villager_female_2</file>
+                <file>units\natives\jewish\jewish_villager_female</file>
             </assetreference>
             <decal>
                 <effecttype>default</effecttype>

@@ -4426,9 +4426,11 @@
   </unit>
   <unit name="Dock">
     <train row ="0" page ="0" column ="11">ypFireship</train>
+    <train row ="0" page ="0" column ="12">zpInuitWarCanoe</train>
   </unit>
   <unit name="dePort">
     <train row ="0" page ="0" column ="11">ypFireship</train>
+    <train row ="0" page ="0" column ="12">zpInuitWarCanoe</train>
   </unit>
   <unit id="20050" name="zpWokouFuchuanProxy">
     <dbid>20050</dbid>
@@ -4885,7 +4887,7 @@
     <maxrunvelocity>6.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\asians\japanese\monk\monk_bak.xml</animfile>
+    <animfile>units\natives\zensoheiarcher.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\natives\sohei_archer_icon.png</icon>
@@ -11939,22 +11941,21 @@
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
     <animfile>units\villagers\inuit_villager_dog\inuit_villager_dog.xml</animfile>
-    <impacttype>Flesh</impacttype>
+    <impacttype>Animal</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\natives\inuitdogvillager_icon.png</icon>
     <portraiticon>resources\art\units\natives\inuitdogvillager_portrait.png</portraiticon>
-    <selectionpriority>10</selectionpriority>
     <rollovertextid>300572</rollovertextid>
     <shortrollovertextid>300572</shortrollovertextid>
     <initialhitpoints>150.0000</initialhitpoints>
     <maxhitpoints>150.0000</maxhitpoints>
-    <los>25.0000</los>
+    <los>18.0000</los>
     <unitaitype>Civilian</unitaitype>
     <trainpoints>20.0000</trainpoints>
     <buildlimit>5</buildlimit>
     <bounty>10.0000</bounty>
     <buildbounty>10.0000</buildbounty>
-    <cost resourcetype="Food">45.0000</cost>
+    <cost resourcetype="Food">75.0000</cost>
     <carrycapacity resourcetype="Food">1.0000</carrycapacity>
     <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
@@ -11962,51 +11963,43 @@
     <allowedage>0</allowedage>
     <armor type="Hand" value="0.2000">
     </armor>
-    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
-    <unittype>LogicalTypeEasySelectAvoid</unittype>
     <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
     <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
     <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeAffectedByTownBell</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
     <unittype>LogicalTypeVillagersAttack</unittype>
     <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeLandEconomy</unittype>
-    <unittype>LogicalTypeSettlerBuildLimit</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <unittype>AffectedByTownBell</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
     <unittype>CannotConvertHill</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractHandInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
     <unittype>HasBountyValue</unittype>
-    <unittype>Ranged</unittype>
-    <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>Unit</unittype>
+    <unittype>AbstractPet</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
     <unittype>UnitClass</unittype>
-    <unittype>Economic</unittype>
-    <unittype>EconomicUnit</unittype>
-    <unittype>AbstractVillager</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
     <flag>ShowGarrisonButton</flag>
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
-    <flag>DeadReplacementWhenDestroyed</flag>
     <flag>VisibleUnderFogIfGaia</flag>
     <flag>Tracked</flag>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
     <tactics>huskyvillager.tactics</tactics>
-    <protoaction>
-      <name>BuildingAttack</name>
-      <damage>10.000000</damage>
-      <damagetype>Siege</damagetype>
-      <rof>3.000000</rof>
-      <damagebonus type="deMountainMonastery">3.000000</damagebonus>
-    </protoaction>
     <protoaction>
       <name>Gather</name>
       <rate type="Herdable">2.000000</rate>
@@ -12015,10 +12008,11 @@
     </protoaction>
     <protoaction>
       <name>HandAttack</name>
-      <damage>20.000000</damage>
+      <damage>9.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
-      <damagebonus type="Llama">5.000000</damagebonus>
+      <damagebonus type="Guardian">3.000000</damagebonus>
+      <damagebonus type="AbstractPet">3.000000</damagebonus>
     </protoaction>
     <protoaction>
       <name>Hunting</name>
@@ -12152,11 +12146,11 @@
     <projectileprotounit>Arrow</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <trainpoints>25.0000</trainpoints>
-    <buildlimit>10</buildlimit>
+    <buildlimit>5</buildlimit>
     <bounty>25.0000</bounty>
     <buildbounty>25.0000</buildbounty>
-    <cost resourcetype="Wood">150.0000</cost>
-    <cost resourcetype="Gold">100.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Food">100.0000</cost>
     <carrycapacity resourcetype="Food">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
     <maxcontained>50</maxcontained>
@@ -12190,6 +12184,7 @@
     <unittype>AbstractFishingBoat</unittype>
     <unittype>AbstractCountAsGatherer</unittype>
     <unittype>LogicalTypeImprovedByWaterCeremony</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>DontRotateObstruction</flag>
@@ -12221,7 +12216,7 @@
     <protoaction>
       <name>Gather</name>
       <rate type="AbstractFish">1.000000</rate>
-      <rate type="AbstractWhale">2.000000</rate>
+      <rate type="AbstractWhale">1.300000</rate>
     </protoaction>
     <protoaction>
       <name>RangedAttack</name>
@@ -13933,6 +13928,9 @@
       <damagebonus type="AbstractVillager">2.000000</damagebonus>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
     </protoaction>
+  </unit>
+  <unit name="YPDockAsian">
+    <train row ="0" page ="0" column ="12">zpInuitWarCanoe</train>
   </unit>
 
 </protomods>

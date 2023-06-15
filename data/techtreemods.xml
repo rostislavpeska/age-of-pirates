@@ -7993,6 +7993,9 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpInuitWarCanoe</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpInuitFriends" type="Normal">
