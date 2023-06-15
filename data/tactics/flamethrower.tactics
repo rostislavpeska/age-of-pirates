@@ -1,0 +1,30 @@
+<tactics>
+  <action>
+    <name stringid="70308">FlameAttack</name>
+    <reloadanim>Bombard_reload</reloadanim>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <handlogic>1</handlogic>
+    <anim>Bombard_ranged_attack</anim>
+    <idleanim>Bombard_ranged_idle</idleanim>
+    <boredanim>Bombard_bored</boredanim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>1.0</unintentionaldamagemultiplier>
+    <impacteffect>effects\impacts\torch</impacteffect>
+    <rate type="LogicalTypeGarrisonInShips">1.0</rate>
+    <rate type="AbstractWarShip">1.0</rate>
+    <rate type="Building">1.0</rate>
+    <rate type="AbstractFishingBoat">1.0</rate>
+    <perfectaccuracy>1</perfectaccuracy>
+    <handattackdisplayrange>1</handattackdisplayrange>
+  </action>
+  <tactic>Volley<speedmodifier>1.0</speedmodifier><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action>FlameAttack</action><runaway>1</runaway><autoretarget>1</autoretarget><transition><tactic>Normal</tactic><length>0</length><exit>1</exit></transition><idleanim>Bombard_ranged_idle</idleanim><boredanim>Bombard_bored</boredanim><walkanim>Bombard_Walk</walkanim><joganim>Bombard_Jog</joganim><runanim>Bombard_Run</runanim><deathanim>Bombard_Death</deathanim></tactic>
+  <tactic>Defend<speedmodifier>1.0</speedmodifier><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action>FlameAttack</action><runaway>0</runaway><autoretarget>1</autoretarget><transition><tactic>Normal</tactic><length>0</length><exit>1</exit></transition><idleanim>Bombard_ranged_idle</idleanim><boredanim>Bombard_bored</boredanim><walkanim>Bombard_Walk</walkanim><joganim>Bombard_Jog</joganim><runanim>Bombard_Run</runanim><deathanim>Bombard_Death</deathanim></tactic>
+  <tactic>Stagger<speedmodifier>1.0</speedmodifier><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action>FlameAttack</action><runaway>0</runaway><autoretarget>1</autoretarget><transition><tactic>Normal</tactic><length>0</length><exit>1</exit></transition><idleanim>Bombard_ranged_idle</idleanim><boredanim>Bombard_bored</boredanim><walkanim>Bombard_Walk</walkanim><joganim>Bombard_Jog</joganim><runanim>Bombard_Run</runanim><deathanim>Bombard_Death</deathanim></tactic>
+  <tactic>StandGround<speedmodifier>1.0</speedmodifier><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action>FlameAttack</action><runaway>0</runaway><autoretarget>1</autoretarget><transition><tactic>Normal</tactic><length>0</length><exit>1</exit></transition><idleanim>Bombard_ranged_idle</idleanim><boredanim>Bombard_bored</boredanim><walkanim>Bombard_Walk</walkanim><joganim>Bombard_Jog</joganim><runanim>Bombard_Run</runanim><deathanim>Bombard_Death</deathanim></tactic>
+</tactics>

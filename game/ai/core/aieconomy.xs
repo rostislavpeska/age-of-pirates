@@ -2946,7 +2946,7 @@ minInterval 10
 //==============================================================================
 rule slaughterMonitor
 inactive
-minInterval 15
+minInterval 5
 {
    if (cvOkToGatherFood == false)
    {
@@ -2955,14 +2955,74 @@ minInterval 15
    
    static int slaughterPlanID = -1;
    int numCattle = -1;
+   int numSheepWanted = 0;
+   int numCattleWanted = 0;
+   int numLlamaWanted = 0;
    int gatherersWanted = -1;
    vector mainBaseVec = cInvalidVector;
+   int mainBaseID = kbBaseGetMainID(cMyID);
    int time = xsGetTime();
+
+   // AssertiveWall: Build a livestock pen under certain conditions
+   int numPens = 0;
+   if (civIsAfrican() == false &&
+       cMyCiv != cCivDEMexicans &&
+       civIsNative() == false &&
+       cMyCiv != cCivJapanese && cMyCiv != cCivSPCJapanese && cMyCiv != cCivSPCJapaneseEnemy)
+   if (true == true)
+   {
+      mainBaseVec = kbBaseGetLocation(cMyID, mainBaseID);
+      numCattle = getUnitCountByLocation(cUnitTypeHerdable, cPlayerRelationAny, cUnitStateAny, mainBaseVec, 60.0);
+      if (btRushBoom >= 0.5 && kbGetAge() < cAge3) // Rushing stance, go away until Age 3
+      {
+         return;
+      }
+      else if (btRushBoom >= 0.0 && numCattle >= 8)
+      {
+         numPens = 1;
+         numSheepWanted = 5;
+         numCattleWanted = 5;
+         numLlamaWanted = 5;
+      }
+      else if (btRushBoom < 0.0 && numCattle >= 4)
+      {
+         numPens = 1;
+         numSheepWanted = 10;
+         numCattleWanted = 10;
+         numLlamaWanted = 10;
+      }
+      else if (btRushBoom < -0.5)
+      {
+         numPens = 2;
+         numSheepWanted = 20;
+         numCattleWanted = 10;
+         numLlamaWanted = 10;
+      }
+
+      if (numPens > kbUnitCount(cMyID, gLivestockPenUnit, cUnitStateABQ))
+      {
+         createSimpleBuildPlan(gLivestockPenUnit, 1, 75, true, cEconomyEscrowID, mainBaseID, 1);
+      }
+
+      // AssertiveWall: Maintain some herdables
+      if (kbProtoUnitAvailable(cUnitTypeSheep) == true && numSheepWanted > 0)
+      {
+         createSimpleMaintainPlan(cUnitTypeSheep, numSheepWanted, false, mainBaseID, 1);
+      }
+      if (kbProtoUnitAvailable(cUnitTypeCow) == true && numCattleWanted > 0)
+      {
+         createSimpleMaintainPlan(cUnitTypeCow, numCattleWanted, false, mainBaseID, 1);
+      }
+      if (kbProtoUnitAvailable(cUnitTypeLlama) == true && numLlamaWanted > 0)
+      {
+         createSimpleMaintainPlan(cUnitTypeLlama, numLlamaWanted, false, mainBaseID, 1);
+      }
+   }
 
    // Don't slaughter cattle early on.
    if (((time < 900000) &&
         ((time < 500000) || ((gTimeToFarm == false) && (kbUnitCount(cMyID, cUnitTypeFarm, cUnitStateAlive) <= 0) &&
-                             (kbUnitCount(cMyID, cUnitTypeLivestockPen, cUnitStateAlive) <= 0) &&
+                             (kbUnitCount(cMyID, gLivestockPenUnit, cUnitStateAlive) <= 0) &&
                              (kbUnitCount(cMyID, cUnitTypeypVillage, cUnitStateAlive) <= 0)))) &&
        (civIsAfrican() == false || time > 300000))
    {
@@ -2970,13 +3030,13 @@ minInterval 15
    }
 
    // If we have a main base, count the number of herdables in it
-   if (kbBaseGetMainID(cMyID) < 0)
+   if (mainBaseID < 0)
    {
       return;
    }
 
-   mainBaseVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
-   numCattle = getUnitCountByLocation(cUnitTypeHerdable, cPlayerRelationAny, cUnitStateAny, mainBaseVec, 60.0);
+   //mainBaseVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   //numCattle = getUnitCountByLocation(cUnitTypeHerdable, cPlayerRelationAny, cUnitStateAny, mainBaseVec, 60.0);
 
    if (numCattle <= 0)
    {

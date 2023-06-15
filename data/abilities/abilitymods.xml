@@ -30,11 +30,27 @@
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpwokoufuchuan>
   <zpirontank>
-    <ability>dePowerRoundelExplodeAttack<rof>10</rof><castonself>true</castonself></ability>
-    <ability>dePowerRoundelCascadeAttack<rof>10</rof><castonself>true</castonself></ability>
+    <ability>dePowerRoundelExplodeAttack<tech>zpIronTanks</tech><rof>10</rof><castonself>true</castonself></ability>
+    <ability>dePowerRoundelCascadeAttack<tech>zpIronTanks</tech><rof>10</rof><castonself>true</castonself></ability>
   </zpirontank>
   <zpirontankproxy>
     <ability>dePowerRoundelExplodeAttack<rof>10</rof><castonself>true</castonself></ability>
     <ability>dePowerRoundelCascadeAttack<rof>10</rof><castonself>true</castonself></ability>
   </zpirontankproxy>
+  <zpairship>
+    <ability>zpAirshipLighthouse<rof>60</rof><castonself>true</castonself></ability>
+    <ability>zpPowerFireBomb<tech>zpBattleAirship</tech><rof>30</rof></ability>
+    <ability>zpMustardGas<tech>zpMustardGas</tech><rof>30</rof></ability>
+  </zpairship>
+  <zpsubmarine>
+    <ability>zpPowerShunt<allowwhilestealthed>true</allowwhilestealthed><rof>60</rof></ability>
+  </zpsubmarine>
+  <zpnautilus>
+    <ability>zpPowerShunt<allowwhilestealthed>true</allowwhilestealthed><rof>60</rof></ability>
+  </zpnautilus>
+  <zpairshipai>
+    <ability>zpAirshipLighthouse<rof>60</rof><castonself>true</castonself></ability>
+    <ability>zpPowerFireBomb<tech>zpBattleAirship</tech><rof>30</rof></ability>
+    <ability>zpMustardGas<tech>zpMustardGas</tech><rof>30</rof></ability>
+  </zpairshipai>
 </abilitymods>

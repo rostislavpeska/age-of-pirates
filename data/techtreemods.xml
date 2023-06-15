@@ -138,6 +138,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPirates</effect>
     </effects>
@@ -170,6 +171,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnJapanese</effect>
     </effects>
@@ -202,6 +204,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnChinese</effect>
     </effects>
@@ -234,6 +237,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnIndian</effect>
     </effects>
@@ -2240,6 +2244,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMaltese</effect>     
     </effects>
@@ -2608,7 +2613,7 @@
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">ypWokouJunk</target>
       </effect>
-      <effect type="Data" action="SpawnWokouJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpPirateWaterSpawnFlag1">
+      <effect type="Data" action="SpawnWokouJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpWokouWaterSpawnFlag1">
         <target type="Player">
         </target>
       </effect>
@@ -2623,7 +2628,7 @@
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">ypWokouJunk</target>
       </effect>
-      <effect type="Data" action="SpawnWokouJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpPirateWaterSpawnFlag2">
+      <effect type="Data" action="SpawnWokouJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpWokouWaterSpawnFlag2">
         <target type="Player">
         </target>
       </effect>
@@ -3012,6 +3017,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokou</effect>
     </effects>
@@ -5036,7 +5042,7 @@
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">ypFireship</target>
       </effect>
-      <effect type="Data" action="SpawnWokouFireJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpPirateWaterSpawnFlag1">
+      <effect type="Data" action="SpawnWokouFireJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpWokouWaterSpawnFlag1">
         <target type="Player">
         </target>
       </effect>
@@ -5051,7 +5057,7 @@
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">ypFireship</target>
       </effect>
-      <effect type="Data" action="SpawnWokouFireJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpPirateWaterSpawnFlag2">
+      <effect type="Data" action="SpawnWokouFireJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpWokouWaterSpawnFlag2">
         <target type="Player">
         </target>
       </effect>
@@ -5299,6 +5305,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
@@ -5754,6 +5761,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffJewish</effect>
     </effects>
@@ -6445,6 +6453,8 @@
       <effect type="TechStatus" status="obtainable">zpImperialSubmarine</effect>
       <effect type="TechStatus" status="obtainable">zpIronTanks</effect>
       <effect type="TechStatus" status="obtainable">zpTankBattalion</effect>
+      <effect type="TechStatus" status="obtainable">zpBattleAirship</effect>
+      <effect type="TechStatus" status="obtainable">zpMustardGas</effect>
       <effect type="TechStatus" status="obtainable">NativeTreatyScientists</effect>
       <effect type="TechStatus" status="obtainable">DEIndianFriendshipScientists</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
@@ -6500,6 +6510,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="obtainable">zpconsulatescientistkhora</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientists</effect>
     </effects>
@@ -7476,15 +7487,18 @@
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="2.25" subtype="Hitpoints" relativity="BasePercent">
+      <effect type="Data" amount="2.00" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNautilus</target>
       </effect>
-      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+      <effect type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpSubmarine</target>
       </effect>
       <effect type="SetName" proto="zpNautilus" culture="none" newname="300558">
       </effect>
       <effect type="SetName" proto="zpNautilusProxy" culture="none" newname="300558">
+      </effect>
+      <effect type="Data" action="ShuntAttack" amount="1.50" subtype="Damage" relativity="BasePercent">
+        <target type="ProtoUnit">zpNautilus</target>
       </effect>
     </effects>
   </tech>
@@ -7979,6 +7993,9 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpInuitWarCanoe</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpInuitFriends" type="Normal">
@@ -8008,6 +8025,141 @@
       <effect type="TechStatus" status="active">DENatHonoredTengri</effect>
       <effect type="TechStatus" status="active">WarriorSocietyCree</effect>
       <effect type="TechStatus" status="active">ChampionCree</effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateScientistkhora" type="Normal">
+    <dbid>40268</dbid>
+    <displaynameid>300616</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\scientists_small.png</icon>
+    <rollovertextid>300617</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirshipProxy</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpPickScientist</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpPickScientist">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpBattleAirship" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpMustardGas" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpBattleAirship" type="Normal">
+    <dbid>40269</dbid>
+    <displaynameid>300619</displaynameid>
+    <cost resourcetype="Gold">800.0000</cost>
+    <cost resourcetype="Wood">800.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <rollovertextid>300620</rollovertextid>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\airship_attack.png</icon>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" action="AirshipAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirship</target>
+      </effect>
+      <effect type="Data" action="BombAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirship</target>
+      </effect>
+      <effect type="Data" action="FireBomb" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirship</target>
+      </effect>
+      <effect type="Data" amount="1.5" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpAirship</target>
+      </effect>
+      <effect type="SetName" proto="zpAirship" culture="none" newname="300623">
+      </effect>
+      <effect type="SetName" proto="zpAirshipProxy" culture="none" newname="300623">
+      </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpAirship" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+      <effect type="Data" action="AirshipAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirshipAI</target>
+      </effect>
+      <effect type="Data" action="BombAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirshipAI</target>
+      </effect>
+      <effect type="Data" action="FireBomb" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirshipAI</target>
+      </effect>
+      <effect type="Data" amount="1.5" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpAirshipAI</target>
+      </effect>
+      <effect type="SetName" proto="zpAirshipAI" culture="none" newname="300623">
+      </effect>
+      <effect type="SetName" proto="zpAirshipAIProxy" culture="none" newname="300623">
+      </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpAirshipAI" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+    </effects>
+  </tech>
+  <tech name="zpMustardGas" type="Normal">
+    <dbid>40250</dbid>
+    <displaynameid>300621</displaynameid>
+    <cost resourcetype="Food">1500.0000</cost>
+    <cost resourcetype="Gold">1500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\mustardgas.png</icon>
+    <rollovertextid>300622</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+      <techstatus status="Active">zpBattleAirship</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" action="PoisonBomb" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirship</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpAirship</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpAirship</target>
+      </effect>
+      <effect type="Data" action="PoisonBomb" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirshipAI</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpAirshipAI</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpAirshipAI</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAIAirshipSetup" type="Normal">
+    <dbid>40251</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirshipProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAirshipAIProxy</target>
+      </effect>
     </effects>
   </tech>
 

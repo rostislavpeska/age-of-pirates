@@ -653,7 +653,7 @@ void initArrays(void)
    // Chats.
    //==============================================================================
 
-   gMapNames = xsArrayCreateString(241, "", "Map names");
+   gMapNames = xsArrayCreateString(242, "", "Map names");
    xsArraySetString(gMapNames, 0, "afatlas");
    xsArraySetString(gMapNames, 1, "afatlaslarge");
    xsArraySetString(gMapNames, 2, "afdarfur");
@@ -896,6 +896,7 @@ void initArrays(void)
    xsArraySetString(gMapNames, 237, "zpmalta");
    xsArraySetString(gMapNames, 238, "zptortuga");
    xsArraySetString(gMapNames, 239, "zpcoldwar");
+   xsArraySetString(gMapNames, 240, "zppiratebay");
    
    // List above is up to date for the Italy/Malta release.
 
@@ -1162,7 +1163,8 @@ void analyzeMap()
        cRandomMapName == "zpeldorado" ||
        cRandomMapName == "zpmalta" ||
        cRandomMapName == "zptortuga" ||
-       cRandomMapName == "zpcoldwar")
+       cRandomMapName == "zpcoldwar" ||
+       cRandomMapName == "zppiratebay")
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
@@ -2600,7 +2602,7 @@ minInterval 2
    }
 
    if ((cMyCiv != cCivIndians) && (cMyCiv != cCivSPCIndians) &&
-       (cMyCiv != cCivJapanese) && (cMyCiv != cCivSPCJapanese) && (cMyCiv == cCivSPCJapaneseEnemy))
+       (cMyCiv != cCivJapanese) && (cMyCiv != cCivSPCJapanese) && (cMyCiv != cCivSPCJapaneseEnemy))
    {
       xsEnableRule("slaughterMonitor");
    }

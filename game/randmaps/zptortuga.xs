@@ -112,6 +112,7 @@ void main(void)
    //Socket Constraints
    int avoidSocket = rmCreateClassDistanceConstraint("avoid socket", rmClassID("Socket"), 10.0);
    int avoidSocketLong=rmCreateTypeDistanceConstraint("avoid socket long", "Socket", 50.0);
+   int avoidSocketLongCarib=rmCreateTypeDistanceConstraint("avoid socket long carib", "SocketCaribs", 50.0);
 
    // Bonus Area Constraints
    int avoidBonusIslands=rmCreateClassDistanceConstraint("stuff avoids bonus islands", classBonusIsland, 30.0);
@@ -611,7 +612,7 @@ rmAddObjectDefConstraint(TCID, playerEdgeConstraint);
 rmAddObjectDefConstraint(TCID, avoidImpassableLand);
 rmAddObjectDefConstraint(TCID, playersAwayPort);
 rmAddObjectDefConstraint(TCID, avoidBonusIslands);
-rmAddObjectDefConstraint(TCID, avoidSocket);
+rmAddObjectDefConstraint(TCID, avoidSocketLongCarib);
 
 
   

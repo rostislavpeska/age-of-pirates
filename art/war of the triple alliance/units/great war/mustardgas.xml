@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>Bone_rain</definebone>
+	<attachment>
+		rainbow_attachment_A
+		<component>
+			rainbow_particles
+			<assetreference type="ParticleSystem">
+				<file>War of the Triple Alliance\Units\Great War\mustardgas.particle</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>rainbow_particles</component>
+		</anim>
+	</attachment>
+	<component>
+		rain
+		<logic type="Variation">
+			<data>
+				<assetreference type="GrannyModel">
+					<file>effects\impacts\directional_arrow</file>
+				</assetreference>
+			</data>
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>rain</component>
+	</anim>
+	<anim>
+		HandAttack
+		<assetreference type="GrannyAnim">
+			<file>animation_library\range\defend\longbow_defend_melee_A</file>
+			<tag type="Attack">0.0</tag>
+			<tag type="Attack">0.05</tag>
+			<tag type="Attack">0.1</tag>
+			<tag type="Attack">0.15</tag>
+			<tag type="Attack">0.2</tag>
+			<tag type="Attack">0.25</tag>
+			<tag type="Attack">0.3</tag>
+			<tag type="Attack">0.35</tag>
+			<tag type="Attack">0.4</tag>
+			<tag type="Attack">0.45</tag>
+			<tag type="Attack">0.5</tag>
+			<tag type="Attack">0.55</tag>
+			<tag type="Attack">0.6</tag>
+			<tag type="Attack">0.65</tag>
+			<tag type="Attack">0.7</tag>
+			<tag type="Attack">0.75</tag>
+			<tag type="Attack">0.8</tag>
+			<tag type="Attack">0.85</tag>
+			<tag type="Attack">0.9</tag>
+			<tag type="Attack">0.95</tag>
+		</assetreference>
+		<component>ball</component>
+	</anim>
+</animfile>

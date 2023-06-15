@@ -186,8 +186,8 @@
       <string _locid="300184">Wokou Pirates</string>
       <string _locid="300185">ZP Socket Wokou</string>
       <string _locid="300186">ZP NAT Wokou Pirate</string>
-      <string _locid="300187">ZP SPC Wokou Floating Base</string>
-      <string _locid="300188">Stolen Treasure Ship</string>
+      <string _locid="300187">ZP SPC Treasure Ship</string>
+      <string _locid="300188">Treasure Ship</string>
       <string _locid="300189">Mother of all ships</string>
       <string _locid="300190">Floating Dragon</string>
       <string _locid="300191">ZP Colonization Wagon Asian</string>
@@ -221,7 +221,7 @@
       <string _locid="300218">The Iron Fleet</string>
       <string _locid="300219">Ships a mighty Madame Ching's Flagship.</string>
       <string _locid="300220">Destroyer</string>
-      <string _locid="300221">Uniue Japanese steam powered warship with special flame attack.</string>
+      <string _locid="300221">Unique steam powered warship able to train hoop throwers and detect submarines and other stealth units.</string>
       <string _locid="300222">Steam powered warship.</string>
       <string _locid="300223">Hydra</string>
       <string _locid="300224">ZP Socket SPC Zen</string>
@@ -412,7 +412,7 @@
       <string _locid="300408">Jewish House</string>
       <string _locid="300409">ZP NAT House Jewish</string>
       <string _locid="300410">ZP Jewish Flag</string>
-      <string _locid="300411">Jewish Settler</string>
+      <string _locid="300411">Settlement Militia</string>
       <string _locid="300412">ZP Nat Jewish Settler</string>
       <string _locid="300413">Pessah</string>
       <string _locid="300414">Torah</string>
@@ -472,9 +472,9 @@
       <string _locid="300468">The Dead Sea: Large valley with player's castles and a salty lake in the middle \n\nSettlements: Jewish, Maltese, Sufi Blue Mosque</string>
       <string _locid="300469">Large lake map map with several major Sufi Mosques, Maltese villages and Jewish settlements. Who controls the natives, controls the map.</string>
       <string _locid="300470">ZP Submarine</string>
-      <string _locid="300471">Submerge \nSubmerged submarine with no silent drive mod is not completely invisible but it's hart to hit.</string>
-      <string _locid="300472">Surface \nSubmarine surfaces to move faster.</string>
-      <string _locid="300473">Silent Drive \nSubmarine becomes invisible and can get closer to enemy ships.</string>
+      <string _locid="300471">Submerge: \nSubmerged submarine with no silent drive is not completely invisible but moves a bit faster and is hart to hit. 40% Damage bonus against ships and dock. 50% more hitpoints. Can't attack land targets.</string>
+      <string _locid="300472">Surface: \nSurfaced Submarine moves very fast and can attack buildings and land units.</string>
+      <string _locid="300473">Silent Drive: \nSubmarine becomes invisible and can get closer to enemy ships but moves very slow. 40% Damage bonus against ships and dock. 50% more hitpoints. Can't attack land targets.</string>
       <string _locid="300474">ZP Torpedo</string>
       <string _locid="300475">Submarine</string>
       <string _locid="300476">Nautilus</string>
@@ -502,8 +502,8 @@
       <string _locid="300498">Test Building 4</string>
       <string _locid="300499">Test Building 5</string>
       <string _locid="300500">Gatling Gun</string>
-      <string _locid="300501">Protect Dock \nSubmerged submarine stands to protects dock or fleet formation and doesn't move around the map.</string>
-      <string _locid="300502">ZP Scientists Factory</string>
+      <string _locid="300501">Protect Dock: \nSubmerged submarine stands to protects dock or trading post and doesn't move around the map. 40% Damage bonus against ships and dock. Can't attack land targets. 50% more hitpoints. Nearby Building hitpoints increased by 75%.</string>
+      <string _locid="300502">ZP Scientists Factory Winter</string>
       <string _locid="300503">Weapon Factory</string>
       <string _locid="300504">Native Building</string>
       <string _locid="300505">ZP Scientists Fire Thrower</string>
@@ -512,7 +512,7 @@
       <string _locid="300509">Iron Fleet</string>
       <string _locid="300510">Ships an steam-powered Destroyer able to train hoop throwers and detect submarines.</string>
       <string _locid="300511">Air Explorers</string>
-      <string _locid="300512">Ships a very advanced hot air balloon able to drop bombs on an enemy colony.</string>
+      <string _locid="300512">Ships an advanced hot air balloon.</string>
       <string _locid="300513">Academy of Sciences</string>
       <string _locid="300514">Veteran Hoop Thrower</string>
       <string _locid="300515">Guard Hoop Thrower</string>
@@ -602,9 +602,39 @@
       <string _locid="300599">Aurora</string>
       <string _locid="300600">Attracts Champion warriors from other native tribes</string>
       <string _locid="300601">Ships Inuit War Canoes</string>
-      <string _locid="300602">Strong attack, very efficient for fishing and especially whaling</string>
+      <string _locid="300602">Strong attack, very efficient for fishing and especially whaling. Can detect stealth units like submarines.</string>
       <string _locid="300603">Ice Fishing Hole</string>
       <string _locid="300604">ZP Fishing Hole</string>
+      <string _locid="300605">Experimental Airship</string>
+      <string _locid="300606">Crow Attack</string>
+      <string _locid="300607">Exploding Crow</string>
+      <string _locid="300608">Poisoned Crow</string>
+      <string _locid="300609">Destructive flying crow. Especially effective against buildings.</string>
+      <string _locid="300610">Mustard gas flying crow which slowly causes significant damage to all nearby units including yours.</string>
+      <string _locid="300611">ZP Propeller Test</string>
+      <string _locid="300612">ZP Mustard Gas</string>
+      <string _locid="300613">Airship Broadside Attack</string>
+      <string _locid="300614">A Darkling Plain</string>
+      <string _locid="300615">Flying Fortress. Can transport units and can be repaired in dock as a standard ship. Explodes after taking signifficant damage.</string>
+      <string _locid="300616">Nadzimoyo Khora</string>
+      <string _locid="300617">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Airship \n\nPioneer of aviation and air pirate. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nAir Attack, Mustard Gas</string>
+      <string _locid="300618">ZP Airship Proxy</string>
+      <string _locid="300619">Air Attack</string>
+      <string _locid="300620">Equips your airship with flying crows and, it a special anti-airship attack and improves it's hitpoints.</string>
+      <string _locid="300621">Mustard Gas</string>
+      <string _locid="300622">Adds your airship a special attack ability and improves it's current attack and hitpoints.</string>
+      <string _locid="300623">Airship</string>
+      <string _locid="300624">Reconnaissance Mission</string>
+      <string _locid="300625">Shows enemy positions on the map</string>
+      <string _locid="300626">Wokou Settlement Water Flag</string>
+      <string _locid="300627">ZP NAT Wokou Water Flag 1</string>
+      <string _locid="300628">ZP NAT Wokou Water Flag 2</string>
+      <string _locid="300629">ZP Scientists Factory Summer</string>
+      <string _locid="300630">ZP EU Palace Wing</string>
+      <string _locid="300631">Submarine dives and rams enemy ship. Strong bonus against advanced wooden ships like Frigate or Monitor.</string>
+      <string _locid="300632">ZP Test Submarine Pirate</string>
+      <string _locid="300633">Experimental Airship</string>
+      <string _locid="300634">ZP Conversion Attachement</string>
     </language>
   </stringtable>
 </stringmods>

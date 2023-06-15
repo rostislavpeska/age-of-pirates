@@ -19,6 +19,7 @@ minInterval 5
     // Initializes all pirate functions if this is a pirate map
     // Add always active rules here
     xsEnableRule("CaribTPMonitor");
+    xsEnableRule("pirateShipAbilityMonitor");
 
     // Test to check if this script gets run
     //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbGetMapCenter());
@@ -39,6 +40,7 @@ minInterval 5
     if (getGaiaUnitCount(cUnitTypezpNativeHouseJewish) > 0)
     {
         xsEnableRule("maintainJewishSettlers");
+        xsEnableRule("jewishBuildingMonitor");
     }
     if ((getGaiaUnitCount(cUnitTypezpSPCBlueMosque) > 0) || (getGaiaUnitCount(cUnitTypezpSPCGreatMosque) > 0))
     {
@@ -47,6 +49,7 @@ minInterval 5
         xsEnableRule("SufiBigButtonMonitor");
         xsEnableRule("SufiTechMonitor");
         xsEnableRule("SufiWhiteFortManager");
+        xsEnableRule("zenSufiBuildingMonitor");
     }
     if (getGaiaUnitCount(cUnitTypezpSPCGreatBuddha) > 0)
     {
@@ -54,6 +57,7 @@ minInterval 5
         xsEnableRule("ZenBigButtonMonitor");
         xsEnableRule("ZenTechMonitor");
         xsEnableRule("nativeWagonMonitor");
+        xsEnableRule("zenSufiBuildingMonitor");
     }
     if (getGaiaUnitCount(cUnitTypezpNativeAztecTempleA) > 0)
     {
@@ -61,28 +65,408 @@ minInterval 5
         xsEnableRule("zpNativeAztecBigButtonMonitor");
         xsEnableRule("nativeWagonMonitor");
         xsEnableRule("zpAztecTechMonitor");
+        xsEnableRule("aztecBuildingMonitor");
     }
     if (getGaiaUnitCount(cUnitTypezpWeaponFactoryWinter) > 0)
     {
         xsEnableRule("MaintainScientistShips");
         xsEnableRule("MaintainScientistTanks");
+        xsEnableRule("MaintainScientistAirship");
         xsEnableRule("zpScientistTechMonitor");
         xsEnableRule("nativeWagonMonitor");
         xsEnableRule("submarineTactics");
+        xsEnableRule("airshipAbilityMonitor");
+        xsEnableRule("airshipManager");
     }
 
     if (getGaiaUnitCount(cUnitTypezpNativeHouseInuit) > 0)
     {
         xsEnableRule("zpInuitTechMonitor");
-
     }
     if (getGaiaUnitCount(cUnitTypezpNativeHouseMaltese) > 0)
     {
         xsEnableRule("zpMalteseTechMonitor");
-
     }
     
     xsDisableSelf();
+}
+
+//==============================================================================
+// Airship Manager
+//==============================================================================
+rule airshipManager
+inactive
+minInterval 12
+{  // Looks for any active attack or defend plan and adds the airship to it. Based on isdefendingorattacking
+   int numPlans = aiPlanGetActiveCount();
+   int existingPlanID = -1;
+
+   if (getUnit(cUnitTypezpAirshipAI) < 0)
+   {
+      return;
+   }
+   
+   for (int i = 0; i < numPlans; i++)
+   {
+      existingPlanID = aiPlanGetIDByActiveIndex(i);
+      if (aiPlanGetType(existingPlanID) != cPlanCombat)
+      {
+         continue;
+      }
+      if (aiPlanGetVariableInt(existingPlanID, cCombatPlanCombatType, 0) == cCombatPlanCombatTypeDefend)
+      {
+         if ((existingPlanID != gExplorerControlPlan) &&
+             (existingPlanID != gLandDefendPlan0) && 
+             (existingPlanID != gLandReservePlan) && 
+             (existingPlanID != gHealerPlan) && 
+             (existingPlanID != gNavyRepairPlan) && 
+             (existingPlanID != gNavyDefendPlan) &&
+             (existingPlanID != gCoastalGunPlan))
+         {
+            aiPlanAddUnitType(existingPlanID, cUnitTypezpAirshipAI, 1, 1, 200);
+         }
+      }
+      else // Attack plan.
+      {
+         if ((aiPlanGetParentID(existingPlanID) < 0) && // No parent so not a reinforcing child plan.
+             (existingPlanID != gCoastalGunPlan))
+         {
+            aiPlanAddUnitType(existingPlanID, cUnitTypezpAirshipAI, 1, 1, 200);
+         }
+      }
+   }
+}
+
+//==============================================================================
+// Pirate Ship Ability Monitor
+//==============================================================================
+rule pirateShipAbilityMonitor
+inactive
+minInterval 12
+{
+   int pirateShipID = getUnit(cUnitTypezpSPCQueenAnne, cMyID, cUnitStateAlive);
+   int enemyID = -1;
+   vector pirateShipLoc = cInvalidVector;
+   int enemyCount = 0;
+   bool longBombard = false;
+
+   if (pirateShipID > 0)
+   {
+      pirateShipLoc = kbUnitGetPosition(pirateShipID);
+      if (aiCanUseAbility(pirateShipID, cProtoPowerPowerGreekFire) == true)
+      {
+         // Look for nearby units to use the ability on
+         enemyID = getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+            cUnitStateAlive, pirateShipLoc, 20.0);
+         if (enemyID >= 0)
+         {
+            aiTaskUnitSpecialPower(pirateShipID, cProtoPowerPowerGreekFire, enemyID, cInvalidVector);
+         }
+      }
+      pirateShipID = 0;
+   }
+   if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(cUnitTypezpSubmarine, cMyID, cUnitStateAlive);
+      if (pirateShipID > 0)
+      {
+         pirateShipLoc = kbUnitGetPosition(pirateShipID);
+         if (aiCanUseAbility(pirateShipID, cProtoPowerdePowerShunt) == true)
+         {
+            // Look for nearby units to use the ability on. Only ram when there are 1-2 enemies nearby
+            enemyID = getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, pirateShipLoc, 15.0);
+            enemyCount = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, pirateShipLoc, 45.0);
+            if (enemyID >= 0 && enemyCount <= 2)
+            {
+               aiTaskUnitSpecialPower(pirateShipID, cProtoPowerdePowerShunt, enemyID, cInvalidVector);
+            }
+         }
+      }
+      pirateShipID = getUnit(cUnitTypezpNautilus, cMyID, cUnitStateAlive);
+      if (pirateShipID > 0)
+      {
+         pirateShipLoc = kbUnitGetPosition(pirateShipID);
+         if (aiCanUseAbility(pirateShipID, cProtoPowerdePowerShunt) == true)
+         {
+            // Look for nearby units to use the ability on. Only ram when there are 1-2 enemies nearby
+            enemyID = getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, pirateShipLoc, 15.0);
+            enemyCount = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, pirateShipLoc, 45.0);
+            if (enemyID >= 0 && enemyCount <= 2)
+            {
+               aiTaskUnitSpecialPower(pirateShipID, cProtoPowerdePowerShunt, enemyID, cInvalidVector);
+            }
+         }
+      }
+      pirateShipID = 0;
+   }
+
+   // If we didn't find the flagship, keep looking for others
+   if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(cUnitTypezpSPCBlackPearl, cMyID, cUnitStateAlive);
+   }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(cUnitTypezpSPCNeptuneGalley, cMyID, cUnitStateAlive);
+      longBombard = true;
+   }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(cUnitTypezpWokouFuchuan, cMyID, cUnitStateAlive);
+   }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(cUnitTypezpSPCTreasureShip, cMyID, cUnitStateAlive);
+      longBombard = true;
+   }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(cUnitTypezpMalteseRiggedShip, cMyID, cUnitStateAlive);
+   }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(cUnitTypezpSPCLineShip, cMyID, cUnitStateAlive);
+   }
+   if (pirateShipID > 0)
+   {
+      pirateShipLoc = kbUnitGetPosition(pirateShipID);
+      if (aiCanUseAbility(pirateShipID, cProtoPowerPowerBroadside) == true)
+      {
+         // Look for nearby units to use the ability on
+         enemyID = getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia,
+            cUnitStateAlive, pirateShipLoc, 28.0);
+         if (enemyID >= 0)
+         {
+            aiTaskUnitSpecialPower(pirateShipID, cProtoPowerPowerBroadside, enemyID, cInvalidVector);
+         }
+      }
+      if (longBombard == true)
+      {
+         if (aiCanUseAbility(pirateShipID, cProtoPowerPowerLongRange) == true)
+         {
+            // Look for nearby buildings to use the ability on
+            enemyID = getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, pirateShipLoc, 65.0);
+            if (enemyID >= 0)
+            {
+               aiTaskUnitSpecialPower(pirateShipID, cProtoPowerPowerLongRange, enemyID, cInvalidVector);
+            }
+         }
+      }
+   }
+}
+
+//==============================================================================
+// Airship Ability Monitor
+//==============================================================================
+rule airshipAbilityMonitor
+inactive
+minInterval 12
+{
+   int airshipID = getUnit(cUnitTypezpAirshipAI, cMyID, cUnitStateAlive);
+   int enemyID = 0;
+   vector enemyLoc = cInvalidVector;
+   int friendlyNum = 0;
+   
+   if (airshipID >= 0)
+   {
+      vector airshipLoc = kbUnitGetPosition(airshipID);
+      // Check for fire bomb, then poison, then explosion
+      if (aiCanUseAbility(airshipID, cProtoPowerzpPowerFireBomb) == true)
+      {
+         // Look for nearby units to use the ability on
+         enemyID = getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia,
+            cUnitStateAlive, airshipLoc, 20.0);
+         if (enemyID >= 0)
+         {
+            aiTaskUnitSpecialPower(airshipID, cProtoPowerzpPowerFireBomb, enemyID, cInvalidVector);
+         }
+      }
+
+      if (aiCanUseAbility(airshipID, cProtoPowerzpMustardGas) == true && enemyID < 0)
+      {
+         enemyID = getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+            cUnitStateAlive, airshipLoc, 20.0);
+         enemyLoc = kbUnitGetPosition(enemyID);
+         friendlyNum = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly, cUnitStateAlive, 
+            enemyLoc, 14.0);
+         if (enemyID >= 0 && friendlyNum <= 0)
+         {
+            aiTaskUnitSpecialPower(airshipID, cProtoPowerzpMustardGas, enemyID, cInvalidVector);
+         }
+      }
+   }
+}
+
+//==============================================================================
+// zenSufi Building Monitor
+//==============================================================================
+rule zenSufiBuildingMonitor
+inactive
+minInterval 5
+{
+   int towerCount = kbUnitCount(cMyID, gTowerUnit, cUnitStateAlive);
+   int planID = -1;
+
+   // =================
+   // First look at Zen
+   // =================
+   int zenVillager = getUnit(cUnitTypezpSettlerZen, cPlayerRelationSelf, cUnitStateAlive);
+   int sufiVillager = getUnit(cUnitTypezpSettlerSufi, cPlayerRelationSelf, cUnitStateAlive);
+   if (zenVillager > 0 || sufiVillager > 0)
+   {
+      // Check for desired number of paddys and towers. Allow native to build +1 more than we want (via >=)
+      int zenTowerLimit = kbGetBuildLimit(cMyID, cUnitTypeYPOutpostAsian);
+      int zenTowerCount = kbUnitCount(cMyID, cUnitTypeYPOutpostAsian, cUnitStateABQ);
+      if (gNumTowers >= towerCount && zenTowerCount < zenTowerLimit)
+      {
+         planID = createSimpleBuildPlan(cUnitTypeYPOutpostAsian, 1, 99, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 0);
+         if (zenVillager > 0)
+         {
+            aiPlanAddUnitType(planID, cUnitTypezpSettlerZen, 1, 1, 1);
+         }
+         else if (sufiVillager > 0)
+         {
+            aiPlanAddUnitType(planID, cUnitTypezpSettlerSufi, 1, 1, 1);
+         }
+         else
+         {  // Shouldn't ever get here, but just in case
+            aiPlanDestroy(planID);
+         }
+         //createLocationBuildPlan(YPOutpostAsian, 1, 70, false, cMilitaryEscrowID, vector position = cInvalidVector, int numberBuilders = 1)
+      }
+
+      // For now just build one rice paddy. The logic to build mills/plantations is fairly involved and difficult
+      // to slip into
+      int zenPaddyLimit = 1;
+      int zenPaddyCount = kbUnitCount(cMyID, cUnitTypeypRicePaddy, cUnitStateABQ);
+      if (zenPaddyCount < zenPaddyLimit)
+      {
+         planID = createSimpleBuildPlan(cUnitTypeypRicePaddy, 1, 99, true, cEconomyEscrowID, kbBaseGetMainID(cMyID), 0);
+         if (zenVillager > 0)
+         {
+            aiPlanAddUnitType(planID, cUnitTypezpSettlerZen, 1, 1, 1);
+         }
+         else if (sufiVillager > 0)
+         {
+            aiPlanAddUnitType(planID, cUnitTypezpSettlerSufi, 1, 1, 1);
+         }
+         else
+         {  // Shouldn't ever get here, but just in case
+            aiPlanDestroy(planID);
+         }
+      }
+   }
+
+   // =================
+   // Now look at SufiB
+   // =================
+   int sufiBVillager = getUnit(cUnitTypezpSettlerSufiB, cPlayerRelationSelf, cUnitStateAlive);
+   if (sufiBVillager > 0)
+   {
+      // Check for desired number of towers. Allow native to build +1 more than we want (via >=)
+      int sufiBTowerLimit = kbGetBuildLimit(cMyID, cUnitTypezpArabianTower);
+      int sufiBTowerCount = kbUnitCount(cMyID, cUnitTypezpArabianTower, cUnitStateABQ);
+      if (gNumTowers >= towerCount && sufiBTowerCount < sufiBTowerLimit)
+      {
+         planID = createSimpleBuildPlan(cUnitTypezpArabianTower, 1, 59, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 0);
+         if (sufiBVillager > 0)
+         {
+            aiPlanAddUnitType(planID, cUnitTypezpSettlerSufiB, 1, 1, 1);
+         }
+         else
+         {  // Shouldn't ever get here, but just in case
+            aiPlanDestroy(planID);
+         }
+      }
+   }
+}
+
+//==============================================================================
+// Aztec Building Monitor
+//==============================================================================
+rule aztecBuildingMonitor
+inactive
+minInterval 5
+{
+   int towerCount = kbUnitCount(cMyID, gTowerUnit, cUnitStateAlive);
+   int planID = -1;
+
+   // =================
+   // Now Aztec
+   // =================
+   int AztecVillager = getUnit(cUnitTypezpSettlerAztec, cPlayerRelationSelf, cUnitStateAlive);
+   if (AztecVillager > 0)
+   {
+      // Check for desired number of farms, estates, and towers. Allow native to build +1 more than we want (via >=)
+      int AztecTowerLimit = kbGetBuildLimit(cMyID, cUnitTypezpAztecOutpost);
+      int AztecTowerCount = kbUnitCount(cMyID, cUnitTypezpAztecOutpost, cUnitStateABQ);
+      if (gNumTowers >= towerCount && AztecTowerCount < AztecTowerLimit)
+      {
+         planID = createSimpleBuildPlan(cUnitTypezpAztecOutpost, 1, 99, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 0);
+         if (AztecVillager > 0)
+         {
+            aiPlanAddUnitType(planID, cUnitTypezpSettlerAztec, 1, 1, 1);
+         }
+         else
+         {  // Shouldn't ever get here, but just in case
+            aiPlanDestroy(planID);
+         }
+      }
+
+      // The build limit for the water temple is 1, so don't bother looking it up
+      int AztecTempleLimit = 1;
+      int AztecTempleCount = kbUnitCount(cMyID, cUnitTypezpWaterTemple, cUnitStateABQ);
+      if (AztecTempleCount < AztecTempleLimit)
+      {
+         planID = createSimpleBuildPlan(cUnitTypezpWaterTemple, 1, 99, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 0);
+         if (AztecVillager > 0)
+         {
+            aiPlanAddUnitType(planID, cUnitTypezpSettlerAztec, 1, 1, 1);
+         }
+         else
+         {  // Shouldn't ever get here, but just in case
+            aiPlanDestroy(planID);
+         }
+      }
+   }
+}
+
+//==============================================================================
+// Jewish Building Monitor
+//==============================================================================
+rule jewishBuildingMonitor
+inactive
+minInterval 5
+{
+   int planID = -1;
+
+   // =================
+   // Now Jewish
+   // =================
+   int jewishVillager = getUnit(cUnitTypezpNatSettlerJewish, cPlayerRelationSelf, cUnitStateAlive);
+   if (jewishVillager > 0)
+   {
+      // The build limit for the Academy is 1, so don't bother looking it up
+      int AcademyLimit = 1;
+      int AcademyCount = kbUnitCount(cMyID, cUnitTypezpAcademy, cUnitStateABQ);
+      if (AcademyCount < AcademyLimit)
+      {
+         planID = createSimpleBuildPlan(cUnitTypezpAcademy, 1, 90, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 0);
+         if (jewishVillager > 0)
+         {
+            aiPlanAddUnitType(planID, cUnitTypezpNatSettlerJewish, 1, 1, 1);
+         }
+         else
+         {  // Shouldn't ever get here, but just in case
+            aiPlanDestroy(planID);
+         }
+      }
+   }
 }
 
 //==============================================================================
@@ -133,7 +517,7 @@ minInterval 3
          nearbyEnFound = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, shipLoc, 45.0); // Submarine range is 30
          if (nearbyEnFound > 0)
          {
-            subTactic = cTacticzpDive;
+            subTactic = cTacticzpStealth;
             aiUnitSetTactic(shipID, subTactic);
          }
          else
@@ -1124,11 +1508,11 @@ mininterval 60
 //==============================================================================
 rule zpScientistTechMonitor
 inactive
-mininterval 60
+mininterval 1
 {
    if (kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0)
       {
-      return; // Player has no Aztec socket.
+      return; // Player has no Scientist socket.
       }
 
       // Scientist Academy
@@ -1158,6 +1542,14 @@ mininterval 60
       []() -> bool { return ((kbTechGetStatus(cTechzpConsulateScientistValentine) == cTechStatusActive) && ( kbGetAge() >= cAge4 )); },
       cUnitTypeTradingPost);
 
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpBattleAirship,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateScientistkhora) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpMustardGas,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateScientistkhora) == cTechStatusActive) && ( kbGetAge() >= cAge4 )); },
+      cUnitTypeTradingPost);
+
   if (canDisableSelf == true)
       {
           xsDisableSelf();
@@ -1166,7 +1558,7 @@ mininterval 60
 }
 
 //==============================================================================
-// Maintain Proxies in Scientist Trading Post
+// Maintain Submarine Proxies in Scientist Trading Post
 //==============================================================================
 
 rule MaintainScientistShips
@@ -1378,4 +1770,70 @@ mininterval 60
           xsDisableSelf();
       }
   
+}
+
+//==============================================================================
+// Maintain Airship in Scientist Trading Post
+//==============================================================================
+
+rule MaintainScientistAirship
+inactive
+minInterval 1
+{
+  const int list_size = 1;
+  static int proxy_list = -1;
+  static int ship_list = -1;
+
+  if (kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0)
+   {
+      return;
+   }
+
+   if ( kbGetAge() <= cAge2 )
+   {
+      return;
+   }
+
+      if (proxy_list == -1)
+      {
+         proxy_list = xsArrayCreateInt(list_size, -1, "List of Scientist Airship Proxies");
+         ship_list = xsArrayCreateInt(list_size, -1, "List of Scientist Airships");
+
+         xsArraySetInt(proxy_list, 0, cUnitTypezpAirshipAIProxy);
+         xsArraySetInt(ship_list, 0, cUnitTypezpAirshipAI);
+      }
+
+      for(i = 0; < xsArrayGetSize(proxy_list))
+      {
+         int proxy = xsArrayGetInt(proxy_list, i);
+         int ship = xsArrayGetInt(ship_list, i);
+         
+         int maintain_plan = aiPlanGetIDByTypeAndVariableType(cPlanTrain, cTrainPlanUnitType, proxy, true);
+         int number_to_maintain = kbGetBuildLimit(cMyID, ship) - kbUnitCount(cMyID, ship);
+
+         if (maintain_plan == -1)
+         {
+            if (kbProtoUnitAvailable(proxy) == true)
+            {
+            maintain_plan = aiPlanCreate("Maintain " + kbGetProtoUnitName(proxy), cPlanTrain);
+            aiPlanSetVariableInt(maintain_plan, cTrainPlanUnitType, 0, proxy);
+            aiPlanSetVariableBool(maintain_plan, cTrainPlanUseMultipleBuildings, 0, false);
+            aiPlanSetVariableInt(maintain_plan, cTrainPlanNumberToMaintain, 0, number_to_maintain);
+            aiPlanSetVariableInt(maintain_plan, cTrainPlanBatchSize, 0, 1);
+            aiPlanSetActive(maintain_plan, true);
+            }
+         }
+         else
+         {
+            if (kbProtoUnitAvailable(proxy) == true)
+            {
+            aiPlanSetVariableInt(maintain_plan, cTrainPlanNumberToMaintain, 0, number_to_maintain);
+            }
+            else
+            {
+            aiPlanDestroy(maintain_plan);
+            }
+         }
+      
+   }
 }

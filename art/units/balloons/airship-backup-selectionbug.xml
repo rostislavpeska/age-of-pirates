@@ -1,0 +1,161 @@
+<animfile>
+ <definebone>bone_fire01</definebone>
+	<definebone>bone_fire02</definebone>
+	<definebone>bone_fire03</definebone>
+	<definebone>bone_fire04</definebone>
+	<definebone>bone_fire05</definebone>
+	<definebone>bone_fire06</definebone>
+	<definebone>bone_fire07</definebone>
+	<definebone>bone_fire08</definebone>
+	<definebone>bone_fire09</definebone>
+	<definebone>bone_fire10</definebone>
+	<definebone>bone_fire11</definebone>
+	<definebone>bone_fire12</definebone>
+	<definebone>bone_launchpoint</definebone>
+	<definebone>bone_propeller_L</definebone>
+	<definebone>bone_propeller_R</definebone>
+	<definebone>bone_explosion01</definebone>
+	<definebone>bone_explosion02</definebone>
+	<attachment>Death_EXP
+		<component>exp
+			<assetreference type="popcornFx">
+				<file>units\spc\fire_ship\Exp_galleon_ship.pkfx</file>
+			</assetreference>
+		</component>
+		<anim>None
+			<component>exp</component>
+		</anim>
+	</attachment>
+	<attachment>Death_EXP_Wood
+		<component>exp
+			<assetreference type="popcornFx">
+				<file>projectiles\ship_debris_wood.pkfx</file>
+			</assetreference>
+		</component>
+		<anim>None
+			<component>exp</component>
+		</anim>
+	</attachment>
+	<attachment>Explosion
+		<component>explosion
+			<assetreference type="popcornFx">
+				<file>units\spc\fire_ship\FireExplosion.pkfx</file>
+			</assetreference>
+		</component>
+		<anim>None
+			<component>explosion</component>
+		</anim>
+	</attachment>
+	<attachment>propellerR
+		<component>propellerR
+			<assetreference type="GrannyModel">
+				<file>units\balloons\propeller_Model</file>
+			</assetreference>
+		</component>
+		<anim animlengthoverride="3.0000">Idle
+			<assetreference type="GrannyAnim">
+				<file>units\balloons\propeller_Anim</file>
+			</assetreference>
+			<component>propellerR</component>
+		</anim>
+		<anim animlengthoverride="3.0000">GrenadeAttack
+			<assetreference type="GrannyAnim">
+				<file>units\balloons\propeller_Anim</file>
+			</assetreference>
+			<component>propellerR</component>
+		</anim>
+		<anim animlengthoverride="3.0000">BombAttack
+			<assetreference type="GrannyAnim">
+				<file>units\balloons\propeller_Anim</file>
+			</assetreference>
+			<component>propellerR</component>
+		</anim>
+		<anim>Death
+			<assetreference type="GrannyAnim">
+				<file>units\balloons\propeller_Idle</file>
+			</assetreference>
+			<component>propellerR</component>
+		</anim>
+		<anim animlengthoverride="0.5000">Walk
+			<assetreference type="GrannyAnim">
+				<file>units\balloons\propeller_Anim</file>
+			</assetreference>
+			<component>propellerR</component>
+		</anim>
+	</attachment>
+	<component>ModelComp
+		<assetreference type="GrannyModel">
+			<file>units\balloons\airship</file>
+		</assetreference>
+		<attach a="propellerR" frombone="ATTACHPOINT" tobone="bone_propeller_L" syncanims="1"></attach>
+		<attach a="propellerR" frombone="ATTACHPOINT" tobone="bone_propeller_R" syncanims="1"></attach>
+		<decal>
+			<effecttype>default</effecttype>
+			<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
+			<selectedtexture>shadows_selections\selection_circle_64x64</selectedtexture>
+			<width>5.00</width>
+			<height>5.00</height>
+		</decal>
+	</component>
+	<anim>Idle
+		<assetreference type="GrannyAnim">
+			<file>units\balloons\airship_idle</file>
+		</assetreference>
+		<component>ModelComp</component>
+		
+	</anim>
+	<anim>
+		GrenadeAttack
+		<assetreference type="GrannyAnim">
+			<file>units\balloons\airship_idle</file>
+			<tag type="Attack">0.02</tag>
+		</assetreference>
+		<component>ModelComp</component>
+		
+	</anim>
+	<anim>
+		BombAttack
+		<assetreference type="GrannyAnim">
+			<file>units\balloons\airship_idle</file>
+			<tag type="Attack">0.02</tag>
+		</assetreference>
+		<component>ModelComp</component>
+		
+	</anim>
+	<anim>Walk
+		<assetreference type="GrannyAnim">
+			<file>units\balloons\airship_idle</file>
+		</assetreference>
+		<component>ModelComp</component>
+		
+	</anim>
+	<anim>Death
+		<assetreference type="GrannyAnim">
+			<file>units\balloons\airship_death</file>
+			<tag type="SpecificSoundSet" checkvisible="1" set="Explosion">0.12</tag>
+			<tag type="SpecificSoundSet" checkvisible="1" set="SettlerGunShot">0.02</tag>
+			<tag type="SpecificSoundSet" checkvisible="1" set="SettlerGunShot">0.03</tag>
+			<tag type="SpecificSoundSet" checkvisible="1" set="SettlerGunShot">0.06</tag>
+			<tag type="SpecificSoundSet" checkvisible="1" set="SettlerGunShot">0.09</tag>
+			<tag type="SpecificSoundSet" checkvisible="1" set="SettlerGunShot">0.12</tag>
+			<tag type="SpecificSoundSet" checkvisible="1" set="BuildingPartImpact">0.46</tag>
+			<tag type="SpecificSoundSet" checkvisible="1" set="BuildingPartImpact">0.54</tag>
+			<tag type="SpecificSoundSet" checkvisible="1" set="BuildingPartImpact">0.38</tag>
+			<tag type="SpecificSoundSet" checkvisible="1" set="BuildingPartImpact">0.31</tag>
+			<tag type="SpecificSoundSet" checkvisible="1" set="BuildingDestruction">0.7</tag>
+			<tag type="Particles" particlename="wcsmallexp_01">0.02</tag>
+			<tag type="Particles" particlename="wcsmallexp_02">0.03</tag>
+			<tag type="Particles" particlename="wcsmallexp_03">0.06</tag>
+			<tag type="Particles" particlename="wcsmallexp_04">0.09</tag>
+			<tag type="Particles" particlename="wclargeexp">0.12</tag>
+		</assetreference>
+		<component>ModelComp</component>
+		<simskeleton>
+			<model>units\balloons\airship</model>
+			<damagetemplate>units\balloons\airship.dmg</damagetemplate>
+		</simskeleton>
+		<attach a="Death_EXP" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+		<attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="bone_explosion01" syncanims="0"></attach>
+		<attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="bone_explosion02" syncanims="0"></attach>
+	</anim>
+</animfile>

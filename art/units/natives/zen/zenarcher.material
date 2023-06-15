@@ -1,0 +1,30 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\natives\zen\textures\zen_monk_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\asians\japanese\monk\textures\monk_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\asians\japanese\monk\textures\monk_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\asians\japanese\monk\textures\monk_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\natives\zen\textures\zen_monk_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\asians\japanese\monk\textures\monk_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\asians\japanese\monk\textures\monk_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\asians\japanese\monk\textures\monk_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

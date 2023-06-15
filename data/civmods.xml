@@ -272,9 +272,19 @@
     </agetech>
     <multipleblocktrain>
       <building>TradingPost</building>
-      <multipleblockunit>zpSurgeonProxy</multipleblockunit>
+      <multipleblockunit>zpAirshipProxy</multipleblockunit>
       <units>
-        <unit>Surgeon</unit>
+        <unit>zpAirship</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpAirshipAIProxy</multipleblockunit>
+      <units>
+        <unit>zpAirshipAI</unit>
       </units>
       <unitcounts>
         <count>1</count>

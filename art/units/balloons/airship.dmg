@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<damagetemplate>
+	<model name="units\baloons\airship">
+		<impactpoint name="boneimpact01" bone="boneimpact01" impacttype=""/>
+		<impactpoint name="boneimpact02" bone="boneimpact02" impacttype=""/>
+		<impactpoint name="boneimpact03" bone="boneimpact03" impacttype=""/>
+		<impactpoint name="boneimpact04" bone="boneimpact04" impacttype=""/>
+	</model>
+</damagetemplate>

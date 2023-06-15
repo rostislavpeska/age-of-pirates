@@ -23,7 +23,7 @@
     <activeicon>resources\images\icons\command\zp_dive_active.png</activeicon>
     <disabledicon>resources\images\icons\command\zp_dive.png</disabledicon>
     <rollovertextid>300471</rollovertextid>
-    <activerollovertextid>300479</activerollovertextid>
+    <activerollovertextid>300471</activerollovertextid>
     <command>unitSetTactic("zpDive")</command>
   </protounitcommand>
   <protounitcommand>
@@ -32,7 +32,7 @@
     <activeicon>resources\images\icons\command\submarine_stealth_active.png</activeicon>
     <disabledicon>resources\images\icons\command\submarine_stealth.png</disabledicon>
     <rollovertextid>300473</rollovertextid>
-    <activerollovertextid>300481</activerollovertextid>
+    <activerollovertextid>300473</activerollovertextid>
     <command>unitSetTactic("zpStealth")</command>
   </protounitcommand>
   <protounitcommand>
@@ -41,7 +41,7 @@
     <activeicon>resources\images\icons\command\zp_surface_active.png</activeicon>
     <disabledicon>resources\images\icons\command\zp_surface.png</disabledicon>
     <rollovertextid>300472</rollovertextid>
-    <activerollovertextid>300480</activerollovertextid>
+    <activerollovertextid>300472</activerollovertextid>
     <command>unitSetTactic("zpSurface")</command>
   </protounitcommand>
   <protounitcommand>
@@ -106,6 +106,17 @@
     <rollovertextid>300535</rollovertextid>
     <activerollovertextid>300536</activerollovertextid>
     <command>unitSetTactic("TacticEconomy")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpAirshipExploration</name>
+    <icon>resources\images\icons\command\telescope.png</icon>
+    <associatedpower>zpAirshipLighthouse</associatedpower>
+    <castpower>
+    </castpower>
+    <rollovertextid>300625</rollovertextid>
+    <disabledrollovertextid>300625</disabledrollovertextid>
+    <usemultiple>
+    </usemultiple>
   </protounitcommand>
   <protounitcommand>
     <name>zpTheBlackFlag</name>
