@@ -868,7 +868,7 @@
     <command page="10" column="7">Delete</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="11" column="0">Abilities</command>
-    <tactics>blackpearl.tactics</tactics>
+    <tactics>frigate.tactics</tactics>
     <protoaction>
       <name>BroadsideAttack</name>
       <damage>40.000000</damage>
@@ -888,6 +888,15 @@
       <rof>2.000000</rof>
       <damagecap>164.000000</damagecap>
       <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>ConvertShip</name>
+      <damage>10.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>4.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>20.000000</damagecap>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
     <protoaction>
@@ -13033,6 +13042,9 @@
       <unittype>zpAirshipAIProxy</unittype>
     </sharedbuildlimitunittypes>
   </unit>
+  <unit name="YPDockAsian">
+    <train row ="0" page ="0" column ="12">zpInuitWarCanoe</train>
+  </unit>
 
 <!--TEST-->
 
@@ -13929,8 +13941,63 @@
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
     </protoaction>
   </unit>
-  <unit name="YPDockAsian">
-    <train row ="0" page ="0" column ="12">zpInuitWarCanoe</train>
+  <unit id="" name="zpConversionAttachment">
+    <dbid></dbid>
+    <displaynameid>300634</displaynameid>
+    <obstructionradiusx>0.1000</obstructionradiusx>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <maxvelocity>60.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>units\naval\galleon\galleon_zpspc.xml</animfile>
+    <lifespan>60.0000</lifespan>
+    <los>10.0000</los>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>Transport</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <flag>TieToWaterSurface</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <tactics>conversion.tactics</tactics>
+    <protoaction>
+      <name>Convert</name>
+      <maxrange>12.000000</maxrange>
+      <rate type="Unit">30.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>Attaching</name>
+      <damage>1.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>1.000000</rof>
+    </protoaction>
   </unit>
 
 </protomods>

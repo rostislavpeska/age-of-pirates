@@ -83,11 +83,36 @@
     <type>BoatManager</type>
     <persistent>1</persistent>
   </action>
+
+  <action>
+    <name stringid="38133">ConvertShip</name>
+    <type>BroadsideAttack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>Idle</anim>
+    <idleanim>Idle</idleanim>
+    <projectile>Cannonball</projectile>
+    <numberprojectiles>1</numberprojectiles>
+    <impacteffect>effects\impacts\cannon</impacteffect>
+    <accuracy>1.0</accuracy>
+    <maxheight>0</maxheight>
+    <accuracyreductionfactor>0.5</accuracyreductionfactor>
+    <aimbonus>5</aimbonus>
+    <rof>3</rof>
+    <rate type="Ship">1.0 </rate>
+    <areasortmode>Directional</areasortmode>
+    <targetground>1</targetground>
+    <numberbounces>1</numberbounces>
+    <basedamagecap>1</basedamagecap>
+    <perfectaccuracy>1</perfectaccuracy>
+    <unrandomizecannonrof>1</unrandomizecannonrof>
+    <attachprotounit>zpConversionAttachment</attachprotounit>
+  </action>
  
-  <tactic>Normal<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action priority="1">BroadsideAttack</action><action>ConvertShip</action><action>Discover</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
-  <tactic>Line<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action priority="1">BroadsideAttack</action><action>ConvertShip</action><action>Discover</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
-  <tactic>Wedge<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action priority="1">BroadsideAttack</action><action>ConvertShip</action><action>Discover</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
-  <tactic>Square<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action priority="1">BroadsideAttack</action><action>ConvertShip</action><action>Discover</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
-  <tactic>Circle<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action priority="1">BroadsideAttack</action><action>ConvertShip</action><action>Discover</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
-  <tactic>NoFormation<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action priority="1">BroadsideAttack</action><action>ConvertShip</action><action>Discover</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
+  <tactic>Normal<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action priority="1">BroadsideAttack</action><action priority="2">ConvertShip</action><action>Discover</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
+  <tactic>Line<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action priority="1">BroadsideAttack</action><action priority="2">ConvertShip</action><action>Discover</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
+  <tactic>Wedge<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action priority="1">BroadsideAttack</action><action priority="2">ConvertShip</action><action>Discover</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
+  <tactic>Square<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action priority="1">BroadsideAttack</action><action priority="2">ConvertShip</action><action>Discover</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
+  <tactic>Circle<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action priority="1">BroadsideAttack</action><action priority="2">ConvertShip</action><action>Discover</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
+  <tactic>NoFormation<speedmodifier>1.0</speedmodifier><action priority="100">RangedAttack</action><action priority="100">RangedAttackContained</action><action priority="1">BroadsideAttack</action><action priority="2">ConvertShip</action><action>Discover</action><action>BoatManager</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
 </tactics>
