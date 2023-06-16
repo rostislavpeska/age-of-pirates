@@ -1,0 +1,257 @@
+<animfile>
+  <definebone>bone_master</definebone>
+  <definebone>bone_lounchpoint01</definebone>
+  <definebone>bone_lounchpoint02</definebone>
+  <definebone>bone_Gatling</definebone>
+
+  <attachment>RocketThrust
+    <component>rocketthrust
+        <assetreference type="popcornFX">
+            <file>units\artillery\rocket\rocket_Ignition.pkfx</file>
+        </assetreference>
+    </component>
+    <anim>
+        <component>rocketthrust</component>
+    </anim>
+</attachment>
+  <attachment>IdleWaterFoam
+    <component>Idlefoam
+        <assetreference type="popcornFx">
+            <file>water_effects\idle_waterFoam_medium.pkfx</file>
+        </assetreference>
+    </component>
+    <anim>None
+        <component>Idlefoam</component>
+    </anim>
+</attachment>
+<attachment>MoveWaterFoam
+    <component>Movefoam
+        <assetreference type="popcornFx">
+            <file>water_effects\move_waterFoam_medium.pkfx</file>
+        </assetreference>
+    </component>
+    <anim>None
+        <component>Movefoam</component>
+    </anim>
+</attachment>
+<attachment>DeathWaterFoam
+    <component>Deathfoam
+        <assetreference type="popcornFx">
+            <file>water_effects\idle_waterFoam_ironclad.pkfx</file>
+        </assetreference>
+    </component>
+    <anim>None
+        <component>Deathfoam</component>
+    </anim>
+</attachment>
+<attachment>Death_EXP
+    <component>exp
+        <assetreference type="popcornFx">
+            <file>units\spc\fire_ship\Exp_galleon_ship.pkfx</file>
+        </assetreference>
+    </component>
+    <anim>None
+        <component>exp</component>
+    </anim>
+</attachment>
+<attachment>Death_EXP_Wood
+    <component>exp
+        <assetreference type="popcornFx">
+            <file>projectiles\ship_debris_wood.pkfx</file>
+        </assetreference>
+    </component>
+    <anim>None
+        <component>exp</component>
+    </anim>
+</attachment>
+<attachment>GatlingGunShoot
+    <component>GatlingGun
+        <assetreference type="popcornFx">
+            <file>weapon_fire\gatling_shot.pkfx</file>
+        </assetreference>
+    </component>
+    <anim>None
+        <component>GatlingGun</component>
+    </anim>
+</attachment>
+<component>ModelComp
+    <logic type="LowPoly">
+        <normal>
+            <assetreference type="GrannyModel">
+                <file>units\naval\turtleship\ship_experiment_Model</file>
+            </assetreference>
+        </normal>
+        <lowpoly>
+            <assetreference type="GrannyModel">
+                <file>units\naval\submarine\submarine</file>
+            </assetreference>
+        </lowpoly>
+    </logic>
+    <decal>
+        <effecttype>default</effecttype>
+        <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+        <width>7.00</width>
+        <height>11.00</height>
+    </decal>
+    <watersplash>
+        <texture>units\naval\colony_ship\colony_ship_hullmask</texture>
+        <width>10.0</width>
+        <height>10.0</height>
+    </watersplash>
+</component>
+<component>Death
+    <assetreference type="GrannyModel">
+        <file>units\naval\galleon\galleon_zpspc_damaged</file>
+
+    </assetreference>
+    <decal>
+        <effecttype>default</effecttype>
+        <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+        <width>7.00</width>
+        <height>11.00</height>
+    </decal>
+    <watersplash>
+        <texture>units\naval\colony_ship\colony_ship_hullmask</texture>
+        <width>10.0</width>
+        <height>10.0</height>
+    </watersplash>
+</component>
+<anim>Dived
+    <assetreference type="GrannyAnim">
+        <file>units\naval\submarine\submarine_dived_in</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+
+</anim>
+<anim>Idle
+    <assetreference type="GrannyAnim">
+        <file>units\naval\submarine\submarine_surfaced_out</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+
+</anim>
+<anim>DiveAnim
+    <assetreference type="GrannyAnim">
+        <file>units\naval\submarine\submarine_dive</file>
+        <tag type="SpecificSoundSet" checkvisible="1" set="Submarine_Dive">0.20</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+
+</anim>
+<anim>SurfaceAnim
+    <assetreference type="GrannyAnim">
+        <file>units\naval\submarine\submarine_surface</file>
+        <tag type="SpecificSoundSet" checkvisible="1" set="Submarine_Dive">0.20</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+
+</anim>
+<anim>Bombard_ranged_attack_dived
+    <assetreference type="GrannyAnim">
+        <file>units\naval\submarine\submarine_dived_in</file>
+        <tag type="Attack">0.37</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="RocketShoot">0.37</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="Submarine_Dive">0.20</tag>
+        <tag type="WindEffect" effectname="MediumArtilleryFire" effectbone="bone_launchpoint01">0.37</tag>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+        <file>units\naval\submarine\submarine_dived_in</file>
+        <tag type="Attack">0.37</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="RocketShoot">0.37</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="Submarine_Dive">0.20</tag>
+        <tag type="WindEffect" effectname="MediumArtilleryFire" effectbone="bone_launchpoint02">0.37</tag>
+    </assetreference>
+    <component>ModelComp</component>
+
+    <attach a="RocketThrust1" frombone="ATTACHPOINT" tobone="bone_launchpoint01" syncanims="0"></attach>
+    <attach a="RocketThrust2" frombone="ATTACHPOINT" tobone="bone_launchpoint02" syncanims="0"></attach>
+</anim>
+
+<anim>Bombard_ranged_attack_surfaced
+    <assetreference type="GrannyAnim">
+        <file>units\naval\submarine\submarine_surfaced_out</file>
+        <tag type="Attack">0.37</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="RocketShoot">0.37</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="GrenadeLight">0.20</tag>
+        <tag type="WindEffect" effectname="MediumArtilleryFire" effectbone="bone_launchpoint01">0.37</tag>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+        <file>units\naval\submarine\submarine_surfaced_out</file>
+        <tag type="Attack">0.37</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="RocketShoot">0.37</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="GrenadeLight">0.20</tag>
+        <tag type="WindEffect" effectname="MediumArtilleryFire" effectbone="bone_launchpoint02">0.37</tag>
+    </assetreference>
+    <component>ModelComp</component>
+
+    <attach a="RocketThrust1" frombone="ATTACHPOINT" tobone="bone_launchpoint01" syncanims="0"></attach>
+    <attach a="RocketThrust2" frombone="ATTACHPOINT" tobone="bone_launchpoint02" syncanims="0"></attach>
+</anim>
+
+<anim>RamAttack
+    <assetreference type="GrannyAnim">
+        <file>units\naval\submarine\submarine_ram</file>
+        <tag type="Attack">0.40</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="Submarine_Dive">0.10</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="ShipDeath">0.40</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="Submarine_Dive">0.90</tag>
+    </assetreference>
+    <component>ModelComp</component>
+
+    <attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+</anim>
+
+<anim>Gatling_attack
+    <assetreference type="GrannyAnim">
+        <file>units\naval\submarine\submarine_surfaced_out</file>
+        <tag type="Attack">0.27</tag>
+        <tag type="Attack">0.41</tag>
+        <tag type="Attack">0.55</tag>
+        <tag type="Attack">0.68</tag>
+        <tag type="Attack">0.74</tag>
+        <tag type="Attack">0.81</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="GatlingGun5Shot">0.27</tag>
+        <tag type="Particles" particlename="GatlingMuzzle01">0.00</tag>
+        <tag type="Particles" particlename="GatlingMuzzle01">0.11</tag>
+        <tag type="Particles" particlename="GatlingMuzzle01">0.22</tag>
+        <tag type="Particles" particlename="GatlingMuzzle01">0.33</tag>
+        <tag type="Particles" particlename="GatlingMuzzle01">0.45</tag>
+        <tag type="Particles" particlename="GatlingMuzzle01">0.56</tag>
+        <tag type="Particles" particlename="GatlingMuzzle01">0.67</tag>
+        <tag type="Particles" particlename="GatlingMuzzle01">0.78</tag>
+        <tag type="Particles" particlename="GatlingMuzzle01">0.89</tag>
+    </assetreference>
+    <component>ModelComp</component>
+
+    <attach a="GatlingGunShoot" frombone="ATTACHPOINT" tobone="bone_Gatling" syncanims="0"></attach>
+</anim>
+
+<anim>Death_dived
+    <assetreference type="GrannyAnim">
+        <file>units\naval\submarine\submarine_dived_death</file>
+        <tag type="SpecificSoundSet" checkvisible="1" set="ShipDeath">0.90</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="Submarine_Dive">0.50</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+</anim>
+
+<anim>Death_surfaced
+    <assetreference type="GrannyAnim">
+        <file>units\naval\submarine\submarine_surfaced_death</file>
+        <tag type="SpecificSoundSet" checkvisible="1" set="ShipDeath">0.90</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="Submarine_Dive">0.50</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+</anim>
+
+
+</animfile>

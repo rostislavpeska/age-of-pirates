@@ -13187,7 +13187,7 @@
 		<maxrunvelocity>7.5000</maxrunvelocity>
 		<movementtype>water</movementtype>
 		<turnrate>4.0000</turnrate>
-		<animfile>units\asians\naval\turtleship\turtleship.xml</animfile>
+		<animfile>units\naval\turtleship\turtleship.xml</animfile>
 		<impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <buildlimit>1</buildlimit>

@@ -691,7 +691,7 @@
     <formationtype>Line</formationtype>
     <armorbonus>
       <damagetype>Siege</damagetype>
-      <value>0.75</value>
+      <value>0.50</value>
     </armorbonus>
     <formationboxlinespacing>0.8</formationboxlinespacing>
     <formationboxsubgroupspacing>1.5</formationboxsubgroupspacing>
