@@ -141,9 +141,9 @@
       <string _locid="300139">San Zaccaria</string>
       <string _locid="300140">San Salvatore</string>
       <string _locid="300141">Santa Anna</string>
-      <string _locid="300142">Pick Order Fraction</string>
-      <string _locid="300143">Choose Maltese Order fraction which provides you some special shipments.</string>
-      <string _locid="300144">Venetian Fraction</string>
+      <string _locid="300142">Pick Order Faction</string>
+      <string _locid="300143">Choose Maltese Order Faction which provides you some special shipments.</string>
+      <string _locid="300144">Venetian Faction</string>
       <string _locid="300145">&lt;color=1.0, 0.9, 0.5&gt;SPECIALITY:&lt;/color&gt; \nSends naval units \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nMaltese Humanitarian Fleet \n\nMaltese Colonizaction Fleet</string>
       <string _locid="300146">Ship of the Line</string>
       <string _locid="300147">ZP Ship of the Line</string>
@@ -153,9 +153,9 @@
       <string _locid="300151">ZP Colonization Wagon</string>
       <string _locid="300152">Starts a new town or builds some other building of your choice.</string>
       <string _locid="300153">Colonization wagon</string>
-      <string _locid="300154">Florentian Fraction</string>
+      <string _locid="300154">Florentian Faction</string>
       <string _locid="300155">&lt;color=1.0, 0.9, 0.5&gt;SPECIALITY:&lt;/color&gt; \nEconomical shipments \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nMaltese Banking \n\nMaltese Industrial Barons</string>
-      <string _locid="300156">Jerusalem Fraction</string>
+      <string _locid="300156">Jerusalem Faction</string>
       <string _locid="300157">&lt;color=1.0, 0.9, 0.5&gt;SPECIALITY:&lt;/color&gt; \nMilitary buildings \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nMaltese Fort \n\nMaltese Fixed Gun</string>
       <string _locid="300158">Maltese Banking</string>
       <string _locid="300159">Maltese Industrial Barons</string>
@@ -442,7 +442,7 @@
       <string _locid="300438">ZP Maltese Great Cannon</string>
       <string _locid="300439">Blue Mosque</string>
       <string _locid="300440">ZP SPC Blue Mosque</string>
-      <string _locid="300441">Continental Fraction</string>
+      <string _locid="300441">Continental Faction</string>
       <string _locid="300442">&lt;color=1.0, 0.9, 0.5&gt;SPECIALITY:&lt;/color&gt; \nSends land units \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nMaltese Marksmen \n\nMaltese Cannons</string>
       <string _locid="300443">Maltese Marksmen</string>
       <string _locid="300444">Ships Maltese ranged infantry.</string>

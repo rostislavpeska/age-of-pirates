@@ -3237,7 +3237,7 @@
     <turnrate>1.0000</turnrate>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <animfile>units\asians\spc\treasure_ship\battleship2.xml</animfile>
+    <animfile>units\naval\treasureship\zptreasureship.xml</animfile>
     <icon>resources\art\units\asians\spc\treasure_ship\china_ship_icon_64.png</icon>
     <portraiticon>resources\art\units\asians\spc\treasure_ship\china_ship_icon_portrait.png</portraiticon>
     <rollovertextid>300189</rollovertextid>
