@@ -200,7 +200,7 @@
       <string _locid="300198">Elite Wokou Pirate</string>
       <string _locid="300199">Upgrade Wokou unit's attack and hitpoints.</string>
       <string _locid="300200">Veteran Wokou Pirate</string>
-      <string _locid="300201">Vote for a Wokou Leader</string>
+      <string _locid="300201">Pick Wokou Captain</string>
       <string _locid="300202">Blackmail a politician to improve your influence.</string>
       <string _locid="300203">Sao Feng</string>
       <string _locid="300204">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWokou Army \n\nCosts population but is cheap and gets trained very fast. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nThe Big Theft (Treasure Ship)</string>
@@ -484,11 +484,11 @@
       <string _locid="300480">Surfaced submarine moves faster.</string>
       <string _locid="300481">Allows completely silent operation.</string>
       <string _locid="300482">Torpedo</string>
-      <string _locid="300483">Inventor's Workshop</string>
+      <string _locid="300483">Renegade's Secret Base</string>
       <string _locid="300484">At home, we've been called crazy. In this wasteland we can conduct our experiments undisturbed.</string>
       <string _locid="300485">ZP Socket Scientists</string>
-      <string _locid="300486">Pick Leading Scientist</string>
-      <string _locid="300487">Pick a leading scientist and train new units and research new techs</string>
+      <string _locid="300486">Pick Renegade Captain</string>
+      <string _locid="300487">Pick a renegade captain and train new units and research new techs</string>
       <string _locid="300488">Native Water Flag</string>
       <string _locid="300489">ZP Native Water Flag 1</string>
       <string _locid="300490">ZP Native Water Flag 2</string>
@@ -553,7 +553,7 @@
       <string _locid="300550">Experimental Tank</string>
       <string _locid="300551">Leonardo's Model</string>
       <string _locid="300552">The First Cold War</string>
-      <string _locid="300553">Two continents - Asia and America - separated by Bering's Strait. The real end of the world and a perfect place for inventors and technical revolutionaries. \n\nSettlements: Inventor's Workshop, Inuits</string>
+      <string _locid="300553">Two continents - Asia and America - separated by Bering's Strait. The real end of the world and a perfect place for renegades and technical revolutionaries. \n\nSettlements: Renegades, Inuits</string>
       <string _locid="300554">The First Cold War: Use the latest technical inventions to gain an advantage over the enemy.</string>
       <string _locid="300555">ZP Airship</string>
       <string _locid="300556">Wokou Pacific Allies have arrived.</string>
