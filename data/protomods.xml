@@ -1772,8 +1772,8 @@
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
     <civflagoverride>objects\flags\pirate</civflagoverride>
-    <rollovertextid>34099</rollovertextid>
-    <shortrollovertextid>34100</shortrollovertextid>
+    <rollovertextid>300635</rollovertextid>
+    <shortrollovertextid>300635</shortrollovertextid>
     <los>4.0000</los>
     <buildingworkrate>1.0000</buildingworkrate>
     <unittype>LogicalTypeMinimapFilterEconomic</unittype>
@@ -1822,8 +1822,8 @@
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
     <civflagoverride>objects\flags\pirate</civflagoverride>
-    <rollovertextid>34099</rollovertextid>
-    <shortrollovertextid>34100</shortrollovertextid>
+    <rollovertextid>300635</rollovertextid>
+    <shortrollovertextid>300635</shortrollovertextid>
     <los>4.0000</los>
     <buildingworkrate>1.0000</buildingworkrate>
     <unittype>LogicalTypeMinimapFilterEconomic</unittype>
@@ -10381,8 +10381,8 @@
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
     <civflagoverride>objects\flags\hydra</civflagoverride>
-    <rollovertextid>34099</rollovertextid>
-    <shortrollovertextid>34100</shortrollovertextid>
+    <rollovertextid>300635</rollovertextid>
+    <shortrollovertextid>300635</shortrollovertextid>
     <los>4.0000</los>
     <buildingworkrate>1.0000</buildingworkrate>
     <unittype>LogicalTypeMinimapFilterEconomic</unittype>
@@ -10431,8 +10431,8 @@
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
     <civflagoverride>objects\flags\hydra</civflagoverride>
-    <rollovertextid>34099</rollovertextid>
-    <shortrollovertextid>34100</shortrollovertextid>
+    <rollovertextid>300635</rollovertextid>
+    <shortrollovertextid>300635</shortrollovertextid>
     <los>4.0000</los>
     <buildingworkrate>1.0000</buildingworkrate>
     <unittype>LogicalTypeMinimapFilterEconomic</unittype>
@@ -12311,8 +12311,8 @@
     <portraiticon>resources\art\units\natives\airship_portrait.png</portraiticon>
     <rollovertextid>300615</rollovertextid>
     <shortrollovertextid>300615</shortrollovertextid>
-    <initialhitpoints>2500.0000</initialhitpoints>
-    <maxhitpoints>2500.0000</maxhitpoints>
+    <initialhitpoints>2700.0000</initialhitpoints>
+    <maxhitpoints>2700.0000</maxhitpoints>
     <los>60.0000</los>
     <projectileprotounit>MortarShell</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -12327,7 +12327,6 @@
     </armor>
     <armor type="Siege" value="0.7500">
     </armor>
-    <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
@@ -12394,11 +12393,11 @@
       <damagecap>160.000000</damagecap>
       <damagearea>3.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="Building">5.000000</damagebonus>
+      <damagebonus type="Building">7.000000</damagebonus>
       <damagebonus type="AbstractDock">0.200000</damagebonus>
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="AbstractArtillery">2.000000</damagebonus>
-      <damagebonus type="Ship">2.000000</damagebonus>
+      <damagebonus type="Ship">2.500000</damagebonus>
     </protoaction>
     <protoaction>
       <name>AirshipAttack</name>
@@ -12408,6 +12407,8 @@
       <rof>1.000000</rof>
       <damagecap>160.000000</damagecap>
       <damagearea>1.000000</damagearea>
+      <damagebonus type="zpAirship">3.000000</damagebonus>
+      <damagebonus type="zpAirshipAI">3.000000</damagebonus>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
     <protoaction>
@@ -12421,10 +12422,10 @@
       <damagecap>400.000000</damagecap>
       <damagearea>15.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="Building">10.000000</damagebonus>
+      <damagebonus type="Building">5.000000</damagebonus>
       <damagebonus type="AbstractDock">0.200000</damagebonus>
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
-      <damagebonus type="Ship">2.000000</damagebonus>
+      <damagebonus type="Ship">2.500000</damagebonus>
       <damagebonus type="AbstractArtillery">2.000000</damagebonus>
     </protoaction>
     <protoaction>
@@ -12508,10 +12509,10 @@
     <tactics>mustardgas.tactics</tactics>
     <protoaction>
       <name>TrampleHandAttack</name>
-      <damage>30.0000000</damage>
+      <damage>60.0000000</damage>
       <damagetype>Hand</damagetype>
       <rof>2.000000</rof>
-      <damagecap>70.0000000</damagecap>
+      <damagecap>100.0000000</damagecap>
       <damagearea>30.000000</damagearea>
       <damagebonus type="Abstractvillager">0.500000</damagebonus>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
@@ -12623,8 +12624,8 @@
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
     <civflagoverride>objects\flags\wokou</civflagoverride>
-    <rollovertextid>34099</rollovertextid>
-    <shortrollovertextid>34100</shortrollovertextid>
+    <rollovertextid>300635</rollovertextid>
+    <shortrollovertextid>300635</shortrollovertextid>
     <los>4.0000</los>
     <buildingworkrate>1.0000</buildingworkrate>
     <unittype>LogicalTypeMinimapFilterEconomic</unittype>
@@ -12673,8 +12674,8 @@
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
     <civflagoverride>objects\flags\wokou</civflagoverride>
-    <rollovertextid>34099</rollovertextid>
-    <shortrollovertextid>34100</shortrollovertextid>
+    <rollovertextid>300635</rollovertextid>
+    <shortrollovertextid>300635</shortrollovertextid>
     <los>4.0000</los>
     <buildingworkrate>1.0000</buildingworkrate>
     <unittype>LogicalTypeMinimapFilterEconomic</unittype>
@@ -12818,8 +12819,8 @@
     <portraiticon>resources\art\units\natives\airship_portrait.png</portraiticon>
     <rollovertextid>300615</rollovertextid>
     <shortrollovertextid>300615</shortrollovertextid>
-    <initialhitpoints>2500.0000</initialhitpoints>
-    <maxhitpoints>2500.0000</maxhitpoints>
+    <initialhitpoints>2700.0000</initialhitpoints>
+    <maxhitpoints>2700.0000</maxhitpoints>
     <los>60.0000</los>
     <projectileprotounit>MortarShell</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -12834,7 +12835,6 @@
     </armor>
     <armor type="Siege" value="0.7500">
     </armor>
-    <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
@@ -12888,7 +12888,7 @@
     <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
     <tactics>airship.tactics</tactics>
-    <protoaction>
+     <protoaction>
       <name>BombAttack</name>
       <damage>80.000000</damage>
       <damagetype>Siege</damagetype>
@@ -12903,7 +12903,7 @@
       <damagebonus type="AbstractDock">0.200000</damagebonus>
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="AbstractArtillery">2.000000</damagebonus>
-      <damagebonus type="Ship">2.000000</damagebonus>
+      <damagebonus type="Ship">2.500000</damagebonus>
     </protoaction>
     <protoaction>
       <name>AirshipAttack</name>
@@ -12913,6 +12913,8 @@
       <rof>1.000000</rof>
       <damagecap>160.000000</damagecap>
       <damagearea>1.000000</damagearea>
+      <damagebonus type="zpAirship">3.000000</damagebonus>
+      <damagebonus type="zpAirshipAI">3.000000</damagebonus>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
     <protoaction>
@@ -12926,10 +12928,10 @@
       <damagecap>400.000000</damagecap>
       <damagearea>15.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="Building">10.000000</damagebonus>
+      <damagebonus type="Building">7.000000</damagebonus>
       <damagebonus type="AbstractDock">0.200000</damagebonus>
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
-      <damagebonus type="Ship">2.000000</damagebonus>
+      <damagebonus type="Ship">2.500000</damagebonus>
       <damagebonus type="AbstractArtillery">2.000000</damagebonus>
     </protoaction>
     <protoaction>

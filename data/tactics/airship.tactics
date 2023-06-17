@@ -18,6 +18,7 @@
 		<impacteffect>effects\impacts\grenade</impacteffect>
 		<minrange>2</minrange>
 		<rate type="zpAirship">1.0 </rate>
+		<rate type="zpAirshipAI">1.0 </rate>
 		<throw>1</throw>
 		<impactforcemin>450.0</impactforcemin>
 		<impactforcemax>600.0</impactforcemax>
@@ -116,7 +117,7 @@
 		AirshipNormal
 		<speedmodifier>1.0</speedmodifier>
 		<action priority="100">AirshipAttack</action>
-		<action priority="100">BombAttack</action>
+		<action priority="25">BombAttack</action>
 		<action priority="2">FireBomb</action>
 		<action priority="1">PoisonBomb</action>
 		<idleanim>Idle</idleanim>
