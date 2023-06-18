@@ -12393,7 +12393,7 @@
       <damagecap>160.000000</damagecap>
       <damagearea>3.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="Building">7.000000</damagebonus>
+      <damagebonus type="Building">8.000000</damagebonus>
       <damagebonus type="AbstractDock">0.200000</damagebonus>
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="AbstractArtillery">2.000000</damagebonus>
@@ -12407,8 +12407,8 @@
       <rof>1.000000</rof>
       <damagecap>160.000000</damagecap>
       <damagearea>1.000000</damagearea>
-      <damagebonus type="zpAirship">3.000000</damagebonus>
-      <damagebonus type="zpAirshipAI">3.000000</damagebonus>
+      <damagebonus type="zpAirship">1.500000</damagebonus>
+      <damagebonus type="zpAirshipAI">1.500000</damagebonus>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
     <protoaction>
@@ -12459,7 +12459,7 @@
     <idletimeout>1.0000</idletimeout>
     <maxvelocity>1.000</maxvelocity>
     <maxrunvelocity>6.0000</maxrunvelocity>
-    <lifespan>6.0000</lifespan>
+    <lifespan>8.0000</lifespan>
     <movementtype>land</movementtype>
     <obstructionradiusx>0.0000</obstructionradiusx>
     <obstructionradiusz>0.0000</obstructionradiusz>
@@ -12913,8 +12913,8 @@
       <rof>1.000000</rof>
       <damagecap>160.000000</damagecap>
       <damagearea>1.000000</damagearea>
-      <damagebonus type="zpAirship">3.000000</damagebonus>
-      <damagebonus type="zpAirshipAI">3.000000</damagebonus>
+      <damagebonus type="zpAirship">1.500000</damagebonus>
+      <damagebonus type="zpAirshipAI">1.500000</damagebonus>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
     <protoaction>
@@ -12928,7 +12928,7 @@
       <damagecap>400.000000</damagecap>
       <damagearea>15.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="Building">7.000000</damagebonus>
+      <damagebonus type="Building">8.000000</damagebonus>
       <damagebonus type="AbstractDock">0.200000</damagebonus>
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="Ship">2.500000</damagebonus>

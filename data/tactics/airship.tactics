@@ -117,7 +117,7 @@
 		AirshipNormal
 		<speedmodifier>1.0</speedmodifier>
 		<action priority="100">AirshipAttack</action>
-		<action priority="25">BombAttack</action>
+		<action priority="99">BombAttack</action>
 		<action priority="2">FireBomb</action>
 		<action priority="1">PoisonBomb</action>
 		<idleanim>Idle</idleanim>
