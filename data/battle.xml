@@ -665,6 +665,120 @@
 
 <!--AoP MOD Starts Here-->
   <squadmode>
+    <name>zpShipSurface</name>
+    <tactic>zpSurface</tactic>
+    <unittype>Ship</unittype>
+    <targetunittype>All</targetunittype>
+    <stance>Passive</stance>
+    <formationtype>Line</formationtype>
+    <formationboxlinespacing>0.8</formationboxlinespacing>
+    <formationboxsubgroupspacing>1.5</formationboxsubgroupspacing>
+    <randomspacingoffset>0.35</randomspacingoffset>
+    <cooldowntime>5000</cooldowntime>
+    <transitiontimein>500</transitiontimein>
+    <activeicon>resources\images\icons\command\zp_surface_active.png</activeicon>
+    <availableicon>resources\images\icons\command\zp_surface.png</availableicon>
+    <unavailableicon>resources\images\icons\command\zp_surface.png</unavailableicon>
+    <rolloverstringid>300472</rolloverstringid>
+  </squadmode>
+
+  <squadmode>
+    <name>zpShipDive</name>
+    <tactic>zpDive</tactic>
+    <unittype>Ship</unittype>
+    <targetunittype>All</targetunittype>
+    <stance>Defensive</stance>
+    <formationtype>Line</formationtype>
+    <armorbonus>
+      <damagetype>Siege</damagetype>
+      <value>0.75</value>
+    </armorbonus>
+    <formationboxlinespacing>0.8</formationboxlinespacing>
+    <formationboxsubgroupspacing>1.5</formationboxsubgroupspacing>
+    <randomspacingoffset>0.35</randomspacingoffset>
+    <cooldowntime>5000</cooldowntime>
+    <transitiontimein>500</transitiontimein>
+    <activeicon>resources\images\icons\command\zp_dive_active.png</activeicon>
+    <availableicon>resources\images\icons\command\zp_dive.png</availableicon>
+    <unavailableicon>resources\images\icons\command\zp_dive.png</unavailableicon>
+    <rolloverstringid>300471</rolloverstringid>
+  </squadmode>
+  <squadmode>
+    <name>zpShipProtectDock</name>
+    <tactic>zpProtectDock</tactic>
+    <unittype>Ship</unittype>
+    <targetunittype>All</targetunittype>
+    <stance>StandGround</stance>
+    <formationtype>Line</formationtype>
+    <formationboxlinespacing>0.8</formationboxlinespacing>
+    <formationboxsubgroupspacing>1.5</formationboxsubgroupspacing>
+    <randomspacingoffset>0.35</randomspacingoffset>
+    <cooldowntime>5000</cooldowntime>
+    <transitiontimein>500</transitiontimein>
+    <activeicon>resources\images\icons\command\submarine_defensive_active.png</activeicon>
+    <availableicon>resources\images\icons\command\submarine_defensive.png</availableicon>
+    <unavailableicon>resources\images\icons\command\submarine_defensive.png</unavailableicon>
+    <rolloverstringid>300501</rolloverstringid>
+  </squadmode>
+
+  <squadmode>
+    <name>zpShipStealth</name>
+    <tactic>zpStealth</tactic>
+    <allowautopick>0</allowautopick>
+    <unittype>Ship</unittype>
+    <targetunittype>All</targetunittype>
+    <stance>Defensive</stance>
+    <formationtype>Line</formationtype>
+    <formationboxlinespacing>0.8</formationboxlinespacing>
+    <formationboxsubgroupspacing>1.5</formationboxsubgroupspacing>
+    <randomspacingoffset>0.35</randomspacingoffset>
+    <cooldowntime>5000</cooldowntime>
+    <transitiontimein>500</transitiontimein>
+    <activeicon>resources\images\icons\command\submarine_stealth_active.png</activeicon>
+    <availableicon>resources\images\icons\command\submarine_stealth.png</availableicon>
+    <unavailableicon>resources\images\icons\command\submarine_stealth_disabled.png</unavailableicon>
+    <rolloverstringid>300473</rolloverstringid>
+  </squadmode>
+
+
+<!--
+<squadmode>
+    <name>zpDive</name>
+    <tactic>zpDive</tactic>
+    <unittype>All</unittype>
+    <targetunittype>All</targetunittype>
+    <stance>Defensive</stance>
+    <formationtype>Line</formationtype>
+    <formationlinelinespacing>0.8</formationlinelinespacing>
+    <formationlinecolumnspacing>0.8</formationlinecolumnspacing>
+    <randomspacingoffset>0.35</randomspacingoffset>
+    <cooldowntime>5000</cooldowntime>
+    <transitiontimein>500</transitiontimein>
+    <activeicon>resources\images\icons\command\zp_dive_active.png</activeicon>
+    <availableicon>resources\images\icons\command\zp_dive.png</availableicon>
+    <unavailableicon>resources\images\icons\command\zp_dive.png</unavailableicon>
+    <rolloverstringid>31348</rolloverstringid>
+  </squadmode>
+
+  <squadmode>
+    <name>zpSurface</name>
+    <tactic>zpSurface</tactic>
+    <unittype>All</unittype>
+    <targetunittype>All</targetunittype>
+    <stance>Defensive</stance>
+    <formationtype>Line</formationtype>
+    <formationlinelinespacing>0.8</formationlinelinespacing>
+    <formationlinecolumnspacing>0.8</formationlinecolumnspacing>
+    <randomspacingoffset>0.35</randomspacingoffset>
+    <cooldowntime>5000</cooldowntime>
+    <transitiontimein>500</transitiontimein>
+    <activeicon>resources\images\icons\command\zp_surface_active.png</activeicon>
+    <availableicon>resources\images\icons\command\zp_surface.png</availableicon>
+    <unavailableicon>resources\images\icons\command\zp_surface.png</unavailableicon>
+    <rolloverstringid>31348</rolloverstringid>
+  </squadmode>
+
+<squadmode>
     <name>zpShipStealth</name>
     <tactic>zpStealth</tactic>
     <allowautopick>0</allowautopick>
@@ -681,59 +795,6 @@
     <availableicon>resources\images\icons\command\submarine_stealth.png</availableicon>
     <unavailableicon>resources\images\icons\command\submarine_stealth_disabled.png</unavailableicon>
     <rolloverstringid>300473</rolloverstringid>
-  </squadmode>
-  <squadmode>
-    <name>zpShipDive</name>
-    <tactic>zpDive</tactic>
-    <allowautopick>0</allowautopick>
-    <unittype>Ship</unittype>
-    <targetunittype>All</targetunittype>
-    <stance>Defensive</stance>
-    <formationtype>Line</formationtype>
-    <formationboxlinespacing>1.0</formationboxlinespacing>
-    <formationboxsubgroupspacing>0.8</formationboxsubgroupspacing>
-    <randomspacingoffset>0.1</randomspacingoffset>
-    <cooldowntime>5000</cooldowntime>
-    <transitiontimein>500</transitiontimein>
-    <activeicon>resources\images\icons\command\zp_dive_active.png</activeicon>
-    <availableicon>resources\images\icons\command\zp_dive.png</availableicon>
-    <unavailableicon>resources\images\icons\command\zp_dive.png</unavailableicon>
-    <rolloverstringid>300471</rolloverstringid>
-  </squadmode>
-  <squadmode>
-    <name>zpShipProtectDock</name>
-    <tactic>zpProtectDock</tactic>
-    <allowautopick>0</allowautopick>
-    <unittype>Ship</unittype>
-    <targetunittype>All</targetunittype>
-    <stance>StandGround</stance>
-    <formationtype>Mob</formationtype>
-    <formationboxlinespacing>1.0</formationboxlinespacing>
-    <formationboxsubgroupspacing>0.8</formationboxsubgroupspacing>
-    <randomspacingoffset>0.1</randomspacingoffset>
-    <cooldowntime>5000</cooldowntime>
-    <transitiontimein>500</transitiontimein>
-    <activeicon>resources\images\icons\command\submarine_defensive_active.png</activeicon>
-    <availableicon>resources\images\icons\command\submarine_defensive.png</availableicon>
-    <unavailableicon>resources\images\icons\command\submarine_defensive.png</unavailableicon>
-    <rolloverstringid>300501</rolloverstringid>
-  </squadmode>
-  <squadmode>
-    <name>zpShipSurface</name>
-    <tactic>zpSurface</tactic>
-    <unittype>Ship</unittype>
-    <targetunittype>All</targetunittype>
-    <stance>Passive</stance>
-    <formationtype>Line</formationtype>
-    <formationboxlinespacing>0.8</formationboxlinespacing>
-    <formationboxsubgroupspacing>1.5</formationboxsubgroupspacing>
-    <maxnumberformationlines>1</maxnumberformationlines>
-    <cooldowntime>5000</cooldowntime>
-    <transitiontimein>500</transitiontimein>
-    <activeicon>resources\images\icons\command\zp_surface_active.png</activeicon>
-    <availableicon>resources\images\icons\command\zp_surface.png</availableicon>
-    <unavailableicon>resources\images\icons\command\zp_surface.png</unavailableicon>
-    <rolloverstringid>300472</rolloverstringid>
-  </squadmode>
+  </squadmode>-->
 
 </battles>

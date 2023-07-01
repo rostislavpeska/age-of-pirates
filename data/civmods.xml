@@ -282,6 +282,16 @@
     </multipleblocktrain>
     <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpAirshipAIProxy</multipleblockunit>
+      <units>
+        <unit>zpAirshipAI</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>TradingPost</building>
       <multipleblockunit>zpLeonardosTankProxy</multipleblockunit>
       <units>
         <unit>deTank</unit>

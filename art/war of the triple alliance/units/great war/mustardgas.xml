@@ -22,7 +22,6 @@
 				<assetreference type="GrannyModel">
 					<file>effects\impacts\directional_arrow</file>
 				</assetreference>
-				<attach a="rainbow_attachment_A" frombone="Attachpoint" tobone="Bone_rain" syncanims="0"/>
 			</data>
 		</logic>
 	</component>

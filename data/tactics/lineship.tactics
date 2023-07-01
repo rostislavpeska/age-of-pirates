@@ -69,6 +69,7 @@
     <areasortmode>Directional</areasortmode>
     <targetground>1</targetground>
     <basedamagecap>1</basedamagecap>
+    <cannonlimit>18</cannonlimit>
   </action>
   <action>
     <name stringid="69148">Discover</name>

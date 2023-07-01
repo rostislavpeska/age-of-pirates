@@ -1,0 +1,287 @@
+<tactics>
+    <action>
+        <name stringid="300482">CannonAttackDived</name>
+        <type>Attack</type>
+        <attackaction>1</attackaction>
+        <rangedlogic>1</rangedlogic>
+        <anim>Bombard_ranged_attack_dived</anim>
+        <accuracy>1.0</accuracy>
+        <aimbonus>0</aimbonus>
+        <maxspread>5</maxspread>
+        <spreadfactor>0.25</spreadfactor>
+        <trackrating>2</trackrating>
+        <unintentionaldamagemultiplier>1.0</unintentionaldamagemultiplier>
+        <projectile>zpTorpedo</projectile>
+        <impacteffect>effects\impacts\cannon</impacteffect>
+        <rate type="LogicalTypeNavalMilitary">1.0 </rate>
+        <rate type="AbstractDock">1.0 </rate>
+        <rate type="WaterGuardian">1.0 </rate>
+        <rate type="AbstractFishingBoat">1.0 </rate>
+        <maxheight>0</maxheight>
+        <outerdamageareadistance>.25</outerdamageareadistance>
+        <outerdamageareafactor>.20</outerdamageareafactor>
+        <perfectaccuracy>1</perfectaccuracy>
+        <areasortmode>Directional</areasortmode>
+        <targetground>1</targetground>
+        <basedamagecap>1</basedamagecap>
+    </action>
+    <action>
+        <name stringid="300482">CannonAttackSurfaced</name>
+        <type>Attack</type>
+        <attackaction>1</attackaction>
+        <rangedlogic>1</rangedlogic>
+        <anim>Bombard_ranged_attack_surfaced</anim>
+        <accuracy>1.0</accuracy>
+        <aimbonus>0</aimbonus>
+        <maxspread>5</maxspread>
+        <spreadfactor>0.25</spreadfactor>
+        <trackrating>2</trackrating>
+        <unintentionaldamagemultiplier>1.0</unintentionaldamagemultiplier>
+        <projectile>zpTorpedo</projectile>
+        <impacteffect>effects\impacts\cannon</impacteffect>
+        <rate type="LogicalTypeNavalMilitary">1.0 </rate>
+        <rate type="AbstractDock">1.0 </rate>
+        <rate type="WaterGuardian">1.0 </rate>
+        <rate type="AbstractFishingBoat">1.0 </rate>
+        <maxheight>0</maxheight>
+        <outerdamageareadistance>.25</outerdamageareadistance>
+        <areasortmode>Directional</areasortmode>
+        <outerdamageareafactor>.20</outerdamageareafactor>
+        <perfectaccuracy>1</perfectaccuracy>
+        <targetground>1</targetground>
+        <basedamagecap>1</basedamagecap>
+    </action>
+    <action>
+        <name stringid="124809">ShuntAttack</name>
+        <type>Attack</type>
+        <rate type="LogicalTypeNavalMilitary">1.0 </rate>
+        <rate type="AbstractDock">1.0 </rate>
+        <attackaction>1</attackaction>
+        <handlogic>1</handlogic>
+        <speedboost>1</speedboost>
+        <anim>RamAttack</anim>
+        <impacteffect>effects\impacts\melee</impacteffect>
+        <targetspeedboost>1</targetspeedboost>
+    </action>
+    <action>
+        <name stringid="300500">GatlingAttack</name>
+        <type>Attack</type>
+        <attackaction>1</attackaction>
+        <rangedlogic>1</rangedlogic>
+        <anim>Gatling_attack</anim>
+        <maxheight>0</maxheight>
+        <accuracy>1.0</accuracy>
+        <accuracyreductionfactor>0.5</accuracyreductionfactor>
+        <aimbonus>0</aimbonus>
+        <maxspread>5</maxspread>
+        <spreadfactor>0.25</spreadfactor>
+        <trackrating>12</trackrating>
+        <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+        <projectile>InvisibleProjectile</projectile>
+        <numberprojectiles>1</numberprojectiles>
+        <displayednumberprojectiles>6</displayednumberprojectiles>
+        <impacteffect>effects\impacts\gun</impacteffect>
+        <rate type="Building">1.0 </rate>
+        <rate type="LogicalTypeGarrisonInShips">1.0 </rate>
+        <rate type="Guardian">1.0 </rate>
+        <rate type="zpAirship">1.0 </rate>
+        <instantballistics>1</instantballistics>
+        <basedamagecap>1</basedamagecap>
+        <perfectaccuracy>1</perfectaccuracy>
+    </action>
+    <action>
+        <dbaction>BoatManager</dbaction>
+        <name stringid="69156">BoatManager</name>
+        <type>BoatManager</type>
+        <persistent>1</persistent>
+    </action>
+
+    <action>
+        <name stringid="69148">Discover</name>
+        <type>Discover</type>
+        <anim>GatherFish</anim>
+        <maxrange>0.2</maxrange>
+        <rate type="AbstractNuggetWater">1.0</rate>
+    </action>
+    <action>
+        <name stringid="46491">Stealth</name>
+        <type>Stealth</type>
+        <maxrange>25.0</maxrange>
+        <active>1</active>
+        <persistent>1</persistent>
+    </action>
+    <action>
+        <name stringid="112435">ExtraHPSubmarine</name>
+        <type>AutoRangedModify</type>
+        <active>1</active>
+        <maxrange>1</maxrange>
+        <modifyabstracttype>AbstractWarShip</modifyabstracttype>
+        <persistent>1</persistent>
+        <modifyself>1</modifyself>
+        <nostack>1</nostack>
+        <modifytype>BaseHP</modifytype>
+        <modifymultiplier>2.50</modifymultiplier>
+    </action>   
+
+
+    <!--TACTICS-->
+
+    <tactic>zpDive
+        <protounitcommand>zpTacticDive</protounitcommand>
+        <action priority="100">CannonAttackDived</action>
+        <action priority="2">ShuntAttack</action>
+        <action>Discover</action>
+        <transition>
+            <tactic>zpStealth</tactic>
+            <length>0.3</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>zpSurface</tactic>
+            <anim>SurfaceAnim</anim>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+        <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+        <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+        <runaway>0</runaway>
+        <speedmodifier>0.8</speedmodifier>
+        <maxhpmodifier>2.0</maxhpmodifier>
+        <action>ExtraSpeed</action>
+        <autoretarget>1</autoretarget>
+        <idleanim>Dived</idleanim>
+        <boredanim>Dived</boredanim>
+        <deathanim>Death_dived</deathanim>
+        <walkanim>Dived</walkanim>
+        <joganim>Dived</joganim>
+        <runanim>Dived</runanim>
+        <idleanim>Dived</idleanim>
+        <boredanim>Dived</boredanim>
+        <walkanim>Dived</walkanim>
+        <joganim>Dived</joganim>
+        <runanim>Dived</runanim>
+    </tactic>
+
+    <tactic>zpSurface
+        <protounitcommand>zpTacticSurface</protounitcommand>
+        <action priotity="25">GatlingAttack</action>
+        <action priotity="100">CannonAttackSurfaced</action>
+        <action priority="2">ShuntAttack</action>
+        <action>Discover</action>
+        <action>BoatManager</action>
+        <transition>
+            <tactic>zpStealth</tactic>
+            <length>2</length>
+            <anim>DiveAnim</anim>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>zpDive</tactic>
+            <length>2</length>
+            <anim>DiveAnim</anim>
+            <exit>1</exit>
+        </transition>
+        <speedmodifier>1.0</speedmodifier>
+        <action>ExtraSpeed</action>
+        <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+        <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+        <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+        <runaway>1</runaway>
+        <autoretarget>1</autoretarget>
+        <idleanim>Idle</idleanim>
+        <boredanim>Idle</boredanim>
+        <walkanim>Idle</walkanim>
+        <joganim>Idle</joganim>
+        <runanim>Idle</runanim>
+        <idleanim>Idle</idleanim>
+        <boredanim>Idle</boredanim>
+        <deathanim>Death_surfaced</deathanim>
+        <walkanim>Idle</walkanim>
+        <joganim>Idle</joganim>
+        <runanim>Idle</runanim>
+    </tactic>
+
+    <tactic>zpStealth
+        <protounitcommand>zpTacticStealth</protounitcommand>
+        <action>Stealth</action>
+        <action>Discover</action>
+        <transition>
+            <tactic>zpDive</tactic>
+            <length>0.3</length>
+            <exit>1</exit>
+            <automatic>1</automatic>
+            <commandautomatic>1</commandautomatic>
+        </transition>
+        <transition>
+            <tactic>zpSurface</tactic>
+            <anim>SurfaceAnim</anim>
+            <length>2.0</length>
+            <exit>1</exit>
+            <automatic>1</automatic>
+            <commandautomatic>1</commandautomatic>
+        </transition>
+        <checkifcanstealth range="25.0">1</checkifcanstealth>
+        <speedmodifier>0.6</speedmodifier>
+        <maxhpmodifier>2.0</maxhpmodifier>
+        <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+        <attacktype>LogicalTypeHandUnitsAttack</attacktype>
+        <action>ExtraSpeed</action>
+        <active>1</active>
+        <autoretarget>0</autoretarget>
+        <idleanim>Dived</idleanim>
+        <boredanim>Dived</boredanim>
+        <deathanim>Death_dived</deathanim>
+        <walkanim>Dived</walkanim>
+        <joganim>Dived</joganim>
+        <runanim>Dived</runanim>
+        <idleanim>Dived</idleanim>
+        <boredanim>Dived</boredanim>
+        <walkanim>Dived</walkanim>
+        <joganim>Dived</joganim>
+        <runanim>Dived</runanim>
+    </tactic>
+
+    <!--<tactic>zpProtectDock
+        <protounitcommand>zpTacticProtectDock</protounitcommand>
+        <action priority="100">CannonAttackDived</action>
+        <action priority="2">ShuntAttack</action>
+        <action>Discover</action>
+        <transition>
+            <tactic>zpStealth</tactic>
+            <length>0.3</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>zpSurface</tactic>
+            <anim>SurfaceAnim</anim>
+            <length>2</length>
+            <exit>1</exit>
+            <automatic>1</automatic>
+            <commandautomatic>1</commandautomatic>
+        </transition>
+        <transition>
+            <tactic>zpDive</tactic>
+            <length>0.3</length>
+            <exit>1</exit>
+        </transition>
+        <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+        <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+        <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+        <runaway>0</runaway>
+        <speedmodifier>0.8</speedmodifier>
+        <action>ExtraSpeed</action>
+        <autoretarget>1</autoretarget>
+        <idleanim>Dived</idleanim>
+        <boredanim>Dived</boredanim>
+        <deathanim>Death_dived</deathanim>
+        <walkanim>Dived</walkanim>
+        <joganim>Dived</joganim>
+        <runanim>Dived</runanim>
+        <idleanim>Dived</idleanim>
+        <boredanim>Dived</boredanim>
+        <walkanim>Dived</walkanim>
+        <joganim>Dived</joganim>
+        <runanim>Dived</runanim>
+    </tactic>-->
+</tactics>

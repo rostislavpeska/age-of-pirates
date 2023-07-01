@@ -1,0 +1,83 @@
+<layout>
+  <gadget name="TradeRoute" type="gadget" sizerel1024="824 70 1024 650" background="ui\file_system\file_system_background" bevel="" titlebar="$$33254$$Trade Route Tool" closebutton="" windowzstyle="" moveable="" closeonesc="">
+    <gadget name="TradeRoute_CreateBtn" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 15 185 35">$$33255$$Create Trade Route</gadget>
+    <gadget name="TradeRoute_RemoveBtn" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 50 185 70">$$33256$$Remove Trade Route</gadget>
+    <gadget name="TradeRoute_WaypointBtn" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 85 185 105">$$33257$$Add/Remove Waypoints</gadget>
+    <gadget name="TradeRoute_SelectBtn" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 120 185 140">$$33258$$Select Next Trade Route</gadget>
+    <gadget name="SocketButton" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 155 185 175" z="1">$$29999$$SocketTradeRoute<command>editMode("PlaceUnit") gadgetUnReal("gameprotopalette") gadgetUnReal("BrushFunctionsPlaceObject") gadgetUnReal("EditorProtoPalette") uiSetProtoCursor("SocketTradeRoute", true)</command></gadget>
+    <gadget name="SocketTradeRouteIcon" type="button" bevelbutton="" tooltiptext="$$29999$$" foreground="ui\trade_route_1_portrait" sizerel1024="165 155 185 175" z="2">
+      <command>editMode("PlaceUnit") gadgetUnReal("gameprotopalette") gadgetUnReal("BrushFunctionsPlaceObject") gadgetUnReal("EditorProtoPalette") uiSetProtoCursor("SocketTradeRoute", true)</command>
+    </gadget>
+    <gadget name="PlaceButton" type="button" bevelbutton="" tooltiptext="$$20282$$Place Object" foreground="ui\editor\placeunit" sizerel1024="145 190 165 210" z="2">
+      <command>gadgetUnReal("InfoAndForum") editMode("PlaceUnit") gadgetReal("gameprotopalette") gadgetReal("BrushFunctionsPlaceObject") gadgetReal("EditorProtoPalette")</command>
+    </gadget>
+    <gadget name="TradingPost" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 190 185 210" z="1">$$22837$$TradingPost<command>editMode("PlaceUnit") gadgetUnReal("gameprotopalette") gadgetUnReal("BrushFunctionsPlaceObject") gadgetUnReal("EditorProtoPalette") uiSetProtoCursor("TradingPost", true)</command></gadget>
+    <gadget name="TradingPostIcon" type="button" bevelbutton="" tooltiptext="$$22836$$" foreground="ui\trading_post_icon" sizerel1024="165 190 185 210" z="2">
+      <command>editMode("PlaceUnit") gadgetUnReal("gameprotopalette") gadgetUnReal("BrushFunctionsPlaceObject") gadgetUnReal("EditorProtoPalette") uiSetProtoCursor("TradingPost", true)</command>
+    </gadget>
+
+    <gadget name="AsianFyButton" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 225 185 245" z="1">Convert to Asian
+      <command>editorSetAllTradeRoutesToDef("water")</command>
+    </gadget>
+    <gadget name="AsianFyButtonIcon2" type="button" bevelbutton="" tooltiptext="$$64990$$AsianFy" foreground="ui\rickshaw1_icon_portrait" sizerel1024="165 225 185 245" z="2">
+      <command>editorSetAllTradeRoutesToDef("water")</command>
+    </gadget>
+
+    <gadget name="UnAsianFyButton" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 260 185 280" tooltiptext="$$63079$$UnAsianFy" z="1">Convert to Normal
+      <command>editorSetAllTradeRoutesToDef("dirt")</command>
+    </gadget>
+    <gadget name="UnAsianFyButtonIcon2" type="button" bevelbutton="" tooltiptext="$$29375$$" foreground="ui\travois_icon_64" sizerel1024="165 260 185 280" z="2">
+      <command>editorSetAllTradeRoutesToDef("dirt")</command>
+    </gadget>
+   
+    <gadget name="SnowFyButton" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 295 185 315" mouseovertext="Editor use - sets all trade route definitons to the snow trade routes." z="1">Convert to Snow
+      <command>editorSetAllTradeRoutesToDef("snow")</command>
+    </gadget>
+    <gadget name="snow_Icon2" type="button" bevelbutton="" mouseovertext="$$29375$$" foreground="ui\white-snowflake" sizerel1024="165 295 185 315" z="2">
+      <command>editorSetAllTradeRoutesToDef("snow")</command>
+    </gadget>
+    
+    <gadget name="American_NativeFyButton" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 330 185 350" mouseovertext="Editor use - sets all trade route definitons to the American_Native trade routes." z="1">Convert to American Native
+      <command>editorSetAllTradeRoutesToDef("dirt_trail")</command>
+    </gadget>
+    <gadget name="American_travois_trail_Icon2" type="button" bevelbutton="" mouseovertext="$$90900$$" foreground="ui\barter_merchant_icon" sizerel1024="165 330 185 350" z="2">
+      <command>editorSetAllTradeRoutesToDef("dirt_trail")</command>
+    </gadget>
+    
+    <gadget name="AfricanFyButton" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 365 185 385" mouseovertext="Editor use - sets all trade route definitons to the African[LV1] trade routes." z="1">Convert to African
+      <command>editorSetAllTradeRoutesToDef("dirt_trail_african")</command>
+    </gadget>
+    <gadget name="african_travois_trail_Icon2" type="button" bevelbutton="" mouseovertext="$$102123$$" foreground="ui\african_trader_icon" sizerel1024="165 365 185 385" z="2">
+      <command>editorSetAllTradeRoutesToDef("dirt_trail_african")</command>
+    </gadget>
+    
+    <gadget name="water_trail" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 400 185 420" mouseovertext="Editor use - sets all trade route definitons to the Caravel(water trade routes)." z="1">Convert to Water
+      <command>editorSetAllTradeRoutesToDef("water_trail")</command>
+    </gadget>
+    <gadget name="water_trail_Icon" type="button" bevelbutton="" mouseovertext="$$102135$$" foreground="ui\trade_ship_icon" sizerel1024="165 400 185 420" z="2">
+      <command>editorSetAllTradeRoutesToDef("water_trail")</command>
+    </gadget>
+
+    <gadget name="river_trail" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 435 185 455" mouseovertext="Editor use - sets all trade route definitons to the river[LV1] trade routes." z="1">Convert to River
+      <command>editorSetAllTradeRoutesToDef("river_trail")</command>
+    </gadget>
+    <gadget name="river_trail_Icon" type="button" bevelbutton="" mouseovertext="$$122529$$" foreground="ui\trade_boat_01_icon" sizerel1024="165 435 185 455" z="2">
+      <command>editorSetAllTradeRoutesToDef("river_trail")</command>
+    </gadget>
+    
+    <gadget name="asian_water_trail" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 470 185 490" mouseovertext="Editor use - sets all trade route definitons to the asian water[LV1] trade routes." z="1">Convert to Asian Water
+      <command>editorSetAllTradeRoutesToDef("asian_water_trail")</command>
+    </gadget>
+    <gadget name="asian_water_trail_Icon" type="button" bevelbutton="" mouseovertext="$$300308$$" foreground="ui\indian_fishing_boat_icon_64" sizerel1024="165 470 185 490" z="2">
+      <command>editorSetAllTradeRoutesToDef("asian_water_trail")</command>
+    </gadget>
+
+    <gadget name="asian_water_trail" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 505 185 525" mouseovertext="Editor use - sets all trade route definitons to the american native water trade routes." z="1">Convert to American Water
+      <command>editorSetAllTradeRoutesToDef("native_water_trail")</command>
+    </gadget>
+    <gadget name="asian_water_trail_Icon" type="button" bevelbutton="" mouseovertext="$$300383$$" foreground="ui\canoe_icon" sizerel1024="165 505 185 525" z="2">
+      <command>editorSetAllTradeRoutesToDef("native_water_trail")</command>
+    </gadget>
+
+  </gadget>
+</layout>

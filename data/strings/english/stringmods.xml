@@ -186,8 +186,8 @@
       <string _locid="300184">Wokou Pirates</string>
       <string _locid="300185">ZP Socket Wokou</string>
       <string _locid="300186">ZP NAT Wokou Pirate</string>
-      <string _locid="300187">ZP SPC Wokou Floating Base</string>
-      <string _locid="300188">Stolen Treasure Ship</string>
+      <string _locid="300187">ZP SPC Treasure Ship</string>
+      <string _locid="300188">Treasure Ship</string>
       <string _locid="300189">Mother of all ships</string>
       <string _locid="300190">Floating Dragon</string>
       <string _locid="300191">ZP Colonization Wagon Asian</string>
@@ -472,9 +472,9 @@
       <string _locid="300468">The Dead Sea: Large valley with player's castles and a salty lake in the middle \n\nSettlements: Jewish, Maltese, Sufi Blue Mosque</string>
       <string _locid="300469">Large lake map map with several major Sufi Mosques, Maltese villages and Jewish settlements. Who controls the natives, controls the map.</string>
       <string _locid="300470">ZP Submarine</string>
-      <string _locid="300471">Submerge \nSubmerged submarine with no silent drive mod is not completely invisible but it's hart to hit.</string>
-      <string _locid="300472">Surface \nSubmarine surfaces to move faster.</string>
-      <string _locid="300473">Silent Drive \nSubmarine becomes invisible and can get closer to enemy ships.</string>
+      <string _locid="300471">Submerge: \nSubmerged submarine with no silent drive is not completely invisible but moves a bit faster and is hart to hit. 40% Damage bonus against ships and dock. 50% more hitpoints. Can't attack land targets.</string>
+      <string _locid="300472">Surface: \nSurfaced Submarine moves very fast and can attack buildings and land units.</string>
+      <string _locid="300473">Silent Drive: \nSubmarine becomes invisible and can get closer to enemy ships but moves very slow. 40% Damage bonus against ships and dock. 50% more hitpoints. Can't attack land targets.</string>
       <string _locid="300474">ZP Torpedo</string>
       <string _locid="300475">Submarine</string>
       <string _locid="300476">Nautilus</string>
@@ -502,7 +502,7 @@
       <string _locid="300498">Test Building 4</string>
       <string _locid="300499">Test Building 5</string>
       <string _locid="300500">Gatling Gun</string>
-      <string _locid="300501">Protect Dock \nSubmerged submarine stands to protects dock or fleet formation and doesn't move around the map.</string>
+      <string _locid="300501">Protect Dock: \nSubmerged submarine stands to protects dock or trading post and doesn't move around the map. 40% Damage bonus against ships and dock. Can't attack land targets. 50% more hitpoints. Nearby Building hitpoints increased by 75%.</string>
       <string _locid="300502">ZP Scientists Factory Winter</string>
       <string _locid="300503">Weapon Factory</string>
       <string _locid="300504">Native Building</string>
@@ -630,6 +630,10 @@
       <string _locid="300627">ZP NAT Wokou Water Flag 1</string>
       <string _locid="300628">ZP NAT Wokou Water Flag 2</string>
       <string _locid="300629">ZP Scientists Factory Summer</string>
+      <string _locid="300630">ZP EU Palace Wing</string>
+      <string _locid="300631">Submarine dives and rams enemy ship. Strong bonus against advanced wooden ships like Frigate or Monitor.</string>
+      <string _locid="300632">ZP Test Submarine Pirate</string>
+      <string _locid="300633">ZP Airship NO TRANSPORT</string>
     </language>
   </stringtable>
 </stringmods>

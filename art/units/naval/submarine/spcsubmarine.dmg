@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<damagetemplate>
+	<model name="units\naval\submarine\spcsubmarine">
+		<impactpoint name="boneimpact01" bone="boneimpact01" impacttype=""/>
+		<impactpoint name="boneimpact02" bone="boneimpact02" impacttype=""/>
+		<impactpoint name="boneimpact03" bone="boneimpact03" impacttype=""/>
+		<impactpoint name="boneimpact04" bone="boneimpact04" impacttype=""/>
+		<impactpoint name="boneimpact05" bone="boneimpact05" impacttype=""/>
+	</model>
+</damagetemplate>

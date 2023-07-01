@@ -90,7 +90,10 @@
     <numberprojectiles>1</numberprojectiles>
     <displayednumberprojectiles>20</displayednumberprojectiles>
     <impacteffect>effects\impacts\torch</impacteffect>
-    <rate type="All">1.0 </rate>
+    <rate type="LogicalTypeNavalMilitary">1.0 </rate>
+    <rate type="AbstractDock">1.0 </rate>
+    <rate type="WaterGuardian">1.0 </rate>
+    <rate type="AbstractFishingBoat">1.0 </rate>
     <instantballistics>1</instantballistics>
     <basedamagecap>1</basedamagecap>
   </action>

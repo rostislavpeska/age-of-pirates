@@ -77,12 +77,12 @@
 <component>ModelComp
     <logic type="LowPoly">
         <normal>
-            <assetreference type="GrannyModel" shape="ship_galleon">
+            <assetreference type="GrannyModel">
                 <file>units\naval\submarine\spcsubmarine</file>
             </assetreference>
         </normal>
         <lowpoly>
-            <assetreference type="GrannyModel" shape="ship_galleon">
+            <assetreference type="GrannyModel">
                 <file>units\naval\submarine\spcsubmarine</file>
             </assetreference>
         </lowpoly>
@@ -122,9 +122,7 @@
     </assetreference>
     <component>ModelComp</component>
     <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
-    <simskeleton>
-        <model>units\naval\submarine\submarine</model>
-    </simskeleton>
+
 </anim>
 <anim>Idle
     <assetreference type="GrannyAnim">
@@ -132,9 +130,7 @@
     </assetreference>
     <component>ModelComp</component>
     <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
-    <simskeleton>
-        <model>units\naval\submarine\submarine</model>
-    </simskeleton>
+
 </anim>
 <anim>DiveAnim
     <assetreference type="GrannyAnim">
@@ -144,9 +140,7 @@
     <component>ModelComp</component>
     <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
     <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
-    <simskeleton>
-        <model>units\naval\submarine\submarine</model>
-    </simskeleton>
+
 </anim>
 <anim>SurfaceAnim
     <assetreference type="GrannyAnim">
@@ -156,9 +150,7 @@
     <component>ModelComp</component>
     <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
     <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
-    <simskeleton>
-        <model>units\naval\submarine\submarine</model>
-    </simskeleton>
+
 </anim>
 <anim>Bombard_ranged_attack_dived
     <assetreference type="GrannyAnim">
@@ -176,9 +168,7 @@
         <tag type="WindEffect" effectname="MediumArtilleryFire" effectbone="bone_launchpoint02">0.37</tag>
     </assetreference>
     <component>ModelComp</component>
-    <simskeleton>
-        <model>units\naval\submarine\submarine</model>
-    </simskeleton>
+
     <attach a="RocketThrust1" frombone="ATTACHPOINT" tobone="bone_launchpoint01" syncanims="0"></attach>
     <attach a="RocketThrust2" frombone="ATTACHPOINT" tobone="bone_launchpoint02" syncanims="0"></attach>
 </anim>
@@ -199,9 +189,7 @@
         <tag type="WindEffect" effectname="MediumArtilleryFire" effectbone="bone_launchpoint02">0.37</tag>
     </assetreference>
     <component>ModelComp</component>
-    <simskeleton>
-        <model>units\naval\submarine\submarine</model>
-    </simskeleton>
+
     <attach a="RocketThrust1" frombone="ATTACHPOINT" tobone="bone_launchpoint01" syncanims="0"></attach>
     <attach a="RocketThrust2" frombone="ATTACHPOINT" tobone="bone_launchpoint02" syncanims="0"></attach>
 </anim>
@@ -210,13 +198,14 @@
     <assetreference type="GrannyAnim">
         <file>units\naval\submarine\submarine_ram</file>
         <tag type="Attack">0.40</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="Submarine_Dive">0.10</tag>
         <tag type="SpecificSoundSet" checkvisible="1" set="ShipDeath">0.40</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="Submarine_Dive">0.90</tag>
     </assetreference>
     <component>ModelComp</component>
-    <simskeleton>
-        <model>units\naval\submarine\submarine</model>
-    </simskeleton>
+
     <attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
 </anim>
 
 <anim>Gatling_attack
@@ -240,9 +229,7 @@
         <tag type="Particles" particlename="GatlingMuzzle01">0.89</tag>
     </assetreference>
     <component>ModelComp</component>
-    <simskeleton>
-        <model>units\naval\submarine\submarine</model>
-    </simskeleton>
+
     <attach a="GatlingGunShoot" frombone="ATTACHPOINT" tobone="bone_Gatling" syncanims="0"></attach>
 </anim>
 
@@ -252,9 +239,7 @@
         <tag type="SpecificSoundSet" checkvisible="1" set="ShipDeath">0.90</tag>
     </assetreference>
     <component>ModelComp</component>
-    <simskeleton>
-        <model>units\naval\submarine\submarine</model>
-    </simskeleton>
+
     <attach a="Death_EXP" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
     <attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
     <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
@@ -266,9 +251,7 @@
         <tag type="SpecificSoundSet" checkvisible="1" set="ShipDeath">0.90</tag>
     </assetreference>
     <component>ModelComp</component>
-    <simskeleton>
-        <model>units\naval\submarine\submarine</model>
-    </simskeleton>
+
     <attach a="Death_EXP" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
     <attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
     <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
