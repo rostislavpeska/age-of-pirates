@@ -3316,7 +3316,7 @@ minInterval 5
 {
    if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypeTradingPost) >= 0)
    {
-      if (gIsPirateMap == true && (gClaimNativeMissionInterval < 60 * 1000 || gClaimTradeMissionInterval < 60 * 1000))
+      if (gIsPirateMap == true)// && (gClaimNativeMissionInterval < 60 * 1000 || gClaimTradeMissionInterval < 60 * 1000))
       {
          return;
       }
@@ -3343,6 +3343,7 @@ minInterval 5
    int bestNativeSocketID = -1;
    int bestNativeDistancePenalty = 99.99;
    bool earlyTrade = false;
+   //int transportUnitID = -1;
 
    // AssertiveWall: Increase btBiasNative on pirate maps
    /*if (gIsPirateMap == true)
@@ -3557,6 +3558,9 @@ minInterval 5
       }
       
       int planID = aiPlanCreate("Trading Post Build Plan", cPlanBuild);
+      socketPosition = kbUnitGetPosition(socketID);
+      socketAreaGroup = kbAreaGroupGetIDByPosition(socketPosition);
+
       aiPlanSetVariableInt(planID, cBuildPlanBuildingTypeID, 0, cUnitTypeTradingPost);
       aiPlanSetVariableInt(planID, cBuildPlanSocketID, 0, socketID);
       
@@ -3568,6 +3572,7 @@ minInterval 5
             " to our Trading Post build plan");
          aiPlanAddUnitType(planID, wagonPUID, 1, 1, 1);
          aiPlanAddUnit(planID, wagonID);
+         //transportUnitID = wagonID;
       }
       else // Check for Heroes if we didn't manage to find a Wagon.
       {
@@ -3590,12 +3595,13 @@ minInterval 5
             if ((heroPlanID < 0) || (aiPlanGetType(heroPlanID) == cPlanDefend) || (aiPlanGetType(heroPlanID) == cPlanExplore))
             {
                heroID = unitID;
+               //transportUnitID = heroID;
                break;
             }
          }
 
-         // AssertiveWall: Skip explorer on pirate map so we can make lots
-         if (gIsPirateMap == true)
+         // AssertiveWall: Skip explorer on pirate map so we can make lots, but only for same island
+         if (gIsPirateMap == true && kbAreAreaGroupsPassableByLand(socketAreaGroup, mainAreaGroup) == true)
          {
             heroID = -1;
          }
@@ -3614,6 +3620,9 @@ minInterval 5
          if (((gRevolutionType & cRevolutionMilitary) == 0) || ((gRevolutionType & cRevolutionFinland) == cRevolutionFinland))
          {
             debugBuildings("Adding 1 gEconUnit to our Trading Post build plan");
+            //unitID = getClosestUnitByLocation(gEconUnit, cMyID, cUnitStateAlive, socketPosition, 300.0);
+            //aiPlanAddUnit(planID, unitID);
+            //transportUnitID = unitID;
             aiPlanAddUnitType(planID, gEconUnit, 1, 1, 1);
          }
          else // We didn't manage to add a Wagon or a Hero to our plan and can't use Villagers either, destroy.
@@ -3646,8 +3655,32 @@ minInterval 5
          aiPlanSetDesiredResourcePriority(planID, 65); // AssertiveWall: up from 55
       }
 
+      // AssertiveWall: Check if plan requires transport and if it does, make sure no active transport plans are going on
+      int transportPlanID = -1;
+      //vector villagerPosition = kbUnitGetPosition(transportUnitID);
+      
+      if (kbAreAreaGroupsPassableByLand(socketAreaGroup, mainAreaGroup) == false)
+      {  
+         if (aiPlanGetIDByIndex(cPlanTransport, -1, true, 0) > 0)
+         {
+            return; // Return to try again. Should return until villager arrives on island.
+         }
+         else
+         {  // Create a transport plan for the unit
+            transportPlanID = createTransportPlan(kbBaseGetMilitaryGatherPoint(cMyID, kbBaseGetMainID(cMyID)), socketPosition, 100);
+            if (transportPlanID >= 0)
+            {
+               aiPlanAddUnitType(transportPlanID, gEconUnit, 1, 1, 1);
+               //aiPlanAddUnit(transportPlanID, transportUnitID);
+               aiPlanSetNoMoreUnits(transportPlanID, true);
+            }
+            aiPlanSetDesiredPriority(planID, 100);
+            aiPlanSetDesiredResourcePriority(planID, 100);
+         }
+      }
+
       // Go.
-      aiPlanSetActive(planID);
+      aiPlanSetActive(planID, true);
 
       socketPosition = kbUnitGetPosition(socketID);
       //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, socketPosition);
@@ -3657,7 +3690,7 @@ minInterval 5
       {
          gLastClaimNativeMissionTime = time;
       // AssertiveWall: Only for troubleshooting purposes. Pings the place the AI is trying to build a native TP
-      // sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, socketPosition);
+       sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, socketPosition);
       }
       else
       {

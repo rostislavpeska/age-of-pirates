@@ -890,7 +890,7 @@ void initArrays(void)
    xsArraySetString(gMapNames, 233, "euwallachialarge");
 
    // AssertiveWall: Pirates of the Carribean Maps:
-   xsArraySetString(gMapNames, 234, "zpburma");
+   xsArraySetString(gMapNames, 234, "zpburma_b");
    xsArraySetString(gMapNames, 235, "zpdeadsea");
    xsArraySetString(gMapNames, 236, "zpeldorado");
    xsArraySetString(gMapNames, 237, "zpmalta");
@@ -1168,6 +1168,7 @@ void analyzeMap()
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
+      gNavyMap = true;
       xsEnableRule("initializePirateRules");
 
       gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10

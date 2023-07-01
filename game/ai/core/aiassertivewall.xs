@@ -1019,7 +1019,7 @@ inactive
 minInterval 20
 {  // cUnitTypeypMarathanCatamaran
    //gCeylonDelay = true; // Causes building manager and military manager to wait
-   int shipType = cUnitTypeLogicalTypeGarrisonInShips;
+   int shipType = cUnitTypeTransport;
    if (kbUnitCount(cMyID, shipType, cUnitStateAlive) <= 0)
    {
       shipType = cUnitTypeypMarathanCatamaran;
