@@ -2536,16 +2536,22 @@ minInterval 2
       cMyCiv == cCivOttomans ? 0 : xsArrayGetInt(gTargetSettlerCounts, kbGetAge()), true, 
       kbBaseGetMainID(cMyID), 1);
    aiPlanSetDesiredResourcePriority(gSettlerMaintainPlan, 70);
+
+   // AssertiveWall: Check whether we're on a migration style map
+   if (cRandomMapName == "Ceylon" ||
+         cRandomMapName == "ceylonlarge" ||
+         cRandomMapName == "euarchipelago" ||
+         cRandomMapName == "euarchipelagolarge" ||
+         cRandomMapName == "afswahilicoast" ||
+         cRandomMapName == "afswahilicoastlarge")
+   {
+      gMigrationMap = true;
+   }
    
    if (cvOkToBuild == true)
    {
       // AssertiveWall: Delay building if we're on ceylon or equivalent
-      if (cRandomMapName == "Ceylon" ||
-          cRandomMapName == "ceylonlarge" ||
-          cRandomMapName == "euarchipelago" ||
-          cRandomMapName == "euarchipelagolarge" ||
-          cRandomMapName == "afswahilicoast" ||
-          cRandomMapName == "afswahilicoastlarge")
+      if (gMigrationMap == true)
       {
          gCeylonDelay = true;
       }

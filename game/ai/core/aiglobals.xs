@@ -19,6 +19,7 @@ extern const int cTileVisible = 4;
 // Islands. AssertiveWall
 //==============================================================================
 
+extern bool gMigrationMap = false;          // True for migration style maps like Ceylon
 extern bool gCeylonDelay = false;           // Used to delay buildings until we makee a base
 extern int gCeylonStartingTargetArea = -1;
 extern int gLastIslandSwitchTime = -1;      // Stores the last time we switched islands for building

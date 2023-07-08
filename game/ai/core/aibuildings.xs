@@ -973,7 +973,7 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
    {
       aiPlanSetVariableFloat(buildPlan, cBuildPlanCenterPositionDistance, 0, exclusionRadius);
    }
-   else if ((gStartOnDifferentIslands == true) && (cRandomMapName != "Ceylon" && cRandomMapName != "ceylonlarge") &&
+   else if ((gStartOnDifferentIslands == true) && gMigrationMap == false &&
              gIsPirateMap == false)
    {  // AssertiveWall: Nice big radius to build towers all along coast, and bias them toward front
       aiPlanSetVariableFloat(buildPlan, cBuildPlanCenterPositionDistance, 0, kbGetMapXSize() / 2.0);
@@ -1013,7 +1013,7 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 
    // Weight towers to stay very close to center point, unless it's an island map, then go far away
    aiPlanSetVariableVector(buildPlan, cBuildPlanInfluencePosition, 0, testVec);// Position influence for landing position
-   if ((gStartOnDifferentIslands == true) && (cRandomMapName != "Ceylon" && cRandomMapName != "ceylonlarge"))
+   if ((gStartOnDifferentIslands == true) && gMigrationMap == false)
    {
       aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionDistance, 0, kbGetMapXSize() / 2.0); // Half map range.
       aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionValue, 0, -25.0);               // -30 points for center
@@ -1082,20 +1082,6 @@ bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
       case cUnitTypeYPDockAsian:
       case cUnitTypedePort:
       {
-         // AssertiveWall: Make new dock location (newNavyVec) if enemy navy is spotted
-         //int enemyWSQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
-         //int friendlyWSQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
-         //int friendlyWSQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationAlly, cUnitStateAlive);
-         //kbUnitQuerySetSeeableOnly(enemyWSQuery, true); // Only count visible warships
-         //vector dockLocation = kbUnitGetPosition(getUnit(gDockUnit, cMyID, cUnitStateAny));
-         //kbUnitQuerySetPosition(enemyWSQuery, dockLocation);
-         //kbUnitQuerySetPosition(friendlyWSQuery, dockLocation);    // Only look for friendlies and enemies near dock
-         //kbUnitQuerySetMaximumDistance(enemyWSQuery, 50.0);
-         //kbUnitQuerySetMaximumDistance(friendlyWSQuery, 50.0);
-
-         //int enNumberWSFound = kbUnitQueryExecute(enemyWSQuery);
-         //int frNumberWSFound = kbUnitQueryExecute(friendlyWSQuery);
-         //if (enNumberWSFound >= frNumberWSFound)
          // AssertiveWall: Get a new dock position for two minutes after the first one encunters danger
          vector newNavyVec = gNavyVec;
          if (gLastWSTime > xsGetTime())
@@ -1174,6 +1160,21 @@ bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
       default:
       {
          int numMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+         // AssertiveWall: Only the "closest" function seems to work well on ceylon
+      /*   if (gMigrationMap == true)
+         {
+            for (i = 0; < numMilitaryBuildings)
+            {
+               if (puid != xsArrayGetInt(gMilitaryBuildings, i))
+               {
+                  continue;
+               }
+               // AssertiveWall: Only the "closest" function seems to work well on ceylon
+               selectClosestBuildPlanPosition(planID, baseID);
+               break;
+            }
+         }*/
+
          for (i = 0; < numMilitaryBuildings)
          {
             if (puid != xsArrayGetInt(gMilitaryBuildings, i))
@@ -1729,6 +1730,12 @@ rule wagonMonitor
 inactive
 minInterval 10
 {
+   // AssertiveWall: put a pause on this until we've established a new base
+   if (gCeylonDelay == true)
+   {
+      return;
+   }
+   
    int wagonQueryID = createSimpleUnitQuery(cUnitTypeAbstractWagon, cMyID, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(wagonQueryID);
    if (numberFound == 0)
@@ -2752,7 +2759,7 @@ minInterval 5
       else
       {
          // Avoid destroying plans which can be created elsewhere.
-         if (planID >= 0 && aiPlanGetState(planID) != cPlanStateBuild && aiPlanGetOrphan(planID) == false)
+         if (planID >= 0 && aiPlanGetState(planID) != cPlanStateBuild && aiPlanGetOrphan(planID) == false && gMigrationMap == false)
 		   {
             aiPlanDestroy(planID);
          }
@@ -2826,8 +2833,7 @@ minInterval 5
          if (buildForward == true && gForwardBaseID < 0)
          {
             // AssertiveWall: If an Island map, establish a beachhead
-            if (gStartOnDifferentIslands == true && ((cRandomMapName != "Ceylon" && cRandomMapName != "ceylonlarge") &&
-         (cRandomMapName != "afswahilicoast" && cRandomMapName != "afswahilicoastlarge")))
+            if (gStartOnDifferentIslands == true && (gMigrationMap == false))
             {
                location = selectForwardBaseBeachHead();
             }
@@ -2908,6 +2914,9 @@ minInterval 5
             {
                planID = createSimpleBuildPlan(buildingPUID, 1, 70, false, cMilitaryEscrowID, mainBaseID, 1);
             }
+            // AssertiveWall: for testing purposes
+            //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildTC,
+            //   kbBuildingPlacementGetResultPosition(aiPlanGetVariableInt(planID, cBuildPlanBuildingPlacementID, 0)));
          }
 
          // If we don't have any, set priority to slightly above default.

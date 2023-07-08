@@ -257,11 +257,17 @@ rule militaryManager
 inactive
 minInterval 28
 {
+   // AssertiveWall: put a pause on this until we've established a new base
+   //if (gCeylonDelay == true)
+   //{
+   //   return;
+   //}
 
    static bool firstRun = false; // Flag to indicate vars, plans are initialized
    static int unitsNotMaintained = -1;
    static int unitsNotMaintainedValue = -1;
    static int unitsNotMaintainedUpgrade = -1;
+
    if (firstRun == false)
    {
       // Need to initialize, if we're allowed to.
@@ -279,12 +285,6 @@ minInterval 28
       unitsNotMaintained = xsArrayCreateInt(3, -1, "Units not maintained");
       unitsNotMaintainedValue = xsArrayCreateFloat(3, -1, "Units not maintained value");
       unitsNotMaintainedUpgrade = xsArrayCreateInt(3, -1, "Units not maintained upgrade");
-   }
-
-   // AssertiveWall: put a pause on this until we've established a new base
-   if (gCeylonDelay == true)
-   {
-      return;
    }
 
    if (gLandUnitPicker != -1)
@@ -1705,7 +1705,7 @@ minInterval 30
 //==============================================================================
 rule waterDefend
 inactive
-minInterval 10
+minInterval 5  // AssertiveWall: Decreased from 10
 {
    if (gNavyDefendPlan < 0) // First run, create a persistent defend plan.
    {
@@ -1743,7 +1743,7 @@ minInterval 10
       int fishBoatQuery = createSimpleUnitQuery(gFishingUnit, cMyID, cUnitStateAlive);
       int numberFBFound = kbUnitQueryExecute(fishBoatQuery);
       int nearbyEnFound = -1;
-      //bool rAway = false;
+      int dockUnit = -1;
       int unitID = -1;
       int enUnitID = -1;
       vector fBLocation = cInvalidVector;
@@ -1752,24 +1752,31 @@ minInterval 10
       // AssertiveWall: Step through each fishing boat
       for (i = 0; < numberFBFound)
       {
-         //rAway = false;
          unitID = kbUnitQueryGetResult(fishBoatQuery, i);
          fBLocation = kbUnitGetPosition(unitID);
-         nearbyEnFound = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, fBLocation, 23.0); // one bigger range than a sloop
+         nearbyEnFound = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, fBLocation, 31.0); // one bigger range than a frigate
          if (nearbyEnFound > 0)
-         {  // AssertiveWall: Look for forts, town centers, towers, then docks
-            sLocation = kbUnitGetPosition(getClosestUnitByLocation(cUnitTypeFortFrontier, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+         {  // AssertiveWall: Look for docks to garrison in. If none found then forts, town centers, towers
+            dockUnit = getUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 150.0);
+            sLocation = kbUnitGetPosition(dockUnit);
+            if (sLocation != cInvalidVector)
+            {
+               aiTaskUnitWork(unitID, dockUnit, true);
+               continue;
+            }
+            
+            // Now look for the rest
             if (sLocation == cInvalidVector)
             {
-               sLocation = kbUnitGetPosition(getClosestUnitByLocation(cUnitTypeTownCenter, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+               sLocation = kbUnitGetPosition(getUnitByLocation(cUnitTypeFortFrontier, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
             }
             if (sLocation == cInvalidVector)
             {
-               sLocation = kbUnitGetPosition(getClosestUnitByLocation(gTowerUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+               sLocation = kbUnitGetPosition(getUnitByLocation(cUnitTypeTownCenter, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
             }
             if (sLocation == cInvalidVector)
             {
-               sLocation = kbUnitGetPosition(getClosestUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 100.0));
+               sLocation = kbUnitGetPosition(getUnitByLocation(gTowerUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
             }
             if (sLocation != cInvalidVector)
             {

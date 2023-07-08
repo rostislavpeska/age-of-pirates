@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "26957" displayNameID = "26956" loadDetails="35951" largeMapName = "LostCity"
+    imagepath = "ui\random_map\yucatan\yucatan_mini" cannotReplace = "" loadBackground="ui\random_map\yucatan\yucatan_map">
+   <loadss>ui\random_map\yucatan\yucatan_ss_01</loadss>
+   <loadss>ui\random_map\yucatan\yucatan_ss_02</loadss>
+   <loadss>ui\random_map\yucatan\yucatan_ss_03</loadss>
+</mapinfo>

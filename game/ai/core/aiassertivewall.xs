@@ -40,11 +40,12 @@
 //==============================================================================
 /* getRandomIslandBase
    AssertiveWall: This function gives you a random island base
+   * not in use *
 */
 //==============================================================================
 int getRandomIslandBase(int numberIslands = -1)
 {
-   if (cRandomMapName == "Ceylon" || cRandomMapName == "ceylonlarge")
+   if (gMigrationMap == true)
    {
       return gIslandAID;
    }
@@ -96,7 +97,7 @@ int getIslandCount()
 
 bool isIslandNeeded()
 {  
-   if (cRandomMapName == "Ceylon" || cRandomMapName == "ceylonlarge")
+   if (gMigrationMap == true)
    {
       if(getIslandCount() >= 2)
       {
@@ -122,6 +123,8 @@ bool isIslandNeeded()
    desired base and adds them to that base
    
    Pickup and dropoff is a baseID, not a location
+   * not in use* 
+   See catchMigrants
 */
 //==============================================================================
 
@@ -195,7 +198,7 @@ vector getRandomIsland()
    vector tempPlayerVec = cInvalidVector;
    int thisVecAreaGroupID = -1;
 
-   if (cRandomMapName == "Ceylon" || cRandomMapName == "ceylonlarge")
+   if (gMigrationMap == true)
    {
       return kbGetMapCenter();
    }
@@ -298,7 +301,7 @@ minInterval 30
    }
 
    // On Ceylon make one base on the main island and that's it
-   if (cRandomMapName == "Ceylon" || cRandomMapName == "ceylonlarge")
+   if (gMigrationMap == true)
    {
       if (gIslandAID > 0)
       {
@@ -969,7 +972,7 @@ minInterval 10
 
 rule catchMigrants
 inactive
-minInterval 15
+minInterval 5
 {  
    // Only fire if we have ships for transport
    if (kbUnitCount(cMyID, cUnitTypeLogicalTypeGarrisonInShips, cUnitStateAlive) <= 0)
@@ -983,19 +986,18 @@ minInterval 15
 
    int area = 0;
    int areaGroup = -1;
-   int unit = getUnitByLocation(cUnitTypeAbstractVillager, cMyID, cUnitStateAlive, kbBaseGetLocation(gOriginalBase), 50); // getUnit(cUnitTypeCoveredWagon, cMyID, cUnitStateAlive);
+   int numberNeeded = getUnitCountByLocation(cUnitTypeAbstractWagon, cMyID, cUnitStateAlive, kbBaseGetLocation(gOriginalBase), 50.0);
+   int numberSettlers = getUnitCountByLocation(cUnitTypeAbstractVillager, cMyID, cUnitStateAny, kbBaseGetLocation(gOriginalBase), 50.0);
 
-   if (unit <= 0)
+   if (numberNeeded <= 0 && numberSettlers <=0)
    {
       return;
    }
 
+   int unit = getUnitByLocation(cUnitTypeAbstractVillager, cMyID, cUnitStateAlive, kbBaseGetLocation(gOriginalBase), 50); // getUnit(cUnitTypeCoveredWagon, cMyID, cUnitStateAlive);
    myLocation = kbUnitGetPosition(unit);
 
    int transportPlan = createTransportPlan(myLocation, kbAreaGetCenter(gCeylonStartingTargetArea), 50);
-   
-   int numberNeeded = getUnitCountByLocation(cUnitTypeAbstractWagon, cMyID, cUnitStateAlive, kbBaseGetLocation(gOriginalBase), 50.0);
-   int numberSettlers = getUnitCountByLocation(cUnitTypeAbstractVillager, cMyID, cUnitStateAny, kbBaseGetLocation(gOriginalBase), 50.0);
    
    aiPlanAddUnitType(transportPlan, cUnitTypeAbstractWagon, numberNeeded, numberNeeded, numberNeeded);
    aiPlanAddUnitType(transportPlan, cUnitTypeAbstractVillager, numberSettlers, numberSettlers, numberSettlers);
@@ -1025,7 +1027,7 @@ minInterval 20
       shipType = cUnitTypeypMarathanCatamaran;
       if (kbUnitCount(cMyID, shipType, cUnitStateAlive) <= 0)
       {
-         gCeylonDelay = false;
+         //gCeylonDelay = false;
          return;
       }
    }
@@ -1047,12 +1049,12 @@ minInterval 20
    
    // Build a couple things on starting island. Stuff that doesn't cause issues later
    createSimpleBuildPlan(gDockUnit, 1, 99, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
-   createSimpleBuildPlan(gHouseUnit, 1, 95, false, cEconomyEscrowID, kbBaseGetMainID(cMyID), 1);
-   if (btRushBoom <= 0)
+   //createSimpleBuildPlan(gHouseUnit, 1, 95, false, cEconomyEscrowID, kbBaseGetMainID(cMyID), 1);
+   /*if (btRushBoom <= 0)
    {
       createSimpleBuildPlan(gTowerUnit, 1, 50, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID));
       //createSimpleBuildPlan(gMarketUnit, 1, 90, false, cEconomyEscrowID, kbBaseGetMainID(cMyID), 1); 
-   }
+   }*/
 
    int closestArea = -1;
    float closestAreaDistance = kbGetMapXSize();
@@ -1150,19 +1152,24 @@ void initIslandTransportHandler(int planID = -1)
 
          for (i = 0; < 100)
          {
-            dist = dist - i * 20;
+            dist = dist - i * 10;
             gTCSearchVector = centerPoint + vec * dist;
             if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(gTCSearchVector), kbAreaGroupGetIDByPosition(centerPoint)) == true)
-            {
+            {  // Once we find the coast, go in a little further
+               gTCSearchVector = centerPoint + vec * (dist - (40 + aiRandInt(30)));
                gStartingLocationOverride = gTCSearchVector;
                break;
             }
          }
-         //   sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gStartingLocationOverride);
+         // Testing purposes
+         sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, gStartingLocationOverride);
+
          
-         int gMainBase2 = kbBaseCreate(cMyID, "Island base", gStartingLocationOverride, 100.0);//createMainBase(gStartingLocationOverride);
+         int gMainBase2 = kbBaseCreate(cMyID, "Island base", gStartingLocationOverride, 100.0); // createMainBase(gStartingLocationOverride);
          kbBaseSetMain(cMyID, gMainBase2, true);
          kbBaseSetPositionAndDistance(cMyID, kbBaseGetMainID(cMyID), gStartingLocationOverride, 100.0);
+         
+
 
          xsEnableRule("buildingMonitorDelayed");
 
@@ -1223,6 +1230,9 @@ minInterval 10
 {
    debugSetup("***Delay buildingMonitor and MilitaryManager");
    gCeylonDelay = false;
+   // Run both as soon as the delay here is done
+   //buildingMonitor();
+   //militaryManager();
    xsEnableRule("catchMigrants");
    xsDisableSelf();
 }
