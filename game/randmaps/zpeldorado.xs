@@ -43,7 +43,7 @@ void main(void)
    // Picks the map size
 	int playerTiles = 18000;
    if (cNumberNonGaiaPlayers >2)
-		playerTiles = 15000;
+		playerTiles = 15500;
 	if (cNumberNonGaiaPlayers >4)
 		playerTiles = 13500;
 	if (cNumberNonGaiaPlayers >6)
@@ -206,7 +206,7 @@ void main(void)
     int avoidSocket=rmCreateTypeDistanceConstraint("avoid socket", "Socket", 20.0);
     int avoidSocket2=rmCreateTypeDistanceConstraint("avoid socket long", "Socket", 40.0);
     int avoidController=rmCreateTypeDistanceConstraint("stay away from Controller", "zpSPCWaterSpawnPoint", 60.0);
-    int avoidScientists=rmCreateTypeDistanceConstraint("stay away from Scientists", "zpSocketScientists", 150.0);
+    int avoidScientists=rmCreateTypeDistanceConstraint("stay away from Scientists", "zpSocketScientists", 120.0);
 
    // -------------Define objects
    // These objects are all defined so they can be placed later
@@ -793,7 +793,7 @@ void main(void)
 
       vector socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.5);
 
-      if(cNumberNonGaiaPlayers == 2){
+      if(cNumberNonGaiaPlayers <= 2){
          socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.3);
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
 
@@ -963,291 +963,17 @@ void main(void)
 
       }
 
-
       // Text
       rmSetStatusText("",0.20);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
    // check for KOTH game mode
-
-      //King's "Island"
-      if (rmGetIsKOTH() == true) {
-         int kingislandID=rmCreateArea("King's Island");
-         rmSetAreaSize(kingislandID, rmAreaTilesToFraction(200), rmAreaTilesToFraction(200));
-         if(teamStartLoc > 0.5){
-            rmSetAreaLocation(kingislandID, 0.5-rmXTilesToFraction(20), 0.5-rmXTilesToFraction(20));
-         }
-         else{
-            rmSetAreaLocation(kingislandID, 0.5+rmXTilesToFraction(20), 0.5+rmXTilesToFraction(20));
-         }
-         rmSetAreaMix(kingislandID, "yucatan_grass");
-         rmAddAreaToClass(kingislandID, classIsland);
-         rmSetAreaReveal(kingislandID, 01);
-         rmSetAreaBaseHeight(kingislandID, 3.0);
-         rmSetAreaCoherence(kingislandID, 1.0);
-         rmBuildArea(kingislandID); 
-      }
 
       // Place King's Hill
       if (rmGetIsKOTH() == true) {
-         if(teamStartLoc > 0.5){
-            ypKingsHillPlacer(0.5-rmXTilesToFraction(20), 0.5-rmXTilesToFraction(20), 0, 0);
-         }
-         else{
-            ypKingsHillPlacer(0.5+rmXTilesToFraction(20), 0.5+rmXTilesToFraction(20), 0, 0);
-         }
-      }
 
-		int avoidKOTH = rmCreateAreaDistanceConstraint("avoid KOTH", kingislandID, 4.0);
+         ypKingsHillPlacer(0.4, 0.6, 0, 0);
 
-   //!!! NATIVES AND PORTS !!!//
-
-   
-
-   // Pirates
-   
-   /*int pirateLake1ID = rmCreateArea ("pirate lake 01");
-   rmSetAreaSize(pirateLake1ID, rmAreaTilesToFraction(1000.0), rmAreaTilesToFraction(1000.0));
-   if(cNumberNonGaiaPlayers > 3){
-      if(teamStartLoc > 0.5){
-         rmSetAreaLocation(pirateLake1ID, 0.2+rmXTilesToFraction(4), 0.8+rmXTilesToFraction(4));
       }
-      else{
-         rmSetAreaLocation(pirateLake1ID, 0.2-rmXTilesToFraction(4), 0.8-rmXTilesToFraction(4));
-      }
-   }
-   else {
-      if(teamStartLoc > 0.5){
-         rmSetAreaLocation(pirateLake1ID, 0.5+rmXTilesToFraction(4), 0.5+rmXTilesToFraction(4));
-      }
-      else{
-         rmSetAreaLocation(pirateLake1ID, 0.5-rmXTilesToFraction(3), 0.5-rmXTilesToFraction(3));
-      }
-   }
-   rmSetAreaWaterType(pirateLake1ID, "ZP Mexico River");
-   rmSetAreaBaseHeight(pirateLake1ID, 0);
-   rmSetAreaCoherence(pirateLake1ID, 0.9);
-   rmBuildArea(pirateLake1ID);
-   
-
-   // Place Controllers
-   int controllerID1 = rmCreateObjectDef("Controler 1");
-   rmAddObjectDefItem(controllerID1, "zpSPCWaterSpawnPoint", 1, 0.0);
-   rmSetObjectDefMinDistance(controllerID1, 0.0);
-   rmSetObjectDefMaxDistance(controllerID1, 0.0);
-   rmAddObjectDefConstraint(controllerID1, avoidImpassableLand);
-   rmAddObjectDefConstraint(controllerID1, playerEdgeConstraint);
-
-   if(cNumberNonGaiaPlayers > 3){
-      if(teamStartLoc > 0.5){ 
-         rmPlaceObjectDefAtLoc(controllerID1, 0, 0.2+rmXTilesToFraction(29), 0.8+rmXTilesToFraction(10));
-      }
-      else{
-         rmPlaceObjectDefAtLoc(controllerID1, 0, 0.2-rmXTilesToFraction(10), 0.8-rmXTilesToFraction(29));
-      }
-   }
-   else{
-      if(teamStartLoc > 0.5){ 
-         rmPlaceObjectDefAtLoc(controllerID1, 0, 0.5+rmXTilesToFraction(22), 0.5+rmXTilesToFraction(22));
-      }
-      else{
-         rmPlaceObjectDefAtLoc(controllerID1, 0, 0.5-rmXTilesToFraction(22), 0.5-rmXTilesToFraction(22));
-      }
-   }
-   vector ControllerLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID1, 0));
-
-   int controllerID2 = rmCreateObjectDef("Controler 2");
-   rmAddObjectDefItem(controllerID2, "zpSPCWaterSpawnPoint", 1, 0.0);
-   rmSetObjectDefMinDistance(controllerID2, 0.0);
-	rmSetObjectDefMaxDistance(controllerID2, 0.0);
-   rmAddObjectDefConstraint(controllerID2, avoidImpassableLand);
-   rmAddObjectDefConstraint(controllerID2, playerEdgeConstraint);
-   if(teamStartLoc > 0.5){ 
-      rmPlaceObjectDefAtLoc(controllerID2, 0, 0.8+rmXTilesToFraction(10), 0.2+rmXTilesToFraction(29));
-   }
-   else{
-      rmPlaceObjectDefAtLoc(controllerID2, 0, 0.8-rmXTilesToFraction(29), 0.2-rmXTilesToFraction(10));
-   }
-   vector ControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID2, 0));
-
-   int piratesVillageID = -1;
-   piratesVillageID = rmCreateGrouping("pirate city", "pirate_village04");      
-   rmPlaceGroupingAtLoc(piratesVillageID, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1)), 1);
-
-   int piratewaterflagID1 = rmCreateObjectDef("pirate water flag 1");
-   rmAddObjectDefItem(piratewaterflagID1, "zpPirateWaterSpawnFlag1", 1, 1.0);
-   rmAddObjectDefConstraint(piratewaterflagID1, avoidTradeRoute);
-   rmAddClosestPointConstraint(playerEdgeConstraint);
-   rmAddClosestPointConstraint(flagLandShort);
-
-   vector closeToVillage1 = rmFindClosestPointVector(ControllerLoc1, rmXFractionToMeters(1.0));
-   rmPlaceObjectDefAtLoc(piratewaterflagID1, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage1)), rmZMetersToFraction(xsVectorGetZ(closeToVillage1)));
-
-   rmClearClosestPointConstraints();
-
-   int pirateportID1 = -1;
-   pirateportID1 = rmCreateGrouping("pirate port 1", "pirateport04");
-   rmAddClosestPointConstraint(playerEdgeConstraint);
-   rmAddClosestPointConstraint(portOnShore);
-
-   vector closeToVillage1a = rmFindClosestPointVector(ControllerLoc1, rmXFractionToMeters(1.0));
-   rmPlaceGroupingAtLoc(pirateportID1, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage1a)), rmZMetersToFraction(xsVectorGetZ(closeToVillage1a)));
-   
-   rmClearClosestPointConstraints();
-
-   if(cNumberNonGaiaPlayers>3){
-   
-      int pirateLake2ID = rmCreateArea ("pirate lake 02");
-      rmSetAreaSize(pirateLake2ID, rmAreaTilesToFraction(1000.0), rmAreaTilesToFraction(1000.0));
-      if(teamStartLoc > 0.5){
-         rmSetAreaLocation(pirateLake2ID, 0.8+rmXTilesToFraction(4), 0.2+rmXTilesToFraction(4));
-      }
-      else{
-         rmSetAreaLocation(pirateLake2ID, 0.8-rmXTilesToFraction(4), 0.2-rmXTilesToFraction(4));
-      }
-      rmSetAreaWaterType(pirateLake2ID, "ZP Mexico River");
-      rmSetAreaBaseHeight(pirateLake2ID, 0);
-      rmSetAreaCoherence(pirateLake2ID, 0.9);
-      rmBuildArea(pirateLake2ID);
-
-      int piratesVillageID2 = -1;
-      piratesVillageID2 = rmCreateGrouping("pirate city 2", "pirate_village05");      
-      rmPlaceGroupingAtLoc(piratesVillageID2, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc2)), 1);
-
-      int piratewaterflagID2 = rmCreateObjectDef("pirate water flag 2");
-      rmAddObjectDefItem(piratewaterflagID2, "zpPirateWaterSpawnFlag2", 1, 1.0);
-      rmAddObjectDefConstraint(piratewaterflagID2, avoidTradeRoute);
-      rmAddClosestPointConstraint(playerEdgeConstraint);
-      rmAddClosestPointConstraint(flagLandShort);
-
-      vector closeToVillage2 = rmFindClosestPointVector(ControllerLoc2, rmXFractionToMeters(1.0));
-      rmPlaceObjectDefAtLoc(piratewaterflagID2, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage2)), rmZMetersToFraction(xsVectorGetZ(closeToVillage2)));
-
-      rmClearClosestPointConstraints();
-
-      int pirateportID2 = -1;
-      pirateportID2 = rmCreateGrouping("pirate port 2", "pirateport04");
-      rmAddClosestPointConstraint(playerEdgeConstraint);
-      rmAddClosestPointConstraint(portOnShore);
-
-      vector closeToVillage2a = rmFindClosestPointVector(ControllerLoc2, rmXFractionToMeters(1.0));
-      rmPlaceGroupingAtLoc(pirateportID2, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage2a)), rmZMetersToFraction(xsVectorGetZ(closeToVillage2a)));
-      
-      rmClearClosestPointConstraints();
-   }
-
-
-   // Place Ports
-   int riverPortID = -1;
-   if(cNumberNonGaiaPlayers<=3){
-      if(teamStartLoc > 0.5){
-         riverPortID = rmCreateGrouping("river port 1", "River Port 01");
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.25+rmXTilesToFraction(9), 0.75+rmXTilesToFraction(9), 1);
-         
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.75+rmXTilesToFraction(9), 0.25+rmXTilesToFraction(9), 1);
-      }
-      else{
-         riverPortID = rmCreateGrouping("river port 1", "River Port 02");
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.25-rmXTilesToFraction(3), 0.75-rmXTilesToFraction(3), 1);
-         
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.75-rmXTilesToFraction(3), 0.25-rmXTilesToFraction(3), 1);
-      }
-   }
-
-   if(cNumberNonGaiaPlayers==4){
-      if(teamStartLoc > 0.5){
-         riverPortID = rmCreateGrouping("river port 1", "River Port 01");
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.35+rmXTilesToFraction(3), 0.65+rmXTilesToFraction(3), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.5+rmXTilesToFraction(3), 0.5+rmXTilesToFraction(3), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.65+rmXTilesToFraction(3), 0.35+rmXTilesToFraction(3), 1);
-      }
-      else{
-         riverPortID = rmCreateGrouping("river port 1", "River Port 02");
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.35-rmXTilesToFraction(8), 0.65-rmXTilesToFraction(8), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.5-rmXTilesToFraction(9), 0.5-rmXTilesToFraction(9), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.65-rmXTilesToFraction(8), 0.35-rmXTilesToFraction(8), 1);
-      }
-   }
-   if(cNumberNonGaiaPlayers==5){
-      if(teamStartLoc > 0.5){
-         riverPortID = rmCreateGrouping("river port 1", "River Port 01");
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.35+rmXTilesToFraction(6), 0.65+rmXTilesToFraction(6), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.5+rmXTilesToFraction(6), 0.5+rmXTilesToFraction(6), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.65+rmXTilesToFraction(6), 0.35+rmXTilesToFraction(6), 1);
-      }
-      else{
-         riverPortID = rmCreateGrouping("river port 1", "River Port 02");
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.35-rmXTilesToFraction(7), 0.65-rmXTilesToFraction(7), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.5-rmXTilesToFraction(8), 0.5-rmXTilesToFraction(8), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.65-rmXTilesToFraction(7), 0.35-rmXTilesToFraction(7), 1);
-      }
-   }
-   if(cNumberNonGaiaPlayers==6){
-      if(teamStartLoc > 0.5){
-         riverPortID = rmCreateGrouping("river port 1", "River Port 01");
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.35+rmXTilesToFraction(6), 0.65+rmXTilesToFraction(6), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.5+rmXTilesToFraction(6), 0.5+rmXTilesToFraction(6), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.65+rmXTilesToFraction(6), 0.35+rmXTilesToFraction(6), 1);
-      }
-      else{
-         riverPortID = rmCreateGrouping("river port 1", "River Port 02");
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.35-rmXTilesToFraction(5), 0.65-rmXTilesToFraction(5), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.5-rmXTilesToFraction(6), 0.5-rmXTilesToFraction(6), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.65-rmXTilesToFraction(5), 0.35-rmXTilesToFraction(5), 1);
-      }
-   }
-   if(cNumberNonGaiaPlayers==7){
-      if(teamStartLoc > 0.5){
-         riverPortID = rmCreateGrouping("river port 1", "River Port 01");
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.35+rmXTilesToFraction(4), 0.65+rmXTilesToFraction(4), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.5+rmXTilesToFraction(4), 0.5+rmXTilesToFraction(4), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.65+rmXTilesToFraction(4), 0.35+rmXTilesToFraction(4), 1);
-      }
-      else{
-         riverPortID = rmCreateGrouping("river port 1", "River Port 02");
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.35-rmXTilesToFraction(9), 0.65-rmXTilesToFraction(9), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.5-rmXTilesToFraction(10), 0.5-rmXTilesToFraction(10), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.65-rmXTilesToFraction(9), 0.35-rmXTilesToFraction(9), 1);
-      }
-   }
-   if(cNumberNonGaiaPlayers==8){
-      if(teamStartLoc > 0.5){
-         riverPortID = rmCreateGrouping("river port 1", "River Port 01");
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.35+rmXTilesToFraction(7), 0.65+rmXTilesToFraction(7), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.5+rmXTilesToFraction(7), 0.5+rmXTilesToFraction(7), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.65+rmXTilesToFraction(7), 0.35+rmXTilesToFraction(7), 1);
-      }
-      else{
-         riverPortID = rmCreateGrouping("river port 1", "River Port 02");
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.35-rmXTilesToFraction(4), 0.65-rmXTilesToFraction(4), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.5-rmXTilesToFraction(5), 0.5-rmXTilesToFraction(5), 1);
-         rmPlaceGroupingAtLoc(riverPortID, 0, 0.65-rmXTilesToFraction(4), 0.35-rmXTilesToFraction(4), 1);
-      }
-   }*/
 
 
    // Place Aztecs
@@ -1493,8 +1219,6 @@ void main(void)
 		rmAddObjectDefConstraint(southTreesID, avoidTradeRoute);
       rmAddObjectDefConstraint(southTreesID, avoidMountains);
 		rmAddObjectDefConstraint(southTreesID, forestObjConstraint);
-		if (rmGetIsKOTH() == true)
-			rmAddObjectDefConstraint(southTreesID, avoidKOTH);
 		rmAddObjectDefConstraint(southTreesID, avoidTownCenter);
 		rmAddObjectDefConstraint(southTreesID, nativeIslandConstraint);
 		rmPlaceObjectDefAtLoc(southTreesID, 0, 0.50, 0.50, 2+4*cNumberNonGaiaPlayers);
@@ -1543,8 +1267,6 @@ void main(void)
   rmSetObjectDefMaxDistance(fishID, rmXFractionToMeters(0.5));
   rmAddObjectDefConstraint(fishID, fishVsFishID);
   rmAddObjectDefConstraint(fishID, fishLand);
-	if (rmGetIsKOTH() == true)
-		rmAddObjectDefConstraint(fishID, avoidKOTH);
   rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 11*cNumberNonGaiaPlayers); 
   
    //PAROT : underwater Decoration
@@ -1555,20 +1277,19 @@ void main(void)
    rmSetObjectDefMinDistance(underwaterDecoID, 0.00);
    rmSetObjectDefMaxDistance(underwaterDecoID, rmXFractionToMeters(0.04));   
    rmAddObjectDefConstraint(underwaterDecoID, avoidLand);   
-   if (rmGetIsKOTH() == true)
-		rmAddObjectDefConstraint(underwaterDecoID, avoidKOTH);   
-   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.10, 0.70, 20);    
-   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.25, 0.90, 15);    
-   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.25, 0.60, 15);    
-   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.30, 0.80, 10);    
-   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.30, 0.50, 10);    
-   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.40, 0.40, 5); 
-   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.60, 0.35, 5); 
-   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.70, 0.50, 5); 
-   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.70, 0.40, 5); 
-   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.70, 0.20, 10);
-   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.80, 0.30, 15);        
-   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.90, 0.20, 20);     
+   rmAddObjectDefConstraint(underwaterDecoID, avoidMountains);   
+   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.9, 0.5, 20);    
+   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.8, 0.6, 15);    
+   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.7, 0.7, 15);    
+   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.6, 0.8, 10);    
+   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.5, 0.8, 10);    
+   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.4, 0.8, 5); 
+   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.3, 0.7, 5); 
+   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.2, 0.6, 5); 
+   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.2, 0.5, 5); 
+   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.2, 0.4, 10);
+   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.3, 0.3, 15);        
+   rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.4, 0.2, 20);     
        
    //rmPlaceObjectDefAtLoc(int defID, int playerID, float xFraction, float zFraction, long placeCount)   
 
