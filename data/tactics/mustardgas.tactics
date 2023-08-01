@@ -6,6 +6,7 @@
 		<type>Attack</type>
 		<maxrange>8</maxrange>
 		<rate type="LogicalTypeGarrisonInShips">1.0 </rate>
+		<rate type="AnimalPrey">1.0 </rate>
 		<attackaction>1</attackaction>
 		<handlogic>1</handlogic>
 		<speedboost>1</speedboost>
