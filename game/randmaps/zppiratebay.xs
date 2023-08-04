@@ -2392,8 +2392,6 @@ rmSetTriggerLoop(false);
 	rmAddObjectDefConstraint(randomTreeID, avoidAll); 
 	rmPlaceObjectDefInArea(randomTreeID, 0, bigIslandID, 8*cNumberNonGaiaPlayers);   //Scatter 8 random trees per player.
 
-
-
 }  
 
 
