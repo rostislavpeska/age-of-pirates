@@ -1117,6 +1117,11 @@ bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
       case cUnitTypeypTradeMarketAsian:
       case cUnitTypedeLivestockMarket:
       {
+         if (gMigrationMap == true)
+         {
+            selectClosestBuildPlanPosition(planID, baseID);
+            break;
+         }
          // Usually we need to defend with Banks, thus placing Banks with high HP at front is a good choice.
          aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
          aiPlanSetBaseID(planID, baseID);
@@ -1160,21 +1165,6 @@ bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
       default:
       {
          int numMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
-         // AssertiveWall: Only the "closest" function seems to work well on ceylon
-      /*   if (gMigrationMap == true)
-         {
-            for (i = 0; < numMilitaryBuildings)
-            {
-               if (puid != xsArrayGetInt(gMilitaryBuildings, i))
-               {
-                  continue;
-               }
-               // AssertiveWall: Only the "closest" function seems to work well on ceylon
-               selectClosestBuildPlanPosition(planID, baseID);
-               break;
-            }
-         }*/
-
          for (i = 0; < numMilitaryBuildings)
          {
             if (puid != xsArrayGetInt(gMilitaryBuildings, i))
@@ -2489,6 +2479,7 @@ minInterval 5
       return;
    }
 
+
    int planID = -1;
    int numberBuildings = 0;
    int numberMilitaryBuildings = 0;
@@ -3699,7 +3690,7 @@ minInterval 5
       {
          gLastClaimNativeMissionTime = time;
       // AssertiveWall: Only for troubleshooting purposes. Pings the place the AI is trying to build a native TP
-       sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, socketPosition);
+       //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, socketPosition);
       }
       else
       {

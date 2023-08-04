@@ -2510,6 +2510,12 @@ minInterval 2
    {
       xsEnableRule("startFishing");
    }
+
+   // AssertiveWall: If there are water treasures, turn on the rule to gather them
+   if (getUnit(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateAlive) > 0)
+   {
+      xsEnableRule("gatherNavalNuggets");
+   }
    
    if (aiIsMonopolyAllowed() == true)
    {

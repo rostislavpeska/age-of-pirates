@@ -258,10 +258,10 @@ inactive
 minInterval 28
 {
    // AssertiveWall: put a pause on this until we've established a new base
-   //if (gCeylonDelay == true)
-   //{
-   //   return;
-   //}
+   if (gCeylonDelay == true)
+   {
+      return;
+   }
 
    static bool firstRun = false; // Flag to indicate vars, plans are initialized
    static int unitsNotMaintained = -1;
@@ -1705,7 +1705,7 @@ minInterval 30
 //==============================================================================
 rule waterDefend
 inactive
-minInterval 5  // AssertiveWall: Decreased from 10
+minInterval 10  
 {
    if (gNavyDefendPlan < 0) // First run, create a persistent defend plan.
    {
@@ -1729,6 +1729,15 @@ minInterval 5  // AssertiveWall: Decreased from 10
       debugMilitary("Creating primary navy defend plan at: " + gNavyVec);
       aiPlanSetActive(gNavyDefendPlan);
    }
+
+   // AssertiveWall: build a dummy plan and move fishing boats into it to control them easier
+   if (gFishingBellPlan < 0) // first run
+   {
+      gFishingBellPlan = aiPlanCreate("Fishing Dock Bell", cPlanReserve);
+      aiPlanAddUnitType(gFishingBellPlan, gFishingUnit, 0, 200, 200);
+      aiPlanSetDesiredPriority(gFishingBellPlan, 1);
+      aiPlanSetActive(gFishingBellPlan);
+   }
    
    int enemyQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
    kbUnitQuerySetSeeableOnly(enemyQuery, true); // Only stop fishing when the enemy is actually near us.
@@ -1737,6 +1746,7 @@ minInterval 5  // AssertiveWall: Decreased from 10
    if (numberFound > 0)
    {
       aiPlanSetDesiredPriority(gNavyDefendPlan, 25); // Above fishing when there are enemies around.
+      aiPlanSetDesiredPriority(gFishingBellPlan, 25); // AssertiveWall: Above fishing when there are enemies around.
       gLastWSTime = 120000 + xsGetTime(); // AssertiveWall: resets clock for dock building
    
       // AssertiveWall: If enemy are too close to fishing ships, tell them to move
@@ -1756,7 +1766,11 @@ minInterval 5  // AssertiveWall: Decreased from 10
          fBLocation = kbUnitGetPosition(unitID);
          nearbyEnFound = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, fBLocation, 31.0); // one bigger range than a frigate
          if (nearbyEnFound > 0)
-         {  // AssertiveWall: Look for docks to garrison in. If none found then forts, town centers, towers
+         {  
+            // AssertiveWall: First add boat to gFishingBellPlan so we can control it
+            aiPlanAddUnit(gFishingBellPlan, unitID);
+
+            // AssertiveWall: Look for docks to garrison in. If none found then forts, town centers, towers
             dockUnit = getUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 150.0);
             sLocation = kbUnitGetPosition(dockUnit);
             if (sLocation != cInvalidVector)
@@ -1783,11 +1797,21 @@ minInterval 5  // AssertiveWall: Decreased from 10
                aiTaskUnitMove(unitID, sLocation);
             }
          }
+         else if (nearbyEnFound <= 0)
+         {  // AssertiveWall: Ungarrison from dock
+            dockUnit = getUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 1.0);
+            sLocation = kbUnitGetPosition(dockUnit);
+            if (sLocation != cInvalidVector)
+            {
+               aiTaskUnitEject(dockUnit);
+            }
+         }
       }
    }
    else
    {
       aiPlanSetDesiredPriority(gNavyDefendPlan, 15); // Below fishing when there are no enemies around.
+      aiPlanSetDesiredPriority(gFishingBellPlan, 1); // Below fishing when there are no enemies around.
    }
 }
 

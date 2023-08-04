@@ -2999,7 +2999,7 @@ minInterval 5
          numLlamaWanted = 10;
       }
 
-      if (numPens > kbUnitCount(cMyID, gLivestockPenUnit, cUnitStateABQ))
+      if (numPens > kbUnitCount(cMyID, gLivestockPenUnit, cUnitStateABQ) && kbUnitCount(cMyID, gLivestockPenUnit, cUnitStateABQ) <= 0)
       {
          createSimpleBuildPlan(gLivestockPenUnit, 1, 75, true, cEconomyEscrowID, mainBaseID, 1);
       }

@@ -41,7 +41,15 @@ extern int gIslandBBuildPlan = -1;
 //extern int gIslandBUpTime = -600000;
 extern bool gIslandBShouldDefend = false;
 
+extern int gWaterNuggetPlan = -1;            // Persistent plan goes out to try and find water nuggets
+extern const int cWaterNuggetSearch = -1;    // Units moving to the water nugget
+extern const int cWaterNuggetAttack = 0;     // Units attacking the guardians 
+extern const int cWaterNuggetGather = 1;     // Units gathering the nugget
+extern int gWaterNuggetState = cWaterNuggetSearch;           // Stores the state of the water nugget plan
+extern int gWaterNuggetTarget = -1;          // Stores the target of whatever the water nugget plan is doing
+
 extern bool gIsPirateMap = false;            // Set true for testing. Used for pirates of the carribean mod
+
 
 
 
@@ -186,6 +194,7 @@ extern int gEconUpgradePlan = -1;
 extern bool gGoodFishingMap = false;      // Set in init(), can be overridden in postInit() if desired.  True indicates that
                                           // fishing is a good idea on this map.
 extern int gFishingPlan = -1;             // Plan ID for main fishing plan.
+extern int gFishingBellPlan = -1;         // AssertiveWall: Dummy plan that allows fishing boats to be controlled easier
 extern int gFishingBoatMaintainPlan = -1; // Fishing boats to maintain
 extern bool gTimeToFish = false;          // Set to true when we want to start fishing.
 extern int gHerdPlanID = -1;
