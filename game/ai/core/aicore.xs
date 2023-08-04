@@ -2279,8 +2279,7 @@ minInterval 5
       {
          xsEnableRule("waterDefend");
          xsEnableRule("coastalGuns");
-         if ((cRandomMapName != "Ceylon" && cRandomMapName != "ceylonlarge") &&
-            (cRandomMapName != "afswahilicoast" && cRandomMapName != "afswahilicoastlarge"))
+         if (gMigrationMap == true)
          {
             xsEnableRule("dockWallOne");
          }
@@ -2289,14 +2288,9 @@ minInterval 5
       // AssertiveWall: Enable island hopping on the following maps
       if (true == true) // used to easily turn this off beore upload
       {
-         if (cRandomMapName == "Ceylon" ||
-             cRandomMapName == "ceylonlarge" ||
-             cRandomMapName == "euarchipelago" ||
-             cRandomMapName == "euarchipelagolarge" ||
-             cRandomMapName == "afswahilicoast" ||
-             cRandomMapName == "afswahilicoastlarge")
+         if (gMigrationMap == true)
          {
-            gCeylonDelay = true; // Already set in setup
+            //gCeylonDelay = true; // Already set in setup
             xsEnableRule("islandMigration");
             //xsEnableRule("islandHopper");
             //xsEnableRule("islandBuildSelector");
@@ -2334,8 +2328,7 @@ minInterval 5
       updateResourceDistribution(true);
 
       xsEnableRule("age2Monitor");
-      if ((cRandomMapName != "Ceylon" && cRandomMapName != "ceylonlarge") &&
-         (cRandomMapName != "afswahilicoast" && cRandomMapName != "afswahilicoastlarge"))
+      if (gMigrationMap == false)
       {
          xsEnableRule("innerRingWall");
       }

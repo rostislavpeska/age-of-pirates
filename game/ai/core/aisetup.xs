@@ -890,7 +890,7 @@ void initArrays(void)
    xsArraySetString(gMapNames, 233, "euwallachialarge");
 
    // AssertiveWall: Pirates of the Carribean Maps:
-   xsArraySetString(gMapNames, 234, "zpburma");
+   xsArraySetString(gMapNames, 234, "zpburma_b");
    xsArraySetString(gMapNames, 235, "zpdeadsea");
    xsArraySetString(gMapNames, 236, "zpeldorado");
    xsArraySetString(gMapNames, 237, "zpmalta");
@@ -1168,6 +1168,7 @@ void analyzeMap()
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
+      gNavyMap = true;
       xsEnableRule("initializePirateRules");
 
       gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
@@ -2509,6 +2510,12 @@ minInterval 2
    {
       xsEnableRule("startFishing");
    }
+
+   // AssertiveWall: If there are water treasures, turn on the rule to gather them
+   if (getUnit(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateAlive) > 0)
+   {
+      xsEnableRule("gatherNavalNuggets");
+   }
    
    if (aiIsMonopolyAllowed() == true)
    {
@@ -2535,16 +2542,23 @@ minInterval 2
       cMyCiv == cCivOttomans ? 0 : xsArrayGetInt(gTargetSettlerCounts, kbGetAge()), true, 
       kbBaseGetMainID(cMyID), 1);
    aiPlanSetDesiredResourcePriority(gSettlerMaintainPlan, 70);
+
+   // AssertiveWall: Check whether we're on a migration style map
+   if (cRandomMapName == "Ceylon" ||
+         cRandomMapName == "ceylonlarge" ||
+         cRandomMapName == "euarchipelago" ||
+         cRandomMapName == "euarchipelagolarge" ||
+         cRandomMapName == "afswahilicoast" ||
+         cRandomMapName == "afswahilicoastlarge" ||
+         cRandomMapName == "zpeldorado")
+   {
+      gMigrationMap = true;
+   }
    
    if (cvOkToBuild == true)
    {
       // AssertiveWall: Delay building if we're on ceylon or equivalent
-      if (cRandomMapName == "Ceylon" ||
-          cRandomMapName == "ceylonlarge" ||
-          cRandomMapName == "euarchipelago" ||
-          cRandomMapName == "euarchipelagolarge" ||
-          cRandomMapName == "afswahilicoast" ||
-          cRandomMapName == "afswahilicoastlarge")
+      if (gMigrationMap == true)
       {
          gCeylonDelay = true;
       }

@@ -973,7 +973,7 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
    {
       aiPlanSetVariableFloat(buildPlan, cBuildPlanCenterPositionDistance, 0, exclusionRadius);
    }
-   else if ((gStartOnDifferentIslands == true) && (cRandomMapName != "Ceylon" && cRandomMapName != "ceylonlarge") &&
+   else if ((gStartOnDifferentIslands == true) && gMigrationMap == false &&
              gIsPirateMap == false)
    {  // AssertiveWall: Nice big radius to build towers all along coast, and bias them toward front
       aiPlanSetVariableFloat(buildPlan, cBuildPlanCenterPositionDistance, 0, kbGetMapXSize() / 2.0);
@@ -1013,7 +1013,7 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 
    // Weight towers to stay very close to center point, unless it's an island map, then go far away
    aiPlanSetVariableVector(buildPlan, cBuildPlanInfluencePosition, 0, testVec);// Position influence for landing position
-   if ((gStartOnDifferentIslands == true) && (cRandomMapName != "Ceylon" && cRandomMapName != "ceylonlarge"))
+   if ((gStartOnDifferentIslands == true) && gMigrationMap == false)
    {
       aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionDistance, 0, kbGetMapXSize() / 2.0); // Half map range.
       aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionValue, 0, -25.0);               // -30 points for center
@@ -1082,20 +1082,6 @@ bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
       case cUnitTypeYPDockAsian:
       case cUnitTypedePort:
       {
-         // AssertiveWall: Make new dock location (newNavyVec) if enemy navy is spotted
-         //int enemyWSQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
-         //int friendlyWSQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
-         //int friendlyWSQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationAlly, cUnitStateAlive);
-         //kbUnitQuerySetSeeableOnly(enemyWSQuery, true); // Only count visible warships
-         //vector dockLocation = kbUnitGetPosition(getUnit(gDockUnit, cMyID, cUnitStateAny));
-         //kbUnitQuerySetPosition(enemyWSQuery, dockLocation);
-         //kbUnitQuerySetPosition(friendlyWSQuery, dockLocation);    // Only look for friendlies and enemies near dock
-         //kbUnitQuerySetMaximumDistance(enemyWSQuery, 50.0);
-         //kbUnitQuerySetMaximumDistance(friendlyWSQuery, 50.0);
-
-         //int enNumberWSFound = kbUnitQueryExecute(enemyWSQuery);
-         //int frNumberWSFound = kbUnitQueryExecute(friendlyWSQuery);
-         //if (enNumberWSFound >= frNumberWSFound)
          // AssertiveWall: Get a new dock position for two minutes after the first one encunters danger
          vector newNavyVec = gNavyVec;
          if (gLastWSTime > xsGetTime())
@@ -1131,6 +1117,11 @@ bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
       case cUnitTypeypTradeMarketAsian:
       case cUnitTypedeLivestockMarket:
       {
+         if (gMigrationMap == true)
+         {
+            selectClosestBuildPlanPosition(planID, baseID);
+            break;
+         }
          // Usually we need to defend with Banks, thus placing Banks with high HP at front is a good choice.
          aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
          aiPlanSetBaseID(planID, baseID);
@@ -1729,6 +1720,12 @@ rule wagonMonitor
 inactive
 minInterval 10
 {
+   // AssertiveWall: put a pause on this until we've established a new base
+   if (gCeylonDelay == true)
+   {
+      return;
+   }
+   
    int wagonQueryID = createSimpleUnitQuery(cUnitTypeAbstractWagon, cMyID, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(wagonQueryID);
    if (numberFound == 0)
@@ -2482,6 +2479,7 @@ minInterval 5
       return;
    }
 
+
    int planID = -1;
    int numberBuildings = 0;
    int numberMilitaryBuildings = 0;
@@ -2752,7 +2750,7 @@ minInterval 5
       else
       {
          // Avoid destroying plans which can be created elsewhere.
-         if (planID >= 0 && aiPlanGetState(planID) != cPlanStateBuild && aiPlanGetOrphan(planID) == false)
+         if (planID >= 0 && aiPlanGetState(planID) != cPlanStateBuild && aiPlanGetOrphan(planID) == false && gMigrationMap == false)
 		   {
             aiPlanDestroy(planID);
          }
@@ -2826,8 +2824,7 @@ minInterval 5
          if (buildForward == true && gForwardBaseID < 0)
          {
             // AssertiveWall: If an Island map, establish a beachhead
-            if (gStartOnDifferentIslands == true && ((cRandomMapName != "Ceylon" && cRandomMapName != "ceylonlarge") &&
-         (cRandomMapName != "afswahilicoast" && cRandomMapName != "afswahilicoastlarge")))
+            if (gStartOnDifferentIslands == true && (gMigrationMap == false))
             {
                location = selectForwardBaseBeachHead();
             }
@@ -2908,6 +2905,9 @@ minInterval 5
             {
                planID = createSimpleBuildPlan(buildingPUID, 1, 70, false, cMilitaryEscrowID, mainBaseID, 1);
             }
+            // AssertiveWall: for testing purposes
+            //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildTC,
+            //   kbBuildingPlacementGetResultPosition(aiPlanGetVariableInt(planID, cBuildPlanBuildingPlacementID, 0)));
          }
 
          // If we don't have any, set priority to slightly above default.
@@ -3316,7 +3316,7 @@ minInterval 5
 {
    if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypeTradingPost) >= 0)
    {
-      if (gIsPirateMap == true && (gClaimNativeMissionInterval < 60 * 1000 || gClaimTradeMissionInterval < 60 * 1000))
+      if (gIsPirateMap == true)// && (gClaimNativeMissionInterval < 60 * 1000 || gClaimTradeMissionInterval < 60 * 1000))
       {
          return;
       }
@@ -3343,6 +3343,7 @@ minInterval 5
    int bestNativeSocketID = -1;
    int bestNativeDistancePenalty = 99.99;
    bool earlyTrade = false;
+   //int transportUnitID = -1;
 
    // AssertiveWall: Increase btBiasNative on pirate maps
    /*if (gIsPirateMap == true)
@@ -3557,6 +3558,9 @@ minInterval 5
       }
       
       int planID = aiPlanCreate("Trading Post Build Plan", cPlanBuild);
+      socketPosition = kbUnitGetPosition(socketID);
+      socketAreaGroup = kbAreaGroupGetIDByPosition(socketPosition);
+
       aiPlanSetVariableInt(planID, cBuildPlanBuildingTypeID, 0, cUnitTypeTradingPost);
       aiPlanSetVariableInt(planID, cBuildPlanSocketID, 0, socketID);
       
@@ -3568,6 +3572,7 @@ minInterval 5
             " to our Trading Post build plan");
          aiPlanAddUnitType(planID, wagonPUID, 1, 1, 1);
          aiPlanAddUnit(planID, wagonID);
+         //transportUnitID = wagonID;
       }
       else // Check for Heroes if we didn't manage to find a Wagon.
       {
@@ -3590,12 +3595,13 @@ minInterval 5
             if ((heroPlanID < 0) || (aiPlanGetType(heroPlanID) == cPlanDefend) || (aiPlanGetType(heroPlanID) == cPlanExplore))
             {
                heroID = unitID;
+               //transportUnitID = heroID;
                break;
             }
          }
 
-         // AssertiveWall: Skip explorer on pirate map so we can make lots
-         if (gIsPirateMap == true)
+         // AssertiveWall: Skip explorer on pirate map so we can make lots, but only for same island
+         if (gIsPirateMap == true && kbAreAreaGroupsPassableByLand(socketAreaGroup, mainAreaGroup) == true)
          {
             heroID = -1;
          }
@@ -3614,6 +3620,9 @@ minInterval 5
          if (((gRevolutionType & cRevolutionMilitary) == 0) || ((gRevolutionType & cRevolutionFinland) == cRevolutionFinland))
          {
             debugBuildings("Adding 1 gEconUnit to our Trading Post build plan");
+            //unitID = getClosestUnitByLocation(gEconUnit, cMyID, cUnitStateAlive, socketPosition, 300.0);
+            //aiPlanAddUnit(planID, unitID);
+            //transportUnitID = unitID;
             aiPlanAddUnitType(planID, gEconUnit, 1, 1, 1);
          }
          else // We didn't manage to add a Wagon or a Hero to our plan and can't use Villagers either, destroy.
@@ -3646,8 +3655,32 @@ minInterval 5
          aiPlanSetDesiredResourcePriority(planID, 65); // AssertiveWall: up from 55
       }
 
+      // AssertiveWall: Check if plan requires transport and if it does, make sure no active transport plans are going on
+      int transportPlanID = -1;
+      //vector villagerPosition = kbUnitGetPosition(transportUnitID);
+      
+      if (kbAreAreaGroupsPassableByLand(socketAreaGroup, mainAreaGroup) == false)
+      {  
+         if (aiPlanGetIDByIndex(cPlanTransport, -1, true, 0) > 0)
+         {
+            return; // Return to try again. Should return until villager arrives on island.
+         }
+         else
+         {  // Create a transport plan for the unit
+            transportPlanID = createTransportPlan(kbBaseGetMilitaryGatherPoint(cMyID, kbBaseGetMainID(cMyID)), socketPosition, 100);
+            if (transportPlanID >= 0)
+            {
+               aiPlanAddUnitType(transportPlanID, gEconUnit, 1, 1, 1);
+               //aiPlanAddUnit(transportPlanID, transportUnitID);
+               aiPlanSetNoMoreUnits(transportPlanID, true);
+            }
+            aiPlanSetDesiredPriority(planID, 100);
+            aiPlanSetDesiredResourcePriority(planID, 100);
+         }
+      }
+
       // Go.
-      aiPlanSetActive(planID);
+      aiPlanSetActive(planID, true);
 
       socketPosition = kbUnitGetPosition(socketID);
       //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, socketPosition);

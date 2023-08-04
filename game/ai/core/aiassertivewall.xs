@@ -38,13 +38,254 @@
 
 
 //==============================================================================
+/* gatherNavalNuggets
+   AssertiveWall: looks for water nuggets to gather
+
+*/
+//==============================================================================
+rule gatherNavalNuggets
+inactive
+minInterval 10
+{
+   /*extern int gWaterNuggetPlan = -1;            // Persistent plan goes out to try and find water nuggets
+   extern const int cWaterNuggetSearch = -1;  // Units moving to the water nugget
+   extern const int cWaterNuggetAttack = 0;     // Units attacking the guardians 
+   extern const int cWaterNuggetGather = 1;     // Units gathering the nugget
+   extern int gWaterNuggetState = cWaterNuggetSearch;           // Stores the state of the water nugget plan
+   extern int gWaterNuggetTarget = -1;          // Stores the target of whatever the water nugget plan is doing
+   */
+
+   // First Run
+   if (gWaterNuggetPlan < 0)
+   {
+      int nuggetPlanID = aiPlanCreate("Nugget Raiding Plan", cPlanReserve);
+      aiPlanAddUnitType(nuggetPlanID, cUnitTypeAbstractWarShip, 1, 2, 3);
+      aiPlanSetDesiredPriority(nuggetPlanID, 21); // Higher than fishing and exploring. Fishing boats normally explore anyway
+      aiPlanSetActive(nuggetPlanID);
+      gWaterNuggetPlan = nuggetPlanID;
+   }
+
+   int numberExplorerWarships = aiPlanGetNumberUnits(gWaterNuggetPlan, cUnitTypeAbstractWarShip);
+   if (numberExplorerWarships < 0)
+   {  // Reset
+      gWaterNuggetState = cWaterNuggetSearch;
+      aiPlanAddUnitType(nuggetPlanID, cUnitTypeAbstractWarShip, 1, 2, 3);
+      //aiPlanDestroy(gWaterNuggetPlan);
+      return;
+   }
+
+   // Testing purposes
+   //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbUnitGetPosition(gWaterNuggetTarget));
+
+   int nuggetID = -1;
+   int guardianQuery = -1;
+   int guardianID = -1;
+   int guardianNumber = -1;
+   int guardianHealth = 0;
+   vector waterNuggetLocation = cInvalidVector;
+   int bestNugget = -1;
+   int bestGuardianHP = 10000;
+   int bestGuardianID = -1;
+   vector targetLocation = cInvalidVector;
+
+
+   switch (gWaterNuggetState)
+   {
+      case cWaterNuggetSearch:
+      {
+         // Looks for a suitable nugget and tells the ships to attack it
+         aiPlanSetDesiredPriority(nuggetPlanID, 21);
+         int explorerUnit = aiPlanGetUnitByIndex(gWaterNuggetPlan, 0);
+         vector explorerLoc = kbUnitGetPosition(explorerUnit);
+            // Testing purposes
+            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, explorerLoc);
+
+         int explorerFleetHP = 0;
+         for (i = 0; < numberExplorerWarships)
+         {
+            explorerFleetHP = explorerFleetHP + kbUnitGetCurrentHitpoints(aiPlanGetUnitByIndex(gWaterNuggetPlan, i));
+         }
+
+         // Find a suitable water nugget
+         int waterNuggetQuery = createSimpleUnitQuery(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateAlive, explorerLoc, 150.0);
+         int numWaterNuggets = kbUnitQueryExecute(waterNuggetQuery);
+
+         for (j = 0; < numWaterNuggets)
+         {
+            nuggetID = kbUnitQueryGetResult(waterNuggetQuery, j);
+            waterNuggetLocation = kbUnitGetPosition(nuggetID);
+            // Testing purposes
+            //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, waterNuggetLocation);
+
+            guardianHealth = 0;
+            guardianQuery = createSimpleUnitQuery(cUnitTypeGuardian, cPlayerRelationAny, cUnitStateAlive, waterNuggetLocation, 20);
+            guardianNumber = kbUnitQueryExecute(guardianQuery);
+
+            // Get total health of water guardians
+            for (k = 0; < guardianNumber)
+            {
+               guardianID = kbUnitQueryGetResult(guardianQuery, k);
+               guardianHealth = guardianHealth + kbUnitGetCurrentHitpoints(guardianID);
+            }
+            kbUnitQueryResetResults(guardianQuery);
+
+            // Don't bother unless there's a good chance of winning
+            if (explorerFleetHP > 1.5 * guardianHealth)
+            {
+               if (guardianHealth < bestGuardianHP)
+               {
+                  bestNugget = nuggetID; // Store this as the best nugget
+                  sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbUnitGetPosition(nuggetID));
+                  bestGuardianHP = guardianHealth;
+                  bestGuardianID = guardianID;
+               }
+            }
+         }
+
+         // Now tell the ships to attack it
+         if (bestNugget > 0)
+         {
+            if (bestGuardianHP > 0)
+            {  // There are guardians, so attack
+               gWaterNuggetTarget = bestNugget;
+               for (m = 0; < numberExplorerWarships)
+               {
+                  aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, m), bestGuardianID);
+               }
+               gWaterNuggetState = cWaterNuggetAttack;
+            }
+            else
+            {  // No guardians, so go straight to nugget
+               gWaterNuggetTarget = bestNugget;
+               for (n = 0; < numberExplorerWarships)
+               {
+                  aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, n), bestNugget);
+               }
+               gWaterNuggetState = cWaterNuggetGather;
+            }
+         }
+         break;
+      }
+
+      case cWaterNuggetAttack:
+      {
+         // Keep checking our nugget until all guardians are destroyed. If our fleet is gone, reset
+         if (aiPlanGetNumberUnits(gWaterNuggetPlan, cUnitTypeAbstractWarShip) <= 0)
+         {
+            aiPlanDestroy(gWaterNuggetPlan);
+            gWaterNuggetState = cWaterNuggetSearch;
+         }
+         aiPlanSetDesiredPriority(gWaterNuggetPlan, 24);
+         targetLocation = kbUnitGetPosition(gWaterNuggetTarget);
+         guardianNumber = getUnitCountByLocation(cUnitTypeGuardian, cPlayerRelationAny, cUnitStateAlive, targetLocation, 15.0);
+
+         if (guardianNumber <= 0)
+         {
+            gWaterNuggetState = cWaterNuggetGather;
+            for (n = 0; < numberExplorerWarships)
+            {
+               aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, n), gWaterNuggetTarget);
+            }
+         }
+         break;
+      }
+
+      case cWaterNuggetGather:
+      {
+         // Keep checking our nugget until all guardians are destroyed. If our fleet is gone, reset
+         if (aiPlanGetNumberUnits(gWaterNuggetPlan, cUnitTypeAbstractWarShip) <= 0)
+         {
+            aiPlanDestroy(gWaterNuggetPlan);
+            gWaterNuggetState = cWaterNuggetSearch;
+         }
+         aiPlanSetDesiredPriority(gWaterNuggetPlan, 24);
+         // Ships are already tasked to gather nugget. Just wait until nugget is gone 
+         targetLocation = kbUnitGetPosition(gWaterNuggetTarget);
+            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, targetLocation);
+         int nuggetsAtLoc = getUnitCountByLocation(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateAlive, targetLocation, 2.0);
+         if (nuggetsAtLoc > 0)
+         {
+            gWaterNuggetState = cWaterNuggetSearch;
+         }
+         break;
+      }
+   }
+}
+
+//==============================================================================
+/* advancedAIFormations
+   AssertiveWall: check an army's composition vs that of the opponent, and 
+   change based on what the compositions are
+
+   ** not in use **
+   Doesn't seem to function. The units will change stance, but whenever there is 
+   infantry and cavalry together, the formation doesn't change into a box
+*/
+//==============================================================================
+rule advancedAIFormations
+inactive
+minInterval 5
+{
+   // Look for active attack plans (ignore defense for now, those are usually tight places anyway)
+   int attackPlan = aiPlanGetIDByTypeAndVariableType(cPlanCombat, cCombatPlanCombatType, cCombatPlanCombatTypeAttack);
+   if (attackPlan < 0)
+   {
+      return;
+   }
+
+   // Get the current location of the attack plan with the first unit
+   vector armyLoc =  kbUnitGetPosition(aiPlanGetUnitByIndex(attackPlan, 0));
+   int numberUnits = aiPlanGetNumberUnits(attackPlan, cUnitTypeLogicalTypeLandMilitary);
+   int unitID = -1;
+   int unitType = -1;
+
+   // Get some info on the nearby enemy
+   int enCavNumber = getUnitCountByLocation(cUnitTypeAbstractHandCavalry, cPlayerRelationEnemyNotGaia, cUnitStateAlive, armyLoc, 45.0);
+   int enArtyNumber = getUnitCountByLocation(cUnitTypeAbstractArtillery, cPlayerRelationEnemyNotGaia, cUnitStateAlive, armyLoc, 45.0);
+   int enInfNumber = getUnitCountByLocation(cUnitTypeAbstractInfantry, cPlayerRelationEnemyNotGaia, cUnitStateAlive, armyLoc, 45.0);
+
+   // Get some info on the friendly army
+   int frCavNumber = aiPlanGetNumberUnits(attackPlan, cUnitTypeAbstractHandCavalry);
+   int frArtyNumber = aiPlanGetNumberUnits(attackPlan, cUnitTypeAbstractArtillery);
+   int frInfNumber = aiPlanGetNumberUnits(attackPlan, cUnitTypeAbstractInfantry);
+
+   // Testing purposes
+   //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, armyLoc);
+
+   /* Tactic Options:
+      - cTacticVolley
+      - cTacticStagger
+      - cTacticMelee
+      - cTacticTrample
+      - cTacticCover
+      - cTacticDefend
+      - cTacticStandGround
+   */
+
+   for (i = 0; < numberUnits)
+   {
+      unitID = aiPlanGetUnitByIndex(attackPlan, i);
+      unitType = kbUnitGetProtoUnitID(unitID);
+      if (kbProtoUnitIsType(cMyID, unitType, cUnitTypeAbstractInfantry) == true)
+      {
+         aiUnitSetTactic(unitID, cTacticDefend);
+      }
+      else if (kbProtoUnitIsType(cMyID, unitType, cUnitTypeAbstractCavalry) == true)
+      {
+         aiUnitSetTactic(unitID, cTacticDefend);
+      }
+   }
+}
+
+//==============================================================================
 /* getRandomIslandBase
    AssertiveWall: This function gives you a random island base
+   * not in use *
 */
 //==============================================================================
 int getRandomIslandBase(int numberIslands = -1)
 {
-   if (cRandomMapName == "Ceylon" || cRandomMapName == "ceylonlarge")
+   if (gMigrationMap == true)
    {
       return gIslandAID;
    }
@@ -96,8 +337,8 @@ int getIslandCount()
 
 bool isIslandNeeded()
 {  
-   if (cRandomMapName == "Ceylon" || cRandomMapName == "ceylonlarge")
-   {
+   //if (gMigrationMap == true)
+   //{
       if(getIslandCount() >= 2)
       {
          return false;
@@ -106,11 +347,11 @@ bool isIslandNeeded()
       {
          return true;
       }
-   }
-   if (gTimeToFarm == false && gTimeForPlantations == false)
-   {
-      return true;
-   }
+   //}
+   //if (gTimeToFarm == false && gTimeForPlantations == false)
+   //{
+   //   return true;
+   //}
    
    return false;
 }
@@ -122,6 +363,8 @@ bool isIslandNeeded()
    desired base and adds them to that base
    
    Pickup and dropoff is a baseID, not a location
+   * not in use* 
+   See catchMigrants
 */
 //==============================================================================
 
@@ -147,6 +390,15 @@ void villagerFerry(int pickup = -1, int dropoff = -1, int villagerNumber = -1)
    //int nwFound = kbUnitCount(cMyID, cUnitTypeAbstractWagon, cUnitStateAlive);
    //aiPlanAddUnitType(transportPlanID, cUnitTypeAbstractWagon, nwFound, nwFound, nwFound);
 
+   // Create a gather plan for everyone going to the new island
+   int islandGatherPlanID = aiPlanCreate("Island Gather Plan", cPlanGather);
+   aiPlanSetBaseID(islandGatherPlanID, dropoff);
+   aiPlanSetVariableInt(islandGatherPlanID, cGatherPlanResourceType, 0, cAllResources);
+   aiPlanAddUnitType(islandGatherPlanID, gEconUnit, 0, 200, 200);
+   aiPlanSetDesiredPriority(islandGatherPlanID, 50);
+   aiPlanSetActive(islandGatherPlanID);
+   aiPlanSetNoMoreUnits(islandGatherPlanID, true);  // Manually add units to this plan
+
    // Goes through the idle villagers and adds them to the trasport plan and new base
    unitQueryID = createSimpleIdleUnitQuery(cUnitTypeAbstractVillager, cMyID, cUnitStateAlive, pickupLocation, 50.0);
    int numberFound = kbUnitQueryExecute(unitQueryID);
@@ -161,8 +413,12 @@ void villagerFerry(int pickup = -1, int dropoff = -1, int villagerNumber = -1)
          //return;
       }
       aiPlanAddUnit(transportPlanID, unitID);
+      aiPlanAddUnit(islandGatherPlanID, unitID);
       kbBaseAddUnit(cMyID, dropoff, unitID);
    }
+
+
+
    aiPlanSetNoMoreUnits(transportPlanID, true);
    //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, dropoffLocation);
 
@@ -180,67 +436,29 @@ void villagerFerry(int pickup = -1, int dropoff = -1, int villagerNumber = -1)
 
 vector getRandomIsland()
 {
-   int numberAreaGroups = 0;
-   static int areaGroupIDs = -1;
-   int areaGroupID = -1;
-   int baseAreaGroupID = kbAreaGroupGetIDByPosition(kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
-   static vector islandExplorePosition = cInvalidVector;
-   int numberAreas = 0;   
-   static int areaIDs = -1;
-   int areaID = -1;
-   int numberBorderAreas = 0;
-   int borderAreaID = -1;
-   vector location = cInvalidVector;
-   bool startingIsland = false;
-   vector tempPlayerVec = cInvalidVector;
-   int thisVecAreaGroupID = -1;
+   vector startingLoc = kbGetPlayerStartingPosition(cMyID);
+   int startingAreaID = kbAreaGetIDByPosition(startingLoc);
+   vector testLoc = startingLoc;
+   int testAreaID = -1;
+   float j = 0.0;
+   float k = 0.0;
+   int occupied = -1;
 
-   if (cRandomMapName == "Ceylon" || cRandomMapName == "ceylonlarge")
+   for (i = 0; < 100)
    {
-      return kbGetMapCenter();
-   }
-
-   numberAreaGroups = kbAreaGroupGetNumber();
-   randomShuffleIntArray(areaGroupIDs, numberAreaGroups);
-   for (i = 0; < numberAreaGroups)
-   {
-      areaGroupID = xsArrayGetInt(areaGroupIDs, i);
-      if (areaGroupID == baseAreaGroupID || /*areaGroupID == kbAreaGroupGetIDByPosition(islandExplorePosition) ||*/
-            kbAreaGroupGetType(areaGroupID) != cAreaGroupTypeLand)
+      testLoc = startingLoc;
+      // Get a random vector near our base
+      j = i * kbGetMapXSize() / 150.0; // Normalized for RM map area
+      k = i * kbGetMapZSize() / 150.0;
+      testLoc = xsVectorSet(xsVectorGetX(testLoc) + aiRandFloat(0.0 - j, j), 0.0, 
+                xsVectorGetZ(testLoc) + aiRandFloat(0.0 - k, k));
+      
+      testAreaID = kbAreaGetIDByPosition(testLoc);
+      occupied = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAny, cUnitStateAlive, testLoc, 75.0);
+      
+      if (kbAreaGetType(testAreaID) != cAreaTypeWater && occupied <= 0)
       {
-         continue;
-      }
-      numberAreas = kbAreaGroupGetNumberAreas(areaGroupID);
-      for (j = 0; < numberAreas)
-      {
-         xsArraySetInt(areaIDs, j, kbAreaGroupGetAreaID(areaGroupID, j));
-      }
-      randomShuffleIntArray(areaIDs, numberAreas);
-      for (j = 0; < numberAreas)
-      {
-         areaID = xsArrayGetInt(areaIDs, j);
-         numberBorderAreas = kbAreaGetNumberBorderAreas(areaID);
-         for (k = 0; < numberBorderAreas)
-         {
-            borderAreaID = kbAreaGetBorderAreaID(areaID, k);
-            if (kbAreaGetType(borderAreaID) == cAreaTypeWater)
-            {
-               location = kbAreaGetCenter(areaID);
-               // Check if the island is any player's starting island
-               for (player = 1; < cNumberPlayers)
-               {
-                  tempPlayerVec = kbGetPlayerStartingPosition(player);
-                  if (kbAreAreaGroupsPassableByLand(areaID, kbAreaGroupGetIDByPosition(tempPlayerVec)) == true)
-                  {
-                     startingIsland = true;
-                  }
-               }
-               if (startingIsland == false)
-               {
-                  return location;
-               }
-            }
-         }
+         return testLoc;
       }
    }
    return cInvalidVector;
@@ -298,7 +516,7 @@ minInterval 30
    }
 
    // On Ceylon make one base on the main island and that's it
-   if (cRandomMapName == "Ceylon" || cRandomMapName == "ceylonlarge")
+   if (gMigrationMap == true)
    {
       if (gIslandAID > 0)
       {
@@ -338,7 +556,7 @@ minInterval 30
 //==============================================================================
 rule islandHopper
 inactive
-minInterval 20
+minInterval 5 // down from 20
 {
    // Make sure there are no active transport plans
    if (aiPlanGetIDByIndex(cPlanTransport, -1, true, 0) >= 0)
@@ -364,6 +582,9 @@ minInterval 20
    {
       // Check for a new island. If we find one then set the dropoff to the new one
       newIsland = getRandomIsland();
+      // Testing purposes
+      sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, newIsland); 
+
       if (newIsland != cInvalidVector)
       {
          dropoff = createNewIslandBase(newIsland, totalIslands);
@@ -372,16 +593,17 @@ minInterval 20
    }
 
    // If we aren't making a new island, check if we have any islands to transport to
-   //if (totalIslands <= 1)
-   //{
-   //   return;
-   //}
+   if (totalIslands <= 1)
+   {
+      return;
+   }
 
    // If we made it this far, we have multiple islands, some idle villagers, and a ship to 
    // transport them but if we have no new base select a random existing one
    if (islandNeeded == false)
    {
       dropoff = getRandomIslandBase(totalIslands);
+      sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(dropoff)); 
    }
 
    villagerFerry(gOriginalBase, dropoff, idleVillagers);
@@ -969,7 +1191,7 @@ minInterval 10
 
 rule catchMigrants
 inactive
-minInterval 15
+minInterval 5
 {  
    // Only fire if we have ships for transport
    if (kbUnitCount(cMyID, cUnitTypeLogicalTypeGarrisonInShips, cUnitStateAlive) <= 0)
@@ -983,22 +1205,22 @@ minInterval 15
 
    int area = 0;
    int areaGroup = -1;
-   int unit = getUnitByLocation(cUnitTypeAbstractVillager, cMyID, cUnitStateAlive, kbBaseGetLocation(gOriginalBase), 50); // getUnit(cUnitTypeCoveredWagon, cMyID, cUnitStateAlive);
+   int numberNeeded = getUnitCountByLocation(cUnitTypeAbstractWagon, cMyID, cUnitStateAlive, kbBaseGetLocation(gOriginalBase), 50.0);
+   int numberSettlers = getUnitCountByLocation(cUnitTypeAbstractVillager, cMyID, cUnitStateAny, kbBaseGetLocation(gOriginalBase), 50.0);
 
-   if (unit <= 0)
+   if (numberNeeded <= 0 && numberSettlers <=0)
    {
       return;
    }
 
+   int unit = getUnitByLocation(cUnitTypeAbstractVillager, cMyID, cUnitStateAlive, kbBaseGetLocation(gOriginalBase), 50); // getUnit(cUnitTypeCoveredWagon, cMyID, cUnitStateAlive);
    myLocation = kbUnitGetPosition(unit);
 
    int transportPlan = createTransportPlan(myLocation, kbAreaGetCenter(gCeylonStartingTargetArea), 50);
    
-   int numberNeeded = getUnitCountByLocation(cUnitTypeAbstractWagon, cMyID, cUnitStateAlive, kbBaseGetLocation(gOriginalBase), 50.0);
-   int numberSettlers = getUnitCountByLocation(cUnitTypeAbstractVillager, cMyID, cUnitStateAny, kbBaseGetLocation(gOriginalBase), 50.0);
-   
    aiPlanAddUnitType(transportPlan, cUnitTypeAbstractWagon, numberNeeded, numberNeeded, numberNeeded);
    aiPlanAddUnitType(transportPlan, cUnitTypeAbstractVillager, numberSettlers, numberSettlers, numberSettlers);
+//   aiPlanAddUnitType(transportPlan, cUnitTypeLogicalTypeLandMilitary, 0, 200, 200);
    aiPlanSetNoMoreUnits(transportPlan, true);
 
    //numberNeeded = getUnitCountByLocation(cUnitTypeLogicalTypeScout, cMyID, cUnitStateAlive, kbBaseGetLocation(gOriginalBase), 50.0);
@@ -1019,13 +1241,13 @@ inactive
 minInterval 20
 {  // cUnitTypeypMarathanCatamaran
    //gCeylonDelay = true; // Causes building manager and military manager to wait
-   int shipType = cUnitTypeLogicalTypeGarrisonInShips;
+   int shipType = cUnitTypeTransport;
    if (kbUnitCount(cMyID, shipType, cUnitStateAlive) <= 0)
    {
       shipType = cUnitTypeypMarathanCatamaran;
       if (kbUnitCount(cMyID, shipType, cUnitStateAlive) <= 0)
       {
-         gCeylonDelay = false;
+         //gCeylonDelay = false;
          return;
       }
    }
@@ -1108,8 +1330,11 @@ minInterval 20
    int transportPlan = createTransportPlan(myLocation, kbAreaGetCenter(gCeylonStartingTargetArea), 100.0, false);
    // sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(gCeylonStartingTargetArea));
    
-   // Temporarily move main base to landing area to avoid instant retransport
-   kbBaseSetPositionAndDistance(cMyID, kbBaseGetMainID(cMyID), kbAreaGetCenter(gCeylonStartingTargetArea), 50.0);
+   // Move main base 
+   kbBaseSetPositionAndDistance(cMyID, kbBaseGetMainID(cMyID), kbAreaGetCenter(gCeylonStartingTargetArea), 100.0);
+   //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(gCeylonStartingTargetArea));
+   xsEnableRule("buildingMonitorDelayed");
+
 
    aiPlanSetEventHandler(transportPlan, cPlanEventStateChange, "initIslandTransportHandler");
 
@@ -1150,21 +1375,32 @@ void initIslandTransportHandler(int planID = -1)
 
          for (i = 0; < 100)
          {
-            dist = dist - i * 20;
+            dist = dist - i * 10;
             gTCSearchVector = centerPoint + vec * dist;
             if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(gTCSearchVector), kbAreaGroupGetIDByPosition(centerPoint)) == true)
-            {
+            {  // Once we find the coast, go in a little further
+               gTCSearchVector = centerPoint + vec * (dist - (40 + aiRandInt(30)));
                gStartingLocationOverride = gTCSearchVector;
                break;
             }
          }
-         //   sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gStartingLocationOverride);
-         
-         int gMainBase2 = kbBaseCreate(cMyID, "Island base", gStartingLocationOverride, 100.0);//createMainBase(gStartingLocationOverride);
+         // Testing purposes
+         sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, gStartingLocationOverride);
+
+         kbBaseDestroy(cMyID, gMainBase);
+         int gMainBase2 = kbBaseCreate(cMyID, "Island base", gStartingLocationOverride, 100.0); // createMainBase(gStartingLocationOverride);
          kbBaseSetMain(cMyID, gMainBase2, true);
          kbBaseSetPositionAndDistance(cMyID, kbBaseGetMainID(cMyID), gStartingLocationOverride, 100.0);
+         kbBaseSetActive(cMyID, gMainBase2);
+
+         // Add existing town center to base
+         int townCenterID = getUnit(cUnitTypeTownCenter, cMyID, cUnitStateAlive);
+         kbBaseAddUnit(cMyID, gMainBase2, townCenterID);
+         
+
 
          xsEnableRule("buildingMonitorDelayed");
+         gCeylonDelay = false;
 
          //aiTaskUnitMove(wagon, gTCSearchVector);
 
@@ -1221,9 +1457,13 @@ rule buildingMonitorDelayed
 inactive
 minInterval 10
 {
-   debugSetup("***Delay buildingMonitor and MilitaryManager");
    gCeylonDelay = false;
+   // Run both as soon as the delay here is done
+   //buildingMonitor();
+   //militaryManager();
    xsEnableRule("catchMigrants");
+
+   debugSetup("***Delay buildingMonitor and MilitaryManager");
    xsDisableSelf();
 }
 
@@ -2071,9 +2311,6 @@ bool shouldBuildDock()
    }
    return false;
 }
-
-
-
 
 
 

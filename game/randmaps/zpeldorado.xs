@@ -216,16 +216,24 @@ void main(void)
 
 
  	// --------------------------- Place players ----------------------------- //
+   
 
-	rmSetTeamSpacingModifier(0.6);
-   int teamZeroCount = rmGetNumberPlayersOnTeam(0);
-	int teamOneCount = rmGetNumberPlayersOnTeam(1);
-	float teamStartLoc = rmRandFloat(0.0, 1.0);
+      int teamZeroCount = rmGetNumberPlayersOnTeam(0);
+      int teamOneCount = rmGetNumberPlayersOnTeam(1);
+      float teamStartLoc = rmRandFloat(0.0, 1.0);
 
-   rmSetTeamSpacingModifier(1.0);
-   rmSetPlacementSection(0.60, 0.16); // 0.5
-   rmPlacePlayersCircular(0.44, 0.44, 0);		
+      if(cNumberNonGaiaPlayers <= 2){
+         rmSetTeamSpacingModifier(1.0);
+         rmSetPlacementSection(0.69, 0.5); // 0.5
+         rmPlacePlayersCircular(0.44, 0.44, 0);	
+      }	
 
+      else {
+         rmSetTeamSpacingModifier(1.0);
+         rmSetPlacementSection(0.60, 0.16); // 0.5
+         rmPlacePlayersCircular(0.44, 0.44, 0);		
+      }
+      
    // --------------------------------  Water Trade Route  ------------------------------//
 
    int tradeRouteID = rmCreateTradeRoute();
@@ -308,35 +316,35 @@ void main(void)
 
       // Native Islans
    
-      int nativeIslandID = rmCreateArea("native island");
+      int bigIslandID = rmCreateArea("migration island");
 
-      rmSetAreaLocation(nativeIslandID, 0.6, 0.4);
-      rmSetAreaMix(nativeIslandID, "yucatan_grass");
-      rmSetAreaCoherence(nativeIslandID, 1.0);
-      rmSetAreaSize(nativeIslandID, 0.6, 0.6);
-      rmSetAreaMinBlobs(nativeIslandID, 10);
-      rmSetAreaMaxBlobs(nativeIslandID, 15);
-      rmSetAreaMinBlobDistance(nativeIslandID, 8.0);
-      rmSetAreaMaxBlobDistance(nativeIslandID, 10.0);
-      rmSetAreaCoherence(nativeIslandID, 0.60);
-      rmSetAreaBaseHeight(nativeIslandID, 3.0);
-      rmSetAreaSmoothDistance(nativeIslandID, 20);
-	   rmSetAreaMix(nativeIslandID, "yucatan_grass");
-         rmAddAreaTerrainLayer(nativeIslandID, "Amazon\ground5_ama", 0, 4);
-         rmAddAreaTerrainLayer(nativeIslandID, "Amazon\ground4_ama", 4, 6);
-         rmAddAreaTerrainLayer(nativeIslandID, "Amazon\ground3_ama", 6, 9);
-         rmAddAreaTerrainLayer(nativeIslandID, "Amazon\ground2_ama", 9, 12);
-      rmAddAreaToClass(nativeIslandID, classIsland);
-      rmAddAreaConstraint(nativeIslandID, islandConstraint);
-      rmAddAreaConstraint(nativeIslandID, islandAvoidTradeRouteLong);
-      rmSetAreaObeyWorldCircleConstraint(nativeIslandID, false);
-//    rmSetAreaElevationType(nativeIslandID, cElevTurbulence);
-//    rmSetAreaElevationVariation(nativeIslandID, 3.0);
-//    rmSetAreaElevationMinFrequency(nativeIslandID, 0.09);
-//    rmSetAreaElevationOctaves(nativeIslandID, 3);
-//    rmSetAreaElevationPersistence(nativeIslandID, 0.2);
-//		rmSetAreaElevationNoiseBias(nativeIslandID, 1);
-      rmSetAreaWarnFailure(nativeIslandID, false);
+      rmSetAreaLocation(bigIslandID, 0.6, 0.4);
+      rmSetAreaMix(bigIslandID, "yucatan_grass");
+      rmSetAreaCoherence(bigIslandID, 1.0);
+      rmSetAreaSize(bigIslandID, 0.6, 0.6);
+      rmSetAreaMinBlobs(bigIslandID, 10);
+      rmSetAreaMaxBlobs(bigIslandID, 15);
+      rmSetAreaMinBlobDistance(bigIslandID, 8.0);
+      rmSetAreaMaxBlobDistance(bigIslandID, 10.0);
+      rmSetAreaCoherence(bigIslandID, 0.60);
+      rmSetAreaBaseHeight(bigIslandID, 3.0);
+      rmSetAreaSmoothDistance(bigIslandID, 20);
+	   rmSetAreaMix(bigIslandID, "yucatan_grass");
+         rmAddAreaTerrainLayer(bigIslandID, "Amazon\ground5_ama", 0, 4);
+         rmAddAreaTerrainLayer(bigIslandID, "Amazon\ground4_ama", 4, 6);
+         rmAddAreaTerrainLayer(bigIslandID, "Amazon\ground3_ama", 6, 9);
+         rmAddAreaTerrainLayer(bigIslandID, "Amazon\ground2_ama", 9, 12);
+      rmAddAreaToClass(bigIslandID, classIsland);
+      rmAddAreaConstraint(bigIslandID, islandConstraint);
+      rmAddAreaConstraint(bigIslandID, islandAvoidTradeRouteLong);
+      rmSetAreaObeyWorldCircleConstraint(bigIslandID, false);
+//    rmSetAreaElevationType(bigIslandID, cElevTurbulence);
+//    rmSetAreaElevationVariation(bigIslandID, 3.0);
+//    rmSetAreaElevationMinFrequency(bigIslandID, 0.09);
+//    rmSetAreaElevationOctaves(bigIslandID, 3);
+//    rmSetAreaElevationPersistence(bigIslandID, 0.2);
+//		rmSetAreaElevationNoiseBias(bigIslandID, 1);
+      rmSetAreaWarnFailure(bigIslandID, false);
 
    rmBuildAllAreas();
 
@@ -688,7 +696,7 @@ void main(void)
       // Add island constraints
 
       int playerIslandConstraint=rmCreateAreaConstraint("player Island", playerIslandNorth);
-      int nativeIslandConstraint=rmCreateAreaConstraint("native Island", nativeIslandID);
+      int nativeIslandConstraint=rmCreateAreaConstraint("native Island", bigIslandID);
       int playerIslandSouthConstraint=rmCreateAreaConstraint("player Island south", playerIslandSouth);
 
       // Placing Scientists
@@ -916,11 +924,9 @@ void main(void)
       for(i=1; <cNumberPlayers)
       {
          int colonyShipID=rmCreateObjectDef("colony ship "+i);
-         if(rmGetPlayerCiv(i) == rmGetCivID("Ottomans"))
-            rmAddObjectDefItem(colonyShipID, "Galley", 1, 0.0);
-         else
-            rmAddObjectDefItem(colonyShipID, "Caravel", 1, 0.0);
-         rmSetObjectDefGarrisonStartingUnits(colonyShipID, true);
+
+         rmAddObjectDefItem(colonyShipID, "Canoe", 1, 0.0);
+
          rmSetObjectDefMinDistance(colonyShipID, 0.0);
          rmSetObjectDefMaxDistance(colonyShipID, 10.0);
          
@@ -960,6 +966,7 @@ void main(void)
          flagZ = flagZ / mapZ;
 
          rmPlaceObjectDefAtLoc(waterSpawnFlagID, i, flagX, flagZ);
+         rmPlaceObjectDefAtLoc(colonyShipID, i, flagX, flagZ);
 
       }
 
