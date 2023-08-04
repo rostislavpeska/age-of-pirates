@@ -2549,7 +2549,8 @@ minInterval 2
          cRandomMapName == "euarchipelago" ||
          cRandomMapName == "euarchipelagolarge" ||
          cRandomMapName == "afswahilicoast" ||
-         cRandomMapName == "afswahilicoastlarge")
+         cRandomMapName == "afswahilicoastlarge" ||
+         cRandomMapName == "zpeldorado")
    {
       gMigrationMap = true;
    }
