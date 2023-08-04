@@ -60,5 +60,18 @@
   <anim>RangedAttackLeft<assetreference type="GrannyAnim"><file>units\naval\galleon\galleon_SPC_idle</file><tag type="Attack">0.10</tag><tag type="Particles" particlename="igcgalleonmuzzlel01">0.00</tag><tag type="Particles" particlename="igcgalleonmuzzlel02">0.07</tag><tag type="Particles" particlename="igcgalleonmuzzlel03">0.14</tag><tag type="Particles" particlename="igcgalleonmuzzlel04">0.21</tag><tag type="Particles" particlename="igcgalleonmuzzlel05">0.28</tag><tag type="Particles" particlename="igcgalleonmuzzlel06">0.35</tag></assetreference><component>ModelComp</component><attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><simskeleton><model>units\naval\galleon\galleon_zpspc_damaged</model></simskeleton></anim>
   <anim>RangedAttackRight<assetreference type="GrannyAnim"><file>units\naval\galleon\galleon_SPC_idle</file><tag type="Attack">0.10</tag><tag type="Particles" particlename="igcgalleonmuzzler01">0.60</tag><tag type="Particles" particlename="igcgalleonmuzzler02">0.78</tag><tag type="Particles" particlename="igcgalleonmuzzler03">0.85</tag><tag type="Particles" particlename="igcgalleonmuzzler04">0.90</tag><tag type="Particles" particlename="igcgalleonmuzzler05">0.75</tag><tag type="Particles" particlename="igcgalleonmuzzler06">0.65</tag></assetreference><component>ModelComp</component><attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><simskeleton><model>units\naval\galleon\galleon_zpspc_damaged</model></simskeleton></anim>
   <anim>Walk<assetreference type="GrannyAnim"><file>units\naval\galleon\galleon_SPC_walk</file></assetreference><component>ModelComp</component><attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><simskeleton><model>units\naval\galleon\galleon_zpspc_damaged</model></simskeleton></anim>
+  
+  <anim>Convert
+    <assetreference type="GrannyAnim">
+        <file>units\naval\galleon\galleon_zpspc_convert</file>
+        <tag type="SpecificSoundSet" checkvisible="1" set="BattlecryLarge">0.05</tag>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    <simskeleton>
+        <model>units\naval\galleon\galleon_zpspc_damaged</model>
+    </simskeleton>
+</anim>
+  
   <anim>Death<component>Death</component><attach a="Death_EXP" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
 </animfile>

@@ -6173,6 +6173,9 @@
       <effect type="CommandAdd" tech="zpSPCSufiBlueMosque" page="0" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TradingPost" relativity="Absolute">
+        <target type="ProtoUnit">deIconAfricanTradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffMalteseLand" type="Normal">
@@ -7992,6 +7995,9 @@
       <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="zpInuitWarCanoe" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpInuitWarCanoe</target>
       </effect>
     </effects>
   </tech>

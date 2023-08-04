@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\natives\jewish\textures\jewish_villager_female_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\villagers\ee_villager_female\textures\ee_villager_female_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\villagers\ee_villager_female\textures\ee_villager_female_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\natives\jewish\textures\jewish_villager_female_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
