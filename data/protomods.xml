@@ -13047,6 +13047,32 @@
   <unit name="YPDockAsian">
     <train row ="0" page ="0" column ="12">zpInuitWarCanoe</train>
   </unit>
+  <unit id="20139" name="zpAImigrationPoint">
+    <dbid>20139</dbid>
+    <displaynameid>300636</displaynameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>air</movementtype>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <unittype>EmbellishmentClass</unittype>
+    <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <flag>NoUnitAI</flag>
+    <flag>NotSearchable</flag>
+    <flag>Immoveable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>NonCollideable</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>Invulnerable</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Tracked</flag>
+  </unit>
 
 <!--TEST-->
 

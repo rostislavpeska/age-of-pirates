@@ -98,7 +98,7 @@ minInterval 10
          int explorerUnit = aiPlanGetUnitByIndex(gWaterNuggetPlan, 0);
          vector explorerLoc = kbUnitGetPosition(explorerUnit);
             // Testing purposes
-            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, explorerLoc);
+            //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, explorerLoc);
 
          int explorerFleetHP = 0;
          for (i = 0; < numberExplorerWarships)
@@ -135,7 +135,7 @@ minInterval 10
                if (guardianHealth < bestGuardianHP)
                {
                   bestNugget = nuggetID; // Store this as the best nugget
-                  sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbUnitGetPosition(nuggetID));
+                  //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbUnitGetPosition(nuggetID));
                   bestGuardianHP = guardianHealth;
                   bestGuardianID = guardianID;
                }
@@ -201,7 +201,7 @@ minInterval 10
          aiPlanSetDesiredPriority(gWaterNuggetPlan, 24);
          // Ships are already tasked to gather nugget. Just wait until nugget is gone 
          targetLocation = kbUnitGetPosition(gWaterNuggetTarget);
-            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, targetLocation);
+            //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, targetLocation);
          int nuggetsAtLoc = getUnitCountByLocation(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateAlive, targetLocation, 2.0);
          if (nuggetsAtLoc > 0)
          {
@@ -583,7 +583,7 @@ minInterval 5 // down from 20
       // Check for a new island. If we find one then set the dropoff to the new one
       newIsland = getRandomIsland();
       // Testing purposes
-      sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, newIsland); 
+      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, newIsland); 
 
       if (newIsland != cInvalidVector)
       {
@@ -603,7 +603,7 @@ minInterval 5 // down from 20
    if (islandNeeded == false)
    {
       dropoff = getRandomIslandBase(totalIslands);
-      sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(dropoff)); 
+      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(dropoff)); 
    }
 
    villagerFerry(gOriginalBase, dropoff, idleVillagers);
@@ -1238,7 +1238,7 @@ minInterval 5
 
 rule islandMigration
 inactive
-minInterval 20
+minInterval 10
 {  // cUnitTypeypMarathanCatamaran
    //gCeylonDelay = true; // Causes building manager and military manager to wait
    int shipType = cUnitTypeTransport;
@@ -1332,7 +1332,7 @@ minInterval 20
    
    // Move main base 
    kbBaseSetPositionAndDistance(cMyID, kbBaseGetMainID(cMyID), kbAreaGetCenter(gCeylonStartingTargetArea), 100.0);
-   //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(gCeylonStartingTargetArea));
+   sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(gCeylonStartingTargetArea));
    xsEnableRule("buildingMonitorDelayed");
 
 
@@ -1385,7 +1385,7 @@ void initIslandTransportHandler(int planID = -1)
             }
          }
          // Testing purposes
-         sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, gStartingLocationOverride);
+         // sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, gStartingLocationOverride);
 
          kbBaseDestroy(cMyID, gMainBase);
          int gMainBase2 = kbBaseCreate(cMyID, "Island base", gStartingLocationOverride, 100.0); // createMainBase(gStartingLocationOverride);

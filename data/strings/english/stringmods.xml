@@ -636,6 +636,7 @@
       <string _locid="300633">Experimental Airship</string>
       <string _locid="300634">ZP Conversion Attachement</string>
       <string _locid="300635">Spawns native ships after it's training in a Trading Post and repairs all ships.</string>
+      <string _locid="300636">ZP AI Migration Point</string>
     </language>
   </stringtable>
 </stringmods>

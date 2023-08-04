@@ -72,7 +72,7 @@ void main(void)
    rmSetMapType("eldorado");
 	rmSetWorldCircleConstraint(true);
    rmSetLightingSet("Mexico_Skirmish");
-   rmSetOceanReveal(true);
+   rmSetOceanReveal(false);
 
    // Init map.
    rmTerrainInitialize("water");
@@ -327,7 +327,7 @@ void main(void)
       rmSetAreaMinBlobDistance(bigIslandID, 8.0);
       rmSetAreaMaxBlobDistance(bigIslandID, 10.0);
       rmSetAreaCoherence(bigIslandID, 0.60);
-      rmSetAreaBaseHeight(bigIslandID, 3.0);
+      rmSetAreaBaseHeight(bigIslandID, 2.0);
       rmSetAreaSmoothDistance(bigIslandID, 20);
 	   rmSetAreaMix(bigIslandID, "yucatan_grass");
          rmAddAreaTerrainLayer(bigIslandID, "Amazon\ground5_ama", 0, 4);
@@ -338,12 +338,12 @@ void main(void)
       rmAddAreaConstraint(bigIslandID, islandConstraint);
       rmAddAreaConstraint(bigIslandID, islandAvoidTradeRouteLong);
       rmSetAreaObeyWorldCircleConstraint(bigIslandID, false);
-//    rmSetAreaElevationType(bigIslandID, cElevTurbulence);
-//    rmSetAreaElevationVariation(bigIslandID, 3.0);
-//    rmSetAreaElevationMinFrequency(bigIslandID, 0.09);
-//    rmSetAreaElevationOctaves(bigIslandID, 3);
-//    rmSetAreaElevationPersistence(bigIslandID, 0.2);
-//		rmSetAreaElevationNoiseBias(bigIslandID, 1);
+      rmSetAreaElevationType(bigIslandID, cElevTurbulence);
+      rmSetAreaElevationVariation(bigIslandID, 2.0);
+      rmSetAreaElevationMinFrequency(bigIslandID, 0.09);
+      rmSetAreaElevationOctaves(bigIslandID, 3);
+      rmSetAreaElevationPersistence(bigIslandID, 0.2);
+		rmSetAreaElevationNoiseBias(bigIslandID, 1);
       rmSetAreaWarnFailure(bigIslandID, false);
 
    rmBuildAllAreas();
@@ -929,6 +929,13 @@ void main(void)
 
          rmSetObjectDefMinDistance(colonyShipID, 0.0);
          rmSetObjectDefMaxDistance(colonyShipID, 10.0);
+
+         int migrationPointID=rmCreateObjectDef("migration point "+i);
+         rmAddObjectDefItem(migrationPointID, "zpAImigrationPoint", 1, 0.0);
+         rmSetObjectDefMinDistance(migrationPointID, 0.0);
+         rmSetObjectDefMaxDistance(migrationPointID, 20.0);
+         rmAddObjectDefConstraint(migrationPointID, avoidImpassableLand);
+         rmAddObjectDefConstraint(migrationPointID, avoidWater20);
          
                      
          // Test of Marcin's Starting Units stuff...
@@ -967,6 +974,22 @@ void main(void)
 
          rmPlaceObjectDefAtLoc(waterSpawnFlagID, i, flagX, flagZ);
          rmPlaceObjectDefAtLoc(colonyShipID, i, flagX, flagZ);
+
+         int center2X = mapX * 0.8;
+         int center2Z = mapZ * 0.2;
+
+         vector center2Pos = xsVectorSet(center2X, 0, center2Z);
+         vector playerToCenter2 = xsVectorNormalize(center2Pos - playerPos);
+         int distance2 = 100; // 10 meters. Increase until everything works.
+         vector basePos = playerPos + playerToCenter2 * distance2;
+         float baseX = xsVectorGetX(basePos);
+         float baseZ = xsVectorGetZ(basePos);
+
+         // Convert meters to fraction:
+         baseX = baseX / mapX;
+         baseZ = baseZ / mapZ;
+
+         rmPlaceObjectDefAtLoc(migrationPointID, i, baseX, baseZ);
 
       }
 
@@ -2097,6 +2120,8 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
+// Testing
 
 // Testing
 

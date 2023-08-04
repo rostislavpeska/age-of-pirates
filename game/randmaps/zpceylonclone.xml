@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapinfo details="70043" displayNameID="70044" loadDetails="70045" largeMapName = "CeylonLarge"
+    imagepath="ui\random_map\ceylon\ceylon_mini" cannotReplace="" loadBackground="ui\random_map\ceylon\ceylon_map">
+    <loadss>ui\random_map\ceylon\ceylon_ss_01</loadss>
+    <loadss>ui\random_map\ceylon\ceylon_ss_02</loadss>
+    <loadss>ui\random_map\ceylon\ceylon_ss_03</loadss>
+</mapinfo>
