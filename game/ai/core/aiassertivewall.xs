@@ -1292,6 +1292,13 @@ minInterval 10
          continue;
       }
 
+      // Check to make sure this area is connected to center island
+      if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(kbGetMapCenter()), areaGroup) == false)
+      {
+         continue;
+      }
+      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(area));
+
       bool bordersWater = false;
       int borderAreaCount = kbAreaGetNumberBorderAreas(area);
       for (i = 0; < borderAreaCount)
