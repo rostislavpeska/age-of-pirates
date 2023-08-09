@@ -2550,9 +2550,11 @@ minInterval 2
          cRandomMapName == "euarchipelagolarge" ||
          cRandomMapName == "afswahilicoast" ||
          cRandomMapName == "afswahilicoastlarge" ||
-         cRandomMapName == "zpeldorado")
+         cRandomMapName == "zpeldorado" ||
+         kbUnitCount(cMyID, cUnitTypezpAImigrationPoint, cUnitStateABQ) == 1)
    {
       gMigrationMap = true;
+      aiChat( cMyID, "Migration map: true");
    }
    
    if (cvOkToBuild == true)

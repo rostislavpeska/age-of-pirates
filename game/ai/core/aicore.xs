@@ -2292,6 +2292,8 @@ minInterval 5
          {
             //gCeylonDelay = true; // Already set in setup
             xsEnableRule("islandMigration");
+            aiChat( cMyID, "Island Migration Rule: activated");
+
             //xsEnableRule("islandHopper");
             //xsEnableRule("islandBuildSelector");
          }
