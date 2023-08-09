@@ -36,6 +36,28 @@
    return false;
 }*/
 
+//==============================================================================
+/* Gets the closest enemy player to you
+*/
+//==============================================================================
+/*vector nearestEnemyStartingLocation(vector location = cInvalidVector)
+{
+   vector testLoc = cInvalidVector;
+   vector enemyLoc = cInvalidVector;
+   int dist = 9999;
+   for (i = 1; < cNumberPlayers)
+   {
+      testDist = distance(location, enemyLocation);
+      testLoc = kbGetPlayerStartingPosition(cMyID);
+      getEnemyPlayerByTeamPosition
+      if (testDist < dist)
+      {
+         dist = testDist;
+         enemyLoc = testLoc;
+      }
+   }
+   return enemyLoc;
+}*/
 
 //==============================================================================
 /* gatherNavalNuggets
@@ -1191,13 +1213,19 @@ minInterval 10
 
 rule catchMigrants
 inactive
-minInterval 5
+minInterval 10
 {  
    // Only fire if we have ships for transport
    if (kbUnitCount(cMyID, cUnitTypeLogicalTypeGarrisonInShips, cUnitStateAlive) <= 0)
    {
       return;
    }
+
+   // Don't create a new transport if there is already a transport in progress
+   /*if (aiPlanGetIDByIndex(cPlanTransport, -1, true, 0) >= 0)
+   {
+      return;
+   }*/
 
    int areaCount = 0;
    vector myLocation = cInvalidVector;
@@ -1207,21 +1235,22 @@ minInterval 5
    int areaGroup = -1;
    int numberNeeded = getUnitCountByLocation(cUnitTypeAbstractWagon, cMyID, cUnitStateAlive, kbBaseGetLocation(gOriginalBase), 50.0);
    int numberSettlers = getUnitCountByLocation(cUnitTypeAbstractVillager, cMyID, cUnitStateAny, kbBaseGetLocation(gOriginalBase), 50.0);
+   int numberMilitary = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAny, kbBaseGetLocation(gOriginalBase), 50.0);
 
-   if (numberNeeded <= 0 && numberSettlers <=0)
+   if (numberNeeded <= 0 && numberSettlers <=0 && numberMilitary <= 0)
    {
       return;
    }
 
-   int unit = getUnitByLocation(cUnitTypeAbstractVillager, cMyID, cUnitStateAlive, kbBaseGetLocation(gOriginalBase), 50); // getUnit(cUnitTypeCoveredWagon, cMyID, cUnitStateAlive);
-   myLocation = kbUnitGetPosition(unit);
+   myLocation = kbBaseGetLocation(gOriginalBase);
 
-   int transportPlan = createTransportPlan(myLocation, kbAreaGetCenter(gCeylonStartingTargetArea), 50);
+   int transportPlan = createTransportPlan(myLocation, kbAreaGetCenter(gCeylonStartingTargetArea), 100);
    
    aiPlanAddUnitType(transportPlan, cUnitTypeAbstractWagon, numberNeeded, numberNeeded, numberNeeded);
    aiPlanAddUnitType(transportPlan, cUnitTypeAbstractVillager, numberSettlers, numberSettlers, numberSettlers);
-//   aiPlanAddUnitType(transportPlan, cUnitTypeLogicalTypeLandMilitary, 0, 200, 200);
+   aiPlanAddUnitType(transportPlan, cUnitTypeLogicalTypeLandMilitary, numberMilitary, numberMilitary, numberMilitary);
    aiPlanSetNoMoreUnits(transportPlan, true);
+   aiPlanSetActive(transportPlan);
 
    //numberNeeded = getUnitCountByLocation(cUnitTypeLogicalTypeScout, cMyID, cUnitStateAlive, kbBaseGetLocation(gOriginalBase), 50.0);
    //aiPlanAddUnitType(transportPlan, cUnitTypeLogicalTypeScout, numberNeeded, numberNeeded, numberNeeded);
@@ -1229,6 +1258,53 @@ minInterval 5
    // go the entire game to catch stray settlers/wagons/scouts
 }
 
+//==============================================================================
+/* ceylonFailsafe
+   Goes through transport plans and helps them along
+*/
+//==============================================================================
+
+rule ceylonFailsafe
+inactive
+minInterval 15
+{
+   int transportPlan = aiPlanGetIDByTypeAndVariableType(cPlanTransport, cTransportPlanTransportID);
+   int numberUnits = aiPlanGetNumberUnits(transportPlan);
+   int transportUnit = -1;
+   int tempTransportUnit = -1;
+   
+   for (i = 0; < numberUnits)
+   {
+      tempTransportUnit = aiPlanGetUnitByIndex(transportPlan, i);
+      if (kbUnitIsType(tempTransportUnit, cUnitTypeAbstractWarShip) == true)
+      {
+         transportUnit = tempTransportUnit;
+         break;
+      }
+   }
+   //aiChat( cMyID, "failsafe helping:" + transportPlan);
+
+   switch(aiPlanGetState(transportPlan))
+   {
+      case -1:
+      {
+         xsDisableSelf();
+         break;
+      }
+      case cPlanStateEnter:
+      {
+         //gTransportTimeout = xsGetTime();
+         aiTaskUnitMove(transportUnit, aiPlanGetVariableVector(transportPlan, cTransportPlanGatherPoint, 0));
+         break;
+      }
+      case cPlanStateGoto:
+      {
+         //gTransportTimeout = xsGetTime();
+         aiTaskUnitMove(transportUnit, aiPlanGetVariableVector(transportPlan, cTransportPlanTargetPoint, 0));
+         break;
+      }
+   }
+}
 
 //==============================================================================
 /* islandMigration
@@ -1238,7 +1314,7 @@ minInterval 5
 
 rule islandMigration
 inactive
-minInterval 10
+minInterval 3
 {  // cUnitTypeypMarathanCatamaran
    //gCeylonDelay = true; // Causes building manager and military manager to wait
    int shipType = cUnitTypeTransport;
@@ -1276,6 +1352,8 @@ minInterval 10
       //createSimpleBuildPlan(gMarketUnit, 1, 90, false, cEconomyEscrowID, kbBaseGetMainID(cMyID), 1); 
    }
 
+   // Find enemy starting location Location
+   vector enPosition = kbGetPlayerStartingPosition(getEnemyPlayerByTeamPosition(1));
    int closestArea = -1;
    float closestAreaDistance = kbGetMapXSize();
 
@@ -1287,10 +1365,10 @@ minInterval 10
       }
 
       areaGroup = kbAreaGroupGetIDByPosition(kbAreaGetCenter(area));
-      if (kbAreaGroupGetNumberAreas(areaGroup) - kbAreaGroupGetNumberAreas(myAreaGroup) <= 10)
+      /*if (kbAreaGroupGetNumberAreas(areaGroup) - kbAreaGroupGetNumberAreas(myAreaGroup) <= 10)
       {
          continue;
-      }
+      }*/
 
       // Check to make sure this area is connected to center island
       if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(kbGetMapCenter()), areaGroup) == false)
@@ -1315,7 +1393,11 @@ minInterval 10
          continue;
       }
 
-      float dist = xsVectorLength(kbAreaGetCenter(area) - myLocation);
+
+      // Try to move landing area away from enemies
+      float distToEnemyTC = xsVectorLength(kbAreaGetCenter(area) - enPosition);
+      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, enPosition);
+      float dist = xsVectorLength(kbAreaGetCenter(area) - myLocation) - 0;//1.0 * distToEnemyTC;
       if (dist < closestAreaDistance)
       {
          closestAreaDistance = dist;
@@ -1323,10 +1405,15 @@ minInterval 10
       }
    }
 
-   // Move someone toward the center so we can see our landing spot
-   aiTaskUnitMove(getUnit(shipType, cMyID, cUnitStateAlive), kbAreaGetCenter(closestArea));
-   
+   // Move main base 
    gCeylonStartingTargetArea = closestArea;
+   kbBaseSetPositionAndDistance(cMyID, kbBaseGetMainID(cMyID), kbAreaGetCenter(gCeylonStartingTargetArea), 100.0);
+   xsEnableRule("buildingMonitorDelayed");
+   xsEnableRule("ceylonFailsafe");
+   sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(gCeylonStartingTargetArea));
+
+   // Move someone toward the center so we can see our landing spot
+   /*aiTaskUnitMove(getUnit(shipType, cMyID, cUnitStateAlive), kbAreaGetCenter(closestArea));
 
    // This used to be "islandwaitforexplore" but a separate rule no longer necessary
    //int unit = getUnit(cUnitTypeAbstractVillager, cMyID, cUnitStateAlive);
@@ -1335,13 +1422,7 @@ minInterval 10
    kbBaseAddUnit(cMyID, baseID, unit);
 
    int transportPlan = createTransportPlan(myLocation, kbAreaGetCenter(gCeylonStartingTargetArea), 100.0, false);
-   // sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(gCeylonStartingTargetArea));
-   
-   // Move main base 
-   kbBaseSetPositionAndDistance(cMyID, kbBaseGetMainID(cMyID), kbAreaGetCenter(gCeylonStartingTargetArea), 100.0);
    sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(gCeylonStartingTargetArea));
-   xsEnableRule("buildingMonitorDelayed");
-
 
    aiPlanSetEventHandler(transportPlan, cPlanEventStateChange, "initIslandTransportHandler");
 
@@ -1356,7 +1437,7 @@ minInterval 10
    //aiPlanAddUnitType(transportPlan, cUnitTypeLogicalTypeScout, numberNeeded, numberNeeded, numberNeeded);
 
 
-   xsEnableRule("initIslandFailsafe");
+   xsEnableRule("initIslandFailsafe");*/
 
    xsDisableSelf();
 }
