@@ -1,40 +1,58 @@
 <animfile>
+    <definebone>bone_master</definebone>
+    <definebone>bone_flag_civ</definebone>
+    <definebone>bone_garrisonflag</definebone>
+    <definebone>bone_front_wake</definebone>
+    <definebone>bone_front_foam</definebone>
+    <definebone>bone_hitpointbar</definebone>
+    <definebone>bone_banner_a1</definebone>
+    <definebone>bone_banner_a2</definebone>
+    <definebone>bone_banner_a3</definebone>
+    <definebone>bone_sail_01</definebone>
+    <definebone>bone_sail_02</definebone>
+    <definebone>bone_sail_03</definebone>
+    <definebone>bone_sail_04</definebone>
+    <definebone>bone_sail_05</definebone>
+    <definebone>bone_sail_06</definebone>
+    <definebone>bone_sail_07</definebone>
+    <definebone>bone_sail_08</definebone>
+    <definebone>bone_sail_09</definebone>
+    <definebone>bone_sail_10</definebone>
+    <definebone>bone_sail_11</definebone>
+    <definebone>bone_sail_12</definebone>
+    <definebone>bone_sail_13</definebone>
+    <definebone>bone_sail_14</definebone>
+    <definebone>bone_sail_15</definebone>
     <definebone>bone_muzzlel01</definebone>
     <definebone>bone_muzzlel02</definebone>
     <definebone>bone_muzzlel03</definebone>
     <definebone>bone_muzzlel04</definebone>
     <definebone>bone_muzzlel05</definebone>
+    <definebone>bone_muzzlel06</definebone>
+    <definebone>bone_muzzlel07</definebone>
+    <definebone>bone_muzzlel08</definebone>
+    <definebone>bone_muzzlel09</definebone>
+    <definebone>bone_muzzlel10</definebone>
+    <definebone>bone_muzzlel11</definebone>
+    <definebone>bone_muzzlel12</definebone>
+    <definebone>bone_muzzlel13</definebone>
+    <definebone>bone_muzzlel14</definebone>
+    <definebone>bone_muzzlel15</definebone>
+    <definebone>bone_muzzlel16</definebone>
+    <definebone>bone_muzzlel17</definebone>
+    <definebone>bone_muzzlel18</definebone>
     <definebone>bone_muzzler01</definebone>
     <definebone>bone_muzzler02</definebone>
     <definebone>bone_muzzler03</definebone>
     <definebone>bone_muzzler04</definebone>
     <definebone>bone_muzzler05</definebone>
-    <definebone>bone_debris_1a</definebone>
-    <definebone>bone_debris_1b</definebone>
-    <definebone>bone_debris_1c</definebone>
-    <definebone>bone_debris_2a</definebone>
-    <definebone>bone_debris_2b</definebone>
-    <definebone>bone_debris_2c</definebone>
-    <definebone>bone_debris_3a</definebone>
-    <definebone>bone_debris_3b</definebone>
-    <definebone>bone_debris_3c</definebone>
-    <definebone>bone_debris_4a</definebone>
-    <definebone>bone_debris_4b</definebone>
-    <definebone>bone_debris_4c</definebone>
-    <definebone>bone_debris_5a</definebone>
-    <definebone>bone_debris_5b</definebone>
-    <definebone>bone_debris_6a</definebone>
-    <definebone>bone_debris_6b</definebone>
-    <definebone>bone_debris_6c</definebone>
-    <definebone>bone_master</definebone>
-    <definebone>bone_debris_7a</definebone>
-    <definebone>bone_debris_7b</definebone>
-    <definebone>bone_debris_7c</definebone>
-    <definebone>bone_debris_7d</definebone>
-    <definebone>boneimpact05</definebone>
-    <definebone>bone_sail04</definebone>
-    <definebone>bone_garrisonflag</definebone>
-
+    <definebone>bone_muzzler06</definebone>
+    <definebone>bone_muzzler07</definebone>
+    <definebone>bone_muzzler08</definebone>
+    <definebone>bone_muzzler09</definebone>
+    <definebone>bone_muzzler10</definebone>
+    <definebone>bone_muzzler11</definebone>
+    <definebone>bone_muzzler12</definebone>
     <attachment>IdleWaterFoam
         <component>Idlefoam
             <assetreference type="popcornFx">
@@ -58,7 +76,7 @@
     <attachment>DeathWaterFoam
         <component>Deathfoam
             <assetreference type="popcornFx">
-                <file>water_effects\death_waterFoam_large.pkfx</file>
+                <file>water_effects\death_waterFoam_Xlarge.pkfx</file>
             </assetreference>
         </component>
         <anim>None
@@ -68,7 +86,7 @@
     <attachment>Death_EXP
         <component>exp
             <assetreference type="popcornFx">
-                <file>units\spc\fire_ship\Exp_ship.pkfx</file>
+                <file>units\spc\fire_ship\Exp_frigate_ship.pkfx</file>
             </assetreference>
         </component>
         <anim>None
@@ -85,29 +103,87 @@
             <component>exp2</component>
         </anim>
     </attachment>
-
-    <component>galleon
-        <logic type="LowPoly">
-            <normal>
+    <attachment>Death_EXP2
+        <component>exp
+            <assetreference type="popcornFx">
+                <file>units\spc\fire_ship\Exp_ironclad_ship.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>exp</component>
+        </anim>
+    </attachment>
+    <attachment>Fishing_net
+        <component>fishing_net
+            <assetreference type="GrannyModel">
+                <file>units\attachments\fishing_net</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <assetreference type="GrannyAnim">
+                <file>units\attachments\fishing_net_caravel</file>
+            </assetreference>
+            <component>fishing_net</component>
+        </anim>
+    </attachment>
+    <attachment>civflag_a1
+        <component>flag
+            <assetreference type="ClothFlag">
+                <flag>
+                    <blending>alphatest_color</blending>
+                    <specialtexture></specialtexture>
+                    <width>2.00</width>
+                    <height>1.50</height>
+                </flag>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>flag</component>
+        </anim>
+    </attachment>
+    <attachment>civflag_a2
+        <component>flag
+            <assetreference type="ClothFlag">
+                <flag>
+                    <blending>alphatest_color</blending>
+                    <specialtexture></specialtexture>
+                    <width>2.50</width>
+                    <height>1.875</height>
+                </flag>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>flag</component>
+        </anim>
+    </attachment>
+    <attachment>pendentflag_a3
+        <component>flag
+            <assetreference type="ClothFlag">
+                <flag>
+                    <blending>alphatest_color</blending>
+                    <texture>buildings\flags\pendent01</texture>
+                    <width>2.00</width>
+                    <height>1.00</height>
+                </flag>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>flag</component>
+        </anim>
+    </attachment>
+    <component>battleship
                 <logic type="Destruction">
-                    <p1>
+                    <p0>
                         <assetreference type="GrannyModel">
                             <file>units\asians\spc\treasure_ship\spc_treasure_boat_dmg</file>
                         </assetreference>
-                    </p1>
-                    <p99>
+                    </p0>
+                    <p0.0001>
                         <assetreference type="GrannyModel">
                             <file>units\naval\treasureship\zptreasureship</file>
                         </assetreference>
-                    </p99>
+                    </p0.0001>
                 </logic>
-            </normal>
-            <lowpoly>
-                <assetreference type="GrannyModel">
-                    <file>units\asians\spc\treasure_ship\treasure_ship_low</file>
-                </assetreference>
-            </lowpoly>
-        </logic>
         <decal>
             <effecttype>default</effecttype>
             <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
@@ -122,7 +198,7 @@
             <height>11.00</height>
         </watersplash>
     </component>
-    <component>galleonDeath
+    <component>battleshipDeath
         <assetreference type="GrannyModel">
             <file>units\asians\spc\treasure_ship\spc_treasure_boat_dmg</file>
         </assetreference>
@@ -140,9 +216,12 @@
     </component>
     <anim>Idle
         <assetreference type="GrannyAnim">
-            <file>units\asians\naval\fuchuan\fuchuan_idle</file>
+            <file>units\naval\battleship\battleship_idle</file>
         </assetreference>
-        <component>galleon</component>
+        <component>battleship</component>
+        <simskeleton>
+            <model>units\naval\treasureship\zptreasureship</model>
+        </simskeleton>
         <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
         <attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach>
         <attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"></attach>
@@ -150,26 +229,32 @@
     </anim>
     <anim>RangedAttack
         <assetreference type="GrannyAnim">
-            <file>units\asians\naval\fuchuan\fuchuan_idle</file>
+            <file>units\naval\battleship\battleship_idle</file>
             <tag type="Attack">0.45</tag>
         </assetreference>
-        <component>galleon</component>
+        <component>battleship</component>
+        <simskeleton>
+            <model>units\naval\zptreasureship\treasureship</model>
+        </simskeleton>
         <attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach>
         <attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"></attach>
         <attach a="pendentflag_a3" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"></attach>
     </anim>
     <anim>Walk
         <assetreference type="GrannyAnim">
-            <file>units\asians\naval\fuchuan\fuchuan_walk</file>
+            <file>units\naval\battleship\battleship_walk</file>
         </assetreference>
-        <component>galleon</component>
+        <component>battleship</component>
+        <simskeleton>
+            <model>units\naval\treasureship\zptreasureship</model>
+        </simskeleton>
         <attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
         <attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach>
         <attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"></attach>
         <attach a="pendentflag_a3" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"></attach>
     </anim>
     <anim>Death
-        <component>galleonDeath</component>
+        <component>battleshipDeath</component>
         <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
         <attach a="Death_EXP" frombone="ATTACHPOINT" tobone="mast_wood_solid_p2b_13" syncanims="0"></attach>
         <attach a="Death_EXP" frombone="ATTACHPOINT" tobone="mast_wood_solid_p2b_8" syncanims="0"></attach>
@@ -184,5 +269,18 @@
         <attach a="Death_EXP" frombone="ATTACHPOINT" tobone="bone_sail_08" syncanims="0"></attach>
         <attach a="Death_EXP" frombone="ATTACHPOINT" tobone="bone_sail_03" syncanims="0"></attach>
     </anim>
-
+    <anim>GatherFish
+        <assetreference type="GrannyAnim">
+            <file>units\naval\battleship\battleship_idle</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.89</tag>
+        </assetreference>
+        <component>battleship</component>
+        <simskeleton>
+            <model>units\naval\treasureship\zptreasureship</model>
+        </simskeleton>
+        <attach a="Fishing_net" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+        <attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach>
+        <attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"></attach>
+        <attach a="pendentflag_a3" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"></attach>
+    </anim>
 </animfile>

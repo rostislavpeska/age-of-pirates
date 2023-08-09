@@ -1695,7 +1695,11 @@ if (pirateCaptain==1)
    {
       rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistNemo"); //operator
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistkhora"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpAIAirshipSetup"); //operator
       rmSetTriggerEffectParamInt("Status",2);
    }
 if (pirateCaptain==2)
@@ -1709,7 +1713,7 @@ if (pirateCaptain==3)
    {
       rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistkhora"); //operator
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistNemo"); //operator
       rmSetTriggerEffectParamInt("Status",2);
    }
 rmSetTriggerPriority(4);

@@ -1730,6 +1730,9 @@
       <bottomedge>great_plains\groundSPC_nonpass_gp</bottomedge>
     </textures>
   </cliff>
+
+<!--MODDED-->
+
   <cliff name="ZP Malta Desert Grass" blockland="1" blockwater="0" iconname="ui\editor\cliffCaribbean">
     <modelset>Default</modelset>
     <topobjects>
@@ -1882,6 +1885,69 @@
       <side>sonora\cliff_edge2_son</side>
       <edge>sonora\cliff_edge_son</edge>
       <bottomedge>borneo\ground_sand3_borneo</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP Texas Impassable" blockland="1" blockwater="0" iconname="ui\editor\clifftexas">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_desert_rock1" minedgedist="1.5" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock2" minedgedist="1.5" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock3" minedgedist="1.5" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock4" minedgedist="1.5" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush4" minedgedist="1.5" maxedgedist="5.0" chance="0.1" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush5" minedgedist="1.5" maxedgedist="5.0" chance="0.1" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\underbrush\underbrush_desert_cliffs_group3" minedgedist=".5" maxedgedist=".5" chance="0.02" randomyaw="false">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock1" minedgedist="1.0" maxedgedist="2.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock2" minedgedist="1.0" maxedgedist="2.0" chance="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock3" minedgedist="1.0" maxedgedist="1.5" chance="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock4" minedgedist="1.0" maxedgedist="1.0" chance="0.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock6" minedgedist="1.0" maxedgedist="1.0" chance="0.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush0" minedgedist="1.0" maxedgedist="1.5" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush1" minedgedist="1.0" maxedgedist="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush2" minedgedist="1.0" maxedgedist="1.5" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush5" minedgedist="1.0" maxedgedist="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush6" minedgedist="1.0" maxedgedist="2.5" chance="0.05" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.115000</displacementamount>
+      <shapecurve>1v{-0.110,1.297|0.058,0.711|-0.026,1.004|27151}{-0.052,0.743|0.024,0.587|-0.014,0.665|21077}{0.153,0.272|0.306,0.294|0.229,0.283|30237}{0.268,0.281|0.309,0.190|0.288,0.235|19890}{0.422,0.018|0.459,0.021|0.441,0.020|17296}{0.473,0.042|0.530,0.060|0.502,0.051|10652}{0.567,0.069|0.607,0.068|0.587,0.069|23821}{0.626,0.131|0.699,0.130|0.663,0.130|7376}{0.844,0.147|0.904,0.133|0.874,0.140|24384}{0.996,0.194|0.866,0.058|0.931,0.126|6490}{0.803,0.191|1.121,0.011|0.962,0.101|20136}{0.970,0.742|1.047,0.715|1.009,0.729|25419}</shapecurve>
+      <displacementmedianvalue>0.463000</displacementmedianvalue>
+      <triplanarscale>0.055000</triplanarscale>
+      <normalstrength>0.362000</normalstrength>
+      <secondarynormalstrength>0.217000</secondarynormalstrength>
+      <terrainblendtop>0.005000</terrainblendtop>
+      <terrainblendbottom>0.043000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\texas\texas_cliffs_basecolor</basecolor>
+      <normals>terrain\cliffs\texas\texas_cliffs_normal</normals>
+      <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
+      <heightmap>terrain\cliffs\texas\texas_cliffs_height</heightmap>
+      <mask>terrain\cliffs\texas\texas_cliffs_masks</mask>
+      <top>texas\ground_zp_impassable_tex</top>
+      <topedge>texas\ground_zp_impassable_tex</topedge>
+      <side>Texas\cliff_edge_tex</side>
+      <edge>texas\ground_zp_impassable_tex</edge>
+      <bottomedge>Texas\ground5_tex</bottomedge>
     </textures>
   </cliff>
 </cliffs>

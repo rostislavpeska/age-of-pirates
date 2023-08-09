@@ -237,11 +237,9 @@
     <assetreference type="GrannyAnim">
         <file>units\naval\submarine\submarine_dived_death</file>
         <tag type="SpecificSoundSet" checkvisible="1" set="ShipDeath">0.90</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="Submarine_Dive">0.50</tag>
     </assetreference>
     <component>ModelComp</component>
-
-    <attach a="Death_EXP" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
-    <attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
     <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
 </anim>
 
@@ -249,11 +247,9 @@
     <assetreference type="GrannyAnim">
         <file>units\naval\submarine\submarine_surfaced_death</file>
         <tag type="SpecificSoundSet" checkvisible="1" set="ShipDeath">0.90</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="Submarine_Dive">0.50</tag>
     </assetreference>
     <component>ModelComp</component>
-
-    <attach a="Death_EXP" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
-    <attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
     <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
 </anim>
 

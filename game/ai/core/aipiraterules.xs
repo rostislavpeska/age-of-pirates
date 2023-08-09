@@ -1778,7 +1778,7 @@ mininterval 60
 
 rule MaintainScientistAirship
 inactive
-minInterval 1
+minInterval 10
 {
   const int list_size = 1;
   static int proxy_list = -1;
@@ -1793,7 +1793,6 @@ minInterval 1
    {
       return;
    }
-
       if (proxy_list == -1)
       {
          proxy_list = xsArrayCreateInt(list_size, -1, "List of Scientist Airship Proxies");
@@ -1801,6 +1800,7 @@ minInterval 1
 
          xsArraySetInt(proxy_list, 0, cUnitTypezpAirshipAIProxy);
          xsArraySetInt(ship_list, 0, cUnitTypezpAirshipAI);
+         aiChat( cMyID, "Airship training");
       }
 
       for(i = 0; < xsArrayGetSize(proxy_list))
