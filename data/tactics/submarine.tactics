@@ -51,6 +51,8 @@
         <name stringid="124809">ShuntAttack</name>
         <type>Attack</type>
         <rate type="LogicalTypeNavalMilitary">1.0 </rate>
+        <rate type="WaterGuardian">1.0 </rate>
+        <rate type="AbstractFishingBoat">1.0 </rate>
         <rate type="AbstractDock">1.0 </rate>
         <attackaction>1</attackaction>
         <handlogic>1</handlogic>

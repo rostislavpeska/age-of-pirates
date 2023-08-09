@@ -51,4 +51,8 @@
     <map name="eldorado">
         <forcetech>zpIsAztecMap</forcetech>
     </map>
+    <map name="arcticwater">
+        <tech>ypSaloonWanderingHorseman</tech>
+        <forcetech>deMapAmerican</forcetech>
+    </map>
 </mapspecifictechmods>
