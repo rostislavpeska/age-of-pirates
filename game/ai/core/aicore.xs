@@ -2392,6 +2392,7 @@ minInterval 5
             if (gNavyMap == true)
             {
                xsEnableRule("waterAttack"); // Water attacking.
+               xsEnableRule("endlessWaterRaids"); // AssertiveWall: constant raids/patrols on water
             }
          }
       }
