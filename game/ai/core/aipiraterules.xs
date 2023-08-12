@@ -67,7 +67,7 @@ minInterval 5
         xsEnableRule("zpAztecTechMonitor");
         xsEnableRule("aztecBuildingMonitor");
     }
-    if (getGaiaUnitCount(cUnitTypezpWeaponFactoryWinter) > 0)
+    if (getGaiaUnitCount(cUnitTypezpWeaponFactoryWinter) > 0 || (getGaiaUnitCount(cUnitTypezpWeaponFactorySummer) > 0))
     {
         xsEnableRule("MaintainScientistShips");
         xsEnableRule("MaintainScientistTanks");
