@@ -1,0 +1,107 @@
+<animfile>
+  <definebone>bone_boat</definebone>
+  <definebone>bone_rower_1L</definebone>
+  <definebone>bone_rower_1R</definebone>
+  <definebone>bone_rower_2L</definebone>
+  <definebone>bone_rower_2R</definebone>
+  <definebone>bone_bower_1</definebone>
+  <definebone>bone_bower_2</definebone>
+  <definebone>bone_launchpoint_1</definebone>
+  <definebone>bone_launchpoint_2</definebone>
+  <attachment>
+    IdleWaterFoam
+    <component>
+        Idlefoam<assetreference type="popcornFx"><file>water_effects\idle_waterFoam.pkfx</file></assetreference>
+    </component>
+    <anim>None<component>Idlefoam</component></anim>
+    </attachment>
+    <attachment>
+        MoveWaterFoam
+        <component>
+            Movefoam<assetreference type="popcornFx"><file>water_effects\move_waterFoam.pkfx</file></assetreference>
+        </component>
+        <anim>None<component>Movefoam</component></anim>
+    </attachment>
+    <attachment>
+        DeathWaterFoam
+        <component>
+            Deathfoam<assetreference type="popcornFx"><file>water_effects\death_waterFoam_medium.pkfx</file></assetreference>
+        </component>
+        <anim>None<component>Deathfoam</component></anim>
+    </attachment>
+    <attachment>
+        Death_EXP_Wood
+        <component>
+            exp<assetreference type="popcornFx"><file>projectiles\ship_debris_wood.pkfx</file></assetreference>
+        </component>
+        <anim>None<component>exp</component></anim>
+    </attachment>
+    <attachment>
+        Fishing_Net
+        <component>
+            Fishing_Net<assetreference type="GrannyModel"><file>units\attachments\fishing_net</file></assetreference>
+        </component>
+        <anim>
+            Idle<assetreference type="GrannyAnim"><file>units\attachments\fishing_net_fishingboat</file></assetreference><component>Fishing_Net</component>
+        </anim>
+    </attachment>
+    <attachment>rowerleft<include>units\naval\ritual_canoe\ritual_canoe_rower2.xml</include></attachment>
+    <attachment>rowerright<include>units\naval\ritual_canoe\ritual_canoe_rower1.xml</include></attachment>
+    <attachment>bowman<include>units\naval\ritual_canoe\ritual_canoe_archer.xml</include></attachment>
+    <component>
+        LIVE
+        <assetreference type="GrannyModel" shape="ritual_canoe"><file>units\naval\ritual_canoe\ritual_canoe</file></assetreference>
+        <attach a="rowerleft" frombone="Bip01" tobone="bone_rower_1L" syncanims="1"></attach>
+        <attach a="rowerleft" frombone="Bip01" tobone="bone_rower_2L" syncanims="1"></attach>
+        <attach a="rowerright" frombone="Bip01" tobone="bone_rower_1R" syncanims="1"></attach>
+        <attach a="rowerright" frombone="Bip01" tobone="bone_rower_2R" syncanims="1"></attach>
+        <attach a="bowman" frombone="hotspot" tobone="bone_bower_1" syncanims="1"></attach>
+        <attach a="bowman" frombone="hotspot" tobone="bone_bower_2" syncanims="1"></attach>
+        <decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture><width>5.00</width><height>8.00</height></decal>
+    </component>
+    <component>
+        DEAD
+        <logic type="LowPoly">
+            <normal>
+                <assetreference type="GrannyModel"><file>units\naval\ritual_canoe\ritual_canoe</file></assetreference>
+            </normal>
+            <lowpoly>
+                <assetreference type="GrannyModel"><file>units\naval\ritual_canoe\ritual_canoe</file></assetreference>
+            </lowpoly>
+        </logic>
+        <decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture><width>7.00</width><height>11.00</height></decal>
+    </component>
+    <anim>
+        Idle<assetreference type="GrannyAnim"><file>animation_library\naval\tlaloc_canoe\idle</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\naval\tlaloc_canoe\idle</file></assetreference>
+        <component>LIVE</component><attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </anim>
+    <anim>
+        Walk<assetreference type="GrannyAnim"><file>animation_library\naval\tlaloc_canoe\idle</file><tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.77</tag></assetreference><component>LIVE</component>
+        <attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </anim>
+    <anim>
+        GatherFish<assetreference type="GrannyAnim"><file>animation_library\naval\tlaloc_canoe\idle</file><tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.59</tag></assetreference>
+        <assetreference type="GrannyAnim"><file>animation_library\naval\tlaloc_canoe\idle</file><tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.58</tag></assetreference><component>LIVE</component>
+        <attach a="Fishing_Net" frombone="" tobone="" syncanims="0"></attach>
+    </anim>
+    <anim>
+        RangedAttack<assetreference type="GrannyAnim"><file>animation_library\naval\tlaloc_canoe\idle</file><tag type="Attack">0.98</tag><tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag></assetreference>
+        <component>LIVE</component>
+    </anim>
+    <anim>
+        Raze_Attack<assetreference type="GrannyAnim"><file>animation_library\naval\tlaloc_canoe\idle</file><tag type="Attack">0.98</tag><tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag></assetreference>
+        <assetreference type="GrannyAnim"><file>animation_library\naval\tlaloc_canoe\idle</file><tag type="Attack">0.98</tag><tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag></assetreference><component>LIVE</component>
+    </anim>
+    <anim>
+        Raze_Idle<assetreference type="GrannyAnim"><file>animation_library\naval\tlaloc_canoe\idle</file></assetreference><component>LIVE</component>
+    </anim>
+    <anim animlengthoverride="4.0000">
+        Death
+        <assetreference type="GrannyAnim">
+            <file>units\naval\ritual_canoe\ritual_canoe_death</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="DudeHitsWater">0.43</tag>
+        </assetreference>
+        <component>LIVE</component>
+        <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </anim>
+</animfile>

@@ -221,7 +221,7 @@
       <string _locid="300218">The Iron Fleet</string>
       <string _locid="300219">Ships a mighty Madame Ching's Flagship.</string>
       <string _locid="300220">Destroyer</string>
-      <string _locid="300221">Unique steam powered warship able to train hoop throwers and detect submarines and other stealth units.</string>
+      <string _locid="300221">Unique steam powered warship able to train Eisentrupplers and detect submarines and other stealth units.</string>
       <string _locid="300222">Steam powered warship.</string>
       <string _locid="300223">Hydra</string>
       <string _locid="300224">ZP Socket SPC Zen</string>
@@ -404,8 +404,8 @@
       <string _locid="300400">Temple of the Waters (Jesuit)</string>
       <string _locid="300401">Temple of the Waters (Maya)</string>
       <string _locid="300402">Temple of the Waters (Zapotec)</string>
-      <string _locid="300403">Aztec Gold: Discover ancient Aztec cities hidden in the jungle. \n\nSettlements: Aztec Cities, Pirates</string>
-      <string _locid="300404">The secret is hidden behind the river. The legendary ancients cities should be right there. Who discovers them first? You? Local pirates? Or your enemy?</string>
+      <string _locid="300403">Aztec Gold (Migration Map): Discover ancient Aztec cities hidden in the jungle. Players start in divided areas on one river bank with very limited resources and have to migrate to the other bank. \n\nSettlements: Aztec Cities, Renegades</string>
+      <string _locid="300404">The secret is hidden behind the river. The legendary ancients cities should be right there. Who discovers them first? You or your enemy?</string>
       <string _locid="300405">Jewish</string>
       <string _locid="300406">Jewish Settlement</string>
       <string _locid="300407">ZP Socket Jewish</string>
@@ -506,19 +506,19 @@
       <string _locid="300502">ZP Scientists Factory Winter</string>
       <string _locid="300503">Weapon Factory</string>
       <string _locid="300504">Native Building</string>
-      <string _locid="300505">ZP Scientists Fire Thrower</string>
+      <string _locid="300505">ZP Scientists Eisentruppler</string>
       <string _locid="300506">Logical Positivism</string>
       <string _locid="300508">All research is done faster by 25%</string>
       <string _locid="300509">Iron Fleet</string>
-      <string _locid="300510">Ships an steam-powered Destroyer able to train hoop throwers and detect submarines.</string>
+      <string _locid="300510">Ships an steam-powered Destroyer able to train Eisentrupplers and detect submarines.</string>
       <string _locid="300511">Air Explorers</string>
       <string _locid="300512">Ships an advanced hot air balloon.</string>
       <string _locid="300513">Academy of Sciences</string>
-      <string _locid="300514">Veteran Hoop Thrower</string>
-      <string _locid="300515">Guard Hoop Thrower</string>
-      <string _locid="300516">Legendary Hoop Thrower</string>
-      <string _locid="300517">Veteran Hoop Throwers</string>
-      <string _locid="300518">Guard Hoop Throwers</string>
+      <string _locid="300514">Veteran Eisentruppler</string>
+      <string _locid="300515">Guard Eisentruppler</string>
+      <string _locid="300516">Legendary Eisentruppler</string>
+      <string _locid="300517">Veteran Eisentrupplers</string>
+      <string _locid="300518">Guard Eisentrupplers</string>
       <string _locid="300519">Ships an Academy Wagon able to build a new colony buildings allowing you some further advanced improvements.</string>
       <string _locid="300520">Academy Wagon</string>
       <string _locid="300521">ZP Academy Wagon</string>
@@ -637,6 +637,13 @@
       <string _locid="300634">ZP Conversion Attachement</string>
       <string _locid="300635">Spawns native ships after it's training in a Trading Post and repairs all ships.</string>
       <string _locid="300636">ZP AI Migration Point</string>
+      <string _locid="300637">ZP Ritual Canoe</string>
+      <string _locid="300638">Ritual Canoe</string>
+      <string _locid="300639">Maori</string>
+      <string _locid="300640">Inuits</string>
+      <string _locid="300641">Maori Settlement</string>
+      <string _locid="300642">ZP House Maori</string>
+      <string _locid="300643">Eisentruppler</string>
     </language>
   </stringtable>
 </stringmods>

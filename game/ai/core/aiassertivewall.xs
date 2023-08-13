@@ -205,6 +205,7 @@ minInterval 10
       case cWaterNuggetSearch:
       {
          gWaterNuggetTarget = -1;
+         gWaterNuggetTarget = -1;
          // Looks for a suitable nugget and tells the ships to attack it
          aiPlanSetDesiredPriority(nuggetPlanID, 23);
          //aiPlanSetDesiredPriority(nuggetPlanID, 90);
@@ -220,7 +221,7 @@ minInterval 10
          }
 
          // Find a suitable water nugget
-         int waterNuggetQuery = createSimpleUnitQuery(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateAlive, explorerLoc, 150.0);
+         int waterNuggetQuery = createSimpleUnitQuery(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateAlive, explorerLoc, 250.0);
          int numWaterNuggets = kbUnitQueryExecute(waterNuggetQuery);
 
          for (jindex = 0; < numWaterNuggets)

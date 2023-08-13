@@ -1,0 +1,42 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\natives\eisentruppler\textures\eisentruppler_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\hoop_thrower\textures\hoop_thrower_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\natives\eisentruppler\textures\eisentruppler_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\natives\eisentruppler\textures\eisentruppler_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\spc\hoop_thrower\textures\hoop_thrower_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\hoop_thrower\textures\hoop_thrower_matB_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\hoop_thrower\textures\hoop_thrower_matB_Masks">
+      </texture>
+      <texture name="Details" override="units\spc\hoop_thrower\textures\hoop_thrower_matB_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\spc\hoop_thrower\textures\hoop_thrower_hoop_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\hoop_thrower\textures\hoop_thrower_hoop_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\hoop_thrower\textures\hoop_thrower_hoop_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

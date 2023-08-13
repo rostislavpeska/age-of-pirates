@@ -1,0 +1,11 @@
+<animfile>
+    <component>mori_house
+        <assetreference type="GrannyModel">
+            <file>buildings\native_settlement\maori\maori_House_Model</file>
+            <materialvariant index="0"></materialvariant>
+        </assetreference>
+    </component>
+    <anim>Idle
+        <component>russian_manufacturingplant</component>
+    </anim>
+</animfile>
