@@ -120,11 +120,11 @@ minInterval 15
       aiPlanSetVariableVector(gEndlessWaterRaidPlan, cCombatPlanGatherPoint, 0, gNavyVec);
       aiPlanSetVariableFloat(gEndlessWaterRaidPlan, cCombatPlanGatherDistance, 0, 80.0); // Big gather radius
       aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternRandom);
-      aiPlanSetDesiredPriority(gEndlessWaterRaidPlan, 21); // Not very important. Below exploring
+      aiPlanSetDesiredPriority(gEndlessWaterRaidPlan, 21); // Not very important. Below exploring and nugget gathering
 
 
       // AssertiveWall: Never bring any extra boats on these. Balanced refresh frequency
-      aiPlanSetVariableBool(gEndlessWaterRaidPlan, cCombatPlanAllowMoreUnitsDuringAttack, 0, false);
+      aiPlanSetVariableBool(gEndlessWaterRaidPlan, cCombatPlanAllowMoreUnitsDuringAttack, 0, true);
       aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanRefreshFrequency, 0, 700);
 
       // Done when we retreat, retreat when outnumbered, done when there's no target after 20 seconds
@@ -161,17 +161,26 @@ minInterval 10
    {
       int nuggetPlanID = aiPlanCreate("Nugget Raiding Plan", cPlanReserve);
       aiPlanAddUnitType(nuggetPlanID, cUnitTypeAbstractWarShip, 1, 2, 3);
-      aiPlanSetDesiredPriority(nuggetPlanID, 21); // Higher than fishing and exploring. Fishing boats normally explore anyway
+      aiPlanSetDesiredPriority(nuggetPlanID, 23); // Higher than fishing and exploring. Fishing boats normally explore anyway
       aiPlanSetActive(nuggetPlanID);
       gWaterNuggetPlan = nuggetPlanID;
    }
 
    int numberExplorerWarships = aiPlanGetNumberUnits(gWaterNuggetPlan, cUnitTypeAbstractWarShip);
+   // See if we have idle ships to add
+   int idleWarshipQuery = createSimpleIdleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
+   int numberIdleWSFound = kbUnitQueryExecute(idleWarshipQuery);
+
+   if (numberExplorerWarships < 3 && numberIdleWSFound > 0)
+   {
+      aiPlanAddUnitType(nuggetPlanID, cUnitTypeAbstractWarShip, 1, 2, 3);
+   }
+
    if (numberExplorerWarships <= 0)
    {  // Reset
       gWaterNuggetState = cWaterNuggetSearch;
       //aiPlanAddUnitType(nuggetPlanID, cUnitTypeAbstractWarShip, 1, 2, 3);
-      aiPlanDestroy(gWaterNuggetPlan);
+      //aiPlanDestroy(gWaterNuggetPlan);
       //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbGetPlayerStartingPosition(cMyID));
       return;
    }
@@ -197,7 +206,7 @@ minInterval 10
       {
          gWaterNuggetTarget = -1;
          // Looks for a suitable nugget and tells the ships to attack it
-         aiPlanSetDesiredPriority(nuggetPlanID, 21);
+         aiPlanSetDesiredPriority(nuggetPlanID, 23);
          //aiPlanSetDesiredPriority(nuggetPlanID, 90);
          int explorerUnit = aiPlanGetUnitByIndex(gWaterNuggetPlan, 0);
          vector explorerLoc = kbUnitGetPosition(explorerUnit);
@@ -211,18 +220,18 @@ minInterval 10
          }
 
          // Find a suitable water nugget
-         int waterNuggetQuery = createSimpleUnitQuery(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateAlive, explorerLoc, 250.0);
+         int waterNuggetQuery = createSimpleUnitQuery(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateAlive, explorerLoc, 150.0);
          int numWaterNuggets = kbUnitQueryExecute(waterNuggetQuery);
 
-         for (j = 0; < numWaterNuggets)
+         for (jindex = 0; < numWaterNuggets)
          {
-            nuggetID = kbUnitQueryGetResult(waterNuggetQuery, j);
+            nuggetID = kbUnitQueryGetResult(waterNuggetQuery, jindex);
             waterNuggetLocation = kbUnitGetPosition(nuggetID);
             // Testing purposes
-            //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, waterNuggetLocation);
+            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, waterNuggetLocation);
 
             guardianHealth = 0;
-            guardianQuery = createSimpleUnitQuery(cUnitTypeGuardian, cPlayerRelationAny, cUnitStateAlive, waterNuggetLocation, 20);
+            guardianQuery = createSimpleUnitQuery(cUnitTypeGuardian, cPlayerRelationAny, cUnitStateAlive, waterNuggetLocation, 15.0);
             guardianNumber = kbUnitQueryExecute(guardianQuery);
 
             // Get total health of water guardians
@@ -231,15 +240,15 @@ minInterval 10
                guardianID = kbUnitQueryGetResult(guardianQuery, k);
                guardianHealth = guardianHealth + kbUnitGetCurrentHitpoints(guardianID);
             }
-            kbUnitQueryResetResults(guardianQuery);
+            //kbUnitQueryResetResults(guardianQuery);
 
             // Don't bother unless there's a good chance of winning
             if (explorerFleetHP > 1.5 * guardianHealth)
             {
+                  //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbUnitGetPosition(nuggetID));
                if (guardianHealth < bestGuardianHP)
                {
                   bestNugget = nuggetID; // Store this as the best nugget
-                  //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbUnitGetPosition(nuggetID));
                   bestGuardianHP = guardianHealth;
                   bestGuardianID = guardianID;
                }
@@ -315,7 +324,7 @@ minInterval 10
          if (nuggetsAtLoc > 0)
          {
             gWaterNuggetState = cWaterNuggetSearch;
-            aiPlanSetDesiredPriority(gWaterNuggetPlan, 21);
+            aiPlanSetDesiredPriority(gWaterNuggetPlan, 23);
          } 
          else
          {

@@ -1502,7 +1502,7 @@ void navalAttackPlanHandler(int planID = -1)
    Defending = 15 when not under attack so war ships that can fish will do so.
    Fishing = 19.
    Exploring = 20 so fishing ships can be used for it.
-   Repairing = 22 so the war ships do defend but will chose repairing over fishing.
+   Repairing = 22 so the war ships do defend but will chose repairing over fishing.  // AssertiveWall: incrreased to 24 to allow more plans
    Defending = 25 when under attack so war ships that can fish will actually fight.
    Attacking = 60 so all war ships will go on the attack.
    Transport = 100 so the ships will actually deliver the units reliably.
@@ -2239,9 +2239,10 @@ minInterval 30
       {
          unitID = kbUnitQueryGetResult(shipQueryID, i);
          unitPlanID = kbUnitGetPlanID(unitID);
-         if ((aiPlanGetDesiredPriority(unitPlanID) > 22) || 
+         if ((aiPlanGetDesiredPriority(unitPlanID) > 24) ||          // AssertiveWall: up from 22
              (aiPlanGetType(unitPlanID) == cPlanTransport) ||
-             (kbUnitGetHealth(unitID) > 0.95))
+             (kbUnitGetHealth(unitID) > 0.95) ||
+             (kbUnitGetActionType() != cActionTypeIdle))             // AssertiveWall: Don't steal ships that are busy doing things
          {
             continue;
          }
