@@ -2130,7 +2130,8 @@ bool isDefendingOrAttacking()
              (existingPlanID != gNavyRepairPlan) && 
              (existingPlanID != gNavyDefendPlan) &&
              (existingPlanID != gNavyAttackPlan) &&
-             (existingPlanID != gCoastalGunPlan)) // AssertiveWall: Don't stop if there's navy attack plans
+             (existingPlanID != gCoastalGunPlan) &&
+             (existingPlanID != gEndlessWaterRaidPlan)) // AssertiveWall: Don't stop if there's navy attack plans
          {
             debugUtilities("isDefendingOrAttacking: don't create another combat plan because we already have one named: "
                + aiPlanGetName(existingPlanID));

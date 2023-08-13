@@ -60,6 +60,85 @@
 }*/
 
 //==============================================================================
+/* endlessWaterRaids
+   AssertiveWall: creates a persistent plan to roam the map and look for
+   things to attack
+
+*/
+//==============================================================================
+rule endlessWaterRaids
+inactive
+minInterval 15
+{
+   vector targetPosition = cInvalidVector;
+   int targetUnit = -1;
+   int shipMin = 1;
+
+   // First Run, or after plan gets destroyed
+   if (getUnit(cUnitTypeAbstractWarShip, cMyCiv, cUnitStateAlive) <= 0)
+   {
+      return;
+   }
+
+   // Check to see if our plan has no ships. If not, make sure it's clear before continuing
+   int numberWarships = aiPlanGetNumberUnits(gEndlessWaterRaidPlan, cUnitTypeAbstractWarShip);
+   if (numberWarships <= 0)
+   {  // Reset
+      aiPlanDestroy(gEndlessWaterRaidPlan);
+      gEndlessWaterRaidPlan = -1;
+   }
+
+   if (gEndlessWaterRaidPlan < 0)
+   {
+      // First find a random target
+      targetPosition = getRandomGaiaUnitPosition(cUnitTypeAbstractWhale, getStartingLocation(), (0.5 * kbGetMapXSize()));
+      if (targetPosition == cInvalidVector)
+      {
+         targetPosition = getRandomGaiaUnitPosition(cUnitTypeAbstractFish, getStartingLocation(), (0.5 * kbGetMapXSize()));
+      }
+      if (targetPosition == cInvalidVector)
+      {  // There are no more locations, so turn off (very rare)
+         xsDisableSelf();
+      }
+
+      // Determine minimum number of ships to send based on age
+      if (kbGetAge() == cAge2)
+      {
+         shipMin = 1;
+      }
+      else
+      {
+         shipMin = 2;
+      }
+
+      gEndlessWaterRaidPlan = aiPlanCreate("Endless Water Raids", cPlanCombat);
+      aiPlanAddUnitType(gEndlessWaterRaidPlan, cUnitTypeAbstractWarShip, shipMin, 2, 3);
+      aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
+      aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+      //aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanTargetPlayerID, 0, navalTargetPlayer);
+      aiPlanSetVariableVector(gEndlessWaterRaidPlan, cCombatPlanTargetPoint, 0, targetPosition);
+      aiPlanSetVariableVector(gEndlessWaterRaidPlan, cCombatPlanGatherPoint, 0, gNavyVec);
+      aiPlanSetVariableFloat(gEndlessWaterRaidPlan, cCombatPlanGatherDistance, 0, 80.0); // Big gather radius
+      aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternRandom);
+      aiPlanSetDesiredPriority(gEndlessWaterRaidPlan, 21); // Not very important. Below exploring
+
+
+      // AssertiveWall: Never bring any extra boats on these. Balanced refresh frequency
+      aiPlanSetVariableBool(gEndlessWaterRaidPlan, cCombatPlanAllowMoreUnitsDuringAttack, 0, false);
+      aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanRefreshFrequency, 0, 700);
+
+      // Done when we retreat, retreat when outnumbered, done when there's no target after 20 seconds
+      aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeNoTarget);
+      aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+      aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanNoTargetTimeout, 0, 20000);
+      aiPlanSetBaseID(gEndlessWaterRaidPlan, kbUnitGetBaseID(getUnit(gDockUnit, cMyID, cUnitStateAlive)));
+      aiPlanSetInitialPosition(gEndlessWaterRaidPlan, gNavyVec);
+
+      aiPlanSetActive(gEndlessWaterRaidPlan);
+   }
+}
+
+//==============================================================================
 /* gatherNavalNuggets
    AssertiveWall: looks for water nuggets to gather
 
@@ -76,8 +155,8 @@ minInterval 10
    extern int gWaterNuggetState = cWaterNuggetSearch;           // Stores the state of the water nugget plan
    extern int gWaterNuggetTarget = -1;          // Stores the target of whatever the water nugget plan is doing
    */
-
-   // First Run
+   //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gNavyVec);
+   // First Run, or after plan gets destroyed
    if (gWaterNuggetPlan < 0)
    {
       int nuggetPlanID = aiPlanCreate("Nugget Raiding Plan", cPlanReserve);
@@ -88,11 +167,12 @@ minInterval 10
    }
 
    int numberExplorerWarships = aiPlanGetNumberUnits(gWaterNuggetPlan, cUnitTypeAbstractWarShip);
-   if (numberExplorerWarships < 0)
+   if (numberExplorerWarships <= 0)
    {  // Reset
       gWaterNuggetState = cWaterNuggetSearch;
-      aiPlanAddUnitType(nuggetPlanID, cUnitTypeAbstractWarShip, 1, 2, 3);
-      //aiPlanDestroy(gWaterNuggetPlan);
+      //aiPlanAddUnitType(nuggetPlanID, cUnitTypeAbstractWarShip, 1, 2, 3);
+      aiPlanDestroy(gWaterNuggetPlan);
+      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbGetPlayerStartingPosition(cMyID));
       return;
    }
 
@@ -115,8 +195,10 @@ minInterval 10
    {
       case cWaterNuggetSearch:
       {
+         gWaterNuggetTarget = -1;
          // Looks for a suitable nugget and tells the ships to attack it
          aiPlanSetDesiredPriority(nuggetPlanID, 21);
+         //aiPlanSetDesiredPriority(nuggetPlanID, 90);
          int explorerUnit = aiPlanGetUnitByIndex(gWaterNuggetPlan, 0);
          vector explorerLoc = kbUnitGetPosition(explorerUnit);
             // Testing purposes
@@ -129,7 +211,7 @@ minInterval 10
          }
 
          // Find a suitable water nugget
-         int waterNuggetQuery = createSimpleUnitQuery(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateAlive, explorerLoc, 150.0);
+         int waterNuggetQuery = createSimpleUnitQuery(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateAlive, explorerLoc, 250.0);
          int numWaterNuggets = kbUnitQueryExecute(waterNuggetQuery);
 
          for (j = 0; < numWaterNuggets)
@@ -164,6 +246,10 @@ minInterval 10
             }
          }
 
+         // For testing
+         //if (bestNugget > 0)
+         //   sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbUnitGetPosition(bestNugget));
+
          // Now tell the ships to attack it
          if (bestNugget > 0)
          {
@@ -175,6 +261,7 @@ minInterval 10
                   aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, m), bestGuardianID);
                }
                gWaterNuggetState = cWaterNuggetAttack;
+               aiPlanSetDesiredPriority(gWaterNuggetPlan, 55); // We're in it now
             }
             else
             {  // No guardians, so go straight to nugget
@@ -184,6 +271,7 @@ minInterval 10
                   aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, n), bestNugget);
                }
                gWaterNuggetState = cWaterNuggetGather;
+               aiPlanSetDesiredPriority(gWaterNuggetPlan, 90); // We're in it now
             }
          }
          break;
@@ -192,12 +280,7 @@ minInterval 10
       case cWaterNuggetAttack:
       {
          // Keep checking our nugget until all guardians are destroyed. If our fleet is gone, reset
-         if (aiPlanGetNumberUnits(gWaterNuggetPlan, cUnitTypeAbstractWarShip) <= 0)
-         {
-            aiPlanDestroy(gWaterNuggetPlan);
-            gWaterNuggetState = cWaterNuggetSearch;
-         }
-         aiPlanSetDesiredPriority(gWaterNuggetPlan, 24);
+         aiPlanSetDesiredPriority(gWaterNuggetPlan, 55); // We're in it now
          targetLocation = kbUnitGetPosition(gWaterNuggetTarget);
          guardianNumber = getUnitCountByLocation(cUnitTypeGuardian, cPlayerRelationAny, cUnitStateAlive, targetLocation, 15.0);
 
@@ -209,25 +292,38 @@ minInterval 10
                aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, n), gWaterNuggetTarget);
             }
          }
+         else
+         {
+            int currentGuardianID = getUnitByLocation(cUnitTypeGuardian, cPlayerRelationAny, cUnitStateAlive, targetLocation, 15);
+            for (p = 0; < numberExplorerWarships)
+            {
+               aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, p), currentGuardianID);
+            //   sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbUnitGetPosition(currentGuardianID));
+            }
+         }
          break;
       }
 
       case cWaterNuggetGather:
       {
-         // Keep checking our nugget until all guardians are destroyed. If our fleet is gone, reset
-         if (aiPlanGetNumberUnits(gWaterNuggetPlan, cUnitTypeAbstractWarShip) <= 0)
-         {
-            aiPlanDestroy(gWaterNuggetPlan);
-            gWaterNuggetState = cWaterNuggetSearch;
-         }
-         aiPlanSetDesiredPriority(gWaterNuggetPlan, 24);
+         // Keep checking our nugget until it's gone
+         aiPlanSetDesiredPriority(gWaterNuggetPlan, 90);  // If it doesn't gather, it'll break
          // Ships are already tasked to gather nugget. Just wait until nugget is gone 
          targetLocation = kbUnitGetPosition(gWaterNuggetTarget);
             //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, targetLocation);
-         int nuggetsAtLoc = getUnitCountByLocation(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateAlive, targetLocation, 2.0);
+         int nuggetsAtLoc = getUnitCountByLocation(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateDead, targetLocation, 2.0);
          if (nuggetsAtLoc > 0)
          {
             gWaterNuggetState = cWaterNuggetSearch;
+            aiPlanSetDesiredPriority(gWaterNuggetPlan, 21);
+         } 
+         else
+         {
+            for (n = 0; < numberExplorerWarships)
+            {
+               aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, n), gWaterNuggetTarget);
+            //   sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gNavyVec);
+            }
          }
          break;
       }
@@ -1410,7 +1506,7 @@ minInterval 3
    kbBaseSetPositionAndDistance(cMyID, kbBaseGetMainID(cMyID), kbAreaGetCenter(gCeylonStartingTargetArea), 100.0);
    xsEnableRule("buildingMonitorDelayed");
    xsEnableRule("ceylonFailsafe");
-   sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(gCeylonStartingTargetArea));
+   //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(gCeylonStartingTargetArea));
 
    // Move someone toward the center so we can see our landing spot
    /*aiTaskUnitMove(getUnit(shipType, cMyID, cUnitStateAlive), kbAreaGetCenter(closestArea));
