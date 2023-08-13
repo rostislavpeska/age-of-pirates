@@ -5414,17 +5414,25 @@
   <tech name="zpAztecArmy" type="Normal">
     <dbid>40198</dbid>
     <displaynameid>300368</displaynameid>
-    <cost resourcetype ="Gold">600.0000</cost>
+    <cost resourcetype ="Gold">300.0000</cost>
+    <cost resourcetype ="Wood">600.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\skull_army.png</icon>
-    <flag>CheckLandHCGatherPoint</flag>
+    <rollovertextid>300644</rollovertextid>
+    <icon>resources\images\icons\techs\zpholyfleet.png</icon>
+    <flag>CheckWaterHCGatherPoint</flag>
     <flag>YPNativeImprovement</flag>
+    <prereqs>
+			<techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
     <flag>CountsTowardMilitaryScore</flag>
       <effects>
-        <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="zpNatSkullKnight" relativity="Absolute">
+        <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpRitualCanoe" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpRitualCanoe</target>
       </effect>
       <effect type="TextOutputTechName">110130</effect>
     </effects>

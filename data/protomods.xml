@@ -4436,10 +4436,12 @@
   <unit name="Dock">
     <train row ="0" page ="0" column ="11">ypFireship</train>
     <train row ="0" page ="0" column ="12">zpInuitWarCanoe</train>
+    <train row ="0" page ="0" column ="12">zpRitualCanoe</train>
   </unit>
   <unit name="dePort">
     <train row ="0" page ="0" column ="11">ypFireship</train>
     <train row ="0" page ="0" column ="12">zpInuitWarCanoe</train>
+    <train row ="0" page ="0" column ="12">zpRitualCanoe</train>
   </unit>
   <unit id="20050" name="zpWokouFuchuanProxy">
     <dbid>20050</dbid>
@@ -13046,6 +13048,7 @@
   </unit>
   <unit name="YPDockAsian">
     <train row ="0" page ="0" column ="12">zpInuitWarCanoe</train>
+    <train row ="0" page ="0" column ="12">zpRitualCanoe</train>
   </unit>
   <unit id="20139" name="zpAImigrationPoint">
     <dbid>20139</dbid>
@@ -13087,8 +13090,8 @@
     <animfile>units\naval\ritual_canoe\ritual_canoe.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\units\naval\spc\umiak_icon.png</icon>
-    <portraiticon>resources\art\units\naval\spc\umiak_portrait.png</portraiticon>
+    <icon>resources\art\units\naval\spc\ritual_canoe_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\\ritual_canoe_portrait.png</portraiticon>
     <rollovertextid>300602</rollovertextid>
     <shortrollovertextid>300602</shortrollovertextid>
     <initialhitpoints>850.0000</initialhitpoints>

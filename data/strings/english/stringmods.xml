@@ -369,7 +369,7 @@
       <string _locid="300365">Outpost Travois</string>
       <string _locid="300366">ZP Native Outpost Travois</string>
       <string _locid="300367">Aztec Gold</string>
-      <string _locid="300368">Holy Warriors</string>
+      <string _locid="300368">Holy Fleet</string>
       <string _locid="300369">Invite Neighbors</string>
       <string _locid="300370">Select to choose a local power with which to align.</string>
       <string _locid="300371">Allows you to build mighty defensive structures.</string>
@@ -644,6 +644,7 @@
       <string _locid="300641">Maori Settlement</string>
       <string _locid="300642">ZP House Maori</string>
       <string _locid="300643">Eisentruppler</string>
+      <string _locid="300644">Delivers two Aztec Ritual Canoes and allows you to train them in your dock.</string>
     </language>
   </stringtable>
 </stringmods>
