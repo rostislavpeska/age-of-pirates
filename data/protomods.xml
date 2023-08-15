@@ -13196,7 +13196,7 @@
 		<obstructionradiusz>3.0000</obstructionradiusz>
 		<maxvelocity>0.0000</maxvelocity>
 		<movementtype>land</movementtype>
-		<animfile>buildings\native_settlement\maori\maori_house.xml</animfile>
+		<animfile>buildings\maori\maori_house_Model.xml</animfile>
 		<icon>resources\art\units\spc\pirates\pirate_icon.png</icon>
 		<portraiticon>resources\art\units\spc\pirates\pirate_portrait.png</portraiticon>
 		<initialhitpoints>1560.0000</initialhitpoints>

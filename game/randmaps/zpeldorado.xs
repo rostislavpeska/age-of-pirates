@@ -41,7 +41,7 @@ void main(void)
 	}
 
    // Picks the map size
-	int playerTiles = 20000;
+	int playerTiles = 21000;
    if (cNumberNonGaiaPlayers >2)
 		playerTiles = 17500;
 	if (cNumberNonGaiaPlayers >4)
@@ -207,7 +207,7 @@ void main(void)
     int avoidSocket=rmCreateTypeDistanceConstraint("avoid socket", "Socket", 20.0);
     int avoidSocket2=rmCreateTypeDistanceConstraint("avoid socket long", "Socket", 40.0);
     int avoidController=rmCreateTypeDistanceConstraint("stay away from Controller", "zpSPCWaterSpawnPoint", 60.0);
-    int avoidScientists=rmCreateTypeDistanceConstraint("stay away from Scientists", "zpSocketScientists", 80+5*cNumberNonGaiaPlayers);
+    int avoidScientists=rmCreateTypeDistanceConstraint("stay away from Scientists", "zpSocketScientists", 70+6.5*cNumberNonGaiaPlayers);
 
    // -------------Define objects
    // These objects are all defined so they can be placed later
@@ -698,6 +698,9 @@ void main(void)
 
       // Placing Scientists
 
+      // Text
+      rmSetStatusText("",0.20);
+
          // Scientist Village 1
          if (subCiv0 == rmGetCivID("zpscientists"))
          {  
@@ -794,22 +797,30 @@ void main(void)
       rmSetObjectDefMinDistance(socketID, 10.0);
       rmSetObjectDefMaxDistance(socketID, 30.0);
 
+      int riverHarbourPlatform = -1;
+      riverHarbourPlatform = rmCreateGrouping("river platform", "Platform01");
+
+      int riverHarbourPlatform2 = -1;
+      riverHarbourPlatform2 = rmCreateGrouping("river platform 2", "Platform02");
+
+      int riverHarbourPlatform3 = -1;
+      riverHarbourPlatform3 = rmCreateGrouping("river platform 3", "Platform03");
+
       vector socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.5);
 
       if(cNumberNonGaiaPlayers <= 2){
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.3);
+         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.33);
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
 
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.7);
+         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.65);
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
-         //rmPlaceGroupingAtLoc(riverHarbourPlatform, 0, socketLoc);
       }
 
       if(cNumberNonGaiaPlayers == 3){
          socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.2);
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
 
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.5);
+         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.55);
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
 
          socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.8);
@@ -817,53 +828,58 @@ void main(void)
       }
 
       if(cNumberNonGaiaPlayers == 4){
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.1);
+         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.13);
+         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
+         //rmPlaceGroupingAtLoc(riverHarbourPlatform, 0, rmXMetersToFraction(xsVectorGetX(socketLoc)), rmZMetersToFraction(xsVectorGetZ(socketLoc)));
+
+         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.39);
+         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
+         //rmPlaceGroupingAtLoc(riverHarbourPlatform3, 0, rmXMetersToFraction(xsVectorGetX(socketLoc)), rmZMetersToFraction(xsVectorGetZ(socketLoc)));
+
+         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.61);
+         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
+
+         //socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.59);
+         //rmPlaceGroupingAtLoc(riverHarbourPlatform3, 0, rmXMetersToFraction(xsVectorGetX(socketLoc)), rmZMetersToFraction(xsVectorGetZ(socketLoc)));
+
+         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.87);
+         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
+      }
+
+      if(cNumberNonGaiaPlayers == 5){
+         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.05);
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
 
          socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.35);
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
 
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.65);
+         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.55);
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
 
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.9);
-         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
-      }
-
-      if(cNumberNonGaiaPlayers == 5){
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.10);
+         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.75);
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
 
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.3);
-         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
-
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.5);
-         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
-
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.73);
-         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
-
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.9);
+         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.95);
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
       }
 
       if(cNumberNonGaiaPlayers == 6){
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.10);
+         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.05);
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
 
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.28);
+         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.30);
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
 
          socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.43);
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
 
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.59);
+         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.62);
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
 
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.72);
+         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.75);
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
 
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.9);
+         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.95);
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
       }
 
@@ -966,7 +982,7 @@ void main(void)
       }
 
       // Text
-      rmSetStatusText("",0.20);
+      rmSetStatusText("",0.30);
 
    // check for KOTH game mode
 
@@ -999,7 +1015,7 @@ void main(void)
       rmSetAreaLocation(eastIslandVillage1, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc1)));
       rmSetAreaCoherence(eastIslandVillage1, 0.8);
       rmSetAreaSmoothDistance(eastIslandVillage1, 5);
-      rmSetAreaCliffType(eastIslandVillage1, "Amazon River Bank Muddy");
+      rmSetAreaCliffType(eastIslandVillage1, "ZP Amazon Aztec");
       rmSetAreaCliffEdge(eastIslandVillage1, 1, 1.0, 0.0, 1.0, 0);
       rmSetAreaCliffHeight(eastIslandVillage1, 1.0, 0.0, 0.0); 
       rmSetAreaBaseHeight(eastIslandVillage1, -2);
@@ -1030,7 +1046,7 @@ void main(void)
          rmAddObjectDefConstraint(malteseController2ID, avoidController); 
          rmAddObjectDefConstraint(malteseController2ID, avoidScientists); 
          rmAddObjectDefConstraint(malteseController2ID, nativeIslandConstraint); 
-         rmAddObjectDefConstraint(malteseController2ID, villageEdgeConstraint); 
+         rmAddObjectDefConstraint(malteseController2ID, villageEdgeConstraintFar); 
          rmPlaceObjectDefAtLoc(malteseController2ID, 0, 0.5, 0.5);
          vector malteseControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(malteseController2ID, 0));
 
@@ -1040,7 +1056,7 @@ void main(void)
          rmSetAreaLocation(eastIslandVillage2, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc2)));
          rmSetAreaCoherence(eastIslandVillage2, 0.8);
          rmSetAreaSmoothDistance(eastIslandVillage2, 5);
-         rmSetAreaCliffType(eastIslandVillage2, "Amazon River Bank Muddy");
+         rmSetAreaCliffType(eastIslandVillage2, "ZP Amazon Aztec");
          rmSetAreaCliffEdge(eastIslandVillage2, 1, 1.0, 0.0, 1.0, 0);
          rmSetAreaCliffHeight(eastIslandVillage2, 1.0, 0.0, 0.0); 
          rmSetAreaBaseHeight(eastIslandVillage2, 5);
@@ -1074,7 +1090,7 @@ void main(void)
          rmAddObjectDefConstraint(malteseController3ID, avoidController); 
          rmAddObjectDefConstraint(malteseController3ID, avoidScientists);
          rmAddObjectDefConstraint(malteseController3ID, nativeIslandConstraint); 
-         rmAddObjectDefConstraint(malteseController3ID, villageEdgeConstraint); 
+         rmAddObjectDefConstraint(malteseController3ID, villageEdgeConstraintFar); 
          rmPlaceObjectDefAtLoc(malteseController3ID, 0, 0.5, 0.5);
          vector malteseControllerLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(malteseController3ID, 0));
 
@@ -1084,7 +1100,7 @@ void main(void)
          rmSetAreaLocation(eastIslandVillage3, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc3)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc3)));
          rmSetAreaCoherence(eastIslandVillage3, 0.8);
          rmSetAreaSmoothDistance(eastIslandVillage3, 5);
-         rmSetAreaCliffType(eastIslandVillage3, "Amazon River Bank Muddy");
+         rmSetAreaCliffType(eastIslandVillage3, "ZP Amazon Aztec");
          rmSetAreaCliffEdge(eastIslandVillage3, 1, 1.0, 0.0, 1.0, 0);
          rmSetAreaCliffHeight(eastIslandVillage3, 1.0, 0.0, 0.0); 
          rmSetAreaBaseHeight(eastIslandVillage3, 5);
@@ -1118,7 +1134,7 @@ void main(void)
          rmAddObjectDefConstraint(malteseController4ID, avoidController); 
          rmAddObjectDefConstraint(malteseController4ID, avoidScientists);
          rmAddObjectDefConstraint(malteseController4ID, nativeIslandConstraint); 
-         rmAddObjectDefConstraint(malteseController4ID, villageEdgeConstraint); 
+         rmAddObjectDefConstraint(malteseController4ID, villageEdgeConstraintFar); 
          rmPlaceObjectDefAtLoc(malteseController4ID, 0, 0.5, 0.5);
          vector malteseControllerLoc4 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(malteseController4ID, 0));
 
@@ -1128,7 +1144,7 @@ void main(void)
          rmSetAreaLocation(eastIslandVillage4, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc4)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc4)));
          rmSetAreaCoherence(eastIslandVillage4, 0.8);
          rmSetAreaSmoothDistance(eastIslandVillage4, 5);
-         rmSetAreaCliffType(eastIslandVillage4, "Amazon River Bank Muddy");
+         rmSetAreaCliffType(eastIslandVillage4, "ZP Amazon Aztec");
          rmSetAreaCliffEdge(eastIslandVillage4, 1, 1.0, 0.0, 1.0, 0);
          rmSetAreaCliffHeight(eastIslandVillage4, 1.0, 0.0, 0.0); 
          rmSetAreaBaseHeight(eastIslandVillage4, -2);
@@ -1151,6 +1167,10 @@ void main(void)
       
       }
 
+      // Text
+      rmSetStatusText("",0.40);
+
+
 
       // Aztec Houses
       int randomHouseID=rmCreateObjectDef("random tree");
@@ -1169,8 +1189,6 @@ void main(void)
    // Placement order
    // Trade route -> River (none on this map) -> Natives -> Secrets -> Cliffs -> Nuggets
 
-   // Text
-   rmSetStatusText("",0.30);
 
 	int tpVariation = rmRandInt(1,2);
 //		tpVariation = 2;		// for testing
@@ -1178,19 +1196,12 @@ void main(void)
 	
 
    // Text
-   rmSetStatusText("",0.40);
-
-   // Text
    rmSetStatusText("",0.50);
 
    int numTries = -1;
    int failCount = -1;
 
-   // Text
-   rmSetStatusText("",0.60);
 
-   // Text
-   rmSetStatusText("",0.70);
  // if(cNumberNonGaiaPlayers>2){
 	int silverType = -1;
 	int silverID = -1;
@@ -1212,48 +1223,6 @@ void main(void)
 	  rmPlaceObjectDefAtLoc(southSilverID, 0, 0.5, 0.5);
    }
 
-/* }else{
-    //1v1 mines
-    int topMine = rmCreateObjectDef("topMine");
-    rmAddObjectDefItem(topMine, "mine", 1, 0.0);
-    rmSetObjectDefMinDistance(topMine, 0.0);
-    rmSetObjectDefMaxDistance(topMine, 31.0);
-    rmAddObjectDefConstraint(topMine, avoidSocket2_dk);
-    rmAddObjectDefConstraint(topMine, avoidTradeRouteSmall_dk);
-    rmAddObjectDefConstraint(topMine, forestConstraintShort_dk);
-    rmAddObjectDefConstraint(topMine, avoidGoldTypeFar_dk);
-    rmAddObjectDefConstraint(topMine, circleConstraint2_dk);       
-    rmAddObjectDefConstraint(topMine, avoidAll_dk); 
-    rmAddObjectDefConstraint(topMine, avoidWater5_dk);
-    rmAddObjectDefConstraint(topMine, avoidTownCenter);
-	if (rmGetIsKOTH() == true)
-		rmAddObjectDefConstraint(topMine, avoidKOTH);
-    
-    //top mines
-    rmPlaceObjectDefAtLoc(topMine, 0, 0.63, 0.63, 1);
-    if(rmRandInt(0,1)==0){
-        rmPlaceObjectDefAtLoc(topMine, 0, 0.88, 0.65, 1);
-    }else{
-        rmPlaceObjectDefAtLoc(topMine, 0, 0.65, 0.88, 1);
-    }
-    rmPlaceObjectDefAtLoc(topMine, 0, 0.43, 0.83, 1);
-    rmPlaceObjectDefAtLoc(topMine, 0, 0.83, 0.43, 1);
-    
-    //bot mines
-    rmPlaceObjectDefAtLoc(topMine, 0, 0.37, 0.37, 1);
-    if(rmRandInt(0,1)==0){
-        rmPlaceObjectDefAtLoc(topMine, 0, 0.12, 0.35, 1);
-    }else{
-        rmPlaceObjectDefAtLoc(topMine, 0, 0.35, 0.12, 1);
-    }
-    rmPlaceObjectDefAtLoc(topMine, 0, 0.57, 0.17, 1);
-    rmPlaceObjectDefAtLoc(topMine, 0, 0.17, 0.57, 1);
- }
-*/
-
-
-
-
    // Trees 
 	int southTreesID = rmCreateObjectDef("south tree");
 		rmAddObjectDefItem(southTreesID, "TreeAmazon", 20, 10.0);
@@ -1269,6 +1238,9 @@ void main(void)
 		rmAddObjectDefConstraint(southTreesID, avoidTownCenter);
 		rmAddObjectDefConstraint(southTreesID, nativeIslandConstraint);
 		rmPlaceObjectDefAtLoc(southTreesID, 0, 0.50, 0.50, 2+4*cNumberNonGaiaPlayers);
+
+      // Text
+      rmSetStatusText("",0.60);
 
    // RANDOM TREES
    int randomTreeNativeID=rmCreateObjectDef("random native tree");
@@ -1300,9 +1272,17 @@ void main(void)
       rmAddObjectDefConstraint(randomTreeSouthID, avoidAll); 
 
       rmPlaceObjectDefAtLoc(randomTreeSouthID, 0, 0.5, 0.5, 10);
+
+      // VILLAGE TREES
+      int villageTreeID=rmCreateObjectDef("village tree");
+      rmAddObjectDefItem(villageTreeID, "TreeAmazon", 1, 0.0);
+      rmPlaceObjectDefInArea(villageTreeID, 0,  eastIslandVillage1, 9);
+      rmPlaceObjectDefInArea(villageTreeID, 0,  eastIslandVillage2, 9);
+      rmPlaceObjectDefInArea(villageTreeID, 0,  eastIslandVillage3, 9);
+      rmPlaceObjectDefInArea(villageTreeID, 0,  eastIslandVillage4, 9);
  
   // Text
-   rmSetStatusText("",0.80);
+   rmSetStatusText("",0.70);
 
     
  // Resources that can be placed after forests
@@ -1339,6 +1319,9 @@ void main(void)
    rmPlaceObjectDefAtLoc(underwaterDecoID, 0, 0.4, 0.2, 20);     
        
    //rmPlaceObjectDefAtLoc(int defID, int playerID, float xFraction, float zFraction, long placeCount)   
+
+   // Text
+   rmSetStatusText("",0.80);
 
 	int tapirCount = rmRandInt(3,6);
 	int capyCount = rmRandInt(9,12);
@@ -2137,6 +2120,7 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
 
 // Testing
 
