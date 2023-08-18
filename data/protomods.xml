@@ -2070,13 +2070,14 @@
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\native_canoe_icon.png</icon>
     <portraiticon>resources\art\units\native_canoe_portrait.png</portraiticon>
-    <civflagoverride>objects\flags\thecircle</civflagoverride>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
     <rollovertextid>23693</rollovertextid>
     <shortrollovertextid>25617</shortrollovertextid>
     <initialhitpoints>220.0000</initialhitpoints>
     <maxhitpoints>220.0000</maxhitpoints>
     <los>22.0000</los>
-    <unitaitype>Civilian</unitaitype>
+    <unitaitype>RangedCombative</unitaitype>
+    <initialunitaistance>Defensive</initialunitaistance>
     <trainpoints>10.0000</trainpoints>
     <buildlimit>20</buildlimit>
     <bounty>10.0000</bounty>
@@ -2092,22 +2093,23 @@
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
     <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
     <unittype>LogicalTypeVillagersAttack</unittype>
     <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeShipsAndBuildings</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>Ranged</unittype>
-    <unittype>HasBountyValue</unittype>
-    <unittype>CountsTowardMilitaryScore</unittype>
-    <unittype>AbstractWarShip</unittype>
-    <unittype>AbstractFishingBoat</unittype>
+    <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
-    <unittype>Unit</unittype>
-    <unittype>Transport</unittype>
     <unittype>Ship</unittype>
-    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>Transport</unittype>
+    <unittype>MercType5</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>Guardian</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>WaterGuardian</unittype>
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>DontRotateObstruction</flag>
@@ -2116,27 +2118,27 @@
     <flag>DecalStickToWaterSurface</flag>
     <flag>NoFadeOnDeath</flag>
     <flag>FadeOutDecalOnDeath</flag>
-    <flag>ObscuredByUnits</flag>
     <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>HasGatherPoint</flag>
     <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
     <flag>Tracked</flag>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
-    <tactics>canoe.tactics</tactics>
+    <tactics>guardiancanoe.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
       <damage>40.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>18.000000</maxrange>
       <rof>2.000000</rof>
-    </protoaction>
-    <protoaction>
-      <name>Gather</name>
-      <rate type="AbstractFish">0.220000</rate>
-      <rate type="AbstractWhale">0.170000</rate>
     </protoaction>
     <protoaction>
       <name>RangedAttack</name>
@@ -13180,6 +13182,106 @@
       <maxrange>30.000000</maxrange>
       <rof>3.000000</rof>
       <damagecap>100.000000</damagecap>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+  </unit>
+  <unit id="20141" name="zpGuardianPrivateer">
+    <dbid>20141</dbid>
+    <displaynameid>27726</displaynameid>
+    <editornameid>300645</editornameid>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>5.5000</maxvelocity>
+    <maxrunvelocity>7.5000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <turnrate>3.0000</turnrate>
+    <animfile>units\naval\privateer\privateer.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\units\naval\privateer\privateer_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\naval\privateer\privateer_icon_portrait.png</portraiticon>
+    <rollovertextid>27725</rollovertextid>
+    <shortrollovertextid>27724</shortrollovertextid>
+    <initialhitpoints>900.0000</initialhitpoints>
+    <maxhitpoints>900.0000</maxhitpoints>
+    <los>34.0000</los>
+    <projectileprotounit>Cannonball</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>40.0000</trainpoints>
+    <buildlimit>3</buildlimit>
+    <bounty>50.0000</bounty>
+    <cost resourcetype="Gold">500.0000</cost>
+    <maxcontained>50</maxcontained>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.5000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Transport</unittype>
+    <unittype>MercType5</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>Guardian</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>WaterGuardian</unittype>
+    <flag>TieToWaterSurface</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>seaJunk.tactics</tactics>
+    <protoaction>
+      <name>BroadsideAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <rof>0.050000</rof>
+      <damagecap>80.000000</damagecap>
+      <damagebonus type="Ship">3.000000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>100.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>20.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>200.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
       <damagearea>1.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
