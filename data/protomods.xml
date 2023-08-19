@@ -236,6 +236,9 @@
     <train row ="0" page ="0" column ="2">zpInuitTorchman</train>
     <train row ="0" page ="0" column ="4">zpAirshipProxy</train>
     <train row ="0" page ="0" column ="5">zpAirshipAIProxy</train>
+    <train row ="0" page ="0" column ="1">zpNatConquistador</train>
+    <train row ="0" page ="0" column ="2">zpNatConquistadorMusketeer</train>
+    <train row ="0" page ="0" column ="3">zpPriest</train>
 
     <tech row="0" page="0" column="2">zpTrainPrivateer1</tech>
     <tech row="0" page="1" column="2">zpNatHonoredPirate</tech>
@@ -306,6 +309,13 @@
     <tech row="0" page="1" column="1">zpNatInuitInfluence</tech>
     <tech row="0" page="2" column="4">zpInuitFeeders</tech>
 
+    <tech row="0" page="2" column="2">zpNatJesuitSmokelessPowder</tech>
+    <tech row="0" page="2" column="1">zpNatJesuitFlyingButtress</tech>
+    <tech row="0" page="2" column="3">zpNatJesuitSchools</tech>
+    <tech row="0" page="1" column="1">zpNatDisciplinedJesuit</tech>
+    <tech row="0" page="1" column="1">zpNatHonoredJesuit</tech>
+    <tech row="0" page="1" column="1">zpJesuitCathedral</tech>
+
    
 
 
@@ -348,6 +358,9 @@
     <train row ="0" page ="0" column ="87">zpNatHoopThrower</train>
     <train row ="0" page ="0" column ="88">zpNatInuitHarpooner</train>
     <train row ="0" page ="0" column ="89">zpInuitTorchman</train>
+    <train row ="0" page ="0" column ="90">zpNatConquistador</train>
+    <train row ="0" page ="0" column ="91">zpNatConquistadorMusketeer</train>
+    <train row ="0" page ="0" column ="92">zpPriest</train>
   </unit>
   <unit id ="20004" name ="zpNatPirate">
 		<dbid>20004</dbid>
@@ -13284,6 +13297,470 @@
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
       <damagearea>1.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+  </unit>
+  <unit id="20142" name="zpJesuitCathedral">
+    <dbid>20142</dbid>
+    <displaynameid>300070</displaynameid>
+    <editornameid>300646</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\church\jesuit_cathedral.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\church\church_icon.png</icon>
+    <portraiticon>resources\art\buildings\church\church_portrait.png</portraiticon>
+    <rollovertextid>300070</rollovertextid>
+    <shortrollovertextid>300070</shortrollovertextid>
+    <initialhitpoints>1500.0000</initialhitpoints>
+    <maxhitpoints>1500.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>10.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>100.0000</bounty>
+    <buildbounty>50.0000</buildbounty>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeBuildingsNotWalls</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandUnitsAttack</unittype>
+		<unittype>LogicalTypeShipsAndBuildings</unittype>
+		<unittype>LogicalTypeRangedUnitsAttack</unittype>
+		<unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+		<unittype>BuildingClass</unittype>
+		<unittype>Unattackable</unittype>
+		<unittype>NativeBuilding</unittype>
+		<unittype>Building</unittype>
+		<flag>FlattenGround</flag>
+		<flag>Doppled</flag>
+		<flag>PaintTextureWhenPlacing</flag>
+		<flag>InvulnerableIfGaia</flag>
+		<flag>NoBloodOnDeath</flag>
+		<flag>DoNotDieAtZeroHitpoints</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>ObscuresUnits</flag>
+		<flag>Immoveable</flag>
+		<flag>CollidesWithProjectiles</flag>
+		<flag>SelectWithObstruction</flag>
+		<flag>HideHitpointsIfGaia</flag>
+		<flag>RMCanRotate</flag>
+		<flag>HasGatherPoint</flag>
+		<flag>VisibleUnderFogIfGaia</flag>
+		<flag>ColorTransformNonGaia</flag>
+		<flag>NoHPBar</flag>
+		<flag>DoNotShowOnMiniMap</flag>
+		<flag>Tracked</flag>
+  </unit>
+  <unit id="20143" name="zpNatConquistadorMusketeer">
+		<dbid>20143</dbid>
+		<displaynameid>300647</displaynameid>
+		<editornameid>300648</editornameid>
+		<populationcount>0</populationcount>
+		<subciv>SPCJesuit</subciv>
+		<obstructionradiusx>0.4900</obstructionradiusx>
+		<obstructionradiusz>0.4900</obstructionradiusz>
+		<formationcategory>Ranged</formationcategory>
+		<maxvelocity>4.0000</maxvelocity>
+		<maxrunvelocity>6.0000</maxrunvelocity>
+		<movementtype>land</movementtype>
+		<turnrate>18.0000</turnrate>
+		<animfile>units\asians\natives\conquistador\conquistador_musketeer.xml</animfile>
+		<impacttype>Flesh</impacttype>
+		<physicsinfo>dude</physicsinfo>
+		<icon>resources\art\units\africans\mercenaries\cannoneer\cannoneer_icon.png</icon>
+		<portraiticon>resources\art\units\africans\mercenaries\cannoneer\cannoneer_portrait.png</portraiticon>
+		<rollovertextid>300651</rollovertextid>
+		<shortrollovertextid>25669</shortrollovertextid>
+		<initialhitpoints>135.0000</initialhitpoints>
+		<maxhitpoints>135.0000</maxhitpoints>
+		<los>16.0000</los>
+		<projectileprotounit>InvisibleProjectile</projectileprotounit>
+		<rechargetime>45.0000</rechargetime>
+		<chargeusagetime>2.0000</chargeusagetime>
+		<unitaitype>RangedCombative</unitaitype>
+		<trainpoints>35.0000</trainpoints>
+		<buildlimit>15</buildlimit>
+		<bounty>10.0000</bounty>
+		<buildbounty>10.0000</buildbounty>
+		<cost resourcetype="Food">25.0000</cost>
+		<cost resourcetype="Gold">60.0000</cost>
+		<allowedage>2</allowedage>
+		<armor type="Hand" value="0.3000">
+		</armor>
+		<unittype>LogicalTypeHealed</unittype>
+		<unittype>LogicalTypeValidSharpshoot</unittype>
+		<unittype>LogicalTypeNeededForVictory</unittype>
+		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeLandMilitary</unittype>
+		<unittype>LogicalTypeScout</unittype>
+		<unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+		<unittype>LogicalTypeGarrisonInShips</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandUnitsAttack</unittype>
+		<unittype>LogicalTypeRangedUnitsAttack</unittype>
+		<unittype>LogicalTypeMinimapFilterMilitary</unittype>
+		<unittype>LogicalTypeInfantryVolleyTactic</unittype>
+		<unittype>AbstractRangedInfantry</unittype>
+		<unittype>ConvertsHerds</unittype>
+		<unittype>AbstractCavalryInfantry</unittype>
+		<unittype>CountsTowardMilitaryScore</unittype>
+		<unittype>HasBountyValue</unittype>
+		<unittype>AbstractGunpowderTrooper</unittype>
+		<unittype>Ranged</unittype>
+		<unittype>UnitClass</unittype>
+		<unittype>Military</unittype>
+		<unittype>Unit</unittype>
+		<unittype>AbstractInfantry</unittype>
+		<unittype>AbstractNativeWarrior</unittype>
+		<unittype>AbstractHeavyInfantry</unittype>
+		<unittype>AbstractMusketeer</unittype>
+		<flag>CollidesWithProjectiles</flag>
+		<flag>ApplyHandicapTraining</flag>
+		<flag>CorpseDecays</flag>
+		<flag>ShowGarrisonButton</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>ObscuredByUnits</flag>
+		<flag>Tracked</flag>
+		<flag>ExperienceUnit</flag>
+		<command page="10" column="1">Stop</command>
+		<command page="10" column="0">Garrison</command>
+		<command page="10" column="7">Delete</command>
+		<command page="11" column="0">Abilities</command>
+		<tactics>conquistadormusketeer.tactics</tactics>
+		<protoaction>
+			<name>ChargeMusketAttack</name>
+			<damage>20.000000</damage>
+			<damagetype>Ranged</damagetype>
+			<minrange>2.000000</minrange>
+			<maxrange>14.000000</maxrange>
+			<rof>3.000000</rof>
+			<damagecap>42.000000</damagecap>
+			<damagearea>2.000000</damagearea>
+			<damageflags>GAIAEnemy</damageflags>
+		</protoaction>
+		<protoaction>
+			<name>BuildingAttack</name>
+			<damage>20.000000</damage>
+			<damagetype>Siege</damagetype>
+			<rof>3.000000</rof>
+		</protoaction>
+		<protoaction>
+			<name>DefendHandAttack</name>
+			<damage>11.000000</damage>
+			<damagetype>Hand</damagetype>
+			<rof>1.500000</rof>
+			<damagebonus type="AbstractPikeman">2.000000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>DefendRangedAttack</name>
+			<damage>20.000000</damage>
+			<damagetype>Ranged</damagetype>
+			<minrange>2.000000</minrange>
+			<maxrange>12.000000</maxrange>
+			<rof>3.000000</rof>
+		</protoaction>
+		<protoaction>
+			<name>MeleeHandAttack</name>
+			<damage>11.000000</damage>
+			<damagetype>Hand</damagetype>
+			<rof>1.500000</rof>
+			<damagebonus type="AbstractPikeman">2.000000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>StaggerHandAttack</name>
+			<damage>11.000000</damage>
+			<damagetype>Hand</damagetype>
+			<rof>1.500000</rof>
+			<damagebonus type="AbstractPikeman">2.000000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>StaggerRangedAttack</name>
+			<damage>20.000000</damage>
+			<damagetype>Ranged</damagetype>
+			<minrange>2.000000</minrange>
+			<maxrange>12.000000</maxrange>
+			<rof>3.000000</rof>
+		</protoaction>
+		<protoaction>
+			<name>VolleyHandAttack</name>
+			<damage>11.000000</damage>
+			<damagetype>Hand</damagetype>
+			<rof>1.500000</rof>
+			<damagebonus type="AbstractPikeman">2.000000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>VolleyRangedAttack</name>
+			<damage>20.000000</damage>
+			<damagetype>Ranged</damagetype>
+			<minrange>2.000000</minrange>
+			<maxrange>12.000000</maxrange>
+			<rof>3.000000</rof>
+		</protoaction>
+	</unit>
+  <unit id="20144" name="zpPriest">
+    <dbid>20144</dbid>
+    <displaynameid>300650</displaynameid>
+		<editornameid>300649</editornameid>
+		<populationcount>0</populationcount>
+		<subciv>SPCJesuit</subciv>
+		<obstructionradiusx>0.4900</obstructionradiusx>
+		<obstructionradiusz>0.4900</obstructionradiusz>
+		<formationcategory>Protected</formationcategory>
+		<maxvelocity>4.5000</maxvelocity>
+		<maxrunvelocity>6.5000</maxrunvelocity>
+		<movementtype>land</movementtype>
+		<turnrate>18.0000</turnrate>
+		<animfile>units\asians\natives\conquistador\conquistador_missionary.xml</animfile>
+		<impacttype>Flesh</impacttype>
+		<physicsinfo>dude</physicsinfo>
+		<icon>resources\art\units\asians\natives\jesuit\unit_jesuit_icon_64_na.png</icon>
+		<portraiticon>resources\art\units\asians\natives\jesuit\unit_jesuit_icon_portrait_na.png</portraiticon>
+		<rollovertextid>80135</rollovertextid>
+		<shortrollovertextid>80134</shortrollovertextid>
+		<initialhitpoints>200.0000</initialhitpoints>
+		<maxhitpoints>200.0000</maxhitpoints>
+		<los>16.0000</los>
+		<unitaitype>HandCombative</unitaitype>
+		<trainpoints>30.0000</trainpoints>
+		<buildlimit>4</buildlimit>
+		<bounty>20.0000</bounty>
+		<buildbounty>20.0000</buildbounty>
+		<cost resourcetype="Gold">200.0000</cost>
+		<allowedage>2</allowedage>
+		<armor type="Ranged" value="0.1000">
+		</armor>
+		<unittype>LogicalTypeMinimapFilterMilitary</unittype>
+		<unittype>LogicalTypeHealed</unittype>
+		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeGarrisonInShips</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandUnitsAttack</unittype>
+		<unittype>LogicalTypeRangedUnitsAttack</unittype>
+		<unittype>ConvertsHerds</unittype>
+		<unittype>AbstractHealer</unittype>
+		<unittype>AbstractFindHealer</unittype>
+		<unittype>CannotConvertHill</unittype>
+		<unittype>HasBountyValue</unittype>
+		<unittype>CountsTowardMilitaryScore</unittype>
+		<unittype>Unit</unittype>
+		<unittype>UnitClass</unittype>
+		<unittype>Military</unittype>
+		<unittype>AbstractNativeWarrior</unittype>
+		<flag>CollidesWithProjectiles</flag>
+		<flag>ApplyHandicapTraining</flag>
+		<flag>CorpseDecays</flag>
+		<flag>ShowGarrisonButton</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>ObscuredByUnits</flag>
+		<flag>CanAutoHeal</flag>
+		<flag>Tracked</flag>
+		<command page="10" column="1">Stop</command>
+		<command page="10" column="0">Garrison</command>
+		<command page="10" column="7">Delete</command>
+		<command page="11" column="0">Abilities</command>
+		<tactics>conquistadormissionary.tactics</tactics>
+		<protoaction>
+			<name>HandAttack</name>
+			<damage>5.000000</damage>
+			<damagetype>Hand</damagetype>
+			<rof>1.500000</rof>
+		</protoaction>
+		<protoaction>
+			<name>Heal</name>
+			<type>Heal</type>
+			<rate type="LogicalTypeHealed">10.000000</rate>
+		</protoaction>
+		<protoaction>
+			<name>CombatHeal</name>
+			<type>Heal</type>
+			<rate type="LogicalTypeHealed">10.000000</rate>
+		</protoaction>
+		<protoaction>
+			<name>Convert</name>
+			<maxrange>12.000000</maxrange>
+			<rate type="Unit">1.000000</rate>
+		</protoaction>
+  </unit>
+  <unit id="20145" name="zpSocketJesuit">
+    <dbid>20145</dbid>
+    <displaynameid>61086</displaynameid>
+    <editornameid>300652</editornameid>
+    <subciv>SPCJesuit</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.0286</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildAsian</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\jesuit_outpost_socket.xml</animfile>
+    <minimapicon>ui\minimap\asian_native_site</minimapicon>
+    <capturedminimapicon>ui\minimap\asian_native_site_c</capturedminimapicon>
+    <portraiticon>resources\art\buildings\native_settlement\native_jesuit_site_icon_portrait.png</portraiticon>
+    <rollovertextid>61105</rollovertextid>
+    <shortrollovertextid>61104</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>9.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>FlattenGround</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
+  </unit>
+  <unit id="20146" name="zpNatConquistador">
+    <dbid>20146</dbid>
+    <displaynameid>60803</displaynameid>
+    <editornameid>300653</editornameid>
+    <populationcount>0</populationcount>
+    <subciv>SPCJesuit</subciv>
+    <obstructionradiusx>0.7900</obstructionradiusx>
+    <obstructionradiusz>0.7900</obstructionradiusz>
+    <formationcategory>Mobile</formationcategory>
+    <maxvelocity>7.2500</maxvelocity>
+    <maxrunvelocity>9.2500</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\asians\natives\conquistador\conquistador_horse.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>cav</physicsinfo>
+    <icon>resources\art\units\asians\natives\conquistador\conquistador_icon_64.png</icon>
+    <portraiticon>resources\art\units\asians\natives\conquistador\conquistador_icon_portrait.png</portraiticon>
+    <rollovertextid>60802</rollovertextid>
+    <shortrollovertextid>60801</shortrollovertextid>
+    <initialhitpoints>180.0000</initialhitpoints>
+    <maxhitpoints>180.0000</maxhitpoints>
+    <los>15.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>35.0000</trainpoints>
+    <buildlimit>12</buildlimit>
+    <bounty>16.0000</bounty>
+    <buildbounty>16.0000</buildbounty>
+    <cost resourcetype="Food">80.0000</cost>
+    <cost resourcetype="Gold">80.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.3000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractRangedCavalry</unittype>
+    <unittype>AbstractGunpowderCavalry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractCavalry</unittype>
+    <unittype>AbstractLightCavalry</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>musketCavalryAccurate.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>14.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>DefendRangedAttack</name>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damage>18.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>12.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>38.000000</damagecap>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractHeavyCavalry">3.000000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">2.250000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>10.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractHeavyCavalry">3.000000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">2.250000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>StaggerRangedAttack</name>
+      <damage>18.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>12.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>38.000000</damagecap>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractHeavyCavalry">3.000000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">2.250000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
     </protoaction>
   </unit>
 

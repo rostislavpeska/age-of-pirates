@@ -8173,6 +8173,336 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpNativeSPCJesuit" type="Normal">
+    <dbid>40252</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypNativeTempleJesuit</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitSmokelessPowder</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitSchools</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConquistador</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredJesuit</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitFlyingButtress</effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedJesuit</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyJesuit</effect>
+      <effect type="TechStatus" status="obtainable">zpIndianFriendshipJesuit</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyJesuit</effect>
+      <effect type="TechStatus" status="obtainable" deactivate="true">YPNativeJunk</effect>
+      <effect type="TechStatus" status="obtainable" deactivate="true">YPNativeCatamaran</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitHeterodoxy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitTank</effect>
+      <effect type="TechStatus" status="obtainable">zpJesuitCathedral</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitArmory</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatJesuitSmokelessPowder" type="Normal">
+    <dbid>40252</dbid>
+    <displaynameid>61121</displaynameid>
+    <cost resourcetype="Food">250.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\asians\Smokeless_Powder.png</icon>
+    <rollovertextid>61120</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="TechStatus" status="active">YPNatJesuitSmokelessPowder</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatJesuitSchools" type="Normal">
+    <dbid>40253</dbid>
+    <displaynameid>61119</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\asians\Christian_Schools.png</icon>
+    <rollovertextid>61118</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="TechStatus" status="active">YPNatJesuitSchools"</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatJesuitFlyingButtress" type="Normal">
+    <dbid>40254</dbid>
+    <displaynameid>61115</displaynameid>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\asians\Flying_Buttress.png</icon>
+    <rollovertextid>61114</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="TechStatus" status="active">YPNatJesuitFlyingButtress"</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatDisciplinedJesuit" type="Normal">
+    <dbid>40254</dbid>
+    <displaynameid>61155</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">75.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\asians\disciplined_natives.png</icon>
+    <rollovertextid>61154</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">ypNatDisciplinedJesuit"</effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistador</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistador</target>
+      </effect>
+      <effect type="SetName" proto="zpNatConquistador" culture="none" newname="61157">
+      </effect>
+      <effect type="SetName" proto="zpNatConquistador" culture="none" newname="61196" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
+      </effect>
+      <effect type="SetName" proto="zpNatConquistadorMusketeer" culture="none" newname="300654">
+      </effect>
+      <effect type="SetName" proto="zpNatConquistadorMusketeer" culture="none" newname="300656" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatHonoredJesuit" type="Normal">
+    <dbid>40255</dbid>
+    <displaynameid>61171</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\asians\honered_natives.png</icon>
+    <rollovertextid>61154</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">zpNatDisciplinedJesuit</techstatus>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">ypNatHonoredJesuit"</effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistador</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistador</target>
+      </effect>
+      <effect type="SetName" proto="zpNatConquistador" culture="none" newname="61173">
+      </effect>
+      <effect type="SetName" proto="zpNatConquistador" culture="none" newname="61196" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
+      </effect>
+      <effect type="SetName" proto="zpNatConquistadorMusketeer" culture="none" newname="300655">
+      </effect>
+      <effect type="SetName" proto="zpNatConquistadorMusketeer" culture="none" newname="300656" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIndianFriendshipJesuit" type="Normal">
+    <dbid>40256</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="zpNatConquistador" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
+      <effect type="TechStatus" status="active">zpNatHonoredJesuit</effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTradeTreatyJesuit" type="Normal">
+    <dbid>40257</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTreatyJesuit" type="Normal">
+    <dbid>40258</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="zpNatConquistador" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpJesuitCathedral" type ="Normal">
+		<dbid>40258</dbid>
+		<displaynameid>300657</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\jesuit_cathedral_big.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>300658</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConquistador</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpPriest</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatJesuitTank" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatJesuitHeterodoxy" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatJesuitArmory" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCSufiGreatMosque</effect>
+    </effects>
+	</tech>
+  <tech name="zpNatJesuitHeterodoxy" type="Normal">
+    <dbid>40259</dbid>
+		<displaynameid>300659</displaynameid>
+		<cost resourcetype="Food">150.0000</cost>
+		<cost resourcetype="Wood">150.0000</cost>
+		<researchpoints>15.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\jesuit_heterodoxy.png</icon>
+		<rollovertextid>300660</rollovertextid>
+		<flag>CountsTowardMilitaryScore</flag>
+		<flag>YPNativeImprovement</flag>
+		<effects>
+			<effect type="Data" action="Heal" amount="1.50" subtype="WorkRate" unittype="LogicalTypeHealed" relativity="BasePercent">
+				<target type="ProtoUnit">AbstractHealer</target>
+			</effect>
+			<effect type="Data" action="CombatHeal" amount="1.50" subtype="WorkRate" unittype="LogicalTypeHealed" relativity="BasePercent">
+				<target type="ProtoUnit">AbstractHealer</target>
+			</effect>
+			<effect type="Data" action="AreaHeal" amount="1.50" subtype="WorkRate" unittype="LogicalTypeHealed" relativity="BasePercent">
+				<target type="ProtoUnit">AbstractHealer</target>
+			</effect>
+			<effect type="Data" action="HealAreaAux" amount="1.50" subtype="WorkRate" unittype="LogicalTypeHealed" relativity="BasePercent">
+				<target type="ProtoUnit">AbstractHealer</target>
+			</effect>
+      <effect type="Data" action="Convert" amount="4.00" subtype="MaximumRange" relativity="Absolute">
+				<target type="ProtoUnit">zpPriest</target>
+			</effect>
+			<effect type="Data" action="Convert" amount="-1.20" subtype="ConversionDelay" relativity="Absolute">
+				<target type="ProtoUnit">zpPriest</target>
+			</effect>
+		</effects>
+	</tech>
+  <tech name="zpNatJesuitTank" type="Normal">
+    <dbid>40259</dbid>
+    <displaynameid>300661</displaynameid>
+    <cost resourcetype ="Gold">600.0000</cost>
+    <cost resourcetype ="Wood">600.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <rollovertextid>300662</rollovertextid>
+    <icon>resources\images\icons\techs\leonardo_notes.png</icon>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+			<techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <flag>CountsTowardMilitaryScore</flag>
+      <effects>
+        <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="deTank" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TextOutputTechName">110130</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatJesuitArmory" type="Normal">
+    <dbid>40259</dbid>
+    <displaynameid>300663</displaynameid>
+    <cost resourcetype ="Wood">300.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\mexicans\campeche_fortifications.png</icon>
+    <rollovertextid>36905</rollovertextid>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="OutpostWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">Outpost</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">WarHut</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">YPOutpostAsian</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deTower</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">Blockhouse</target>
+      </effect>
+    </effects>
+  </tech>
 
 
   

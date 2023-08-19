@@ -69,7 +69,7 @@
       <string _locid="300068">Privateers velocity highly increased.</string>
       <string _locid="300069">Warships Broadside attack increased.</string>
       <string _locid="300070">Cathedral</string>
-      <string _locid="300071">ZP SPC Cathedral</string>
+      <string _locid="300071">ZP Maltese Cathedral</string>
       <string _locid="300072">Maltese House</string>
       <string _locid="300073">ZP NAT House Maltese</string>
       <string _locid="300074">Pirate Dock</string>
@@ -646,6 +646,24 @@
       <string _locid="300643">Eisentruppler</string>
       <string _locid="300644">Delivers two Aztec Ritual Canoes and allows you to train them in your dock.</string>
       <string _locid="300645">ZP Guardian Privateer</string>
+      <string _locid="300646">ZP Jesuit Cathedral</string>
+      <string _locid="300647">Arcabucero</string>
+      <string _locid="300648">ZP NAT Conquistador Musketeer</string>
+      <string _locid="300649">ZP NAT Conquistador Missionary</string>
+      <string _locid="300650">Jesuit Missionary</string>
+      <string _locid="300651">European adventurer armed with a musket and sword. Benefits from Promotions.</string>
+      <string _locid="300652">ZP Socket SPC Jesuits</string>
+      <string _locid="300653">ZP NAT Conquistador</string>
+      <string _locid="300654">Veteran Arcabucero</string>
+      <string _locid="300655">Guard Arcabucero</string>
+      <string _locid="300656">Imperial Arcabucero</string>
+      <string _locid="300657">Jesuit Influence</string>
+      <string _locid="300658">Extends mission's influence. Allows you to train new units and provides you completely new techs and shipments.</string>
+      <string _locid="300659">Heterodoxy</string>
+      <string _locid="300660">Increases the healing rate of all Healers. Increases Missionary's conversion range.</string>
+      <string _locid="300661">Secret Plans</string>
+      <string _locid="300662">Uncovers secret plans for Leonardo's Machina Magnifica.</string>
+      <string _locid="300663">Mission's deffense</string>
     </language>
   </stringtable>
 </stringmods>

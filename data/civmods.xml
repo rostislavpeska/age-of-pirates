@@ -339,4 +339,22 @@
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>
+  <civ>
+    <name>SPCJesuit</name>
+    <main>0</main>
+    <subcivtype>2</subcivtype>
+    <portrait>buildings\native_settlement\native_jesuit_site_icon_portrait</portrait>
+    <culture>Stone</culture>
+    <displaynameid>61080</displaynameid>
+    <rollovernameid>45433</rollovernameid>
+    <alliedid>26446</alliedid>
+    <alliedotherid>26445</alliedotherid>
+    <unalliedid>26444</unalliedid>
+    <agetech>
+      <age>Age0</age>
+      <tech>zpNativeSPCJesuit</tech>
+    </agetech>
+    <visible>0</visible>
+    <visibleineditor>0</visibleineditor>
+  </civ>
 </civsmods>

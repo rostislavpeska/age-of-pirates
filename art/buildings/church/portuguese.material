@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\church\textures\maltese_cathedral_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\church\textures\maltese_cathedral_normals">
+      </texture>
+      <texture name="Masks" override="buildings\church\textures\maltese_cathedral_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

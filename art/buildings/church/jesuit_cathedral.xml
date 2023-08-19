@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_prop</definebone>
+	<component>
+		portuguese_church
+		<assetreference type="GrannyModel">
+			<file>buildings\church\jesuitcathedral</file>
+		</assetreference>
+		<decal>
+			<effecttype>bump</effecttype>
+			<texture>buildings\cathedral\cathedral_age4_ground_BaseColor</texture>
+			<selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
+			<bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+			<width>11.00</width>
+			<height>14.00</height>
+			<xoffset>0.00</xoffset>
+			<zoffset>0.00</zoffset>
+		</decal>
+	</component>
+	<anim>
+		Idle
+		<component>portuguese_church</component>
+	</anim>
+</animfile>
