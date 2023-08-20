@@ -354,6 +354,26 @@
       <age>Age0</age>
       <tech>zpNativeSPCJesuit</tech>
     </agetech>
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpPriestProxy</multipleblockunit>
+      <units>
+        <unit>zpPriest</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>zpCongregation</building>
+      <multipleblockunit>zpPriestProxy</multipleblockunit>
+      <units>
+        <unit>zpPriest</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>

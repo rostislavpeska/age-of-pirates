@@ -149,6 +149,34 @@
     <subciv>Miners</subciv>
   </protounitcommand>
 
+  <protounitcommand>
+    <name>CongregationCoin</name>
+    <icon>resources\images\icons\command\tactic_rice_paddy_coin_off.png</icon>
+    <activeicon>resources\images\icons\command\tactic_rice_paddy_coin_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\tactic_rice_paddy_coin_off.png</disabledicon>
+    <rollovertextid>300671</rollovertextid>
+    <activerollovertextid>300674</activerollovertextid>
+    <command>unitSetTactic("ConCoin")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>CongregationFood</name>
+    <icon>resources\images\icons\command\tactic_rice_paddy_food_off.png</icon>
+    <activeicon>resources\images\icons\command\tactic_rice_paddy_food_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\tactic_rice_paddy_food_off.png</disabledicon>
+    <rollovertextid>300672</rollovertextid>
+    <activerollovertextid>300675</activerollovertextid>
+    <command>unitSetTactic("ConFood")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>CongregationXP</name>
+    <icon>resources\images\icons\techs\asians\shrine_xp.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_xp_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_xp.png</disabledicon>
+    <rollovertextid>300670</rollovertextid>
+    <activerollovertextid>300673</activerollovertextid>
+    <command>unitSetTactic("ConXP")</command>
+  </protounitcommand>
+
 <!--
 
   <protounitcommand>

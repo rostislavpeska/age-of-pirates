@@ -8195,7 +8195,7 @@
       <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyJesuit</effect>
       <effect type="TechStatus" status="obtainable" deactivate="true">YPNativeJunk</effect>
       <effect type="TechStatus" status="obtainable" deactivate="true">YPNativeCatamaran</effect>
-      <effect type="TechStatus" status="obtainable">zpNatJesuitHeterodoxy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitCongregation</effect>
       <effect type="TechStatus" status="obtainable">zpNatJesuitTank</effect>
       <effect type="TechStatus" status="obtainable">zpJesuitCathedral</effect>
       <effect type="TechStatus" status="obtainable">zpNatJesuitArmory</effect>
@@ -8379,7 +8379,7 @@
   <tech name ="zpJesuitCathedral" type ="Normal">
 		<dbid>40258</dbid>
 		<displaynameid>300657</displaynameid>
-  	<researchpoints>60.0000</researchpoints>
+  	<researchpoints>5.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\dance-pirates.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
@@ -8395,25 +8395,21 @@
     </prereqs>
     <flag>NativeDance</flag>
     <effects>
-      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">zpNatConquistador</target>
-      </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpPriest</target>
+        <target type="ProtoUnit">zpPriestProxy</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatJesuitTank" page="2" column="6">
+      <effect type="CommandAdd" tech="zpNatJesuitTank" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatJesuitHeterodoxy" page="2" column="4">
+      <effect type="CommandAdd" tech="zpNatJesuitCongregation" page="2" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatJesuitArmory" page="2" column="5">
+      <effect type="CommandAdd" tech="zpNatJesuitArmory" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="TechStatus" status="unobtainable">zpSPCSufiGreatMosque</effect>
     </effects>
 	</tech>
   <tech name="zpNatJesuitHeterodoxy" type="Normal">
@@ -8421,26 +8417,13 @@
 		<displaynameid>300659</displaynameid>
 		<cost resourcetype="Food">150.0000</cost>
 		<cost resourcetype="Wood">150.0000</cost>
-		<researchpoints>15.0000</researchpoints>
-		<status>UNOBTAINABLE</status>
+		<researchpoints>30.0000</researchpoints>
+		<status>OBTAINABLE</status>
 		<icon>resources\images\icons\techs\jesuit_heterodoxy.png</icon>
 		<rollovertextid>300660</rollovertextid>
 		<flag>CountsTowardMilitaryScore</flag>
-		<flag>YPNativeImprovement</flag>
 		<effects>
-			<effect type="Data" action="Heal" amount="1.50" subtype="WorkRate" unittype="LogicalTypeHealed" relativity="BasePercent">
-				<target type="ProtoUnit">AbstractHealer</target>
-			</effect>
-			<effect type="Data" action="CombatHeal" amount="1.50" subtype="WorkRate" unittype="LogicalTypeHealed" relativity="BasePercent">
-				<target type="ProtoUnit">AbstractHealer</target>
-			</effect>
-			<effect type="Data" action="AreaHeal" amount="1.50" subtype="WorkRate" unittype="LogicalTypeHealed" relativity="BasePercent">
-				<target type="ProtoUnit">AbstractHealer</target>
-			</effect>
-			<effect type="Data" action="HealAreaAux" amount="1.50" subtype="WorkRate" unittype="LogicalTypeHealed" relativity="BasePercent">
-				<target type="ProtoUnit">AbstractHealer</target>
-			</effect>
-      <effect type="Data" action="Convert" amount="4.00" subtype="MaximumRange" relativity="Absolute">
+      <effect type="Data" action="Convert" amount="5.00" subtype="MaximumRange" relativity="Absolute">
 				<target type="ProtoUnit">zpPriest</target>
 			</effect>
 			<effect type="Data" action="Convert" amount="-1.20" subtype="ConversionDelay" relativity="Absolute">
@@ -8449,7 +8432,7 @@
 		</effects>
 	</tech>
   <tech name="zpNatJesuitTank" type="Normal">
-    <dbid>40259</dbid>
+    <dbid>40260</dbid>
     <displaynameid>300661</displaynameid>
     <cost resourcetype ="Gold">600.0000</cost>
     <cost resourcetype ="Wood">600.0000</cost>
@@ -8472,38 +8455,162 @@
     </effects>
   </tech>
   <tech name="zpNatJesuitArmory" type="Normal">
-    <dbid>40259</dbid>
+    <dbid>40261</dbid>
     <displaynameid>300663</displaynameid>
-    <cost resourcetype ="Wood">300.0000</cost>
+    <cost resourcetype ="Gold">500.0000</cost>
+    <cost resourcetype ="Food">300.0000</cost>
     <researchpoints>40.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\mexicans\campeche_fortifications.png</icon>
-    <rollovertextid>36905</rollovertextid>
+    <icon>resources\images\icons\techs\jesuit_map.png</icon>
+    <rollovertextid>300680</rollovertextid>
     <flag>CheckLandHCGatherPoint</flag>
     <flag>YPNativeImprovement</flag>
+    <prereqs>
+			<techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
     <effects>
-      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="OutpostWagon" relativity="Absolute">
+      <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="deNatMercHolcanJavelineer" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">Outpost</target>
+      <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="ypNatMercRattanShield" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
-      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">WarHut</target>
+      <effect type="TechStatus" status="active">ypNatDisciplinedShaolin</effect>
+      <effect type="TechStatus" status="active">ypNatHonoredShaolin</effect>
+      <effect type="TechStatus" status="active">WarriorSocietyMaya</effect>
+      <effect type="TechStatus" status="active">WarriorSocietyMaya</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatJesuitCongregation" type="Normal">
+    <dbid>40262</dbid>
+    <displaynameid>300668</displaynameid>
+    <cost resourcetype ="Gold">200.0000</cost>
+    <cost resourcetype ="Wood">600.0000</cost>
+    <researchpoints>5.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <rollovertextid>300669</rollovertextid>
+    <icon>resources\images\icons\techs\congregation.png</icon>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpCongregationWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
-      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">YPOutpostAsian</target>
+      <effect type="TechStatus" status="active">zpCongregationAvailableShadow</effect>
+
+      <effect type="TextOutputTechName">110130</effect>
+    </effects>
+  </tech>
+  <tech name="zpJesuitHerbs" type="Normal">
+    <dbid>40263</dbid>
+    <displaynameid>300677</displaynameid>
+    <cost resourcetype ="Food">150.0000</cost>
+    <cost resourcetype ="Gold">150.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+		<status>OBTAINABLE</status>
+		<icon>resources\images\icons\techs\jesuit_herbs.png</icon>
+		<rollovertextid>300676</rollovertextid>
+		<flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" action="Heal" amount="1.30" subtype="WorkRate" unittype="LogicalTypeHealed" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractHealer</target>
       </effect>
-      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">deTower</target>
+      <effect type="Data" action="CombatHeal" amount="1.30" subtype="WorkRate" unittype="LogicalTypeHealed" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractHealer</target>
       </effect>
-      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">Blockhouse</target>
+      <effect type="Data" action="AreaHeal" amount="1.30" subtype="WorkRate" unittype="LogicalTypeHealed" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractHealer</target>
+      </effect>
+      <effect type="Data" action="HealAreaAux" amount="1.30" subtype="WorkRate" unittype="LogicalTypeHealed" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractHealer</target>
       </effect>
     </effects>
   </tech>
+  <tech name="zpJesuitGenetics" type="Normal">
+    <dbid>40264</dbid>
+    <displaynameid>300678</displaynameid>
+    <cost resourcetype ="Gold">300.0000</cost>
+    <cost resourcetype ="Food">300.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+		<status>OBTAINABLE</status>
+		<icon>resources\images\icons\techs\heritage.png</icon>
+		<rollovertextid>300679</rollovertextid>
+		<flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data2" action="Gather" amount="1.70" subtype="WorkRateSpecific" resource="Food" unittype="zpCongregation" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.70" subtype="WorkRateSpecific" resource="XP" unittype="zpCongregation" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.70" subtype="WorkRateSpecific" resource="Gold" unittype="zpCongregation" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.70" subtype="WorkRateSpecific" resource="Food" unittype="zpCongregation" relativity="BasePercent">
+        <target type="ProtoUnit">zpPriest</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.70" subtype="WorkRateSpecific" resource="XP" unittype="zpCongregation" relativity="BasePercent">
+        <target type="ProtoUnit">zpPriest</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.70" subtype="WorkRateSpecific" resource="Gold" unittype="zpCongregation" relativity="BasePercent">
+        <target type="ProtoUnit">zpPriest</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatJesuitScripturalist" type="Normal">
+		<dbid>40265</dbid>
+    <displaynameid>300683</displaynameid>
+		<cost resourcetype="Food">150.0000</cost>
+		<cost resourcetype="Gold">150.0000</cost>
+		<researchpoints>30.0000</researchpoints>
+		<status>OBTAINABLE</status>
+		<icon>resources\images\icons\techs\jesuit_scripturalist.png</icon>
+		<rollovertextid>300684</rollovertextid>
+		<flag>CountsTowardMilitaryScore</flag>
+		<effects>
+			<effect type="Data" action="Heal" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+				<target type="ProtoUnit">zpPriest</target>
+			</effect>
+			<effect type="Data" action="CombatHeal" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+				<target type="ProtoUnit">zpPriest</target>
+			</effect>
+			<effect type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+				<target type="ProtoUnit">zpPriest</target>
+			</effect>
+			<effect type="Data" action="CombatHeal" amount="6.00" subtype="MaximumRange" relativity="Absolute">
+				<target type="ProtoUnit">zpPriest</target>
+			</effect>
+		</effects>
+	</tech>
+  <tech name="zpCongregationAvailableShadow" type="Normal">
+    <dbid>40266</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpCongregation</target>
+      </effect>
 
+    </effects>
+  </tech>
+  <tech name="zpAddCongregationShadow" type="Normal">
+    <dbid>40267</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpCongregation</target>
+      </effect>
+    </effects>
+  </tech>
 
   
 
@@ -8735,6 +8842,7 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCSocketJesuit</target>
       </effect>
+
     </effects>
   </tech>
   

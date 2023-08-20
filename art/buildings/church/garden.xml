@@ -1,0 +1,118 @@
+<animfile>
+	<definebone>med_plantation_age2</definebone>
+	<definebone>plant01</definebone>
+	<definebone>plant02</definebone>
+	<definebone>plant03</definebone>
+	<definebone>plant04</definebone>
+	<definebone>plant05</definebone>
+	<definebone>plant06</definebone>
+	<definebone>plant07</definebone>
+	<definebone>plant08</definebone>
+	<definebone>plant09</definebone>
+	<definebone>plant10</definebone>
+	<definebone>plant11</definebone>
+	<definebone>plant12</definebone>
+	<definebone>plant13</definebone>
+	<definebone>plant14</definebone>
+	<definebone>plant15</definebone>
+	<definebone>plant16</definebone>
+	<definebone>plant17</definebone>
+	<definebone>plant18</definebone>
+	<definebone>plant19</definebone>
+	<definebone>plant20</definebone>
+	<definebone>plant21</definebone>
+	<definebone>plant22</definebone>
+	<definebone>plant23</definebone>
+	<definebone>plant24</definebone>
+	<definebone>plant25</definebone>
+	<definebone>plant26</definebone>
+	<definebone>plant27</definebone>
+	<definebone>plant28</definebone>
+	<attachment>
+		plant01
+		<component>
+			plant01<assetreference type="GrannyModel"><file>terrain\underbrush\underbrush_co_japan_pine_01</file></assetreference>
+		</component>
+		<anim>Idle<component>plant01</component></anim>
+	</attachment>
+	<attachment>
+		plant02
+		<component>
+			plant02<assetreference type="GrannyModel"><file>Terrain\underbrush\underbrush_co_japan_bush_01</file></assetreference>
+		</component>
+		<anim>Idle<component>plant02</component></anim>
+	</attachment>
+	<attachment>
+		plant03
+		<component>
+			plant03<assetreference type="GrannyModel"><file>terrain\underbrush\underbrush_desert_bush3</file></assetreference>
+		</component>
+		<anim>Idle<component>plant03</component></anim>
+	</attachment>
+	<attachment>
+		plant04
+		<component>
+			plant04<assetreference type="GrannyModel"><file>Terrain\underbrush\underbrush_co_japan_bush_03</file></assetreference>
+		</component>
+		<anim>Idle<component>plant04</component></anim>
+	</attachment>
+	<attachment>
+		plant05
+		<component>
+			plant05<assetreference type="GrannyModel"><file>buildings\native_settlement\native_settlement_accessories\zen_bush_01</file></assetreference>
+		</component>
+		<anim>Idle<component>plant05</component></anim>
+	</attachment>
+	<attachment>
+		plant06
+		<component>
+			plant06<assetreference type="GrannyModel"><file>Terrain\underbrush\underbrush_himal_bush1</file></assetreference>
+		</component>
+		<anim>Idle<component>plant06</component></anim>
+	</attachment>
+	<attachment>
+		plant07
+		<component>
+			plant07<assetreference type="GrannyModel"><file>terrain\underbrush\underbrush_forest_bush3</file></assetreference>
+		</component>
+		<anim>Idle<component>plant07</component></anim>
+	</attachment>
+	<component>
+		garden
+		<assetreference type="GrannyModel">
+			<file>buildings\church\garden</file>
+		</assetreference>
+		<attach a="plant01" frombone="ATTACHPOINT" tobone="plant01" syncanims="0"></attach>
+		<attach a="plant01" frombone="ATTACHPOINT" tobone="plant02" syncanims="0"></attach>
+		<attach a="plant01" frombone="ATTACHPOINT" tobone="plant03" syncanims="0"></attach>
+		<attach a="plant01" frombone="ATTACHPOINT" tobone="plant04" syncanims="0"></attach>
+		<attach a="plant02" frombone="ATTACHPOINT" tobone="plant05" syncanims="0"></attach>
+		<attach a="plant02" frombone="ATTACHPOINT" tobone="plant06" syncanims="0"></attach>
+		<attach a="plant02" frombone="ATTACHPOINT" tobone="plant07" syncanims="0"></attach>
+		<attach a="plant02" frombone="ATTACHPOINT" tobone="plant08" syncanims="0"></attach>
+		<attach a="plant03" frombone="ATTACHPOINT" tobone="plant09" syncanims="0"></attach>
+		<attach a="plant03" frombone="ATTACHPOINT" tobone="plant10" syncanims="0"></attach>
+		<attach a="plant03" frombone="ATTACHPOINT" tobone="plant11" syncanims="0"></attach>
+		<attach a="plant03" frombone="ATTACHPOINT" tobone="plant12" syncanims="0"></attach>
+		<attach a="plant04" frombone="ATTACHPOINT" tobone="plant13" syncanims="0"></attach>
+		<attach a="plant04" frombone="ATTACHPOINT" tobone="plant14" syncanims="0"></attach>
+		<attach a="plant04" frombone="ATTACHPOINT" tobone="plant15" syncanims="0"></attach>
+		<attach a="plant04" frombone="ATTACHPOINT" tobone="plant16" syncanims="0"></attach>
+		<attach a="plant05" frombone="ATTACHPOINT" tobone="plant17" syncanims="0"></attach>
+		<attach a="plant05" frombone="ATTACHPOINT" tobone="plant18" syncanims="0"></attach>
+		<attach a="plant05" frombone="ATTACHPOINT" tobone="plant19" syncanims="0"></attach>
+		<attach a="plant05" frombone="ATTACHPOINT" tobone="plant20" syncanims="0"></attach>
+		<attach a="plant06" frombone="ATTACHPOINT" tobone="plant25" syncanims="0"></attach>
+		<attach a="plant06" frombone="ATTACHPOINT" tobone="plant26" syncanims="0"></attach>
+		<attach a="plant06" frombone="ATTACHPOINT" tobone="plant27" syncanims="0"></attach>
+		<attach a="plant06" frombone="ATTACHPOINT" tobone="plant28" syncanims="0"></attach>
+		<attach a="plant07" frombone="ATTACHPOINT" tobone="plant21" syncanims="0"></attach>
+		<attach a="plant07" frombone="ATTACHPOINT" tobone="plant22" syncanims="0"></attach>
+		<attach a="plant07" frombone="ATTACHPOINT" tobone="plant23" syncanims="0"></attach>
+		<attach a="plant07" frombone="ATTACHPOINT" tobone="plant24" syncanims="0"></attach>
+	</component>
+	<anim>
+		Idle
+		<component>garden</component>
+	</anim>
+</animfile>

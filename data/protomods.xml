@@ -238,7 +238,7 @@
     <train row ="0" page ="0" column ="5">zpAirshipAIProxy</train>
     <train row ="0" page ="0" column ="1">zpNatConquistador</train>
     <train row ="0" page ="0" column ="2">zpNatConquistadorMusketeer</train>
-    <train row ="0" page ="0" column ="3">zpPriest</train>
+    <train row ="0" page ="0" column ="3">zpPriestProxy</train>
 
     <tech row="0" page="0" column="2">zpTrainPrivateer1</tech>
     <tech row="0" page="1" column="2">zpNatHonoredPirate</tech>
@@ -360,7 +360,7 @@
     <train row ="0" page ="0" column ="89">zpInuitTorchman</train>
     <train row ="0" page ="0" column ="90">zpNatConquistador</train>
     <train row ="0" page ="0" column ="91">zpNatConquistadorMusketeer</train>
-    <train row ="0" page ="0" column ="92">zpPriest</train>
+
   </unit>
   <unit id ="20004" name ="zpNatPirate">
 		<dbid>20004</dbid>
@@ -13305,6 +13305,7 @@
     <editornameid>300646</editornameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
     <obstructionradiusz>4.0000</obstructionradiusz>
+    <subciv>SPCJesuit</subciv>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>buildings\church\jesuit_cathedral.xml</animfile>
@@ -13340,6 +13341,10 @@
 		<unittype>Unattackable</unittype>
 		<unittype>NativeBuilding</unittype>
 		<unittype>Building</unittype>
+    <!--<sharedbuildlimitunittypes>
+      <unittype>zpCongregation</unittype>
+      <unittype>zpJesuitCathedral</unittype>
+    </sharedbuildlimitunittypes>-->
 		<flag>FlattenGround</flag>
 		<flag>Doppled</flag>
 		<flag>PaintTextureWhenPlacing</flag>
@@ -13359,6 +13364,7 @@
 		<flag>NoHPBar</flag>
 		<flag>DoNotShowOnMiniMap</flag>
 		<flag>Tracked</flag>
+    <!--<flag>UseSharedBuildLimit</flag>-->
   </unit>
   <unit id="20143" name="zpNatConquistadorMusketeer">
 		<dbid>20143</dbid>
@@ -13513,7 +13519,6 @@
     <displaynameid>300650</displaynameid>
 		<editornameid>300649</editornameid>
 		<populationcount>0</populationcount>
-		<subciv>SPCJesuit</subciv>
 		<obstructionradiusx>0.4900</obstructionradiusx>
 		<obstructionradiusz>0.4900</obstructionradiusz>
 		<formationcategory>Protected</formationcategory>
@@ -13526,17 +13531,21 @@
 		<physicsinfo>dude</physicsinfo>
 		<icon>resources\art\units\asians\natives\jesuit\unit_jesuit_icon_64_na.png</icon>
 		<portraiticon>resources\art\units\asians\natives\jesuit\unit_jesuit_icon_portrait_na.png</portraiticon>
-		<rollovertextid>80135</rollovertextid>
-		<shortrollovertextid>80134</shortrollovertextid>
+		<rollovertextid>300682</rollovertextid>
+		<shortrollovertextid>300682</shortrollovertextid>
 		<initialhitpoints>200.0000</initialhitpoints>
 		<maxhitpoints>200.0000</maxhitpoints>
 		<los>16.0000</los>
 		<unitaitype>HandCombative</unitaitype>
 		<trainpoints>30.0000</trainpoints>
-		<buildlimit>4</buildlimit>
+		<buildlimit>5</buildlimit>
 		<bounty>20.0000</bounty>
 		<buildbounty>20.0000</buildbounty>
-		<cost resourcetype="Gold">200.0000</cost>
+		<cost resourcetype="Gold">300.0000</cost>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Influence">1.0000</carrycapacity>
 		<allowedage>2</allowedage>
 		<armor type="Ranged" value="0.1000">
 		</armor>
@@ -13559,6 +13568,13 @@
 		<unittype>UnitClass</unittype>
 		<unittype>Military</unittype>
 		<unittype>AbstractNativeWarrior</unittype>
+    <sharedbuildlimitunittypes>
+      <unittype>zpPriest</unittype>
+      <unittype>zpPriestProxy</unittype>
+    </sharedbuildlimitunittypes>
+    <flag>UseSharedBuildLimit</flag>
+    <train row="0" page="0" column="0">zpCongregation</train>
+    <train row="0" page="0" column="1">TradingPost</train>
 		<flag>CollidesWithProjectiles</flag>
 		<flag>ApplyHandicapTraining</flag>
 		<flag>CorpseDecays</flag>
@@ -13593,6 +13609,17 @@
 			<maxrange>12.000000</maxrange>
 			<rate type="Unit">1.000000</rate>
 		</protoaction>
+    <protoaction>
+      <name>Gather</name>
+      <rate type="zpCongregation" resource="Food">1.300000</rate>
+      <rate type="zpCongregation" resource="Gold">1.100000</rate>
+      <rate type="zpCongregation" resource="XP">1.600000</rate>
+    </protoaction>
+    <protoaction>
+      <name>Build</name>
+      <rate type="TradingPost">2.000000</rate>
+      <rate type="zpCongregation">1.000000</rate>
+    </protoaction>
   </unit>
   <unit id="20145" name="zpSocketJesuit">
     <dbid>20145</dbid>
@@ -13762,6 +13789,259 @@
       <damagebonus type="AbstractCoyoteMan">2.250000</damagebonus>
       <damagebonus type="AbstractArtillery">2.000000</damagebonus>
     </protoaction>
+  </unit>
+  <unit id="20147" name="zpCongregation">
+    <dbid>20147</dbid>
+    <displaynameid>300664</displaynameid>
+    <editornameid>300665</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <placementobstructionradiusx>7.5000</placementobstructionradiusx>
+    <placementobstructionradiusz>7.5000</placementobstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\church\congregation.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>mill.xml</placementfile>
+    <icon>resources\art\buildings\jesuit_building_icon.png</icon>
+    <portraiticon>resources\art\buildings\jesuit_building_portrait.png</portraiticon>
+    <rollovertextid>300681</rollovertextid>
+    <shortrollovertextid>300681</shortrollovertextid>
+    <initialhitpoints>3500.0000</initialhitpoints>
+    <maxhitpoints>3500.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <freebuildpoints>300.0000</freebuildpoints>
+    <bounty>240.0000</bounty>
+    <buildbounty>120.0000</buildbounty>
+    <buildlimit>1</buildlimit>
+    <cost resourcetype="Wood">600.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <carrycapacity resourcetype="Food">100.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">100.0000</carrycapacity>
+    <initialresource resourcetype="Food">999.0000</initialresource>
+    <initialresource resourcetype="Gold">0.0000</initialresource>
+    <resourcesubtype>grain</resourcesubtype>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>2</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <gathererlimit>10</gathererlimit>
+    <builderlimit>5</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>AbstractMine</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>Gold</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Economic</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>AbstractFarmBuilding</unittype>
+    <!--<sharedbuildlimitunit>zpJesuitCathedral</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpCongregation</unittype>
+      <unittype>zpJesuitCathedral</unittype>
+    </sharedbuildlimitunittypes>-->
+    <train row ="0" page ="0" column ="0">zpPriestProxy</train>
+    <tech row="0" page="1" column="0">zpNatJesuitHeterodoxy</tech>
+    <tech row="0" page="1" column="1">zpJesuitHerbs</tech>
+    <tech row="0" page="1" column="3">zpJesuitGenetics</tech>
+    <tech row="0" page="1" column="2">zpNatJesuitScripturalist</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>UnlimitedSupply</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>Tracked</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>UseFarmingAnims</flag>
+    <flag>BuildingShowTactics</flag>
+    <flag>DisplayRange</flag>
+    <flag>ShowAreaHealRate</flag>
+    <!--<flag>UseSharedBuildLimit</flag>-->
+    <command page="9" column="1">CongregationCoin</command>
+    <command page="9" column="2">CongregationFood</command>
+    <command page="9" column="0">CongregationXP</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>congregation.tactics</tactics>
+    <protoaction>
+      <name>ModifyGatherCoin</name>
+      <rate type="Gold">1.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>ModifyGatherFood</name>
+      <rate type="Food">1.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>ModifyGatherXP</name>
+      <rate type="XP">1.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20148" name="zpCongregationWagon">
+    <dbid>20148</dbid>
+    <displaynameid>300667</displaynameid>
+    <editornameid>300666</editornameid>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>5.0000</turnrate>
+    <animfile>units\trade\supply_cart\supply_cart_outpost.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trade\outpost_wagon_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trade\outpost_wagon_portrait.png</portraiticon>
+    <rollovertextid>41659</rollovertextid>
+    <shortrollovertextid>41658</shortrollovertextid>
+    <initialhitpoints>250.0000</initialhitpoints>
+    <maxhitpoints>250.0000</maxhitpoints>
+    <los>18.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>Civilian</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ValidIdleVillager</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractWagon</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>CannotConvertHill</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <train row="0" page="0" column="0">zpCongregation</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>DeadReplacementWhenDestroyed</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>coveredwagon.tactics</tactics>
+    <protoaction>
+      <name>Build</name>
+      <rate type="zpCongregation">5.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20144" name="zpPriestProxy">
+    <dbid>20144</dbid>
+    <displaynameid>300650</displaynameid>
+		<editornameid>300649</editornameid>
+		<populationcount>0</populationcount>
+		<subciv>SPCJesuit</subciv>
+		<obstructionradiusx>0.4900</obstructionradiusx>
+		<obstructionradiusz>0.4900</obstructionradiusz>
+		<formationcategory>Protected</formationcategory>
+		<maxvelocity>4.5000</maxvelocity>
+		<maxrunvelocity>6.5000</maxrunvelocity>
+		<movementtype>land</movementtype>
+		<turnrate>18.0000</turnrate>
+		<animfile>units\asians\natives\conquistador\conquistador_missionary.xml</animfile>
+		<impacttype>Flesh</impacttype>
+		<physicsinfo>dude</physicsinfo>
+		<icon>resources\art\units\asians\natives\jesuit\unit_jesuit_icon_64_na.png</icon>
+		<portraiticon>resources\art\units\asians\natives\jesuit\unit_jesuit_icon_portrait_na.png</portraiticon>
+		<rollovertextid>300682</rollovertextid>
+		<shortrollovertextid>300682</shortrollovertextid>
+		<initialhitpoints>200.0000</initialhitpoints>
+		<maxhitpoints>200.0000</maxhitpoints>
+		<los>16.0000</los>
+		<unitaitype>HandCombative</unitaitype>
+		<trainpoints>30.0000</trainpoints>
+		<buildlimit>5</buildlimit>
+		<bounty>20.0000</bounty>
+		<buildbounty>20.0000</buildbounty>
+		<cost resourcetype="Gold">300.0000</cost>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Influence">1.0000</carrycapacity>
+		<allowedage>2</allowedage>
+		<armor type="Ranged" value="0.1000">
+		</armor>
+		<unittype>LogicalTypeMinimapFilterMilitary</unittype>
+		<unittype>LogicalTypeHealed</unittype>
+		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeGarrisonInShips</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandUnitsAttack</unittype>
+		<unittype>LogicalTypeRangedUnitsAttack</unittype>
+		<unittype>ConvertsHerds</unittype>
+		<unittype>AbstractHealer</unittype>
+		<unittype>AbstractFindHealer</unittype>
+		<unittype>CannotConvertHill</unittype>
+		<unittype>HasBountyValue</unittype>
+		<unittype>CountsTowardMilitaryScore</unittype>
+		<unittype>Unit</unittype>
+		<unittype>UnitClass</unittype>
+		<unittype>Military</unittype>
+		<unittype>AbstractBannerArmy</unittype>
+    <sharedbuildlimitunit>zpPriest</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpPriest</unittype>
+      <unittype>zpPriestProxy</unittype>
+    </sharedbuildlimitunittypes>
+    <flag>UseSharedBuildLimit</flag>
+		<flag>CollidesWithProjectiles</flag>
+		<flag>ApplyHandicapTraining</flag>
+		<flag>CorpseDecays</flag>
+		<flag>ShowGarrisonButton</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>ObscuredByUnits</flag>
+		<flag>CanAutoHeal</flag>
+		<flag>Tracked</flag>
+    <flag>NotPlayerPlaceable</flag>
+		<command page="10" column="1">Stop</command>
+		<command page="10" column="0">Garrison</command>
+		<command page="10" column="7">Delete</command>
+		<command page="11" column="0">Abilities</command>
   </unit>
 
 <!--TEST-->
