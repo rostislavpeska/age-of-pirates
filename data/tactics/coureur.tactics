@@ -81,9 +81,9 @@
     <rate type="ypGroveBuilding">1.0</rate>
     <rate type="ypRicePaddy">1.0</rate>
     <rate type="AbstractInfiniteCrate">1.0</rate>
-    <rate type="zpCongregation" resource="Gold">0.340000</rate>
-    <rate type="zpCongregation" resource="Food">0.500000</rate>
-    <rate type="zpCongregation" resource="XP">0.500000</rate>
+    <rate type="zpCongregation" resource="Gold">0.440000</rate>
+    <rate type="zpCongregation" resource="Food">0.600000</rate>
+    <rate type="zpCongregation" resource="XP">0.700000</rate>
   </action>
   <action>
     <name stringid="69150">CrateGather</name>

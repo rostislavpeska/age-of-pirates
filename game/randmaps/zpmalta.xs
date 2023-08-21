@@ -51,6 +51,7 @@ void main(void)
 	rmSetMapType("grass");
 	rmSetMapType("water");
   	rmSetMapType("mediEurope");
+   rmSetMapType("euroNavalTradeRoute");
 
    rmSetLightingSet("punjab_skirmish");
    rmSetOceanReveal(true);

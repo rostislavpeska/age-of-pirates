@@ -685,6 +685,7 @@
       <string _locid="300682">Converts enemy units, heals and gathers herbs.</string>
       <string _locid="300683">Scripturalist</string>
 			<string _locid="300684">Increases the hitpoints of Jesuit missionaries. Enables them to heal units in combat and from further away.</string>
+      <string _locid="300685">ZP Jesuit Garden</string>
     </language>
   </stringtable>
 </stringmods>

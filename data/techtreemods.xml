@@ -139,6 +139,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPirates</effect>
     </effects>
@@ -2219,6 +2222,7 @@
   <tech name="zpTurnConsulateOffMaltese" type="Normal">
     <dbid>40057</dbid>
     <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
@@ -2989,6 +2993,7 @@
   <tech name="zpTurnConsulateOffWokou" type="Normal">
     <dbid>40119</dbid>
     <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
@@ -5280,6 +5285,7 @@
   <tech name="zpTurnConsulateOffWaterTemple" type="Normal">
     <dbid>40193</dbid>
     <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
@@ -5743,6 +5749,7 @@
   <tech name="zpTurnConsulateOffJewish" type="Normal">
     <dbid>40206</dbid>
     <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
@@ -6189,6 +6196,7 @@
   <tech name="zpTurnConsulateOffMalteseLand" type="Normal">
     <dbid>40214</dbid>
     <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
@@ -6499,6 +6507,7 @@
   <tech name="zpTurnConsulateOffScientists" type="Normal">
     <dbid>40227</dbid>
     <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
@@ -8609,6 +8618,18 @@
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpCongregation</target>
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpSendAirship" type="Normal">
+    <dbid>40268</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpAirship" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpBattleAirship</effect>
     </effects>
   </tech>
 
