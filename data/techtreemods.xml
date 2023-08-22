@@ -8388,7 +8388,7 @@
   <tech name ="zpJesuitCathedral" type ="Normal">
 		<dbid>40258</dbid>
 		<displaynameid>300657</displaynameid>
-  	<researchpoints>5.0000</researchpoints>
+  	<researchpoints>60.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\dance-pirates.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
@@ -8497,7 +8497,7 @@
     <displaynameid>300668</displaynameid>
     <cost resourcetype ="Gold">200.0000</cost>
     <cost resourcetype ="Wood">600.0000</cost>
-    <researchpoints>5.0000</researchpoints>
+    <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <rollovertextid>300669</rollovertextid>
     <icon>resources\images\icons\techs\congregation.png</icon>

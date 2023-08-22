@@ -208,6 +208,7 @@ void main(void)
     int avoidSocket2=rmCreateTypeDistanceConstraint("avoid socket long", "Socket", 40.0);
     int avoidController=rmCreateTypeDistanceConstraint("stay away from Controller", "zpSPCWaterSpawnPoint", 60.0);
     int avoidScientists=rmCreateTypeDistanceConstraint("stay away from Scientists", "zpSocketScientists", 70+6.5*cNumberNonGaiaPlayers);
+    int avoidKOTH=rmCreateTypeDistanceConstraint("stay away from Kings Hill", "ypKingsHill", 30.0);
 
    // -------------Define objects
    // These objects are all defined so they can be placed later
@@ -1004,6 +1005,7 @@ void main(void)
       rmAddObjectDefConstraint(malteseControllerID, avoidWater40);
       rmAddObjectDefConstraint(malteseControllerID, avoidController); 
       rmAddObjectDefConstraint(malteseControllerID, avoidScientists); 
+      rmAddObjectDefConstraint(malteseControllerID, avoidKOTH);
       rmAddObjectDefConstraint(malteseControllerID, nativeIslandConstraint); 
       rmAddObjectDefConstraint(malteseControllerID, villageEdgeConstraintFar); 
       rmPlaceObjectDefAtLoc(malteseControllerID, 0, 0.5, 0.5);
@@ -1045,6 +1047,7 @@ void main(void)
          rmAddObjectDefConstraint(malteseController2ID, avoidWater30,);
          rmAddObjectDefConstraint(malteseController2ID, avoidController); 
          rmAddObjectDefConstraint(malteseController2ID, avoidScientists); 
+         rmAddObjectDefConstraint(malteseController2ID, avoidKOTH);
          rmAddObjectDefConstraint(malteseController2ID, nativeIslandConstraint); 
          rmAddObjectDefConstraint(malteseController2ID, villageEdgeConstraintFar); 
          rmPlaceObjectDefAtLoc(malteseController2ID, 0, 0.5, 0.5);
@@ -1089,6 +1092,7 @@ void main(void)
          rmAddObjectDefConstraint(malteseController3ID, avoidWater30);
          rmAddObjectDefConstraint(malteseController3ID, avoidController); 
          rmAddObjectDefConstraint(malteseController3ID, avoidScientists);
+         rmAddObjectDefConstraint(malteseController3ID, avoidKOTH);
          rmAddObjectDefConstraint(malteseController3ID, nativeIslandConstraint); 
          rmAddObjectDefConstraint(malteseController3ID, villageEdgeConstraintFar); 
          rmPlaceObjectDefAtLoc(malteseController3ID, 0, 0.5, 0.5);
@@ -1133,6 +1137,7 @@ void main(void)
          rmAddObjectDefConstraint(malteseController4ID, avoidWater40);
          rmAddObjectDefConstraint(malteseController4ID, avoidController); 
          rmAddObjectDefConstraint(malteseController4ID, avoidScientists);
+         rmAddObjectDefConstraint(malteseController4ID, avoidKOTH);
          rmAddObjectDefConstraint(malteseController4ID, nativeIslandConstraint); 
          rmAddObjectDefConstraint(malteseController4ID, villageEdgeConstraintFar); 
          rmPlaceObjectDefAtLoc(malteseController4ID, 0, 0.5, 0.5);

@@ -1,4 +1,4 @@
-// AZTEC GOLD v2.0
+// PHILIPPINES 1.0
 
 include "mercenaries.xs";
 include "ypAsianInclude.xs";
@@ -71,11 +71,11 @@ void main(void)
 	chooseMercs();
 	
 	// Set size of map
-	int playerTiles=18000;
+	int playerTiles=20000;
   if(cNumberNonGaiaPlayers < 5)
-    playerTiles = 22000;
+    playerTiles = 23000;
   if (cNumberNonGaiaPlayers < 3)
-		playerTiles = 23000;
+		playerTiles = 27000;
 	int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
 	rmEchoInfo("Map size="+size+"m x "+size+"m");
 	rmSetMapSize(size, size);
@@ -88,6 +88,7 @@ void main(void)
 	rmSetMapType(mapType2);
 	rmSetMapType("water");
 	rmSetLightingSet("ceylon_skirmish");
+  rmSetOceanReveal(true);
 
 	// Initialize map.
 	rmTerrainInitialize(baseTerrain);
@@ -113,6 +114,7 @@ void main(void)
 	int longPlayerConstraint=rmCreateClassDistanceConstraint("long stay away from players", classPlayer, 60.0);
 	int flagConstraint=rmCreateHCGPConstraint("flags avoid same", 20.0);
 	int avoidTP=rmCreateTypeDistanceConstraint("stay away from Trading Post Sockets", "SocketTradeRoute", 10.0);
+  int avoidTPLong=rmCreateTypeDistanceConstraint("stay away from Trading Post Sockets far", "SocketTradeRoute", 20.0);
 	int avoidLand = rmCreateTerrainDistanceConstraint("ship avoid land", "land", true, 15.0);
   int mesaConstraint = rmCreateBoxConstraint("mesas stay in southern portion of island", .35, .55, .65, .35);
   int northConstraint = rmCreateBoxConstraint("huntable constraint for north side of island", .25, .55, .8, .85);
@@ -157,21 +159,22 @@ void main(void)
 	int avoidWater8 = rmCreateTerrainDistanceConstraint("avoid water long", "Land", false, 10.0);
 	int avoidWater20 = rmCreateTerrainDistanceConstraint("avoid water medium", "Land", false, 20.0);
 	int avoidWater40 = rmCreateTerrainDistanceConstraint("avoid water super long", "Land", false, 40.0);
-  int ferryOnShore=rmCreateTerrainMaxDistanceConstraint("ferry v. water", "water", true, 21.0);
+  int ferryOnShore=rmCreateTerrainMaxDistanceConstraint("ferry v. water", "water", true, 18.0);
   int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true, 3.5);
 
   // things
 	int avoidImportantItem = rmCreateClassDistanceConstraint("avoid natives", rmClassID("importantItem"), 7.0);
   int avoidImportantItemNatives = rmCreateClassDistanceConstraint("secrets etc avoid each other", rmClassID("importantItem"), 70.0);
 	int avoidAll=rmCreateTypeDistanceConstraint("avoid all", "all", 4.0);
+  int avoidKOTH=rmCreateTypeDistanceConstraint("stay away from Kings Hill", "ypKingsHill", 30.0);
   
   // flag constraints
   int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 15.0);
-	int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 15);
-  int flagVsPirates1 = rmCreateTypeDistanceConstraint("flag avoid pirates 1", "zpPirateWaterSpawnFlag1", 20);
-  int flagVsPirates2 = rmCreateTypeDistanceConstraint("flag avoid pirates 2", "zpPirateWaterSpawnFlag2", 20);
-	int flagVsWokou1 = rmCreateTypeDistanceConstraint("flag avoid wokou 1", "zpWokouWaterSpawnFlag1", 20);
-  int flagVsWokou2 = rmCreateTypeDistanceConstraint("flag avoid wokou  2", "zpWokouWaterSpawnFlag2", 20);
+	int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 40);
+  int flagVsPirates1 = rmCreateTypeDistanceConstraint("flag avoid pirates 1", "zpPirateWaterSpawnFlag1", 40);
+  int flagVsPirates2 = rmCreateTypeDistanceConstraint("flag avoid pirates 2", "zpPirateWaterSpawnFlag2", 40);
+	int flagVsWokou1 = rmCreateTypeDistanceConstraint("flag avoid wokou 1", "zpWokouWaterSpawnFlag1", 40);
+  int flagVsWokou2 = rmCreateTypeDistanceConstraint("flag avoid wokou  2", "zpWokouWaterSpawnFlag2", 40);
   int flagEdgeConstraint=rmCreatePieConstraint("flag edge of map", 0.5, 0.5, 0, rmGetMapXSize()-100, 0, 0, 0);
   int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 8.0);
 
@@ -207,7 +210,7 @@ void main(void)
     rmAddAreaTerrainLayer(bigIslandID, "Ceylon\ground_sand1_Ceylon", 0, 6);
     rmAddAreaTerrainLayer(bigIslandID, "Ceylon\ground_sand2_Ceylon", 6, 9);
     rmAddAreaTerrainLayer(bigIslandID, "Ceylon\ground_sand3_Ceylon", 9, 12);
-    rmAddAreaTerrainLayer(bigIslandID, "Ceylon\ground_grass2_Ceylon", 12, 15);
+    rmAddAreaTerrainLayer(bigIslandID, "Ceylon\ground_grass2_Ceylon", 12, 25);
   
 	rmBuildArea(bigIslandID);
 
@@ -233,7 +236,7 @@ void main(void)
 	   rmSetPlacementSection(0.15, 0.85);
 	   rmPlacePlayersCircular(0.29, 0.29, 0);
 
-	float playerFraction=rmAreaTilesToFraction(6000 - cNumberNonGaiaPlayers*300);
+	float playerFraction=rmAreaTilesToFraction(7000 - cNumberNonGaiaPlayers*300);
 	for(i=1; <cNumberPlayers)
 	{
     // Create the Player's area.
@@ -250,7 +253,7 @@ void main(void)
       rmAddAreaTerrainLayer(playerID, "Ceylon\ground_sand1_Ceylon", 0, 6);
       rmAddAreaTerrainLayer(playerID, "Ceylon\ground_sand2_Ceylon", 6, 9);
       rmAddAreaTerrainLayer(playerID, "Ceylon\ground_sand3_Ceylon", 9, 12);
-      rmAddAreaTerrainLayer(playerID, "Ceylon\ground_grass2_Ceylon", 12, 15);
+      rmAddAreaTerrainLayer(playerID, "Ceylon\ground_grass2_Ceylon", 12, 25);
 	// rmSetAreaTerrainType(playerID, playerTerrain);
     rmAddAreaToClass(playerID, classIsland);
     rmAddAreaConstraint(playerID, islandConstraint);
@@ -380,7 +383,7 @@ void main(void)
       rmClearClosestPointConstraints();
 
       int pirateportID1 = -1;
-      pirateportID1 = rmCreateGrouping("pirate port 1", "pirateport01");
+      pirateportID1 = rmCreateGrouping("pirate port 1", "Platform_Universal");
       rmAddClosestPointConstraint(portOnShore);
 
       vector closeToVillage1a = rmFindClosestPointVector(ControllerLoc1, rmXFractionToMeters(1.0));
@@ -409,7 +412,7 @@ void main(void)
       rmClearClosestPointConstraints();
 
       int pirateportID2 = -1;
-      pirateportID2 = rmCreateGrouping("pirate port 2", "pirateport02");
+      pirateportID2 = rmCreateGrouping("pirate port 2", "Platform_Universal");
       rmAddClosestPointConstraint(portOnShore);
 
       vector closeToVillage2a = rmFindClosestPointVector(ControllerLoc2, rmXFractionToMeters(1.0));
@@ -437,7 +440,7 @@ void main(void)
       rmClearClosestPointConstraints();
 
       int pirateportID3 = -1;
-      pirateportID3 = rmCreateGrouping("pirate port 3", "pirateport02");
+      pirateportID3 = rmCreateGrouping("pirate port 3", "Platform_Universal");
       rmAddClosestPointConstraint(portOnShore);
 
       vector closeToVillage3a = rmFindClosestPointVector(ControllerLoc3, rmXFractionToMeters(1.0));
@@ -465,7 +468,7 @@ void main(void)
       rmClearClosestPointConstraints();
 
       int pirateportID4 = -1;
-      pirateportID4 = rmCreateGrouping("pirate port 4", "pirateport02");
+      pirateportID4 = rmCreateGrouping("pirate port 4", "Platform_Universal");
       rmAddClosestPointConstraint(portOnShore);
 
       vector closeToVillage4a = rmFindClosestPointVector(ControllerLoc4, rmXFractionToMeters(1.0));
@@ -604,6 +607,19 @@ void main(void)
          rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
       }
 
+      // check for KOTH game mode
+      if(rmGetIsKOTH()) {
+        
+        int randLoc = rmRandInt(1,2);
+        float xLoc = 0.5;
+        float yLoc = 0.6;
+        float walk = 0.00;
+        
+        ypKingsHillPlacer(xLoc, yLoc, walk, 0);
+        rmEchoInfo("XLOC = "+xLoc);
+        rmEchoInfo("XLOC = "+yLoc);
+      }
+
       // Bonus Jesuits
 
       int malteseController2ID = rmCreateObjectDef("maltese controller 2");
@@ -612,6 +628,7 @@ void main(void)
          rmSetObjectDefMaxDistance(malteseController2ID, rmXFractionToMeters(0.45));
          rmAddObjectDefConstraint(malteseController2ID, avoidImpassableLand);
          rmAddObjectDefConstraint(malteseController2ID, avoidWater20,);
+         rmAddObjectDefConstraint(malteseController2ID, avoidKOTH,);
          rmAddObjectDefConstraint(malteseController2ID, nativeIslandConstraint); 
          rmPlaceObjectDefAtLoc(malteseController2ID, 0, 0.5, 0.5);
          vector malteseControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(malteseController2ID, 0));
@@ -630,9 +647,9 @@ void main(void)
          rmBuildArea(eastIslandVillage2);
 
          int eastIslandVillage1ramp2 = rmCreateArea ("east island village1 ramp 2");
-         rmSetAreaSize(eastIslandVillage1ramp2, rmAreaTilesToFraction(350.0), rmAreaTilesToFraction(350.0));
-         rmSetAreaLocation(eastIslandVillage1ramp2, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc2)-35));
-         rmSetAreaBaseHeight(eastIslandVillage1ramp2, 5.0);
+         rmSetAreaSize(eastIslandVillage1ramp2, rmAreaTilesToFraction(650.0), rmAreaTilesToFraction(650.0));
+         rmSetAreaLocation(eastIslandVillage1ramp2, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc2)));
+         rmSetAreaMix(eastIslandVillage1ramp2, baseMix);
          rmSetAreaCoherence(eastIslandVillage1ramp2, 0.8);
          rmSetAreaSmoothDistance(eastIslandVillage1ramp2, 30);
          rmBuildArea(eastIslandVillage1ramp2);
@@ -658,7 +675,11 @@ void main(void)
 
 	//Prepare to place TCs
 	rmSetObjectDefMinDistance(TCID, 0.0);
-	rmSetObjectDefMaxDistance(TCID, 3.0);
+	rmSetObjectDefMaxDistance(TCID, 40.0);
+  rmSetObjectDefMaxDistance(TCID, avoidPirates);
+	rmAddObjectDefConstraint(TCID, avoidWokou);
+  rmAddObjectDefConstraint(TCID, avoidJesuit);
+  rmAddObjectDefConstraint(TCID, avoidWater8);
 
 	//Prepare to place Explorers, Explorer's dog, etc.
 	int startingUnits = rmCreateStartingUnitsObjectDef(5.0);
@@ -764,7 +785,7 @@ void main(void)
     rmAddGroupingConstraint(jesuit1VillageID , avoidImpassableLand);
     rmAddGroupingConstraint(jesuit1VillageID , avoidWater20);
     rmAddGroupingConstraint(jesuit1VillageID , avoidTCLong);
-    rmAddGroupingConstraint(jesuit1VillageID , avoidTP);
+    rmAddGroupingConstraint(jesuit1VillageID , avoidTPLong);
     rmSetGroupingMinDistance(jesuit1VillageID, 0.0);
     rmSetGroupingMaxDistance(jesuit1VillageID, 50.0);
   }
@@ -776,7 +797,7 @@ void main(void)
     rmAddGroupingConstraint(jesuit2VillageID , avoidImpassableLand);
     rmAddGroupingConstraint(jesuit2VillageID , avoidWater20);
     rmAddGroupingConstraint(jesuit2VillageID , avoidTCLong);
-    rmAddGroupingConstraint(jesuit2VillageID , avoidTP);
+    rmAddGroupingConstraint(jesuit2VillageID , avoidTPLong);
     rmSetGroupingMinDistance(jesuit2VillageID, 0.0);
     rmSetGroupingMaxDistance(jesuit2VillageID, 50.0);
   }
@@ -788,7 +809,7 @@ void main(void)
     rmAddGroupingConstraint(jesuit3VillageID , avoidImpassableLand);
     rmAddGroupingConstraint(jesuit3VillageID , avoidWater20);
     rmAddGroupingConstraint(jesuit3VillageID , avoidTCLong);
-    rmAddGroupingConstraint(jesuit3VillageID , avoidTP);
+    rmAddGroupingConstraint(jesuit3VillageID , avoidTPLong);
     rmSetGroupingMinDistance(jesuit3VillageID, 0.0);
     rmSetGroupingMaxDistance(jesuit3VillageID, 50.0);
   }
@@ -800,7 +821,7 @@ void main(void)
     rmAddGroupingConstraint(jesuit4VillageID , avoidImpassableLand);
     rmAddGroupingConstraint(jesuit4VillageID , avoidWater20);
     rmAddGroupingConstraint(jesuit4VillageID , avoidTCLong);
-    rmAddGroupingConstraint(jesuit4VillageID , avoidTP);
+    rmAddGroupingConstraint(jesuit4VillageID , avoidTPLong);
     rmSetGroupingMinDistance(jesuit4VillageID, 0.0);
     rmSetGroupingMaxDistance(jesuit4VillageID, 50.0);
   }
@@ -891,6 +912,7 @@ void main(void)
 	rmAddObjectDefConstraint(goldID, avoidGold);
   rmAddObjectDefConstraint(goldID, shortAvoidImpassableLand);
   rmAddObjectDefConstraint(goldID, avoidImportantItem);
+  rmAddAreaConstraint(goldID, avoidJesuit);
   rmAddObjectDefConstraint(goldID, avoidCoin);
   rmAddObjectDefConstraint(goldID, avoidTP);
 	rmPlaceObjectDefInArea(goldID, 0, bigIslandID, cNumberNonGaiaPlayers);
@@ -903,6 +925,8 @@ void main(void)
   rmAddObjectDefConstraint(silverID, avoidWater8);
 	rmAddObjectDefConstraint(silverID, avoidGold);
   rmAddObjectDefConstraint(silverID, avoidCoin);
+  rmAddAreaConstraint(silverID, avoidPirates);
+  rmAddAreaConstraint(silverID, avoidWokou);
   rmAddObjectDefConstraint(silverID, avoidTCLong);
   rmAddObjectDefConstraint(silverID, avoidTP);
   rmAddObjectDefConstraint(silverID, avoidImportantItem);
@@ -955,24 +979,6 @@ void main(void)
 
 	// Define and place Nuggets
     
-  // check for KOTH game mode
-  if(rmGetIsKOTH()) {
-    
-    int randLoc = rmRandInt(1,2);
-    float xLoc = 0.5;
-    float yLoc = 0.0;
-    float walk = 0.05;
-    
-    if(randLoc == 1 || cNumberTeams > 2)
-      yLoc = .5;
-    
-    else
-      yLoc = .75;
-    
-    ypKingsHillPlacer(xLoc, yLoc, walk, 0);
-    rmEchoInfo("XLOC = "+xLoc);
-    rmEchoInfo("XLOC = "+yLoc);
-  }
 	// Easier nuggets
 	int nugget1= rmCreateObjectDef("nugget easy"); 
 	rmAddObjectDefItem(nugget1, "Nugget", 1, 0.0);
@@ -1001,7 +1007,6 @@ void main(void)
   rmSetObjectDefMaxDistance(nugget2, rmXFractionToMeters(1.0));
   rmAddObjectDefConstraint(nugget2, avoidLand);
   rmAddObjectDefConstraint(nugget2, avoidNuggetWater2);
-  rmAddObjectDefConstraint(nugget2, avoidNuggetWater);
   rmAddObjectDefConstraint(nugget2, playerEdgeConstraint);
   rmPlaceObjectDefPerPlayer(nugget2, false, nuggetCount);
 
@@ -1011,7 +1016,6 @@ void main(void)
   rmSetObjectDefMinDistance(nugget2b, rmXFractionToMeters(0.25));
   rmSetObjectDefMaxDistance(nugget2b, rmXFractionToMeters(1.0));
   rmAddObjectDefConstraint(nugget2b, avoidLand);
-  rmAddObjectDefConstraint(nugget2b, avoidNuggetWater);
   rmAddObjectDefConstraint(nugget2b, avoidNuggetWater2);
   rmAddObjectDefConstraint(nugget2b, playerEdgeConstraint);
   rmPlaceObjectDefPerPlayer(nugget2b, false, nuggetCount/2);
@@ -2195,7 +2199,7 @@ rmSetTriggerLoop(false);
 
 // Testing
 
-for (k=1; <= cNumberNonGaiaPlayers) {
+/*for (k=1; <= cNumberNonGaiaPlayers) {
 
 rmCreateTrigger("ZP Test Plr"+k);
 rmAddTriggerCondition("ZP PLAYER Human");
@@ -2225,7 +2229,7 @@ rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
-}
+}*/
 
 
     // --------------- Make load bar move. ----------------------------------------------------------------------------

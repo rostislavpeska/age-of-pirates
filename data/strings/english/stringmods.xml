@@ -686,7 +686,9 @@
       <string _locid="300683">Scripturalist</string>
 			<string _locid="300684">Increases the hitpoints of Jesuit missionaries. Enables them to heal units in combat and from further away.</string>
       <string _locid="300685">ZP Jesuit Garden</string>
-      <string _locid="300686">Philippines</string>
+      <string _locid="300686">Pirate Wars</string>
+      <string _locid="300687">Players start on separate islands with enough resources, trade route and a native settlement. \n\nSettlements: Pirates, Wokou, Jesuit</string>
+      <string _locid="300688">The war between European and Asian Pirate troops is starting on the Philippines! Who will win?</string>
     </language>
   </stringtable>
 </stringmods>

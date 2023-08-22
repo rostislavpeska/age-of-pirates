@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mapinfo details="70043" displayNameID="300686" loadDetails="70045" largeMapName = "zpPhiliphines"
-    imagepath="ui\random_map\ceylon\ceylon_mini" cannotReplace="" loadBackground="ui\random_map\ceylon\ceylon_map">
-    <loadss>ui\random_map\ceylon\ceylon_ss_01</loadss>
-    <loadss>ui\random_map\ceylon\ceylon_ss_02</loadss>
-    <loadss>ui\random_map\ceylon\ceylon_ss_03</loadss>
+<mapinfo details="300687" displayNameID="300686" loadDetails="300688" largeMapName = "zpphilippines"
+    imagepath="ui\random_map\philippines\philippines_mini" cannotReplace="" loadBackground="ui\random_map\philippines\philippines_map">
+    <loadss>ui\random_map\philippines\philippines_01</loadss>
+    <loadss>ui\random_map\philippines\philippines_02</loadss>
+    <loadss>ui\random_map\philippines\philippines_03</loadss>
 </mapinfo>

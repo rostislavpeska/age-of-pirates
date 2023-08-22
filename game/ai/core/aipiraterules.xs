@@ -87,6 +87,10 @@ minInterval 5
     {
         xsEnableRule("zpMalteseTechMonitor");
     }
+    if (getGaiaUnitCount(cUnitTypezpJesuitCathedral) > 0)
+    {
+        xsEnableRule("zpJesuitTechMonitor");
+    }
     
     xsDisableSelf();
 }
@@ -740,7 +744,7 @@ rule MaintainWokouShips
 inactive
 minInterval 30
 {
-  const int list_size = 2;
+  const int list_size = 1;
   static int proxy_list = -1;
   static int ship_list = -1;
 
@@ -757,9 +761,6 @@ minInterval 30
 
     xsArraySetInt(proxy_list, 0, cUnitTypezpWokouJunkProxy);
     xsArraySetInt(ship_list, 0, cUnitTypeypWokouJunk);
-
-    xsArraySetInt(proxy_list, 1, cUnitTypezpFireShipProxy);
-    xsArraySetInt(ship_list, 1, cUnitTypeypFireship);
 
   }
 
@@ -1565,7 +1566,7 @@ rule MaintainScientistShips
 inactive
 minInterval 30
 {
-  const int list_size = 23;
+  const int list_size = 3;
   static int proxy_list = -1;
   static int ship_list = -1;
 
@@ -1836,4 +1837,38 @@ minInterval 10
          }
       
    }
+}
+
+//==============================================================================
+// Jesuit Tech Monitor
+//==============================================================================
+rule zpJesuitTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketJesuit, cUnitStateAny) == 0)
+      {
+      return; // Player has no Jesuit socket.
+      }
+
+      // Jesuit Big Button
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpJesuitCathedral,
+      []() -> bool { return (kbGetAge() >= cAge2 ); },
+      cUnitTypeTradingPost);
+
+      // Jesuit Tank
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatJesuitTank,
+      []() -> bool { return ((kbTechGetStatus(cTechzpJesuitCathedral) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Jesuit Native Armies
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatJesuitArmory,
+      []() -> bool { return ((kbTechGetStatus(cTechzpJesuitCathedral) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
 }
