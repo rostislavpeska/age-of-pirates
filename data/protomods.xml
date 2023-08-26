@@ -13996,7 +13996,7 @@
 		<buildlimit>5</buildlimit>
 		<bounty>20.0000</bounty>
 		<buildbounty>20.0000</buildbounty>
-		<cost resourcetype="Gold">300.0000</cost>
+		<cost resourcetype="Gold">250.0000</cost>
     <carrycapacity resourcetype="Food">1.0000</carrycapacity>
     <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>

@@ -2550,7 +2550,8 @@ minInterval 2
          cRandomMapName == "euarchipelagolarge" ||
          cRandomMapName == "afswahilicoast" ||
          cRandomMapName == "afswahilicoastlarge" ||
-         cRandomMapName == "zpeldorado")
+         cRandomMapName == "zpeldorado" ||
+         cRandomMapName == "zptreasureisland")
    {
       gMigrationMap = true;
    }

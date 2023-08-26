@@ -8452,7 +8452,7 @@
     <flag>CheckLandHCGatherPoint</flag>
     <flag>YPNativeImprovement</flag>
     <prereqs>
-			<techstatus status="Active">Industrialize</techstatus>
+			<techstatus status="Active">Imperialize</techstatus>
     </prereqs>
     <flag>CountsTowardMilitaryScore</flag>
       <effects>
@@ -8630,6 +8630,16 @@
         </target>
       </effect>
       <effect type="TechStatus" status="active">zpBattleAirship</effect>
+    </effects>
+  </tech>
+  <tech name="zpBasicTradingPost" type="Normal">
+    <dbid>40268</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TradingPost" relativity="Absolute">
+        <target type="ProtoUnit">Church</target>
+      </effect>
     </effects>
   </tech>
 
