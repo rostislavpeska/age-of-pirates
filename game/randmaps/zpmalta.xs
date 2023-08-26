@@ -51,6 +51,7 @@ void main(void)
 	rmSetMapType("grass");
 	rmSetMapType("water");
   	rmSetMapType("mediEurope");
+   rmSetMapType("euroNavalTradeRoute");
 
    rmSetLightingSet("punjab_skirmish");
    rmSetOceanReveal(true);
@@ -145,7 +146,7 @@ void main(void)
    int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 50.0);
    int fishVsFishID=rmCreateTypeDistanceConstraint("fish v fish", "fishSalmon", 20.0);
    int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 8.0);
-   int whaleVsWhaleID=rmCreateTypeDistanceConstraint("whale v whale", "HumpbackWhale", 50.0);
+   int whaleVsWhaleID=rmCreateTypeDistanceConstraint("whale v whale", "MinkeWhale", 50.0);
    int whaleLand = rmCreateTerrainDistanceConstraint("whale land", "land", true, 25.0);
 
    int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "abstractNugget", 75.0); 

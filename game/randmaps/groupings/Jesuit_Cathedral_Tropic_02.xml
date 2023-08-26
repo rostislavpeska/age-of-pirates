@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>13</width>
+	<height>15</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="68" posx="3.6177" posz="-12.7719" orientx="-0.9239" orienty="0.0000" orientz="0.3827">deSMTengriWoman</unit>
+		<unit variation="123" posx="-0.3138" posz="-11.6332" orientx="0.7071" orienty="0.0000" orientz="-0.7071">UnderbrushCoastalJapan</unit>
+		<unit variation="39" posx="-4.2786" posz="-10.6165" orientx="0.0000" orienty="0.0000" orientz="-1.0000">ypNativeTempleJesuit</unit>
+		<unit variation="112" posx="-5.4243" posz="-12.9550" orientx="-0.3149" orienty="0.0000" orientz="-0.9491">ypSMJesuitAccessory</unit>
+		<unit variation="160" posx="-2.1420" posz="-13.3460" orientx="0.1116" orienty="0.0000" orientz="-0.9937">ypSMJesuitAccessory</unit>
+		<unit variation="227" posx="-1.4864" posz="-8.9022" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="227" posx="-5.8306" posz="-9.2367" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="227" posx="7.3755" posz="-12.2907" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="227" posx="1.0804" posz="-11.9867" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="118" posx="4.8365" posz="-11.3315" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deSMTengriWoman</unit>
+		<unit variation="55" posx="10.1540" posz="-11.4320" orientx="0.7071" orienty="0.0000" orientz="-0.7071">UnderbrushCoastalJapan</unit>
+		<unit variation="200" posx="7.8203" posz="-9.8517" orientx="0.7071" orienty="0.0000" orientz="-0.7071">UnderbrushCoastalJapan</unit>
+		<unit variation="48" posx="7.0866" posz="-11.1787" orientx="0.7071" orienty="0.0000" orientz="-0.7071">UnderbrushCoastalJapan</unit>
+		<unit variation="210" posx="0.3997" posz="-8.7859" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushCoastalJapan</unit>
+		<unit variation="138" posx="5.3817" posz="-8.9777" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushCoastalJapan</unit>
+		<unit variation="108" posx="2.0676" posz="-9.6840" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropVilMale</unit>
+		<unit variation="39" posx="7.7073" posz="-7.6885" orientx="0.7071" orienty="0.0000" orientz="-0.7071">UnderbrushCoastalJapan</unit>
+		<unit variation="60" posx="-7.1907" posz="-9.7505" orientx="0.9868" orienty="-0.0000" orientz="-0.1618">ypSMJesuitAccessory</unit>
+		<unit variation="62" posx="1.0871" posz="-8.2477" orientx="0.0570" orienty="0.0000" orientz="-0.9984">ypSMJesuitAccessory</unit>
+		<unit variation="160" posx="9.3417" posz="-8.8360" orientx="0.4291" orienty="0.0000" orientz="0.9032">ypSMJesuitAccessory</unit>
+		<unit variation="177" posx="-8.8358" posz="-8.7726" orientx="-0.9885" orienty="0.0000" orientz="-0.1510">ypSMJesuitAccessory</unit>
+		<unit variation="227" posx="0.5610" posz="-2.7937" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="81" posx="7.6207" posz="-6.4353" orientx="0.3219" orienty="0.0000" orientz="-0.9468">ypSMJesuitAccessory</unit>
+		<unit variation="227" posx="4.1056" posz="-2.3190" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="227" posx="10.6702" posz="-2.4189" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="155" posx="-6.9794" posz="-2.9074" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSocketJesuit</unit>
+		<unit variation="73" posx="2.4940" posz="-1.4060" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpJesuitCathedral</unit>
+		<unit variation="127" posx="10.5196" posz="-2.9562" orientx="0.9481" orienty="0.0000" orientz="-0.3180">ypSMJesuitAccessory</unit>
+		<unit variation="28" posx="10.6701" posz="-1.8158" orientx="-0.0669" orienty="0.0000" orientz="0.9978">ypSMJesuitPeasants</unit>
+		<unit variation="179" posx="-1.0825" posz="-1.6880" orientx="-0.9644" orienty="0.0000" orientz="-0.2645">ypSMJesuitAccessory</unit>
+		<unit variation="227" posx="-6.4685" posz="5.7497" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="227" posx="7.0008" posz="5.1265" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="63" posx="-7.7646" posz="3.0040" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsColony</unit>
+		<unit variation="142" posx="-8.7596" posz="2.3876" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsColony</unit>
+		<unit variation="226" posx="13.1992" posz="2.2961" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsColony</unit>
+		<unit variation="100" posx="-2.2971" posz="3.2387" orientx="0.8115" orienty="0.0000" orientz="-0.5843">ypSMJesuitAccessory</unit>
+		<unit variation="81" posx="10.6746" posz="3.1329" orientx="0.0500" orienty="0.0000" orientz="-0.9987">ypSMJesuitMan</unit>
+		<unit variation="238" posx="-1.8283" posz="2.1817" orientx="0.9630" orienty="0.0000" orientz="0.2695">ypSMJesuitAccessory</unit>
+		<unit variation="227" posx="-0.3689" posz="6.5588" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="94" posx="-11.4649" posz="4.4223" orientx="0.0000" orienty="0.0000" orientz="-1.0000">ypNativeTempleJesuit</unit>
+		<unit variation="227" posx="-10.4843" posz="6.3250" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="227" posx="3.5704" posz="8.1620" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="77" posx="-5.5993" posz="5.9293" orientx="0.3791" orienty="0.0000" orientz="-0.9253">ypSMJesuitLady</unit>
+		<unit variation="227" posx="9.3087" posz="8.8544" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="234" posx="0.0812" posz="6.6695" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsColony</unit>
+		<unit variation="230" posx="-0.4970" posz="9.6529" orientx="0.0000" orienty="0.0000" orientz="-1.0000">ypNativeTempleJesuit</unit>
+		<unit variation="108" posx="-1.2004" posz="6.4550" orientx="-0.9946" orienty="0.0000" orientz="-0.1035">ypSMJesuitAccessory</unit>
+		<unit variation="227" posx="8.2728" posz="10.7811" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="178" posx="-7.9850" posz="9.7345" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsColony</unit>
+		<unit variation="1" posx="3.8478" posz="10.8707" orientx="0.5768" orienty="0.0000" orientz="-0.8169">ypSMJesuitAccessory</unit>
+		<unit variation="219" posx="-9.1534" posz="11.2259" orientx="-0.6242" orienty="0.0000" orientz="0.7813">ypSMJesuitAccessory</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_beach_street_ground">
+			<block startx="-1" startz="-4" endx="-1" endz="-4"></block>
+			<block startx="0" startz="-6" endx="0" endz="-2"></block>
+			<block startx="1" startz="-7" endx="1" endz="-3"></block>
+			<block startx="2" startz="-7" endx="2" endz="-3"></block>
+			<block startx="3" startz="-6" endx="3" endz="-1"></block>
+			<block startx="4" startz="-6" endx="4" endz="0"></block>
+			<block startx="5" startz="-5" endx="5" endz="0"></block>
+			<block startx="6" startz="-4" endx="6" endz="-1"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

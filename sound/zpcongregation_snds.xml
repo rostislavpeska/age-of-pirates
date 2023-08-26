@@ -1,0 +1,32 @@
+<protounitsounddef>
+  <protounit name="zpCongregation">
+    <soundtype name="Select">
+      <techlogic>
+        <choice name="decivhasmosque">
+          <soundset name="UI_Building_Economic">
+          </soundset>
+        </choice>
+        <choice name="none">
+          <soundset name="UI_Select_Building_Church">
+          </soundset>
+        </choice>
+      </techlogic>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="BuildingDestruction">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <techlogic>
+        <choice name="decivhasmosque">
+          <soundset name="UI_Building_Economic">
+          </soundset>
+        </choice>
+        <choice name="none">
+          <soundset name="UI_Select_Building_Church">
+          </soundset>
+        </choice>
+      </techlogic>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

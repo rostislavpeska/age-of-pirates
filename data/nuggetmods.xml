@@ -102,7 +102,7 @@
             <maptype>caribbeanwater</maptype>
             <maptype>arcticwater</maptype>
             <difficulty>6</difficulty>
-            <guardian>Privateer</guardian>
+            <guardian>zpGuardianPrivateer</guardian>
         </nugget>
         <nugget>
             <name>deWaterNuggetCoral2</name>
@@ -119,7 +119,7 @@
             <amount>200</amount>
             <maptype>caribbeanwater</maptype>
             <maptype>arcticwater</maptype>
-            <guardian>Privateer</guardian>
+            <guardian>zpGuardianPrivateer</guardian>
             <difficulty>6</difficulty>
          </nugget>
          <nugget>
@@ -133,7 +133,7 @@
             <amount>200</amount>
             <maptype>caribbeanwater</maptype>
             <maptype>arcticwater</maptype>
-            <guardian>Privateer</guardian>
+            <guardian>zpGuardianPrivateer</guardian>
             <difficulty>6</difficulty>
         </nugget>
         <nugget>
@@ -147,7 +147,7 @@
             <amount>185</amount>
             <maptype>caribbeanwater</maptype>
             <maptype>arcticwater</maptype>
-            <guardian>Privateer</guardian>
+            <guardian>zpGuardianPrivateer</guardian>
             <difficulty>6</difficulty>
         </nugget>
         <nugget>
@@ -161,7 +161,7 @@
             <amount>175</amount>
             <maptype>caribbeanwater</maptype>
             <maptype>arcticwater</maptype>
-            <guardian>Privateer</guardian>
+            <guardian>zpGuardianPrivateer</guardian>
             <difficulty>6</difficulty>
         </nugget>
         <nugget>
@@ -175,7 +175,7 @@
             <amount>190</amount>
             <maptype>caribbeanwater</maptype>
             <maptype>arcticwater</maptype>
-            <guardian>Privateer</guardian>
+            <guardian>zpGuardianPrivateer</guardian>
             <difficulty>6</difficulty>
         </nugget>
         <nugget>

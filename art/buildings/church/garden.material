@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\plantation\east\age2\textures\vines_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\plantation\east\age2\textures\vines_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\plantation\east\age2\textures\vines_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

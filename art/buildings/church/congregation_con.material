@@ -1,0 +1,28 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\church\textures\congregation_MatA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\church\spanish_church_age2\textures\spanish_church_age2_MatA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\church\spanish_church_age2\textures\spanish_church_age2_MatA_Masks">
+      </texture>
+      <texture name="Details" override="buildings\church\spanish_church_age2\textures\spanish_church_age2_MatA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="textures\construction\spanish_church_age2_con\spanish_church_age2_con_BaseColor">
+      </texture>
+      <texture name="Normals" override="textures\construction\spanish_church_age2_con\spanish_church_age2_con_Normals">
+      </texture>
+      <texture name="Masks" override="textures\construction\spanish_church_age2_con\spanish_church_age2_con_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

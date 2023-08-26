@@ -1,0 +1,63 @@
+<tactics>
+	<action>
+		<name stringid="38134">HandAttack</name>
+		<type>HandAttack</type>
+		<maxrange>1.0</maxrange>
+		<rate type="Unit">1.0 </rate>
+		<attackaction>1</attackaction>
+		<handlogic>1</handlogic>
+		<anim>Attack</anim>
+		<impacteffect>effects\impacts\melee</impacteffect>
+	</action>
+	<action>
+		<name stringid="69155">Heal</name>
+		<type>Heal</type>
+		<maxrange>12</maxrange>
+		<rate type="LogicalTypeHealed">5.0 </rate>
+		<anim>Heal</anim>
+	</action>
+	<action>
+		<name stringid="69155">CombatHeal</name>
+		<type>Heal</type>
+		<active>0</active>
+		<maxrange>12</maxrange>
+		<healnonidle>1</healnonidle>
+		<rate type="LogicalTypeHealed">5.0</rate>
+		<anim>Heal</anim>
+	</action>
+	<action>
+		<name stringid="69155">Convert</name>
+		<type>Convert</type>
+		<active>1</active>
+		<maxrange>12</maxrange>
+		<anim>Convert</anim>
+		<rof>1.000000</rof>
+		<conversiondelay>6.000000</conversiondelay>
+	</action>
+	<action>
+		<name stringid="42178">Gather</name>
+		<type>Gather</type>
+		<typedanim type="deFurTrade">GatherBush</typedanim>
+		<maxrange>0.5</maxrange>
+		<anim>Pickup</anim>
+		<rate type="zpCongregation">1.0</rate>
+	</action>
+	<action>
+		<name stringid="69147">Build</name>
+		<type>Build</type>
+		<anim>Build</anim>
+		<maxrange>0.2</maxrange>
+		<rate type="Building">1.0</rate>
+	</action>
+	<tactic>Normal
+		<action priority="100">Heal</action>
+		<action priority="100">CombatHeal</action>
+		<action priority="90">HandAttack</action>
+		<action>Convert</action>
+		<action>Gather</action>
+		<action>Build</action>
+		<attacktype>LogicalTypeHandUnitsAttack</attacktype>
+		<runaway>1</runaway>
+		<autoretarget>1</autoretarget>
+	</tactic>
+</tactics>
