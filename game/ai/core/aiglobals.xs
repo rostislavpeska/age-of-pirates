@@ -47,6 +47,8 @@ extern const int cWaterNuggetAttack = 0;     // Units attacking the guardians
 extern const int cWaterNuggetGather = 1;     // Units gathering the nugget
 extern int gWaterNuggetState = cWaterNuggetSearch;           // Stores the state of the water nugget plan
 extern int gWaterNuggetTarget = -1;          // Stores the target of whatever the water nugget plan is doing
+extern vector gWaterNuggetTargetLoc = cInvalidVector;
+extern int gWaterNuggetTimeout = -1;         // Stores when a water nugget plan is made so it can be reset after too long
 
 extern bool gIsPirateMap = false;            // Set true for testing. Used for pirates of the carribean mod
 
