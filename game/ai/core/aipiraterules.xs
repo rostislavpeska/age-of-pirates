@@ -90,7 +90,13 @@ minInterval 5
     if (getGaiaUnitCount(cUnitTypezpJesuitCathedral) > 0)
     {
         xsEnableRule("zpJesuitTechMonitor");
+        xsEnableRule("priestAbilityMonitor");
     }
+
+   if (cMyCiv == cCivDEInca)
+   {
+        xsEnableRule("priestessAbilityMonitor");
+   }
     
     xsDisableSelf();
 }
@@ -136,6 +142,74 @@ minInterval 12
              (existingPlanID != gCoastalGunPlan))
          {
             aiPlanAddUnitType(existingPlanID, cUnitTypezpAirshipAI, 1, 1, 200);
+         }
+      }
+   }
+}
+
+//==============================================================================
+// Priestess Ability Monitor
+//==============================================================================
+rule priestessAbilityMonitor
+inactive
+minInterval 12
+{
+   int priestessID = -1;
+   int enemyID = 0;
+   vector enemyLoc = cInvalidVector;
+   vector priestessLoc = cInvalidVector;
+   
+   // Subs dive if any enemy warships are nearby, otherwise surface
+   int priestessQuery = createSimpleUnitQuery(cUnitTypedePriestess, cMyID, cUnitStateAlive);
+   int numberPriestessFound = kbUnitQueryExecute(priestessQuery);
+
+   for (i = 0; < numberPriestessFound)
+   {
+      priestessID = kbUnitQueryGetResult(priestessQuery, i);
+      // Check for conversion ability
+      if (aiCanUseAbility(priestessID, cProtoPowerPowerConvert) == true)
+      {
+         priestessLoc = kbUnitGetPosition(priestessID);
+         enemyID = getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+            cUnitStateAlive, priestessLoc, 20.0);
+         enemyLoc = kbUnitGetPosition(enemyID);
+         if (enemyID > 0)
+         {
+            aiTaskUnitSpecialPower(priestessID, cProtoPowerPowerConvert, enemyID, cInvalidVector);
+         }
+      }
+   }
+}
+
+//==============================================================================
+// Jesuit Priest Ability Monitor
+//==============================================================================
+rule priestAbilityMonitor
+inactive
+minInterval 12
+{
+   int priestID = -1;
+   int enemyID = 0;
+   vector enemyLoc = cInvalidVector;
+   vector priestLoc = cInvalidVector;
+   
+   // Subs dive if any enemy warships are nearby, otherwise surface
+   int priestQuery = createSimpleUnitQuery(cUnitTypezpPriest, cMyID, cUnitStateAlive);
+   int numberPriestFound = kbUnitQueryExecute(priestQuery);
+
+   for (i = 0; < numberPriestFound)
+   {
+      priestID = kbUnitQueryGetResult(priestQuery, i);
+      // Check for conversion ability
+      if (aiCanUseAbility(priestID, cProtoPowerPowerConvert) == true)
+      {
+         priestLoc = kbUnitGetPosition(priestID);
+         enemyID = getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+            cUnitStateAlive, priestLoc, 20.0);
+         enemyLoc = kbUnitGetPosition(enemyID);
+         if (enemyID > 0)
+         {
+            aiTaskUnitSpecialPower(priestID, cProtoPowerPowerConvert, enemyID, cInvalidVector);
          }
       }
    }
