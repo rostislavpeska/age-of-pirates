@@ -1269,7 +1269,7 @@ rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
 
    rmSwitchToTrigger(rmTriggerID("TrainPrivateer2ON_Plr"+k));
    rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject","56");
+   rmSetTriggerConditionParam("DstObject","64");
    rmSetTriggerConditionParamInt("Player",k);
    rmSetTriggerConditionParam("UnitType","zpPrivateerProxy");
    rmSetTriggerConditionParamInt("Dist",35);
@@ -1403,7 +1403,7 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
 
    rmSwitchToTrigger(rmTriggerID("BlackbTrain2ONPlr"+k));
    rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject","56");
+   rmSetTriggerConditionParam("DstObject","64");
    rmSetTriggerConditionParamInt("Player",k);
    rmSetTriggerConditionParam("UnitType","zpSPCQueenAnneProxy");
    rmSetTriggerConditionParamInt("Dist",35);
@@ -1434,7 +1434,7 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
 
    rmSwitchToTrigger(rmTriggerID("GraceTrain2ONPlr"+k));
    rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject","56");
+   rmSetTriggerConditionParam("DstObject","64");
    rmSetTriggerConditionParamInt("Player",k);
    rmSetTriggerConditionParam("UnitType","zpSPCBlackPearlProxy");
    rmSetTriggerConditionParamInt("Dist",35);
@@ -1465,7 +1465,7 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
 
    rmSwitchToTrigger(rmTriggerID("CaesarTrain2ONPlr"+k));
    rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject","56");
+   rmSetTriggerConditionParam("DstObject","64");
    rmSetTriggerConditionParamInt("Player",k);
    rmSetTriggerConditionParam("UnitType","zpSPCNeptuneGalleyProxy");
    rmSetTriggerConditionParamInt("Dist",35);
@@ -1678,14 +1678,14 @@ if (cNumberNonGaiaPlayers >= 4){
 
    rmSwitchToTrigger(rmTriggerID("Pirates2on_Player"+k));
    rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject","56");
+   rmSetTriggerConditionParam("DstObject","64");
    rmSetTriggerConditionParamInt("Player",k);
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("UnitType","TradingPost");
    rmSetTriggerConditionParam("Op",">=");
    rmSetTriggerConditionParamFloat("Count",1);
    rmAddTriggerEffect("Convert Units in Area");
-   rmSetTriggerEffectParam("SrcObject","56");
+   rmSetTriggerEffectParam("SrcObject","64");
    rmSetTriggerEffectParamInt("SrcPlayer",0);
    rmSetTriggerEffectParamInt("TrgPlayer",k);
    rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag2");
@@ -1707,14 +1707,14 @@ if (cNumberNonGaiaPlayers >= 4){
 
    rmSwitchToTrigger(rmTriggerID("Pirates2off_Player"+k));
    rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject","56");
+   rmSetTriggerConditionParam("DstObject","64");
    rmSetTriggerConditionParamInt("Player",k);
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("UnitType","TradingPost");
    rmSetTriggerConditionParam("Op","==");
    rmSetTriggerConditionParamFloat("Count",0);
    rmAddTriggerEffect("Convert Units in Area");
-   rmSetTriggerEffectParam("SrcObject","56");
+   rmSetTriggerEffectParam("SrcObject","64");
    rmSetTriggerEffectParamInt("SrcPlayer",k);
    rmSetTriggerEffectParamInt("TrgPlayer",0);
    rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag2");
@@ -1793,7 +1793,7 @@ rmCreateTrigger("TrainJunk1TIME Plr"+k);
 
    rmSwitchToTrigger(rmTriggerID("TrainJunk2ON_Plr"+k));
    rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject","115");
+   rmSetTriggerConditionParam("DstObject","123");
    rmSetTriggerConditionParamInt("Player",k);
    rmSetTriggerConditionParam("UnitType","zpWokouJunkProxy");
    rmSetTriggerConditionParamInt("Dist",35);
@@ -1841,7 +1841,7 @@ rmCreateTrigger("TrainJunk1TIME Plr"+k);
 
 rmSwitchToTrigger(rmTriggerID("TrainJunk1ON_Plr"+k));
 rmAddTriggerCondition("Units in Area");
-rmSetTriggerConditionParam("DstObject","85");
+rmSetTriggerConditionParam("DstObject","93");
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParam("UnitType","zpWokouJunkProxy");
 rmSetTriggerConditionParamInt("Dist",35);
@@ -1890,20 +1890,20 @@ rmSetTriggerLoop(false);
 // Fire Ship training
 
 for (k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("TrainFireship1ON Plr"+k);
-rmCreateTrigger("TrainFireship1OFF Plr"+k);
-rmCreateTrigger("TrainFireship1TIME Plr"+k);
+rmCreateTrigger("trainFuchuan1ON Plr"+k);
+rmCreateTrigger("trainFuchuan1OFF Plr"+k);
+rmCreateTrigger("trainFuchuan1TIME Plr"+k);
 
    if (cNumberNonGaiaPlayers >= 3){
-   rmCreateTrigger("TrainFireship2ON Plr"+k);
-   rmCreateTrigger("TrainFireship2OFF Plr"+k);
-   rmCreateTrigger("TrainFireship2TIME Plr"+k);
+   rmCreateTrigger("trainFuchuan2ON Plr"+k);
+   rmCreateTrigger("trainFuchuan2OFF Plr"+k);
+   rmCreateTrigger("trainFuchuan2TIME Plr"+k);
 
-   rmSwitchToTrigger(rmTriggerID("TrainFireship2ON_Plr"+k));
+   rmSwitchToTrigger(rmTriggerID("trainFuchuan2ON_Plr"+k));
    rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject","115");
+   rmSetTriggerConditionParam("DstObject","123");
    rmSetTriggerConditionParamInt("Player",k);
-   rmSetTriggerConditionParam("UnitType","zpFireShipProxy");
+   rmSetTriggerConditionParam("UnitType","zpWokouFuchuanProxy");
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("Op",">=");
    rmSetTriggerConditionParamInt("Count",1);
@@ -1912,26 +1912,26 @@ rmCreateTrigger("TrainFireship1TIME Plr"+k);
    rmSetTriggerEffectParam("TechID","cTechzpTrainFireJunk2"); //operator
    rmSetTriggerEffectParamInt("Status",2);
    rmAddTriggerEffect("Fire Event");
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship2OFF_Plr"+k));
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2OFF_Plr"+k));
    rmAddTriggerEffect("Fire Event");
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship2TIME_Plr"+k));
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2TIME_Plr"+k));
    rmSetTriggerPriority(4);
    rmSetTriggerActive(false);
    rmSetTriggerRunImmediately(true);
    rmSetTriggerLoop(false);
 
-   rmSwitchToTrigger(rmTriggerID("TrainFireship2OFF_Plr"+k));
+   rmSwitchToTrigger(rmTriggerID("trainFuchuan2OFF_Plr"+k));
    rmAddTriggerCondition("Timer");
    rmSetTriggerConditionParamInt("Param1",5);
    rmAddTriggerEffect("Fire Event");
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship2ON_Plr"+k));
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2ON_Plr"+k));
    rmSetTriggerPriority(4);
    rmSetTriggerActive(false);
    rmSetTriggerRunImmediately(true);
    rmSetTriggerLoop(false);
 
    
-   rmSwitchToTrigger(rmTriggerID("TrainFireship2TIME_Plr"+k));
+   rmSwitchToTrigger(rmTriggerID("trainFuchuan2TIME_Plr"+k));
    rmAddTriggerCondition("Timer");
    rmSetTriggerConditionParamFloat("Param1",0.5);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -1948,11 +1948,11 @@ rmCreateTrigger("TrainFireship1TIME Plr"+k);
    rmSetTriggerLoop(false);
    }
 
-rmSwitchToTrigger(rmTriggerID("TrainFireship1ON_Plr"+k));
+rmSwitchToTrigger(rmTriggerID("trainFuchuan1ON_Plr"+k));
 rmAddTriggerCondition("Units in Area");
-rmSetTriggerConditionParam("DstObject","85");
+rmSetTriggerConditionParam("DstObject","93");
 rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("UnitType","zpFireShipProxy");
+rmSetTriggerConditionParam("UnitType","zpWokouFuchuanProxy");
 rmSetTriggerConditionParamInt("Dist",35);
 rmSetTriggerConditionParam("Op",">=");
 rmSetTriggerConditionParamInt("Count",1);
@@ -1961,25 +1961,25 @@ rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpTrainFireJunk1"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1OFF_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1OFF_Plr"+k));
 rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1TIME_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1TIME_Plr"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
-rmSwitchToTrigger(rmTriggerID("TrainFireship1OFF_Plr"+k));
+rmSwitchToTrigger(rmTriggerID("trainFuchuan1OFF_Plr"+k));
 rmAddTriggerCondition("Timer");
 rmSetTriggerConditionParamInt("Param1",5);
 rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1ON_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1ON_Plr"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
-rmSwitchToTrigger(rmTriggerID("TrainFireship1TIME_Plr"+k));
+rmSwitchToTrigger(rmTriggerID("trainFuchuan1TIME_Plr"+k));
 rmAddTriggerCondition("Timer");
 rmSetTriggerConditionParamFloat("Param1",0.5);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -2004,14 +2004,14 @@ rmCreateTrigger("Wokou1off Player"+k);
 
 rmSwitchToTrigger(rmTriggerID("Wokou1on_Player"+k));
 rmAddTriggerCondition("Units in Area");
-rmSetTriggerConditionParam("DstObject","85");
+rmSetTriggerConditionParam("DstObject","93");
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParamInt("Dist",35);
 rmSetTriggerConditionParam("UnitType","TradingPost");
 rmSetTriggerConditionParam("Op",">=");
 rmSetTriggerConditionParamFloat("Count",1);
 rmAddTriggerEffect("Convert Units in Area");
-rmSetTriggerEffectParam("SrcObject","85");
+rmSetTriggerEffectParam("SrcObject","93");
 rmSetTriggerEffectParamInt("SrcPlayer",0);
 rmSetTriggerEffectParamInt("TrgPlayer",k);
 rmSetTriggerEffectParam("UnitType","zpWokouWaterSpawnFlag1");
@@ -2021,7 +2021,7 @@ rmSetTriggerEffectParamInt("EventID", rmTriggerID("Wokou1off_Player"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainJunk1ON_Plr"+k));
 rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1ON_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1ON_Plr"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
@@ -2029,14 +2029,14 @@ rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("Wokou1off_Player"+k));
 rmAddTriggerCondition("Units in Area");
-rmSetTriggerConditionParam("DstObject","85");
+rmSetTriggerConditionParam("DstObject","93");
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParamInt("Dist",35);
 rmSetTriggerConditionParam("UnitType","TradingPost");
 rmSetTriggerConditionParam("Op","==");
 rmSetTriggerConditionParamFloat("Count",0);
 rmAddTriggerEffect("Convert Units in Area");
-rmSetTriggerEffectParam("SrcObject","85");
+rmSetTriggerEffectParam("SrcObject","93");
 rmSetTriggerEffectParamInt("SrcPlayer",k);
 rmSetTriggerEffectParamInt("TrgPlayer",0);
 rmSetTriggerEffectParam("UnitType","zpWokouWaterSpawnFlag1");
@@ -2046,7 +2046,7 @@ rmSetTriggerEffectParamInt("EventID", rmTriggerID("Wokou1on_Player"+k));
 rmAddTriggerEffect("Disable Trigger");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainJunk1ON_Plr"+k));
 rmAddTriggerEffect("Disable Trigger");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1ON_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1ON_Plr"+k));
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
@@ -2059,14 +2059,14 @@ if (cNumberNonGaiaPlayers >= 3){
 
    rmSwitchToTrigger(rmTriggerID("Wokou2on_Player"+k));
    rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject","115");
+   rmSetTriggerConditionParam("DstObject","123");
    rmSetTriggerConditionParamInt("Player",k);
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("UnitType","TradingPost");
    rmSetTriggerConditionParam("Op",">=");
    rmSetTriggerConditionParamFloat("Count",1);
    rmAddTriggerEffect("Convert Units in Area");
-   rmSetTriggerEffectParam("SrcObject","115");
+   rmSetTriggerEffectParam("SrcObject","123");
    rmSetTriggerEffectParamInt("SrcPlayer",0);
    rmSetTriggerEffectParamInt("TrgPlayer",k);
    rmSetTriggerEffectParam("UnitType","zpWokouWaterSpawnFlag2");
@@ -2076,7 +2076,7 @@ if (cNumberNonGaiaPlayers >= 3){
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainJunk2ON_Plr"+k));
    rmAddTriggerEffect("Fire Event");
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireShip2ON_Plr"+k));
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2ON_Plr"+k));
    rmSetTriggerPriority(4);
    rmSetTriggerActive(true);
    rmSetTriggerRunImmediately(true);
@@ -2084,14 +2084,14 @@ if (cNumberNonGaiaPlayers >= 3){
 
    rmSwitchToTrigger(rmTriggerID("Wokou2off_Player"+k));
    rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject","115");
+   rmSetTriggerConditionParam("DstObject","123");
    rmSetTriggerConditionParamInt("Player",k);
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("UnitType","TradingPost");
    rmSetTriggerConditionParam("Op","==");
    rmSetTriggerConditionParamFloat("Count",0);
    rmAddTriggerEffect("Convert Units in Area");
-   rmSetTriggerEffectParam("SrcObject","115");
+   rmSetTriggerEffectParam("SrcObject","123");
    rmSetTriggerEffectParamInt("SrcPlayer",k);
    rmSetTriggerEffectParamInt("TrgPlayer",0);
    rmSetTriggerEffectParam("UnitType","zpWokouWaterSpawnFlag2");
@@ -2101,7 +2101,7 @@ if (cNumberNonGaiaPlayers >= 3){
    rmAddTriggerEffect("Disable Trigger");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainJunk2ON_Plr"+k));
    rmAddTriggerEffect("Disable Trigger");
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireShip2ON_Plr"+k));
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2ON_Plr"+k));
    rmSetTriggerPriority(4);
    rmSetTriggerActive(false);
    rmSetTriggerRunImmediately(true);
@@ -2126,7 +2126,7 @@ if (randShip==1)
    {
       rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpNatIronFleet"); //operator
+      rmSetTriggerEffectParam("TechID","cTechzpSendFuchuan"); //operator
       rmSetTriggerEffectParamInt("Status",2);
    }
 if (randShip==2)
@@ -2155,6 +2155,24 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
+for (k=1; <= cNumberNonGaiaPlayers) {
+
+rmCreateTrigger("ZP AI Airship"+k);
+rmAddTriggerCondition("ZP PLAYER Human");
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("MyBool", "false");
+rmAddTriggerCondition("Player Unit Count");
+rmSetTriggerConditionParamInt("PlayerID",k);
+rmSetTriggerConditionParam("ProtoUnit","zpAirship");
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpAIAirshipSetup"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+}
+
 
 for (k=1; <= cNumberNonGaiaPlayers) {
 
@@ -2196,6 +2214,7 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
 
 // Testing
 

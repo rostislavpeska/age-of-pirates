@@ -36,6 +36,7 @@ minInterval 5
         xsEnableRule("MaintainWokouShips");
         xsEnableRule("WokouTechMonitor");
         xsEnableRule("submarineTactics");
+        xsEnableRule("airshipAbilityMonitor");
     }
     if (getGaiaUnitCount(cUnitTypezpNativeHouseJewish) > 0)
     {
@@ -90,6 +91,7 @@ minInterval 5
     if (getGaiaUnitCount(cUnitTypezpJesuitCathedral) > 0)
     {
         xsEnableRule("zpJesuitTechMonitor");
+        xsEnableRule("maintainJesuitMissionary");
     }
     
     xsDisableSelf();
@@ -744,7 +746,7 @@ rule MaintainWokouShips
 inactive
 minInterval 30
 {
-  const int list_size = 1;
+  const int list_size = 2;
   static int proxy_list = -1;
   static int ship_list = -1;
 
@@ -761,6 +763,9 @@ minInterval 30
 
     xsArraySetInt(proxy_list, 0, cUnitTypezpWokouJunkProxy);
     xsArraySetInt(ship_list, 0, cUnitTypeypWokouJunk);
+
+    xsArraySetInt(proxy_list, 1, cUnitTypezpWokouFuchuanProxy);
+    xsArraySetInt(ship_list, 1, cUnitTypezpWokouFuchuan);
 
   }
 
@@ -1858,7 +1863,7 @@ mininterval 60
 
       // Jesuit Tank
       canDisableSelf &= researchSimpleTechByCondition(cTechzpNatJesuitTank,
-      []() -> bool { return ((kbTechGetStatus(cTechzpJesuitCathedral) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      []() -> bool { return ((kbTechGetStatus(cTechzpJesuitCathedral) == cTechStatusActive) && ( kbGetAge() >= cAge4 )); },
       cUnitTypeTradingPost);
 
       // Jesuit Native Armies
@@ -1871,4 +1876,64 @@ mininterval 60
           xsDisableSelf();
       }
   
+}
+
+//==============================================================================
+// maintain Jesuit Missionaries
+//==============================================================================
+rule maintainJesuitMissionary
+inactive
+minInterval 60
+{
+  
+  const int list_size = 1;
+  static int proxy_list = -1;
+  static int ship_list = -1;
+
+  if (kbUnitCount(cMyID, cUnitTypezpSocketJesuit, cUnitStateAny) == 0)
+   {
+      return;
+   }
+
+  if (proxy_list == -1)
+  {
+    proxy_list = xsArrayCreateInt(list_size, -1, "List of Missionary Proxies");
+    ship_list = xsArrayCreateInt(list_size, -1, "List of Missionaries");
+
+    xsArraySetInt(proxy_list, 0, cUnitTypezpPriestProxy);
+    xsArraySetInt(ship_list, 0, cUnitTypezpPriest);
+  }
+
+  for(i = 0; < xsArrayGetSize(proxy_list))
+  {
+    int proxy = xsArrayGetInt(proxy_list, i);
+    int ship = xsArrayGetInt(ship_list, i);
+    
+    int maintain_plan = aiPlanGetIDByTypeAndVariableType(cPlanTrain, cTrainPlanUnitType, proxy, true);
+    int number_to_maintain = kbGetBuildLimit(cMyID, ship) - kbUnitCount(cMyID, ship);
+
+    if (maintain_plan == -1)
+    {
+      if (kbProtoUnitAvailable(proxy) == true)
+      {
+        maintain_plan = aiPlanCreate("Maintain " + kbGetProtoUnitName(proxy), cPlanTrain);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanUnitType, 0, proxy);
+        aiPlanSetVariableBool(maintain_plan, cTrainPlanUseMultipleBuildings, 0, false);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanNumberToMaintain, 0, number_to_maintain);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanBatchSize, 0, 1);
+        aiPlanSetActive(maintain_plan, true);
+      }
+    }
+    else
+    {
+      if (kbProtoUnitAvailable(proxy) == true)
+      {
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanNumberToMaintain, 0, number_to_maintain);
+      }
+      else
+      {
+        aiPlanDestroy(maintain_plan);
+      }
+    }
+  }
 }

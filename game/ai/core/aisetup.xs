@@ -896,7 +896,8 @@ void initArrays(void)
    xsArraySetString(gMapNames, 237, "zpmalta");
    xsArraySetString(gMapNames, 238, "zptortuga");
    xsArraySetString(gMapNames, 239, "zpcoldwar");
-   xsArraySetString(gMapNames, 240, "zppiratebay");
+   xsArraySetString(gMapNames, 240, "zptreasureisland");
+   xsArraySetString(gMapNames, 241, "zpphilippines");
    
    // List above is up to date for the Italy/Malta release.
 
@@ -1164,7 +1165,8 @@ void analyzeMap()
        cRandomMapName == "zpmalta" ||
        cRandomMapName == "zptortuga" ||
        cRandomMapName == "zpcoldwar" ||
-       cRandomMapName == "zppiratebay")
+       cRandomMapName == "zptreasureisland" ||
+       cRandomMapName == "zpphilippines")
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;

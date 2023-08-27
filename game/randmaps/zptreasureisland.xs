@@ -700,47 +700,6 @@ void main(void)
         rmEchoInfo("XLOC = "+yLoc);
       }
 
-      // Bonus Jesuits
-
-      /*int malteseController2ID = rmCreateObjectDef("maltese controller 2");
-         rmAddObjectDefItem(malteseController2ID, "zpSPCWaterSpawnPoint", 1, 0.0);
-         rmSetObjectDefMinDistance(malteseController2ID, 0.0);
-         rmSetObjectDefMaxDistance(malteseController2ID, rmXFractionToMeters(0.45));
-         rmAddObjectDefConstraint(malteseController2ID, avoidImpassableLand);
-         rmAddObjectDefConstraint(malteseController2ID, avoidWater20,);
-         rmAddObjectDefConstraint(malteseController2ID, avoidKOTH,);
-         rmAddObjectDefConstraint(malteseController2ID, nativeIslandConstraint); 
-         rmPlaceObjectDefAtLoc(malteseController2ID, 0, 0.5, 0.5);
-         vector malteseControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(malteseController2ID, 0));
-
-         int eastIslandVillage2 = rmCreateArea ("east island village 2");
-
-         rmSetAreaSize(eastIslandVillage2, rmAreaTilesToFraction(750.0), rmAreaTilesToFraction(750.0));
-         rmSetAreaLocation(eastIslandVillage2, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc2)));
-         rmSetAreaCoherence(eastIslandVillage2, 0.8);
-         rmSetAreaSmoothDistance(eastIslandVillage2, 5);
-         rmSetAreaCliffType(eastIslandVillage2, "Ceylon");
-         rmSetAreaCliffEdge(eastIslandVillage2, 1, 1.0, 0.0, 1.0, 0);
-         rmSetAreaCliffHeight(eastIslandVillage2, 1.0, 0.0, 0.0); 
-         rmSetAreaBaseHeight(eastIslandVillage2, 3.5);
-         rmSetAreaElevationVariation(eastIslandVillage2, 0.0);
-         rmBuildArea(eastIslandVillage2);
-
-         int eastIslandVillage1ramp2 = rmCreateArea ("east island village1 ramp 2");
-         rmSetAreaSize(eastIslandVillage1ramp2, rmAreaTilesToFraction(650.0), rmAreaTilesToFraction(650.0));
-         rmSetAreaLocation(eastIslandVillage1ramp2, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc2)));
-         rmSetAreaMix(eastIslandVillage1ramp2, baseMix);
-         rmSetAreaCoherence(eastIslandVillage1ramp2, 0.8);
-         rmSetAreaSmoothDistance(eastIslandVillage1ramp2, 30);
-         rmBuildArea(eastIslandVillage1ramp2);
-
-
-         int maltese3VillageID = -1;
-         int maltese3VillageType = rmRandInt(1,3);
-         maltese3VillageID = rmCreateGrouping("temple city 2", "Jesuit_Cathedral_Tropic_big");
-         rmAddGroupingConstraint(maltese3VillageID, avoidImpassableLand);
-         rmPlaceGroupingAtLoc(maltese3VillageID, 0, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc2)), 1);
-*/
 
 	// text
 	rmSetStatusText("",0.60);

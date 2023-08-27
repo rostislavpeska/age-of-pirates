@@ -209,7 +209,7 @@
     <train row ="0" page ="0" column ="2">zpNatWokouMonk</train>
     <train row ="0" page ="0" column ="5">zpWokouSteamerProxy</train>
     <train row ="0" page ="0" column ="2">zpNatWokouArmy</train>
-    <train row ="0" page ="0" column ="3">zpWokouFuchuanProxy</train>
+    <train row ="0" page ="0" column ="5">zpWokouFuchuanProxy</train>
     <train row ="0" page ="0" column ="4">zpNatSoheiProxy</train>
     <train row ="0" page ="0" column ="5">zpNatSoheiArcher</train>
     <train row ="0" page ="0" column ="6">zpSettlerZen</train>
@@ -220,7 +220,6 @@
     <train row ="0" page ="0" column ="6">zpSettlerSufiB</train>
     <train row ="0" page ="0" column ="1">zpNatCorsair</train>
     <train row ="0" page ="0" column ="2">zpNatMarksman</train>
-    <train row ="0" page ="0" column ="3">zpFireShipProxy</train>
     <train row ="0" page ="0" column ="1">zpNatSettlerJewish</train>
     <train row ="0" page ="0" column ="2">zpJewishSettlementWagon</train>
     <train row ="0" page ="0" column ="3">zpNatRifleman</train>
@@ -3680,13 +3679,13 @@
     <maxrunvelocity>7.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <populationcount>4</populationcount>
-    <animfile>units\asians\spc\jinhai\spc_jinhai.xml</animfile>
+    <animfile>units\asians\spc\huang\spc_huang.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\natives\saofeng_icon.png</icon>
     <portraiticon>resources\art\units\natives\saofeng_portrait.png</portraiticon>
     <rollovertextid>300206</rollovertextid>
+    <populationcount>4</populationcount>
     <shortrollovertextid>300206</shortrollovertextid>
     <initialhitpoints>800.0000</initialhitpoints>
     <maxhitpoints>800.0000</maxhitpoints>
@@ -3697,11 +3696,9 @@
     <buildbounty>50.0000</buildbounty>
     <allowedage>2</allowedage>
     <buildlimit>1</buildlimit>
-    <cost resourcetype="Gold">100.0000</cost>
-    <cost resourcetype="Food">50.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <cost resourcetype="Food">150.0000</cost>
     <armor type="Hand" value="0.4000">
-    <train row ="0" page ="0" column ="1">zpNatWokouPirate</train>
-    <train row ="0" page ="0" column ="2">zpNatWokouMonk</train>
     </armor>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
@@ -3738,17 +3735,26 @@
     <flag>ConstrainOrientation</flag>
     <flag>OrientUnitWithGround</flag>
     <flag>Tracked</flag>
-    <command page="10" column="1">Stop</command>
+    <train row="0" page="6" column="0">TradingPost</train>
+    <train row="0" page="6" column="2">NativeEmbassy</train>
     <command page="10" column="0">Garrison</command>
-    <command page="10" column="7">Delete</command>
-    <command page="11" column="0">Abilities</command>
-    <tactics>ypspcjinhai.tactics</tactics>
+    <command page="10" column="1">Stop</command>
+    <command page="11">Abilities</command>
+    <tactics>ypspchuang.tactics</tactics>
     <protoaction>
       <name>ArrowAttack</name>
       <damage>24.000000</damage>
       <damagetype>Ranged</damagetype>
       <maxrange>16.000000</maxrange>
       <rof>3.000000</rof>
+      <hitpercent>20.000000</hitpercent>
+      <damagemultiplier>2.000000</damagemultiplier>
+      <hitpercenttype>CriticalAttack</hitpercenttype>
+    </protoaction>
+    <protoaction>
+      <name>Build</name>
+      <rate type="Outpost">2.500000</rate>
+      <rate type="TradingPost">5.000000</rate>
     </protoaction>
     <protoaction>
       <name>BuildingAttack</name>
@@ -3761,6 +3767,29 @@
       <damage>14.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
+      <hitpercent>20.000000</hitpercent>
+      <damagemultiplier>2.000000</damagemultiplier>
+      <hitpercenttype>CriticalAttack</hitpercenttype>
+    </protoaction>
+    <protoaction>
+      <name>HeavenlyFireBomb</name>
+      <damage>250.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="Building">3.000000</damagebonus>
+      <damagearea>4.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>HeavenlyTreeBomb</name>
+      <damage>20.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="Nature">10.000000</damagebonus>
+      <damagearea>4.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
   <unit id="20043" name="zpNatWokouMonk">
@@ -3961,8 +3990,6 @@
     <sharedbuildlimitunittypes>
       <unittype>zpWokouSteamer</unittype>
       <unittype>zpWokouSteamerProxy</unittype>
-      <unittype>zpWokouFuchuan</unittype>
-      <unittype>zpWokouFUchuanProxy</unittype>
     </sharedbuildlimitunittypes>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
@@ -4062,7 +4089,7 @@
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <trainpoints>40.0000</trainpoints>
-    <buildlimit>2</buildlimit>
+    <buildlimit>1</buildlimit>
     <bounty>120.0000</bounty>
     <buildbounty>120.0000</buildbounty>
     <cost resourcetype="Wood">450.0000</cost>
@@ -4071,10 +4098,7 @@
     <allowedage>2</allowedage>
     <armor type="Ranged" value="0.7500">
     </armor>
-    <sharedbuildlimitunit>zpWokouSteamer</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpWokouSteamer</unittype>
-      <unittype>zpWokouSteamerProxy</unittype>
       <unittype>zpWokouFuchuan</unittype>
       <unittype>zpWokouFUchuanProxy</unittype>
     </sharedbuildlimitunittypes>
@@ -4099,6 +4123,8 @@
     <unittype>Ranged</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
     <unittype>AbstractWarShip</unittype>
+    <train row ="0" page ="0" column ="1">zpNatWokouPirate</train>
+    <train row ="0" page ="0" column ="2">zpNatWokouMonk</train>
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>DontRotateObstruction</flag>
@@ -4169,8 +4195,6 @@
      <sharedbuildlimitunittypes>
       <unittype>zpWokouSteamer</unittype>
       <unittype>zpWokouSteamerProxy</unittype>
-      <unittype>zpWokouFuchuan</unittype>
-      <unittype>zpWokouFUchuanProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -4478,10 +4502,8 @@
     <cost resourcetype="Gold">400.0000</cost>
     <cost resourcetype="Wood">300.0000</cost>
     <allowedage>2</allowedage>
-    <sharedbuildlimitunit>zpWokouSteamer</sharedbuildlimitunit>
-     <sharedbuildlimitunittypes>
-      <unittype>zpWokouSteamer</unittype>
-      <unittype>zpWokouSteamerProxy</unittype>
+    <sharedbuildlimitunit>zpWokouFuchuan</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
       <unittype>zpWokouFuchuan</unittype>
       <unittype>zpWokouFUchuanProxy</unittype>
     </sharedbuildlimitunittypes>
@@ -12439,7 +12461,7 @@
       <damagecap>400.000000</damagecap>
       <damagearea>15.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="Building">5.000000</damagebonus>
+      <damagebonus type="Building">8.000000</damagebonus>
       <damagebonus type="AbstractDock">0.200000</damagebonus>
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="Ship">2.500000</damagebonus>
@@ -13567,7 +13589,6 @@
 		<unittype>Unit</unittype>
 		<unittype>UnitClass</unittype>
 		<unittype>Military</unittype>
-		<unittype>AbstractNativeWarrior</unittype>
     <sharedbuildlimitunittypes>
       <unittype>zpPriest</unittype>
       <unittype>zpPriestProxy</unittype>

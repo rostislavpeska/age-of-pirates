@@ -107,6 +107,27 @@
         <target type="ProtoUnit">ypConsulate</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpPickConsulateTechAvailable</effect>
+      <effect type="CommandRemove" proto="ypWokouWaywardRonin">
+        <target type="ProtoUnit">ypWokouJunk</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypWokouPirate">
+        <target type="ProtoUnit">ypWokouJunk</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypWokouBlindMonk">
+        <target type="ProtoUnit">ypWokouJunk</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypWokouWanderingHorseman">
+        <target type="ProtoUnit">ypWokouJunk</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatWokouPirate" page="0" column="1">
+        <target type="ProtoUnit">ypWokouJunk</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatWokouMonk" page="0" column="2">
+        <target type="ProtoUnit">ypWokouJunk</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatWokouArmy" page="0" column="3">
+        <target type="ProtoUnit">ypWokouJunk</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffPirates" type="Normal">
@@ -2984,9 +3005,12 @@
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCTreasureShip" relativity="Absolute">
+      <effect type="Data2" amount="1.00" amount2="1.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCTreasureShip" unittype2="zpSaoFeng" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSaoFeng</target>
       </effect>
     </effects>
   </tech>
@@ -3090,7 +3114,7 @@
     <cost resourcetype="Wood">500.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\ironfleet.png</icon>
+    <icon>resources\images\icons\home_city\hc_fireship_damage.png</icon>
     <rollovertextid>300219</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
@@ -3099,9 +3123,12 @@
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpWokouFuchuan" relativity="Absolute">
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="ypFireship" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypFireship</target>
       </effect>
     </effects>
   </tech>
@@ -3448,7 +3475,7 @@
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpFireShipProxy</target>
+        <target type="ProtoUnit">zpWokouFuchuanProxy</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpBlackmailing</effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
@@ -5045,9 +5072,9 @@
     <flag>Shadow</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">ypFireship</target>
+        <target type="ProtoUnit">zpWokouFuchuan</target>
       </effect>
-      <effect type="Data" action="SpawnWokouFireJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpWokouWaterSpawnFlag1">
+      <effect type="Data" action="SpawnWokouFuchuan" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpWokouWaterSpawnFlag1">
         <target type="Player">
         </target>
       </effect>
@@ -5060,9 +5087,9 @@
     <flag>Shadow</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">ypFireship</target>
+        <target type="ProtoUnit">zpWokouFuchuan</target>
       </effect>
-      <effect type="Data" action="SpawnWokouFireJunk" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpWokouWaterSpawnFlag2">
+      <effect type="Data" action="SpawnWokouFuchuan" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpWokouWaterSpawnFlag2">
         <target type="Player">
         </target>
       </effect>
@@ -5075,7 +5102,7 @@
     <flag>YPInfiniteTech</flag>
     <effects>
       <effect type="Data" amount="-1.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">ypFireship</target>
+        <target type="ProtoUnit">zpWokouFuchuan</target>
       </effect>
     </effects>
   </tech>
@@ -8180,6 +8207,8 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpAirshipAIProxy</target>
       </effect>
+      <effect type="TransformUnit" toprotoid="zpAirshipAI" fromprotoid="zpAirship">
+      </effect>
     </effects>
   </tech>
   <tech name="zpNativeSPCJesuit" type="Normal">
@@ -8456,10 +8485,11 @@
     </prereqs>
     <flag>CountsTowardMilitaryScore</flag>
       <effects>
-        <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="deTank" relativity="Absolute">
+        <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpIronTank" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
+      <effect type="TechStatus" status="active">zpIronTanks</effect>
       <effect type="TextOutputTechName">110130</effect>
     </effects>
   </tech>
@@ -8639,6 +8669,17 @@
     <effects>
       <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TradingPost" relativity="Absolute">
         <target type="ProtoUnit">Church</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSendFuchuan" type="Normal">
+    <dbid>40136</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpWokouFuchuan" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>

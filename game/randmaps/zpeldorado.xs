@@ -153,6 +153,7 @@ void main(void)
    int avoidGold=rmCreateTypeDistanceConstraint("avoid gold", "minegold", 30.0);
    int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "AbstractNugget", 60.0);
    int avoidMountains=rmCreateClassDistanceConstraint("stuff avoids mountains", classMountains, 20.0);
+   int avoidRandomBerries=rmCreateTypeDistanceConstraint("avoid random berries", "berrybush", 55.0);
 
    // Avoid impassable land
    int avoidImpassableLand=rmCreateTerrainDistanceConstraint("avoid impassable land", "Land", false, 4.0);
@@ -1247,6 +1248,18 @@ void main(void)
       // Text
       rmSetStatusText("",0.60);
 
+   // Scattered berries all over island
+	int berriesID=rmCreateObjectDef("random berries");
+      rmAddObjectDefItem(berriesID, "berrybush", rmRandInt(5,8), 4.0); 
+      rmSetObjectDefMinDistance(berriesID, 0.0);
+      rmSetObjectDefMaxDistance(berriesID, rmXFractionToMeters(0.3));  
+      rmAddObjectDefConstraint(berriesID, avoidAll);
+      rmAddObjectDefConstraint(berriesID, avoidImportantItem);
+      rmAddObjectDefConstraint(berriesID, avoidRandomBerries);
+      rmAddObjectDefConstraint(berriesID, avoidImpassableLand);
+      rmPlaceObjectDefInArea(berriesID, 0, bigIslandID, cNumberNonGaiaPlayers);
+
+
    // RANDOM TREES
    int randomTreeNativeID=rmCreateObjectDef("random native tree");
       rmAddObjectDefItem(randomTreeNativeID, "TreeAmazon", 1, 0.0);
@@ -1391,6 +1404,23 @@ void main(void)
 // ------Triggers--------//
 
 int tch0=1671; // tech operator
+
+// Starter shipment triggers
+for(i = 1; < cNumberPlayers) {
+rmCreateTrigger("XP"+i);
+rmSwitchToTrigger(rmTriggerID("XP"+i));
+rmSetTriggerPriority(1); 
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmAddTriggerCondition("Always");
+
+rmAddTriggerEffect("Grant Resources");
+rmSetTriggerEffectParamInt("PlayerID", i, false);
+rmSetTriggerEffectParam("ResName", "Ships", false);
+rmSetTriggerEffectParam("Amount", "1", false);
+}
 
 // Starting techs
 
@@ -2125,7 +2155,6 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
-
 
 // Testing
 
