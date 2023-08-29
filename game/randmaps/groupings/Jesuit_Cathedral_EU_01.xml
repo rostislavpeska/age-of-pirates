@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>15</width>
+	<height>17</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="97" posx="-0.7025" posz="-13.0378" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSocketJesuitEU</unit>
+		<unit variation="133" posx="5.5696" posz="-12.3271" orientx="-0.7071" orienty="0.0000" orientz="0.7071">UnderbrushCoastalJapan</unit>
+		<unit variation="34" posx="-0.8689" posz="-8.9809" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="-7.4047" posz="-9.2498" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="91" posx="-5.9026" posz="-11.7985" orientx="1.0000" orienty="-0.0000" orientz="0.0001">UnderbrushCoastalJapan</unit>
+		<unit variation="34" posx="6.0009" posz="-8.0737" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="9.9496" posz="-8.5493" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="-10.0073" posz="-8.9028" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="209" posx="-10.7297" posz="-10.0890" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="190" posx="-5.6542" posz="-9.6945" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="158" posx="-7.2574" posz="-9.9259" orientx="-0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="190" posx="5.1314" posz="-9.6274" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="99" posx="8.4991" posz="-9.6166" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="209" posx="10.6347" posz="-10.0977" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="158" posx="6.9628" posz="-9.7434" orientx="-0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="99" posx="-8.9374" posz="-9.6690" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="34" posx="-2.4027" posz="-5.0900" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="3.1019" posz="-5.0836" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="190" posx="-10.8507" posz="-8.1297" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="241" posx="-5.7180" posz="-6.6517" orientx="-0.7071" orienty="0.0000" orientz="0.7071">deNatEUPropVilMale</unit>
+		<unit variation="190" posx="10.9052" posz="-7.3461" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="34" posx="-0.8053" posz="-4.3020" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="-9.5097" posz="-4.7130" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="248" posx="-8.7070" posz="-7.6216" orientx="-0.6661" orienty="0.0000" orientz="0.7459">ypSMJesuitAccessory</unit>
+		<unit variation="59" posx="-10.9063" posz="-5.8668" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="163" posx="-6.8466" posz="-4.8743" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropVilMale</unit>
+		<unit variation="158" posx="10.9004" posz="-5.8492" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="9" posx="6.7952" posz="-5.6910" orientx="-0.0124" orienty="0.0000" orientz="0.9999">ypSMJesuitPeasants</unit>
+		<unit variation="190" posx="-10.9997" posz="-3.6447" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="190" posx="10.8270" posz="-3.5565" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="159" posx="10.2035" posz="3.4570" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropWingC</unit>
+		<unit variation="159" posx="-10.5282" posz="3.7596" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropWingC</unit>
+		<unit variation="34" posx="5.8471" posz="0.8460" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="9.4713" posz="0.3459" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="8.6615" posz="-0.3987" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="41" posx="-0.6094" posz="0.2597" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpJesuitCathedral</unit>
+		<unit variation="34" posx="10.3744" posz="0.3299" orientx="-0.0000" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="-7.2794" posz="-0.3300" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="241" posx="6.8853" posz="-1.6913" orientx="0.3827" orienty="0.0000" orientz="-0.9239">deNatEUPropVilMale</unit>
+		<unit variation="41" posx="7.8025" posz="-0.0329" orientx="0.7071" orienty="0.0000" orientz="-0.7071">UnderbrushCoastalJapan</unit>
+		<unit variation="41" posx="-7.6274" posz="0.1779" orientx="-0.7071" orienty="0.0000" orientz="0.7071">UnderbrushCoastalJapan</unit>
+		<unit variation="34" posx="0.9043" posz="2.2698" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="-2.2299" posz="2.3175" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="-5.4578" posz="2.6474" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="-11.0805" posz="1.5017" orientx="-0.0000" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="159" posx="4.9573" posz="2.9749" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNatEUPropWingC</unit>
+		<unit variation="34" posx="6.7201" posz="3.2289" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="9.4676" posz="4.1294" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="-7.7185" posz="3.2972" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="-10.9526" posz="3.1864" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="-9.6543" posz="4.0914" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="159" posx="-5.4188" posz="3.1865" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNatEUPropWingC</unit>
+		<unit variation="34" posx="-10.9078" posz="6.9292" orientx="-0.0000" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="133" posx="-13.0654" posz="5.3615" orientx="0.7071" orienty="0.0000" orientz="0.7071">UnderbrushCoastalJapan</unit>
+		<unit variation="91" posx="12.7294" posz="6.0003" orientx="1.0000" orienty="-0.0000" orientz="0.0001">UnderbrushCoastalJapan</unit>
+		<unit variation="34" posx="5.2609" posz="7.2203" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="10.6103" posz="7.2601" orientx="-0.0000" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="198" posx="10.4469" posz="6.3760" orientx="0.9239" orienty="0.0000" orientz="-0.3827">UnderbrushCoastalJapan</unit>
+		<unit variation="150" posx="9.4573" posz="7.1955" orientx="-0.9239" orienty="0.0000" orientz="0.3827">UnderbrushCoastalJapan</unit>
+		<unit variation="34" posx="0.6012" posz="9.2160" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="105" posx="4.5363" posz="7.2004" orientx="0.0255" orienty="0.0000" orientz="-0.9997">deSPCTreeCypressProp</unit>
+		<unit variation="33" posx="-5.1398" posz="8.4675" orientx="-0.5346" orienty="0.0000" orientz="0.8451">deSPCTreeCypressProp</unit>
+		<unit variation="229" posx="9.4288" posz="10.1230" orientx="-1.0000" orienty="0.0000" orientz="0.0000">ypNativeTempleJesuit</unit>
+		<unit variation="34" posx="-5.9699" posz="12.5461" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="-2.0618" posz="12.8588" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="13.6460" posz="12.3625" orientx="-0.0000" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="15" posx="0.2088" posz="11.1901" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropStatue</unit>
+		<unit variation="169" posx="-10.0371" posz="10.1077" orientx="0.9999" orienty="0.0000" orientz="0.0146">ypSMJesuitMan</unit>
+		<unit variation="34" posx="5.0749" posz="13.4696" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="7.0498" posz="13.7330" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="1.1997" posz="13.3847" orientx="-0.0000" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="91" posx="-6.9675" posz="12.6915" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushCoastalJapan</unit>
+		<unit variation="91" posx="5.8878" posz="12.6181" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushCoastalJapan</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_city_street_90_ground">
+			<block startx="-5" startz="-5" endx="-5" endz="-2"></block>
+			<block startx="-4" startz="-5" endx="-4" endz="-2"></block>
+			<block startx="-3" startz="-4" endx="-3" endz="-2"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-2"></block>
+			<block startx="-1" startz="-8" endx="-1" endz="-2"></block>
+			<block startx="0" startz="-8" endx="0" endz="-2"></block>
+			<block startx="-2" startz="7" endx="-2" endz="7"></block>
+			<block startx="-1" startz="7" endx="-1" endz="8"></block>
+			<block startx="0" startz="7" endx="0" endz="8"></block>
+			<block startx="-6" startz="2" endx="-6" endz="2"></block>
+			<block startx="-5" startz="-1" endx="-5" endz="3"></block>
+			<block startx="-4" startz="-1" endx="-4" endz="6"></block>
+			<block startx="-3" startz="-1" endx="-3" endz="6"></block>
+			<block startx="-2" startz="-1" endx="-2" endz="3"></block>
+			<block startx="-2" startz="5" endx="-2" endz="6"></block>
+			<block startx="-1" startz="-1" endx="-1" endz="6"></block>
+			<block startx="0" startz="-1" endx="0" endz="6"></block>
+			<block startx="1" startz="-1" endx="1" endz="-1"></block>
+			<block startx="1" startz="1" endx="1" endz="6"></block>
+			<block startx="2" startz="-1" endx="2" endz="-1"></block>
+			<block startx="2" startz="2" endx="2" endz="6"></block>
+			<block startx="3" startz="-1" endx="3" endz="2"></block>
+			<block startx="3" startz="4" endx="3" endz="6"></block>
+			<block startx="4" startz="-1" endx="4" endz="3"></block>
+			<block startx="4" startz="5" endx="4" endz="5"></block>
+			<block startx="5" startz="-1" endx="5" endz="2"></block>
+			<block startx="1" startz="7" endx="1" endz="8"></block>
+			<block startx="2" startz="7" endx="2" endz="7"></block>
+			<block startx="1" startz="-8" endx="1" endz="-8"></block>
+			<block startx="1" startz="-6" endx="1" endz="-2"></block>
+			<block startx="2" startz="-5" endx="2" endz="-2"></block>
+			<block startx="3" startz="-4" endx="3" endz="-2"></block>
+			<block startx="4" startz="-4" endx="4" endz="-2"></block>
+			<block startx="5" startz="-5" endx="5" endz="-2"></block>
+			<block startx="6" startz="-4" endx="6" endz="-2"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

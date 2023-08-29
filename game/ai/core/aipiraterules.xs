@@ -1851,7 +1851,7 @@ rule zpJesuitTechMonitor
 inactive
 mininterval 60
 {
-   if (kbUnitCount(cMyID, cUnitTypezpSocketJesuit, cUnitStateAny) == 0)
+   if ((kbUnitCount(cMyID, cUnitTypezpSocketJesuit, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSocketJesuitEU, cUnitStateAny) == 0))
       {
       return; // Player has no Jesuit socket.
       }

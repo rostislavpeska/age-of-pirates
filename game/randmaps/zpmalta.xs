@@ -1337,6 +1337,10 @@ rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",i);
 rmSetTriggerEffectParam("TechID","cTechDEEnableTradeRouteWater"); // DEEneableTradeRouteWater
 rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",i);
+rmSetTriggerEffectParam("TechID","cTechdeEUMapUpdateVisuals"); // Europen Map
+rmSetTriggerEffectParamInt("Status",2);
 }
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);

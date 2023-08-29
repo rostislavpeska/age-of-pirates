@@ -1,7 +1,7 @@
 <mapspecifictechmods>
     <map name="malta">
         <tech>SaloonCorsair</tech>
-        <forcetech>deMapEuropean</forcetech>
+        <forcetech>deEUMapUpdateVisuals</forcetech>
         <forcetech>DEEnableTradeRouteEuropeanWater</forcetech>
         <randomnumtouse>3</randomnumtouse>
         <randomtech>SaloonBlackRider</randomtech>

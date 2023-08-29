@@ -13874,11 +13874,6 @@
     <unittype>Economic</unittype>
     <unittype>BuildingClass</unittype>
     <unittype>AbstractFarmBuilding</unittype>
-    <!--<sharedbuildlimitunit>zpJesuitCathedral</sharedbuildlimitunit>
-    <sharedbuildlimitunittypes>
-      <unittype>zpCongregation</unittype>
-      <unittype>zpJesuitCathedral</unittype>
-    </sharedbuildlimitunittypes>-->
     <train row ="0" page ="0" column ="0">zpPriestProxy</train>
     <tech row="0" page="1" column="0">zpNatJesuitHeterodoxy</tech>
     <tech row="0" page="1" column="1">zpJesuitHerbs</tech>
@@ -13902,7 +13897,6 @@
     <flag>BuildingShowTactics</flag>
     <flag>DisplayRange</flag>
     <flag>ShowAreaHealRate</flag>
-    <!--<flag>UseSharedBuildLimit</flag>-->
     <command page="9" column="1">CongregationCoin</command>
     <command page="9" column="2">CongregationFood</command>
     <command page="9" column="0">CongregationXP</command>
@@ -13989,8 +13983,8 @@
       <rate type="zpCongregation">5.000000</rate>
     </protoaction>
   </unit>
-  <unit id="20144" name="zpPriestProxy">
-    <dbid>20144</dbid>
+  <unit id="20149" name="zpPriestProxy">
+    <dbid>20149</dbid>
     <displaynameid>300650</displaynameid>
 		<editornameid>300649</editornameid>
 		<populationcount>0</populationcount>
@@ -14064,8 +14058,8 @@
 		<command page="10" column="7">Delete</command>
 		<command page="11" column="0">Abilities</command>
   </unit>
-  <unit id="20145" name="zpJesuitGarden">
-    <dbid>20145</dbid>
+  <unit id="20150" name="zpJesuitGarden">
+    <dbid>20150</dbid>
     <displaynameid>300070</displaynameid>
     <editornameid>300685</editornameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
@@ -14125,6 +14119,57 @@
 		<flag>NoHPBar</flag>
 		<flag>DoNotShowOnMiniMap</flag>
 		<flag>Tracked</flag>
+  </unit>
+  <unit id="20151" name="zpSocketJesuitEU">
+    <dbid>20151</dbid>
+    <displaynameid>61086</displaynameid>
+    <editornameid>300692</editornameid>
+    <subciv>SPCJesuit</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.0286</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildEuropean</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\europe_outpost_socket.xml</animfile>
+    <minimapicon>ui\minimap\royal_house</minimapicon>
+    <capturedminimapicon>ui\minimap\royal_house_c</capturedminimapicon>
+    <portraiticon>resources\art\buildings\native_settlement\native_jesuit_site_icon_portrait.png</portraiticon>
+    <rollovertextid>61105</rollovertextid>
+    <shortrollovertextid>61104</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>9.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>FlattenGround</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
   </unit>
 
 <!--TEST-->

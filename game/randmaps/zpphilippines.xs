@@ -75,7 +75,7 @@ void main(void)
   if(cNumberNonGaiaPlayers < 5)
     playerTiles = 23000;
   if (cNumberNonGaiaPlayers < 3)
-		playerTiles = 27000;
+		playerTiles = 25500;
 	int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
 	rmEchoInfo("Map size="+size+"m x "+size+"m");
 	rmSetMapSize(size, size);
@@ -140,8 +140,8 @@ void main(void)
 	int avoidHuntable1=rmCreateTypeDistanceConstraint("avoid huntable1", huntable1, 30.0);
   int avoidHuntable2=rmCreateTypeDistanceConstraint("avoid huntable2", huntable2, 40.0);
 	int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 45.0); 
-  int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "ypNuggetBoat", 75.0); 
-  int avoidNuggetWater2=rmCreateTypeDistanceConstraint("avoid water nuggets2", "ypNuggetBoat", 120.0); 
+  int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "abstractNugget", 45.0); 
+  int avoidNuggetWater2=rmCreateTypeDistanceConstraint("avoid water nuggets2", "abstractNugget", 100.0);
   int avoidHardNugget=rmCreateTypeDistanceConstraint("hard nuggets avoid other nuggets less", "abstractNugget", 20.0); 
 
   int avoidPirates=rmCreateTypeDistanceConstraint("avoid socket pirates", "zpSocketPirates", 30.0);
@@ -203,8 +203,8 @@ void main(void)
 	rmSetAreaElevationPersistence(bigIslandID, 0.2);
 	rmSetAreaElevationNoiseBias(bigIslandID, 1);
   rmSetAreaLocation(bigIslandID, .5, .5);
-  rmAddAreaInfluenceSegment(bigIslandID, .4, .5, .5, .7);
-  rmAddAreaInfluenceSegment(bigIslandID, .6, .5, .5, .7);
+  rmAddAreaInfluenceSegment(bigIslandID, .4, .5, .5, .65);
+  rmAddAreaInfluenceSegment(bigIslandID, .6, .5, .5, .65);
   rmAddAreaInfluenceSegment(bigIslandID, .4, .5, .5, .39);
   rmAddAreaInfluenceSegment(bigIslandID, .6, .5, .5, .39);
     rmAddAreaTerrainLayer(bigIslandID, "Ceylon\ground_sand1_Ceylon", 0, 6);
@@ -999,16 +999,6 @@ void main(void)
 
 	// Water nuggets
   int nuggetCount = 2;
-  
-  int nugget2= rmCreateObjectDef("nugget water" + i); 
-  rmAddObjectDefItem(nugget2, "ypNuggetBoat", 1, 0.0);
-  rmSetNuggetDifficulty(5, 5);
-  rmSetObjectDefMinDistance(nugget2, rmXFractionToMeters(0.0));
-  rmSetObjectDefMaxDistance(nugget2, rmXFractionToMeters(1.0));
-  rmAddObjectDefConstraint(nugget2, avoidLand);
-  rmAddObjectDefConstraint(nugget2, avoidNuggetWater2);
-  rmAddObjectDefConstraint(nugget2, playerEdgeConstraint);
-  rmPlaceObjectDefPerPlayer(nugget2, false, nuggetCount);
 
   int nugget2b = rmCreateObjectDef("nugget water hard" + i); 
   rmAddObjectDefItem(nugget2b, "ypNuggetBoat", 1, 0.0);
@@ -1019,6 +1009,16 @@ void main(void)
   rmAddObjectDefConstraint(nugget2b, avoidNuggetWater2);
   rmAddObjectDefConstraint(nugget2b, playerEdgeConstraint);
   rmPlaceObjectDefPerPlayer(nugget2b, false, nuggetCount/2);
+  
+  int nugget2= rmCreateObjectDef("nugget water" + i); 
+  rmAddObjectDefItem(nugget2, "ypNuggetBoat", 1, 0.0);
+  rmSetNuggetDifficulty(5, 5);
+  rmSetObjectDefMinDistance(nugget2, rmXFractionToMeters(0.0));
+  rmSetObjectDefMaxDistance(nugget2, rmXFractionToMeters(1.0));
+  rmAddObjectDefConstraint(nugget2, avoidLand);
+  rmAddObjectDefConstraint(nugget2, avoidNuggetWater);
+  rmAddObjectDefConstraint(nugget2, playerEdgeConstraint);
+  rmPlaceObjectDefPerPlayer(nugget2, false, nuggetCount);
   
   // really tough nuggets confined to south central cliffy area
   int nugget3= rmCreateObjectDef("nugget hardest"); 
@@ -2214,6 +2214,7 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
 
 
 // Testing

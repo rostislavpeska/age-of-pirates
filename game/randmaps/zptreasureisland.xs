@@ -89,7 +89,7 @@ void main(void)
 	rmSetMapType(mapType1);
 	rmSetMapType(mapType2);
 	rmSetMapType("water");
-  //rmSetMapType("caribbeanwater");
+  rmSetMapType("caribbeanwater");
 	rmSetLightingSet("Hispaniola_Skirmish");
   rmSetOceanReveal(true);
 
@@ -147,8 +147,8 @@ void main(void)
 	int avoidHuntable1=rmCreateTypeDistanceConstraint("avoid huntable1", huntable1, 30.0);
   int avoidHuntable2=rmCreateTypeDistanceConstraint("avoid huntable2", huntable2, 40.0);
 	int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 45.0); 
-  int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "ypNuggetBoat", 75.0); 
-  int avoidNuggetWater2=rmCreateTypeDistanceConstraint("avoid water nuggets2", "ypNuggetBoat", 120.0); 
+  int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "abstractNugget", 75.0); 
+  int avoidNuggetWater2=rmCreateTypeDistanceConstraint("avoid water nuggets2", "abstractNugget", 120.0); 
   int avoidHardNugget=rmCreateTypeDistanceConstraint("hard nuggets avoid other nuggets less", "abstractNugget", 20.0); 
 
   int avoidPirates=rmCreateTypeDistanceConstraint("avoid socket pirates", "zpSocketPirates", 30.0);
@@ -167,6 +167,7 @@ void main(void)
 	int avoidWater20 = rmCreateTerrainDistanceConstraint("avoid water medium", "Land", false, 20.0);
 	int avoidWater40 = rmCreateTerrainDistanceConstraint("avoid water super long", "Land", false, 40.0);
   int ferryOnShore=rmCreateTerrainMaxDistanceConstraint("ferry v. water", "water", true, 18.0);
+  int ferryOnShoreLong=rmCreateTerrainMaxDistanceConstraint("ferry v. water 2", "water", true, 23.0);
   int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true, 4.5);
 
   // things
@@ -462,7 +463,7 @@ void main(void)
       piratesVillageID3 = rmCreateGrouping("pirate city 3", "Scientist_Lab03");
       rmSetGroupingMinDistance(piratesVillageID3, 0);
       rmSetGroupingMaxDistance(piratesVillageID3, 20);
-      rmAddGroupingConstraint(piratesVillageID3, ferryOnShore);
+      rmAddGroupingConstraint(piratesVillageID3, ferryOnShoreLong);
 
       rmPlaceGroupingAtLoc(piratesVillageID3, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc3)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3)), 1);
     
@@ -490,7 +491,7 @@ void main(void)
       piratesVillageID4 = rmCreateGrouping("pirate city 4", "Scientist_Lab04");
       rmSetGroupingMinDistance(piratesVillageID4, 0);
       rmSetGroupingMaxDistance(piratesVillageID4, 20);
-      rmAddGroupingConstraint(piratesVillageID4, ferryOnShore);
+      rmAddGroupingConstraint(piratesVillageID4, ferryOnShoreLong);
 
       rmPlaceGroupingAtLoc(piratesVillageID4, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc4)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc4)), 1);
     
@@ -818,80 +819,6 @@ void main(void)
 		rmClearClosestPointConstraints();
    }
 
-   // Place additional Jesuits
-
-  
-  if(cNumberNonGaiaPlayers >= 5){
-    int jesuit1VillageID = rmRandInt(2,5);
-    int jesuit1VillageType = rmRandInt(1,3);
-    jesuit1VillageID = rmCreateGrouping("jesuit 1", "Jesuit_Cathedral_Tropic_0"+jesuit1VillageType);
-    rmAddGroupingConstraint(jesuit1VillageID , avoidImpassableLand);
-    rmAddGroupingConstraint(jesuit1VillageID , avoidWater20);
-    rmAddGroupingConstraint(jesuit1VillageID , avoidTCLong);
-    rmAddGroupingConstraint(jesuit1VillageID , avoidTPLong);
-    rmSetGroupingMinDistance(jesuit1VillageID, 0.0);
-    rmSetGroupingMaxDistance(jesuit1VillageID, 50.0);
-  }
-
-  if(cNumberNonGaiaPlayers >= 6){
-    int jesuit2VillageID = rmRandInt(2,5);
-    int jesuit2VillageType = rmRandInt(1,3);
-    jesuit2VillageID = rmCreateGrouping("jesuit 2", "Jesuit_Cathedral_Tropic_0"+jesuit2VillageType);
-    rmAddGroupingConstraint(jesuit2VillageID , avoidImpassableLand);
-    rmAddGroupingConstraint(jesuit2VillageID , avoidWater20);
-    rmAddGroupingConstraint(jesuit2VillageID , avoidTCLong);
-    rmAddGroupingConstraint(jesuit2VillageID , avoidTPLong);
-    rmSetGroupingMinDistance(jesuit2VillageID, 0.0);
-    rmSetGroupingMaxDistance(jesuit2VillageID, 50.0);
-  }
-
-  if(cNumberNonGaiaPlayers >= 7){
-    int jesuit3VillageID = rmRandInt(2,5);
-    int jesuit3VillageType = rmRandInt(1,3);
-    jesuit3VillageID = rmCreateGrouping("jesuit 3", "Jesuit_Cathedral_Tropic_0"+jesuit3VillageType);
-    rmAddGroupingConstraint(jesuit3VillageID , avoidImpassableLand);
-    rmAddGroupingConstraint(jesuit3VillageID , avoidWater20);
-    rmAddGroupingConstraint(jesuit3VillageID , avoidTCLong);
-    rmAddGroupingConstraint(jesuit3VillageID , avoidTPLong);
-    rmSetGroupingMinDistance(jesuit3VillageID, 0.0);
-    rmSetGroupingMaxDistance(jesuit3VillageID, 50.0);
-  }
-
-  if(cNumberNonGaiaPlayers == 8){
-    int jesuit4VillageID = rmRandInt(2,5);
-    int jesuit4VillageType = rmRandInt(1,3);
-    jesuit4VillageID = rmCreateGrouping("jesuit 4", "Jesuit_Cathedral_Tropic_0"+jesuit4VillageType);
-    rmAddGroupingConstraint(jesuit4VillageID , avoidImpassableLand);
-    rmAddGroupingConstraint(jesuit4VillageID , avoidWater20);
-    rmAddGroupingConstraint(jesuit4VillageID , avoidTCLong);
-    rmAddGroupingConstraint(jesuit4VillageID , avoidTPLong);
-    rmSetGroupingMinDistance(jesuit4VillageID, 0.0);
-    rmSetGroupingMaxDistance(jesuit4VillageID, 50.0);
-  }
-
-  if(cNumberNonGaiaPlayers == 5){
-  rmPlaceGroupingAtLoc(jesuit1VillageID , 0, 0.6, 0.2, 1);
-  }
-
-  if(cNumberNonGaiaPlayers == 6){
-  rmPlaceGroupingAtLoc(jesuit1VillageID , 0, 0.6, 0.2, 1);
-  rmPlaceGroupingAtLoc(jesuit2VillageID , 0, 0.3, 0.2, 1);
-  }
-
-  if(cNumberNonGaiaPlayers == 7){
-  rmPlaceGroupingAtLoc(jesuit1VillageID , 0, 0.5, 0.1, 1);
-  rmPlaceGroupingAtLoc(jesuit2VillageID , 0, 0.85, 0.5, 1);
-  rmPlaceGroupingAtLoc(jesuit3VillageID , 0, 0.2, 0.5, 1);
-  }
-
-  if(cNumberNonGaiaPlayers == 8){
-  rmPlaceGroupingAtLoc(jesuit1VillageID , 0, 0.6, 0.2, 1);
-  rmPlaceGroupingAtLoc(jesuit2VillageID , 0, 0.85, 0.5, 1);
-  rmPlaceGroupingAtLoc(jesuit3VillageID , 0, 0.2, 0.5, 1);
-  rmPlaceGroupingAtLoc(jesuit4VillageID , 0, 0.4, 0.2, 1);
-  }
-
-	
    	// --------------- Make load bar move. ----------------------------------------------------------------------------
 	rmSetStatusText("",0.75);
 
@@ -1106,6 +1033,23 @@ void main(void)
     // ------Triggers--------//
 
 int tch0=1671; // tech operator
+
+// Starter shipment triggers
+for(i = 1; < cNumberPlayers) {
+rmCreateTrigger("XP"+i);
+rmSwitchToTrigger(rmTriggerID("XP"+i));
+rmSetTriggerPriority(1); 
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmAddTriggerCondition("Always");
+
+rmAddTriggerEffect("Grant Resources");
+rmSetTriggerEffectParamInt("PlayerID", i, false);
+rmSetTriggerEffectParam("ResName", "Ships", false);
+rmSetTriggerEffectParam("Amount", "1", false);
+}
 
 // Starting techs
 
