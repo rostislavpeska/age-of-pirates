@@ -7568,9 +7568,6 @@
       <effect type="Data" amount="2.0" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpIronTank</target>
       </effect>
-      <effect type="Data" amount="2.0" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpIronTankProxy</target>
-      </effect>
       <effect type="SetName" proto="zpIronTank" culture="none" newname="124699">
       </effect>
       <effect type="Data" action="RoundelExplodeAttack" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpIronTank">

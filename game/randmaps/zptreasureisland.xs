@@ -147,8 +147,8 @@ void main(void)
 	int avoidHuntable1=rmCreateTypeDistanceConstraint("avoid huntable1", huntable1, 30.0);
   int avoidHuntable2=rmCreateTypeDistanceConstraint("avoid huntable2", huntable2, 40.0);
 	int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 45.0); 
-  int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "abstractNugget", 75.0); 
-  int avoidNuggetWater2=rmCreateTypeDistanceConstraint("avoid water nuggets2", "abstractNugget", 120.0); 
+  int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "abstractNugget", 45.0); 
+  int avoidNuggetWater2=rmCreateTypeDistanceConstraint("avoid water nuggets2", "abstractNugget", 100.0); 
   int avoidHardNugget=rmCreateTypeDistanceConstraint("hard nuggets avoid other nuggets less", "abstractNugget", 20.0); 
 
   int avoidPirates=rmCreateTypeDistanceConstraint("avoid socket pirates", "zpSocketPirates", 30.0);
@@ -948,16 +948,6 @@ void main(void)
 
 	// Water nuggets
   int nuggetCount = 2;
-  
-  int nugget2= rmCreateObjectDef("nugget water" + i); 
-  rmAddObjectDefItem(nugget2, "ypNuggetBoat", 1, 0.0);
-  rmSetNuggetDifficulty(5, 5);
-  rmSetObjectDefMinDistance(nugget2, rmXFractionToMeters(0.0));
-  rmSetObjectDefMaxDistance(nugget2, rmXFractionToMeters(1.0));
-  rmAddObjectDefConstraint(nugget2, avoidLand);
-  rmAddObjectDefConstraint(nugget2, avoidNuggetWater2);
-  rmAddObjectDefConstraint(nugget2, playerEdgeConstraint);
-  rmPlaceObjectDefPerPlayer(nugget2, false, nuggetCount*2);
 
   int nugget2b = rmCreateObjectDef("nugget water hard" + i); 
   rmAddObjectDefItem(nugget2b, "ypNuggetBoat", 1, 0.0);
@@ -968,6 +958,17 @@ void main(void)
   rmAddObjectDefConstraint(nugget2b, avoidNuggetWater2);
   rmAddObjectDefConstraint(nugget2b, playerEdgeConstraint);
   rmPlaceObjectDefPerPlayer(nugget2b, false, nuggetCount);
+  
+  int nugget2= rmCreateObjectDef("nugget water" + i); 
+  rmAddObjectDefItem(nugget2, "ypNuggetBoat", 1, 0.0);
+  rmSetNuggetDifficulty(5, 5);
+  rmSetObjectDefMinDistance(nugget2, rmXFractionToMeters(0.0));
+  rmSetObjectDefMaxDistance(nugget2, rmXFractionToMeters(1.0));
+  rmAddObjectDefConstraint(nugget2, avoidLand);
+  rmAddObjectDefConstraint(nugget2, avoidNuggetWater);
+  rmAddObjectDefConstraint(nugget2, playerEdgeConstraint);
+  rmPlaceObjectDefPerPlayer(nugget2, false, nuggetCount/2);
+
   
   // really tough nuggets confined to south central cliffy area
   int nugget3= rmCreateObjectDef("nugget hardest"); 
@@ -2233,22 +2234,14 @@ if (renegadeCaptain==1)
    {
       rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistkhora"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpAIAirshipSetup"); //operator
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistNemo"); //operator
       rmSetTriggerEffectParamInt("Status",2);
    }
 if (renegadeCaptain==2)
    {
       rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistkhora"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpAIAirshipSetup"); //operator
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistValentine"); //operator
       rmSetTriggerEffectParamInt("Status",2);
    }
 if (renegadeCaptain==3)

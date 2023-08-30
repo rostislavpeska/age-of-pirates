@@ -47,10 +47,12 @@ extern const int cWaterNuggetAttack = 0;     // Units attacking the guardians
 extern const int cWaterNuggetGather = 1;     // Units gathering the nugget
 extern int gWaterNuggetState = cWaterNuggetSearch;           // Stores the state of the water nugget plan
 extern int gWaterNuggetTarget = -1;          // Stores the target of whatever the water nugget plan is doing
+extern vector gWaterNuggetTargetLoc = cInvalidVector;
+extern int gWaterNuggetTimeout = -1;         // Stores when a water nugget plan is made so it can be reset after too long
 
 extern bool gIsPirateMap = false;            // Set true for testing. Used for pirates of the carribean mod
 
-
+extern int gMainAttackGoal = -1;             // Used for legacy attack system
 
 
 //==============================================================================
@@ -271,7 +273,6 @@ extern bool gDefenseReflexPaused =
 extern int gDefenseReflexBaseID = -1;                  // Set to the base ID that we're defending in this emergency
 extern vector gDefenseReflexLocation = cInvalidVector; // Location we're defending in this emergency
 extern int gDefenseReflexTimeout = 0;
-//extern int gLandAttackPlanID = -1;      // AssertiveWall: Keeps track of attack plan so we can destroy it after too long
 
 extern int gLandUnitPicker = -1; // Picks the best land military units to train.
 

@@ -10136,8 +10136,8 @@
     <rollovertextid>300477</rollovertextid>
     <shortrollovertextid>300478</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>1100.0000</initialhitpoints>
-    <maxhitpoints>1100.0000</maxhitpoints>
+    <initialhitpoints>1150.0000</initialhitpoints>
+    <maxhitpoints>1150.0000</maxhitpoints>
     <los>32.0000</los>
     <projectileprotounit>zpTorpedo</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -10973,7 +10973,7 @@
     <subciv>zpScientists</subciv>
     <displaynameid>300550</displaynameid>
     <editornameid>300543</editornameid>
-    <populationcount>4</populationcount>
+    <populationcount>5</populationcount>
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Protected</formationcategory>
@@ -10987,8 +10987,8 @@
     <portraiticon>resources\art\units\artillery\tank\tank_portrait.png</portraiticon>
     <rollovertextid>124702</rollovertextid>
     <shortrollovertextid>124701</shortrollovertextid>
-    <initialhitpoints>1750.0000</initialhitpoints>
-    <maxhitpoints>1750.0000</maxhitpoints>
+    <initialhitpoints>1500.0000</initialhitpoints>
+    <maxhitpoints>1500.0000</maxhitpoints>
     <los>30.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -11027,6 +11027,9 @@
     <unittype>AbstractArtillery</unittype>
     <unittype>AbstractBannerArmy</unittype>
     <sharedbuildlimitunit>deTank</sharedbuildlimitunit>
+    <sharedselectionunittypes>
+      <unittype>zpIronTankProxy</unittype>
+    </sharedselectionunittypes>
     <sharedbuildlimitunittypes>
       <unittype>deTank</unittype>
       <unittype>zpIronTank</unittype>
@@ -11101,7 +11104,7 @@
       <active>0</active>
     </protoaction>
   </unit>
-    <unit id="20115" name="zpNatHoopThrowerProxy">
+  <unit id="20115" name="zpNatHoopThrowerProxy">
     <dbid>20115</dbid>
     <displaynameid>300643</displaynameid>
     <editornameid>300505</editornameid>
@@ -11255,8 +11258,8 @@
     <portraiticon>resources\art\units\artillery\tank\tank_portrait.png</portraiticon>
     <rollovertextid>124702</rollovertextid>
     <shortrollovertextid>124701</shortrollovertextid>
-    <initialhitpoints>1750.0000</initialhitpoints>
-    <maxhitpoints>1750.0000</maxhitpoints>
+    <initialhitpoints>3500.0000</initialhitpoints>
+    <maxhitpoints>3500.0000</maxhitpoints>
     <los>30.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -11295,6 +11298,9 @@
     <unittype>AbstractArtillery</unittype>
     <unittype>AbstractBannerArmy</unittype>
     <sharedbuildlimitunit>deTank</sharedbuildlimitunit>
+    <sharedselectionunittypes>
+      <unittype>zpIronTank</unittype>
+    </sharedselectionunittypes>
     <sharedbuildlimitunittypes>
       <unittype>deTank</unittype>
       <unittype>zpIronTank</unittype>
@@ -11450,8 +11456,8 @@
     <rollovertextid>300477</rollovertextid>
     <shortrollovertextid>300478</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>1100.0000</initialhitpoints>
-    <maxhitpoints>1100.0000</maxhitpoints>
+    <initialhitpoints>1150.0000</initialhitpoints>
+    <maxhitpoints>1150.0000</maxhitpoints>
     <los>32.0000</los>
     <projectileprotounit>zpTorpedo</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -12350,8 +12356,8 @@
     <portraiticon>resources\art\units\natives\airship_portrait.png</portraiticon>
     <rollovertextid>300615</rollovertextid>
     <shortrollovertextid>300615</shortrollovertextid>
-    <initialhitpoints>2700.0000</initialhitpoints>
-    <maxhitpoints>2700.0000</maxhitpoints>
+    <initialhitpoints>2800.0000</initialhitpoints>
+    <maxhitpoints>2800.0000</maxhitpoints>
     <los>60.0000</los>
     <projectileprotounit>MortarShell</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -12858,8 +12864,8 @@
     <portraiticon>resources\art\units\natives\airship_portrait.png</portraiticon>
     <rollovertextid>300615</rollovertextid>
     <shortrollovertextid>300615</shortrollovertextid>
-    <initialhitpoints>2700.0000</initialhitpoints>
-    <maxhitpoints>2700.0000</maxhitpoints>
+    <initialhitpoints>2800.0000</initialhitpoints>
+    <maxhitpoints>2800.0000</maxhitpoints>
     <los>60.0000</los>
     <projectileprotounit>MortarShell</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>

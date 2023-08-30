@@ -1357,7 +1357,7 @@ minInterval 15
       {
          // If we haven't attacked for too long and have plenty of resources in stock, attack anyway.
          if (targetIsEnemy == true)
-         {
+         {  
             if (currentTime - gLastAttackMissionTime < 2 * gAttackMissionInterval)
             {
                return;
@@ -1453,9 +1453,11 @@ minInterval 15
 
       aiPlanSetActive(planID);
 
-      //gLandAttackPlanID = planID; // AssertiveWall: set the extern so we can kill this plan later if we need to
       gLastAttackMissionTime = xsGetTime();
       debugMilitary("***** LAUNCHING ATTACK on player " + targetPlayer + " base " + targetBaseID);
+
+      // AssertiveWall: Testing Purposes
+      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, targetBaseLocation);
    }
    else 
    {
@@ -1502,7 +1504,7 @@ void navalAttackPlanHandler(int planID = -1)
    Defending = 15 when not under attack so war ships that can fish will do so.
    Fishing = 19.
    Exploring = 20 so fishing ships can be used for it.
-   Repairing = 22 so the war ships do defend but will chose repairing over fishing.
+   Repairing = 24 so the war ships do defend but will chose repairing over fishing.  // AssertiveWall: incrreased to 24 from 22 to allow more plans
    Defending = 25 when under attack so war ships that can fish will actually fight.
    Attacking = 60 so all war ships will go on the attack.
    Transport = 100 so the ships will actually deliver the units reliably.
@@ -2239,9 +2241,10 @@ minInterval 30
       {
          unitID = kbUnitQueryGetResult(shipQueryID, i);
          unitPlanID = kbUnitGetPlanID(unitID);
-         if ((aiPlanGetDesiredPriority(unitPlanID) > 22) || 
+         if ((aiPlanGetDesiredPriority(unitPlanID) > 24) ||          // AssertiveWall: up from 22
              (aiPlanGetType(unitPlanID) == cPlanTransport) ||
-             (kbUnitGetHealth(unitID) > 0.95))
+             (kbUnitGetHealth(unitID) > 0.95) ||
+             (kbUnitGetActionType() != cActionTypeIdle))             // AssertiveWall: Don't steal ships that are busy doing things
          {
             continue;
          }
