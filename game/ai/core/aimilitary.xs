@@ -1357,7 +1357,7 @@ minInterval 15
       {
          // If we haven't attacked for too long and have plenty of resources in stock, attack anyway.
          if (targetIsEnemy == true)
-         {
+         {  
             if (currentTime - gLastAttackMissionTime < 2 * gAttackMissionInterval)
             {
                return;
@@ -1453,9 +1453,11 @@ minInterval 15
 
       aiPlanSetActive(planID);
 
-      //gLandAttackPlanID = planID; // AssertiveWall: set the extern so we can kill this plan later if we need to
       gLastAttackMissionTime = xsGetTime();
       debugMilitary("***** LAUNCHING ATTACK on player " + targetPlayer + " base " + targetBaseID);
+
+      // AssertiveWall: Testing Purposes
+      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, targetBaseLocation);
    }
    else 
    {

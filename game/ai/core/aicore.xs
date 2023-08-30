@@ -1437,7 +1437,8 @@ minInterval 10
    // Find idle units away from our base.
    int baseAreaGroupID = kbAreaGroupGetIDByPosition(kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
    int areaGroupID = -1;
-   int unitQueryID = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
+   int areaID = -1;
+   int unitQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeGarrisonInShips, cMyID, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(unitQueryID);
    int unitID = -1;
    int planID = -1;
@@ -1452,7 +1453,16 @@ minInterval 10
          continue;
       }
       position = kbUnitGetPosition(unitID);
-      areaGroupID = kbAreaGroupGetIDByPosition(position);
+      areaID = kbAreaGroupGetIDByPosition(position);
+
+      // AssertiveWall: Check if the unit is connected by land to main base
+      if (kbAreAreaGroupsPassableByLand(baseAreaGroupID, areaID) == true)
+      {
+         continue;
+      }
+
+      // AssertiveWall: Rewrote this a much simpler way above
+      /*areaGroupID = kbAreaGroupGetIDByPosition(position);
       if (areaGroupID == baseAreaGroupID)
       {
          continue;
@@ -1474,8 +1484,9 @@ minInterval 10
          if (inMainBase == true)
          {
             continue;
-      }
-      }
+         }
+      }*/
+
       planID = kbUnitGetPlanID(unitID);
       if (planID >= 0 && aiPlanGetDesiredPriority(planID) >= 25)
       {
@@ -1498,10 +1509,10 @@ minInterval 10
    {
       return;
    }
-   // AssertiveWall: cUnitTypeLogicalTypeGarrisonInShips changed to cUnitTypeAbstractWarship
-   unitQueryID = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive, position, 30.0);
+
+   unitQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeGarrisonInShips, cMyID, cUnitStateAlive, position, 30.0);
    numberFound = kbUnitQueryExecute(unitQueryID);
-   aiPlanAddUnitType(transportPlanID, cUnitTypeAbstractWarShip, numberFound, numberFound, numberFound);
+   aiPlanAddUnitType(transportPlanID, cUnitTypeLogicalTypeGarrisonInShips, numberFound, numberFound, numberFound);
    for (i = 0; < numberFound)
    {
       unitID = kbUnitQueryGetResult(unitQueryID, i);

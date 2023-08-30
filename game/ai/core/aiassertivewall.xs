@@ -1359,7 +1359,7 @@ inactive
 minInterval 10
 {  
    // Only fire if we have ships for transport
-   if (kbUnitCount(cMyID, cUnitTypeLogicalTypeGarrisonInShips, cUnitStateAlive) <= 0)
+   if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) <= 0)
    {
       return;
    }
@@ -1662,7 +1662,7 @@ inactive
 minInterval 10
 {
    int transportPlan = aiPlanGetIDByTypeAndVariableType(cPlanTransport, cTransportPlanTransportTypeID,
-      cUnitTypeLogicalTypeGarrisonInShips);
+      cUnitTypeAbstractWarShip);
    switch (aiPlanGetState(transportPlan))
    {
    case -1:
