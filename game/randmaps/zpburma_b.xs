@@ -164,6 +164,7 @@ void main(void)
 	int avoidAll=rmCreateTypeDistanceConstraint("avoid all", "all", 7.0);
   int avoidLand = rmCreateTerrainDistanceConstraint("ship avoid land", "land", true, 15.0);
   int islandConstraint=rmCreateClassDistanceConstraint("islands avoid each other", classIsland, 48.0);
+  int avoidKOTH=rmCreateTypeDistanceConstraint("stay away from Kings Hill", "ypKingsHill", 30.0);
 
   // fish & whale constraints
   int fishVsFishID=rmCreateTypeDistanceConstraint("fish v fish", fish1, 15.0);	
@@ -328,6 +329,8 @@ rmAddTradeRouteWaypoint(tradeRouteID, 0.9, 0.1);
 
 bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
 
+
+
   //~ if(cNumberNonGaiaPlayers > 4)
     	//~ rmSetAreaSize(mainIslandID, 0.6, 0.6);
       
@@ -358,6 +361,7 @@ bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
   rmAddAreaInfluenceSegment(mainIslandID, 0.2, 0.7, 0.3, 0.6);
 
   rmAddAreaConstraint(mainIslandID, islandAvoidTradeRoute);
+  rmAddAreaConstraint(mainIslandID, avoidKOTH);
   
 	rmSetAreaWarnFailure(mainIslandID, false);
 	rmBuildArea(mainIslandID);
@@ -387,6 +391,7 @@ bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
   rmAddAreaInfluenceSegment(mainIslandID2, 0.8, 0.7, 0.7, 0.6);
 
   rmAddAreaConstraint(mainIslandID2, islandAvoidTradeRoute);
+  rmAddAreaConstraint(mainIslandID2, avoidKOTH);
   
 	rmSetAreaWarnFailure(mainIslandID2, false);
 	rmBuildArea(mainIslandID2);
@@ -486,7 +491,7 @@ bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
       }
 
       // Pirate Village 2
-      if (cNumberNonGaiaPlayers >= 4){
+
          if (subCiv2 == rmGetCivID(nativeCiv3))
          {  
             int piratesVillageID2 = -1;
@@ -514,7 +519,7 @@ bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
             
             rmClearClosestPointConstraints();
          }
-        }
+
 
   
 
@@ -610,6 +615,30 @@ bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
       rmPlaceGroupingAtLoc(middleSufiVillageID, 0, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc1)-10), 1);
      
       rmSetOceanReveal(true);
+
+      // check for KOTH game mode
+      if (rmGetIsKOTH())
+      {
+        
+        int randLoc = rmRandInt(1,2);
+        float xLoc = 0.5;
+        float yLoc = 0.6;
+        float walk = 0.0;
+
+        int KotHLakeID = rmCreateArea ("KotH Lake");
+        rmSetAreaSize(KotHLakeID, rmAreaTilesToFraction(1500.0), rmAreaTilesToFraction(1500.0));
+        rmSetAreaLocation(KotHLakeID, 0.5, 0.6);
+        rmSetAreaWaterType(KotHLakeID, "indochina coast");
+        rmSetAreaCoherence(KotHLakeID, 0.8);
+        rmSetAreaObeyWorldCircleConstraint(KotHLakeID, false);
+        rmSetAreaSmoothDistance(KotHLakeID, 20);
+        rmBuildArea(KotHLakeID);
+        
+        ypKingsHillLandfill(xLoc, yLoc, rmAreaTilesToFraction(375), 2.0, "borneo_sand_a", 0);
+        ypKingsHillPlacer(xLoc, yLoc, walk, 0);
+        rmEchoInfo("XLOC = "+xLoc);
+        rmEchoInfo("XLOC = "+yLoc);
+      }
       
       // West Monastery 1
 
@@ -1023,7 +1052,7 @@ bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
    rmAddObjectDefConstraint(playerDeerID, avoidImpassableLand);
    rmSetObjectDefCreateHerd(playerDeerID, true);
 
-rmAddObjectDefConstraint(TCID, avoidTownCenter);
+rmAddObjectDefConstraint(TCID, avoidTownCenterFar);
 rmAddObjectDefConstraint(TCID, playerEdgeConstraint);
 rmAddObjectDefConstraint(TCID, avoidImpassableLand);
 rmAddObjectDefConstraint(TCID, avoidBonusIslands);
@@ -1132,20 +1161,6 @@ rmClearClosestPointConstraints();
 	// Text
 	rmSetStatusText("",0.85);
   
-  // check for KOTH game mode
-  if (rmGetIsKOTH())
-  {
-    
-    int randLoc = rmRandInt(1,2);
-    float xLoc = 0.5;
-    float yLoc = 0.125;
-    float walk = 0.025;
-    
-    ypKingsHillLandfill(xLoc, yLoc, .0075, 2.0, "borneo_sand_a", 0);
-    ypKingsHillPlacer(xLoc, yLoc, walk, 0);
-    rmEchoInfo("XLOC = "+xLoc);
-    rmEchoInfo("XLOC = "+yLoc);
-  }
   
   // MINES
 
@@ -1557,7 +1572,7 @@ rmCreateTrigger("TrainPrivateer1ON Plr"+k);
 rmCreateTrigger("TrainPrivateer1OFF Plr"+k);
 rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
 
-   if (cNumberNonGaiaPlayers >= 4){
+
    rmCreateTrigger("TrainPrivateer2ON Plr"+k);
    rmCreateTrigger("TrainPrivateer2OFF Plr"+k);
    rmCreateTrigger("TrainPrivateer2TIME Plr"+k);
@@ -1608,7 +1623,7 @@ rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
    rmSetTriggerActive(false);
    rmSetTriggerRunImmediately(true);
    rmSetTriggerLoop(false);
-   }
+
 
 rmSwitchToTrigger(rmTriggerID("TrainPrivateer1ON_Plr"+k));
 rmAddTriggerCondition("Units in Area");
@@ -1661,20 +1676,20 @@ rmSetTriggerLoop(false);
 // Fire Ship training
 
 for (k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("TrainFireship1ON Plr"+k);
-rmCreateTrigger("TrainFireship1OFF Plr"+k);
-rmCreateTrigger("TrainFireship1TIME Plr"+k);
+rmCreateTrigger("trainFuchuan1ON Plr"+k);
+rmCreateTrigger("trainFuchuan1OFF Plr"+k);
+rmCreateTrigger("trainFuchuan1TIME Plr"+k);
 
-   if (cNumberNonGaiaPlayers >= 4){
-   rmCreateTrigger("TrainFireship2ON Plr"+k);
-   rmCreateTrigger("TrainFireship2OFF Plr"+k);
-   rmCreateTrigger("TrainFireship2TIME Plr"+k);
 
-   rmSwitchToTrigger(rmTriggerID("TrainFireship2ON_Plr"+k));
+   rmCreateTrigger("trainFuchuan2ON Plr"+k);
+   rmCreateTrigger("trainFuchuan2OFF Plr"+k);
+   rmCreateTrigger("trainFuchuan2TIME Plr"+k);
+
+   rmSwitchToTrigger(rmTriggerID("trainFuchuan2ON_Plr"+k));
    rmAddTriggerCondition("Units in Area");
    rmSetTriggerConditionParam("DstObject","56");
    rmSetTriggerConditionParamInt("Player",k);
-   rmSetTriggerConditionParam("UnitType","zpFireShipProxy");
+   rmSetTriggerConditionParam("UnitType","zpWokouFuchuanProxy");
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("Op",">=");
    rmSetTriggerConditionParamInt("Count",1);
@@ -1683,26 +1698,26 @@ rmCreateTrigger("TrainFireship1TIME Plr"+k);
    rmSetTriggerEffectParam("TechID","cTechzpTrainFireJunk2"); //operator
    rmSetTriggerEffectParamInt("Status",2);
    rmAddTriggerEffect("Fire Event");
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship2OFF_Plr"+k));
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2OFF_Plr"+k));
    rmAddTriggerEffect("Fire Event");
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship2TIME_Plr"+k));
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2TIME_Plr"+k));
    rmSetTriggerPriority(4);
    rmSetTriggerActive(false);
    rmSetTriggerRunImmediately(true);
    rmSetTriggerLoop(false);
 
-   rmSwitchToTrigger(rmTriggerID("TrainFireship2OFF_Plr"+k));
+   rmSwitchToTrigger(rmTriggerID("trainFuchuan2OFF_Plr"+k));
    rmAddTriggerCondition("Timer");
    rmSetTriggerConditionParamInt("Param1",5);
    rmAddTriggerEffect("Fire Event");
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship2ON_Plr"+k));
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2ON_Plr"+k));
    rmSetTriggerPriority(4);
    rmSetTriggerActive(false);
    rmSetTriggerRunImmediately(true);
    rmSetTriggerLoop(false);
 
    
-   rmSwitchToTrigger(rmTriggerID("TrainFireship2TIME_Plr"+k));
+   rmSwitchToTrigger(rmTriggerID("trainFuchuan2TIME_Plr"+k));
    rmAddTriggerCondition("Timer");
    rmSetTriggerConditionParamFloat("Param1",0.5);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -1717,13 +1732,13 @@ rmCreateTrigger("TrainFireship1TIME Plr"+k);
    rmSetTriggerActive(false);
    rmSetTriggerRunImmediately(true);
    rmSetTriggerLoop(false);
-   }
 
-rmSwitchToTrigger(rmTriggerID("TrainFireship1ON_Plr"+k));
+
+rmSwitchToTrigger(rmTriggerID("trainFuchuan1ON_Plr"+k));
 rmAddTriggerCondition("Units in Area");
 rmSetTriggerConditionParam("DstObject","3");
 rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("UnitType","zpFireShipProxy");
+rmSetTriggerConditionParam("UnitType","zpWokouFuchuanProxy");
 rmSetTriggerConditionParamInt("Dist",35);
 rmSetTriggerConditionParam("Op",">=");
 rmSetTriggerConditionParamInt("Count",1);
@@ -1732,25 +1747,25 @@ rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpTrainFireJunk1"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1OFF_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1OFF_Plr"+k));
 rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1TIME_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1TIME_Plr"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
-rmSwitchToTrigger(rmTriggerID("TrainFireship1OFF_Plr"+k));
+rmSwitchToTrigger(rmTriggerID("trainFuchuan1OFF_Plr"+k));
 rmAddTriggerCondition("Timer");
 rmSetTriggerConditionParamInt("Param1",5);
 rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1ON_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1ON_Plr"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
-rmSwitchToTrigger(rmTriggerID("TrainFireship1TIME_Plr"+k));
+rmSwitchToTrigger(rmTriggerID("trainFuchuan1TIME_Plr"+k));
 rmAddTriggerCondition("Timer");
 rmSetTriggerConditionParamFloat("Param1",0.5);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -1792,7 +1807,7 @@ rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1off_Player"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
 rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1ON_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1ON_Plr"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
@@ -1817,13 +1832,13 @@ rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1on_Player"+k));
 rmAddTriggerEffect("Disable Trigger");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
 rmAddTriggerEffect("Disable Trigger");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1ON_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1ON_Plr"+k));
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
 
-if (cNumberNonGaiaPlayers >= 4){
+
    for (k=1; <= cNumberNonGaiaPlayers) {
    rmCreateTrigger("Pirates2on Player"+k);
    rmCreateTrigger("Pirates2off Player"+k);
@@ -1847,7 +1862,7 @@ if (cNumberNonGaiaPlayers >= 4){
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2ON_Plr"+k));
    rmAddTriggerEffect("Fire Event");
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireShip2ON_Plr"+k));
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2ON_Plr"+k));
    rmSetTriggerPriority(4);
    rmSetTriggerActive(true);
    rmSetTriggerRunImmediately(true);
@@ -1872,13 +1887,13 @@ if (cNumberNonGaiaPlayers >= 4){
    rmAddTriggerEffect("Disable Trigger");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2ON_Plr"+k));
    rmAddTriggerEffect("Disable Trigger");
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireShip2ON_Plr"+k));
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2ON_Plr"+k));
    rmSetTriggerPriority(4);
    rmSetTriggerActive(false);
    rmSetTriggerRunImmediately(true);
    rmSetTriggerLoop(false);
    }
-}
+
 
 // Send Wokou Random Ship
 
@@ -1976,7 +1991,6 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
-
 
 // Testing
 

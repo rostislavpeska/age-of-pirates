@@ -1,38 +1,41 @@
 <?xml version="1.0"?>
 
 <grouping>
-	<width>14</width>
-	<height>12</height>
+	<width>12</width>
+	<height>11</height>
 	<ignoreplacementrules>1</ignoreplacementrules>
 	<selectassingleunit>1</selectassingleunit>
 	<workonassingleunit>1</workonassingleunit>
 	<units>
-		<unit variation="46" posx="6.9014" posz="-6.9840" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpNativeHousePirate</unit>
-		<unit variation="186" posx="-4.2855" posz="-7.2171" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSocketPirates</unit>
-		<unit variation="54" posx="11.4682" posz="-2.1391" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpNativeHousePirate</unit>
-		<unit variation="130" posx="-12.1524" posz="-2.6713" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsColony</unit>
-		<unit variation="153" posx="2.9268" posz="-3.4432" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPirateFlag</unit>
-		<unit variation="30" posx="-10.4125" posz="-3.9916" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
-		<unit variation="247" posx="4.1139" posz="-1.3848" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsColony</unit>
-		<unit variation="131" posx="0.4892" posz="-2.5948" orientx="0.0000" orienty="0.0000" orientz="1.0000">NativePirates</unit>
-		<unit variation="205" posx="7.6714" posz="-1.9089" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">NativePirates</unit>
-		<unit variation="255" posx="-11.5912" posz="0.0277" orientx="-0.9236" orienty="0.0021" orientz="0.3833">SPCCasualties</unit>
-		<unit variation="82" posx="-1.0522" posz="0.3958" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Campfire</unit>
-		<unit variation="254" posx="1.0984" posz="0.6778" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
-		<unit variation="212" posx="-9.2826" posz="-0.7505" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">NativePirates</unit>
-		<unit variation="34" posx="2.2259" posz="-1.3128" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">NativePirates</unit>
-		<unit variation="209" posx="5.0609" posz="-1.6454" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativePirates</unit>
-		<unit variation="1" posx="-6.0875" posz="2.1902" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpNativeHousePirate</unit>
-		<unit variation="87" posx="10.8582" posz="1.9915" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNativeHousePirate</unit>
-		<unit variation="110" posx="6.3496" posz="4.6950" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeHousePirate</unit>
-		<unit variation="223" posx="1.8012" posz="3.5810" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
-		<unit variation="201" posx="-11.7472" posz="5.7022" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">SPCDamagedCannons</unit>
-		<unit variation="184" posx="-1.4099" posz="3.8889" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativePirates</unit>
-		<unit variation="41" posx="-7.6065" posz="7.7556" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">SPCCasualtyCart</unit>
-		<unit variation="168" posx="-1.4545" posz="7.5765" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeHousePirate</unit>
-		<unit variation="172" posx="-5.1371" posz="9.0027" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Skulls</unit>
-		<unit variation="152" posx="3.1289" posz="8.7269" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsColony</unit>
-		<unit variation="240" posx="0.6536" posz="9.8943" orientx="-1.0000" orienty="0.0039" orientz="0.0000">SPCCasualties</unit>
+		<unit variation="186" posx="-4.2855" posz="-6.2171" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSocketPirates</unit>
+		<unit variation="46" posx="6.9014" posz="-5.9840" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpNativeHousePirate</unit>
+		<unit variation="161" posx="5.2250" posz="-6.5607" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="161" posx="1.6931" posz="-7.0702" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="161" posx="9.4623" posz="-2.6409" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="161" posx="-5.3372" posz="0.4616" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="54" posx="11.4682" posz="-1.1391" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpNativeHousePirate</unit>
+		<unit variation="0" posx="4.1139" posz="-0.3848" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsColony</unit>
+		<unit variation="131" posx="0.4892" posz="-1.5948" orientx="0.0000" orienty="0.0000" orientz="1.0000">NativePirates</unit>
+		<unit variation="205" posx="7.6714" posz="-0.9089" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">NativePirates</unit>
+		<unit variation="82" posx="-1.0522" posz="1.3958" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Campfire</unit>
+		<unit variation="7" posx="1.0984" posz="1.6778" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
+		<unit variation="212" posx="-9.2826" posz="0.2495" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">NativePirates</unit>
+		<unit variation="34" posx="2.2259" posz="-0.3128" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">NativePirates</unit>
+		<unit variation="209" posx="5.0609" posz="-0.6454" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativePirates</unit>
+		<unit variation="1" posx="-6.0875" posz="3.1902" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpNativeHousePirate</unit>
+		<unit variation="87" posx="10.8582" posz="2.9915" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHousePirate</unit>
+		<unit variation="161" posx="8.3699" posz="3.2718" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="110" posx="6.3496" posz="5.6950" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeHousePirate</unit>
+		<unit variation="161" posx="-0.6343" posz="6.8000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="161" posx="-3.5159" posz="6.9907" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="201" posx="-11.7472" posz="6.7022" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">SPCDamagedCannons</unit>
+		<unit variation="184" posx="-1.4099" posz="4.8889" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativePirates</unit>
+		<unit variation="161" posx="5.0356" posz="7.4315" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="41" posx="-7.6065" posz="8.7556" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">SPCCasualtyCart</unit>
+		<unit variation="168" posx="-1.4545" posz="8.5765" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeHousePirate</unit>
+		<unit variation="172" posx="-5.1371" posz="10.0027" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Skulls</unit>
+		<unit variation="9" posx="3.1289" posz="9.7269" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsColony</unit>
+		<unit variation="240" posx="0.6536" posz="10.8943" orientx="-0.9997" orienty="-0.0248" orientz="0.0004">SPCCasualties</unit>
 	</units>
 	<tiles></tiles>
 </grouping>

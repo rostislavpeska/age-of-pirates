@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\palaces\textures\wall_palace_SPC_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\europe\palaces\textures\wall_fr01_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\europe\palaces\textures\wall_fr01_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\palaces\textures\roof_palace_SPC_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\europe\palaces\textures\roof_ge01_fr01_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\europe\palaces\textures\roof_ge01_fr01_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

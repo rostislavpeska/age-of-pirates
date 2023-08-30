@@ -59,12 +59,11 @@
 			<forceshowrollover>true</forceshowrollover>
 		</ability>
 	</zpNatConquistadorMusketeer>
-  <zpNatConquistadorMissionary>
-		<ability>PowerConvert
-			<rof>60</rof>
-		</ability>
-	</zpNatConquistadorMissionary>
   <zppriest>
     <ability>PowerConvert<rof>60</rof></ability>
   </zppriest>
+  <zpsaofeng>
+    <ability>ypPowerHeavenlyFireBomb<rof>120</rof></ability>
+    <ability>ypPowerCriticalAttack<alwaysdisabledingrid>true</alwaysdisabledingrid></ability>
+  </zpsaofeng>
 </abilitymods>

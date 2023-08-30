@@ -209,7 +209,7 @@
     <train row ="0" page ="0" column ="2">zpNatWokouMonk</train>
     <train row ="0" page ="0" column ="5">zpWokouSteamerProxy</train>
     <train row ="0" page ="0" column ="2">zpNatWokouArmy</train>
-    <train row ="0" page ="0" column ="3">zpWokouFuchuanProxy</train>
+    <train row ="0" page ="0" column ="5">zpWokouFuchuanProxy</train>
     <train row ="0" page ="0" column ="4">zpNatSoheiProxy</train>
     <train row ="0" page ="0" column ="5">zpNatSoheiArcher</train>
     <train row ="0" page ="0" column ="6">zpSettlerZen</train>
@@ -220,7 +220,6 @@
     <train row ="0" page ="0" column ="6">zpSettlerSufiB</train>
     <train row ="0" page ="0" column ="1">zpNatCorsair</train>
     <train row ="0" page ="0" column ="2">zpNatMarksman</train>
-    <train row ="0" page ="0" column ="3">zpFireShipProxy</train>
     <train row ="0" page ="0" column ="1">zpNatSettlerJewish</train>
     <train row ="0" page ="0" column ="2">zpJewishSettlementWagon</train>
     <train row ="0" page ="0" column ="3">zpNatRifleman</train>
@@ -3680,13 +3679,13 @@
     <maxrunvelocity>7.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <populationcount>4</populationcount>
-    <animfile>units\asians\spc\jinhai\spc_jinhai.xml</animfile>
+    <animfile>units\asians\spc\huang\spc_huang.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\natives\saofeng_icon.png</icon>
     <portraiticon>resources\art\units\natives\saofeng_portrait.png</portraiticon>
     <rollovertextid>300206</rollovertextid>
+    <populationcount>4</populationcount>
     <shortrollovertextid>300206</shortrollovertextid>
     <initialhitpoints>800.0000</initialhitpoints>
     <maxhitpoints>800.0000</maxhitpoints>
@@ -3697,11 +3696,9 @@
     <buildbounty>50.0000</buildbounty>
     <allowedage>2</allowedage>
     <buildlimit>1</buildlimit>
-    <cost resourcetype="Gold">100.0000</cost>
-    <cost resourcetype="Food">50.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <cost resourcetype="Food">150.0000</cost>
     <armor type="Hand" value="0.4000">
-    <train row ="0" page ="0" column ="1">zpNatWokouPirate</train>
-    <train row ="0" page ="0" column ="2">zpNatWokouMonk</train>
     </armor>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
@@ -3738,17 +3735,26 @@
     <flag>ConstrainOrientation</flag>
     <flag>OrientUnitWithGround</flag>
     <flag>Tracked</flag>
-    <command page="10" column="1">Stop</command>
+    <train row="0" page="6" column="0">TradingPost</train>
+    <train row="0" page="6" column="2">NativeEmbassy</train>
     <command page="10" column="0">Garrison</command>
-    <command page="10" column="7">Delete</command>
-    <command page="11" column="0">Abilities</command>
-    <tactics>ypspcjinhai.tactics</tactics>
+    <command page="10" column="1">Stop</command>
+    <command page="11">Abilities</command>
+    <tactics>ypspchuang.tactics</tactics>
     <protoaction>
       <name>ArrowAttack</name>
       <damage>24.000000</damage>
       <damagetype>Ranged</damagetype>
       <maxrange>16.000000</maxrange>
       <rof>3.000000</rof>
+      <hitpercent>20.000000</hitpercent>
+      <damagemultiplier>2.000000</damagemultiplier>
+      <hitpercenttype>CriticalAttack</hitpercenttype>
+    </protoaction>
+    <protoaction>
+      <name>Build</name>
+      <rate type="Outpost">2.500000</rate>
+      <rate type="TradingPost">5.000000</rate>
     </protoaction>
     <protoaction>
       <name>BuildingAttack</name>
@@ -3761,6 +3767,29 @@
       <damage>14.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
+      <hitpercent>20.000000</hitpercent>
+      <damagemultiplier>2.000000</damagemultiplier>
+      <hitpercenttype>CriticalAttack</hitpercenttype>
+    </protoaction>
+    <protoaction>
+      <name>HeavenlyFireBomb</name>
+      <damage>250.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="Building">3.000000</damagebonus>
+      <damagearea>4.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>HeavenlyTreeBomb</name>
+      <damage>20.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="Nature">10.000000</damagebonus>
+      <damagearea>4.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
   <unit id="20043" name="zpNatWokouMonk">
@@ -3961,8 +3990,6 @@
     <sharedbuildlimitunittypes>
       <unittype>zpWokouSteamer</unittype>
       <unittype>zpWokouSteamerProxy</unittype>
-      <unittype>zpWokouFuchuan</unittype>
-      <unittype>zpWokouFUchuanProxy</unittype>
     </sharedbuildlimitunittypes>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
@@ -4062,7 +4089,7 @@
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <trainpoints>40.0000</trainpoints>
-    <buildlimit>2</buildlimit>
+    <buildlimit>1</buildlimit>
     <bounty>120.0000</bounty>
     <buildbounty>120.0000</buildbounty>
     <cost resourcetype="Wood">450.0000</cost>
@@ -4071,10 +4098,7 @@
     <allowedage>2</allowedage>
     <armor type="Ranged" value="0.7500">
     </armor>
-    <sharedbuildlimitunit>zpWokouSteamer</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpWokouSteamer</unittype>
-      <unittype>zpWokouSteamerProxy</unittype>
       <unittype>zpWokouFuchuan</unittype>
       <unittype>zpWokouFUchuanProxy</unittype>
     </sharedbuildlimitunittypes>
@@ -4099,6 +4123,8 @@
     <unittype>Ranged</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
     <unittype>AbstractWarShip</unittype>
+    <train row ="0" page ="0" column ="1">zpNatWokouPirate</train>
+    <train row ="0" page ="0" column ="2">zpNatWokouMonk</train>
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>DontRotateObstruction</flag>
@@ -4169,8 +4195,6 @@
      <sharedbuildlimitunittypes>
       <unittype>zpWokouSteamer</unittype>
       <unittype>zpWokouSteamerProxy</unittype>
-      <unittype>zpWokouFuchuan</unittype>
-      <unittype>zpWokouFUchuanProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -4478,10 +4502,8 @@
     <cost resourcetype="Gold">400.0000</cost>
     <cost resourcetype="Wood">300.0000</cost>
     <allowedage>2</allowedage>
-    <sharedbuildlimitunit>zpWokouSteamer</sharedbuildlimitunit>
-     <sharedbuildlimitunittypes>
-      <unittype>zpWokouSteamer</unittype>
-      <unittype>zpWokouSteamerProxy</unittype>
+    <sharedbuildlimitunit>zpWokouFuchuan</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
       <unittype>zpWokouFuchuan</unittype>
       <unittype>zpWokouFUchuanProxy</unittype>
     </sharedbuildlimitunittypes>
@@ -12439,7 +12461,7 @@
       <damagecap>400.000000</damagecap>
       <damagearea>15.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="Building">5.000000</damagebonus>
+      <damagebonus type="Building">8.000000</damagebonus>
       <damagebonus type="AbstractDock">0.200000</damagebonus>
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="Ship">2.500000</damagebonus>
@@ -13567,7 +13589,6 @@
 		<unittype>Unit</unittype>
 		<unittype>UnitClass</unittype>
 		<unittype>Military</unittype>
-		<unittype>AbstractNativeWarrior</unittype>
     <sharedbuildlimitunittypes>
       <unittype>zpPriest</unittype>
       <unittype>zpPriestProxy</unittype>
@@ -13853,11 +13874,6 @@
     <unittype>Economic</unittype>
     <unittype>BuildingClass</unittype>
     <unittype>AbstractFarmBuilding</unittype>
-    <!--<sharedbuildlimitunit>zpJesuitCathedral</sharedbuildlimitunit>
-    <sharedbuildlimitunittypes>
-      <unittype>zpCongregation</unittype>
-      <unittype>zpJesuitCathedral</unittype>
-    </sharedbuildlimitunittypes>-->
     <train row ="0" page ="0" column ="0">zpPriestProxy</train>
     <tech row="0" page="1" column="0">zpNatJesuitHeterodoxy</tech>
     <tech row="0" page="1" column="1">zpJesuitHerbs</tech>
@@ -13881,7 +13897,6 @@
     <flag>BuildingShowTactics</flag>
     <flag>DisplayRange</flag>
     <flag>ShowAreaHealRate</flag>
-    <!--<flag>UseSharedBuildLimit</flag>-->
     <command page="9" column="1">CongregationCoin</command>
     <command page="9" column="2">CongregationFood</command>
     <command page="9" column="0">CongregationXP</command>
@@ -13968,8 +13983,8 @@
       <rate type="zpCongregation">5.000000</rate>
     </protoaction>
   </unit>
-  <unit id="20144" name="zpPriestProxy">
-    <dbid>20144</dbid>
+  <unit id="20149" name="zpPriestProxy">
+    <dbid>20149</dbid>
     <displaynameid>300650</displaynameid>
 		<editornameid>300649</editornameid>
 		<populationcount>0</populationcount>
@@ -13996,7 +14011,7 @@
 		<buildlimit>5</buildlimit>
 		<bounty>20.0000</bounty>
 		<buildbounty>20.0000</buildbounty>
-		<cost resourcetype="Gold">300.0000</cost>
+		<cost resourcetype="Gold">250.0000</cost>
     <carrycapacity resourcetype="Food">1.0000</carrycapacity>
     <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
@@ -14043,8 +14058,8 @@
 		<command page="10" column="7">Delete</command>
 		<command page="11" column="0">Abilities</command>
   </unit>
-  <unit id="20145" name="zpJesuitGarden">
-    <dbid>20145</dbid>
+  <unit id="20150" name="zpJesuitGarden">
+    <dbid>20150</dbid>
     <displaynameid>300070</displaynameid>
     <editornameid>300685</editornameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
@@ -14104,6 +14119,57 @@
 		<flag>NoHPBar</flag>
 		<flag>DoNotShowOnMiniMap</flag>
 		<flag>Tracked</flag>
+  </unit>
+  <unit id="20151" name="zpSocketJesuitEU">
+    <dbid>20151</dbid>
+    <displaynameid>61086</displaynameid>
+    <editornameid>300692</editornameid>
+    <subciv>SPCJesuit</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.0286</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildEuropean</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\europe_outpost_socket.xml</animfile>
+    <minimapicon>ui\minimap\royal_house</minimapicon>
+    <capturedminimapicon>ui\minimap\royal_house_c</capturedminimapicon>
+    <portraiticon>resources\art\buildings\native_settlement\native_jesuit_site_icon_portrait.png</portraiticon>
+    <rollovertextid>61105</rollovertextid>
+    <shortrollovertextid>61104</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>9.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>FlattenGround</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
   </unit>
 
 <!--TEST-->

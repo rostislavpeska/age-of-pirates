@@ -189,7 +189,7 @@
       <string _locid="300187">ZP SPC Treasure Ship</string>
       <string _locid="300188">Treasure Ship</string>
       <string _locid="300189">Mother of all ships</string>
-      <string _locid="300190">Floating Dragon</string>
+      <string _locid="300190">Kamikadze</string>
       <string _locid="300191">ZP Colonization Wagon Asian</string>
       <string _locid="300192">Turtle Ship</string>
       <string _locid="300193">ZP Test Turtle Ship</string>
@@ -204,7 +204,6 @@
       <string _locid="300202">Blackmail a politician to improve your influence.</string>
       <string _locid="300203">Sao Feng</string>
       <string _locid="300204">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWokou Army \n\nCosts population but is cheap and gets trained very fast. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nThe Big Theft (Treasure Ship)</string>
-      <string _locid="300213">Ships a stole</string>
       <string _locid="300205">ZP SPC Sao Feng</string>
       <string _locid="300206">Asian Pirate Captain</string>
       <string _locid="300207">ZP NAT Wokou Monk</string>
@@ -213,13 +212,13 @@
       <string _locid="300210">Veteran Wokou Monk</string>
       <string _locid="300211">Elite Wokou Monk</string>
       <string _locid="300212">The Big Theft</string>
-      <string _locid="300213">Ships a Treasure Ship stolen by your Wokou alies.</string>
+      <string _locid="300213">Ships a Treasure Ship stolen by your Wokou alies with Sao Feng himself on board.</string>
       <string _locid="300214">Friendly Shipyard</string>
       <string _locid="300215">ZP Wokou Japanese Steamer</string>
       <string _locid="300216">Matsura Takanobu</string>
       <string _locid="300217">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWokou Monk \n\nNative archer. Shipments from foreign allies. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nPacific Allies (Random Legendary Ship)</string>
       <string _locid="300218">The Iron Fleet</string>
-      <string _locid="300219">Ships a mighty Madame Ching's Flagship.</string>
+      <string _locid="300219">Ships Fire Junks and enables you a Fire Junk training in your Dock.</string>
       <string _locid="300220">Destroyer</string>
       <string _locid="300221">Unique steam powered warship able to train Eisentrupplers and detect submarines and other stealth units.</string>
       <string _locid="300222">Steam powered warship.</string>
@@ -244,7 +243,7 @@
       <string _locid="300241">Pacific Allies</string>
       <string _locid="300242">Sends a random legendary pirate ship</string>
       <string _locid="300243">Madame Ching</string>
-      <string _locid="300244">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nFire Junk \n\nRams anything on the water and explodes.  \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nFloating Dragon (Flagship)</string>
+      <string _locid="300244">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nFloating Dragon \n\nMighty flagship able to train wokou pirates.  \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nKamigadze (Fire Junks)</string>
       <string _locid="300245">Wokou Flagship with powerful broadside attack.</string>
       <string _locid="300246">The Emperess</string>
       <string _locid="300247">Choose a Wokou Pirate leader and get new special units and technologies.</string>
@@ -689,6 +688,10 @@
       <string _locid="300686">Pirate Wars</string>
       <string _locid="300687">Players start on separate islands with enough resources, trade route and a native settlement. \n\nSettlements: Pirates, Wokou, Jesuit</string>
       <string _locid="300688">The war between European and Asian Pirate troops is starting on the Philippines! Who will win?</string>
+      <string _locid="300689">Treasure Island</string>
+      <string _locid="300690">Migration Map, players start on very small islands with limited resources and have to migrate on one of two central islands. \n\nSettlements: Pirates, Renegades</string>
+      <string _locid="300691">"We are all travelers in the wilderness of this world, and the best we can find in our travels is an honest friend." -- Robert Luis Stevenson </string>
+      <string _locid="300692">ZP Socket SPC Jesuits Europe</string>
     </language>
   </stringtable>
 </stringmods>
