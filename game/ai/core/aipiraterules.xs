@@ -1733,9 +1733,22 @@ minInterval 30
   {
     int proxy = xsArrayGetInt(proxy_list, i);
     int ship = xsArrayGetInt(ship_list, i);
-    
+
     int maintain_plan = aiPlanGetIDByTypeAndVariableType(cPlanTrain, cTrainPlanUnitType, proxy, true);
-    int number_to_maintain = kbGetBuildLimit(cMyID, ship) - kbUnitCount(cMyID, ship);
+    int number_to_maintain = -1;
+    int militaryPopPercentage = btBiasNative * 10 + 10;
+
+   if (kbGetAge() <= cAge4)
+   {
+      // Resource equivalent to 0-20% of our military pop, same as native warriors
+      number_to_maintain = (aiGetMilitaryPop() * militaryPopPercentage) / (kbUnitCostPerResource(proxy, cResourceGold) +
+                                                                        kbUnitCostPerResource(proxy, cResourceWood) +
+                                                                        kbUnitCostPerResource(proxy, cResourceFood));
+   }
+   else
+   {
+      number_to_maintain = kbGetBuildLimit(cMyID, ship);
+   }
 
     if (maintain_plan == -1)
     {
