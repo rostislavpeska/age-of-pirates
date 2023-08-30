@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\natives\maori\textures\maori_clubman_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\natives\blowgun\textures\blowgun_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\natives\blowgun\textures\blowgun_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\natives\blowgun\textures\blowgun_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
