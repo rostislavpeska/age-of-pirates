@@ -36,12 +36,12 @@
 				</data>
                 <data>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\europe\palaces\roof_fr01_wall_fr01_wing_S</file>
+						<file>buildings\native_settlement\palaces\Palace_SPC2_wing_S</file>
 					</assetreference>
-				</data>
-                <data>
+			    </data>
+				<data>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\europe\palaces\roof_fr02_wall_fr03_wing_S</file>
+						<file>buildings\native_settlement\palaces\Palace_SPC2_wing_L</file>
 					</assetreference>
 			    </data>
 				<data>
