@@ -8469,8 +8469,8 @@
   <tech name="zpNatJesuitTank" type="Normal">
     <dbid>40260</dbid>
     <displaynameid>300661</displaynameid>
-    <cost resourcetype ="Gold">600.0000</cost>
-    <cost resourcetype ="Wood">600.0000</cost>
+    <cost resourcetype ="Gold">1250.0000</cost>
+    <cost resourcetype ="Wood">1250.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <rollovertextid>300662</rollovertextid>

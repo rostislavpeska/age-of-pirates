@@ -6408,9 +6408,6 @@
     <allowedage>1</allowedage>
     <armor type="Ranged" value="0.6000">
     </armor>
-    <sharedselectionunittypes>
-      <unittype>deAllegianceBarbaryMarksman</unittype>
-    </sharedselectionunittypes>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
@@ -10515,6 +10512,10 @@
         <unittype>zpIronTank</unittype>
         <unittype>zpIronTankProxy</unittype>
     </sharedbuildlimitunittypes>
+    <sharedselectionunittypes>
+      <unittype>zpIronTank</unittype>
+      <unittype>zpIronTankProxy</unittype>
+    </sharedselectionunittypes>
     <flag>UseSharedBuildLimit</flag>
   </unit>
   <unit id="20110" name="zpWeaponFactoryWinter">
@@ -11029,6 +11030,7 @@
     <sharedbuildlimitunit>deTank</sharedbuildlimitunit>
     <sharedselectionunittypes>
       <unittype>zpIronTankProxy</unittype>
+      <unittype>deTank</unittype>
     </sharedselectionunittypes>
     <sharedbuildlimitunittypes>
       <unittype>deTank</unittype>
@@ -11300,6 +11302,7 @@
     <sharedbuildlimitunit>deTank</sharedbuildlimitunit>
     <sharedselectionunittypes>
       <unittype>zpIronTank</unittype>
+      <unittype>deTank</unittype>
     </sharedselectionunittypes>
     <sharedbuildlimitunittypes>
       <unittype>deTank</unittype>
