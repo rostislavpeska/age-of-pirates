@@ -1,0 +1,50 @@
+<material>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\buildings_med\med_harbor\textures\med_harbor_03_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_med\med_harbor\textures\med_harbor_03_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_med\med_harbor\textures\med_harbor_03_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\buildings_med\med_harbor\textures\med_harbor_03_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_med\med_harbor\textures\med_harbor_03_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_med\med_harbor\textures\med_harbor_03_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\italy\italy_plant\textures\italy_plant_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\italy\italy_plant\textures\italy_plant_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\italy\italy_plant\textures\italy_plant_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\italy\italy_plant\textures\italy_plant_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\italy\italy_plant\textures\italy_plant_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\italy\italy_plant\textures\italy_plant_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

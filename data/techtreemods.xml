@@ -4152,8 +4152,8 @@
       </effect>
       <effect type="TechStatus" status="active">ypNatDisciplinedBhakti</effect>
       <effect type="SetName" proto="zpNatWarElephantProxy" culture="none" newname="61153">
-      <effect type="SetName" proto="zpNatWarElephantProxy" culture="none" newname="61199" reqtech="ImpLegendaryNativesShadow">
       </effect>
+      <effect type="SetName" proto="zpNatWarElephantProxy" culture="none" newname="61199" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>
@@ -6977,7 +6977,7 @@
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\veteran_grenadier_artillery\veteran_grenadier_artillery.png</icon>
-    <rollovertextid>124572</rollovertextid>
+    <rollovertextid>300711</rollovertextid>
     <flag>UpgradeTech</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>
@@ -7015,7 +7015,7 @@
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\guard_grenadier_artillery\guard_grenadier_artillery.png</icon>
-    <rollovertextid>124572</rollovertextid>
+    <rollovertextid>300711</rollovertextid>
     <flag>UpgradeTech</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>
@@ -8002,7 +8002,7 @@
     </effects>
 	</tech>
   <tech name="zpInuitFeeders" type="Normal">
-    <dbid>40265</dbid>
+    <dbid>40272</dbid>
     <displaynameid>300594</displaynameid>
     <cost resourcetype="Food">200.0000</cost>
     <researchpoints>10.0000</researchpoints>
@@ -8019,7 +8019,7 @@
     </effects>
   </tech>
   <tech name="zpInuitUmiaks" type="Normal">
-    <dbid>40266</dbid>
+    <dbid>40273</dbid>
     <displaynameid>300598</displaynameid>
     <cost resourcetype="Wood">600.0000</cost>
     <researchpoints>10.0000</researchpoints>
@@ -8043,7 +8043,7 @@
     </effects>
   </tech>
   <tech name="zpInuitFriends" type="Normal">
-    <dbid>40267</dbid>
+    <dbid>40274</dbid>
     <displaynameid>300599</displaynameid>
     <cost resourcetype="Food">1200.0000</cost>
     <researchpoints>10.0000</researchpoints>
@@ -8072,7 +8072,7 @@
     </effects>
   </tech>
   <tech name="zpConsulateScientistkhora" type="Normal">
-    <dbid>40268</dbid>
+    <dbid>40275</dbid>
     <displaynameid>300616</displaynameid>
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
@@ -8102,7 +8102,7 @@
     </effects>
   </tech>
   <tech name="zpBattleAirship" type="Normal">
-    <dbid>40269</dbid>
+    <dbid>40276</dbid>
     <displaynameid>300619</displaynameid>
     <cost resourcetype="Gold">800.0000</cost>
     <cost resourcetype="Wood">800.0000</cost>
@@ -8157,7 +8157,7 @@
     </effects>
   </tech>
   <tech name="zpMustardGas" type="Normal">
-    <dbid>40250</dbid>
+    <dbid>40277</dbid>
     <displaynameid>300621</displaynameid>
     <cost resourcetype="Food">1500.0000</cost>
     <cost resourcetype="Gold">1500.0000</cost>
@@ -8194,7 +8194,7 @@
     </effects>
   </tech>
   <tech name="zpAIAirshipSetup" type="Normal">
-    <dbid>40251</dbid>
+    <dbid>40278</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -8209,7 +8209,7 @@
     </effects>
   </tech>
   <tech name="zpNativeSPCJesuit" type="Normal">
-    <dbid>40252</dbid>
+    <dbid>40279</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -8237,7 +8237,7 @@
     </effects>
   </tech>
   <tech name="zpNatJesuitSmokelessPowder" type="Normal">
-    <dbid>40252</dbid>
+    <dbid>40280</dbid>
     <displaynameid>61121</displaynameid>
     <cost resourcetype="Food">250.0000</cost>
     <cost resourcetype="Gold">250.0000</cost>
@@ -8252,7 +8252,7 @@
     </effects>
   </tech>
   <tech name="zpNatJesuitSchools" type="Normal">
-    <dbid>40253</dbid>
+    <dbid>40281</dbid>
     <displaynameid>61119</displaynameid>
     <cost resourcetype="Wood">100.0000</cost>
     <cost resourcetype="Gold">100.0000</cost>
@@ -8267,7 +8267,7 @@
     </effects>
   </tech>
   <tech name="zpNatJesuitFlyingButtress" type="Normal">
-    <dbid>40254</dbid>
+    <dbid>40282</dbid>
     <displaynameid>61115</displaynameid>
     <cost resourcetype="Wood">250.0000</cost>
     <cost resourcetype="Gold">250.0000</cost>
@@ -8282,7 +8282,7 @@
     </effects>
   </tech>
   <tech name="zpNatDisciplinedJesuit" type="Normal">
-    <dbid>40254</dbid>
+    <dbid>40283</dbid>
     <displaynameid>61155</displaynameid>
     <cost resourcetype="Wood">100.0000</cost>
     <cost resourcetype="Gold">75.0000</cost>
@@ -8323,7 +8323,7 @@
     </effects>
   </tech>
   <tech name="zpNatHonoredJesuit" type="Normal">
-    <dbid>40255</dbid>
+    <dbid>40284</dbid>
     <displaynameid>61171</displaynameid>
     <cost resourcetype="Wood">400.0000</cost>
     <cost resourcetype="Gold">300.0000</cost>
@@ -8365,7 +8365,7 @@
     </effects>
   </tech>
   <tech name="zpIndianFriendshipJesuit" type="Normal">
-    <dbid>40256</dbid>
+    <dbid>40285</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -8397,7 +8397,7 @@
     </effects>
   </tech>
   <tech name="zpNativeTreatyJesuit" type="Normal">
-    <dbid>40258</dbid>
+    <dbid>40286</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -8412,7 +8412,7 @@
     </effects>
   </tech>
   <tech name ="zpJesuitCathedral" type ="Normal">
-		<dbid>40258</dbid>
+		<dbid>40287</dbid>
 		<displaynameid>300657</displaynameid>
   	<researchpoints>60.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
@@ -8448,7 +8448,7 @@
     </effects>
 	</tech>
   <tech name="zpNatJesuitHeterodoxy" type="Normal">
-    <dbid>40259</dbid>
+    <dbid>40288</dbid>
 		<displaynameid>300659</displaynameid>
 		<cost resourcetype="Food">150.0000</cost>
 		<cost resourcetype="Wood">150.0000</cost>
@@ -8467,7 +8467,7 @@
 		</effects>
 	</tech>
   <tech name="zpNatJesuitTank" type="Normal">
-    <dbid>40260</dbid>
+    <dbid>40289</dbid>
     <displaynameid>300661</displaynameid>
     <cost resourcetype ="Gold">1250.0000</cost>
     <cost resourcetype ="Wood">1250.0000</cost>
@@ -8491,7 +8491,7 @@
     </effects>
   </tech>
   <tech name="zpNatJesuitArmory" type="Normal">
-    <dbid>40261</dbid>
+    <dbid>40290</dbid>
     <displaynameid>300663</displaynameid>
     <cost resourcetype ="Gold">500.0000</cost>
     <cost resourcetype ="Food">300.0000</cost>
@@ -8520,7 +8520,7 @@
     </effects>
   </tech>
   <tech name="zpNatJesuitCongregation" type="Normal">
-    <dbid>40262</dbid>
+    <dbid>40291</dbid>
     <displaynameid>300668</displaynameid>
     <cost resourcetype ="Gold">200.0000</cost>
     <cost resourcetype ="Wood">600.0000</cost>
@@ -8542,7 +8542,7 @@
     </effects>
   </tech>
   <tech name="zpJesuitHerbs" type="Normal">
-    <dbid>40263</dbid>
+    <dbid>40292</dbid>
     <displaynameid>300677</displaynameid>
     <cost resourcetype ="Food">150.0000</cost>
     <cost resourcetype ="Gold">150.0000</cost>
@@ -8567,7 +8567,7 @@
     </effects>
   </tech>
   <tech name="zpJesuitGenetics" type="Normal">
-    <dbid>40264</dbid>
+    <dbid>40293</dbid>
     <displaynameid>300678</displaynameid>
     <cost resourcetype ="Gold">300.0000</cost>
     <cost resourcetype ="Food">300.0000</cost>
@@ -8601,7 +8601,7 @@
     </effects>
   </tech>
   <tech name="zpNatJesuitScripturalist" type="Normal">
-		<dbid>40265</dbid>
+		<dbid>40294</dbid>
     <displaynameid>300683</displaynameid>
 		<cost resourcetype="Food">150.0000</cost>
 		<cost resourcetype="Gold">150.0000</cost>
@@ -8626,7 +8626,7 @@
 		</effects>
 	</tech>
   <tech name="zpCongregationAvailableShadow" type="Normal">
-    <dbid>40266</dbid>
+    <dbid>40295</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -8637,7 +8637,7 @@
     </effects>
   </tech>
   <tech name="zpAddCongregationShadow" type="Normal">
-    <dbid>40267</dbid>
+    <dbid>40296</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
@@ -8648,7 +8648,7 @@
     </effects>
   </tech>
   <tech name="zpSendAirship" type="Normal">
-    <dbid>40268</dbid>
+    <dbid>40297</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -8660,7 +8660,7 @@
     </effects>
   </tech>
   <tech name="zpBasicTradingPost" type="Normal">
-    <dbid>40268</dbid>
+    <dbid>40298</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -8670,7 +8670,7 @@
     </effects>
   </tech>
   <tech name="zpSendFuchuan" type="Normal">
-    <dbid>40136</dbid>
+    <dbid>40299</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -8682,6 +8682,644 @@
   </tech>
 
   
+  <tech name="zpNativeVenetians" type="Normal">
+    <dbid>40300</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatPavisier</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpVeniceGalleyProxy</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpVenetianExpansion</effect>
+      <effect type="TechStatus" status="obtainable">zpNatVeteranVenetians</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGuardVenetians</effect>
+      <effect type="TechStatus" status="obtainable">zpVeniceTrade</effect>
+      <effect type="TechStatus" status="obtainable">zpVeniceSextant</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyVenice</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyVenice</effect>
+      <effect type="TechStatus" status="obtainable">zpIndianFriendshipVenice</effect>
+      <effect type="TechStatus" status="obtainable">zpVenicePileFoundation</effect>
+      <effect type="TechStatus" status="obtainable">zpVeniceBetterShips</effect>
+      <effect type="TechStatus" status="obtainable">zpNatDryDock</effect>
+    </effects>
+  </tech>
+  <tech name ="zpVenetianExpansion" type ="Normal">
+		<dbid>40301</dbid>
+		<displaynameid>300714</displaynameid>
+  	<researchpoints>0.2000</researchpoints>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\venice_big.png</iconwpf>
+		<rollovertextid>300715</rollovertextid>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>YPInfiniteTech</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <flag>DoNotQueue</flag>
+    <flag>NativeDance</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianFishingBoat</effect>
+      <effect type="TechStatus" status="active">zpTheBlackFlagGoldBallanceShadow</effect>
+    </effects>
+	</tech>
+  <tech name="zpTurnConsulateOffVenice" type="Normal">
+    <dbid>40302</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseCentralEuropeans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateVeniceContarini</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffVenice</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatVeteranVenetians" type="Normal">
+    <dbid>40305</dbid>
+    <displaynameid>300708</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">75.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\veteran_archer_infantry\veteran_archer_infantry.png</icon>
+    <rollovertextid>300709</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatPavisier</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatPavisier</target>
+      </effect>
+      <effect type="SetName" proto="zpNatPavisier" culture="none" newname="122043">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercPavisier</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercPavisier</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMercPavisier" culture="none" newname="122043">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatGuardVenetians" type="Normal">
+    <dbid>40306</dbid>
+    <displaynameid>300710</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\guard_archer_infantry\guard_archer_infantry.png</icon>
+    <rollovertextid>300709</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">zpNatVeteranVenetians</techstatus>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatPavisier</target>
+      </effect>
+      <effect type="SetName" proto="zpNatPavisier" culture="none" newname="122044">
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatPavisier</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercPavisier</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMercPavisier" culture="none" newname="122044">
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercPavisier</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeMaori" type="Normal">
+    <dbid>40307</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMaoriClubman</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpVeniceGoldBallanceShadow" type ="Normal">
+		<dbid>40308</dbid>
+		<status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="1000.00" subtype="Resource" resource="Gold" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="zpHCVenetianPavisers" type="Normal">
+    <dbid>40310</dbid>
+    <displaynameid>300702</displaynameid>
+    <researchpoints>30.0000</researchpoints>
+    <cost resourcetype ="Gold">1000.0000</cost>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venetian_hc\venice_pavisiers.png</icon>
+    <!--<rollovertextid>300703</rollovertextid>-->
+    <flag>YPInfiniteTech</flag>
+    <flag>HomeCity</flag>
+    <flag>DEIndustrialRepeatMercShipment</flag>
+    <effects>
+      <effect type="Data" amount="12.00" subtype="FreeHomeCityUnit" unittype="zpNatMercPavisier" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHCVenetianGalleys" type="Normal">
+    <dbid>40311</dbid>
+    <displaynameid>300721</displaynameid>
+    <researchpoints>30.0000</researchpoints>
+    <cost resourcetype ="Gold">1000.0000</cost>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venetian_hc\venice_galley.png</icon>
+    <!--<rollovertextid>300717</rollovertextid>-->
+    <flag>YPInfiniteTech</flag>
+    <flag>HomeCity</flag>
+    <flag>DEIndustrialRepeatMercShipment</flag>
+    <effects>
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="Galley" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHCVenetianGalleass" type="Normal">
+    <dbid>40309</dbid>
+    <displaynameid>300716</displaynameid>
+    <researchpoints>30.0000</researchpoints>
+    <cost resourcetype ="Gold">1000.0000</cost>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venetian_hc\venice_galleass.png</icon>
+    <!--<rollovertextid>300717</rollovertextid>-->
+    <flag>YPInfiniteTech</flag>
+    <flag>HomeCity</flag>
+    <flag>DEIndustrialRepeatMercShipment</flag>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="deGalleass" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHCVenetianShipImprovement" type="Normal">
+    <dbid>40312</dbid>
+    <displaynameid>300722</displaynameid>
+    <researchpoints>30.0000</researchpoints>
+    <cost resourcetype ="Gold">1000.0000</cost>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venetian_hc\venice_shipimprovement.png</icon>
+    <!--<rollovertextid>300717</rollovertextid>-->
+    <flag>YPInfiniteTech</flag>
+    <flag>HomeCity</flag>
+    <flag>DEIndustrialRepeatMercShipment</flag>
+    <effects>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">deGalleass</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">deGalleass</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">Galley</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">Galley</target>
+      </effect>
+      <effect type="SetName" proto="Galley" culture="none" newname="300723">
+      </effect>
+      <effect type="SetName" proto="deGalleass" culture="none" newname="300724">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHCVenetianCannons" type="Normal">
+    <dbid>40314</dbid>
+    <displaynameid>300728</displaynameid>
+    <researchpoints>30.0000</researchpoints>
+    <cost resourcetype ="Gold">1000.0000</cost>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venetian_hc\venice_cannons.png</icon>
+    <!--<rollovertextid>300703</rollovertextid>-->
+    <flag>YPInfiniteTech</flag>
+    <flag>HomeCity</flag>
+    <flag>DEIndustrialRepeatMercShipment</flag>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpVenetianBombard" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHCVenetianBattleship" type="Normal">
+    <dbid>40313</dbid>
+    <displaynameid>300725</displaynameid>
+    <researchpoints>30.0000</researchpoints>
+    <cost resourcetype ="Gold">1000.0000</cost>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venetian_hc\venice_battleship.png</icon>
+    <!--<rollovertextid>300717</rollovertextid>-->
+    <flag>YPInfiniteTech</flag>
+    <flag>HomeCity</flag>
+    <flag>DEIndustrialRepeatMercShipment</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCLineShip" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceTrade" type="Normal">
+    <dbid>40314</dbid>
+    <displaynameid>300754</displaynameid>
+    <cost resourcetype ="Gold">400.0000</cost>
+    <researchpoints>50.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venice_merchants.png</icon>
+    <rollovertextid>300755</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="InventoryAmount" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTradeCrate</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="InventoryAmount" resource="Food" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTradeCrate</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="InventoryAmount" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTradeCrate</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="InventoryAmount" resource="XP" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTradeCrate</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="InventoryAmount" resource="Influence" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTradeCrate</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceSextant" type="Normal">
+    <dbid>40315</dbid>
+    <displaynameid>300756</displaynameid>
+    <cost resourcetype="Wood">150.0000</cost>
+    <cost resourcetype="Gold">75.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\sextant.png</icon>
+    <rollovertextid>300757</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status ="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.10" subtype="MaximumVelocity" relativity="BasePercent">
+        <target type="ProtoUnit">Ship</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="LOS" relativity="Absolute">
+        <target type="ProtoUnit">Ship</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTreatyVenice" type="Normal">
+    <dbid>40316</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatMercPavisier" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIndianFriendshipVenice" type="Normal">
+    <dbid>40317</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMercPavisier" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpNatVeteranVenetians</effect>
+      <effect type="TechStatus" status="active">zpNatGuardVenetians</effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTradeTreatyVenice" type="Normal">
+    <dbid>40318</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVenicePileFoundation" type="Normal">
+    <dbid>40065</dbid>
+    <displaynameid>300758</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venice_piles.png</icon>
+    <rollovertextid>300759</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="0.7" subtype="BuildPoints" relativity="Percent">
+        <target type="ProtoUnit">AbstractDock</target>
+      </effect>
+      <effect type="Data" amount="0.7" subtype="Cost" resource="Wood" relativity="Percent">
+        <target type="ProtoUnit">AbstractDock</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractDock</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceBetterShips" type="Normal">
+    <dbid>40312</dbid>
+    <displaynameid>300760</displaynameid>
+    <researchpoints>30.0000</researchpoints>
+    <cost resourcetype ="Gold">650.0000</cost>
+    <cost resourcetype ="Wood">650.0000</cost>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venice_fleet.png</icon>
+    <rollovertextid>300761</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status ="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpGalleass</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpGalleass</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpVeniceGalley</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpVeniceGalley</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateVeniceDolphin" type="Normal">
+    <dbid>40313</dbid>
+    <displaynameid>300762</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venice_small.png</icon>
+    <rollovertextid>300770</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpGalleassProxy</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpVenetianExpansion</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpVenetianExpansion">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatDryDock" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainVeniceGalley1" type="Normal">
+    <dbid>40314</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpVeniceGalley</target>
+      </effect>
+      <effect type="Data" action="SpawnVeniceGalley" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpVenetianWaterSpawnFlag1">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainVeniceGalley2" type="Normal">
+    <dbid>40315</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpVeniceGalley</target>
+      </effect>
+      <effect type="Data" action="SpawnVeniceGalley" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpVenetianWaterSpawnFlag2">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceGalleyBuildLimitReduceShadow" type="Normal">
+    <dbid>40316</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="-1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpVeniceGalley</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainGalleass1" type="Normal">
+    <dbid>40317</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpGalleas</target>
+      </effect>
+      <effect type="Data" action="SpawnGalleass" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpVenetianWaterSpawnFlag1">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainGalleass2" type="Normal">
+    <dbid>40318</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpGalleas</target>
+      </effect>
+      <effect type="Data" action="SpawnGalleass" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpVenetianWaterSpawnFlag2">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpGalleassBuildLimitReduceShadow" type="Normal">
+    <dbid>40319</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="-1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpGalleas</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatDryDock" type="Normal">
+    <dbid>40320</dbid>
+    <displaynameid>300768</displaynameid>
+    <cost resourcetype="Wood">600.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\maltese_fort.png</icon>
+    <rollovertextid>300769</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialuze</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpDryDockWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpDryDock</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateVeniceCornaro" type="Normal">
+    <dbid>40321</dbid>
+    <displaynameid>300776</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venice_small.png</icon>
+    <rollovertextid>300777</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatDottore</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpVenetianExpansion</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpVenetianExpansion">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatVeniceEmbassy" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateVeniceContarini" type="Normal">
+    <dbid>40321</dbid>
+    <displaynameid>300779</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venice_small.png</icon>
+    <rollovertextid>300778</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpVenetianBombard</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpVenetianExpansion</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpVenetianExpansion">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatVeniceFort" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+
 
   <!--<tech name="zpConsulateChinaUpdate" type="Normal">
     <dbid>40151</dbid>

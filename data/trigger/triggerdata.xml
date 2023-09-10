@@ -2149,5 +2149,31 @@
       <param name="Status" dispname="$$22340$$Status" vartype="techstatus">2</param>
       <command>trTechSetStatus(%PlayerID%, %TechID%, %Status%);</command>
     </effect>
+    <effect name="ZP Home City View">
+      <param name="Player" dispname="$$22301$$Player" vartype="player">1</param>
+      <command>if(trCurrentPlayer()==%Player%){</command>
+      <command>toggleHomeCityView();}</command>
+    </effect>
+    <effect name="ZP Show Other player HC">
+      <param name="fromPlayer" dispname="Source Player" vartype="player">1</param>
+      <param name="hcPlayer" dispname="HC of Player" vartype="player">9</param>
+      <command>int sourcePlayer = trCurrentPlayer();</command>
+      <command>trPlayerSetActive(%hcPlayer%);</command>
+      <command>if(sourcePlayer==%fromPlayer%){</command>
+      <command>toggleHomeCityView();}</command>
+      <command>trPlayerSetActive(sourcePlayer);</command>
+    </effect>
+    <effect name="ZP Send Venetian Shipment">
+      <param name="PlayerID" dispname="Player" vartype="player">1</param>
+      <param name="TechID" dispname="$$22311$$Tech" vartype="string">TechName</param>
+      <param name="Resource" dispname="$$22324$$Resource" vartype="resource">food</param>
+      <param name="Op" dispname="$$22297$$Operator" vartype="operator">==</param>
+      <param name="Count" dispname="$$22321$$Number" vartype="long">1</param>
+      <param name="Message" dispname="$$20056$$Fail Message" vartype="stringid">default</param>
+      <command>if(trPlayerResourceCount(%PlayerID%, "%Resource%") %Op% %Count%){</command>
+      <command>trTechSetStatus(%PlayerID%, %TechID%, 2);</command>
+      <command>trPlayerGrantResources(%PlayerID%, "%Resource%", 0-%Count%);}</command>
+      <command>else{trChatSendToPlayer(0, %PlayerID%, "%Message%");}</command>
+    </effect>
   </effects>
 </trigger>

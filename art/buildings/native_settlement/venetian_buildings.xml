@@ -1,0 +1,78 @@
+<animfile>
+	<component>
+		building
+		<logic type="Variation">
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\venice\venice_generic_04_Model</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\venice\venice_generic_08_Model</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\venice\venice_academy_Model</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\venice\venice_campanile_Model</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\sufi_floor_01</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\sufi_floor_02</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\venice\venice_wall_Model</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\venice\venice_corner_Model</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\venice\venice_church</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\venice\venice_rialto2_Model</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\europe\wings\wing</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\europe\wings\wing_curved</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\europe\wings\wing_rounded</file>
+					</assetreference>
+			    </data>
+
+
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>

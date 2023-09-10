@@ -1,0 +1,47 @@
+<animfile>
+	<component>
+		building
+		<logic type="Variation">
+                <data>
+					<assetreference type="GrannyModel">
+						<file>Terrain\underbrush\underbrush_co_japan_grass_02</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>terrain\trees\tree_cypress_italian_a</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>terrain\trees\tree_cypress_italian_b</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>terrain\trees\tree_cypress_italian_c</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\native_settlement_accessories\zen_bush_01</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>Terrain\underbrush\underbrush_co_japan_bush_01</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>Terrain\underbrush\underbrush_co_japan_grass_01</file>
+					</assetreference>
+			    </data>
+                
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>

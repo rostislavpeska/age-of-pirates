@@ -110,5 +110,21 @@
     <persistent>0</persistent>
     <singleuse>1</singleuse>
   </action>
-  <tactic>Normal<action>Heal</action><action>SpawnPrivateer</action><action>SpawnQueenAnne</action><action>SpawnBlackPearl</action><action>SpawnNeptune</action><action>SpawnWokouFireJunk</action><action>SpawnSubmarine</action><action>SpawnNautilus</action></tactic>
+  <action>
+    <name stringid="69776">SpawnGalleass</name>
+    <type>Spawn</type>
+    <rate type="zpGalleass">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnVeniceGalley</name>
+    <type>Spawn</type>
+    <rate type="zpVeniceGalley">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <tactic>Normal<action>Heal</action><action>SpawnPrivateer</action><action>SpawnQueenAnne</action><action>SpawnBlackPearl</action><action>SpawnNeptune</action><action>SpawnWokouFireJunk</action><action>SpawnSubmarine</action><action>SpawnNautilus</action><action>SpawnGalleass</action><action>SpawnVeniceGalley</action></tactic>
 </tactics>

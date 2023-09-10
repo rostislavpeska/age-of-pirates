@@ -1,0 +1,44 @@
+<animfile>
+	<component>
+		building
+		<logic type="Variation">
+                <data>
+					<assetreference type="GrannyModel">
+						<file>homecity\italy\italy_boats\gondola_01</file>
+						<materialvariant index="0"></materialvariant>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>homecity\italy\italy_boats\gondola_02</file>
+					</assetreference>
+                </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>units\trade\trade_ships\trade_ship_02</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>units\naval\johnboat\johnboat</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>homecity\italy\italy_boats\gondola_01</file>
+						<materialvariant index="1"></materialvariant>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>homecity\italy\italy_boats\gondola_01</file>
+						<materialvariant index="2"></materialvariant>
+					</assetreference>
+			    </data>
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>

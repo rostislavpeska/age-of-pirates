@@ -1,0 +1,4 @@
+<animfile>
+  <component>dry dock<logic type="Variation"><v1><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>buildings\spc\dry_dock\spc_dry_dock</file></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>buildings\spc\dry_dock\lp_spc_dry_dock</file></assetreference></lowpoly></logic></v1></logic></component>
+  <anim>idle<component>dry dock</component></anim>
+</animfile>

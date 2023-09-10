@@ -1,0 +1,158 @@
+<animfile>
+    <definebone>bone_garrisonflag</definebone>
+    <definebone>bone_front_wake</definebone>
+    <definebone>bone_front_foam</definebone>
+    <definebone>bone_hitpointbar</definebone>
+    <definebone>bone_flag</definebone>
+    <definebone>bone_flag_civ</definebone>
+    <definebone>bone_banner</definebone>
+    <definebone>bone_sail_01</definebone>
+    <definebone>bone_sail_02</definebone>
+    <definebone>bone_sail_03</definebone>
+    <definebone>bone_oarsL1</definebone>
+    <definebone>bone_oarsL2</definebone>
+    <definebone>bone_oarsL3</definebone>
+    <definebone>bone_oarsL4</definebone>
+    <definebone>bone_oarsL5</definebone>
+    <definebone>bone_oarsL6</definebone>
+    <definebone>bone_oarsL7</definebone>
+    <definebone>bone_oarsL8</definebone>
+    <definebone>bone_oarsL9</definebone>
+    <definebone>bone_oarsL10</definebone>
+    <definebone>bone_muzzleL01</definebone>
+    <definebone>bone_muzzleL02</definebone>
+    <definebone>bone_muzzleL03</definebone>
+    <definebone>bone_muzzleL04</definebone>
+    <definebone>bone_muzzleL05</definebone>
+    <definebone>bone_muzzleL06</definebone>
+    <definebone>bone_muzzleL07</definebone>
+    <definebone>bone_muzzleL08</definebone>
+    <definebone>bone_muzzleL09</definebone>
+    <definebone>bone_muzzleL10</definebone>
+    <definebone>bone_muzzleL11</definebone>
+    <definebone>bone_muzzleL12</definebone>
+    <definebone>bone_muzzleL13</definebone>
+    <definebone>bone_muzzleL14</definebone>
+    <definebone>bone_muzzleL15</definebone>
+    <definebone>bone_muzzleL16</definebone>
+    <definebone>bone_muzzleR01</definebone>
+    <definebone>bone_muzzleR02</definebone>
+    <definebone>bone_muzzleR03</definebone>
+    <definebone>bone_muzzleR04</definebone>
+    <definebone>bone_muzzleR05</definebone>
+    <definebone>bone_muzzleR06</definebone>
+    <definebone>bone_muzzleR07</definebone>
+    <definebone>bone_muzzleR08</definebone>
+    <definebone>bone_muzzleR09</definebone>
+    <definebone>bone_muzzleR10</definebone>
+    <definebone>bone_muzzleR11</definebone>
+    <definebone>bone_muzzleR12</definebone>
+    <definebone>bone_muzzleR13</definebone>
+    <definebone>bone_muzzleR14</definebone>
+    <attachment>
+        IdleWaterFoam
+        <component>
+            Idlefoam<assetreference type="popcornFx"><file>water_effects\idle_waterFoam_large.pkfx</file></assetreference>
+        </component>
+        <anim>None<component>Idlefoam</component></anim>
+    </attachment>
+    <attachment>
+        MoveWaterFoam
+        <component>
+            Movefoam<assetreference type="popcornFx"><file>water_effects\move_waterFoam_large.pkfx</file></assetreference>
+        </component>
+        <anim>None<component>Movefoam</component></anim>
+    </attachment>
+    <attachment>
+        DeathWaterFoam
+        <component>
+            Deathfoam<assetreference type="popcornFx"><file>water_effects\death_waterFoam_Xlarge.pkfx</file></assetreference>
+        </component>
+        <anim>None<component>Deathfoam</component></anim>
+    </attachment>
+    <attachment>
+        Death_EXP
+        <component>
+            exp<assetreference type="popcornFx"><file>units\spc\fire_ship\Exp_frigate_ship.pkfx</file></assetreference>
+        </component>
+        <anim>None<component>exp</component></anim>
+    </attachment>
+    <attachment>
+        Death_EXP_Wood
+        <component>
+            exp2<assetreference type="popcornFx"><file>projectiles\ship_debris_wood.pkfx</file></assetreference>
+        </component>
+        <anim>None<component>exp2</component></anim>
+    </attachment>
+    <attachment>
+        Fishing_net
+        <component>
+            fishing_net<assetreference type="GrannyModel"><file>units\attachments\fishing_net</file></assetreference>
+        </component>
+        <anim>
+            Idle<assetreference type="GrannyAnim"><file>units\attachments\fishing_net_caravel</file></assetreference><component>fishing_net</component>
+        </anim>
+    </attachment>
+    <attachment>
+        civ_flag
+        <component>
+            flag
+            <assetreference type="ClothFlag">
+                <flag><blending>alphatest_color</blending><specialtexture></specialtexture><width>2.00</width><height>1.50</height></flag>
+            </assetreference>
+        </component>
+        <anim>Idle<component>flag</component></anim>
+    </attachment>
+    <attachment>
+        venetian_flag
+        <component>
+            flag
+            <assetreference type="ClothFlag">
+                <flag><blending>alphatest_nocolor</blending><texture>objects\flags\venetian</texture><width>2.20</width><height>1.40</height></flag>
+            </assetreference>
+        </component>
+        <anim>Idle<component>flag</component></anim>
+    </attachment>
+    <component>
+        galleass
+        <logic type="Destruction">
+            <p1>
+                <assetreference type="GrannyModel"><file>units\naval\galleass\venice_galleass_damaged</file></assetreference>
+            </p1>
+            <p99>
+                <assetreference type="GrannyModel"><file>units\naval\galleass\venice_galleass</file></assetreference>
+            </p99>
+        </logic>
+        <decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture><width>12.00</width><height>20.00</height><xoffset>0.00</xoffset><zoffset>1.50</zoffset></decal>
+        <watersplash><texture>units\naval\colony_ship\colony_ship_hullmask</texture><width>11.00</width><height>11.00</height></watersplash>
+    </component>
+    <component>
+        galleassDeath<assetreference type="GrannyModel"><file>units\naval\galleass\venice_galleass_damaged</file></assetreference>
+    </component>
+    <anim>
+        Idle<assetreference type="GrannyAnim"><file>units\naval\galleass\galleass_idle</file></assetreference><component>galleass</component><simskeleton><model>units\naval\galleass\venice_galleass_damaged</model></simskeleton>
+        <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="venetian_flag" frombone="ATTACHPOINT" tobone="bone_banner" syncanims="0"></attach>
+    </anim>
+    <anim>
+        RangedAttack<assetreference type="GrannyAnim"><file>units\naval\galleass\galleass_idle</file><tag type="Attack">0.45</tag></assetreference><component>galleass</component>
+        <simskeleton><model>units\naval\galleass\venice_galleass_damaged</model></simskeleton><attach a="venetian_flag" frombone="ATTACHPOINT" tobone="bone_banner" syncanims="0"></attach>
+    </anim>
+    <anim>
+        Walk<assetreference type="GrannyAnim"><file>units\naval\galleass\galleass_walk</file></assetreference><component>galleass</component><simskeleton><model>units\naval\galleass\venice_galleass_damaged</model></simskeleton>
+        <attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="venetian_flag" frombone="ATTACHPOINT" tobone="bone_banner" syncanims="0"></attach>
+    </anim>
+    <anim>
+        Death<assetreference type="GrannyAnim"></assetreference><component>galleass</component><attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        <attach a="Death_EXP" frombone="ATTACHPOINT" tobone="bone_master" syncanims="0"></attach><attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="bone_master" syncanims="0"></attach>
+    </anim>
+    <anim>
+        GatherFish<assetreference type="GrannyAnim"><tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.89</tag></assetreference><component>galleass</component>
+        <simskeleton><model>units\naval\galleass\venice_galleass_damaged</model></simskeleton><attach a="Fishing_net" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+        <attach a="venetian_flag" frombone="ATTACHPOINT" tobone="bone_banner" syncanims="0"></attach>
+    </anim>
+    <anim>
+        RamAttack<assetreference type="GrannyAnim"><file>units\naval\galleass\galleass_walk</file><tag type="Attack">0.10</tag><tag type="SpecificSoundSet" checkvisible="1" set="ShipDeath">0.10</tag></assetreference>
+        <component>galleass</component><simskeleton><model>units\naval\galleass\venice_galleass_damaged</model></simskeleton><attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        <attach a="venetian_flag" frombone="ATTACHPOINT" tobone="bone_banner" syncanims="0"></attach>
+    </anim>
+</animfile>

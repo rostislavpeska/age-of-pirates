@@ -61,4 +61,10 @@
   </zpconsulatescientistvalentine>
   <zpconsulatescientistkhora portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/captain_khora.png">
   </zpconsulatescientistkhora>
+  <zpconsulatevenicedolphin portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/dolphin.png">
+  </zpconsulatevenicedolphin>
+  <zpconsulatevenicecornaro portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/cornaro.png">
+  </zpconsulatevenicecornaro>
+  <zpconsulatevenicecontarini portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/contarini.png">
+  </zpconsulatevenicecontarini>
 </politicianmods>

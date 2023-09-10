@@ -66,4 +66,14 @@
     <ability>ypPowerHeavenlyFireBomb<rof>120</rof></ability>
     <ability>ypPowerCriticalAttack<alwaysdisabledingrid>true</alwaysdisabledingrid></ability>
   </zpsaofeng>
+  <zpvenicegalley>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpvenicegalley>
+  <zpgalleass>
+    <ability>dePowerRoundelPierceAttack<rof>60</rof><sharedcooldown>true</sharedcooldown><castonself>true</castonself></ability>
+    <ability>dePowerShunt<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>
+  </zpgalleass>
+  <zpnatdottore>
+    <ability>zpMustardGasWeak<rof>60</rof></ability>
+  </zpnatdottore>
 </abilitymods>

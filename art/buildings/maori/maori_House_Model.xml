@@ -6,12 +6,7 @@
 		<logic type="Variation">
 			<data>
 				<assetreference type="GrannyModel">
-					<file>buildings\maori\maori_House_final_big_Model</file>
-				</assetreference>
-			</data>
-			<data>
-				<assetreference type="GrannyModel">
-					<file>buildings\maori\maori_House_final_long_asym_Model</file>
+					<file>buildings\maori\maori_House_final_asym_Model</file>
 				</assetreference>
 			</data>
 			<data>
@@ -21,7 +16,7 @@
 			</data>
 			<data>
 				<assetreference type="GrannyModel">
-					<file>buildings\maori\maori_House_final_smal_Model</file>
+					<file>buildings\maori\maori_House_final_broad_Model</file>
 				</assetreference>
 			</data>
 			<data>
