@@ -379,109 +379,103 @@
     <train row ="0" page ="0" column ="94">zpNatMaoriSlinger</train>
 
   </unit>
-  <unit id ="20004" name ="zpNatPirate">
-		<dbid>20004</dbid>
-		<displaynameid>35253</displaynameid>
-		<editornameid>300025</editornameid>
-		<subciv>NatPirates</subciv>
-		<obstructionradiusx>0.4900</obstructionradiusx>
-		<obstructionradiusz>0.4900</obstructionradiusz>
-		<formationcategory>Body</formationcategory>
-		<maxvelocity>6.0000</maxvelocity>
-		<maxrunvelocity>8.0000</maxrunvelocity>
-		<movementtype>land</movementtype>
-		<turnrate>18.0000</turnrate>
-		<wanderdistance>3</wanderdistance>
-		<animfile>units\spc\pirates\pirates.xml</animfile>
-		<impacttype>Flesh</impacttype>
-		<physicsinfo>dude</physicsinfo>
-		<icon>resources\art\units\spc\pirates\pirate_ranged_icon.png</icon>
-		<portraiticon>resources\art\units\spc\pirates\pirate_ranged_portrait.png</portraiticon>
-		<rollovertextid>35252</rollovertextid>
-		<shortrollovertextid>35252</shortrollovertextid>
-		<initialhitpoints>120.0000</initialhitpoints>
-		<maxhitpoints>120.0000</maxhitpoints>
-		<los>14.0000</los>
-		<unitaitype>HandCombative</unitaitype>
-		<initialunitaistance>Defensive</initialunitaistance>
-		<bounty>12.0000</bounty>
-		<buildlimit>16</buildlimit>
-		<trainpoints>20.0000</trainpoints>
-		<buildbounty>12.0000</buildbounty>
-		<cost resourcetype ="Gold">110.0000</cost>
-		<scorevalue>10.0000</scorevalue>
-		<allowedage>1</allowedage>
-		<armor type ="Hand" value ="0.1000"></armor>
+  <unit id="20004" name="zpNatPirate">
+    <dbid>20004</dbid>
+    <displaynameid>35253</displaynameid>
+    <editornameid>300025</editornameid>
+    <subciv>NatPirates</subciv>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>6.0000</maxvelocity>
+    <maxrunvelocity>8.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <wanderdistance>3</wanderdistance>
+    <animfile>units\spc\pirates\pirates.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\spc\pirates\pirate_ranged_icon.png</icon>
+    <portraiticon>resources\art\units\spc\pirates\pirate_ranged_portrait.png</portraiticon>
+    <rollovertextid>35252</rollovertextid>
+    <shortrollovertextid>35252</shortrollovertextid>
+    <initialhitpoints>120.0000</initialhitpoints>
+    <maxhitpoints>120.0000</maxhitpoints>
+    <los>14.0000</los>
+    <unitaitype>HandCombative</unitaitype>
+    <initialunitaistance>Defensive</initialunitaistance>
+    <bounty>12.0000</bounty>
+    <buildlimit>16</buildlimit>
+    <trainpoints>20.0000</trainpoints>
+    <buildbounty>12.0000</buildbounty>
+    <cost resourcetype ="Gold">110.0000</cost>
+    <scorevalue>10.0000</scorevalue>
+    <allowedage>1</allowedage>
+    <armor type ="Hand" value ="0.1000"></armor>
     <sharedbuildlimitunittypes>
       <unittype>zpNatPirateProxy</unittype>
       <unittype>zpNatPirate</unittype>
     </sharedbuildlimitunittypes>
-		<unittype>LogicalTypeHealed</unittype>
-		<unittype>LogicalTypeValidSharpshoot</unittype>
-		<unittype>LogicalTypeNeededForVictory</unittype>
-		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-		<unittype>LogicalTypeLandMilitary</unittype>
-		<unittype>LogicalTypeScout</unittype>
-		<unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
-		<unittype>LogicalTypeGarrisonInShips</unittype>
-		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-		<unittype>LogicalTypeVillagersAttack</unittype>
-		<unittype>LogicalTypeHandUnitsAttack</unittype>
-		<unittype>LogicalTypeRangedUnitsAttack</unittype>
-		<unittype>LogicalTypeMinimapFilterMilitary</unittype>
-		<unittype>UnitClass</unittype>
-		<unittype>Military</unittype>
-		<unittype>Unit</unittype>
-		<unittype>AbstractHeavyInfantry</unittype>
-		<unittype>AbstractInfantry</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>AbstractInfantry</unittype>
     <unittype>AbstractNativeWarrior</unittype>
-		<unittype>HasBountyValue</unittype>
-		<unittype>AbstractCavalryInfantry</unittype>
-		<unittype>CountsTowardMilitaryScore</unittype>
-		<unittype>AbstractHandInfantry</unittype>
-		<unittype>ConvertsHerds</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractHandInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
     <unittype>LogicalTypeInfantryVolleyTactic</unittype>
-		<flag>CollidesWithProjectiles</flag>
-		<flag>ApplyHandicapTraining</flag>
-		<flag>CorpseDecays</flag>
-		<flag>ShowGarrisonButton</flag>
-		<flag>DontRotateObstruction</flag>
-		<flag>ObscuredByUnits</flag>
-		<flag>Tracked</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
-		<command page ="10" column ="1">Stop</command>
-		<command page ="10" column ="0">Garrison</command>
-		<command page ="10" column ="2">Delete</command>
-		<tactics>zpbuccaneer.tactics</tactics>
-		<protoaction>
-			<name>BuildingAttack</name>
-			<damage>8.000000</damage>
-			<damagetype>Siege</damagetype>
-			<rof>3.000000</rof>
-		</protoaction>
-		<protoaction>
-			<name>CoverBuildingAttack</name>
-			<damage>4.000000</damage>
-			<damagetype>Siege</damagetype>
-		</protoaction>
-		<protoaction>
-			<name>CoverHandAttack</name>
-			<damage>10.000000</damage>
-			<damagetype>Hand</damagetype>
-			<rof>1.500000</rof>
-		</protoaction>
-		<protoaction>
-			<name>DefendHandAttack</name>
-			<damage>20.000000</damage>
-			<damagetype>Hand</damagetype>
-			<rof>1.500000</rof>
-		</protoaction>
-		<protoaction>
-			<name>MeleeHandAttack</name>
-			<damage>20.000000</damage>
-			<damagetype>Hand</damagetype>
-			<rof>1.500000</rof>
-		</protoaction>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="2">Delete</command>
+    <tactics>zpbuccaneer.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>8.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CoverBuildingAttack</name>
+      <damage>4.000000</damage>
+      <damagetype>Siege</damagetype>
+    </protoaction>
+    <protoaction>
+      <name>CoverHandAttack</name>
+      <damage>10.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>HandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
     <protoaction>
       <name>RangedAttack</name>
       <damage>12.000000</damage>
@@ -495,7 +489,17 @@
       <damagebonus type="AbstractCavalry">0.750000</damagebonus>
       <damagebonus type="AbstractCoyoteMan">0.750000</damagebonus>
     </protoaction>
-	</unit>
+    <protoaction>
+      <name>HandAttackCrate</name>
+      <damage>10.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CrateGather</name>
+      <rate type="AbstractResourceCrate">8.000000</rate>
+    </protoaction>
+  </unit>
   <unit id ="20005" name ="zpNativeHousePirate">
 		<dbid>20005</dbid>
 		<displaynameid>300011</displaynameid>
