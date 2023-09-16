@@ -5742,7 +5742,7 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>wonders.xml</placementfile>
     <icon>resources\art\buildings\white_fort_icon_64.png</icon>
-    <minimapicon>ui\minimap\wonder_16x16</minimapicon>
+    <minimapicon>ui\minimap\fort_star_16x16</minimapicon>
     <portraiticon>resources\art\buildings\white_fort_icon_portrait.png</portraiticon>
     <rollovertextid>25269</rollovertextid>
     <shortrollovertextid>25639</shortrollovertextid>
@@ -16134,8 +16134,8 @@
     <placementfile>dock.xml</placementfile>
     <animfile>buildings\spc\dry_dock\spc_dry_dock.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\buildings\dock\dock_icon.png</icon>
-    <portraiticon>resources\art\buildings\dock\dock_portrait.png</portraiticon>
+    <icon>resources\art\buildings\drydock_icon.png</icon>
+    <portraiticon>resources\art\buildings\drydock_portrait.png</portraiticon>
     <rollovertextid>300765</rollovertextid>
     <shortrollovertextid>300765</shortrollovertextid>
     <initialhitpoints>4500.0000</initialhitpoints>
@@ -16475,6 +16475,205 @@
       <damage>0.200000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.000000</rof>
+    </protoaction>
+  </unit>
+  <unit id="20178" name="zpWaterFort">
+    <dbid>20178</dbid>
+    <displaynameid>300780</displaynameid>
+    <editornameid>300781</editornameid>
+    <obstructionradiusx>7.0000</obstructionradiusx>
+    <obstructionradiusz>6.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>water</movementtype>
+    <animfile>buildings\wonders\agra_fort\water_fort.xml</animfile>
+    <deadreplacement>BuildingRubble6x6</deadreplacement>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>wonders.xml</placementfile>
+    <icon>resources\art\buildings\waterfort_icon.png</icon>
+    <minimapicon>ui\minimap\fort_star_16x16</minimapicon>
+    <portraiticon>resources\art\buildings\waterfort_portrait.png</portraiticon>
+    <rollovertextid>25269</rollovertextid>
+    <shortrollovertextid>25639</shortrollovertextid>
+    <legacyhotkeycontext>FortFrontierAccel</legacyhotkeycontext>
+    <initialhitpoints>7000.0000</initialhitpoints>
+    <maxhitpoints>7000.0000</maxhitpoints>
+    <los>34.0000</los>
+    <projectileprotounit>Cannonball</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <buildpoints>120.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>120.0000</bounty>
+    <cost resourcetype="Wood">600.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <maxcontained>50</maxcontained>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>1</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractFort</unittype>
+    <unittype>AbstractFindFort</unittype>
+    <unittype>AbstractDefensiveBuilding</unittype>
+    <train row="0" page="0" column="0">zpVeniceGalley</train>
+    <tech row="0" page="1" column="1">zpFortifiedVeniceFort</tech>
+    <tech row="0" page="1" column="2">zpVeniceLightHouse</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>DisableBigButtonUI</flag>
+    <flag>HeroName1</flag>
+    <flag>Tracked</flag>
+    <flag>DisplayRange</flag>
+    <flag>BuildingShowTactics</flag>
+    <flag>TieToWaterSurface</flag>
+    <notcontain>AbstractMonk</notcontain>
+    <notcontain>ExcludeFromRansom</notcontain>
+    <notcontain>AbstractFishingBoat</notcontain>
+    <contain>AbstractVillager</contain>
+    <contain>deHomesteadWagon</contain>
+    <contain>AbstractHealer</contain>
+    <contain>ypDaimyoRegicide</contain>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <tactics>fort.tactics</tactics>
+    <protoaction>
+      <name>AntiShipAttack</name>
+      <damage>350.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>40.000000</maxrange>
+      <rof>3.000000</rof>
+      <projectile>Cannonball</projectile>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>CannonAttack</name>
+      <damage>100.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>26.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>200.000000</damagecap>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+      <damagearea>3.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <projectile>Cannonball</projectile>
+      <damagebonus type="AbstractArtillery">0.750000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>100.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>26.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>300.000000</damagecap>
+      <damagearea>3.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <projectile>Cannonball</projectile>
+    </protoaction>
+  </unit>
+  <unit id="20179" name="zpWaterFortBuilder">
+    <dbid>20179</dbid>
+    <displaynameid>300782</displaynameid>
+    <editornameid>300783</editornameid>
+    <obstructionradiusx>1.9900</obstructionradiusx>
+    <obstructionradiusz>1.9900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>5.5000</maxvelocity>
+    <maxrunvelocity>6.5000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <turnrate>12.0000</turnrate>
+    <animfile>objects\flt_boat\flt_boat.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\flt_boat_portrait.png</icon>
+    <portraiticon>resources\art\units\flt_boat_portrait.png</portraiticon>
+    <rollovertextid>300786</rollovertextid>
+    <shortrollovertextid>300786</shortrollovertextid>
+    <initialhitpoints>250.0000</initialhitpoints>
+    <maxhitpoints>250.0000</maxhitpoints>
+    <los>18.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>Civilian</unitaitype>
+    <trainpoints>60.0000</trainpoints>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <allowedage>0</allowedage>
+    <armor type="Ranged" value="0.5000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeAffectedByTownBell</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMalteseCivBonusArtilleryAndShips</unittype>
+    <unittype>LogicalTypeMalteseCivBonus</unittype>
+    <unittype>LogicalTypeMalteseCivBonusHealsWhenIdle</unittype>
+    <train row="0" page="0" column="0">zpWaterFort</train>
+    <unittype>Ship</unittype>
+    <unittype>Economic</unittype>
+    <unittype>EconomicUnit</unittype>
+    <unittype>AbstractVillager</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ValidIdleVillager</unittype>
+    <unittype>AbstractFishingBoat</unittype>
+    <flag>TieToWaterSurface</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>Tracked</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>flatboat_builder.tactics</tactics>
+    <protoaction>
+      <name>Build</name>
+      <rate type="zpWaterFort">5.000000</rate>
+      <minrange>0.000000</minrange>
+      <maxrange>3.000000</maxrange>
     </protoaction>
   </unit>
 

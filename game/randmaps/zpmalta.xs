@@ -2004,7 +2004,7 @@ if (cNumberNonGaiaPlayers >= 4){
    rmSetTriggerEffectParamInt("SrcPlayer",0);
    rmSetTriggerEffectParamInt("TrgPlayer",k);
    rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag2");
-   rmSetTriggerEffectParamInt("Dist",100);
+   rmSetTriggerEffectParamInt("Dist",150);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates2off_Player"+k));
    rmAddTriggerEffect("Fire Event");
@@ -2033,7 +2033,7 @@ if (cNumberNonGaiaPlayers >= 4){
    rmSetTriggerEffectParamInt("SrcPlayer",k);
    rmSetTriggerEffectParamInt("TrgPlayer",0);
    rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag2");
-   rmSetTriggerEffectParamInt("Dist",100);
+   rmSetTriggerEffectParamInt("Dist",150);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates2on_Player"+k));
    rmAddTriggerEffect("Disable Trigger");

@@ -777,8 +777,24 @@
       <string _locid="300775">Causes signifficant poison damage to nearby units including yours.</string>
       <string _locid="300776">House of Cornaro</string>
       <string _locid="300777">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDottore della Morte \n\nPerfect unit for sabotage missions in enemy base. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nVenice Embassy</string>
-      <string _locid="300779">House of Contarini</string>
       <string _locid="300778">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nVenetian Bombard \n\nHeavy Venetian artillery, perfect to break enemy walls. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nSea Fort</string>
+      <string _locid="300779">House of Contarini</string>
+      <string _locid="300780">Naval Fort</string>
+      <string _locid="300781">ZP Water Fort</string>
+      <string _locid="300782">Naval Fort Builder</string>
+      <string _locid="300783">ZP Water Fort Builder</string>
+      <string _locid="300784">Sea Fort</string>
+      <string _locid="300785">Ships a Flatboat able to build a mighty naval fort.</string>
+      <string _locid="300786">Flatboat can build a mighty naval fort.</string>
+      <string _locid="300787">Mighty Sea Fort</string>
+      <string _locid="300788">Increases Naval Fort Damage ad Hitpoints</string>
+      <string _locid="300789">Lighthouse Keeper</string>
+      <string _locid="300790">Increases Naval Fort attack range and line of sight</string>
+      <string _locid="300791">Boyard (Naval Fort)</string>
+      <string _locid="300792">Cittadella Nuova (Naval Fort)</string>
+      <string _locid="300793">Castello di Santa Margherita Ligure (Naval Fort)</string>
+      <string _locid="300794">Forte Sangallo (Naval Fort)</string>
+      <string _locid="300795">Castello di Punta Pagana (Naval Fort)</string>
     </language>
   </stringtable>
 </stringmods>

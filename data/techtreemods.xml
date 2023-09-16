@@ -8704,6 +8704,7 @@
       <effect type="TechStatus" status="obtainable">zpVenicePileFoundation</effect>
       <effect type="TechStatus" status="obtainable">zpVeniceBetterShips</effect>
       <effect type="TechStatus" status="obtainable">zpNatDryDock</effect>
+      <effect type="TechStatus" status="obtainable">zpNatVeniceFort</effect>
     </effects>
   </tech>
   <tech name ="zpVenetianExpansion" type ="Normal">
@@ -9316,6 +9317,82 @@
       </effect>
       <effect type="CommandAdd" tech="zpNatVeniceFort" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatVeniceFort" type="Normal">
+    <dbid>40322</dbid>
+    <displaynameid>300784</displaynameid>
+    <cost resourcetype="Wood">600.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\boyard_fort.png</icon>
+    <rollovertextid>300785</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialuze</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpWaterFortBuilder" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpWaterFort</target>
+      </effect>¨
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpVeniceGalley</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpFortifiedVeniceFort</effect>
+      <effect type="TechStatus" status="obtainable">zpVeniceLightHouse</effect>
+    </effects>
+  </tech>
+  <tech name="zpFortifiedVeniceFort" type="Normal">
+    <dbid>40322</dbid>
+    <displaynameid>300787</displaynameid>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\mighty_seafort.png</icon>
+    <rollovertextid>300788</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpWaterFort</target>
+      </effect>
+      <effect type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpWaterFort</target>
+      </effect>     
+      <effect type="Data" amount="3.00" subtype="DamageArea" relativity="Assign">
+        <target type="ProtoUnit">zpWaterFort</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceLightHouse" type="Normal">
+    <dbid>40323</dbid>
+    <displaynameid>300789</displaynameid>
+    <cost resourcetype="Food">250.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\lighthouse_keeper.png</icon>
+    <rollovertextid>300790</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" action="AntiShipAttack" amount="5.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpWaterFort</target>
+      </effect>
+      <effect type="Data" amount="7.00" subtype="LOS" relativity="Absolute">
+        <target type="ProtoUnit">zpWaterFort</target>
       </effect>
     </effects>
   </tech>

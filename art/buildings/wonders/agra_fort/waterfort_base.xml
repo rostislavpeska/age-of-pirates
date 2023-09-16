@@ -1,0 +1,33 @@
+<animfile>
+	<definebone>Bone_Master</definebone>
+	<definebone>Bone_Port</definebone>
+    <definebone>Bone_Rock</definebone>
+    <definebone>Bone_Rock2</definebone>
+	<attachment>
+		port
+		<component>
+			port<assetreference type="GrannyModel"><file>buildings\spc\havana_port\spc_dock5</file></assetreference>
+		</component>
+		<anim>Idle<component>port</component></anim>
+	</attachment>
+    <attachment>
+		rock
+		<component>
+			rock<assetreference type="GrannyModel"><file>terrain\new_england\shorelinerock_big_ne_5</file></assetreference>
+		</component>
+		<anim>Idle<component>rock</component></anim>
+	</attachment>
+	<component>
+		walls
+		<assetreference type="GrannyModel">
+			<file>buildings\wonders\agra_fort\waterfort_base_Model</file>
+		</assetreference>
+		<attach a="port" frombone="ATTACHPOINT" tobone="Bone_Port" syncanims="0"></attach>	
+        <attach a="rock" frombone="ATTACHPOINT" tobone="Bone_Rock" syncanims="0"></attach>	
+        <attach a="rock" frombone="ATTACHPOINT" tobone="Bone_Rock2" syncanims="0"></attach>	
+	</component>
+	<anim>
+		Idle
+		<component>walls</component>
+	</anim>
+</animfile>

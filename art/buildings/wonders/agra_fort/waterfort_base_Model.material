@@ -1,0 +1,40 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings/wonders/agra_fort/textures/water_fort_age2_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings/wonders/agra_fort/textures/water_fort_age2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings/wonders/agra_fort/textures/water_fort_age2_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings/wonders/agra_fort/textures/agra_fort_age2_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings/wonders/agra_fort/agra_fort_decal_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings/wonders/agra_fort/agra_fort_decal_Normals">
+      </texture>
+      <texture name="Masks" override="buildings/wonders/agra_fort/agra_fort_decal_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\spc\havana_port\textures\spc_dock1_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\spc\havana_port\textures\spc_dock1_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\spc\havana_port\textures\spc_dock1_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
