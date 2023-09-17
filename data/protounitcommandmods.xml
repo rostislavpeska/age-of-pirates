@@ -147,6 +147,52 @@
   </protounitcommand>
 
   <protounitcommand>
+    <name>zpTacticNavigation</name>
+    <icon>resources\images\icons\command\academy\academy_chemistry.png</icon>
+    <activeicon>resources\images\icons\command\academy\academy_chemistry_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\academy\academy_chemistry.png</disabledicon>
+    <rollovertextid>300797</rollovertextid>
+    <activerollovertextid>300796</activerollovertextid>
+    <command>unitSetTactic("TacticNavigation")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticQuality</name>
+    <icon>resources\images\icons\command\academy\academy_biology.png</icon>
+    <activeicon>resources\images\icons\command\academy\academy_biology_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\academy\academy_biology.png</disabledicon>
+    <rollovertextid>300799</rollovertextid>
+    <activerollovertextid>300800</activerollovertextid>
+    <command>unitSetTactic("TacticQuality")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticWeaponary</name>
+    <icon>resources\images\icons\command\academy\academy_machinery.png</icon>
+    <activeicon>resources\images\icons\command\academy\academy_machinery_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\academy\academy_machinery.png</disabledicon>
+    <rollovertextid>300801</rollovertextid>
+    <activerollovertextid>300800</activerollovertextid>
+    <command>unitSetTactic("TacticWeaponary")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>TacticTraining</name>
+    <icon>resources\images\icons\command\academy\academy_architecture.png</icon>
+    <activeicon>resources\images\icons\command\academy\academy_architecture_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\academy\academy_architecture.png</disabledicon>
+    <rollovertextid>300803</rollovertextid>
+    <activerollovertextid>300802</activerollovertextid>
+    <command>unitSetTactic("TacticTraining")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticHeal</name>
+    <icon>resources\images\icons\command\academy\academy_architecture.png</icon>
+    <activeicon>resources\images\icons\command\academy\academy_architecture_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\academy\academy_architecture.png</disabledicon>
+    <rollovertextid>300805</rollovertextid>
+    <activerollovertextid>300804</activerollovertextid>
+    <command>unitSetTactic("TacticHeal")</command>
+  </protounitcommand>
+
+  <protounitcommand>
     <name>zpVeniceShipment</name>
     <command>researchByID(cTechzpNatVeteranVenetians, 252, 1)</command>
     <icon>resources\images\icons\techs\venetian_hc\venice_galley.png</icon>

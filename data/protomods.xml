@@ -2396,10 +2396,9 @@
       <damagebonus type="AbstractCavalry">2.000000</damagebonus>
     </protoaction>
   </unit>
-   <unit id="20035" name="zpSurgeonProxy">
+  <unit id="20035" name="zpSurgeonProxy">
     <dbid>20035</dbid>
     <displaynameid>26218</displaynameid>
-
     <populationcount>1</populationcount>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
@@ -16132,7 +16131,7 @@
     <maxvelocity>0.0000</maxvelocity>
     <physicsinfo>dock</physicsinfo>
     <placementfile>dock.xml</placementfile>
-    <animfile>buildings\spc\dry_dock\spc_dry_dock.xml</animfile>
+    <animfile>buildings\spc\dry_dock\zp_dry_dock.xml</animfile>
     <impacttype>Wood</impacttype>
     <icon>resources\art\buildings\drydock_icon.png</icon>
     <portraiticon>resources\art\buildings\drydock_portrait.png</portraiticon>
@@ -16169,41 +16168,51 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>AbstractDock</unittype>
     <unittype>ConvertsHerds</unittype>
-    <train row="0" page="0" column="1">Caravel</train>
-    <train row="0" page="0" column="1">deSloop</train>
-    <train row="0" page="0" column="1">Galley</train>
-    <train row="0" page="0" column="1">deOrderGalley</train>
-    <train row="0" page="0" column="2">Galleon</train>
-    <train row="0" page="0" column="2">deGalleass</train>
-    <train row="0" page="0" column="2">deSteamer</train>
-    <train row="0" page="0" column="3">Frigate</train>
-    <train row="0" page="0" column="4">Monitor</train>
-    <train row="0" page="0" column="4">xpIronclad</train>
-    <train row="0" page="0" column="5">SPCFireship</train>
-    <train row="0" page="0" column="5">deMalteseFireship</train>
-    <train row="0" page="0" column="2">Fluyt</train>
-    <train row="0" page="0" column="6">Canoe</train>
-    <train row="0" page="0" column="7">xpWarCanoe</train>
-    <train row="0" page="0" column="8">xpTlalocCanoe</train>
-    <train row="0" page="0" column="6">ypWokouJunk</train>
-    <train row="0" page="0" column="6">ypMarathanCatamaran</train>
-    <train row="0" page="0" column="6">deAfricanCatamaran</train>
-    <train row="0" page="0" column="6">Privateer</train>
-    <train row="0" page="0" column="6">deMercBattleship</train>
-    <train row="0" page="0" column="1">deChinchaRaft</train>
-    <train row="0" page="0" column="2">ypWarJunk</train>
-    <train row="0" page="0" column="1">ypFireship</train>
-    <train row="0" page="0" column="3">ypFuchuan</train>
-    <train row="0" page="0" column="1">ypFune</train>
-    <train row="0" page="0" column="2">ypAtakabune</train>
-    <train row="0" page="0" column="3">ypTekkousen</train>
-    <train row="0" page="0" column="1">deBattleCanoe</train>
-    <train row="0" page="0" column="2">deCannonBoat</train>
-    <train row="0" page="0" column="5">deMercXebec</train>
-    <train row="0" page="0" column="5">deMercDhow</train>
-    <train row="0" page="0" column="10">zpVeniceGalleyProxy</train>
-    <train row="0" page="0" column="11">zpGalleassProxy</train>
-    <train row="0" page="0" column="12">zpSPCLineShip</train>
+    <train row="0" page="1" column="1">Caravel</train>
+    <train row="0" page="1" column="1">deSloop</train>
+    <train row="0" page="1" column="1">Galley</train>
+    <train row="0" page="1" column="1">deOrderGalley</train>
+    <train row="0" page="1" column="2">Galleon</train>
+    <train row="0" page="1" column="2">deGalleass</train>
+    <train row="0" page="1" column="2">deSteamer</train>
+    <train row="0" page="1" column="3">Frigate</train>
+    <train row="0" page="1" column="4">Monitor</train>
+    <train row="0" page="1" column="4">xpIronclad</train>
+    <train row="0" page="1" column="5">SPCFireship</train>
+    <train row="0" page="1" column="5">deMalteseFireship</train>
+    <train row="0" page="1" column="2">Fluyt</train>
+    <train row="0" page="1" column="6">Canoe</train>
+    <train row="0" page="1" column="7">xpWarCanoe</train>
+    <train row="0" page="1" column="8">xpTlalocCanoe</train>
+    <train row="0" page="1" column="6">ypWokouJunk</train>
+    <train row="0" page="1" column="6">ypMarathanCatamaran</train>
+    <train row="0" page="1" column="6">deAfricanCatamaran</train>
+    <train row="0" page="1" column="6">Privateer</train>
+    <train row="0" page="1" column="6">deMercBattleship</train>
+    <train row="0" page="1" column="1">deChinchaRaft</train>
+    <train row="0" page="1" column="2">ypWarJunk</train>
+    <train row="0" page="1" column="1">ypFireship</train>
+    <train row="0" page="1" column="3">ypFuchuan</train>
+    <train row="0" page="1" column="1">ypFune</train>
+    <train row="0" page="1" column="2">ypAtakabune</train>
+    <train row="0" page="1" column="3">ypTekkousen</train>
+    <train row="0" page="1" column="1">deBattleCanoe</train>
+    <train row="0" page="1" column="2">deCannonBoat</train>
+    <train row="0" page="1" column="5">deMercXebec</train>
+    <train row="0" page="1" column="5">deMercDhow</train>
+    <train row="0" page="1" column="10">zpVeniceGalleyProxy</train>
+    <train row="0" page="1" column="11">zpGalleassProxy</train>
+    <train row="0" page="1" column="12">zpSPCLineShip</train>
+    <train row="0" page="1" column="13">zpWokouSteamer</train>
+    <train row="0" page="1" column="14">zpNautilus</train>
+    <train row="0" page="1" column="15">zpSPCQueenAnne</train>
+    <train row="0" page="1" column="16">zpSPCBlackPearl</train>
+    <train row="0" page="1" column="17">zpSPCNeptuneGalley</train>
+    <train row="0" page="1" column="18">zpWokouFuchuan</train>
+    <train row="0" page="1" column="19">zpSPCTreasureShip</train>
+    <train row="0" page="1" column="20">zpMalteseRiggedShip</train>
+    <train row="0" page="1" column="21">zpInuitWarCanoe</train>
+    <train row="0" page="1" column="22">zpRitualCanoe</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -16218,20 +16227,30 @@
     <flag>HasGatherPoint</flag>
     <flag>AllowAutoGarrison</flag>
     <flag>PaintTextureWhenPlacing</flag>
+    <flag>BuildingShowTactics</flag>
     <flag>Tracked</flag>
-    <flag>DisplayRange</flag>
     <contain>xpTlalocCanoe</contain>
     <contain>xpWarCanoe</contain>
     <contain indelay="3.0" outdelay="0.0">Canoe</contain>
+    <command page="0" column="1">zpTacticNavigation</command>
+    <command page="0" column="2">zpTacticQuality</command>
+    <command page="0" column="3">zpTacticWeaponary</command>
+    <command page="0" column="4">TacticTraining</command>
+    <command page="0" column="5">zpTacticHeal</command>
+
     <command page="10" column="7">Delete</command>
     <command page="10" column="5">Eject</command>
     <command page="10" column="2">SetGatherPointEconomy</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
-    <tactics>dock.tactics</tactics>
+    <tactics>zpdrydock.tactics</tactics>
     <protoaction>
       <name>Heal</name>
-      <rate type="Ship">20.000000</rate>
+      <rate type="Ship">10.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>Heal</name>
+      <rate type="Ship">10.000000</rate>
     </protoaction>
   </unit>
   <unit id="20175" name="zpDryDockWagon">

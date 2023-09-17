@@ -2346,6 +2346,7 @@
    <Viewbox Style="{StaticResource ViewboxMain}">
 
       <Grid Width="1920" Height="1080">
+	  <Rectangle x:Name="DeckFlipper" Height="0" Width="0" Visibility="Visible"/>
          <Grid x:Name="mainGridPanel">
             <Grid.LayoutTransform>
                <ScaleTransform
@@ -3630,6 +3631,11 @@
                      <Button x:Name="homeCityCardPanel_ToggleSize" Height="30" Width="30" Margin="0,2,10,0" Style="{StaticResource SmallDeckButton}" Visibility="Visible">
                         <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="{StaticResource deck_hud_resize}"/>
                      </Button>
+					 <local:Age3Button x:Name="homeCityCardPanel_ToggleDeck" Height="30" Width="30" Margin="0,2,10,0" Style="{StaticResource FlagButton}" Visibility="Visible" ToolTip="Flip Deck" ConsoleCommand="gadgetToggle(&quot;DeckFlipper&quot;)">
+                        <local:Age3Button.Background>
+							<ImageBrush ImageSource="pack://siteoforigin:,,,/resources/art/units/animals/capybara/capybara_icon_64x64.png" />
+						</local:Age3Button.Background>
+                     </local:Age3Button>
                      <Button x:Name="homeCityCardPanel_CopyDeck" Height="30" Width="30" Margin="0,2,10,0" Style="{StaticResource SmallDeckButton}" Visibility="Collapsed" ToolTip="$$72501$$Select to copy this deck.">
                         <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="{StaticResource decks_copy}"/>
                      </Button>
@@ -3661,23 +3667,53 @@
                   <TextBlock Grid.Row="4" Grid.Column="1" FontFamily="Trajan Pro" FontSize="40" FontWeight="Bold" TextAlignment="Center" Foreground="Gold" VerticalAlignment="Center" HorizontalAlignment="Center">IV</TextBlock>
 
                   <!--Age 1 Set-->
-                  <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Visibility="Visible">
-                     <local:Age3Button x:Name="homeCityCardPanel_button00" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="10,0,0,0"/>
+                  <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                     <local:Age3Button x:Name="homeCityCardPanel_button00" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="10,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button01" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button02" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button03" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button04" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
-                     <!--THIS PART WILL BE MODDED--><local:Age3Button x:Name="homeCityCardPanel_button05" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
+                     <local:Age3Button x:Name="homeCityCardPanel_button05" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button06" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button07" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button08" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button09" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
-                      <!--THIS PART WILL BE MODDED <Button x:Name="homeCityCardPanel_CopyDeck" Height="65" Width="65" Margin="5,0,0,0" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" ToolTip="$$72501$$Select to copy this deck.">
-                        <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="{StaticResource decks_copy}"/>
-                     </Button>-->
-                  </StackPanel>
-                  <!--Age 2 Set-->
-                  <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Visibility="Visible">
+						<StackPanel.Style>
+						<Style TargetType="StackPanel">
+						<Setter Property="Visibility" Value="Hidden"/>
+						<Style.Triggers>
+						<DataTrigger Binding="{Binding IsVisible, ElementName=DeckFlipper}" Value="True">
+						<Setter Property="Visibility" Value="Visible"/>
+						</DataTrigger>
+						</Style.Triggers>
+						</Style>
+						</StackPanel.Style>
+				  </StackPanel>
+				  <!--Age 1 Shadow Set-->
+				  <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button00" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button00,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button00,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button00,Path=Visibility}" Margin="10,0,0,0" ConsoleCommand="toggleHomeCityView;trackInsert;trackAddWaypoint;trackPlay(-1,123456);"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button01" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button01,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button01,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button01,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button02" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button02,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button02,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button02,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button03" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button03,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button03,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button03,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button04" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button04,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button04,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button04,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button05" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button05,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button05,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button05,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button06" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button06,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button06,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button06,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button07" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button07,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button07,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button07,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button08" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button08,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button08,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button08,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button09" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button09,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button09,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button09,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+						<StackPanel.Style>
+						<Style TargetType="StackPanel">
+						<Setter Property="Visibility" Value="Visible"/>
+						<Style.Triggers>
+						<DataTrigger Binding="{Binding IsVisible, ElementName=DeckFlipper}" Value="True">
+						<Setter Property="Visibility" Value="Hidden"/>
+						</DataTrigger>
+						</Style.Triggers>
+						</Style>
+						</StackPanel.Style>
+				  </StackPanel>
+				  <!--Age 2 Set-->
+                  <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
                      <local:Age3Button x:Name="homeCityCardPanel_button10" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="10,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button11" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button12" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
@@ -3688,9 +3724,42 @@
                      <local:Age3Button x:Name="homeCityCardPanel_button17" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button18" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button19" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
-                  </StackPanel>
+						<StackPanel.Style>
+						<Style TargetType="StackPanel">
+						<Setter Property="Visibility" Value="Hidden"/>
+						<Style.Triggers>
+						<DataTrigger Binding="{Binding IsVisible, ElementName=DeckFlipper}" Value="True">
+						<Setter Property="Visibility" Value="Visible"/>
+						</DataTrigger>
+						</Style.Triggers>
+						</Style>
+						</StackPanel.Style>
+				  </StackPanel>
+				  <!--Age 2 Shadow Set-->
+				  <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button10" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button10,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button10,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button10,Path=Visibility}" Margin="10,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button11" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button11,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button11,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button11,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button12" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button12,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button12,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button12,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button13" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button13,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button13,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button13,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button14" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button14,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button14,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button14,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button15" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button15,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button15,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button15,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button16" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button16,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button16,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button16,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button17" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button17,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button17,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button17,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button18" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button18,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button18,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button18,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button19" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button19,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button19,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button19,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+						<StackPanel.Style>
+						<Style TargetType="StackPanel">
+						<Setter Property="Visibility" Value="Visible"/>
+						<Style.Triggers>
+						<DataTrigger Binding="{Binding IsVisible, ElementName=DeckFlipper}" Value="True">
+						<Setter Property="Visibility" Value="Hidden"/>
+						</DataTrigger>
+						</Style.Triggers>
+						</Style>
+						</StackPanel.Style>
+				  </StackPanel>
                   <!--Age 3 Set-->
-                  <StackPanel Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Visibility="Visible">
+                  <StackPanel Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
                      <local:Age3Button x:Name="homeCityCardPanel_button20" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="10,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button21" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button22" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
@@ -3701,9 +3770,42 @@
                      <local:Age3Button x:Name="homeCityCardPanel_button27" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button28" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button29" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
-                  </StackPanel>
+						<StackPanel.Style>
+						<Style TargetType="StackPanel">
+						<Setter Property="Visibility" Value="Hidden"/>
+						<Style.Triggers>
+						<DataTrigger Binding="{Binding IsVisible, ElementName=DeckFlipper}" Value="True">
+						<Setter Property="Visibility" Value="Visible"/>
+						</DataTrigger>
+						</Style.Triggers>
+						</Style>
+						</StackPanel.Style>
+				  </StackPanel>
+				  <!--Age 3 Shadow Set-->
+				  <StackPanel Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button20" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button20,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button20,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button20,Path=Visibility}" Margin="10,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button21" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button21,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button21,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button21,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button22" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button22,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button22,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button22,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button23" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button23,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button23,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button23,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button24" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button24,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button24,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button24,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button25" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button25,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button25,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button25,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button26" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button26,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button26,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button26,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button27" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button27,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button27,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button27,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button28" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button28,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button28,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button28,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button29" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button29,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button29,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button29,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+						<StackPanel.Style>
+						<Style TargetType="StackPanel">
+						<Setter Property="Visibility" Value="Visible"/>
+						<Style.Triggers>
+						<DataTrigger Binding="{Binding IsVisible, ElementName=DeckFlipper}" Value="True">
+						<Setter Property="Visibility" Value="Hidden"/>
+						</DataTrigger>
+						</Style.Triggers>
+						</Style>
+						</StackPanel.Style>
+				  </StackPanel>
                   <!--Age 4 Set-->
-                  <StackPanel Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Visibility="Visible">
+                  <StackPanel Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
                      <local:Age3Button x:Name="homeCityCardPanel_button30" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="10,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button31" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button32" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
@@ -3714,7 +3816,40 @@
                      <local:Age3Button x:Name="homeCityCardPanel_button37" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button38" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
                      <local:Age3Button x:Name="homeCityCardPanel_button39" Height="65" Width="65" Style="{StaticResource CardButton}" Background="{StaticResource icontest}" Margin="5,0,0,0" />
-                  </StackPanel>
+						<StackPanel.Style>
+						<Style TargetType="StackPanel">
+						<Setter Property="Visibility" Value="Hidden"/>
+						<Style.Triggers>
+						<DataTrigger Binding="{Binding IsVisible, ElementName=DeckFlipper}" Value="True">
+						<Setter Property="Visibility" Value="Visible"/>
+						</DataTrigger>
+						</Style.Triggers>
+						</Style>
+						</StackPanel.Style>
+				  </StackPanel>
+				  <!--Age 4 Shadow Set-->
+				  <StackPanel Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button30" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button30,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button30,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button30,Path=Visibility}" Margin="10,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button31" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button31,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button31,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button31,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button32" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button32,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button32,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button32,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button33" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button33,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button33,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button33,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button34" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button34,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button34,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button34,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button35" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button35,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button35,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button35,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button36" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button36,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button36,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button36,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button37" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button37,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button37,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button37,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button38" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button38,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button38,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button38,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+					  <local:Age3Button x:Name="shadow_homeCityCardPanel_button39" Height="65" Width="65" Style="{StaticResource FlagButton}" Background="{Binding ElementName=homeCityCardPanel_button39,Path=Background}" Opacity="1.0" ToolTip="{Binding ElementName=homeCityCardPanel_button39,Path=ToolTip}" Visibility="{Binding ElementName=homeCityCardPanel_button39,Path=Visibility}" Margin="5,0,0,0" ConsoleCommand="gadgetToggle(&quot;AGameMinimap&quot;)"/>
+						<StackPanel.Style>
+						<Style TargetType="StackPanel">
+						<Setter Property="Visibility" Value="Visible"/>
+						<Style.Triggers>
+						<DataTrigger Binding="{Binding IsVisible, ElementName=DeckFlipper}" Value="True">
+						<Setter Property="Visibility" Value="Hidden"/>
+						</DataTrigger>
+						</Style.Triggers>
+						</Style>
+						</StackPanel.Style>
+				  </StackPanel>
 
                   <StackPanel x:Name="homeCityCardPanel_NoDeckPanel" Grid.Row="1" Grid.Column="2" Grid.RowSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
                      <TextBlock Style="{StaticResource RegularTextBlockStyle}" TextAlignment="Center" Padding="10" FontSize="14" Width="500" TextWrapping="Wrap">

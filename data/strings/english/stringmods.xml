@@ -795,6 +795,16 @@
       <string _locid="300793">Castello di Santa Margherita Ligure (Naval Fort)</string>
       <string _locid="300794">Forte Sangallo (Naval Fort)</string>
       <string _locid="300795">Castello di Punta Pagana (Naval Fort)</string>
+      <string _locid="300796">Innovative Construction: This Dry Dock is working on increasing warship speed.</string>
+      <string _locid="300797">Innovative Construction: Configure Dry Dock to increase warship speed.</string>
+      <string _locid="300798">Quality Control: This Dry Dock is providing Quality Control to increase warship hitpoints.</string>
+      <string _locid="300799">Quality Control: Configure Dry Dock to increase warship hitpoints.</string>
+      <string _locid="300800">Heavy Weapons: This Dry Dock is providing Heavy Weapons to increase warship attack.</string>
+      <string _locid="300801">Heavy Weapons: Configure Dry Dock to increase warship attack.</string>
+      <string _locid="300802">Mass Production: This Dry Dock is building ships faster.</string>
+      <string _locid="300803">Mass Production: Configure Dry Dock to build ships faster.</string>
+      <string _locid="300804">Repair: This Dry Dock is focusing on repairing ships.</string>
+      <string _locid="300805">Repair: Configure Dry Dock to repair ships faster.</string>
     </language>
   </stringtable>
 </stringmods>
