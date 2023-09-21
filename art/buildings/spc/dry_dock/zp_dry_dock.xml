@@ -46,6 +46,7 @@
         <anim>
             Idle
             <component>dry dock</component>
+            <simskeleton><model>buildings\spc\dry_dock\spc_dry_dock_damaged</model></simskeleton>
         </anim>
         <anim>
             Death
@@ -61,7 +62,7 @@
         <component>
             con 1
             <assetreference type="GrannyModel">
-                <file>buildings\constructions\5x5_stage1</file>
+                <file>buildings\constructions\drydock_con_stage1_Model</file>
             </assetreference>
             <decal>
                 <effecttype>default</effecttype>
@@ -79,7 +80,7 @@
         <component>
             con 2
             <assetreference type="GrannyModel">
-                <file>buildings\constructions\5x5_stage2</file>
+                <file>buildings\constructions\drydock_con_stage2_Model</file>
             </assetreference>
             <decal>
                 <effecttype>default</effecttype>
@@ -107,7 +108,7 @@
         <component>
             con 3
             <assetreference type="GrannyModel">
-                <file>buildings\constructions\5x5_stage3</file>
+                <file>buildings\constructions\drydock_con_stage3_Model</file>
             </assetreference>
             <decal>
                 <effecttype>default</effecttype>

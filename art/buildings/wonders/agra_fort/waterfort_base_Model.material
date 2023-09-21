@@ -17,11 +17,11 @@
     <materialdef name="default">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="buildings/wonders/agra_fort/agra_fort_decal_BaseColor">
+      <texture name="BaseColor" override="buildings/wonders/agra_fort/textures/waterfort_basement_BaseColor">
       </texture>
-      <texture name="Normals" override="buildings/wonders/agra_fort/agra_fort_decal_Normals">
+      <texture name="Normals" override="buildings/wonders/agra_fort/textures/waterfort_basement_Normals">
       </texture>
-      <texture name="Masks" override="buildings/wonders/agra_fort/agra_fort_decal_Masks">
+      <texture name="Masks" override="buildings/wonders/agra_fort/textures/waterfort_basement_Masks">
       </texture>
     </parameters>
   </submaterial>

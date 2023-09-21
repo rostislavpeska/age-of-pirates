@@ -769,14 +769,14 @@
       <string _locid="300767">ZP Dry Dock Wagon</string>
       <string _locid="300768">Dry Dock</string>
       <string _locid="300769">Ships a Dry Dock wagon able to a build dry dock.</string>
-      <string _locid="300770">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nVenetian Galleass \n\nPowerfull siege troopers able to train Venetian units. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nDry Dock</string>
+      <string _locid="300770">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nVenetian Galleass \n\nPowerfull siege troopers. Increased galley build limit. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nDry Dock</string>
       <string _locid="300771">Dottore della Morte</string>
       <string _locid="300772">ZP Nat Dottore</string>
       <string _locid="300773">ZP Mustard Gas Weak</string>
       <string _locid="300774">Plague Grenade</string>
       <string _locid="300775">Causes signifficant poison damage to nearby units including yours.</string>
       <string _locid="300776">House of Cornaro</string>
-      <string _locid="300777">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDottore della Morte \n\nPerfect unit for sabotage missions in enemy base. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nVenice Embassy</string>
+      <string _locid="300777">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDottore della Morte \n\nPerfect unit for sabotage missions in enemy base. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nVenetian Embassy</string>
       <string _locid="300778">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nVenetian Bombard \n\nHeavy Venetian artillery, perfect to break enemy walls. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nSea Fort</string>
       <string _locid="300779">House of Contarini</string>
       <string _locid="300780">Naval Fort</string>
@@ -795,16 +795,34 @@
       <string _locid="300793">Castello di Santa Margherita Ligure (Naval Fort)</string>
       <string _locid="300794">Forte Sangallo (Naval Fort)</string>
       <string _locid="300795">Castello di Punta Pagana (Naval Fort)</string>
-      <string _locid="300796">Innovative Construction: This Dry Dock is working on increasing warship speed.</string>
-      <string _locid="300797">Innovative Construction: Configure Dry Dock to increase warship speed.</string>
-      <string _locid="300798">Quality Control: This Dry Dock is providing Quality Control to increase warship hitpoints.</string>
-      <string _locid="300799">Quality Control: Configure Dry Dock to increase warship hitpoints.</string>
-      <string _locid="300800">Heavy Weapons: This Dry Dock is providing Heavy Weapons to increase warship attack.</string>
-      <string _locid="300801">Heavy Weapons: Configure Dry Dock to increase warship attack.</string>
-      <string _locid="300802">Mass Production: This Dry Dock is building ships faster.</string>
-      <string _locid="300803">Mass Production: Configure Dry Dock to build ships faster.</string>
-      <string _locid="300804">Repair: This Dry Dock is focusing on repairing ships.</string>
-      <string _locid="300805">Repair: Configure Dry Dock to repair ships faster.</string>
+      <string _locid="300796">This Dry Dock is working on innovative constructions to increase warship speed.</string>
+      <string _locid="300797">Innovative Construction \nConfigure Dry Dock to increase warship speed by 20%.</string>
+      <string _locid="300798">This Dry Dock is providing Quality Control to increase warship hitpoints.</string>
+      <string _locid="300799">Quality Control \nConfigure Dry Dock to increase warship hitpoints by 10%.</string>
+      <string _locid="300800">This Dry Dock is providing Heavy Weapons to increase warship attack.</string>
+      <string _locid="300801">Heavy Weapons \nConfigure Dry Dock to increase warship attack by 10%.</string>
+      <string _locid="300802">This Dry Dock is building ships faster.</string>
+      <string _locid="300803">Mass Production \nConfigure Dry Dock to build ships faster by 150%.</string>
+      <string _locid="300804">This Dry Dock is focusing on repairing ships.</string>
+      <string _locid="300805">Repair \nConfigure Dry Dock to repair ships faster by 300%.</string>
+      <string _locid="300806">This Dry Dock is maintaining Venetian Galleys.</string>
+      <string _locid="300807">Automatic Workshop \nConfigure Dry Dock to maintain Venetian Galleys.</string>
+      <string _locid="300808">Venetian Embassy</string>
+      <string _locid="300809">ZP Venetian Embassy</string>
+      <string _locid="300810">Venetian Embassy Wagon</string>
+      <string _locid="300811">ZP Venetian Embassy Wagon</string>
+      <string _locid="300812">Ships a Venetian Embassy Wagon and unlocks more Venetian shipments which can be sent from the Embassy building.</string>
+      <string _locid="300813">Allows to send Venetian Shipments</string>
+      <string _locid="300814">San Marco Guard</string>
+      <string _locid="300815">Ships Dodge's Guards (Can be sent in finite times)</string>
+      <string _locid="300816">Venetian Expeditionary Army</string>
+      <string _locid="300817">Ships Venetian Bombards and Dodge's Guards</string>
+      <string _locid="300818">Venetian Exploration Fleet</string>
+      <string _locid="300819">Ships two Venetian Galleys (Can be sent in finite times)</string>
+      <string _locid="300820">Venetian Expeditionary Fleet</string>
+      <string _locid="300821">Ships two Venetian Galleass ships</string>
+      <string _locid="300822">Venetian Mercenary Brigade (Can be sent in finite times)</string>
+      <string _locid="300823">Ships Adralic Sea Mercenaries</string>
     </language>
   </stringtable>
 </stringmods>

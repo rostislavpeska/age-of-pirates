@@ -8705,6 +8705,8 @@
       <effect type="TechStatus" status="obtainable">zpVeniceBetterShips</effect>
       <effect type="TechStatus" status="obtainable">zpNatDryDock</effect>
       <effect type="TechStatus" status="obtainable">zpNatVeniceFort</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNatVeniceEmbassy</effect>
     </effects>
   </tech>
   <tech name ="zpVenetianExpansion" type ="Normal">
@@ -9150,6 +9152,9 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpGalleassProxy</target>
       </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpVeniceGalley</target>
+      </effect>
       <effect type="TechStatus" status="unobtainable">zpVenetianExpansion</effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
       <effect type="CommandRemove" tech="zpVenetianExpansion">
@@ -9249,7 +9254,7 @@
     <cost resourcetype="Gold">100.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\maltese_fort.png</icon>
+    <icon>resources\images\icons\techs\venice_drydock.png</icon>
     <rollovertextid>300769</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
@@ -9291,6 +9296,11 @@
       <effect type="CommandAdd" tech="zpNatVeniceEmbassy" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpVeniceArmy</effect>
+      <effect type="TechStatus" status="obtainable">zpVeniceExplorationFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpVeniceCannonArmy</effect>
+      <effect type="TechStatus" status="obtainable">zpVeniceExpeditionaryFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpVeniceCavalry</effect>
     </effects>
   </tech>
   <tech name="zpConsulateVeniceContarini" type="Normal">
@@ -9318,6 +9328,8 @@
       <effect type="CommandAdd" tech="zpNatVeniceFort" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpFortifiedVeniceFort</effect>
+      <effect type="TechStatus" status="obtainable">zpVeniceLightHouse</effect>
     </effects>
   </tech>
   <tech name="zpNatVeniceFort" type="Normal">
@@ -9345,8 +9357,6 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpVeniceGalley</target>
       </effect>
-      <effect type="TechStatus" status="obtainable">zpFortifiedVeniceFort</effect>
-      <effect type="TechStatus" status="obtainable">zpVeniceLightHouse</effect>
     </effects>
   </tech>
   <tech name="zpFortifiedVeniceFort" type="Normal">
@@ -9393,6 +9403,149 @@
       </effect>
       <effect type="Data" amount="7.00" subtype="LOS" relativity="Absolute">
         <target type="ProtoUnit">zpWaterFort</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatVeniceEmbassy" type="Normal">
+    <dbid>40324</dbid>
+    <displaynameid>300808</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venetian_embassy_tech.png</icon>
+    <rollovertextid>300812</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialuze</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpVeniceEmbassyWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpVeniceEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceArmy" type="Normal">
+    <dbid>40325</dbid>
+    <displaynameid>300814</displaynameid>
+    <cost resourcetype="Food">230.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venice_army_infinite.png</icon>
+    <rollovertextid>300815</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>YPConsulateImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="zpNatPavisier" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceCannonArmy" type="Normal">
+    <dbid>40326</dbid>
+    <displaynameid>300816</displaynameid>
+    <cost resourcetype="Wood">1500.0000</cost>
+    <cost resourcetype="Gold">1500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venice_cannon_army.png</icon>
+    <rollovertextid>300817</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="12.00" subtype="FreeHomeCityUnit" unittype="zpNatMercPavisier" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpVenetianBombard" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceExplorationFleet" type="Normal">
+    <dbid>40327</dbid>
+    <displaynameid>300818</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venetian_galley_fleet.png</icon>
+    <rollovertextid>300819</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>YPConsulateImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpVeniceGalley" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceExpeditionaryFleet" type="Normal">
+    <dbid>40328</dbid>
+    <displaynameid>300820</displaynameid>
+    <cost resourcetype="Wood">800.0000</cost>
+    <cost resourcetype="Gold">800.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venetian_galleass_fleet.png</icon>
+    <rollovertextid>300821</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpGalleass" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceCavalry" type="Normal">
+    <dbid>40329</dbid>
+    <displaynameid>300822</displaynameid>
+    <cost resourcetype="Gold">1200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venetian_cavalry.png</icon>
+    <rollovertextid>300823</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPCheckPopCap</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>YPConsulateImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="MercElmeti" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="MercStradiot" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>

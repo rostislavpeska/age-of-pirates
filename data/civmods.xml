@@ -415,7 +415,7 @@
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>
-  <civ>
+  <!--<civ>
     <name>SPCVenetians</name>
     <main>1</main>
     <portrait>objects\flags\venetian</portrait>
@@ -473,5 +473,5 @@
     </unitregen>
     <visible>0</visible>
     <visibleineditor>1</visibleineditor>
-  </civ>
+  </civ>-->
 </civsmods>

@@ -15677,8 +15677,8 @@
     <rollovertextid>122310</rollovertextid>
     <shortrollovertextid>122309</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>1500.0000</initialhitpoints>
-    <maxhitpoints>1500.0000</maxhitpoints>
+    <initialhitpoints>1700.0000</initialhitpoints>
+    <maxhitpoints>1700.0000</maxhitpoints>
     <los>30.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -15761,7 +15761,7 @@
     </protoaction>
     <protoaction>
       <name>RoundelPierceAttack</name>
-      <damage>40.000000</damage>
+      <damage>45.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>35.000000</maxrange>
       <rof>0.050000</rof>
@@ -15789,8 +15789,8 @@
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>10.0000</maxvelocity>
-    <maxrunvelocity>12.0000</maxrunvelocity>
+    <maxvelocity>11.0000</maxvelocity>
+    <maxrunvelocity>13.0000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>3.0000</turnrate>
     <animfile>units\naval\galley\venice_galley.xml</animfile>
@@ -15801,12 +15801,12 @@
     <portraiticon>resources\art\units\naval\spc\venice_galley_portrait.png</portraiticon>
     <rollovertextid>27711</rollovertextid>
     <shortrollovertextid>27710</shortrollovertextid>
-    <initialhitpoints>600.0000</initialhitpoints>
-    <maxhitpoints>600.0000</maxhitpoints>
+    <initialhitpoints>550.0000</initialhitpoints>
+    <maxhitpoints>550.0000</maxhitpoints>
     <los>26.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
-    <trainpoints>40.0000</trainpoints>
+    <trainpoints>120.0000</trainpoints>
     <buildlimit>3</buildlimit>
     <bounty>40.0000</bounty>
     <buildbounty>40.0000</buildbounty>
@@ -15872,7 +15872,7 @@
     <tactics>caravel.tactics</tactics>
     <protoaction>
       <name>BroadsideAttack</name>
-      <damage>40.000000</damage>
+      <damage>45.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>20.000000</maxrange>
       <rof>0.050000</rof>
@@ -15888,7 +15888,7 @@
     </protoaction>
     <protoaction>
       <name>RangedAttack</name>
-      <damage>100.000000</damage>
+      <damage>110.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>20.000000</maxrange>
       <rof>2.000000</rof>
@@ -16020,8 +16020,8 @@
     <animfile>effects\projectiles\musket_ball.xml</animfile>
     <icon>resources\art\units\naval\spc\venice_galleass_icon.png</icon>
     <portraiticon>resources\art\units\naval\spc\venice_galleass_portrait.png</portraiticon>
-    <rollovertextid>27711</rollovertextid>
-    <shortrollovertextid>27710</shortrollovertextid>
+    <rollovertextid>122310</rollovertextid>
+    <shortrollovertextid>122309</shortrollovertextid>
     <initialhitpoints>600.0000</initialhitpoints>
     <maxhitpoints>600.0000</maxhitpoints>
     <trainpoints>40.0000</trainpoints>
@@ -16127,7 +16127,7 @@
     <displaynameid>35628</displaynameid>
     <editornameid>300764</editornameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
-    <obstructionradiusz>4.0000</obstructionradiusz>
+    <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <physicsinfo>dock</physicsinfo>
     <placementfile>dock.xml</placementfile>
@@ -16141,6 +16141,7 @@
     <maxhitpoints>4500.0000</maxhitpoints>
     <cost resourcetype="Wood">400.0000</cost>
     <cost resourcetype="Gold">100.0000</cost>
+    <buildpoints>40.0000</buildpoints>
     <los>34.0000</los>
     <bounty>150.0000</bounty>
     <buildingworkrate>1.0000</buildingworkrate>
@@ -16168,6 +16169,9 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>AbstractDock</unittype>
     <unittype>ConvertsHerds</unittype>
+    <train row="0" page="1" column="0">FishingBoat</train>
+    <train row="0" page="1" column="0">ypFishingBoatAsian</train>
+    <train row="0" page="1" column="0">deFishingBoatAfrican</train>
     <train row="0" page="1" column="1">Caravel</train>
     <train row="0" page="1" column="1">deSloop</train>
     <train row="0" page="1" column="1">Galley</train>
@@ -16202,17 +16206,6 @@
     <train row="0" page="1" column="5">deMercDhow</train>
     <train row="0" page="1" column="10">zpVeniceGalleyProxy</train>
     <train row="0" page="1" column="11">zpGalleassProxy</train>
-    <train row="0" page="1" column="12">zpSPCLineShip</train>
-    <train row="0" page="1" column="13">zpWokouSteamer</train>
-    <train row="0" page="1" column="14">zpNautilus</train>
-    <train row="0" page="1" column="15">zpSPCQueenAnne</train>
-    <train row="0" page="1" column="16">zpSPCBlackPearl</train>
-    <train row="0" page="1" column="17">zpSPCNeptuneGalley</train>
-    <train row="0" page="1" column="18">zpWokouFuchuan</train>
-    <train row="0" page="1" column="19">zpSPCTreasureShip</train>
-    <train row="0" page="1" column="20">zpMalteseRiggedShip</train>
-    <train row="0" page="1" column="21">zpInuitWarCanoe</train>
-    <train row="0" page="1" column="22">zpRitualCanoe</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -16232,12 +16225,9 @@
     <contain>xpTlalocCanoe</contain>
     <contain>xpWarCanoe</contain>
     <contain indelay="3.0" outdelay="0.0">Canoe</contain>
-    <command page="0" column="1">zpTacticNavigation</command>
-    <command page="0" column="2">zpTacticQuality</command>
-    <command page="0" column="3">zpTacticWeaponary</command>
-    <command page="0" column="4">TacticTraining</command>
-    <command page="0" column="5">zpTacticHeal</command>
-
+    <command page="3" column="1">TacticTraining</command>
+    <command page="3" column="2">zpTacticHeal</command>
+    <command page="3" column="3">zpTacticSpawnGalley</command>
     <command page="10" column="7">Delete</command>
     <command page="10" column="5">Eject</command>
     <command page="10" column="2">SetGatherPointEconomy</command>
@@ -16249,8 +16239,8 @@
       <rate type="Ship">10.000000</rate>
     </protoaction>
     <protoaction>
-      <name>Heal</name>
-      <rate type="Ship">10.000000</rate>
+      <name>HealBonus</name>
+      <rate type="Ship">40.000000</rate>
     </protoaction>
   </unit>
   <unit id="20175" name="zpDryDockWagon">
@@ -16695,9 +16685,164 @@
       <maxrange>3.000000</maxrange>
     </protoaction>
   </unit>
+  <unit id="20180" name="zpVeniceEmbassy">
+    <dbid>20180</dbid>
+    <displaynameid>300808</displaynameid>
+    <editornameid>300809</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\asian_civs\consulate\consulate_european.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\venice_embassy_icon.png</icon>
+    <portraiticon>resources\art\buildings\venice_embassy_portrait.png</portraiticon>
+    <rollovertextid>300813</rollovertextid>
+    <shortrollovertextid>300813</shortrollovertextid>
+    <initialhitpoints>3500.0000</initialhitpoints>
+    <maxhitpoints>3500.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>50.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>100.0000</bounty>
+    <buildbounty>50.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>CountsTowardEconomyModeScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractFindBarracks</unittype>
+    <train row="0" page="0" column="0">zpNatPavisier</train>
+    <train row="0" page="0" column="1">zpNatDottore</train>
+    <train row="0" page="0" column="3">zpVenetianBombard</train>
+    <tech row="0" page="1" column="1">zpVeniceArmy</tech>
+    <tech row="0" page="1" column="0">zpVeniceCavalry</tech>
+    <tech row="0" page="1" column="2">zpVeniceExplorationFleet</tech>
+    <tech row="0" page="2" column="1">zpVeniceCannonArmy</tech>
+    <tech row="0" page="2" column="2">zpVeniceExpeditionaryFleet</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>InitialGarrisonOnly</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>EnterHotkeyContext</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+    <command page="9" column="0">TacticTax0</command>
+    <command page="9" column="2">TacticTax10</command>
+    <command page="9" column="1">TacticTax5</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <tactics>consulate.tactics</tactics>
+  </unit>
+  <unit id="20181" name="zpVeniceEmbassyWagon">
+    <dbid>20181</dbid>
+    <displaynameid>300810</displaynameid>
+    <editornameid>300811</editornameid>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>5.0000</turnrate>
+    <animfile>units\trade\supply_cart\supply_cart_outpost.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trade\outpost_wagon_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trade\outpost_wagon_portrait.png</portraiticon>
+    <rollovertextid>41659</rollovertextid>
+    <shortrollovertextid>41658</shortrollovertextid>
+    <initialhitpoints>250.0000</initialhitpoints>
+    <maxhitpoints>250.0000</maxhitpoints>
+    <los>18.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>Civilian</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ValidIdleVillager</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractWagon</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>CannotConvertHill</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <train row="0" page="0" column="0">zpVeniceEmbassy</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>DeadReplacementWhenDestroyed</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>coveredwagon.tactics</tactics>
+    <protoaction>
+      <name>Build</name>
+      <rate type="zpVeniceEmbassy">5.000000</rate>
+    </protoaction>
+  </unit>
 
 
-  <!--TEST-->
+    <!--TEST-->
+  
 
   <unit id="" name="zpJesuitSocketWagon">
     <dbid></dbid>

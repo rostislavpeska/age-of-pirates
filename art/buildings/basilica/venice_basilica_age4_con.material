@@ -1,0 +1,78 @@
+<material>
+  <submaterial name="mate">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="textures\construction\scaffolding\scaffolding_basecolor">
+      </texture>
+      <texture name="Normals" override="textures\construction\scaffolding\scaffolding_normals">
+      </texture>
+      <texture name="Masks" override="textures\construction\scaffolding\scaffolding_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matf">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="textures\construction\props_colony\props_colony_basecolor">
+      </texture>
+      <texture name="Normals" override="textures\construction\props_colony\props_colony_normals">
+      </texture>
+      <texture name="Masks" override="textures\construction\props_colony\props_colony_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\buildings_east\prop_ee_factory_crane\textures\prop_ee_factory_crane_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_east\prop_ee_factory_crane\textures\prop_ee_factory_crane_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_east\prop_ee_factory_crane\textures\prop_ee_factory_crane_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\venice_basilica_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\basilica_age4_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\basilica_age4_mata_masks">
+      </texture>
+      <texture name="Details" override="buildings\basilica\textures\basilica_age4_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\venice_basilica_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\basilica_age4_matb_normals">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\basilica_age4_matb_masks">
+      </texture>
+      <texture name="Details" override="buildings\basilica\textures\basilica_age4_matb_details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="textures\construction\dutch_church_age2_con\dutch_church_age2_con_basecolor">
+      </texture>
+      <texture name="Normals" override="textures\construction\dutch_church_age2_con\dutch_church_age2_con_normals">
+      </texture>
+      <texture name="Masks" override="textures\construction\dutch_church_age2_con\dutch_church_age2_con_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
