@@ -256,6 +256,8 @@ extern vector gRaidGatherPoint = cInvalidVector;
 extern int gRaidStartTime = 0;
 extern int gActiveInterdiction = -1;
 
+extern int gcavalryCompanyPlan = -1;
+
 //==============================================================================
 // Military.
 //==============================================================================

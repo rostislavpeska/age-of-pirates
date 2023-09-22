@@ -682,16 +682,12 @@ minInterval 15
          currentBaseIndex = -1;
          xsSetRuleMinIntervalSelf(15);
       }
-      // AssertiveWall: Check to see if the attack transport failed and keep going if it 
-      // looks like it is
-      //if (aiCheckAttackFailure() == true)
-      //{
-         // do nothing
-      //}
-      //else
-      //{
-         return;
-      //}
+      // AssertiveWall: Check to see if we're really in danger on island maps
+      // if (checkForEnemyOnIsland() == false)
+      // {
+      //   continue;
+      // }
+      return;
    }
 
    static int baseQuery = -1;
@@ -954,18 +950,22 @@ minInterval 15
          shouldAttack = true;
          isCityState = false;
 
-         if (isEnemy == true)
+         // Skip this on island maps more than moderate
+         if (gStartOnDifferentIslands == false && cDifficultyCurrent > cDifficultyModerate)
          {
-            if (currentTime - gLastAttackMissionTime < gAttackMissionInterval)
+            if (isEnemy == true)
             {
-               shouldAttack = false;
+               if (currentTime - gLastAttackMissionTime < gAttackMissionInterval)
+               {
+                  shouldAttack = false;
+               }
             }
-         }
-         else
-         {
-            if (currentTime - gLastDefendMissionTime < gDefendMissionInterval)
+            else
             {
-               shouldAttack = false;
+               if (currentTime - gLastDefendMissionTime < gDefendMissionInterval)
+               {
+                  shouldAttack = false;
+               }
             }
          }
 
@@ -3101,6 +3101,7 @@ minInterval 10
    int planID = -1;
    int mainBaseID = kbBaseGetMainID(cMyID);
    int time = xsGetTime();
+   int onOurIsland = false;
 
    static int enemyArmyQuery = -1;
    if (enemyArmyQuery < 0) // First run.
@@ -3130,11 +3131,11 @@ minInterval 10
    // Check main base first.
    kbUnitQuerySetPosition(enemyArmyQuery, kbBaseGetLocation(cMyID, mainBaseID));
    // AssertiveWall: Make this ring nice and big on island maps to make sure we catch landing forces
-   // This may be causing issues. Try very small
+   // This may be causing issues. Back to normal
    if (gStartOnDifferentIslands == true)
    {
       //kbUnitQuerySetMaximumDistance(enemyArmyQuery, (kbGetMapXSize() * 0.60));
-      kbUnitQuerySetMaximumDistance(enemyArmyQuery, 30.0);
+      kbUnitQuerySetMaximumDistance(enemyArmyQuery, cvDefenseReflexSearchRadius);
    }
    else
    {
@@ -3146,22 +3147,6 @@ minInterval 10
    kbUnitQuerySetUnitType(enemyArmyQuery, cUnitTypeLogicalTypeLandMilitary); // AssertiveWall: copied from above
    kbUnitQueryResetResults(enemyArmyQuery);
    enemyArmySize = kbUnitQueryExecute(enemyArmyQuery);
-   
-   // AssertiveWall: check if any of the army is on the same island
-   if (gStartOnDifferentIslands == true)
-   {
-      for (i = 0; < enemyArmySize)
-      {
-         unitID = kbUnitQueryGetResult(enemyArmyQuery, i);
-         int tempBaseVecAreaGroupID = kbAreaGroupGetIDByPosition(kbUnitGetPosition(unitID));
-         if (kbAreAreaGroupsPassableByLand(tempBaseVecAreaGroupID, kbAreaGroupGetIDByPosition(kbBaseGetLocation(cMyID, mainBaseID))) == true)
-         {
-            unitID = -1;
-            break; // Stop checking, there are troops on our island
-         }
-         return; // only if no enemy units are on the island
-      }
-   }
 
    // Bump up by 1 to just avoid running into this when the enemy explorer and its companion get in our base...
    if (enemyArmySize >= 3)
