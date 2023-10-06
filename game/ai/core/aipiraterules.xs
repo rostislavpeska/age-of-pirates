@@ -94,6 +94,12 @@ minInterval 5
         xsEnableRule("maintainJesuitMissionary");
         xsEnableRule("priestAbilityMonitor");
     }
+    if (getGaiaUnitCount(cUnitTypezpNativeUnitVenetianFlag) > 0)
+    {
+        xsEnableRule("VeniceTechMonitor");
+        xsEnableRule("MaintainVeniceShips");
+        xsEnableRule("nativeWagonMonitor");
+    }
 
    if (cMyCiv == cCivDEInca)
    {
@@ -1528,6 +1534,16 @@ minInterval 30
              buildingType = cUnitTypezpAcademy;
              break;
          }
+         case cUnitTypezpDryDockWagon:
+         {
+             buildingType = cUnitTypezpDrydock;
+             break;
+         }
+         case cUnitTypezpVeniceEmbassyWagon:
+         {
+             buildingType = cUnitTypezpVeniceEmbassy;
+             break;
+         }
         
       }
 
@@ -2023,4 +2039,119 @@ minInterval 60
       }
     }
   }
+}
+
+//==============================================================================
+// Maintain Proxies in Venetian Trading Posts
+//==============================================================================
+
+rule MaintainVeniceShips
+inactive
+minInterval 30
+{
+  const int list_size = 2;
+  static int proxy_list = -1;
+  static int ship_list = -1;
+
+  if (kbUnitCount(cMyID, cUnitTypezpSocketVenetians, cUnitStateAny) == 0)
+   {
+      aiChat( cMyID, "Venice Socket not found");
+      return;
+   }
+
+  if (proxy_list == -1)
+  {
+    proxy_list = xsArrayCreateInt(list_size, -1, "List of Venice Proxies");
+    ship_list = xsArrayCreateInt(list_size, -1, "List of Venice Ships");
+
+    xsArraySetInt(proxy_list, 0, cUnitTypezpVeniceGalleyProxy);
+    xsArraySetInt(ship_list, 0, cUnitTypezpVeniceGalley);
+
+    xsArraySetInt(proxy_list, 1, cUnitTypezpGalleassProxy);
+    xsArraySetInt(ship_list, 1, cUnitTypezpGalleass);
+
+  }
+
+  for(i = 0; < xsArrayGetSize(proxy_list))
+  {
+    int proxy = xsArrayGetInt(proxy_list, i);
+    int ship = xsArrayGetInt(ship_list, i);
+    
+    int maintain_plan = aiPlanGetIDByTypeAndVariableType(cPlanTrain, cTrainPlanUnitType, proxy, true);
+    int number_to_maintain = kbGetBuildLimit(cMyID, ship) - kbUnitCount(cMyID, ship);
+
+    if (maintain_plan == -1)
+    {
+      if (kbProtoUnitAvailable(proxy) == true)
+      {
+        maintain_plan = aiPlanCreate("Maintain " + kbGetProtoUnitName(proxy), cPlanTrain);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanUnitType, 0, proxy);
+        aiPlanSetVariableBool(maintain_plan, cTrainPlanUseMultipleBuildings, 0, false);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanNumberToMaintain, 0, number_to_maintain);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanBatchSize, 0, 1);
+        aiPlanSetActive(maintain_plan, true);
+      }
+    }
+    else
+    {
+      if (kbProtoUnitAvailable(proxy) == true)
+      {
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanNumberToMaintain, 0, number_to_maintain);
+      }
+      else
+      {
+        aiPlanDestroy(maintain_plan);
+      }
+    }
+  }
+}
+
+//==============================================================================
+// Venice Tech Monitor
+//==============================================================================
+rule VeniceTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketVenetians, cUnitStateAny) == 0)
+      {
+      return; // Player has no venice socket.
+      }
+
+
+      // Upgrade Ships and Cannons
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpVeniceBetterShips,
+      []() -> bool { return ( kbGetAge() >= cAge3 ); },
+      cUnitTypeTradingPost);
+
+      // Dolfin Dry Dock
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatDryDock,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateVeniceDolphin) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Cornaro Special Upgrade
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatVeniceEmbassy,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateVeniceCornaro) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Contarini Special Upgrade
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatVeniceFort,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateVeniceContarini) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Embassy Cannons
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpVeniceCannonArmy,
+      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpVeniceEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpVeniceEmbassy);
+
+      // Embassy Galleasses
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpVeniceExpeditionaryFleet,
+      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpVeniceEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpVeniceEmbassy);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
 }

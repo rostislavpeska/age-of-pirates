@@ -28,7 +28,7 @@
       <string _locid="300027">ZP Port Center</string>
       <string _locid="300028">ZP Native Pirates</string>
       <string _locid="300029">ZP Socket Water Trade Route</string>
-      <string _locid="300030">Harbour</string>
+      <string _locid="300030">Trade Harbour</string>
       <string _locid="300031">ZP Harbour Center</string>
       <string _locid="300032">Harbour Warehouse</string>
       <string _locid="300033">ZP PROP Harbour Platform</string>
@@ -725,10 +725,10 @@
       <string _locid="300723">Venetian Galley</string>
       <string _locid="300724">Venetian Galleass</string>
       <string _locid="300725">Ship of the Line</string>
-      <string _locid="300726">Venetian Bombard</string>
+      <string _locid="300726">Experimental Bombard</string>
       <string _locid="300727">ZP Venetian Bombard</string>
       <string _locid="300728">Venetian Bombards</string>
-      <string _locid="300729">Everything has a price, even loyality.</string>
+      <string _locid="300729">"Everything has a price, even loyality. If you have money, we can be friends."</string>
       <string _locid="300730">Venetian House</string>
       <string _locid="300731">ZP Venetian House</string>
       <string _locid="300732">ZP Venetian Statue</string>
@@ -758,8 +758,8 @@
       <string _locid="300756">Sextant</string>
       <string _locid="300757">Increases ship speed and line of sight</string>
       <string _locid="300758">Pile Foundation</string>
-      <string _locid="300759">Signifficantly improves any type of dock</string>
-      <string _locid="300760">Venetian Fleet</string>
+      <string _locid="300759">Signifficantly improves dock hitpoints, decreases it's costs and buildtime.</string>
+      <string _locid="300760">Arsenal of Venice</string>
       <string _locid="300761">Improves Venetian Ships attack and hitpoints</string>
       <string _locid="300762">House of Dolfin</string>
       <string _locid="300763">ZP Venetian Water Flag 2</string>
@@ -777,7 +777,7 @@
       <string _locid="300775">Causes signifficant poison damage to nearby units including yours.</string>
       <string _locid="300776">House of Cornaro</string>
       <string _locid="300777">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDottore della Morte \n\nPerfect unit for sabotage missions in enemy base. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nVenetian Embassy</string>
-      <string _locid="300778">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nVenetian Bombard \n\nHeavy Venetian artillery, perfect to break enemy walls. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nSea Fort</string>
+      <string _locid="300778">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Bombard \n\nHeavy Venetian artillery, perfect to break enemy walls. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nSea Fort</string>
       <string _locid="300779">House of Contarini</string>
       <string _locid="300780">Naval Fort</string>
       <string _locid="300781">ZP Water Fort</string>
@@ -823,6 +823,20 @@
       <string _locid="300821">Ships two Venetian Galleass ships</string>
       <string _locid="300822">Venetian Mercenary Brigade (Can be sent in finite times)</string>
       <string _locid="300823">Ships Adralic Sea Mercenaries</string>
+      <string _locid="300824">Dodge's Guard</string>
+      <string _locid="300825">ZP NAT Dodge's Guard</string>
+      <string _locid="300826">Veteran Dodge's Guard</string>
+      <string _locid="300827">Elite Dodge's Guard</string>
+      <string _locid="300828">Legendary Dodge's Guard</string>
+      <string _locid="300829">ZP NAT MERC Dodge's Guard</string>
+      <string _locid="300830">Carnival of Venice</string>
+      <string _locid="300831">All native units get trained faster and cost less resources</string>
+      <string _locid="300832">Venetian Bombard</string>
+      <string _locid="300833">ZP Venetian Harbour Center</string>
+      <string _locid="300834">ZP Venetian Mooring</string>
+      <string _locid="300835">Adralic Sea</string>
+      <string _locid="300836">Large naval map with two separated sea shores and a water trade route. \n\nSettlements: Venetians, Maltese, Jesuits</string>
+      <string _locid="300837">Even loyality can be bought. Venetians are powerful allies. Make an alliance with them and dominate over the Adralic Sea.</string>
     </language>
   </stringtable>
 </stringmods>

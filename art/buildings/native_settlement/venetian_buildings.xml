@@ -24,12 +24,12 @@
 			    </data>
                 <data>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\sufi_floor_01</file>
+						<file>buildings\native_settlement\venice\venice_floor_01</file>
 					</assetreference>
 			    </data>
                 <data>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\sufi_floor_02</file>
+						<file>buildings\native_settlement\venice\venice_floor_02</file>
 					</assetreference>
 			    </data>
                 <data>
@@ -39,7 +39,7 @@
 			    </data>
 				<data>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\venice\venice_corner_Model</file>
+						<file>buildings\native_settlement\venice\covered_bridge_Model</file>
 					</assetreference>
 			    </data>
 				<data>

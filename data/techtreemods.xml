@@ -163,6 +163,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPirates</effect>
     </effects>
@@ -196,6 +199,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnJapanese</effect>
     </effects>
@@ -229,6 +235,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnChinese</effect>
     </effects>
@@ -262,6 +271,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnIndian</effect>
     </effects>
@@ -812,6 +824,9 @@
 			<effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCPortCenter" relativity ="Absolute">
 				<target type ="Player"></target>
 			</effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpHarbourCenterVenice" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
 		</effects>
 	</tech>
 	<tech name ="zpUpdatePort2" type ="Normal">
@@ -823,6 +838,9 @@
 			<techstatus status ="Active">Fortressize</techstatus></prereqs>
 		<effects>
 			<effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCPortCenter" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpHarbourCenterVenice" relativity ="Absolute">
 				<target type ="Player"></target>
 			</effect>
 		</effects>
@@ -2270,6 +2288,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMaltese</effect>     
     </effects>
@@ -3047,6 +3068,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokou</effect>
     </effects>
@@ -5339,6 +5363,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
@@ -5804,6 +5831,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffJewish</effect>
     </effects>
@@ -6247,6 +6277,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMalteseLand</effect>  
     </effects>
@@ -6558,6 +6591,12 @@
       <effect type="TechStatus" status="obtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="obtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>  
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientists</effect>
     </effects>
@@ -8688,7 +8727,7 @@
     <flag>Shadow</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatPavisier</target>
+        <target type="ProtoUnit">zpNatVeniceGuard</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpVeniceGalleyProxy</target>
@@ -8707,6 +8746,7 @@
       <effect type="TechStatus" status="obtainable">zpNatVeniceFort</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">zpNatVeniceEmbassy</effect>
+      <effect type="TechStatus" status="obtainable">zpVeniceCarnival</effect>
     </effects>
   </tech>
   <tech name ="zpVenetianExpansion" type ="Normal">
@@ -8790,20 +8830,24 @@
     </prereqs>
     <effects>
       <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatPavisier</target>
+        <target type="ProtoUnit">zpNatVeniceGuard</target>
       </effect>
       <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatPavisier</target>
+        <target type="ProtoUnit">zpNatVeniceGuard</target>
       </effect>
-      <effect type="SetName" proto="zpNatPavisier" culture="none" newname="122043">
+      <effect type="SetName" proto="zpNatVeniceGuard" culture="none" newname="300826">
+      </effect>
+      <effect type="SetName" proto="zpNatVeniceGuard" culture="none" newname="300828" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatMercPavisier</target>
+        <target type="ProtoUnit">zpNatMercVeniceGuard</target>
       </effect>
       <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatMercPavisier</target>
+        <target type="ProtoUnit">zpNatMercVeniceGuard</target>
       </effect>
-      <effect type="SetName" proto="zpNatMercPavisier" culture="none" newname="122043">
+      <effect type="SetName" proto="zpNatMercVeniceGuard" culture="none" newname="300826">
+      </effect>
+      <effect type="SetName" proto="zpNatMercVeniceGuard" culture="none" newname="300828" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>
@@ -8827,20 +8871,24 @@
     </prereqs>
     <effects>
       <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatPavisier</target>
+        <target type="ProtoUnit">zpNatVeniceGuard</target>
       </effect>
-      <effect type="SetName" proto="zpNatPavisier" culture="none" newname="122044">
+      <effect type="SetName" proto="zpNatVeniceGuard" culture="none" newname="300827">
       </effect>
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatPavisier</target>
+        <target type="ProtoUnit">zpNatVeniceGuard</target>
       </effect>
       <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatMercPavisier</target>
+        <target type="ProtoUnit">zpNatMercVeniceGuard</target>
       </effect>
-      <effect type="SetName" proto="zpNatMercPavisier" culture="none" newname="122044">
+      <effect type="SetName" proto="zpNatMercVeniceGuard" culture="none" newname="300827">
       </effect>
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatMercPavisier</target>
+        <target type="ProtoUnit">zzpNatMercVeniceGuard</target>
+      </effect>
+      <effect type="SetName" proto="zpNatVeniceGuard" culture="none" newname="300828" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatMercVeniceGuard" culture="none" newname="300828" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>
@@ -9046,7 +9094,7 @@
       <techstatus status="Active">HCNativeTreaties</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatMercPavisier" relativity="Absolute">
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatMercVeniceGuard" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -9061,7 +9109,7 @@
       <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMercPavisier" relativity="Absolute">
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMercVeniceGuard" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -9118,7 +9166,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <prereqs>
-			<techstatus status ="Active">Fortressize</techstatus>
+			<techstatus status ="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
@@ -9127,11 +9175,19 @@
       <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpGalleass</target>
       </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpVenetianBombard</target>
+      </effect>
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpVeniceGalley</target>
       </effect>
       <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpVeniceGalley</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpVenetianBombard</target>
+      </effect>
+      <effect type="SetName" proto="zpVenetianBombard" culture="none" newname="300832">
       </effect>
     </effects>
   </tech>
@@ -9213,7 +9269,7 @@
     <flag>Shadow</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">zpGalleas</target>
+        <target type="ProtoUnit">zpGalleass</target>
       </effect>
       <effect type="Data" action="SpawnGalleass" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpVenetianWaterSpawnFlag1">
         <target type="Player">
@@ -9228,7 +9284,7 @@
     <flag>Shadow</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">zpGalleas</target>
+        <target type="ProtoUnit">zpGalleass</target>
       </effect>
       <effect type="Data" action="SpawnGalleass" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpVenetianWaterSpawnFlag2">
         <target type="Player">
@@ -9243,7 +9299,7 @@
     <flag>YPInfiniteTech</flag>
     <effects>
       <effect type="Data" amount="-1.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">zpGalleas</target>
+        <target type="ProtoUnit">zpGalleass</target>
       </effect>
     </effects>
   </tech>
@@ -9448,7 +9504,7 @@
       <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="zpNatPavisier" relativity="Absolute">
+      <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="zpNatVeniceGuard" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -9469,7 +9525,7 @@
       <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="12.00" subtype="FreeHomeCityUnit" unittype="zpNatMercPavisier" relativity="Absolute">
+      <effect type="Data" amount="12.00" subtype="FreeHomeCityUnit" unittype="zpNatMercVeniceGuard" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -9546,6 +9602,36 @@
       <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="MercStradiot" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceCarnival" type="Normal">
+    <dbid>40330</dbid>
+    <displaynameid>300830</displaynameid>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venice_carnival.png</icon>
+    <rollovertextid>300831</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="0.90" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractNativeWarrior</target>
+      </effect>
+      <effect type="Data" amount="0.90" subtype="Cost" resource="Food" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractNativeWarrior</target>
+      </effect>
+      <effect type="Data" amount="0.90" subtype="Cost" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractNativeWarrior</target>
+      </effect>
+      <effect type="Data" amount="0.90" subtype="Cost" resource="Influence" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractNativeWarrior</target>
+      </effect>
+      <effect type="Data" amount="0.90" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractNativeWarrior</target>
       </effect>
     </effects>
   </tech>
