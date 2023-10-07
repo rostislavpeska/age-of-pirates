@@ -10935,8 +10935,8 @@
     <animfile>buildings\spc\academy\zp_academy.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\buildings\spc\ossuary\spc_ossuary_icon_64x64.png</icon>
-    <portraiticon>resources\art\buildings\spc\ossuary\spc_ossuary_portrait.png</portraiticon>
+    <icon>resources\art\buildings\academy_icon.png</icon>
+    <portraiticon>resources\art\buildings\academy_portrait.png</portraiticon>
     <rollovertextid>300524</rollovertextid>
     <shortrollovertextid>300524</shortrollovertextid>
     <initialhitpoints>4500.0000</initialhitpoints>

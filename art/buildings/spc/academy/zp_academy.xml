@@ -48,12 +48,12 @@
         <logic type="Destruction">
             <p1>
                 <assetreference type="GrannyModel">
-                    <file>buildings\spc\ossuary\spc_ossuary_damaged</file>
+                    <file>buildings\spc\academy\zp_academy_damaged</file>
                 </assetreference>
             </p1>
             <p99>
                 <assetreference type="GrannyModel" shape="spc_ossuary">
-                    <file>buildings\spc\ossuary\spc_ossuary</file>
+                    <file>buildings\spc\academy\zp_academy</file>
                 </assetreference>
             </p99>
         </logic>
@@ -69,12 +69,12 @@
         <logic type="LowPoly">
             <normal>
                 <assetreference type="GrannyModel">
-                    <file>buildings\spc\ossuary\spc_ossuary_damaged</file>
+                    <file>buildings\spc\academy\zp_academy_damaged</file>
                 </assetreference>
             </normal>
             <lowpoly>
                 <assetreference type="GrannyModel">
-                    <file>buildings\spc\ossuary\spc_ossuary</file>
+                    <file>buildings\spc\academy\zp_academy</file>
                 </assetreference>
             </lowpoly>
         </logic>
@@ -87,7 +87,7 @@
             <height>14.00</height>
         </decal>
     </component>
-    <anim>Idle<component>temple</component><simskeleton><model>buildings\spc\ossuary\spc_ossuary_damaged</model></simskeleton><attach a="WaterFall" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
+    <anim>Idle<component>temple</component><simskeleton><model>buildings\spc\academy\zp_academy_damaged</model></simskeleton><attach a="WaterFall" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
     <anim>Death<component>deathModel</component><attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
 </submodel>
 
