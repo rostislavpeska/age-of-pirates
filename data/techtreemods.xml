@@ -2318,6 +2318,9 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpVenetianWagon</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCLineShip</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpConsulateMalteseFlorentians" type="Normal">
@@ -7028,12 +7031,20 @@
       <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatHoopThrower</target>
       </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatHoopThrowerProxy</target>
+      </effect>
       <effect type="SetName" proto="zpNatHoopThrower" culture="none" newname="300514">
       </effect>
       <effect type="SetName" proto="zpNatHoopThrower" culture="none" newname="300516" reqtech="ImpLegendaryNativesShadow">
       </effect>
+      <effect type="SetName" proto="zpNatHoopThrowerProxy" culture="none" newname="300514">
+      </effect>
       <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatHoopThrower</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatHoopThrowerProxy</target>
       </effect>
       <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">DEHoopThrowerBurningAttachmentStandard</target>
@@ -7070,7 +7081,15 @@
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatHoopThrower</target>
       </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatHoopThrowerProxy</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatHoopThrowerProxy</target>
+      </effect>
       <effect type="SetName" proto="zpNatHoopThrower" culture="none" newname="300515">
+      </effect>
+      <effect type="SetName" proto="zpNatHoopThrowerProxy" culture="none" newname="300515">
       </effect>
       <effect type="SetName" proto="zpNatHoopThrower" culture="none" newname="300516" reqtech="ImpLegendaryNativesShadow">
       </effect>
@@ -8475,6 +8494,9 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpPriestProxy</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpPriest</target>
+      </effect>
       <effect type="CommandAdd" tech="zpNatJesuitTank" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -8527,6 +8549,9 @@
       </effect>
       <effect type="TechStatus" status="active">zpIronTanks</effect>
       <effect type="TextOutputTechName">110130</effect>
+      <effect type="CommandAdd" tech="zpVenetianTank" page="1" column="4">
+        <target type="ProtoUnit">zpVeniceEmbassy</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpNatJesuitArmory" type="Normal">
@@ -9366,6 +9391,7 @@
       <effect type="TechStatus" status="obtainable">zpVeniceCannonArmy</effect>
       <effect type="TechStatus" status="obtainable">zpVeniceExpeditionaryFleet</effect>
       <effect type="TechStatus" status="obtainable">zpVeniceCavalry</effect>
+      <effect type="TechStatus" status="obtainable">zpVenetianTank</effect>
     </effects>
   </tech>
   <tech name="zpConsulateVeniceContarini" type="Normal">
@@ -9633,6 +9659,31 @@
       <effect type="Data" amount="0.90" subtype="TrainPoints" relativity="BasePercent">
         <target type="ProtoUnit">AbstractNativeWarrior</target>
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpVenetianTank" type="Normal">
+    <dbid>40331</dbid>
+    <displaynameid>300852</displaynameid>
+    <cost resourcetype ="Gold">1250.0000</cost>
+    <cost resourcetype ="Wood">1250.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <rollovertextid>300662</rollovertextid>
+    <icon>resources\images\icons\techs\venice_tank.png</icon>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>YPConsulateImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">zpNatJesuitTank</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpIronTank" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TextOutputTechName">110130</effect>
     </effects>
   </tech>
 

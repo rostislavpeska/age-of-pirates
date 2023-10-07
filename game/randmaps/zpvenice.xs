@@ -77,7 +77,7 @@ void main(void)
   if (cNumberNonGaiaPlayers ==4)
 		playerTiles = 18000;
   if (cNumberNonGaiaPlayers ==3)
-		playerTiles = 21000;
+		playerTiles = 22000;
   if (cNumberNonGaiaPlayers ==2)
 		playerTiles = 24000;
   if (cNumberNonGaiaPlayers ==1)
@@ -223,6 +223,8 @@ void main(void)
   int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true, 3.5);
   int avoidControllerShort=rmCreateTypeDistanceConstraint("stay away from Controller Short", "zpSPCWaterSpawnPoint", 25.0);
   int avoidControllerFar=rmCreateTypeDistanceConstraint("stay away from Controller Far", "zpSPCWaterSpawnPoint", 60.0);
+   int avoidTradeSocket=rmCreateTypeDistanceConstraint("stay away from Trade Socket", "zpSPCPortSocket", 10.0);
+   int avoidTradeSocketFar=rmCreateTypeDistanceConstraint("stay away from Trade Socket Far", "zpSPCPortSocket", 35.0);
 
 // ************************** DEFINE OBJECTS ****************************
 	
@@ -439,7 +441,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
 
    int portSite4 = rmCreateArea ("port_site4");
    rmSetAreaSize(portSite4, rmAreaTilesToFraction(400.0), rmAreaTilesToFraction(400.0));
-   rmSetAreaLocation(portSite4, 0.55+rmZTilesToFraction(18), 0.65);
+   rmSetAreaLocation(portSite4, 0.55+rmZTilesToFraction(19), 0.65);
    rmSetAreaMix(portSite4, baseMix);
    rmSetAreaCoherence(portSite4, 1);
    rmSetAreaSmoothDistance(portSite4, 15);
@@ -449,7 +451,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
 
    int portSite5 = rmCreateArea ("port_site5");
    rmSetAreaSize(portSite5, rmAreaTilesToFraction(400.0), rmAreaTilesToFraction(400.0));
-   rmSetAreaLocation(portSite5, 0.55+rmZTilesToFraction(18), 0.45);
+   rmSetAreaLocation(portSite5, 0.55+rmZTilesToFraction(19), 0.45);
    rmSetAreaMix(portSite5, baseMix);
    rmSetAreaCoherence(portSite5, 1);
    rmSetAreaSmoothDistance(portSite5, 15);
@@ -459,7 +461,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
 
    int portSite6 = rmCreateArea ("port_site6");
    rmSetAreaSize(portSite6, rmAreaTilesToFraction(400.0), rmAreaTilesToFraction(400.0));
-   rmSetAreaLocation(portSite6, 0.45-rmZTilesToFraction(16), 0.55);
+   rmSetAreaLocation(portSite6, 0.45-rmZTilesToFraction(19), 0.55);
    rmSetAreaMix(portSite6, baseMix);
    rmSetAreaCoherence(portSite6, 1);
    rmSetAreaSmoothDistance(portSite6, 15);
@@ -469,7 +471,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
 
    int portSite7 = rmCreateArea ("port_site7");
    rmSetAreaSize(portSite7, rmAreaTilesToFraction(400.0), rmAreaTilesToFraction(400.0));
-   rmSetAreaLocation(portSite7, 0.45-rmZTilesToFraction(16), 0.35);
+   rmSetAreaLocation(portSite7, 0.45-rmZTilesToFraction(19), 0.35);
    rmSetAreaMix(portSite7, baseMix);
    rmSetAreaCoherence(portSite7, 1);
    rmSetAreaSmoothDistance(portSite7, 15);
@@ -518,14 +520,14 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       int Port2ID = -1;
       Port2ID = rmCreateGrouping("venice harbour 02", "Venice_Harbour_02");
 
-      rmPlaceGroupingAtLoc(Port2ID, 0, 0.55+rmZTilesToFraction(7), 0.65, 1);
-      rmPlaceGroupingAtLoc(Port2ID, 0, 0.55+rmZTilesToFraction(7), 0.45, 1);
+      rmPlaceGroupingAtLoc(Port2ID, 0, 0.55+rmZTilesToFraction(9), 0.65, 1);
+      rmPlaceGroupingAtLoc(Port2ID, 0, 0.55+rmZTilesToFraction(9), 0.45, 1);
 
       int Port3ID = -1;
       Port3ID = rmCreateGrouping("venice harbour 03", "Venice_Harbour_03");
 
-      rmPlaceGroupingAtLoc(Port3ID, 0, 0.45-rmZTilesToFraction(6), 0.55, 1);
-      rmPlaceGroupingAtLoc(Port3ID, 0, 0.45-rmZTilesToFraction(6), 0.35, 1);
+      rmPlaceGroupingAtLoc(Port3ID, 0, 0.45-rmZTilesToFraction(9), 0.55, 1);
+      rmPlaceGroupingAtLoc(Port3ID, 0, 0.45-rmZTilesToFraction(9), 0.35, 1);
 
       
 // Text
@@ -533,7 +535,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
 
 
   int mainIslandID=rmCreateArea("italy");
-  rmSetAreaSize(mainIslandID, 0.25, 0.25);
+  rmSetAreaSize(mainIslandID, 0.23, 0.23);
   
 	rmSetAreaCoherence(mainIslandID, 0.7);
 	rmSetAreaBaseHeight(mainIslandID, 3.0);
@@ -558,7 +560,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
 	rmBuildArea(mainIslandID);
 
   int mainIslandID2=rmCreateArea("balcan");
-  rmSetAreaSize(mainIslandID2, 0.25, 0.25);
+  rmSetAreaSize(mainIslandID2, 0.23, 0.23);
   
 	rmSetAreaCoherence(mainIslandID2, 0.7);
 	rmSetAreaBaseHeight(mainIslandID2, 3.0);
@@ -996,6 +998,14 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
          ypKingsHillPlacer(0.5, 0.95, 0.00, 0);
 
 	  }
+    else{
+
+    int cemetaryID = -1;
+    int cemetaryType = rmRandInt(1, 2);
+    cemetaryID = rmCreateGrouping("cemetary", "Cemetary_0"+cemetaryType);
+    rmAddGroupingConstraint(cemetaryID, avoidImpassableLand);
+    rmPlaceGroupingAtLoc(cemetaryID, 0, 0.5, 0.95, 1);
+    }
 
 // Text
 	rmSetStatusText("",0.40);
@@ -1163,6 +1173,7 @@ else
     rmAddClosestPointConstraint(flagVsVenice2);
 		rmAddClosestPointConstraint(flagLand);
     rmAddClosestPointConstraint(flagEdgeConstraint);
+    rmAddClosestPointConstraint(avoidTradeSocketFar);
 		vector closestPoint = rmFindClosestPointVector(TCLocation, rmXFractionToMeters(1.0));
 		rmPlaceObjectDefAtLoc(waterSpawnPointID, i, rmXMetersToFraction(xsVectorGetX(closestPoint)), rmZMetersToFraction(xsVectorGetZ(closestPoint)));
 
@@ -1223,6 +1234,7 @@ else
     rmAddAreaConstraint(forest, forestConstraint);
     rmAddAreaConstraint(forest, avoidAll);
     rmAddAreaConstraint(forest, avoidTCMedium);
+    rmAddAreaConstraint(forest, avoidBonusIslandsShort);
     rmAddAreaConstraint(forest, shortAvoidImpassableLand); 
     if(rmBuildArea(forest)==false) {
       // Stop trying once we fail 3 times in a row.
@@ -1331,8 +1343,9 @@ else
   rmSetObjectDefMaxDistance(nuggetBonusHard, rmXFractionToMeters(0.05));
 	rmAddObjectDefConstraint(nuggetBonusHard, shortAvoidImpassableLand);
   rmAddObjectDefConstraint(nuggetBonusHard, avoidWater4);
+  rmAddObjectDefConstraint(nuggetBonusHard, avoidTradeSocket);
 	rmPlaceObjectDefAtLoc(nuggetBonusHard, 0, 0.5, 0.9);
-  rmPlaceObjectDefAtLoc(nuggetBonusHard, 0, 0.5, 0.9);
+
   
 	
 	// Resources that can be placed after forests
@@ -1429,7 +1442,7 @@ else
   rmAddObjectDefConstraint(whaleID, whaleLand);
   rmAddObjectDefConstraint(whaleID, avoidController);
   rmAddObjectDefConstraint(whaleID, portSiteConstraint);
-  rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, 4*cNumberNonGaiaPlayers);
+  rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, 3*cNumberNonGaiaPlayers);
   
   // Water nuggets
   
@@ -1448,12 +1461,16 @@ else
    int villageTreeID=rmCreateObjectDef("village tree");
    rmAddObjectDefItem(villageTreeID, "TreeGreatLakes", 1, 0.0);
    rmAddObjectDefConstraint(villageTreeID, ObjectAvoidTradeRouteShort);
+   rmAddObjectDefConstraint(villageTreeID, avoidWater4);
    rmPlaceObjectDefInArea(villageTreeID, 0, westIslandVillage1, 15);
    rmPlaceObjectDefInArea(villageTreeID, 0, eastIslandVillage2, 10);
    rmPlaceObjectDefInArea(villageTreeID, 0, eastIslandVillage3, 10);
    rmPlaceObjectDefInArea(villageTreeID, 0, eastIslandVillage4, 10);
    rmPlaceObjectDefInArea(villageTreeID, 0, eastIslandVillage5, 10);
    rmPlaceObjectDefInArea(villageTreeID, 0, eastIslandVillage6, 10);
+   rmPlaceObjectDefInArea(villageTreeID, 0, bonusIslandID, 6);
+   rmPlaceObjectDefInArea(villageTreeID, 0, eastMountain, 20);
+   rmPlaceObjectDefInArea(villageTreeID, 0, westMountain, 20);
     
 // ------Triggers--------//
 

@@ -70,7 +70,7 @@
       <string _locid="300069">Warships Broadside attack increased.</string>
       <string _locid="300070">Cathedral</string>
       <string _locid="300071">ZP Maltese Cathedral</string>
-      <string _locid="300072">Maltese House</string>
+      <string _locid="300072">Native Building</string>
       <string _locid="300073">ZP NAT House Maltese</string>
       <string _locid="300074">Pirate Dock</string>
       <string _locid="300075">ZP SPC Pirate Dock</string>
@@ -837,6 +837,21 @@
       <string _locid="300835">Adralic Sea</string>
       <string _locid="300836">Large naval map with two separated sea shores and a water trade route. \n\nSettlements: Venetians, Maltese, Jesuits</string>
       <string _locid="300837">Even loyality can be bought. Venetians are powerful allies. Make an alliance with them and dominate over the Adralic Sea.</string>
+      <string _locid="300838">Giove Fulminante</string>
+      <string _locid="300839">Costanza Guerriera</string>
+      <string _locid="300840">Redentor del Mondo</string>
+      <string _locid="300841">Leon Coronato</string>
+      <string _locid="300842">San Giovanni Battista</string>
+      <string _locid="300843">Sant'Antonio da Padova</string>
+      <string _locid="300844">Monton d'oro</string>
+      <string _locid="300845">Madonna della Salute</string>
+      <string _locid="300846">Venere Armata</string>
+      <string _locid="300847">San Marco grande</string>
+      <string _locid="300848">Sant'Andrea</string>
+      <string _locid="300849">Fede Guerriera</string>
+      <string _locid="300850">San Spiridion</string>
+      <string _locid="300851">Scudo Della Fede</string>
+      <string _locid="300852">Venetian Secret Engines</string>
     </language>
   </stringtable>
 </stringmods>

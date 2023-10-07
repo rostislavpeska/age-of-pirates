@@ -50,16 +50,6 @@
       <age>Age0</age>
       <tech>zpNativeMaltese</tech>
     </agetech>
-    <multipleblocktrain>
-      <building>TradingPost</building>
-      <multipleblockunit>zpSurgeonProxy</multipleblockunit>
-      <units>
-        <unit>Surgeon</unit>
-      </units>
-      <unitcounts>
-        <count>1</count>
-      </unitcounts>
-    </multipleblocktrain>
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>
@@ -186,16 +176,6 @@
       </unitcounts>
       <unitcounts>
         <count>2</count>
-      </unitcounts>
-    </multipleblocktrain>
-    <multipleblocktrain>
-      <building>zpWokouSteamer</building>
-      <multipleblockunit>zpNatHoopThrowerProxy</multipleblockunit>
-      <units>
-        <unit>zpNatHoopThrower</unit>
-      </units>
-      <unitcounts>
-        <count>1</count>
       </unitcounts>
     </multipleblocktrain>
     <visible>0</visible>
@@ -356,16 +336,6 @@
     </agetech>
     <multipleblocktrain>
       <building>TradingPost</building>
-      <multipleblockunit>zpPriestProxy</multipleblockunit>
-      <units>
-        <unit>zpPriest</unit>
-      </units>
-      <unitcounts>
-        <count>1</count>
-      </unitcounts>
-    </multipleblocktrain>
-    <multipleblocktrain>
-      <building>zpCongregation</building>
       <multipleblockunit>zpPriestProxy</multipleblockunit>
       <units>
         <unit>zpPriest</unit>

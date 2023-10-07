@@ -1246,7 +1246,7 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\units\infantry\boneguard\boneguard_age1_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\infantry\boneguard\boneguard_age1_portrait.png</portraiticon>
+    <portraiticon>resources\art\units\natives\maltese_natives.png</portraiticon>
     <rollovertextid>300072</rollovertextid>
     <shortrollovertextid>300072</shortrollovertextid>
     <initialhitpoints>1500.0000</initialhitpoints>
@@ -2491,8 +2491,12 @@
     <unitaitype>RangedCombative</unitaitype>
     <bounty>100.0000</bounty>
     <buildbounty>100.0000</buildbounty>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <trainpoints>40.0000</trainpoints>
     <maxcontained>50</maxcontained>
     <allowedage>1</allowedage>
+    <buildlimit>1</buildlimit>
     <armor type="Ranged" value="0.7500">
     </armor>
     <unittype>LogicalTypeNavalMilitary</unittype>
@@ -2583,8 +2587,8 @@
     <animfile>units\naval\battleship\spcbattleship.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\units\naval\frigate\frigate_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\naval\frigate\frigate_icon_portrait.png</portraiticon>
+    <icon>resources\art\units\naval\spc\lineship_icon.png</icon>
+    <portraiticon>resources\art\units\naval\battleship\battleship_portrait.png</portraiticon>
     <rollovertextid>300181</rollovertextid>
     <shortrollovertextid>300181</shortrollovertextid>
     <initialhitpoints>4000.0000</initialhitpoints>
@@ -2593,9 +2597,13 @@
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <bounty>250.0000</bounty>
-    <cost resourcetype="Gold">2500.0000</cost>
+    <trainpoints>70.0000</trainpoints>
+    <buildbounty>250.0000</buildbounty>
+    <cost resourcetype="Gold">900.0000</cost>
+    <cost resourcetype="Wood">900.0000</cost>
     <maxcontained>100</maxcontained>
     <allowedage>2</allowedage>
+    <buildlimit>1</buildlimit>
     <armor type="Ranged" value="0.75000">
     </armor>
     <unittype>LogicalTypeNavalMilitary</unittype>
@@ -2638,6 +2646,8 @@
     <train row="0" page="1" column="1">dePort</train>
     <train row="0" page="1" column="1">Dock</train>
     <train row="0" page="1" column="1">YPDockAsian</train>
+    <train row="0" page="1" column="2">zpDryDock</train>
+    <train row="0" page="1" column="3">zpWaterFort</train>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
@@ -2670,10 +2680,7 @@
     <protoaction>
       <name>Build</name>
       <rate type="Building">2.000000</rate>
-      <rate type="Manor">2.000000</rate>
-      <rate type="House">2.000000</rate>
-      <rate type="Church">2.000000</rate>
-      <rate type="deField">2.000000</rate>
+      <rate type="zpWaterFort">2.000000</rate>
     </protoaction>
   </unit>
   <unit id="20038" name="zpVenetianWagon">
@@ -10601,8 +10608,8 @@
 		<flag>DoNotShowOnMiniMap</flag>
 		<flag>Tracked</flag>
   </unit>
-  <unit id="2514" name="zpNatHoopThrower">
-    <dbid>3089</dbid>
+  <unit id="20111" name="zpNatHoopThrower">
+    <dbid>20111</dbid>
     <displaynameid>300643</displaynameid>
     <editornameid>300505</editornameid>
     <subciv>zpScientists</subciv>
@@ -10681,6 +10688,9 @@
     <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
     <flag>UseSharedBuildLimit</flag>
+    <sharedselectionunittypes>
+      <unittype>zpNatHoopThrowerProxy</unittype>
+    </sharedselectionunittypes>
     <sharedbuildlimitunittypes>
       <unittype>zpNatHoopThrowerProxy</unittype>
       <unittype>zpNatHoopThrower</unittype>
@@ -11154,9 +11164,8 @@
     <trainpoints>42.0000</trainpoints>
     <bounty>13.0000</bounty>
     <buildbounty>13.0000</buildbounty>
-    <buildlimit>12</buildlimit>
     <cost resourcetype="Wood">50.0000</cost>
-    <cost resourcetype="Gold">65.0000</cost>
+    <cost resourcetype="Gold">75.0000</cost>
     <allowedage>1</allowedage>
     <armor type="Ranged" value="0.3500">
     </armor>
@@ -11181,7 +11190,6 @@
     <unittype>HasBountyValue</unittype>
     <unittype>Ranged</unittype>
     <unittype>AbstractSiegeTrooper</unittype>
-    <unittype>AbstractNativeWarrior</unittype>
     <unittype>AbstractCavalryInfantry</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
     <unittype>AbstractRangedInfantry</unittype>
@@ -11201,16 +11209,19 @@
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
     <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <command page="11" column="0">Abilities</command>
     <flag>UseSharedBuildLimit</flag>
+    <sharedselectionunittypes>
+      <unittype>zpNatHoopThrower</unittype>
+    </sharedselectionunittypes>
     <sharedbuildlimitunit>zpNatHoopThrower</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
       <unittype>zpNatHoopThrowerProxy</unittype>
       <unittype>zpNatHoopThrower</unittype>
     </sharedbuildlimitunittypes>
-    <command page="10" column="1">Stop</command>
-    <command page="10" column="0">Garrison</command>
-    <command page="10" column="7">Delete</command>
-    <command page="11" column="0">Abilities</command>
     <tactics>dehoopthrower.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
@@ -11263,6 +11274,105 @@
       <damagebonus type="AbstractCoyoteMan">0.300000</damagebonus>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
       <attachprotounit>DEHoopThrowerBurningAttachmentStandard</attachprotounit>
+    </protoaction>
+    <protoaction>
+      <name>GrenadeAttackShort</name>
+      <damage>16.000000</damage>
+      <damagecap>32.000000</damagecap>
+      <damagetype>Siege</damagetype>
+      <projectile>Hoop</projectile>
+      <maxrange>10.000000</maxrange>
+      <minrange>4.000000</minrange>
+      <rof>3.000000</rof>
+      <damagearea>2.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractHeavyInfantry">1.750000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">1.250000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">1.000000</damagebonus>
+      <damagebonus type="AbstractHeavyCavalry">0.400000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">0.300000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <attachprotounit>DEHoopThrowerBurningAttachmentStandard</attachprotounit>
+    </protoaction>
+    <protoaction>
+      <name>GrenadeAttackLong</name>
+      <damage>16.000000</damage>
+      <damagecap>32.000000</damagecap>
+      <damagetype>Siege</damagetype>
+      <projectile>Hoop</projectile>
+      <maxrange>16.000000</maxrange>
+      <minrange>10.000000</minrange>
+      <rof>3.000000</rof>
+      <damagearea>2.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractHeavyInfantry">1.750000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">1.250000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">1.000000</damagebonus>
+      <damagebonus type="AbstractHeavyCavalry">0.400000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">0.300000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <attachprotounit>DEHoopThrowerBurningAttachmentStandard</attachprotounit>
+    </protoaction>
+    <protoaction>
+      <name>FlameThrowerAttack</name>
+      <damage>5.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>10.000000</maxrange>
+      <minrange>0.000000</minrange>
+      <rof>0.750000</rof>
+      <damagecap>10.000000</damagecap>
+      <damagearea>4.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <chargeaction>1</chargeaction>
+      <damagebonus type="AbstractHeavyInfantry">1.750000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">1.250000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">1.000000</damagebonus>
+      <damagebonus type="AbstractHeavyCavalry">0.400000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">0.300000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <attachprotounit>DEHoopThrowerBurningAttachmentFlameThrowerAttack</attachprotounit>
+    </protoaction>
+    <protoaction>
+      <name>RocketAttack</name>
+      <damage>22.00000</damage>
+      <damagetype>Siege</damagetype>
+      <projectile>RocketShellSmall</projectile>
+      <maxrange>22.000000</maxrange>
+      <minrange>16.000000</minrange>
+      <rof>4.000000</rof>
+      <damagecap>32.000000</damagecap>
+      <damagearea>2.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractInfantry">1.750000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">1.250000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">1.000000</damagebonus>
+      <damagebonus type="AbstractHeavyCavalry">0.400000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">0.300000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.250000</damagebonus>
+      <attachprotounit>deHoopThrowerBurningAttachmentRocketAttack</attachprotounit>
+    </protoaction>
+    <protoaction>
+      <name>RocketAttackGuardian</name>
+      <damage>22.00000</damage>
+      <damagetype>Siege</damagetype>
+      <projectile>RocketShellSmall</projectile>
+      <maxrange>22.000000</maxrange>
+      <minrange>16.000000</minrange>
+      <rof>4.000000</rof>
+      <attachprotounit>deHoopThrowerBurningAttachmentRocketAttack</attachprotounit>
+    </protoaction>
+    <protoaction>
+      <name>RocketBuildingAttack</name>
+      <damage>34.000000</damage>
+      <damagecap>68.000000</damagecap>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagetype>Siege</damagetype>
+      <projectile>RocketShellSmall</projectile>
+      <maxrange>22.000000</maxrange>
+      <minrange>14.000000</minrange>
+      <rof>4.000000</rof>
+      <attachprotounit>deHoopThrowerBurningAttachmentRocketAttack</attachprotounit>
     </protoaction>
   </unit>
   <unit id="20116" name="zpIronTankProxy">
@@ -13594,7 +13704,7 @@
 		<buildlimit>5</buildlimit>
 		<bounty>20.0000</bounty>
 		<buildbounty>20.0000</buildbounty>
-		<cost resourcetype="Gold">300.0000</cost>
+		<cost resourcetype="Gold">250.0000</cost>
     <carrycapacity resourcetype="Food">1.0000</carrycapacity>
     <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
@@ -13620,6 +13730,7 @@
 		<unittype>Unit</unittype>
 		<unittype>UnitClass</unittype>
 		<unittype>Military</unittype>
+    <unittype>AbstractBannerArmy</unittype>
     <sharedbuildlimitunittypes>
       <unittype>zpPriest</unittype>
       <unittype>zpPriestProxy</unittype>
@@ -13905,7 +14016,7 @@
     <unittype>Economic</unittype>
     <unittype>BuildingClass</unittype>
     <unittype>AbstractFarmBuilding</unittype>
-    <train row ="0" page ="0" column ="0">zpPriestProxy</train>
+    <train row ="0" page ="0" column ="0">zpPriest</train>
     <tech row="0" page="1" column="0">zpNatJesuitHeterodoxy</tech>
     <tech row="0" page="1" column="1">zpJesuitHerbs</tech>
     <tech row="0" page="1" column="3">zpJesuitGenetics</tech>
@@ -15410,7 +15521,6 @@
     <train row="0" page="0" column="4">zpNatMalteseGuard</train>
     <train row="0" page="0" column="5">zpNatConquistador</train>
     <train row="0" page="0" column="6">zpNatConquistadorMusketeer</train>
-    <train row="0" page="0" column="7">zpPriest</train>
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>DontRotateObstruction</flag>
@@ -15837,6 +15947,7 @@
     <bounty>150.0000</bounty>
     <buildingworkrate>1.0000</buildingworkrate>
     <allowedage>2</allowedage>
+    <buildlimit>1</buildlimit>
     <armor type="Siege" value="0.0000">
     </armor>
     <builderlimit>8</builderlimit>
@@ -15897,6 +16008,7 @@
     <train row="0" page="1" column="5">deMercDhow</train>
     <train row="0" page="1" column="10">zpVeniceGalley</train>
     <train row="0" page="1" column="11">zpGalleass</train>
+    <train row="0" page="1" column="12">zpSPCLineShip</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
