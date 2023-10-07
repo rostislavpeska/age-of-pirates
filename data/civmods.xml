@@ -392,26 +392,6 @@
       <age>Age0</age>
       <tech>zpNativeVenetians</tech>
     </agetech>
-     <multipleblocktrain>
-      <building>zpDryDock</building>
-      <multipleblockunit>zpVeniceGalleyProxy</multipleblockunit>
-      <units>
-        <unit>zpVeniceGalley</unit>
-      </units>
-      <unitcounts>
-        <count>1</count>
-      </unitcounts>
-    </multipleblocktrain>
-     <multipleblocktrain>
-      <building>zpDryDock</building>
-      <multipleblockunit>zpGalleassProxy</multipleblockunit>
-      <units>
-        <unit>zpGalleass</unit>
-      </units>
-      <unitcounts>
-        <count>1</count>
-      </unitcounts>
-    </multipleblocktrain>
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>

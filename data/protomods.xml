@@ -14675,7 +14675,7 @@
     <buildbounty>120.0000</buildbounty>
     <cost resourcetype="Gold">600.0000</cost>
     <cost resourcetype="Wood">100.0000</cost>
-    <allowedage>3</allowedage>
+    <allowedage>2</allowedage>
     <armor type="Ranged" value="0.7500">
     </armor>
     <unittype>LogicalTypeHealed</unittype>
@@ -15487,12 +15487,12 @@
     <portraiticon>resources\art\units\naval\spc\venice_galley_portrait.png</portraiticon>
     <rollovertextid>27711</rollovertextid>
     <shortrollovertextid>27710</shortrollovertextid>
-    <initialhitpoints>550.0000</initialhitpoints>
-    <maxhitpoints>550.0000</maxhitpoints>
+    <initialhitpoints>650.0000</initialhitpoints>
+    <maxhitpoints>650.0000</maxhitpoints>
     <los>26.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
-    <trainpoints>120.0000</trainpoints>
+    <trainpoints>40.0000</trainpoints>
     <buildlimit>3</buildlimit>
     <bounty>40.0000</bounty>
     <buildbounty>40.0000</buildbounty>
@@ -15506,9 +15506,13 @@
     </decay>
     <armor type="Ranged" value="0.6000">
     </armor>
+    <sharedselectionunittypes>
+      <unittype>zpVeniceGalleyAutomatic</unittype>
+    </sharedselectionunittypes>
     <sharedbuildlimitunittypes>
       <unittype>zpVeniceGalley</unittype>
       <unittype>zpVeniceGalleyProxy</unittype>
+      <unittype>zpVeniceGalleyAutomatic</unittype>
     </sharedbuildlimitunittypes>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
@@ -15659,6 +15663,7 @@
     <sharedbuildlimitunittypes>
       <unittype>zpVeniceGalley</unittype>
       <unittype>zpVeniceGalleyProxy</unittype>
+      <unittype>zpVeniceGalleyAutomatic</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -15890,8 +15895,8 @@
     <train row="0" page="1" column="2">deCannonBoat</train>
     <train row="0" page="1" column="5">deMercXebec</train>
     <train row="0" page="1" column="5">deMercDhow</train>
-    <train row="0" page="1" column="10">zpVeniceGalleyProxy</train>
-    <train row="0" page="1" column="11">zpGalleassProxy</train>
+    <train row="0" page="1" column="10">zpVeniceGalley</train>
+    <train row="0" page="1" column="11">zpGalleass</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -16851,6 +16856,126 @@
 		<flag>DoNotShowOnMiniMap</flag>
 		<flag>Tracked</flag>
 	</unit>
+  <unit id="20169" name="zpVeniceGalleyAutomatic">
+    <dbid>20169</dbid>
+    <displaynameid>300744</displaynameid>
+    <editornameid>300745</editornameid>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>11.0000</maxvelocity>
+    <maxrunvelocity>13.0000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <turnrate>3.0000</turnrate>
+    <animfile>units\naval\galley\venice_galley.xml</animfile>
+    <civflagoverride>objects\flags\venetian</civflagoverride>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\units\naval\spc\venice_galley_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\venice_galley_portrait.png</portraiticon>
+    <rollovertextid>27711</rollovertextid>
+    <shortrollovertextid>27710</shortrollovertextid>
+    <initialhitpoints>650.0000</initialhitpoints>
+    <maxhitpoints>650.0000</maxhitpoints>
+    <los>26.0000</los>
+    <projectileprotounit>Cannonball</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>100.0000</trainpoints>
+    <bounty>40.0000</bounty>
+    <buildbounty>40.0000</buildbounty>
+    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <maxcontained>50</maxcontained>
+    <allowedage>1</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <armor type="Ranged" value="0.6000">
+    </armor>
+    <sharedselectionunittypes>
+      <unittype>zpVeniceGalley</unittype>
+    </sharedselectionunittypes>
+    <sharedbuildlimitunit>zpVeniceGalley</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpVeniceGalley</unittype>
+      <unittype>zpVeniceGalleyAutomatic</unittype>
+      <unittype>zpVeniceGalleyProxy</unittype>
+    </sharedbuildlimitunittypes>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>AbstractFishingBoat</unittype>
+    <unittype>AbstractCountAsGatherer</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Transport</unittype>
+    <unittype>Ship</unittype>
+    <flag>TieToWaterSurface</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>caravel.tactics</tactics>
+    <protoaction>
+      <name>BroadsideAttack</name>
+      <damage>45.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>20.000000</maxrange>
+      <rof>0.050000</rof>
+      <damagecap>50.000000</damagecap>
+      <damagebonus type="Ship">2.000000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>Gather</name>
+      <rate type="AbstractWhale">0.500000</rate>
+      <rate type="AbstractFish">0.670000</rate>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>110.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>20.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>140.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+  </unit>
 
     <!--TEST-->
   

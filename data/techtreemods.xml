@@ -9184,6 +9184,12 @@
       <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpVeniceGalley</target>
       </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpVeniceGalleyAutomatic</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpVeniceGalleyAutomatic</target>
+      </effect>
       <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpVenetianBombard</target>
       </effect>
@@ -9209,6 +9215,12 @@
         <target type="ProtoUnit">zpGalleassProxy</target>
       </effect>
       <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpVeniceGalley</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpGalleass</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpVeniceGalley</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpVenetianExpansion</effect>
@@ -9314,9 +9326,6 @@
     <rollovertextid>300769</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
-    <prereqs>
-      <techstatus status="Active">Industrialuze</techstatus>
-    </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpDryDockWagon" relativity="Absolute">
         <target type="Player">
@@ -9399,9 +9408,6 @@
     <rollovertextid>300785</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
-    <prereqs>
-      <techstatus status="Active">Industrialuze</techstatus>
-    </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpWaterFortBuilder" relativity="Absolute">
         <target type="Player">
@@ -9450,9 +9456,6 @@
     <icon>resources\images\icons\techs\lighthouse_keeper.png</icon>
     <rollovertextid>300790</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
-    <prereqs>
-      <techstatus status="Active">Industrialize</techstatus>
-    </prereqs>
     <effects>
       <effect type="Data" action="AntiShipAttack" amount="5.00" subtype="MaximumRange" relativity="Absolute">
         <target type="ProtoUnit">zpWaterFort</target>
@@ -9473,9 +9476,6 @@
     <rollovertextid>300812</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
-    <prereqs>
-      <techstatus status="Active">Industrialuze</techstatus>
-    </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpVeniceEmbassyWagon" relativity="Absolute">
         <target type="Player">
@@ -9522,7 +9522,7 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>CheckLandHCGatherPoint</flag>
     <prereqs>
-      <techstatus status="Active">Colonialize</techstatus>
+      <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
       <effect type="Data" amount="12.00" subtype="FreeHomeCityUnit" unittype="zpNatMercVeniceGuard" relativity="Absolute">

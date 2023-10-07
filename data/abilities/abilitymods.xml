@@ -69,6 +69,9 @@
   <zpvenicegalley>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpvenicegalley>
+  <zpvenicegalleyautomatic>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpvenicegalleyautomatic>
   <zpgalleass>
     <ability>dePowerRoundelPierceAttack<rof>60</rof><sharedcooldown>true</sharedcooldown><castonself>true</castonself></ability>
     <ability>dePowerShunt<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>

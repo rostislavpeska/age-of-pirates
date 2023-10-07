@@ -53,7 +53,7 @@
         <name stringid="43299">SpawnGalley</name>
         <active>1</active>
         <type>Maintain</type>
-        <rate type="zpVeniceGalley">1.0 </rate>
+        <rate type="zpVeniceGalleyAutomatic">1.0 </rate>
         <persistent>1</persistent>
     </action>
     
