@@ -2070,32 +2070,24 @@ rmSetTriggerConditionParamInt("PlayerID",k);
 rmSetTriggerConditionParamInt("TechID",586);
 rmSetTriggerConditionParamInt("Status",2);
 
-int pirateCaptain=-1;
-pirateCaptain = rmRandInt(1,3);
+int renegadeCaptain=-1;
+renegadeCaptain = rmRandInt(1,3);
 
-if (pirateCaptain==1)
+if (renegadeCaptain==1)
    {
       rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistkhora"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpAIAirshipSetup"); //operator
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistNemo"); //operator
       rmSetTriggerEffectParamInt("Status",2);
    }
-if (pirateCaptain==2)
+if (renegadeCaptain==2)
    {
       rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistkhora"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpAIAirshipSetup"); //operator
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistValentine"); //operator
       rmSetTriggerEffectParamInt("Status",2);
    }
-if (pirateCaptain==3)
+if (renegadeCaptain==3)
    {
       rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2155,6 +2147,7 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
 
 // Testing
 

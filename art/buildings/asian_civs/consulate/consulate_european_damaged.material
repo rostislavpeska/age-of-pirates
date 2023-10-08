@@ -1,0 +1,98 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\european_consulate_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\european_consulate_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\plantation\med\age2\textures\med_plantation_age2_mata_masks">
+      </texture>
+      <texture name="Details" override="buildings\asian_civs\consulate\textures\european_consulate_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="maty">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="math">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mati">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

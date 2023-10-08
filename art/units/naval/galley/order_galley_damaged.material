@@ -1,0 +1,30 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\galley\textures\order_galley_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\galley\textures\order_galley_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\galley\textures\order_galley_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\galley\textures\order_galley_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\galley\textures\order_galley_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\galley\textures\galley_matB_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\galley\textures\galley_matB_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\galley\textures\order_galley_matb_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

@@ -63,6 +63,7 @@ void main(void)
    int classPlayer=rmDefineClass("player");
    int classIsland=rmDefineClass("island");
    int classBonusIsland=rmDefineClass("bonusIsland");
+   int classDesertIsland=rmDefineClass("desertIsland");
    int classTeamIsland=rmDefineClass("teamIsland");
    int classPortSite=rmDefineClass("portSite");
    int westIslandClass=rmDefineClass("westIsland");
@@ -120,6 +121,7 @@ void main(void)
 
    // Bonus Area Constraints
    int avoidBonusIslands=rmCreateClassDistanceConstraint("stuff avoids bonus islands", classBonusIsland, 30.0);
+   int avoidDesertIslands=rmCreateClassDistanceConstraint("stuff avoids desert islands", classDesertIsland, 30.0);
    int avoidTeamIslands=rmCreateClassDistanceConstraint("stuff avoids team islands", classTeamIsland, 30.0);
    int villageEdgeConstraint = rmCreatePieConstraint("willabe awlaay from edge of map", 0.5, 0.5, rmGetMapXSize()-200, rmGetMapXSize()-50, 0, 0, 0);
    int avoidMountains=rmCreateClassDistanceConstraint("stuff avoids mountains", classMountains, 7.0);
@@ -364,7 +366,7 @@ rmSetAreaMaxBlobs(bonusIslandSouth, 12);
 rmSetAreaMinBlobDistance(bonusIslandSouth, 8.0);
 rmSetAreaMaxBlobDistance(bonusIslandSouth, 10.0);
 rmSetAreaSmoothDistance(bonusIslandSouth, 15);
-rmSetAreaMix(bonusIslandSouth, "africa desert");
+rmSetAreaMix(bonusIslandSouth, "africa desert sand");
 rmSetAreaBaseHeight(bonusIslandSouth, 2.2);
 rmAddAreaConstraint(bonusIslandSouth, islandConstraint);
 rmAddAreaConstraint(bonusIslandSouth, islandAvoidTradeRouteShort); 
@@ -374,6 +376,7 @@ rmSetAreaElevationPersistence(bonusIslandSouth, 0.2);
 rmSetAreaElevationNoiseBias(bonusIslandSouth, 1);
 rmAddAreaToClass(bonusIslandSouth, classIsland);
 rmAddAreaToClass(bonusIslandSouth, classBonusIsland);
+rmAddAreaToClass(bonusIslandSouth, classDesertIsland);
 
 /*int pirateSite = rmCreateArea ("pirate site");
    rmSetAreaSize(pirateSite, rmAreaTilesToFraction(700.0), rmAreaTilesToFraction(700.0));
@@ -629,7 +632,7 @@ rmSetAreaElevationNoiseBias(eastIslandCliffs, 1);*/
       }
 
       // Pirate Village 2
-      if (cNumberNonGaiaPlayers >= 6){
+      if (cNumberNonGaiaPlayers >= 4){
          if (subCiv2 == rmGetCivID("natpirates"))
          {  
             int piratesVillageID2 = -1;
@@ -1129,7 +1132,7 @@ rmClearClosestPointConstraints();
    } 
 
 	  int southmineID = rmCreateObjectDef("bonus mine "+i);
-	  rmAddObjectDefItem(southmineID, "mineSalt", 1, 0.0);
+	  rmAddObjectDefItem(southmineID, "deShipRuins", 1, 0.0);
       rmSetObjectDefMinDistance(southmineID, 0.0);
       rmSetObjectDefMaxDistance(southmineID, rmXFractionToMeters(0.45));
 	  rmAddObjectDefConstraint(southmineID, avoidCoin);
@@ -1144,7 +1147,7 @@ rmClearClosestPointConstraints();
 
 // FORESTS
  int forestTreeID = 0;
-  int numTries=10*cNumberNonGaiaPlayers;
+  int numTries=8*cNumberNonGaiaPlayers;
   int failCount=0;
   for (i=0; <numTries) {   
     int forest=rmCreateArea("forest "+i);
@@ -1164,6 +1167,7 @@ rmClearClosestPointConstraints();
     rmAddAreaConstraint(forest, forestConstraint);
     rmAddAreaConstraint(forest, avoidAll);
     rmAddAreaConstraint(forest, avoidTCMedium);
+    rmAddAreaConstraint(forest, avoidDesertIslands);
     rmAddAreaConstraint(forest, avoidMountains);
     rmAddAreaConstraint(forest, shortAvoidImpassableLand);
     rmAddAreaConstraint(forest, ObjectAvoidTradeRouteShort);
@@ -1178,6 +1182,41 @@ rmClearClosestPointConstraints();
    else
          failCount=0; 
    } 
+
+  for (i=0; <numTries/4) {   
+    int forest2=rmCreateArea("forest2 "+i);
+    rmSetAreaWarnFailure(forest2, false);
+    rmSetAreaSize(forest2, rmAreaTilesToFraction(150), rmAreaTilesToFraction(400));
+    rmSetAreaForestType(forest2, "Af Tassili Forest");
+    rmSetAreaForestDensity(forest2, 0.6);
+    rmSetAreaForestClumpiness(forest2, 0.4);
+    rmSetAreaForestUnderbrush(forest2, 0.0);
+    rmSetAreaMinBlobs(forest2, 1);
+    rmSetAreaMaxBlobs(forest2, 5);
+    rmSetAreaMinBlobDistance(forest2, 16.0);
+    rmSetAreaMaxBlobDistance(forest2, 40.0);
+    rmSetAreaCoherence(forest2, 0.4);
+    rmSetAreaSmoothDistance(forest2, 10);
+    rmAddAreaToClass(forest2, rmClassID("classForest")); 
+    rmAddAreaConstraint(forest2, forestConstraint);
+    rmAddAreaConstraint(forest2, avoidAll);
+    rmAddAreaConstraint(forest2, avoidTCMedium);
+    rmAddAreaConstraint(forest2, bonusIslandSouthConstraint);
+    rmAddAreaConstraint(forest2, avoidMountains);
+    rmAddAreaConstraint(forest2, shortAvoidImpassableLand);
+    rmAddAreaConstraint(forest2, ObjectAvoidTradeRouteShort);
+    if(rmBuildArea(forest2)==false) {
+      // Stop trying once we fail 3 times in a row.
+      failCount++;
+      
+      if(failCount==5)
+        break;
+    }
+
+   else
+         failCount=0; 
+   } 
+
 
    // Text
 	rmSetStatusText("",0.70);
@@ -1307,10 +1346,23 @@ rmClearClosestPointConstraints();
    rmSetObjectDefMaxDistance(randomTreeID, rmXFractionToMeters(0.5));
    rmAddObjectDefConstraint(randomTreeID, avoidImpassableLand);
    rmAddObjectDefConstraint(randomTreeID, avoidMountains);
+   rmAddObjectDefConstraint(randomTreeID, avoidDesertIslands);
    rmAddObjectDefConstraint(randomTreeID, avoidAll); 
    rmAddObjectDefConstraint(randomTreeID, ObjectAvoidTradeRouteShort);
 
-   rmPlaceObjectDefAtLoc(randomTreeID, 0, 0.5, 0.5, 15*cNumberNonGaiaPlayers);
+   rmPlaceObjectDefAtLoc(randomTreeID, 0, 0.5, 0.5, 13*cNumberNonGaiaPlayers);
+
+   int randomTree2ID=rmCreateObjectDef("random tree 2");
+   rmAddObjectDefItem(randomTree2ID, "deTreeSaharanCypress", 1, 0.0);
+   rmSetObjectDefMinDistance(randomTree2ID, 0.0);
+   rmSetObjectDefMaxDistance(randomTree2ID, rmXFractionToMeters(0.5));
+   rmAddObjectDefConstraint(randomTree2ID, avoidImpassableLand);
+   rmAddObjectDefConstraint(randomTree2ID, avoidMountains);
+   rmAddObjectDefConstraint(randomTree2ID, bonusIslandSouthConstraint);
+   rmAddObjectDefConstraint(randomTree2ID, avoidAll); 
+   rmAddObjectDefConstraint(randomTree2ID, ObjectAvoidTradeRouteShort);
+
+   rmPlaceObjectDefAtLoc(randomTree2ID, 0, 0.5, 0.5, 2*cNumberNonGaiaPlayers);
 
     // VILLAGE TREES
    int villageTreeID=rmCreateObjectDef("village tree");
@@ -1523,7 +1575,7 @@ rmCreateTrigger("TrainPrivateer1ON Plr"+k);
 rmCreateTrigger("TrainPrivateer1OFF Plr"+k);
 rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
 
-   if (cNumberNonGaiaPlayers >= 6){
+   if (cNumberNonGaiaPlayers >= 4){
    rmCreateTrigger("TrainPrivateer2ON Plr"+k);
    rmCreateTrigger("TrainPrivateer2OFF Plr"+k);
    rmCreateTrigger("TrainPrivateer2TIME Plr"+k);
@@ -1638,7 +1690,7 @@ rmCreateTrigger("GraceTrain1OFFPlr"+k);
 rmCreateTrigger("CaesarTrain1ONPlr"+k);
 rmCreateTrigger("CaesarTrain1OFFPlr"+k);
 
-   if (cNumberNonGaiaPlayers >= 6){
+   if (cNumberNonGaiaPlayers >= 4){
    rmCreateTrigger("UniqueShip2TIMEPlr"+k);
 
    rmCreateTrigger("BlackbTrain2ONPlr"+k);
@@ -1888,7 +1940,7 @@ rmSetTriggerEffectParam("SrcObject","9");
 rmSetTriggerEffectParamInt("SrcPlayer",0);
 rmSetTriggerEffectParamInt("TrgPlayer",k);
 rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag1");
-rmSetTriggerEffectParamInt("Dist",100);
+rmSetTriggerEffectParamInt("Dist",150);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1off_Player"+k));
 rmAddTriggerEffect("Fire Event");
@@ -1917,7 +1969,7 @@ rmSetTriggerEffectParam("SrcObject","9");
 rmSetTriggerEffectParamInt("SrcPlayer",k);
 rmSetTriggerEffectParamInt("TrgPlayer",0);
 rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag1");
-rmSetTriggerEffectParamInt("Dist",100);
+rmSetTriggerEffectParamInt("Dist",150);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1on_Player"+k));
 rmAddTriggerEffect("Disable Trigger");
@@ -1934,7 +1986,7 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
 
-if (cNumberNonGaiaPlayers >= 6){
+if (cNumberNonGaiaPlayers >= 4){
    for (k=1; <= cNumberNonGaiaPlayers) {
    rmCreateTrigger("Pirates2on Player"+k);
    rmCreateTrigger("Pirates2off Player"+k);
@@ -1952,7 +2004,7 @@ if (cNumberNonGaiaPlayers >= 6){
    rmSetTriggerEffectParamInt("SrcPlayer",0);
    rmSetTriggerEffectParamInt("TrgPlayer",k);
    rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag2");
-   rmSetTriggerEffectParamInt("Dist",100);
+   rmSetTriggerEffectParamInt("Dist",150);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates2off_Player"+k));
    rmAddTriggerEffect("Fire Event");
@@ -1981,7 +2033,7 @@ if (cNumberNonGaiaPlayers >= 6){
    rmSetTriggerEffectParamInt("SrcPlayer",k);
    rmSetTriggerEffectParamInt("TrgPlayer",0);
    rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag2");
-   rmSetTriggerEffectParamInt("Dist",100);
+   rmSetTriggerEffectParamInt("Dist",150);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates2on_Player"+k));
    rmAddTriggerEffect("Disable Trigger");

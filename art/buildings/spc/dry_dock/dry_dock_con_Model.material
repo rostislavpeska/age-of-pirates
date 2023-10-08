@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\spc\dry_dock\textures\spc_dry_dock_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\spc\dry_dock\textures\spc_dry_dock_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\spc\dry_dock\textures\spc_dry_dock_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\spc\dry_dock\textures\debris01_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\spc\dry_dock\textures\debris01_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\spc\dry_dock\textures\debris01_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

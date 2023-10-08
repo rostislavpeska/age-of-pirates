@@ -1,0 +1,38 @@
+<material>
+  <submaterial name="matA">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="textures\construction\scaffolding\scaffolding_BaseColor">
+      </texture>
+      <texture name="Normals" override="textures\construction\scaffolding\scaffolding_Normals">
+      </texture>
+      <texture name="Masks" override="textures\construction\scaffolding\scaffolding_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matC">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="textures\construction\props_colony\props_colony_BaseColor">
+      </texture>
+      <texture name="Normals" override="textures\construction\props_colony\props_colony_Normals">
+      </texture>
+      <texture name="Masks" override="textures\construction\props_colony\props_colony_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matB">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="textures\construction\med_house_age2_con\med_house_age2_con_BaseColor">
+      </texture>
+      <texture name="Normals" override="textures\construction\med_house_age2_con\med_house_age2_con_Normals">
+      </texture>
+      <texture name="Masks" override="textures\construction\med_house_age2_con\med_house_age2_con_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

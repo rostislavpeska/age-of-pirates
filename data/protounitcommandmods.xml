@@ -119,37 +119,6 @@
     </usemultiple>
   </protounitcommand>
   <protounitcommand>
-    <name>zpTheBlackFlag</name>
-    <command>void researchByID (4193, 1); void researchByID (4193, 2); void researchByID (4193, 3); void researchByID (4193, 4); void researchByID (4193, 5); void researchByID (4193, 6); void researchByID (4193, 7); void researchByID (4193, 8);</command>
-    <icon>resources\images\icons\techs\nat_blackflag.png</icon>
-    <disabledicon>resources\images\icons\command\tactic_monastery_coin_off.png</disabledicon>
-    <rollovertextid>300019</rollovertextid>
-    <subciv>SPCPirates</subciv>
-    <usemultiple>
-    </usemultiple>
-  </protounitcommand>
-  <protounitcommand>
-    <name>zpEconomyTresourcesPGold</name>
-    <icon>resources\images\icons\command\factory_produce_coin_off.png</icon>
-    <activeicon>resources\images\icons\command\factory_produce_coin_on.png</activeicon>
-    <disabledicon>resources\images\icons\command\factory_produce_coin_off.png</disabledicon>
-    <rollovertextid>29582</rollovertextid>
-    <activerollovertextid>29585</activerollovertextid>
-    <command>unitSetTactic(1, "Normal")</command>
-    <subciv>Miners</subciv>
-  </protounitcommand>
-  <protounitcommand>
-    <name>zpEconomyTPFood</name>
-    <icon>resources\images\icons\command\factory_produce_food_off.png</icon>
-    <activeicon>resources\images\icons\command\factory_produce_food_on.png</activeicon>
-    <disabledicon>resources\images\icons\command\factory_produce_food_off.png</disabledicon>
-    <rollovertextid>29582</rollovertextid>
-    <activerollovertextid>29585</activerollovertextid>
-    <command>unitSetTactic("Food")</command>
-    <subciv>Miners</subciv>
-  </protounitcommand>
-
-  <protounitcommand>
     <name>CongregationCoin</name>
     <icon>resources\images\icons\command\tactic_rice_paddy_coin_off.png</icon>
     <activeicon>resources\images\icons\command\tactic_rice_paddy_coin_on.png</activeicon>
@@ -175,6 +144,63 @@
     <rollovertextid>300670</rollovertextid>
     <activerollovertextid>300673</activerollovertextid>
     <command>unitSetTactic("ConXP")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>TacticTraining</name>
+    <icon>resources\images\icons\command\drydock\drydock_production.png</icon>
+    <activeicon>resources\images\icons\command\drydock\drydock_production_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\drydock\drydock_production.png</disabledicon>
+    <rollovertextid>300803</rollovertextid>
+    <activerollovertextid>300802</activerollovertextid>
+    <command>unitSetTactic("TacticTraining")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticHeal</name>
+    <icon>resources\images\icons\command\drydock\drydock_repair.png</icon>
+    <activeicon>resources\images\icons\command\drydock\drydock_repair_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\drydock\drydock_repair.png</disabledicon>
+    <rollovertextid>300805</rollovertextid>
+    <activerollovertextid>300804</activerollovertextid>
+    <command>unitSetTactic("TacticHeal")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticSpawnGalley</name>
+    <icon>resources\images\icons\command\drydock\drydock_galleys.png</icon>
+    <activeicon>resources\images\icons\command\drydock\drydock_galleys_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\drydock\drydock_galleys.png</disabledicon>
+    <rollovertextid>300807</rollovertextid>
+    <activerollovertextid>300806</activerollovertextid>
+    <command>unitSetTactic("TacticSpawnGalley")</command>
+  </protounitcommand>
+
+  <protounitcommand>
+    <name>zpVeniceShipment</name>
+    <command>researchByID(cTechzpNatVeteranVenetians, 252, 1)</command>
+    <icon>resources\images\icons\techs\venetian_hc\venice_galley.png</icon>
+    <disabledicon>resources\images\icons\techs\venetian_hc\venice_galley_inactive.png</disabledicon>
+    <rollovertextid>300019</rollovertextid>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpEconomyTresourcesPGold</name>
+    <icon>resources\images\icons\command\factory_produce_coin_off.png</icon>
+    <activeicon>resources\images\icons\command\factory_produce_coin_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\factory_produce_coin_off.png</disabledicon>
+    <rollovertextid>29582</rollovertextid>
+    <activerollovertextid>29585</activerollovertextid>
+    <command>unitSetTactic(1, "Normal")</command>
+    <subciv>Miners</subciv>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpEconomyTPFood</name>
+    <icon>resources\images\icons\command\factory_produce_food_off.png</icon>
+    <activeicon>resources\images\icons\command\factory_produce_food_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\factory_produce_food_off.png</disabledicon>
+    <rollovertextid>29582</rollovertextid>
+    <activerollovertextid>29585</activerollovertextid>
+    <command>unitSetTactic("Food")</command>
+    <subciv>Miners</subciv>
   </protounitcommand>
 
 <!--

@@ -1246,9 +1246,8 @@ rmClearClosestPointConstraints();
   
 	
 	// Resources that can be placed after forests
-  if (cNumberNonGaiaPlayers > 2)
-  {
-    int food1ID=rmCreateObjectDef("huntable1");
+
+  int food1ID=rmCreateObjectDef("huntable1");
 	rmAddObjectDefItem(food1ID, huntable1, rmRandInt(8,10), 6.0);
 	rmSetObjectDefCreateHerd(food1ID, true);
 	rmSetObjectDefMinDistance(food1ID, 0.0);
@@ -1262,7 +1261,7 @@ rmClearClosestPointConstraints();
   rmAddObjectDefConstraint(food1ID, shortAvoidImportantItem);
   
   int food2ID=rmCreateObjectDef("huntable2");
-	rmAddObjectDefItem(food2ID, huntable2, rmRandInt(2,3), 6.0);
+	rmAddObjectDefItem(food2ID, huntable1, rmRandInt(8,10), 6.0);
 	rmSetObjectDefCreateHerd(food2ID, true);
 	rmSetObjectDefMinDistance(food2ID, 0.0);
 	rmSetObjectDefMaxDistance(food2ID, rmXFractionToMeters(0.45));
@@ -1276,9 +1275,7 @@ rmClearClosestPointConstraints();
 
     rmPlaceObjectDefAtLoc(food1ID, 0, 0.5, 0.5, 2.5*cNumberNonGaiaPlayers);
     rmPlaceObjectDefAtLoc(food2ID, 0, 0.5, 0.5, 3.0*cNumberNonGaiaPlayers);
-  }
-  else
-  {
+
     //1v1 hunts
 
    /* int deerID=rmCreateObjectDef("ibex herd");
@@ -1296,28 +1293,26 @@ rmClearClosestPointConstraints();
    rmPlaceObjectDefInArea(deerID, 0, westIsland, cNumberNonGaiaPlayers);*/
     
     int mapElephants = rmCreateObjectDef("mapElephants");
-    rmAddObjectDefItem(mapElephants, "ypWildElephant", 4, 5.0);
+    rmAddObjectDefItem(mapElephants, huntable2, 1+(cNumberNonGaiaPlayers/2), 6.0);
     rmSetObjectDefCreateHerd(mapElephants, true);
     rmSetObjectDefMinDistance(mapElephants, 0);
-    rmSetObjectDefMaxDistance(mapElephants, 15);
-    rmAddObjectDefConstraint(mapElephants, avoidSocket2);
+    rmSetObjectDefMaxDistance(mapElephants, 35.0);
+    rmAddObjectDefConstraint(mapElephants, avoidImpassableLand);
+    rmAddObjectDefConstraint(mapElephants, avoidImportantItem);	
+    rmAddObjectDefConstraint(mapElephants, avoidTownCenterFar);	
     rmAddObjectDefConstraint(mapElephants, forestConstraintShort);	
-    rmAddObjectDefConstraint(mapElephants, avoidHunt3);
-    rmAddObjectDefConstraint(mapElephants, avoidAll);       
-    rmAddObjectDefConstraint(mapElephants, circleConstraint2);  
-    rmAddObjectDefConstraint(mapElephants, avoidBonusIslands); 
-    rmAddObjectDefConstraint(mapElephants, avoidWater5);  
+
     //left side
         //elifents
-    rmPlaceObjectDefAtLoc(mapElephants, 0, 0.2, 0.6, 1);
-    rmPlaceObjectDefAtLoc(mapElephants, 0, 0.4, 0.8, 1);
+    rmPlaceObjectDefAtLoc(mapElephants, 0, 0.15, 0.4, 1);
+    rmPlaceObjectDefAtLoc(mapElephants, 0, 0.3, 0.8, 1);
 
     //right side
         //elifents
-    rmPlaceObjectDefAtLoc(mapElephants, 0, 0.8, 0.6, 1);
-    rmPlaceObjectDefAtLoc(mapElephants, 0, 0.6, 0.8, 1);
+    rmPlaceObjectDefAtLoc(mapElephants, 0, 0.85, 0.4, 1);
+    rmPlaceObjectDefAtLoc(mapElephants, 0, 0.7, 0.8, 1);
 
-  }
+
 	// Text
 	rmSetStatusText("",0.90);
     

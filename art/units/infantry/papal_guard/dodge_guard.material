@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\infantry\papal_guard\textures\dodgeguard_mata_Basecolor">
+      </texture>
+      <texture name="Normals" override="units\infantry\papal_guard\textures\papalguard_mata_Normal">
+      </texture>
+      <texture name="Masks" override="units\infantry\papal_guard\textures\papalguard_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\infantry\papal_guard\textures\papalguard_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

@@ -1,0 +1,7 @@
+<animfile>
+    <component>
+        statues
+        <assetreference type="GrannyModel"><file>buildings\native_settlement\venice\venice_mooring_Model</file></assetreference>
+    </component>
+    <anim>Idle<component>statues</component></anim>
+</animfile>

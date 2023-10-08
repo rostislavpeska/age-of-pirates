@@ -1,0 +1,9 @@
+<tactics>
+  <action>
+    <dbaction>BoatManager</dbaction>
+    <name stringid="69156">BoatManager</name>
+    <type>BoatManager</type>
+    <persistent>1</persistent>
+  </action>
+  <tactic>Normal<action>BoatManager</action></tactic>
+</tactics>

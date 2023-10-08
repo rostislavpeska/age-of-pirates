@@ -1,0 +1,50 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\spc\academy\textures\zp_academy_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\spc\ossuary\textures\spc_ossuary_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\spc\ossuary\textures\spc_ossuary_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\props_colony\props_colony_damaged\textures\PalmLeaves_Mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\props_colony\props_colony_damaged\textures\PalmLeaves_Mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\props_colony\props_colony_damaged\textures\PalmLeaves_Mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="maty">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

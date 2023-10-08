@@ -1,0 +1,246 @@
+<tactics>
+  <action>
+    <name stringid="38134">HandAttack</name>
+    <type>HandAttack</type>
+    <maxrange>1.75</maxrange>
+    <rate type="Unit">1.0 </rate>
+    <attackaction>1</attackaction>
+    <handlogic>1</handlogic>
+    <anim>Charge_attack</anim>
+    <idleanim>Charge_idle</idleanim>
+    <impacteffect>effects\impacts\melee</impacteffect>
+  </action>
+  <action>
+    <name stringid="38118">BuildingAttack</name>
+    <type>Attack</type>
+    <rangedlogic>1</rangedlogic>
+    <maxrange>6</maxrange>
+    <rate type="LogicalTypeShipsAndBuildings">1.0 </rate>
+    <attackaction>1</attackaction>
+    <speedboost>1</speedboost>
+    <anim>Raze_attack</anim>
+    <idleanim>Raze_idle</idleanim>
+    <impacteffect>effects\impacts\torch</impacteffect>
+    <projectile>TorchProjectile</projectile>
+  </action>
+  <action>
+    <name stringid="69155">Heal</name>
+    <type>Heal</type>
+    <maxrange>12</maxrange>
+    <rate type="LogicalTypeHealed">50.0 </rate>
+    <anim>Heal</anim>
+  </action>
+  <action>
+    <name stringid="300774">PoisonBomb</name>
+    <type>Attack</type>
+    <rangedlogic>1</rangedlogic>
+    <maxrange>6</maxrange>
+    <rate type="LogicalTypeGarrisonInShips">1.0 </rate>
+    <attackaction>1</attackaction>
+    <speedboost>1</speedboost>
+    <anim>Volley_standing_attack</anim>
+    <idleanim>Volley_standing_idle</idleanim>
+    <projectile>Grenade</projectile>
+    <attachprotounit>zpMustardGasWeak</attachprotounit>
+    <impacteffect>effects\impacts\mustardgas</impacteffect>
+  </action>
+  <action>
+    <name stringid="46491">Stealth</name>
+    <type>Stealth</type>
+    <maxrange>25.0</maxrange>
+    <persistent>1</persistent>
+  </action>
+
+  <tactic>
+      Melee
+      <action priority="100">BuildingAttack</action>
+      <action priority="75">HandAttack</action>
+      <action>Heal</action>
+      <action priority="1">PoisonBomb</action>   
+      <speedmodifier>1.0</speedmodifier>
+      <attacktype>LogicalTypeHandUnitsAttack</attacktype>
+      <attackresponsetype>LogicalTypeHandUnitsAttack</attackresponsetype>
+      <runaway>1</runaway>
+      <autoretarget>1</autoretarget>
+      <idleanim>Charge_idle</idleanim>
+      <deathanim>Death_by_melee</deathanim>
+      <walkanim>Charge_walk</walkanim>
+      <joganim>Charge_jog</joganim>
+      <runanim>Charge_run</runanim>
+      <transition>
+        <tactic>Cover</tactic>
+        <length>0</length>
+        <exit>1</exit>
+      </transition>
+      <transition>
+        <tactic>StandGround</tactic>
+        <length>0</length>
+        <exit>1</exit>
+      </transition>
+      <transition>
+        <tactic>Defend</tactic>
+        <length>0</length>
+        <exit>1</exit>
+      </transition>
+      <transition>
+        <tactic>Stealth</tactic>
+        <length>2</length>
+        <exit>1</exit>
+      </transition>
+  </tactic>
+  <tactic>
+      Cover
+      <action priority="100">BuildingAttack</action>
+      <action priority="75">HandAttack</action>
+      <action>Heal</action>
+      <action priority="1">PoisonBomb</action>   
+      <speedmodifier>0.5</speedmodifier>
+      <attacktype>LogicalTypeHandUnitsAttack</attacktype>
+      <attackresponsetype>LogicalTypeHandUnitsAttack</attackresponsetype>
+      <runaway>1</runaway>
+      <autoretarget>1</autoretarget>
+      <idleanim>Cover_Idle</idleanim>
+      <deathanim>Death_by_melee</deathanim>
+      <walkanim>Cover_walk</walkanim>
+      <joganim>Cover_jog</joganim>
+      <runanim>Cover_run</runanim>
+      <transition>
+        <tactic>Melee</tactic>
+        <length>0</length>
+        <exit>1</exit>
+      </transition>
+      <transition>
+        <tactic>Defend</tactic>
+        <length>0</length>
+        <exit>1</exit>
+      </transition>
+      <transition>
+        <tactic>StandGround</tactic>
+        <length>0</length>
+        <exit>1</exit>
+      </transition>
+      <transition>
+        <tactic>Stealth</tactic>
+        <length>2</length>
+        <exit>1</exit>
+      </transition>
+  </tactic>
+  <tactic>
+      StandGround
+      <action priority="100">BuildingAttack</action>
+      <action priority="75">HandAttack</action>
+      <action>Heal</action>
+      <action priority="1">PoisonBomb</action>   
+      <speedmodifier>0.5</speedmodifier>
+      <attacktype>LogicalTypeHandUnitsAttack</attacktype>
+      <attackresponsetype>LogicalTypeHandUnitsAttack</attackresponsetype>
+      <runaway>1</runaway>
+      <autoretarget>1</autoretarget>
+      <idleanim>Cover_Idle</idleanim>
+      <deathanim>Death_by_melee</deathanim>
+      <walkanim>Cover_walk</walkanim>
+      <joganim>Cover_jog</joganim>
+      <runanim>Cover_run</runanim>
+      <transition>
+        <tactic>Cover</tactic>
+        <length>0</length>
+        <exit>1</exit>
+      </transition>
+      <transition>
+        <tactic>Defend</tactic>
+        <length>0</length>
+        <exit>1</exit>
+      </transition>
+      <transition>
+        <tactic>Melee</tactic>
+        <length>0</length>
+        <exit>1</exit>
+      </transition>
+      <transition>
+        <tactic>Stealth</tactic>
+        <length>2</length>
+        <exit>1</exit>
+      </transition>
+  </tactic>
+  <tactic>
+      Defend
+      <action priority="100">BuildingAttack</action>
+      <action priority="75">HandAttack</action>
+      <action>Heal</action>
+      <action priority="1">PoisonBomb</action>   
+      <attacktype>LogicalTypeHandUnitsAttack</attacktype>
+      <attackresponsetype>LogicalTypeHandUnitsAttack</attackresponsetype>
+      <runaway>0</runaway>
+      <autoretarget>1</autoretarget>
+      <idleanim>Cover_Idle</idleanim>
+      <deathanim>Death_by_melee</deathanim>
+      <walkanim>Cover_walk</walkanim>
+      <joganim>Cover_jog</joganim>
+      <runanim>Cover_run</runanim>
+      <transition>
+        <tactic>Cover</tactic>
+        <length>0</length>
+        <exit>1</exit>
+      </transition>
+      <transition>
+        <tactic>Melee</tactic>
+        <length>0</length>
+        <exit>1</exit>
+      </transition>
+      <transition>
+        <tactic>StandGround</tactic>
+        <length>0</length>
+        <exit>1</exit>
+      </transition>
+      <transition>
+        <tactic>Stealth</tactic>
+        <length>2</length>
+        <exit>1</exit>
+      </transition>
+  </tactic>
+  <tactic>
+      Stealth
+      <action>Stealth</action>
+      <checkifcanstealth range="25.0">1</checkifcanstealth>
+      <speedmodifier>0.5</speedmodifier>
+      <attacktype>LogicalTypeHandUnitsAttack</attacktype>
+      <idleanim>Cover_Idle</idleanim>
+      <deathanim>Death_by_melee</deathanim>
+      <walkanim>Cover_walk</walkanim>
+      <joganim>Cover_jog</joganim>
+      <runanim>Cover_run</runanim>
+      <autoretarget>0</autoretarget>
+      <transition>
+        <tactic>Melee</tactic>
+        <length>0.3</length>
+        <anim>Cover_Out</anim>
+        <exit>1</exit>
+        <automatic>1</automatic>
+        <commandautomatic>1</commandautomatic>
+      </transition>
+      <transition>
+        <tactic>Cover</tactic>
+        <length>0.3</length>
+        <anim>Cover_Out</anim>
+        <exit>1</exit>
+        <automatic>1</automatic>
+        <commandautomatic>1</commandautomatic>
+      </transition>
+      <transition>
+        <tactic>StandGround</tactic>
+        <length>0.3</length>
+        <anim>Cover_Out</anim>
+        <exit>1</exit>
+        <automatic>1</automatic>
+        <commandautomatic>1</commandautomatic>
+      </transition>
+      <transition>
+        <tactic>Defend</tactic>
+        <length>0.3</length>
+        <anim>Cover_Out</anim>
+        <exit>1</exit>
+        <automatic>1</automatic>
+        <commandautomatic>1</commandautomatic>
+      </transition>
+  </tactic>
+</tactics>

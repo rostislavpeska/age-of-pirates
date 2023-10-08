@@ -26,6 +26,13 @@
 		<anim>Heal</anim>
 	</action>
 	<action>
+		<name stringid="69148">Discover</name>
+		<type>Discover</type>
+		<anim>Pickup</anim>
+		<maxrange>0.2</maxrange>
+		<rate type="AbstractNuggetLand">1.0</rate>
+	</action>
+	<action>
 		<name stringid="69155">Convert</name>
 		<type>Convert</type>
 		<active>1</active>
@@ -56,6 +63,7 @@
 		<action>Convert</action>
 		<action>Gather</action>
 		<action>Build</action>
+		<action>Discover</action>
 		<attacktype>LogicalTypeHandUnitsAttack</attacktype>
 		<runaway>1</runaway>
 		<autoretarget>1</autoretarget>
