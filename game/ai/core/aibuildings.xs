@@ -1011,7 +1011,7 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
       aiPlanSetVariableInt(buildPlan, cBuildPlanInfluenceUnitFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
    }
 
-   // Weight towers to stay very close to center point, unless it's an island map, then go far away
+   // AssertiveWall: Weight towers to stay very close to center point, unless it's an island map, then go far away
    aiPlanSetVariableVector(buildPlan, cBuildPlanInfluencePosition, 0, testVec);// Position influence for landing position
    if ((gStartOnDifferentIslands == true) && gMigrationMap == false)
    {

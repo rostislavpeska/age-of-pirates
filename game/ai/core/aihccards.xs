@@ -848,6 +848,12 @@ highFrequency // Run every frame until it's disabled.
                      cardPriority = 0;
                   }  
 
+            // AssertiveWall: Increase priority of economic techs on island maps
+            if (gStartOnDifferentIslands == true && kbTechAffectsUnit(tech, cUnitTypeAbstractVillager) == true)
+            {
+               cardPriority += 1 + aiRandInt(3);
+            }
+
             if (cardPriority < 0) // Can't ever happen I guess.
             {
                cardPriority = 0;
@@ -1093,6 +1099,11 @@ highFrequency // Run every frame until it's disabled.
                   {
                      toPick = 2;
                   }
+                  // AssertiveWall: Grab one less crate on islands
+                  if (gStartOnDifferentIslands == true)
+                  {
+                     toPick -= 1;
+                  }
                   debugHCCards("***Commerce crates: " + toPick);
                }
 
@@ -1194,6 +1205,11 @@ highFrequency // Run every frame until it's disabled.
                         toPick++;
                      }
                   }
+                  // AssertiveWall: Add another upgrade on island maps
+                  if (gStartOnDifferentIslands == true)
+                  {
+                     toPick += 1;
+                  }
                   if ((isTeamGame == true) && (toPick > 1)) // Some civs that are rushing will have 1 less Commerce unit because of this.
                   {
                      toPick--; // Reserve for later addition of 3 TEAM cards.
@@ -1291,7 +1307,19 @@ highFrequency // Run every frame until it's disabled.
                      {
                         toPick = 1; // Still add the Villager though.
                      }
-
+                  }
+                  // AssertiveWall: handle the island case. No units unless rushing
+                  else if (gStartOnDifferentIslands == true && btRushBoom < 0.0) 
+                  {
+                     if ((cMyCiv == cCivIndians) || (cMyCiv == cCivPortuguese) || (cMyCiv == cCivRussians) || 
+                         (cMyCiv == cCivChinese) || (cMyCiv == cCivDESwedish) || (cMyCiv == cCivDEAmericans))
+                     {
+                        toPick = 0;
+                     }
+                     else
+                     {
+                        toPick = 1; // Still add the Villager though.
+                     }
                   }
                   else
                   {
@@ -1465,6 +1493,11 @@ highFrequency // Run every frame until it's disabled.
                   {
                      toPick = 2; // 2 Resource crates in the Fortress Age.
                   }
+                  // AssertiveWall: Grab one less on island maps
+                  if (gStartOnDifferentIslands == true)
+                  {
+                     toPick -= 1;
+                  }
                   debugHCCards("***Fortress crates: " + toPick);
                }
 
@@ -1525,6 +1558,11 @@ highFrequency // Run every frame until it's disabled.
                   }
                   if ((startingResources == cGameStartingResourcesInfinite) ||
                       (startingResources == cGameStartingResourcesUltra)) // Add crates onto this.
+                  {
+                     toPick += 2;
+                  }
+                  // AssertiveWall: Add another upgrade on island maps
+                  if (gStartOnDifferentIslands == true)
                   {
                      toPick += 2;
                   }
@@ -1802,6 +1840,11 @@ highFrequency // Run every frame until it's disabled.
                       (startingResources == cGameStartingResourcesUltra)) // Add crate onto this.
                   {
                      toPick++;
+                  }
+                  // AssertiveWall: Add more upgrades on island maps
+                  if (gStartOnDifferentIslands == true)
+                  {
+                     toPick += 2;
                   }
                   debugHCCards("***Land Industrial Upgrades: " + (toPick));
                }
@@ -3057,6 +3100,11 @@ void shipGrantedHandler(int parm = -1) // parm is unused.
                   if (aiTreatyGetEnd() > 5 * 60 * 1000 && cDifficultyCurrent >= cDifficultyHard)
                   {
                      totalValue = totalValue * 0.5;
+                  }
+                  // AssertiveWall: Encourage these on island maps
+                  if (gStartOnDifferentIslands == true)
+                  {
+                     totalValue = totalValue * 1.3;
                   }
                   break;
                }

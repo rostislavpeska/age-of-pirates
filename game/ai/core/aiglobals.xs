@@ -52,7 +52,7 @@ extern int gWaterNuggetTimeout = -1;         // Stores when a water nugget plan 
 
 extern bool gIsPirateMap = false;            // Set true for testing. Used for pirates of the carribean mod
 
-extern int gMainAttackGoal = -1;             // Used for legacy attack system
+extern float gStartingHandicap = -1.0;       // Stores starting handicap to ensure we don't deviate too far
 
 
 //==============================================================================

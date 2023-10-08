@@ -2031,9 +2031,13 @@ minInterval 30
             gNetNavyValue += 2800; // three frigates and a caravel
          }
       }
-      else
+      else if (gNavyMap == true)
       {
          gNetNavyValue += 800.0;
+      }
+      else
+      {
+         gNetNavyValue += 400.0;
       }
       debugMilitary("Navy enemy player is " + navyEnemyPlayer + ", net navy value is " + gNetNavyValue);
 
@@ -2093,7 +2097,7 @@ minInterval 30
          {  // AssertiveWall: add 1 but don't reset cycle, unless we want a spam
             numberCanoes++;
             gNetNavyValue -= canoeValue;
-            if ((btRushBoom >= 0.5 || btBiasNative >= 0.5) && numberCanoes < 10 && age <= cAge3)
+            if ((btRushBoom >= 0.65 || btBiasNative >= 0.5) && numberCanoes < 10 && age <= cAge3)
             {
                numberCanoes++;
                gNetNavyValue -= canoeValue;

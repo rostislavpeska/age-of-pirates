@@ -2380,6 +2380,9 @@ minInterval 5
       updateSettlersAndPopManager();
       updateWantedTowers();
 
+      // AssertiveWall: enable the difficulty scale
+      //xsEnableRule("scaleDifficulty");
+
       if ((xsIsRuleEnabled("militaryManager") == false) &&
           (cvOkToTrainArmy == true))
       {

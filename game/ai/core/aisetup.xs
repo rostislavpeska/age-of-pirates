@@ -1007,7 +1007,7 @@ void analyzeGameSettingsAndType()
       break;
    }
       case cDifficultyExpert: // Hardest.
-   {  // AssertiveWall: +22% (up from +15%). Interval decreased to 1 min
+   {  // AssertiveWall: Interval decreased to 1 min
       gMaxPop = maxPop;
          gAttackMissionInterval = 60000; // 2 Minutes.
          kbSetPlayerHandicap(cMyID, startingHandicap * 1.15); // +15% Boost.
@@ -1015,7 +1015,7 @@ void analyzeGameSettingsAndType()
       break;
    }
       case cDifficultyExtreme: // Extreme.
-   {  // AssertiveWall: +50% (up from +30%). Interval decreased to 1 min
+   {  // AssertiveWall: Interval decreased to 1 min
       gMaxPop = maxPop;
          gAttackMissionInterval = 60000; // 2 Minutes.
          kbSetPlayerHandicap(cMyID, startingHandicap * 1.30); // +30% Boost.
@@ -1762,7 +1762,7 @@ void startUpChats()
             if (aiPersonalityGetPlayerUserVar(playerHistoryID, "heBeatMeLastTime") == 1.0)
             {
                heBeatMeLastTime = true;
-         }
+            }
          }
 
          bool iWonLastGame = false;
@@ -2548,8 +2548,6 @@ minInterval 2
    // AssertiveWall: Check whether we're on a migration style map
    if (cRandomMapName == "Ceylon" ||
          cRandomMapName == "ceylonlarge" ||
-         cRandomMapName == "euarchipelago" ||
-         cRandomMapName == "euarchipelagolarge" ||
          cRandomMapName == "afswahilicoast" ||
          cRandomMapName == "afswahilicoastlarge" ||
          cRandomMapName == "zpeldorado" ||
