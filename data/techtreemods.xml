@@ -9686,6 +9686,19 @@
       <effect type="TextOutputTechName">110130</effect>
     </effects>
   </tech>
+  <tech name="zpMediterraneanSufi" type="Normal">
+    <dbid>40332</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" tech="zpSPCSufiGreatMosque">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCSufiBlueMosque" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
 
 
   <!--<tech name="zpConsulateChinaUpdate" type="Normal">

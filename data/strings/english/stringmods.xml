@@ -835,7 +835,7 @@
       <string _locid="300833">ZP Venetian Harbour Center</string>
       <string _locid="300834">ZP Venetian Mooring</string>
       <string _locid="300835">Adralic Sea</string>
-      <string _locid="300836">Large naval map with two separated sea shores and a water trade route. \n\nSettlements: Venetians, Maltese, Jesuits</string>
+      <string _locid="300836">Large naval map with two sea shores and a water trade route. \n\nSettlements: Venetians, Maltese, Jesuits</string>
       <string _locid="300837">Even loyality can be bought. Venetians are powerful allies. Make an alliance with them and dominate over the Adralic Sea.</string>
       <string _locid="300838">Giove Fulminante</string>
       <string _locid="300839">Costanza Guerriera</string>
@@ -852,6 +852,9 @@
       <string _locid="300850">San Spiridion</string>
       <string _locid="300851">Scudo Della Fede</string>
       <string _locid="300852">Venetian Secret Engines</string>
+      <string _locid="300853">A.D. 1404-1800 (No AI support)</string>
+      <string _locid="300854">Collection of mediterranean islands and two worlds: Europe and the Orient. \n\nSettlements: Venetians, Pirate, Scientists. \n\nOther possible settlements (based on variation): Maltese, Jesuit, Sufi, Jewish</string>
+      <string _locid="300855">The barrier between Occident and Orient is moving every closer together.</string>
     </language>
   </stringtable>
 </stringmods>
