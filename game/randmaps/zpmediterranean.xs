@@ -95,11 +95,11 @@ void main(void)
 	chooseMercs();
 	
 	// Set size of map
-	int playerTiles=20000;
+	int playerTiles=24000;
   if(cNumberNonGaiaPlayers < 5)
-    playerTiles = 24000;
+    playerTiles = 28000;
   if (cNumberNonGaiaPlayers < 3)
-		playerTiles = 30000;
+		playerTiles = 40000;
 	int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
 	rmEchoInfo("Map size="+size+"m x "+size+"m");
 	rmSetMapSize(size, size);
@@ -290,9 +290,10 @@ void main(void)
 	rmSetAreaMix(smallIslandID, baseMix);
 	rmAddAreaToClass(smallIslandID, classIsland);
   rmAddAreaToClass(smallIslandID, classEuIsland);
+  rmAddAreaConstraint(smallIslandID, islandAvoidTradeRoute);
 	rmAddAreaConstraint(smallIslandID, islandConstraint);
 	rmSetAreaObeyWorldCircleConstraint(smallIslandID, false);
-  rmSetAreaLocation(smallIslandID, 0.5, 0.5);
+  rmSetAreaLocation(smallIslandID, 0.73, 0.73);
     rmAddAreaTerrainLayer(smallIslandID, "AfricaDesert\ground_dirt1_afriDesert", 0, 6);
     rmAddAreaTerrainLayer(smallIslandID, "AfricaDesert\ground_grass4_afriDesert", 6, 9);
     rmAddAreaTerrainLayer(smallIslandID, "AfricaDesert\ground_grass3_afriDesert", 9, 12);
@@ -304,7 +305,7 @@ void main(void)
 	rmSetAreaWaterType(seaLakeID, seaType);
   rmSetAreaSize(seaLakeID, rmAreaTilesToFraction(1270.0), rmAreaTilesToFraction(1270.0));
 	rmSetAreaCoherence(seaLakeID, 1.0);
-	rmSetAreaLocation(seaLakeID, 0.5-rmZTilesToFraction(10), 0.5);
+	rmSetAreaLocation(seaLakeID, 0.73-rmZTilesToFraction(10), 0.73);
 	rmSetAreaBaseHeight(seaLakeID, 1.0);
 	rmSetAreaObeyWorldCircleConstraint(seaLakeID, false);
 	rmSetAreaSmoothDistance(seaLakeID, 10);
@@ -352,7 +353,7 @@ void main(void)
 	rmSetAreaElevationOctaves(smallIsland3ID, 3);
 	rmSetAreaElevationPersistence(smallIsland3ID, 0.2);
 	rmSetAreaElevationNoiseBias(smallIsland3ID, 1);
-  rmSetAreaLocation(smallIsland3ID, .75, .75);
+  rmSetAreaLocation(smallIsland3ID, .5, .5);
     rmAddAreaTerrainLayer(smallIsland3ID, "AfricaDesert\ground_dirt1_afriDesert", 0, 6);
     rmAddAreaTerrainLayer(smallIsland3ID, "AfricaDesert\ground_grass4_afriDesert", 6, 9);
     rmAddAreaTerrainLayer(smallIsland3ID, "AfricaDesert\ground_grass3_afriDesert", 9, 12);
@@ -475,7 +476,7 @@ void main(void)
     rmAddObjectDefItem(controllerID1, "zpSPCWaterSpawnPoint", 1, 0.0);
     rmSetObjectDefMinDistance(controllerID1, 0.0);
     rmSetObjectDefMaxDistance(controllerID1, 0.0);
-    rmPlaceObjectDefAtLoc(controllerID1, 0, 0.5, 0.5+rmZTilesToFraction(6));
+    rmPlaceObjectDefAtLoc(controllerID1, 0, 0.73, 0.73+rmZTilesToFraction(6));
     vector ControllerLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID1, 0));
 
   int controllerID2 = rmCreateObjectDef("Controler 2");
@@ -493,7 +494,7 @@ void main(void)
 	   rmSetObjectDefMaxDistance(controllerID3, 20.0);
       rmAddObjectDefConstraint(controllerID3, avoidImpassableLand);
       rmAddObjectDefConstraint(controllerID3, ferryOnShore); 
-      rmPlaceObjectDefAtLoc(controllerID3, 0, 0.72, 0.72);
+      rmPlaceObjectDefAtLoc(controllerID3, 0, 0.47, 0.47);
       vector ControllerLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID3, 0));
   
   // Pirate Village
@@ -531,7 +532,7 @@ void main(void)
      int piratesVillageID3 = -1;
       piratesVillageID3 = rmCreateGrouping("pirate city 3", "Scientist_Lab06");
       rmSetGroupingMinDistance(piratesVillageID3, 0);
-      rmSetGroupingMaxDistance(piratesVillageID3, 30);
+      rmSetGroupingMaxDistance(piratesVillageID3, 20);
       rmAddGroupingConstraint(piratesVillageID3, ferryOnShore);
 
       rmPlaceGroupingAtLoc(piratesVillageID3, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc3)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3)), 1);
@@ -902,6 +903,7 @@ void main(void)
       failCount=0; 
   } 
 
+  int failCount2=0;
   for (i=0; <numTries) {   
     int forest2=rmCreateArea("forest "+i);
     rmSetAreaWarnFailure(2, false);
@@ -1626,7 +1628,7 @@ rmSetTriggerEffectParam("SrcObject","5");
 rmSetTriggerEffectParamInt("SrcPlayer",0);
 rmSetTriggerEffectParamInt("TrgPlayer",k);
 rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag1");
-rmSetTriggerEffectParamInt("Dist",100);
+rmSetTriggerEffectParamInt("Dist",150);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1off_Player"+k));
 rmAddTriggerEffect("Fire Event");
@@ -1655,7 +1657,7 @@ rmSetTriggerEffectParam("SrcObject","5");
 rmSetTriggerEffectParamInt("SrcPlayer",k);
 rmSetTriggerEffectParamInt("TrgPlayer",0);
 rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag1");
-rmSetTriggerEffectParamInt("Dist",100);
+rmSetTriggerEffectParamInt("Dist",150);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1on_Player"+k));
 rmAddTriggerEffect("Disable Trigger");
@@ -2115,7 +2117,7 @@ rmSetTriggerEffectParam("SrcObject","58"); // Unique Object ID Village 1
 rmSetTriggerEffectParamInt("SrcPlayer",0);
 rmSetTriggerEffectParamInt("TrgPlayer",k);
 rmSetTriggerEffectParam("UnitType","zpNativeWaterSpawnFlag1");
-rmSetTriggerEffectParamInt("Dist",100);
+rmSetTriggerEffectParamInt("Dist",150);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Renegades1off_Player"+k));
 rmAddTriggerEffect("Fire Event");
@@ -2142,7 +2144,7 @@ rmSetTriggerEffectParam("SrcObject","58"); // Unique Object ID Village 1
 rmSetTriggerEffectParamInt("SrcPlayer",k);
 rmSetTriggerEffectParamInt("TrgPlayer",0);
 rmSetTriggerEffectParam("UnitType","zpNativeWaterSpawnFlag1");
-rmSetTriggerEffectParamInt("Dist",100);
+rmSetTriggerEffectParamInt("Dist",150);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Renegades1on_Player"+k));
 rmAddTriggerEffect("Disable Trigger");
