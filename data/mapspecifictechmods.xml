@@ -55,4 +55,15 @@
         <tech>ypSaloonWanderingHorseman</tech>
         <forcetech>deMapAmerican</forcetech>
     </map>
+    <map name="caribbeanwater">
+        <tech>SaloonTechPirate</tech>
+        <forcetech>DEEnableTradeRouteWater</forcetech>
+        <forcetech>deMapAmerican</forcetech>
+    </map>
+    <map name="adralicsea">
+        <forcetech>zpAdralicMercenaries</forcetech>
+    </map>
+    <map name="anno">
+        <tech>zpAnnoMercenaries</tech>
+    </map>
 </mapspecifictechmods>

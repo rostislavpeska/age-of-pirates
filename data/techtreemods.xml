@@ -9699,6 +9699,32 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpAdralicMercenaries" type="Normal">
+    <dbid>40333</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deSaloonCrabat</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deSaloonInquisitor</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAnnoMercenaries" type="Normal">
+    <dbid>40334</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deOutlawDesertArcher</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deOutlawDesertRaider</target>
+      </effect>
+    </effects>
+  </tech>
 
 
   <!--<tech name="zpConsulateChinaUpdate" type="Normal">

@@ -95,11 +95,11 @@ void main(void)
 	chooseMercs();
 	
 	// Set size of map
-	int playerTiles=24000;
+	int playerTiles=28000;
   if(cNumberNonGaiaPlayers < 5)
-    playerTiles = 28000;
+    playerTiles = 32000;
   if (cNumberNonGaiaPlayers < 3)
-		playerTiles = 40000;
+		playerTiles = 42000;
 	int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
 	rmEchoInfo("Map size="+size+"m x "+size+"m");
 	rmSetMapSize(size, size);
@@ -113,6 +113,7 @@ void main(void)
 	rmSetMapType("water");
   rmSetMapType("mediEurope");
   rmSetMapType("euroNavalTradeRoute");
+  rmSetMapType("anno");
 	rmSetLightingSet("punjab_skirmish");
   rmSetOceanReveal(true);
 
@@ -132,6 +133,7 @@ void main(void)
   int classAtol=rmDefineClass("atol");
   int classEuIsland=rmDefineClass("europe island");
   int classAfIsland=rmDefineClass("africa island");
+  int classPortSite=rmDefineClass("portSite");
 
    // -------------Define constraints----------------------------------------
 
@@ -176,7 +178,7 @@ void main(void)
   int avoidNuggetWater2=rmCreateTypeDistanceConstraint("avoid water nuggets2", "abstractNugget", 70.0); 
   int avoidHardNugget=rmCreateTypeDistanceConstraint("hard nuggets avoid other nuggets less", "abstractNugget", 20.0); 
 
-  int avoidPirates=rmCreateTypeDistanceConstraint("avoid socket pirates", "zpSocketPirates", 30.0);
+  int avoidPirates=rmCreateTypeDistanceConstraint("avoid socket pirates", "zpSocketPirates", 20.0);
   int avoidWokou=rmCreateTypeDistanceConstraint("avoid socket wokou", "zpSocketWokou", 30.0);
   int avoidJesuit=rmCreateTypeDistanceConstraint("avoid socket jesuit", "zpSocketSPCJesuit", 30.0);
   int avoidController=rmCreateTypeDistanceConstraint("stay away from Controller", "zpSPCWaterSpawnPoint", 17.0);
@@ -201,7 +203,7 @@ void main(void)
 	int avoidImportantItem = rmCreateClassDistanceConstraint("avoid natives", rmClassID("importantItem"), 7.0);
   int avoidImportantItemNatives = rmCreateClassDistanceConstraint("secrets etc avoid each other", rmClassID("importantItem"), 70.0);
 	int avoidAll=rmCreateTypeDistanceConstraint("avoid all", "all", 4.0);
-  int avoidKOTH=rmCreateTypeDistanceConstraint("stay away from Kings Hill", "ypKingsHill", 30.0);
+  int avoidKOTH=rmCreateTypeDistanceConstraint("stay away from Kings Hill", "ypKingsHill", 10.0);
   
   // flag constraints
   int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 12.0);
@@ -214,7 +216,7 @@ void main(void)
   int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 8.0);
 
    //Trade Route Contstraints
-   int islandAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("trade route", 6.0);
+   int islandAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("trade route", 10.0);
    int ObjectAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("object avoid trade route", 7.0);
    int avoidTradeSockets = rmCreateTypeDistanceConstraint("avoid trade sockets", "sockettraderoute", 30.0);
 
@@ -222,8 +224,6 @@ void main(void)
 	// --------------- Make load bar move. ----------------------------------------------------------------------------
 	rmSetStatusText("",0.30);
 	    	
-	// --------------- Make load bar move. ----------------------------------------------------------------------------
-	rmSetStatusText("",0.40);
 
    int tradeRouteID = rmCreateTradeRoute();
    rmSetObjectDefTradeRouteID(tradeRouteID);
@@ -334,10 +334,26 @@ void main(void)
     rmAddAreaTerrainLayer(smallIsland2ID, "AfricaDesert\ground_sand1_afriDesert", 9, 15);
     rmAddAreaTerrainLayer(smallIsland2ID, "AfricaDesert\ground_rock1_afriDesert", 15, 22);
   rmBuildArea(smallIsland2ID);
+
+    int controllerID2 = rmCreateObjectDef("Controler 2");
+   rmAddObjectDefItem(controllerID2, "zpSPCWaterSpawnPoint", 1, 0.0);
+   rmPlaceObjectDefAtLoc(controllerID2, 0, 0.29, 0.29);
+   vector ControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID2, 0));
+
+  int pirateSite1 = rmCreateArea ("pirate_site1");
+   rmSetAreaSize(pirateSite1, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
+   rmSetAreaLocation(pirateSite1, rmXMetersToFraction(xsVectorGetX(ControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc2)));
+   rmSetAreaMix(pirateSite1, "africa desert sand");
+   rmSetAreaCoherence(pirateSite1, 1);
+   rmSetAreaSmoothDistance(pirateSite1, 15);
+   rmSetAreaBaseHeight(pirateSite1, 2.0);
+   rmAddAreaToClass(pirateSite1, classIsland);
+  rmAddAreaToClass(pirateSite1, classAfIsland);
+   rmBuildArea(pirateSite1);
   
 
   int smallIsland3ID=rmCreateArea("corsair island3");
-	rmSetAreaSize(smallIsland3ID, 0.015, 0.015);
+	rmSetAreaSize(smallIsland3ID, 0.018, 0.018);
 	rmSetAreaCoherence(smallIsland3ID, 0.45);
 	rmSetAreaBaseHeight(smallIsland3ID, 2.0);
 	rmSetAreaSmoothDistance(smallIsland3ID, 20);
@@ -359,7 +375,23 @@ void main(void)
     rmAddAreaTerrainLayer(smallIsland3ID, "AfricaDesert\ground_grass3_afriDesert", 9, 12);
     rmAddAreaTerrainLayer(smallIsland3ID, "AfricaDesert\ground_grass2_afriDesert", 12, 15);
   rmBuildArea(smallIsland3ID);
-  
+
+  int controllerID3 = rmCreateObjectDef("Controler 3");
+      rmAddObjectDefItem(controllerID3, "zpSPCWaterSpawnPoint", 1, 0.0);
+      rmPlaceObjectDefAtLoc(controllerID3, 0, 0.45, 0.45);
+      vector ControllerLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID3, 0));
+
+  int pirateSite2 = rmCreateArea ("pirate_site2");
+   rmSetAreaSize(pirateSite2, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
+   rmSetAreaLocation(pirateSite2, rmXMetersToFraction(xsVectorGetX(ControllerLoc3)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3)));
+   rmSetAreaMix(pirateSite2, "africa desert grass dry");
+   rmSetAreaCoherence(pirateSite2, 1);
+   rmSetAreaSmoothDistance(pirateSite2, 15);
+   rmSetAreaBaseHeight(pirateSite2, 2.0);
+   rmAddAreaToClass(pirateSite2, classIsland);
+  rmAddAreaToClass(pirateSite2, classEuIsland);
+   rmBuildArea(pirateSite2);
+
 
   int nativeIslandConstraint=rmCreateAreaConstraint("native Island", smallIslandID);
 
@@ -467,8 +499,8 @@ void main(void)
 	
     
 
-   	// --------------- Make load bar move. ----------------------------------------------------------------------------
-	rmSetStatusText("",0.50);
+  // --------------- Make load bar move. ----------------------------------------------------------------------------
+	rmSetStatusText("",0.40);
   
 	// NATIVES
 
@@ -479,31 +511,12 @@ void main(void)
     rmPlaceObjectDefAtLoc(controllerID1, 0, 0.73, 0.73+rmZTilesToFraction(6));
     vector ControllerLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID1, 0));
 
-  int controllerID2 = rmCreateObjectDef("Controler 2");
-   rmAddObjectDefItem(controllerID2, "zpSPCWaterSpawnPoint", 1, 0.0);
-   rmSetObjectDefMinDistance(controllerID2, 0.0);
-	rmSetObjectDefMaxDistance(controllerID2, 20.0);
-   rmAddObjectDefConstraint(controllerID2, avoidImpassableLand);
-   rmAddObjectDefConstraint(controllerID2, ferryOnShore);
-   rmPlaceObjectDefAtLoc(controllerID2, 0, 0.28, 0.28);
-   vector ControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID2, 0));
-
-   int controllerID3 = rmCreateObjectDef("Controler 3");
-      rmAddObjectDefItem(controllerID3, "zpSPCWaterSpawnPoint", 1, 0.0);
-      rmSetObjectDefMinDistance(controllerID3, 0.0);
-	   rmSetObjectDefMaxDistance(controllerID3, 20.0);
-      rmAddObjectDefConstraint(controllerID3, avoidImpassableLand);
-      rmAddObjectDefConstraint(controllerID3, ferryOnShore); 
-      rmPlaceObjectDefAtLoc(controllerID3, 0, 0.47, 0.47);
-      vector ControllerLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID3, 0));
   
   // Pirate Village
 
          int piratesVillageID = -1;
          piratesVillageID = rmCreateGrouping("pirate city", "pirate_village03");     
-         rmSetGroupingMinDistance(piratesVillageID, 0);
-          rmSetGroupingMaxDistance(piratesVillageID, 30);
-          rmAddGroupingConstraint(piratesVillageID, ferryOnShore);
+
 
          rmPlaceGroupingAtLoc(piratesVillageID, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc2)), 1);
 
@@ -531,9 +544,6 @@ void main(void)
 
      int piratesVillageID3 = -1;
       piratesVillageID3 = rmCreateGrouping("pirate city 3", "Scientist_Lab06");
-      rmSetGroupingMinDistance(piratesVillageID3, 0);
-      rmSetGroupingMaxDistance(piratesVillageID3, 20);
-      rmAddGroupingConstraint(piratesVillageID3, ferryOnShore);
 
       rmPlaceGroupingAtLoc(piratesVillageID3, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc3)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3)), 1);
     
@@ -569,39 +579,83 @@ void main(void)
       rmAddObjectDefItem(venicewaterflagID1, "zpVenetianWaterSpawnFlag1", 1, 1.0);
       rmPlaceObjectDefAtLoc(venicewaterflagID1, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc1))-rmXTilesToFraction(10), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1))+rmXTilesToFraction(6));
   
-  
+      // Port Sites
+
+   int portSite1 = rmCreateArea ("port_site1");
+   rmSetAreaSize(portSite1, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
+    rmSetAreaLocation(portSite1, 0.95-rmXTilesToFraction(25), 0.5);
+   rmSetAreaMix(portSite1, "Africa Desert Grass dry");
+   rmSetAreaCoherence(portSite1, 1);
+   rmSetAreaSmoothDistance(portSite1, 15);
+   rmSetAreaBaseHeight(portSite1, 2.5);
+   rmAddAreaToClass(portSite1, classPortSite);
+   rmAddAreaToClass(portSite1, classEuIsland);
+   rmBuildArea(portSite1);
 
 
-      // Placing Player Trade Route Sockets
+   int portSite2 = rmCreateArea ("port_site2");
+   rmSetAreaSize(portSite2, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
+   rmSetAreaLocation(portSite2, 0.5,0.05+rmXTilesToFraction(25));
+   rmSetAreaMix(portSite2, paintMix);
+   rmSetAreaCoherence(portSite2, 1);
+   rmSetAreaSmoothDistance(portSite2, 15);
+   rmSetAreaBaseHeight(portSite2, 2.5);
+   rmAddAreaToClass(portSite2, classPortSite);
+   rmAddAreaToClass(portSite2, classAfIsland);
+   rmBuildArea(portSite2);
 
-      int socketID=rmCreateObjectDef("sockets to dock Trade Posts");
-      rmSetObjectDefTradeRouteID(socketID, tradeRouteID);
-      rmAddObjectDefItem(socketID, "SocketTradeRoute", 1, 0.0);
-      rmSetObjectDefAllowOverlap(socketID, true);
-      rmSetObjectDefMinDistance(socketID, 5.0);
-      rmSetObjectDefMaxDistance(socketID, 30.0);
+   int portSite3 = rmCreateArea ("port_site3");
+   rmSetAreaSize(portSite3, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
 
-      vector socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.5);
+   rmSetAreaMix(portSite3, paintMix);
+   rmSetAreaCoherence(portSite3, 1);
+   rmSetAreaSmoothDistance(portSite3, 15);
+   rmSetAreaBaseHeight(portSite3, 2.5);
+   rmAddAreaToClass(portSite3, classPortSite);
+   rmAddAreaToClass(portSite3, classAfIsland);
+  rmSetAreaLocation(portSite3, 0.05+rmXTilesToFraction(25), 0.5);
+  rmBuildArea(portSite3);
 
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.15);
-         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
+  int portSite4 = rmCreateArea ("port_site4");
+  rmSetAreaSize(portSite4, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
+  rmSetAreaLocation(portSite4, 0.5,0.95-rmXTilesToFraction(25));
+  rmSetAreaMix(portSite4, "Africa Desert Grass dry");
+  rmSetAreaCoherence(portSite4, 1);
+  rmSetAreaSmoothDistance(portSite4, 15);
+  rmSetAreaBaseHeight(portSite4, 2.5);
+  rmAddAreaToClass(portSite4, classPortSite);
+  rmAddAreaToClass(portSite4, classEuIsland);
+  rmBuildArea(portSite4);
 
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.35);
-         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
 
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.65);
-         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
 
-         socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.85);
-         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
+  // Port 1
+  int portID01 = rmCreateObjectDef("port 02");
+  portID01 = rmCreateGrouping("portG 01", "harbour_malta_05");
+  rmPlaceGroupingAtLoc(portID01, 0, 0.95-rmXTilesToFraction(12), 0.5);
+
+  // Port 2
+  int portID02 = rmCreateObjectDef("port 02");
+  portID02 = rmCreateGrouping("portG 02", "harbour_arabia_01");
+  rmPlaceGroupingAtLoc(portID02, 0, 0.5,0.05+rmXTilesToFraction(12));
+
+  // Port 3
+  int portID03 = rmCreateObjectDef("port 03");
+  portID03 = rmCreateGrouping("portG 03", "harbour_arabia_02");
+  rmPlaceGroupingAtLoc(portID03, 0, 0.05+rmXTilesToFraction(12), 0.5);
+
+  // Port 4
+  int portID04 = rmCreateObjectDef("port 04");
+  portID04 = rmCreateGrouping("portG 04", "harbour_malta_07");
+  rmPlaceGroupingAtLoc(portID04, 0, 0.5,0.95-rmXTilesToFraction(12));
+      
 
 
       // check for KOTH game mode
       if(rmGetIsKOTH()) {
         
-        int randLoc = rmRandInt(1,2);
-        float xLoc = 0.5;
-        float yLoc = 0.6;
+        float xLoc = 0.515;
+        float yLoc = 0.515;
         float walk = 0.00;
         
         ypKingsHillPlacer(xLoc, yLoc, walk, 0);
@@ -611,7 +665,7 @@ void main(void)
 
 
 	// text
-	rmSetStatusText("",0.60);
+	rmSetStatusText("",0.50);
 
 	//Place player TCs and starting Gold Mines. 
 
@@ -666,7 +720,7 @@ void main(void)
 	int waterSpawnPointID = 0;
 
 	// --------------- Make load bar move. ----------------------------------------------------------------------------`
-	rmSetStatusText("",0.70);
+	rmSetStatusText("",0.60);
    
 	// *********** Place Home City Water Spawn Flag ***************************************************
   
@@ -857,7 +911,7 @@ void main(void)
 
 	
    	// --------------- Make load bar move. ----------------------------------------------------------------------------
-	rmSetStatusText("",0.75);
+	rmSetStatusText("",0.70);
 
 	//rmClearClosestPointConstraints();
 
@@ -884,11 +938,11 @@ void main(void)
     rmAddAreaConstraint(forest, forestConstraint);
     rmAddAreaConstraint(forest, avoidAll);
     rmAddAreaConstraint(forest, avoidPirates);
-    rmAddAreaConstraint(forest, avoidWokou);
     rmAddAreaConstraint(forest, avoidJesuit);
     rmAddAreaConstraint(forest, avoidTP);
     rmAddAreaConstraint(forest, avoidTCMedium);
     rmAddAreaConstraint(forest, avoidAtol);
+    rmAddAreaConstraint(forest, avoidKOTH);
     rmAddAreaConstraint(forest, avoidAfrica);
     rmAddAreaConstraint(forest, shortAvoidImpassableLand);  
     if(rmBuildArea(forest)==false) {
@@ -905,7 +959,7 @@ void main(void)
 
   int failCount2=0;
   for (i=0; <numTries) {   
-    int forest2=rmCreateArea("forest "+i);
+    int forest2=rmCreateArea("forest2 "+i);
     rmSetAreaWarnFailure(2, false);
     rmSetAreaSize(forest2, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
     rmSetAreaForestType(forest2, forestType2);
@@ -922,7 +976,6 @@ void main(void)
     rmAddAreaConstraint(forest2, forestConstraint);
     rmAddAreaConstraint(forest2, avoidAll);
     rmAddAreaConstraint(forest2, avoidPirates);
-    rmAddAreaConstraint(forest2, avoidWokou);
     rmAddAreaConstraint(forest2, avoidJesuit);
     rmAddAreaConstraint(forest2, avoidTP);
     rmAddAreaConstraint(forest2, avoidTCMedium);
@@ -931,14 +984,14 @@ void main(void)
     rmAddAreaConstraint(forest2, shortAvoidImpassableLand);  
     if(rmBuildArea(forest2)==false) {
       // Stop trying once we fail 3 times in a row.
-      failCount++;
+      failCount2++;
       
-      if(failCount==5)
+      if(failCount2==5)
         break;
     }
     
     else
-      failCount=0; 
+      failCount2=0; 
   } 
 
     
@@ -1173,6 +1226,23 @@ void main(void)
 
 int tch0=1671; // tech operator
 
+// Starter shipment triggers
+for(i = 1; < cNumberPlayers) {
+rmCreateTrigger("XP"+i);
+rmSwitchToTrigger(rmTriggerID("XP"+i));
+rmSetTriggerPriority(1); 
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmAddTriggerCondition("Always");
+
+rmAddTriggerEffect("Grant Resources");
+rmSetTriggerEffectParamInt("PlayerID", i, false);
+rmSetTriggerEffectParam("ResName", "Ships", false);
+rmSetTriggerEffectParam("Amount", "1", false);
+}
+
 // Starting techs
 
 rmCreateTrigger("Starting Techs");
@@ -1188,7 +1258,11 @@ rmSetTriggerEffectParam("TechID","cTechdeEUMapUpdateVisuals"); // Europen Map
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",i);
-rmSetTriggerEffectParam("TechID","cTechzpMediterraneanSufi"); // DEEneableTradeRouteWater
+rmSetTriggerEffectParam("TechID","cTechzpMediterraneanSufi"); // Sufi Mosque
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",i);
+rmSetTriggerEffectParam("TechID","cTechzpAnnoMercenaries"); // Mercenaries
 rmSetTriggerEffectParamInt("Status",2);
 }
 rmSetTriggerPriority(4);
@@ -2198,6 +2272,92 @@ if (renegadeCaptain==3)
       rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",k);
       rmSetTriggerEffectParam("TechID","cTechzpAIAirshipSetup"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+}
+
+// AI Maltese Fractions
+
+for (k=1; <= cNumberNonGaiaPlayers) {
+
+rmCreateTrigger("ZP Pick Maltese Fraction"+k);
+rmAddTriggerCondition("ZP PLAYER Human");
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("MyBool", "false");
+rmAddTriggerCondition("Tech Status Equals");
+rmSetTriggerConditionParamInt("PlayerID",k);
+rmSetTriggerConditionParamInt("TechID",586);
+rmSetTriggerConditionParamInt("Status",2);
+
+int malteseFraction=-1;
+malteseFraction = rmRandInt(1,3);
+
+if (malteseFraction==1)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseFlorentians"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+if (malteseFraction==2)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseJerusalem"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+if (malteseFraction==3)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseVenetians"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+}
+
+// AI Jewish Fractions
+
+for (k=1; <= cNumberNonGaiaPlayers) {
+
+rmCreateTrigger("ZP Pick Jewish Fraction"+k);
+rmAddTriggerCondition("ZP PLAYER Human");
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("MyBool", "false");
+rmAddTriggerCondition("Tech Status Equals");
+rmSetTriggerConditionParamInt("PlayerID",k);
+rmSetTriggerConditionParamInt("TechID",586);
+rmSetTriggerConditionParamInt("Status",2);
+
+int jewishFraction=-1;
+jewishFraction = rmRandInt(1,3);
+
+if (jewishFraction==1)
+   {
+	  rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateJewishAmericans"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+if (jewishFraction==2)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateJewishRussians"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+if (jewishFraction==3)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateJewishGermans"); //operator
       rmSetTriggerEffectParamInt("Status",2);
    }
 rmSetTriggerPriority(4);

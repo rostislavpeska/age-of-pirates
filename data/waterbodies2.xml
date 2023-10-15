@@ -1370,5 +1370,21 @@
     <rendering scatter_color="0.056 0.270 0.322" sun_set_color="1.000 0.400 0.000" caustics_depth="3.0000" caustics_intensity="1.2900" caustics_scale="0.2000" caustics_scroll="0.0120" fft_displace="1.1000" custom_wave_scale="8.0000" reflection_normal="1.0000" refraction_normal="0.0610" scatter_amount="0.4780" fog_color_mult="0.4420" custom_wave_scatter="5.0000" surface_roughness="0.0500" fog_density="1.4790" water_color="0.514 0.870 0.875" blur_intensity="0.2900" water_brighten="2.9790" reflection_intensity="0.4970">
     </rendering>
   </ocean>
+  <ocean name="ZP Malta No Waves" iconname="ui\editor\watercaribbeancoast" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="california\groundshore1_cal" bank="AfricaDesert\ground_sand2_afriDesert" outerbank="AfricaDesert\ground_sand1_afriDesert" slope="" color="9 110 88" deepcolor="0 0 0" depth="3.0000" fresnelscale="0.247934" fresnelbias="0.555556" alphaminvalue="0.000000" alphamaxvalue="0.914063" alphamindepth="0.000000" alphamaxdepth="1.900827" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.842105" reflectionamount="-0.222222" bumpscale="0.660000" reflectionbumpscale="0.710000" foamscale="-0.110000" texscale="1.970000" texscrollspeed="0.000000" texrotation="129.000000">
+    <textureplacement>
+      <texture distance="8" variance="4">california\groundshore1_cal</texture>
+      <texture distance="10" variance="6">caribbean\seafloor_coral3_crb</texture>
+      <texture distance="14" variance="5">saguenay\underwater1_sag</texture>
+      <texture distance="18" variance="5">carolinas\underwater2</texture>
+    </textureplacement>
+    <shoreline>
+      <shorelong name="ShorelineFoam" distance="2.0" randomyaw="true">
+      </shorelong>
+      <waves bumpmap="terrain\water\waterwavebump" bumpmapcrashposition="0.45" foam1tex="terrain\waves\wavefoam" foam2tex="terrain\waves\wavefoam2" foamalphasidetex="terrain\waves\riverfoam_alpha" foamalphabacktex="terrain\waves\wavefoam_alphaback" minlength="15" maxlength="25" minconcavelength="11.53" maxconcavelength="13.96" minwidth="2" maxwidth="4" minheight="0.02" maxheight="0.2" minfadelength="1.82" maxfadelength="6.61" minspeed="0.75" maxspeed="1.0" foamstartnormalizedtime="0.2" foamnormalizedspeed="0.00" foammaxnormalizedwidth="1.00" foam1scrollspeed="0.00" foam2scrollspeed="0.00" foamfadeintime="0.50" foamfadeouttime="0.5" recedetime="3.39" recedeendscale="1.17" recedemotion="false" variance="3" minstartdistance="3.00" maxstartdistance="5.00" sectionlength="10.00" wavedensity="3" convexitylimit="-9.73" concavitylimit="10.11">
+      </waves>
+    </shoreline>
+    <rendering scatter_color="0.056 0.270 0.322" sun_set_color="1.000 0.400 0.000" caustics_depth="3.0000" caustics_intensity="1.2900" caustics_scale="0.2000" caustics_scroll="0.0120" fft_displace="1.1000" custom_wave_scale="8.0000" reflection_normal="1.0000" refraction_normal="0.0610" scatter_amount="0.4780" fog_color_mult="0.4420" custom_wave_scatter="5.0000" surface_roughness="0.0500" fog_density="1.4790" water_color="0.514 0.870 0.875" blur_intensity="0.2900" water_brighten="2.9790" reflection_intensity="0.4970">
+    </rendering>
+  </ocean>
 
 </waterbodies>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>17</width>
+	<height>20</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="107" posx="-13.2556" posz="-12.1750" orientx="0.9943" orienty="0.0000" orientz="-0.1064">zpHarbourShip</unit>
+		<unit variation="3" posx="-7.4190" posz="-9.2824" orientx="0.1218" orienty="0.0000" orientz="-0.9926">ShorelineRockBigNE</unit>
+		<unit variation="7" posx="-9.7437" posz="-7.0967" orientx="0.0807" orienty="0.0000" orientz="0.9967">zpHarbourPlatform</unit>
+		<unit variation="175" posx="0.9759" posz="-7.9745" orientx="-0.9442" orienty="0.0000" orientz="0.3293">ShorelineRockBigNE</unit>
+		<unit variation="147" posx="-5.7966" posz="-5.2882" orientx="0.0723" orienty="0.0000" orientz="0.9974">PropFish</unit>
+		<unit variation="53" posx="-5.7272" posz="-6.8751" orientx="-0.0562" orienty="0.0000" orientz="0.9984">zpHarbourPlatform</unit>
+		<unit variation="3" posx="-1.8510" posz="-7.9079" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">PropsColony</unit>
+		<unit variation="4" posx="-2.0536" posz="-4.6315" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsColony</unit>
+		<unit variation="56" posx="-4.0091" posz="-4.5884" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNativePropsAfrica</unit>
+		<unit variation="96" posx="-2.8494" posz="-4.4713" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropVilGuards</unit>
+		<unit variation="80" posx="-6.9336" posz="-1.1611" orientx="-0.8924" orienty="0.0000" orientz="0.4512">PropFish</unit>
+		<unit variation="2" posx="-6.5159" posz="-2.4597" orientx="0.7961" orienty="0.0000" orientz="-0.6051">PropFish</unit>
+		<unit variation="37" posx="5.2509" posz="2.2921" orientx="-0.7071" orienty="-0.0000" orientz="0.7071">SocketTradeRoute</unit>
+		<unit variation="166" posx="-10.6770" posz="0.2257" orientx="-0.9608" orienty="0.0000" orientz="0.2774">zpHarbourPlatform</unit>
+		<unit variation="4" posx="-4.6378" posz="5.3140" orientx="0.4936" orienty="0.0000" orientz="0.8697">PropFish</unit>
+		<unit variation="191" posx="-5.0744" posz="5.7239" orientx="0.8440" orienty="0.0000" orientz="-0.5364">PropFish</unit>
+		<unit variation="232" posx="-3.1062" posz="8.8986" orientx="0.5018" orienty="0.0000" orientz="0.8650">PropFish</unit>
+		<unit variation="29" posx="-0.6170" posz="8.5479" orientx="0.7967" orienty="0.0000" orientz="0.6044">zpHarbourPlatform</unit>
+		<unit variation="141" posx="-11.7689" posz="7.3404" orientx="0.8976" orienty="0.0000" orientz="0.4408">PropFish</unit>
+		<unit variation="40" posx="-7.8135" posz="7.4047" orientx="0.9102" orienty="0.0000" orientz="-0.4142">zpHarbourPlatform</unit>
+		<unit variation="64" posx="0.5161" posz="10.4678" orientx="0.9343" orienty="0.0000" orientz="0.3564">PropFish</unit>
+		<unit variation="191" posx="10.9250" posz="9.7295" orientx="-0.7071" orienty="0.0000" orientz="0.7071">deNatEUPropVilGuards</unit>
+		<unit variation="79" posx="-3.8378" posz="12.8296" orientx="-0.7855" orienty="0.0000" orientz="-0.6189">zpHarbourPlatform</unit>
+		<unit variation="24" posx="1.9506" posz="12.4678" orientx="-0.9681" orienty="0.0000" orientz="-0.2504">PropFish</unit>
+		<unit variation="247" posx="0.1636" posz="12.4441" orientx="0.0075" orienty="0.0000" orientz="-1.0000">PropFish</unit>
+		<unit variation="113" posx="2.5660" posz="12.4231" orientx="-0.5165" orienty="0.0000" orientz="0.8563">PropFish</unit>
+		<unit variation="238" posx="13.5962" posz="10.8802" orientx="-0.7071" orienty="-0.0000" orientz="0.7071">SPCDamagedCannons</unit>
+		<unit variation="58" posx="11.1592" posz="14.2468" orientx="-0.9998" orienty="0.0000" orientz="0.0178">zpHarbourPlatform</unit>
+		<unit variation="246" posx="6.0067" posz="14.1397" orientx="0.1983" orienty="0.0000" orientz="-0.9801">PropFish</unit>
+		<unit variation="11" posx="7.2325" posz="14.8796" orientx="-0.8954" orienty="0.0000" orientz="-0.4452">PropFish</unit>
+		<unit variation="58" posx="0.9296" posz="16.0397" orientx="-0.4545" orienty="0.0000" orientz="0.8908">zpHarbourPlatform</unit>
+		<unit variation="246" posx="14.1268" posz="17.5640" orientx="-0.4094" orienty="0.0000" orientz="0.9124">zpHarbourShip</unit>
+		<unit variation="16" posx="8.1591" posz="18.3535" orientx="0.1717" orienty="0.0000" orientz="-0.9852">zpHarbourPlatform</unit>
+		<unit variation="65" posx="-2.6743" posz="22.2499" orientx="0.9682" orienty="0.0000" orientz="-0.2501">ShorelineRockBigNE</unit>
+	</units>
+	<tiles></tiles>
+</grouping>
