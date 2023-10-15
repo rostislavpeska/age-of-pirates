@@ -48,6 +48,8 @@ mutable void setUnitPickerPreference(int upID = -1) {}
 mutable void endDefenseReflex(void) {}
 mutable void addUnitsToMilitaryPlan(int planID = -1) {}
 mutable float getMilitaryUnitStrength(int puid = -1) { return (0.0); }
+mutable void moveDefenseReflex(vector location = cInvalidVector, float radius = -1.0, int baseID = -1) {}
+
 
 // Home City cards.
 mutable void shipGrantedHandler(int parm = -1) {}
@@ -65,6 +67,9 @@ mutable void updateSettlersAndPopManager() {}
 mutable void transportShipmentArrive(int techID = -1) {}
 mutable void revoltedHandler(int techID = -1) {}
 
+// AssertiveWall
+//mutable void arrayResetSelf(int arrayID = -1) {}
+
 //==============================================================================
 // Includes.
 //==============================================================================
@@ -79,6 +84,7 @@ include "core\aiMilitary.xs";
 include "core\aiHCCards.xs";
 include "core\aiChats.xs";
 include "core\aiPirateRules.xs";
+include "core\aiarchibelagoeconomy.xs";
 include "core\aiSetup.xs";
 
 
@@ -311,19 +317,19 @@ void popManager(bool revoltedMilitary = false, bool revoltedEconomic = false)
    {
       if (btRushBoom <= -0.5) // Fast Industrial
       {
-         setMilPopLimit(maxMil / 12, maxMil / 10, maxMil / 6, maxMil, maxMil);
+         setMilPopLimit(maxMil / 10, maxMil / 8, maxMil / 6, maxMil, maxMil);
       }
       else if (btRushBoom <= 0.0) // Fast Fortress (more on the naked side)
       {
-         setMilPopLimit(maxMil / 12, maxMil / 12, maxMil, maxMil, maxMil);
+         setMilPopLimit(maxMil / 10, maxMil / 6, maxMil, maxMil, maxMil);
       }
       else if (btRushBoom >= 0.5) // Rushing. 
       {
-         setMilPopLimit(maxMil / 12, maxMil / 1.6, maxMil, maxMil, maxMil);
+         setMilPopLimit(maxMil / 6, maxMil / 1.6, maxMil, maxMil, maxMil);
       }
       else // Still throttle them to get up to age 3 faster
       {
-         setMilPopLimit(maxMil / 12, maxMil / 7, maxMil, maxMil, maxMil);
+         setMilPopLimit(maxMil / 8, maxMil / 4, maxMil, maxMil, maxMil);
       }
    }
    else if (cDifficultyCurrent >= cDifficultyHard) // AssertiveWall: lowered to hard from expert
@@ -2377,6 +2383,9 @@ minInterval 5
       aiPopulatePoliticianList(); // Update the list of possible age-up choices we have now.
       updateSettlersAndPopManager();
       updateWantedTowers();
+
+      // AssertiveWall: enable the difficulty scale
+      //xsEnableRule("scaleDifficulty");
 
       if ((xsIsRuleEnabled("militaryManager") == false) &&
           (cvOkToTrainArmy == true))

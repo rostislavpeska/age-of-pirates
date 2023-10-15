@@ -15918,7 +15918,7 @@
     <flag>HasGatherPoint</flag>
     <flag>AllowAutoGarrison</flag>
     <flag>PaintTextureWhenPlacing</flag>
-    <flag>Tracked</flag>s
+    <flag>Tracked</flag>
     <flag>NonCollideable</flag>
     <flag>DecalStickToWaterSurface</flag>
     <flag>NonSolid</flag>
@@ -15933,7 +15933,7 @@
     <dbid>20174</dbid>
     <displaynameid>35628</displaynameid>
     <editornameid>300764</editornameid>
-    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusx>4.0000</obstructionradiusx>
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <physicsinfo>dock</physicsinfo>
@@ -16334,7 +16334,6 @@
     <armor type="Siege" value="0.0000">
     </armor>
     <builderlimit>1</builderlimit>
-    <unittype>LogicalTypeValidSabotage</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWalls</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
@@ -16465,6 +16464,7 @@
     <unittype>LogicalTypeMalteseCivBonusArtilleryAndShips</unittype>
     <unittype>LogicalTypeMalteseCivBonus</unittype>
     <unittype>LogicalTypeMalteseCivBonusHealsWhenIdle</unittype>
+    <unittype>AbstractWagon</unittype>
     <train row="0" page="0" column="0">zpWaterFort</train>
     <unittype>Ship</unittype>
     <unittype>Economic</unittype>

@@ -1482,7 +1482,7 @@ minInterval 30
 //==============================================================================
 rule nativeWagonMonitor
 inactive
-minInterval 30
+minInterval 15
 {
    int wagonQueryID = createSimpleUnitQuery(cUnitTypeAbstractWagon, cMyID, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(wagonQueryID);
@@ -1544,7 +1544,11 @@ minInterval 30
              buildingType = cUnitTypezpVeniceEmbassy;
              break;
          }
-        
+         case cUnitTypezpWaterFortBuilder:
+         {
+            buildingType = cUnitTypezpWaterFort;
+            break;
+         }
       }
 
       if (buildingType < 0) // Didn't find a building so go to the next iteration.
@@ -1562,6 +1566,39 @@ minInterval 30
          {
             continue; // We can't make this building anymore so go to the next iteration.
          }
+      }
+
+      // Need a different placement for the water fort. Just use the location build plan
+      if (buildingType == cUnitTypezpWaterFort)
+      {
+         // Find a random point near gNavyVec
+         vector location = gNavyVec;
+         float xRange = 0;
+         float zRange = 0;
+         int randMinus = 1;
+         int minRange = 20 + aiRandInt(20);
+         for (j = 1; < 100)
+         {  
+            xRange = randMinus * (abs(xRange) + 1);
+            if (aiRandInt(4) > 2)
+            {
+               randMinus = -1 * randMinus;
+            }
+            zRange = randMinus * (abs(zRange) + 1);
+
+            location = xsVectorSetX(location, xsVectorGetX(location) + xRange);
+            location = xsVectorSetZ(location, xsVectorGetZ(location) + zRange);
+            if (distance(gNavyVec, location) > minRange)
+            {
+               break;
+            }
+         }
+         
+         // Create the build plan
+         planID = createLocationBuildPlan(buildingType, 1, 100, true, -1, location, 0);
+         aiPlanAddUnitType(planID, wagonType, 1, 1, 1);
+         aiPlanAddUnit(planID, wagon);
+         return;
       }
 
       // AssertiveWall: wagon plan doesn't have an escrow, and skips queue

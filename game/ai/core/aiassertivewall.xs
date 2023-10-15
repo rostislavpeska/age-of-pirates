@@ -60,6 +60,74 @@
 }*/
 
 //==============================================================================
+/* scaleDifficulty
+   AssertiveWall: adjusts the AI performance based on how well a player performs
+   Probably causes desync issues
+*/
+//==============================================================================
+rule scaleDifficulty
+inactive
+minInterval 60
+{
+   int friendlyTeamScore = 0;
+   int friendlyTeamSize = 0;
+   int enemyTeamScore = 0;
+   int enemyTeamSize = 0;
+   int myTeam = kbGetPlayerTeam(cMyID);
+   float modifier = 1.25; // 25% 
+   float handicapAdjustment = 0.02; // 2%
+   float newHandicap = -1;
+
+   if (gStartingHandicap < 0)
+   {
+      gStartingHandicap = kbGetPlayerHandicap(cMyID); 
+   }
+
+   // Add up the scores of each team
+   for (player = 1; < cNumberPlayers)
+   {
+      if (kbGetPlayerTeam(player) == myTeam)
+      {
+         friendlyTeamScore += aiGetScore(player);
+         friendlyTeamSize += 1;
+      }
+      else
+      {
+         enemyTeamScore += aiGetScore(player);
+         enemyTeamSize += 1;
+      }
+   }
+   // Normalize the scores for the team size (i.e. get the average score for the team)
+   // This prevents too much scaling in FFA or lopsided team games
+   friendlyTeamScore = friendlyTeamScore / friendlyTeamSize;
+   enemyTeamScore = enemyTeamScore / enemyTeamSize;
+
+   if (friendlyTeamScore > enemyTeamScore * modifier)
+   {
+      newHandicap = kbGetPlayerHandicap(cMyID) * (1.0 - handicapAdjustment);
+      aiChat(1, "Decreasing the AI handicap to " + newHandicap);
+   }
+   else if (friendlyTeamScore * modifier < enemyTeamScore)
+   {
+      newHandicap = kbGetPlayerHandicap(cMyID) * (1.0 + handicapAdjustment);
+      aiChat(1, "Increasing the AI handicap to " + newHandicap);
+   }
+   else
+   {
+      return;
+   }
+
+   // Create upper and lower bounds of 10% of the initial handicap
+   if (newHandicap > gStartingHandicap * 1.12 || newHandicap < gStartingHandicap * 0.88)
+   {
+      aiChat(1, "Blocked new handicap of: " + newHandicap + ". Starting handicap was: " + gStartingHandicap);
+      return;
+   }
+
+   kbSetPlayerHandicap(cMyID, newHandicap);
+}
+
+//==============================================================================
 /* endlessWaterRaids
    AssertiveWall: creates a persistent plan to roam the map and look for
    things to attack
@@ -361,71 +429,6 @@ minInterval 10
             aiPlanSetDesiredPriority(gWaterNuggetPlan, 21);
          }
          break;
-      }
-   }
-}
-
-//==============================================================================
-/* advancedAIFormations
-   AssertiveWall: check an army's composition vs that of the opponent, and 
-   change based on what the compositions are
-
-   ** not in use **
-   Doesn't seem to function. The units will change stance, but whenever there is 
-   infantry and cavalry together, the formation doesn't change into a box
-*/
-//==============================================================================
-rule advancedAIFormations
-inactive
-minInterval 5
-{
-   // Look for active attack plans (ignore defense for now, those are usually tight places anyway)
-   int attackPlan = aiPlanGetIDByTypeAndVariableType(cPlanCombat, cCombatPlanCombatType, cCombatPlanCombatTypeAttack);
-   if (attackPlan < 0)
-   {
-      return;
-   }
-
-   // Get the current location of the attack plan with the first unit
-   vector armyLoc =  kbUnitGetPosition(aiPlanGetUnitByIndex(attackPlan, 0));
-   int numberUnits = aiPlanGetNumberUnits(attackPlan, cUnitTypeLogicalTypeLandMilitary);
-   int unitID = -1;
-   int unitType = -1;
-
-   // Get some info on the nearby enemy
-   int enCavNumber = getUnitCountByLocation(cUnitTypeAbstractHandCavalry, cPlayerRelationEnemyNotGaia, cUnitStateAlive, armyLoc, 45.0);
-   int enArtyNumber = getUnitCountByLocation(cUnitTypeAbstractArtillery, cPlayerRelationEnemyNotGaia, cUnitStateAlive, armyLoc, 45.0);
-   int enInfNumber = getUnitCountByLocation(cUnitTypeAbstractInfantry, cPlayerRelationEnemyNotGaia, cUnitStateAlive, armyLoc, 45.0);
-
-   // Get some info on the friendly army
-   int frCavNumber = aiPlanGetNumberUnits(attackPlan, cUnitTypeAbstractHandCavalry);
-   int frArtyNumber = aiPlanGetNumberUnits(attackPlan, cUnitTypeAbstractArtillery);
-   int frInfNumber = aiPlanGetNumberUnits(attackPlan, cUnitTypeAbstractInfantry);
-
-   // Testing purposes
-   //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, armyLoc);
-
-   /* Tactic Options:
-      - cTacticVolley
-      - cTacticStagger
-      - cTacticMelee
-      - cTacticTrample
-      - cTacticCover
-      - cTacticDefend
-      - cTacticStandGround
-   */
-
-   for (i = 0; < numberUnits)
-   {
-      unitID = aiPlanGetUnitByIndex(attackPlan, i);
-      unitType = kbUnitGetProtoUnitID(unitID);
-      if (kbProtoUnitIsType(cMyID, unitType, cUnitTypeAbstractInfantry) == true)
-      {
-         aiUnitSetTactic(unitID, cTacticDefend);
-      }
-      else if (kbProtoUnitIsType(cMyID, unitType, cUnitTypeAbstractCavalry) == true)
-      {
-         aiUnitSetTactic(unitID, cTacticDefend);
       }
    }
 }
@@ -1701,9 +1704,93 @@ minInterval 10
 
 
 //==============================================================================
+// establishForwardBeachHead
+// Also launches a land attack on the forward base position
+// Tries to establish several buildings
+//==============================================================================
+void establishForwardBeachHead(vector location = cInvalidVector)
+{
+   sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackWithYou, location);
+   // Get the desired army/navy Size, increasing by age
+   int armyMin = 1;
+   int armyDesired = 10;
+   int navyMin = 0;
+   int navyDesired = 1;
+   if (kbGetAge() > cAge3)
+   {
+      armyMin = 10;
+      armyDesired = 20;
+      navyMin = 0;
+      navyDesired = 2;
+   }
+   if (kbGetAge() > cAge4)
+   {
+      armyMin = 18;
+      armyDesired = 35;
+      navyMin = 0;
+      navyDesired = 3;
+   }
+
+   // Create the attack plan for the forward base
+   int beachheadPlanID = aiPlanCreate("Assault the Beachhead", cPlanCombat);
+   //aiPlanAddUnitType(beachheadPlanID, cUnitTypeAbstractWarShip, navyMin, navyDesired, 5);
+   aiPlanAddUnitType(beachheadPlanID, cUnitTypeLogicalTypeLandMilitary, armyMin, armyDesired, 99);
+   aiPlanSetVariableInt(beachheadPlanID, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
+   aiPlanSetVariableInt(beachheadPlanID, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+   //aiPlanSetVariableInt(beachheadPlanID, cCombatPlanTargetPlayerID, 0, navalTargetPlayer);
+   aiPlanSetVariableVector(beachheadPlanID, cCombatPlanTargetPoint, 0, location);
+   aiPlanSetVariableVector(beachheadPlanID, cCombatPlanGatherPoint, 0, gNavyVec);
+   aiPlanSetVariableFloat(beachheadPlanID, cCombatPlanGatherDistance, 0, 80.0); // Big gather radius to include army
+   aiPlanSetVariableInt(beachheadPlanID, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternBest);
+   aiPlanSetDesiredPriority(beachheadPlanID, 99); // Super high for testing
+
+
+   // AssertiveWall: Never bring any extra people on these to avoid transport issues. Balanced refresh frequency
+   //aiPlanSetVariableBool(beachheadPlanID, cCombatPlanAllowMoreUnitsDuringAttack, 0, true);
+   aiPlanSetVariableInt(beachheadPlanID, cCombatPlanRefreshFrequency, 0, 700);
+
+   // Done when we retreat, retreat when outnumbered, done when there's no target after 20 seconds
+   // The army should remain at the forward base after it's done
+   aiPlanSetVariableInt(beachheadPlanID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeNoTarget);
+   aiPlanSetVariableInt(beachheadPlanID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+   aiPlanSetVariableInt(beachheadPlanID, cCombatPlanNoTargetTimeout, 0, 2*60*1000);
+   aiPlanSetBaseID(beachheadPlanID, gForwardBaseID);
+   aiPlanSetInitialPosition(beachheadPlanID, gNavyVec);
+
+   aiPlanSetActive(beachheadPlanID);
+
+   // Move the defense reflex to the new forward base. This should happen eventually anyway, but we do it early here
+   moveDefenseReflex(location, 50.0, gForwardBaseID);
+
+   // Make several build plans at once, to make a quick forward base
+   int building0 = xsArrayGetInt(gMilitaryBuildings, 0);  // typically barracks
+   int building1 = xsArrayGetInt(gMilitaryBuildings, 1);  // typically stable
+   int barracksNum = 1;
+   int stableNum = 2;
+   if (btBiasInf >= btBiasCav)
+   {
+      barracksNum = 2;
+      stableNum = 1;
+   }
+   //createSimpleBuildPlan(building0, barracksNum, 100, false, cMilitaryEscrowID, gForwardBaseID, 2, -1, true);
+   //createSimpleBuildPlan(building1, stableNum, 100, false, cMilitaryEscrowID, gForwardBaseID, 2, -1, true);
+   createSimpleBuildPlan(building0, 1, 100, true, cEconomyEscrowID, gForwardBaseID, 1, -1, true);
+   createSimpleBuildPlan(building1, 1, 100, true, cEconomyEscrowID, gForwardBaseID, 1, -1, true);
+   createSimpleBuildPlan(gTowerUnit, 1, 100, true, cEconomyEscrowID, gForwardBaseID, 1, -1, true);
+
+   //createLocationBuildPlan(building0, barracksNum, 100, false, cMilitaryEscrowID, location, 2);
+   //createLocationBuildPlan(building1, stableNum, 100, false, cMilitaryEscrowID, location, 2);
+
+}
+
+
+
+//==============================================================================
 // selectForwardBaseBeachHead
 // Based on selectForwardBaseLocation, this function grabs a forward base
 // location on the opponent's island
+//
+// Also launches a land and naval attack on that position
 //==============================================================================
 vector selectForwardBaseBeachHead(void)
 {
@@ -2515,7 +2602,7 @@ minInterval 30 // Big interval. It's all decentralized
 
 //==============================================================================
 // shouldBuildDock
-// Logic for when we should build a dock
+// AssertiveWall: Logic for when we should build a dock
 //==============================================================================
 bool shouldBuildDock()
 {
@@ -2544,6 +2631,141 @@ bool shouldBuildDock()
 }
 
 
+//==============================================================================
+// cavalryCompany
+// Written/Edited by AssertiveWall
+//
+// Manages cavalry separate from the main force. The cavalry should laways be 
+// active in some capacity.
+// 
+// Steps:
+// - Check for active defense or attack plans
+// - Look for easy targets
+// - Look for obvious raiding points
+// - 
+//
+//==============================================================================
+rule cavalryCompany
+inactive
+minInterval 15
+{
+   vector baseGatherPoint = kbBaseGetMilitaryGatherPoint(cMyID, kbBaseGetMainID(cMyID));
+   int opportunityID = -1;
+   int opportunityRange = distance(baseGatherPoint, guessEnemyLocation());
+   int enemyStrength = 0;
+   vector location = cInvalidVector;
+   int friendlyStrength = getFriendlyArmyValue(gcavalryCompanyPlan);
+
+   // First set up the persistent cavalry company plan
+   if (gcavalryCompanyPlan < 0) // First run, create a persistent plan.
+   {
+      gcavalryCompanyPlan = aiPlanCreate("Persistent Cavalry Company", cPlanCombat);
+
+      aiPlanSetVariableInt(gcavalryCompanyPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
+      aiPlanSetVariableInt(gcavalryCompanyPlan, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+      aiPlanSetVariableInt(gcavalryCompanyPlan, cCombatPlanTargetPlayerID, 0, cMyID);
+      aiPlanSetVariableVector(gcavalryCompanyPlan, cCombatPlanTargetPoint, 0, baseGatherPoint);
+      aiPlanSetInitialPosition(gcavalryCompanyPlan, baseGatherPoint);
+      aiPlanSetDesiredPriority(gcavalryCompanyPlan, 65);
+      aiPlanSetVariableVector(gcavalryCompanyPlan, cCombatPlanGatherPoint, 0, baseGatherPoint);
+      aiPlanSetVariableFloat(gcavalryCompanyPlan, cCombatPlanGatherDistance, 0, 40.0);  
+      aiPlanSetVariableInt(gcavalryCompanyPlan, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
+      // Done when we retreat, retreat when outnumbered, done when there's no target after 10 seconds
+      aiPlanSetVariableInt(gcavalryCompanyPlan, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeNoTarget);
+      aiPlanSetVariableInt(gcavalryCompanyPlan, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+      aiPlanSetVariableInt(gcavalryCompanyPlan, cCombatPlanNoTargetTimeout, 0, 10000);
+      
+      // All the cavalry
+      aiPlanAddUnitType(gcavalryCompanyPlan, cUnitTypeAbstractCavalry, 0, 200, 200);
+      
+      aiPlanSetActive(gcavalryCompanyPlan);
+   }
+
+   // Check for if we are attacking or defending
+   if (isDefendingOrAttacking() == true)
+   {  // Drop the priority to allow other plans to steal from it
+      aiPlanSetDesiredPriority(gcavalryCompanyPlan, 5);
+   }
+   else
+   {  // Supposed to be higher than standard attack plans
+      aiPlanSetDesiredPriority(gcavalryCompanyPlan, 65);
+   }
+
+   // Look for things to attack
+
+   // Villagers
+   if (opportunityID < 0)
+   {
+      opportunityID = getClosestUnitByLocation(cUnitTypeAbstractVillager, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
+         baseGatherPoint, opportunityRange); 
+      if (opportunityID > 0)
+      {  // Find strength of nearby enemy
+         location = kbUnitGetPosition(opportunityID);
+         enemyStrength = getAreaStrength(location, 25.0, cPlayerRelationEnemyNotGaia);
+         if (friendlyStrength < 2 * enemyStrength)
+         {  // Reset if it's not good enough
+            opportunityID = -1;
+         }
+      }
+   }
+   // Artillery in the Open
+   if (opportunityID < 0)
+   {
+      opportunityID = getClosestUnitByLocation(cUnitTypeAbstractArtillery, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
+         baseGatherPoint, opportunityRange); 
+      if (opportunityID > 0)
+      {  // Find strength of nearby enemy
+         location = kbUnitGetPosition(opportunityID);
+         enemyStrength = getAreaStrength(location, 25.0, cPlayerRelationEnemyNotGaia);
+         if (friendlyStrength < 2 * enemyStrength)
+         {  // Reset if it's not good enough
+            opportunityID = -1;
+         }
+      }
+   }
+   // Trading posts
+   if (opportunityID < 0)
+   {
+      opportunityID = getClosestUnitByLocation(cUnitTypeTradingPost, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
+         baseGatherPoint, opportunityRange); 
+      if (opportunityID > 0)
+      {  // Find strength of nearby enemy
+         location = kbUnitGetPosition(opportunityID);
+         enemyStrength = getAreaStrength(location, 25.0, cPlayerRelationEnemyNotGaia);
+         if (friendlyStrength < 3 * enemyStrength)
+         {  // Reset if it's not good enough
+            opportunityID = -1;
+         }
+      }
+   }
+   // Ports
+   if (opportunityID < 0)
+   {
+      opportunityID = getClosestUnitByLocation(gDockUnit, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
+         baseGatherPoint, opportunityRange); 
+      if (opportunityID > 0)
+      {  // Find strength of nearby enemy
+         location = kbUnitGetPosition(opportunityID);
+         enemyStrength = getAreaStrength(location, 25.0, cPlayerRelationEnemyNotGaia);
+         if (friendlyStrength < 3 * enemyStrength)
+         {  // Reset if it's not good enough
+            opportunityID = -1;
+         }
+      }
+   }
+
+
+   if (opportunityID < 0)
+   {
+      return; // Return if there are no suitable targets
+   }
+
+   aiPlanSetVariableVector(gcavalryCompanyPlan, cCombatPlanTargetPoint, 0, location);
+
+
+
+
+}
 
 
 

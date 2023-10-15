@@ -107,7 +107,7 @@ minInterval 3
 //==============================================================================
 void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
 {
-   if (puid == gDockUnit)
+   if (puid == gDockUnit || puid == cUnitTypezpDrydock || puid == cUnitTypezpWaterFort)
    {
       return;
    }
@@ -1011,7 +1011,7 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
       aiPlanSetVariableInt(buildPlan, cBuildPlanInfluenceUnitFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
    }
 
-   // Weight towers to stay very close to center point, unless it's an island map, then go far away
+   // AssertiveWall: Weight towers to stay very close to center point, unless it's an island map, then go far away
    aiPlanSetVariableVector(buildPlan, cBuildPlanInfluencePosition, 0, testVec);// Position influence for landing position
    if ((gStartOnDifferentIslands == true) && gMigrationMap == false)
    {
@@ -1081,6 +1081,7 @@ bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
       case cUnitTypeDock:
       case cUnitTypeYPDockAsian:
       case cUnitTypedePort:
+      case cUnitTypezpDrydock:    // AssertiveWall: Venitian special dock from age of pirates
       {
          // AssertiveWall: Get a new dock position for two minutes after the first one encunters danger
          vector newNavyVec = gNavyVec;
@@ -2832,6 +2833,7 @@ minInterval 5
             {
                location = selectForwardBaseLocation();
             }
+
             if (location != cInvalidVector)
             {
                planID = aiPlanCreate("Forward " + kbGetUnitTypeName(buildingPUID) + " build plan ", cPlanBuild);
@@ -2860,6 +2862,12 @@ minInterval 5
 
                   gForwardBaseLocation = location;
                   gForwardBaseBuildPlan = planID;
+
+                  // AssertiveWall: Kick off a few plans to get rolling on the beachhead
+                  if (gStartOnDifferentIslands == true && (gMigrationMap == false))
+                  {
+                     establishForwardBeachHead(location);
+                  }
 
                   // Chat to my allies.
                   sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
@@ -2896,10 +2904,6 @@ minInterval 5
             if (buildForward == true && gForwardBaseID >= 0)
             { // If we have forward base, build there.
                planID = createSimpleBuildPlan(buildingPUID, 1, 70, false, cMilitaryEscrowID, gForwardBaseID, 1);
-            }
-            if (buildForward == true && gForwardBaseID >= 0 && gTimeToFish == true)
-            { // If it's a water map, try to build a forward dock
-               planID = createSimpleBuildPlan(gDockUnit, 1, 70, false, cMilitaryEscrowID, gForwardBaseID, 1);
             }
             else
             {
@@ -3655,42 +3659,14 @@ minInterval 5
          aiPlanSetDesiredResourcePriority(planID, 65); // AssertiveWall: up from 55
       }
 
-      // AssertiveWall: Check if plan requires transport and if it does, make sure no active transport plans are going on
-      int transportPlanID = -1;
-      //vector villagerPosition = kbUnitGetPosition(transportUnitID);
-      
-      if (kbAreAreaGroupsPassableByLand(socketAreaGroup, mainAreaGroup) == false)
-      {  
-         if (aiPlanGetIDByIndex(cPlanTransport, -1, true, 0) > 0)
-         {
-            return; // Return to try again. Should return until villager arrives on island.
-         }
-         else
-         {  // Create a transport plan for the unit
-            transportPlanID = createTransportPlan(kbBaseGetMilitaryGatherPoint(cMyID, kbBaseGetMainID(cMyID)), socketPosition, 100);
-            if (transportPlanID >= 0)
-            {
-               aiPlanAddUnitType(transportPlanID, gEconUnit, 1, 1, 1);
-               //aiPlanAddUnit(transportPlanID, transportUnitID);
-               aiPlanSetNoMoreUnits(transportPlanID, true);
-            }
-            aiPlanSetDesiredPriority(planID, 100);
-            aiPlanSetDesiredResourcePriority(planID, 100);
-         }
-      }
-
       // Go.
       aiPlanSetActive(planID, true);
 
       socketPosition = kbUnitGetPosition(socketID);
-      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, socketPosition);
-      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, mainBaseLocation);
 
       if (socketID == bestNativeSocketID)
       {
          gLastClaimNativeMissionTime = time;
-      // AssertiveWall: Only for troubleshooting purposes. Pings the place the AI is trying to build a native TP
-      // sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, socketPosition);
       }
       else
       {
