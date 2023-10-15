@@ -1876,7 +1876,7 @@ int createRepairPlan(int pri = 50)
 // createTransportPlan
 //==============================================================================
 int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint = cInvalidVector,
-                        int pri = 50, bool returnWhenDone = true)
+                        int pri = 100, bool returnWhenDone = true)
 {
    int shipQueryID = createSimpleUnitQuery(cUnitTypeTransport, cMyID, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(shipQueryID);

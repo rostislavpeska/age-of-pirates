@@ -1544,7 +1544,9 @@ minInterval 30
              buildingType = cUnitTypezpVeniceEmbassy;
              break;
          }
-        
+         /*case whateverthefuckrodanamedthewaterfort:
+            buildingType = cunitTypewhateverthefuckrodanamedthewaterfort;
+            break;*/
       }
 
       if (buildingType < 0) // Didn't find a building so go to the next iteration.
@@ -1563,6 +1565,21 @@ minInterval 30
             continue; // We can't make this building anymore so go to the next iteration.
          }
       }
+
+      // Need a different placement for the water fort. Just use the location build plan
+      /*if (buildingType == cunitTypewhateverthefuckrodanamedthewaterfort)
+      {
+         // Find a random point near gNavyVec
+         int location = gNavyVec;
+         float xRange = kbGetMapXSize() * 0.05;
+         float zRange = kbGetMapZSize() * 0.05;
+         xsVectorSetX(location, xsVectorGetX(location) + aiRandFloat(8.0 - xRange, xRange));
+         xsVectorSetZ(location, xsVectorGetZ(location) + aiRandFloat(8.0 - zRange, zRange));
+         // Create the build plan
+         createLocationBuildPlan(buildingType, 1, 100, true, -1, location, 0)
+         aiPlanAddUnitType(planID, wagonType, 1, 1, 1);
+         aiPlanAddUnit(planID, wagon);
+      }*/
 
       // AssertiveWall: wagon plan doesn't have an escrow, and skips queue
       planID = createSimpleBuildPlan(buildingType, 1, 75, true, -1, mainBaseID, 0, -1, true);

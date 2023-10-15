@@ -67,6 +67,9 @@ mutable void updateSettlersAndPopManager() {}
 mutable void transportShipmentArrive(int techID = -1) {}
 mutable void revoltedHandler(int techID = -1) {}
 
+// AssertiveWall
+//mutable void arrayResetSelf(int arrayID = -1) {}
+
 //==============================================================================
 // Includes.
 //==============================================================================
@@ -81,6 +84,7 @@ include "core\aiMilitary.xs";
 include "core\aiHCCards.xs";
 include "core\aiChats.xs";
 include "core\aiPirateRules.xs";
+include "core\aiarchibelagoeconomy.xs";
 include "core\aiSetup.xs";
 
 

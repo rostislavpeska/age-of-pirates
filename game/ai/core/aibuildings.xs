@@ -1081,6 +1081,7 @@ bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
       case cUnitTypeDock:
       case cUnitTypeYPDockAsian:
       case cUnitTypedePort:
+      case cUnitTypezpDrydock:    // AssertiveWall: Venitian special dock from age of pirates
       {
          // AssertiveWall: Get a new dock position for two minutes after the first one encunters danger
          vector newNavyVec = gNavyVec;

@@ -2903,6 +2903,10 @@ void econMaster(int mode = -1, int value = -1)
 {
    static int lastUpdateTime = 0;
    int time = xsGetTime();
+   if (gIsArchipelagoMap == true)
+   {
+      return;
+   }
 
    // These functions can be called less frequently than updateResourceDistribution().
    if (time - lastUpdateTime >= 30000)
@@ -2939,6 +2943,12 @@ inactive
 minInterval 10
 {
    econMaster();
+   // AssertiveWall: Switch to Archipelago economy rule
+   if (gIsArchipelagoMap == true)
+   {
+      xsEnableRule("taskVillagers");
+      xsDisableSelf();
+   }
 }
 
 //==============================================================================

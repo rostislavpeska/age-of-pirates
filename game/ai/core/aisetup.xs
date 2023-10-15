@@ -1177,6 +1177,13 @@ void analyzeMap()
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
    }
 
+   // AssertiveWall: Archipelago style maps
+   if (cRandomMapName == "euArchipelago" ||
+       cRandomMapName == "euArchipelagoLarge")
+   {
+      gIsArchipelagoMap = true;
+   }
+
    debugSetup("Island map is " + gIslandMap + ", players start on different islands is " + gStartOnDifferentIslands);
    
    // On these maps we want to transport, which is what aiSetWaterMap is used for.

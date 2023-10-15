@@ -50,10 +50,52 @@ extern int gWaterNuggetTarget = -1;          // Stores the target of whatever th
 extern vector gWaterNuggetTargetLoc = cInvalidVector;
 extern int gWaterNuggetTimeout = -1;         // Stores when a water nugget plan is made so it can be reset after too long
 
-extern bool gIsPirateMap = false;            // Set true for testing. Used for pirates of the carribean mod
+extern bool gIsPirateMap = false;            // Used for pirates of the carribean mod
+extern bool gIsArchipelagoMap = false;       // Used for multi-island maps like archipelago
+
+extern float gStartingHandicap = -1.0;       // Stores starting handicap to ensure we don't deviate too far
 
 
+extern vector gHomeBase = cInvalidVector;
+extern vector gDirection_UP = cInvalidVector;
+extern vector gDirection_DOWN = cInvalidVector;
+extern vector gDirection_RIGHT = cInvalidVector;
+extern vector gDirection_LEFT = cInvalidVector;
 
+extern int gFoodResources = -1;
+extern int gDecayingAnimals = -1;
+extern int gWoodResources = -1;
+extern int gGoldResources = -1;
+extern int gFoodNumWorkers = -1;
+extern int gDecayingNumWorkers = -1;
+extern int gMaxFoodWorkers = -1;
+extern int gWoodNumWorkers = -1;
+extern int gGoldNumWorkers = -1;
+extern int gMaxGoldWorkers = -1;
+
+extern int gVillagerQuery = -1;
+extern int gFoodQuery = -1;
+extern int gWoodQuery = -1;
+extern int gGoldQuery = -1;
+extern int gNumFoodVills = 0;
+extern int gNumGoldVills = 0;
+extern int gNumWoodVills = 0;
+extern int gReservedFoodVillagers = 0;
+extern int gReservedWoodVillagers = 0;
+extern int gReservedGoldVillagers = 0;
+
+extern int gArrayPlanIDs = -1;
+extern int gArrayPlan = -1;
+extern int gArrayPlanSizes = -1;
+extern int gArrayPlanNumElements = -1;
+
+extern int gAllyBaseArray = -1;
+extern int gEnemyBaseArray = -1;
+extern vector avgEnemyBaseLocation = cInvalidVector;
+
+extern int gMillTypePlans = -1;
+extern int gPlantationTypePlans = -1;
+extern int gHouseBuildPlans = -1;
 
 //==============================================================================
 // Buildings.

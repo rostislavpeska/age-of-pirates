@@ -62,7 +62,7 @@
 //==============================================================================
 /* scaleDifficulty
    AssertiveWall: adjusts the AI performance based on how well a player performs
-
+   Probably causes desync issues
 */
 //==============================================================================
 rule scaleDifficulty
@@ -429,71 +429,6 @@ minInterval 10
             aiPlanSetDesiredPriority(gWaterNuggetPlan, 21);
          }
          break;
-      }
-   }
-}
-
-//==============================================================================
-/* advancedAIFormations
-   AssertiveWall: check an army's composition vs that of the opponent, and 
-   change based on what the compositions are
-
-   ** not in use **
-   Doesn't seem to function. The units will change stance, but whenever there is 
-   infantry and cavalry together, the formation doesn't change into a box
-*/
-//==============================================================================
-rule advancedAIFormations
-inactive
-minInterval 5
-{
-   // Look for active attack plans (ignore defense for now, those are usually tight places anyway)
-   int attackPlan = aiPlanGetIDByTypeAndVariableType(cPlanCombat, cCombatPlanCombatType, cCombatPlanCombatTypeAttack);
-   if (attackPlan < 0)
-   {
-      return;
-   }
-
-   // Get the current location of the attack plan with the first unit
-   vector armyLoc =  kbUnitGetPosition(aiPlanGetUnitByIndex(attackPlan, 0));
-   int numberUnits = aiPlanGetNumberUnits(attackPlan, cUnitTypeLogicalTypeLandMilitary);
-   int unitID = -1;
-   int unitType = -1;
-
-   // Get some info on the nearby enemy
-   int enCavNumber = getUnitCountByLocation(cUnitTypeAbstractHandCavalry, cPlayerRelationEnemyNotGaia, cUnitStateAlive, armyLoc, 45.0);
-   int enArtyNumber = getUnitCountByLocation(cUnitTypeAbstractArtillery, cPlayerRelationEnemyNotGaia, cUnitStateAlive, armyLoc, 45.0);
-   int enInfNumber = getUnitCountByLocation(cUnitTypeAbstractInfantry, cPlayerRelationEnemyNotGaia, cUnitStateAlive, armyLoc, 45.0);
-
-   // Get some info on the friendly army
-   int frCavNumber = aiPlanGetNumberUnits(attackPlan, cUnitTypeAbstractHandCavalry);
-   int frArtyNumber = aiPlanGetNumberUnits(attackPlan, cUnitTypeAbstractArtillery);
-   int frInfNumber = aiPlanGetNumberUnits(attackPlan, cUnitTypeAbstractInfantry);
-
-   // Testing purposes
-   //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, armyLoc);
-
-   /* Tactic Options:
-      - cTacticVolley
-      - cTacticStagger
-      - cTacticMelee
-      - cTacticTrample
-      - cTacticCover
-      - cTacticDefend
-      - cTacticStandGround
-   */
-
-   for (i = 0; < numberUnits)
-   {
-      unitID = aiPlanGetUnitByIndex(attackPlan, i);
-      unitType = kbUnitGetProtoUnitID(unitID);
-      if (kbProtoUnitIsType(cMyID, unitType, cUnitTypeAbstractInfantry) == true)
-      {
-         aiUnitSetTactic(unitID, cTacticDefend);
-      }
-      else if (kbProtoUnitIsType(cMyID, unitType, cUnitTypeAbstractCavalry) == true)
-      {
-         aiUnitSetTactic(unitID, cTacticDefend);
       }
    }
 }
