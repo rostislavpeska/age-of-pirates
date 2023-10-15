@@ -2558,7 +2558,8 @@ minInterval 2
          cRandomMapName == "afswahilicoast" ||
          cRandomMapName == "afswahilicoastlarge" ||
          cRandomMapName == "zpeldorado" ||
-         cRandomMapName == "zptreasureisland")
+         cRandomMapName == "zptreasureisland" ||
+         cRandomMapName == "zpmediterranean")
    {
       gMigrationMap = true;
    }
