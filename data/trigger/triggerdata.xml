@@ -2175,5 +2175,75 @@
       <command>trPlayerGrantResources(%PlayerID%, "%Resource%", 0-%Count%);}</command>
       <command>else{trChatSendToPlayer(0, %PlayerID%, "%Message%");}</command>
     </effect>
+    <effect name="ZP AutoSetUp: Age of Pirates General">
+      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+      <command>}}</command>
+      <command>rule Human_Features active runImmediately highFrequency {</command>
+      <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
+      <command>xsDisableSelf();</command>
+      <command>return;</command>
+      <command>}</command>
+      <command>trTechSetStatus(%PlayerID%, cTechzpIsPirateMap, cTechStatusActive);</command>
+      <command>if (trTechStatusResearching(%PlayerID%, cTechzpPickConsulateTechAvailable)) {</command>
+      <command>if (kbGetCivForPlayer(%PlayerID%) == cCivChinese) {</command>
+      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOnChinese, cTechStatusActive);</command>
+      <command>} else if (kbGetCivForPlayer(%PlayerID%) == cCivIndians) {</command>
+      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOnIndian, cTechStatusActive);</command>
+      <command>} else if (kbGetCivForPlayer(%PlayerID%) == cCivJapanese) {</command>
+      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOnJapanese, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (trCurrentPlayer() == %PlayerID%) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hdkzuzkz active { if (true) { //</command>
+    </effect>
+    <effect name="ZP AutoSetUp: Maltese">
+      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+      <command>}}</command>
+      <command>rule Maltese_Natives_Setup active runImmediately highFrequency {</command>
+      <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
+      <command>xsDisableSelf();</command>
+      <command>return;</command>
+      <command>}</command>
+      <command>if (trTechStatusResearching(%PlayerID%, cTechzpMalteseCross)) {</command>
+      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOffMaltese, cTechStatusActive);</command>
+      <command>if (kbGetCivForPlayer(%PlayerID%) == cCivDEItalians) {</command>
+      <command>trTechSetStatus(%PlayerID%, cTechzpItalianSettlerBallance, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (trTechStatusCheck(%PlayerID%, cTechDEHCGondolas, cTechStatusActive) == true) {</command>
+      <command>trTechSetStatus(%PlayerID%, cTechzpItalianGondolaBallance, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (trCurrentPlayer() == %PlayerID%) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hdkzuzkz2 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP AutoSetUp: Jewish">
+      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+      <command>}}</command>
+      <command>rule Jewish_Natives_Setup active runImmediately highFrequency {</command>
+      <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
+      <command>xsDisableSelf();</command>
+      <command>return;</command>
+      <command>}</command>
+      <command>if (trTechStatusResearching(%PlayerID%, cTechzpJewishStar)) {</command>
+      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOffJewish, cTechStatusActive);</command>
+      <command>if (kbGetCivForPlayer(%PlayerID%) == cCivDEItalians) {</command>
+      <command>trTechSetStatus(%PlayerID%, cTechzpItalianSettlerBallance, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (trTechStatusCheck(%PlayerID%, cTechDEHCGondolas, cTechStatusActive) == true) {</command>
+      <command>trTechSetStatus(%PlayerID%, cTechzpItalianGondolaBallance, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (trCurrentPlayer() == %PlayerID%) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hdkzuzkz3 active { if (true) { //</command>
+    </effect>
   </effects>
 </trigger>
