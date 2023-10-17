@@ -2291,6 +2291,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMaltese</effect>     
     </effects>
@@ -5369,6 +5372,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>  
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
@@ -5435,7 +5441,7 @@
   </tech>
   <tech name ="zpAztecWaterTemple" type ="Normal">
 		<dbid>40196</dbid>
-		<displaynameid>300355</displaynameid>
+		<displaynameid>300859</displaynameid>
   	<researchpoints>20.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\water_temple_tech.png</icon>
@@ -5837,6 +5843,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffJewish</effect>
     </effects>
@@ -6283,6 +6292,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMalteseLand</effect>  
     </effects>
@@ -6599,7 +6611,10 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>  
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientists</effect>
     </effects>
@@ -8832,6 +8847,10 @@
       <effect type="TechStatus" status="obtainable">zpConsulateVeniceDolphin</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateVeniceCornaro</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffVenice</effect>
     </effects>

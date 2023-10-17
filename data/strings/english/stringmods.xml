@@ -189,7 +189,7 @@
       <string _locid="300187">ZP SPC Treasure Ship</string>
       <string _locid="300188">Treasure Ship</string>
       <string _locid="300189">Mother of all ships</string>
-      <string _locid="300190">Kamikadze</string>
+      <string _locid="300190">Floating Dragon</string>
       <string _locid="300191">ZP Colonization Wagon Asian</string>
       <string _locid="300192">Turtle Ship</string>
       <string _locid="300193">ZP Test Turtle Ship</string>
@@ -355,8 +355,8 @@
       <string _locid="300352">Extends City influence. Allows you to train new units, buildings and provides you completely new techs and shipments. Increases Aztec units build limit.</string>
       <string _locid="300353">Aztec Villager</string>
       <string _locid="300354">ZP NAT Aztec Villager</string>
-      <string _locid="300355">Temple of the Waters</string>
-      <string _locid="300356">ZP Temple of the Waters</string>
+      <string _locid="300355">Native Consulate</string>
+      <string _locid="300356">ZP Native Consulate</string>
       <string _locid="300357">Maya</string>
       <string _locid="300358">ZP Maya Holcan Spearman Proxy</string>
       <string _locid="300359">Zapotec</string>
@@ -400,9 +400,9 @@
       <string _locid="300397">ZP Native Aztec Temple D</string>
       <string _locid="300398">Aztec Gold</string>
       <string _locid="300399">ZP Native Aztec House</string>
-      <string _locid="300400">Temple of the Waters (Jesuit)</string>
-      <string _locid="300401">Temple of the Waters (Maya)</string>
-      <string _locid="300402">Temple of the Waters (Zapotec)</string>
+      <string _locid="300400">Native Consulate (Jesuit)</string>
+      <string _locid="300401">Native Consulate (Maya)</string>
+      <string _locid="300402">Native Consulate (Zapotec)</string>
       <string _locid="300403">Aztec Gold (Migration Map): Discover ancient Aztec cities hidden in the jungle. Players start in divided areas on one river bank with very limited resources and have to migrate to the other bank. \n\nSettlements: Aztec Cities, Renegades</string>
       <string _locid="300404">The secret is hidden behind the river. The legendary ancients cities should be right there. Who discovers them first? You or your enemy?</string>
       <string _locid="300405">Jewish</string>
@@ -489,8 +489,8 @@
       <string _locid="300486">Pick Renegade Captain</string>
       <string _locid="300487">Pick a renegade captain and train new units and research new techs</string>
       <string _locid="300488">Native Water Flag</string>
-      <string _locid="300489">ZP Native Water Flag 1</string>
-      <string _locid="300490">ZP Native Water Flag 2</string>
+      <string _locid="300489">ZP Renegades Water Flag 1</string>
+      <string _locid="300490">ZP Renegades Water Flag 2</string>
       <string _locid="300491">Captain Nemo</string>
       <string _locid="300492">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Submarine \n\nTechnical revolutionary and underwater explorer. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nLegendary Nautilus, Submarine Fleet</string>
       <string _locid="300493">Thaddeus Valentine</string>
@@ -858,6 +858,7 @@
       <string _locid="300856">Malta</string>
       <string _locid="300857">Malta and Gozo Archipelago: Large naval map with fortified player Town centers. You start on the same island as your enemy. \n\nRecommended player setup: \n2 vs 2 \n3 vs 3 \n4 vs 4 \n\nSettlements: Maltese, Pirates</string>
       <string _locid="300858">Malta is a centrer of Mediterranean trade. The ships are comming from all the directions. Who controls Malta, controls the Mediterranean.</string>
+      <string _locid="300859">The Navel of the World</string>
     </language>
   </stringtable>
 </stringmods>
