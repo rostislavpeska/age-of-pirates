@@ -2178,7 +2178,7 @@
     <effect name="ZP Setup Politicians: General (Place First)">
       <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
       <command>}}</command>
-      <command>rule Human_Features active runImmediately highFrequency {</command>
+      <command>rule Human_Features%PlayerID% active runImmediately highFrequency {</command>
       <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
       <command>xsDisableSelf();</command>
       <command>return;</command>
@@ -2197,7 +2197,7 @@
       <command>}</command>
       <command>}</command>
       <command>}</command>
-      <command>rule Italian_Ballance inactive runImmediately highFrequency {</command>
+      <command>rule Italian_Ballance%PlayerID% inactive runImmediately highFrequency {</command>
       <command>if (kbGetCivForPlayer(%PlayerID%) == cCivDEItalians) {</command>
       <command>trTechSetStatus(%PlayerID%, cTechzpItalianSettlerBallance, cTechStatusActive);</command>
       <command>}</command>
@@ -2206,12 +2206,12 @@
       <command>}</command>
       <command>xsDisableSelf();</command>
       <command>}</command>
-      <command>rule hdkzuzkz active { if (true) { //</command>
+      <command>rule hdkzuzkz0%PlayerID% active { if (true) { //</command>
     </effect>
     <effect name="ZP Setup Politicians: Maltese">
       <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
       <command>}}</command>
-      <command>rule Maltese_Natives_Setup active runImmediately highFrequency {</command>
+      <command>rule Maltese_Natives_Setup%PlayerID% active runImmediately highFrequency {</command>
       <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
       <command>xsDisableSelf();</command>
       <command>return;</command>
@@ -2224,12 +2224,12 @@
       <command>}</command>
       <command>}</command>
       <command>}</command>
-      <command>rule hdkzuzkz2 active { if (true) { //</command>
+      <command>rule hdkzuzkz2%PlayerID% active { if (true) { //</command>
     </effect>
     <effect name="ZP Setup Politicians: Jewish">
       <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
       <command>}}</command>
-      <command>rule Jewish_Natives_Setup active runImmediately highFrequency {</command>
+      <command>rule Jewish_Natives_Setup%PlayerID% active runImmediately highFrequency {</command>
       <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
       <command>xsDisableSelf();</command>
       <command>return;</command>
@@ -2242,12 +2242,12 @@
       <command>}</command>
       <command>}</command>
       <command>}</command>
-      <command>rule hdkzuzkz3 active { if (true) { //</command>
+      <command>rule hdkzuzkz3%PlayerID% active { if (true) { //</command>
     </effect>
     <effect name="ZP Setup Politicians: Pirates">
       <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
       <command>}}</command>
-      <command>rule Pirate_politicians_Setup active runImmediately highFrequency {</command>
+      <command>rule Pirate_politicians_Setup%PlayerID% active runImmediately highFrequency {</command>
       <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
       <command>xsDisableSelf();</command>
       <command>return;</command>
@@ -2260,7 +2260,7 @@
       <command>}</command>
       <command>}</command>
       <command>}</command>
-      <command>rule hdkzuzkz5 active { if (true) { //</command>
+      <command>rule hdkzuzkz5%PlayerID% active { if (true) { //</command>
     </effect>
     <effect name="ZP Setup Ship Training: Pirates">
       <param name="SocketRadius" dispname="Socket Radius" vartype="float">35</param>
@@ -2907,7 +2907,7 @@
     <effect name="ZP Setup Politicians: Wokou">
       <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
       <command>}}</command>
-      <command>rule Wokou_politicians_Setup active runImmediately highFrequency {</command>
+      <command>rule Wokou_politicians_Setup%PlayerID% active runImmediately highFrequency {</command>
       <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
       <command>xsDisableSelf();</command>
       <command>return;</command>
@@ -2920,12 +2920,12 @@
       <command>}</command>
       <command>}</command>
       <command>}</command>
-      <command>rule hdkzuzkz8 active { if (true) { //</command>
+      <command>rule hdkzuzkz8%PlayerID% active { if (true) { //</command>
     </effect>
-    <effect name="ZP Setup Politicians: Renegades">
+    <effect name="ZP Setup Politicians: Renegades (Scientists)">
       <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
       <command>}}</command>
-      <command>rule Scientists_politicians_Setup active runImmediately highFrequency {</command>
+      <command>rule Scientists_politicians_Setup%PlayerID% active runImmediately highFrequency {</command>
       <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
       <command>xsDisableSelf();</command>
       <command>return;</command>
@@ -2938,9 +2938,9 @@
       <command>}</command>
       <command>}</command>
       <command>}</command>
-      <command>rule hdkzuzkz9 active { if (true) { //</command>
+      <command>rule hdkzuzkz9%PlayerID% active { if (true) { //</command>
     </effect>
-    <effect name="ZP Setup Ship Training: Renegades">
+    <effect name="ZP Setup Ship Training: Renegades (Scientists)">
       <param name="SocketRadius" dispname="Socket Radius" vartype="float">35</param>
       <param name="ConversionRadius" dispname="Water Flag Radius" vartype="float">150</param>
       <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">default</param>
@@ -3278,14 +3278,14 @@
       <command>highFrequency</command>
       <command>{</command>
       <command>int socketOwnerScientist = 0;</command>
-      <command loop="" loopparm="Socket1">socketOwnerScientist = getSocketOwnerScientist(%Socket1%);</command>
+      <command loop="" loopparm="Socket1">socketOwnerScientist = getSocketOwnerScientist(%Socket2%);</command>
       <command>if (trTime() - cActivationTime &gt;= 2)</command>
       <command>{</command>
       <command>trTechSetStatus(socketOwnerScientist, cTechzpReduceSteamerBuildLimit, cTechStatusActive);</command>
       <command>xsDisableSelf();</command>
       <command>}</command>
       <command>}</command>      
-      <command>rule hdkzuzkz10 active { if (true) { xsDisableSelf();</command>
+      <command>rule bdkzuzkz10 active { if (true) { xsDisableSelf();</command>
     </effect>
     <effect name="ZP Setup Ship Training: Venetians">
       <param name="SocketRadius" dispname="Socket Radius" vartype="float">35</param>
@@ -3550,12 +3550,12 @@
       <command>xsDisableSelf();</command>
       <command>}</command>
       <command>}</command>
-      <command>rule hdkzuzkz11 active { if (true) { xsDisableSelf();</command>
+      <command>rule bdkzuzkz11 active { if (true) { xsDisableSelf();</command>
     </effect>
     <effect name="ZP Setup Politicians: Venetians">
       <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
       <command>}}</command>
-      <command>rule Venice_politicians_Setup active runImmediately highFrequency {</command>
+      <command>rule Venice_politicians_Setup%PlayerID% active runImmediately highFrequency {</command>
       <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
       <command>xsDisableSelf();</command>
       <command>return;</command>
@@ -3568,16 +3568,16 @@
       <command>}</command>
       <command>}</command>
       <command>}</command>
-      <command>rule hdkzuzkz12 active { if (true) { //</command>
+      <command>rule bdkzuzkz12%PlayerID% active { if (true) { //</command>
     </effect>
     <effect name="ZP Setup Politicians: Aztecs - Water Temple">
       <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
       <command>}}</command>
-      <command>rule Is_Aztec_Map active runImmediately highFrequency {</command>
+      <command>rule Is_Aztec_Map%PlayerID% active runImmediately highFrequency {</command>
       <command>trTechSetStatus(%PlayerID%, cTechzpIsAztecMap, cTechStatusActive);</command>
       <command>xsDisableSelf();</command>
       <command>}</command>
-      <command>rule Aztec_politicians_Setup active runImmediately highFrequency {</command>
+      <command>rule Aztec_politicians_Setup%PlayerID% active runImmediately highFrequency {</command>
       <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
       <command>xsDisableSelf();</command>
       <command>return;</command>
@@ -3590,16 +3590,16 @@
       <command>}</command>
       <command>}</command>
       <command>}</command>
-      <command>rule hdkzuzkz13 active { if (true) { //</command>
+      <command>rule bdkzuzkz13%PlayerID% active { if (true) { //</command>
     </effect>
     <effect name="ZP Setup Politicians: SPC Sufi - Middle East">
       <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
       <command>}}</command>
-      <command>rule Is_MiddleEast_Map active runImmediately highFrequency {</command>
+      <command>rule Is_MiddleEast_Map%PlayerID% active runImmediately highFrequency {</command>
       <command>trTechSetStatus(%PlayerID%, cTechzpMediterraneanSufi, cTechStatusActive);</command>
       <command>xsDisableSelf();</command>
       <command>}</command>
-      <command>rule hdkzuzkz14 active { if (true) { //</command>
+      <command>rule bdkzuzkz14%PlayerID% active { if (true) { //</command>
     </effect>
   </effects>
 </trigger>
