@@ -214,7 +214,7 @@
       <string _locid="300212">The Big Theft</string>
       <string _locid="300213">Ships a Treasure Ship stolen by your Wokou alies with Sao Feng himself on board.</string>
       <string _locid="300214">Friendly Shipyard</string>
-      <string _locid="300215">ZP Wokou Japanese Steamer</string>
+      <string _locid="300215">ZP SHP Destroyer</string>
       <string _locid="300216">Matsura Takanobu</string>
       <string _locid="300217">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWokou Monk \n\nNative archer. Shipments from foreign allies. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nPacific Allies (Random Legendary Ship)</string>
       <string _locid="300218">The Iron Fleet</string>
@@ -704,7 +704,7 @@
       <string _locid="300702">Doge's Guard</string>
       <string _locid="300703">Cost: 1000 &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt; \n • Sends 12 Pavisiers</string>
       <string _locid="300704">ZP NAT MERC Venetian Pavisier</string>
-      <string _locid="300705">ZP Venetian Land Spawn Flag 1</string>
+      <string _locid="300705">ZP Venetian Land Spawn Flag</string>
       <string _locid="300706">Venetian Flag</string>
       <string _locid="300707">Venetian Home City Gather Point</string>
       <string _locid="300708">Veteran Venetians</string>
@@ -726,7 +726,7 @@
       <string _locid="300724">Venetian Galleass</string>
       <string _locid="300725">Ship of the Line</string>
       <string _locid="300726">Experimental Bombard</string>
-      <string _locid="300727">ZP Venetian Bombard</string>
+      <string _locid="300727">ZP NAT Venetian Bombard</string>
       <string _locid="300728">Venetian Bombards</string>
       <string _locid="300729">"Everything has a price, even loyality. If you have money, we can be friends."</string>
       <string _locid="300730">Venetian House</string>
@@ -814,15 +814,15 @@
       <string _locid="300812">Ships a Venetian Embassy Wagon and unlocks more Venetian shipments which can be sent from the Embassy building.</string>
       <string _locid="300813">Allows to send Venetian Shipments</string>
       <string _locid="300814">San Marco Guard</string>
-      <string _locid="300815">Ships Dodge's Guards (Can be sent in finite times)</string>
-      <string _locid="300816">Venetian Expeditionary Army</string>
-      <string _locid="300817">Ships Venetian Bombards and Dodge's Guards</string>
+      <string _locid="300815">Ships Dodge's Guards (Can be sent in always when bellow build limit: 12)</string>
+      <string _locid="300816">Venetian Bombard</string>
+      <string _locid="300817">Ships Venetian Bombard (Can be sent in always when bellow build limit: 2)</string>
       <string _locid="300818">Venetian Exploration Fleet</string>
-      <string _locid="300819">Ships two Venetian Galleys (Can be sent in finite times)</string>
+      <string _locid="300819">Ships Venetian Galleass (Can be sent in always when bellow build limit: 2)</string>
       <string _locid="300820">Venetian Expeditionary Fleet</string>
       <string _locid="300821">Ships two Venetian Galleass ships</string>
-      <string _locid="300822">Venetian Mercenary Brigade (Can be sent in finite times)</string>
-      <string _locid="300823">Ships Adralic Sea Mercenaries</string>
+      <string _locid="300822">Venetian Mercenaries</string>
+      <string _locid="300823">Ships Adralic Sea Mercenaries (Can be sent always when bellow population limit)</string>
       <string _locid="300824">Dodge's Guard</string>
       <string _locid="300825">ZP NAT Dodge's Guard</string>
       <string _locid="300826">Veteran Dodge's Guard</string>
@@ -859,6 +859,11 @@
       <string _locid="300857">Malta and Gozo Archipelago: Large naval map with fortified player Town centers. You start on the same island as your enemy. \n\nRecommended player setup: \n2 vs 2 \n3 vs 3 \n4 vs 4 \n\nSettlements: Maltese, Pirates</string>
       <string _locid="300858">Malta is a centrer of Mediterranean trade. The ships are comming from all the directions. Who controls Malta, controls the Mediterranean.</string>
       <string _locid="300859">The Navel of the World</string>
+      <string _locid="300860">Venetian Brigade</string>
+      <string _locid="300861">Ships the whole Venetian Brigade.</string>
+      <string _locid="300862">ZP NAT MERC Venetian Bombard</string>
+      <string _locid="300863">ZP Merc Nautilus</string>
+      <string _locid="300864">ZP Merc Destroyer</string>
     </language>
   </stringtable>
 </stringmods>

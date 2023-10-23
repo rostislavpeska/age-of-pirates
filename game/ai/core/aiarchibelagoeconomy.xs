@@ -10,6 +10,25 @@
 // Custom Array functions.
 // All from Better AI
 //==============================================================================
+
+// Integer User Variables
+int arrayCreateInt(int numElements = 1, string description = "default")
+{
+	gArrayPlanIDs++;
+	aiPlanAddUserVariableInt(gArrayPlan, gArrayPlanIDs, description, numElements);
+
+	// 1 value (index 0) to represent the size (the defined elements) of the array at index gArrayPlanIDs.
+	aiPlanAddUserVariableInt(gArrayPlanSizes, gArrayPlanIDs, "Size of Array " + description, 1);
+	// Default is size 0, being that when the User Var is created, the default value is -1, or undefined.
+	aiPlanSetUserVariableInt(gArrayPlanSizes, gArrayPlanIDs, 0, 0);
+
+	// 1 value (index 0) to represent the number of (all, even undefined) elements of the array at index gArrayPlanIDs.
+	aiPlanAddUserVariableInt(gArrayPlanNumElements, gArrayPlanIDs, "Num Elements of Array " + description, 1);
+	aiPlanSetUserVariableInt(gArrayPlanNumElements, gArrayPlanIDs, 0, numElements);
+
+	return(gArrayPlanIDs);
+}
+
 int arrayGetNumElements(int arrayID = -1)
 {
 	if (arrayID <= -1)
@@ -418,6 +437,892 @@ int findTradingLodge(int resourceID = -1)
 	return (-1); // Should be -1.
 }
 
+// AssertiveWall: Adapted from Ceylon Nomad Start. Takes an approximate pickup and dropoff, and returns the 
+// closest dropoff location 
+// Does not contain all the same checks as the islandMigration rule
+vector getDropoffPoint(vector pickup = cInvalidVector, vector dropoff = cInvalidVector)
+{
+	int areaCount = 0;
+	vector myLocation = pickup;
+	int myAreaGroup = -1;
+
+	int area = 0;
+	int areaGroup = -1;
+
+	areaCount = kbAreaGetNumber();
+	myAreaGroup = kbAreaGroupGetIDByPosition(myLocation);
+
+	int closestArea = -1;
+	float closestAreaDistance = kbGetMapXSize();
+
+	for (area = 0; < areaCount)
+	{
+		if (kbAreaGetType(area) == cAreaTypeWater)
+		{
+			continue;
+		}
+
+		areaGroup = kbAreaGroupGetIDByPosition(kbAreaGetCenter(area));
+		if (kbAreaGroupGetNumberAreas(areaGroup) - kbAreaGroupGetNumberAreas(myAreaGroup) <= 10)
+		{
+			continue;
+		}
+
+		bool bordersWater = false;
+		int borderAreaCount = kbAreaGetNumberBorderAreas(area);
+		for (i = 0; < borderAreaCount)
+		{
+			if (kbAreaGetType(kbAreaGetBorderAreaID(area, i)) == cAreaTypeWater)
+			{
+			bordersWater = true;
+			break;
+			}
+		}
+
+		if (bordersWater == false)
+		{
+			continue;
+		}
+
+		// Check to make sure this area is connected to the dropoff
+		if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(dropoff), areaGroup) == false)
+		{
+			continue;
+		}
+
+		float dist = xsVectorLength(kbAreaGetCenter(area) - myLocation);
+		if (dist < closestAreaDistance)
+		{
+			closestAreaDistance = dist;
+			closestArea = area;
+		}
+	}
+
+   return kbAreaGetCenter(closestArea);
+}
+
+//==============================================================================
+// addBetterPlantationBuildPlan
+//==============================================================================
+int addBetterPlantationBuildPlan(void)
+{
+	if (gTimeForPlantations == false)
+		gTimeForPlantations = true;
+
+	// We are already maxed out.
+	if (kbUnitCount(cMyID, gPlantationUnit, cUnitStateABQ) + arrayGetSize(gPlantationTypePlans) >=
+		kbGetBuildLimit(cMyID, gPlantationUnit) && kbGetBuildLimit(cMyID, gPlantationUnit) > 0)
+		return(-1);
+
+	int buildPlanID = createSimpleBuildPlan(gPlantationUnit, 1, 70, true, cEconomyEscrowID, kbBaseGetMainID(cMyID), 1);
+	aiPlanSetDesiredResourcePriority(buildPlanID, 60); // above average but below villager production (indian villagers cost wood)
+
+	return (buildPlanID);
+}
+
+//==============================================================================
+// addMillBuildPlan
+//==============================================================================
+int addBetterMillBuildPlan(void)
+{
+	if (gTimeToFarm == false)
+		gTimeToFarm = true;
+
+	// We are already maxed out.
+	if (kbUnitCount(cMyID, gFarmUnit, cUnitStateABQ) + arrayGetSize(gMillTypePlans) >=
+		kbGetBuildLimit(cMyID, gFarmUnit) && kbGetBuildLimit(cMyID, gFarmUnit) > 0)
+		return(-1);
+
+	int buildPlanID = createSimpleBuildPlan(gFarmUnit, 1, 70, true, cEconomyEscrowID, kbBaseGetMainID(cMyID), 1);
+
+	aiPlanSetDesiredResourcePriority(buildPlanID, 60); // above average but below villager production (indian villagers cost wood)
+
+	return (buildPlanID);
+}
+
+//==============================================================================
+// updateFoodBreakdown
+//
+// Populate an array with food resources that should be gathered.
+//==============================================================================
+void updateBetterFoodBreakdown(void)
+{
+	arrayResetSelf(gFoodResources);
+	arrayResetSelf(gDecayingAnimals);
+	arrayResetSelf(gFoodNumWorkers);
+	arrayResetSelf(gDecayingNumWorkers);
+	arrayResetSelf(gMaxFoodWorkers);
+
+	int numberResults = 0;
+	// Get a rough estimate on our food supply in terms of how many villagers
+	// I allow to gather from the particular resource multiplied by 0.8.
+	// If by the end totalResourceWorth is not enough, then we should prepare
+	// to build a Mill type. Made a float for certain calculations.
+	float resourceWorth = 0.0;
+	float totalResourceWorth = 0.0;
+	int resourceID = -1;
+	int planID = -1;
+	int numWorkers = -1;
+	int temp = -1;
+
+	// Search for food.
+	if (gFoodQuery < 0)
+	{
+		gFoodQuery = kbUnitQueryCreate("Food Resources Query");
+		kbUnitQuerySetIgnoreKnockedOutUnits(gFoodQuery, true);
+		kbUnitQuerySetSeeableOnly(gFoodQuery, false);
+		kbUnitQuerySetPosition(gFoodQuery, gHomeBase);
+		//kbUnitQuerySetAreaGroupID(gFoodQuery, kbAreaGroupGetIDByPosition(gHomeBase));
+	}
+	kbUnitQuerySetMaximumDistance(gFoodQuery, 220.0);
+	kbUnitQueryResetResults(gFoodQuery);
+
+	// Herdables.
+	if (cMyCiv != cCivJapanese && cMyCiv != cCivIndians &&
+		civIsAfrican() == false && totalResourceWorth < gNumFoodVills)
+	{	// Decaying.
+		kbUnitQuerySetUnitType(gFoodQuery, cUnitTypeHerdable);
+		kbUnitQuerySetPlayerID(gFoodQuery, 0, false);
+		kbUnitQuerySetSeeableOnly(gFoodQuery, true);
+		kbUnitQuerySetActionType(gFoodQuery, cActionTypeDeath);
+		numberResults = kbUnitQueryExecute(gFoodQuery);
+
+		for (i = 0; < numberResults)
+		{
+			resourceID = kbUnitQueryGetResult(gFoodQuery, i);
+
+			if (resourceCloserToAlly(resourceID))
+				continue;
+
+			xsSetContextPlayer(0);
+			numWorkers = kbUnitGetNumberWorkers(resourceID);
+			xsSetContextPlayer(cMyID);
+			// Too many current gatherers.
+			if (numWorkers >= 4)
+			{
+				// Still count it because we are gathering it.
+				resourceWorth = resourceWorth + 1;
+				continue;
+			}
+
+			arrayPushInt(gDecayingAnimals, resourceID);
+			arrayPushInt(gDecayingNumWorkers, numWorkers);
+			resourceWorth = resourceWorth + 1;
+		}
+
+		kbUnitQueryResetResults(gFoodQuery);
+
+		// Live.
+		kbUnitQuerySetPlayerID(gFoodQuery, cMyID, false);
+		kbUnitQuerySetActionType(gFoodQuery, -1);
+		kbUnitQuerySetSeeableOnly(gFoodQuery, false);
+		kbUnitQuerySetState(gFoodQuery, cUnitStateAlive);
+		numberResults = kbUnitQueryExecute(gFoodQuery);
+		numWorkers = 0; // If they are alive, there should be 0 workers.
+
+		for (i = 0; < numberResults)
+		{
+			resourceID = kbUnitQueryGetResult(gFoodQuery, i);
+
+			// Avoid unfattened animals.
+			if (kbUnitGetResourceAmount(resourceID, cResourceFood) <
+				kbUnitGetCarryCapacity(resourceID, cResourceFood))
+				continue;
+
+			// Avoid animals on shrines. Probably will always be false as
+			// since they are our herdables, they must be on our shrines, which would
+			// make us Japanese -- not even in this conditional statement.
+			xsSetContextPlayer(0);
+			temp = kbUnitGetTargetUnitID(resourceID);
+			xsSetContextPlayer(cMyID);
+			if (kbUnitIsType(temp, cUnitTypeypShrineJapanese) == true ||
+				kbUnitIsType(temp, cUnitTypeypWJToshoguShrine2) == true ||
+				kbUnitIsType(temp, cUnitTypeypWJToshoguShrine3) == true ||
+				kbUnitIsType(temp, cUnitTypeypWJToshoguShrine4) == true ||
+				kbUnitIsType(temp, cUnitTypeypWJToshoguShrine5) == true)
+			{
+				continue;
+			}
+
+			arrayPushInt(gFoodResources, resourceID);
+			arrayPushInt(gFoodNumWorkers, numWorkers);
+			arrayPushInt(gMaxFoodWorkers, 5);
+			resourceWorth = resourceWorth + 1;
+		}
+
+		totalResourceWorth += resourceWorth;
+		// Reset for other queries.
+		resourceWorth = 0.0;
+		kbUnitQueryResetResults(gFoodQuery);
+	}
+
+	// Huntables.
+	if (cMyCiv != cCivJapanese && totalResourceWorth < gNumFoodVills)
+	{	// Decaying
+		kbUnitQuerySetUnitType(gFoodQuery, cUnitTypeHuntable);
+		kbUnitQuerySetPlayerID(gFoodQuery, 0, false);
+		kbUnitQuerySetActionType(gFoodQuery, cActionTypeDeath);
+		kbUnitQuerySetSeeableOnly(gFoodQuery, true);
+		kbUnitQuerySetState(gFoodQuery, cUnitStateAny);
+		numberResults = kbUnitQueryExecute(gFoodQuery);
+
+		for (i = 0; < numberResults)
+		{
+			resourceID = kbUnitQueryGetResult(gFoodQuery, i);
+
+			if (resourceCloserToAlly(resourceID))
+				continue;
+
+			xsSetContextPlayer(0);
+			numWorkers = kbUnitGetNumberWorkers(resourceID);
+			xsSetContextPlayer(cMyID);
+			// Too many current gatherers.
+			if (numWorkers >= 5)
+			{
+				// Still count it because we are gathering it.
+				resourceWorth = resourceWorth + 1;
+				continue;
+			}
+
+			if (getDistance(kbUnitGetPosition(resourceID), gHomeBase) > 45)
+			{
+				if (getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+					cUnitStateAlive, kbUnitGetPosition(resourceID), 45.0) > 2)
+					continue;
+			}
+
+			arrayPushInt(gDecayingAnimals, resourceID);
+			arrayPushInt(gDecayingNumWorkers, numWorkers);
+			resourceWorth = resourceWorth + 1;
+		}
+
+		kbUnitQueryResetResults(gFoodQuery);
+
+		// Live
+		kbUnitQuerySetActionType(gFoodQuery, -1);
+		kbUnitQuerySetState(gFoodQuery, cUnitStateAlive);
+		kbUnitQuerySetSeeableOnly(gFoodQuery, false);
+		numberResults = kbUnitQueryExecute(gFoodQuery);
+		numWorkers = 0; // If they are alive, there should be 0 workers.
+
+		for (i = 0; < numberResults)
+		{
+			resourceID = kbUnitQueryGetResult(gFoodQuery, i);
+
+			if (resourceCloserToAlly(resourceID))
+				continue;
+
+			// Avoid animals on shrines.
+			xsSetContextPlayer(0);
+			temp = kbUnitGetTargetUnitID(resourceID);
+			xsSetContextPlayer(cMyID);
+			if (kbUnitIsType(temp, cUnitTypeypShrineJapanese) == true ||
+				kbUnitIsType(temp, cUnitTypeypWJToshoguShrine2) == true ||
+				kbUnitIsType(temp, cUnitTypeypWJToshoguShrine3) == true ||
+				kbUnitIsType(temp, cUnitTypeypWJToshoguShrine4) == true ||
+				kbUnitIsType(temp, cUnitTypeypWJToshoguShrine5) == true)
+			{
+				continue;
+			}
+
+			if (getDistance(kbUnitGetPosition(resourceID), gHomeBase) > 45)
+			{
+				if (getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+					cUnitStateAlive, kbUnitGetPosition(resourceID), 45.0) > 2)
+					continue;
+			}
+
+			arrayPushInt(gFoodResources, resourceID);
+			arrayPushInt(gFoodNumWorkers, numWorkers);
+			arrayPushInt(gMaxFoodWorkers, 5);
+			resourceWorth = resourceWorth + 1;
+		}
+
+		resourceWorth = resourceWorth * 4; // Count a Huntable as 4 villagers.
+		totalResourceWorth += resourceWorth;
+		// Reset for other queries.
+		resourceWorth = 0.0;
+		kbUnitQueryResetResults(gFoodQuery);
+	}
+
+	// Cherry Orchards.
+	if (totalResourceWorth < gNumFoodVills)
+	{
+		kbUnitQuerySetMaximumDistance(gFoodQuery, -1);
+		kbUnitQuerySetPlayerID(gFoodQuery, cMyID, false);
+		kbUnitQuerySetState(gFoodQuery, cUnitStateAlive);
+		kbUnitQuerySetUnitType(gFoodQuery, cUnitTypeypBerryBuilding);
+		numberResults = kbUnitQueryExecute(gFoodQuery);
+
+		for (i = 0; < numberResults)
+		{
+			resourceID = kbUnitQueryGetResult(gFoodQuery, i);
+
+			// Too many current gatherers on an Orchard.
+			numWorkers = kbUnitGetNumberWorkers(resourceID);
+			if (numWorkers == 28)
+			{	// Still count it because we are gathering it.
+				resourceWorth = resourceWorth + 1;
+				continue;
+			}
+
+			arrayPushInt(gFoodResources, resourceID);
+			arrayPushInt(gFoodNumWorkers, numWorkers);
+			arrayPushInt(gMaxFoodWorkers, 28);
+			resourceWorth = resourceWorth + 1;
+		}
+		resourceWorth = resourceWorth * 21; // Count a cherry orchard as 21 villagers.
+		totalResourceWorth += resourceWorth;
+		// Reset for other queries.
+		resourceWorth = 0.0;
+		kbUnitQueryResetResults(gFoodQuery);
+	}
+
+	// Berry types.
+	if (totalResourceWorth < gNumFoodVills)
+	{
+		kbUnitQuerySetMaximumDistance(gFoodQuery, 220.0);
+		kbUnitQuerySetPlayerID(gFoodQuery, 0, false);
+		kbUnitQuerySetState(gFoodQuery, cUnitStateAny);
+		kbUnitQuerySetUnitType(gFoodQuery, cUnitTypeAbstractFruit);
+		kbUnitQueryExecute(gFoodQuery);
+		numberResults = kbUnitQueryNumberResults(gFoodQuery);
+
+		for (i = 0; < numberResults)
+		{
+			resourceID = kbUnitQueryGetResult(gFoodQuery, i);
+
+			// Mango Groves are listed as 'AbstractFruit' in protoy.xml.
+			if (kbUnitIsType(resourceID, cUnitTypeypGroveBuilding) == true)
+				continue;
+
+			if (resourceCloserToAlly(resourceID))
+				continue;
+
+			// Too many current gatherers on Berry Bushes.
+			xsSetContextPlayer(0);
+			numWorkers = kbUnitGetNumberWorkers(resourceID);
+			xsSetContextPlayer(cMyID);
+			if (numWorkers >= 5)
+			{
+				// Still count it because we are gathering it.
+				resourceWorth = resourceWorth + 1;
+				continue;
+			}
+
+			if (getDistance(kbUnitGetPosition(resourceID), gHomeBase) > 45)
+			{
+				if (getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+					cUnitStateAlive, kbUnitGetPosition(resourceID), 45.0) > 2)
+					continue;
+			}
+
+			arrayPushInt(gFoodResources, resourceID);
+			arrayPushInt(gFoodNumWorkers, numWorkers);
+			arrayPushInt(gMaxFoodWorkers, 5);
+			resourceWorth = resourceWorth + 1;
+		}
+
+		resourceWorth = resourceWorth * 4; // Count a cherry orchard as 21 villagers.
+		totalResourceWorth += resourceWorth;
+		// Reset for other queries.
+		resourceWorth = 0.0;
+		kbUnitQueryResetResults(gFoodQuery);
+	}
+
+	// Mills/Farms/Paddies/Fields.
+	if (totalResourceWorth < gNumFoodVills || kbGetAge() >= cAge4)
+	{
+		kbUnitQuerySetMaximumDistance(gFoodQuery, -1);
+		kbUnitQuerySetPlayerID(gFoodQuery, cMyID, false);
+		kbUnitQuerySetState(gFoodQuery, cUnitStateABQ);
+		kbUnitQuerySetUnitType(gFoodQuery, gFarmUnit);
+		kbUnitQueryExecute(gFoodQuery);
+		numberResults = kbUnitQueryNumberResults(gFoodQuery);
+		int maxNumWorkers = 10;
+
+		for (i = 0; < numberResults)
+		{
+			resourceID = kbUnitQueryGetResult(gFoodQuery, i);
+			numWorkers = kbUnitGetNumberWorkers(resourceID);
+
+			// Field on Gold or maxed out.
+			if (kbUnitIsType(resourceID, cUnitTypedeField))
+			{
+				if (aiUnitGetTactic(resourceID) == cTacticFieldCoin)
+					continue;
+				else if (numWorkers == 3)
+				{	// Still count it because we are gathering it.
+					resourceWorth = resourceWorth + 1;
+					continue;
+				}
+				maxNumWorkers = 3;
+			}
+			// Paddy on Gold or maxed out.
+			else if (kbUnitIsType(resourceID, cUnitTypeypRicePaddy))
+			{
+				if (aiUnitGetTactic(resourceID) == cTacticPaddyCoin)
+					continue;
+				else if (numWorkers == 10)
+				{	// Still count it because we are gathering it.
+					resourceWorth = resourceWorth + 1;
+					continue;
+				}
+			}
+			// Hacienda on Gold or maxed out.
+			else if (kbUnitIsType(resourceID, cUnitTypedeHacienda))
+			{
+				if (aiUnitGetTactic(resourceID) == cTacticHaciendaCoin)
+					continue;
+				else if (numWorkers == 20)
+				{	// Still count it because we are gathering it.
+					resourceWorth = resourceWorth + 1;
+					continue;
+				}
+				maxNumWorkers = 20;
+			}
+			// Mill/Farm maxed out.
+			else if (numWorkers == 10)
+			{	// Still count it because we are gathering it.
+				resourceWorth = resourceWorth + 1;
+				continue;
+			}
+
+			arrayPushInt(gFoodResources, resourceID);
+			arrayPushInt(gFoodNumWorkers, numWorkers);
+			arrayPushInt(gMaxFoodWorkers, maxNumWorkers);
+			resourceWorth = resourceWorth + 1;
+		}
+
+		if (civIsAfrican() == true)
+			resourceWorth = resourceWorth * 2.7; // Count a Food Field as 2.7 villagers.
+		else if (cMyCiv == cCivDEMexicans)
+			resourceWorth = resourceWorth * 18; // Count a Food Hacienda as 18 villagers.
+		else
+			resourceWorth = resourceWorth * 9; // Count a Mill/Farm/Food Paddy as 9 villagers.
+
+		totalResourceWorth += resourceWorth;
+		// Reset of the query is unecessary as the rule will reset it when it runs again.
+	}
+
+	// Basically, if we have reached this point, we should probably build a food-producing
+	// building because we do not want to run out of gold resources.
+	int millWorth = 10;
+	int maxPlans = 4;
+	if (cMyCiv == cCivDEMexicans)
+	{
+		millWorth = 20;
+		maxPlans = 2;
+	}
+	else if (civIsAfrican() == true)
+	{
+		millWorth = 3;
+		maxPlans = 8;
+	}
+
+	if (totalResourceWorth < gNumFoodVills && kbGetAge() >= cAge3)
+	{
+		arrayRemoveDonePlans(gMillTypePlans);
+		if (arrayGetSize(gMillTypePlans) < maxPlans)
+		{
+			if (gNumFoodVills - totalResourceWorth > millWorth * arrayGetSize(gMillTypePlans))
+			{
+				planID = addBetterMillBuildPlan();
+				if (planID >= 0)
+				{
+					arrayPushInt(gMillTypePlans, planID);
+					aiPlanSetDesiredPriority(planID, 99);
+					aiPlanSetDesiredResourcePriority(planID, 99);
+				}
+			}
+		}
+	}
+}
+
+//==============================================================================
+// updateWoodBreakdown
+//
+// Populate an array with wood resources that should be gathered.
+//==============================================================================
+void updateBetterWoodBreakdown(void)
+{
+	arrayResetSelf(gWoodResources);
+	arrayResetSelf(gWoodNumWorkers);
+
+	int numberResults = 0;
+	int resourceID = -1;
+	int planID = -1;
+	int numWorkers = -1;
+
+	if (gWoodQuery < 0)
+	{
+		gWoodQuery = kbUnitQueryCreate("Wood Resources Query");
+		kbUnitQuerySetPlayerID(gWoodQuery, -1, false);
+		kbUnitQuerySetPlayerRelation(gWoodQuery, cPlayerRelationAny);
+		kbUnitQuerySetIgnoreKnockedOutUnits(gWoodQuery, true);
+		kbUnitQuerySetPosition(gWoodQuery, gHomeBase);
+		//kbUnitQuerySetAreaGroupID(gWoodQuery, kbAreaGroupGetIDByPosition(gHomeBase));
+		kbUnitQuerySetAscendingSort(gWoodQuery, true);
+		kbUnitQuerySetMaximumDistance(gWoodQuery, 300.0);
+	}
+	kbUnitQueryResetResults(gWoodQuery);
+
+	if (numberResults < gNumWoodVills)
+	{
+		kbUnitQuerySetPlayerID(gWoodQuery, 0, false);
+		kbUnitQuerySetUnitType(gWoodQuery, cUnitTypeWood);
+		kbUnitQuerySetState(gWoodQuery, cUnitStateAlive);
+		kbUnitQuerySetSeeableOnly(gWoodQuery, false);
+		kbUnitQueryExecute(gWoodQuery);
+
+		kbUnitQuerySetUnitType(gWoodQuery, cUnitTypeTree);
+		kbUnitQuerySetState(gWoodQuery, cUnitStateDead);
+		kbUnitQuerySetSeeableOnly(gWoodQuery, true);
+		kbUnitQueryExecute(gWoodQuery);
+		numberResults = kbUnitQueryNumberResults(gWoodQuery);
+
+		for (i = 0; < numberResults)
+		{
+			resourceID = kbUnitQueryGetResult(gWoodQuery, i);
+
+			xsSetContextPlayer(0);
+			numWorkers = kbUnitGetNumberWorkers(resourceID);
+			xsSetContextPlayer(cMyID);
+
+			// Too many current gatherers.
+			if (numWorkers >= 5)
+				continue;
+
+			if (getDistance(kbUnitGetPosition(resourceID), gHomeBase) > 45)
+			{
+				if (getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+					cUnitStateAlive, kbUnitGetPosition(resourceID), 45.0) > 2)
+					continue;
+			}
+
+			arrayPushInt(gWoodResources, resourceID);
+			arrayPushInt(gWoodNumWorkers, numWorkers);
+		}
+		// Reset of the query is unecessary as the rule will reset it when it runs again.
+	}
+}
+
+//==============================================================================
+// updateGoldBreakdown
+//
+// Populate an array with gold resources that should be gathered.
+//==============================================================================
+void updateBetterGoldBreakdown(void)
+{
+	arrayResetSelf(gGoldResources);
+	arrayResetSelf(gGoldNumWorkers);
+	arrayResetSelf(gMaxGoldWorkers);
+
+	int numberResults = 0;
+	float resourceWorth = 0.0;
+	float totalResourceWorth = 0.0;
+	int resourceID = -1;
+	int tradingLodge = -1;
+	int planID = -1;
+	int numWorkers = -1;
+
+	if (gGoldQuery < 0)
+	{
+		gGoldQuery = kbUnitQueryCreate("Gold Resources Query");
+		kbUnitQuerySetPlayerID(gGoldQuery, -1, false);
+		kbUnitQuerySetPlayerRelation(gGoldQuery, cPlayerRelationAny);
+		kbUnitQuerySetIgnoreKnockedOutUnits(gGoldQuery, true);
+		kbUnitQuerySetSeeableOnly(gGoldQuery, true);
+		kbUnitQuerySetPosition(gGoldQuery, gHomeBase);
+		//kbUnitQuerySetAreaGroupID(gGoldQuery, kbAreaGroupGetIDByPosition(gHomeBase));
+		kbUnitQuerySetAscendingSort(gGoldQuery, true);
+	}
+	kbUnitQuerySetMaximumDistance(gGoldQuery, 200.0);
+	if (kbGetAge() >= cAge4)
+		kbUnitQuerySetMaximumDistance(gGoldQuery, 150.0);
+	kbUnitQueryResetResults(gGoldQuery);
+
+	// Mountain Monasteries. (Note: Allies of Ethiopia can gather, but it is not enhanced)
+	if (totalResourceWorth < gNumGoldVills)
+	{
+		kbUnitQuerySetPlayerID(gGoldQuery, -1, false);
+		kbUnitQuerySetPlayerRelation(gGoldQuery, cPlayerRelationAlly);
+		kbUnitQuerySetUnitType(gGoldQuery, cUnitTypedeMountainMonastery);
+		kbUnitQuerySetState(gGoldQuery, cUnitStateAlive);
+		kbUnitQueryExecute(gGoldQuery);
+		numberResults = kbUnitQueryNumberResults(gGoldQuery);
+
+		for (i = 0; < numberResults)
+		{
+			resourceID = kbUnitQueryGetResult(gGoldQuery, i);
+
+			if (kbUnitGetResourceAmount(resourceID, cResourceGold) < 1.0)
+				continue;
+
+			numWorkers = kbUnitGetNumberWorkers(resourceID);
+			if (numWorkers == 20)
+			{	// Still count it because we are gathering it.
+				resourceWorth = resourceWorth + 1;
+				continue;
+			}
+
+			if (getDistance(kbUnitGetPosition(resourceID), gHomeBase) > 45)
+			{
+				if (getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+					cUnitStateAlive, kbUnitGetPosition(resourceID), 45.0) > 2)
+					continue;
+			}
+
+			arrayPushInt(gGoldResources, resourceID);
+			arrayPushInt(gGoldNumWorkers, numWorkers);
+			arrayPushInt(gMaxGoldWorkers, 20);
+			resourceWorth = resourceWorth + 1;
+		}
+
+		if (cMyCiv == cCivDEEthiopians)
+			resourceWorth = resourceWorth * 18; // Count a Mountain Monastery as 18 Villagers for Ethiopians.
+		else
+			resourceWorth = resourceWorth * 9; // Count it less since Ethiopia will primarily reap its benefit.
+		totalResourceWorth += resourceWorth;
+		// Reset for other queries.
+		resourceWorth = 0.0;
+		kbUnitQueryResetResults(gGoldQuery);
+	}
+
+	// Mines.
+	//
+	// Ethiopians should only check this if we do not have a suitable monastery to work
+	// or are almost maxed out working them. Otherwise all civs should check this as the
+	// Mountain Monastery poses no benefit to their gathering rates.
+	//
+	if ((totalResourceWorth < gNumGoldVills) || (cMyCiv != cCivDEEthiopians))
+	{
+		kbUnitQuerySetPlayerID(gGoldQuery, 0, false);
+		kbUnitQuerySetPlayerRelation(gGoldQuery, cPlayerRelationAny);
+		kbUnitQuerySetUnitType(gGoldQuery, cUnitTypeAbstractMine);
+		kbUnitQuerySetState(gGoldQuery, cUnitStateAlive);
+		kbUnitQueryExecute(gGoldQuery);
+		numberResults = kbUnitQueryNumberResults(gGoldQuery);
+
+		for (i = 0; < numberResults)
+		{
+			resourceID = kbUnitQueryGetResult(gGoldQuery, i);
+
+			if (resourceCloserToAlly(resourceID))
+				continue;
+
+			// We should not consider the mine here as its monastery will have been added
+			// from the previous query section.
+			if (getUnitCountByLocation(cUnitTypedeMountainMonastery, cPlayerRelationAny,
+				cUnitStateABQ, kbUnitGetPosition(resourceID), 5.0) > 0)
+				continue;
+
+			// Trading Lodge not in the query since PlayerID is set to 0.
+			// Anyways, this works better for building one.
+			if (cMyCiv == cCivXPIroquois || cMyCiv == cCivXPSioux)
+			{
+				tradingLodge = findTradingLodge(resourceID);
+				if (tradingLodge < 0)
+					continue;
+				else
+				{
+					resourceID = tradingLodge;
+					numWorkers = kbUnitGetNumberWorkers(resourceID);
+					// Too many current gatherers.
+					if (numWorkers == 10)
+					{	// Still count it because we are gathering it.
+						resourceWorth = resourceWorth + 1;
+						continue;
+					}
+				}
+			}
+			else
+			{
+				xsSetContextPlayer(0);
+				numWorkers = kbUnitGetNumberWorkers(resourceID);
+				xsSetContextPlayer(cMyID);
+				// Too many current gatherers.
+				if (numWorkers == 20)
+				{	// Still count it because we are gathering it.
+					resourceWorth = resourceWorth + 1;
+					continue;
+				}
+			}
+
+			if (getDistance(kbUnitGetPosition(resourceID), gHomeBase) > 45)
+			{
+				if (getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+					cUnitStateAlive, kbUnitGetPosition(resourceID), 45.0) > 2)
+					continue;
+			}
+
+			arrayPushInt(gGoldResources, resourceID);
+			arrayPushInt(gGoldNumWorkers, numWorkers);
+			arrayPushInt(gMaxGoldWorkers, 20);
+			resourceWorth = resourceWorth + 1;
+		}
+
+		if (cMyCiv == cCivXPIroquois || cMyCiv == cCivXPSioux)
+			resourceWorth = resourceWorth * 9; // Count a Tribal Marketplace as 9 villagers.
+		else
+			resourceWorth = resourceWorth * 18; // Count a Mine as 18 villagers.
+		totalResourceWorth += resourceWorth;
+		// Reset for other queries.
+		resourceWorth = 0.0;
+		kbUnitQueryResetResults(gGoldQuery);
+	}
+
+	// Estates/Paddies/Fields.
+	if (totalResourceWorth < gNumGoldVills || kbGetAge() >= cAge4)
+	{
+		kbUnitQuerySetMaximumDistance(gGoldQuery, -1);
+		kbUnitQuerySetPlayerID(gGoldQuery, cMyID, false);
+		kbUnitQuerySetUnitType(gGoldQuery, gPlantationUnit);
+		kbUnitQuerySetState(gGoldQuery, cUnitStateAlive);
+		kbUnitQueryExecute(gGoldQuery);
+		numberResults = kbUnitQueryNumberResults(gGoldQuery);
+		int maxNumWorkers = 10;
+
+		for (i = 0; < numberResults)
+		{
+			resourceID = kbUnitQueryGetResult(gGoldQuery, i);
+			numWorkers = kbUnitGetNumberWorkers(resourceID);
+
+			// Field on Food or maxed out.
+			if (kbUnitIsType(resourceID, cUnitTypedeField))
+			{
+				if (aiUnitGetTactic(resourceID) == cTacticFieldFood)
+					continue;
+				else if (numWorkers == 3)
+				{	// Still count it because we are gathering it.
+					resourceWorth = resourceWorth + 1;
+					continue;
+				}
+				maxNumWorkers = 3;
+			}
+			// Paddy on Food or maxed out.
+			else if (kbUnitIsType(resourceID, cUnitTypeypRicePaddy))
+			{
+				if (aiUnitGetTactic(resourceID) == cTacticPaddyFood)
+					continue;
+				else if (numWorkers == 10)
+				{	// Still count it because we are gathering it.
+					resourceWorth = resourceWorth + 1;
+					continue;
+				}
+			}
+			// Hacienda on Food or maxed out.
+			else if (kbUnitIsType(resourceID, cUnitTypedeHacienda))
+			{
+				if (aiUnitGetTactic(resourceID) == cTacticHaciendaFood)
+					continue;
+				else if (numWorkers == 20)
+				{	// Still count it because we are gathering it.
+					resourceWorth = resourceWorth + 1;
+					continue;
+				}
+				maxNumWorkers = 20;
+			}
+			// Estate maxed out.
+			else if (numWorkers == 10)
+			{	// Still count it because we are gathering it.
+				resourceWorth = resourceWorth + 1;
+				continue;
+			}
+
+			arrayPushInt(gGoldResources, resourceID);
+			arrayPushInt(gGoldNumWorkers, numWorkers);
+			arrayPushInt(gMaxGoldWorkers, maxNumWorkers);
+			resourceWorth = resourceWorth + 1;
+		}
+
+		if (civIsAfrican() == true)
+			resourceWorth = resourceWorth * 2.9; // Count a Gold Field as 2.9 villagers.
+		else if (cMyCiv == cCivDEMexicans)
+			resourceWorth = resourceWorth * 18; // Count a Gold Hacienda as 18 villagers.
+		else
+			resourceWorth = resourceWorth * 9; // Count an Estate/GoldPaddy as 9 villagers.
+		
+		totalResourceWorth += resourceWorth;
+		// Reset of the query is unecessary as the rule will reset it when it runs again.
+	}
+
+	// Basically, if we have reached this point, we should probably build a gold-producing
+	// building because we do not want to run out of gold resources.
+	int plantationWorth = 10;
+	int maxPlans = 4;
+	if (cMyCiv == cCivDEMexicans)
+	{
+		plantationWorth = 20;
+		maxPlans = 2;
+	}
+	else if (civIsAfrican())
+	{
+		plantationWorth = 3;
+		maxPlans = 8;
+	}
+	if (totalResourceWorth < gNumGoldVills && kbGetAge() >= cAge3)
+	{
+		arrayRemoveDonePlans(gPlantationTypePlans);
+		if (arrayGetSize(gPlantationTypePlans) < maxPlans)
+		{
+			if (gNumGoldVills - totalResourceWorth > plantationWorth * arrayGetSize(gPlantationTypePlans))
+			{
+				planID = addBetterPlantationBuildPlan();
+				if (planID >= 0)
+				{
+					arrayPushInt(gPlantationTypePlans, planID);
+					aiPlanSetDesiredPriority(planID, 99);
+					aiPlanSetDesiredResourcePriority(planID, 99);
+				}
+			}
+		}
+	}
+}
+
+rule stealAllVillagers
+inactive
+minInterval 10
+{
+	int planID = -1;
+	int numberPlans = aiPlanGetActiveCount();
+	for (i = 0; < numberPlans)
+	{
+		planID = aiPlanGetIDByActiveIndex(i);
+		if (aiPlanGetType(planID) == cPlanGather)
+		{
+			aiPlanSetActive(planID, false);
+			aiPlanSetNoMoreUnits(planID, true);
+		}
+	}
+
+	if (gVillagerReservePlan < 0)
+	{
+		gVillagerReservePlan = aiPlanCreate("Villager reserve plan to keep them from gather plans", cPlanReserve);
+		aiPlanSetDesiredPriority(gVillagerReservePlan, 99);
+		aiPlanAddUnitType(gVillagerReservePlan, gEconUnit, 1, 1, 125);
+		aiPlanSetActive(gVillagerReservePlan, true);
+	}
+	// Look for villagers to put onto a reserve plan
+	int unitID = -1;
+	int unitPlanID = -1;
+	int count = 0;
+	int villagerQueryID = createSimpleUnitQuery(gEconUnit, cMyID, cUnitStateAlive);
+	int numberFound = kbUnitQueryExecute(villagerQueryID);
+	for (i = 0; < numberFound)
+	{
+		unitID = kbUnitQueryGetResult(villagerQueryID, i);
+		unitPlanID = kbUnitGetPlanID(unitID);
+		if (aiPlanGetType(unitPlanID) == cPlanGather && kbUnitGetPlanID(unitID) != gVillagerReservePlan)           
+		{
+			aiPlanAddUnit(gVillagerReservePlan, unitID);
+			count += 1;
+		}
+	}
+	//aiChat(1, "Reserve plan total: " + aiPlanGetNumberUnits(gVillagerReservePlan, gEconUnit));
+}
+
+
 //==============================================================================
 //
 // taskVillagers
@@ -429,8 +1334,33 @@ int findTradingLodge(int resourceID = -1)
 //==============================================================================
 rule taskVillagers
 inactive
-minInterval 15
+minInterval 2
 {
+	if (xsIsRuleEnabled("stealAllVillagers") == false)
+	{
+		xsEnableRule("stealAllVillagers");
+	}
+	//stealAllVillagers();
+	if (gArrayPlan < 0)
+	{
+		gArrayPlan = aiPlanCreate("Array Storage", cPlanData);
+		gArrayPlanSizes = aiPlanCreate("Plan Size Storage", cPlanData);
+		gArrayPlanNumElements = aiPlanCreate("Plan Num Elements Storage", cPlanData);
+		gFoodResources = arrayCreateInt(1, "Food Resources");
+		gDecayingAnimals = arrayCreateInt(1, "Decaying Hunts");
+		gWoodResources = arrayCreateInt(1, "Wood Resources");
+		gGoldResources = arrayCreateInt(1, "Gold Resources");
+		gFoodNumWorkers = arrayCreateInt(1, "Number Workers on Food Resource");
+		gMaxFoodWorkers = arrayCreateInt(1, "Max Workers Allowed on Food Resource");
+		gDecayingNumWorkers = arrayCreateInt(1, "Number Workers on Decaying Food Resource");
+		gWoodNumWorkers = arrayCreateInt(1, "Number Workers on Wood Resource");
+		gGoldNumWorkers = arrayCreateInt(1, "Number Workers on Gold Resource");
+		gMaxGoldWorkers = arrayCreateInt(1, "Max Workers Allowed on Gold Resource");
+		gMillTypePlans = arrayCreateInt(1, "Mill Type Build Plans");
+		gPlantationTypePlans = arrayCreateInt(1, "Plantation Type Build Plans");
+		gQueuedBuildingPriority = arrayCreateInt(1, "Inactive Build Plans Priority");
+	}
+
 	if (gVillagerQuery < 0)
 	{
 		gVillagerQuery = kbUnitQueryCreate("Villager Query");
@@ -469,7 +1399,8 @@ minInterval 15
 	// Used to compare resources within each resource type, to select the
 	// "best" one relative to the villager under consideration.
 	vector location = cInvalidVector;
-   vector resourceLocation = cInvalidVector;
+	vector dropoffIslandLoc = cInvalidVector;
+    vector resourceLocation = cInvalidVector;
 	int tempIndex = -1;
 	int closestResourceID = -1;
 	int closestResourceIndex = -1;
@@ -489,6 +1420,11 @@ minInterval 15
 	int goldIndex = -1;
 	float goldDistance = 0.0;
 
+	// For Transport
+	vector pickup = location;
+	vector dropoffLoc = cInvalidVector;
+	int transportPlanID = -1;
+
 	// Used to task a villager to shoot hunts toward a particular location.
 	vector targetLocation = cInvalidVector;
 
@@ -505,7 +1441,7 @@ minInterval 15
 		else
 			pop = 1;
 
-		if (kbUnitGetPlanID(unitID) >= 0)
+		if (kbUnitGetPlanID(unitID) >= 0 && kbUnitGetPlanID(unitID) != gVillagerReservePlan)
 			villagerPop = villagerPop - pop;
 	}
 	/* villagerPop = villagerPop - gReservedFoodVillagers -
@@ -537,13 +1473,13 @@ minInterval 15
 	gNumGoldVills = numGoldVills;
 
 	// Search for food.
-	updateFoodBreakdown();
+	updateBetterFoodBreakdown();
 
 	// Search for wood.
-	updateWoodBreakdown();
+	updateBetterWoodBreakdown();
 
 	// Search for gold.
-	updateGoldBreakdown();
+	updateBetterGoldBreakdown();
 
 	if (arrayGetSize(gWoodResources) < 2) // Until I configure arrayGetSize to return 0.
 	{
@@ -573,7 +1509,7 @@ minInterval 15
 			}
 			default: // Units assigned to a plan.
 			{
-				if (kbUnitGetPlanID(unitID) >= 0)
+				if (kbUnitGetPlanID(unitID) >= 0 && kbUnitGetPlanID(unitID) != gVillagerReservePlan)
 					continue;
 			}
 		}
@@ -894,14 +1830,14 @@ minInterval 15
 		// End Gold Resources.
 		// ========================================
 
-      // AssertiveWall: Determine if we need transport. 
-      int resourcePicked = -1; // 1 = food, 2 = gold, 3 = wood
+		// AssertiveWall: Determine if we need transport. 
+		int resourcePicked = -1; // 1 = food, 2 = gold, 3 = wood
 
 		if (foodDistance < woodDistance) // Food is closer than Wood.
 		{
 			if (foodDistance < goldDistance) // Food is closer than Gold.
 			{
-            resourcePicked = 1;
+            	resourcePicked = 1;
 				if (kbUnitIsType(foodID, cUnitTypeHuntable) && /* arrayGetInt(gFoodNumWorkers, foodIndex) == 0 && */
 					kbUnitGetCurrentHitpoints(foodID) >= kbUnitGetMaximumHitpoints(foodID))
 				{
@@ -922,14 +1858,14 @@ minInterval 15
 						targetLocation = gHomeBase;
 					aiTaskUnitMove(unitID, (targetLocation + (kbUnitGetPosition(foodID) - targetLocation) +
 						xsVectorNormalize(kbUnitGetPosition(foodID) - targetLocation) * 16.0));
-					aiTaskUnitWork(unitID, foodID, true);
+					//aiTaskUnitWork(unitID, foodID, true);
 
 					// Update the number of workers on the food unit.
 					arraySetInt(gFoodNumWorkers, foodIndex, (arrayGetInt(gFoodNumWorkers, foodIndex) + 1));
 				}
 				else
 				{
-					aiTaskUnitWork(unitID, foodID);
+					//aiTaskUnitWork(unitID, foodID);
 
 					// Update the number of workers on the food unit.
 					arraySetInt(gDecayingNumWorkers, foodIndex, (arrayGetInt(gDecayingNumWorkers, foodIndex) + 1));
@@ -938,8 +1874,8 @@ minInterval 15
 			}
 			else // Gold is closer than Food.
 			{
-            resourcePicked = 2;
-				aiTaskUnitWork(unitID, goldID);
+            	resourcePicked = 2;
+				//aiTaskUnitWork(unitID, goldID);
 				// Update the number of workers on the gold unit.
 				arraySetInt(gGoldNumWorkers, goldIndex, (arrayGetInt(gGoldNumWorkers, goldIndex) + 1));
 				numGoldVills = numGoldVills - pop;
@@ -947,9 +1883,9 @@ minInterval 15
 		}
 		else if (woodDistance < goldDistance) // Wood is closer than both Food and Gold.
 		{
-         resourcePicked = 3;
+         	resourcePicked = 3;
 			numWoodVills = numWoodVills - pop;
-			aiTaskUnitWork(unitID, woodID);
+			//aiTaskUnitWork(unitID, woodID);
 			// Help vills that sometimes get stuck.
 			aiTaskUnitMove(unitID, kbUnitGetPosition(woodID) + gDirection_UP, true);
 
@@ -958,50 +1894,72 @@ minInterval 15
 		}
 		else // Gold is closer than both Food and Wood.
 		{
-         resourcePicked = 2;
+         	resourcePicked = 2;
 			numGoldVills = numGoldVills - pop;
-			aiTaskUnitWork(unitID, goldID);
+			//aiTaskUnitWork(unitID, goldID);
 
 			// Update the number of workers on the gold unit.
 			arraySetInt(gGoldNumWorkers, goldIndex, (arrayGetInt(gGoldNumWorkers, goldIndex) + 1));
 		}
 
-      // Get the location of what we picked, and set it to 
-      if (resourcePicked == 1)
-      {
-         resourceLocation = kbUnitGetPosition(foodID);
-      }
-      else if (resourcePicked == 2)
-      {
-         resourceLocation = kbUnitGetPosition(goldID);
-      }
-      else if (resourcePicked == 3)
-      {
-         resourceLocation = kbUnitGetPosition(woodID);
-      }
-      // Check to see if it needs transport
-      if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(location), kbAreaGroupGetIDByPosition(resourceLocation)) == false)
-      {
-         migrantNumber += 1;
+		// Get the location of what we picked, and set it to 
+		if (resourcePicked == 1)
+		{
+			resourceLocation = kbUnitGetPosition(foodID);
+			int resourcepickedid = foodID;
+		}
+		else if (resourcePicked == 2)
+		{
+			resourceLocation = kbUnitGetPosition(goldID);
+			resourcepickedid = goldID;
+		}
+		else if (resourcePicked == 3)
+		{
+			resourceLocation = kbUnitGetPosition(woodID);
+			resourcepickedid = woodID;
+		}
+		// Check to see if it needs transport
+		if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(location), kbAreaGroupGetIDByPosition(resourceLocation)) == false)
+		{
+			migrantNumber += 1;
+			dropoffIslandLoc = resourceLocation;
 
-         /*int transportPlan = createTransportPlan(location, resourceLocation, 100);
-         if (transportPlan < 0)
-         {
-            aiChat(1, "failed to pick a transport");
-            continue;
-         }
-         aiPlanAddUnitType(transportPlan, gEconUnit, 1, 1, 1);
-         aiPlanAddUnit(transportPlan, unitID);
-         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, location);
-         return;*/
-      }
+			if (transportPlanID < 0)
+			{
+				pickup = location;
+				dropoffLoc = getDropoffPoint(pickup, dropoffIslandLoc);
+				transportPlanID = createTransportPlan(pickup, dropoffIslandLoc, 100);
+				aiPlanAddUnitType(transportPlanID, cUnitTypeAbstractVillager, 1, 1, 1);
+			}
+
+			if (transportPlanID > 0)
+			{
+				aiPlanAddUnit(transportPlanID, unitID);
+				//aiPlanSetNoMoreUnits(transportPlanID, false);
+				/*if (aiPlanAddUnit(transportPlanID, unitID) == false)
+				{
+					aiPlanDestroy(planID);
+					return;
+				}*/
+			}
+		}
+		else
+		{
+			aiTaskUnitWork(unitID, resourcepickedid, true);
+		}
 	}
-   if (migrantNumber > 0)
-   {
-      vector dropoffLoc = getRandomIsland();
-      int transportPlanID = createTransportPlan(kbGetPlayerStartingPosition(cMyID), dropoffLoc, 100);
-      aiPlanAddUnitType(transportPlanID, gEconUnit, migrantNumber, migrantNumber, migrantNumber);
-      aiChat(1, "transport plan ID: " + transportPlanID);
-      sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbGetPlayerStartingPosition(cMyID));
-   }
+	if (transportPlanID > 0)
+	{
+		if (aiPlanGetNumberUnits(transportPlanID, cUnitTypeAbstractVillager) < 1)
+		{
+			//aiPlanDestroy(transportPlanID);
+		}
+		aiPlanSetNoMoreUnits(transportPlanID, true);
+		aiPlanSetActive(transportPlanID);
+		sendStatement(cPlayerRelationAlly, cAICommPromptToAllyIWillBuildMilitaryBase, dropoffIslandLoc);
+	}
+	//sendStatement(cPlayerRelationAlly, cAICommPromptToAllyIWillBuildMilitaryBase, location);
+	//aiChat(1, "transport plan ID: " + transportPlanID + " With: " + aiPlanGetNumberUnits(transportPlanID, cUnitTypeAbstractVillager) + " migrants");
+	//aiChat(1, "Migrant number was: " + migrantNumber);
 }
+

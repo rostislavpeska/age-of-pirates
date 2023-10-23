@@ -99,6 +99,7 @@ minInterval 5
         xsEnableRule("VeniceTechMonitor");
         xsEnableRule("MaintainVeniceShips");
         xsEnableRule("nativeWagonMonitor");
+        xsEnableRule("dottoreAbilityMonitor");
     }
 
    if (cMyCiv == cCivDEInca)
@@ -340,6 +341,49 @@ minInterval 12
             if (enemyID >= 0)
             {
                aiTaskUnitSpecialPower(pirateShipID, cProtoPowerPowerLongRange, enemyID, cInvalidVector);
+            }
+         }
+      }
+   }
+}
+
+//==============================================================================
+// Dottore Ability Monitor
+//==============================================================================
+rule dottoreAbilityMonitor
+inactive
+minInterval 12
+{
+   int dottoreID = -1;
+   int enemyID = 0;
+   vector enemyLoc = cInvalidVector;
+   int friendlyNum = 0;
+   int enemyNum = 0;
+
+   // Subs dive if any enemy warships are nearby, otherwise surface
+   int dottoreQuery = createSimpleUnitQuery(cUnitTypezpNatDottore, cMyID, cUnitStateAlive);
+   int numberDottoreFound = kbUnitQueryExecute(dottoreQuery);
+
+   for (i = 0; < numberDottoreFound)
+   {
+      dottoreID = kbUnitQueryGetResult(dottoreQuery, i);
+
+      if (dottoreID >= 0)
+      {
+         vector dottoreLoc = kbUnitGetPosition(dottoreID);
+
+         if (aiCanUseAbility(dottoreID, cProtoPowerzpMustardGasWeak) == true)
+         {
+            enemyNum = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, dottoreLoc, 20.0);
+            enemyID = getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, dottoreLoc, 20.0);
+            enemyLoc = kbUnitGetPosition(enemyID);
+            friendlyNum = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly, cUnitStateAlive, 
+               enemyLoc, 14.0);
+            if (enemyID >= 0 && (1.5 * friendlyNum < enemyNum))  // Gas it if we are losing
+            {  
+               aiTaskUnitSpecialPower(dottoreID, cProtoPowerzpMustardGasWeak, enemyID, cInvalidVector);
             }
          }
       }

@@ -1179,9 +1179,11 @@ void analyzeMap()
 
    // AssertiveWall: Archipelago style maps
    if (cRandomMapName == "euArchipelago" ||
-       cRandomMapName == "euArchipelagoLarge")
+       cRandomMapName == "euArchipelagoLarge" ||
+         cRandomMapName == "zpmediterranean")
    {
       gIsArchipelagoMap = true;
+      gHomeBase = kbGetPlayerStartingPosition(cMyID);
    }
 
    debugSetup("Island map is " + gIslandMap + ", players start on different islands is " + gStartOnDifferentIslands);
@@ -2558,8 +2560,7 @@ minInterval 2
          cRandomMapName == "afswahilicoast" ||
          cRandomMapName == "afswahilicoastlarge" ||
          cRandomMapName == "zpeldorado" ||
-         cRandomMapName == "zptreasureisland" ||
-         cRandomMapName == "zpmediterranean")
+         cRandomMapName == "zptreasureisland")
    {
       gMigrationMap = true;
    }

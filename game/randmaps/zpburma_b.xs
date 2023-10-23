@@ -1890,60 +1890,6 @@ rmSetTriggerLoop(false);
    }
 
 
-// Send Wokou Random Ship
-
-for (k=1; <= cNumberNonGaiaPlayers) {
-
-rmCreateTrigger("Takanobu Random Ship"+k);
-rmAddTriggerCondition("ZP Tech Status Equals (XS)");
-rmSetTriggerConditionParamInt("PlayerID",k);
-rmSetTriggerConditionParam("TechID","cTechzpWokouRandomShip");
-rmSetTriggerConditionParamInt("Status",2);
-
-int randShip=-1;
-randShip = rmRandInt(1,5);
-
-if (randShip==1)
-   {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpSendQueenAnne"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-   }
-if (randShip==2)
-   {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpSendBlackPearl"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-   }
-if (randShip==3)
-   {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpSendNeptune"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-   }
-if (randShip==4)
-   {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpSendSteamer"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-   }
-if (randShip==5)
-   {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpSendSubmarine"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-   }
-rmSetTriggerPriority(4);
-rmSetTriggerActive(true);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(false);
-}
-
 // AI Pirate Captains
 
 for (k=1; <= cNumberNonGaiaPlayers) {

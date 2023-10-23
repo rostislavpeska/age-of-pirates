@@ -2175,98 +2175,128 @@
       <command>trPlayerGrantResources(%PlayerID%, "%Resource%", 0-%Count%);}</command>
       <command>else{trChatSendToPlayer(0, %PlayerID%, "%Message%");}</command>
     </effect>
-    <effect name="ZP Setup Politicians: General (Place First)">
-      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+    <effect name="ZP Native AutoSetup: General (Place First)">
       <command>}}</command>
-      <command>rule Human_Features%PlayerID% active runImmediately highFrequency {</command>
-      <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
-      <command>xsDisableSelf();</command>
-      <command>return;</command>
+      <command>rule Human_Features active runImmediately highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>continue;</command>
       <command>}</command>
-      <command>trTechSetStatus(%PlayerID%, cTechzpIsPirateMap, cTechStatusActive);</command>
-      <command>if (trTechStatusResearching(%PlayerID%, cTechzpPickConsulateTechAvailable)) {</command>
-      <command>if (kbGetCivForPlayer(%PlayerID%) == cCivChinese) {</command>
-      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOnChinese, cTechStatusActive);</command>
-      <command>} else if (kbGetCivForPlayer(%PlayerID%) == cCivIndians) {</command>
-      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOnIndian, cTechStatusActive);</command>
-      <command>} else if (kbGetCivForPlayer(%PlayerID%) == cCivJapanese) {</command>
-      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOnJapanese, cTechStatusActive);</command>
+      <command>trTechSetStatus(playerID, cTechzpIsPirateMap, cTechStatusActive);</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpPickConsulateTechAvailable)) {</command>
+      <command>if (kbGetCivForPlayer(playerID) == cCivChinese) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOnChinese, cTechStatusActive);</command>
+      <command>} else if (kbGetCivForPlayer(playerID) == cCivIndians) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOnIndian, cTechStatusActive);</command>
+      <command>} else if (kbGetCivForPlayer(playerID) == cCivJapanese) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOnJapanese, cTechStatusActive);</command>
       <command>}</command>
-      <command>if (trCurrentPlayer() == %PlayerID%) {</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>uiConsulateUIInSelected();</command>
       <command>}</command>
       <command>}</command>
       <command>}</command>
-      <command>rule Italian_Ballance%PlayerID% inactive runImmediately highFrequency {</command>
-      <command>if (kbGetCivForPlayer(%PlayerID%) == cCivDEItalians) {</command>
-      <command>trTechSetStatus(%PlayerID%, cTechzpItalianSettlerBallance, cTechStatusActive);</command>
       <command>}</command>
-      <command>if (trTechStatusCheck(%PlayerID%, cTechDEHCGondolas, cTechStatusActive) == true) {</command>
-      <command>trTechSetStatus(%PlayerID%, cTechzpItalianGondolaBallance, cTechStatusActive);</command>
+      <command>rule Italian_Ballance inactive runImmediately highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>if (kbGetCivForPlayer(playerID) == cCivDEItalians) {</command>
+      <command>trTechSetStatus(playerID, cTechzpItalianSettlerBallance, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (trTechStatusCheck(playerID, cTechDEHCGondolas, cTechStatusActive) == true) {</command>
+      <command>trTechSetStatus(playerID, cTechzpItalianGondolaBallance, cTechStatusActive);</command>
       <command>}</command>
       <command>xsDisableSelf();</command>
       <command>}</command>
-      <command>rule hdkzuzkz0%PlayerID% active { if (true) { //</command>
+      <command>}</command>
+      <command>rule hdkzuzkz0 active { if (true) { //</command>
     </effect>
-    <effect name="ZP Setup Politicians: Maltese">
-      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+    <effect name="ZP Native AutoSetup: Maltese">
       <command>}}</command>
-      <command>rule Maltese_Natives_Setup%PlayerID% active runImmediately highFrequency {</command>
-      <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
-      <command>xsDisableSelf();</command>
-      <command>return;</command>
+      <command>rule Maltese_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int MalteseFaction=-1;</command>
+      <command>if (MalteseFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomMalteseFaction", 0, 2);</command>
+      <command>MalteseFaction = trQuestVarGet("RandomMalteseFaction");</command>
       <command>}</command>
-      <command>if (trTechStatusResearching(%PlayerID%, cTechzpMalteseCross)) {</command>
-      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOffMaltese, cTechStatusActive);</command>     
-      <command>if (trCurrentPlayer() == %PlayerID%) {</command>
+      <command>if (MalteseFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateMalteseVenetians, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (MalteseFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateMalteseFlorentians, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (MalteseFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateMalteseJerusalem, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpMalteseCross)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffMaltese, cTechStatusActive); </command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>xsEnableRule("Italian_Ballance");</command>
       <command>uiConsulateUIInSelected();</command>
       <command>}</command>
       <command>}</command>
       <command>}</command>
-      <command>rule hdkzuzkz2%PlayerID% active { if (true) { //</command>
-    </effect>
-    <effect name="ZP Setup Politicians: Jewish">
-      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
-      <command>}}</command>
-      <command>rule Jewish_Natives_Setup%PlayerID% active runImmediately highFrequency {</command>
-      <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
-      <command>xsDisableSelf();</command>
-      <command>return;</command>
       <command>}</command>
-      <command>if (trTechStatusResearching(%PlayerID%, cTechzpJewishStar)) {</command>
-      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOffJewish, cTechStatusActive);</command>      
-      <command>if (trCurrentPlayer() == %PlayerID%) {</command>
+      <command>rule hdkzuzkz2 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Jewish">      
+      <command>}}</command>
+      <command>rule Jewish_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int JewishFaction=-1;</command>
+      <command>if (JewishFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomJewishFaction", 0, 2);</command>
+      <command>JewishFaction = trQuestVarGet("RandomJewishFaction");</command>
+      <command>}</command>
+      <command>if (JewishFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateJewishAmericans, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (JewishFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateJewishGermans, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (JewishFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateJewishRussians, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Jewish Star is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpJewishStar)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffJewish, cTechStatusActive); </command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>xsEnableRule("Italian_Ballance");</command>
       <command>uiConsulateUIInSelected();</command>
       <command>}</command>
       <command>}</command>
       <command>}</command>
-      <command>rule hdkzuzkz3%PlayerID% active { if (true) { //</command>
+      <command>}</command>
+      <command>rule hdkzuzkz3 active { if (true) { //</command>
     </effect>
-    <effect name="ZP Setup Politicians: Pirates">
-      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
-      <command>}}</command>
-      <command>rule Pirate_politicians_Setup%PlayerID% active runImmediately highFrequency {</command>
-      <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
-      <command>xsDisableSelf();</command>
-      <command>return;</command>
-      <command>}</command>
-      <command>if (trTechStatusResearching(%PlayerID%, cTechzpTheBlackFlag)) {</command>
-      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOffPirates, cTechStatusActive);</command>      
-      <command>if (trCurrentPlayer() == %PlayerID%) {</command>
-      <command>xsEnableRule("Italian_Ballance");</command>
-      <command>uiConsulateUIInSelected();</command>
-      <command>}</command>
-      <command>}</command>
-      <command>}</command>
-      <command>rule hdkzuzkz5%PlayerID% active { if (true) { //</command>
-    </effect>
-    <effect name="ZP Setup Ship Training: Pirates">
-      <param name="SocketRadius" dispname="Socket Radius" vartype="float">35</param>
-      <param name="ConversionRadius" dispname="Water Flag Radius" vartype="float">150</param>
-      <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">default</param>
-      <param name="Socket2" dispname="Socket 2 (close to Water Flag 2)" vartype="unit">default</param>
+    <effect name="ZP Native AutoSetup: Pirates">
+      <param name="SocketRadius" dispname="Socket Training Radius (do not change)" vartype="float">35</param>
+      <param name="ConversionRadius" dispname="Water Flag Distance (do not change)" vartype="float">150</param>
+      <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">-1</param>
+      <param name="Socket2" dispname="Socket 2 (close to Water Flag 2)" vartype="unit">-1</param>
       <command>}}</command>
       <command>int getSocketOwner(int socketID = -1)</command>
       <command>{</command>
@@ -2636,14 +2666,49 @@
       <command>xsEnableRule("TrainNeptuneGalley2ON");</command>
       <command>xsDisableSelf();</command>
       <command>}</command>
+      <command>}</command>
+      <command>rule Pirate_politicians_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int PirateFaction=-1;</command>
+      <command>if (PirateFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomPirateFaction", 0, 2);</command>
+      <command>PirateFaction = trQuestVarGet("RandomPirateFaction");</command>
+      <command>}</command>
+      <command>if (PirateFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulatePiratesBlackbeard, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (PirateFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulatePiratesGrace, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (PirateFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulatePiratesBlackCaesar, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Jewish Star is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpTheBlackFlag)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffPirates, cTechStatusActive); </command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
       <command>}</command>      
       <command>rule hdkzuzkz4 active { if (true) { xsDisableSelf();</command>
     </effect>
-    <effect name="ZP Setup Ship Training: Wokou">
-      <param name="SocketRadius" dispname="Socket Radius" vartype="float">35</param>
-      <param name="ConversionRadius" dispname="Water Flag Radius" vartype="float">150</param>
-      <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">default</param>
-      <param name="Socket2" dispname="Socket 2 (close to Water Flag 2)" vartype="unit">default</param>
+    <effect name="ZP Native AutoSetup: Wokou">
+      <param name="SocketRadius" dispname="Socket Training Radius (do not change)" vartype="float">35</param>
+      <param name="ConversionRadius" dispname="Water Flag Distance (do not change)" vartype="float">150</param>
+      <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">-1</param>
+      <param name="Socket2" dispname="Socket 2 (close to Water Flag 2)" vartype="unit">-1</param>
       <command>}}</command>
       <command>int getSocketOwnerWokou(int socketID = -1)</command>
       <command>{</command>
@@ -2902,49 +2967,48 @@
       <command>xsDisableSelf();</command>
       <command>}</command>
       <command>}</command>
+      <command>rule zpWokouPoliticiansSetup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int WokouCaptain=-1;</command>
+      <command>if (WokouCaptain == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomWokouCaptain", 0, 2);</command>
+      <command>WokouCaptain = trQuestVarGet("RandomWokouCaptain");</command>
+      <command>}</command>
+      <command>if (WokouCaptain == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateWokouSaoFeng, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (WokouCaptain == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateWokouMadameChing, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (WokouCaptain == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateWokouTakanobu, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Blackmailing is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpBlackmailing)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffWokou, cTechStatusActive); </command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
       <command>rule hdkzuzkz7 active { if (true) { xsDisableSelf();</command>
     </effect>
-    <effect name="ZP Setup Politicians: Wokou">
-      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
-      <command>}}</command>
-      <command>rule Wokou_politicians_Setup%PlayerID% active runImmediately highFrequency {</command>
-      <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
-      <command>xsDisableSelf();</command>
-      <command>return;</command>
-      <command>}</command>
-      <command>if (trTechStatusResearching(%PlayerID%, cTechzpBlackmailing)) {</command>
-      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOffWokou, cTechStatusActive);</command>      
-      <command>if (trCurrentPlayer() == %PlayerID%) {</command>
-      <command>xsEnableRule("Italian_Ballance");</command>
-      <command>uiConsulateUIInSelected();</command>
-      <command>}</command>
-      <command>}</command>
-      <command>}</command>
-      <command>rule hdkzuzkz8%PlayerID% active { if (true) { //</command>
-    </effect>
-    <effect name="ZP Setup Politicians: Renegades (Scientists)">
-      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
-      <command>}}</command>
-      <command>rule Scientists_politicians_Setup%PlayerID% active runImmediately highFrequency {</command>
-      <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
-      <command>xsDisableSelf();</command>
-      <command>return;</command>
-      <command>}</command>
-      <command>if (trTechStatusResearching(%PlayerID%, cTechzpPickScientist)) {</command>
-      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOffScientists, cTechStatusActive);</command>      
-      <command>if (trCurrentPlayer() == %PlayerID%) {</command>
-      <command>xsEnableRule("Italian_Ballance");</command>
-      <command>uiConsulateUIInSelected();</command>
-      <command>}</command>
-      <command>}</command>
-      <command>}</command>
-      <command>rule hdkzuzkz9%PlayerID% active { if (true) { //</command>
-    </effect>
-    <effect name="ZP Setup Ship Training: Renegades (Scientists)">
-      <param name="SocketRadius" dispname="Socket Radius" vartype="float">35</param>
-      <param name="ConversionRadius" dispname="Water Flag Radius" vartype="float">150</param>
-      <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">default</param>
-      <param name="Socket2" dispname="Socket 2 (close to Water Flag 2)" vartype="unit">default</param>
+    <effect name="ZP Native AutoSetup: Renegades (Scientists)">
+      <param name="SocketRadius" dispname="Socket Training Radius (do not change)" vartype="float">35</param>
+      <param name="ConversionRadius" dispname="Water Flag Distance (do not change)" vartype="float">150</param>
+      <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">-1</param>
+      <param name="Socket2" dispname="Socket 2 (close to Water Flag 2)" vartype="unit">-1</param>
       <command>}}</command>
       <command>int getSocketOwnerScientist(int socketID = -1)</command>
       <command>{</command>
@@ -3284,14 +3348,49 @@
       <command>trTechSetStatus(socketOwnerScientist, cTechzpReduceSteamerBuildLimit, cTechStatusActive);</command>
       <command>xsDisableSelf();</command>
       <command>}</command>
+      <command>}</command>
+      <command>rule Scientists_politicians_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int RenegadeCaptain=-1;</command>
+      <command>if (RenegadeCaptain == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomRenegadeCaptain", 0, 2);</command>
+      <command>RenegadeCaptain = trQuestVarGet("RandomRenegadeCaptain");</command>
+      <command>}</command>
+      <command>if (RenegadeCaptain == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateScientistNemo, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (RenegadeCaptain == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateScientistValentine, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (RenegadeCaptain == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateScientistkhora, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if PickScientist is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpPickScientist)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffScientists, cTechStatusActive); </command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
       <command>}</command>      
       <command>rule bdkzuzkz10 active { if (true) { xsDisableSelf();</command>
     </effect>
-    <effect name="ZP Setup Ship Training: Venetians">
-      <param name="SocketRadius" dispname="Socket Radius" vartype="float">35</param>
-      <param name="ConversionRadius" dispname="Water Flag Radius" vartype="float">150</param>
-      <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">default</param>
-      <param name="Socket2" dispname="Socket 2 (close to Water Flag 2)" vartype="unit">default</param>
+    <effect name="ZP Native AutoSetup: Venetians">
+      <param name="SocketRadius" dispname="Socket Training Radius (do not change)" vartype="float">35</param>
+      <param name="ConversionRadius" dispname="Water Flag Distance (do not change)" vartype="float">150</param>
+      <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">-1</param>
+      <param name="Socket2" dispname="Socket 2 (close to Water Flag 2)" vartype="unit">-1</param>
       <command>}}</command>
       <command>int getSocketOwnerVenice(int socketID = -1)</command>
       <command>{</command>
@@ -3550,56 +3649,97 @@
       <command>xsDisableSelf();</command>
       <command>}</command>
       <command>}</command>
+      <command>rule Venice_politicians_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int VeniceFaction=-1;</command>
+      <command>if (VeniceFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomVeniceFaction", 0, 2);</command>
+      <command>VeniceFaction = trQuestVarGet("RandomVeniceFaction");</command>
+      <command>}</command>
+      <command>if (VeniceFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateVeniceDolphin, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (VeniceFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateVeniceCornaro, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (VeniceFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateVeniceContarini, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if VeniceExpansion is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpVenetianExpansion)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffVenice, cTechStatusActive); </command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
       <command>rule bdkzuzkz11 active { if (true) { xsDisableSelf();</command>
     </effect>
-    <effect name="ZP Setup Politicians: Venetians">
-      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+    <effect name="ZP Native AutoSetup: Aztecs - Water Temple">
       <command>}}</command>
-      <command>rule Venice_politicians_Setup%PlayerID% active runImmediately highFrequency {</command>
-      <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
-      <command>xsDisableSelf();</command>
-      <command>return;</command>
+      <command>rule Aztec_politicians_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int AztecFaction=-1;</command>
+      <command>if (AztecFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomAztecFaction", 0, 2);</command>
+      <command>AztecFaction = trQuestVarGet("RandomAztecFaction");</command>
       <command>}</command>
-      <command>if (trTechStatusResearching(%PlayerID%, cTechzpVenetianExpansion)) {</command>
-      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOffVenice, cTechStatusActive);</command>      
-      <command>if (trCurrentPlayer() == %PlayerID%) {</command>
+      <command>if (AztecFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateNatJesuit, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (AztecFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateNatMaya, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (AztecFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateNatZapotec, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if NativeConsulate is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpPickNativeConsulateTechAvailable)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffWaterTemple, cTechStatusActive); </command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>xsEnableRule("Italian_Ballance");</command>
       <command>uiConsulateUIInSelected();</command>
       <command>}</command>
       <command>}</command>
       <command>}</command>
-      <command>rule bdkzuzkz12%PlayerID% active { if (true) { //</command>
+      <command>}</command>
+      <command>rule Is_Aztec_Map active runImmediately highFrequency {</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>trTechSetStatus(playerID, cTechzpIsAztecMap, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule bdkzuzkz133 active { if (true) { //</command>
     </effect>
-    <effect name="ZP Setup Politicians: Aztecs - Water Temple">
-      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+    <effect name="ZP Native AutoSetup: SPC Sufi - Middle East">
       <command>}}</command>
-      <command>rule Is_Aztec_Map%PlayerID% active runImmediately highFrequency {</command>
-      <command>trTechSetStatus(%PlayerID%, cTechzpIsAztecMap, cTechStatusActive);</command>
+      <command>rule Is_MiddleEast_Map active runImmediately highFrequency {</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>trTechSetStatus(playerID, cTechzpMediterraneanSufi, cTechStatusActive);</command>
       <command>xsDisableSelf();</command>
       <command>}</command>
-      <command>rule Aztec_politicians_Setup%PlayerID% active runImmediately highFrequency {</command>
-      <command>if (kbIsPlayerHuman(%PlayerID%) == false) {</command>
-      <command>xsDisableSelf();</command>
-      <command>return;</command>
       <command>}</command>
-      <command>if (trTechStatusResearching(%PlayerID%, cTechzpPickNativeConsulateTechAvailable)) {</command>
-      <command>trTechSetStatus(%PlayerID%, cTechzpTurnConsulateOffWaterTemple, cTechStatusActive);</command>      
-      <command>if (trCurrentPlayer() == %PlayerID%) {</command>
-      <command>xsEnableRule("Italian_Ballance");</command>
-      <command>uiConsulateUIInSelected();</command>
-      <command>}</command>
-      <command>}</command>
-      <command>}</command>
-      <command>rule bdkzuzkz13%PlayerID% active { if (true) { //</command>
-    </effect>
-    <effect name="ZP Setup Politicians: SPC Sufi - Middle East">
-      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
-      <command>}}</command>
-      <command>rule Is_MiddleEast_Map%PlayerID% active runImmediately highFrequency {</command>
-      <command>trTechSetStatus(%PlayerID%, cTechzpMediterraneanSufi, cTechStatusActive);</command>
-      <command>xsDisableSelf();</command>
-      <command>}</command>
-      <command>rule bdkzuzkz14%PlayerID% active { if (true) { //</command>
+      <command>rule bdkzuzkz144 active { if (true) { //</command>
     </effect>
   </effects>
 </trigger>
