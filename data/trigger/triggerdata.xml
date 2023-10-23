@@ -2175,7 +2175,7 @@
       <command>trPlayerGrantResources(%PlayerID%, "%Resource%", 0-%Count%);}</command>
       <command>else{trChatSendToPlayer(0, %PlayerID%, "%Message%");}</command>
     </effect>
-    <effect name="ZP Native AutoSetup: General (Place First)">
+    <effect name="ZP Native AutoSetup: 00 General (Place First)">
       <command>}}</command>
       <command>rule Human_Features active runImmediately highFrequency</command>
       <command>{</command>
