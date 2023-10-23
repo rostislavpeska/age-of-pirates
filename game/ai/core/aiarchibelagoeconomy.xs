@@ -1284,6 +1284,9 @@ rule stealAllVillagers
 inactive
 minInterval 10
 {
+	cvOkToGatherFood = false;      // Setting it false will turn off food gathering. True turns it on.
+	cvOkToGatherGold = false;      // Setting it false will turn off gold gathering. True turns it on.
+	cvOkToGatherWood = false;      // Setting it false will turn off wood gathering. True turns it on.
 	int planID = -1;
 	int numberPlans = aiPlanGetActiveCount();
 	for (i = 0; < numberPlans)
@@ -1950,16 +1953,202 @@ minInterval 2
 	}
 	if (transportPlanID > 0)
 	{
-		if (aiPlanGetNumberUnits(transportPlanID, cUnitTypeAbstractVillager) < 1)
-		{
-			//aiPlanDestroy(transportPlanID);
-		}
 		aiPlanSetNoMoreUnits(transportPlanID, true);
 		aiPlanSetActive(transportPlanID);
-		sendStatement(cPlayerRelationAlly, cAICommPromptToAllyIWillBuildMilitaryBase, dropoffIslandLoc);
 	}
-	//sendStatement(cPlayerRelationAlly, cAICommPromptToAllyIWillBuildMilitaryBase, location);
-	//aiChat(1, "transport plan ID: " + transportPlanID + " With: " + aiPlanGetNumberUnits(transportPlanID, cUnitTypeAbstractVillager) + " migrants");
-	//aiChat(1, "Migrant number was: " + migrantNumber);
 }
 
+//==============================================================================
+// selectClosestArchipelagoBuildPlanPosition
+// Find the closest location to the unit to build.
+//==============================================================================
+void selectClosestArchipelagoBuildPlanPosition(int planID = -1, int baseID = -1)
+{
+	vector builderLocation = getRandomIsland();
+
+	aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, builderLocation);
+	aiPlanSetVariableFloat(planID, cBuildPlanCenterPositionDistance, 0, 100.0);
+	//aiPlanSetVariableVector(planID, cBuildPlanInfluencePosition, 0, huntLocation);          // Influence toward position
+	//aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionDistance, 0, 100.0);          // 100m range.
+	aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionValue, 0, 200.0);             // 200 points max
+	aiPlanSetVariableInt(planID, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+}
+
+//==============================================================================
+// selectClosestArchipelagoMainIslandBuildPlanPosition
+// Find the closest location to the unit to build.
+//==============================================================================
+void selectClosestArchipelagoMainIslandBuildPlanPosition(int planID = -1, int baseID = -1)
+{
+	aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, gHomeBase);
+	aiPlanSetVariableFloat(planID, cBuildPlanCenterPositionDistance, 0, 100.0);
+	//aiPlanSetVariableVector(planID, cBuildPlanInfluencePosition, 0, huntLocation);          // Influence toward position
+	//aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionDistance, 0, 100.0);          // 100m range.
+	aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionValue, 0, 200.0);             // 200 points max
+	aiPlanSetVariableInt(planID, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+}
+
+//==============================================================================
+// selectArchipelagoBuildPlanPosition
+//==============================================================================
+bool selectArchipelagoBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
+{
+   bool result = true;
+   baseID = -1;
+
+   // Position.
+   switch (puid)
+   {
+      case cUnitTypeypShrineJapanese:
+      case cUnitTypeypWJToshoguShrine2:
+      case cUnitTypeypWJToshoguShrine3:
+      case cUnitTypeypWJToshoguShrine4:
+      case cUnitTypeypWJToshoguShrine5:
+      {
+         selectShrineBuildPlanPosition(planID, baseID);
+         break;
+      }
+      case cUnitTypedeTorp:
+      {
+         selectTorpBuildPlanPosition(planID, baseID);
+         break;
+      }
+      case cUnitTypedeHouseAfrican:
+      case cUnitTypeHouse:
+      case cUnitTypeypVillage:
+      case cUnitTypeypHouseIndian:
+      case cUnitTypeManor:
+      case cUnitTypeHouseEast:
+      case cUnitTypeHouseMed:
+      case cUnitTypeLonghouse:
+      case cUnitTypeHouseAztec:
+      case cUnitTypedeHouseInca:
+      {
+         selectClosestArchipelagoBuildPlanPosition(planID, baseID);
+         break;
+      }
+      case cUnitTypeOutpost:
+      case cUnitTypeWarHut:
+      case cUnitTypeNoblesHut:
+      case cUnitTypedeIncaStronghold:
+      case cUnitTypedeTower:
+      case cUnitTypeBlockhouse:
+      case cUnitTypeypCastle:
+      case cUnitTypeYPOutpostAsian:
+      {
+         selectClosestArchipelagoBuildPlanPosition(planID, baseID);
+         break;
+      }
+      case cUnitTypeDock:
+      case cUnitTypeYPDockAsian:
+      case cUnitTypedePort:
+      case cUnitTypezpDrydock:    // AssertiveWall: Venitian special dock from age of pirates
+      {
+         // AssertiveWall: Get a new dock position for two minutes after the first one encunters danger
+         vector newNavyVec = gNavyVec;
+         if (gLastWSTime > xsGetTime())
+         {  
+            float mapSize = kbGetMapXSize() / 10.0;
+            // 40 chances to pick a dock position other than the starting position
+            for (j = 0; < 50)
+            {  // picks random fish to build by. Radius grows as j increases
+               newNavyVec = getRandomGaiaUnitPosition(cUnitTypeAbstractFish, getStartingLocation(), mapSize + j * 30.0); 
+               if (newNavyVec == cInvalidVector && j > 40)
+               {
+                  newNavyVec = getRandomGaiaUnitPosition(cUnitTypeAbstractWhale, getStartingLocation(), mapSize + j * 30.0);
+               }
+               else if (newNavyVec == cInvalidVector)
+               {
+                  newNavyVec = gNavyVec;
+               }
+               else if (distance(newNavyVec, gNavyVec) > 75.0)
+               {
+                  //gNavyVec = newNavyVec;  // AssertiveWall: This has been having unintended effects on navy defense plans
+                  break;
+               }
+            }
+         }
+
+         aiPlanSetVariableVector(planID, cBuildPlanDockPlacementPoint, 0,
+            kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID))); // One point at main base.
+         aiPlanSetVariableVector(planID, cBuildPlanDockPlacementPoint, 1, newNavyVec); // Dock location Depends on naval baseID fed to it
+         break;
+      }
+      case cUnitTypeBank:
+      case cUnitTypeMarket:
+      case cUnitTypeypTradeMarketAsian:
+      case cUnitTypedeLivestockMarket:
+      {
+         if (gMigrationMap == true)
+         {
+            selectClosestArchipelagoBuildPlanPosition(planID, baseID);
+            break;
+         }
+         // Usually we need to defend with Banks, thus placing Banks with high HP at front is a good choice.
+         aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
+         aiPlanSetBaseID(planID, baseID);
+         break;
+      }
+      case cUnitTypeTownCenter:
+      {
+         selectClosestArchipelagoBuildPlanPosition(planID, baseID);
+         break;
+      }
+      case cUnitTypedeFurTrade:
+      {
+         result = selectTribalMarketplaceBuildPlanPosition(planID, baseID);
+         break;
+      }
+      case cUnitTypedeField:
+      {
+         // Returns false when we couldn't find a granary to build nearby, destroy the plan and wait for the granary
+         // to be built.
+         result = selectFieldBuildPlanPosition(planID, baseID);
+         break;
+      }
+      case cUnitTypedeMountainMonastery:
+      {
+         selectMountainMonasteryBuildPlanPosition(planID, baseID);
+         break;
+      }
+      case cUnitTypedeGranary:
+      {
+         selectGranaryBuildPlanPosition(planID, baseID);
+         break;
+      }
+      case cUnitTypeFactory:
+      case cUnitTypeypDojo:
+      {
+         aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceBack);
+         // Base ID.
+         aiPlanSetBaseID(planID, baseID);
+         break;
+      }
+      default:
+      {
+         int numMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+         for (i = 0; < numMilitaryBuildings)
+         {
+            if (puid != xsArrayGetInt(gMilitaryBuildings, i))
+            {
+               continue;
+            }
+            // This is a military building, randomize placement.
+            aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, aiRandInt(4));
+			selectClosestArchipelagoMainIslandBuildPlanPosition(planID, baseID);
+            break;
+         }
+		 if (puid != cUnitTypeMilitaryBuilding || puid == cUnitTypeAbstractWonder)
+		 {
+         	selectClosestArchipelagoBuildPlanPosition(planID, baseID);
+		 }
+		 else
+		 {
+			aiPlanSetBaseID(planID, baseID);
+		 }
+         break;
+      }
+   }
+
+   return (result);
+}

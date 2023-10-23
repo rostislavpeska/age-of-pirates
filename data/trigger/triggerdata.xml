@@ -3686,7 +3686,7 @@
       <command>}</command>
       <command>rule bdkzuzkz11 active { if (true) { xsDisableSelf();</command>
     </effect>
-    <effect name="ZP Native AutoSetup: Aztecs - Water Temple">
+    <effect name="ZP Native AutoSetup: Aztecs - Native Consulate">
       <command>}}</command>
       <command>rule Aztec_politicians_Setup</command>
       <command>active</command>
@@ -3725,7 +3725,7 @@
       <command>}</command>
       <command>rule Is_Aztec_Map active runImmediately highFrequency {</command>
       <command>for(playerID=1;&lt;9) {</command>
-      <command>trTechSetStatus(playerID, cTechzpIsAztecMap, cTechStatusActive);</command>
+      <command>trTechSetStatus(playerID, cTechzpExtendedAztecs, cTechStatusActive);</command>
       <command>xsDisableSelf();</command>
       <command>}</command>
       <command>}</command>
@@ -3740,6 +3740,50 @@
       <command>}</command>
       <command>}</command>
       <command>rule bdkzuzkz144 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP Trade Harbour AutoSetup">
+      <param name="TechID" dispname="Tech to enable Water Trade (do not change)" vartype="string">cTechDEEnableTradeRouteWater</param>
+      <param name="Proto1" dispname="Trade Unit - Upgrade I" vartype="protounit">deTradingGalleon</param>
+      <param name="Proto2" dispname="Trade Unit - Upgrade II" vartype="protounit">deTradingFluyt</param>
+      <command>}}</command>
+      <command>rule UpdatePortStartingTech</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>xsDisableSelf();</command>
+      <command>for(playerID=1;&lt;9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trTechSetStatus(playerID, %TechID%, cTechStatusActive);</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule UpdatePortsI</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trPlayerUnitCountSpecific(0, "%Proto1%") &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(0, cTechzpUpdatePort1, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule UpdatePortsII</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trPlayerUnitCountSpecific(0, "%Proto2%") &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(0, cTechzpUpdatePort2, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule bdkzuzkz155 active { if (true) { //</command>
     </effect>
   </effects>
 </trigger>

@@ -9803,6 +9803,38 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpExtendedAztecs" type="Normal">
+    <dbid>40339</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandAdd" tech="zpNatAztecInfluence" page="1" column="1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeWaterTradeRoute" type="Normal">
+    <dbid>40340</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeEurope1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeEurope2</effect>
+      <effect type="TechStatus" status="unobtainable">ypTradeRouteUpgrade1</effect>
+      <effect type="TechStatus" status="unobtainable">ypTradeRouteUpgrade2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWater1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWater2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWaterAll1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWaterAll2</effect>
+      <effect type="TechStatus" status="obtainable">zpTradeRouteUpgradeWaterNative</effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWater1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWater2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
   
 
 

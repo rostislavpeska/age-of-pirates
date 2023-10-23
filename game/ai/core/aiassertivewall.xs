@@ -586,7 +586,7 @@ void villagerFerry(int pickup = -1, int dropoff = -1, int villagerNumber = -1)
 /* getRandomIsland
    AssertiveWall: Searches through tiles around your island and gives a location 
    of the closest island that's not another player's starting island
-   ** not in use **
+   In use by archipelago build placement
 */
 //==============================================================================
 
@@ -610,11 +610,14 @@ vector getRandomIsland()
                 xsVectorGetZ(testLoc) + aiRandFloat(0.0 - k, k));
       
       testAreaID = kbAreaGetIDByPosition(testLoc);
-      occupied = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAny, cUnitStateAlive, testLoc, 75.0);
+
+      // Commenting this out so it can owrk on archipelago
+      //occupied = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAny, cUnitStateAlive, testLoc, 75.0);
       
       if (kbAreaGetType(testAreaID) != cAreaTypeWater && occupied <= 0)
       {
-         return testLoc;
+         if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(testLoc), kbAreaGroupGetIDByPosition(startingLoc)) == false)
+            return testLoc;
       }
    }
    return cInvalidVector;

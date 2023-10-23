@@ -1178,7 +1178,7 @@ void analyzeMap()
    }
 
    // AssertiveWall: Archipelago style maps
-   if (cRandomMapName == "euArchipelago" ||
+  if (cRandomMapName == "euArchipelago" ||
        cRandomMapName == "euArchipelagoLarge" ||
          cRandomMapName == "zpmediterranean")
    {

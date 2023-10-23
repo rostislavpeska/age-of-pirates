@@ -69,6 +69,8 @@ mutable void revoltedHandler(int techID = -1) {}
 
 // AssertiveWall
 //mutable void arrayResetSelf(int arrayID = -1) {}
+mutable bool selectArchipelagoBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1) {return(false);}
+mutable void selectClosestArchipelagoBuildPlanPosition(int planID = -1, int baseID = -1) {}
 
 //==============================================================================
 // Includes.
