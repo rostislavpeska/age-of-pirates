@@ -9620,7 +9620,7 @@
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data2" amount="1.00" amount2="1.00" subtype="FreeHomeCityUnitShipped" unittype="zpGalleass" unittype2="zpVenetianBombard" relativity="Absolute">
+      <effect type="Data2" amount="1.00" amount2="1.00" subtype="FreeHomeCityUnitShipped" unittype="zpGalleass" unittype2="zpMercVenetianBombard" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
