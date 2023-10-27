@@ -2309,7 +2309,7 @@
     <maxrunvelocity>6.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\infantry\boneguard\boneguard.xml</animfile>
+    <animfile>units\natives\maltese\maltese_guard.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\infantry\boneguard\boneguard_age1_icon_64x64.png</icon>

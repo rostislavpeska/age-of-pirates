@@ -366,6 +366,75 @@
     <visibleineditor>0</visibleineditor>
   </civ>
   <!--<civ>
+    <name>zpCivPirate</name>
+    <main>1</main>
+    <portrait>objects\flags\pirate</portrait>
+    <culture>Mediterranean</culture>
+    <displaynameid>34045</displaynameid>
+    <rollovernameid>34045</rollovernameid>
+    <alliedid>26446</alliedid>
+    <alliedotherid>26445</alliedotherid>
+    <unalliedid>26444</unalliedid>
+    <agetech>
+      <age>Age0</age>
+      <tech>zpAge0Pirate</tech>
+    </agetech>
+    <agetech>
+      <age>Age1</age>
+      <tech>ColonializeBritish</tech>
+    </agetech>
+    <agetech>
+      <age>Age2</age>
+      <tech>FortressizeBritish</tech>
+    </agetech>
+    <agetech>
+      <age>Age3</age>
+      <tech>IndustrializeBritish</tech>
+    </agetech>
+    <agetech>
+      <age>Age4</age>
+      <tech>ImperializeBritish</tech>
+    </agetech>
+    <buildingefficiency>0.3</buildingefficiency>
+    <freebuildingefficiency>1.0</freebuildingefficiency>
+    <gold>0</gold>
+    <food>0</food>
+    <wood>0</wood>
+    <startingunit>Explorer</startingunit>
+    <townstartingunit>Settler</townstartingunit>
+    <townstartingunit>Settler</townstartingunit>
+    <townstartingunit>Settler</townstartingunit>
+    <townstartingunit>Settler</townstartingunit>
+    <townstartingunit>Settler</townstartingunit>
+    <townstartingunit>Settler</townstartingunit>
+    <homecityfilename>homecitybritish.xml</homecityfilename>
+    <homecityflagtexture>objects\flags\pirate</homecityflagtexture>
+    <homecityflagbuttonset>randomFlagBtn</homecityflagbuttonset>
+    <homecityflagbuttonsetlarge>spanishFlagBtnLarge</homecityflagbuttonsetlarge>
+    <homecityflagiconwpf>resources/images/icons/flags/Flag_Pirate.png</homecityflagiconwpf>
+    <homecityflagbuttonwpf>resources\images\icons\flags\Flag_Pirate.png</homecityflagbuttonwpf>
+    <matchmakingtextures>
+      <bannertexture>ui\eso\civ_flags_quick_launch_y</bannertexture>
+      <bannertexturecoords>0 0.5 0.78125 0.75</bannertexturecoords>
+      <portraittexture>ui\eso\eso_quick_search_politicians_04</portraittexture>
+      <portraittexturecoords>0.005859375 0.4296875 0.396484375 0.814453125</portraittexturecoords>
+      <smallportraittexturewpf>resources/images/icons/flags/Flag_Pirate.png</smallportraittexturewpf>
+      <smallportraittexturecoords>0 0 1 1</smallportraittexturecoords>
+    </matchmakingtextures>
+    <unitregen>
+      <unittype>Hero</unittype>
+      <rate>0.25</rate>
+      <idletimeout>3.5</idletimeout>
+    </unitregen>
+    <unitregen>
+      <unittype>SPCLizzie</unittype>
+      <rate>0.65</rate>
+      <idletimeout>3.5</idletimeout>
+    </unitregen>
+    <visible>0</visible>
+    <visibleineditor>1</visibleineditor>
+  </civ>-->
+  <!--<civ>
     <name>SPCVenetians</name>
     <main>1</main>
     <portrait>objects\flags\venetian</portrait>
