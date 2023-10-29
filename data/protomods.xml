@@ -16470,6 +16470,7 @@
     <unittype>Economic</unittype>
     <unittype>EconomicUnit</unittype>
     <unittype>AbstractVillager</unittype>
+    <unittype>AbstractWagon</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Unit</unittype>
     <unittype>HasBountyValue</unittype>

@@ -55,6 +55,7 @@ extern bool gIsArchipelagoMap = false;       // Used for multi-island maps like 
 
 extern float gStartingHandicap = -1.0;       // Stores starting handicap to ensure we don't deviate too far
 
+extern int gVillagerReservePlan = -1;
 
 extern vector gHomeBase = cInvalidVector;
 extern vector gDirection_UP = cInvalidVector;
@@ -72,6 +73,7 @@ extern int gMaxFoodWorkers = -1;
 extern int gWoodNumWorkers = -1;
 extern int gGoldNumWorkers = -1;
 extern int gMaxGoldWorkers = -1;
+extern int gQueuedBuildingPriority = -1;
 
 extern int gVillagerQuery = -1;
 extern int gFoodQuery = -1;

@@ -99,6 +99,7 @@ minInterval 5
         xsEnableRule("VeniceTechMonitor");
         xsEnableRule("MaintainVeniceShips");
         xsEnableRule("nativeWagonMonitor");
+        xsEnableRule("dottoreAbilityMonitor");
     }
 
    if (cMyCiv == cCivDEInca)
@@ -340,6 +341,49 @@ minInterval 12
             if (enemyID >= 0)
             {
                aiTaskUnitSpecialPower(pirateShipID, cProtoPowerPowerLongRange, enemyID, cInvalidVector);
+            }
+         }
+      }
+   }
+}
+
+//==============================================================================
+// Dottore Ability Monitor
+//==============================================================================
+rule dottoreAbilityMonitor
+inactive
+minInterval 12
+{
+   int dottoreID = -1;
+   int enemyID = 0;
+   vector enemyLoc = cInvalidVector;
+   int friendlyNum = 0;
+   int enemyNum = 0;
+
+   // Subs dive if any enemy warships are nearby, otherwise surface
+   int dottoreQuery = createSimpleUnitQuery(cUnitTypezpNatDottore, cMyID, cUnitStateAlive);
+   int numberDottoreFound = kbUnitQueryExecute(dottoreQuery);
+
+   for (i = 0; < numberDottoreFound)
+   {
+      dottoreID = kbUnitQueryGetResult(dottoreQuery, i);
+
+      if (dottoreID >= 0)
+      {
+         vector dottoreLoc = kbUnitGetPosition(dottoreID);
+
+         if (aiCanUseAbility(dottoreID, cProtoPowerzpMustardGasWeak) == true)
+         {
+            enemyNum = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, dottoreLoc, 20.0);
+            enemyID = getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, dottoreLoc, 20.0);
+            enemyLoc = kbUnitGetPosition(enemyID);
+            friendlyNum = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly, cUnitStateAlive, 
+               enemyLoc, 14.0);
+            if (enemyID >= 0 && (1.5 * friendlyNum < enemyNum))  // Gas it if we are losing
+            {  
+               aiTaskUnitSpecialPower(dottoreID, cProtoPowerzpMustardGasWeak, enemyID, cInvalidVector);
             }
          }
       }
@@ -1482,7 +1526,7 @@ minInterval 30
 //==============================================================================
 rule nativeWagonMonitor
 inactive
-minInterval 30
+minInterval 15
 {
    int wagonQueryID = createSimpleUnitQuery(cUnitTypeAbstractWagon, cMyID, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(wagonQueryID);
@@ -1544,9 +1588,11 @@ minInterval 30
              buildingType = cUnitTypezpVeniceEmbassy;
              break;
          }
-         /*case whateverthefuckrodanamedthewaterfort:
-            buildingType = cunitTypewhateverthefuckrodanamedthewaterfort;
-            break;*/
+         case cUnitTypezpWaterFortBuilder:
+         {
+            buildingType = cUnitTypezpWaterFort;
+            break;
+         }
       }
 
       if (buildingType < 0) // Didn't find a building so go to the next iteration.
@@ -1567,19 +1613,37 @@ minInterval 30
       }
 
       // Need a different placement for the water fort. Just use the location build plan
-      /*if (buildingType == cunitTypewhateverthefuckrodanamedthewaterfort)
+      if (buildingType == cUnitTypezpWaterFort)
       {
          // Find a random point near gNavyVec
-         int location = gNavyVec;
-         float xRange = kbGetMapXSize() * 0.05;
-         float zRange = kbGetMapZSize() * 0.05;
-         xsVectorSetX(location, xsVectorGetX(location) + aiRandFloat(8.0 - xRange, xRange));
-         xsVectorSetZ(location, xsVectorGetZ(location) + aiRandFloat(8.0 - zRange, zRange));
+         vector location = gNavyVec;
+         float xRange = 0;
+         float zRange = 0;
+         int randMinus = 1;
+         int minRange = 20 + aiRandInt(20);
+         for (j = 1; < 100)
+         {  
+            xRange = randMinus * (abs(xRange) + 1);
+            if (aiRandInt(4) > 2)
+            {
+               randMinus = -1 * randMinus;
+            }
+            zRange = randMinus * (abs(zRange) + 1);
+
+            location = xsVectorSetX(location, xsVectorGetX(location) + xRange);
+            location = xsVectorSetZ(location, xsVectorGetZ(location) + zRange);
+            if (distance(gNavyVec, location) > minRange)
+            {
+               break;
+            }
+         }
+         
          // Create the build plan
-         createLocationBuildPlan(buildingType, 1, 100, true, -1, location, 0)
+         planID = createLocationBuildPlan(buildingType, 1, 100, true, -1, location, 0);
          aiPlanAddUnitType(planID, wagonType, 1, 1, 1);
          aiPlanAddUnit(planID, wagon);
-      }*/
+         return;
+      }
 
       // AssertiveWall: wagon plan doesn't have an escrow, and skips queue
       planID = createSimpleBuildPlan(buildingType, 1, 75, true, -1, mainBaseID, 0, -1, true);

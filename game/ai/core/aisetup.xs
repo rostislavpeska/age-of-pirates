@@ -1182,6 +1182,10 @@ void analyzeMap()
        cRandomMapName == "euArchipelagoLarge")
    {
       gIsArchipelagoMap = true;
+      cvOkToGatherFood = false;      // Setting it false will turn off food gathering. True turns it on.
+      cvOkToGatherGold = false;      // Setting it false will turn off gold gathering. True turns it on.
+      cvOkToGatherWood = false;      // Setting it false will turn off wood gathering. True turns it on.
+      gHomeBase = kbGetPlayerStartingPosition(cMyID);
    }
 
    debugSetup("Island map is " + gIslandMap + ", players start on different islands is " + gStartOnDifferentIslands);
@@ -2988,10 +2992,10 @@ minInterval 30
 
    if (aiGetGameStartingResources() != cGameStartingResourcesInfinite)
    {
-   // Enable everything again that we disabled before so the AI can play on like it's a regular game.
-   cvOkToGatherFood = true;
-   cvOkToGatherWood = true;
-   cvOkToGatherGold = true;
+      // Enable everything again that we disabled before so the AI can play on like it's a regular game.
+      cvOkToGatherFood = true;
+      cvOkToGatherWood = true;
+      cvOkToGatherGold = true;
    }
 
    // Lakota doesn't need houses.

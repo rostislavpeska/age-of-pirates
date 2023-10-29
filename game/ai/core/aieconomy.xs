@@ -2304,6 +2304,12 @@ inactive
 group tcComplete
 minInterval 29
 {
+   if (gIsArchipelagoMap == true)
+   {
+      xsDisableSelf();
+      return;
+   }
+
    static int executionCount = 0;
    int mainBaseID = kbBaseGetMainID(cMyID);
 
@@ -2942,13 +2948,14 @@ rule econMasterRule
 inactive
 minInterval 10
 {
-   econMaster();
-   // AssertiveWall: Switch to Archipelago economy rule
    if (gIsArchipelagoMap == true)
    {
       xsEnableRule("taskVillagers");
       xsDisableSelf();
+      return;
    }
+   econMaster();
+   // AssertiveWall: Switch to Archipelago economy rule
 }
 
 //==============================================================================
@@ -3091,6 +3098,11 @@ inactive
 group tcComplete
 minInterval 11
 {
+   if (gIsArchipelagoMap == true)
+   {
+      xsDisableSelf();
+      return;
+   }
    econMaster();
    updateFoodBreakdown(); // Reinit each gatherer breakdown in case initial pass didn't yet have proper "actual"
                           // assignments.

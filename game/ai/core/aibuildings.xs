@@ -107,7 +107,7 @@ minInterval 3
 //==============================================================================
 void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
 {
-   if (puid == gDockUnit)
+   if (puid == gDockUnit || puid == cUnitTypezpDrydock || puid == cUnitTypezpWaterFort)
    {
       return;
    }
@@ -177,6 +177,7 @@ void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
       }*/
 
       // Make sure new areas we cover are in the same area group.
+      // AssertiveWall: Except on Archipelago maps, then allow different area groups
          for (i = 0; < numberAreas)
          {
             vector location = kbAreaGetCenter(i);
@@ -184,7 +185,7 @@ void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
             {
                continue;
             }
-            if (kbAreaGroupGetIDByPosition(location) == baseAreaGroup)
+            if (kbAreaGroupGetIDByPosition(location) == baseAreaGroup)// && gIsArchipelagoMap == false)
             {
                continue;
             }
@@ -1033,6 +1034,12 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 //==============================================================================
 bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
 {
+   // AssertiveWall: Switch to archipelago version when desired:
+   if ((gIsArchipelagoMap == true && kbGetAge() >= cAge2) || (gIsArchipelagoMap == true && puid == cUnitTypeAbstractWonder))
+   {
+      selectArchipelagoBuildPlanPosition(planID, puid, baseID);
+   }
+
    bool result = true;
 
    // Position.
@@ -1117,15 +1124,18 @@ bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
       case cUnitTypeMarket:
       case cUnitTypeypTradeMarketAsian:
       case cUnitTypedeLivestockMarket:
-      {
-         if (gMigrationMap == true)
+      {  // AssertiveWall: Stick to more random placement for migration and archipelago
+         if (gMigrationMap == true || gIsArchipelagoMap == true)
          {
             selectClosestBuildPlanPosition(planID, baseID);
             break;
          }
-         // Usually we need to defend with Banks, thus placing Banks with high HP at front is a good choice.
-         aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
-         aiPlanSetBaseID(planID, baseID);
+         else
+         {
+            // Usually we need to defend with Banks, thus placing Banks with high HP at front is a good choice.
+            aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
+            aiPlanSetBaseID(planID, baseID);
+         }
          break;
       }
       case cUnitTypeTownCenter:
