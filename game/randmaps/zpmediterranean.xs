@@ -285,7 +285,7 @@ void main(void)
 	int smallIslandID=rmCreateArea("corsair island");
 	rmSetAreaSize(smallIslandID, rmAreaTilesToFraction(1670.0), rmAreaTilesToFraction(1670.0));
 	rmSetAreaCoherence(smallIslandID, 0.45);
-	rmSetAreaBaseHeight(smallIslandID, 2.0);
+	rmSetAreaBaseHeight(smallIslandID, 1.5);
 	rmSetAreaSmoothDistance(smallIslandID, 20);
 	rmSetAreaMix(smallIslandID, baseMix);
 	rmAddAreaToClass(smallIslandID, classIsland);

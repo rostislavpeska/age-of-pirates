@@ -79,4 +79,10 @@
   <zpnatdottore>
     <ability>zpMustardGasWeak<rof>60</rof></ability>
   </zpnatdottore>
+  <zpmercnautilus>
+    <ability>zpPowerShunt<allowwhilestealthed>true</allowwhilestealthed><rof>60</rof></ability>
+  </zpmercnautilus>
+  <zpmercwokousteamer>
+    <ability>deFullSteam<rof>90</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
+  </zpmercwokousteamer>
 </abilitymods>

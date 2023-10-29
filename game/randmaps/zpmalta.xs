@@ -416,7 +416,7 @@ rmAddAreaInfluenceSegment(eastIsland, 0.8, 0.5, 0.6, 0.2);
    // Port Sites
    int portSite1 = rmCreateArea ("port_site1");
    rmSetAreaSize(portSite1, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-    rmSetAreaLocation(portSite1, 0.8-rmXTilesToFraction(25), 0.2);
+    rmSetAreaLocation(portSite1, 0.8-rmXTilesToFraction(25), 0.23);
    rmSetAreaMix(portSite1, "Africa Desert Grass dry");
    rmSetAreaCoherence(portSite1, 1);
    rmSetAreaSmoothDistance(portSite1, 15);
@@ -485,7 +485,7 @@ rmAddAreaInfluenceSegment(eastIsland, 0.5, 0.8, 0.2, 0.6);
 
    int portSite3 = rmCreateArea ("port_site3");
    rmSetAreaSize(portSite3, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-   rmSetAreaLocation(portSite3, 0.2, 0.8-rmZTilesToFraction(25));
+   rmSetAreaLocation(portSite3, 0.23, 0.8-rmZTilesToFraction(25));
    rmSetAreaCoherence(portSite3, 1);
    rmSetAreaMix(portSite3, "Africa Desert Grass dry");
    rmSetAreaSmoothDistance(portSite3, 15);
@@ -722,7 +722,7 @@ if (cNumberNonGaiaPlayers >= 4){
 
    int portID01 = rmCreateObjectDef("port 01");
    portID01 = rmCreateGrouping("portG 01", "harbour_malta_05");
-   rmPlaceGroupingAtLoc(portID01, 0, 0.8-rmXTilesToFraction(12), 0.2);
+   rmPlaceGroupingAtLoc(portID01, 0, 0.8-rmXTilesToFraction(12), 0.23);
 
    // Port 2
    int portID02 = rmCreateObjectDef("port 02");
@@ -732,7 +732,7 @@ if (cNumberNonGaiaPlayers >= 4){
    // Port 3
    int portID03 = rmCreateObjectDef("port 03");
    portID03 = rmCreateGrouping("portG 03", "harbour_malta_07");
-   rmPlaceGroupingAtLoc(portID03, 0, 0.2, 0.8-rmZTilesToFraction(12));
+   rmPlaceGroupingAtLoc(portID03, 0, 0.23, 0.8-rmZTilesToFraction(12));
 
    // Port 4
    int portID04 = rmCreateObjectDef("port 04");

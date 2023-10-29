@@ -27,7 +27,7 @@
       <string _locid="300026">ZP NAT House Pirates</string>
       <string _locid="300027">ZP Port Center</string>
       <string _locid="300028">ZP Native Pirates</string>
-      <string _locid="300029">ZP Socket Water Trade Route</string>
+      <string _locid="300029">ZP Socket Trade Harbour</string>
       <string _locid="300030">Trade Harbour</string>
       <string _locid="300031">ZP Harbour Center</string>
       <string _locid="300032">Harbour Warehouse</string>
@@ -189,7 +189,7 @@
       <string _locid="300187">ZP SPC Treasure Ship</string>
       <string _locid="300188">Treasure Ship</string>
       <string _locid="300189">Mother of all ships</string>
-      <string _locid="300190">Kamikadze</string>
+      <string _locid="300190">Floating Dragon</string>
       <string _locid="300191">ZP Colonization Wagon Asian</string>
       <string _locid="300192">Turtle Ship</string>
       <string _locid="300193">ZP Test Turtle Ship</string>
@@ -214,13 +214,13 @@
       <string _locid="300212">The Big Theft</string>
       <string _locid="300213">Ships a Treasure Ship stolen by your Wokou alies with Sao Feng himself on board.</string>
       <string _locid="300214">Friendly Shipyard</string>
-      <string _locid="300215">ZP Wokou Japanese Steamer</string>
+      <string _locid="300215">ZP SHP Destroyer</string>
       <string _locid="300216">Matsura Takanobu</string>
       <string _locid="300217">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWokou Monk \n\nNative archer. Shipments from foreign allies. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nPacific Allies (Random Legendary Ship)</string>
       <string _locid="300218">The Iron Fleet</string>
       <string _locid="300219">Ships Fire Junks and enables you a Fire Junk training in your Dock.</string>
       <string _locid="300220">Destroyer</string>
-      <string _locid="300221">Unique steam powered warship able to train Eisentrupplers and detect submarines and other stealth units.</string>
+      <string _locid="300221">Unique steam powered warship able to train Flamethrowers and detect submarines and other stealth units.</string>
       <string _locid="300222">Steam powered warship.</string>
       <string _locid="300223">Hydra</string>
       <string _locid="300224">ZP Socket SPC Zen</string>
@@ -355,8 +355,8 @@
       <string _locid="300352">Extends City influence. Allows you to train new units, buildings and provides you completely new techs and shipments. Increases Aztec units build limit.</string>
       <string _locid="300353">Aztec Villager</string>
       <string _locid="300354">ZP NAT Aztec Villager</string>
-      <string _locid="300355">Temple of the Waters</string>
-      <string _locid="300356">ZP Temple of the Waters</string>
+      <string _locid="300355">Native Consulate</string>
+      <string _locid="300356">ZP Native Consulate</string>
       <string _locid="300357">Maya</string>
       <string _locid="300358">ZP Maya Holcan Spearman Proxy</string>
       <string _locid="300359">Zapotec</string>
@@ -400,9 +400,9 @@
       <string _locid="300397">ZP Native Aztec Temple D</string>
       <string _locid="300398">Aztec Gold</string>
       <string _locid="300399">ZP Native Aztec House</string>
-      <string _locid="300400">Temple of the Waters (Jesuit)</string>
-      <string _locid="300401">Temple of the Waters (Maya)</string>
-      <string _locid="300402">Temple of the Waters (Zapotec)</string>
+      <string _locid="300400">Native Consulate (Jesuit)</string>
+      <string _locid="300401">Native Consulate (Maya)</string>
+      <string _locid="300402">Native Consulate (Zapotec)</string>
       <string _locid="300403">Aztec Gold (Migration Map): Discover ancient Aztec cities hidden in the jungle. Players start in divided areas on one river bank with very limited resources and have to migrate to the other bank. \n\nSettlements: Aztec Cities, Renegades</string>
       <string _locid="300404">The secret is hidden behind the river. The legendary ancients cities should be right there. Who discovers them first? You or your enemy?</string>
       <string _locid="300405">Jewish</string>
@@ -489,8 +489,8 @@
       <string _locid="300486">Pick Renegade Captain</string>
       <string _locid="300487">Pick a renegade captain and train new units and research new techs</string>
       <string _locid="300488">Native Water Flag</string>
-      <string _locid="300489">ZP Native Water Flag 1</string>
-      <string _locid="300490">ZP Native Water Flag 2</string>
+      <string _locid="300489">ZP Renegades Water Flag 1</string>
+      <string _locid="300490">ZP Renegades Water Flag 2</string>
       <string _locid="300491">Captain Nemo</string>
       <string _locid="300492">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Submarine \n\nTechnical revolutionary and underwater explorer. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nLegendary Nautilus, Submarine Fleet</string>
       <string _locid="300493">Thaddeus Valentine</string>
@@ -505,19 +505,19 @@
       <string _locid="300502">ZP SRenegade Factory Winter</string>
       <string _locid="300503">Weapon Factory</string>
       <string _locid="300504">Native Building</string>
-      <string _locid="300505">ZP NAT Renegade Eisentruppler</string>
+      <string _locid="300505">ZP NAT Renegade Flamethrower</string>
       <string _locid="300506">Logical Positivism</string>
       <string _locid="300508">All research is done faster by 25%</string>
       <string _locid="300509">Iron Fleet</string>
-      <string _locid="300510">Ships an steam-powered Destroyer able to train Eisentrupplers and detect submarines.</string>
+      <string _locid="300510">Ships an steam-powered Destroyer able to train Flamethrowers and detect submarines.</string>
       <string _locid="300511">Air Explorers</string>
       <string _locid="300512">Ships an advanced hot air balloon.</string>
       <string _locid="300513">Academy of Sciences</string>
-      <string _locid="300514">Veteran Eisentruppler</string>
-      <string _locid="300515">Guard Eisentruppler</string>
-      <string _locid="300516">Legendary Eisentruppler</string>
-      <string _locid="300517">Veteran Eisentrupplers</string>
-      <string _locid="300518">Guard Eisentrupplers</string>
+      <string _locid="300514">Veteran Flamethrower</string>
+      <string _locid="300515">Guard Flamethrower</string>
+      <string _locid="300516">Legendary Flamethrower</string>
+      <string _locid="300517">Veteran Flamethrowers</string>
+      <string _locid="300518">Guard Flamethrowers</string>
       <string _locid="300519">Ships an Academy Wagon able to build a new colony buildings allowing you some further advanced improvements.</string>
       <string _locid="300520">Academy Wagon</string>
       <string _locid="300521">ZP Academy Wagon</string>
@@ -642,7 +642,7 @@
       <string _locid="300640">Inuits</string>
       <string _locid="300641">Maori Settlement</string>
       <string _locid="300642">ZP NAT House Maori</string>
-      <string _locid="300643">Eisentruppler</string>
+      <string _locid="300643">Flamethrower</string>
       <string _locid="300644">Delivers two Aztec Ritual Canoes and allows you to train them in your dock.</string>
       <string _locid="300645">ZP Guardian Privateer</string>
       <string _locid="300646">ZP Jesuit Cathedral</string>
@@ -704,7 +704,7 @@
       <string _locid="300702">Doge's Guard</string>
       <string _locid="300703">Cost: 1000 &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt; \n • Sends 12 Pavisiers</string>
       <string _locid="300704">ZP NAT MERC Venetian Pavisier</string>
-      <string _locid="300705">ZP Venetian Land Spawn Flag 1</string>
+      <string _locid="300705">ZP Venetian Land Spawn Flag</string>
       <string _locid="300706">Venetian Flag</string>
       <string _locid="300707">Venetian Home City Gather Point</string>
       <string _locid="300708">Veteran Venetians</string>
@@ -726,7 +726,7 @@
       <string _locid="300724">Venetian Galleass</string>
       <string _locid="300725">Ship of the Line</string>
       <string _locid="300726">Experimental Bombard</string>
-      <string _locid="300727">ZP Venetian Bombard</string>
+      <string _locid="300727">ZP NAT Venetian Bombard</string>
       <string _locid="300728">Venetian Bombards</string>
       <string _locid="300729">"Everything has a price, even loyality. If you have money, we can be friends."</string>
       <string _locid="300730">Venetian House</string>
@@ -814,15 +814,15 @@
       <string _locid="300812">Ships a Venetian Embassy Wagon and unlocks more Venetian shipments which can be sent from the Embassy building.</string>
       <string _locid="300813">Allows to send Venetian Shipments</string>
       <string _locid="300814">San Marco Guard</string>
-      <string _locid="300815">Ships Dodge's Guards (Can be sent in finite times)</string>
-      <string _locid="300816">Venetian Expeditionary Army</string>
-      <string _locid="300817">Ships Venetian Bombards and Dodge's Guards</string>
+      <string _locid="300815">Ships Dodge's Guards (Can be sent in always when bellow build limit: 12)</string>
+      <string _locid="300816">Venetian Bombard</string>
+      <string _locid="300817">Ships Venetian Bombard (Can be sent in always when bellow build limit: 2)</string>
       <string _locid="300818">Venetian Exploration Fleet</string>
-      <string _locid="300819">Ships two Venetian Galleys (Can be sent in finite times)</string>
+      <string _locid="300819">Ships Venetian Galleass (Can be sent in always when bellow build limit: 2)</string>
       <string _locid="300820">Venetian Expeditionary Fleet</string>
       <string _locid="300821">Ships two Venetian Galleass ships</string>
-      <string _locid="300822">Venetian Mercenary Brigade (Can be sent in finite times)</string>
-      <string _locid="300823">Ships Adralic Sea Mercenaries</string>
+      <string _locid="300822">Venetian Mercenaries</string>
+      <string _locid="300823">Ships Adriatic Sea Mercenaries (Can be sent always when bellow population limit)</string>
       <string _locid="300824">Dodge's Guard</string>
       <string _locid="300825">ZP NAT Dodge's Guard</string>
       <string _locid="300826">Veteran Dodge's Guard</string>
@@ -834,9 +834,9 @@
       <string _locid="300832">Venetian Bombard</string>
       <string _locid="300833">ZP Venetian Harbour Center</string>
       <string _locid="300834">ZP Venetian Mooring</string>
-      <string _locid="300835">Adralic Sea</string>
+      <string _locid="300835">Adriatic Sea</string>
       <string _locid="300836">Large naval map with two sea shores and a water trade route. \n\nSettlements: Venetians, Maltese, Jesuits</string>
-      <string _locid="300837">Even loyality can be bought. Venetians are powerful allies. Make an alliance with them and dominate over the Adralic Sea.</string>
+      <string _locid="300837">Even loyality can be bought. Venetians are powerful allies. Make an alliance with them and dominate over the Adriatic Sea.</string>
       <string _locid="300838">Giove Fulminante</string>
       <string _locid="300839">Costanza Guerriera</string>
       <string _locid="300840">Redentor del Mondo</string>
@@ -852,12 +852,18 @@
       <string _locid="300850">San Spiridion</string>
       <string _locid="300851">Scudo Della Fede</string>
       <string _locid="300852">Venetian Secret Engines</string>
-      <string _locid="300853">A.D. 1404 - 1800</string>
+      <string _locid="300853">Mediterannean Islands</string>
       <string _locid="300854">Collection of mediterranean islands and two worlds: Europe and the Orient. \n\nSettlements: Venetians, Pirate, Scientists. \n\nOther possible settlements (based on variation): Maltese, Jesuit, Sufi, Jewish</string>
       <string _locid="300855">The barrier between Occident and Orient is moving every closer together.</string>
       <string _locid="300856">Malta</string>
       <string _locid="300857">Malta and Gozo Archipelago: Large naval map with fortified player Town centers. You start on the same island as your enemy. \n\nRecommended player setup: \n2 vs 2 \n3 vs 3 \n4 vs 4 \n\nSettlements: Maltese, Pirates</string>
       <string _locid="300858">Malta is a centrer of Mediterranean trade. The ships are comming from all the directions. Who controls Malta, controls the Mediterranean.</string>
+      <string _locid="300859">The Navel of the World</string>
+      <string _locid="300860">Venetian Brigade</string>
+      <string _locid="300861">Ships the whole Venetian Brigade.</string>
+      <string _locid="300862">ZP NAT MERC Venetian Bombard</string>
+      <string _locid="300863">ZP Merc Nautilus</string>
+      <string _locid="300864">ZP Merc Destroyer</string>
     </language>
   </stringtable>
 </stringmods>

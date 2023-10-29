@@ -128,6 +128,74 @@ minInterval 60
 }
 
 //==============================================================================
+/* scaleDifficulty
+   AssertiveWall: adjusts the AI performance based on how well a player performs
+   Probably causes desync issues
+*/
+//==============================================================================
+rule scaleDifficulty
+inactive
+minInterval 60
+{
+   int friendlyTeamScore = 0;
+   int friendlyTeamSize = 0;
+   int enemyTeamScore = 0;
+   int enemyTeamSize = 0;
+   int myTeam = kbGetPlayerTeam(cMyID);
+   float modifier = 1.25; // 25% 
+   float handicapAdjustment = 0.02; // 2%
+   float newHandicap = -1;
+
+   if (gStartingHandicap < 0)
+   {
+      gStartingHandicap = kbGetPlayerHandicap(cMyID); 
+   }
+
+   // Add up the scores of each team
+   for (player = 1; < cNumberPlayers)
+   {
+      if (kbGetPlayerTeam(player) == myTeam)
+      {
+         friendlyTeamScore += aiGetScore(player);
+         friendlyTeamSize += 1;
+      }
+      else
+      {
+         enemyTeamScore += aiGetScore(player);
+         enemyTeamSize += 1;
+      }
+   }
+   // Normalize the scores for the team size (i.e. get the average score for the team)
+   // This prevents too much scaling in FFA or lopsided team games
+   friendlyTeamScore = friendlyTeamScore / friendlyTeamSize;
+   enemyTeamScore = enemyTeamScore / enemyTeamSize;
+
+   if (friendlyTeamScore > enemyTeamScore * modifier)
+   {
+      newHandicap = kbGetPlayerHandicap(cMyID) * (1.0 - handicapAdjustment);
+      aiChat(1, "Decreasing the AI handicap to " + newHandicap);
+   }
+   else if (friendlyTeamScore * modifier < enemyTeamScore)
+   {
+      newHandicap = kbGetPlayerHandicap(cMyID) * (1.0 + handicapAdjustment);
+      aiChat(1, "Increasing the AI handicap to " + newHandicap);
+   }
+   else
+   {
+      return;
+   }
+
+   // Create upper and lower bounds of 10% of the initial handicap
+   if (newHandicap > gStartingHandicap * 1.12 || newHandicap < gStartingHandicap * 0.88)
+   {
+      aiChat(1, "Blocked new handicap of: " + newHandicap + ". Starting handicap was: " + gStartingHandicap);
+      return;
+   }
+
+   kbSetPlayerHandicap(cMyID, newHandicap);
+}
+
+//==============================================================================
 /* endlessWaterRaids
    AssertiveWall: creates a persistent plan to roam the map and look for
    things to attack

@@ -2175,5 +2175,1615 @@
       <command>trPlayerGrantResources(%PlayerID%, "%Resource%", 0-%Count%);}</command>
       <command>else{trChatSendToPlayer(0, %PlayerID%, "%Message%");}</command>
     </effect>
+    <effect name="ZP Native AutoSetup: 00 General (Place First)">
+      <command>}}</command>
+      <command>rule Human_Features active runImmediately highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>trTechSetStatus(playerID, cTechzpIsPirateMap, cTechStatusActive);</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpPickConsulateTechAvailable)) {</command>
+      <command>if (kbGetCivForPlayer(playerID) == cCivChinese) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOnChinese, cTechStatusActive);</command>
+      <command>} else if (kbGetCivForPlayer(playerID) == cCivIndians) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOnIndian, cTechStatusActive);</command>
+      <command>} else if (kbGetCivForPlayer(playerID) == cCivJapanese) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOnJapanese, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule Italian_Ballance inactive runImmediately highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>if (kbGetCivForPlayer(playerID) == cCivDEItalians) {</command>
+      <command>trTechSetStatus(playerID, cTechzpItalianSettlerBallance, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (trTechStatusCheck(playerID, cTechDEHCGondolas, cTechStatusActive) == true) {</command>
+      <command>trTechSetStatus(playerID, cTechzpItalianGondolaBallance, cTechStatusActive);</command>
+      <command>}</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hdkzuzkz0 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Maltese">
+      <command>}}</command>
+      <command>rule Maltese_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int MalteseFaction=-1;</command>
+      <command>if (MalteseFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomMalteseFaction", 0, 2);</command>
+      <command>MalteseFaction = trQuestVarGet("RandomMalteseFaction");</command>
+      <command>}</command>
+      <command>if (MalteseFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateMalteseVenetians, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (MalteseFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateMalteseFlorentians, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (MalteseFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateMalteseJerusalem, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpMalteseCross)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffMaltese, cTechStatusActive); </command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hdkzuzkz2 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Jewish">      
+      <command>}}</command>
+      <command>rule Jewish_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int JewishFaction=-1;</command>
+      <command>if (JewishFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomJewishFaction", 0, 2);</command>
+      <command>JewishFaction = trQuestVarGet("RandomJewishFaction");</command>
+      <command>}</command>
+      <command>if (JewishFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateJewishAmericans, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (JewishFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateJewishGermans, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (JewishFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateJewishRussians, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Jewish Star is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpJewishStar)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffJewish, cTechStatusActive); </command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hdkzuzkz3 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Pirates">
+      <param name="SocketRadius" dispname="Socket Training Radius (do not change)" vartype="float">35</param>
+      <param name="ConversionRadius" dispname="Water Flag Distance (do not change)" vartype="float">150</param>
+      <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">-1</param>
+      <param name="Socket2" dispname="Socket 2 (close to Water Flag 2)" vartype="unit">-1</param>
+      <command>}}</command>
+      <command>int getSocketOwner(int socketID = -1)</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command>for (playerID = 0; &lt; 9)</command>
+      <command>{</command>
+      <command>if (trCountUnitsInArea("" + socketID, playerID, "TradingPost", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>socketOwner = playerID;</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>}</command>
+      <command>return(socketOwner);</command>
+      <command>}</command>
+      <command>rule TurnOnPirates1</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwner = getSocketOwner(%Socket1%);</command>
+      <command>if (socketOwner &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket1">trUnitSelect("%Socket1%");</command>
+      <command>trConvertUnitsInArea(0, socketOwner, "zpPirateWaterSpawnFlag1", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffPirates1");</command>
+      <command>xsEnableRule("TrainPrivateer1ON");</command>
+      <command>xsEnableRule("TrainQueenAnne1ON");</command>
+      <command>xsEnableRule("TrainBlackPearl1ON");</command>
+      <command>xsEnableRule("TrainNeptuneGalley1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffPirates1</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwner = getSocketOwner(%Socket1%);</command>
+      <command>if (socketOwner &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket1">trUnitSelect("%Socket1%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpPirateWaterSpawnFlag1", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnPirates1");</command>
+      <command>xsDisableRule("TrainPrivateer1ON");</command>
+      <command>xsDisableRule("TrainQueenAnne1ON");</command>
+      <command>xsDisableRule("TrainBlackPearl1ON");</command>
+      <command>xsDisableRule("TrainNeptuneGalley1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainPrivateer1ON</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwner = getSocketOwner(%Socket1%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket1%, socketOwner, "zpPrivateerProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwner, cTechzpTrainPrivateer1, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainPrivateer1OFF");</command>
+      <command>xsEnableRule("TrainPrivateer1TIME");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainPrivateer1OFF</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainPrivateer1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainPrivateer1TIME</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwner = getSocketOwner(%Socket1%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwner, cTechzpPrivateerBuildLimitReduceShadow, cTechStatusActive);</command>
+      <command>trTechSetStatus(socketOwner, cTechzpTrainPrivateer1, cTechStatusUnobtainable);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainQueenAnne1ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwner = getSocketOwner(%Socket1%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket1%, socketOwner, "zpSPCQueenAnneProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwner, cTechzpTrainQueenAnne1, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainUniqueShip1TIME");</command>
+      <command>xsEnableRule("TrainQueenAnne1OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainQueenAnne1OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainQueenAnne1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainUniqueShip1TIME</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwner = getSocketOwner(%Socket1%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwner, cTechzpReducePirateShipsBuildLimit, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainBlackPearl1ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwner = getSocketOwner(%Socket1%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket1%, socketOwner, "zpSPCBlackPearlProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwner, cTechzpTrainBlackPearl1, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainUniqueShip1TIME");</command>
+      <command>xsEnableRule("TrainBlackPearl1OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainBlackPearl1OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainBlackPearl1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainNeptuneGalley1ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwner = getSocketOwner(%Socket1%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket1%, socketOwner, "zpSPCNeptuneGalleyProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwner, cTechzpTrainNeptune1, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainUniqueShip1TIME");</command>
+      <command>xsEnableRule("TrainNeptuneGalley1OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainNeptuneGalley1OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTimeMS() - cActivationTime * 1000 &gt;= 5000)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainNeptuneGalley1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOnPirates2</command>
+      <command>active</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwner = getSocketOwner(%Socket2%);</command>
+      <command>if (socketOwner &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket2">trUnitSelect("%Socket2%");</command>
+      <command>trConvertUnitsInArea(0, socketOwner, "zpPirateWaterSpawnFlag2", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffPirates2");</command>
+      <command>xsEnableRule("TrainPrivateer2ON");</command>
+      <command>xsEnableRule("TrainQueenAnne2ON");</command>
+      <command>xsEnableRule("TrainBlackPearl2ON");</command>
+      <command>xsEnableRule("TrainNeptuneGalley2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffPirates2</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwner = getSocketOwner(%Socket2%);</command>
+      <command>if (socketOwner &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket2">trUnitSelect("%Socket2%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpPirateWaterSpawnFlag2", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnPirates2");</command>
+      <command>xsDisableRule("TrainPrivateer2ON");</command>
+      <command>xsDisableRule("TrainQueenAnne2ON");</command>
+      <command>xsDisableRule("TrainBlackPearl2ON");</command>
+      <command>xsDisableRule("TrainNeptuneGalley2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainPrivateer2ON</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwner = getSocketOwner(%Socket2%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket2%, socketOwner, "zpPrivateerProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwner, cTechzpTrainPrivateer2, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainPrivateer2OFF");</command>
+      <command>xsEnableRule("TrainPrivateer2TIME");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainPrivateer2OFF</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainPrivateer2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainPrivateer2TIME</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwner = getSocketOwner(%Socket2%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwner, cTechzpPrivateerBuildLimitReduceShadow, cTechStatusActive);</command>
+      <command>trTechSetStatus(socketOwner, cTechzpTrainPrivateer2, cTechStatusUnobtainable);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainQueenAnne2ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwner = getSocketOwner(%Socket2%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket2%, socketOwner, "zpSPCQueenAnneProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwner, cTechzpTrainQueenAnne2, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainUniqueShip2TIME");</command>
+      <command>xsEnableRule("TrainQueenAnne2OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainQueenAnne2OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainQueenAnne2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainUniqueShip2TIME</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwner = getSocketOwner(%Socket2%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwner, cTechzpReducePirateShipsBuildLimit, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainBlackPearl2ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwner = getSocketOwner(%Socket2%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket2%, socketOwner, "zpSPCBlackPearlProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwner, cTechzpTrainBlackPearl2, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainUniqueShip2TIME");</command>
+      <command>xsEnableRule("TrainBlackPearl2OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainBlackPearl2OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainBlackPearl2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainNeptuneGalley2ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwner = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwner = getSocketOwner(%Socket2%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket2%, socketOwner, "zpSPCNeptuneGalleyProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwner, cTechzpTrainNeptune2, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainUniqueShip2TIME");</command>
+      <command>xsEnableRule("TrainNeptuneGalley2OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainNeptuneGalley2OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainNeptuneGalley2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule Pirate_politicians_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int PirateFaction=-1;</command>
+      <command>if (PirateFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomPirateFaction", 0, 2);</command>
+      <command>PirateFaction = trQuestVarGet("RandomPirateFaction");</command>
+      <command>}</command>
+      <command>if (PirateFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulatePiratesBlackbeard, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (PirateFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulatePiratesGrace, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (PirateFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulatePiratesBlackCaesar, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Jewish Star is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpTheBlackFlag)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffPirates, cTechStatusActive); </command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>      
+      <command>rule hdkzuzkz4 active { if (true) { xsDisableSelf();</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Wokou">
+      <param name="SocketRadius" dispname="Socket Training Radius (do not change)" vartype="float">35</param>
+      <param name="ConversionRadius" dispname="Water Flag Distance (do not change)" vartype="float">150</param>
+      <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">-1</param>
+      <param name="Socket2" dispname="Socket 2 (close to Water Flag 2)" vartype="unit">-1</param>
+      <command>}}</command>
+      <command>int getSocketOwnerWokou(int socketID = -1)</command>
+      <command>{</command>
+      <command>int socketOwnerWokou = 0;</command>
+      <command>for (playerID = 0; &lt; 9)</command>
+      <command>{</command>
+      <command>if (trCountUnitsInArea("" + socketID, playerID, "TradingPost", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>socketOwnerWokou = playerID;</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>}</command>
+      <command>return(socketOwnerWokou);</command>
+      <command>}</command>
+      <command>rule TurnOnWokou1</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerWokou = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerWokou = getSocketOwnerWokou(%Socket1%);</command>
+      <command>if (socketOwnerWokou &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket1">trUnitSelect("%Socket1%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerWokou, "zpWokouWaterSpawnFlag1", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffWokou1");</command>
+      <command>xsEnableRule("TrainJunk1ON");</command>
+      <command>xsEnableRule("TrainFuchuan1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffWokou1</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerWokou = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerWokou = getSocketOwnerWokou(%Socket1%);</command>
+      <command>if (socketOwnerWokou &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket1">trUnitSelect("%Socket1%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpWokouWaterSpawnFlag1", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnWokou1");</command>
+      <command>xsDisableRule("TrainJunk1ON");</command>
+      <command>xsDisableRule("TrainFuchuan1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainJunk1ON</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerWokou = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerWokou = getSocketOwnerWokou(%Socket1%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket1%, socketOwnerWokou, "zpWokouJunkProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerWokou, cTechzpTrainWokouJunk1, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainJunk1OFF");</command>
+      <command>xsEnableRule("TrainJunk1TIME");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainJunk1OFF</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainJunk1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainJunk1TIME</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerWokou = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerWokou = getSocketOwnerWokou(%Socket1%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerWokou, cTechzpWokouJunkBuildLimitReduceShadow, cTechStatusActive);</command>
+      <command>trTechSetStatus(socketOwnerWokou, cTechzpTrainWokouJunk1, cTechStatusUnobtainable);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainFuchuan1ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerWokou = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerWokou = getSocketOwnerWokou(%Socket1%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket1%, socketOwnerWokou, "zpWokouFuchuanProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerWokou, cTechzpTrainFireJunk1, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainFuchuan1TIME");</command>
+      <command>xsEnableRule("TrainFuchuan1OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainFuchuan1OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainFuchuan1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainFuchuan1TIME</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerWokou = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerWokou = getSocketOwnerWokou(%Socket1%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerWokou, cTechzpFireJunkBuildLimitReduceShadow, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>    
+      <command>rule TurnOnWokou2</command>
+      <command>active</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerWokou = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerWokou = getSocketOwnerWokou(%Socket2%);</command>
+      <command>if (socketOwnerWokou &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket2">trUnitSelect("%Socket2%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerWokou, "zpWokouWaterSpawnFlag2", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffWokou2");</command>
+      <command>xsEnableRule("TrainJunk2ON");</command>
+      <command>xsEnableRule("TrainFuchuan2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffWokou2</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerWokou = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerWokou = getSocketOwnerWokou(%Socket2%);</command>
+      <command>if (socketOwnerWokou &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket2">trUnitSelect("%Socket2%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpWokouWaterSpawnFlag2", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnWokou2");</command>
+      <command>xsDisableRule("TrainJunk2ON");</command>
+      <command>xsDisableRule("TrainFuchuan2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainJunk2ON</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerWokou = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerWokou = getSocketOwnerWokou(%Socket2%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket2%, socketOwnerWokou, "zpWokouJunkProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerWokou, cTechzpTrainWokouJunk2, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainJunk2OFF");</command>
+      <command>xsEnableRule("TrainJunk2TIME");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainJunk2OFF</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainJunk2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainJunk2TIME</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerWokou = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerWokou = getSocketOwnerWokou(%Socket2%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerWokou, cTechzpWokouJunkBuildLimitReduceShadow, cTechStatusActive);</command>
+      <command>trTechSetStatus(socketOwnerWokou, cTechzpTrainWokouJunk2, cTechStatusUnobtainable);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainFuchuan2ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerWokou = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerWokou = getSocketOwnerWokou(%Socket2%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket2%, socketOwnerWokou, "zpWokouFuchuanProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerWokou, cTechzpTrainFireJunk2, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainFuchuan2TIME");</command>
+      <command>xsEnableRule("TrainFuchuan2OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainFuchuan2OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainFuchuan2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainFuchuan2TIME</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerWokou = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerWokou = getSocketOwnerWokou(%Socket2%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerWokou, cTechzpFireJunkBuildLimitReduceShadow, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule zpWokouPoliticiansSetup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int WokouCaptain=-1;</command>
+      <command>if (WokouCaptain == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomWokouCaptain", 0, 2);</command>
+      <command>WokouCaptain = trQuestVarGet("RandomWokouCaptain");</command>
+      <command>}</command>
+      <command>if (WokouCaptain == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateWokouSaoFeng, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (WokouCaptain == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateWokouMadameChing, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (WokouCaptain == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateWokouTakanobu, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Blackmailing is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpBlackmailing)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffWokou, cTechStatusActive); </command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hdkzuzkz7 active { if (true) { xsDisableSelf();</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Renegades (Scientists)">
+      <param name="SocketRadius" dispname="Socket Training Radius (do not change)" vartype="float">35</param>
+      <param name="ConversionRadius" dispname="Water Flag Distance (do not change)" vartype="float">150</param>
+      <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">-1</param>
+      <param name="Socket2" dispname="Socket 2 (close to Water Flag 2)" vartype="unit">-1</param>
+      <command>}}</command>
+      <command>int getSocketOwnerScientist(int socketID = -1)</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command>for (playerID = 0; &lt; 9)</command>
+      <command>{</command>
+      <command>if (trCountUnitsInArea("" + socketID, playerID, "TradingPost", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>socketOwnerScientist = playerID;</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>}</command>
+      <command>return(socketOwnerScientist);</command>
+      <command>}</command>
+      <command>rule TurnOnScientists1</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerScientist = getSocketOwnerScientist(%Socket1%);</command>
+      <command>if (socketOwnerScientist &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket1">trUnitSelect("%Socket1%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerScientist, "zpNativeWaterSpawnFlag1", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffScientists1");</command>
+      <command>xsEnableRule("TrainSubmarine1ON");</command>
+      <command>xsEnableRule("TrainNautilus1ON");</command>
+      <command>xsEnableRule("TrainSteamer1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffScientists1</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerScientist = getSocketOwnerScientist(%Socket1%);</command>
+      <command>if (socketOwnerScientist &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket1">trUnitSelect("%Socket1%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpNativeWaterSpawnFlag1", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnScientists1");</command>
+      <command>xsDisableRule("TrainSubmarine1ON");</command>
+      <command>xsDisableRule("TrainNautilus1ON");</command>
+      <command>xsDisableRule("TrainSteamer1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainSubmarine1ON</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerScientist = getSocketOwnerScientist(%Socket1%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket1%, socketOwnerScientist, "zpSubmarineProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerScientist, cTechzpTrainSubmarine1, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainSubmarine1OFF");</command>
+      <command>xsEnableRule("TrainSubmarine1TIME");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainSubmarine1OFF</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainSubmarine1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainSubmarine1TIME</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerScientist = getSocketOwnerScientist(%Socket1%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerScientist, cTechzpReduceSubmarineBuildLimit, cTechStatusActive);</command>
+      <command>trTechSetStatus(socketOwnerScientist, cTechzpTrainSubmarine1, cTechStatusUnobtainable);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainNautilus1ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerScientist = getSocketOwnerScientist(%Socket1%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket1%, socketOwnerScientist, "zpNautilusProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerScientist, cTechzpTrainNautilus1, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainNautilus1TIME");</command>
+      <command>xsEnableRule("TrainNautilus1OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainNautilus1OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainNautilus1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainNautilus1TIME</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerScientist = getSocketOwnerScientist(%Socket1%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerScientist, cTechzpReduceNautilusBuildLimit, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainSteamer1ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerScientist = getSocketOwnerScientist(%Socket1%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket1%, socketOwnerScientist, "zpWokouSteamerProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerScientist, cTechzpTrainWokouSteamer1, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainSteamer1TIME");</command>
+      <command>xsEnableRule("TrainSteamer1OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainSteamer1OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainSteamer1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainSteamer1TIME</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerScientist = getSocketOwnerScientist(%Socket1%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerScientist, cTechzpReduceSteamerBuildLimit, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>     
+      <command>rule TurnOnScientists2</command>
+      <command>active</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerScientist = getSocketOwnerScientist(%Socket2%);</command>
+      <command>if (socketOwnerScientist &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket2">trUnitSelect("%Socket2%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerScientist, "zpNativeWaterSpawnFlag2", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffScientists2");</command>
+      <command>xsEnableRule("TrainSubmarine2ON");</command>
+      <command>xsEnableRule("TrainNautilus2ON");</command>
+      <command>xsEnableRule("TrainSteamer2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffScientists2</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerScientist = getSocketOwnerScientist(%Socket2%);</command>
+      <command>if (socketOwnerScientist &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket2">trUnitSelect("%Socket2%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpNativeWaterSpawnFlag2", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnScientists2");</command>
+      <command>xsDisableRule("TrainSubmarine2ON");</command>
+      <command>xsDisableRule("TrainNautilus2ON");</command>
+      <command>xsDisableRule("TrainSteamer2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainSubmarine2ON</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerScientist = getSocketOwnerScientist(%Socket2%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket2%, socketOwnerScientist, "zpSubmarineProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerScientist, cTechzpTrainSubmarine2, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainSubmarine2OFF");</command>
+      <command>xsEnableRule("TrainSubmarine2TIME");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainSubmarine2OFF</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainSubmarine2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainSubmarine2TIME</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerScientist = getSocketOwnerScientist(%Socket2%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerScientist, cTechzpReduceSubmarineBuildLimit, cTechStatusActive);</command>
+      <command>trTechSetStatus(socketOwnerScientist, cTechzpTrainSubmarine2, cTechStatusUnobtainable);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainNautilus2ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerScientist = getSocketOwnerScientist(%Socket2%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket2%, socketOwnerScientist, "zpNautilusProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerScientist, cTechzpTrainNautilus2, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainNautilus2TIME");</command>
+      <command>xsEnableRule("TrainNautilus2OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainNautilus2OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainNautilus2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainNautilus2TIME</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerScientist = getSocketOwnerScientist(%Socket2%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerScientist, cTechzpReduceNautilusBuildLimit, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainSteamer2ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerScientist = getSocketOwnerScientist(%Socket2%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket2%, socketOwnerScientist, "zpWokouSteamerProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerScientist, cTechzpTrainWokouSteamer2, cTechStatusActive);</command>
+      <command>xsEnableRule("TrainSteamer2TIME");</command>
+      <command>xsEnableRule("TrainSteamer2OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainSteamer2OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("TrainSteamer2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TrainSteamer2TIME</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerScientist = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerScientist = getSocketOwnerScientist(%Socket2%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerScientist, cTechzpReduceSteamerBuildLimit, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule Scientists_politicians_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int RenegadeCaptain=-1;</command>
+      <command>if (RenegadeCaptain == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomRenegadeCaptain", 0, 2);</command>
+      <command>RenegadeCaptain = trQuestVarGet("RandomRenegadeCaptain");</command>
+      <command>}</command>
+      <command>if (RenegadeCaptain == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateScientistNemo, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (RenegadeCaptain == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateScientistValentine, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (RenegadeCaptain == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateScientistkhora, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if PickScientist is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpPickScientist)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffScientists, cTechStatusActive); </command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>      
+      <command>rule bdkzuzkz10 active { if (true) { xsDisableSelf();</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Venetians">
+      <param name="SocketRadius" dispname="Socket Training Radius (do not change)" vartype="float">35</param>
+      <param name="ConversionRadius" dispname="Water Flag Distance (do not change)" vartype="float">150</param>
+      <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">-1</param>
+      <param name="Socket2" dispname="Socket 2 (close to Water Flag 2)" vartype="unit">-1</param>
+      <command>}}</command>
+      <command>int getSocketOwnerVenice(int socketID = -1)</command>
+      <command>{</command>
+      <command>int socketOwnerVenice = 0;</command>
+      <command>for (playerID = 0; &lt; 9)</command>
+      <command>{</command>
+      <command>if (trCountUnitsInArea("" + socketID, playerID, "TradingPost", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>socketOwnerVenice = playerID;</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>}</command>
+      <command>return(socketOwnerVenice);</command>
+      <command>}</command>
+      <command>rule TurnOnVenice1</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerVenice = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerVenice = getSocketOwnerVenice(%Socket1%);</command>
+      <command>if (socketOwnerVenice &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket1">trUnitSelect("%Socket1%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerVenice, "zpVenetianWaterSpawnFlag1", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffVenice1");</command>
+      <command>xsEnableRule("trainGalley1ON");</command>
+      <command>xsEnableRule("trainGalleass1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffVenice1</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerVenice = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerVenice = getSocketOwnerVenice(%Socket1%);</command>
+      <command>if (socketOwnerVenice &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket1">trUnitSelect("%Socket1%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpVenetianWaterSpawnFlag1", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnVenice1");</command>
+      <command>xsDisableRule("trainGalley1ON");</command>
+      <command>xsDisableRule("trainGalleass1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainGalley1ON</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerVenice = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerVenice = getSocketOwnerVenice(%Socket1%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket1%, socketOwnerVenice, "zpVeniceGalleyProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerVenice, cTechzpTrainVeniceGalley1, cTechStatusActive);</command>
+      <command>xsEnableRule("trainGalley1OFF");</command>
+      <command>xsEnableRule("trainGalley1TIME");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainGalley1OFF</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("trainGalley1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainGalley1TIME</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerVenice = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerVenice = getSocketOwnerVenice(%Socket1%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerVenice, cTechzpVeniceGalleyBuildLimitReduceShadow, cTechStatusActive);</command>
+      <command>trTechSetStatus(socketOwnerVenice, cTechzpTrainVeniceGalley1, cTechStatusUnobtainable);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainGalleass1ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerVenice = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerVenice = getSocketOwnerVenice(%Socket1%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket1%, socketOwnerVenice, "zpGalleassProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerVenice, cTechzpTrainGalleass1, cTechStatusActive);</command>
+      <command>xsEnableRule("trainGalleass1TIME");</command>
+      <command>xsEnableRule("trainGalleass1OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainGalleass1OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("trainGalleass1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainGalleass1TIME</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerVenice = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerVenice = getSocketOwnerVenice(%Socket1%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerVenice, cTechzpGalleassBuildLimitReduceShadow, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>    
+      <command>rule TurnOnVenice2</command>
+      <command>active</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerVenice = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerVenice = getSocketOwnerVenice(%Socket2%);</command>
+      <command>if (socketOwnerVenice &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket2">trUnitSelect("%Socket2%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerVenice, "zpVenetianWaterSpawnFlag2", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffVenice2");</command>
+      <command>xsEnableRule("trainGalley2ON");</command>
+      <command>xsEnableRule("trainGalleass2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffVenice2</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerVenice = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerVenice = getSocketOwnerVenice(%Socket2%);</command>
+      <command>if (socketOwnerVenice &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket2">trUnitSelect("%Socket2%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpVenetianWaterSpawnFlag2", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnVenice2");</command>
+      <command>xsDisableRule("trainGalley2ON");</command>
+      <command>xsDisableRule("trainGalleass2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainGalley2ON</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerVenice = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerVenice = getSocketOwnerVenice(%Socket2%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket2%, socketOwnerVenice, "zpVeniceGalleyProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerVenice, cTechzpTrainVeniceGalley2, cTechStatusActive);</command>
+      <command>xsEnableRule("trainGalley2OFF");</command>
+      <command>xsEnableRule("trainGalley2TIME");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainGalley2OFF</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("trainGalley2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainGalley2TIME</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerVenice = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerVenice = getSocketOwnerVenice(%Socket2%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerVenice, cTechzpVeniceGalleyBuildLimitReduceShadow, cTechStatusActive);</command>
+      <command>trTechSetStatus(socketOwnerVenice, cTechzpTrainVeniceGalley2, cTechStatusUnobtainable);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainGalleass2ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerVenice = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerVenice = getSocketOwnerVenice(%Socket2%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket2%, socketOwnerVenice, "zpGalleassProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerVenice, cTechzpTrainGalleass2, cTechStatusActive);</command>
+      <command>xsEnableRule("trainGalleass2TIME");</command>
+      <command>xsEnableRule("trainGalleass2OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainGalleass2OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("trainGalleass2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainGalleass2TIME</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerVenice = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerVenice = getSocketOwnerVenice(%Socket2%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerVenice, cTechzpGalleassBuildLimitReduceShadow, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule Venice_politicians_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int VeniceFaction=-1;</command>
+      <command>if (VeniceFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomVeniceFaction", 0, 2);</command>
+      <command>VeniceFaction = trQuestVarGet("RandomVeniceFaction");</command>
+      <command>}</command>
+      <command>if (VeniceFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateVeniceDolphin, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (VeniceFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateVeniceCornaro, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (VeniceFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateVeniceContarini, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if VeniceExpansion is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpVenetianExpansion)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffVenice, cTechStatusActive); </command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule bdkzuzkz11 active { if (true) { xsDisableSelf();</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Aztecs - Native Consulate">
+      <command>}}</command>
+      <command>rule Aztec_politicians_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int AztecFaction=-1;</command>
+      <command>if (AztecFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomAztecFaction", 0, 2);</command>
+      <command>AztecFaction = trQuestVarGet("RandomAztecFaction");</command>
+      <command>}</command>
+      <command>if (AztecFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateNatJesuit, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (AztecFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateNatMaya, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (AztecFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateNatZapotec, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if NativeConsulate is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpPickNativeConsulateTechAvailable)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffWaterTemple, cTechStatusActive); </command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule Is_Aztec_Map active runImmediately highFrequency {</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>trTechSetStatus(playerID, cTechzpExtendedAztecs, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule bdkzuzkz133 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: SPC Sufi - Middle East">
+      <command>}}</command>
+      <command>rule Is_MiddleEast_Map active runImmediately highFrequency {</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>trTechSetStatus(playerID, cTechzpMediterraneanSufi, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule bdkzuzkz144 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP Trade Harbour AutoSetup">
+      <param name="TechID" dispname="Tech to enable Water Trade (do not change)" vartype="string">cTechDEEnableTradeRouteWater</param>
+      <param name="Proto1" dispname="Trade Unit - Upgrade I" vartype="protounit">deTradingGalleon</param>
+      <param name="Proto2" dispname="Trade Unit - Upgrade II" vartype="protounit">deTradingFluyt</param>
+      <command>}}</command>
+      <command>rule UpdatePortStartingTech</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>xsDisableSelf();</command>
+      <command>for(playerID=1;&lt;9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trTechSetStatus(playerID, %TechID%, cTechStatusActive);</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule UpdatePortsI</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trPlayerUnitCountSpecific(0, "%Proto1%") &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(0, cTechzpUpdatePort1, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule UpdatePortsII</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trPlayerUnitCountSpecific(0, "%Proto2%") &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(0, cTechzpUpdatePort2, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule bdkzuzkz155 active { if (true) { //</command>
+    </effect>
   </effects>
 </trigger>

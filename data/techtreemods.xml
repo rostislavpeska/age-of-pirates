@@ -2291,6 +2291,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMaltese</effect>     
     </effects>
@@ -5369,6 +5372,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>  
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
@@ -5435,7 +5441,7 @@
   </tech>
   <tech name ="zpAztecWaterTemple" type ="Normal">
 		<dbid>40196</dbid>
-		<displaynameid>300355</displaynameid>
+		<displaynameid>300859</displaynameid>
   	<researchpoints>20.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\water_temple_tech.png</icon>
@@ -5837,6 +5843,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffJewish</effect>
     </effects>
@@ -6283,6 +6292,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMalteseLand</effect>  
     </effects>
@@ -6599,7 +6611,10 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>  
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientists</effect>
     </effects>
@@ -8832,6 +8847,10 @@
       <effect type="TechStatus" status="obtainable">zpConsulateVeniceDolphin</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateVeniceCornaro</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffVenice</effect>
     </effects>
@@ -9203,6 +9222,9 @@
       <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpVenetianBombard</target>
       </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpMercVenetianBombard</target>
+      </effect>
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpVeniceGalley</target>
       </effect>
@@ -9218,7 +9240,12 @@
       <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpVenetianBombard</target>
       </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpMercVenetianBombard</target>
+      </effect>
       <effect type="SetName" proto="zpVenetianBombard" culture="none" newname="300832">
+      </effect>
+      <effect type="SetName" proto="zpMercVenetianBombard" culture="none" newname="300832">
       </effect>
     </effects>
   </tech>
@@ -9392,6 +9419,7 @@
       <effect type="TechStatus" status="obtainable">zpVeniceExpeditionaryFleet</effect>
       <effect type="TechStatus" status="obtainable">zpVeniceCavalry</effect>
       <effect type="TechStatus" status="obtainable">zpVenetianTank</effect>
+      <effect type="TechStatus" status="obtainable">zpVeniceEnforcement</effect>
     </effects>
   </tech>
   <tech name="zpConsulateVeniceContarini" type="Normal">
@@ -9515,8 +9543,7 @@
   <tech name="zpVeniceArmy" type="Normal">
     <dbid>40325</dbid>
     <displaynameid>300814</displaynameid>
-    <cost resourcetype="Food">230.0000</cost>
-    <cost resourcetype="Gold">400.0000</cost>
+    <cost resourcetype="Gold">600.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\venice_army_infinite.png</icon>
@@ -9524,7 +9551,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
-    <flag>YPConsulateImprovement</flag>
     <flag>CheckLandHCGatherPoint</flag>
     <prereqs>
       <techstatus status="Active">Colonialize</techstatus>
@@ -9539,23 +9565,20 @@
   <tech name="zpVeniceCannonArmy" type="Normal">
     <dbid>40326</dbid>
     <displaynameid>300816</displaynameid>
-    <cost resourcetype="Wood">1500.0000</cost>
-    <cost resourcetype="Gold">1500.0000</cost>
+    <cost resourcetype="Gold">800.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\venice_cannon_army.png</icon>
+    <icon>resources\images\icons\techs\venetian_cannons.png</icon>
     <rollovertextid>300817</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>DECheckBuildLimit</flag>
     <flag>CheckLandHCGatherPoint</flag>
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="12.00" subtype="FreeHomeCityUnit" unittype="zpNatMercVeniceGuard" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpVenetianBombard" relativity="Absolute">
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpMercVenetianBombard" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -9564,8 +9587,7 @@
   <tech name="zpVeniceExplorationFleet" type="Normal">
     <dbid>40327</dbid>
     <displaynameid>300818</displaynameid>
-    <cost resourcetype="Wood">500.0000</cost>
-    <cost resourcetype="Gold">200.0000</cost>
+    <cost resourcetype="Gold">800.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\venetian_galley_fleet.png</icon>
@@ -9573,12 +9595,12 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
-    <flag>YPConsulateImprovement</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
     <prereqs>
-      <techstatus status="Active">Colonialize</techstatus>
+      <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpVeniceGalley" relativity="Absolute">
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpGalleass" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -9587,18 +9609,18 @@
   <tech name="zpVeniceExpeditionaryFleet" type="Normal">
     <dbid>40328</dbid>
     <displaynameid>300820</displaynameid>
-    <cost resourcetype="Wood">800.0000</cost>
-    <cost resourcetype="Gold">800.0000</cost>
+    <cost resourcetype="Gold">1500.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\venetian_galleass_fleet.png</icon>
     <rollovertextid>300821</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
     <prereqs>
-      <techstatus status="Active">Colonialize</techstatus>
+      <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpGalleass" relativity="Absolute">
+      <effect type="Data2" amount="1.00" amount2="1.00" subtype="FreeHomeCityUnitShipped" unittype="zpGalleass" unittype2="zpMercVenetianBombard" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -9615,7 +9637,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPCheckPopCap</flag>
     <flag>YPInfiniteTech</flag>
-    <flag>YPConsulateImprovement</flag>
     <flag>CheckLandHCGatherPoint</flag>
     <prereqs>
       <techstatus status="Active">Colonialize</techstatus>
@@ -9673,7 +9694,6 @@
     <flag>CheckLandHCGatherPoint</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>YPInfiniteTech</flag>
-    <flag>YPConsulateImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <prereqs>
       <techstatus status="Active">zpNatJesuitTank</techstatus>
@@ -9725,6 +9745,303 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpVeniceEnforcement" type="Normal">
+    <dbid>40335</dbid>
+    <displaynameid>300860</displaynameid>
+    <cost resourcetype="Gold">2000.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venice_cannon_army.png</icon>
+    <rollovertextid>300861</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpMercVenetianBombard" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="12.00" subtype="FreeHomeCityUnit" unittype="zpNatMercVeniceGuard" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpWokouRandomShipShadow" type="Normal">
+    <dbid>40337</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpWokouRandomShip</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnitRandom" unittype="AbstractLegendaryShip" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatHoopThrowerProxy</target>
+      </effect>
+      <effect type="TechStatus" status="active">zpImperialSubmarineClone</effect>
+    </effects>
+  </tech>
+  <tech name="zpImperialSubmarineClone" type="Normal">
+    <dbid>40338</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpMercNautilus</target>
+      </effect>
+      <effect type="SetName" proto="zpMercNautilus" culture="none" newname="300558">
+      </effect>
+      <effect type="Data" action="ShuntAttack" amount="1.50" subtype="Damage" relativity="BasePercent">
+        <target type="ProtoUnit">zpMercNautilus</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpExtendedAztecs" type="Normal">
+    <dbid>40339</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandAdd" tech="zpNatAztecInfluence" page="1" column="1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeWaterTradeRoute" type="Normal">
+    <dbid>40340</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeEurope1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeEurope2</effect>
+      <effect type="TechStatus" status="unobtainable">ypTradeRouteUpgrade1</effect>
+      <effect type="TechStatus" status="unobtainable">ypTradeRouteUpgrade2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWater1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWater2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWaterAll1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWaterAll2</effect>
+      <effect type="TechStatus" status="obtainable">zpTradeRouteUpgradeWaterNative</effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWater1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWater2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <!--<tech name="zpAge0Pirate" type="Normal">
+    <dbid>40341</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Explorer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Hussar</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">GuardPikemen</effect>
+      <effect type="TechStatus" status="obtainable">ImperialPikemen</effect>
+      <effect type="TechStatus" status="obtainable">RGRedcoats</effect>
+      <effect type="TechStatus" status="active">AAStandardStartingTechs</effect>
+      <effect type="TechStatus" status="active">DEEuropeanStandardTechs</effect>
+      <effect type="TechStatus" status="active">DEGrenadierEnable</effect>
+      <effect type="SetName" tech="DEHCHandMortar" newname="91787" newrollover="91786">
+      </effect>
+      <effect type="TechStatus" status="obtainable">VeteranHussars</effect>
+      <effect type="TechStatus" status="obtainable">ChurchStandingArmy</effect>
+      <effect type="TechStatus" status="obtainable">ChurchThinRedLine</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Sheep</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">RGLifeGuardHussars</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Mill</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">VeteranMusketeers</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Musketeer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Manor</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Settler</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">GuardDragoons</effect>
+      <effect type="TechStatus" status="obtainable">VeteranPikemen</effect>
+      <effect type="TechStatus" status="obtainable">VeteranLongbowmen</effect>
+      <effect type="TechStatus" status="obtainable">ImperialLongbowmen</effect>
+      <effect type="TechStatus" status="obtainable">GuardLongbowmen</effect>
+      <effect type="TechStatus" status="obtainable">ImperialDragoons</effect>
+      <effect type="TechStatus" status="obtainable">ImperialRedcoat</effect>
+      <effect type="TechStatus" status="obtainable">ImperialLifeGuard</effect>
+      <effect type="Data" action="Spawn" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">Manor</target>
+      </effect>
+      <effect type="Data" action="Spawn" amount="1.00" subtype="WorkRate" unittype="Settler" relativity="Assign">
+        <target type="ProtoUnit">Manor</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Capitol</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Falconet</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ArtilleryDepot</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Stable</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Barracks</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">ChurchBlackWatch</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Plantation</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Outpost</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="TechStatus" status="active">XPTrickle</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Market</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">DEChurchRogersRangers</effect>
+      <effect type="TechStatus" status="obtainable">ChurchRogersRangers</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Arsenal</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">CWallGate</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">LivestockPen</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">WallStraight5</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">WallConnector</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">WallStraight2</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Pikeman</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Longbowman</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Church</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">FieldHospital</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">FishingBoat</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Priest</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Culverin</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Mortar</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Dragoon</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Monitor</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Frigate</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Galleon</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Caravel</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">Bayonet</effect>
+      <effect type="TechStatus" status="active">Levy</effect>
+      <effect type="Data" action="SpawnRocket" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">Factory</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">ImperialRocket</effect>
+      <effect type="TechStatus" status="obtainable">ImperialFieldGun</effect>
+      <effect type="TechStatus" status="obtainable">FieldGun</effect>
+      <effect type="TechStatus" status="obtainable">VeteranDragoonsShadow</effect>
+      <effect type="TechStatus" status="obtainable">ImperialManOWar</effect>
+      <effect type="TechStatus" status="obtainable">ImperialMonitors</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deTavern</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">DERevolutionEgypt</effect>
+      <effect type="TechStatus" status="obtainable">DERevolutionUSA</effect>
+      <effect type="TechStatus" status="obtainable">DERevolutionCanadaBritish</effect>
+      <effect type="TechStatus" status="obtainable">DERevolutionSouthAfrica</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xpPetard</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">IncendiaryGrenades</effect>
+      <effect type="TechStatus" status="obtainable">ImperialHorseArtillery</effect>
+      <effect type="TechStatus" status="obtainable">HeavyHorseArtillery</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xpHorseArtillery</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xpSpy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonPirate</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="AddTrain" unittype="SaloonPirate" relativity="Absolute">
+        <target type="ProtoUnit">Galleon</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">ShipHowitzers</effect>
+      <effect type="TechStatus" status="obtainable">PoliticianGovernor</effect>
+      <effect type="TechStatus" status="obtainable">DEPoliticianLogisticianColonialBritish</effect>
+      <effect type="TechStatus" status="obtainable">UnlockPoliticianPhilosopherPrinceBritish</effect>
+      <effect type="TechStatus" status="obtainable">PoliticianNaturalist</effect>
+      <effect type="TechStatus" status="obtainable">DEPoliticianInventorColonial</effect>
+      <effect type="TechStatus" status="obtainable">PoliticianAdmiral</effect>
+      <effect type="TechStatus" status="obtainable">UnlockPoliticianMohawkStatesmanBritish</effect>
+      <effect type="TechStatus" status="obtainable">PoliticianAdventurerBritish</effect>
+      <effect type="TechStatus" status="obtainable">PoliticianBishopFortress</effect>
+      <effect type="TechStatus" status="obtainable">DEPoliticianMercContractorFortressBritish</effect>
+      <effect type="TechStatus" status="obtainable">UnlockPoliticianEngineerBritish</effect>
+      <effect type="TechStatus" status="obtainable">PoliticianTycoon</effect>
+      <effect type="TechStatus" status="obtainable">PoliticianViceroyBritish</effect>
+      <effect type="TechStatus" status="obtainable">UnlockPoliticianKingsMusketeerBritish</effect>
+      <effect type="TechStatus" status="obtainable">DEPoliticianLogistician</effect>
+      <effect type="TechStatus" status="obtainable">PoliticianPresidente</effect>
+      <effect type="TechStatus" status="obtainable">PoliticianGeneralBritish</effect>
+      <effect type="TechStatus" status="obtainable">DEPoliticianMercContractor</effect>
+      <effect type="TechStatus" status="obtainable">DEPoliticianKnight</effect>
+      <effect type="TechStatus" status="obtainable">DEPoliticianInventor</effect>
+    </effects>
+  </tech>-->
+  
 
 
   <!--<tech name="zpConsulateChinaUpdate" type="Normal">
