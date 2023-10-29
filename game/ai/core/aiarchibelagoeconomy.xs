@@ -1294,6 +1294,7 @@ minInterval 10
 		planID = aiPlanGetIDByActiveIndex(i);
 		if (aiPlanGetType(planID) == cPlanGather)
 		{
+			aiPlanSetDesiredPriority(planID, 1);
 			aiPlanSetActive(planID, false);
 			aiPlanSetNoMoreUnits(planID, true);
 		}
@@ -1302,8 +1303,8 @@ minInterval 10
 	if (gVillagerReservePlan < 0)
 	{
 		gVillagerReservePlan = aiPlanCreate("Villager reserve plan to keep them from gather plans", cPlanReserve);
-		aiPlanSetDesiredPriority(gVillagerReservePlan, 99);
-		aiPlanAddUnitType(gVillagerReservePlan, gEconUnit, 1, 1, 125);
+		aiPlanSetDesiredPriority(gVillagerReservePlan, 20); // Low so building plans can steal from it
+		aiPlanAddUnitType(gVillagerReservePlan, gEconUnit, 1, 125, 125);
 		aiPlanSetActive(gVillagerReservePlan, true);
 	}
 	// Look for villagers to put onto a reserve plan
@@ -1322,7 +1323,7 @@ minInterval 10
 			count += 1;
 		}
 	}
-	//aiChat(1, "Reserve plan total: " + aiPlanGetNumberUnits(gVillagerReservePlan, gEconUnit));
+	xsDisableSelf();
 }
 
 
@@ -1339,7 +1340,7 @@ rule taskVillagers
 inactive
 minInterval 2
 {
-	if (xsIsRuleEnabled("stealAllVillagers") == false)
+	if (gArrayPlan < 0)
 	{
 		xsEnableRule("stealAllVillagers");
 	}
@@ -1424,7 +1425,7 @@ minInterval 2
 	float goldDistance = 0.0;
 
 	// For Transport
-	vector pickup = location;
+	vector pickup = cInvalidVector;
 	vector dropoffLoc = cInvalidVector;
 	int transportPlanID = -1;
 
@@ -1924,37 +1925,48 @@ minInterval 2
 		// Check to see if it needs transport
 		if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(location), kbAreaGroupGetIDByPosition(resourceLocation)) == false)
 		{
-			migrantNumber += 1;
-			dropoffIslandLoc = resourceLocation;
-
-			if (transportPlanID < 0)
+			// Use the first pickup and dropoff locations, and only bring migrants that can be picked up from the same spot
+			if (pickup == cInvalidVector)
 			{
 				pickup = location;
-				dropoffLoc = getDropoffPoint(pickup, dropoffIslandLoc);
-				transportPlanID = createTransportPlan(pickup, dropoffIslandLoc, 100);
-				aiPlanAddUnitType(transportPlanID, cUnitTypeAbstractVillager, 1, 1, 1);
 			}
 
-			if (transportPlanID > 0)
+			if (dropoffIslandLoc == cInvalidVector)
 			{
-				aiPlanAddUnit(transportPlanID, unitID);
-				//aiPlanSetNoMoreUnits(transportPlanID, false);
-				/*if (aiPlanAddUnit(transportPlanID, unitID) == false)
-				{
-					aiPlanDestroy(planID);
-					return;
-				}*/
+				dropoffIslandLoc = resourceLocation;
 			}
+
+			if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(location), kbAreaGroupGetIDByPosition(pickup)) == true)
+			{
+				migrantNumber += 1;
+			}	
 		}
 		else
 		{
 			aiTaskUnitWork(unitID, resourcepickedid, true);
 		}
 	}
-	if (transportPlanID > 0)
+
+	if (migrantNumber > 0 && pickup != cInvalidVector && dropoffIslandLoc != cInvalidVector)
 	{
-		aiPlanSetNoMoreUnits(transportPlanID, true);
-		aiPlanSetActive(transportPlanID);
+		int numberTransportPlans = aiPlanGetNumber(cPlanTransport);
+		vector homePosition = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+		int numberWarships = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive, homePosition, 400.0);
+		
+		if (numberTransportPlans <= numberWarships)
+		{
+			//dropoffLoc = getDropoffPoint(pickup, dropoffIslandLoc);
+			transportPlanID = createTransportPlan(pickup, dropoffIslandLoc, 100);
+			aiPlanAddUnitType(transportPlanID, cUnitTypeAbstractVillager, 1, migrantNumber, migrantNumber);
+		}
+		else // Make sure we have a dock
+		{
+			int dockCount = kbUnitCount(cMyID, gDockUnit, cUnitStateAlive);
+			if (dockCount <= 0)
+			{
+				createSimpleBuildPlan(gDockUnit, 1, 100, false, cMilitaryEscrowID, gMainBase, 1);
+			}
+		}
 	}
 }
 
@@ -1968,8 +1980,6 @@ void selectClosestArchipelagoBuildPlanPosition(int planID = -1, int baseID = -1)
 
 	aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, builderLocation);
 	aiPlanSetVariableFloat(planID, cBuildPlanCenterPositionDistance, 0, 100.0);
-	//aiPlanSetVariableVector(planID, cBuildPlanInfluencePosition, 0, huntLocation);          // Influence toward position
-	//aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionDistance, 0, 100.0);          // 100m range.
 	aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionValue, 0, 200.0);             // 200 points max
 	aiPlanSetVariableInt(planID, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
 }
@@ -1980,10 +1990,8 @@ void selectClosestArchipelagoBuildPlanPosition(int planID = -1, int baseID = -1)
 //==============================================================================
 void selectClosestArchipelagoMainIslandBuildPlanPosition(int planID = -1, int baseID = -1)
 {
-	aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, gHomeBase);
+	aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, kbBaseGetLocation(cMyID, gMainBase));
 	aiPlanSetVariableFloat(planID, cBuildPlanCenterPositionDistance, 0, 100.0);
-	//aiPlanSetVariableVector(planID, cBuildPlanInfluencePosition, 0, huntLocation);          // Influence toward position
-	//aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionDistance, 0, 100.0);          // 100m range.
 	aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionValue, 0, 200.0);             // 200 points max
 	aiPlanSetVariableInt(planID, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
 }
@@ -2061,16 +2069,14 @@ bool selectArchipelagoBuildPlanPosition(int planID = -1, int puid = -1, int base
                {
                   newNavyVec = gNavyVec;
                }
-               else if (distance(newNavyVec, gNavyVec) > 75.0)
-               {
-                  //gNavyVec = newNavyVec;  // AssertiveWall: This has been having unintended effects on navy defense plans
+               else if (distance(newNavyVec, gNavyVec) > 50.0)
+               {  // Keep the distance closer to gNavyVec, but vary which island it's built on
                   break;
                }
             }
          }
 
-         aiPlanSetVariableVector(planID, cBuildPlanDockPlacementPoint, 0,
-            kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID))); // One point at main base.
+         aiPlanSetVariableVector(planID, cBuildPlanDockPlacementPoint, 0, getRandomIsland()); // One point at a random island
          aiPlanSetVariableVector(planID, cBuildPlanDockPlacementPoint, 1, newNavyVec); // Dock location Depends on naval baseID fed to it
          break;
       }
@@ -2126,27 +2132,22 @@ bool selectArchipelagoBuildPlanPosition(int planID = -1, int puid = -1, int base
       }
       default:
       {
-         int numMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
-         for (i = 0; < numMilitaryBuildings)
-         {
-            if (puid != xsArrayGetInt(gMilitaryBuildings, i))
-            {
-               continue;
-            }
-            // This is a military building, randomize placement.
-            aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, aiRandInt(4));
+		int numMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+		for (i = 0; < numMilitaryBuildings)
+		{
+			if (puid != xsArrayGetInt(gMilitaryBuildings, i))
+			{
+				continue;
+			}
+			// This is a military building, randomize placement.
+			aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, aiRandInt(4));
 			selectClosestArchipelagoMainIslandBuildPlanPosition(planID, baseID);
-            break;
-         }
-		 if (puid != cUnitTypeMilitaryBuilding || puid == cUnitTypeAbstractWonder)
-		 {
-         	selectClosestArchipelagoBuildPlanPosition(planID, baseID);
-		 }
-		 else
-		 {
-			aiPlanSetBaseID(planID, baseID);
-		 }
-         break;
+			break;
+		}
+
+		selectClosestArchipelagoBuildPlanPosition(planID, baseID);
+		//aiPlanSetBaseID(planID, baseID);
+		break;
       }
    }
 

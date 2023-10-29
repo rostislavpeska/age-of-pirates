@@ -864,6 +864,15 @@
       <string _locid="300862">ZP NAT MERC Venetian Bombard</string>
       <string _locid="300863">ZP Merc Nautilus</string>
       <string _locid="300864">ZP Merc Destroyer</string>
+      <string _locid="300865">Orthodox</string>
+      <!--<string _locid="300866">&lt;icon="(128)(resources/art/units/personalities/blackbeard.png)"&gt; &lt;color=1.0, 0.9, 0.5&gt;EDWARD TEACH&lt;/color&gt; \nIf ye be brave or fool enough to face a pirates curse, proceed. Take heed, wretched curs. Your fate is sealed.</string>-->
+      <string _locid="300866" gamecharacter="Edward Teach" soundfilename="BLACKB001" portraitfilename="resources/art/units/personalities/blackbeard.png">If ye be brave or fool enough to face a pirates curse, proceed. Take heed, wretched curs. Your fate is sealed.</string>
+      <string _locid="300867">Orthodox Monastery</string>
+      <string _locid="300868">ZP Socket Orthodox</string>
+      <string _locid="300869">Maltese Mission</string>
+      <string _locid="300870">ZP Socket Maltese Mission</string>
+      <string _locid="300871">Orthodox Monastery</string>
+      <string _locid="300872">ZP Nat House Orthodox</string>
     </language>
   </stringtable>
 </stringmods>

@@ -3,7 +3,7 @@
     <materialdef name="default">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="buildings\native_settlement\maltese_convent\textures\maltese_corner_mata_BaseColor">
+      <texture name="BaseColor" override="buildings\spc\fort\textures\spc_fort_wall_corner_mata_BaseColor">
       </texture>
       <texture name="Normals" override="buildings\spc\fort\textures\spc_fort_wall_corner_mata_Normals">
       </texture>

@@ -594,33 +594,56 @@ vector getRandomIsland()
 {
    vector startingLoc = kbGetPlayerStartingPosition(cMyID);
    int startingAreaID = kbAreaGetIDByPosition(startingLoc);
-   vector testLoc = startingLoc;
+   vector testLoc = cInvalidVector;
    int testAreaID = -1;
    float j = 0.0;
    float k = 0.0;
-   int occupied = -1;
+   int m = 0;
+   int occupiedFriendly = 0;
+   int occupiedEnemy = 0;
 
-   for (i = 0; < 100)
+
+   for (i = 0; < 200)
    {
       testLoc = startingLoc;
       // Get a random vector near our base
-      j = i * kbGetMapXSize() / 150.0; // Normalized for RM map area
-      k = i * kbGetMapZSize() / 150.0;
+      if (i < 100)
+      {
+         m = i;
+      }
+      else
+      {
+         m = i - 100;
+      }
+      j = m * kbGetMapXSize() / 150.0; // Normalized for RM map area
+      k = m * kbGetMapZSize() / 150.0;
       testLoc = xsVectorSet(xsVectorGetX(testLoc) + aiRandFloat(0.0 - j, j), 0.0, 
                 xsVectorGetZ(testLoc) + aiRandFloat(0.0 - k, k));
       
       testAreaID = kbAreaGetIDByPosition(testLoc);
 
-      // Commenting this out so it can owrk on archipelago
-      //occupied = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAny, cUnitStateAlive, testLoc, 75.0);
+      // Check how occupied it is. 
+      occupiedFriendly = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAlly, cUnitStateAlive, testLoc, 50.0);
+      occupiedEnemy = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, testLoc, 50.0);
       
-      if (kbAreaGetType(testAreaID) != cAreaTypeWater && occupied <= 0)
-      {
-         if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(testLoc), kbAreaGroupGetIDByPosition(startingLoc)) == false)
+      if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(testLoc), kbAreaGroupGetIDByPosition(startingLoc)) == false
+            && kbAreaGetType(kbAreaGetIDByPosition(testLoc)) != cAreaTypeWater)
+      {      
+         // Past 100, take whatever we can get that isn't home base
+         if (i > 100)
+         {
             return testLoc;
+         }
+
+         // If it isn't occupied by anyone, try and take it
+         if (occupiedFriendly <= 0 && occupiedEnemy <= 0)
+         {
+            return testLoc;
+         }
       }
    }
-   return cInvalidVector;
+   // Prefer to return something valid if no islands can be found
+   return startingLoc;
 }
 
 //==============================================================================
@@ -1410,6 +1433,9 @@ minInterval 10
 //==============================================================================
 /* ceylonFailsafe
    Goes through transport plans and helps them along
+   Based on DE Ceylon nomad failsafe
+
+   New version commented out to avoid issues
 */
 //==============================================================================
 
@@ -1454,6 +1480,96 @@ minInterval 15
       }
    }
 }
+
+/*rule ceylonFailsafe
+inactive
+minInterval 15
+{
+   int numberPlans = aiPlanGetActiveCount();
+
+   int transportPlan = -1;
+   int numberUnits = 0;
+   int transportUnit = -1;
+   int tempTransportUnit = -1;
+   vector transportLoc = cInvalidVector;
+   // Loop through all active plans
+
+   for (i = 0; < numberPlans)
+	{
+		transportPlan = aiPlanGetIDByActiveIndex(i);
+      if (aiPlanGetType(transportPlan) != cPlanTransport)
+      {
+         transportPlan = -1;
+         continue;
+      }
+
+      // Find the boat
+      numberUnits = aiPlanGetNumberUnits(transportPlan);
+      for (j = 0; < numberUnits)
+      {
+         tempTransportUnit = aiPlanGetUnitByIndex(transportPlan, j);
+         if (kbUnitIsType(tempTransportUnit, cUnitTypeAbstractWarShip) == true || kbUnitIsType(tempTransportUnit, cUnitTypeAbstractFishingBoat) == true)
+         {
+            transportUnit = tempTransportUnit;
+            break;
+         }
+      }
+      if (transportUnit < 0)
+      {  // Destroy the transport plan if it doesn't have a boat
+         aiChat(1, "Killed Plan: " + transportPlan);
+         aiPlanDestroy(transportPlan);
+         continue;
+      }
+
+      // Check the state of the transport plan
+      switch(aiPlanGetState(transportPlan))
+      {
+         case -1:
+         {
+            break;
+         }
+         case cPlanStateEnter:
+         {
+            //aiTaskUnitMove(transportUnit, aiPlanGetVariableVector(transportPlan, cTransportPlanGatherPoint, 0));
+            //for (k = 0; < numberUnits)
+            //{
+            //   tempTransportUnit = aiPlanGetUnitByIndex(transportPlan, k);
+            //   if (kbUnitIsType(tempTransportUnit, cUnitTypeLogicalTypeGarrisonInShips) == true)
+            //   {
+            //      aiTaskUnitWork(tempTransportUnit, transportUnit);
+            //   }
+            //}
+            // Kill the plan if it's still idle and no one is on board
+            if (kbUnitGetActionType(transportUnit) == cActionTypeIdle && getUnitCountByLocation(cUnitTypeLogicalTypeGarrisonInShips, cPlayerRelationSelf,
+                  cUnitStateAlive, transportLoc, 2.0) <= 0)
+            {
+               aiChat(1, "Killed Plan: " + transportPlan);
+               aiPlanDestroy(transportPlan);
+               aiTaskUnitMove(transportUnit, gNavyVec);
+               continue;
+            }
+            break;
+         }
+         case cPlanStateGoto:
+         {
+            transportLoc = kbUnitGetPosition(transportUnit);
+            if (getUnitCountByLocation(cUnitTypeLogicalTypeGarrisonInShips, cPlayerRelationSelf,
+                  cUnitStateAlive, transportLoc, 2.0) <= 0)
+            {
+               aiPlanDestroy(transportPlan);
+               aiTaskUnitMove(transportUnit, gNavyVec);
+               aiChat(1, "Killed Plan: " + transportPlan);
+            }
+            else
+            {
+               //aiTaskUnitMove(transportUnit, aiPlanGetVariableVector(transportPlan, cTransportPlanTargetPoint, 0));
+            }
+            break;
+         }
+      }
+	}
+
+}*/
 
 //==============================================================================
 /* islandMigration
@@ -1558,7 +1674,7 @@ minInterval 3
    gCeylonStartingTargetArea = closestArea;
    kbBaseSetPositionAndDistance(cMyID, kbBaseGetMainID(cMyID), kbAreaGetCenter(gCeylonStartingTargetArea), 100.0);
    xsEnableRule("buildingMonitorDelayed");
-   xsEnableRule("ceylonFailsafe");
+
    //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(gCeylonStartingTargetArea));
 
    // Move someone toward the center so we can see our landing spot

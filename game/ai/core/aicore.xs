@@ -1437,16 +1437,27 @@ rule transportMonitor
 inactive
 minInterval 10
 {
+   int numberTransportPlans = aiPlanGetNumber(cPlanTransport);
+   vector homePosition = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   int numberWarships = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive, homePosition, 200.0);
+   
+   /*if (numberTransportPlans >= numberWarships / 1.5)
+   {
+      if (numberTransportPlans != 0 && numberWarships > 0)
+      {
+         return;
+      }
+   }*/
    if (aiPlanGetIDByIndex(cPlanTransport, -1, true, 0) >= 0)
    {
       return;
    }
 
    // Find idle units away from our base.
-   int baseAreaGroupID = kbAreaGroupGetIDByPosition(kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
+   int baseAreaGroupID = kbAreaGroupGetIDByPosition(homePosition);
    int areaGroupID = -1;
    int areaID = -1;
-   int unitQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeGarrisonInShips, cMyID, cUnitStateAlive);
+   int unitQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive); // AssertiveWall: Switched to land military to stop transporting villagers
    int numberFound = kbUnitQueryExecute(unitQueryID);
    int unitID = -1;
    int planID = -1;
@@ -2305,19 +2316,16 @@ minInterval 5
       }
 
       // AssertiveWall: Enable island hopping on the following maps
-      if (true == true) // used to easily turn this off beore upload
+      if (gMigrationMap == true)
       {
-         if (gMigrationMap == true)
-         {
-            //gCeylonDelay = true; // Already set in setup
-            xsEnableRule("islandMigration");
-            //xsEnableRule("islandHopper");
-            //xsEnableRule("islandBuildSelector");
-         }
-         else
-         {
-            gCeylonDelay = false;
-         }
+         //gCeylonDelay = true; // Already set in setup
+         xsEnableRule("islandMigration");
+         //xsEnableRule("islandHopper");
+         //xsEnableRule("islandBuildSelector");
+      }
+      else
+      {
+         gCeylonDelay = false;
       }
       
       if (gIslandMap == true || gStartOnDifferentIslands == true)
@@ -2326,6 +2334,7 @@ minInterval 5
          xsEnableRule("transportMonitor");
          xsEnableRule("towerManager"); // Go ahead and start making towers on island maps
          xsEnableRule("navyManager");
+         //xsEnableRule("ceylonFailsafe");
       }
       
       if ((gGoodFishingMap == true) &&

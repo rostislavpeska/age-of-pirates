@@ -9,14 +9,14 @@
 				</data>
 				<data>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\europe\palaces\roof_fr02_wall_fr01b_wing_S</file>
+						<file>buildings\native_settlement\palaces\Palace_SPC3_wing_S</file>
 					</assetreference>
-                </data>
+			    </data>
 				<data>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\europe\palaces\roof_fr01_wall_fr01_wing_S</file>
+						<file>buildings\native_settlement\palaces\Palace_SPC3_wing_L</file>
 					</assetreference>
-				</data>
+			    </data>
 				<data>
 					<assetreference type="GrannyModel">
 						<file>buildings\native_settlement\europe\palaces\roof_fr01_wall_br02_wing_S</file>
