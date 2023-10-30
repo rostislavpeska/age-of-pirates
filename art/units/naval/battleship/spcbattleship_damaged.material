@@ -3,7 +3,7 @@
     <materialdef name="destructible">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="units\naval\battleship\textures\lineship_mata_BaseColor">
+      <texture name="BaseColor" override="units\naval\battleship\textures\unique_battleship_mata_BaseColor">
       </texture>
       <texture name="Normals" override="units\naval\battleship\textures\battleship_mata_Normals">
       </texture>
