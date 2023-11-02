@@ -74,6 +74,7 @@ extern int gWoodNumWorkers = -1;
 extern int gGoldNumWorkers = -1;
 extern int gMaxGoldWorkers = -1;
 extern int gQueuedBuildingPriority = -1;
+extern int gVillagerTransportArray = -1;
 
 extern int gVillagerQuery = -1;
 extern int gFoodQuery = -1;

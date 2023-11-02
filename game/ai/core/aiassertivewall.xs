@@ -1434,8 +1434,6 @@ minInterval 10
 /* ceylonFailsafe
    Goes through transport plans and helps them along
    Based on DE Ceylon nomad failsafe
-
-   New version commented out to avoid issues
 */
 //==============================================================================
 
@@ -1457,7 +1455,6 @@ minInterval 15
          break;
       }
    }
-   //aiChat( cMyID, "failsafe helping:" + transportPlan);
 
    switch(aiPlanGetState(transportPlan))
    {
@@ -1468,23 +1465,30 @@ minInterval 15
       }
       case cPlanStateEnter:
       {
-         //gTransportTimeout = xsGetTime();
          aiTaskUnitMove(transportUnit, aiPlanGetVariableVector(transportPlan, cTransportPlanGatherPoint, 0));
          break;
       }
       case cPlanStateGoto:
       {
-         //gTransportTimeout = xsGetTime();
          aiTaskUnitMove(transportUnit, aiPlanGetVariableVector(transportPlan, cTransportPlanTargetPoint, 0));
          break;
       }
    }
 }
 
-/*rule ceylonFailsafe
+//==============================================================================
+/* generalTransportFailsafe
+
+   Goes through transport plans and deletes the broken ones. Also saves people
+   stranded out at sea on a broken transport plan
+*/
+//==============================================================================
+
+rule generalTransportFailsafe
 inactive
 minInterval 15
 {
+   xsSetRuleMaxIntervalSelf(15);
    int numberPlans = aiPlanGetActiveCount();
 
    int transportPlan = -1;
@@ -1492,8 +1496,34 @@ minInterval 15
    int transportUnit = -1;
    int tempTransportUnit = -1;
    vector transportLoc = cInvalidVector;
+   vector homeBaseDropoff = cInvalidVector;
    // Loop through all active plans
 
+   // Handle idle ships with someone on board
+   int idleWarshipQuery = createSimpleIdleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive);
+   int numberWarships = kbUnitQueryExecute(idleWarshipQuery);   
+   for (i = 0; < numberWarships)
+   {
+      transportUnit = kbUnitQueryGetResult(idleWarshipQuery, i);
+      transportLoc = kbUnitGetPosition(transportUnit);
+      if (kbUnitGetActionType(transportUnit) == cActionTypeIdle && getUnitCountByLocation(cUnitTypeLogicalTypeGarrisonInShips, cPlayerRelationSelf,
+         cUnitStateAlive, transportLoc, 2.0) > 0)
+      {
+         homeBaseDropoff = getDropoffPoint(kbUnitGetPosition(transportUnit), kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
+         if (distance(kbUnitGetPosition(transportUnit), homeBaseDropoff) < 10.0)
+         {
+            aiTaskUnitEject(transportUnit);
+         }
+         else
+         {
+            aiPlanAddUnit(gNavyDefendPlan, transportUnit);
+            aiTaskUnitMove(transportUnit, homeBaseDropoff);
+            xsSetRuleMaxIntervalSelf(2);
+         }
+      }
+   }
+
+   // Handle the plans
    for (i = 0; < numberPlans)
 	{
 		transportPlan = aiPlanGetIDByActiveIndex(i);
@@ -1516,7 +1546,6 @@ minInterval 15
       }
       if (transportUnit < 0)
       {  // Destroy the transport plan if it doesn't have a boat
-         aiChat(1, "Killed Plan: " + transportPlan);
          aiPlanDestroy(transportPlan);
          continue;
       }
@@ -1530,20 +1559,10 @@ minInterval 15
          }
          case cPlanStateEnter:
          {
-            //aiTaskUnitMove(transportUnit, aiPlanGetVariableVector(transportPlan, cTransportPlanGatherPoint, 0));
-            //for (k = 0; < numberUnits)
-            //{
-            //   tempTransportUnit = aiPlanGetUnitByIndex(transportPlan, k);
-            //   if (kbUnitIsType(tempTransportUnit, cUnitTypeLogicalTypeGarrisonInShips) == true)
-            //   {
-            //      aiTaskUnitWork(tempTransportUnit, transportUnit);
-            //   }
-            //}
             // Kill the plan if it's still idle and no one is on board
             if (kbUnitGetActionType(transportUnit) == cActionTypeIdle && getUnitCountByLocation(cUnitTypeLogicalTypeGarrisonInShips, cPlayerRelationSelf,
                   cUnitStateAlive, transportLoc, 2.0) <= 0)
             {
-               aiChat(1, "Killed Plan: " + transportPlan);
                aiPlanDestroy(transportPlan);
                aiTaskUnitMove(transportUnit, gNavyVec);
                continue;
@@ -1558,18 +1577,141 @@ minInterval 15
             {
                aiPlanDestroy(transportPlan);
                aiTaskUnitMove(transportUnit, gNavyVec);
-               aiChat(1, "Killed Plan: " + transportPlan);
-            }
-            else
-            {
-               //aiTaskUnitMove(transportUnit, aiPlanGetVariableVector(transportPlan, cTransportPlanTargetPoint, 0));
+               //aiChat(1, "Killed Plan: " + transportPlan);
             }
             break;
          }
       }
-	}
+   }
 
-}*/
+   // Finally, kill everyone without a unit on board if there are more than 3 plans active
+   numberPlans = aiPlanGetActiveCount();
+   int transportPlanTotal = 0;
+   idleWarshipQuery = createSimpleIdleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive);
+   numberWarships = kbUnitQueryExecute(idleWarshipQuery);
+   int warshipNumber = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive, kbGetPlayerStartingPosition(cMyID), 300.0);
+   for (i = 0; < numberPlans)
+	{
+      transportPlan = aiPlanGetIDByActiveIndex(i);
+      if (aiPlanGetType(transportPlan) != cPlanTransport)
+      {
+         continue;
+      }
+      transportPlanTotal += 1;
+   }
+
+   if (transportPlanTotal > 3 || transportPlanTotal > warshipNumber)
+   {
+      for (i = 0; < numberPlans)
+      {
+         transportPlan = aiPlanGetIDByActiveIndex(i);
+         if (aiPlanGetType(transportPlan) != cPlanTransport)
+         {
+            continue;
+         }
+
+         // Find the boat
+         numberUnits = aiPlanGetNumberUnits(transportPlan);
+         for (j = 0; < numberUnits)
+         {
+            tempTransportUnit = aiPlanGetUnitByIndex(transportPlan, j);
+            if (kbUnitIsType(tempTransportUnit, cUnitTypeAbstractWarShip) == true || kbUnitIsType(tempTransportUnit, cUnitTypeAbstractFishingBoat) == true)
+            {
+               transportUnit = tempTransportUnit;
+               break;
+            }
+         }
+
+         transportLoc = kbUnitGetPosition(transportUnit);
+         if (getUnitCountByLocation(cUnitTypeLogicalTypeGarrisonInShips, cPlayerRelationSelf,
+               cUnitStateAlive, transportLoc, 2.0) <= 0)
+         {
+            aiPlanDestroy(transportPlan);
+            //aiChat(1, "Killed All Transport Plans with no one on board");
+         }
+      }
+   }
+}
+
+//==============================================================================
+/* delayedGeneralTransportFailsafe
+   Used on migration maps to delay the transport failsafe. Checks whether the 
+   bulk of villagers have made it to the mainland
+*/
+//==============================================================================
+
+rule delayedGeneralTransportFailsafe
+inactive
+minInterval 10
+{
+   if (kbGetAge() < cAge2)
+   {  // We don't migrate until age 2
+      return;
+   }
+   // See if our main base is no longer our starting location
+   vector startingLocation = kbGetPlayerStartingPosition(cMyID);
+   vector baseLocation = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(startingLocation), kbAreaGroupGetIDByPosition(baseLocation)) == true)
+   {  // New base isn't set yet if it can be reached by starting location
+      return;
+   }
+
+   // Get the number of villagers. If there are more by the new base than the original, then go ahead and initiate the failsafe 
+   if (getUnitCountByLocation(cUnitTypeAbstractVillager, cPlayerRelationSelf, cUnitStateAlive, baseLocation, 80.0) > 
+         getUnitCountByLocation(cUnitTypeAbstractVillager, cPlayerRelationSelf, cUnitStateAlive, startingLocation, 80.0))
+   {
+      xsEnableRule("generalTransportFailsafe");
+      xsDisableRule("ceylonFailsafe");
+      //aiChat(1, "Switching to standard failsafe");
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
+/* buildPlanDeletion
+   Similar to how the ceylonFailsafe deletes broken transport plans, this 
+   goes through and deletes build plans. Necessary on island maps when 
+   the builder doesn't transport properly.
+*/
+//==============================================================================
+
+rule buildPlanDeletion
+inactive
+minInterval 60
+{
+   int numberPlans = aiPlanGetActiveCount();
+   int builderUnit = -1;
+   int buildUnit = -1;
+   int buildPlan = -1;
+   int numberUnits = 0;
+   int tempBuildUnit = -1;
+   for (i = 0; < numberPlans)
+	{
+      buildPlan = aiPlanGetIDByActiveIndex(i);
+      if (aiPlanGetType(buildPlan) != cPlanBuild)
+      {
+         continue;
+      }
+      // Find the villager
+      numberUnits = aiPlanGetNumberUnits(numberPlans);
+      for (j = 0; < numberUnits)
+      {
+         tempBuildUnit = aiPlanGetUnitByIndex(buildPlan, j);
+         if (kbUnitIsType(tempBuildUnit, cUnitTypeAbstractVillager) == true || kbUnitIsType(tempBuildUnit, cUnitTypeAbstractWagon) == true)
+         {
+            builderUnit = tempBuildUnit;
+            break;
+         }
+      }
+
+      if (builderUnit < 0)
+      {
+         // no builder found
+         aiPlanDestroy(buildPlan);
+         aiChat(1, "deleting a build plan");
+      }
+   }
+}
 
 //==============================================================================
 /* islandMigration

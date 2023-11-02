@@ -17378,6 +17378,112 @@
 		<flag>DoNotShowOnMiniMap</flag>
 		<flag>Tracked</flag>
   </unit>
+  <unit id ="20164" name ="zpSPCHarbour">
+		<dbid>20164</dbid>
+		<displaynameid>300032</displaynameid>
+		<editornameid>300873</editornameid>
+		<obstructionradiusx>3.0000</obstructionradiusx>
+		<obstructionradiusz>3.0000</obstructionradiusz>
+		<maxvelocity>0.0000</maxvelocity>
+		<movementtype>land</movementtype>
+		<animfile>buildings\market\west market standin.xml</animfile>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
+		<deadreplacement>BuildingRubble4x4</deadreplacement>
+		<deadreplacementlifespan>15</deadreplacementlifespan>
+		<impacttype>Stone</impacttype>
+		<physicsinfo>house</physicsinfo>
+		<placementfile>buildinglarge.xml</placementfile>
+		<icon>resources\art\buildings\asian_civs\dock\india_dock_icon.png</icon>
+		<portraiticon>resources\art\buildings\tradeport_portrait.png</portraiticon>
+		<rollovertextid>30051</rollovertextid>
+		<shortrollovertextid>30052</shortrollovertextid>
+		<initialhitpoints>1500.0000</initialhitpoints>
+		<maxhitpoints>1500.0000</maxhitpoints>
+		<los>12.0000</los>
+		<buildpoints>10.0000</buildpoints>
+		<buildlimit>1</buildlimit>
+		<bounty>40.0000</bounty>
+		<allowedage>1</allowedage>
+		<armor type ="Siege" value ="0.0000"></armor>
+		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeBuildingsNotWalls</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandUnitsAttack</unittype>
+		<unittype>LogicalTypeShipsAndBuildings</unittype>
+		<unittype>LogicalTypeRangedUnitsAttack</unittype>
+		<unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+		<unittype>EmbellishmentClass</unittype>
+		<unittype>Building</unittype>
+		<unittype>EmbellishmentClass</unittype>
+		<unittype>NativeBuilding</unittype>
+		<unittype>Unattackable</unittype>
+		<flag>DoNotShowOnMiniMap</flag>
+		<flag>NoUnitAI</flag>
+		<flag>Immoveable</flag>
+		<flag>NoBloodOnDeath</flag>
+		<flag>NoHPBar</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>Doppled</flag>
+		<flag>ForceToGaia</flag>
+		<flag>Invulnerable</flag>
+		<flag>ColorTransformNonGaia</flag>
+		<flag>SelectWithObstruction</flag>
+		<flag>Tracked</flag>
+	</unit>
+  <unit id ="20165" name ="zpSPCHarbourB">
+		<dbid>20165</dbid>
+		<displaynameid>300032</displaynameid>
+		<editornameid>300874</editornameid>
+		<obstructionradiusx>3.0000</obstructionradiusx>
+		<obstructionradiusz>3.0000</obstructionradiusz>
+		<maxvelocity>0.0000</maxvelocity>
+		<movementtype>land</movementtype>
+		<animfile>buildings\market\west port B.xml</animfile>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
+		<deadreplacement>BuildingRubble4x4</deadreplacement>
+		<deadreplacementlifespan>15</deadreplacementlifespan>
+		<impacttype>Stone</impacttype>
+		<physicsinfo>house</physicsinfo>
+		<placementfile>buildinglarge.xml</placementfile>
+		<icon>resources\art\buildings\asian_civs\dock\india_dock_icon.png</icon>
+		<portraiticon>resources\art\buildings\tradeport_portrait.png</portraiticon>
+		<rollovertextid>30051</rollovertextid>
+		<shortrollovertextid>30052</shortrollovertextid>
+		<initialhitpoints>1500.0000</initialhitpoints>
+		<maxhitpoints>1500.0000</maxhitpoints>
+		<los>12.0000</los>
+		<buildpoints>10.0000</buildpoints>
+		<buildlimit>1</buildlimit>
+		<bounty>40.0000</bounty>
+		<allowedage>1</allowedage>
+		<armor type ="Siege" value ="0.0000"></armor>
+		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeBuildingsNotWalls</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandUnitsAttack</unittype>
+		<unittype>LogicalTypeShipsAndBuildings</unittype>
+		<unittype>LogicalTypeRangedUnitsAttack</unittype>
+		<unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+		<unittype>EmbellishmentClass</unittype>
+		<unittype>Building</unittype>
+		<unittype>EmbellishmentClass</unittype>
+		<unittype>NativeBuilding</unittype>
+		<unittype>Unattackable</unittype>
+		<flag>DoNotShowOnMiniMap</flag>
+		<flag>NoUnitAI</flag>
+		<flag>Immoveable</flag>
+		<flag>NoBloodOnDeath</flag>
+		<flag>NoHPBar</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>Doppled</flag>
+		<flag>ForceToGaia</flag>
+		<flag>Invulnerable</flag>
+		<flag>ColorTransformNonGaia</flag>
+		<flag>SelectWithObstruction</flag>
+		<flag>Tracked</flag>
+	</unit>
 
 
 

@@ -71,6 +71,7 @@ mutable void revoltedHandler(int techID = -1) {}
 //mutable void arrayResetSelf(int arrayID = -1) {}
 mutable bool selectArchipelagoBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1) {return(false);}
 mutable void selectClosestArchipelagoBuildPlanPosition(int planID = -1, int baseID = -1) {}
+mutable vector getDropoffPoint(vector pickup = cInvalidVector, vector dropoff = cInvalidVector, int stepsBack = 1) {return(cInvalidVector);}
 
 //==============================================================================
 // Includes.
@@ -1437,21 +1438,20 @@ rule transportMonitor
 inactive
 minInterval 10
 {
+    // AssertiveWall: Instead of checking for any active transport plans, check to see if we have an idel warship to use
    int numberTransportPlans = aiPlanGetNumber(cPlanTransport);
    vector homePosition = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
-   int numberWarships = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive, homePosition, 200.0);
+   int idleWarshipQuery = createSimpleIdleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive);
+   int numberWarships = kbUnitQueryExecute(idleWarshipQuery);
    
-   /*if (numberTransportPlans >= numberWarships / 1.5)
-   {
-      if (numberTransportPlans != 0 && numberWarships > 0)
-      {
-         return;
-      }
-   }*/
-   if (aiPlanGetIDByIndex(cPlanTransport, -1, true, 0) >= 0)
+   if (idleWarshipQuery <= 0)
    {
       return;
    }
+   /*if (aiPlanGetIDByIndex(cPlanTransport, -1, true, 0) >= 0)
+   {
+      return;
+   }*/
 
    // Find idle units away from our base.
    int baseAreaGroupID = kbAreaGroupGetIDByPosition(homePosition);
@@ -1473,6 +1473,12 @@ minInterval 10
       }
       position = kbUnitGetPosition(unitID);
       areaID = kbAreaGroupGetIDByPosition(position);
+      // AssertiveWall: I don't trust the rest. If they are in the reserve plan, send them back
+      if (kbAreAreaGroupsPassableByLand(baseAreaGroupID, areaID) == false && kbUnitGetPlanID(unitID) == gLandReservePlan)
+      {
+         transportRequired = true;
+         break;
+      }
 
       // AssertiveWall: Check if the unit is connected by land to main base
       if (kbAreAreaGroupsPassableByLand(baseAreaGroupID, areaID) == true)
@@ -2334,8 +2340,25 @@ minInterval 5
          xsEnableRule("transportMonitor");
          xsEnableRule("towerManager"); // Go ahead and start making towers on island maps
          xsEnableRule("navyManager");
-         //xsEnableRule("ceylonFailsafe");
+         if (gMigrationMap == true)
+         {
+            xsEnableRule("delayedGeneralTransportFailsafe");
+         }
+         else
+         {
+            xsEnableRule("generalTransportFailsafe");
+         }         
       }
+
+      if (gMigrationMap == true)
+      {
+         xsEnableRule("ceylonFailsafe");
+      }
+
+      //if (gIsArchipelagoMap == true)
+      //{
+         //xsEnableRule("buildPlanDeletion");
+      //}
       
       if ((gGoodFishingMap == true) &&
           (cDifficultyCurrent >= cDifficultyModerate))

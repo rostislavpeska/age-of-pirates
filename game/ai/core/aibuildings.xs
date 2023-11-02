@@ -185,7 +185,7 @@ void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
             {
                continue;
             }
-            if (kbAreaGroupGetIDByPosition(location) == baseAreaGroup)// && gIsArchipelagoMap == false)
+            if (kbAreaGroupGetIDByPosition(location) == baseAreaGroup && gIsArchipelagoMap == false)
             {
                continue;
             }

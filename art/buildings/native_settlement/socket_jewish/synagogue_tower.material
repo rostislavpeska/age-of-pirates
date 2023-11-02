@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\textures\synagogue_tower_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\africa\africa_north\textures\nafrica_minaret_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\textures\synagogue_tower_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

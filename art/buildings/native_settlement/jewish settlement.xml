@@ -7,7 +7,7 @@
 
 				<data>
 					<assetreference type="GrannyModel">
-						<file>War of the Triple Alliance\Delta\AURs\Buildings\house6</file>
+						<file>buildings\native_settlement\socket_jewish\house6</file>
 					</assetreference>
 					<decal>
 						<effecttype>default</effecttype>
@@ -22,7 +22,7 @@
 
 				<data>
 					<assetreference type="GrannyModel">
-						<file>War of the Triple Alliance\Delta\AURs\New Buildings\customs</file>
+						<file>buildings\native_settlement\socket_jewish\customs</file>
 					</assetreference>
 					<decal>
 						<effecttype>default</effecttype>
@@ -37,7 +37,7 @@
 
 				<data>
 					<assetreference type="GrannyModel">
-						<file>War of the Triple Alliance\Delta\AURs\New Buildings\constable</file>
+						<file>buildings\native_settlement\socket_jewish\constable</file>
 					</assetreference>
 					<decal>
 						<effecttype>default</effecttype>
@@ -52,7 +52,7 @@
 
 				<data>
 					<assetreference type="GrannyModel">
-						<file>War of the Triple Alliance\Delta\AURs\Buildings\southmosque</file>
+						<file>buildings\native_settlement\socket_jewish\townhall_Model</file>
 					</assetreference>
 					<decal>
 						<effecttype>default</effecttype>
@@ -67,7 +67,7 @@
 
 				<data>
 					<assetreference type="GrannyModel">
-						<file>War of the Triple Alliance\Delta\AURs\New Buildings\workshop</file>
+						<file>buildings\native_settlement\socket_jewish\workshop</file>
 					</assetreference>
 					<decal>
 						<effecttype>default</effecttype>

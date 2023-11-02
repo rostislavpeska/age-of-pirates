@@ -440,65 +440,32 @@ int findTradingLodge(int resourceID = -1)
 // AssertiveWall: Adapted from Ceylon Nomad Start. Takes an approximate pickup and dropoff, and returns the 
 // closest dropoff location 
 // Does not contain all the same checks as the islandMigration rule
-vector getDropoffPoint(vector pickup = cInvalidVector, vector dropoff = cInvalidVector)
+vector getDropoffPoint(vector pickup = cInvalidVector, vector dropoff = cInvalidVector, int stepsBack = 1)
 {
-	int areaCount = 0;
-	vector myLocation = pickup;
-	int myAreaGroup = -1;
+	// Start at dropoff. Take small increments back toward pickup until we hit water, then use point before that
+	vector testPoint = dropoff;
+	int range = distance(pickup, dropoff);
+	vector normalizedVector = xsVectorNormalize(pickup - dropoff);
+	vector previousPoint = testPoint;
+	int testAreaID = -1;
 
-	int area = 0;
-	int areaGroup = -1;
-
-	areaCount = kbAreaGetNumber();
-	myAreaGroup = kbAreaGroupGetIDByPosition(myLocation);
-
-	int closestArea = -1;
-	float closestAreaDistance = kbGetMapXSize();
-
-	for (area = 0; < areaCount)
+	for (i = 0; < range)
 	{
-		if (kbAreaGetType(area) == cAreaTypeWater)
+		testPoint = testPoint + normalizedVector;
+		testAreaID = kbAreaGetIDByPosition(testPoint);
+
+		if (kbAreaGetType(testAreaID) == cAreaTypeWater)
 		{
-			continue;
+			return previousPoint;
 		}
 
-		areaGroup = kbAreaGroupGetIDByPosition(kbAreaGetCenter(area));
-		if (kbAreaGroupGetNumberAreas(areaGroup) - kbAreaGroupGetNumberAreas(myAreaGroup) <= 10)
+		previousPoint = testPoint;
+		for (j = 0; < stepsBack)
 		{
-			continue;
-		}
-
-		bool bordersWater = false;
-		int borderAreaCount = kbAreaGetNumberBorderAreas(area);
-		for (i = 0; < borderAreaCount)
-		{
-			if (kbAreaGetType(kbAreaGetBorderAreaID(area, i)) == cAreaTypeWater)
-			{
-			bordersWater = true;
-			break;
-			}
-		}
-
-		if (bordersWater == false)
-		{
-			continue;
-		}
-
-		// Check to make sure this area is connected to the dropoff
-		if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(dropoff), areaGroup) == false)
-		{
-			continue;
-		}
-
-		float dist = xsVectorLength(kbAreaGetCenter(area) - myLocation);
-		if (dist < closestAreaDistance)
-		{
-			closestAreaDistance = dist;
-			closestArea = area;
+			previousPoint = previousPoint - normalizedVector; // Two steps back
 		}
 	}
-
-   return kbAreaGetCenter(closestArea);
+	return cInvalidVector;
 }
 
 //==============================================================================
@@ -1326,6 +1293,39 @@ minInterval 10
 	xsDisableSelf();
 }
 
+//==============================================================================
+//
+// crateTasker
+//
+// AssertiveWall: Any time there is a crate, grab the closest unit to gather
+//
+// 
+//
+//==============================================================================
+rule crateTasker
+inactive
+minInterval 5
+{
+	vector mainBaseVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+	int closeCrate = getClosestUnitByLocation(cUnitTypeAbstractResourceCrate, cPlayerRelationSelf, cUnitStateAlive, mainBaseVec);
+	int closestUnit = -1;
+	vector closestUnitLoc = cInvalidVector;
+	if (closeCrate < 0)
+	{
+		return;
+	}
+	closestUnit = getClosestUnitByLocation(cUnitTypeAbstractVillager, cPlayerRelationSelf, cUnitStateAlive, mainBaseVec, 150);
+	closestUnitLoc = kbUnitGetPosition(closestUnit);
+	if (closestUnit > 0)
+	{
+		// Check if we need a transport
+		if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(closestUnitLoc), kbAreaGroupGetIDByPosition(mainBaseVec)) == true)
+		{
+			aiTaskUnitWork(closestUnit, closeCrate);
+		}
+	}
+}
+
 
 //==============================================================================
 //
@@ -1363,6 +1363,7 @@ minInterval 2
 		gMillTypePlans = arrayCreateInt(1, "Mill Type Build Plans");
 		gPlantationTypePlans = arrayCreateInt(1, "Plantation Type Build Plans");
 		gQueuedBuildingPriority = arrayCreateInt(1, "Inactive Build Plans Priority");
+		gVillagerTransportArray = arrayCreateInt(1, "Villagers to Transport");
 	}
 
 	if (gVillagerQuery < 0)
@@ -1380,6 +1381,9 @@ minInterval 2
 	kbUnitQueryExecute(gVillagerQuery);
 	kbUnitQuerySetUnitType(gVillagerQuery, cUnitTypeSettlerWagon);
 	kbUnitQueryExecute(gVillagerQuery);
+
+	arrayResetSelf(gVillagerTransportArray);
+
 
 	if (xsIsRuleEnabled("villagerRetreat") == false)
 	{
@@ -1931,14 +1935,16 @@ minInterval 2
 				pickup = location;
 			}
 
-			if (dropoffIslandLoc == cInvalidVector)
+			if (dropoffIslandLoc == cInvalidVector || dropoffLoc == cInvalidVector)
 			{
 				dropoffIslandLoc = resourceLocation;
+				dropoffLoc = getDropoffPoint(pickup, dropoffIslandLoc);
 			}
 
 			if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(location), kbAreaGroupGetIDByPosition(pickup)) == true)
 			{
-				migrantNumber += 1;
+				// Add this villager to the array
+				arrayPushInt(gVillagerTransportArray, unitID);
 			}	
 		}
 		else
@@ -1947,17 +1953,30 @@ minInterval 2
 		}
 	}
 
+	migrantNumber = arrayGetNumElements(gVillagerTransportArray);
 	if (migrantNumber > 0 && pickup != cInvalidVector && dropoffIslandLoc != cInvalidVector)
 	{
-		int numberTransportPlans = aiPlanGetNumber(cPlanTransport);
+		// Check for warships
+		/*int numberTransportPlans = aiPlanGetNumber(cPlanTransport);
 		vector homePosition = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
 		int numberWarships = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive, homePosition, 400.0);
-		
-		if (numberTransportPlans <= numberWarships)
+		*/
+		int unitToTransport = -1;
+
+		//if (numberTransportPlans <= numberWarships)
+		if (true == true)
 		{
-			//dropoffLoc = getDropoffPoint(pickup, dropoffIslandLoc);
-			transportPlanID = createTransportPlan(pickup, dropoffIslandLoc, 100);
-			aiPlanAddUnitType(transportPlanID, cUnitTypeAbstractVillager, 1, migrantNumber, migrantNumber);
+			transportPlanID = createTransportPlan(pickup, dropoffLoc, 100);
+			aiPlanAddUnitType(transportPlanID, cUnitTypeAbstractVillager, migrantNumber, migrantNumber, migrantNumber);
+			for (i = 0; < migrantNumber)
+			{
+				unitToTransport = arrayGetInt(gVillagerTransportArray, i);
+				if (aiPlanAddUnit(transportPlanID, unitToTransport) == false)
+				{
+					aiPlanDestroy(transportPlanID);
+				}
+			}
+			aiPlanSetNoMoreUnits(transportPlanID, true);
 		}
 		else // Make sure we have a dock
 		{
@@ -1976,7 +1995,21 @@ minInterval 2
 //==============================================================================
 void selectClosestArchipelagoBuildPlanPosition(int planID = -1, int baseID = -1)
 {
-	vector builderLocation = getRandomIsland();
+	int testAreaID = -1;
+	vector builderLocation = cInvalidVector;
+
+	for (i = 0; < 100)
+	{
+		builderLocation = getRandomIsland();//getDropoffPoint(gHomeBase, getRandomIsland(), 50);
+		builderLocation = xsVectorSet(xsVectorGetX(builderLocation) + aiRandFloat(-40, 40), 0.0, 
+			xsVectorGetZ(builderLocation) + aiRandFloat(-40, 40));
+
+		testAreaID = kbAreaGetIDByPosition(builderLocation);
+		if (kbAreaGetType(testAreaID) != cAreaTypeWater)
+		{
+			break;
+		}
+	}
 
 	aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, builderLocation);
 	aiPlanSetVariableFloat(planID, cBuildPlanCenterPositionDistance, 0, 100.0);
