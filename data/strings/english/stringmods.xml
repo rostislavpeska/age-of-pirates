@@ -655,7 +655,7 @@
       <string _locid="300653">ZP NAT Conquistador</string>
       <string _locid="300654">Veteran Arcabucero</string>
       <string _locid="300655">Guard Arcabucero</string>
-      <string _locid="300656">Imperial Arcabucero</string>
+      <string _locid="300656">Legendary Arcabucero</string>
       <string _locid="300657">Jesuit Influence</string>
       <string _locid="300658">Extends mission's influence. Allows you to train new units and provides you completely new techs and shipments.</string>
       <string _locid="300659">Heterodoxy</string>
@@ -852,7 +852,7 @@
       <string _locid="300850">San Spiridion</string>
       <string _locid="300851">Scudo Della Fede</string>
       <string _locid="300852">Venetian Secret Engines</string>
-      <string _locid="300853">Mediterannean Islands</string>
+      <string _locid="300853">Mediterrannean Islands (Beta)</string>
       <string _locid="300854">Collection of mediterranean islands and two worlds: Europe and the Orient. \n\nSettlements: Venetians, Pirate, Scientists. \n\nOther possible settlements (based on variation): Maltese, Jesuit, Sufi, Jewish</string>
       <string _locid="300855">The barrier between Occident and Orient is moving every closer together.</string>
       <string _locid="300856">Malta</string>
@@ -875,6 +875,13 @@
       <string _locid="300872">ZP Nat House Orthodox</string>
       <string _locid="300873">ZP SPC Harbour Center A</string>
       <string _locid="300874">ZP SPC Harbour Center B</string>
+      <string _locid="300875">Christmass Tree</string>
+      <string _locid="300876">ZP Christmass Tree</string>
+      <string _locid="300877">ZP Native EU House</string>
+      <string _locid="300878">Meeting House</string>
+      <string _locid="300879">ZP Native Meeting House</string>
+      <string _locid="300880">ZP NAT MERC Renegade Flamethrower</string>
+      <string _locid="300881">Flamethrower soldier with a strong flame attack. Good against Infantry.</string>
     </language>
   </stringtable>
 </stringmods>

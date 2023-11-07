@@ -2955,7 +2955,9 @@ minInterval 10
          xsEnableRule("taskVillagers");
          xsEnableRule("crateTasker");
       }
-      xsDisableSelf();
+      updateResources();
+      updateArchipelagoResourceDistribution();
+      //xsDisableSelf();
       return;
    }
    econMaster();

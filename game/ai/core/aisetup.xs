@@ -1166,7 +1166,8 @@ void analyzeMap()
        cRandomMapName == "zptortuga" ||
        cRandomMapName == "zpcoldwar" ||
        cRandomMapName == "zptreasureisland" ||
-       cRandomMapName == "zpphilippines")
+       cRandomMapName == "zpphilippines" ||
+       cRandomMapName == "zpmediterranean")
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;

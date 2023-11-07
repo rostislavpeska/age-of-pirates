@@ -1002,7 +1002,15 @@ minInterval 10
       }
       else
       { // We are Asian, time to build a Wonder.
-         wonderToBuild = chooseAsianWonder();
+         // AssertiveWall: Use the archipelago version on those maps. CHooses based on physical footprint
+         if (gIsArchipelagoMap == true)
+         {
+            wonderToBuild = chooseArchipelagoAsianWonder();
+         }
+         else
+         {
+            wonderToBuild = chooseAsianWonder();
+         }
          if (wonderToBuild >= 0)
          {
             gAgeUpResearchPlan = createSimpleBuildPlan(

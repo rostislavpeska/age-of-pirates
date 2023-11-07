@@ -1486,17 +1486,18 @@ minInterval 15
 
 rule generalTransportFailsafe
 inactive
-minInterval 15
+minInterval 25
 {
-   xsSetRuleMaxIntervalSelf(15);
-   int numberPlans = aiPlanGetActiveCount();
+   xsSetRuleMaxIntervalSelf(25);
 
+   int numberPlans = aiPlanGetActiveCount();
    int transportPlan = -1;
    int numberUnits = 0;
    int transportUnit = -1;
    int tempTransportUnit = -1;
    vector transportLoc = cInvalidVector;
    vector homeBaseDropoff = cInvalidVector;
+   
    // Loop through all active plans
 
    // Handle idle ships with someone on board
@@ -1506,6 +1507,10 @@ minInterval 15
    {
       transportUnit = kbUnitQueryGetResult(idleWarshipQuery, i);
       transportLoc = kbUnitGetPosition(transportUnit);
+      if (aiPlanGetType(kbUnitGetPlanID(transportUnit)) == cPlanTransport)
+      {
+         continue;
+      }
       if (kbUnitGetActionType(transportUnit) == cActionTypeIdle && getUnitCountByLocation(cUnitTypeLogicalTypeGarrisonInShips, cPlayerRelationSelf,
          cUnitStateAlive, transportLoc, 2.0) > 0)
       {
@@ -1577,7 +1582,6 @@ minInterval 15
             {
                aiPlanDestroy(transportPlan);
                aiTaskUnitMove(transportUnit, gNavyVec);
-               //aiChat(1, "Killed Plan: " + transportPlan);
             }
             break;
          }

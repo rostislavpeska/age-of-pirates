@@ -1730,7 +1730,7 @@
       <bottomedge>great_plains\groundSPC_nonpass_gp</bottomedge>
     </textures>
   </cliff>
-
+  
 <!--MODDED-->
 
   <cliff name="ZP Malta Desert Grass" blockland="1" blockwater="0" iconname="ui\editor\cliffCaribbean">
@@ -1812,7 +1812,7 @@
       <bottomedge>AfricaDesert\ground_grass2_afriDesert</bottomedge>
     </textures>
   </cliff>
-   <cliff name="ZP Borneo" blockland="1" blockwater="0" iconname="ui\editor\cliffSanora">
+  <cliff name="ZP Borneo" blockland="1" blockwater="0" iconname="ui\editor\cliffSanora">
     <modelset>Default</modelset>
     <topobjects>
       <object name="terrain\underbrush\underbrush_borneo_underbrush_01" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">

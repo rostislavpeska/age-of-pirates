@@ -11,4 +11,16 @@
       </texture>
     </parameters>
   </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\textures\synagogue_tower_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\textures\synagogue_tower_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\textures\synagogue_tower_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
 </material>
