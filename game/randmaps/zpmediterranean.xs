@@ -253,7 +253,7 @@ void main(void)
     // Create the Player's area.
     int playerID=rmCreateArea("player "+i);
     rmSetPlayerArea(i, playerID);
-    rmSetAreaSize(playerID, rmAreaTilesToFraction(700.0), rmAreaTilesToFraction(700.0));
+    rmSetAreaSize(playerID, rmAreaTilesToFraction(900.0), rmAreaTilesToFraction(900.0));
     rmAddAreaToClass(playerID, classIsland);
     rmSetAreaLocPlayer(playerID, i);
     rmSetAreaWarnFailure(playerID, false);
@@ -285,7 +285,7 @@ void main(void)
 	int smallIslandID=rmCreateArea("corsair island");
 	rmSetAreaSize(smallIslandID, rmAreaTilesToFraction(1670.0), rmAreaTilesToFraction(1670.0));
 	rmSetAreaCoherence(smallIslandID, 0.45);
-	rmSetAreaBaseHeight(smallIslandID, 1.5);
+	rmSetAreaBaseHeight(smallIslandID, 2.0);
 	rmSetAreaSmoothDistance(smallIslandID, 20);
 	rmSetAreaMix(smallIslandID, baseMix);
 	rmAddAreaToClass(smallIslandID, classIsland);
@@ -303,7 +303,7 @@ void main(void)
 
   int seaLakeID=rmCreateArea("Sea Lake");
 	rmSetAreaWaterType(seaLakeID, seaType);
-  rmSetAreaSize(seaLakeID, rmAreaTilesToFraction(1270.0), rmAreaTilesToFraction(1270.0));
+  rmSetAreaSize(seaLakeID, rmAreaTilesToFraction(1330.0), rmAreaTilesToFraction(1330.0));
 	rmSetAreaCoherence(seaLakeID, 1.0);
 	rmSetAreaLocation(seaLakeID, 0.73-rmZTilesToFraction(10), 0.73);
 	rmSetAreaBaseHeight(seaLakeID, 1.0);

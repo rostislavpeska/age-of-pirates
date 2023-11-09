@@ -9618,6 +9618,22 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpNativeOrthodox" type="Normal">
+    <dbid>40341</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      
+    </effects>
+  </tech>
+  <tech name="zpNativeXmassVillage" type="Normal">
+    <dbid>40342</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      
+    </effects>
+  </tech>
   <!--<tech name="zpAge0Pirate" type="Normal">
     <dbid>40341</dbid>
     <status>UNOBTAINABLE</status>
