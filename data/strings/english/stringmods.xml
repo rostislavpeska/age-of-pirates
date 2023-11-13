@@ -835,7 +835,7 @@
       <string _locid="300833">ZP Venetian Harbour Center</string>
       <string _locid="300834">ZP Venetian Mooring</string>
       <string _locid="300835">Adriatic Sea</string>
-      <string _locid="300836">Large naval map with two sea shores and a water trade route. \n\nSettlements: Venetians, Maltese, Jesuits</string>
+      <string _locid="300836">Large naval map with two sea shores and a water trade route. \n\nSettlements: Venetians, Jesuits \n\nAdditional Settlements: Maltese or Orthodox</string>
       <string _locid="300837">Even loyality can be bought. Venetians are powerful allies. Make an alliance with them and dominate over the Adriatic Sea.</string>
       <string _locid="300838">Giove Fulminante</string>
       <string _locid="300839">Costanza Guerriera</string>
@@ -884,6 +884,62 @@
       <string _locid="300881">Flamethrower soldier with a strong flame attack. Good against Infantry.</string>
       <string _locid="300882">Christmass Village</string>
       <string _locid="300883">ZP SPC Socket Christmass Village</string>
+      <string _locid="300884">Mountain Jaeger</string>
+      <string _locid="300885">ZP Nat Mountain Jaeger</string>
+      <string _locid="300886">Monastery Icons</string>
+      <string _locid="300887">Pilgrims are comming and giving their gifts. Buy new icons for the monastery and get a small trickle of additional resources.</string>
+      <string _locid="300888">Banya</string>
+      <string _locid="300889">Improves unit's vitality.</string>
+      <string _locid="300890">Patriarchy</string>
+      <string _locid="300891">Your units generate more XP after being trained.</string>
+      <string _locid="300892">Blessing of Cannons</string>
+      <string _locid="300893">Blesed weapons are slightly more destructive.</string>
+      <string _locid="300894">Disciplined Ortodox</string>
+      <string _locid="300895">Honored Orthodox</string>
+      <string _locid="300896">Upgrades Maltese attack and hitpoints.</string>
+      <string _locid="300897">Upgrades Orthodox units attack and hitpoints.</string>
+      <string _locid="300898">Disciplined Mountain Jaeger</string>
+      <string _locid="300899">Honored Mountain Jaeger</string>
+      <string _locid="300900">Legendary Mountain Jaeger</string>
+      <string _locid="300901">Pick Patriarchate</string>
+      <string _locid="300902">Pick your major patriarchate</string>
+      <string _locid="300903">Dvoryanin</string>
+      <string _locid="300904">ZP Nat Dvoryanin</string>
+      <string _locid="300905">Disciplined Dvoryanin</string>
+      <string _locid="300906">Honored Dvoryanin</string>
+      <string _locid="300907">Legendary Dvoryanin</string>
+      <string _locid="300908">Bulgarian Boyar</string>
+      <string _locid="300909">ZP Nat Bulgarian Boyar</string>
+      <string _locid="300910">Disciplined Bulgarian Boyar</string>
+      <string _locid="300911">Honored Bulgarian Boyar</string>
+      <string _locid="300912">Legendary Bulgarian Boyar</string>
+      <string _locid="300913">Monaspa Lancer</string>
+      <string _locid="300914">ZP Nat Monaspa</string>
+      <string _locid="300915">Disciplined Monaspa Lancer</string>
+      <string _locid="300916">Honored Monaspa Lancer</string>
+      <string _locid="300917">Legendary Monaspa Lancer</string>
+      <string _locid="300918">Bastion</string>
+      <string _locid="300919">ZP Bastion</string>
+      <string _locid="300920">Bastion Wagon</string>
+      <string _locid="300921">ZP Bastion Wagon</string>
+      <string _locid="300922">Caucassian Borderlands</string>
+      <string _locid="300923">Sends three Bastion Wagons and allows Mountain Jaegers to construct Bastions.</string>
+      <string _locid="300924">Fortified Bastions</string>
+      <string _locid="300925">Fortified Bastion</string>
+      <string _locid="300926">Tsar Cannon</string>
+      <string _locid="300927">ZP Tsar Cannon</string>
+      <string _locid="300928">Super heavy Russian Cannon</string>
+      <string _locid="300929">Improves Bastion hitpoints and adds a powerful cannon attack.</string>
+      <string _locid="300930">Georgian Patriarchate</string>
+      <string _locid="300931">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nMonaspa Lancer \n\nHeavy hand cavalry. Defensive tech. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nCaucassian Borderlands</string>
+      <string _locid="300932">Bulgarian Patriarchate</string>
+      <string _locid="300933">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBulgarian Boyar \n\nLight hand cavalry. Naval shipment tech. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nBlack Sea Fleet</string>
+      <string _locid="300934">Moscow Patriarchate</string>
+      <string _locid="300935">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDvoryanin \n\nHeavy ranged cavalry. Offensive shipment tech. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nTsar Kolokol</string>
+      <string _locid="300936">Tsar Kolokol</string>
+      <string _locid="300937">Ships a Russian brigade with a special Tsar Cannon</string>
+      <string _locid="300938">Black Sea Fleet</string>
+      <string _locid="300939">Ships a steam powered Black Sea Fleet.</string>
     </language>
   </stringtable>
 </stringmods>

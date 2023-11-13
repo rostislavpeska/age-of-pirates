@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\natives\orthodox\textures\warrior_monk_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\explorers\textures\r_explorer_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\explorers\textures\r_explorer_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\explorers\textures\r_explorer_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

@@ -16,6 +16,7 @@ void main(void)
   string nativeCiv1 = "zpvenetians";
   string nativeCiv2 = "maltese";
   string nativeCiv3 = "spcjesuit";
+  string nativeCiv4 = "zporthodox";
   string baseMix = "italy_grass";
   string paintMix = "italy_grass_lush";
   string baseTerrain = "borneo\ground_grass4_borneo";
@@ -46,6 +47,8 @@ void main(void)
     weird = true;
   
   rmEchoInfo("weird = "+weird);
+
+  int monasteryPlacement = rmRandInt(1,2);
   
 // Natives
    int subCiv0=-1;
@@ -54,17 +57,24 @@ void main(void)
 
   if (rmAllocateSubCivs(3) == true)
   {
-		  // Klamath, Comanche, or Hurons
+		  // Venetians
 		  subCiv0=rmGetCivID(nativeCiv1);
       if (subCiv0 >= 0)
          rmSetSubCiv(0, nativeCiv1);
 
-		  // Cherokee, Apache, or Cheyenne
-		  subCiv1=rmGetCivID(nativeCiv2);
-      if (subCiv1 >= 0)
-         rmSetSubCiv(1, nativeCiv2);
+		  // Maltese or Orthodox
+      if (monasteryPlacement == 2){
+        subCiv1=rmGetCivID(nativeCiv2);
+        if (subCiv1 >= 0)
+          rmSetSubCiv(1, nativeCiv2);
+      }
+      if (monasteryPlacement == 1){
+        subCiv1=rmGetCivID(nativeCiv4);
+        if (subCiv1 >= 0)
+          rmSetSubCiv(1, nativeCiv4);
+      }
 
-      // Wokou
+      // Jesuit
 		  subCiv2=rmGetCivID(nativeCiv3);
       if (subCiv2 >= 0)
          rmSetSubCiv(2, nativeCiv3);
@@ -90,7 +100,7 @@ void main(void)
 	rmSetMapSize(size, size);
 
 	//rmSetMapElevationParameters(cElevTurbulence, 0.05, 10, 0.4, 7.0);
-	rmSetMapElevationHeightBlend(1);
+	rmSetMapElevationHeightBlend(4);
 	
 	rmSetSeaLevel(1.0);
 	rmSetLightingSet(lightingType);
@@ -105,6 +115,7 @@ void main(void)
 	rmSetMapType("water");
   rmSetMapType("mediEurope");
   rmSetMapType("euroNavalTradeRoute");
+  rmSetMapType("adralicsea");
 	rmSetWorldCircleConstraint(true);
 	rmSetWindMagnitude(3.0);
 
@@ -337,9 +348,17 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       
   //~ else
 
+  int mapVariation = rmRandInt(1, 2);
+
   int seaLakeID=rmCreateArea("Sea Lake");
 	rmSetAreaWaterType(seaLakeID, seaType);
-	rmSetAreaSize(seaLakeID, 1.0, 0.0);
+
+  if (mapVariation == 1)
+	rmSetAreaSize(seaLakeID, 1.0, 1.0);
+
+  else
+  rmSetAreaSize(seaLakeID, 0.82, 0.82);
+
 	rmSetAreaCoherence(seaLakeID, 0.9);
 	rmSetAreaLocation(seaLakeID, 0.5, 0.4);
 	rmSetAreaBaseHeight(seaLakeID, 1.0);
@@ -391,19 +410,24 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
 
 
     // Bonus Island
-    int bonusIslandID = rmCreateArea ("bonus island");
 
-    rmSetAreaSize(bonusIslandID, 0.02, 0.02);
-    rmSetAreaObeyWorldCircleConstraint(bonusIslandID, false);
-    rmSetAreaElevationType(bonusIslandID, cElevTurbulence);
-    rmSetAreaLocation(bonusIslandID, 0.5, 1.0);
-    rmSetAreaCoherence(bonusIslandID, 0.7);
-    rmSetAreaSmoothDistance(bonusIslandID, 15);
-    rmSetAreaMix(bonusIslandID, baseMix);
-    rmSetAreaBaseHeight(bonusIslandID, 1.0);
-    rmAddAreaToClass(bonusIslandID, classIsland);
-    rmAddAreaConstraint(bonusIslandID, islandAvoidTradeRoute);
-    rmBuildArea(bonusIslandID);
+    if (mapVariation == 1){
+
+      int bonusIslandID = rmCreateArea ("bonus island");
+
+      rmSetAreaSize(bonusIslandID, 0.02, 0.02);
+      rmSetAreaObeyWorldCircleConstraint(bonusIslandID, false);
+      rmSetAreaElevationType(bonusIslandID, cElevTurbulence);
+      rmSetAreaLocation(bonusIslandID, 0.5, 1.0);
+      rmSetAreaCoherence(bonusIslandID, 0.7);
+      rmSetAreaSmoothDistance(bonusIslandID, 15);
+      rmSetAreaMix(bonusIslandID, baseMix);
+      rmSetAreaBaseHeight(bonusIslandID, 1.0);
+      rmAddAreaToClass(bonusIslandID, classIsland);
+      rmAddAreaConstraint(bonusIslandID, islandAvoidTradeRoute);
+      rmBuildArea(bonusIslandID);
+
+    }
 
 
   // Port Sites
@@ -593,7 +617,6 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
 
   // Team Jesuit
 
-    int monasteryPlacement = rmRandInt(1,2);
 
     // Monastery ID 1
 
@@ -820,7 +843,10 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
 
     int middleSufiVillageID4 = -1;
     int middleSufiVillageID4Type = rmRandInt(1, 5);
-    middleSufiVillageID4 = rmCreateGrouping("native4 city", "maltese_village0" + middleSufiVillageID4Type);
+    if (monasteryPlacement == 2)
+      middleSufiVillageID4 = rmCreateGrouping("native4 city", "maltese_village0" + middleSufiVillageID4Type);
+    else
+      middleSufiVillageID4 = rmCreateGrouping("native4 city", "Orthodox_Monastery0" + middleSufiVillageID4Type);
     rmAddGroupingConstraint(middleSufiVillageID4, avoidImpassableLand);
     rmPlaceGroupingAtLoc(middleSufiVillageID4, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc4)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc4)), 1);
 
@@ -876,7 +902,10 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
 
       int middleSufiVillageID5 = -1;
       int middleSufiVillageID5Type = rmRandInt(1, 5);
-      middleSufiVillageID5 = rmCreateGrouping("native5 city", "maltese_village0" + middleSufiVillageID5Type);
+      if (monasteryPlacement == 2)
+        middleSufiVillageID5 = rmCreateGrouping("native5 city", "maltese_village0" + middleSufiVillageID5Type);
+      else
+        middleSufiVillageID5 = rmCreateGrouping("native5 city", "Orthodox_Monastery0" + middleSufiVillageID5Type);
       rmAddGroupingConstraint(middleSufiVillageID5, avoidImpassableLand);
       rmPlaceGroupingAtLoc(middleSufiVillageID5, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc5)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc5)), 1);
     }
@@ -931,7 +960,10 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
 
       int middleSufiVillageID6 = -1;
       int middleSufiVillageID6Type = rmRandInt(1, 5);
-      middleSufiVillageID6 = rmCreateGrouping("native6 city", "maltese_village0" + middleSufiVillageID6Type);
+      if (monasteryPlacement == 2)
+        middleSufiVillageID6 = rmCreateGrouping("native6 city", "maltese_village0" + middleSufiVillageID6Type);
+      else
+        middleSufiVillageID6 = rmCreateGrouping("native6 city", "Orthodox_Monastery0" + middleSufiVillageID6Type);
       rmAddGroupingConstraint(middleSufiVillageID6, avoidImpassableLand);
       rmPlaceGroupingAtLoc(middleSufiVillageID6, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc6)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc6)), 1);
 
@@ -1489,6 +1521,10 @@ rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",i);
 rmSetTriggerEffectParam("TechID","cTechdeEUMapUpdateVisuals"); // Europen Map
 rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",i);
+rmSetTriggerEffectParam("TechID","cTechzpAdralicMercenaries"); // Mercenaries
+rmSetTriggerEffectParamInt("Status",2);
 }
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
@@ -1643,25 +1679,50 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(true);
 }
 
-for (k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("Activate Maltese"+k);
-rmAddTriggerCondition("ZP Tech Researching (XS)");
-rmSetTriggerConditionParam("TechID","cTechzpMalteseCross"); //operator
-rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("ZP Set Tech Status (XS)");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffMaltese"); //operator
-rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("ZP Pick Consulate Tech");
-rmSetTriggerEffectParamInt("Player",k);
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
-rmSetTriggerPriority(4);
-rmSetTriggerActive(false);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(true);
+if (monasteryPlacement == 2){
+  for (k=1; <= cNumberNonGaiaPlayers) {
+  rmCreateTrigger("Activate Maltese"+k);
+  rmAddTriggerCondition("ZP Tech Researching (XS)");
+  rmSetTriggerConditionParam("TechID","cTechzpMalteseCross"); //operator
+  rmSetTriggerConditionParamInt("PlayerID",k);
+  rmAddTriggerEffect("ZP Set Tech Status (XS)");
+  rmSetTriggerEffectParamInt("PlayerID",k);
+  rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffMaltese"); //operator
+  rmSetTriggerEffectParamInt("Status",2);
+  rmAddTriggerEffect("ZP Pick Consulate Tech");
+  rmSetTriggerEffectParamInt("Player",k);
+  rmAddTriggerEffect("Fire Event");
+  rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+  rmAddTriggerEffect("Fire Event");
+  rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+  rmSetTriggerPriority(4);
+  rmSetTriggerActive(false);
+  rmSetTriggerRunImmediately(true);
+  rmSetTriggerLoop(true);
+  }
+}
+
+if (monasteryPlacement == 1){
+  for (k=1; <= cNumberNonGaiaPlayers) {
+  rmCreateTrigger("Activate Orthodox"+k);
+  rmAddTriggerCondition("ZP Tech Researching (XS)");
+  rmSetTriggerConditionParam("TechID","cTechzpOrthodoxInfluence"); //operator
+  rmSetTriggerConditionParamInt("PlayerID",k);
+  rmAddTriggerEffect("ZP Set Tech Status (XS)");
+  rmSetTriggerEffectParamInt("PlayerID",k);
+  rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffOrthodox"); //operator
+  rmSetTriggerEffectParamInt("Status",2);
+  rmAddTriggerEffect("ZP Pick Consulate Tech");
+  rmSetTriggerEffectParamInt("Player",k);
+  rmAddTriggerEffect("Fire Event");
+  rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+  rmAddTriggerEffect("Fire Event");
+  rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+  rmSetTriggerPriority(4);
+  rmSetTriggerActive(false);
+  rmSetTriggerRunImmediately(true);
+  rmSetTriggerLoop(true);
+  }
 }
 
 // Specific for human players
@@ -1685,6 +1746,8 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Venice"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Maltese"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Orthodox"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
@@ -2022,7 +2085,7 @@ rmSetTriggerLoop(false);
 
 
 
-// AI Pirate Captains
+// AI Venice Captains
 
 for (k=1; <= cNumberNonGaiaPlayers) {
 
@@ -2057,6 +2120,92 @@ if (veniceCaptain==3)
       rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",k);
       rmSetTriggerEffectParam("TechID","cTechzpConsulateVeniceDolphin"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+}
+
+// AI MalteseFactions
+
+for (k=1; <= cNumberNonGaiaPlayers) {
+
+rmCreateTrigger("ZP Pick Maltese Captain"+k);
+rmAddTriggerCondition("ZP PLAYER Human");
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("MyBool", "false");
+rmAddTriggerCondition("Tech Status Equals");
+rmSetTriggerConditionParamInt("PlayerID",k);
+rmSetTriggerConditionParamInt("TechID",586);
+rmSetTriggerConditionParamInt("Status",2);
+
+int malteseCaptain=-1;
+malteseCaptain = rmRandInt(1,3);
+
+if (malteseCaptain==1)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseVenetians"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+if (malteseCaptain==2)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseFlorentians"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+if (malteseCaptain==3)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseJerusalem"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+}
+
+// AI Venice Captains
+
+for (k=1; <= cNumberNonGaiaPlayers) {
+
+rmCreateTrigger("ZP Pick Orthodox Captain"+k);
+rmAddTriggerCondition("ZP PLAYER Human");
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("MyBool", "false");
+rmAddTriggerCondition("Tech Status Equals");
+rmSetTriggerConditionParamInt("PlayerID",k);
+rmSetTriggerConditionParamInt("TechID",586);
+rmSetTriggerConditionParamInt("Status",2);
+
+int orthodoxCaptain=-1;
+orthodoxCaptain = rmRandInt(1,3);
+
+if (orthodoxCaptain==1)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateOrthodoxGeorgians"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+if (orthodoxCaptain==2)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateOrthodoxBulgarians"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+if (orthodoxCaptain==3)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateOrthodoxRussians"); //operator
       rmSetTriggerEffectParamInt("Status",2);
    }
 rmSetTriggerPriority(4);

@@ -1,0 +1,279 @@
+<animfile>
+  <definebone>bone_Launchpoint03</definebone>
+  <definebone>bone_Launchpoint02</definebone>
+  <definebone>bone_Launchpoint01</definebone>
+  <definebone>bone_Launchpoint00</definebone>
+  <definebone>bone_debris_1A</definebone>
+  <definebone>bone_debris_1B</definebone>
+  <definebone>bone_debris_1C</definebone>
+  <definebone>bone_debris_1D</definebone>
+  <definebone>bone_debris_2A</definebone>
+  <definebone>bone_debris_2B</definebone>
+  <definebone>bone_debris_2C</definebone>
+  <definebone>bone_debris_2D</definebone>
+  <definebone>bone_debris_3A</definebone>
+  <definebone>bone_debris_3B</definebone>
+  <definebone>bone_debris_3C</definebone>
+  <definebone>bone_debris_4A</definebone>
+  <definebone>bone_debris_4B</definebone>
+  <definebone>bone_debris_4C</definebone>
+  <definebone>bone_debris_4D</definebone>
+  <definebone>bone_debris_4E</definebone>
+  <definebone>bone_debris_4F</definebone>
+  <definebone>bone_debris_4G</definebone>
+  <definebone>bone_debris_4H</definebone>
+  <definebone>bone_debris_5A</definebone>
+  <definebone>bone_debris_5B</definebone>
+  <definebone>bone_debris_5C</definebone>
+  <definebone>bone_debris_5D</definebone>
+  <definebone>bone_debris_5E</definebone>
+  <definebone>bone_debris_5F</definebone>
+  <definebone>bone_debris_5G</definebone>
+  <definebone>bone_debris_5H</definebone>
+  <definebone>bone_debris_5I</definebone>
+  <definebone>bone_debris_5J</definebone>
+  <definebone>bone_debris_6A</definebone>
+  <definebone>bone_debris_6B</definebone>
+  <definebone>bone_debris_6C</definebone>
+  <definebone>bone_debris_6D</definebone>
+  <definebone>bone_debris_6E</definebone>
+  <definebone>bone_debris_6F</definebone>
+  <definebone>bone_debris_6G</definebone>
+  <definebone>bone_debris_6H</definebone>
+  <definebone>bone_smoke</definebone>
+  <definebone>Bone_civ_flag</definebone>
+  <definebone>bone_debris_1E</definebone>
+  <definebone>bone_debris_1F</definebone>
+  <definebone>bone_debris_1G</definebone>
+  <definebone>bone_debris_2E</definebone>
+  <definebone>bone_debris_2F</definebone>
+  <definebone>bone_debris_2G</definebone>
+  <definebone>bone_debris_2H</definebone>
+  <definebone>bone_debris_2I</definebone>
+  <definebone>bone_debris_2J</definebone>
+  <definebone>bone_debris_3D</definebone>
+  <definebone>bone_debris_3E</definebone>
+  <definebone>bone_debris_3F</definebone>
+  <submodel>
+    Outpost lvl2
+    <attachment>pendentflag_a3<component>flag<assetreference type="ClothFlag"><flag><blending>alphatest_color</blending><specialtexture></specialtexture><width>2.00</width><height>1.20</height></flag></assetreference></component><anim>Idle<component>flag</component></anim></attachment>
+    <attachment>
+        Chimney Smoke
+        <component>
+            smoke<assetreference type="ParticleSystem"><file>effects\smoke\white_smoke_a.particle</file></assetreference>
+        </component>
+        <anim>Idle<component>smoke</component></anim>
+    </attachment>
+    <attachment>
+        base smoke
+        <component>
+            smoke base<assetreference type="ParticleSystem"><file>effects\smoke\collapsesmoke01.particle</file></assetreference>
+        </component>
+        <anim>Idle<component>smoke base</component></anim>
+    </attachment>
+    <attachment>
+        base smoke2
+        <component>
+            smoke wave<assetreference type="ParticleSystem"><file>effects\smoke\collapse_smoke_wave.particle</file></assetreference>
+        </component>
+        <anim>Idle<component>smoke wave</component></anim>
+    </attachment>
+    <attachment>
+        base smoke2
+        <component>
+            smoke wave<assetreference type="ParticleSystem"><file>effects\smoke\collapse_smoke_wave.particle</file></assetreference>
+        </component>
+        <anim>Idle<component>smoke wave</component></anim>
+    </attachment>
+    <component>
+        lvl2
+        <logic type="LowPoly">
+            <normal>
+                <logic type="Destruction">
+                    <p1>
+                        <assetreference type="GrannyModel" shape="outpost_lvl_2"><file>buildings\spc\mountain_citadel\outpost_lvl_2_damaged</file></assetreference>
+                    </p1>
+                    <p99>
+                        <assetreference type="GrannyModel" shape="outpost_lvl_2"><file>buildings\spc\mountain_citadel\outpost_lvl_2</file></assetreference>
+                    </p99>
+                </logic>
+            </normal>
+            <lowpoly>
+                <assetreference type="GrannyModel"><file>buildings\spc\mountain_citadel\lp_outpost_lvl_2</file></assetreference>
+            </lowpoly>
+        </logic>
+        <decal><effecttype>default</effecttype><texture>buildings\outpost\Outpost Ground</texture><selectedtexture>shadows_selections\selection_square_64x64</selectedtexture><width>10.00</width><height>10.00</height></decal>
+        <attach a="Chimney Smoke" frombone="bone_smoke" tobone="bone_smoke" syncanims="0"></attach>
+        <attach a="pendentflag_a3" frombone="ATTACHPOINT" tobone="Bone_civ_flag" syncanims="0"></attach>
+    </component>
+    <component>
+        lvl2_death<assetreference type="GrannyModel"><file>buildings\spc\mountain_citadel\outpost_lvl_2_deathModel</file></assetreference>
+    </component>
+    <anim>
+        Idle<component>lvl2</component><simskeleton><model>buildings\spc\mountain_citadel\outpost_lvl_2_damaged</model><damagetemplate>buildings\spc\mountain_citadel\outpost_lvl_2.dmg</damagetemplate></simskeleton>
+    </anim>
+    <anim>
+       RangedAttack<assetreference type="GrannyAnim"><file>animation_library\building\ranged_attack</file><tag type="Attack">0.45</tag><tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.45</tag></assetreference>
+        <component>lvl2</component><simskeleton><model>buildings\spc\mountain_citadel\outpost_lvl_2_damaged</model><damagetemplate>buildings\spc\mountain_citadel\outpost_lvl_2.dmg</damagetemplate></simskeleton>
+    </anim>
+    <anim>
+       RangedAttackShip<assetreference type="GrannyAnim"><file>animation_library\building\ranged_attack</file><tag type="Attack">0.45</tag><tag type="SpecificSoundSet" checkvisible="1" set="FalconetShoot">0.45</tag></assetreference>
+        <component>lvl2</component><simskeleton><model>buildings\spc\mountain_citadel\outpost_lvl_2_damaged</model><damagetemplate>buildings\spc\mountain_citadel\outpost_lvl_2.dmg</damagetemplate></simskeleton>
+    </anim>
+    <anim>
+        Death<assetreference type="GrannyAnim"><file>buildings\spc\mountain_citadel\outpost_lvl_2_deathAnim</file></assetreference><component>lvl2_death</component>
+        <attach a="base smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="base smoke2" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        <attach a="base smoke3" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </anim>
+</submodel>
+<submodel>
+    Outpost lvl3
+    <attachment>pendentflag_a3<component>flag<assetreference type="ClothFlag"><flag><blending>alphatest_color</blending><specialtexture></specialtexture><width>2.00</width><height>1.20</height></flag></assetreference></component><anim>Idle<component>flag</component></anim></attachment>
+    <attachment>
+        Chimney Smoke
+        <component>
+            smoke<assetreference type="ParticleSystem"><file>effects\smoke\white_smoke_a.particle</file></assetreference>
+        </component>
+        <anim>Idle<component>smoke</component></anim>
+    </attachment>
+    <component>
+        lvl3
+        <logic type="LowPoly">
+            <normal>
+                <logic type="Destruction">
+                    <p1>
+                        <assetreference type="GrannyModel" shape="outpost_lvl_3"><file>buildings\spc\mountain_citadel\outpost_lvl_3_damaged</file></assetreference>
+                    </p1>
+                    <p99>
+                        <assetreference type="GrannyModel" shape="outpost_lvl_3"><file>buildings\spc\mountain_citadel\outpost_lvl_3_damaged</file></assetreference>
+                    </p99>
+                </logic>
+            </normal>
+            <lowpoly>
+                <assetreference type="GrannyModel"><file>buildings\spc\mountain_citadel\outpost_lvl_3_damaged</file></assetreference>
+            </lowpoly>
+        </logic>
+        <decal><effecttype>default</effecttype><texture>buildings\outpost\Outpost Ground</texture><selectedtexture>shadows_selections\selection_square_64x64</selectedtexture><width>10.00</width><height>10.00</height></decal>
+        <attach a="Chimney Smoke" frombone="bone_smoke" tobone="bone_smoke" syncanims="0"></attach>
+        <attach a="pendentflag_a3" frombone="ATTACHPOINT" tobone="Bone_civ_flag" syncanims="0"></attach>
+    </component>
+    <component>
+        lvl3_death<assetreference type="GrannyModel"><file>buildings\spc\mountain_citadel\outpost_lvl_3_deathModel</file></assetreference>
+    </component>
+    <anim>
+        Idle<component>lvl3</component><simskeleton><model>buildings\spc\mountain_citadel\outpost_lvl_3_damaged</model><damagetemplate>buildings\spc\mountain_citadel\outpost_lvl_3.dmg</damagetemplate></simskeleton>
+    </anim>
+    <anim>
+        RangedAttack<assetreference type="GrannyAnim"><file>animation_library\building\ranged_attack</file><tag type="Attack">0.45</tag><tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.45</tag></assetreference>
+        <component>lvl3</component><simskeleton><model>buildings\spc\mountain_citadel\outpost_lvl_3_damaged</model><damagetemplate>buildings\spc\mountain_citadel\outpost_lvl_3.dmg</damagetemplate></simskeleton>
+    </anim>
+    <anim>
+        RangedAttackShip<assetreference type="GrannyAnim"><file>animation_library\building\ranged_attack</file><tag type="Attack">0.45</tag><tag type="SpecificSoundSet" checkvisible="1" set="FalconetShoot">0.45</tag></assetreference>
+        <component>lvl3</component><simskeleton><model>buildings\spc\mountain_citadel\outpost_lvl_3_damaged</model><damagetemplate>buildings\spc\mountain_citadel\outpost_lvl_3.dmg</damagetemplate></simskeleton>
+    </anim>
+    <anim>
+        Death<assetreference type="GrannyAnim"><file>buildings\spc\mountain_citadel\outpost_lvl_3_deathAnim</file></assetreference><component>lvl3_death</component>
+        <attach a="base smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="base smoke2" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        <attach a="base smoke3" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </anim>
+</submodel>
+<submodel>
+    sub_construction_stage_01
+    <component>
+        construction_stage_01<assetreference type="GrannyModel"><file>buildings\constructions\2x2_stage1</file></assetreference>
+        <decal>
+            <effecttype>bump</effecttype><texture>buildings\constructions\2x2_construction_decal</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture><width>10.00</width><height>10.00</height>
+        </decal>
+    </component>
+    <anim>Idle<component>construction_stage_01</component></anim>
+</submodel>
+<submodel>
+    sub_construction_stage_02
+    <component>
+        construction_stage_02<assetreference type="GrannyModel"><file>buildings\constructions\2x2_stage2</file></assetreference>
+    </component>
+    <anim>Idle<component>construction_stage_02</component></anim>
+</submodel>
+<submodel>
+    sub_construction_stage_03
+    <component>
+        construction_stage_03<assetreference type="GrannyModel"><file>buildings\constructions\con_small_3</file></assetreference>
+    </component>
+    <anim>Idle<component>construction_stage_03</component></anim>
+</submodel>
+<submodel>
+    Outpost lvl1_con
+    <attachment>
+        con
+        <component>
+            scaffolding<assetreference type="GrannyModel"><file>buildings\constructions\2x2_stage2</file></assetreference>
+        </component>
+        <anim>Idle<component>scaffolding</component></anim>
+    </attachment>
+    <component>
+        Outpost_1<assetreference type="GrannyModel"><file>buildings\spc\mountain_citadel\outpost_generic</file></assetreference>
+        <decal>
+            <effecttype>bump</effecttype><texture>buildings\constructions\2x2_construction_decal</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture><width>10.00</width><height>10.00</height>
+        </decal>
+        <attach a="con" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </component>
+    <anim>Idle<component>Outpost_1</component></anim>
+</submodel>
+<submodel>
+    Outpost lvl2_con
+    <attachment>
+        con
+        <component>
+            scaffolding<assetreference type="GrannyModel"><file>buildings\constructions\2x2_stage2</file></assetreference>
+        </component>
+        <anim>Idle<component>scaffolding</component></anim>
+    </attachment>
+    <component>
+        Outpost_1<assetreference type="GrannyModel"><file>buildings\spc\mountain_citadel\outpost_lvl_2</file></assetreference>
+        <decal>
+            <effecttype>bump</effecttype><texture>buildings\constructions\2x2_construction_decal</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture><width>10.00</width><height>10.00</height>
+        </decal>
+        <attach a="con" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </component>
+    <anim>Idle<component>Outpost_1</component></anim>
+</submodel>
+<submodel>
+    Outpost lvl3_con
+    <attachment>
+        con
+        <component>
+            scaffolding<assetreference type="GrannyModel"><file>buildings\constructions\2x2_stage2</file></assetreference>
+        </component>
+        <anim>Idle<component>scaffolding</component></anim>
+    </attachment>
+    <component>
+        Outpost_1<assetreference type="GrannyModel"><file>buildings\spc\mountain_citadel\outpost_lvl_3_damaged</file></assetreference>
+        <decal>
+            <effecttype>bump</effecttype><texture>buildings\constructions\2x2_construction_decal</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture><width>10.00</width><height>10.00</height>
+        </decal>
+        <attach a="con" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </component>
+    <anim>Idle<component>Outpost_1</component></anim>
+</submodel>
+<component>
+    outpost
+    <logic type="Tech">
+        <none>
+            <logic type="BuildingCompletion">
+                <p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="Outpost lvl2_con"></submodelref></p66>
+                <p100><submodelref ref="Outpost lvl2"></submodelref></p100>
+            </logic>
+        </none>
+        <zpcitadelcannons>
+            <logic type="BuildingCompletion">
+                <p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="Outpost lvl3_con"></submodelref></p66>
+                <p100><submodelref ref="Outpost lvl3"></submodelref></p100>
+            </logic>
+        </zpcitadelcannons>
+    </logic>
+  </component>
+</animfile>
