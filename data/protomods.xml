@@ -15915,7 +15915,6 @@
     <bounty>18.0000</bounty>
     <buildbounty>18.0000</buildbounty>
     <cost resourcetype="Gold">200.0000</cost>
-    <allowedage>1</allowedage>
     <armor type="Ranged" value="0.3000">
     </armor>
     <unittype>LogicalTypeMinimapFilterEconomic</unittype>
@@ -17745,8 +17744,8 @@
     <portraiticon>resources\art\units\natives\orthodox_jaeger_portrait.png</portraiticon>
     <rollovertextid>122107</rollovertextid>
     <shortrollovertextid>122171</shortrollovertextid>
-    <initialhitpoints>180.0000</initialhitpoints>
-    <maxhitpoints>180.0000</maxhitpoints>
+    <initialhitpoints>200.0000</initialhitpoints>
+    <maxhitpoints>200.0000</maxhitpoints>
     <los>20.0000</los>
     <rechargetime>30.0000</rechargetime>
     <projectileprotounit>InvisibleProjectile</projectileprotounit>
@@ -17825,7 +17824,7 @@
     </protoaction>
     <protoaction>
       <name>DefendRangedAttack</name>
-      <damage>11.000000</damage>
+      <damage>10.000000</damage>
       <damagetype>Ranged</damagetype>
       <minrange>2.000000</minrange>
       <maxrange>16.000000</maxrange>
@@ -17860,7 +17859,7 @@
     </protoaction>
     <protoaction>
       <name>StaggerRangedAttack</name>
-      <damage>11.000000</damage>
+      <damage>10.000000</damage>
       <damagetype>Ranged</damagetype>
       <minrange>2.000000</minrange>
       <maxrange>16.000000</maxrange>
@@ -17884,7 +17883,7 @@
     </protoaction>
     <protoaction>
       <name>VolleyRangedAttack</name>
-      <damage>11.000000</damage>
+      <damage>10.000000</damage>
       <damagetype>Ranged</damagetype>
       <minrange>2.000000</minrange>
       <maxrange>16.000000</maxrange>
@@ -17905,7 +17904,7 @@
     <displaynameid>300903</displaynameid>
     <editornameid>300904</editornameid>
     <populationcount>0</populationcount>
-    <buildlimit>6</buildlimit>
+    <buildlimit>8</buildlimit>
     <subciv>zpOrthodox</subciv>
     <obstructionradiusx>0.7900</obstructionradiusx>
     <obstructionradiusz>0.7900</obstructionradiusz>
@@ -18144,8 +18143,8 @@
     <portraiticon>resources\art\units\natives\monaspa_portrait.png</portraiticon>
     <rollovertextid>24118</rollovertextid>
     <shortrollovertextid>25650</shortrollovertextid>
-    <initialhitpoints>350.0000</initialhitpoints>
-    <maxhitpoints>350.0000</maxhitpoints>
+    <initialhitpoints>420.0000</initialhitpoints>
+    <maxhitpoints>420.0000</maxhitpoints>
     <los>15.0000</los>
     <unitaitype>HandCombative</unitaitype>
     <trainpoints>40.0000</trainpoints>
@@ -18196,26 +18195,26 @@
     <tactics>handCavalry.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
-      <damage>20.000000</damage>
+      <damage>19.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
     </protoaction>
     <protoaction>
       <name>DefendHandAttack</name>
-      <damage>20.000000</damage>
+      <damage>19.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
       <damagebonus type="AbstractInfantry">3.000000</damagebonus>
     </protoaction>
     <protoaction>
       <name>GuardianAttack</name>
-      <damage>20.000000</damage>
+      <damage>19.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
     </protoaction>
     <protoaction>
       <name>MeleeHandAttack</name>
-      <damage>20.000000</damage>
+      <damage>19.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
       <damagebonus type="AbstractInfantry">3.000000</damagebonus>
@@ -18257,7 +18256,7 @@
     <unitaitype>RangedCombative</unitaitype>
     <buildpoints>50.0000</buildpoints>
     <freebuildpoints>150.0000</freebuildpoints>
-    <buildlimit>3</buildlimit>
+    <buildlimit>5</buildlimit>
     <bounty>70.0000</bounty>
     <buildbounty>50.0000</buildbounty>
     <cost resourcetype="Wood">300.0000</cost>
@@ -18292,10 +18291,6 @@
     <unittype>AbstractCallMinutemen</unittype>
     <unittype>HCGatherPointPri1</unittype>
     <unittype>AbstractDefensiveBuilding</unittype>
-    <train row="0" page="0" column="0">zpNatWarriorMonk</train>
-    <train row="0" page="0" column="1">zpNatDvoryanin</train>
-    <train row="0" page="0" column="1">zpNatBulgarianBoyar</train>
-    <train row="0" page="0" column="1">zpNatMonaspa</train>
     <tech row="0" page="1" column="0">zpCitadelCannons</tech>
     <flag>EnterHotkeyContext</flag>
     <flag>AllowAutoGarrison</flag>
@@ -18467,14 +18462,15 @@
     <maxrunvelocity>5.5000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>3.0000</turnrate>
+    <populationcount>6</populationcount>
     <animfile>units\natives\orthodox\kolokol.xml</animfile>
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\artillery\great_bombard\great_bombard_icon_64x64.png</icon>
     <portraiticon>resources\art\units\artillery\great_bombard\great_bombard_portrait.png</portraiticon>
     <rollovertextid>300928</rollovertextid>
     <shortrollovertextid>300928</shortrollovertextid>
-    <initialhitpoints>750.0000</initialhitpoints>
-    <maxhitpoints>750.0000</maxhitpoints>
+    <initialhitpoints>700.0000</initialhitpoints>
+    <maxhitpoints>700.0000</maxhitpoints>
     <los>32.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -18524,7 +18520,7 @@
     <tactics>greatBombard.tactics</tactics>
     <protoaction>
       <name>CannonAttack</name>
-      <damage>750.000000</damage>
+      <damage>700.000000</damage>
       <damagetype>Siege</damagetype>
       <minrange>0.000000</minrange>
       <maxrange>32.000000</maxrange>
@@ -18540,6 +18536,168 @@
       <damagebonus type="xpArrowKnight">0.500000</damagebonus>
       <damagebonus type="deMalteseGun">2.500000</damagebonus>
     </protoaction>
+  </unit>
+  <unit id="20177" name="zpNatGatlingGun">
+    <dbid>20177</dbid>
+    <displaynameid>45211</displaynameid>
+    <editornameid>45212</editornameid>
+    <populationcount>4</populationcount>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>8.0000</turnrate>
+    <animfile>units\artillery\gatling_gun\gatling_gun.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\gatling_gun_icon.png</icon>
+    <portraiticon>resources\art\units\gatling_gun_portrait.png</portraiticon>
+    <rollovertextid>45210</rollovertextid>
+    <shortrollovertextid>45209</shortrollovertextid>
+    <initialhitpoints>150.0000</initialhitpoints>
+    <maxhitpoints>150.0000</maxhitpoints>
+    <los>28.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>38.0000</trainpoints>
+    <bounty>35.0000</bounty>
+    <buildbounty>35.0000</buildbounty>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
+    <allowedage>2</allowedage>
+    <armor type="Ranged" value="0.7500">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractArtillery</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>RotateInPlace</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>gatlingGun.tactics</tactics>
+    <protoaction>
+      <name>CannonAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Siege</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>24.000000</maxrange>
+      <rof>4.000000</rof>
+      <damagecap>60.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>2.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractCavalry">0.2500000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.1500000</damagebonus>
+      <damagebonus type="Building">0.750000</damagebonus>
+      <damagebonus type="Ship">0.500000</damagebonus>
+      <damagebonus type="xpArrowKnight">0.500000</damagebonus>
+      <damagebonus type="deMalteseGun">2.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>RepeatingAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Siege</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>24.000000</maxrange>
+      <rof>0.5000000</rof>
+      <damagecap>60.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>2.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractCavalry">0.2500000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.1500000</damagebonus>
+      <damagebonus type="Building">0.750000</damagebonus>
+      <damagebonus type="Ship">0.500000</damagebonus>
+      <damagebonus type="xpArrowKnight">0.500000</damagebonus>
+      <damagebonus type="deMalteseGun">2.500000</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20178" name="zpNativeHouseOrthodoxSouth">
+    <dbid>20178</dbid>
+    <displaynameid>300871</displaynameid>
+    <editornameid>300940</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\native house orthodox south.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\units\infantry\boneguard\boneguard_age1_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\natives\maltese_natives.png</portraiticon>
+    <rollovertextid>300072</rollovertextid>
+    <shortrollovertextid>300072</shortrollovertextid>
+    <initialhitpoints>1500.0000</initialhitpoints>
+    <maxhitpoints>1500.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>10.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>100.0000</bounty>
+    <buildbounty>50.0000</buildbounty>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
   </unit>
   
 

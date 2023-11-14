@@ -872,7 +872,7 @@
       <string _locid="300869">Maltese Mission</string>
       <string _locid="300870">ZP Socket Maltese Mission</string>
       <string _locid="300871">Orthodox Monastery</string>
-      <string _locid="300872">ZP Nat House Orthodox</string>
+      <string _locid="300872">ZP Nat House Orthodox North</string>
       <string _locid="300873">ZP SPC Harbour Center A</string>
       <string _locid="300874">ZP SPC Harbour Center B</string>
       <string _locid="300875">Christmass Tree</string>
@@ -923,7 +923,7 @@
       <string _locid="300920">Bastion Wagon</string>
       <string _locid="300921">ZP Bastion Wagon</string>
       <string _locid="300922">Caucassian Borderlands</string>
-      <string _locid="300923">Sends three Bastion Wagons and allows Mountain Jaegers to construct Bastions.</string>
+      <string _locid="300923">Ships two special Outpost Wagons.</string>
       <string _locid="300924">Fortified Bastions</string>
       <string _locid="300925">Fortified Bastion</string>
       <string _locid="300926">Tsar Cannon</string>
@@ -931,15 +931,22 @@
       <string _locid="300928">Super heavy Russian Cannon</string>
       <string _locid="300929">Improves Bastion hitpoints and adds a powerful cannon attack.</string>
       <string _locid="300930">Georgian Patriarchate</string>
-      <string _locid="300931">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nMonaspa Lancer \n\nHeavy hand cavalry. Defensive tech. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nCaucassian Borderlands</string>
+      <string _locid="300931">Deffensive Improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nMonaspa Lancer \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nMonastery Bastion, Caucassian Borderlands</string>
       <string _locid="300932">Bulgarian Patriarchate</string>
-      <string _locid="300933">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBulgarian Boyar \n\nLight hand cavalry. Naval shipment tech. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nBlack Sea Fleet</string>
+      <string _locid="300933">Naval improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBulgarian Boyar \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nDanube Steamers, Black Sea Fleet</string>
       <string _locid="300934">Moscow Patriarchate</string>
-      <string _locid="300935">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDvoryanin \n\nHeavy ranged cavalry. Offensive shipment tech. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nTsar Kolokol</string>
+      <string _locid="300935">Offensive improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDvoryanin \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nRussian Guard, Tsar Kolokol</string>
       <string _locid="300936">Tsar Kolokol</string>
-      <string _locid="300937">Ships a Russian brigade with a special Tsar Cannon</string>
+      <string _locid="300937">Ships two superheavy "Tsar Cannons"</string>
       <string _locid="300938">Black Sea Fleet</string>
-      <string _locid="300939">Ships a steam powered Black Sea Fleet.</string>
+      <string _locid="300939">Ships a powerful Steam-powered Siege Ship.</string>
+      <string _locid="300940">ZP Nat House Orthodox South</string>
+      <string _locid="300941">Russian Guard</string>
+      <string _locid="300942">Ships Russian heavy Infantry</string>
+      <string _locid="300943">Ships a Bastion Wagon, allows Mountain Jaegers to construct Bastions and allows you to train all Orthodox units directly in the Bastions.</string>
+      <string _locid="300944">Monastery Bastion</string>
+      <string _locid="300945">Danube Steamers</string>
+      <string _locid="300946">Ships a steam-powered Warship</string>
     </language>
   </stringtable>
 </stringmods>
