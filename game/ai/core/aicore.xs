@@ -70,7 +70,10 @@ mutable void revoltedHandler(int techID = -1) {}
 // AssertiveWall
 //mutable void arrayResetSelf(int arrayID = -1) {}
 mutable bool selectArchipelagoBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1) {return(false);}
-mutable void selectClosestArchipelagoBuildPlanPosition(int planID = -1, int baseID = -1) {}
+mutable void selectClosestArchipelagoBuildPlanPosition(int planID = -1, int baseID = -1, int puid = -1) {}
+mutable int chooseArchipelagoAsianWonder(void) {return(-1);}
+mutable void updateArchipelagoResourceDistribution(void) {}
+mutable vector getDropoffPoint(vector pickup = cInvalidVector, vector dropoff = cInvalidVector, int stepsBack = 1) {return(cInvalidVector);}
 
 //==============================================================================
 // Includes.
@@ -1437,21 +1440,20 @@ rule transportMonitor
 inactive
 minInterval 10
 {
+    // AssertiveWall: Instead of checking for any active transport plans, check to see if we have an idel warship to use
    int numberTransportPlans = aiPlanGetNumber(cPlanTransport);
    vector homePosition = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
-   int numberWarships = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive, homePosition, 200.0);
+   int idleWarshipQuery = createSimpleIdleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive);
+   int numberWarships = kbUnitQueryExecute(idleWarshipQuery);
    
-   /*if (numberTransportPlans >= numberWarships / 1.5)
-   {
-      if (numberTransportPlans != 0 && numberWarships > 0)
-      {
-         return;
-      }
-   }*/
-   if (aiPlanGetIDByIndex(cPlanTransport, -1, true, 0) >= 0)
-   {
+   if (idleWarshipQuery <= 0)
+   {  //aiChat(1, "Can't transport, no transports available");
       return;
    }
+   /*if (aiPlanGetIDByIndex(cPlanTransport, -1, true, 0) >= 0)
+   {
+      return;
+   }*/
 
    // Find idle units away from our base.
    int baseAreaGroupID = kbAreaGroupGetIDByPosition(homePosition);
@@ -1471,17 +1473,15 @@ minInterval 10
       {
          continue;
       }
-      position = kbUnitGetPosition(unitID);
-      areaID = kbAreaGroupGetIDByPosition(position);
-
       // AssertiveWall: Check if the unit is connected by land to main base
-      if (kbAreAreaGroupsPassableByLand(baseAreaGroupID, areaID) == true)
+      /*if (kbAreAreaGroupsPassableByLand(baseAreaGroupID, areaID) == true)
       {
          continue;
-      }
+      }*/
 
-      // AssertiveWall: Rewrote this a much simpler way above
-      /*areaGroupID = kbAreaGroupGetIDByPosition(position);
+      position = kbUnitGetPosition(unitID);
+      areaID = kbAreaGroupGetIDByPosition(position);
+      areaGroupID = kbAreaGroupGetIDByPosition(position);
       if (areaGroupID == baseAreaGroupID)
       {
          continue;
@@ -1489,7 +1489,7 @@ minInterval 10
       if (kbAreaGroupGetType(areaGroupID) == cAreaGroupTypeWater)
       {
          // If units are inside a water area(likely on a shore), make sure it does not border our main base area group.
-         int areaID = kbAreaGetIDByPosition(position);
+         areaID = kbAreaGetIDByPosition(position);
          int numberBorders = kbAreaGetNumberBorderAreas(areaID);
          bool inMainBase = false;
          for (j = 0; < numberBorders)
@@ -1504,13 +1504,28 @@ minInterval 10
          {
             continue;
          }
-      }*/
+      }
+
+      // AssertiveWall: If they are in the reserve plan, send them back
+      if (kbUnitGetPlanID(unitID) == gLandReservePlan)
+      {
+         transportRequired = true;
+         break;
+      }
 
       planID = kbUnitGetPlanID(unitID);
+      // AssertiveWall: Still need transport if the plan is done or failed
+      if (aiPlanGetState(planID) == cPlanStateDone || aiPlanGetState(planID) == cPlanStateFailed)
+      {
+         transportRequired = true;
+         break;
+      }
+
       if (planID >= 0 && aiPlanGetDesiredPriority(planID) >= 25)
       {
          continue;
       }
+
       transportRequired = true;
       debugCore("Tranporting " + kbGetUnitTypeName(kbUnitGetProtoUnitID(unitID)) + " and its nearby units back to main base");
       break;
@@ -1520,6 +1535,8 @@ minInterval 10
    {
       return;
    }
+   //aiChat(1, "transport Required: " + transportRequired);
+   //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, position);
 
    // once we started transporting, make sure no one can steal units from us
    int transportPlanID = createTransportPlan(position, kbBaseGetMilitaryGatherPoint(cMyID, kbBaseGetMainID(cMyID)), 100, false);
@@ -1529,9 +1546,9 @@ minInterval 10
       return;
    }
 
-   unitQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeGarrisonInShips, cMyID, cUnitStateAlive, position, 30.0);
+   unitQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive, position, 30.0);
    numberFound = kbUnitQueryExecute(unitQueryID);
-   aiPlanAddUnitType(transportPlanID, cUnitTypeLogicalTypeGarrisonInShips, numberFound, numberFound, numberFound);
+   aiPlanAddUnitType(transportPlanID, cUnitTypeLogicalTypeLandMilitary, numberFound, numberFound, numberFound);
    for (i = 0; < numberFound)
    {
       unitID = kbUnitQueryGetResult(unitQueryID, i);
@@ -2334,8 +2351,32 @@ minInterval 5
          xsEnableRule("transportMonitor");
          xsEnableRule("towerManager"); // Go ahead and start making towers on island maps
          xsEnableRule("navyManager");
-         //xsEnableRule("ceylonFailsafe");
+         if (gMigrationMap == true)
+         {
+            xsEnableRule("delayedGeneralTransportFailsafe");
+         }
+         /*else
+         {
+            xsEnableRule("generalTransportFailsafe");
+         }*/
+
+         if (gIsArchipelagoMap == true)
+         {
+            xsEnableRule("moveArchipelagoBase");
+            //xsEnableRule("generalTransportFailsafe");
+         }    
+
       }
+
+      if (gMigrationMap == true)
+      {
+         xsEnableRule("ceylonFailsafe");
+      }
+
+      //if (gIsArchipelagoMap == true)
+      //{
+         //xsEnableRule("buildPlanDeletion");
+      //}
       
       if ((gGoodFishingMap == true) &&
           (cDifficultyCurrent >= cDifficultyModerate))

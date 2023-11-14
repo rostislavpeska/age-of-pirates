@@ -1657,10 +1657,10 @@ int createSimpleBuildPlan(int puid = -1, int numberWanted = 1, int pri = 100, bo
    }
 
    int planID = -1;
-   if (gIsArchipelagoMap == true)
+   /*if (gIsArchipelagoMap == true)
    {
       baseID = -1;
-   }
+   }*/
 
    // Create the right number of plans.
    for (i = 0; < numberWanted)

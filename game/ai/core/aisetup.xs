@@ -1166,7 +1166,8 @@ void analyzeMap()
        cRandomMapName == "zptortuga" ||
        cRandomMapName == "zpcoldwar" ||
        cRandomMapName == "zptreasureisland" ||
-       cRandomMapName == "zpphilippines")
+       cRandomMapName == "zpphilippines" ||
+       cRandomMapName == "zpmediterranean")
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
@@ -1178,15 +1179,18 @@ void analyzeMap()
    }
 
    // AssertiveWall: Archipelago style maps
-   if (cRandomMapName == "euArchipelago" ||
-       cRandomMapName == "euArchipelagoLarge"||
-       cRandomMapName == "zpmediterranean")
+   if (true == true) // turns this on/off for testing
    {
-      gIsArchipelagoMap = true;
-      cvOkToGatherFood = false;      // Setting it false will turn off food gathering. True turns it on.
-      cvOkToGatherGold = false;      // Setting it false will turn off gold gathering. True turns it on.
-      cvOkToGatherWood = false;      // Setting it false will turn off wood gathering. True turns it on.
-      gHomeBase = kbGetPlayerStartingPosition(cMyID);
+      if (cRandomMapName == "euArchipelago" ||
+         cRandomMapName == "euArchipelagoLarge"||
+         cRandomMapName == "zpmediterranean")
+      {
+         gIsArchipelagoMap = true;
+         cvOkToGatherFood = false;      // Setting it false will turn off food gathering. True turns it on.
+         cvOkToGatherGold = false;      // Setting it false will turn off gold gathering. True turns it on.
+         cvOkToGatherWood = false;      // Setting it false will turn off wood gathering. True turns it on.
+         gHomeBase = kbGetPlayerStartingPosition(cMyID);
+      }
    }
 
    debugSetup("Island map is " + gIslandMap + ", players start on different islands is " + gStartOnDifferentIslands);

@@ -29,6 +29,12 @@ int arrayCreateInt(int numElements = 1, string description = "default")
 	return(gArrayPlanIDs);
 }
 
+int getCeiling(float a = 0)
+{
+	int b = a; // Auto-cast to int, which is rounded down.
+	return(b + 1);
+}
+
 int arrayGetNumElements(int arrayID = -1)
 {
 	if (arrayID <= -1)
@@ -250,6 +256,13 @@ bool resourceCloserToAlly(int resourceID = -1)
 	return(false);
 }
 
+int getAgingUpAge(void)
+{
+	if (agingUp() == true)
+		return(kbGetAge() + 1);
+	return(kbGetAge());
+}
+
 
 // ================================================================================
 //	getClosestUnit
@@ -294,6 +307,285 @@ int getClosestUnit(int unitTypeID = -1, int playerRelationOrID = cMyID, int stat
 	if (numberFound > 0)
 		return(kbUnitQueryGetResult(unitQueryID, 0));   // Return the first unit
 	return(-1);
+}
+
+//==============================================================================
+// updateResourceDistribution
+/*
+	Predict our resource needs based on plan costs and resource crates we are going
+	to ship.
+*/
+//==============================================================================
+void updateArchipelagoResourceDistribution()
+{
+	float planFoodNeeded = 0.0;
+	float planWoodNeeded = 0.0;
+	float planGoldNeeded = 0.0;
+	float totalPlanFoodNeeded = 0.0;
+	float totalPlanWoodNeeded = 0.0;
+	float totalPlanGoldNeeded = 0.0;
+	float foodAmount = 0.0;
+	float woodAmount = 0.0;
+	float goldAmount = 0.0;
+	float foodNeeded = 0.0;
+	float woodNeeded = 0.0;
+	float goldNeeded = 0.0;
+	float totalNeeded = 0.0;
+	int planID = -1;
+	int trainUnitType = -1;
+	int trainCount = 0;
+	int numPlans = aiPlanGetActiveCount();
+	int planType = -1;
+	float foodGatherRate = 0.0;
+	float woodGatherRate = 0.0;
+	float goldGatherRate = 0.0;
+	float goldPercentage = 0.0;
+	float woodPercentage = 0.0;
+	float foodPercentage = 0.0;
+	float lastGoldPercentage = aiGetResourcePercentage(cResourceGold);
+	float lastWoodPercentage = aiGetResourcePercentage(cResourceWood);
+	float lastFoodPercentage = aiGetResourcePercentage(cResourceFood);
+	int planPri = 50;
+	int highestPri = 50;
+	int highestPriPlanID = -1;
+	float highestPriPlanGoldNeeded = 0.0;
+	float highestPriPlanWoodNeeded = 0.0;
+	float highestPriPlanFoodNeeded = 0.0;
+	int ageUpPolitician = -1;
+	int numberSendingCards = aiHCGetNumberSendingCards();
+	int cardIndex = -1;
+	int cardFlags = 0;
+	int crateQuery = createSimpleUnitQuery(cUnitTypeAbstractResourceCrate, cMyID, cUnitStateAlive);
+	int numberCrates = kbUnitQueryExecute(crateQuery);
+	int crateID = -1;
+	float handicap = kbGetPlayerHandicap(cMyID);
+	float cost = 0.0;
+	float trainPoints = 0.0;
+	int numberBuildingsWanted = 0;
+	float villagerCost = 0;
+	int villagerTrainTime = 0;
+
+	aiSetResourceGathererPercentageWeight(cRGPScript, 1.0);
+	aiSetResourceGathererPercentageWeight(cRGPCost, 0.0);
+
+	debugEconomy("updateResourceDistribution(): number plans="+numPlans);
+	for (i = 0; < numPlans)
+	{
+		planID = aiPlanGetIDByActiveIndex(i);
+		planType = aiPlanGetType(planID);
+		planPri = aiPlanGetDesiredResourcePriority(planID);
+		if (planType == cPlanTrain ||
+			planType == cPlanBuild ||
+			planType == cPlanBuildWall ||
+			planType == cPlanResearch ||
+			planType == cPlanRepair)
+		{
+			if (planID == aiPlanGetIDByTypeAndVariableType(cPlanTrain, cTrainPlanUnitType, gEconUnit))
+				continue;
+			else
+			{
+				planFoodNeeded = aiPlanGetFutureNeedsCostPerResource(planID, cResourceFood);
+				planWoodNeeded = aiPlanGetFutureNeedsCostPerResource(planID, cResourceWood);
+				planGoldNeeded = aiPlanGetFutureNeedsCostPerResource(planID, cResourceGold);
+			}
+			totalPlanFoodNeeded = totalPlanFoodNeeded + planFoodNeeded;
+			totalPlanWoodNeeded = totalPlanWoodNeeded + planWoodNeeded;
+			totalPlanGoldNeeded = totalPlanGoldNeeded + planGoldNeeded;
+			if (planPri > highestPri)
+			{
+				highestPri = planPri;
+				highestPriPlanID = planID;
+				highestPriPlanFoodNeeded = planFoodNeeded;
+				highestPriPlanWoodNeeded = planWoodNeeded;
+				highestPriPlanGoldNeeded = planGoldNeeded;
+			}
+			debugEconomy("updateResourceDistribution(): name="+aiPlanGetName(planID)+", needed=("+planGoldNeeded+", "+planWoodNeeded+", "+planFoodNeeded+")");
+		}
+	}
+
+	foodAmount = kbResourceGet(cResourceFood);
+	woodAmount = kbResourceGet(cResourceWood);
+	goldAmount = kbResourceGet(cResourceGold);
+
+	if (kbGetAge() < cAge4)
+	{
+		// ----- Food Gather Rate -----
+		if (cMyCiv == cCivJapanese)
+			foodGatherRate = kbProtoUnitGetGatherRate(gEconUnit, cUnitTypeypBerryBuilding) * handicap;
+		else
+			foodGatherRate = kbProtoUnitGetGatherRate(gEconUnit, cUnitTypeHuntable) * handicap;
+		// ----- Wood Gather Rate -----
+		woodGatherRate = kbProtoUnitGetGatherRate(gEconUnit, cUnitTypeTree) * handicap;
+		// ----- Gold Gather Rate -----
+		if (cMyCiv == cCivXPIroquois || cMyCiv == cCivXPSioux)
+			goldGatherRate = kbProtoUnitGetGatherRate(gEconUnit, cUnitTypedeFurTrade) * handicap;
+		else
+			goldGatherRate = kbProtoUnitGetGatherRate(gEconUnit, cUnitTypeAbstractMine) * handicap;
+	}
+	else
+	{
+		// ----- Food Gather Rate -----
+		if (civIsAsian() || civIsAfrican())
+			foodGatherRate = kbProtoUnitGetGatherRate(gEconUnit, gFarmUnit, cResourceFood) * handicap;
+		else
+			foodGatherRate = kbProtoUnitGetGatherRate(gEconUnit, gFarmUnit) * handicap;
+		// ----- Wood Gather Rate -----
+		woodGatherRate = kbProtoUnitGetGatherRate(gEconUnit, cUnitTypeTree) * handicap;
+		// ----- Gold Gather Rate -----
+		if (civIsAsian() || civIsAfrican())
+			foodGatherRate = kbProtoUnitGetGatherRate(gEconUnit, gPlantationUnit, cResourceGold) * handicap;
+		else
+			foodGatherRate = kbProtoUnitGetGatherRate(gEconUnit, gPlantationUnit) * handicap;
+	}
+
+	// Failsafe.
+	if (foodGatherRate < 0.1)
+		foodGatherRate = 0.84 * handicap;
+	if (woodGatherRate < 0.1)
+		woodGatherRate = 0.5 * handicap;
+	if (goldGatherRate < 0.1)
+		goldGatherRate = 0.6 * handicap;
+
+	// Set reserved villagers for more villager training.
+	gReservedFoodVillagers = 0;
+	gReservedWoodVillagers = 0;
+	gReservedGoldVillagers = 0;
+	if (cMyCiv != cCivOttomans)
+	{
+		villagerCost = kbUnitCostPerResource(gEconUnit, cResourceFood);
+		villagerTrainTime = kbUnitGetTrainPoints(gEconUnit);
+		switch (cMyCiv)
+		{
+			case cCivDutch:
+			{
+				villagerCost = kbUnitCostPerResource(gEconUnit, cResourceGold);
+				if (goldAmount < villagerCost * 1.25)
+					gReservedGoldVillagers = getCeiling((villagerCost) / (goldGatherRate * villagerTrainTime));
+				if (gReservedGoldVillagers < 2)
+					gReservedGoldVillagers = 2;
+				break;
+			}
+			case cCivIndians:
+			{
+				villagerCost = kbUnitCostPerResource(gEconUnit, cResourceWood);
+				if (woodAmount < villagerCost * 1.25)
+					gReservedWoodVillagers = getCeiling((villagerCost) / (woodGatherRate * villagerTrainTime));
+				if (gReservedWoodVillagers < 2)
+					gReservedWoodVillagers = 2;
+				break;
+			}
+			default:
+			{
+				if (foodAmount < villagerCost * 1.25)
+					gReservedFoodVillagers = getCeiling((villagerCost) / (foodGatherRate * villagerTrainTime));
+				if (gReservedFoodVillagers < 2)
+					gReservedFoodVillagers = 2;
+				break;
+			}
+		}
+	}
+
+	// Add incoming resources from aging up.
+	if (agingUp() == true)
+	{
+		if (aiPlanGetType(gAgeUpResearchPlan) == cPlanBuild)
+		{
+			ageUpPolitician = aiPlanGetVariableInt(gAgeUpResearchPlan, cBuildPlanBuildingTypeID, 0);
+			ageUpPolitician = kbProtoUnitGetAssociatedTech(ageUpPolitician);
+		}
+		else
+		{
+			ageUpPolitician = aiPlanGetVariableInt(gAgeUpResearchPlan, cResearchPlanTechID, 0);
+		}
+		
+		foodAmount = foodAmount + kbTechGetHCCardValuePerResource(ageUpPolitician, cResourceFood) * handicap;
+		woodAmount = woodAmount + kbTechGetHCCardValuePerResource(ageUpPolitician, cResourceWood) * handicap;
+		goldAmount = goldAmount + kbTechGetHCCardValuePerResource(ageUpPolitician, cResourceGold) * handicap;
+	}
+
+	// Add incoming resources from HC shipments.
+	for (i = 0; < numberSendingCards)
+	{
+		cardIndex = aiHCGetSendingCardIndex(i);
+		cardFlags = aiHCDeckGetCardFlags(gDefaultDeck, cardIndex);
+		if ((cardFlags & cHCCardFlagResourceCrate) == cHCCardFlagResourceCrate)
+		{
+			foodAmount = foodAmount + aiHCDeckGetCardValuePerResource(gDefaultDeck, cardIndex, cResourceFood) * handicap;
+			woodAmount = woodAmount + aiHCDeckGetCardValuePerResource(gDefaultDeck, cardIndex, cResourceWood) * handicap;
+			goldAmount = goldAmount + aiHCDeckGetCardValuePerResource(gDefaultDeck, cardIndex, cResourceGold) * handicap;
+		}
+	}
+
+	// Add resources from crates we currently haven't collected.
+	for (i = 0; < numberCrates)
+	{
+		crateID = kbUnitQueryGetResult(crateQuery, i);
+		foodAmount = foodAmount + kbUnitGetResourceAmount(crateID, cResourceFood) * handicap;
+		woodAmount = woodAmount + kbUnitGetResourceAmount(crateID, cResourceWood) * handicap;
+		goldAmount = goldAmount + kbUnitGetResourceAmount(crateID, cResourceGold) * handicap;
+	}
+
+	// Give our respective resource totals some oomph the highest priority plan that we cannot yet afford.
+	if (foodAmount < highestPriPlanFoodNeeded)
+		totalPlanFoodNeeded = totalPlanFoodNeeded + highestPriPlanFoodNeeded; // Add the plan again.
+	if (woodAmount < highestPriPlanWoodNeeded)
+		totalPlanWoodNeeded = totalPlanWoodNeeded + highestPriPlanWoodNeeded; // Add the plan again.
+	if (goldAmount < highestPriPlanGoldNeeded)
+		totalPlanGoldNeeded = totalPlanGoldNeeded + highestPriPlanGoldNeeded; // Add the plan again.
+
+	// Check to see if the next shipment that we want to send has a cost. If so, account for it.
+	// Be prepared to ship in 60 seconds.
+	// if (kbTechCostPerResource(gNextShipmentTechID, cResourceFood) > 1.0)
+	// 	totalPlanFoodNeeded = totalPlanFoodNeeded + kbTechCostPerResource(gNextShipmentTechID, cResourceFood) * (10.0 - 2 * kbGetAge());
+	// if (kbTechCostPerResource(gNextShipmentTechID, cResourceWood) > 1.0)
+	// 	totalPlanWoodNeeded = totalPlanWoodNeeded + kbTechCostPerResource(gNextShipmentTechID, cResourceWood) * (10.0 - 2 * kbGetAge());
+	// if (kbTechCostPerResource(gNextShipmentTechID, cResourceGold) > 1.0)
+	// 	totalPlanGoldNeeded = totalPlanGoldNeeded + kbTechCostPerResource(gNextShipmentTechID, cResourceGold) * (10.0 - 2 * kbGetAge());
+
+	foodNeeded = totalPlanFoodNeeded - foodAmount;
+	woodNeeded = totalPlanWoodNeeded - woodAmount;
+	goldNeeded = totalPlanGoldNeeded - goldAmount;
+
+	// For market trading.
+	xsArraySetFloat(gResourceNeeds, cResourceFood, foodNeeded);
+	xsArraySetFloat(gResourceNeeds, cResourceWood, woodNeeded);
+	xsArraySetFloat(gResourceNeeds, cResourceGold, goldNeeded);
+
+	if (foodNeeded < 0.0)
+		foodNeeded = 0.0;
+	if (woodNeeded < 0.0)
+		woodNeeded = 0.0;
+	if (goldNeeded < 0.0)
+		goldNeeded = 0.0;
+
+	// By using ratios, we will use the food as a baseline to adjust the percentages according to gather rate.
+	woodNeeded = woodNeeded * (foodGatherRate / woodGatherRate);
+	goldNeeded = goldNeeded * (foodGatherRate / goldGatherRate);
+	totalNeeded = foodNeeded + woodNeeded + goldNeeded;
+
+	// We have enough resource for our plans
+	if (totalNeeded <= 0.0)
+	{
+		foodNeeded = 1.0;
+		woodNeeded = foodGatherRate / woodGatherRate;
+		goldNeeded = foodGatherRate / goldGatherRate;
+		if (agingUp() && getAgingUpAge() == cAge2)
+		{	// Force wood gathering when aging to Age 2 if we have nothing to do.
+			foodNeeded = 0.1;
+			woodNeeded = 0.8;
+			goldNeeded = 0.1;
+		}
+		totalNeeded = foodNeeded + woodNeeded + goldNeeded;
+	}
+
+	foodPercentage = foodNeeded / totalNeeded;
+	woodPercentage = woodNeeded / totalNeeded;
+	goldPercentage = goldNeeded / totalNeeded;
+
+	aiSetResourcePercentage(cResourceGold, false, goldPercentage);
+	aiSetResourcePercentage(cResourceWood, false, woodPercentage);
+	aiSetResourcePercentage(cResourceFood, false, foodPercentage);
+	aiNormalizeResourcePercentages();   // Set them to 1.0 total, just in case these don't add up.
 }
 
 //==============================================================================
@@ -440,65 +732,32 @@ int findTradingLodge(int resourceID = -1)
 // AssertiveWall: Adapted from Ceylon Nomad Start. Takes an approximate pickup and dropoff, and returns the 
 // closest dropoff location 
 // Does not contain all the same checks as the islandMigration rule
-vector getDropoffPoint(vector pickup = cInvalidVector, vector dropoff = cInvalidVector)
+vector getDropoffPoint(vector pickup = cInvalidVector, vector dropoff = cInvalidVector, int stepsBack = 1)
 {
-	int areaCount = 0;
-	vector myLocation = pickup;
-	int myAreaGroup = -1;
+	// Start at dropoff. Take small increments back toward pickup until we hit water, then use point before that
+	vector testPoint = dropoff;
+	int range = distance(pickup, dropoff);
+	vector normalizedVector = xsVectorNormalize(pickup - dropoff);
+	vector previousPoint = testPoint;
+	int testAreaID = -1;
 
-	int area = 0;
-	int areaGroup = -1;
-
-	areaCount = kbAreaGetNumber();
-	myAreaGroup = kbAreaGroupGetIDByPosition(myLocation);
-
-	int closestArea = -1;
-	float closestAreaDistance = kbGetMapXSize();
-
-	for (area = 0; < areaCount)
+	for (i = 0; < range)
 	{
-		if (kbAreaGetType(area) == cAreaTypeWater)
+		testPoint = testPoint + normalizedVector;
+		testAreaID = kbAreaGetIDByPosition(testPoint);
+
+		if (kbAreaGetType(testAreaID) == cAreaTypeWater)
 		{
-			continue;
+			return previousPoint;
 		}
 
-		areaGroup = kbAreaGroupGetIDByPosition(kbAreaGetCenter(area));
-		if (kbAreaGroupGetNumberAreas(areaGroup) - kbAreaGroupGetNumberAreas(myAreaGroup) <= 10)
+		previousPoint = testPoint;
+		for (j = 0; < stepsBack)
 		{
-			continue;
-		}
-
-		bool bordersWater = false;
-		int borderAreaCount = kbAreaGetNumberBorderAreas(area);
-		for (i = 0; < borderAreaCount)
-		{
-			if (kbAreaGetType(kbAreaGetBorderAreaID(area, i)) == cAreaTypeWater)
-			{
-			bordersWater = true;
-			break;
-			}
-		}
-
-		if (bordersWater == false)
-		{
-			continue;
-		}
-
-		// Check to make sure this area is connected to the dropoff
-		if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(dropoff), areaGroup) == false)
-		{
-			continue;
-		}
-
-		float dist = xsVectorLength(kbAreaGetCenter(area) - myLocation);
-		if (dist < closestAreaDistance)
-		{
-			closestAreaDistance = dist;
-			closestArea = area;
+			previousPoint = previousPoint - normalizedVector; // Two steps back
 		}
 	}
-
-   return kbAreaGetCenter(closestArea);
+	return cInvalidVector;
 }
 
 //==============================================================================
@@ -1282,7 +1541,7 @@ void updateBetterGoldBreakdown(void)
 
 rule stealAllVillagers
 inactive
-minInterval 10
+minInterval 30
 {
 	cvOkToGatherFood = false;      // Setting it false will turn off food gathering. True turns it on.
 	cvOkToGatherGold = false;      // Setting it false will turn off gold gathering. True turns it on.
@@ -1326,6 +1585,39 @@ minInterval 10
 	xsDisableSelf();
 }
 
+//==============================================================================
+//
+// crateTasker
+//
+// AssertiveWall: Any time there is a crate, grab the closest unit to gather
+//
+// 
+//
+//==============================================================================
+rule crateTasker
+inactive
+minInterval 5
+{
+	vector mainBaseVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+	int closeCrate = getClosestUnitByLocation(cUnitTypeAbstractResourceCrate, cPlayerRelationSelf, cUnitStateAlive, mainBaseVec);
+	int closestUnit = -1;
+	vector closestUnitLoc = cInvalidVector;
+	if (closeCrate < 0)
+	{
+		return;
+	}
+	closestUnit = getClosestUnitByLocation(cUnitTypeAbstractVillager, cPlayerRelationSelf, cUnitStateAlive, mainBaseVec, 150);
+	closestUnitLoc = kbUnitGetPosition(closestUnit);
+	if (closestUnit > 0)
+	{
+		// Check if we need a transport
+		if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(closestUnitLoc), kbAreaGroupGetIDByPosition(mainBaseVec)) == true)
+		{
+			aiTaskUnitWork(closestUnit, closeCrate);
+		}
+	}
+}
+
 
 //==============================================================================
 //
@@ -1363,6 +1655,7 @@ minInterval 2
 		gMillTypePlans = arrayCreateInt(1, "Mill Type Build Plans");
 		gPlantationTypePlans = arrayCreateInt(1, "Plantation Type Build Plans");
 		gQueuedBuildingPriority = arrayCreateInt(1, "Inactive Build Plans Priority");
+		gVillagerTransportArray = arrayCreateInt(1, "Villagers to Transport");
 	}
 
 	if (gVillagerQuery < 0)
@@ -1380,6 +1673,9 @@ minInterval 2
 	kbUnitQueryExecute(gVillagerQuery);
 	kbUnitQuerySetUnitType(gVillagerQuery, cUnitTypeSettlerWagon);
 	kbUnitQueryExecute(gVillagerQuery);
+
+	arrayResetSelf(gVillagerTransportArray);
+
 
 	if (xsIsRuleEnabled("villagerRetreat") == false)
 	{
@@ -1931,14 +2227,16 @@ minInterval 2
 				pickup = location;
 			}
 
-			if (dropoffIslandLoc == cInvalidVector)
+			if (dropoffIslandLoc == cInvalidVector || dropoffLoc == cInvalidVector)
 			{
 				dropoffIslandLoc = resourceLocation;
+				dropoffLoc = getDropoffPoint(pickup, dropoffIslandLoc);
 			}
 
 			if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(location), kbAreaGroupGetIDByPosition(pickup)) == true)
 			{
-				migrantNumber += 1;
+				// Add this villager to the array
+				arrayPushInt(gVillagerTransportArray, unitID);
 			}	
 		}
 		else
@@ -1947,17 +2245,30 @@ minInterval 2
 		}
 	}
 
+	migrantNumber = arrayGetNumElements(gVillagerTransportArray);
 	if (migrantNumber > 0 && pickup != cInvalidVector && dropoffIslandLoc != cInvalidVector)
 	{
-		int numberTransportPlans = aiPlanGetNumber(cPlanTransport);
+		// Check for warships
+		/*int numberTransportPlans = aiPlanGetNumber(cPlanTransport);
 		vector homePosition = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
 		int numberWarships = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive, homePosition, 400.0);
-		
-		if (numberTransportPlans <= numberWarships)
+		*/
+		int unitToTransport = -1;
+
+		//if (numberTransportPlans <= numberWarships)
+		if (true == true)
 		{
-			//dropoffLoc = getDropoffPoint(pickup, dropoffIslandLoc);
-			transportPlanID = createTransportPlan(pickup, dropoffIslandLoc, 100);
-			aiPlanAddUnitType(transportPlanID, cUnitTypeAbstractVillager, 1, migrantNumber, migrantNumber);
+			transportPlanID = createTransportPlan(pickup, dropoffLoc, 100);
+			aiPlanAddUnitType(transportPlanID, cUnitTypeAbstractVillager, migrantNumber, migrantNumber, migrantNumber);
+			for (i = 0; < migrantNumber)
+			{
+				unitToTransport = arrayGetInt(gVillagerTransportArray, i);
+				if (aiPlanAddUnit(transportPlanID, unitToTransport) == false)
+				{
+					aiPlanDestroy(transportPlanID);
+				}
+			}
+			aiPlanSetNoMoreUnits(transportPlanID, true);
 		}
 		else // Make sure we have a dock
 		{
@@ -1971,17 +2282,330 @@ minInterval 2
 }
 
 //==============================================================================
+// getClosestNonBuilderUnitByLocation
+// Will return a random unit matching the parameters
+//==============================================================================
+int getSameIslandUnitByLocation(int unitTypeID = -1, int playerRelationOrID = cMyID, int state = cUnitStateAlive,
+                             vector location = cInvalidVector, float radius = 20.0)
+{
+   static int unitQueryID = -1;
+   int foundUnit = -1;
+
+   // If we don't have the query yet, create one.
+   if (unitQueryID < 0)
+   {
+      unitQueryID = kbUnitQueryCreate("miscGetUnitLocationQuery");
+   }
+
+   // Define a query to get all matching units
+   if (unitQueryID != -1)
+   {
+      if (playerRelationOrID > 1000) // Too big for player ID number
+      {
+         kbUnitQuerySetPlayerID(unitQueryID, -1);
+         kbUnitQuerySetPlayerRelation(unitQueryID, playerRelationOrID);
+      }
+      else
+      {
+         kbUnitQuerySetPlayerRelation(unitQueryID, -1);
+         kbUnitQuerySetPlayerID(unitQueryID, playerRelationOrID);
+      }
+      kbUnitQuerySetUnitType(unitQueryID, unitTypeID);
+      kbUnitQuerySetState(unitQueryID, state);
+      kbUnitQuerySetPosition(unitQueryID, location);
+      kbUnitQuerySetMaximumDistance(unitQueryID, radius);
+      kbUnitQuerySetIgnoreKnockedOutUnits(unitQueryID, true);
+      kbUnitQuerySetAscendingSort(unitQueryID, true);
+   }
+   else
+   {
+      return (-1);
+   }
+
+   kbUnitQueryResetResults(unitQueryID);
+   int numberFound = kbUnitQueryExecute(unitQueryID);
+   if (numberFound > 0)
+   {
+	  for (i = 0; < numberFound)
+	  {
+		foundUnit = kbUnitQueryGetResult(unitQueryID, i);
+		if (aiPlanGetType(kbUnitGetPlanID(foundUnit)) != cPlanBuild &&
+			kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(location), kbAreaGroupGetIDByPosition(kbUnitGetPosition(foundUnit))) == true)
+		{
+      		return (foundUnit); // Return the first unit
+		}
+	  }
+   }
+   return (-1);
+}
+
+//==============================================================================
+// selectNearbyAreaGroup
+// Finds a random area group within the specified range. If no range is 
+// specified, the base range is used. If no area group is found, it will 
+// automatically expand the base range and return the closest island
+//==============================================================================
+vector selectNearbyAreaGroup(vector startingPosition = cInvalidVector, int range = -1)
+{
+	if (range < 0)
+	{
+		range = kbBaseGetDistance(cMyID, gMainBase);
+	}
+
+   int areaCount = kbAreaGetNumber();
+   int myAreaGroup = kbAreaGroupGetIDByPosition(startingPosition);
+   vector areaLocation = cInvalidVector;
+   float dist = 0;
+
+   int area = 0;
+   //int areaGroup = -1;
+
+   int closestArea = -1;
+   float closestAreaDistance = kbGetMapXSize();
+
+   for (area = 0; < areaCount)
+   {
+      if (kbAreaGetType(area) == cAreaTypeWater)
+      {
+         continue;
+      }
+
+      //areaGroup = kbAreaGroupGetIDByPosition(kbAreaGetCenter(area));
+      /*if (kbAreaGroupGetNumberAreas(areaGroup) - kbAreaGroupGetNumberAreas(myAreaGroup) <= 2)
+      {
+         continue;
+      }*/
+
+      //bool bordersWater = false;
+      //int borderAreaCount = kbAreaGetNumberBorderAreas(area);
+      /*for (i = 0; < borderAreaCount)
+      {
+         if (kbAreaGetType(kbAreaGetBorderAreaID(area, i)) == cAreaTypeWater)
+         {
+            bordersWater = true;
+            break;
+         }
+      }*/
+
+      /*if (bordersWater == false)
+      {
+         continue;
+      }*/
+	  areaLocation = kbAreaGetCenter(area);
+      dist = xsVectorLength(areaLocation - startingPosition);
+	  // Exclude anything too far away
+	  if (dist > range)
+	  {
+		 continue;
+	  }
+
+	  // Find if there is open space here. 
+	  // Using spacing of 10 per building, and only half a circle (since it's on the coast) that means about 8 buildings
+	  /*if (getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAny, cUnitStateABQ, 
+			areaLocation, 40) > 8)
+	  {
+		continue;
+	  }*/
+
+      if (dist < closestAreaDistance)
+      {
+         closestAreaDistance = dist;
+         closestArea = area;
+      }
+   }
+
+   return kbAreaGetCenter(closestArea);
+}
+
+//==============================================================================
 // selectClosestArchipelagoBuildPlanPosition
 // Find the closest location to the unit to build.
 //==============================================================================
-void selectClosestArchipelagoBuildPlanPosition(int planID = -1, int baseID = -1)
+vector spiralizedBuildingLocation(vector startingPosition = cInvalidVector, int bufferSpace = 8)
 {
-	vector builderLocation = getRandomIsland();
+   if (startingPosition == cInvalidVector)
+   {  // Set the starting position to the center of the main base if none specified
+      startingPosition = kbBaseGetLocation(cMyID, gMainBase);
+   }
 
-	aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, builderLocation);
+   int maxRange = kbGetMapXSize()/2;//kbBaseGetDistance(cMyID, gMainBase);//distance(kbGetPlayerStartingPosition(cMyID), guessEnemyLocation()) * 0.6;
+   // 
+   int spacingDistance = bufferSpace / 2;  // Controls how fast radius expands
+   int numAttempts = maxRange / spacingDistance;
+   vector testVec = cInvalidVector;
+   vector startingVec = xsVectorSetX(startingPosition, xsVectorGetX(startingPosition));
+   float testAngle = aiRandFloat(0, 2.0 * PI); // Angle is random as radius expands
+   int testAreaID = -1;
+   int closestVil = -1;
+
+   for (attempt = 0; < numAttempts)
+   {
+	  testAngle = aiRandFloat(0, 2.0 * PI);
+	  startingVec = xsVectorSetX(startingPosition, xsVectorGetX(startingPosition) + spacingDistance * attempt);
+      testVec = rotateByReferencePoint(startingPosition, startingVec - startingPosition, testAngle);
+
+	  testAreaID = kbAreaGetIDByPosition(testVec);
+	  if (kbAreaGetType(testAreaID) == cAreaTypeWater)
+	  {
+	  	  continue;
+	  }
+
+	  // Only go for places where we already have a vil
+	  closestVil = getSameIslandUnitByLocation(cUnitTypeAbstractVillager, cPlayerRelationAny, cUnitStateAlive, testVec);
+	  if (closestVil < 0)
+	  {
+		continue;
+	  }
+
+	  // Skip ally starting islands
+	  // not yet written
+
+	  // Skip if enemy nearby
+	  if (getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia, cUnitStateAlive, testVec, 50) > 0)
+	  {
+		continue;
+	  }
+	  
+
+      if (getUnitByLocation(cUnitTypeBuilding, cPlayerRelationAny, cUnitStateABQ, testVec, bufferSpace) < 0)
+      { // Site is clear, use it.
+	  	//aiChat(1, "Found location on attempt: " + attempt);
+		//testVec = selectNearbyAreaGroup(testVec);
+		if (testVec != cInvalidVector)
+		{
+			return testVec;
+		}
+      }
+   }
+   // If we made it this far, we couldn't find a spot, probably because no villagers are out yet. Redo without that condition
+   for (attempt = 0; < numAttempts)
+   {
+	  testAngle = aiRandFloat(0, 2.0 * PI);
+	  startingVec = xsVectorSetX(startingPosition, xsVectorGetX(startingPosition) + spacingDistance * attempt);
+      testVec = rotateByReferencePoint(startingPosition, startingVec - startingPosition, testAngle);
+
+	  testAreaID = kbAreaGetIDByPosition(testVec);
+	  if (kbAreaGetType(testAreaID) == cAreaTypeWater)
+	  {
+	  	  continue;
+	  }
+
+	  // Skip if enemy nearby
+	  if (getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia, cUnitStateAlive, testVec, 50) > 0)
+	  {
+		continue;
+	  }
+
+      if (getUnitByLocation(cUnitTypeBuilding, cPlayerRelationAny, cUnitStateABQ, testVec, bufferSpace) < 0)
+      { // Site is clear, use it.
+	  	//aiChat(1, "Found location on attempt: " + attempt);
+		//testVec = selectNearbyAreaGroup(testVec);
+		if (testVec != cInvalidVector)
+		{
+			return testVec;
+		}
+      }
+   }
+
+   return kbBaseGetLocation(cMyID, gMainBase); // Better to return something than nothing
+}
+
+//==============================================================================
+// selectClosestArchipelagoBuildPlanPosition
+// Find the closest location to the unit to build.
+//==============================================================================
+void selectClosestArchipelagoBuildPlanPosition(int planID = -1, int baseID = -1, int puid = -1)
+{
+	int testAreaID = -1;
+	vector buildSite = cInvalidVector;
+
+	int numberUnits = aiPlanGetNumberUnits(planID);
+	vector builderLocation = cInvalidVector;
+	int tempBuilderUnit = -1;
+	int bufferSpace = -1;
+	
+	if (kbProtoUnitIsType(cMyID, puid, cUnitTypeAbstractWonder) == true && kbGetAge() < cAge2)
+	{
+		bufferSpace = 8;
+	}
+	else if (kbProtoUnitIsType(cMyID, puid, cUnitTypeAbstractWonder) == true)
+	{
+		bufferSpace = 12;
+	}
+	else if (kbProtoUnitIsType(cMyID, puid, cUnitTypeAbstractFarmBuilding) == true)
+	{
+		bufferSpace = 15;
+	}
+	else
+	{
+		if (kbGetAge() <= cAge2)
+		{
+			bufferSpace = 10;
+		}
+		else
+		{
+			bufferSpace = 12;
+		}
+	}
+	
+	/*for (i = 0; < numberUnits)
+	{
+		tempBuilderUnit = aiPlanGetUnitByIndex(planID, i);
+		if (kbUnitIsType(tempBuilderUnit, cUnitTypeAbstractVillager) == true || 
+			   kbUnitIsType(tempBuilderUnit, cUnitTypeAbstractWagon) == true)
+		{
+			builderLocation = kbUnitGetPosition(tempBuilderUnit);
+			break;
+		}
+	}*/
+
+	buildSite = spiralizedBuildingLocation(cInvalidVector, bufferSpace);//builderLocation);
+
+	/*for (i = 0; < 100)
+	{
+		//builderLocation = getRandomIsland();//getDropoffPoint(gHomeBase, getRandomIsland(), 50);
+		//builderLocation = xsVectorSet(xsVectorGetX(builderLocation) + aiRandFloat(-40, 40), 0.0, 
+		//	xsVectorGetZ(builderLocation) + aiRandFloat(-40, 40));
+		
+		buildSite = spiralizedBuildingLocation(builderLocation);
+
+		testAreaID = kbAreaGetIDByPosition(buildSite);
+		if (kbAreaGetType(testAreaID) != cAreaTypeWater)
+		{
+			break;
+		}
+	}*/
+
+	aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, buildSite);
 	aiPlanSetVariableFloat(planID, cBuildPlanCenterPositionDistance, 0, 100.0);
-	aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionValue, 0, 200.0);             // 200 points max
-	aiPlanSetVariableInt(planID, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+
+	if (kbProtoUnitIsType(puid, cUnitTypeAbstractWonder))
+	{
+		aiPlanSetVariableBool(planID, cBuildPlanInfluenceAtBuilderPosition, 0, true);
+		aiPlanSetVariableFloat(planID, cBuildPlanInfluenceBuilderPositionValue, 0, 300.0);    // 300m range.
+		aiPlanSetVariableFloat(planID, cBuildPlanInfluenceBuilderPositionDistance, 8.0, 200.0); // 200 points max
+		aiPlanSetVariableInt(planID, cBuildPlanInfluenceBuilderPositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+	}
+	else
+	{
+		aiPlanSetVariableBool(planID, cBuildPlanInfluenceAtBuilderPosition, 0, true);
+		aiPlanSetVariableFloat(planID, cBuildPlanInfluenceBuilderPositionValue, 0, 300.0);    // 300m range.
+		aiPlanSetVariableFloat(planID, cBuildPlanInfluenceBuilderPositionDistance, 4.0, 200.0); // 200 points max
+		aiPlanSetVariableInt(planID, cBuildPlanInfluenceBuilderPositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+	}
+
+	// Add a same-island builder
+	// AssertiveWall: Try to grab a unit on the same island if archipelago map
+	int sameIslandBuilder = getSameIslandUnitByLocation(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, buildSite, 150);
+	
+	if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(buildSite), kbAreaGroupGetIDByPosition(kbUnitGetPosition(sameIslandBuilder))) == true
+		 && puid != cUnitTypeFactory)
+	{
+		aiPlanAddUnitType(planID, gEconUnit, 1, 1, 1);
+		aiPlanAddUnit(planID, sameIslandBuilder);
+	}
+	//aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionValue, 0, 200.0);             // 200 points max
+	//aiPlanSetVariableInt(planID, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
 }
 
 //==============================================================================
@@ -2001,8 +2625,9 @@ void selectClosestArchipelagoMainIslandBuildPlanPosition(int planID = -1, int ba
 //==============================================================================
 bool selectArchipelagoBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
 {
+	//aiChat(1, "Somehow, the Archipelago builder is running...");
    bool result = true;
-   baseID = -1;
+   //baseID = -1;
 
    // Position.
    switch (puid)
@@ -2032,7 +2657,7 @@ bool selectArchipelagoBuildPlanPosition(int planID = -1, int puid = -1, int base
       case cUnitTypeHouseAztec:
       case cUnitTypedeHouseInca:
       {
-         selectClosestArchipelagoBuildPlanPosition(planID, baseID);
+         selectClosestArchipelagoBuildPlanPosition(planID, baseID, puid);
          break;
       }
       case cUnitTypeOutpost:
@@ -2044,7 +2669,7 @@ bool selectArchipelagoBuildPlanPosition(int planID = -1, int puid = -1, int base
       case cUnitTypeypCastle:
       case cUnitTypeYPOutpostAsian:
       {
-         selectClosestArchipelagoBuildPlanPosition(planID, baseID);
+         selectClosestArchipelagoBuildPlanPosition(planID, baseID, puid);
          break;
       }
       case cUnitTypeDock:
@@ -2087,17 +2712,17 @@ bool selectArchipelagoBuildPlanPosition(int planID = -1, int puid = -1, int base
       {
          if (gMigrationMap == true)
          {
-            selectClosestArchipelagoBuildPlanPosition(planID, baseID);
+            selectClosestArchipelagoBuildPlanPosition(planID, baseID, puid);
             break;
          }
          // Usually we need to defend with Banks, thus placing Banks with high HP at front is a good choice.
-         aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
-         aiPlanSetBaseID(planID, baseID);
+         //aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
+         //aiPlanSetBaseID(planID, baseID);
          break;
       }
       case cUnitTypeTownCenter:
       {
-         selectClosestArchipelagoBuildPlanPosition(planID, baseID);
+         selectClosestArchipelagoBuildPlanPosition(planID, baseID, puid);
          break;
       }
       case cUnitTypedeFurTrade:
@@ -2125,9 +2750,10 @@ bool selectArchipelagoBuildPlanPosition(int planID = -1, int puid = -1, int base
       case cUnitTypeFactory:
       case cUnitTypeypDojo:
       {
-         aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceBack);
+         //aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceBack);
          // Base ID.
-         aiPlanSetBaseID(planID, baseID);
+         //aiPlanSetBaseID(planID, baseID);
+		 selectClosestArchipelagoBuildPlanPosition(planID, baseID, puid);
          break;
       }
       default:
@@ -2140,16 +2766,327 @@ bool selectArchipelagoBuildPlanPosition(int planID = -1, int puid = -1, int base
 				continue;
 			}
 			// This is a military building, randomize placement.
-			aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, aiRandInt(4));
-			selectClosestArchipelagoMainIslandBuildPlanPosition(planID, baseID);
+			//aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, aiRandInt(4));
+			selectClosestArchipelagoBuildPlanPosition(planID, baseID, puid);
+			//selectClosestArchipelagoMainIslandBuildPlanPosition(planID, baseID);
 			break;
 		}
 
-		selectClosestArchipelagoBuildPlanPosition(planID, baseID);
+		selectClosestArchipelagoBuildPlanPosition(planID, baseID, puid);
 		//aiPlanSetBaseID(planID, baseID);
 		break;
       }
    }
 
    return (result);
+}
+
+//==============================================================================
+/* chooseAsianWonder
+   Chooses age-up Wonders for Asian civilizations.
+
+   On archipelago we need to go small -> big so there's room to find it
+   
+   Chinese:
+   1: Porcelain Tower
+   2: The one we didn't pick at 1
+   3: Confucian or Temple of Heaven
+   4: The one we didn't pick at 3
+   Ignore White Pagoda completely.
+   
+   India:
+   1: Charminar Gate
+   2: Tower of Victory
+   3: Karni Mata or Taj Mahal
+   4: The one we didn't pick at 2 or 3.
+   
+   Japanese:
+   1: Torii Gates
+   2: Golden Pavilion
+   3: Shogunate
+   4: Giant Buddha or the one we didn't pick at 1.
+*/
+//==============================================================================
+int chooseArchipelagoAsianWonder()
+{
+   switch (kbGetAge())
+   {
+   case cAge1:
+   {
+      if (cMyCiv == cCivChinese)
+      {
+         return (cUnitTypeypWCPorcelainTower2);
+      }
+      else if (cMyCiv == cCivIndians)
+      {
+         return (cUnitTypeypWICharminarGate2);
+      }
+      else if (cMyCiv == cCivJapanese)
+      {
+         return (cUnitTypeypWJToriiGates2);
+      }
+      break;
+   }
+   case cAge2:
+   {
+      if (cMyCiv == cCivChinese)
+      {
+         if (kbTechGetStatus(cTechYPWonderChineseSummerPalace3) == cTechStatusObtainable)
+         {
+            return (cUnitTypeypWCSummerPalace3);
+         }
+         else
+         {
+            return (cUnitTypeypWCPorcelainTower3);
+         } 
+      }
+      else if (cMyCiv == cCivIndians)
+      {
+         return (cUnitTypeypWITowerOfVictory3);
+      }
+      else if (cMyCiv == cCivJapanese)
+      {
+         return (cUnitTypeypWJGoldenPavillion3);
+      }
+      break;
+   }
+   case cAge3:
+   {
+      if (cMyCiv == cCivChinese)
+      {
+         if (aiRandInt(2) == 0)
+         {
+            return (cUnitTypeypWCConfucianAcademy4);
+         }
+         else
+         {
+            return (cUnitTypeypWCTempleOfHeaven4);
+         } 
+      }
+      else if (cMyCiv == cCivIndians)
+      {
+         if (aiRandInt(2) == 0)
+         {
+            return (cUnitTypeypWIKarniMata4);
+         }
+         else
+         {
+            return (cUnitTypeypWITajMahal4);
+         }
+      }
+      else if (cMyCiv == cCivJapanese)
+      {
+         return (cUnitTypeypWJShogunate4);
+      }
+      break;
+   }
+   case cAge4:
+   {
+      if (cMyCiv == cCivChinese)
+      {
+         if (kbTechGetStatus(cTechYPWonderChineseConfucianAcademy5) == cTechStatusObtainable)
+         {
+            return (cUnitTypeypWCConfucianAcademy5);
+         }
+         else
+         {
+            return (cUnitTypeypWCTempleOfHeaven5);
+         } 
+      }
+      else if (cMyCiv == cCivIndians)
+      {
+         if (aiRandInt(2) == 0)
+         {
+            if (kbTechGetStatus(cTechYPWonderIndianTajMahal5) == cTechStatusObtainable)
+            {
+               return (cUnitTypeypWITajMahal5);
+            }
+            else
+            {
+               return (cUnitTypeypWITowerOfVictory5);
+            }
+         }
+         else
+         {
+            if (kbTechGetStatus(cTechYPWonderIndianKarniMata5) == cTechStatusObtainable)
+            {
+               return (cUnitTypeypWIKarniMata5);
+            }
+            else
+            {
+               return (cUnitTypeypWICharminarGate5);
+            }
+         }
+      }
+      else if (cMyCiv == cCivJapanese)
+      {
+         if (aiRandInt(2) == 0)
+         {
+            return (cUnitTypeypWJGiantBuddha5);
+         }
+         else
+         {
+            if (kbTechGetStatus(cTechYPWonderJapaneseToriiGates5) == cTechStatusObtainable)
+            {
+               return (cUnitTypeypWJToriiGates5);
+            }
+            else
+            {
+               return (cUnitTypeypWJToshoguShrine5);
+            }
+         }
+      }
+      break;
+   }
+   }
+
+   return (-1); // This should never hit.
+}
+
+//==============================================================================
+// getUnitCountByLocation
+// Returns the number of matching units within the same area group as the 
+// provided location, and optional radius
+//==============================================================================
+int getUnitCountByAreaGroup(int unitTypeID = -1, int playerRelationOrID = cMyID, int state = cUnitStateAlive,
+                           vector location = cInvalidVector, int radius = -1)
+{
+   static int unitQueryID = -1;
+
+   // If we don't have the query yet, create one.
+   if (unitQueryID < 0)
+   {
+      unitQueryID = kbUnitQueryCreate("miscGetUnitLocationQuery");
+   }
+
+   // Define a query to get all matching units
+   if (unitQueryID != -1)
+   {
+      if (playerRelationOrID > 1000) // Too big for player ID number
+      {
+         kbUnitQuerySetPlayerID(unitQueryID, -1);
+         kbUnitQuerySetPlayerRelation(unitQueryID, playerRelationOrID);
+      }
+      else
+      {
+         kbUnitQuerySetPlayerRelation(unitQueryID, -1);
+         kbUnitQuerySetPlayerID(unitQueryID, playerRelationOrID);
+      }
+      kbUnitQuerySetUnitType(unitQueryID, unitTypeID);
+      kbUnitQuerySetState(unitQueryID, state);
+      kbUnitQuerySetPosition(unitQueryID, location);
+	  kbUnitQuerySetAreaGroupID(unitQueryID, kbAreaGroupGetIDByPosition(location));  // The only change from get unit count by location
+      if (radius > 0)
+	  {
+	  	kbUnitQuerySetMaximumDistance(unitQueryID, radius);
+	  }
+      kbUnitQuerySetIgnoreKnockedOutUnits(unitQueryID, true);
+   }
+   else
+   {
+      return (-1);
+   }
+
+   kbUnitQueryResetResults(unitQueryID);
+   return (kbUnitQueryExecute(unitQueryID));
+}
+
+//==============================================================================
+/* moveArchipelagoBase
+
+	This is another building style for Archipelago. It simply moves the main 
+	base vector to wherever the most villagers are, and if the island it is on
+	runs out of space.
+   
+*/
+//==============================================================================
+
+rule moveArchipelagoBase
+inactive
+minInterval 20
+{
+	int currentBase = kbBaseGetMainID(cMyID);
+	vector currentBaseLoc = kbBaseGetLocation(cMyID, currentBase);
+	int newBase = -1;
+	vector newBaseLoc = cInvalidVector;
+	int bestBaseAreaGroup = -1;
+	int mostVilNumber = 0;
+	int newVilNumber = 0;
+	bool moveBase = false;
+
+	// Check if the current main base island is filling up
+	int currentBaseAreaGroupID = kbAreaGroupGetIDByPosition(currentBaseLoc);
+	int currentNumBuildings = getUnitCountByAreaGroup(cUnitTypeBuilding, cPlayerRelationAny, cUnitStateAlive, currentBaseLoc);
+	int numberAreas = kbAreaGroupGetNumberAreas(currentBaseAreaGroupID);
+	float buildingsPerArea = 3;
+
+	if (currentNumBuildings > numberAreas * buildingsPerArea)
+	{
+		moveBase = true;
+	}
+
+	// Check if there are no villagers on our current base island
+	if (getUnitCountByAreaGroup(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, currentBaseLoc) <= 0)
+	{
+		moveBase = true;
+	}
+
+	// Check if we haven't moved yet by age 3
+	/*if (distance(kbGetPlayerStartingPosition(cMyID), currentBaseLoc) < 20 && kbGetAge() >= cAge3)
+	{
+		moveBase = true;
+	}*/
+
+	if (moveBase == false)
+	{
+		return;
+	}
+
+	// Find out where most villagers are
+   	int areaCount = kbAreaGetNumber();
+	int areaGroup = -1;
+	int myAreaGroup = kbAreaGroupGetIDByPosition(currentBaseLoc);
+   	for (area = 0; < areaCount)
+   	{
+    	if (kbAreaGetType(area) == cAreaTypeWater)
+      	{
+         	continue;
+      	}
+
+      	areaGroup = kbAreaGroupGetIDByPosition(kbAreaGetCenter(area));
+	  	// Skip starting areas
+      	if (kbAreaGroupGetNumberAreas(areaGroup) - kbAreaGroupGetNumberAreas(myAreaGroup) <= 2)
+      	{
+         	continue;
+      	}
+
+		newBaseLoc = kbAreaGetCenter(area);
+		newVilNumber = getUnitCountByAreaGroup(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, newBaseLoc);
+		if (newVilNumber > mostVilNumber)
+		{
+			bestBaseAreaGroup = areaGroup;
+			mostVilNumber = newVilNumber;
+		}
+	}
+
+	// Convert the area group into a good landing spot
+	newBaseLoc = kbAreaGroupGetCenter(bestBaseAreaGroup);
+	newBaseLoc = getDropoffPoint(currentBaseLoc, newBaseLoc, 5);
+	//aiChat(1, "Most vil number: " + mostVilNumber);
+	// Move the main base there, but only if we found some vills
+	if (mostVilNumber > 0)
+	{
+		kbBaseSetPositionAndDistance(cMyID, currentBase, newBaseLoc, 100.0);
+	}
+	// Still move after 12 mins or if AI is in age 3
+	else if (kbGetAge() >= cAge3 || xsGetTime() > 12 * 60 * 1000)
+	{
+		newBaseLoc = spiralizedBuildingLocation(kbGetPlayerStartingPosition(cMyID), 20);
+		if (newBaseLoc != cInvalidVector)
+		{
+			kbBaseSetPositionAndDistance(cMyID, currentBase, newBaseLoc, 100.0);
+		}
+	}
+	//sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, currentBaseLoc);
+	//sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, newBaseLoc);
 }

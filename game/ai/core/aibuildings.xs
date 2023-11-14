@@ -185,7 +185,7 @@ void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
             {
                continue;
             }
-            if (kbAreaGroupGetIDByPosition(location) == baseAreaGroup)// && gIsArchipelagoMap == false)
+            if (kbAreaGroupGetIDByPosition(location) == baseAreaGroup && gIsArchipelagoMap == false)
             {
                continue;
             }
@@ -1035,12 +1035,15 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
 {
    // AssertiveWall: Switch to archipelago version when desired:
-   if ((gIsArchipelagoMap == true && kbGetAge() >= cAge2) || (gIsArchipelagoMap == true && puid == cUnitTypeAbstractWonder))
+   if ((gIsArchipelagoMap == true && kbGetAge() >= cAge2) || (gIsArchipelagoMap == true && kbProtoUnitIsType(cMyID, puid, cUnitTypeAbstractWonder) == true))
    {
-      selectArchipelagoBuildPlanPosition(planID, puid, baseID);
+      //if (kbProtoUnitIsType(cMyID, puid, cUnitTypeAbstractWonder) == true)
+      //   aiChat(1, "Trying to build wonder");
+      bool result = selectArchipelagoBuildPlanPosition(planID, puid, baseID);
+      return result;
    }
 
-   bool result = true;
+   result = true;
 
    // Position.
    switch (puid)
@@ -1379,6 +1382,22 @@ bool addBuilderToPlan(int planID = -1, int puid = -1, int numberBuilders = 1)
          numberBuilders = round(kbProtoUnitGetBuildPoints(puid) / 30.0);
          aiPlanAddUnitType(planID, builderType, 1, numberBuilders, numberBuilders);
       }
+
+      // Add a same-island builder
+      // AssertiveWall: Try to grab a unit on the same island if archipelago map
+      /*if (gIsArchipelagoMap == true && builderType == gEconUnit)
+      {
+         vector targetLoc = aiPlanGetVariableVector(planID, cBuildPlanCenterPosition, 0); //aiPlanGetLocation(planID)
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, targetLoc);
+         int sameIslandBuilder = getClosestUnitByLocation(builderType, cPlayerRelationSelf, cUnitStateAlive, targetLoc, 150);
+         if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(targetLoc), kbAreaGroupGetIDByPosition(kbUnitGetPosition(sameIslandBuilder))) == true)
+         {
+         aiPlanAddUnitType(planID, builderType, 1, 1, 1);
+         aiPlanAddUnit(planID, sameIslandBuilder);
+         //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, targetLoc);
+         aiChat(1, "Grabbed same island villager");
+         }
+      }*/
    }
 
    return (true);

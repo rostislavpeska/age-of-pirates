@@ -2947,11 +2947,17 @@ void econMaster(int mode = -1, int value = -1)
 rule econMasterRule
 inactive
 minInterval 10
-{
+{  // AssertiveWall: Do some work for archipelago maps
    if (gIsArchipelagoMap == true)
    {
-      xsEnableRule("taskVillagers");
-      xsDisableSelf();
+      if (xsIsRuleEnabled("taskVillagers") == false || xsIsRuleEnabled("crateTasker") == false)
+      {
+         xsEnableRule("taskVillagers");
+         xsEnableRule("crateTasker");
+      }
+      updateResources();
+      updateArchipelagoResourceDistribution();
+      //xsDisableSelf();
       return;
    }
    econMaster();
