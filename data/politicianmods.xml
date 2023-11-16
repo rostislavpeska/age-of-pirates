@@ -67,4 +67,11 @@
   </zpconsulatevenicecornaro>
   <zpconsulatevenicecontarini portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/contarini.png">
   </zpconsulatevenicecontarini>
+
+  <zpconsulateorthodoxgeorgians portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/orthodox_georgians.png">
+  </zpconsulateorthodoxgeorgians>
+  <zpconsulateorthodoxbulgarians portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/orthodox_bulgarians.png">
+  </zpconsulateorthodoxbulgarians>
+  <zpconsulateorthodoxrussians portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/orthodox_russians.png">
+  </zpconsulateorthodoxrussians>
 </politicianmods>

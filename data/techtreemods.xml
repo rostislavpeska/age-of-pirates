@@ -42,7 +42,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -69,7 +68,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -166,6 +164,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPirates</effect>
     </effects>
@@ -202,6 +203,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnJapanese</effect>
     </effects>
@@ -238,6 +242,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnChinese</effect>
     </effects>
@@ -274,6 +281,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnIndian</effect>
     </effects>
@@ -295,6 +305,7 @@
     <flag>YPConsulateTech</flag>
     <flag>YPInfiniteTech</flag>
     <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypConsulateArmyGerman1</target>
@@ -362,6 +373,7 @@
     <flag>YPConsulateTech</flag>
     <flag>YPInfiniteTech</flag>
     <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypConsulateShinobi</target>
@@ -409,6 +421,7 @@
     <flag>YPConsulateTech</flag>
     <flag>YPInfiniteTech</flag>
     <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypConsulateArmyBritish1</target>
@@ -457,6 +470,7 @@
     <flag>CountsTowardEconomicScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypConsulateArmyPortuguese3</target>
@@ -524,6 +538,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>YPUseBigButton3</flag>
     <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypConsulateArmyDutch1</target>
@@ -568,6 +583,7 @@
     <flag>NativeDance</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypConsulateArmyRussian3</target>
@@ -614,6 +630,7 @@
     <flag>NativeDance</flag>
     <flag>YPInfiniteTech</flag>
     <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypConsulateArmySpanish1</target>
@@ -657,6 +674,7 @@
     <flag>CountsTowardEconomicScore</flag>
     <flag>YPUseBigButton2</flag>
     <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypConsulateArmyFrench3</target>
@@ -756,6 +774,7 @@
     <flag>NativeDance</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypConsulateArmyOttoman3</target>
@@ -809,6 +828,7 @@
     <rollovertextid>67127</rollovertextid>
     <flag>YPInfiniteTech</flag>
     <flag>DoNotQueue</flag>
+    <flag>YPNeverLastInLine</flag>
     <flag>YPUseBigHugeButton</flag>
     <flag>DENoTextMessageIfFree</flag>
     <flag>Shadow</flag>
@@ -941,6 +961,7 @@
     <flag>DENoTextMessageIfFree</flag>
     <flag>DoNotQueue</flag>
     <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
     <flag>Shadow</flag>
     <effects>
       <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
@@ -1394,7 +1415,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -2055,7 +2075,7 @@
 		<researchpoints>10.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
-		<rollovertextid>300040</rollovertextid>
+		<rollovertextid>300896</rollovertextid>
 		<flag>YPNativeImprovement</flag>
 		<flag>UpgradeTech</flag>
     <flag>DENativeUnitUpgrade</flag>
@@ -2088,7 +2108,7 @@
 		<researchpoints>10.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
-		<rollovertextid>300040</rollovertextid>
+		<rollovertextid>300896</rollovertextid>
 		<flag>YPNativeImprovement</flag>
 		<flag>UpgradeTech</flag>
     <flag>DENativeUnitUpgrade</flag>
@@ -2224,6 +2244,7 @@
     <flag>DENoTextMessageIfFree</flag>
     <flag>DoNotQueue</flag>
     <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
     <flag>Shadow</flag>
     <effects>
       <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
@@ -2242,7 +2263,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpMalteseCross</effect>
@@ -2294,6 +2314,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMaltese</effect>     
     </effects>
@@ -2337,7 +2360,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpMalteseCross</effect>
@@ -2364,7 +2386,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpMalteseCross</effect>
@@ -2579,7 +2600,7 @@
       </effect>
     </effects>
   </tech>
-   <tech name="NativeTreatyMaltese" type="Normal">
+  <tech name="NativeTreatyMaltese" type="Normal">
     <dbid>40100</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
@@ -2703,6 +2724,7 @@
     <flag>DENoTextMessageIfFree</flag>
     <flag>DoNotQueue</flag>
     <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
     <flag>Shadow</flag>
     <effects>
       <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
@@ -2987,7 +3009,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -3077,6 +3098,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokou</effect>
     </effects>
@@ -3119,7 +3143,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -3501,7 +3524,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -4525,6 +4547,7 @@
       </effect>
     </effects>
   </tech>
+  <!--Legendary Natives names - add all naew natives to the list below-->
   <tech name="ImpLegendaryNativesShadow">
     <effects>
       <effect mergemode="add" type="SetName" proto="zpNatPirate" culture="none" newname="300318">
@@ -4551,8 +4574,27 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300584">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatVeniceGuard" culture="none" newname="300828">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercVeniceGuard" culture="none" newname="300828">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatConquistador" culture="none" newname="61196">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatConquistadorMusketeer" culture="none" newname="300656">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatGatlingCamel" culture="none" newname="300449">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatWarriorMonk" culture="none" newname="300449">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatDvoryanin" culture="none" newname="300449">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMonaspa" culture="none" newname="300449">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatBulgarianBoyar" culture="none" newname="300449">
+      </effect>
     </effects>
   </tech>
+  <!--Native upgrade techs activation-->
   <tech name="AANativeStartingTechsPI">
     <effects>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedPirate</effect>
@@ -4565,6 +4607,14 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedZenClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredZenClone</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardVenetians</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
     </effects>
   </tech>
   <tech name="AAStandardNativeTechsPI">
@@ -4579,6 +4629,14 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedZenClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredZenClone</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardVenetians</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
     </effects>
   </tech>
   <tech name="ypAAAsianStandardTechsPI">
@@ -4593,6 +4651,14 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedZenClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredZenClone</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardVenetians</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothers">
@@ -4607,6 +4673,14 @@
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredWokou</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardVenetians</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothersGerman">
@@ -4621,6 +4695,14 @@
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredWokou</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardVenetians</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialAmericans">
@@ -4635,6 +4717,14 @@
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredWokou</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardVenetians</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
     </effects>
   </tech>
   <tech name="DEChampionNativeWarriorsAfricanShadow">
@@ -4649,6 +4739,14 @@
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredWokou</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardVenetians</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialMexicans">
@@ -4663,6 +4761,14 @@
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredWokou</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardVenetians</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
     </effects>
   </tech>
   <tech name="DEHeavyFixedGun">
@@ -4704,143 +4810,56 @@
   <tech name="deUnknownFastResearch">
     <effects>
       <effect mergeMode='add' type="Data" amount="5.00" subtype="ResearchPoints" relativity="Percent">
-        <target type="techWithFlag">DoNotQueue</target>
+        <target type="techWithFlag">YPNeverLastInLine</target>
       </effect>
     </effects>
   </tech>
   <tech name="NatTradeLanguage">
     <effects>
       <effect mergeMode='add' amount="1.11" subtype="Cost" resource="Gold" relativity="Percent">
-        <target type="techWithFlag">DoNotQueue</target>
+        <target type="techWithFlag">YPNeverLastInLine</target>
       </effect>
     </effects>
   </tech>
   <tech name="ypDecreaseCoinCostsNugget">
     <effects>
       <effect mergeMode='add' amount="1.05" subtype="Cost" resource="Gold" relativity="Percent">
-        <target type="techWithFlag">DoNotQueue</target>
+        <target type="techWithFlag">YPNeverLastInLine</target>
       </effect>
     </effects>
   </tech>
   <tech name="DEHCFedIndianaMobilization">
     <effects>
       <effect mergeMode='add' type="Data" amount="1.11" subtype="ResearchPoints" relativity="Percent">
-        <target type="techWithFlag">DoNotQueue</target>
+        <target type="techWithFlag">YPNeverLastInLine</target>
       </effect>
     </effects>
   </tech>
   <tech name="DESPCSejm">
      <effects>
       <effect mergeMode='add' amount="2.0" subtype="Cost" resource="Gold" relativity="Percent">
-        <target type="techWithFlag">DoNotQueue</target>
+        <target type="techWithFlag">YPNeverLastInLine</target>
       </effect>
       <effect mergeMode='add' type="Data" amount="0.50" subtype="ResearchPoints" relativity="Percent">
-        <target type="techWithFlag">DoNotQueue</target>
+        <target type="techWithFlag">YPNeverLastInLine</target>
       </effect>
     </effects>
   </tech>
   <tech name="DESPCNapoleonicSetup">
     <effects>
       <effect mergeMode='add' type="Data" amount="5.00" subtype="ResearchPoints" relativity="Percent">
-        <target type="techWithFlag">DoNotQueue</target>
+        <target type="techWithFlag">YPNeverLastInLine</target>
       </effect>
     </effects>
   </tech>
-  <tech name="deUnknownFastResearch">
-    <effects>
-      <effect mergeMode='add' type="Data" amount="5.00" subtype="ResearchPoints" relativity="Percent">
-        <target type="techWithFlag">DoNotQueue</target>
-      </effect>
-    </effects>
-  </tech>
+  <!--Confucius Gift-->
   <tech name="YPHCConfusciousGift" type="Normal">
     <effects>
-      <effect mergeMode='add' type="Data" amount="100.00" subtype="ResearchPoints" relativity="Percent">
+      <effect mergeMode='add' type="Data" amount="4000.00" subtype="ResearchPoints" relativity="Percent">
+        <target type="techWithFlag">YPNeverLastInLine</target>
+      </effect>
+      <effect mergeMode='add' type="Data" amount="0.0250" subtype="ResearchPoints" relativity="Percent">
         <target type="techWithFlag">DoNotQueue</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.01" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateBritishClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.01" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateChinaEuropean</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.01" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateDutchClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.01" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateFrenchClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.01" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateGermansClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.01" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateIndiaEuropean</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.01" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateJapaneseClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.01" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateJapaneseEuropean</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.01" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateOttomansClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.01" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulatePortugueseClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.01" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateRussiansClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.01" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateSpanishClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0001" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateMalteseFlorentians</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0001" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateMalteseJerusalem</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0001" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateMalteseVenetians</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0001" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulatePiratesBlackbeard</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0001" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulatePiratesBlackCaesar</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0001" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulatePiratesGrace</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0001" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateWokouMadameChing</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0001" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateWokouSaoFeng</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0001" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateWokouTakanobu</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.01" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateNatJesuit</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.01" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateNatMaya</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.01" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateNatZapotec</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0001" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateJewishAmericans</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0001" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateJewishGermans</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0001" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateJewishRussians</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0001" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateMalteseCentralEuropeans</target>
       </effect>
     </effects>
   </tech>
@@ -5317,7 +5336,6 @@
     <flag>CountsTowardEconomicScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -5374,7 +5392,10 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>  
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
@@ -5390,7 +5411,6 @@
     <flag>CountsTowardEconomicScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpPickNativeConsulateTechAvailable</effect>
@@ -5420,7 +5440,6 @@
     <flag>CountsTowardEconomicScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpPickNativeConsulateTechAvailable</effect>
@@ -5769,6 +5788,7 @@
     <flag>DENoTextMessageIfFree</flag>
     <flag>DoNotQueue</flag>
     <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
     <flag>Shadow</flag>
     <effects>
       <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
@@ -5787,7 +5807,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -5846,6 +5865,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffJewish</effect>
     </effects>
@@ -5970,7 +5992,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -6078,7 +6099,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -6187,7 +6207,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpMalteseCross</effect>
@@ -6295,6 +6314,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMalteseLand</effect>  
     </effects>
@@ -6572,6 +6594,7 @@
     <flag>DENoTextMessageIfFree</flag>
     <flag>DoNotQueue</flag>
     <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
     <flag>Shadow</flag>
     <effects>
       <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
@@ -6614,7 +6637,10 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>  
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientists</effect>
     </effects>
@@ -6630,7 +6656,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -6701,7 +6726,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -6750,209 +6774,25 @@
       <effect type="TechStatus" status="active">zpTechBuffShadow25</effect>
     </effects>
   </tech>
+<!--Tech Budd 50% faster-->
   <tech name="zpTechBuffShadow50" type="Normal">
     <dbid>40231</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
-      <effect type="Data" amount="2.00" subtype="ResearchPoints" relativity="Percent">
-        <target type="techWithFlag">YPConsulateTech</target>
-      </effect>
-      <effect type="Data" amount="2.00" subtype="ResearchPoints" relativity="Percent">
-        <target type="techWithFlag">YPSequesterTech</target>
-      </effect>
-      <effect type="Data" amount="2.00" subtype="ResearchPoints" relativity="Percent">
-        <target type="techWithFlag">HomeCity</target>
-      </effect>
       <effect mergeMode='add' type="Data" amount="2.00" subtype="ResearchPoints" relativity="Percent">
-        <target type="techWithFlag">DoNotQueue</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateBritishClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateChinaEuropean</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateDutchClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateFrenchClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateGermansClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateIndiaEuropean</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateJapaneseClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateJapaneseEuropean</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateOttomansClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulatePortugueseClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateRussiansClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateSpanishClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.005" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateMalteseFlorentians</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.005" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateMalteseJerusalem</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.005" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateMalteseVenetians</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.005" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulatePiratesBlackbeard</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.005" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulatePiratesBlackCaesar</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.005" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulatePiratesGrace</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.005" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateWokouMadameChing</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.005" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateWokouSaoFeng</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.005" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateWokouTakanobu</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateNatJesuit</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateNatMaya</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateNatZapotec</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.005" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateJewishAmericans</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.005" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateJewishGermans</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.005" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateJewishRussians</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.005" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateMalteseCentralEuropeans</target>
+        <target type="techWithFlag">YPNeverLastInLine</target>
       </effect>
     </effects>
   </tech>
+  <!--Tech Budd 25% faster-->
   <tech name="zpTechBuffShadow25" type="Normal">
     <dbid>40232</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
-      <effect type="Data" amount="1.30" subtype="ResearchPoints" relativity="Percent">
-        <target type="techWithFlag">YPConsulateTech</target>
-      </effect>
-      <effect type="Data" amount="1.30" subtype="ResearchPoints" relativity="Percent">
-        <target type="techWithFlag">YPSequesterTech</target>
-      </effect>
-      <effect type="Data" amount="1.30" subtype="ResearchPoints" relativity="Percent">
-        <target type="techWithFlag">HomeCity</target>
-      </effect>
       <effect mergeMode='add' type="Data" amount="1.30" subtype="ResearchPoints" relativity="Percent">
-        <target type="techWithFlag">DoNotQueue</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.75" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateBritishClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.75" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateChinaEuropean</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.75" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateDutchClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.75" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateFrenchClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.75" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateGermansClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.75" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateIndiaEuropean</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.75" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateJapaneseClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.75" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateJapaneseEuropean</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.75" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateOttomansClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.75" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulatePortugueseClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateRussiansClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.75" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpBigConsulateSpanishClone</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0075" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateMalteseFlorentians</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0075" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateMalteseJerusalem</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0075" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateMalteseVenetians</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0075" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulatePiratesBlackbeard</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0075" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulatePiratesBlackCaesar</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0075" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulatePiratesGrace</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0075" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateWokouMadameChing</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0075" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateWokouSaoFeng</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0075" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateWokouTakanobu</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.75" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateNatJesuit</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.75" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateNatMaya</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.75" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateNatZapotec</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0075" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateJewishAmericans</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0075" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateJewishGermans</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0075" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateJewishRussians</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.0075" subtype="ResearchPoints" relativity="Percent">
-        <target type="Tech">zpConsulateMalteseCentralEuropeans</target>
+        <target type="techWithFlag">YPNeverLastInLine</target>
       </effect>
     </effects>
   </tech>
@@ -8155,7 +7995,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -8806,6 +8645,7 @@
     <flag>DENoTextMessageIfFree</flag>
     <flag>DoNotQueue</flag>
     <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
     <flag>Shadow</flag>
     <effects>
       <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
@@ -8851,6 +8691,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffVenice</effect>
     </effects>
@@ -9260,7 +9103,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -9399,7 +9241,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -9433,7 +9274,6 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
-    <flag>DECheckBuildLimit</flag>
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -9835,6 +9675,574 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpNativeOrthodox" type="Normal">
+    <dbid>40341</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatWarriorMonk</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedOrthodox</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredOrthodox</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNatOrthodoxCannons</effect>
+      <effect type="TechStatus" status="obtainable">zpNatOrthodoxIcons</effect>
+      <effect type="TechStatus" status="obtainable">zpNatOrthodoxPatriarchy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatOrthodoxSauna</effect>
+      <effect type="TechStatus" status="obtainable">zpOrthodoxInfluence</effect>
+      <effect type="TechStatus" status="obtainable">zpOrthodoxCitadel</effect>
+      <effect type="TechStatus" status="obtainable">zpOrthodoxKolokol</effect>
+      <effect type="TechStatus" status="obtainable">zpOrthodoxFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyOrthodox</effect>
+      <effect type="TechStatus" status="obtainable">zpIndianFriendshipOrthodox</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyOrthodox</effect>
+      <effect type="TechStatus" status="obtainable">zpOrthodoxRussianJaegers</effect>
+      <effect type="TechStatus" status="obtainable">zpOrthodoxGeorgianCastle</effect>
+      <effect type="TechStatus" status="obtainable">zpOrthodoxSteamer</effect>
+    </effects>
+    <effects>
+      
+    </effects>
+  </tech>
+  <tech name="zpNativeXmassVillage" type="Normal">
+    <dbid>40342</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      
+    </effects>
+  </tech>
+  <tech name="zpNatOrthodoxIcons" type="Normal">
+    <dbid>40343</dbid>
+    <displaynameid>300886</displaynameid>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\orthodox_icons.png</icon>
+    <rollovertextid>300887</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="0.2" subtype="ResourceTrickleRate" resource="Gold" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.2" subtype="ResourceTrickleRate" resource="Food" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatOrthodoxSauna" type="Normal">
+    <dbid>40344</dbid>
+    <displaynameid>300888</displaynameid>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\orthodox_sauna.png</icon>
+    <rollovertextid>300889</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.70" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">Hero</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" amount="1.10" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractInfantry</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatOrthodoxPatriarchy" type="Normal">
+    <dbid>40346</dbid>
+    <displaynameid>300890</displaynameid>
+    <cost resourcetype="Food">300.0000</cost>
+    <cost resourcetype="Wood">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\orthodox_patriarchate.png</icon>
+    <rollovertextid>300891</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="BuildBounty" relativity="BasePercent">
+        <target type="ProtoUnit">Unit</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatOrthodoxCannons" type="Normal">
+    <dbid>40347</dbid>
+    <displaynameid>300892</displaynameid>
+    <cost resourcetype="Gold">600.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\orthodox_cannons.png</icon>
+    <rollovertextid>300893</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.10" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractArtillery</target>
+      </effect>
+    </effects>
+  </tech>
+   <tech name ="zpNatDisciplinedOrthodox" type ="Normal">
+		<dbid>40348</dbid>
+		<displaynameid>300894</displaynameid>
+		<cost resourcetype ="Food">200.0000</cost>
+		<cost resourcetype ="Gold">100.0000</cost>
+		<researchpoints>10.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
+		<rollovertextid>300897</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>UpgradeTech</flag>
+    <flag>DENativeUnitUpgrade</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+		<prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+		<effects>
+			<effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatWarriorMonk</target></effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatWarriorMonk</target></effect>
+			<effect type ="SetName" proto ="zpNatWarriorMonk" culture ="none" newname ="300898"></effect>
+      <effect type="SetName" proto="zpNatWarriorMonk" culture="none" newname="300900" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+		</effects>
+	</tech>
+   <tech name ="zpNatHonoredOrthodox" type ="Normal">
+		<dbid>40349</dbid>
+		<displaynameid>300895</displaynameid>
+		<cost resourcetype ="Food">400.0000</cost>
+		<cost resourcetype ="Gold">300.0000</cost>
+		<researchpoints>10.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
+		<rollovertextid>300897</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>UpgradeTech</flag>
+    <flag>DENativeUnitUpgrade</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+		<prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+			<techstatus status ="active">zpNatDisciplinedOrthodox</techstatus>
+		</prereqs>
+		<effects>
+			<effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatWarriorMonk</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatWarriorMonk</target></effect>
+			<effect type ="SetName" proto ="zpNatWarriorMonk" culture ="none" newname ="300899">
+      </effect>
+      <effect type="SetName" proto="zpNatWarriorMonk" culture="none" newname="300900" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatDvoryanin</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatDvoryanin</target></effect>
+			<effect type ="SetName" proto ="zpNatDvoryanin" culture ="none" newname ="300906">
+      </effect>
+      <effect type="SetName" proto="zpNatDvoryanin" culture="none" newname="300907" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatBulgarianBoyar</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatBulgarianBoyar</target></effect>
+			<effect type ="SetName" proto ="zpNatBulgarianBoyar" culture ="none" newname ="300911">
+      </effect>
+      <effect type="SetName" proto="zpNatBulgarianBoyar" culture="none" newname="300912" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMonaspa</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMonaspa</target></effect>
+			<effect type ="SetName" proto ="zpNatMonaspa" culture ="none" newname ="300916">
+      </effect>
+      <effect type="SetName" proto="zpNatMonaspa" culture="none" newname="300917" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+		</effects>
+	</tech>
+  <tech name ="zpOrthodoxInfluence" type ="Normal">
+		<dbid>40350</dbid>
+		<displaynameid>300901</displaynameid>
+  	<researchpoints>0.2000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\orthodox_big.png</iconwpf>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>300902</rollovertextid>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>YPInfiniteTech</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <flag>DoNotQueue</flag>
+    <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianFishingBoat</effect>
+      <effect type="TechStatus" status="active">zpTheBlackFlagGoldBallanceShadow</effect>
+    </effects>
+	</tech>
+  <tech name ="zpOrthodoxCitadel" type ="Normal">
+		<dbid>40351</dbid>
+		<displaynameid>300922</displaynameid>
+  	<cost resourcetype ="Wood">300.0000</cost>
+		<cost resourcetype ="Gold">600.0000</cost>
+		<researchpoints>20.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\caucassian_castle.png</icon>
+		<rollovertextid>300943</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpMountainCitadelWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatWarriorMonk" page="0" column="1">
+        <target type="ProtoUnit">zpMountainCitadel</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatMonaspa" page="0" column="1">
+        <target type="ProtoUnit">zpMountainCitadel</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatWarriorMonk</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpMountainCitadel" page="1" column="1">
+        <target type="ProtoUnit">zpNatWarriorMonk</target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="zpCitadelCannons" type="Normal">
+    <dbid>40352</dbid>
+    <displaynameid>300924</displaynameid>
+    <cost resourcetype="Wood">800.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <icon>resources\images\icons\techs\fortified_outpost\fortified_outpost.png</icon>
+    <rollovertextid>300929</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpMountainCitadel</target>
+      </effect>
+      <effect type="SetName" proto="zpMountainCitadel" culture="none" newname="300925">
+      </effect>
+      <effect type="Data" action="CannonAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpMountainCitadel</target>
+      </effect>
+      <effect type="Data" action="AntiShipAttack" amount="2.00" subtype="Damage" relativity="BasePercent">
+        <target type="ProtoUnit">zpMountainCitadel</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpMountainCitadel" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateOrthodoxGeorgians" type="Normal">
+    <dbid>40353</dbid>
+    <displaynameid>300930</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\orthodox_small.png</icon>
+    <rollovertextid>300931</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMonaspa</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpOrthodoxInfluence</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpOrthodoxInfluence">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpOrthodoxCitadel" page="2" column="7">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpOrthodoxGeorgianCastle" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateOrthodoxBulgarians" type="Normal">
+    <dbid>40354</dbid>
+    <displaynameid>300932</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\orthodox_small.png</icon>
+    <rollovertextid>300933</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatBulgarianBoyar</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpOrthodoxInfluence</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpOrthodoxInfluence">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpOrthodoxFleet" page="2" column="7">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpOrthodoxSteamer" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateOrthodoxRussians" type="Normal">
+    <dbid>40355</dbid>
+    <displaynameid>300934</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\orthodox_small.png</icon>
+    <rollovertextid>300935</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatDvoryanin</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpOrthodoxInfluence</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpOrthodoxInfluence">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpOrthodoxKolokol" page="2" column="7">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpOrthodoxRussianJaegers" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+<tech name="zpTurnConsulateOffOrthodox" type="Normal">
+    <dbid>40356</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="obtainable">zpConsulateOrthodoxRussians</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodox</effect>
+    </effects>
+  </tech>
+  <tech name ="zpOrthodoxKolokol" type ="Normal">
+		<dbid>40357</dbid>
+		<displaynameid>300936</displaynameid>
+  	<cost resourcetype ="Food">300.0000</cost>
+		<cost resourcetype ="Gold">1500.0000</cost>
+		<researchpoints>20.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\orthodox_kolokol.png</icon>
+		<rollovertextid>300937</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+    <flag>YPCheckPopCap</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpTsarCannon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name ="zpOrthodoxFleet" type ="Normal">
+		<dbid>40358</dbid>
+		<displaynameid>300938</displaynameid>
+  	<cost resourcetype ="Wood">300.0000</cost>
+		<cost resourcetype ="Gold">800.0000</cost>
+		<researchpoints>20.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\black_sea_fleet.png</icon>
+		<rollovertextid>300939</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="xpIronclad" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="zpNativeTreatyOrthodox" type="Normal">
+    <dbid>40359</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatWarriorMonk" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIndianFriendshipOrthodox" type="Normal">
+    <dbid>40360</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatWarriorMonk" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
+      <effect type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTradeTreatyOrthodox" type="Normal">
+    <dbid>40361</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpOrthodoxRussianJaegers" type ="Normal">
+		<dbid>40361</dbid>
+		<displaynameid>300941</displaynameid>
+  	<cost resourcetype ="Food">600.0000</cost>
+		<cost resourcetype ="Gold">600.0000</cost>
+		<researchpoints>20.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\russian\lifeguard_jaegers.png</icon>
+		<rollovertextid>300942</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+    <flag>YPCheckPopCap</flag>
+    <effects>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="deConsulateCounterJaeger" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name ="zpOrthodoxGeorgianCastle" type ="Normal">
+		<dbid>40362</dbid>
+		<displaynameid>300944</displaynameid>
+  	<cost resourcetype ="Wood">450.0000</cost>
+		<cost resourcetype ="Gold">150.0000</cost>
+		<researchpoints>20.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\bastion\bastion.png</icon>
+		<rollovertextid>300923</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMountainCitadel</target>
+      </effect> 
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpMountainCitadelWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name ="zpOrthodoxSteamer" type ="Normal">
+		<dbid>40363</dbid>
+		<displaynameid>300945</displaynameid>
+  	<cost resourcetype ="Wood">200.0000</cost>
+		<cost resourcetype ="Gold">800.0000</cost>
+		<researchpoints>20.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\americans\mississippi_steamers.png</icon>
+		<rollovertextid>300946</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="deSteamer" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+	</tech>
+
+
+
+
   <!--<tech name="zpAge0Pirate" type="Normal">
     <dbid>40341</dbid>
     <status>UNOBTAINABLE</status>

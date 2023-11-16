@@ -365,6 +365,42 @@
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>
+  <civ>
+    <name>zpOrthodox</name>
+    <main>0</main>
+    <subcivtype>1</subcivtype>
+    <portrait>ui\native_allies\tupi</portrait>
+    <culture>Grass</culture>
+    <displaynameid>300865</displaynameid>
+    <rollovernameid>300865</rollovernameid>
+    <alliedid>26446</alliedid>
+    <alliedotherid>26445</alliedotherid>
+    <unalliedid>26444</unalliedid>
+    <agetech>
+      <age>Age0</age>
+      <tech>zpNativeOrthodox</tech>
+    </agetech>
+    <visible>0</visible>
+    <visibleineditor>0</visibleineditor>
+  </civ>
+  <civ>
+    <name>zpXmassVillage</name>
+    <main>0</main>
+    <subcivtype>1</subcivtype>
+    <portrait>ui\native_allies\tupi</portrait>
+    <culture>Grass</culture>
+    <displaynameid>300882</displaynameid>
+    <rollovernameid>300882</rollovernameid>
+    <alliedid>26446</alliedid>
+    <alliedotherid>26445</alliedotherid>
+    <unalliedid>26444</unalliedid>
+    <agetech>
+      <age>Age0</age>
+      <tech>zpNativeXmassVillage</tech>
+    </agetech>
+    <visible>0</visible>
+    <visibleineditor>0</visibleineditor>
+  </civ>
   <!--<civ>
     <name>zpCivPirate</name>
     <main>1</main>

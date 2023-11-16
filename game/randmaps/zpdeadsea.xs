@@ -192,7 +192,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 
 	// Native Constraints
 	int avoidSufi=rmCreateTypeDistanceConstraint("stay away from Sufi", "zpSocketSPCSufi", 40.0);
-	int avoidMaltese=rmCreateTypeDistanceConstraint("stay away from Maltese", "zpSocketMaltese", 40.0);
+	int avoidMaltese=rmCreateTypeDistanceConstraint("stay away from Maltese", "zpSocketMalteseMission", 40.0);
 	int avoidJewish=rmCreateTypeDistanceConstraint("stay away from Jewish", "zpSocketJewish", 40.0);
 	int avoidTownCenterFar=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 40.0);
 	int avoidTownCenter=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 25.0);
@@ -1136,7 +1136,7 @@ rmSetTriggerConditionParam("TechID","cTechzpMalteseCross"); //operator
 rmSetTriggerConditionParamInt("PlayerID",k);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffMalteseLand"); //operator
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffMaltese"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("ZP Pick Consulate Tech");
 rmSetTriggerEffectParamInt("Player",k);

@@ -3785,5 +3785,44 @@
       <command>}</command>
       <command>rule bdkzuzkz155 active { if (true) { //</command>
     </effect>
+    <effect name="ZP Native AutoSetup: Orthodox">
+      <command>}}</command>
+      <command>rule Orthodox_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int OrthodoxFaction=-1;</command>
+      <command>if (OrthodoxFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomOrthodoxFaction", 0, 2);</command>
+      <command>OrthodoxFaction = trQuestVarGet("RandomOrthodoxFaction");</command>
+      <command>}</command>
+      <command>if (OrthodoxFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateOrthodoxGeorgians, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (OrthodoxFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateOrthodoxBulgarians, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (OrthodoxFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateOrthodoxRussians, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpOrthodoxInfluence)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffOrthodox, cTechStatusActive); </command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hdkzuzkz29456 active { if (true) { //</command>
+    </effect>
   </effects>
 </trigger>

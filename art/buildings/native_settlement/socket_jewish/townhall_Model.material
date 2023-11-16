@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\socket_jewish\textures\midpalace1_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\socket_jewish\textures\midpalace1_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\socket_jewish\textures\midpalace1_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\socket_jewish\textures\midpalace2_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\socket_jewish\textures\midpalace2_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\socket_jewish\textures\midpalace2_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

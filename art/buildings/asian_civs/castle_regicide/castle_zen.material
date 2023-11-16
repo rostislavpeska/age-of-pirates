@@ -15,11 +15,13 @@
     <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="homecity\china\fencewalls01\textures\fencewalls01_matB_BaseColor">
+      <texture name="BaseColor" override="buildings\asian_civs\castle_regicide\textures\zencastle_wall_BaseColor">
       </texture>
       <texture name="Normals" override="homecity\china\fencewalls01\textures\fencewalls01_matB_Normals">
       </texture>
       <texture name="Masks" override="homecity\china\fencewalls01\textures\fencewalls01_matB_Masks">
+      </texture>
+      <texture name="Details" override="buildings\asian_civs\castle_regicide\textures\zencastle_wall_Details">
       </texture>
     </parameters>
   </submaterial>

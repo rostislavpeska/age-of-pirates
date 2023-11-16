@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\socket_jewish\textures\africanworkshop_cm_baseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\socket_jewish\textures\africanworkshop_cm_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\socket_jewish\textures\africanworkshop_cm_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

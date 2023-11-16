@@ -1,0 +1,40 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\house\west\age_3\textures\west_house_SPCb_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\house\west\age_3\west_house_age3b\textures\west_house_age3b_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\house\west\age_3\west_house_age3b\textures\west_house_age3b_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings\house\west\age_3\west_house_age3b\textures\west_house_age3b_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\town_center\west\age_3\textures\veg_fern_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\town_center\west\age_3\textures\veg_fern_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\town_center\west\age_3\textures\veg_fern_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

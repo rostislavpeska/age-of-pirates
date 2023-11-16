@@ -1,0 +1,42 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\orthodox\textures\orthodox_church_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\orthodox\textures\orthodox_church_matA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\orthodox\textures\orthodox_church_matA_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\native_settlement\orthodox\textures\orthodox_church_v1_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\orthodox\textures\orthodox_church_matA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\church\russain_church_age3\textures\russain_church_age3_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\blockhouse\blockhouse_age2\textures\blockhouse_age2_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\blockhouse\blockhouse_age2\textures\blockhouse_age2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\blockhouse\blockhouse_age2\textures\blockhouse_age2_mata_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\blockhouse\blockhouse_age2\textures\blockhouse_age2_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\blockhouse\blockhouse_age2\textures\blockhouse_age2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\blockhouse\blockhouse_age2\textures\blockhouse_age2_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

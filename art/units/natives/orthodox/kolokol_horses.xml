@@ -1,0 +1,33 @@
+<animfile>
+  <definebone>bone_launchpoint</definebone>
+  <definebone>bone_fuse</definebone>
+  <definebone>bone_cart</definebone>
+  <component>
+    great_bombard<linksection><linkoffset>.1</linkoffset><linkcomponent>horse</linkcomponent><linkcomponent>horse01</linkcomponent><linkcomponent>gunner_b</linkcomponent><linkconstraint>0</linkconstraint></linksection>
+    <linksection><linkoffset>-1.6</linkoffset><linkcomponent>culverin</linkcomponent><linkcomponent>gunner_a</linkcomponent><linkconstraint>1</linkconstraint></linksection>
+       <assetreference type="GrannyModel"><file>units\artillery\great_bombard\great_bombard_horses</file><materialvariant index="1"></materialvariant></assetreference>
+    <decal><effecttype>default</effecttype><texture>shadows_selections\shadow_circle_128x128</texture><selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture><width>2.00</width><height>2.00</height></decal>
+    <watersplash><texture>units\artillery\cannon\wheel_B</texture><width>1.75</width><height>2.00</height></watersplash>
+  </component>
+  <anim>Walk<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_walk</file><tag type="FootstepLeft" footprinttype="Wheel">0.20</tag><tag type="FootstepRight" footprinttype="Wheel">0.50</tag></assetreference><component>great_bombard</component></anim>
+  <anim>Jog<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_walk</file><tag type="FootstepLeft" footprinttype="Wheel">0.30</tag><tag type="FootstepRight" footprinttype="Wheel">0.80</tag></assetreference><component>great_bombard</component></anim>
+  <anim>Run<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_walk</file><tag type="FootstepLeft" footprinttype="Wheel">0.30</tag><tag type="FootstepRight" footprinttype="Wheel">0.80</tag></assetreference><component>great_bombard</component></anim>
+  <anim>idle<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_idle</file></assetreference><component>great_bombard</component></anim>
+  <anim>bored<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_idle</file></assetreference><component>great_bombard</component></anim>
+  <anim>Death_by_melee<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_death</file></assetreference><component>great_bombard</component></anim>
+  <anim>Death_by_range<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_death</file></assetreference><component>great_bombard</component></anim>
+  <anim>Cheer<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_combatidle</file></assetreference><component>great_bombard</component></anim>
+  <anim>Recoil<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_combatidle</file></assetreference><component>great_bombard</component></anim>
+  <anim>Limber<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_limber</file></assetreference><component>great_bombard</component></anim>
+  <anim>Unlimber<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_unlimber</file></assetreference><component>great_bombard</component></anim>
+  <anim>Bombard_ranged_idle<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_combatidle</file></assetreference><component>great_bombard</component></anim>
+  <anim>Bombard_ranged_attack<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_rangedAttack</file><tag type="Attack">0.50</tag><tag type="SpecificSoundSet" checkvisible="1" set="CulverinShoot">0.40</tag><tag type="Particles" particlename="GreatBombardMuzzleFX">0.50</tag></assetreference><component>great_bombard</component></anim>
+  <anim>Bombard_aim<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_combatidle</file></assetreference><component>great_bombard</component></anim>
+  <anim>Bombard_reload<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_reload</file></assetreference><component>great_bombard</component></anim>
+  <anim>Bombard_bored<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_combatidle</file></assetreference><component>great_bombard</component></anim>
+  <anim>Bombard_walk<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_walk</file></assetreference><component>great_bombard</component></anim>
+  <anim>Bombard_jog<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_walk</file></assetreference><component>great_bombard</component></anim>
+  <anim>Bombard_run<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_walk</file></assetreference><component>great_bombard</component></anim>
+  <anim>Bombard_limber<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_limber</file></assetreference><component>great_bombard</component></anim>
+  <anim>Bombard_unlimber<assetreference type="GrannyAnim"><file>units\artillery\great_bombard\great_bombard_horses_unlimber</file></assetreference><component>great_bombard</component></anim>
+</animfile>

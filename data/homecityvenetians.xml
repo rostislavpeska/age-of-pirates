@@ -49,7 +49,8 @@
       <maxcount>1</maxcount>
       <level>0</level>
       <prereqtech>-1</prereqtech>
-      <displayunitcount></displayunitcount>
+      <displayunitcount>
+      </displayunitcount>
       <age>2</age>
       <fakecard>
       </fakecard>
@@ -59,7 +60,8 @@
       <maxcount>1</maxcount>
       <level>0</level>
       <prereqtech>-1</prereqtech>
-      <displayunitcount></displayunitcount>
+      <displayunitcount>
+      </displayunitcount>
       <age>2</age>
       <fakecard>
       </fakecard>
@@ -69,7 +71,8 @@
       <maxcount>1</maxcount>
       <level>0</level>
       <prereqtech>-1</prereqtech>
-      <displayunitcount></displayunitcount>
+      <displayunitcount>
+      </displayunitcount>
       <age>2</age>
       <fakecard>
       </fakecard>
@@ -79,7 +82,8 @@
       <maxcount>1</maxcount>
       <level>0</level>
       <prereqtech>-1</prereqtech>
-      <displayunitcount></displayunitcount>
+      <displayunitcount>
+      </displayunitcount>
       <age>2</age>
       <fakecard>
       </fakecard>
@@ -89,7 +93,8 @@
       <maxcount>1</maxcount>
       <level>0</level>
       <prereqtech>-1</prereqtech>
-      <displayunitcount></displayunitcount>
+      <displayunitcount>
+      </displayunitcount>
       <age>2</age>
       <fakecard>
       </fakecard>
@@ -99,7 +104,8 @@
       <maxcount>1</maxcount>
       <level>0</level>
       <prereqtech>-1</prereqtech>
-      <displayunitcount></displayunitcount>
+      <displayunitcount>
+      </displayunitcount>
       <age>2</age>
       <fakecard>
       </fakecard>
@@ -196,10 +202,8 @@
     <displaynamestringid>122296</displaynamestringid>
     <rolloverstringid>29002</rolloverstringid>
     <obtainabletechs>
-      
     </obtainabletechs>
     <activetechs>
-      
     </activetechs>
     <validunits>
     </validunits>
@@ -222,10 +226,8 @@
     <displaynamestringid>122295</displaynamestringid>
     <rolloverstringid>25538</rolloverstringid>
     <obtainabletechs>
-      
     </obtainabletechs>
     <activetechs>
-      
     </activetechs>
     <validunits>
     </validunits>
@@ -248,10 +250,8 @@
     <displaynamestringid>122299</displaynamestringid>
     <rolloverstringid>25535</rolloverstringid>
     <obtainabletechs>
-      
     </obtainabletechs>
     <activetechs>
-      
     </activetechs>
     <validunits>
     </validunits>
@@ -272,10 +272,8 @@
     <displaynamestringid>35745</displaynamestringid>
     <rolloverstringid>35746</rolloverstringid>
     <obtainabletechs>
-      
     </obtainabletechs>
     <activetechs>
-      
     </activetechs>
     <validunits>
     </validunits>
