@@ -1,0 +1,10 @@
+<animfile>
+  <definebone>bone_master</definebone>
+  <definebone>christmas__death</definebone>
+  <attachment>candleFX<component>candleflame<assetreference type="PopcornFx"><file>fire\candle_fire.pkfx</file></assetreference></component><anim>None<component>candleflame</component></anim></attachment>
+  <component>tree<assetreference type="GrannyModel"><file>terrain\trees\tree_christmas</file></assetreference><decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_circle_64x64</selectedtexture><width>4.00</width><height>4.00</height></decal></component>
+  <component>death<assetreference type="GrannyModel" damagetemplate="terrain\trees\Damage\tree_christmas.dmg"><file>terrain\trees\tree_christmas_death</file></assetreference><decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_circle_64x64</selectedtexture><width>4.00</width><height>4.00</height></decal></component>
+  <anim>Idle<component>tree</component><attach a="candleFX" frombone="bone_master" tobone="bone_master" syncanims="0"></attach></anim>
+  <anim>Death<component>death</component></anim>
+  <anim>recoil<assetreference type="GrannyAnim"><file>terrain\trees\tree_recoil</file></assetreference><component>tree</component><attach a="candleFX" frombone="bone_master" tobone="bone_master" syncanims="0"></attach></anim>
+</animfile>

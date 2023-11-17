@@ -1,0 +1,306 @@
+<animfile>
+  <definebone>bone_flag_civ</definebone>
+  <definebone>bone_chimney_smoke_A</definebone>
+  <definebone>bone_chimney_smoke_A2</definebone>
+  <definebone>bone_chimney_smoke_B</definebone>
+  <definebone>bone_debris_1A</definebone>
+  <definebone>bone_debris_1B</definebone>
+  <definebone>bone_debris_1C</definebone>
+  <definebone>bone_debris_1D</definebone>
+  <definebone>bone_debris_1E</definebone>
+  <definebone>bone_debris_1F</definebone>
+  <definebone>bone_debris_1G</definebone>
+  <definebone>bone_debris_1H</definebone>
+  <definebone>bone_debris_1i</definebone>
+  <definebone>bone_debris_1j</definebone>
+  <definebone>bone_debris_1k</definebone>
+  <definebone>bone_debris_1l</definebone>
+  <definebone>bone_debris_1m</definebone>
+  <definebone>bone_debris_1n</definebone>
+  <definebone>bone_debris_2A</definebone>
+  <definebone>bone_debris_2B</definebone>
+  <definebone>bone_debris_2C</definebone>
+  <definebone>bone_debris_2D</definebone>
+  <definebone>bone_debris_2E</definebone>
+  <definebone>bone_debris_2F</definebone>
+  <definebone>bone_debris_2G</definebone>
+  <definebone>bone_debris_2H</definebone>
+  <definebone>bone_debris_2I</definebone>
+  <definebone>bone_debris_2J</definebone>
+  <definebone>bone_debris_2K</definebone>
+  <definebone>bone_debris_2L</definebone>
+  <definebone>bone_debris_3A</definebone>
+  <definebone>bone_debris_3B</definebone>
+  <definebone>bone_debris_3C</definebone>
+  <definebone>bone_debris_3D</definebone>
+  <definebone>bone_debris_3E</definebone>
+  <definebone>bone_debris_3f</definebone>
+  <definebone>bone_debris_3g</definebone>
+  <definebone>bone_debris_3h</definebone>
+  <definebone>bone_debris_3i</definebone>
+  <definebone>bone_debris_3j</definebone>
+  <definebone>bone_debris_3k</definebone>
+  <definebone>bone_debris_3l</definebone>
+  <definebone>bone_debris_4A</definebone>
+  <definebone>bone_debris_4B</definebone>
+  <definebone>bone_debris_4C</definebone>
+  <definebone>bone_debris_4D</definebone>
+  <definebone>bone_debris_4E</definebone>
+  <definebone>bone_debris_4F</definebone>
+  <definebone>bone_debris_4g</definebone>
+  <definebone>bone_debris_4h</definebone>
+  <definebone>bone_debris_4i</definebone>
+  <definebone>bone_debris_4j</definebone>
+  <definebone>bone_debris_5A</definebone>
+  <definebone>bone_debris_5B</definebone>
+  <definebone>bone_debris_5C</definebone>
+  <definebone>bone_debris_5D</definebone>
+  <definebone>bone_debris_5E</definebone>
+  <definebone>bone_debris_5F</definebone>
+  <definebone>bone_debris_5G</definebone>
+  <definebone>bone_debris_5H</definebone>
+  <definebone>bone_debris_5I</definebone>
+  <definebone>bone_debris_5J</definebone>
+  <definebone>bone_debris_5K</definebone>
+  <definebone>bone_debris_6A</definebone>
+  <definebone>bone_debris_6B</definebone>
+  <definebone>bone_debris_6C</definebone>
+  <definebone>bone_debris_6D</definebone>
+  <definebone>bone_debris_6E</definebone>
+  <definebone>bone_debris_6F</definebone>
+  <definebone>bone_debris_6G</definebone>
+  <definebone>bone_debris_6H</definebone>
+  <definebone>bone_debris_6I</definebone>
+  <definebone>bone_debris_6J</definebone>
+  <definebone>bone_debris_6K</definebone>
+  <definebone>bone_object11</definebone>
+  <definebone>bone_object04</definebone>
+  <definebone>bone_object19</definebone>
+  <submodel>sub_construction_stage_02
+    <component>construction_stage_02
+      <assetreference type="GrannyModel">
+        <file>buildings\constructions\4x4_stage2</file>
+      </assetreference>
+      <decal>
+        <effecttype>bump</effecttype>
+        <texture>buildings\constructions\2x2_construction_decal</texture>
+        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+        <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+        <width>10.00</width>
+        <height>10.00</height>
+      </decal>
+    </component>
+    <anim>Idle
+      <component>construction_stage_02</component>
+    </anim>
+  </submodel>
+  <submodel>sub_construction_stage_01
+    <component>construction_stage_01
+      <assetreference type="GrannyModel">
+        <file>buildings\constructions\4x4_stage1</file>
+      </assetreference>
+      <decal>
+        <effecttype>bump</effecttype>
+        <texture>buildings\constructions\2x2_construction_decal</texture>
+        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+        <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+        <width>10.00</width>
+        <height>10.00</height>
+      </decal>
+    </component>
+    <anim>Idle
+      <component>construction_stage_01</component>
+    </anim>
+  </submodel>
+  <submodel>east_age2
+    <attachment>collapse_smoke
+      <component>collapse_smoke
+        <assetreference type="popcornFx">
+          <file>smoke\collapse_smoke_4x4.pkfx</file>
+        </assetreference>
+      </component>
+      <anim>Idle
+        <component>collapse_smoke</component>
+      </anim>
+    </attachment>
+    <attachment>chimney smokeA
+      <component>Smoke
+        <logic type="Destruction">
+          <p0>
+            <assetreference type="ParticleSystem"></assetreference>
+          </p0>
+          <p99>
+            <assetreference type="ParticleSystem">
+              <file>effects\smoke\white_smoke_b.particle</file>
+            </assetreference>
+          </p99>
+        </logic>
+      </component>
+      <anim>Idle
+        <component>Smoke</component>
+      </anim>
+    </attachment>
+    <attachment>base smoke
+      <component>smoke base
+        <assetreference type="ParticleSystem">
+          <file>effects\smoke\collapsesmoke01.particle</file>
+        </assetreference>
+      </component>
+      <anim>Idle
+        <component>smoke base</component>
+      </anim>
+    </attachment>
+    <attachment>base smoke2
+      <component>smoke wave
+        <assetreference type="ParticleSystem">
+          <file>effects\smoke\collapse_smoke_wave.particle</file>
+        </assetreference>
+      </component>
+      <anim>Idle
+        <component>smoke wave</component>
+      </anim>
+    </attachment>
+    <attachment>base smoke3
+      <component>smoke wave center
+        <assetreference type="ParticleSystem">
+          <file>effects\smoke\collapse_smoke_wave02.particle</file>
+        </assetreference>
+      </component>
+      <anim>Idle
+        <component>smoke wave center</component>
+      </anim>
+    </attachment>
+    <attachment>chimney smokeA2
+      <component>Smoke
+        <logic type="Destruction">
+          <p0>
+            <assetreference type="ParticleSystem"></assetreference>
+          </p0>
+          <p99>
+            <assetreference type="ParticleSystem">
+              <file>effects\smoke\white_smoke_b.particle</file>
+            </assetreference>
+          </p99>
+        </logic>
+      </component>
+      <anim>Idle
+        <component>Smoke</component>
+      </anim>
+    </attachment>
+    <component>east_age2
+      <logic type="LowPoly">
+        <normal>
+          <logic type="Destruction">
+            <p1>
+              <assetreference type="GrannyModel">
+                <file>units\christmas_units\workshops\east\age_2\east_arsenal_age2_damaged</file>
+              </assetreference>
+            </p1>
+            <p99>
+              <assetreference type="GrannyModel" shape="east_arsenal_age2">
+                <file>units\christmas_units\workshops\east\age_2\east_arsenal_age2</file>
+              </assetreference>
+            </p99>
+          </logic>
+        </normal>
+        <lowpoly>
+          <assetreference type="GrannyModel" shape="east_arsenal_age2">
+            <file>units\christmas_units\workshops\east\age_2\lp_east_arsenal_age2</file>
+          </assetreference>
+        </lowpoly>
+      </logic>
+      <decal>
+        <effecttype>bump</effecttype>
+        <texture>buildings\arsenal\WEST\AGE_3\West Arsenal Ground</texture>
+        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+        <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+        <width>10.00</width>
+        <height>10.00</height>
+        <xoffset>1.00</xoffset>
+      </decal>
+      <attach a="chimney smokeA" frombone="ATTACHPOINT" tobone="bone_chimney_smoke_A" syncanims="0"></attach>
+      <attach a="chimney smokeA2" frombone="ATTACHPOINT" tobone="bone_chimney_smoke_A2" syncanims="0"></attach>
+    </component>
+    <component>east_age2_death
+      <logic type="LowPoly">
+        <normal>
+          <assetreference type="GrannyModel">
+            <file>units\christmas_units\workshops\east\age_2\east_arsenal_age2_damaged</file>
+          </assetreference>
+        </normal>
+        <lowpoly>
+          <assetreference type="GrannyModel">
+            <file>units\christmas_units\workshops\east\age_2\lp_east_arsenal_age2</file>
+          </assetreference>
+        </lowpoly>
+      </logic>
+      <decal>
+        <effecttype>bump</effecttype>
+        <texture>buildings\arsenal\WEST\AGE_3\West Arsenal Ground</texture>
+        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+        <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+        <width>10.00</width>
+        <height>10.00</height>
+        <xoffset>1.00</xoffset>
+      </decal>
+    </component>
+    <anim>Idle
+      <component>east_age2</component>
+      <simskeleton>
+        <model>units\christmas_units\workshops\east\age_2\east_arsenal_age2_damaged</model>
+      </simskeleton>
+      <attach a="chimney smokeA" frombone="bone_chimney_smoke_A" tobone="bone_chimney_smoke_A" syncanims="0"></attach>
+      <attach a="chimney smokeA2" frombone="bone_chimney_smoke_A2" tobone="bone_chimney_smoke_A2" syncanims="0"></attach>
+    </anim>
+    <anim>Death
+      <component>east_age2_death</component>
+      <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </anim>
+  </submodel>
+  <submodel>east_age2_con2
+    <attachment>con
+      <component>scaffolding
+        <assetreference type="GrannyModel">
+          <file>units\christmas_units\workshops\east\age_2\east_arsenal_age2_con</file>
+        </assetreference>
+      </component>
+      <anim>Idle
+        <component>scaffolding</component>
+      </anim>
+    </attachment>
+    <component>east_age2
+      <assetreference type="GrannyModel">
+        <file>buildings\constructions\4x4_stage3</file>
+      </assetreference>
+      <decal>
+        <effecttype>bump</effecttype>
+        <texture>buildings\arsenal\WEST\AGE_3\West Arsenal Ground</texture>
+        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+        <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+        <width>10.00</width>
+        <height>10.00</height>
+        <xoffset>1.00</xoffset>
+      </decal>
+      <attach a="con" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </component>
+    <anim>Idle
+      <component>east_age2</component>
+    </anim>
+  </submodel>
+  <component>arsenalmodel
+    <logic type="BuildingCompletion">
+      <p0>
+        <submodelref ref="sub_construction_stage_01"></submodelref>
+      </p0>
+      <p33>
+        <submodelref ref="sub_construction_stage_02"></submodelref>
+      </p33>
+      <p66>
+        <submodelref ref="east_age2_con2"></submodelref>
+      </p66>
+      <p100>
+        <submodelref ref="east_age2"></submodelref>
+      </p100>
+    </logic>
+  </component>
+</animfile>

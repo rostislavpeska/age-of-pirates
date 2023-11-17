@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<Mods>
+	<ProtoMods version='1'>
+		<Unit name='GiftCoin'>
+			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
+			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
+			<AnimFile>buildings\props_colony\gifts\gift_gold.xml</AnimFile>
+			<Icon>resources\art\buildings\props_colony\gifts\gift_gold.png</Icon>
+			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_gold.png</PortraitIcon>
+		</Unit>
+		<Unit name='GiftFood'>
+			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
+			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
+			<AnimFile>buildings\props_colony\gifts\gift_food.xml</AnimFile>
+			<Icon>resources\art\buildings\props_colony\gifts\gift_food.png</Icon>
+			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_food.png</PortraitIcon>
+		</Unit>
+		<Unit name='GiftWood'>
+			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
+			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
+			<AnimFile>buildings\props_colony\gifts\gift_wood.xml</AnimFile>
+			<Icon>resources\art\buildings\props_colony\gifts\gift_wood.png</Icon>
+			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_wood.png</PortraitIcon>
+		</Unit>
+		<Unit name='Reindeer'>
+			<AnimFile>units\animals\reindeer\reindeer.xml</AnimFile>
+			<Icon>resources\art\units\animals\reindeer\reindeer_portrait.png</Icon>
+			<PortraitIcon>resources\art\units\animals\reindeer\reindeer_portrait.png</PortraitIcon>
+		</Unit>
+		<Unit name='TreeChristmas'>
+			<AnimFile>terrain\tree_christmas.xml</AnimFile>
+			<Icon>resources\art\terrain\trees\christmas_tree_icon_64.png</Icon>
+			<PortraitIcon>resources\art\terrain\trees\christmas_tree_icon_portrait.png</PortraitIcon>
+		</Unit>
+	</ProtoMods>
+</Mods>

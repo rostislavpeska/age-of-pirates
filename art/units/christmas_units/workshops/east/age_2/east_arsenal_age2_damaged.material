@@ -1,0 +1,74 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_emissive_advanced">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\christmas_units\workshops\east\age_2\textures\east_arsenal_age2_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\arsenal\east\age_2\textures\east_arsenal_age2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\arsenal\east\age_2\textures\east_arsenal_age2_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings\arsenal\east\age_2\textures\east_arsenal_age2_mata_Details">
+      </texture>
+      <texture name="Emissive" override="units\christmas_units\workshops\east\age_2\textures\east_arsenal_age2_mata_Emitter">
+      </texture>
+      <float name="EmissiveIntensity" override="2.4000">
+      </float>
+      <vector4 name="EmissiveColor" override="1.000, 1.000, 1.000, 0.000">
+      </vector4>
+      <float name="Lift Metallic" override="1.0000">
+      </float>
+      <float name="AO Intensity" override="3.4440">
+      </float>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\military_props\textures\military_props_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\military_props\textures\military_props_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\military_props\textures\military_props_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="maty">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

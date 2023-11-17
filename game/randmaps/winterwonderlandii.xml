@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "28829" displayNameID = "28828" loadDetails="35948" largeMapName = "rockiesLarge"
+    imagepath = "ui\random_map\rockies\rockies_mini" cannotReplace = "" loadBackground="ui\random_map\rockies\rockies_map">
+   <loadss>ui\random_map\rockies\rockies_ss_01</loadss>
+   <loadss>ui\random_map\rockies\rockies_ss_02</loadss>
+   <loadss>ui\random_map\rockies\rockies_ss_03</loadss>
+</mapinfo>

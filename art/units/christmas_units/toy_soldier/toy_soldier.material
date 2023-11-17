@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_emissive_advanced">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\christmas_units\toy_soldier\textures\toy_soldier_BaseColorRedWhite">
+      </texture>
+      <texture name="Normals" override="units\infantry_ranged\british_rifleman\textures\british_rifleman_rank02_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\infantry_ranged\british_rifleman\textures\british_rifleman_rank02_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\christmas_units\toy_soldier\textures\toy_soldier_Details">
+      </texture>
+      <texture name="Emissive" override="units\christmas_units\toy_soldier\textures\toy_soldier_emitter">
+      </texture>
+      <float name="EmissiveIntensity" override="2.4000">
+      </float>
+      <vector4 name="EmissiveColor" override="1.000, 1.000, 1.000, 0.000">
+      </vector4>
+      <float name="Lift Metallic" override="1.0000">
+      </float>
+      <float name="AO Intensity" override="3.4440">
+      </float>
+    </parameters>
+  </submaterial>
+</material>
