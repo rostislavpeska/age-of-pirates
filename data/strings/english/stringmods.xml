@@ -947,14 +947,52 @@
       <string _locid="300944">Monastery Bastion</string>
       <string _locid="300945">Danube Steamers</string>
       <string _locid="300946">Ships a steam-powered Warship</string>
-      <string _locid="300947">XMassVillage1</string>
-      <string _locid="300948">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nXMassUnit1 \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nXMassTech1</string>
-      <string _locid="300949">XMassVillage2</string>
+      <string _locid="300947">Toy Master</string>
+      <string _locid="300948">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nNutcracker Soldier \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nXMassTech1</string>
+      <string _locid="300949">Stable Master</string>
       <string _locid="300950">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nXMassUnit2 \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nXMassTech2</string>
-      <string _locid="300951">XMassVillage3</string>
-      <string _locid="300952">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nXMassUnit3 \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nXMassTech3</string>
+      <string _locid="300951">Sled Master</string>
+      <string _locid="300952">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nCandy Howitzer \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nXMassTech3</string>
       <string _locid="300953">XMass Expansion</string>
       <string _locid="300954">Pick XMass Politician</string>
+
+      <!-- ======================================== -->
+  <!-- Christmas Strings added by AssertiveWall -->
+  <!-- ======================================== -->
+  <string _locid="400001">Christmas Village</string>
+  <string _locid="400002">Toymaster</string>
+  <string _locid="400003">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nNutracker Soldier \n\nStrong, disciplined musketeer that excels in melee. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL BUILDING:&lt;/color&gt; \nToy Factory</string>
+  <string _locid="400004">Pick Christmas Village Specialty</string>
+  <string _locid="400005">Pick a specialty among the Christmas Village to unlock new units and buildings.</string>
+  <string _locid="400006">zp Socket Christmas</string>
+  <string _locid="400007" symbol="cStringNativePreAlly"> "Not a creature was stirring, not even a mouse."</string>
+  <string _locid="400008">Nutcracker Soldier</string>
+  <string _locid="400009">zp Nutcracker Soldier</string>
+  <string _locid="400010">A decorative figurine, embodied into a formidable soldier.</string>
+  <string _locid="400011">One of Santa's most trusted workshops.</string>
+  <string _locid="400012">zp xMass Village Workshop</string>
+  <string _locid="400013">Candy Howitzer</string>
+  <string _locid="400014">zp Candy Howitzer</string>
+  <string _locid="400015">Fast, short-ranged artillery firing special candy shrapnel charges.</string>
+  <string _locid="400016">Santa's Helper</string>
+  <string _locid="400017">zp Santa Helper</string>
+  <string _locid="400018">A diligent worker with his trusted sidekick</string>
+  <string _locid="400019">Silent Night</string>
+  <string _locid="400020">Let the fighting stop, if only for one day.</string>
+  <string _locid="400021">Hot Chocolate</string>
+  <string _locid="400022">Warm your spirits and boost your movement speed.</string>
+  <string _locid="400023">Deck the Halls</string>
+  <string _locid="400024">Provides every home a decorative tree.</string>
+  <string _locid="400025">Polar Express</string>
+  <string _locid="400026">Allows you to upgrade your trade route to the Polar Express for free in any age.</string>
+  <string _locid="400027">Village Workshop</string>
+  <string _locid="400028">zp Village Workshop Wagon</string>
+  <string _locid="400029">Ships the village workshop wagon to your homecity.</string>
+  <string _locid="400030">Rudolph the Red Nosed Reindeer</string>
+  <string _locid="400031">zp Rudolph</string>
+  <string _locid="400032">Rudolph with your nose so bright, won't you guide my sleigh tonight?</string>
+  <!-- ======================================== -->
+  <!-- ======================================== -->
     </language>
   </stringtable>
 </stringmods>

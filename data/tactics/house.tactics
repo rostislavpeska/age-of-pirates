@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tactics>
+  <action>
+    <name stringid="69158">Spawn</name>
+    <type>Spawn</type>
+    <rate type="Settler">1.0</rate>
+    <rate type="Longbowman">1.0</rate>
+    <singleuse>1</singleuse>
+    <animationrate>1</animationrate>
+    <active>0</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="69158">SpawnLongbowman</name>
+    <type>Spawn</type>
+    <rate type="Longbowman">1.0</rate>
+    <singleuse>1</singleuse>
+    <animationrate>1</animationrate>
+    <active>0</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="69776">SpawnRevTree</name>
+    <type>Spawn</type>
+    <rate type="TreeRockies">1</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69158">SpawnChristmasTree</name>
+    <type>Spawn</type>
+    <rate type="zpChristmassTree">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnMayaTree</name>
+    <type>Spawn</type>
+    <rate type="TreeAmazon">3</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69158">SpawnBerryBush</name>
+    <type>Spawn</type>
+    <rate type="BerryBush">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="70488">Heal</name>
+    <type>Heal</type>
+    <maxrange>12</maxrange>
+    <rate type="LogicalTypeHealed">5.0</rate>
+    <active>0</active>
+    <anim>Heal</anim>
+  </action>
+  <action>
+    <name stringid="68971">MaintainSettlersFedCaliforniaHouse</name>
+    <type>Maintain</type>
+    <rate type="deSettlerHouse">1.0</rate>
+    <active>0</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="112767">AreaHeal</name>
+    <type>AutoRangedModify</type>
+    <active>0</active>
+    <maxrange>12</maxrange>
+    <modifyabstracttype>UnitClass</modifyabstracttype>
+    <persistent>1</persistent>
+    <nostack>1</nostack>
+    <modifytype>HealRate</modifytype>
+    <modifyamount>0.75</modifyamount>
+    <modelattachment>effects\areaheal.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="68994">SlowEnemyMilitary</name>
+    <type>AutoRangedModify</type>
+    <targetenemy>1</targetenemy>
+    <active>0</active>
+    <maxrange>12</maxrange>
+    <persistent>1</persistent>
+    <nostack>1</nostack>
+    <modifytype>Speed</modifytype>
+    <modifymultiplier>0.90</modifymultiplier>
+    <modelattachment>effects\ypack_auras\frightpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <tactic>Normal<action>Spawn</action><action>Heal</action><action>MaintainSettlersFedCaliforniaHouse</action><action>AreaHeal</action><action>SlowEnemyMilitary</action></tactic>
+</tactics>

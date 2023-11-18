@@ -1,0 +1,50 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_emissive_advanced">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\christmas_units\workshops\east\age_2\textures\east_arsenal_age2_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\arsenal\east\age_2\textures\east_arsenal_age2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\arsenal\east\age_2\textures\east_arsenal_age2_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings\arsenal\east\age_2\textures\east_arsenal_age2_mata_Details">
+      </texture>
+      <texture name="Emissive" override="units\christmas_units\workshops\east\age_2\textures\east_arsenal_age2_mata_Emitter">
+      </texture>
+      <float name="EmissiveIntensity" override="2.4000">
+      </float>
+      <vector4 name="EmissiveColor" override="1.000, 1.000, 1.000, 0.000">
+      </vector4>
+      <float name="Lift Metallic" override="1.0000">
+      </float>
+      <float name="AO Intensity" override="3.4440">
+      </float>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\Props_Additional\Generic_props\Atlas\generic_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\Props_Additional\Generic_props\Atlas\generic_props_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\Props_Additional\Generic_props\Atlas\generic_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\military_props\textures\military_props_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\military_props\textures\military_props_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\military_props\textures\military_props_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
