@@ -206,6 +206,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnJapanese</effect>
     </effects>
@@ -245,6 +248,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnChinese</effect>
     </effects>
@@ -284,6 +290,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnIndian</effect>
     </effects>
@@ -9701,9 +9710,6 @@
       <effect type="TechStatus" status="obtainable">zpOrthodoxGeorgianCastle</effect>
       <effect type="TechStatus" status="obtainable">zpOrthodoxSteamer</effect>
     </effects>
-    <effects>
-      
-    </effects>
   </tech>
   <tech name="zpNatOrthodoxIcons" type="Normal">
     <dbid>40343</dbid>
@@ -10231,6 +10237,389 @@
       </effect>
     </effects>
 	</tech>
+  <tech name="zpConsulateXMass1" type="Normal">
+    <dbid>40364</dbid>
+    <displaynameid>300947</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\xmass_expansion_small.png</icon>
+    <rollovertextid>300948</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xMassUnit1</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpXMassExpansion</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpXMassExpansion">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="XMassTech1" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateXMass2" type="Normal">
+    <dbid>40365</dbid>
+    <displaynameid>300949</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\xmass_expansion_small.png</icon>
+    <rollovertextid>300950</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xMassUnit2</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpXMassExpansion</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpXMassExpansion">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="XMassTech2" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateXMass3" type="Normal">
+    <dbid>40366</dbid>
+    <displaynameid>300951</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\xmass_expansion_small.png</icon>
+    <rollovertextid>300952</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xMassUnit3</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpXMassExpansion</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpXMassExpansion">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="XMassTech3" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTurnConsulateOffXMass" type="Normal">
+    <dbid>40367</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="obtainable">zpConsulateXMass1</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffXMass</effect>
+    </effects>
+  </tech>
+  <tech name ="zpXMassExpansion" type ="Normal">
+		<dbid>40368</dbid>
+		<displaynameid>300953</displaynameid>
+  	<researchpoints>0.2000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\xmass_expansion_big.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\pirates_big.png</iconwpf>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>300954</rollovertextid>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>YPInfiniteTech</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <flag>DoNotQueue</flag>
+    <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianFishingBoat</effect>
+      <effect type="TechStatus" status="active">zpTheBlackFlagGoldBallanceShadow</effect>
+    </effects>
+	</tech>
+
+  <!-- ====================================== -->
+  <!-- Christmas Units added by AssertiveWall -->
+  <!-- ====================================== -->
+  <tech name="zpNativeXmassVillage" type="Normal">
+    <dbid>40342</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="8.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatElfsGuard</target>
+      </effect>
+      <effect type="Data" amount="4.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatElfsSapper</target>
+      </effect>
+      <effect type="Data" amount="4.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpToySoldier</target>
+      </effect>
+      <effect type="Data" amount="8.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpWorkshop</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateSantaToymaster</effect>
+      <effect type="TechStatus" status="obtainable">zpPickSanta</effect>
+      <effect type="TechStatus" status="obtainable">zpSilentNight</effect>
+      <effect type="TechStatus" status="obtainable">zpHotChocolate</effect>
+      <!--<effect type="TechStatus" status="obtainable">zpDeckTheHalls</effect>-->
+      <effect type="TechStatus" status="obtainable">zpPolarExpress</effect>
+      <effect type="TechStatus" status="obtainable">zpSendWorkshop</effect>
+    </effects>
+  </tech>
+  <tech name="zpPickSanta" type="Normal">
+    <dbid>41002</dbid>
+    <displaynameid>400004</displaynameid>
+    <researchpoints>0.2000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\santa_small.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\art\units\natives\christmass_content\santa_big.png</iconwpf>
+    <cost resourcetype="Gold">250.0000</cost>
+    <rollovertextid>400005</rollovertextid>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>YPInfiniteTech</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <flag>DoNotQueue</flag>
+    <flag>NativeDance</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateSantaToymaster" type="Normal">
+    <dbid>41003</dbid>
+    <displaynameid>400002</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\santa_small.png</icon>
+    <rollovertextid>400003</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCBlackPearlProxy</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpTheBlackFlag</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpTheBlackFlag">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="8.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpToySoldier</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSilentNight" type="Normal">
+    <dbid>41004</dbid>
+    <displaynameid>400019</displaynameid>
+    <cost resourcetype="Gold">150.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\silent_night.png</icon>
+    <rollovertextid>400020</rollovertextid>
+    <flag>DoNotQueue</flag>
+    <minimapeventtime sendalertto="none">1</minimapeventtime>
+    <activetime>20</activetime>
+    <placement forceonmap="1" ally="">full</placement>
+    <soundset type="StartSound" listenertype="All">PowerCeaseFire</soundset>
+    <effect type="MaximumVelocity" relativity="BasePercent" amount="0.85">
+      <target type="ProtoUnit">LogicalTypeLandMilitary</target>
+    </effect>
+  </tech>
+  <tech name="zpHotChocolate" type="Normal">
+    <dbid>41005</dbid>
+    <displaynameid>400021</displaynameid>
+    <cost resourcetype="Wood">125.0000</cost>
+    <cost resourcetype="Gold">175.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\hot_chocolate.png</icon>
+    <rollovertextid>400022</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.10" subtype="MaximumVelocity" relativity="BasePercent">
+        <target type="ProtoUnit">LogicalTypeLandMilitary</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpDeckTheHalls" type="Normal">
+    <dbid>41006</dbid>
+    <displaynameid>400023</displaynameid>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\decorated_trees.png</icon>
+    <iconwpf>resources\art\units\natives\christmass_content\decorated_trees_big.png</iconwpf>
+    <rollovertextid>400024</rollovertextid>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="Data" action="SpawnChristmasTree" amount="1.00" subtype="ActionAdd" unittype="AbstractHouse" relativity="Absolute">
+        <target type="Player"></target>
+      </effect>
+      <effect type="Data" action="SpawnChristmasTree" amount="1.00" subtype="ActionAdd" unittype="ypShrineJapanese" relativity="Absolute">
+        <target type="Player"></target>
+      </effect>
+      <effect type="Data" action="SpawnChristmasTree" amount="5.00" subtype="ActionAdd" unittype="zpWorkshop" relativity="Absolute">
+        <target type="Player"></target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpPolarExpress" type="Normal">
+    <dbid>41007</dbid>
+    <displaynameid>400025</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\polar_express.png</icon>
+    <rollovertextid>400026</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Cost" resource="Food" relativity="Assign">
+        <target type="techWithFlag">DETradeRouteUpgrade</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Cost" resource="Wood" relativity="Assign">
+        <target type="techWithFlag">DETradeRouteUpgrade</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Cost" resource="Gold" relativity="Assign">
+        <target type="techWithFlag">DETradeRouteUpgrade</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="techWithFlag">DETradeRouteUpgrade</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNaughtyNice" type="Normal">
+    <dbid>41008</dbid>
+    <displaynameid>124772</displaynameid>
+    <cost resourcetype="Ships">1.0000</cost>
+    <researchpoints>5.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\silent_night.png</icon>
+    <rollovertextid>125431</rollovertextid>
+    <flag>HomeCity</flag>
+    <flag>TeamTech</flag>
+    <flag>DEHCCardDynamicCountResource</flag>
+    <effects>
+      <effect type="TechStatus" status="active">DEMarcoPoloShadow</effect>
+      <effect type="Data" amount="1.00" subtype="RevealMap" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TextOutputTechName">110130</effect>
+    </effects>
+  </tech>
+  <tech name="DETradeRouteUpgrade2Enable" type="Normal">
+    <prereqs>
+      <techstatus status="Active">zpPolarExpress</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpSendWorkshop" type="Normal">
+    <dbid>41009</dbid>
+    <displaynameid>400027</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\workshop.png</icon>
+    <rollovertextid>400028</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpWorkshopWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSendRudolph" type="Normal">
+    <dbid>41009</dbid>
+    <displaynameid>400027</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\workshop.png</icon>
+    <rollovertextid>400028</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpWorkshopWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+
+  <!-- ====================================== -->
+  <!-- ====================================== -->
 
   <!-- ====================================== -->
   <!-- Christmas Units added by AssertiveWall -->

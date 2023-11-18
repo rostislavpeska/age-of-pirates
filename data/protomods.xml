@@ -348,7 +348,7 @@
     <tech row="0" page="1" column="1">zpNatDisciplinedOrthodox</tech>
     <tech row="0" page="1" column="1">zpNatHonoredOrthodox</tech>
     <tech row="0" page="1" column="1">zpOrthodoxInfluence</tech>
-    <command page="0" column="1">zpEconomyTPGold</command>
+    <tech row="0" page="1" column="1">zpXMassExpansion</tech>
   </unit>
   <unit name="ypConsulate">
     <tech row="0" page="18" column="0">zpPickConsulateTechAvailable</tech>
@@ -391,6 +391,12 @@
     <train row="0" page="0" column="93">zpNatMaoriClubman</train>
     <train row="0" page="0" column="94">zpNatMaoriSlinger</train>
     <train row="0" page="0" column="95">zpNatWarriorMonk</train>
+    <train row="0" page="0" column="96">zpNatDvoryanin</train>
+    <train row="0" page="0" column="97">zpNatBulgarianBoyar</train>
+    <train row="0" page="0" column="98">zpNatMonaspa</train>
+  </unit>
+  <unit name="NativeTownObstruction">
+    <flag>Invulnerable</flag>
   </unit>
   <unit id="20004" name="zpNatPirate">
     <dbid>20004</dbid>
