@@ -206,7 +206,7 @@
     <tech row="0" page="2" column="1">zpSilentNight</tech>
     <tech row="0" page="2" column="1">zpHotChocolate</tech>
     <tech row="0" page="2" column="1">zpPolarExpress</tech>
-    <tech row="0" page="2" column="1">zpDeckTheHalls</tech>
+    <tech row="0" page="2" column="1">zpSendWorkshop</tech>
     <!-- =============================================== -->
 
     <train row="0" page="0" column="1">zpNatMalteseGuard</train>
@@ -19670,8 +19670,8 @@
   <!-- ====================================== -->
   <!-- Christmas Units added by AssertiveWall -->
   <!-- ====================================== -->
-  <unit id="20004" name="zpNatElfsGuard">
-    <dbid>20004</dbid>
+  <unit id="21004" name="zpNatElfsGuard">
+    <dbid>21004</dbid>
     <displaynameid>25174</displaynameid>
     <editornameid>25175</editornameid>
     <populationcount>0</populationcount>
@@ -19835,8 +19835,8 @@
       <damagebonus type="AbstractLightInfantry">0.500000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20005" name="zpNatElfsSapper">
-    <dbid>20005</dbid>
+  <unit id="21005" name="zpNatElfsSapper">
+    <dbid>21005</dbid>
     <displaynameid>45003</displaynameid>
     <editornameid>45004</editornameid>
     <populationcount>0</populationcount>
@@ -19928,8 +19928,8 @@
       <rof>1.500000</rof>
     </protoaction>
   </unit>
-  <unit id="20006" name="zpToySoldier">
-    <dbid>20006</dbid>
+  <unit id="21006" name="zpToySoldier">
+    <dbid>21006</dbid>
     <displaynameid>400008</displaynameid>
     <editornameid>400009</editornameid>
     <populationcount>0</populationcount>
@@ -20060,15 +20060,16 @@
       <rof>3.000000</rof>
     </protoaction>
   </unit>
-  <unit id="20007" name="zpWorkshop">
-    <dbid>20007</dbid>
+  <unit id="21008" name="zpWorkshop">
+    <dbid>21008</dbid>
     <displaynameid>400012</displaynameid>
-    <obstructionradiusx>3.0000</obstructionradiusx>
-    <obstructionradiusz>3.0000</obstructionradiusz>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <buildlimit>1</buildlimit>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>\units\christmas_units\workshops\workshop.xml</animfile>
-    <deadreplacement>BuildingRubble3x3</deadreplacement>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
@@ -20111,7 +20112,7 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractBank</unittype>
-    <flag>UnlimitedSupply</flag>
+    <tech row="0" page="2" column="0">zpDeckTheHalls</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -20127,13 +20128,87 @@
     <flag>ColonyBuilding</flag>
     <flag>ColonyPlacementL</flag>
     <flag>Tracked</flag>
-    <tactics>christmas_unit.tactics</tactics>
     <command page="10" column="7">Delete</command>
     <command page="10" column="2">SetGatherPointEconomy</command>
     <command page="10" column="8">CancelAllQueued</command>
+    <tactics>christmas_unit.tactics</tactics>
   </unit>
-  <unit id="20008" name="zpCandyHowitzer">
-    <dbid>20008</dbid>
+  <unit id="21007" name="zpWorkshopWagon">
+    <dbid>21007</dbid>
+    <displaynameid>400027</displaynameid>
+    <editornameid>400028</editornameid>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>5.0000</turnrate>
+    <animfile>units\trade\supply_cart\supply_cart_outpost.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trade\outpost_wagon_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trade\outpost_wagon_portrait.png</portraiticon>
+    <rollovertextid>400029</rollovertextid>
+    <shortrollovertextid>400029</shortrollovertextid>
+    <initialhitpoints>250.0000</initialhitpoints>
+    <maxhitpoints>250.0000</maxhitpoints>
+    <los>18.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>Civilian</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <sharedbuildlimitunit>zpWorkshop</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpWorkshopWagon</unittype>
+      <unittype>zpWorkshop</unittype>
+    </sharedbuildlimitunittypes>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ValidIdleVillager</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractWagon</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>CannotConvertHill</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <train row="0" page="0" column="0">zpWorkshop</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>DeadReplacementWhenDestroyed</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>coveredwagon.tactics</tactics>
+    <protoaction>
+      <name>Build</name>
+      <rate type="zpWorkshop">5.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="21009" name="zpCandyHowitzer">
+    <dbid>21009</dbid>
     <displaynameid>400013</displaynameid>
     <editornameid>400014</editornameid>
     <populationcount>6</populationcount>
@@ -20241,5 +20316,81 @@
       <damagebonus type="Building">2.000000</damagebonus>
       <damagebonus type="Ship">3.000000</damagebonus>
     </protoaction>
+  </unit>
+  <unit id="1840" name="deHouseAfrican">
+    <tactics>christmas_unit.tactics</tactics>
+  </unit>
+  <unit id="867" name="HouseAztec">
+    <tactics>christmas_unit.tactics</tactics>
+  </unit>
+  <unit id="21010" name="zpRudolf">
+    <dbid>21010</dbid>
+    <displaynameid>400030</displaynameid>
+    <editornameid>400031</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <stealthdiscoveryradius>2.5000</stealthdiscoveryradius>
+    <formationcategory>Mobile</formationcategory>
+    <maxvelocity>7.7600</maxvelocity>
+    <maxrunvelocity>9.7600</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\animals\reindeer\reindeer.xml</animfile>
+    <impacttype>Animal</impacttype>
+    <icon>resources\art\units\natives\christmass_content\rudolph_64x64.png</icon>
+    <minimapicon>ui\minimap\hero</minimapicon>
+    <portraiticon>resources\art\units\natives\christmass_content\rudolph.png</portraiticon>
+    <rollovertextid>400032</rollovertextid>
+    <shortrollovertextid>400032</shortrollovertextid>
+    <initialhitpoints>315.0000</initialhitpoints>
+    <maxhitpoints>315.0000</maxhitpoints>
+    <los>25.0000</los>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>20.0000</trainpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>50.0000</bounty>
+    <allowedage>0</allowedage>
+    <armor type="Ranged" value="0.5000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Hero</unittype>
+    <unittype>AbstractCavalry</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>AbstractHandCavalry</unittype>
+    <unittype>AbstractHeavyCavalry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>HeroName2</flag>
+    <flag>KnockoutDeath</flag>
+    <flag>NotDeleteable</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>christmas_rudolph.tactics</tactics>
   </unit>
 </protomods>

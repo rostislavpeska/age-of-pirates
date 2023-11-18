@@ -10249,12 +10249,16 @@
       <effect type="Data" amount="4.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpToySoldier</target>
       </effect>
+      <effect type="Data" amount="8.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpWorkshop</target>
+      </effect>
       <effect type="TechStatus" status="obtainable">zpConsulateSantaToymaster</effect>
       <effect type="TechStatus" status="obtainable">zpPickSanta</effect>
       <effect type="TechStatus" status="obtainable">zpSilentNight</effect>
       <effect type="TechStatus" status="obtainable">zpHotChocolate</effect>
-      <effect type="TechStatus" status="obtainable">zpDeckTheHalls</effect>
+      <!--<effect type="TechStatus" status="obtainable">zpDeckTheHalls</effect>-->
       <effect type="TechStatus" status="obtainable">zpPolarExpress</effect>
+      <effect type="TechStatus" status="obtainable">zpSendWorkshop</effect>
     </effects>
   </tech>
   <tech name="zpPickSanta" type="Normal">
@@ -10347,14 +10351,16 @@
     <displaynameid>400023</displaynameid>
     <cost resourcetype="Gold">400.0000</cost>
     <researchpoints>40.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
+    <status>OBTAINABLE</status>
     <icon>resources\art\units\natives\christmass_content\decorated_trees.png</icon>
+    <iconwpf>resources\art\units\natives\christmass_content\decorated_trees_big.png</iconwpf>
     <rollovertextid>400024</rollovertextid>
-    <prereqs>
-      <techstatus status="Active">Colonialize</techstatus>
-    </prereqs>
+    <flag>NativeDance</flag>
     <effects>
       <effect type="Data" action="SpawnChristmasTree" amount="1.00" subtype="ActionAdd" unittype="AbstractHouse" relativity="Absolute">
+        <target type="Player"></target>
+      </effect>
+      <effect type="Data" action="SpawnChristmasTree" amount="1.00" subtype="ActionAdd" unittype="ypShrineJapanese" relativity="Absolute">
         <target type="Player"></target>
       </effect>
       <effect type="Data" action="SpawnChristmasTree" amount="5.00" subtype="ActionAdd" unittype="zpWorkshop" relativity="Absolute">
@@ -10384,6 +10390,75 @@
       </effect>
       <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
         <target type="techWithFlag">DETradeRouteUpgrade</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNaughtyNice" type="Normal">
+    <dbid>41008</dbid>
+    <displaynameid>124772</displaynameid>
+    <cost resourcetype="Ships">1.0000</cost>
+    <researchpoints>5.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\silent_night.png</icon>
+    <rollovertextid>125431</rollovertextid>
+    <flag>HomeCity</flag>
+    <flag>TeamTech</flag>
+    <flag>DEHCCardDynamicCountResource</flag>
+    <effects>
+      <effect type="TechStatus" status="active">DEMarcoPoloShadow</effect>
+      <effect type="Data" amount="1.00" subtype="RevealMap" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TextOutputTechName">110130</effect>
+    </effects>
+  </tech>
+  <tech name="DETradeRouteUpgrade2Enable" type="Normal">
+    <prereqs>
+      <techstatus status="Active">zpPolarExpress</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpSendWorkshop" type="Normal">
+    <dbid>41009</dbid>
+    <displaynameid>400027</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\workshop.png</icon>
+    <rollovertextid>400028</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpWorkshopWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSendRudolph" type="Normal">
+    <dbid>41009</dbid>
+    <displaynameid>400027</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\workshop.png</icon>
+    <rollovertextid>400028</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpWorkshopWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>
