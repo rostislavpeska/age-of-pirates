@@ -947,6 +947,14 @@
       <string _locid="300944">Monastery Bastion</string>
       <string _locid="300945">Danube Steamers</string>
       <string _locid="300946">Ships a steam-powered Warship</string>
+      <string _locid="300947">XMassVillage1</string>
+      <string _locid="300948">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nXMassUnit1 \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nXMassTech1</string>
+      <string _locid="300949">XMassVillage2</string>
+      <string _locid="300950">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nXMassUnit2 \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nXMassTech2</string>
+      <string _locid="300951">XMassVillage3</string>
+      <string _locid="300952">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nXMassUnit3 \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nXMassTech3</string>
+      <string _locid="300953">XMass Expansion</string>
+      <string _locid="300954">Pick XMass Politician</string>
     </language>
   </stringtable>
 </stringmods>
