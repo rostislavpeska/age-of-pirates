@@ -262,6 +262,17 @@
     <train row="0" page="0" column="2">zpNatBulgarianBoyar</train>
     <train row="0" page="0" column="2">zpNatMonaspa</train>
 
+    <!-- Christmas units and techs Added by AssertiveWall-->
+    <train row="0" page="0" column="1">zpNatElfsGuard</train>
+    <train row="0" page="0" column="2">zpNatElfsSapper</train>
+    <train row="0" page="0" column="2">zpToySoldier</train>
+    <train row="0" page="0" column="2">zpCandyHowitzer</train>
+    <tech row="0" page="2" column="1">zpSilentNight</tech>
+    <tech row="0" page="2" column="2">zpHotChocolate</tech>
+    <tech row="0" page="2" column="3">zpPolarExpress</tech>
+    <tech row="0" page="2" column="4">zpSendWorkshop</tech>
+    <!-- =============================================== -->
+
     <tech row="0" page="0" column="2">zpTrainPrivateer1</tech>
     <tech row="0" page="1" column="2">zpNatHonoredPirate</tech>
     <tech row="0" page="1" column="2">zpNatDisciplinedPirate</tech>
@@ -19673,7 +19684,8 @@
     </protoaction>
   </unit>
 
-  <!-- ====================================== -->
+
+   <!-- ====================================== -->
   <!-- Christmas Units added by AssertiveWall -->
   <!-- ====================================== -->
   <unit id="21004" name="zpNatElfsGuard">
@@ -19681,6 +19693,8 @@
     <displaynameid>25174</displaynameid>
     <editornameid>25175</editornameid>
     <populationcount>0</populationcount>
+    <subciv>zpXmassVillage</subciv>
+    <buildlimit>16</buildlimit>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <stealthdiscoveryradius>2.0000</stealthdiscoveryradius>
@@ -19740,6 +19754,7 @@
     <unittype>FortressMercenary</unittype>
     <unittype>LogicalTypePickableMerc</unittype>
     <unittype>AbstractRifleman</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -19846,6 +19861,8 @@
     <displaynameid>45003</displaynameid>
     <editornameid>45004</editornameid>
     <populationcount>0</populationcount>
+    <subciv>zpXmassVillage</subciv>
+    <buildlimit>16</buildlimit>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <formationcategory>Protected</formationcategory>
@@ -19897,6 +19914,7 @@
     <unittype>Unit</unittype>
     <unittype>Military</unittype>
     <unittype>UnitClass</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -19939,6 +19957,7 @@
     <displaynameid>400008</displaynameid>
     <editornameid>400009</editornameid>
     <populationcount>0</populationcount>
+    <subciv>zpXmassVillage</subciv>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
@@ -19946,6 +19965,7 @@
     <maxrunvelocity>6.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
+    <buildlimit>16</buildlimit>
     <animfile>units\christmas_units\toy_soldier\toy_soldier.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
@@ -19994,6 +20014,7 @@
     <unittype>AbstractRangedInfantry</unittype>
     <unittype>LogicalTypeInfantryVolleyTactic</unittype>
     <unittype>AbstractMusketeer</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -20217,7 +20238,9 @@
     <dbid>21009</dbid>
     <displaynameid>400013</displaynameid>
     <editornameid>400014</editornameid>
-    <populationcount>6</populationcount>
+    <subciv>zpXmassVillage</subciv>
+    <buildlimit>5</buildlimit>
+    <populationcount>0</populationcount>
     <obstructionradiusx>0.9900</obstructionradiusx>
     <obstructionradiusz>0.9900</obstructionradiusz>
     <formationcategory>Protected</formationcategory>
@@ -20264,6 +20287,7 @@
     <unittype>CountsTowardMilitaryScore</unittype>
     <unittype>Ranged</unittype>
     <unittype>HasBountyValue</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
     <flag>RotateInPlace</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
