@@ -10261,6 +10261,10 @@
       <effect type="CommandAdd" tech="XMassTech1" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="Data" action="SpawnFoodGifts" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpWorkshop</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpSendWorkshop</effect>
     </effects>
   </tech>
   <tech name="zpConsulateXMass2" type="Normal">
@@ -10287,6 +10291,10 @@
       <effect type="CommandAdd" tech="XMassTech2" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="Data" action="SpawnWoodGifts" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpWorkshop</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpSendWorkshop</effect>
     </effects>
   </tech>
   <tech name="zpConsulateXMass3" type="Normal">
@@ -10313,6 +10321,10 @@
       <effect type="CommandAdd" tech="XMassTech3" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="Data" action="SpawnGoldGifts" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpWorkshop</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpSendWorkshop</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffXMass" type="Normal">
@@ -10402,35 +10414,48 @@
         <target type="ProtoUnit">zpWorkshop</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpXMassExpansion</effect>
-      <effect type="TechStatus" status="obtainable">zpSilentNight</effect>
+      <effect type="TechStatus" status="obtainable">zpSpreadTheCheer</effect>
       <effect type="TechStatus" status="obtainable">zpHotChocolate</effect>
       <!--<effect type="TechStatus" status="obtainable">zpDeckTheHalls</effect>-->
       <effect type="TechStatus" status="obtainable">zpPolarExpress</effect>
       <effect type="TechStatus" status="obtainable">zpSendWorkshop</effect>
     </effects>
   </tech>
-  <tech name="zpSilentNight" type="Normal">
+  <tech name="zpSpreadTheCheer" type="Normal">
     <dbid>50004</dbid>
     <displaynameid>400019</displaynameid>
-    <cost resourcetype="Gold">150.0000</cost>
-    <researchpoints>1.0000</researchpoints>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>15.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\natives\christmass_content\silent_night.png</icon>
+    <icon>resources\art\units\natives\christmass_content\spread_the_cheer.png</icon>
     <rollovertextid>400020</rollovertextid>
-    <flag>DoNotQueue</flag>
-    <minimapeventtime sendalertto="none">1</minimapeventtime>
-    <activetime>20</activetime>
-    <placement forceonmap="1" ally="">full</placement>
-    <soundset type="StartSound" listenertype="All">PowerCeaseFire</soundset>
-    <effect type="MaximumVelocity" relativity="BasePercent" amount="0.85">
-      <target type="ProtoUnit">LogicalTypeLandMilitary</target>
-    </effect>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>DEFarmingTechnology</flag>
+    <flag>TeamTech</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="-0.20" subtype="FreeHomeCityUnit" unittype="GiftFood" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="-0.20" subtype="FreeHomeCityUnit" unittype="GiftWood" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="-0.20" subtype="FreeHomeCityUnit" unittype="GiftCoin" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
   </tech>
   <tech name="zpHotChocolate" type="Normal">
     <dbid>50005</dbid>
     <displaynameid>400021</displaynameid>
-    <cost resourcetype="Wood">125.0000</cost>
-    <cost resourcetype="Gold">175.0000</cost>
+    <cost resourcetype="Wood">25.0000</cost>
+    <cost resourcetype="Gold">50.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\art\units\natives\christmass_content\hot_chocolate.png</icon>
@@ -10441,14 +10466,14 @@
     </prereqs>
     <effects>
       <effect type="Data" amount="1.10" subtype="MaximumVelocity" relativity="BasePercent">
-        <target type="ProtoUnit">LogicalTypeLandMilitary</target>
+        <target type="ProtoUnit">AbstractVillager</target>
       </effect>
     </effects>
   </tech>
   <tech name="zpDeckTheHalls" type="Normal">
     <dbid>50006</dbid>
     <displaynameid>400023</displaynameid>
-    <cost resourcetype="Gold">400.0000</cost>
+    <cost resourcetype="Gold">600.0000</cost>
     <researchpoints>40.0000</researchpoints>
     <status>OBTAINABLE</status>
     <icon>resources\art\units\natives\christmass_content\decorated_trees.png</icon>
@@ -10477,6 +10502,9 @@
     <icon>resources\art\units\natives\christmass_content\polar_express.png</icon>
     <rollovertextid>400026</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
     <effects>
       <effect type="Data" amount="0.00" subtype="Cost" resource="Food" relativity="Assign">
         <target type="techWithFlag">DETradeRouteUpgrade</target>
@@ -10492,26 +10520,6 @@
       </effect>
     </effects>
   </tech>
-  <tech name="zpNaughtyNice" type="Normal">
-    <dbid>50008</dbid>
-    <displaynameid>124772</displaynameid>
-    <cost resourcetype="Ships">1.0000</cost>
-    <researchpoints>5.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\natives\christmass_content\silent_night.png</icon>
-    <rollovertextid>125431</rollovertextid>
-    <flag>HomeCity</flag>
-    <flag>TeamTech</flag>
-    <flag>DEHCCardDynamicCountResource</flag>
-    <effects>
-      <effect type="TechStatus" status="active">DEMarcoPoloShadow</effect>
-      <effect type="Data" amount="1.00" subtype="RevealMap" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="TextOutputTechName">110130</effect>
-    </effects>
-  </tech>
   <tech name="DETradeRouteUpgrade2Enable" type="Normal">
     <prereqs>
       <techstatus status="Active">zpPolarExpress</techstatus>
@@ -10524,10 +10532,9 @@
     <cost resourcetype="Gold">200.0000</cost>
     <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\natives\christmass_content\workshop.png</icon>
+    <icon>resources\art\units\natives\christmass_content\workshop_64x64.png</icon>
     <rollovertextid>400028</rollovertextid>
     <flag>CountsTowardEconomicScore</flag>
-    <flag>YPNativeImprovement</flag>
     <flag>CheckLandHCGatherPoint</flag>
     <prereqs>
       <techstatus status="Active">Colonialize</techstatus>
@@ -10546,7 +10553,7 @@
     <cost resourcetype="Gold">200.0000</cost>
     <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\natives\christmass_content\workshop.png</icon>
+    <icon>resources\art\units\natives\christmass_content\rudolph_64x64.png</icon>
     <rollovertextid>400028</rollovertextid>
     <flag>CountsTowardEconomicScore</flag>
     <flag>YPNativeImprovement</flag>

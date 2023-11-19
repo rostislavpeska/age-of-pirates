@@ -57,7 +57,7 @@ void main(void)
 	string natType1 = "Klamath";
 	string natType2 = "zpXmassVillage";
 	string natGrpName1 = "native klamath village ";
-	string natGrpName2 = "native xmass village";
+	string natGrpName2 = "XMass_Village0";
 	/*if (rmRandFloat(0,1) <= 0.50)
 	{
 		natType2 = "Cree";
@@ -578,10 +578,10 @@ void main(void)
 	int nativeID3 = -1;
 
 	int whichNative = rmRandInt(1,2);
-	int whichVillage1 = rmRandInt(1,5);
-	int whichVillage2 = rmRandInt(1,5);	
-	int whichVillage3 = rmRandInt(1,5);
-	int whichVillage4 = rmRandInt(1,5);
+	int whichVillage1 = rmRandInt(1,3);
+	int whichVillage2 = rmRandInt(1,3);	
+	int whichVillage3 = rmRandInt(1,3);
+	int whichVillage4 = rmRandInt(1,3);
 	
 	if (whichNative == 1) {
 		nativeID0 = rmCreateGrouping("native A", natGrpName1+whichVillage1);
@@ -1232,6 +1232,114 @@ void main(void)
 
 	// Text
 	rmSetStatusText("", 1.00);
+
+	// Consulate - Tradingpost politician switcher
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate Japan"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","Japanese");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnJapanese"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate China"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","Chinese");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnChinese"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate India"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","Indians");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnIndian"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Tortuga"+k);
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpXMassExpansion"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffXMass"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
+	// Specific for human players
+
+	for(k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Human Check Plr"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "true");
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpIsPirateMap"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japan"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+}
 
 } // END
 	
