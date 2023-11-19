@@ -24,8 +24,9 @@
   <action>
     <name stringid="43298">SpawnGoldGifts</name>
     <type>Maintain</type>
-    <rate type="GiftGold">1.0 </rate>
+    <rate type="GiftCoin">1.0 </rate>
     <active>0</active>
     <persistent>1</persistent>
   </action>
+  <tactic>Normal<action>SpawnFoodGifts</action><action>SpawnWoodGifts</action><action>SpawnGoldGifts</action><length>2</length></tactic>
 </tactics>

@@ -256,10 +256,10 @@
     <train row="0" page="0" column="2">zpNatElfsSapper</train>
     <train row="0" page="0" column="2">zpToySoldier</train>
     <train row="0" page="0" column="2">zpCandyHowitzer</train>
-    <tech row="0" page="2" column="1">zpSilentNight</tech>
+    <tech row="0" page="2" column="1">zpSpreadTheCheer</tech>
     <tech row="0" page="2" column="2">zpHotChocolate</tech>
     <tech row="0" page="2" column="3">zpPolarExpress</tech>
-    <tech row="0" page="2" column="4">zpSendWorkshop</tech>
+    <tech row="0" page="2" column="4">zpDeckTheHalls</tech>
     <!-- =============================================== -->
 
     <tech row="0" page="0" column="2">zpTrainPrivateer1</tech>
@@ -17515,14 +17515,14 @@
 		<dbid>20166</dbid>
 		<displaynameid>300875</displaynameid>
 		<editornameid>300876</editornameid>
-		<obstructionradiusx>0.2000</obstructionradiusx>
-		<obstructionradiusz>0.2000</obstructionradiusz>
+		<obstructionradiusx>1.000</obstructionradiusx>
+		<obstructionradiusz>1.000</obstructionradiusz>
 		<maxvelocity>0.0000</maxvelocity>
 		<movementtype>land</movementtype>
 		<animfile>terrain\tree_christmas.xml</animfile>
-		<physicsinfo>dude</physicsinfo>
-		<icon>resources\art\units\spc\pirates\pirate_ranged_icon.png</icon>
-		<portraiticon>resources\art\units\spc\pirates\pirate_ranged_portrait.png</portraiticon>
+		<impacttype>Wood</impacttype>
+		<icon>resources\art\terrain\trees\christmas_tree_icon_64.png</icon>
+		<portraiticon>resources\art\terrain\trees\christmas_tree_icon_portrait.png</portraiticon>
 		<rollovertextid>33797</rollovertextid>
 		<shortrollovertextid>33796</shortrollovertextid>
 		<initialhitpoints>1315.0000</initialhitpoints>
@@ -17530,33 +17530,32 @@
 		<los>9.0000</los>
 		<buildpoints>20.0000</buildpoints>
 		<buildingworkrate>1.0000</buildingworkrate>
-		<unittype>LogicalTypeValidSabotage</unittype>
-		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-		<unittype>LogicalTypeBuildingsNotWalls</unittype>
-		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-		<unittype>LogicalTypeVillagersAttack</unittype>
-		<unittype>LogicalTypeHandUnitsAttack</unittype>
-		<unittype>LogicalTypeShipsAndBuildings</unittype>
-		<unittype>LogicalTypeRangedUnitsAttack</unittype>
-		<unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
-		<unittype>Building</unittype>
-		<unittype>BuildingClass</unittype>
-		<flag>CollidesWithProjectiles</flag>
-		<flag>StartsAtFullEfficiency</flag>
-		<flag>Immoveable</flag>
-		<flag>NoBloodOnDeath</flag>
-		<flag>ObscuresUnits</flag>
-		<flag>DoNotShowOnMiniMap</flag>
-		<flag>NoIdleActions</flag>
-		<flag>NonAutoFormedUnit</flag>
-		<flag>Doppled</flag>
-		<flag>SelectWithObstruction</flag>
-		<flag>PaintTextureWhenPlacing</flag>
-		<flag>FlattenGround</flag>
-		<flag>Invulnerable</flag>
-		<flag>PlaceAnywhere</flag>
-		<flag>InvulnerableIfGaia</flag>
-		<flag>Tracked</flag>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeVillagersRespondToAttack</unittype>
+    <unittype>Nature</unittype>
+    <unittype>Tree</unittype>
+    <unittype>Wood</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>Resource</unittype>
+    <unittype>HuntedResource</unittype>
+    <flag>ObscuresUnits</flag>
+    <flag>NoHPBar</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Immoveable</flag>
+    <flag>Doppled</flag>
+    <flag>ForceToGaia</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>DoppleOnlyWhenDead</flag>
+    <flag>NoIdleActions</flag>
+    <flag>RMCanRotate</flag>
+    <flag>Tracked</flag>
+    <flag>StartOnNoUpdate</flag>
 	</unit>
   <unit id="20167" name="zpSPCEUHouseProp">
     <dbid>20167</dbid>
@@ -20084,13 +20083,13 @@
     <buildlimit>1</buildlimit>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>\units\christmas_units\workshops\workshop.xml</animfile>
+    <animfile>units\christmas_units\workshops\workshop.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
-    <icon>\resources\art\units\natives\christmass_content\workshop_64x64.png</icon>
+    <icon>resources\art\units\natives\christmass_content\workshop_64x64.png</icon>
     <portraiticon>\resources\art\units\natives\christmass_content\workshop.png</portraiticon>
     <rollovertextid>400011</rollovertextid>
     <shortrollovertextid>400011</shortrollovertextid>
@@ -20128,7 +20127,7 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractBank</unittype>
-    <tech row="0" page="2" column="0">zpDeckTheHalls</tech>
+
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -20336,10 +20335,10 @@
       <damagebonus type="Ship">3.000000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="1840" name="deHouseAfrican">
+  <unit name="deHouseAfrican">
     <tactics>christmas_unit.tactics</tactics>
   </unit>
-  <unit id="867" name="HouseAztec">
+  <unit name="HouseAztec">
     <tactics>christmas_unit.tactics</tactics>
   </unit>
   <unit id="21010" name="zpRudolf">
@@ -20411,5 +20410,99 @@
     <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
     <tactics>christmas_rudolph.tactics</tactics>
+  </unit>
+  <!--<unit id="21011" name="zpPolarExpress">
+    <dbid>21011</dbid>
+    <displaynameid>22968</displaynameid>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>2.4900</obstructionradiusz>
+    <maxvelocity>8.5000</maxvelocity>
+    <maxrunvelocity>10.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>units\christmas_units\polar_express\engine.xml</animfile>
+    <Icon>resources\art\terrain\trees\christmas_tree_icon_64.png</Icon>
+    <PortraitIcon>resources\art\terrain\trees\christmas_tree_icon_portrait.png</PortraitIcon>
+    <rollovertextid>22967</rollovertextid>
+    <shortrollovertextid>25736</shortrollovertextid>
+    <initialhitpoints>240.0000</initialhitpoints>
+    <maxhitpoints>240.0000</maxhitpoints>
+    <los>15.0000</los>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Tracked</flag>
+    <flag>HasContinuousParticles</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>-->
+  <unit id="21011" name="zpPropChristmassTree">
+    <dbid>21011</dbid>
+    <displaynameid>300875</displaynameid>
+    <editornameid>300958</editornameid>
+    <obstructionradiusx>0.2000</obstructionradiusx>
+    <obstructionradiusz>0.2000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>terrain\tree_christmas.xml</animfile>
+		<physicsinfo>dude</physicsinfo>
+		<icon>resources\art\terrain\trees\christmas_tree_icon_64.png</icon>
+		<portraiticon>resources\art\terrain\trees\christmas_tree_icon_portrait.png</portraiticon>
+    <rollovertextid>33797</rollovertextid>
+    <shortrollovertextid>33796</shortrollovertextid>
+    <initialhitpoints>1315.0000</initialhitpoints>
+    <maxhitpoints>1315.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Building</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>Invulnerable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="0">Delete</command>
+    <tactics>garrisonable.tactics</tactics>
   </unit>
 </protomods>

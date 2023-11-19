@@ -11,6 +11,7 @@
       <amount>1</amount>
       <maptype>caribbeanwater</maptype>
       <maptype>arcticwater</maptype>
+      <maptype>kurils</maptype>
       <guardian>ypGreatWhiteShark</guardian>
       <guardian>ypGreatWhiteShark</guardian>
       <difficulty>6</difficulty>
@@ -50,26 +51,32 @@
     <nugget>
       <name>ypWaterNuggetSeaLions</name>
       <maptype>arcticwater</maptype>
+      <maptype>kurils</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetMu3</name>
       <maptype>arcticwater</maptype>
+      <maptype>kurils</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetMu2</name>
       <maptype>arcticwater</maptype>
+      <maptype>kurils</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetMu1</name>
       <maptype>arcticwater</maptype>
+      <maptype>kurils</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetLemuria2</name>
       <maptype>arcticwater</maptype>
+      <maptype>kurils</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetLemuria1</name>
       <maptype>arcticwater</maptype>
+      <maptype>kurils</maptype>
     </nugget>
     <nugget>
       <name>zpWaterNuggetBoatGather</name>

@@ -27,7 +27,7 @@
 		<unit variation="225" posx="-10.8896" posz="0.8564" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpSPCEUHouseProp</unit>
 		<unit variation="207" posx="-6.7994" posz="0.8987" orientx="0.9239" orienty="0.0000" orientz="0.3826">deNatEUPropVilMale</unit>
 		<unit variation="220" posx="-6.4021" posz="-0.2178" orientx="0.9239" orienty="0.0000" orientz="0.3826">deNatEUPropVilFemale</unit>
-		<unit variation="186" posx="-3.0888" posz="-0.4069" orientx="0.7072" orienty="-0.0000" orientz="0.7071">zpChristmassTree</unit>
+		<unit variation="186" posx="-3.0888" posz="-0.4069" orientx="0.7072" orienty="-0.0000" orientz="0.7071">zpPropChristmassTree</unit>
 		<unit variation="243" posx="-6.8038" posz="3.2925" orientx="0.7071" orienty="-0.0000" orientz="-0.7072">deNatEUPropVilMale</unit>
 		<unit variation="114" posx="1.0997" posz="3.2467" orientx="-0.7072" orienty="-0.0000" orientz="-0.7070">PropsPoles</unit>
 		<unit variation="68" posx="8.0697" posz="3.2181" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>

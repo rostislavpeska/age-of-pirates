@@ -1166,7 +1166,11 @@ void analyzeMap()
        cRandomMapName == "zptortuga" ||
        cRandomMapName == "zpcoldwar" ||
        cRandomMapName == "zptreasureisland" ||
-       cRandomMapName == "zpphilippines")
+       cRandomMapName == "zpphilippines" ||
+       cRandomMapName == "zpvenice" ||
+       cRandomMapName == "zpmalta_castles" ||
+       cRandomMapName == "zpmediterranean" ||
+       cRandomMapName == "zpkurils")
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
@@ -1182,7 +1186,8 @@ void analyzeMap()
    {
       if (cRandomMapName == "euArchipelago" ||
          cRandomMapName == "euArchipelagoLarge"||
-         cRandomMapName == "zpmediterranean")
+         cRandomMapName == "zpmediterranean" ||
+         cRandomMapName == "zpkurils")
       {
          gIsArchipelagoMap = true;
          cvOkToGatherFood = false;      // Setting it false will turn off food gathering. True turns it on.

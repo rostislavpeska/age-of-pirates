@@ -19,7 +19,7 @@
 		<unit variation="8" posx="-3.7511" posz="-5.4806" orientx="0.0006" orienty="0.0000" orientz="1.0000">deNatEUPropVilMale</unit>
 		<unit variation="114" posx="2.2192" posz="-2.2266" orientx="-0.3824" orienty="-0.0000" orientz="0.9240">PropsPoles</unit>
 		<unit variation="114" posx="-7.1857" posz="-0.7392" orientx="-0.3824" orienty="-0.0000" orientz="0.9240">PropsPoles</unit>
-		<unit variation="186" posx="-2.4502" posz="-2.8209" orientx="0.7073" orienty="0.0000" orientz="0.7069">zpChristmassTree</unit>
+		<unit variation="186" posx="-2.4502" posz="-2.8209" orientx="0.7073" orienty="0.0000" orientz="0.7069">zpPropChristmassTree</unit>
 		<unit variation="220" posx="-5.4178" posz="-1.0767" orientx="1.0000" orienty="0.0000" orientz="-0.0004">deNatEUPropVilFemale</unit>
 		<unit variation="207" posx="-5.9067" posz="0.0676" orientx="1.0000" orienty="0.0000" orientz="-0.0004">deNatEUPropVilMale</unit>
 		<unit variation="193" posx="-11.2408" posz="0.8083" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">zpSPCEUHouseProp</unit>
