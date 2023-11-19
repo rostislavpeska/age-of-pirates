@@ -20411,48 +20411,4 @@
     <command page="11" column="0">Abilities</command>
     <tactics>christmas_rudolph.tactics</tactics>
   </unit>
-  <unit id="21011" name="zpPolarExpress">
-    <dbid>21011</dbid>
-    <displaynameid>22968</displaynameid>
-    <obstructionradiusx>0.9900</obstructionradiusx>
-    <obstructionradiusz>2.4900</obstructionradiusz>
-    <maxvelocity>8.5000</maxvelocity>
-    <maxrunvelocity>10.5000</maxrunvelocity>
-    <movementtype>land</movementtype>
-    <animfile>units\christmas_units\polar_express\engine.xml</animfile>
-    <Icon>resources\art\terrain\trees\christmas_tree_icon_64.png</Icon>
-    <PortraitIcon>resources\art\terrain\trees\christmas_tree_icon_portrait.png</PortraitIcon>
-    <rollovertextid>22967</rollovertextid>
-    <shortrollovertextid>25736</shortrollovertextid>
-    <initialhitpoints>240.0000</initialhitpoints>
-    <maxhitpoints>240.0000</maxhitpoints>
-    <los>15.0000</los>
-    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
-    </minimapcolor>
-    <armor type="Ranged" value="0.9000">
-    </armor>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>RailroadUnit</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>Unit</unittype>
-    <unittype>UnitClass</unittype>
-    <flag>NoHPBar</flag>
-    <flag>Invulnerable</flag>
-    <flag>InvulnerableIfGaia</flag>
-    <flag>NotDeleteable</flag>
-    <flag>NoProjectileDamage</flag>
-    <flag>NonCollideable</flag>
-    <flag>OrientUnitWithGround</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>Tracked</flag>
-    <flag>HasContinuousParticles</flag>
-    <command page="10" column="7">Delete</command>
-  </unit>
 </protomods>
