@@ -18715,6 +18715,58 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
+  <unit id="20179" name="zpSPCPropZenCastle">
+    <dbid>20179</dbid>
+    <displaynameid>300251</displaynameid>
+    <editornameid>300961</editornameid>
+    <subciv>SPCZen</subciv>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>6.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\asian_civs\castle_regicide\castle_zen.xml</animfile>
+    <icon>resources\art\buildings\wonders\giant_buddha\giant_buddha_icon.png</icon>
+    <portraiticon>resources\art\buildings\wonders\giant_buddha\giant_buddha_icon_portrait.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+  </unit>
   
 
 

@@ -3262,6 +3262,7 @@
       <effect type="TechStatus" status="obtainable">YPNativeJunk</effect>
 
       <effect type="TechStatus" status="obtainable">zpSPCZenBuddha</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCZenMonasteryExpansion</effect>
       <effect type="TechStatus" status="obtainable">zpSPCZenRicePaddy</effect>
       <effect type="TechStatus" status="obtainable">zpSPCZenCastle</effect>
       <effect type="TechStatus" status="obtainable">zpZenJapaneseMercenaries</effect>
@@ -3624,6 +3625,7 @@
       <effect type="CommandAdd" tech="zpZenJapaneseMercenaries" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCZenMonasteryExpansion</effect>
     </effects>
 	</tech>
   <tech name ="zpSPCZenRicePaddy" type ="Normal">
@@ -10395,6 +10397,74 @@
       <effect type="TechStatus" status="active">zpTheBlackFlagGoldBallanceShadow</effect>
     </effects>
 	</tech>
+  <tech name ="zpSPCZenMonasteryExpansion" type ="Normal">
+		<dbid>40369</dbid>
+		<displaynameid>300255</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\zencastle_big.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>300256</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSettlerZen</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypBerryBuilding</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypGroveBuilding</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSoheiArcher</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">YPOutpostAsian</target>
+      </effect>
+      <effect type="CommandAdd" proto="YPOutpostAsian" page="0" column="4">
+        <target type="ProtoUnit">zpSettlerZen</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCZenRicePaddy" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCZenCastle" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpZenJapaneseMercenaries" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCZenBuddha</effect>
+    </effects>
+	</tech>
+  <tech name="zpMountainZen" type="Normal">
+    <dbid>40370</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" tech="zpSPCZenBuddha">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCZenMonasteryExpansion" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+
+
+
+
+
+
 
     <!-- ====================================== -->
   <!-- Christmas Units added by AssertiveWall -->
