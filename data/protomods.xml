@@ -256,10 +256,10 @@
     <train row="0" page="0" column="2">zpNatElfsSapper</train>
     <train row="0" page="0" column="2">zpToySoldier</train>
     <train row="0" page="0" column="2">zpCandyHowitzer</train>
-    <tech row="0" page="2" column="1">zpSpreadTheCheer</tech>
     <tech row="0" page="2" column="2">zpHotChocolate</tech>
     <tech row="0" page="2" column="3">zpPolarExpress</tech>
     <tech row="0" page="2" column="4">zpDeckTheHalls</tech>
+    <tech row="0" page="2" column="5">zpSendRudolph</tech>
     <!-- =============================================== -->
 
     <tech row="0" page="0" column="2">zpTrainPrivateer1</tech>
@@ -20127,7 +20127,7 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractBank</unittype>
-
+    <tech row="0" page="2" column="1">zpSpreadTheCheer</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -20349,8 +20349,8 @@
     <obstructionradiusz>0.4900</obstructionradiusz>
     <stealthdiscoveryradius>2.5000</stealthdiscoveryradius>
     <formationcategory>Mobile</formationcategory>
-    <maxvelocity>7.7600</maxvelocity>
-    <maxrunvelocity>9.7600</maxrunvelocity>
+    <maxvelocity>7.400</maxvelocity>
+    <maxrunvelocity>9.350</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
     <animfile>units\animals\reindeer\reindeer.xml</animfile>
