@@ -891,13 +891,18 @@ void initArrays(void)
 
    // AssertiveWall: Pirates of the Carribean Maps:
    xsArraySetString(gMapNames, 234, "zpburma_b");
-   xsArraySetString(gMapNames, 235, "zpdeadsea");
-   xsArraySetString(gMapNames, 236, "zpeldorado");
-   xsArraySetString(gMapNames, 237, "zpmalta");
-   xsArraySetString(gMapNames, 238, "zptortuga");
-   xsArraySetString(gMapNames, 239, "zpcoldwar");
-   xsArraySetString(gMapNames, 240, "zptreasureisland");
-   xsArraySetString(gMapNames, 241, "zpphilippines");
+   xsArraySetString(gMapNames, 235, "zpcoldwar");
+   xsArraySetString(gMapNames, 236, "zpdeadsea");
+   xsArraySetString(gMapNames, 237, "zpeldorado");
+   xsArraySetString(gMapNames, 238, "zpkurils");
+   xsArraySetString(gMapNames, 239, "zpmalta_castles");
+   xsArraySetString(gMapNames, 240, "zpmalta");
+   xsArraySetString(gMapNames, 241, "zpmediterranean");
+   xsArraySetString(gMapNames, 242, "zpphilippines");
+   xsArraySetString(gMapNames, 243, "zptortuga");
+   xsArraySetString(gMapNames, 244, "zptreasureisland");
+   xsArraySetString(gMapNames, 245, "zpvenice");
+
    
    // List above is up to date for the Italy/Malta release.
 
@@ -1160,14 +1165,17 @@ void analyzeMap()
 
    // AssertiveWall: Check for Pirate Maps and set gStartOnDIfferentIslands true for all of them
    if (cRandomMapName == "zpburma_b" ||
+       cRandomMapName == "zpcoldwar" ||
        cRandomMapName == "zpdeadsea" ||
        cRandomMapName == "zpeldorado" ||
+       cRandomMapName == "zpkurils" ||
+       cRandomMapName == "zpmalta_castles" ||
        cRandomMapName == "zpmalta" ||
-       cRandomMapName == "zptortuga" ||
-       cRandomMapName == "zpcoldwar" ||
-       cRandomMapName == "zptreasureisland" ||
+       cRandomMapName == "zpmediterranean" ||
        cRandomMapName == "zpphilippines" ||
-       cRandomMapName == "zpmediterranean")
+       cRandomMapName == "zptortuga" ||
+       cRandomMapName == "zptreasureisland" ||
+       cRandomMapName == "zpvenice")
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
@@ -1183,7 +1191,8 @@ void analyzeMap()
    {
       if (cRandomMapName == "euArchipelago" ||
          cRandomMapName == "euArchipelagoLarge"||
-         cRandomMapName == "zpmediterranean")
+         cRandomMapName == "zpmediterranean" ||
+         cRandomMapName == "zpkurils")
       {
          gIsArchipelagoMap = true;
          cvOkToGatherFood = false;      // Setting it false will turn off food gathering. True turns it on.

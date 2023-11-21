@@ -19678,8 +19678,8 @@
   <!-- ====================================== -->
   <unit id="21004" name="zpNatElfsGuard">
     <dbid>21004</dbid>
-    <displaynameid>25174</displaynameid>
-    <editornameid>25175</editornameid>
+    <displaynameid>400037</displaynameid>
+    <editornameid>400038</editornameid>
     <populationcount>0</populationcount>
     <subciv>zpXmassVillage</subciv>
     <buildlimit>16</buildlimit>
@@ -19691,13 +19691,13 @@
     <maxrunvelocity>6.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\mercenaries\jaeger\jaeger.xml</animfile>
+    <animfile>units\christmas_units\jaeger\jaeger.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\natives\christmass_content\christmas_jaeger_64x64.png</icon>
     <portraiticon>resources\art\units\natives\christmass_content\christmas_jaeger.png</portraiticon>
-    <rollovertextid>25173</rollovertextid>
-    <shortrollovertextid>25658</shortrollovertextid>
+    <rollovertextid>400039</rollovertextid>
+    <shortrollovertextid>400039</shortrollovertextid>
     <initialhitpoints>250.0000</initialhitpoints>
     <maxhitpoints>250.0000</maxhitpoints>
     <los>24.0000</los>
