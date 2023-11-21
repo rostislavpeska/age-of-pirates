@@ -291,7 +291,7 @@
       <string _locid="300289">ZP White Fort Wagon</string>
       <string _locid="300290">Ships a Fort Wagon that allows you tu build a mighty fort.</string>
       <string _locid="300291">Zen Mountain Monastery</string>
-      <string _locid="300292">ZP Zen Mountain Monastery</string>
+      <string _locid="300292">ZP Zen Mountain Monastery A</string>
       <string _locid="300293">A powerful defensive building that produces native Zen warriors.</string>
       <string _locid="300294">Maintain Sohei Naginata</string>
       <string _locid="300295">Maintain Sohei Yumi</string>
@@ -852,7 +852,7 @@
       <string _locid="300850">San Spiridion</string>
       <string _locid="300851">Scudo Della Fede</string>
       <string _locid="300852">Venetian Secret Engines</string>
-      <string _locid="300853">Mediterrannean Islands (Beta)</string>
+      <string _locid="300853">Mediterrannean Islands</string>
       <string _locid="300854">Collection of mediterranean islands and two worlds: Europe and the Orient. \n\nSettlements: Venetians, Pirate, Scientists. \n\nOther possible settlements (based on variation): Maltese, Jesuit, Sufi, Jewish</string>
       <string _locid="300855">The barrier between Occident and Orient is moving every closer together.</string>
       <string _locid="300856">Malta</string>
@@ -962,6 +962,21 @@
       <string _locid="300959">ZP Santa</string>
       <string _locid="300960">Santa</string>
       <string _locid="300961">ZP Prop Zen Mountain Monastery</string>
+      <string _locid="300962">Sohei Cavalry</string>
+      <string _locid="300963">ZP Nat Sohei Cavalry</string>
+      <string _locid="300964">Cataphract</string>
+      <string _locid="300965">ZP Nat Cataphract</string>
+      <string _locid="300966">OHeavy Cavalry equipped with a sword</string>
+      <string _locid="300967">Disciplined Sohei Cavalry</string>
+      <string _locid="300968">Honored Sohei Cavalry</string>
+      <string _locid="300969">Legendary Sohei Cavalry</string>
+      <string _locid="300970">Spawns Sohei Cavalry</string>
+      <string _locid="300971">Maintain Sohei Cavalry</string>
+      <string _locid="300972">Maintaining Sohei Cavalry</string>
+      <string _locid="300973">ZP Zen Mountain Monastery B</string>
+      <string _locid="300974">ZP Nat Merc Sohei Cavalry</string>
+      <string _locid="300975">Mountain Cavalry</string>
+      <string _locid="300976">Sends powerful cavalry units led by a Daimyo.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

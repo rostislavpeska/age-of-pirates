@@ -229,7 +229,7 @@
 
   <tactic>SoheiArcher
     <protounitcommand>TacticSoheiArcher</protounitcommand>
-    <active>1</active>
+    <active>0</active>
     <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
     <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
     <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
@@ -258,7 +258,7 @@
 
   <tactic>SoheiCavalry
     <protounitcommand>TacticSoheiCavalry</protounitcommand>
-    <active>0</active>
+    <active>1</active>
     <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
     <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
     <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>

@@ -700,7 +700,7 @@ void main(void)
       else{
          if (cNumberNonGaiaPlayers == 7 || cNumberNonGaiaPlayers == 5){
             rmSetAreaLocation(westIslandCliffs, 0.3, 0.7);
-            rmSetAreaSize(westIslandCliffs, 0.055, 0.055);
+            rmSetAreaSize(westIslandCliffs, 0.065, 0.065);
             }
          else {
             rmSetAreaLocation(westIslandCliffs, 0.3, 0.7);

@@ -898,6 +898,10 @@ void initArrays(void)
    xsArraySetString(gMapNames, 239, "zpcoldwar");
    xsArraySetString(gMapNames, 240, "zptreasureisland");
    xsArraySetString(gMapNames, 241, "zpphilippines");
+   xsArraySetString(gMapNames, 242, "zpmalta_castles");
+   xsArraySetString(gMapNames, 243, "zpkurils");
+   xsArraySetString(gMapNames, 244, "zpvenice");
+   xsArraySetString(gMapNames, 245, "zpmediterranean");
    
    // List above is up to date for the Italy/Malta release.
 
@@ -1167,6 +1171,8 @@ void analyzeMap()
        cRandomMapName == "zpcoldwar" ||
        cRandomMapName == "zptreasureisland" ||
        cRandomMapName == "zpphilippines" ||
+       cRandomMapName == "zpvenice" ||
+       cRandomMapName == "zpmalta_castles" ||
        cRandomMapName == "zpmediterranean")
    {
       gStartOnDifferentIslands = true;
@@ -1183,7 +1189,8 @@ void analyzeMap()
    {
       if (cRandomMapName == "euArchipelago" ||
          cRandomMapName == "euArchipelagoLarge"||
-         cRandomMapName == "zpmediterranean")
+         cRandomMapName == "zpmediterranean" ||
+         cRandomMapName == "zpkurils")
       {
          gIsArchipelagoMap = true;
          cvOkToGatherFood = false;      // Setting it false will turn off food gathering. True turns it on.

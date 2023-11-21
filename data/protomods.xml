@@ -213,6 +213,7 @@
     <train row="0" page="0" column="5">zpWokouFuchuanProxy</train>
     <train row="0" page="0" column="4">zpNatSoheiProxy</train>
     <train row="0" page="0" column="5">zpNatSoheiArcher</train>
+    <train row="0" page="0" column="5">zpNatSoheiCavalry</train>
     <train row="0" page="0" column="6">zpSettlerZen</train>
     <train row="0" page="0" column="1">zpNatQizilbashProxy</train>
     <train row="0" page="0" column="1">zpNatWarElephantProxy</train>
@@ -5188,6 +5189,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
     <train row="0" page="6" column="0">zpCastleZen</train>
+    <train row="0" page="6" column="0">zpCastleZenClone</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -5205,6 +5207,7 @@
     <protoaction>
       <name>Build</name>
       <rate type="zpCastleZen">3.000000</rate>
+      <rate type="zpCastleZenClone">3.000000</rate>
     </protoaction>
   </unit>
   <unit id="20055" name="zpSPCConsulateWagon">
@@ -5976,7 +5979,7 @@
     <projectileprotounit>Arrow</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <buildpoints>150.0000</buildpoints>
-    <buildlimit>5</buildlimit>
+    <buildlimit>1</buildlimit>
     <bounty>220.0000</bounty>
     <buildbounty>220.0000</buildbounty>
     <cost resourcetype="Wood">600.0000</cost>
@@ -18766,6 +18769,482 @@
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
+  </unit>
+  <unit id="20180" name="zpNatSoheiCavalry">
+    <dbid>20180</dbid>
+    <displaynameid>300962</displaynameid>
+    <editornameid>300963</editornameid>
+    <populationcount>0</populationcount>
+    <subciv>SPCZen</subciv>
+    <obstructionradiusx>0.7900</obstructionradiusx>
+    <obstructionradiusz>0.7900</obstructionradiusz>
+    <formationcategory>Mobile</formationcategory>
+    <maxvelocity>6.750</maxvelocity>
+    <maxrunvelocity>8.7500</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\sohei_cavalry_horse.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>cav</physicsinfo>
+    <icon>resources\art\units\natives\sohei_cavalry_icon.png</icon>
+    <portraiticon>resources\art\units\natives\sohei_cavalry_portrait.png</portraiticon>
+    <rollovertextid>61101</rollovertextid>
+    <shortrollovertextid>61478</shortrollovertextid>
+    <initialhitpoints>260.0000</initialhitpoints>
+    <maxhitpoints>260.0000</maxhitpoints>
+    <los>15.0000</los>
+    <projectileprotounit>Arrow</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>38.0000</trainpoints>
+    <buildlimit>8</buildlimit>
+    <bounty>20.0000</bounty>
+    <buildbounty>20.0000</buildbounty>
+    <cost resourcetype="Food">120.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.2000">
+    </armor>
+    <sharedselectionunittypes>
+      <unittype>zpNatMercSoheiCavalry</unittype>
+    </sharedselectionunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractLancer</unittype>
+    <unittype>AbstractCavalry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractRangedHeavyCavalry</unittype>
+    <unittype>AbstractHeavyCavalry</unittype>
+    <unittype>AbstractRangedCavalry</unittype>
+    <unittype>AbstractHandCavalry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>bowcavalrymelee.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>10.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>1.500000</rof>
+      <maxrange>6.000000</maxrange>
+    </protoaction>
+    <protoaction>
+      <name>ChargeAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <maxrange>3.750000</maxrange>
+      <damagebonus type="AbstractInfantry">2.00000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>20.0000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractInfantry">2.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>TrampleHandAttack</name>
+      <damage>16.0000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>2.000000</rof>
+      <maxrange>3.750000</maxrange>
+      <damagecap>60.000</damagecap>
+      <damagearea>3.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractInfantry">2.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>BowAttack</name>
+      <damage>12.500000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>4.000000</minrange>
+      <maxrange>12.000000</maxrange>
+      <rof>1.500000</rof>
+    </protoaction>
+  </unit>
+  <unit id="20181" name="zpNatCataphract">
+    <dbid>20181</dbid>
+    <displaynameid>300964</displaynameid>
+    <editornameid>300965</editornameid>
+    <obstructionradiusx>0.7900</obstructionradiusx>
+    <obstructionradiusz>0.7900</obstructionradiusz>
+    <formationcategory>Mobile</formationcategory>
+    <maxvelocity>6.5000</maxvelocity>
+    <maxrunvelocity>8.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\orthodox\cataphract_horse.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>cav</physicsinfo>
+    <icon>resources\art\units\natives\cataphract_icon.png</icon>
+    <portraiticon>resources\art\units\natives\cataphract_portrait.png</portraiticon>
+    <rollovertextid>300966</rollovertextid>
+    <shortrollovertextid>300966</shortrollovertextid>
+    <initialhitpoints>250.0000</initialhitpoints>
+    <maxhitpoints>250.0000</maxhitpoints>
+    <los>24.0000</los>
+    <autoattackrange>16.0000</autoattackrange>
+    <unitaitype>HandCombative</unitaitype>
+    <bounty>15.0000</bounty>
+    <buildbounty>15.0000</buildbounty>
+    <trainpoints>35.0000</trainpoints>
+    <allowedage>1</allowedage>
+    <subciv>zpOrthodox</subciv>
+    <buildlimit>8</buildlimit>
+    <cost resourcetype="Food">50</cost>
+    <cost resourcetype="Gold">90</cost>
+    <armor type="Ranged" value="0.7500">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractCavalry</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>AbstractHeavyCavalry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>AbstractHandCavalry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <flag>CanAutoHeal</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>zppaladin.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+      <damagebonus type="Building">1.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>GuardianAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>35.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>TrampleHandAttack</name>
+      <damage>25.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>2.000000</rof>
+      <damagecap>40.000000</damagecap>
+      <damagearea>3.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>Heal</name>
+      <type>Heal</type>
+      <rate type="LogicalTypeHealed">6.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20182" name="zpCastleZenClone">
+    <dbid>2012</dbid>
+    <displaynameid>300291</displaynameid>
+    <editornameid>300973</editornameid>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>6.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\asian_civs\castle_regicide\castle_zen.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>blockhouse</physicsinfo>
+    <placementfile>buildingsmall.xml</placementfile>
+    <icon>resources\art\buildings\zp_mountain_monastery_icon.png</icon>
+    <portraiticon>resources\art\buildings\zp_mountain_monastery_icon_portrait.png</portraiticon>
+    <rollovertextid>300299</rollovertextid>
+    <shortrollovertextid>300299</shortrollovertextid>
+    <initialhitpoints>4000.0000</initialhitpoints>
+    <maxhitpoints>4000.0000</maxhitpoints>
+    <los>26.0000</los>
+    <projectileprotounit>Arrow</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <buildpoints>150.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>220.0000</bounty>
+    <buildbounty>220.0000</buildbounty>
+    <cost resourcetype="Wood">600.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <maxcontained>50</maxcontained>
+    <allowedage>2</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractFort</unittype>
+    <unittype>AbstractDefensiveBuilding</unittype>
+    <tech row="0" page="1" column="1">zpFortifiedMonastery</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>EnterHotkeyContext</flag>
+    <flag>Tracked</flag>
+    <flag>DanceActionNoWorkers</flag>
+    <flag>BuildingShowTactics</flag>
+    <flag>DoTacticToSameUnitType</flag>
+    <notcontain>AbstractMonk</notcontain>
+    <notcontain>ExcludeFromRansom</notcontain>
+    <notcontain>AbstractFishingBoat</notcontain>
+    <contain>AbstractVillager</contain>
+    <contain>deHomesteadWagon</contain>
+    <contain>AbstractHealer</contain>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="0" column="0">TacticSoheiInf</command>
+    <command page="0" column="1">TacticSoheiCavalry</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="2">SetGatherPointEconomy</command>
+    <command page="1" column="6">SetBuildingAsHomeCityGatherPointEconomic</command>
+    <command page="1" column="7">SetBuildingAsHomeCityGatherPointMilitary</command>
+    <tactics>zpzenmonasteryb.tactics</tactics>
+    <protoaction>
+      <name>AntiShipAttack</name>
+      <damage>200.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>40.000000</maxrange>
+      <rof>3.000000</rof>
+      <projectile>Cannonball</projectile>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>CannonAttack</name>
+      <damage>80.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>26.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>300.000000</damagecap>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+      <damagearea>3.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <projectile>Cannonball</projectile>
+      <damagebonus type="AbstractArtillery">0.750000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>60.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>24.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractVillager">0.250000</damagebonus>
+      <damagebonus type="AbstractCavalry">1.500000</damagebonus>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.300000</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20180" name="zpNatMercSoheiCavalry">
+    <dbid>20180</dbid>
+    <displaynameid>300962</displaynameid>
+    <editornameid>300974</editornameid>
+    <populationcount>0</populationcount>
+    <obstructionradiusx>0.7900</obstructionradiusx>
+    <obstructionradiusz>0.7900</obstructionradiusz>
+    <formationcategory>Mobile</formationcategory>
+    <maxvelocity>6.750</maxvelocity>
+    <maxrunvelocity>8.7500</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\sohei_cavalry_horse.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>cav</physicsinfo>
+    <icon>resources\art\units\natives\sohei_cavalry_icon.png</icon>
+    <portraiticon>resources\art\units\natives\sohei_cavalry_portrait.png</portraiticon>
+    <rollovertextid>61101</rollovertextid>
+    <shortrollovertextid>61478</shortrollovertextid>
+    <initialhitpoints>260.0000</initialhitpoints>
+    <maxhitpoints>260.0000</maxhitpoints>
+    <los>15.0000</los>
+    <projectileprotounit>Arrow</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>38.0000</trainpoints>
+    <bounty>20.0000</bounty>
+    <buildbounty>20.0000</buildbounty>
+    <cost resourcetype="Food">120.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.2000">
+    </armor>
+    <sharedselectionunittypes>
+      <unittype>zpNatSoheiCavalry</unittype>
+    </sharedselectionunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractLancer</unittype>
+    <unittype>AbstractCavalry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractRangedHeavyCavalry</unittype>
+    <unittype>AbstractHeavyCavalry</unittype>
+    <unittype>AbstractRangedCavalry</unittype>
+    <unittype>AbstractHandCavalry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>bowcavalrymelee.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>10.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>1.500000</rof>
+      <maxrange>6.000000</maxrange>
+    </protoaction>
+    <protoaction>
+      <name>ChargeAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <maxrange>3.750000</maxrange>
+      <damagebonus type="AbstractInfantry">2.00000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>20.0000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractInfantry">2.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>TrampleHandAttack</name>
+      <damage>16.0000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>2.000000</rof>
+      <maxrange>3.750000</maxrange>
+      <damagecap>60.000</damagecap>
+      <damagearea>3.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractInfantry">2.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>BowAttack</name>
+      <damage>12.500000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>4.000000</minrange>
+      <maxrange>12.000000</maxrange>
+      <rof>1.500000</rof>
+    </protoaction>
   </unit>
   
 

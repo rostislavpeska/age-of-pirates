@@ -2340,4 +2340,31 @@
     <sound filename="bulgarian\BulgarianSpyMove2.wav" volume="0.7000">
     </sound>
   </soundset>
+
+  <soundset name="Byzantine_Soldier_Attack" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="byzantine\Byzantines_Soldier_Attack_1_AoE2.wav" volume="0.7000">
+    </sound>
+    <sound filename="byzantine\Byzantines_Soldier_Attack_2_AoE2.wav" volume="0.7000">
+    </sound>
+    <sound filename="byzantine\Byzantines_Soldier_Attack_3_AoE2.wav" volume="0.7000">
+    </sound>
+    <sound filename="byzantine\Byzantines_Soldier_Attack_4_AoE2.wav" volume="0.7000">
+    </sound>
+  </soundset>
+  <soundset name="Byzantine_Soldier_Select" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="byzantine\Byzantines_Soldier_Select_1_AoE2.wav" volume="0.7000">
+    </sound>
+    <sound filename="byzantine\Byzantines_Soldier_Select_2_AoE2.wav" volume="0.7000">
+    </sound>
+    <sound filename="byzantine\Byzantines_Soldier_Select_3_AoE2.wav" volume="0.7000">
+    </sound>
+  </soundset>
+  <soundset name="Byzantine_Soldier_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="byzantine\Byzantines_Soldier_Move_1_AoE2.wav" volume="0.7000">
+    </sound>
+    <sound filename="byzantine\Byzantines_Soldier_Move_2_AoE2.wav" volume="0.7000">
+    </sound>
+    <sound filename="byzantine\Byzantines_Soldier_Move_3_AoE2.wav" volume="0.7000">
+    </sound>
+  </soundset>
 </soundsetdef>

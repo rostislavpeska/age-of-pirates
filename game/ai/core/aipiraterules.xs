@@ -52,7 +52,7 @@ minInterval 5
         xsEnableRule("SufiWhiteFortManager");
         xsEnableRule("zenSufiBuildingMonitor");
     }
-    if (getGaiaUnitCount(cUnitTypezpSPCGreatBuddha) > 0)
+    if ((getGaiaUnitCount(cUnitTypezpSPCGreatBuddha) > 0) || (getGaiaUnitCount(cUnitTypezpSPCPropZenCastle) > 0))
     {
         xsEnableRule("maintainZenSettlers");
         xsEnableRule("ZenBigButtonMonitor");
@@ -1293,7 +1293,7 @@ mininterval 60
 
       // Fortified Monastery
       canDisableSelf &= researchSimpleTechByCondition(cTechzpFortifiedMonastery,
-      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpCastleZen, cUnitStateABQ) >= 1); },
+      []() -> bool { return ((kbUnitCount(cMyID, cUnitTypezpCastleZen, cUnitStateABQ) >= 1) || (kbUnitCount(cMyID, cUnitTypezpCastleZenClone, cUnitStateABQ) >= 1)); },
       cUnitTypezpCastleZen);
 
   if (canDisableSelf == true)
@@ -1565,7 +1565,10 @@ minInterval 15
       // Vanilla.
          case cUnitTypezpSPCCastleWagon:
          {
-             buildingType = cUnitTypezpCastleZen;
+            if (kbTechGetStatus(cTechzpMountainZen) == cTechStatusActive)
+               buildingType = cUnitTypezpCastleZenClone;
+            else
+               buildingType = cUnitTypezpCastleZen;
              break;
          }
          case cUnitTypezpWaterTempleTravois:

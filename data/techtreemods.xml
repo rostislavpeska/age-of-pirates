@@ -3266,6 +3266,7 @@
       <effect type="TechStatus" status="obtainable">zpSPCZenRicePaddy</effect>
       <effect type="TechStatus" status="obtainable">zpSPCZenCastle</effect>
       <effect type="TechStatus" status="obtainable">zpZenJapaneseMercenaries</effect>
+      <effect type="TechStatus" status="obtainable">zpZenMountainMercenaries</effect>
     </effects>
   </tech>
   <tech name="zpNatZenMeritocracyClone" type="Normal">
@@ -3355,6 +3356,18 @@
         <target type="ProtoUnit">zpNatSoheiArcher</target>
       </effect>
       <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSoheiCavalry</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSoheiCavalry</target>
+      </effect>
+       <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercSoheiCavalry</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercSoheiCavalry</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatSoheiProxy</target>
       </effect>
       <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
@@ -3367,6 +3380,14 @@
       <effect type="SetName" proto="zpNatSoheiArcher" culture="none" newname="300262">
       </effect>
       <effect type="SetName" proto="zpNatSoheiArcher" culture="none" newname="300321" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatSoheiCavalry" culture="none" newname="300967">
+      </effect>
+      <effect type="SetName" proto="zpNatSoheiCavalry" culture="none" newname="300969" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatMercSoheiCavalry" culture="none" newname="300967">
+      </effect>
+      <effect type="SetName" proto="zpNatMercSoheiCavalry" culture="none" newname="300969" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>
@@ -3397,6 +3418,18 @@
         <target type="ProtoUnit">zpNatSoheiArcher</target>
       </effect>
       <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSoheiCavalry</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSoheiCavalry</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercSoheiCavalry</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercSoheiCavalry</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatSoheiProxy</target>
       </effect>
       <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
@@ -3409,6 +3442,14 @@
       <effect type="SetName" proto="zpNatSoheiArcher" culture="none" newname="300263">
       </effect>
       <effect type="SetName" proto="zpNatSoheiArcher" culture="none" newname="300321" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatSoheiCavalry" culture="none" newname="300968">
+      </effect>
+      <effect type="SetName" proto="zpNatSoheiCavalry" culture="none" newname="300969" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatMercSoheiCavalry" culture="none" newname="300968">
+      </effect>
+      <effect type="SetName" proto="zpNatMercSoheiCavalry" culture="none" newname="300969" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>
@@ -3625,6 +3666,9 @@
       <effect type="CommandAdd" tech="zpZenJapaneseMercenaries" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpCastleZen</target>
+      </effect>
       <effect type="TechStatus" status="unobtainable">zpSPCZenMonasteryExpansion</effect>
     </effects>
 	</tech>
@@ -3685,11 +3729,7 @@
     <prereqs>
 			<techstatus status="Active">Industrialize</techstatus>
     </prereqs>
-    <effects>    
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpCastleZen</target>
-      </effect>
-      
+    <effects>          
       <effect type="TechStatus" status="obtainable">zpFortifiedMonastery</effect>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCCastleWagon" relativity="Absolute">
         <target type="Player">
@@ -4556,6 +4596,15 @@
       <effect type="Data" action="AntiShipAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpCastleZen</target>
       </effect>
+      <effect type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpCastleZenClone</target>
+      </effect>
+      <effect type="Data" action="CannonAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpCastleZenClone</target>
+      </effect>
+      <effect type="Data" action="AntiShipAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpCastleZenClone</target>
+      </effect>
     </effects>
   </tech>
   <!--Legendary Natives names - add all naew natives to the list below-->
@@ -4595,13 +4644,17 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatGatlingCamel" culture="none" newname="300449">
       </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatWarriorMonk" culture="none" newname="300449">
+      <effect mergemode="add" type="SetName" proto="zpNatWarriorMonk" culture="none" newname="300900">
       </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatDvoryanin" culture="none" newname="300449">
+      <effect mergemode="add" type="SetName" proto="zpNatDvoryanin" culture="none" newname="300907">
       </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatMonaspa" culture="none" newname="300449">
+      <effect mergemode="add" type="SetName" proto="zpNatMonaspa" culture="none" newname="300917">
       </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatBulgarianBoyar" culture="none" newname="300449">
+      <effect mergemode="add" type="SetName" proto="zpNatBulgarianBoyar" culture="none" newname="300912">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatSoheiCavalry" culture="none" newname="300969">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercSoheiCavalry" culture="none" newname="300969">
       </effect>
     </effects>
   </tech>
@@ -10426,7 +10479,7 @@
         <target type="ProtoUnit">ypGroveBuilding</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatSoheiArcher</target>
+        <target type="ProtoUnit">zpNatSoheiCavalry</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">YPOutpostAsian</target>
@@ -10440,8 +10493,11 @@
       <effect type="CommandAdd" tech="zpSPCZenCastle" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpZenJapaneseMercenaries" page="2" column="6">
+      <effect type="CommandAdd" tech="zpZenMountainMercenaries" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpCastleZenClone</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpSPCZenBuddha</effect>
     </effects>
@@ -10459,6 +10515,41 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpZenMountainMercenaries" type="Normal">
+    <dbid>40371</dbid>
+    <displaynameid>300975</displaynameid>
+    <cost resourcetype ="Gold">800.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\zen_mountain_cavalry.png</icon>
+    <rollovertextid>300976</rollovertextid>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPCheckPopCap</flag>
+      <effects>
+        <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="zpNatMercSoheiCavalry" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnitRandom" unittype="AbstractDaimyo" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">ypDisciplinedDaimyoShadow</effect>
+      <effect type="TextOutputTechName">110130</effect>
+    </effects>
+  </tech>
+
+
+
+
+
+
+
+
+
+
 
 
 

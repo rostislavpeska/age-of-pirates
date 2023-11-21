@@ -3,7 +3,7 @@
   <definebone>bip01 prop1</definebone>
   <attachment>torch<include>effects\projectiles\torch_cavalry.xml</include></attachment>
   <attachment>shield<component>shield<assetreference type="GrannyModel"><file>units\natives\orthodox\monaspa_shield</file></assetreference></component><anim>Idle<component>shield</component></anim></attachment>
-  <attachment>lance<component>lance<assetreference type="GrannyModel"><file>units\africans\natives\yoruba_cavalry\yoruba_rider_lance</file></assetreference></component><anim>Idle<component>lance</component></anim></attachment>
+  <attachment>lance<component>lance<assetreference type="GrannyModel"><file>units\asians\mercenaries\jat_lancer\jat_lance</file></assetreference></component><anim><component>lance</component></anim></attachment>
   <component>ModelComp<assetreference type="GrannyModel"><file>units\cavalry\cav_archer\cav_archer_3age_rider_new</file></assetreference><attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"></attach></component>
   <anim>Walk<assetreference type="GrannyAnim"><file>animation_library\cavalry\sword_jog</file></assetreference><component>ModelComp</component><attach a="lance" frombone="bone_gun" tobone="bip01 prop1" syncanims="0"></attach></anim>
   <anim>Jog<assetreference type="GrannyAnim"><file>animation_library\cavalry\sword_jog</file></assetreference><component>ModelComp</component><attach a="lance" frombone="bone_gun" tobone="bip01 prop1" syncanims="0"></attach></anim>

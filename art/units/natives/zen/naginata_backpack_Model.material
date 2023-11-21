@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="matA">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units/asians/japanese/naginata_rider/textures/naginata_lance_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units/asians/japanese/naginata_rider/textures/naginata_lance_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units/asians/japanese/naginata_rider/textures/naginata_lance_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

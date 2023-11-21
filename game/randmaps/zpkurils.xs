@@ -77,11 +77,11 @@ void main(void)
 	chooseMercs();
 	
 	// Set size of map
-	int playerTiles=28000;
+	int playerTiles=24000;
   if(cNumberNonGaiaPlayers < 5)
-    playerTiles = 32000;
+    playerTiles = 30000;
   if (cNumberNonGaiaPlayers < 3)
-		playerTiles = 42000;
+		playerTiles = 38000;
 	int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
 	rmEchoInfo("Map size="+size+"m x "+size+"m");
 	rmSetMapSize(size, size);
@@ -614,7 +614,7 @@ void main(void)
       // wokou Village 3
 
       int wokouVillageID3 = -1;
-      wokouVillageID3 = rmCreateGrouping("wokou city 3", "Wokou_Village_01");
+      wokouVillageID3 = rmCreateGrouping("wokou city 3", "Wokou_Village_North_01");
       rmAddGroupingConstraint(wokouVillageID3, ferryOnShore);
 
       rmPlaceGroupingAtLoc(wokouVillageID3, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1)), 1);
@@ -640,7 +640,7 @@ void main(void)
       // wokou Village 4
 
       int wokouVillageID4 = -1;
-      wokouVillageID4 = rmCreateGrouping("wokou city 4", "Wokou_Village_02");
+      wokouVillageID4 = rmCreateGrouping("wokou city 4", "Wokou_Village_North_02");
       rmAddGroupingConstraint(wokouVillageID4, ferryOnShore);
 
       rmPlaceGroupingAtLoc(wokouVillageID4, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc4)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc4)), 1);
@@ -667,7 +667,7 @@ void main(void)
 
    int portSite1 = rmCreateArea ("port_site1");
    rmSetAreaSize(portSite1, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-    rmSetAreaLocation(portSite1, 0.55+rmXTilesToFraction(25), 0.95);
+    rmSetAreaLocation(portSite1, 0.55+rmXTilesToFraction(23), 0.95);
    rmSetAreaMix(portSite1, "patagonia_snow");
    rmSetAreaCoherence(portSite1, 1);
    rmSetAreaSmoothDistance(portSite1, 15);
@@ -689,7 +689,7 @@ void main(void)
 
    int portSite2 = rmCreateArea ("port_site2");
    rmSetAreaSize(portSite2, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-   rmSetAreaLocation(portSite2, 0.45-rmXTilesToFraction(25),0.05);
+   rmSetAreaLocation(portSite2, 0.45-rmXTilesToFraction(23),0.05);
    rmSetAreaMix(portSite2, "patagonia_dirt");
    rmSetAreaCoherence(portSite2, 1);
    rmSetAreaSmoothDistance(portSite2, 15);
@@ -710,7 +710,7 @@ void main(void)
 
    int portSite3 = rmCreateArea ("port_site3");
    rmSetAreaSize(portSite3, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-  rmSetAreaLocation(portSite3, 0.05, 0.45-rmXTilesToFraction(25));
+  rmSetAreaLocation(portSite3, 0.05, 0.45-rmXTilesToFraction(23));
    rmSetAreaMix(portSite3, "patagonia_dirt");
    rmSetAreaCoherence(portSite3, 1);
    rmSetAreaSmoothDistance(portSite3, 15);
@@ -731,7 +731,7 @@ void main(void)
 
   int portSite4 = rmCreateArea ("port_site4");
   rmSetAreaSize(portSite4, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-  rmSetAreaLocation(portSite4, 0.95,0.55+rmXTilesToFraction(25));
+  rmSetAreaLocation(portSite4, 0.95,0.55+rmXTilesToFraction(23));
   rmSetAreaMix(portSite4, "patagonia_snow");
   rmSetAreaCoherence(portSite4, 1);
   rmSetAreaSmoothDistance(portSite4, 15);
@@ -754,23 +754,23 @@ void main(void)
 
   // Port 1
   int portID01 = rmCreateObjectDef("port 02");
-  portID01 = rmCreateGrouping("portG 01", "harbour_malta_05");
-  rmPlaceGroupingAtLoc(portID01, 0, 0.45-rmXTilesToFraction(12), 0.05);
+  portID01 = rmCreateGrouping("portG 01", "harbour_universal_NE");
+  rmPlaceGroupingAtLoc(portID01, 0, 0.45-rmXTilesToFraction(10), 0.05);
 
   // Port 2
   int portID02 = rmCreateObjectDef("port 02");
-  portID02 = rmCreateGrouping("portG 02", "harbour_arabia_01");
-  rmPlaceGroupingAtLoc(portID02, 0, 0.95,0.55+rmXTilesToFraction(15));
+  portID02 = rmCreateGrouping("portG 02", "harbour_universal_SE");
+  rmPlaceGroupingAtLoc(portID02, 0, 0.95,0.55+rmXTilesToFraction(12));
 
   // Port 3
   int portID03 = rmCreateObjectDef("port 03");
-  portID03 = rmCreateGrouping("portG 03", "harbour_arabia_02");
-  rmPlaceGroupingAtLoc(portID03, 0, 0.55+rmXTilesToFraction(13), 0.95);
+  portID03 = rmCreateGrouping("portG 03", "harbour_universal_SW");
+  rmPlaceGroupingAtLoc(portID03, 0, 0.55+rmXTilesToFraction(11), 0.95);
 
   // Port 4
   int portID04 = rmCreateObjectDef("port 04");
-  portID04 = rmCreateGrouping("portG 04", "harbour_malta_07");
-  rmPlaceGroupingAtLoc(portID04, 0, 0.05,0.45-rmXTilesToFraction(12));
+  portID04 = rmCreateGrouping("portG 04", "harbour_universal_NW");
+  rmPlaceGroupingAtLoc(portID04, 0, 0.05,0.45-rmXTilesToFraction(10));
       
 
 
@@ -989,7 +989,7 @@ void main(void)
     }
     if (mapVariation == 2){
       jesuit2VillageType = rmRandInt(1,3);
-      jesuit2VillageID = rmCreateGrouping("jesuit 2", "Zen_GreatBuddha_0"+jesuit2VillageType);
+      jesuit2VillageID = rmCreateGrouping("jesuit 2", "Zen_Mountain_0"+jesuit2VillageType);
     }
     rmAddGroupingConstraint(jesuit2VillageID , avoidImpassableLand);
 
@@ -997,7 +997,7 @@ void main(void)
     int jesuit3VillageID = -1;
     int jesuit3VillageType = rmRandInt(1,3);
 
-      jesuit3VillageID = rmCreateGrouping("jesuit 3", "Zen_GreatBuddha_0"+jesuit3VillageType);
+      jesuit3VillageID = rmCreateGrouping("jesuit 3", "Zen_Mountain_0"+jesuit3VillageType);
 
     rmAddGroupingConstraint(jesuit3VillageID , avoidImpassableLand);
 
@@ -1324,7 +1324,6 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
-rmAddTriggerCondition("Always");
 
 rmAddTriggerEffect("Grant Resources");
 rmSetTriggerEffectParamInt("PlayerID", i, false);
@@ -1343,15 +1342,7 @@ rmSetTriggerEffectParam("TechID","cTechDEEnableTradeRouteWater"); // DEEneableTr
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",i);
-rmSetTriggerEffectParam("TechID","cTechdeEUMapUpdateVisuals"); // Europen Map
-rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("ZP Set Tech Status (XS)");
-rmSetTriggerEffectParamInt("PlayerID",i);
-rmSetTriggerEffectParam("TechID","cTechzpMediterraneanSufi"); // Sufi Mosque
-rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("ZP Set Tech Status (XS)");
-rmSetTriggerEffectParamInt("PlayerID",i);
-rmSetTriggerEffectParam("TechID","cTechzpAnnoMercenaries"); // Mercenaries
+rmSetTriggerEffectParam("TechID","cTechzpMountainZen"); // Sufi Mosque
 rmSetTriggerEffectParamInt("Status",2);
 }
 rmSetTriggerPriority(4);

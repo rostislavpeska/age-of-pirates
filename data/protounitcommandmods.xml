@@ -18,6 +18,15 @@
     <command>unitSetTactic("SoheiArcher")</command>
   </protounitcommand>
   <protounitcommand>
+    <name>TacticSoheiCavalry</name>
+    <icon>resources\images\icons\command\soheicavalry_tactic_off.png</icon>
+    <activeicon>resources\images\icons\command\soheicavalry_tactic_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\soheicavalry_tactic_off.png</disabledicon>
+    <rollovertextid>300971</rollovertextid>
+    <activerollovertextid>300972</activerollovertextid>
+    <command>unitSetTactic("SoheiCavalry")</command>
+  </protounitcommand>
+  <protounitcommand>
     <name>zpTacticDive</name>
     <icon>resources\images\icons\command\zp_dive.png</icon>
     <activeicon>resources\images\icons\command\zp_dive_active.png</activeicon>
