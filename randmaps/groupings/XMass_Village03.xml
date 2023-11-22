@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>14</width>
+	<height>14</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="227" posx="0.6102" posz="-10.9710" orientx="-1.0000" orienty="0.0000" orientz="0.0003">zpSPCEUHouseProp</unit>
+		<unit variation="99" posx="-5.5966" posz="-10.7069" orientx="-0.3830" orienty="0.0000" orientz="-0.9238">deSPCWaterlooHouseProp</unit>
+		<unit variation="169" posx="-8.0537" posz="-9.4147" orientx="-1.0000" orienty="-0.0000" orientz="0.0005">PropsColony</unit>
+		<unit variation="169" posx="7.5644" posz="-10.8321" orientx="-1.0000" orienty="-0.0000" orientz="0.0005">PropsColony</unit>
+		<unit variation="114" posx="-1.8454" posz="-7.5016" orientx="-0.3824" orienty="-0.0000" orientz="0.9240">PropsPoles</unit>
+		<unit variation="19" posx="8.6291" posz="-5.8934" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpSPCHarbour</unit>
+		<unit variation="225" posx="-8.6204" posz="-5.4887" orientx="0.7073" orienty="0.0000" orientz="0.7069">zpSPCEUHouseProp</unit>
+		<unit variation="180" posx="1.8027" posz="-5.4542" orientx="1.0000" orienty="-0.0000" orientz="-0.0004">PropsTable</unit>
+		<unit variation="193" posx="-4.4192" posz="-4.7358" orientx="0.7075" orienty="0.0000" orientz="0.7067">deNatEUPropVilFemale</unit>
+		<unit variation="8" posx="-3.7511" posz="-5.4806" orientx="0.0006" orienty="0.0000" orientz="1.0000">deNatEUPropVilMale</unit>
+		<unit variation="114" posx="2.2192" posz="-2.2266" orientx="-0.3824" orienty="-0.0000" orientz="0.9240">PropsPoles</unit>
+		<unit variation="114" posx="-7.1857" posz="-0.7392" orientx="-0.3824" orienty="-0.0000" orientz="0.9240">PropsPoles</unit>
+		<unit variation="186" posx="-2.4502" posz="-2.8209" orientx="0.7073" orienty="0.0000" orientz="0.7069">zpPropChristmassTree</unit>
+		<unit variation="220" posx="-5.4178" posz="-1.0767" orientx="1.0000" orienty="0.0000" orientz="-0.0004">deNatEUPropVilFemale</unit>
+		<unit variation="207" posx="-5.9067" posz="0.0676" orientx="1.0000" orienty="0.0000" orientz="-0.0004">deNatEUPropVilMale</unit>
+		<unit variation="193" posx="-11.2408" posz="0.8083" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">zpSPCEUHouseProp</unit>
+		<unit variation="160" posx="8.0341" posz="0.1554" orientx="-0.8647" orienty="0.0000" orientz="-0.5024">ypSMJesuitAccessory</unit>
+		<unit variation="76" posx="4.4994" posz="4.1585" orientx="-0.7072" orienty="-0.0000" orientz="-0.7070">zpSPCMeetingHouse</unit>
+		<unit variation="129" posx="-0.4491" posz="1.2354" orientx="-0.7074" orienty="0.0000" orientz="-0.7068">deNatEUPropVilMale</unit>
+		<unit variation="243" posx="-1.7111" posz="1.8192" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">deNatEUPropVilMale</unit>
+		<unit variation="103" posx="-4.1408" posz="2.1051" orientx="0.3821" orienty="0.0000" orientz="-0.9241">deNatEUPropVilFemale</unit>
+		<unit variation="128" posx="-4.8189" posz="1.4646" orientx="0.7067" orienty="0.0000" orientz="-0.7075">deNatEUPropVilMale</unit>
+		<unit variation="160" posx="-5.9840" posz="2.5906" orientx="-0.7950" orienty="0.0000" orientz="0.6066">ypSMJesuitAccessory</unit>
+		<unit variation="104" posx="-11.5691" posz="5.0946" orientx="-0.7074" orienty="0.0000" orientz="-0.7068">PropsColony</unit>
+		<unit variation="114" posx="-2.1613" posz="3.4539" orientx="-0.3824" orienty="-0.0000" orientz="0.9240">PropsPoles</unit>
+		<unit variation="44" posx="-10.5254" posz="6.0026" orientx="-0.9241" orienty="0.0000" orientz="-0.3822">PropsColony</unit>
+		<unit variation="2" posx="-4.9307" posz="8.8662" orientx="-1.0000" orienty="0.0000" orientz="0.0003">zpSPCSocketXmassVillage</unit>
+		<unit variation="169" posx="-10.5464" posz="8.7921" orientx="-1.0000" orienty="-0.0000" orientz="0.0005">PropsColony</unit>
+		<unit variation="169" posx="1.0220" posz="8.0177" orientx="-1.0000" orienty="-0.0000" orientz="0.0005">PropsColony</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
+			<block startx="-7" startz="0" endx="-7" endz="1"></block>
+			<block startx="-6" startz="-1" endx="-6" endz="1"></block>
+			<block startx="-5" startz="-5" endx="-5" endz="1"></block>
+			<block startx="-4" startz="-6" endx="-4" endz="1"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="1"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="1"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="1"></block>
+			<block startx="0" startz="-6" endx="0" endz="1"></block>
+			<block startx="1" startz="-5" endx="1" endz="1"></block>
+			<block startx="-6" startz="2" endx="-6" endz="2"></block>
+			<block startx="-5" startz="2" endx="-5" endz="3"></block>
+			<block startx="-4" startz="2" endx="-4" endz="4"></block>
+			<block startx="-3" startz="2" endx="-3" endz="4"></block>
+			<block startx="-2" startz="2" endx="-2" endz="3"></block>
+			<block startx="-1" startz="2" endx="-1" endz="2"></block>
+			<block startx="0" startz="2" endx="0" endz="2"></block>
+			<block startx="1" startz="2" endx="1" endz="3"></block>
+			<block startx="2" startz="2" endx="2" endz="2"></block>
+			<block startx="2" startz="-5" endx="2" endz="1"></block>
+			<block startx="3" startz="-5" endx="3" endz="-1"></block>
+			<block startx="4" startz="-4" endx="4" endz="-2"></block>
+		</tilegroup>
+	</tiles>
+</grouping>
