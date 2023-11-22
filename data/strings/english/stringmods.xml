@@ -979,16 +979,16 @@
   <string _locid="400012">ZP xMass Village Workshop</string>
   <string _locid="400013">Candy Howitzer</string>
   <string _locid="400014">ZP Candy Howitzer</string>
-  <string _locid="400015">Fast, short-ranged artillery firing special candy shrapnel charges.</string>
-  <string _locid="400016">Santa's Helper</string>
+  <string _locid="400015">Fast, short-ranged artillery firing special candy charges.</string>
+  <!--<string _locid="400016">Santa's Helper</string>
   <string _locid="400017">ZP Santa Helper</string>
-  <string _locid="400018">A diligent worker with his trusted sidekick</string>
+  <string _locid="400018">A diligent worker with his trusted sidekick</string>-->
   <string _locid="400019">Spread the Cheer</string>
   <string _locid="400020">TEAM Spread the cheer and ship crates of presents for every 10 minutes the game passes, up to 30 minutes.</string>
   <string _locid="400021">Hot Chocolate</string>
   <string _locid="400022">Warm your spirits and boost your villager's movement speed.</string>
   <string _locid="400023">Deck the Halls</string>
-  <string _locid="400024">Provides every home a decorative tree.</string>
+  <string _locid="400024">Provides every home with a decorative tree.</string>
   <string _locid="400025">Polar Express</string>
   <string _locid="400026">Allows you to upgrade your trade route to the Polar Express for free in any age.</string>
   <string _locid="400027">Village Workshop</string>
@@ -997,13 +997,15 @@
   <string _locid="400030">Rudolph the Red Nosed Reindeer</string>
   <string _locid="400031">ZP Rudolph</string>
   <string _locid="400032">Rudolph with your nose so bright, won't you guide my sleigh tonight?</string>
-  <string _locid="400033">Sends a Workshop wagon and allows you to construct a workshop which spawns Christmass Gifts.</string>
-  <string _locid="400034">Toymaker's Workshopp</string>
+  <string _locid="400033">Sends a Workshop wagon and allows you to construct a gift producing workshop.</string>
+  <string _locid="400034">Toymaker's Workshop</string>
   <string _locid="400035">Candymaker's Workshop</string>
   <string _locid="400036">Decorator's Workshop</string>
   <string _locid="400037">Elf's Guard</string>
   <string _locid="400038">zp Christmas Jaeger</string>
   <string _locid="400039">Elite skirmisher well suited for the season.</string>
+  <string _locid="400040">Seasoned Guards</string>
+  <string _locid="400041">Upgrades your village's units, and automatically upgrades them upon reaching Age 4.</string>
   <!-- ======================================== -->
   <!-- ======================================== -->
     </language>

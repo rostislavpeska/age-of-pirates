@@ -10419,6 +10419,7 @@
       <effect type="TechStatus" status="obtainable">zpSendWorkshopFood</effect>
       <effect type="TechStatus" status="obtainable">zpSendWorkshopWood</effect>
       <effect type="TechStatus" status="obtainable">zpSendWorkshopGold</effect>
+      <effect type="TechStatus" status="obtainable">zpChristmasVeteranTech</effect>
     </effects>
   </tech>
   <tech name="zpSpreadTheCheer" type="Normal">
@@ -10622,6 +10623,71 @@
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpRudolf" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpChristmasVeteranTech" type="Normal">
+    <dbid>50013</dbid>
+    <displaynameid>400040</displaynameid>
+    <cost resourcetype="Food">250.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\santa_small.png</icon>
+    <rollovertextid>400041</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatElfsGuard</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpToySoldier</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpCandyHowitzer</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatElfsGuard</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpToySoldier</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpCandyHowitzer</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpChristmasGuardTech</effect>
+    </effects>
+  </tech>
+  <tech name="zpChristmasGuardTech" type="Normal">
+    <dbid>50014</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatElfsGuard</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpToySoldier</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpCandyHowitzer</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatElfsGuard</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpToySoldier</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpCandyHowitzer</target>
       </effect>
     </effects>
   </tech>

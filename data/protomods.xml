@@ -256,10 +256,11 @@
     <train row="0" page="0" column="2">zpNatElfsSapper</train>
     <train row="0" page="0" column="2">zpToySoldier</train>
     <train row="0" page="0" column="2">zpCandyHowitzer</train>
-    <tech row="0" page="2" column="2">zpHotChocolate</tech>
-    <tech row="0" page="2" column="3">zpPolarExpress</tech>
-    <tech row="0" page="2" column="4">zpDeckTheHalls</tech>
-    <tech row="0" page="2" column="5">zpSendRudolph</tech>
+    <tech row="0" page="2" column="1">zpHotChocolate</tech>
+    <tech row="0" page="2" column="2">zpPolarExpress</tech>
+    <tech row="0" page="2" column="3">zpDeckTheHalls</tech>
+    <tech row="0" page="2" column="4">zpSendRudolph</tech>
+    <tech row="0" page="1" column="2">zpChristmasVeteranTech</tech>
     <!-- =============================================== -->
 
     <tech row="0" page="0" column="2">zpTrainPrivateer1</tech>
@@ -20238,8 +20239,8 @@
     <turnrate>3.0000</turnrate>
     <animfile>units\christmas_units\candy_howitzer\candy_howitzer.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\natives\christmass_content\candy_howitzer.png</icon>
-    <portraiticon>resources\art\units\natives\christmass_content\candy_howitzer_64x64.png</portraiticon>
+    <icon>resources\art\units\natives\christmass_content\candy_howitzer_64x64.png</icon>
+    <portraiticon>resources\art\units\natives\christmass_content\candy_howitzer.png</portraiticon>
     <rollovertextid>400015</rollovertextid>
     <shortrollovertextid>400015</shortrollovertextid>
     <initialhitpoints>200.0000</initialhitpoints>
