@@ -18792,8 +18792,8 @@
     <physicsinfo>cav</physicsinfo>
     <icon>resources\art\units\natives\sohei_cavalry_icon.png</icon>
     <portraiticon>resources\art\units\natives\sohei_cavalry_portrait.png</portraiticon>
-    <rollovertextid>61101</rollovertextid>
-    <shortrollovertextid>61478</shortrollovertextid>
+    <rollovertextid>300981</rollovertextid>
+    <shortrollovertextid>300981</shortrollovertextid>
     <initialhitpoints>260.0000</initialhitpoints>
     <maxhitpoints>260.0000</maxhitpoints>
     <los>15.0000</los>
@@ -19148,8 +19148,8 @@
     <physicsinfo>cav</physicsinfo>
     <icon>resources\art\units\natives\sohei_cavalry_icon.png</icon>
     <portraiticon>resources\art\units\natives\sohei_cavalry_portrait.png</portraiticon>
-    <rollovertextid>61101</rollovertextid>
-    <shortrollovertextid>61478</shortrollovertextid>
+    <rollovertextid>300981</rollovertextid>
+    <shortrollovertextid>300981</shortrollovertextid>
     <initialhitpoints>260.0000</initialhitpoints>
     <maxhitpoints>260.0000</maxhitpoints>
     <los>15.0000</los>

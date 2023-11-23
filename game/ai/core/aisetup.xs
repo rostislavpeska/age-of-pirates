@@ -1170,13 +1170,10 @@ void analyzeMap()
        cRandomMapName == "zpkurils" ||
        cRandomMapName == "zpmalta_castles" ||
        cRandomMapName == "zpmalta" ||
-       cRandomMapName == "zpmediterranean" ||
        cRandomMapName == "zpphilippines" ||
        cRandomMapName == "zptortuga" ||
        cRandomMapName == "zptreasureisland" ||
-       cRandomMapName == "zpphilippines" ||
        cRandomMapName == "zpvenice" ||
-       cRandomMapName == "zpmalta_castles" ||
        cRandomMapName == "zpmediterranean")
    {
       gStartOnDifferentIslands = true;
