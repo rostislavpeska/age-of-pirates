@@ -4978,7 +4978,7 @@
     <displaynameid>300261</displaynameid>
     <editornameid>300266</editornameid>
     <subciv>SPCZen</subciv>
-    <buildlimit>12</buildlimit>
+    <buildlimit>14</buildlimit>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
@@ -19267,8 +19267,8 @@
     <physicsinfo>cav</physicsinfo>
     <icon>resources\art\units\asians\spc\kichiro\kichiro_icon.png</icon>
     <portraiticon>resources\art\units\asians\spc\kichiro\kichiro_icon_portrait.png</portraiticon>
-    <rollovertextid>61101</rollovertextid>
-    <shortrollovertextid>61478</shortrollovertextid>
+    <rollovertextid>300980</rollovertextid>
+    <shortrollovertextid>300979</shortrollovertextid>
     <initialhitpoints>800.0000</initialhitpoints>
     <maxhitpoints>800.0000</maxhitpoints>
     <los>15.0000</los>
@@ -19301,6 +19301,8 @@
     <unittype>UnitClass</unittype>
     <unittype>Unit</unittype>
     <unittype>AbstractLancer</unittype>
+    <unittype>AbstractHealer</unittype>
+    <unittype>AbstractFindHealer</unittype>
     <unittype>AbstractCavalry</unittype>
     <unittype>AbstractRangedHeavyCavalry</unittype>
     <unittype>AbstractHeavyCavalry</unittype>
@@ -19321,10 +19323,12 @@
     <flag>ConstrainOrientation</flag>
     <flag>OrientUnitWithGround</flag>
     <flag>Tracked</flag>
+    <flag>CanAutoHeal</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="7">Delete</command>
-    <tactics>bowcavalrymelee.tactics</tactics>
+    <command page="11" column="0">Abilities</command>
+    <tactics>soheileader.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
       <damage>40.000000</damage>
@@ -19365,6 +19369,11 @@
       <minrange>4.000000</minrange>
       <maxrange>12.000000</maxrange>
       <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>Heal</name>
+      <type>Heal</type>
+      <rate type="LogicalTypeHealed">6.000000</rate>
     </protoaction>
   </unit>
   

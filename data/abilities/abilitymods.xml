@@ -85,4 +85,7 @@
   <zpmercwokousteamer>
     <ability>deFullSteam<rof>90</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
   </zpmercwokousteamer>
+  <zpnatsoheileader>
+    <ability>ypUnitDaimyoAura<alwaysdisabledingrid>true</alwaysdisabledingrid></ability>
+  </zpnatsoheileader>
 </abilitymods>

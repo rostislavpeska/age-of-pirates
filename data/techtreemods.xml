@@ -10298,7 +10298,7 @@
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\xmass_expansion_small.png</icon>
+    <icon>resources\art\units\natives\christmass_content\santa_small.png</icon>
     <rollovertextid>300948</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
@@ -10313,7 +10313,7 @@
       <effect type="CommandRemove" tech="zpXMassExpansion">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpSendWorkshopWood" page="2" column="5">
+      <effect type="CommandAdd" tech="zpSendWorkshopWood" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="Data" action="SpawnWoodGifts" amount="1.00" subtype="ActionEnable" relativity="Absolute">
@@ -10327,7 +10327,7 @@
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\xmass_expansion_small.png</icon>
+    <icon>resources\art\units\natives\christmass_content\santa_small.png</icon>
     <rollovertextid>300950</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
@@ -10345,7 +10345,7 @@
       <effect type="CommandRemove" tech="zpXMassExpansion">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpSendWorkshopFood" page="2" column="5">
+      <effect type="CommandAdd" tech="zpSendWorkshopFood" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="Data" action="SpawnFoodGifts" amount="1.00" subtype="ActionEnable" relativity="Absolute">
@@ -10359,7 +10359,7 @@
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\xmass_expansion_small.png</icon>
+    <icon>resources\art\units\natives\christmass_content\santa_small.png</icon>
     <rollovertextid>300952</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
@@ -10374,7 +10374,7 @@
       <effect type="CommandRemove" tech="zpXMassExpansion">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpSendWorkshopGold" page="2" column="5">
+      <effect type="CommandAdd" tech="zpSendWorkshopGold" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="Data" action="SpawnGoldGifts" amount="1.00" subtype="ActionEnable" relativity="Absolute">
@@ -10535,7 +10535,7 @@
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnitRandom" unittype="AbstractDaimyo" relativity="Absolute">
+        <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpNatSoheiLeader" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
