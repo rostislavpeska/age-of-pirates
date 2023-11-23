@@ -10335,7 +10335,10 @@
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">xMassUnit2</target>
+        <target type="ProtoUnit">zpCandyHowitzer</target>
+      </effect>
+      <effect type="Data" action="CaseShotAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpCandyHowitzer</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpXMassExpansion</effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
@@ -10364,7 +10367,7 @@
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpCandyHowitzer</target>
+        <target type="ProtoUnit">zpSantaHelper</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpXMassExpansion</effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
@@ -10430,7 +10433,7 @@
 		<displaynameid>400004</displaynameid>
   	<researchpoints>0.2000</researchpoints>
 		<status>UNOBTAINABLE</status>
-		<icon>resources\images\icons\techs\xmass_expansion_big.png</icon>
+		<icon>resources\art\units\natives\christmass_content\santa_small.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
     <iconwpf>resources\art\units\natives\christmass_content\santa_big.png</iconwpf>
     <cost resourcetype ="Gold">250.0000</cost>
@@ -10581,6 +10584,7 @@
       <effect type="TechStatus" status="obtainable">zpSendWorkshopWood</effect>
       <effect type="TechStatus" status="obtainable">zpSendWorkshopGold</effect>
       <effect type="TechStatus" status="obtainable">zpChristmasVeteranTech</effect>
+      <effect type="TechStatus" status="obtainable">zpChristmasGuardTech</effect>
     </effects>
   </tech>
   <tech name="zpSpreadTheCheer" type="Normal">
@@ -10627,9 +10631,6 @@
     <rollovertextid>400022</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>
-    <prereqs>
-      <techstatus status="Active">Colonialize</techstatus>
-    </prereqs>
     <effects>
       <effect type="Data" amount="1.10" subtype="MaximumVelocity" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
@@ -10639,7 +10640,7 @@
   <tech name="zpDeckTheHalls" type="Normal">
     <dbid>50006</dbid>
     <displaynameid>400023</displaynameid>
-    <cost resourcetype="Gold">600.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>40.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\art\units\natives\christmass_content\decorated_trees.png</icon>
@@ -10790,11 +10791,11 @@
   <tech name="zpChristmasVeteranTech" type="Normal">
     <dbid>50013</dbid>
     <displaynameid>400040</displaynameid>
-    <cost resourcetype="Food">250.0000</cost>
-    <cost resourcetype="Gold">200.0000</cost>
-    <researchpoints>30.0000</researchpoints>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">75.0000</cost>
+    <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\natives\christmass_content\santa_small.png</icon>
+    <icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
     <rollovertextid>400041</rollovertextid>
     <flag>UpgradeTech</flag>
     <flag>CountsTowardMilitaryScore</flag>
@@ -10811,6 +10812,9 @@
       <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpCandyHowitzer</target>
       </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpSantaHelper</target>
+      </effect>
       <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatElfsGuard</target>
       </effect>
@@ -10820,17 +10824,29 @@
       <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpCandyHowitzer</target>
       </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSantaHelper</target>
+      </effect>
       <effect type="TechStatus" status="obtainable">zpChristmasGuardTech</effect>
     </effects>
   </tech>
   <tech name="zpChristmasGuardTech" type="Normal">
     <dbid>50014</dbid>
-    <researchpoints>0.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <prereqs>
-      <techstatus status="Active">Industrialize</techstatus>
-    </prereqs>
+		<displaynameid>400042</displaynameid>
+		<cost resourcetype ="Wood">400.0000</cost>
+		<cost resourcetype ="Gold">300.0000</cost>
+		<researchpoints>10.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
+		<rollovertextid>400043</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>UpgradeTech</flag>
+    <flag>DENativeUnitUpgrade</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+		<prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+			<techstatus status ="active">zpChristmasVeteranTech</techstatus>
+		</prereqs>
     <effects>
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatElfsGuard</target>
@@ -10841,6 +10857,9 @@
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpCandyHowitzer</target>
       </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpSantaHelper</target>
+      </effect>
       <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatElfsGuard</target>
       </effect>
@@ -10849,6 +10868,9 @@
       </effect>
       <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpCandyHowitzer</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSantaHelper</target>
       </effect>
     </effects>
   </tech>

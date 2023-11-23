@@ -47,7 +47,7 @@ void main(void)
 	string cliffPaint1 = "rockies\groundsnow1_roc";
 	string cliffPaint2 = "rockies\ground4_roc";
 	string food1 = "Reindeer";
-	string food2 = "Reindeer";
+	string food2 = "elk";
 	string treeType1 = "TreeYukon";	//"TreeYukon";
 	string treeType2 = "TreeYukonSnow";
 	string treeType3 = "TreeGreatLakesSnow";	// TreeGreatLakesSnow
@@ -172,7 +172,7 @@ void main(void)
 	int avoidForestFar=rmCreateClassDistanceConstraint("avoid forest far", rmClassID("Forest"), 34.0);
 	int avoidForestShort=rmCreateClassDistanceConstraint("avoid forest short", rmClassID("Forest"), 15.0);
 	int avoidForestShorter=rmCreateClassDistanceConstraint("avoid forest shorter", rmClassID("Forest"), 8.0);
-	int avoidForestMin=rmCreateClassDistanceConstraint("avoid forest min", rmClassID("Forest"), 4.0);
+	int avoidForestMin=rmCreateClassDistanceConstraint("avoid forest min", rmClassID("Forest"), 6.0);
 	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("Forest"), 25.0);
 	int forestConstraintShort=rmCreateClassDistanceConstraint("object vs. forest", rmClassID("Forest"), 10.0);
 	int avoidHunt1 = rmCreateTypeDistanceConstraint("avoid hunt1", food1, 40.0);
@@ -223,7 +223,7 @@ void main(void)
 	int avoidIsland=rmCreateClassDistanceConstraint("avoid island", classIsland, 16.0);
 	int avoidIslandFar=rmCreateClassDistanceConstraint("avoid island far", classIsland, 32.0);
 	int avoidCliff = rmCreateClassDistanceConstraint("avoid cliff", rmClassID("classCliff"), 12.0);
-	int avoidCliffMin = rmCreateClassDistanceConstraint("avoid cliff min", rmClassID("classCliff"), 4.0);
+	int avoidCliffMin = rmCreateClassDistanceConstraint("avoid cliff min", rmClassID("classCliff"), 5.0);
 	int avoidCliffMed = rmCreateClassDistanceConstraint("avoid cliff medium", rmClassID("classCliff"), 16.0);
 	int avoidCliffFar = rmCreateClassDistanceConstraint("avoid cliff far", rmClassID("classCliff"), 24.0);
 	
@@ -235,7 +235,7 @@ void main(void)
 	int avoidTradeRouteSocketShort = rmCreateTypeDistanceConstraint("trade route socket short", "socketTradeRoute", 4.0);
 	int avoidTradeRouteSocket = rmCreateTypeDistanceConstraint("avoid trade route socket", "socketTradeRoute", 8.0);
 	int avoidNatives = rmCreateClassDistanceConstraint("stuff avoids natives", rmClassID("natives"), 8.0);
-	int avoidNativesShort = rmCreateClassDistanceConstraint("stuff avoids natives short", rmClassID("natives"), 4.0);
+	int avoidNativesShort = rmCreateClassDistanceConstraint("stuff avoids natives short", rmClassID("natives"), 6.0);
 	int stayNatives = rmCreateClassDistanceConstraint("stuff stays near natives", rmClassID("natives"), 6.0);
 	int avoidNativesFar = rmCreateClassDistanceConstraint("stuff avoids natives far", rmClassID("natives"), 12.0);
 	int avoidNativesVeryFar = rmCreateClassDistanceConstraint("stuff avoids natives very far", rmClassID("natives"), 24.0);
