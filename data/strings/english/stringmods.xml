@@ -962,21 +962,23 @@
       <string _locid="300959">ZP Santa</string>
       <string _locid="300960">Santa</string>
       <string _locid="300961">ZP Prop Zen Mountain Monastery</string>
-      <string _locid="300962">Sohei Cavalry</string>
-      <string _locid="300963">ZP Nat Sohei Cavalry</string>
+      <string _locid="300962">Sohei Horseman</string>
+      <string _locid="300963">ZP Nat Sohei Horseman</string>
       <string _locid="300964">Cataphract</string>
       <string _locid="300965">ZP Nat Cataphract</string>
       <string _locid="300966">OHeavy Cavalry equipped with a sword</string>
-      <string _locid="300967">Disciplined Sohei Cavalry</string>
-      <string _locid="300968">Honored Sohei Cavalry</string>
-      <string _locid="300969">Legendary Sohei Cavalry</string>
-      <string _locid="300970">Spawns Sohei Cavalry</string>
-      <string _locid="300971">Maintain Sohei Cavalry</string>
-      <string _locid="300972">Maintaining Sohei Cavalry</string>
+      <string _locid="300967">Disciplined Sohei Horseman</string>
+      <string _locid="300968">Honored Sohei Horseman</string>
+      <string _locid="300969">Legendary Sohei Horseman</string>
+      <string _locid="300970">Spawns Sohei Horseman</string>
+      <string _locid="300971">Maintain Sohei Horsemen</string>
+      <string _locid="300972">Maintaining Sohei Horsemen</string>
       <string _locid="300973">ZP Zen Mountain Monastery B</string>
-      <string _locid="300974">ZP Nat Merc Sohei Cavalry</string>
+      <string _locid="300974">ZP Nat Merc Sohei Horseman</string>
       <string _locid="300975">Mountain Cavalry</string>
-      <string _locid="300976">Sends powerful cavalry units led by a Daimyo.</string>
+      <string _locid="300976">Sends powerful cavalry units led by Sohei Master.</string>
+      <string _locid="300977">Sohei Master.</string>
+      <string _locid="300978">ZP SPC Sohei Master.</string>
 
       <!-- ======================================== -->
   <!-- Christmas Strings added by AssertiveWall -->
