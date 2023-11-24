@@ -10927,7 +10927,7 @@
       </effect>
       <effect type="SetName" proto="zpToySoldier" culture="none" newname="400056" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type ="SetName" proto ="zpSantaHelper" culture ="none" newname ="400056">
+      <effect type ="SetName" proto ="zpSantaHelper" culture ="none" newname ="400058">
       </effect>
       <effect type="SetName" proto="zpSantaHelper" culture="none" newname="400059" reqtech="ImpLegendaryNativesShadow">
       </effect>

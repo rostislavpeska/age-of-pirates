@@ -161,6 +161,7 @@ minInterval 25
    {
       xsEnableRule("christmasTechMonitor");
       xsEnableRule("nativeWagonMonitor");
+      xsEnableRule("polarExpressUpgradeMonitor");
    }
 
    if (cMyCiv == cCivDEInca)
@@ -2430,5 +2431,116 @@ minInterval 30
    if (canDisableSelf == true)
    {
       xsDisableSelf();
+   }
+}
+
+//==============================================================================
+// polarExpressUpgradeMonitor
+// Same as normal upgrade monitor, but will grab final upgrade much earlier
+//==============================================================================
+rule polarExpressUpgradeMonitor
+inactive
+minInterval 90
+{
+   if (xsIsRuleEnabled("tradeRouteUpgradeMonitor") == true)
+   {
+      xsDisableRule("tradeRouteUpgradeMonitor");
+   }
+
+   // Start with updating our bool array by looking at what the first unit on the TR is, 
+   // if it's the last tier set the bool to true.
+   int firstMovingUnit = -1;
+   int firstMovingUnitProtoID = -1;
+   for (i = 0; < gNumberTradeRoutes)
+   {
+      firstMovingUnit = kbTradeRouteGetUnit(i, 0);
+      firstMovingUnitProtoID = kbUnitGetProtoUnitID(firstMovingUnit);
+      if ((firstMovingUnitProtoID == cUnitTypedeTradingFluyt) || (firstMovingUnitProtoID == cUnitTypeTrainEngine) ||
+          (firstMovingUnitProtoID == cUnitTypedeCaravanGuide))
+      {
+         xsArraySetBool(gTradeRouteIndexMaxUpgraded, i, true);
+      }
+   }
+
+   // If all the values in the bool array are set to true it means we can disable this rule since we have all the upgrades
+   // across all TRs on the map.
+   bool canDisableSelf = true;
+   for (i = 0; < gNumberTradeRoutes)
+   {
+      if (xsArrayGetBool(gTradeRouteIndexMaxUpgraded, i) == false)
+      {
+         canDisableSelf = false;
+      }
+   }
+   if (canDisableSelf == true)
+   {
+      xsDisableSelf();
+   }
+
+   int numberTradingPostsOnRoute = 0;
+   int tradingPostID = -1;
+   int playerID = -1;
+   int ownedTradingPostID = -1;
+   int numberAllyTradingPosts = 0;
+   int numberEnemyTradingPosts = 0;
+   int tradeRoutePrio = 47 + (btBiasTrade * 5.0);
+
+   for (routeIndex = 0; < gNumberTradeRoutes)
+   {
+      if (xsArrayGetBool(gTradeRouteIndexMaxUpgraded, routeIndex) == true)
+      {
+         continue;
+      }
+
+      numberTradingPostsOnRoute = kbTradeRouteGetNumberTradingPosts(routeIndex);
+      ownedTradingPostID = -1;
+      numberAllyTradingPosts = 0;
+      numberEnemyTradingPosts = 0;
+      for (postIndex = 0; < numberTradingPostsOnRoute)
+      {
+         // This syscall needs no LOS and finds all IDs of (built / foundation) TPs currently on that route, 
+         // so no empty sockets are found.
+         tradingPostID = kbTradeRouteGetTradingPostID(routeIndex, postIndex); 
+         playerID = kbUnitGetPlayerID(tradingPostID);
+         if (playerID == cMyID)
+         {
+            ownedTradingPostID = tradingPostID;
+            numberAllyTradingPosts++;
+            continue;
+         }
+         if (kbIsPlayerAlly(playerID) == true)
+         {
+            numberAllyTradingPosts++;
+            continue;
+         }
+         if (kbIsPlayerAlly(playerID) == false)
+         {
+            numberEnemyTradingPosts++;
+      }
+      }
+      if (ownedTradingPostID >= 0) // If we actually found a TR on this route that is ours, do the upgrade logic.
+      {
+         if (kbBuildingTechGetStatus(xsArrayGetInt(gTradeRouteUpgrades, cTradeRouteFirstUpgrade + (routeIndex * 2)), 
+               ownedTradingPostID) == cTechStatusObtainable)
+         {
+            // We have 1 or more TPs on this route than the enemy, doesn't work for upgrade all special maps.
+            if (numberAllyTradingPosts - numberEnemyTradingPosts >= 1) 
+            {
+               researchSimpleTech(xsArrayGetInt(gTradeRouteUpgrades, cTradeRouteFirstUpgrade + (routeIndex * 2)),
+                  -1, ownedTradingPostID, tradeRoutePrio);
+               return;
+            }
+         }
+         else if ((kbBuildingTechGetStatus(xsArrayGetInt(gTradeRouteUpgrades, cTradeRouteSecondUpgrade + (routeIndex * 2)),
+                   ownedTradingPostID) == cTechStatusObtainable))
+         {
+            if (numberAllyTradingPosts - numberEnemyTradingPosts >= 1) 
+            {
+               researchSimpleTech(xsArrayGetInt(gTradeRouteUpgrades, cTradeRouteSecondUpgrade + (routeIndex * 2)),
+                  -1, ownedTradingPostID, tradeRoutePrio);
+               return;
+            }
+         }
+      }
    }
 }

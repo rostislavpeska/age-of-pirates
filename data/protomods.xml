@@ -20351,7 +20351,7 @@
     <editornameid>400038</editornameid>
     <populationcount>0</populationcount>
     <subciv>zpXmassVillage</subciv>
-    <buildlimit>10</buildlimit>
+    <buildlimit>18</buildlimit>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <stealthdiscoveryradius>2.0000</stealthdiscoveryradius>
@@ -20623,7 +20623,7 @@
     <maxrunvelocity>6.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <buildlimit>10</buildlimit>
+    <buildlimit>16</buildlimit>
     <animfile>units\christmas_units\toy_soldier\toy_soldier.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>dude</physicsinfo>
@@ -20896,7 +20896,7 @@
     <displaynameid>400013</displaynameid>
     <editornameid>400014</editornameid>
     <subciv>zpXmassVillage</subciv>
-    <buildlimit>3</buildlimit>
+    <buildlimit>4</buildlimit>
     <populationcount>0</populationcount>
     <obstructionradiusx>0.9900</obstructionradiusx>
     <obstructionradiusz>0.9900</obstructionradiusz>
@@ -21152,7 +21152,7 @@
     <shortrollovertextid>400044</shortrollovertextid>
     <initialhitpoints>175.0000</initialhitpoints>
     <maxhitpoints>175.0000</maxhitpoints>
-    <buildlimit>5</buildlimit>
+    <buildlimit>8</buildlimit>
     <los>30.0000</los>
     <projectileprotounit>InvisibleProjectile</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
