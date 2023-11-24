@@ -1162,29 +1162,6 @@ void analyzeMap()
       }
    }
 
-   // AssertiveWall: Check for Pirate Maps and set gStartOnDIfferentIslands true for all of them
-   if (cRandomMapName == "zpburma_b" ||
-       cRandomMapName == "zpcoldwar" ||
-       cRandomMapName == "zpdeadsea" ||
-       cRandomMapName == "zpeldorado" ||
-       cRandomMapName == "zpkurils" ||
-       cRandomMapName == "zpmalta_castles" ||
-       cRandomMapName == "zpmalta" ||
-       cRandomMapName == "zpphilippines" ||
-       cRandomMapName == "zptortuga" ||
-       cRandomMapName == "zptreasureisland" ||
-       cRandomMapName == "zpvenice" ||
-       cRandomMapName == "zpmediterranean")
-   {
-      gStartOnDifferentIslands = true;
-      gIsPirateMap = true;
-      gNavyMap = true;
-      xsEnableRule("initializePirateRules");
-
-      gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
-      gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
-   }
-
    // AssertiveWall: Archipelago style maps
    if (true == true) // turns this on/off for testing
    {

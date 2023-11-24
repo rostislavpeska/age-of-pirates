@@ -10585,6 +10585,7 @@
       <effect type="TechStatus" status="obtainable">zpSendWorkshopGold</effect>
       <effect type="TechStatus" status="obtainable">zpChristmasVeteranTech</effect>
       <effect type="TechStatus" status="obtainable">zpChristmasGuardTech</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
     </effects>
   </tech>
   <tech name="zpSpreadTheCheer" type="Normal">

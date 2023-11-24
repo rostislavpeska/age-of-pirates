@@ -10,104 +10,165 @@
 
 //==============================================================================
 // initializePirateRules
+// Rule starts as active, only runs as a setup rule and disables after one cycle
+// Interval set long to avoid interfering with setup.xs
 //==============================================================================
 
 rule initializePirateRules
 active
-minInterval 5
+minInterval 25
 {
-    // Initializes all pirate functions if this is a pirate map
-    // Add always active rules here
-    xsEnableRule("CaribTPMonitor");
-    xsEnableRule("pirateShipAbilityMonitor");
+   // AssertiveWall: Check for Pirate Maps and set gStartOnDifferentIslands true for all of them
+   if (cRandomMapName == "zpburma_b" ||
+       cRandomMapName == "zpcoldwar" ||
+       cRandomMapName == "zpdeadsea" ||
+       cRandomMapName == "zpeldorado" ||
+       cRandomMapName == "zpkurils" ||
+       cRandomMapName == "zpmalta_castles" ||
+       cRandomMapName == "zpmalta" ||
+       cRandomMapName == "zpphilippines" ||
+       cRandomMapName == "zptortuga" ||
+       cRandomMapName == "zptreasureisland" ||
+       cRandomMapName == "zpvenice" ||
+       cRandomMapName == "zpmediterranean")
+   {
+      gStartOnDifferentIslands = true;
+      gIsPirateMap = true;
+      gNavyMap = true;
 
-    // Test to check if this script gets run
-    //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbGetMapCenter());
-    
-    
-    // Initializes native specific rules
-    if (getGaiaUnitCount(cUnitTypezpNativeHousePirate) > 0)
-    {
-        xsEnableRule("MaintainPirateShips");
-        xsEnableRule("PirateTechMonitor");
-    }
-    if (getGaiaUnitCount(cUnitTypezpNativeHouseWokou) > 0)
-    {
-        xsEnableRule("MaintainWokouShips");
-        xsEnableRule("WokouTechMonitor");
-        xsEnableRule("submarineTactics");
-        xsEnableRule("airshipAbilityMonitor");
-    }
-    if (getGaiaUnitCount(cUnitTypezpNativeHouseJewish) > 0)
-    {
-        xsEnableRule("maintainJewishSettlers");
-        xsEnableRule("jewishBuildingMonitor");
-    }
-    if ((getGaiaUnitCount(cUnitTypezpSPCBlueMosque) > 0) || (getGaiaUnitCount(cUnitTypezpSPCGreatMosque) > 0))
-    {
-        xsEnableRule("maintainSufiSettlers");
-        xsEnableRule("maintainSufiBedouins");
-        xsEnableRule("SufiBigButtonMonitor");
-        xsEnableRule("SufiTechMonitor");
-        xsEnableRule("SufiWhiteFortManager");
-        xsEnableRule("zenSufiBuildingMonitor");
-    }
-    if ((getGaiaUnitCount(cUnitTypezpSPCGreatBuddha) > 0) || (getGaiaUnitCount(cUnitTypezpSPCPropZenCastle) > 0))
-    {
-        xsEnableRule("maintainZenSettlers");
-        xsEnableRule("ZenBigButtonMonitor");
-        xsEnableRule("ZenTechMonitor");
-        xsEnableRule("nativeWagonMonitor");
-        xsEnableRule("zenSufiBuildingMonitor");
-    }
-    if (getGaiaUnitCount(cUnitTypezpNativeAztecTempleA) > 0)
-    {
-        xsEnableRule("zpMaintainAztecNativeVillagers");
-        xsEnableRule("zpNativeAztecBigButtonMonitor");
-        xsEnableRule("nativeWagonMonitor");
-        xsEnableRule("zpAztecTechMonitor");
-        xsEnableRule("aztecBuildingMonitor");
-    }
-    if (getGaiaUnitCount(cUnitTypezpWeaponFactoryWinter) > 0 || (getGaiaUnitCount(cUnitTypezpWeaponFactorySummer) > 0))
-    {
-        xsEnableRule("MaintainScientistShips");
-        xsEnableRule("MaintainScientistTanks");
-        xsEnableRule("MaintainScientistAirship");
-        xsEnableRule("zpScientistTechMonitor");
-        xsEnableRule("nativeWagonMonitor");
-        xsEnableRule("submarineTactics");
-        xsEnableRule("airshipAbilityMonitor");
-        xsEnableRule("airshipManager");
-    }
+      gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
+      gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
+   }
 
-    if (getGaiaUnitCount(cUnitTypezpNativeHouseInuit) > 0)
-    {
-        xsEnableRule("zpInuitTechMonitor");
-    }
-    if (getGaiaUnitCount(cUnitTypezpNativeHouseMaltese) > 0)
-    {
-        xsEnableRule("zpMalteseTechMonitor");
-    }
-    if (getGaiaUnitCount(cUnitTypezpJesuitCathedral) > 0)
-    {
-        xsEnableRule("zpJesuitTechMonitor");
-        xsEnableRule("maintainJesuitMissionary");
-        xsEnableRule("priestAbilityMonitor");
-    }
-    if (getGaiaUnitCount(cUnitTypezpNativeUnitVenetianFlag) > 0)
-    {
-        xsEnableRule("VeniceTechMonitor");
-        xsEnableRule("MaintainVeniceShips");
-        xsEnableRule("nativeWagonMonitor");
-        xsEnableRule("dottoreAbilityMonitor");
-    }
+   // AssertiveWall: Winter Wonderland II
+   if (cRandomMapName == "winterwonderlandii")
+   {
+      gIsPirateMap = true;
+      gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
+      gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
+   }
+
+   // AssertiveWall: Archipelago style maps
+   if (cRandomMapName == "euArchipelago" ||
+      cRandomMapName == "euArchipelagoLarge"||
+      cRandomMapName == "zpmediterranean" ||
+      cRandomMapName == "zpkurils")
+   {
+      gIsArchipelagoMap = true;
+      gStartOnDifferentIslands = true;
+      gIsPirateMap = true;
+      gNavyMap = true;
+
+      cvOkToGatherFood = false;      // Setting it false will turn off food gathering. True turns it on.
+      cvOkToGatherGold = false;      // Setting it false will turn off gold gathering. True turns it on.
+      cvOkToGatherWood = false;      // Setting it false will turn off wood gathering. True turns it on.
+      gHomeBase = kbGetPlayerStartingPosition(cMyID);
+   }
+
+   if (gIsPirateMap == false)
+   {
+      return;
+   }
+
+
+   // Initializes all pirate functions if this is a pirate map
+
+   // Add always active rules here
+   xsEnableRule("CaribTPMonitor");
+   xsEnableRule("pirateShipAbilityMonitor");
+
+   // Test to check if this script gets run
+   //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbGetMapCenter());
+   
+   
+   // Initializes native specific rules
+   if (getGaiaUnitCount(cUnitTypezpNativeHousePirate) > 0)
+   {
+      xsEnableRule("MaintainPirateShips");
+      xsEnableRule("PirateTechMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseWokou) > 0)
+   {
+      xsEnableRule("MaintainWokouShips");
+      xsEnableRule("WokouTechMonitor");
+      xsEnableRule("submarineTactics");
+      xsEnableRule("airshipAbilityMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseJewish) > 0)
+   {
+      xsEnableRule("maintainJewishSettlers");
+      xsEnableRule("jewishBuildingMonitor");
+   }
+   if ((getGaiaUnitCount(cUnitTypezpSPCBlueMosque) > 0) || (getGaiaUnitCount(cUnitTypezpSPCGreatMosque) > 0))
+   {
+      xsEnableRule("maintainSufiSettlers");
+      xsEnableRule("maintainSufiBedouins");
+      xsEnableRule("SufiBigButtonMonitor");
+      xsEnableRule("SufiTechMonitor");
+      xsEnableRule("SufiWhiteFortManager");
+      xsEnableRule("zenSufiBuildingMonitor");
+   }
+   if ((getGaiaUnitCount(cUnitTypezpSPCGreatBuddha) > 0) || (getGaiaUnitCount(cUnitTypezpSPCPropZenCastle) > 0))
+   {
+      xsEnableRule("maintainZenSettlers");
+      xsEnableRule("ZenBigButtonMonitor");
+      xsEnableRule("ZenTechMonitor");
+      xsEnableRule("nativeWagonMonitor");
+      xsEnableRule("zenSufiBuildingMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeAztecTempleA) > 0)
+   {
+      xsEnableRule("zpMaintainAztecNativeVillagers");
+      xsEnableRule("zpNativeAztecBigButtonMonitor");
+      xsEnableRule("nativeWagonMonitor");
+      xsEnableRule("zpAztecTechMonitor");
+      xsEnableRule("aztecBuildingMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpWeaponFactoryWinter) > 0 || (getGaiaUnitCount(cUnitTypezpWeaponFactorySummer) > 0))
+   {
+      xsEnableRule("MaintainScientistShips");
+      xsEnableRule("MaintainScientistTanks");
+      xsEnableRule("MaintainScientistAirship");
+      xsEnableRule("zpScientistTechMonitor");
+      xsEnableRule("nativeWagonMonitor");
+      xsEnableRule("submarineTactics");
+      xsEnableRule("airshipAbilityMonitor");
+      xsEnableRule("airshipManager");
+   }
+
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseInuit) > 0)
+   {
+      xsEnableRule("zpInuitTechMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseMaltese) > 0)
+   {
+      xsEnableRule("zpMalteseTechMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpJesuitCathedral) > 0)
+   {
+      xsEnableRule("zpJesuitTechMonitor");
+      xsEnableRule("maintainJesuitMissionary");
+      xsEnableRule("priestAbilityMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeUnitVenetianFlag) > 0)
+   {
+      xsEnableRule("VeniceTechMonitor");
+      xsEnableRule("MaintainVeniceShips");
+      xsEnableRule("nativeWagonMonitor");
+      xsEnableRule("dottoreAbilityMonitor");
+   }
+   if (getUnit(cUnitTypezpPropChristmassTree) > 0)
+   {
+      xsEnableRule("christmasTechMonitor");
+      xsEnableRule("nativeWagonMonitor");
+   }
 
    if (cMyCiv == cCivDEInca)
    {
         xsEnableRule("priestessAbilityMonitor");
    }
     
-    xsDisableSelf();
+   xsDisableSelf();
 }
 
 //==============================================================================
@@ -1596,6 +1657,10 @@ minInterval 15
             buildingType = cUnitTypezpWaterFort;
             break;
          }
+         case cUnitTypezpWorkshopWagon:
+         {
+            buildingType = cUnitTypezpWorkshop;
+         }
       }
 
       if (buildingType < 0) // Didn't find a building so go to the next iteration.
@@ -2195,7 +2260,7 @@ minInterval 30
 //==============================================================================
 rule VeniceTechMonitor
 inactive
-mininterval 60
+minInterval 60
 {
    if (kbUnitCount(cMyID, cUnitTypezpSocketVenetians, cUnitStateAny) == 0)
       {
@@ -2233,9 +2298,137 @@ mininterval 60
       []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpVeniceEmbassy, cUnitStateABQ) >= 1); },
       cUnitTypezpVeniceEmbassy);
 
-  if (canDisableSelf == true)
+   if (canDisableSelf == true)
+   {
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
+/* shouldSendPolarExpress
+  Looks at how many TP's we have compared with the enemy to determine if we 
+  should try and send polar express card. 
+  Shamelessly stolen from tradeRouteUpgradeMonitor, using the globals set there
+*/
+//==============================================================================
+bool shouldSendPolarExpress()
+{
+   int numberTradingPostsOnRoute = 0;
+   int tradingPostID = -1;
+   int playerID = -1;
+   int ownedTradingPostID = -1;
+   int numberAllyTradingPosts = 0;
+   int numberEnemyTradingPosts = 0;
+   int tradeRoutePrio = 47 + (btBiasTrade * 5.0);
+
+   for (routeIndex = 0; < gNumberTradeRoutes)
+   {
+      if (xsArrayGetBool(gTradeRouteIndexMaxUpgraded, routeIndex) == true)
       {
-          xsDisableSelf();
+         continue;
       }
-  
+
+      numberTradingPostsOnRoute = kbTradeRouteGetNumberTradingPosts(routeIndex);
+      ownedTradingPostID = -1;
+      numberAllyTradingPosts = 0;
+      numberEnemyTradingPosts = 0;
+      for (postIndex = 0; < numberTradingPostsOnRoute)
+      {
+         // This syscall needs no LOS and finds all IDs of (built / foundation) TPs currently on that route, 
+         // so no empty sockets are found.
+         tradingPostID = kbTradeRouteGetTradingPostID(routeIndex, postIndex); 
+         playerID = kbUnitGetPlayerID(tradingPostID);
+         if (playerID == cMyID)
+         {
+            ownedTradingPostID = tradingPostID;
+            numberAllyTradingPosts++;
+            continue;
+         }
+         if (kbIsPlayerAlly(playerID) == true)
+         {
+            numberAllyTradingPosts++;
+            continue;
+         }
+         if (kbIsPlayerAlly(playerID) == false)
+         {
+            numberEnemyTradingPosts++;
+         }
+      }
+      if (ownedTradingPostID >= 0) // If we actually found a TR on this route that is ours, do the upgrade logic.
+      {
+         // If we're here, that means the trade route isn't fully upgraded so as long as we have more TP's than 
+         //   our enemy then we'll send it.
+         if (numberAllyTradingPosts - numberEnemyTradingPosts >= 1) 
+         {
+            return true;
+         }
+      }
+   }
+   // If we're here, we didn't find any unupgraded trade routes
+   return false;
+}
+
+//==============================================================================
+// Christmas Village Tech Monitor
+//==============================================================================
+rule christmasTechMonitor
+inactive
+minInterval 30
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSPCSocketXmassVillage, cUnitStateAny) == 0)
+   {
+      return; // Player has no christmas socket.
+   }
+
+   // Hot chocolate, basically any time after reaching age 2
+   bool canDisableSelf = researchSimpleTechByCondition(cTechzpHotChocolate,
+   []() -> bool { return ( kbGetAge() >= cAge2 ); },
+   cUnitTypeTradingPost);
+
+   // Deck the halls, only after enough houses
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpDeckTheHalls,
+   []() -> bool { return (kbUnitCount(cMyID, gHouseUnit, cUnitStateAlive) > 9 ||
+                           kbUnitCount(cMyID, cUnitTypeypShrineJapanese, cUnitStateAlive) > 9); },
+   cUnitTypeTradingPost);
+
+   // Polar express, as long as it'll do something and as long as we have more TP's than the enemy
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpPolarExpress,
+   []() -> bool { return (shouldSendPolarExpress() == true); },
+   cUnitTypeTradingPost);
+
+   // Upgrade trade route to iron horse after sending polar express
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpPolarExpress,
+   []() -> bool { return (shouldSendPolarExpress() == true); },
+   cUnitTypeTradingPost);
+
+   // Send Rudolph as soon as available
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSendRudolph,
+   []() -> bool { return ( kbGetAge() >= cAge2 ); },
+   cUnitTypeTradingPost);
+
+   // Send spread the cheer after 10 minutes for large teams, 20 for medium, and 30 for solo (getAllyCount does not include self)
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSpreadTheCheer,
+   []() -> bool { return ( (getAllyCount() > 2 && xsGetTime() > 10*60*1000) ||
+                           (getAllyCount() > 1 && xsGetTime() > 20*60*1000) ||
+                           (getAllyCount() <= 0 && xsGetTime() > 30*60*1000)  ); },
+   cUnitTypeTradingPost);
+
+   // Send workshops as soon as available
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSendWorkshopFood,
+   []() -> bool { return ( kbTechGetStatus(cTechzpSendWorkshopFood) == cTechStatusObtainable ); },
+   cUnitTypeTradingPost);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSendWorkshopWood,
+   []() -> bool { return ( kbTechGetStatus(cTechzpSendWorkshopWood) == cTechStatusObtainable ); },
+   cUnitTypeTradingPost);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSendWorkshopGold,
+   []() -> bool { return ( kbTechGetStatus(cTechzpSendWorkshopGold) == cTechStatusObtainable ); },
+   cUnitTypeTradingPost);
+
+
+   if (canDisableSelf == true)
+   {
+      xsDisableSelf();
+   }
 }

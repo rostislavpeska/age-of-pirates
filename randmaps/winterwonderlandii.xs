@@ -31,19 +31,54 @@ void main(void)
 //		switchAroo = 2; // for testing
 
 	// Strings
+	// sometimes make it all snow
+	/* paintmix5: player area
+	   paintmix4: mountain
+	   paintmix1: mountain
+	   paintmix7: forest
+
+	*/
+	int forecast = rmRandInt(1,3);
+	if (forecast == 1)
+	{
+		string paintMix1 = "rockies_snow";		// rockies_grass
+		string paintMix2 = "rockies_snow";	// rockies_snow
+		string paintMix3 = "rockies_snow";
+		string paintMix4 = "rockies_snow";	// rockies_grass_snowa
+		string paintMix5 = "rockies_snow";
+		string paintMix6 = "rockies_snow";
+		string paintMix7 = "rockies_snow_forest";	// rockies_grass_forest
+		string paintMix8 = "rockies_snow_forest";
+	}
+	else if (forecast == 2)
+	{
+		paintMix1 = "rockies_snow";		// rockies_grass
+		paintMix2 = "rockies_grass_snowc";	// rockies_snow
+		paintMix3 = "rockies_grass_snowd";
+		paintMix4 = "rockies_snow";	// rockies_grass_snowa
+		paintMix5 = "rockies_grass_snowc";
+		paintMix6 = "rockies_grass_snowc";
+		paintMix7 = "rockies_snow_forest";	// rockies_grass_forest
+		paintMix8 = "rockies_snow_forest";
+	}
+	else
+	{
+		paintMix1 = "rockies_snow";		// rockies_grass
+		paintMix2 = "rockies_grass_snow";	// rockies_snow
+		paintMix3 = "rockies_grass_snow";
+		paintMix4 = "rockies_snow";	// rockies_grass_snowa
+		paintMix5 = "rockies_grass_snowb";
+		paintMix6 = "rockies_grass_snowc";
+		paintMix7 = "rockies_snow_forest";	// rockies_grass_forest
+		paintMix8 = "rockies_snow_forest";
+	}
+
 	string treasureSet = "yukon";
 	string shineAlight = "WinterWonderLand";		// Rockie_Skirmish
 	string mntType1 = "rocky mountain edge";
 	string mntType2 = "rocky mountain2";
 	string forTesting = "testmix";
-	string paintMix1 = "rockies_snow";		// rockies_grass
-	string paintMix2 = "rockies_grass_snow";	// rockies_snow
-	string paintMix3 = "rockies_grass_snow";
-	string paintMix4 = "rockies_snow";	// rockies_grass_snowa
-	string paintMix5 = "rockies_grass_snowb";
-	string paintMix6 = "rockies_grass_snowc";
-	string paintMix7 = "rockies_snow_forest";	// rockies_grass_forest
-	string paintMix8 = "rockies_snow_forest";
+
 	string cliffPaint1 = "rockies\groundsnow1_roc";
 	string cliffPaint2 = "rockies\ground4_roc";
 	string food1 = "Reindeer";
@@ -664,6 +699,18 @@ void main(void)
 */
 	rmSetStatusText("",0.30);
 
+	// Paint Areas
+	int playerPaintID=rmCreateArea("paint the player level");
+	rmSetAreaMix(playerPaintID, paintMix2);
+//	rmSetAreaMix(playerPaintID, forTesting);
+	rmSetAreaLocation(playerPaintID, 0.50, 0.50);
+	rmSetAreaSize(playerPaintID, 0.90);
+	rmSetAreaWarnFailure(playerPaintID, false);
+	rmSetAreaCoherence(playerPaintID, 1.00);
+//	rmAddAreaConstraint(playerPaintID, stayBorder);
+//	rmAddAreaConstraint(playerPaintID, stayPlayerLevel);
+	rmBuildArea(playerPaintID);	
+
 	// ____________________ Natives ____________________
 	// Set up Natives
 	int subCiv0 = -1;
@@ -1094,7 +1141,8 @@ void main(void)
 	int stayPeak2 = rmCreateAreaMaxDistanceConstraint("stay in peak 2", centralPeak2ID, 0.0);
 
 	// Paint Areas
-	int playerPaintID=rmCreateArea("paint the player level");
+	// player area painted before native placement
+	/*int playerPaintID=rmCreateArea("paint the player level");
 	rmSetAreaMix(playerPaintID, paintMix2);
 //	rmSetAreaMix(playerPaintID, forTesting);
 	rmSetAreaLocation(playerPaintID, 0.50, 0.50);
@@ -1103,7 +1151,7 @@ void main(void)
 	rmSetAreaCoherence(playerPaintID, 1.00);
 //	rmAddAreaConstraint(playerPaintID, stayBorder);
 //	rmAddAreaConstraint(playerPaintID, stayPlayerLevel);
-	rmBuildArea(playerPaintID);	
+	rmBuildArea(playerPaintID);	*/
 	
 	int mountPaint1ID=rmCreateArea("paint the valley");
 	rmSetAreaMix(mountPaint1ID, paintMix4);
@@ -1280,7 +1328,7 @@ void main(void)
 		stayInValleyForestPatch = rmCreateAreaMaxDistanceConstraint("stay in valley forest patch"+i, valleyForestPatchID, 0.0);
 
 		int valleyForestTreeID = rmCreateObjectDef("valley forest trees"+i);
-		rmAddObjectDefItem(valleyForestTreeID, treeType6, 1+PlayerNum/2, 3+PlayerNum);
+		rmAddObjectDefItem(valleyForestTreeID, treeType6, 1+PlayerNum/4, 3+PlayerNum);
 		rmAddObjectDefItem(valleyForestTreeID, treeType2, 1+PlayerNum/2, 3+PlayerNum);
 		rmAddObjectDefItem(valleyForestTreeID, treeType3, 1+PlayerNum/2, 3+PlayerNum);
 		rmAddObjectDefItem(valleyForestTreeID, treeType4, 1+PlayerNum/2, 3+PlayerNum);
@@ -1569,6 +1617,49 @@ void main(void)
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	// AI Pirate Captains
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+
+	rmCreateTrigger("ZP Pick Pirate Captain"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerCondition("Tech Status Equals");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParamInt("TechID",586);
+	rmSetTriggerConditionParamInt("Status",2);
+
+	int pirateCaptain=-1;
+	pirateCaptain = rmRandInt(1,3);
+
+	if (pirateCaptain==1)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateXMass1"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (pirateCaptain==2)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateXMass2"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (pirateCaptain==3)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateXMass3"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
