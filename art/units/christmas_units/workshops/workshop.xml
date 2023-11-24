@@ -197,9 +197,25 @@
               </assetreference>
             </p1>
             <p99>
-              <assetreference type="GrannyModel" shape="east_arsenal_age2">
-                <file>units\christmas_units\workshops\east\age_2\east_arsenal_age2</file>
-              </assetreference>
+              <logic type="Tech">
+                <none>
+                  <assetreference type="GrannyModel" shape="east_arsenal_age2">
+                    <file>units\christmas_units\workshops\east\age_2\east_arsenal_age2</file>
+                  </assetreference>
+                </none>
+                <zpSendWorkshopWood>
+                  <assetreference type="GrannyModel" shape="east_arsenal_age2">
+                    <file>units\christmas_units\workshops\east\age_2\east_arsenal_age2</file>
+                    <materialvariant index="1"></materialvariant>
+                  </assetreference>
+                </zpSendWorkshopWood>
+                <zpSendWorkshopGold>
+                  <assetreference type="GrannyModel" shape="east_arsenal_age2">
+                    <file>units\christmas_units\workshops\east\age_2\east_arsenal_age2</file>
+                    <materialvariant index="2"></materialvariant>
+                  </assetreference>
+                </zpSendWorkshopGold>
+              </logic>
             </p99>
           </logic>
         </normal>
