@@ -6406,6 +6406,11 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
 
+
+      <effect type="TechStatus" status="active">zpBigButtonResearchDone</effect>
+
+      
+
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMalteseLand</effect>  
     </effects>
   </tech>
@@ -10455,7 +10460,7 @@
   <tech name ="zpXMassExpansion" type ="Normal">
 		<dbid>40368</dbid>
 		<displaynameid>400004</displaynameid>
-  	<researchpoints>0.2000</researchpoints>
+  	<researchpoints>100.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\art\units\natives\christmass_content\santa_small.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
@@ -10567,6 +10572,32 @@
       <effect type="TextOutputTechName">110130</effect>
     </effects>
   </tech>
+
+  <tech name="zpBigButtonResearchDecrease" type="Normal">
+    <dbid>40372</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="0.001" subtype="ResearchPoints" relativity="Assign">
+        <target type="techWithFlag">YPNeverLastInLine</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpBigButtonResearchDecrease</effect>
+    </effects>
+  </tech>
+  <tech name="zpBigButtonResearchIncrease" type="Normal">
+    <dbid>40373</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="100.00" subtype="ResearchPoints" relativity="Assign">
+        <target type="techWithFlag">YPNeverLastInLine</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpBigButtonResearchIncrease</effect>
+    </effects>
+  </tech>
+
 
 
 
