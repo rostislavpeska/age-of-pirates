@@ -41,5 +41,17 @@
 			<Icon>resources\art\terrain\trees\christmas_tree_icon_64.png</Icon>
 			<PortraitIcon>resources\art\terrain\trees\christmas_tree_icon_portrait.png</PortraitIcon>
 		</Unit>
+		<Unit name='TrainCar'>
+			<AnimFile>units\christmas_units\polar_express\train_car.xml</AnimFile>
+		</Unit>
+		<Unit name='TrainCarWood'>
+			<AnimFile>units\christmas_units\polar_express\train_car.xml</AnimFile>
+		</Unit>
+		<Unit name='TrainCarFood'>
+			<AnimFile>units\christmas_units\polar_express\train_car.xml</AnimFile>
+		</Unit>
+		<Unit name='TrainCarCoin'>
+			<AnimFile>units\christmas_units\polar_express\train_car.xml</AnimFile>
+		</Unit>
 	</ProtoMods>
 </Mods>
