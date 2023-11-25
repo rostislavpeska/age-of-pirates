@@ -20351,7 +20351,7 @@
     <editornameid>400038</editornameid>
     <populationcount>0</populationcount>
     <subciv>zpXmassVillage</subciv>
-    <buildlimit>18</buildlimit>
+    <buildlimit>16</buildlimit>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <stealthdiscoveryradius>2.0000</stealthdiscoveryradius>
@@ -20896,7 +20896,7 @@
     <displaynameid>400013</displaynameid>
     <editornameid>400014</editornameid>
     <subciv>zpXmassVillage</subciv>
-    <buildlimit>4</buildlimit>
+    <buildlimit>5</buildlimit>
     <populationcount>0</populationcount>
     <obstructionradiusx>0.9900</obstructionradiusx>
     <obstructionradiusz>0.9900</obstructionradiusz>
