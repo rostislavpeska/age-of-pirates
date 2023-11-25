@@ -1,0 +1,63 @@
+<animfile>
+  <component>XP_car
+    <logic type="Variation">
+      <v1>
+        <logic type="LowPoly">
+          <normal>
+            <assetreference type="GrannyModel">
+              <file>units\christmas_units\polar_express\xp_car\xp_car</file>
+            </assetreference>
+          </normal>
+          <lowpoly>
+            <assetreference type="GrannyModel">
+              <file>units\trains\xp_car\lp_xp_car</file>
+            </assetreference>
+          </lowpoly>
+        </logic>
+      </v1>
+      <v2>
+        <logic type="LowPoly">
+          <normal>
+            <assetreference type="GrannyModel">
+              <file>units\christmas_units\polar_express\xp_car\xp_car</file>
+              <materialvariant index="1"></materialvariant>
+            </assetreference>
+          </normal>
+          <lowpoly>
+            <assetreference type="GrannyModel">
+              <file>units\trains\xp_car\lp_xp_car2</file>
+            </assetreference>
+          </lowpoly>
+        </logic>
+      </v2>
+      <v3>
+        <logic type="LowPoly">
+          <normal>
+            <assetreference type="GrannyModel">
+              <file>units\christmas_units\polar_express\xp_car\xp_car</file>
+              <materialvariant index="2"></materialvariant>
+            </assetreference>
+          </normal>
+          <lowpoly>
+            <assetreference type="GrannyModel">
+              <file>units\trains\xp_car\lp_xp_car3</file>
+            </assetreference>
+          </lowpoly>
+        </logic>
+      </v3>
+    </logic>
+    <decal>
+      <effecttype>default</effecttype>
+      <texture>shadows_selections\shadow_circle_128x128</texture>
+      <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+      <width>1.0</width>
+      <height>1.0</height>
+    </decal>
+  </component>
+  <anim>Idle
+    <component>XP_car</component>
+  </anim>
+  <anim>Walk
+    <component>XP_car</component>
+  </anim>
+</animfile>

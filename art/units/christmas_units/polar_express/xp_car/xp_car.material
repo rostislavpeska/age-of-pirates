@@ -1,0 +1,60 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_emissive_advanced">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\trains\xp_car\xp_car\textures\xp_car_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\trains\xp_car\xp_car\textures\xp_car_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\trains\xp_car\xp_car\textures\xp_car_mata_masks">
+      </texture>
+      <texture name="Emissive" override="units\christmas_units\polar_express\xp_car\xp_car_matA_Emitter">
+      </texture>
+      <float name="EmissiveIntensity" override="3.4000">
+      </float>
+      <vector4 name="EmissiveColor" override="1.000, 1.000, 1.000, 0.000">
+      </vector4>
+      <float name="Lift Metallic" override="1.0000">
+      </float>
+      <float name="AO Intensity" override="3.4440">
+      </float>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\trains\xp_car\xp_car2\textures\xp_car_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\trains\xp_car\xp_car2\textures\xp_car_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\trains\xp_car\xp_car2\textures\xp_car_mata_masks">
+      </texture>
+      <texture name="Emissive" override="units\christmas_units\polar_express\xp_car\xp_car_matA_Emitter">
+      </texture>
+      <float name="EmissiveIntensity" override="3.4000">
+      </float>
+      <vector4 name="EmissiveColor" override="1.000, 1.000, 1.000, 0.000">
+      </vector4>
+      <float name="Lift Metallic" override="1.0000">
+      </float>
+      <float name="AO Intensity" override="3.4440">
+      </float>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="units\trains\xp_car\xp_car3\textures\xp_car_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\trains\xp_car\xp_car3\textures\xp_car_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\trains\xp_car\xp_car3\textures\xp_car_mata_masks">
+      </texture>
+      <texture name="Emissive" override="units\christmas_units\polar_express\xp_car\xp_car_matA_Emitter">
+      </texture>
+      <float name="EmissiveIntensity" override="3.4000">
+      </float>
+      <vector4 name="EmissiveColor" override="1.000, 1.000, 1.000, 0.000">
+      </vector4>
+      <float name="Lift Metallic" override="1.0000">
+      </float>
+      <float name="AO Intensity" override="3.4440">
+      </float>
+    </parameters>
+  </submaterial>
+</material>
