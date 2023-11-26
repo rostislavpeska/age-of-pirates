@@ -150,7 +150,7 @@ void main(void)
 
    // Nature Constraints
    int avoidAll=rmCreateTypeDistanceConstraint("avoid all", "all", 6.0);
-   int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "mineSalt", 35.0);
+   int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "mine", 35.0);
    int mediumAvoidImpassableLand=rmCreateTerrainDistanceConstraint("medium avoid impassable land", "Land", false, 12.0);
    int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 40.0);
    int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 50.0);
@@ -416,7 +416,7 @@ rmAddAreaInfluenceSegment(eastIsland, 0.8, 0.5, 0.6, 0.2);
    // Port Sites
    int portSite1 = rmCreateArea ("port_site1");
    rmSetAreaSize(portSite1, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-    rmSetAreaLocation(portSite1, 0.8-rmXTilesToFraction(25), 0.23);
+    rmSetAreaLocation(portSite1, 0.8-rmXTilesToFraction(23), 0.23);
    rmSetAreaMix(portSite1, "Africa Desert Grass dry");
    rmSetAreaCoherence(portSite1, 1);
    rmSetAreaSmoothDistance(portSite1, 15);
@@ -436,7 +436,7 @@ rmAddAreaInfluenceSegment(eastIsland, 0.8, 0.5, 0.6, 0.2);
 
    int portSite2 = rmCreateArea ("port_site2");
    rmSetAreaSize(portSite2, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-   rmSetAreaLocation(portSite2, 0.8-rmXTilesToFraction(25) ,0.4);
+   rmSetAreaLocation(portSite2, 0.8-rmXTilesToFraction(22) ,0.4);
    rmSetAreaMix(portSite2, "Africa Desert Grass dry");
    rmSetAreaCoherence(portSite2, 1);
    rmSetAreaSmoothDistance(portSite2, 15);
@@ -485,7 +485,7 @@ rmAddAreaInfluenceSegment(eastIsland, 0.5, 0.8, 0.2, 0.6);
 
    int portSite3 = rmCreateArea ("port_site3");
    rmSetAreaSize(portSite3, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-   rmSetAreaLocation(portSite3, 0.23, 0.8-rmZTilesToFraction(25));
+   rmSetAreaLocation(portSite3, 0.23, 0.8-rmZTilesToFraction(23));
    rmSetAreaCoherence(portSite3, 1);
    rmSetAreaMix(portSite3, "Africa Desert Grass dry");
    rmSetAreaSmoothDistance(portSite3, 15);
@@ -504,7 +504,7 @@ rmAddAreaInfluenceSegment(eastIsland, 0.5, 0.8, 0.2, 0.6);
 
    int portSite4 = rmCreateArea ("port_site4");
    rmSetAreaSize(portSite4, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-   rmSetAreaLocation(portSite4, 0.4, 0.8-rmXTilesToFraction(25));
+   rmSetAreaLocation(portSite4, 0.4, 0.8-rmXTilesToFraction(22));
    rmSetAreaCoherence(portSite4, 1);
    rmSetAreaMix(portSite4, "Africa Desert Grass dry");
    rmSetAreaSmoothDistance(portSite4, 15);
@@ -721,32 +721,32 @@ if (cNumberNonGaiaPlayers >= 4){
    // Port 1
 
    int portID01 = rmCreateObjectDef("port 01");
-   portID01 = rmCreateGrouping("portG 01", "harbour_malta_05");
-   rmPlaceGroupingAtLoc(portID01, 0, 0.8-rmXTilesToFraction(12), 0.23);
+   portID01 = rmCreateGrouping("portG 01", "harbour_Universal_NE");
+   rmPlaceGroupingAtLoc(portID01, 0, 0.8-rmXTilesToFraction(10), 0.23);
 
    // Port 2
    int portID02 = rmCreateObjectDef("port 02");
-   portID02 = rmCreateGrouping("portG 02", "harbour_malta_05");
-   rmPlaceGroupingAtLoc(portID02, 0, 0.8-rmXTilesToFraction(12) ,0.4);
+   portID02 = rmCreateGrouping("portG 02", "harbour_Universal_NE");
+   rmPlaceGroupingAtLoc(portID02, 0, 0.8-rmXTilesToFraction(9) ,0.4);
 
    // Port 3
    int portID03 = rmCreateObjectDef("port 03");
-   portID03 = rmCreateGrouping("portG 03", "harbour_malta_07");
-   rmPlaceGroupingAtLoc(portID03, 0, 0.23, 0.8-rmZTilesToFraction(12));
+   portID03 = rmCreateGrouping("portG 03", "harbour_Universal_NW");
+   rmPlaceGroupingAtLoc(portID03, 0, 0.23, 0.8-rmZTilesToFraction(10));
 
    // Port 4
    int portID04 = rmCreateObjectDef("port 04");
-   portID04 = rmCreateGrouping("portG 04", "harbour_malta_07");
-   rmPlaceGroupingAtLoc(portID04, 0, 0.4, 0.8-rmXTilesToFraction(12));
+   portID04 = rmCreateGrouping("portG 04", "harbour_Universal_NW");
+   rmPlaceGroupingAtLoc(portID04, 0, 0.4, 0.8-rmXTilesToFraction(9));
 
    // Port 5
    int portID05 = rmCreateObjectDef("port 05");
-   portID05 = rmCreateGrouping("portG 05", "harbour_malta_06");
+   portID05 = rmCreateGrouping("portG 05", "harbour_Universal_SW");
    rmPlaceGroupingAtLoc(portID05, 0, 0.5+rmXTilesToFraction(12), 0.9);
 
    // Port 6
    int portID06 = rmCreateObjectDef("port 06");
-   portID06 = rmCreateGrouping("portG 06", "harbour_malta_02");
+   portID06 = rmCreateGrouping("portG 06", "harbour_Universal_SE");
    rmPlaceGroupingAtLoc(portID06, 0, 0.9, 0.5+rmXTilesToFraction(12));
 
 // Text
@@ -1027,7 +1027,7 @@ rmSetObjectDefMaxDistance(TCID, TCfloat);
 
 //Player resources
    int playerMineID = rmCreateObjectDef("player mine");
-	rmAddObjectDefItem(playerMineID, "mineSalt", 1, 0);
+	rmAddObjectDefItem(playerMineID, "mine", 1, 0);
 	rmSetObjectDefMinDistance(playerMineID, 10.0);
 	rmSetObjectDefMaxDistance(playerMineID, 30.0);
    rmAddObjectDefConstraint(playerMineID, avoidImpassableLand); 
@@ -1104,7 +1104,7 @@ rmClearClosestPointConstraints();
 	for(i=0; < mineCount)
 	{
 	  int westmineID = rmCreateObjectDef("west mine "+i);
-	  rmAddObjectDefItem(westmineID, "mineSalt", 1, 0.0);
+	  rmAddObjectDefItem(westmineID, "mine", 1, 0.0);
       rmSetObjectDefMinDistance(westmineID, 0.0);
       rmSetObjectDefMaxDistance(westmineID, rmXFractionToMeters(0.45));
 	  rmAddObjectDefConstraint(westmineID, avoidCoin);
@@ -1118,7 +1118,7 @@ rmClearClosestPointConstraints();
    for(i=0; < mineCount)
 	{
 	  int eastmineID = rmCreateObjectDef("east mine "+i);
-	  rmAddObjectDefItem(eastmineID, "mineSalt", 1, 0.0);
+	  rmAddObjectDefItem(eastmineID, "mine", 1, 0.0);
       rmSetObjectDefMinDistance(eastmineID, 0.0);
       rmSetObjectDefMaxDistance(eastmineID, rmXFractionToMeters(0.45));
 	  rmAddObjectDefConstraint(eastmineID, avoidCoin);
@@ -1131,7 +1131,7 @@ rmClearClosestPointConstraints();
 	
 
 	  int northmineID = rmCreateObjectDef("bonus mine "+i);
-	  rmAddObjectDefItem(northmineID, "mineSalt", 1, 0.0);
+	  rmAddObjectDefItem(northmineID, "mine", 1, 0.0);
       rmSetObjectDefMinDistance(northmineID, 0.0);
       rmSetObjectDefMaxDistance(northmineID, rmXFractionToMeters(0.45));
 	  rmAddObjectDefConstraint(northmineID, avoidCoin);
@@ -1144,7 +1144,7 @@ rmClearClosestPointConstraints();
 	  rmPlaceObjectDefAtLoc(northmineID, 0, 0.5, 0.5);
 
      int northmineID2 = rmCreateObjectDef("bonus mine2 "+i);
-	  rmAddObjectDefItem(northmineID2, "mineSalt", 1, 0.0);
+	  rmAddObjectDefItem(northmineID2, "mine", 1, 0.0);
       rmSetObjectDefMinDistance(northmineID2, 0.0);
       rmSetObjectDefMaxDistance(northmineID2, rmXFractionToMeters(0.45));
 	  rmAddObjectDefConstraint(northmineID2, avoidCoin);
@@ -1157,7 +1157,7 @@ rmClearClosestPointConstraints();
 	  rmPlaceObjectDefAtLoc(northmineID2, 0, 0.5, 0.5);
  
 
-	  int southmineID = rmCreateObjectDef("bonus mine "+i);
+	  int southmineID = rmCreateObjectDef("bonus mine 3"+i);
 	  rmAddObjectDefItem(southmineID, "deShipRuins", 1, 0.0);
       rmSetObjectDefMinDistance(southmineID, 0.0);
       rmSetObjectDefMaxDistance(southmineID, rmXFractionToMeters(0.45));
@@ -2452,6 +2452,7 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
 // Testing
 
 

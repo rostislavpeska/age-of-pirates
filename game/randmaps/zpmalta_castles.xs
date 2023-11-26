@@ -197,7 +197,8 @@ void main(void)
    //Trade Route Contstraints
    int islandAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("trade route", 12.0);
    int ObjectAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("object avoid trade route", 7.0);
-   int avoidTradeSockets = rmCreateTypeDistanceConstraint("avoid trade sockets", "sockettraderoute", 30.0);
+   int avoidTradeSockets = rmCreateTypeDistanceConstraint("avoid trade sockets", "zpSPCPortSocket", 37.0);
+   int avoidTradeSocketsShort = rmCreateTypeDistanceConstraint("avoid trade sockets short", "zpSPCPortSocket", 12.0);
 
 
 	    	
@@ -221,33 +222,33 @@ void main(void)
    // Port Sites
 
    int portSite1 = rmCreateArea ("port_site1");
-   rmSetAreaSize(portSite1, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
+   rmSetAreaSize(portSite1, rmAreaTilesToFraction(630.0), rmAreaTilesToFraction(630.0));
     rmSetAreaLocation(portSite1, 0.95-rmXTilesToFraction(25), 0.5);
    rmSetAreaMix(portSite1, baseMix);
    rmSetAreaCoherence(portSite1, 1);
-   rmSetAreaSmoothDistance(portSite1, 15);
-   rmSetAreaBaseHeight(portSite1, 4.5);
+   rmSetAreaSmoothDistance(portSite1, 20);
+   rmSetAreaBaseHeight(portSite1, 3.5);
    rmAddAreaToClass(portSite1, classPortSite);
    rmBuildArea(portSite1);
 
 
    int portSite2 = rmCreateArea ("port_site2");
-   rmSetAreaSize(portSite2, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
+   rmSetAreaSize(portSite2, rmAreaTilesToFraction(630.0), rmAreaTilesToFraction(630.0));
    rmSetAreaLocation(portSite2, 0.5,0.05+rmXTilesToFraction(25));
    rmSetAreaMix(portSite2, baseMix);
    rmSetAreaCoherence(portSite2, 1);
-   rmSetAreaSmoothDistance(portSite2, 15);
-   rmSetAreaBaseHeight(portSite2, 4.5);
+   rmSetAreaSmoothDistance(portSite2, 20);
+   rmSetAreaBaseHeight(portSite2, 3.5);
    rmAddAreaToClass(portSite2, classPortSite);
    rmBuildArea(portSite2);
 
    int portSite3 = rmCreateArea ("port_site3");
-   rmSetAreaSize(portSite3, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
+   rmSetAreaSize(portSite3, rmAreaTilesToFraction(630.0), rmAreaTilesToFraction(630.0));
 
    rmSetAreaMix(portSite3, baseMix);
    rmSetAreaCoherence(portSite3, 1);
-   rmSetAreaSmoothDistance(portSite3, 15);
-   rmSetAreaBaseHeight(portSite3, 4.5);
+   rmSetAreaSmoothDistance(portSite3, 20);
+   rmSetAreaBaseHeight(portSite3, 3.5);
    rmAddAreaToClass(portSite3, classPortSite);
 
 
@@ -261,12 +262,12 @@ void main(void)
       rmBuildArea(portSite3);
 
       int portSite4 = rmCreateArea ("port_site4");
-      rmSetAreaSize(portSite4, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
+      rmSetAreaSize(portSite4, rmAreaTilesToFraction(630.0), rmAreaTilesToFraction(630.0));
       rmSetAreaLocation(portSite4, 0.5,0.95-rmXTilesToFraction(25));
       rmSetAreaMix(portSite4, baseMix);
       rmSetAreaCoherence(portSite4, 1);
-      rmSetAreaSmoothDistance(portSite4, 15);
-      rmSetAreaBaseHeight(portSite4, 4.5);
+      rmSetAreaSmoothDistance(portSite4, 20);
+      rmSetAreaBaseHeight(portSite4, 3.5);
       rmAddAreaToClass(portSite4, classPortSite);
       rmBuildArea(portSite4);
       }
@@ -586,29 +587,29 @@ void main(void)
          
    // Port 1
    int portID01 = rmCreateObjectDef("port 02");
-   portID01 = rmCreateGrouping("portG 01", "harbour_malta_05");
+   portID01 = rmCreateGrouping("portG 01", "Harbour_Center_NE");
    rmPlaceGroupingAtLoc(portID01, 0, 0.95-rmXTilesToFraction(12), 0.5);
 
    // Port 2
    int portID02 = rmCreateObjectDef("port 02");
-   portID02 = rmCreateGrouping("portG 02", "harbour_malta_02");
+   portID02 = rmCreateGrouping("portG 02", "Harbour_Center_SE");
    rmPlaceGroupingAtLoc(portID02, 0, 0.5,0.05+rmXTilesToFraction(12));
 
    // Port 3
    int portID03 = rmCreateObjectDef("port 03");
 
    if (cNumberNonGaiaPlayers <= 3 || cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 7){
-      portID03 = rmCreateGrouping("portG 03", "harbour_malta_08");
-      rmPlaceGroupingAtLoc(portID03, 0, 0.18+rmXTilesToFraction(7), 0.82-rmXTilesToFraction(12));
+      portID03 = rmCreateGrouping("portG 03", "Harbour_Center_W");
+      rmPlaceGroupingAtLoc(portID03, 0, 0.18+rmXTilesToFraction(8), 0.82-rmXTilesToFraction(9));
       }
 
    else{
-      portID03 = rmCreateGrouping("portG 03", "harbour_malta_06");
+      portID03 = rmCreateGrouping("portG 03", "Harbour_Center_SW");
       rmPlaceGroupingAtLoc(portID03, 0, 0.05+rmXTilesToFraction(12), 0.5);
 
       // Port 4
       int portID04 = rmCreateObjectDef("port 04");
-      portID04 = rmCreateGrouping("portG 04", "harbour_malta_07");
+      portID04 = rmCreateGrouping("portG 04", "Harbour_Center_NW");
       rmPlaceGroupingAtLoc(portID04, 0, 0.5,0.95-rmXTilesToFraction(12));
       }
 
@@ -880,6 +881,7 @@ void main(void)
       rmSetObjectDefMinDistance(malteseControllerID, 0.0);
       rmSetObjectDefMaxDistance(malteseControllerID, 80);
       rmAddObjectDefConstraint(malteseControllerID, avoidWater20);
+      rmAddObjectDefConstraint(malteseControllerID, avoidTradeSockets);
       rmAddObjectDefConstraint(malteseControllerID, avoidControllerFar);
       rmAddObjectDefConstraint(malteseControllerID, avoidPlayerArea);
 
@@ -888,6 +890,7 @@ void main(void)
       rmSetObjectDefMinDistance(malteseControllerID2, 0.0);
       rmSetObjectDefMaxDistance(malteseControllerID2, 80);
       rmAddObjectDefConstraint(malteseControllerID2, avoidWater20);
+      rmAddObjectDefConstraint(malteseControllerID2, avoidTradeSockets);
       rmAddObjectDefConstraint(malteseControllerID2, avoidControllerFar);
       rmAddObjectDefConstraint(malteseControllerID2, avoidPlayerArea);
 
@@ -896,6 +899,7 @@ void main(void)
       rmSetObjectDefMinDistance(malteseControllerID3, 0.0);
       rmSetObjectDefMaxDistance(malteseControllerID3, 80);
       rmAddObjectDefConstraint(malteseControllerID3, avoidWater20);
+      rmAddObjectDefConstraint(malteseControllerID3, avoidTradeSockets);
       rmAddObjectDefConstraint(malteseControllerID3, avoidControllerFar);
       rmAddObjectDefConstraint(malteseControllerID3, avoidPlayerArea);
 
@@ -904,6 +908,7 @@ void main(void)
       rmSetObjectDefMinDistance(malteseControllerID4, 0.0);
       rmSetObjectDefMaxDistance(malteseControllerID4, 80);
       rmAddObjectDefConstraint(malteseControllerID4, avoidWater20);
+      rmAddObjectDefConstraint(malteseControllerID4, avoidTradeSockets);
       rmAddObjectDefConstraint(malteseControllerID4, avoidControllerFar);
       rmAddObjectDefConstraint(malteseControllerID4, avoidPlayerArea);
 
@@ -912,6 +917,7 @@ void main(void)
       rmSetObjectDefMinDistance(malteseControllerID5, 0.0);
       rmSetObjectDefMaxDistance(malteseControllerID5, 80);
       rmAddObjectDefConstraint(malteseControllerID5, avoidWater20);
+      rmAddObjectDefConstraint(malteseControllerID5, avoidTradeSockets);
       rmAddObjectDefConstraint(malteseControllerID5, avoidControllerFar);
       rmAddObjectDefConstraint(malteseControllerID5, avoidPlayerArea);
       
@@ -920,6 +926,7 @@ void main(void)
       rmSetObjectDefMinDistance(malteseControllerID6, 0.0);
       rmSetObjectDefMaxDistance(malteseControllerID6, 80);
       rmAddObjectDefConstraint(malteseControllerID6, avoidWater20);
+      rmAddObjectDefConstraint(malteseControllerID6, avoidTradeSockets);
       rmAddObjectDefConstraint(malteseControllerID6, avoidControllerFar);
       rmAddObjectDefConstraint(malteseControllerID6, avoidPlayerArea);
 
@@ -1007,6 +1014,7 @@ void main(void)
       rmSetAreaBaseHeight(eastIslandVillage1, 2.5);
       rmSetAreaElevationVariation(eastIslandVillage1, 0.0);
       rmAddAreaConstraint(eastIslandVillage1, avoidBonusIslands);
+      rmAddAreaConstraint(eastIslandVillage1, avoidTradeSocketsShort);
       rmAddAreaConstraint(eastIslandVillage1, islandAvoidTradeRoute);
       rmBuildArea(eastIslandVillage1);
 
@@ -1021,6 +1029,7 @@ void main(void)
       rmSetAreaBaseHeight(eastIslandVillage2, 2.5);
       rmSetAreaElevationVariation(eastIslandVillage2, 0.0);
       rmAddAreaConstraint(eastIslandVillage2, avoidBonusIslands);
+      rmAddAreaConstraint(eastIslandVillage2, avoidTradeSocketsShort);
       rmAddAreaConstraint(eastIslandVillage2, islandAvoidTradeRoute);
       rmBuildArea(eastIslandVillage2);
 
@@ -1035,6 +1044,7 @@ void main(void)
       rmSetAreaBaseHeight(eastIslandVillage3, 2.5);
       rmSetAreaElevationVariation(eastIslandVillage3, 0.0);
       rmAddAreaConstraint(eastIslandVillage3, avoidBonusIslands);
+      rmAddAreaConstraint(eastIslandVillage3, avoidTradeSocketsShort);
       rmAddAreaConstraint(eastIslandVillage3, islandAvoidTradeRoute);
       rmBuildArea(eastIslandVillage3);
 
@@ -1049,6 +1059,7 @@ void main(void)
       rmSetAreaBaseHeight(eastIslandVillage4, 2.5);
       rmSetAreaElevationVariation(eastIslandVillage4, 0.0);
       rmAddAreaConstraint(eastIslandVillage4, avoidBonusIslands);
+      rmAddAreaConstraint(eastIslandVillage4, avoidTradeSocketsShort);
       rmAddAreaConstraint(eastIslandVillage4, islandAvoidTradeRoute);
       rmBuildArea(eastIslandVillage4);
 
@@ -1063,6 +1074,7 @@ void main(void)
       rmSetAreaBaseHeight(eastIslandVillage5, 2.5);
       rmSetAreaElevationVariation(eastIslandVillage5, 0.0);
       rmAddAreaConstraint(eastIslandVillage5, avoidBonusIslands);
+      rmAddAreaConstraint(eastIslandVillage5, avoidTradeSocketsShort);
       rmAddAreaConstraint(eastIslandVillage5, islandAvoidTradeRoute);
       rmBuildArea(eastIslandVillage5);
 
@@ -1077,6 +1089,7 @@ void main(void)
       rmSetAreaBaseHeight(eastIslandVillage6, 2.5);
       rmSetAreaElevationVariation(eastIslandVillage6, 0.0);
       rmAddAreaConstraint(eastIslandVillage6, avoidBonusIslands);
+      rmAddAreaConstraint(eastIslandVillage6, avoidTradeSocketsShort);
       rmAddAreaConstraint(eastIslandVillage6, islandAvoidTradeRoute);
       rmBuildArea(eastIslandVillage6);
 
@@ -1753,6 +1766,38 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
+// Update ports
+
+rmCreateTrigger("I Update Ports");
+rmAddTriggerCondition("Player Unit Count");
+rmSetTriggerConditionParamInt("PlayerID",0);
+rmSetTriggerConditionParam("Protounit","deTradingGalleon");
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",0);
+rmSetTriggerEffectParam("TechID","cTechzpUpdatePort1"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmCreateTrigger("II Update Ports");
+rmAddTriggerCondition("Player Unit Count");
+rmSetTriggerConditionParamInt("PlayerID",0);
+rmSetTriggerConditionParam("Protounit","deTradingFluyt");
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",0);
+rmSetTriggerEffectParam("TechID","cTechzpUpdatePort2"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
 
 
 // Privateer training
