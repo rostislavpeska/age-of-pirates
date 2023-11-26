@@ -830,7 +830,7 @@
    <tech name="zpPickConsulateTechAvailable" type="Normal">
     <dbid>40031</dbid>
     <displaynameid>65108</displaynameid>
-    <researchpoints>0.2000</researchpoints>
+    <researchpoints>100.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\ingame\politicians\consulate_openrelations.png</icon>
     <icontexturecoords>.001953125 .001953125 .611328125 .6015625</icontexturecoords>
@@ -956,7 +956,7 @@
   <tech name ="zpTheBlackFlag" type ="Normal">
 		<dbid>40036</dbid>
 		<displaynameid>300085</displaynameid>
-  	<researchpoints>0.2000</researchpoints>
+  	<researchpoints>100.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\dance-pirates.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
@@ -2239,7 +2239,7 @@
   <tech name ="zpMalteseCross" type ="Normal">
 		<dbid>40055</dbid>
 		<displaynameid>300142</displaynameid>
-  	<researchpoints>0.2000</researchpoints>
+  	<researchpoints>100.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\dance-malta.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
@@ -2719,7 +2719,7 @@
   <tech name ="zpBlackmailing" type ="Normal">
 		<dbid>40106</dbid>
 		<displaynameid>300201</displaynameid>
-  	<researchpoints>0.2000</researchpoints>
+  	<researchpoints>100.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\dance-pirates.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
@@ -5402,16 +5402,21 @@
   <tech name="zpPickNativeConsulateTechAvailable" type="Normal">
     <dbid>40191</dbid>
     <displaynameid>300369</displaynameid>
-    <researchpoints>0.2000</researchpoints>
+    <researchpoints>100.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\azteccity.png</icon>
     <icontexturecoords>.001953125 .001953125 .611328125 .6015625</icontexturecoords>
     <rollovertextid>300370</rollovertextid>
     <flag>YPInfiniteTech</flag>
     <flag>DoNotQueue</flag>
+    <flag>YPNeverLastInLine</flag>
     <flag>YPUseBigHugeButton</flag>
     <flag>DENoTextMessageIfFree</flag>
     <flag>Shadow</flag>
+    <effects>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianFishingBoat</effect>
+    </effects>
   </tech>
   <tech name="zpConsulateNatMaya" type="Normal">
     <dbid>40192</dbid>
@@ -5862,7 +5867,7 @@
   <tech name ="zpJewishStar" type ="Normal">
 		<dbid>40204</dbid>
 		<displaynameid>300425</displaynameid>
-  	<researchpoints>0.2000</researchpoints>
+  	<researchpoints>100.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\jewishstar_big.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
@@ -6673,7 +6678,7 @@
   <tech name ="zpPickScientist" type ="Normal">
 		<dbid>40226</dbid>
 		<displaynameid>300486</displaynameid>
-  	<researchpoints>0.2000</researchpoints>
+  	<researchpoints>100.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\dance-malta.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
@@ -8724,7 +8729,7 @@
   <tech name ="zpVenetianExpansion" type ="Normal">
 		<dbid>40301</dbid>
 		<displaynameid>300714</displaynameid>
-  	<researchpoints>0.2000</researchpoints>
+  	<researchpoints>100.0000</researchpoints>
     <cost resourcetype ="Gold">250.0000</cost>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\dance-pirates.png</icon>
@@ -9955,7 +9960,7 @@
   <tech name ="zpOrthodoxInfluence" type ="Normal">
 		<dbid>40350</dbid>
 		<displaynameid>300901</displaynameid>
-  	<researchpoints>0.2000</researchpoints>
+  	<researchpoints>100.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\dance-pirates.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>

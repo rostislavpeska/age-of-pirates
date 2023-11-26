@@ -160,6 +160,12 @@ minInterval 25
       xsEnableRule("polarExpressUpgradeMonitor");
    }
 
+   if (getUnit(cUnitTypezpNativeHouseOrthodox) > 0)
+   {
+      xsEnableRule("orthodoxTechMonitor");
+      xsEnableRule("nativeWagonMonitor");
+   }
+
    if (cMyCiv == cCivDEInca)
    {
         xsEnableRule("priestessAbilityMonitor");
@@ -1658,6 +1664,10 @@ minInterval 15
          {
             buildingType = cUnitTypezpWorkshop;
          }
+         case cUnitTypezpMountainCitadelWagon:
+         {
+            buildingType = cUnitTypezpMountainCitadel;
+         }
       }
 
       if (buildingType < 0) // Didn't find a building so go to the next iteration.
@@ -2294,6 +2304,55 @@ minInterval 60
       canDisableSelf &= researchSimpleTechByCondition(cTechzpVeniceExpeditionaryFleet,
       []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpVeniceEmbassy, cUnitStateABQ) >= 1); },
       cUnitTypezpVeniceEmbassy);
+
+   if (canDisableSelf == true)
+   {
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
+// Orthodox Tech Monitor
+//==============================================================================
+rule orthodoxTechMonitor
+inactive
+minInterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketOrthodox, cUnitStateAny) == 0)
+      {
+
+      return; // Player has no venice socket.
+      }
+
+      // Georgian Outposts I
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpOrthodoxGeorgianCastle,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateOrthodoxGeorgians) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Georgian Outposts II
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpOrthodoxCitadel,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateOrthodoxGeorgians) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Russian Army
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpOrthodoxRussianJaegers,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateOrthodoxRussians) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Russian Cannons
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpOrthodoxKolokol,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateOrthodoxRussians) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Bulgarian Steamer
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpOrthodoxSteamer,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateOrthodoxBulgarians) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Bulgarian Ironclad
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpOrthodoxFleet,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateOrthodoxBulgarians) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
 
    if (canDisableSelf == true)
    {
