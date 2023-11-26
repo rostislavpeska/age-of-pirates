@@ -1,0 +1,24 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_emissive_advanced">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units/trains/caboose/textures/caboose_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units/trains/caboose/textures/caboose_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units/trains/caboose/textures/caboose_matA_Masks">
+      </texture>
+      <texture name="Emissive" override="units/christmas_units/polar_express/caboose/caboose_matA_Emitter">
+      </texture>
+      <float name="EmissiveIntensity" override="3.4000">
+      </float>
+      <vector4 name="EmissiveColor" override="1.000, 1.000, 1.000, 0.000">
+      </vector4>
+      <float name="Lift Metallic" override="1.0000">
+      </float>
+      <float name="AO Intensity" override="3.4440">
+      </float>
+    </parameters>
+  </submaterial>
+</material>

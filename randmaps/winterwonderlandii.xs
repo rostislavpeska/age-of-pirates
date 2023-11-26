@@ -38,15 +38,15 @@ void main(void)
 	   paintmix7: forest
 
 	*/
-	int forecast = rmRandInt(1,3);
+	int forecast = rmRandInt(1,4);
 	if (forecast == 1)
 	{
 		string paintMix1 = "rockies_snow";		// rockies_grass
-		string paintMix2 = "rockies_snow";	// rockies_snow
-		string paintMix3 = "rockies_snow";
+		string paintMix2 = "rockies_grass_snow";	// rockies_snow
+		string paintMix3 = "rockies_grass_snow";
 		string paintMix4 = "rockies_snow";	// rockies_grass_snowa
-		string paintMix5 = "rockies_snow";
-		string paintMix6 = "rockies_snow";
+		string paintMix5 = "rockies_grass_snowb";
+		string paintMix6 = "rockies_grass_snowc";
 		string paintMix7 = "rockies_snow_forest";	// rockies_grass_forest
 		string paintMix8 = "rockies_snow_forest";
 	}
@@ -64,11 +64,11 @@ void main(void)
 	else
 	{
 		paintMix1 = "rockies_snow";		// rockies_grass
-		paintMix2 = "rockies_grass_snow";	// rockies_snow
-		paintMix3 = "rockies_grass_snow";
+		paintMix2 = "rockies_snow";	// rockies_snow
+		paintMix3 = "rockies_snow";
 		paintMix4 = "rockies_snow";	// rockies_grass_snowa
-		paintMix5 = "rockies_grass_snowb";
-		paintMix6 = "rockies_grass_snowc";
+		paintMix5 = "rockies_snow";
+		paintMix6 = "rockies_snow";
 		paintMix7 = "rockies_snow_forest";	// rockies_grass_forest
 		paintMix8 = "rockies_snow_forest";
 	}
@@ -118,7 +118,7 @@ void main(void)
 		playerTiles = 12000;
 	if (PlayerNum >= 6)
 		playerTiles = 11000;
-	if (TeamNum > 2 || teamZeroCount != teamOneCount)
+	if (TeamNum > 2 || abs(teamZeroCount - teamOneCount) > 1)
 		playerTiles = 14000;
 
 	int size=2.0*sqrt(PlayerNum*playerTiles);
@@ -292,7 +292,7 @@ void main(void)
 	
 	// ____________________ Player Placement ____________________
    // Set up player starting locations.
-   if (cNumberTeams > 2 || teamZeroCount != teamOneCount)
+   if (cNumberTeams > 2 || abs(teamZeroCount - teamOneCount) > 1)
    {
 		if (cNumberTeams > 2)
 			rmSetPlacementSection(0.99, 0.989999);
@@ -358,7 +358,7 @@ void main(void)
 	rmSetAreaCliffType(outerRimID, mntType1);  
 	rmSetAreaCliffEdge(outerRimID, 1, 1.0, 0.0, 0.0, 0);
 	rmSetAreaCliffHeight(outerRimID, -4, 1.0, 0.3);
-	rmSetAreaCliffPainting(outerRimID, true, false, true);
+	rmSetAreaCliffPainting(outerRimID, true, true, true);
 	rmAddAreaToClass(outerRimID, rmClassID("classCliff"));
 	rmBuildArea(outerRimID);
 
@@ -433,7 +433,7 @@ void main(void)
     rmSetObjectDefMaxDistance(socketID2, 8.0);      
 */
 	rmSetObjectDefTradeRouteID(socketID, tradeRouteID);
-	if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 	{
 		if (switchAroo == 1)
 		{
@@ -521,7 +521,7 @@ void main(void)
     
 /*    rmSetObjectDefTradeRouteID(socketID2, tradeRouteID2);
 	rmAddTradeRouteWaypoint(tradeRouteID2, 0.20, 0.70);
-	if (TeamNum > 2 || teamZeroCount != teamOneCount) {
+	if (TeamNum > 2 || abs(teamZeroCount - teamOneCount) > 1) {
 		rmAddTradeRouteWaypoint(tradeRouteID2, 0.30, 0.80);
 		rmAddTradeRouteWaypoint(tradeRouteID2, 0.40, 0.85);
 		rmAddTradeRouteWaypoint(tradeRouteID2, 0.50, 0.90);
@@ -534,7 +534,7 @@ void main(void)
 //    rmBuildTradeRoute(tradeRouteID2, toiletPaper);
 	
 	float sktLoc1 = 0.02;
-	if (TeamNum > 2 || teamZeroCount != teamOneCount)
+	if (TeamNum > 2 || abs(teamZeroCount - teamOneCount) > 1)
 		sktLoc1 = 0.00;
 	float sktLoc2 = 0.20;
 	float sktLoc3 = 0.80;
@@ -552,7 +552,7 @@ void main(void)
     vector socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, sktLoc1);
     rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 
-	if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 	{
 		if (PlayerNum > 4)
 		{
@@ -591,7 +591,7 @@ void main(void)
 	{
 		if (PlayerNum == 8)
 		{
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.125);
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.2);  // up from .125
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.250);
@@ -609,12 +609,12 @@ void main(void)
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.750);
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.875);
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.8);  // down from .875
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		}
 		else if (PlayerNum == 7)
 		{
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.1429);
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.1929);  // up from .1429
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.2858);
@@ -629,12 +629,12 @@ void main(void)
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.7145);
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.8574);
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.8074);  // down from .8574
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		}
 		else if (PlayerNum == 6)
 		{
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.16667);
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.19667); // up from .16667
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.33334);
@@ -646,7 +646,7 @@ void main(void)
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.66668);
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.83335);
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.80335);  // down from .83335
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		}
 		else if (PlayerNum == 5)
@@ -665,18 +665,18 @@ void main(void)
 		}
 		else if (PlayerNum == 4)
 		{
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.25);
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.30);  // up from .25
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.50);
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.75);
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.70);  // down from .75
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		}
 		else if (PlayerNum == 3)
 		{
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.33333);
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.33333); 
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.66666);
@@ -690,7 +690,7 @@ void main(void)
 	}
 /*    vector socketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID2, sktLoc1);
     rmPlaceObjectDefAtPoint(socketID2, 0, socketLoc2);
-	if (TeamNum > 2 || teamZeroCount != teamOneCount) {
+	if (TeamNum > 2 || abs(teamZeroCount - teamOneCount) > 1) {
 		socketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID2, sktLoc2);
 		rmPlaceObjectDefAtPoint(socketID2, 0, socketLoc2);
 		}
@@ -707,7 +707,7 @@ void main(void)
 	rmSetAreaSize(playerPaintID, 0.90);
 	rmSetAreaWarnFailure(playerPaintID, false);
 	rmSetAreaCoherence(playerPaintID, 1.00);
-//	rmAddAreaConstraint(playerPaintID, stayBorder);
+	rmAddAreaConstraint(playerPaintID, stayBorder);
 //	rmAddAreaConstraint(playerPaintID, stayPlayerLevel);
 	rmBuildArea(playerPaintID);	
 
@@ -736,8 +736,8 @@ void main(void)
 //	{
 		nativeID0 = rmCreateGrouping("native A", natGrpName1+whichVillage1);
 		nativeID1 = rmCreateGrouping("native B", natGrpName1+whichVillage2);
-//		nativeID2 = rmCreateGrouping("native C", natGrpName2+whichVillage3);
-//		nativeID3 = rmCreateGrouping("native D", natGrpName2+whichVillage4);
+		nativeID2 = rmCreateGrouping("native C", natGrpName1+whichVillage3);
+		nativeID3 = rmCreateGrouping("native D", natGrpName1+whichVillage4);
 //	}
 //	else
 //	{
@@ -749,14 +749,14 @@ void main(void)
 	
 	rmAddGroupingToClass(nativeID0, rmClassID("natives"));
 	rmAddGroupingToClass(nativeID1, rmClassID("natives"));
-//	rmAddGroupingToClass(nativeID2, rmClassID("natives"));
-//	rmAddGroupingToClass(nativeID3, rmClassID("natives"));
+	rmAddGroupingToClass(nativeID2, rmClassID("natives"));
+	rmAddGroupingToClass(nativeID3, rmClassID("natives"));
 
-	if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 	{
 		if (switchAroo == 1)
 		{
-			if (PlayerNum == 2)
+			if (PlayerNum <= 4)
 			{
 				rmPlaceGroupingAtLoc(nativeID0, 0, 0.75, 0.35);
 				rmPlaceGroupingAtLoc(nativeID1, 0, 0.25, 0.65);
@@ -765,11 +765,13 @@ void main(void)
 			{
 				rmPlaceGroupingAtLoc(nativeID0, 0, 0.70, 0.35);
 				rmPlaceGroupingAtLoc(nativeID1, 0, 0.30, 0.65);
+				rmPlaceGroupingAtLoc(nativeID2, 0, 0.70, 0.65);
+				rmPlaceGroupingAtLoc(nativeID3, 0, 0.30, 0.35);
 			}
 		}
 		else
 		{
-			if (PlayerNum == 2)
+			if (PlayerNum <= 4)
 			{
 				rmPlaceGroupingAtLoc(nativeID0, 0, 0.75, 0.65);
 				rmPlaceGroupingAtLoc(nativeID1, 0, 0.25, 0.35);
@@ -778,6 +780,8 @@ void main(void)
 			{
 				rmPlaceGroupingAtLoc(nativeID0, 0, 0.70, 0.65);
 				rmPlaceGroupingAtLoc(nativeID1, 0, 0.30, 0.35);
+				rmPlaceGroupingAtLoc(nativeID2, 0, 0.70, 0.35);
+				rmPlaceGroupingAtLoc(nativeID3, 0, 0.30, 0.65);
 			}
 		}
 	}
@@ -794,7 +798,7 @@ void main(void)
 	int midIslandID=rmCreateArea("Mid Island");
 	if (PlayerNum == 2)
 		rmSetAreaSize(midIslandID, 0.35);
-	else if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+	else if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 		rmSetAreaSize(midIslandID, 0.32+0.01*PlayerNum);
 	else
 		rmSetAreaSize(midIslandID, 0.25+0.005*PlayerNum);
@@ -838,7 +842,7 @@ void main(void)
 	rmAddObjectDefConstraint(playerGoldID, avoidTradeRouteMin);
 	rmAddObjectDefConstraint(playerGoldID, avoidImpassableLandShort);
 	rmAddObjectDefConstraint(playerGoldID, avoidTradeRouteSocketMin);
-	if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 		rmAddObjectDefConstraint(playerGoldID, stayMidIsland);
 	
 	int playerGold2ID = rmCreateObjectDef("player second mine");
@@ -855,7 +859,7 @@ void main(void)
 	rmAddObjectDefConstraint(playerGold2ID, avoidTradeRouteSocketMin);
 	rmAddObjectDefConstraint(playerGold2ID, avoidImpassableLandShort);
 //	rmAddObjectDefConstraint(playerGold2ID, stayPlayerLevel);
-	if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 		rmAddObjectDefConstraint(playerGold2ID, avoidMidIsland);
 	else
 		rmAddObjectDefConstraint(playerGold2ID, avoidMidIslandFar);
@@ -917,7 +921,7 @@ void main(void)
 //	rmAddObjectDefConstraint(playerHerd2ID, stayPlayerLevel);
 	if (PlayerNum > 2 && TeamNum == 2)
 		rmAddObjectDefConstraint(playerHerd2ID, avoidMidIsland);
-	if (teamZeroCount != teamOneCount)
+	if (abs(teamZeroCount - teamOneCount) > 1)
 		rmAddObjectDefConstraint(playerHerd2ID, avoidMidIslandFar);
 		
 	int playerHerd3ID = rmCreateObjectDef("player 3rd herd");
@@ -942,7 +946,7 @@ void main(void)
 	rmSetObjectDefMaxDistance(playerNuggetID, 26.0);
 	rmAddObjectDefToClass(playerNuggetID, classStartingResource);
 	rmAddObjectDefConstraint(playerNuggetID, avoidStartingResourcesShort);
-	if (teamZeroCount != teamOneCount)
+	if (abs(teamZeroCount - teamOneCount) > 1)
 		rmAddObjectDefConstraint(playerNuggetID, avoidMidIslandFar);
 //	else 
 //		rmAddObjectDefConstraint(playerNuggetID, avoidMidIsland);
@@ -973,7 +977,7 @@ void main(void)
 		rmAddGroupingConstraint(playerNativeID, avoidTradeRouteSocketMin);
 
 		rmPlaceObjectDefAtLoc(startingUnits, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-		if (TeamNum > 2 || teamZeroCount != teamOneCount || rmGetIsKOTH() == true)
+		if (TeamNum > 2 || abs(teamZeroCount - teamOneCount) > 1 || rmGetIsKOTH() == true)
 			rmPlaceGroupingAtLoc(playerNativeID, 0, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 		rmPlaceObjectDefAtLoc(playerGoldID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 		rmPlaceObjectDefAtLoc(playerGold2ID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
@@ -989,9 +993,9 @@ void main(void)
 		rmPlaceObjectDefAtLoc(playerTreeID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 		rmPlaceObjectDefAtLoc(playerTreeID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 		rmPlaceObjectDefAtLoc(playerTree2ID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-		if (TeamNum > 2 || teamZeroCount != teamOneCount)
+		if (TeamNum > 2 || abs(teamZeroCount - teamOneCount) > 1)
 			rmPlaceObjectDefAtLoc(playerTree2ID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-		if (TeamNum > 2 || teamZeroCount != teamOneCount)
+		if (TeamNum > 2 || abs(teamZeroCount - teamOneCount) > 1)
 			rmPlaceObjectDefAtLoc(playerHerd3ID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 		rmPlaceObjectDefAtLoc(playerNuggetID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 		rmPlaceObjectDefAtLoc(playerNuggetID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
@@ -1007,7 +1011,7 @@ void main(void)
 	// build mountains
 	int centralMount1ID=rmCreateArea("center mountain 1");
 	rmSetAreaTerrainType(centralMount1ID, cliffPaint2);
-	if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 	{
 		rmSetAreaLocation(centralMount1ID, 0.50, 0.70);
 		rmSetAreaSize(centralMount1ID, 0.07);
@@ -1019,7 +1023,7 @@ void main(void)
 	}
 	rmSetAreaWarnFailure(centralMount1ID, false);
 	rmSetAreaCliffType(centralMount1ID, mntType2);
-	if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 		rmSetAreaCliffEdge(centralMount1ID, 4, 0.21, 0.0, 0.0, 0);
 	else
 		rmSetAreaCliffEdge(centralMount1ID, 8, 0.10, 0.0, 0.0, 0);
@@ -1027,7 +1031,7 @@ void main(void)
 	rmSetAreaCoherence(centralMount1ID, 0.8);
 	rmSetAreaSmoothDistance(centralMount1ID, 12);
 	rmSetAreaHeightBlend(centralMount1ID, 1);
-	if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 		rmAddAreaInfluenceSegment(centralMount1ID, 0.50, 0.60, 0.50, 0.80);
 	rmSetAreaCliffPainting(centralMount1ID, true, false, true);
 	rmAddAreaConstraint(centralMount1ID, avoidTradeRouteShort);
@@ -1060,7 +1064,7 @@ void main(void)
 	rmAddAreaConstraint(centralMount2ID, avoidNativesShort);
 	rmAddAreaConstraint(centralMount2ID, avoidStartingResourcesShort);
 //	rmAddAreaConstraint(centralMount2ID, stayPlayerLevel);
-	if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 		rmBuildArea(centralMount2ID);
 
 	int avoidMount2 = rmCreateAreaDistanceConstraint("avoid mount 2", centralMount2ID, 4.0);
@@ -1076,7 +1080,7 @@ void main(void)
 	rmSetObjectDefMaxDistance(staticgoldID, rmXFractionToMeters(0.0));
 	rmAddObjectDefToClass(staticgoldID, classGold);
 	rmAddObjectDefConstraint(staticgoldID, avoidImpassableLandMin);
-	if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 	{
 		rmPlaceObjectDefAtLoc(staticgoldID, 0, 0.50, 0.85);
 		rmPlaceObjectDefAtLoc(staticgoldID, 0, 0.50, 0.15);
@@ -1085,7 +1089,7 @@ void main(void)
 	// build peaks
 	int centralPeak1ID=rmCreateArea("center peak 1");
 	rmSetAreaTerrainType(centralPeak1ID, cliffPaint2);
-	if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 	{
 		rmSetAreaLocation(centralPeak1ID, 0.50, 0.70);
 		rmSetAreaSize(centralPeak1ID, 0.02);
@@ -1105,7 +1109,7 @@ void main(void)
 	rmSetAreaCoherence(centralPeak1ID, 0.8);
 	rmSetAreaSmoothDistance(centralPeak1ID, 12);
 	rmSetAreaHeightBlend(centralPeak1ID, 1);
-	if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 		rmAddAreaInfluenceSegment(centralPeak1ID, 0.50, 0.65, 0.50, 0.75);
 	rmSetAreaCliffPainting(centralPeak1ID, true, false, true);
 	rmAddAreaConstraint(centralPeak1ID, stayMount1);
@@ -1134,7 +1138,7 @@ void main(void)
 	rmAddAreaConstraint(centralPeak2ID, avoidTradeRoute);
 	rmAddAreaConstraint(centralPeak2ID, avoidGoldMin);
 //	rmAddAreaConstraint(centralPeak2ID, avoidImpassableLand);
-	if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 		rmBuildArea(centralPeak2ID);
 
 	int avoidPeak2 = rmCreateAreaDistanceConstraint("avoid peak 2", centralPeak2ID, 4.0);
@@ -1156,7 +1160,7 @@ void main(void)
 	int mountPaint1ID=rmCreateArea("paint the valley");
 	rmSetAreaMix(mountPaint1ID, paintMix4);
 //	rmSetAreaMix(mountPaint1ID, forTesting);
-	if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 	{
 		rmSetAreaLocation(mountPaint1ID, 0.50, 0.70);
 		rmSetAreaSize(mountPaint1ID, 0.10);
@@ -1179,7 +1183,7 @@ void main(void)
 	rmSetAreaWarnFailure(mountPaint2ID, false);
 	rmSetAreaCoherence(mountPaint2ID, 0.75);
 	rmAddAreaConstraint(mountPaint2ID, stayNearMount2);
-	if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 		rmBuildArea(mountPaint2ID);	
 
 	// ____________________ KOTH ____________________
@@ -1214,7 +1218,7 @@ void main(void)
 	// ____________________ Mines ____________________
 	// Team Mines
 	int minecount = 3*PlayerNum;
-	if (TeamNum > 2 || teamZeroCount != teamOneCount)
+	if (TeamNum > 2 || abs(teamZeroCount - teamOneCount) > 1)
 		minecount = 4*PlayerNum;
 
 	for (i=0; < minecount)
@@ -1266,7 +1270,7 @@ void main(void)
 		rmAddObjectDefConstraint(randomtreeID, avoidNativesShort);
 		rmAddObjectDefConstraint(randomtreeID, avoidTradeRouteMin);
 		rmAddObjectDefConstraint(randomtreeID, avoidTradeRouteSocketMin);
-		if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+		if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 		{
 			if (i < rdmTreeCount/2)
 			{
@@ -1312,7 +1316,7 @@ void main(void)
 		rmAddAreaConstraint(valleyForestPatchID, avoidCenterMin); 
 		rmAddAreaConstraint(valleyForestPatchID, avoidMount1); 
 		rmAddAreaConstraint(valleyForestPatchID, avoidRamp1); 
-		if (TeamNum == 2 && teamZeroCount == teamOneCount && rmGetIsKOTH() == false)
+		if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 		{
 			rmAddAreaConstraint(valleyForestPatchID, avoidMount2); 
 			rmAddAreaConstraint(valleyForestPatchID, avoidRamp2); 

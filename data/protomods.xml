@@ -20408,8 +20408,6 @@
     <unittype>Unit</unittype>
     <unittype>AbstractInfantry</unittype>
     <unittype>AbstractSkirmisher</unittype>
-    <unittype>Mercenary</unittype>
-    <unittype>FortressMercenary</unittype>
     <unittype>LogicalTypePickableMerc</unittype>
     <unittype>AbstractRifleman</unittype>
     <unittype>AbstractNativeWarrior</unittype>
@@ -20919,8 +20917,8 @@
     <trainpoints>45.0000</trainpoints>
     <bounty>55.0000</bounty>
     <buildbounty>55.0000</buildbounty>
-    <cost resourcetype="Wood">200.0000</cost>
-    <cost resourcetype="Gold">300.0000</cost>
+    <cost resourcetype="Food">175.0000</cost>
+    <cost resourcetype="Gold">275.0000</cost>
     <allowedage>2</allowedage>
     <armor type="Ranged" value="0.7500">
     </armor>
