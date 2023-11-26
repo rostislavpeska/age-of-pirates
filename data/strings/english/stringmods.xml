@@ -875,15 +875,15 @@
       <string _locid="300872">ZP Nat House Orthodox North</string>
       <string _locid="300873">ZP SPC Harbour Center A</string>
       <string _locid="300874">ZP SPC Harbour Center B</string>
-      <string _locid="300875">Christmass Tree</string>
-      <string _locid="300876">ZP Christmass Tree</string>
+      <string _locid="300875">Christmas Tree</string>
+      <string _locid="300876">ZP Christmas Tree</string>
       <string _locid="300877">ZP Native EU House</string>
       <string _locid="300878">Meeting House</string>
       <string _locid="300879">ZP Native Meeting House</string>
       <string _locid="300880">ZP NAT MERC Renegade Flamethrower</string>
       <string _locid="300881">Flamethrower soldier with a strong flame attack. Good against Infantry.</string>
-      <string _locid="300882">Christmass Village</string>
-      <string _locid="300883">ZP SPC Socket Christmass Village</string>
+      <string _locid="300882">Christmas Village</string>
+      <string _locid="300883">ZP SPC Socket Christmas Village</string>
       <string _locid="300884">Mountain Jaeger</string>
       <string _locid="300885">ZP Nat Mountain Jaeger</string>
       <string _locid="300886">Monastery Icons</string>
@@ -958,7 +958,7 @@
       <string _locid="300955">Kuril Islands</string>
       <string _locid="300956">Small Islands between Hokaido Island and Kamchatka Peninsula. Players have more option for migration to larger islands around. \n\nSettlements: Renegades, Wokou, Orthodox, Zen</string>
       <string _locid="300957">Kuril Islands, islands of eternal strife. Use the natives to take the technological advantage over your enemy.</string>
-      <string _locid="300958">ZP Xmas PROP Christmass Tree</string>
+      <string _locid="300958">ZP Xmas PROP Christmas Tree</string>
       <string _locid="300959">ZP Xmas Sleigh</string>
       <string _locid="300960">Reindeer Sled</string>
       <string _locid="300961">ZP Prop Zen Mountain Monastery</string>
@@ -1011,7 +1011,7 @@
       <string _locid="400023">Deck the Halls</string>
       <string _locid="400024">Provides every home with a decorative tree.</string>
       <string _locid="400025">Polar Express</string>
-      <string _locid="400026">Allows you to upgrade your trade route to the Polar Express for free in any age.</string>
+      <string _locid="400026">Allows you to upgrade your trade route to the Polar Express for free in an earlier age.</string>
       <string _locid="400027">Village Workshop</string>
       <string _locid="400028">ZP Xmas Village Workshop Wagon</string>
       <string _locid="400029">Ships the village workshop wagon to your homecity.</string>
