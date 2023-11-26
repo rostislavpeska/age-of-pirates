@@ -1,0 +1,5 @@
+<animfile>
+  <component>train_caboose<logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\christmas_units\polar_express\caboose\caboose</file></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\trains\lp_caboose</file></assetreference></lowpoly></logic><decal><effecttype>default</effecttype><texture>shadows_selections\shadow_circle_128x128</texture><selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+  <anim>Idle<component>train_caboose</component></anim>
+  <anim>Walk<component>train_caboose</component></anim>
+</animfile>

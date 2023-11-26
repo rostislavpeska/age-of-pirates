@@ -53,5 +53,8 @@
 		<Unit name='TrainCarCoin'>
 			<AnimFile>units\christmas_units\polar_express\train_car.xml</AnimFile>
 		</Unit>
+		<Unit name='TrainCaboose'>
+			<AnimFile>units\christmas_units\polar_express\caboose.xml</AnimFile>
+		</Unit>
 	</ProtoMods>
 </Mods>

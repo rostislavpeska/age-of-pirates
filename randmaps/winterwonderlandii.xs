@@ -38,15 +38,15 @@ void main(void)
 	   paintmix7: forest
 
 	*/
-	int forecast = rmRandInt(1,3);
+	int forecast = rmRandInt(1,4);
 	if (forecast == 1)
 	{
 		string paintMix1 = "rockies_snow";		// rockies_grass
-		string paintMix2 = "rockies_snow";	// rockies_snow
-		string paintMix3 = "rockies_snow";
+		string paintMix2 = "rockies_grass_snow";	// rockies_snow
+		string paintMix3 = "rockies_grass_snow";
 		string paintMix4 = "rockies_snow";	// rockies_grass_snowa
-		string paintMix5 = "rockies_snow";
-		string paintMix6 = "rockies_snow";
+		string paintMix5 = "rockies_grass_snowb";
+		string paintMix6 = "rockies_grass_snowc";
 		string paintMix7 = "rockies_snow_forest";	// rockies_grass_forest
 		string paintMix8 = "rockies_snow_forest";
 	}
@@ -64,11 +64,11 @@ void main(void)
 	else
 	{
 		paintMix1 = "rockies_snow";		// rockies_grass
-		paintMix2 = "rockies_grass_snow";	// rockies_snow
-		paintMix3 = "rockies_grass_snow";
+		paintMix2 = "rockies_snow";	// rockies_snow
+		paintMix3 = "rockies_snow";
 		paintMix4 = "rockies_snow";	// rockies_grass_snowa
-		paintMix5 = "rockies_grass_snowb";
-		paintMix6 = "rockies_grass_snowc";
+		paintMix5 = "rockies_snow";
+		paintMix6 = "rockies_snow";
 		paintMix7 = "rockies_snow_forest";	// rockies_grass_forest
 		paintMix8 = "rockies_snow_forest";
 	}
