@@ -65,21 +65,17 @@ minInterval 25
       gHomeBase = kbGetPlayerStartingPosition(cMyID);
    }
 
-   if (gIsPirateMap == false)
+
+
+
+   // Initializes all pirate functions
+
+   // Add rules for all pirate maps here
+   if (gIsPirateMap == true)
    {
-      return;
+      xsEnableRule("CaribTPMonitor");
+      xsEnableRule("pirateShipAbilityMonitor");
    }
-
-
-   // Initializes all pirate functions if this is a pirate map
-
-   // Add always active rules here
-   xsEnableRule("CaribTPMonitor");
-   xsEnableRule("pirateShipAbilityMonitor");
-
-   // Test to check if this script gets run
-   //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbGetMapCenter());
-   
    
    // Initializes native specific rules
    if (getGaiaUnitCount(cUnitTypezpNativeHousePirate) > 0)
