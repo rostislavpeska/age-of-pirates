@@ -58,7 +58,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
    
    // LIGHT SET
 
-	rmSetLightingSet("Fertile_Crescent_Skirmish");
+	rmSetLightingSet("caribbean_skirmish");
 
 
 	// Picks default terrain and water
@@ -420,19 +420,19 @@ for(i=1; <cNumberPlayers) {
    bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "river_trail");
 
    int LakePort1ID = -1;
-   LakePort1ID = rmCreateGrouping("harbour 1", "Harbour_DeadSea02");
-   rmPlaceGroupingAtLoc(LakePort1ID, 0, 0.55, 0.3-rmZTilesToFraction(4.5), 1);
+   LakePort1ID = rmCreateGrouping("harbour 1", "Harbour_DeadSeaNW");
+   rmPlaceGroupingAtLoc(LakePort1ID, 0, 0.55, 0.3-rmZTilesToFraction(5), 1);
 
    int LakePort2ID = -1;
-   LakePort2ID = rmCreateGrouping("harbour 2", "Harbour_DeadSea03");
+   LakePort2ID = rmCreateGrouping("harbour 2", "Harbour_DeadSeaSE");
    rmPlaceGroupingAtLoc(LakePort2ID, 0, 0.45, 0.7+rmZTilesToFraction(7.0), 1);
 
    int LakePort3ID = -1;
-   LakePort3ID = rmCreateGrouping("harbour 3", "Harbour_DeadSea01");
-   rmPlaceGroupingAtLoc(LakePort3ID, 0, 0.3-rmZTilesToFraction(4.5), 0.55, 1);
+   LakePort3ID = rmCreateGrouping("harbour 3", "Harbour_DeadSeaNE");
+   rmPlaceGroupingAtLoc(LakePort3ID, 0, 0.3-rmZTilesToFraction(5), 0.55, 1);
 
    int LakePort4ID = -1;
-   LakePort4ID = rmCreateGrouping("harbour 4", "Harbour_DeadSea04");
+   LakePort4ID = rmCreateGrouping("harbour 4", "Harbour_DeadSeaSW");
    rmPlaceGroupingAtLoc(LakePort4ID, 0, 0.7+rmZTilesToFraction(7.0), 0.45, 1);
 
 
@@ -1235,6 +1235,38 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
+// Update ports
+
+rmCreateTrigger("I Update Ports");
+rmAddTriggerCondition("Player Unit Count");
+rmSetTriggerConditionParamInt("PlayerID",0);
+rmSetTriggerConditionParam("Protounit","deCargoBoat");
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",0);
+rmSetTriggerEffectParam("TechID","cTechzpUpdatePort1"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmCreateTrigger("II Update Ports");
+rmAddTriggerCondition("Player Unit Count");
+rmSetTriggerConditionParamInt("PlayerID",0);
+rmSetTriggerConditionParam("Protounit","deTradingBarge");
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",0);
+rmSetTriggerEffectParam("TechID","cTechzpUpdatePort2"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
 
 // AI Maltese Land Fractions
 

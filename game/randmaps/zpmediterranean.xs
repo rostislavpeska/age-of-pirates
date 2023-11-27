@@ -631,22 +631,22 @@ void main(void)
 
   // Port 1
   int portID01 = rmCreateObjectDef("port 02");
-  portID01 = rmCreateGrouping("portG 01", "harbour_malta_05");
+  portID01 = rmCreateGrouping("portG 01", "Harbour_Center_NE");
   rmPlaceGroupingAtLoc(portID01, 0, 0.95-rmXTilesToFraction(12), 0.5);
 
   // Port 2
   int portID02 = rmCreateObjectDef("port 02");
-  portID02 = rmCreateGrouping("portG 02", "harbour_arabia_01");
+  portID02 = rmCreateGrouping("portG 02", "harbour_arabia_SE");
   rmPlaceGroupingAtLoc(portID02, 0, 0.5,0.05+rmXTilesToFraction(12));
 
   // Port 3
   int portID03 = rmCreateObjectDef("port 03");
-  portID03 = rmCreateGrouping("portG 03", "harbour_arabia_02");
+  portID03 = rmCreateGrouping("portG 03", "harbour_arabia_SW");
   rmPlaceGroupingAtLoc(portID03, 0, 0.05+rmXTilesToFraction(12), 0.5);
 
   // Port 4
   int portID04 = rmCreateObjectDef("port 04");
-  portID04 = rmCreateGrouping("portG 04", "harbour_malta_07");
+  portID04 = rmCreateGrouping("portG 04", "Harbour_Center_NW");
   rmPlaceGroupingAtLoc(portID04, 0, 0.5,0.95-rmXTilesToFraction(12));
       
 
@@ -1567,6 +1567,39 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
 
+// Update ports
+
+rmCreateTrigger("I Update Ports");
+rmAddTriggerCondition("Player Unit Count");
+rmSetTriggerConditionParamInt("PlayerID",0);
+rmSetTriggerConditionParam("Protounit","deTradingGalleon");
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",0);
+rmSetTriggerEffectParam("TechID","cTechzpUpdatePort1"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmCreateTrigger("II Update Ports");
+rmAddTriggerCondition("Player Unit Count");
+rmSetTriggerConditionParamInt("PlayerID",0);
+rmSetTriggerConditionParam("Protounit","deTradingFluyt");
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",0);
+rmSetTriggerEffectParam("TechID","cTechzpUpdatePort2"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+
 // Privateer training
 
 for (k=1; <= cNumberNonGaiaPlayers) {
@@ -2429,6 +2462,7 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
 
 // Testing
 

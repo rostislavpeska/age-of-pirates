@@ -29,7 +29,7 @@
       <string _locid="300028">ZP Native Pirates</string>
       <string _locid="300029">ZP Socket Trade Harbour</string>
       <string _locid="300030">Trade Harbour</string>
-      <string _locid="300031">ZP Harbour Center</string>
+      <string _locid="300031">ZP Harbour Center West</string>
       <string _locid="300032">Harbour Warehouse</string>
       <string _locid="300033">ZP PROP Harbour Platform</string>
       <string _locid="300034">ZP PROP Harbour Dingy</string>
@@ -832,7 +832,7 @@
       <string _locid="300830">Carnival of Venice</string>
       <string _locid="300831">All native units get trained faster and cost less resources</string>
       <string _locid="300832">Venetian Bombard</string>
-      <string _locid="300833">ZP Venetian Harbour Center</string>
+      <string _locid="300833">ZP Harbour Center West Naval</string>
       <string _locid="300834">ZP Venetian Mooring</string>
       <string _locid="300835">Adriatic Sea</string>
       <string _locid="300836">Large naval map with two sea shores and a water trade route. \n\nSettlements: Venetians, Jesuits \n\nAdditional Settlements: Maltese or Orthodox</string>
@@ -982,6 +982,8 @@
       <string _locid="300979">Heavy Ranged Cavalry Hero with an Attack Bonus Aura.</string>
       <string _locid="300980">Heavy Ranged Cavalry Hero with an Attack Bonus Aura. Daimyo Class unit.</string>
       <string _locid="300981">Heavy native Ranged Cavalry, good against infantry.</string>
+      <string _locid="300982">ZP Harbour Center Oriental</string>
+      <string _locid="300983">ZP Harbour Center Oriental Naval</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

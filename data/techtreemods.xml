@@ -856,6 +856,12 @@
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpHarbourCenterVenice" relativity ="Absolute">
 				<target type ="Player"></target>
 			</effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCPortCenterOriental" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpHarbourCenterOriantalNaval" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
 		</effects>
 	</tech>
 	<tech name ="zpUpdatePort2" type ="Normal">
@@ -870,6 +876,12 @@
 				<target type ="Player"></target>
 			</effect>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpHarbourCenterVenice" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCPortCenterOriental" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpHarbourCenterOriantalNaval" relativity ="Absolute">
 				<target type ="Player"></target>
 			</effect>
 		</effects>
