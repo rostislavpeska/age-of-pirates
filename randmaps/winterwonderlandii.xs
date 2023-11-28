@@ -765,8 +765,8 @@ void main(void)
 			{
 				rmPlaceGroupingAtLoc(nativeID0, 0, 0.70, 0.35);
 				rmPlaceGroupingAtLoc(nativeID1, 0, 0.30, 0.65);
-				rmPlaceGroupingAtLoc(nativeID2, 0, 0.70, 0.65);
-				rmPlaceGroupingAtLoc(nativeID3, 0, 0.30, 0.35);
+				rmPlaceGroupingAtLoc(nativeID2, 0, 0.73, 0.65);
+				rmPlaceGroupingAtLoc(nativeID3, 0, 0.27, 0.35);
 			}
 		}
 		else
@@ -780,8 +780,8 @@ void main(void)
 			{
 				rmPlaceGroupingAtLoc(nativeID0, 0, 0.70, 0.65);
 				rmPlaceGroupingAtLoc(nativeID1, 0, 0.30, 0.35);
-				rmPlaceGroupingAtLoc(nativeID2, 0, 0.70, 0.35);
-				rmPlaceGroupingAtLoc(nativeID3, 0, 0.30, 0.65);
+				rmPlaceGroupingAtLoc(nativeID2, 0, 0.74, 0.35);
+				rmPlaceGroupingAtLoc(nativeID3, 0, 0.28, 0.65);
 			}
 		}
 	}
