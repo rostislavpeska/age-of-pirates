@@ -58,7 +58,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
    
    // LIGHT SET
 
-	rmSetLightingSet("caribbean_skirmish");
+	rmSetLightingSet("sonora_skirmish");
 
 
 	// Picks default terrain and water
