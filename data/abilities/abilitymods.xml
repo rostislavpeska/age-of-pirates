@@ -53,12 +53,6 @@
     <ability>zpPowerFireBomb<tech>zpBattleAirship</tech><rof>60</rof></ability>
     <ability>zpMustardGas<tech>zpMustardGas</tech><rof>60</rof></ability>
   </zpairshipai>
-  <zpNatConquistadorMusketeer>
-		<ability>dePromotionHpROF
-			<alwaysdisabledingrid>true</alwaysdisabledingrid>
-			<forceshowrollover>true</forceshowrollover>
-		</ability>
-	</zpNatConquistadorMusketeer>
   <zppriest>
     <ability>PowerConvert<rof>60</rof></ability>
   </zppriest>
