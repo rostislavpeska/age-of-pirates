@@ -40,6 +40,7 @@
 			<AnimFile>units\christmas_units\polar_express\engine.xml</AnimFile>
 			<Icon>resources\art\terrain\trees\christmas_tree_icon_64.png</Icon>
 			<PortraitIcon>resources\art\terrain\trees\christmas_tree_icon_portrait.png</PortraitIcon>
+			<DisplayNameID>400025</DisplayNameID>
 		</Unit>
 		<Unit name='TrainCar'>
 			<AnimFile>units\christmas_units\polar_express\train_car.xml</AnimFile>

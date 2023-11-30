@@ -533,12 +533,12 @@ void main(void)
     rmBuildTradeRoute(tradeRouteID, toiletPaper);
 //    rmBuildTradeRoute(tradeRouteID2, toiletPaper);
 	
-	float sktLoc1 = 0.02;
+	float sktLoc1 = 0.02; // up from .02
 	if (TeamNum > 2 || abs(teamZeroCount - teamOneCount) > 1)
 		sktLoc1 = 0.00;
 	float sktLoc2 = 0.20;
 	float sktLoc3 = 0.80;
-	float sktLoc4 = 0.98;
+	float sktLoc4 = 0.98; // down from .98
 	float sktLoc5 = 0.11;
 	float sktLoc6 = 0.89;
 	if (PlayerNum > 6)
@@ -591,7 +591,7 @@ void main(void)
 	{
 		if (PlayerNum == 8)
 		{
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.2);  // up from .125
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.125);  
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.250);
@@ -609,12 +609,12 @@ void main(void)
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.750);
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.8);  // down from .875
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.875); 
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		}
 		else if (PlayerNum == 7)
 		{
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.1929);  // up from .1429
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.1429); 
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.2858);
@@ -629,12 +629,12 @@ void main(void)
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.7145);
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.8074);  // down from .8574
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.8574);  
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		}
 		else if (PlayerNum == 6)
 		{
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.19667); // up from .16667
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.16667); 
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.33334);
@@ -646,7 +646,7 @@ void main(void)
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.66668);
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.80335);  // down from .83335
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.83335); 
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		}
 		else if (PlayerNum == 5)
@@ -665,13 +665,13 @@ void main(void)
 		}
 		else if (PlayerNum == 4)
 		{
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.30);  // up from .25
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.25);  
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.50);
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.70);  // down from .75
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.75); 
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		}
 		else if (PlayerNum == 3)
