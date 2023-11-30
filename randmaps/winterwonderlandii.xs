@@ -398,7 +398,7 @@ void main(void)
 		rmSetAreaLocPlayer(playerAreaID, i);
 		rmSetAreaObeyWorldCircleConstraint(playerAreaID, false);
 		rmAddAreaToClass(playerAreaID, classIsland);
-//		rmAddAreaConstraint(playerAreaID, stayPlayerLevel);
+		rmAddAreaConstraint(playerAreaID, stayBorder);
 //		rmAddAreaConstraint(playerAreaID, avoidImpassableLandFar);
 		rmBuildArea(playerAreaID);
 	}
@@ -447,15 +447,15 @@ void main(void)
 				rmAddTradeRouteWaypoint(tradeRouteID, 0.50, 0.50);
 				rmAddTradeRouteWaypoint(tradeRouteID, 0.60, 0.55);
 				rmAddTradeRouteWaypoint(tradeRouteID, 0.70, 0.80);
-				rmAddTradeRouteWaypoint(tradeRouteID, 0.80, 0.80);
-				rmAddTradeRouteWaypoint(tradeRouteID, 0.90, 0.70);
-				rmAddTradeRouteWaypoint(tradeRouteID, 0.90, 0.20);
+				rmAddTradeRouteWaypoint(tradeRouteID, 0.81, 0.80);
+				rmAddTradeRouteWaypoint(tradeRouteID, 0.88, 0.70);
+				rmAddTradeRouteWaypoint(tradeRouteID, 0.88, 0.20);
 			}
 			else
 			{
-				rmAddTradeRouteWaypoint(tradeRouteID, 0.90, 0.20);
-				rmAddTradeRouteWaypoint(tradeRouteID, 0.90, 0.70);
-				rmAddTradeRouteWaypoint(tradeRouteID, 0.80, 0.80);
+				rmAddTradeRouteWaypoint(tradeRouteID, 0.88, 0.20);
+				rmAddTradeRouteWaypoint(tradeRouteID, 0.88, 0.70);
+				rmAddTradeRouteWaypoint(tradeRouteID, 0.81, 0.80);
 				rmAddTradeRouteWaypoint(tradeRouteID, 0.70, 0.80);
 				rmAddTradeRouteWaypoint(tradeRouteID, 0.60, 0.55);
 				rmAddTradeRouteWaypoint(tradeRouteID, 0.50, 0.50);
@@ -478,15 +478,15 @@ void main(void)
 				rmAddTradeRouteWaypoint(tradeRouteID, 0.50, 0.50);
 				rmAddTradeRouteWaypoint(tradeRouteID, 0.60, 0.45);
 				rmAddTradeRouteWaypoint(tradeRouteID, 0.70, 0.20);
-				rmAddTradeRouteWaypoint(tradeRouteID, 0.80, 0.20);
-				rmAddTradeRouteWaypoint(tradeRouteID, 0.90, 0.30);
-				rmAddTradeRouteWaypoint(tradeRouteID, 0.90, 0.80);
+				rmAddTradeRouteWaypoint(tradeRouteID, 0.81, 0.20);
+				rmAddTradeRouteWaypoint(tradeRouteID, 0.88, 0.30);
+				rmAddTradeRouteWaypoint(tradeRouteID, 0.88, 0.80);
 			}
 			else
 			{
-				rmAddTradeRouteWaypoint(tradeRouteID, 0.90, 0.80);
-				rmAddTradeRouteWaypoint(tradeRouteID, 0.90, 0.30);
-				rmAddTradeRouteWaypoint(tradeRouteID, 0.80, 0.20);
+				rmAddTradeRouteWaypoint(tradeRouteID, 0.88, 0.80);
+				rmAddTradeRouteWaypoint(tradeRouteID, 0.88, 0.30);
+				rmAddTradeRouteWaypoint(tradeRouteID, 0.81, 0.20);
 				rmAddTradeRouteWaypoint(tradeRouteID, 0.70, 0.20);
 				rmAddTradeRouteWaypoint(tradeRouteID, 0.60, 0.45);
 				rmAddTradeRouteWaypoint(tradeRouteID, 0.50, 0.50);
@@ -533,12 +533,12 @@ void main(void)
     rmBuildTradeRoute(tradeRouteID, toiletPaper);
 //    rmBuildTradeRoute(tradeRouteID2, toiletPaper);
 	
-	float sktLoc1 = 0.02;
+	float sktLoc1 = 0.04; // up from .02
 	if (TeamNum > 2 || abs(teamZeroCount - teamOneCount) > 1)
 		sktLoc1 = 0.00;
-	float sktLoc2 = 0.20;
-	float sktLoc3 = 0.80;
-	float sktLoc4 = 0.98;
+	float sktLoc2 = 0.18;	// down from 0.20
+	float sktLoc3 = 0.82;	// up from 0.80
+	float sktLoc4 = 0.96; // down from .98
 	float sktLoc5 = 0.11;
 	float sktLoc6 = 0.89;
 	if (PlayerNum > 6)
@@ -591,7 +591,7 @@ void main(void)
 	{
 		if (PlayerNum == 8)
 		{
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.2);  // up from .125
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.125);  
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.250);
@@ -609,12 +609,12 @@ void main(void)
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.750);
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.8);  // down from .875
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.875); 
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		}
 		else if (PlayerNum == 7)
 		{
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.1929);  // up from .1429
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.1429); 
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.2858);
@@ -629,12 +629,12 @@ void main(void)
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.7145);
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.8074);  // down from .8574
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.8574);  
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		}
 		else if (PlayerNum == 6)
 		{
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.19667); // up from .16667
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.16667); 
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.33334);
@@ -646,7 +646,7 @@ void main(void)
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.66668);
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.80335);  // down from .83335
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.83335); 
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		}
 		else if (PlayerNum == 5)
@@ -665,13 +665,13 @@ void main(void)
 		}
 		else if (PlayerNum == 4)
 		{
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.30);  // up from .25
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.25);  
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.50);
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.70);  // down from .75
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.75); 
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		}
 		else if (PlayerNum == 3)
@@ -708,7 +708,6 @@ void main(void)
 	rmSetAreaWarnFailure(playerPaintID, false);
 	rmSetAreaCoherence(playerPaintID, 1.00);
 	rmAddAreaConstraint(playerPaintID, stayBorder);
-//	rmAddAreaConstraint(playerPaintID, stayPlayerLevel);
 	rmBuildArea(playerPaintID);	
 
 	// ____________________ Natives ____________________
@@ -858,7 +857,7 @@ void main(void)
 	rmAddObjectDefConstraint(playerGold2ID, avoidTradeRouteMin);
 	rmAddObjectDefConstraint(playerGold2ID, avoidTradeRouteSocketMin);
 	rmAddObjectDefConstraint(playerGold2ID, avoidImpassableLandShort);
-//	rmAddObjectDefConstraint(playerGold2ID, stayPlayerLevel);
+	rmAddObjectDefConstraint(playerGold2ID, stayBorder);
 	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 		rmAddObjectDefConstraint(playerGold2ID, avoidMidIsland);
 	else
@@ -890,7 +889,7 @@ void main(void)
 	rmAddObjectDefConstraint(playerTree2ID, avoidStartingResources);
 	rmAddObjectDefConstraint(playerTree2ID, avoidForestShort);
 	rmAddObjectDefConstraint(playerTree2ID, avoidNativesShort);
-//	rmAddObjectDefConstraint(playerTree2ID, stayPlayerLevel);
+	rmAddObjectDefConstraint(playerTree2ID, stayBorder);
 	rmAddObjectDefConstraint(playerTree2ID, avoidMidIslandFar);
 	rmAddObjectDefConstraint(playerTree2ID, avoidImpassableLand);
 	rmAddObjectDefConstraint(playerTree2ID, avoidTradeRouteSocket);
@@ -918,7 +917,7 @@ void main(void)
 	rmAddObjectDefConstraint(playerHerd2ID, avoidImpassableLandShort);
 	rmAddObjectDefConstraint(playerHerd2ID, avoidStartingResourcesShort);
 	rmAddObjectDefConstraint(playerHerd2ID, avoidEdge);
-//	rmAddObjectDefConstraint(playerHerd2ID, stayPlayerLevel);
+	rmAddObjectDefConstraint(playerHerd2ID, stayBorder);
 	if (PlayerNum > 2 && TeamNum == 2)
 		rmAddObjectDefConstraint(playerHerd2ID, avoidMidIsland);
 	if (abs(teamZeroCount - teamOneCount) > 1)
@@ -935,7 +934,7 @@ void main(void)
 	rmAddObjectDefConstraint(playerHerd3ID, avoidStartingResourcesShort);
 	rmAddObjectDefConstraint(playerHerd3ID, avoidTradeRouteSocketMin);
 	rmAddObjectDefConstraint(playerHerd3ID, avoidNativesShort);
-//	rmAddObjectDefConstraint(playerHerd3ID, stayPlayerLevel);
+	rmAddObjectDefConstraint(playerHerd3ID, stayBorder);
 	rmAddObjectDefConstraint(playerHerd3ID, avoidMidIslandFar);
 	
 	// Starting treasures
@@ -953,7 +952,7 @@ void main(void)
 	rmAddObjectDefConstraint(playerNuggetID, avoidNuggetMin);
 	rmAddObjectDefConstraint(playerNuggetID, avoidNativesShort);
 	rmAddObjectDefConstraint(playerNuggetID, avoidImpassableLandMin);
-//	rmAddObjectDefConstraint(playerNuggetID, stayPlayerLevel);
+	rmAddObjectDefConstraint(playerNuggetID, stayBorder);
 	rmAddObjectDefConstraint(playerNuggetID, avoidEdge);
 	rmAddObjectDefConstraint(playerNuggetID, avoidTradeRouteSocketMin);
 	rmAddObjectDefConstraint(playerNuggetID, avoidTradeRouteShort);
@@ -1038,7 +1037,6 @@ void main(void)
 	rmAddAreaConstraint(centralMount1ID, avoidIslandMin);
 	rmAddAreaConstraint(centralMount1ID, avoidNativesShort);
 	rmAddAreaConstraint(centralMount1ID, avoidStartingResourcesShort);
-//	rmAddAreaConstraint(centralMount1ID, stayPlayerLevel);
 	rmBuildArea(centralMount1ID);
 
 	int avoidMount1 = rmCreateAreaDistanceConstraint("avoid mount 1", centralMount1ID, 4.0);
@@ -1063,7 +1061,6 @@ void main(void)
 	rmAddAreaConstraint(centralMount2ID, avoidTradeRouteShort);
 	rmAddAreaConstraint(centralMount2ID, avoidNativesShort);
 	rmAddAreaConstraint(centralMount2ID, avoidStartingResourcesShort);
-//	rmAddAreaConstraint(centralMount2ID, stayPlayerLevel);
 	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 		rmBuildArea(centralMount2ID);
 
@@ -1145,18 +1142,6 @@ void main(void)
 	int stayPeak2 = rmCreateAreaMaxDistanceConstraint("stay in peak 2", centralPeak2ID, 0.0);
 
 	// Paint Areas
-	// player area painted before native placement
-	/*int playerPaintID=rmCreateArea("paint the player level");
-	rmSetAreaMix(playerPaintID, paintMix2);
-//	rmSetAreaMix(playerPaintID, forTesting);
-	rmSetAreaLocation(playerPaintID, 0.50, 0.50);
-	rmSetAreaSize(playerPaintID, 0.90);
-	rmSetAreaWarnFailure(playerPaintID, false);
-	rmSetAreaCoherence(playerPaintID, 1.00);
-//	rmAddAreaConstraint(playerPaintID, stayBorder);
-//	rmAddAreaConstraint(playerPaintID, stayPlayerLevel);
-	rmBuildArea(playerPaintID);	*/
-	
 	int mountPaint1ID=rmCreateArea("paint the valley");
 	rmSetAreaMix(mountPaint1ID, paintMix4);
 //	rmSetAreaMix(mountPaint1ID, forTesting);
@@ -1236,7 +1221,7 @@ void main(void)
 		rmAddObjectDefConstraint(mapMinesID, avoidTradeRouteShort);
 		rmAddObjectDefConstraint(mapMinesID, avoidGoldFar);
 		rmAddObjectDefConstraint(mapMinesID, avoidEdge);
-	//	rmAddObjectDefConstraint(mapMinesID, stayPlayerLevel);
+		rmAddObjectDefConstraint(mapMinesID, stayBorder);
 		rmAddObjectDefConstraint(mapMinesID, avoidNatives);
 		rmAddObjectDefConstraint(mapMinesID, avoidImpassableLandShort);
 		rmAddObjectDefConstraint(mapMinesID, avoidIslandMin);
@@ -1313,6 +1298,7 @@ void main(void)
 		rmAddAreaConstraint(valleyForestPatchID, avoidForestShort);
 		rmAddAreaConstraint(valleyForestPatchID, avoidGoldTypeMin);
 		rmAddAreaConstraint(valleyForestPatchID, avoidNativesShort); 
+		rmAddAreaConstraint(valleyForestPatchID, stayBorder); 
 		rmAddAreaConstraint(valleyForestPatchID, avoidCenterMin); 
 		rmAddAreaConstraint(valleyForestPatchID, avoidMount1); 
 		rmAddAreaConstraint(valleyForestPatchID, avoidRamp1); 
@@ -1403,6 +1389,7 @@ void main(void)
 		rmAddObjectDefConstraint(nugget4ID, avoidTradeRouteSocketMin);
 		rmAddObjectDefConstraint(nugget4ID, avoidTradeRouteShort);
 		rmAddObjectDefConstraint(nugget4ID, avoidGoldMin);
+		rmAddObjectDefConstraint(nugget4ID, stayBorder);	
 		rmAddObjectDefConstraint(nugget4ID, avoidForestMin);	
 		rmAddObjectDefConstraint(nugget4ID, avoidEdge); 
 		rmAddObjectDefConstraint(nugget4ID, avoidNatives); 
@@ -1423,7 +1410,7 @@ void main(void)
 //		if (PlayerNum > 2)
 //		{
 			rmSetNuggetDifficulty(4,4);
-//			rmPlaceObjectDefAtLoc(nugget4ID, 0, 0.50, 0.50, 1);
+			rmPlaceObjectDefAtLoc(nugget4ID, 0, 0.50, 0.50, 1);
 //		}
 	}
 
@@ -1444,7 +1431,7 @@ void main(void)
 		rmAddObjectDefConstraint(nugget3ID, avoidGoldTypeMin);
 		rmAddObjectDefConstraint(nugget3ID, avoidForestMin);	
 		rmAddObjectDefConstraint(nugget3ID, avoidEdge);	
-//		rmAddObjectDefConstraint(nugget3ID, stayPlayerLevel); 
+		rmAddObjectDefConstraint(nugget3ID, stayBorder); 
 		rmAddObjectDefConstraint(nugget3ID, avoidNatives); 
 		rmAddObjectDefConstraint(nugget3ID, avoidIsland); 
 		rmAddObjectDefConstraint(nugget3ID, avoidImpassableLand); 
@@ -1475,7 +1462,7 @@ void main(void)
 		rmAddObjectDefConstraint(nugget2ID, avoidGoldTypeMin);
 		rmAddObjectDefConstraint(nugget2ID, avoidForestMin);	
 		rmAddObjectDefConstraint(nugget2ID, avoidEdge);	
-//		rmAddObjectDefConstraint(nugget2ID, stayPlayerLevel); 
+		rmAddObjectDefConstraint(nugget2ID, stayBorder); 
 		rmAddObjectDefConstraint(nugget2ID, avoidNatives); 
 		rmAddObjectDefConstraint(nugget2ID, avoidTownCenterFar); 
 		rmAddObjectDefConstraint(nugget2ID, avoidStartingResources); 
@@ -1589,6 +1576,8 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("ZP Pick Consulate Tech");
 	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -1613,6 +1602,8 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("ZP Pick Consulate Tech");
 	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -1637,6 +1628,8 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("ZP Pick Consulate Tech");
 	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -1662,6 +1655,8 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -1736,5 +1731,4 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	rmSetTriggerLoop(false);
 	}
 } // END
-	
 	
