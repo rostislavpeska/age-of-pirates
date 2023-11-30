@@ -1565,7 +1565,7 @@
     <maxhitpoints>900.0000</maxhitpoints>
     <trainpoints>40.0000</trainpoints>
     <buildlimit>3</buildlimit>
-    <lifespan>2.0000</lifespan>
+    <lifespan>0.5000</lifespan>
     <buildbounty>50.0000</buildbounty>
     <cost resourcetype="Gold">500.0000</cost>
     <allowedage>1</allowedage>
