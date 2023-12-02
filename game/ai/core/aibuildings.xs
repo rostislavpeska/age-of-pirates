@@ -2897,9 +2897,12 @@ minInterval 5
                   {
                      establishForwardBeachHead(location);
                   }
+                  else
+                  {  // AssertiveWall: Don't send these messages on island maps to avoid excessive pinging
+                     // Chat to my allies.
+                     sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+                  }
 
-                  // Chat to my allies.
-                  sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
 
                   gForwardBaseState = cForwardBaseStateBuilding;
 
