@@ -650,7 +650,7 @@
       <string _locid="300648">ZP NAT Conquistador Musketeer</string>
       <string _locid="300649">ZP NAT Conquistador Missionary</string>
       <string _locid="300650">Jesuit Missionary</string>
-      <string _locid="300651">European adventurer armed with a musket and sword. Benefits from Promotions.</string>
+      <string _locid="300651">European adventurer armed with a musket and sword.</string>
       <string _locid="300652">ZP Socket SPC Jesuits</string>
       <string _locid="300653">ZP NAT Conquistador</string>
       <string _locid="300654">Veteran Arcabucero</string>
@@ -814,7 +814,7 @@
       <string _locid="300812">Ships a Venetian Embassy Wagon and unlocks more Venetian shipments which can be sent from the Embassy building.</string>
       <string _locid="300813">Allows to send Venetian Shipments</string>
       <string _locid="300814">San Marco Guard</string>
-      <string _locid="300815">Ships Dodge's Guards (Can be sent in always when bellow build limit: 12)</string>
+      <string _locid="300815">Ships Doge's Guards (Can be sent in always when bellow build limit: 12)</string>
       <string _locid="300816">Venetian Bombard</string>
       <string _locid="300817">Ships Venetian Bombard (Can be sent in always when bellow build limit: 2)</string>
       <string _locid="300818">Venetian Exploration Fleet</string>
@@ -823,12 +823,12 @@
       <string _locid="300821">Ships two Venetian Galleass ships</string>
       <string _locid="300822">Venetian Mercenaries</string>
       <string _locid="300823">Ships Adriatic Sea Mercenaries (Can be sent always when bellow population limit)</string>
-      <string _locid="300824">Dodge's Guard</string>
-      <string _locid="300825">ZP NAT Dodge's Guard</string>
-      <string _locid="300826">Veteran Dodge's Guard</string>
-      <string _locid="300827">Elite Dodge's Guard</string>
-      <string _locid="300828">Legendary Dodge's Guard</string>
-      <string _locid="300829">ZP NAT MERC Dodge's Guard</string>
+      <string _locid="300824">Doge's Guard</string>
+      <string _locid="300825">ZP NAT Doge's Guard</string>
+      <string _locid="300826">Veteran Doge's Guard</string>
+      <string _locid="300827">Elite Doge's Guard</string>
+      <string _locid="300828">Legendary Doge's Guard</string>
+      <string _locid="300829">ZP NAT MERC Doge's Guard</string>
       <string _locid="300830">Carnival of Venice</string>
       <string _locid="300831">All native units get trained faster and cost less resources</string>
       <string _locid="300832">Venetian Bombard</string>

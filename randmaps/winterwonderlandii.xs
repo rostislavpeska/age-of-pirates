@@ -1576,6 +1576,8 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("ZP Pick Consulate Tech");
 	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -1600,6 +1602,8 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("ZP Pick Consulate Tech");
 	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -1624,6 +1628,8 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("ZP Pick Consulate Tech");
 	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -1649,6 +1655,8 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -1723,5 +1731,4 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	rmSetTriggerLoop(false);
 	}
 } // END
-	
 	

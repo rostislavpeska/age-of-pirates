@@ -2183,9 +2183,9 @@
       <command>if (trTimeMS() - cActivationTime * 1000 &gt;= 10)</command>
       <command>{</command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchIncrease, cTechStatusActive);</command>
+      <command>}</command>
+      <command>}</command>
       <command>xsDisableSelf();</command>
-      <command>}</command>
-      <command>}</command>
       <command>}</command>
       <command>rule Human_Features active runImmediately highFrequency</command>
       <command>{</command>
@@ -2221,8 +2221,8 @@
       <command>if (trTechStatusCheck(playerID, cTechDEHCGondolas, cTechStatusActive) == true) {</command>
       <command>trTechSetStatus(playerID, cTechzpItalianGondolaBallance, cTechStatusActive);</command>
       <command>}</command>
-      <command>xsDisableSelf();</command>
       <command>}</command>
+      <command>xsDisableSelf();</command>
       <command>}</command>
       <command>rule hdkzuzkz0 active { if (true) { //</command>
     </effect>
@@ -2257,9 +2257,9 @@
       <command>if (trTechStatusResearching(playerID, cTechzpMalteseCross)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffMaltese, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
-      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>xsEnableRule("Italian_Ballance");</command>
       <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>uiConsulateUIInSelected();</command>
       <command>}</command>
       <command>}</command>
@@ -2298,9 +2298,9 @@
       <command>if (trTechStatusResearching(playerID, cTechzpJewishStar)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffJewish, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
-      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>xsEnableRule("Italian_Ballance");</command>
       <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>uiConsulateUIInSelected();</command>
       <command>}</command>
       <command>}</command>
@@ -2712,9 +2712,9 @@
       <command>if (trTechStatusResearching(playerID, cTechzpTheBlackFlag)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffPirates, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
-      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>xsEnableRule("Italian_Ballance");</command>
       <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>uiConsulateUIInSelected();</command>
       <command>}</command>
       <command>}</command>
@@ -3014,9 +3014,9 @@
       <command>if (trTechStatusResearching(playerID, cTechzpBlackmailing)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffWokou, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
-      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>xsEnableRule("Italian_Ballance");</command>
       <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>uiConsulateUIInSelected();</command>
       <command>}</command>
       <command>}</command>
@@ -3398,9 +3398,9 @@
       <command>if (trTechStatusResearching(playerID, cTechzpPickScientist)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffScientists, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
-      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>xsEnableRule("Italian_Ballance");</command>
       <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>uiConsulateUIInSelected();</command>
       <command>}</command>
       <command>}</command>
@@ -3700,9 +3700,9 @@
       <command>if (trTechStatusResearching(playerID, cTechzpVenetianExpansion)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffVenice, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
-      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>xsEnableRule("Italian_Ballance");</command>
       <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>uiConsulateUIInSelected();</command>
       <command>}</command>
       <command>}</command>
@@ -3741,9 +3741,9 @@
       <command>if (trTechStatusResearching(playerID, cTechzpPickNativeConsulateTechAvailable)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffWaterTemple, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
-      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>xsEnableRule("Italian_Ballance");</command>
       <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>uiConsulateUIInSelected();</command>
       <command>}</command>
       <command>}</command>
@@ -3842,9 +3842,9 @@
       <command>if (trTechStatusResearching(playerID, cTechzpOrthodoxInfluence)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffOrthodox, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
-      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>xsEnableRule("Italian_Ballance");</command>
       <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
       <command>uiConsulateUIInSelected();</command>
       <command>}</command>
       <command>}</command>
