@@ -1565,7 +1565,7 @@
     <maxhitpoints>900.0000</maxhitpoints>
     <trainpoints>40.0000</trainpoints>
     <buildlimit>3</buildlimit>
-    <lifespan>0.5000</lifespan>
+    <lifespan>0.3000</lifespan>
     <buildbounty>50.0000</buildbounty>
     <cost resourcetype="Gold">500.0000</cost>
     <allowedage>1</allowedage>
@@ -1834,10 +1834,10 @@
     <dbid>20027</dbid>
     <displaynameid>300093</displaynameid>
     <editornameid>300090</editornameid>
-    <obstructionradiusx>0.9000</obstructionradiusx>
-    <obstructionradiusz>0.9000</obstructionradiusz>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>5.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
-    <movementtype>water</movementtype>
+    <movementtype>air</movementtype>
     <animfile>homecity\homecity_gatherpoint_naval.xml</animfile>
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
@@ -1884,10 +1884,10 @@
     <dbid>20028</dbid>
     <displaynameid>300093</displaynameid>
     <editornameid>300091</editornameid>
-    <obstructionradiusx>0.9000</obstructionradiusx>
-    <obstructionradiusz>0.9000</obstructionradiusz>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>5.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
-    <movementtype>water</movementtype>
+    <movementtype>air</movementtype>
     <animfile>homecity\homecity_gatherpoint_naval.xml</animfile>
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
@@ -1945,7 +1945,7 @@
     <initialhitpoints>900.0000</initialhitpoints>
     <maxhitpoints>900.0000</maxhitpoints>
     <trainpoints>40.0000</trainpoints>
-    <lifespan>2.0000</lifespan>
+    <lifespan>0.3000</lifespan>
     <buildbounty>200.0000</buildbounty>
     <cost resourcetype="Gold">500.0000</cost>
     <cost resourcetype="Wood">300.0000</cost>
@@ -2010,7 +2010,7 @@
     <initialhitpoints>900.0000</initialhitpoints>
     <maxhitpoints>900.0000</maxhitpoints>
     <trainpoints>40.0000</trainpoints>
-    <lifespan>2.0000</lifespan>
+    <lifespan>0.3000</lifespan>
     <buildbounty>200.0000</buildbounty>
     <cost resourcetype="Gold">500.0000</cost>
     <cost resourcetype="Wood">300.0000</cost>
@@ -2075,7 +2075,7 @@
     <initialhitpoints>900.0000</initialhitpoints>
     <maxhitpoints>900.0000</maxhitpoints>
     <trainpoints>40.0000</trainpoints>
-    <lifespan>2.0000</lifespan>
+    <lifespan>0.3000</lifespan>
     <buildbounty>200.0000</buildbounty>
     <cost resourcetype="Gold">500.0000</cost>
     <cost resourcetype="Wood">300.0000</cost>
@@ -3574,7 +3574,7 @@
     <maxhitpoints>900.0000</maxhitpoints>
     <trainpoints>40.0000</trainpoints>
     <buildlimit>3</buildlimit>
-    <lifespan>2.0000</lifespan>
+    <lifespan>0.3000</lifespan>
     <buildbounty>80.0000</buildbounty>
     <cost resourcetype="Gold">800.0000</cost>
     <allowedage>1</allowedage>
@@ -4239,7 +4239,7 @@
     <initialhitpoints>900.0000</initialhitpoints>
     <maxhitpoints>900.0000</maxhitpoints>
     <trainpoints>40.0000</trainpoints>
-    <lifespan>2.0000</lifespan>
+    <lifespan>0.3000</lifespan>
     <buildbounty>200.0000</buildbounty>
     <cost resourcetype="Gold">400.0000</cost>
     <cost resourcetype="Wood">300.0000</cost>
@@ -4552,7 +4552,7 @@
     <initialhitpoints>900.0000</initialhitpoints>
     <maxhitpoints>900.0000</maxhitpoints>
     <trainpoints>40.0000</trainpoints>
-    <lifespan>2.0000</lifespan>
+    <lifespan>0.3000</lifespan>
     <buildbounty>200.0000</buildbounty>
     <cost resourcetype="Gold">400.0000</cost>
     <cost resourcetype="Wood">300.0000</cost>
@@ -6930,7 +6930,7 @@
     <buildbounty>20.0000</buildbounty>
     <cost resourcetype="Wood">100.0000</cost>
     <cost resourcetype="Gold">100.0000</cost>
-    <lifespan>2.0000</lifespan>
+    <lifespan>0.3000</lifespan>
     <allowedage>1</allowedage>
     <sharedbuildlimitunit>ypFireship</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
@@ -10406,7 +10406,7 @@
     <initialhitpoints>800.0000</initialhitpoints>
     <maxhitpoints>800.0000</maxhitpoints>
     <trainpoints>40.0000</trainpoints>
-    <lifespan>2.0000</lifespan>
+    <lifespan>0.3000</lifespan>
     <bounty>80.0000</bounty>
     <buildbounty>80.0000</buildbounty>
     <cost resourcetype="Wood">300.0000</cost>
@@ -10457,10 +10457,10 @@
     <dbid>20107</dbid>
     <displaynameid>300488</displaynameid>
     <editornameid>300489</editornameid>
-    <obstructionradiusx>0.9000</obstructionradiusx>
-    <obstructionradiusz>0.9000</obstructionradiusz>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>5.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
-    <movementtype>water</movementtype>
+    <movementtype>air</movementtype>
     <animfile>homecity\homecity_gatherpoint_naval.xml</animfile>
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
@@ -10507,10 +10507,10 @@
     <dbid>20108</dbid>
     <displaynameid>300488</displaynameid>
     <editornameid>300490</editornameid>
-    <obstructionradiusx>0.9000</obstructionradiusx>
-    <obstructionradiusz>0.9000</obstructionradiusz>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>5.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
-    <movementtype>water</movementtype>
+    <movementtype>air</movementtype>
     <animfile>homecity\homecity_gatherpoint_naval.xml</animfile>
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
@@ -11527,7 +11527,7 @@
     <initialhitpoints>800.0000</initialhitpoints>
     <maxhitpoints>800.0000</maxhitpoints>
     <trainpoints>40.0000</trainpoints>
-    <lifespan>2.0000</lifespan>
+    <lifespan>0.3000</lifespan>
     <bounty>80.0000</bounty>
     <buildbounty>80.0000</buildbounty>
     <cost resourcetype="Wood">800.0000</cost>
@@ -12584,10 +12584,10 @@
     <dbid>20133</dbid>
     <displaynameid>300626</displaynameid>
     <editornameid>300627</editornameid>
-    <obstructionradiusx>0.9000</obstructionradiusx>
-    <obstructionradiusz>0.9000</obstructionradiusz>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>5.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
-    <movementtype>water</movementtype>
+    <movementtype>air</movementtype>
     <animfile>homecity\homecity_gatherpoint_naval.xml</animfile>
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
@@ -12634,10 +12634,10 @@
     <dbid>20134</dbid>
     <displaynameid>300626</displaynameid>
     <editornameid>300628</editornameid>
-    <obstructionradiusx>0.9000</obstructionradiusx>
-    <obstructionradiusz>0.9000</obstructionradiusz>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>5.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
-    <movementtype>water</movementtype>
+    <movementtype>air</movementtype>
     <animfile>homecity\homecity_gatherpoint_naval.xml</animfile>
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
@@ -14494,10 +14494,10 @@
     <dbid>20157</dbid>
     <displaynameid>300719</displaynameid>
     <editornameid>300720</editornameid>
-    <obstructionradiusx>0.9000</obstructionradiusx>
-    <obstructionradiusz>0.9000</obstructionradiusz>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>5.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
-    <movementtype>water</movementtype>
+    <movementtype>air</movementtype>
     <animfile>homecity\homecity_gatherpoint_naval.xml</animfile>
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
@@ -15558,7 +15558,7 @@
     <maxhitpoints>600.0000</maxhitpoints>
     <trainpoints>40.0000</trainpoints>
     <buildlimit>3</buildlimit>
-    <lifespan>2.0000</lifespan>
+    <lifespan>0.3000</lifespan>
     <buildbounty>50.0000</buildbounty>
     <cost resourcetype="Wood">300.0000</cost>
     <cost resourcetype="Gold">100.0000</cost>
@@ -15621,7 +15621,7 @@
     <maxhitpoints>600.0000</maxhitpoints>
     <trainpoints>40.0000</trainpoints>
     <buildlimit>3</buildlimit>
-    <lifespan>2.0000</lifespan>
+    <lifespan>0.3000</lifespan>
     <buildbounty>50.0000</buildbounty>
     <cost resourcetype="Wood">400.0000</cost>
     <cost resourcetype="Gold">400.0000</cost>
@@ -15671,10 +15671,10 @@
     <dbid>20173</dbid>
     <displaynameid>300719</displaynameid>
     <editornameid>300763</editornameid>
-    <obstructionradiusx>0.9000</obstructionradiusx>
-    <obstructionradiusz>0.9000</obstructionradiusz>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>5.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
-    <movementtype>water</movementtype>
+    <movementtype>air</movementtype>
     <animfile>homecity\homecity_gatherpoint_naval.xml</animfile>
     <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
     <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>

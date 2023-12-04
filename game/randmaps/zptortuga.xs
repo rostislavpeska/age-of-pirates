@@ -1141,7 +1141,7 @@ rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
 
    rmSwitchToTrigger(rmTriggerID("TrainPrivateer2OFF_Plr"+k));
    rmAddTriggerCondition("Timer ms");
-   rmSetTriggerConditionParamInt("Param1",1500);
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2ON_Plr"+k));
    rmSetTriggerPriority(4);
@@ -1189,7 +1189,7 @@ rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("TrainPrivateer1OFF_Plr"+k));
 rmAddTriggerCondition("Timer ms");
-rmSetTriggerConditionParamFloat("Param1",1500);
+rmSetTriggerConditionParamFloat("Param1",1200);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
 rmSetTriggerPriority(4);
@@ -1241,8 +1241,8 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmCreateTrigger("CaesarTrain2OFFPlr"+k);
    
    rmSwitchToTrigger(rmTriggerID("UniqueShip2TIMEPlr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamFloat("Param1",0.5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamInt("Param1",200);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
    rmSetTriggerEffectParam("TechID","cTechzpReducePirateShipsBuildLimit"); //operator
@@ -1274,8 +1274,8 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("BlackbTrain2OFFPlr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain2ONPlr"+k));
    rmSetTriggerPriority(4);
@@ -1305,8 +1305,8 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("GraceTrain2OFFPlr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain2ONPlr"+k));
    rmSetTriggerPriority(4);
@@ -1336,8 +1336,8 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("CaesarTrain2OFFPlr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain2ONPlr"+k));
    rmSetTriggerPriority(4);
@@ -1348,8 +1348,8 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
 
    // Build limit reducer
    rmSwitchToTrigger(rmTriggerID("UniqueShip1TIMEPlr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamFloat("Param1",0.5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamInt("Param1",200);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
    rmSetTriggerEffectParam("TechID","cTechzpReducePirateShipsBuildLimit"); //operator
@@ -1382,8 +1382,8 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("BlackbTrain1OFFPlr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain1ONPlr"+k));
    rmSetTriggerPriority(4);
@@ -1414,8 +1414,8 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("GraceTrain1OFFPlr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain1ONPlr"+k));
    rmSetTriggerPriority(4);
@@ -1446,8 +1446,8 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("CaesarTrain1OFFPlr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain1ONPlr"+k));
    rmSetTriggerPriority(4);

@@ -1842,8 +1842,8 @@ rmCreateTrigger("TrainGalley1TIME Plr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("TrainGalley2OFF_Plr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley2ON_Plr"+k));
    rmSetTriggerPriority(4);
@@ -1852,8 +1852,8 @@ rmCreateTrigger("TrainGalley1TIME Plr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("TrainGalley2TIME_Plr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamFloat("Param1",0.5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamFloat("Param1",200);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
    rmSetTriggerEffectParam("TechID","cTechzpVeniceGalleyBuildLimitReduceShadow"); //operator
@@ -1890,8 +1890,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("TrainGalley1OFF_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamInt("Param1",5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamInt("Param1",1200);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley1ON_Plr"+k));
 rmSetTriggerPriority(4);
@@ -1900,8 +1900,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("TrainGalley1TIME_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamFloat("Param1",0.5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpVeniceGalleyBuildLimitReduceShadow"); //operator
@@ -1950,8 +1950,8 @@ rmCreateTrigger("trainGalleass1TIME Plr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("trainGalleass2OFF_Plr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass2ON_Plr"+k));
    rmSetTriggerPriority(4);
@@ -1961,8 +1961,8 @@ rmCreateTrigger("trainGalleass1TIME Plr"+k);
 
    
    rmSwitchToTrigger(rmTriggerID("trainGalleass2TIME_Plr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamFloat("Param1",0.5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamFloat("Param1",200);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
    rmSetTriggerEffectParam("TechID","cTechzpGalleassBuildLimitReduceShadow"); //operator
@@ -1999,8 +1999,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("trainGalleass1OFF_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamInt("Param1",5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamInt("Param1",1200);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass1ON_Plr"+k));
 rmSetTriggerPriority(4);
@@ -2009,8 +2009,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("trainGalleass1TIME_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamFloat("Param1",0.5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpGalleassBuildLimitReduceShadow"); //operator
@@ -2267,6 +2267,7 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
 
 
 

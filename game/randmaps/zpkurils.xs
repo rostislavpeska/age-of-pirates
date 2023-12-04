@@ -1642,8 +1642,8 @@ rmCreateTrigger("TrainJunk1TIME Plr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("TrainJunk2OFF_Plr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainJunk2ON_Plr"+k));
    rmSetTriggerPriority(4);
@@ -1652,8 +1652,8 @@ rmCreateTrigger("TrainJunk1TIME Plr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("TrainJunk2TIME_Plr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamFloat("Param1",0.5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamFloat("Param1",200);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
    rmSetTriggerEffectParam("TechID","cTechzpWokouJunkBuildLimitReduceShadow"); //operator
@@ -1690,8 +1690,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("TrainJunk1OFF_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamInt("Param1",5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamInt("Param1",1200);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainJunk1ON_Plr"+k));
 rmSetTriggerPriority(4);
@@ -1700,8 +1700,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("TrainJunk1TIME_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamFloat("Param1",0.5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpWokouJunkBuildLimitReduceShadow"); //operator
@@ -1750,8 +1750,8 @@ rmCreateTrigger("trainFuchuan1TIME Plr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("trainFuchuan2OFF_Plr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2ON_Plr"+k));
    rmSetTriggerPriority(4);
@@ -1761,8 +1761,8 @@ rmCreateTrigger("trainFuchuan1TIME Plr"+k);
 
    
    rmSwitchToTrigger(rmTriggerID("trainFuchuan2TIME_Plr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamFloat("Param1",0.5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamFloat("Param1",200);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
    rmSetTriggerEffectParam("TechID","cTechzpFireJunkBuildLimitReduceShadow"); //operator
@@ -1799,8 +1799,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("trainFuchuan1OFF_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamInt("Param1",5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamInt("Param1",1200);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1ON_Plr"+k));
 rmSetTriggerPriority(4);
@@ -1809,8 +1809,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("trainFuchuan1TIME_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamFloat("Param1",0.5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpFireJunkBuildLimitReduceShadow"); //operator
@@ -2016,8 +2016,8 @@ rmSetTriggerLoop(false);
 
 
 rmSwitchToTrigger(rmTriggerID("TrainSubmarine2OFF_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamInt("Param1",5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamInt("Param1",1200);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainSubmarine2ON_Plr"+k));
 rmSetTriggerPriority(4);
@@ -2026,8 +2026,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("TrainSubmarine2TIME_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamFloat("Param1",0.5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpReduceSubmarineBuildLimit"); //operator
@@ -2064,8 +2064,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("TrainSubmarine1OFF_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamInt("Param1",5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamInt("Param1",1200);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainSubmarine1ON_Plr"+k));
 rmSetTriggerPriority(4);
@@ -2074,8 +2074,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("TrainSubmarine1TIME_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamFloat("Param1",0.5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpReduceSubmarineBuildLimit"); //operator
@@ -2105,8 +2105,8 @@ rmCreateTrigger("SteamerTrain2OFFPlr"+k);
 
 
 rmSwitchToTrigger(rmTriggerID("Steamer2TIMEPlr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamFloat("Param1",0.5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpReduceSteamerBuildLimit"); //operator
@@ -2140,8 +2140,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("SteamerTrain2OFFPlr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamInt("Param1",5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamInt("Param1",1200);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("SteamerTrain2ONPlr"+k));
 rmSetTriggerPriority(4);
@@ -2152,8 +2152,8 @@ rmSetTriggerLoop(false);
 
 // Build limit reducer
 rmSwitchToTrigger(rmTriggerID("Steamer1TIMEPlr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamFloat("Param1",0.5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpReduceSteamerBuildLimit"); //operator
@@ -2186,8 +2186,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("SteamerTrain1OFFPlr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamInt("Param1",5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamInt("Param1",1200);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("SteamerTrain1ONPlr"+k));
 rmSetTriggerPriority(4);
@@ -2213,8 +2213,8 @@ rmCreateTrigger("Nautilus2OFFPlr"+k);
 
 // Build limit reducer 2
 rmSwitchToTrigger(rmTriggerID("Nautilus2TIMEPlr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamFloat("Param1",0.5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpReduceNautilusBuildLimit"); //operator
@@ -2248,8 +2248,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("Nautilus2OFFPlr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamInt("Param1",5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamInt("Param1",1200);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Nautilus2ONPlr"+k));
 rmSetTriggerPriority(4);
@@ -2260,8 +2260,8 @@ rmSetTriggerLoop(false);
 
 // Build limit reducer 1
 rmSwitchToTrigger(rmTriggerID("Nautilus1TIMEPlr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamFloat("Param1",0.5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpReduceNautilusBuildLimit"); //operator
@@ -2294,8 +2294,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("Nautilus1OFFPlr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamInt("Param1",5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamInt("Param1",1200);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Nautilus1ONPlr"+k));
 rmSetTriggerPriority(4);

@@ -1335,7 +1335,7 @@ rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("TrainPrivateer2OFF_Plr"+k));
-   rmAddTriggerCondition("Timer");
+   rmAddTriggerCondition("Timer ms");
    rmSetTriggerConditionParamInt("Param1",5);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2ON_Plr"+k));
@@ -1345,8 +1345,8 @@ rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("TrainPrivateer2TIME_Plr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamFloat("Param1",0.5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamFloat("Param1",200);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
    rmSetTriggerEffectParam("TechID","cTechzpPrivateerBuildLimitReduceShadow"); //operator
@@ -1383,7 +1383,7 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("TrainPrivateer1OFF_Plr"+k));
-rmAddTriggerCondition("Timer");
+rmAddTriggerCondition("Timer ms");
 rmSetTriggerConditionParamInt("Param1",5);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
@@ -1393,8 +1393,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("TrainPrivateer1TIME_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamFloat("Param1",0.5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpPrivateerBuildLimitReduceShadow"); //operator
@@ -1436,8 +1436,8 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmCreateTrigger("CaesarTrain2OFFPlr"+k);
    
    rmSwitchToTrigger(rmTriggerID("UniqueShip2TIMEPlr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamFloat("Param1",0.5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamFloat("Param1",200);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
    rmSetTriggerEffectParam("TechID","cTechzpReducePirateShipsBuildLimit"); //operator
@@ -1469,7 +1469,7 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("BlackbTrain2OFFPlr"+k));
-   rmAddTriggerCondition("Timer");
+   rmAddTriggerCondition("Timer ms");
    rmSetTriggerConditionParamInt("Param1",5);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain2ONPlr"+k));
@@ -1500,7 +1500,7 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("GraceTrain2OFFPlr"+k));
-   rmAddTriggerCondition("Timer");
+   rmAddTriggerCondition("Timer ms");
    rmSetTriggerConditionParamInt("Param1",5);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain2ONPlr"+k));
@@ -1531,7 +1531,7 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("CaesarTrain2OFFPlr"+k));
-   rmAddTriggerCondition("Timer");
+   rmAddTriggerCondition("Timer ms");
    rmSetTriggerConditionParamInt("Param1",5);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain2ONPlr"+k));
@@ -1543,8 +1543,8 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
 
    // Build limit reducer
    rmSwitchToTrigger(rmTriggerID("UniqueShip1TIMEPlr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamFloat("Param1",0.5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamFloat("Param1",200);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
    rmSetTriggerEffectParam("TechID","cTechzpReducePirateShipsBuildLimit"); //operator
@@ -1577,7 +1577,7 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("BlackbTrain1OFFPlr"+k));
-   rmAddTriggerCondition("Timer");
+   rmAddTriggerCondition("Timer ms");
    rmSetTriggerConditionParamInt("Param1",5);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain1ONPlr"+k));
@@ -1609,7 +1609,7 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("GraceTrain1OFFPlr"+k));
-   rmAddTriggerCondition("Timer");
+   rmAddTriggerCondition("Timer ms");
    rmSetTriggerConditionParamInt("Param1",5);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain1ONPlr"+k));
@@ -1641,7 +1641,7 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("CaesarTrain1OFFPlr"+k));
-   rmAddTriggerCondition("Timer");
+   rmAddTriggerCondition("Timer ms");
    rmSetTriggerConditionParamInt("Param1",5);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain1ONPlr"+k));
@@ -1859,7 +1859,7 @@ rmCreateTrigger("TrainJunk1TIME Plr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("TrainJunk2OFF_Plr"+k));
-   rmAddTriggerCondition("Timer");
+   rmAddTriggerCondition("Timer ms");
    rmSetTriggerConditionParamInt("Param1",5);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainJunk2ON_Plr"+k));
@@ -1869,8 +1869,8 @@ rmCreateTrigger("TrainJunk1TIME Plr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("TrainJunk2TIME_Plr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamFloat("Param1",0.5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamFloat("Param1",200);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
    rmSetTriggerEffectParam("TechID","cTechzpWokouJunkBuildLimitReduceShadow"); //operator
@@ -1907,7 +1907,7 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("TrainJunk1OFF_Plr"+k));
-rmAddTriggerCondition("Timer");
+rmAddTriggerCondition("Timer ms");
 rmSetTriggerConditionParamInt("Param1",5);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainJunk1ON_Plr"+k));
@@ -1917,8 +1917,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("TrainJunk1TIME_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamFloat("Param1",0.5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpWokouJunkBuildLimitReduceShadow"); //operator
@@ -1967,7 +1967,7 @@ rmCreateTrigger("trainFuchuan1TIME Plr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("trainFuchuan2OFF_Plr"+k));
-   rmAddTriggerCondition("Timer");
+   rmAddTriggerCondition("Timer ms");
    rmSetTriggerConditionParamInt("Param1",5);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2ON_Plr"+k));
@@ -1978,8 +1978,8 @@ rmCreateTrigger("trainFuchuan1TIME Plr"+k);
 
    
    rmSwitchToTrigger(rmTriggerID("trainFuchuan2TIME_Plr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamFloat("Param1",0.5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamFloat("Param1",200);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
    rmSetTriggerEffectParam("TechID","cTechzpFireJunkBuildLimitReduceShadow"); //operator
@@ -2016,7 +2016,7 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("trainFuchuan1OFF_Plr"+k));
-rmAddTriggerCondition("Timer");
+rmAddTriggerCondition("Timer ms");
 rmSetTriggerConditionParamInt("Param1",5);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1ON_Plr"+k));
@@ -2026,8 +2026,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("trainFuchuan1TIME_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamFloat("Param1",0.5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpFireJunkBuildLimitReduceShadow"); //operator
