@@ -1423,6 +1423,8 @@ rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",i);
 rmSetTriggerEffectParam("TechID","cTechdeEUMapUpdateVisuals"); // Europen Map
 rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerEffectParam("TechID","cTechzpNativeHeavyMap"); // Mercenaries
+rmSetTriggerEffectParamInt("Status",2);
 }
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);

@@ -65,5 +65,6 @@
   </map>
   <map name="anno">
     <tech>zpAnnoMercenaries</tech>
+    <forcetech>zpNativeHeavyMap</forcetech>
   </map>
 </mapspecifictechmods>
