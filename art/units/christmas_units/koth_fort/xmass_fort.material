@@ -1,0 +1,52 @@
+<material>
+  <submaterial name="matb">
+    <materialdef name="default_emissive_advanced">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\fort\east_fort\textures\east_fort_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\fort\east_fort\textures\east_fort_matB_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\fort\east_fort\textures\east_fort_matB_Masks">
+      </texture>
+      <texture name="Details" override="buildings\fort\east_fort\textures\east_fort_matB_Details">
+      </texture>
+      <texture name="Emissive" override="units\christmas_units\koth_fort\xmass_fort_emitter">
+      </texture>
+      <float name="EmissiveIntensity" override="3.4400">
+      </float>
+      <vector4 name="EmissiveColor" override="1.000, 1.000, 1.000, 0.000">
+      </vector4>
+      <float name="Lift Metallic" override="1.0000">
+      </float>
+      <float name="AO Intensity" override="2.4440">
+      </float>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\artillery\Falconet\Textures\falconet_matC_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\artillery\Falconet\Textures\falconet_matC_Normals">
+      </texture>
+      <texture name="Masks" override="units\artillery\Falconet\Textures\falconet_matC_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\fort\east_fort\textures\east_fort_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\fort\east_fort\textures\east_fort_matA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\fort\east_fort\textures\east_fort_matA_Masks">
+      </texture>
+      <texture name="Details" override="buildings\fort\east_fort\textures\east_fort_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

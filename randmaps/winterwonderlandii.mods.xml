@@ -45,6 +45,9 @@
 		<Unit name='TrainCar'>
 			<AnimFile>units\christmas_units\polar_express\train_car.xml</AnimFile>
 		</Unit>
+		<Unit name='TrainCoalcar'>
+			<AnimFile>units\christmas_units\polar_express\coal_car.xml</AnimFile>
+		</Unit>
 		<Unit name='TrainCarWood'>
 			<AnimFile>units\christmas_units\polar_express\train_car.xml</AnimFile>
 		</Unit>
@@ -56,6 +59,9 @@
 		</Unit>
 		<Unit name='TrainCaboose'>
 			<AnimFile>units\christmas_units\polar_express\caboose.xml</AnimFile>
+		</Unit>
+		<Unit name='ypKingsHill'>
+			<AnimFile>units\christmas_units\koth_fort\xmass_fort.xml</AnimFile>
 		</Unit>
 	</ProtoMods>
 </Mods>
