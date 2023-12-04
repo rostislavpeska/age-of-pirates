@@ -1581,7 +1581,7 @@
     <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\gunpowder_barrels.png</icon>
-    <rollovertextid>27224</rollovertextid>
+    <rollovertextid>300984</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <effects>
@@ -2436,11 +2436,14 @@
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="ypBankWagon" relativity="Absolute">
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpBankWagon" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data" amount="2.00" subtype="Enable" relativity="Absolute">
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypBankAsian</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">ypBankAsian</target>
       </effect>
     </effects>
@@ -2463,6 +2466,9 @@
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="FactoryWagon" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">Factory</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">Factory</target>
@@ -8285,7 +8291,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <effects>
-      <effect type="TechStatus" status="active">YPNatJesuitSchools"</effect>
+      <effect type="TechStatus" status="active">YPNatJesuitSchools</effect>
     </effects>
   </tech>
   <tech name="zpNatJesuitFlyingButtress" type="Normal">
@@ -8300,7 +8306,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <effects>
-      <effect type="TechStatus" status="active">YPNatJesuitFlyingButtress"</effect>
+      <effect type="TechStatus" status="active">YPNatJesuitFlyingButtress</effect>
     </effects>
   </tech>
   <tech name="zpNatDisciplinedJesuit" type="Normal">
@@ -10589,7 +10595,6 @@
       <effect type="TextOutputTechName">110130</effect>
     </effects>
   </tech>
-
   <tech name="zpBigButtonResearchDecrease" type="Normal">
     <dbid>40372</dbid>
     <status>UNOBTAINABLE</status>
@@ -10614,6 +10619,92 @@
       <effect type="TechStatus" status="unobtainable">zpBigButtonResearchIncrease</effect>
     </effects>
   </tech>
+  <tech name="zpIncaTamboShadowPirateMap" type="Normal">
+    <dbid>40374</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEAge0Inca</techstatus>
+      <techstatus status="Active">deMapEuropean</techstatus>
+      <techstatus status="Active">zpIsPirateMap</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="CommandRemove" proto="zpSubmarineProxy">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatMarksman">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatMarksman" page="1" column="0">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSubmarineProxy" page="1" column="0">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeHeavyMap" type="Normal">
+    <dbid>40375</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+  </tech>
+  <tech name="zpIncaEmbassyNativeHeavyMap" type="Normal">
+    <dbid>40376</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">deBigEmbassyGunRunning</techstatus>
+      <techstatus status="Active">zpNativeHeavyMap</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="CommandRemove" proto="SaloonOutlawPistol">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatMarksman">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>     
+    </effects>
+  </tech>
+  <tech name="zpPeruEmbassyNativeHeavyMap" type="Normal">
+    <dbid>40376</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEHCREVAmericanAlliesPeru</techstatus>
+      <techstatus status="Active">zpNativeHeavyMap</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="CommandRemove" proto="SaloonOutlawPistol">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatMarksman">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>     
+    </effects>
+  </tech>
+  <tech name="zpPeruEmbassyNativeHeavyQuechua" type="Normal">
+    <dbid>40378</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEAmericanAlliesIncaQuechua</techstatus>
+      <techstatus status="Active">zpNativeHeavyMap</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="CommandRemove" proto="SaloonOutlawPistol">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatMarksman">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>   
+    </effects>
+  </tech>
+ 
+ 
 
 
 
@@ -10622,17 +10713,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-    <!-- ====================================== -->
+  <!-- ====================================== -->
   <!-- Christmas Units added by AssertiveWall -->
   <!-- ====================================== -->
   <tech name="zpNativeXmassVillage" type="Normal">

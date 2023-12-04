@@ -1264,6 +1264,8 @@ rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",i);
 rmSetTriggerEffectParam("TechID","cTechzpAnnoMercenaries"); // Mercenaries
 rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerEffectParam("TechID","cTechzpNativeHeavyMap"); // Native Embassy Techs
+rmSetTriggerEffectParamInt("Status",2);
 }
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
