@@ -44,6 +44,10 @@
       <from>native_water_trail</from>
       <to>native_water2_trail</to>
     </upgrade>
+    <upgrade>
+      <from>xmassnow</from>
+      <to>xmasstagecoach</to>
+    </upgrade>
     <grantsvisibility>
     </grantsvisibility>
     <awardsound>FindNugget</awardsound>
@@ -84,6 +88,10 @@
     <upgrade>
       <from>native_water2_trail</from>
       <to>native_water3_trail</to>
+    </upgrade>
+    <upgrade>
+      <from>xmasstagecoach</from>
+      <to>xmastrain</to>
     </upgrade>
     <transport>
     </transport>

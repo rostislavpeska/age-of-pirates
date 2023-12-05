@@ -109,7 +109,7 @@ void main(void)
 	string propType3 = "UnderbrushRockies";
 	string propType4 = "UnderbrushForest";
 	string propType5 = "UnderbrushPatagoniaDirt";
-	string toiletPaper = "dirt";
+	string toiletPaper = "xmassnow";
 	
 	// ____________________ General ____________________
 	// Picks the map size
