@@ -1975,7 +1975,7 @@ minInterval 10
 //==============================================================================
 void establishForwardBeachHead(vector location = cInvalidVector)
 {
-   sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackWithYou, location);
+   //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackWithYou, location);
    // Get the desired army/navy Size, increasing by age
    int armyMin = 1;
    int armyDesired = 10;

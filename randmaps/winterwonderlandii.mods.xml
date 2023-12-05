@@ -45,6 +45,9 @@
 		<Unit name='TrainCar'>
 			<AnimFile>units\christmas_units\polar_express\train_car.xml</AnimFile>
 		</Unit>
+		<Unit name='TrainCoalcar'>
+			<AnimFile>units\christmas_units\polar_express\coal_car.xml</AnimFile>
+		</Unit>
 		<Unit name='TrainCarWood'>
 			<AnimFile>units\christmas_units\polar_express\train_car.xml</AnimFile>
 		</Unit>
@@ -56,6 +59,30 @@
 		</Unit>
 		<Unit name='TrainCaboose'>
 			<AnimFile>units\christmas_units\polar_express\caboose.xml</AnimFile>
+		</Unit>
+		<Unit name='ypKingsHill'>
+			<AnimFile>units\christmas_units\koth_fort\xmass_fort.xml</AnimFile>
+		</Unit>
+		<Unit name='NuggetWolfWagon'>
+			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
+			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
+			<AnimFile>buildings\props_colony\gifts\gift_gold.xml</AnimFile>
+			<Icon>resources\art\buildings\props_colony\gifts\gift_gold.png</Icon>
+			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_gold.png</PortraitIcon>
+		</Unit>
+		<Unit name='NuggetAbandonedCabin'>
+			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
+			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
+			<AnimFile>buildings\props_colony\gifts\gift_wood.xml</AnimFile>
+			<Icon>resources\art\buildings\props_colony\gifts\gift_wood.png</Icon>
+			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_wood.png</PortraitIcon>
+		</Unit>
+		<Unit name='NuggetBearCampsite'>
+			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
+			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
+			<AnimFile>buildings\props_colony\gifts\gift_food.xml</AnimFile>
+			<Icon>resources\art\buildings\props_colony\gifts\gift_food.png</Icon>
+			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_food.png</PortraitIcon>
 		</Unit>
 	</ProtoMods>
 </Mods>
