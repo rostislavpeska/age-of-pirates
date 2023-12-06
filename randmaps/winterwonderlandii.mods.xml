@@ -38,27 +38,45 @@
 		</Unit>
 		<Unit name='TrainEngine'>
 			<AnimFile>units\christmas_units\polar_express\engine.xml</AnimFile>
-			<Icon>resources\art\terrain\trees\christmas_tree_icon_64.png</Icon>
-			<PortraitIcon>resources\art\terrain\trees\christmas_tree_icon_portrait.png</PortraitIcon>
+			<Icon>resources\art\units\natives\christmass_content\polar_express.png</Icon>
+			<PortraitIcon>resources\art\units\natives\christmass_content\polar_express_portrait.png</PortraitIcon>
 			<DisplayNameID>400025</DisplayNameID>
 		</Unit>
 		<Unit name='TrainCar'>
 			<AnimFile>units\christmas_units\polar_express\train_car.xml</AnimFile>
+			<Icon>resources\art\units\natives\christmass_content\polar_express.png</Icon>
+			<PortraitIcon>resources\art\units\natives\christmass_content\polar_express_portrait.png</PortraitIcon>
+			<DisplayNameID>400025</DisplayNameID>
 		</Unit>
 		<Unit name='TrainCoalcar'>
 			<AnimFile>units\christmas_units\polar_express\coal_car.xml</AnimFile>
+			<Icon>resources\art\units\natives\christmass_content\polar_express.png</Icon>
+			<PortraitIcon>resources\art\units\natives\christmass_content\polar_express_portrait.png</PortraitIcon>
+			<DisplayNameID>400025</DisplayNameID>
 		</Unit>
 		<Unit name='TrainCarWood'>
 			<AnimFile>units\christmas_units\polar_express\train_car.xml</AnimFile>
+			<Icon>resources\art\units\natives\christmass_content\polar_express.png</Icon>
+			<PortraitIcon>resources\art\units\natives\christmass_content\polar_express_portrait.png</PortraitIcon>
+			<DisplayNameID>400025</DisplayNameID>
 		</Unit>
 		<Unit name='TrainCarFood'>
 			<AnimFile>units\christmas_units\polar_express\train_car.xml</AnimFile>
+			<Icon>resources\art\units\natives\christmass_content\polar_express.png</Icon>
+			<PortraitIcon>resources\art\units\natives\christmass_content\polar_express_portrait.png</PortraitIcon>
+			<DisplayNameID>400025</DisplayNameID>
 		</Unit>
 		<Unit name='TrainCarCoin'>
 			<AnimFile>units\christmas_units\polar_express\train_car.xml</AnimFile>
+			<Icon>resources\art\units\natives\christmass_content\polar_express.png</Icon>
+			<PortraitIcon>resources\art\units\natives\christmass_content\polar_express_portrait.png</PortraitIcon>
+			<DisplayNameID>400025</DisplayNameID>
 		</Unit>
 		<Unit name='TrainCaboose'>
 			<AnimFile>units\christmas_units\polar_express\caboose.xml</AnimFile>
+			<Icon>resources\art\units\natives\christmass_content\polar_express.png</Icon>
+			<PortraitIcon>resources\art\units\natives\christmass_content\polar_express_portrait.png</PortraitIcon>
+			<DisplayNameID>400025</DisplayNameID>
 		</Unit>
 		<Unit name='ypKingsHill'>
 			<AnimFile>units\christmas_units\koth_fort\xmass_fort.xml</AnimFile>
@@ -83,6 +101,10 @@
 			<AnimFile>buildings\props_colony\gifts\gift_food.xml</AnimFile>
 			<Icon>resources\art\buildings\props_colony\gifts\gift_food.png</Icon>
 			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_food.png</PortraitIcon>
+		</Unit>
+		<Unit name='TradingPost'>
+			<Icon>resources\art\units\natives\christmass_content\christmas_tp_64x64.png</Icon>
+			<PortraitIcon>resources\art\units\natives\christmass_content\christmas_tp.png</PortraitIcon>
 		</Unit>
 	</ProtoMods>
 </Mods>

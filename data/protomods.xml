@@ -19564,7 +19564,7 @@
     <maxvelocity>7.0000</maxvelocity>
     <maxrunvelocity>9.0000</maxrunvelocity>
     <movementtype>land</movementtype>
-    <animfile>units\artillery\inuit_qamutiik\santa.xml</animfile>
+    <animfile>units\artillery\inuit_qamutiik\santa_trade_route.xml</animfile>
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\natives\christmass_content\sleigh_64x64.png</icon>
     <portraiticon>resources\art\units\natives\christmass_content\sleigh.png</portraiticon>
@@ -20973,7 +20973,7 @@
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
-    <icon>resources\art\units\natives\christmass_content\workshop_64x64.png</icon>
+    <icon>resources\art\units\natives\christmass_content\workshop_unit.png</icon>
     <portraiticon>\resources\art\units\natives\christmass_content\workshop.png</portraiticon>
     <rollovertextid>400011</rollovertextid>
     <shortrollovertextid>400011</shortrollovertextid>
