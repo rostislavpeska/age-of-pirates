@@ -11109,7 +11109,23 @@
       </effect>
     </effects>
   </tech>
-
+  <tech name="zpXmassTradeRoute" type="Normal">
+    <dbid>50018</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetName" tech="TradeRouteUpgrade1" newname="300960" newrollover="-1">
+      </effect>
+      <effect type="SetName" tech="TradeRouteUpgrade2" newname="400025" newrollover="-1">
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyTechIcon" tech="zpSendRudolph" relativity="Absolute">
+        <target type="Tech">TradeRouteUpgrade1</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyTechIcon" tech="zpPolarExpress" relativity="Absolute">
+        <target type="Tech">TradeRouteUpgrade2</target>
+      </effect>
+    </effects>
+  </tech>
   <!-- ====================================== -->
   <!-- ====================================== -->
 
