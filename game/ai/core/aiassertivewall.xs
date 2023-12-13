@@ -1967,9 +1967,233 @@ minInterval 10
 }
 
 
+//==============================================================================
+// fishFunction
+// AssertiveWall: Like the rule to update fishing boat maintain plan, but as a 
+//                function so the boat boom rules can call it
+//==============================================================================
+void fishFunction(int maxFishingBoats = 10, int boatPriority = 55, int maxDistance = 100)
+{
+   if (kbUnitCount(cMyID, gDockUnit, cUnitStateAlive) < 1)
+   {
+      aiPlanSetVariableInt(gFishingBoatMaintainPlan, cTrainPlanNumberToMaintain, 0, 0);
+      return;
+   }
+   
+   int numberFishingBoats = kbUnitCount(cMyID, gFishingUnit, cUnitStateABQ);
+   int numberFoodFishingBoats = kbGetAmountValidResourcesByLocation(gNavyVec,
+      cResourceFood, cAIResourceSubTypeFish, maxDistance) / 400.0;
+   int numberGoldFishingBoats = getUnitCountByLocation(cUnitTypeAbstractWhale, 0, cUnitStateAny, gNavyVec, maxDistance) * 4;
+
+   if (numberFishingBoats < numberFoodFishingBoats)
+   {
+      numberFishingBoats = numberFoodFishingBoats;
+   }
+   if (numberFishingBoats < numberGoldFishingBoats)
+   {
+      numberFishingBoats = numberGoldFishingBoats;
+   }
+   if (numberFishingBoats > maxFishingBoats)
+   {
+      numberFishingBoats = maxFishingBoats;
+   }
+
+   int fishingBoatQuery = createSimpleUnitQuery(gFishingUnit, cMyID, cUnitStateAlive);
+   kbUnitQuerySetActionType(fishingBoatQuery, cActionTypeIdle);
+   int numberFound = kbUnitQueryExecute(fishingBoatQuery);
+
+   if (numberFound > 3 ) // We have too many idle boats indicating we don't know what to use them for so don't train more.
+   {
+      numberFishingBoats = 0;
+   }
+
+   aiPlanSetVariableInt(gFishingBoatMaintainPlan, cTrainPlanNumberToMaintain, 0, numberFishingBoats);
+   aiPlanSetDesiredResourcePriority(gFishingBoatMaintainPlan, boatPriority);
+
+   return;
+}
+
+
+
+//==============================================================================
+/* boatBoomMonitor
+   AssertiveWall: monitor that decided between little, double, and big boy boat
+                  booms. 
+                  This replaces fishManager
+*/
+//==============================================================================
+
+rule boatBoomMonitor
+inactive
+minInterval 10
+{
+   /* There are three different boat boom types; little, double, and big boy
+      Little:  Designate one dock to produce fishing boats out of and try to keep
+               production up in that one dock 
+      Double:  Same as Little, except designate 2 docks
+      Big Boy: Like the other two, but we build 4 docks and spam tons of fishing
+               boats from them.
+   */
+
+   // Some logic to determine if we'll go for the water
+   if (gTimeToFish == false)
+   {
+      if (kbGetAge() < cAge2 && agingUp() == false)
+      {
+         return;
+      }
+
+      // On island maps, start in transition
+      if (gStartOnDifferentIslands == true)
+      {
+         gTimeToFish = true;
+      }
+
+      // Check how far we are from water, and go for it if we're the closest teammate
+      int closestTeammate = -1;
+      int closestDist = 99999;
+      int testDist = -1;
+      for (i = 1; < cNumberPlayers)
+      {  
+         if (kbIsPlayerAlly(i) != true)
+         {
+            continue;
+         }
+
+         testDist = distance(kbGetPlayerStartingPosition(i), 
+                  kbUnitGetPosition(getUnit(cUnitTypeHomeCityWaterSpawnFlag, i)));
+         if (testDist < closestDist)
+         {
+            closestTeammate = i;
+            closestDist = testDist;
+         }
+      }
+      if (closestTeammate == cMyID && btRushBoom <= 0.5)
+      {  // We are the closest teammate, just make sure we aren't all-in rushing
+         gTimeToFish = true;
+      }
+
+      // If we are booming heavy, go for water
+      if (btRushBoom < -0.4)
+      {
+         gTimeToFish = true;
+      }
+
+      // Now some random checks
+      static int randomizer = -1;
+      if (randomizer < 0) // We roll once to enable it, otherwise other economy code can enable it.
+      {
+         randomizer = aiRandInt(10);
+      }
+
+      if (btRushBoom <= 0.0 && randomizer < 3)
+      {
+         gTimeToFish = true;
+      }
+      else if (gTimeToFish == false)
+      {
+         return;
+      }
+   }
+
+   int enemyWSStrength = -1;
+   int friendlyWSStrength = -1;
+   int friendlyWSQuery = -1;
+   int enemyWSQuery = -1;
+   int friendlyWSCount = -1;
+   int enemyWSCount = -1;
+
+   int dockCount = kbUnitCount(cMyID, gDockUnit, cUnitStateABQ);
+   int mainBaseID = kbBaseGetMainID(cMyID);
+   int desiredDockCount = -1;
+   int maxFishingBoats = -1;
+   int boatPriority = -1;
+   int maxDistance = -1;
+   int tempBoatUnit = -1;
+
+   // Get the associated strength of friendly and enemy fleets
+   friendlyWSQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationAlly, cUnitStateAlive);
+   friendlyWSCount = kbUnitQueryExecute(friendlyWSQuery);
+   for (i = 0; < friendlyWSCount)
+   {
+      tempBoatUnit = kbUnitGetProtoUnitID(kbUnitQueryGetResult(friendlyWSQuery, i));
+      friendlyWSStrength += kbUnitCostPerResource(tempBoatUnit, cResourceWood) + kbUnitCostPerResource(tempBoatUnit, cResourceGold) +
+                           kbUnitCostPerResource(tempBoatUnit, cResourceInfluence);
+   }
+
+   enemyWSQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
+   enemyWSCount = kbUnitQueryExecute(enemyWSQuery);
+   tempBoatUnit = -1;
+   for (i = 0; < enemyWSCount)
+   {
+      tempBoatUnit = kbUnitGetProtoUnitID(kbUnitQueryGetResult(enemyWSQuery, i));
+      enemyWSStrength += kbUnitCostPerResource(tempBoatUnit, cResourceWood) + kbUnitCostPerResource(tempBoatUnit, cResourceGold) +
+                           kbUnitCostPerResource(tempBoatUnit, cResourceInfluence);
+   }
+   //aiChat(1, "Counts F:E " + friendlyWSCount + ":" + enemyWSCount);
+   //aiChat(1, "Value F:E " + friendlyWSStrength + ":" + enemyWSStrength);
+
+
+   // Conditional for Big Boy:   The opponent is not uncompetitive on water, and 
+   //                            we are in a booming disposition
+   if (btRushBoom < 0 && friendlyWSStrength > 3 * enemyWSStrength && friendlyWSStrength > 1500)
+   {
+      //aiChat(1, "Big boy boat boom");
+      desiredDockCount = 4;
+      maxFishingBoats = 40;
+      boatPriority = 90;
+      maxDistance = kbGetMapXSize()/(3 * cNumberPlayers);
+   } 
+   // Conditional for Double:    The opponent is losing on water, and we want to capitalize unless we are 
+   //                            a rushing civ
+   else if (btRushBoom < 0.2 && friendlyWSStrength > 1.3 * enemyWSStrength && friendlyWSStrength > 1100)
+   {
+      //aiChat(1, "Double Dock boat boom");
+      desiredDockCount = 2;
+      maxFishingBoats = 30;
+      boatPriority = 60;
+      maxDistance = 150;
+   } 
+   // Conditional for Single:    As long as we are ahead at least a little on water
+   else if (btRushBoom < 0.4 && friendlyWSStrength > 1.0 * enemyWSStrength && friendlyWSStrength > 350)
+   {
+      //aiChat(1, "Single Dock Trickle");
+      desiredDockCount = 1;
+      maxFishingBoats = 25;
+      boatPriority = 55;
+      maxDistance = 80;    
+   } 
+   else
+   {
+      //aiChat(1, "No boat boom");
+      desiredDockCount = 1;
+      maxFishingBoats = 15;
+      boatPriority = 45;
+      maxDistance = 80;    
+   }
+
+
+   if (dockCount < desiredDockCount)
+   {
+      createSimpleBuildPlan(gDockUnit, 1, 70, false, cMilitaryEscrowID, mainBaseID, 1); 
+   }
+
+   fishFunction(maxFishingBoats, boatPriority, maxDistance);
+
+}
+
+
 
 //==============================================================================
 // establishForwardBeachHead
+// Tentative plan:
+//   Create stages
+//      Gather Navy
+//      Bombard Coast
+//      Land Forces
+//      Build forward buildings
+//      Establish forward base
+//
 // Also launches a land attack on the forward base position
 // Tries to establish several buildings
 //==============================================================================

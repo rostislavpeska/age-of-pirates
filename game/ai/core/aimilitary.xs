@@ -1752,11 +1752,12 @@ minInterval 10
       gLastWSTime = 120000 + xsGetTime(); // AssertiveWall: resets clock for dock building
    
       // AssertiveWall: If enemy are too close to fishing ships, tell them to move
-      int fishBoatQuery = createSimpleUnitQuery(gFishingUnit, cMyID, cUnitStateAlive);
+      int fishBoatQuery = createSimpleUnitQuery(cUnitTypeAbstractFishingBoat, cMyID, cUnitStateAlive);
       int numberFBFound = kbUnitQueryExecute(fishBoatQuery);
       int nearbyEnFound = -1;
       int dockUnit = -1;
       int unitID = -1;
+      int unitPlanID = -1;
       int enUnitID = -1;
       vector fBLocation = cInvalidVector;
       vector enemyLocation = cInvalidVector;
@@ -1765,38 +1766,67 @@ minInterval 10
       for (i = 0; < numberFBFound)
       {
          unitID = kbUnitQueryGetResult(fishBoatQuery, i);
+         unitPlanID = kbUnitGetPlanID(unitID);
+         if (aiPlanGetDesiredPriority(unitPlanID) > 19)
+         {  // Fishing priority is 19. Let anyone above that do their thing
+            continue;
+         }
          fBLocation = kbUnitGetPosition(unitID);
-         nearbyEnFound = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, fBLocation, 31.0); // one bigger range than a frigate
+         nearbyEnFound = getClosestVisibleUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, fBLocation, 31.0); // one bigger range than a frigate
          if (nearbyEnFound > 0)
          {  
             // AssertiveWall: First add boat to gFishingBellPlan so we can control it
             aiPlanAddUnit(gFishingBellPlan, unitID);
 
-            // AssertiveWall: Look for docks to garrison in. If none found then forts, town centers, towers
-            dockUnit = getUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 150.0);
-            sLocation = kbUnitGetPosition(dockUnit);
-            if (sLocation != cInvalidVector)
+            // AssertiveWall: Two coarses of action depending on whether its a fishing boat or something else
+            if (kbUnitGetProtoUnitID(unitID) == gFishingUnit)
             {
-               aiTaskUnitWork(unitID, dockUnit, true);
-               continue;
+               // AssertiveWall: Look for docks to garrison in. If none found then forts, town centers, towers
+               dockUnit = getUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 150.0);
+               sLocation = kbUnitGetPosition(dockUnit);
+               if (sLocation != cInvalidVector)
+               {
+                  aiTaskUnitWork(unitID, dockUnit, true);
+                  continue;
+               }
+               
+               // Now look for the rest
+               if (sLocation == cInvalidVector)
+               {
+                  sLocation = kbUnitGetPosition(getUnitByLocation(cUnitTypeFortFrontier, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+               }
+               if (sLocation == cInvalidVector)
+               {
+                  sLocation = kbUnitGetPosition(getUnitByLocation(cUnitTypeTownCenter, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+               }
+               if (sLocation == cInvalidVector)
+               {
+                  sLocation = kbUnitGetPosition(getUnitByLocation(gTowerUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+               }
+               // No good options left, go for any dock, then gNavyVec
+               if (sLocation == cInvalidVector)
+               {
+                  dockUnit = getClosestUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 1000);
+                  sLocation = kbUnitGetPosition(dockUnit);
+                  if (sLocation != cInvalidVector)
+                  {
+                     aiTaskUnitWork(unitID, dockUnit, true);
+                     continue;
+                  }
+               }
+               if (sLocation == cInvalidVector)
+               {
+                  sLocation = gNavyVec;
+               }
+
+               if (sLocation != cInvalidVector)
+               {
+                  aiTaskUnitMove(unitID, sLocation);
+               }
             }
-            
-            // Now look for the rest
-            if (sLocation == cInvalidVector)
-            {
-               sLocation = kbUnitGetPosition(getUnitByLocation(cUnitTypeFortFrontier, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
-            }
-            if (sLocation == cInvalidVector)
-            {
-               sLocation = kbUnitGetPosition(getUnitByLocation(cUnitTypeTownCenter, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
-            }
-            if (sLocation == cInvalidVector)
-            {
-               sLocation = kbUnitGetPosition(getUnitByLocation(gTowerUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
-            }
-            if (sLocation != cInvalidVector)
-            {
-               aiTaskUnitMove(unitID, sLocation);
+            else
+            {  // Shoot it!
+               aiTaskUnitWork(unitID, nearbyEnFound);
             }
          }
          else if (nearbyEnFound <= 0)

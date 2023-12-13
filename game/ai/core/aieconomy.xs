@@ -1761,7 +1761,9 @@ minInterval 15
    // We make a plan to maintain 0 fishing boats, fishManager actually decides when we really start fishing.
    gFishingBoatMaintainPlan = createSimpleMaintainPlan(gFishingUnit, 0, true, kbBaseGetMainID(cMyID), 1);
 
-   xsEnableRule("fishManager");
+   // AssertiveWall: Replace fishManager with boatBoomMonitor
+   //xsEnableRule("fishManager");
+   xsEnableRule("boatBoomMonitor");
    xsDisableSelf();
 }
 

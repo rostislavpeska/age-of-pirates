@@ -1086,7 +1086,7 @@ int getClosestUnitByLocation(int unitTypeID = -1, int playerRelationOrID = cMyID
 
 //==============================================================================
 // AssetiveWall: getClosestVisibleUnitByLocation
-// Will return a random unit matching the parameters
+// Will return the closest unit matching the parameters
 //==============================================================================
 int getClosestVisibleUnitByLocation(int unitTypeID = -1, int playerRelationOrID = cMyID, int state = cUnitStateAlive,
                              vector location = cInvalidVector, float radius = 20.0)

@@ -1308,8 +1308,8 @@ highFrequency // Run every frame until it's disabled.
                         toPick = 1; // Still add the Villager though.
                      }
                   }
-                  // AssertiveWall: handle the island case. No units unless rushing
-                  else if (gStartOnDifferentIslands == true && btRushBoom < 0.0) 
+                  // AssertiveWall: handle the island case. No units unless hard rushing
+                  else if (gStartOnDifferentIslands == true && btRushBoom < 0.5) 
                   {
                      if ((cMyCiv == cCivIndians) || (cMyCiv == cCivPortuguese) || (cMyCiv == cCivRussians) || 
                          (cMyCiv == cCivChinese) || (cMyCiv == cCivDESwedish) || (cMyCiv == cCivDEAmericans))
