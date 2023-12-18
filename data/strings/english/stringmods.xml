@@ -1,6 +1,7 @@
 <stringmods>
   <stringtable>
     <language name="English">
+      <!--Version 1.1-->
       <string _locid="300001">ZP NAT Pirate</string>
       <string _locid="300002">ZP SPC Queen Anne's Revenge</string>
       <string _locid="300003">Blackbeard's Flagship</string>
