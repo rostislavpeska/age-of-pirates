@@ -19600,6 +19600,57 @@
     <flag>Tracked</flag>
     <command page="10" column="7">Delete</command>
   </unit>
+  <unit id="20189" name="zpSPCSocketWesternVillage">
+    <dbid>20189</dbid>
+    <displaynameid>300987</displaynameid>
+    <editornameid>300988</editornameid>
+    <subciv>zpWesternVillage</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.0286</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildAsian</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\jesuit_outpost_socket.xml</animfile>
+    <minimapicon>ui\minimap\asian_native_site</minimapicon>
+    <capturedminimapicon>ui\minimap\asian_native_site_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\cowboys.png</portraiticon>
+    <rollovertextid>300017</rollovertextid>
+    <shortrollovertextid>300017</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>9.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>FlattenGround</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
+  </unit>
   
 
 
@@ -21438,5 +21489,53 @@
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
     </protoaction>
+  </unit>
+  <unit id="" name="zpArmoredTrain">
+    <dbid></dbid>
+    <displaynameid>32690</displaynameid>
+    <editornameid>300986</editornameid>
+    <obstructionradiusx>5.000</obstructionradiusx>
+    <obstructionradiusz>0.9999</obstructionradiusz>
+    <maxvelocity>2.0000</maxvelocity>
+    <maxrunvelocity>4.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>20.0000</turnrate>
+    <animfile>units\trains\engine.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trade\spc_wagon_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trade\spc_wagon_portrait.png</portraiticon>
+    <rollovertextid>32689</rollovertextid>
+    <shortrollovertextid>32688</shortrollovertextid>
+    <los>22.0000</los>
+    <allowedage>0</allowedage>
+    <armor type="Ranged" value="0.1000">
+    </armor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractWagon</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Economic</unittype>
+
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Invulnerable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>SPCResourceCart.tactics</tactics>
   </unit>
 </protomods>

@@ -10698,6 +10698,14 @@
       </effect>   
     </effects>
   </tech>
+  <tech name="zpNativeWesternVillage" type="Normal">
+    <dbid>40379</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      
+    </effects>
+  </tech>
  
  
 
