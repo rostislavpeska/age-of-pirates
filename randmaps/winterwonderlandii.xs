@@ -1503,8 +1503,22 @@ void main(void)
 		rmAddObjectDefConstraint(valleyPropsID, avoidEmbellishment);
 //		rmPlaceObjectDefAtLoc(valleyPropsID, 0, 0.50, 0.50, 6+3*PlayerNum);
 
-	// Text
-	rmSetStatusText("", 1.00);
+	
+
+	// Starting techs
+
+	rmCreateTrigger("Starting Techs");
+	rmSwitchToTrigger(rmTriggerID("Starting techs"));
+	for(i=1; <= cNumberNonGaiaPlayers) {
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",i);
+	rmSetTriggerEffectParam("TechID","cTechzpXmassTradeRoute"); // XMass Trade Route Techs
+	rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 
 	// Italian Vilager Balance
 
@@ -1730,5 +1744,9 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
+	// Text
+	rmSetStatusText("", 1.00);
+
 } // END
 	

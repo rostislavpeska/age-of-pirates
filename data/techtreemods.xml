@@ -2463,17 +2463,12 @@
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="FactoryWagon" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">Factory</target>
-      </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">Factory</target>
       </effect>
-      <effect type="SetName" proto="deMercCapturedMortar" culture="none" newname="300312">
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="FactoryWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>
@@ -10703,6 +10698,14 @@
       </effect>   
     </effects>
   </tech>
+  <tech name="zpNativeWesternVillage" type="Normal">
+    <dbid>40379</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      
+    </effects>
+  </tech>
  
  
 
@@ -11109,7 +11112,23 @@
       </effect>
     </effects>
   </tech>
-
+  <tech name="zpXmassTradeRoute" type="Normal">
+    <dbid>50018</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetName" tech="TradeRouteUpgrade1" newname="300960" newrollover="-1">
+      </effect>
+      <effect type="SetName" tech="TradeRouteUpgrade2" newname="400025" newrollover="-1">
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyTechIcon" tech="zpSendRudolph" relativity="Absolute">
+        <target type="Tech">TradeRouteUpgrade1</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyTechIcon" tech="zpPolarExpress" relativity="Absolute">
+        <target type="Tech">TradeRouteUpgrade2</target>
+      </effect>
+    </effects>
+  </tech>
   <!-- ====================================== -->
   <!-- ====================================== -->
 
