@@ -1054,9 +1054,19 @@
       <string _locid="400058">Seasoned Reindeer Sled</string>
       <string _locid="400059">Storied Reindeer Sled</string>
       
+      <!-- ======================================== -->
+      <!-- ======================================== -->
 
-      <!-- ======================================== -->
-      <!-- ======================================== -->
+      <!-- ===================================== -->
+      <!-- Cowboy Strings added by AssertiveWall -->
+      <!-- ===================================== -->
+      <string _locid="400060">Armored Stagecoach</string>
+      <string _locid="400061">zp Armored Stagecoach</string>
+      <string _locid="400062">A heavy stagecoach armed to take on the wild west.</string>
+
+      <!-- ===================================== -->
+      <!-- ===================================== -->
+
     </language>
   </stringtable>
 </stringmods>
