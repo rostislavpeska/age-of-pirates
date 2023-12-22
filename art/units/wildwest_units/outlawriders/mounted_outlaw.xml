@@ -15,17 +15,17 @@
       </v1>
       <v2>
         <assetreference type="GrannyModel">
-          <file>units\natives\ally\apache_cavalry\apache_cavalry_horse</file>
+          <file>units\spc\outlaws\outlaw_horse</file>
         </assetreference>
       </v2>
       <v3>
         <assetreference type="GrannyModel">
-          <file>units\cavalry\dragoon\dragoon_horse_age3</file>
+          <file>units\spc\outlaws\outlaw_horse</file>
         </assetreference>
       </v3>
       <v4>
         <assetreference type="GrannyModel">
-          <file>units\cavalry\chinaco\chinaco_horse_age2</file>
+          <file>units\cavalry\chinaco\chinaco_horse_age4</file>
         </assetreference>
       </v4>
       <v5>
@@ -35,12 +35,12 @@
       </v5>
       <v6>
         <assetreference type="GrannyModel">
-          <file>units\natives\lakota\bow_rider\bow_rider_1_horse</file>
+          <file>units\natives\ally\apache_cavalry\apache_cavalry_horse</file>
         </assetreference>
       </v6>
       <v7>
         <assetreference type="GrannyModel">
-          <file>units\spc\outlaws\outlaw_horse</file>
+          <file>units\natives\ally\apache_cavalry\apache_cavalry_horse</file>
         </assetreference>
       </v7>
       <v8>
@@ -50,17 +50,17 @@
       </v8>
       <v9>
         <assetreference type="GrannyModel">
-          <file>units\natives\lakota\axe_rider\axe_rider_horse01</file>
+          <file>units\cavalry\dragoon\dragoon_horse_age3</file>
         </assetreference>
       </v9>
       <v10>
         <assetreference type="GrannyModel">
-          <file>units\cavalry\chinaco\chinaco_horse_age4</file>
+          <file>units\natives\lakota\axe_rider\axe_rider_horse01</file>
         </assetreference>
       </v10>
       <v11>
         <assetreference type="GrannyModel">
-          <file>units\cavalry\dragoon\dragoon_horse_age3</file>
+          <file>units\spc\outlaws\outlaw_horse</file>
         </assetreference>
       </v11>
     </logic>
