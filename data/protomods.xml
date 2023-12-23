@@ -21769,7 +21769,7 @@
       <damagebonus type="AbstractArtillery">2.000000</damagebonus>
     </protoaction>
   </unit>
-  <!--<unit id="21016" name="zpSheriffOffice">
+  <unit id="21016" name="zpSheriffOffice">
     <dbid>21016</dbid>
     <displaynameid>400066</displaynameid>
     <editornameid>400067</editornameid>
@@ -21778,7 +21778,7 @@
     <buildlimit>1</buildlimit>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>units\wildwest_units\sheriff_office\sheriff_office.xml</animfile>
+    <animfile>buildings\sheriff\sheriff_office.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Wood</impacttype>
@@ -21842,6 +21842,6 @@
     <command page="10" column="2">SetGatherPointEconomy</command>
     <command page="10" column="8">CancelAllQueued</command>
     <tactics>christmas_unit.tactics</tactics>
-  </unit>-->
+  </unit>
 
 </protomods>
