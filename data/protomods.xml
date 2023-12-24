@@ -251,6 +251,7 @@
     <train row="0" page="0" column="2">zpNatDvoryanin</train>
     <train row="0" page="0" column="2">zpNatBulgarianBoyar</train>
     <train row="0" page="0" column="2">zpNatMonaspa</train>
+    <train row="0" page="0" column="1">zpMountedOutlaw</train>
 
     <!-- Christmas units and techs Added by AssertiveWall-->
     <train row="0" page="0" column="1">zpNatElfsGuard</train>
@@ -21703,7 +21704,6 @@
     <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>AbstractOutlaw</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
     <unittype>Unit</unittype>
