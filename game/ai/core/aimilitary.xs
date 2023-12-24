@@ -977,7 +977,7 @@ minInterval 15
             {
                case cUnitTypeypKingsHill:
                {
-                  baseAssets = baseAssets + 1600.0;
+                  baseAssets = baseAssets + 1600.0;  // AssertiveWall: Up from 1600. Seriously, only attack KOTH if it's active
                   isKOTH = true;
                   break;
                }
@@ -1342,7 +1342,8 @@ minInterval 15
       aiSetMostHatedPlayerID(targetPlayer);
    }
 
-   if (targetBaseID < 0 || targetShouldAttack == false)
+   // AssertiveWall: Check here for KOTH, not just if we aren't attacking anything else
+   if (targetBaseID < 0 || targetShouldAttack == false || defendingKOTH == true || attackingKOTH == true)
    {
       // If we got nothing, and KOTH is active, grab the KOTH location.
       if (defendingKOTH == true || attackingKOTH == true)
@@ -1399,7 +1400,7 @@ minInterval 15
          aiPlanSetVariableInt(planID, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
       }
       aiPlanSetVariableInt(planID, cCombatPlanTargetPlayerID, 0, targetPlayer);
-      aiPlanSetVariableVector(planID, cCombatPlanTargetPoint, 0, baseLocation);
+      aiPlanSetVariableVector(planID, cCombatPlanTargetPoint, 0, targetBaseLocation); //AssertiveWall: Fixed from baselocation
       aiPlanSetVariableVector(planID, cCombatPlanGatherPoint, 0, gatherPoint);
       aiPlanSetVariableFloat(planID, cCombatPlanGatherDistance, 0, 40.0);
 
@@ -1422,15 +1423,24 @@ minInterval 15
          // aiPlanSetVariableBool(planID, cCombatPlanRefreshAttackRoute, 0, false);
       }
 
-      if (cDifficultyCurrent >= cDifficultyHard)
+      // AssertiveWall: Keep attacking KOTH till timer runs out or outnumbered
+      if (cDifficultyCurrent >= cDifficultyHard || attackingKOTH == true)
       {
          if (cDifficultyCurrent >= gDifficultyExpert)
          {
             aiPlanSetVariableBool(planID, cCombatPlanAllowMoreUnitsDuringAttack, 0, true);
          }
          aiPlanSetVariableInt(planID, cCombatPlanRefreshFrequency, 0, 300);
-         aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeBaseGone);
-         aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+         if (attackingKOTH == true)
+         {
+            aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat);
+            aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 240000); // Full timer
+         }
+         else
+         {
+            aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeBaseGone);
+            aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+         }
          updateMilitaryTrainPlanBuildings(gForwardBaseID);
       }
       else
@@ -1440,7 +1450,8 @@ minInterval 15
       }
 
       // If we do not have a base, destroy the plan when we have no targets.
-      if (targetBaseID < 0)
+      // AssertiveWall: only retreat when outnumbers when attacking KOTH. Attack and stay there
+      if (targetBaseID < 0 && attackingKOTH == false)
       {
          aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget | aiPlanGetVariableInt(planID, cCombatPlanDoneMode, 0));
          aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 30000);
@@ -1474,7 +1485,7 @@ minInterval 15
          aiPlanSetVariableInt(planID, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
       }
       aiPlanSetVariableInt(planID, cCombatPlanTargetPlayerID, 0, targetPlayer);
-      aiPlanSetVariableVector(planID, cCombatPlanTargetPoint, 0, baseLocation);
+      aiPlanSetVariableVector(planID, cCombatPlanTargetPoint, 0, targetBaseLocation);
       aiPlanSetVariableInt(planID, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
       aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget | cCombatPlanDoneModeRetreat);
       aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 30000);
