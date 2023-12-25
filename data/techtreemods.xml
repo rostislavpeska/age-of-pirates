@@ -10708,6 +10708,26 @@
       </effect>    
     </effects>
   </tech>
+  <tech name="zpTransformArmoredTrain" type="Normal">
+    <dbid>40380</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpTradeUnitTest" fromprotoid="Travois">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTransformArmoredTrainBack" type="Normal">
+    <dbid>40380</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="Travois" fromprotoid="zpTradeUnitTest">
+      </effect>
+    </effects>
+  </tech>
  
  
 
