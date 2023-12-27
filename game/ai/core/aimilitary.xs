@@ -977,7 +977,7 @@ minInterval 15
             {
                case cUnitTypeypKingsHill:
                {
-                  baseAssets = baseAssets + 1600.0;  // AssertiveWall: Up from 1600. Seriously, only attack KOTH if it's active
+                  baseAssets = baseAssets + 1600.0;
                   isKOTH = true;
                   break;
                }
@@ -1246,6 +1246,63 @@ minInterval 15
             shouldAttack = false;
          }
 
+         // AssertiveWall: Avoid attacking after age-up unless we can get some momentum
+         //    1. We can get the veteran upgrade of our most used unit OR
+         //    2. We sent a unit shipment
+         /*if (cDifficultyCurrent >= cDifficultyModerate)
+         {
+            // Get our favorite unit (by cost)
+            bool toggleShouldAttack1 = false;
+            bool toggleShouldAttack2 = false;
+            int favoriteUnitQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+            int numberOfUnits = kbUnitQueryExecute(favoriteUnitQuery);
+            int largestUnitCost = -1;
+            int tempUnitCost = -1;
+            int tempUnit = -1;
+            int favoriteUnit = -1;
+            for (m = 0; < numberOfUnits)
+            {
+               tempUnit = kbUnitGetProtoUnitID(kbUnitQueryGetResult(favoriteUnitQuery, m));
+               if (tempUnit != favoriteUnit)
+               {
+                  tempUnitCost = kbGetProtoUnitAICost(tempUnit) * kbUnitCount(cMyID, tempUnit, cUnitStateAlive);
+                  if (tempUnitCost > largestUnitCost)
+                  {
+                     favoriteUnit = tempUnit;
+                     largestUnitCost = tempUnitCost;
+                  }
+               }
+            }
+            // Now check if we have the appropriate veteran/guard upgrade
+            int tempTechID = kbTechTreeGetCheapestUnitUpgrade(favoriteUnit);
+            if (kbTechGetStatus(tempTechID) == cTechStatusActive)
+            {  // If we can't get it, that means we're at the highest level
+               toggleShouldAttack1 = true;
+            }
+
+            // Get our current shipment and see if it's a unit shipment
+            
+
+
+            // Final check, this is based on the old check. Booming civs don't attack within 4 min of age up
+            if ((btRushBoom <= -0.5) || (btRushBoom <= 0.0 && kbGetAge() >= cAge4))
+            {
+               if (currentTime - gAgeUpTime < 4 * 60 * 1000)
+               {
+                  toggleShouldAttack2 = true;
+               }
+            }
+            else
+            {
+               toggleShouldAttack2 = true;
+            }
+
+            if (toggleShouldAttack1 == false && toggleShouldAttack2 == false)
+            {
+               shouldAttack = false;
+            }
+         }
+         aiChat(1, "ShouldAttack1: " + toggleShouldAttack1 + " ShouldAttack2: " + toggleShouldAttack2);*/
          if (cDifficultyCurrent >= gDifficultyExpert)
          {
             // Avoid attacking until 5 minutes passed after aging up.

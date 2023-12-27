@@ -53,6 +53,19 @@ extern int gWaterNuggetTimeout = -1;         // Stores when a water nugget plan 
 extern bool gIsPirateMap = false;            // Used for pirates of the carribean mod
 extern bool gIsArchipelagoMap = false;       // Used for multi-island maps like archipelago
 
+extern int gAmphibiousAssaultStage = 0;         // Used to store the state of the amphibious assault
+extern vector gAmphibiousAssaultTarget = cInvalidVector; 
+extern int gAmphibiousAssaultPlan = -1;         // The plan to handle the amphibious assault ships
+extern int gAmphibiousArmyPlan = -1;            // The plan to handle the amphibious assault landing force
+extern int gLandingShip1 = -1;                  // Stores transport ship 1
+extern int gLandingShip2 = -1;                  // Stores transport ship 2
+extern const int cGatherNavy = 0;               // First stage, gather up the navy for the assault
+extern const int cBombardCoast = 1;             // Second Stage, attack the coast
+extern const int cLoadForces = 2;               // Third Stage, try and land an army
+extern const int cLandForces = 3;               // Fourth Stage, try and land an army
+extern const int cBuildForwardBuildings = 4;    // Fifth Stage, move vills in to build
+extern const int cEstablishForwardBase = 5;     // Sixth stage, build a whole FB
+
 extern float gStartingHandicap = -1.0;       // Stores starting handicap to ensure we don't deviate too far
 
 extern int gVillagerReservePlan = -1;

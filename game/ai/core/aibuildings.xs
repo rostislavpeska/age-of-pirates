@@ -2895,7 +2895,10 @@ minInterval 5
                   // AssertiveWall: Kick off a few plans to get rolling on the beachhead
                   if (gStartOnDifferentIslands == true && (gMigrationMap == false))
                   {
-                     establishForwardBeachHead(location);
+                     // Old simpler version
+                     //establishForwardBeachHead(location);
+                     // New far more advanced version
+                     amphibiousAssault(location);
                   }
                   else
                   {  // AssertiveWall: Don't send these messages on island maps to avoid excessive pinging

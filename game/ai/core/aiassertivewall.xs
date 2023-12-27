@@ -2182,18 +2182,644 @@ minInterval 10
 
 }
 
+//==============================================================================
+// Checks to see if we should retreat
+// 
+//==============================================================================
+bool retreatCheck()
+{
+   if (gAmphibiousAssaultStage > cGatherNavy)
+   {
+      // Enemy Navy Value
+      int enNavyQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, gAmphibiousAssaultTarget, 80);
+      int enNavySize = kbUnitQueryExecute(enNavyQuery);
+      int enNavyValue = 0;
+      int enTowerQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeBuildingsHasRangedAttack, cPlayerRelationEnemyNotGaia, cUnitStateAlive, gAmphibiousAssaultTarget, 60);
+      int enTowerSize = kbUnitQueryExecute(enTowerQuery);
+      int enTowerValue = 0;
+      int frNavyValue = 0;
+      int unitID = -1;
+      int puid = -1;
+
+      for (i = 0; < enNavySize)
+      {
+         unitID = kbUnitQueryGetResult(enNavyQuery, i);
+         puid = kbUnitGetProtoUnitID(unitID);
+         enNavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                           kbUnitCostPerResource(puid, cResourceInfluence));
+      }
+
+      for (i = 0; < enTowerSize)
+      {
+         unitID = kbUnitQueryGetResult(enTowerQuery, i);
+         puid = kbUnitGetProtoUnitID(unitID);
+         enTowerValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                           kbUnitCostPerResource(puid, cResourceInfluence));
+      }
+
+      int frNavySize = aiPlanGetNumberUnits(gAmphibiousAssaultPlan, cUnitTypeAbstractWarShip);
+      for (i = 0; < frNavySize)
+      {
+         unitID = aiPlanGetUnitByIndex(gAmphibiousAssaultPlan, i);
+         puid = kbUnitGetProtoUnitID(unitID);
+         frNavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                           kbUnitCostPerResource(puid, cResourceInfluence));
+      }
+
+      // If we're too outnumbered then retreat to gNavyVec
+      if (frNavyValue * 1.2 < (enNavyValue + enTowerValue))
+      {
+         gAmphibiousAssaultStage = cGatherNavy;
+         for (i = 0; < frNavySize)
+         {
+            unitID = aiPlanGetUnitByIndex(gAmphibiousAssaultPlan, i);
+            aiTaskUnitMove(unitID, gNavyVec);
+         }
+         aiPlanDestroy(gAmphibiousAssaultPlan);
+         aiPlanDestroy(gAmphibiousArmyPlan);
+         return true;
+      }
+   }
+
+   return false;
+}
+
+
+//==============================================================================
+// Gathers the army 
+// 
+//==============================================================================
+void gatherArmy(vector location = cInvalidVector)
+{
+   // Start by getting all the available ships
+   int armyQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(armyQueryID);
+   int unitID = -1;
+   int unitPlanID = -1;
+
+   for (i = 0; < numberFound)
+   {
+      unitID = kbUnitQueryGetResult(armyQueryID, i);
+      unitPlanID = kbUnitGetPlanID(unitID);
+      if (aiPlanGetDesiredPriority(unitPlanID) == 99)           // Already in the plan
+      {
+         continue;
+      }
+      aiPlanAddUnit(gAmphibiousArmyPlan, unitID);
+      aiTaskUnitMove(unitID, location);
+   }
+   return;
+}
+
+
+//==============================================================================
+// Gathers the navy 
+// If the plan state isn't in cGatherNavy then it will only add the units to
+// the reserve plan
+// 
+//==============================================================================
+void gatherNavy(vector location = cInvalidVector)
+{
+   // Start by getting all the available ships
+   int shipQueryID = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(shipQueryID);
+   int unitID = -1;
+   int unitPlanID = -1;
+
+   for (i = 0; < numberFound)
+   {
+      unitID = kbUnitQueryGetResult(shipQueryID, i);
+      unitPlanID = kbUnitGetPlanID(unitID);
+      if ((aiPlanGetDesiredPriority(unitPlanID) == 24) ||           // Repairing
+            aiPlanGetDesiredPriority(unitPlanID) == 25 ||           // Actively Defending
+            aiPlanGetDesiredPriority(unitPlanID) == 99 ||           // Already in this plan
+            aiPlanGetType(unitPlanID) == cPlanTransport ||          // Transporting
+            kbUnitGetHealth(unitID) < 0.5)                          // Half health
+      {
+         continue;
+      }
+      aiPlanAddUnit(gAmphibiousAssaultPlan, unitID);
+      if (gAmphibiousAssaultStage == cGatherNavy)
+      {
+         aiTaskUnitMove(unitID, location);
+      }
+   }
+
+   // Check if most have made it
+   if (gAmphibiousAssaultStage == cGatherNavy)
+   {
+      int gatherTarget = aiPlanGetNumberUnits(gAmphibiousAssaultPlan, cUnitTypeAbstractWarShip);
+      int gatheredUnits = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive, location, 50.0);
+      // Make sure we have 3 of 4 or at least 70%
+      if ((gatheredUnits > 4 && gatheredUnits >= gatherTarget - 1) || (gatheredUnits / gatherTarget) > 0.7)
+      {
+         gAmphibiousAssaultStage = cBombardCoast;
+      }
+   }
+
+   return;
+}
+
+//==============================================================================
+// Bombards the landing point
+// Attacks ships and towers in the area
+//==============================================================================
+void bombardCoast()
+{
+   // Look for units to task our navy to attack. Focus down weakest units, then strongest units.
+   // Monitors focus on buildings
+
+   // Enemy Navy Value
+   int enNavyQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, gAmphibiousAssaultTarget, 80);
+   int enNavySize = kbUnitQueryExecute(enNavyQuery);
+   int enTotalValue = 0;
+   int enNavyValue = 0;
+   int weakestEnValue1 = -1;
+   int weakestShip1 = -1;
+   int weakestEnValue2 = -2;
+   int weakestShip2 = -1;
+   int enTowerQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeBuildingsHasRangedAttack, cPlayerRelationEnemyNotGaia, cUnitStateAlive, gAmphibiousAssaultTarget, 60);
+   int enTowerSize = kbUnitQueryExecute(enTowerQuery);
+   int enTowerValue = 0;
+   int weakestEnTowerValue = 0;
+   int weakestEnTower = -1;
+   int weakestTower = -1;
+   int frNavyValue = 0;
+   int unitID = -1;
+   int puid = -1;
+
+   // Find the two weakest ships to focus on
+   for (i = 0; < enNavySize)
+   {
+      unitID = kbUnitQueryGetResult(enNavyQuery, i);
+      puid = kbUnitGetProtoUnitID(unitID);
+      enNavyValue = kbUnitGetHealth(unitID) * (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                        kbUnitCostPerResource(puid, cResourceInfluence));
+      enTotalValue += enNavyValue;
+      if (enNavyValue < weakestEnValue1 || enNavyValue < weakestEnValue2)
+      {
+         if (weakestEnValue1 > weakestEnValue2)
+         {
+            weakestShip1 = unitID;
+            weakestEnValue1 = enNavyValue;
+         }
+         else
+         {
+            weakestShip2 = unitID;
+            weakestEnValue2 = enNavyValue;
+         }
+      }
+   }
+
+   // Find the weakest tower/fort/tc to focus on
+   for (i = 0; < enTowerSize)
+   {
+      unitID = kbUnitQueryGetResult(enTowerQuery, i);
+      puid = kbUnitGetProtoUnitID(unitID);
+      enTowerValue = kbUnitGetHealth(unitID) * (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                        kbUnitCostPerResource(puid, cResourceInfluence));
+      enTotalValue += enTowerValue;
+      if (enTowerValue < weakestEnTowerValue)
+      {
+         weakestEnTower = unitID;
+         weakestEnTowerValue = enTowerValue;
+      }
+   }
+
+   // See if there is artillery. If there is, override the tower
+   unitID = getUnitByLocation(cUnitTypeAbstractArtillery, cPlayerRelationEnemyNotGaia, cUnitStateAlive, gAmphibiousAssaultTarget, 40.0);
+   if (unitID > 0)
+   {
+      weakestEnTower = unitID;
+   }
+
+
+   int frNavySize = aiPlanGetNumberUnits(gAmphibiousAssaultPlan, cUnitTypeAbstractWarShip);
+   for (i = 0; < frNavySize)
+   {  // Go through each ship. Monitors attack towers. As for others, first half attack ship1, second ship2
+      unitID = aiPlanGetUnitByIndex(gAmphibiousAssaultPlan, i);
+      puid = kbUnitGetProtoUnitID(unitID);
+      frNavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                        kbUnitCostPerResource(puid, cResourceInfluence));
+
+      if (weakestEnTower > 0 || weakestShip1 > 0 || weakestShip2 > 0)
+      {
+         if (puid == gMonitorUnit && weakestEnTower > 0)
+         {
+            aiTaskUnitWork(puid, weakestEnTower);
+         }
+         else if (i < frNavySize / 2)
+         {
+            aiTaskUnitWork(puid, weakestShip1);
+         }
+         else
+         {
+            aiTaskUnitWork(puid, weakestShip2);
+         }
+      }
+      // no targets, so tell them to move closer if they are too far away
+      else if (distance(kbUnitGetPosition(unitID), gAmphibiousAssaultTarget) > 40)
+      {
+         aiTaskUnitMove(unitID, gAmphibiousAssaultTarget);
+      }
+
+      // Now check if we should go to next stage. Basically when the enemy towers and ships are taken care of
+      if (frNavyValue > 2 * enTotalValue || enNavySize <= 1 || (enTowerSize == 0 && enNavySize < 3))
+      {
+         if (gAmphibiousAssaultStage < cLoadForces)
+         {
+            gAmphibiousAssaultStage = cLoadForces;
+         }
+      }
+   }
+
+   return;
+}
+
+
+//==============================================================================
+// Creates the transport
+// 
+//==============================================================================
+void loadForces(vector pickupPoint = cInvalidVector)
+{
+   // Use a standard point between our main base and the target point
+   if (pickupPoint == cInvalidVector)
+   {
+      pickupPoint = getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMain(cMyID)));
+   }
+
+   // Find all military land units near the pickup point
+   int landingForcesQuery =  createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf, cUnitStateAlive, pickupPoint, 80);
+   int landingForcesSize = kbUnitQueryExecute(landingForcesQuery);
+   int tempShip = -1;
+   int tempShipValue = 0;
+   int ship1 = -1;
+   int ship1Value = 0;
+   int ship2 = -1;
+   int ship2Value = 0;
+   int puid = -1;
+   int shipQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive);
+   int shipNumber = kbUnitQueryExecute(shipQuery);
+   int tempLandUnit = -1;
+   int unitsOnShip1 = 0;
+   int unitsOnShip2 = 0;
+
+   if (landingForcesSize > 50)
+   { // Needs 2 transports
+      // Weight galleons higher and frigates lower (so they can keep fighting)
+      for (i = 0; < shipNumber)
+      {
+         tempShip = kbUnitQueryGetResult(shipQuery, i);
+         puid = kbUnitGetProtoUnitID(tempShip);
+         tempShipValue = kbUnitGetHealth(tempShip) * (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                        kbUnitCostPerResource(puid, cResourceInfluence));
+         if (puid == gGalleonUnit)
+         {
+            tempShipValue = tempShipValue * 2;
+         }
+         else if (puid == gFrigateUnit)
+         {
+            tempShipValue = tempShipValue / 3;
+         }
+
+         if (tempShipValue > ship1Value)
+         {
+            ship1 = tempShip;
+            ship1Value = tempShipValue;
+         }
+         else if (tempShipValue > ship2Value)
+         {
+            ship2 = tempShip;
+            ship2Value = tempShipValue;
+         }
+      }
+   }
+   else
+   { // Needs 1 transport
+      for (i = 0; < shipNumber)
+      {
+         tempShip = kbUnitQueryGetResult(shipQuery, i);
+         puid = kbUnitGetProtoUnitID(tempShip);
+         tempShipValue = kbUnitGetHealth(tempShip) * (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                        kbUnitCostPerResource(puid, cResourceInfluence));
+         if (puid == gGalleonUnit)
+         {
+            tempShipValue = tempShipValue * 2;
+         }
+         else if (puid == gFrigateUnit)
+         {
+            tempShipValue = tempShipValue / 3;
+         }
+
+         if (tempShipValue > ship1Value)
+         {
+            ship1 = tempShip;
+            ship1Value = tempShipValue;
+         }
+      }
+   }
+
+   // Store the ships for the follow on rules
+   gLandingShip1 = ship1;
+   gLandingShip2 = ship2;
+
+   for (i = 0; < landingForcesSize)
+   {  // If we only have 1 ship, everyone boards that ship. Otherwise split 50/50
+      tempLandUnit = kbUnitQueryGetResult(landingForcesQuery, i);
+      if (ship2 < 0)
+      {
+         aiTaskUnitWork(tempLandUnit, ship1);
+      }
+      else
+      {
+         if (i < landingForcesSize / 2)
+         {
+            aiTaskUnitWork(tempLandUnit, ship1);
+         }
+         else
+         {
+            aiTaskUnitWork(tempLandUnit, ship2);
+         }
+      }
+   }
+
+   // Now check to see if we're all loaded up (within a couple units)
+   unitsOnShip1 = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf,
+               cUnitStateAlive, kbUnitGetPosition(ship1), 1.0);
+   if (ship2 > 0)
+   {
+      unitsOnShip2 = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf,
+               cUnitStateAlive, kbUnitGetPosition(ship2), 1.0);
+   }
+
+   if (unitsOnShip1 + unitsOnShip2 > landingForcesSize * 0.95)
+   {
+      gAmphibiousAssaultStage = cLandForces;
+   }
+
+   return;
+}
+
+
+//==============================================================================
+// Drops off the transport
+// 
+//==============================================================================
+void landForces()
+{
+   // Check if we're done transporting
+   int unitsOnShip1 = 0;
+   int unitsOnShip2 = 0; 
+
+   unitsOnShip1 = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf,
+               cUnitStateAlive, kbUnitGetPosition(gLandingShip1), 1.0);
+   
+   if (gLandingShip2 > 0)
+   {
+      unitsOnShip2 = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf,
+               cUnitStateAlive, kbUnitGetPosition(gLandingShip2), 1.0);
+   }
+
+   if (unitsOnShip1 + unitsOnShip2 == 0)
+   {  // Done transporting, move to next phase
+      gAmphibiousAssaultStage = cBuildForwardBuildings;
+      return;
+   }
+
+
+   // Transport part
+   vector dropoff = cInvalidVector;
+   vector shipLoc = cInvalidVector;
+
+   if (unitsOnShip1 > 0)
+   {
+      shipLoc = kbUnitGetPosition(gLandingShip1);
+      dropoff = getDropoffPoint(shipLoc, gAmphibiousAssaultTarget, 0);
+      if (distance(dropoff, shipLoc) < 5)
+      {
+         aiTaskUnitEject(gLandingShip1);
+      }
+      else
+      {
+         aiTaskUnitMove(gLandingShip1, dropoff);
+      }
+   }
+
+   if (unitsOnShip2 > 0)
+   {
+      shipLoc = kbUnitGetPosition(gLandingShip2);
+      dropoff = getDropoffPoint(shipLoc, gAmphibiousAssaultTarget, 0);
+      if (distance(dropoff, shipLoc) < 5)
+      {
+         aiTaskUnitEject(gLandingShip2);
+      }
+      else
+      {
+         aiTaskUnitMove(gLandingShip2, dropoff);
+      }
+   }
+
+   // Add something to move the ship around if it can't reach the dropoff?
+
+}
+
+
+//==============================================================================
+// Uses Galleons to train Units 
+// 
+//==============================================================================
+void trainFromGalleons()
+{
+   int frNavySize = aiPlanGetNumberUnits(gAmphibiousAssaultPlan, cUnitTypeAbstractWarShip);
+   int unitID = -1;
+   int puid = -1;
+   vector tempShipPosition = cInvalidVector;
+   vector trainPosition = cInvalidVector;
+   int unitToTrain = -1;
+
+   // Find a suitable unit to train. Just anything for now
+   for (i = 0; < gNumArmyUnitTypes)
+   {
+      unitToTrain = kbUnitPickGetResult(gLandUnitPicker, i);
+      if (kbProtoUnitIsType(unitToTrain, cUnitTypeAbstractArtillery) == false)
+      {
+         break;
+      }
+   }
+
+   for (i = 0; < frNavySize)
+   {
+      unitID = aiPlanGetUnitByIndex(gAmphibiousAssaultPlan, i);
+      puid = kbUnitGetProtoUnitID(unitID);
+      if (puid == gGalleonUnit)
+      {
+         // make sure it's close enough
+         tempShipPosition = kbUnitGetPosition(unitID);
+         trainPosition = getDropoffPoint(tempShipPosition, gAmphibiousAssaultTarget, 0);
+         if (distance(tempShipPosition, trainPosition) > 4)
+         {
+            aiTaskUnitMove(unitID, trainPosition);
+         }
+         else
+         {
+            aiTaskUnitTrain(unitID, unitToTrain);
+         }
+      }
+   }
+   return;
+}
+
+
+//==============================================================================
+// Build some towers first
+// 
+//==============================================================================
+void buildForwardTowers()
+{
+   return;
+}
+
+
+//==============================================================================
+// amphibiousAssault
+// Tentative plan:
+//   Create stages
+//      Gather Navy              first draft done
+//      Bombard Coast            first draft done
+//      Load Forces              first draft done 
+//      Land Forces              first draft done
+//      Build forward buildings
+//      Establish forward base
+//
+// Notes:
+//    transports need to be left alone (bombard plan keeps stealing them)
+//    bombard stage ends too fast (make sure we have ships at the location)
+//    transport may not be working yet
+//    go through each stage, adding location pings
+//    needs to transport villagers also
+//
+//==============================================================================
+void amphibiousAssault(vector location = cInvalidVector)
+{
+   // Reset the stage
+   gAmphibiousAssaultStage = cGatherNavy;
+   gAmphibiousAssaultTarget = getDropoffPoint(kbBaseGetLocation(cMyID, kbBaseGetMain(cMyID)), location);
+
+   if (gAmphibiousAssaultPlan < 0)
+   {
+      gAmphibiousAssaultPlan = aiPlanCreate("Amphibious Assault Plan", cPlanReserve);
+      aiPlanAddUnitType(gAmphibiousAssaultPlan, cUnitTypeAbstractWarShip, 0, 0, 200);
+      aiPlanSetNoMoreUnits(gAmphibiousAssaultPlan, true);
+      aiPlanSetDesiredPriority(gAmphibiousAssaultPlan, 99); // Only lower than transport
+      aiPlanSetActive(gAmphibiousAssaultPlan);
+   }
+
+   if (gAmphibiousArmyPlan < 0)
+   {
+      gAmphibiousArmyPlan = aiPlanCreate("Amphibious Assault Plan", cPlanReserve);
+      aiPlanAddUnitType(gAmphibiousArmyPlan, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
+      aiPlanSetNoMoreUnits(gAmphibiousArmyPlan, true);
+      aiPlanSetDesiredPriority(gAmphibiousArmyPlan, 99); // Only lower than transport
+      aiPlanSetActive(gAmphibiousArmyPlan);
+   }
+
+   // Enable the rule to monitor the amphibious assault
+   aiChat(1, "Amphibious Assault Rule Started");
+   xsEnableRule("amphibiousAssaultRule");
+}
+
+//==============================================================================
+/* amphibiousAssault
+   AssertiveWall: rule to keep track of the current state of the 
+                  amphibious assault
+*/
+//==============================================================================
+
+rule amphibiousAssaultRule
+inactive
+minInterval 5
+{
+   /*
+      cNavyRetreat = -1;             // Retreat
+      cGatherNavy = 0;               // First stage, gather up the navy for the assault
+      cBombardCoast = 1;             // Second Stage, attack the coast
+      cLandForces = 2;               // Third Stage, try and land an army
+      cBuildForwardBuildings = 3;    // Fourth Stage, move vills in to build
+      cEstablishForwardBase = 4;     // Fifth stage, build a whole FB
+   */
+
+   // First check to see if we're losing
+   if (retreatCheck() == true)
+   {
+      xsDisableSelf();
+      aiChat(1, "Amphibious Assault Aborted");
+      return;
+   }
+
+   // Used by multiple rules
+   vector gatherPoint = getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMain(cMyID)));
+   vector pickupPoint = getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMain(cMyID)), 4);
+
+   switch (gAmphibiousAssaultStage)
+   {
+      case cGatherNavy:
+      {
+         aiChat(1, "Gathering Navy for amphibious assault");
+         // Add navy to plan and send them to the gather point
+         gatherNavy(gatherPoint);
+         gatherArmy(pickupPoint);
+
+         break;
+      }
+      case cBombardCoast:
+      {
+         aiChat(1, "Bombarding Landing Location");
+         gatherNavy();
+
+         bombardCoast();
+         break;
+      }
+      case cLoadForces:
+      {
+         aiChat(1, "Attempting to Load Forces");
+         bombardCoast(); // Keep bombarding the coast
+         gatherNavy();   // Keep adding navy units to the plan
+         
+         loadForces(pickupPoint);
+         break;
+      }
+      case cLandForces:
+      {
+         aiChat(1, "Attempting to Land Forces");
+         bombardCoast(); // Keep bombarding the coast
+         gatherNavy();   // Keep adding navy units to the plan
+
+         landForces();
+         break;
+      }
+      case cBuildForwardBuildings:
+      {
+         aiChat(1, "Establishing Foothold");
+         bombardCoast(); // Keep bombarding the coast
+         gatherNavy();   // Keep adding navy units to the plan
+
+         trainFromGalleons();
+         buildForwardTowers();
+         break;
+      }
+      case cEstablishForwardBase:
+      {
+         // Once we're established we can let our navy do other things
+         aiChat(1, "Creating Forward Base");
+         break;
+      }
+   }
+}
 
 
 //==============================================================================
 // establishForwardBeachHead
-// Tentative plan:
-//   Create stages
-//      Gather Navy
-//      Bombard Coast
-//      Land Forces
-//      Build forward buildings
-//      Establish forward base
-//
 // Also launches a land attack on the forward base position
 // Tries to establish several buildings
 //==============================================================================
