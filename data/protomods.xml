@@ -251,6 +251,7 @@
     <train row="0" page="0" column="2">zpNatDvoryanin</train>
     <train row="0" page="0" column="2">zpNatBulgarianBoyar</train>
     <train row="0" page="0" column="2">zpNatMonaspa</train>
+    <train row="0" page="0" column="1">zpMountedOutlaw</train>
 
     <!-- Christmas units and techs Added by AssertiveWall-->
     <train row="0" page="0" column="1">zpNatElfsGuard</train>
@@ -20607,6 +20608,192 @@
       <rof>1.000000</rof>
     </protoaction>
   </unit>
+  <unit id="" name="zpArmoredTrain">
+    <dbid></dbid>
+    <displaynameid>32690</displaynameid>
+    <editornameid>300986</editornameid>
+    <obstructionradiusx>5.000</obstructionradiusx>
+    <obstructionradiusz>0.9999</obstructionradiusz>
+    <maxvelocity>2.0000</maxvelocity>
+    <maxrunvelocity>4.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>20.0000</turnrate>
+    <animfile>units\trains\engine.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trade\spc_wagon_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trade\spc_wagon_portrait.png</portraiticon>
+    <rollovertextid>32689</rollovertextid>
+    <shortrollovertextid>32688</shortrollovertextid>
+    <los>22.0000</los>
+    <allowedage>0</allowedage>
+    <armor type="Ranged" value="0.1000">
+    </armor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractWagon</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Economic</unittype>
+
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Invulnerable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>SPCResourceCart.tactics</tactics>
+  </unit>
+  <unit id="" name="zpTradeUnitTest">
+    <dbid></dbid>
+    <displaynameid>32690</displaynameid>
+    <editornameid>300986</editornameid>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>2.4900</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>units\trade\travois.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\outpost\outpost_icon_64x64.png</icon>
+    <portraiticon>resources\art\buildings\outpost\outpost_portrait.png</portraiticon>
+    <rollovertextid>26306</rollovertextid>
+    <shortrollovertextid>26305</shortrollovertextid>
+    <initialhitpoints>2000.0000</initialhitpoints>
+    <maxhitpoints>2000.0000</maxhitpoints>
+    <los>32.0000</los>
+    <projectileprotounit>Arrow</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <buildpoints>50.0000</buildpoints>
+    <freebuildpoints>150.0000</freebuildpoints>
+    <bounty>70.0000</bounty>
+    <buildbounty>35.0000</buildbounty>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <maxcontained>20</maxcontained>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>4</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractFort</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractOutpost</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>AbstractDefensiveBuilding</unittype>
+    <flag>EnterHotkeyContext</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>DisplayRange</flag>
+    <notcontain>AbstractMonk</notcontain>
+    <notcontain>ExcludeFromRansom</notcontain>
+    <notcontain>AbstractFishingBoat</notcontain>
+    <contain>AbstractVillager</contain>
+    <contain>deHomesteadWagon</contain>
+    <contain>AbstractHealer</contain>
+    <contain>ypDaimyoRegicide</contain>
+    <command page="10" column="7">Delete</command>
+    <command>CancelNativeDance</command>
+    <command>StartNativeDance</command>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <tactics>combatBuilding.tactics</tactics>
+    <protoaction>
+      <name>AntiShipAttack</name>
+      <damage>100.000000</damage>
+      <damagetype>Siege</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>40.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>CannonAttack</name>
+      <damage>60.000000</damage>
+      <damagetype>Siege</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>24.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>120.000000</damagecap>
+      <damagebonus type="AbstractVillager">0.250000</damagebonus>
+      <damagearea>3.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractCavalry">1.500000</damagebonus>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.300000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>FireAttack</name>
+      <damage>6.666667</damage>
+      <damagetype>Siege</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>10.000000</maxrange>
+      <rof>0.500000</rof>
+      <projectile>FireBallGreat</projectile>
+      <damagecap>30.000000</damagecap>
+      <damagebonus type="AbstractVillager">0.250000</damagebonus>
+      <damagebonus type="AbstractSiegeTrooper">0.3400000</damagebonus>
+      <damagebonus type="AbstractWarShip">3.000000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>24.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractVillager">0.250000</damagebonus>
+      <damagebonus type="AbstractCavalry">1.500000</damagebonus>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.300000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>WignacourtAuraRange</name>
+      <damage>0.000001</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>99.000000</minrange>
+      <maxrange>36.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+  </unit>
   
 
 
@@ -21491,55 +21678,6 @@
   </unit>
 
 <!-- Wild West Units -->
-
-  <unit id="" name="zpArmoredTrain">
-    <dbid></dbid>
-    <displaynameid>32690</displaynameid>
-    <editornameid>300986</editornameid>
-    <obstructionradiusx>5.000</obstructionradiusx>
-    <obstructionradiusz>0.9999</obstructionradiusz>
-    <maxvelocity>2.0000</maxvelocity>
-    <maxrunvelocity>4.0000</maxrunvelocity>
-    <movementtype>land</movementtype>
-    <turnrate>20.0000</turnrate>
-    <animfile>units\trains\engine.xml</animfile>
-    <impacttype>Wood</impacttype>
-    <icon>resources\art\units\trade\spc_wagon_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trade\spc_wagon_portrait.png</portraiticon>
-    <rollovertextid>32689</rollovertextid>
-    <shortrollovertextid>32688</shortrollovertextid>
-    <los>22.0000</los>
-    <allowedage>0</allowedage>
-    <armor type="Ranged" value="0.1000">
-    </armor>
-    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>HasBountyValue</unittype>
-    <unittype>AbstractWagon</unittype>
-    <unittype>LogicalTypeEasySelectAvoid</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>Unit</unittype>
-    <unittype>Economic</unittype>
-
-    <flag>CollidesWithProjectiles</flag>
-    <flag>ApplyHandicapTraining</flag>
-    <flag>DontRotateObstruction</flag>
-    <flag>ObscuredByUnits</flag>
-    <flag>Invulnerable</flag>
-    <flag>OrientUnitWithGround</flag>
-    <flag>Tracked</flag>
-    <command page="10" column="0">Garrison</command>
-    <command page="10" column="1">Stop</command>
-    <command page="10" column="7">Delete</command>
-    <tactics>SPCResourceCart.tactics</tactics>
-  </unit>
   <unit id="21014" name="zpStageCoach">
     <dbid>21014</dbid>
     <displaynameid>400060</displaynameid>
@@ -21703,7 +21841,6 @@
     <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>AbstractOutlaw</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
     <unittype>Unit</unittype>
