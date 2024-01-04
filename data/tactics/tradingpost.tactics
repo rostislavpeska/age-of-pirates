@@ -47,7 +47,7 @@
     <attackaction>1</attackaction>
     <rangedlogic>1</rangedlogic>
     <chargeaction>1</chargeaction>
-    <anim>RangedAttack</anim>
+    <anim>RangedAttackCannon</anim>
     <maxheight>0</maxheight>
     <accuracy>1.0</accuracy>
     <accuracyreductionfactor>0.01</accuracyreductionfactor>
@@ -56,11 +56,18 @@
     <spreadfactor>0.25</spreadfactor>
     <trackrating>12</trackrating>
     <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
-    <projectile>InvisibleProjectile</projectile>
-    <impacteffect>effects\impacts\gun</impacteffect>
-    <rate type="Unit">1.0</rate>
-    <instantballistics>1</instantballistics>
+    <projectile>Cannonball</projectile>
+    <impacteffect>effects\impacts\cannon</impacteffect>
+    <rate type="Military">1.0</rate>
     <active>0</active>
+    <throw>1</throw>
+    <outerdamageareadistance>.25</outerdamageareadistance>
+    <outerdamageareafactor>.20</outerdamageareafactor>
+    <areasortmode>Directional</areasortmode>
+    <perfectaccuracy>1</perfectaccuracy>
+    <targetground>1</targetground>
+    <numberbounces>1</numberbounces>
+    <basedamagecap>1</basedamagecap>
   </action>
   <action>
     <name stringid="48954">HPAura</name>
@@ -222,6 +229,13 @@
     <restricttonativesettlements>1</restricttonativesettlements>
   </action>
   <action>
+    <name stringid="43019">AutoGatherXPTrickleEconomics</name>
+    <type>AutoGather</type>
+    <active>0</active>
+    <persistent>1</persistent>
+    <restricttonativesettlements>1</restricttonativesettlements>
+  </action>
+  <action>
     <name stringid="43019">AutoGatherInfluence</name>
     <type>AutoGather</type>
     <active>0</active>
@@ -240,10 +254,91 @@
     <modifyamount>0.35</modifyamount>
   </action>
   <action>
-    <name stringid="43294">zpAutoGatherCoin</name>
+    <name stringid="104848">GreenwichTime</name>
+    <active>0</active>
+    <type>AutoRangedModify</type>
+    <modifyabstracttype>Building</modifyabstracttype>
+    <persistent>1</persistent>
+    <modifytype>ResearchRate</modifytype>
+    <modifymultiplier>1.20</modifymultiplier>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherMarketDistrictFood</name>
+    <type>AutoGather</type>
+    <active>0</active>
+    <persistent>1</persistent>
+    <subciv>SPCMarketDistrict</subciv>
+    <autogatherteam>1</autogatherteam>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherMarketDistrictWood</name>
+    <type>AutoGather</type>
+    <active>0</active>
+    <persistent>1</persistent>
+    <subciv>SPCMarketDistrict</subciv>
+    <autogatherteam>1</autogatherteam>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherMarketDistrictGold</name>
+    <type>AutoGather</type>
+    <active>0</active>
+    <persistent>1</persistent>
+    <subciv>SPCMarketDistrict</subciv>
+    <autogatherteam>1</autogatherteam>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherReligiousDistrict</name>
+    <type>AutoGather</type>
+    <active>0</active>
+    <persistent>1</persistent>
+    <subciv>SPCReligiousDistrict</subciv>
+    <autogatherteam>1</autogatherteam>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherXPDefaultNative</name>
     <type>AutoGather</type>
     <persistent>1</persistent>
+    <subcivtype>0</subcivtype>
   </action>
-  <tactic>Normal<attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action priority="100">RangedGarrisonAttack</action><action priority="100">RangedAttack</action><action priority="100">ChargeRangedAttack</action><action>HPAura</action><action>MaintainNatBlackwoodArcher</action><action>MaintainNativeSharktoothBowman</action><action>MaintainNatClubman</action><action>MaintainNatHolcanSpearman</action><action>MaintainNatAxeRider</action><action>MaintainNatAxeRiderDogSoldier</action><action>MaintainNatTomahawk</action><action>MaintainNatMantlet</action><action>MaintainNatBolasWarrior</action><action>MaintainNatHuaminca</action><action>MaintainNatTracker</action><action>MaintainNatHorseArcher</action><action>MaintainNatRifleman</action><action>MaintainNatBlogunWarrior</action><action>MaintainNatJaguarWarrior</action><action>MaintainNatEagleWarrior</action><action>AutoGatherXP</action><action>AutoGatherGold</action><action>AutoGatherXPNative</action><action>AutoGatherInfluence</action><action>UniversityAutoGatherBonus</action></tactic>
-   <tactic>zpCoinGather<action>zpAutoGatherCoin</action><transition><tactic>Normal</tactic><length>2</length><exit>1</exit></transition><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action priority="100">RangedGarrisonAttack</action><action priority="100">RangedAttack</action><action priority="100">ChargeRangedAttack</action><action>HPAura</action><action>MaintainNatBlackwoodArcher</action><action>MaintainNativeSharktoothBowman</action><action>MaintainNatClubman</action><action>MaintainNatHolcanSpearman</action><action>MaintainNatAxeRider</action><action>MaintainNatAxeRiderDogSoldier</action><action>MaintainNatTomahawk</action><action>MaintainNatMantlet</action><action>MaintainNatBolasWarrior</action><action>MaintainNatHuaminca</action><action>MaintainNatTracker</action><action>MaintainNatHorseArcher</action><action>MaintainNatRifleman</action><action>MaintainNatBlogunWarrior</action><action>MaintainNatJaguarWarrior</action><action>MaintainNatEagleWarrior</action><action>AutoGatherXP</action><action>AutoGatherGold</action><action>AutoGatherXPNative</action><action>AutoGatherInfluence</action><action>UniversityAutoGatherBonus</action></tactic>
+  <action>
+    <name stringid="43019">AutoGatherXPSouthNative</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+    <subcivtype>1</subcivtype>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherXPAsianNative</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+    <subcivtype>2</subcivtype>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherXPAfricanNative</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+    <subcivtype>3</subcivtype>
+  </action>
+  <action>
+    <name stringid="300989">SpawnArmoredTrain</name>
+    <type>Attack</type>
+		<active>0</active>
+		<attackaction>1</attackaction>
+		<rangedlogic>1</rangedlogic>
+		<anim>RangedSpawn</anim>
+		<idleanim>Idle</idleanim>
+		<projectile>zpInvisibleProjectileControler</projectile>
+		<numberprojectiles>5</numberprojectiles>
+		<accuracy>1.0</accuracy>
+		<aimbonus>5</aimbonus>
+		<throw>1</throw>
+		<rate type="zpSPCRailwayStation">1.0 </rate>
+		<areasortmode>Radial</areasortmode>
+		<perfectaccuracy>1</perfectaccuracy>
+    <hidefromstats>1</hidefromstats>
+		<targetground>1</targetground>
+		<basedamagecap>1</basedamagecap>
+		<maxrange>1000000.000000</maxrange>
+    <excludefromrangeindicator>1</excludefromrangeindicator>
+  </action>
+  <tactic>Normal<attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action priority="100">ChargeRangedAttack</action><action priority="95">RangedGarrisonAttack</action><action priority="95">RangedAttack</action><action priority="1">SpawnArmoredTrain</action><action>HPAura</action><action>MaintainNatBlackwoodArcher</action><action>MaintainNativeSharktoothBowman</action><action>MaintainNatClubman</action><action>MaintainNatHolcanSpearman</action><action>MaintainNatAxeRider</action><action>MaintainNatAxeRiderDogSoldier</action><action>MaintainNatTomahawk</action><action>MaintainNatMantlet</action><action>MaintainNatBolasWarrior</action><action>MaintainNatHuaminca</action><action>MaintainNatTracker</action><action>MaintainNatHorseArcher</action><action>MaintainNatRifleman</action><action>MaintainNatBlogunWarrior</action><action>MaintainNatJaguarWarrior</action><action>MaintainNatEagleWarrior</action><action>AutoGatherXP</action><action>AutoGatherGold</action><action>AutoGatherXPNative</action><action>AutoGatherXPTrickleEconomics</action><action>AutoGatherInfluence</action><action>UniversityAutoGatherBonus</action><action>GreenwichTime</action><action>AutoGatherMarketDistrictFood</action><action>AutoGatherMarketDistrictWood</action><action>AutoGatherMarketDistrictGold</action><action>AutoGatherReligiousDistrict</action><action>AutoGatherXPDefaultNative</action><action>AutoGatherXPSouthNative</action><action>AutoGatherXPAsianNative</action><action>AutoGatherXPAfricanNative</action></tactic>
 </tactics>

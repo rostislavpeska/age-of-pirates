@@ -354,6 +354,17 @@
     <tech row="0" page="1" column="1">zpNatHonoredOrthodox</tech>
     <tech row="0" page="1" column="1">zpOrthodoxInfluence</tech>
     <tech row="0" page="1" column="1">zpXMassExpansion</tech>
+    <command page="2" column="0">zpNatArmoredTrain</command>
+    <command page="2" column="0">zpNatArmoredTrainDisabled</command>
+    <protoaction>
+      <name>SpawnArmoredTrain</name>
+      <damage>1.000000</damage>
+      <damagetype>Siege</damagetype>
+      <damagecap>1.000000</damagecap>
+      <rof>1.000000</rof>
+      <maxrange>100000.000000</maxrange>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
   </unit>
   <unit name="ypConsulate">
     <tech row="0" page="18" column="0">zpPickConsulateTechAvailable</tech>
@@ -19652,6 +19663,617 @@
     <flag>EnterHotkeyContext</flag>
     <tactics>socketcapture.tactics</tactics>
   </unit>
+  <unit id="20190" name="zpSPCRailwayStation">
+    <dbid>20190</dbid>
+    <displaynameid>42447</displaynameid>
+    <editornameid>300992</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\train_station\spc_train_station.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\trading_post\trading_post_icon.png</icon>
+    <portraiticon>resources\art\buildings\trading_post\trading_post_portrait.png</portraiticon>
+    <rollovertextid>42446</rollovertextid>
+    <shortrollovertextid>42445</shortrollovertextid>
+    <initialhitpoints>1500.0000</initialhitpoints>
+    <maxhitpoints>1500.0000</maxhitpoints>
+    <los>30.0000</los>
+    <buildpoints>10.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>40.0000</bounty>
+    <allowedage>1</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>AbstractTradeRouteBuilding</unittype>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoUnitAI</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>ForceToGaia</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+  </unit>
+  <unit id="20191" name="zpInvisibleProjectileControler">
+    <dbid>20191</dbid>
+    <displaynameid>22885</displaynameid>
+    <editornameid>22890</editornameid>
+    <obstructionradiusx>0.1000</obstructionradiusx>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <maxvelocity>600.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>effects\projectiles\musket_ball.xml</animfile>
+    <lifespan>20.0000</lifespan>
+    <los>0.0000</los>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>NotPlayerPlaceable</unittype>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+  </unit>
+  <unit id="20192" name="zpArmoredTrainGun">
+    <dbid>20192</dbid>
+    <displaynameid>300993</displaynameid>
+    <editornameid>300994</editornameid>
+    <obstructionradiusx>0.1000</obstructionradiusx>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>1.0000</turnrate>
+    <animfile>buildings\spc\fixed_gun\fixed_gun.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\buildings\spc\fixed_gun\fixed_gun_icon_64x64.png</icon>
+    <portraiticon>resources\art\buildings\spc\fixed_gun\fixed_gun_portrait.png</portraiticon>
+    <rollovertextid>33597</rollovertextid>
+    <shortrollovertextid>33596</shortrollovertextid>
+    <initialhitpoints>10000.0000</initialhitpoints>
+    <maxhitpoints>10000.0000</maxhitpoints>
+    <los>75.0000</los>
+    <!--<buildpoints>0.0000</buildpoints>-->
+    <displayedrange>74.0</displayedrange>
+    <projectileprotounit>MortarShell</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <bounty>300.0000</bounty>
+    <cost resourcetype="Gold">2000.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractArtillery</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>RotateInPlace</flag>
+    <flag>NotDeleteable</flag>
+    <flag>DontFlattenGround</flag>
+    <flag>Tracked</flag>
+    <flag>DisplayRange</flag>
+    <flag>PlaceAnywhere</flag>
+    <tactics>SPCFixedGun.tactics</tactics>
+    <protoaction>
+      <name>AntiShipAttack</name>
+      <damage>1000.000000</damage>
+      <damagetype>Siege</damagetype>
+      <minrange>10.000000</minrange>
+      <maxrange>70.000000</maxrange>
+      <rof>7.000000</rof>
+      <active>1</active>
+      <damagearea>4.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <projectile>GreatBombardBall</projectile>
+      <numberprojectiles>1</numberprojectiles>
+      <accuracy>0.990000</accuracy>
+    </protoaction>
+    <protoaction>
+      <name>CannonAttack</name>
+      <damage>300.000000</damage>
+      <damagetype>Siege</damagetype>
+      <minrange>10.000000</minrange>
+      <maxrange>70.000000</maxrange>
+      <rof>7.000000</rof>
+      <damagebonus type="SPCFountainOfYouth">0.500000</damagebonus>
+      <active>1</active>
+      <damagearea>4.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <projectile>GreatBombardBall</projectile>
+      <numberprojectiles>1</numberprojectiles>
+      <accuracy>0.990000</accuracy>
+      <damagetype>Siege</damagetype>
+      <damagebonus type="Building">2.000000</damagebonus>
+      <active>1</active>
+      <damagearea>4.000000</damagearea>
+    </protoaction>
+  </unit>
+  <unit id="20193" name="zpArmoredTrainEngineMove">
+    <dbid>20193</dbid>
+    <displaynameid>300993</displaynameid>
+    <editornameid>301002</editornameid>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>2.4900</obstructionradiusz>
+    <maxvelocity>8.5000</maxvelocity>
+    <maxrunvelocity>10.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>units\trains\engine.xml</animfile>
+    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <rollovertextid>22967</rollovertextid>
+    <shortrollovertextid>25736</shortrollovertextid>
+    <initialhitpoints>240.0000</initialhitpoints>
+    <maxhitpoints>240.0000</maxhitpoints>
+    <los>15.0000</los>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Tracked</flag>
+    <flag>HasContinuousParticles</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20194" name="zpArmoredTrainCoalCarMove">
+    <dbid>20194</dbid>
+    <displaynameid>300993</displaynameid>
+    <editornameid>301005</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <maxvelocity>8.5000</maxvelocity>
+    <maxrunvelocity>10.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>units\trains\coal_car.xml</animfile>
+    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <rollovertextid>23040</rollovertextid>
+    <initialhitpoints>240.0000</initialhitpoints>
+    <maxhitpoints>240.0000</maxhitpoints>
+    <los>15.0000</los>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20195" name="zpArmoredTrainBarracksMove">
+    <dbid>20195</dbid>
+    <displaynameid>300993</displaynameid>
+    <editornameid>301003</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <maxvelocity>8.5000</maxvelocity>
+    <maxrunvelocity>10.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>units\trains\caboose.xml</animfile>
+    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <rollovertextid>23042</rollovertextid>
+    <initialhitpoints>240.0000</initialhitpoints>
+    <maxhitpoints>240.0000</maxhitpoints>
+    <los>15.0000</los>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NoHPBar</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20196" name="zpArmoredTrainGunCarMove">
+    <dbid>20196</dbid>
+    <displaynameid>300993</displaynameid>
+    <editornameid>301004</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <maxvelocity>8.5000</maxvelocity>
+    <maxrunvelocity>10.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>units\trains\wood_car.xml</animfile>
+    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <rollovertextid>35881</rollovertextid>
+    <initialhitpoints>240.0000</initialhitpoints>
+    <maxhitpoints>240.0000</maxhitpoints>
+    <los>15.0000</los>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>DontRotateObstruction</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20197" name="zpArmoredTrainGunMove">
+    <dbid>20197</dbid>
+    <displaynameid>300993</displaynameid>
+    <editornameid>301006</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <maxvelocity>8.5000</maxvelocity>
+    <maxrunvelocity>10.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\fixed_gun\fixed_gun.xml</animfile>
+    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <rollovertextid>35881</rollovertextid>
+    <initialhitpoints>240.0000</initialhitpoints>
+    <maxhitpoints>240.0000</maxhitpoints>
+    <los>15.0000</los>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>DontRotateObstruction</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20198" name="zpArmoredTrainEngineStatic">
+    <dbid>20198</dbid>
+    <displaynameid>300993</displaynameid>
+    <editornameid>301007</editornameid>
+    <obstructionradiusx>0.1000</obstructionradiusx>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>1.0000</turnrate>
+    <animfile>units\trains\engine.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <rollovertextid>33597</rollovertextid>
+    <shortrollovertextid>33596</shortrollovertextid>
+    <initialhitpoints>10000.0000</initialhitpoints>
+    <maxhitpoints>10000.0000</maxhitpoints>
+    <los>15.0000</los>
+    <bounty>300.0000</bounty>
+    <cost resourcetype="Gold">2000.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>NotDeleteable</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
+  </unit>
+  <unit id="20199" name="zpArmoredTrainCoalCarStatic">
+    <dbid>20199</dbid>
+    <displaynameid>300993</displaynameid>
+    <editornameid>301010</editornameid>
+    <obstructionradiusx>0.1000</obstructionradiusx>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>1.0000</turnrate>
+    <animfile>units\trains\coal_car.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <rollovertextid>33597</rollovertextid>
+    <shortrollovertextid>33596</shortrollovertextid>
+    <initialhitpoints>10000.0000</initialhitpoints>
+    <maxhitpoints>10000.0000</maxhitpoints>
+    <los>15.0000</los>
+    <bounty>300.0000</bounty>
+    <cost resourcetype="Gold">2000.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>NotDeleteable</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
+  </unit>
+  <unit id="20200" name="zpArmoredTrainBarracksStatic">
+    <dbid>20200</dbid>
+    <displaynameid>300993</displaynameid>
+    <editornameid>301008</editornameid>
+    <obstructionradiusx>0.1000</obstructionradiusx>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>1.0000</turnrate>
+    <animfile>units\trains\caboose.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <rollovertextid>33597</rollovertextid>
+    <shortrollovertextid>33596</shortrollovertextid>
+    <initialhitpoints>10000.0000</initialhitpoints>
+    <maxhitpoints>10000.0000</maxhitpoints>
+    <los>15.0000</los>
+    <bounty>300.0000</bounty>
+    <cost resourcetype="Gold">2000.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>NotDeleteable</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
+  </unit>
+  <unit id="20201" name="zpArmoredTrainGunCarStatic">
+    <dbid>20201</dbid>
+    <displaynameid>300993</displaynameid>
+    <editornameid>301009</editornameid>
+    <obstructionradiusx>0.1000</obstructionradiusx>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>1.0000</turnrate>
+    <animfile>units\trains\wood_car.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <rollovertextid>33597</rollovertextid>
+    <shortrollovertextid>33596</shortrollovertextid>
+    <initialhitpoints>10000.0000</initialhitpoints>
+    <maxhitpoints>10000.0000</maxhitpoints>
+    <los>15.0000</los>
+    <bounty>300.0000</bounty>
+    <cost resourcetype="Gold">2000.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>NotDeleteable</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>NotSelectable</flag>
+  </unit>
   
 
 
@@ -20367,8 +20989,8 @@
     <impacttype>Stone</impacttype>
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
-    <icon>resources\art\buildings\church\church_icon.png</icon>
-    <portraiticon>resources\art\buildings\church\church_portrait.png</portraiticon>
+    <icon>resources\art\buildings\sheriff_icon.png</icon>
+    <portraiticon>resources\art\buildings\sheriff_portrait.png</portraiticon>
     <rollovertextid>300070</rollovertextid>
     <shortrollovertextid>300070</shortrollovertextid>
     <initialhitpoints>1500.0000</initialhitpoints>
@@ -20664,7 +21286,7 @@
     <obstructionradiusz>2.4900</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>units\trade\travois.xml</animfile>
+    <animfile>buildings\trading_post\trading_post.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\buildings\outpost\outpost_icon_64x64.png</icon>
@@ -20733,7 +21355,8 @@
     <command>StartNativeDance</command>
     <command page="10" column="5">Eject</command>
     <command page="10" column="8">CancelAllQueued</command>
-    <tactics>combatBuilding.tactics</tactics>
+    <command page="11" column="0">Abilities</command>
+    <tactics>tradingpost.tactics</tactics>
     <protoaction>
       <name>AntiShipAttack</name>
       <damage>100.000000</damage>
@@ -20744,15 +21367,12 @@
       <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
     </protoaction>
     <protoaction>
-      <name>CannonAttack</name>
-      <damage>60.000000</damage>
+      <name>SpawnArmoredTrain</name>
+      <damage>160.000000</damage>
       <damagetype>Siege</damagetype>
-      <minrange>0.000000</minrange>
-      <maxrange>24.000000</maxrange>
-      <rof>3.000000</rof>
-      <damagecap>120.000000</damagecap>
+      <damagecap>320.000000</damagecap>
+      <maxrange>100000.000000</maxrange>
       <damagebonus type="AbstractVillager">0.250000</damagebonus>
-      <damagearea>3.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
       <damagebonus type="AbstractCavalry">1.500000</damagebonus>
       <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>

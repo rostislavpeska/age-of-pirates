@@ -72,11 +72,18 @@
       <command>editorSetAllTradeRoutesToDef("asian_water_trail")</command>
     </gadget>
 
-    <gadget name="asian_water_trail" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 505 185 525" mouseovertext="Editor use - sets all trade route definitons to the american native water trade routes." z="1">Convert to American Water
+    <!--<gadget name="asian_water_trail" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 505 185 525" mouseovertext="Editor use - sets all trade route definitons to the american native water trade routes." z="1">Convert to American Water
       <command>editorSetAllTradeRoutesToDef("native_water_trail")</command>
     </gadget>
     <gadget name="asian_water_trail_Icon" type="button" bevelbutton="" mouseovertext="$$300383$$" foreground="ui\canoe_icon" sizerel1024="165 505 185 525" z="2">
       <command>editorSetAllTradeRoutesToDef("native_water_trail")</command>
+    </gadget>-->
+
+    <gadget name="armored_train_trail" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 505 185 525" mouseovertext="Editor use - sets all trade route definitons to the armored train." z="1">Convert to Armored Train
+      <command>editorSetAllTradeRoutesToDef("armored_train")</command>
+    </gadget>
+    <gadget name="armored_train_Icon" type="button" bevelbutton="" mouseovertext="$$300383$$" foreground="ui\canoe_icon" sizerel1024="165 505 185 525" z="2">
+      <command>editorSetAllTradeRoutesToDef("armored_train")</command>
     </gadget>
 
   </gadget>

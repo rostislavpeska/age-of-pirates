@@ -5,4 +5,5 @@
   <unittype>AbstractConsulate</unittype>
   <unittype>AbstractResourceEnclosure</unittype>
   <unittype>AbstractLegendaryShip</unittype>
+  <unittype>AbstractTradeRouteBuilding</unittype>
 </unittypes>

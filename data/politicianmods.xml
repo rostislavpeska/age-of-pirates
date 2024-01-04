@@ -73,6 +73,8 @@
   </zpconsulateorthodoxbulgarians>
   <zpconsulateorthodoxrussians portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/orthodox_russians.png">
   </zpconsulateorthodoxrussians>
+  <zpconsulatescientistgortz portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/scientists_gortz.png">
+  </zpconsulatescientistgortz>
 
   <zpconsulatexmass1 portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/art/units/natives/christmass_content/toymaster.png">
   </zpconsulatexmass1>

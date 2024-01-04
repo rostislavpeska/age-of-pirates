@@ -6686,6 +6686,8 @@
       <effect type="TechStatus" status="obtainable">DEIndianFriendshipScientists</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyScientists</effect>
+      <effect type="TechStatus" status="obtainable">zpMoneyFactory</effect>
+      <effect type="TechStatus" status="obtainable">zpArmoredTrainTech</effect>
     </effects>
   </tech>
   <tech name ="zpPickScientist" type ="Normal">
@@ -10714,19 +10716,187 @@
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="TransformUnit" toprotoid="zpTradeUnitTest" fromprotoid="Travois">
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainGun" fromprotoid="zpArmoredTrainGunMove">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainGunCarStatic" fromprotoid="zpArmoredTrainGunCarMove">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainBarracksStatic" fromprotoid="zpArmoredTrainBarracksMove">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainCoalCarStatic" fromprotoid="zpArmoredTrainCoalCarMove">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainEngineStatic" fromprotoid="zpArmoredTrainEngineMove">
       </effect>
     </effects>
+    
   </tech>
   <tech name="zpTransformArmoredTrainBack" type="Normal">
-    <dbid>40380</dbid>
+    <dbid>40381</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="TransformUnit" toprotoid="Travois" fromprotoid="zpTradeUnitTest">
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainGunMove" fromprotoid="zpArmoredTrainGun">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainGunCarMove" fromprotoid="zpArmoredTrainGunCarStatic">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainBarracksMove" fromprotoid="zpArmoredTrainBarracksStatic">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainCoalCarMove" fromprotoid="zpArmoredTrainCoalCarStatic">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainEngineMove" fromprotoid="zpArmoredTrainEngineStatic">
       </effect>
     </effects>
+  </tech>
+  <tech name="zpConsulateScientistGortz" type="Normal">
+    <dbid>40382</dbid>
+    <displaynameid>300995</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\scientists_small.png</icon>
+    <rollovertextid>300996</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMachineGun</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpPickScientist</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpPickScientist">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpMoneyFactory" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpArmoredTrainTech" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpMoneyFactory" type="Normal">
+    <dbid>40383</dbid>
+    <displaynameid>300997</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\maltese_factory.png</icon>
+    <rollovertextid>71286</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Factory</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="FactoryWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpArmoredTrainTech" type="Normal">
+    <dbid>40384</dbid>
+    <displaynameid>300999</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\armored_train.png</icon>
+    <rollovertextid>301000</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+      <techstatus status="Active">zpMoneyFactory</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="CommandAdd" command="zpNatArmoredTrain" page="2" column="0">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="active">zpArmoredTrainEnableShadow</effect>
+      <effect type="TechStatus" status="active">zpArmoredTrainUnlockShadow</effect>
+      <effect type="Data" action="SpawnArmoredTrain" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="RevealLOS" relativity="Absolute">
+        <target type="ProtoUnit">AbstractTradeRouteBuilding</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgrade1Enable</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgrade2Enable</effect>
+      <effect type="Data" action="RangedAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTurnConsulateOffScientistsLand" type="Normal">
+    <dbid>40385</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateScientistGortz</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="obtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>  
+    
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientistsLand</effect>
+    </effects>
+  </tech>
+  <tech name="zpArmoredTrainEnableShadow" type="Normal">
+    <dbid>40386</dbid>
+    <researchpoints>0.5000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpArmoredTrainDisableShadow" type="Normal">
+    <dbid>40387</dbid>
+    <researchpoints>0.0100</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpArmoredTrainUnlockShadow" type="Normal">
+    <dbid>40388</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
   </tech>
  
  

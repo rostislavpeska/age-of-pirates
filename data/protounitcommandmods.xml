@@ -210,6 +210,31 @@
     <command>unitSetTactic("Food")</command>
     <subciv>Miners</subciv>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpNatArmoredTrain</name>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
+    <associatedtech>zpArmoredTrainEnableShadow</associatedtech>
+    <associatedpower>zpPowerArmouredTrain</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>zpScientists</subciv>
+    <usemultiple>
+    </usemultiple>
+    <usemediumbutton3>
+    </usemediumbutton3>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpNatArmoredTrainDisabled</name>
+    <icon>resources\images\icons\command\armored_train_lrg_disabled.png</icon>
+    <associatedtech>zpArmoredTrainDisableShadow</associatedtech>
+    <subciv>zpScientists</subciv>
+    <rollovertextid>301001</rollovertextid>
+    <usemultiple>
+    </usemultiple>
+    <usemediumbutton3>
+    </usemediumbutton3>
+  </protounitcommand>
+
 
   <!--
 
