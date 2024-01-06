@@ -1,0 +1,52 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\general_store\textures\general_store_mata_BaseColor_Age4">
+      </texture>
+      <texture name="Normals" override="homecity\spc\general_store\textures\general_store_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\spc\general_store\textures\general_store_mata_masks">
+      </texture>
+      <texture name="Details" override="buildings\general_store\textures\general_store_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\town_center\west\age_3\textures\veg_fern_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\town_center\west\age_3\textures\veg_fern_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\town_center\west\age_3\textures\veg_fern_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\food_containers\atlas\prop_food_containers_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\food_containers\atlas\prop_food_containers_normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\food_containers\atlas\prop_food_containers_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\ee_harbor_prop\textures\ee_harbor_prop02_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\ee_harbor_prop\textures\ee_harbor_prop02_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\ee_harbor_prop\textures\ee_harbor_prop02_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

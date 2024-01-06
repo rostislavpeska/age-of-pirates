@@ -1001,7 +1001,7 @@
       <string _locid="300997">Money Factory</string>
       <string _locid="300998">Unlocks a special alility: Armored Train - can send an armored train to attack enemy positions next to a Train Station.</string>
       <string _locid="300999">Military Railways</string>
-      <string _locid="301000">Unlocks the military use of the trade routes: \n • Enables Trading Post Attack \n • Discovers all Train Stations on the map \n • Upgrades all trade routes to the Train level \n • Unlocks the Armored Train ability allowing you to use an armore train to attack enemy base</string>
+      <string _locid="301000">Unlocks the military use of the trade routes: \n • Discovers all Train Stations on the map \n • Upgrades all trade routes to the Train level \n • Unlocks the Armored Train ability allowing you to use an armore train to attack enemy base</string>
       <string _locid="301001">Armored Train: Spawns an Armored Train which will attack an enemy base. &lt;color=1.0, 0.0, 0.0&gt;Can't be used when another Armored Train is being on the map.&lt;/color&gt;</string>
       <string _locid="301002">ZP AT Engine Move</string>
       <string _locid="301003">ZP AT BarrackCar Move</string>
@@ -1012,6 +1012,36 @@
       <string _locid="301008">ZP AT BarrackCar Static</string>
       <string _locid="301009">ZP AT GunCar Static</string>
       <string _locid="301010">ZP AT CoalCar Static</string>
+      <string _locid="301011">ZP Native House Western</string>
+      <string _locid="301012">ZP NAT POP Renegade Flamethrower</string>
+      <string _locid="301013">Wagon Crew</string>
+      <string _locid="301014">Wagon Crew: Spawns 4 Flamethrowers to defend the Train</string>
+      <string _locid="301015">Town Station</string>
+      <string _locid="301016">ZP Capturable Train Station</string>
+      <string _locid="301017">Armored Train (Engine)</string>
+      <string _locid="301018">Armored Train (Coal Car)</string>
+      <string _locid="301019">Armored Train (Military Transport)</string>
+      <string _locid="301020">Armored Train (Gun Car)</string>
+      <string _locid="301021">ZP Train Station Area Marker</string>
+      <string _locid="301022">ZP PROP Western Village</string>
+      <string _locid="301023">ZP PROP Horse</string>
+      <string _locid="301024">ZP PROP Stagecoach</string>
+      <string _locid="301025">Whiskey Factory</string>
+      <string _locid="301026">Villagers gather gold from buildings faster by 20%.</string>
+      <string _locid="301027">Texan Longhorns</string>
+      <string _locid="301028">Ships four Cows</string>
+      <string _locid="301029">Fast Colts</string>
+      <string _locid="301030">Territorial Militia</string>
+      <string _locid="301031">Every Residental building spawns one Cowboy to protect the territory.</string>
+      <string _locid="301032">Veteran Cowboys</string>
+      <string _locid="301033">Improves Cowboy's Attack and Hitpoints</string>
+      <string _locid="301034">Veteran Mounted Cowboy</string>
+      <string _locid="301035">Guard Mounted Cowboy</string>
+      <string _locid="301036">Legendary Mounted Cowboy</string>
+      <string _locid="301037">ZP Merc Mounted Cowboy</string>
+      <string _locid="301038">Guard Cowboys</string>
+
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
@@ -1083,13 +1113,13 @@
       <!-- Cowboy Strings added by AssertiveWall -->
       <!-- ===================================== -->
       <string _locid="400060">Armored Stagecoach</string>
-      <string _locid="400061">zp Armored Stagecoach</string>
+      <string _locid="400061">ZP Armored Stagecoach</string>
       <string _locid="400062">A heavy stagecoach armed to take on the wild west.</string>
-      <string _locid="400063">Mounted Outlaw</string>
-      <string _locid="400064">zp Mounted Outlaw</string>
-      <string _locid="400065">A mounted outlaw hailing from the wild west.</string>
+      <string _locid="400063">Mounted Cowboy</string>
+      <string _locid="400064">ZP Mounted Cowboy</string>
+      <string _locid="400065">A Mounted Cowboy hailing from the wild west.</string>
       <string _locid="400066">Sheriff's Office</string>
-      <string _locid="400067">zp Sheriff Office</string>
+      <string _locid="400067">ZP Sheriff Office</string>
       <string _locid="400068">An office and jailhouse capable of holding outlaws.</string>
 
       <!-- ===================================== -->

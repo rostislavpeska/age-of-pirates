@@ -321,24 +321,25 @@
   <action>
     <name stringid="300989">SpawnArmoredTrain</name>
     <type>Attack</type>
-		<active>0</active>
-		<attackaction>1</attackaction>
-		<rangedlogic>1</rangedlogic>
-		<anim>RangedSpawn</anim>
-		<idleanim>Idle</idleanim>
-		<projectile>zpInvisibleProjectileControler</projectile>
-		<numberprojectiles>5</numberprojectiles>
-		<accuracy>1.0</accuracy>
-		<aimbonus>5</aimbonus>
-		<throw>1</throw>
-		<rate type="zpSPCRailwayStation">1.0 </rate>
-		<areasortmode>Radial</areasortmode>
-		<perfectaccuracy>1</perfectaccuracy>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.0</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>0</maxspread>
+    <spreadfactor>0.0</spreadfactor>
+    <trackrating>12</trackrating>
+    <numberprojectiles>1</numberprojectiles>
+    <projectile>zpInvisibleProjectileControler</projectile>
+    <instantballistics>1</instantballistics>
+    <maxrange>1000000.000000</maxrange>
+    <anim>RangedSpawn</anim>
+    <rate type="zpSPCRailwayStation">1.0</rate>
+    <rate type="zpInvisibleRailwayStation">1.0</rate>
+    <active>0</active>
     <hidefromstats>1</hidefromstats>
-		<targetground>1</targetground>
-		<basedamagecap>1</basedamagecap>
-		<maxrange>1000000.000000</maxrange>
     <excludefromrangeindicator>1</excludefromrangeindicator>
   </action>
-  <tactic>Normal<attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action priority="100">ChargeRangedAttack</action><action priority="95">RangedGarrisonAttack</action><action priority="95">RangedAttack</action><action priority="1">SpawnArmoredTrain</action><action>HPAura</action><action>MaintainNatBlackwoodArcher</action><action>MaintainNativeSharktoothBowman</action><action>MaintainNatClubman</action><action>MaintainNatHolcanSpearman</action><action>MaintainNatAxeRider</action><action>MaintainNatAxeRiderDogSoldier</action><action>MaintainNatTomahawk</action><action>MaintainNatMantlet</action><action>MaintainNatBolasWarrior</action><action>MaintainNatHuaminca</action><action>MaintainNatTracker</action><action>MaintainNatHorseArcher</action><action>MaintainNatRifleman</action><action>MaintainNatBlogunWarrior</action><action>MaintainNatJaguarWarrior</action><action>MaintainNatEagleWarrior</action><action>AutoGatherXP</action><action>AutoGatherGold</action><action>AutoGatherXPNative</action><action>AutoGatherXPTrickleEconomics</action><action>AutoGatherInfluence</action><action>UniversityAutoGatherBonus</action><action>GreenwichTime</action><action>AutoGatherMarketDistrictFood</action><action>AutoGatherMarketDistrictWood</action><action>AutoGatherMarketDistrictGold</action><action>AutoGatherReligiousDistrict</action><action>AutoGatherXPDefaultNative</action><action>AutoGatherXPSouthNative</action><action>AutoGatherXPAsianNative</action><action>AutoGatherXPAfricanNative</action></tactic>
+  <tactic>Normal<attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action priority="100">ChargeRangedAttack</action><action priority="95">RangedGarrisonAttack</action><action priority="95">RangedAttack</action><action>SpawnArmoredTrain</action><action>HPAura</action><action>MaintainNatBlackwoodArcher</action><action>MaintainNativeSharktoothBowman</action><action>MaintainNatClubman</action><action>MaintainNatHolcanSpearman</action><action>MaintainNatAxeRider</action><action>MaintainNatAxeRiderDogSoldier</action><action>MaintainNatTomahawk</action><action>MaintainNatMantlet</action><action>MaintainNatBolasWarrior</action><action>MaintainNatHuaminca</action><action>MaintainNatTracker</action><action>MaintainNatHorseArcher</action><action>MaintainNatRifleman</action><action>MaintainNatBlogunWarrior</action><action>MaintainNatJaguarWarrior</action><action>MaintainNatEagleWarrior</action><action>AutoGatherXP</action><action>AutoGatherGold</action><action>AutoGatherXPNative</action><action>AutoGatherXPTrickleEconomics</action><action>AutoGatherInfluence</action><action>UniversityAutoGatherBonus</action><action>GreenwichTime</action><action>AutoGatherMarketDistrictFood</action><action>AutoGatherMarketDistrictWood</action><action>AutoGatherMarketDistrictGold</action><action>AutoGatherReligiousDistrict</action><action>AutoGatherXPDefaultNative</action><action>AutoGatherXPSouthNative</action><action>AutoGatherXPAsianNative</action><action>AutoGatherXPAfricanNative</action></tactic>
 </tactics>

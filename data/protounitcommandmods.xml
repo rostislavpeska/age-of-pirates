@@ -234,6 +234,18 @@
     <usemediumbutton3>
     </usemediumbutton3>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpTrainLevy</name>
+    <icon>resources\images\icons\command\spawn_flamethrowers.png</icon>
+    <spawncommand>
+    </spawncommand>
+    <unittype>zpNatHoopThrowerPop</unittype>
+    <amount>4</amount>
+    <associatedtech>zpArmoredTrainLevy</associatedtech>
+    <rollovertextid>301014</rollovertextid>
+    <donotallowoverpoplimit>
+    </donotallowoverpoplimit>
+  </protounitcommand>
 
 
   <!--

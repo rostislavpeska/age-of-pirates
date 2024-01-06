@@ -85,4 +85,7 @@
   <tradingpost>
     <ability>zpPowerArmouredTrain<tech>zpArmoredTrainUnlockShadow</tech><subciv>zpScientists</subciv><rof>0.1</rof><usebigabilitybutton3>true</usebigabilitybutton3><castifnotselected>true</castifnotselected></ability>
   </tradingpost>
+  <zparmoredtraingun>
+    <ability>dePowerPeninsularFixedGunLongRangeAttack<rof>60</rof></ability>
+  </zparmoredtraingun>
 </abilitymods>

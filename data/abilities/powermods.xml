@@ -136,7 +136,7 @@
     <rolloverid>300990</rolloverid>
     <icon>resources\images\icons\command\armored_train_lrg.png</icon>
     <minimapeventtime sendalertto="all">1</minimapeventtime>
-    <activetime>12</activetime>
+    <activetime>1</activetime>
     <radius>10.0</radius>
     <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
     <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
