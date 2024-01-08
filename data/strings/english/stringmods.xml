@@ -993,7 +993,7 @@
       <string _locid="300989">Armoured Train</string>
       <string _locid="300990">Spawns an Armored Train which will attack an enemy base. Can be casted on a Train Station next to the enemy position.</string>
       <string _locid="300991">Railway Station</string>
-      <string _locid="300992">ZP Railway Station</string>
+      <string _locid="300992">ZP Train Station: Station</string>
       <string _locid="300993">Armored Train</string>
       <string _locid="300994">ZP AT Gun Static</string>
       <string _locid="300995">Rodolphe de Gortz</string>
@@ -1002,7 +1002,7 @@
       <string _locid="300998">Unlocks a special alility: Armored Train - can send an armored train to attack enemy positions next to a Train Station.</string>
       <string _locid="300999">Military Railways</string>
       <string _locid="301000">Unlocks the military use of the trade routes: \n • Discovers all Train Stations on the map \n • Upgrades all trade routes to the Train level \n • Unlocks the Armored Train ability allowing you to use an armore train to attack enemy base</string>
-      <string _locid="301001">Armored Train: Spawns an Armored Train which will attack an enemy base. &lt;color=1.0, 0.0, 0.0&gt;Can't be used when another Armored Train is being on the map.&lt;/color&gt;</string>
+      <string _locid="301001">Spawns an Armored Train which will attack an enemy base. &lt;color=1.0, 0.0, 0.0&gt;Can't be used when another Armored Train is being on the map or when the Armored Train ability is not ready.&lt;/color&gt;</string>
       <string _locid="301002">ZP AT Engine Move</string>
       <string _locid="301003">ZP AT BarrackCar Move</string>
       <string _locid="301004">ZP AT GunCar Move</string>
@@ -1040,6 +1040,11 @@
       <string _locid="301036">Legendary Mounted Cowboy</string>
       <string _locid="301037">ZP Merc Mounted Cowboy</string>
       <string _locid="301038">Guard Cowboys</string>
+      <string _locid="301039">ZP Train Station: Area</string>
+      <string _locid="301040">Fence</string>
+      <string _locid="301041">ZP Prop Wooden Fence</string>
+      <string _locid="301042">Return back to depot</string>
+      <string _locid="301043">Despawns Armored train. &lt;color=1.0, 0.0, 0.0&gt;After you use this ability, the cooldown starts again from the beginning.&lt;/color&gt;</string>
 
 
 

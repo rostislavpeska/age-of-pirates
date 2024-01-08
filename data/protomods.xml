@@ -1422,6 +1422,7 @@
     <flag>Tracked</flag>
     <flag>OnlyInEditor</flag>
     <flag>DisplayRange</flag>
+    <flag>DoNotShowOnMiniMap</flag>
     <tactics>waterspawnpoint.tactics</tactics>
   </unit>
   <unit id="20020" name="zpSPCFixedGunSpawnPoint">
@@ -19922,7 +19923,7 @@
     <flag>NonAutoFormedUnit</flag>
     <flag>Tracked</flag>
     <flag>HasContinuousParticles</flag>
-    <!--<flag>GivesLOSToAll</flag>-->
+    <flag>GivesLOSToAll</flag>
     <command page="10" column="7">Delete</command>
   </unit>
   <unit id="20194" name="zpArmoredTrainCoalCarMove">
@@ -19968,7 +19969,8 @@
     <flag>Invulnerable</flag>
     <flag>InvulnerableIfGaia</flag>
     <flag>Tracked</flag>
-    <!--<flag>GivesLOSToAll</flag>-->
+    <flag>NotSelectable</flag>
+    <flag>GivesLOSToAll</flag>
     <command page="10" column="7">Delete</command>
   </unit>
   <unit id="20195" name="zpArmoredTrainBarracksMove">
@@ -20014,7 +20016,7 @@
     <flag>OrientUnitWithGround</flag>
     <flag>NoHPBar</flag>
     <flag>Tracked</flag>
-    <!--<flag>GivesLOSToAll</flag>-->
+    <flag>GivesLOSToAll</flag>
     <command page="10" column="7">Delete</command>
   </unit>
   <unit id="20196" name="zpArmoredTrainGunCarMove">
@@ -20061,7 +20063,7 @@
     <flag>NoHPBar</flag>
     <flag>Tracked</flag>
     <flag>NotSelectable</flag>
-    <!--<flag>GivesLOSToAll</flag>-->
+    <flag>GivesLOSToAll</flag>
     <command page="10" column="7">Delete</command>
   </unit>
   <unit id="20197" name="zpArmoredTrainGunMove">
@@ -20107,7 +20109,7 @@
     <flag>InvulnerableIfGaia</flag>
     <flag>NoHPBar</flag>
     <flag>Tracked</flag>
-    <!--<flag>GivesLOSToAll</flag>-->
+    <flag>GivesLOSToAll</flag>
     <command page="10" column="7">Delete</command>
   </unit>
   <unit id="20198" name="zpArmoredTrainEngineStatic">
@@ -20165,6 +20167,7 @@
     <flag>PlaceAnywhere</flag>
     <flag>NoHPBar</flag>
     <flag>Invulnerable</flag>
+    <tech row="0" page="0" column="0">zpArmoredTrainBack</tech>
   </unit>
   <unit id="20199" name="zpArmoredTrainCoalCarStatic">
     <dbid>20199</dbid>
@@ -20221,6 +20224,7 @@
     <flag>PlaceAnywhere</flag>
     <flag>NoHPBar</flag>
     <flag>Invulnerable</flag>
+    <flag>NotSelectable</flag>
   </unit>
   <unit id="20200" name="zpArmoredTrainBarracksStatic">
     <dbid>20200</dbid>
@@ -20384,6 +20388,7 @@
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
   </unit>
   <unit id="20203" name="zpNatHoopThrowerPop">
     <dbid>20203</dbid>
@@ -20511,31 +20516,26 @@
   </unit>
   <unit id="20204" name="zpInvisibleRailwayStation">
     <dbid>20204</dbid>
-    <displaynameid>301021</displaynameid>
-    <obstructionradiusx>15.0000</obstructionradiusx>
-    <obstructionradiusz>15.0000</obstructionradiusz>
+    <displaynameid>29937</displaynameid>
+    <editornameid>29937</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <maxrunvelocity>0.0000</maxrunvelocity>
-    <movementtype>air</movementtype>
-    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <movementtype>land</movementtype>
+    <rollovertextid>30051</rollovertextid>
+    <shortrollovertextid>30052</shortrollovertextid>
+    <animfile>buildings\spc\aztec_courtyard\spc_aztec_map.xml</animfile>
+    <portraiticon>resources\art\trade_route\trade_route_1_portrait.png</portraiticon>
     <los>0.0000</los>
-    <selectionpriority>99</selectionpriority>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>EmbellishmentClass</unittype>
-    <unittype>Building</unittype>
-    <unittype>EmbellishmentClass</unittype>
-    <unittype>NativeBuilding</unittype>
     <unittype>Unattackable</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>AbstractTradeRouteBuilding</unittype>
-    <flag>FlyingUnit</flag>
-    <flag>DoNotShowOnMiniMap</flag>
+    <flag>FlattenGround</flag>
     <flag>NoUnitAI</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
@@ -20544,11 +20544,13 @@
     <flag>Doppled</flag>
     <flag>ForceToGaia</flag>
     <flag>Invulnerable</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>SelectWithObstruction</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>AlwaysShowAsSocket</flag>
     <flag>Tracked</flag>
     <flag>OnlyInEditor</flag>
-    <flag>VisibleUnderFogIfGaia</flag>   
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>PlaceAnywhere</flag>   
   </unit>
   <unit id="20205" name="zpPropWestern">
     <dbid>20205</dbid>
@@ -20597,6 +20599,7 @@
     <flag>TieToWaterSurface</flag>
     <flag>InvulnerableIfGaia</flag>
     <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
     <command page="10" column="0">Delete</command>
     <tactics>garrisonable.tactics</tactics>
   </unit>
@@ -20647,6 +20650,7 @@
     <flag>TieToWaterSurface</flag>
     <flag>InvulnerableIfGaia</flag>
     <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
     <command page="10" column="0">Delete</command>
     <tactics>garrisonable.tactics</tactics>
   </unit>
@@ -20696,6 +20700,7 @@
     <flag>PlaceAnywhere</flag>
     <flag>TieToWaterSurface</flag>
     <flag>InvulnerableIfGaia</flag>
+    <flag>NotSelectable</flag>
     <flag>Tracked</flag>
     <command page="10" column="0">Delete</command>
     <tactics>garrisonable.tactics</tactics>
@@ -20817,7 +20822,57 @@
       <damagebonus type="AbstractArtillery">2.000000</damagebonus>
     </protoaction>
   </unit>
-  
+  <unit id="20209" name="zpPropJesuitFence">
+    <dbid>20209</dbid>
+    <displaynameid>301040</displaynameid>
+    <editornameid>301041</editornameid>
+    <obstructionradiusx>0.2000</obstructionradiusx>
+    <obstructionradiusz>0.2000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\prop_wooden_fence.xml</animfile>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\spc\pirates\pirate_ranged_icon.png</icon>
+    <portraiticon>resources\art\units\spc\pirates\pirate_ranged_portrait.png</portraiticon>
+    <rollovertextid>33797</rollovertextid>
+    <shortrollovertextid>33796</shortrollovertextid>
+    <initialhitpoints>1315.0000</initialhitpoints>
+    <maxhitpoints>1315.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Building</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>Invulnerable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
+    <command page="10" column="0">Delete</command>
+    <tactics>garrisonable.tactics</tactics>
+  </unit>
 
 
 

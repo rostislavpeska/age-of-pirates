@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>11</width>
+	<height>18</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="35" posx="0.0000" posz="1.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="77" posx="-1.0874" posz="0.5021" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="69" posx="-0.7306" posz="0.6188" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="218" posx="-0.5064" posz="0.0392" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="161" posx="-0.8145" posz="-0.3589" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="104" posx="-1.1160" posz="-0.0574" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="175" posx="-1.4175" posz="0.2441" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="54" posx="-1.2123" posz="0.8634" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="254" posx="-0.9447" posz="0.9517" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="64" posx="-0.5999" posz="0.9644" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="154" posx="-0.3337" posz="0.6982" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="92" posx="-0.4547" posz="0.1058" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="21" posx="-0.4582" posz="-0.2451" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="157" posx="-0.6638" posz="-0.5097" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="213" posx="-1.1312" posz="-0.5097" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="239" posx="-1.5435" posz="0.2529" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="204" posx="-1.2765" posz="0.6912" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="98" posx="-1.0720" posz="0.9602" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="12" posx="-0.7685" posz="0.6567" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="253" posx="-0.5409" posz="0.4291" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="206" posx="-0.6094" posz="-0.0939" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="162" posx="2.2591" posz="0.2546" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpInvisibleRailwayStation</unit>
+		<unit variation="13" posx="6.7251" posz="0.4318" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SocketTradeRoute</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

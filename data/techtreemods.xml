@@ -153,6 +153,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
@@ -198,6 +199,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -240,6 +242,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -282,6 +285,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -2324,6 +2328,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
@@ -3112,6 +3117,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
@@ -5495,6 +5501,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -5964,6 +5971,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
@@ -6744,6 +6752,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="obtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -8802,6 +8811,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
@@ -10183,6 +10193,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
@@ -10466,6 +10477,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
@@ -10832,11 +10844,6 @@
       <techstatus status="Active">zpMoneyFactory</techstatus>
     </prereqs>
     <effects>
-      <effect type="CommandAdd" command="zpNatArmoredTrain" page="2" column="0">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="TechStatus" status="active">zpArmoredTrainEnableShadow</effect>
-      <effect type="TechStatus" status="active">zpArmoredTrainUnlockShadow</effect>
       <effect type="Data" action="SpawnArmoredTrain" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -10900,7 +10907,7 @@
   </tech>
   <tech name="zpArmoredTrainDisableShadow" type="Normal">
     <dbid>40387</dbid>
-    <researchpoints>0.0100</researchpoints>
+    <researchpoints>0.5000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
@@ -11086,6 +11093,26 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpArmoredTrainLockShadow" type="Normal">
+    <dbid>40388</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpArmoredTrainLockShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpArmoredTrainBack" type="Normal">
+    <dbid>40389</dbid>
+    <displaynameid>301042</displaynameid>
+    <researchpoints>5.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\command\train_depot.png</icon>
+    <rollovertextid>301043</rollovertextid>
+    <flag>DENoTextMessageIfFree</flag>
+    <flag>Shadow</flag>
+  </tech>
+
  
  
 

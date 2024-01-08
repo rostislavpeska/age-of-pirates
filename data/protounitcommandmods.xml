@@ -225,10 +225,12 @@
   </protounitcommand>
   <protounitcommand>
     <name>zpNatArmoredTrainDisabled</name>
-    <icon>resources\images\icons\command\armored_train_lrg_disabled.png</icon>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
     <associatedtech>zpArmoredTrainDisableShadow</associatedtech>
+    <associatedpower>zpPowerArmouredTrainInactive</associatedpower>
+    <castpower>
+    </castpower>
     <subciv>zpScientists</subciv>
-    <rollovertextid>301001</rollovertextid>
     <usemultiple>
     </usemultiple>
     <usemediumbutton3>

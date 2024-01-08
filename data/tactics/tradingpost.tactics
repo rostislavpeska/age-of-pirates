@@ -335,8 +335,7 @@
     <instantballistics>1</instantballistics>
     <maxrange>1000000.000000</maxrange>
     <anim>RangedSpawn</anim>
-    <rate type="zpSPCRailwayStation">1.0</rate>
-    <rate type="zpInvisibleRailwayStation">1.0</rate>
+    <rate type="AbstractTradeRouteBuilding">1.0</rate>
     <active>0</active>
     <hidefromstats>1</hidefromstats>
     <excludefromrangeindicator>1</excludefromrangeindicator>

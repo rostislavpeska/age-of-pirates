@@ -142,6 +142,18 @@
     <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
     <unitaction>SpawnArmoredTrain</unitaction>
   </power>
+  <power name="zpPowerArmouredTrainInactive" type="UnitAction">
+    <displaynameid>300989</displaynameid>
+    <rolloverid>301001</rolloverid>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>
+  </power>
+
 
   <!--<power name="zpPowerArmouredTrain" type="TempUnit">
     <displaynameid>300989</displaynameid>

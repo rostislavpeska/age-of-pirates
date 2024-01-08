@@ -83,7 +83,8 @@
     <ability>ypUnitDaimyoAura<alwaysdisabledingrid>true</alwaysdisabledingrid></ability>
   </zpnatsoheileader>
   <tradingpost>
-    <ability>zpPowerArmouredTrain<tech>zpArmoredTrainUnlockShadow</tech><subciv>zpScientists</subciv><rof>0.1</rof><usebigabilitybutton3>true</usebigabilitybutton3><castifnotselected>true</castifnotselected></ability>
+    <ability>zpPowerArmouredTrain<tech>zpArmoredTrainUnlockShadow</tech><subciv>zpScientists</subciv><rof>0.1</rof><usebigabilitybutton3>true</usebigabilitybutton3><castifnotselected>true</castifnotselected><subcivalliancefactor>0.5</subcivalliancefactor><subcivstartincooldown>true</subcivstartincooldown><activetimecooldown>true</activetimecooldown></ability>
+    <ability>zpPowerArmouredTrainInactive<tech>zpArmoredTrainLockShadow</tech><subciv>zpScientists</subciv><rof>70</rof><usebigabilitybutton3>true</usebigabilitybutton3><castifnotselected>true</castifnotselected></ability>
   </tradingpost>
   <zparmoredtraingun>
     <ability>dePowerPeninsularFixedGunLongRangeAttack<rof>60</rof></ability>
