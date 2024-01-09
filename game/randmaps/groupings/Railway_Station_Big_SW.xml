@@ -28,7 +28,7 @@
 		<unit variation="58" posx="11.4567" posz="-13.8925" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseWesternVillage</unit>
 		<unit variation="185" posx="-4.7085" posz="-14.4024" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
 		<unit variation="172" posx="-11.6226" posz="-15.2038" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropJesuitFence</unit>
-		<unit variation="211" posx="-6.1022" posz="-15.4226" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropWestern</unit>
+		<unit variation="211" posx="-6.1022" posz="-15.4226" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCWaterSpawnPoint</unit>
 		<unit variation="28" posx="-11.5558" posz="-11.7108" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropJesuitFence</unit>
 		<unit variation="113" posx="-8.4222" posz="-11.7793" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpPropStageCoach</unit>
 		<unit variation="211" posx="15.2618" posz="-8.5159" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock2</unit>
@@ -63,7 +63,7 @@
 		<unit variation="101" posx="14.0754" posz="14.9752" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
 		<unit variation="166" posx="7.2625" posz="14.7578" orientx="0.3827" orienty="0.0000" orientz="-0.9239">SPCRailwayProps</unit>
 		<unit variation="145" posx="-11.8359" posz="12.6348" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropJesuitFence</unit>
-		<unit variation="135" posx="-9.1795" posz="13.3506" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpPropWestern</unit>
+		<unit variation="135" posx="-9.1795" posz="13.3506" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpSPCWaterSpawnPoint</unit>
 		<unit variation="246" posx="-9.4173" posz="16.3488" orientx="0.3827" orienty="0.0000" orientz="-0.9239">SPCRailwayProps</unit>
 		<unit variation="74" posx="6.9280" posz="15.8616" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="62" posx="8.6879" posz="15.2222" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
@@ -72,7 +72,7 @@
 		<unit variation="88" posx="11.3040" posz="14.9070" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropHorse</unit>
 		<unit variation="77" posx="-5.5750" posz="17.8335" orientx="0.3827" orienty="0.0000" orientz="-0.9239">SPCRailwayProps</unit>
 		<unit variation="109" posx="-10.2636" posz="17.5331" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropJesuitFence</unit>
-		<unit variation="202" posx="-4.7117" posz="18.0046" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpPropWestern</unit>
+		<unit variation="202" posx="-4.7117" posz="18.0046" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpSPCWaterSpawnPoint</unit>
 		<unit variation="204" posx="13.3498" posz="16.9838" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpPropJesuitFence</unit>
 		<unit variation="142" posx="13.3704" posz="17.0925" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="212" posx="-9.2434" posz="17.7527" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock2</unit>

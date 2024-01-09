@@ -990,7 +990,7 @@
       <string _locid="300986">ZP Test Armored Train Engine</string>
       <string _locid="300987">Western Village</string>
       <string _locid="300988">ZP Socket Western Village</string>
-      <string _locid="300989">Armoured Train</string>
+      <string _locid="300989">Armored Train</string>
       <string _locid="300990">Spawns an Armored Train which will attack an enemy base. Can be casted on a Train Station next to the enemy position.</string>
       <string _locid="300991">Railway Station</string>
       <string _locid="300992">ZP Train Station: Station</string>
@@ -1044,8 +1044,8 @@
       <string _locid="301040">Fence</string>
       <string _locid="301041">ZP Prop Wooden Fence</string>
       <string _locid="301042">Return back to depot</string>
-      <string _locid="301043">Despawns Armored train. &lt;color=1.0, 0.0, 0.0&gt;After you use this ability, the cooldown starts again from the beginning.&lt;/color&gt;</string>
-
+      <string _locid="301043">&lt;color=1.0, 0.0, 0.0&gt;Despawns Armored train.&lt;/color&gt;</string>
+      <string _locid="301044">ZP Prop Barn</string>
 
 
       <!-- ======================================== -->

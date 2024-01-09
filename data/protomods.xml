@@ -20388,7 +20388,6 @@
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
-    <flag>NotSelectable</flag>
   </unit>
   <unit id="20203" name="zpNatHoopThrowerPop">
     <dbid>20203</dbid>
@@ -20517,7 +20516,7 @@
   <unit id="20204" name="zpInvisibleRailwayStation">
     <dbid>20204</dbid>
     <displaynameid>29937</displaynameid>
-    <editornameid>29937</editornameid>
+    <editornameid>301039</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
@@ -20525,7 +20524,7 @@
     <movementtype>land</movementtype>
     <rollovertextid>30051</rollovertextid>
     <shortrollovertextid>30052</shortrollovertextid>
-    <animfile>buildings\spc\aztec_courtyard\spc_aztec_map.xml</animfile>
+    <animfile>buildings\trading_post\clickable_area.xml</animfile>
     <portraiticon>resources\art\trade_route\trade_route_1_portrait.png</portraiticon>
     <los>0.0000</los>
     <unittype>LogicalTypeBuildingsNotWalls</unittype>
@@ -20550,6 +20549,7 @@
     <flag>Tracked</flag>
     <flag>OnlyInEditor</flag>
     <flag>VisibleUnderFogIfGaia</flag>
+    <flag>DoNotShowOnMiniMap</flag>
     <flag>PlaceAnywhere</flag>   
   </unit>
   <unit id="20205" name="zpPropWestern">
@@ -20872,6 +20872,55 @@
     <flag>NotSelectable</flag>
     <command page="10" column="0">Delete</command>
     <tactics>garrisonable.tactics</tactics>
+  </unit>
+  <unit id="2010" name="zpPropBarn">
+    <dbid>20210</dbid>
+    <displaynameid>301044</displaynameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\ne_barn\ne_barn.xml</animfile>
+    <portraiticon>resources\art\units\natives\cowboys.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>Building</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
+    <flag>PlaceAnywhere</flag>
   </unit>
 
 

@@ -43,9 +43,9 @@
 		<unit variation="139" posx="-13.4491" posz="-10.3538" orientx="0.9239" orienty="0.0000" orientz="0.3827">SPCRailwayProps</unit>
 		<unit variation="61" posx="11.9839" posz="-10.6230" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="109" posx="-16.5331" posz="-11.2636" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropJesuitFence</unit>
-		<unit variation="135" posx="-12.3506" posz="-10.1795" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpPropWestern</unit>
+		<unit variation="135" posx="-12.3506" posz="-10.1795" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpSPCWaterSpawnPoint</unit>
 		<unit variation="113" posx="8.1261" posz="-10.5000" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpPropStageCoach</unit>
-		<unit variation="211" posx="14.5640" posz="-10.6203" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpPropWestern</unit>
+		<unit variation="211" posx="14.5640" posz="-10.6203" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCWaterSpawnPoint</unit>
 		<unit variation="144" posx="-3.3492" posz="-9.2820" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock2</unit>
 		<unit variation="37" posx="-5.4273" posz="-9.3215" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock2</unit>
 		<unit variation="128" posx="-11.0213" posz="-7.3885" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCRailwayProps</unit>
@@ -53,7 +53,7 @@
 		<unit variation="77" posx="-17.1100" posz="-7.7983" orientx="0.9239" orienty="0.0000" orientz="0.3827">SPCRailwayProps</unit>
 		<unit variation="158" posx="-14.0982" posz="-7.3445" orientx="-0.0000" orienty="-0.0039" orientz="1.0000">TrainTracks</unit>
 		<unit variation="152" posx="-9.7619" posz="-7.3429" orientx="-0.0000" orienty="-0.0039" orientz="1.0000">TrainTracks</unit>	
-		<unit variation="202" posx="-17.0046" posz="-5.7117" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpPropWestern</unit>
+		<unit variation="202" posx="-17.0046" posz="-5.7117" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpSPCWaterSpawnPoint</unit>
 		<unit variation="162" posx="0.7454" posz="1.2591" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpInvisibleRailwayStation</unit>
 		<unit variation="13" posx="-0.3058" posz="8.5816" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SocketTradeRoute</unit>
 		<unit variation="62" posx="-13.3226" posz="8.6881" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsColony</unit>
