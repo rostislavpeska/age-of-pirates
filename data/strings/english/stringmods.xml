@@ -997,7 +997,7 @@
       <string _locid="300993">Armored Train</string>
       <string _locid="300994">ZP AT Gun Static</string>
       <string _locid="300995">Rodolphe de Gortz</string>
-      <string _locid="300996">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Machine Gun \n\nBillionaire with a penchant for opera and explosives. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nMoney Factory, Military Railways</string>
+      <string _locid="300996">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \n- \n\nBillionaire with a penchant for opera and explosives. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nMoney Factory, Military Railways</string>
       <string _locid="300997">Money Factory</string>
       <string _locid="300998">Unlocks a special alility: Armored Train - can send an armored train to attack enemy positions next to a Train Station.</string>
       <string _locid="300999">Military Railways</string>
@@ -1046,6 +1046,11 @@
       <string _locid="301042">Return back to depot</string>
       <string _locid="301043">&lt;color=1.0, 0.0, 0.0&gt;Despawns Armored train.&lt;/color&gt;</string>
       <string _locid="301044">ZP Prop Barn</string>
+      <string _locid="301045">ZP Train Stopper</string>
+      <string _locid="301046">ZP Invisible Trading Post</string>
+      <string _locid="301047">Armored Train Test</string>
+      <string _locid="301048">Armored Train Test Description</string>
+      <string _locid="301049">Armored Train Test Loading</string>
 
 
       <!-- ======================================== -->

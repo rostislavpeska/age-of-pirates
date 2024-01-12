@@ -7,21 +7,21 @@
 	<selectassingleunit>1</selectassingleunit>
 	<workonassingleunit>1</workonassingleunit>
 	<units>
-		<unit variation="244" posx="2.0000" posz="-1.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="129" posx="2.0000" posz="-1.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="19" posx="2.0000" posz="-1.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="69" posx="1.6188" posz="-1.2694" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="218" posx="1.0392" posz="-1.4936" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="161" posx="0.6411" posz="-1.1855" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="35" posx="2.0000" posz="-2.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="77" posx="1.5021" posz="-0.9126" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="253" posx="2.0000" posz="-3.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="1" posx="2.0000" posz="-3.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="36" posx="2.0000" posz="-3.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="77" posx="1.5021" posz="-0.9126" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="253" posx="2.0000" posz="-3.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="1" posx="2.0000" posz="-3.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="36" posx="2.0000" posz="-3.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="244" posx="2.0000" posz="-1.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="129" posx="2.0000" posz="-1.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="19" posx="2.0000" posz="-1.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="69" posx="1.6188" posz="-1.2694" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="218" posx="1.0392" posz="-1.4936" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="161" posx="0.6411" posz="-1.1855" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="35" posx="2.0000" posz="-2.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="77" posx="1.5021" posz="-0.9126" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="253" posx="2.0000" posz="-3.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="1" posx="2.0000" posz="-3.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="36" posx="2.0000" posz="-3.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="77" posx="1.5021" posz="-0.9126" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="253" posx="2.0000" posz="-3.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="1" posx="2.0000" posz="-3.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="36" posx="2.0000" posz="-3.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
 		<unit variation="11" posx="-6.7940" posz="-15.0340" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="10" posx="15.9752" posz="-16.0754" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="211" posx="-5.9440" posz="-15.6003" orientx="-0.7071" orienty="0.0000" orientz="0.7071">SPCRailwayProps</unit>

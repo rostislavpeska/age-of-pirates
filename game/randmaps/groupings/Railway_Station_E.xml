@@ -7,22 +7,22 @@
 	<selectassingleunit>1</selectassingleunit>
 	<workonassingleunit>1</workonassingleunit>
 	<units>	
-		<unit variation="253" posx="0.5638" posz="-1.4267" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="244" posx="0.2931" posz="-0.8892" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="129" posx="0.1429" posz="-0.4404" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="19" posx="0.6575" posz="-0.9243" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="69" posx="0.2655" posz="-0.8304" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="36" posx="0.1384" posz="-0.5637" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="253" posx="0.1106" posz="-0.6472" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="218" posx="0.5057" posz="-0.3127" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="1" posx="0.0493" posz="-0.8716" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="1" posx="0.2897" posz="-0.4715" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="36" posx="-0.0651" posz="-0.4193" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="77" posx="0.4987" posz="-0.5274" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="77" posx="0.1075" posz="-0.9237" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="35" posx="0.0702" posz="-0.5319" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="161" posx="-0.0232" posz="-0.7560" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="161" posx="-0.0232" posz="-0.7560" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="253" posx="0.5638" posz="-1.4267" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="244" posx="0.2931" posz="-0.8892" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="129" posx="0.1429" posz="-0.4404" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="19" posx="0.6575" posz="-0.9243" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="69" posx="0.2655" posz="-0.8304" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="36" posx="0.1384" posz="-0.5637" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="253" posx="0.1106" posz="-0.6472" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="218" posx="0.5057" posz="-0.3127" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="1" posx="0.0493" posz="-0.8716" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="1" posx="0.2897" posz="-0.4715" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="36" posx="-0.0651" posz="-0.4193" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="77" posx="0.4987" posz="-0.5274" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="77" posx="0.1075" posz="-0.9237" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="35" posx="0.0702" posz="-0.5319" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="161" posx="-0.0232" posz="-0.7560" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="161" posx="-0.0232" posz="-0.7560" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpTrainStopper</unit>
 		<unit variation="58" posx="-15.8490" posz="-1.3460" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpPropBarn</unit>
 		<unit variation="110" posx="-11.8311" posz="2.3410" orientx="0.7071" orienty="0.0000" orientz="0.7071">SPCRailwayProps</unit>
 		<unit variation="152" posx="-12.3324" posz="1.8424" orientx="0.7071" orienty="0.0000" orientz="-0.7071">TrainTracks</unit>
