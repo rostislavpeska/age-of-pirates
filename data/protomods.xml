@@ -21980,5 +21980,132 @@
     <command page="10" column="8">CancelAllQueued</command>
     <tactics>christmas_unit.tactics</tactics>
   </unit>
+  <unit id="21017" name="zpDocHolliday">
+    <dbid>21017</dbid>
+    <displaynameid>400069</displaynameid>
+    <editornameid>400070</editornameid>
+    <populationcount>0</populationcount>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>4.5000</maxvelocity>
+    <maxrunvelocity>6.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>22.0000</turnrate>
+    <animfile>units\wildwest_units\doc_holliday\doc_holliday.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\spc\outlaws\gunslinger_icon.png</icon>
+    <portraiticon>resources\art\units\spc\outlaws\gunslinger_portrait.png</portraiticon>
+    <rollovertextid>400071</rollovertextid>
+    <shortrollovertextid>400071</shortrollovertextid>
+    <initialhitpoints>150.0000</initialhitpoints>
+    <maxhitpoints>180.0000</maxhitpoints>
+    <los>16.0000</los>
+    <rechargetime>30.0000</rechargetime>
+    <chargeusagetime>2.5000</chargeusagetime>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <autoattackrange>16.0000</autoattackrange>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>40.0000</trainpoints>
+    <bounty>18.0000</bounty>
+    <buildbounty>18.0000</buildbounty>
+    <cost resourcetype="Gold">90.0000</cost>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <allowedage>1</allowedage>
+    <armor type="Hand" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Hero</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>chargeSaloonPistol.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>24.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>HandAttack</name>
+      <damage>12.000000</damage>
+      <damagetype>Hand</damagetype>
+      <maxrange>1.500000</maxrange>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">2.200000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>15.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>12.000000</maxrange>
+      <rof>1.500000</rof>
+      <hitpercentsoundset>DEMexicanStandoff</hitpercentsoundset>
+    </protoaction>
+    <protoaction>
+      <name>ChargeQuickDrawAttack</name>
+      <active>1</active>
+      <damage>15.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>12.000000</maxrange>
+      <rof>3.0000</rof>
+      <hitpercentsoundset>DEMexicanStandoff</hitpercentsoundset>
+    </protoaction>
+    <protoaction>
+      <name>HandAttackCrate</name>
+      <damage>10.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>Gather</name>
+      <rate type="AbstractMine">0.600000</rate>
+    </protoaction>
+    <protoaction>
+      <name>CrateGather</name>
+      <rate type="AbstractResourceCrate">8.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>Hunting</name>
+      <rate type="AbstractInfiniteCrate">1.000000</rate>
+    </protoaction>
+  </unit>
 
 </protomods>

@@ -1442,6 +1442,7 @@ minInterval 15
    }*/
 
    vector gatherPoint = kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
+   bool isHuman = kbIsPlayerHuman(targetPlayer);
    if (targetIsEnemy == true)
    {
       planID = aiPlanCreate("Attack Player " + targetPlayer + " Base " + targetBaseID, cPlanCombat);
@@ -1483,7 +1484,7 @@ minInterval 15
       // AssertiveWall: Keep attacking KOTH till timer runs out or outnumbered
       if (cDifficultyCurrent >= cDifficultyHard || attackingKOTH == true)
       {
-         if (cDifficultyCurrent >= gDifficultyExpert)
+         if (cDifficultyCurrent >= cDifficultyHard) // AssertiveWall: Lowered from Expert
          {
             aiPlanSetVariableBool(planID, cCombatPlanAllowMoreUnitsDuringAttack, 0, true);
          }
@@ -1491,12 +1492,20 @@ minInterval 15
          if (attackingKOTH == true)
          {
             aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat);
+            aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
             aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 240000); // Full timer
          }
          else
-         {
-            aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeBaseGone);
-            aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+         {  // AssertiveWall: Don't retreat against human players, but still do it against AI players
+            if (isHuman == true)
+            { 
+               aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeBaseGone);
+            }
+            else
+            {
+               aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeBaseGone);
+               aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+            }
          }
          updateMilitaryTrainPlanBuildings(gForwardBaseID);
       }
@@ -1544,9 +1553,9 @@ minInterval 15
       aiPlanSetVariableInt(planID, cCombatPlanTargetPlayerID, 0, targetPlayer);
       aiPlanSetVariableVector(planID, cCombatPlanTargetPoint, 0, targetBaseLocation);
       aiPlanSetVariableInt(planID, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
-      aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget | cCombatPlanDoneModeRetreat);
+      aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget); //| cCombatPlanDoneModeRetreat); // AssertiveWall: still help even when outnumbered
       aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 30000);
-      aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+      //aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered); // AssertiveWall: see two lines above
       aiPlanSetOrphan(planID, true);
 
       addUnitsToMilitaryPlan(planID);
