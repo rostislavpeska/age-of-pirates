@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>23</width>
+	<height>23</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="17" posx="5.8107" posz="-16.3384" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpPirateFlag</unit>
+		<unit variation="210" posx="0.7862" posz="-13.1850" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpSPCRailwayStation</unit>
+		<unit variation="241" posx="4.9056" posz="-15.2073" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpPropJesuitFence</unit>
+		<unit variation="241" posx="6.9077" posz="-15.1652" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpPropJesuitFence</unit>
+		<unit variation="211" posx="-6.1227" posz="-6.5866" orientx="-0.9239" orienty="0.0000" orientz="0.3827">SPCRailwayProps</unit>
+		<unit variation="8" posx="-6.8244" posz="-5.0633" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">SPCRailwayProps</unit>
+		<unit variation="5" posx="17.1696" posz="-4.1787" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">SPCRailwayProps</unit>
+		<unit variation="0" posx="18.5108" posz="-2.3125" orientx="-0.7071" orienty="0.0000" orientz="0.7071">SPCPathBlock3</unit>
+		<unit variation="11" posx="14.1814" posz="-2.5469" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="4" posx="-8.1082" posz="-3.6088" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">SPCRailwayProps</unit>
+		<unit variation="0" posx="17.5569" posz="-3.4029" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="0" posx="20.2933" posz="-0.2055" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="2" posx="20.1438" posz="-0.9896" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="10" posx="16.7604" posz="-0.2971" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="204" posx="20.3113" posz="-1.5479" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPropJesuitFence</unit>
+		<unit variation="13" posx="9.0584" posz="5.5450" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">SocketTradeRoute</unit>
+		<unit variation="88" posx="17.1567" posz="-2.2143" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropHorse</unit>
+		<unit variation="17" posx="22.1746" posz="0.2824" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPirateFlag</unit>
+		<unit variation="5" posx="18.9674" posz="0.5381" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpPropHorse</unit>
+		<unit variation="0" posx="20.8972" posz="1.4565" orientx="0.7071" orienty="0.0000" orientz="0.7071">SPCPathBlock2</unit>
+		<unit variation="244" posx="-0.8892" posz="-0.2931" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="129" posx="-0.4404" posz="-0.1429" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="19" posx="-0.9243" posz="-0.6575" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="69" posx="-0.8304" posz="-0.2655" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="36" posx="-0.5637" posz="-0.1384" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="253" posx="-0.6472" posz="-0.1106" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="218" posx="-0.3127" posz="-0.5057" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="1" posx="-0.8716" posz="-0.0493" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="253" posx="-1.4267" posz="-0.5638" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="1" posx="-0.4715" posz="-0.2897" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="36" posx="-0.4193" posz="0.0651" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="77" posx="-0.5274" posz="-0.4987" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="77" posx="-0.9237" posz="-0.1075" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="35" posx="-0.5319" posz="-0.0702" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="161" posx="-0.7560" posz="0.0232" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="9" posx="18.1697" posz="2.3764" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsColony</unit>
+		<unit variation="16" posx="16.3866" posz="3.3870" orientx="0.9239" orienty="0.0000" orientz="0.3827">SPCRailwayProps</unit>
+		<unit variation="17" posx="-16.2725" posz="5.8184" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpPirateFlag</unit>
+		<unit variation="162" posx="3.2446" posz="3.2966" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpInvisibleRailwayStation</unit>
+		<unit variation="241" posx="-14.9687" posz="4.7927" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpPropJesuitFence</unit>
+		<unit variation="241" posx="-15.1826" posz="6.6658" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpPropJesuitFence</unit>
+		<unit variation="110" posx="3.3170" posz="12.9032" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCRailwayProps</unit>
+		<unit variation="152" posx="2.9688" posz="13.5107" orientx="-0.7071" orienty="0.0055" orientz="-0.7071">TrainTracks</unit>
+		<unit variation="58" posx="-0.5446" posz="17.0430" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpPropBarn</unit>
+		<unit variation="0" posx="3.9734" posz="14.9661" orientx="0.7071" orienty="0.0000" orientz="0.7071">SPCPathBlock2</unit>
+		<unit variation="241" posx="-7.2754" posz="14.5493" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPropJesuitFence</unit>
+		<unit variation="0" posx="4.6165" posz="15.5863" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock2</unit>
+		<unit variation="0" posx="6.1871" posz="16.5637" orientx="0.7071" orienty="0.0000" orientz="0.7071">SPCPathBlock2</unit>
+		<unit variation="163" posx="6.3660" posz="16.9995" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpPropJesuitFence</unit>
+	</units>
+	<tiles>
+		<tilegroup type="Ice" subtype="city\ground1_cob">
+			<block startx="-8" startz="3" endx="-8" endz="3"></block>
+			<block startx="-5" startz="0" endx="-5" endz="0"></block>
+			<block startx="-4" startz="-1" endx="-4" endz="0"></block>
+			<block startx="-3" startz="-2" endx="-3" endz="0"></block>
+			<block startx="-2" startz="-3" endx="-2" endz="0"></block>
+			<block startx="-1" startz="-4" endx="-1" endz="0"></block>
+			<block startx="0" startz="-5" endx="0" endz="0"></block>
+			<block startx="-7" startz="2" endx="-7" endz="4"></block>
+			<block startx="-6" startz="1" endx="-6" endz="5"></block>
+			<block startx="-5" startz="1" endx="-5" endz="6"></block>
+			<block startx="-4" startz="1" endx="-4" endz="7"></block>
+			<block startx="-3" startz="1" endx="-3" endz="8"></block>
+			<block startx="-2" startz="1" endx="-2" endz="8"></block>
+			<block startx="-1" startz="1" endx="-1" endz="8"></block>
+			<block startx="0" startz="1" endx="0" endz="3"></block>
+			<block startx="0" startz="5" endx="0" endz="8"></block>
+			<block startx="1" startz="1" endx="1" endz="2"></block>
+			<block startx="1" startz="6" endx="1" endz="8"></block>
+			<block startx="2" startz="1" endx="2" endz="1"></block>
+			<block startx="2" startz="7" endx="2" endz="8"></block>
+			<block startx="3" startz="8" endx="3" endz="8"></block>
+			<block startx="1" startz="-6" endx="1" endz="0"></block>
+			<block startx="2" startz="-7" endx="2" endz="0"></block>
+			<block startx="3" startz="-7" endx="3" endz="0"></block>
+			<block startx="4" startz="-6" endx="4" endz="-1"></block>
+			<block startx="5" startz="-5" endx="5" endz="-2"></block>
+			<block startx="6" startz="-4" endx="6" endz="-3"></block>
+			<block startx="7" startz="-3" endx="7" endz="-3"></block>
+			<block startx="8" startz="-2" endx="8" endz="-2"></block>
+			<block startx="-2" startz="9" endx="-2" endz="9"></block>
+			<block startx="-1" startz="9" endx="-1" endz="10"></block>
+			<block startx="0" startz="9" endx="0" endz="11"></block>
+			<block startx="1" startz="9" endx="1" endz="10"></block>
+			<block startx="2" startz="9" endx="2" endz="9"></block>
+			<block startx="9" startz="-1" endx="9" endz="-1"></block>
+			<block startx="10" startz="0" endx="10" endz="0"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

@@ -210,6 +210,45 @@
     <command>unitSetTactic("Food")</command>
     <subciv>Miners</subciv>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpNatArmoredTrain</name>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
+    <associatedtech>zpArmoredTrainEnableShadow</associatedtech>
+    <associatedpower>zpPowerArmouredTrain</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>zpScientists</subciv>
+    <usemultiple>
+    </usemultiple>
+    <usemediumbutton3>
+    </usemediumbutton3>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpNatArmoredTrainDisabled</name>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
+    <associatedtech>zpArmoredTrainDisableShadow</associatedtech>
+    <associatedpower>zpPowerArmouredTrainInactive</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>zpScientists</subciv>
+    <usemultiple>
+    </usemultiple>
+    <usemediumbutton3>
+    </usemediumbutton3>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTrainLevy</name>
+    <icon>resources\images\icons\command\spawn_flamethrowers.png</icon>
+    <spawncommand>
+    </spawncommand>
+    <unittype>zpNatHoopThrowerPop</unittype>
+    <amount>4</amount>
+    <associatedtech>zpArmoredTrainLevy</associatedtech>
+    <rollovertextid>301014</rollovertextid>
+    <donotallowoverpoplimit>
+    </donotallowoverpoplimit>
+  </protounitcommand>
+
 
   <!--
 

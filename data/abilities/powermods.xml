@@ -131,4 +131,42 @@
     <abstractattacktargettype>LogicalTypeGarrisonInShips</abstractattacktargettype>
     <unitaction>PoisonBomb</unitaction>
   </power>
+  <power name="zpPowerArmouredTrain" type="UnitAction">
+    <displaynameid>300989</displaynameid>
+    <rolloverid>300990</rolloverid>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>
+  </power>
+  <power name="zpPowerArmouredTrainInactive" type="UnitAction">
+    <displaynameid>300989</displaynameid>
+    <rolloverid>301001</rolloverid>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>
+  </power>
+
+
+  <!--<power name="zpPowerArmouredTrain" type="TempUnit">
+    <displaynameid>300989</displaynameid>
+    <rolloverid>300990</rolloverid>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>12</activetime>
+    <createunit quantity="1" radius="0" delay="0.0">zpInvisibleProjectileControler</createunit>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <rangeindicatorprotoid radius="12.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
+    <allowduringnorush>1</allowduringnorush>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+    <soundset type="StartSound" listenertype="Caster">DENatPowerOldenburg</soundset>
+  </power>-->
+
 </powermods>

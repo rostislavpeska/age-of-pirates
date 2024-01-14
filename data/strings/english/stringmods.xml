@@ -990,6 +990,68 @@
       <string _locid="300986">ZP Test Armored Train Engine</string>
       <string _locid="300987">Western Village</string>
       <string _locid="300988">ZP Socket Western Village</string>
+      <string _locid="300989">Armored Train</string>
+      <string _locid="300990">Spawns an Armored Train which will attack an enemy base. Can be casted on a Train Station next to the enemy position.</string>
+      <string _locid="300991">Railway Station</string>
+      <string _locid="300992">ZP Train Station: Station</string>
+      <string _locid="300993">Armored Train</string>
+      <string _locid="300994">ZP AT Gun Static</string>
+      <string _locid="300995">Rodolphe de Gortz</string>
+      <string _locid="300996">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \n- \n\nBillionaire with a penchant for opera and explosives. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nMoney Factory, Military Railways</string>
+      <string _locid="300997">Money Factory</string>
+      <string _locid="300998">Unlocks a special alility: Armored Train - can send an armored train to attack enemy positions next to a Train Station.</string>
+      <string _locid="300999">Military Railways</string>
+      <string _locid="301000">Unlocks the military use of the trade routes: \n • Discovers all Train Stations on the map \n • Upgrades all trade routes to the Train level \n • Unlocks the Armored Train ability allowing you to use an armore train to attack enemy base</string>
+      <string _locid="301001">Spawns an Armored Train which will attack an enemy base. &lt;color=1.0, 0.0, 0.0&gt;Can't be used when another Armored Train is being on the map or when the Armored Train ability is not ready.&lt;/color&gt;</string>
+      <string _locid="301002">ZP AT Engine Move</string>
+      <string _locid="301003">ZP AT BarrackCar Move</string>
+      <string _locid="301004">ZP AT GunCar Move</string>
+      <string _locid="301005">ZP AT CoalCar Move</string>
+      <string _locid="301006">ZP AT Gun Move</string>
+      <string _locid="301007">ZP AT Engine Static</string>
+      <string _locid="301008">ZP AT BarrackCar Static</string>
+      <string _locid="301009">ZP AT GunCar Static</string>
+      <string _locid="301010">ZP AT CoalCar Static</string>
+      <string _locid="301011">ZP Native House Western</string>
+      <string _locid="301012">ZP NAT POP Renegade Flamethrower</string>
+      <string _locid="301013">Wagon Crew</string>
+      <string _locid="301014">Wagon Crew: Spawns 4 Flamethrowers to defend the Train</string>
+      <string _locid="301015">Town Station</string>
+      <string _locid="301016">ZP Capturable Train Station</string>
+      <string _locid="301017">Armored Train (Engine)</string>
+      <string _locid="301018">Armored Train (Coal Car)</string>
+      <string _locid="301019">Armored Train (Military Transport)</string>
+      <string _locid="301020">Armored Train (Gun Car)</string>
+      <string _locid="301021">ZP Train Station Area Marker</string>
+      <string _locid="301022">ZP PROP Western Village</string>
+      <string _locid="301023">ZP PROP Horse</string>
+      <string _locid="301024">ZP PROP Stagecoach</string>
+      <string _locid="301025">Whiskey Factory</string>
+      <string _locid="301026">Villagers gather gold from buildings faster by 20%.</string>
+      <string _locid="301027">Texan Longhorns</string>
+      <string _locid="301028">Ships four Cows</string>
+      <string _locid="301029">Fast Colts</string>
+      <string _locid="301030">Territorial Militia</string>
+      <string _locid="301031">Every Residental building spawns one Cowboy to protect the territory.</string>
+      <string _locid="301032">Veteran Cowboys</string>
+      <string _locid="301033">Improves Cowboy's Attack and Hitpoints</string>
+      <string _locid="301034">Veteran Mounted Cowboy</string>
+      <string _locid="301035">Guard Mounted Cowboy</string>
+      <string _locid="301036">Legendary Mounted Cowboy</string>
+      <string _locid="301037">ZP Merc Mounted Cowboy</string>
+      <string _locid="301038">Guard Cowboys</string>
+      <string _locid="301039">ZP Train Station: Area</string>
+      <string _locid="301040">Fence</string>
+      <string _locid="301041">ZP Prop Wooden Fence</string>
+      <string _locid="301042">Return back to depot</string>
+      <string _locid="301043">&lt;color=1.0, 0.0, 0.0&gt;Despawns Armored train.&lt;/color&gt;</string>
+      <string _locid="301044">ZP Prop Barn</string>
+      <string _locid="301045">ZP Train Stopper</string>
+      <string _locid="301046">ZP Invisible Trading Post</string>
+      <string _locid="301047">Armored Train Test</string>
+      <string _locid="301048">Armored Train Test Description</string>
+      <string _locid="301049">Armored Train Test Loading</string>
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
@@ -1061,13 +1123,13 @@
       <!-- Cowboy Strings added by AssertiveWall -->
       <!-- ===================================== -->
       <string _locid="400060">Armored Stagecoach</string>
-      <string _locid="400061">zp Armored Stagecoach</string>
+      <string _locid="400061">ZP Armored Stagecoach</string>
       <string _locid="400062">A heavy stagecoach armed to take on the wild west.</string>
-      <string _locid="400063">Mounted Outlaw</string>
-      <string _locid="400064">zp Mounted Outlaw</string>
-      <string _locid="400065">A mounted outlaw hailing from the wild west.</string>
+      <string _locid="400063">Mounted Cowboy</string>
+      <string _locid="400064">ZP Mounted Cowboy</string>
+      <string _locid="400065">A Mounted Cowboy hailing from the wild west.</string>
       <string _locid="400066">Sheriff's Office</string>
-      <string _locid="400067">zp Sheriff Office</string>
+      <string _locid="400067">ZP Sheriff Office</string>
       <string _locid="400068">An office and jailhouse capable of holding outlaws.</string>
       <string _locid="400069">Doc Holliday</string>
       <string _locid="400070">zp Doc Holliday</string>

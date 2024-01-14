@@ -1,0 +1,500 @@
+﻿<Window x:Class="aoe3wpfg.uipregamenew" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:aoe3wpfg" mc:Ignorable="d" Style="{StaticResource WindowStyle}"
+        local:Age3Accessibility.Text="$$91591$$Main Menu. Use mouse and click, or arrow keys and enter to select options"
+        local:Age3Accessibility.Mode="Menu"
+        local:Age3Navigation.WindowGroupID="MainMenu">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="DarkGradient" StartPoint="0,1" EndPoint="0,0">
+            <GradientStop Color="#80000000" Offset="0" />
+            <GradientStop Color="#00000000" Offset="0.2" />
+            <GradientStop Color="#00000000" Offset="0.8" />
+            <GradientStop Color="#80000000" Offset="1" />
+        </LinearGradientBrush>
+        <Style TargetType="ToolTip" x:Key="ProfileTooltips">
+            <Setter Property="DataContext" Value="{StaticResource optionsProxy}"/>
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="MaxWidth" Value="500"/>
+            <Setter Property="FontFamily" Value="Open Sans"/>
+            <Setter Property="Foreground" Value="#d6c894"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="HasDropShadow" Value="True"/>
+            <Setter Property="VerticalOffset" Value="15"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Opacity" Value="{Binding Path=OptionTooltipBackgroundAlpha}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToolTip">
+                        <Border x:Name="Border" Background="#34221c" BorderBrush="#6f683f" BorderThickness="1" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                            <ContentPresenter Margin="7,5,7,5" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasDropShadow" Value="true">
+                                <Setter TargetName="Border" Property="CornerRadius" Value="4"/>
+                                <Setter TargetName="Border" Property="SnapsToDevicePixels" Value="true"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Resources>
+                <Style TargetType="ContentPresenter">
+                    <Style.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap" />
+                        </Style>
+                    </Style.Resources>
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <DataTemplate DataType="{x:Type local:DLCPackViewModel}">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="auto" Margin="0,5,0,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Rectangle Grid.Row="0" Grid.RowSpan="3" Fill="Black" Opacity="0.75"/>
+                <Rectangle Grid.Row="0" VerticalAlignment="Top" Height="2" Fill="#dbc564"/>
+                <Rectangle Grid.Row="0" VerticalAlignment="Bottom" Height="2" Fill="#dbc564"/>
+                <Rectangle Grid.Row="2" VerticalAlignment="Bottom" Height="2" Fill="#dbc564"/>
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,10">
+                    <Image Width="100" Source="{Binding DLCPackIcon}"/>
+                    <TextBlock x:Name="DLC_Title" Text="{Binding DLCPackName.Text}" Style="{StaticResource RegularTextBlockStyle}" Width="250" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,5,0,0" />
+                </StackPanel>
+
+                <TextBlock x:Name="DLC_Contents" local:Age3StringDB.StringId="49324" Grid.Row="1" Style="{StaticResource RegularTextBlockStyle}" Width="360" FontSize="18" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,8" />
+
+                <ListView Grid.Row="2" SelectionMode="Single" ItemsSource="{Binding DLCPackItems}" HorizontalContentAlignment="Center" Margin="0,0,0,10">
+                    <ListView.Resources>
+                        <Style TargetType="GridViewColumnHeader">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </Style>
+                    </ListView.Resources>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name" />
+                        </GridView>
+                    </ListView.View>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="{Binding SubHeadingName.Text}" Grid.Row="0" Grid.Column="0" Style="{StaticResource RegularTextBlockStyle}" Foreground="#dbc564" FontSize="18" />
+                                            <TextBlock Text="{Binding ListItemName.Text}" Grid.Row="0" Grid.Column="1" Style="{StaticResource RegularTextBlockStyle}" FontSize="16"  TextAlignment="Center" />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type local:ParticipationEventViewModel}">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="auto" Margin="0,5,0,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="280"/>
+                </Grid.RowDefinitions>
+
+                <Rectangle Grid.Row="0" Grid.RowSpan="2" Fill="#FF2F1309" Opacity="0.85"/>
+                <Rectangle Grid.Row="0" VerticalAlignment="Top" Height="2" Fill="#dbc564"/>
+                <Rectangle Grid.Row="0" VerticalAlignment="Bottom" Height="2" Fill="#dbc564"/>
+                <Rectangle Grid.Row="1" VerticalAlignment="Bottom" Height="2" Fill="#dbc564"/>
+                <Rectangle Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Left" Width="2" Fill="#dbc564"/>
+                <Rectangle Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Right" Width="2" Fill="#dbc564"/>
+
+                <!-- Panel Title -->
+                <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,6,0,0">
+                    <TextBlock Style="{StaticResource MainTitleTextBlockStyle}" local:Age3StringDB.StringId="55807" FontSize="25" Width="500" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="auto">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="190"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="auto" Margin="5,20,5,10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="84"/>
+                                    <RowDefinition Height="120"/>
+                                    <RowDefinition Height="70"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Complete a match every week to contribute to the goal -->
+                                <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
+                                    <TextBlock Style="{StaticResource RegularTextBlockStyle}" Text="{Binding EventDescription}" FontSize="17" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" />
+                                </StackPanel>
+
+                                <!-- Time Remaining -->
+                                <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,0">
+                                    <TextBlock Style="{StaticResource RegularTextBlockStyle}" local:Age3StringDB.StringId="55811" FontSize="17" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" />
+                                    <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
+                                        <TextBlock Style="{StaticResource RegularTextBlockStyle}" Text="{Binding CountdownDays}" FontSize="17" TextWrapping="Wrap" TextAlignment="Left" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                                        <TextBlock Style="{StaticResource RegularTextBlockStyle}" Text="{Binding CountdownHours}" FontSize="17" TextWrapping="Wrap" TextAlignment="Left" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                                        <TextBlock Style="{StaticResource RegularTextBlockStyle}" Text="{Binding CountdownMins}" FontSize="17" TextWrapping="Wrap" TextAlignment="Left" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                                        <TextBlock Style="{StaticResource RegularTextBlockStyle}" Text="{Binding CountdownSecs}" FontSize="17" TextWrapping="Wrap" TextAlignment="Left" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <!-- Phase status icons -->
+                                <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" ToolTip="{Binding PhaseStatusDescription}">
+                                    <Grid Margin="2,0,2,0">
+                                        <Image Width="50" Source="pack://siteoforigin:,,,/resources/art/challenges/event_empty.png" Visibility="{Binding IsPhase1Available, Converter={StaticResource BoolToVisibility}}"/>
+                                        <Image Width="50" Source="pack://siteoforigin:,,,/resources/images/icons/hp_cp/hp_cp_send_green_check.png" Visibility="{Binding IsPhase1Achieved, Converter={StaticResource BoolToVisibility}}"/>
+                                        <Image Width="50" Source="pack://siteoforigin:,,,/resources/images/icons/hp_cp/hp_cp_send_x.png" Visibility="{Binding IsPhase1Failed, Converter={StaticResource BoolToVisibility}}"/>
+                                        <Image Width="50" Source="pack://siteoforigin:,,,/resources/images/hud/imagebutton_glow.png" Visibility="{Binding IsPhase1Active, Converter={StaticResource BoolToVisibility}}"/>
+                                    </Grid>
+                                    <Grid Margin="2,0,2,0">
+                                        <Image Width="50" Source="pack://siteoforigin:,,,/resources/art/challenges/event_empty.png" Visibility="{Binding IsPhase2Available, Converter={StaticResource BoolToVisibility}}"/>
+                                        <Image Width="50" Source="pack://siteoforigin:,,,/resources/images/icons/hp_cp/hp_cp_send_green_check.png" Visibility="{Binding IsPhase2Achieved, Converter={StaticResource BoolToVisibility}}"/>
+                                        <Image Width="50" Source="pack://siteoforigin:,,,/resources/images/icons/hp_cp/hp_cp_send_x.png" Visibility="{Binding IsPhase2Failed, Converter={StaticResource BoolToVisibility}}"/>
+                                        <Image Width="50" Source="pack://siteoforigin:,,,/resources/images/hud/imagebutton_glow.png" Visibility="{Binding IsPhase2Active, Converter={StaticResource BoolToVisibility}}"/>
+                                    </Grid>
+                                    <Grid Margin="2,0,2,0">
+                                        <Image Width="50" Source="pack://siteoforigin:,,,/resources/art/challenges/event_empty.png" Visibility="{Binding IsPhase3Available, Converter={StaticResource BoolToVisibility}}"/>
+                                        <Image Width="50" Source="pack://siteoforigin:,,,/resources/images/icons/hp_cp/hp_cp_send_green_check.png" Visibility="{Binding IsPhase3Achieved, Converter={StaticResource BoolToVisibility}}"/>
+                                        <Image Width="50" Source="pack://siteoforigin:,,,/resources/images/icons/hp_cp/hp_cp_send_x.png" Visibility="{Binding IsPhase3Failed, Converter={StaticResource BoolToVisibility}}"/>
+                                        <Image Width="50" Source="pack://siteoforigin:,,,/resources/images/hud/imagebutton_glow.png" Visibility="{Binding IsPhase3Active, Converter={StaticResource BoolToVisibility}}"/>
+                                    </Grid>
+                                    <Grid Margin="2,0,2,0">
+                                        <Image Width="50" Source="pack://siteoforigin:,,,/resources/art/challenges/event_empty.png" Visibility="{Binding IsPhase4Available, Converter={StaticResource BoolToVisibility}}"/>
+                                        <Image Width="50" Source="pack://siteoforigin:,,,/resources/images/icons/hp_cp/hp_cp_send_green_check.png" Visibility="{Binding IsPhase4Achieved, Converter={StaticResource BoolToVisibility}}"/>
+                                        <Image Width="50" Source="pack://siteoforigin:,,,/resources/images/icons/hp_cp/hp_cp_send_x.png" Visibility="{Binding IsPhase4Failed, Converter={StaticResource BoolToVisibility}}"/>
+                                        <Image Width="50" Source="pack://siteoforigin:,,,/resources/images/hud/imagebutton_glow.png" Visibility="{Binding IsPhase4Active, Converter={StaticResource BoolToVisibility}}"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+
+                        <!-- Thermometer -->
+                        <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                            <Grid VerticalAlignment="Bottom" >
+                                <Image Height="280" Source="pack://siteoforigin:,,,/resources/art/challenges/CommunityGoal_Panel.png"/>
+
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="{Binding ProgressPercent}">
+                                    <Image VerticalAlignment="Bottom" Height="280" Source="pack://siteoforigin:,,,/resources/art/challenges/CommunityGoal_Fill.png"/>
+                                </StackPanel>
+
+                                <Image Height="280" Source="pack://siteoforigin:,,,/resources/art/challenges/CommunityGoal_GlassOverlay.png"/>
+
+                                <Image Width="52" Margin="0,-228,0,0" Source="pack://siteoforigin:,,,/resources/art/challenges/CommunityGoal_Star.png" Visibility="{Binding IsGoalCompleted, Converter={StaticResource BoolToVisibility}}"/>
+                            </Grid>
+                        </StackPanel>
+
+                        <!-- Reward -->
+                        <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6,0,6,0">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Image Width="172" Source="{Binding RewardIcon}" ToolTip="{Binding RewardDescription}"/>
+                            </StackPanel>
+                            <local:Age3Button x:Name="ParticipationEvent_LeaderboardBtn" Style="{StaticResource MainMenuButton}" Margin="0,5,0,0" Command="{Binding LeaderboardCommand, Source={x:Static local:Age3ParticipationEventDisplayViewModel.Singleton}}" Content="{Binding LeaderboardButtonText}">
+                                <Button.ToolTip>$$55823$$View the leaderboard for this event</Button.ToolTip>
+                            </local:Age3Button>
+                        </StackPanel>
+                    </Grid>
+
+                </StackPanel>
+
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type local:FreePlayInfoViewModel}">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="auto" Margin="0,5,0,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Rectangle Grid.Row="0" Grid.RowSpan="5" Fill="#FF2F1309" Opacity="0.85"/>
+                <Rectangle Grid.Row="0" VerticalAlignment="Top" Height="2" Fill="#dbc564"/>
+                <Rectangle Grid.Row="0" VerticalAlignment="Bottom" Height="2" Fill="#dbc564"/>
+                <Rectangle Grid.Row="4" VerticalAlignment="Bottom" Height="2" Fill="#dbc564"/>
+                <Rectangle Grid.Row="0" Grid.RowSpan="5" HorizontalAlignment="Left" Width="2" Fill="#dbc564"/>
+                <Rectangle Grid.Row="0" Grid.RowSpan="5" HorizontalAlignment="Right" Width="2" Fill="#dbc564"/>
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,14,0,10">
+                    <TextBlock Style="{StaticResource MainTitleTextBlockStyle}" local:Age3StringDB.StringId="55788" FontSize="25" Width="370" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Margin="0,0,0,0" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,10">
+                    <TextBlock Style="{StaticResource RegularTextBlockStyle}" local:Age3StringDB.StringId="55789" Width="530" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Margin="0,0,0,0" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,10">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0">
+                        <Image Width="100" Source="{Binding FreePlayCiv1Icon}"/>
+                        <TextBlock Text="{Binding FreePlayCiv1Name.Text}" Style="{StaticResource RegularTextBlockStyle}" Width="170" FontSize="18" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0">
+                        <Image Width="100" Source="{Binding FreePlayCiv2Icon}"/>
+                        <TextBlock Text="{Binding FreePlayCiv2Name.Text}" Style="{StaticResource RegularTextBlockStyle}" Width="170" FontSize="18" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0">
+                        <Image Width="100" Source="{Binding FreePlayCiv3Icon}"/>
+                        <TextBlock Text="{Binding FreePlayCiv3Name.Text}" Style="{StaticResource RegularTextBlockStyle}" Width="170" FontSize="18" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0" />
+                    </StackPanel>
+                </StackPanel>
+
+                <TextBlock x:Name="FreePlay_NextRotation" Text="{Binding NextRotationCountdown}" Grid.Row="3" Style="{StaticResource RegularTextBlockStyle}" Width="530" FontSize="18" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,8" />
+
+                <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,10">
+                    <local:Age3Button x:Name="FreePlay_PlayBtn" Style="{StaticResource MainMenuButton}" Margin="15,0,15,0" Width="200" Command="{Binding PlayCommand, Source={x:Static local:Age3FreePlayDisplayViewModel.Singleton}}" Content="{Binding PlayButtonText}">
+                        <Button.ToolTip>$$55817$$Play a game.</Button.ToolTip>
+                    </local:Age3Button>
+                    <local:Age3Button x:Name="FreePlay_StoreBtn" Style="{StaticResource MainMenuButton}" Margin="15,0,15,0" Width="200" Command="{Binding ViewStoreCommand, Source={x:Static local:Age3FreePlayDisplayViewModel.Singleton}}" Content="{Binding StoreButtonText}">
+                        <Button.ToolTip>$$55782$$Visit the store page to purchase the game!</Button.ToolTip>
+                    </local:Age3Button>
+                </StackPanel>
+
+            </Grid>
+        </DataTemplate>
+
+    </Window.Resources>
+    <Viewbox Style="{StaticResource ViewboxMain}" KeyboardNavigation.DirectionalNavigation="Contained">
+        <Grid x:Name="mainGridPanel" Width="1920" Height="1080">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="245"/>
+                <ColumnDefinition Width="7"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="420"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Grid.ColumnSpan="4" x:Name="decoGrid">
+                <Image x:Name="Flags2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Height="190" Width="1250" Source="pack://siteoforigin:,,,/resources/images/mods/lny2022/lny22_deco_flags2.png" />
+            </Grid>
+
+            <Grid Grid.Column="2" x:Name="flagGrid" Height="290" Width="512" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,0,0,0">
+                <Image x:Name="Flag" Height="290" Width="512" Source="pack://siteoforigin:,,,/resources/images/mods/lny2022/lny22_deco_flag.png" />
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="202,20,0,0" Width="260" >
+                    <TextBlock Style="{StaticResource lny22_MainMenuHeaders}" FontSize="36" Width="240" TextWrapping="Wrap" TextAlignment="Center" Height="40">
+                        Age of
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource lny22_MainMenuHeaders}" FontSize="48" Width="240" TextWrapping="Wrap" TextAlignment="Center">
+                        Pirates
+                    </TextBlock>
+                    <Grid Width="200" Height="25" Background="{StaticResource lny22_ComboBoxStrokeGradient}">
+                        <TextBlock Style="{StaticResource lny22_MainMenuHeaders}" Foreground="#58130f" FontSize="18" Width="240" TextWrapping="Wrap" TextAlignment="Center" Margin="0,4,0,0">
+                        Naval Mod
+                        </TextBlock>
+                    </Grid>
+                    
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="0" x:Name="menuStrip">
+                <Rectangle Fill="{StaticResource main_menu_bg}" />
+
+                <Rectangle Fill="{StaticResource DarkGradient}" HorizontalAlignment="Left" Width="245" />
+
+                <Frame Name="ButtonFrame" HorizontalAlignment="Left" Width="250" Grid.Column="0" Focusable="False" NavigationUIVisibility="Hidden" Source="/pages/uipregamenew/MainMenuOptions.xaml" />
+
+                <Image x:Name="Mainmenu_Logo" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,20,0,0" Height="285" Width="230" Source="pack://siteoforigin:,,,/resources/aoe3_de_logo.png" />
+
+                <TextBlock x:Name="VersionText" VerticalAlignment="Bottom" HorizontalAlignment="Center" Padding="10" FontFamily="Trajan Pro" FontSize="20" Foreground="#888">Version Number</TextBlock>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Rectangle Width="6" HorizontalAlignment="Left" Margin="0,-5,0,-5" Fill="{StaticResource PanelBGStrokeGradientVertical}" Stroke="Black" StrokeThickness="2" />
+            </Grid>
+            <Grid Grid.Column="2">
+                <Button DataContext="{Binding LocalUser, Source={x:Static local:Age3MPDataCache.Current}}" HorizontalAlignment="Right" VerticalAlignment="Top"
+                        Margin="0,15"
+                        Content="{Binding Avatar}"
+                        Width="100" Height="100"
+                        Style="{StaticResource AvatarButton}" 
+                        Command="{Binding Source={x:Static local:Age3MPCommands.NavigateToAvatarPicker}}">
+                    <Button.ToolTip>$$72631$$Click to change profile picture.</Button.ToolTip>
+                </Button>
+                <Grid DataContext="{StaticResource uiSettings}" IsHitTestVisible="false" Margin="0,2,86,0" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="{Binding NewAvatarNotificationVisibility, NotifyOnSourceUpdated=True}">
+                    <Ellipse Width="20" Height="20" Fill="Red"/>
+                    <TextBlock FontFamily="Arial" Margin="0,1,0,0" FontWeight="Bold" Width="22" Height="23" FontSize="20" Foreground="White" TextAlignment="Center" Text="!" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="3">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0" Width="380" >
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <StackPanel.Resources>
+                                <Style x:Name="NormalButton" TargetType="{x:Type Button}" BasedOn="{StaticResource MainMenuButtonClean}">
+                                </Style>
+                                <Style x:Name="Age3Button" TargetType="{x:Type local:Age3Button}" BasedOn="{StaticResource MainMenuButtonClean}">
+                                </Style>
+                            </StackPanel.Resources>
+                            <UniformGrid Columns="1" Height="100" Margin="0,10">
+                                <!-- Grid to keep these lined up with the avatar -->
+                                <Button DataContext="{Binding LocalUser, Source={x:Static local:Age3MPDataCache.Current}}" Command="{Binding ViewProfile}" CommandParameter="{Binding }"  Visibility="Visible" ToolTip="{Binding ViewProfile.Description}">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{StaticResource multiplayer_profile}"/>
+                                            <TextBlock Text="{Binding Alias}" Style="{StaticResource CampaignTitleTextBlockStyle}" FontSize="20" MaxWidth="320" TextTrimming="CharacterEllipsis" VerticalAlignment="Bottom"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+                                <Border Background="{StaticResource wood_tile}" CornerRadius="4" BorderBrush="{StaticResource PanelBGStrokeGradientVertical}" BorderThickness="2">
+                                    <Grid Margin="5" HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="28*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <local:Age3Button x:Name="XBLSignIn" Margin="0" Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" Height="36" MinWidth="0" ConsoleCommand="XBLSignInOut" >
+                                            <Button.Content>
+                                                <Image Source="{StaticResource xbox_platform_logo}"/>
+                                            </Button.Content>
+                                            <Button.ToolTip>$$71032$$Sign in to Xbox Live.</Button.ToolTip>
+                                        </local:Age3Button>
+                                        <TextBlock Grid.Column="1" x:Name="XBLStatus" Text="$$71031$$Xbox Live Sign In" Style="{StaticResource CampaignTitleTextBlockStyle}" HorizontalAlignment="Stretch" FontSize="20" TextAlignment="Center" Margin="0,6" Grid.ColumnSpan="2" />
+                                    </Grid>
+                                </Border>
+                            </UniformGrid>
+
+                            <!--Current Limited Time Challenge Button-->
+                            <local:Age3Button Grid.Row="0" x:Name="ChallengeButton" Style="{StaticResource MainMenuButton}" Content="$$72646$$Event Challenges" ConsoleCommand="showChallengeEvents()">
+                                <Button.ToolTip>$$72665$$Select to open event challenges.</Button.ToolTip>
+                            </local:Age3Button>
+
+                            <!--Challenge Events Screen button-->
+                            <StackPanel>
+                                <local:Age3Button Grid.Row="0" x:Name="ChallengeScreenButton" Margin="0,10,0,0" Style="{StaticResource MainMenuButton}" Content="[LOC] Challenges" ConsoleCommand="openChallengesScreen()">
+                                    <Button.ToolTip>$$72665$$Select to open event challenges.</Button.ToolTip>
+                                </local:Age3Button>
+                                <Border x:Name="CurrentEventCountDownTimerSection" Visibility="Collapsed" Margin="0,2,0,0">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="DarkRed" Opacity="0.7" />
+                                    </Border.Background>
+                                    <Grid>
+                                        <Rectangle VerticalAlignment="Top" Height="2" Fill="#dbc564"/>
+                                        <TextBlock x:Name="CurrentEventCountDownTimerText" Style="{StaticResource CampaignTitleTextBlockStyle}" HorizontalAlignment="Stretch" TextAlignment="Center" TextWrapping="Wrap" FontSize="20" Margin="0,6" Text="$$111384$$Event ends in: %1!d! Days, %2!d! Hours, %3!02d! Minutes, %4!02d! Seconds" />
+                                        <Rectangle VerticalAlignment="Bottom" Height="2" Fill="#dbc564"/>
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" x:Name="BanMessageTextBox" Visibility="Collapsed">
+                                <TextBlock Background="{StaticResource main_menu_bg}" Margin="0,10" Padding="40,10" x:Name="BanMessageText" Style="{StaticResource MainTitleTextBlockStyle}" Text="You have been banned for 1 day. This is a really long message to test that." TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"  Foreground="#fff" FontSize="16" TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <!-- Box that advertises current DLC pack(s) -->
+                            <Grid x:Name="DLC_Panel" Visibility="{Binding HasUnboughtOrRecentDLC, Converter={StaticResource BoolToVisibility}, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="auto" Margin="0,10,0,0" >
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Width="380" Height="60">
+                                    <Rectangle Fill="#FF2F1309" Opacity="0.85"/>
+                                    <Image Source="resources/dlcbanner_generic.png" Opacity="1.0"/>
+                                    <Rectangle VerticalAlignment="Top" Height="2" Fill="#FFFFEC99"/>
+                                    <Rectangle VerticalAlignment="Bottom" Height="2" Fill="#FFFFEC99"/>
+                                    <TextBlock Style="{StaticResource MainTitleTextBlockStyle}" Text="{Binding DLCPanelTitle.Text, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" FontSize="25" Width="370" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Margin="0,0,0,0" />
+                                </Grid>
+
+                                <ContentPresenter Grid.Row="1" Content="{Binding DLCPack, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" Margin="0,0,0,0"/>
+
+                                <local:Age3Button Grid.Row="2" x:Name="DLC_StoreBtn" Visibility="{Binding HasUnboughtDLC, Converter={StaticResource BoolToVisibility}, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" Command="{Binding GoToDLCStore, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" Style="{StaticResource MainMenuButton}" Content="$$49331$$View Store Page">
+                                    <Button.ToolTip>$$49332$$Select to open the store page for this DLC.</Button.ToolTip>
+                                </local:Age3Button>
+                                <local:Age3Button Grid.Row="3" x:Name="DLC_ExtraBtn" Visibility="{Binding HasUnboughtDLC, Converter={StaticResource FlippedBoolToVisibility}, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" Command="{Binding DLCExtraBtn, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" Style="{StaticResource MainMenuButton}" Content="$$105998$$Historical Maps"/>
+                            </Grid>
+
+                            <!-- FreePlay info -->
+                            <Grid x:Name="FreePlay_Panel" Visibility="{Binding IsFreePlayEnabled, Converter={StaticResource BoolToVisibility}, Source={x:Static local:Age3FreePlayDisplayViewModel.Singleton}}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="auto" Margin="-160,5,0,0" >
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Width="540">
+                                    <ContentPresenter Content="{Binding FreePlayInfo, Source={x:Static local:Age3FreePlayDisplayViewModel.Singleton}}" Margin="0"/>
+                                </Grid>
+                            </Grid>
+
+                            <!-- Participation Event info -->
+                            <Grid x:Name="ParticipationEvent_Panel" Visibility="{Binding IsParticipationEventEnabled, Converter={StaticResource BoolToVisibility}, Source={x:Static local:Age3ParticipationEventDisplayViewModel.Singleton}}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="auto" Margin="-160,5,0,0" >
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Width="540">
+                                    <ContentPresenter Content="{Binding ParticipationEvent, Source={x:Static local:Age3ParticipationEventDisplayViewModel.Singleton}}" Margin="0"/>
+                                </Grid>
+                            </Grid>
+
+                            <!-- Mod Promo -->
+                            <Grid x:Name="ModPromo" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="auto" Margin="0,5,0,0" Visibility="Collapsed">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Width="380" Height="60">
+                                    <Rectangle Fill="#FF2F1309" Opacity="0.85"/>
+                                    <Image Source="resources/modbanner_25y.png" Opacity="1.0"/>
+                                    <Rectangle VerticalAlignment="Top" Height="2" Fill="#FFFFEC99"/>
+                                    <Rectangle VerticalAlignment="Bottom" Height="2" Fill="#FFFFEC99"/>
+                                    <TextBlock x:Name="ModPromoTitle" Style="{StaticResource MainTitleTextBlockStyle}" Text="$$55030$$Spring Event" FontSize="20" Width="370" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Margin="0" />
+                                </Grid>
+
+                                <Grid Grid.Row="1" Width="380" Height="60">
+                                    <Rectangle Fill="Black" Opacity="0.85"/>
+                                    <Rectangle VerticalAlignment="Top" Height="2" Fill="#FFFFEC99"/>
+                                    <Rectangle VerticalAlignment="Bottom" Height="2" Fill="#FFFFEC99"/>
+                                    <TextBlock x:Name="ModPromoDescription" Style="{StaticResource RegularTextBlockStyle}" FontSize="16" Width="370" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Margin="0" Text="$$55531$${0} is now available in the mods browser!" />
+                                </Grid>
+
+                                <StackPanel Grid.Row="2">
+                                    <local:Age3Button x:Name="Button_DLMOD" Style="{StaticResource MainMenuButton}" Content="$$49924$$Download Mod" Visibility="Collapsed">
+                                        <Button.ToolTip>$$49925$$Select to download this mod.</Button.ToolTip>
+                                    </local:Age3Button>
+                                    <local:Age3Button x:Name="Button_Maintain" Style="{StaticResource MainMenuButton}" Content="$$49926$$Update/Repair Mod" Visibility="Collapsed">
+                                        <Button.ToolTip>$$49927$$This mod requires an update or repairing.</Button.ToolTip>
+                                    </local:Age3Button>
+                                    <local:Age3Button x:Name="Button_Play" Style="{StaticResource MainMenuButton}" Content="$$49928$$Play Winter Wonderland" Visibility="Collapsed">
+                                        <Button.ToolTip>$$49929$$Select to play this mod.</Button.ToolTip>
+                                    </local:Age3Button>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel x:Name="DownloadingModsSection" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,0,0" Width="380" Height="auto" Visibility="Collapsed">
+                        <StackPanel.Background>
+                            <SolidColorBrush Color="Black" Opacity="0.75"/>
+                        </StackPanel.Background>
+                        <TextBlock x:Name="DownloadingModsText" Width="360" Margin="0,5,0,5" Style="{StaticResource subInfoLeft}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">[Loc] Downloading 1 of 4 Mods</TextBlock>
+                        <local:Age3Button x:Name="ManageModsButton" Margin="0" Style="{StaticResource MainMenuButton}" Content="$$72766$$Manage Mods" ConsoleCommand="modeEnter('Mods')">
+                            <Button.ToolTip>$$49250$$Select to manage mods.</Button.ToolTip>
+                        </local:Age3Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="2" Grid.ColumnSpan="2" x:Name="demoMessage" Margin="700,880,0,0" Visibility="Hidden">
+                <Rectangle Fill="{StaticResource main_menu_bg}" />
+                <TextBlock x:Name="demoMessageText" Style="{StaticResource MainTitleTextBlockStyle}" VerticalAlignment="Center" MaxWidth="750" TextWrapping="Wrap"
+                                       Text="$$71040$$Pre-Release Software. This game is in a pre-release stage of development. This means that some parts of the game, including features (like chat and multiplayer), might not function as expected (or might not function at all). The game might even crash. Because this is a pre-release game, Microsoft and the developer do not commit to providing customer support for the game." />
+            </Grid>
+        </Grid>
+    </Viewbox>
+</Window>

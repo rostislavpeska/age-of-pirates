@@ -153,6 +153,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
@@ -198,6 +199,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -240,6 +242,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -282,6 +285,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -2324,6 +2328,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
@@ -3112,6 +3117,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
@@ -4645,6 +4651,10 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatHoopThrower" culture="none" newname="300516">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatHoopThrowerProxy" culture="none" newname="300516">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatHoopThrowerPop" culture="none" newname="300516">
+      </effect>
       <effect mergemode="add" type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300584">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatVeniceGuard" culture="none" newname="300828">
@@ -5491,6 +5501,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -5960,6 +5971,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
@@ -6686,6 +6698,8 @@
       <effect type="TechStatus" status="obtainable">DEIndianFriendshipScientists</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyScientists</effect>
+      <effect type="TechStatus" status="obtainable">zpMoneyFactory</effect>
+      <effect type="TechStatus" status="obtainable">zpArmoredTrainTech</effect>
     </effects>
   </tech>
   <tech name ="zpPickScientist" type ="Normal">
@@ -6738,6 +6752,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="obtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -7000,11 +7015,20 @@
       <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatHoopThrowerProxy</target>
       </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatHoopThrowerPop</target>
+      </effect>
       <effect type="SetName" proto="zpNatHoopThrower" culture="none" newname="300514">
       </effect>
       <effect type="SetName" proto="zpNatHoopThrower" culture="none" newname="300516" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="SetName" proto="zpNatHoopThrowerProxy" culture="none" newname="300514">
+      </effect>
+      <effect type="SetName" proto="zpNatHoopThrowerProxy" culture="none" newname="300516" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatHoopThrowerPop" culture="none" newname="300514">
+      </effect>
+      <effect type="SetName" proto="zpNatHoopThrowerPop" culture="none" newname="300516" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatHoopThrower</target>
@@ -7013,13 +7037,7 @@
         <target type="ProtoUnit">zpNatHoopThrowerProxy</target>
       </effect>
       <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">DEHoopThrowerBurningAttachmentStandard</target>
-      </effect>
-      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">DEHoopThrowerBurningAttachmentFlameThrowerAttack</target>
-      </effect>
-      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">deHoopThrowerBurningAttachmentRocketAttack</target>
+        <target type="ProtoUnit">zpNatHoopThrowerPop</target>
       </effect>
     </effects>
   </tech>
@@ -7053,20 +7071,23 @@
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatHoopThrowerProxy</target>
       </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatHoopThrowerPop</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatHoopThrowerPop</target>
+      </effect>
       <effect type="SetName" proto="zpNatHoopThrower" culture="none" newname="300515">
       </effect>
       <effect type="SetName" proto="zpNatHoopThrowerProxy" culture="none" newname="300515">
       </effect>
+      <effect type="SetName" proto="zpNatHoopThrowerPop" culture="none" newname="300515">
+      </effect>
       <effect type="SetName" proto="zpNatHoopThrower" culture="none" newname="300516" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">DEHoopThrowerBurningAttachmentStandard</target>
+      <effect type="SetName" proto="zpNatHoopThrowerProxy" culture="none" newname="300516" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">DEHoopThrowerBurningAttachmentFlameThrowerAttack</target>
-      </effect>
-      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">deHoopThrowerBurningAttachmentRocketAttack</target>
+      <effect type="SetName" proto="zpNatHoopThrowerPop" culture="none" newname="300516" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>
@@ -7683,7 +7704,7 @@
       <techstatus status="Active">HCNativeTreaties</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatHoopThrower" relativity="Absolute">
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatHoopThrowerProxy" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -7698,7 +7719,7 @@
       <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatHoopThrower" relativity="Absolute">
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatHoopThrowerProxy" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -8790,6 +8811,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
@@ -10171,6 +10193,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
@@ -10454,6 +10477,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
@@ -10705,7 +10729,13 @@
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpMountedOutlaw</target>
-      </effect>    
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpWildWestWhiskeyFactory</effect>
+      <effect type="TechStatus" status="obtainable">zpWildWestCows</effect>
+      <effect type="TechStatus" status="obtainable">zpWildWestFastColts</effect>
+      <effect type="TechStatus" status="obtainable">zpWildWestMilitia</effect>
+      <effect type="TechStatus" status="obtainable">zpWildWestVeteranCowboys</effect>
+      <effect type="TechStatus" status="obtainable">zpWildWestGuardCowboys</effect>
     </effects>
   </tech>
   <tech name="zpTransformArmoredTrain" type="Normal">
@@ -10714,20 +10744,375 @@
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="TransformUnit" toprotoid="zpTradeUnitTest" fromprotoid="Travois">
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainGun" fromprotoid="zpArmoredTrainGunMove">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainGunCarStatic" fromprotoid="zpArmoredTrainGunCarMove">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainBarracksStatic" fromprotoid="zpArmoredTrainBarracksMove">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainCoalCarStatic" fromprotoid="zpArmoredTrainCoalCarMove">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainEngineStatic" fromprotoid="zpArmoredTrainEngineMove">
       </effect>
     </effects>
+    
   </tech>
   <tech name="zpTransformArmoredTrainBack" type="Normal">
-    <dbid>40380</dbid>
+    <dbid>40381</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="TransformUnit" toprotoid="Travois" fromprotoid="zpTradeUnitTest">
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainGunMove" fromprotoid="zpArmoredTrainGun">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainGunCarMove" fromprotoid="zpArmoredTrainGunCarStatic">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainBarracksMove" fromprotoid="zpArmoredTrainBarracksStatic">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainCoalCarMove" fromprotoid="zpArmoredTrainCoalCarStatic">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainEngineMove" fromprotoid="zpArmoredTrainEngineStatic">
       </effect>
     </effects>
   </tech>
+  <tech name="zpConsulateScientistGortz" type="Normal">
+    <dbid>40382</dbid>
+    <displaynameid>300995</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\scientists_small.png</icon>
+    <rollovertextid>300996</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMachineGun</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpPickScientist</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpPickScientist">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpMoneyFactory" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpArmoredTrainTech" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpMoneyFactory" type="Normal">
+    <dbid>40383</dbid>
+    <displaynameid>300997</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\money_factory.png</icon>
+    <rollovertextid>71286</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Factory</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="FactoryWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpArmoredTrainTech" type="Normal">
+    <dbid>40384</dbid>
+    <displaynameid>300999</displaynameid>
+    <cost resourcetype="Wood">2500.0000</cost>
+    <cost resourcetype="Gold">2500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\armored_train.png</icon>
+    <rollovertextid>301000</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+      <techstatus status="Active">zpMoneyFactory</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" action="SpawnArmoredTrain" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="RevealLOS" relativity="Absolute">
+        <target type="ProtoUnit">AbstractTradeRouteBuilding</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgrade1Enable</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgrade2Enable</effect>
+    </effects>
+  </tech>
+  <tech name="zpTurnConsulateOffScientistsLand" type="Normal">
+    <dbid>40385</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateScientistGortz</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="obtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>  
+    
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientistsLand</effect>
+    </effects>
+  </tech>
+  <tech name="zpArmoredTrainEnableShadow" type="Normal">
+    <dbid>40386</dbid>
+    <researchpoints>0.5000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpArmoredTrainDisableShadow" type="Normal">
+    <dbid>40387</dbid>
+    <researchpoints>0.5000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpArmoredTrainUnlockShadow" type="Normal">
+    <dbid>40388</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpArmoredTrainLevy" type="Normal">
+    <dbid>40389</dbid>
+    <displaynameid>301013</displaynameid>
+    <researchpoints>2.5000</researchpoints>
+    <cost resourcetype="Food">240.0000</cost>
+    <cost resourcetype="Gold">440.0000</cost>
+    <rollovertextid>301014</rollovertextid>
+    <status>UNOBTAINABLE</status>
+  </tech>
+  <tech name="zpWildWestWhiskeyFactory" type="Normal">
+    <dbid>40390</dbid>
+    <displaynameid>301025</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\whiskey_factory.png</icon>
+    <rollovertextid>301026</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" action="Gather" amount="1.20" subtype="WorkRate" unittype="Plantation" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="TextOutput">41916</effect>
+      <effect type="Data2" action="Gather" amount="1.20" subtype="WorkRateSpecific" resource="Gold" unittype="ypRicePaddy" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.20" subtype="WorkRateSpecific" resource="Gold" unittype="deField" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.20" subtype="WorkRateSpecific" resource="Gold" unittype="deHacienda" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpWildWestCows" type="Normal">
+    <dbid>40391</dbid>
+    <displaynameid>301027</displaynameid>
+    <cost resourcetype="Food">250.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\texan_cows.png</icon>
+    <rollovertextid>301028</rollovertextid>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="4.00" subtype="FreeHomeCityUnit" unittype="Cow" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpWildWestFastColts" type="Normal">
+    <dbid>40392</dbid>
+    <displaynameid>301029</displaynameid>
+    <cost resourcetype="Gold">180.0000</cost>
+    <cost resourcetype="Wood">180.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\fastcolts.png</icon>
+    <rollovertextid>61120</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.10" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractGunpowderTrooper</target>
+      </effect>
+      <effect type="Data" amount="1.10" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractGunpowderCavalry</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpWildWestMilitia" type="Normal">
+    <dbid>40393</dbid>
+    <displaynameid>301030</displaynameid>
+    <cost resourcetype="Gold">200.0000</cost>
+    <cost resourcetype="Food">400.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cowboy_militia.png</icon>
+    <rollovertextid>301031</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" action="SpawnCowboy" amount="1.00" subtype="ActionAdd" unittype="AbstractHouse" relativity="Absolute">
+        <target type="Player"></target>
+      </effect>
+      <effect type="Data" action="SpawnCowboy" amount="1.00" subtype="ActionAdd" unittype="ypShrineJapanese" relativity="Absolute">
+        <target type="Player"></target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpWildWestVeteranCowboys" type="Normal">
+    <dbid>40394</dbid>
+    <displaynameid>301032</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">75.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\veteran_cavalry\veteran_cavalry.png</icon>
+    <rollovertextid>301033</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+      <effect type="SetName" proto="zpMountedOutlaw" culture="none" newname="301034">
+      </effect>
+      <effect type="SetName" proto="zpMountedOutlaw" culture="none" newname="301036" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpMercMountedOutlaw</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpMercMountedOutlaw</target>
+      </effect>
+      <effect type="SetName" proto="zpMercMountedOutlaw" culture="none" newname="301034">
+      </effect>
+      <effect type="SetName" proto="zpMercMountedOutlaw" culture="none" newname="301036" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpWildWestGuardCowboys" type="Normal">
+    <dbid>40395</dbid>
+    <displaynameid>301038</displaynameid>
+    <cost resourcetype="Wood">350.0000</cost>
+    <cost resourcetype="Gold">350.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\guard_cavalry\guard_cavalry.png</icon>
+    <rollovertextid>301033</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+      <techstatus status="Active">zpWildWestVeteranCowboys</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+      <effect type="SetName" proto="zpMountedOutlaw" culture="none" newname="301035">
+      </effect>
+      <effect type="SetName" proto="zpMountedOutlaw" culture="none" newname="301036" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpMercMountedOutlaw</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpMercMountedOutlaw</target>
+      </effect>
+      <effect type="SetName" proto="zpMercMountedOutlaw" culture="none" newname="301035">
+      </effect>
+      <effect type="SetName" proto="zpMercMountedOutlaw" culture="none" newname="301036" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpArmoredTrainLockShadow" type="Normal">
+    <dbid>40388</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpArmoredTrainLockShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpArmoredTrainBack" type="Normal">
+    <dbid>40389</dbid>
+    <displaynameid>301042</displaynameid>
+    <researchpoints>5.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\command\train_depot.png</icon>
+    <rollovertextid>301043</rollovertextid>
+    <flag>DENoTextMessageIfFree</flag>
+    <flag>Shadow</flag>
+  </tech>
+
  
  
 

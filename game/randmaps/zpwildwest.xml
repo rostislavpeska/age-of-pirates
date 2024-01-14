@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "301048" displayNameID = "301047" loadDetails="301049" largeMapName = "zpwildwest"
+    imagepath = "ui\random_map\wildwest\wildwest_mini" cannotReplace = "" loadBackground="ui\random_map\wildwest\wildwest_map">
+	<loadss>ui\random_map\wildwest\wildwest_01</loadss>
+    <loadss>ui\random_map\wildwest\wildwest_02</loadss>
+    <loadss>ui\random_map\wildwest\wildwest_03</loadss>
+</mapinfo>

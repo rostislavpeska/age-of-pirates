@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>23</width>
+	<height>23</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="161" posx="0.2440" posz="1.0232" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="35" posx="0.4681" posz="0.9298" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="77" posx="0.0763" posz="0.8925" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="77" posx="0.4726" posz="0.5013" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="36" posx="0.5807" posz="1.0651" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="1" posx="0.5285" posz="0.7103" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="253" posx="-0.4267" posz="0.4362" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="1" posx="0.1284" posz="0.9507" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="218" posx="0.6873" posz="0.4943" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="253" posx="0.3528" posz="0.8894" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="36" posx="0.4363" posz="0.8616" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="69" posx="0.1696" posz="0.7345" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="19" posx="0.0757" posz="0.3425" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="129" posx="0.5596" posz="0.8571" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="244" posx="0.1108" posz="0.7069" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpTrainStopper</unit>
+		<unit variation="0" posx="19.2828" posz="-1.5806" orientx="-0.7071" orienty="0.0000" orientz="0.7071">SPCPathBlock3</unit>
+		<unit variation="0" posx="17.1801" posz="-3.6494" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="5" posx="18.1696" posz="-3.1787" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">SPCRailwayProps</unit>
+		<unit variation="11" posx="15.1814" posz="-1.5469" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="2" posx="21.1438" posz="0.0104" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="211" posx="16.3391" posz="0.2062" orientx="-0.7071" orienty="0.0000" orientz="0.7071">SPCRailwayProps</unit>
+		<unit variation="204" posx="20.3994" posz="-0.9845" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPropJesuitFence</unit>
+		<unit variation="88" posx="18.1567" posz="-1.2143" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropHorse</unit>
+		<unit variation="13" posx="9.2378" posz="5.2515" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">SocketTradeRoute</unit>
+		<unit variation="0" posx="21.2933" posz="0.7945" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="10" posx="17.7604" posz="0.7029" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="8" posx="15.7139" posz="1.7660" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">SPCRailwayProps</unit>
+		<unit variation="5" posx="19.1333" posz="0.7560" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpPropHorse</unit>
+		<unit variation="9" posx="19.1697" posz="3.3764" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsColony</unit>
+		<unit variation="4" posx="16.9635" posz="2.9567" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">SPCRailwayProps</unit>
+		<unit variation="16" posx="17.3866" posz="4.3870" orientx="0.9239" orienty="0.0000" orientz="0.3827">SPCRailwayProps</unit>
+		<unit variation="162" posx="4.5568" posz="4.9562" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpInvisibleRailwayStation</unit>
+		<unit variation="58" posx="-0.5187" posz="16.5963" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpPropBarn</unit>
+		<unit variation="110" posx="3.3410" posz="12.8311" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCRailwayProps</unit>
+		<unit variation="152" posx="2.8424" posz="13.3324" orientx="-0.7071" orienty="0.0055" orientz="-0.7071">TrainTracks</unit>
+		<unit variation="241" posx="-7.5232" posz="14.0906" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPropJesuitFence</unit>
+		<unit variation="0" posx="5.6165" posz="16.5863" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock2</unit>
+		<unit variation="163" posx="6.0738" posz="16.7254" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpPropJesuitFence</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

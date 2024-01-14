@@ -3852,5 +3852,15 @@
       <command>}</command>
       <command>rule hdkzuzkz29456 active { if (true) { //</command>
     </effect>
+    <effect name="ZP Counter Visible for Player">
+      <param name="Name" dispname="$$22365$$Name" vartype="string">countdown</param>
+      <param name="Player" dispname="$$22301$$Player" vartype="player">1</param>
+      <command>if (trCurrentPlayer() == %Player%) {</command>
+      <command>trCounterVisible("%Name%", true);</command>
+      <command>}</command>
+      <command>else {</command>
+      <command>trCounterVisible("%Name%", false);</command>
+      <command>}</command>
+    </effect>
   </effects>
 </trigger>
