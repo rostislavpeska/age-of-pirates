@@ -36,8 +36,7 @@
   <attachment>hat
     <component>hat
       <assetreference type="GrannyModel">
-        <file>units\spc\outlaws\outlaw_pistol_us_hat</file>
-        <materialvariant index="1"></materialvariant>
+        <file>units\wildwest_units\black_hat\black_hat</file>
       </assetreference>
     </component>
     <anim>Idle
@@ -56,7 +55,7 @@
   </attachment>
   <component>ModelComp
     <assetreference type="GrannyModel">
-      <file>units\wildwest_units\doc_holliday\doc_holliday</file>
+      <file>units\wildwest_units\wyatt_earp\wyatt_earp</file>
       <materialvariant index="1"></materialvariant>
     </assetreference>
     <decal>

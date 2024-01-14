@@ -3,7 +3,7 @@
     <materialdef name="default">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="units/wildwest_units/doc_holliday/textures/doc_holliday_mata_BaseColor">
+      <texture name="BaseColor" override="units/wildwest_units/wyatt_earp/textures/wyatt_earp_mata_BaseColor">
       </texture>
       <texture name="Normals" override="units/wildwest_units/doc_holliday/textures/doc_holliday_mata_Normals">
       </texture>
