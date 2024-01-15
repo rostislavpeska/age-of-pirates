@@ -10754,6 +10754,10 @@
       </effect>
       <effect type="TransformUnit" toprotoid="zpArmoredTrainEngineStatic" fromprotoid="zpArmoredTrainEngineMove">
       </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainGunpowderStatic" fromprotoid="zpArmoredTrainGunpowderMove">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainHospitalStatic" fromprotoid="zpArmoredTrainHospitalMove">
+      </effect>
     </effects>
     
   </tech>

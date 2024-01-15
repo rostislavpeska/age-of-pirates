@@ -1051,6 +1051,12 @@
       <string _locid="301047">Armored Train Test</string>
       <string _locid="301048">Armored Train Test Description</string>
       <string _locid="301049">Armored Train Test Loading</string>
+      <string _locid="301050">Armored Train (Ambulance Wagon)</string>
+      <string _locid="301051">ZP AT Ambulance Move</string>
+      <string _locid="301052">ZP AT Ambulance Static</string>
+      <string _locid="301053">Armored Train (Gunpowder Car)</string>
+      <string _locid="301054">ZP AT Gunpowder Move</string>
+      <string _locid="301055">ZP AT Gunpowder Static</string>
 
 
       <!-- ======================================== -->
