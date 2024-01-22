@@ -238,6 +238,11 @@ extern int gExplorerControlPlan = -1; // Defend plan set up to control the explo
 extern int gLandExplorePlan = -1;     // Primary land exploration
 extern int gIslandExploreTransportScoutID = -1;
 extern bool gIslandMap = false; // Does this map have lands with waters in between?
+extern int gEnemyPlayer = -1;       // AssertiveWall: Stores the enemy that killed our explorer. Used for chats
+extern bool gLastExplorerCheck = true;  // AssertiveWall: Last time we checked if explorer is alive. true when alive
+extern bool gLastExplorerCheck2 = true;  // AssertiveWall: Last time we checked if explorer is alive. true when alive
+extern int gExplorerID = -1;             // AssertiveWall: stores explorer ID. necessary for when explorer dies
+extern int gExplorer2ID = -1;          // AssertiveWall: stores explorer ID. necessary for when explorer dies
 
 //==============================================================================
 // Economy.
@@ -374,6 +379,12 @@ extern int gDefendMissionInterval = 300000; // 5 minutes.   Makes the AI less li
 extern int gClaimTradeMissionInterval = 300000;  // 5 minutes.
 extern int gClaimNativeMissionInterval = 600000; // 10 minutes.
 extern int gLastClaimNativeMissionTime = -1;
+extern int gLandAttackPlanID = -1;          // AssertiveWall: saves attack plans so they can be killed later
+extern int gAttackTargetType = -1;          // AssertiveWall: used for chats
+extern const int cAttackTargetTown = 0;
+extern const int cAttackTargetBase = 1;
+extern const int cAttackTargetTradeSite = 2;
+extern const int cAttackTargetSettlers = 3;
 
 extern int gNumEnemies = -1;             // Used to pick a target to attack.
 extern int gArrayEnemyPlayerIDs = -1;    // Used to pick a target to attack.
@@ -387,6 +398,8 @@ extern int gMonopolyTeam = -1;          // TeamID of team that will win if the m
 
 extern bool gIsKOTHRunning = false; // Set true while a KOTH countdown is in effect.
 extern int gKOTHTeam = -1;          // TeamID of team that will win if the KOTH timer completes.
+extern int gKOTHAllyTimer = -1;         // AssertiveWall: keep the timer counting
+extern int gKOTHEnemyTimer = -1;         // AssertiveWall: keep the timer counting. Only works with 2 teams
 
 extern int gArmyUnitMaintainPlans = -1;
 

@@ -2521,9 +2521,13 @@ void updateResources()
       return;
    }
    // When we are gathering natural resources over this distance, start farming.
-   const float cFarmNaturalResourceDistance = 50.0;
+   // AssertiveWall: Since AI can herd, let it go further for hunts
+   const float cFarmNaturalResourceDistance = 90.0;
+   const float cMaxNaturalResourceDistance = 100.0;
+
+   /*const float cFarmNaturalResourceDistance = 50.0;
    // Max distance to gather natural resources.
-   const float cMaxNaturalResourceDistance = 80.0;
+   const float cMaxNaturalResourceDistance = 80.0;*/
    int time = xsGetTime();
    int numberFarms = 0;
    int numberPlants = 0;
@@ -2987,6 +2991,7 @@ minInterval 5
    vector mainBaseVec = cInvalidVector;
    int mainBaseID = kbBaseGetMainID(cMyID);
    int time = xsGetTime();
+   int livestockPlanID = -1;
 
    // AssertiveWall: Build a livestock pen under certain conditions
    int numPens = 0;
@@ -3024,7 +3029,8 @@ minInterval 5
          numLlamaWanted = 10;
       }
 
-      if (numPens > kbUnitCount(cMyID, gLivestockPenUnit, cUnitStateABQ) && kbUnitCount(cMyID, gLivestockPenUnit, cUnitStateABQ) <= 0)
+      livestockPlanID = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gLivestockPenUnit);
+      if (numPens > kbUnitCount(cMyID, gLivestockPenUnit, cUnitStateABQ) && livestockPlanID < 0)
       {
          createSimpleBuildPlan(gLivestockPenUnit, 1, 75, true, cEconomyEscrowID, mainBaseID, 1);
       }

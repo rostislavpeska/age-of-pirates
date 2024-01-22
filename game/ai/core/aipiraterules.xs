@@ -821,7 +821,7 @@ minInterval 5
         aiPlanSetActive( build_plan, true );
     }
     
-    aiChat( cMyID, ""+aiPlanGetState( build_plan ) );
+    //aiChat( cMyID, ""+aiPlanGetState( build_plan ) );
 }
 
 //==============================================================================
@@ -940,7 +940,7 @@ minInterval 30
 
   if (kbUnitCount(cMyID, cUnitTypezpSocketWokou, cUnitStateAny) == 0)
    {
-      aiChat( cMyID, "Wokou Socket not found");
+      //aiChat( cMyID, "Wokou Socket not found");
       return;
    }
 
@@ -1009,7 +1009,7 @@ mininterval 60
 
    if (kbUnitCount(0, cUnitTypezpSPCGreatMosque, cUnitStateAny) >= 1)
     {
-        aiChat( cMyID, "Great Mosque found");
+        //aiChat( cMyID, "Great Mosque found");
         // Upgrade Great Mosque on Asian Maps
         bool canDisableSelf = researchSimpleTech(cTechzpSPCSufiGreatMosque, cUnitTypeTradingPost);
 
@@ -1017,7 +1017,7 @@ mininterval 60
 
    if (kbUnitCount(0, cUnitTypezpSPCBlueMosque, cUnitStateAny) >= 1)
     {
-        aiChat( cMyID, "Blue Mosque found");
+        //aiChat( cMyID, "Blue Mosque found");
         // Upgrade Blue Mosque on Middle-East Maps
         canDisableSelf = researchSimpleTech(cTechzpSPCSufiBlueMosque, cUnitTypeTradingPost);
     }
@@ -1070,7 +1070,7 @@ mininterval 60
   
    if (kbUnitCount(0, cUnitTypezpNativeAztecTempleA, cUnitStateAny) >= 1)
     {
-        aiChat( cMyID, "Aztec Temple found");
+        //aiChat( cMyID, "Aztec Temple found");
         // Upgrade Aztec Temple
         bool canDisableSelf = researchSimpleTech(cTechzpNatAztecInfluence, cUnitTypeTradingPost);
     }
@@ -2065,7 +2065,7 @@ minInterval 10
 
          xsArraySetInt(proxy_list, 0, cUnitTypezpAirshipAIProxy);
          xsArraySetInt(ship_list, 0, cUnitTypezpAirshipAI);
-         aiChat( cMyID, "Airship training");
+         //aiChat( cMyID, "Airship training");
       }
 
       for(i = 0; < xsArrayGetSize(proxy_list))
@@ -2211,7 +2211,7 @@ minInterval 30
 
   if (kbUnitCount(cMyID, cUnitTypezpSocketVenetians, cUnitStateAny) == 0)
    {
-      aiChat( cMyID, "Venice Socket not found");
+      //aiChat( cMyID, "Venice Socket not found");
       return;
    }
 

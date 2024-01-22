@@ -275,7 +275,7 @@ void initArrays(void)
       default: // Hardest and Extreme.
    {
       xsArraySetInt(gTargetSettlerCounts, cAge1, 15);
-      xsArraySetInt(gTargetSettlerCounts, cAge2, 45);
+      xsArraySetInt(gTargetSettlerCounts, cAge2, 99);  // AssertiveWall: never stop. Old value 45
       xsArraySetInt(gTargetSettlerCounts, cAge3, 99);
       xsArraySetInt(gTargetSettlerCounts, cAge4, 99);
       xsArraySetInt(gTargetSettlerCounts, cAge5, 99);
@@ -301,6 +301,7 @@ void initArrays(void)
       {
          if (gSPC == false) // Otherwise just leave the defaults which will function fine.
          {
+            xsArraySetInt(gTargetSettlerCounts, cAge2, 80); // AssertiveWall: Added
             xsArraySetInt(gTargetSettlerCounts, cAge3, 80);
             xsArraySetInt(gTargetSettlerCounts, cAge4, 80);
             xsArraySetInt(gTargetSettlerCounts, cAge5, 80);
@@ -308,6 +309,7 @@ void initArrays(void)
       }
       else if (cDifficultyCurrent >= cDifficultyExpert)
       {
+         xsArraySetInt(gTargetSettlerCounts, cAge2, 80); // AssertiveWall: Added
          xsArraySetInt(gTargetSettlerCounts, cAge3, 80);
          xsArraySetInt(gTargetSettlerCounts, cAge4, 80);
          xsArraySetInt(gTargetSettlerCounts, cAge5, 80);
@@ -347,7 +349,7 @@ void initArrays(void)
          default: // Hard / Hardest / Extreme.
       {
          xsArraySetInt(gTargetSettlerCounts, cAge1, 15);
-            xsArraySetInt(gTargetSettlerCounts, cAge2, 35);
+            xsArraySetInt(gTargetSettlerCounts, cAge2, 50);  // AssertiveWall: never stop
          xsArraySetInt(gTargetSettlerCounts, cAge3, 50);
          xsArraySetInt(gTargetSettlerCounts, cAge4, 50);
          xsArraySetInt(gTargetSettlerCounts, cAge5, 50);
@@ -1005,7 +1007,7 @@ void analyzeGameSettingsAndType()
       else
       {  // AssertiveWall: Interval decreased to 2 minutes 
          gMaxPop = maxPop;
-         aiSetMicroFlags(cMicroLevelNormal);
+         aiSetMicroFlags(cMicroLevelHigh);
             gAttackMissionInterval = 120000; // 2.5 Minutes.
       }
       break;
@@ -1600,6 +1602,15 @@ void initPersonality(void)
    {
       btRushBoom = 0.0; // Don't attempt to rush in treaty or deathmatch games.
    }
+
+   // AssertiveWall: Make sure we aren't trying to boom on KoTH
+   if (aiIsKOTHAllowed() == true)
+   {
+      if (btRushBoom < 0.5)
+      {
+         btRushBoom = 0.5;
+      }
+   }
    
    // We don't allow these variables to go over 1.0 or under -1.0, 
    // and they could via the randomizer so safeguard against this.
@@ -1773,37 +1784,39 @@ void startUpChats()
          }
 
          // We've loaded all the variables, now start analyzing what chat to send.
+         // AssertiveWall: give a 20% chance to skip this and use the generic one
+         // AssertiveWall: give chances to skip a lot of these
          if (isAllyThisTime == true)
          {
-            if (difficultyIsHigher == true)
+            if (difficultyIsHigher == true && aiRandInt(10) < 7)
             {
                sendStatement(pid, cAICommPromptToAllyIntroWhenDifficultyHigher);
             }
-            else if (difficultyIsLower == true)
+            else if (difficultyIsLower == true && aiRandInt(10) < 6)
             {
                sendStatement(pid, cAICommPromptToAllyIntroWhenDifficultyLower);
             }
-            else if (iCarriedHimLastTime == true)
+            else if (iCarriedHimLastTime == true && aiRandInt(10) < 8)
             {
                sendStatement(pid, cAICommPromptToAllyIntroWhenICarriedHimLastGame);
             }
-            else if (heCarriedMeLastTime == true)
+            else if (heCarriedMeLastTime == true && aiRandInt(10) < 3)
             {
                sendStatement(pid, cAICommPromptToAllyIntroWhenHeCarriedMeLastGame);
             }
-            else if (iBeatHimLastTime == true)
+            else if (iBeatHimLastTime == true && aiRandInt(10) < 4)
             {
                sendStatement(pid, cAICommPromptToAllyIntroWhenIBeatHimLastGame);
             }
-            else if (heBeatMeLastTime == true)
+            else if (heBeatMeLastTime == true && aiRandInt(10) < 4)
             {
                sendStatement(pid, cAICommPromptToAllyIntroWhenHeBeatMeLastGame);
             }
-            else if ((mapID >= 0) && (mapID == aiPersonalityGetPlayerUserVar(playerHistoryID, "lastMapID")))
+            else if ((mapID >= 0) && (mapID == aiPersonalityGetPlayerUserVar(playerHistoryID, "lastMapID")) && aiRandInt(10) < 5)
             {
                sendStatement(pid, cAICommPromptToAllyIntroWhenMapRepeats);
             }
-            else if (wasAllyLastTime == true)
+            else if (wasAllyLastTime == true && aiRandInt(10) < 7)
             {
                if (iWonLastGame == false)
                {
@@ -1821,15 +1834,15 @@ void startUpChats()
          }
          else // We are enemies.
          { 
-            if (difficultyIsHigher == true)
+            if (difficultyIsHigher == true && aiRandInt(10) < 7)
             {
                sendStatement(pid, cAICommPromptToEnemyIntroWhenDifficultyHigher);
             }
-            else if (difficultyIsLower == true)
+            else if (difficultyIsLower == true && aiRandInt(10) < 8)
             {
                sendStatement(pid, cAICommPromptToEnemyIntroWhenDifficultyLower);
             }
-            else if ((mapID >= 0) && (mapID == aiPersonalityGetPlayerUserVar(playerHistoryID, "lastMapID")))
+            else if ((mapID >= 0) && (mapID == aiPersonalityGetPlayerUserVar(playerHistoryID, "lastMapID")) && aiRandInt(10) < 3)
             {
                sendStatement(pid, cAICommPromptToEnemyIntroWhenMapRepeats);
             }
@@ -1841,23 +1854,23 @@ void startUpChats()
                int previousEnemyCount = aiPersonalityGetPlayerUserVar(playerHistoryID, "myEnemyCount");
                int previousAllyCount = aiPersonalityGetPlayerUserVar(playerHistoryID, "myAllyCount");
                
-               if (previousEnemyCount == enemyCount)
+               if (previousEnemyCount == enemyCount && aiRandInt(10) < 7)
                {                                 
                   if (previousAllyCount > allyCount) // I have fewer allies now.
                   {
                      sendStatement(pid, cAICommPromptToEnemyIntroWhenTeamOddsEasier);
-            }
+                  }
                   if (previousAllyCount < allyCount) // I have more allies now.
-            {
+                  {
                      sendStatement(pid, cAICommPromptToEnemyIntroWhenTeamOddsHarder);
+                  }
                }
-               }
-               else if (previousAllyCount == allyCount) // Else, check if allyCount is the same, but enemyCount is smaller.
+               else if (previousAllyCount == allyCount && aiRandInt(10) < 7) // Else, check if allyCount is the same, but enemyCount is smaller.
                {
                   if (previousEnemyCount > enemyCount) // I have fewer enemies now.
                   {
                      sendStatement(pid, cAICommPromptToEnemyIntroWhenTeamOddsHarder);
-            }
+                  }
                   if (previousEnemyCount < enemyCount) // I have more enemies now.
                   {
                      sendStatement(pid, cAICommPromptToEnemyIntroWhenTeamOddsEasier);
@@ -2358,6 +2371,15 @@ void init(void)
       if (enemyCount > 1)
       {
          xsEnableRule("tcChats");
+      }
+
+      // AssertiveWall: lull in action
+      xsEnableRule("lull");
+      xsEnableRule("explorerChats");
+      // AssertiveWall: king of the hill chats
+      if (aiIsKOTHAllowed() == true)
+      {
+         xsEnableRule("kothTimer");
       }
    }
    

@@ -1533,7 +1533,41 @@ minInterval 15
       gLastAttackMissionTime = xsGetTime();
       debugMilitary("***** LAUNCHING ATTACK on player " + targetPlayer + " base " + targetBaseID);
 
+      // AssertiveWall: A couple chats
+      if (targetBaseID > 0)
+      {
+         if (targetBaseID == kbBaseGetMainID(targetPlayer))
+         {  // If it's the main base, send the town chat. Otherwise, send the base chat
+            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemyTown,
+               kbBaseGetLocation(targetPlayer, targetBaseID));
+         }
+         else
+         {
+            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemyBase,
+               kbBaseGetLocation(targetPlayer, targetBaseID));
+         }
+      }
+      else
+      { // Not a base, so either a TP or settlers
+         if (getUnitCountByLocation(cUnitTypeTradingPost, cPlayerRelationEnemyNotGaia, cUnitStateAlive, targetBaseLocation, 25.0) > 0)
+         {
+            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackTradeSite,
+               kbBaseGetLocation(targetPlayer, targetBaseID));
+         }
+         else if (getUnitCountByLocation(gEconUnit, cPlayerRelationEnemyNotGaia, cUnitStateAlive, targetBaseLocation, 15.0) > 7)
+         {
+            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemySettlers,
+               kbBaseGetLocation(targetPlayer, targetBaseID));
+         }
+      }
+
+      // AssertiveWall: set the extern and start the retreat logic. This is only necessary for attacks, 
+         // and excludes defend plans
+      gLandAttackPlanID = planID; 
+      xsEnableRule("attackRetreat");
+
       // AssertiveWall: Testing Purposes
+      //aiChat(cPlayerRelationAllyExcludingSelf, "attacking");
       //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, targetBaseLocation);
    }
    else 
@@ -1562,7 +1596,6 @@ minInterval 15
 
       aiPlanSetActive(planID);
 
-      //gLandAttackPlanID = planID; // AssertiveWall: set the extern so we can kill this plan later if we need to
       gLastDefendMissionTime = xsGetTime();
       debugMilitary("***** DEFENDING player " + targetPlayer + " base " + targetBaseID);
    }
@@ -1784,8 +1817,8 @@ minInterval 30
 //==============================================================================
 rule waterDefend
 inactive
-minInterval 10  
-{
+minInterval 5  
+{  // AssertiveWall: Reduced minINterval to 5 from 10
    if (gNavyDefendPlan < 0) // First run, create a persistent defend plan.
    {
       gNavyDefendPlan = aiPlanCreate("Water Defend", cPlanCombat);
@@ -3266,8 +3299,10 @@ minInterval 10
       debugMilitary("******** Enemy count " + enemyArmySize + ", my army count " + armySize);
       if (gDefenseReflexBaseID == mainBaseID)
       { // We're already in a defense reflex for the main base.
-         if (((armySize * 3.0) < enemyArmySize) &&
-             (enemyArmySize > 6.0)) // Army at least 3x my size and more than 6 units total.
+        // AssertiveWall: decreased from 3x to 2x
+         if ((((armySize * 2.0) < enemyArmySize) &&
+             (enemyArmySize > 6.0)) || // Army at least 3x my size and more than 6 units total.
+            (armySize * 1.5) < enemyArmySize && enemyArmySize > 50.0) // AssertiveWall: panic when enemy has a really big army
          {                          // Too big to handle.
             if ((gDefenseReflexPaused == false) && (kbUnitCount(cMyID, cUnitTypeMinuteman, cUnitStateAlive) < 1) &&
                 (kbUnitCount(cMyID, cUnitTypeypIrregular, cUnitStateAlive) < 1) &&

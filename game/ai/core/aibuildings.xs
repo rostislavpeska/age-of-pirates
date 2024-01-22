@@ -3057,7 +3057,8 @@ minInterval 5
    if (cDifficultyCurrent >= cDifficultyHard)
    {
       planID = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypeTownCenter);
-      if ((planID < 0) && (kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive) < 2))
+      // AssertiveWall: And we aren't being attacked
+      if ((planID < 0) && (kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive) < 2))// && gDefenseReflex == false)
       {
          // One more Town Center for Ottomans and treaty games longer than 10 minutes to go.
          if (((cMyCiv == cCivOttomans) || (aiTreatyGetEnd() > xsGetTime() + 10 * 60 * 1000)) &&
@@ -3069,6 +3070,25 @@ minInterval 5
          // If we're missing too many Villagers we create another Town Center after at least 15 minutes in game.
          else if ((xsArrayGetInt(gTargetSettlerCounts, transitionAge) - aiGetCurrentEconomyPop() > 90 * (age <= cAge3 ? 0.6 : 0.4)) &&
                   (time > 15 * 60 * 1000))
+         {
+            planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 1);
+            aiPlanSetDesiredResourcePriority(planID, 60);
+         }
+      }
+      // AssertiveWall: New Additional TC building logic
+      planID = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypeTownCenter);
+      if ((planID < 0) && (kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive) < 2))// && gDefenseReflex == false)
+      {  // Basically just build one in Age 3 if we aren't rushing
+         if (btRushBoom < 0.4 && age >= cAge3)
+         {
+            planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 1);
+            aiPlanSetDesiredResourcePriority(planID, 60);
+         }
+      }
+      // AssertiveWall: If we're in Age 4 or past 25 mins we can build 3
+      else if ((planID < 0) && (kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive) < 3))// && gDefenseReflex == false)
+      { 
+         if (age >= cAge4 || time > 25 * 60 * 1000)
          {
             planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 1);
             aiPlanSetDesiredResourcePriority(planID, 60);
@@ -3691,7 +3711,7 @@ minInterval 5
       }
       else
       {
-         aiPlanSetDesiredResourcePriority(planID, 65); // AssertiveWall: up from 55
+         aiPlanSetDesiredResourcePriority(planID, 55); // AssertiveWall: up from 55
       }
 
       // Go.

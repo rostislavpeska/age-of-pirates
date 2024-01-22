@@ -436,8 +436,9 @@ minInterval 60
       losing = true;
 
       // Talk about resigning?
+      // AssertiveWall: increase the time interval each time it's sent. 10, 15 mins
       if ((shouldResignCount < 3) &&
-          ((xsGetTime() - shouldResignLastTime) > 3 * 60 * 1000)) // Haven't done it 3 times or within 3 minutes.
+          ((xsGetTime() - shouldResignLastTime) > (5 + 5 * shouldResignCount) * 60 * 1000)) // Haven't done it 3 times or within 3 minutes.
       {
          switch (shouldResignCount)
          {
@@ -1756,6 +1757,7 @@ void commHandler(int chatID = -1, int statementID = -1)
       targetType = aiCommsGetChatTargetType(chatID); // Like cPlayerChatTargetTypePlayers or cPlayerChatTargetTypeLocation.
       target = aiCommsGetTargetListItem(chatID, 0); // Like cResourceFood or cUnitTypeAbstractArtillery.
       location = aiCommsGetTargetLocation(chatID); // Target location
+      //aiChat(1, "Verb: " + verb + " targetType: " + targetType + " target: " + target);
    }
    else if (statementID >= 0)
    {
@@ -1839,6 +1841,21 @@ void commHandler(int chatID = -1, int statementID = -1)
             break;
          }
 
+         // AssertiveWall: Moved from below. Used to determine if we are attacking or defending
+         // We reduce the helpful army size when defending. Any little bit should help
+         int numEnemyBuildings = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
+            location, 50.0);
+         int numAlliedBuildings = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAlly, cUnitStateAlive,
+            location, 50.0);
+
+         int noArmyValue = 3;
+         int smallArmyValue = 5;
+         if (numEnemyBuildings >= numAlliedBuildings)
+         {
+            noArmyValue = 5;
+            smallArmyValue = 15;
+         }
+
          int numUnits = aiPlanGetNumberUnits(gLandReservePlan, cUnitTypeLogicalTypeLandMilitary);
          int currentFreeMilitaryPop = 0;
          for (int i = 0; i < numUnits; i++)
@@ -1846,13 +1863,13 @@ void commHandler(int chatID = -1, int statementID = -1)
             int unitID = aiPlanGetUnitByIndex(gLandReservePlan, i);
             currentFreeMilitaryPop += kbGetPopSlots(cMyID, kbUnitGetProtoUnitID(unitID));
          }
-         if (currentFreeMilitaryPop < 5)
+         if (currentFreeMilitaryPop < noArmyValue)
          {
             sendStatement(fromID, cAICommPromptToAllyDeclineNoArmy);
             debugChats("Deny attack/defend request because no army");
             break;
          }
-         if (currentFreeMilitaryPop < 15)
+         if (currentFreeMilitaryPop < smallArmyValue)
          {
             sendStatement(fromID, cAICommPromptToAllyDeclineSmallArmy);
             debugChats("Deny attack/defend request because small army");
@@ -1883,10 +1900,11 @@ void commHandler(int chatID = -1, int statementID = -1)
                   break;
                }
                
-               int numEnemyBuildings = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
+               // AssertiveWall: Move this up so we can see earlier if it's defend/attack
+               /*int numEnemyBuildings = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
                   location, 50.0);
                int numAlliedBuildings = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAlly, cUnitStateAlive,
-                  location, 50.0);
+                  location, 50.0);*/
                
                // We do not defend or attack in an open space, there must be buildings present.
                if ((numEnemyBuildings == 0) && (numAlliedBuildings == 0))
@@ -2229,4 +2247,356 @@ void commHandler(int chatID = -1, int statementID = -1)
       }
    }
    debugChats("***** End of communication *****");
+}
+
+//==============================================================================
+// AssertiveWall: 
+// baseExplorationAdvice
+// Offer some advice when you explore the enemy town
+// * not in use *
+//==============================================================================
+rule baseExplorationAdvice
+inactive
+minInterval 5
+{
+   static int targetPlayer = -1;
+
+   if (targetPlayer < 0)
+   {
+      targetPlayer = getEnemyPlayerByTeamPosition(getTeamPosition(cMyID)); // Corresponding player on other team.
+      if (targetPlayer < 0)
+      {
+         xsDisableSelf();
+         //debugChats("No corresponding player on other team, IKnowWhereYouLive is deactivating");
+         return;
+      }
+      //debugChats("Rule IKnowWhereYouLive will threaten player #" + targetPlayer);
+   }
+
+   int tcID = getUnit(cUnitTypeAgeUpBuilding, targetPlayer, cUnitStateAlive);
+   if (tcID >= 0)
+   { // We see his TC for the first time.
+      if (getUnitByLocation(cUnitTypeUnit, cMyID, cUnitStateAlive, kbUnitGetPosition(tcID), 50.0) >= 0)
+      { // I have a unit nearby, presumably I have LOS.
+         sendStatement(targetPlayer, cAICommPromptToEnemyISpotHisTC, kbUnitGetPosition(tcID));
+      }
+      //xsDisableSelf();
+   }
+}
+
+//==============================================================================
+// AssertiveWall: 
+// lull
+// Simple chat if things are inactive for too long
+//==============================================================================
+rule lull
+inactive
+minInterval 30
+{
+   int time = xsGetTime();
+   int interval = 4 * 60 * 1000; // 4 minutes of inaction
+
+   // Double the interval for lower difficulties
+   if (cDifficultyCurrent <= cDifficultyModerate)
+   {
+      interval = interval * 1.5;
+   }
+
+   // Don't send this earlier than 9 min into the game
+   if (time > 9 * 60 * 1000)
+   {
+      // As long as there hasn't been any attacking or defending
+      if ((time > gLastAttackMissionTime + interval) && (time > gLastDefendMissionTime + interval))
+      {
+         sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemyLull);
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyLull);
+         //xsSetRuleMinIntervalSelf(600); // Should be a while
+         xsDisableSelf();
+      }
+   }
+}
+
+//==============================================================================
+// AssertiveWall: 
+// kothTimer 
+// Check for KoTH timer going down
+//==============================================================================
+rule kothTimer
+inactive
+minInterval 1 // Count down once per second
+{ 
+   int randInt = aiRandInt(2);
+   // Just a check. DOn't do anything if the timer isn't running
+   if (gIsKOTHRunning == false)
+   {
+      return;
+   }
+
+   if (gKOTHAllyTimer < 0 || gKOTHEnemyTimer < 0)
+   {
+      // Start the timer
+      // KOTH Timer is 10 minutes, minus one minute for each team above 10. Gaia counts as 1 team
+      gKOTHAllyTimer = 10 * 60 + 60 * (3 - aiGetNumberTeams());
+      gKOTHEnemyTimer = 10 * 60 + 60 * (3 - aiGetNumberTeams());
+   }
+
+   // Send the chat at a little over 60 seconds left, but only at that specific time. Let the rule keep running in case it flips
+   if (gKOTHAllyTimer == 65)
+   {
+      // Make it a 50/50 shot on which one we'll send
+      if (randInt == 1)
+      {
+         // All of these are fine, except Elizabeth
+         if (cMyCiv != cCivBritish)
+         {
+            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAlly1MinuteLeftOur4OfKind);
+         }
+      }
+      else
+      {
+         sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemy1MinuteLeftOur4OfKind);
+      }
+   }
+   if (gKOTHEnemyTimer == 60)
+   {
+      if (randInt == 1)
+      {
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAlly1MinuteLeftEnemy4OfKind);
+      }
+      else
+      {
+         sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemy1MinuteLeftEnemy4OfKind);
+      }
+   }
+
+   // If it is our team, count down our timer
+   if (gKOTHTeam == kbGetPlayerTeam(cMyID))
+   {
+      gKOTHAllyTimer = gKOTHAllyTimer - 1;
+   }
+   // Otherwise make sure there's only 1 enemy team, otherwise we can't keep track of all of them
+   else if (aiGetNumberTeams() == 3)// Gaia is 1 team.
+   {
+      gKOTHEnemyTimer = gKOTHEnemyTimer - 1;
+   }
+}
+
+//==============================================================================
+// AssertiveWall: 
+// explorerChats
+// Chats related to explorer
+//==============================================================================
+rule explorerChats
+inactive
+minInterval 5
+{
+   // Several different conditions to look for:
+   /*
+   cAICommPromptToAllyILoseExplorerGaia
+   cAICommPromptToAllyIRescuedMyExplorer
+   cAICommPromptToAllyHeRescuedMyExplorer
+   cAICommPromptToAllyIRansomedMyExplorer
+   cAICommPromptToAllyILoseExplorerEnemy
+   cAICommPromptToEnemyIRescueExplorerHeKilled
+   */
+
+   // 2 explorers
+   int explorerType = -1;
+   int explorerType2 = -1;
+   int tempPlanID = -1;
+   vector explorerLoc = cInvalidVector;
+   int enemyCount = -1;
+   int enemyTeam = -1;
+   bool explorerCheck = true; // default alive
+   bool explorerCheck2 = true; // default alive
+   int ourUnitCount = -1;
+   int friendlyPlayer = -1;
+
+   // Run this to get our explorer ID
+   if (gExplorerID < 0)
+   {
+      switch (cMyCiv)
+      {
+         case cCivDEInca:
+         {
+            explorerType = cUnitTypedeIncaWarChief;
+            break;
+         }
+         case cCivXPAztec:
+         {
+            explorerType = cUnitTypexpAztecWarchief;
+            break;
+         }
+         case cCivXPIroquois:
+         {
+            explorerType = cUnitTypexpIroquoisWarChief;
+            break;
+         }
+         case cCivXPSioux:
+         {
+            explorerType = cUnitTypexpLakotaWarchief;
+            break;
+         }
+         case cCivChinese:
+         {
+            explorerType = cUnitTypeypMonkChinese;
+            break;
+         }
+         case cCivIndians:
+         {
+            explorerType = cUnitTypeypMonkIndian;
+            explorerType2 = cUnitTypeypMonkIndian2;
+            break;
+         }
+         case cCivJapanese:
+         {
+            explorerType = cUnitTypeypMonkJapanese;
+            explorerType2 = cUnitTypeypMonkJapanese2;
+            break;
+         }
+         case cCivDEInca:
+         {
+            explorerType = cUnitTypedeIncaWarChief;
+            break;
+         }
+         case cCivDEEthiopians:
+         {
+            explorerType = cUnitTypedePrince;
+            break;
+         }
+         case cCivDEHausa:
+         {
+            explorerType = cUnitTypedeEmir;
+            break;
+         }
+         case cCivSpanish:
+         {
+            explorerType = cUnitTypeExplorer;
+            explorerType2 = -1;
+            break;
+         }
+         case cCivDEMaltese:
+         {
+            explorerType = cUnitTypedeGrandMaster;
+            explorerType2 = cUnitTypeDEExplorerSheep;
+            break;
+         }
+         default:
+         {
+            explorerType = cUnitTypeExplorer;
+            explorerType2 = cUnitTypeExplorerDog;
+            break;
+         }
+      }
+
+      gExplorerID = getUnit(explorerType, cMyID, cUnitStateAny);
+      gExplorer2ID = getUnit(explorerType2, cMyID, cUnitStateAny);
+   }
+
+   // Check if explorers are dead
+   if (aiGetFallenExplorerID() == gExplorerID && gExplorerID > 0)
+   {
+      explorerCheck = false;
+   }
+   else if (aiGetFallenExplorerID() == gExplorer2ID && gExplorer2ID > 0)
+   {
+      explorerCheck2 = false;
+   }
+
+   // Start with easiest case, when we are ransoming explorer. 
+   // Does not depend on explorer checks, but needs to be before them
+   tempPlanID = aiPlanGetIDSubStr(kbProtoUnitCommandGetName(cProtoUnitCommandRansomExplorer));
+   if (aiPlanGetState(tempPlanID) == cPlanStateResearch)
+   {
+      sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIRansomedMyExplorer);
+      return;
+   }
+
+   // Check if the state of our explorer changed
+   if (explorerCheck == gLastExplorerCheck && explorerCheck2 == gLastExplorerCheck2)
+   {  // Neither have changed, so return
+      return;
+   }
+
+   // Second case, when an explorer is lost
+   if (aiGetFallenExplorerID() == gExplorerID && explorerCheck != gLastExplorerCheck)
+   {
+      // Check if there are enemy players around. If not, assume Gaia did it (those chats are pretty generic anyway)
+      explorerLoc = kbUnitGetPosition(gExplorerID);
+      enemyCount = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia, cUnitStateAlive, explorerLoc, 35.0)
+                     + getUnitCountByLocation(cUnitTypeLogicalTypeBuildingsHasRangedAttack, cPlayerRelationEnemyNotGaia, cUnitStateAlive, explorerLoc, 35.0)
+                     + getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, explorerLoc, 35.0);
+      if (enemyCount > 0)
+      {
+         // Store who killed us
+         gEnemyPlayer = kbUnitGetPlayerID(getClosestUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia, cUnitStateAlive, explorerLoc, 35.0));
+         if (gEnemyPlayer < 0)
+         {
+            gEnemyPlayer = getUnitCountByLocation(cUnitTypeLogicalTypeBuildingsHasRangedAttack, cPlayerRelationEnemyNotGaia, cUnitStateAlive, explorerLoc, 35.0);
+         }
+         if (gEnemyPlayer < 0)
+         {
+            gEnemyPlayer = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, explorerLoc, 35.0);
+         }
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyILoseExplorerEnemy);
+      }
+      else // no enemy, must be gaia
+      {
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyILoseExplorerGaia);
+      }
+   }
+   else if (aiGetFallenExplorerID() == gExplorer2ID && explorerCheck2 != gLastExplorerCheck2)
+   {
+      // Check if there are enemy players around. If not, assume Gaia did it (those chats are pretty generic anyway)
+      explorerLoc = kbUnitGetPosition(gExplorer2ID);
+      enemyCount = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia, cUnitStateAlive, explorerLoc, 35.0)
+                     + getUnitCountByLocation(cUnitTypeLogicalTypeBuildingsHasRangedAttack, cPlayerRelationEnemyNotGaia, cUnitStateAlive, explorerLoc, 35.0)
+                     + getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, explorerLoc, 35.0);
+      if (enemyCount > 0)
+      {
+         // Store who killed us
+         gEnemyPlayer = kbUnitGetPlayerID(getClosestUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia, cUnitStateAlive, explorerLoc, 35.0));
+         if (gEnemyPlayer < 0)
+         {
+            gEnemyPlayer = getUnitCountByLocation(cUnitTypeLogicalTypeBuildingsHasRangedAttack, cPlayerRelationEnemyNotGaia, cUnitStateAlive, explorerLoc, 35.0);
+         }
+         if (gEnemyPlayer < 0)
+         {
+            gEnemyPlayer = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, explorerLoc, 35.0);
+         }
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyILoseExplorerEnemy);
+      }
+      else // no enemy, must be gaia
+      {
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyILoseExplorerGaia);
+      }
+   }
+
+   // Last case, when we rescue our explorers
+   if (explorerCheck == true && explorerCheck != gLastExplorerCheck)
+   {
+      // See if we have our own units nearby. Give ourself credit first
+      explorerLoc = kbUnitGetPosition(gExplorerID);
+      ourUnitCount = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf, cUnitStateAlive, explorerLoc, 35.0);
+
+      if (ourUnitCount > 1) // Assuming the explorer is 1
+      {
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIRescuedMyExplorer);
+         // send to the player who killed them that he's alive
+         if (gEnemyPlayer > 0)
+         {
+            sendStatement(gEnemyPlayer, cAICommPromptToEnemyIRescueExplorerHeKilled);
+         }
+         gEnemyPlayer = -1;
+      }
+      else // it must have been an ally
+      {
+         friendlyPlayer = kbUnitGetPlayerID(getClosestUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAllyExcludingSelf, cUnitStateAlive, explorerLoc, 35.0));
+         sendStatement(friendlyPlayer, cAICommPromptToAllyHeRescuedMyExplorer);
+      }
+   }
+
+   // Update explorer checks
+   gLastExplorerCheck = explorerCheck;
+   gLastExplorerCheck2 = explorerCheck2;
 }

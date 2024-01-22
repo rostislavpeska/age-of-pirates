@@ -11,6 +11,8 @@
 /* attackRetreatCheck
    AssertiveWall: Goes through the attack plans and decides when to retreat 
    Also tells attack plans to attack armies if they run into one
+
+   * not in use* Done better by rule attackRetreat
 */
 //==============================================================================
 rule attackRetreatCheck
@@ -97,7 +99,7 @@ minInterval 2
    // Ignore single scout
    if (nearbyEnemyCount1 + nearbyEnemyCount2 > 2)
    {
-      aiChat(1, "Attacking nearby Enemy en route");
+      //aiChat(1, "Attacking nearby Enemy en route");
       sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, scout1Loc);
       for (i = 0; < attackSize)
       {
@@ -106,10 +108,9 @@ minInterval 2
          aiTaskUnitWork(tempUnit, tempEnemy);
       }
    }
-
-
-
 }
+
+
 
 
 //==============================================================================
@@ -211,12 +212,12 @@ minInterval 60
    if (friendlyTeamScore > enemyTeamScore * modifier)
    {
       newHandicap = kbGetPlayerHandicap(cMyID) * (1.0 - handicapAdjustment);
-      aiChat(1, "Decreasing the AI handicap to " + newHandicap);
+      //aiChat(1, "Decreasing the AI handicap to " + newHandicap);
    }
    else if (friendlyTeamScore * modifier < enemyTeamScore)
    {
       newHandicap = kbGetPlayerHandicap(cMyID) * (1.0 + handicapAdjustment);
-      aiChat(1, "Increasing the AI handicap to " + newHandicap);
+      //aiChat(1, "Increasing the AI handicap to " + newHandicap);
    }
    else
    {
@@ -226,7 +227,7 @@ minInterval 60
    // Create upper and lower bounds of 10% of the initial handicap
    if (newHandicap > gStartingHandicap * 1.12 || newHandicap < gStartingHandicap * 0.88)
    {
-      aiChat(1, "Blocked new handicap of: " + newHandicap + ". Starting handicap was: " + gStartingHandicap);
+      //aiChat(1, "Blocked new handicap of: " + newHandicap + ". Starting handicap was: " + gStartingHandicap);
       return;
    }
 
@@ -1049,7 +1050,7 @@ minInterval 10
       aiPlanSetEscrowID(wallPlanID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlanID, 50);
       aiPlanSetActive(wallPlanID, true);
-      sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
+      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
       // Enable our wall gap rule, too.
       //xsEnableRule("fillInWallGaps");
       debugBuildings("Enabling Wall Plan for Base ID: " + kbBaseGetMainID(cMyID));
@@ -1092,7 +1093,7 @@ minInterval 10
       aiPlanSetEscrowID(wallPlanID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlanID, 30);
       aiPlanSetActive(wallPlanID, true);
-      sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
+      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
       // Enable our wall gap rule, too.
       //xsEnableRule("fillInWallGaps");
       debugBuildings("Enabling Wall Plan for Base ID: " + kbBaseGetMainID(cMyID));
@@ -1146,6 +1147,7 @@ minInterval 10
       aiPlanSetDesiredPriority(wallPlanID, 60);
       aiPlanSetActive(wallPlanID, true);
       sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
+      sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemyWhenHeWallsIn);
       // Enable our wall gap rule, too.
       //xsEnableRule("fillInWallGaps");
       debugBuildings("Enabling Wall Plan for Base ID: " + baseID);
@@ -1158,6 +1160,7 @@ minInterval 10
 /* seaWall
    AssertiveWall: Builds a large outer ring that hopefully covers a good portion
    of coastline
+   * not in use *
 */
 //==============================================================================
 
@@ -1192,6 +1195,7 @@ minInterval 10
       aiPlanSetDesiredPriority(wallPlanID, 40);
       aiPlanSetActive(wallPlanID, true);
       sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
+      sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemyWhenHeWallsIn);
       // Enable our wall gap rule, too.
       //xsEnableRule("fillInWallGaps");
       debugBuildings("Enabling Wall Plan for Base ID: " + kbBaseGetMainID(cMyID));
@@ -1296,6 +1300,7 @@ minInterval 10
       aiPlanSetDesiredPriority(wallPlanID, 80);
       aiPlanSetActive(wallPlanID, true);
       sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
+      sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemyWhenHeWallsIn);
       // Enable our wall gap rule, too.
       //xsEnableRule("fillInWallGaps");
       debugBuildings("Enabling Wall Plan for Base ID: " + kbBaseGetMainID(cMyID));
@@ -1391,7 +1396,7 @@ minInterval 10
       aiPlanSetEscrowID(wallPlanID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlanID, 80);
       aiPlanSetActive(wallPlanID, true);
-      sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
+      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
       // Enable our wall gap rule, too.
       //xsEnableRule("fillInWallGaps");
       debugBuildings("Enabling Wall Plan for Base ID: " + kbBaseGetMainID(cMyID));
@@ -1415,7 +1420,7 @@ minInterval 10
       aiPlanSetEscrowID(wallPlanID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlanID, 80);
       aiPlanSetActive(wallPlanID, true);
-      sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
+      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
       // Enable our wall gap rule, too.
       //xsEnableRule("fillInWallGaps");
       debugBuildings("Enabling Wall Plan for Base ID: " + kbBaseGetMainID(cMyID));
@@ -1475,6 +1480,7 @@ minInterval 10
       aiPlanSetDesiredPriority(wallPlanID, 80);
       aiPlanSetActive(wallPlanID, true);
       sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
+      sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemyWhenHeWallsIn);
       // Enable our wall gap rule, too.
       //xsEnableRule("fillInWallGaps");
       debugBuildings("Enabling Wall Plan for Base ID: " + kbBaseGetMainID(cMyID));
@@ -1818,7 +1824,7 @@ minInterval 60
       {
          // no builder found
          aiPlanDestroy(buildPlan);
-         aiChat(1, "deleting a build plan");
+         //aiChat(1, "deleting a build plan");
       }
    }
 }
@@ -2209,13 +2215,14 @@ minInterval 10
    int friendlyWSCount = -1;
    int enemyWSCount = -1;
 
-   int dockCount = kbUnitCount(cMyID, gDockUnit, cUnitStateABQ);
+   int dockCount = kbUnitCount(cMyID, gDockUnit, cUnitStateAlive);
    int mainBaseID = kbBaseGetMainID(cMyID);
    int desiredDockCount = -1;
    int maxFishingBoats = -1;
    int boatPriority = -1;
    int maxDistance = -1;
    int tempBoatUnit = -1;
+   int dockPlanID = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit);
 
    // Get the associated strength of friendly and enemy fleets
    friendlyWSQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationAlly, cUnitStateAlive);
@@ -2242,7 +2249,7 @@ minInterval 10
 
    // Conditional for Big Boy:   The opponent is not uncompetitive on water, and 
    //                            we are in a booming disposition
-   if (btRushBoom < 0 && friendlyWSStrength > 3 * enemyWSStrength && friendlyWSStrength > 1500)
+   if (btRushBoom <= 0 && friendlyWSStrength > 3 * enemyWSStrength && friendlyWSStrength > 1500)
    {
       //aiChat(1, "Big boy boat boom");
       desiredDockCount = 4;
@@ -2278,8 +2285,7 @@ minInterval 10
       maxDistance = 80;    
    }
 
-
-   if (dockCount < desiredDockCount)
+   if (dockCount < desiredDockCount && dockPlanID < 0)
    {
       createSimpleBuildPlan(gDockUnit, 1, 70, false, cMilitaryEscrowID, mainBaseID, 1); 
    }
@@ -2449,12 +2455,12 @@ void gatherNavy(vector location = cInvalidVector)
       int gatheredUnits = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive, location, 50.0);
       // Make sure we have 3 of 4 or at least 70%
       // Minimum 3 ships
-      aiChat(1, "Gathered: " + gatheredUnits + " Of " + gatherTarget);
+      //aiChat(1, "Gathered: " + gatheredUnits + " Of " + gatherTarget);
       if ((gatheredUnits > 4 && gatheredUnits >= gatherTarget - 1) || gatheredUnits > 0.7 * gatherTarget)
       {
          if (gatheredUnits >= 3)
          {
-            aiChat(1, "moving to bombard coast");
+            //aiChat(1, "moving to bombard coast");
             gAmphibiousAssaultStage = cBombardCoast;
          }
       }
@@ -2593,7 +2599,7 @@ void loadForces(vector pickupPoint = cInvalidVector)
    // Use a standard point between our main base and the target point
    if (pickupPoint == cInvalidVector)
    {
-      pickupPoint = getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMain(cMyID)));
+      pickupPoint = getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
    }
 
    // Find all military land units near the pickup point
@@ -2616,7 +2622,7 @@ void loadForces(vector pickupPoint = cInvalidVector)
    int transportPlanID = -1;
    int transportPlan2ID = -1;
 
-   aiChat(1, "Landing Force Size: " + landingForcesSize + " plan# " + aiPlanGetNumberUnits(gAmphibiousArmyPlan));
+   //aiChat(1, "Landing Force Size: " + landingForcesSize + " plan# " + aiPlanGetNumberUnits(gAmphibiousArmyPlan));
    // Check to see if we even have anyone. If not, restart
    if (landingForcesSize == 0)
    {
@@ -2648,7 +2654,7 @@ void loadForces(vector pickupPoint = cInvalidVector)
    // Make sure our existing ships are still alive
    if (kbUnitGetHealth(gLandingShip1) < 0.0)
    {
-      aiChat(1, "transport 1 died");
+      //aiChat(1, "transport 1 died");
       gLandingShip1 = -1;
    }
    if (kbUnitGetHealth(gLandingShip2) < 0.0)
@@ -2936,7 +2942,7 @@ void landForces()
 //==============================================================================
 void trainFromGalleons()
 {
-   aiChat(1, "training from galleon");
+   //aiChat(1, "training from galleon");
    int frNavySize = aiPlanGetNumberUnits(gAmphibiousAssaultPlan, cUnitTypeAbstractWarShip);
    int unitID = -1;
    int puid = -1;
@@ -3078,7 +3084,7 @@ void amphibiousAssault(vector location = cInvalidVector)
    }
    // Reset the stage
    gAmphibiousAssaultStage = cGatherNavy;
-   gAmphibiousAssaultTarget = getDropoffPoint(kbBaseGetLocation(cMyID, kbBaseGetMain(cMyID)), location);
+   gAmphibiousAssaultTarget = getDropoffPoint(kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), location);
 
    if (gAmphibiousAssaultPlan < 0)
    {
@@ -3108,7 +3114,7 @@ void amphibiousAssault(vector location = cInvalidVector)
    }
 
    // Enable the rule to monitor the amphibious assault
-   aiChat(1, "Amphibious Assault Rule Started");
+   //aiChat(1, "Amphibious Assault Rule Started");
    xsEnableRule("amphibiousAssaultRule");
 }
 
@@ -3137,19 +3143,19 @@ minInterval 5
    if (retreatCheck() == true)
    {
       xsDisableSelf();
-      aiChat(1, "Amphibious Assault Aborted");
+      //aiChat(1, "Amphibious Assault Aborted");
       return;
    }
 
    // Used by multiple rules
-   vector gatherPoint = gNavyVec;//getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMain(cMyID)));
-   vector pickupPoint = getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMain(cMyID)), 4);
+   vector gatherPoint = gNavyVec;//getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
+   vector pickupPoint = getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 4);
 
    switch (gAmphibiousAssaultStage)
    {
       case cGatherNavy:
       {
-         aiChat(1, "Gathering Navy for amphibious assault");
+         //aiChat(1, "Gathering Navy for amphibious assault");
          sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, gatherPoint);
          // Add navy to plan and send them to the gather point
          gatherNavy(gatherPoint);
@@ -3159,7 +3165,7 @@ minInterval 5
       }
       case cBombardCoast:
       {
-         aiChat(1, "Bombarding Landing Location");
+         //aiChat(1, "Bombarding Landing Location");
          sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, gAmphibiousAssaultTarget);
          gatherNavy();
 
@@ -3175,12 +3181,12 @@ minInterval 5
          gatherNavy();   // Keep adding navy units to the plan
          
          loadForces(pickupPoint);
-         aiChat(1, "Loading Ship1: " + gLandingShip1 + " Ship2: " + gLandingShip2);
+         //aiChat(1, "Loading Ship1: " + gLandingShip1 + " Ship2: " + gLandingShip2);
          break;
       }
       case cLandForces:
       {
-         aiChat(1, "Attempting to Land Forces");
+         //aiChat(1, "Attempting to Land Forces");
          sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, gAmphibiousAssaultTarget);
 
          bombardCoast(); // Keep bombarding the coast
@@ -3191,7 +3197,7 @@ minInterval 5
       }
       case cBuildForwardBuildings:
       {
-         aiChat(1, "Establishing Foothold");
+         //aiChat(1, "Establishing Foothold");
          bombardCoast(); // Keep bombarding the coast
          gatherNavy();   // Keep adding navy units to the plan
 
@@ -3203,7 +3209,7 @@ minInterval 5
       {
          // Once we're established we can let our navy do other things, except galleons
          trainFromGalleons();
-         aiChat(1, "Creating Forward Base");
+         //aiChat(1, "Creating Forward Base");
          break;
       }
    }
@@ -3311,12 +3317,12 @@ vector selectForwardBaseBeachHead(void)
    float dist = 0.0;
    int enemyPlayer = aiGetMostHatedPlayerID();
 
-   int enemyTC = getUnitByLocation(cUnitTypeAgeUpBuilding, enemyPlayer, cUnitStateABQ, mainBaseVec, 500.0);
+   int enemyTC = getUnitByLocation(cUnitTypeAgeUpBuilding, enemyPlayer, cUnitStateAlive, mainBaseVec, 500.0);
    float radius = 0.0;
    vector vec = cInvalidVector;
    vector bestLoc = cInvalidVector;
    float bestDist = 0.0;
-   int enemyBuildingQuery = createSimpleUnitQuery(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateABQ);
+   int enemyBuildingQuery = createSimpleUnitQuery(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(enemyBuildingQuery);
 
    if (enemyTC < 0)
@@ -3385,7 +3391,7 @@ vector selectForwardBaseBeachHead(void)
             debugBuildings("    " + retVal + " is in area group " + kbAreaGroupGetIDByPosition(retVal));
             siteFound = true;
             // Don't build too close to any enemy building.
-            if (getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateABQ, retVal, 60.0) >= 0)
+            if (getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, retVal, 60.0) >= 0)
             {
                siteFound = false;
             }
@@ -4117,12 +4123,19 @@ bool shouldBuildDock()
    int towerCount = kbUnitCount(cMyID, gTowerUnit, cUnitStateAlive);
    int age = kbGetAge();
    int time = xsGetTime();
+   int dockPlanID = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit);
+
+   // If we already have a dock planned, return false
+   if (dockPlanID > 0)
+   {
+      return false;
+   }
 
    // AssertiveWall: Hard and above on water spawn maps makes 2 docks Age 1 and 2, 4 Age 3 and above
    // Below Hard makes 1 and 2, respectfully
    // No dock building until age2 transition
    if ((((cDifficultyCurrent >= cDifficultyHard) && ((gNavyMap == true) && (age <= cAge2)) && (dockCount < 1)) ||
-      ((cDifficultyCurrent >= cDifficultyHard) && ((gNavyMap == true) && (age <= cAge2)) && (dockCount < 2) && (time > 6 * 60 * 1000)) ||
+      ((cDifficultyCurrent >= cDifficultyHard) && ((gNavyMap == true) && (age <= cAge2)) && (dockCount < 2) && (time > 8 * 60 * 1000)) ||
       ((cDifficultyCurrent >= cDifficultyHard) && ((gNavyMap == true) && (age <= cAge2)) && (dockCount < 3) && (time > 12 * 60 * 1000)) ||
       ((cDifficultyCurrent >= cDifficultyHard) && ((gStartOnDifferentIslands == true) && (age >= cAge3)) && (dockCount < 4)) ||
       ((cDifficultyCurrent >= cDifficultyHard) && ((gStartOnDifferentIslands == true) && (age >= cAge4)) && (dockCount < 5)) ||
@@ -5154,5 +5167,152 @@ minInterval 15
 
       gLastDefendMissionTime = xsGetTime();
       debugMilitary("***** DEFENDING player " + targetPlayer + " base " + targetBaseID);*/
+   }
+}
+
+
+//==============================================================================
+/* attackRetreat
+   AssertiveWall: checks if the attacking force needs to retreat
+      Kills the plan and returns all units to the forward base or main base
+
+*/
+//==============================================================================
+rule attackRetreat
+inactive
+minInterval 10
+{
+   if (gLandAttackPlanID < 0)
+   {
+      // No attack plan to work with
+      xsDisableSelf();
+      return;
+   }
+
+   vector targetLocation = cInvalidVector;
+   int friendlyArmySize = aiPlanGetNumberUnits(gLandAttackPlanID, cUnitTypeLogicalTypeLandMilitary);
+   int friendlyStrength = -1;
+   int allyStrength = -1;
+   int enemyStrength = -1;
+   bool retreat = false;
+   int tempUnit = -1;
+   vector retreatLoc = cInvalidVector;
+   bool allyNear = false;
+   bool weAreWinning = false;
+   vector allyTargetLocation = cInvalidVector;
+
+   // Check the strength of our army
+   friendlyStrength = getFriendlyArmyValue(gLandAttackPlanID);
+   targetLocation = aiPlanGetVariableVector(gLandAttackPlanID, cCombatPlanTargetPoint, 0);
+
+   // Check strength of enemy and ally army at our target location
+   enemyStrength = getAreaStrength(targetLocation, 50, cPlayerRelationEnemyNotGaia);
+   allyStrength = getAreaStrength(targetLocation, 50, cPlayerRelationAlly);
+
+   // Retreat if our strength is too small
+   if (friendlyStrength + allyStrength < enemyStrength * 1.2)
+   {
+      if (allyStrength > 0)
+      {
+         allyNear = true;
+         allyTargetLocation = targetLocation;
+      }
+      retreat = true;
+   }
+   // We are winning if we have double the enemy strength, and the enemy has at least 20 musk worth of units
+   // Need something to prevent this from firing multiple times
+   /*else if ((friendlyStrength + allyStrength > enemyStrength * 2.0) && enemyStrength > 2000)
+   {
+      weAreWinning = true;
+   }*/
+
+   // Now look at where we are using the first unit, but only if we don't already know we're retreating
+   if (retreat == false)
+   {
+      targetLocation = kbUnitGetPosition(aiPlanGetUnitByIndex(gLandAttackPlanID, 0));
+
+      // Recheck strength of enemy and ally army at our target location
+      enemyStrength = getAreaStrength(targetLocation, 50, cPlayerRelationEnemyNotGaia);
+      allyStrength = getAreaStrength(targetLocation, 50, cPlayerRelationAlly);
+
+      // Retreat if our strength is too small
+      if ((friendlyStrength + allyStrength < enemyStrength * 1.2) && retreat == false)
+      {
+         if (allyStrength > 0)
+         {
+            allyNear = true;
+            allyTargetLocation = targetLocation;
+         }
+         retreat = true;
+      }
+   }
+
+   // Tell everyone to go back to base and delete the plan
+   if (retreat == true)
+   {
+      // Attempt to set the plan inactive before telling everyone to return
+      aiPlanSetActive(gLandAttackPlanID, false);
+
+      // Set the base to return to
+      if (gForwardBaseState == cForwardBaseStateActive && gForwardBaseLocation != cInvalidVector)
+      {
+         retreatLoc = gForwardBaseLocation;
+      }
+      else
+      {
+         retreatLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+      }
+
+      // Task everyone to return
+      for (i = 0; < friendlyArmySize)
+      {
+         tempUnit = aiPlanGetUnitByIndex(gLandAttackPlanID, i);
+         aiTaskUnitMove(tempUnit, retreatLoc);
+      }
+
+
+      // Handle the failed chats
+      // First see if allies are close by
+      if (allyNear == true)
+      {
+         // I guess we can't use this one. A couple suggestions for later:
+         /*cAICommPromptToAllyWeAreLosingHeIsStronger
+         cAICommPromptToAllyWeAreLosingHeIsWeaker
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyAdviceWithdrawFromBattle, allyTargetLocation);
+         */
+      }
+      else
+      {
+         // If not, go through failure chats
+         targetLocation = aiPlanGetVariableVector(gLandAttackPlanID, cCombatPlanTargetPoint, 0);
+         switch (gAttackTargetType)
+         {
+            case cAttackTargetTown:
+            case cAttackTargetBase:
+            {
+               sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIFailedToDestroyTown, targetLocation);
+            }
+            case cAttackTargetTradeSite:
+            {
+               sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIFailedToDestroyTradeSite, targetLocation);
+            }
+            case cAttackTargetSettlers:
+            {
+               // nothing for now
+            }
+         }
+      }
+
+      // Destroy the plan.
+      aiPlanDestroy(gLandAttackPlanID);
+      gLandAttackPlanID = -1;
+      xsDisableSelf();
+   }
+   // If we aren't retreating, check if we can send a winning chat
+   else
+   {
+      // Not written for now
+      //cAICommPromptToAllyWeAreWinning
+      //cAICommPromptToAllyBattleOverIWonAsExpected
    }
 }
