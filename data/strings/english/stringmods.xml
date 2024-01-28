@@ -1072,8 +1072,8 @@
       <string _locid="301068">Build a Train Station which allows you to transport units between Train Stations and Commanderies &lt;color=1.0, 0.0, 0.0&gt;(Requiers Iron Horse Trade Route upgrade)&lt;/color&gt; \n300 &lt;icon="(32)(resources/images/hud/resource_wood.png)"&gt;</string>
       <string _locid="301069">ZP Train Station: Inactiva A</string>
       <string _locid="301070">ZP Train Station: Inactive B</string>
-      <string _locid="301071">Units may not be deployed from Train Stations or Command Wagons right now.</string>
-
+      <string _locid="301071">Units may not be deployed from Train Stations right now.</string>
+      <string _locid="301072">Units may not be deployed from Command Wagon right now.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

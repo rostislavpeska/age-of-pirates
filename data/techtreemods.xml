@@ -11137,6 +11137,14 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpWagonDeploy" type="Normal">
+    <dbid>40392</dbid>
+    <displaynameid>124673</displaynameid>
+    <researchpoints>2.5000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\abilities\ability_commandery_eject.png</icon>
+    <flag>Shadow</flag>
+  </tech>
 
  
  

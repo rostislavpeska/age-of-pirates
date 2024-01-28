@@ -20301,8 +20301,8 @@
     <notcontain>deStealthPetard</notcontain>
     <notcontain>LogicalTypeNavalMilitary</notcontain>
     <notcontain>AbstractFishingBoat</notcontain>
-    <deploymentcommand>zpStationDeploy</deploymentcommand>
-    <command page="2" column="0">zpStationDeploy</command>
+    <deploymentcommand>zpWagonDeploy</deploymentcommand>
+    <command page="2" column="0">zpWagonDeploy</command>
     <command page="0" column="0">zpTrainLevy</command>
   </unit>
   <unit id="20201" name="zpArmoredTrainGunCarStatic">

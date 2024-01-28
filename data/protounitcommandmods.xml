@@ -282,6 +282,25 @@
     <notcancellable>
     </notcancellable>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpWagonDeploy</name>
+    <icon>resources\images\icons\command\ability_train_station_eject.png</icon>
+    <command>ejectAll(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <associatedtech>zpWagonDeploy</associatedtech>
+    <associatedpower>deCommanderyDeploy</associatedpower>
+    <rollovertextid>124673</rollovertextid>
+    <disabledrollovertextid>301072</disabledrollovertextid>
+    <usemultiple>
+    </usemultiple>
+    <usemediumbutton3>
+    </usemediumbutton3>
+    <deploy>
+    </deploy>
+    <notcancellable>
+    </notcancellable>
+  </protounitcommand>
 
 
   <!--
