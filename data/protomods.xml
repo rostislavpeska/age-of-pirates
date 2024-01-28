@@ -372,7 +372,7 @@
       <damagecap>1.000000</damagecap>
       <rof>1.000000</rof>
       <maxrange>100000.000000</maxrange>
-      <damageflags>GAIAEnemy</damageflags>
+      <damageflags>GAIASelfAllyEnemy</damageflags>
     </protoaction>
   </unit>
   <unit name="ypConsulate">
@@ -19792,6 +19792,7 @@
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractArmoredTrain</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>Ranged</unittype>
     <unittype>Unit</unittype>
@@ -20151,6 +20152,7 @@
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractArmoredTrain</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>Ranged</unittype>
     <unittype>Unit</unittype>
@@ -20208,6 +20210,7 @@
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractArmoredTrain</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>Ranged</unittype>
     <unittype>Unit</unittype>
@@ -20265,6 +20268,7 @@
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractArmoredTrain</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>Ranged</unittype>
     <unittype>Unit</unittype>
@@ -20279,6 +20283,26 @@
     <flag>NotDeleteable</flag>
     <flag>Tracked</flag>
     <flag>PlaceAnywhere</flag>
+    <flag>HideGarrisonFlag</flag>
+    <flag>MeteredGarrison</flag>
+    <flag>IgnoreDefaultEjectTimeout</flag>
+    <flag>DoNotQueueEjectActions</flag>
+    <flag>SharedGarrison</flag>
+    <flag>DoNotAllowAllowAlliedGarrison</flag>
+    <flag>DeploymentUngarrison</flag>
+    <flag>HasGatherPoint</flag>
+    <maxcontained>40</maxcontained>
+    <contain indelay="7.0" outdelay="0.0">AbstractArtillery</contain>
+    <contain indelay="3.5" outdelay="0.0">Military</contain>
+    <contain indelay="0.75" outdelay="0.0">AbstractVillager</contain>
+    <contain>LogicalTypeGarrisonInShips</contain>
+    <notcontain>xpPetard</notcontain>
+    <notcontain>xpPetardNitro</notcontain>
+    <notcontain>deStealthPetard</notcontain>
+    <notcontain>LogicalTypeNavalMilitary</notcontain>
+    <notcontain>AbstractFishingBoat</notcontain>
+    <deploymentcommand>zpStationDeploy</deploymentcommand>
+    <command page="2" column="0">zpStationDeploy</command>
     <command page="0" column="0">zpTrainLevy</command>
   </unit>
   <unit id="20201" name="zpArmoredTrainGunCarStatic">
@@ -20320,6 +20344,7 @@
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractArmoredTrain</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>Ranged</unittype>
     <unittype>Unit</unittype>
@@ -20875,7 +20900,8 @@
   </unit>
   <unit id="20210" name="zpPropBarn">
     <dbid>20210</dbid>
-    <displaynameid>301044</displaynameid>
+    <displaynameid>301060</displaynameid>
+    <editornameid>301044</editornameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
@@ -20901,6 +20927,7 @@
     <unittype>BuildingClass</unittype>
     <unittype>Unattackable</unittype>
     <unittype>Building</unittype>
+    <unittype>AbstractTradeRouteBuilding</unittype>
     <flag>FlattenGround</flag>
     <flag>Doppled</flag>
     <flag>InvulnerableIfGaia</flag>
@@ -20919,7 +20946,6 @@
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
-    <flag>NotSelectable</flag>
     <flag>PlaceAnywhere</flag>
   </unit>
   <unit id="20211" name="zpTrainStopper">
@@ -21031,11 +21057,14 @@
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractArmoredTrain</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>Ranged</unittype>
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
+    <unittype>AbstractHealer</unittype>
+    <unittype>AbstractFindHealer</unittype>
     <flag>DisplayRange</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -21047,8 +21076,8 @@
     <flag>Tracked</flag>
     <flag>PlaceAnywhere</flag>
     <flag>HasGatherPoint</flag>
-    <flag>ShowAreaHealRate</flag>
-    <tactics>fieldhospital.tactics</tactics>
+    <flag>CanAutoHeal</flag>
+    <tactics>ambulance.tactics</tactics>
   </unit>
   <unit id="20214" name="zpArmoredTrainGunpowderMove">
     <dbid>20214</dbid>
@@ -21096,8 +21125,8 @@
     <flag>GivesLOSToAll</flag>
     <command page="10" column="7">Delete</command>
   </unit>
-  <unit id="20200" name="zpArmoredTrainGunpowderStatic">
-    <dbid>20200</dbid>
+  <unit id="20215" name="zpArmoredTrainGunpowderStatic">
+    <dbid>20215</dbid>
     <displaynameid>301053</displaynameid>
     <editornameid>301055</editornameid>
     <obstructionradiusx>0.4900</obstructionradiusx>
@@ -21135,6 +21164,7 @@
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractArmoredTrain</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>Ranged</unittype>
     <unittype>Unit</unittype>
@@ -21164,16 +21194,415 @@
       <damage>110.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>0.00001</rof>
-      <maxrange>14.000000</maxrange>
+      <maxrange>15.000000</maxrange>
       <damagebonus type="Building">9.000000</damagebonus>
       <damagebonus type="deMalteseGun">0.500000</damagebonus>
       <damagebonus type="AbstractCavalry">1.500000</damagebonus>
       <damagebonus type="AbstractLightInfantry">1.300000</damagebonus>
       <damagebonus type="HuntedResource">0.000001</damagebonus>
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
-      <damagearea>14.000000</damagearea>
+      <damagebonus type="AbstractArmoredTrain">100.000000</damagebonus>
+      <damagearea>15.000000</damagearea>
       <damageflags>SelfAllyEnemy</damageflags>
     </protoaction>
+  </unit>
+  <unit id="20216" name="zpTrainStationA">
+    <dbid>20216</dbid>
+    <displaynameid>42447</displaynameid>
+    <editornameid>301056</editornameid>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>3.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\trading_post\railway_station.xml</animfile>
+    <deadreplacement>BuildingRubble5x5</deadreplacement>
+    <placementfile>buildinglarge.xml</placementfile>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <portraiticon>resources\art\buildings\train_station_portrait.png</portraiticon>
+    <rollovertextid>301067</rollovertextid>
+    <shortrollovertextid>301067</shortrollovertextid>
+    <legacyhotkeycontext>CommanderyAccel</legacyhotkeycontext>
+    <initialhitpoints>1500.0000</initialhitpoints>
+    <maxhitpoints>1500.0000</maxhitpoints>
+    <los>30.0000</los>
+    <buildpoints>40.0000</buildpoints>
+    <bounty>140.0000</bounty>
+    <buildbounty>70.0000</buildbounty>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>1</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <maxcontained>40</maxcontained>
+    <socketunittype>TowerSocket</socketunittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractOutpost</unittype>
+    <unittype>HCGatherPointPri2</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>Building</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>Tracked</flag>
+    <flag>BuildingShowTactics</flag>
+    <flag>MeteredGarrison</flag>
+    <flag>IgnoreDefaultEjectTimeout</flag>
+    <flag>DoNotQueueEjectActions</flag>
+    <flag>SharedGarrison</flag>
+    <flag>DoNotAllowAllowAlliedGarrison</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DeploymentUngarrison</flag>
+    <flag>Invulnerable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>NotDeleteable</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <contain indelay="7.0" outdelay="0.0">AbstractArtillery</contain>
+    <contain indelay="3.5" outdelay="0.0">Military</contain>
+    <contain indelay="0.75" outdelay="0.0">AbstractVillager</contain>
+    <contain>LogicalTypeGarrisonInShips</contain>
+    <notcontain>xpPetard</notcontain>
+    <notcontain>xpPetardNitro</notcontain>
+    <notcontain>deStealthPetard</notcontain>
+    <notcontain>LogicalTypeNavalMilitary</notcontain>
+    <notcontain>AbstractFishingBoat</notcontain>
+    <deploymentcommand>zpStationDeploy</deploymentcommand>
+    <command page="10" column="2">SetGatherPointEconomy</command>
+    <command page="10" column="2">SetGatherPointMilitary</command>
+    <command page="1" column="4">SetBuildingAsHomeCityGatherPointEconomic</command>
+    <command page="1" column="5">SetBuildingAsHomeCityGatherPointMilitary</command>
+    <command page="2" column="0">zpStationDeploy</command>
+  </unit>
+  <unit id="20217" name="zpTrainStationB">
+    <dbid>20217</dbid>
+    <displaynameid>42447</displaynameid>
+    <editornameid>301057</editornameid>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>3.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\trading_post\railway_station.xml</animfile>
+    <deadreplacement>BuildingRubble5x5</deadreplacement>
+    <placementfile>buildinglarge.xml</placementfile>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <portraiticon>resources\art\buildings\train_station_portrait.png</portraiticon>
+    <rollovertextid>301067</rollovertextid>
+    <shortrollovertextid>301067</shortrollovertextid>
+    <legacyhotkeycontext>CommanderyAccel</legacyhotkeycontext>
+    <initialhitpoints>1500.0000</initialhitpoints>
+    <maxhitpoints>1500.0000</maxhitpoints>
+    <los>30.0000</los>
+    <buildpoints>40.0000</buildpoints>
+    <bounty>140.0000</bounty>
+    <buildbounty>70.0000</buildbounty>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>1</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <maxcontained>40</maxcontained>
+    <socketunittype>TowerSocket</socketunittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractOutpost</unittype>
+    <unittype>HCGatherPointPri2</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>Building</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>Tracked</flag>
+    <flag>BuildingShowTactics</flag>
+    <flag>MeteredGarrison</flag>
+    <flag>IgnoreDefaultEjectTimeout</flag>
+    <flag>DoNotQueueEjectActions</flag>
+    <flag>SharedGarrison</flag>
+    <flag>DoNotAllowAllowAlliedGarrison</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DeploymentUngarrison</flag>
+    <flag>Invulnerable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>NotDeleteable</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <contain indelay="7.0" outdelay="0.0">AbstractArtillery</contain>
+    <contain indelay="3.5" outdelay="0.0">Military</contain>
+    <contain indelay="0.75" outdelay="0.0">AbstractVillager</contain>
+    <contain>LogicalTypeGarrisonInShips</contain>
+    <notcontain>xpPetard</notcontain>
+    <notcontain>xpPetardNitro</notcontain>
+    <notcontain>deStealthPetard</notcontain>
+    <notcontain>LogicalTypeNavalMilitary</notcontain>
+    <notcontain>AbstractFishingBoat</notcontain>
+    <deploymentcommand>zpStationDeploy</deploymentcommand>
+    <command page="10" column="2">SetGatherPointEconomy</command>
+    <command page="10" column="2">SetGatherPointMilitary</command>
+    <command page="1" column="4">SetBuildingAsHomeCityGatherPointEconomic</command>
+    <command page="1" column="5">SetBuildingAsHomeCityGatherPointMilitary</command>
+    <command page="2" column="0">zpStationDeploy</command>
+  </unit>
+  <unit id="20218" name="zpStationFlag">
+    <dbid>20218</dbid>
+    <displaynameid>32671</displaynameid>
+    <editornameid>301059</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unit</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>Tracked</flag>
+    <flag>VariationLocked</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+  </unit>
+  <unit id="20219" name="zpTrainTracks">
+    <dbid>20219</dbid>
+    <displaynameid>301061</displaynameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>units\trains\track.xml</animfile>
+    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <flag>NotSelectable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+  </unit>
+  <unit id="20220" name="spSocketTrainStationA">
+    <dbid>20220</dbid>
+    <displaynameid>301064</displaynameid>
+    <editornameid>301069</editornameid>
+    <socketbuildprotounit>zpTrainStationA</socketbuildprotounit>
+    <socketbuildrate>10.0000</socketbuildrate>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>3.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\trading_post\railway_station_socket.xml</animfile>
+    <portraiticon>resources\art\buildings\train_station_portrait.png</portraiticon>
+    <rollovertextid>301066</rollovertextid>
+    <shortrollovertextid>301066</shortrollovertextid>
+    <los>0.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>TowerSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotDeleteable</flag>
+    <flag>PlaceAnywhere</flag>
+    <command page="1" column="0">zpBuildTrainStationInactive</command>
+  </unit>
+  <unit id="20221" name="spSocketTrainStationB">
+    <dbid>20222</dbid>
+    <displaynameid>301064</displaynameid>
+    <editornameid>301070</editornameid>
+    <socketbuildprotounit>zpTrainStationB</socketbuildprotounit>
+    <socketbuildrate>10.0000</socketbuildrate>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>3.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\trading_post\railway_station_socket.xml</animfile>
+    <portraiticon>resources\art\buildings\train_station_portrait.png</portraiticon>
+    <rollovertextid>301066</rollovertextid>
+    <shortrollovertextid>301066</shortrollovertextid>
+    <los>0.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>TowerSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotDeleteable</flag>
+    <flag>PlaceAnywhere</flag>
+    <command page="1" column="0">zpBuildTrainStationInactive</command>
+  </unit>
+  <unit id="20222" name="spSocketTrainStationActiveA">
+    <dbid>20222</dbid>
+    <displaynameid>301064</displaynameid>
+    <editornameid>301062</editornameid>
+    <socketbuildprotounit>zpTrainStationA</socketbuildprotounit>
+    <socketbuildrate>10.0000</socketbuildrate>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>3.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\trading_post\railway_station_socket.xml</animfile>
+    <portraiticon>resources\art\buildings\train_station_portrait.png</portraiticon>
+    <rollovertextid>301066</rollovertextid>
+    <shortrollovertextid>301066</shortrollovertextid>
+    <los>0.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>TowerSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotDeleteable</flag>
+    <flag>PlaceAnywhere</flag>
+    <command page="1" column="0">zpBuildTrainStation</command>
+  </unit>
+  <unit id="20223" name="spSocketTrainStationActiveB">
+    <dbid>20223</dbid>
+    <displaynameid>301064</displaynameid>
+    <editornameid>301063</editornameid>
+    <socketbuildprotounit>zpTrainStationB</socketbuildprotounit>
+    <socketbuildrate>10.0000</socketbuildrate>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>3.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\trading_post\railway_station_socket.xml</animfile>
+    <portraiticon>resources\art\buildings\train_station_portrait.png</portraiticon>
+    <rollovertextid>301066</rollovertextid>
+    <shortrollovertextid>301066</shortrollovertextid>
+    <los>0.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>TowerSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotDeleteable</flag>
+    <flag>PlaceAnywhere</flag>
+    <command page="1" column="0">zpBuildTrainStation</command>
   </unit>
 
 
@@ -21184,6 +21613,112 @@
 
 
   <!--TEST-->
+
+  <unit id="" name="zpTestBlowgunner">
+    <dbid></dbid>
+    <displaynameid>29183</displaynameid>
+    <editornameid>301058</editornameid>
+    <populationcount>3</populationcount>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>5.0000</maxvelocity>
+    <maxrunvelocity>7.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\test\outlaw_blowgun.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\natives\blowgun_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\natives\blowgun_portrait.png</portraiticon>
+    <rollovertextid>24180</rollovertextid>
+    <shortrollovertextid>46116</shortrollovertextid>
+    <initialhitpoints>135.0000</initialhitpoints>
+    <maxhitpoints>135.0000</maxhitpoints>
+    <los>22.0000</los>
+    <projectileprotounit>Arrow</projectileprotounit>
+    <autoattackrange>16.0000</autoattackrange>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>40.0000</trainpoints>
+    <bounty>20.0000</bounty>
+    <buildbounty>20.0000</buildbounty>
+    <cost resourcetype="Gold">100.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.1000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>AbstractArcher</unittype>
+    <unittype>AbstractFootArcher</unittype>
+    <unittype>AbstractArchaicInfantry</unittype>
+    <unittype>AbstractSkirmisher</unittype>
+    <unittype>AbstractOutlaw</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>blowgunner.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>7.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>6.000000</maxrange>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>HandAttack</name>
+      <damage>8.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractVillager">1.500000</damagebonus>
+      <damagebonus type="AbstractInfantry">1.500000</damagebonus>
+      <damagebonus type="AbstractHeavyCavalry">0.750000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">0.750000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>VolleyAttack</name>
+      <damage>13.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>1.500000</rof>
+      <projectile>Blowdart</projectile>
+      <damagebonus type="AbstractVillager">1.500000</damagebonus>
+      <damagebonus type="AbstractInfantry">1.500000</damagebonus>
+      <damagebonus type="AbstractHeavyCavalry">0.600000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">0.600000</damagebonus>
+    </protoaction>
+  </unit>
+
 
   <!--<unit id="20212" name="zpTradingPostCaptureInvisible">
     <dbid>20212</dbid>

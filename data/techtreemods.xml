@@ -10758,6 +10758,9 @@
       </effect>
       <effect type="TransformUnit" toprotoid="zpArmoredTrainHospitalStatic" fromprotoid="zpArmoredTrainHospitalMove">
       </effect>
+      <effect type="Data" action="Heal" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainHospitalStatic</target>
+      </effect>
     </effects>
     
   </tech>
@@ -11115,6 +11118,24 @@
     <rollovertextid>301043</rollovertextid>
     <flag>DENoTextMessageIfFree</flag>
     <flag>Shadow</flag>
+  </tech>
+  <tech name="zpTrainStationUpgradeA" type="Normal">
+    <dbid>40390</dbid>
+    <flag>Shadow</flag>
+    <status>UNOBTAINABLE</status>
+    <effects>
+       <effect type="TransformUnit" toprotoid="spSocketTrainStationActiveA" fromprotoid="spSocketTrainStationA">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainStationUpgradeB" type="Normal">
+    <dbid>40391</dbid>
+    <flag>Shadow</flag>
+    <status>UNOBTAINABLE</status>
+    <effects>
+       <effect type="TransformUnit" toprotoid="spSocketTrainStationActiveB" fromprotoid="spSocketTrainStationB">
+      </effect>
+    </effects>
   </tech>
 
  

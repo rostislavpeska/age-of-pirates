@@ -1,0 +1,28 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\trading_post\textures\train_stationb_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\spc\train_station\textures\train_station_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\spc\train_station\textures\train_station_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings\trading_post\textures\train_stationb_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\generic_props\textures\generic_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\generic_props\textures\generic_props_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\generic_props\textures\generic_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
