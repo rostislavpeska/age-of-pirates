@@ -1069,7 +1069,7 @@
       <string _locid="301065">Build a Train Station which allows you to transport units between Train Stations and Commanderies</string>
       <string _locid="301066">Allows you to construct a train station after the trade route is upgraded to the train level.</string>
       <string _locid="301067">Transports units between Train Stations, Maltese Commanderies and Armored Train Command Wagon.</string>
-      <string _locid="301068">Build a Train Station which allows you to transport units between Train Stations and Commanderies &lt;color=1.0, 0.0, 0.0&gt;(Requiers Iron Horse Trade Route upgrade)&lt;/color&gt;</string>
+      <string _locid="301068">Build a Train Station which allows you to transport units between Train Stations and Commanderies &lt;color=1.0, 0.0, 0.0&gt;(Requiers Iron Horse Trade Route upgrade)&lt;/color&gt; \n300 &lt;icon="(32)(resources/images/hud/resource_wood.png)"&gt;</string>
       <string _locid="301069">ZP Train Station: Inactiva A</string>
       <string _locid="301070">ZP Train Station: Inactive B</string>
       <string _locid="301071">Units may not be deployed from Train Stations or Command Wagons right now.</string>

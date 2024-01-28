@@ -3,7 +3,7 @@
     <definebone>bone_banner</definebone>
     <component>TrainStationC
         <assetreference type="GrannyModel">
-            <file>buildings\constructions\dock_stage1</file>
+            <file>buildings\trading_post\trainstation_con_stage1_Model</file>
         </assetreference>
         <decal>
             <texture>buildings\native_settlement\japan_decal_01</texture>

@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="textures\construction\scaffolding_BaseColor">
+      </texture>
+      <texture name="Normals" override="textures\construction\scaffolding_Normals">
+      </texture>
+      <texture name="Masks" override="textures\construction\scaffolding_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="textures\construction\props_colony_BaseColor">
+      </texture>
+      <texture name="Normals" override="textures\construction\props_colony_Normals">
+      </texture>
+      <texture name="Masks" override="textures\construction\props_colony_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

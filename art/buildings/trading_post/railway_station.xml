@@ -4,7 +4,7 @@
     <submodel>construction1
         <component>TrainStationC
             <assetreference type="GrannyModel">
-                <file>buildings\constructions\dock_stage1</file>
+                <file>buildings\trading_post\trainstation_con_stage1_Model</file>
             </assetreference>
             <decal>
                 <effecttype>bump</effecttype>
@@ -22,7 +22,7 @@
     <submodel>construction2
         <component>TrainStationC
             <assetreference type="GrannyModel">
-                <file>buildings\constructions\dock_stage2</file>
+                <file>buildings\trading_post\trainstation_con_stage2_Model</file>
             </assetreference>
             <decal>
                 <effecttype>bump</effecttype>
@@ -51,7 +51,7 @@
         <attachment>Scafolding
             <component>Scafolding
             <assetreference type="GrannyModel">
-                <file>buildings\constructions\dock_stage3</file>
+                <file>buildings\trading_post\trainstation_con_stage3_Model</file>
             </assetreference>
             </component>
             <anim>Idle
