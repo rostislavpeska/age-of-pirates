@@ -2373,9 +2373,10 @@ void init(void)
          xsEnableRule("tcChats");
       }
 
-      // AssertiveWall: lull in action
+      // AssertiveWall: lull in action, explorer related taunts, wall taunt, and kothTimer
       xsEnableRule("lull");
       xsEnableRule("explorerChats");
+      xsEnableRule("wallChat");
       // AssertiveWall: king of the hill chats
       if (aiIsKOTHAllowed() == true)
       {
@@ -2399,11 +2400,19 @@ void init(void)
    if (cvOkToExplore == true)
    {
       // Don't start exploring if we need the explorer to build our starting TC.
+      // AssertiveWall: if we don't have enough wood that means we're on Lost and need to explore. 
+      // Note: Lost doesn't work. AI can't tell what a treasure has
       if (gStartMode != cStartModeLandResources)
       {
          xsEnableRule("exploreMonitor");
          exploreMonitor(); // Call it once directly so we instantly start with exploring instead of waiting 10 seconds.
       }
+      /*else if (kbResourceGet(cResourceWood) < 500)
+      {
+         //aiChat(1, "gatherLostNuggets");
+         xsEnableRule("gatherLostNuggets");
+      }*/
+      
       
       if (gNavyMap == true)
       {
@@ -2446,6 +2455,12 @@ minInterval 1
    {
       return; // Do nothing until game time is beyond 10 seconds
    }
+
+   // AssertiveWall: If this is lost, make sure we have enough resources first
+   /*if (gStartMode == cStartModeLandResources && kbResourceGet(cResourceWood) < 500)
+   {
+      return;
+   }*/
 
    aiPlanSetActive(gTCBuildPlanID);
    debugBuildings("Activating startup Town Center build plan " + gTCBuildPlanID);
@@ -2578,9 +2593,19 @@ minInterval 2
    {
       gMigrationMap = true;
    }
+
+   // AssertiveWall: attacker/defender maps, and italian wars
+   checkAttackDefenseMap();
    
    if (cvOkToBuild == true)
    {
+      // AssertiveWall: Set up build orders for standard starts
+      if (kbGetAge() == cAge1 && kbResourceGet(cResourceFood) <= 0 && gUseBuildOrder == true)
+      {
+         //createBuildOrder();
+         //xsEnableRuleGroup("buildOrderRules");
+      }
+
       // AssertiveWall: Delay building if we're on ceylon or equivalent
       if (gMigrationMap == true)
       {
@@ -2639,6 +2664,7 @@ minInterval 2
       xsEnableRule("useAsianLevy");
    }
 
+   // AssertiveWall: fixed last conditional, !=, vs. ==
    if ((cMyCiv != cCivIndians) && (cMyCiv != cCivSPCIndians) &&
        (cMyCiv != cCivJapanese) && (cMyCiv != cCivSPCJapanese) && (cMyCiv != cCivSPCJapaneseEnemy))
    {
@@ -2694,7 +2720,7 @@ minInterval 2
       {
          xsEnableRule("treatyCheckStartMakingArmy");
          // Intervals work on whole seconds not on ms.
-         xsSetRuleMinInterval("treatyCheckStartMakingArmy", (treatyEndTime - 10 * 60 * 1000) / 1000); 
+         xsSetRuleMinInterval("treatyCheckStartMakingArmy", (treatyEndTime - 5 * 60 * 1000) / 1000); // AssertiveWall: down to 5 from 10 minutes
       }
    }
 

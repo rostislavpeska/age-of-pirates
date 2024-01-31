@@ -16,6 +16,39 @@ extern const int cTileFog = 2;
 extern const int cTileVisible = 4;
 
 //==============================================================================
+// Build orders.
+//==============================================================================
+
+extern bool gUseBuildOrder = false; // easily turn build order logic on/off
+
+// Keep build order globals here to keep track of them easier
+extern int boBuildingArray = -1;
+extern int boShipmentArray = -1;
+extern int boResourceBreakdownArrayFood = -1; // These are percentages, should always be set between 0 and 100
+extern int boResourceBreakdownArrayWood = -1;
+extern int boResourceBreakdownArrayGold = -1;
+extern int boArmyTrainArray = -1;
+extern int boResearchTechArray = -1;
+extern int boResearchBuilding = -1;
+
+// Conditionals
+extern int boBuildingBools = -1;
+extern int boShipmentBools = -1;
+extern int boResourceBools = -1;
+extern int boArmyTrainBools = -1;
+extern int boResearchBools = -1;
+
+// Conditional table
+// Pass "1" if you want it to always be true
+
+// Age up stored as negative
+extern const int cAge2tconditional = -11;
+extern const int cAge2conditional = -12;
+extern const int cAge3conditional = -13;
+extern const int cAge4conditional = -14;
+
+
+//==============================================================================
 // Islands. AssertiveWall
 //==============================================================================
 
@@ -354,6 +387,7 @@ extern int gNavyRepairPlan = -1; // Saves the ID of the naval defend combat (hij
 extern int gNavyDefendPlan = -1; // Persistent naval defend plan.
 extern int gNavyAttackPlan = -1; // Saves the ID of the naval attack combat plan to manage land/navy interactions.
 extern vector gNavyVec = cInvalidVector; // The center of the navy's operations.
+extern vector gLastNavyVec = cInvalidVector; // AssertiveWall: Stores our last dock build position
 extern int gLastWSTime = 0; // AssertiveWall: used to know the last time enemy Warships were spotted
 extern bool gHaveWaterSpawnFlag = false;
 extern int gWaterSpawnFlagID = -1;

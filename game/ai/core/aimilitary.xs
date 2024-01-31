@@ -1409,6 +1409,12 @@ minInterval 15
          int kothID = getUnit(cUnitTypeypKingsHill, cPlayerRelationAny, cUnitStateAlive);
          targetPlayer = kbUnitGetPlayerID(kothID);
          targetBaseLocation = kbUnitGetPosition(kothID);
+         vector kothLocCheated = getClosestGaiaUnitPosition(cUnitTypeypKingsHill, kbGetMapCenter());
+         // If we can;t reach the KoTH location by land, we need to cheat and get the location (AI too dumb to find it)
+         if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(kothLocCheated), kbAreaGroupGetIDByPosition(mainBaseLocation)) == false)
+         {
+            targetBaseLocation = kothLocCheated;
+         }
       }
       // Exclude city state, which doesn't have a base ID.
       else if (targetPlayer > 0)
@@ -1877,22 +1883,22 @@ minInterval 5
       {
          unitID = kbUnitQueryGetResult(fishBoatQuery, i);
          unitPlanID = kbUnitGetPlanID(unitID);
-         if (aiPlanGetDesiredPriority(unitPlanID) > 19)
+         if (aiPlanGetDesiredPriority(unitPlanID) > 19 && unitPlanID != gFishingBellPlan)
          {  // Fishing priority is 19. Let anyone above that do their thing
             continue;
          }
          fBLocation = kbUnitGetPosition(unitID);
-         nearbyEnFound = getClosestVisibleUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, fBLocation, 31.0); // one bigger range than a frigate
+         nearbyEnFound = getClosestVisibleUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, fBLocation, 35.0); // three bigger range than a frigate
          if (nearbyEnFound > 0)
          {  
             // AssertiveWall: First add boat to gFishingBellPlan so we can control it
             aiPlanAddUnit(gFishingBellPlan, unitID);
 
-            // AssertiveWall: Two coarses of action depending on whether its a fishing boat or something else
+            // AssertiveWall: Two courses of action depending on whether its a fishing boat or something else
             if (kbUnitGetProtoUnitID(unitID) == gFishingUnit)
             {
                // AssertiveWall: Look for docks to garrison in. If none found then forts, town centers, towers
-               dockUnit = getUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 150.0);
+               dockUnit = getUnitByLocation(gDockUnit, cPlayerRelationSelf, cUnitStateAlive, fBLocation, 200.0);
                sLocation = kbUnitGetPosition(dockUnit);
                if (sLocation != cInvalidVector)
                {
@@ -2940,6 +2946,12 @@ void moveDefenseReflex(vector location = cInvalidVector, float radius = -1.0, in
    {
       radius = cvDefenseReflexRadiusActive;
    }
+   // AssertiveWall: On The great turkish war, always leave the troops gathering at the command center if we're on defense
+   if (cRandomMapName == "eugreatturkishwar" && btOffenseDefense == 0)
+   {
+      location = kbUnitGetPosition(getUnit(cUnitTypedeSPCHeadquartersVienna, cPlayerRelationAlly));
+   }
+
    if (location != cInvalidVector)
    {
       float desiredRadius = radius;

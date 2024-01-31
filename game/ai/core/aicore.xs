@@ -20,6 +20,8 @@ mutable void postInit(void) {}
 
 // Utilities.
 mutable vector getStartingLocation(void) { return (kbGetPlayerStartingPosition(cMyID)); }
+mutable vector getClosestGaiaUnitPosition(int unitTypeID = -1, vector position = cInvalidVector, float radius = -1.0) {return (cInvalidVector); }
+mutable int getUnit(int unitTypeID = -1, int playerRelationOrID = cMyID, int state = cUnitStateAlive) {return (-1); }
 
 // Buildings.
 mutable void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1) {}
@@ -78,8 +80,10 @@ mutable vector getDropoffPoint(vector pickup = cInvalidVector, vector dropoff = 
 //==============================================================================
 // Includes.
 //==============================================================================
+
 include "core\aiGlobals.xs";
 include "core\aiUtilities.xs";
+include "core\aiBuildOrders.xs";
 include "core\aiAssertiveWall.xs";
 include "core\aiBuildings.xs";
 include "core\aiTechs.xs";
@@ -2326,10 +2330,10 @@ minInterval 5
       {
          xsEnableRule("waterDefend");
          xsEnableRule("coastalGuns");
-         if (gMigrationMap == true)
-         {
+         //if (gMigrationMap == true)
+         //{
             xsEnableRule("dockWallOne");
-         }
+         //}
       }
 
       // AssertiveWall: Enable island hopping on the following maps
@@ -2382,11 +2386,6 @@ minInterval 5
       {
          xsEnableRule("navyManager");
       }   
-
-      if ((cDifficultyCurrent >= cDifficultyModerate) && (btRushBoom >= 0.0))
-      {
-         xsEnableRule("forwardBaseManager");
-      }
 
       updateResourceDistribution(true);
 
@@ -2469,6 +2468,16 @@ minInterval 5
       {
          xsEnableRule("waterAttack"); // Water attacking.
          //xsEnableRule("coastalGuns"); // Stage arty on coast
+      }
+
+      //AssertiveWall: Enable forward bases as early as Age 2 in certain situations
+      if ((cvOkToBuild == true) && 
+          (cvOkToBuildForts == true))
+      {
+         if (btRushBoom >= 0.5 || (cRandomMapName == "eugreatturkishwar" && btOffenseDefense == 0))
+         {
+            xsEnableRule("forwardBaseManager");
+         }
       }
 
 

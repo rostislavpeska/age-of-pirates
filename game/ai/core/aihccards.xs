@@ -2295,6 +2295,27 @@ void shipGrantedHandler(int parm = -1) // parm is unused.
          tech = aiHCDeckGetCardTechID(deck, i);
          totalValue = 0.0;
 
+         // AssertiveWall: take the build order shipment
+         int boShipmentLength = xsArrayGetSize(boShipmentArray);
+         int tempShipment = -1;
+
+         if (xsArrayGetInt(boShipmentArray, boShipmentLength - 1) > 0 && gUseBuildOrder == true)
+         {
+            for (j = 0; < boShipmentLength)
+            {
+               tempShipment = xsArrayGetInt(boShipmentArray, j);
+               if (tempShipment > 0)
+               {
+                  if (checkConditional(boShipmentBools, j) == true && tech == tempShipment)
+                  {  
+                     totalValue = 999999;  // send it
+                     xsArraySetInt(boShipmentArray, j, -1);  // Delete the entry
+                  }
+               }
+            }
+         }
+
+
          // The value determining process is split into two parts.
          // Part 1: we switch on the unitType associated with the card. We handle some specific unit types, but that's a minority.
          // If we couldn't find a handled unit type on the card it goes to the default statement. There we assign a value to the card
@@ -3176,7 +3197,7 @@ void shipGrantedHandler(int parm = -1) // parm is unused.
    if (bestCard >= 0)
    {
       // Where to drop shipment.
-      if (cDifficultyCurrent >= cDifficultyExpert)
+      if (cDifficultyCurrent >= cDifficultyHard)
       {
          int gatherUnitID = -1;
          cardFlags = aiHCDeckGetCardFlags(deck, bestCard);

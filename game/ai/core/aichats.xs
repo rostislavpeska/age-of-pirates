@@ -2600,3 +2600,23 @@ minInterval 5
    gLastExplorerCheck = explorerCheck;
    gLastExplorerCheck2 = explorerCheck2;
 }
+
+//==============================================================================
+// AssertiveWall: 
+// WallChat
+// Chat to taunt player if he puts up walls
+//==============================================================================
+rule wallChat
+inactive
+minInterval 5
+{
+   int wallID = getUnit(cUnitTypeAbstractWall, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
+   if (wallID >= 0)
+   { // We see a wall for the first time.
+      if (getUnitByLocation(cUnitTypeUnit, cMyID, cUnitStateAlive, kbUnitGetPosition(wallID), 50.0) >= 0)
+      { // I have a unit nearby, presumably I have LOS.
+         sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemyWhenHeWallsIn);
+         xsDisableSelf();
+      }
+   }
+}

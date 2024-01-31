@@ -6,6 +6,52 @@
 */
 //==============================================================================
 
+//==============================================================================
+/* getCoastalPoint: 
+   Give two points. It will go in that direction until it hits water, then drop
+   back a couple steps
+
+   Typically the landPoint will be the main base
+*/
+//==============================================================================
+vector getCoastalPoint(vector landPoint = cInvalidVector, vector waterPoint = cInvalidVector, int stepsBack = 1, bool isWaterPoint = false)
+{
+	// Start at land point. Take small increments toward water point until we hit water, then use steps back or forward
+   // depending on whether waterPoint is true or false
+	vector testPoint = landPoint;
+	int range = distance(landPoint, waterPoint);
+	vector normalizedVector = xsVectorNormalize(waterPoint - landPoint);
+	vector previousPoint = testPoint;
+   vector nextPoint = cInvalidVector;
+	int testAreaID = -1;
+
+	for (i = 0; < range)
+	{
+		testPoint = testPoint + normalizedVector;
+		testAreaID = kbAreaGetIDByPosition(testPoint);
+
+		if (kbAreaGetType(testAreaID) == cAreaTypeWater)
+		{
+         if (isWaterPoint == true)
+         {
+            return (nextPoint);
+         }
+         else
+         {
+			   return (previousPoint);
+         }
+		}
+
+		previousPoint = testPoint;
+      nextPoint = testPoint;
+		for (j = 0; < stepsBack)
+		{
+			previousPoint = previousPoint - normalizedVector; // Two steps back toward land
+         nextPoint = nextPoint + normalizedVector; // Two steps toward water
+		}
+	}
+	return cInvalidVector;
+}
 
 //==============================================================================
 /* attackRetreatCheck
@@ -100,7 +146,6 @@ minInterval 2
    if (nearbyEnemyCount1 + nearbyEnemyCount2 > 2)
    {
       //aiChat(1, "Attacking nearby Enemy en route");
-      sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, scout1Loc);
       for (i = 0; < attackSize)
       {
          tempUnit = aiPlanGetUnitByIndex(attackPlanID, i);
@@ -163,6 +208,367 @@ minInterval 2
    }
    return enemyLoc;
 }*/
+
+//==============================================================================
+/* Call City Guard
+   Levies the city guard whenever it is under threat
+   Based on useLevy
+
+   DESPCLevyCityGuards
+*/
+//==============================================================================
+rule callCityGuard
+inactive
+minInterval 10
+{
+   static int callCityarrayID = -1;
+   if (callCityarrayID == -1) // First run.
+   {
+      callCityarrayID = xsArrayCreateInt(3, -1, "City Guard Plans");
+   }
+   else
+   {
+      for (i = 0; < 3) // Reset array.
+      {
+         xsArraySetInt(callCityarrayID, i, -1);
+      }
+   }
+
+   int cityStateTPQueryID = createSimpleUnitQuery(cUnitTypeAgeUpBuilding, cMyID, cUnitStateAlive);
+   int numberResults = kbUnitQueryExecute(cityStateTPQueryID);
+   int cityStateTPID = -1;
+   int techID = cTechDESPCLevyCityGuards;
+
+   vector tPLocation = cInvalidVector;
+   int allyCount = -1;
+   int enemyCount = -1;
+   int cityGuardPlan = -1;
+   int numberGuardPlans = aiPlanGetNumberByTypeAndVariableType(cPlanResearch, cResearchPlanTechID, techID);
+   for (i = 0; < numberGuardPlans)
+   {
+      cityGuardPlan = aiPlanGetIDByTypeAndVariableType(cPlanResearch, cResearchPlanTechID, techID, true, i);
+      for (j = 0; < numberResults)
+      {
+         cityStateTPID = kbUnitQueryGetResult(cityStateTPQueryID, j);
+         if (cityStateTPID == aiPlanGetVariableInt(cityGuardPlan, cResearchPlanBuildingID, 0))
+         {
+            xsArraySetInt(callCityarrayID, j, cityGuardPlan);
+         }
+      }
+   }
+   
+   for (i = 0; < numberResults)
+   {
+      cityStateTPID = kbUnitQueryGetResult(cityStateTPQueryID, i);
+      cityGuardPlan = xsArrayGetInt(callCityarrayID, i);
+      if (kbBuildingTechGetStatus(techID, cityStateTPID) == cTechStatusObtainable) // TC can still use Levy.
+      {
+
+         tPLocation = kbUnitGetPosition(cityStateTPID);
+         enemyCount = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary,
+            cPlayerRelationEnemyNotGaia, cUnitStateAlive, tPLocation, 40.0);
+         allyCount = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary,
+            cPlayerRelationAlly, cUnitStateAlive, tPLocation, 40.0);
+
+         if (enemyCount >= allyCount + 5) // We're behind by 5 or more.
+         {
+            if (cityGuardPlan < 0)
+            {
+               createSimpleResearchPlanSpecificBuilding(techID, cityStateTPID, cMilitaryEscrowID, 99, 99);
+               //aiChat(1, "Called city guards");
+            }
+         }
+         else // No need to call levy.
+         {
+            if (cityGuardPlan >= 0) // We have a plan we must maybe destroy.
+            {
+               if (cityStateTPID == aiPlanGetVariableInt(cityGuardPlan, cResearchPlanBuildingID, 0))
+               {
+                  aiPlanDestroy(cityGuardPlan);
+               }
+            }
+         }
+      }
+   }
+}
+
+
+//==============================================================================
+/* Check for attack/defence special map
+   AssertiveWall: Checks to see if the map is a special attack or defend map,
+   and sets btbias accordingly
+*/
+//==============================================================================
+void checkAttackDefenseMap(void)
+{
+   int headquarters = -1;
+
+   if (cRandomMapName == "eueightyyearswar" ||
+       cRandomMapName == "eugreatturkishwar")
+   {
+      // Look for the different HQ buildings
+      headquarters = getUnit(cUnitTypedeSPCHeadquarters, cPlayerRelationAlly);
+      if (headquarters < 0)
+      {
+         headquarters = getUnit(cUnitTypedeSPCHeadquartersVienna, cPlayerRelationAlly);
+      }
+
+      if (headquarters > 0)
+      { // defender
+         btOffenseDefense = 0.0;
+         xsEnableRule("eightyYearsWarMonitor");
+      }
+      else
+      { // attacker
+         if (btOffenseDefense < 0.8)
+         {
+            btOffenseDefense = 0.8;
+         }
+      }
+   }
+
+   // everyone needs to focus on native sites on these maps
+   if (cRandomMapName == "eugreatturkishwar" || cRandomMapName == "euitalianwars")
+   {
+      if (btBiasNative < 0.5)
+      {
+         btBiasNative = 0.5;
+      }
+   }
+
+   if (cRandomMapName == "euitalianwars")
+   {  // Doesn't work yet
+      //xsEnableRule("callCityGuard");
+   }
+}
+
+//==============================================================================
+/* gatherLostNuggets
+   AssertiveWall: looks for wood nuggets to gather
+   Copied from the water nugget script, didn;t rename any variables
+   * not in use *
+*/
+//==============================================================================
+rule gatherLostNuggets
+inactive
+minInterval 2
+{
+   /*extern int gWaterNuggetPlan = -1;            // Persistent plan goes out to try and find water nuggets
+   //extern const int cWaterNuggetSearch = -1;    // Units moving to the water nugget
+   //extern const int cWaterNuggetAttack = 0;     // Units attacking the guardians 
+   //extern const int cWaterNuggetGather = 1;     // Units gathering the nugget
+   //extern int gWaterNuggetState = cWaterNuggetSearch;           // Stores the state of the water nugget plan
+   //extern int gWaterNuggetTarget = -1;          // Stores the target of whatever the water nugget plan is doing
+   */
+
+   // First Run, or after plan gets destroyed
+   // Just borrow all the water variables
+   if (gWaterNuggetPlan < 0)
+   {
+      int nuggetPlanID = aiPlanCreate("Nugget Raiding Plan", cPlanReserve);
+
+      aiPlanAddUnitType(nuggetPlanID, cUnitTypeLogicalTypeLandMilitary, 1, 99, 99);
+      aiPlanAddUnit(nuggetPlanID, gExplorerID);
+      aiPlanAddUnit(nuggetPlanID, gExplorer2ID);
+
+      aiPlanSetDesiredPriority(nuggetPlanID, 80); // Only thing going on
+      aiPlanSetActive(nuggetPlanID);
+      gWaterNuggetPlan = nuggetPlanID;
+   }
+
+   int explorerUnit = gExplorerID;
+   if (xsGetTime() > gWaterNuggetTimeout + 30*1000 && kbUnitGetActionType(explorerUnit) == cActionTypeIdle)
+   {  // Reset
+      gWaterNuggetState = cWaterNuggetSearch;
+      gWaterNuggetTimeout = xsGetTime();
+      return;
+   }
+
+   if (kbResourceGet(cResourceWood) >= 500)
+   {
+      // we have enough resources
+      xsDisableSelf();
+      return;
+   }
+
+
+   int nuggetID = -1;
+   int guardianQuery = -1;
+   int guardianID = -1;
+   int guardianNumber = -1;
+   int guardianHealth = 0;
+   vector waterNuggetLocation = cInvalidVector;
+   int bestNugget = -1;
+   int bestGuardianHP = 10000;
+   int bestGuardianID = -1;
+   vector targetLocation = cInvalidVector;
+   int numberExplorerWarships = aiPlanGetNumberUnits(gWaterNuggetPlan, cUnitTypeLogicalTypeLandMilitary);
+   //aiChat(1, "#" + numberExplorerWarships);
+
+   switch (gWaterNuggetState)
+   {
+      case cWaterNuggetSearch:
+      {  
+         xsSetRuleMinIntervalSelf(15);
+         vector explorerLoc = kbUnitGetPosition(explorerUnit);
+         int indexedExplorerUnit = -1;
+         int explorerFleetHP = 0;
+         int woodTreasure = -1;
+
+         // Looks for a suitable nugget and tells the ships to attack it
+         aiPlanSetDesiredPriority(gWaterNuggetPlan, 21);
+         for (i = 0; < numberExplorerWarships)
+         {
+            indexedExplorerUnit = aiPlanGetUnitByIndex(gWaterNuggetPlan, i);
+            explorerFleetHP = explorerFleetHP + kbUnitGetCurrentHitpoints(indexedExplorerUnit);
+         }
+
+         // Store enemy location so we can avoid it
+         vector guessedEnemyLocation = guessEnemyLocation();
+
+         // Find a suitable water nugget. Only check some random locations. (decrease if AI is too good at spotting treasures)
+         for (j = 0; < 50)
+         {
+            waterNuggetLocation = getRandomGaiaUnitPosition(cUnitTypeAbstractNuggetLand, explorerLoc, 0.3*kbGetMapXSize());
+            nuggetID = getUnitByLocation(cUnitTypeAbstractNuggetLand, cPlayerRelationAny, cUnitStateAlive, waterNuggetLocation, 4.0);
+
+            // skip if nugget is too close to enemy
+            /*if (distance(waterNuggetLocation, guessedEnemyLocation) < 150)
+            {
+               continue;
+            }*/
+
+            guardianHealth = 0;
+            guardianQuery = createSimpleUnitQuery(cUnitTypeGuardian, cPlayerRelationAny, cUnitStateAlive, waterNuggetLocation, 5.0);
+            guardianNumber = kbUnitQueryExecute(guardianQuery);
+
+            // Get total health of water guardians
+            if (guardianNumber > 0)
+            {
+               for (k = 0; < guardianNumber)
+               {
+                  guardianID = kbUnitQueryGetResult(guardianQuery, k);
+                  guardianHealth = guardianHealth + kbUnitGetCurrentHitpoints(guardianID);
+               }
+            }
+            // Discourage further treasures
+            guardianHealth = guardianHealth + 0.7 * distance(waterNuggetLocation, explorerLoc);
+
+               //aiChat(1, "Wood: " + kbResourceGetSubType(nuggetID));
+               
+            // Nothing other than freebies or wood on lost
+            int nuggetPUID = kbUnitGetProtoUnitID(nuggetID);
+            //aiChat(1, "puid: " + nuggetPUID + " " + cUnitTypeNuggetDroppedWood);
+            if ((nuggetPUID != cUnitTypeNuggetDroppedWood &&
+                  nuggetPUID != cUnitTypeypNuggetDroppedWoodAsian &&
+                  nuggetPUID != cUnitTypedeNuggetAfricanDroppedWood))//&&
+                  //guardianHealth > 0)
+            {
+               continue;
+            }
+
+            if (j == 49)
+            {
+               // found nothing, activate exploration plan as a last hope
+               xsEnableRule("exploreMonitor");
+            }
+            //aiChat(1, "found wood treasure");
+            
+            /*if (kbUnitGetResourceAmount(nuggetID, cResourceWood) <= 0)//guardianHealth > 0)
+            {
+               continue;
+            }*/
+
+            if (guardianHealth < bestGuardianHP)
+            {
+               bestNugget = nuggetID; // Store this as the best nugget
+               bestGuardianHP = guardianHealth;
+               bestGuardianID = guardianID;
+            }
+         }
+
+         // Don't bother unless there's a good chance of winning
+         /*if (explorerFleetHP < 1.5 * bestGuardianHP)
+         {
+            return;
+         }*/
+      
+         // Now tell the ships to attack it
+         if (bestNugget > 0)
+         { 
+            gWaterNuggetTarget = bestNugget;
+            gWaterNuggetTargetLoc = kbUnitGetPosition(bestNugget);
+            gWaterNuggetTimeout = xsGetTime();
+            xsSetRuleMinIntervalSelf(3);
+            if (bestGuardianID > 0)
+            {  // There are guardians, so attack
+               for (m = 0; < numberExplorerWarships)
+               {
+                  aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, m), bestGuardianID);
+               }
+               gWaterNuggetState = cWaterNuggetAttack;
+               aiPlanSetDesiredPriority(gWaterNuggetPlan, 55); // We're in it now
+            }
+            else
+            {  // No guardians, so go straight to nugget
+               for (n = 0; < numberExplorerWarships)
+               {
+                  aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, n), bestNugget);
+               }
+               gWaterNuggetState = cWaterNuggetGather;
+               aiPlanSetDesiredPriority(gWaterNuggetPlan, 90); // We're in it now
+            }
+         }
+         break;
+      }
+
+      case cWaterNuggetAttack:
+      {
+         // Keep checking our nugget until all guardians are destroyed. If our fleet is gone, reset
+         guardianNumber = getUnitCountByLocation(cUnitTypeGuardian, cPlayerRelationAny, cUnitStateAlive, gWaterNuggetTargetLoc, 6.0);
+         int currentGuardianID = getUnitByLocation(cUnitTypeGuardian, cPlayerRelationAny, cUnitStateAlive, gWaterNuggetTargetLoc, 6.0);
+
+         if (guardianNumber <= 0 && kbUnitGetActionType(explorerUnit) == cActionTypeIdle)
+         {
+            gWaterNuggetState = cWaterNuggetGather;
+            gWaterNuggetTarget = getUnitByLocation(cUnitTypeAbstractNuggetLand, cPlayerRelationAny, cUnitStateAlive, gWaterNuggetTargetLoc, 4.0);
+            aiPlanSetDesiredPriority(gWaterNuggetPlan, 90);
+            for (s = 0; < numberExplorerWarships)
+            {
+               aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, s), gWaterNuggetTarget);
+            }
+         }
+         else
+         {
+            for (p = 0; < numberExplorerWarships)
+            {
+               aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, p), currentGuardianID);
+            }
+         }
+         break;
+      }
+
+      case cWaterNuggetGather:
+      {
+         // Keep checking our nugget until it's gone
+         // Ships are already tasked to gather nugget. Just wait until nugget is gone 
+         int nuggetsAtLoc = getUnitCountByLocation(cUnitTypeAbstractNuggetLand, cPlayerRelationAny, cUnitStateAlive, gWaterNuggetTargetLoc, 3.0);
+         if (nuggetsAtLoc > 0)
+         {
+            for (n = 0; < numberExplorerWarships)
+            {
+               aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, n), gWaterNuggetTarget);
+            }
+         } 
+         else if (kbUnitGetActionType(explorerUnit) == cActionTypeIdle)
+         {
+            gWaterNuggetState = cWaterNuggetSearch;
+            aiPlanSetDesiredPriority(gWaterNuggetPlan, 21);
+         }
+         break;
+      }
+   }
+}
 
 //==============================================================================
 /* scaleDifficulty
@@ -969,11 +1375,15 @@ minInterval 10
 
 rule dockWallOne
 inactive
-minInterval 10
+minInterval 20
 {
-   if (btRushBoom > 0.45)
+   if (btRushBoom > 0.55)
    {  // No walls for rushing civs
       xsDisableSelf();
+      return;
+   }
+   else if (btRushBoom > 0.45 && xsGetTime() < 10 * 60 * 1000)
+   {  // Delay the wall for more aggresive civs
       return;
    }
 
@@ -1119,6 +1529,14 @@ minInterval 10
       return;
    }
 
+   // No walls for some special maps
+   if (cRandomMapName == "eueightyyearswar" ||
+       cRandomMapName == "euitalianwars")
+   {
+      xsDisableSelf();
+      return;
+   }
+
    if ((kbGetPopCap() - kbGetPop()) < 20)
    {
       return; // Don't start walls until we have pop room
@@ -1147,7 +1565,6 @@ minInterval 10
       aiPlanSetDesiredPriority(wallPlanID, 60);
       aiPlanSetActive(wallPlanID, true);
       sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
-      sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemyWhenHeWallsIn);
       // Enable our wall gap rule, too.
       //xsEnableRule("fillInWallGaps");
       debugBuildings("Enabling Wall Plan for Base ID: " + baseID);
@@ -1195,7 +1612,6 @@ minInterval 10
       aiPlanSetDesiredPriority(wallPlanID, 40);
       aiPlanSetActive(wallPlanID, true);
       sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
-      sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemyWhenHeWallsIn);
       // Enable our wall gap rule, too.
       //xsEnableRule("fillInWallGaps");
       debugBuildings("Enabling Wall Plan for Base ID: " + kbBaseGetMainID(cMyID));
@@ -1300,7 +1716,6 @@ minInterval 10
       aiPlanSetDesiredPriority(wallPlanID, 80);
       aiPlanSetActive(wallPlanID, true);
       sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
-      sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemyWhenHeWallsIn);
       // Enable our wall gap rule, too.
       //xsEnableRule("fillInWallGaps");
       debugBuildings("Enabling Wall Plan for Base ID: " + kbBaseGetMainID(cMyID));
@@ -1357,12 +1772,22 @@ minInterval 10
    vector wallCenter = cInvalidVector;
    int unitQueryID = -1;
 
+
    // Skip building towers if we are already near max
    int towerCount = kbUnitCount(cMyID, gTowerUnit, cUnitStateAlive);
    if (towerCount >= cvMaxTowers - 1)
    {
       xsEnableRule("forwardBaseGreatWall");
       xsDisableSelf();
+   }
+
+   // Can't do this for civs that train units from them
+   if (cMyCiv == cCivRussians ||
+       civIsNative() == true ||
+       civIsAfrican() == true)
+   {
+      xsDisableSelf();
+      return;
    }
 
    if (gStartOnDifferentIslands == true)
@@ -1480,7 +1905,6 @@ minInterval 10
       aiPlanSetDesiredPriority(wallPlanID, 80);
       aiPlanSetActive(wallPlanID, true);
       sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
-      sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemyWhenHeWallsIn);
       // Enable our wall gap rule, too.
       //xsEnableRule("fillInWallGaps");
       debugBuildings("Enabling Wall Plan for Base ID: " + kbBaseGetMainID(cMyID));
@@ -2096,14 +2520,12 @@ void fishFunction(int maxFishingBoats = 10, int boatPriority = 55, int maxDistan
    int numberFoodFishingBoats = kbGetAmountValidResourcesByLocation(gNavyVec,
       cResourceFood, cAIResourceSubTypeFish, maxDistance) / 400.0;
    int numberGoldFishingBoats = getUnitCountByLocation(cUnitTypeAbstractWhale, 0, cUnitStateAny, gNavyVec, maxDistance) * 4;
+   //aiChat(1, "numberFishingBoats trained: " + numberFishingBoats);
 
-   if (numberFishingBoats < numberFoodFishingBoats)
+   // Get to within 80% of food + gold boat calculation
+   if (numberFishingBoats < 0.8 * (numberFoodFishingBoats + numberGoldFishingBoats))
    {
-      numberFishingBoats = numberFoodFishingBoats;
-   }
-   if (numberFishingBoats < numberGoldFishingBoats)
-   {
-      numberFishingBoats = numberGoldFishingBoats;
+      numberFishingBoats = 0.8 * (numberFoodFishingBoats + numberGoldFishingBoats);
    }
    if (numberFishingBoats > maxFishingBoats)
    {
@@ -2114,8 +2536,12 @@ void fishFunction(int maxFishingBoats = 10, int boatPriority = 55, int maxDistan
    kbUnitQuerySetActionType(fishingBoatQuery, cActionTypeIdle);
    int numberFound = kbUnitQueryExecute(fishingBoatQuery);
 
+   //aiChat(1, "numberFishingBoats: " + numberFishingBoats);
+   //aiChat(1, "#Food boats: " + numberFoodFishingBoats + " #Gold boats: " + numberGoldFishingBoats);
+
    if (numberFound > 3 ) // We have too many idle boats indicating we don't know what to use them for so don't train more.
    {
+      //aiChat(1, "stopped making fishing boats because they are idle");
       numberFishingBoats = 0;
    }
 
@@ -2150,7 +2576,13 @@ minInterval 10
    // Some logic to determine if we'll go for the water
    if (gTimeToFish == false)
    {
-      if (kbGetAge() < cAge2 && agingUp() == false)
+      // Cover conditions when we start with a dock or dock wagon
+      if (kbUnitCount(cMyID, gDockUnit, cUnitStateAlive) > 0)
+      {  
+         //aiChat(1, "already have a dock, starting fishing");
+         gTimeToFish = true;
+      }
+      else if (kbGetAge() < cAge2 && agingUp() == false)
       {
          return;
       }
@@ -2158,6 +2590,7 @@ minInterval 10
       // On island maps, start in transition
       if (gStartOnDifferentIslands == true)
       {
+         //aiChat(1, "fishing because island map");
          gTimeToFish = true;
       }
 
@@ -2182,12 +2615,15 @@ minInterval 10
       }
       if (closestTeammate == cMyID && btRushBoom <= 0.5)
       {  // We are the closest teammate, just make sure we aren't all-in rushing
+         //aiChat(1, "fishing because closest to water");
          gTimeToFish = true;
       }
 
       // If we are booming heavy, go for water
-      if (btRushBoom < -0.4)
+      //if (btRushBoom < -0.4) // currently no one is set below 0, though they technically can be
+      if (btRushBoom <= 0 && btOffenseDefense <= 0)
       {
+         //aiChat(1, "fishing because booming heavy");
          gTimeToFish = true;
       }
 
@@ -2199,7 +2635,8 @@ minInterval 10
       }
 
       if (btRushBoom <= 0.0 && randomizer < 3)
-      {
+      { 
+         //aiChat(1, "fishing because randomly told to do so");
          gTimeToFish = true;
       }
       else if (gTimeToFish == false)
@@ -2247,42 +2684,47 @@ minInterval 10
    //aiChat(1, "Value F:E " + friendlyWSStrength + ":" + enemyWSStrength);
 
 
-   // Conditional for Big Boy:   The opponent is not uncompetitive on water, and 
+   // Conditional for Big Boy:   The opponent is not competitive on water, and 
    //                            we are in a booming disposition
+   //aiChat(1, "friendlyWSStrength: " + friendlyWSStrength + " enemyWSStrength: " + enemyWSStrength);
    if (btRushBoom <= 0 && friendlyWSStrength > 3 * enemyWSStrength && friendlyWSStrength > 1500)
    {
       //aiChat(1, "Big boy boat boom");
       desiredDockCount = 4;
-      maxFishingBoats = 40;
+      maxFishingBoats = 50;
       boatPriority = 90;
-      maxDistance = kbGetMapXSize()/(3 * cNumberPlayers);
+      maxDistance = kbGetMapXSize()/(0.5 * cNumberPlayers);
+      //aiChat(1, "Big boy radius: " + maxDistance);
    } 
    // Conditional for Double:    The opponent is losing on water, and we want to capitalize unless we are 
    //                            a rushing civ
-   else if (btRushBoom < 0.2 && friendlyWSStrength > 1.3 * enemyWSStrength && friendlyWSStrength > 1100)
+   else if (btRushBoom < 0.2 && friendlyWSStrength > 1.3 * enemyWSStrength && friendlyWSStrength > 750)
    {
       //aiChat(1, "Double Dock boat boom");
       desiredDockCount = 2;
-      maxFishingBoats = 30;
+      maxFishingBoats = 35;
       boatPriority = 60;
-      maxDistance = 150;
+      maxDistance = kbGetMapXSize()/(0.9 * cNumberPlayers);
+      //aiChat(1, "Double dock radius: " + maxDistance);
    } 
    // Conditional for Single:    As long as we are ahead at least a little on water
-   else if (btRushBoom < 0.4 && friendlyWSStrength > 1.0 * enemyWSStrength && friendlyWSStrength > 350)
+   else if (btRushBoom < 0.4 && friendlyWSStrength > 1.0 * enemyWSStrength && friendlyWSStrength > 190)
    {
       //aiChat(1, "Single Dock Trickle");
       desiredDockCount = 1;
       maxFishingBoats = 25;
       boatPriority = 55;
-      maxDistance = 80;    
+      maxDistance = kbGetMapXSize()/( 1.2 * cNumberPlayers);
+      //aiChat(1, "Single dock radius: " + maxDistance);
    } 
    else
    {
       //aiChat(1, "No boat boom");
       desiredDockCount = 1;
-      maxFishingBoats = 15;
-      boatPriority = 45;
-      maxDistance = 80;    
+      maxFishingBoats = 10;
+      boatPriority = 35;
+      maxDistance = 60;    
+      //aiChat(1, "No boat boom: " + maxDistance);
    }
 
    if (dockCount < desiredDockCount && dockPlanID < 0)
@@ -2852,7 +3294,7 @@ void loadForces(vector pickupPoint = cInvalidVector)
                cUnitStateAlive, kbUnitGetPosition(gLandingShip2), 1.0);
    }
 
-   aiChat(1, "Units on ship 1: " + unitsOnShip1 + " Ship 2: " + unitsOnShip2);
+   //aiChat(1, "Units on ship 1: " + unitsOnShip1 + " Ship 2: " + unitsOnShip2);
    if (unitsOnShip1 + unitsOnShip2 > landingForcesSize * 0.95)
    {
       gAmphibiousAssaultStage = cLandForces;
@@ -5245,6 +5687,13 @@ minInterval 10
          }
          retreat = true;
       }
+   }
+
+   // If we're too close to the timer on KoTH then don't retreat 
+   // This only works when there is only 2 teams, otherwise gKOTHEnemyTimer doesn't count down
+   if (gKOTHEnemyTimer < 300 && aiIsKOTHAllowed() == true)
+   {
+      retreat = false;
    }
 
    // Tell everyone to go back to base and delete the plan

@@ -472,6 +472,13 @@ bool handleExcessResources()
 //==============================================================================
 void updateResourceDistribution(bool force = false)
 {
+   // AssertiveWall: suppress when build order is active
+   int gatheringBOLength = xsArrayGetSize(boResourceBreakdownArrayFood) - 1;
+   if (xsArrayGetInt(boResourceBreakdownArrayFood, gatheringBOLength) > 0 && gUseBuildOrder == true)
+   {
+      return;
+   }
+
    float planGoldNeeded = 0.0;
    float planWoodNeeded = 0.0;
    float planFoodNeeded = 0.0;
@@ -1770,6 +1777,7 @@ minInterval 15
 //==============================================================================
 // fishManager
 // Updates fishing boat maintain plan.
+// AssertiveWall: replaced by boatboom monitor
 //==============================================================================
 rule fishManager
 inactive
@@ -1778,11 +1786,11 @@ minInterval 30
    if (gTimeToFish == false)
    {
       // Don't fish until age2 transition. Unless it's an island map. Then it's always a good time
-      if ((gStartOnDifferentIslands == true && kbGetAge() >= cAge2) || (gStartOnDifferentIslands == true && agingUp() == true))
+      if (gStartOnDifferentIslands == true)
       {
          gTimeToFish = true;
       }
-      if (kbGetAge() < cAge2 && agingUp() == false)
+      else if (kbGetAge() < cAge2 && agingUp() == false)
       {
          return;
       }
@@ -2370,6 +2378,13 @@ minInterval 29
 //==============================================================================
 void initResourceBreakdowns()
 {
+   // AssertiveWall: suppress when build order is active
+   /*int gatheringBOLength = xsArrayGetSize(boResourceBreakdownArrayFood) - 1;
+   if (xsArrayGetInt(boResourceBreakdownArrayFood, gatheringBOLength) > 0 && gUseBuildOrder == true)
+   {
+      return;
+   }*/
+
    // Set initial gatherer percentages.
    aiSetResourcePercentage(cResourceFood, false, 1.0);
    aiSetResourcePercentage(cResourceWood, false, 0.0);
