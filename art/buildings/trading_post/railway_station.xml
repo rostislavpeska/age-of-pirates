@@ -1,0 +1,141 @@
+<animfile>
+    <definebone>train_station</definebone>
+    <definebone>bone_banner</definebone>
+    <submodel>construction1
+        <component>TrainStationC
+            <assetreference type="GrannyModel">
+                <file>buildings\trading_post\trainstation_con_stage1_Model</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\trading_post\trading_post_decal_age3</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>13.50</width>
+                <height>9.50</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>TrainStationC</component>
+        </anim>
+    </submodel>
+    <submodel>construction2
+        <component>TrainStationC
+            <assetreference type="GrannyModel">
+                <file>buildings\trading_post\trainstation_con_stage2_Model</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\trading_post\trading_post_decal_age3</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>13.50</width>
+                <height>9.50</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>TrainStationC</component>
+        </anim>
+    </submodel>
+    <submodel>construction3
+        <attachment>Station
+            <component>Station
+            <assetreference type="GrannyModel">
+                <file>buildings\trading_post\train_station_con</file>
+            </assetreference>
+            </component>
+            <anim>Idle
+            <component>Station</component>
+            </anim>
+        </attachment>
+        <attachment>Scafolding
+            <component>Scafolding
+            <assetreference type="GrannyModel">
+                <file>buildings\trading_post\trainstation_con_stage3_Model</file>
+            </assetreference>
+            </component>
+            <anim>Idle
+            <component>Scafolding</component>
+            </anim>
+        </attachment>
+        <component>TrainStation
+            <assetreference type="GrannyModel">
+                <file>buildings\trading_post\tr_station_basement_Model</file>
+            </assetreference>
+            <attach a="Station" frombone="train_station" tobone="train_station" syncanims="0"></attach>
+            <attach a="Scafolding" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\trading_post\trading_post_decal_age3</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>13.50</width>
+                <height>9.50</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>TrainStation</component>
+        </anim>
+    </submodel>
+    <submodel>completed
+        <attachment>hugeflag
+            <component>flag
+                <assetreference type="ClothFlag">
+                    <flag>
+                        <blending>alphatest_color</blending>
+                        <specialtexture></specialtexture>
+                        <width>1.50</width>
+                        <height>1.20</height>
+                    </flag>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>flag</component>
+            </anim>
+        </attachment>
+        <attachment>Station
+            <component>Station
+            <assetreference type="GrannyModel">
+                <file>buildings\trading_post\train_station</file>
+            </assetreference>
+            </component>
+            <anim>Idle
+            <component>Station</component>
+            </anim>
+        </attachment>
+        <component>TrainStation
+            <assetreference type="GrannyModel">
+                <file>buildings\trading_post\tr_station_basement_Model</file>
+            </assetreference>
+            <attach a="Station" frombone="train_station" tobone="train_station" syncanims="0"></attach>
+            <attach a="hugeflag" frombone="bone_place02" tobone="bone_banner" syncanims="0"></attach>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\trading_post\trading_post_decal_age3</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>13.50</width>
+                <height>9.50</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>TrainStation</component>
+        </anim>
+    </submodel>
+    <component>StationBuilding
+        <logic type="BuildingCompletion">
+            <p0>
+                <submodelref ref="construction1"></submodelref>
+            </p0>
+            <p33>
+                <submodelref ref="construction2"></submodelref>
+            </p33>
+            <p66>
+                <submodelref ref="construction3"></submodelref>
+            </p66>
+            <p100>
+                <submodelref ref="completed"></submodelref>
+            </p100>
+        </logic>
+    </component>
+</animfile>

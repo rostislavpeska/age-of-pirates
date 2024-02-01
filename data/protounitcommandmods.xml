@@ -248,6 +248,59 @@
     <donotallowoverpoplimit>
     </donotallowoverpoplimit>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpBuildTrainStation</name>
+    <icon>resources\images\icons\command\buildtrainstation.png</icon>
+    <command>uiSocketBuild(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <socketbuild>
+    </socketbuild>
+    <rollovertextid>301065</rollovertextid>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpBuildTrainStationInactive</name>
+    <icon>resources\images\icons\command\buildtrainstation_inactive.png</icon>
+    <rollovertextid>301068</rollovertextid>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpStationDeploy</name>
+    <icon>resources\images\icons\command\ability_train_station_eject.png</icon>
+    <command>ejectAll(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <associatedtech>DECommanderyDeploy</associatedtech>
+    <associatedpower>deCommanderyDeploy</associatedpower>
+    <rollovertextid>124673</rollovertextid>
+    <disabledrollovertextid>301071</disabledrollovertextid>
+    <usemultiple>
+    </usemultiple>
+    <usemediumbutton3>
+    </usemediumbutton3>
+    <deploy>
+    </deploy>
+    <notcancellable>
+    </notcancellable>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpWagonDeploy</name>
+    <icon>resources\images\icons\command\ability_train_station_eject.png</icon>
+    <command>ejectAll(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <associatedtech>zpWagonDeploy</associatedtech>
+    <associatedpower>deCommanderyDeploy</associatedpower>
+    <rollovertextid>124673</rollovertextid>
+    <disabledrollovertextid>301072</disabledrollovertextid>
+    <usemultiple>
+    </usemultiple>
+    <usemediumbutton3>
+    </usemediumbutton3>
+    <deploy>
+    </deploy>
+    <notcancellable>
+    </notcancellable>
+  </protounitcommand>
 
 
   <!--

@@ -991,7 +991,7 @@
       <string _locid="300987">Western Village</string>
       <string _locid="300988">ZP Socket Western Village</string>
       <string _locid="300989">Armored Train</string>
-      <string _locid="300990">Spawns an Armored Train which will attack an enemy base. Can be casted on a Train Station next to the enemy position.</string>
+      <string _locid="300990"> • Spawns an Armored Train to attack enemy base. \n • Can be used on any Trade Route Trading Post Site</string>
       <string _locid="300991">Railway Station</string>
       <string _locid="300992">ZP Train Station: Station</string>
       <string _locid="300993">Armored Train</string>
@@ -1002,7 +1002,7 @@
       <string _locid="300998">Unlocks a special alility: Armored Train - can send an armored train to attack enemy positions next to a Train Station.</string>
       <string _locid="300999">Military Railways</string>
       <string _locid="301000">Unlocks the military use of the trade routes: \n • Discovers all Train Stations on the map \n • Upgrades all trade routes to the Train level \n • Unlocks the Armored Train ability allowing you to use an armore train to attack enemy base</string>
-      <string _locid="301001">Spawns an Armored Train which will attack an enemy base. &lt;color=1.0, 0.0, 0.0&gt;Can't be used when another Armored Train is being on the map or when the Armored Train ability is not ready.&lt;/color&gt;</string>
+      <string _locid="301001"> • Spawns an Armored Train to attack enemy base. \n • Can be used on any Trade Route Trading Post Site \n &lt;color=1.0, 0.0, 0.0&gt;• Can't be used when another Armored Train is being on the map or when the Armored Train ability is not ready.&lt;/color&gt;</string>
       <string _locid="301002">ZP AT Engine Move</string>
       <string _locid="301003">ZP AT BarrackCar Move</string>
       <string _locid="301004">ZP AT GunCar Move</string>
@@ -1020,7 +1020,7 @@
       <string _locid="301016">ZP Capturable Train Station</string>
       <string _locid="301017">Armored Train (Engine)</string>
       <string _locid="301018">Armored Train (Coal Car)</string>
-      <string _locid="301019">Armored Train (Military Transport)</string>
+      <string _locid="301019">Armored Train (Command Wagon)</string>
       <string _locid="301020">Armored Train (Gun Car)</string>
       <string _locid="301021">ZP Train Station Area Marker</string>
       <string _locid="301022">ZP PROP Western Village</string>
@@ -1051,7 +1051,29 @@
       <string _locid="301047">Armored Train Test</string>
       <string _locid="301048">Armored Train Test Description</string>
       <string _locid="301049">Armored Train Test Loading</string>
-
+      <string _locid="301050">Armored Train (Ambulance Wagon)</string>
+      <string _locid="301051">ZP AT Ambulance Move</string>
+      <string _locid="301052">ZP AT Ambulance Static</string>
+      <string _locid="301053">Armored Train (Gunpowder Car)</string>
+      <string _locid="301054">ZP AT Gunpowder Move</string>
+      <string _locid="301055">ZP AT Gunpowder Static</string>
+      <string _locid="301056">ZP Train Station: Station A</string>
+      <string _locid="301057">ZP Train Station: Station B</string>
+      <string _locid="301058">ZP Test Blowgunner</string>
+      <string _locid="301059">ZP Train Station: Flag</string>
+      <string _locid="301060">Trade Site</string>
+      <string _locid="301061">ZP Train Track</string>
+      <string _locid="301062">ZP Train Station: Socket A</string>
+      <string _locid="301063">ZP Train Station: Socket B</string>
+      <string _locid="301064">Train Station Construction</string>
+      <string _locid="301065">Build a Train Station which allows you to transport units between Train Stations and Commanderies</string>
+      <string _locid="301066">Allows you to construct a train station after the trade route is upgraded to the train level.</string>
+      <string _locid="301067">Transports units between Train Stations, Maltese Commanderies and Armored Train Command Wagon.</string>
+      <string _locid="301068">Build a Train Station which allows you to transport units between Train Stations and Commanderies &lt;color=1.0, 0.0, 0.0&gt;(Requiers Iron Horse Trade Route upgrade)&lt;/color&gt; \n300 &lt;icon="(32)(resources/images/hud/resource_wood.png)"&gt;</string>
+      <string _locid="301069">ZP Train Station: Inactiva A</string>
+      <string _locid="301070">ZP Train Station: Inactive B</string>
+      <string _locid="301071">Units may not be deployed from Train Stations right now.</string>
+      <string _locid="301072">Units may not be deployed from Command Wagon right now.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

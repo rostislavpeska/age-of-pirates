@@ -1,0 +1,18 @@
+<animfile>
+    <definebone>train_station</definebone>
+    <definebone>bone_banner</definebone>
+    <component>TrainStationC
+        <assetreference type="GrannyModel">
+            <file>buildings\trading_post\trainstation_con_stage1_Model</file>
+        </assetreference>
+        <decal>
+            <texture>buildings\native_settlement\japan_decal_01</texture>
+            <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <width>13.50</width>
+            <height>9.50</height>
+        </decal>
+    </component>
+    <anim>Idle
+        <component>TrainStationC</component>
+    </anim>
+</animfile>

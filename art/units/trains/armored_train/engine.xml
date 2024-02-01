@@ -1,0 +1,124 @@
+<animfile>
+    <definebone>bone_particles_rt</definebone>
+    <definebone>bone_particles_lt</definebone>
+    <definebone>bone_particles</definebone>
+    <attachment>wheel_smoke_right
+        <component>wheel_smoke_right
+            <assetreference type="PopcornFx">
+                <file>smoke\train_WheelSmoke_R.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>wheel_smoke_right</component>
+        </anim>
+    </attachment>
+    <attachment>wheel_smoke_left
+        <component>wheel_smoke_left
+            <assetreference type="PopcornFx">
+                <file>smoke\train_WheelSmoke_L.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>wheel_smoke_left</component>
+        </anim>
+    </attachment>
+    <attachment>train_smoke
+        <component>train_smoke
+            <assetreference type="PopcornFx">
+                <file>smoke\train_Enginesmoke.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>train_smoke</component>
+        </anim>
+    </attachment>
+    <attachment>train_smoke_plume1
+        <component>train_smoke_plume1
+            <assetreference type="ParticleSystem">
+                <file>effects\smoke\train_smoke_plume1.particle</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>train_smoke_plume1</component>
+        </anim>
+    </attachment>
+    <attachment>train_smoke_plume2
+        <component>train_smoke_plume2
+            <assetreference type="ParticleSystem">
+                <file>effects\smoke\train_smoke_plume2.particle</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>train_smoke_plume2</component>
+        </anim>
+    </attachment>
+    <attachment>train_smoke_plume3
+        <component>train_smoke_plume3
+            <assetreference type="ParticleSystem">
+                <file>effects\smoke\train_smoke_plume3.particle</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>train_smoke_plume3</component>
+        </anim>
+    </attachment>
+    <attachment>train_smoke_plume4
+        <component>train_smoke_plume4
+            <assetreference type="ParticleSystem">
+                <file>effects\smoke\train_smoke_plume4.particle</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>train_smoke_plume4</component>
+        </anim>
+    </attachment>
+    <attachment>train_smoke_plume5
+        <component>train_smoke_plume5
+            <assetreference type="ParticleSystem">
+                <file>effects\smoke\train_smoke_plume5.particle</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>train_smoke_plume5</component>
+        </anim>
+    </attachment>
+    <component>train
+        <assetreference type="GrannyModel">
+            <file>units\trains\armored_train\engine</file>
+        </assetreference>
+        <decal>
+            <effecttype>default</effecttype>
+            <texture>shadows_selections\shadow_circle_128x128</texture>
+            <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+            <width>1.0</width>
+            <height>1.0</height>
+        </decal>
+    </component>
+    <anim>Idle
+        <assetreference type="GrannyAnim">
+            <file>units\trains\train_idle</file>
+        </assetreference>
+        <component>train</component>
+        <attach a="wheel_smoke_left" frombone="bone_particles_lt" tobone="bone_particles_lt" syncanims="0"></attach>
+        <attach a="wheel_smoke_right" frombone="bone_particles_rt" tobone="bone_particles_rt" syncanims="0"></attach>
+        <attach a="train_smoke" frombone="MASTER" tobone="bone_particles" syncanims="0"></attach>
+    </anim>
+    <anim>Walk
+        <assetreference type="GrannyAnim">
+            <file>units\trains\train_walk</file>
+        </assetreference>
+        <component>train</component>
+        <attach a="train_smoke" frombone="MASTER" tobone="bone_particles" syncanims="0"></attach>
+        <attach a="wheel_smoke_left" frombone="bone_particles_lt" tobone="bone_particles_lt" syncanims="0"></attach>
+        <attach a="wheel_smoke_right" frombone="bone_particles_rt" tobone="bone_particles_rt" syncanims="0"></attach>
+    </anim>
+    <anim>Bored
+        <assetreference type="GrannyAnim">
+            <file>units\trains\train_idle</file>
+        </assetreference>
+        <component>train</component>
+        <attach a="wheel_smoke_left" frombone="bone_particles_lt" tobone="bone_particles_lt" syncanims="0"></attach>
+        <attach a="wheel_smoke_right" frombone="bone_particles_rt" tobone="bone_particles_rt" syncanims="0"></attach>
+        <attach a="train_smoke" frombone="MASTER" tobone="bone_particles" syncanims="0"></attach>
+    </anim>
+</animfile>
