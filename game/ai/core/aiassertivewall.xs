@@ -4051,7 +4051,7 @@ int getAreaValue(vector locationOfInterest = cInvalidVector, int searchRadius = 
 //==============================================================================
 // getAreaStrength
 //==============================================================================
-int getAreaStrength(vector locationOfInterest = cInvalidVector, int searchRadius = 0, int playerRelation = cPlayerRelationEnemyNotGaia)
+int getAreaStrength(vector locationOfInterest = cInvalidVector, int searchRadius = 10, int playerRelation = cPlayerRelationEnemyNotGaia)
 {
    int MilitaryPower = 0;
    int numberEnemyFound = 0;
@@ -4061,10 +4061,10 @@ int getAreaStrength(vector locationOfInterest = cInvalidVector, int searchRadius
    int baseEnemyQuery = kbUnitQueryCreate("areaEnemyUnitQuery");
    kbUnitQuerySetIgnoreKnockedOutUnits(baseEnemyQuery, true);
 
-   kbUnitQuerySetPlayerRelation(baseEnemyQuery, cPlayerRelationEnemyNotGaia);
-   kbUnitQuerySetState(baseEnemyQuery, cUnitStateABQ);
+   kbUnitQuerySetPlayerRelation(baseEnemyQuery, playerRelation);
+   kbUnitQuerySetState(baseEnemyQuery, cUnitStateAlive);
    kbUnitQuerySetPosition(baseEnemyQuery, locationOfInterest);
-   kbUnitQuerySetMaximumDistance(baseEnemyQuery, searchRadius + 10.0);
+   kbUnitQuerySetMaximumDistance(baseEnemyQuery, searchRadius);
 
    kbUnitQuerySetUnitType(baseEnemyQuery, cUnitTypeLogicalTypeLandMilitary);
    kbUnitQueryResetResults(baseEnemyQuery);
@@ -5620,6 +5620,17 @@ minInterval 15
 
 */
 //==============================================================================
+rule attackRetreatDelay
+inactive
+minInterval 10
+{
+   if (aiPlanGetNumberUnits(gLandAttackPlanID, cUnitTypeLogicalTypeLandMilitary) > 0)
+   {
+      xsEnableRule("attackRetreat");
+      xsDisableSelf();
+   }
+}
+
 rule attackRetreat
 inactive
 minInterval 10
@@ -5630,6 +5641,13 @@ minInterval 10
       xsDisableSelf();
       return;
    }
+
+   // No retreat on king of the hill if there are more than 2 teams
+   /*if (aiGetNumberTeams() > 3 && aiIsKOTHAllowed() == true)
+   {
+      xsDisableSelf();
+      return;
+   }*/
 
    vector targetLocation = cInvalidVector;
    int friendlyArmySize = aiPlanGetNumberUnits(gLandAttackPlanID, cUnitTypeLogicalTypeLandMilitary);
@@ -5642,6 +5660,7 @@ minInterval 10
    bool allyNear = false;
    bool weAreWinning = false;
    vector allyTargetLocation = cInvalidVector;
+   bool toTheDeath = false;  // kill the plan, but don't tell people to run away
 
    // Check the strength of our army
    friendlyStrength = getFriendlyArmyValue(gLandAttackPlanID);
@@ -5649,10 +5668,10 @@ minInterval 10
 
    // Check strength of enemy and ally army at our target location
    enemyStrength = getAreaStrength(targetLocation, 50, cPlayerRelationEnemyNotGaia);
-   allyStrength = getAreaStrength(targetLocation, 50, cPlayerRelationAlly);
+   allyStrength = getAreaStrength(targetLocation, 50, cPlayerRelationAllyExcludingSelf);
 
    // Retreat if our strength is too small
-   if (friendlyStrength + allyStrength < enemyStrength * 1.2)
+   if (friendlyStrength + allyStrength < enemyStrength * 0.6)
    {
       if (allyStrength > 0)
       {
@@ -5667,6 +5686,7 @@ minInterval 10
    {
       weAreWinning = true;
    }*/
+   //aiChat(1, "friendlyStrength: " + friendlyStrength + " enemyStrength: " + enemyStrength + " allyStrength: " + allyStrength);
 
    // Now look at where we are using the first unit, but only if we don't already know we're retreating
    if (retreat == false)
@@ -5675,10 +5695,10 @@ minInterval 10
 
       // Recheck strength of enemy and ally army at our target location
       enemyStrength = getAreaStrength(targetLocation, 50, cPlayerRelationEnemyNotGaia);
-      allyStrength = getAreaStrength(targetLocation, 50, cPlayerRelationAlly);
+      allyStrength = getAreaStrength(targetLocation, 50, cPlayerRelationAllyExcludingSelf);
 
       // Retreat if our strength is too small
-      if ((friendlyStrength + allyStrength < enemyStrength * 1.2) && retreat == false)
+      if ((friendlyStrength + allyStrength < enemyStrength * 0.6) && retreat == false)
       {
          if (allyStrength > 0)
          {
@@ -5691,10 +5711,21 @@ minInterval 10
 
    // If we're too close to the timer on KoTH then don't retreat 
    // This only works when there is only 2 teams, otherwise gKOTHEnemyTimer doesn't count down
-   if (gKOTHEnemyTimer < 300 && aiIsKOTHAllowed() == true)
+   if ((aiIsKOTHAllowed() == true)) //gKOTHEnemyTimer < 300 && 
    {
+      //aiChat(1, "timer: " + gKOTHEnemyTimer);
+      toTheDeath = true;
       retreat = false;
    }
+
+   // Make sure we retreat if we have no one left
+   if (friendlyStrength < 2) // 2 musketeers. We need at least 3
+   {
+      retreat = true;
+      toTheDeath = true;
+   }
+   //aiChat(1, "friendlyStrength: " + friendlyStrength + " enemyStrength: " + enemyStrength + " allyStrength: " + allyStrength);
+   //aiChat(1, "retreat? " + retreat + " plan: " + gLandAttackPlanID);
 
    // Tell everyone to go back to base and delete the plan
    if (retreat == true)
@@ -5713,10 +5744,13 @@ minInterval 10
       }
 
       // Task everyone to return
-      for (i = 0; < friendlyArmySize)
+      if (toTheDeath == false)
       {
-         tempUnit = aiPlanGetUnitByIndex(gLandAttackPlanID, i);
-         aiTaskUnitMove(tempUnit, retreatLoc);
+         for (i = 0; < friendlyArmySize)
+         {
+            tempUnit = aiPlanGetUnitByIndex(gLandAttackPlanID, i);
+            aiTaskUnitMove(tempUnit, retreatLoc);
+         }
       }
 
 
@@ -5754,6 +5788,7 @@ minInterval 10
 
       // Destroy the plan.
       aiPlanDestroy(gLandAttackPlanID);
+      aiPlanSetNoMoreUnits(gLandAttackPlanID, true);
       gLandAttackPlanID = -1;
       xsDisableSelf();
    }

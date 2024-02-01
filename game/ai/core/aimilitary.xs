@@ -1405,15 +1405,15 @@ minInterval 15
       // If we got nothing, and KOTH is active, grab the KOTH location.
       if (defendingKOTH == true || attackingKOTH == true)
       {
-         targetIsEnemy = attackingKOTH;
+         targetIsEnemy = true; // AssertiveWall: only attack hill. No defend
+         targetBaseID = -1;
          int kothID = getUnit(cUnitTypeypKingsHill, cPlayerRelationAny, cUnitStateAlive);
          targetPlayer = kbUnitGetPlayerID(kothID);
          targetBaseLocation = kbUnitGetPosition(kothID);
-         vector kothLocCheated = getClosestGaiaUnitPosition(cUnitTypeypKingsHill, kbGetMapCenter());
-         // If we can;t reach the KoTH location by land, we need to cheat and get the location (AI too dumb to find it)
-         if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(kothLocCheated), kbAreaGroupGetIDByPosition(mainBaseLocation)) == false)
+         // AssertiveWall: Just cheat for the KoTH location if we can't find it. Cheating outright causes issues, though
+         if (kothID < 0 || targetBaseLocation == cInvalidVector)
          {
-            targetBaseLocation = kothLocCheated;
+            targetBaseLocation = getClosestGaiaUnitPosition(cUnitTypeypKingsHill, kbGetMapCenter());
          }
       }
       // Exclude city state, which doesn't have a base ID.
@@ -1497,9 +1497,10 @@ minInterval 15
          aiPlanSetVariableInt(planID, cCombatPlanRefreshFrequency, 0, 300);
          if (attackingKOTH == true)
          {
-            aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat);
-            aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
-            aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 240000); // Full timer
+            //aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat);
+            //aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+            aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget);
+            aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 600000); // Full timer 10 mins
          }
          else
          {  // AssertiveWall: Don't retreat against human players, but still do it against AI players
@@ -1568,9 +1569,9 @@ minInterval 15
       }
 
       // AssertiveWall: set the extern and start the retreat logic. This is only necessary for attacks, 
-         // and excludes defend plans
+         // and excludes defend plans except on KoTH
       gLandAttackPlanID = planID; 
-      xsEnableRule("attackRetreat");
+      xsEnableRule("attackRetreatDelay");
 
       // AssertiveWall: Testing Purposes
       //aiChat(cPlayerRelationAllyExcludingSelf, "attacking");

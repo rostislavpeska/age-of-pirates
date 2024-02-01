@@ -1610,6 +1610,10 @@ void initPersonality(void)
       {
          btRushBoom = 0.5;
       }
+      if (btOffenseDefense < 0.5)
+      {
+         btOffenseDefense = 0.5;
+      }
    }
    
    // We don't allow these variables to go over 1.0 or under -1.0, 

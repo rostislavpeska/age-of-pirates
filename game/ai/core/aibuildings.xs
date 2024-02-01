@@ -999,16 +999,16 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
    {
       for (attempt = 0; < numAttempts)
       {  
-         v = guessEnemyLocation();  // vector from main base to guessed enemy location
+         v = guessEnemyLocation();  // guessed enemy location
          baseVec = kbBaseGetLocation(cMyID, baseID);
          if (baseVec == cInvalidVector || baseID < 0)
          {
             baseVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
          }
          // Don't normalize this vector, keep it far away
-         tempVec = baseVec - v;
+         tempVec = v - baseVec;
          // A little under 180 degrees here.
-         tempVec = rotateByReferencePoint(v, tempVec, aiRandFloat(0.0 - PI * 0.4, PI * 0.4));
+         tempVec = rotateByReferencePoint(baseVec, tempVec, aiRandFloat(0.0 - PI * 0.4, PI * 0.4));
          // Gets the point on the coast between these two
          tempVec = getCoastalPoint(baseVec, tempVec, 1, false);
 
