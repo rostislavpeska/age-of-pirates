@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="matA">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\trains\armored_train\textures\guncar_chassi_basecolor">
+      </texture>
+      <texture name="Normals" override="units\trains\armored_train\textures\guncar_chassi_normals">
+      </texture>
+      <texture name="Masks" override="units\trains\armored_train\textures\guncar_chassi_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matC">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="textures\construction\props_colony\props_colony_BaseColor">
+      </texture>
+      <texture name="Normals" override="textures\construction\props_colony\props_colony_Normals">
+      </texture>
+      <texture name="Masks" override="textures\construction\props_colony\props_colony_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

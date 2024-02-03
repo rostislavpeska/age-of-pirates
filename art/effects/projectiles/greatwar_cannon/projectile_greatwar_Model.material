@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="effects/projectiles/rocket/textures/rocket_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="effects/projectiles/rocket/textures/rocket_matA_Normals">
+      </texture>
+      <texture name="Masks" override="effects/projectiles/rocket/textures/rocket_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

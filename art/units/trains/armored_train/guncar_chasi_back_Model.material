@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="matA">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\trains\armored_train\textures\guncar_chassi_basecolor">
+      </texture>
+      <texture name="Normals" override="units\trains\armored_train\textures\guncar_chassi_normals">
+      </texture>
+      <texture name="Masks" override="units\trains\armored_train\textures\guncar_chassi_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matC">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\objects\spc\dynamite_keg\textures\dynamite_keg01_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\objects\spc\dynamite_keg\textures\dynamite_keg01_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\objects\spc\dynamite_keg\textures\dynamite_keg01_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

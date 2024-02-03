@@ -1,0 +1,5 @@
+<animfile>
+  <attachment>mortar_trail<component>Emitter1<assetreference type="ParticleSystem"><file>effects\projectiles\mortar_trail.particle</file></assetreference></component><anim>Idle<component>Emitter1</component></anim></attachment>
+  <component>ModelComp<assetreference type="GrannyModel"><file>effects\projectiles\greatwar_cannon\projectile_greatwar_Model</file></assetreference></component>
+  <anim>Idle<component>ModelComp</component><attach a="mortar_trail" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
+</animfile>

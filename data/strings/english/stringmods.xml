@@ -1021,7 +1021,7 @@
       <string _locid="301017">Armored Train (Engine)</string>
       <string _locid="301018">Armored Train (Coal Car)</string>
       <string _locid="301019">Armored Train (Command Wagon)</string>
-      <string _locid="301020">Armored Train (Gun Car)</string>
+      <string _locid="301020">Armored Train (Railway Gun)</string>
       <string _locid="301021">ZP Train Station Area Marker</string>
       <string _locid="301022">ZP PROP Western Village</string>
       <string _locid="301023">ZP PROP Horse</string>
@@ -1074,6 +1074,7 @@
       <string _locid="301070">ZP Train Station: Inactive B</string>
       <string _locid="301071">Units may not be deployed from Train Stations right now.</string>
       <string _locid="301072">Units may not be deployed from Command Wagon right now.</string>
+      <string _locid="301073">Test Wagon</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

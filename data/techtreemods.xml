@@ -10758,6 +10758,10 @@
       </effect>
       <effect type="TransformUnit" toprotoid="zpArmoredTrainHospitalStatic" fromprotoid="zpArmoredTrainHospitalMove">
       </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainGunCarFrontStatic" fromprotoid="zpArmoredTrainGuncarFrontMove">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainGunCarBackStatic" fromprotoid="zpArmoredTrainGuncarBackMove">
+      </effect>
       <effect type="Data" action="Heal" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpArmoredTrainHospitalStatic</target>
       </effect>

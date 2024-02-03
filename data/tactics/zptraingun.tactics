@@ -12,7 +12,7 @@
     <spreadfactor>0.25</spreadfactor>
     <trackrating>12</trackrating>
     <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
-    <projectile>MortarShell</projectile>
+    <projectile>zpGreatWarShell</projectile>
     <impacteffect>effects\impacts\mortar</impacteffect>
     <rate type="Unit">1.0 </rate>
     <rate type="Building">1.0 </rate>
@@ -35,7 +35,7 @@
     <spreadfactor>0.25</spreadfactor>
     <trackrating>12</trackrating>
     <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
-    <projectile>MortarShell</projectile>
+    <projectile>zpGreatWarShell</projectile>
     <impacteffect>effects\impacts\mortar</impacteffect>
     <rate type="Building">1.0 </rate>
     <throw>1</throw>
@@ -52,7 +52,7 @@
     <rangedlogic>1</rangedlogic>
     <anim>RangedAttack</anim>
     <idleanim>Idle</idleanim>
-    <projectile>MortarShell</projectile>
+    <projectile>zpGreatWarShell</projectile>
     <numberprojectiles>1</numberprojectiles>
     <impacteffect>effects\impacts\mortar</impacteffect>
     <accuracy>1.0</accuracy>
@@ -65,6 +65,30 @@
     <basedamagecap>1</basedamagecap>
     <excludefromrangeindicator>1</excludefromrangeindicator>
   </action>
+
+  <action>
+    <name stringid="124920">ExplosionAttack</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>RangedAttack</anim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.01</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>InvisibleProjectile</projectile>
+    <impacteffect>effects\impacts\gun</impacteffect>
+    <rate type="AbstractArmoredTrain">1.0</rate>
+    <instantballistics>1</instantballistics>
+    <basedamagecap>1</basedamagecap>
+    <selfdestruct>1</selfdestruct>
+    <hidefromstats>1</hidefromstats>
+  </action>
+
   <tactic>Normal
     <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
     <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
@@ -72,5 +96,5 @@
     <action priority="100">CannonAttack</action>
     <action priority="50">BuildingAttack</action>
     <action priority="1">LongRangeAttack</action>
-</tactic>
+  </tactic>
 </tactics>

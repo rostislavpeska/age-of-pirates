@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="matB">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matA">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\trains\armored_train\textures\railway_gun_basecolor">
+      </texture>
+      <texture name="Normals" override="units\trains\armored_train\textures\railway_gun_normals">
+      </texture>
+      <texture name="Masks" override="units\trains\armored_train\textures\railway_gun_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
