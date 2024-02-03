@@ -19811,10 +19811,8 @@
     <flag>Tracked</flag>
     <flag>DisplayRange</flag>
     <flag>PlaceAnywhere</flag>
-
     <flag>DetonationDeath</flag>
     <detonationprotoaction>ExplosionAttack</detonationprotoaction>
-
     <command page="11" column="0">Abilities</command>
     <tactics>zptraingun.tactics</tactics>
     <protoaction>
@@ -20052,34 +20050,30 @@
     <icon>resources\art\units\trains\train_icon_64x64.png</icon>
     <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
     <rollovertextid>35881</rollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>22500.0000</initialhitpoints>
+    <maxhitpoints>22500.0000</maxhitpoints>
     <los>15.0000</los>
     <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
     </minimapcolor>
     <armor type="Ranged" value="0.9000">
     </armor>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>Unit</unittype>
     <unittype>RailroadUnit</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>AbstractArmoredTrain</unittype>
-    <flag>DontRotateObstruction</flag>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
     <flag>NotDeleteable</flag>
-    <flag>NoProjectileDamage</flag>
+    <flag>NotSearchable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>Invulnerable</flag>
+    <flag>DontRotateObstruction</flag>
     <flag>NonCollideable</flag>
     <flag>OrientUnitWithGround</flag>
     <flag>NonAutoFormedUnit</flag>
-    <flag>Invulnerable</flag>
-    <flag>InvulnerableIfGaia</flag>
     <flag>NoHPBar</flag>
     <flag>Tracked</flag>
     <flag>GivesLOSToAll</flag>
@@ -20343,7 +20337,6 @@
     <initialhitpoints>22500.0000</initialhitpoints>
     <maxhitpoints>22500.0000</maxhitpoints>
     <los>15.0000</los>
-    <bounty>300.0000</bounty>
     <cost resourcetype="Gold">2000.0000</cost>
     <buildingworkrate>1.0000</buildingworkrate>
     <armor type="Siege" value="0.0000">
@@ -21620,27 +21613,23 @@
     </minimapcolor>
     <armor type="Ranged" value="0.9000">
     </armor>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>Unit</unittype>
     <unittype>RailroadUnit</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>AbstractArmoredTrain</unittype>
-    <flag>DontRotateObstruction</flag>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
     <flag>NotDeleteable</flag>
-    <flag>NoProjectileDamage</flag>
+    <flag>NotSearchable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>Invulnerable</flag>
+    <flag>DontRotateObstruction</flag>
     <flag>NonCollideable</flag>
     <flag>OrientUnitWithGround</flag>
     <flag>NonAutoFormedUnit</flag>
-    <flag>Invulnerable</flag>
-    <flag>InvulnerableIfGaia</flag>
     <flag>NoHPBar</flag>
     <flag>Tracked</flag>
     <flag>GivesLOSToAll</flag>
@@ -21666,27 +21655,23 @@
     </minimapcolor>
     <armor type="Ranged" value="0.9000">
     </armor>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>Unit</unittype>
     <unittype>RailroadUnit</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>AbstractArmoredTrain</unittype>
-    <flag>DontRotateObstruction</flag>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
     <flag>NotDeleteable</flag>
-    <flag>NoProjectileDamage</flag>
+    <flag>NotSearchable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>Invulnerable</flag>
+    <flag>DontRotateObstruction</flag>
     <flag>NonCollideable</flag>
     <flag>OrientUnitWithGround</flag>
     <flag>NonAutoFormedUnit</flag>
-    <flag>Invulnerable</flag>
-    <flag>InvulnerableIfGaia</flag>
     <flag>NoHPBar</flag>
     <flag>Tracked</flag>
     <flag>GivesLOSToAll</flag>
@@ -21739,7 +21724,6 @@
     <initialhitpoints>22500.0000</initialhitpoints>
     <maxhitpoints>22500.0000</maxhitpoints>
     <los>15.0000</los>
-    <bounty>300.0000</bounty>
     <cost resourcetype="Gold">2000.0000</cost>
     <buildingworkrate>1.0000</buildingworkrate>
     <armor type="Siege" value="0.0000">
@@ -21773,7 +21757,6 @@
     <initialhitpoints>22500.0000</initialhitpoints>
     <maxhitpoints>22500.0000</maxhitpoints>
     <los>15.0000</los>
-    <bounty>300.0000</bounty>
     <cost resourcetype="Gold">2000.0000</cost>
     <buildingworkrate>1.0000</buildingworkrate>
     <armor type="Siege" value="0.0000">

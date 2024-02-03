@@ -92,6 +92,8 @@
     <anim>Death
         <assetreference type="GrannyAnim">
             <file>units\trains\armored_train\guncar_gun_base_death_Anim</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Explosion">0.12</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="BuildingDestruction">0.5</tag>
         </assetreference>
         <component>DeathModel</component>
         <attach a="Death_EXP" frombone="ATTACHPOINT" tobone="bone_barrel" syncanims="0"></attach>

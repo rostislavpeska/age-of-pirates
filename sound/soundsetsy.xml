@@ -2367,4 +2367,8 @@
     <sound filename="byzantine\Byzantines_Soldier_Move_3_AoE2.wav" volume="1.0000">
     </sound>
   </soundset>
+  <soundset name="Train_Breaks" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ambient\effects\train_breaks.wav" volume="1.0000">
+    </sound>
+  </soundset>
 </soundsetdef>

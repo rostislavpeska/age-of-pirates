@@ -4,5 +4,9 @@
       <soundset name="UI_Select_Building_FieldHospital">
       </soundset>
     </soundtype>
+    <soundtype name="Death">
+      <soundset name="Explosion">
+      </soundset>
+    </soundtype>
   </protounit>
 </protounitsounddef>

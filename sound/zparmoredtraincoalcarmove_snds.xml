@@ -1,8 +1,0 @@
-<protounitsounddef>
-  <protounit name="zpArmoredTrainCoalCarMove">
-    <soundtype name="Exists">
-      <soundset name="TrainExist">
-      </soundset>
-    </soundtype>
-  </protounit>
-</protounitsounddef>

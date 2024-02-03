@@ -82,7 +82,7 @@
     <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
     <projectile>InvisibleProjectile</projectile>
     <impacteffect>effects\impacts\gun</impacteffect>
-    <rate type="AbstractArmoredTrain">1.0</rate>
+    <rate type="Unit">1.0</rate>
     <instantballistics>1</instantballistics>
     <basedamagecap>1</basedamagecap>
     <selfdestruct>1</selfdestruct>

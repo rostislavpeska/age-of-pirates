@@ -48,7 +48,6 @@
 	<anim>Death
         <assetreference type="GrannyAnim">
             <file>units\trains\armored_train\wagon_damaged_Anim</file>
-            <tag type="SpecificSoundSet" checkvisible="1" set="Explosion">0.12</tag>
         </assetreference>
         <component>DeathModel</component>
     </anim>
