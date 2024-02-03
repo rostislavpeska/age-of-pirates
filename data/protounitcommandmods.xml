@@ -301,6 +301,16 @@
     <notcancellable>
     </notcancellable>
   </protounitcommand>
+  <!-- Added by AssertiveWall-->
+  <protounitcommand>
+    <name>zpShotgunAttack</name>
+    <icon>resources\images\icons\command\zp_surface.png</icon>
+    <activeicon>resources\images\icons\command\zp_surface_active.png</activeicon>
+    <disabledicon>resources\images\icons\command\zp_surface.png</disabledicon>
+    <rollovertextid>300472</rollovertextid>
+    <activerollovertextid>300472</activerollovertextid>
+    <command>unitSetTactic("zpShotgun")</command>
+  </protounitcommand>
 
 
   <!--

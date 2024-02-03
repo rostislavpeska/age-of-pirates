@@ -1,0 +1,24 @@
+<animfile>
+  <component>gun
+    <logic type="Variation">
+      <v1>
+        <assetreference type="GrannyModel">
+          <file>units\cavalry\us_cavalry\us_cavalry_gun</file>
+        </assetreference>
+      </v1>
+      <v2>
+        <assetreference type="GrannyModel">
+          <file>units\natives\lakota\rifle_rider\rifle_rider_1_gun</file>
+        </assetreference>
+      </v2>
+      <v3>
+        <assetreference type="GrannyModel">
+          <file>units\natives\ally\apache_cavalry\apache_cavalry_gun</file>
+        </assetreference>
+      </v3>
+    </logic>
+  </component>
+  <anim>Idle
+    <component>gun</component>
+  </anim>
+</animfile>

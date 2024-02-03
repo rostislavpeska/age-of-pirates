@@ -2504,6 +2504,81 @@ minInterval 10
 
 
 //==============================================================================
+// idleFishBoatMonitor
+// AssertiveWall: Looks for idle fishing boats and sends them to a safer fishing
+//                spot with more fish & whales
+// * not in use * Doesn't work very well. Always fighting fishing boats who want
+//                to do their own thing
+//==============================================================================
+rule idleFishBoatMonitor
+inactive
+minInterval 12
+{
+   int idleBoatQuery = createSimpleIdleUnitQuery(gFishingUnit, cPlayerRelationSelf, cUnitStateAlive);
+   int idleBoatCount = kbUnitQueryExecute(idleBoatQuery);
+   int tempBoat = -1;
+   vector newFishingSpot = cInvalidVector;
+
+   // Return if we didn't find any idle boats
+   if (idleBoatCount <= 0)
+   {
+      return;
+   }
+
+   // Find a good spot. Just go through fish and whales, pick furthest one from enemy. 
+   // Willing to go a little closer for whales, about 85% as far
+   int fishQuery = createSimpleUnitQuery(cUnitTypeAbstractFish, cPlayerRelationAny, cUnitStateAlive);
+   int fishCount = kbUnitQueryExecute(fishQuery);
+   int bestFishID = -1;
+   int bestFishDistance = -1;
+   int tempFishID = -1;
+   int tempFishDistance = -1;
+   vector tempFishLocation = cInvalidVector;
+   vector enemyPosition = guessEnemyLocation();
+
+   for (j = 0; < fishCount)
+   {
+      tempFishID = kbUnitQueryGetResult(fishQuery, j);
+      tempFishLocation = kbUnitGetPosition(tempFishID);
+      tempFishDistance = distance(tempFishLocation, enemyPosition);
+      if (tempFishDistance > bestFishDistance && tempFishLocation != cInvalidVector)
+      {
+         bestFishDistance = tempFishDistance;
+         bestFishID = tempFishID;
+      }
+   }
+
+   int whaleQuery = createSimpleUnitQuery(cUnitTypeAbstractWhale, cPlayerRelationAny, cUnitStateAlive);
+   int whaleCount = kbUnitQueryExecute(whaleQuery);
+   for (k = 0; < whaleCount)
+   {
+      tempFishID = kbUnitQueryGetResult(whaleQuery, j);
+      tempFishLocation = kbUnitGetPosition(tempFishID);
+      tempFishDistance = 1.17 * distance(tempFishLocation, enemyPosition);
+      if (tempFishDistance > bestFishDistance && tempFishLocation != cInvalidVector)
+      {
+         bestFishDistance = tempFishDistance;
+         bestFishID = tempFishID;
+      }
+   }
+
+   newFishingSpot = kbUnitGetPosition(bestFishID);
+   idleBoatQuery = createSimpleIdleUnitQuery(gFishingUnit, cPlayerRelationSelf, cUnitStateAlive);
+   idleBoatCount = kbUnitQueryExecute(idleBoatQuery);
+   for (i = 0; < idleBoatCount)
+   {
+      // Just move them. Let the auto-fishing take over from there
+      tempBoat = kbUnitQueryGetResult(idleBoatQuery, i);
+      // Only move boats that aren't on plans
+      if (aiPlanGetDesiredPriority(kbUnitGetPlanID(tempBoat)) <= 19)
+      {
+         aiTaskUnitMove(tempBoat, newFishingSpot);
+      }
+   }
+}
+
+
+//==============================================================================
 // fishFunction
 // AssertiveWall: Like the rule to update fishing boat maintain plan, but as a 
 //                function so the boat boom rules can call it
@@ -2723,7 +2798,7 @@ minInterval 10
       desiredDockCount = 1;
       maxFishingBoats = 10;
       boatPriority = 35;
-      maxDistance = 60;    
+      maxDistance = 80;    
       //aiChat(1, "No boat boom: " + maxDistance);
    }
 

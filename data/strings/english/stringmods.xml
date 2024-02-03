@@ -1160,8 +1160,36 @@
       <string _locid="400073">zp Wyatt Earp</string>
       <string _locid="400074">Gambler, gunslinger, and Sheriff of Tombstone.</string>
       <string _locid="400075">Jesse James</string>
-      <string _locid="400076">zp Jesse James</string>
+      <string _locid="400076">ZP Jesse James</string>
       <string _locid="400077">Famed outlaw and leader of the James–Younger Gang.</string>
+      <string _locid="400078">James' Gang</string>
+      <string _locid="400079">ZP James Gang</string>
+      <string _locid="400080">One of Jesse James' famed gang members.</string>
+      <string _locid="400081">Pinkerton Detective</string>
+      <string _locid="400082">ZP Pinkerton Detective</string>
+      <string _locid="400083">Pinkerton detectives, known for their inteligence work and pursuing outlaw gangs.</string>
+      <!-- Pinkerton Detectives -->
+      <string _locid="400084">Robert Pinkerton</string>
+      <string _locid="400085">Chas Schumacher</string>
+      <string _locid="400086">Joseph W. Whicher</string>
+      <string _locid="400087">John Boyle</string>
+      <string _locid="400088">Louis J. Lull</string>
+      <string _locid="400089">William Pinkerton</string>
+      <string _locid="400090">James McParland</string>
+      <string _locid="400091">Frank Geyer</string>
+      <string _locid="400092">Kate Warne</string>
+      <string _locid="400093">Timothy Webster</string>
+      <string _locid="400094">reserved</string>
+      <string _locid="400095">reserved</string>
+      <string _locid="400096">reserved</string>
+      <string _locid="400097">reserved</string>
+      <string _locid="400098">reserved</string>
+      <string _locid="400099">reserved</string>
+      <string _locid="400100">Deputy</string>
+      <string _locid="400101">ZP Deputy</string>
+      <string _locid="400102">Local law enforcement armed to take on dangerous outlaws.</string>
+      <string _locid="400103">Shotgun Attack</string>
+
 
       <!-- ===================================== -->
       <!-- ===================================== -->

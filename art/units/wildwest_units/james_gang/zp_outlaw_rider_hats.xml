@@ -1,0 +1,10 @@
+<animfile>
+  <component>hat
+    <assetreference type="GrannyModel">
+      <file>units\wildwest_units\black_hat\black_hat</file>
+    </assetreference>
+  </component>
+  <anim>Idle
+    <component>hat</component>
+  </anim>
+</animfile>

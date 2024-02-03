@@ -20,24 +20,10 @@
     </anim>
   </attachment>
   <attachment>gun
-    <component>gun
-      <assetreference type="GrannyModel">
-        <file>units\cavalry\us_cavalry\us_cavalry_gun</file>
-      </assetreference>
-    </component>
-    <anim>Idle
-      <component>gun</component>
-    </anim>
+    <include>units\wildwest_units\james_gang\zp_outlaw_rider_guns.xml</include>
   </attachment>
   <attachment>rifle
-    <component>rifle
-      <assetreference type="GrannyModel">
-        <file>units\cavalry\us_cavalry\us_cavalry_gun</file>
-      </assetreference>
-    </component>
-    <anim>Idle
-      <component>rifle</component>
-    </anim>
+    <include>units\wildwest_units\james_gang\zp_outlaw_rider_guns.xml</include>
   </attachment>
   <attachment>sword
     <include>units\attachments\sword.xml</include>
@@ -46,14 +32,7 @@
     <include>units\attachments\lasso.xml</include>
   </attachment>
   <attachment>hat
-    <component>hat
-      <assetreference type="GrannyModel">
-        <file>units\wildwest_units\black_hat\black_hat</file>
-      </assetreference>
-    </component>
-    <anim>Idle
-      <component>hat</component>
-    </anim>
+    <include>units\wildwest_units\james_gang\zp_outlaw_rider_hats.xml</include>
   </attachment>
   <attachment>hammer
     <component>hammer
@@ -109,10 +88,10 @@
     </anim>
   </attachment>
   <component>ModelComp
-    <assetreference type="GrannyModel">
-      <file>units\wildwest_units\jesse_james\jesse_james_rider</file>
-    </assetreference>
-    <attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
+      <assetreference type="GrannyModel">
+        <file>units\spc\outlaws\outlaw_rider_us</file>
+      </assetreference>
+      <attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
   </component>
   <anim>Walk
     <assetreference type="GrannyAnim">
@@ -221,6 +200,7 @@
   <anim>Attack_repeating_ranged
     <assetreference type="GrannyAnim">
       <file>animation_library\cavalry\carbine_attack_a</file>
+      <weight>40</weight>
     </assetreference>
     <component>ModelComp</component>
     <attach a="gun" frombone="Bip 01 master" tobone="Bip01 Prop1" syncanims="0"></attach>

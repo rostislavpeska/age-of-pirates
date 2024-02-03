@@ -10730,12 +10730,27 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpMountedOutlaw</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpJamesGang</target>
+      </effect>
       <effect type="TechStatus" status="obtainable">zpWildWestWhiskeyFactory</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestCows</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestFastColts</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestMilitia</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestVeteranCowboys</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestGuardCowboys</effect>
+      <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpJamesGang</target>
+      </effect>
+      <effect type="Data" action="RepeatingRangedAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpJamesGang</target>
+      </effect>
+      <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpJesseJames</target>
+      </effect>
+      <effect type="Data" action="RepeatingRangedAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpJesseJames</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpTransformArmoredTrain" type="Normal">
@@ -11566,6 +11581,21 @@
       </effect>
       <effect type="Data" amount="0.00" subtype="CopyTechIcon" tech="zpPolarExpress" relativity="Absolute">
         <target type="Tech">TradeRouteUpgrade2</target>
+      </effect>
+    </effects>
+  </tech>
+  <!-- Wild West Techs Added by AssertiveWall -->
+  <tech name="zpDocHollidayShadow" type="Normal">
+    <dbid>8454</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpNativeWesternVillage</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="0.805" subtype="UnitRegenRateLimit" unittype="zpDocHolliday" relativity="Absolute">
+        <target type="ProtoUnit">zpDocHolliday</target>
       </effect>
     </effects>
   </tech>
