@@ -19,6 +19,51 @@
     <instantballistics>1</instantballistics>
   </action>
   <action>
+    <name stringid="38133">RangedAttackBreachLoad</name>
+    <type>Attack</type>
+    <active>0</active>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>Attack_Ranged_Breach</anim>
+    <reloadanim>Attack_Ranged_Reload_Breach</reloadanim>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.5</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>InvisibleProjectile</projectile>
+    <impacteffect>effects\impacts\gun</impacteffect>
+    <rate type="Unit">1.0</rate>
+    <instantballistics>1</instantballistics>
+  </action>
+  <action>
+    <name stringid="400103">BuckshotAttack</name>
+    <type>Attack</type>
+    <active>0</active>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>Buckshot_Ranged_Attack</anim>
+    <reloadanim>Attack_ranged_reload_breach</reloadanim>
+    <idleanim>Idle</idleanim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.5</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>6</maxspread>
+    <spreadfactor>0.7</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>InvisibleProjectile</projectile>
+    <impacteffect>effects\impacts\gun</impacteffect>
+    <minrange>2</minrange>
+    <rate type="Unit">1.0 </rate>
+    <instantballistics>1</instantballistics>
+    <basedamagecap>1</basedamagecap>
+    <displayednumberprojectiles>8</displayednumberprojectiles>
+  </action>
+  <action>
     <name stringid="110469">BullseyeChargeAttack</name>
     <type>Attack</type>
     <active>0</active>
@@ -73,7 +118,7 @@
     <attackaction>1</attackaction>
     <rangedlogic>1</rangedlogic>
     <anim>Attack_repeating_ranged</anim>
-    <reloadanim>Attack_Ranged_Reload</reloadanim>
+    <reloadanim>Attack_repeating_reload</reloadanim>
     <accuracy>1.0</accuracy>
     <accuracyreductionfactor>0.5</accuracyreductionfactor>
     <aimbonus>0</aimbonus>
@@ -105,6 +150,7 @@
   <action>
     <name stringid="38132">HandAttack</name>
     <type>Attack</type>
+    <active>0</active>
     <maxrange>1.75</maxrange>
     <rate type="Unit">1.0</rate>
     <rate type="Herdable">1.0</rate>
@@ -141,8 +187,107 @@
     <maxrange>12</maxrange>
     <rate type="Herdable">1.0</rate>
   </action>
-  <tactic>Stagger<action priority="75">BuildingAttack</action><action priority="100">BullseyeChargeAttack</action><action priority="90">RangedAttack</action><action priority="90">BolasRangedAttack</action><action priority="90">RepeatingRangedAttack</action><action>Build</action><action>Gather</action><action>Hunting</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death_by_melee</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
-  <tactic>Defend<action priority="100">BullseyeChargeAttack</action><action priority="90">RangedAttack</action><action priority="90">BolasRangedAttack</action><action priority="90">RepeatingRangedAttack</action><action priority="75">BuildingAttack</action><action>Build</action><action>Gather</action><action>Hunting</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death_by_melee</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
-  <tactic>Melee<action priority="100">HandAttack</action><action priority="75">BuildingAttack</action><action>Build</action><action>Gather</action><action>Hunting</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death_by_melee</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
-  <tactic>StandGround<action priority="100">BullseyeChargeAttack</action><action priority="90">RangedAttack</action><action priority="90">BolasRangedAttack</action><action priority="90">RepeatingRangedAttack</action><action priority="75">BuildingAttack</action><action>Build</action><action>Gather</action><action>Hunting</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death_by_melee</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+  <action>
+    <name stringid="69153">IncreaseDamageWithLikeUnits</name>
+    <type>LikeBonus</type>
+    <active>0</active>
+    <maxrange>30</maxrange>
+    <persistent>1</persistent>
+    <modifytype>Damage</modifytype>
+    <modifymultiplier>0.02</modifymultiplier>
+    <modifyexponent>1.0</modifyexponent>
+    <modifybase>1.0</modifybase>
+  </action>
+
+  <tactic>Stagger
+    <action priority="75">BuildingAttack</action>
+    <action priority="100">BullseyeChargeAttack</action>
+    <action priority="90">RangedAttack</action>
+    <action priority="90">BolasRangedAttack</action>
+    <action priority="90">RepeatingRangedAttack</action>
+    <action priority="90">BuckshotAttack</action>
+    <action priority="90">RangedAttackBreachLoad</action>
+    <action>IncreaseDamageWithLikeUnits</action>
+    <action>Build</action>
+    <action>Gather</action>
+    <action>Hunting</action>
+    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+    <runaway>0</runaway>
+    <autoretarget>1</autoretarget>
+    <idleanim>Idle</idleanim>
+    <boredanim>Bored</boredanim>
+    <deathanim>death_by_range</deathanim>
+    <walkanim>Walk</walkanim>
+    <joganim>Jog</joganim>
+    <runanim>Run</runanim>
+  </tactic>
+  <tactic>Defend
+    <action priority="100">BullseyeChargeAttack</action>
+    <action priority="90">RangedAttack</action>
+    <action priority="90">BolasRangedAttack</action>
+    <action priority="90">RepeatingRangedAttack</action>
+    <action priority="90">BuckshotAttack</action>
+    <action priority="90">RangedAttackBreachLoad</action>
+    <action priority="75">BuildingAttack</action>
+    <action>IncreaseDamageWithLikeUnits</action>
+    <action>Build</action>
+    <action>Gather</action>
+    <action>Hunting</action>
+    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+    <runaway>1</runaway>
+    <autoretarget>1</autoretarget>
+    <idleanim>Idle</idleanim>
+    <boredanim>Bored</boredanim>
+    <deathanim>death_by_range</deathanim>
+    <walkanim>Walk</walkanim>
+    <joganim>Jog</joganim>
+    <runanim>Run</runanim>
+  </tactic>
+  <tactic>Melee
+    <action priority="100">HandAttack</action>
+    <action priority="75">BuildingAttack</action>
+    <action>IncreaseDamageWithLikeUnits</action>
+    <action>Build</action>
+    <action>Gather</action>
+    <action>Hunting</action>
+    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+    <runaway>0</runaway>
+    <autoretarget>1</autoretarget>
+    <idleanim>Idle</idleanim>
+    <boredanim>Bored</boredanim>
+    <deathanim>death_by_range</deathanim>
+    <walkanim>Walk</walkanim>
+    <joganim>Jog</joganim>
+    <runanim>Run</runanim>
+    </tactic>
+  <tactic>StandGround
+    <action priority="100">BullseyeChargeAttack</action>
+    <action priority="90">RangedAttack</action>
+    <action priority="90">BolasRangedAttack</action>
+    <action priority="90">RepeatingRangedAttack</action>
+    <action priority="90">BuckshotAttack</action>
+    <action priority="90">RangedAttackBreachLoad</action>
+    <action priority="75">BuildingAttack</action>
+    <action>IncreaseDamageWithLikeUnits</action>
+    <action>Build</action>
+    <action>Gather</action>
+    <action>Hunting</action>
+    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+    <runaway>1</runaway>
+    <autoretarget>1</autoretarget>
+    <idleanim>Idle</idleanim>
+    <boredanim>Bored</boredanim>
+    <deathanim>death_by_range</deathanim>
+    <walkanim>Walk</walkanim>
+    <joganim>Jog</joganim>
+    <runanim>Run</runanim>
+    </tactic>
 </tactics>

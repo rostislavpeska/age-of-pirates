@@ -26,7 +26,7 @@
   <attachment>shotgun
     <component>shotgun
       <assetreference type="GrannyModel">
-        <file>units\spc\outlaws\outlaw_shotgun_gun_us</file>
+        <file>units\attachments\shotgun</file>
       </assetreference>
     </component>
     <anim>Idle
@@ -218,54 +218,70 @@
   </anim>
   <anim>Buckshot_Ranged_Attack
     <assetreference type="GrannyAnim">
-      <file>animation_library\SPC\cooper\ranged_attack</file>
+      <file>animation_library\range\volley\volley_standing_fire</file>
       <tag type="Attack">0.37</tag>
-      <tag type="SpecificSoundSet" checkvisible="1" set="PistolShot">0.37</tag>
-      <tag type="Particles" particlename="pistolshot_right">0.37</tag>
+      <tag type="Attack">0.37</tag>
+      <tag type="Attack">0.37</tag>
+      <tag type="Attack">0.37</tag>
+      <tag type="Attack">0.37</tag>
+      <tag type="Attack">0.37</tag>
+      <tag type="Attack">0.37</tag>
+      <tag type="Attack">0.37</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="OrganGunShoot">0.37</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.37</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="MusketShot">0.37</tag>
+      <tag type="Particles" particlename="musketshot">0.37</tag>
     </assetreference>
     <component>ModelComp</component>
-    <attach a="gun2" frombone="Bip01_AttachRt" tobone="bip01 Prop1" syncanims="0"></attach>
+    <attach a="shotgun" frombone="Bip01_AttachRt" tobone="bip01 Prop1" syncanims="0"></attach>
   </anim>
   <anim>Shotgun_Idle
     <assetreference type="GrannyAnim">
-      <file>animation_library\SPC\cooper\idle</file>
+      <file>animation_library\range\idle_rifleman_A</file>
     </assetreference>
     <component>ModelComp</component>
-    <attach a="gun2" frombone="bone_sword" tobone="Bip01 Prop1" syncanims="0"></attach>
+    <attach a="shotgun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach>
   </anim>
   <anim>Shotgun_Bored
     <assetreference type="GrannyAnim">
-      <file>animation_library\shared\human_bored_generic_A</file>
+      <file>animation_library\range\bored_rifleman_A</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\range\bored_rifleman_B</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\range\bored_rifleman_C</file>
     </assetreference>
     <component>ModelComp</component>
-    <attach a="gun2" frombone="bone_sword" tobone="Bip01 Prop1" syncanims="0"></attach>
+    <attach a="shotgun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach>
   </anim>
   <anim>Shotgun_Walk
     <assetreference type="GrannyAnim">
-      <file>animation_library\SPC\cooper\walk</file>
-      <tag type="FootstepLeft" footprinttype="HumanLeft">0.68</tag>
-      <tag type="FootstepRight" footprinttype="HumanRight">0.16</tag>
+      <file>animation_library\range\walk_crossbow_upper</file>
+      <file>animation_library\shared\walk_generic_lower</file>
+      <tag type="FootstepLeft" footprinttype="HumanLeft">0.14</tag>
+      <tag type="FootstepRight" footprinttype="HumanRight">0.61</tag>
     </assetreference>
     <component>ModelComp</component>
-    <attach a="gun2" frombone="bone_sword" tobone="Bip01 Prop1" syncanims="0"></attach>
+    <attach a="shotgun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach>
   </anim>
   <anim>Shotgun_Jog
     <assetreference type="GrannyAnim">
-      <file>animation_library\shared\jog_generic</file>
-      <tag type="FootstepLeft" footprinttype="HumanLeft">0.60</tag>
-      <tag type="FootstepRight" footprinttype="HumanRight">0.10</tag>
+      <file>animation_library\range\jog_rifleman_A</file>
+      <tag type="FootstepLeft" footprinttype="HumanLeft">0.04</tag>
+      <tag type="FootstepRight" footprinttype="HumanRight">0.54</tag>
     </assetreference>
     <component>ModelComp</component>
-    <attach a="gun2" frombone="bone_sword" tobone="Bip01 Prop1" syncanims="0"></attach>
+    <attach a="shotgun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach>
   </anim>
   <anim>Shotgun_Run
     <assetreference type="GrannyAnim">
-      <file>animation_library\shared\run_generic</file>
-      <tag type="FootstepLeft" footprinttype="HumanLeft">0.08</tag>
+      <file>animation_library\range\run_rifleman_A</file>
+      <tag type="FootstepLeft" footprinttype="HumanLeft">0.13</tag>
       <tag type="FootstepRight" footprinttype="HumanRight">0.60</tag>
     </assetreference>
     <component>ModelComp</component>
-    <attach a="gun2" frombone="bone_sword" tobone="Bip01 Prop1" syncanims="0"></attach>
+    <attach a="shotgun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach>
   </anim>
   <anim>Reload
     <assetreference type="GrannyAnim">
@@ -273,6 +289,13 @@
     </assetreference>
     <component>ModelComp</component>
     <attach a="gun2" frombone="bone_sword" tobone="Bip01 Prop1" syncanims="0"></attach>
+  </anim>
+  <anim>Shotgun_reload
+    <assetreference type="GrannyAnim">
+      <file>animation_library\range\volley\volley_standing_reload</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="shotgun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach>
   </anim>
   <anim>KnockoutIdle
     <assetreference type="GrannyAnim">

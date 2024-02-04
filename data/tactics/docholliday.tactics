@@ -27,14 +27,14 @@
     <attackaction>1</attackaction>
     <rangedlogic>1</rangedlogic>
     <anim>Buckshot_Ranged_Attack</anim>
-    <reloadanim>Reload</reloadanim>
-    <idleanim>Idle</idleanim>
+    <reloadanim>Shotgun_reload</reloadanim>
+    <idleanim>Shotgun_Idle</idleanim>
     <maxheight>0</maxheight>
     <accuracy>1.0</accuracy>
     <accuracyreductionfactor>0.5</accuracyreductionfactor>
     <aimbonus>0</aimbonus>
-    <maxspread>4</maxspread>
-    <spreadfactor>0.5</spreadfactor>
+    <maxspread>6</maxspread>
+    <spreadfactor>0.7</spreadfactor>
     <trackrating>12</trackrating>
     <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
     <projectile>InvisibleProjectile</projectile>
@@ -43,7 +43,7 @@
     <rate type="Unit">1.0 </rate>
     <instantballistics>1</instantballistics>
     <basedamagecap>1</basedamagecap>
-    <displayednumberprojectiles>6</displayednumberprojectiles>
+    <displayednumberprojectiles>8</displayednumberprojectiles>
   </action>
   <action>
     <name stringid="110088">ChargeQuickDrawAttack</name>

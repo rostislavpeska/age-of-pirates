@@ -162,54 +162,118 @@
       <file>animation_library\cavalry\horse_1_attack_A</file>
       <weight>40</weight>
       <tag type="Attack">0.41</tag>
-      <tag type="SpecificSoundSet" checkvisible="1" set="PistolShot">0.41</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="MusketShot">0.41</tag>
       <tag type="Particles" particlename="pistolshot_right">0.41</tag>
     </assetreference>
     <assetreference type="GrannyAnim">
       <file>animation_library\cavalry\horse_1_attack_B</file>
       <weight>10</weight>
       <tag type="Attack">0.43</tag>
-      <tag type="SpecificSoundSet" checkvisible="1" set="PistolShot">0.43</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="MusketShot">0.43</tag>
       <tag type="Particles" particlename="pistolshot_right">0.43</tag>
     </assetreference>
     <assetreference type="GrannyAnim">
       <file>animation_library\cavalry\horse_1_attack_C</file>
       <weight>10</weight>
       <tag type="Attack">0.43</tag>
-      <tag type="SpecificSoundSet" checkvisible="1" set="PistolShot">0.43</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="MusketShot">0.43</tag>
       <tag type="Particles" particlename="pistolshot_right">0.43</tag>
     </assetreference>
     <assetreference type="GrannyAnim">
       <file>animation_library\cavalry\horse_1_attack_D</file>
       <weight>10</weight>
       <tag type="Attack">0.45</tag>
-      <tag type="SpecificSoundSet" checkvisible="1" set="PistolShot">0.45</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="MusketShot">0.45</tag>
       <tag type="Particles" particlename="pistolshot_right">0.45</tag>
-    </assetreference>
-    <component>ModelComp</component>
-  </anim>
-  <anim>Attack_repeating_ranged
-    <assetreference type="GrannyAnim">
-      <file>animation_library\cavalry\horse_revolver_attack</file>
-      <weight>40</weight>
-      <tag type="Attack">0.51</tag>
-      <tag type="Attack">0.60</tag>
-      <tag type="Attack">0.68</tag>
-      <tag type="Attack">0.77</tag>
-      <tag type="SpecificSoundSet" checkvisible="1" set="PistolShot">0.51</tag>
-      <tag type="SpecificSoundSet" checkvisible="1" set="PistolShot">0.60</tag>
-      <tag type="SpecificSoundSet" checkvisible="1" set="PistolShot">0.68</tag>
-      <tag type="SpecificSoundSet" checkvisible="1" set="PistolShot">0.77</tag>
-      <tag type="Particles" particlename="pistolshot_right">0.51</tag>
-      <tag type="Particles" particlename="pistolshot_right">0.60</tag>
-      <tag type="Particles" particlename="pistolshot_right">0.68</tag>
-      <tag type="Particles" particlename="pistolshot_right">0.77</tag>
     </assetreference>
     <component>ModelComp</component>
   </anim>
   <anim>Attack_ranged_reload
     <assetreference type="GrannyAnim">
       <file>animation_library\cavalry\horse_reload</file>
+    </assetreference>
+    <component>ModelComp</component>
+  </anim>
+  <anim>Attack_Ranged_Breach
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\horse_1_attack_A</file>
+      <weight>40</weight>
+      <tag type="Attack">0.41</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="MusketShot">0.41</tag>
+      <tag type="Particles" particlename="pistolshot_right">0.41</tag>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\horse_1_attack_B</file>
+      <weight>10</weight>
+      <tag type="Attack">0.43</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="MusketShot">0.43</tag>
+      <tag type="Particles" particlename="pistolshot_right">0.43</tag>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\horse_1_attack_C</file>
+      <weight>10</weight>
+      <tag type="Attack">0.43</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="MusketShot">0.43</tag>
+      <tag type="Particles" particlename="pistolshot_right">0.43</tag>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\horse_1_attack_D</file>
+      <weight>10</weight>
+      <tag type="Attack">0.45</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="MusketShot">0.45</tag>
+      <tag type="Particles" particlename="pistolshot_right">0.45</tag>
+    </assetreference>
+    <component>ModelComp</component>
+  </anim>
+  <anim>Attack_ranged_reload_breach
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\horse_reload</file>
+    </assetreference>
+    <component>ModelComp</component>
+  </anim>
+  <anim>Attack_repeating_ranged
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\horse_carbine_attack_a</file>
+      <weight>40</weight>
+      <tag type="Attack">0.27</tag>
+      <tag type="Attack">0.67</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="MusketShot">0.26</tag>
+      <tag type="Particles" particlename="pistolshot_right">0.25</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="MusketShot">0.66</tag>
+      <tag type="Particles" particlename="pistolshot_right">0.65</tag>
+    </assetreference>
+    <component>ModelComp</component>
+  </anim>
+  <anim>Attack_repeating_reload
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\horse_reload</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\horse_reload</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\horse_reload</file>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\horse_reload</file>
+    </assetreference>
+    <component>ModelComp</component>
+  </anim>
+  <anim>Buckshot_Ranged_Attack
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\horse_1_attack_A</file>
+      <tag type="Attack">0.37</tag>
+      <tag type="Attack">0.37</tag>
+      <tag type="Attack">0.37</tag>
+      <tag type="Attack">0.37</tag>
+      <tag type="Attack">0.37</tag>
+      <tag type="Attack">0.37</tag>
+      <tag type="Attack">0.37</tag>
+      <tag type="Attack">0.37</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="OrganGunShoot">0.37</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.37</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="MusketShot">0.37</tag>
+      <tag type="Particles" particlename="musketshot">0.37</tag>
     </assetreference>
     <component>ModelComp</component>
   </anim>

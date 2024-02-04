@@ -10733,24 +10733,22 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpJamesGang</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpStageCoach</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpDeputy</target>
+      </effect>
       <effect type="TechStatus" status="obtainable">zpWildWestWhiskeyFactory</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestCows</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestFastColts</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestMilitia</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestVeteranCowboys</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestGuardCowboys</effect>
-      <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpJamesGang</target>
-      </effect>
-      <effect type="Data" action="RepeatingRangedAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpJamesGang</target>
-      </effect>
-      <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpJesseJames</target>
-      </effect>
-      <effect type="Data" action="RepeatingRangedAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpJesseJames</target>
-      </effect>
+      <effect type="TechStatus" status="obtainable">zpCowboyRepeaters</effect>
+      <effect type="TechStatus" status="obtainable">zpCowboyShotguns</effect>
+      <effect type="TechStatus" status="obtainable">zpCowboyRifles</effect>
+      <effect type="TechStatus" status="obtainable">zpWesternShadows</effect>
     </effects>
   </tech>
   <tech name="zpTransformArmoredTrain" type="Normal">
@@ -11058,9 +11056,39 @@
       <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpMountedOutlaw</target>
       </effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpDeputy</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpDeputy</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpStageCoach</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpStageCoach</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpJamesGang</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpJamesGang</target>
+      </effect>
       <effect type="SetName" proto="zpMountedOutlaw" culture="none" newname="301034">
       </effect>
       <effect type="SetName" proto="zpMountedOutlaw" culture="none" newname="301036" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpStageCoach" culture="none" newname="400110">
+      </effect>
+      <effect type="SetName" proto="zpStageCoach" culture="none" newname="400116" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpJamesGang" culture="none" newname="400111">
+      </effect>
+      <effect type="SetName" proto="zpJamesGang" culture="none" newname="400117" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpDeputy" culture="none" newname="400112">
+      </effect>
+      <effect type="SetName" proto="zpDeputy" culture="none" newname="400118" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpMercMountedOutlaw</target>
@@ -11099,9 +11127,39 @@
       <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpMountedOutlaw</target>
       </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpDeputy</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpDeputy</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpStageCoach</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpStageCoach</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpJamesGang</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpJamesGang</target>
+      </effect>
       <effect type="SetName" proto="zpMountedOutlaw" culture="none" newname="301035">
       </effect>
       <effect type="SetName" proto="zpMountedOutlaw" culture="none" newname="301036" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpStageCoach" culture="none" newname="400113">
+      </effect>
+      <effect type="SetName" proto="zpStageCoach" culture="none" newname="400116" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpJamesGang" culture="none" newname="400114">
+      </effect>
+      <effect type="SetName" proto="zpJamesGang" culture="none" newname="400117" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpDeputy" culture="none" newname="400115">
+      </effect>
+      <effect type="SetName" proto="zpDeputy" culture="none" newname="400118" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpMercMountedOutlaw</target>
@@ -11585,17 +11643,114 @@
     </effects>
   </tech>
   <!-- Wild West Techs Added by AssertiveWall -->
-  <tech name="zpDocHollidayShadow" type="Normal">
-    <dbid>8454</dbid>
+  <tech name="zpWesternShadows" type="Normal">
+    <dbid>50019</dbid>
     <researchpoints>0.0000</researchpoints>
-    <status>OBTAINABLE</status>
+    <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <prereqs>
       <techstatus status="Active">zpNativeWesternVillage</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="0.805" subtype="UnitRegenRateLimit" unittype="zpDocHolliday" relativity="Absolute">
+      <effect type="Data" amount="0.705" subtype="UnitRegenRateLimit" unittype="zpDocHolliday" relativity="Absolute">
         <target type="ProtoUnit">zpDocHolliday</target>
+      </effect>
+      <effect type="Data" action="IncreaseHPWithLikeUnits1" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpDeputy</target>
+      </effect>
+      <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpJamesGang</target>
+      </effect>
+      <effect type="Data" action="RepeatingRangedAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpJamesGang</target>
+      </effect>
+      <effect type="Data" action="IncreaseDamageWithLikeUnits" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpJamesGang</target>
+      </effect>
+      <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpJesseJames</target>
+      </effect>
+      <effect type="Data" action="RepeatingRangedAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpJesseJames</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCowboyRepeaters" type="Normal">
+    <dbid>50020</dbid>
+    <displaynameid>400104</displaynameid>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\guard_cavalry\guard_cavalry.png</icon>
+    <rollovertextid>400105</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpCowboyShotguns</effect>
+      <effect type="TechStatus" status="unobtainable">zpCowboyRifles</effect>
+      <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+      <effect type="Data" action="RepeatingRangedAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCowboyShotguns" type="Normal">
+    <dbid>50021</dbid>
+    <displaynameid>400106</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\guard_cavalry\guard_cavalry.png</icon>
+    <rollovertextid>400107</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpCowboyRepeaters</effect>
+      <effect type="TechStatus" status="unobtainable">zpCowboyRifles</effect>
+      <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+      <effect type="Data" action="BuckshotAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCowboyRifles" type="Normal">
+    <dbid>50022</dbid>
+    <displaynameid>400108</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\guard_cavalry\guard_cavalry.png</icon>
+    <rollovertextid>400109</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpCowboyRepeaters</effect>
+      <effect type="TechStatus" status="unobtainable">zpCowboyShotguns</effect>
+      <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+      <effect type="Data" action="RangedAttackBreachLoad" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
       </effect>
     </effects>
   </tech>
