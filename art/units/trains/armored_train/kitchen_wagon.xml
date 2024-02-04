@@ -3,6 +3,17 @@
   <definebone>bone_wagon</definebone>
   <definebone>bone_explosion</definebone>
   <definebone>bone_hitpointbar</definebone>
+  <definebone>bone_smoke</definebone>
+  <attachment>Chimney Smoke
+    <component>smoke
+        <assetreference type="popcornFx">
+            <file>smoke\chimney_smoke.pkfx</file>
+        </assetreference>
+    </component>
+    <anim>Idle
+        <component>smoke</component>
+    </anim>
+  </attachment>
   <attachment>Death_EXP
     <component>exp
       <assetreference type="popcornFx">
@@ -47,7 +58,7 @@
 
   <component>ModelComp
     <assetreference type="GrannyModel">
-        <file>units\trains\armored_train\wagon_damaged_Model</file>
+        <file>units\trains\armored_train\kitchen_wagon_Model</file>
     </assetreference>
     <attach a="Wagon" frombone="caboose" tobone="bone_wagon" syncanims="0"></attach>
     <decal>
@@ -66,9 +77,10 @@
   </component>
   <anim>Idle
     <assetreference type="GrannyAnim">
-        <file>units\trains\armored_train\wagon_damaged_Model</file>
+        <file>units\trains\armored_train\kitchen_wagon_Model</file>
     </assetreference>
     <component>ModelComp</component>
+    <attach a="Chimney Smoke" frombone="bone_chimney" tobone="bone_smoke" syncanims="0"></attach>
   </anim>
   <anim>Walk
     <component>ModelComp</component>

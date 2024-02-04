@@ -3,13 +3,13 @@
     <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="units\natives\zen\textures\sohei_rider_matA_BaseColor">
+      <texture name="BaseColor" override="units\asians\japanese\sohei\textures\sohei_age2_matA_BaseColor">
       </texture>
-      <texture name="Normals" override="units\africans\natives\tuareg\textures\tuareg_rider_matA_Normals">
+      <texture name="Normals" override="units\asians\japanese\sohei\textures\sohei_age2_matA_Normals">
       </texture>
-      <texture name="Masks" override="units\africans\natives\tuareg\textures\tuareg_rider_matA_Masks">
+      <texture name="Masks" override="units\asians\japanese\sohei\textures\sohei_age2_matA_Masks">
       </texture>
-      <texture name="Details" override="units\africans\natives\tuareg\textures\tuareg_rider_matA_Details">
+      <texture name="Details" override="units\asians\japanese\sohei\textures\sohei_age2_matA_Details">
       </texture>
     </parameters>
   </submaterial>

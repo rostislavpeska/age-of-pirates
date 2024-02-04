@@ -19769,7 +19769,7 @@
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
     <los>60.0000</los>
-    <displayedrange>80.0</displayedrange>
+    <displayedrange>60.0</displayedrange>
     <projectileprotounit>zpGreatWarShell</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <bounty>300.0000</bounty>
@@ -20001,7 +20001,7 @@
     <maxvelocity>8.5000</maxvelocity>
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>land</movementtype>
-    <animfile>units\trains\armored_train\barrack_car.xml</animfile>
+    <animfile>units\trains\armored_train\armored_car.xml</animfile>
     <icon>resources\art\units\trains\train_icon_64x64.png</icon>
     <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
     <rollovertextid>23042</rollovertextid>
@@ -20252,7 +20252,7 @@
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <turnrate>1.0000</turnrate>
-    <animfile>units\trains\armored_train\barrack_car.xml</animfile>
+    <animfile>units\trains\armored_train\armored_car.xml</animfile>
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\trains\train_icon_64x64.png</icon>
     <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
@@ -20260,6 +20260,8 @@
     <shortrollovertextid>33596</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
     <los>15.0000</los>
     <bounty>300.0000</bounty>
     <cost resourcetype="Gold">2000.0000</cost>
@@ -20317,7 +20319,21 @@
     <notcontain>LogicalTypeNavalMilitary</notcontain>
     <notcontain>AbstractFishingBoat</notcontain>
     <deploymentcommand>zpWagonDeploy</deploymentcommand>
+    <tactics>armoredcar.tactics</tactics>
     <command page="2" column="0">zpWagonDeploy</command>
+    <command page="0" column="0">zpTrainLevy</command>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>24.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractVillager">0.250000</damagebonus>
+      <damagebonus type="AbstractCavalry">1.500000</damagebonus>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.300000</damagebonus>
+    </protoaction>
   </unit>
   <unit id="20201" name="zpArmoredTrainGunCarStatic">
     <dbid>20201</dbid>
@@ -21772,7 +21788,7 @@
     <flag>NotSelectable</flag>
     <flag>NoIdleActions</flag>
   </unit>
-  <unit id="20229" name="zpArmoredTrainArmoredCarMove">
+  <unit id="20229" name="zpArmoredTrainKitchenWagonMove">
     <dbid>20229</dbid>
     <displaynameid>301075</displaynameid>
     <editornameid>301074</editornameid>
@@ -21781,7 +21797,7 @@
     <maxvelocity>8.5000</maxvelocity>
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>land</movementtype>
-    <animfile>units\trains\armored_train\armored_car.xml</animfile>
+    <animfile>units\trains\armored_train\kitchen_wagon.xml</animfile>
     <icon>resources\art\units\trains\train_icon_64x64.png</icon>
     <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
     <rollovertextid>23042</rollovertextid>
@@ -21818,7 +21834,7 @@
     <flag>GivesLOSToAll</flag>
     <command page="10" column="7">Delete</command>
   </unit>
-  <unit id="20230" name="zpArmoredTrainArmoredCarStatic">
+  <unit id="20230" name="zpArmoredTrainKitchenWagonStatic">
     <dbid>20230</dbid>
     <displaynameid>301075</displaynameid>
     <editornameid>301076</editornameid>
@@ -21827,7 +21843,7 @@
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <turnrate>1.0000</turnrate>
-    <animfile>units\trains\armored_train\armored_car.xml</animfile>
+    <animfile>units\trains\armored_train\kitchen_wagon.xml</animfile>
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\trains\train_icon_64x64.png</icon>
     <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
@@ -21876,15 +21892,6 @@
     <flag>PlaceAnywhere</flag>
     <flag>HasGatherPoint</flag>
     <flag>GivesLOSToAll</flag>
-    <tactics>armoredcar.tactics</tactics>
-    <command page="0" column="0">zpTrainLevy</command>
-    <protoaction>
-      <name>RangedAttack</name>
-      <damage>40.000000</damage>
-      <damagetype>Ranged</damagetype>
-      <maxrange>16.000000</maxrange>
-      <rof>3.000000</rof>
-    </protoaction>
   </unit>
 
 
