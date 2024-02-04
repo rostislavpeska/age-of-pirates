@@ -23986,6 +23986,9 @@
     <unittype>AbstractCavalryInfantry</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
     <unittype>AbstractNativeWarrior</unittype>
+    <tech row="1" page="0" column="0">zpCowboyRepeaters</tech>
+    <tech row="1" page="0" column="1">zpCowboyShotguns</tech>
+    <tech row="1" page="0" column="2">zpCowboyRifles</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -24121,6 +24124,9 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractBank</unittype>
+    <tech row="0" page="0" column="0">zpCowboyRepeaters</tech>
+    <tech row="0" page="0" column="1">zpCowboyShotguns</tech>
+    <tech row="0" page="0" column="2">zpCowboyRifles</tech>
     <tech row="0" page="2" column="1">zpSpreadTheCheer</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>

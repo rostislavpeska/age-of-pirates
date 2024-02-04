@@ -10745,9 +10745,9 @@
       <effect type="TechStatus" status="obtainable">zpWildWestMilitia</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestVeteranCowboys</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestGuardCowboys</effect>
-      <effect type="TechStatus" status="obtainable">zpCowboyRepeaters</effect>
+      <!--<effect type="TechStatus" status="obtainable">zpCowboyRepeaters</effect>
       <effect type="TechStatus" status="obtainable">zpCowboyShotguns</effect>
-      <effect type="TechStatus" status="obtainable">zpCowboyRifles</effect>
+      <effect type="TechStatus" status="obtainable">zpCowboyRifles</effect>-->
       <effect type="TechStatus" status="obtainable">zpWesternShadows</effect>
     </effects>
   </tech>
@@ -11680,8 +11680,8 @@
     <displaynameid>400104</displaynameid>
     <cost resourcetype="Gold">200.0000</cost>
     <researchpoints>10.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\guard_cavalry\guard_cavalry.png</icon>
+    <status>OBTAINABLE</status>
+    <icon>resources\art\units\natives\western_village\cowboyrepeater.png</icon>
     <rollovertextid>400105</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>UpgradeTech</flag>
@@ -11707,8 +11707,8 @@
     <cost resourcetype="Wood">100.0000</cost>
     <cost resourcetype="Gold">100.0000</cost>
     <researchpoints>10.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\guard_cavalry\guard_cavalry.png</icon>
+    <status>OBTAINABLE</status>
+    <icon>resources\art\units\natives\western_village\cowboyshotgun.png</icon>
     <rollovertextid>400107</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>UpgradeTech</flag>
@@ -11733,8 +11733,8 @@
     <displaynameid>400108</displaynameid>
     <cost resourcetype="Wood">200.0000</cost>
     <researchpoints>10.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\guard_cavalry\guard_cavalry.png</icon>
+    <status>OBTAINABLE</status>
+    <icon>resources\art\units\natives\western_village\cowboyconversionrifle.png</icon>
     <rollovertextid>400109</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>UpgradeTech</flag>
