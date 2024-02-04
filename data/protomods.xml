@@ -367,9 +367,9 @@
     <tech row="0" page="2" column="3">zpWildWestMilitia</tech>
     <tech row="0" page="1" column="1">zpWildWestVeteranCowboys</tech>
     <tech row="0" page="1" column="1">zpWildWestGuardCowboys</tech>
-    <tech row="0" page="1" column="2">zpCowboyRepeaters</tech>
-    <tech row="0" page="1" column="3">zpCowboyShotguns</tech>
-    <tech row="0" page="1" column="4">zpCowboyRifles</tech>
+    <!--<tech row="0" page="0" column="5">zpCowboyRepeaters</tech>
+    <tech row="0" page="1" column="5">zpCowboyShotguns</tech>
+    <tech row="0" page="2" column="5">zpCowboyRifles</tech>-->
 
 
     <command page="2" column="0">zpNatArmoredTrain</command>
@@ -23820,8 +23820,8 @@
     <editornameid>400061</editornameid>
     <subciv>zpWesternVillage</subciv>
     <populationcount>0</populationcount>
-    <obstructionradiusx>0.9900</obstructionradiusx>
-    <obstructionradiusz>2.4900</obstructionradiusz>
+    <obstructionradiusx>0.7900</obstructionradiusx>
+    <obstructionradiusz>0.7900</obstructionradiusz>
     <maxvelocity>6.0000</maxvelocity>
     <maxrunvelocity>8.0000</maxrunvelocity>
     <movementtype>land</movementtype>
