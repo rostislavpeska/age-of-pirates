@@ -220,8 +220,6 @@
     <subciv>zpScientists</subciv>
     <usemultiple>
     </usemultiple>
-    <usemediumbutton3>
-    </usemediumbutton3>
   </protounitcommand>
   <protounitcommand>
     <name>zpNatArmoredTrainDisabled</name>
@@ -233,8 +231,17 @@
     <subciv>zpScientists</subciv>
     <usemultiple>
     </usemultiple>
-    <usemediumbutton3>
-    </usemediumbutton3>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpNatArmoredTrainNoResource</name>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
+    <associatedtech>zpArmoredTrainNoResourceEnableShadow</associatedtech>
+    <associatedpower>zpPowerArmouredTrainNoResource</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>zpScientists</subciv>
+    <usemultiple>
+    </usemultiple>
   </protounitcommand>
   <protounitcommand>
     <name>zpTrainLevy</name>

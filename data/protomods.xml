@@ -363,8 +363,9 @@
     <tech row="0" page="1" column="1">zpWildWestGuardCowboys</tech>
 
 
-    <command page="2" column="0">zpNatArmoredTrain</command>
-    <command page="2" column="0">zpNatArmoredTrainDisabled</command>
+    <command page="0" column="3">zpNatArmoredTrain</command>
+    <command page="0" column="3">zpNatArmoredTrainDisabled</command>
+    <command page="0" column="3">zpNatArmoredTrainNoResource</command>
     <protoaction>
       <name>SpawnArmoredTrain</name>
       <damage>1.000000</damage>
@@ -20317,7 +20318,6 @@
     <notcontain>AbstractFishingBoat</notcontain>
     <deploymentcommand>zpWagonDeploy</deploymentcommand>
     <command page="2" column="0">zpWagonDeploy</command>
-    <command page="0" column="0">zpTrainLevy</command>
   </unit>
   <unit id="20201" name="zpArmoredTrainGunCarStatic">
     <dbid>20201</dbid>
@@ -21771,6 +21771,120 @@
     <flag>NotSearchable</flag>
     <flag>NotSelectable</flag>
     <flag>NoIdleActions</flag>
+  </unit>
+  <unit id="20229" name="zpArmoredTrainArmoredCarMove">
+    <dbid>20229</dbid>
+    <displaynameid>301075</displaynameid>
+    <editornameid>301074</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <maxvelocity>8.5000</maxvelocity>
+    <maxrunvelocity>10.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>units\trains\armored_train\armored_car.xml</animfile>
+    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <rollovertextid>23042</rollovertextid>
+    <initialhitpoints>2250.0000</initialhitpoints>
+    <maxhitpoints>2250.0000</maxhitpoints>
+    <los>15.0000</los>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>AbstractArmoredTrain</unittype>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NoHPBar</flag>
+    <flag>Tracked</flag>
+    <flag>GivesLOSToAll</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20230" name="zpArmoredTrainArmoredCarStatic">
+    <dbid>20230</dbid>
+    <displaynameid>301075</displaynameid>
+    <editornameid>301076</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>1.0000</turnrate>
+    <animfile>units\trains\armored_train\armored_car.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <rollovertextid>33597</rollovertextid>
+    <shortrollovertextid>33596</shortrollovertextid>
+    <initialhitpoints>2250.0000</initialhitpoints>
+    <maxhitpoints>2250.0000</maxhitpoints>
+    <los>15.0000</los>
+    <displayedrange>20.0000</displayedrange>
+    <bounty>300.0000</bounty>
+    <cost resourcetype="Gold">2000.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractArmoredTrain</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <flag>DisplayRange</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>NotDeleteable</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>GivesLOSToAll</flag>
+    <tactics>armoredcar.tactics</tactics>
+    <command page="0" column="0">zpTrainLevy</command>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
   </unit>
 
 
