@@ -3862,5 +3862,38 @@
       <command>trCounterVisible("%Name%", false);</command>
       <command>}</command>
     </effect>
+    <effect name="ZP Armored Train Stop">
+      <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit">default</param>
+      <param name="TrgPlayer" dispname="$$79817$$Target Player" vartype="player">1</param>
+      <param name="Dist" dispname="$$22303$$Radius" vartype="float">100</param>
+      <command>trTechSetStatus(0, cTechzpTransformArmoredTrain, 2);</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="SrcObject">trUnitSelect("%SrcObject%");</command>
+      <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainGun",%Dist%);</command>
+      <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainGunCarStatic",%Dist%);</command>
+      <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainEngineStatic",%Dist%);</command>
+      <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainCoalCarStatic",%Dist%);</command>
+      <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainBarracksStatic",%Dist%);</command>
+      <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainGunpowderStatic",%Dist%);</command>
+      <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainHospitalStatic",%Dist%);</command>
+      <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainGunCarBackStatic",%Dist%);</command>
+      <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainGunCarFrontStatic",%Dist%);</command>
+      <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainArmoredCarStatic",%Dist%);</command>
+    </effect>
+    <effect name="ZP Convert Station Grouping">
+      <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit">default</param>
+      <param name="SrcPlayer" dispname="$$79817$$Source Player" vartype="player">1</param>
+      <param name="TrgPlayer" dispname="$$79817$$Target Player" vartype="player">1</param>
+      <param name="Dist" dispname="$$22303$$Radius" vartype="float">35</param>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="SrcObject">trUnitSelect("%SrcObject%");</command>
+      <command>trConvertUnitsInArea(%SrcPlayer%,%TrgPlayer%,"zpStationFlag",%Dist%);</command>
+      <command>trConvertUnitsInArea(%SrcPlayer%,%TrgPlayer%,"zpTrainStationA",%Dist%);</command>
+      <command>trConvertUnitsInArea(%SrcPlayer%,%TrgPlayer%,"zpTrainStationB",%Dist%);</command>
+      <command>trConvertUnitsInArea(%SrcPlayer%,%TrgPlayer%,"spSocketTrainStationA",%Dist%);</command>
+      <command>trConvertUnitsInArea(%SrcPlayer%,%TrgPlayer%,"spSocketTrainStationB",%Dist%);</command>
+      <command>trConvertUnitsInArea(%SrcPlayer%,%TrgPlayer%,"spSocketTrainStationActiveA",%Dist%);</command>
+      <command>trConvertUnitsInArea(%SrcPlayer%,%TrgPlayer%,"spSocketTrainStationActiveB",%Dist%);</command>
+    </effect>
   </effects>
 </trigger>

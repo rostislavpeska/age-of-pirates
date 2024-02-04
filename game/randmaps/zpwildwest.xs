@@ -302,24 +302,60 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	rmSetObjectDefMaxDistance(stopperID8, 0.0); 
 
 	int stationGrouping01 = -1;
-    stationGrouping01 = rmCreateGrouping("station grouping 01", "Railway_Station_Big_SW"); 
+    //stationGrouping01 = rmCreateGrouping("station grouping 01", "Railway_Station_Big_SW"); 
+	stationGrouping01 = rmCreateGrouping("station grouping 01", "Railway_Station_Big_SW_nostation"); // for independent Train station
 	rmSetGroupingMinDistance(stationGrouping01, 0.0);
 	rmSetGroupingMaxDistance (stationGrouping01, 0.0);
 
 	int stationGrouping02 = -1;
-    stationGrouping02 = rmCreateGrouping("station grouping 02", "Railway_Station_Big_SE");
+    stationGrouping02 = rmCreateGrouping("station grouping 02", "Railway_Station_Big_SE_nostation");
 	rmSetGroupingMinDistance(stationGrouping02, 0.0);
 	rmSetGroupingMaxDistance (stationGrouping02, 0.0);
 
 	int stationGrouping03 = -1;
-    stationGrouping03 = rmCreateGrouping("station grouping 03", "Railway_Station_Big_N");
+    stationGrouping03 = rmCreateGrouping("station grouping 03", "Railway_Station_Big_N_nostation");
 	rmSetGroupingMinDistance(stationGrouping03, 0.0);
 	rmSetGroupingMaxDistance (stationGrouping03, 0.0);
 
 	int stationGrouping04 = -1;
-    stationGrouping04 = rmCreateGrouping("station grouping 04", "Railway_Station_Big_E");
+    stationGrouping04 = rmCreateGrouping("station grouping 04", "Railway_Station_Big_E_nostation");
 	rmSetGroupingMinDistance(stationGrouping04, 0.0);
 	rmSetGroupingMaxDistance (stationGrouping04, 1.0);
+
+	int stationGrouping001 = -1;
+    stationGrouping001 = rmCreateGrouping("station 01", "Railway_Station_Big_SW_stationA"); // Independent Train Station
+	rmSetGroupingMinDistance(stationGrouping001, 0.0);
+	rmSetGroupingMaxDistance (stationGrouping001, 0.0);
+
+	int stationGrouping002 = -1;
+    stationGrouping002 = rmCreateGrouping("station 02", "Railway_Station_Big_SW_stationB"); // Independent Train Station
+	rmSetGroupingMinDistance(stationGrouping002, 0.0);
+	rmSetGroupingMaxDistance (stationGrouping002, 0.0);
+
+	int stationGrouping003 = -1;
+    stationGrouping003 = rmCreateGrouping("station 03", "Railway_Station_Big_SE_stationA"); // Independent Train Station
+	rmSetGroupingMinDistance(stationGrouping003, 0.0);
+	rmSetGroupingMaxDistance (stationGrouping003, 0.0);
+
+	int stationGrouping004 = -1;
+    stationGrouping004 = rmCreateGrouping("station 04", "Railway_Station_Big_SE_stationB"); // Independent Train Station
+	rmSetGroupingMinDistance(stationGrouping004, 0.0);
+	rmSetGroupingMaxDistance (stationGrouping004, 0.0);
+
+	int stationGrouping005 = -1;
+    stationGrouping005 = rmCreateGrouping("station 05", "Railway_Station_Big_N_stationA"); // Independent Train Station
+	rmSetGroupingMinDistance(stationGrouping005, 0.0);
+	rmSetGroupingMaxDistance (stationGrouping005, 0.0);
+
+	int stationGrouping006 = -1;
+    stationGrouping006 = rmCreateGrouping("station 06", "Railway_Station_Big_N_stationB"); // Independent Train Station
+	rmSetGroupingMinDistance(stationGrouping006, 0.0);
+	rmSetGroupingMaxDistance (stationGrouping006, 0.0);
+
+	int stationGrouping007 = -1;
+    stationGrouping007 = rmCreateGrouping("station 07", "Railway_Station_Big_E_stationA"); // Independent Train Station
+	rmSetGroupingMinDistance(stationGrouping007, 0.0);
+	rmSetGroupingMaxDistance (stationGrouping007, 0.0);
 
 	if (cNumberNonGaiaPlayers <=2 || cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers ==6 || cNumberNonGaiaPlayers ==8)
 		evenOdd =2;
@@ -348,17 +384,22 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmPlaceObjectDefAtPoint(stopperID, 0, socketLoc1);
 		vector StopperLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID, 0));
 		rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc1)), rmZMetersToFraction(xsVectorGetZ(StopperLoc1)));
+		rmPlaceGroupingAtLoc(stationGrouping001, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc1)), rmZMetersToFraction(xsVectorGetZ(StopperLoc1)));
 
 		if (cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers ==8){	
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.39);
 			rmPlaceObjectDefAtPoint(stopperID2, 0, socketLoc1);
 			vector StopperLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID2, 0));
 			rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
+			rmPlaceGroupingAtLoc(stationGrouping005, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
+
 
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.61);
 			rmPlaceObjectDefAtPoint(stopperID3, 0, socketLoc1);
 			vector StopperLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID3, 0));
 			rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc3)), rmZMetersToFraction(xsVectorGetZ(StopperLoc3)));
+			rmPlaceGroupingAtLoc(stationGrouping005, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc3)), rmZMetersToFraction(xsVectorGetZ(StopperLoc3)));
+
 		}
 
 		if (cNumberNonGaiaPlayers ==6){	
@@ -366,12 +407,14 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 			rmPlaceObjectDefAtPoint(stopperID2, 0, socketLoc1);
 			StopperLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID2, 0));
 			rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
+			rmPlaceGroupingAtLoc(stationGrouping005, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
 		}
 
 		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.8);
 		rmPlaceObjectDefAtPoint(stopperID4, 0, socketLoc1);
 		vector StopperLoc4 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID4, 0));
 		rmPlaceGroupingAtLoc(stationGrouping02, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmZMetersToFraction(xsVectorGetZ(StopperLoc4)));
+		rmPlaceGroupingAtLoc(stationGrouping003, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmZMetersToFraction(xsVectorGetZ(StopperLoc4)));
 
 
 
@@ -406,17 +449,20 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 			rmPlaceObjectDefAtPoint(stopperID5, 0, socketLoc1);
 			vector StopperLoc5 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID5, 0));
 			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
+			rmPlaceGroupingAtLoc(stationGrouping002, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
 
 			if (cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers ==8){	
 				socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.39);
 				rmPlaceObjectDefAtPoint(stopperID6, 0, socketLoc1);
 				vector StopperLoc6 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID6, 0));
 				rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
+				rmPlaceGroupingAtLoc(stationGrouping006, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
 
 				socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.61);
 				rmPlaceObjectDefAtPoint(stopperID7, 0, socketLoc1);
 				vector StopperLoc7 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID7, 0));
 				rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc7)), rmZMetersToFraction(xsVectorGetZ(StopperLoc7)));
+				rmPlaceGroupingAtLoc(stationGrouping006, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc7)), rmZMetersToFraction(xsVectorGetZ(StopperLoc7)));
 			}
 
 			if (cNumberNonGaiaPlayers ==6){	
@@ -424,12 +470,14 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 				rmPlaceObjectDefAtPoint(stopperID6, 0, socketLoc1);
 				StopperLoc6 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID6, 0));
 				rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
+				rmPlaceGroupingAtLoc(stationGrouping006, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
 			}
 			
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.8);
 			rmPlaceObjectDefAtPoint(stopperID8, 0, socketLoc1);
 			vector StopperLoc8 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID8, 0));
 			rmPlaceGroupingAtLoc(stationGrouping02, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmZMetersToFraction(xsVectorGetZ(StopperLoc8)));
+			rmPlaceGroupingAtLoc(stationGrouping004, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmZMetersToFraction(xsVectorGetZ(StopperLoc8)));
 
 
 		int tradeRouteID4 = rmCreateTradeRoute();
@@ -478,37 +526,44 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmPlaceObjectDefAtPoint(stopperID, 0, socketLoc1);
 		StopperLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID, 0));
 		rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc1)), rmZMetersToFraction(xsVectorGetZ(StopperLoc1)));
+		rmPlaceGroupingAtLoc(stationGrouping001, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc1)), rmZMetersToFraction(xsVectorGetZ(StopperLoc1)));
 
 		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.5);
 		rmPlaceObjectDefAtPoint(stopperID2, 0, socketLoc1);
 		StopperLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID2, 0));
 		rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
+		rmPlaceGroupingAtLoc(stationGrouping005, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
 
 		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.90);
 		rmPlaceObjectDefAtPoint(stopperID3, 0, socketLoc1);
 		StopperLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID3, 0));
 		rmPlaceGroupingAtLoc(stationGrouping02, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc3)), rmZMetersToFraction(xsVectorGetZ(StopperLoc3)));
-		
+		rmPlaceGroupingAtLoc(stationGrouping003, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc3)), rmZMetersToFraction(xsVectorGetZ(StopperLoc3)));
+
 		if (cNumberNonGaiaPlayers ==7){	
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.24);
 			rmPlaceObjectDefAtPoint(stopperID4, 0, socketLoc1);
 			StopperLoc4 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID4, 0));
 			rmPlaceGroupingAtLoc(stationGrouping04, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmZMetersToFraction(xsVectorGetZ(StopperLoc4)));
+			rmPlaceGroupingAtLoc(stationGrouping007, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmZMetersToFraction(xsVectorGetZ(StopperLoc4)));
 			
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.76);
 			rmPlaceObjectDefAtPoint(stopperID5, 0, socketLoc1);
 			StopperLoc5 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID5, 0));
 			rmPlaceGroupingAtLoc(stationGrouping04, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
+			rmPlaceGroupingAtLoc(stationGrouping007, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
 
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.64);
 			rmPlaceObjectDefAtPoint(stopperID6, 0, socketLoc1);
 			StopperLoc6 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID6, 0));
 			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
+			rmPlaceGroupingAtLoc(stationGrouping001, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
 			
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.36);
 			rmPlaceObjectDefAtPoint(stopperID7, 0, socketLoc1);
 			StopperLoc7 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID7, 0));
 			rmPlaceGroupingAtLoc(stationGrouping02, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc7)), rmZMetersToFraction(xsVectorGetZ(StopperLoc7)));
+			rmPlaceGroupingAtLoc(stationGrouping003, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc7)), rmZMetersToFraction(xsVectorGetZ(StopperLoc7)));
 		}
 
 		else {	
@@ -516,11 +571,13 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 			rmPlaceObjectDefAtPoint(stopperID4, 0, socketLoc1);
 			StopperLoc4 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID4, 0));
 			rmPlaceGroupingAtLoc(stationGrouping04, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmZMetersToFraction(xsVectorGetZ(StopperLoc4)));
+			rmPlaceGroupingAtLoc(stationGrouping007, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmZMetersToFraction(xsVectorGetZ(StopperLoc4)));
 			
 			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.715);
 			rmPlaceObjectDefAtPoint(stopperID5, 0, socketLoc1);
 			StopperLoc5 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID5, 0));
 			rmPlaceGroupingAtLoc(stationGrouping04, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
+			rmPlaceGroupingAtLoc(stationGrouping007, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
 		}
 
 		tradeRouteID2 = rmCreateTradeRoute();
@@ -1281,8 +1338,8 @@ for(i=0; < saltCount)
 	string unitID6 = "258";
 	string unitID7 = "308";
 	string unitID8 = "358";
-	int armoredTrainActive = 60;
-	int armoredTrainCooldown = 300;
+	int armoredTrainActive = 100;
+	int armoredTrainCooldown = 10;
 
 	if (cNumberNonGaiaPlayers <=2){
 		unitID1 = "8";
@@ -1594,6 +1651,12 @@ for(i=0; < saltCount)
 		rmAddTriggerEffect("Trade Route Toggle State");
 		rmSetTriggerEffectParamInt("TradeRoute",2);
 		rmSetTriggerEffectParam("ShowUnit","false");
+		for(i=0; <= cNumberNonGaiaPlayers) {
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",i);
+			rmSetTriggerEffectParam("TechID","cTechzpTrainStationUpgradeA");
+			rmSetTriggerEffectParamInt("Status",2);
+		}
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
@@ -1634,6 +1697,12 @@ for(i=0; < saltCount)
 		rmAddTriggerEffect("Trade Route Toggle State");
 		rmSetTriggerEffectParamInt("TradeRoute",4);
 		rmSetTriggerEffectParam("ShowUnit","false");
+		for(i=0; <= cNumberNonGaiaPlayers) {
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",i);
+			rmSetTriggerEffectParam("TechID","cTechzpTrainStationUpgradeA");
+			rmSetTriggerEffectParamInt("Status",2);
+		}
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
@@ -1682,6 +1751,12 @@ for(i=0; < saltCount)
 		rmAddTriggerEffect("Trade Route Toggle State");
 		rmSetTriggerEffectParamInt("TradeRoute",4);
 		rmSetTriggerEffectParam("ShowUnit","false");
+		for(i=0; <= cNumberNonGaiaPlayers) {
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",i);
+			rmSetTriggerEffectParam("TechID","cTechzpTrainStationUpgradeB");
+			rmSetTriggerEffectParamInt("Status",2);
+		}
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
@@ -1834,9 +1909,27 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","zpArmoredTrainBarracksStatic");
 	rmSetTriggerEffectParamInt("Dist",100);
+
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpArmoredTrainGunpowderStatic");
+	rmSetTriggerEffectParamInt("Dist",100);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpArmoredTrainHospitalStatic");
+	rmSetTriggerEffectParamInt("Dist",100);
+
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
 	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainLevy");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpWagonDeploy");
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("Counter:Add Timer");
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
@@ -1941,9 +2034,27 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","zpArmoredTrainBarracksStatic");
 	rmSetTriggerEffectParamInt("Dist",100);
+
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpArmoredTrainGunpowderStatic");
+	rmSetTriggerEffectParamInt("Dist",100);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpArmoredTrainHospitalStatic");
+	rmSetTriggerEffectParamInt("Dist",100);
+
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
 	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainLevy");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpWagonDeploy");
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("Counter:Add Timer");
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
@@ -2059,9 +2170,27 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","zpArmoredTrainBarracksStatic");
 	rmSetTriggerEffectParamInt("Dist",100);
+
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpArmoredTrainGunpowderStatic");
+	rmSetTriggerEffectParamInt("Dist",100);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpArmoredTrainHospitalStatic");
+	rmSetTriggerEffectParamInt("Dist",100);
+
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
 	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainLevy");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpWagonDeploy");
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("Counter:Add Timer");
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
@@ -2175,9 +2304,27 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","zpArmoredTrainBarracksStatic");
 	rmSetTriggerEffectParamInt("Dist",100);
+
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID4);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpArmoredTrainGunpowderStatic");
+	rmSetTriggerEffectParamInt("Dist",100);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID4);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpArmoredTrainHospitalStatic");
+	rmSetTriggerEffectParamInt("Dist",100);
+
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
 	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainLevy");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpWagonDeploy");
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("Counter:Add Timer");
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
@@ -2293,9 +2440,27 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","zpArmoredTrainBarracksStatic");
 		rmSetTriggerEffectParamInt("Dist",100);
+
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID5);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpArmoredTrainGunpowderStatic");
+		rmSetTriggerEffectParamInt("Dist",100);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID5);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpArmoredTrainHospitalStatic");
+		rmSetTriggerEffectParamInt("Dist",100);
+
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainLevy");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpWagonDeploy");
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Counter:Add Timer");
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
@@ -2412,9 +2577,27 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","zpArmoredTrainBarracksStatic");
 		rmSetTriggerEffectParamInt("Dist",100);
+
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID6);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpArmoredTrainGunpowderStatic");
+		rmSetTriggerEffectParamInt("Dist",100);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID6);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpArmoredTrainHospitalStatic");
+		rmSetTriggerEffectParamInt("Dist",100);
+
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainLevy");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpWagonDeploy");
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Counter:Add Timer");
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
@@ -2530,9 +2713,27 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","zpArmoredTrainBarracksStatic");
 		rmSetTriggerEffectParamInt("Dist",100);
+
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID7);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpArmoredTrainGunpowderStatic");
+		rmSetTriggerEffectParamInt("Dist",100);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID7);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpArmoredTrainHospitalStatic");
+		rmSetTriggerEffectParamInt("Dist",100);
+
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainLevy");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpWagonDeploy");
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Counter:Add Timer");
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
@@ -2638,9 +2839,27 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","zpArmoredTrainBarracksStatic");
 		rmSetTriggerEffectParamInt("Dist",100);
+
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpArmoredTrainGunpowderStatic");
+		rmSetTriggerEffectParamInt("Dist",100);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpArmoredTrainHospitalStatic");
+		rmSetTriggerEffectParamInt("Dist",100);
+
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainLevy");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpWagonDeploy");
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Counter:Add Timer");
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
@@ -2668,6 +2887,10 @@ for(i=0; < saltCount)
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
 	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainLevy");
+	rmSetTriggerEffectParamInt("Status",0);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpWagonDeploy");
 	rmSetTriggerEffectParamInt("Status",0);
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Normalize_TR"));
@@ -2817,6 +3040,975 @@ for(i=0; < saltCount)
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
+	}
+
+	// CONVERT STATIONS	
+
+	// Station 1
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Station1_on_Plr"+k);
+	rmCreateTrigger("Station1_off_Plr"+k);
+
+	rmSwitchToTrigger(rmTriggerID("Station1_on_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",unitID1);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("UnitType","TradingPost");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamFloat("Count",1);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpStationFlag");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpTrainStationA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpTrainStationB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station1_off_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Station1_off_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",unitID1);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("UnitType","TradingPost");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamFloat("Count",0);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpStationFlag");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpTrainStationA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpTrainStationB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station1_on_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Station 2
+
+	rmCreateTrigger("Station2_on_Plr"+k);
+	rmCreateTrigger("Station2_off_Plr"+k);
+
+	rmSwitchToTrigger(rmTriggerID("Station2_on_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",unitID2);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("UnitType","TradingPost");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamFloat("Count",1);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpStationFlag");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpTrainStationA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpTrainStationB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station2_off_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Station2_off_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",unitID2);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("UnitType","TradingPost");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamFloat("Count",0);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpStationFlag");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpTrainStationA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpTrainStationB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station2_on_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Station 3
+
+	rmCreateTrigger("Station3_on_Plr"+k);
+	rmCreateTrigger("Station3_off_Plr"+k);
+
+	rmSwitchToTrigger(rmTriggerID("Station3_on_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",unitID3);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("UnitType","TradingPost");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamFloat("Count",1);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpStationFlag");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpTrainStationA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpTrainStationB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station3_off_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Station3_off_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",unitID3);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("UnitType","TradingPost");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamFloat("Count",0);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpStationFlag");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpTrainStationA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpTrainStationB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station3_on_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Station 4
+
+	rmCreateTrigger("Station4_on_Plr"+k);
+	rmCreateTrigger("Station4_off_Plr"+k);
+
+	rmSwitchToTrigger(rmTriggerID("Station4_on_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",unitID4);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("UnitType","TradingPost");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamFloat("Count",1);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID4);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpStationFlag");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID4);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpTrainStationA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID4);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpTrainStationB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID4);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID4);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID4);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID4);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station4_off_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Station4_off_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",unitID4);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("UnitType","TradingPost");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamFloat("Count",0);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID4);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpStationFlag");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID4);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpTrainStationA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID4);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpTrainStationB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID4);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID4);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID4);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveA");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",unitID4);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveB");
+	rmSetTriggerEffectParamInt("Dist",35);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station4_on_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	if (cNumberNonGaiaPlayers >= 3){
+
+		// Station 5
+
+		rmCreateTrigger("Station5_on_Plr"+k);
+		rmCreateTrigger("Station5_off_Plr"+k);
+
+		rmSwitchToTrigger(rmTriggerID("Station5_on_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID5);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParamInt("Dist",25);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamFloat("Count",1);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID5);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpStationFlag");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID5);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpTrainStationA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID5);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpTrainStationB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID5);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID5);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID5);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID5);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station5_off_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Station5_off_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID5);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParamInt("Dist",25);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParam("Op","==");
+		rmSetTriggerConditionParamFloat("Count",0);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID5);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpStationFlag");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID5);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpTrainStationA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID5);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpTrainStationB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID5);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID5);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID5);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID5);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station5_on_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		}
+
+		if (cNumberNonGaiaPlayers == 4 || cNumberNonGaiaPlayers >=6){
+
+		// Station 6
+
+		rmCreateTrigger("Station6_on_Plr"+k);
+		rmCreateTrigger("Station6_off_Plr"+k);
+
+		rmSwitchToTrigger(rmTriggerID("Station6_on_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID6);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParamInt("Dist",25);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamFloat("Count",1);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID6);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpStationFlag");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID6);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpTrainStationA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID6);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpTrainStationB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID6);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID6);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID6);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID6);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station6_off_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Station6_off_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID6);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParamInt("Dist",25);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParam("Op","==");
+		rmSetTriggerConditionParamFloat("Count",0);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID6);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpStationFlag");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID6);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpTrainStationA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID6);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpTrainStationB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID6);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID6);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID6);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID6);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station6_on_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		}
+
+		if (cNumberNonGaiaPlayers == 4 || cNumberNonGaiaPlayers >=7){
+
+		// Station 7
+
+		rmCreateTrigger("Station7_on_Plr"+k);
+		rmCreateTrigger("Station7_off_Plr"+k);
+
+		rmSwitchToTrigger(rmTriggerID("Station7_on_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID7);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParamInt("Dist",25);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamFloat("Count",1);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID7);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpStationFlag");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID7);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpTrainStationA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID7);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpTrainStationB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID7);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID7);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID7);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID7);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station7_off_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Station7_off_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID7);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParamInt("Dist",25);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParam("Op","==");
+		rmSetTriggerConditionParamFloat("Count",0);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID7);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpStationFlag");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID7);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpTrainStationA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID7);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpTrainStationB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID7);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID7);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID7);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID7);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station7_on_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		}
+
+		if (cNumberNonGaiaPlayers == 4 || cNumberNonGaiaPlayers ==8){
+
+		// Station 8
+
+		rmCreateTrigger("Station8_on_Plr"+k);
+		rmCreateTrigger("Station8_off_Plr"+k);
+
+		rmSwitchToTrigger(rmTriggerID("Station8_on_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID8);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParamInt("Dist",25);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamFloat("Count",1);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpStationFlag");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpTrainStationA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpTrainStationB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station8_off_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Station8_off_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID8);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParamInt("Dist",25);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParam("Op","==");
+		rmSetTriggerConditionParamFloat("Count",0);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpStationFlag");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpTrainStationA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpTrainStationB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveA");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","spSocketTrainStationActiveB");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station8_on_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		}
+
 	}
 
 	// Testing

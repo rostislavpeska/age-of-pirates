@@ -6698,7 +6698,7 @@
       <effect type="TechStatus" status="obtainable">DEIndianFriendshipScientists</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyScientists</effect>
-      <effect type="TechStatus" status="obtainable">zpMoneyFactory</effect>
+      <effect type="TechStatus" status="obtainable">zpArmoredTrainImprove</effect>
       <effect type="TechStatus" status="obtainable">zpArmoredTrainTech</effect>
     </effects>
   </tech>
@@ -10771,6 +10771,12 @@
       </effect>
       <effect type="TransformUnit" toprotoid="zpArmoredTrainHospitalStatic" fromprotoid="zpArmoredTrainHospitalMove">
       </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainGunCarFrontStatic" fromprotoid="zpArmoredTrainGuncarFrontMove">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainGunCarBackStatic" fromprotoid="zpArmoredTrainGuncarBackMove">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainArmoredCarStatic" fromprotoid="zpArmoredTrainArmoredCarMove">
+      </effect>
       <effect type="Data" action="Heal" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpArmoredTrainHospitalStatic</target>
       </effect>
@@ -10816,43 +10822,19 @@
       <effect type="CommandRemove" tech="zpPickScientist">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpMoneyFactory" page="2" column="5">
+      <effect type="CommandAdd" tech="zpArmoredTrainImprove" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpArmoredTrainTech" page="2" column="6">
+      <effect type="CommandAdd" tech="zpArmoredTrainTech" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpMoneyFactory" type="Normal">
-    <dbid>40383</dbid>
-    <displaynameid>300997</displaynameid>
-    <cost resourcetype="Wood">200.0000</cost>
-    <cost resourcetype="Gold">400.0000</cost>
-    <researchpoints>30.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\money_factory.png</icon>
-    <rollovertextid>71286</rollovertextid>
-    <flag>YPNativeImprovement</flag>
-    <flag>CountsTowardEconomicScore</flag>
-    <prereqs>
-      <techstatus status="Active">Industrialize</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">Factory</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="FactoryWagon" relativity="Absolute">
-        <target type="Player">
-        </target>
       </effect>
     </effects>
   </tech>
   <tech name="zpArmoredTrainTech" type="Normal">
     <dbid>40384</dbid>
     <displaynameid>300999</displaynameid>
-    <cost resourcetype="Wood">2500.0000</cost>
-    <cost resourcetype="Gold">2500.0000</cost>
+    <cost resourcetype="Wood">1800.0000</cost>
+    <cost resourcetype="Gold">1800.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\armored_train.png</icon>
@@ -10860,8 +10842,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <prereqs>
-      <techstatus status="Active">Imperialize</techstatus>
-      <techstatus status="Active">zpMoneyFactory</techstatus>
+      <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
       <effect type="Data" action="SpawnArmoredTrain" amount="1.00" subtype="ActionEnable" relativity="Absolute">
@@ -11217,6 +11198,53 @@
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\abilities\ability_commandery_eject.png</icon>
     <flag>Shadow</flag>
+  </tech>
+  <tech name="zpArmoredTrainImprove" type="Normal">
+    <dbid>40393</dbid>
+    <displaynameid>300997</displaynameid>
+    <cost resourcetype="Wood">2500.0000</cost>
+    <cost resourcetype="Gold">2500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\armored_train.png</icon>
+    <rollovertextid>301077</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+      <techstatus status="Active">zpArmoredTrainTech</techstatus>
+    </prereqs>
+    <effects>
+     
+    </effects>
+  </tech>
+  <tech name ="zpArmoredTrainGoldBallanceShadow" type ="Normal">
+		<dbid>40394</dbid>
+		<status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="-500.00" subtype="Resource" resource="Gold" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="zpArmoredTrainNoResourceShadow" type="Normal">
+    <dbid>40395</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpArmoredTrainNoResourceShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpArmoredTrainNoResourceEnableShadow" type="Normal">
+    <dbid>40396</dbid>
+    <researchpoints>0.5000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
   </tech>
 
  

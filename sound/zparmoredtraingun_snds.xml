@@ -12,5 +12,9 @@
         </choice>
       </targetlogic>
     </soundtype>
+    <soundtype name="Death">
+      <soundset name="Explosion">
+      </soundset>
+    </soundtype>
   </protounit>
 </protounitsounddef>

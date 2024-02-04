@@ -1,0 +1,68 @@
+<animfile>
+    <definebone>bend_front</definebone>
+    <definebone>bend_back</definebone>
+    <attachment>yoke
+        <include>units\test\supply_cart_yoke_test.xml</include>
+    </attachment>
+    <component>wagon
+        <linksection>
+            <linkoffset>0</linkoffset>
+            <linkcomponent>axel</linkcomponent>
+            <linkconstraint>0</linkconstraint>
+        </linksection>
+        <linksection>
+            <linkoffset>-1.6</linkoffset>
+            <linkcomponent>gun_car_middle</linkcomponent>
+            <linkconstraint>1</linkconstraint>
+        </linksection>
+        <linksection>
+            <linkoffset>-2.0</linkoffset>
+            <linkconstraint>1</linkconstraint>
+        </linksection>
+        <linksection>
+            <linkoffset>-3.0</linkoffset>
+            <linkconstraint>1</linkconstraint>
+        </linksection>
+        <assetreference type="GrannyModel">
+            <file>units\test\guncar_middle_Model</file>
+        </assetreference>
+        <decal>
+            <effecttype>default</effecttype>
+            <texture>shadows_selections\shadow_circle_128x128</texture>
+            <selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture>
+            <width>2.00</width>
+            <height>4.00</height>
+        </decal>
+        <attach a="yoke" frombone="hotspot" tobone="bend_front" syncanims="1"></attach>
+        <attach a="yoke" frombone="hotspot" tobone="bend_back" syncanims="1"></attach>
+    </component>
+    <anim>Idle
+        <assetreference type="GrannyAnim">
+            <file>units\villagers\covered_wagon\covered_wagon_idle</file>
+        </assetreference>
+        <component>wagon</component>
+    </anim>
+    <anim>Walk
+        <assetreference type="GrannyAnim">
+            <file>units\villagers\covered_wagon\covered_wagon_walk</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof1">0.14</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof2">0.26</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof3">0.38</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof4">0.51</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof1">0.64</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof2">0.77</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof3">0.90</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof4">0.03</tag>
+        </assetreference>
+        <component>wagon</component>
+    </anim>
+    <anim>Death
+        <assetreference type="GrannyAnim">
+            <file>animation_library\wagon\wagon_death</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.50</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="CartBreak">0.03</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Thud">0.04</tag>
+        </assetreference>
+        <component>wagon</component>
+    </anim>
+</animfile>
