@@ -10972,16 +10972,6 @@
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data" amount="1.00" subtype="AddTrain" unittype="Cow" relativity="Absolute">
-        <target type="ProtoUnit">LivestockPen</target>
-      </effect>
-      <effect type="TextOutput">46813</effect>
-      <effect type="Data" amount="1.00" subtype="AddTrain" unittype="Cow" relativity="Absolute">
-        <target type="ProtoUnit">Farm</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">Cow</target>
-      </effect>
     </effects>
   </tech>
   <tech name="zpWildWestFastColts" type="Normal">
