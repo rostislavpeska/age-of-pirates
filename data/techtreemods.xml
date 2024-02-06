@@ -10739,6 +10739,7 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpDeputy</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestWhiskeyFactory</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestCows</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestFastColts</effect>
@@ -10970,6 +10971,16 @@
       <effect type="Data" amount="4.00" subtype="FreeHomeCityUnit" unittype="Cow" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="AddTrain" unittype="Cow" relativity="Absolute">
+        <target type="ProtoUnit">LivestockPen</target>
+      </effect>
+      <effect type="TextOutput">46813</effect>
+      <effect type="Data" amount="1.00" subtype="AddTrain" unittype="Cow" relativity="Absolute">
+        <target type="ProtoUnit">Farm</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Cow</target>
       </effect>
     </effects>
   </tech>
@@ -11727,6 +11738,12 @@
       <effect type="Data" action="RepeatingRangedAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpMountedOutlaw</target>
       </effect>
+      <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpMercMountedOutlaw</target>
+      </effect>
+      <effect type="Data" action="RepeatingRangedAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpMercMountedOutlaw</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpCowboyShotguns" type="Normal">
@@ -11754,6 +11771,12 @@
       <effect type="Data" action="BuckshotAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpMountedOutlaw</target>
       </effect>
+      <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpMercMountedOutlaw</target>
+      </effect>
+      <effect type="Data" action="BuckshotAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpMercMountedOutlaw</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpCowboyRifles" type="Normal">
@@ -11779,6 +11802,12 @@
       </effect>
       <effect type="Data" action="RangedAttackBreachLoad" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+      <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpMercMountedOutlaw</target>
+      </effect>
+      <effect type="Data" action="RangedAttackBreachLoad" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpMercMountedOutlaw</target>
       </effect>
     </effects>
   </tech>

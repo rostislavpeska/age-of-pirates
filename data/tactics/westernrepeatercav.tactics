@@ -150,7 +150,7 @@
   <action>
     <name stringid="38132">HandAttack</name>
     <type>Attack</type>
-    <active>0</active>
+    <active>1</active>
     <maxrange>1.75</maxrange>
     <rate type="Unit">1.0</rate>
     <rate type="Herdable">1.0</rate>
@@ -265,7 +265,7 @@
     <walkanim>Walk</walkanim>
     <joganim>Jog</joganim>
     <runanim>Run</runanim>
-    </tactic>
+  </tactic>
   <tactic>StandGround
     <action priority="100">BullseyeChargeAttack</action>
     <action priority="90">RangedAttack</action>

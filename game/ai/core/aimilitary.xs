@@ -1595,7 +1595,7 @@ minInterval 15
       aiPlanSetVariableVector(planID, cCombatPlanTargetPoint, 0, targetBaseLocation);
       aiPlanSetVariableInt(planID, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
       aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget); //| cCombatPlanDoneModeRetreat); // AssertiveWall: still help even when outnumbered
-      aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 30000);
+      aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 15000); // AssertiveWall: reduced to 15 seconds
       //aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered); // AssertiveWall: see two lines above
       aiPlanSetOrphan(planID, true);
 
