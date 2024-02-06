@@ -74,7 +74,7 @@
 
     <anim>Idle
         <assetreference type="GrannyAnim">
-            <file>units\trains\armored_train\guncar_gun_base_idle_Anim</file>
+            <file>buildings\spc\fixed_gun\fixed_gun_idle</file>
         </assetreference>
         <component>fixed gun</component>
     </anim>

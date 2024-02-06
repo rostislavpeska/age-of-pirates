@@ -1,0 +1,38 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units/trains/armored_train/textures/caboose_barracks_BaseColor">
+      </texture>
+      <texture name="Normals" override="units/trains/caboose/textures/caboose_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units/trains/caboose/textures/caboose_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units/trains/armored_train/textures/armored_wagon_death_BaseColor">
+      </texture>
+      <texture name="Normals" override="units/trains/armored_train/textures/armored_wagon_Normals">
+      </texture>
+      <texture name="Masks" override="units/trains/armored_train/textures/armored_wagon_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matC">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\trains\gold_car\textures\gold_car_1_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\trains\gold_car\textures\gold_car_1_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\trains\gold_car\textures\gold_car_1_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

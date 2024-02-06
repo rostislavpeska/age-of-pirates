@@ -23,16 +23,7 @@
       <component>exp</component>
     </anim>
   </attachment>
-  <attachment>Wagon
-    <component>wagon
-      <assetreference type="GrannyModel">
-        <file>units\trains\armored_train\barrack_car</file>
-      </assetreference>
-    </component>
-    <anim>Idle
-      <component>wagon</component>
-    </anim>
-  </attachment>
+
 
   <attachment>Wagon_death
     <component>wagon_death
@@ -47,10 +38,8 @@
 
   <component>ModelComp
     <assetreference type="GrannyModel">
-        <file>units\trains\armored_train\wagon_damaged_Model</file>
+        <file>units\trains\armored_train\armored_wagon_Model</file>
     </assetreference>
-    <attach a="Barrels" frombone="caboose" tobone="bone_wagon" syncanims="0"></attach>
-    <attach a="Wagon" frombone="caboose" tobone="bone_wagon" syncanims="0"></attach>
     <decal>
       <effecttype>default</effecttype>
       <texture>shadows_selections\shadow_circle_128x128</texture>
@@ -61,9 +50,8 @@
   </component>
   <component>DeathModel
     <assetreference type="GrannyModel">
-        <file>units\trains\armored_train\wagon_damaged_Model</file>
+        <file>units\trains\armored_train\armored_wagon_death</file>
     </assetreference>
-    <attach a="Wagon_death" frombone="caboose" tobone="bone_wagon" syncanims="0"></attach>
   </component>
   <anim>Idle
     <assetreference type="GrannyAnim">

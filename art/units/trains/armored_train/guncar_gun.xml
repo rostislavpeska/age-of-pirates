@@ -9,14 +9,14 @@
         <assetreference type="GrannyModel">
             <file>units\trains\armored_train\guncar_gun_Model</file>
         </assetreference>
-        <attach a="Cannon" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"></attach>-->
+        <attach a="Cannon" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"></attach>
     </component>
 
     <component>DeathModel
         <assetreference type="GrannyModel">
             <file>units\trains\armored_train\guncar_gun_Model</file>
         </assetreference>
-        <attach a="Cannon" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"></attach>-->
+        <attach a="Cannon" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"></attach>
     </component>
 
 

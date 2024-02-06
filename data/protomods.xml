@@ -19762,8 +19762,8 @@
     <turnrate>1.0000</turnrate>
     <animfile>units\trains\armored_train\guncar_gun.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>33597</rollovertextid>
     <shortrollovertextid>33596</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
@@ -19908,8 +19908,8 @@
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>units\trains\armored_train\engine.xml</animfile>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>22967</rollovertextid>
     <shortrollovertextid>25736</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
@@ -19955,8 +19955,8 @@
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>units\trains\armored_train\coal_car.xml</animfile>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>23040</rollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
@@ -20002,8 +20002,8 @@
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>units\trains\armored_train\armored_car.xml</animfile>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>23042</rollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
@@ -20048,8 +20048,8 @@
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>units\trains\armored_train\guncar_middle.xml</animfile>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>35881</rollovertextid>
     <initialhitpoints>22500.0000</initialhitpoints>
     <maxhitpoints>22500.0000</maxhitpoints>
@@ -20090,8 +20090,8 @@
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>units\trains\armored_train\guncar_gun.xml</animfile>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>35881</rollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
@@ -20136,8 +20136,8 @@
     <turnrate>1.0000</turnrate>
     <animfile>units\trains\armored_train\engine.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>33597</rollovertextid>
     <shortrollovertextid>33596</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
@@ -20195,8 +20195,8 @@
     <turnrate>1.0000</turnrate>
     <animfile>units\trains\armored_train\coal_car.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>33597</rollovertextid>
     <shortrollovertextid>33596</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
@@ -20254,8 +20254,8 @@
     <turnrate>1.0000</turnrate>
     <animfile>units\trains\armored_train\armored_car.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>33597</rollovertextid>
     <shortrollovertextid>33596</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
@@ -20299,7 +20299,7 @@
     <flag>NotDeleteable</flag>
     <flag>Tracked</flag>
     <flag>PlaceAnywhere</flag>
-    <flag>HideGarrisonFlag</flag>
+
     <flag>MeteredGarrison</flag>
     <flag>IgnoreDefaultEjectTimeout</flag>
     <flag>DoNotQueueEjectActions</flag>
@@ -20346,8 +20346,8 @@
     <turnrate>1.0000</turnrate>
     <animfile>units\trains\armored_train\guncar_middle.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>33597</rollovertextid>
     <shortrollovertextid>33596</shortrollovertextid>
     <initialhitpoints>22500.0000</initialhitpoints>
@@ -20986,8 +20986,8 @@
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>units\trains\armored_train\hospital_car.xml</animfile>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>23042</rollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
@@ -21033,8 +21033,8 @@
     <turnrate>1.0000</turnrate>
     <animfile>units\trains\armored_train\hospital_car.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>33597</rollovertextid>
     <shortrollovertextid>33596</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
@@ -21095,8 +21095,8 @@
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>units\trains\armored_train\gunpowder_car.xml</animfile>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>23042</rollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
@@ -21142,8 +21142,8 @@
     <turnrate>1.0000</turnrate>
     <animfile>units\trains\armored_train\gunpowder_car.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>33597</rollovertextid>
     <shortrollovertextid>33596</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
@@ -21432,8 +21432,8 @@
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>units\trains\track.xml</animfile>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <flag>NotSelectable</flag>
     <flag>NotSearchable</flag>
     <flag>NoHPBar</flag>
@@ -21619,8 +21619,8 @@
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>units\trains\armored_train\guncar_chasi_front.xml</animfile>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>35881</rollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
@@ -21661,8 +21661,8 @@
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>units\trains\armored_train\guncar_chasi_back.xml</animfile>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>35881</rollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
@@ -21733,8 +21733,8 @@
     <turnrate>1.0000</turnrate>
     <animfile>units\trains\armored_train\guncar_chasi_front.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>33597</rollovertextid>
     <shortrollovertextid>33596</shortrollovertextid>
     <initialhitpoints>22500.0000</initialhitpoints>
@@ -21766,8 +21766,8 @@
     <turnrate>1.0000</turnrate>
     <animfile>units\trains\armored_train\guncar_chasi_back.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>33597</rollovertextid>
     <shortrollovertextid>33596</shortrollovertextid>
     <initialhitpoints>22500.0000</initialhitpoints>
@@ -21798,8 +21798,8 @@
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>units\trains\armored_train\kitchen_wagon.xml</animfile>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>23042</rollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
@@ -21845,8 +21845,8 @@
     <turnrate>1.0000</turnrate>
     <animfile>units\trains\armored_train\kitchen_wagon.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\trains\train_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trains\train_portrait.png</portraiticon>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>33597</rollovertextid>
     <shortrollovertextid>33596</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
