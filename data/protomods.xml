@@ -1,4 +1,147 @@
 <protomods>
+  <unit id="289" name="Caravel">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="337" name="Canoe">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="441" name="Frigate">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="442" name="Fluyt">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="443" name="Galleon">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="444" name="Galley">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="445" name="Privateer">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="511" name="Monitor">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="561" name="SPCFrigate">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="563" name="SPCFireship">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="609" name="SPCLizzieFlagship">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="632" name="SPCMorganFlagship">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="652" name="SPCTreasureShip2">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="717" name="xpWarCanoe">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="750" name="xpTlalocCanoe">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="839" name="xpIronclad">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="878" name="SPCXPTreasureShip">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="952" name="ypAtakabune">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="953" name="ypFune">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="954" name="ypFireship">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="973" name="ypWokouJunk">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="997" name="ypWarJunk">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1069" name="ypFuchuan">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1117" name="ypMarathanCatamaran">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1246" name="ypTekkousen">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1380" name="YPSPCTreasureShipStage1">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1381" name="YPSPCTreasureShipStage2">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1382" name="YPSPCTreasureShipStage3">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="14189" name="ypWarJunkSittingDucks">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1517" name="deChinchaRaft">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1601" name="deSPCPrivateer">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1744" name="deSloop">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1745" name="deSteamer">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1803" name="deMercBattleship">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1849" name="deBattleCanoe">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1850" name="deCannonBoat">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1899" name="deMercXebec">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1954" name="deMercDhow">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1987" name="deStartingUnitPrivateer">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="1990" name="deAfricanCatamaran">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="2092" name="deSPCRowboat">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="2095" name="deSPCCorsairShip">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="2097" name="deSPCPhiladelphia">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="2098" name="deSPCFrigate">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="2359" name="deGalleass">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="2443" name="deOrderGalley">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+  <unit id="2521" name="deMalteseFireship">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  </unit>
+
+
   <unit id="20007" name="zpSPCQueenAnne">
     <dbid>20007</dbid>
     <displaynameid>300003</displaynameid>
