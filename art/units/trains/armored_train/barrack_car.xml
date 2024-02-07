@@ -49,7 +49,6 @@
     <assetreference type="GrannyModel">
         <file>units\trains\armored_train\wagon_damaged_Model</file>
     </assetreference>
-    <attach a="Barrels" frombone="caboose" tobone="bone_wagon" syncanims="0"></attach>
     <attach a="Wagon" frombone="caboose" tobone="bone_wagon" syncanims="0"></attach>
     <decal>
       <effecttype>default</effecttype>

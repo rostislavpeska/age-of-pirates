@@ -12,7 +12,7 @@
     </parameters>
   </submaterial>
   <submaterial name="matA">
-    <materialdef name="default_doublesided_cutout">
+    <materialdef name="default">
     </materialdef>
     <parameters>
       <texture name="BaseColor" override="units\trains\armored_train\textures\railway_gun_basecolor">

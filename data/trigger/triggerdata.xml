@@ -3878,7 +3878,7 @@
       <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainHospitalStatic",%Dist%);</command>
       <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainGunCarBackStatic",%Dist%);</command>
       <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainGunCarFrontStatic",%Dist%);</command>
-      <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainArmoredCarStatic",%Dist%);</command>
+      <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainKitchenWagonStatic",%Dist%);</command>
     </effect>
     <effect name="ZP Convert Station Grouping">
       <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit">default</param>

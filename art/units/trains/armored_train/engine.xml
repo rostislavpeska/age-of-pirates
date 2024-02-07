@@ -2,6 +2,23 @@
     <definebone>bone_particles_rt</definebone>
     <definebone>bone_particles_lt</definebone>
     <definebone>bone_particles</definebone>
+    <attachment>smoke
+        <component>factory_smoke
+            <logic type="Destruction">
+                <p0>
+                    <assetreference type="ParticleSystem"></assetreference>
+                </p0>
+                <p99>
+                    <assetreference type="popcornFx">
+                        <file>smoke\factory_smoke_a.pkfx</file>
+                    </assetreference>
+                </p99>
+            </logic>
+        </component>
+        <anim>Idle
+            <component>factory_smoke</component>
+        </anim>
+    </attachment>
     <attachment>wheel_smoke_right
         <component>wheel_smoke_right
             <assetreference type="PopcornFx">
@@ -99,9 +116,7 @@
             <file>units\trains\train_idle</file>
         </assetreference>
         <component>train</component>
-        <attach a="wheel_smoke_left" frombone="bone_particles_lt" tobone="bone_particles_lt" syncanims="0"></attach>
-        <attach a="wheel_smoke_right" frombone="bone_particles_rt" tobone="bone_particles_rt" syncanims="0"></attach>
-        <attach a="train_smoke" frombone="MASTER" tobone="bone_particles" syncanims="0"></attach>
+        <attach a="smoke" frombone="bone_smoke00" tobone="bone_particles" syncanims="0"></attach>
     </anim>
     <anim>Walk
         <assetreference type="GrannyAnim">
@@ -117,8 +132,6 @@
             <file>units\trains\train_idle</file>
         </assetreference>
         <component>train</component>
-        <attach a="wheel_smoke_left" frombone="bone_particles_lt" tobone="bone_particles_lt" syncanims="0"></attach>
-        <attach a="wheel_smoke_right" frombone="bone_particles_rt" tobone="bone_particles_rt" syncanims="0"></attach>
-        <attach a="train_smoke" frombone="MASTER" tobone="bone_particles" syncanims="0"></attach>
+        <attach a="smoke" frombone="bone_smoke00" tobone="bone_particles" syncanims="0"></attach>
     </anim>
 </animfile>
