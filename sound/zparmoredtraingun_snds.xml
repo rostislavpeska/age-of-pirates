@@ -1,13 +1,13 @@
 <protounitsounddef>
   <protounit name="zpArmoredTrainGun">
     <soundtype name="Select">
-      <soundset name="GermanWarWagonSelect">
+      <soundset name="FrenchCannonSelect">
       </soundset>
     </soundtype>
     <soundtype name="Acknowledge">
       <targetlogic>
         <choice name="enemy">
-          <soundset name="GermanWarWagonAttack">
+          <soundset name="FrenchCannonAttack">
           </soundset>
         </choice>
       </targetlogic>

@@ -11147,16 +11147,26 @@
       </effect>
       <effect type="Data" action="ExtraDamage" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpArmoredTrainGunpowderStatic</target>
+      </effect>
+      <effect type="Data" action="ExtraROFUnits" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainGunpowderEmitter</target>
+      </effect>
+      <effect type="Data" action="ExtraDamage" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainGunpowderEmitter</target>
       </effect>    
       <effect type="Data" action="ExtraHPWagon" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpArmoredTrainKitchenWagonStatic</target>
       </effect>
+      <effect type="Data" action="ExtraHPWagon" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainKitchenWagonEmitter</target>
+      </effect>
       <effect type="Data" action="LongRangeAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpArmoredTrainGun</target>
       </effect>
-      <effect type="CommandAdd" command="zpTrainLevy" page="0" column="0">
-        <target type="ProtoUnit">zpArmoredTrainBarracksStatic</target>
+      <effect type="Data" action="AreaHeal" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainHospitalStatic</target>
       </effect>
+      <effect type="TechStatus" status="active">zpArmoredTrainLevy</effect>
     </effects>
   </tech>
   <tech name ="zpArmoredTrainGoldBallanceShadow" type ="Normal">
@@ -11187,8 +11197,30 @@
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
   </tech>
-
- 
+  <tech name="zpTransformArmoredTrainB" type="Normal">
+    <dbid>40397</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainBarracksBuilding" fromprotoid="zpArmoredTrainBarracksStatic">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpKillArmoredTrain" type="Normal">
+    <dbid>40398</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="InvisibleProjectile" fromprotoid="zpArmoredTrainGunpowderEmitter">
+      </effect>
+      <effect type="TransformUnit" toprotoid="InvisibleProjectile" fromprotoid="zpArmoredTrainKitchenWagonEmitter">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpArmoredTrainLevy</effect>
+      <effect type="TechStatus" status="unobtainable">zpWagonDeploy</effect>
+    </effects>
+  </tech>
  
 
 

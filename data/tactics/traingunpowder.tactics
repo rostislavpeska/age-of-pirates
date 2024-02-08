@@ -21,7 +21,7 @@
     <selfdestruct>1</selfdestruct>
   </action>
   <action>
-    <name stringid="48958">ExtraROFUnits</name>
+    <name stringid="301079">ExtraROFUnits</name>
     <type>AutoRangedModify</type>
     <active>0</active>
     <modifyabstracttype>AbstractArtillery</modifyabstracttype>
@@ -33,7 +33,7 @@
     <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
   </action>
   <action>
-    <name stringid="48958">ExtraDamage</name>
+    <name stringid="301079">ExtraDamage</name>
     <type>AutoRangedModify</type>
     <active>0</active>
     <maxrange>30</maxrange>

@@ -1088,7 +1088,9 @@
       <string _locid="301084">Raises crew morale and motivation. Increases all wagon and train unit hitpoints.</string>
       <string _locid="301085">Emergency Aid</string>
       <string _locid="301086">Quickly Heals all units around (Can't be used when there are no injured units)</string>
-      <string _locid="301087">ZP Test Infantry</string>
+      <string _locid="301087">ZP NAT Machine Gunner</string>
+      <string _locid="301088">Detonate Wagon: Causes a deadly blast. &lt;color=1.0, 0.5, 0.0&gt;Can also destroy nearby wagons!&lt;/color&gt;</string>
+      <string _locid="301089">Machine Gunner</string>
 
 
       <!-- ======================================== -->
