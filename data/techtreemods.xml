@@ -10750,6 +10750,10 @@
       <effect type="TechStatus" status="obtainable">zpCowboyShotguns</effect>
       <effect type="TechStatus" status="obtainable">zpCowboyRifles</effect>-->
       <effect type="TechStatus" status="obtainable">zpWesternShadows</effect>
+      <effect type="TechStatus" status="obtainable">zpSendWyatt</effect>
+      <effect type="TechStatus" status="obtainable">zpSendDocHolliday</effect>
+      <effect type="TechStatus" status="obtainable">zpSendJesseJames</effect>
+      <effect type="TechStatus" status="obtainable">zpSendPinkertons</effect>
     </effects>
   </tech>
   <tech name="zpTransformArmoredTrain" type="Normal">
@@ -11718,6 +11722,7 @@
     <flag>DENativeUnitUpgrade</flag>
     <flag>DENoTextMessageIfFree</flag>
     <prereqs>
+      <techstatus status ="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpCowboyShotguns</effect>
@@ -11751,6 +11756,7 @@
     <flag>DENativeUnitUpgrade</flag>
     <flag>DENoTextMessageIfFree</flag>
     <prereqs>
+      <techstatus status ="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpCowboyRepeaters</effect>
@@ -11783,6 +11789,7 @@
     <flag>DENativeUnitUpgrade</flag>
     <flag>DENoTextMessageIfFree</flag>
     <prereqs>
+      <techstatus status ="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpCowboyRepeaters</effect>
@@ -11798,6 +11805,97 @@
       </effect>
       <effect type="Data" action="RangedAttackBreachLoad" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpMercMountedOutlaw</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSendWyatt" type="Normal">
+    <dbid>50023</dbid>
+    <displaynameid>400119</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\western_village\cowboyconversionrifle.png</icon>
+    <rollovertextid>400120</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <prereqs>
+      <techstatus status ="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpWyattEarp" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpSendDocHolliday</effect>
+    </effects>
+  </tech>
+  <tech name="zpSendDocHolliday" type="Normal">
+    <dbid>50024</dbid>
+    <displaynameid>400121</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\western_village\cowboyconversionrifle.png</icon>
+    <rollovertextid>400122</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <prereqs>
+      <techstatus status ="Active">Fortressize</techstatus>
+      <techstatus status ="Active">zpSendWyatt</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpDocHolliday" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSendJesseJames" type="Normal">
+    <dbid>50025</dbid>
+    <displaynameid>400123</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\western_village\cowboyconversionrifle.png</icon>
+    <rollovertextid>400124</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <prereqs>
+      <techstatus status ="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpJesseJames" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSendPinkertons" type="Normal">
+    <dbid>50026</dbid>
+    <displaynameid>400125</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\western_village\cowboyconversionrifle.png</icon>
+    <rollovertextid>400126</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status ="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="4.00" subtype="FreeHomeCityUnit" unittype="zpPinkerton" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>

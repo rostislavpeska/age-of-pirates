@@ -88,7 +88,11 @@
     </anim>
   </attachment>
   <component>ModelComp
-    <logic type="Variation">
+    <assetreference type="GrannyModel">
+      <file>units\wildwest_units\outlawriders\mounted_outlaw</file>
+    </assetreference>
+    <attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
+    <!--<logic type="Variation">
       <v1>
         <assetreference type="GrannyModel">
           <file>units\spc\outlaws\outlaw_rider</file>
@@ -119,7 +123,7 @@
         </assetreference>
         <attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
       </v5>
-    </logic>
+    </logic>-->
   </component>
   <anim>Walk
     <assetreference type="GrannyAnim">

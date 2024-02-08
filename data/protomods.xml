@@ -513,6 +513,10 @@
     <!--<tech row="0" page="0" column="5">zpCowboyRepeaters</tech>
     <tech row="0" page="1" column="5">zpCowboyShotguns</tech>
     <tech row="0" page="2" column="5">zpCowboyRifles</tech>-->
+    <tech row="0" page="2" column="4">zpSendWyatt</tech>
+    <tech row="0" page="2" column="4">zpSendDocHolliday</tech>
+    <tech row="0" page="1" column="4">zpSendJesseJames</tech>
+    <tech row="0" page="1" column="4">zpSendPinkertons</tech>
 
 
     <command page="0" column="3">zpNatArmoredTrain</command>
@@ -24737,6 +24741,11 @@
     <flag>ShowGarrisonButton</flag>
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
+    <flag>HeroName2</flag>
+    <flag>RotateInPlace</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>KnockoutDeath</flag>
     <flag>Tracked</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
@@ -24852,6 +24861,11 @@
     <flag>ShowGarrisonButton</flag>
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
+    <flag>HeroName2</flag>
+    <flag>RotateInPlace</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>KnockoutDeath</flag>
     <flag>Tracked</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
@@ -24961,6 +24975,11 @@
     <flag>ShowGarrisonButton</flag>
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
+    <flag>HeroName2</flag>
+    <flag>RotateInPlace</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>KnockoutDeath</flag>
     <flag>Tracked</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
@@ -25195,12 +25214,16 @@
     <unittype>AbstractRifleman</unittype>
     <unittype>AbstractSkirmisher</unittype>
     <flag>CollidesWithProjectiles</flag>
-    <flag>HeroName1</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
     <flag>ShowGarrisonButton</flag>
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
+    <flag>HeroName2</flag>
+    <flag>RotateInPlace</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>KnockoutDeath</flag>
     <flag>Tracked</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>

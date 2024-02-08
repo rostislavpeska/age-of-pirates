@@ -10,6 +10,16 @@
     <logic type="Variation">
       <v1>
         <assetreference type="GrannyModel">
+          <file>units\natives\lakota\axe_rider\axe_rider_horse01</file>
+        </assetreference>
+      </v1>
+      <v2>
+        <assetreference type="GrannyModel">
+          <file>units\natives\lakota\axe_rider\axe_rider_horse01</file>
+        </assetreference>
+      </v2>
+      <!--<v1>
+        <assetreference type="GrannyModel">
           <file>units\spc\outlaws\outlaw_horse</file>
         </assetreference>
       </v1>
@@ -27,7 +37,7 @@
         <assetreference type="GrannyModel">
           <file>units\cavalry\dragoon\dragoon_horse_age3</file>
         </assetreference>
-      </v4>
+      </v4>-->
     </logic>
     <decal>
       <effecttype>default</effecttype>

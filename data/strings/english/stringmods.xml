@@ -121,7 +121,7 @@
       <string _locid="300118">Maltese swordsman, good against cavalry.</string>
       <string _locid="300119">Maltese swordsman</string>
       <string _locid="300120">Disciplined Maltese Knight</string>
-      <string _locid="300121">Maltese Discilined Training</string>
+      <string _locid="300121">Maltese Disciplined Training</string>
       <string _locid="300122">Disciplined Maltese Guard</string>
       <string _locid="300123">Honored Maltese Knight</string>
       <string _locid="300124">Maltese Honor Training</string>
@@ -1168,7 +1168,7 @@
       <string _locid="400075">Jesse James</string>
       <string _locid="400076">ZP Jesse James</string>
       <string _locid="400077">Famed outlaw and leader of the James–Younger Gang.</string>
-      <string _locid="400078">James' Gang</string>
+      <string _locid="400078">James-Younger Gang</string>
       <string _locid="400079">ZP James Gang</string>
       <string _locid="400080">One of Jesse Jame's gang members.</string>
       <string _locid="400081">Pinkerton Detective</string>
@@ -1211,6 +1211,15 @@
       <string _locid="400116">Legendary StageCoach</string>
       <string _locid="400117">Legendary James' Gang</string>
       <string _locid="400118">Legendary Deputy</string>
+      <string _locid="400119">Wyatt Earp</string>
+      <string _locid="400120">Appoint Wyatt Earp as your local lawman, and unlock the help of his friend Doc Holliday.</string>
+      <string _locid="400121">Doc Holliday</string>
+      <string _locid="400122">Enlist the help of Doc Holliday.</string>
+      <string _locid="400123">Jesse James</string>
+      <string _locid="400124">Call on Jesse James to lead the James-Younger Gang.</string>
+      <string _locid="400125">Hire Pinkerton Agents</string>
+      <string _locid="400126">Hire a group of Pinkerton Agents to track your adversaries.</string>
+      
 
 
       <!-- ===================================== -->

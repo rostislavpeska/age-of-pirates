@@ -7,7 +7,10 @@
     <include>units\wildwest_units\outlawriders\zp_outlaw_rider.xml</include>
   </attachment>
   <component>ModelComp
-    <logic type="Variation">
+    <assetreference type="GrannyModel">
+      <file>units\wildwest_units\outlawriders\outlaw_horse</file>
+    </assetreference>
+    <!--<logic type="Variation">
       <v1>
         <assetreference type="GrannyModel">
           <file>units\spc\outlaws\outlaw_horse</file>
@@ -63,7 +66,7 @@
           <file>units\spc\outlaws\outlaw_horse</file>
         </assetreference>
       </v11>
-    </logic>
+    </logic>-->
     <decal>
       <effecttype>default</effecttype>
       <texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
