@@ -11142,7 +11142,21 @@
       <techstatus status="Active">zpArmoredTrainTech</techstatus>
     </prereqs>
     <effects>
-     
+      <effect type="Data" action="ExtraROFUnits" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainGunpowderStatic</target>
+      </effect>
+      <effect type="Data" action="ExtraDamage" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainGunpowderStatic</target>
+      </effect>    
+      <effect type="Data" action="ExtraHPWagon" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainKitchenWagonStatic</target>
+      </effect>
+      <effect type="Data" action="LongRangeAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainGun</target>
+      </effect>
+      <effect type="CommandAdd" command="zpTrainLevy" page="0" column="0">
+        <target type="ProtoUnit">zpArmoredTrainBarracksStatic</target>
+      </effect>
     </effects>
   </tech>
   <tech name ="zpArmoredTrainGoldBallanceShadow" type ="Normal">

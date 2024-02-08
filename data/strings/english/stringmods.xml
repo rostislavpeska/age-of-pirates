@@ -121,7 +121,7 @@
       <string _locid="300118">Maltese swordsman, good against cavalry.</string>
       <string _locid="300119">Maltese swordsman</string>
       <string _locid="300120">Disciplined Maltese Knight</string>
-      <string _locid="300121">Maltese Discilined Training</string>
+      <string _locid="300121">Maltese Disciplined Training</string>
       <string _locid="300122">Disciplined Maltese Guard</string>
       <string _locid="300123">Honored Maltese Knight</string>
       <string _locid="300124">Maltese Honor Training</string>
@@ -1080,6 +1080,16 @@
       <string _locid="301076">ZP AT KitchenWagon Static</string>
       <string _locid="301077">Unlocks full armored train potential and gives every Armored Train wagon a special active or passive ability. Future Armored Train cooldown by 50%.</string>
       <string _locid="301078"> • Cost: &lt;color=1.0, 0.0, 0.0&gt;500&lt;/color&gt; &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;\n • Spawns an Armored Train to attack enemy base. \n • Can be used on any Trade Route Trading Post Site</string>
+      <string _locid="301079">Gunpowder Stores</string>
+      <string _locid="301080">Improves Artillery damage and attack speed (aura)</string>
+      <string _locid="301081">Field Kitchen</string>
+      <string _locid="301082">Increases Infantry hitpoints (aura)</string>
+      <string _locid="301083">Crew Cantine</string>
+      <string _locid="301084">Raises crew morale and motivation. Increases all wagon and train unit hitpoints.</string>
+      <string _locid="301085">Emergency Aid</string>
+      <string _locid="301086">Quickly Heals all units around (Can't be used when there are no injured units)</string>
+      <string _locid="301087">ZP Test Infantry</string>
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

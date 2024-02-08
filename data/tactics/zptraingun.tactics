@@ -48,6 +48,7 @@
   <action>
     <name stringid="38122">LongRangeAttack</name>
     <type>Attack</type>
+    <active>0</active>
     <attackaction>1</attackaction>
     <rangedlogic>1</rangedlogic>
     <anim>RangedAttack</anim>

@@ -6,5 +6,12 @@
     <rate type="LogicalTypeHealed">20.0 </rate>
     <anim>Idle</anim>
   </action>
+  <action>
+    <name stringid="69155">AreaHeal</name>
+    <type>Heal</type>
+    <maxrange>20</maxrange>
+    <rate type="LogicalTypeHealed">50.0 </rate>
+    <anim>Idle</anim>
+  </action>
   <tactic>Normal<action>Heal</action></tactic>
 </tactics>
