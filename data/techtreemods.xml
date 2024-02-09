@@ -11227,6 +11227,28 @@
       <effect type="TechStatus" status="unobtainable">zpWagonDeploy</effect>
     </effects>
   </tech>
+  <tech name="zpArmoredTrainBreaks" type="Normal">
+    <dbid>40399</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="0.50" subtype="MaximumVelocity" relativity="BasePercent">
+        <target type="ProtoUnit">MovingArmoredTrain</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpArmoredTrainSpeedUp" type="Normal">
+    <dbid>40399</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="1.50" subtype="MaximumVelocity" relativity="BasePercent">
+        <target type="ProtoUnit">MovingArmoredTrain</target>
+      </effect>
+    </effects>
+  </tech>
  
 
 

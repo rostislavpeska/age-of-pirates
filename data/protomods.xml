@@ -19931,6 +19931,7 @@
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
     <unittype>AbstractArmoredTrain</unittype>
+    <unittype>MovingArmoredTrain</unittype>
     <flag>NoHPBar</flag>
     <flag>Invulnerable</flag>
     <flag>InvulnerableIfGaia</flag>
@@ -19977,6 +19978,7 @@
     <unittype>RailroadUnit</unittype>
     <unittype>Unattackable</unittype>
     <unittype>AbstractArmoredTrain</unittype>
+    <unittype>MovingArmoredTrain</unittype>
     <flag>NoHPBar</flag>
     <flag>DontRotateObstruction</flag>
     <flag>NotDeleteable</flag>
@@ -20024,6 +20026,7 @@
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
     <unittype>AbstractArmoredTrain</unittype>
+    <unittype>MovingArmoredTrain</unittype>
     <flag>Invulnerable</flag>
     <flag>InvulnerableIfGaia</flag>
     <flag>NonAutoFormedUnit</flag>
@@ -20060,6 +20063,7 @@
     <unittype>RailroadUnit</unittype>
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
+    <unittype>MovingArmoredTrain</unittype>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>DoesNotAutoAttack</flag>
     <flag>DoNotShowOnMiniMap</flag>
@@ -20112,6 +20116,7 @@
     <unittype>RailroadUnit</unittype>
     <unittype>Unattackable</unittype>
     <unittype>AbstractArmoredTrain</unittype>
+    <unittype>MovingArmoredTrain</unittype>
     <flag>DontRotateObstruction</flag>
     <flag>NotDeleteable</flag>
     <flag>NoProjectileDamage</flag>
@@ -20982,6 +20987,7 @@
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
     <unittype>AbstractArmoredTrain</unittype>
+    <unittype>MovingArmoredTrain</unittype>
     <flag>Invulnerable</flag>
     <flag>InvulnerableIfGaia</flag>
     <flag>NonAutoFormedUnit</flag>
@@ -21092,6 +21098,7 @@
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
     <unittype>AbstractArmoredTrain</unittype>
+    <unittype>MovingArmoredTrain</unittype>
     <flag>Invulnerable</flag>
     <flag>InvulnerableIfGaia</flag>
     <flag>NonAutoFormedUnit</flag>
@@ -21608,6 +21615,7 @@
     <unittype>RailroadUnit</unittype>
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
+    <unittype>MovingArmoredTrain</unittype>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>DoesNotAutoAttack</flag>
     <flag>DoNotShowOnMiniMap</flag>
@@ -21650,6 +21658,7 @@
     <unittype>RailroadUnit</unittype>
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
+    <unittype>MovingArmoredTrain</unittype>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>DoesNotAutoAttack</flag>
     <flag>DoNotShowOnMiniMap</flag>
@@ -21797,6 +21806,7 @@
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
     <unittype>AbstractArmoredTrain</unittype>
+    <unittype>MovingArmoredTrain</unittype>
     <flag>Invulnerable</flag>
     <flag>InvulnerableIfGaia</flag>
     <flag>NonAutoFormedUnit</flag>
@@ -22245,6 +22255,7 @@
     <unittype>RailroadUnit</unittype>
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
+    <unittype>MovingArmoredTrain</unittype>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>DoesNotAutoAttack</flag>
     <flag>DoNotShowOnMiniMap</flag>
