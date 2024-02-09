@@ -3881,6 +3881,7 @@
       <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainGunCarBackStatic",%Dist%);</command>
       <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainGunCarFrontStatic",%Dist%);</command>
       <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainKitchenWagonStatic",%Dist%);</command>
+      <command>trKillUnitsInArea(0,"zpArmoredTrainSoundMove",%Dist%);</command>
       <command>trTechSetStatus(%TrgPlayer%, cTechzpTransformArmoredTrainB, 2);</command>
       <command>trTechSetStatus(%TrgPlayer%, cTechzpWagonDeploy, 2);</command>
       <command>trUnitCreateFromSource("zpArmoredTrainGunpowderEmitter", "%SrcObject%", "%DstObject%", %TrgPlayer%);</command>

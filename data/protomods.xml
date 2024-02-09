@@ -22014,8 +22014,7 @@
     <flag>NonAutoFormedUnit</flag>
     <flag>NoHPBar</flag>
     <flag>Tracked</flag>
-    <!--<flag>OnlyInEditor</flag>-->
-    <flag>NotSearchable</flag>
+    <flag>OnlyInEditor</flag>
     <flag>NotPlayerPlaceable</flag>
     <tactics>trainkitchen.tactics</tactics>
   </unit>
@@ -22056,8 +22055,7 @@
     <flag>NonAutoFormedUnit</flag>
     <flag>NoHPBar</flag>
     <flag>Tracked</flag>
-    <!--<flag>OnlyInEditor</flag>-->
-    <flag>NotSearchable</flag>
+    <flag>OnlyInEditor</flag>
     <flag>NotPlayerPlaceable</flag>
     <tactics>traingunpowder.tactics</tactics>
   </unit>
@@ -22224,6 +22222,49 @@
       <damagebonus type="AbstractCavalry">0.600000</damagebonus>
       <damagebonus type="AbstractLightInfantry">0.600000</damagebonus>
     </protoaction>
+  </unit>
+   <unit id="20235" name="zpArmoredTrainSoundMove">
+    <dbid>20235</dbid>
+    <displaynameid>301017</displaynameid>
+    <editornameid>301002</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <maxvelocity>8.5000</maxvelocity>
+    <maxrunvelocity>10.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <icon>resources\art\units\train\armored_train_icon.png</icon>
+    <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
+    <rollovertextid>35881</rollovertextid>
+    <initialhitpoints>22500.0000</initialhitpoints>
+    <maxhitpoints>22500.0000</maxhitpoints>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>Invulnerable</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>NoHPBar</flag>
+    <flag>Tracked</flag>
+    <flag>GivesLOSToAll</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>NotSearchable</flag>
+    <flag>OnlyInEditor</flag>
+    <command page="10" column="7">Delete</command>
   </unit>
 
 

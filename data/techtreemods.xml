@@ -11133,7 +11133,7 @@
     <cost resourcetype="Gold">2500.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\armored_train.png</icon>
+    <icon>resources\images\icons\techs\armored_train_improve.png</icon>
     <rollovertextid>301077</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
@@ -11167,6 +11167,12 @@
         <target type="ProtoUnit">zpArmoredTrainHospitalStatic</target>
       </effect>
       <effect type="TechStatus" status="active">zpArmoredTrainLevy</effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpArmoredTrainGun</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpArmoredTrainBarracksBuilding</target>
+      </effect>
     </effects>
   </tech>
   <tech name ="zpArmoredTrainGoldBallanceShadow" type ="Normal">

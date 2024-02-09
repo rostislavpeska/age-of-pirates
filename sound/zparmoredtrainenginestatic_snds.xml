@@ -5,4 +5,11 @@
       </soundset>
     </soundtype>
   </protounit>
+
+
+    <soundtype name="Exists">
+      <soundset name="AmbienceFactory">
+      </soundset>
+    </soundtype>
+
 </protounitsounddef>

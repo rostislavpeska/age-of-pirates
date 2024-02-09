@@ -1,5 +1,5 @@
 <protounitsounddef>
-  <protounit name="zpArmoredTrainBarracksMove">
+  <protounit name="zpArmoredTrainSoundMove">
     <soundtype name="Exists">
       <soundset name="TrainExist">
       </soundset>
