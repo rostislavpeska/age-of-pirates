@@ -1835,8 +1835,8 @@ for(i=0; < saltCount)
 
 	rmCreateTrigger("AT1_STOP_Station1_Plr"+k);
 	rmCreateTrigger("AT1_STOP_Station2_Plr"+k);
-		rmCreateTrigger("AT1_STOP_Station3_Plr"+k);
-		rmCreateTrigger("AT1_STOP_Station4_Plr"+k);
+	rmCreateTrigger("AT1_STOP_Station3_Plr"+k);
+	rmCreateTrigger("AT1_STOP_Station4_Plr"+k);
 	if (cNumberNonGaiaPlayers >= 3)
 		rmCreateTrigger("AT1_STOP_Station5_Plr"+k);
 	if (cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers >= 6)
@@ -1845,6 +1845,19 @@ for(i=0; < saltCount)
 	rmCreateTrigger("AT1_STOP_Station7_Plr"+k);
 	if (cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers == 8)
 		rmCreateTrigger("AT1_STOP_Station8_Plr"+k);
+
+	rmCreateTrigger("AT1_Break_Station1_Plr"+k);
+	rmCreateTrigger("AT1_Break_Station2_Plr"+k);
+	rmCreateTrigger("AT1_Break_Station3_Plr"+k);
+	rmCreateTrigger("AT1_Break_Station4_Plr"+k);
+	if (cNumberNonGaiaPlayers >= 3)
+		rmCreateTrigger("AT1_Break_Station5_Plr"+k);
+	if (cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers >= 6)
+		rmCreateTrigger("AT1_Break_Station6_Plr"+k);
+	if (cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers >= 7)
+	rmCreateTrigger("AT1_Break_Station7_Plr"+k);
+	if (cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers == 8)
+		rmCreateTrigger("AT1_Break_Station8_Plr"+k);
 
 	rmCreateTrigger("AT_Destroy_Plr"+k);
 	rmCreateTrigger("AT_Revert_Plr"+k);
@@ -1873,7 +1886,7 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParam("QVName","ArmoredTrain_Plr"+k);
 	rmSetTriggerEffectParamInt("Value",1);
 	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station1_Plr"+k));
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Break_Station1_Plr"+k));
 
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_Cooldown_Off_Plr"+k));
@@ -1891,6 +1904,29 @@ for(i=0; < saltCount)
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
+
+
+	rmSwitchToTrigger(rmTriggerID("AT1_Break_Station1_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",unitID1);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","zpArmoredTrainGunMove");
+	rmSetTriggerConditionParamInt("Dist",15);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainBreaks");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Train_Breaks");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station1_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
 	
 
 	rmSwitchToTrigger(rmTriggerID("AT1_STOP_Station1_Plr"+k));
@@ -1906,7 +1942,6 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParam("SrcObject",unitID1);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParamInt("Dist",100);
-	rmSetTriggerEffectParam("Soundset","Train_Breaks");
 
 	rmAddTriggerEffect("Unit Create from Source");
 	rmSetTriggerEffectParam("SrcObject",unitID1);
@@ -1955,7 +1990,7 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParam("QVName","ArmoredTrain_Plr"+k);
 	rmSetTriggerEffectParamInt("Value",1);
 	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station2_Plr"+k));
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Break_Station2_Plr"+k));
 
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_Cooldown_Off_Plr"+k));
@@ -1974,6 +2009,26 @@ for(i=0; < saltCount)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
+	rmSwitchToTrigger(rmTriggerID("AT1_Break_Station2_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",unitID2);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","zpArmoredTrainGunMove");
+	rmSetTriggerConditionParamInt("Dist",15);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainBreaks");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Train_Breaks");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station2_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 
 	rmSwitchToTrigger(rmTriggerID("AT1_STOP_Station2_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
@@ -1988,7 +2043,6 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParam("SrcObject",unitID2);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParamInt("Dist",100);
-	rmSetTriggerEffectParam("Soundset","Train_Breaks");
 
 	rmAddTriggerEffect("Counter:Add Timer");
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
@@ -2043,7 +2097,7 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParam("QVName","ArmoredTrain_Plr"+k);
 	rmSetTriggerEffectParamInt("Value",1);
 	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station3_Plr"+k));
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Break_Station3_Plr"+k));
 
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_Cooldown_Off_Plr"+k));
@@ -2057,6 +2111,27 @@ for(i=0; < saltCount)
 
 	rmAddTriggerEffect("FakeCounter Set Text");
 	rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("AT1_Break_Station3_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",unitID3);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","zpArmoredTrainGunMove");
+	rmSetTriggerConditionParamInt("Dist",15);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainBreaks");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Train_Breaks");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station3_Plr"+k));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -2076,7 +2151,6 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParam("SrcObject",unitID3);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParamInt("Dist",100);
-	rmSetTriggerEffectParam("Soundset","Train_Breaks");
 
 	rmAddTriggerEffect("Counter:Add Timer");
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
@@ -2130,7 +2204,7 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParam("QVName","ArmoredTrain_Plr"+k);
 	rmSetTriggerEffectParamInt("Value",1);
 	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station4_Plr"+k));
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Break_Station4_Plr"+k));
 
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_Cooldown_Off_Plr"+k));
@@ -2149,6 +2223,27 @@ for(i=0; < saltCount)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
+	rmSwitchToTrigger(rmTriggerID("AT1_Break_Station4_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",unitID4);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","zpArmoredTrainGunMove");
+	rmSetTriggerConditionParamInt("Dist",15);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainBreaks");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Train_Breaks");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station4_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
 	rmSwitchToTrigger(rmTriggerID("AT1_STOP_Station4_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",unitID4);
@@ -2162,7 +2257,6 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParam("SrcObject",unitID4);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParamInt("Dist",100);
-	rmSetTriggerEffectParam("Soundset","Train_Breaks");
 
 	rmAddTriggerEffect("Counter:Add Timer");
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
@@ -2218,7 +2312,7 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParam("QVName","ArmoredTrain_Plr"+k);
 		rmSetTriggerEffectParamInt("Value",1);
 		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station5_Plr"+k));
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Break_Station5_Plr"+k));
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_Cooldown_Off_Plr"+k));
@@ -2237,6 +2331,27 @@ for(i=0; < saltCount)
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
 
+		rmSwitchToTrigger(rmTriggerID("AT1_Break_Station5_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID5);
+		rmSetTriggerConditionParamInt("Player",0);
+		rmSetTriggerConditionParam("UnitType","zpArmoredTrainGunMove");
+		rmSetTriggerConditionParamInt("Dist",15);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",0);
+		rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainBreaks");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Play Soundset");
+		rmSetTriggerEffectParam("Soundset","Train_Breaks");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station5_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
 		rmSwitchToTrigger(rmTriggerID("AT1_STOP_Station5_Plr"+k));
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",unitID5);
@@ -2250,7 +2365,6 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParam("SrcObject",unitID5);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParamInt("Dist",100);
-		rmSetTriggerEffectParam("Soundset","Train_Breaks");
 
 		rmAddTriggerEffect("Counter:Add Timer");
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
@@ -2307,7 +2421,7 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParam("QVName","ArmoredTrain_Plr"+k);
 		rmSetTriggerEffectParamInt("Value",1);
 		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station6_Plr"+k));
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Break_Station6_Plr"+k));
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_Cooldown_Off_Plr"+k));
@@ -2326,6 +2440,27 @@ for(i=0; < saltCount)
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
 
+		rmSwitchToTrigger(rmTriggerID("AT1_Break_Station6_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID6);
+		rmSetTriggerConditionParamInt("Player",0);
+		rmSetTriggerConditionParam("UnitType","zpArmoredTrainGunMove");
+		rmSetTriggerConditionParamInt("Dist",15);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",0);
+		rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainBreaks");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Play Soundset");
+		rmSetTriggerEffectParam("Soundset","Train_Breaks");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station6_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
 		rmSwitchToTrigger(rmTriggerID("AT1_STOP_Station6_Plr"+k));
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",unitID6);
@@ -2339,7 +2474,6 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParam("SrcObject",unitID6);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParamInt("Dist",100);
-		rmSetTriggerEffectParam("Soundset","Train_Breaks");
 
 		rmAddTriggerEffect("Counter:Add Timer");
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
@@ -2395,7 +2529,7 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParam("QVName","ArmoredTrain_Plr"+k);
 		rmSetTriggerEffectParamInt("Value",1);
 		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station7_Plr"+k));
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Break_Station7_Plr"+k));
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_Cooldown_Off_Plr"+k));
@@ -2414,6 +2548,27 @@ for(i=0; < saltCount)
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
 
+		rmSwitchToTrigger(rmTriggerID("AT1_Break_Station7_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID7);
+		rmSetTriggerConditionParamInt("Player",0);
+		rmSetTriggerConditionParam("UnitType","zpArmoredTrainGunMove");
+		rmSetTriggerConditionParamInt("Dist",15);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",0);
+		rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainBreaks");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Play Soundset");
+		rmSetTriggerEffectParam("Soundset","Train_Breaks");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station7_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
 		rmSwitchToTrigger(rmTriggerID("AT1_STOP_Station7_Plr"+k));
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",unitID7);
@@ -2427,7 +2582,6 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParam("SrcObject",unitID7);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParamInt("Dist",100);
-		rmSetTriggerEffectParam("Soundset","Train_Breaks");
 
 		rmAddTriggerEffect("Counter:Add Timer");
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
@@ -2473,7 +2627,7 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParam("QVName","ArmoredTrain_Plr"+k);
 		rmSetTriggerEffectParamInt("Value",1);
 		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station8_Plr"+k));
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Break_Station8_Plr"+k));
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_Cooldown_Off_Plr"+k));
@@ -2492,6 +2646,27 @@ for(i=0; < saltCount)
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
 
+		rmSwitchToTrigger(rmTriggerID("AT1_Break_Station8_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID8);
+		rmSetTriggerConditionParamInt("Player",0);
+		rmSetTriggerConditionParam("UnitType","zpArmoredTrainGunMove");
+		rmSetTriggerConditionParamInt("Dist",15);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",0);
+		rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainBreaks");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Play Soundset");
+		rmSetTriggerEffectParam("Soundset","Train_Breaks");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station8_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
 		rmSwitchToTrigger(rmTriggerID("AT1_STOP_Station8_Plr"+k));
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",unitID8);
@@ -2505,7 +2680,6 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParam("SrcObject",unitID8);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParamInt("Dist",100);
-		rmSetTriggerEffectParam("Soundset","Train_Breaks");
 
 		rmAddTriggerEffect("Counter:Add Timer");
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
@@ -2534,7 +2708,8 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParamInt("PlayerID",k);
 	rmSetTriggerEffectParam("TechID","cTechzpKillArmoredTrain");
 	rmSetTriggerEffectParamInt("Status",2);
-
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","AmbienceTrain");
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Normalize_TR"));
 	rmSetTriggerPriority(4);
