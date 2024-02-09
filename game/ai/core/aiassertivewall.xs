@@ -2953,7 +2953,7 @@ void gatherNavy(vector location = cInvalidVector)
       if ((aiPlanGetDesiredPriority(unitPlanID) == 24) ||           // Repairing
             aiPlanGetDesiredPriority(unitPlanID) == 25 ||           // Actively Defending
             aiPlanGetType(unitPlanID) == cPlanTransport ||          // Transporting
-            aiPlanGetDesiredPriority(unitPlanID) == 100 ||          // Also transporting
+            aiPlanGetDesiredPriority(unitPlanID) == 100 ||          // Also transporting, but maybe a reserve plan
             kbUnitGetHealth(unitID) < 0.5)                          // Half health
       {
          continue;
@@ -2977,7 +2977,7 @@ void gatherNavy(vector location = cInvalidVector)
       {
          if (gatheredUnits >= 3)
          {
-            //aiChat(1, "moving to bombard coast");
+            aiChat(1, "moving to bombard coast");
             gAmphibiousAssaultStage = cBombardCoast;
          }
       }
@@ -3626,7 +3626,7 @@ void amphibiousAssault(vector location = cInvalidVector)
       gAmphibiousTransportPlan = aiPlanCreate("Amphibious Transport Plan", cPlanReserve);
       aiPlanAddUnitType(gAmphibiousTransportPlan, cUnitTypeAbstractWarShip, 0, 0, 200);
       aiPlanSetNoMoreUnits(gAmphibiousTransportPlan, true);
-      aiPlanSetDesiredPriority(gAmphibiousTransportPlan, 99); // Only lower than transport
+      aiPlanSetDesiredPriority(gAmphibiousTransportPlan, 100); // Let no one steal us
       aiPlanSetActive(gAmphibiousTransportPlan);
    }
 

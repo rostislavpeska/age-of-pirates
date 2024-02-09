@@ -10730,7 +10730,7 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpMountedOutlaw</target>
       </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+      <!--<effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpJamesGang</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -10738,7 +10738,7 @@
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpDeputy</target>
-      </effect>
+      </effect>-->
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestWhiskeyFactory</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestCows</effect>
@@ -10750,10 +10750,10 @@
       <effect type="TechStatus" status="obtainable">zpCowboyShotguns</effect>
       <effect type="TechStatus" status="obtainable">zpCowboyRifles</effect>-->
       <effect type="TechStatus" status="obtainable">zpWesternShadows</effect>
-      <effect type="TechStatus" status="obtainable">zpSendWyatt</effect>
+      <!--<effect type="TechStatus" status="obtainable">zpSendWyatt</effect>
       <effect type="TechStatus" status="obtainable">zpSendDocHolliday</effect>
       <effect type="TechStatus" status="obtainable">zpSendJesseJames</effect>
-      <effect type="TechStatus" status="obtainable">zpSendPinkertons</effect>
+      <effect type="TechStatus" status="obtainable">zpSendPinkertons</effect>-->
     </effects>
   </tech>
   <tech name="zpTransformArmoredTrain" type="Normal">
