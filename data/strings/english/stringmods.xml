@@ -1091,7 +1091,12 @@
       <string _locid="301087">ZP NAT Machine Gunner</string>
       <string _locid="301088">Detonate Wagon: Causes a deadly blast. &lt;color=1.0, 0.5, 0.0&gt;Can also destroy nearby wagons!&lt;/color&gt;</string>
       <string _locid="301089">Machine Gunner</string>
-
+      <string _locid="301090">Locomotive pulling an armored train</string>
+      <string _locid="301091">Boosts nearby units.</string>
+      <string _locid="301092">Transports gunpowder and ammunition. Can easily explode.</string>
+      <string _locid="301093">Massive Railway Cannon with Powerful Attack</string>
+      <string _locid="301094">Heals nearby units.</string>
+      <string _locid="301095">Armored car. Transports units from Train Stations.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

@@ -19764,16 +19764,15 @@
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
-    <rollovertextid>33597</rollovertextid>
-    <shortrollovertextid>33596</shortrollovertextid>
+    <rollovertextid>301093</rollovertextid>
+    <shortrollovertextid>301093</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
     <los>60.0000</los>
     <displayedrange>60.0</displayedrange>
     <projectileprotounit>zpGreatWarShell</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
-    <bounty>300.0000</bounty>
-    <cost resourcetype="Gold">2000.0000</cost>
+    <bounty>100.0000</bounty>
     <buildingworkrate>1.0000</buildingworkrate>
     <armor type="Siege" value="0.0000">
     </armor>
@@ -19909,8 +19908,8 @@
     <animfile>units\trains\armored_train\engine.xml</animfile>
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
-    <rollovertextid>22967</rollovertextid>
-    <shortrollovertextid>25736</shortrollovertextid>
+    <rollovertextid>301090</rollovertextid>
+    <shortrollovertextid>301090</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
     <los>15.0000</los>
@@ -20005,7 +20004,7 @@
     <animfile>units\trains\armored_train\armored_car.xml</animfile>
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
-    <rollovertextid>23042</rollovertextid>
+    <rollovertextid>301095</rollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
     <los>15.0000</los>
@@ -20095,7 +20094,7 @@
     <animfile>units\trains\armored_train\guncar_gun.xml</animfile>
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
-    <rollovertextid>35881</rollovertextid>
+    <rollovertextid>301093</rollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
     <los>60.0000</los>
@@ -20142,13 +20141,11 @@
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
-    <rollovertextid>33597</rollovertextid>
-    <shortrollovertextid>33596</shortrollovertextid>
+    <rollovertextid>301090</rollovertextid>
+    <shortrollovertextid>301090</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
     <los>15.0000</los>
-    <bounty>300.0000</bounty>
-    <cost resourcetype="Gold">2000.0000</cost>
     <buildingworkrate>1.0000</buildingworkrate>
     <armor type="Siege" value="0.0000">
     </armor>
@@ -20260,15 +20257,14 @@
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
-    <rollovertextid>33597</rollovertextid>
-    <shortrollovertextid>33596</shortrollovertextid>
+    <rollovertextid>301095</rollovertextid>
+    <shortrollovertextid>301095</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
     <projectileprotounit>InvisibleProjectile</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <los>15.0000</los>
-    <bounty>300.0000</bounty>
-    <cost resourcetype="Gold">2000.0000</cost>
+    <bounty>100.0000</bounty>
     <buildingworkrate>1.0000</buildingworkrate>
     <armor type="Siege" value="0.0000">
     </armor>
@@ -20966,7 +20962,7 @@
     <animfile>units\trains\armored_train\hospital_car.xml</animfile>
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
-    <rollovertextid>23042</rollovertextid>
+    <rollovertextid>301094</rollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
     <los>15.0000</los>
@@ -21014,14 +21010,13 @@
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
-    <rollovertextid>33597</rollovertextid>
-    <shortrollovertextid>33596</shortrollovertextid>
+    <rollovertextid>301094</rollovertextid>
+    <shortrollovertextid>301094</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
     <los>15.0000</los>
     <displayedrange>20.0000</displayedrange>
-    <bounty>300.0000</bounty>
-    <cost resourcetype="Gold">2000.0000</cost>
+    <bounty>100.0000</bounty>
     <buildingworkrate>1.0000</buildingworkrate>
     <armor type="Siege" value="0.0000">
     </armor>
@@ -21077,7 +21072,7 @@
     <animfile>units\trains\armored_train\gunpowder_car.xml</animfile>
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
-    <rollovertextid>23042</rollovertextid>
+    <rollovertextid>301092</rollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
     <los>15.0000</los>
@@ -21125,13 +21120,12 @@
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
-    <rollovertextid>33597</rollovertextid>
-    <shortrollovertextid>33596</shortrollovertextid>
+    <rollovertextid>301092</rollovertextid>
+    <shortrollovertextid>301092</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
     <los>15.0000</los>
-    <bounty>300.0000</bounty>
-    <cost resourcetype="Gold">2000.0000</cost>
+    <bounty>100.0000</bounty>
     <buildingworkrate>1.0000</buildingworkrate>
     <armor type="Siege" value="0.0000">
     </armor>
@@ -21785,7 +21779,7 @@
     <animfile>units\trains\armored_train\kitchen_wagon.xml</animfile>
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
-    <rollovertextid>23042</rollovertextid>
+    <rollovertextid>301091</rollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
     <los>15.0000</los>
@@ -21833,14 +21827,13 @@
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
-    <rollovertextid>33597</rollovertextid>
-    <shortrollovertextid>33596</shortrollovertextid>
+    <rollovertextid>301091</rollovertextid>
+    <shortrollovertextid>301091</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
     <los>15.0000</los>
     <displayedrange>20.0000</displayedrange>
-    <bounty>300.0000</bounty>
-    <cost resourcetype="Gold">2000.0000</cost>
+    <bounty>100.0000</bounty>
     <buildingworkrate>1.0000</buildingworkrate>
     <armor type="Siege" value="0.0000">
     </armor>
@@ -21908,15 +21901,14 @@
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
-    <rollovertextid>33597</rollovertextid>
-    <shortrollovertextid>33596</shortrollovertextid>
+    <rollovertextid>301095</rollovertextid>
+    <shortrollovertextid>301095</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
     <projectileprotounit>InvisibleProjectile</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <los>15.0000</los>
-    <bounty>300.0000</bounty>
-    <cost resourcetype="Gold">2000.0000</cost>
+    <bounty>100.0000</bounty>
     <buildingworkrate>1.0000</buildingworkrate>
     <armor type="Siege" value="0.0000">
     </armor>
