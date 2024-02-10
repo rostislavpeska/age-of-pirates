@@ -361,6 +361,7 @@
     <tech row="0" page="2" column="3">zpWildWestMilitia</tech>
     <tech row="0" page="1" column="1">zpWildWestVeteranCowboys</tech>
     <tech row="0" page="1" column="1">zpWildWestGuardCowboys</tech>
+    <tech row="0" page="1" column="1">zpWesternAgeUp</tech>
 
 
     <command page="0" column="3">zpNatArmoredTrain</command>

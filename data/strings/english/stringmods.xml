@@ -1097,6 +1097,16 @@
       <string _locid="301093">Massive Railway Cannon with Powerful Attack</string>
       <string _locid="301094">Heals nearby units.</string>
       <string _locid="301095">Armored car. Transports units from Train Stations.</string>
+      <string _locid="301096">Wyat Earp</string>
+      <string _locid="301097">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nSheriff \n\nThe Man of Law. Strong Range Attack. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nSheriff's Office</string>
+      <string _locid="301098">Pick Mayor</string>
+      <string _locid="301099">Choose a legendary Hero or Outlaw.</string>
+      <string _locid="301100">Pinkertons</string>
+      <string _locid="301101">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nPinkerton Detective \n\nThe Man of Law. Strong Range Attack. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nSheriff's Office</string>
+      <string _locid="301102">Jesse James</string>
+      <string _locid="301103">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nJames Gang \n\nThe Man of Law. Strong Range Attack. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nSheriff's Office</string>
+
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
