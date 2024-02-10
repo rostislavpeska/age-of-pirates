@@ -3097,6 +3097,7 @@ void bombardCoast()
          {
             if (gAmphibiousAssaultStage < cLoadForces)
             {
+               aiChat(1, "loading forces");
                gAmphibiousAssaultStage = cLoadForces;
             }
          }
@@ -3273,7 +3274,7 @@ void loadForces(vector pickupPoint = cInvalidVector)
    aiPlanDestroy(gAmphibiousArmyPlan);
 
    // Create transport plan
-   transportPlanID = aiPlanCreate(kbGetUnitTypeName(kbUnitGetProtoUnitID(gLandingShip1)) + " Transport Plan, ", cPlanTransport);
+   /*transportPlanID = aiPlanCreate(kbGetUnitTypeName(kbUnitGetProtoUnitID(gLandingShip1)) + " Transport Plan, ", cPlanTransport);
    aiPlanSetVariableInt(transportPlanID, cTransportPlanTransportID, 0, gLandingShip1);
    aiPlanSetVariableInt(transportPlanID, cTransportPlanTransportTypeID, 0, kbUnitGetProtoUnitID(gLandingShip1));
    aiPlanAddUnitType(transportPlanID, kbUnitGetProtoUnitID(gLandingShip1), 1, 1, 1);
@@ -3313,17 +3314,20 @@ void loadForces(vector pickupPoint = cInvalidVector)
 
       aiPlanSetRequiresAllNeedUnits(transportPlan2ID, true);
       aiPlanSetDesiredPriority(transportPlan2ID, 100);
-   }
+   }*/
 
 
    if (gLandingShip2 < 0)
    {
-      aiPlanAddUnitType(transportPlanID, cUnitTypeLogicalTypeLandMilitary, landingForcesSize, landingForcesSize, landingForcesSize);
+      aiPlanAddUnitType(gAmphibiousTransportPlan, cUnitTypeLogicalTypeLandMilitary, landingForcesSize, landingForcesSize, landingForcesSize);
+      //aiPlanAddUnitType(transportPlanID, cUnitTypeLogicalTypeLandMilitary, landingForcesSize, landingForcesSize, landingForcesSize);
    }
    else
    {
-      aiPlanAddUnitType(transportPlanID, cUnitTypeLogicalTypeLandMilitary, landingForcesSize*0.5, landingForcesSize*0.5, landingForcesSize*0.5);
-      aiPlanAddUnitType(transportPlan2ID, cUnitTypeLogicalTypeLandMilitary, landingForcesSize*0.5, landingForcesSize*0.5, landingForcesSize*0.5);
+      aiPlanAddUnitType(gAmphibiousTransportPlan, cUnitTypeLogicalTypeLandMilitary, landingForcesSize*0.5, landingForcesSize*0.5, landingForcesSize*0.5);
+      aiPlanAddUnitType(gAmphibiousTransportPlan, cUnitTypeLogicalTypeLandMilitary, landingForcesSize*0.5, landingForcesSize*0.5, landingForcesSize*0.5);
+      //aiPlanAddUnitType(transportPlanID, cUnitTypeLogicalTypeLandMilitary, landingForcesSize*0.5, landingForcesSize*0.5, landingForcesSize*0.5);
+      //aiPlanAddUnitType(transportPlan2ID, cUnitTypeLogicalTypeLandMilitary, landingForcesSize*0.5, landingForcesSize*0.5, landingForcesSize*0.5);
    }
 
    for (i = 0; < landingForcesSize)
@@ -3331,37 +3335,40 @@ void loadForces(vector pickupPoint = cInvalidVector)
       tempLandUnit = kbUnitQueryGetResult(landingForcesQuery, i);
       if (gLandingShip2 < 0)
       {
-         //aiTaskUnitWork(tempLandUnit, gLandingShip1, true);
-         aiPlanAddUnit(transportPlanID, tempLandUnit);
+         aiTaskUnitWork(tempLandUnit, gLandingShip1, true);
+         aiPlanAddUnit(gAmphibiousTransportPlan, tempLandUnit);
+         //aiPlanAddUnit(transportPlanID, tempLandUnit);
       }
       else
       {
          if (i < 0.5 * landingForcesSize)
          {
-            //aiTaskUnitWork(tempLandUnit, gLandingShip1, true);
-            aiPlanAddUnit(transportPlanID, tempLandUnit);
+            aiTaskUnitWork(tempLandUnit, gLandingShip1, true);
+            aiPlanAddUnit(gAmphibiousTransportPlan, tempLandUnit);
+            //aiPlanAddUnit(transportPlanID, tempLandUnit);
          }
          else
          {
-            //aiTaskUnitWork(tempLandUnit, gLandingShip2, true);
-            aiPlanAddUnit(transportPlan2ID, tempLandUnit);
+            aiTaskUnitWork(tempLandUnit, gLandingShip2, true);
+            aiPlanAddUnit(gAmphibiousTransportPlan, tempLandUnit);
+            //aiPlanAddUnit(transportPlan2ID, tempLandUnit);
          }
       }
    }
 
-   aiPlanSetActive(transportPlanID);
+   /*aiPlanSetActive(transportPlanID);
    if (transportPlan2ID > 0)
    {
       aiPlanSetActive(transportPlan2ID);
-   }
+   }*/
 
-   if (transportPlanID > 0 || transportPlan2ID > 0)
+   /*if (transportPlanID > 0 || transportPlan2ID > 0)
    {
       gAmphibiousAssaultStage = cLandForces;
-   }
+   }*/
 
    // Now check to see if we're all loaded up (within a couple units)
-   /*unitsOnShip1 = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf,
+   unitsOnShip1 = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf,
                cUnitStateAlive, kbUnitGetPosition(gLandingShip1), 1.0);
    if (ship2 > 0)
    {
@@ -3372,8 +3379,9 @@ void loadForces(vector pickupPoint = cInvalidVector)
    //aiChat(1, "Units on ship 1: " + unitsOnShip1 + " Ship 2: " + unitsOnShip2);
    if (unitsOnShip1 + unitsOnShip2 > landingForcesSize * 0.95)
    {
+      aiChat(1, "Moving to drop off forces");
       gAmphibiousAssaultStage = cLandForces;
-   }*/
+   }
 
    return;
 }
