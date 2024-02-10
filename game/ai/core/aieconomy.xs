@@ -472,6 +472,13 @@ bool handleExcessResources()
 //==============================================================================
 void updateResourceDistribution(bool force = false)
 {
+   // AssertiveWall: suppress when build order is active
+   int gatheringBOLength = xsArrayGetSize(boResourceBreakdownArrayFood) - 1;
+   if (xsArrayGetInt(boResourceBreakdownArrayFood, gatheringBOLength) > 0 && gUseBuildOrder == true)
+   {
+      return;
+   }
+
    float planGoldNeeded = 0.0;
    float planWoodNeeded = 0.0;
    float planFoodNeeded = 0.0;
@@ -1770,6 +1777,7 @@ minInterval 15
 //==============================================================================
 // fishManager
 // Updates fishing boat maintain plan.
+// AssertiveWall: replaced by boatboom monitor
 //==============================================================================
 rule fishManager
 inactive
@@ -1778,11 +1786,11 @@ minInterval 30
    if (gTimeToFish == false)
    {
       // Don't fish until age2 transition. Unless it's an island map. Then it's always a good time
-      if ((gStartOnDifferentIslands == true && kbGetAge() >= cAge2) || (gStartOnDifferentIslands == true && agingUp() == true))
+      if (gStartOnDifferentIslands == true)
       {
          gTimeToFish = true;
       }
-      if (kbGetAge() < cAge2 && agingUp() == false)
+      else if (kbGetAge() < cAge2 && agingUp() == false)
       {
          return;
       }
@@ -2370,6 +2378,13 @@ minInterval 29
 //==============================================================================
 void initResourceBreakdowns()
 {
+   // AssertiveWall: suppress when build order is active
+   /*int gatheringBOLength = xsArrayGetSize(boResourceBreakdownArrayFood) - 1;
+   if (xsArrayGetInt(boResourceBreakdownArrayFood, gatheringBOLength) > 0 && gUseBuildOrder == true)
+   {
+      return;
+   }*/
+
    // Set initial gatherer percentages.
    aiSetResourcePercentage(cResourceFood, false, 1.0);
    aiSetResourcePercentage(cResourceWood, false, 0.0);
@@ -2521,9 +2536,13 @@ void updateResources()
       return;
    }
    // When we are gathering natural resources over this distance, start farming.
-   const float cFarmNaturalResourceDistance = 50.0;
+   // AssertiveWall: Since AI can herd, let it go further for hunts
+   const float cFarmNaturalResourceDistance = 90.0;
+   const float cMaxNaturalResourceDistance = 100.0;
+
+   /*const float cFarmNaturalResourceDistance = 50.0;
    // Max distance to gather natural resources.
-   const float cMaxNaturalResourceDistance = 80.0;
+   const float cMaxNaturalResourceDistance = 80.0;*/
    int time = xsGetTime();
    int numberFarms = 0;
    int numberPlants = 0;
@@ -2987,6 +3006,7 @@ minInterval 5
    vector mainBaseVec = cInvalidVector;
    int mainBaseID = kbBaseGetMainID(cMyID);
    int time = xsGetTime();
+   int livestockPlanID = -1;
 
    // AssertiveWall: Build a livestock pen under certain conditions
    int numPens = 0;
@@ -3024,7 +3044,8 @@ minInterval 5
          numLlamaWanted = 10;
       }
 
-      if (numPens > kbUnitCount(cMyID, gLivestockPenUnit, cUnitStateABQ) && kbUnitCount(cMyID, gLivestockPenUnit, cUnitStateABQ) <= 0)
+      livestockPlanID = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gLivestockPenUnit);
+      if (numPens > kbUnitCount(cMyID, gLivestockPenUnit, cUnitStateABQ) && livestockPlanID < 0)
       {
          createSimpleBuildPlan(gLivestockPenUnit, 1, 75, true, cEconomyEscrowID, mainBaseID, 1);
       }

@@ -8,6 +8,14 @@
     <singleuse>1</singleuse>
   </action>
   <action>
+    <name stringid="69158">SpawnCowboy</name>
+    <type>Spawn</type>
+    <rate type="zpMercMountedOutlaw">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
     <name stringid="68961">EconomicAuraKM</name>
     <type>AutoRangedModify</type>
     <maxrange>18</maxrange>

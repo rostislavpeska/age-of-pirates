@@ -3,6 +3,18 @@
     <logic type="Variation">
       <v1>
         <assetreference type="GrannyModel">
+          <file>units\spc\outlaws\outlaw_rider_hat_us</file>
+        </assetreference>
+      </v1>
+      <v2>
+        <assetreference type="GrannyModel">
+          <file>units\spc\outlaws\outlaw_rider_hat_us</file>
+        </assetreference>
+      </v2>
+    </logic>
+    <!--<logic type="Variation">
+      <v1>
+        <assetreference type="GrannyModel">
           <file>units\spc\outlaws\outlaw_rider_hat</file>
         </assetreference>
       </v1>
@@ -33,10 +45,10 @@
       </v6>
       <v7>
         <assetreference type="GrannyModel">
-          <file>units\infantry_ranged\musketeer\musketeer_1age_hat</file>
+          <file>units\spc\outlaws\outlaw_rider_hat</file>
         </assetreference>
       </v7>
-    </logic>
+    </logic>-->
   </component>
   <anim>Idle
     <component>hat</component>

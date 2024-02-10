@@ -1186,6 +1186,68 @@
       <string _locid="400066">Sheriff's Office</string>
       <string _locid="400067">ZP Sheriff Office</string>
       <string _locid="400068">An office and jailhouse capable of holding outlaws.</string>
+      <string _locid="400069">Doc Holliday</string>
+      <string _locid="400070">zp Doc Holliday</string>
+      <string _locid="400071">I'm your huckleberry.</string>
+      <string _locid="400072">Wyatt Earp</string>
+      <string _locid="400073">zp Wyatt Earp</string>
+      <string _locid="400074">Gambler, gunslinger, and Sheriff of Tombstone.</string>
+      <string _locid="400075">Jesse James</string>
+      <string _locid="400076">ZP Jesse James</string>
+      <string _locid="400077">Famed outlaw and leader of the James–Younger Gang.</string>
+      <string _locid="400078">James-Younger Gang</string>
+      <string _locid="400079">ZP James Gang</string>
+      <string _locid="400080">One of Jesse Jame's gang members.</string>
+      <string _locid="400081">Pinkerton Detective</string>
+      <string _locid="400082">ZP Pinkerton Detective</string>
+      <string _locid="400083">Pinkerton detectives, known for their inteligence work and pursuing outlaw gangs.</string>
+      <!-- Pinkerton Detectives -->
+      <string _locid="400084">Robert Pinkerton</string>
+      <string _locid="400085">Chas Schumacher</string>
+      <string _locid="400086">Joseph W. Whicher</string>
+      <string _locid="400087">John Boyle</string>
+      <string _locid="400088">Louis J. Lull</string>
+      <string _locid="400089">William Pinkerton</string>
+      <string _locid="400090">James McParland</string>
+      <string _locid="400091">Frank Geyer</string>
+      <string _locid="400092">Kate Warne</string>
+      <string _locid="400093">Timothy Webster</string>
+      <string _locid="400094">reserved</string>
+      <string _locid="400095">reserved</string>
+      <string _locid="400096">reserved</string>
+      <string _locid="400097">reserved</string>
+      <string _locid="400098">reserved</string>
+      <string _locid="400099">reserved</string>
+      <!-- End -->
+      <string _locid="400100">Deputy</string>
+      <string _locid="400101">ZP Deputy</string>
+      <string _locid="400102">Local law enforcement armed to take on dangerous outlaws.</string>
+      <string _locid="400103">Shotgun Attack</string>
+      <string _locid="400104">Repeaters</string>
+      <string _locid="400105">Replace your cowboys' muskets with fast firing repeating rifles.</string>
+      <string _locid="400106">Shotguns</string>
+      <string _locid="400107">Substitute your cowboys' muskets with powerful shotguns.</string>
+      <string _locid="400108">Conversion Rifles</string>
+      <string _locid="400109">Retrofit your cowboys with improved breach loading rifles.</string>
+      <string _locid="400110">Veteran StageCoach</string>
+      <string _locid="400111">Veteran James' Gang</string>
+      <string _locid="400112">Veteran Deputy</string>
+      <string _locid="400113">Guard StageCoach</string>
+      <string _locid="400114">Guard James' Gang</string>
+      <string _locid="400115">Guard Deputy</string>
+      <string _locid="400116">Legendary StageCoach</string>
+      <string _locid="400117">Legendary James' Gang</string>
+      <string _locid="400118">Legendary Deputy</string>
+      <string _locid="400119">Wyatt Earp</string>
+      <string _locid="400120">Appoint Wyatt Earp as your local lawman, and unlock the help of his friend Doc Holliday.</string>
+      <string _locid="400121">Doc Holliday</string>
+      <string _locid="400122">Enlist the help of Doc Holliday.</string>
+      <string _locid="400123">Jesse James</string>
+      <string _locid="400124">Call on Jesse James to lead the James-Younger Gang.</string>
+      <string _locid="400125">Hire Pinkerton Agents</string>
+      <string _locid="400126">Hire a group of Pinkerton Agents to track your adversaries.</string>
+      
+
 
       <!-- ===================================== -->
       <!-- ===================================== -->

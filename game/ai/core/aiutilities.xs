@@ -431,14 +431,29 @@ vector guessEnemyLocation(int player = -1)
    }
    vector position = kbGetPlayerStartingPosition(player);
 
+   // AssertiveWall: On King of the Hill, look for the hill, not enemy players 
+   if (aiIsKOTHAllowed() == true)
+   {
+      position = getClosestGaiaUnitPosition(cUnitTypeypKingsHill, kbGetMapCenter());
+      if (gStartOnDifferentIslands != true)
+      {  // Some KoTH islands are so small any error means hitting water
+         float xError = kbGetMapXSize() * 0.05;
+         float zError = kbGetMapZSize() * 0.05;
+         position = xsVectorSetX(position, xsVectorGetX(position) + aiRandFloat(0.0 - xError, xError));
+         position = xsVectorSetZ(position, xsVectorGetZ(position) + aiRandFloat(0.0 - zError, zError));
+      }
+      return (position);
+   }
+
    if ((cDifficultyCurrent >= cDifficultyHard) && (position != cInvalidVector))
    {
       // For higher difficulties, assuming the AI played on this map before, it should have a rough idea of the enemy
       // location.
-      float xError = kbGetMapXSize() * 0.1;
-      float zError = kbGetMapZSize() * 0.1;
-      xsVectorSetX(position, xsVectorGetX(position) + aiRandFloat(0.0 - xError, xError));
-      xsVectorSetZ(position, xsVectorGetZ(position) + aiRandFloat(0.0 - zError, zError));
+      xError = kbGetMapXSize() * 0.1;
+      zError = kbGetMapZSize() * 0.1;
+      // AssertiveWall: needs to be position = to actually set the vector
+      position = xsVectorSetX(position, xsVectorGetX(position) + aiRandFloat(0.0 - xError, xError));
+      position = xsVectorSetZ(position, xsVectorGetZ(position) + aiRandFloat(0.0 - zError, zError));
    }
    else
    {
@@ -655,6 +670,13 @@ bool agingUp()
 //==============================================================================
 bool needMoreHouses()
 {
+   // AssertiveWall: Suppress this while build order is active
+   int buildingBOlength = xsArrayGetSize(boBuildingArray) - 1;
+   if (xsArrayGetInt(boBuildingArray, buildingBOlength) > 0 && gUseBuildOrder == true)
+   {
+      return (false);
+   }
+
    // Nothing to do with Lakota because we always max out pop cap without anything.
    if (cMyCiv == cCivXPSioux)
    {

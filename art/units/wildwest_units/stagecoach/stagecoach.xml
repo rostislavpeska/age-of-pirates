@@ -112,6 +112,27 @@
         <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.33</tag>
         <tag type="Particles" particlename="rifleshot">0.33</tag>
       </assetreference>
+      <assetreference type="GrannyAnim">
+        <file>units\trade\trade_stagecoach_idle</file>
+        <weight>10</weight>
+        <tag type="Attack">0.33</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.33</tag>
+        <tag type="Particles" particlename="rifleshot">0.33</tag>
+      </assetreference>
+      <assetreference type="GrannyAnim">
+        <file>units\trade\trade_stagecoach_idle</file>
+        <weight>10</weight>
+        <tag type="Attack">0.33</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.27</tag>
+        <tag type="Particles" particlename="rifleshot_left">0.27</tag>
+      </assetreference>
+      <assetreference type="GrannyAnim">
+        <file>units\trade\trade_stagecoach_idle</file>
+        <weight>40</weight>
+        <tag type="Attack">0.33</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.27</tag>
+        <tag type="Particles" particlename="rifleshot_left">0.27</tag>
+      </assetreference>
       <component>trade_stagecoach</component>
       <attach a="trade_stagecoach_driver" frombone="Bip01" tobone="bone_attach_driver" syncanims="1"></attach>
     </anim>
@@ -129,6 +150,27 @@
         <tag type="Attack">0.33</tag>
         <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.33</tag>
         <tag type="Particles" particlename="rifleshot">0.33</tag>
+      </assetreference>
+      <assetreference type="GrannyAnim">
+        <file>units\trade\trade_stagecoach_idle</file>
+        <weight>10</weight>
+        <tag type="Attack">0.33</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.33</tag>
+        <tag type="Particles" particlename="rifleshot">0.33</tag>
+      </assetreference>
+      <assetreference type="GrannyAnim">
+        <file>units\trade\trade_stagecoach_idle</file>
+        <weight>10</weight>
+        <tag type="Attack">0.33</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.27</tag>
+        <tag type="Particles" particlename="rifleshot_left">0.27</tag>
+      </assetreference>
+      <assetreference type="GrannyAnim">
+        <file>units\trade\trade_stagecoach_idle</file>
+        <weight>40</weight>
+        <tag type="Attack">0.33</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.27</tag>
+        <tag type="Particles" particlename="rifleshot_left">0.27</tag>
       </assetreference>
       <component>trade_stagecoach</component>
       <attach a="trade_stagecoach_driver" frombone="Bip01" tobone="bone_attach_driver" syncanims="1"></attach>

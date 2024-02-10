@@ -88,7 +88,11 @@
     </anim>
   </attachment>
   <component>ModelComp
-    <logic type="Variation">
+    <assetreference type="GrannyModel">
+      <file>units\wildwest_units\outlawriders\mounted_outlaw</file>
+    </assetreference>
+    <attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
+    <!--<logic type="Variation">
       <v1>
         <assetreference type="GrannyModel">
           <file>units\spc\outlaws\outlaw_rider</file>
@@ -119,7 +123,7 @@
         </assetreference>
         <attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
       </v5>
-    </logic>
+    </logic>-->
   </component>
   <anim>Walk
     <assetreference type="GrannyAnim">
@@ -225,13 +229,67 @@
     <component>ModelComp</component>
     <attach a="rifle" frombone="Bip 01 master" tobone="Bip01 Prop1" syncanims="0"></attach>
   </anim>
-  <anim>Attack_repeating_ranged
+  <anim>Attack_Ranged_Breach
     <assetreference type="GrannyAnim">
-      <file>units\spc\outlaws\outlaw_rider_revolver_attack</file>
+      <file>animation_library\natives\apache_cavalry\attack1</file>
       <weight>40</weight>
     </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\natives\apache_cavalry\attack2</file>
+      <weight>10</weight>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\natives\apache_cavalry\attack1</file>
+      <weight>10</weight>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\natives\apache_cavalry\attack2</file>
+      <weight>10</weight>
+    </assetreference>
     <component>ModelComp</component>
-    <attach a="gun" frombone="Bip 01 master" tobone="Bip01 Prop1" syncanims="0"></attach>
+    <attach a="rifle" frombone="Bip 01 master" tobone="Bip01 Prop1" syncanims="0"></attach>
+  </anim>
+  <anim>Attack_ranged_reload_breach
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\carbine_reload_b</file>
+      <weight>10</weight>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="rifle" frombone="Bip 01 master" tobone="Bip01 Prop1" syncanims="0"></attach>
+  </anim>
+  <anim>Attack_repeating_ranged
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\carbine_attack_a</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="rifle" frombone="Bip 01 master" tobone="Bip01 Prop1" syncanims="0"></attach>
+  </anim>
+  <anim>Attack_repeating_reload
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\carbine_reload_a</file>
+      <weight>10</weight>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\carbine_reload_b</file>
+      <weight>10</weight>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\carbine_reload_c</file>
+      <weight>10</weight>
+    </assetreference>
+    <assetreference type="GrannyAnim">
+      <file>animation_library\cavalry\carbine_reload_d</file>
+      <weight>10</weight>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="rifle" frombone="Bip 01 master" tobone="Bip01 Prop1" syncanims="0"></attach>
+  </anim>
+  <anim>Buckshot_Ranged_Attack
+    <assetreference type="GrannyAnim">
+      <file>animation_library\natives\apache_cavalry\attack1</file>
+    </assetreference>
+    <component>ModelComp</component>
+    <attach a="rifle" frombone="Bip01_AttachRt" tobone="bip01 Prop1" syncanims="0"></attach>
   </anim>
   <anim>Attack_melee
     <assetreference type="GrannyAnim">
@@ -554,110 +612,6 @@
     </assetreference>
     <component>ModelComp</component>
     <attach a="grenade" frombone="Master" tobone="bip01 prop1" syncanims="0"></attach>
-  </anim>
-  <anim>Bolas_Walk
-    <assetreference type="GrannyAnim">
-      <file>animation_library\cavalry\sword_canter</file>
-    </assetreference>
-    <component>ModelComp</component>
-    <attach a="bolas" frombone="Bip 01 master" tobone="Bip01 Prop1" syncanims="1"></attach>
-  </anim>
-  <anim>Bolas_Jog
-    <assetreference type="GrannyAnim">
-      <file>animation_library\cavalry\sword_jog</file>
-    </assetreference>
-    <component>ModelComp</component>
-    <attach a="bolas" frombone="Bip 01 master" tobone="Bip01 Prop1" syncanims="1"></attach>
-  </anim>
-  <anim>Bolas_Run
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\apache_cavalry\gallop</file>
-    </assetreference>
-    <component>ModelComp</component>
-    <attach a="bolas" frombone="Bip 01 master" tobone="Bip01 Prop1" syncanims="1"></attach>
-  </anim>
-  <anim>Bolas_Idle
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_idle1</file>
-      <weight>40</weight>
-    </assetreference>
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_idle2</file>
-      <weight>10</weight>
-    </assetreference>
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_idle3</file>
-      <weight>10</weight>
-    </assetreference>
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_idle4</file>
-      <weight>10</weight>
-    </assetreference>
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_idle5</file>
-      <weight>10</weight>
-    </assetreference>
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_idle6</file>
-      <weight>10</weight>
-    </assetreference>
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_idle7</file>
-      <weight>10</weight>
-    </assetreference>
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_idle8</file>
-      <weight>40</weight>
-    </assetreference>
-    <component>ModelComp</component>
-    <attach a="bolas" frombone="Bip 01 master" tobone="Bip01 Prop1" syncanims="1"></attach>
-  </anim>
-  <anim>Bolas_Bored
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_bored1</file>
-      <weight>10</weight>
-    </assetreference>
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_idle9</file>
-      <weight>50</weight>
-    </assetreference>
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_idle10</file>
-      <weight>50</weight>
-    </assetreference>
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_bored2</file>
-      <weight>50</weight>
-    </assetreference>
-    <component>ModelComp</component>
-    <attach a="bolas" frombone="Bip 01 master" tobone="Bip01 Prop1" syncanims="1"></attach>
-  </anim>
-  <anim>Bolas_Attack_ranged
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_attack1</file>
-      <weight>40</weight>
-    </assetreference>
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_attack1</file>
-      <weight>10</weight>
-    </assetreference>
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_attack1</file>
-      <weight>10</weight>
-    </assetreference>
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_attack1</file>
-      <weight>10</weight>
-    </assetreference>
-    <component>ModelComp</component>
-    <attach a="bolas" frombone="Bip 01 master" tobone="Bip01 Prop1" syncanims="1"></attach>
-  </anim>
-  <anim>Bolas_Attack_ranged_reload
-    <assetreference type="GrannyAnim">
-      <file>animation_library\natives\bolas_rider\bolas_rider_reload</file>
-    </assetreference>
-    <component>ModelComp</component>
-    <attach a="bolas" frombone="Bip 01 master" tobone="Bip01 Prop1" syncanims="1"></attach>
   </anim>
   <anim>Lasso_Bored
     <assetreference type="GrannyAnim">
