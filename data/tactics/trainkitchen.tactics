@@ -1,0 +1,50 @@
+<tactics>
+    <action>
+        <name stringid="112435">ExtraHPInfantry</name>
+        <type>AutoRangedModify</type>
+        <active>1</active>
+        <maxrange>32</maxrange>
+        <modifyabstracttype>AbstractInfantry</modifyabstracttype>
+        <persistent>1</persistent>
+        <nostack>1</nostack>
+        <modifytype>BaseHP</modifytype>
+        <modifymultiplier>1.20</modifymultiplier>
+        <modelattachment>effects\ypack_auras\american_power.xml</modelattachment>
+        <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+    </action>
+    <action>
+        <name stringid="301083">ExtraHPWagon</name>
+        <type>AutoRangedModify</type>
+        <active>0</active>
+        <maxrange>50</maxrange>
+        <modifyabstracttype>AbstractArmoredTrain</modifyabstracttype>
+        <persistent>1</persistent>
+        <modifyself>1</modifyself>
+        <nostack>1</nostack>
+        <modifytype>BaseHP</modifytype>
+        <modifymultiplier>1.30</modifymultiplier>
+    </action>
+    <action>
+        <name stringid="124920">ExplosionAttack</name>
+        <type>Attack</type>
+        <attackaction>1</attackaction>
+        <rangedlogic>1</rangedlogic>
+        <anim>RangedAttack</anim>
+        <maxheight>0</maxheight>
+        <accuracy>1.0</accuracy>
+        <accuracyreductionfactor>0.01</accuracyreductionfactor>
+        <aimbonus>0</aimbonus>
+        <maxspread>5</maxspread>
+        <spreadfactor>0.25</spreadfactor>
+        <trackrating>12</trackrating>
+        <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+        <projectile>InvisibleProjectile</projectile>
+        <impacteffect>effects\impacts\gun</impacteffect>
+        <rate type="Unit">1.0</rate>
+        <instantballistics>1</instantballistics>
+        <basedamagecap>1</basedamagecap>
+        <selfdestruct>1</selfdestruct>
+        <hidefromstats>1</hidefromstats>
+    </action>
+    <tactic>Normal<action>ExtraHPInfantry</action><action>ExtraHPWagon</action></tactic>
+</tactics>

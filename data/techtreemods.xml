@@ -168,6 +168,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPirates</effect>
     </effects>
@@ -211,6 +214,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnJapanese</effect>
     </effects>
@@ -254,6 +260,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnChinese</effect>
     </effects>
@@ -297,6 +306,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnIndian</effect>
     </effects>
@@ -2343,6 +2355,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMaltese</effect>     
     </effects>
@@ -3129,6 +3144,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokou</effect>
     </effects>
@@ -5512,7 +5530,10 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
-      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>  
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
@@ -5986,6 +6007,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffJewish</effect>
     </effects>
@@ -6435,6 +6459,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
 
 
       <effect type="TechStatus" status="active">zpBigButtonResearchDone</effect>
@@ -6766,7 +6793,10 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
-      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientists</effect>
     </effects>
@@ -8827,6 +8857,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffVenice</effect>
     </effects>
@@ -10208,6 +10241,9 @@
       <effect type="TechStatus" status="obtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="obtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodox</effect>
     </effects>
@@ -10495,6 +10531,9 @@
       <effect type="TechStatus" status="obtainable">zpConsulateXMass3</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateXMass2</effect> 
       <effect type="TechStatus" status="obtainable">zpConsulateXMass1</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffXMass</effect>
     </effects>
@@ -10746,6 +10785,7 @@
       <effect type="TechStatus" status="obtainable">zpWildWestMilitia</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestVeteranCowboys</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestGuardCowboys</effect>
+      <effect type="TechStatus" status="obtainable">zpWesternAgeUp</effect>
       <!--<effect type="TechStatus" status="obtainable">zpCowboyRepeaters</effect>
       <effect type="TechStatus" status="obtainable">zpCowboyShotguns</effect>
       <effect type="TechStatus" status="obtainable">zpCowboyRifles</effect>-->
@@ -10899,7 +10939,10 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>  
-      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientistsLand</effect>
     </effects>
@@ -11211,7 +11254,7 @@
     <cost resourcetype="Gold">2500.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\armored_train.png</icon>
+    <icon>resources\images\icons\techs\armored_train_improve.png</icon>
     <rollovertextid>301077</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
@@ -11220,7 +11263,37 @@
       <techstatus status="Active">zpArmoredTrainTech</techstatus>
     </prereqs>
     <effects>
-     
+      <effect type="Data" action="ExtraROFUnits" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainGunpowderStatic</target>
+      </effect>
+      <effect type="Data" action="ExtraDamage" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainGunpowderStatic</target>
+      </effect>
+      <effect type="Data" action="ExtraROFUnits" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainGunpowderEmitter</target>
+      </effect>
+      <effect type="Data" action="ExtraDamage" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainGunpowderEmitter</target>
+      </effect>    
+      <effect type="Data" action="ExtraHPWagon" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainKitchenWagonStatic</target>
+      </effect>
+      <effect type="Data" action="ExtraHPWagon" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainKitchenWagonEmitter</target>
+      </effect>
+      <effect type="Data" action="LongRangeAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainGun</target>
+      </effect>
+      <effect type="Data" action="AreaHeal" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainHospitalStatic</target>
+      </effect>
+      <effect type="TechStatus" status="active">zpArmoredTrainLevy</effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpArmoredTrainGun</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpArmoredTrainBarracksBuilding</target>
+      </effect>
     </effects>
   </tech>
   <tech name ="zpArmoredTrainGoldBallanceShadow" type ="Normal">
@@ -11251,8 +11324,203 @@
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
   </tech>
+  <tech name="zpTransformArmoredTrainB" type="Normal">
+    <dbid>40397</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpArmoredTrainBarracksBuilding" fromprotoid="zpArmoredTrainBarracksStatic">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpKillArmoredTrain" type="Normal">
+    <dbid>40398</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="InvisibleProjectile" fromprotoid="zpArmoredTrainGunpowderEmitter">
+      </effect>
+      <effect type="TransformUnit" toprotoid="InvisibleProjectile" fromprotoid="zpArmoredTrainKitchenWagonEmitter">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpArmoredTrainLevy</effect>
+      <effect type="TechStatus" status="unobtainable">zpWagonDeploy</effect>
+    </effects>
+  </tech>
+  <tech name="zpArmoredTrainBreaks" type="Normal">
+    <dbid>40399</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="0.50" subtype="MaximumVelocity" relativity="BasePercent">
+        <target type="ProtoUnit">MovingArmoredTrain</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpArmoredTrainSpeedUp" type="Normal">
+    <dbid>40399</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="1.50" subtype="MaximumVelocity" relativity="BasePercent">
+        <target type="ProtoUnit">MovingArmoredTrain</target>
+      </effect>
+    </effects>
+  </tech>
 
- 
+  <tech name="zpConsulateWesternWyatEarp" type="Normal">
+    <dbid>40400</dbid>
+    <displaynameid>301096</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\nat_blackflag.png</icon>
+    <rollovertextid>301097</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit"></target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpWesternAgeUp</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpWesternAgeUp">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpWesternAgeUp" type ="Normal">
+		<dbid>40401</dbid>
+		<displaynameid>301098</displaynameid>
+  	<researchpoints>100.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\cowboys_big.png</iconwpf>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>301099</rollovertextid>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>YPInfiniteTech</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <flag>DoNotQueue</flag>
+    <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianFishingBoat</effect>
+      <effect type="TechStatus" status="active">zpTheBlackFlagGoldBallanceShadow</effect>
+    </effects>
+	</tech>
+  <tech name="zpConsulateWesternPinkertons" type="Normal">
+    <dbid>40402</dbid>
+    <displaynameid>301100</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\nat_blackflag.png</icon>
+    <rollovertextid>301101</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit"></target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpWesternAgeUp</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpWesternAgeUp">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateWesternJesseJames" type="Normal">
+    <dbid>40403</dbid>
+    <displaynameid>301102</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\nat_blackflag.png</icon>
+    <rollovertextid>301103</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit"></target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpWesternAgeUp</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpWesternAgeUp">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTurnConsulateOffWestern" type="Normal">
+    <dbid>40404</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>  
+      <effect type="TechStatus" status="obtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="obtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="obtainable">zpConsulateWesternJesseJames</effect> 
+    
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientistsLand</effect>
+    </effects>
+  </tech>
  
 
 

@@ -2368,7 +2368,11 @@
     </sound>
   </soundset>
   <soundset name="Train_Breaks" volume="1.0000" maxnum="4" distance="1.0000">
-    <sound filename="ambient\effects\train_breaks.wav" volume="1.0000">
+    <sound filename="ambient\effects\train_breaks.wav" volume="0.6000">
+    </sound>
+  </soundset>
+  <soundset name="Kitchen_Sound" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ambient\effects\kitchen_sound.wav" volume="0.6000">
     </sound>
   </soundset>
 </soundsetdef>

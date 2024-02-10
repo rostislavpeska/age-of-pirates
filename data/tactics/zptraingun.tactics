@@ -48,6 +48,7 @@
   <action>
     <name stringid="38122">LongRangeAttack</name>
     <type>Attack</type>
+    <active>0</active>
     <attackaction>1</attackaction>
     <rangedlogic>1</rangedlogic>
     <anim>RangedAttack</anim>
@@ -65,7 +66,6 @@
     <basedamagecap>1</basedamagecap>
     <excludefromrangeindicator>1</excludefromrangeindicator>
   </action>
-
   <action>
     <name stringid="124920">ExplosionAttack</name>
     <type>Attack</type>
@@ -88,7 +88,6 @@
     <selfdestruct>1</selfdestruct>
     <hidefromstats>1</hidefromstats>
   </action>
-
   <tactic>Normal
     <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
     <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>

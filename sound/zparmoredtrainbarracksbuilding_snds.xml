@@ -1,7 +1,7 @@
 <protounitsounddef>
-  <protounit name="zpArmoredTrainBarracksStatic">
+  <protounit name="zpArmoredTrainBarracksBuilding">
     <soundtype name="Select">
-      <soundset name="UI_Building_Military">
+      <soundset name="UI_Select_Building_Outpost">
       </soundset>
     </soundtype>
     <soundtype name="Death">

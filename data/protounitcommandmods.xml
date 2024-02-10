@@ -308,6 +308,19 @@
     <notcancellable>
     </notcancellable>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpWagonDetonate</name>
+    <icon>resources\images\icons\abilities\ability_detonate_depot.png</icon>
+    <command>deleteUnit(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <associatedtech>DEDepotDetonate</associatedtech>
+    <rollovertextid>301088</rollovertextid>
+    <usebigbutton>
+    </usebigbutton>
+    <notcancellable>
+    </notcancellable>
+  </protounitcommand>
   <!-- Added by AssertiveWall-->
   <protounitcommand>
     <name>zpShotgunAttack</name>

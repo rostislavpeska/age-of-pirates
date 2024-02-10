@@ -3866,6 +3866,7 @@
       <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit">default</param>
       <param name="TrgPlayer" dispname="$$79817$$Target Player" vartype="player">1</param>
       <param name="Dist" dispname="$$22303$$Radius" vartype="float">100</param>
+      <param name="DstObject" dispname="$$22296$$Target Unit" vartype="unit">default</param>
       <command>trTechSetStatus(0, cTechzpTransformArmoredTrain, 2);</command>
       <command>trUnitSelectClear();</command>
       <command loop="" loopparm="SrcObject">trUnitSelect("%SrcObject%");</command>
@@ -3879,6 +3880,15 @@
       <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainGunCarBackStatic",%Dist%);</command>
       <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainGunCarFrontStatic",%Dist%);</command>
       <command>trConvertUnitsInArea(0,%TrgPlayer%,"zpArmoredTrainKitchenWagonStatic",%Dist%);</command>
+      <command>trKillUnitsInArea(0,"zpArmoredTrainSoundMove",%Dist%);</command>
+      <command>trTechSetStatus(%TrgPlayer%, cTechzpTransformArmoredTrainB, 2);</command>
+      <command>trTechSetStatus(%TrgPlayer%, cTechzpWagonDeploy, 2);</command>
+      <command>trTechSetStatus(0, cTechzpArmoredTrainSpeedUp, 2);</command>
+      <command>trUnitCreateFromSource("zpArmoredTrainGunpowderEmitter", "%SrcObject%", "%DstObject%", %TrgPlayer%);</command>
+      <command>trUnitCreateFromSource("zpArmoredTrainKitchenWagonEmitter", "%SrcObject%", "%DstObject%", %TrgPlayer%);</command>
+      <command>if (trTechStatusCheck(%TrgPlayer%, cTechzpArmoredTrainImprove, 2)){</command>
+      <command>trTechSetStatus(%TrgPlayer%, cTechzpArmoredTrainLevy, 2);</command>
+      <command>}</command>
     </effect>
     <effect name="ZP Convert Station Grouping">
       <param name="SrcObject" dispname="$$22300$$Center Unit" vartype="unit">default</param>

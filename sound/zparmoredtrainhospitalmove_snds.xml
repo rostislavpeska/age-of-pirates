@@ -1,8 +1,0 @@
-<protounitsounddef>
-  <protounit name="zpArmoredTrainHospitalMove">
-    <soundtype name="Exists">
-      <soundset name="TrainExist">
-      </soundset>
-    </soundtype>
-  </protounit>
-</protounitsounddef>

@@ -5,9 +5,9 @@
     <parameters>
       <texture name="BaseColor" override="buildings\trading_post\textures\train_station_con_mata_BaseColor">
       </texture>
-      <texture name="Normals" override="buildings\spc\train_station\textures\train_station_mata_Normals">
+      <texture name="Normals" override="buildings\trading_post\textures\train_station_con_mata_Normals">
       </texture>
-      <texture name="Masks" override="buildings\spc\train_station\textures\train_station_mata_Masks">
+      <texture name="Masks" override="buildings\trading_post\textures\train_station_con_mata_Masks">
       </texture>
     </parameters>
   </submaterial>

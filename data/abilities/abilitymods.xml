@@ -85,11 +85,10 @@
   <tradingpost>
     <ability>zpPowerArmouredTrain<tech>zpArmoredTrainUnlockShadow</tech><subciv>zpScientists</subciv><rof>0.1</rof><castifnotselected>true</castifnotselected><subcivalliancefactor>0.5</subcivalliancefactor><subcivstartincooldown>true</subcivstartincooldown><activetimecooldown>true</activetimecooldown></ability>
     <ability>zpPowerArmouredTrainInactive<tech>zpArmoredTrainLockShadow</tech><subciv>zpScientists</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
-    <ability>zpPowerArmouredTrainNoResource<tech>zpArmoredTrainNoResourceShadow</tech><subciv>zpScientists</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
-    
+    <ability>zpPowerArmouredTrainNoResource<tech>zpArmoredTrainNoResourceShadow</tech><subciv>zpScientists</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>  
   </tradingpost>
   <zparmoredtraingun>
-    <ability>dePowerPeninsularFixedGunLongRangeAttack<rof>60</rof></ability>
+    <ability>dePowerPeninsularFixedGunLongRangeAttack<rof>60</rof><tech>zpArmoredTrainImprove</tech></ability>
   </zparmoredtraingun>
   <zptrainstationa>
     <ability>deCommanderyDeploy<rof>90</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
@@ -100,4 +99,14 @@
   <zparmoredtrainbarrackstatic>
     <ability>deCommanderyDeploy<rof>90</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
   </zparmoredtrainbarrackstatic>
+  <zparmoredtrainkitchenwagonstatic>
+    <ability>zpKitchenAuraFieldKitchen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>zpKitchenAuraCantine<alwaysdisabledingrid>true</alwaysdisabledingrid><tech>zpArmoredTrainImprove</tech><forceshowrollover>true</forceshowrollover></ability>
+  </zparmoredtrainkitchenwagonstatic>
+  <zparmoredtraingunpowderstatic>
+    <ability>zpGunpowderWagonAura<alwaysdisabledingrid>true</alwaysdisabledingrid><tech>zpArmoredTrainImprove</tech><forceshowrollover>true</forceshowrollover></ability>
+  </zparmoredtraingunpowderstatic>
+  <zparmoredtrainhospitalstatic>
+    <ability>zpPowerAreaHeal<rof>60</rof><castonself>true</castonself><tech>zpArmoredTrainImprove</tech></ability>
+  </zparmoredtrainhospitalstatic>
 </abilitymods>
