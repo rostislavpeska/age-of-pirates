@@ -308,7 +308,7 @@
     <notcancellable>
     </notcancellable>
   </protounitcommand>
-<protounitcommand>
+  <protounitcommand>
     <name>zpWagonDetonate</name>
     <icon>resources\images\icons\abilities\ability_detonate_depot.png</icon>
     <command>deleteUnit(%d)</command>
