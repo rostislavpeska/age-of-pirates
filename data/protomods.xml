@@ -25257,8 +25257,8 @@
     <animfile>units\wildwest_units\wyatt_earp\wyatt_earp.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
-    <icon>resources\art\units\spc\outlaws\gunslinger_icon.png</icon>
-    <portraiticon>resources\art\units\spc\outlaws\gunslinger_portrait.png</portraiticon>
+    <icon>resources\art\units\natives\wyatt.png</icon>
+    <portraiticon>resources\art\units\natives\wyatt_portrait.png</portraiticon>
     <rollovertextid>400074</rollovertextid>
     <shortrollovertextid>400074</shortrollovertextid>
     <initialhitpoints>680.0000</initialhitpoints>
@@ -25367,8 +25367,8 @@
     <animfile>units\wildwest_units\jesse_james\jesse_james.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
-    <icon>resources\art\units\spc\outlaws\gunslinger_icon.png</icon>
-    <portraiticon>resources\art\units\spc\outlaws\gunslinger_portrait.png</portraiticon>
+    <icon>resources\art\units\natives\jessejames.png</icon>
+    <portraiticon>resources\art\units\natives\jessejames_portrait.png</portraiticon>
     <rollovertextid>400077</rollovertextid>
     <shortrollovertextid>400077</shortrollovertextid>
     <initialhitpoints>620.0000</initialhitpoints>
@@ -25493,8 +25493,8 @@
     <animfile>units\wildwest_units\james_gang\mounted_outlaw.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>cav</physicsinfo>
-    <icon>resources\art\units\spc\outlaws\cowboy_icon.png</icon>
-    <portraiticon>resources\art\units\spc\outlaws\cowboy_portrait.png</portraiticon>
+    <icon>resources\art\units\natives\jamesgang.png</icon>
+    <portraiticon>resources\art\units\natives\jamesgang_portrait.png</portraiticon>
     <rollovertextid>400080</rollovertextid>
     <shortrollovertextid>400080</shortrollovertextid>
     <initialhitpoints>180.0000</initialhitpoints>
@@ -25930,8 +25930,8 @@
     <animfile>units\wildwest_units\pinkerton\pinkerton_agent.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
-    <icon>resources\art\units\spy\spy_icon.png</icon>
-    <portraiticon>resources\art\units\spy\spy_portrait.png</portraiticon>
+    <icon>resources\art\units\natives\pinkertonagent.png</icon>
+    <portraiticon>resources\art\units\natives\pinkertonagent_portrait.png</portraiticon>
     <rollovertextid>400129</rollovertextid>
     <shortrollovertextid>400129</shortrollovertextid>
     <initialhitpoints>170.0000</initialhitpoints>
