@@ -63,7 +63,7 @@
     </attachment>
     <component>saloon_construction
       <assetreference type="GrannyModel">
-        <file>buildings\saloon\saloon_con</file>
+        <file>buildings\sheriff\sheriff_con</file>
       </assetreference>
       <attach a="scaffolding" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
     </component>
