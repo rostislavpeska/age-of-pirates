@@ -12,5 +12,15 @@
       <texture name="Details" override="units\spy\spy\textures\spy_matA_Details">
       </texture>
     </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\wildwest_units\pinkerton\textures\pinkerton_agent_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spy\spy\textures\spy_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\spy\spy\textures\spy_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\spy\spy\textures\spy_matA_Details">
+      </texture>
+    </parameters>
   </submaterial>
 </material>

@@ -11956,9 +11956,6 @@
       <effect type="Data" amount="0.705" subtype="UnitRegenRateLimit" unittype="zpDocHolliday" relativity="Absolute">
         <target type="ProtoUnit">zpDocHolliday</target>
       </effect>
-      <effect type="Data" action="IncreaseHPWithLikeUnits1" amount="0.00" subtype="ActionEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpDeputy</target>
-      </effect>
       <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpJamesGang</target>
       </effect>
