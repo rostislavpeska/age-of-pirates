@@ -513,8 +513,6 @@
  <!--<tech row="0" page="0" column="5">zpCowboyRepeaters</tech>
     <tech row="0" page="1" column="5">zpCowboyShotguns</tech>
     <tech row="0" page="2" column="5">zpCowboyRifles</tech>-->
-    <tech row="0" page="2" column="4">zpSendWyatt</tech>
-    <tech row="0" page="2" column="4">zpSendDocHolliday</tech>
     <tech row="0" page="1" column="4">zpSendJesseJames</tech>
     <tech row="0" page="1" column="4">zpSendPinkertons</tech>
     <tech row="0" page="1" column="1">zpWesternAgeUp</tech>
@@ -20881,8 +20879,8 @@
     <animfile>units\wildwest_units\outlawriders\mounted_outlaw.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>cav</physicsinfo>
-    <icon>resources\art\units\spc\outlaws\cowboy_icon.png</icon>
-    <portraiticon>resources\art\units\spc\outlaws\cowboy_portrait.png</portraiticon>
+    <icon>resources\art\units\natives\cowboy.png</icon>
+    <portraiticon>resources\art\units\natives\cowboy_portrait.png</portraiticon>
     <rollovertextid>400065</rollovertextid>
     <shortrollovertextid>400065</shortrollovertextid>
     <initialhitpoints>190.0000</initialhitpoints>
@@ -22454,6 +22452,79 @@
     <flag>NotSearchable</flag>
     <flag>OnlyInEditor</flag>
     <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20236" name="zpSheriffWagon">
+    <dbid>20236</dbid>
+    <displaynameid>301104</displaynameid>
+    <editornameid>301105</editornameid>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>5.0000</turnrate>
+    <animfile>units\trade\supply_cart\supply_cart_bank.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\bank_wagon_icon.png</icon>
+    <portraiticon>resources\art\units\bank_wagon_portrait.png</portraiticon>
+    <rollovertextid>301106</rollovertextid>
+    <shortrollovertextid>301106</shortrollovertextid>
+    <initialhitpoints>250.0000</initialhitpoints>
+    <maxhitpoints>250.0000</maxhitpoints>
+    <los>18.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>Civilian</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <sharedbuildlimitunit>zpSheriffOffice</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>Sherr</unittype>
+    </sharedbuildlimitunittypes>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ValidIdleVillager</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractWagon</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>CannotConvertHill</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <train row="0" page="0" column="0">zpSheriffOffice</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>DeadReplacementWhenDestroyed</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>coveredwagon.tactics</tactics>
+    <protoaction>
+      <name>Build</name>
+      <rate type="zpSheriffOffice">5.000000</rate>
+    </protoaction>
   </unit>
 
 
@@ -24841,8 +24912,8 @@
     <animfile>units\wildwest_units\outlawriders\mounted_outlaw.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>cav</physicsinfo>
-    <icon>resources\art\units\spc\outlaws\cowboy_icon.png</icon>
-    <portraiticon>resources\art\units\spc\outlaws\cowboy_portrait.png</portraiticon>
+    <icon>resources\art\units\natives\cowboy.png</icon>
+    <portraiticon>resources\art\units\natives\cowboy_portrait.png</portraiticon>
     <rollovertextid>400065</rollovertextid>
     <shortrollovertextid>400065</shortrollovertextid>
     <initialhitpoints>190.0000</initialhitpoints>
@@ -24987,8 +25058,8 @@
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
-    <icon>resources\art\units\natives\christmass_content\workshop_unit.png</icon>
-    <portraiticon>\resources\art\units\natives\christmass_content\workshop.png</portraiticon>
+    <icon>resources\art\buildings\sheriff_icon.png</icon>
+    <portraiticon>resources\art\buildings\sheriff_portrait.png</portraiticon>
     <rollovertextid>400068</rollovertextid>
     <shortrollovertextid>400068</shortrollovertextid>
     <initialhitpoints>2800.0000</initialhitpoints>
@@ -24998,7 +25069,8 @@
     <freebuildpoints>149.7000</freebuildpoints>
     <bounty>120.0000</bounty>
     <buildbounty>60.0000</buildbounty>
-    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
     <buildingworkrate>1.0000</buildingworkrate>
     <allowedage>0</allowedage>
     <armor type="Siege" value="0.0000">
@@ -25028,7 +25100,6 @@
     <tech row="0" page="0" column="0">zpCowboyRepeaters</tech>
     <tech row="0" page="0" column="1">zpCowboyShotguns</tech>
     <tech row="0" page="0" column="2">zpCowboyRifles</tech>
-    <tech row="0" page="2" column="1">zpSpreadTheCheer</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -25064,8 +25135,8 @@
     <animfile>units\wildwest_units\doc_holliday\doc_holliday.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
-    <icon>resources\art\units\spc\outlaws\gunslinger_icon.png</icon>
-    <portraiticon>resources\art\units\spc\outlaws\gunslinger_portrait.png</portraiticon>
+    <icon>resources\art\units\natives\doc_holiday_icon.png</icon>
+    <portraiticon>resources\art\units\natives\doc_holiday.png</portraiticon>
     <rollovertextid>400071</rollovertextid>
     <shortrollovertextid>400071</shortrollovertextid>
     <initialhitpoints>680.0000</initialhitpoints>
@@ -25700,8 +25771,8 @@
     <animfile>units\wildwest_units\deputy\deputy.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
-    <icon>resources\art\nuggets\outlaw_kidnap\outlaw_icon_64x64.png</icon>
-    <portraiticon>resources\art\nuggets\outlaw_kidnap\outlaw_icon_portrait.png</portraiticon>
+    <icon>resources\art\units\natives\deputy.png</icon>
+    <portraiticon>resources\art\units\natives\deputy_portrait.png</portraiticon>
     <rollovertextid>400102</rollovertextid>
     <shortrollovertextid>400102</shortrollovertextid>
     <initialhitpoints>150.0000</initialhitpoints>
