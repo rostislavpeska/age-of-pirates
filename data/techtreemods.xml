@@ -10769,12 +10769,6 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpMountedOutlaw</target>
       </effect>
-      <!--<effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpJamesGang</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpStageCoach</target>
-      </effect>-->
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestWhiskeyFactory</effect>
       <effect type="TechStatus" status="obtainable">zpWildWestCows</effect>
@@ -10788,9 +10782,6 @@
       <effect type="TechStatus" status="obtainable">zpNatSherriffOffice</effect>
       <effect type="TechStatus" status="obtainable">zpSendPinkertonsB</effect>
       <effect type="TechStatus" status="obtainable">zpSendStageCoach</effect>
-      
-      <!--<effect type="TechStatus" status="obtainable">zpSendJesseJames</effect>
-      <effect type="TechStatus" status="obtainable">zpSendPinkertons</effect>-->
     </effects>
   </tech>
   <tech name="zpTransformArmoredTrain" type="Normal">
@@ -12172,6 +12163,9 @@
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpStageCoach" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpStageCoach</target>
       </effect>
     </effects>
   </tech>

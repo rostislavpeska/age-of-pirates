@@ -1,0 +1,55 @@
+<tactics>
+  <action>
+    <name stringid="38133">RangedAttack</name>
+    <type>BroadsideAttack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>Idle</anim>
+    <idleanim>Idle</idleanim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.5</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>InvisibleProjectile</projectile>
+    <impacteffect>effects\impacts\gun</impacteffect>
+    <rate type="Unit">1.0 </rate>
+    <instantballistics>1</instantballistics>
+  </action>
+  <action>
+    <name stringid="38118">BuildingAttack</name>
+    <type>BroadsideAttack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>Idle</anim>
+    <idleanim>Idle</idleanim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.5</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>InvisibleProjectile</projectile>
+    <impacteffect>effects\impacts\gun</impacteffect>
+    <rate type="Building">1.0 </rate>
+    <instantballistics>1</instantballistics>
+  </action>
+  <tactic>Basic
+    <speedmodifier>1.0</speedmodifier>
+    <action priority="100">RangedAttack</action>
+    <action priority="75">BuildingAttack</action>
+    <idleanim>Idle</idleanim>
+    <moveanim>Walk</moveanim>
+    <deathanim>Death</deathanim>
+    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+    <runaway>1</runaway>
+    <autoretarget>1</autoretarget>
+  </tactic>
+</tactics>
