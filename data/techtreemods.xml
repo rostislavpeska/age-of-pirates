@@ -11474,7 +11474,7 @@
       <effect type="CommandRemove" tech="zpWesternAgeUp">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="TechStatus" status="obtainable">zpSendJesseJames</effect>
+      <effect type="TechStatus" status="active">zpSendJesseJames</effect>
       <effect type="CommandAdd" tech="" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -11978,9 +11978,6 @@
     <dbid>50019</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
-    <prereqs>
-      <techstatus status="Active">zpNativeWesternVillage</techstatus>
-    </prereqs>
     <effects>
       <effect type="Data" amount="0.705" subtype="UnitRegenRateLimit" unittype="zpDocHolliday" relativity="Absolute">
         <target type="ProtoUnit">zpDocHolliday</target>
@@ -12163,7 +12160,7 @@
     <cost resourcetype="Wood">200.0000</cost>
     <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\natives\western_village\cowboyconversionrifle.png</icon>
+    <icon>resources\art\units\trade\stagecoach_icon_64x64.png</icon>
     <rollovertextid>301109</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>
