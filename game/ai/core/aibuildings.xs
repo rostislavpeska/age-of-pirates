@@ -3128,9 +3128,9 @@ minInterval 5
                   if (gStartOnDifferentIslands == true && (gMigrationMap == false))
                   {
                      // Old simpler version
-                     establishForwardBeachHead(location);
+                     //establishForwardBeachHead(location);
                      // New far more advanced version
-                     //amphibiousAssault(location);
+                     amphibiousAssault(location);
                   }
                   else
                   {  // AssertiveWall: Don't send these messages on island maps to avoid excessive pinging
