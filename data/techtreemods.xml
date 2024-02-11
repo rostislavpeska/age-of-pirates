@@ -11474,6 +11474,7 @@
       <effect type="CommandRemove" tech="zpWesternAgeUp">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpSendJesseJames</effect>
       <effect type="CommandAdd" tech="" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -12103,17 +12104,8 @@
   </tech>
   <tech name="zpSendWyatt" type="Normal">
     <dbid>50023</dbid>
-    <displaynameid>400119</displaynameid>
-    <cost resourcetype="Food">200.0000</cost>
-    <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\natives\western_village\cowboyconversionrifle.png</icon>
-    <rollovertextid>400120</rollovertextid>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>YPNativeImprovement</flag>
-    <prereqs>
-      <techstatus status ="Active">Fortressize</techstatus>
-    </prereqs>
+    <flag>Shadow</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpWyattEarp" relativity="Absolute">
         <target type="Player">
@@ -12145,17 +12137,8 @@
   </tech>
   <tech name="zpSendJesseJames" type="Normal">
     <dbid>50025</dbid>
-    <displaynameid>400123</displaynameid>
-    <cost resourcetype="Wood">200.0000</cost>
-    <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\natives\western_village\cowboyconversionrifle.png</icon>
-    <rollovertextid>400124</rollovertextid>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>YPNativeImprovement</flag>
-    <prereqs>
-      <techstatus status ="Active">Fortressize</techstatus>
-    </prereqs>
+    <flag>Shadow</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpJesseJames" relativity="Absolute">
         <target type="Player">
@@ -12165,18 +12148,8 @@
   </tech>
   <tech name="zpSendPinkertons" type="Normal">
     <dbid>50026</dbid>
-    <displaynameid>400125</displaynameid>
-    <cost resourcetype="Wood">200.0000</cost>
-    <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\natives\western_village\cowboyconversionrifle.png</icon>
-    <rollovertextid>400126</rollovertextid>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>YPNativeImprovement</flag>
-    <flag>DENoTextMessageIfFree</flag>
-    <prereqs>
-      <techstatus status ="Active">Fortressize</techstatus>
-    </prereqs>
+    <flag>Shadow</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpPinkerton" relativity="Absolute">
         <target type="Player">
