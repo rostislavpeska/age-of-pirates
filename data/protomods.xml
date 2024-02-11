@@ -25614,8 +25614,8 @@
     <animfile>units\wildwest_units\pinkerton\pinkerton.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
-    <icon>resources\art\units\spy\spy_icon.png</icon>
-    <portraiticon>resources\art\units\spy\spy_portrait.png</portraiticon>
+    <icon>resources\art\units\natives\pinkerton.png</icon>
+    <portraiticon>resources\art\units\natives\pinkerton_portrait.png</portraiticon>
     <rollovertextid>400083</rollovertextid>
     <shortrollovertextid>400083</shortrollovertextid>
     <initialhitpoints>600.0000</initialhitpoints>
