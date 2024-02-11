@@ -394,11 +394,14 @@
     <train row="0" page="0" column="2">zpNatDvoryanin</train>
     <train row="0" page="0" column="2">zpNatBulgarianBoyar</train>
     <train row="0" page="0" column="2">zpNatMonaspa</train>
+    
     <!-- Western Units -->
     <train row="0" page="0" column="1">zpMountedOutlaw</train>
-    <!--<train row="0" page="0" column="2">zpDeputy</train>
-    <train row="0" page="0" column="2">zpStageCoach</train>
-    <train row="0" page="0" column="2">zpJamesGang</train>-->
+    <train row="0" page="0" column="2">zpDeputy</train>
+    <train row="0" page="0" column="2">zpJamesGang</train>
+    <train row="0" page="0" column="2">zpPinkertonAgent</train>
+    <!--<train row="0" page="0" column="2">zpStageCoach</train>
+    -->
     
 
     <!-- Christmas units and techs Added by AssertiveWall-->
@@ -24789,7 +24792,6 @@
     <dbid>21014</dbid>
     <displaynameid>400060</displaynameid>
     <editornameid>400061</editornameid>
-    <subciv>zpWesternVillage</subciv>
     <populationcount>0</populationcount>
     <obstructionradiusx>0.7900</obstructionradiusx>
     <obstructionradiusz>0.7900</obstructionradiusz>
