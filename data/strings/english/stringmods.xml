@@ -1111,6 +1111,14 @@
       <string _locid="301107">Men of Law</string>
       <string _locid="301108">Ships a Sheriff Wagon to make your people feel more secure.</string>
       <string _locid="301109">Ships a heavy stagecoach armed to take on the wild west and allows you to train more armored Stagecoaches.</string>
+      <string _locid="301110">Gun Store</string>
+      <string _locid="301111">ZP Gun Store</string>
+      <string _locid="301112">ZP Gun Store Wagon</string>
+      <string _locid="301113">Gun Store Wagon</string>
+      <string _locid="301114">Liquor and Guns</string>
+      <string _locid="301115">Ships a Gun Store Wagon allowing you to construct new colony building</string>
+      <string _locid="301116">Safe Town</string>
+      <string _locid="301117">Villagers and buildings gather resources faster. Banks gather much faster.</string>
 
 
       <!-- ======================================== -->
@@ -1190,7 +1198,7 @@
       <string _locid="400065">A Mounted Cowboy hailing from the wild west.</string>
       <string _locid="400066">Sheriff's Office</string>
       <string _locid="400067">ZP Sheriff Office</string>
-      <string _locid="400068">An office and jailhouse capable of holding outlaws.</string>
+      <string _locid="400068">Increases town's security and provides bonuses to nearby buildings and settlers.</string>
       <string _locid="400069">Doc Holliday</string>
       <string _locid="400070">zp Doc Holliday</string>
       <string _locid="400071">I'm your huckleberry.</string>

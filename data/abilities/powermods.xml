@@ -196,6 +196,12 @@
     <hitpointstoheal>400</hitpointstoheal>
     <allowduringnorush>1</allowduringnorush>
   </power>
+  <power name="zpProtectedZone" type="UnitAction">
+    <displaynameid>301116</displaynameid>
+    <rolloverid>301117</rolloverid>
+    <icon>resources\images\icons\abilities\safe_zone.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
 
 
 

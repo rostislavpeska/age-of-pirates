@@ -5,7 +5,7 @@
     <parameters>
       <texture name="BaseColor" override="buildings\sheriff\textures\sheriff_mata_BaseColor">
       </texture>
-      <texture name="Normals" override="buildings\saloon\textures\saloon_mata_Normals">
+      <texture name="Normals" override="buildings\sheriff\textures\sheriff_mata_Normals">
       </texture>
       <texture name="Masks" override="buildings\saloon\textures\saloon_mata_Masks">
       </texture>
@@ -45,7 +45,7 @@
     <parameters>
       <texture name="BaseColor" override="buildings\sheriff\textures\sheriff_mata_BaseColor">
       </texture>
-      <texture name="Normals" override="buildings\saloon\textures\saloon_mata_Normals">
+      <texture name="Normals" override="buildings\sheriff\textures\sheriff_mata_Normals">
       </texture>
       <texture name="Masks" override="buildings\saloon\textures\saloon_mata_Masks">
       </texture>
