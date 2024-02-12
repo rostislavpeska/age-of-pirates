@@ -11,8 +11,7 @@
   <definebone>HS Bone Hoof Back Lt</definebone>
   <definebone>HS Bone Hoof Frnt Lt</definebone>
   <definebone>HS Bone Hoof Frnt Rt</definebone>
-  <submodel>stagecoach
-    <attachment>trade_stagecoach_horse
+     <attachment>trade_stagecoach_horse
       <component>trade_stagecoach_horse</component>
       <include>units\villagers\covered_wagon\covered_wagon_horse.xml</include>
     </attachment>
@@ -24,7 +23,7 @@
       <component>trade_stagecoach_driver</component>
       <include>units\trade\trade_stagecoach_driver.xml</include>
     </attachment>
-    <component>trade_stagecoach
+    <component>ModelComp
       <linksection>
         <linkoffset>0</linkoffset>
         <linkcomponent>covered_wagon_horse</linkcomponent>
@@ -51,12 +50,12 @@
       <logic type="LowPoly">
         <normal>
           <assetreference type="GrannyModel">
-            <file>units\trade\trade_stagecoach</file>
+            <file>units\wildwest_units\stagecoach\armored_stagecoach</file>
           </assetreference>
         </normal>
         <lowpoly>
           <assetreference type="GrannyModel">
-            <file>units\trade\lp_Stagecoach</file>
+            <file>units\wildwest_units\stagecoach\armored_stagecoach</file>
           </assetreference>
         </lowpoly>
       </logic>
@@ -76,104 +75,32 @@
       <attach a="trade_stagecoach_horse2" frombone="" tobone="bone_attach_horse_b" syncanims="1"></attach>
     </component>
     <anim>Idle
-      <assetreference type="GrannyAnim">
-        <file>units\trade\trade_stagecoach_idle</file>
-      </assetreference>
-      <component>trade_stagecoach</component>
-      <attach a="trade_stagecoach_driver" frombone="Bip01" tobone="bone_attach_driver" syncanims="1"></attach>
-    </anim>
-    <anim>Bored
-      <assetreference type="GrannyAnim">
-        <file>units\trade\trade_stagecoach_idle</file>
-      </assetreference>
-      <component>trade_stagecoach</component>
-      <attach a="trade_stagecoach_driver" frombone="Bip01" tobone="bone_attach_driver" syncanims="1"></attach>
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_idle</file>
+        </assetreference>
+        <component>ModelComp</component>
+        <simskeleton>
+            <model>units\wildwest_units\stagecoach\stagecoach_damaged_Model</model>
+        </simskeleton>
+         <attach a="trade_stagecoach_driver" frombone="Bip01" tobone="bone_attach_driver" syncanims="1"></attach>
     </anim>
     <anim>Walk
-      <assetreference type="GrannyAnim">
-        <file>units\trade\trade_stagecoach_walk</file>
-        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof1">0.39</tag>
-        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof2">0.55</tag>
-        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof3">0.27</tag>
-        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof4">0.50</tag>
-        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof1">0.99</tag>
-        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof2">0.03</tag>
-        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof3">0.85</tag>
-        <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof4">1.00</tag>
-      </assetreference>
-      <component>trade_stagecoach</component>
-      <attach a="trade_stagecoach_driver" frombone="Bip01" tobone="bone_attach_driver" syncanims="1"></attach>
-    </anim>
-    <anim>Attack_ranged
-      <assetreference type="GrannyAnim">
-        <file>units\trade\trade_stagecoach_idle</file>
-        <weight>40</weight>
-        <tag type="Attack">0.33</tag>
-        <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.33</tag>
-        <tag type="Particles" particlename="rifleshot">0.33</tag>
-      </assetreference>
-      <assetreference type="GrannyAnim">
-        <file>units\trade\trade_stagecoach_idle</file>
-        <weight>10</weight>
-        <tag type="Attack">0.33</tag>
-        <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.33</tag>
-        <tag type="Particles" particlename="rifleshot">0.33</tag>
-      </assetreference>
-      <assetreference type="GrannyAnim">
-        <file>units\trade\trade_stagecoach_idle</file>
-        <weight>10</weight>
-        <tag type="Attack">0.33</tag>
-        <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.27</tag>
-        <tag type="Particles" particlename="rifleshot_left">0.27</tag>
-      </assetreference>
-      <assetreference type="GrannyAnim">
-        <file>units\trade\trade_stagecoach_idle</file>
-        <weight>40</weight>
-        <tag type="Attack">0.33</tag>
-        <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.27</tag>
-        <tag type="Particles" particlename="rifleshot_left">0.27</tag>
-      </assetreference>
-      <component>trade_stagecoach</component>
-      <attach a="trade_stagecoach_driver" frombone="Bip01" tobone="bone_attach_driver" syncanims="1"></attach>
-    </anim>
-    <anim>Attack_ranged_reload
-      <assetreference type="GrannyAnim">
-        <file>units\trade\trade_stagecoach_idle</file>
-      </assetreference>
-      <component>trade_stagecoach</component>
-      <attach a="trade_stagecoach_driver" frombone="Bip01" tobone="bone_attach_driver" syncanims="1"></attach>
-    </anim>
-    <anim>Attack_melee
-      <assetreference type="GrannyAnim">
-        <file>units\trade\trade_stagecoach_idle</file>
-        <weight>40</weight>
-        <tag type="Attack">0.33</tag>
-        <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.33</tag>
-        <tag type="Particles" particlename="rifleshot">0.33</tag>
-      </assetreference>
-      <assetreference type="GrannyAnim">
-        <file>units\trade\trade_stagecoach_idle</file>
-        <weight>10</weight>
-        <tag type="Attack">0.33</tag>
-        <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.33</tag>
-        <tag type="Particles" particlename="rifleshot">0.33</tag>
-      </assetreference>
-      <assetreference type="GrannyAnim">
-        <file>units\trade\trade_stagecoach_idle</file>
-        <weight>10</weight>
-        <tag type="Attack">0.33</tag>
-        <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.27</tag>
-        <tag type="Particles" particlename="rifleshot_left">0.27</tag>
-      </assetreference>
-      <assetreference type="GrannyAnim">
-        <file>units\trade\trade_stagecoach_idle</file>
-        <weight>40</weight>
-        <tag type="Attack">0.33</tag>
-        <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.27</tag>
-        <tag type="Particles" particlename="rifleshot_left">0.27</tag>
-      </assetreference>
-      <component>trade_stagecoach</component>
-      <attach a="trade_stagecoach_driver" frombone="Bip01" tobone="bone_attach_driver" syncanims="1"></attach>
+        <assetreference type="GrannyAnim">
+          <file>units\trade\trade_stagecoach_walk</file>
+          <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof1">0.39</tag>
+          <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof2">0.55</tag>
+          <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof3">0.27</tag>
+          <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof4">0.50</tag>
+          <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof1">0.99</tag>
+          <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof2">0.03</tag>
+          <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof3">0.85</tag>
+          <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof4">1.00</tag>
+        </assetreference>
+        <component>ModelComp</component>
+        <simskeleton>
+            <model>units\wildwest_units\stagecoach\stagecoach_damaged_Model</model>
+        </simskeleton>
+         <attach a="trade_stagecoach_driver" frombone="Bip01" tobone="bone_attach_driver" syncanims="1"></attach>
     </anim>
     <anim>Death
       <assetreference type="GrannyAnim">
@@ -182,10 +109,6 @@
         <tag type="SpecificSoundSet" checkvisible="1" set="CartBreak">0.5</tag>
         <tag type="SpecificSoundSet" checkvisible="1" set="Thud">0.2</tag>
       </assetreference>
-      <component>trade_stagecoach</component>
+      <component>ModelComp</component>
     </anim>
-  </submodel>
-  <component>StagecoachModel
-    <submodelref ref="stagecoach"></submodelref>
-  </component>
 </animfile>

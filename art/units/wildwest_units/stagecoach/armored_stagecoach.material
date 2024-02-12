@@ -1,0 +1,30 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\trade\trade_stagecoach\textures\trade_stagecoach_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\trade\trade_stagecoach\textures\trade_stagecoach_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\trade\trade_stagecoach\textures\trade_stagecoach_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\trade\trade_stagecoach\textures\trade_stagecoach_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
