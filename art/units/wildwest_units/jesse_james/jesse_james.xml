@@ -10,13 +10,17 @@
       <assetreference type="GrannyModel">
         <file>units\spc\outlaws\outlaw_horse</file>
       </assetreference>
-    <decal>
-      <effecttype>default</effecttype>
-      <texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
-      <selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture>
-      <width>1.50</width>
-      <height>3.00</height>
-    </decal>
+      <decal>
+        <effecttype>default</effecttype>
+        <texture isfakeshadow="1">shadows_selections\shadow_warchief_128x128</texture>
+        <selectedtexture>shadows_selections\selection_warchief_128x128</selectedtexture>
+        <noncinematictexture>shadows_selections\shadow_warchief_128x128</noncinematictexture>
+        <width>1.40</width>
+        <height>1.40</height>
+        <zoffset>-0.15</zoffset>
+        <selectionextrawidth>1.0</selectionextrawidth>
+        <selectionextraheight>1.0</selectionextraheight>
+      </decal>
     <attach a="rider" frombone="hotspot" tobone="Attachpoint" syncanims="1"></attach>
   </component>
   <anim>Walk

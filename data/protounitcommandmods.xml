@@ -323,11 +323,11 @@
   </protounitcommand>
   <protounitcommand>
     <name>zpShotgunAttack</name>
-    <icon>resources\images\icons\command\zp_surface.png</icon>
-    <activeicon>resources\images\icons\command\zp_surface_active.png</activeicon>
-    <disabledicon>resources\images\icons\command\zp_surface.png</disabledicon>
-    <rollovertextid>300472</rollovertextid>
-    <activerollovertextid>300472</activerollovertextid>
+    <icon>resources\images\icons\command\shotgun_atk.png</icon>
+    <activeicon>resources\images\icons\command\shotgun_atk_checked.png</activeicon>
+    <disabledicon>resources\images\icons\command\shotgun_atk_disabled.png</disabledicon>
+    <rollovertextid>400130</rollovertextid>
+    <activerollovertextid>400131</activerollovertextid>
     <command>unitSetTactic("zpShotgun")</command>
   </protounitcommand>
 

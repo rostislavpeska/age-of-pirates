@@ -101,9 +101,12 @@
     <decal>
       <effecttype>default</effecttype>
       <texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
-      <selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+      <selectedtexture>shadows_selections\selection_hero_64x64</selectedtexture>
+      <noncinematictexture>shadows_selections\shadow_hero_64x64</noncinematictexture>
       <width>1.50</width>
       <height>1.50</height>
+      <selectionextrawidth>1.0</selectionextrawidth>
+      <selectionextraheight>1.0</selectionextraheight>
     </decal>
   </component>
   <anim>Death_by_melee

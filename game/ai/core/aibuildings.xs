@@ -1733,6 +1733,12 @@ rule forwardBaseManager
 inactive
 minInterval 30
 {
+   // Testing purposes
+   xsEnableRule("forwardTowerBaseManager");
+   xsDisableSelf();
+   return;
+
+
    if (aiTreatyActive() == true)
    {
       return;
@@ -1774,12 +1780,18 @@ minInterval 30
       {
          // We don't have a forward base, if we have a suitable Wagon we can start the chain.
          vector location = cInvalidVector;
-         if (availableFortWagon > 0) // AssertiveWall: changed from >=0
+         if (availableFortWagon >= 0)
          {
             // Get the Fort Wagon, start a build plan, if we go forward we try to defend it.
             //vector location = cInvalidVector;  AssertiveWall: moved up above
    
-            if ((btOffenseDefense >= 0.0) && (cDifficultyCurrent >= cDifficultyModerate))
+            // AssertiveWall: Use the forward island
+            if (gStartOnDifferentIslands == true && (gMigrationMap == false) &&
+               (btOffenseDefense >= 0.0) && (cDifficultyCurrent >= cDifficultyModerate))
+            {
+               location = selectForwardBaseBeachHead();
+            }
+            else if ((btOffenseDefense >= 0.0) && (cDifficultyCurrent >= cDifficultyModerate))
             {
                location = selectForwardBaseLocation();
             }
@@ -3129,8 +3141,11 @@ minInterval 5
                   {
                      // Old simpler version
                      //establishForwardBeachHead(location);
-                     // New far more advanced version
-                     amphibiousAssault(location);
+                     // New far more advanced version. Don't start duplicates
+                     if (gAmphibiousAssaultPlan < 0)
+                     {
+                        //amphibiousAssault(location);
+                     }
                   }
                   else
                   {  // AssertiveWall: Don't send these messages on island maps to avoid excessive pinging

@@ -750,9 +750,9 @@
     <randomspacingoffset>0.35</randomspacingoffset>
     <cooldowntime>5000</cooldowntime>
     <transitiontimein>500</transitiontimein>
-    <activeicon>resources\images\icons\command\submarine_stealth_active.png</activeicon>
-    <availableicon>resources\images\icons\command\submarine_stealth.png</availableicon>
-    <unavailableicon>resources\images\icons\command\submarine_stealth_disabled.png</unavailableicon>
+    <activeicon>resources\images\icons\command\shotgun_atk_checked.png</activeicon>
+    <availableicon>resources\images\icons\command\shotgun_atk.png</availableicon>
+    <unavailableicon>resources\images\icons\command\shotgun_atk_disabled.png</unavailableicon>
     <rolloverstringid>31348</rolloverstringid>
   </squadmode>
 </battles>

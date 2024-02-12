@@ -19,7 +19,7 @@
   <attachment>rifle
     <component>rifle
       <assetreference type="GrannyModel">
-        <file>units\asians\shared\irregular\Musket_Irr</file>
+        <file>units\natives\ally\navajo_rifleman\navajo_rifleman_gun</file>
       </assetreference>
     </component>
     <anim>Idle
