@@ -1534,6 +1534,33 @@ for(i=0; < saltCount)
 	rmSetTriggerLoop(true);
 	}
 
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Western"+k);
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpWesternAgeUp"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffWestern"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
 	// Specific for human players
 
 	for(k=1; <= cNumberNonGaiaPlayers) {
@@ -1553,6 +1580,8 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Western"+k));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -2983,7 +3012,7 @@ for(i=0; < saltCount)
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",unitID1);
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParamInt("Dist",15);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
 	rmSetTriggerConditionParam("Op",">=");
 	rmSetTriggerConditionParamFloat("Count",1);
@@ -3005,7 +3034,7 @@ for(i=0; < saltCount)
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",unitID1);
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParamInt("Dist",15);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
 	rmSetTriggerConditionParam("Op","==");
 	rmSetTriggerConditionParamFloat("Count",0);
@@ -3032,7 +3061,7 @@ for(i=0; < saltCount)
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",unitID2);
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParamInt("Dist",15);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
 	rmSetTriggerConditionParam("Op",">=");
 	rmSetTriggerConditionParamFloat("Count",1);
@@ -3054,7 +3083,7 @@ for(i=0; < saltCount)
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",unitID2);
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParamInt("Dist",15);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
 	rmSetTriggerConditionParam("Op","==");
 	rmSetTriggerConditionParamFloat("Count",0);
@@ -3081,7 +3110,7 @@ for(i=0; < saltCount)
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",unitID3);
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParamInt("Dist",15);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
 	rmSetTriggerConditionParam("Op",">=");
 	rmSetTriggerConditionParamFloat("Count",1);
@@ -3103,7 +3132,7 @@ for(i=0; < saltCount)
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",unitID3);
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParamInt("Dist",15);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
 	rmSetTriggerConditionParam("Op","==");
 	rmSetTriggerConditionParamFloat("Count",0);
@@ -3130,7 +3159,7 @@ for(i=0; < saltCount)
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",unitID4);
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParamInt("Dist",15);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
 	rmSetTriggerConditionParam("Op",">=");
 	rmSetTriggerConditionParamFloat("Count",1);
@@ -3152,7 +3181,7 @@ for(i=0; < saltCount)
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",unitID4);
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParamInt("Dist",15);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
 	rmSetTriggerConditionParam("Op","==");
 	rmSetTriggerConditionParamFloat("Count",0);
@@ -3181,7 +3210,7 @@ for(i=0; < saltCount)
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",unitID5);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParamInt("Dist",25);
+		rmSetTriggerConditionParamInt("Dist",15);
 		rmSetTriggerConditionParam("UnitType","TradingPost");
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamFloat("Count",1);
@@ -3203,7 +3232,7 @@ for(i=0; < saltCount)
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",unitID5);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParamInt("Dist",25);
+		rmSetTriggerConditionParamInt("Dist",15);
 		rmSetTriggerConditionParam("UnitType","TradingPost");
 		rmSetTriggerConditionParam("Op","==");
 		rmSetTriggerConditionParamFloat("Count",0);
@@ -3233,7 +3262,7 @@ for(i=0; < saltCount)
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",unitID6);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParamInt("Dist",25);
+		rmSetTriggerConditionParamInt("Dist",15);
 		rmSetTriggerConditionParam("UnitType","TradingPost");
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamFloat("Count",1);
@@ -3255,7 +3284,7 @@ for(i=0; < saltCount)
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",unitID6);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParamInt("Dist",25);
+		rmSetTriggerConditionParamInt("Dist",15);
 		rmSetTriggerConditionParam("UnitType","TradingPost");
 		rmSetTriggerConditionParam("Op","==");
 		rmSetTriggerConditionParamFloat("Count",0);
@@ -3285,7 +3314,7 @@ for(i=0; < saltCount)
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",unitID7);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParamInt("Dist",25);
+		rmSetTriggerConditionParamInt("Dist",15);
 		rmSetTriggerConditionParam("UnitType","TradingPost");
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamFloat("Count",1);
@@ -3307,7 +3336,7 @@ for(i=0; < saltCount)
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",unitID7);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParamInt("Dist",25);
+		rmSetTriggerConditionParamInt("Dist",15);
 		rmSetTriggerConditionParam("UnitType","TradingPost");
 		rmSetTriggerConditionParam("Op","==");
 		rmSetTriggerConditionParamFloat("Count",0);
@@ -3337,7 +3366,7 @@ for(i=0; < saltCount)
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",unitID8);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParamInt("Dist",25);
+		rmSetTriggerConditionParamInt("Dist",15);
 		rmSetTriggerConditionParam("UnitType","TradingPost");
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamFloat("Count",1);
@@ -3359,7 +3388,7 @@ for(i=0; < saltCount)
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",unitID8);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParamInt("Dist",25);
+		rmSetTriggerConditionParamInt("Dist",15);
 		rmSetTriggerConditionParam("UnitType","TradingPost");
 		rmSetTriggerConditionParam("Op","==");
 		rmSetTriggerConditionParamFloat("Count",0);
