@@ -35,6 +35,8 @@ mutable void selectGranaryBuildPlanPosition(int planID = -1, int baseID = -1) {}
 mutable void selectClosestBuildPlanPosition(int planID = -1, int baseID = -1) {}
 mutable bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1) { return (false); }
 mutable bool addBuilderToPlan(int planID = -1, int puid = -1, int numberBuilders = 1) { return (false); }
+mutable int findWagonToBuild(int puid = -1) { return (-1); }
+mutable vector selectForwardBaseLocation(void) { return (cInvalidVector); }
 
 // Economy.
 mutable void econMaster(int mode = -1, int value = -1) {}

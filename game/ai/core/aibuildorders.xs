@@ -6,6 +6,18 @@
 */
 //==============================================================================
 /*
+Explanation of Progress:
+   - Buildings tested and mostly work
+      - AI still wants to build a house
+   - Home city techs drafted not tested
+   - gatheringOrderRule tested and works, maybe inefficiently
+   - Army training not drafted
+   - Research drafted not tested
+
+*/
+/*
+
+
 // Keep build order globals here to keep track of them easier
 extern int boBuildingArray = -1;
 extern int boShipmentArray = -1;
@@ -299,7 +311,7 @@ minInterval 5
       if (tempTech > 0)
       {
          if (checkConditional(boBuildingBools, i) == true)
-         {  // Adds the building to the building queue. Priority decreases slightly in case other buildings are first
+         {  // Adds the building to the building queue. Priority decreases slightly in case others are first
             researchSimpleTech(tempTech, , -1, 100 - i);
             xsArraySetInt(boResearchTechArray, i, -1);  // Delete the entry
          }
