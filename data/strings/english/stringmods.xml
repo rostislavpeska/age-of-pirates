@@ -1119,7 +1119,9 @@
       <string _locid="301115">Ships a Gun Store Wagon allowing you to construct new colony building</string>
       <string _locid="301116">Safe Town</string>
       <string _locid="301117">Villagers and buildings gather resources faster. Banks gather much faster.</string>
-
+      <string _locid="301118">Provides attack bonus to all unpowder cavalry and infantry when built. Detonates automatically after taking signifficant damage</string>
+      <string _locid="301119">Gunpowder infantry attack bonus: 15%, Gunpowder cavalry attack bonus: 15%</string>
+      <string _locid="301120">Liquor and Guns</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

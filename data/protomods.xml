@@ -22610,10 +22610,10 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\units\natives\western_village\gunstore_icon.png</icon>
     <portraiticon>resources\art\units\natives\western_village\gunstore_portrait.png</portraiticon>
-    <rollovertextid>122394</rollovertextid>
-    <shortrollovertextid>122395</shortrollovertextid>
-    <initialhitpoints>1200.0000</initialhitpoints>
-    <maxhitpoints>1200.0000</maxhitpoints>
+    <rollovertextid>301118</rollovertextid>
+    <shortrollovertextid>301118</shortrollovertextid>
+    <initialhitpoints>2400.0000</initialhitpoints>
+    <maxhitpoints>2400.0000</maxhitpoints>
     <los>16.0000</los>
     <displayedrange>16.0000</displayedrange>
     <buildpoints>24.0000</buildpoints>
@@ -22622,7 +22622,7 @@
     <cost resourcetype="Gold">60.0000</cost>
     <buildingworkrate>1.0000</buildingworkrate>
     <allowedage>1</allowedage>
-    <buildlimit>20</buildlimit>
+    <buildlimit>1</buildlimit>
     <disabledduringnorush>1</disabledduringnorush>
     <armor type="Siege" value="0.0000">
     </armor>
@@ -22669,14 +22669,17 @@
     <flag>EnforceBigButtonUI</flag>
     <flag>DoNotDamageTrees</flag>
     <flag>NotDeleteable</flag>
-    <tactics>depot.tactics</tactics>
+    <tactics>zpgunstore.tactics</tactics>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="10" column="2">SetGatherPointEconomy</command>
+    <command page="11" column="0">Abilities</command>
     <protoaction>
       <name>ExplosionAttack</name>
       <damage>110.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>0.00001</rof>
       <maxrange>14.000000</maxrange>
-      <damagebonus type="Building">9.000000</damagebonus>
+      <damagebonus type="Building">5.000000</damagebonus>
       <damagebonus type="deMalteseGun">0.500000</damagebonus>
       <damagebonus type="AbstractCavalry">1.500000</damagebonus>
       <damagebonus type="AbstractLightInfantry">1.300000</damagebonus>

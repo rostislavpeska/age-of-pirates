@@ -202,6 +202,12 @@
     <icon>resources\images\icons\abilities\safe_zone.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
+  <power name="zpAmmo" type="UnitAction">
+    <displaynameid>301120</displaynameid>
+    <rolloverid>301119</rolloverid>
+    <icon>resources\images\icons\abilities\ammo.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
 
 
 
