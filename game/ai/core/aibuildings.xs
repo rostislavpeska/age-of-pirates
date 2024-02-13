@@ -1765,12 +1765,17 @@ minInterval 30
    if (gStartOnDifferentIslands == true && availableFortWagon < 0)
    {
       // Try calling it individually
-      forwardTowerBaseManager();
+      //forwardTowerBaseManager();
+
       //if (xsIsRuleEnabled("forwardTowerBaseManager") == false)
       //{
       //   xsEnableRule("forwardTowerBaseManager");
       //}
-      //xsDisableSelf();
+      if (amphibiousAssault() == true)
+      {
+         aiChat(1, "Enabled amphibious assault");
+         xsDisableSelf();
+      }
       return;
    }
 

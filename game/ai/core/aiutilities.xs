@@ -457,11 +457,18 @@ vector guessEnemyLocation(int player = -1)
    }
    else
    {
+      // AssertiveWall: For lower difficulties do the same as above, but with less accuracy
       // For lower difficulties, just simply create a mirror image of our base.
-      vector myBaseLocation = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)); // Main base location...need to find reflection.
+      xError = kbGetMapXSize() * 0.15;
+      zError = kbGetMapZSize() * 0.15;
+      // AssertiveWall: needs to be position = to actually set the vector
+      position = xsVectorSetX(position, xsVectorGetX(position) + aiRandFloat(0.0 - xError, xError));
+      position = xsVectorSetZ(position, xsVectorGetZ(position) + aiRandFloat(0.0 - zError, zError));
+
+      /*vector myBaseLocation = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)); // Main base location...need to find reflection.
       vector mapCenter = kbGetMapCenter();
       vector centerOffset = mapCenter - myBaseLocation;
-      position = mapCenter + centerOffset;
+      position = mapCenter + centerOffset;*/
    }
 
    return (position);

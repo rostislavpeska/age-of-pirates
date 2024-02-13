@@ -2984,14 +2984,15 @@ void gatherNavy(vector location = cInvalidVector)
       int gatherTarget = aiPlanGetNumberUnits(gAmphibiousAssaultPlan, cUnitTypeAbstractWarShip);
       int gatheredUnits = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive, location, 50.0);
       // Make sure we have 3 of 4 or at least 70%
-      // Minimum 3 ships
-      //aiChat(1, "Gathered: " + gatheredUnits + " Of " + gatherTarget);
+      // Change this to ship value at some point
+      aiChat(1, "Gathered: " + gatheredUnits + " Of " + gatherTarget + " navy");
       if ((gatheredUnits <= 4 && gatheredUnits >= gatherTarget - 1) || gatheredUnits > 0.7 * gatherTarget)
       {
-         if (gatheredUnits >= 3)
+         if (gatheredUnits >= 2)
          {
             aiChat(1, "moving to bombard coast");
             gAmphibiousAssaultStage = cBombardCoast;
+            gAmphibiousAssaultSavedTime = xsGetTime();
          }
       }
    }
@@ -3136,14 +3137,18 @@ void bombardCoast()
 
       // Now check if we should go to next stage. Basically when the enemy towers and ships are taken care of
       // Make sure we have 2 ships minimum there
-      if (frNavyValue > 2 * enTotalValue || enNavySize <= 1 || (enTowerSize == 0 && enNavySize < 3))
+      // Give it at least 30 seconds before we try and transport
+      if (xsGetTime() > gAmphibiousAssaultSavedTime + 30000)
       {
-         if (frNavyValue > 2)
+         if (frNavyValue > 2 * enTotalValue || enNavySize <= 1 || (enTowerSize == 0 && enNavySize < 3))
          {
-            if (gAmphibiousAssaultStage < cLoadForces)
+            if (frNavyValue > 2)
             {
-               aiChat(1, "loading forces: " + aiPlanGetNumberUnits(gAmphibiousArmyPlan));
-               gAmphibiousAssaultStage = cLoadForces;
+               if (gAmphibiousAssaultStage < cLoadForces)
+               {
+                  aiChat(1, "loading forces: " + aiPlanGetNumberUnits(gAmphibiousArmyPlan));
+                  gAmphibiousAssaultStage = cLoadForces;
+               }
             }
          }
       }
@@ -3345,6 +3350,7 @@ void loadForces(vector pickupPoint = cInvalidVector)
 
    //aiChat(1, "Units on ship 1: " + unitsOnShip1 + " Ship 2: " + unitsOnShip2);
    if (unitsOnShip1 + unitsOnShip2 > landingForcesSize * 0.95)
+   //if (unitsOnShip1 + unitsOnShip2 == landingForcesSize)
    {
       aiChat(1, "Moving to drop off forces");
       gAmphibiousAssaultStage = cLandForces;
@@ -3373,6 +3379,12 @@ void landForces()
                cUnitStateAlive, kbUnitGetPosition(gLandingShip2), 1.0);
    }
 
+   // If the first ship ejects, start doing the towers
+   if (unitsOnShip1 <= 0)
+   {
+      buildForwardTowers();
+   }
+
    if (unitsOnShip1 + unitsOnShip2 == 0)
    {  // Done transporting, move to next phase
       gAmphibiousAssaultStage = cBuildForwardBuildings;
@@ -3396,6 +3408,7 @@ void landForces()
       }
       else
       {
+         aiTaskUnitEject(gLandingShip1);
          aiTaskUnitMove(gLandingShip1, dropoff);
       }
    }
@@ -3411,6 +3424,7 @@ void landForces()
       }
       else
       {
+         aiTaskUnitEject(gLandingShip2);
          aiTaskUnitMove(gLandingShip2, dropoff);
       }
    }
@@ -3472,10 +3486,10 @@ void trainFromGalleons()
          {
             aiTaskUnitEject(unitID);
          }
-         /*else
+         else
          {
             aiTaskUnitTrain(unitID, unitToTrain);
-         }*/
+         }
       }
    }
    return;
@@ -3590,6 +3604,34 @@ void establishForwardBase()
    gAmphibiousAssaultStage = -1;
 }
 
+rule forwardBaseDestroyedCheck
+inactive
+minInterval 10
+{
+   // Do we still have buildings or military nearby?
+   if (getUnitCountByLocation(cUnitTypeLogicalTypeBuildingsNotWalls, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 30) <= 0)
+   {  
+      // No buildings. Check for a decent sized military
+      if (getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 30) <= 10)
+      {
+         gForwardBaseState = cForwardBaseStateNone;
+         gForwardBaseID = -1;
+         gForwardBaseLocation = cInvalidVector;
+         gForwardBaseShouldDefend = false;
+
+         endDefenseReflex();
+
+         gAmphibiousAssaultStage = cGatherNavy;
+         aiPlanDestroy(gAmphibiousAssaultPlan);
+         aiPlanDestroy(gAmphibiousArmyPlan);
+         gAmphibiousAssaultPlan = -1;
+         gAmphibiousArmyPlan = -1;
+
+         aiChat(1, "Beach abandoned");
+      }
+   }
+}
+
 
 //==============================================================================
 // amphibiousAssault
@@ -3611,16 +3653,32 @@ void establishForwardBase()
 //    change minimum ship number to a value
 //
 //==============================================================================
-void amphibiousAssault(vector location = cInvalidVector)
+bool amphibiousAssault(vector location = cInvalidVector)
 {
+   // Try a straight shot to enemy base for testing purposes
+   location = guessEnemyLocation();
    // test the location
    if (location == cInvalidVector)
    {
-      return;
+      location = selectForwardBaseBeachHead();
+   }
+   // Try just using the guessed enemy location
+   if (location == cInvalidVector)
+   {
+      location = guessEnemyLocation();
+   }
+   // If location still sucks, return and wait to be called later
+   if (location == cInvalidVector)
+   {
+      return false;
    }
    // Reset the stage
    gAmphibiousAssaultStage = cGatherNavy;
-   gAmphibiousAssaultTarget = getDropoffPoint(kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), location);
+   gAmphibiousAssaultTarget = getCoastalPoint(location, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 3, false);
+   // Put something here about the time to suppress sending this too much
+   sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, gAmphibiousAssaultTarget);
+   // another for testing
+   sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, guessEnemyLocation());
 
    if (gAmphibiousAssaultPlan < 0)
    {
@@ -3655,6 +3713,7 @@ void amphibiousAssault(vector location = cInvalidVector)
    // Enable the rule to monitor the amphibious assault
    //aiChat(1, "Amphibious Assault Rule Started");
    xsEnableRule("amphibiousAssaultRule");
+   return true;
 }
 
 //==============================================================================
@@ -3687,7 +3746,7 @@ minInterval 5
    }
 
    // Used by multiple rules
-   vector gatherPoint = gNavyVec;//getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
+   vector gatherPoint = getCoastalPoint(kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), gAmphibiousAssaultTarget, 5, true);
    vector pickupPoint = getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 4);
 
    switch (gAmphibiousAssaultStage)
@@ -3897,7 +3956,7 @@ vector selectForwardBaseBeachHead(void)
    {
       v = guessEnemyLocation(enemyPlayer);
       radius = 100.0;
-      if (getUnitCountByLocation(cUnitTypeLogicalTypeBuildingsNotWalls, enemyPlayer, cUnitStateAlive, v, radius) == 0)
+      if (getUnitCountByLocation(cUnitTypeLogicalTypeBuildingsNotWalls, enemyPlayer, cUnitStateAlive, v, radius) <= 0)
       {
          return (cInvalidVector);
       }

@@ -92,6 +92,7 @@ extern int gAmphibiousAssaultPlan = -1;         // The plan to handle the amphib
 extern int gAmphibiousArmyPlan = -1;            // The plan to handle the amphibious assault landing force
 extern int gAmphibiousTransportPlan = -1;       // The plan that reserves our transports
 extern int gAmphibiousTrainPlan = -1;           // Plan for training from galleons
+extern int gAmphibiousAssaultSavedTime = -1;    // Store times along the way
 extern int gLandingShip1 = -1;                  // Stores transport ship 1
 extern int gLandingShip2 = -1;                  // Stores transport ship 2
 extern const int cGatherNavy = 0;               // First stage, gather up the navy for the assault

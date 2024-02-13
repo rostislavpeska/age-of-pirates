@@ -78,6 +78,8 @@ mutable void selectClosestArchipelagoBuildPlanPosition(int planID = -1, int base
 mutable int chooseArchipelagoAsianWonder(void) {return(-1);}
 mutable void updateArchipelagoResourceDistribution(void) {}
 mutable vector getDropoffPoint(vector pickup = cInvalidVector, vector dropoff = cInvalidVector, int stepsBack = 1) {return(cInvalidVector);}
+mutable vector selectForwardBaseBeachHead(void) { return(cInvalidVector); }
+mutable void buildForwardTowers(void) { return; }
 
 //==============================================================================
 // Includes.
