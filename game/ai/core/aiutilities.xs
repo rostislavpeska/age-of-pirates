@@ -429,6 +429,16 @@ vector guessEnemyLocation(int player = -1)
    {
       player = aiGetMostHatedPlayerID();
    }
+
+   // AssertiveWall: sometimes aiGetMostHatedPlayerID() doesn't work. if that's the case, grab the first enemy player
+   for (i = 0; < cNumberPlayers)
+   {
+      if (kbGetPlayerTeam(i) != kbGetPlayerTeam(cMyID))
+      {
+         player = i;
+      }
+   }
+
    vector position = kbGetPlayerStartingPosition(player);
 
    // AssertiveWall: On King of the Hill, look for the hill, not enemy players 

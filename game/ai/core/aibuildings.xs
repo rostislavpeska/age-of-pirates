@@ -1761,8 +1761,8 @@ minInterval 30
    int buildingID = -1;
    int availableFortWagon = findWagonToBuild(cUnitTypeFortFrontier);
    
-   // AssertiveWall: On island maps, run the forwardtowerbase if we don't have a fort wagon
-   if (gStartOnDifferentIslands == true && availableFortWagon < 0)
+   // AssertiveWall: On island maps, run the forwardtowerbase if we don't have a fort wagon or base already going
+   if (gStartOnDifferentIslands == true && availableFortWagon < 0 && gForwardBaseState == cForwardBaseStateNone)
    {
       // Try calling it individually
       //forwardTowerBaseManager();
