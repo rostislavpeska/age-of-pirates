@@ -112,4 +112,7 @@
   <zpsheriffoffice>
     <ability>zpProtectedZone<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpsheriffoffice>
+  <zpgunstore>
+    <ability>zpAmmo<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpgunstore>
 </abilitymods>

@@ -1093,13 +1093,13 @@
       <string _locid="301089">Machine Gunner</string>
       <string _locid="301090">Locomotive pulling an armored train</string>
       <string _locid="301091">Boosts nearby units.</string>
-      <string _locid="301092">Transports gunpowder and ammunition. Can easily explode.</string>
+      <string _locid="301092">Transports gunpowder and ammunition. &lt;color=1.0, 0.0, 0.0&gt;Can easily explode.&lt;/color&gt;</string>
       <string _locid="301093">Massive Railway Cannon with Powerful Attack</string>
       <string _locid="301094">Heals nearby units.</string>
       <string _locid="301095">Armored car. Transports units from Train Stations.</string>
       <string _locid="301096">Wyat Earp</string>
       <string _locid="301097">The Man of Law. Strong Range Attack. \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDeputy \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nDoc Holiday \nMen of Law</string>
-      <string _locid="301098">Pick Mayor</string>
+      <string _locid="301098">Pick Town Protector</string>
       <string _locid="301099">Choose a legendary Hero or Outlaw.</string>
       <string _locid="301100">Pinkertons</string>
       <string _locid="301101">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nPinkerton Detective \n\nThe Man of Law. Strong Range Attack. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nSheriff's Office</string>
@@ -1119,7 +1119,9 @@
       <string _locid="301115">Ships a Gun Store Wagon allowing you to construct new colony building</string>
       <string _locid="301116">Safe Town</string>
       <string _locid="301117">Villagers and buildings gather resources faster. Banks gather much faster.</string>
-
+      <string _locid="301118">Provides attack bonus to all gunpowder cavalry and infantry when built. &lt;color=1.0, 0.0, 0.0&gt;Detonates automatically after taking signifficant damage&lt;/color&gt;</string>
+      <string _locid="301119">Gunpowder infantry attack bonus: 15%, Gunpowder cavalry attack bonus: 15%</string>
+      <string _locid="301120">Liquor and Guns</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

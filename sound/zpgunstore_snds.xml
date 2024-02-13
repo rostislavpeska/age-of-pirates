@@ -1,0 +1,16 @@
+<protounitsounddef>
+  <protounit name="zpGunstore">
+    <soundtype name="Select">
+      <soundset name="UI_Building_Military">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="BuildingDestruction">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="UI_Building_Military">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>
