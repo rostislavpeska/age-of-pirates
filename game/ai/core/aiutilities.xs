@@ -459,8 +459,8 @@ vector guessEnemyLocation(int player = -1)
    {
       // For higher difficulties, assuming the AI played on this map before, it should have a rough idea of the enemy
       // location.
-      xError = kbGetMapXSize() * 0.1;
-      zError = kbGetMapZSize() * 0.1;
+      xError = kbGetMapXSize() * 0.05;  // AssertiveWall: reduced (more accurate) from 0.1
+      zError = kbGetMapZSize() * 0.05;  // AssertiveWall: reduced (more accurate) from 0.1
       // AssertiveWall: needs to be position = to actually set the vector
       position = xsVectorSetX(position, xsVectorGetX(position) + aiRandFloat(0.0 - xError, xError));
       position = xsVectorSetZ(position, xsVectorGetZ(position) + aiRandFloat(0.0 - zError, zError));

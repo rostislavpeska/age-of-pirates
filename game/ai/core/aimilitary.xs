@@ -610,7 +610,14 @@ minInterval 28
          }
       }
 
-      if (cDifficultyCurrent >= cDifficultyExpert)
+      // AssertiveWall: Change this to always prefer forward base for training military
+      if (gForwardBaseState == cForwardBaseStateActive)
+      {
+         updateMilitaryTrainPlanBuildings(gForwardBaseID);
+      }
+
+
+      /*if (cDifficultyCurrent >= cDifficultyExpert)
       {
          planID = aiPlanGetIDByTypeAndVariableType(cPlanCombat, cCombatPlanCombatType, cCombatPlanCombatTypeAttack);
          if (planID >= 0 && aiPlanGetVariableBool(planID, cCombatPlanAllowMoreUnitsDuringAttack, 0) == true)
@@ -622,7 +629,7 @@ minInterval 28
             baseID = -1;
          }
          updateMilitaryTrainPlanBuildings(baseID);
-      }
+      }*/
    }
 }
 

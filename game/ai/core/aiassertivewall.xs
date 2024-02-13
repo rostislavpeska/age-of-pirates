@@ -3656,6 +3656,7 @@ minInterval 10
          gAmphibiousArmyPlan = -1;
 
          xsDisableRule("transferMilitary");
+         xsDisableSelf();
 
          aiChat(1, "Beach abandoned");
       }
