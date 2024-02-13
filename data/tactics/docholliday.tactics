@@ -163,10 +163,52 @@
     <rate type="AbstractNuggetLand">1.0</rate>
   </action>
 
-
-  <tactic>Volley<action priority="100">ChargeQuickDrawAttack</action><action priority="100">ChargeShootoutAttack</action><action priority="90">RangedAttack</action><action priority="75">BuildingAttack</action><action priority="30">HandAttackCrate</action><action priority="25">HandAttack</action><action>Build</action><action>Gather</action><action>Hunting</action><action>CrateGather</action><action>Discover</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+  <action>
+    <name stringid="65739">BloodSmash</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>BloodSmash</anim>
+    <idleanim>CombatIdle</idleanim>
+    <maxrange>2</maxrange>
+    <projectile>InvisibleProjectile</projectile>
+    <impacteffect>effects\impacts\melee_no_weapon</impacteffect>
+    <rate type="Unit">1.0 </rate>
+    <throw>1</throw>
+    <impactforcemin>500.0f</impactforcemin>
+    <impactforcemax>800.0f</impactforcemax>
+    <outerdamageareadistance>.45</outerdamageareadistance>
+    <outerdamageareafactor>.5</outerdamageareafactor>
+    <impactlaunchangle>65.0</impactlaunchangle>
+    <areasortmode>Directional</areasortmode>
+    <targetground>1</targetground>
+    <numberbounces>0</numberbounces>
+    <basedamagecap>1</basedamagecap>
+    <perfectaccuracy>1</perfectaccuracy>
+  </action>
+  <action>
+    <name stringid="68971">HeroRespawn</name>
+    <type>Maintain</type>
+    <maintaintrainpoints>120</maintaintrainpoints>
+    <rate type="zpDocHolliday">1.0</rate>
+    <usehcgatherpoint>1</usehcgatherpoint>
+    <showqueuewhilewaiting>0</showqueuewhilewaiting>
+    <restricttoknockout>1</restricttoknockout>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="69155">Heal</name>
+    <type>Heal</type>
+    <active>1</active>
+    <maxrange>12</maxrange>
+    <rate type="LogicalTypeHealed">50.0</rate>
+    <anim>Heal</anim>
+  </action>
+  <tactic>Volley<action>HeroRespawn</action><action>HeroRespawn</action><action priority="1">BloodSmash</action><action priority="100">ChargeQuickDrawAttack</action><action priority="100">ChargeShootoutAttack</action><action priority="90">RangedAttack</action><action priority="75">BuildingAttack</action><action priority="30">HandAttackCrate</action><action priority="25">HandAttack</action><action>Build</action><action>Gather</action><action>Hunting</action><action>CrateGather</action><action>Discover</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
   <tactic>zpShotgun
     <protounitcommand>zpShotgunAttack</protounitcommand>
+    <action>HeroRespawn</action>
+    <action priority="1">BloodSmash</action>
     <action priority="100">BuckshotAttack</action>
     <action priority="75">BuildingAttack</action>
     <action priority="30">HandAttackCrate</action>
@@ -186,8 +228,8 @@
     <walkanim>Shotgun_Walk</walkanim>
     <joganim>Shotgun_Jog</joganim>
     <runanim>Shotgun_Run</runanim></tactic>
-  <tactic>Defend<action priority="100">ChargeQuickDrawAttack</action><action priority="100">ChargeShootoutAttack</action><action priority="90">RangedAttack</action><action priority="75">BuildingAttack</action><action priority="30">HandAttackCrate</action><action priority="25">HandAttack</action><action>Build</action><action>Gather</action><action>Hunting</action><action>CrateGather</action><action>Discover</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
-  <tactic>Stagger<action priority="100">ChargeQuickDrawAttack</action><action priority="100">ChargeShootoutAttack</action><action priority="90">RangedAttack</action><action priority="75">BuildingAttack</action><action priority="30">HandAttackCrate</action><action priority="25">HandAttack</action><action>Build</action><action>Gather</action><action>Hunting</action><action>CrateGather</action><action>Discover</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
-  <tactic>Melee<action priority="100">BuildingAttack</action><action priority="30">HandAttackCrate</action><action priority="25">HandAttack</action><action>Build</action><action>Gather</action><action>Hunting</action><action>CrateGather</action><action>Discover</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Charge_idle</idleanim><boredanim>Charge_bored</boredanim><deathanim>Death</deathanim><walkanim>Charge_walk</walkanim><joganim>Charge_jog</joganim><runanim>Charge_run</runanim></tactic>
-  <tactic>StandGround<action priority="100">ChargeQuickDrawAttack</action><action priority="100">ChargeShootoutAttack</action><action priority="90">RangedAttack</action><action priority="75">BuildingAttack</action><action priority="30">HandAttackCrate</action><action priority="25">HandAttack</action><action>Build</action><action>Gather</action><action>Hunting</action><action>CrateGather</action><action>Discover</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+  <tactic>Defend<action>HeroRespawn</action><action priority="1">BloodSmash</action><action priority="100">ChargeQuickDrawAttack</action><action priority="100">ChargeShootoutAttack</action><action priority="90">RangedAttack</action><action priority="75">BuildingAttack</action><action priority="30">HandAttackCrate</action><action priority="25">HandAttack</action><action>Build</action><action>Gather</action><action>Hunting</action><action>CrateGather</action><action>Discover</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+  <tactic>Stagger<action>HeroRespawn</action><action priority="1">BloodSmash</action><action priority="100">ChargeQuickDrawAttack</action><action priority="100">ChargeShootoutAttack</action><action priority="90">RangedAttack</action><action priority="75">BuildingAttack</action><action priority="30">HandAttackCrate</action><action priority="25">HandAttack</action><action>Build</action><action>Gather</action><action>Hunting</action><action>CrateGather</action><action>Discover</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+  <tactic>Melee<action>HeroRespawn</action><action priority="1">BloodSmash</action><action priority="100">BuildingAttack</action><action priority="30">HandAttackCrate</action><action priority="25">HandAttack</action><action>Build</action><action>Gather</action><action>Hunting</action><action>CrateGather</action><action>Discover</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Charge_idle</idleanim><boredanim>Charge_bored</boredanim><deathanim>Death</deathanim><walkanim>Charge_walk</walkanim><joganim>Charge_jog</joganim><runanim>Charge_run</runanim></tactic>
+  <tactic>StandGround<action>HeroRespawn</action><action priority="1">BloodSmash</action><action priority="100">ChargeQuickDrawAttack</action><action priority="100">ChargeShootoutAttack</action><action priority="90">RangedAttack</action><action priority="75">BuildingAttack</action><action priority="30">HandAttackCrate</action><action priority="25">HandAttack</action><action>Build</action><action>Gather</action><action>Hunting</action><action>CrateGather</action><action>Discover</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
 </tactics>

@@ -59,6 +59,7 @@
   <zpsaofeng>
     <ability>ypPowerHeavenlyFireBomb<rof>120</rof></ability>
     <ability>ypPowerCriticalAttack<alwaysdisabledingrid>true</alwaysdisabledingrid></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpsaofeng>
   <zpvenicegalley>
     <ability>PowerBroadside<rof>60</rof></ability>
@@ -115,4 +116,14 @@
   <zpgunstore>
     <ability>zpAmmo<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpgunstore>
+  <zpwyattearp>
+    <ability>PowerSharpshooter<rof>60</rof></ability>
+    <ability>PowerCrackshot<tech>Industrialize</tech><rof>90</rof></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpwyattearp>
+  <zpdocholliday>
+    <ability>ypPowerBloodSmash<rof>60</rof></ability>
+    <ability>PowerHeal<rof>120</rof><activetimecooldown>true</activetimecooldown></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpdocholliday>
 </abilitymods>

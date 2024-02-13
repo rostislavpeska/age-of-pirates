@@ -1122,6 +1122,9 @@
       <string _locid="301118">Provides attack bonus to all gunpowder cavalry and infantry when built. &lt;color=1.0, 0.0, 0.0&gt;Detonates automatically after taking signifficant damage&lt;/color&gt;</string>
       <string _locid="301119">Gunpowder infantry attack bonus: 15%, Gunpowder cavalry attack bonus: 15%</string>
       <string _locid="301120">Liquor and Guns</string>
+      <string _locid="301121">Bank autogather bonus</string>
+      <string _locid="301122">Building Autogather bonus</string>
+      <string _locid="301123">Settler gather rate bonus</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
