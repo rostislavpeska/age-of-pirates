@@ -3382,6 +3382,7 @@ void landForces()
    // If the first ship ejects, start doing the towers
    if (unitsOnShip1 <= 0)
    {
+      aiChat(1, "Called buildForwardTowers early");
       buildForwardTowers();
    }
 
@@ -3514,6 +3515,7 @@ void buildForwardTowers()
    if (getUnitCountByLocation(gTowerUnit, cPlayerRelationSelf,
                cUnitStateAlive, gAmphibiousAssaultTarget, 40) > 0)
    {
+      aiChat(1, "Moving to establish Forward base");
       gAmphibiousAssaultStage = cEstablishForwardBase;
       return;
    }
@@ -3544,13 +3546,21 @@ void buildForwardTowers()
    // Try to find nearby villagers to use
    vilQuery = createSimpleUnitQuery(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 40);
    numberVil = kbUnitQueryExecute(vilQuery);
-   
-
-   planID = createLocationBuildPlan(gTowerUnit, towersToBuild, 100, true, -1, gAmphibiousAssaultTarget, numberVil);
-   for (i = 0; < numberVil)
-   {  // Add forward villagers
-      aiPlanAddUnit(planID, kbUnitQueryGetResult(vilQuery, i));
+   if (numberVil > 0)
+   {
+      planID = createLocationBuildPlan(gTowerUnit, towersToBuild, 100, true, -1, gAmphibiousAssaultTarget, numberVil);
+      for (i = 0; < numberVil)
+      {  // Add forward villagers
+         aiPlanAddUnit(planID, kbUnitQueryGetResult(vilQuery, i));
+      }
    }
+   else
+   {
+      planID = createLocationBuildPlan(gTowerUnit, towersToBuild, 100, true, -1, gAmphibiousAssaultTarget, 1);
+   }
+   aiChat(1, "created tower build plan");
+
+
 
    // Move on as long as the plan takes
    /*if (planID > 0)
