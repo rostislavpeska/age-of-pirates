@@ -321,15 +321,6 @@
     <notcancellable>
     </notcancellable>
   </protounitcommand>
-  <protounitcommand>
-    <name>zpShotgunAttack</name>
-    <icon>resources\images\icons\command\shotgun_atk.png</icon>
-    <activeicon>resources\images\icons\command\shotgun_atk_checked.png</activeicon>
-    <disabledicon>resources\images\icons\command\shotgun_atk_disabled.png</disabledicon>
-    <rollovertextid>400130</rollovertextid>
-    <activerollovertextid>400131</activerollovertextid>
-    <command>unitSetTactic("zpShotgun")</command>
-  </protounitcommand>
 
   <!--
 

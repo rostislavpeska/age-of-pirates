@@ -158,7 +158,6 @@
     <name stringid="69148">Discover</name>
     <type>Discover</type>
     <anim>Pickup</anim>
-    <active>0</active>
     <maxrange>0.2</maxrange>
     <rate type="AbstractNuggetLand">1.0</rate>
   </action>
@@ -206,7 +205,6 @@
   </action>
   <tactic>Volley<action>HeroRespawn</action><action>HeroRespawn</action><action priority="1">BloodSmash</action><action priority="100">ChargeQuickDrawAttack</action><action priority="100">ChargeShootoutAttack</action><action priority="90">RangedAttack</action><action priority="75">BuildingAttack</action><action priority="30">HandAttackCrate</action><action priority="25">HandAttack</action><action>Build</action><action>Gather</action><action>Hunting</action><action>CrateGather</action><action>Discover</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
   <tactic>zpShotgun
-    <protounitcommand>zpShotgunAttack</protounitcommand>
     <action>HeroRespawn</action>
     <action priority="1">BloodSmash</action>
     <action priority="100">BuckshotAttack</action>
