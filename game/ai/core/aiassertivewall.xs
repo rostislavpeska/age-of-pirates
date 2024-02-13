@@ -3959,7 +3959,7 @@ vector selectForwardBaseBeachHead(void)
             debugBuildings("    " + retVal + " is in area group " + kbAreaGroupGetIDByPosition(retVal));
             siteFound = true;
             // Don't build too close to any enemy building.
-            if (getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, retVal, 60.0) >= 0)
+            if (getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, retVal, 50.0) >= 0)
             {
                siteFound = false;
             }
@@ -6005,7 +6005,12 @@ minInterval 30
             if (gStartOnDifferentIslands == true && (gMigrationMap == false))
             {
                location = selectForwardBaseBeachHead();
-               if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(location), 
+               if (location == cInvalidVector)
+               {  // We never build in base with the tower forward base
+                  aiChat(1, "no location");
+                  return;
+               }
+               else if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(location), 
                      kbAreaGroupGetIDByPosition(guessEnemyLocation())) == false)
                {
                   // Try again if the FB isn't on the same island as the enemy
