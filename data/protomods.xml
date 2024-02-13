@@ -20825,7 +20825,7 @@
     <movementtype>land</movementtype>
     <animfile>units\trade\trade_stagecoach.xml</animfile>
     <physicsinfo>dude</physicsinfo>
-    <icon>resources\art\units\animals\horse\horse_icon_64x64.png</icon>
+    <icon>resources\art\units\natives\horse\horse_icon_64x64.png</icon>
     <portraiticon>resources\art\units\animals\horse\horse_portrait.png</portraiticon>
     <rollovertextid>33797</rollovertextid>
     <shortrollovertextid>33796</shortrollovertextid>
@@ -24966,8 +24966,8 @@
     <turnrate>5.0000</turnrate>
     <animfile>units\wildwest_units\stagecoach\stagecoach.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\trade\stagecoach_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trade\stagecoach_portrait.png</portraiticon>
+    <icon>resources\art\units\natives\western_village\armored_stagecoach_icon.png</icon>
+    <portraiticon>resources\art\units\natives\western_village\armored_stagecoach_portrait.png</portraiticon>
     <rollovertextid>400062</rollovertextid>
     <shortrollovertextid>400062</shortrollovertextid>
     <initialhitpoints>800.0000</initialhitpoints>
@@ -25342,7 +25342,6 @@
     <flag>NotDeleteable</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
-    <command page="0" column="0">zpShotgunAttack</command>
     <command page="11" column="0">Abilities</command>
     <tactics>docholliday.tactics</tactics>
     <protoaction>
@@ -25807,7 +25806,6 @@
     <armor type="Ranged" value="0.2500">
     </armor>
     <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeValidSharpshoot</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
     <unittype>LogicalTypeLandMilitary</unittype>
@@ -25820,37 +25818,39 @@
     <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>AbstractGunpowderTrooper</unittype>
-    <unittype>Ranged</unittype>
-    <unittype>HasBountyValue</unittype>
-    <unittype>AbstractCavalryInfantry</unittype>
-    <unittype>CountsTowardMilitaryScore</unittype>
-    <unittype>AbstractRangedInfantry</unittype>
-    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>Military</unittype>
     <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>Military</unittype>
     <unittype>Hero</unittype>
     <unittype>AbstractInfantry</unittype>
-    <unittype>AbstractRifleman</unittype>
-    <unittype>AbstractSkirmisher</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>ExcludeFromRansom</unittype>
+    <train row="0" page="6" column="1">TradingPost</train>
+    <train row="0" page="6" column="2">zpStageCoach</train>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
     <flag>ShowGarrisonButton</flag>
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
-    <flag>HeroName2</flag>
-    <flag>RotateInPlace</flag>
-    <flag>NotDeleteable</flag>
-    <flag>ForceBuildingData</flag>
-    <flag>KnockoutDeath</flag>
     <flag>Tracked</flag>
+    <flag>KnockoutDeath</flag>
+    <flag>NotDeleteable</flag>
+    <flag>HeroName2</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
-    <command page="10" column="7">Delete</command>
-    <tactics>zpwesterninf.tactics</tactics>
+    <command page="11" column="0">Abilities</command>
+    <tactics>pinkertonhero.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
       <damage>28.000000</damage>
@@ -25926,6 +25926,19 @@
       <damagebonus type="Hero">2.500000</damagebonus>
       <damagebonus type="AbstractOutlaw">1.200000</damagebonus>
     </protoaction>
+    <protoaction>
+      <name>Build</name>
+      <rate type="TradingPost">2.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>CrackshotAttack</name>
+      <damage>100.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>200.000000</damagecap>
+      <damagearea>3.000000</damagearea>
+    </protoaction>
   </unit>
   <unit id="21022" name="zpDeputy">
     <dbid>21022</dbid>
@@ -25933,7 +25946,7 @@
     <editornameid>400101</editornameid>
     <populationcount>0</populationcount>
     <subciv>zpWesternVillage</subciv>
-    <buildlimit>16</buildlimit>
+    <buildlimit>10</buildlimit>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <stealthdiscoveryradius>2.0000</stealthdiscoveryradius>
@@ -26092,7 +26105,7 @@
     <displaynameid>400127</displaynameid>
     <editornameid>400128</editornameid>
     <populationcount>0</populationcount>
-    <buildlimit>18</buildlimit>
+    <buildlimit>12</buildlimit>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <stealthdiscoveryradius>2.0000</stealthdiscoveryradius>
@@ -26151,6 +26164,7 @@
     <unittype>AbstractInfantry</unittype>
     <unittype>AbstractRifleman</unittype>
     <unittype>AbstractSkirmisher</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -26165,7 +26179,7 @@
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="7">Delete</command>
-    <tactics>zpwesterninf.tactics</tactics>
+    <tactics>pinkertonstandard.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
       <damage>20.000000</damage>

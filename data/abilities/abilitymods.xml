@@ -126,4 +126,9 @@
     <ability>PowerHeal<rof>120</rof><activetimecooldown>true</activetimecooldown></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpdocholliday>
+  <zppinkerton>
+    <ability>ypPowerSmokeBomb<rof>60</rof><castonself>true</castonself></ability>
+    <ability>PowerEagleEye<rof>60</rof></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zppinkerton>
 </abilitymods>

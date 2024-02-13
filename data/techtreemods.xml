@@ -12176,7 +12176,7 @@
     <cost resourcetype="Wood">200.0000</cost>
     <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\trade\stagecoach_icon_64x64.png</icon>
+    <icon>resources\art\units\natives\western_village\armored_stagecoach_tech.png</icon>
     <rollovertextid>301109</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>
@@ -12200,7 +12200,7 @@
     <cost resourcetype="Wood">200.0000</cost>
     <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\natives\western_village\cowboyconversionrifle.png</icon>
+    <icon>resources\art\units\natives\western_village\pinkerton_tech.png</icon>
     <rollovertextid>400126</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>

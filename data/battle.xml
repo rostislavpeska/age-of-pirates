@@ -753,6 +753,6 @@
     <activeicon>resources\images\icons\command\shotgun_atk_checked.png</activeicon>
     <availableicon>resources\images\icons\command\shotgun_atk.png</availableicon>
     <unavailableicon>resources\images\icons\command\shotgun_atk_disabled.png</unavailableicon>
-    <rolloverstringid>31348</rolloverstringid>
+    <rolloverstringid>400130</rolloverstringid>
   </squadmode>
 </battles>

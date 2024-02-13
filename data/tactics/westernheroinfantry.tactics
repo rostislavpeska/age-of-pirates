@@ -175,7 +175,7 @@
     <anim>RangedAttackSpecial</anim>
     <idleanim>CombatIdle</idleanim>
     <boredanim>CombatIdle</boredanim>
-    <reloadanim>ReloadSharpshoot</reloadanim>
+    <reloadanim>Reload</reloadanim>
     <maxheight>0</maxheight>
     <accuracy>1.0</accuracy>
     <perfectaccuracy>1</perfectaccuracy>
