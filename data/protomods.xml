@@ -3908,13 +3908,12 @@
     <maxrunvelocity>7.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\asians\spc\huang\spc_huang.xml</animfile>
+    <animfile>units\natives\sao_feng.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\natives\saofeng_icon.png</icon>
     <portraiticon>resources\art\units\natives\saofeng_portrait.png</portraiticon>
     <rollovertextid>300206</rollovertextid>
-    <populationcount>4</populationcount>
     <shortrollovertextid>300206</shortrollovertextid>
     <initialhitpoints>800.0000</initialhitpoints>
     <maxhitpoints>800.0000</maxhitpoints>
@@ -3942,34 +3941,39 @@
     <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>Military</unittype>
     <unittype>Hero</unittype>
     <unittype>AbstractInfantry</unittype>
-    <unittype>Military</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>Unit</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>Ranged</unittype>
-    <unittype>CountsTowardMilitaryScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractRangedInfantry</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
     <unittype>LogicalTypeInfantryVolleyTactic</unittype>
-    <flag>KnockoutDeath</flag>
-    <flag>NotDeleteable</flag>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>ExcludeFromRansom</unittype>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
     <flag>ShowGarrisonButton</flag>
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
-    <flag>ConstrainOrientation</flag>
-    <flag>OrientUnitWithGround</flag>
     <flag>Tracked</flag>
+    <flag>KnockoutDeath</flag>
+    <flag>NotDeleteable</flag>
     <train row="0" page="6" column="0">TradingPost</train>
-    <train row="0" page="6" column="2">NativeEmbassy</train>
+    <train row="0" page="6" column="2">Dock</train>
+    <train row="0" page="6" column="2">YPDockAsian</train>
+    <train row="0" page="6" column="2">dePort</train>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
     <command page="11">Abilities</command>
-    <tactics>ypspchuang.tactics</tactics>
+    <tactics>saofeng.tactics</tactics>
     <protoaction>
       <name>ArrowAttack</name>
       <damage>24.000000</damage>
@@ -25312,6 +25316,7 @@
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
     <unittype>Military</unittype>
     <unittype>Hero</unittype>
     <unittype>AbstractInfantry</unittype>
@@ -25323,22 +25328,20 @@
     <unittype>AbstractRangedInfantry</unittype>
     <unittype>LogicalTypeInfantryVolleyTactic</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
-    <unittype>LifespanUnit</unittype>
+    <unittype>ExcludeFromRansom</unittype>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
     <flag>ShowGarrisonButton</flag>
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
-    <flag>HeroName2</flag>
-    <flag>RotateInPlace</flag>
-    <flag>NotDeleteable</flag>
-    <flag>ForceBuildingData</flag>
-    <flag>KnockoutDeath</flag>
     <flag>Tracked</flag>
+    <flag>KnockoutDeath</flag>
+    <flag>NotDeleteable</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
-    <command page="10" column="7">Delete</command>
     <command page="0" column="0">zpShotgunAttack</command>
     <command page="11" column="0">Abilities</command>
     <tactics>docholliday.tactics</tactics>
@@ -25381,6 +25384,14 @@
       <damage>10.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>BloodSmash</name>
+      <damage>400.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>2.000000</rof>
+      <damagearea>3.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
   <unit id="21018" name="zpWyattEarp">
@@ -25433,6 +25444,7 @@
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
     <unittype>Military</unittype>
     <unittype>Hero</unittype>
     <unittype>AbstractInfantry</unittype>
@@ -25444,23 +25456,24 @@
     <unittype>AbstractRangedInfantry</unittype>
     <unittype>LogicalTypeInfantryVolleyTactic</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>ExcludeFromRansom</unittype>
+    <train row="0" page="6" column="1">TradingPost</train>
+    <train row="0" page="6" column="2">zpSheriffOffice</train>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
     <flag>ShowGarrisonButton</flag>
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
-    <flag>HeroName2</flag>
-    <flag>RotateInPlace</flag>
-    <flag>NotDeleteable</flag>
-    <flag>ForceBuildingData</flag>
-    <flag>KnockoutDeath</flag>
     <flag>Tracked</flag>
+    <flag>KnockoutDeath</flag>
+    <flag>NotDeleteable</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
-    <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
-    <tactics>chargeSaloonPistol.tactics</tactics>
+    <tactics>westernheroinfantry.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
       <damage>24.000000</damage>
@@ -25489,6 +25502,26 @@
       <damage>10.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>SharpshooterAttack</name>
+      <damage>750.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CrackshotAttack</name>
+      <damage>475.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="MercType2">0.010000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>Build</name>
+      <rate type="TradingPost">2.000000</rate>
+      <rate type="zpSheriffOffice">3.000000</rate>
     </protoaction>
   </unit>
   <unit id="21019" name="zpJesseJames">
