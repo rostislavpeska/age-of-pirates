@@ -25640,7 +25640,7 @@
       <name>RepeatingRangedAttack</name>
       <damage>21.000000</damage>
       <damagetype>Ranged</damagetype>
-      <maxrange>15.000000</maxrange>
+      <maxrange>14.000000</maxrange>
       <rof>3.000000</rof>
       <damagebonus type="AbstractHeavyCavalry">1.700000</damagebonus>
       <damagebonus type="AbstractVillager">0.700000</damagebonus>
@@ -25760,9 +25760,9 @@
     </protoaction>
     <protoaction>
       <name>RepeatingRangedAttack</name>
-      <damage>18.000000</damage>
+      <damage>16.000000</damage>
       <damagetype>Ranged</damagetype>
-      <maxrange>15.000000</maxrange>
+      <maxrange>14.000000</maxrange>
       <rof>3.000000</rof>
       <damagebonus type="AbstractHeavyCavalry">1.700000</damagebonus>
       <damagebonus type="AbstractHeavyInfantry">1.700000</damagebonus>

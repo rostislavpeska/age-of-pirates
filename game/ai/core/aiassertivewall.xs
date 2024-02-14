@@ -3698,8 +3698,8 @@ minInterval 30
    {
       int plan0 = createLocationBuildPlan(building0, barracksNum, 100, true, -1, gAmphibiousAssaultTarget, 1);
 
-      vilQuery = createSimpleUnitQuery(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 40);
-      numberVil = kbUnitQueryExecute(vilQuery);
+      int vilQuery = createSimpleUnitQuery(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 40);
+      int numberVil = kbUnitQueryExecute(vilQuery);
       if (numberVil > 0)
       {
          for (i = 0; < numberVil)
