@@ -118,7 +118,7 @@
   </zpgunstore>
   <zpwyattearp>
     <ability>PowerSharpshooter<rof>60</rof></ability>
-    <ability>PowerCrackshot<tech>Industrialize</tech><rof>90</rof></ability>
+    <ability>PowerCrackshot<rof>90</rof></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpwyattearp>
   <zpdocholliday>
@@ -131,4 +131,10 @@
     <ability>PowerEagleEye<rof>60</rof></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zppinkerton>
+  <zpjessejames>
+    <ability>ypPowerSabotage<rof>60</rof></ability>
+    <ability>PowerRecruitGuardian<rof>90</rof></ability>
+    <ability>zpApocalypseHorsemen<tech>zpNatApocalypseHorsemen</tech><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpjessejames>
 </abilitymods>

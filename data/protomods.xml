@@ -581,6 +581,11 @@
     <train row="0" page="0" column="96">zpNatDvoryanin</train>
     <train row="0" page="0" column="97">zpNatBulgarianBoyar</train>
     <train row="0" page="0" column="98">zpNatMonaspa</train>
+    <train row="0" page="0" column="99">zpMountedOutlaw</train>
+    <train row="0" page="0" column="100">zpDeputy</train>
+    <train row="0" page="0" column="101">zpJamesGang</train>
+    <train row="0" page="0" column="102">zpPinkertonAgent</train>
+    <train row="0" page="0" column="103">zpStageCoach</train>
   </unit>
   <unit name="NativeTownObstruction">
     <flag>Invulnerable</flag>
@@ -25582,31 +25587,32 @@
     <unittype>AbstractCavalry</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>Ranged</unittype>
-    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>AbstractLightCavalry</unittype>
     <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>AbstractGunpowderCavalry</unittype>
     <unittype>ConvertsHerds</unittype>
-    <unittype>AbstractRangedInfantry</unittype>
-    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractRangedCavalry</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
     <unittype>AbstractNativeWarrior</unittype>
-    <train row="0" page="0" column="0">zpJamesGang</train>
+    <unittype>ExcludeFromRansom</unittype>
+    <unittype>AbstractJamesGang</unittype>
+    <train row="0" page="0" column="0">TradingPost</train>
+    <train row="0" page="0" column="1">zpJamesGang</train>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
     <flag>ShowGarrisonButton</flag>
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
-    <flag>HeroName2</flag>
-    <flag>RotateInPlace</flag>
-    <flag>NotDeleteable</flag>
-    <flag>ForceBuildingData</flag>
-    <flag>KnockoutDeath</flag>
     <flag>Tracked</flag>
+    <flag>KnockoutDeath</flag>
+    <flag>NotDeleteable</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
-    <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
-    <tactics>westernrepeatercav.tactics</tactics>
+    <tactics>jessejames.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
       <damage>12.000000</damage>
@@ -25647,6 +25653,19 @@
       <damagebonus type="AbstractHeavyInfantry">1.700000</damagebonus>
       <damagebonus type="AbstractArtillery">5.000000</damagebonus>
       <damagebonus type="AbstractCoyoteMan">1.400000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>SabotageAttack</name>
+      <damage>1600.000000</damage>
+      <damagetype>Siege</damagetype>
+      <damagebonus type="TradingPost">1.500000</damagebonus>
+      <damagebonus type="AbstractBank">1.500000</damagebonus>
+      <maxrange>10.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>Build</name>
+      <rate type="TradingPost">2.000000</rate>
     </protoaction>
   </unit>
   <unit id="21020" name="zpJamesGang">
@@ -25715,6 +25734,7 @@
     <unittype>Military</unittype>
     <unittype>Unit</unittype>
     <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractJamesGang</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -25962,8 +25982,8 @@
     <portraiticon>resources\art\units\natives\deputy_portrait.png</portraiticon>
     <rollovertextid>400102</rollovertextid>
     <shortrollovertextid>400102</shortrollovertextid>
-    <initialhitpoints>150.0000</initialhitpoints>
-    <maxhitpoints>150.0000</maxhitpoints>
+    <initialhitpoints>250.0000</initialhitpoints>
+    <maxhitpoints>250.0000</maxhitpoints>
     <los>28.0000</los>
     <rechargetime>75.0000</rechargetime>
     <auxrechargetime>45.0000</auxrechargetime>
