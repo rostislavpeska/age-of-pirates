@@ -11087,12 +11087,6 @@
         <target type="ProtoUnit">zpStageCoach</target>
       </effect>
       <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpPinkertonAgent</target>
-      </effect>
-      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpPinkertonAgent</target>
-      </effect>
-      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpJamesGang</target>
       </effect>
       <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
@@ -11105,10 +11099,6 @@
       <effect type="SetName" proto="zpStageCoach" culture="none" newname="400110">
       </effect>
       <effect type="SetName" proto="zpStageCoach" culture="none" newname="400116" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpPinkertonAgent" culture="none" newname="400132">
-      </effect>
-      <effect type="SetName" proto="zpPinkertonAgent" culture="none" newname="400134" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="SetName" proto="zpJamesGang" culture="none" newname="400111">
       </effect>
@@ -11168,12 +11158,6 @@
         <target type="ProtoUnit">zpStageCoach</target>
       </effect>
       <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpPinkertonAgent</target>
-      </effect>
-      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpPinkertonAgent</target>
-      </effect>
-      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpJamesGang</target>
       </effect>
       <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
@@ -11186,10 +11170,6 @@
       <effect type="SetName" proto="zpStageCoach" culture="none" newname="400113">
       </effect>
       <effect type="SetName" proto="zpStageCoach" culture="none" newname="400116" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpPinkertonAgent" culture="none" newname="400133">
-      </effect>
-      <effect type="SetName" proto="zpPinkertonAgent" culture="none" newname="400134" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="SetName" proto="zpJamesGang" culture="none" newname="400114">
       </effect>
