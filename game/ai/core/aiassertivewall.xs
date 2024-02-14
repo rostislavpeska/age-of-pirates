@@ -3627,9 +3627,87 @@ void establishForwardBase()
 
    xsEnableRule("forwardBaseDestroyedCheck");
    xsEnableRule("transferMilitary");
+   xsEnableRule("fbBuildingChain");
 
    // We're done
    gAmphibiousAssaultStage = -1;
+}
+
+//==============================================================================
+/* FB building Chain
+   builds a chain of several buildings
+*/
+//==============================================================================
+
+rule fbBuildingChain
+inactive
+minInterval 30
+{  
+   if (gForwardBaseState != cForwardBaseStateActive)
+   {
+      // Quit early if we don't have the fb
+      xsDisableSelf();
+      return;
+   }
+
+   // Make a couple military building plans to get the jump on the FB building logic
+   int building0 = xsArrayGetInt(gMilitaryBuildings, 0);  // typically barracks
+   int building1 = xsArrayGetInt(gMilitaryBuildings, 1);  // typically stable
+   int tempBuilding = -1;
+   bool makeAnother = false;
+   int barracksNum = 1;
+   int stableNum = 2;
+   int vilIndex = 0;
+   if (btBiasInf >= btBiasCav)
+   {
+      barracksNum = 2;
+      stableNum = 1;
+   }
+
+   int building0num = getUnitCountByLocation(building0, cPlayerRelationSelf, cUnitStateABQ, gAmphibiousAssaultTarget, 30);
+   int building1num = -1;
+
+   if (building0num == 0)
+   {
+      makeAnother = true;
+      tempBuilding = building0num;
+   }
+   else
+   {
+      building0num = getUnitCountByLocation(building0, cPlayerRelationSelf, cUnitStateABQ, gAmphibiousAssaultTarget, 30);
+      building1num = getUnitCountByLocation(building1, cPlayerRelationSelf, cUnitStateABQ, gAmphibiousAssaultTarget, 30);
+   }
+
+   if (building0num < barracksNum)
+   {
+      makeAnother = true;
+      tempBuilding = building0num;
+   }
+   else if (building1num < stableNum)
+   {
+      makeAnother = true;
+      tempBuilding = building1num;
+   }
+   else
+   {
+      // We have enough, disable self
+      xsDisableSelf();
+   }
+
+   if (makeAnother == true)
+   {
+      int plan0 = createLocationBuildPlan(building0, barracksNum, 100, true, -1, gAmphibiousAssaultTarget, 1);
+
+      vilQuery = createSimpleUnitQuery(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 40);
+      numberVil = kbUnitQueryExecute(vilQuery);
+      if (numberVil > 0)
+      {
+         for (i = 0; < numberVil)
+         {  // Add forward villagers
+            aiPlanAddUnit(plan0, kbUnitQueryGetResult(vilQuery, i));
+         }
+      }
+   }
 }
 
 rule forwardBaseDestroyedCheck
@@ -6245,7 +6323,7 @@ minInterval 30
       case cForwardBaseStateActive:
       { // Normal state. If fort is destroyed and base overrun, bail.
          aiChat(1, "cForwardBaseStateActive");
-         if (xsIsRuleEnabled("transferMilitary") == true)
+         if (xsIsRuleEnabled("transferMilitary") == false)
          {
             xsEnableRule("transferMilitary");
          }
@@ -6331,6 +6409,7 @@ minInterval 30
    aiPlanAddUnitType(transportPlan, cUnitTypeLogicalTypeLandMilitary, numberMilitary, numberMilitary, numberMilitary);
    aiPlanSetNoMoreUnits(transportPlan, true);
    aiPlanSetActive(transportPlan);
+   aiChat(1, "Trying to transfer: " + numberMilitary + " military units");
 
    // go the entire game to catch stray settlers/wagons/scouts
 }
