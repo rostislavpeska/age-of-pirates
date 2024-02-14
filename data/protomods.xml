@@ -20976,7 +20976,7 @@
       <name>RangedAttackBreachLoad</name>
       <damage>25.000000</damage>
       <damagetype>Ranged</damagetype>
-      <maxrange>17.000000</maxrange>
+      <maxrange>16.000000</maxrange>
       <rof>2.500000</rof>
       <damagebonus type="AbstractHeavyCavalry">1.600000</damagebonus>
       <damagebonus type="AbstractCoyoteMan">1.300000</damagebonus>
@@ -25152,7 +25152,7 @@
       <name>RangedAttackBreachLoad</name>
       <damage>25.000000</damage>
       <damagetype>Ranged</damagetype>
-      <maxrange>17.000000</maxrange>
+      <maxrange>16.000000</maxrange>
       <rof>2.500000</rof>
       <damagebonus type="AbstractHeavyCavalry">1.600000</damagebonus>
       <damagebonus type="AbstractCoyoteMan">1.300000</damagebonus>
@@ -26172,9 +26172,7 @@
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
     <flag>RotateInPlace</flag>
-    <flag>NotDeleteable</flag>
     <flag>ForceBuildingData</flag>
-    <flag>KnockoutDeath</flag>
     <flag>Tracked</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
