@@ -1247,10 +1247,10 @@
       <string _locid="400107">Substitute your cowboys' muskets with powerful shotguns.</string>
       <string _locid="400108">Conversion Rifles</string>
       <string _locid="400109">Retrofit your cowboys with improved breach loading rifles.</string>
-      <string _locid="400110">Veteran StageCoach</string>
+      <string _locid="400110">Veteran Stagecoach</string>
       <string _locid="400111">Veteran James' Gang</string>
       <string _locid="400112">Veteran Deputy</string>
-      <string _locid="400113">Guard StageCoach</string>
+      <string _locid="400113">Guard Stagecoach</string>
       <string _locid="400114">Guard James' Gang</string>
       <string _locid="400115">Guard Deputy</string>
       <string _locid="400116">Legendary StageCoach</string>
@@ -1269,6 +1269,9 @@
       <string _locid="400129">A formidable agent, capable of holding their own in gunfights and specialized in tracking down infamous challengers.</string>
       <string _locid="400130">Give Doc the shotgun. They’ll be less apt to get nervy if he’s on the street howitzer.</string>
       <string _locid="400131">Doc has the shotgun.</string>
+      <string _locid="400132">Veteran Pinkerton Agent</string>
+      <string _locid="400133">Guard Pinkerton Agent</string>
+      <string _locid="400134">Legendary Pinkerton Agent</string>
 
       <!-- ===================================== -->
       <!-- ===================================== -->
