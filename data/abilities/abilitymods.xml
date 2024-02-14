@@ -124,7 +124,7 @@
   <zpdocholliday>
     <ability>ypPowerBloodSmash<rof>60</rof></ability>
     <ability>PowerHeal<rof>120</rof><activetimecooldown>true</activetimecooldown></ability>
-    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>zpAutoHealDocHolliday<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpdocholliday>
   <zppinkerton>
     <ability>ypPowerSmokeBomb<rof>60</rof><castonself>true</castonself></ability>

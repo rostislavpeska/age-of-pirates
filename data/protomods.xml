@@ -3920,7 +3920,7 @@
     <portraiticon>resources\art\units\natives\saofeng_portrait.png</portraiticon>
     <rollovertextid>300206</rollovertextid>
     <shortrollovertextid>300206</shortrollovertextid>
-    <initialhitpoints>800.0000</initialhitpoints>
+    <initialhitpoints>840.0000</initialhitpoints>
     <maxhitpoints>800.0000</maxhitpoints>
     <los>15.0000</los>
     <projectileprotounit>InvisibleProjectile</projectileprotounit>

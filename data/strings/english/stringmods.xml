@@ -1118,7 +1118,7 @@
       <string _locid="301114">Liquor and Guns</string>
       <string _locid="301115">Ships a Gun Store Wagon allowing you to construct new colony building</string>
       <string _locid="301116">Safe Town</string>
-      <string _locid="301117">Villagers and buildings gather resources faster. Banks gather much faster.</string>
+      <string _locid="301117">Nearby villagers and buildings gather resources faster. Banks gather much faster.</string>
       <string _locid="301118">Provides attack bonus to all gunpowder cavalry and infantry when built. &lt;color=1.0, 0.0, 0.0&gt;Detonates automatically after taking signifficant damage&lt;/color&gt;</string>
       <string _locid="301119">Gunpowder infantry attack bonus: 15%, Gunpowder cavalry attack bonus: 15%</string>
       <string _locid="301120">Liquor and Guns</string>
@@ -1131,6 +1131,7 @@
       <string _locid="301127">Veteran Pinkerton Agent</string>
       <string _locid="301128">Guard Pinkerton Agent</string>
       <string _locid="301129">Legendary Pinkerton Agent</string>
+      <string _locid="301130">Regenerates health when idle. Due to his Tuberculosis can never get to full health just by himself.</string>
 
 
       <!-- ======================================== -->
