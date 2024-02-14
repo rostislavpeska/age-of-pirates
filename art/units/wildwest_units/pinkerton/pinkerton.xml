@@ -504,4 +504,5 @@
     </assetreference>
     <component>BuildComp</component>
   </anim>
+  <anim>Smokescreen<assetreference type="GrannyAnim"><file>units\asians\japanese\monk\monk_smokescreen</file><tag type="SpecificSoundSet" checkvisible="1" set="PowerSmokeBomb">0.96</tag><tag type="Particles" particlename="effects\smoke\smokescreen.particle">0.97</tag></assetreference><component>ModelComp</component></anim>
 </animfile>

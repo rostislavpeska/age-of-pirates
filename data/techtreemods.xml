@@ -25,7 +25,7 @@
       <effect type="TechStatus" status="obtainable">zpMalteseMarksmen</effect>
       <effect type="TechStatus" status="obtainable">zpMalteseCross</effect>
       <effect type="TechStatus" status="obtainable">zpNatMalteseArchitecture</effect>
-      <effect type="TechStatus" status="obtainable">NativeTreatyMaltese</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyMaltese</effect>
       <effect type="TechStatus" status="obtainable">DEIndianFriendshipMaltese</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyMaltese</effect>
@@ -2642,7 +2642,7 @@
       </effect>
     </effects>
   </tech>
-  <tech name="NativeTreatyMaltese" type="Normal">
+  <tech name="zpNativeTreatyMaltese" type="Normal">
     <dbid>40100</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
@@ -4704,6 +4704,16 @@
       <effect mergemode="add" type="SetName" proto="zpToySoldier" culture="none" newname="400056">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpSantaHelper" culture="none" newname="400059">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpMountedOutlaw" culture="none" newname="301036">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpMercMountedOutlaw" culture="none" newname="301036">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpDeputy" culture="none" newname="400118">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpJamesGang" culture="none" newname="400117">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpPinkertonAgent" culture="none" newname="301129">
       </effect>
     </effects>
   </tech>
@@ -10783,6 +10793,11 @@
       <effect type="TechStatus" status="obtainable">zpSendPinkertonsB</effect>
       <effect type="TechStatus" status="obtainable">zpSendStageCoach</effect>
       <effect type="TechStatus" status="obtainable">zpNatGunStore</effect>
+      <effect type="TechStatus" status="obtainable">zpNatApocalypseHorsemen</effect>
+
+      <effect type="TechStatus" status="obtainable">zpIndianFriendshipWestern</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyWestern</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyWestern</effect>
     </effects>
   </tech>
   <tech name="zpTransformArmoredTrain" type="Normal">
@@ -11081,10 +11096,10 @@
         <target type="ProtoUnit">zpDeputy</target>
       </effect>
       <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpStageCoach</target>
+        <target type="ProtoUnit">zpPinkertonAgent</target>
       </effect>
       <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpStageCoach</target>
+        <target type="ProtoUnit">zpPinkertonAgent</target>
       </effect>
       <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpJamesGang</target>
@@ -11095,10 +11110,6 @@
       <effect type="SetName" proto="zpMountedOutlaw" culture="none" newname="301034">
       </effect>
       <effect type="SetName" proto="zpMountedOutlaw" culture="none" newname="301036" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpStageCoach" culture="none" newname="400110">
-      </effect>
-      <effect type="SetName" proto="zpStageCoach" culture="none" newname="400116" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="SetName" proto="zpJamesGang" culture="none" newname="400111">
       </effect>
@@ -11117,6 +11128,10 @@
       <effect type="SetName" proto="zpMercMountedOutlaw" culture="none" newname="301034">
       </effect>
       <effect type="SetName" proto="zpMercMountedOutlaw" culture="none" newname="301036" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpPinkertonAgent" culture="none" newname="301127">
+      </effect>
+      <effect type="SetName" proto="zpPinkertonAgent" culture="none" newname="301129" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>
@@ -11152,24 +11167,20 @@
         <target type="ProtoUnit">zpDeputy</target>
       </effect>
       <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpStageCoach</target>
+        <target type="ProtoUnit">zpJamesGang</target>
       </effect>
       <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpStageCoach</target>
+        <target type="ProtoUnit">zpJamesGang</target>
       </effect>
       <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpJamesGang</target>
+        <target type="ProtoUnit">zpPinkertonAgent</target>
       </effect>
       <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpJamesGang</target>
+        <target type="ProtoUnit">zpPinkertonAgent</target>
       </effect>
       <effect type="SetName" proto="zpMountedOutlaw" culture="none" newname="301035">
       </effect>
       <effect type="SetName" proto="zpMountedOutlaw" culture="none" newname="301036" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpStageCoach" culture="none" newname="400113">
-      </effect>
-      <effect type="SetName" proto="zpStageCoach" culture="none" newname="400116" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="SetName" proto="zpJamesGang" culture="none" newname="400114">
       </effect>
@@ -11188,6 +11199,10 @@
       <effect type="SetName" proto="zpMercMountedOutlaw" culture="none" newname="301035">
       </effect>
       <effect type="SetName" proto="zpMercMountedOutlaw" culture="none" newname="301036" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpPinkertonAgent" culture="none" newname="301128">
+      </effect>
+      <effect type="SetName" proto="zpPinkertonAgent" culture="none" newname="301129" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>
@@ -11470,6 +11485,9 @@
       <effect type="CommandAdd" tech="zpNatGunStore" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" tech="zpNatApocalypseHorsemen" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffWestern" type="Normal">
@@ -11520,7 +11538,7 @@
     </effects>
   </tech>
   <tech name="zpNatSherriffOffice" type="Normal">
-    <dbid>40060</dbid>
+    <dbid>40405</dbid>
     <displaynameid>301107</displaynameid>
     <cost resourcetype="Wood">250.0000</cost>
     <cost resourcetype="Gold">100.0000</cost>
@@ -11544,7 +11562,7 @@
     </effects>
   </tech>
   <tech name="zpNatGunStore" type="Normal">
-    <dbid>40060</dbid>
+    <dbid>40406</dbid>
     <displaynameid>301114</displaynameid>
     <cost resourcetype="Wood">250.0000</cost>
     <cost resourcetype="Gold">100.0000</cost>
@@ -11564,6 +11582,76 @@
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpGunStore</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatApocalypseHorsemen" type="Normal">
+    <dbid>40407</dbid>
+    <displaynameid>400132</displaynameid>
+    <cost resourcetype="Food">250.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\western_village\apocalypse_horsemen_tech.png</icon>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <rollovertextid>400133</rollovertextid>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" action="ExtraHP" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpJesseJames</target>
+      </effect>
+      <effect type="Data" action="ExtraDamage" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpJesseJames</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTreatyWestern" type="Normal">
+    <dbid>40408</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="zpMercMountedOutlaw" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIndianFriendshipWestern" type="Normal">
+    <dbid>40409</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="zpMercMountedOutlaw" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
+      <effect type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTradeTreatyWestern" type="Normal">
+    <dbid>40410</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>

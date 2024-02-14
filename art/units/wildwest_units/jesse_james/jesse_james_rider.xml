@@ -762,4 +762,5 @@
     <component>ModelComp</component>
     <attach a="gun_bullseye" frombone="Bip 01 master" tobone="Bip01 Prop1" syncanims="0"></attach>
   </anim>
+  <anim>Pickup<assetreference type="GrannyAnim"><file>units\asians\spc\mototada\mototada_pickupTreasure</file></assetreference><component>ModelComp</component></anim>
 </animfile>

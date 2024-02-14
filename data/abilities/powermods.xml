@@ -208,6 +208,12 @@
     <icon>resources\images\icons\abilities\ammo.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
+  <power name="zpApocalypseHorsemen" type="UnitAction">
+    <displaynameid>400132</displaynameid>
+    <rolloverid>301124</rolloverid>
+    <icon>resources\art\units\natives\western_village\apocalypse_horsemen.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
 
 
 

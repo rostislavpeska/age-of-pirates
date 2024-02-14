@@ -1098,13 +1098,13 @@
       <string _locid="301094">Heals nearby units.</string>
       <string _locid="301095">Armored car. Transports units from Train Stations.</string>
       <string _locid="301096">Wyat Earp</string>
-      <string _locid="301097">The Man of Law. Strong Range Attack. \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDeputy \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nDoc Holiday \nMen of Law</string>
+      <string _locid="301097">The Man of Law, strong special attack \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDeputy \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nDoc Holiday \nMen of Law</string>
       <string _locid="301098">Pick Town Protector</string>
-      <string _locid="301099">Choose a legendary Hero or Outlaw.</string>
+      <string _locid="301099">Ships a legendary hero or outlaw. Unlocks further units and techs.</string>
       <string _locid="301100">Pinkertons</string>
-      <string _locid="301101">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nPinkerton Detective \n\nThe Man of Law. Strong Range Attack. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nSheriff's Office</string>
+      <string _locid="301101">Pinkerton detective with stealth ability \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nPinkerton Agent \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nBuddies \nArmored Stagecoach</string>
       <string _locid="301102">Jesse James</string>
-      <string _locid="301103">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nJames Gang \n\nThe Man of Law. Strong Range Attack. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nSheriff's Office</string>
+      <string _locid="301103">Horseman gang's chief with a sabotage attack \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nJames' Gang \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nHorsemen of the Apocalypse \nGun Store</string>
       <string _locid="301104">Sheriff Wagon</string>
       <string _locid="301105">ZP Sheriff Wagon</string>
       <string _locid="301106">Can Build Sheriff's Office</string>
@@ -1125,6 +1125,13 @@
       <string _locid="301121">Bank autogather bonus</string>
       <string _locid="301122">Building Autogather bonus</string>
       <string _locid="301123">Settler gather rate bonus</string>
+      <string _locid="301124">Aura: signifficantly increasing James' Gang attack and hitpoints</string>
+      <string _locid="301125">James' Gang Extra Damage</string>
+      <string _locid="301126">James' Gang Extra Hitpoints</string>
+      <string _locid="301127">Veteran Pinkerton Agent</string>
+      <string _locid="301128">Guard Pinkerton Agent</string>
+      <string _locid="301129">Legendary Pinkerton Agent</string>
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
@@ -1262,13 +1269,16 @@
       <string _locid="400122">Enlist the help of Doc Holliday.</string>
       <string _locid="400123">Jesse James</string>
       <string _locid="400124">Call on Jesse James to lead the James-Younger Gang.</string>
-      <string _locid="400125">Hire Pinkerton Agents</string>
+      <string _locid="400125">Buddies</string>
       <string _locid="400126">Sends another Pinkerton Detective to track your adversaries.</string>
       <string _locid="400127">Pinkerton Agent</string>
       <string _locid="400128">zp Pinkerton Agent</string>
       <string _locid="400129">A formidable agent, capable of holding their own in gunfights and specialized in tracking down infamous challengers.</string>
       <string _locid="400130">Give Doc the shotgun. They’ll be less apt to get nervy if he’s on the street howitzer.</string>
       <string _locid="400131">Doc has the shotgun.</string>
+      <string _locid="400132">Horemen of the Apocalypse</string>
+      <string _locid="400133">Gives Jesse James a special aura signifficantly increasing James' Gang attack and hitpoint</string>
+
 
       <!-- ===================================== -->
       <!-- ===================================== -->
