@@ -610,7 +610,14 @@ minInterval 28
          }
       }
 
-      if (cDifficultyCurrent >= cDifficultyExpert)
+      // AssertiveWall: Change this to always prefer forward base for training military
+      if (gForwardBaseState == cForwardBaseStateActive)
+      {
+         updateMilitaryTrainPlanBuildings(gForwardBaseID);
+      }
+
+
+      /*if (cDifficultyCurrent >= cDifficultyExpert)
       {
          planID = aiPlanGetIDByTypeAndVariableType(cPlanCombat, cCombatPlanCombatType, cCombatPlanCombatTypeAttack);
          if (planID >= 0 && aiPlanGetVariableBool(planID, cCombatPlanAllowMoreUnitsDuringAttack, 0) == true)
@@ -622,7 +629,7 @@ minInterval 28
             baseID = -1;
          }
          updateMilitaryTrainPlanBuildings(baseID);
-      }
+      }*/
    }
 }
 
@@ -950,22 +957,19 @@ minInterval 15
          shouldAttack = true;
          isCityState = false;
 
-         // Skip this on island maps more than moderate
-         if (gStartOnDifferentIslands == false && cDifficultyCurrent > cDifficultyModerate)
+
+         if (isEnemy == true)
          {
-            if (isEnemy == true)
+            if (currentTime - gLastAttackMissionTime < gAttackMissionInterval)
             {
-               if (currentTime - gLastAttackMissionTime < gAttackMissionInterval)
-               {
-                  shouldAttack = false;
-               }
+               shouldAttack = false;
             }
-            else
+         }
+         else
+         {
+            if (currentTime - gLastDefendMissionTime < gDefendMissionInterval)
             {
-               if (currentTime - gLastDefendMissionTime < gDefendMissionInterval)
-               {
-                  shouldAttack = false;
-               }
+               shouldAttack = false;
             }
          }
 
@@ -1359,6 +1363,11 @@ minInterval 15
          {
             distancePenalty = distancePenalty + 0.3; // ageInt; Changed from 0.4
          }
+         // AssertiveWall: Catch the distance penalty
+         if (distancePenalty > 0.8)
+         {
+            distancePenalty = 0.8;
+         }
          distancePenalty = 1.0 - distancePenalty;
 
          score = (baseAssets / maxBaseAssets) * affordable * distancePenalty;
@@ -1448,7 +1457,6 @@ minInterval 15
    }*/
 
    vector gatherPoint = kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
-   bool isHuman = kbIsPlayerHuman(targetPlayer);
    if (targetIsEnemy == true)
    {
       planID = aiPlanCreate("Attack Player " + targetPlayer + " Base " + targetBaseID, cPlanCombat);
@@ -1503,16 +1511,16 @@ minInterval 15
             aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 600000); // Full timer 10 mins
          }
          else
-         {  // AssertiveWall: Don't retreat against human players, but still do it against AI players
-            if (isHuman == true)
-            { 
+         {  // AssertiveWall: Now that we have a new retreat logic, no longer need this human/AI distinction
+            //if (isHuman == true)
+            //{ 
                aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeBaseGone);
-            }
-            else
+            //}
+            /*else
             {
                aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeBaseGone);
                aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
-            }
+            }*/
          }
          updateMilitaryTrainPlanBuildings(gForwardBaseID);
       }

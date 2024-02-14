@@ -1733,12 +1733,6 @@ rule forwardBaseManager
 inactive
 minInterval 30
 {
-   // Testing purposes
-   xsEnableRule("forwardTowerBaseManager");
-   xsDisableSelf();
-   return;
-
-
    if (aiTreatyActive() == true)
    {
       return;
@@ -1766,6 +1760,24 @@ minInterval 30
    int numberMilitaryBuildings = 0;
    int buildingID = -1;
    int availableFortWagon = findWagonToBuild(cUnitTypeFortFrontier);
+   
+   // AssertiveWall: On island maps, run the forwardtowerbase if we don't have a fort wagon or base already going
+   if (gStartOnDifferentIslands == true && availableFortWagon < 0 && gForwardBaseState == cForwardBaseStateNone)
+   {
+      // Try calling it individually
+      //forwardTowerBaseManager();
+
+      //if (xsIsRuleEnabled("forwardTowerBaseManager") == false)
+      //{
+      //   xsEnableRule("forwardTowerBaseManager");
+      //}
+      if (amphibiousAssault() == true)
+      {
+         aiChat(1, "Enabled amphibious assault");
+         xsDisableSelf();
+      }
+      return;
+   }
 
    // We have a Fort Wagon but also already have a forward base, default the Fort position.
    if ((availableFortWagon >= 0) && (gForwardBaseState != cForwardBaseStateNone))
@@ -3144,7 +3156,7 @@ minInterval 5
                      // New far more advanced version. Don't start duplicates
                      if (gAmphibiousAssaultPlan < 0)
                      {
-                        //amphibiousAssault(location);
+                        amphibiousAssault(location);
                      }
                   }
                   else

@@ -2816,7 +2816,7 @@ minInterval 10
 // Checks to see if we should retreat
 // 
 //==============================================================================
-bool retreatCheck()
+bool retreatCheck(bool forceRetreat = false)
 {
    // Need something to prevent retreating while transporting
    if (gAmphibiousAssaultStage == cLoadForces || gAmphibiousAssaultStage == cLandForces)
@@ -2863,7 +2863,7 @@ bool retreatCheck()
       }
 
       // If we're too outnumbered then retreat to gNavyVec
-      if (frNavyValue * 1.2 < (enNavyValue + enTowerValue))
+      if (frNavyValue * 1.2 < (enNavyValue + enTowerValue) || forceRetreat == true)
       {
          gAmphibiousAssaultStage = cGatherNavy;
          for (i = 0; < frNavySize)
@@ -2984,14 +2984,15 @@ void gatherNavy(vector location = cInvalidVector)
       int gatherTarget = aiPlanGetNumberUnits(gAmphibiousAssaultPlan, cUnitTypeAbstractWarShip);
       int gatheredUnits = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive, location, 50.0);
       // Make sure we have 3 of 4 or at least 70%
-      // Minimum 3 ships
-      //aiChat(1, "Gathered: " + gatheredUnits + " Of " + gatherTarget);
+      // Change this to ship value at some point
+      aiChat(1, "Gathered: " + gatheredUnits + " Of " + gatherTarget + " navy");
       if ((gatheredUnits <= 4 && gatheredUnits >= gatherTarget - 1) || gatheredUnits > 0.7 * gatherTarget)
       {
-         if (gatheredUnits >= 3)
+         if (gatheredUnits >= 2)
          {
             aiChat(1, "moving to bombard coast");
             gAmphibiousAssaultStage = cBombardCoast;
+            gAmphibiousAssaultSavedTime = xsGetTime();
          }
       }
    }
@@ -3136,14 +3137,19 @@ void bombardCoast()
 
       // Now check if we should go to next stage. Basically when the enemy towers and ships are taken care of
       // Make sure we have 2 ships minimum there
-      if (frNavyValue > 2 * enTotalValue || enNavySize <= 1 || (enTowerSize == 0 && enNavySize < 3))
+      // Give it at least 30 seconds before we try and transport
+      if (xsGetTime() > gAmphibiousAssaultSavedTime + 30000)
       {
-         if (frNavyValue > 2)
+         if (frNavyValue > 2 * enTotalValue || enNavySize <= 1 || (enTowerSize == 0 && enNavySize < 3))
          {
-            if (gAmphibiousAssaultStage < cLoadForces)
+            if (frNavyValue > 2)
             {
-               aiChat(1, "loading forces: " + aiPlanGetNumberUnits(gAmphibiousArmyPlan));
-               gAmphibiousAssaultStage = cLoadForces;
+               if (gAmphibiousAssaultStage < cLoadForces)
+               {
+                  aiChat(1, "loading forces: " + aiPlanGetNumberUnits(gAmphibiousArmyPlan));
+                  gAmphibiousAssaultSavedTime = xsGetTime();
+                  gAmphibiousAssaultStage = cLoadForces;
+               }
             }
          }
       }
@@ -3335,6 +3341,7 @@ void loadForces(vector pickupPoint = cInvalidVector)
    }*/
 
    // Now check to see if we're all loaded up (within a couple units)
+   // If over a minute has passed, just go
    unitsOnShip1 = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf,
                cUnitStateAlive, kbUnitGetPosition(gLandingShip1), 1.0);
    if (gLandingShip2 > 0)
@@ -3344,7 +3351,9 @@ void loadForces(vector pickupPoint = cInvalidVector)
    }
 
    //aiChat(1, "Units on ship 1: " + unitsOnShip1 + " Ship 2: " + unitsOnShip2);
-   if (unitsOnShip1 + unitsOnShip2 > landingForcesSize * 0.95)
+   if (unitsOnShip1 + unitsOnShip2 > landingForcesSize * 0.95 || 
+       (unitsOnShip1 + unitsOnShip2 > 0 && xsGetTime() > gAmphibiousAssaultSavedTime + 60000))
+   //if (unitsOnShip1 + unitsOnShip2 == landingForcesSize)
    {
       aiChat(1, "Moving to drop off forces");
       gAmphibiousAssaultStage = cLandForces;
@@ -3363,6 +3372,7 @@ void landForces()
    // Check if we're done transporting
    int unitsOnShip1 = 0;
    int unitsOnShip2 = 0; 
+   int distFromShore = -1;
 
    unitsOnShip1 = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf,
                cUnitStateAlive, kbUnitGetPosition(gLandingShip1), 1.0);
@@ -3371,6 +3381,13 @@ void landForces()
    {
       unitsOnShip2 = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf,
                cUnitStateAlive, kbUnitGetPosition(gLandingShip2), 1.0);
+   }
+
+   // If the first ship ejects, start doing the towers
+   if (unitsOnShip1 <= 0)
+   {
+      aiChat(1, "Called buildForwardTowers early");
+      buildForwardTowers();
    }
 
    if (unitsOnShip1 + unitsOnShip2 == 0)
@@ -3389,10 +3406,16 @@ void landForces()
    {
       shipLoc = kbUnitGetPosition(gLandingShip1);
       dropoff = getDropoffPoint(shipLoc, gAmphibiousAssaultTarget, 0);
-      if (distance(dropoff, shipLoc) < 5)
+      distFromShore = distance(dropoff, shipLoc);
+      if (distFromShore < 5)
       {
          aiChat(1, "Trying to eject ship 1");
          aiTaskUnitEject(gLandingShip1);
+      }
+      else if (distFromShore < 15)
+      {
+         aiTaskUnitEject(gLandingShip1);
+         aiTaskUnitMove(gLandingShip1, dropoff);
       }
       else
       {
@@ -3404,10 +3427,16 @@ void landForces()
    {
       shipLoc = kbUnitGetPosition(gLandingShip2);
       dropoff = getDropoffPoint(shipLoc, gAmphibiousAssaultTarget, 0);
-      if (distance(dropoff, shipLoc) < 5)
+      distFromShore = distance(dropoff, shipLoc);
+      if (distFromShore < 5)
       {
          aiChat(1, "Trying to eject ship 1");
          aiTaskUnitEject(gLandingShip2);
+      }
+      else if (distFromShore < 15)
+      {
+         aiTaskUnitEject(gLandingShip2);
+         aiTaskUnitMove(gLandingShip2, dropoff);
       }
       else
       {
@@ -3472,10 +3501,10 @@ void trainFromGalleons()
          {
             aiTaskUnitEject(unitID);
          }
-         /*else
+         else
          {
             aiTaskUnitTrain(unitID, unitToTrain);
-         }*/
+         }
       }
    }
    return;
@@ -3500,11 +3529,12 @@ void buildForwardTowers()
    if (getUnitCountByLocation(gTowerUnit, cPlayerRelationSelf,
                cUnitStateAlive, gAmphibiousAssaultTarget, 40) > 0)
    {
+      aiChat(1, "Moving to establish Forward base");
       gAmphibiousAssaultStage = cEstablishForwardBase;
       return;
    }
 
-   // ODon't make duplicate tower plans
+   // Don't make duplicate tower plans
    existingPlanID = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gTowerUnit);
    if (existingPlanID >= 0)
    {
@@ -3530,13 +3560,21 @@ void buildForwardTowers()
    // Try to find nearby villagers to use
    vilQuery = createSimpleUnitQuery(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 40);
    numberVil = kbUnitQueryExecute(vilQuery);
-   
-
-   planID = createLocationBuildPlan(gTowerUnit, towersToBuild, 100, true, -1, gAmphibiousAssaultTarget, numberVil);
-   for (i = 0; < numberVil)
-   {  // Add forward villagers
-      aiPlanAddUnit(planID, kbUnitQueryGetResult(vilQuery, i));
+   if (numberVil > 0)
+   {
+      planID = createLocationBuildPlan(gTowerUnit, towersToBuild, 100, true, -1, gAmphibiousAssaultTarget, numberVil);
+      for (i = 0; < numberVil)
+      {  // Add forward villagers
+         aiPlanAddUnit(planID, kbUnitQueryGetResult(vilQuery, i));
+      }
    }
+   else
+   {
+      planID = createLocationBuildPlan(gTowerUnit, towersToBuild, 100, true, -1, gAmphibiousAssaultTarget, 1);
+   }
+   aiChat(1, "created tower build plan");
+
+
 
    // Move on as long as the plan takes
    /*if (planID > 0)
@@ -3585,9 +3623,122 @@ void establishForwardBase()
    gForwardBaseLocation = gAmphibiousAssaultTarget;
    gForwardBaseUpTime = xsGetTime();
    gForwardBaseShouldDefend = true;
+   kbBaseSetMilitary(cMyID, gForwardBaseID, true);
+
+   xsEnableRule("forwardBaseDestroyedCheck");
+   xsEnableRule("transferMilitary");
+   xsEnableRule("fbBuildingChain");
 
    // We're done
    gAmphibiousAssaultStage = -1;
+}
+
+//==============================================================================
+/* FB building Chain
+   builds a chain of several buildings
+*/
+//==============================================================================
+
+rule fbBuildingChain
+inactive
+minInterval 30
+{  
+   if (gForwardBaseState != cForwardBaseStateActive)
+   {
+      // Quit early if we don't have the fb
+      xsDisableSelf();
+      return;
+   }
+
+   // Make a couple military building plans to get the jump on the FB building logic
+   int building0 = xsArrayGetInt(gMilitaryBuildings, 0);  // typically barracks
+   int building1 = xsArrayGetInt(gMilitaryBuildings, 1);  // typically stable
+   int tempBuilding = -1;
+   bool makeAnother = false;
+   int barracksNum = 1;
+   int stableNum = 2;
+   int vilIndex = 0;
+   if (btBiasInf >= btBiasCav)
+   {
+      barracksNum = 2;
+      stableNum = 1;
+   }
+
+   int building0num = getUnitCountByLocation(building0, cPlayerRelationSelf, cUnitStateABQ, gAmphibiousAssaultTarget, 30);
+   int building1num = -1;
+
+   if (building0num == 0)
+   {
+      makeAnother = true;
+      tempBuilding = building0num;
+   }
+   else
+   {
+      building0num = getUnitCountByLocation(building0, cPlayerRelationSelf, cUnitStateABQ, gAmphibiousAssaultTarget, 30);
+      building1num = getUnitCountByLocation(building1, cPlayerRelationSelf, cUnitStateABQ, gAmphibiousAssaultTarget, 30);
+   }
+
+   if (building0num < barracksNum)
+   {
+      makeAnother = true;
+      tempBuilding = building0num;
+   }
+   else if (building1num < stableNum)
+   {
+      makeAnother = true;
+      tempBuilding = building1num;
+   }
+   else
+   {
+      // We have enough, disable self
+      xsDisableSelf();
+   }
+
+   if (makeAnother == true)
+   {
+      int plan0 = createLocationBuildPlan(building0, barracksNum, 100, true, -1, gAmphibiousAssaultTarget, 1);
+
+      int vilQuery = createSimpleUnitQuery(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 40);
+      int numberVil = kbUnitQueryExecute(vilQuery);
+      if (numberVil > 0)
+      {
+         for (i = 0; < numberVil)
+         {  // Add forward villagers
+            aiPlanAddUnit(plan0, kbUnitQueryGetResult(vilQuery, i));
+         }
+      }
+   }
+}
+
+rule forwardBaseDestroyedCheck
+inactive
+minInterval 10
+{
+   // Do we still have buildings or military nearby?
+   if (getUnitCountByLocation(cUnitTypeLogicalTypeBuildingsNotWalls, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 30) <= 0)
+   {  
+      // No buildings. Check for a decent sized military
+      if (getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 30) <= 10)
+      {
+         gForwardBaseState = cForwardBaseStateNone;
+         gForwardBaseID = -1;
+         gForwardBaseLocation = cInvalidVector;
+         gForwardBaseShouldDefend = false;
+
+         endDefenseReflex();
+
+         gAmphibiousAssaultStage = cGatherNavy;
+         aiPlanDestroy(gAmphibiousAssaultPlan);
+         aiPlanDestroy(gAmphibiousArmyPlan);
+         gAmphibiousAssaultPlan = -1;
+         gAmphibiousArmyPlan = -1;
+
+         xsDisableRule("transferMilitary");
+         xsDisableSelf();
+
+         aiChat(1, "Beach abandoned");
+      }
+   }
 }
 
 
@@ -3611,16 +3762,32 @@ void establishForwardBase()
 //    change minimum ship number to a value
 //
 //==============================================================================
-void amphibiousAssault(vector location = cInvalidVector)
+bool amphibiousAssault(vector location = cInvalidVector)
 {
+   // Try a straight shot to enemy base for testing purposes
+   location = guessEnemyLocation();
    // test the location
    if (location == cInvalidVector)
    {
-      return;
+      location = selectForwardBaseBeachHead();
+   }
+   // Try just using the guessed enemy location
+   if (location == cInvalidVector)
+   {
+      location = guessEnemyLocation();
+   }
+   // If location still sucks, return and wait to be called later
+   if (location == cInvalidVector)
+   {
+      return false;
    }
    // Reset the stage
    gAmphibiousAssaultStage = cGatherNavy;
-   gAmphibiousAssaultTarget = getDropoffPoint(kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), location);
+   gAmphibiousAssaultTarget = getCoastalPoint(location, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 3, false);
+   // Put something here about the time to suppress sending this too much
+   sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, gAmphibiousAssaultTarget);
+   // another for testing
+   sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, guessEnemyLocation());
 
    if (gAmphibiousAssaultPlan < 0)
    {
@@ -3655,6 +3822,7 @@ void amphibiousAssault(vector location = cInvalidVector)
    // Enable the rule to monitor the amphibious assault
    //aiChat(1, "Amphibious Assault Rule Started");
    xsEnableRule("amphibiousAssaultRule");
+   return true;
 }
 
 //==============================================================================
@@ -3687,7 +3855,7 @@ minInterval 5
    }
 
    // Used by multiple rules
-   vector gatherPoint = gNavyVec;//getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
+   vector gatherPoint = getCoastalPoint(kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), gAmphibiousAssaultTarget, 5, true);
    vector pickupPoint = getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 4);
 
    switch (gAmphibiousAssaultStage)
@@ -3897,7 +4065,7 @@ vector selectForwardBaseBeachHead(void)
    {
       v = guessEnemyLocation(enemyPlayer);
       radius = 100.0;
-      if (getUnitCountByLocation(cUnitTypeLogicalTypeBuildingsNotWalls, enemyPlayer, cUnitStateAlive, v, radius) == 0)
+      if (getUnitCountByLocation(cUnitTypeLogicalTypeBuildingsNotWalls, enemyPlayer, cUnitStateAlive, v, radius) <= 0)
       {
          return (cInvalidVector);
       }
@@ -3959,7 +4127,7 @@ vector selectForwardBaseBeachHead(void)
             debugBuildings("    " + retVal + " is in area group " + kbAreaGroupGetIDByPosition(retVal));
             siteFound = true;
             // Don't build too close to any enemy building.
-            if (getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, retVal, 60.0) >= 0)
+            if (getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, retVal, 50.0) >= 0)
             {
                siteFound = false;
             }
@@ -6005,7 +6173,12 @@ minInterval 30
             if (gStartOnDifferentIslands == true && (gMigrationMap == false))
             {
                location = selectForwardBaseBeachHead();
-               if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(location), 
+               if (location == cInvalidVector)
+               {  // We never build in base with the tower forward base
+                  aiChat(1, "no location");
+                  return;
+               }
+               else if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(location), 
                      kbAreaGroupGetIDByPosition(guessEnemyLocation())) == false)
                {
                   // Try again if the FB isn't on the same island as the enemy
@@ -6150,7 +6323,7 @@ minInterval 30
       case cForwardBaseStateActive:
       { // Normal state. If fort is destroyed and base overrun, bail.
          aiChat(1, "cForwardBaseStateActive");
-         if (xsIsRuleEnabled("transferMilitary") == true)
+         if (xsIsRuleEnabled("transferMilitary") == false)
          {
             xsEnableRule("transferMilitary");
          }
@@ -6236,6 +6409,7 @@ minInterval 30
    aiPlanAddUnitType(transportPlan, cUnitTypeLogicalTypeLandMilitary, numberMilitary, numberMilitary, numberMilitary);
    aiPlanSetNoMoreUnits(transportPlan, true);
    aiPlanSetActive(transportPlan);
+   aiChat(1, "Trying to transfer: " + numberMilitary + " military units");
 
    // go the entire game to catch stray settlers/wagons/scouts
 }
