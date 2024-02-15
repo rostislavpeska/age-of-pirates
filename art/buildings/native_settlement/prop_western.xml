@@ -109,110 +109,7 @@
             <attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
         </anim>
 	</submodel>
-
-    <submodel>
-		Fighting1
-		<attachment>
-			gun
-             <component>gun
-                <assetreference type="GrannyModel">
-                    <file>units\spc\outlaws\outlaw_pistol_gun</file>
-                </assetreference>
-            </component>
-            <anim>Idle
-                <component>gun</component>
-            </anim>
-		</attachment>
-        <attachment>hat
-            <component>hat
-                <assetreference type="GrannyModel">
-                    <file>units\spc\outlaws\desperado_hat</file>
-                </assetreference>
-            </component>
-            <anim>Idle
-                <component>hat</component>
-            </anim>
-        </attachment>
-		<component>
-			Fighting1
-			<assetreference type="GrannyModel">
-				<file>units\spc\outlaws\desperado</file>
-			</assetreference>
-			<decal>
-				<effecttype>default</effecttype>
-				<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
-				<width>1.00</width>
-				<height>1.00</height>
-			</decal>
-		</component>
-		<anim>
-			Idle
-			<assetreference type="GrannyAnim">
-                <file>nuggets\outlaw_kidnap\outlaw_pistol_attackA</file>
-                <tag type="Attack">0.39</tag>
-                <tag type="SpecificSoundSet" checkvisible="1" set="PistolShot">0.39</tag>
-                <tag type="Particles" particlename="pistolshot_right">0.39</tag>
-            </assetreference>
-            <assetreference type="GrannyAnim">
-                <file>nuggets\outlaw_kidnap\outlaw_pistol_reload</file>
-            </assetreference>
-			<component>Fighting1</component>
-			<attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach>
-            <attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
-		</anim>
-	</submodel>
-
-    <submodel>
-		Fighting2
-		<attachment>
-			gun
-             <component>gun
-                <assetreference type="GrannyModel">
-                    <file>units\spc\outlaws\outlaw_pistol_gun</file>
-                </assetreference>
-            </component>
-            <anim>Idle
-                <component>gun</component>
-            </anim>
-		</attachment>
-        <attachment>hat
-            <component>hat
-                <assetreference type="GrannyModel">
-                    <file>units\spc\outlaws\outlaw_pistol_us_hat</file>
-                </assetreference>
-            </component>
-            <anim>Idle
-                <component>hat</component>
-            </anim>
-        </attachment>
-		<component>
-			Fighting2
-			<assetreference type="GrannyModel">
-				<file>units\spc\outlaws\outlaw_shotgun_us</file>
-			</assetreference>
-			<decal>
-				<effecttype>default</effecttype>
-				<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
-				<width>1.00</width>
-				<height>1.00</height>
-			</decal>
-		</component>
-		<anim>
-			Idle
-			<assetreference type="GrannyAnim">
-                <file>nuggets\outlaw_kidnap\outlaw_pistol_attackA</file>
-                <tag type="Attack">0.39</tag>
-                <tag type="SpecificSoundSet" checkvisible="1" set="PistolShot">0.39</tag>
-                <tag type="Particles" particlename="pistolshot_right">0.39</tag>
-            </assetreference>
-            <assetreference type="GrannyAnim">
-                <file>nuggets\outlaw_kidnap\outlaw_pistol_reload</file>
-            </assetreference>
-			<component>Fighting2</component>
-			<attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach>
-            <attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
-		</anim>
-	</submodel>
+		
 	
 	<component>
 		<logic type="Variation">
@@ -224,12 +121,6 @@
 			</data>
             <data>
 				<submodelref ref="Digging"/>
-			</data>
-            <data>
-				<submodelref ref="Fighting1"/>
-			</data>
-            <data>
-				<submodelref ref="Fighting2"/>
 			</data>
 			
 		</logic>

@@ -5,7 +5,7 @@
 	<height>23</height>
 	<ignoreplacementrules>1</ignoreplacementrules>
 	<selectassingleunit>1</selectassingleunit>
-	<workonassingleunit>1</workonassingleunit>
+	<workonassingleunit>0</workonassingleunit>
 	<units>
 		<unit variation="161" posx="0.7560" posz="-0.0232" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpTrainStopper</unit>
 		<unit variation="35" posx="0.5319" posz="0.0702" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpTrainStopper</unit>
