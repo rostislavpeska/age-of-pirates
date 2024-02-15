@@ -21565,30 +21565,34 @@
     <dbid>20218</dbid>
     <displaynameid>32671</displaynameid>
     <editornameid>301059</editornameid>
-    <obstructionradiusx>1.0000</obstructionradiusx>
-    <obstructionradiusz>1.0000</obstructionradiusz>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
+    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>TowerSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
     <unittype>EmbellishmentClass</unittype>
-    <unittype>Unit</unittype>
-    <flag>NoHPBar</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
     <flag>NonAutoFormedUnit</flag>
-    <flag>VisibleUnderFog</flag>
-    <flag>NotSelectable</flag>
-    <flag>DoNotCreateUnitGroupAutomatically</flag>
-    <flag>RMCanRotate</flag>
-    <flag>NonCollideable</flag>
+    <flag>Doppled</flag>
     <flag>Invulnerable</flag>
-    <flag>NotCommandable</flag>
+    <flag>SelectWithObstruction</flag>
     <flag>Tracked</flag>
-    <flag>VariationLocked</flag>
-    <flag>ColorTransformNonGaia</flag>
-    <flag>ApplyFlagOverrideIfGaia</flag>
-    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>AllowSocketPlacement</flag>
     <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotDeleteable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
   </unit>
   <unit id="20219" name="zpTrainTracks">
     <dbid>20219</dbid>
@@ -22698,6 +22702,51 @@
       <damageflags>SelfAllyEnemy</damageflags>
     </protoaction>
   </unit>
+  <unit name="TownCenter">
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+  </unit>
+
+  <!--<unit name="SocketTradeRoute">
+    <dbid>551</dbid>
+    <displaynameid>29937</displaynameid>
+    <editornameid>29999</editornameid>
+    <obstructionradiusx>7.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <socketoffsetx>-3.0000</socketoffsetx>
+    <socketoffsetz>0.0000</socketoffsetz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\trading_post\trade_route_socket.xml</animfile>
+    <icon>resources\art\trade_route\trade1.png</icon>
+    <minimapicon>ui\minimap\t</minimapicon>
+    <portraiticon>resources\art\trade_route\trade_route_1_portrait.png</portraiticon>
+    <rollovertextid>30051</rollovertextid>
+    <shortrollovertextid>30052</shortrollovertextid>
+    <los>0.0000</los>
+    <unittype mergeMode="remove">LogicalTypeBuildingsNotWalls</unittype>
+    <unittype mergeMode="remove">LogicalTypeShipsAndBuildings</unittype>
+    <unittype mergeMode="remove">LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype mergeMode="remove">EmbellishmentClass</unittype>
+    <unittype mergeMode="remove">Unattackable</unittype>
+    <unittype mergeMode="remove">Building</unittype>
+    <unittype mergeMode="remove">LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype mergeMode="remove">Socket</unittype>
+    <unittype mergeMode="remove">TradePostSocket</unittype>
+    <flag mergeMode="remove">FlattenGround</flag>
+    <flag mergeMode="remove">NoUnitAI</flag>
+    <flag mergeMode="remove">Immoveable</flag>
+    <flag mergeMode="remove">NoBloodOnDeath</flag>
+    <flag mergeMode="remove">NoHPBar</flag>
+    <flag mergeMode="remove">NonAutoFormedUnit</flag>
+    <flag mergeMode="remove">Doppled</flag>
+    <flag mergeMode="remove">ForceToGaia</flag>
+    <flag mergeMode="remove">Invulnerable</flag>
+    <flag mergeMode="remove">SelectWithObstruction</flag>
+    <flag mergeMode="remove">ColorTransformNonGaia</flag>
+    <flag mergeMode="remove">AlwaysShowAsSocket</flag>
+    <flag mergeMode="remove">Tracked</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+  </unit>-->
 
 
 

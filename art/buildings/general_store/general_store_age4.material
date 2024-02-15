@@ -3,13 +3,11 @@
     <materialdef name="default_doublesided">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="buildings\general_store\textures\general_store_mata_BaseColor_Age4">
+      <texture name="BaseColor" override="homecity\spc\general_store\textures\general_store_mata_basecolor">
       </texture>
       <texture name="Normals" override="homecity\spc\general_store\textures\general_store_mata_normals">
       </texture>
       <texture name="Masks" override="homecity\spc\general_store\textures\general_store_mata_masks">
-      </texture>
-      <texture name="Details" override="buildings\general_store\textures\general_store_mata_Details">
       </texture>
     </parameters>
   </submaterial>
