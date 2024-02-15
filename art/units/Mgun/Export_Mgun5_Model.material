@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\Mgun\T\Mata_Basecolor">
+      </texture>
+      <texture name="Normals" override="units\Mgun\T\Mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\Mgun\T\Mata_Masks">
+      </texture>
+      <texture name="Details" override="units\Mgun\T\Mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

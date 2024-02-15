@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<animfile>
+    <component>mortar_guy
+        <logic type="Tech">
+            <none>
+                <logic type="LowPoly">
+                    <normal>
+                        <assetreference type="GrannyModel">
+                            <file>units\Mgun\Prussian_jager</file>
+                        </assetreference>
+                    </normal>
+                    <lowpoly>
+                        <assetreference type="GrannyModel">
+                            <file>units\asians\chinese\flame_thrower\flameThrower_driver_0</file>
+                        </assetreference>
+                    </lowpoly>
+                </logic>
+            </none>
+            <ypdisciplinedflamethrower>
+                <logic type="LowPoly">
+                    <normal>
+                        <assetreference type="GrannyModel">
+                            <file>units\asians\chinese\flame_thrower\flameThrower_driver_0</file>
+                        </assetreference>
+                    </normal>
+                    <lowpoly>
+                        <assetreference type="GrannyModel">
+                            <file>units\asians\chinese\flame_thrower\flameThrower_driver_0</file>
+                        </assetreference>
+                    </lowpoly>
+                </logic>
+            </ypdisciplinedflamethrower>
+            <yphonoredflamethrower>
+                <logic type="LowPoly">
+                    <normal>
+                        <assetreference type="GrannyModel">
+                            <file>units\asians\chinese\flame_thrower\flameThrower_driver_0</file>
+                        </assetreference>
+                    </normal>
+                    <lowpoly>
+                        <assetreference type="GrannyModel">
+                            <file>units\asians\chinese\flame_thrower\flameThrower_driver_0</file>
+                        </assetreference>
+                    </lowpoly>
+                </logic>
+            </yphonoredflamethrower>
+        </logic>
+    </component>
+    <anim>Walk
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_walk00</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+    <anim>Jog
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_walk00</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+    <anim>Run
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_walk00</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+    <anim>Idle
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_idle00</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_bored00</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+    <anim>bored
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_bored00</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_bored01</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+    <anim>Death_by_melee
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_death00</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+    <anim>Death_by_range
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_death00</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+    <anim>Cheer
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_cheer00</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+    <anim>Bombard_ranged_idle
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_idle00</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_bored00</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+    <anim>Bombard_ranged_attack
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_bombardAttack00</file>
+            <tag type="Attack">0.50</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="CulverinShoot">0.40</tag>
+        </assetreference>
+        <component>mortar_guy</component>
+        <attach a="attachment_smoke_puff" frombone="ATTACHPOINT" tobone="MASTER" syncanims="0"></attach>
+    </anim>
+    <anim>Bombard_aim
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_idle00</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+    <anim>Bombard_bored
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_idle00</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+    <anim>Bombard_walk
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_walk00</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+    <anim>Bombard_jog
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_walk00</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+    <anim>Bombard_run
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_walk00</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+    <anim>Bombard_cheer
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_cheer00</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+    <anim>Bombard_Recoil
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_recoil00</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+    <anim>Bombard_death
+        <assetreference type="GrannyAnim">
+            <file>units\asians\chinese\flame_thrower\flameThrower_driver_death00</file>
+        </assetreference>
+        <component>mortar_guy</component>
+    </anim>
+</animfile>

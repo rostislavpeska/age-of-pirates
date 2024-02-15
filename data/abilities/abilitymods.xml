@@ -137,4 +137,10 @@
     <ability>zpApocalypseHorsemen<tech>zpNatApocalypseHorsemen</tech><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpjessejames>
+  <zpphoenixmgun>
+    <ability>dePowerDismount<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
+  </zpphoenixmgun>
+  <zpphoenixmguncarrier>
+    <ability>dePowerMount<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
+  </zpphoenixmguncarrier>
 </abilitymods>
