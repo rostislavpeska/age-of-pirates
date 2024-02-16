@@ -180,6 +180,8 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	int farAvoidTradeSockets = rmCreateTypeDistanceConstraint("far avoid trade sockets", "sockettraderoute", 16.0);
 	int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 6.0);
 	int HCspawnLand = rmCreateTerrainDistanceConstraint("HC spawn away from land", "land", true, 12.0);
+	int avoidTrainStationA = rmCreateTypeDistanceConstraint("avoid trainstation a", "spSocketTrainStationA", 4.0);
+	int avoidTrainStationB = rmCreateTypeDistanceConstraint("avoid trainstation b", "spSocketTrainStationB", 4.0);
 
 	// Lake Constraints
 	int greatLakesConstraint=rmCreateClassDistanceConstraint("avoid the great lakes", classGreatLake, 5.0);
@@ -203,6 +205,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	int avoidTradeSocketFar2=rmCreateTypeDistanceConstraint("stay away from Trade Socket far 2", "SocketTradeRoute", 45.0);
 	int avoidTradeRouteMin = rmCreateTradeRouteDistanceConstraint("trade route min", 5.0);
 	int avoidTownCenter=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 25.0);
+	int avoidTownCenterShort=rmCreateTypeDistanceConstraint("avoid Town Center Short", "townCenter", 6.0);
 
    // KOTH
    int avoidKOTH=rmCreateTypeDistanceConstraint("avoid koth filler", "ypKingsHill", 12.0);
@@ -448,8 +451,8 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.2);
 			rmPlaceObjectDefAtPoint(stopperID5, 0, socketLoc1);
 			vector StopperLoc5 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID5, 0));
-			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
-			rmPlaceGroupingAtLoc(stationGrouping002, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
+			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)+2), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
+			rmPlaceGroupingAtLoc(stationGrouping002, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)+2), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
 
 			if (cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers ==8){	
 				socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.39);
@@ -605,11 +608,11 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 
 // Western Village
 
-int jewish1VillageTypeID = rmRandInt(1, 1);
-int jewish2VillageTypeID = rmRandInt(1, 1);
-int jewish3VillageTypeID = rmRandInt(1, 1);
+int jewish1VillageTypeID = rmRandInt(1, 2);
+int jewish2VillageTypeID = 3-jewish1VillageTypeID;
+int jewish3VillageTypeID = rmRandInt(1, 2);
 
-int jewish1ID = rmCreateGrouping("jewish 1", "WildWest_Village_0"+jewish2VillageTypeID);
+int jewish1ID = rmCreateGrouping("jewish 1", "WildWest_Village_0"+jewish1VillageTypeID);
 int jewish2ID = rmCreateGrouping("jewish 2", "WildWest_Village_0"+jewish2VillageTypeID);
 int jewish3ID = rmCreateGrouping("jewish 3", "WildWest_Village_0"+jewish3VillageTypeID);
 
@@ -884,6 +887,8 @@ if (cNumberNonGaiaPlayers == 8){
 		rmAddObjectDefItem(TCID, "TownCenter", 1, 0.0);
 	rmAddObjectDefToClass(TCID, classStartingResource);
 	rmAddObjectDefConstraint(TCID, avoidTradeRouteSocketMin);
+	rmAddObjectDefConstraint(TCID, avoidTrainStationA);
+	rmAddObjectDefConstraint(TCID, avoidTrainStationB);
 	rmAddObjectDefConstraint(TCID, longPlayerEdgeConstraint);
 	rmSetObjectDefMinDistance(TCID, 10.0);
 	rmSetObjectDefMaxDistance(TCID, 17.0);
@@ -891,24 +896,28 @@ if (cNumberNonGaiaPlayers == 8){
 	// Starting mines
 	int playerGoldID = rmCreateObjectDef("player mine");
 	rmAddObjectDefItem(playerGoldID, "MineCopper", 1, 0);
-	rmSetObjectDefMinDistance(playerGoldID, 16.0);
-	rmSetObjectDefMaxDistance(playerGoldID, 16.0);
+	rmSetObjectDefMinDistance(playerGoldID, 12.0);
+	rmSetObjectDefMaxDistance(playerGoldID, 20.0);
 	rmAddObjectDefToClass(playerGoldID, classStartingResource);
 	rmAddObjectDefConstraint(playerGoldID, avoidTradeRouteSocketMin);
+	rmAddObjectDefConstraint(playerGoldID, avoidTrainStationA);
+	rmAddObjectDefConstraint(playerGoldID, avoidTrainStationB);
 	rmAddObjectDefConstraint(playerGoldID, avoidStartingResourcesShort);
 	rmAddObjectDefConstraint(playerGoldID, avoidTradeRouteMin);
 	rmAddObjectDefConstraint(playerGoldID, avoidImpassableLand);
 	rmAddObjectDefConstraint(playerGoldID, longPlayerEdgeConstraint);
 
 	int playerTreeID = rmCreateObjectDef("player trees");
-	rmAddObjectDefItem(playerTreeID, "TreeSonora", 10, 8.0);
+	rmAddObjectDefItem(playerTreeID, "TreeSonora", 15, 8.0);
     rmSetObjectDefMinDistance(playerTreeID, 15);
-    rmSetObjectDefMaxDistance(playerTreeID, 19);
+    rmSetObjectDefMaxDistance(playerTreeID, 25);
 	rmAddObjectDefToClass(playerTreeID, classStartingResource);
 	rmAddObjectDefToClass(playerTreeID, rmClassID("classForest"));
 	rmAddObjectDefConstraint(playerTreeID, avoidStartingResources);
 	rmAddObjectDefConstraint(playerTreeID, avoidImpassableLand);
 	rmAddObjectDefConstraint(playerTreeID, avoidTradeRouteMin);
+	rmAddObjectDefConstraint(playerTreeID, avoidTrainStationA);
+	rmAddObjectDefConstraint(playerTreeID, avoidTrainStationB);
 	rmAddObjectDefConstraint(playerTreeID, avoidTradeRouteSocketMin);
 	rmAddObjectDefConstraint(playerTreeID, longPlayerEdgeConstraint);
 
@@ -921,6 +930,8 @@ if (cNumberNonGaiaPlayers == 8){
 	rmAddObjectDefToClass(playerHerdID, classStartingResource);		
 	rmAddObjectDefConstraint(playerHerdID, avoidStartingResourcesShort);
 	rmAddObjectDefConstraint(playerHerdID, avoidTradeRouteSocketMin);
+	rmAddObjectDefConstraint(playerHerdID, avoidTrainStationA);
+	rmAddObjectDefConstraint(playerHerdID, avoidTrainStationB);
 	rmAddObjectDefConstraint(playerHerdID, avoidTradeRouteMin);
 	rmAddObjectDefConstraint(playerHerdID, longPlayerEdgeConstraint);
 
@@ -934,17 +945,24 @@ if (cNumberNonGaiaPlayers == 8){
 	rmAddObjectDefConstraint(playerNuggetID, avoidStartingResourcesShort);
 	rmAddObjectDefConstraint(playerNuggetID, avoidTradeRouteSocketMin);
 	rmAddObjectDefConstraint(playerNuggetID, avoidTradeRouteMin);
+	rmAddObjectDefConstraint(playerNuggetID, avoidTrainStationA);
+	rmAddObjectDefConstraint(playerNuggetID, avoidTrainStationB);
 	rmAddObjectDefConstraint(playerNuggetID, longPlayerEdgeConstraint);
 
 
 for(i=1; <numPlayer)
 	{
 	rmPlaceObjectDefAtLoc(TCID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+	}
+
+for(i=1; <numPlayer)
+	{
 	vector TCLoc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(TCID, i));
-	rmPlaceObjectDefAtLoc(startingUnits, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-	rmPlaceObjectDefAtLoc(playerGoldID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+	
 	rmPlaceObjectDefAtLoc(playerTreeID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 	rmPlaceObjectDefAtLoc(playerHerdID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+	rmPlaceObjectDefAtLoc(playerGoldID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+	rmPlaceObjectDefAtLoc(startingUnits, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 	rmPlaceObjectDefAtLoc(playerNuggetID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 }
 
@@ -3408,7 +3426,6 @@ for(i=0; < saltCount)
 		}
 
 	}
-
 	// Testing
 
 	/*for (k=1; <= cNumberNonGaiaPlayers) {
