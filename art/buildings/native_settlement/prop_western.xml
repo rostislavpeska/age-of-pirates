@@ -37,7 +37,7 @@
         <attachment>hat
             <component>hat
                 <assetreference type="GrannyModel">
-                    <file>units\spc\outlaws\outlaw_pistol_us_hat</file>
+                    <file>units\spc\outlaws\outlaw_rider_hat</file>
                 </assetreference>
             </component>
             <anim>Idle
@@ -45,9 +45,9 @@
             </anim>
         </attachment>
 		<component>
-			Sitting2
+			Sitting
 			<assetreference type="GrannyModel">
-				<file>units\spc\outlaws\outlaw_pistol_us</file>
+				<file>units\spc\outlaws\outlaw_pistol</file>
 			</assetreference>
 			<decal>
 				<effecttype>default</effecttype>
@@ -62,7 +62,7 @@
 			<assetreference type="GrannyAnim">
 				<file>nuggets\outlaw_kidnap\kidnap_outlawA_idleE</file>
 			</assetreference>
-			<component>Sitting2</component>
+			<component>Sitting</component>
 		</anim>
 	</submodel>
 

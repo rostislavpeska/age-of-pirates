@@ -1,0 +1,30 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\Mgun\prussian_jager_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\infantry_ranged\skirmisher\textures\prussian_jager_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\infantry_ranged\skirmisher\textures\prussian_jager_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\infantry_ranged\skirmisher\textures\prussian_jager_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\Mgun\prussian_jager_hat_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\infantry_ranged\skirmisher\textures\prussian_jager_hat_matb_Normals">
+      </texture>
+      <texture name="Masks" override="units\infantry_ranged\skirmisher\textures\prussian_jager_hat_matb_Masks">
+      </texture>
+      <texture name="Details" override="units\infantry_ranged\skirmisher\textures\prussian_jager_hat_matb_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
