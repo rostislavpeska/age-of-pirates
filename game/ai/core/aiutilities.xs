@@ -1928,7 +1928,11 @@ int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint 
    int unitPlanID = -1;
    int transportID = -1;
    float transportHitpoints = 0.0;
+   int bestShipValue = -1;
+   int tempShipValue = -1;
    
+   // AssertiveWall: reduce pri to 99 to account for some other transports
+   // try to look for a "best" ship
    for (i = 0; < numberFound)
    {
       shipID = kbUnitQueryGetResult(shipQueryID, i);
@@ -1938,10 +1942,19 @@ int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint 
          continue;
       }
       shipHitpoints = kbUnitGetCurrentHitpoints(shipID);
-      if (shipHitpoints > transportHitpoints)
+      // AssertiveWall: calculation for ship "value"
+      tempShipValue = shipHitpoints * (100 - aiPlanGetDesiredPriority(unitPlanID));
+      if (kbUnitGetProtoUnitID(shipID) == gGalleonUnit)
+      {
+         tempShipValue = 2 * tempShipValue;
+      }
+
+      //if (shipHitpoints > transportHitpoints)
+      if (tempShipValue > bestShipValue)
       {
          transportID = shipID;
          transportHitpoints = shipHitpoints;
+         bestShipValue = tempShipValue;
       }
    }
 
@@ -1950,7 +1963,9 @@ int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint 
       return (-1);
    }
 
-   int planID = aiPlanCreate(kbGetUnitTypeName(kbUnitGetProtoUnitID(transportID)) + " Transport Plan, ", cPlanTransport);
+   // AssertiveWall: Add index here, time in seconds. I think it might be preventing me from creating too many
+   int index = xsGetTime() / 1000;
+   int planID = aiPlanCreate(kbGetUnitTypeName(kbUnitGetProtoUnitID(transportID)) + " Transport Plan, " + index, cPlanTransport);
 
    if (planID < 0)
    {
@@ -1965,30 +1980,7 @@ int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint 
    int minShips = 1;
    int wantedShips = 1;
    int maxShips = 1;
-   /*if (age <= cAge2)
-   {
-      minShips = 1;
-      wantedShips = 2;
-      maxShips = 3;
-   }
-   if (age == cAge3)
-   {
-      minShips = 1;
-      wantedShips = 2;
-      maxShips = 4;         
-   }
-   if (age == cAge4)
-   {
-      minShips = 1;
-      wantedShips = 2;
-      maxShips = 5;         
-   }
-   if (age == cAge5)
-   {
-      minShips = 1;
-      wantedShips = 3;
-      maxShips = 6;         
-   }*/
+
    // must add the transport unit otherwise other plans might try to use this unit
    aiPlanAddUnitType(planID, kbUnitGetProtoUnitID(transportID), minShips, wantedShips, maxShips);
 
@@ -2174,6 +2166,7 @@ bool isDefendingOrAttacking()
              (existingPlanID != gNavyDefendPlan) &&
              (existingPlanID != gNavyAttackPlan) &&
              (existingPlanID != gCoastalGunPlan) &&
+             (existingPlanID != gforwardArmyPlan) &&    // AssertiveWall: Added the forward base army plan
              (existingPlanID != gEndlessWaterRaidPlan)) // AssertiveWall: Don't stop if there's navy attack plans
          {
             debugUtilities("isDefendingOrAttacking: don't create another combat plan because we already have one named: "
