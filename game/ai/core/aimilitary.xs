@@ -615,6 +615,10 @@ minInterval 28
       {
          updateMilitaryTrainPlanBuildings(gForwardBaseID);
       }
+      else
+      {
+         updateMilitaryTrainPlanBuildings(-1);
+      }
 
 
       /*if (cDifficultyCurrent >= cDifficultyExpert)
@@ -1569,7 +1573,7 @@ minInterval 15
             sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackTradeSite,
                kbBaseGetLocation(targetPlayer, targetBaseID));
          }
-         else if (getUnitCountByLocation(gEconUnit, cPlayerRelationEnemyNotGaia, cUnitStateAlive, targetBaseLocation, 15.0) > 7)
+         else if (getUnitCountByLocation(gEconUnit, cPlayerRelationEnemyNotGaia, cUnitStateAlive, targetBaseLocation, 15.0) > 3)
          {
             sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemySettlers,
                kbBaseGetLocation(targetPlayer, targetBaseID));
@@ -3596,6 +3600,13 @@ minInterval 10
             return; // If we're in trouble in any base, ignore the others.
          }
       } // For baseIndex...
+   }
+
+   // AssertiveWall: If we made it this far, no one is in trouble. Move defense reflex to forward base
+   if ((gForwardBaseState == cForwardBaseStateActive || gForwardBaseState == cForwardBaseStateBuilding) &&
+         gForwardBaseShouldDefend == true)
+   {
+      moveDefenseReflex(gForwardBaseLocation, 50, gForwardBaseID);
    }
 }
 

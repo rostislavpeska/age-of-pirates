@@ -86,6 +86,11 @@ extern int gWaterNuggetTimeout = -1;         // Stores when a water nugget plan 
 extern bool gIsPirateMap = false;            // Used for pirates of the carribean mod
 extern bool gIsArchipelagoMap = false;       // Used for multi-island maps like archipelago
 
+extern int gforwardArmyPlan = -1;               // Plan for keeping some army at forward base
+extern int gforwardArmyTransport = -1;
+extern int gAmphibiousReinforcementPlan = -1;   // Used to store the plan for reinforcing the assault
+extern int gAmphibiousReinforcementStage = -1;
+extern int gAmphibiousReinforcementArmy = -1;
 extern int gAmphibiousAssaultStage = 0;         // Used to store the state of the amphibious assault
 extern vector gAmphibiousAssaultTarget = cInvalidVector; 
 extern int gAmphibiousAssaultPlan = -1;         // The plan to handle the amphibious assault ships

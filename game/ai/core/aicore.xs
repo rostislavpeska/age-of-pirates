@@ -1463,6 +1463,12 @@ minInterval 10
       return;
    }*/
 
+   // AssertiveWall: Effectively turn this off while amphibious forward base is on
+   if (gStartOnDifferentIslands == true && gForwardBaseState != cForwardBaseStateNone && gAmphibiousAssaultTarget != cInvalidVector)
+   {
+      return;
+   }
+
    // Find idle units away from our base.
    int baseAreaGroupID = kbAreaGroupGetIDByPosition(homePosition);
    int areaGroupID = -1;
@@ -2478,7 +2484,11 @@ minInterval 5
       if ((cvOkToBuild == true) && 
           (cvOkToBuildForts == true))
       {
-         if (btRushBoom >= 0.5 || (cRandomMapName == "eugreatturkishwar" && btOffenseDefense == 0))
+         if (btRushBoom >= 0.5 && gStartOnDifferentIslands == false)
+         {  // In age 2 make forward bases with towers instead of forts
+            xsEnableRule("forwardTowerBaseManager");
+         }
+         else if (cRandomMapName == "eugreatturkishwar" && btOffenseDefense == 0)
          {
             xsEnableRule("forwardBaseManager");
          }
