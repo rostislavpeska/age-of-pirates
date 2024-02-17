@@ -608,8 +608,8 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 
 // Western Village
 
-int jewish1VillageTypeID = rmRandInt(1, 2);
-int jewish2VillageTypeID = 3-jewish1VillageTypeID;
+int jewish1VillageTypeID = rmRandInt(1, 5);
+int jewish2VillageTypeID = rmRandInt(1, 5);
 int jewish3VillageTypeID = rmRandInt(1, 2);
 
 int jewish1ID = rmCreateGrouping("jewish 1", "WildWest_Village_0"+jewish1VillageTypeID);
@@ -3426,6 +3426,7 @@ for(i=0; < saltCount)
 		}
 
 	}
+
 	// Testing
 
 	/*for (k=1; <= cNumberNonGaiaPlayers) {
