@@ -1,6 +1,7 @@
 <animfile>
     <definebone>bone_launchpoint</definebone>
     <definebone>bone_explosion</definebone>
+    <definebone>bone_muzzle</definebone>
 
     <attachment>Cannon
         <include>units\trains\armored_train\guncar_gun_base.xml</include>
