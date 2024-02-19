@@ -187,4 +187,7 @@
 	<particleset name="mustard_gas">
 		<particle filename="effects\impacts\mustardgas.particle"></particle>
 	</particleset>
+	<particleset name="gatlinggunshot">
+		<particle filename="weapon_fire\gatling_shot.pkfx" bone="bone_Gatling"></particle>
+	</particleset>
 </particlesetdef>

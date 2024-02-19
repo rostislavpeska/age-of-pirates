@@ -136,17 +136,30 @@
     <targetspeedboost>1</targetspeedboost>
   </action>
   <action>
-    <name stringid="38118">BuildingAttack</name>
+    <name stringid="38127">BuildingAttack</name>
     <type>Attack</type>
-    <rangedlogic>1</rangedlogic>
-    <maxrange>6</maxrange>
-    <rate type="LogicalTypeShipsAndBuildings">1.0 </rate>
     <attackaction>1</attackaction>
-    <speedboost>1</speedboost>
-    <anim>Raze_attack</anim>
-    <idleanim>Raze_idle</idleanim>
-    <impacteffect>effects\impacts\torch</impacteffect>
-    <projectile>TorchProjectile</projectile>
+    <rangedlogic>1</rangedlogic>
+    <anim>Volley_standing_attack</anim>
+    <reloadanim>Volley_standing_reload</reloadanim>
+    <idleanim>Volley_standing_idle</idleanim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>1.5</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>InvisibleProjectile</projectile>
+    <impacteffect>effects\impacts\gun</impacteffect>
+    <minrange>2</minrange>
+    <rate type="Building">1.0 </rate>
+    <throw>1</throw>
+    <damage>13.000000</damage>
+    <maxrange>12.000000</maxrange>
+    <rof>2.000000</rof>
+    <instantballistics>1</instantballistics>
   </action>
   <action>
     <name stringid="69148">DelayedTransform</name>

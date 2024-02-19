@@ -16,7 +16,7 @@
         <name stringid="301083">ExtraHPWagon</name>
         <type>AutoRangedModify</type>
         <active>0</active>
-        <maxrange>50</maxrange>
+        <maxrange>100</maxrange>
         <modifyabstracttype>AbstractArmoredTrain</modifyabstracttype>
         <persistent>1</persistent>
         <modifyself>1</modifyself>

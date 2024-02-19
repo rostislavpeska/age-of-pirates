@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="Mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\MGun\T\SMG_Default_0_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\MGun\T\SMG_Default_0_Normals">
+      </texture>
+      <texture name="Masks" override="units\MGun\T\SMG_Default_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

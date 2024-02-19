@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <animfile>
     <definebone>bone_hat</definebone>
     <definebone>Bip01_AttachRt</definebone>
@@ -7,15 +6,9 @@
     <definebone>bone_gun</definebone>
     <definebone>Bip01 Prop1</definebone>
     <definebone>Bip01 Prop2</definebone>
-    <definebone>LAUNCHPOINT</definebone>
-    <definebone>launchpoint</definebone>
-    <definebone>bone_launchpoint</definebone>
-    <definebone>BONE_LAUNCHPOINT</definebone>
-    <definebone>Bone_LaunchPoint</definebone>
-    <definebone>Bone_LAUNCHPOINT</definebone>
-    <attachment>gun
-        <include>units\infantry_ranged\landwehr\landwehr_guns.xml</include>
-    </attachment>
+
+    <attachment>gun<component>gun<assetreference type="GrannyModel"><file>units\MGun\AOE3DE_Thompson_Model</file></assetreference></component><anim>Idle<component>gun</component></anim></attachment>
+    <attachment>backpack<component>backpack<assetreference type="GrannyModel"><file>units\infantry_ranged\cacadore\cacadore_2age_pack</file></assetreference></component><anim>Idle<component>backpack</component></anim></attachment>
     <attachment>sword
         <include>units\attachments\sword.xml</include>
     </attachment>
@@ -52,33 +45,12 @@
             <component>hammer</component>
         </anim>
     </attachment>
-    <attachment>head
-        <include>units\Mgun\aa.xml</include>
-    </attachment>
     <component>ModelComp
-        <logic type="Tech">
-            <none>
-                <assetreference type="GrannyModel">
-                    <file>units\Mgun\Prussian_jager</file>
-                </assetreference>
-            </none>
-            <deveteranlandwehrsshadow>
-                <assetreference type="GrannyModel">
-                    <file>units\Mgun\Prussian_jager</file>
-                </assetreference>
-            </deveteranlandwehrsshadow>
-            <deguardlandwehrsshadow>
-                <assetreference type="GrannyModel">
-                    <file>units\Mgun\Prussian_jager</file>
-                </assetreference>
-            </deguardlandwehrsshadow>
-            <deimperiallandwehrsshadow>
-                <assetreference type="GrannyModel">
-                    <file>units\Mgun\Prussian_jager</file> 
-                </assetreference>
-            </deimperiallandwehrsshadow>
-        </logic>
+        <assetreference type="GrannyModel">
+            <file>units\Mgun\prussian_jager</file>
+        </assetreference>
         <attach a="gun" frombone="bone_crossbow" tobone="BIP01 PROP1" syncanims="0"></attach>
+        <attach a="backpack" frombone="bone_backpack" tobone="SPINE1" syncanims="0"></attach>
         <decal>
             <effecttype>default</effecttype>
             <texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
@@ -247,17 +219,22 @@
         <component>ModelComp</component>
     </anim>
     <anim>Volley_standing_attack
+
         <assetreference type="GrannyAnim">
-            <file>animation_library\range\volley\volley_standing_fire</file>
-            <tag type="Attack">0.43</tag>
-            <tag type="SpecificSoundSet" checkvisible="1" set="RifleShot">0.43</tag>
-            <tag type="Particles" particlename="musketshot">0.43</tag>
+            <file>animation_library\shared\flame_thrower_attack</file>
+            <tag type="SpecificSoundSet" set="GatlingGun5Shot" checkvisible="1">0.2</tag>
+            <tag type="Attack">0.5</tag>
+            <tag type="Particles" particlename="rifleshot">0.2</tag>
+            <tag type="Particles" particlename="rifleshot">0.3</tag>
+            <tag type="Particles" particlename="rifleshot">0.4</tag>
+            <tag type="Particles" particlename="rifleshot">0.5</tag>
+            <tag type="Particles" particlename="rifleshot">0.6</tag>
         </assetreference>
         <component>ModelComp</component>
     </anim>
     <anim>Volley_standing_reload
         <assetreference type="GrannyAnim">
-            <file>animation_library\range\volley\volley_standing_reload</file>
+            <file>units\asians\chinese\chu_ko_nu\chokonu_volley_standing_reload</file>
         </assetreference>
         <component>ModelComp</component>
     </anim>

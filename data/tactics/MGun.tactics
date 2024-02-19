@@ -1,6 +1,6 @@
 <tactics>
   <action>
-    <name stringid="70308">FlameAttack</name>
+    <name stringid="70308">RangedAttack</name>
     <reloadanim>Bombard_reload</reloadanim>
     <type>Attack</type>
     <attackaction>1</attackaction>
@@ -26,8 +26,5 @@
     <anim>Pickup</anim>
     <modifyprotoid>zpPhoenixMGunCarrier</modifyprotoid>
   </action>
-  <tactic>Volley<speedmodifier>1.0</speedmodifier><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action>FlameAttack</action><action>DelayedTransform</action><runaway>1</runaway><autoretarget>1</autoretarget><transition><tactic>Normal</tactic><length>0</length><exit>1</exit></transition><idleanim>Bombard_ranged_idle</idleanim><boredanim>Bombard_bored</boredanim><walkanim>Bombard_Walk</walkanim><joganim>Bombard_Jog</joganim><runanim>Bombard_Run</runanim><deathanim>Bombard_Death</deathanim></tactic>
-  <tactic>Defend<speedmodifier>1.0</speedmodifier><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action>FlameAttack</action><action>DelayedTransform</action><runaway>0</runaway><autoretarget>1</autoretarget><transition><tactic>Normal</tactic><length>0</length><exit>1</exit></transition><idleanim>Bombard_ranged_idle</idleanim><boredanim>Bombard_bored</boredanim><walkanim>Bombard_Walk</walkanim><joganim>Bombard_Jog</joganim><runanim>Bombard_Run</runanim><deathanim>Bombard_Death</deathanim></tactic>
-  <tactic>Stagger<speedmodifier>1.0</speedmodifier><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action>FlameAttack</action><action>DelayedTransform</action><runaway>0</runaway><autoretarget>1</autoretarget><transition><tactic>Normal</tactic><length>0</length><exit>1</exit></transition><idleanim>Bombard_ranged_idle</idleanim><boredanim>Bombard_bored</boredanim><walkanim>Bombard_Walk</walkanim><joganim>Bombard_Jog</joganim><runanim>Bombard_Run</runanim><deathanim>Bombard_Death</deathanim></tactic>
-  <tactic>StandGround<speedmodifier>1.0</speedmodifier><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action>FlameAttack</action><action>DelayedTransform</action><runaway>0</runaway><autoretarget>1</autoretarget><transition><tactic>Normal</tactic><length>0</length><exit>1</exit></transition><idleanim>Bombard_ranged_idle</idleanim><boredanim>Bombard_bored</boredanim><walkanim>Bombard_Walk</walkanim><joganim>Bombard_Jog</joganim><runanim>Bombard_Run</runanim><deathanim>Bombard_Death</deathanim></tactic>
+  <tactic>Normal<speedmodifier>1.0</speedmodifier><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action>RangedAttack</action><action>DelayedTransform</action><runaway>1</runaway><autoretarget>1</autoretarget><transition><tactic>Normal</tactic><length>0</length><exit>1</exit></transition><idleanim>Bombard_ranged_idle</idleanim><boredanim>Bombard_bored</boredanim><walkanim>Bombard_Walk</walkanim><joganim>Bombard_Jog</joganim><runanim>Bombard_Run</runanim><deathanim>Bombard_Death</deathanim></tactic>
 </tactics>

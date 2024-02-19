@@ -996,8 +996,8 @@
       <string _locid="300992">ZP Train Station: Station</string>
       <string _locid="300993">Armored Train</string>
       <string _locid="300994">ZP AT Gun Static</string>
-      <string _locid="300995">Rodolphe de Gortz</string>
-      <string _locid="300996">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \n- \n\nBillionaire with a penchant for opera and explosives. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nArmored Train, Military Railways</string>
+      <string _locid="300995">Professor Schultze</string>
+      <string _locid="300996">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nMachine Gunner \n\nBillionaire arms trade tycoon. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nArmored Train, Military Railways</string>
       <string _locid="300997">Military Railways</string>
       <string _locid="300998">Unlocks a special alility: Armored Train - can send an armored train to attack enemy positions next to a Train Station.</string>
       <string _locid="300999">Armored Train</string>
@@ -1015,7 +1015,7 @@
       <string _locid="301011">ZP Native House Western</string>
       <string _locid="301012">ZP NAT POP Renegade Flamethrower</string>
       <string _locid="301013">Wagon Crew</string>
-      <string _locid="301014">Wagon Crew: Spawns 4 Flamethrowers to defend the Train</string>
+      <string _locid="301014">Wagon Crew: Spawns 8 Train Crew menbers to defend the Train</string>
       <string _locid="301015">Town Station</string>
       <string _locid="301016">ZP Capturable Train Station</string>
       <string _locid="301017">Armored Train (Engine)</string>
@@ -1088,9 +1088,9 @@
       <string _locid="301084">Raises crew morale and motivation. Increases all wagon and train unit hitpoints.</string>
       <string _locid="301085">Emergency Aid</string>
       <string _locid="301086">Quickly Heals all units around (Can't be used when there are no injured units)</string>
-      <string _locid="301087">ZP NAT Machine Gunner</string>
+      <string _locid="301087">ZP Train Crew</string>
       <string _locid="301088">Detonate Wagon: Causes a deadly blast. &lt;color=1.0, 0.5, 0.0&gt;Can also destroy nearby wagons!&lt;/color&gt;</string>
-      <string _locid="301089">Machine Gunner</string>
+      <string _locid="301089">Train Crew</string>
       <string _locid="301090">Locomotive pulling an armored train</string>
       <string _locid="301091">Boosts nearby units.</string>
       <string _locid="301092">Transports gunpowder and ammunition. &lt;color=1.0, 0.0, 0.0&gt;Can easily explode.&lt;/color&gt;</string>
@@ -1132,8 +1132,19 @@
       <string _locid="301128">Guard Pinkerton Agent</string>
       <string _locid="301129">Legendary Pinkerton Agent</string>
       <string _locid="301130">Regenerates health when idle. Due to his Tuberculosis can never get to full health just by himself.</string>
-      <string _locid="301131">TEST MGun</string>
-      <string _locid="301132">TEST MGun Carrier</string>
+      <string _locid="301131">ZP Machine Gun Static</string>
+      <string _locid="301132">ZP Machine Gun Moving</string>
+      <string _locid="301133">Machine Gunner</string>
+      <string _locid="301134">Soldier equiped with a small Machine Gun which can transform into a destructive static Machine Gun.</string>
+      <string _locid="301135">Static Machine Gun: stationary infantry which can transform into Machine Gunner.</string>
+      <string _locid="301136">Transforms into portable Machine gun with much weaker attack</string>
+      <string _locid="301137">Transforms into static machine gun with stronger attack</string>
+      <string _locid="301138">Transport Mode</string>
+      <string _locid="301139">Static Mode</string>
+      <string _locid="301140">Veteran Machine Gunner</string>
+      <string _locid="301141">Guard Machine Gunner</string>
+      <string _locid="301142">Legendary Machine Gunner</string>
+      <string _locid="301143">Part of the Armored Train crew. Kitchen Wagon Crew Cantine Bonus. Dissappear with the armored train.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
