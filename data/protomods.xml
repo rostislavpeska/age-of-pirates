@@ -20938,7 +20938,7 @@
     <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
     <allowedage>1</allowedage>
-    <armor type="Ranged" value="0.3000">
+    <armor type="Ranged" value="0.2500">
     </armor>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
@@ -22583,8 +22583,8 @@
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\trade\spc_wagon_icon_64x64.png</icon>
     <portraiticon>resources\art\units\trade\spc_wagon_portrait.png</portraiticon>
-    <rollovertextid>301106</rollovertextid>
-    <shortrollovertextid>301106</shortrollovertextid>
+    <rollovertextid>400134</rollovertextid>
+    <shortrollovertextid>400134</shortrollovertextid>
     <initialhitpoints>250.0000</initialhitpoints>
     <maxhitpoints>250.0000</maxhitpoints>
     <los>18.0000</los>
@@ -25390,7 +25390,7 @@
     <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
     <allowedage>1</allowedage>
-    <armor type="Ranged" value="0.3000">
+    <armor type="Ranged" value="0.2500">
     </armor>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
@@ -25998,8 +25998,8 @@
     <portraiticon>resources\art\units\natives\jamesgang_portrait.png</portraiticon>
     <rollovertextid>400080</rollovertextid>
     <shortrollovertextid>400080</shortrollovertextid>
-    <initialhitpoints>180.0000</initialhitpoints>
-    <maxhitpoints>180.0000</maxhitpoints>
+    <initialhitpoints>170.0000</initialhitpoints>
+    <maxhitpoints>170.0000</maxhitpoints>
     <los>16.0000</los>
     <rechargetime>60.0000</rechargetime>
     <autoattackrange>16.0000</autoattackrange>
@@ -26013,7 +26013,7 @@
     <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
     <allowedage>1</allowedage>
-    <armor type="Ranged" value="0.2500">
+    <armor type="Ranged" value="0.2000">
     </armor>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
@@ -26089,7 +26089,7 @@
     </protoaction>
     <protoaction>
       <name>RepeatingRangedAttack</name>
-      <damage>16.000000</damage>
+      <damage>14.000000</damage>
       <damagetype>Ranged</damagetype>
       <maxrange>14.000000</maxrange>
       <rof>3.000000</rof>

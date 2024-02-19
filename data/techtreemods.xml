@@ -11032,7 +11032,7 @@
     <researchpoints>20.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\fastcolts.png</icon>
-    <rollovertextid>61120</rollovertextid>
+    <rollovertextid>400135</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <effects>
