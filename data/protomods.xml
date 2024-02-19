@@ -22739,48 +22739,6 @@
     <flag>DoNotCreateUnitGroupAutomatically</flag>
   </unit>
 
-  <!--<unit name="SocketTradeRoute">
-    <dbid>551</dbid>
-    <displaynameid>29937</displaynameid>
-    <editornameid>29999</editornameid>
-    <obstructionradiusx>7.0000</obstructionradiusx>
-    <obstructionradiusz>4.0000</obstructionradiusz>
-    <socketoffsetx>-3.0000</socketoffsetx>
-    <socketoffsetz>0.0000</socketoffsetz>
-    <maxvelocity>0.0000</maxvelocity>
-    <movementtype>land</movementtype>
-    <animfile>buildings\trading_post\trade_route_socket.xml</animfile>
-    <icon>resources\art\trade_route\trade1.png</icon>
-    <minimapicon>ui\minimap\t</minimapicon>
-    <portraiticon>resources\art\trade_route\trade_route_1_portrait.png</portraiticon>
-    <rollovertextid>30051</rollovertextid>
-    <shortrollovertextid>30052</shortrollovertextid>
-    <los>0.0000</los>
-    <unittype mergeMode="remove">LogicalTypeBuildingsNotWalls</unittype>
-    <unittype mergeMode="remove">LogicalTypeShipsAndBuildings</unittype>
-    <unittype mergeMode="remove">LogicalTypeBuildingsNotWallsOrGroves</unittype>
-    <unittype mergeMode="remove">EmbellishmentClass</unittype>
-    <unittype mergeMode="remove">Unattackable</unittype>
-    <unittype mergeMode="remove">Building</unittype>
-    <unittype mergeMode="remove">LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype mergeMode="remove">Socket</unittype>
-    <unittype mergeMode="remove">TradePostSocket</unittype>
-    <flag mergeMode="remove">FlattenGround</flag>
-    <flag mergeMode="remove">NoUnitAI</flag>
-    <flag mergeMode="remove">Immoveable</flag>
-    <flag mergeMode="remove">NoBloodOnDeath</flag>
-    <flag mergeMode="remove">NoHPBar</flag>
-    <flag mergeMode="remove">NonAutoFormedUnit</flag>
-    <flag mergeMode="remove">Doppled</flag>
-    <flag mergeMode="remove">ForceToGaia</flag>
-    <flag mergeMode="remove">Invulnerable</flag>
-    <flag mergeMode="remove">SelectWithObstruction</flag>
-    <flag mergeMode="remove">ColorTransformNonGaia</flag>
-    <flag mergeMode="remove">AlwaysShowAsSocket</flag>
-    <flag mergeMode="remove">Tracked</flag>
-    <flag>DoNotCreateUnitGroupAutomatically</flag>
-  </unit>-->
-
 
 
 
