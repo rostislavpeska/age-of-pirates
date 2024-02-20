@@ -224,11 +224,11 @@
             <file>animation_library\shared\flame_thrower_attack</file>
             <tag type="SpecificSoundSet" set="GatlingGun5Shot" checkvisible="1">0.2</tag>
             <tag type="Attack">0.5</tag>
-            <tag type="Particles" particlename="rifleshot">0.2</tag>
-            <tag type="Particles" particlename="rifleshot">0.3</tag>
-            <tag type="Particles" particlename="rifleshot">0.4</tag>
-            <tag type="Particles" particlename="rifleshot">0.5</tag>
-            <tag type="Particles" particlename="rifleshot">0.6</tag>
+            <tag type="Particles" particlename="smgshot">0.2</tag>
+            <tag type="Particles" particlename="smgshot">0.3</tag>
+            <tag type="Particles" particlename="smgshot">0.4</tag>
+            <tag type="Particles" particlename="smgshot">0.5</tag>
+            <tag type="Particles" particlename="smgshot">0.6</tag>
         </assetreference>
         <component>ModelComp</component>
     </anim>

@@ -12909,7 +12909,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\native_settlement\scientists\british_lab.xml</animfile>
+    <animfile>buildings\native_settlement\scientists\american_lab.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>
@@ -22367,8 +22367,9 @@
     <tactics>Carrier_Mgun.tactics</tactics>
    <protoaction>
       <name>BuildingAttack</name>
-      <damage>33.000000</damage>
+      <damage>44.000000</damage>
       <damagetype>Siege</damagetype>
+      <damagearea>3</damagearea>
       <minrange>2.000000</minrange>
       <maxrange>10.000000</maxrange>
       <rof>5.000000</rof>
@@ -22386,10 +22387,11 @@
     </protoaction>
     <protoaction>
       <name>DefendRangedAttack</name>
-      <damage>30.000000</damage>
+      <damage>44.000000</damage>
       <damagetype>Ranged</damagetype>
       <minrange>2.000000</minrange>
       <maxrange>16.000000</maxrange>
+      <damagearea>3</damagearea>
       <rof>5.000000</rof>
       <damagebonus type="AbstractHeavyInfantry">1.100000</damagebonus>
       <damagebonus type="AbstractLightCavalry">1.670000</damagebonus>
@@ -22421,10 +22423,11 @@
     </protoaction>
     <protoaction>
       <name>StaggerRangedAttack</name>
-      <damage>30.000000</damage>
+      <damage>44.000000</damage>
       <damagetype>Ranged</damagetype>
       <minrange>2.000000</minrange>
       <maxrange>16.000000</maxrange>
+      <damagearea>3</damagearea>
       <rof>5.000000</rof>
       <damagebonus type="AbstractHeavyInfantry">1.100000</damagebonus>
       <damagebonus type="AbstractLightCavalry">1.670000</damagebonus>
@@ -22445,10 +22448,11 @@
     </protoaction>
     <protoaction>
       <name>VolleyRangedAttack</name>
-      <damage>30.000000</damage>
+      <damage>44.000000</damage>
       <damagetype>Ranged</damagetype>
       <minrange>2.000000</minrange>
       <maxrange>16.000000</maxrange>
+      <damagearea>3</damagearea>
       <rof>5.000000</rof>
       <damagebonus type="AbstractHeavyInfantry">1.100000</damagebonus>
       <damagebonus type="AbstractLightCavalry">1.670000</damagebonus>
@@ -22794,8 +22798,8 @@
     <turnrate>3.0000</turnrate>
     <animfile>units\Mgun\MG.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\natives\ww1soldier_icon.png</icon>
-    <portraiticon>resources\art\units\natives\ww1soldier_portrait.png</portraiticon>
+    <icon>resources\art\units\natives\mgunner_icon.png</icon>
+    <portraiticon>resources\art\units\natives\mgunner_portrait.png</portraiticon>
     <rollovertextid>301135</rollovertextid>
     <shortrollovertextid>301135</shortrollovertextid>
     <sharedselectionunittypes>
@@ -22808,7 +22812,7 @@
     </sharedbuildlimitunittypes>
     <initialhitpoints>150.0000</initialhitpoints>
     <maxhitpoints>150.0000</maxhitpoints>
-    <los>16.0000</los>
+    <los>20.0000</los>
     <unitaitype>RangedCombative</unitaitype>
     <trainpoints>40.0000</trainpoints>
     <bounty>20.0000</bounty>
@@ -22866,21 +22870,43 @@
     <tactics>MGun.tactics</tactics>
     <protoaction>
       <name>RangedAttack</name>
-      <damage>5.000000</damage>
+      <damage>7.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>16.000000</maxrange>
       <minrange>0.000000</minrange>
       <rof>0.500000</rof>
-      <damagecap>35.000000</damagecap>
-      <damagebonus type="AbstractInfantry">6.000000</damagebonus>
-      <damagearea>1.000000</damagearea>
+      <damagecap>15.000000</damagecap>
+      <damagebonus type="AbstractInfantry">3.000000</damagebonus>
       <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="Building">4.000000</damagebonus>
-      <damagebonus type="Ship">6.000000</damagebonus>
       <damagebonus type="AbstractArtillery">2.000000</damagebonus>
       <damagebonus type="AbstractLightInfantry">0.600000</damagebonus>
       <damagebonus type="AbstractCavalry">0.800000</damagebonus>
-      <damagebonus type="deMalteseGun">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>12.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>16.000000</maxrange>
+      <minrange>0.000000</minrange>
+      <rof>0.500000</rof>
+      <damagecap>25.000000</damagecap>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>AreaAttack</name>
+      <damage>4.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>16.000000</maxrange>
+      <minrange>0.000000</minrange>
+      <rof>0.500000</rof>
+      <damagecap>25.000000</damagecap>
+      <damagebonus type="AbstractInfantry">3.000000</damagebonus>
+      <damagearea>5.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.600000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.800000</damagebonus>
     </protoaction>
   </unit>
  <unit id="20241" name="zpPhoenixMGunCarrier">
@@ -22969,9 +22995,10 @@
     <tactics>Carrier_Mgun.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
-      <damage>23.000000</damage>
+      <damage>30.000000</damage>
       <damagetype>Siege</damagetype>
       <minrange>2.000000</minrange>
+      <damagearea>3</damagearea>
       <maxrange>10.000000</maxrange>
       <rof>5.000000</rof>
     </protoaction>
@@ -22988,9 +23015,10 @@
     </protoaction>
     <protoaction>
       <name>DefendRangedAttack</name>
-      <damage>20.000000</damage>
+      <damage>30.000000</damage>
       <damagetype>Ranged</damagetype>
       <minrange>2.000000</minrange>
+      <damagearea>3</damagearea>
       <maxrange>16.000000</maxrange>
       <rof>5.000000</rof>
       <damagebonus type="AbstractHeavyInfantry">1.100000</damagebonus>
@@ -23023,7 +23051,8 @@
     </protoaction>
     <protoaction>
       <name>StaggerRangedAttack</name>
-      <damage>20.000000</damage>
+      <damage>30.000000</damage>
+      <damagearea>3</damagearea>
       <damagetype>Ranged</damagetype>
       <minrange>2.000000</minrange>
       <maxrange>16.000000</maxrange>
@@ -23047,10 +23076,11 @@
     </protoaction>
     <protoaction>
       <name>VolleyRangedAttack</name>
-      <damage>20.000000</damage>
+      <damage>30.000000</damage>
       <damagetype>Ranged</damagetype>
       <minrange>2.000000</minrange>
       <maxrange>16.000000</maxrange>
+      <damagearea>3</damagearea>
       <rof>5.000000</rof>
       <damagebonus type="AbstractHeavyInfantry">1.100000</damagebonus>
       <damagebonus type="AbstractLightCavalry">1.670000</damagebonus>

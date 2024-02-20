@@ -1048,9 +1048,9 @@
       <string _locid="301044">ZP Prop Barn</string>
       <string _locid="301045">ZP Train Stopper</string>
       <string _locid="301046">ZP Invisible Trading Post</string>
-      <string _locid="301047">Armored Train Test</string>
-      <string _locid="301048">Armored Train Test Description</string>
-      <string _locid="301049">Armored Train Test Loading</string>
+      <string _locid="301047">Green Valley</string>
+      <string _locid="301048">A green valley rich in bison herds and gold mines. \n\nSettlements: Comanche, Western Village, Renegades</string>
+      <string _locid="301049">Construct the railroad around the valley and use armored trains to reach enemy bases.</string>
       <string _locid="301050">Armored Train (Ambulance Wagon)</string>
       <string _locid="301051">ZP AT Ambulance Move</string>
       <string _locid="301052">ZP AT Ambulance Static</string>
@@ -1104,7 +1104,7 @@
       <string _locid="301100">Pinkertons</string>
       <string _locid="301101">Pinkerton detective with stealth ability \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nPinkerton Agent \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nBuddies \nArmored Stagecoach</string>
       <string _locid="301102">Jesse James</string>
-      <string _locid="301103">Outlaw horseman with a sabotage attack \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nJames-Younger Gang \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nHorsemen of the Apocalypse \nGun Store</string>
+      <string _locid="301103">Outlaw horseman, sabotage attack \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nJames-Younger Gang \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nHorsemen of the Apocalypse \nGun Store</string>
       <string _locid="301104">Sheriff Wagon</string>
       <string _locid="301105">ZP Sheriff Wagon</string>
       <string _locid="301106">Builds Sheriff's Office</string>
@@ -1144,7 +1144,12 @@
       <string _locid="301140">Veteran Machine Gunner</string>
       <string _locid="301141">Guard Machine Gunner</string>
       <string _locid="301142">Legendary Machine Gunner</string>
-      <string _locid="301143">Part of the Armored Train crew. Kitchen Wagon Crew Cantine Bonus. Dissappear with the armored train.</string>
+      <string _locid="301143">Part of the Armored Train crew. Kitchen Wagon Crew Cantine Bonus. Dissappears with the armored train.</string>
+      <string _locid="301144">Building Attack</string>
+      <string _locid="301145">Area Attack</string>
+      <string _locid="301146">Targeted Attack Mode: Stronger attack but less area damage.</string>
+      <string _locid="301147">Area Attack Mode: Weaker attack but more area damage</string>
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

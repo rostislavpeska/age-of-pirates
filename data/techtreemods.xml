@@ -11803,6 +11803,19 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpLandScientists" type="Normal">
+    <dbid>40414</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" tech="zpScientistIronFleet">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
  
 
 

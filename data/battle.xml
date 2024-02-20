@@ -737,6 +737,41 @@
     <unavailableicon>resources\images\icons\command\submarine_stealth_disabled.png</unavailableicon>
     <rolloverstringid>300473</rolloverstringid>
   </squadmode>
+  <squadmode>
+    <name>zpAreaDamage</name>
+    <tactic>zpAreaDamage</tactic>
+    <unittype>AbstractInfantry</unittype>
+    <targetunittype>All</targetunittype>
+    <stance>Defensive</stance>
+    <formationtype>Line</formationtype>
+    <formationlinelinespacing>0.8</formationlinelinespacing>
+    <formationlinecolumnspacing>0.8</formationlinecolumnspacing>
+    <randomspacingoffset>0.35</randomspacingoffset>
+    <cooldowntime>5000</cooldowntime>
+    <transitiontimein>500</transitiontimein>
+    <activeicon>resources\images\icons\command\no_target_active.png</activeicon>
+    <availableicon>resources\images\icons\command\no_target.png</availableicon>
+    <unavailableicon>resources\images\icons\command\no_target.png</unavailableicon>
+    <rolloverstringid>301147</rolloverstringid>
+  </squadmode>
+  <squadmode>
+    <name>zpTargerFocus</name>
+    <tactic>zpTargerFocus</tactic>
+    <unittype>AbstractInfantry</unittype>
+    <targetunittype>All</targetunittype>
+    <stance>Defensive</stance>
+    <formationtype>Line</formationtype>
+    <formationlinelinespacing>0.8</formationlinelinespacing>
+    <formationlinecolumnspacing>0.8</formationlinecolumnspacing>
+    <randomspacingoffset>0.35</randomspacingoffset>
+    <cooldowntime>5000</cooldowntime>
+    <transitiontimein>500</transitiontimein>
+    <activeicon>resources\images\icons\command\target_unit_active.png</activeicon>
+    <availableicon>resources\images\icons\command\target_unit.png</availableicon>
+    <unavailableicon>resources\images\icons\command\target_unit.png</unavailableicon>
+    <rolloverstringid>301146</rolloverstringid>
+  </squadmode>
+  
   <!-- Added by AssertiveWall -->
   <squadmode>
     <name>zpVolleyShotgun</name>
