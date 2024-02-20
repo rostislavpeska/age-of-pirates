@@ -12,7 +12,7 @@
 //==============================================================================
 int chooseEuropeanPolitician()
 {
-   static int validRevolutions = -1; // List of Revolutions that are available to us this game.
+   static int validRevolutions = -1; // List of Revolutions that are available to  us this game.
    static int ageUpPoliticians = -1; // Array of available age-up politicians,
    static int politicianScores = -1; // Array used to calculate "scores" for different European politicians.
    if (validRevolutions == -1) // First run.
@@ -53,15 +53,15 @@ int chooseEuropeanPolitician()
                debugTechs("" + kbGetTechName(politician));
                xsArraySetInt(ageUpPoliticians, numValidPoliticians, politician);
                numValidPoliticians++;
+            }
          }
-      }
          randomizer = aiRandInt(numValidPoliticians);
          return (xsArrayGetInt(ageUpPoliticians, randomizer));
       }
       case cAge2:
-   {
-         for (i = 0; i < numPoliticianChoices; i++)
       {
+         for (i = 0; i < numPoliticianChoices; i++)
+         {
             politician = aiGetPoliticianListByIndex(cAge3, i);
             // Exclude certain politicians.
             if ((politician != cTechPoliticianExiledPrince) &&
@@ -77,17 +77,17 @@ int chooseEuropeanPolitician()
                 (politician != cTechPoliticianAdmiral) &&
                 (politician != cTechPoliticianAdmiralOttoman) &&
                 (politician != cTechPoliticianPirate))
-         {
+            {
                debugTechs("" + kbGetTechName(politician));
                xsArraySetInt(ageUpPoliticians, numValidPoliticians, politician);
                numValidPoliticians++;
-         }
+            }
             if ((gHaveWaterSpawnFlag == true) && 
                 ((politician == cTechPoliticianAdmiral) || 
                  (politician == cTechPoliticianAdmiralOttoman) || 
                  (politician != cTechPoliticianPirate) &&
                  (politician != cTechPoliticianAdmiralMaltese)))
-         {
+            {
                debugTechs("" + kbGetTechName(politician));
                xsArraySetInt(ageUpPoliticians, numValidPoliticians, politician);
                numValidPoliticians++;
@@ -97,13 +97,13 @@ int chooseEuropeanPolitician()
          return (xsArrayGetInt(ageUpPoliticians, randomizer));
       }
       case cAge3:
-         {
+      {
          // Reset array, this is only needed for if we somehow have to create a plan for this age more than once.
          arraySize = xsArrayGetSize(politicianScores);
          for (i = 0; i < arraySize; i++)
-            {
+         {
             xsArraySetInt(politicianScores, i, 0); 
-            }
+         }
          for (i = 0; i < numPoliticianChoices; i++)
          {
             politician = aiGetPoliticianListByIndex(cAge4, i);
@@ -114,28 +114,28 @@ int chooseEuropeanPolitician()
                 (politician == cTechPoliticianTycoon))
             {
                xsArraySetInt(politicianScores, i, 5);
-         }
+            }
             // We don't want to pick a politician which ships a Fort Wagon when we're not allowed to build those.
             if (cvOkToBuildForts == false) 
-         {
+            {
                if ((politician == cTechDEPoliticianLogisticianRussian) ||
                    (politician == cTechDEPoliticianLogisticianOttoman) ||
                    (politician == cTechDEPoliticianLogistician))
-            {
+               {
                   xsArraySetInt(politicianScores, i, -50);
+               }
             }
-         }
             numValidPoliticians++;
             // Add a random bonus to every politician.
             randomizer = aiRandInt(10);
             xsArraySetInt(politicianScores, i, xsArrayGetInt(politicianScores, i) + randomizer);
-      }
+         }
 
          // Choose politician with best score.
          for (i = 0; i < numValidPoliticians; i++)
-      {
-            if (xsArrayGetInt(politicianScores, i) >= bestScore)
          {
+            if (xsArrayGetInt(politicianScores, i) >= bestScore)
+            {
                bestScore = xsArrayGetInt(politicianScores, i);
                bestChoice = i;
             }
@@ -143,7 +143,7 @@ int chooseEuropeanPolitician()
          return (xsArrayGetInt(ageUpPoliticians, bestChoice));
       }
       case cAge4:
-         {
+      {
          // Check if we can revolt.
          randomizer = aiRandInt(4); // 25% Chance.
          if ((cDifficultyCurrent >= cDifficultyModerate) && (gSPC == false) &&
@@ -165,34 +165,34 @@ int chooseEuropeanPolitician()
                   xsArraySetInt(validRevolutions, numValidRevolutions, revolution);
                   numValidRevolutions++;
                   debugTechs("" + kbGetTechName(revolution));
+               }
             }
-         }
             if (numValidRevolutions > 0) // Safety check or we research age0french XD.
-         {
+            {
                randomizer = aiRandInt(numValidRevolutions);
                return (xsArrayGetInt(validRevolutions, randomizer));
+            }
          }
-      }
 
          for (i = 0; i < numPoliticianChoices; i++)
-      {
+         {
             politician = aiGetPoliticianListByIndex(cAge5, i);
             // Include certain politicians.
             if ((politician == cTechPoliticianGeneral) ||
                 (politician == cTechPoliticianPresidente) ||
                 (politician == cTechDEPoliticianInventor))
-         {
+            {
                debugTechs("" + kbGetTechName(politician));
                xsArraySetInt(ageUpPoliticians, numValidPoliticians, politician);
                numValidPoliticians++;
-         }
             }
+         }
          
          // If we didn't revolt we use this logic.
          randomizer = aiRandInt(numValidPoliticians);
          return (xsArrayGetInt(ageUpPoliticians, randomizer));
-         }
       }
+   }
    return (-1); // This should never hit.
 }
 

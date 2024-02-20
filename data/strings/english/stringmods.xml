@@ -1026,13 +1026,13 @@
       <string _locid="301022">ZP PROP Western Village</string>
       <string _locid="301023">ZP PROP Horse</string>
       <string _locid="301024">ZP PROP Stagecoach</string>
-      <string _locid="301025">Whiskey Factory</string>
-      <string _locid="301026">Villagers gather gold from buildings faster by 20%.</string>
+      <string _locid="301025">Whiskey Stills</string>
+      <string _locid="301026">Villagers gather gold from buildings 20% faster.</string>
       <string _locid="301027">Texan Longhorns</string>
       <string _locid="301028">Ships four Cows</string>
       <string _locid="301029">Fast Colts</string>
       <string _locid="301030">Territorial Militia</string>
-      <string _locid="301031">Every Residental building spawns one Cowboy to protect the territory.</string>
+      <string _locid="301031">Every Residential building spawns a Cowboy to protect the territory.</string>
       <string _locid="301032">Veteran Cowboys</string>
       <string _locid="301033">Improves Cowboy's Attack and Hitpoints</string>
       <string _locid="301034">Veteran Mounted Cowboy</string>
@@ -1043,7 +1043,7 @@
       <string _locid="301039">ZP Train Station: Area</string>
       <string _locid="301040">Fence</string>
       <string _locid="301041">ZP Prop Wooden Fence</string>
-      <string _locid="301042">Return back to depot</string>
+      <string _locid="301042">Return to depot</string>
       <string _locid="301043">&lt;color=1.0, 0.0, 0.0&gt;Despawns Armored train.&lt;/color&gt;</string>
       <string _locid="301044">ZP Prop Barn</string>
       <string _locid="301045">ZP Train Stopper</string>
@@ -1066,14 +1066,14 @@
       <string _locid="301062">ZP Train Station: Socket A</string>
       <string _locid="301063">ZP Train Station: Socket B</string>
       <string _locid="301064">Train Station Construction</string>
-      <string _locid="301065">Build a Train Station which allows you to transport units between Train Stations and Commanderies</string>
-      <string _locid="301066">Allows you to construct a train station after the trade route is upgraded to the train level.</string>
-      <string _locid="301067">Transports units between Train Stations, Maltese Commanderies and Armored Train Command Wagon.</string>
-      <string _locid="301068">Build a Train Station which allows you to transport units between Train Stations and Commanderies &lt;color=1.0, 0.0, 0.0&gt;(Requiers Iron Horse Trade Route upgrade)&lt;/color&gt; \n300 &lt;icon="(32)(resources/images/hud/resource_wood.png)"&gt;</string>
+      <string _locid="301065">Build a Train Station, allowing you to transport units between Train Stations and Commanderies.</string>
+      <string _locid="301066">Allows you to construct a train station after upgrading the trade route.</string>
+      <string _locid="301067">Transports units between Train Stations, Maltese Commanderies, and the Armored Train Command Wagon.</string>
+      <string _locid="301068">Build a Train Station, allowing you to transport units between Train Stations and Commanderies &lt;color=1.0, 0.0, 0.0&gt;(Requiers Iron Horse Trade Route upgrade)&lt;/color&gt; \n300 &lt;icon="(32)(resources/images/hud/resource_wood.png)"&gt;</string>
       <string _locid="301069">ZP Train Station: Inactiva A</string>
       <string _locid="301070">ZP Train Station: Inactive B</string>
-      <string _locid="301071">Units may not be deployed from Train Stations right now.</string>
-      <string _locid="301072">Units may not be deployed from Command Wagon right now.</string>
+      <string _locid="301071">Units cannot currently deploy from Train Stations.</string>
+      <string _locid="301072">Units cannot currently deploy from Command Wagon.</string>
       <string _locid="301073">Test Wagon</string>
       <string _locid="301074">ZP AT KitchenWagon Move</string>
       <string _locid="301075">Armored Train (Kitchen Wagon)</string>
@@ -1097,17 +1097,17 @@
       <string _locid="301093">Massive Railway Cannon with Powerful Attack</string>
       <string _locid="301094">Heals nearby units.</string>
       <string _locid="301095">Armored car. Transports units from Train Stations.</string>
-      <string _locid="301096">Wyat Earp</string>
-      <string _locid="301097">The Man of Law, strong special attack \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDeputy \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nDoc Holiday \nMen of Law</string>
-      <string _locid="301098">Pick Town Protector</string>
+      <string _locid="301096">Wyatt Earp</string>
+      <string _locid="301097">A Man of Law, strong special attack \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDeputy \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nDoc Holiday \nMen of Law</string>
+      <string _locid="301098">Establish Town Relation</string>
       <string _locid="301099">Ships a legendary hero or outlaw. Unlocks further units and techs.</string>
       <string _locid="301100">Pinkertons</string>
       <string _locid="301101">Pinkerton detective with stealth ability \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nPinkerton Agent \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nBuddies \nArmored Stagecoach</string>
       <string _locid="301102">Jesse James</string>
-      <string _locid="301103">Horseman gang's chief with a sabotage attack \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nJames' Gang \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nHorsemen of the Apocalypse \nGun Store</string>
+      <string _locid="301103">Outlaw horseman with a sabotage attack \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nJames-Younger Gang \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nHorsemen of the Apocalypse \nGun Store</string>
       <string _locid="301104">Sheriff Wagon</string>
       <string _locid="301105">ZP Sheriff Wagon</string>
-      <string _locid="301106">Can Build Sheriff's Office</string>
+      <string _locid="301106">Builds Sheriff's Office</string>
       <string _locid="301107">Men of Law</string>
       <string _locid="301108">Ships a Sheriff Wagon to make your people feel more secure.</string>
       <string _locid="301109">Ships a heavy stagecoach armed to take on the wild west and allows you to train more armored Stagecoaches.</string>
@@ -1291,7 +1291,8 @@
       <string _locid="400131">Doc has the shotgun.</string>
       <string _locid="400132">Horsemen of the Apocalypse</string>
       <string _locid="400133">Gives Jesse James a special aura signifficantly increasing James' Gang attack and hitpoint</string>
-
+      <string _locid="400134">Builds Gun Store</string>
+      <string _locid="400135">Outfit your armies with the guns that won the west.</string>
 
       <!-- ===================================== -->
       <!-- ===================================== -->
