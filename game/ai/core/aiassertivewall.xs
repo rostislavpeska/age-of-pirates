@@ -3315,15 +3315,10 @@ minInterval 20
       }
    }
    vector attackLocation = getEnemyBase(-1, armyPower);
-   //
-   if (isDefendingOrAttacking() == true)
-   {
-      aiChat(1, "forwardArmyCount: " + forwardArmyCount + ". ArmyPower: " + armyPower + ". Currently attacking/defending");
-   }
 
    if (forwardAttackWave < 0)
    {
-      if ((forwardArmyCount >= 50 || armyPower > 40) && forwardArmyCount > numberForward * 0.9 && isDefendingOrAttacking() == false)
+      if ((forwardArmyCount >= 50 || armyPower > 40) && forwardArmyCount > numberForward * 0.9)
       {
          forwardAttackWave = aiPlanCreate("Forward Attack Wave", cPlanCombat);
          aiPlanAddUnitType(forwardAttackWave, cUnitTypeLogicalTypeLandMilitary, 0, forwardArmyCount, numberForward); 
