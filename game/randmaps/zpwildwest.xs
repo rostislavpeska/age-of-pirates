@@ -180,8 +180,8 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	int farAvoidTradeSockets = rmCreateTypeDistanceConstraint("far avoid trade sockets", "sockettraderoute", 16.0);
 	int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 6.0);
 	int HCspawnLand = rmCreateTerrainDistanceConstraint("HC spawn away from land", "land", true, 12.0);
-	int avoidTrainStationA = rmCreateTypeDistanceConstraint("avoid trainstation a", "spSocketTrainStationA", 4.0);
-	int avoidTrainStationB = rmCreateTypeDistanceConstraint("avoid trainstation b", "spSocketTrainStationB", 4.0);
+	int avoidTrainStationA = rmCreateTypeDistanceConstraint("avoid trainstation a", "spSocketTrainStationA", 8.0);
+	int avoidTrainStationB = rmCreateTypeDistanceConstraint("avoid trainstation b", "spSocketTrainStationB", 8.0);
 
 	// Lake Constraints
 	int greatLakesConstraint=rmCreateClassDistanceConstraint("avoid the great lakes", classGreatLake, 5.0);
@@ -659,18 +659,12 @@ int maltese1ID = -1;
    rmSetGroupingMaxDistance(maltese1ID, 0);
   
 
-int maltese2VillageTypeID = rmRandInt(5,6);
+int maltese2VillageTypeID = 11-maltese1VillageTypeID;
 int maltese2ID = -1;
    maltese2ID = rmCreateGrouping("maltese 2", "Scientist_Lab0"+maltese2VillageTypeID);
    rmSetGroupingMinDistance(maltese2ID, 0);
    rmSetGroupingMaxDistance(maltese2ID, 0);
 
-
-int maltese3VillageTypeID = rmRandInt(5,6);
-int maltese3ID = -1;
-   maltese3ID = rmCreateGrouping("maltese 3", "Scientist_Lab0"+maltese3VillageTypeID);
-   rmSetGroupingMinDistance(maltese3ID, 0);
-   rmSetGroupingMaxDistance(maltese3ID, 0);
 
    if(cNumberNonGaiaPlayers <= 2){	
 		rmPlaceGroupingAtLoc(maltese1ID, 0, 0.21, 0.5, 1);
@@ -948,6 +942,11 @@ if (cNumberNonGaiaPlayers == 8){
 	rmAddObjectDefConstraint(playerNuggetID, avoidTrainStationA);
 	rmAddObjectDefConstraint(playerNuggetID, avoidTrainStationB);
 	rmAddObjectDefConstraint(playerNuggetID, longPlayerEdgeConstraint);
+
+
+	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
+	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+	rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.5);
 
 
 for(i=1; <numPlayer)
@@ -1357,8 +1356,8 @@ for(i=0; < saltCount)
 	string unitID7 = "308";
 	string unitID8 = "358";
 	int armoredTrainActive = 90;
-	int armoredTrainCooldown = 20;
-	int armoredTrainCooldown2 = 10;
+	int armoredTrainCooldown = 300;
+	int armoredTrainCooldown2 = 240;
 
 	if (cNumberNonGaiaPlayers <=2){
 		unitID1 = "8";
@@ -1394,6 +1393,20 @@ for(i=0; < saltCount)
 		unitID6 = "271";
 		}
 
+	// Starting techs
+
+	rmCreateTrigger("Starting Techs");
+	rmSwitchToTrigger(rmTriggerID("Starting techs"));
+	for(i=1; <= cNumberNonGaiaPlayers) {
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",i);
+	rmSetTriggerEffectParam("TechID","cTechzpLandScientists"); // Renegades Land Variant
+	rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 
 
 	// Italian Vilager Balance

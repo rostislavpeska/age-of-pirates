@@ -517,8 +517,8 @@
       <string _locid="300514">Veteran Flamethrower</string>
       <string _locid="300515">Guard Flamethrower</string>
       <string _locid="300516">Legendary Flamethrower</string>
-      <string _locid="300517">Veteran Flamethrowers</string>
-      <string _locid="300518">Guard Flamethrowers</string>
+      <string _locid="300517">Veteran Rnegades</string>
+      <string _locid="300518">Guard Rnegades</string>
       <string _locid="300519">Ships an Academy Wagon able to build a new colony buildings allowing you some further advanced improvements.</string>
       <string _locid="300520">Academy Wagon</string>
       <string _locid="300521">ZP Academy Wagon</string>
@@ -1078,7 +1078,7 @@
       <string _locid="301074">ZP AT KitchenWagon Move</string>
       <string _locid="301075">Armored Train (Kitchen Wagon)</string>
       <string _locid="301076">ZP AT KitchenWagon Static</string>
-      <string _locid="301077">Unlocks full armored train potential and gives every Armored Train wagon a special active or passive ability. Future Armored Train cooldown by 50%.</string>
+      <string _locid="301077">Unlocks full armored train potential and gives every Armored Train wagon a special active or passive ability. Future Armored Train cooldown by 1 min.</string>
       <string _locid="301078"> • Cost: &lt;color=1.0, 0.0, 0.0&gt;500&lt;/color&gt; &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;\n • Spawns an Armored Train to attack enemy base. \n • Can be used on any Trade Route Trading Post Site</string>
       <string _locid="301079">Gunpowder Stores</string>
       <string _locid="301080">Improves Artillery damage and attack speed (aura)</string>
