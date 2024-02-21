@@ -2318,11 +2318,10 @@ bool retreatCheck(bool forceRetreat = false)
       if (frNavyValue * 1.2 < (enNavyValue + enTowerValue) || forceRetreat == true)
       {
          // Get the value of the army forward. Handles instances where a large army is dropped off
-         int forwardAttackWave = -1;
          int forwardArmyQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive, gForwardBaseLocation, 40.0);
          int numberFoundArmyQuery = kbUnitQueryExecute(forwardArmyQuery);
          int forwardArmyCount = 0;
-         int attackTimeSeconds = xsGetTime() / 1000;
+         //int attackTimeSeconds = xsGetTime() / 1000;
          int armyPower = 0;
          vector unitLoc = cInvalidVector;
          for (i = 0; < numberFoundArmyQuery)
@@ -3297,7 +3296,7 @@ minInterval 20
    }
 
    // If we have everyone, and it's big enough to be a real army, try and push into the enemy base
-   int forwardAttackWave = -1;
+   //int forwardAttackWave = -1;
    int forwardArmyQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive, gForwardBaseLocation, 40.0);
    int numberFoundArmyQuery = kbUnitQueryExecute(forwardArmyQuery);
    int forwardArmyCount = 0;
@@ -3322,29 +3321,32 @@ minInterval 20
       aiChat(1, "forwardArmyCount: " + forwardArmyCount + ". ArmyPower: " + armyPower + ". Currently attacking/defending");
    }
 
-   if ((forwardArmyCount >= 50 || armyPower > 40) && forwardArmyCount > numberForward * 0.9 && isDefendingOrAttacking() == false)
+   if (forwardAttackWave < 0)
    {
-      forwardAttackWave = aiPlanCreate("Forward Attack Wave: " + attackTimeSeconds, cPlanCombat);
-      aiPlanAddUnitType(forwardAttackWave, cUnitTypeLogicalTypeLandMilitary, 0, forwardArmyCount, numberForward); 
-      aiPlanSetVariableInt(forwardAttackWave, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
-      aiPlanSetVariableInt(forwardAttackWave, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
-      aiPlanSetVariableFloat(forwardAttackWave, cCombatPlanTargetEngageRange, 0, 60.0);   // Just use the engage range since it is away from base
-      aiPlanSetVariableVector(forwardAttackWave, cCombatPlanTargetPoint, 0, attackLocation);
-      aiPlanSetVariableFloat(forwardAttackWave, cCombatPlanGatherDistance, 0, 30.0);
-      aiPlanSetInitialPosition(forwardAttackWave, gForwardBaseLocation);
-      aiPlanSetVariableInt(forwardAttackWave, cCombatPlanRefreshFrequency, 0, 300);
-      aiPlanSetVariableInt(forwardAttackWave, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeNone);
-      aiPlanSetVariableInt(forwardAttackWave, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget);
-      aiPlanSetVariableInt(forwardAttackWave, cCombatPlanNoTargetTimeout, 0, 30000); // 30 seconds
-      aiPlanSetDesiredPriority(forwardAttackWave, 100); 
-      aiPlanSetActive(forwardAttackWave);
-      for (i = 0; < forwardArmyCount)
+      if ((forwardArmyCount >= 50 || armyPower > 40) && forwardArmyCount > numberForward * 0.9 && isDefendingOrAttacking() == false)
       {
-         unitID = kbUnitQueryGetResult(forwardArmyQuery, i);
-         aiPlanAddUnit(forwardAttackWave, unitID);
-      }
+         forwardAttackWave = aiPlanCreate("Forward Attack Wave", cPlanCombat);
+         aiPlanAddUnitType(forwardAttackWave, cUnitTypeLogicalTypeLandMilitary, 0, forwardArmyCount, numberForward); 
+         aiPlanSetVariableInt(forwardAttackWave, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
+         aiPlanSetVariableInt(forwardAttackWave, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+         aiPlanSetVariableFloat(forwardAttackWave, cCombatPlanTargetEngageRange, 0, 60.0);   // Just use the engage range since it is away from base
+         aiPlanSetVariableVector(forwardAttackWave, cCombatPlanTargetPoint, 0, attackLocation);
+         aiPlanSetVariableFloat(forwardAttackWave, cCombatPlanGatherDistance, 0, 30.0);
+         aiPlanSetInitialPosition(forwardAttackWave, gForwardBaseLocation);
+         aiPlanSetVariableInt(forwardAttackWave, cCombatPlanRefreshFrequency, 0, 300);
+         aiPlanSetVariableInt(forwardAttackWave, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeNone);
+         aiPlanSetVariableInt(forwardAttackWave, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget);
+         aiPlanSetVariableInt(forwardAttackWave, cCombatPlanNoTargetTimeout, 0, 30000); // 30 seconds
+         aiPlanSetDesiredPriority(forwardAttackWave, 100); 
+         aiPlanSetActive(forwardAttackWave);
+         for (i = 0; < forwardArmyCount)
+         {
+            unitID = kbUnitQueryGetResult(forwardArmyQuery, i);
+            aiPlanAddUnit(forwardAttackWave, unitID);
+         }
 
-      aiChat(1, "Sending in an attack wave");
+         aiChat(1, "Sending in an attack wave");
+      }
    }
 
 
