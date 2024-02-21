@@ -121,7 +121,6 @@ minInterval 10
             if (cityGuardPlan < 0)
             {
                createSimpleResearchPlanSpecificBuilding(techID, cityStateTPID, cMilitaryEscrowID, 99, 99);
-               //aiChat(1, "Called city guards");
             }
          }
          else // No need to call levy.
@@ -957,7 +956,7 @@ minInterval 10
    vector towerOneLoc = kbUnitGetPosition(kbUnitQueryGetResult(unitQueryID, 0));
    vector towerTwoLoc = kbUnitGetPosition(kbUnitQueryGetResult(unitQueryID, 1));
 
-   if (wallPlanID != -1)
+   if (wallPlanID != -1 && distance(towerOneLoc, gForwardBaseLocation) < 60)
    {
       aiPlanSetVariableInt(wallPlanID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeRing);
       aiPlanAddUnitType(wallPlanID, cUnitTypeAbstractVillager, 1, 1, 1);
@@ -1317,7 +1316,6 @@ minInterval 25
                cUnitStateAlive, transportLoc, 2.0) <= 0)
          {
             aiPlanDestroy(transportPlan);
-            //aiChat(1, "Killed All Transport Plans with no one on board");
          }
       }
    }
@@ -1352,7 +1350,6 @@ minInterval 10
    {
       xsEnableRule("generalTransportFailsafe");
       xsDisableRule("ceylonFailsafe");
-      //aiChat(1, "Switching to standard failsafe");
       xsDisableSelf();
    }
 }
@@ -1398,7 +1395,6 @@ minInterval 60
       {
          // no builder found
          aiPlanDestroy(buildPlan);
-         //aiChat(1, "deleting a build plan");
       }
    }
 }
@@ -1437,8 +1433,6 @@ minInterval 3
    areaCount = kbAreaGetNumber();
    myLocation = kbUnitGetPosition(unit);
    myAreaGroup = kbAreaGroupGetIDByPosition(myLocation);
-
-   // sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, myLocation);
    
    // Build a couple things on starting island. Stuff that doesn't cause issues later
    createSimpleBuildPlan(gDockUnit, 1, 99, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
@@ -1472,7 +1466,6 @@ minInterval 3
       {
          continue;
       }
-      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(area));
 
       bool bordersWater = false;
       int borderAreaCount = kbAreaGetNumberBorderAreas(area);
@@ -1493,7 +1486,6 @@ minInterval 3
 
       // Try to move landing area away from enemies
       float distToEnemyTC = xsVectorLength(kbAreaGetCenter(area) - enPosition);
-      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, enPosition);
       float dist = xsVectorLength(kbAreaGetCenter(area) - myLocation) - 0;//1.0 * distToEnemyTC;
       if (dist < closestAreaDistance)
       {
@@ -1507,8 +1499,6 @@ minInterval 3
    kbBaseSetPositionAndDistance(cMyID, kbBaseGetMainID(cMyID), kbAreaGetCenter(gCeylonStartingTargetArea), 100.0);
    xsEnableRule("buildingMonitorDelayed");
 
-   //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(gCeylonStartingTargetArea));
-
    // Move someone toward the center so we can see our landing spot
    /*aiTaskUnitMove(getUnit(shipType, cMyID, cUnitStateAlive), kbAreaGetCenter(closestArea));
 
@@ -1519,8 +1509,6 @@ minInterval 3
    kbBaseAddUnit(cMyID, baseID, unit);
 
    int transportPlan = createTransportPlan(myLocation, kbAreaGetCenter(gCeylonStartingTargetArea), 100.0, false);
-   sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(gCeylonStartingTargetArea));
-
    aiPlanSetEventHandler(transportPlan, cPlanEventStateChange, "initIslandTransportHandler");
 
    //int numberNeeded = getUnitCountByLocation(cUnitTypeAbstractWagon, cMyID, cUnitStateAlive, startingLoc, 100.0);
@@ -1569,8 +1557,6 @@ void initIslandTransportHandler(int planID = -1)
                break;
             }
          }
-         // Testing purposes
-         // sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, gStartingLocationOverride);
 
          kbBaseDestroy(cMyID, gMainBase);
          int gMainBase2 = kbBaseCreate(cMyID, "Island base", gStartingLocationOverride, 100.0); // createMainBase(gStartingLocationOverride);
@@ -1671,7 +1657,6 @@ void fishFunction(int maxFishingBoats = 10, int boatPriority = 55, int maxDistan
    int numberFoodFishingBoats = kbGetAmountValidResourcesByLocation(gNavyVec,
       cResourceFood, cAIResourceSubTypeFish, maxDistance) / 400.0;
    int numberGoldFishingBoats = getUnitCountByLocation(cUnitTypeAbstractWhale, 0, cUnitStateAny, gNavyVec, maxDistance) * 4;
-   //aiChat(1, "numberFishingBoats trained: " + numberFishingBoats);
 
    // Get to within 80% of food + gold boat calculation
    if (numberFishingBoats < 0.8 * (numberFoodFishingBoats + numberGoldFishingBoats))
@@ -1687,12 +1672,8 @@ void fishFunction(int maxFishingBoats = 10, int boatPriority = 55, int maxDistan
    kbUnitQuerySetActionType(fishingBoatQuery, cActionTypeIdle);
    int numberFound = kbUnitQueryExecute(fishingBoatQuery);
 
-   //aiChat(1, "numberFishingBoats: " + numberFishingBoats);
-   //aiChat(1, "#Food boats: " + numberFoodFishingBoats + " #Gold boats: " + numberGoldFishingBoats);
-
    if (numberFound > 3 ) // We have too many idle boats indicating we don't know what to use them for so don't train more.
    {
-      //aiChat(1, "stopped making fishing boats because they are idle");
       numberFishingBoats = 0;
    }
 
@@ -1730,7 +1711,6 @@ minInterval 10
       // Cover conditions when we start with a dock or dock wagon
       if (kbUnitCount(cMyID, gDockUnit, cUnitStateAlive) > 0)
       {  
-         //aiChat(1, "already have a dock, starting fishing");
          gTimeToFish = true;
       }
       else if (kbGetAge() < cAge2 && agingUp() == false)
@@ -1741,7 +1721,6 @@ minInterval 10
       // On island maps, start in transition
       if (gStartOnDifferentIslands == true)
       {
-         //aiChat(1, "fishing because island map");
          gTimeToFish = true;
       }
 
@@ -1766,7 +1745,6 @@ minInterval 10
       }
       if (closestTeammate == cMyID && btRushBoom <= 0.5)
       {  // We are the closest teammate, just make sure we aren't all-in rushing
-         //aiChat(1, "fishing because closest to water");
          gTimeToFish = true;
       }
 
@@ -1774,7 +1752,6 @@ minInterval 10
       //if (btRushBoom < -0.4) // currently no one is set below 0, though they technically can be
       if (btRushBoom <= 0 && btOffenseDefense <= 0)
       {
-         //aiChat(1, "fishing because booming heavy");
          gTimeToFish = true;
       }
 
@@ -1787,7 +1764,6 @@ minInterval 10
 
       if (btRushBoom <= 0.0 && randomizer < 3)
       { 
-         //aiChat(1, "fishing because randomly told to do so");
          gTimeToFish = true;
       }
       else if (gTimeToFish == false)
@@ -1831,51 +1807,39 @@ minInterval 10
       enemyWSStrength += kbUnitCostPerResource(tempBoatUnit, cResourceWood) + kbUnitCostPerResource(tempBoatUnit, cResourceGold) +
                            kbUnitCostPerResource(tempBoatUnit, cResourceInfluence);
    }
-   //aiChat(1, "Counts F:E " + friendlyWSCount + ":" + enemyWSCount);
-   //aiChat(1, "Value F:E " + friendlyWSStrength + ":" + enemyWSStrength);
-
 
    // Conditional for Big Boy:   The opponent is not competitive on water, and 
    //                            we are in a booming disposition
-   //aiChat(1, "friendlyWSStrength: " + friendlyWSStrength + " enemyWSStrength: " + enemyWSStrength);
    if (btRushBoom <= 0 && friendlyWSStrength > 3 * enemyWSStrength && friendlyWSStrength > 1500)
    {
-      //aiChat(1, "Big boy boat boom");
       desiredDockCount = 4;
       maxFishingBoats = 50;
       boatPriority = 90;
       maxDistance = kbGetMapXSize()/(0.5 * cNumberPlayers);
-      //aiChat(1, "Big boy radius: " + maxDistance);
    } 
    // Conditional for Double:    The opponent is losing on water, and we want to capitalize unless we are 
    //                            a rushing civ
    else if (btRushBoom < 0.2 && friendlyWSStrength > 1.3 * enemyWSStrength && friendlyWSStrength > 750)
    {
-      //aiChat(1, "Double Dock boat boom");
       desiredDockCount = 2;
       maxFishingBoats = 35;
       boatPriority = 60;
       maxDistance = kbGetMapXSize()/(0.9 * cNumberPlayers);
-      //aiChat(1, "Double dock radius: " + maxDistance);
    } 
    // Conditional for Single:    As long as we are ahead at least a little on water
    else if (btRushBoom < 0.4 && friendlyWSStrength > 1.0 * enemyWSStrength && friendlyWSStrength > 190)
    {
-      //aiChat(1, "Single Dock Trickle");
       desiredDockCount = 1;
       maxFishingBoats = 25;
       boatPriority = 55;
       maxDistance = kbGetMapXSize()/( 1.2 * cNumberPlayers);
-      //aiChat(1, "Single dock radius: " + maxDistance);
    } 
    else
    {
-      //aiChat(1, "No boat boom");
       desiredDockCount = 1;
       maxFishingBoats = 10;
       boatPriority = 35;
       maxDistance = 80;    
-      //aiChat(1, "No boat boom: " + maxDistance);
    }
 
    if (dockCount < desiredDockCount && dockPlanID < 0)
@@ -2351,7 +2315,10 @@ bool retreatCheck(bool forceRetreat = false)
             gAmphibiousAssaultPlan = -1;
             gAmphibiousArmyPlan = -1;
             gNavyVec = kbUnitGetPosition(gWaterSpawnFlagID);
-            aiChat(1, "retreating from amphibious assault. armyPower: " + armyPower);
+            if (gTestingChatsOn == true)
+            {
+               aiChat(1, "retreating from amphibious assault. armyPower: " + armyPower);
+            }
             return true;
          }
       }
@@ -2397,7 +2364,6 @@ void gatherArmy(vector location = cInvalidVector)
       aiPlanAddUnit(gAmphibiousArmyPlan, unitID);
       aiTaskUnitMove(unitID, location);
    }
-   //aiChat(1, "Gathered " + aiPlanGetNumberUnits(gAmphibiousArmyPlan, cUnitTypeLogicalTypeLandMilitary) + " of " + numberFound + " army");
 
    // Gather a few villagers
    if (kbGetAge() >= cAge4)
@@ -2471,12 +2437,19 @@ void gatherNavy(vector location = cInvalidVector)
       int gatheredUnits = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive, location, 70.0);
       // Make sure we have 3 of 4 or at least 70%
       // Change this to ship value at some point
-      aiChat(1, "Gathered: " + gatheredUnits + " Of " + gatherTarget + " navy");
+      if (gTestingChatsOn == true)
+      {
+         aiChat(1, "Gathered: " + gatheredUnits + " Of " + gatherTarget + " navy");
+      }
+
       if ((gatheredUnits <= 4 && gatheredUnits >= gatherTarget - 1) || gatheredUnits > 0.7 * gatherTarget)
       {
          if (gatheredUnits >= 2)
          {
-            aiChat(1, "moving to bombard coast");
+            if (gTestingChatsOn == true)
+            {
+               aiChat(1, "moving to bombard coast");
+            }
             gAmphibiousAssaultStage = cBombardCoast;
             gAmphibiousAssaultSavedTime = xsGetTime();
          }
@@ -2632,7 +2605,10 @@ void bombardCoast()
             {
                if (gAmphibiousAssaultStage < cLoadForces)
                {
-                  aiChat(1, "loading forces: " + aiPlanGetNumberUnits(gAmphibiousArmyPlan));
+                  if (gTestingChatsOn == true)
+                  {
+                     aiChat(1, "loading forces: " + aiPlanGetNumberUnits(gAmphibiousArmyPlan));
+                  }
                   gAmphibiousAssaultSavedTime = xsGetTime();
                   gAmphibiousAssaultStage = cLoadForces;
                }
@@ -2676,13 +2652,11 @@ void loadForces(vector pickupPoint = cInvalidVector)
    int transportPlanID = -1;
    int transportPlan2ID = -1;
 
-   //aiChat(1, "Landing Force Size: " + landingForcesSize + " plan# " + aiPlanGetNumberUnits(gAmphibiousArmyPlan));
    // Check to see if we even have anyone. If not, bail
    if (landingForcesSize <= 0)
    {
       if (aiPlanGetNumberUnits(gAmphibiousArmyPlan) <= 0)
       {
-         aiChat(1, "landingForcesSize = 0");
          //gAmphibiousAssaultStage = cGatherNavy;
          gAmphibiousAssaultStage = -1;
          return;
@@ -2693,7 +2667,6 @@ void loadForces(vector pickupPoint = cInvalidVector)
    // Make sure our existing ships are still alive
    if (kbUnitGetHealth(gLandingShip1) < 0.0)
    {
-      //aiChat(1, "transport 1 died");
       gLandingShip1 = -1;
    }
    if (kbUnitGetHealth(gLandingShip2) < 0.0)
@@ -2836,12 +2809,13 @@ void loadForces(vector pickupPoint = cInvalidVector)
                cUnitStateAlive, kbUnitGetPosition(gLandingShip2), 1.0);
    }
 
-   //aiChat(1, "Units on ship 1: " + unitsOnShip1 + " Ship 2: " + unitsOnShip2);
    if (unitsOnShip1 + unitsOnShip2 > landingForcesSize * 0.95 || 
        (unitsOnShip1 + unitsOnShip2 > 0 && xsGetTime() > gAmphibiousAssaultSavedTime + 60000))
-   //if (unitsOnShip1 + unitsOnShip2 == landingForcesSize)
    {
-      aiChat(1, "Moving to drop off forces");
+      if (gTestingChatsOn == true)
+      {
+         aiChat(1, "Moving to drop off forces");
+      }
       gAmphibiousAssaultStage = cLandForces;
    }
 
@@ -2872,7 +2846,6 @@ void landForces()
    // If the first ship ejects, start doing the towers
    if (unitsOnShip1 <= 0 || (gLandingShip2 > 0 && unitsOnShip2 <= 0))
    {
-      aiChat(1, "Called buildForwardTowers and forwardArmyPlan early");
       buildForwardTowers();
       if (xsIsRuleEnabled("forwardArmyPlan") == false)
       {
@@ -2883,7 +2856,10 @@ void landForces()
    if (unitsOnShip1 + unitsOnShip2 == 0)
    {  // Done transporting, move to next phase
       gAmphibiousAssaultStage = cBuildForwardBuildings;
-      aiChat(1, "moving to build forward buildings");
+      if (gTestingChatsOn == true)
+      {
+         aiChat(1, "moving to build forward buildings");
+      }
       //aiPlanDestroy(gAmphibiousTransportPlan);
       // Explore enabling this earlier to allow more reinforcement and parallel decision making
       //xsEnableRule("forwardArmyPlan");
@@ -2902,7 +2878,6 @@ void landForces()
       distFromShore = distance(dropoff, shipLoc);
       if (distFromShore < 5)
       {
-         aiChat(1, "Trying to eject ship 1");
          aiTaskUnitEject(gLandingShip1);
       }
       else if (distFromShore < 15)
@@ -2923,7 +2898,6 @@ void landForces()
       distFromShore = distance(dropoff, shipLoc);
       if (distFromShore < 5)
       {
-         aiChat(1, "Trying to eject ship 1");
          aiTaskUnitEject(gLandingShip2);
       }
       else if (distFromShore < 15)
@@ -2967,7 +2941,11 @@ void moveInland(vector targetPoint = cInvalidVector)
    {
       return;
    }
-   aiChat(1, "moving inland");
+
+   if (gTestingChatsOn == true)
+   {
+      aiChat(1, "moving inland");
+   }
 
    for (i = 0; < aiPlanGetNumberUnits(gAmphibiousArmyPlan))
    {  // If we only have 1 ship, everyone boards that ship. Otherwise split 50/50
@@ -2984,7 +2962,6 @@ void moveInland(vector targetPoint = cInvalidVector)
 //==============================================================================
 void trainFromGalleons()
 {
-   //aiChat(1, "training from galleon");
    int frNavySize = aiPlanGetNumberUnits(gAmphibiousAssaultPlan, cUnitTypeAbstractWarShip);
    int unitID = -1;
    int puid = -1;
@@ -3067,7 +3044,10 @@ void buildForwardTowers()
       tempUnitAreaGroup = kbAreaGroupGetIDByPosition(kbUnitGetPosition(tempUnit));
       if (kbAreAreaGroupsPassableByLand(tempUnitAreaGroup, forwardBaseAreaGroup) == true)
       {
-         aiChat(1, "Moving to establish Forward base");
+         if (gTestingChatsOn == true)
+         {
+            aiChat(1, "Moving to establish Forward base");
+         }
          gAmphibiousAssaultSavedTime = xsGetTime();
          gAmphibiousAssaultStage = cEstablishForwardBase;
          return;
@@ -3112,16 +3092,6 @@ void buildForwardTowers()
    {
       planID = createLocationBuildPlan(gTowerUnit, towersToBuild, 100, true, -1, gAmphibiousAssaultTarget, 1);
    }
-   aiChat(1, "created tower build plan");
-
-
-
-   // Move on as long as the plan takes
-   /*if (planID > 0)
-   {
-      aiChat(1, "Moving to establish forward base");
-      gAmphibiousAssaultStage = cEstablishForwardBase;
-   }*/
    
    return;
 }
@@ -3139,7 +3109,54 @@ minInterval 2
    {
       aiPlanDestroy(gforwardArmyTransport);
       gforwardArmyTransport = -1;
-      aiChat(1, "No ship, destroyed forward army transport");
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
+// baseUnderThreat
+// AssertiveWall: kills the army gather plan allowing units to help out the town
+//    This version is less likely to trigger than the defense reflex
+//==============================================================================
+rule baseUnderThreat
+inactive
+minInterval 2
+{
+   vector mainBaseLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   int baseRadius = kbBaseGetMaximumResourceDistance(cMyID, kbBaseGetMainID(cMyID));
+   int enemiesNearBase = 0;
+   int landReservePlanCount = aiPlanGetNumberUnits(gLandReservePlan, cUnitTypeLogicalTypeLandMilitary);
+
+   // Make sure all enemies are on the island
+   int armyQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia, cUnitStateAlive, mainBaseLoc, baseRadius);
+   int numberFound = kbUnitQueryExecute(armyQueryID);
+   int unitID = -1;
+   int puid = -1;
+   vector unitLoc = cInvalidVector;
+   int mainLand = kbAreaGroupGetIDByPosition(mainBaseLoc);
+
+   for (i = 0; < numberFound)
+   {
+      unitID = kbUnitQueryGetResult(armyQueryID, i);
+      unitLoc = kbUnitGetPosition(unitID);
+      if (kbAreAreaGroupsPassableByLand(mainLand, kbAreaGroupGetIDByPosition(unitLoc)) == true)
+      {
+         enemiesNearBase = enemiesNearBase + 1;
+      }
+   }
+
+   if (enemiesNearBase > landReservePlanCount && enemiesNearBase > 8)
+   {
+      aiPlanDestroy(gAmphibiousArmyPlan);
+      gAmphibiousArmyPlan = -1;
+      if (gTestingChatsOn == true)
+      {
+         aiChat(1, "Base under threat, killing army gather plan");
+      }
+      if (gAmphibiousAssaultStage == cGatherNavy)
+      {  // Needed to prevent the AI from stealing all the units right back
+         retreatCheck(true);
+      }
       xsDisableSelf();
    }
 }
@@ -3156,7 +3173,10 @@ minInterval 20
    // Check if forward base is active. If not, destroy plan
    if (gForwardBaseState == cForwardBaseStateNone && gAmphibiousAssaultStage == -1)// || gForwardBaseLocation == cInvalidVector) 
    {
-      aiChat(1, "Forward army plan destroyed");
+      if (gTestingChatsOn == true)
+      {
+         aiChat(1, "Forward army plan destroyed");
+      }
       aiPlanDestroy(gforwardArmyPlan);
       gforwardArmyPlan = -1;
       if (aiPlanGetNumberUnits(gforwardArmyTransport, cUnitTypeAbstractWarShip) < 0)
@@ -3194,7 +3214,6 @@ minInterval 20
       aiPlanSetVariableInt(gforwardArmyPlan, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeNone);
       aiPlanSetDesiredPriority(gforwardArmyPlan, 100); // Higher than LandDefendPlan but lower than attack plans
       aiPlanSetActive(gforwardArmyPlan);
-      aiChat(1, "Forward Army plan created");
    }
 
    // Make sure anyone on the forward island is in this plan
@@ -3233,11 +3252,9 @@ minInterval 20
    {
       if (xsIsRuleEnabled("killForwardTransport") == false)
       {
-         aiChat(1, "enabled killforwardtransport rule");
          xsEnableRule("killForwardTransport");
       }
    }
-   //aiChat(1, "using: " + currentTransportPlanShips + " transport ships");
 
    if (desiredMilitary > currentPlanMilitary * 1.2 && gforwardArmyTransport < 0)//aiPlanGetActive(gforwardArmyTransport) == false)
    {
@@ -3284,13 +3301,12 @@ minInterval 20
          }
          aiPlanSetNoMoreUnits(gforwardArmyTransport, true);
 
-         aiChat(1, "Forward army plan reinforcing with: " + numberToTransport);
+         if (gTestingChatsOn == true)
+         {
+            aiChat(1, "Forward army plan reinforcing with: " + numberToTransport);
+         }
          // Don't go further to attack
          return;
-      }
-      else
-      {
-         aiChat(1, "Forward army transport failed");
       }
       //aiPlanAddUnitType(gforwardArmyPlan, cUnitTypeLogicalTypeLandMilitary, 0, desiredMilitary, maxMilitary); 
    }
@@ -3321,7 +3337,7 @@ minInterval 20
       if ((forwardArmyCount >= 50 || armyPower > 40) && forwardArmyCount > numberForward * 0.9)
       {
          forwardAttackWave = aiPlanCreate("Forward Attack Wave", cPlanCombat);
-         aiPlanAddUnitType(forwardAttackWave, cUnitTypeLogicalTypeLandMilitary, 0, forwardArmyCount, numberForward); 
+         aiPlanAddUnitType(forwardAttackWave, cUnitTypeLogicalTypeLandMilitary, 0, forwardArmyCount, forwardArmyCount); 
          aiPlanSetVariableInt(forwardAttackWave, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
          aiPlanSetVariableInt(forwardAttackWave, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
          aiPlanSetVariableFloat(forwardAttackWave, cCombatPlanTargetEngageRange, 0, 60.0);   // Just use the engage range since it is away from base
@@ -3340,7 +3356,10 @@ minInterval 20
             aiPlanAddUnit(forwardAttackWave, unitID);
          }
 
-         aiChat(1, "Sending in an attack wave");
+         if (gTestingChatsOn == true)
+         {
+            aiChat(1, "Sending in an attack wave");
+         }
       }
    }
 
@@ -3429,7 +3448,6 @@ void establishForwardBase()
    // We're done. Destroy all the plans
    // Set the center of naval operations to the forward base
    //gNavyVec = getCoastalPoint(guessEnemyLocation(), gAmphibiousAssaultTarget, 15, true);
-   //sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, gNavyVec);
    gAmphibiousAssaultStage = -1;//cGatherNavy;
    aiPlanDestroy(gAmphibiousAssaultPlan);
    aiPlanDestroy(gAmphibiousArmyPlan);
@@ -3437,7 +3455,6 @@ void establishForwardBase()
    gAmphibiousTransportPlan = -1;
    gAmphibiousAssaultPlan = -1;
    gAmphibiousArmyPlan = -1;
-   aiChat(1, "ended all amphibious assault plans");
 }
 
 //==============================================================================
@@ -3503,7 +3520,6 @@ minInterval 30
 
    if (makeAnother == true)
    {
-      aiChat(1, "making another FB building in the chain");
       int plan0 = createLocationBuildPlan(tempBuilding, barracksNum, 100, true, -1, gAmphibiousAssaultTarget, 1);
 
       int vilQuery = createSimpleUnitQuery(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 40);
@@ -3548,7 +3564,10 @@ minInterval 10
          //xsDisableRule("transferMilitary");
          xsDisableSelf();
 
-         aiChat(1, "Beach abandoned");
+         if (gTestingChatsOn == true)
+         {
+            aiChat(1, "Beach abandoned");
+         }
       }
    }
 }
@@ -3598,7 +3617,7 @@ bool amphibiousAssault(vector location = cInvalidVector)
    //gAmphibiousAssaultTarget = getCoastalPoint(location, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 3, false)
    gAmphibiousAssaultTarget = selectPickupPoint(location, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 10, false);
    // Put something here about the time to suppress sending this too much
-   if (xsGetTime() > gAmphibiousAssaultSavedTime + 5 * 60 * 1000)
+   if (xsGetTime() > gAmphibiousAssaultSavedTime + 8 * 60 * 1000)
    {
       sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, gAmphibiousAssaultTarget);
    }
@@ -3634,7 +3653,7 @@ bool amphibiousAssault(vector location = cInvalidVector)
    //gatherArmy(pickupPoint);
 
    // Enable the rule to monitor the amphibious assault
-   //aiChat(1, "Amphibious Assault Rule Started");
+   xsEnableRule("baseUnderThreat");
    xsEnableRule("amphibiousAssaultRule");
    return true;
 }
@@ -3664,7 +3683,6 @@ minInterval 5
    if (retreatCheck() == true || gAmphibiousAssaultStage == -1)
    {
       xsDisableSelf();
-      //aiChat(1, "Amphibious Assault Aborted");
       return;
    }
 
@@ -3672,10 +3690,6 @@ minInterval 5
    vector mainBaseLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
    vector gatherPoint = getCoastalPoint(mainBaseLoc, gAmphibiousAssaultTarget, 5, true);
    vector pickupPoint = selectPickupPoint(mainBaseLoc, gAmphibiousAssaultTarget); //   getDropoffPoint(gAmphibiousAssaultTarget, mainBaseLoc, 4);
-
-      //sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
-      //sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, gatherPoint);
-      //sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, pickupPoint);
 
    switch (gAmphibiousAssaultStage)
    {
@@ -3699,9 +3713,6 @@ minInterval 5
       }
       case cLandForces:
       {
-         //aiChat(1, "Attempting to Land Forces");
-         //sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, gAmphibiousAssaultTarget);
-
          bombardCoast(); // Keep bombarding the coast
          //gatherNavy();   // Keep adding navy units to the plan
 
@@ -3710,7 +3721,6 @@ minInterval 5
       }
       case cBuildForwardBuildings:
       {
-         //aiChat(1, "Establishing Foothold");
          bombardCoast(); // Keep bombarding the coast
          //moveInland();
 
@@ -3724,7 +3734,6 @@ minInterval 5
          //moveInland();
          trainFromGalleons();
          establishForwardBase();
-         //aiChat(1, "Creating Forward Base");
          break;
       }
    }
@@ -5803,7 +5812,6 @@ minInterval 10
    {
       weAreWinning = true;
    }*/
-   //aiChat(1, "friendlyStrength: " + friendlyStrength + " enemyStrength: " + enemyStrength + " allyStrength: " + allyStrength);
 
    // Now look at where we are using the first unit, but only if we don't already know we're retreating
    if (retreat == false)
@@ -5830,7 +5838,6 @@ minInterval 10
    // This only works when there is only 2 teams, otherwise gKOTHEnemyTimer doesn't count down
    if ((aiIsKOTHAllowed() == true)) //gKOTHEnemyTimer < 300 && 
    {
-      //aiChat(1, "timer: " + gKOTHEnemyTimer);
       toTheDeath = true;
       retreat = false;
    }
@@ -5841,8 +5848,6 @@ minInterval 10
       retreat = true;
       toTheDeath = true;
    }
-   //aiChat(1, "friendlyStrength: " + friendlyStrength + " enemyStrength: " + enemyStrength + " allyStrength: " + allyStrength);
-   //aiChat(1, "retreat? " + retreat + " plan: " + gLandAttackPlanID);
 
    // Tell everyone to go back to base and delete the plan
    if (retreat == true)
@@ -5878,7 +5883,7 @@ minInterval 10
          // I guess we can't use this one. A couple suggestions for later:
          /*cAICommPromptToAllyWeAreLosingHeIsStronger
          cAICommPromptToAllyWeAreLosingHeIsWeaker
-         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyAdviceWithdrawFromBattle, allyTargetLocation);
+         cAICommPromptToAllyAdviceWithdrawFromBattle
          */
       }
       else
@@ -6167,3 +6172,113 @@ minInterval 30
 }
 
 
+
+//==============================================================================
+/* forceAttack: 
+   Simple attack logic that will just force an attack on the enemy 
+   after too long
+*/
+//==============================================================================
+rule forceAttack
+inactive
+minInterval 30
+{
+   if (gAmphibiousAssaultStage > 0)
+   {
+      xsDisableSelf();
+      return;
+   }
+   int currentTime = xsGetTime();
+   int modifiedAttackInterval = gAttackMissionInterval;
+   bool attackNow = false;
+   vector enemyLoc = cInvalidVector;
+
+   if (btRushBoom > 0.4)
+   { // Rushing
+      if (kbGetAge() == cAge2)
+      {
+         if (currentTime > gLastAttackMissionTime + gAttackMissionInterval * 0.6)
+         {
+            attackNow = true;
+         }
+      }
+      else if (kbGetAge() >= cAge3)
+      {
+         if (currentTime > gLastAttackMissionTime + gAttackMissionInterval)
+         {
+            attackNow = true;
+         }
+      }
+   }
+   else
+   { // Booming
+      if (kbGetAge() >= cAge3)
+      {
+         if (currentTime > gLastAttackMissionTime + gAttackMissionInterval * 1.1)
+         {
+            attackNow = true;
+         }
+      }
+      else if (kbGetAge() >= cAge4)
+      {
+         if (currentTime > gLastAttackMissionTime + gAttackMissionInterval)
+         {
+            attackNow = true;
+         }
+      }
+   }
+
+   if (attackNow == true)
+   {
+      int forcedAttack = -1;
+      vector mainLocation = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+      int forwardArmyQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive, mainLocation, 60.0);
+      int numberFoundArmyQuery = kbUnitQueryExecute(forwardArmyQuery);
+      int forwardArmyCount = 0;
+      int armyPower = 0;
+      int unitID = -1;
+      vector unitLoc = cInvalidVector;
+      int puid = -1;
+
+      for (i = 0; < numberFoundArmyQuery)
+      {
+         unitID = kbUnitQueryGetResult(forwardArmyQuery, i);
+         unitLoc = kbUnitGetPosition(unitID);
+         if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(mainLocation), 
+                                          kbAreaGroupGetIDByPosition(unitLoc)) == true)
+         {
+            puid = kbUnitGetProtoUnitID(unitID);
+            armyPower = armyPower + getMilitaryUnitStrength(puid);
+            forwardArmyCount = forwardArmyCount + 1;
+         }
+      }
+
+      if (armyPower < 12 * kbGetAge())
+      {
+         return;
+      }
+
+      enemyLoc = getEnemyBase(aiGetMostHatedPlayerID(), );
+
+      forwardAttackWave = aiPlanCreate("Forced Attack Wave", cPlanCombat);
+      aiPlanAddUnitType(forcedAttack, cUnitTypeLogicalTypeLandMilitary, 10, forwardArmyCount, forwardArmyCount); 
+      aiPlanSetVariableInt(forcedAttack, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
+      aiPlanSetVariableInt(forcedAttack, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+      aiPlanSetVariableFloat(forcedAttack, cCombatPlanTargetEngageRange, 0, 80.0);   // Just use the engage range since it is away from base
+      aiPlanSetVariableVector(forcedAttack, cCombatPlanTargetPoint, 0, enemyLoc);
+      aiPlanSetVariableFloat(forcedAttack, cCombatPlanGatherDistance, 0, 30.0);
+      aiPlanSetInitialPosition(forcedAttack, mainLocation);
+      aiPlanSetVariableInt(forcedAttack, cCombatPlanRefreshFrequency, 0, 300);
+      aiPlanSetVariableInt(forcedAttack, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeNone);
+      aiPlanSetVariableInt(forcedAttack, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget);
+      aiPlanSetVariableInt(forcedAttack, cCombatPlanNoTargetTimeout, 0, 20000); // 20 seconds
+      aiPlanSetDesiredPriority(forcedAttack, 100); 
+      aiPlanSetActive(forcedAttack);
+
+      gLastAttackMissionTime = currentTime;
+      if (gTestingChatsOn == true)
+      {
+         aiChat(1, "Forcing an attack with: " + forwardArmyCount);
+      }
+   }
+}

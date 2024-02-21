@@ -1227,7 +1227,6 @@ bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
    if ((gIsArchipelagoMap == true && kbGetAge() >= cAge2) || (gIsArchipelagoMap == true && kbProtoUnitIsType(cMyID, puid, cUnitTypeAbstractWonder) == true))
    {
       //if (kbProtoUnitIsType(cMyID, puid, cUnitTypeAbstractWonder) == true)
-      //   aiChat(1, "Trying to build wonder");
       bool result = selectArchipelagoBuildPlanPosition(planID, puid, baseID);
       return result;
    }
@@ -1595,7 +1594,6 @@ bool addBuilderToPlan(int planID = -1, int puid = -1, int numberBuilders = 1)
          aiPlanAddUnitType(planID, builderType, 1, 1, 1);
          aiPlanAddUnit(planID, sameIslandBuilder);
          //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, targetLoc);
-         aiChat(1, "Grabbed same island villager");
          }
       }*/
    }
@@ -1773,7 +1771,10 @@ minInterval 30
       //}
       if (amphibiousAssault() == true)
       {
-         aiChat(1, "Enabled amphibious assault");
+         if (gTestingChatsOn == true)
+         {
+            aiChat(1, "Enabled amphibious assault");
+         }
          xsDisableSelf();
       }
       return;

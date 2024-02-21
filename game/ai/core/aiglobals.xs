@@ -51,6 +51,7 @@ extern const int cAge4conditional = -14;
 //==============================================================================
 // Islands. AssertiveWall
 //==============================================================================
+extern bool gTestingChatsOn = false;        // Turn off all the chats used for testing
 
 extern bool gMigrationMap = false;          // True for migration style maps like Ceylon
 extern bool gCeylonDelay = false;           // Used to delay buildings until we makee a base

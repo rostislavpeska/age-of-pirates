@@ -1310,7 +1310,6 @@ minInterval 15
                shouldAttack = false;
             }
          }
-         aiChat(1, "ShouldAttack1: " + toggleShouldAttack1 + " ShouldAttack2: " + toggleShouldAttack2);*/
          if (cDifficultyCurrent >= gDifficultyExpert)
          {
             // Avoid attacking until 5 minutes passed after aging up.
