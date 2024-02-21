@@ -2186,6 +2186,83 @@ vector getEnemyBase(int enemyPlayerID = -1, int armyPower = 0)
    return (cInvalidVector);
 }
 
+//==============================================================================
+// selectPickupPoint
+// Looks at the vector between us and the enemy, and sompares several points to 
+// find the best pickup
+// Similar process as how coastal tower locations are picked
+// To use this for dropoff points, just invert the friendly and enemy locations,
+// but you must provide both in that case otherwise it will default to the 
+// opposite
+//==============================================================================
+vector selectPickupPoint(vector friendlyLoc = cInvalidVector, vector enemyLoc = cInvalidVector, int stepsBack = 1, bool waterBool = false)
+{
+   int numAttempts = 15;
+   int coastDist = -1;
+   int spreadAngle = -1;
+   vector tempVec = cInvalidVector;
+   int nearbyBuildings = -1;
+   int bestNearbyBuildings = 99;
+   vector bestVec = cInvalidVector;
+   bool success = false;
+
+
+   if (enemyLoc == cInvalidVector)
+   {
+      enemyLoc = guessEnemyLocation();
+   }
+
+   if (friendlyLoc == cInvalidVector)
+   {
+      friendlyLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   }
+
+   // Find out how far we are from the coast
+   coastDist = distance(friendlyLoc, getCoastalPoint(friendlyLoc, enemyLoc, stepsBack, waterBool));
+
+   // adjust how far our spread is if we're too close to the shore. Total angle is twice the spread angle
+   if (coastDist < 120)
+   {
+      spreadAngle = PI * 0.4;
+   }
+   else if (coastDist < 180)
+   {
+      spreadAngle = PI * 0.3;
+   }
+   else
+   {
+      spreadAngle = PI * 0.2;
+   }
+
+   for (attempt = 0; < numAttempts)
+   {  
+      // Don't normalize this vector, keep it far away
+      tempVec = enemyLoc - friendlyLoc;
+      // Depends on spread angle determined above
+      tempVec = rotateByReferencePoint(friendlyLoc, tempVec, aiRandFloat(0.0 - spreadAngle, spreadAngle));
+      // Gets the point on the coast between these two
+      tempVec = getCoastalPoint(friendlyLoc, tempVec, stepsBack, waterBool);
+
+      if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(tempVec), kbAreaGroupGetIDByPosition(friendlyLoc)))
+      {
+         nearbyBuildings = getUnitCountByLocation(cUnitTypeLogicalTypeBuildingsNotWalls, cPlayerRelationAny, cUnitStateABQ, tempVec, 15.0);
+         if (nearbyBuildings < bestNearbyBuildings)
+         {
+            // Make sure it's in the same areagroup.
+            success = true;
+            bestNearbyBuildings = nearbyBuildings;
+            bestVec = tempVec;
+         }
+      }
+   }
+   if (success == true)
+   {
+      return (bestVec);
+   }
+
+   bestVec = getCoastalPoint(friendlyLoc, enemyLoc, 1, false);
+   return (bestVec);
+}
 
 //==============================================================================
 // Checks to see if we should retreat
@@ -2240,19 +2317,44 @@ bool retreatCheck(bool forceRetreat = false)
       // If we're too outnumbered then retreat to gNavyVec
       if (frNavyValue * 1.2 < (enNavyValue + enTowerValue) || forceRetreat == true)
       {
-         gAmphibiousAssaultStage = -1;//cGatherNavy;
-         for (i = 0; < frNavySize)
+         // Get the value of the army forward. Handles instances where a large army is dropped off
+         int forwardAttackWave = -1;
+         int forwardArmyQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive, gForwardBaseLocation, 40.0);
+         int numberFoundArmyQuery = kbUnitQueryExecute(forwardArmyQuery);
+         int forwardArmyCount = 0;
+         int attackTimeSeconds = xsGetTime() / 1000;
+         int armyPower = 0;
+         vector unitLoc = cInvalidVector;
+         for (i = 0; < numberFoundArmyQuery)
          {
-            unitID = aiPlanGetUnitByIndex(gAmphibiousAssaultPlan, i);
-            aiTaskUnitMove(unitID, gNavyVec);
+            unitID = kbUnitQueryGetResult(forwardArmyQuery, i);
+            unitLoc = kbUnitGetPosition(unitID);
+            if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(gAmphibiousAssaultTarget), 
+                                             kbAreaGroupGetIDByPosition(unitLoc)) == true)
+            {
+               puid = kbUnitGetProtoUnitID(unitID);
+               armyPower = armyPower + (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                              kbUnitCostPerResource(puid, cResourceInfluence));
+               forwardArmyCount = forwardArmyCount + 1;
+            }
          }
-         aiPlanDestroy(gAmphibiousAssaultPlan);
-         aiPlanDestroy(gAmphibiousArmyPlan);
-         gAmphibiousAssaultPlan = -1;
-         gAmphibiousArmyPlan = -1;
-         gNavyVec = kbUnitGetPosition(gWaterSpawnFlagID);
-         aiChat(1, "retreating from amphibious assault");
-         return true;
+
+         if (armyPower < 100 * 15 || forwardArmyCount < 5)
+         {
+            gAmphibiousAssaultStage = -1;//cGatherNavy;
+            for (i = 0; < frNavySize)
+            {
+               unitID = aiPlanGetUnitByIndex(gAmphibiousAssaultPlan, i);
+               aiTaskUnitMove(unitID, gNavyVec);
+            }
+            aiPlanDestroy(gAmphibiousAssaultPlan);
+            aiPlanDestroy(gAmphibiousArmyPlan);
+            gAmphibiousAssaultPlan = -1;
+            gAmphibiousArmyPlan = -1;
+            gNavyVec = kbUnitGetPosition(gWaterSpawnFlagID);
+            aiChat(1, "retreating from amphibious assault. armyPower: " + armyPower);
+            return true;
+         }
       }
    }
 
@@ -2771,8 +2873,12 @@ void landForces()
    // If the first ship ejects, start doing the towers
    if (unitsOnShip1 <= 0 || (gLandingShip2 > 0 && unitsOnShip2 <= 0))
    {
-      aiChat(1, "Called buildForwardTowers early");
+      aiChat(1, "Called buildForwardTowers and forwardArmyPlan early");
       buildForwardTowers();
+      if (xsIsRuleEnabled("forwardArmyPlan") == false)
+      {
+         xsEnableRule("forwardArmyPlan");
+      }
    }
 
    if (unitsOnShip1 + unitsOnShip2 == 0)
@@ -2900,7 +3006,7 @@ void trainFromGalleons()
    // Create a maintain plan
    if (gAmphibiousTrainPlan < 0)
    {
-      gAmphibiousTrainPlan = createSimpleMaintainPlan(unitToTrain, 20, false, -1, 1);
+      gAmphibiousTrainPlan = createSimpleMaintainPlan(unitToTrain, 20, false, -1, 5);
       aiPlanSetDesiredResourcePriority(gAmphibiousTrainPlan, 90);
       aiPlanSetVariableInt(gAmphibiousTrainPlan, cTrainPlanBuildFromType, 0, gGalleonUnit);
       aiPlanSetVariableVector(gAmphibiousTrainPlan, cTrainPlanGatherPoint, 0, gAmphibiousAssaultTarget);
@@ -3049,7 +3155,7 @@ inactive
 minInterval 20
 {
    // Check if forward base is active. If not, destroy plan
-   if (gForwardBaseState == cForwardBaseStateNone || gForwardBaseLocation == cInvalidVector)
+   if (gForwardBaseState == cForwardBaseStateNone && gAmphibiousAssaultStage == -1)// || gForwardBaseLocation == cInvalidVector) 
    {
       aiChat(1, "Forward army plan destroyed");
       aiPlanDestroy(gforwardArmyPlan);
@@ -3193,18 +3299,30 @@ minInterval 20
    // If we have everyone, and it's big enough to be a real army, try and push into the enemy base
    int forwardAttackWave = -1;
    int forwardArmyQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive, gForwardBaseLocation, 40.0);
-   int forwardArmyCount = kbUnitQueryExecute(forwardArmyQuery);
+   int numberFoundArmyQuery = kbUnitQueryExecute(forwardArmyQuery);
+   int forwardArmyCount = 0;
    int attackTimeSeconds = xsGetTime() / 1000;
    int armyPower = 0;
-   for (i = 0; < forwardArmyCount)
+   for (i = 0; < numberFoundArmyQuery)
    {
       unitID = kbUnitQueryGetResult(forwardArmyQuery, i);
-      puid = kbUnitGetProtoUnitID(unitID);
-      armyPower = armyPower + getMilitaryUnitStrength(puid);
+      unitLoc = kbUnitGetPosition(unitID);
+      if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(gAmphibiousAssaultTarget), 
+                                        kbAreaGroupGetIDByPosition(unitLoc)) == true)
+      {
+         puid = kbUnitGetProtoUnitID(unitID);
+         armyPower = armyPower + getMilitaryUnitStrength(puid);
+         forwardArmyCount = forwardArmyCount + 1;
+      }
    }
    vector attackLocation = getEnemyBase(-1, armyPower);
+   //
+   if (isDefendingOrAttacking() == true)
+   {
+      aiChat(1, "forwardArmyCount: " + forwardArmyCount + ". ArmyPower: " + armyPower + ". Currently attacking/defending");
+   }
 
-   if (forwardArmyCount >= 50 && forwardArmyCount > numberForward * 0.9)
+   if ((forwardArmyCount >= 50 || armyPower > 40) && forwardArmyCount > numberForward * 0.9 && isDefendingOrAttacking() == false)
    {
       forwardAttackWave = aiPlanCreate("Forward Attack Wave: " + attackTimeSeconds, cPlanCombat);
       aiPlanAddUnitType(forwardAttackWave, cUnitTypeLogicalTypeLandMilitary, 0, forwardArmyCount, numberForward); 
@@ -3218,7 +3336,7 @@ minInterval 20
       aiPlanSetVariableInt(forwardAttackWave, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeNone);
       aiPlanSetVariableInt(forwardAttackWave, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget);
       aiPlanSetVariableInt(forwardAttackWave, cCombatPlanNoTargetTimeout, 0, 30000); // 30 seconds
-      aiPlanSetDesiredPriority(forwardAttackWave, 100); // Higher than LandDefendPlan but lower than attack plans
+      aiPlanSetDesiredPriority(forwardAttackWave, 100); 
       aiPlanSetActive(forwardAttackWave);
       for (i = 0; < forwardArmyCount)
       {
@@ -3303,7 +3421,10 @@ void establishForwardBase()
 
    xsEnableRule("forwardBaseDestroyedCheck");
    //xsEnableRule("transferMilitary");
-   xsEnableRule("forwardArmyPlan");
+   if (xsIsRuleEnabled("forwardArmyPlan") == false)
+   {
+      xsEnableRule("forwardArmyPlan");
+   }
    // Call it to try and take the forward army units before we destroy the plan
    forwardArmyPlan();
    xsEnableRule("fbBuildingChain");
@@ -3477,16 +3598,14 @@ bool amphibiousAssault(vector location = cInvalidVector)
    }
    // Reset the stage
    gAmphibiousAssaultStage = cGatherNavy;
-   gAmphibiousAssaultTarget = getCoastalPoint(location, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 3, false);
+   //gAmphibiousAssaultTarget = getCoastalPoint(location, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 3, false)
+   gAmphibiousAssaultTarget = selectPickupPoint(location, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 10, false);
    // Put something here about the time to suppress sending this too much
    if (xsGetTime() > gAmphibiousAssaultSavedTime + 5 * 60 * 1000)
    {
       sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, gAmphibiousAssaultTarget);
    }
    
-   // another for testing
-   sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, guessEnemyLocation());
-
    if (gAmphibiousAssaultPlan < 0)
    {
       gAmphibiousAssaultPlan = aiPlanCreate("Amphibious Assault Plan", cPlanReserve);
@@ -3553,8 +3672,9 @@ minInterval 5
    }
 
    // Used by multiple rules
-   vector gatherPoint = getCoastalPoint(kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), gAmphibiousAssaultTarget, 5, true);
-   vector pickupPoint = getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 4);
+   vector mainBaseLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   vector gatherPoint = getCoastalPoint(mainBaseLoc, gAmphibiousAssaultTarget, 5, true);
+   vector pickupPoint = selectPickupPoint(mainBaseLoc, gAmphibiousAssaultTarget); //   getDropoffPoint(gAmphibiousAssaultTarget, mainBaseLoc, 4);
 
       //sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
       //sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, gatherPoint);
