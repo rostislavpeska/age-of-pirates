@@ -1785,7 +1785,7 @@ minInterval 30
       //{
       //   xsEnableRule("forwardTowerBaseManager");
       //}
-      /*if (amphibiousAssault() == true)
+      if (amphibiousAssault() == true)
       {
          if (gTestingChatsOn == true)
          {
@@ -1793,7 +1793,7 @@ minInterval 30
          }
          xsDisableSelf();
       }
-      return;*/
+      return;
    }
 
    // We have a Fort Wagon but also already have a forward base, default the Fort position.
@@ -3171,10 +3171,10 @@ minInterval 5
                      // Old simpler version
                      //establishForwardBeachHead(location);
                      // New far more advanced version. Don't start duplicates
-                     /*if (gAmphibiousAssaultPlan < 0)
+                     if (gAmphibiousAssaultPlan < 0)
                      {
                         amphibiousAssault(location);
-                     }*/
+                     }
                   }
                   else
                   {  // AssertiveWall: Don't send these messages on island maps to avoid excessive pinging

@@ -1514,7 +1514,7 @@ minInterval 15
       planID = aiPlanCreate("Attack Player " + targetPlayer + " Base " + targetBaseID, cPlanCombat);
 
       aiPlanSetVariableInt(planID, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
-      if (targetBaseID >= 0)// && gStartOnDifferentIslands == false)
+      if (targetBaseID >= 0 && gStartOnDifferentIslands == false)
       {
          aiPlanSetVariableInt(planID, cCombatPlanTargetMode, 0, cCombatPlanTargetModeBase);
          aiPlanSetVariableInt(planID, cCombatPlanTargetBaseID, 0, targetBaseID);
@@ -1637,7 +1637,10 @@ minInterval 15
       // AssertiveWall: set the extern and start the retreat logic. This is only necessary for attacks, 
          // and excludes defend plans except on KoTH
       gLandAttackPlanID = planID; 
-      xsEnableRule("attackRetreatDelay");
+      if (gStartOnDifferentIslands == true && gMigrationMap == false)
+      {
+         xsEnableRule("attackRetreatDelay");
+      }
    }
    else 
    {
@@ -3610,6 +3613,7 @@ minInterval 10
          kbUnitQuerySetPosition(enemyArmyQuery, baseLoc);
          kbUnitQuerySetMaximumDistance(enemyArmyQuery, cvDefenseReflexSearchRadius);
          kbUnitQuerySetSeeableOnly(enemyArmyQuery, true);
+         kbUnitQuerySetUnitType(enemyArmyQuery, cUnitTypeLogicalTypeLandMilitary); // AssertiveWall: copied from above
          kbUnitQuerySetState(enemyArmyQuery, cUnitStateAlive);
          kbUnitQueryResetResults(enemyArmyQuery);
          enemyArmySize = kbUnitQueryExecute(enemyArmyQuery);
