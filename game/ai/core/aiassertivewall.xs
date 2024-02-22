@@ -1813,7 +1813,7 @@ minInterval 10
    if (btRushBoom <= 0 && friendlyWSStrength > 3 * enemyWSStrength && friendlyWSStrength > 1500)
    {
       desiredDockCount = 4;
-      maxFishingBoats = 50;
+      maxFishingBoats = 60;
       boatPriority = 90;
       maxDistance = kbGetMapXSize()/(0.5 * cNumberPlayers);
    } 
@@ -1821,25 +1821,25 @@ minInterval 10
    //                            a rushing civ
    else if (btRushBoom < 0.2 && friendlyWSStrength > 1.3 * enemyWSStrength && friendlyWSStrength > 750)
    {
-      desiredDockCount = 2;
-      maxFishingBoats = 35;
-      boatPriority = 60;
+      desiredDockCount = 3;
+      maxFishingBoats = 45;
+      boatPriority = 75;
       maxDistance = kbGetMapXSize()/(0.9 * cNumberPlayers);
    } 
    // Conditional for Single:    As long as we are ahead at least a little on water
    else if (btRushBoom < 0.4 && friendlyWSStrength > 1.0 * enemyWSStrength && friendlyWSStrength > 190)
    {
-      desiredDockCount = 1;
-      maxFishingBoats = 25;
-      boatPriority = 55;
+      desiredDockCount = 2;
+      maxFishingBoats = 35;
+      boatPriority = 65;
       maxDistance = kbGetMapXSize()/( 1.2 * cNumberPlayers);
    } 
    else
    {
-      desiredDockCount = 1;
-      maxFishingBoats = 10;
-      boatPriority = 35;
-      maxDistance = 80;    
+      desiredDockCount = 2;
+      maxFishingBoats = 20;
+      boatPriority = 50;
+      maxDistance = 60;    
    }
 
    if (dockCount < desiredDockCount && dockPlanID < 0)
@@ -2278,6 +2278,15 @@ bool retreatCheck(bool forceRetreat = false)
                            kbUnitCostPerResource(puid, cResourceInfluence));
       }
 
+      frNavySize = aiPlanGetNumberUnits(gAmphibiousTransportPlan, cUnitTypeAbstractWarShip);
+      for (i = 0; < frNavySize)
+      {
+         unitID = aiPlanGetUnitByIndex(gAmphibiousTransportPlan, i);
+         puid = kbUnitGetProtoUnitID(unitID);
+         frNavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                           kbUnitCostPerResource(puid, cResourceInfluence));
+      }
+
       // If we're too outnumbered then retreat to gNavyVec
       if (frNavyValue * 1.2 < (enNavyValue + enTowerValue) || forceRetreat == true)
       {
@@ -2440,6 +2449,28 @@ void gatherNavy(vector location = cInvalidVector)
       if (gTestingChatsOn == true)
       {
          aiChat(1, "Gathered: " + gatheredUnits + " Of " + gatherTarget + " navy");
+      }
+
+      // Determine how many ships we need. Based on age for now
+      int currentAge = kbGetAge();
+      int minimumShips = 2;
+      if (currentAge == cAge3)
+      {
+         minimumShips = 3;
+      }
+      else if (currentAge >= cAge4)
+      {
+         minimumShips = 3;
+      }
+
+      if (civIsNative() == true)
+      {
+         minimumShips = minimumShips * 2;
+      }
+
+      if (cMyCiv == cCivDEInca)
+      {
+         minimumShips = minimumShips - 1;
       }
 
       if ((gatheredUnits <= 4 && gatheredUnits >= gatherTarget - 1) || gatheredUnits > 0.7 * gatherTarget)
@@ -2817,6 +2848,7 @@ void loadForces(vector pickupPoint = cInvalidVector)
          aiChat(1, "Moving to drop off forces");
       }
       gAmphibiousAssaultStage = cLandForces;
+      gAmphibiousAssaultSavedTime = xsGetTime();
    }
 
    return;
@@ -2870,11 +2902,20 @@ void landForces()
    // Transport part
    vector dropoff = cInvalidVector;
    vector shipLoc = cInvalidVector;
+   vector tempDropoffTarget = gAmphibiousAssaultTarget;
+   vector mainBaseLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   
+   // If the dropoff can't seem to cut it after 20 seconds, probably something in the way
+   if (xsGetTime() > gAmphibiousAssaultSavedTime + 20 * 1000)
+   {
+      tempDropoffTarget = selectPickupPoint(gAmphibiousAssaultTarget, mainBaseLoc);
+   }
+
 
    if (unitsOnShip1 > 0)
    {
       shipLoc = kbUnitGetPosition(gLandingShip1);
-      dropoff = getDropoffPoint(shipLoc, gAmphibiousAssaultTarget, 0);
+      dropoff = getDropoffPoint(shipLoc, tempDropoffTarget, 0);
       distFromShore = distance(dropoff, shipLoc);
       if (distFromShore < 5)
       {
@@ -2894,7 +2935,7 @@ void landForces()
    if (unitsOnShip2 > 0)
    {
       shipLoc = kbUnitGetPosition(gLandingShip2);
-      dropoff = getDropoffPoint(shipLoc, gAmphibiousAssaultTarget, 0);
+      dropoff = getDropoffPoint(shipLoc, tempDropoffTarget, 0);
       distFromShore = distance(dropoff, shipLoc);
       if (distFromShore < 5)
       {
@@ -3619,7 +3660,7 @@ bool amphibiousAssault(vector location = cInvalidVector)
    // Put something here about the time to suppress sending this too much
    if (xsGetTime() > gAmphibiousAssaultSavedTime + 8 * 60 * 1000)
    {
-      sendStatement(cPlayerRelationAny, cAICommPromptToAllyIWillBuildMilitaryBase, gAmphibiousAssaultTarget);
+      sendStatement(cPlayerRelationAlly, cAICommPromptToAllyIWillBuildMilitaryBase, gAmphibiousAssaultTarget);
    }
    
    if (gAmphibiousAssaultPlan < 0)
@@ -3682,8 +3723,18 @@ minInterval 5
    // First check to see if we're losing or one of the stages failed
    if (retreatCheck() == true || gAmphibiousAssaultStage == -1)
    {
-      xsDisableSelf();
-      return;
+      // Check if we should kick everything off right away again. Basically when we have lots of troops to use
+      if (kbUnitCount(cMyID, cUnitTypeLogicalTypeLandMilitary, cUnitStateAlive) > 14 * kbGetAge())
+      {
+         xsDisableSelf();
+         amphibiousAssault();
+         return;
+      }
+      else
+      {
+         xsDisableSelf();
+         return;
+      }
    }
 
    // Used by multiple rules
@@ -5958,6 +6009,20 @@ minInterval 30
    int numberMilitaryBuildings = 0;
    int buildingID = -1;
    int availableTowerWagon = findWagonToBuild(gTowerUnit);
+
+   // AssertiveWall: On island maps, run the forwardtowerbase if we don't have a fort wagon or base already going
+   if (gStartOnDifferentIslands == true && availableTowerWagon < 0 && gForwardBaseState == cForwardBaseStateNone)
+   {
+      if (amphibiousAssault() == true)
+      {
+         if (gTestingChatsOn == true)
+         {
+            aiChat(1, "Enabled amphibious assault");
+         }
+         xsDisableSelf();
+      }
+      return;
+   }
 
    // We have a Fort Wagon but also already have a forward base, default the Fort position.
    if ((availableTowerWagon >= 0) && (gForwardBaseState != cForwardBaseStateNone))
