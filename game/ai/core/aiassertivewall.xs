@@ -1821,7 +1821,7 @@ minInterval 10
    //                            a rushing civ
    else if (btRushBoom < 0.2 && friendlyWSStrength > 1.3 * enemyWSStrength && friendlyWSStrength > 750)
    {
-      desiredDockCount = 3;
+      desiredDockCount = 2;
       maxFishingBoats = 45;
       boatPriority = 75;
       maxDistance = kbGetMapXSize()/(0.9 * cNumberPlayers);
@@ -1829,14 +1829,14 @@ minInterval 10
    // Conditional for Single:    As long as we are ahead at least a little on water
    else if (btRushBoom < 0.4 && friendlyWSStrength > 1.0 * enemyWSStrength && friendlyWSStrength > 190)
    {
-      desiredDockCount = 2;
+      desiredDockCount = 1;
       maxFishingBoats = 35;
       boatPriority = 65;
       maxDistance = kbGetMapXSize()/( 1.2 * cNumberPlayers);
    } 
    else
    {
-      desiredDockCount = 2;
+      desiredDockCount = 1;
       maxFishingBoats = 20;
       boatPriority = 50;
       maxDistance = 60;    
