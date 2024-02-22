@@ -61,7 +61,7 @@
 		<unit variation="227" posx="-10.5001" posz="10.5398" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPropWestern</unit>
 	</units>
 	<tiles>
-		<tilegroup type="PassableLand" subtype="texas\Cliff_gravel_tex">
+		<tilegroup type="PassableLand" subtype="Texas\ground4_tex">
 			<block startx="-6" startz="1" endx="-6" endz="2"></block>
 			<block startx="-5" startz="0" endx="-5" endz="3"></block>
 			<block startx="-4" startz="-3" endx="-4" endz="-2"></block>

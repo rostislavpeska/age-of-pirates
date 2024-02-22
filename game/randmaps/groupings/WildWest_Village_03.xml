@@ -64,7 +64,7 @@
 		<unit variation="108" posx="-1.3950" posz="11.4993" orientx="1.0000" orienty="0.0000" orientz="-0.0000">SPCMineProps</unit>
 	</units>
 	<tiles>
-		<tilegroup type="PassableLand" subtype="texas\Cliff_gravel_tex">
+		<tilegroup type="PassableLand" subtype="Texas\ground4_tex">
 			<block startx="-6" startz="-4" endx="-6" endz="0"></block>
 			<block startx="-5" startz="-5" endx="-5" endz="0"></block>
 			<block startx="-4" startz="-5" endx="-4" endz="0"></block>

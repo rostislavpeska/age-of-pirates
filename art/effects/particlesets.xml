@@ -187,4 +187,12 @@
 	<particleset name="mustard_gas">
 		<particle filename="effects\impacts\mustardgas.particle"></particle>
 	</particleset>
+	<particleset name="gatlinggunshot">
+		<particle filename="weapon_fire\gatling_shot.pkfx" bone="bone_Gatling"></particle>
+	</particleset>
+	<particleset name="smgshot">
+		<particle filename="weapon_fire\musket_fire_A.pkfx" bone="R Hand" xoff="0.0000" yoff="-0.3000" zoff="0.00000"></particle>
+		<particle filename="weapon_fire\musket_spark_A.pkfx" bone="R Hand" xoff="0.0000" yoff="-0.3000" zoff="0.00000"></particle>
+		<particle filename="weapon_fire\musket_flair_A.pkfx" bone="R Hand" xoff="0.0000" yoff="-0.3000" zoff="0.00000"></particle>
+	</particleset>
 </particlesetdef>

@@ -4715,6 +4715,10 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpPinkertonAgent" culture="none" newname="301129">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpPhoenixMGun" culture="none" newname="301142">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpPhoenixMGunCarrier" culture="none" newname="301142">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -10863,7 +10867,7 @@
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpMachineGun</target>
+        <target type="ProtoUnit">zpPhoenixMGunCarrier</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpPickScientist</effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
@@ -10876,6 +10880,8 @@
       <effect type="CommandAdd" tech="zpArmoredTrainTech" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpScientistsVeteranMG</effect>
+      <effect type="TechStatus" status="obtainable">zpScientistsGuardMG</effect>
     </effects>
   </tech>
   <tech name="zpArmoredTrainTech" type="Normal">
@@ -11347,6 +11353,8 @@
       </effect>
       <effect type="TransformUnit" toprotoid="InvisibleProjectile" fromprotoid="zpArmoredTrainKitchenWagonEmitter">
       </effect>
+      <effect type="TransformUnit" toprotoid="zpMachineGunnerLevyDead" fromprotoid="zpMachineGunnerLevy">
+      </effect>
       <effect type="TechStatus" status="unobtainable">zpArmoredTrainLevy</effect>
       <effect type="TechStatus" status="unobtainable">zpWagonDeploy</effect>
     </effects>
@@ -11730,6 +11738,81 @@
       </effect>
       <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpSaoFeng</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpScientistsVeteranMG" type="Normal">
+    <dbid>40412</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpScientistsVeteranHoopThrowers</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpPhoenixMGunCarrier</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpPhoenixMGun</target>
+      </effect>
+      <effect type="SetName" proto="zpPhoenixMGunCarrier" culture="none" newname="301140">
+      </effect>
+      <effect type="SetName" proto="zpPhoenixMGunCarrier" culture="none" newname="301142" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpPhoenixMGun" culture="none" newname="301140">
+      </effect>
+      <effect type="SetName" proto="zpPhoenixMGun" culture="none" newname="301142" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpPhoenixMGunCarrier</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpPhoenixMGun</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpScientistsGuardMG" type="Normal">
+    <dbid>40413</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpScientistsGuardHoopThrowers</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpPhoenixMGunCarrier</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpPhoenixMGun</target>
+      </effect>
+      <effect type="SetName" proto="zpPhoenixMGunCarrier" culture="none" newname="301141">
+      </effect>
+      <effect type="SetName" proto="zpPhoenixMGunCarrier" culture="none" newname="301142" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpPhoenixMGun" culture="none" newname="301141">
+      </effect>
+      <effect type="SetName" proto="zpPhoenixMGun" culture="none" newname="301142" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpPhoenixMGunCarrier</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpPhoenixMGun</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpLandScientists" type="Normal">
+    <dbid>40414</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" tech="zpScientistIronFleet">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
   </tech>

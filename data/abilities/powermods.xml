@@ -220,6 +220,26 @@
     <icon>resources\art\units\natives\western_village\doc_holiday_regenerate_health.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
+  <power name="zpPowerMGStatic" type="UnitAction">
+    <displaynameid>301139</displaynameid>
+    <rolloverid>301137</rolloverid>
+    <icon>resources\images\icons\abilities\static_mg.png</icon>
+    <activetime>4</activetime>
+    <radius>5.0</radius>
+    <placement forceonmap="1" ally="">unit</placement>
+    <unitaction>DelayedTransform</unitaction>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPowerMGmove" type="UnitAction">
+    <displaynameid>301138</displaynameid>
+    <rolloverid>301136</rolloverid>
+    <icon>resources\images\icons\abilities\ability_horse_dismount.png</icon>
+    <activetime>4</activetime>
+    <radius>5.0</radius>
+    <placement forceonmap="1" ally="">unit</placement>
+    <unitaction>DelayedTransform</unitaction>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
 
 
 
