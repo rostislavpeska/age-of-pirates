@@ -128,23 +128,59 @@ inactive
 void addUnitsToMilitaryPlan(int planID = -1)
 {
    // TODO: don't always task the full army, leave some behind if the enemy is weak or we need more defense
-   if ((gRevolutionType & cRevolutionFinland) == 0)
+   if ((gRevolutionType & cRevolutionFinland) == 0 && gStartOnDifferentIslands == false)
    {
       aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
       return;
+   }
+   else if ((gRevolutionType & cRevolutionFinland) == 0 && gStartOnDifferentIslands == true)
+   {
+      //AssertiveWall: Only add units on the mainland for island maps.
+      int armyQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+      int numberFound = kbUnitQueryExecute(armyQueryID);
+      int vilQueryID = -1;
+      int numberVilWanted = 2;
+      int unitID = -1;
+      int unitPlanID = -1;
+      vector unitLoc = cInvalidVector;
+      int numberAdded = 0;
+      int mainBaseAreaGroup = kbAreaGroupGetIDByPosition(kbGetPlayerStartingPosition(cMyID));
+
+      for (i = 0; < numberFound)
+      {
+         unitID = kbUnitQueryGetResult(armyQueryID, i);
+         unitPlanID = kbUnitGetPlanID(unitID);
+         if (aiPlanGetDesiredPriority(unitPlanID) >= 99)           // Already in the plan or on a transport
+         {
+            continue;
+         }
+         // Make sure the unit is on the mainland
+         unitLoc = kbUnitGetPosition(unitID);
+         if (kbAreAreaGroupsPassableByLand(mainBaseAreaGroup, kbAreaGroupGetIDByPosition(unitLoc)) == false)
+         {
+            continue;
+         }
+         numberAdded = numberAdded + 1;
+         aiPlanAddUnit(planID, unitID);
+      }
+   }
+
+   if (gTestingChatsOn == true)
+   {
+      aiChat(1, "Added: " + numberAdded + " of " + numberFound);
    }
 
    // For the finland revolution, keep some karelian jaegers around to sustain the economy
    int numberAvailableEconUnits = 0;
    int queryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
-   int numberFound = kbUnitQueryExecute(queryID);
+   numberFound = kbUnitQueryExecute(queryID);
 
    aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 0);
 
    // Add each unit type individually
    for (i = 0; < numberFound)
    {
-      int unitID = kbUnitQueryGetResult(queryID, i);
+      unitID = kbUnitQueryGetResult(queryID, i);
       int puid = kbUnitGetProtoUnitID(unitID);
       if (puid == gEconUnit)
       {
@@ -1362,9 +1398,10 @@ minInterval 15
             ageInt = 0.1;
          }*/
          
-         if (mainAreaGroup != baseAreaGroup)
+         // AssertiveWall: Don't do this on island maps
+         if (mainAreaGroup != baseAreaGroup && gStartOnDifferentIslands == false)
          {
-            distancePenalty = distancePenalty + 0.3; // ageInt; Changed from 0.4
+            distancePenalty = distancePenalty + 0.4;
          }
          // AssertiveWall: Catch the distance penalty
          if (distancePenalty > 0.8)
@@ -1459,13 +1496,25 @@ minInterval 15
       targetBaseLocation = kbBaseGetLocation(targetPlayer, targetBaseID);
    }*/
 
+   // AssertiveWall: Some testing chats:
+   if (gTestingChatsOn == true)
+   {
+      aiChat(1, "targetBaseID: " + targetBaseID + " targetPlayer: " + targetPlayer);
+      sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, targetBaseLocation);
+   }
+
    vector gatherPoint = kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
    if (targetIsEnemy == true)
    {
+      // AssertiveWall: Gather near the pickup point
+      /*if (gStartOnDifferentIslands == true && gMigrationMap == false)
+      {
+         gatherPoint = selectPickupPoint(gatherPoint, targetBaseLocation);
+      }*/
       planID = aiPlanCreate("Attack Player " + targetPlayer + " Base " + targetBaseID, cPlanCombat);
 
       aiPlanSetVariableInt(planID, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
-      if (targetBaseID >= 0)
+      if (targetBaseID >= 0)// && gStartOnDifferentIslands == false)
       {
          aiPlanSetVariableInt(planID, cCombatPlanTargetMode, 0, cCombatPlanTargetModeBase);
          aiPlanSetVariableInt(planID, cCombatPlanTargetBaseID, 0, targetBaseID);
@@ -1479,6 +1528,11 @@ minInterval 15
       aiPlanSetVariableVector(planID, cCombatPlanGatherPoint, 0, gatherPoint);
       aiPlanSetVariableFloat(planID, cCombatPlanGatherDistance, 0, 40.0);
 
+      if (gStartOnDifferentIslands == true)
+      {
+         aiPlanSetRequiresAllNeedUnits(planID, false); // AssertiveWall: here in case some units are stranded elsewhere
+      }
+
       /*baseAreaGroup = kbAreaGroupGetIDByPosition(baseLocation);
       if (mainAreaGroup == baseAreaGroup)
       {
@@ -1491,8 +1545,9 @@ minInterval 15
       aiPlanSetVariableInt(planID, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternRandom);
 
       // Override the route when it is valid.
+      // AssertiveWall: Only do this on non-island maps. 
       int routeID = cvCreateBaseAttackRoute(targetPlayer, targetBaseID);
-      if (routeID >= 0)
+      if (routeID >= 0 && gStartOnDifferentIslands == false)
       {
          aiPlanSetVariableInt(planID, cCombatPlanAttackRouteID, 0, routeID);
          // aiPlanSetVariableBool(planID, cCombatPlanRefreshAttackRoute, 0, false);
@@ -1555,13 +1610,13 @@ minInterval 15
       if (targetBaseID > 0)
       {
          if (targetBaseID == kbBaseGetMainID(targetPlayer))
-         {  // If it's the main base, send the town chat. Otherwise, send the base chat
-            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemyTown,
+         {  // If it's the main base, send the base chat. Otherwise, send the town chat
+            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemyBase,
                kbBaseGetLocation(targetPlayer, targetBaseID));
          }
          else
          {
-            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemyBase,
+            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemyTown,
                kbBaseGetLocation(targetPlayer, targetBaseID));
          }
       }
@@ -1583,10 +1638,6 @@ minInterval 15
          // and excludes defend plans except on KoTH
       gLandAttackPlanID = planID; 
       xsEnableRule("attackRetreatDelay");
-
-      // AssertiveWall: Testing Purposes
-      //aiChat(cPlayerRelationAllyExcludingSelf, "attacking");
-      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, targetBaseLocation);
    }
    else 
    {

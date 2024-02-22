@@ -2237,7 +2237,10 @@ bool retreatCheck(bool forceRetreat = false)
    // Need something to prevent retreating while transporting
    if (gAmphibiousAssaultStage == cLoadForces || gAmphibiousAssaultStage == cLandForces)
    {
-      return false;
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) > 0)
+      {
+         return false;
+      }
    }
 
    if (gAmphibiousAssaultStage > cGatherNavy)
@@ -2285,6 +2288,11 @@ bool retreatCheck(bool forceRetreat = false)
          puid = kbUnitGetProtoUnitID(unitID);
          frNavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
                            kbUnitCostPerResource(puid, cResourceInfluence));
+      }
+
+      if (xsGetTime() > gAmphibiousAssaultSavedTime + 10 * 60 * 1000 && gForwardBaseState != cForwardBaseStateActive)
+      {  // Give up if it goes way too long. Probably got stuck on a transport or something
+         forceRetreat = true;
       }
 
       // If we're too outnumbered then retreat to gNavyVec
@@ -2446,10 +2454,6 @@ void gatherNavy(vector location = cInvalidVector)
       int gatheredUnits = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive, location, 70.0);
       // Make sure we have 3 of 4 or at least 70%
       // Change this to ship value at some point
-      if (gTestingChatsOn == true)
-      {
-         aiChat(1, "Gathered: " + gatheredUnits + " Of " + gatherTarget + " navy");
-      }
 
       // Determine how many ships we need. Based on age for now
       int currentAge = kbGetAge();
@@ -2473,9 +2477,14 @@ void gatherNavy(vector location = cInvalidVector)
          minimumShips = minimumShips - 1;
       }
 
+      if (gTestingChatsOn == true)
+      {
+         aiChat(1, "Gathered: " + gatheredUnits + " Of " + minimumShips + " minimumShips");
+      }
+
       if ((gatheredUnits <= 4 && gatheredUnits >= gatherTarget - 1) || gatheredUnits > 0.7 * gatherTarget)
       {
-         if (gatheredUnits >= 2)
+         if (gatheredUnits >= minimumShips)
          {
             if (gTestingChatsOn == true)
             {
@@ -2906,16 +2915,17 @@ void landForces()
    vector mainBaseLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
    
    // If the dropoff can't seem to cut it after 20 seconds, probably something in the way
-   if (xsGetTime() > gAmphibiousAssaultSavedTime + 20 * 1000)
+   if (xsGetTime() > gAmphibiousAssaultSavedTime + 10 * 1000)
    {
       tempDropoffTarget = selectPickupPoint(gAmphibiousAssaultTarget, mainBaseLoc);
+      gAmphibiousAssaultSavedTime = xsGetTime();
    }
 
 
    if (unitsOnShip1 > 0)
    {
       shipLoc = kbUnitGetPosition(gLandingShip1);
-      dropoff = getDropoffPoint(shipLoc, tempDropoffTarget, 0);
+      dropoff = tempDropoffTarget;//getDropoffPoint(shipLoc, tempDropoffTarget, 0);
       distFromShore = distance(dropoff, shipLoc);
       if (distFromShore < 5)
       {
@@ -2935,7 +2945,7 @@ void landForces()
    if (unitsOnShip2 > 0)
    {
       shipLoc = kbUnitGetPosition(gLandingShip2);
-      dropoff = getDropoffPoint(shipLoc, tempDropoffTarget, 0);
+      dropoff = tempDropoffTarget;//getDropoffPoint(shipLoc, tempDropoffTarget, 0);
       distFromShore = distance(dropoff, shipLoc);
       if (distFromShore < 5)
       {
@@ -3580,7 +3590,7 @@ inactive
 minInterval 10
 {
    // Do we still have buildings or military nearby?
-   if (getUnitCountByLocation(cUnitTypeLogicalTypeBuildingsNotWalls, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 30) <= 0)
+   if (getUnitCountByLocation(cUnitTypeLogicalTypeBuildingsNotWalls, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 40) <= 0)
    {  
       // No buildings. Check for a decent sized military
       if (getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 30) <= 10)
@@ -3636,6 +3646,15 @@ minInterval 10
 //==============================================================================
 bool amphibiousAssault(vector location = cInvalidVector)
 {
+   if (gAmphibiousAssaultStage > cGatherNavy)
+   {  // Already running
+      if (gTestingChatsOn == true)
+      {
+         aiChat(1, "Didn't run amphibiousAssault. Current stage: " + gAmphibiousAssaultStage);
+      }
+      return false;
+   }
+
    // Try a straight shot to enemy base for testing purposes
    location = guessEnemyLocation();
    // test the location
@@ -3694,6 +3713,7 @@ bool amphibiousAssault(vector location = cInvalidVector)
    //gatherArmy(pickupPoint);
 
    // Enable the rule to monitor the amphibious assault
+   gAmphibiousAssaultSavedTime = xsGetTime();
    xsEnableRule("baseUnderThreat");
    xsEnableRule("amphibiousAssaultRule");
    return true;

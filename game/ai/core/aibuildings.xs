@@ -949,11 +949,15 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
    int dockQuery = createSimpleUnitQuery(gDockUnit, cPlayerRelationAlly, cUnitStateAlive);
    int dockNumber = kbUnitQueryExecute(dockQuery);   
    vector tempVec = cInvalidVector;
+   vector tempCoastalPoint = cInvalidVector;
+   vector bestVec = cInvalidVector;
    float nearbyTowers = 0;
    float nearbyDocks = 0;
    float towerDockRatio = 0;
    bool dockTower = false;
    vector v = cInvalidVector;
+   float randFloat = 0.0;
+   int floatIndex = PI * 0.004;
    // AssertiveWall: Make sure every dock is protected
    if (gNavyMap == true || gStartOnDifferentIslands == true)
    {
@@ -1008,9 +1012,21 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
          // Don't normalize this vector, keep it far away
          tempVec = v - baseVec;
          // A little under 180 degrees here.
-         tempVec = rotateByReferencePoint(baseVec, tempVec, aiRandFloat(0.0 - PI * 0.4, PI * 0.4));
-         // Gets the point on the coast between these two
-         tempVec = getCoastalPoint(baseVec, tempVec, 1, false);
+         randFloat = aiRandFloat(0.0 - PI * 0.4, PI * 0.4);
+         randFloat = randFloat - floatIndex * 2;
+         tempVec = rotateByReferencePoint(baseVec, tempVec, randFloat);
+         // Check the points immediately to the left and right (looking for those parts that jut out)
+         for (attemptNum = 0; < 4)
+         {
+            tempVec = rotateByReferencePoint(baseVec, tempVec, randFloat);
+            // Gets the point on the coast between these two
+            tempCoastalPoint = getCoastalPoint(baseVec, tempVec, 1, false);
+            randFloat = randFloat + floatIndex;
+            if (distance(tempCoastalPoint, baseVec) > distance(bestVec, baseVec))
+            {  // If the point is a little further away, it might be on one of the parts that jut out
+               bestVec = tempCoastalPoint;
+            }
+         }
 
          nearbyTowers = getUnitCountByLocation(gTowerUnit, cPlayerRelationAlly, cUnitStateABQ, tempVec, 15.0);
          if (nearbyTowers <= 0)
@@ -1769,7 +1785,7 @@ minInterval 30
       //{
       //   xsEnableRule("forwardTowerBaseManager");
       //}
-      if (amphibiousAssault() == true)
+      /*if (amphibiousAssault() == true)
       {
          if (gTestingChatsOn == true)
          {
@@ -1777,7 +1793,7 @@ minInterval 30
          }
          xsDisableSelf();
       }
-      return;
+      return;*/
    }
 
    // We have a Fort Wagon but also already have a forward base, default the Fort position.
@@ -3155,10 +3171,10 @@ minInterval 5
                      // Old simpler version
                      //establishForwardBeachHead(location);
                      // New far more advanced version. Don't start duplicates
-                     if (gAmphibiousAssaultPlan < 0)
+                     /*if (gAmphibiousAssaultPlan < 0)
                      {
                         amphibiousAssault(location);
-                     }
+                     }*/
                   }
                   else
                   {  // AssertiveWall: Don't send these messages on island maps to avoid excessive pinging
