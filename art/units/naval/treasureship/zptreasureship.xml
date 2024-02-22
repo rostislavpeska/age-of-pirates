@@ -8,21 +8,9 @@
     <definebone>bone_banner_a1</definebone>
     <definebone>bone_banner_a2</definebone>
     <definebone>bone_banner_a3</definebone>
-    <definebone>bone_sail_01</definebone>
-    <definebone>bone_sail_02</definebone>
-    <definebone>bone_sail_03</definebone>
-    <definebone>bone_sail_04</definebone>
-    <definebone>bone_sail_05</definebone>
-    <definebone>bone_sail_06</definebone>
-    <definebone>bone_sail_07</definebone>
-    <definebone>bone_sail_08</definebone>
-    <definebone>bone_sail_09</definebone>
-    <definebone>bone_sail_10</definebone>
-    <definebone>bone_sail_11</definebone>
-    <definebone>bone_sail_12</definebone>
-    <definebone>bone_sail_13</definebone>
-    <definebone>bone_sail_14</definebone>
-    <definebone>bone_sail_15</definebone>
+    <definebone>bone_sail_front</definebone>
+    <definebone>sail_front</definebone>
+
     <definebone>bone_muzzlel01</definebone>
     <definebone>bone_muzzlel02</definebone>
     <definebone>bone_muzzlel03</definebone>
@@ -35,12 +23,6 @@
     <definebone>bone_muzzlel10</definebone>
     <definebone>bone_muzzlel11</definebone>
     <definebone>bone_muzzlel12</definebone>
-    <definebone>bone_muzzlel13</definebone>
-    <definebone>bone_muzzlel14</definebone>
-    <definebone>bone_muzzlel15</definebone>
-    <definebone>bone_muzzlel16</definebone>
-    <definebone>bone_muzzlel17</definebone>
-    <definebone>bone_muzzlel18</definebone>
     <definebone>bone_muzzler01</definebone>
     <definebone>bone_muzzler02</definebone>
     <definebone>bone_muzzler03</definebone>
@@ -216,12 +198,12 @@
     </component>
     <anim>Idle
         <assetreference type="GrannyAnim">
-            <file>units\naval\battleship\battleship_idle</file>
+            <file>units\naval\treasureship\zptreasureship_Idle_Anim</file>
         </assetreference>
         <component>battleship</component>
-        <simskeleton>
+        <!--<simskeleton>
             <model>units\naval\treasureship\zptreasureship</model>
-        </simskeleton>
+        </simskeleton>-->
         <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
         <attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach>
         <attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"></attach>

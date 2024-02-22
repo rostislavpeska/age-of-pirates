@@ -5,7 +5,7 @@
     <parameters>
       <texture name="BaseColor" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_BaseColor">
       </texture>
-      <texture name="Normals" override="units\trade\textures\trade_stagecoah_mata_Normals">
+      <texture name="Normals" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_Normals">
       </texture>
       <texture name="Masks" override="units\trade\textures\trade_stagecoah_mata_Masks">
       </texture>
@@ -19,7 +19,7 @@
     <parameters>
       <texture name="BaseColor" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_BaseColor">
       </texture>
-      <texture name="Normals" override="units\trade\textures\trade_stagecoah_mata_Normals">
+      <texture name="Normals" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_Normals">
       </texture>
       <texture name="Masks" override="units\trade\textures\trade_stagecoah_mata_Masks">
       </texture>
