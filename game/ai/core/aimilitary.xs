@@ -128,12 +128,12 @@ inactive
 void addUnitsToMilitaryPlan(int planID = -1)
 {
    // TODO: don't always task the full army, leave some behind if the enemy is weak or we need more defense
-   if ((gRevolutionType & cRevolutionFinland) == 0 && gStartOnDifferentIslands == false)
+   if ((gRevolutionType & cRevolutionFinland) == 0)// && gStartOnDifferentIslands == false)
    {
       aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
       return;
    }
-   else if ((gRevolutionType & cRevolutionFinland) == 0 && gStartOnDifferentIslands == true)
+   /*else if ((gRevolutionType & cRevolutionFinland) == 0 && gStartOnDifferentIslands == true)
    {
       //AssertiveWall: Only add units on the mainland for island maps.
       int armyQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
@@ -168,19 +168,19 @@ void addUnitsToMilitaryPlan(int planID = -1)
    if (gTestingChatsOn == true)
    {
       aiChat(1, "Added: " + numberAdded + " of " + numberFound);
-   }
+   }*/
 
    // For the finland revolution, keep some karelian jaegers around to sustain the economy
    int numberAvailableEconUnits = 0;
    int queryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
-   numberFound = kbUnitQueryExecute(queryID);
+   int numberFound = kbUnitQueryExecute(queryID);
 
    aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 0);
 
    // Add each unit type individually
    for (i = 0; < numberFound)
    {
-      unitID = kbUnitQueryGetResult(queryID, i);
+      int unitID = kbUnitQueryGetResult(queryID, i);
       int puid = kbUnitGetProtoUnitID(unitID);
       if (puid == gEconUnit)
       {
