@@ -25376,10 +25376,10 @@
     <trainpoints>45.0000</trainpoints>
     <bounty>24.0000</bounty>
     <buildbounty>24.0000</buildbounty>
-    <cost resourcetype="Wood">180.0000</cost>
-    <cost resourcetype="Gold">180.0000</cost>
+    <cost resourcetype="Wood">240.0000</cost>
+    <cost resourcetype="Gold">240.0000</cost>
     <allowedage>2</allowedage>
-    <armor type="Ranged" value="0.6500">
+    <armor type="Ranged" value="0.5500">
     </armor>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
