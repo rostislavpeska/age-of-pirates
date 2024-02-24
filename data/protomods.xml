@@ -19854,6 +19854,7 @@
     <unittype>NativeBuilding</unittype>
     <unittype>EmbellishmentClass</unittype>
     <unittype>CapturableSocket</unittype>
+    <flag>HeroName1</flag>
     <flag>MinimapDisplayOnTop</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
