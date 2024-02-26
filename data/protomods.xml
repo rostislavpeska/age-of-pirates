@@ -550,9 +550,9 @@
     <tech row="0" page="1" column="4">zpSendPinkertons</tech>
     <tech row="0" page="1" column="1">zpWesternAgeUp</tech>
 
-    <command page="0" column="3">zpNatArmoredTrain</command>
-    <command page="0" column="3">zpNatArmoredTrainDisabled</command>
-    <command page="0" column="3">zpNatArmoredTrainNoResource</command>
+    <command page="0" column="20">zpNatArmoredTrain</command>
+    <command page="0" column="20">zpNatArmoredTrainDisabled</command>
+    <command page="0" column="20">zpNatArmoredTrainNoResource</command>
     <protoaction>
       <name>SpawnArmoredTrain</name>
       <damage>1.000000</damage>

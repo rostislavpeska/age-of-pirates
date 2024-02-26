@@ -1388,4 +1388,34 @@
     <rendering scatter_color="0.000 1.000 0.950" sun_set_color="1.000 0.400 0.000" caustics_depth="1.0000" caustics_intensity="1.4000" caustics_scale="0.3000" caustics_scroll="0.0500" fft_displace="1.0000" custom_wave_scale="8.0000" reflection_normal="1.0000" refraction_normal="0.0300" scatter_amount="0.0400" fog_color_mult="0.0100" custom_wave_scatter="5.0000" surface_roughness="0.0500" fog_density="1.0000" water_color="1.000 1.000 1.000" blur_intensity="0.0700" water_brighten="1.0000" reflection_intensity="0.0400">
     </rendering>
   </ocean>
+  <ocean name="ZP Mississippi River" cluttermix="lake_underwater" iconname="ui\editor\waternewenglandlake" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="new_england\shoreline2_ne" bank="new_england\shoreline2_ne" outerbank="new_england\shoreline3_ne" slope="" color="31 76 128" deepcolor="0 0 0" depth="3.000000" fresnelscale="3.801653" fresnelbias="0.343750" alphaminvalue="0.000000" alphamaxvalue="1.000000" alphamindepth="-1.500000" alphamaxdepth="2.500000" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.000000" reflectionamount="0.203125" bumpscale="0.340000" reflectionbumpscale="0.270000" foamscale="-0.030000" texscale="2.000000" texscrollspeed="0.000000" texrotation="99.999992">
+    <beachtextureplacement>
+      <texture distance="4.00" variance="1">new_england\shoreline3_ne</texture>
+      <texture distance="10.00" variance="1">nwterritory\ground_grass3_nwt</texture>
+    </beachtextureplacement>
+    <shoreline>
+      <shoreobj name="RiverEdgeFlow" mindistance="3" maxdistance="8" deltawatermin="1.0" deltawatermax="2.0" randomyaw="false">
+      </shoreobj>
+      <shoreobj name="DuckFamily" mindistance="50.0" maxdistance="60.0" deltawatermin="6.0" deltawatermax="12.0" randomyaw="false">
+      </shoreobj>
+      <shoreobj name="PropSwan" mindistance="70.0" maxdistance="80.0" deltawatermin="6.0" deltawatermax="12.0" randomyaw="false">
+      </shoreobj>
+      <shoreobj name="PlantsBay" mindistance="1" maxdistance="15" deltawatermin="0.0" deltawatermax="0.75" randomyaw="true">
+      </shoreobj>
+      <shoreobj name="MarshPlantsBay" mindistance="1" maxdistance="10" deltawatermin="1.0" deltawatermax="2.75" randomyaw="true">
+      </shoreobj>
+      <shoreobj name="LakeRocksNe" mindistance="1" maxdistance="5" deltawatermin="0.0" deltawatermax="3.75" randomyaw="true">
+      </shoreobj>
+      <shoreobj name="RiverPlantsAm" mindistance="1" maxdistance="10" deltawatermin="1.0" deltawatermax="2.75" randomyaw="true">
+      </shoreobj>
+    </shoreline>
+    <riverline>
+      <riverobj name="RiverShallowsOri" shallowslining="fill" minsplinedistance="4.0" maxsplinedistance="8.0" mincrossdistance="4.0" maxcrossdistance="8.0" maxpercenttoshore="0.80" randomyaw="false" clusterminnum="1" clustermaxnum="3" clusterspread="4.0">
+      </riverobj>
+    </riverline>
+    <rendering scatter_color="0.303 0.433 0.410" sun_set_color="1.000 0.400 0.000" caustics_depth="0.5000" caustics_intensity="4.0000" caustics_scale="0.2000" caustics_scroll="0.0480" fft_displace="0.6000" custom_wave_scale="8.0000" reflection_normal="0.5000" refraction_normal="0.0350" scatter_amount="0.5090" fog_color_mult="0.1500" custom_wave_scatter="5.0000" surface_roughness="0.0100" fog_density="0.4600" water_color="0.292 0.875 0.546" blur_intensity="0.2800" water_brighten="0.2500" reflection_intensity="0.1000">
+    </rendering>
+  </ocean>
+
+
 </waterbodies>

@@ -1001,7 +1001,7 @@
       <string _locid="300997">Military Railways</string>
       <string _locid="300998">Unlocks a special alility: Armored Train - can send an armored train to attack enemy positions next to a Train Station.</string>
       <string _locid="300999">Armored Train</string>
-      <string _locid="301000">Unlocks the military use of the trade routes: \n • Discovers all Train Stations on the map \n • Upgrades all trade routes to the Train level \n • Unlocks the Armored Train ability allowing you to use an armore train to attack enemy base</string>
+      <string _locid="301000">Unlocks the military use of the trade routes: \n • Discovers all Train Stations on the map \n • Upgrades all trade routes to the maximum level \n • Unlocks the Armored Train ability allowing you to use an armore train to attack enemy base</string>
       <string _locid="301001"> • Cost: 500 &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;\n • Spawns an Armored Train to attack enemy base. \n • Can be used on any Trade Route Trading Post Site \n &lt;color=1.0, 0.0, 0.0&gt;• Can't be used when another Armored Train is being on the map or when the Armored Train ability is not ready.&lt;/color&gt;</string>
       <string _locid="301002">ZP AT Engine Move</string>
       <string _locid="301003">ZP AT BarrackCar Move</string>
@@ -1163,6 +1163,9 @@
       <string _locid="301159">Gallatin (Frontier Town)</string>
       <string _locid="301160">Russellville (Frontier Town)</string>
       <string _locid="301161">Lamar (Frontier Town)</string>
+      <string _locid="301162">Mississippi River</string>
+      <string _locid="301163">Large river map with two shores connected by shallows. \n\nSettlements: Comanche, Western Village, Renegades</string>
+      <string _locid="301164">Use Renegades inventions like steamships, airships, tanks or armored train to get an advantage over your enemy. Get Western hero in the Frontier Town and become "King of the River".</string>
 
 
       <!-- ======================================== -->
