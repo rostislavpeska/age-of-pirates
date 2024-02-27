@@ -23100,6 +23100,104 @@
 
 
   <!--TEST-->
+  <unit id="" name="zpSPCFlyingDutchman">
+    <dbid></dbid>
+    <displaynameid>301165</displaynameid>
+    <editornameid>301166</editornameid>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>8.5000</maxvelocity>
+    <maxrunvelocity>10.5000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <turnrate>1.0000</turnrate>
+    <animfile>units\naval\fluyt\flyingdutchman.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <buildlimit>1</buildlimit>
+    <icon>resources\art\units\naval\spc\fluyt_spc_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\naval\spc\fluyt_spc_portrait.png</portraiticon>
+    <civflagoverride>objects\flags\pirate</civflagoverride>
+    <rollovertextid>300004</rollovertextid>
+    <shortrollovertextid>300005</shortrollovertextid>
+    <initialhitpoints>3100.0000</initialhitpoints>
+    <maxhitpoints>3100.0000</maxhitpoints>
+    <los>44.0000</los>
+    <projectileprotounit>Cannonball</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <bounty>200.0000</bounty>
+    <maxcontained>50</maxcontained>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.7500">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractSiegeTrooper</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>AbstractLegendaryShip</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Transport</unittype>
+    <unittype>Ship</unittype>
+    <flag>TieToWaterSurface</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <command page="11" column="0">Abilities</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <tactics>fluyt.tactics</tactics>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>100.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>20.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>200.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttackContained</name>
+      <damage>100.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>20.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>200.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+  </unit>
 
   <unit id="" name="zpTestWagon">
     <dbid></dbid>
