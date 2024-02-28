@@ -23090,6 +23090,78 @@
       <damagebonus type="AbstractLightInfantry">0.600000</damagebonus>
     </protoaction>
   </unit>
+  <unit id="76" name="RuinWallSmall">
+    <dbid>544</dbid>
+    <displaynameid>29909</displaynameid>
+    <editornameid>29910</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>terrain\props\ruins\ruin_wall_small.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DestroyUnderBuilding</flag>
+  </unit>
+  <unit id="77" name="RuinWallMedium">
+    <dbid>545</dbid>
+    <displaynameid>29911</displaynameid>
+    <editornameid>29912</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>terrain\props\ruins\ruin_wall_medium.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DestroyUnderBuilding</flag>
+  </unit>
+  <unit id="78" name="RuinWallLarge">
+    <dbid>546</dbid>
+    <displaynameid>29913</displaynameid>
+    <editornameid>29914</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>terrain\props\ruins\ruin_wall_large.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DestroyUnderBuilding</flag>
+  </unit>
 
 
 

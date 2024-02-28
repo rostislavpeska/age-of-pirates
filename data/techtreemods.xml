@@ -10801,6 +10801,9 @@
       <effect type="TechStatus" status="obtainable">zpIndianFriendshipWestern</effect>
       <effect type="TechStatus" status="obtainable">zpNativeTreatyWestern</effect>
       <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyWestern</effect>
+      <effect type="TechStatus" status="obtainable">zpSendJesseJames</effect>
+      <effect type="TechStatus" status="obtainable">zpSendPinkertons</effect>
+      <effect type="TechStatus" status="obtainable">zpSendWyatt</effect>
     </effects>
   </tech>
   <tech name="zpTransformArmoredTrain" type="Normal">
@@ -11403,7 +11406,6 @@
       <effect type="CommandRemove" tech="zpWesternAgeUp">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="TechStatus" status="active">zpSendWyatt</effect>
       <effect type="CommandAdd" tech="zpSendDocHolliday" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -11464,7 +11466,6 @@
       <effect type="CommandAdd" tech="zpSendStageCoach" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="TechStatus" status="active">zpSendPinkertons</effect>
     </effects>
   </tech>
   <tech name="zpConsulateWesternJesseJames" type="Normal">
@@ -11488,7 +11489,6 @@
       <effect type="CommandRemove" tech="zpWesternAgeUp">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="TechStatus" status="active">zpSendJesseJames</effect>
       <effect type="CommandAdd" tech="zpNatGunStore" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -12369,6 +12369,10 @@
     <dbid>50023</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status ="Active">zpConsulateWesternWyatEarp</techstatus>
+    </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpWyattEarp" relativity="Absolute">
         <target type="Player">
@@ -12402,6 +12406,10 @@
     <dbid>50025</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status ="Active">zpConsulateWesternJesseJames</techstatus>
+    </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpJesseJames" relativity="Absolute">
         <target type="Player">
@@ -12413,6 +12421,10 @@
     <dbid>50026</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status ="Active">zpConsulateWesternPinkertons</techstatus>
+    </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpPinkerton" relativity="Absolute">
         <target type="Player">
