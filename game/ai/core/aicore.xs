@@ -2373,6 +2373,7 @@ minInterval 5
          {
             xsEnableRule("moveArchipelagoBase");
             xsEnableRule("generalTransportFailsafe");
+            xsEnableRule("moveOutOfWayVil");
          }         
       }
 

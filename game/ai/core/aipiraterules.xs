@@ -175,6 +175,53 @@ minInterval 25
 }
 
 //==============================================================================
+// Monitors special behavior for armored train
+//==============================================================================
+rule armoredTrainMonitor
+inactive
+minInterval 5
+{
+   // Look at all rail stations, if we have military nearby then send the train
+   int stationQueryID = createSimpleUnitQuery(cUnitTypezpInvisibleRailwayStation, cPlayerRelationAny, cUnitStateAny);
+   int numberFound = kbUnitQueryExecute(stationQueryID);
+
+   int bestStationID = -1;
+   int bestStationFriendlyArmyCount = -1;
+   int bestStationEnemyArmyCount = -1;
+   int tempFriendly = -1;
+   int tempEnemy = -1;
+   vector tempLocation = cInvalidVector;
+   int tempUnit = -1;
+   int ourStation = -1;
+
+   for (i = 0; < numberFound)
+   {
+      // See if there's a suitable target
+      tempUnit = kbUnitQueryGetResult(stationQueryID, i);
+      tempLocation = kbUnitGetPosition(tempUnit);
+      tempEnemy = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, tempLocation, 55.0);
+      if (tempEnemy > 15)
+      {
+         tempFriendly = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly,
+               cUnitStateAlive, tempLocation, 55.0);
+         if (tempEnemy - tempFriendly > bestStationEnemyArmyCount - bestStationFriendlyArmyCount)
+         {
+            bestStationID = tempUnit;
+            bestStationEnemyArmyCount = tempEnemy;
+            bestStationFriendlyArmyCount = tempFriendly;
+         }
+      }
+   }
+
+   if (bestStationID > 0)
+   {
+      ourStation = getUnit(cUnitTypeTradingPost, cMyID, cUnitStateAlive);
+      aiTaskUnitSpecialPower(ourStation, cProtoPowerzpPowerArmouredTrain, bestStationID, cInvalidVector);
+   }
+}
+
+//==============================================================================
 // Airship Manager
 //==============================================================================
 rule airshipManager

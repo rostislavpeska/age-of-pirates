@@ -2482,7 +2482,7 @@ void gatherNavy(vector location = cInvalidVector)
          aiChat(1, "Gathered: " + gatheredUnits + " Of " + minimumShips + " minimumShips");
       }
 
-      if ((gatheredUnits <= 4 && gatheredUnits >= gatherTarget - 1) || gatheredUnits > 0.7 * gatherTarget)
+      if ((gatheredUnits <= 4 && gatheredUnits >= gatherTarget - 1) || (gatheredUnits > 0.7 * gatherTarget || gatheredUnits > minimumShips * 1.5))
       {
          if (gatheredUnits >= minimumShips)
          {

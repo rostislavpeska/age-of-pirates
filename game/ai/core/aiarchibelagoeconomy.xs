@@ -3080,3 +3080,42 @@ minInterval 20
 	//sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, currentBaseLoc);
 	//sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, newBaseLoc);
 }
+
+//==============================================================================
+//
+// moveOutOfWayVil
+//
+// AssertiveWall: when villagers are in the same location as a building, move 
+// out of the way
+//
+//==============================================================================
+rule moveOutOfWayVil
+inactive
+minInterval 4
+{
+	// Start with a query of all the buildings
+	int buildingQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeBuildingsNotWalls, cMyID, cUnitStateABQ);
+   	int numberFound = kbUnitQueryExecute(buildingQueryID);
+	int tempBuilding = -1;
+	int closestUnit = -1;
+	vector tempBuildingLoc = cInvalidVector;
+	vector closestUnitLoc = cInvalidVector;
+	//vector mainBaseLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+
+	for (i = 0; < numberFound)
+	{
+		tempBuilding = kbUnitQueryGetResult(buildingQueryID, i);
+		tempBuildingLoc = kbUnitGetPosition(tempBuilding);
+		closestUnit = getClosestUnitByLocation(cUnitTypeAbstractVillager, cPlayerRelationSelf, cUnitStateAlive, tempBuildingLoc, 1);
+		if (closestUnit > 0)
+		{
+			closestUnitLoc = kbUnitGetPosition(closestUnit);
+			if (distance(closestUnitLoc, tempBuildingLoc) < 2)
+			{
+				aiTaskUnitWork(closestUnit, tempBuilding);
+				//aiTaskUnitMove(closestUnit, mainBaseLoc);
+			}
+		}
+	}
+
+}
