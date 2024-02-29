@@ -23090,10 +23090,10 @@
       <damagebonus type="AbstractLightInfantry">0.600000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="76" name="RuinWallSmall">
-    <dbid>544</dbid>
+  <unit id="20242" name="zpRuinWallSmall">
+    <dbid>20242</dbid>
     <displaynameid>29909</displaynameid>
-    <editornameid>29910</editornameid>
+    <editornameid>301167</editornameid>
     <obstructionradiusx>1.0000</obstructionradiusx>
     <obstructionradiusz>1.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
@@ -23114,10 +23114,10 @@
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>DestroyUnderBuilding</flag>
   </unit>
-  <unit id="77" name="RuinWallMedium">
-    <dbid>545</dbid>
+  <unit id="20243" name="zpRuinWallMedium">
+    <dbid>20243</dbid>
     <displaynameid>29911</displaynameid>
-    <editornameid>29912</editornameid>
+    <editornameid>301168</editornameid>
     <obstructionradiusx>3.0000</obstructionradiusx>
     <obstructionradiusz>1.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
@@ -23138,10 +23138,10 @@
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>DestroyUnderBuilding</flag>
   </unit>
-  <unit id="78" name="RuinWallLarge">
-    <dbid>546</dbid>
+  <unit id="20244" name="zpRuinWallLarge">
+    <dbid>20244</dbid>
     <displaynameid>29913</displaynameid>
-    <editornameid>29914</editornameid>
+    <editornameid>301169</editornameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
     <obstructionradiusz>1.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>

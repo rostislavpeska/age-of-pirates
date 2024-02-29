@@ -193,6 +193,7 @@ void main(void)
 	int avoidTrainStationA = rmCreateTypeDistanceConstraint("avoid trainstation a", "spSocketTrainStationA", 8.0);
 	int avoidTrainStationB = rmCreateTypeDistanceConstraint("avoid trainstation b", "spSocketTrainStationB", 8.0);
     int avoidHarbour = rmCreateTypeDistanceConstraint("avoid harbour", "zpSPCPortSocket", 20.0);
+	int avoidBridge = rmCreateTypeDistanceConstraint("avoid bridge", "zpRuinWallSmall", 20.0);
 
 	// Lake Constraints
 	int greatLakesConstraint=rmCreateClassDistanceConstraint("avoid the great lakes", classGreatLake, 5.0);
@@ -214,6 +215,7 @@ void main(void)
 	int avoidJewish=rmCreateTypeDistanceConstraint("stay away from Jewish", "zpSPCSocketWesternVillage", 25.0);
 	int avoidTownCenterFar=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 40.0);
 	int avoidTradeSocket=rmCreateTypeDistanceConstraint("stay away from Trade Socket", "SocketTradeRoute", 40.0);
+	int avoidTradeSocketShort=rmCreateTypeDistanceConstraint("stay away from Trade Socket Short", "SocketTradeRoute", 25.0);
 	int avoidTradeRouteSocketMin = rmCreateTypeDistanceConstraint("trade route socket min", "SocketTradeRoute", 25.0);
 	int avoidTradeSocketFar=rmCreateTypeDistanceConstraint("stay away from Trade Socket far", "SocketTradeRoute", 40.0);
 	int avoidTradeSocketFar2=rmCreateTypeDistanceConstraint("stay away from Trade Socket far 2", "SocketTradeRoute", 45.0);
@@ -284,6 +286,12 @@ void main(void)
 	rmSetObjectDefAllowOverlap(stopperID8, true);
 	rmSetObjectDefMinDistance(stopperID8, 0.0);
 	rmSetObjectDefMaxDistance(stopperID8, 0.0); 
+
+	int stopperID9=rmCreateObjectDef("Armored Train Stopper 9");
+	rmAddObjectDefItem(stopperID9, "zpSPCWaterSpawnPoint", 1, 0.0);
+	rmSetObjectDefAllowOverlap(stopperID9, true);
+	rmSetObjectDefMinDistance(stopperID9, 0.0);
+	rmSetObjectDefMaxDistance(stopperID9, 0.0); 
 
     int stopperID00=rmCreateObjectDef("Armored Train Stopper 00");
 	rmAddObjectDefItem(stopperID00, "zpSPCWaterSpawnPoint", 1, 0.0);
@@ -363,151 +371,344 @@ void main(void)
 	rmSetGroupingMinDistance(stationGrouping00, 0.0);
 	rmSetGroupingMaxDistance (stationGrouping00, 0.0);
 
+	if (rmGetIsKOTH())
+	{
+		// **** KotH Setup ****
 
-	// Trade Route 1
 
-	int tradeRouteID = rmCreateTradeRoute();
-	rmSetObjectDefTradeRouteID(socketID, tradeRouteID);
-	rmSetObjectDefTradeRouteID(stopperID, tradeRouteID);
-	rmSetObjectDefTradeRouteID(stopperID2, tradeRouteID);
-	rmSetObjectDefTradeRouteID(stopperID3, tradeRouteID);
-	rmSetObjectDefTradeRouteID(stopperID4, tradeRouteID);
+		// Trade Route 1
+
+		int tradeRouteID = rmCreateTradeRoute();
+		rmSetObjectDefTradeRouteID(socketID, tradeRouteID);
+		rmSetObjectDefTradeRouteID(stopperID, tradeRouteID);
+		rmSetObjectDefTradeRouteID(stopperID2, tradeRouteID);
+		rmSetObjectDefTradeRouteID(stopperID3, tradeRouteID);
+		rmSetObjectDefTradeRouteID(stopperID4, tradeRouteID);
+		
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.35, 0.0);
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.35, 0.2);
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.2, 0.35);
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.2, 0.65);
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.35, 0.8);
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.35, 0.9);
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.65, 0.9);
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.65, 0.8);
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.8, 0.65);
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.8, 0.35);
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.65, 0.2);
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.65, 0.0);
+
+		rmBuildTradeRoute(tradeRouteID, "dirt");
+
+		int deadSeaLakeID=rmCreateArea("Dead Sea Lake Shallow");
+		rmSetAreaWaterType(deadSeaLakeID, "ZP Mississippi River");
+		if (cNumberNonGaiaPlayers <= 2)
+			rmSetAreaSize(deadSeaLakeID, rmAreaTilesToFraction(3850.0), rmAreaTilesToFraction(3850.0));
+		if (cNumberNonGaiaPlayers == 3)
+			rmSetAreaSize(deadSeaLakeID, rmAreaTilesToFraction(4450.0), rmAreaTilesToFraction(4450.0));
+		if (cNumberNonGaiaPlayers == 4)
+			rmSetAreaSize(deadSeaLakeID, rmAreaTilesToFraction(5450.0), rmAreaTilesToFraction(5450.0));
+		if (cNumberNonGaiaPlayers == 5)
+			rmSetAreaSize(deadSeaLakeID, rmAreaTilesToFraction(5750.0), rmAreaTilesToFraction(5750.0));
+		if (cNumberNonGaiaPlayers == 6)
+			rmSetAreaSize(deadSeaLakeID, rmAreaTilesToFraction(5950.0), rmAreaTilesToFraction(5950.0));
+		if (cNumberNonGaiaPlayers == 7)
+			rmSetAreaSize(deadSeaLakeID, rmAreaTilesToFraction(6350.0), rmAreaTilesToFraction(6350.0));
+		if (cNumberNonGaiaPlayers == 8)
+			rmSetAreaSize(deadSeaLakeID, rmAreaTilesToFraction(6650.0), rmAreaTilesToFraction(6650.0));
+		rmSetAreaCoherence(deadSeaLakeID, 1.0);
+		rmSetAreaLocation(deadSeaLakeID, 0.5, 0.9);
+		rmSetAreaObeyWorldCircleConstraint(deadSeaLakeID, false);
+		rmAddAreaInfluenceSegment(deadSeaLakeID, 0.5, 1.0, 0.5, 0.75);
+		rmBuildArea(deadSeaLakeID); 
+
+		vector socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.5);
+		rmPlaceObjectDefAtPoint(stopperID9, 0, socketLoc1);
+		vector StopperLoc9 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID9, 0));
+
+		int bridgeSite0 = rmCreateArea ("bridge site 0");
+		rmSetAreaSize(bridgeSite0, rmAreaTilesToFraction(1250.0), rmAreaTilesToFraction(1250.0));
+		rmSetAreaLocation(bridgeSite0, rmXMetersToFraction(xsVectorGetX(StopperLoc9)), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+		rmSetAreaMix(bridgeSite0, "nwt_grass2");
+		rmSetAreaCoherence(bridgeSite0, 1);
+		rmSetAreaSmoothDistance(bridgeSite0, 20);
+		rmSetAreaBaseHeight(bridgeSite0, 0.5);
+		rmAddAreaToClass(bridgeSite0, classPortSite);
+		rmAddAreaInfluenceSegment(bridgeSite0, 0.5, rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+14), 0.5, rmZMetersToFraction(xsVectorGetZ(StopperLoc9)-14));
+		rmSetAreaObeyWorldCircleConstraint(bridgeSite0, false);
+		rmBuildArea(bridgeSite0);
+
+		// North Bank
+
+		if (cNumberNonGaiaPlayers >=3){
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.66);
+			rmPlaceObjectDefAtPoint(stopperID, 0, socketLoc1);
+			vector StopperLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID, 0));
+			rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc1)), rmZMetersToFraction(xsVectorGetZ(StopperLoc1)));
+			rmPlaceGroupingAtLoc(stationGrouping005, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc1)), rmZMetersToFraction(xsVectorGetZ(StopperLoc1)));
+		}
+
+		if (cNumberNonGaiaPlayers >=7){	
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.72);
+			rmPlaceObjectDefAtPoint(stopperID2, 0, socketLoc1);
+			vector StopperLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID2, 0));
+			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
+			rmPlaceGroupingAtLoc(stationGrouping001, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
+
+
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.81);
+			rmPlaceObjectDefAtPoint(stopperID3, 0, socketLoc1);
+			vector StopperLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID3, 0));
+			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc3)), rmZMetersToFraction(xsVectorGetZ(StopperLoc3)));
+			rmPlaceGroupingAtLoc(stationGrouping001, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc3)), rmZMetersToFraction(xsVectorGetZ(StopperLoc3)));
+
+		}
+
+		if (cNumberNonGaiaPlayers ==2 || cNumberNonGaiaPlayers ==6){	
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.75);
+			rmPlaceObjectDefAtPoint(stopperID2, 0, socketLoc1);
+			StopperLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID2, 0));
+			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
+			rmPlaceGroupingAtLoc(stationGrouping001, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
+		}
+
+		if (cNumberNonGaiaPlayers >=3){
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.89);
+			rmPlaceObjectDefAtPoint(stopperID4, 0, socketLoc1);
+			vector StopperLoc4 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID4, 0));
+			rmPlaceGroupingAtLoc(stationGrouping04, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmZMetersToFraction(xsVectorGetZ(StopperLoc4)));
+			rmPlaceGroupingAtLoc(stationGrouping007, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmZMetersToFraction(xsVectorGetZ(StopperLoc4)));
+		}
+
+		// South Bank
+
+		if (cNumberNonGaiaPlayers >=4){	
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.11);
+			rmPlaceObjectDefAtPoint(stopperID5, 0, socketLoc1);
+			vector StopperLoc5 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID5, 0));
+			rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
+			rmPlaceGroupingAtLoc(stationGrouping005, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
+		}
+
+		if (cNumberNonGaiaPlayers ==8){	
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.19);
+			rmPlaceObjectDefAtPoint(stopperID6, 0, socketLoc1);
+			vector StopperLoc6 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID6, 0));
+			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
+			rmPlaceGroupingAtLoc(stationGrouping001, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
+
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.28);
+			rmPlaceObjectDefAtPoint(stopperID7, 0, socketLoc1);
+			vector StopperLoc7 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID7, 0));
+			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc7)), rmZMetersToFraction(xsVectorGetZ(StopperLoc7)));
+			rmPlaceGroupingAtLoc(stationGrouping001, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc7)), rmZMetersToFraction(xsVectorGetZ(StopperLoc7)));
+		}
+
+		if (cNumberNonGaiaPlayers ==2 || cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==5 || cNumberNonGaiaPlayers ==6 || cNumberNonGaiaPlayers ==7){	
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.25);
+			rmPlaceObjectDefAtPoint(stopperID6, 0, socketLoc1);
+			StopperLoc6 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID6, 0));
+			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
+			rmPlaceGroupingAtLoc(stationGrouping001, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
+		}
+		
+		if (cNumberNonGaiaPlayers >=4){	
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.34);
+			rmPlaceObjectDefAtPoint(stopperID8, 0, socketLoc1);
+			vector StopperLoc8 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID8, 0));
+			rmPlaceGroupingAtLoc(stationGrouping04, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmZMetersToFraction(xsVectorGetZ(StopperLoc8)));
+			rmPlaceGroupingAtLoc(stationGrouping007, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmZMetersToFraction(xsVectorGetZ(StopperLoc8)));
+		}
+
+		// Koth Station
+
+		rmPlaceGroupingAtLoc(stationGrouping02, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc9)), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+		rmPlaceGroupingAtLoc(stationGrouping003, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc9)), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+
+		int tradeRouteID2 = rmCreateTradeRoute();		
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.65, 0.0);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.65, 0.2);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.8, 0.35);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.8, 0.65);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.65, 0.8);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.65, 0.8);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.65, 0.9);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.35, 0.9);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.35, 0.8);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.2, 0.65);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.2, 0.35);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.35, 0.2);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.35, 0.0);
+
+		rmBuildTradeRoute(tradeRouteID2, "armored_train");
+
+		int tradeRouteID3 = rmCreateTradeRoute();
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.35, 0.0);
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.35, 0.2);
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.2, 0.35);
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.2, 0.65);
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.35, 0.8);
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.35, 0.9);
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.65, 0.9);
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.65, 0.8);
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.8, 0.65);
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.8, 0.35);
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.65, 0.2);
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.65, 0.0);
+
+		rmBuildTradeRoute(tradeRouteID3, "armored_train");
+	}
+
+	else
+	{
 	
-	rmAddTradeRouteWaypoint(tradeRouteID, 0.65, 1.0);
-	rmAddTradeRouteWaypoint(tradeRouteID, 0.65, 0.8);
-	rmAddTradeRouteWaypoint(tradeRouteID, 0.8, 0.65);
-	rmAddTradeRouteWaypoint(tradeRouteID, 0.8, 0.35);
-	rmAddTradeRouteWaypoint(tradeRouteID, 0.65, 0.2);
-	rmAddTradeRouteWaypoint(tradeRouteID, 0.65, 0.0);
+	// **** No Koth ****
 
-	rmBuildTradeRoute(tradeRouteID, "dirt");
+		// Trade Route 1
 
+		tradeRouteID = rmCreateTradeRoute();
+		rmSetObjectDefTradeRouteID(socketID, tradeRouteID);
+		rmSetObjectDefTradeRouteID(stopperID, tradeRouteID);
+		rmSetObjectDefTradeRouteID(stopperID2, tradeRouteID);
+		rmSetObjectDefTradeRouteID(stopperID3, tradeRouteID);
+		rmSetObjectDefTradeRouteID(stopperID4, tradeRouteID);
+		
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.65, 1.0);
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.65, 0.8);
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.8, 0.65);
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.8, 0.35);
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.65, 0.2);
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.65, 0.0);
 
-		vector socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.1);
-		rmPlaceObjectDefAtPoint(stopperID00, 0, socketLoc1);
-		vector StopperLoc00 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID00, 0));
-		rmPlaceGroupingAtLoc(stationGrouping00, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc00)), rmZMetersToFraction(xsVectorGetZ(StopperLoc00)));
-
-
-	if (cNumberNonGaiaPlayers >=3){
-		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.25);
-		rmPlaceObjectDefAtPoint(stopperID, 0, socketLoc1);
-		vector StopperLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID, 0));
-		rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc1)), rmZMetersToFraction(xsVectorGetZ(StopperLoc1)));
-		rmPlaceGroupingAtLoc(stationGrouping005, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc1)), rmZMetersToFraction(xsVectorGetZ(StopperLoc1)));
-	}
-
-	if (cNumberNonGaiaPlayers >=7){	
-		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.43);
-		rmPlaceObjectDefAtPoint(stopperID2, 0, socketLoc1);
-		vector StopperLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID2, 0));
-		rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
-		rmPlaceGroupingAtLoc(stationGrouping001, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
+		rmBuildTradeRoute(tradeRouteID, "dirt");
 
 
-		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.57);
-		rmPlaceObjectDefAtPoint(stopperID3, 0, socketLoc1);
-		vector StopperLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID3, 0));
-		rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc3)), rmZMetersToFraction(xsVectorGetZ(StopperLoc3)));
-		rmPlaceGroupingAtLoc(stationGrouping001, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc3)), rmZMetersToFraction(xsVectorGetZ(StopperLoc3)));
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.1);
+			rmPlaceObjectDefAtPoint(stopperID00, 0, socketLoc1);
+			vector StopperLoc00 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID00, 0));
+			rmPlaceGroupingAtLoc(stationGrouping00, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc00)), rmZMetersToFraction(xsVectorGetZ(StopperLoc00)));
 
-	}
 
-	if (cNumberNonGaiaPlayers ==2 || cNumberNonGaiaPlayers ==6){	
-		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.5);
-		rmPlaceObjectDefAtPoint(stopperID2, 0, socketLoc1);
-		StopperLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID2, 0));
-		rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
-		rmPlaceGroupingAtLoc(stationGrouping001, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
-	}
+		if (cNumberNonGaiaPlayers >=3){
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.25);
+			rmPlaceObjectDefAtPoint(stopperID, 0, socketLoc1);
+			StopperLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID, 0));
+			rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc1)), rmZMetersToFraction(xsVectorGetZ(StopperLoc1)));
+			rmPlaceGroupingAtLoc(stationGrouping005, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc1)), rmZMetersToFraction(xsVectorGetZ(StopperLoc1)));
+		}
 
-	if (cNumberNonGaiaPlayers >=3){
-		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.75);
-		rmPlaceObjectDefAtPoint(stopperID4, 0, socketLoc1);
-		vector StopperLoc4 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID4, 0));
-		rmPlaceGroupingAtLoc(stationGrouping04, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmZMetersToFraction(xsVectorGetZ(StopperLoc4)));
-		rmPlaceGroupingAtLoc(stationGrouping007, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmZMetersToFraction(xsVectorGetZ(StopperLoc4)));
-	}
+		if (cNumberNonGaiaPlayers >=7){	
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.43);
+			rmPlaceObjectDefAtPoint(stopperID2, 0, socketLoc1);
+			StopperLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID2, 0));
+			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
+			rmPlaceGroupingAtLoc(stationGrouping001, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
 
-    int tradeRouteID2 = rmCreateTradeRoute();
-	rmAddTradeRouteWaypoint(tradeRouteID2, 0.65, 1.0);
-	rmAddTradeRouteWaypoint(tradeRouteID2, 0.65, 0.8);
-	rmAddTradeRouteWaypoint(tradeRouteID2, 0.8, 0.65);
-	rmAddTradeRouteWaypoint(tradeRouteID2, 0.8, 0.35);
-	rmAddTradeRouteWaypoint(tradeRouteID2, 0.65, 0.2);
-	rmAddTradeRouteWaypoint(tradeRouteID2, 0.65, 0.0);
 
-	rmBuildTradeRoute(tradeRouteID2, "armored_train");
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.57);
+			rmPlaceObjectDefAtPoint(stopperID3, 0, socketLoc1);
+			StopperLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID3, 0));
+			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc3)), rmZMetersToFraction(xsVectorGetZ(StopperLoc3)));
+			rmPlaceGroupingAtLoc(stationGrouping001, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc3)), rmZMetersToFraction(xsVectorGetZ(StopperLoc3)));
 
-	// Trade Route 2
+		}
 
-	int tradeRouteID3 = rmCreateTradeRoute();
-	rmSetObjectDefTradeRouteID(stopperID5, tradeRouteID3);
-	rmSetObjectDefTradeRouteID(stopperID6, tradeRouteID3);
-	rmSetObjectDefTradeRouteID(stopperID7, tradeRouteID3);
-	rmSetObjectDefTradeRouteID(stopperID8, tradeRouteID3);
+		if (cNumberNonGaiaPlayers ==2 || cNumberNonGaiaPlayers ==6){	
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.5);
+			rmPlaceObjectDefAtPoint(stopperID2, 0, socketLoc1);
+			StopperLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID2, 0));
+			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
+			rmPlaceGroupingAtLoc(stationGrouping001, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmZMetersToFraction(xsVectorGetZ(StopperLoc2)));
+		}
 
-	rmAddTradeRouteWaypoint(tradeRouteID3, 0.35, 0.0);
-	rmAddTradeRouteWaypoint(tradeRouteID3, 0.35, 0.2);
-	rmAddTradeRouteWaypoint(tradeRouteID3, 0.2, 0.35);
-	rmAddTradeRouteWaypoint(tradeRouteID3, 0.2, 0.65);
-	rmAddTradeRouteWaypoint(tradeRouteID3, 0.35, 0.8);
-	rmAddTradeRouteWaypoint(tradeRouteID3, 0.35, 1.0);
+		if (cNumberNonGaiaPlayers >=3){
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.75);
+			rmPlaceObjectDefAtPoint(stopperID4, 0, socketLoc1);
+			StopperLoc4 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID4, 0));
+			rmPlaceGroupingAtLoc(stationGrouping04, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmZMetersToFraction(xsVectorGetZ(StopperLoc4)));
+			rmPlaceGroupingAtLoc(stationGrouping007, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmZMetersToFraction(xsVectorGetZ(StopperLoc4)));
+		}
 
-	rmBuildTradeRoute(tradeRouteID3, "dirt");
+		tradeRouteID2 = rmCreateTradeRoute();
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.65, 1.0);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.65, 0.8);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.8, 0.65);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.8, 0.35);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.65, 0.2);
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.65, 0.0);
 
-        socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.1);
+		rmBuildTradeRoute(tradeRouteID2, "armored_train");
+
+		// Trade Route 2
+
+		tradeRouteID3 = rmCreateTradeRoute();
+		rmSetObjectDefTradeRouteID(stopperID5, tradeRouteID3);
+		rmSetObjectDefTradeRouteID(stopperID6, tradeRouteID3);
+		rmSetObjectDefTradeRouteID(stopperID7, tradeRouteID3);
+		rmSetObjectDefTradeRouteID(stopperID8, tradeRouteID3);
+
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.35, 0.0);
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.35, 0.2);
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.2, 0.35);
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.2, 0.65);
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.35, 0.8);
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.35, 1.0);
+
+		rmBuildTradeRoute(tradeRouteID3, "dirt");
+
+		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.1);
 		rmPlaceObjectDefAtPoint(stopperID01, 0, socketLoc1);
 		vector StopperLoc001 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID01, 0));
 		rmPlaceGroupingAtLoc(stationGrouping00, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc001)), rmZMetersToFraction(xsVectorGetZ(StopperLoc001)));
 
-	if (cNumberNonGaiaPlayers >=4){	
-		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.24);
-		rmPlaceObjectDefAtPoint(stopperID5, 0, socketLoc1);
-		vector StopperLoc5 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID5, 0));
-		rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
-		rmPlaceGroupingAtLoc(stationGrouping006, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
+		if (cNumberNonGaiaPlayers >=4){	
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.24);
+			rmPlaceObjectDefAtPoint(stopperID5, 0, socketLoc1);
+			StopperLoc5 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID5, 0));
+			rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
+			rmPlaceGroupingAtLoc(stationGrouping006, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
+		}
+
+		if (cNumberNonGaiaPlayers ==8){	
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.43);
+			rmPlaceObjectDefAtPoint(stopperID6, 0, socketLoc1);
+			StopperLoc6 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID6, 0));
+			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
+			rmPlaceGroupingAtLoc(stationGrouping002, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
+
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.57);
+			rmPlaceObjectDefAtPoint(stopperID7, 0, socketLoc1);
+			StopperLoc7 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID7, 0));
+			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc7)), rmZMetersToFraction(xsVectorGetZ(StopperLoc7)));
+			rmPlaceGroupingAtLoc(stationGrouping002, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc7)), rmZMetersToFraction(xsVectorGetZ(StopperLoc7)));
+		}
+
+		if (cNumberNonGaiaPlayers ==2 || cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==5 || cNumberNonGaiaPlayers ==6 || cNumberNonGaiaPlayers ==7){	
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.50);
+			rmPlaceObjectDefAtPoint(stopperID6, 0, socketLoc1);
+			StopperLoc6 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID6, 0));
+			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
+			rmPlaceGroupingAtLoc(stationGrouping002, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
+		}
+		
+		if (cNumberNonGaiaPlayers >=4){	
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.73);
+			rmPlaceObjectDefAtPoint(stopperID8, 0, socketLoc1);
+			StopperLoc8 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID8, 0));
+			rmPlaceGroupingAtLoc(stationGrouping04, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmZMetersToFraction(xsVectorGetZ(StopperLoc8)));
+			rmPlaceGroupingAtLoc(stationGrouping008, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmZMetersToFraction(xsVectorGetZ(StopperLoc8)));
+		}
+
+		int tradeRouteID4 = rmCreateTradeRoute();
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.35, 0.0);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.35, 0.2);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.2, 0.35);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.2, 0.65);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.35, 0.8);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.35, 1.0);
+
+		rmBuildTradeRoute(tradeRouteID4, "armored_train");	
 	}
-
-	if (cNumberNonGaiaPlayers ==8){	
-		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.43);
-		rmPlaceObjectDefAtPoint(stopperID6, 0, socketLoc1);
-		vector StopperLoc6 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID6, 0));
-		rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
-		rmPlaceGroupingAtLoc(stationGrouping002, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
-
-		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.57);
-		rmPlaceObjectDefAtPoint(stopperID7, 0, socketLoc1);
-		vector StopperLoc7 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID7, 0));
-		rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc7)), rmZMetersToFraction(xsVectorGetZ(StopperLoc7)));
-		rmPlaceGroupingAtLoc(stationGrouping002, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc7)), rmZMetersToFraction(xsVectorGetZ(StopperLoc7)));
-	}
-
-	if (cNumberNonGaiaPlayers ==2 || cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==5 || cNumberNonGaiaPlayers ==6 || cNumberNonGaiaPlayers ==7){	
-		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.50);
-		rmPlaceObjectDefAtPoint(stopperID6, 0, socketLoc1);
-		StopperLoc6 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID6, 0));
-		rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
-		rmPlaceGroupingAtLoc(stationGrouping002, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
-	}
-	
-	if (cNumberNonGaiaPlayers >=4){	
-		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.73);
-		rmPlaceObjectDefAtPoint(stopperID8, 0, socketLoc1);
-		vector StopperLoc8 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID8, 0));
-		rmPlaceGroupingAtLoc(stationGrouping04, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmZMetersToFraction(xsVectorGetZ(StopperLoc8)));
-		rmPlaceGroupingAtLoc(stationGrouping008, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmZMetersToFraction(xsVectorGetZ(StopperLoc8)));
-	}
-
-	int tradeRouteID4 = rmCreateTradeRoute();
-	rmAddTradeRouteWaypoint(tradeRouteID4, 0.35, 0.0);
-	rmAddTradeRouteWaypoint(tradeRouteID4, 0.35, 0.2);
-	rmAddTradeRouteWaypoint(tradeRouteID4, 0.2, 0.35);
-	rmAddTradeRouteWaypoint(tradeRouteID4, 0.2, 0.65);
-	rmAddTradeRouteWaypoint(tradeRouteID4, 0.35, 0.8);
-	rmAddTradeRouteWaypoint(tradeRouteID4, 0.35, 1.0);
-
-	rmBuildTradeRoute(tradeRouteID4, "armored_train");
 
 	// Text
 	rmSetStatusText("",0.20);
@@ -518,15 +719,24 @@ void main(void)
 		int riverID = rmRiverCreate(-1, "ZP Mississippi River", 4, 4, 18, 18); //  (-1, "new england lake", 18, 14, 5, 5)
 	else	
 		riverID = rmRiverCreate(-1, "ZP Mississippi River", 4, 4, 20, 20); //  (-1, "new england lake", 18, 14, 5, 5)
-	rmRiverAddWaypoint(riverID, 0.5, 1.0);
-	rmRiverAddWaypoint(riverID, 0.5, 0.8);
-	rmRiverAddWaypoint(riverID, 0.55, 0.55); 
-	rmRiverAddWaypoint(riverID, 0.45, 0.45);
-	rmRiverAddWaypoint(riverID, 0.5, 0.2);
-	rmRiverAddWaypoint(riverID, 0.5, 0.0);
-	rmRiverSetBankNoiseParams(riverID, 0.00, 0, 0.0, 0.0, 0.0, 0.0);
-    rmRiverSetShallowRadius(riverID, 10);
-	rmRiverAddShallow(riverID, 0.05);
+	if (rmGetIsKOTH()){
+		rmRiverAddWaypoint(riverID, 0.5, 0.75);
+		rmRiverAddWaypoint(riverID, 0.55, 0.55); 
+		rmRiverAddWaypoint(riverID, 0.45, 0.45);
+		rmRiverAddWaypoint(riverID, 0.5, 0.2);
+		rmRiverAddWaypoint(riverID, 0.5, 0.0);
+	}
+	else {	
+		rmRiverAddWaypoint(riverID, 0.5, 1.0);
+		rmRiverAddWaypoint(riverID, 0.5, 0.8);
+		rmRiverAddWaypoint(riverID, 0.55, 0.55); 
+		rmRiverAddWaypoint(riverID, 0.45, 0.45);
+		rmRiverAddWaypoint(riverID, 0.5, 0.2);
+		rmRiverAddWaypoint(riverID, 0.5, 0.0);
+		rmRiverSetBankNoiseParams(riverID, 0.00, 0, 0.0, 0.0, 0.0, 0.0);
+		rmRiverSetShallowRadius(riverID, 10);
+		rmRiverAddShallow(riverID, 0.05);
+	}
 	rmRiverBuild(riverID);
 
     // Renegades
@@ -535,31 +745,31 @@ void main(void)
 	rmAddObjectDefItem(scientistControllerID, "zpSPCWaterSpawnPoint", 1, 0.0);
 	rmSetObjectDefMinDistance(scientistControllerID, 0.0);
 	rmSetObjectDefMaxDistance(scientistControllerID, 0.0);
-	rmPlaceObjectDefAtLoc(scientistControllerID, 0, 0.45-rmXTilesToFraction(25),0.45+rmXTilesToFraction(12));
+	rmPlaceObjectDefAtLoc(scientistControllerID, 0, 0.45-rmXTilesToFraction(26),0.45+rmXTilesToFraction(13));
 	vector scientistControllerLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(scientistControllerID, 0));
 
 	int scientistControllerID2 = rmCreateObjectDef("scientist controller 2");
 	rmAddObjectDefItem(scientistControllerID2, "zpSPCWaterSpawnPoint", 1, 0.0);
 	rmSetObjectDefMinDistance(scientistControllerID2, 0.0);
 	rmSetObjectDefMaxDistance(scientistControllerID2, 0.0);
-	rmPlaceObjectDefAtLoc(scientistControllerID2, 0, 0.55+rmXTilesToFraction(24), 0.55-rmXTilesToFraction(13));
+	rmPlaceObjectDefAtLoc(scientistControllerID2, 0, 0.55+rmXTilesToFraction(25), 0.55-rmXTilesToFraction(14));
 	vector scientistControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(scientistControllerID2, 0));
 
 	int maltese1VillageTypeID = rmRandInt(5,6);
 	int maltese1ID = -1;
-	maltese1ID = rmCreateGrouping("maltese 1", "Scientist_Lab0"+maltese1VillageTypeID);
+	maltese1ID = rmCreateGrouping("maltese 1", "Scientist_Lab06");
 	rmSetGroupingMinDistance(maltese1ID, 0);
 	rmSetGroupingMaxDistance(maltese1ID, 0);
 	
 
 	int maltese2VillageTypeID = 11-maltese1VillageTypeID;
 	int maltese2ID = -1;
-	maltese2ID = rmCreateGrouping("maltese 2", "Scientist_Lab0"+maltese2VillageTypeID);
+	maltese2ID = rmCreateGrouping("maltese 2", "Scientist_Lab05");
 	rmSetGroupingMinDistance(maltese2ID, 0);
 	rmSetGroupingMaxDistance(maltese2ID, 0);
 
-	rmPlaceGroupingAtLoc(maltese1ID, 0, 0.45-rmXTilesToFraction(25),0.45+rmXTilesToFraction(12));
-	rmPlaceGroupingAtLoc(maltese2ID, 0, 0.55+rmXTilesToFraction(24), 0.55-rmXTilesToFraction(13));
+	rmPlaceGroupingAtLoc(maltese1ID, 0, 0.45-rmXTilesToFraction(25),0.45+rmXTilesToFraction(13));
+	rmPlaceGroupingAtLoc(maltese2ID, 0, 0.55+rmXTilesToFraction(24), 0.55-rmXTilesToFraction(14));
 
 	int nativewaterflagID1 = rmCreateObjectDef("pirate water flag 1");
 	rmAddObjectDefItem(nativewaterflagID1, "zpNativeWaterSpawnFlag1", 1, 1.0);
@@ -702,6 +912,8 @@ void main(void)
     rmSetAreaElevationNoiseBias(westMountain, 1);
     rmAddAreaInfluenceSegment(westMountain, 0.1, 0.8, 0.0, 0.5);
     rmAddAreaInfluenceSegment(westMountain, 0.1, 0.2, 0.0, 0.5);
+	rmAddAreaConstraint(westMountain, avoidTradeSocketShort);
+	rmAddAreaConstraint(westMountain, avoidTradeRouteFar);
     rmAddAreaToClass(westMountain, classMountains);
     rmBuildArea(westMountain);
 
@@ -729,6 +941,8 @@ void main(void)
     rmSetAreaElevationVariation(eastMountain, 3.0);
     rmSetAreaElevationPersistence(eastMountain, 0.2);
     rmSetAreaElevationNoiseBias(eastMountain, 1);
+	rmAddAreaConstraint(eastMountain, avoidTradeSocketShort);
+	rmAddAreaConstraint(eastMountain, avoidTradeRouteFar);
     rmAddAreaInfluenceSegment(eastMountain, 0.9, 0.8, 1.0, 0.5);
     rmAddAreaInfluenceSegment(eastMountain, 0.9, 0.2, 1.0, 0.5);
     rmAddAreaToClass(eastMountain, classMountains);
@@ -1077,21 +1291,102 @@ void main(void)
 	// KotH
 	if (rmGetIsKOTH())
 	{
-	
+
+	int bridgeID = -1;
+
+	if (cNumberNonGaiaPlayers<=3){
+		bridgeID = rmCreateGrouping("mississippi bridge", "mississippi_bridge_02");
+		rmPlaceGroupingAtLoc(bridgeID, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+41), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+5));
+		rmPlaceGroupingAtLoc(bridgeID, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-41), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+5));
+	}
+
+   	else{
+		bridgeID = rmCreateGrouping("mississippi bridge", "mississippi_bridge_01");
+		rmPlaceGroupingAtLoc(bridgeID, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+46), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+3));
+		rmPlaceGroupingAtLoc(bridgeID, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-46), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+3));
+	}
+
+	int bridgeSite1 = rmCreateArea ("bridge site 1");
+	if (cNumberNonGaiaPlayers<=3)
+		rmSetAreaSize(bridgeSite1, rmAreaTilesToFraction(1350.0), rmAreaTilesToFraction(1350.0));
+	if (cNumberNonGaiaPlayers>=7)
+		rmSetAreaSize(bridgeSite1, rmAreaTilesToFraction(1650.0), rmAreaTilesToFraction(1650.0));
+	else
+		rmSetAreaSize(bridgeSite1, rmAreaTilesToFraction(1450.0), rmAreaTilesToFraction(1450.0));
+	rmSetAreaLocation(bridgeSite1, rmXMetersToFraction(xsVectorGetX(StopperLoc9)), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+	rmSetAreaCoherence(bridgeSite1, 1);
+	rmSetAreaSmoothDistance(bridgeSite1, 20);
+	rmSetAreaBaseHeight(bridgeSite1, 0.5);
+	rmAddAreaToClass(bridgeSite1, classPortSite);
+	rmAddAreaInfluenceSegment(bridgeSite1, 0.5, rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+14), 0.5, rmZMetersToFraction(xsVectorGetZ(StopperLoc9)-14));
+	rmSetAreaObeyWorldCircleConstraint(bridgeSite1, false);
+	rmBuildArea(bridgeSite1);
+
+	int bridgeSite2 = rmCreateArea ("bridge site 2");
+	rmSetAreaSize(bridgeSite2, rmAreaTilesToFraction(450.0), rmAreaTilesToFraction(450.0));
+	if (cNumberNonGaiaPlayers<=3)
+		rmSetAreaLocation(bridgeSite2, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-67), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+	else
+		rmSetAreaLocation(bridgeSite2, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-73), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+	rmSetAreaCoherence(bridgeSite2, 1);
+	rmSetAreaSmoothDistance(bridgeSite2, 20);
+	rmSetAreaBaseHeight(bridgeSite2, 0.5);
+	rmAddAreaToClass(bridgeSite2, classPortSite);
+	rmBuildArea(bridgeSite2);
+
+	int bridgeSite3 = rmCreateArea ("bridge site 3");
+	rmSetAreaSize(bridgeSite3, rmAreaTilesToFraction(450.0), rmAreaTilesToFraction(450.0));
+	if (cNumberNonGaiaPlayers<=3)
+		rmSetAreaLocation(bridgeSite3, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+67), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+	else
+		rmSetAreaLocation(bridgeSite3, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+73), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+	rmSetAreaCoherence(bridgeSite3, 1);
+	rmAddAreaTerrainLayer(bridgeSite3, "city\ground1_cob", 0, 12);
+	rmSetAreaSmoothDistance(bridgeSite3, 20);
+	rmSetAreaBaseHeight(bridgeSite3, 0.5);
+	rmAddAreaToClass(bridgeSite3, classPortSite);
+	rmBuildArea(bridgeSite3);
+
+	int bridgeTerrain1 = rmCreateArea ("bridge terrain 1");
+	if (cNumberNonGaiaPlayers<=3) {
+		rmSetAreaSize(bridgeTerrain1, rmAreaTilesToFraction(200.0), rmAreaTilesToFraction(200.0));
+		rmSetAreaLocation(bridgeTerrain1, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+41), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+		}
+	else {
+		rmSetAreaSize(bridgeTerrain1, rmAreaTilesToFraction(300.0), rmAreaTilesToFraction(300.0));
+		rmSetAreaLocation(bridgeTerrain1, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+46), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+		}
+	rmSetAreaTerrainType(bridgeTerrain1, "city\ground1_cob");
+	rmSetAreaCoherence(bridgeTerrain1, 1);
+	rmBuildArea(bridgeTerrain1);
+
+	int bridgeTerrain2 = rmCreateArea ("bridge terrain 2");
+	if (cNumberNonGaiaPlayers<=3) {
+		rmSetAreaSize(bridgeTerrain2, rmAreaTilesToFraction(200.0), rmAreaTilesToFraction(200.0));
+		rmSetAreaLocation(bridgeTerrain2, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-41), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+		}
+	else {
+		rmSetAreaSize(bridgeTerrain2, rmAreaTilesToFraction(300.0), rmAreaTilesToFraction(300.0));
+		rmSetAreaLocation(bridgeTerrain2, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-46), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+		}
+	rmSetAreaTerrainType(bridgeTerrain2, "city\ground1_cob");
+	rmSetAreaCoherence(bridgeTerrain2, 1);
+	rmBuildArea(bridgeTerrain2);
+
 	int randLoc = rmRandInt(1,2);
-	float xLoc = 0.5;
-	float yLoc = 0.9;
+	float xLoc = rmXMetersToFraction(xsVectorGetX(StopperLoc9));
+	float yLoc = rmXMetersToFraction(xsVectorGetZ(StopperLoc9)-28);
 	float walk = 0.0;
-	
-	ypKingsHillLandfill(xLoc, yLoc, rmAreaTilesToFraction(175), 1.0, "nwt_grass2", 0);
+
 	ypKingsHillPlacer(xLoc, yLoc, walk, 0);
 	rmEchoInfo("XLOC = "+xLoc);
 	rmEchoInfo("XLOC = "+yLoc);
+	
 	}
 
 	// Mines
 
-	int saltCount = (cNumberNonGaiaPlayers);
+	int saltCount = (cNumberNonGaiaPlayers*1.5);
 
 	for(i=0; < saltCount)
 	{
@@ -1107,7 +1402,6 @@ void main(void)
 		rmAddObjectDefConstraint(lakeSaltMineID, southConstraint);
 		rmPlaceObjectDefAtLoc(lakeSaltMineID, 0, 0.5, 0.5);
 
-
 		int  lakeSaltMineID2 = rmCreateObjectDef("mine north "+i);
 		rmAddObjectDefItem(lakeSaltMineID2, "Mine", 1, 0.0);
 		rmSetObjectDefMinDistance(lakeSaltMineID2, 0.0);
@@ -1119,6 +1413,31 @@ void main(void)
 		rmAddObjectDefConstraint(lakeSaltMineID2, avoidWater20);
 		rmAddObjectDefConstraint(lakeSaltMineID2, northConstraint);
 		rmPlaceObjectDefAtLoc(lakeSaltMineID2, 0, 0.5, 0.5);
+
+		int berriesID = rmCreateObjectDef("berries"+i);
+		rmAddObjectDefItem(berriesID, "berrybush", 3, 4.0);
+		rmSetObjectDefMinDistance(berriesID, 0.0);
+		rmSetObjectDefMaxDistance(berriesID, rmXFractionToMeters(0.45));
+		rmAddObjectDefConstraint(berriesID, avoidCoin);
+		rmAddObjectDefConstraint(berriesID, avoidAll);
+		rmAddObjectDefConstraint(berriesID, avoidTradeRoute);
+		rmAddObjectDefConstraint(berriesID, avoidSocket);
+		rmAddObjectDefConstraint(berriesID, avoidWater20);
+		rmAddObjectDefConstraint(berriesID, southConstraint);
+		rmPlaceObjectDefAtLoc(berriesID, 0, 0.5, 0.5);
+
+		int berriesID2 = rmCreateObjectDef("berries 2"+i);
+		rmAddObjectDefItem(berriesID2, "berrybush", 3, 4.0);
+		rmSetObjectDefMinDistance(berriesID2, 0.0);
+		rmSetObjectDefMaxDistance(berriesID2, rmXFractionToMeters(0.45));
+		rmAddObjectDefConstraint(berriesID2, avoidCoin);
+		rmAddObjectDefConstraint(berriesID2, avoidAll);
+		rmAddObjectDefConstraint(berriesID2, avoidTradeRoute);
+		rmAddObjectDefConstraint(berriesID2, avoidSocket);
+		rmAddObjectDefConstraint(berriesID2, avoidWater20);
+		rmAddObjectDefConstraint(berriesID2, northConstraint);
+		rmPlaceObjectDefAtLoc(berriesID2, 0, 0.5, 0.5);
+
 	}
 
 	// Text
@@ -1352,7 +1671,10 @@ void main(void)
     int fishID=rmCreateObjectDef("fish 1");
 	rmAddObjectDefItem(fishID, fish1, 1, 0.0);
 	rmSetObjectDefMinDistance(fishID, 0.0);
-	rmSetObjectDefMaxDistance(fishID, rmXFractionToMeters(0.45));
+	if (rmGetIsKOTH() == true)
+		rmSetObjectDefMaxDistance(fishID, rmXFractionToMeters(0.4));
+	else
+		rmSetObjectDefMaxDistance(fishID, rmXFractionToMeters(0.45));
 	rmAddObjectDefConstraint(fishID, avoidFish1);
 	rmAddObjectDefConstraint(fishID, fishLand);
 	rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 15*cNumberNonGaiaPlayers);
@@ -1368,6 +1690,7 @@ void main(void)
 	rmAddObjectDefConstraint(villageTreeID, avoidWater10);
 	rmAddObjectDefConstraint(villageTreeID, avoidCoin);
 	rmAddObjectDefConstraint(villageTreeID, avoidKOTH);
+	rmAddObjectDefConstraint(villageTreeID, avoidBridge);
 	rmAddObjectDefConstraint(villageTreeID, avoidImportantItem);
 	for (i=0; <4*numTries){
 		rmPlaceObjectDefAtLoc(villageTreeID, 0, 0.5, 0.5, 1);
@@ -1389,6 +1712,7 @@ void main(void)
 	string unitID6 = "288";
 	string unitID7 = "338";
 	string unitID8 = "388";
+	string unitID9 = "438";
 
 	// Ship Training
     string unitIDsc00 = "455";
@@ -1396,20 +1720,26 @@ void main(void)
 
 	// Cooldowns
 	int armoredTrainActive = 90;
-	int armoredTrainCooldown = 300;
-	int armoredTrainCooldown2 = 240;
+	int armoredTrainCooldown = 10;
+	int armoredTrainCooldown2 = 10;
+	int noStations = 2;
+	int trainDirection = 22;
 
     if (cNumberNonGaiaPlayers <=2){
 		unitID2 = "88";
         unitID01 = "75";
         unitIDsc00 = "155";
         unitIDsc01 = "245";
+		noStations = 2;
+		trainDirection = 22;
 		}
     if (cNumberNonGaiaPlayers ==3){
 		unitID3 = "138";
         unitID01 = "125";
         unitIDsc00 = "205";
         unitIDsc01 = "295";
+		noStations = 3;
+		trainDirection = 23;
 		}
     if (cNumberNonGaiaPlayers ==4){
 		unitID3 = "138";
@@ -1417,6 +1747,8 @@ void main(void)
         unitID01 = "125";
         unitIDsc00 = "255";
         unitIDsc01 = "345";
+		noStations = 4;
+		trainDirection = 24;
 		}
     if (cNumberNonGaiaPlayers ==5){
 		unitID3 = "138";
@@ -1424,17 +1756,67 @@ void main(void)
         unitID01 = "125";
 		unitIDsc00 = "305";
         unitIDsc01 = "395";
+		noStations = 5;
+		trainDirection = 25;
 		}
     if (cNumberNonGaiaPlayers ==6){
         unitID4 = "188";
         unitID01 = "175";
 		unitIDsc00 = "355";
         unitIDsc01 = "445";
+		noStations = 6;
+		trainDirection = 26;
 		}
 	if (cNumberNonGaiaPlayers ==7){
 		unitIDsc00 = "405";
         unitIDsc01 = "495";
+		noStations = 7;
+		trainDirection = 27;
 		}
+	if (cNumberNonGaiaPlayers ==8){
+		noStations = 8;
+		trainDirection = 28;
+		}
+
+	if (rmGetIsKOTH()){
+		unitID1 = "8";
+		unitID2 = "58";
+		unitID3 = "108";
+		unitID4 = "158";
+		unitID5 = "208";
+		unitID6 = "258";
+		unitID7 = "308";
+		unitID8 = "358";
+		unitID9 = "408";
+		if (cNumberNonGaiaPlayers <=2){
+			noStations = 3;
+			trainDirection = 12;
+		}
+		if (cNumberNonGaiaPlayers ==3){
+			noStations = 4;
+			trainDirection = 13;
+		}
+		if (cNumberNonGaiaPlayers ==4){
+			noStations = 5;
+			trainDirection = 14;
+		}
+		if (cNumberNonGaiaPlayers ==5){
+			noStations = 6;
+			trainDirection = 15;
+		}
+		if (cNumberNonGaiaPlayers ==6){
+			noStations = 7;
+			trainDirection = 16;
+		}
+		if (cNumberNonGaiaPlayers ==7){
+			noStations = 8;
+			trainDirection = 17;
+		}
+		if (cNumberNonGaiaPlayers ==8){
+			noStations = 9;
+			trainDirection = 18;
+		}
+	}
 
     // Starting techs
 
@@ -1678,13 +2060,22 @@ void main(void)
 	// Trade Route Setup
 
 	rmCreateTrigger("AT_Initialize");
-	rmAddTriggerEffect("Trade Route Toggle State");
-	rmSetTriggerEffectParamInt("TradeRoute",2);
-	rmSetTriggerEffectParam("ShowUnit","false");
-    rmAddTriggerEffect("Trade Route Toggle State");
-    rmSetTriggerEffectParamInt("TradeRoute",4);
-    rmSetTriggerEffectParam("ShowUnit","false");
-	rmSetTriggerEffectParam("ShowUnit","false");
+	if (rmGetIsKOTH()){
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",2);
+		rmSetTriggerEffectParam("ShowUnit","false");
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",3);
+		rmSetTriggerEffectParam("ShowUnit","false");
+	}
+	else {
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",2);
+		rmSetTriggerEffectParam("ShowUnit","false");
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",4);
+		rmSetTriggerEffectParam("ShowUnit","false");
+	}
 	rmAddTriggerEffect("Quest Var Set");
 	rmSetTriggerEffectParam("QVName","ArmoredTrain");
 	rmSetTriggerEffectParamInt("Value",0);
@@ -1734,27 +2125,57 @@ void main(void)
 	rmSetTriggerConditionParamInt("PlayerID",k);
 	rmSetTriggerConditionParam("TechID","cTechzpArmoredTrainTech");
 	rmSetTriggerConditionParamInt("Status",2);
-	rmAddTriggerEffect("Trade Route Set Level");
-	rmSetTriggerEffectParamInt("TradeRoute",1);
-	rmSetTriggerEffectParamInt("Level",2);
-	rmAddTriggerEffect("Trade Route Set Level");
-	rmSetTriggerEffectParamInt("TradeRoute",2);
-	rmSetTriggerEffectParamInt("Level",1);
-    rmAddTriggerEffect("Trade Route Set Level");
-    rmSetTriggerEffectParamInt("TradeRoute",3);
-    rmSetTriggerEffectParamInt("Level",2);
-    rmAddTriggerEffect("Trade Route Set Level");
-    rmSetTriggerEffectParamInt("TradeRoute",4);
-    rmSetTriggerEffectParamInt("Level",1);
-    rmAddTriggerEffect("Trade Route Set Level");
-    rmSetTriggerEffectParamInt("TradeRoute",5);
-    rmSetTriggerEffectParamInt("Level",2);
-    rmAddTriggerEffect("Trade Route Toggle State");
-    rmSetTriggerEffectParamInt("TradeRoute",4);
-    rmSetTriggerEffectParam("ShowUnit","false");
-	rmAddTriggerEffect("Trade Route Toggle State");
-	rmSetTriggerEffectParamInt("TradeRoute",2);
-	rmSetTriggerEffectParam("ShowUnit","false");
+	if (rmGetIsKOTH()){
+		rmAddTriggerEffect("Trade Route Set Level");
+		rmSetTriggerEffectParamInt("TradeRoute",1);
+		rmSetTriggerEffectParamInt("Level",2);
+		rmAddTriggerEffect("Trade Route Set Level");
+		rmSetTriggerEffectParamInt("TradeRoute",2);
+		rmSetTriggerEffectParamInt("Level",1);
+		rmAddTriggerEffect("Trade Route Set Level");
+		rmSetTriggerEffectParamInt("TradeRoute",3);
+		rmSetTriggerEffectParamInt("Level",1);
+		rmAddTriggerEffect("Trade Route Set Level");
+		rmSetTriggerEffectParamInt("TradeRoute",4);
+		rmSetTriggerEffectParamInt("Level",2);
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",2);
+		rmSetTriggerEffectParam("ShowUnit","false");
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",3);
+		rmSetTriggerEffectParam("ShowUnit","false");
+	}
+	else {
+		rmAddTriggerEffect("Trade Route Set Level");
+		rmSetTriggerEffectParamInt("TradeRoute",1);
+		rmSetTriggerEffectParamInt("Level",2);
+		rmAddTriggerEffect("Trade Route Set Level");
+		rmSetTriggerEffectParamInt("TradeRoute",2);
+		rmSetTriggerEffectParamInt("Level",1);
+		rmAddTriggerEffect("Trade Route Set Level");
+		rmSetTriggerEffectParamInt("TradeRoute",3);
+		rmSetTriggerEffectParamInt("Level",2);
+		rmAddTriggerEffect("Trade Route Set Level");
+		rmSetTriggerEffectParamInt("TradeRoute",4);
+		rmSetTriggerEffectParamInt("Level",1);
+		rmAddTriggerEffect("Trade Route Set Level");
+		rmSetTriggerEffectParamInt("TradeRoute",5);
+		rmSetTriggerEffectParamInt("Level",2);
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",4);
+		rmSetTriggerEffectParam("ShowUnit","false");
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",2);
+		rmSetTriggerEffectParam("ShowUnit","false");
+	}
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTradeRouteUpgradeWaterNative"); //operator
+	rmSetTriggerEffectParamInt("Status",0);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTradeRouteUpgradeWaterNative2"); //operator
+	rmSetTriggerEffectParamInt("Status",0);
 	for(i=1; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("Disable Trigger");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_TR_Upgrade_Plr"+i));
@@ -1768,7 +2189,21 @@ void main(void)
 	// Update Sockets
 
 
-		rmCreateTrigger("I Update Sockets 1");
+	rmCreateTrigger("I Update Sockets 1");
+	if (rmGetIsKOTH()){
+		rmAddTriggerCondition("Player Unit Count");
+		rmSetTriggerConditionParamInt("PlayerID",0);
+		rmSetTriggerConditionParam("Protounit","Stagecoach");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",2);
+		rmSetTriggerEffectParam("ShowUnit","false");
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",3);
+		rmSetTriggerEffectParam("ShowUnit","false");
+	}
+	else {
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",unitID00);
 		rmSetTriggerConditionParamInt("Player",0);
@@ -1782,12 +2217,27 @@ void main(void)
 		rmAddTriggerEffect("Trade Route Toggle State");
 		rmSetTriggerEffectParamInt("TradeRoute",4);
 		rmSetTriggerEffectParam("ShowUnit","false");
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(true);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 
-		rmCreateTrigger("II Update Sockets 1");
+	rmCreateTrigger("II Update Sockets 1");
+	if (rmGetIsKOTH()){
+		rmAddTriggerCondition("Player Unit Count");
+		rmSetTriggerConditionParamInt("PlayerID",0);
+		rmSetTriggerConditionParam("Protounit","TrainEngine");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",2);
+		rmSetTriggerEffectParam("ShowUnit","false");
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",3);
+		rmSetTriggerEffectParam("ShowUnit","false");
+	}
+	else {
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",unitID00);
 		rmSetTriggerConditionParamInt("Player",0);
@@ -1801,17 +2251,21 @@ void main(void)
 		rmAddTriggerEffect("Trade Route Toggle State");
 		rmSetTriggerEffectParamInt("TradeRoute",4);
 		rmSetTriggerEffectParam("ShowUnit","false");
-		for(i=0; <= cNumberNonGaiaPlayers) {
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID",i);
-			rmSetTriggerEffectParam("TechID","cTechzpTrainStationUpgradeA");
-			rmSetTriggerEffectParamInt("Status",2);
-		}
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(true);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
-
+	}
+	for(i=0; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpTrainStationUpgradeA");
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	
+	if (rmGetIsKOTH()){
+	}
+	else {
 		rmCreateTrigger("I Update Sockets 2");
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",unitID01);
@@ -1855,28 +2309,41 @@ void main(void)
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
-
+	}
 
 	// Normalize Trade Routes
 
 	rmCreateTrigger("AT1_Normalize_TR");
 	rmAddTriggerCondition("Timer ms");
 	rmSetTriggerConditionParamInt("Param1",1000);
-	rmAddTriggerEffect("Trade Route Toggle State");
-	rmSetTriggerEffectParamInt("TradeRoute",2);
-	rmSetTriggerEffectParam("ShowUnit","false");
-	rmAddTriggerEffect("Trade Route Toggle State");
-	rmSetTriggerEffectParamInt("TradeRoute",1);
-	rmSetTriggerEffectParam("ShowUnit","true");
+	if (rmGetIsKOTH()){
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",2);
+		rmSetTriggerEffectParam("ShowUnit","false");
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",1);
+		rmSetTriggerEffectParam("ShowUnit","true");
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",3);
+		rmSetTriggerEffectParam("ShowUnit","false");
+	}
+	else {
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",2);
+		rmSetTriggerEffectParam("ShowUnit","false");
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",1);
+		rmSetTriggerEffectParam("ShowUnit","true");
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",4);
+		rmSetTriggerEffectParam("ShowUnit","false");
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",3);
+		rmSetTriggerEffectParam("ShowUnit","true");
+	}
 	rmAddTriggerEffect("Quest Var Set");
 	rmSetTriggerEffectParam("QVName","ArmoredTrain");
 	rmSetTriggerEffectParamInt("Value",0);
-    rmAddTriggerEffect("Trade Route Toggle State");
-    rmSetTriggerEffectParamInt("TradeRoute",4);
-    rmSetTriggerEffectParam("ShowUnit","false");
-    rmAddTriggerEffect("Trade Route Toggle State");
-    rmSetTriggerEffectParamInt("TradeRoute",3);
-    rmSetTriggerEffectParam("ShowUnit","true");
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -1889,48 +2356,45 @@ void main(void)
 	for (k=1; <= cNumberNonGaiaPlayers) {
 	rmCreateTrigger("AT1_Send_Station1_Plr"+k);
 	rmCreateTrigger("AT1_Send_Station2_Plr"+k);
-    if (cNumberNonGaiaPlayers >= 3)
-	    rmCreateTrigger("AT1_Send_Station3_Plr"+k);
-    if (cNumberNonGaiaPlayers >= 4)
-	    rmCreateTrigger("AT1_Send_Station4_Plr"+k);
-	if (cNumberNonGaiaPlayers >= 5)
-		rmCreateTrigger("AT1_Send_Station5_Plr"+k);
-	if (cNumberNonGaiaPlayers >= 6)
-		rmCreateTrigger("AT1_Send_Station6_Plr"+k);
-	if (cNumberNonGaiaPlayers >= 7)
-		rmCreateTrigger("AT1_Send_Station7_Plr"+k);
-	if (cNumberNonGaiaPlayers == 8)
-		rmCreateTrigger("AT1_Send_Station8_Plr"+k);
-
 	rmCreateTrigger("AT1_STOP_Station1_Plr"+k);
 	rmCreateTrigger("AT1_STOP_Station2_Plr"+k);
-    if (cNumberNonGaiaPlayers >= 3)
-	    rmCreateTrigger("AT1_STOP_Station3_Plr"+k);
-    if (cNumberNonGaiaPlayers >= 4)
-	    rmCreateTrigger("AT1_STOP_Station4_Plr"+k);
-	if (cNumberNonGaiaPlayers >= 5)
-		rmCreateTrigger("AT1_STOP_Station5_Plr"+k);
-	if (cNumberNonGaiaPlayers >= 6)
-		rmCreateTrigger("AT1_STOP_Station6_Plr"+k);
-	if (cNumberNonGaiaPlayers >= 7)
-	rmCreateTrigger("AT1_STOP_Station7_Plr"+k);
-	if (cNumberNonGaiaPlayers == 8)
-		rmCreateTrigger("AT1_STOP_Station8_Plr"+k);
-
 	rmCreateTrigger("AT1_Break_Station1_Plr"+k);
 	rmCreateTrigger("AT1_Break_Station2_Plr"+k);
-    if (cNumberNonGaiaPlayers >= 3)
-	    rmCreateTrigger("AT1_Break_Station3_Plr"+k);
-    if (cNumberNonGaiaPlayers >= 4)
-	    rmCreateTrigger("AT1_Break_Station4_Plr"+k);
-	if (cNumberNonGaiaPlayers >= 5)
+    if (noStations >= 3){
+	    rmCreateTrigger("AT1_Send_Station3_Plr"+k);
+		rmCreateTrigger("AT1_STOP_Station3_Plr"+k);
+		rmCreateTrigger("AT1_Break_Station3_Plr"+k);
+	}
+    if (noStations >= 4){
+	    rmCreateTrigger("AT1_Send_Station4_Plr"+k);
+		rmCreateTrigger("AT1_STOP_Station4_Plr"+k);
+		rmCreateTrigger("AT1_Break_Station4_Plr"+k);
+	}
+	if (noStations >= 5){
+		rmCreateTrigger("AT1_Send_Station5_Plr"+k);
+		rmCreateTrigger("AT1_STOP_Station5_Plr"+k);
 		rmCreateTrigger("AT1_Break_Station5_Plr"+k);
-	if (cNumberNonGaiaPlayers >= 6)
+	}
+	if (noStations >= 6){
+		rmCreateTrigger("AT1_Send_Station6_Plr"+k);
+		rmCreateTrigger("AT1_STOP_Station6_Plr"+k);
 		rmCreateTrigger("AT1_Break_Station6_Plr"+k);
-	if (cNumberNonGaiaPlayers >= 7)
-	rmCreateTrigger("AT1_Break_Station7_Plr"+k);
-	if (cNumberNonGaiaPlayers == 8)
+	}
+	if (noStations >= 7){
+		rmCreateTrigger("AT1_Send_Station7_Plr"+k);
+		rmCreateTrigger("AT1_STOP_Station7_Plr"+k);
+		rmCreateTrigger("AT1_Break_Station7_Plr"+k);
+	}
+	if (noStations >= 8){
+		rmCreateTrigger("AT1_Send_Station8_Plr"+k);
+		rmCreateTrigger("AT1_STOP_Station8_Plr"+k);
 		rmCreateTrigger("AT1_Break_Station8_Plr"+k);
+	}
+	if (noStations >= 9){
+		rmCreateTrigger("AT1_Send_Station9_Plr"+k);
+		rmCreateTrigger("AT1_STOP_Station9_Plr"+k);
+		rmCreateTrigger("AT1_Break_Station9_Plr"+k);
+	}
 
 	rmCreateTrigger("AT_Destroy_Plr"+k);
 	rmCreateTrigger("AT_Revert_Plr"+k);
@@ -2050,21 +2514,41 @@ void main(void)
 	rmSetTriggerConditionParamInt("Dist",40);
 	rmSetTriggerConditionParam("Op",">=");
 	rmSetTriggerConditionParamInt("Count",1);
-	if (cNumberNonGaiaPlayers <=2){
-		rmAddTriggerEffect("Trade Route Toggle State");
-		rmSetTriggerEffectParamInt("TradeRoute",3);
-		rmSetTriggerEffectParam("ShowUnit","false");
-		rmAddTriggerEffect("Trade Route Toggle State");
-		rmSetTriggerEffectParamInt("TradeRoute",4);
-		rmSetTriggerEffectParam("ShowUnit","true");
+	if (rmGetIsKOTH()){
+		if (cNumberNonGaiaPlayers <=2){
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",1);
+			rmSetTriggerEffectParam("ShowUnit","false");
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",3);
+			rmSetTriggerEffectParam("ShowUnit","true");
+		}
+		else {
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",1);
+			rmSetTriggerEffectParam("ShowUnit","false");
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",2);
+			rmSetTriggerEffectParam("ShowUnit","true");
+		}
 	}
 	else {
-		rmAddTriggerEffect("Trade Route Toggle State");
-		rmSetTriggerEffectParamInt("TradeRoute",1);
-		rmSetTriggerEffectParam("ShowUnit","false");
-		rmAddTriggerEffect("Trade Route Toggle State");
-		rmSetTriggerEffectParamInt("TradeRoute",2);
-		rmSetTriggerEffectParam("ShowUnit","true");
+		if (cNumberNonGaiaPlayers <=2){
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",3);
+			rmSetTriggerEffectParam("ShowUnit","false");
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",4);
+			rmSetTriggerEffectParam("ShowUnit","true");
+		}
+		else {
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",1);
+			rmSetTriggerEffectParam("ShowUnit","false");
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",2);
+			rmSetTriggerEffectParam("ShowUnit","true");
+		}
 	}
 	rmAddTriggerEffect("Quest Var Set");
 	rmSetTriggerEffectParam("QVName","ArmoredTrain");
@@ -2147,7 +2631,7 @@ void main(void)
 	rmSetTriggerLoop(false);
 
 
-	if (cNumberNonGaiaPlayers >=3){
+	if (noStations >= 3){
 
         // Station 3
 
@@ -2159,22 +2643,42 @@ void main(void)
         rmSetTriggerConditionParamInt("Dist",40);
         rmSetTriggerConditionParam("Op",">=");
         rmSetTriggerConditionParamInt("Count",1);
-        if (cNumberNonGaiaPlayers <=5){
-            rmAddTriggerEffect("Trade Route Toggle State");
-            rmSetTriggerEffectParamInt("TradeRoute",3);
-            rmSetTriggerEffectParam("ShowUnit","false");
-            rmAddTriggerEffect("Trade Route Toggle State");
-            rmSetTriggerEffectParamInt("TradeRoute",4);
-            rmSetTriggerEffectParam("ShowUnit","true");
-        }
-        else {
-            rmAddTriggerEffect("Trade Route Toggle State");
-            rmSetTriggerEffectParamInt("TradeRoute",1);
-            rmSetTriggerEffectParam("ShowUnit","false");
-            rmAddTriggerEffect("Trade Route Toggle State");
-            rmSetTriggerEffectParamInt("TradeRoute",2);
-            rmSetTriggerEffectParam("ShowUnit","true");
-        }
+		if (rmGetIsKOTH()){
+			if (cNumberNonGaiaPlayers <=5){
+				rmAddTriggerEffect("Trade Route Toggle State");
+				rmSetTriggerEffectParamInt("TradeRoute",1);
+				rmSetTriggerEffectParam("ShowUnit","false");
+				rmAddTriggerEffect("Trade Route Toggle State");
+				rmSetTriggerEffectParamInt("TradeRoute",3);
+				rmSetTriggerEffectParam("ShowUnit","true");
+			}
+			else {
+				rmAddTriggerEffect("Trade Route Toggle State");
+				rmSetTriggerEffectParamInt("TradeRoute",1);
+				rmSetTriggerEffectParam("ShowUnit","false");
+				rmAddTriggerEffect("Trade Route Toggle State");
+				rmSetTriggerEffectParamInt("TradeRoute",2);
+				rmSetTriggerEffectParam("ShowUnit","true");
+			}
+		}
+		else {
+			if (cNumberNonGaiaPlayers <=5){
+				rmAddTriggerEffect("Trade Route Toggle State");
+				rmSetTriggerEffectParamInt("TradeRoute",3);
+				rmSetTriggerEffectParam("ShowUnit","false");
+				rmAddTriggerEffect("Trade Route Toggle State");
+				rmSetTriggerEffectParamInt("TradeRoute",4);
+				rmSetTriggerEffectParam("ShowUnit","true");
+			}
+			else {
+				rmAddTriggerEffect("Trade Route Toggle State");
+				rmSetTriggerEffectParamInt("TradeRoute",1);
+				rmSetTriggerEffectParam("ShowUnit","false");
+				rmAddTriggerEffect("Trade Route Toggle State");
+				rmSetTriggerEffectParamInt("TradeRoute",2);
+				rmSetTriggerEffectParam("ShowUnit","true");
+			}
+		}
         rmAddTriggerEffect("Quest Var Set");
         rmSetTriggerEffectParam("QVName","ArmoredTrain");
         rmSetTriggerEffectParamInt("Value",1);
@@ -2258,7 +2762,7 @@ void main(void)
 
     }
 
-	if (cNumberNonGaiaPlayers >=4){
+	if (noStations >= 4){
 
         // Station 4
 
@@ -2270,22 +2774,42 @@ void main(void)
         rmSetTriggerConditionParamInt("Dist",40);
         rmSetTriggerConditionParam("Op",">=");
         rmSetTriggerConditionParamInt("Count",1);
-        if (cNumberNonGaiaPlayers <=6){
-            rmAddTriggerEffect("Trade Route Toggle State");
-            rmSetTriggerEffectParamInt("TradeRoute",3);
-            rmSetTriggerEffectParam("ShowUnit","false");
-            rmAddTriggerEffect("Trade Route Toggle State");
-            rmSetTriggerEffectParamInt("TradeRoute",4);
-            rmSetTriggerEffectParam("ShowUnit","true");
-        }
-        else {
-            rmAddTriggerEffect("Trade Route Toggle State");
-            rmSetTriggerEffectParamInt("TradeRoute",1);
-            rmSetTriggerEffectParam("ShowUnit","false");
-            rmAddTriggerEffect("Trade Route Toggle State");
-            rmSetTriggerEffectParamInt("TradeRoute",2);
-            rmSetTriggerEffectParam("ShowUnit","true");
-        }
+		if (rmGetIsKOTH()){
+			if (cNumberNonGaiaPlayers <=6){
+				rmAddTriggerEffect("Trade Route Toggle State");
+				rmSetTriggerEffectParamInt("TradeRoute",1);
+				rmSetTriggerEffectParam("ShowUnit","false");
+				rmAddTriggerEffect("Trade Route Toggle State");
+				rmSetTriggerEffectParamInt("TradeRoute",3);
+				rmSetTriggerEffectParam("ShowUnit","true");
+			}
+			else {
+				rmAddTriggerEffect("Trade Route Toggle State");
+				rmSetTriggerEffectParamInt("TradeRoute",1);
+				rmSetTriggerEffectParam("ShowUnit","false");
+				rmAddTriggerEffect("Trade Route Toggle State");
+				rmSetTriggerEffectParamInt("TradeRoute",2);
+				rmSetTriggerEffectParam("ShowUnit","true");
+			}
+		}
+		else {
+			if (cNumberNonGaiaPlayers <=6){
+				rmAddTriggerEffect("Trade Route Toggle State");
+				rmSetTriggerEffectParamInt("TradeRoute",3);
+				rmSetTriggerEffectParam("ShowUnit","false");
+				rmAddTriggerEffect("Trade Route Toggle State");
+				rmSetTriggerEffectParamInt("TradeRoute",4);
+				rmSetTriggerEffectParam("ShowUnit","true");
+			}
+			else {
+				rmAddTriggerEffect("Trade Route Toggle State");
+				rmSetTriggerEffectParamInt("TradeRoute",1);
+				rmSetTriggerEffectParam("ShowUnit","false");
+				rmAddTriggerEffect("Trade Route Toggle State");
+				rmSetTriggerEffectParamInt("TradeRoute",2);
+				rmSetTriggerEffectParam("ShowUnit","true");
+			}
+		}
         rmAddTriggerEffect("Quest Var Set");
         rmSetTriggerEffectParam("QVName","ArmoredTrain");
         rmSetTriggerEffectParamInt("Value",1);
@@ -2367,7 +2891,7 @@ void main(void)
         rmSetTriggerLoop(false);
     }
 	
-	if (cNumberNonGaiaPlayers >= 5){
+	if (noStations >= 5){
 		
 		// Station 5
 
@@ -2379,14 +2903,22 @@ void main(void)
 		rmSetTriggerConditionParamInt("Dist",40);
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
-		
-        rmAddTriggerEffect("Trade Route Toggle State");
-        rmSetTriggerEffectParamInt("TradeRoute",3);
-        rmSetTriggerEffectParam("ShowUnit","false");
-        rmAddTriggerEffect("Trade Route Toggle State");
-        rmSetTriggerEffectParamInt("TradeRoute",4);
-        rmSetTriggerEffectParam("ShowUnit","true");
-
+		if (rmGetIsKOTH()){
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",1);
+			rmSetTriggerEffectParam("ShowUnit","false");
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",3);
+			rmSetTriggerEffectParam("ShowUnit","true");
+		}
+		else {	
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",3);
+			rmSetTriggerEffectParam("ShowUnit","false");
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",4);
+			rmSetTriggerEffectParam("ShowUnit","true");
+		}
 		rmAddTriggerEffect("Quest Var Set");
 		rmSetTriggerEffectParam("QVName","ArmoredTrain");
 		rmSetTriggerEffectParamInt("Value",1);
@@ -2468,7 +3000,7 @@ void main(void)
 		rmSetTriggerLoop(false);
 	}
 
-	if (cNumberNonGaiaPlayers >=6){
+	if (noStations >= 6){
 
 		// Station 6
 
@@ -2481,12 +3013,22 @@ void main(void)
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
 
-        rmAddTriggerEffect("Trade Route Toggle State");
-        rmSetTriggerEffectParamInt("TradeRoute",3);
-        rmSetTriggerEffectParam("ShowUnit","false");
-        rmAddTriggerEffect("Trade Route Toggle State");
-        rmSetTriggerEffectParamInt("TradeRoute",4);
-        rmSetTriggerEffectParam("ShowUnit","true");
+        if (rmGetIsKOTH()){
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",1);
+			rmSetTriggerEffectParam("ShowUnit","false");
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",3);
+			rmSetTriggerEffectParam("ShowUnit","true");
+		}
+		else {	
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",3);
+			rmSetTriggerEffectParam("ShowUnit","false");
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",4);
+			rmSetTriggerEffectParam("ShowUnit","true");
+		}
 
 		rmAddTriggerEffect("Quest Var Set");
 		rmSetTriggerEffectParam("QVName","ArmoredTrain");
@@ -2569,7 +3111,7 @@ void main(void)
 		rmSetTriggerLoop(false);
 	}
 
-	if (cNumberNonGaiaPlayers >=7){
+	if (noStations >= 7){
 		// Station 7
 
 		rmSwitchToTrigger(rmTriggerID("AT1_Send_Station7_Plr"+k));
@@ -2581,12 +3123,22 @@ void main(void)
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
 
-        rmAddTriggerEffect("Trade Route Toggle State");
-        rmSetTriggerEffectParamInt("TradeRoute",3);
-        rmSetTriggerEffectParam("ShowUnit","false");
-        rmAddTriggerEffect("Trade Route Toggle State");
-        rmSetTriggerEffectParamInt("TradeRoute",4);
-        rmSetTriggerEffectParam("ShowUnit","true");
+        if (rmGetIsKOTH()){
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",1);
+			rmSetTriggerEffectParam("ShowUnit","false");
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",3);
+			rmSetTriggerEffectParam("ShowUnit","true");
+		}
+		else {	
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",3);
+			rmSetTriggerEffectParam("ShowUnit","false");
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",4);
+			rmSetTriggerEffectParam("ShowUnit","true");
+		}
 
 		rmAddTriggerEffect("Quest Var Set");
 		rmSetTriggerEffectParam("QVName","ArmoredTrain");
@@ -2669,7 +3221,7 @@ void main(void)
 		rmSetTriggerLoop(false);
 	}
 
-	if (cNumberNonGaiaPlayers ==8){
+	if (noStations >= 8){
 		// Station 8
 
 		rmSwitchToTrigger(rmTriggerID("AT1_Send_Station8_Plr"+k));
@@ -2680,12 +3232,24 @@ void main(void)
 		rmSetTriggerConditionParamInt("Dist",40);
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
-		rmAddTriggerEffect("Trade Route Toggle State");
-		rmSetTriggerEffectParamInt("TradeRoute",3);
-		rmSetTriggerEffectParam("ShowUnit","false");
-		rmAddTriggerEffect("Trade Route Toggle State");
-		rmSetTriggerEffectParamInt("TradeRoute",4);
-		rmSetTriggerEffectParam("ShowUnit","true");
+
+		if (rmGetIsKOTH()){
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",1);
+			rmSetTriggerEffectParam("ShowUnit","false");
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",3);
+			rmSetTriggerEffectParam("ShowUnit","true");
+		}
+		else {	
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",3);
+			rmSetTriggerEffectParam("ShowUnit","false");
+			rmAddTriggerEffect("Trade Route Toggle State");
+			rmSetTriggerEffectParamInt("TradeRoute",4);
+			rmSetTriggerEffectParam("ShowUnit","true");
+		}
+
 		rmAddTriggerEffect("Quest Var Set");
 		rmSetTriggerEffectParam("QVName","ArmoredTrain");
 		rmSetTriggerEffectParamInt("Value",1);
@@ -2744,6 +3308,105 @@ void main(void)
 		
 		rmAddTriggerEffect("ZP Armored Train Stop");
 		rmSetTriggerEffectParam("SrcObject",unitID8);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParamInt("Dist",100);
+
+		rmAddTriggerEffect("Counter:Add Timer");
+		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
+		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
+		rmSetTriggerEffectParamInt("Stop",0);
+		rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainBack");
+		rmSetTriggerEffectParamInt("Status",1);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_Revert_Plr"+k));
+
+		rmAddTriggerEffect("FakeCounter Clear");
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
+	if (noStations >= 9){
+		
+		// Station 9
+
+		rmSwitchToTrigger(rmTriggerID("AT1_Send_Station9_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID9);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpInvisibleProjectileControler");
+		rmSetTriggerConditionParamInt("Dist",40);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",1);
+		rmSetTriggerEffectParam("ShowUnit","false");
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",3);
+		rmSetTriggerEffectParam("ShowUnit","true");
+		rmAddTriggerEffect("Quest Var Set");
+		rmSetTriggerEffectParam("QVName","ArmoredTrain");
+		rmSetTriggerEffectParamInt("Value",1);
+		rmAddTriggerEffect("Quest Var Set");
+		rmSetTriggerEffectParam("QVName","ArmoredTrain_Plr"+k);
+		rmSetTriggerEffectParamInt("Value",1);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Break_Station9_Plr"+k));
+
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_Cooldown_Off_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_Cooldown_On_Plr"+k));
+
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainGoldBallanceShadow");
+		rmSetTriggerEffectParamInt("Status",2);
+
+		rmAddTriggerEffect("FakeCounter Set Text");
+		rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("AT1_Break_Station9_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID9);
+		rmSetTriggerConditionParamInt("Player",0);
+		rmSetTriggerConditionParam("UnitType","zpArmoredTrainGunMove");
+		rmSetTriggerConditionParamInt("Dist",15);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",0);
+		rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainBreaks");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Play Soundset");
+		rmSetTriggerEffectParam("Soundset","Train_Breaks");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_STOP_Station9_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("AT1_STOP_Station9_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID9);
+		rmSetTriggerConditionParamInt("Player",0);
+		rmSetTriggerConditionParam("UnitType","zpArmoredTrainGunMove");
+		rmSetTriggerConditionParamInt("Dist",10);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		
+		rmAddTriggerEffect("ZP Armored Train Stop");
+		rmSetTriggerEffectParam("SrcObject",unitID9);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParamInt("Dist",100);
 
@@ -2931,6 +3594,8 @@ void main(void)
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Send_Station7_Plr"+k));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Send_Station8_Plr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Send_Station9_Plr"+k));
 	
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
@@ -2981,6 +3646,8 @@ void main(void)
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Send_Station7_Plr"+k));
 	rmAddTriggerEffect("Disable Trigger");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Send_Station8_Plr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Send_Station9_Plr"+k));
 	rmAddTriggerEffect("Disable Trigger");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_Resource_Plr"+k));
 	rmAddTriggerEffect("Disable Trigger");
@@ -3140,103 +3807,109 @@ void main(void)
 
 	// Station 3
 
-	rmCreateTrigger("Station3_on_Plr"+k);
-	rmCreateTrigger("Station3_off_Plr"+k);
+	if (noStations >= 3){
+		rmCreateTrigger("Station3_on_Plr"+k);
+		rmCreateTrigger("Station3_off_Plr"+k);
 
-	rmSwitchToTrigger(rmTriggerID("Station3_on_Plr"+k));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",unitID3);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",15);
-	rmSetTriggerConditionParam("UnitType","TradingPost");
-	rmSetTriggerConditionParam("Op",">=");
-	rmSetTriggerConditionParamFloat("Count",1);
-	
-	rmAddTriggerEffect("ZP Convert Station Grouping");
-	rmSetTriggerEffectParam("SrcObject",unitID3);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParamInt("Dist",35);
+		rmSwitchToTrigger(rmTriggerID("Station3_on_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID3);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParamInt("Dist",15);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamFloat("Count",1);
+		
+		rmAddTriggerEffect("ZP Convert Station Grouping");
+		rmSetTriggerEffectParam("SrcObject",unitID3);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParamInt("Dist",35);
 
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station3_off_Plr"+k));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station3_off_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
 
-	rmSwitchToTrigger(rmTriggerID("Station3_off_Plr"+k));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",unitID3);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",15);
-	rmSetTriggerConditionParam("UnitType","TradingPost");
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamFloat("Count",0);
-	
-	rmAddTriggerEffect("ZP Convert Station Grouping");
-	rmSetTriggerEffectParam("SrcObject",unitID3);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParamInt("Dist",35);
+		rmSwitchToTrigger(rmTriggerID("Station3_off_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID3);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParamInt("Dist",15);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParam("Op","==");
+		rmSetTriggerConditionParamFloat("Count",0);
+		
+		rmAddTriggerEffect("ZP Convert Station Grouping");
+		rmSetTriggerEffectParam("SrcObject",unitID3);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParamInt("Dist",35);
 
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station3_on_Plr"+k));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(false);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station3_on_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		}
 
-	// Station 4
+	if (noStations >= 4){
 
-	rmCreateTrigger("Station4_on_Plr"+k);
-	rmCreateTrigger("Station4_off_Plr"+k);
+		// Station 4
 
-	rmSwitchToTrigger(rmTriggerID("Station4_on_Plr"+k));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",unitID4);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",15);
-	rmSetTriggerConditionParam("UnitType","TradingPost");
-	rmSetTriggerConditionParam("Op",">=");
-	rmSetTriggerConditionParamFloat("Count",1);
-	
-	rmAddTriggerEffect("ZP Convert Station Grouping");
-	rmSetTriggerEffectParam("SrcObject",unitID4);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParamInt("Dist",35);
+		rmCreateTrigger("Station4_on_Plr"+k);
+		rmCreateTrigger("Station4_off_Plr"+k);
 
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station4_off_Plr"+k));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
+		rmSwitchToTrigger(rmTriggerID("Station4_on_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID4);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParamInt("Dist",15);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamFloat("Count",1);
+		
+		rmAddTriggerEffect("ZP Convert Station Grouping");
+		rmSetTriggerEffectParam("SrcObject",unitID4);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParamInt("Dist",35);
 
-	rmSwitchToTrigger(rmTriggerID("Station4_off_Plr"+k));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",unitID4);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",15);
-	rmSetTriggerConditionParam("UnitType","TradingPost");
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamFloat("Count",0);
-	
-	rmAddTriggerEffect("ZP Convert Station Grouping");
-	rmSetTriggerEffectParam("SrcObject",unitID4);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station4_off_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
 
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station4_on_Plr"+k));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(false);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
+		rmSwitchToTrigger(rmTriggerID("Station4_off_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID4);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParamInt("Dist",15);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParam("Op","==");
+		rmSetTriggerConditionParamFloat("Count",0);
+		
+		rmAddTriggerEffect("ZP Convert Station Grouping");
+		rmSetTriggerEffectParam("SrcObject",unitID4);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParamInt("Dist",35);
 
-	if (cNumberNonGaiaPlayers >= 3){
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station4_on_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		}
+
+	if (noStations >= 5){
 
 		// Station 5
 
@@ -3288,7 +3961,7 @@ void main(void)
 		rmSetTriggerLoop(false);
 		}
 
-		if (cNumberNonGaiaPlayers == 4 || cNumberNonGaiaPlayers >=6){
+	if (noStations >= 6){
 
 		// Station 6
 
@@ -3340,7 +4013,7 @@ void main(void)
 		rmSetTriggerLoop(false);
 		}
 
-		if (cNumberNonGaiaPlayers == 4 || cNumberNonGaiaPlayers >=7){
+	if (noStations >= 7){
 
 		// Station 7
 
@@ -3392,7 +4065,7 @@ void main(void)
 		rmSetTriggerLoop(false);
 		}
 
-		if (cNumberNonGaiaPlayers == 4 || cNumberNonGaiaPlayers ==8){
+	if (noStations >= 8){
 
 		// Station 8
 
@@ -3444,6 +4117,58 @@ void main(void)
 		rmSetTriggerLoop(false);
 		}
 
+	if (noStations >= 9){
+
+		// Station 9
+
+		rmCreateTrigger("Station9_on_Plr"+k);
+		rmCreateTrigger("Station9_off_Plr"+k);
+
+		rmSwitchToTrigger(rmTriggerID("Station9_on_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID9);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParamInt("Dist",15);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamFloat("Count",1);
+
+		rmAddTriggerEffect("ZP Convert Station Grouping");
+		rmSetTriggerEffectParam("SrcObject",unitID9);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParamInt("Dist",35);
+
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station9_off_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Station9_off_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",unitID9);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParamInt("Dist",15);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParam("Op","==");
+		rmSetTriggerConditionParamFloat("Count",0);
+
+		rmAddTriggerEffect("ZP Convert Station Grouping");
+		rmSetTriggerEffectParam("SrcObject",unitID9);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParamInt("Dist",35);
+
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station9_on_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		}
 	}
 
 
@@ -3688,12 +4413,22 @@ void main(void)
 	rmSetTriggerEffectParamInt("PlayerID",0);
 	rmSetTriggerEffectParam("TechID","cTechzpUpdatePort1"); //operator
 	rmSetTriggerEffectParamInt("Status",2);
-	rmAddTriggerEffect("Trade Route Toggle State");
-	rmSetTriggerEffectParamInt("TradeRoute",2);
-	rmSetTriggerEffectParam("ShowUnit","false");
-	rmAddTriggerEffect("Trade Route Toggle State");
-	rmSetTriggerEffectParamInt("TradeRoute",4);
-	rmSetTriggerEffectParam("ShowUnit","false");
+	if (rmGetIsKOTH()){
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",2);
+		rmSetTriggerEffectParam("ShowUnit","false");
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",3);
+		rmSetTriggerEffectParam("ShowUnit","false");
+	}
+	else {
+			rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",2);
+		rmSetTriggerEffectParam("ShowUnit","false");
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",4);
+		rmSetTriggerEffectParam("ShowUnit","false");
+	}
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -3709,12 +4444,22 @@ void main(void)
 	rmSetTriggerEffectParamInt("PlayerID",0);
 	rmSetTriggerEffectParam("TechID","cTechzpUpdatePort2"); //operator
 	rmSetTriggerEffectParamInt("Status",2);
-	rmAddTriggerEffect("Trade Route Toggle State");
-	rmSetTriggerEffectParamInt("TradeRoute",2);
-	rmSetTriggerEffectParam("ShowUnit","false");
-	rmAddTriggerEffect("Trade Route Toggle State");
-	rmSetTriggerEffectParamInt("TradeRoute",4);
-	rmSetTriggerEffectParam("ShowUnit","false");
+	if (rmGetIsKOTH()){
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",2);
+		rmSetTriggerEffectParam("ShowUnit","false");
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",3);
+		rmSetTriggerEffectParam("ShowUnit","false");
+	}
+	else {
+			rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",2);
+		rmSetTriggerEffectParam("ShowUnit","false");
+		rmAddTriggerEffect("Trade Route Toggle State");
+		rmSetTriggerEffectParamInt("TradeRoute",4);
+		rmSetTriggerEffectParam("ShowUnit","false");
+	}
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -3809,6 +4554,7 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
 
 	// Testing
 
