@@ -8120,8 +8120,8 @@
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>water</movementtype>
     <animfile>units\trade\naval\trade_steamer.xml</animfile>
-    <icon>resources\art\units\naval\steamer\steamer_icon.png</icon>
-    <portraiticon>resources\art\units\naval\steamer\steamer_portrait.png</portraiticon>
+    <icon>resources\art\units\naval\trade\trade_steamer_icon.png</icon>
+    <portraiticon>resources\art\units\naval\trade\trade_steamer_portrait.png</portraiticon>
     <rollovertextid>29374</rollovertextid>
     <shortrollovertextid>29373</shortrollovertextid>
     <initialhitpoints>240.0000</initialhitpoints>
