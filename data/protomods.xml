@@ -8120,8 +8120,8 @@
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>water</movementtype>
     <animfile>units\trade\naval\trade_steamer.xml</animfile>
-    <icon>resources\art\units\naval\steamer\steamer_icon.png</icon>
-    <portraiticon>resources\art\units\naval\steamer\steamer_portrait.png</portraiticon>
+    <icon>resources\art\units\naval\trade\trade_steamer_icon.png</icon>
+    <portraiticon>resources\art\units\naval\trade\trade_steamer_portrait.png</portraiticon>
     <rollovertextid>29374</rollovertextid>
     <shortrollovertextid>29373</shortrollovertextid>
     <initialhitpoints>240.0000</initialhitpoints>
@@ -23089,6 +23089,78 @@
       <damagebonus type="AbstractCavalry">0.600000</damagebonus>
       <damagebonus type="AbstractLightInfantry">0.600000</damagebonus>
     </protoaction>
+  </unit>
+  <unit id="20242" name="zpRuinWallSmall">
+    <dbid>20242</dbid>
+    <displaynameid>29909</displaynameid>
+    <editornameid>301167</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>terrain\props\ruins\ruin_wall_small.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DestroyUnderBuilding</flag>
+  </unit>
+  <unit id="20243" name="zpRuinWallMedium">
+    <dbid>20243</dbid>
+    <displaynameid>29911</displaynameid>
+    <editornameid>301168</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>terrain\props\ruins\ruin_wall_medium.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DestroyUnderBuilding</flag>
+  </unit>
+  <unit id="20244" name="zpRuinWallLarge">
+    <dbid>20244</dbid>
+    <displaynameid>29913</displaynameid>
+    <editornameid>301169</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>terrain\props\ruins\ruin_wall_large.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DestroyUnderBuilding</flag>
   </unit>
 
 

@@ -165,7 +165,11 @@ minInterval 25
       xsEnableRule("orthodoxTechMonitor");
       xsEnableRule("nativeWagonMonitor");
    }
-
+   if (getUnit(cUnitTypezpNativeHouseWesternVillage) > 0)
+   {
+      xsEnableRule("zpWesternTechMonitor");
+      xsEnableRule("nativeWagonMonitor");
+   }
    if (cMyCiv == cCivDEInca)
    {
         xsEnableRule("priestessAbilityMonitor");
@@ -1715,6 +1719,14 @@ minInterval 15
          {
             buildingType = cUnitTypezpMountainCitadel;
          }
+         case cUnitTypezpSheriffWagon:
+         {
+            buildingType = cUnitTypezpSheriffOffice;
+         }
+         case cUnitTypezpGunStoreWagon:
+         {
+            buildingType = cUnitTypezpGunStore;
+         }
       }
 
       if (buildingType < 0) // Didn't find a building so go to the next iteration.
@@ -1807,7 +1819,7 @@ mininterval 60
 //==============================================================================
 rule zpScientistTechMonitor
 inactive
-mininterval 1
+mininterval 60
 {
    if (kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0)
       {
@@ -1847,6 +1859,14 @@ mininterval 1
 
       canDisableSelf &= researchSimpleTechByCondition(cTechzpMustardGas,
       []() -> bool { return ((kbTechGetStatus(cTechzpConsulateScientistkhora) == cTechStatusActive) && ( kbGetAge() >= cAge4 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpArmoredTrainTech,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateScientistGortz) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpArmoredTrainImprove,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateScientistGortz) == cTechStatusActive) && ( kbGetAge() >= cAge4 )); },
       cUnitTypeTradingPost);
 
   if (canDisableSelf == true)
@@ -2534,6 +2554,50 @@ minInterval 30
    {
       xsDisableSelf();
    }
+}
+
+//==============================================================================
+// ZP Western Tech Monitor
+//==============================================================================
+rule zpWesternTechMonitor
+inactive
+mininterval 60
+{
+
+   if (kbUnitCount(cMyID, cUnitTypezpSPCSocketWesternVillage, cUnitStateAny) == 0)
+      {
+      return; // Player has no Western socket.
+      }
+
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpSendDocHolliday,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWesternWyatEarp) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatSherriffOffice,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWesternWyatEarp) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpSendPinkertonsB,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWesternPinkertons) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpSendStageCoach,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWesternPinkertons) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatApocalypseHorsemen,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWesternJesseJames) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatGunStore,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWesternJesseJames) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
 }
 
 //==============================================================================

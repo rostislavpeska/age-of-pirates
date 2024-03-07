@@ -137,9 +137,10 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	// int fishVsFishID=rmCreateTypeDistanceConstraint("fish v fish", "fish", 18.0);
 	
 	int forestObjConstraint=rmCreateTypeDistanceConstraint("forest obj", "all", 6.0);
-	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 25.0);
+	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 35.0);
 	int avoidResource=rmCreateTypeDistanceConstraint("resource avoid resource", "resource", 20.0);
 	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "MineGold", 20.0);
+	int avoidBerries=rmCreateTypeDistanceConstraint("avoid berries", "berrybush", 20.0);
 	int shortAvoidCoin=rmCreateTypeDistanceConstraint("short avoid coin", "gold", 10.0);
 	int avoidStartResource=rmCreateTypeDistanceConstraint("start resource no overlap", "resource", 10.0);
 
@@ -196,6 +197,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 
 	// Native Constraints
 	int avoidSufi=rmCreateTypeDistanceConstraint("stay away from Sufi", "SocketComanche", 70.0);
+	int avoidSufiShort=rmCreateTypeDistanceConstraint("stay away from Sufi short", "SocketComanche", 30.0);
 	int avoidMaltese=rmCreateTypeDistanceConstraint("stay away from Maltese", "zpSocketScientists", 25.0);
 	int avoidJewish=rmCreateTypeDistanceConstraint("stay away from Jewish", "zpSPCSocketWesternVillage", 25.0);
 	int avoidTownCenterFar=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 40.0);
@@ -211,45 +213,14 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
    int avoidKOTH=rmCreateTypeDistanceConstraint("avoid koth filler", "ypKingsHill", 12.0);
 
    // Text
-	rmSetStatusText("",0.10);
-
-   // -------------Define objects
-   // These objects are all defined so they can be placed later
+	rmSetStatusText("",0.01);
 
 
-	int bisonID=rmCreateObjectDef("bison herd center");
-	rmAddObjectDefItem(bisonID, "bison", rmRandInt(10,12), 6.0);
-	rmSetObjectDefCreateHerd(bisonID, true);
-	rmSetObjectDefMinDistance(bisonID, 0.0);
-	rmSetObjectDefMaxDistance(bisonID, 5.0);
-	// rmAddObjectDefConstraint(bisonID, playerConstraint);
-	// rmAddObjectDefConstraint(bisonID, bisonEdgeConstraint);
-	// rmAddObjectDefConstraint(bisonID, avoidResource);
-	// rmAddObjectDefConstraint(bisonID, avoidImpassableLand);
-	// rmAddObjectDefConstraint(bisonID, Northward);
+   	float playerFraction=rmAreaTilesToFraction(850);
 
+	// ************************ PLACE PLACE TRADE ROUTES  *******************************
 
-	// wood resources
-	int randomTreeID=rmCreateObjectDef("random tree");
-	rmAddObjectDefItem(randomTreeID, "TreeGreatLakes", 1, 0.0);
-	rmSetObjectDefMinDistance(randomTreeID, 0.0);
-	rmSetObjectDefMaxDistance(randomTreeID, rmXFractionToMeters(0.5));
-	rmAddObjectDefConstraint(randomTreeID, avoidResource);
-	rmAddObjectDefConstraint(randomTreeID, avoidImpassableLand);
-
-	// -------------Done defining objects
-
-
-
-
-// Text
-	rmSetStatusText("",0.20);
-
-
-   float playerFraction=rmAreaTilesToFraction(850);
-
-
-    //Trade Routes
+    // Define Stoppers
 	int socketID=rmCreateObjectDef("sockets to dock Trade Posts");
 	rmAddObjectDefItem(socketID, "zpTradingPostCaptureInvisible", 1, 0.0);
 	rmSetObjectDefAllowOverlap(socketID, true);
@@ -303,6 +274,8 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	rmSetObjectDefAllowOverlap(stopperID8, true);
 	rmSetObjectDefMinDistance(stopperID8, 0.0);
 	rmSetObjectDefMaxDistance(stopperID8, 0.0); 
+
+	// Define Station Groupings
 
 	int stationGrouping01 = -1;
     //stationGrouping01 = rmCreateGrouping("station grouping 01", "Railway_Station_Big_SW"); 
@@ -360,12 +333,18 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	rmSetGroupingMinDistance(stationGrouping007, 0.0);
 	rmSetGroupingMaxDistance (stationGrouping007, 0.0);
 
+	// Even / Odd Player versions
+
 	if (cNumberNonGaiaPlayers <=2 || cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers ==6 || cNumberNonGaiaPlayers ==8)
 		evenOdd =2;
 	else
 		evenOdd =1;
 
+	// Even Players
+
 	if (evenOdd==2){
+
+		// Trade Route 1
 
 		int tradeRouteID = rmCreateTradeRoute();
 		rmSetObjectDefTradeRouteID(stopperID, tradeRouteID);
@@ -382,6 +361,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		
 		rmBuildTradeRoute(tradeRouteID, "dirt");
 		
+		// Place stations 1
 
 		vector socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.2);
 		rmPlaceObjectDefAtPoint(stopperID, 0, socketLoc1);
@@ -419,7 +399,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmPlaceGroupingAtLoc(stationGrouping02, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmZMetersToFraction(xsVectorGetZ(StopperLoc4)));
 		rmPlaceGroupingAtLoc(stationGrouping003, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmZMetersToFraction(xsVectorGetZ(StopperLoc4)));
 
-
+		// Armored Train 1
 
 		int tradeRouteID2 = rmCreateTradeRoute();
 		//rmSetObjectDefTradeRouteID(socketID, tradeRouteID2);
@@ -432,6 +412,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		
 		rmBuildTradeRoute(tradeRouteID2, "armored_train");
 
+		// Trade Route 2
 
 		int tradeRouteID3 = rmCreateTradeRoute();
 		rmSetObjectDefTradeRouteID(stopperID5, tradeRouteID3);
@@ -447,41 +428,43 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 
 		rmBuildTradeRoute(tradeRouteID3, "dirt");
 
+		// Place Stations 2
 
 		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.2);
-			rmPlaceObjectDefAtPoint(stopperID5, 0, socketLoc1);
-			vector StopperLoc5 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID5, 0));
-			rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)+2), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
-			rmPlaceGroupingAtLoc(stationGrouping002, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)+2), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
+		rmPlaceObjectDefAtPoint(stopperID5, 0, socketLoc1);
+		vector StopperLoc5 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID5, 0));
+		rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)+2), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
+		rmPlaceGroupingAtLoc(stationGrouping002, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)+2), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
 
-			if (cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers ==8){	
-				socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.39);
-				rmPlaceObjectDefAtPoint(stopperID6, 0, socketLoc1);
-				vector StopperLoc6 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID6, 0));
-				rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
-				rmPlaceGroupingAtLoc(stationGrouping006, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
+		if (cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers ==8){	
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.39);
+			rmPlaceObjectDefAtPoint(stopperID6, 0, socketLoc1);
+			vector StopperLoc6 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID6, 0));
+			rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
+			rmPlaceGroupingAtLoc(stationGrouping006, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
 
-				socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.61);
-				rmPlaceObjectDefAtPoint(stopperID7, 0, socketLoc1);
-				vector StopperLoc7 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID7, 0));
-				rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc7)), rmZMetersToFraction(xsVectorGetZ(StopperLoc7)));
-				rmPlaceGroupingAtLoc(stationGrouping006, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc7)), rmZMetersToFraction(xsVectorGetZ(StopperLoc7)));
-			}
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.61);
+			rmPlaceObjectDefAtPoint(stopperID7, 0, socketLoc1);
+			vector StopperLoc7 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID7, 0));
+			rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc7)), rmZMetersToFraction(xsVectorGetZ(StopperLoc7)));
+			rmPlaceGroupingAtLoc(stationGrouping006, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc7)), rmZMetersToFraction(xsVectorGetZ(StopperLoc7)));
+		}
 
-			if (cNumberNonGaiaPlayers ==6){	
-				socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.50);
-				rmPlaceObjectDefAtPoint(stopperID6, 0, socketLoc1);
-				StopperLoc6 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID6, 0));
-				rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
-				rmPlaceGroupingAtLoc(stationGrouping006, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
-			}
-			
-			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.8);
-			rmPlaceObjectDefAtPoint(stopperID8, 0, socketLoc1);
-			vector StopperLoc8 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID8, 0));
-			rmPlaceGroupingAtLoc(stationGrouping02, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmZMetersToFraction(xsVectorGetZ(StopperLoc8)));
-			rmPlaceGroupingAtLoc(stationGrouping004, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmZMetersToFraction(xsVectorGetZ(StopperLoc8)));
+		if (cNumberNonGaiaPlayers ==6){	
+			socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.50);
+			rmPlaceObjectDefAtPoint(stopperID6, 0, socketLoc1);
+			StopperLoc6 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID6, 0));
+			rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
+			rmPlaceGroupingAtLoc(stationGrouping006, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmZMetersToFraction(xsVectorGetZ(StopperLoc6)));
+		}
+		
+		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID3, 0.8);
+		rmPlaceObjectDefAtPoint(stopperID8, 0, socketLoc1);
+		vector StopperLoc8 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID8, 0));
+		rmPlaceGroupingAtLoc(stationGrouping02, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmZMetersToFraction(xsVectorGetZ(StopperLoc8)));
+		rmPlaceGroupingAtLoc(stationGrouping004, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmZMetersToFraction(xsVectorGetZ(StopperLoc8)));
 
+		// Armored Train 2
 
 		int tradeRouteID4 = rmCreateTradeRoute();
 		//rmSetObjectDefTradeRouteID(socketID, tradeRouteID2);
@@ -497,6 +480,8 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	}
 
 	if (evenOdd==1){
+
+		// Trade Route Odd
 
 		tradeRouteID = rmCreateTradeRoute();
 		rmSetObjectDefTradeRouteID(stopperID, tradeRouteID);
@@ -524,6 +509,8 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmAddTradeRouteWaypoint(tradeRouteID, 0.7, 1.0);
 		
 		rmBuildTradeRoute(tradeRouteID, "dirt");
+
+		// Place stations Odd
 
 		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.10);
 		rmPlaceObjectDefAtPoint(stopperID, 0, socketLoc1);
@@ -583,6 +570,8 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 			rmPlaceGroupingAtLoc(stationGrouping007, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmZMetersToFraction(xsVectorGetZ(StopperLoc5)));
 		}
 
+		// Armored Train Odd
+
 		tradeRouteID2 = rmCreateTradeRoute();
 		rmAddTradeRouteWaypoint(tradeRouteID2, 1.0, 0.7);
 		rmAddTradeRouteWaypoint(tradeRouteID2, 0.9, 0.6);
@@ -605,16 +594,21 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 
 	}
 
+	// Text
+	rmSetStatusText("",0.10);
 
-// Western Village
+	// ********************	FIX POSITION NATIVES ********************
 
-int jewish1VillageTypeID = rmRandInt(1, 5);
-int jewish2VillageTypeID = rmRandInt(1, 5);
-int jewish3VillageTypeID = rmRandInt(1, 2);
 
-int jewish1ID = rmCreateGrouping("jewish 1", "WildWest_Village_0"+jewish1VillageTypeID);
-int jewish2ID = rmCreateGrouping("jewish 2", "WildWest_Village_0"+jewish2VillageTypeID);
-int jewish3ID = rmCreateGrouping("jewish 3", "WildWest_Village_0"+jewish3VillageTypeID);
+	// Western Village
+
+	int jewish1VillageTypeID = rmRandInt(1, 5);
+	int jewish2VillageTypeID = rmRandInt(1, 5);
+	int jewish3VillageTypeID = rmRandInt(1, 2);
+
+	int jewish1ID = rmCreateGrouping("jewish 1", "WildWest_Village_0"+jewish1VillageTypeID);
+	int jewish2ID = rmCreateGrouping("jewish 2", "WildWest_Village_0"+jewish2VillageTypeID);
+	int jewish3ID = rmCreateGrouping("jewish 3", "WildWest_Village_0"+jewish3VillageTypeID);
 
 	rmSetGroupingMinDistance(jewish1ID, 0);
 	rmSetGroupingMaxDistance(jewish1ID, 0);
@@ -650,23 +644,23 @@ int jewish3ID = rmCreateGrouping("jewish 3", "WildWest_Village_0"+jewish3Village
 		rmPlaceGroupingAtLoc(jewish2ID, 0, 0.75, 0.15, 1);
 	}
 
-// Renegades
+	// Renegades
 
-int maltese1VillageTypeID = rmRandInt(5,6);
-int maltese1ID = -1;
-   maltese1ID = rmCreateGrouping("maltese 1", "Scientist_Lab0"+maltese1VillageTypeID);
-   rmSetGroupingMinDistance(maltese1ID, 0);
-   rmSetGroupingMaxDistance(maltese1ID, 0);
+	int maltese1VillageTypeID = rmRandInt(5,6);
+	int maltese1ID = -1;
+	maltese1ID = rmCreateGrouping("maltese 1", "Scientist_Lab0"+maltese1VillageTypeID);
+	rmSetGroupingMinDistance(maltese1ID, 0);
+	rmSetGroupingMaxDistance(maltese1ID, 0);
   
 
-int maltese2VillageTypeID = 11-maltese1VillageTypeID;
-int maltese2ID = -1;
-   maltese2ID = rmCreateGrouping("maltese 2", "Scientist_Lab0"+maltese2VillageTypeID);
-   rmSetGroupingMinDistance(maltese2ID, 0);
-   rmSetGroupingMaxDistance(maltese2ID, 0);
+	int maltese2VillageTypeID = 11-maltese1VillageTypeID;
+	int maltese2ID = -1;
+	maltese2ID = rmCreateGrouping("maltese 2", "Scientist_Lab0"+maltese2VillageTypeID);
+	rmSetGroupingMinDistance(maltese2ID, 0);
+	rmSetGroupingMaxDistance(maltese2ID, 0);
 
 
-   if(cNumberNonGaiaPlayers <= 2){	
+   	if(cNumberNonGaiaPlayers <= 2){	
 		rmPlaceGroupingAtLoc(maltese1ID, 0, 0.21, 0.5, 1);
 	}
 	if(cNumberNonGaiaPlayers == 3){
@@ -693,10 +687,13 @@ int maltese2ID = -1;
 		rmPlaceGroupingAtLoc(maltese2ID, 0, 0.85, 0.25, 1);
 	}
 
+	// Text
+	rmSetStatusText("",0.20);
+
 
 	// ************************ PLACE TERRAIN *******************************
 
-   // Dead Sea Valley
+   	// Dead Sea Valley
     int DeadSeaValleyID = rmCreateArea ("dead sea valley");
     rmSetAreaSize(DeadSeaValleyID, 0.3, 0.3);
     rmSetAreaLocation(DeadSeaValleyID, 0.5, 0.5);
@@ -739,10 +736,14 @@ int maltese2ID = -1;
 	rmAddAreaConstraint(DeadSeaValleyMixID, avoidTradeRoute);
     rmBuildArea(DeadSeaValleyMixID);
 
-	//King's "Island"
+	int valleyConstraint=rmCreateAreaConstraint("valley constraint", DeadSeaValleyID);
+	int avoidValley=rmCreateAreaDistanceConstraint("avoid valley", DeadSeaValleyID, 10); 
+
+	//King of the Hill
+	
 	if (rmGetIsKOTH() == true) {
          ypKingsHillPlacer(0.5, 0.5, 0, 0);
-		}
+	}
 
 	else {
    	int deadSeaLakeID=rmCreateArea("Dead Sea Lake Shallow");
@@ -756,121 +757,118 @@ int maltese2ID = -1;
 	rmSetAreaSmoothDistance(deadSeaLakeID, 10);
 	rmBuildArea(deadSeaLakeID); 
 	}
+
+	// Text
+	rmSetStatusText("",0.30);
     
-// Place Players
+	// Place Players
 
-float teamStartLoc = rmRandFloat(0.0, 1.0);
+	float teamStartLoc = rmRandFloat(0.0, 1.0);
 
-if (cNumberNonGaiaPlayers <= 2){
-	rmSetPlacementSection(0.995, 0.495); 
-	rmSetTeamSpacingModifier(1.0);
-	rmPlacePlayersCircular(0.395, 0.395, 0);
-	}
-
-if (cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 7){
-	rmSetPlacementSection(0.245, 0.995); 
-	rmSetTeamSpacingModifier(1.0);
-	rmPlacePlayersCircular(0.395, 0.395, 0);
-	}
-
-// 4 players in 2 teams
-if (cNumberNonGaiaPlayers == 4){
-	if(cNumberTeams == 2){
-		if (teamStartLoc > 0.5)
-		{
-		rmSetPlacementTeam(0);
-		rmSetPlacementSection(0.995, 0.245); 
-		rmPlacePlayersCircular(0.395, 0.395, 0);
-		rmSetPlacementTeam(1);
-		rmSetPlacementSection(0.495, 0.745); 
+	if (cNumberNonGaiaPlayers <= 2){
+		rmSetPlacementSection(0.995, 0.495); 
+		rmSetTeamSpacingModifier(1.0);
 		rmPlacePlayersCircular(0.395, 0.395, 0);
 		}
-		else
-		{
-		rmSetPlacementTeam(0);
-		rmSetPlacementSection(0.495, 0.745); 
-		rmPlacePlayersCircular(0.395, 0.395, 0);
-		rmSetPlacementTeam(1);
-		rmSetPlacementSection(0.995, 0.245);
-		rmPlacePlayersCircular(0.395, 0.395, 0);
-		}
-	}
-	else{
-	rmSetPlacementSection(0.995, 0.745); 
-	rmSetTeamSpacingModifier(1.0);
-	rmPlacePlayersCircular(0.395, 0.395, 0);
-	}
-}
 
-if (cNumberNonGaiaPlayers == 6){
-	if(cNumberTeams == 2){
-		if (teamStartLoc > 0.5)
-		{
-		rmSetPlacementTeam(0);
-		rmSetPlacementSection(0.995, 0.245); 
-		rmPlacePlayersCircular(0.395, 0.395, 0);
-		rmSetPlacementTeam(1);
-		rmSetPlacementSection(0.495, 0.745); 
+	if (cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 7){
+		rmSetPlacementSection(0.245, 0.995); 
+		rmSetTeamSpacingModifier(1.0);
 		rmPlacePlayersCircular(0.395, 0.395, 0);
 		}
-		else
-		{
-		rmSetPlacementTeam(0);
-		rmSetPlacementSection(0.495, 0.745); 
-		rmPlacePlayersCircular(0.395, 0.395, 0);
-		rmSetPlacementTeam(1);
-		rmSetPlacementSection(0.995, 0.245);
+
+	// 4 players in 2 teams
+	if (cNumberNonGaiaPlayers == 4){
+		if(cNumberTeams == 2){
+			if (teamStartLoc > 0.5)
+			{
+			rmSetPlacementTeam(0);
+			rmSetPlacementSection(0.995, 0.245); 
+			rmPlacePlayersCircular(0.395, 0.395, 0);
+			rmSetPlacementTeam(1);
+			rmSetPlacementSection(0.495, 0.745); 
+			rmPlacePlayersCircular(0.395, 0.395, 0);
+			}
+			else
+			{
+			rmSetPlacementTeam(0);
+			rmSetPlacementSection(0.495, 0.745); 
+			rmPlacePlayersCircular(0.395, 0.395, 0);
+			rmSetPlacementTeam(1);
+			rmSetPlacementSection(0.995, 0.245);
+			rmPlacePlayersCircular(0.395, 0.395, 0);
+			}
+		}
+		else{
+		rmSetPlacementSection(0.995, 0.745); 
+		rmSetTeamSpacingModifier(1.0);
 		rmPlacePlayersCircular(0.395, 0.395, 0);
 		}
 	}
-	else{
-	rmPlacePlayer(1, rmXMetersToFraction(xsVectorGetX(StopperLoc1)), rmXMetersToFraction(xsVectorGetZ(StopperLoc1)));
-	rmPlacePlayer(2, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmXMetersToFraction(xsVectorGetZ(StopperLoc2)));
-	rmPlacePlayer(3, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmXMetersToFraction(xsVectorGetZ(StopperLoc4)));
-	rmPlacePlayer(4, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmXMetersToFraction(xsVectorGetZ(StopperLoc5)));
-	rmPlacePlayer(5, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmXMetersToFraction(xsVectorGetZ(StopperLoc6)));
-	rmPlacePlayer(6, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmXMetersToFraction(xsVectorGetZ(StopperLoc8)));
-	}
-}
 
-if (cNumberNonGaiaPlayers == 8){
-	if(cNumberTeams == 2){
-		if (teamStartLoc > 0.5)
-		{
-		rmSetPlacementTeam(0);
-		rmSetPlacementSection(0.995, 0.245); 
-		rmPlacePlayersCircular(0.395, 0.395, 0);
-		rmSetPlacementTeam(1);
-		rmSetPlacementSection(0.495, 0.745); 
-		rmPlacePlayersCircular(0.395, 0.395, 0);
+	if (cNumberNonGaiaPlayers == 6){
+		if(cNumberTeams == 2){
+			if (teamStartLoc > 0.5)
+			{
+			rmSetPlacementTeam(0);
+			rmSetPlacementSection(0.995, 0.245); 
+			rmPlacePlayersCircular(0.395, 0.395, 0);
+			rmSetPlacementTeam(1);
+			rmSetPlacementSection(0.495, 0.745); 
+			rmPlacePlayersCircular(0.395, 0.395, 0);
+			}
+			else
+			{
+			rmSetPlacementTeam(0);
+			rmSetPlacementSection(0.495, 0.745); 
+			rmPlacePlayersCircular(0.395, 0.395, 0);
+			rmSetPlacementTeam(1);
+			rmSetPlacementSection(0.995, 0.245);
+			rmPlacePlayersCircular(0.395, 0.395, 0);
+			}
 		}
-		else
-		{
-		rmSetPlacementTeam(0);
-		rmSetPlacementSection(0.495, 0.745); 
-		rmPlacePlayersCircular(0.395, 0.395, 0);
-		rmSetPlacementTeam(1);
-		rmSetPlacementSection(0.995, 0.245);
-		rmPlacePlayersCircular(0.395, 0.395, 0);
+		else{
+		rmPlacePlayer(1, rmXMetersToFraction(xsVectorGetX(StopperLoc1)), rmXMetersToFraction(xsVectorGetZ(StopperLoc1)));
+		rmPlacePlayer(2, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmXMetersToFraction(xsVectorGetZ(StopperLoc2)));
+		rmPlacePlayer(3, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmXMetersToFraction(xsVectorGetZ(StopperLoc4)));
+		rmPlacePlayer(4, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmXMetersToFraction(xsVectorGetZ(StopperLoc5)));
+		rmPlacePlayer(5, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmXMetersToFraction(xsVectorGetZ(StopperLoc6)));
+		rmPlacePlayer(6, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmXMetersToFraction(xsVectorGetZ(StopperLoc8)));
 		}
 	}
-	else{
-	rmPlacePlayer(1, rmXMetersToFraction(xsVectorGetX(StopperLoc1)), rmXMetersToFraction(xsVectorGetZ(StopperLoc1)));
-	rmPlacePlayer(2, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmXMetersToFraction(xsVectorGetZ(StopperLoc2)));
-	rmPlacePlayer(3, rmXMetersToFraction(xsVectorGetX(StopperLoc3)), rmXMetersToFraction(xsVectorGetZ(StopperLoc3)));
-	rmPlacePlayer(4, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmXMetersToFraction(xsVectorGetZ(StopperLoc4)));
-	rmPlacePlayer(5, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmXMetersToFraction(xsVectorGetZ(StopperLoc5)));
-	rmPlacePlayer(6, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmXMetersToFraction(xsVectorGetZ(StopperLoc6)));
-	rmPlacePlayer(7, rmXMetersToFraction(xsVectorGetX(StopperLoc7)), rmXMetersToFraction(xsVectorGetZ(StopperLoc7)));
-	rmPlacePlayer(8, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmXMetersToFraction(xsVectorGetZ(StopperLoc8)));
+
+	if (cNumberNonGaiaPlayers == 8){
+		if(cNumberTeams == 2){
+			if (teamStartLoc > 0.5)
+			{
+			rmSetPlacementTeam(0);
+			rmSetPlacementSection(0.995, 0.245); 
+			rmPlacePlayersCircular(0.395, 0.395, 0);
+			rmSetPlacementTeam(1);
+			rmSetPlacementSection(0.495, 0.745); 
+			rmPlacePlayersCircular(0.395, 0.395, 0);
+			}
+			else
+			{
+			rmSetPlacementTeam(0);
+			rmSetPlacementSection(0.495, 0.745); 
+			rmPlacePlayersCircular(0.395, 0.395, 0);
+			rmSetPlacementTeam(1);
+			rmSetPlacementSection(0.995, 0.245);
+			rmPlacePlayersCircular(0.395, 0.395, 0);
+			}
+		}
+		else{
+		rmPlacePlayer(1, rmXMetersToFraction(xsVectorGetX(StopperLoc1)), rmXMetersToFraction(xsVectorGetZ(StopperLoc1)));
+		rmPlacePlayer(2, rmXMetersToFraction(xsVectorGetX(StopperLoc2)), rmXMetersToFraction(xsVectorGetZ(StopperLoc2)));
+		rmPlacePlayer(3, rmXMetersToFraction(xsVectorGetX(StopperLoc3)), rmXMetersToFraction(xsVectorGetZ(StopperLoc3)));
+		rmPlacePlayer(4, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmXMetersToFraction(xsVectorGetZ(StopperLoc4)));
+		rmPlacePlayer(5, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmXMetersToFraction(xsVectorGetZ(StopperLoc5)));
+		rmPlacePlayer(6, rmXMetersToFraction(xsVectorGetX(StopperLoc6)), rmXMetersToFraction(xsVectorGetZ(StopperLoc6)));
+		rmPlacePlayer(7, rmXMetersToFraction(xsVectorGetX(StopperLoc7)), rmXMetersToFraction(xsVectorGetZ(StopperLoc7)));
+		rmPlacePlayer(8, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmXMetersToFraction(xsVectorGetZ(StopperLoc8)));
+		}
 	}
-}
-
-
-
-	/*rmPlacePlayer(2, rmXMetersToFraction(xsVectorGetX(StopperLoc4)), rmXMetersToFraction(xsVectorGetZ(StopperLoc4)));
-	rmPlacePlayer(3, rmXMetersToFraction(xsVectorGetX(StopperLoc5)), rmXMetersToFraction(xsVectorGetZ(StopperLoc5)));
-	rmPlacePlayer(4, rmXMetersToFraction(xsVectorGetX(StopperLoc8)), rmXMetersToFraction(xsVectorGetZ(StopperLoc8)));*/
 
 
 	int TCID = rmCreateObjectDef("player TC");
@@ -900,6 +898,8 @@ if (cNumberNonGaiaPlayers == 8){
 	rmAddObjectDefConstraint(playerGoldID, avoidTradeRouteMin);
 	rmAddObjectDefConstraint(playerGoldID, avoidImpassableLand);
 	rmAddObjectDefConstraint(playerGoldID, longPlayerEdgeConstraint);
+
+	// Starting Trees
 
 	int playerTreeID = rmCreateObjectDef("player trees");
 	rmAddObjectDefItem(playerTreeID, "TreeSonora", 15, 8.0);
@@ -943,228 +943,254 @@ if (cNumberNonGaiaPlayers == 8){
 	rmAddObjectDefConstraint(playerNuggetID, avoidTrainStationB);
 	rmAddObjectDefConstraint(playerNuggetID, longPlayerEdgeConstraint);
 
-
+	// Fake grouping - prevent autogrouping Bug
 	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
 	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
 	rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.5);
 
+	// Place objects
+	for(i=1; <numPlayer)
+		{
+		rmPlaceObjectDefAtLoc(TCID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+		}
 
-for(i=1; <numPlayer)
-	{
-	rmPlaceObjectDefAtLoc(TCID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+	for(i=1; <numPlayer)
+		{
+		vector TCLoc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(TCID, i));
+		
+		rmPlaceObjectDefAtLoc(playerTreeID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+		rmPlaceObjectDefAtLoc(playerHerdID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+		rmPlaceObjectDefAtLoc(playerGoldID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+		rmPlaceObjectDefAtLoc(startingUnits, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+		rmPlaceObjectDefAtLoc(playerNuggetID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 	}
 
-for(i=1; <numPlayer)
-	{
-	vector TCLoc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(TCID, i));
-	
-	rmPlaceObjectDefAtLoc(playerTreeID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-	rmPlaceObjectDefAtLoc(playerHerdID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-	rmPlaceObjectDefAtLoc(playerGoldID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-	rmPlaceObjectDefAtLoc(startingUnits, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-	rmPlaceObjectDefAtLoc(playerNuggetID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-}
+
+	// Text
+	rmSetStatusText("",0.40);
+
+	// ************************************* Place Natives **************************************
+
+	int villageCircle = rmRandInt(1,3);
+
+	int sufi1VillageTypeID = rmRandInt(1,5);
+	int mosque1ID = -1;
+	mosque1ID = rmCreateGrouping("mosque 1", "native comanche village "+sufi1VillageTypeID);
+	rmSetGroupingMinDistance(mosque1ID, 20);
+	rmSetGroupingMaxDistance(mosque1ID, rmXFractionToMeters(0.2));
+	rmAddGroupingConstraint(mosque1ID, avoidImpassableLand);
+	rmAddGroupingConstraint(mosque1ID, avoidTownCenterFar);
+	rmAddGroupingConstraint(mosque1ID, circleConstraint);
+	rmAddGroupingConstraint(mosque1ID, avoidSufi);
+	rmPlaceGroupingAtLoc(mosque1ID, 0, 0.5, 0.5, 1);
 
 
+	int sufi2VillageTypeID = rmRandInt(1,5);
+	int mosque2ID = -1;
+	mosque2ID = rmCreateGrouping("mosque 2", "native comanche village "+sufi2VillageTypeID);
+	rmSetGroupingMinDistance(mosque2ID, 20);
+	rmSetGroupingMaxDistance(mosque2ID, rmXFractionToMeters(0.2));
+	rmAddGroupingConstraint(mosque2ID, avoidImpassableLand);
+	rmAddGroupingConstraint(mosque2ID, avoidTownCenterFar);
+	rmAddGroupingConstraint(mosque2ID, avoidSufi);
+	rmAddGroupingConstraint(mosque2ID, circleConstraint);
+	rmPlaceGroupingAtLoc(mosque2ID, 0, 0.5, 0.5, 1);
 
 
+	if(cNumberNonGaiaPlayers >= 4){
+		int sufi3VillageTypeID = rmRandInt(1,5);
+		int mosque3ID = -1;
+		mosque3ID = rmCreateGrouping("Sufi Village 3", "native comanche village "+sufi3VillageTypeID);
+		rmSetGroupingMinDistance(mosque3ID, 20);
+		rmSetGroupingMaxDistance(mosque3ID, rmXFractionToMeters(0.2));
+		rmAddGroupingConstraint(mosque3ID, avoidImpassableLand);
+		rmAddGroupingConstraint(mosque3ID, avoidTownCenterFar);
+		rmAddGroupingConstraint(mosque3ID, circleConstraint);
+		rmAddGroupingConstraint(mosque3ID, avoidSufi);
+		rmPlaceGroupingAtLoc(mosque3ID, 0, 0.5, 0.5, 1);
+	}
 
-   
-// Text
-	rmSetStatusText("",0.30);
+	if(cNumberNonGaiaPlayers >= 7){
+		int sufi4VillageTypeID = rmRandInt(1,5);
+		int mosque4ID = -1;
+		mosque4ID = rmCreateGrouping("Sufi Village 4", "native comanche village "+sufi4VillageTypeID);
+		rmSetGroupingMinDistance(mosque4ID, 20);
+		rmSetGroupingMaxDistance(mosque4ID, rmXFractionToMeters(0.2));
+		rmAddGroupingConstraint(mosque4ID, avoidImpassableLand);
+		rmAddGroupingConstraint(mosque4ID, avoidTownCenterFar);
+		rmAddGroupingConstraint(mosque4ID, circleConstraint);
+		rmAddGroupingConstraint(mosque4ID, avoidSufi);
+		rmPlaceGroupingAtLoc(mosque4ID, 0, 0.5, 0.5, 1);
+	}
 
-  
-
-// ************************************* Place Natives **************************************
-
-int villageCircle = rmRandInt(1,3);
-
-int sufi1VillageTypeID = rmRandInt(1,5);
-int mosque1ID = -1;
-   mosque1ID = rmCreateGrouping("mosque 1", "native comanche village "+sufi1VillageTypeID);
-   rmSetGroupingMinDistance(mosque1ID, 20);
-   rmSetGroupingMaxDistance(mosque1ID, rmXFractionToMeters(0.2));
-   rmAddGroupingConstraint(mosque1ID, avoidImpassableLand);
-   rmAddGroupingConstraint(mosque1ID, avoidTownCenterFar);
-   rmAddGroupingConstraint(mosque1ID, circleConstraint);
-   rmAddGroupingConstraint(mosque1ID, avoidSufi);
-   rmPlaceGroupingAtLoc(mosque1ID, 0, 0.5, 0.5, 1);
-
-
-int sufi2VillageTypeID = rmRandInt(1,5);
-int mosque2ID = -1;
-   mosque2ID = rmCreateGrouping("mosque 2", "native comanche village "+sufi2VillageTypeID);
-   rmSetGroupingMinDistance(mosque2ID, 20);
-   rmSetGroupingMaxDistance(mosque2ID, rmXFractionToMeters(0.2));
-   rmAddGroupingConstraint(mosque2ID, avoidImpassableLand);
-   rmAddGroupingConstraint(mosque2ID, avoidTownCenterFar);
-   rmAddGroupingConstraint(mosque2ID, avoidSufi);
-   rmAddGroupingConstraint(mosque2ID, circleConstraint);
-   rmPlaceGroupingAtLoc(mosque2ID, 0, 0.5, 0.5, 1);
-
-
-if(cNumberNonGaiaPlayers >= 4){
-	int sufi3VillageTypeID = rmRandInt(1,5);
-	int mosque3ID = -1;
-	mosque3ID = rmCreateGrouping("Sufi Village 3", "native comanche village "+sufi3VillageTypeID);
-	rmSetGroupingMinDistance(mosque3ID, 20);
-	rmSetGroupingMaxDistance(mosque3ID, rmXFractionToMeters(0.2));
-	rmAddGroupingConstraint(mosque3ID, avoidImpassableLand);
-	rmAddGroupingConstraint(mosque3ID, avoidTownCenterFar);
-	rmAddGroupingConstraint(mosque3ID, circleConstraint);
-	rmAddGroupingConstraint(mosque3ID, avoidSufi);
-	rmPlaceGroupingAtLoc(mosque3ID, 0, 0.5, 0.5, 1);
-}
-
-if(cNumberNonGaiaPlayers >= 7){
-	int sufi4VillageTypeID = rmRandInt(1,5);
-	int mosque4ID = -1;
-	mosque4ID = rmCreateGrouping("Sufi Village 4", "native comanche village "+sufi4VillageTypeID);
-	rmSetGroupingMinDistance(mosque4ID, 20);
-	rmSetGroupingMaxDistance(mosque4ID, rmXFractionToMeters(0.2));
-	rmAddGroupingConstraint(mosque4ID, avoidImpassableLand);
-	rmAddGroupingConstraint(mosque4ID, avoidTownCenterFar);
-	rmAddGroupingConstraint(mosque4ID, circleConstraint);
-	rmAddGroupingConstraint(mosque4ID, avoidSufi);
-	rmPlaceGroupingAtLoc(mosque4ID, 0, 0.5, 0.5, 1);
-}
-
-
-
-
-// Text
-	rmSetStatusText("",0.40);   
-
-
-// Text
+	// Text
 	rmSetStatusText("",0.50);
 
+	// Mines
 
+	int saltCount = (cNumberNonGaiaPlayers*4);
 
-// ************************************* Mines and other Lake Objects **************************************
-
-int saltCount = (cNumberNonGaiaPlayers*4);
-
-for(i=0; < saltCount)
+	for(i=0; < saltCount)
 	{
- int  lakeSaltMineID = rmCreateObjectDef("lake mine salt "+i);
-	  rmAddObjectDefItem(lakeSaltMineID, "MineGold", 1, 0.0);
-      rmSetObjectDefMinDistance(lakeSaltMineID, 0.0);
-      rmSetObjectDefMaxDistance(lakeSaltMineID, rmXFractionToMeters(0.25));
-	  rmAddObjectDefConstraint(lakeSaltMineID, avoidCoin);
-      rmAddObjectDefConstraint(lakeSaltMineID, avoidAll);
-	  rmAddObjectDefConstraint(lakeSaltMineID, avoidTradeRoute);
-	  rmAddObjectDefConstraint(lakeSaltMineID, avoidSocket);
-	  rmPlaceObjectDefAtLoc(lakeSaltMineID, 0, 0.5, 0.5);
+		int  lakeSaltMineID = rmCreateObjectDef("lake mine salt "+i);
+		rmAddObjectDefItem(lakeSaltMineID, "MineGold", 1, 0.0);
+		rmSetObjectDefMinDistance(lakeSaltMineID, 0.0);
+		rmSetObjectDefMaxDistance(lakeSaltMineID, rmXFractionToMeters(0.25));
+		rmAddObjectDefConstraint(lakeSaltMineID, avoidCoin);
+		rmAddObjectDefConstraint(lakeSaltMineID, avoidAll);
+		rmAddObjectDefConstraint(lakeSaltMineID, avoidTradeRoute);
+		rmAddObjectDefConstraint(lakeSaltMineID, avoidSocket);
+		rmAddObjectDefConstraint(lakeSaltMineID, avoidWater20);
+		rmPlaceObjectDefAtLoc(lakeSaltMineID, 0, 0.5, 0.5);
 	}
 
+	for(i=0; < cNumberNonGaiaPlayers*2)
+	{
+		int berriesID = rmCreateObjectDef("berries"+i);
+		rmAddObjectDefItem(berriesID, "berrybush", 3, 4.0);
+		rmSetObjectDefMinDistance(berriesID, 0.0);
+		rmSetObjectDefMaxDistance(berriesID, rmXFractionToMeters(0.25));
+		rmAddObjectDefConstraint(berriesID, avoidCoin);
+		rmAddObjectDefConstraint(berriesID, avoidAll);
+		rmAddObjectDefConstraint(berriesID, avoidTradeRoute);
+		rmAddObjectDefConstraint(berriesID, avoidSocket);
+		rmAddObjectDefConstraint(berriesID, avoidWater20);
+		rmPlaceObjectDefAtLoc(berriesID, 0, 0.5, 0.5);
+	}
 
+	// Text
+	rmSetStatusText("",0.60);
+
+
+	// ******************* FORESTS ********************
 
 	int failCount = -1;
 	int numTries = -1;
 
 	// Define and place forests - north and south
+
+	// Valley Forrest
+
 	int forestTreeID = 0;
 	
-	numTries=20+7*cNumberNonGaiaPlayers;  // DAL - 4 here, 4 below
+	numTries=10+4*cNumberNonGaiaPlayers;  // DAL - 4 here, 4 above.
 	failCount=0;
 	for (i=0; <numTries)
-		{   
-			int northForest=rmCreateArea("northforest"+i);
-			rmSetAreaWarnFailure(northForest, false);
-			rmSetAreaSize(northForest, rmAreaTilesToFraction(100), rmAreaTilesToFraction(200));
+	{   
+		int valleyForest=rmCreateArea("valleyForest"+i);
+		rmSetAreaWarnFailure(valleyForest, false);
+		rmSetAreaSize(valleyForest, rmAreaTilesToFraction(100), rmAreaTilesToFraction(200));
 
-			rmSetAreaForestType(northForest, "Texas Forest");
-			rmSetAreaForestDensity(northForest, 1.0);
-			rmAddAreaToClass(northForest, rmClassID("classForest"));
-			rmSetAreaForestClumpiness(northForest, 0.0);		//DAL more forest with more clumps
-			rmSetAreaForestUnderbrush(northForest, 0.0);
-			rmSetAreaCoherence(northForest, 0.4);
-			rmAddAreaConstraint(northForest, avoidImportantItem); // DAL added, to try and make sure natives got on the map w/o override.
-			rmAddAreaConstraint(northForest, shortAvoidCoin);
-			rmAddAreaConstraint(northForest, avoidTownCenterFar);
-			rmAddAreaConstraint(northForest, avoidJewish);
-			rmAddAreaConstraint(northForest, avoidMaltese);
-			rmAddAreaConstraint(northForest, avoidTradeSocket);
-			rmAddAreaConstraint(northForest, avoidSufi);
-			rmAddAreaConstraint(northForest, avoidTradeRoute);
-			rmAddAreaConstraint(northForest, avoidWater20);
-			rmAddAreaConstraint(northForest, avoidKOTH);
-			rmAddAreaConstraint(northForest, forestConstraint);   // DAL adeed, to keep forests away from each other.
-			rmAddAreaConstraint(northForest, Northward);				// DAL adeed, to keep forests in the north.
-			if(rmBuildArea(northForest)==false)
-			{
-				// Stop trying once we fail 5 times in a row.  
-				failCount++;
-				if(failCount==5)
-					break;
-			}
-			else
-				failCount=0; 
+		rmSetAreaForestType(valleyForest, "Texas Forest");
+		rmSetAreaForestDensity(valleyForest, 1.0);
+		rmAddAreaToClass(valleyForest, rmClassID("classForest"));
+		rmSetAreaForestClumpiness(valleyForest, 0.0);		//DAL more forest with more clumps
+		rmSetAreaForestUnderbrush(valleyForest, 0.0);
+		rmSetAreaCoherence(valleyForest, 0.4);
+		rmAddAreaConstraint(valleyForest, avoidImportantItem); // DAL added, to try and make sure natives got on the map w/o override.
+		rmAddAreaConstraint(valleyForest, shortAvoidCoin);
+		rmAddAreaConstraint(valleyForest, avoidTownCenterFar);
+		rmAddAreaConstraint(valleyForest, avoidJewish);
+		rmAddAreaConstraint(valleyForest, avoidMaltese);
+		rmAddAreaConstraint(valleyForest, avoidTradeSocket);
+		rmAddAreaConstraint(valleyForest, avoidSufiShort);
+		rmAddAreaConstraint(valleyForest, avoidTradeRoute);
+		rmAddAreaConstraint(valleyForest, avoidWater20);
+		rmAddAreaConstraint(valleyForest, avoidKOTH);
+		rmAddAreaConstraint(valleyForest, forestConstraint);   // DAL adeed, to keep forests away from each other.
+		rmAddAreaConstraint(valleyForest, valleyConstraint);
+		if(rmBuildArea(valleyForest)==false)
+		{
+			// Stop trying once we fail 5 times in a row.  
+			failCount++;
+			if(failCount==5)
+				break;
 		}
+		else
+			failCount=0; 
+	}
 
-	// Text
-	rmSetStatusText("",0.60);
-
+	// Cliff Forrests
 	
-	numTries=5*cNumberNonGaiaPlayers;  // DAL - 4 here, 4 above.
+	numTries=4+2*cNumberNonGaiaPlayers;  // DAL - 4 here, 4 above.
 	failCount=0;
 	for (i = 0; i < numTries; i++)
-		{   
-			int southForest = rmCreateArea("southForest" + i);
-			rmSetAreaWarnFailure(southForest, false);
-			rmSetAreaSize(southForest, rmAreaTilesToFraction(100), rmAreaTilesToFraction(200));
-			rmSetAreaForestType(southForest, "Texas Forest");
-			rmSetAreaForestDensity(southForest, 1.0);
-			rmAddAreaToClass(southForest, rmClassID("classForest"));
-			rmSetAreaForestClumpiness(southForest, 0.0);
-			rmSetAreaForestUnderbrush(southForest, 0.0);
-			rmSetAreaCoherence(southForest, 0.4);
-			rmAddAreaConstraint(southForest, avoidImportantItem);
-			rmAddAreaConstraint(southForest, shortAvoidCoin);
-			rmAddAreaConstraint(southForest, avoidTownCenterFar);
-			rmAddAreaConstraint(southForest, avoidJewish);
-			rmAddAreaConstraint(southForest, avoidMaltese);
-			rmAddAreaConstraint(southForest, avoidTradeSocket);
-			rmAddAreaConstraint(southForest, avoidSufi);
-			rmAddAreaConstraint(southForest, avoidTradeRoute);
-			rmAddAreaConstraint(southForest, avoidWater20);
-			rmAddAreaConstraint(southForest, avoidKOTH);
-			rmAddAreaConstraint(southForest, forestConstraint);
-			rmAddAreaConstraint(southForest, Southward);
-			if (rmBuildArea(southForest) == false)
-			{
-				// Stop trying once we fail 5 times in a row.
-				failCount++;
-				if (failCount == 5)
-					break;
-			}
-			else
-				failCount = 0;
+	{   
+		int southForest = rmCreateArea("southForest" + i);
+		rmSetAreaWarnFailure(southForest, false);
+		rmSetAreaSize(southForest, rmAreaTilesToFraction(100), rmAreaTilesToFraction(200));
+		rmSetAreaForestType(southForest, "Texas Forest Dirt");
+		rmSetAreaForestDensity(southForest, 0.7);
+		rmAddAreaToClass(southForest, rmClassID("classForest"));
+		rmSetAreaForestClumpiness(southForest, 0.0);
+		rmSetAreaForestUnderbrush(southForest, 0.0);
+		rmSetAreaCoherence(southForest, 0.4);
+		rmAddAreaConstraint(southForest, avoidImportantItem);
+		rmAddAreaConstraint(southForest, shortAvoidCoin);
+		rmAddAreaConstraint(southForest, avoidTownCenterFar);
+		rmAddAreaConstraint(southForest, avoidJewish);
+		rmAddAreaConstraint(southForest, avoidMaltese);
+		rmAddAreaConstraint(southForest, avoidTradeSocket);
+		rmAddAreaConstraint(southForest, avoidSufi);
+		rmAddAreaConstraint(southForest, avoidTradeRoute);
+		rmAddAreaConstraint(southForest, avoidWater20);
+		rmAddAreaConstraint(southForest, avoidKOTH);
+		rmAddAreaConstraint(southForest, forestConstraint);
+		rmAddAreaConstraint(southForest, Southward);
+		rmAddAreaConstraint(southForest, avoidValley);	
+		if (rmBuildArea(southForest) == false)
+		{
+			// Stop trying once we fail 5 times in a row.
+			failCount++;
+			if (failCount == 5)
+				break;
 		}
-   
-// Place some extra deer herds.  
-	int deerHerdID=rmCreateObjectDef("northern deer herd");
-	rmAddObjectDefItem(deerHerdID, "bison", rmRandInt(4,7), 6.0);
-	rmSetObjectDefCreateHerd(deerHerdID, true);
-	rmSetObjectDefMinDistance(deerHerdID, rmXFractionToMeters(0.03));
-	rmSetObjectDefMaxDistance(deerHerdID, rmXFractionToMeters(0.25));
-	rmAddObjectDefConstraint(deerHerdID, shortAvoidCoin);
-	rmAddObjectDefConstraint(deerHerdID, avoidTradeSockets);
-	rmAddObjectDefConstraint(deerHerdID, avoidTownCenterFar);
-	rmAddObjectDefConstraint(deerHerdID, avoidWater20);
-	rmAddObjectDefConstraint(deerHerdID, avoidAll);
-	rmAddObjectDefConstraint(deerHerdID, avoidKOTH);
-	rmAddObjectDefConstraint(deerHerdID, avoidImpassableLand);
-	rmAddObjectDefConstraint(deerHerdID, deerConstraint);
-	rmAddObjectDefConstraint(deerHerdID, Northward);
-	numTries=3*cNumberNonGaiaPlayers;
-	for (i=0; <numTries)
-	{
-		rmPlaceObjectDefAtLoc(deerHerdID, 0, 0.5, 0.5);
+		else
+			failCount = 0;
 	}
+
+	numTries=4+2*cNumberNonGaiaPlayers;  // DAL - 4 here, 4 below.
+	failCount=0;
+	for (i=0; <numTries)
+	{   
+		int northForest=rmCreateArea("northforest"+i);
+		rmSetAreaWarnFailure(northForest, false);
+		rmSetAreaSize(northForest, rmAreaTilesToFraction(100), rmAreaTilesToFraction(200));
+
+		rmSetAreaForestType(northForest, "Texas Forest Dirt");
+		rmSetAreaForestDensity(northForest, 0.7);
+		rmAddAreaToClass(northForest, rmClassID("classForest"));
+		rmSetAreaForestClumpiness(northForest, 0.0);		//DAL more forest with more clumps
+		rmSetAreaForestUnderbrush(northForest, 0.0);
+		rmSetAreaCoherence(northForest, 0.4);
+		rmAddAreaConstraint(northForest, avoidImportantItem); // DAL added, to try and make sure natives got on the map w/o override.
+		rmAddAreaConstraint(northForest, shortAvoidCoin);
+		rmAddAreaConstraint(northForest, avoidTownCenterFar);
+		rmAddAreaConstraint(northForest, avoidJewish);
+		rmAddAreaConstraint(northForest, avoidMaltese);
+		rmAddAreaConstraint(northForest, avoidTradeSocket);
+		rmAddAreaConstraint(northForest, avoidSufi);
+		rmAddAreaConstraint(northForest, avoidTradeRoute);
+		rmAddAreaConstraint(northForest, avoidWater20);
+		rmAddAreaConstraint(northForest, avoidKOTH);
+		rmAddAreaConstraint(northForest, forestConstraint);   // DAL adeed, to keep forests away from each other.
+		rmAddAreaConstraint(northForest, Northward);
+		rmAddAreaConstraint(northForest, avoidValley);				// DAL adeed, to keep forests in the north.
+		if(rmBuildArea(northForest)==false)
+		{
+			// Stop trying once we fail 5 times in a row.  
+			failCount++;
+			if(failCount==5)
+				break;
+		}
+		else
+			failCount = 0;
+	}
+   
 	// Text
 	rmSetStatusText("",0.70);
+
+	// Fauna: Bisons and Deers
 
 	int deerHerdID2=rmCreateObjectDef("southern deer herd");
 	rmAddObjectDefItem(deerHerdID2, "bison", rmRandInt(4,7), 6.0);
@@ -1179,17 +1205,12 @@ for(i=0; < saltCount)
 	rmAddObjectDefConstraint(deerHerdID2, avoidKOTH);
 	rmAddObjectDefConstraint(deerHerdID2, avoidImpassableLand);
 	rmAddObjectDefConstraint(deerHerdID2, deerConstraint);
-	rmAddObjectDefConstraint(deerHerdID2, Southward);
 	numTries=3*cNumberNonGaiaPlayers;
 	for (i=0; <numTries)
 	{
 		rmPlaceObjectDefAtLoc(deerHerdID2, 0, 0.5, 0.5);
 	}
-	// Text
-	
 
-
-// Place some extra deer herds.  
 	int mooseHerdID=rmCreateObjectDef("moose herd");
 	rmAddObjectDefItem(mooseHerdID, "deer", rmRandInt(5,9), 6.0);
 	rmSetObjectDefCreateHerd(mooseHerdID, true);
@@ -1207,146 +1228,120 @@ for(i=0; < saltCount)
 	{
 		rmPlaceObjectDefAtLoc(mooseHerdID, 0, 0.5, 0.5);
 	}
+
 	// Text
 	rmSetStatusText("",0.80);
 
 	// Define and place Nuggets
-    
-		int nugget4= rmCreateObjectDef("nugget nuts"); 
-		rmAddObjectDefItem(nugget4, "Nugget", 1, 0.0);
-		rmSetNuggetDifficulty(4, 4);
-		rmAddObjectDefToClass(nugget4, rmClassID("nuggets"));
-		rmSetObjectDefMinDistance(nugget4, rmXFractionToMeters(0.05));
-		rmSetObjectDefMaxDistance(nugget4, rmXFractionToMeters(0.25));
-		rmAddObjectDefConstraint(nugget4, longPlayerConstraint);
-		rmAddObjectDefConstraint(nugget4, avoidImpassableLand);
-		rmAddObjectDefConstraint(nugget4, avoidTownCenterFar);
-		rmAddObjectDefConstraint(nugget4, avoidNuggets);
-		rmAddObjectDefConstraint(nugget4, avoidTradeRoute);
-		rmAddObjectDefConstraint(nugget4, circleConstraint);
-		rmAddObjectDefConstraint(nugget4, avoidKOTH);
-		rmAddObjectDefConstraint(nugget4, avoidAll);
-		rmAddObjectDefConstraint(nugget4, avoidWater20);
-		//rmAddObjectDefConstraint(nugget4, longPlayerEdgeConstraint);
-		if (cNumberNonGaiaPlayers > 2 && rmGetIsTreaty() == false)
-			rmPlaceObjectDefAtLoc(nugget4, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
 
-		int nugget3= rmCreateObjectDef("nugget hard"); 
-		rmAddObjectDefItem(nugget3, "Nugget", 1, 0.0);
-		rmSetNuggetDifficulty(3, 3);
-		rmAddObjectDefToClass(nugget3, rmClassID("nuggets"));
-		rmSetObjectDefMinDistance(nugget3, rmXFractionToMeters(0.05));
-		rmSetObjectDefMaxDistance(nugget3, rmXFractionToMeters(0.25));
-		rmAddObjectDefConstraint(nugget3, avoidTownCenterFar);
-		rmAddObjectDefConstraint(nugget3, avoidImpassableLand);
-		rmAddObjectDefConstraint(nugget3, avoidNuggets);
-		rmAddObjectDefConstraint(nugget3, avoidTradeRoute);
-		rmAddObjectDefConstraint(nugget3, circleConstraint);
-		rmAddObjectDefConstraint(nugget3, avoidKOTH);
-		rmAddObjectDefConstraint(nugget3, avoidAll);
-		rmAddObjectDefConstraint(nugget4, avoidWater20);
-		rmPlaceObjectDefAtLoc(nugget3, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
+	int nugget4= rmCreateObjectDef("nugget nuts"); 
+	rmAddObjectDefItem(nugget4, "Nugget", 1, 0.0);
+	rmSetNuggetDifficulty(4, 4);
+	rmAddObjectDefToClass(nugget4, rmClassID("nuggets"));
+	rmSetObjectDefMinDistance(nugget4, rmXFractionToMeters(0.05));
+	rmSetObjectDefMaxDistance(nugget4, rmXFractionToMeters(0.25));
+	rmAddObjectDefConstraint(nugget4, longPlayerConstraint);
+	rmAddObjectDefConstraint(nugget4, avoidImpassableLand);
+	rmAddObjectDefConstraint(nugget4, avoidTownCenterFar);
+	rmAddObjectDefConstraint(nugget4, avoidNuggets);
+	rmAddObjectDefConstraint(nugget4, avoidTradeRoute);
+	rmAddObjectDefConstraint(nugget4, circleConstraint);
+	rmAddObjectDefConstraint(nugget4, avoidKOTH);
+	rmAddObjectDefConstraint(nugget4, avoidAll);
+	rmAddObjectDefConstraint(nugget4, avoidWater20);
+	//rmAddObjectDefConstraint(nugget4, longPlayerEdgeConstraint);
+	if (cNumberNonGaiaPlayers > 2 && rmGetIsTreaty() == false)
+		rmPlaceObjectDefAtLoc(nugget4, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
 
-		int nugget2= rmCreateObjectDef("nugget medium"); 
-		rmAddObjectDefItem(nugget2, "Nugget", 1, 0.0);
-		rmSetNuggetDifficulty(2, 2);
-		rmAddObjectDefToClass(nugget2, rmClassID("nuggets"));
-		rmSetObjectDefMinDistance(nugget2, rmXFractionToMeters(0.25));
-		rmSetObjectDefMaxDistance(nugget2, rmXFractionToMeters(0.45));
-		rmAddObjectDefConstraint(nugget2, shortPlayerConstraint);
-		rmAddObjectDefConstraint(nugget2, avoidImpassableLand);
-		rmAddObjectDefConstraint(nugget2, avoidNuggets);
-		rmAddObjectDefConstraint(nugget2, avoidTradeRoute);
-		rmAddObjectDefConstraint(nugget2, avoidKOTH);
-		rmAddObjectDefConstraint(nugget2, avoidTownCenterFar);
-		rmAddObjectDefConstraint(nugget2, circleConstraint);
-		rmAddObjectDefConstraint(nugget2, avoidAll);
-		rmAddObjectDefConstraint(nugget2,avoidWater20);
-		rmSetObjectDefMinDistance(nugget2, 80.0);
-		rmSetObjectDefMaxDistance(nugget2, 120.0);
-		rmPlaceObjectDefAtLoc(nugget2, 0, 0.5, 0.5, cNumberNonGaiaPlayers*2);
+	int nugget3= rmCreateObjectDef("nugget hard"); 
+	rmAddObjectDefItem(nugget3, "Nugget", 1, 0.0);
+	rmSetNuggetDifficulty(3, 3);
+	rmAddObjectDefToClass(nugget3, rmClassID("nuggets"));
+	rmSetObjectDefMinDistance(nugget3, rmXFractionToMeters(0.05));
+	rmSetObjectDefMaxDistance(nugget3, rmXFractionToMeters(0.25));
+	rmAddObjectDefConstraint(nugget3, avoidTownCenterFar);
+	rmAddObjectDefConstraint(nugget3, avoidImpassableLand);
+	rmAddObjectDefConstraint(nugget3, avoidNuggets);
+	rmAddObjectDefConstraint(nugget3, avoidTradeRoute);
+	rmAddObjectDefConstraint(nugget3, circleConstraint);
+	rmAddObjectDefConstraint(nugget3, avoidKOTH);
+	rmAddObjectDefConstraint(nugget3, avoidAll);
+	rmAddObjectDefConstraint(nugget4, avoidWater20);
+	rmPlaceObjectDefAtLoc(nugget3, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
 
-		int nugget1= rmCreateObjectDef("nugget easy"); 
-		rmAddObjectDefItem(nugget1, "Nugget", 1, 0.0);
-		rmSetNuggetDifficulty(1, 1);
-		rmAddObjectDefToClass(nugget1, rmClassID("nuggets"));
-		rmAddObjectDefConstraint(nugget1, shortPlayerConstraint);
-		rmAddObjectDefConstraint(nugget1, avoidTownCenter);
-		rmAddObjectDefConstraint(nugget1, avoidImpassableLand);
-		rmAddObjectDefConstraint(nugget1, avoidNuggets);
-		rmAddObjectDefConstraint(nugget1, avoidTradeSockets);
-		rmAddObjectDefConstraint(nugget1, avoidTradeRoute);
-		rmAddObjectDefConstraint(nugget1, avoidAll);
-		rmAddObjectDefConstraint(nugget1, avoidKOTH);
-		rmAddObjectDefConstraint(nugget1, circleConstraint);
-		rmSetObjectDefMinDistance(nugget1, 0.0);
-		rmSetObjectDefMaxDistance(nugget1, rmXFractionToMeters(0.49));
-		rmPlaceObjectDefAtLoc(nugget1, 0, 0.5, 0.5, cNumberNonGaiaPlayers*4);
+	int nugget2= rmCreateObjectDef("nugget medium"); 
+	rmAddObjectDefItem(nugget2, "Nugget", 1, 0.0);
+	rmSetNuggetDifficulty(2, 2);
+	rmAddObjectDefToClass(nugget2, rmClassID("nuggets"));
+	rmSetObjectDefMinDistance(nugget2, rmXFractionToMeters(0.25));
+	rmSetObjectDefMaxDistance(nugget2, rmXFractionToMeters(0.45));
+	rmAddObjectDefConstraint(nugget2, shortPlayerConstraint);
+	rmAddObjectDefConstraint(nugget2, avoidImpassableLand);
+	rmAddObjectDefConstraint(nugget2, avoidNuggets);
+	rmAddObjectDefConstraint(nugget2, avoidTradeRoute);
+	rmAddObjectDefConstraint(nugget2, avoidKOTH);
+	rmAddObjectDefConstraint(nugget2, avoidTownCenterFar);
+	rmAddObjectDefConstraint(nugget2, circleConstraint);
+	rmAddObjectDefConstraint(nugget2, avoidAll);
+	rmAddObjectDefConstraint(nugget2,avoidWater20);
+	rmSetObjectDefMinDistance(nugget2, 80.0);
+	rmSetObjectDefMaxDistance(nugget2, 120.0);
+	rmPlaceObjectDefAtLoc(nugget2, 0, 0.5, 0.5, cNumberNonGaiaPlayers*2);
 
-		// Define and place decorations: rocks and grass and stuff 
+	int nugget1= rmCreateObjectDef("nugget easy"); 
+	rmAddObjectDefItem(nugget1, "Nugget", 1, 0.0);
+	rmSetNuggetDifficulty(1, 1);
+	rmAddObjectDefToClass(nugget1, rmClassID("nuggets"));
+	rmAddObjectDefConstraint(nugget1, shortPlayerConstraint);
+	rmAddObjectDefConstraint(nugget1, avoidTownCenter);
+	rmAddObjectDefConstraint(nugget1, avoidImpassableLand);
+	rmAddObjectDefConstraint(nugget1, avoidNuggets);
+	rmAddObjectDefConstraint(nugget1, avoidTradeSockets);
+	rmAddObjectDefConstraint(nugget1, avoidTradeRoute);
+	rmAddObjectDefConstraint(nugget1, avoidAll);
+	rmAddObjectDefConstraint(nugget1, avoidKOTH);
+	rmAddObjectDefConstraint(nugget1, circleConstraint);
+	rmSetObjectDefMinDistance(nugget1, 0.0);
+	rmSetObjectDefMaxDistance(nugget1, rmXFractionToMeters(0.49));
+	rmPlaceObjectDefAtLoc(nugget1, 0, 0.5, 0.5, cNumberNonGaiaPlayers*4);
 
-		// Random Vegetation
+	// Define and place decorations: rocks and grass and stuff 
+
+	// Random Vegetation
 	float treeOne = rmRandInt(1,4);
 
-
-	/*int dryGrassID = rmCreateObjectDef("dry grass");
-		rmAddObjectDefItem(dryGrassID, brushType1, rmRandInt(3,5), 10.0);
-		rmAddObjectDefItem(dryGrassID, brushType2, rmRandInt(1,2), 6.0);
-		rmSetObjectDefMinDistance(dryGrassID, 0);
-		rmSetObjectDefMaxDistance(dryGrassID, rmXFractionToMeters(0.5));
-		rmAddObjectDefToClass(dryGrassID, rmClassID("prop"));
-		rmAddObjectDefConstraint(dryGrassID, avoidIslandMin);
-//		rmAddObjectDefConstraint(dryGrassID, avoidTownCenterShort);
-		rmAddObjectDefConstraint(dryGrassID, avoidStartingResources);
-		rmAddObjectDefConstraint(dryGrassID, avoidEmbellishmentFar);
-		rmAddObjectDefConstraint(dryGrassID, avoidPondShort);
-		rmAddObjectDefConstraint(dryGrassID, avoidNatives);
-		rmAddObjectDefConstraint(dryGrassID, avoidForestMin);
-		rmAddObjectDefConstraint(dryGrassID, avoidGoldShort);
-		rmAddObjectDefConstraint(dryGrassID, avoidGold2Short);
-		rmAddObjectDefConstraint(dryGrassID, avoidTradeRouteSocket);
-		rmAddObjectDefConstraint(dryGrassID, avoidBerriesMin);
-		rmPlaceObjectDefAtLoc(dryGrassID, 0, 0.50, 0.50, 10*PlayerNum);
-
-	int bigTexasThingsID = rmCreateObjectDef("big texas things");
-		rmAddObjectDefItem(bigTexasThingsID, "BigPropTexas", 1, 0.0);
-		rmSetObjectDefMinDistance(bigTexasThingsID, 0);
-		rmSetObjectDefMaxDistance(bigTexasThingsID, rmXFractionToMeters(0.5));
-		rmAddObjectDefToClass(bigTexasThingsID, rmClassID("prop"));
-		rmAddObjectDefConstraint(bigTexasThingsID, avoidNatives);
-		rmAddObjectDefConstraint(bigTexasThingsID, avoidIslandMin);
-		rmAddObjectDefConstraint(bigTexasThingsID, avoidTownCenter);
-		rmAddObjectDefConstraint(bigTexasThingsID, avoidStartingResources);
-		rmAddObjectDefConstraint(bigTexasThingsID, avoidEmbellishmentFar);
-		rmAddObjectDefConstraint(bigTexasThingsID, avoidPondShort);
-		rmAddObjectDefConstraint(bigTexasThingsID, avoidForestMin);
-		rmAddObjectDefConstraint(bigTexasThingsID, avoidGoldShort);
-		rmAddObjectDefConstraint(bigTexasThingsID, avoidGold2Short);
-		rmAddObjectDefConstraint(bigTexasThingsID, avoidTradeRouteMin);
-		rmAddObjectDefConstraint(bigTexasThingsID, avoidTradeRouteSocket);
-		rmAddObjectDefConstraint(bigTexasThingsID, stayNWDesert);
-		if (rmGetIsTreaty() == false)
-			rmPlaceObjectDefAtLoc(bigTexasThingsID, 0, 0.50, 0.50, PlayerNum);*/
-
-		int rockID=rmCreateObjectDef("lone rock");
-		int avoidRock=rmCreateTypeDistanceConstraint("avoid rock", "BigPropTexas", 50.0);
-		rmAddObjectDefItem(rockID, "BigPropTexas", 1, 0.0);
-		rmSetObjectDefMinDistance(rockID, rmXFractionToMeters(0.25));
-		rmSetObjectDefMaxDistance(rockID, rmXFractionToMeters(0.5));
-		rmAddObjectDefConstraint(rockID, avoidAll);
-		rmAddObjectDefConstraint(rockID, avoidImpassableLand);
-		rmAddObjectDefConstraint(rockID, avoidKOTH);
-		rmAddObjectDefConstraint(rockID, avoidTownCenter);
-		rmAddObjectDefConstraint(rockID, avoidTradeRouteMin);
-		rmAddObjectDefConstraint(rockID, avoidTradeSocket);
-		rmAddObjectDefConstraint(rockID, avoidRock);
-		rmPlaceObjectDefAtLoc(rockID, 0, 0.5, 0.5, 4*cNumberNonGaiaPlayers);
+	int dryGrassID = rmCreateObjectDef("dry grass");
+	rmAddObjectDefItem(dryGrassID, "UnderbrushTexas", rmRandInt(3,5), 10.0);
+	rmAddObjectDefItem(dryGrassID, "UnderbrushTexasGrass", rmRandInt(1,2), 6.0);
+	rmSetObjectDefMinDistance(dryGrassID, 0);
+	rmSetObjectDefMaxDistance(dryGrassID, rmXFractionToMeters(0.5));
+	rmAddObjectDefConstraint(dryGrassID, avoidStartingResources);
+	rmAddObjectDefConstraint(dryGrassID, avoidWater4);
+	rmAddObjectDefConstraint(dryGrassID, avoidSufiShort);
+	rmAddObjectDefConstraint(dryGrassID, shortAvoidCoin);
+	rmAddObjectDefConstraint(dryGrassID, avoidTradeRouteSocketMin);
+	rmPlaceObjectDefAtLoc(dryGrassID, 0, 0.50, 0.50, 10*PlayerNum);
 
 
- // Text
+	int rockID=rmCreateObjectDef("lone rock");
+	int avoidRock=rmCreateTypeDistanceConstraint("avoid rock", "BigPropTexas", 50.0);
+	rmAddObjectDefItem(rockID, "BigPropTexas", 1, 0.0);
+	rmSetObjectDefMinDistance(rockID, rmXFractionToMeters(0.25));
+	rmSetObjectDefMaxDistance(rockID, rmXFractionToMeters(0.5));
+	rmAddObjectDefConstraint(rockID, avoidAll);
+	rmAddObjectDefConstraint(rockID, avoidImpassableLand);
+	rmAddObjectDefConstraint(rockID, avoidKOTH);
+	rmAddObjectDefConstraint(rockID, avoidTownCenter);
+	rmAddObjectDefConstraint(rockID, avoidTradeRouteMin);
+	rmAddObjectDefConstraint(rockID, avoidTradeSocket);
+	rmAddObjectDefConstraint(rockID, avoidRock);
+	rmPlaceObjectDefAtLoc(rockID, 0, 0.5, 0.5, 4*cNumberNonGaiaPlayers);
+
+
+ 	// Text
 	rmSetStatusText("",0.90);
 
-// ------Triggers--------//
+	// ------Triggers--------//
 	string unitID1 = "8";
 	string unitID2 = "58";
 	string unitID3 = "108";
@@ -1959,7 +1954,7 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParamInt("Status",2);
 
 	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+	rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -2012,7 +2007,7 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+	rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2063,7 +2058,7 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParamInt("Status",2);
 
 	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+	rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -2108,7 +2103,7 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+	rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2170,7 +2165,7 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParamInt("Status",2);
 
 	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+	rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -2216,7 +2211,7 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+	rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2277,7 +2272,7 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParamInt("Status",2);
 
 	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+	rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -2322,7 +2317,7 @@ for(i=0; < saltCount)
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+	rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2385,7 +2380,7 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -2430,7 +2425,7 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2494,7 +2489,7 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -2539,7 +2534,7 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2602,7 +2597,7 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -2647,7 +2642,7 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2700,7 +2695,7 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -2745,7 +2740,7 @@ for(i=0; < saltCount)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
