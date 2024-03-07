@@ -118,6 +118,7 @@ void main(void)
 	int centerConstraint=rmCreateClassDistanceConstraint("stay away from center", rmClassID("center"), 30.0);
 	int centerConstraintFar=rmCreateClassDistanceConstraint("stay away from center far", rmClassID("center"), 60.0);
 	int circleConstraint=rmCreatePieConstraint("circle Constraint", 0.5, 0.5, 0, rmZFractionToMeters(0.47), rmDegreesToRadians(0), rmDegreesToRadians(360));
+	int avoidLand = rmCreateTerrainDistanceConstraint("avoid land medium", "Water", false, 20.0);
 	
 
 
@@ -193,7 +194,7 @@ void main(void)
 	int avoidTrainStationA = rmCreateTypeDistanceConstraint("avoid trainstation a", "spSocketTrainStationA", 8.0);
 	int avoidTrainStationB = rmCreateTypeDistanceConstraint("avoid trainstation b", "spSocketTrainStationB", 8.0);
     int avoidHarbour = rmCreateTypeDistanceConstraint("avoid harbour", "zpSPCPortSocket", 20.0);
-	int avoidBridge = rmCreateTypeDistanceConstraint("avoid bridge", "zpRuinWallSmall", 20.0);
+	int avoidBridge = rmCreateTypeDistanceConstraint("avoid bridge", "zpRuinWallSmall", 10.0);
 
 	// Lake Constraints
 	int greatLakesConstraint=rmCreateClassDistanceConstraint("avoid the great lakes", classGreatLake, 5.0);
@@ -1292,95 +1293,121 @@ void main(void)
 	if (rmGetIsKOTH())
 	{
 
-	int bridgeID = -1;
+		int bridgeID = -1;
 
-	if (cNumberNonGaiaPlayers<=3){
-		bridgeID = rmCreateGrouping("mississippi bridge", "mississippi_bridge_02");
-		rmPlaceGroupingAtLoc(bridgeID, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+41), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+5));
-		rmPlaceGroupingAtLoc(bridgeID, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-41), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+5));
-	}
-
-   	else{
-		bridgeID = rmCreateGrouping("mississippi bridge", "mississippi_bridge_01");
-		rmPlaceGroupingAtLoc(bridgeID, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+46), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+3));
-		rmPlaceGroupingAtLoc(bridgeID, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-46), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+3));
-	}
-
-	int bridgeSite1 = rmCreateArea ("bridge site 1");
-	if (cNumberNonGaiaPlayers<=3)
-		rmSetAreaSize(bridgeSite1, rmAreaTilesToFraction(1350.0), rmAreaTilesToFraction(1350.0));
-	if (cNumberNonGaiaPlayers>=7)
-		rmSetAreaSize(bridgeSite1, rmAreaTilesToFraction(1650.0), rmAreaTilesToFraction(1650.0));
-	else
-		rmSetAreaSize(bridgeSite1, rmAreaTilesToFraction(1450.0), rmAreaTilesToFraction(1450.0));
-	rmSetAreaLocation(bridgeSite1, rmXMetersToFraction(xsVectorGetX(StopperLoc9)), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
-	rmSetAreaCoherence(bridgeSite1, 1);
-	rmSetAreaSmoothDistance(bridgeSite1, 20);
-	rmSetAreaBaseHeight(bridgeSite1, 0.5);
-	rmAddAreaToClass(bridgeSite1, classPortSite);
-	rmAddAreaInfluenceSegment(bridgeSite1, 0.5, rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+14), 0.5, rmZMetersToFraction(xsVectorGetZ(StopperLoc9)-14));
-	rmSetAreaObeyWorldCircleConstraint(bridgeSite1, false);
-	rmBuildArea(bridgeSite1);
-
-	int bridgeSite2 = rmCreateArea ("bridge site 2");
-	rmSetAreaSize(bridgeSite2, rmAreaTilesToFraction(450.0), rmAreaTilesToFraction(450.0));
-	if (cNumberNonGaiaPlayers<=3)
-		rmSetAreaLocation(bridgeSite2, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-67), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
-	else
-		rmSetAreaLocation(bridgeSite2, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-73), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
-	rmSetAreaCoherence(bridgeSite2, 1);
-	rmSetAreaSmoothDistance(bridgeSite2, 20);
-	rmSetAreaBaseHeight(bridgeSite2, 0.5);
-	rmAddAreaToClass(bridgeSite2, classPortSite);
-	rmBuildArea(bridgeSite2);
-
-	int bridgeSite3 = rmCreateArea ("bridge site 3");
-	rmSetAreaSize(bridgeSite3, rmAreaTilesToFraction(450.0), rmAreaTilesToFraction(450.0));
-	if (cNumberNonGaiaPlayers<=3)
-		rmSetAreaLocation(bridgeSite3, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+67), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
-	else
-		rmSetAreaLocation(bridgeSite3, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+73), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
-	rmSetAreaCoherence(bridgeSite3, 1);
-	rmAddAreaTerrainLayer(bridgeSite3, "city\ground1_cob", 0, 12);
-	rmSetAreaSmoothDistance(bridgeSite3, 20);
-	rmSetAreaBaseHeight(bridgeSite3, 0.5);
-	rmAddAreaToClass(bridgeSite3, classPortSite);
-	rmBuildArea(bridgeSite3);
-
-	int bridgeTerrain1 = rmCreateArea ("bridge terrain 1");
-	if (cNumberNonGaiaPlayers<=3) {
-		rmSetAreaSize(bridgeTerrain1, rmAreaTilesToFraction(200.0), rmAreaTilesToFraction(200.0));
-		rmSetAreaLocation(bridgeTerrain1, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+41), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+		if (cNumberNonGaiaPlayers<=3){
+			bridgeID = rmCreateGrouping("mississippi bridge", "mississippi_bridge_02");
+			rmPlaceGroupingAtLoc(bridgeID, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+41), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+5));
+			rmPlaceGroupingAtLoc(bridgeID, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-41), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+5));
 		}
-	else {
-		rmSetAreaSize(bridgeTerrain1, rmAreaTilesToFraction(300.0), rmAreaTilesToFraction(300.0));
-		rmSetAreaLocation(bridgeTerrain1, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+46), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
-		}
-	rmSetAreaTerrainType(bridgeTerrain1, "city\ground1_cob");
-	rmSetAreaCoherence(bridgeTerrain1, 1);
-	rmBuildArea(bridgeTerrain1);
 
-	int bridgeTerrain2 = rmCreateArea ("bridge terrain 2");
-	if (cNumberNonGaiaPlayers<=3) {
-		rmSetAreaSize(bridgeTerrain2, rmAreaTilesToFraction(200.0), rmAreaTilesToFraction(200.0));
-		rmSetAreaLocation(bridgeTerrain2, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-41), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+		else{
+			bridgeID = rmCreateGrouping("mississippi bridge", "mississippi_bridge_01");
+			rmPlaceGroupingAtLoc(bridgeID, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+46), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+3));
+			rmPlaceGroupingAtLoc(bridgeID, 0, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-46), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+3));
 		}
-	else {
-		rmSetAreaSize(bridgeTerrain2, rmAreaTilesToFraction(300.0), rmAreaTilesToFraction(300.0));
-		rmSetAreaLocation(bridgeTerrain2, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-46), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+
+		int bridgeSite1 = rmCreateArea ("bridge site 1");
+		if (cNumberNonGaiaPlayers<=3)
+			rmSetAreaSize(bridgeSite1, rmAreaTilesToFraction(1350.0), rmAreaTilesToFraction(1350.0));
+		if (cNumberNonGaiaPlayers>=7)
+			rmSetAreaSize(bridgeSite1, rmAreaTilesToFraction(1650.0), rmAreaTilesToFraction(1650.0));
+		else
+			rmSetAreaSize(bridgeSite1, rmAreaTilesToFraction(1450.0), rmAreaTilesToFraction(1450.0));
+		rmSetAreaLocation(bridgeSite1, rmXMetersToFraction(xsVectorGetX(StopperLoc9)), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+		rmSetAreaCoherence(bridgeSite1, 1);
+		rmSetAreaSmoothDistance(bridgeSite1, 20);
+		rmSetAreaBaseHeight(bridgeSite1, 0.5);
+		rmAddAreaToClass(bridgeSite1, classPortSite);
+		rmAddAreaInfluenceSegment(bridgeSite1, 0.5, rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+14), 0.5, rmZMetersToFraction(xsVectorGetZ(StopperLoc9)-14));
+		rmSetAreaObeyWorldCircleConstraint(bridgeSite1, false);
+		rmBuildArea(bridgeSite1);
+
+		int bridgeSite2 = rmCreateArea ("bridge site 2");
+		rmSetAreaSize(bridgeSite2, rmAreaTilesToFraction(450.0), rmAreaTilesToFraction(450.0));
+		if (cNumberNonGaiaPlayers<=3)
+			rmSetAreaLocation(bridgeSite2, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-67), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+		else
+			rmSetAreaLocation(bridgeSite2, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-73), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+		rmSetAreaCoherence(bridgeSite2, 1);
+		rmSetAreaSmoothDistance(bridgeSite2, 20);
+		rmSetAreaBaseHeight(bridgeSite2, 0.5);
+		rmAddAreaToClass(bridgeSite2, classPortSite);
+		rmBuildArea(bridgeSite2);
+
+		int bridgeSite3 = rmCreateArea ("bridge site 3");
+		rmSetAreaSize(bridgeSite3, rmAreaTilesToFraction(450.0), rmAreaTilesToFraction(450.0));
+		if (cNumberNonGaiaPlayers<=3)
+			rmSetAreaLocation(bridgeSite3, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+67), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+		else
+			rmSetAreaLocation(bridgeSite3, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+73), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+		rmSetAreaCoherence(bridgeSite3, 1);
+		rmAddAreaTerrainLayer(bridgeSite3, "city\ground1_cob", 0, 12);
+		rmSetAreaSmoothDistance(bridgeSite3, 20);
+		rmSetAreaBaseHeight(bridgeSite3, 0.5);
+		rmAddAreaToClass(bridgeSite3, classPortSite);
+		rmBuildArea(bridgeSite3);
+
+		if (cNumberNonGaiaPlayers>=4){
+			int bridgeSite4 = rmCreateArea ("bridge site 4");
+			rmSetAreaSize(bridgeSite4, rmAreaTilesToFraction(650.0), rmAreaTilesToFraction(650.0));
+			rmSetAreaLocation(bridgeSite4, 0.5, rmZMetersToFraction(xsVectorGetZ(StopperLoc9)+18));
+			rmSetAreaCoherence(bridgeSite4, 0.4);
+			rmSetAreaMix(bridgeSite4, "nwt_grass2");
+			rmSetAreaSmoothDistance(bridgeSite4, 20);
+			rmSetAreaObeyWorldCircleConstraint(bridgeSite4, false);
+			rmSetAreaBaseHeight(bridgeSite4, 0.5);
+			rmAddAreaToClass(bridgeSite4, classPortSite);
+			rmBuildArea(bridgeSite4);
+
+			int bridgeSite5 = rmCreateArea ("bridge site 5");
+			rmSetAreaSize(bridgeSite5, rmAreaTilesToFraction(650.0), rmAreaTilesToFraction(650.0));
+			rmSetAreaLocation(bridgeSite5, 0.5, rmZMetersToFraction(xsVectorGetZ(StopperLoc9)-18));
+			rmSetAreaCoherence(bridgeSite5, 0.4);
+			rmSetAreaMix(bridgeSite5, "nwt_grass2");
+			rmSetAreaSmoothDistance(bridgeSite5, 20);
+			rmSetAreaObeyWorldCircleConstraint(bridgeSite5, false);
+			rmSetAreaBaseHeight(bridgeSite5, 0.5);
+			rmAddAreaToClass(bridgeSite5, classPortSite);
+			rmBuildArea(bridgeSite5);
 		}
-	rmSetAreaTerrainType(bridgeTerrain2, "city\ground1_cob");
-	rmSetAreaCoherence(bridgeTerrain2, 1);
-	rmBuildArea(bridgeTerrain2);
 
-	int randLoc = rmRandInt(1,2);
-	float xLoc = rmXMetersToFraction(xsVectorGetX(StopperLoc9));
-	float yLoc = rmXMetersToFraction(xsVectorGetZ(StopperLoc9)-28);
-	float walk = 0.0;
+		int bridgeTerrain1 = rmCreateArea ("bridge terrain 1");
+		if (cNumberNonGaiaPlayers<=3) {
+			rmSetAreaSize(bridgeTerrain1, rmAreaTilesToFraction(200.0), rmAreaTilesToFraction(200.0));
+			rmSetAreaLocation(bridgeTerrain1, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+41), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+			}
+		else {
+			rmSetAreaSize(bridgeTerrain1, rmAreaTilesToFraction(300.0), rmAreaTilesToFraction(300.0));
+			rmSetAreaLocation(bridgeTerrain1, rmXMetersToFraction(xsVectorGetX(StopperLoc9)+46), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+			}
+		rmSetAreaTerrainType(bridgeTerrain1, "city\ground1_cob");
+		rmSetAreaCoherence(bridgeTerrain1, 1);
+		rmBuildArea(bridgeTerrain1);
 
-	ypKingsHillPlacer(xLoc, yLoc, walk, 0);
-	rmEchoInfo("XLOC = "+xLoc);
-	rmEchoInfo("XLOC = "+yLoc);
+		int bridgeTerrain2 = rmCreateArea ("bridge terrain 2");
+		if (cNumberNonGaiaPlayers<=3) {
+			rmSetAreaSize(bridgeTerrain2, rmAreaTilesToFraction(200.0), rmAreaTilesToFraction(200.0));
+			rmSetAreaLocation(bridgeTerrain2, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-41), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+			}
+		else {
+			rmSetAreaSize(bridgeTerrain2, rmAreaTilesToFraction(300.0), rmAreaTilesToFraction(300.0));
+			rmSetAreaLocation(bridgeTerrain2, rmXMetersToFraction(xsVectorGetX(StopperLoc9)-46), rmZMetersToFraction(xsVectorGetZ(StopperLoc9)));
+			}
+		rmSetAreaTerrainType(bridgeTerrain2, "city\ground1_cob");
+		rmSetAreaCoherence(bridgeTerrain2, 1);
+		rmBuildArea(bridgeTerrain2);
+
+		int randLoc = rmRandInt(1,2);
+		float xLoc = rmXMetersToFraction(xsVectorGetX(StopperLoc9));
+		float yLoc = rmXMetersToFraction(xsVectorGetZ(StopperLoc9)-28);
+		float walk = 0.0;
+
+		rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.6);
+
+		ypKingsHillPlacer(xLoc, yLoc, walk, 0);
+		rmEchoInfo("XLOC = "+xLoc);
+		rmEchoInfo("XLOC = "+yLoc);
 	
 	}
 
@@ -1720,8 +1747,8 @@ void main(void)
 
 	// Cooldowns
 	int armoredTrainActive = 90;
-	int armoredTrainCooldown = 10;
-	int armoredTrainCooldown2 = 10;
+	int armoredTrainCooldown = 300;
+	int armoredTrainCooldown2 = 240;
 	int noStations = 2;
 	int trainDirection = 22;
 
@@ -1825,19 +1852,15 @@ void main(void)
     for(i=1; <= cNumberNonGaiaPlayers) {
     rmAddTriggerEffect("ZP Set Tech Status (XS)");
     rmSetTriggerEffectParamInt("PlayerID",i);
-    rmSetTriggerEffectParam("TechID","cTechDEEnableTradeRouteWater"); // DEEneableTradeRouteWater
-    rmSetTriggerEffectParamInt("Status",2);
-    rmAddTriggerEffect("ZP Set Tech Status (XS)");
-    rmSetTriggerEffectParamInt("PlayerID",i);
     rmSetTriggerEffectParam("TechID","cTechzpIsAztecMap"); // DEEneableTradeRouteWater
     rmSetTriggerEffectParamInt("Status",2);
     rmAddTriggerEffect("ZP Set Tech Status (XS)");
     rmSetTriggerEffectParamInt("PlayerID",i);
-    rmSetTriggerEffectParam("TechID","cTechTradeRouteUpgrade1"); // DEEneableTradeRouteWater
+    rmSetTriggerEffectParam("TechID","cTechTradeRouteUpgrade1"); // DEEneableTradeRouteLand
     rmSetTriggerEffectParamInt("Status",1);
     rmAddTriggerEffect("ZP Set Tech Status (XS)");
     rmSetTriggerEffectParamInt("PlayerID",i);
-    rmSetTriggerEffectParam("TechID","cTechTradeRouteUpgrade2"); // DEEneableTradeRouteWater
+    rmSetTriggerEffectParam("TechID","cTechTradeRouteUpgrade2"); // DEEneableTradeRouteLand
     rmSetTriggerEffectParamInt("Status",1);
     }
     rmSetTriggerPriority(4);
@@ -2436,7 +2459,7 @@ void main(void)
 	rmSetTriggerEffectParamInt("Status",2);
 
 	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+	rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -2489,7 +2512,7 @@ void main(void)
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+	rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2570,7 +2593,7 @@ void main(void)
 	rmSetTriggerEffectParamInt("Status",2);
 
 	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+	rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -2615,7 +2638,7 @@ void main(void)
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+	rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2699,7 +2722,7 @@ void main(void)
         rmSetTriggerEffectParamInt("Status",2);
 
         rmAddTriggerEffect("FakeCounter Set Text");
-        rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+        rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
         rmSetTriggerPriority(4);
         rmSetTriggerActive(false);
         rmSetTriggerRunImmediately(true);
@@ -2745,7 +2768,7 @@ void main(void)
         rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
         rmSetTriggerEffectParamInt("Start",armoredTrainActive);
         rmSetTriggerEffectParamInt("Stop",0);
-        rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+        rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
         rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
         rmAddTriggerEffect("ZP Set Tech Status (XS)");
         rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2830,7 +2853,7 @@ void main(void)
         rmSetTriggerEffectParamInt("Status",2);
 
         rmAddTriggerEffect("FakeCounter Set Text");
-        rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+        rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
         rmSetTriggerPriority(4);
         rmSetTriggerActive(false);
         rmSetTriggerRunImmediately(true);
@@ -2875,7 +2898,7 @@ void main(void)
         rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
         rmSetTriggerEffectParamInt("Start",armoredTrainActive);
         rmSetTriggerEffectParamInt("Stop",0);
-        rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+        rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
         rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
         rmAddTriggerEffect("ZP Set Tech Status (XS)");
         rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2939,7 +2962,7 @@ void main(void)
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -2984,7 +3007,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -3050,7 +3073,7 @@ void main(void)
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -3095,7 +3118,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -3160,7 +3183,7 @@ void main(void)
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -3205,7 +3228,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -3270,7 +3293,7 @@ void main(void)
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -3315,7 +3338,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -3369,7 +3392,7 @@ void main(void)
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train Player "+k+": Heading to destination");
+		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -3414,7 +3437,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train Player "+k);
+		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);

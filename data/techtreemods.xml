@@ -5389,6 +5389,7 @@
       <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWaterAll1</effect>
       <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWaterAll2</effect>
       <effect type="TechStatus" status="obtainable">zpTradeRouteUpgradeWaterNative</effect>
+      <effect type="TechStatus" status="obtainable">zpTradeRouteUpgradeWaterNative2</effect>
       <effect type="CommandRemove" tech="DETradeRouteUpgradeWater1">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -5688,21 +5689,17 @@
   </tech>
   <tech name="zpTradeRouteUpgradeWaterNative" type="Normal">
     <dbid>40199</dbid>
-    <displaynameid>300390</displaynameid>
+    <displaynameid>122533</displaynameid>
     <cost resourcetype="Food">200.0000</cost>
     <cost resourcetype="Wood">200.0000</cost>
     <researchpoints>60.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\trade_caravel.png</icon>
-    <rollovertextid>300391</rollovertextid>
+    <icon>resources\art\units\trade\trade_boat_02_icon.png</icon>
+    <rollovertextid>122532</rollovertextid>
     <flag>UniqueProtoUnitInstance</flag>
     <flag>CountsTowardEconomicScore</flag>
-    <flag>YPNauticalTPOnly</flag>
+    <flag>DERiverTPOnly</flag>
     <flag>DETradeRouteUpgrade</flag>
-    <prereqs>
-      <techstatus status="Active">zpIsAztecMap</techstatus>
-      <techstatus status="Active">DETradeRouteUpgrade1Enable</techstatus>
-    </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="UpgradeTradeRoute" relativity="Absolute">
         <target type="Player">
@@ -5719,13 +5716,12 @@
     <status>OBTAINABLE</status>
     <icon>resources\images\icons\techs\trade_steamer.png</icon>
     <rollovertextid>300393</rollovertextid>
-    <flag>YPNauticalTPOnly</flag>
+    <flag>DERiverTPOnly</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>UniqueProtoUnitInstance</flag>
     <flag>DETradeRouteUpgrade</flag>
     <prereqs>
       <techstatus status="Active">zpTradeRouteUpgradeWaterNative</techstatus>
-      <techstatus status="Active">DETradeRouteUpgrade2Enable</techstatus>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
