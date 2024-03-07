@@ -1514,7 +1514,8 @@ minInterval 15
       planID = aiPlanCreate("Attack Player " + targetPlayer + " Base " + targetBaseID, cPlanCombat);
 
       aiPlanSetVariableInt(planID, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
-      if (targetBaseID >= 0 && gStartOnDifferentIslands == false)
+      // AssertiveWall: Another check here to make sure we don't use baseID on KOTH
+      if (targetBaseID >= 0 && gStartOnDifferentIslands == false && attackingKOTH == false)
       {
          aiPlanSetVariableInt(planID, cCombatPlanTargetMode, 0, cCombatPlanTargetModeBase);
          aiPlanSetVariableInt(planID, cCombatPlanTargetBaseID, 0, targetBaseID);
@@ -1546,8 +1547,9 @@ minInterval 15
 
       // Override the route when it is valid.
       // AssertiveWall: Only do this on non-island maps. 
+      // AssertiveWall: supress this if the targetBaseID isn't valid
       int routeID = cvCreateBaseAttackRoute(targetPlayer, targetBaseID);
-      if (routeID >= 0 && gStartOnDifferentIslands == false)
+      if (routeID >= 0 && gStartOnDifferentIslands == false && targetBaseID >= 0)
       {
          aiPlanSetVariableInt(planID, cCombatPlanAttackRouteID, 0, routeID);
          // aiPlanSetVariableBool(planID, cCombatPlanRefreshAttackRoute, 0, false);
