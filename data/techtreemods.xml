@@ -4742,7 +4742,7 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardVenetians</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zzpChristmasVeteranTech</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChristmasVeteranTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
     </effects>
   </tech>
@@ -4766,7 +4766,7 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardVenetians</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zzpChristmasVeteranTech</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChristmasVeteranTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
     </effects>
   </tech>
@@ -4790,7 +4790,7 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardVenetians</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zzpChristmasVeteranTech</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChristmasVeteranTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
     </effects>
   </tech>
@@ -4814,7 +4814,7 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardVenetians</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zzpChristmasVeteranTech</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChristmasVeteranTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
     </effects>
   </tech>
@@ -4838,7 +4838,7 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardVenetians</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zzpChristmasVeteranTech</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChristmasVeteranTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
     </effects>
   </tech>
@@ -4862,7 +4862,7 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardVenetians</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zzpChristmasVeteranTech</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChristmasVeteranTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
     </effects>
   </tech>
@@ -4886,7 +4886,7 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardVenetians</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zzpChristmasVeteranTech</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChristmasVeteranTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
     </effects>
   </tech>
@@ -4910,7 +4910,7 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardVenetians</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zzpChristmasVeteranTech</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChristmasVeteranTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
     </effects>
   </tech>
@@ -12199,8 +12199,8 @@
         <target type="Player">
         </target>
       </effect>
-      <effect type="TechStatus" status="active">zpNatDisciplinedOrthodox</effect>
-      <effect type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
+      <effect type="TechStatus" status="active">zpChristmasVeteranTech</effect>
+      <effect type="TechStatus" status="active">zpChristmasGuardTech</effect>
     </effects>
   </tech>
   <tech name="zpNativeTradeTreatyXmas" type="Normal">
