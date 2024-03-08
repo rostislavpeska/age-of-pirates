@@ -5694,7 +5694,7 @@
     <cost resourcetype="Wood">200.0000</cost>
     <researchpoints>60.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\trade\trade_boat_02_icon.png</icon>
+    <icon>resources\images\icons\techs\trade_flatboat.png</icon>
     <rollovertextid>122532</rollovertextid>
     <flag>UniqueProtoUnitInstance</flag>
     <flag>CountsTowardEconomicScore</flag>
