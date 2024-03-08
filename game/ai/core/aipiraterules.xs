@@ -204,13 +204,27 @@ minInterval 5
    vector tempLocation = cInvalidVector;
    int tempUnit = -1;
    int ourStation = -1;
+   int ourStationQuery = -1;
+   bool dontReturn = false;
 
-   ourStation = getUnit(cUnitTypeTradingPost, cMyID, cUnitStateAlive);
-   if (aiCanUseAbility(ourStation, cProtoPowerzpPowerArmouredTrain) == false)
+   ourStationQuery = createSimpleUnitQuery(cUnitTypezpInvisibleRailwayStation, cPlayerRelationAny, cUnitStateAny);
+   numberFound = kbUnitQueryExecute(ourStationQuery);
+
+   for (i = 0; < numberFound)
    {
-      // Can't use ability, nothing to do
+      ourStation = kbUnitQueryGetResult(ourStationQuery, i);
+      if (aiCanUseAbility(ourStation, cProtoPowerzpPowerArmouredTrain) == true)
+      {  // If someone can use the ability, then we can continue
+         dontReturn = true;
+         break;
+      }
+   }
+
+   if (dontReturn == false)
+   {
       return;
    }
+   //aiChat(1, "Found a station");
 
    stationQueryID = createSimpleUnitQuery(cUnitTypezpInvisibleRailwayStation, cPlayerRelationAny, cUnitStateAny);
    numberFound = kbUnitQueryExecute(stationQueryID);
