@@ -130,6 +130,9 @@ minInterval 25
       xsEnableRule("submarineTactics");
       xsEnableRule("airshipAbilityMonitor");
       xsEnableRule("airshipManager");
+
+      // Need a way to determine whether this is needed
+      xsEnableRule("armoredTrainMonitor");
    }
 
    if (getGaiaUnitCount(cUnitTypezpNativeHouseInuit) > 0)
@@ -186,9 +189,13 @@ inactive
 minInterval 5
 {
    // Look at all rail stations, if we have military nearby then send the train
-   int stationQueryID = createSimpleUnitQuery(cUnitTypezpInvisibleRailwayStation, cPlayerRelationAny, cUnitStateAny);
-   int numberFound = kbUnitQueryExecute(stationQueryID);
-
+   // Condition: 
+   //    > 15 enemy
+   //    > 10 friendly
+   //    -> then picks the most outnumbered station
+   
+   int stationQueryID = -1;
+   int numberFound = -1;
    int bestStationID = -1;
    int bestStationFriendlyArmyCount = -1;
    int bestStationEnemyArmyCount = -1;
@@ -197,6 +204,16 @@ minInterval 5
    vector tempLocation = cInvalidVector;
    int tempUnit = -1;
    int ourStation = -1;
+
+   ourStation = getUnit(cUnitTypeTradingPost, cMyID, cUnitStateAlive);
+   if (aiCanUseAbility(ourStation, cProtoPowerzpPowerArmouredTrain) == false)
+   {
+      // Can't use ability, nothing to do
+      return;
+   }
+
+   stationQueryID = createSimpleUnitQuery(cUnitTypezpInvisibleRailwayStation, cPlayerRelationAny, cUnitStateAny);
+   numberFound = kbUnitQueryExecute(stationQueryID);
 
    for (i = 0; < numberFound)
    {
@@ -209,7 +226,7 @@ minInterval 5
       {
          tempFriendly = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly,
                cUnitStateAlive, tempLocation, 55.0);
-         if (tempEnemy - tempFriendly > bestStationEnemyArmyCount - bestStationFriendlyArmyCount)
+         if (tempEnemy - tempFriendly > bestStationEnemyArmyCount - bestStationFriendlyArmyCount && tempFriendly > 10)
          {
             bestStationID = tempUnit;
             bestStationEnemyArmyCount = tempEnemy;
@@ -218,9 +235,10 @@ minInterval 5
       }
    }
 
+   //aiChat(1, "Best Station ID: " + bestStationID + " bestStationEnemyArmyCount: " + bestStationEnemyArmyCount + " bestStationFriendlyArmyCount: " + bestStationFriendlyArmyCount);
+
    if (bestStationID > 0)
    {
-      ourStation = getUnit(cUnitTypeTradingPost, cMyID, cUnitStateAlive);
       aiTaskUnitSpecialPower(ourStation, cProtoPowerzpPowerArmouredTrain, bestStationID, cInvalidVector);
    }
 }
