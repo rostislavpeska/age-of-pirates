@@ -16,7 +16,7 @@
 
 rule initializePirateRules
 active
-minInterval 25
+minInterval 1
 {
    // AssertiveWall: Check for Pirate Maps and set gStartOnDifferentIslands true for all of them
    if (cRandomMapName == "zpburma_b" ||
@@ -40,8 +40,10 @@ minInterval 25
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
    }
 
-   // AssertiveWall: Winter Wonderland II
-   if (cRandomMapName == "winterwonderlandii")
+   // AssertiveWall: Land Maps
+   if (cRandomMapName == "winterwonderlandii" ||
+       cRandomMapName == "zpwildwest" ||
+       cRandomMapName == "zpmississippi")
    {
       gIsPirateMap = true;
       gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
@@ -64,9 +66,6 @@ minInterval 25
       cvOkToGatherWood = false;      // Setting it false will turn off wood gathering. True turns it on.
       gHomeBase = kbGetPlayerStartingPosition(cMyID);
    }
-
-
-
 
    // Initializes all pirate functions
 
@@ -207,7 +206,7 @@ minInterval 5
    int ourStationQuery = -1;
    bool dontReturn = false;
 
-   ourStationQuery = createSimpleUnitQuery(cUnitTypezpInvisibleRailwayStation, cPlayerRelationAny, cUnitStateAny);
+   ourStationQuery = createSimpleUnitQuery(cUnitTypeTradingPost, cPlayerRelationSelf, cUnitStateAny);
    numberFound = kbUnitQueryExecute(ourStationQuery);
 
    for (i = 0; < numberFound)
@@ -228,6 +227,7 @@ minInterval 5
 
    stationQueryID = createSimpleUnitQuery(cUnitTypezpInvisibleRailwayStation, cPlayerRelationAny, cUnitStateAny);
    numberFound = kbUnitQueryExecute(stationQueryID);
+   aiChat(1, "Number Target Stations: " + numberFound);
 
    for (i = 0; < numberFound)
    {
@@ -236,11 +236,12 @@ minInterval 5
       tempLocation = kbUnitGetPosition(tempUnit);
       tempEnemy = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
                cUnitStateAlive, tempLocation, 55.0);
-      if (tempEnemy > 15)
+      //if (tempEnemy > 15)
+      if (true == true)
       {
          tempFriendly = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly,
                cUnitStateAlive, tempLocation, 55.0);
-         if (tempEnemy - tempFriendly > bestStationEnemyArmyCount - bestStationFriendlyArmyCount && tempFriendly > 10)
+         if (tempEnemy - tempFriendly > bestStationEnemyArmyCount - bestStationFriendlyArmyCount)// && tempFriendly > 10)
          {
             bestStationID = tempUnit;
             bestStationEnemyArmyCount = tempEnemy;
@@ -249,7 +250,7 @@ minInterval 5
       }
    }
 
-   //aiChat(1, "Best Station ID: " + bestStationID + " bestStationEnemyArmyCount: " + bestStationEnemyArmyCount + " bestStationFriendlyArmyCount: " + bestStationFriendlyArmyCount);
+   aiChat(1, "Best Station ID: " + bestStationID + " bestStationEnemyArmyCount: " + bestStationEnemyArmyCount + " bestStationFriendlyArmyCount: " + bestStationFriendlyArmyCount);
 
    if (bestStationID > 0)
    {
