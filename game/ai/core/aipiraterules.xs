@@ -189,7 +189,7 @@ minInterval 5
 {
    // Look at all rail stations, if we have military nearby then send the train
    // Condition: 
-   //    > 15 enemy
+   //    > 10 enemy
    //    > 10 friendly
    //    -> then picks the most outnumbered station
    
@@ -206,7 +206,7 @@ minInterval 5
    int ourStationQuery = -1;
    bool dontReturn = false;
 
-   ourStationQuery = createSimpleUnitQuery(cUnitTypeTradingPost, cPlayerRelationSelf, cUnitStateAny);
+   ourStationQuery = createSimpleUnitQuery(cUnitTypeTradingPost, cPlayerRelationSelf, cUnitStateAlive);
    numberFound = kbUnitQueryExecute(ourStationQuery);
 
    for (i = 0; < numberFound)
@@ -223,11 +223,9 @@ minInterval 5
    {
       return;
    }
-   //aiChat(1, "Found a station");
 
    stationQueryID = createSimpleUnitQuery(cUnitTypezpInvisibleRailwayStation, cPlayerRelationAny, cUnitStateAny);
    numberFound = kbUnitQueryExecute(stationQueryID);
-   aiChat(1, "Number Target Stations: " + numberFound);
 
    for (i = 0; < numberFound)
    {
@@ -235,13 +233,12 @@ minInterval 5
       tempUnit = kbUnitQueryGetResult(stationQueryID, i);
       tempLocation = kbUnitGetPosition(tempUnit);
       tempEnemy = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
-               cUnitStateAlive, tempLocation, 55.0);
-      //if (tempEnemy > 15)
-      if (true == true)
+               cUnitStateAlive, tempLocation, 65.0);
+      if (tempEnemy > 10)
       {
          tempFriendly = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly,
-               cUnitStateAlive, tempLocation, 55.0);
-         if (tempEnemy - tempFriendly > bestStationEnemyArmyCount - bestStationFriendlyArmyCount)// && tempFriendly > 10)
+               cUnitStateAlive, tempLocation, 65.0);
+         if (tempEnemy - tempFriendly > bestStationEnemyArmyCount - bestStationFriendlyArmyCount && tempFriendly > 10)
          {
             bestStationID = tempUnit;
             bestStationEnemyArmyCount = tempEnemy;
@@ -249,8 +246,6 @@ minInterval 5
          }
       }
    }
-
-   aiChat(1, "Best Station ID: " + bestStationID + " bestStationEnemyArmyCount: " + bestStationEnemyArmyCount + " bestStationFriendlyArmyCount: " + bestStationFriendlyArmyCount);
 
    if (bestStationID > 0)
    {
