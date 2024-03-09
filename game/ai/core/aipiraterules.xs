@@ -189,15 +189,21 @@ minInterval 5
 {
    // Look at all rail stations, if we have military nearby then send the train
    // Condition: 
-   //    > 10 enemy
+   //    > 10 enemy or > 5 enemy buildings (likely in their base, killing their dudes)
    //    > 10 friendly
    //    -> then picks the most outnumbered station
+   //    Will send to KOTH station if there are > 10 enemy
+
+   /*if (aiPlanGetIDByTypeAndVariableType(cPlanResearch, cResearchPlanTechID, cTechzpArmoredTrainLevy) < 0)
+   {
+      researchSimpleTech(cTechzpArmoredTrainLevy, cUnitTypezpArmoredTrainBarracksBuilding, -1, 99);
+   }*/
    
    int stationQueryID = -1;
    int numberFound = -1;
    int bestStationID = -1;
    int bestStationFriendlyArmyCount = -1;
-   int bestStationEnemyArmyCount = -1;
+   int bestStationEnemyArmyCount = -999;
    int tempFriendly = -1;
    int tempEnemy = -1;
    vector tempLocation = cInvalidVector;
@@ -205,6 +211,9 @@ minInterval 5
    int ourStation = -1;
    int ourStationQuery = -1;
    bool dontReturn = false;
+   int tempNearbyEnemyBuildings = -1;
+   vector kothBuildingLoc = cInvalidVector;
+   bool chooseKOTH = false;
 
    ourStationQuery = createSimpleUnitQuery(cUnitTypeTradingPost, cPlayerRelationSelf, cUnitStateAlive);
    numberFound = kbUnitQueryExecute(ourStationQuery);
@@ -226,23 +235,40 @@ minInterval 5
 
    stationQueryID = createSimpleUnitQuery(cUnitTypezpInvisibleRailwayStation, cPlayerRelationAny, cUnitStateAny);
    numberFound = kbUnitQueryExecute(stationQueryID);
+   kothBuildingLoc = kbUnitGetPosition(getUnit(cUnitTypeypKingsHill, cPlayerRelationAny, cUnitStateAlive));
 
    for (i = 0; < numberFound)
    {
-      // See if there's a suitable target
+      // See if there's a suitable target, starting with KOTH
       tempUnit = kbUnitQueryGetResult(stationQueryID, i);
       tempLocation = kbUnitGetPosition(tempUnit);
       tempEnemy = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
                cUnitStateAlive, tempLocation, 65.0);
-      if (tempEnemy > 10)
+      tempNearbyEnemyBuildings = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, tempLocation, 65.0);
+
+      if (aiIsKOTHAllowed() == true)
+      { // Make sure we grab KOTH location. We'll use kothBuilding to tell whether we've found the hill nearby or not
+         
+         if (distance(tempLocation, kothBuildingLoc) < 50)
+         {
+            chooseKOTH = true;
+         }
+      }
+
+      if (tempEnemy > 10 || tempNearbyEnemyBuildings > 5)
       {
          tempFriendly = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly,
                cUnitStateAlive, tempLocation, 65.0);
-         if (tempEnemy - tempFriendly > bestStationEnemyArmyCount - bestStationFriendlyArmyCount && tempFriendly > 10)
+         if (tempEnemy - tempFriendly > bestStationEnemyArmyCount - bestStationFriendlyArmyCount && (tempFriendly > 10 || chooseKOTH == true))
          {
             bestStationID = tempUnit;
             bestStationEnemyArmyCount = tempEnemy;
             bestStationFriendlyArmyCount = tempFriendly;
+            if (chooseKOTH == true)
+            {  // If we found the hill, and it's worth sending there, send it.
+               break;
+            }
          }
       }
    }
