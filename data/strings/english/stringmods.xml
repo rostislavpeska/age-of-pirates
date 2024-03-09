@@ -1035,10 +1035,10 @@
       <string _locid="301031">Every Residential building spawns a Cowboy to protect the territory.</string>
       <string _locid="301032">Veteran Cowboys</string>
       <string _locid="301033">Improves Cowboy's Attack and Hitpoints</string>
-      <string _locid="301034">Veteran Mounted Cowboy</string>
-      <string _locid="301035">Guard Mounted Cowboy</string>
-      <string _locid="301036">Legendary Mounted Cowboy</string>
-      <string _locid="301037">ZP Merc Mounted Cowboy</string>
+      <string _locid="301034">Veteran Cowpuncher</string>
+      <string _locid="301035">Guard Cowpuncher</string>
+      <string _locid="301036">Legendary Cowpuncher</string>
+      <string _locid="301037">ZP Merc Cowpuncher</string>
       <string _locid="301038">Guard Cowboys</string>
       <string _locid="301039">ZP Train Station: Area</string>
       <string _locid="301040">Fence</string>
@@ -1245,8 +1245,8 @@
       <string _locid="400060">Armored Stagecoach</string>
       <string _locid="400061">ZP Armored Stagecoach</string>
       <string _locid="400062">A heavy stagecoach armed to take on the wild west.</string>
-      <string _locid="400063">Mounted Cowboy</string>
-      <string _locid="400064">ZP Mounted Cowboy</string>
+      <string _locid="400063">Cowpuncher</string>
+      <string _locid="400064">ZP Cowpuncher</string>
       <string _locid="400065">A Mounted Cowboy hailing from the wild west.</string>
       <string _locid="400066">Sheriff's Office</string>
       <string _locid="400067">ZP Sheriff Office</string>
