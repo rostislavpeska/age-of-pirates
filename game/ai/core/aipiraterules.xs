@@ -16,7 +16,7 @@
 
 rule initializePirateRules
 active
-minInterval 25
+minInterval 1
 {
    // AssertiveWall: Check for Pirate Maps and set gStartOnDifferentIslands true for all of them
    if (cRandomMapName == "zpburma_b" ||
@@ -40,8 +40,10 @@ minInterval 25
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
    }
 
-   // AssertiveWall: Winter Wonderland II
-   if (cRandomMapName == "winterwonderlandii")
+   // AssertiveWall: Land Maps
+   if (cRandomMapName == "winterwonderlandii" ||
+       cRandomMapName == "zpwildwest" ||
+       cRandomMapName == "zpmississippi")
    {
       gIsPirateMap = true;
       gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
@@ -64,9 +66,6 @@ minInterval 25
       cvOkToGatherWood = false;      // Setting it false will turn off wood gathering. True turns it on.
       gHomeBase = kbGetPlayerStartingPosition(cMyID);
    }
-
-
-
 
    // Initializes all pirate functions
 
@@ -190,7 +189,7 @@ minInterval 5
 {
    // Look at all rail stations, if we have military nearby then send the train
    // Condition: 
-   //    > 15 enemy
+   //    > 10 enemy
    //    > 10 friendly
    //    -> then picks the most outnumbered station
    
@@ -207,7 +206,7 @@ minInterval 5
    int ourStationQuery = -1;
    bool dontReturn = false;
 
-   ourStationQuery = createSimpleUnitQuery(cUnitTypezpInvisibleRailwayStation, cPlayerRelationAny, cUnitStateAny);
+   ourStationQuery = createSimpleUnitQuery(cUnitTypeTradingPost, cPlayerRelationSelf, cUnitStateAlive);
    numberFound = kbUnitQueryExecute(ourStationQuery);
 
    for (i = 0; < numberFound)
@@ -224,7 +223,6 @@ minInterval 5
    {
       return;
    }
-   //aiChat(1, "Found a station");
 
    stationQueryID = createSimpleUnitQuery(cUnitTypezpInvisibleRailwayStation, cPlayerRelationAny, cUnitStateAny);
    numberFound = kbUnitQueryExecute(stationQueryID);
@@ -235,11 +233,11 @@ minInterval 5
       tempUnit = kbUnitQueryGetResult(stationQueryID, i);
       tempLocation = kbUnitGetPosition(tempUnit);
       tempEnemy = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
-               cUnitStateAlive, tempLocation, 55.0);
-      if (tempEnemy > 15)
+               cUnitStateAlive, tempLocation, 65.0);
+      if (tempEnemy > 10)
       {
          tempFriendly = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly,
-               cUnitStateAlive, tempLocation, 55.0);
+               cUnitStateAlive, tempLocation, 65.0);
          if (tempEnemy - tempFriendly > bestStationEnemyArmyCount - bestStationFriendlyArmyCount && tempFriendly > 10)
          {
             bestStationID = tempUnit;
@@ -248,8 +246,6 @@ minInterval 5
          }
       }
    }
-
-   //aiChat(1, "Best Station ID: " + bestStationID + " bestStationEnemyArmyCount: " + bestStationEnemyArmyCount + " bestStationFriendlyArmyCount: " + bestStationFriendlyArmyCount);
 
    if (bestStationID > 0)
    {
