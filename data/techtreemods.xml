@@ -12937,6 +12937,19 @@
 
     </effects>
   </tech>
+  <tech name="zpUnlockTrainStation" type="Normal">
+    <dbid></dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpTrainStationA</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpTrainStationB</target>
+      </effect>
+    </effects>
+  </tech>
   
 
   
