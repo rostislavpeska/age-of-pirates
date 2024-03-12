@@ -4744,6 +4744,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasVeteranTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
     </effects>
   </tech>
   <tech name="AAStandardNativeTechsPI">
@@ -4768,6 +4770,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasVeteranTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
     </effects>
   </tech>
   <tech name="ypAAAsianStandardTechsPI">
@@ -4792,6 +4796,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasVeteranTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothers">
@@ -4816,6 +4822,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasVeteranTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothersGerman">
@@ -4840,6 +4848,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasVeteranTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialAmericans">
@@ -4864,6 +4874,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasVeteranTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
     </effects>
   </tech>
   <tech name="DEChampionNativeWarriorsAfricanShadow">
@@ -4888,6 +4900,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasVeteranTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialMexicans">
@@ -4912,6 +4926,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredOrthodox</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasVeteranTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
     </effects>
   </tech>
   <tech name="DEHeavyFixedGun">
@@ -5694,7 +5710,7 @@
     <cost resourcetype="Wood">200.0000</cost>
     <researchpoints>60.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\trade\trade_boat_02_icon.png</icon>
+    <icon>resources\images\icons\techs\trade_flatboat.png</icon>
     <rollovertextid>122532</rollovertextid>
     <flag>UniqueProtoUnitInstance</flag>
     <flag>CountsTowardEconomicScore</flag>
@@ -12919,6 +12935,19 @@
         <target type="ProtoUnit">zpSPCSocketJesuit</target>
       </effect>
 
+    </effects>
+  </tech>
+  <tech name="zpUnlockTrainStation" type="Normal">
+    <dbid></dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpTrainStationA</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpTrainStationB</target>
+      </effect>
     </effects>
   </tech>
   

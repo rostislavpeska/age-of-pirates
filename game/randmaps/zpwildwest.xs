@@ -3435,6 +3435,96 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 
 	}
 
+	// AI Renegade Leaders
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+
+	rmCreateTrigger("ZP Pick Renegade Captain"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerCondition("Tech Status Equals");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParamInt("TechID",586);
+	rmSetTriggerConditionParamInt("Status",2);
+
+	int renegadeCaptain=-1;
+	renegadeCaptain = rmRandInt(1,3);
+
+	if (renegadeCaptain==1)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistGortz"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (renegadeCaptain==2)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistValentine"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (renegadeCaptain==3)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistkhora"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpAIAirshipSetup"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	// AI Western Leaders
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+
+	rmCreateTrigger("ZP Pick Western Leader"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerCondition("Tech Status Equals");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParamInt("TechID",586);
+	rmSetTriggerConditionParamInt("Status",2);
+
+	int westernLeader=-1;
+	westernLeader = rmRandInt(1,3);
+
+	if (westernLeader==1)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateWesternWyatEarp"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (westernLeader==2)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateWesternPinkertons"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (westernLeader==3)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateWesternJesseJames"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
 	// Testing
 
 	/*for (k=1; <= cNumberNonGaiaPlayers) {

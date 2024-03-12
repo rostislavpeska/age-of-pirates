@@ -21428,6 +21428,7 @@
     <placementfile>buildinglarge.xml</placementfile>
     <impacttype>Stone</impacttype>
     <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\train_station_portrait.png</icon>
     <portraiticon>resources\art\buildings\train_station_portrait.png</portraiticon>
     <rollovertextid>301067</rollovertextid>
     <shortrollovertextid>301067</shortrollovertextid>
@@ -23162,6 +23163,54 @@
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>DestroyUnderBuilding</flag>
   </unit>
+  <unit id="20245" name="zpCargoBoat">
+    <dbid>20245</dbid>
+    <displaynameid>122530</displaynameid>
+    <editornameid>301170</editornameid>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
+    <maxvelocity>7.0000</maxvelocity>
+    <maxrunvelocity>9.0000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <animfile>units\trade\naval\rowboat.xml</animfile>
+    <icon>resources\art\units\naval\trade\trade_rowboat_portrait.png</icon>
+    <portraiticon>resources\art\units\naval\trade\trade_rowboat_portrait.png</portraiticon>
+    <rollovertextid>29374</rollovertextid>
+    <shortrollovertextid>29373</shortrollovertextid>
+    <initialhitpoints>240.0000</initialhitpoints>
+    <maxhitpoints>240.0000</maxhitpoints>
+    <los>8.0000</los>
+    <trainpoints>30.0000</trainpoints>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Tracked</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>VisibleUnderFog</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
 
 
 
@@ -23564,6 +23613,7 @@
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
     <train row="0" page="0" column="0">zpSPCSocketJesuit</train>
+    <train row="0" page="0" column="0">zpTrainStationA</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -23582,6 +23632,7 @@
     <protoaction>
       <name>Build</name>
       <rate type="zpSPCSocketJesuit">5.000000</rate>
+      <rate type="zpTrainStationA">5.000000</rate>
     </protoaction>
   </unit>
   <unit id="" name="zpSPCSocketJesuit">
