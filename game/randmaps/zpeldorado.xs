@@ -463,6 +463,9 @@ void main(void)
    // Water Flag
    int waterSpawnFlagID = rmCreateObjectDef("water spawn flag");
 	rmAddObjectDefItem(waterSpawnFlagID, "HomeCityWaterSpawnFlag", 1, 0);
+   rmSetObjectDefMinDistance(waterSpawnFlagID, 0.0);
+	rmSetObjectDefMaxDistance(waterSpawnFlagID, 4.0);
+   rmAddObjectDefConstraint(waterSpawnFlagID, avoidTradeRouteSmall_dk);
    
 
    // Player Island Cliffs
@@ -2195,6 +2198,7 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
 
 // Testing
 
