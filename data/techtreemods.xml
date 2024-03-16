@@ -6753,6 +6753,7 @@
       <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyScientists</effect>
       <effect type="TechStatus" status="obtainable">zpArmoredTrainImprove</effect>
       <effect type="TechStatus" status="obtainable">zpArmoredTrainTech</effect>
+      <effect type="TechStatus" status="obtainable">zpScientistArtillery</effect>
     </effects>
   </tech>
   <tech name ="zpPickScientist" type ="Normal">
@@ -10902,8 +10903,8 @@
   <tech name="zpArmoredTrainTech" type="Normal">
     <dbid>40384</dbid>
     <displaynameid>300999</displaynameid>
-    <cost resourcetype="Wood">1800.0000</cost>
-    <cost resourcetype="Gold">1800.0000</cost>
+    <cost resourcetype="Wood">1200.0000</cost>
+    <cost resourcetype="Gold">1200.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\armored_train.png</icon>
@@ -11274,8 +11275,8 @@
   <tech name="zpArmoredTrainImprove" type="Normal">
     <dbid>40393</dbid>
     <displaynameid>300997</displaynameid>
-    <cost resourcetype="Wood">2500.0000</cost>
-    <cost resourcetype="Gold">2500.0000</cost>
+    <cost resourcetype="Wood">2000.0000</cost>
+    <cost resourcetype="Gold">2000.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\armored_train_improve.png</icon>
@@ -11823,8 +11824,31 @@
       <effect type="CommandRemove" tech="zpScientistIronFleet">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="" page="0" column="4">
+      <effect type="CommandAdd" tech="zpScientistArtillery" page="2" column="4">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpScientistArtillery" type="Normal">
+    <dbid>40415</dbid>
+    <displaynameid>301171</displaynameid>
+    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">900.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\renegade_rockets.png</icon>
+    <rollovertextid>301172</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>YPCheckPopCap</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="Rocket" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>

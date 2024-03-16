@@ -19838,8 +19838,8 @@
     <minimapicon>ui\minimap\asian_native_site</minimapicon>
     <capturedminimapicon>ui\minimap\asian_native_site_c</capturedminimapicon>
     <portraiticon>resources\art\units\natives\cowboys.png</portraiticon>
-    <rollovertextid>400136</rollovertextid>
-    <shortrollovertextid>400136</shortrollovertextid>
+    <rollovertextid>301173</rollovertextid>
+    <shortrollovertextid>301173</shortrollovertextid>
     <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
     <los>9.0000</los>
     <unittype>LogicalTypeBuildingsNotWalls</unittype>
