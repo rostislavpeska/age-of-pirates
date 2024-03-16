@@ -1013,17 +1013,17 @@ void analyzeGameSettingsAndType()
       break;
    }
       case cDifficultyExpert: // Hardest.
-   {  // AssertiveWall: Interval decreased to 1 min
+   {  // AssertiveWall: Interval decreased to 1.5 min
       gMaxPop = maxPop;
-         gAttackMissionInterval = 60000; // 2 Minutes.
+         gAttackMissionInterval = 90000; // 2 Minutes.
          kbSetPlayerHandicap(cMyID, startingHandicap * 1.15); // +15% Boost.
       aiSetMicroFlags(cMicroLevelHigh);
       break;
    }
       case cDifficultyExtreme: // Extreme.
-   {  // AssertiveWall: Interval decreased to 1 min
+   {  // AssertiveWall: Interval decreased to 1.5 min
       gMaxPop = maxPop;
-         gAttackMissionInterval = 60000; // 2 Minutes.
+         gAttackMissionInterval = 90000; // 2 Minutes.
          kbSetPlayerHandicap(cMyID, startingHandicap * 1.30); // +30% Boost.
       aiSetMicroFlags(cMicroLevelHigh);
       break;

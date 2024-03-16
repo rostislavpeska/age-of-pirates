@@ -1001,8 +1001,8 @@ minInterval 15
          if (isEnemy == true)
          {
             // AssertiveWall: Replace the minimum attack time with the more sophisticated allowedToAttack function
-            //if (currentTime - gLastAttackMissionTime < gAttackMissionInterval)
-            if (allowedToAttack() == false)
+            if (currentTime - gLastAttackMissionTime < gAttackMissionInterval)
+            //if (allowedToAttack() == false)
             {
                shouldAttack = false;
             }
@@ -1474,8 +1474,8 @@ minInterval 15
          if (targetIsEnemy == true)
          {  
             // AssertiveWall: Replace the minimum attack time with the more sophisticated allowedToAttack function
-            //if (currentTime - gLastAttackMissionTime < 2 * gAttackMissionInterval)
-            if (allowedToAttack() == false)
+            if (currentTime - gLastAttackMissionTime < 2 * gAttackMissionInterval)
+            //if (allowedToAttack() == false)
             {
                return;
             }
