@@ -1448,7 +1448,7 @@ rule transportMonitor
 inactive
 minInterval 10
 {
-    // AssertiveWall: Instead of checking for any active transport plans, check to see if we have an idel warship to use
+    // AssertiveWall: Instead of checking for any active transport plans, check to see if we have an idle warship to use
    int numberTransportPlans = aiPlanGetNumber(cPlanTransport);
    vector homePosition = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
    int idleWarshipQuery = createSimpleIdleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive);
@@ -1553,7 +1553,9 @@ minInterval 10
    //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, position);
 
    // once we started transporting, make sure no one can steal units from us
-   int transportPlanID = createTransportPlan(position, kbBaseGetMilitaryGatherPoint(cMyID, kbBaseGetMainID(cMyID)), 100, false);
+   // AssertiveWall: Get a better dropoff point
+   vector dropoffPoint = getDropoffPoint(position, kbBaseGetMilitaryGatherPoint(cMyID, kbBaseGetMainID(cMyID)), 1);
+   int transportPlanID = createTransportPlan(position, dropoffPoint, 100, false);
 
    if (transportPlanID < 0)
    {
