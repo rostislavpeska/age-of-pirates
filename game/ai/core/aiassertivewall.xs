@@ -6527,7 +6527,7 @@ minInterval 30
                // AssertiveWall: Now build wall
                if (gStartOnDifferentIslands == false)
                {
-                  xsEnableRule("forwardBaseWall"); // AssertiveWall: Chain of rules to build walls and towers
+                  //xsEnableRule("forwardBaseWall"); // AssertiveWall: Chain of rules to build walls and towers
                }
                gForwardBaseState = cForwardBaseStateActive;
                gForwardBaseID = kbBaseCreate(cMyID, "Forward Tower Base: " + kbBaseGetNextID(), kbUnitGetPosition(fortUnitID), 40.0);
