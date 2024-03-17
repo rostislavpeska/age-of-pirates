@@ -4429,7 +4429,7 @@ void main(void)
 	rmCreateTrigger("I Update WaterTrade");
 	rmAddTriggerCondition("Player Unit Count");
 	rmSetTriggerConditionParamInt("PlayerID",0);
-	rmSetTriggerConditionParam("Protounit","zpTradeCaravel");
+	rmSetTriggerConditionParam("Protounit","zpCargoBoat");
 	rmSetTriggerConditionParam("Op",">=");
 	rmSetTriggerConditionParamInt("Count",1);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");

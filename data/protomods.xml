@@ -846,6 +846,7 @@
     <flag>TieToWaterSurface</flag>
     <flag>InvulnerableIfGaia</flag>
     <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
     <command page="10" column="0">Delete</command>
     <tactics>garrisonable.tactics</tactics>
   </unit>
@@ -21409,7 +21410,7 @@
       <damagebonus type="AbstractLightInfantry">1.300000</damagebonus>
       <damagebonus type="HuntedResource">0.000001</damagebonus>
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
-      <damagebonus type="AbstractArmoredTrain">37.000000</damagebonus>
+      <damagebonus type="AbstractArmoredTrain">18.000000</damagebonus>
       <damagebonus type="zpArmoredTrainGunpowderEmitter">40000</damagebonus>
       <damagearea>15.000000</damagearea>
       <damageflags>SelfAllyEnemy</damageflags>
@@ -23210,6 +23211,33 @@
     <flag>TieToWaterSurface</flag>
     <flag>VisibleUnderFog</flag>
     <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20246" name="zpJewishProps">
+    <dbid>20246</dbid>
+    <displaynameid>102747</displaynameid>
+    <editornameid>301174</editornameid>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>homecity\homecity_units\jewish_preacher.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>Unit</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <tactics>propvil.tactics</tactics>
   </unit>
 
 

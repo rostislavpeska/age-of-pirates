@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\buildings_west\cannonworks\textures\cannonworks_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_west\cannonworks\textures\cannonworks_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_west\cannonworks\textures\cannonworks_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

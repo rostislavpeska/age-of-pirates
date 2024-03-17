@@ -11,8 +11,8 @@
 		<unit variation="62" posx="-2.9744" posz="-12.0673" orientx="0.9237" orienty="0.0000" orientz="0.3831">NativeTownObstruction</unit>
 		<unit variation="62" posx="-8.6107" posz="-11.0069" orientx="0.9237" orienty="0.0000" orientz="0.3831">NativeTownObstruction</unit>
 		<unit variation="62" posx="2.2831" posz="-11.6750" orientx="0.9237" orienty="0.0000" orientz="0.3831">NativeTownObstruction</unit>
-		<unit variation="86" posx="-7.3949" posz="-12.1318" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropVilMale</unit>
-		<unit variation="86" posx="-5.6786" posz="-12.7452" orientx="-0.9237" orienty="-0.0000" orientz="-0.3831">deNatEUPropVilMale</unit>
+		<unit variation="86" posx="-7.3949" posz="-12.1318" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpJewishProps</unit>
+		<unit variation="86" posx="-5.6786" posz="-12.7452" orientx="-0.9237" orienty="-0.0000" orientz="-0.3831">zpJewishProps</unit>
 		<unit variation="90" posx="-5.5008" posz="-12.0132" orientx="-0.0012" orienty="0.0000" orientz="1.0000">ypSMJesuitAccessory</unit>
 		<unit variation="47" posx="5.2800" posz="-11.9401" orientx="0.0004" orienty="0.0000" orientz="-1.0000">NativePirates</unit>
 		<unit variation="104" posx="0.1393" posz="-10.4487" orientx="0.0004" orienty="0.0000" orientz="-1.0000">zpNativeField</unit>
