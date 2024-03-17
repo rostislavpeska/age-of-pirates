@@ -1324,6 +1324,8 @@
       <string _locid="400133">Gives Jesse James a special aura signifficantly increasing James' Gang attack and hitpoint</string>
       <string _locid="400134">Builds Gun Store</string>
       <string _locid="400135">Outfit your armies with the guns that won the west.</string>
+      <string _locid="400136" symbol="cStringNativePreAlly"> "May your belly never grumble, your heart never ache, and your horse never stumble."</string>
+
 
       <!-- ===================================== -->
       <!-- ===================================== -->

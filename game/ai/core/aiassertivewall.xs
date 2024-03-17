@@ -7,6 +7,361 @@
 //==============================================================================
 
 //==============================================================================
+// allowedToAttack
+// AssertiveWall: replaces the logic involving gAttackMissionInterval to 
+//    determine if we are allowed to attack. Instead of an interval, we'll 
+//    try to make an educated guess on how big our army needs to be
+// Returns true if we are allowed to attack
+// Based on the monitorScores rule in aiChats
+//==============================================================================
+bool allowedToAttack(void)
+{
+   // First make sure we have enough military depending on age
+   int ageVar = kbGetAge();
+   int militaryQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(militaryQueryID);
+   int militaryStrength = 0;
+   int puid = -1;
+   for (i = 0; < numberFound)
+   {
+      puid = kbUnitGetProtoUnitID(kbUnitQueryGetResult(militaryQueryID, i));
+      militaryStrength = militaryStrength + getMilitaryUnitStrength(puid);
+   }
+
+   // Create bounds where we shouldn't/should always attack regardless of score
+   if (ageVar == cAge2)
+   {
+      if (militaryStrength < 10){return false;}
+      else if (militaryStrength > 30){return true;}
+   }
+   else if (ageVar == cAge3)
+   {
+      if (militaryStrength < 15){return false;}
+      else if (militaryStrength > 40){return true;}
+   }
+   else if (ageVar == cAge4)
+   {
+      if (militaryStrength < 20){return false;}
+      else if (militaryStrength > 50){return true;}
+   }
+   else if (ageVar == cAge5)
+   {
+      if (militaryStrength < 25){return false;}
+      else if (militaryStrength > 60){return true;}
+   }
+
+   // The next block looks at score breakdowns to determine if we're in a good spot to attack
+
+   static int atkStartingScores = -1; // Array holding initial scores for each player
+   static int atkHighScores = -1;     // Array, each player's high-score mark
+   static int atkTeamScores = -1;
+   int teamSize = (cNumberPlayers -1) / 2;
+   int myTeam = kbGetPlayerTeam(cMyID);
+   int enemyTeam = -1;
+   int score = -1;
+   int firstHumanAlly = -1;
+
+   if (atkHighScores < 0)
+   {
+      atkHighScores = xsArrayCreateInt(cNumberPlayers, 0, "High Scores"); // Init this below.
+   }
+   if (atkStartingScores < 0)
+   {
+      atkStartingScores = xsArrayCreateInt(cNumberPlayers, 0, "Starting Scores"); 
+      for (player = 1; < cNumberPlayers)
+      {
+         score = aiGetScore(player);
+         debugChats("Starting score for player: " + player + " is: " + score);
+         xsArraySetInt(atkStartingScores, player, score);
+         xsArraySetInt(atkHighScores, player, 0); // High scores will track score actual - starting score, to handle Deathmatch better.
+      }
+   }
+   if (atkTeamScores < 0) // Init this below.
+   {
+      atkTeamScores = xsArrayCreateInt(3, 0, "Team total scores");
+   }
+
+   if (firstHumanAlly < 0) // First pass of this Rule.
+   {
+      for (player = 1; < cNumberPlayers)
+      {
+         if (kbGetPlayerTeam(player) == myTeam)
+         {
+            if ((firstHumanAlly < 1) && (kbIsPlayerHuman(player) == true))
+            {
+               firstHumanAlly = player;
+            }
+         }
+         else if (enemyTeam < 0)
+         {
+            enemyTeam = kbGetPlayerTeam(player);
+         }
+      }
+   }
+
+   // We can't attack during treaty.
+   if (aiTreatyActive() == true)
+   {
+      return false;
+   }
+
+   // Update team totals, check for new high scores.
+   xsArraySetInt(atkTeamScores, myTeam, 0);
+   xsArraySetInt(atkTeamScores, enemyTeam, 0);
+   int lowestRemainingScore = 100000; // Very high, will be reset by first real score.
+   int lowestRemainingPlayer = -1;
+   int highestScore = -1;
+   int highestPlayer = -1;
+
+   for (player = 1; < cNumberPlayers)
+   {
+      if (kbHasPlayerLost(player) == true)
+      {
+         continue;
+      }
+      
+      score = aiGetScore(player) - xsArrayGetInt(atkStartingScores, player); // Actual score relative to initial score.
+      
+      if (score < lowestRemainingScore)
+      {
+         lowestRemainingScore = score;
+         lowestRemainingPlayer = player;
+      }
+      if (score > highestScore)
+      {
+         highestScore = score;
+         highestPlayer = player;
+      }
+      if (score > xsArrayGetInt(atkHighScores, player))
+      {
+         xsArraySetInt(atkHighScores, player, score); // Set personal high score.
+      }
+      if (kbGetPlayerTeam(player) == myTeam)       // Update team scores.
+      {
+         xsArraySetInt(atkTeamScores, myTeam, xsArrayGetInt(atkTeamScores, myTeam) + score);
+      }
+      else // Enemy team.
+      {
+         xsArraySetInt(atkTeamScores, enemyTeam, xsArrayGetInt(atkTeamScores, enemyTeam) + score);
+      }
+   }
+
+   // Bools used to indicate chat usage, prevent re-use.
+   static bool enemyNearlyDead = false;
+   static bool enemyStrong = false;
+   static bool losingEnemyStrong = false;
+   static bool losingEnemyWeak = false;
+   static bool losingAllyStrong = false;
+   static bool losingAllyWeak = false;
+   static bool winningNormal = false;
+   static bool winningAllyStrong = false;
+   static bool winningAllyWeak = false;
+
+   static int shouldResignCount = 0;         // Set to 1, 2 and 3 as chats are used.
+   static int shouldResignLastTime = 420000; // When did I last suggest resigning?  Consider it again 3 min later.
+                                             // Defaults to 7 min, so first suggestion won't be until 10 minutes.
+
+   // Attempt to fire chats, from most specific to most general.
+   // When we chat, mark that one used and exit for now, i.e no more than one chat per rule execution.
+
+   // Check the winning / losing situations, if it's neither it's a tie.
+   bool winning = false;
+   bool losing = false;
+   float ourAverageScore = (aiGetScore(cMyID) + aiGetScore(firstHumanAlly)) / 2.0;
+
+   // We are winning chats.
+   if (xsArrayGetInt(atkTeamScores, myTeam) > (1.20 * xsArrayGetInt(atkTeamScores, enemyTeam)))
+   {
+      winning = true;
+
+      // Are we winning because my ally rocks?
+      // Try to catch up
+      if ((winningAllyStrong == false) && (firstHumanAlly == highestPlayer))
+      {
+         winningAllyStrong = true;
+         sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreWinningHeIsStronger);
+         return false;
+      }
+
+      // Are we winning in spite of my weak ally?
+      // Stay offensive
+      if ((winningAllyWeak == false) && (cMyID == highestPlayer))
+      {
+         winningAllyWeak = true;
+         sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreWinningHeIsWeaker);
+         return true;
+      }
+
+      // OK, we're winning, but neither of us has high score.
+      // Hopefully we will both attack together
+      if (winningNormal == false)
+      {
+         winningNormal = true;
+         sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreWinning);
+         return true;
+      }
+   }
+
+   // We are losing chats.
+   if (xsArrayGetInt(atkTeamScores, myTeam) < (0.70 * xsArrayGetInt(atkTeamScores, enemyTeam)))
+   { 
+      losing = true;
+
+      // Talk about resigning?
+      // AssertiveWall: increase the time interval each time it's sent. 10, 15 mins
+      if ((shouldResignCount < 3) &&
+          ((xsGetTime() - shouldResignLastTime) > (5 + 5 * shouldResignCount) * 60 * 1000)) // Haven't done it 3 times or within 3 minutes.
+      {
+
+         shouldResignCount++;
+         shouldResignLastTime = xsGetTime();
+         return false;
+      }
+
+      // HEADS UP: not all chats were made for each civilization. So let's say
+      // we are playing as Germans and we've spotted a weak Hausa. If we then set
+      // losingEnemyWeak to true and send cAICommPromptToAllyWeAreLosingEnemyWeakHausa
+      // we've wasted our taunt. Because Germans don't have VO for this line.
+      // So try to only send a chat when we actually have the VO recorded for it.
+      
+      // Check for "we are losing but let's kill the weakling"
+      if ((losingEnemyWeak == false) && (kbIsPlayerEnemy(lowestRemainingPlayer) == true))
+      {
+         return true;
+      }
+
+      // Check for losing while enemy player has high score.
+      if ((losingEnemyStrong == false) && (kbIsPlayerEnemy(highestPlayer) == true))
+      {
+         return false;
+      }
+
+      // If we're here, we're losing but our team has the high score.  If it's my ally, we're losing because I suck.
+      if ((losingAllyStrong == false) && (firstHumanAlly == highestPlayer))
+      {
+         losingAllyStrong = true;
+         sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingHeIsStronger);
+         return false;
+      }
+      if ((losingAllyWeak == false) && (cMyID == highestPlayer))
+      {
+         losingAllyWeak = true;
+         sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingHeIsWeaker);
+         return true;
+      }
+   } // End chats while we're losing.
+
+   if ((winning == false) && (losing == false))
+   { 
+      // Check for a near-death enemy while the match is even.
+      if ((enemyNearlyDead == false) && (kbIsPlayerEnemy(lowestRemainingPlayer) == true))
+      {
+         if ((lowestRemainingScore * 1.5) < xsArrayGetInt(atkHighScores, lowestRemainingPlayer)) // He's down to 75% of his highscore.
+         {
+            return true;
+         }
+      }
+
+      // Check for very strong enemy.
+      if ((enemyStrong == false) && (kbIsPlayerEnemy(highestPlayer) == true))
+      {
+         if ((ourAverageScore * 1.3) < highestScore) // Enemy has high score, it's at least 30% above our average.
+         { 
+            return false;
+         }
+      }
+   }
+
+   return false;
+}
+
+//==============================================================================
+// getClosestGaiaUnit
+// Query closest unit's position from gaia's perspective, use with caution to avoid cheating.
+// AssertiveWall: based on getClosestGaiaUnitPosition but returns the unit
+//==============================================================================
+int getClosestGaiaUnit(int unitTypeID = -1, vector position = cInvalidVector, float radius = -1.0)
+{
+   xsSetContextPlayer(0);
+   int gaiaUnitQueryID = kbUnitQueryCreate("getClosestGaiaUnitQuery");
+
+   // Define a query to get all matching units.
+   if (gaiaUnitQueryID != -1)
+   {
+      kbUnitQuerySetPlayerID(gaiaUnitQueryID, 0);
+      kbUnitQuerySetUnitType(gaiaUnitQueryID, unitTypeID);
+      kbUnitQuerySetState(gaiaUnitQueryID, cUnitStateAlive);
+      kbUnitQuerySetPosition(gaiaUnitQueryID, position);
+      kbUnitQuerySetMaximumDistance(gaiaUnitQueryID, radius);
+      kbUnitQuerySetAscendingSort(gaiaUnitQueryID, true);
+   }
+   else
+   {
+      xsSetContextPlayer(cMyID);
+      return (-1);
+   }
+
+   kbUnitQueryResetResults(gaiaUnitQueryID);
+
+   if (kbUnitQueryExecute(gaiaUnitQueryID) > 0)
+   {
+      // Get the location of the first(closest) unit.
+      int closestUnit = kbUnitQueryGetResult(gaiaUnitQueryID, 0); 
+      xsSetContextPlayer(cMyID);
+      return (closestUnit);
+   }
+   xsSetContextPlayer(cMyID);
+   return (-1);
+}
+
+//==============================================================================
+/* No idle Vills
+   grabs idle vills and does a simple no-plan tasking to gather from the nearest
+   resource. Designed to be lightweight so it can run quickly and often
+*/
+//==============================================================================
+rule noIdleVills
+inactive
+minInterval 1
+{
+   // Don't run this until age 2
+   if (kbGetAge() < cAge2)
+   {
+      return;
+      //resourcePUID = cUnitTypeFood;
+   }
+
+   int villagerQuery = createSimpleUnitQuery(gEconUnit, cMyID, cUnitStateAlive);
+   kbUnitQuerySetActionType(villagerQuery, cActionTypeIdle);
+   int numberFound = kbUnitQueryExecute(villagerQuery);
+   vector tempLocation = cInvalidVector;
+   int nearestResource = -1;
+   int tempVilID = -1;
+   int resourcePUID = cUnitTypeWood;
+
+   for (i = 0; < numberFound)
+   {
+      tempVilID = kbUnitQueryGetResult(villagerQuery, i);
+      tempLocation = kbUnitGetPosition(tempVilID);
+      nearestResource = getClosestGaiaUnit(resourcePUID, tempLocation, 30);
+      if (nearestResource > 0)
+      {
+         aiTaskUnitWork(tempVilID, nearestResource);
+         //aiChat(1, "Tasked idle Vil. Total: " + numberFound);
+      }
+      else
+      {
+         nearestResource = getClosestGaiaUnit(cUnitTypeGold, tempLocation, 30);
+         if (nearestResource > 0)
+         {
+            aiTaskUnitWork(tempVilID, nearestResource);
+         }
+      }
+   }
+   aiChat(1, "idleVilnum: " + numberFound);
+}
+
+//==============================================================================
 /* getCoastalPoint: 
    Give two points. It will go in that direction until it hits water, then drop
    back a couple steps
@@ -6172,7 +6527,7 @@ minInterval 30
                // AssertiveWall: Now build wall
                if (gStartOnDifferentIslands == false)
                {
-                  xsEnableRule("forwardBaseWall"); // AssertiveWall: Chain of rules to build walls and towers
+                  //xsEnableRule("forwardBaseWall"); // AssertiveWall: Chain of rules to build walls and towers
                }
                gForwardBaseState = cForwardBaseStateActive;
                gForwardBaseID = kbBaseCreate(cMyID, "Forward Tower Base: " + kbBaseGetNextID(), kbUnitGetPosition(fortUnitID), 40.0);
