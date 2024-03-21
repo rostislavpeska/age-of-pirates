@@ -21507,6 +21507,20 @@
     <command page="1" column="4">SetBuildingAsHomeCityGatherPointEconomic</command>
     <command page="1" column="5">SetBuildingAsHomeCityGatherPointMilitary</command>
     <command page="2" column="0">zpStationDeploy</command>
+    <command page="11" column="0">Abilities</command>
+    <!--<command page="11" column="0">zpNatArmoredTrainStation</command>
+    <command page="11" column="0">zpNatArmoredTrainDisabledStation</command>
+    <command page="11" column="0">zpNatArmoredTrainNoResourceStation</command>-->
+    <tactics>trainstation.tactics</tactics>
+    <protoaction>
+      <name>SpawnArmoredTrain</name>
+      <damage>1.000000</damage>
+      <damagetype>Siege</damagetype>
+      <damagecap>1.000000</damagecap>
+      <rof>1.000000</rof>
+      <maxrange>100000.000000</maxrange>
+      <damageflags>GAIASelfAllyEnemy</damageflags>
+    </protoaction>
   </unit>
   <unit id="20217" name="zpTrainStationB">
     <dbid>20217</dbid>
@@ -21598,6 +21612,20 @@
     <command page="1" column="4">SetBuildingAsHomeCityGatherPointEconomic</command>
     <command page="1" column="5">SetBuildingAsHomeCityGatherPointMilitary</command>
     <command page="2" column="0">zpStationDeploy</command>
+    <command page="11" column="0">Abilities</command>
+    <!--<command page="11" column="0">zpNatArmoredTrainStation</command>
+    <command page="11" column="0">zpNatArmoredTrainDisabledStation</command>
+    <command page="11" column="0">zpNatArmoredTrainNoResourceStation</command>-->
+    <tactics>trainstation.tactics</tactics>
+    <protoaction>
+      <name>SpawnArmoredTrain</name>
+      <damage>1.000000</damage>
+      <damagetype>Siege</damagetype>
+      <damagecap>1.000000</damagecap>
+      <rof>1.000000</rof>
+      <maxrange>100000.000000</maxrange>
+      <damageflags>GAIASelfAllyEnemy</damageflags>
+    </protoaction>
   </unit>
   <unit id="20218" name="zpStationFlag">
     <dbid>20218</dbid>

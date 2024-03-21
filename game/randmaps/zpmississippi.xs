@@ -2109,6 +2109,9 @@ void main(void)
 		rmAddTriggerEffect("Quest Var Set");
 		rmSetTriggerEffectParam("QVName","TrainImprove_Plr"+i);
 		rmSetTriggerEffectParamInt("Value",0);
+		rmAddTriggerEffect("Quest Var Set");
+		rmSetTriggerEffectParam("QVName","RenegadeControl_Plr"+i);
+		rmSetTriggerEffectParamInt("Value",0);
 	}
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
@@ -3462,6 +3465,9 @@ void main(void)
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("Play Soundset");
 	rmSetTriggerEffectParam("Soundset","AmbienceTrain");
+	rmAddTriggerEffect("ZP Counter Visible for Player");
+	rmSetTriggerEffectParam("Name","ArmoredTrainCooldownPlr"+k);
+	rmSetTriggerEffectParamInt("Player",k);
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Normalize_TR"));
 	rmSetTriggerPriority(4);
@@ -3524,6 +3530,10 @@ void main(void)
 	rmSetTriggerConditionParam("QuestVar","ArmoredTrain_Plr"+k);
 	rmSetTriggerConditionParam("Op","==");
 	rmSetTriggerConditionParamInt("Value",0);
+	rmAddTriggerCondition("Quest Var Check");
+	rmSetTriggerConditionParam("QuestVar","RenegadeControl_Plr"+k);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Value",1);
 	
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -3644,6 +3654,14 @@ void main(void)
 	rmSetTriggerEffectParamInt("Status",0);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainNoResourceShadow");
+	rmSetTriggerEffectParamInt("Status",0);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainNoResourceEnableShadow");
+	rmSetTriggerEffectParamInt("Status",0);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
 	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainLockShadow");
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -3695,9 +3713,9 @@ void main(void)
 	rmSetTriggerEffectParamInt("Stop",0);
 	rmSetTriggerEffectParam("Msg","Next Armored Train Available in");
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Counter_Plr"+k));
-	rmAddTriggerEffect("ZP Counter Visible for Player");
+	rmAddTriggerEffect("Counter Visible");
 	rmSetTriggerEffectParam("Name","ArmoredTrainCooldownPlr"+k);
-	rmSetTriggerEffectParamInt("Player",k);	
+	rmSetTriggerEffectParam("Visible", "false");
 	rmAddTriggerEffect("Disable Trigger");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_Cooldown_On_Plr"+k));
 	rmSetTriggerPriority(4);
@@ -3716,9 +3734,9 @@ void main(void)
 	rmSetTriggerEffectParamInt("Stop",0);
 	rmSetTriggerEffectParam("Msg","Next Armored Train Available in");
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Counter_Plr"+k));
-	rmAddTriggerEffect("ZP Counter Visible for Player");
+	rmAddTriggerEffect("Counter Visible");
 	rmSetTriggerEffectParam("Name","ArmoredTrainCooldownPlr"+k);
-	rmSetTriggerEffectParamInt("Player",k);	
+	rmSetTriggerEffectParam("Visible", "false");
 	rmAddTriggerEffect("Disable Trigger");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_Cooldown_Off_Plr"+k));
 	rmSetTriggerPriority(4);
@@ -4297,6 +4315,91 @@ void main(void)
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false); 
+
+	}
+
+	// Renegades Control
+
+	for(k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Control_Renegades_ON"+k);
+	rmCreateTrigger("Control_Renegades_OFF"+k);
+
+	rmSwitchToTrigger(rmTriggerID("Control_Renegades_ON"+k));
+	rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParam("TechID","cTechzpNativeScientists");
+	rmSetTriggerConditionParamInt("Status",2);
+	rmAddTriggerEffect("Quest Var Set");
+	rmSetTriggerEffectParam("QVName","RenegadeControl_Plr"+k);
+	rmSetTriggerEffectParamInt("Value",1);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Control_Renegades_OFF"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	
+	rmSwitchToTrigger(rmTriggerID("Control_Renegades_OFF"+k));
+	rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParam("TechID","cTechzpNativeScientists");
+	rmSetTriggerConditionParamInt("Status",0);
+	rmAddTriggerEffect("Quest Var Set");
+	rmSetTriggerEffectParam("QVName","RenegadeControl_Plr"+k);
+	rmSetTriggerEffectParamInt("Value",0);
+
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainUnlockShadow");
+	rmSetTriggerEffectParamInt("Status",0);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainEnableShadow");
+	rmSetTriggerEffectParamInt("Status",0);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainNoResourceShadow");
+	rmSetTriggerEffectParamInt("Status",0);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainNoResourceEnableShadow");
+	rmSetTriggerEffectParamInt("Status",0);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainLockShadow");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainDisableShadow");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_Unlock_Plr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Send_Station1_Plr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Send_Station2_Plr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Send_Station3_Plr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Send_Station4_Plr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Send_Station5_Plr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Send_Station6_Plr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Send_Station7_Plr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT1_Send_Station8_Plr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_Resource_Plr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("AT_NoResource_Plr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Control_Renegades_ON"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 
 	}
 

@@ -6754,6 +6754,7 @@
       <effect type="TechStatus" status="obtainable">zpArmoredTrainImprove</effect>
       <effect type="TechStatus" status="obtainable">zpArmoredTrainTech</effect>
       <effect type="TechStatus" status="obtainable">zpScientistArtillery</effect>
+      <effect type="TechStatus" status="active">zpScientistsActive</effect>
     </effects>
   </tech>
   <tech name ="zpPickScientist" type ="Normal">
@@ -10911,12 +10912,19 @@
     <rollovertextid>301000</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
       <effect type="Data" action="SpawnArmoredTrain" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" action="SpawnArmoredTrain" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpTrainStationA</target>
+      </effect>
+      <effect type="Data" action="SpawnArmoredTrain" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpTrainStationB</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="RevealLOS" relativity="Absolute">
         <target type="ProtoUnit">AbstractTradeRouteBuilding</target>

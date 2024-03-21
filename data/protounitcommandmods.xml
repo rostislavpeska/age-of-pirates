@@ -321,6 +321,36 @@
     <notcancellable>
     </notcancellable>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpNatArmoredTrainStation</name>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
+    <associatedtech>zpArmoredTrainEnableShadow</associatedtech>
+    <associatedpower>zpPowerArmouredTrain</associatedpower>
+    <castpower>
+    </castpower>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpNatArmoredTrainDisabledStation</name>
+    <icon>resources\images\icons\command\armored_train_lrg_disabled.png</icon>
+    <associatedtech>zpArmoredTrainDisableShadow</associatedtech>
+    <associatedpower>zpPowerArmouredTrainInactive</associatedpower>
+    <castpower>
+    </castpower>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpNatArmoredTrainNoResourceStation</name>
+    <icon>resources\images\icons\command\armored_train_lrg_disabled.png</icon>
+    <associatedtech>zpArmoredTrainNoResourceEnableShadow</associatedtech>
+    <associatedpower>zpPowerArmouredTrainNoResource</associatedpower>
+    <castpower>
+    </castpower>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
 
   <!--
 
