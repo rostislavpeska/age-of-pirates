@@ -21175,6 +21175,7 @@
     <flag>VisibleUnderFogIfGaia</flag>
     <flag>Invulnerable</flag>
     <flag>NonSolid</flag>
+    <flag>PlaceAnywhere</flag>
   </unit>
   <unit id="20212" name="zpArmoredTrainHospitalMove">
     <dbid>20212</dbid>

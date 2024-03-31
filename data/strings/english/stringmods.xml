@@ -1164,7 +1164,7 @@
       <string _locid="301160">Russellville (Frontier Town)</string>
       <string _locid="301161">Lamar (Frontier Town)</string>
       <string _locid="301162">Mississippi River</string>
-      <string _locid="301163">Large river map with two shores connected by shallows. Special King of the Hill Design. \n\nSettlements: Comanche, Western Village, Renegades</string>
+      <string _locid="301163">Large river map with two shores connected by shallows. Special King of the Hill Design. \n\nSettlements: Comanche, Western Village, Renegades (armored train)</string>
       <string _locid="301164">Use Renegades inventions like steamships, airships, tanks or armored train to get an advantage over your enemy. Get Western hero in the Frontier Town and become "King of the River".</string>
       <string _locid="301165">Flying Dutchman</string>
       <string _locid="301166">ZP Flying Dutchman</string>
@@ -1176,6 +1176,9 @@
       <string _locid="301172">Ships two rockets - very strong against buildings.</string>
       <string _locid="301173">"May your belly never grumble, your heart never ache, and your horse never stumble."</string>
       <string _locid="301174">ZP Jewish Props</string>
+      <string _locid="301175">The Canyon</string>
+      <string _locid="301176">Large rectangular map with separate player areas divided by a great canyon. Perfect for two teams gameplay. \n\nSettlements: Apache, Western Village, Renegades (armored train)</string>
+      <string _locid="301177">Who controls the canyon, controls the map. Build walls on the ways down to the canyon to protect your colony and build trading posts on native and trade route sites.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
