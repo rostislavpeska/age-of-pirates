@@ -1097,6 +1097,9 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
    aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionValue, 0, 10.0);               // 10 points for center
    aiPlanSetVariableInt(buildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear);  // Linear slope falloff
 
+   // AssertiveWall: Bias toward front
+   aiPlanSetVariableInt(buildPlan, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
+
    debugBuildings("Building a Tower at location: " + testVec);
 }
 
@@ -3618,7 +3621,8 @@ void updateWantedTowers()
          }
       }
    }
-   else if (cDifficultyCurrent <= cDifficultyHard) // Moderate / Hard.
+   // AssertiveWall: allow Hard to play the same as Extreme
+   else if (cDifficultyCurrent < cDifficultyHard) // Moderate / Hard.
    {
       if (gNumTowers > 4)
       {

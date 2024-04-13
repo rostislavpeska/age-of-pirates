@@ -152,6 +152,8 @@ extern int gAllyBaseArray = -1;
 extern int gEnemyBaseArray = -1;
 extern vector avgEnemyBaseLocation = cInvalidVector;
 
+extern int gLastArchipelagoMove = -1;
+
 extern int gMillTypePlans = -1;
 extern int gPlantationTypePlans = -1;
 extern int gHouseBuildPlans = -1;

@@ -7,6 +7,210 @@
 //==============================================================================
 
 //==============================================================================
+/* landReserveRefill
+   adds units to gLandReservePlan manually to prevent adding units that aren't 
+     on the same island
+*/
+//==============================================================================
+rule landReserveRefill
+inactive
+minInterval 10
+{
+   // Search for all military units. If they are on the right island then add them
+}
+
+//==============================================================================
+/* greedManager
+   Monitors how greedy we can play 
+*/
+//==============================================================================
+rule greedManager
+inactive
+minInterval 20
+{
+   int mainBaseID = kbBaseGetMainID(cMyID);
+   vector mainBaseLocation = kbBaseGetLocation(cMyID, mainBaseID);
+   int originalDistance = 80.0;
+   int greedDistance = -1;
+
+
+   // Revert to old range
+   kbBaseSetMaximumResourceDistance(cMyID, mainBaseID, originalDistance);
+   // Set the maximum resource range
+   kbBaseSetMaximumResourceDistance(cMyID, mainBaseID, greedDistance);
+
+}
+
+//==============================================================================
+/* teePeeMonitor
+   Simple monitor that places some teepees randomly throughout an AI's base. 
+*/
+//==============================================================================
+rule teePeeMonitor
+inactive
+minInterval 20
+{
+   // Check if we're already building a teepee
+   if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypeTeepee) > 0)
+   {
+      return;
+   }
+
+   int mainBaseID = kbBaseGetMainID(cMyID);
+   vector mainBaseLocation = kbBaseGetLocation(cMyID, mainBaseID);
+   int mainBaseSize = kbBaseGetDistance(cMyID, mainBaseID);
+   int teePeeQuery = createSimpleUnitQuery(cUnitTypeTeepee, cMyID, cUnitStateABQ, mainBaseLocation, mainBaseSize);
+   int teePeeCount = kbUnitQueryExecute(teePeeQuery);
+   int buildTeepee = -1; // set to 1 for main base, 2 for forward base
+   static int randTeepeeStart = -1;
+   if (randTeepeeStart < 0){randTeepeeStart = 1 + aiRandInt(2);} // makes 1 - 2 teepees at start
+   // teepee range: 22
+   // In age2, seek to cover 25% of area
+   // In age3, 50% of area
+   // In age4, 75% of area
+   // Area covered is pi*r^2, but pi cancels. 22^2/basesize^2
+   float areaCovered = teePeeCount * 484 / (mainBaseSize * mainBaseSize);
+   int playerAge = kbGetAge();
+
+   // Check forward base first
+   if (gForwardBaseID > 0 && gForwardBaseState >= cForwardBaseStateBuilding && buildTeepee < 0)
+   {
+      int teePeeFBQuery = createSimpleUnitQuery(cUnitTypeTeepee, cMyID, cUnitStateAlive, gForwardBaseLocation, 40);
+      int teePeeFBCount = kbUnitQueryExecute(teePeeFBQuery);
+      if (playerAge < cAge3)
+      {
+         if (teePeeFBCount < 2)
+         {buildTeepee = 2;}
+      }
+      else if (playerAge == cAge3)
+      {
+         if (teePeeFBCount < 3)
+         {buildTeepee = 2;}
+      }
+      else
+      {
+         if (teePeeFBCount < 4)
+         {buildTeepee = 2;}
+      }
+   }
+
+   if (buildTeepee < 0)
+   {
+      if (playerAge == cAge1)
+      {
+         if (areaCovered < 0.15 && teePeeCount < randTeepeeStart)
+         {buildTeepee = 1;}
+      }
+      else if (playerAge < cAge3)
+      {
+         if (areaCovered < 0.15)
+         {buildTeepee = 1;}
+      }
+      else if (playerAge == cAge3)
+      {
+         if (areaCovered < 0.35)
+         {buildTeepee = 1;}
+      }
+      else
+      {
+         if (areaCovered < 0.50)
+         {buildTeepee = 1;}
+      }
+   }
+
+   if (buildTeepee > 0)
+   {
+      int planID = aiPlanCreate("TeePee Build Plan, " + teePeeCount, cPlanBuild);
+      if (planID < 0){return;}
+
+      // What to build
+      aiPlanSetVariableInt(planID, cBuildPlanBuildingTypeID, 0, cUnitTypeTeepee);
+      //aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, mainBaseLocation);
+      //aiPlanSetVariableFloat(planID, cBuildPlanCenterPositionDistance, 0, mainBaseSize);
+
+      // 3 meter separation
+      aiPlanSetVariableFloat(planID, cBuildPlanBuildingBufferSpace, 0, 3.0);
+
+      // Priority.
+      aiPlanSetDesiredPriority(planID, 40);
+
+      // Builders.
+      if (addBuilderToPlan(planID, cUnitTypeTeepee, 1) == false)
+      {
+         aiPlanDestroy(planID);
+         return;
+      }
+
+      aiPlanSetVariableInt(planID, cBuildPlanInfluenceUnitTypeID, 0, cUnitTypeTeepee);
+      aiPlanSetVariableFloat(planID, cBuildPlanInfluenceUnitDistance, 0, 20+aiRandInt(8)); // rand int prevents grids
+      aiPlanSetVariableFloat(planID, cBuildPlanInfluenceUnitValue, 0, -20.0);             // -20 points per teepee
+      aiPlanSetVariableInt(planID, cBuildPlanInfluenceUnitFalloff, 0, cBPIFalloffNone); // Linear slope falloff
+
+      if (buildTeepee == 1)
+      {
+         aiPlanSetVariableBool(planID, cBuildPlanInfluenceAtBuilderPosition, 0, true);
+         aiPlanSetVariableFloat(planID, cBuildPlanInfluenceBuilderPositionValue, 0, 15);   
+         aiPlanSetVariableFloat(planID, cBuildPlanInfluenceBuilderPositionDistance, 0, 20.0);  
+         aiPlanSetVariableInt(planID, cBuildPlanInfluenceBuilderPositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+
+         /*aiPlanSetVariableVector(planID, cBuildPlanInfluencePosition, 0, mainBaseLocation);              
+         aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionDistance, 0, mainBaseSize);          
+         aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionValue, 0, -5);        
+         aiPlanSetVariableInt(planID, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear);*/ // Linear slope falloff
+
+         aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, aiRandInt(4));
+      }
+      else if (buildTeepee == 2)
+      {
+         aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, gForwardBaseLocation);
+         aiPlanSetVariableFloat(planID, cBuildPlanCenterPositionDistance, 0, 25);
+
+         aiPlanSetVariableVector(planID, cBuildPlanInfluencePosition, 0, gForwardBaseLocation);              
+         aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionDistance, 0, 15);          
+         aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionValue, 0, -5);             
+         aiPlanSetVariableInt(planID, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+      }
+
+      if (buildTeepee == 1)
+      {
+         aiPlanSetBaseID(planID, mainBaseID);
+         aiPlanSetActive(planID);
+      }
+      else
+      {
+         aiPlanSetBaseID(planID, gForwardBaseID);
+         aiPlanSetActive(planID);
+      }
+   }
+}
+
+//==============================================================================
+// getNavyStrength
+// AssertiveWall: gets the navy value of the given player relation at the given 
+//  location and radius
+//==============================================================================
+
+int getNavyStrength(int playerRelationVar = cPlayerRelationSelf, vector location = cInvalidVector, int radius = -1)
+{
+   // Navy Value
+   int enNavyQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, playerRelationVar, cUnitStateAlive, location, radius);
+   int enNavySize = kbUnitQueryExecute(enNavyQuery);
+   int enNavyValue = 0;
+   int unitID = -1;
+   int puid = -1;
+
+   for (i = 0; < enNavySize)
+   {
+      unitID = kbUnitQueryGetResult(enNavyQuery, i);
+      puid = kbUnitGetProtoUnitID(unitID);
+      enNavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                        kbUnitCostPerResource(puid, cResourceInfluence));
+   }
+
+   return (enNavyValue);
+}
+
+//==============================================================================
 // allowedToAttack
 // AssertiveWall: replaces the logic involving gAttackMissionInterval to 
 //    determine if we are allowed to attack. Instead of an interval, we'll 
@@ -18,6 +222,7 @@ bool allowedToAttack(void)
 {
    // First make sure we have enough military depending on age
    int ageVar = kbGetAge();
+   int enAgeVar = kbGetAgeForPlayer(aiGetMostHatedPlayerID());
    int militaryQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(militaryQueryID);
    int militaryStrength = 0;
@@ -28,25 +233,38 @@ bool allowedToAttack(void)
       militaryStrength = militaryStrength + getMilitaryUnitStrength(puid);
    }
 
+   // adjust strength for lower difficulties
+   if (cDifficultyCurrent < cDifficultyHard) {militaryStrength = militaryStrength * 1.3;} 
+   //else if (cDifficultyCurrent == cDifficultyHard) {militaryStrength = militaryStrength * 1.15;} 
+
+   // If we're trying to FI/FF, don't attack until appropriate age
+   if (btRushBoom <= -0.5 && ageVar < cAge4)
+   {return false;}
+   else if (btRushBoom <= 0 && ageVar < cAge3)
+   {return false;}
+
    // Create bounds where we shouldn't/should always attack regardless of score
-   if (ageVar == cAge2)
-   {
-      if (militaryStrength < 10){return false;}
-      else if (militaryStrength > 30){return true;}
-   }
-   else if (ageVar == cAge3)
+   // This is based on the most hated enemy's age, not ours
+   // If we reached our max military, allow an attack. The max values below will probably never get used in age 2, 3
+   if (militaryStrength >= aiGetMilitaryPop()){return true;}
+   else if (enAgeVar == cAge2)
    {
       if (militaryStrength < 15){return false;}
-      else if (militaryStrength > 40){return true;}
+      else if (militaryStrength > 35){return true;}
    }
-   else if (ageVar == cAge4)
+   else if (enAgeVar == cAge3)
    {
       if (militaryStrength < 20){return false;}
-      else if (militaryStrength > 50){return true;}
+      else if (militaryStrength > 45){return true;}
    }
-   else if (ageVar == cAge5)
+   else if (enAgeVar == cAge4)
    {
       if (militaryStrength < 25){return false;}
+      else if (militaryStrength > 55){return true;}
+   }
+   else if (enAgeVar == cAge5)
+   {
+      if (militaryStrength < 30){return false;}
       else if (militaryStrength > 60){return true;}
    }
 
@@ -358,7 +576,11 @@ minInterval 1
          }
       }
    }
-   aiChat(1, "idleVilnum: " + numberFound);
+
+   if (gTestingChatsOn == true)
+   {
+      aiChat(1, "idleVilnum: " + numberFound);
+   }
 }
 
 //==============================================================================
@@ -1077,6 +1299,13 @@ minInterval 10
    {  // No walls for rushing civs
       xsDisableSelf();
       return;
+   }
+   else if (btRushBoom <= 0.0 && btOffenseDefense >= 0.5) // AssertiveWall: Naked FF. 
+   {  // Don't build a wall until a bit into age 3
+      if (kbGetAge() < cAge3 && xsGetTime() < gAgeUpTime + 4 * 60 * 1000)
+      {
+         return;
+      }
    }
 
    // No walls for some special maps
@@ -1923,7 +2152,10 @@ void initIslandTransportHandler(int planID = -1)
          int townCenterID = getUnit(cUnitTypeTownCenter, cMyID, cUnitStateAlive);
          kbBaseAddUnit(cMyID, gMainBase2, townCenterID);
          
-
+         // Set land reserve plan here
+         aiPlanSetVariableVector(gLandReservePlan, cCombatPlanTargetPoint, 0, gStartingLocationOverride);
+         //kbBaseSetMilitary(cMyID, gMainBase2, true);
+         moveDefenseReflex(gStartingLocationOverride, 50.0, gMainBase2);
 
          xsEnableRule("buildingMonitorDelayed");
          gCeylonDelay = false;
@@ -2832,6 +3064,11 @@ void gatherNavy(vector location = cInvalidVector)
          minimumShips = minimumShips - 1;
       }
 
+      if (gIsArchipelagoMap == true)
+      {
+         minimumShips = minimumShips - 1;
+      }
+
       if (gTestingChatsOn == true)
       {
          aiChat(1, "Gathered: " + gatheredUnits + " Of " + minimumShips + " minimumShips");
@@ -3242,7 +3479,10 @@ void landForces()
    // If the first ship ejects, start doing the towers
    if (unitsOnShip1 <= 0 || (gLandingShip2 > 0 && unitsOnShip2 <= 0))
    {
-      buildForwardTowers();
+      if (gIsArchipelagoMap == false)
+      {
+         buildForwardTowers();
+      }
       if (xsIsRuleEnabled("forwardArmyPlan") == false)
       {
          xsEnableRule("forwardArmyPlan");
@@ -4070,12 +4310,19 @@ bool amphibiousAssault(vector location = cInvalidVector)
    // Enable the rule to monitor the amphibious assault
    gAmphibiousAssaultSavedTime = xsGetTime();
    xsEnableRule("baseUnderThreat");
-   xsEnableRule("amphibiousAssaultRule");
+   if (gIsArchipelagoMap == true)
+   {
+      xsEnableRule("simpleAmphibiousAttackRule");
+   }
+   else
+   {
+      xsEnableRule("amphibiousAssaultRule");
+   }
    return true;
 }
 
 //==============================================================================
-/* amphibiousAssault
+/* amphibiousAssaultRule
    AssertiveWall: rule to keep track of the current state of the 
                   amphibious assault
 */
@@ -4165,6 +4412,91 @@ minInterval 5
    }
 }
 
+//==============================================================================
+/* simpleAmphibiousAttackRule
+   AssertiveWall: simpler than the amphibious assault rule, skipping over the
+                  base building part
+*/
+//==============================================================================
+
+rule simpleAmphibiousAttackRule
+inactive
+minInterval 5
+{
+   /*
+      cNavyRetreat = -1;             // Retreat
+      cGatherNavy = 0;               // First stage, gather up the navy for the assault
+      cBombardCoast = 1;             // Second Stage, attack the coast
+      cLoadForces = 2                // Third Stage, load the army
+      cLandForces = 3;               // Fourth Stage, try and land an army
+      cBuildForwardBuildings = 4;    // Fifth Stage, move vills in to build
+      cEstablishForwardBase = 5;     // Sixth stage, build a whole FB
+   */
+
+   // First check to see if we're losing or one of the stages failed
+   if (retreatCheck() == true || gAmphibiousAssaultStage == -1)
+   {
+      // Check if we should kick everything off right away again. Basically when we have lots of troops to use
+      if (kbUnitCount(cMyID, cUnitTypeLogicalTypeLandMilitary, cUnitStateAlive) > 14 * kbGetAge())
+      {
+         xsDisableSelf();
+         amphibiousAssault();
+         return;
+      }
+      else
+      {
+         xsDisableSelf();
+         return;
+      }
+   }
+
+   // Used by multiple rules
+   vector mainBaseLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   vector gatherPoint = getCoastalPoint(mainBaseLoc, gAmphibiousAssaultTarget, 5, true);
+   vector pickupPoint = selectPickupPoint(mainBaseLoc, gAmphibiousAssaultTarget); //   getDropoffPoint(gAmphibiousAssaultTarget, mainBaseLoc, 4);
+
+   switch (gAmphibiousAssaultStage)
+   {
+      case cGatherNavy:
+      {  // Add navy to plan and send them to the gather point
+         gatherNavy(gatherPoint);
+         gatherArmy(pickupPoint);
+         break;
+      }
+      case cBombardCoast:
+      {
+         //gatherArmy(pickupPoint);
+         //bombardCoast();
+         gAmphibiousAssaultStage = cLoadForces;
+         break;
+      }
+      case cLoadForces:
+      {
+         //bombardCoast(); // Keep bombarding the coast
+         loadForces(pickupPoint);
+         break;
+      }
+      case cLandForces:
+      {
+         bombardCoast(); // Keep bombarding the coast
+         //gatherNavy();   // Keep adding navy units to the plan
+
+         landForces();
+         break;
+      }
+      case cBuildForwardBuildings:
+      {
+         gAmphibiousAssaultStage = cEstablishForwardBase;
+      }
+      case cEstablishForwardBase:
+      {
+         // Once we're established we can let our navy do other things, except galleons
+         //moveInland();
+         
+         break;
+      }
+   }
+}
 
 //==============================================================================
 // establishForwardBeachHead
@@ -4173,7 +4505,6 @@ minInterval 5
 //==============================================================================
 void establishForwardBeachHead(vector location = cInvalidVector)
 {
-   //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackWithYou, location);
    // Get the desired army/navy Size, increasing by age
    int armyMin = 1;
    int armyDesired = 10;

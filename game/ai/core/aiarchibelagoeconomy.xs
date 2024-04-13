@@ -2246,7 +2246,7 @@ minInterval 2
 	}
 
 	migrantNumber = arrayGetNumElements(gVillagerTransportArray);
-	if (migrantNumber > 0 && pickup != cInvalidVector && dropoffIslandLoc != cInvalidVector)
+	if (migrantNumber > 2 && pickup != cInvalidVector && dropoffIslandLoc != cInvalidVector)
 	{
 		// Check for warships
 		/*int numberTransportPlans = aiPlanGetNumber(cPlanTransport);
@@ -2258,7 +2258,7 @@ minInterval 2
 		//if (numberTransportPlans <= numberWarships)
 		if (true == true)
 		{
-			transportPlanID = createTransportPlan(pickup, dropoffLoc, 100);
+			transportPlanID = createTransportPlan(pickup, dropoffLoc, 99);
 			aiPlanAddUnitType(transportPlanID, cUnitTypeAbstractVillager, migrantNumber, migrantNumber, migrantNumber);
 			for (i = 0; < migrantNumber)
 			{
@@ -2995,6 +2995,12 @@ rule moveArchipelagoBase
 inactive
 minInterval 20
 {
+	int time = xsGetTime();
+	if (time < gLastArchipelagoMove + 3 * 60 * 1000)
+	{
+		return;
+	}
+
 	int currentBase = kbBaseGetMainID(cMyID);
 	vector currentBaseLoc = kbBaseGetLocation(cMyID, currentBase);
 	int newBase = -1;
@@ -3077,8 +3083,12 @@ minInterval 20
 			kbBaseSetPositionAndDistance(cMyID, currentBase, newBaseLoc, 100.0);
 		}
 	}
-	//sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, currentBaseLoc);
-	//sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, newBaseLoc);
+
+	// Set land reserve plan here
+	aiPlanSetVariableVector(gLandReservePlan, cCombatPlanTargetPoint, 0, newBaseLoc);
+	//kbBaseSetMilitary(cMyID, currentBase, true);
+    moveDefenseReflex(newBaseLoc, 50.0, currentBase);
+	gLastArchipelagoMove = time;
 }
 
 //==============================================================================
@@ -3118,4 +3128,297 @@ minInterval 4
 		}
 	}
 
+}
+
+//==============================================================================
+/* getRandomEnemyIsland
+   AssertiveWall: Searches through tiles around your island and gives a location 
+   of the closest island that's occupied by enemies
+*/
+//==============================================================================
+
+vector getRandomEnemyIsland()
+{
+   vector startingLoc = kbGetPlayerStartingPosition(cMyID);
+   int startingAreaID = kbAreaGetIDByPosition(startingLoc);
+   vector testLoc = cInvalidVector;
+   int testAreaID = -1;
+   float j = 0.0;
+   float k = 0.0;
+   int m = 0;
+   int occupiedFriendly = 0;
+   int occupiedEnemy = 0;
+
+
+   for (i = 0; < 200)
+   {
+      testLoc = startingLoc;
+      // Get a random vector near our base
+      if (i < 100)
+      {
+         m = i;
+      }
+      else
+      {
+         m = i - 100;
+      }
+      j = m * kbGetMapXSize() / 100.0; // Normalized for RM map area. Reduced to 100 from 150
+      k = m * kbGetMapZSize() / 100.0;
+      testLoc = xsVectorSet(xsVectorGetX(testLoc) + aiRandFloat(0.0 - j, j), 0.0, 
+                xsVectorGetZ(testLoc) + aiRandFloat(0.0 - k, k));
+      
+      testAreaID = kbAreaGetIDByPosition(testLoc);
+
+      // Check how occupied it is. 
+      occupiedFriendly = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAlly, cUnitStateAlive, testLoc, 50.0);
+      occupiedEnemy = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, testLoc, 50.0);
+      
+      if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(testLoc), kbAreaGroupGetIDByPosition(startingLoc)) == false
+            && kbAreaGetType(kbAreaGetIDByPosition(testLoc)) != cAreaTypeWater)
+      {      
+         // If it's occupied by any enemy, try and take it
+         if (occupiedEnemy > 0)
+         {
+            return testLoc;
+         }
+      }
+   }
+   
+   return cInvalidVector;
+}
+
+//==============================================================================
+/* analyzeEnemyIslandsToAttackByShip
+   AssertiveWall: Looks at Enemy islands and decides if one of them is worth
+   attacking with the ships we have
+*/
+//==============================================================================
+
+vector analyzeEnemyIslandsToAttackByShip()
+{
+	// Grab info on our current fleet
+	int ourNavyStrength = getNavyStrength(cPlayerRelationSelf);
+	int desiredStrength = -1;
+
+	if (ourNavyStrength < 400)
+	{   // Don't bother if we only have a caravel
+		return (cInvalidVector);
+	}
+
+	// Find a list of islands to analyze
+	int areaCount = kbAreaGetNumber();
+	int area = 0;
+	int areaGroup = -1;
+	vector tempAreaGroupLocation = cInvalidVector;
+	vector bestAreaGroupLocation = cInvalidVector;
+	int closestArea = -1;
+	float closestAreaDistance = kbGetMapXSize();
+	float bestDensity = 0.0;
+	float tempDensity = 0.0;
+	float dist = 0.0;
+	int towerNum = -1;
+	int warshipStrength = -1;
+	int fortNum = -1;
+	int artyNum = -1;
+	int shipMin = -1;
+
+	for (area = 0; < areaCount)
+	{
+		if (kbAreaGetType(area) == cAreaTypeWater)
+		{
+			continue;
+		}
+
+		tempAreaGroupLocation = kbAreaGetCenter(area);
+		areaGroup = kbAreaGroupGetIDByPosition(tempAreaGroupLocation);
+
+		bool bordersWater = false;
+		int borderAreaCount = kbAreaGetNumberBorderAreas(area);
+		for (i = 0; < borderAreaCount)
+		{
+			if (kbAreaGetType(kbAreaGetBorderAreaID(area, i)) == cAreaTypeWater)
+			{
+				bordersWater = true;
+				break;
+			}
+		}
+
+		if (bordersWater == false)
+		{
+			continue;
+		}
+
+		// Get the strength of the area, to see if we should attack it
+		towerNum = getUnitCountByLocation(gTowerUnit, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         	tempAreaGroupLocation, 40.0);
+   		warshipStrength = getNavyStrength(cPlayerRelationSelf, tempAreaGroupLocation, 40.0);
+   		fortNum = getUnitCountByLocation(cUnitTypeAbstractFort, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         	tempAreaGroupLocation, 40.0);
+   		artyNum = getUnitCountByLocation(cUnitTypeAbstractArtillery, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         	tempAreaGroupLocation, 40.0);
+
+		shipMin = 1 + towerNum + artyNum + 3 * fortNum;
+		if (shipMin > 5)
+		{
+			shipMin = 5;  // Don't let this get too out of hand
+		}
+		desiredStrength = 400 * shipMin + warshipStrength;
+
+		// Don't attack this island unless we have favorable strength
+		if (ourNavyStrength < desiredStrength)
+		{
+			continue;
+		}
+		
+		// If we're this far, it's an island that we can attack
+		// Look for densely populated islands (typically small, easy to bombard with ships)
+		// Add a multiplier for the distance
+		dist = distance(tempAreaGroupLocation, gNavyVec);
+		int tempUnitCount = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationEnemy, cUnitStateAlive, 
+											  tempAreaGroupLocation, 20);
+		tempDensity = 1.0 * tempUnitCount / (kbAreaGroupGetNumberAreas(areaGroup));// * dist);
+
+		if (tempDensity > bestDensity && tempDensity > 0 && tempUnitCount > 2)
+		{
+			bestDensity = tempDensity;
+			bestAreaGroupLocation = tempAreaGroupLocation;
+		}
+	}
+
+	return (bestAreaGroupLocation);
+}
+
+
+//==============================================================================
+//
+// attackAnIsland
+//
+// AssertiveWall: Attack an island with some ships
+//
+//==============================================================================
+rule attackAnIsland
+inactive
+minInterval 25
+{
+	// We're allowed to attack and don't have any active water attacks
+	if (gNavyAttackPlan < 0)
+	{
+		vector enemyIslandLoc = analyzeEnemyIslandsToAttackByShip();
+		if (enemyIslandLoc != cInvalidVector)
+		{  // We have a location to attack!
+			int targetBuildingID =  getClosestUnit(cUnitTypeBuilding, cPlayerRelationEnemy, cUnitStateAlive, enemyIslandLoc);
+			int navalTargetPlayer = kbUnitGetPlayerID(targetBuildingID);
+
+			int towerNum = getUnitCountByLocation(gTowerUnit, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         			enemyIslandLoc, 40.0);
+			int warshipNum = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+					enemyIslandLoc, 40.0);
+			int fortNum = getUnitCountByLocation(cUnitTypeAbstractFort, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+					enemyIslandLoc, 40.0);
+			int artyNum = getUnitCountByLocation(cUnitTypeAbstractArtillery, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+					enemyIslandLoc, 40.0);
+			int shipMin = 1 + towerNum + warshipNum + 3 * fortNum;
+			int shipDesired = 2 + 2 * towerNum + warshipNum + 4 * fortNum + artyNum;
+			if (shipMin > 5)
+			{
+				shipMin = 5;  // Don't let this get too out of hand
+			}
+			if (civIsNative() == true)
+			{
+				shipMin = 3 * shipMin;
+				shipDesired = 4 * shipDesired;
+			}
+			
+			gNavyAttackPlan = aiPlanCreate("NAVAL Island Attack Player: " + navalTargetPlayer + ", targetBuildingID: " + targetBuildingID, cPlanCombat);
+			
+			aiPlanAddUnitType(gNavyAttackPlan, cUnitTypeAbstractWarShip, shipMin, shipDesired, 200);
+			aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
+			aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+			aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanTargetPlayerID, 0, navalTargetPlayer);
+			aiPlanSetVariableVector(gNavyAttackPlan, cCombatPlanTargetPoint, 0, enemyIslandLoc);
+			aiPlanSetVariableVector(gNavyAttackPlan, cCombatPlanGatherPoint, 0, gNavyVec);
+			aiPlanSetVariableFloat(gNavyAttackPlan, cCombatPlanGatherDistance, 0, 40.0);
+			aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternRandom);
+			aiPlanSetDesiredPriority(gNavyAttackPlan, 60); // Per the chart
+
+
+			if (cDifficultyCurrent >= cDifficultyModerate)
+			{
+				aiPlanSetVariableBool(gNavyAttackPlan, cCombatPlanAllowMoreUnitsDuringAttack, 0, true);
+				aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanRefreshFrequency, 0, 300);
+			}
+			else
+			{
+				aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanRefreshFrequency, 0, 1000);
+			}
+
+			aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeNoTarget);
+			aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+			aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanNoTargetTimeout, 0, 30000);
+			aiPlanSetBaseID(gNavyAttackPlan, kbUnitGetBaseID(getUnit(gDockUnit, cMyID, cUnitStateAlive)));
+			aiPlanSetInitialPosition(gNavyAttackPlan, gNavyVec);
+
+			aiPlanSetActive(gNavyAttackPlan);
+			gLastNavalAttackTime = xsGetTime();
+
+			aiPlanSetEventHandler(gNavyAttackPlan, cPlanEventStateChange, "navalAttackPlanHandler");
+		}
+	}
+
+	// ### Land Military Portion
+
+	// see if we're allowed to attack
+	//if (allowedToAttack() == false)
+	//{
+	//	return;
+	//}
+
+	// Find some military
+	/*int armyQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+    int armyCount = kbUnitQueryExecute(armyQueryID);
+	vector pickup = cInvalidVector;
+	vector enemyIslandLoc = getRandomEnemyIsland();
+	vector dropoffLoc = cInvalidVector;
+	int tempUnit = -1;
+	int tempArmyCount = -1;
+	vector tempLoc = cInvalidVector;
+	vector bestArmyLoc = cInvalidVector;
+	int bestArmyCount = -1;
+	int transportPlanID = -1;
+
+	// Find our biggest clump of dudes
+	for (i = 0; < armyCount)
+	{
+		tempUnit = kbUnitQueryGetResult(armyQueryID, i);
+		tempLoc = kbUnitGetPosition(tempUnit);
+		tempArmyCount = getUnitCountByAreaGroup(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive, tempLoc, -1);
+
+		if (tempArmyCount > bestArmyCount)
+		{
+			bestArmyCount = tempArmyCount;
+			bestArmyLoc = tempLoc;
+			if (bestArmyCount > armyCount * 0.5)
+			{  // We have more than half the army so we can stop looking
+				break;
+			}
+		}
+	}
+
+	pickup = getCoastalPoint(bestArmyLoc, enemyIslandLoc, 1, false);
+	dropoffLoc = getDropoffPoint(pickup, enemyIslandLoc, 2);
+
+	armyQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive, bestArmyLoc, 50);
+    armyCount = kbUnitQueryExecute(armyQueryID);
+
+	transportPlanID = createTransportPlan(pickup, dropoffLoc, 100);
+	aiPlanAddUnitType(transportPlanID, cUnitTypeLogicalTypeLandMilitary, armyCount, armyCount, armyCount);
+	for (i = 0; < armyCount)
+	{
+		tempUnit = arrayGetInt(armyQueryID, i);
+		if (aiPlanAddUnit(transportPlanID, tempUnit) == false)
+		{
+			aiPlanDestroy(transportPlanID);
+		}
+	}
+	aiPlanSetNoMoreUnits(transportPlanID, true);*/
 }

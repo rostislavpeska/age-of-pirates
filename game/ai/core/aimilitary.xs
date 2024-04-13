@@ -128,13 +128,16 @@ inactive
 void addUnitsToMilitaryPlan(int planID = -1)
 {
    // TODO: don't always task the full army, leave some behind if the enemy is weak or we need more defense
-   if ((gRevolutionType & cRevolutionFinland) == 0)// && gStartOnDifferentIslands == false)
+   if ((gRevolutionType & cRevolutionFinland) == 0 && gStartOnDifferentIslands == false)
    {
       aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
       return;
    }
-   /*else if ((gRevolutionType & cRevolutionFinland) == 0 && gStartOnDifferentIslands == true)
+   else if ((gRevolutionType & cRevolutionFinland) == 0 && gStartOnDifferentIslands == true)
    {
+      aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
+      aiPlanSetNoMoreUnits(planID, true);
+
       //AssertiveWall: Only add units on the mainland for island maps.
       int armyQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
       int numberFound = kbUnitQueryExecute(armyQueryID);
@@ -168,19 +171,19 @@ void addUnitsToMilitaryPlan(int planID = -1)
    if (gTestingChatsOn == true)
    {
       aiChat(1, "Added: " + numberAdded + " of " + numberFound);
-   }*/
+   }
 
    // For the finland revolution, keep some karelian jaegers around to sustain the economy
    int numberAvailableEconUnits = 0;
    int queryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
-   int numberFound = kbUnitQueryExecute(queryID);
+   int numberAvailFound = kbUnitQueryExecute(queryID);
 
    aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 0);
 
    // Add each unit type individually
-   for (i = 0; < numberFound)
+   for (i = 0; < numberAvailFound)
    {
-      int unitID = kbUnitQueryGetResult(queryID, i);
+      unitID = kbUnitQueryGetResult(queryID, i);
       int puid = kbUnitGetProtoUnitID(unitID);
       if (puid == gEconUnit)
       {
@@ -1001,8 +1004,8 @@ minInterval 15
          if (isEnemy == true)
          {
             // AssertiveWall: Replace the minimum attack time with the more sophisticated allowedToAttack function
-            if (currentTime - gLastAttackMissionTime < gAttackMissionInterval)
-            //if (allowedToAttack() == false)
+            //if (currentTime - gLastAttackMissionTime < gAttackMissionInterval)
+            if (allowedToAttack() == false)
             {
                shouldAttack = false;
             }
@@ -1474,8 +1477,8 @@ minInterval 15
          if (targetIsEnemy == true)
          {  
             // AssertiveWall: Replace the minimum attack time with the more sophisticated allowedToAttack function
-            if (currentTime - gLastAttackMissionTime < 2 * gAttackMissionInterval)
-            //if (allowedToAttack() == false)
+            //if (currentTime - gLastAttackMissionTime < 2 * gAttackMissionInterval)
+            if (allowedToAttack() == false)
             {
                return;
             }
@@ -1535,7 +1538,7 @@ minInterval 15
 
       if (gStartOnDifferentIslands == true)
       {
-         aiPlanSetRequiresAllNeedUnits(planID, false); // AssertiveWall: here in case some units are stranded elsewhere
+         aiPlanSetRequiresAllNeedUnits(planID, true); // AssertiveWall: here in case some units are stranded elsewhere
       }
 
       /*baseAreaGroup = kbAreaGroupGetIDByPosition(baseLocation);
@@ -3229,6 +3232,12 @@ minInterval 13
       gLandReservePlan = aiPlanCreate("Land Reserve Units", cPlanCombat);
       // All mil units, high MAX value to suck up all excess.
       aiPlanAddUnitType( gLandReservePlan, cUnitTypeLogicalTypeLandMilitary, 0, 5, 200); 
+      // AssertiveWall: control the land reserve plan more tightly on island maps
+      if (gStartOnDifferentIslands == true)
+      {
+         aiPlanSetNoMoreUnits(gLandReservePlan, true);
+         xsEnableRule("landReserveRefill");
+      }
       aiPlanSetVariableInt(gLandReservePlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeDefend);
       if (targetPoint == cInvalidVector)
       {
