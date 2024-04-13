@@ -47,14 +47,14 @@
 		<unit variation="62" posx="6.1001" posz="4.1608" orientx="0.9243" orienty="0.0000" orientz="-0.3816">NativeTownObstruction</unit>
 		<unit variation="62" posx="-0.5734" posz="4.0159" orientx="0.9243" orienty="0.0000" orientz="-0.3816">NativeTownObstruction</unit>
 		<unit variation="62" posx="-3.7685" posz="5.7775" orientx="0.9243" orienty="0.0000" orientz="-0.3816">NativeTownObstruction</unit>
-		<unit variation="86" posx="-1.4200" posz="2.7503" orientx="-0.3836" orienty="0.0000" orientz="0.9235">deNatEUPropVilMale</unit>
+		<unit variation="86" posx="-1.4200" posz="2.7503" orientx="-0.3836" orienty="0.0000" orientz="0.9235">zpJewishProps</unit>
 		<unit variation="160" posx="-1.0605" posz="2.5609" orientx="-0.9999" orienty="0.0000" orientz="0.0143">ypSMJesuitAccessory</unit>
 		<unit variation="160" posx="-2.2514" posz="2.6536" orientx="-0.9999" orienty="0.0000" orientz="0.0143">ypSMJesuitAccessory</unit>
 		<unit variation="160" posx="-3.5478" posz="2.7864" orientx="-0.9999" orienty="0.0000" orientz="0.0143">ypSMJesuitAccessory</unit>
 		<unit variation="62" posx="-6.8027" posz="7.4061" orientx="0.9243" orienty="0.0000" orientz="-0.3816">NativeTownObstruction</unit>
 		<unit variation="62" posx="5.6212" posz="7.7755" orientx="0.9243" orienty="0.0000" orientz="-0.3816">NativeTownObstruction</unit>
-		<unit variation="86" posx="-3.0585" posz="5.4153" orientx="0.9243" orienty="0.0000" orientz="-0.3816">deNatEUPropVilMale</unit>
-		<unit variation="86" posx="-0.0272" posz="4.0400" orientx="-1.0000" orienty="-0.0000" orientz="-0.0010">deNatEUPropVilMale</unit>
+		<unit variation="86" posx="-3.0585" posz="5.4153" orientx="0.9243" orienty="0.0000" orientz="-0.3816">zpJewishProps</unit>
+		<unit variation="86" posx="-0.0272" posz="4.0400" orientx="-1.0000" orienty="-0.0000" orientz="-0.0010">zpJewishProps</unit>
 		<unit variation="197" posx="-4.1474" posz="5.8440" orientx="0.8876" orienty="0.0000" orientz="-0.4605">ypSMSufiAccessory</unit>
 		<unit variation="100" posx="5.5812" posz="6.8771" orientx="1.0000" orienty="0.0000" orientz="0.0004">zpNativeHouseJewish</unit>
 		<unit variation="62" posx="0.1712" posz="9.8917" orientx="0.9243" orienty="0.0000" orientz="-0.3816">NativeTownObstruction</unit>

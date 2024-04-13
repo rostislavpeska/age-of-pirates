@@ -521,9 +521,9 @@ int sufi3VillageTypeID = rmRandInt(1,3);
 
 // Jewish
 
-int jewish1VillageTypeID = rmRandInt(1, 3);
-int jewish2VillageTypeID = rmRandInt(1, 3);
-int jewish3VillageTypeID = rmRandInt(1, 3);
+int jewish1VillageTypeID = rmRandInt(1, 4);
+int jewish2VillageTypeID = rmRandInt(1, 4);
+int jewish3VillageTypeID = rmRandInt(1, 4);
 
 int jewish1ID = rmCreateGrouping("jewish 1", "Jewish_Settlement_0"+jewish1VillageTypeID);
 int jewish2ID = rmCreateGrouping("jewish 2", "Jewish_Settlement_0"+jewish2VillageTypeID);

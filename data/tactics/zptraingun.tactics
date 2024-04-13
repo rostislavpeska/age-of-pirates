@@ -15,7 +15,6 @@
     <projectile>zpGreatWarShell</projectile>
     <impacteffect>effects\impacts\mortar</impacteffect>
     <rate type="Unit">1.0 </rate>
-    <rate type="Building">1.0 </rate>
     <throw>1</throw>
     <areasortmode>Radial</areasortmode>
     <targetground>1</targetground>

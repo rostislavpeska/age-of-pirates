@@ -1,0 +1,26 @@
+<tactics>
+  
+  <action>
+    <name stringid="300989">SpawnArmoredTrain</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.0</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>0</maxspread>
+    <spreadfactor>0.0</spreadfactor>
+    <trackrating>12</trackrating>
+    <numberprojectiles>1</numberprojectiles>
+    <projectile>zpInvisibleProjectileControler</projectile>
+    <instantballistics>1</instantballistics>
+    <maxrange>1000000.000000</maxrange>
+    <anim>RangedSpawn</anim>
+    <rate type="AbstractTradeRouteBuilding">1.0</rate>
+    <active>0</active>
+    <hidefromstats>1</hidefromstats>
+    <excludefromrangeindicator>1</excludefromrangeindicator>
+  </action>
+  <tactic>Normal<action>SpawnArmoredTrain</action></tactic>
+</tactics>

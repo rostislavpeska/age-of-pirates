@@ -143,4 +143,14 @@
   <zpphoenixmguncarrier>
     <ability>zpPowerMGStatic<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
   </zpphoenixmguncarrier>
+  <zptrainstationa>
+    <ability>zpPowerArmouredTrain<tech>zpArmoredTrainEnableShadow</tech><rof>0.1</rof><castifnotselected>true</castifnotselected><subcivalliancefactor>0.5</subcivalliancefactor><subcivstartincooldown>true</subcivstartincooldown><activetimecooldown>true</activetimecooldown></ability>
+    <ability>zpPowerArmouredTrainInactiveStation<tech>zpArmoredTrainDisableShadow</tech><rof>70</rof><castifnotselected>true</castifnotselected><alwaysdisabledingrid>true</alwaysdisabledingrid></ability>
+    <ability>zpPowerArmouredTrainNoResourceStation<tech>zpArmoredTrainNoResourceEnableShadow</tech><rof>70</rof><castifnotselected>true</castifnotselected><alwaysdisabledingrid>true</alwaysdisabledingrid></ability>
+  </zptrainstationa>
+  <zptrainstationb>
+    <ability>zpPowerArmouredTrain<tech>zpArmoredTrainEnableShadow</tech><rof>0.1</rof><castifnotselected>true</castifnotselected><subcivalliancefactor>0.5</subcivalliancefactor><subcivstartincooldown>true</subcivstartincooldown><activetimecooldown>true</activetimecooldown></ability>
+    <ability>zpPowerArmouredTrainInactiveStation<tech>zpArmoredTrainDisableShadow</tech><rof>70</rof><castifnotselected>true</castifnotselected><alwaysdisabledingrid>true</alwaysdisabledingrid></ability>
+    <ability>zpPowerArmouredTrainNoResourceStation<tech>zpArmoredTrainNoResourceEnableShadow</tech><rof>70</rof><castifnotselected>true</castifnotselected><alwaysdisabledingrid>true</alwaysdisabledingrid></ability>
+  </zptrainstationb>
 </abilitymods>

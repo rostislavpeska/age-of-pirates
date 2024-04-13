@@ -121,6 +121,14 @@
         <anim>Idle
             <component>TrainStation</component>
         </anim>
+        <anim>RangedSpawn
+            <assetreference type="GrannyAnim">
+                <file>animation_library\building\ranged_attack</file>
+                <tag type="SpecificSoundSet" checkvisible="0" set="AmbienceTrain"></tag>
+                <tag type="Attack">0.01</tag>
+            </assetreference>
+            <component>TrainStation</component>
+        </anim>
     </submodel>
     <component>StationBuilding
         <logic type="BuildingCompletion">

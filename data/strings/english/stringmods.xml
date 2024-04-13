@@ -991,7 +991,7 @@
       <string _locid="300987">Western Village</string>
       <string _locid="300988">ZP Socket Western Village</string>
       <string _locid="300989">Send Armored Train</string>
-      <string _locid="300990"> • Cost: 500 &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;\n • Spawns an Armored Train to attack enemy base. \n • Can be used on any Trade Route Trading Post Site</string>
+      <string _locid="300990"> • Cost: 500 &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;\n • Spawns Armored Train on any railway Trade Route Trading Post Site \n • Renegade Native ability \n • Use on &lt;color=0.0, 1.0, 1.0&gt;Trading Post Site area marked with flags&lt;/color&gt; \n&lt;icon="(440,220)(resources/images/icons/command/stationarea.png)"&gt;</string>
       <string _locid="300991">Railway Station</string>
       <string _locid="300992">ZP Train Station: Station</string>
       <string _locid="300993">Armored Train</string>
@@ -1001,8 +1001,8 @@
       <string _locid="300997">Military Railways</string>
       <string _locid="300998">Unlocks a special alility: Armored Train - can send an armored train to attack enemy positions next to a Train Station.</string>
       <string _locid="300999">Armored Train</string>
-      <string _locid="301000">Unlocks the military use of the trade routes: \n • Discovers all Train Stations on the map \n • Upgrades all trade routes to the maximum level \n • Unlocks the Armored Train ability allowing you to use an armore train to attack enemy base</string>
-      <string _locid="301001"> • Cost: 500 &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;\n • Spawns an Armored Train to attack enemy base. \n • Can be used on any Trade Route Trading Post Site \n &lt;color=1.0, 0.0, 0.0&gt;• Can't be used when another Armored Train is being on the map or when the Armored Train ability is not ready.&lt;/color&gt;</string>
+      <string _locid="301000">Unlocks the Armored Train ability which can be used on enemy Trade Route Site \n • Upgrades all trade routes to the maximum level \n • Discovers all railway Trade Route Sites on the map</string>
+      <string _locid="301001"> • Cost: 500 &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;\n • Spawns Armored Train on any railway Trade Route Trading Post Site \n • Renegade Native ability \n &lt;color=1.0, 0.0, 0.0&gt;• Can't be used when another Armored Train is being on the map, when the Armored Train ability is not ready or when you control no Renegade Trade Post.&lt;/color&gt;</string>
       <string _locid="301002">ZP AT Engine Move</string>
       <string _locid="301003">ZP AT BarrackCar Move</string>
       <string _locid="301004">ZP AT GunCar Move</string>
@@ -1078,8 +1078,8 @@
       <string _locid="301074">ZP AT KitchenWagon Move</string>
       <string _locid="301075">Armored Train (Kitchen Wagon)</string>
       <string _locid="301076">ZP AT KitchenWagon Static</string>
-      <string _locid="301077">Unlocks full armored train potential and gives every Armored Train wagon a special active or passive ability. Future Armored Train cooldown by 1 min.</string>
-      <string _locid="301078"> • Cost: &lt;color=1.0, 0.0, 0.0&gt;500&lt;/color&gt; &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;\n • Spawns an Armored Train to attack enemy base. \n • Can be used on any Trade Route Trading Post Site</string>
+      <string _locid="301077">Unlocks full armored train potential and gives every Armored Train wagon a special active or passive ability. \n • Future Armored Train cooldown reduced by 1 min.</string>
+      <string _locid="301078"> • Cost: &lt;color=1.0, 0.0, 0.0&gt;500&lt;/color&gt; &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;\n • Spawns Armored Train on any railway Trade Route Trading Post Site \n • Renegade Native ability \n • Use on &lt;color=0.0, 1.0, 1.0&gt;Trading Post Site area marked with flags&lt;/color&gt; \n&lt;icon="(440,220)(resources/images/icons/command/stationarea.png)"&gt;</string>
       <string _locid="301079">Gunpowder Stores</string>
       <string _locid="301080">Improves Artillery damage and attack speed (aura)</string>
       <string _locid="301081">Field Kitchen</string>
@@ -1164,7 +1164,7 @@
       <string _locid="301160">Russellville (Frontier Town)</string>
       <string _locid="301161">Lamar (Frontier Town)</string>
       <string _locid="301162">Mississippi River</string>
-      <string _locid="301163">Large river map with two shores connected by shallows. Special King of the Hill Design. \n\nSettlements: Comanche, Western Village, Renegades</string>
+      <string _locid="301163">Large river map with two shores connected by shallows. Special King of the Hill Design. \n\nSettlements: Comanche, Western Village, Renegades (armored train)</string>
       <string _locid="301164">Use Renegades inventions like steamships, airships, tanks or armored train to get an advantage over your enemy. Get Western hero in the Frontier Town and become "King of the River".</string>
       <string _locid="301165">Flying Dutchman</string>
       <string _locid="301166">ZP Flying Dutchman</string>
@@ -1175,7 +1175,10 @@
       <string _locid="301171">Rocket Factory</string>
       <string _locid="301172">Ships two rockets - very strong against buildings.</string>
       <string _locid="301173">"May your belly never grumble, your heart never ache, and your horse never stumble."</string>
-
+      <string _locid="301174">ZP Jewish Props</string>
+      <string _locid="301175">The Canyon</string>
+      <string _locid="301176">Large rectangular map with separate player areas divided by a great canyon. Perfect for two teams gameplay. \n\nSettlements: Apache, Western Village, Renegades (armored train)</string>
+      <string _locid="301177">Who controls the canyon, controls the map. Build walls on the ways down to the canyon to protect your colony and build trading posts on native and trade route sites.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

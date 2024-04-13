@@ -240,6 +240,28 @@
     <unitaction>DelayedTransform</unitaction>
     <allowduringnorush>1</allowduringnorush>
   </power>
+  <power name="zpPowerArmouredTrainInactiveStation" type="UnitAction">
+    <displaynameid>300989</displaynameid>
+    <rolloverid>301001</rolloverid>
+    <icon>resources\images\icons\command\armored_train_lrg_disabled.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>   
+  </power>
+  <power name="zpPowerArmouredTrainNoResourceStation" type="UnitAction">
+    <displaynameid>300989</displaynameid>
+    <rolloverid>301078</rolloverid>
+    <icon>resources\images\icons\command\armored_train_lrg_disabled.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>   
+  </power>
 
 
 
