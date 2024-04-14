@@ -904,8 +904,9 @@ minInterval 10
    int currentMilitaryPop = militaryPopLimit - aiGetAvailableMilitaryPop();
 
    // Destroy the age up plan or don't create one.
-   if (((age >= cAge2) && (cvOkToTrainArmy == true) && (militaryPopLimit / 4 > currentMilitaryPop) ||
-        (time < gAgeUpPlanTime)) &&
+   // AssertiveWall: ignore the army requirement on naked FF
+   if (((age >= cAge2) && (cvOkToTrainArmy == true) && (militaryPopLimit / 4 > currentMilitaryPop && (btRushBoom > 0.0 && btOffenseDefense < 0.5)) || 
+       (time < gAgeUpPlanTime)) &&
        (gExcessResources == false) && (firstAgeUpTime + 15 * 60 * 1000 > time))
    {
       debugTechs("Destroying or not creating an age up plan because we're not ready for it yet");
@@ -927,12 +928,25 @@ minInterval 10
        ((firstAgeUpTime + 5 * 60 * 1000 < time) &&
         (((gDefenseReflexBaseID != mainBaseID) && (militaryPopLimit / 2 < currentMilitaryPop)) ||
         ((age >= cAge3) && (kbGetPop() > gMaxPop * 0.75)))))
-      {
-         ageUpPriority = 52;
-      }
+   {
+      ageUpPriority = 52;
+   }
    else
    {
       ageUpPriority = 48;
+   }
+
+   // AssertiveWall: adjust age up priority if we're trying to fast fortress
+   if (age == cAge2)
+   {
+      if (btRushBoom <= 0.0 && btOffenseDefense < 0.5) // Safe Fast Fortress
+      {
+         ageUpPriority = ageUpPriority + 10;
+      }
+      else if (btRushBoom <= 0.0) // AssertiveWall: Naked FF
+      {
+         ageUpPriority = 90;
+      }
    }
 
    debugTechs("Our ageUpPriority (resource priority) is: " + ageUpPriority);

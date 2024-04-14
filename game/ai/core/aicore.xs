@@ -351,9 +351,14 @@ void popManager(bool revoltedMilitary = false, bool revoltedEconomic = false)
       {
          setMilPopLimit(maxMil / 6, maxMil / 6, maxMil / 6, maxMil, maxMil);
       }
-      else if (btRushBoom <= 0.0) // Fast Fortress which means lower army pop in Commerce.
+      // AssertiveWall: differentiate between naked/safe using btoffensedefense
+      else if (btRushBoom <= 0.0 && btOffenseDefense < 0.5) // Fast Fortress which means lower army pop in Commerce.
       {
          setMilPopLimit(maxMil / 6, maxMil / 6, maxMil / 2, maxMil, maxMil);
+      }
+      else if (btRushBoom <= 0.0) // AssertiveWall: Naked FF
+      {
+         setMilPopLimit(maxMil / 14, maxMil / 14, maxMil, maxMil, maxMil);
       }
       else // Stay longer in Commerce so higher army pop there.
       {
@@ -1446,7 +1451,7 @@ minInterval 12
 //==============================================================================
 rule transportMonitor
 inactive
-minInterval 10
+minInterval 25
 {
     // AssertiveWall: Instead of checking for any active transport plans, check to see if we have an idle warship to use
    int numberTransportPlans = aiPlanGetNumber(cPlanTransport);
@@ -1454,8 +1459,8 @@ minInterval 10
    int idleWarshipQuery = createSimpleIdleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive);
    int numberWarships = kbUnitQueryExecute(idleWarshipQuery);
    
-   if (idleWarshipQuery <= 0)
-   {  //aiChat(1, "Can't transport, no transports available");
+   if (numberWarships <= 0)
+   {
       return;
    }
    /*if (aiPlanGetIDByIndex(cPlanTransport, -1, true, 0) >= 0)
@@ -1487,15 +1492,17 @@ minInterval 10
       {
          continue;
       }
-      // AssertiveWall: Check if the unit is connected by land to main base
-      /*if (kbAreAreaGroupsPassableByLand(baseAreaGroupID, areaID) == true)
-      {
-         continue;
-      }*/
 
       position = kbUnitGetPosition(unitID);
-      areaID = kbAreaGroupGetIDByPosition(position);
+      areaID = kbAreaGetIDByPosition(position);
       areaGroupID = kbAreaGroupGetIDByPosition(position);
+
+      // AssertiveWall: Check if the unit is connected by land to main base
+      if (kbAreAreaGroupsPassableByLand(baseAreaGroupID, areaGroupID) == true)
+      {
+         continue;
+      }
+
       if (areaGroupID == baseAreaGroupID)
       {
          continue;
@@ -1521,11 +1528,11 @@ minInterval 10
       }
 
       // AssertiveWall: If they are in the reserve plan, send them back
-      if (kbUnitGetPlanID(unitID) == gLandReservePlan)
+      /*if (kbUnitGetPlanID(unitID) == gLandReservePlan)
       {
          transportRequired = true;
          break;
-      }
+      }*/
 
       planID = kbUnitGetPlanID(unitID);
       // AssertiveWall: Still need transport if the plan is done or failed
@@ -1549,25 +1556,44 @@ minInterval 10
    {
       return;
    }
-   //aiChat(1, "transport Required: " + transportRequired);
    //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, position);
 
    // once we started transporting, make sure no one can steal units from us
    // AssertiveWall: Get a better dropoff point
-   vector dropoffPoint = getDropoffPoint(position, kbBaseGetMilitaryGatherPoint(cMyID, kbBaseGetMainID(cMyID)), 1);
+   vector dropoffPoint = getDropoffPoint(position, homePosition, 1);
+   int newUnitQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive, position, 8.0);
+   int newNumberFound = kbUnitQueryExecute(newUnitQueryID);
    int transportPlanID = createTransportPlan(position, dropoffPoint, 100, false);
 
+   // AssertiveWall: remove this check
    if (transportPlanID < 0)
    {
+      aiChat(1, "transportPlanID < 0");
       return;
    }
 
-   unitQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive, position, 30.0);
-   numberFound = kbUnitQueryExecute(unitQueryID);
-   aiPlanAddUnitType(transportPlanID, cUnitTypeLogicalTypeLandMilitary, numberFound, numberFound, numberFound);
-   for (i = 0; < numberFound)
+   aiPlanAddUnitType(transportPlanID, cUnitTypeLogicalTypeGarrisonInShips, newNumberFound, newNumberFound, newNumberFound);
+
+   // AssertiveWall: Make sure each unit we find is on the same island as the first
+   areaID = kbAreaGetIDByPosition(position);
+   areaGroupID = kbAreaGroupGetIDByPosition(position);
+   int tempAreaID = -1;
+   int tempAreaGroupID = -1;
+   vector tempPosition = cInvalidVector;
+
+   for (i = 0; < newNumberFound)
    {
-      unitID = kbUnitQueryGetResult(unitQueryID, i);
+      unitID = kbUnitQueryGetResult(newUnitQueryID, i);
+
+      // AssertiveWall: Make sure each unit we find is on the same island as the first
+      tempPosition = kbUnitGetPosition(unitID);
+      tempAreaID = kbAreaGetIDByPosition(tempPosition);
+      tempAreaGroupID = kbAreaGroupGetIDByPosition(tempPosition);
+      if (kbAreAreaGroupsPassableByLand(tempAreaGroupID, areaGroupID) == false)
+      {
+         continue;
+      }
+
       if (aiPlanAddUnit(transportPlanID, unitID) == false)
       {
          aiPlanDestroy(transportPlanID);
@@ -1575,6 +1601,8 @@ minInterval 10
       }
    }
    aiPlanSetNoMoreUnits(transportPlanID, true);
+
+   aiChat(1, "Found: " + numberFound + " stranded");
 }
 
 //==============================================================================
@@ -2079,7 +2107,8 @@ void ageUpEventHandler(int planID = -1)
    }
 
    // Force an update of resource distribution to prepare for stuffs after aging up.
-   if (cDifficultyCurrent <= cDifficultyHard)
+   // AssertiveWall: include Hard difficulty here
+   if (cDifficultyCurrent < cDifficultyHard)
    {
       return;
    }
@@ -2374,7 +2403,7 @@ minInterval 5
          if (gIsArchipelagoMap == true)
          {
             xsEnableRule("moveArchipelagoBase");
-            xsEnableRule("generalTransportFailsafe");
+            //xsEnableRule("generalTransportFailsafe");
             xsEnableRule("moveOutOfWayVil");
          }         
       }
@@ -2481,6 +2510,12 @@ minInterval 5
       {
          xsEnableRule("waterAttack"); // Water attacking.
          //xsEnableRule("coastalGuns"); // Stage arty on coast
+      }
+
+      // AssertiveWall: Enable the island attack rule on Archipelago
+      if (gIsArchipelagoMap == true)
+      {
+         xsEnableRule("attackAnIsland");
       }
 
       //AssertiveWall: Enable forward bases as early as Age 2 in certain situations

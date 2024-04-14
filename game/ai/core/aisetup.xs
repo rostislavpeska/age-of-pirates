@@ -257,7 +257,7 @@ void initArrays(void)
       case cDifficultyHard: // Hard.
    {
       xsArraySetInt(gTargetSettlerCounts, cAge1, 15);
-      xsArraySetInt(gTargetSettlerCounts, cAge2, 40);
+      xsArraySetInt(gTargetSettlerCounts, cAge2, 99);  // AssertiveWall: never stop. Old value 40
       if (gSPC == true)
       {
          xsArraySetInt(gTargetSettlerCounts, cAge3, 65);
@@ -2413,7 +2413,6 @@ void init(void)
       }
       /*else if (kbResourceGet(cResourceWood) < 500)
       {
-         //aiChat(1, "gatherLostNuggets");
          xsEnableRule("gatherLostNuggets");
       }*/
       
@@ -2596,6 +2595,12 @@ minInterval 2
          cRandomMapName == "zptreasureisland")
    {
       gMigrationMap = true;
+   }
+
+   // AssertiveWall: Start teepee monitor for Lakota
+   if (cMyCiv == cCivXPSioux)
+   {
+      xsEnableRule("teePeeMonitor");
    }
 
    // AssertiveWall: attacker/defender maps, and italian wars

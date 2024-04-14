@@ -431,11 +431,14 @@ vector guessEnemyLocation(int player = -1)
    }
 
    // AssertiveWall: sometimes aiGetMostHatedPlayerID() doesn't work. if that's the case, grab the first enemy player
-   for (i = 0; < cNumberPlayers)
+   if (player < 0)
    {
-      if (kbGetPlayerTeam(i) != kbGetPlayerTeam(cMyID))
+      for (i = 0; < cNumberPlayers)
       {
-         player = i;
+         if (kbGetPlayerTeam(i) != kbGetPlayerTeam(cMyID))
+         {
+            player = i;
+         }
       }
    }
 
@@ -1931,13 +1934,13 @@ int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint 
    int bestShipValue = -1;
    int tempShipValue = -1;
    
-   // AssertiveWall: reduce pri to 99 to account for some other transports
    // try to look for a "best" ship
    for (i = 0; < numberFound)
    {
       shipID = kbUnitQueryGetResult(shipQueryID, i);
       unitPlanID = kbUnitGetPlanID(shipID);
-      if ((unitPlanID >= 0) && ((aiPlanGetDesiredPriority(unitPlanID) > pri) || (aiPlanGetType(unitPlanID) == cPlanTransport)))
+      // AssertiveWall: exclude ships of same pri. Previous: (aiPlanGetDesiredPriority(unitPlanID) > pri)
+      if ((unitPlanID >= 0) && ((aiPlanGetDesiredPriority(unitPlanID) >= pri) || (aiPlanGetType(unitPlanID) == cPlanTransport)))
       {
          continue;
       }

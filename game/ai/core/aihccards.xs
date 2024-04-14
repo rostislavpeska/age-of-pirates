@@ -323,10 +323,13 @@ highFrequency // Run every frame until it's disabled.
                case cCivXPSioux:
                {
                   exclude = ((tech == cTechHCXPWarChiefSioux1) || (tech == cTechDEHCShipNativeScout) ||
-                     (tech == cTechHCXPTownDance) || (tech == cTechHCXPNomadicExpansion) ||
+                     (tech == cTechHCXPTownDance) || 
+                     // AssertiveWall: don't exclude teepee techs anymore since 
+                     // Lakota can now build teepees (tech == cTechHCXPNomadicExpansion) ||
+                     //(tech == cTechHCXPFriendlyTerritory) || 
                      (tech == cTechHCXPRanching) || (tech == cTechHCXPEveningStar) ||
                      (tech == cTechHCXPAdvancedScouts) || (tech == cTechHCNativeTreaties) ||
-                     (tech == cTechHCXPFriendlyTerritory) || (tech == cTechHCXPWarChiefSioux2) ||
+                     (tech == cTechHCXPWarChiefSioux2) ||
                      (tech == cTechHCXPWarChiefSioux3) || (tech == cTechHCXPCommandSkill) ||
                      (tech == cTechHCXPPioneers2) || (tech == cTechHCXPKinshipTies) ||
                      (tech == cTechHCXPTeamFoodCrates1) ||(tech == cTechDEHCCampMovements) ||
@@ -993,7 +996,10 @@ highFrequency // Run every frame until it's disabled.
                   else if ((cMyCiv == cCivDutch) && (startingResources != cGameStartingResourcesInfinite))
                   {
                      toPick = 3; // Bank limit increases.
-
+                  }
+                  else if (cMyCiv == cCivXPSioux)
+                  {
+                     toPick = 2; // AssertiveWall: Add a second card for Lakota TeePee
                   }
 
                   else
@@ -1030,7 +1036,9 @@ highFrequency // Run every frame until it's disabled.
                          ((cMyCiv == cCivDESwedish) && (tech == cTechDEHCBlueberries)) ||
                          ((cMyCiv == cCivChinese) && (tech == cTechYPHCSpawnRefugees1)) || // This card isn't recognized as Villager, add here.
                          ((cMyCiv == cCivDEAmericans) && (tech == cTechHCXPCapitalism)) ||
-                         ((cMyCiv == cCivDEItalians) && (tech == cTechHCXPCapitalism)))
+                         ((cMyCiv == cCivDEItalians) && (tech == cTechHCXPCapitalism)) ||
+                         // AssertiveWall: teepee tech for Lakota
+                         ((cMyCiv == cCivXPSioux) && (tech == cTechHCXPFriendlyTerritory)))
 
 
                      {
@@ -1711,7 +1719,7 @@ highFrequency // Run every frame until it's disabled.
                         {
                            totalValueCurrent = 10000.0;
                         }
-                                                if (unit == cUnitTypeOrganGun) // Get the 3 Organ Gun shipments always.
+                        if (unit == cUnitTypeOrganGun) // Get the 3 Organ Gun shipments always.
                         {
                            totalValueCurrent = 10000.0;
                         } 
@@ -2645,6 +2653,29 @@ void shipGrantedHandler(int parm = -1) // parm is unused.
                         if (xsArrayGetFloat(gResourceNeeds, mostResource) > 0.0)
                         {
                            totalValue = totalValue * 1.1;
+                        }
+                     }
+
+                     // AssertiveWall: Prioritize food/gold when trying to fast fortress
+                     if (age == cAge2)
+                     {
+                        if (btRushBoom <= 0.0 && btOffenseDefense < 0.5) // Safe Fast Fortress
+                        {
+                           totalValue = totalValue * 1.2;
+                           // Favor gold
+                           if (goldValue > 0)
+                           {
+                              totalValue = totalValue * 1.1;
+                           }
+                        }
+                        else if (btRushBoom <= 0.0) // AssertiveWall: Naked FF
+                        {
+                           totalValue = totalValue * 2.0;
+                           // Favor gold
+                           if (goldValue > 0)
+                           {
+                              totalValue = totalValue * 1.1;
+                           }
                         }
                      }
                   }
