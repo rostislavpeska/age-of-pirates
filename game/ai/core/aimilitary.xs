@@ -1163,11 +1163,11 @@ minInterval 15
                      }
                      else if (kbUnitGetSubCiv(unitID) >= 0)
                      {
-                        baseAssets += 400.0;
+                        baseAssets += 200.0; // AssertiveWall: Down from 400
                      }
                      else // Trade route trading post.
                      {
-                        baseAssets += 1600.0;
+                        baseAssets += 600.0; // AssertiveWall: Down from 1600
                      }
                      isTradingPost = true;
                   }
@@ -1295,69 +1295,14 @@ minInterval 15
             shouldAttack = false;
          }
 
-         // AssertiveWall: Avoid attacking after age-up unless we can get some momentum
-         //    1. We can get the veteran upgrade of our most used unit OR
-         //    2. We sent a unit shipment
-         /*if (cDifficultyCurrent >= cDifficultyModerate)
-         {
-            // Get our favorite unit (by cost)
-            bool toggleShouldAttack1 = false;
-            bool toggleShouldAttack2 = false;
-            int favoriteUnitQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
-            int numberOfUnits = kbUnitQueryExecute(favoriteUnitQuery);
-            int largestUnitCost = -1;
-            int tempUnitCost = -1;
-            int tempUnit = -1;
-            int favoriteUnit = -1;
-            for (m = 0; < numberOfUnits)
-            {
-               tempUnit = kbUnitGetProtoUnitID(kbUnitQueryGetResult(favoriteUnitQuery, m));
-               if (tempUnit != favoriteUnit)
-               {
-                  tempUnitCost = kbGetProtoUnitAICost(tempUnit) * kbUnitCount(cMyID, tempUnit, cUnitStateAlive);
-                  if (tempUnitCost > largestUnitCost)
-                  {
-                     favoriteUnit = tempUnit;
-                     largestUnitCost = tempUnitCost;
-                  }
-               }
-            }
-            // Now check if we have the appropriate veteran/guard upgrade
-            int tempTechID = kbTechTreeGetCheapestUnitUpgrade(favoriteUnit);
-            if (kbTechGetStatus(tempTechID) == cTechStatusActive)
-            {  // If we can't get it, that means we're at the highest level
-               toggleShouldAttack1 = true;
-            }
-
-            // Get our current shipment and see if it's a unit shipment
-            
-
-
-            // Final check, this is based on the old check. Booming civs don't attack within 4 min of age up
-            if ((btRushBoom <= -0.5) || (btRushBoom <= 0.0 && kbGetAge() >= cAge4))
-            {
-               if (currentTime - gAgeUpTime < 4 * 60 * 1000)
-               {
-                  toggleShouldAttack2 = true;
-               }
-            }
-            else
-            {
-               toggleShouldAttack2 = true;
-            }
-
-            if (toggleShouldAttack1 == false && toggleShouldAttack2 == false)
-            {
-               shouldAttack = false;
-            }
-         }
-         if (cDifficultyCurrent >= gDifficultyExpert)
+         if (cDifficultyCurrent >= cDifficultyHard)
          {
             // Avoid attacking until 5 minutes passed after aging up.
-            // AssertiveWall: decrease this to 3 minutes
-            if ((btRushBoom <= -0.5 && kbGetAge() < cAge4) || (btRushBoom <= 0.0 && kbGetAge() < cAge3))
+            // AssertiveWall: reduce to 2 mins
+            if ((gStrategy == cStrategyFastIndustrial && kbGetAge() < cAge4) || 
+                ((gStrategy == cStrategyNakedFF || gStrategy == cStrategySafeFF) && kbGetAge() < cAge3))
             {
-               if (currentTime - gAgeUpTime < 3 * 60 * 1000)
+               if (currentTime - gAgeUpTime < 2 * 60 * 1000)
                {
                   shouldAttack = false;
                }
@@ -1378,36 +1323,13 @@ minInterval 15
          {
             affordable = (armyPower + militaryPower + buildingPower) / enemyMilitaryPower;
          }
-
-         // Adjust for distance. If < 100m, leave as is.  Over 100m to 400m, penalize 10% per 100m.
-         distancePenalty = distance(mainBaseLocation, baseLocation) / 1000.0;
-         if (distancePenalty > 0.4)
-         {
-            distancePenalty = 0.4;
-         }
-         // Increase penalty by 40% if transporting is required. 
-         // AssertiveWall: Decreases transport penalty as Age advances
-         baseAreaGroup = kbAreaGroupGetIDByPosition(baseLocation);
-         // AssertiveWall: Turn cAge into a regular integer for math
-         /*float ageInt = 0.1;
-         if (age == cAge2)
-         {
-            ageInt = 0.3;
-         }
-         if (age == cAge3)
-         {
-            ageInt = 0.2;
-         }
-         else
-         {
-            ageInt = 0.1;
-         }*/
          
          // AssertiveWall: Don't do this on island maps
          if (mainAreaGroup != baseAreaGroup && gStartOnDifferentIslands == false)
          {
             distancePenalty = distancePenalty + 0.4;
          }
+         
          // AssertiveWall: Catch the distance penalty
          if (distancePenalty > 0.8)
          {
@@ -1486,6 +1408,7 @@ minInterval 15
          // No time check for defend, be a more helpful ally.
 
          // We have more resources to train a full army again.
+         // AssertiveWall: With the more sophisticated allowedToAttack function, remove this
          if ((xsArrayGetFloat(gResourceNeeds, cResourceGold) > 0.0 ||
             xsArrayGetFloat(gResourceNeeds, cResourceWood) > 0.0 ||
             xsArrayGetFloat(gResourceNeeds, cResourceFood) > 0.0) ||
@@ -2318,7 +2241,7 @@ minInterval 30
          {  // AssertiveWall: add 1 but don't reset cycle, unless we want a spam
             numberCanoes++;
             gNetNavyValue -= canoeValue;
-            if ((btRushBoom >= 0.65 || btBiasNative >= 0.5) && numberCanoes < 10 && age <= cAge3)
+            if ((gStrategy == cStrategyRush || btBiasNative >= 0.5) && numberCanoes < 10 && age <= cAge3)
             {
                numberCanoes++;
                gNetNavyValue -= canoeValue;
@@ -3233,11 +3156,11 @@ minInterval 13
       // All mil units, high MAX value to suck up all excess.
       aiPlanAddUnitType( gLandReservePlan, cUnitTypeLogicalTypeLandMilitary, 0, 5, 200); 
       // AssertiveWall: control the land reserve plan more tightly on island maps
-      if (gStartOnDifferentIslands == true)
+      /*if (gStartOnDifferentIslands == true)
       {
          aiPlanSetNoMoreUnits(gLandReservePlan, true);
          xsEnableRule("landReserveRefill");
-      }
+      }*/
       aiPlanSetVariableInt(gLandReservePlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeDefend);
       if (targetPoint == cInvalidVector)
       {

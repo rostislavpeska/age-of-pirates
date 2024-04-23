@@ -1099,7 +1099,7 @@ highFrequency // Run every frame until it's disabled.
                   {
                      toPick = 2; // 2 Resource crates in the Commerce Age.
                   }
-                  if (btRushBoom > 0.0)
+                  if (gStrategy == cStrategyRush)
                   {
                      toPick++; // We stay longer in Commerce so get some resources and fewer upgrades.
                   }
@@ -1189,7 +1189,7 @@ highFrequency // Run every frame until it's disabled.
                      {
                         toPick = 4;
                      }
-                     if (btRushBoom > 0.0)
+                     if (gStrategy == cStrategyRush)
                      {
                         toPick--; // Account for the extra crate.
                      }
@@ -1201,7 +1201,7 @@ highFrequency // Run every frame until it's disabled.
                            toPick += cMyCiv == cCivDutch? 2 : 1; // Add the Bank/Blueberries card replacements here.
                         }
                         toPick += 3;
-                        if (btRushBoom > 0.0)
+                        if (gStrategy == cStrategyRush)
                         {
                            toPick++; // Account for the extra crate.
                         }
@@ -1317,7 +1317,7 @@ highFrequency // Run every frame until it's disabled.
                      }
                   }
                   // AssertiveWall: handle the island case. No units unless hard rushing
-                  else if (gStartOnDifferentIslands == true && btRushBoom < 0.5) 
+                  else if (gStartOnDifferentIslands == true && gStrategy == cStrategyRush) 
                   {
                      if ((cMyCiv == cCivIndians) || (cMyCiv == cCivPortuguese) || (cMyCiv == cCivRussians) || 
                          (cMyCiv == cCivChinese) || (cMyCiv == cCivDESwedish) || (cMyCiv == cCivDEAmericans))
@@ -2659,7 +2659,7 @@ void shipGrantedHandler(int parm = -1) // parm is unused.
                      // AssertiveWall: Prioritize food/gold when trying to fast fortress
                      if (age == cAge2)
                      {
-                        if (btRushBoom <= 0.0 && btOffenseDefense < 0.5) // Safe Fast Fortress
+                        if (gStrategy == cStrategySafeFF) // Safe Fast Fortress
                         {
                            totalValue = totalValue * 1.2;
                            // Favor gold
@@ -2668,7 +2668,7 @@ void shipGrantedHandler(int parm = -1) // parm is unused.
                               totalValue = totalValue * 1.1;
                            }
                         }
-                        else if (btRushBoom <= 0.0) // AssertiveWall: Naked FF
+                        else if (gStrategy == cStrategyNakedFF || gStrategy == cStrategyFastIndustrial) // AssertiveWall: Naked FF
                         {
                            totalValue = totalValue * 2.0;
                            // Favor gold

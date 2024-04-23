@@ -1218,6 +1218,15 @@ void initXSHandlers()
 /* initPersonality
    A function to set defaults that need to be in place before the loader file's
    preInit() function is called.
+
+   AssertiveWall: Table of strategies (needs adjustment)
+
+   Rush:                btRushBoom >= 0.5       && btOffenseDefense >= 0.5
+   Naked Fast Fortress: btRushBoom >= 0; < 0.5  && btOffenseDefense >= 0.5
+   Safe Fast Fortress:  btRushBoom >= 0; < 0.5  && btOffenseDefense <  0.5
+   Fast Industrial:     btRushBoom < 0          && btOffenseDefense >= 0.5
+   Greedy/Safe Boom:    btRushBoom < 0          && btOffenseDefense <  0.5
+
 */
 //==============================================================================
 void initPersonality(void)
@@ -1228,12 +1237,12 @@ void initPersonality(void)
    debugSetup("My civ is " + kbGetCivName(cMyCiv));
    switch (cMyCiv)
    {
-      case cCivBritish: // Elizabeth: Infantry oriented.
+   case cCivBritish: // Elizabeth: Infantry oriented.
    case cCivTheCircle:
    case cCivPirate:
    case cCivSPCAct3:
    {
-         btRushBoom = 0.0;
+      btRushBoom = 0.0;
       if (aiRandInt(10) < 6)
       {
          btRushBoom = 0.5;
@@ -1242,8 +1251,8 @@ void initPersonality(void)
       btBiasCav = -0.4;
       btBiasInf = 0.4;
       btBiasArt = 0.0;
-         btBiasNative = 0.5;
-         btBiasTrade = 0.0;
+      btBiasNative = 0.5;
+      btBiasTrade = 0.0;
       break;
    }
    case cCivFrench: // Napoleon:  Cav oriented, balanced
@@ -1329,9 +1338,9 @@ void initPersonality(void)
          btRushBoom = 0.5;
       }
       btOffenseDefense = 0.0;
-         btBiasCav = 0.0;
+      btBiasCav = 0.0;
       btBiasInf =    0.0;
-         btBiasArt = 0.2;
+      btBiasArt = 0.2;
       btBiasNative = 0.0;
       btBiasTrade = 0.0;
       break;
@@ -1347,8 +1356,8 @@ void initPersonality(void)
       btBiasCav = -0.3;
       btBiasInf = 0.3;
       btBiasArt = 0.1;
-         btBiasNative = 0.3;
-         btBiasTrade = 1.0;
+      btBiasNative = 0.3;
+      btBiasTrade = 1.0;
       break;
    }
    case cCivXPSioux: // Extreme rush
@@ -1359,11 +1368,11 @@ void initPersonality(void)
          btRushBoom = 0.0;
       }
       btOffenseDefense = 0.5;
-         btBiasCav = 0.4;
+      btBiasCav = 0.4;
       btBiasInf = 0.0;
       btBiasArt = 0.0;
       btBiasNative = 0.0;
-         btBiasTrade = 0.8;
+      btBiasTrade = 0.8;
       break;
    }
    case cCivXPIroquois: // Fast fortress, trade and native bias.
@@ -1375,7 +1384,7 @@ void initPersonality(void)
       }
       btOffenseDefense = 0.0;
       btBiasCav = 0.0;
-         btBiasInf = 0.2;
+      btBiasInf = 0.2;
       btBiasArt = 0.0;
       btBiasNative = 0.8;
       btBiasTrade = 1.0;
@@ -1597,6 +1606,16 @@ void initPersonality(void)
       }  
    }
 
+   // AssertiveWall: Replace values with a triple dice roll centered around those values.
+   // For now, use default range of +/- 0.4
+   btRushBoom = generateTripleDiceRoll(btRushBoom);
+   btOffenseDefense = generateTripleDiceRoll(btOffenseDefense);
+   btBiasCav = generateTripleDiceRoll(btBiasCav, 0.1);
+   btBiasInf = generateTripleDiceRoll(btBiasInf, 0.1);
+   btBiasArt = generateTripleDiceRoll(btBiasArt, 0.1);
+   btBiasNative = generateTripleDiceRoll(btBiasNative, 0.1);
+   btBiasTrade = generateTripleDiceRoll(btBiasTrade, 0.1);
+
    if (((aiTreatyActive() == true) || (aiGetGameMode() == cGameModeDeathmatch)) && 
        (btRushBoom > 0.0))
    {
@@ -1660,7 +1679,28 @@ void initPersonality(void)
       } 
       //btBiasNative = 0.9;
       //btBiasTrade = 0.9;
+   }
 
+   // AssertiveWall: Set the strategy style
+   if (btRushBoom >= 0.5 && btOffenseDefense >= 0.5)
+   {
+      gStrategy = cStrategyRush;
+   }
+   else if (btRushBoom >= 0 && btRushBoom < 0.5 && btOffenseDefense >= 0.5)
+   {
+      gStrategy = cStrategyNakedFF;
+   }
+   else if (btRushBoom >= 0 && btRushBoom < 0.5 && btOffenseDefense <  0.5)
+   {
+      gStrategy = cStrategySafeFF;
+   }
+   else if (btRushBoom < 0 && btOffenseDefense >= 0.5)
+   {
+      gStrategy = cStrategyFastIndustrial;
+   }
+   else //if (btRushBoom < 0 && btOffenseDefense <  0.5) Make sure we pick something
+   {
+      gStrategy = cStrategyGreed;
    }
 }
       
@@ -2601,6 +2641,12 @@ minInterval 2
    if (cMyCiv == cCivXPSioux)
    {
       xsEnableRule("teePeeMonitor");
+   }
+
+   // AssertiveWall: New difficulty based rules
+   if (cDifficultyCurrent >= cDifficultyHard)
+   {
+      xsEnableRule("greedManager");
    }
 
    // AssertiveWall: attacker/defender maps, and italian wars

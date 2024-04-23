@@ -7,6 +7,54 @@
 //==============================================================================
 
 //==============================================================================
+/* generateGaussian
+   adds units to gLandReservePlan manually to prevent adding units that aren't 
+     on the same island
+*/
+//==============================================================================
+
+float generateGaussian(float center = 0.0, float range = 0.4, int iterations = 15) 
+{
+   // This uses the central limit theorem to approximate a gaussian. Generates
+   // a random int several times, then averages
+   // Range is one sides, so 3 => +/- 3
+   float value = 0.0;
+   for (i = 0; < iterations)
+   {
+      value += aiRandFloat(center - range, center + range);
+   }
+
+   value = value / iterations;
+   return value;
+}
+float generateTripleDiceRoll(float center = 0.0, float range = 0.4) 
+{
+   // This uses the central limit theorem to approximate a gaussian. Generates
+   // a random int several times, then averages
+   // Range is one sides, so 3 => +/- 3
+   float value = 0.0;
+   int iterations = 3;
+
+   for (i = 0; < iterations)
+   {
+      value += aiRandFloat(center - range, center + range);
+   }
+
+   value = value / iterations;
+   return value;
+}
+
+rule testGaussian
+inactive
+minInterval 2
+{
+   float v = generateGaussian(0.0, 0.4, 15);
+   float dR = generateTripleDiceRoll(0.0, 0.4);
+   //int v = (cNumberPlayers - 1) / (aiGetNumberTeams() - 1); // Gaia counts as a player and a team
+   aiChat(1, "Gaussian: " + v + " Triple Dice Roll: " + dR);
+}
+
+//==============================================================================
 /* landReserveRefill
    adds units to gLandReservePlan manually to prevent adding units that aren't 
      on the same island
@@ -26,19 +74,90 @@ minInterval 10
 //==============================================================================
 rule greedManager
 inactive
-minInterval 20
+minInterval 10
 {
    int mainBaseID = kbBaseGetMainID(cMyID);
    vector mainBaseLocation = kbBaseGetLocation(cMyID, mainBaseID);
-   int originalDistance = 80.0;
+   int currentDistance = kbBaseGetMaximumResourceDistance(cMyID, mainBaseID);
    int greedDistance = -1;
+   int time = xsGetTime();
+   int smallInterval = 8 * 60 * 1000;
+   int longInterval = 2 * smallInterval;
+   int towerQuery = -1;
+   int towerCount = -1;
+   int fortQuery = -1;
+   int fortCount = -1;
+   int mostHatedPlayer = aiGetMostHatedPlayerID();
+   vector mostHatedEnemyLoc = kbBaseGetLocation(mostHatedPlayer, kbBaseGetMainID(mostHatedPlayer));
 
+
+   if (gDefenseReflex == true)
+   {
+      gGetGreedy = false;
+   }
+   // If we haven't been attacked in a long time
+   else if (time > gLastDefendMissionTime + smallInterval && time > gDefenseReflexTimeout + smallInterval)
+   {  
+      // It's been a little while, but has it been a long while?
+      if (time > gLastDefendMissionTime + longInterval && time > gDefenseReflexTimeout + longInterval)
+      {
+         gGetGreedy = true;
+      }
+
+      // It's been a while, but not a long while. Check to see if enemy is turtling
+      if (gGetGreedy == false)
+      {
+         // Get the tower and fort count around the most hated enemy
+         towerQuery = createSimpleUnitQuery(cUnitTypeAbstractOutpost, cPlayerRelationEnemyNotGaia, cUnitStateAlive, mostHatedEnemyLoc, 80);
+         towerCount = kbUnitQueryExecute(towerQuery);
+         fortQuery = createSimpleUnitQuery(cUnitTypeFortFrontier, cPlayerRelationEnemyNotGaia, cUnitStateAlive, mostHatedEnemyLoc, 80);
+         fortCount = kbUnitQueryExecute(fortQuery);
+
+         if (fortCount > 0)
+         {
+            towerCount += 4;
+         }
+
+         if (towerCount >= 2 * (kbGetAge() + 1))
+         {
+            gGetGreedy = true;
+         }
+         else if (kbUnitCount(mostHatedPlayer, cUnitTypeAbstractWall, cUnitStateAlive) > 8)
+         {
+            gGetGreedy = true;
+         }
+      }
+   }
+   else
+   {
+      gGetGreedy = false;
+   }
+
+   if (gGetGreedy == true)
+   {
+      // A few distances we can use. 
+      // Distance from base to forward base
+      if (gForwardBaseState == cForwardBaseStateActive)
+      {
+         greedDistance = distance(mainBaseLocation, gForwardBaseLocation);
+      }
+      // Distance to 1/3 map
+      else
+      {
+         greedDistance = distance(mainBaseLocation, mostHatedEnemyLoc) / 3;
+      }
+   }
 
    // Revert to old range
-   kbBaseSetMaximumResourceDistance(cMyID, mainBaseID, originalDistance);
+   if (gGetGreedy == false && currentDistance > 1.1 * gCalculatedGatherDistance)
+   {
+      kbBaseSetMaximumResourceDistance(cMyID, mainBaseID, gCalculatedGatherDistance);
+   }
    // Set the maximum resource range
-   kbBaseSetMaximumResourceDistance(cMyID, mainBaseID, greedDistance);
-
+   else if (greedDistance > currentDistance && gGetGreedy == true)
+   {  
+      kbBaseSetMaximumResourceDistance(cMyID, mainBaseID, greedDistance);
+   }
 }
 
 //==============================================================================
@@ -214,7 +333,8 @@ int getNavyStrength(int playerRelationVar = cPlayerRelationSelf, vector location
 // allowedToAttack
 // AssertiveWall: replaces the logic involving gAttackMissionInterval to 
 //    determine if we are allowed to attack. Instead of an interval, we'll 
-//    try to make an educated guess on how big our army needs to be
+//    try to make an educated guess on how big our army needs to be. Bases army
+//    sizes on our whole team so hopefully we will attack together
 // Returns true if we are allowed to attack
 // Based on the monitorScores rule in aiChats
 //==============================================================================
@@ -223,49 +343,51 @@ bool allowedToAttack(void)
    // First make sure we have enough military depending on age
    int ageVar = kbGetAge();
    int enAgeVar = kbGetAgeForPlayer(aiGetMostHatedPlayerID());
-   int militaryQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+   int militaryQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(militaryQueryID);
    int militaryStrength = 0;
    int puid = -1;
+   int playersPerTeam = (cNumberPlayers - 1) / (aiGetNumberTeams() - 1); // Gaia counts as a player and a team
+
    for (i = 0; < numberFound)
    {
       puid = kbUnitGetProtoUnitID(kbUnitQueryGetResult(militaryQueryID, i));
       militaryStrength = militaryStrength + getMilitaryUnitStrength(puid);
    }
 
-   // adjust strength for lower difficulties
+   // adjust strength for lower difficulties. 
    if (cDifficultyCurrent < cDifficultyHard) {militaryStrength = militaryStrength * 1.3;} 
    //else if (cDifficultyCurrent == cDifficultyHard) {militaryStrength = militaryStrength * 1.15;} 
 
    // If we're trying to FI/FF, don't attack until appropriate age
-   if (btRushBoom <= -0.5 && ageVar < cAge4)
+   if (gStrategy == cStrategyFastIndustrial && ageVar < cAge4)
    {return false;}
-   else if (btRushBoom <= 0 && ageVar < cAge3)
+   else if ((gStrategy == cStrategyNakedFF || gStrategy == cStrategySafeFF) && ageVar < cAge3)
    {return false;}
 
    // Create bounds where we shouldn't/should always attack regardless of score
    // This is based on the most hated enemy's age, not ours
    // If we reached our max military, allow an attack. The max values below will probably never get used in age 2, 3
-   if (militaryStrength >= aiGetMilitaryPop()){return true;}
+   if (militaryStrength >= aiGetMilitaryPop() * playersPerTeam && playersPerTeam == 1){return true;}
    else if (enAgeVar == cAge2)
    {
-      if (militaryStrength < 15){return false;}
-      else if (militaryStrength > 35){return true;}
+      if (militaryStrength < 15 * playersPerTeam){return false;}
+      else if (militaryStrength > 35 * playersPerTeam){return true;}
    }
    else if (enAgeVar == cAge3)
    {
-      if (militaryStrength < 20){return false;}
-      else if (militaryStrength > 45){return true;}
+      if (militaryStrength < 20 * playersPerTeam){return false;}
+      else if (militaryStrength > 45 * playersPerTeam){return true;}
    }
    else if (enAgeVar == cAge4)
    {
-      if (militaryStrength < 25){return false;}
-      else if (militaryStrength > 55){return true;}
+      if (militaryStrength < 25 * playersPerTeam){return false;}
+      else if (militaryStrength > 55 * playersPerTeam){return true;}
    }
    else if (enAgeVar == cAge5)
    {
-      if (militaryStrength < 30){return false;}
-      else if (militaryStrength > 60){return true;}
+      if (militaryStrength < 30 * playersPerTeam){return false;}
+      else if (militaryStrength > 60 * playersPerTeam){return true;}
    }
 
    // The next block looks at score breakdowns to determine if we're in a good spot to attack
@@ -397,7 +519,6 @@ bool allowedToAttack(void)
       if ((winningAllyStrong == false) && (firstHumanAlly == highestPlayer))
       {
          winningAllyStrong = true;
-         sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreWinningHeIsStronger);
          return false;
       }
 
@@ -406,7 +527,6 @@ bool allowedToAttack(void)
       if ((winningAllyWeak == false) && (cMyID == highestPlayer))
       {
          winningAllyWeak = true;
-         sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreWinningHeIsWeaker);
          return true;
       }
 
@@ -415,7 +535,6 @@ bool allowedToAttack(void)
       if (winningNormal == false)
       {
          winningNormal = true;
-         sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreWinning);
          return true;
       }
    }
@@ -458,13 +577,11 @@ bool allowedToAttack(void)
       if ((losingAllyStrong == false) && (firstHumanAlly == highestPlayer))
       {
          losingAllyStrong = true;
-         sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingHeIsStronger);
          return false;
       }
       if ((losingAllyWeak == false) && (cMyID == highestPlayer))
       {
          losingAllyWeak = true;
-         sendStatement(firstHumanAlly, cAICommPromptToAllyWeAreLosingHeIsWeaker);
          return true;
       }
    } // End chats while we're losing.
@@ -1149,12 +1266,17 @@ rule dockWallOne
 inactive
 minInterval 20
 {
-   if (btRushBoom > 0.55)
+   if (gStrategy == cStrategyRush)
    {  // No walls for rushing civs
       xsDisableSelf();
       return;
    }
-   else if (btRushBoom > 0.45 && xsGetTime() < 10 * 60 * 1000)
+   else if (gIsArchipelagoMap == true)
+   {  // No walls on Archipelago
+      xsDisableSelf();
+      return;
+   }
+   else if (btRushBoom > 0.4 && xsGetTime() < 25 * 60 * 1000 * btRushBoom)
    {  // Delay the wall for more aggresive civs
       return;
    }
@@ -1295,17 +1417,25 @@ rule innerRingWall
 inactive
 minInterval 10
 {
-   if (btRushBoom > 0.3)
+   if (gStrategy == cStrategyRush)
    {  // No walls for rushing civs
       xsDisableSelf();
       return;
    }
-   else if (btRushBoom <= 0.0 && btOffenseDefense >= 0.5) // AssertiveWall: Naked FF. 
-   {  // Don't build a wall until a bit into age 3
-      if (kbGetAge() < cAge3 && xsGetTime() < gAgeUpTime + 4 * 60 * 1000)
+   else if (gStrategy == cStrategyFastIndustrial && kbGetAge() < cAge4)
+   {
+      return;
+   }
+   else if (gStrategy == cStrategyNakedFF && kbGetAge() < cAge3)
+   {
+      if (kbGetAge() == cAge3 && xsGetTime() < gAgeUpTime + 6 * 60 * 1000)
       {
          return;
       }
+   }
+   else if (gStrategy == cStrategySafeFF && kbGetAge() < cAge3)
+   {
+      return;
    }
 
    // No walls for some special maps
@@ -2021,7 +2151,7 @@ minInterval 3
    // Build a couple things on starting island. Stuff that doesn't cause issues later
    createSimpleBuildPlan(gDockUnit, 1, 99, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
    createSimpleBuildPlan(gHouseUnit, 1, 95, false, cEconomyEscrowID, kbBaseGetMainID(cMyID), 1);
-   if (btRushBoom <= 0)
+   if (btOffenseDefense < 0.5)
    {
       createSimpleBuildPlan(gTowerUnit, 1, 50, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID));
       //createSimpleBuildPlan(gMarketUnit, 1, 90, false, cEconomyEscrowID, kbBaseGetMainID(cMyID), 1); 
@@ -2330,14 +2460,13 @@ minInterval 10
             closestDist = testDist;
          }
       }
-      if (closestTeammate == cMyID && btRushBoom <= 0.5)
+      if (closestTeammate == cMyID && gStrategy != cStrategyRush)
       {  // We are the closest teammate, just make sure we aren't all-in rushing
          gTimeToFish = true;
       }
 
-      // If we are booming heavy, go for water
-      //if (btRushBoom < -0.4) // currently no one is set below 0, though they technically can be
-      if (btRushBoom <= 0 && btOffenseDefense <= 0)
+      // If we are being greedy, go for water
+      if (gStrategy == cStrategyGreed)
       {
          gTimeToFish = true;
       }
@@ -2349,7 +2478,7 @@ minInterval 10
          randomizer = aiRandInt(10);
       }
 
-      if (btRushBoom <= 0.0 && randomizer < 3)
+      if ((gStrategy == cStrategyFastIndustrial || gStrategy == cStrategySafeFF) && randomizer < 3)
       { 
          gTimeToFish = true;
       }
@@ -6764,7 +6893,7 @@ minInterval 30
                   return;
                }
             }
-            else if ((btOffenseDefense >= 0.0) && (cDifficultyCurrent >= cDifficultyModerate))
+            else if (cDifficultyCurrent >= cDifficultyModerate)
             {
                location = selectForwardBaseLocation();
             }
@@ -6964,7 +7093,7 @@ minInterval 30
    bool attackNow = false;
    vector enemyLoc = cInvalidVector;
 
-   if (btRushBoom > 0.4)
+   if (gStrategy == cStrategyRush)
    { // Rushing
       if (kbGetAge() == cAge2)
       {

@@ -47,6 +47,25 @@ extern const int cAge2conditional = -12;
 extern const int cAge3conditional = -13;
 extern const int cAge4conditional = -14;
 
+// Strategies
+/* 
+   btRushBoom: -1, 1; btOffenseDefense: 0, 1
+
+   Rush:                btRushBoom >= 0.5       && btOffenseDefense >= 0.5
+   Naked Fast Fortress: btRushBoom >= 0; < 0.5  && btOffenseDefense >= 0.5
+   Safe Fast Fortress:  btRushBoom >= 0; < 0.5  && btOffenseDefense <  0.5
+   Fast Industrial:     btRushBoom < 0          && btOffenseDefense >= 0.5
+   Greedy/Safe Boom:    btRushBoom < 0          && btOffenseDefense <  0.5 */
+   
+extern int gStrategy = -1;
+extern const int cStrategyRush = 1;
+extern const int cStrategyNakedFF = 2;
+extern const int cStrategySafeFF = 3;
+extern const int cStrategyFastIndustrial = 4;
+extern const int cStrategyGreed = 5;
+extern bool gGetGreedy = false;
+extern int gCalculatedGatherDistance = -1;
+
 
 //==============================================================================
 // Islands. AssertiveWall
@@ -531,7 +550,7 @@ extern int gTargetSettlerCounts = -1; // How many settlers do we want in a given
 extern int gTargetSettlerCountsDefault = -1; // This array stores the values the non special Settler civs have.
                                              // It is then used to calculate a proper military population.
 
-extern int gDifficultyExpert = cDifficultyExpert; // Equivalent of expert difficulty, hard for SPC content.
+extern int gDifficultyExpert = cDifficultyHard; // Equivalent of expert difficulty, hard for SPC content. AssertiveWall: normalized to hard
 
 //==============================================================================
 // Debug variables.

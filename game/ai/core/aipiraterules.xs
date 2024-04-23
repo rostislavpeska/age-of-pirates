@@ -52,9 +52,9 @@ minInterval 1
 
    // AssertiveWall: Archipelago style maps
    if (cRandomMapName == "euArchipelago" ||
-      cRandomMapName == "euArchipelagoLarge"||
-      cRandomMapName == "zpmediterranean" ||
-      cRandomMapName == "zpkurils")
+       cRandomMapName == "euArchipelagoLarge"||
+       cRandomMapName == "zpmediterranean" ||
+       cRandomMapName == "zpkurils")
    {
       gIsArchipelagoMap = true;
       gStartOnDifferentIslands = true;
@@ -65,6 +65,17 @@ minInterval 1
       cvOkToGatherGold = false;      // Setting it false will turn off gold gathering. True turns it on.
       cvOkToGatherWood = false;      // Setting it false will turn off wood gathering. True turns it on.
       gHomeBase = kbGetPlayerStartingPosition(cMyID);
+   }
+
+   // AssertiveWall: Migration style maps
+   if (cRandomMapName == "Ceylon" ||
+       cRandomMapName == "ceylonlarge" ||
+       cRandomMapName == "afswahilicoast" ||
+       cRandomMapName == "afswahilicoastlarge" ||
+       cRandomMapName == "zpeldorado" ||
+       cRandomMapName == "zptreasureisland")
+   {
+      gMigrationMap = true;
    }
 
    // Initializes all pirate functions

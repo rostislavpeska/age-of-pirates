@@ -884,10 +884,23 @@ void selectTCBuildPlanPosition(int buildPlan = -1, int baseID = -1)
    aiPlanSetVariableInt(buildPlan, cBuildPlanInfluenceUnitFalloff, 3, cBPIFalloffNone); // Cliff falloff
 
    // Weight it to prefer the general starting neighborhood
-   aiPlanSetVariableVector(buildPlan, cBuildPlanInfluencePosition, 0, loc);          // Position influence for landing position
-   aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionDistance, 0, 100.0); // 100m range.
-   aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionValue, 0, 300.0);    // 300 points max
-   aiPlanSetVariableInt(buildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+   // AssertiveWall: use a much wider range when trying to be greedy
+   if (gGetGreedy == true)
+   {
+      aiPlanSetVariableInt(buildPlan, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
+
+      aiPlanSetVariableVector(buildPlan, cBuildPlanInfluencePosition, 0, loc);          // Position influence for landing position
+      aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionDistance, 0, 200.0); // 200m range.
+      aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionValue, 0, 100.0);    // 100 points max
+      aiPlanSetVariableInt(buildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+   }
+   else
+   {
+      aiPlanSetVariableVector(buildPlan, cBuildPlanInfluencePosition, 0, loc);          // Position influence for landing position
+      aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionDistance, 0, 100.0); // 100m range.
+      aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionValue, 0, 300.0);    // 300 points max
+      aiPlanSetVariableInt(buildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+   }
 
    // AssertiveWall: If it's an island map, town centers weighted to go near docks and coast (away from start)
    if (gStartOnDifferentIslands == true)
@@ -3356,16 +3369,24 @@ minInterval 5
       }
       // AssertiveWall: New Additional TC building logic
       planID = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypeTownCenter);
-      if ((planID < 0) && (kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive) < 2))// && gDefenseReflex == false)
-      {  // Basically just build one in Age 3 if we aren't rushing
-         if (btRushBoom < 0.4 && age >= cAge3)
+      if ((planID < 0) && (kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive) < 2))
+      {  // Different strategies
+         if (age >= cAge3)
+         {
+            if ((gStrategy == cStrategySafeFF) || (gStrategy == cStrategyGreed))
+            {
+               planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 1);
+               aiPlanSetDesiredResourcePriority(planID, 60);
+            }
+         }
+         else if (age >= cAge3 && xsGetTime() > 20 * 60 * 1000 && gStrategy != cStrategyFastIndustrial)
          {
             planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 1);
             aiPlanSetDesiredResourcePriority(planID, 60);
          }
       }
       // AssertiveWall: If we're in Age 4 or past 25 mins we can build 3
-      else if ((planID < 0) && (kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive) < 3))// && gDefenseReflex == false)
+      else if ((planID < 0) && (kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive) < 3))
       { 
          if (age >= cAge4 || time > 25 * 60 * 1000)
          {
@@ -3585,15 +3606,15 @@ void updateWantedTowers()
    }   
    else if (age == cAge2) // Set up our begin values when we're in the Commerce Age.
    {
-      if (btOffenseDefense >= 0.0)
+      if (btOffenseDefense >= 0.5)
       {
          gNumTowers += 0; // We remain at +0 Towers in Commerce if we're not defensively orientated.
       }
-      else if (btOffenseDefense >= -0.5) // Between -0.5 and 0.0
+      else if (btOffenseDefense > 0.1 && btOffenseDefense < 0.5) // Between 0.1 and 0.5
       {
          gNumTowers += civIsAsian() == true ? 1 : 2;
       }
-      else // btOffenseDefense between -0.5 and -1.0
+      else // btOffenseDefense between 0 and 0.1
       {
          gNumTowers += civIsAsian() == true ? 2 : 3;
       }
@@ -3856,7 +3877,7 @@ minInterval 5
          {
             socketID = bestNativeSocketID;
          }
-         else if (gStartOnDifferentIslands == true && btRushBoom >= 0.5 && btBiasNative >= 0.5 &&
+         else if (gStartOnDifferentIslands == true && (gStrategy == cStrategyRush || gStrategy == cStrategyNakedFF) && btBiasNative >= 0.5 &&
                   xsArrayGetSize(kbVPSiteQuery(cVPNative, cMyID, cVPStateCompleted)) <= 0)
          {
             socketID = bestNativeSocketID;

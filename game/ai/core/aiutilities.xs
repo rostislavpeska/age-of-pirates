@@ -1698,6 +1698,25 @@ int createSimpleBuildPlan(int puid = -1, int numberWanted = 1, int pri = 100, bo
       return (-1); // Return invalid plan ID.
    }
 
+   // AssertiveWall: suppress military production buildings on naked FF
+   if (gStrategy == cStrategyNakedFF)
+   {
+      if (kbGetAge() >= cAge3 || (agingUp() == true && kbGetAge() == cAge2))
+      {// do nothing
+      }
+      else
+      {
+         int numMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+         for (i = 0; < numMilitaryBuildings)
+         {
+            if (puid == xsArrayGetInt(gMilitaryBuildings, i))
+            {
+               return (-1);
+            }
+         }
+      }
+   }
+
    int planID = -1;
    if (gIsArchipelagoMap == true)
    {

@@ -1799,7 +1799,7 @@ minInterval 30
       {
          randomizer = aiRandInt(10);
       }
-      if (btRushBoom <= 0.0 && randomizer < 3)
+      if (gStrategy == cStrategyGreed && randomizer < 3)
       {
          gTimeToFish = true;
       }
@@ -2693,7 +2693,12 @@ void updateResources()
          {
             newMaxDistance = cMaxNaturalResourceDistance;
          }
-         kbBaseSetMaximumResourceDistance(cMyID, mainBaseID, newMaxDistance);
+         // AssertiveWall: Extra greedy play controls max distance elsewhere
+         gCalculatedGatherDistance = newMaxDistance;
+         if (gGetGreedy == false)
+         {
+            kbBaseSetMaximumResourceDistance(cMyID, mainBaseID, newMaxDistance);
+         }
       }
    }
 
@@ -3018,28 +3023,35 @@ minInterval 5
    {
       mainBaseVec = kbBaseGetLocation(cMyID, mainBaseID);
       numCattle = getUnitCountByLocation(cUnitTypeHerdable, cPlayerRelationAny, cUnitStateAny, mainBaseVec, 60.0);
-      if (btRushBoom >= 0.5 && kbGetAge() < cAge3) // Rushing stance, go away until Age 3
+      if (gStrategy == cStrategyRush && kbGetAge() < cAge3) // Rushing stance, go away until Age 3
       {
          return;
       }
-      else if (btRushBoom >= 0.0 && numCattle >= 8)
+      else if (gStrategy == cStrategyGreed)
       {
-         numPens = 1;
-         numSheepWanted = 5;
-         numCattleWanted = 5;
-         numLlamaWanted = 5;
+         numPens = 2;
+         numSheepWanted = 20;
+         numCattleWanted = 10;
+         numLlamaWanted = 10;
       }
-      else if (btRushBoom < 0.0 && numCattle >= 4)
+      else if (gStrategy == cStrategySafeFF && numCattle >= 4)
       {
          numPens = 1;
          numSheepWanted = 10;
          numCattleWanted = 10;
          numLlamaWanted = 10;
       }
-      else if (btRushBoom < -0.5)
+      else if (numCattle >= 8 && kbGetAge() > cAge3)
       {
-         numPens = 2;
-         numSheepWanted = 20;
+         numPens = 1;
+         numSheepWanted = 5;
+         numCattleWanted = 5;
+         numLlamaWanted = 5;
+      }
+      else if (kbGetAge() > cAge4)
+      {
+         numPens = 1;
+         numSheepWanted = 10;
          numCattleWanted = 10;
          numLlamaWanted = 10;
       }
