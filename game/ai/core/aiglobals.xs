@@ -16,9 +16,44 @@ extern const int cTileFog = 2;
 extern const int cTileVisible = 4;
 
 //==============================================================================
-// Islands. AssertiveWall
+// Build orders.
 //==============================================================================
 
+extern bool gUseBuildOrder = false; // easily turn build order logic on/off
+
+// Keep build order globals here to keep track of them easier
+extern int boBuildingArray = -1;
+extern int boShipmentArray = -1;
+extern int boResourceBreakdownArrayFood = -1; // These are percentages, should always be set between 0 and 100
+extern int boResourceBreakdownArrayWood = -1;
+extern int boResourceBreakdownArrayGold = -1;
+extern int boArmyTrainArray = -1;
+extern int boResearchTechArray = -1;
+extern int boResearchBuilding = -1;
+
+// Conditionals
+extern int boBuildingBools = -1;
+extern int boShipmentBools = -1;
+extern int boResourceBools = -1;
+extern int boArmyTrainBools = -1;
+extern int boResearchBools = -1;
+
+// Conditional table
+// Pass "1" if you want it to always be true
+
+// Age up stored as negative
+extern const int cAge2tconditional = -11;
+extern const int cAge2conditional = -12;
+extern const int cAge3conditional = -13;
+extern const int cAge4conditional = -14;
+
+
+//==============================================================================
+// Islands. AssertiveWall
+//==============================================================================
+extern bool gTestingChatsOn = false;        // Turn off all the chats used for testing
+
+extern bool gMigrationMap = false;          // True for migration style maps like Ceylon
 extern bool gCeylonDelay = false;           // Used to delay buildings until we makee a base
 extern int gCeylonStartingTargetArea = -1;
 extern int gLastIslandSwitchTime = -1;      // Stores the last time we switched islands for building
@@ -40,9 +75,88 @@ extern int gIslandBBuildPlan = -1;
 //extern int gIslandBUpTime = -600000;
 extern bool gIslandBShouldDefend = false;
 
-extern bool gIsPirateMap = false;            // Set true for testing. Used for pirates of the carribean mod
+extern int gWaterNuggetPlan = -1;            // Persistent plan goes out to try and find water nuggets
+extern const int cWaterNuggetSearch = -1;    // Units moving to the water nugget
+extern const int cWaterNuggetAttack = 0;     // Units attacking the guardians 
+extern const int cWaterNuggetGather = 1;     // Units gathering the nugget
+extern int gWaterNuggetState = cWaterNuggetSearch;           // Stores the state of the water nugget plan
+extern int gWaterNuggetTarget = -1;          // Stores the target of whatever the water nugget plan is doing
+extern vector gWaterNuggetTargetLoc = cInvalidVector;
+extern int gWaterNuggetTimeout = -1;         // Stores when a water nugget plan is made so it can be reset after too long
 
+extern bool gIsPirateMap = false;            // Used for pirates of the carribean mod
+extern bool gIsArchipelagoMap = false;       // Used for multi-island maps like archipelago
 
+extern int forwardAttackWave = -1;
+extern int gforwardArmyPlan = -1;               // Plan for keeping some army at forward base
+extern int gforwardArmyTransport = -1;
+extern int gAmphibiousReinforcementPlan = -1;   // Used to store the plan for reinforcing the assault
+extern int gAmphibiousReinforcementStage = -1;
+extern int gAmphibiousReinforcementArmy = -1;
+extern int gAmphibiousAssaultStage = 0;         // Used to store the state of the amphibious assault
+extern vector gAmphibiousAssaultTarget = cInvalidVector; 
+extern int gAmphibiousAssaultPlan = -1;         // The plan to handle the amphibious assault ships
+extern int gAmphibiousArmyPlan = -1;            // The plan to handle the amphibious assault landing force
+extern int gAmphibiousTransportPlan = -1;       // The plan that reserves our transports
+extern int gAmphibiousTrainPlan = -1;           // Plan for training from galleons
+extern int gAmphibiousAssaultSavedTime = -1;    // Store times along the way
+extern int gLandingShip1 = -1;                  // Stores transport ship 1
+extern int gLandingShip2 = -1;                  // Stores transport ship 2
+extern const int cGatherNavy = 0;               // First stage, gather up the navy for the assault
+extern const int cBombardCoast = 1;             // Second Stage, attack the coast
+extern const int cLoadForces = 2;               // Third Stage, try and land an army
+extern const int cLandForces = 3;               // Fourth Stage, try and land an army
+extern const int cBuildForwardBuildings = 4;    // Fifth Stage, move vills in to build
+extern const int cEstablishForwardBase = 5;     // Sixth stage, build a whole FB
+
+extern float gStartingHandicap = -1.0;       // Stores starting handicap to ensure we don't deviate too far
+
+extern int gVillagerReservePlan = -1;
+
+extern vector gHomeBase = cInvalidVector;
+extern vector gDirection_UP = cInvalidVector;
+extern vector gDirection_DOWN = cInvalidVector;
+extern vector gDirection_RIGHT = cInvalidVector;
+extern vector gDirection_LEFT = cInvalidVector;
+
+extern int gFoodResources = -1;
+extern int gDecayingAnimals = -1;
+extern int gWoodResources = -1;
+extern int gGoldResources = -1;
+extern int gFoodNumWorkers = -1;
+extern int gDecayingNumWorkers = -1;
+extern int gMaxFoodWorkers = -1;
+extern int gWoodNumWorkers = -1;
+extern int gGoldNumWorkers = -1;
+extern int gMaxGoldWorkers = -1;
+extern int gQueuedBuildingPriority = -1;
+extern int gVillagerTransportArray = -1;
+
+extern int gVillagerQuery = -1;
+extern int gFoodQuery = -1;
+extern int gWoodQuery = -1;
+extern int gGoldQuery = -1;
+extern int gNumFoodVills = 0;
+extern int gNumGoldVills = 0;
+extern int gNumWoodVills = 0;
+extern int gReservedFoodVillagers = 0;
+extern int gReservedWoodVillagers = 0;
+extern int gReservedGoldVillagers = 0;
+
+extern int gArrayPlanIDs = -1;
+extern int gArrayPlan = -1;
+extern int gArrayPlanSizes = -1;
+extern int gArrayPlanNumElements = -1;
+
+extern int gAllyBaseArray = -1;
+extern int gEnemyBaseArray = -1;
+extern vector avgEnemyBaseLocation = cInvalidVector;
+
+extern int gLastArchipelagoMove = -1;
+
+extern int gMillTypePlans = -1;
+extern int gPlantationTypePlans = -1;
+extern int gHouseBuildPlans = -1;
 
 //==============================================================================
 // Buildings.
@@ -167,6 +281,11 @@ extern int gExplorerControlPlan = -1; // Defend plan set up to control the explo
 extern int gLandExplorePlan = -1;     // Primary land exploration
 extern int gIslandExploreTransportScoutID = -1;
 extern bool gIslandMap = false; // Does this map have lands with waters in between?
+extern int gEnemyPlayer = -1;       // AssertiveWall: Stores the enemy that killed our explorer. Used for chats
+extern bool gLastExplorerCheck = true;  // AssertiveWall: Last time we checked if explorer is alive. true when alive
+extern bool gLastExplorerCheck2 = true;  // AssertiveWall: Last time we checked if explorer is alive. true when alive
+extern int gExplorerID = -1;             // AssertiveWall: stores explorer ID. necessary for when explorer dies
+extern int gExplorer2ID = -1;          // AssertiveWall: stores explorer ID. necessary for when explorer dies
 
 //==============================================================================
 // Economy.
@@ -185,6 +304,7 @@ extern int gEconUpgradePlan = -1;
 extern bool gGoodFishingMap = false;      // Set in init(), can be overridden in postInit() if desired.  True indicates that
                                           // fishing is a good idea on this map.
 extern int gFishingPlan = -1;             // Plan ID for main fishing plan.
+extern int gFishingBellPlan = -1;         // AssertiveWall: Dummy plan that allows fishing boats to be controlled easier
 extern int gFishingBoatMaintainPlan = -1; // Fishing boats to maintain
 extern bool gTimeToFish = false;          // Set to true when we want to start fishing.
 extern int gHerdPlanID = -1;
@@ -244,6 +364,8 @@ extern vector gRaidGatherPoint = cInvalidVector;
 extern int gRaidStartTime = 0;
 extern int gActiveInterdiction = -1;
 
+extern int gcavalryCompanyPlan = -1;
+
 //==============================================================================
 // Military.
 //==============================================================================
@@ -253,6 +375,7 @@ extern int gLandDefendPlan0 = -1; // Primary land defend plan
 extern int gLandReservePlan = -1; // Reserve defend plan, gathers units for use in the next military mission
 extern int gHealerPlan = -1;      // Defend plan that controls our healers in our base.
 extern int gCoastalGunPlan = -1;  // AssertiveWall: Plan to stage artillery near docks and coast on island maps
+extern int gEndlessWaterRaidPlan = -1; // AssertiveWall: Used to roam the map and raid areas
 
 extern bool gDefenseReflex = false; // Set true when a defense reflex is overriding normal ops.
 extern bool gDefenseReflexPaused =
@@ -260,7 +383,6 @@ extern bool gDefenseReflexPaused =
 extern int gDefenseReflexBaseID = -1;                  // Set to the base ID that we're defending in this emergency
 extern vector gDefenseReflexLocation = cInvalidVector; // Location we're defending in this emergency
 extern int gDefenseReflexTimeout = 0;
-//extern int gLandAttackPlanID = -1;      // AssertiveWall: Keeps track of attack plan so we can destroy it after too long
 
 extern int gLandUnitPicker = -1; // Picks the best land military units to train.
 
@@ -275,6 +397,7 @@ extern int gNavyRepairPlan = -1; // Saves the ID of the naval defend combat (hij
 extern int gNavyDefendPlan = -1; // Persistent naval defend plan.
 extern int gNavyAttackPlan = -1; // Saves the ID of the naval attack combat plan to manage land/navy interactions.
 extern vector gNavyVec = cInvalidVector; // The center of the navy's operations.
+extern vector gLastNavyVec = cInvalidVector; // AssertiveWall: Stores our last dock build position
 extern int gLastWSTime = 0; // AssertiveWall: used to know the last time enemy Warships were spotted
 extern bool gHaveWaterSpawnFlag = false;
 extern int gWaterSpawnFlagID = -1;
@@ -300,6 +423,12 @@ extern int gDefendMissionInterval = 300000; // 5 minutes.   Makes the AI less li
 extern int gClaimTradeMissionInterval = 300000;  // 5 minutes.
 extern int gClaimNativeMissionInterval = 600000; // 10 minutes.
 extern int gLastClaimNativeMissionTime = -1;
+extern int gLandAttackPlanID = -1;          // AssertiveWall: saves attack plans so they can be killed later
+extern int gAttackTargetType = -1;          // AssertiveWall: used for chats
+extern const int cAttackTargetTown = 0;
+extern const int cAttackTargetBase = 1;
+extern const int cAttackTargetTradeSite = 2;
+extern const int cAttackTargetSettlers = 3;
 
 extern int gNumEnemies = -1;             // Used to pick a target to attack.
 extern int gArrayEnemyPlayerIDs = -1;    // Used to pick a target to attack.
@@ -313,6 +442,8 @@ extern int gMonopolyTeam = -1;          // TeamID of team that will win if the m
 
 extern bool gIsKOTHRunning = false; // Set true while a KOTH countdown is in effect.
 extern int gKOTHTeam = -1;          // TeamID of team that will win if the KOTH timer completes.
+extern int gKOTHAllyTimer = -1;         // AssertiveWall: keep the timer counting
+extern int gKOTHEnemyTimer = -1;         // AssertiveWall: keep the timer counting. Only works with 2 teams
 
 extern int gArmyUnitMaintainPlans = -1;
 

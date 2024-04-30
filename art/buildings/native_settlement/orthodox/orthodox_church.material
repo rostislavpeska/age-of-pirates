@@ -1,0 +1,22 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\orthodox\textures\orthodox_church2_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\orthodox\textures\orthodox_church2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\orthodox\textures\orthodox_church2_mata_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\native_settlement\orthodox\textures\orthodox_church2_v1_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\orthodox\textures\orthodox_church2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\orthodox\textures\orthodox_church2_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

@@ -323,10 +323,13 @@ highFrequency // Run every frame until it's disabled.
                case cCivXPSioux:
                {
                   exclude = ((tech == cTechHCXPWarChiefSioux1) || (tech == cTechDEHCShipNativeScout) ||
-                     (tech == cTechHCXPTownDance) || (tech == cTechHCXPNomadicExpansion) ||
+                     (tech == cTechHCXPTownDance) || 
+                     // AssertiveWall: don't exclude teepee techs anymore since 
+                     // Lakota can now build teepees (tech == cTechHCXPNomadicExpansion) ||
+                     //(tech == cTechHCXPFriendlyTerritory) || 
                      (tech == cTechHCXPRanching) || (tech == cTechHCXPEveningStar) ||
                      (tech == cTechHCXPAdvancedScouts) || (tech == cTechHCNativeTreaties) ||
-                     (tech == cTechHCXPFriendlyTerritory) || (tech == cTechHCXPWarChiefSioux2) ||
+                     (tech == cTechHCXPWarChiefSioux2) ||
                      (tech == cTechHCXPWarChiefSioux3) || (tech == cTechHCXPCommandSkill) ||
                      (tech == cTechHCXPPioneers2) || (tech == cTechHCXPKinshipTies) ||
                      (tech == cTechHCXPTeamFoodCrates1) ||(tech == cTechDEHCCampMovements) ||
@@ -848,6 +851,12 @@ highFrequency // Run every frame until it's disabled.
                      cardPriority = 0;
                   }  
 
+            // AssertiveWall: Increase priority of economic techs on island maps
+            if (gStartOnDifferentIslands == true && kbTechAffectsUnit(tech, cUnitTypeAbstractVillager) == true)
+            {
+               cardPriority += 1 + aiRandInt(3);
+            }
+
             if (cardPriority < 0) // Can't ever happen I guess.
             {
                cardPriority = 0;
@@ -987,7 +996,10 @@ highFrequency // Run every frame until it's disabled.
                   else if ((cMyCiv == cCivDutch) && (startingResources != cGameStartingResourcesInfinite))
                   {
                      toPick = 3; // Bank limit increases.
-
+                  }
+                  else if (cMyCiv == cCivXPSioux)
+                  {
+                     toPick = 2; // AssertiveWall: Add a second card for Lakota TeePee
                   }
 
                   else
@@ -1024,7 +1036,9 @@ highFrequency // Run every frame until it's disabled.
                          ((cMyCiv == cCivDESwedish) && (tech == cTechDEHCBlueberries)) ||
                          ((cMyCiv == cCivChinese) && (tech == cTechYPHCSpawnRefugees1)) || // This card isn't recognized as Villager, add here.
                          ((cMyCiv == cCivDEAmericans) && (tech == cTechHCXPCapitalism)) ||
-                         ((cMyCiv == cCivDEItalians) && (tech == cTechHCXPCapitalism)))
+                         ((cMyCiv == cCivDEItalians) && (tech == cTechHCXPCapitalism)) ||
+                         // AssertiveWall: teepee tech for Lakota
+                         ((cMyCiv == cCivXPSioux) && (tech == cTechHCXPFriendlyTerritory)))
 
 
                      {
@@ -1092,6 +1106,11 @@ highFrequency // Run every frame until it's disabled.
                   if (cMyCiv == cCivXPSioux)
                   {
                      toPick = 2;
+                  }
+                  // AssertiveWall: Grab one less crate on islands
+                  if (gStartOnDifferentIslands == true)
+                  {
+                     toPick -= 1;
                   }
                   debugHCCards("***Commerce crates: " + toPick);
                }
@@ -1194,6 +1213,11 @@ highFrequency // Run every frame until it's disabled.
                         toPick++;
                      }
                   }
+                  // AssertiveWall: Add another upgrade on island maps
+                  if (gStartOnDifferentIslands == true)
+                  {
+                     toPick += 1;
+                  }
                   if ((isTeamGame == true) && (toPick > 1)) // Some civs that are rushing will have 1 less Commerce unit because of this.
                   {
                      toPick--; // Reserve for later addition of 3 TEAM cards.
@@ -1291,7 +1315,19 @@ highFrequency // Run every frame until it's disabled.
                      {
                         toPick = 1; // Still add the Villager though.
                      }
-
+                  }
+                  // AssertiveWall: handle the island case. No units unless hard rushing
+                  else if (gStartOnDifferentIslands == true && btRushBoom < 0.5) 
+                  {
+                     if ((cMyCiv == cCivIndians) || (cMyCiv == cCivPortuguese) || (cMyCiv == cCivRussians) || 
+                         (cMyCiv == cCivChinese) || (cMyCiv == cCivDESwedish) || (cMyCiv == cCivDEAmericans))
+                     {
+                        toPick = 0;
+                     }
+                     else
+                     {
+                        toPick = 1; // Still add the Villager though.
+                     }
                   }
                   else
                   {
@@ -1465,6 +1501,11 @@ highFrequency // Run every frame until it's disabled.
                   {
                      toPick = 2; // 2 Resource crates in the Fortress Age.
                   }
+                  // AssertiveWall: Grab one less on island maps
+                  if (gStartOnDifferentIslands == true)
+                  {
+                     toPick -= 1;
+                  }
                   debugHCCards("***Fortress crates: " + toPick);
                }
 
@@ -1525,6 +1566,11 @@ highFrequency // Run every frame until it's disabled.
                   }
                   if ((startingResources == cGameStartingResourcesInfinite) ||
                       (startingResources == cGameStartingResourcesUltra)) // Add crates onto this.
+                  {
+                     toPick += 2;
+                  }
+                  // AssertiveWall: Add another upgrade on island maps
+                  if (gStartOnDifferentIslands == true)
                   {
                      toPick += 2;
                   }
@@ -1673,7 +1719,7 @@ highFrequency // Run every frame until it's disabled.
                         {
                            totalValueCurrent = 10000.0;
                         }
-                                                if (unit == cUnitTypeOrganGun) // Get the 3 Organ Gun shipments always.
+                        if (unit == cUnitTypeOrganGun) // Get the 3 Organ Gun shipments always.
                         {
                            totalValueCurrent = 10000.0;
                         } 
@@ -1802,6 +1848,11 @@ highFrequency // Run every frame until it's disabled.
                       (startingResources == cGameStartingResourcesUltra)) // Add crate onto this.
                   {
                      toPick++;
+                  }
+                  // AssertiveWall: Add more upgrades on island maps
+                  if (gStartOnDifferentIslands == true)
+                  {
+                     toPick += 2;
                   }
                   debugHCCards("***Land Industrial Upgrades: " + (toPick));
                }
@@ -2252,6 +2303,27 @@ void shipGrantedHandler(int parm = -1) // parm is unused.
          tech = aiHCDeckGetCardTechID(deck, i);
          totalValue = 0.0;
 
+         // AssertiveWall: take the build order shipment
+         int boShipmentLength = xsArrayGetSize(boShipmentArray);
+         int tempShipment = -1;
+
+         if (xsArrayGetInt(boShipmentArray, boShipmentLength - 1) > 0 && gUseBuildOrder == true)
+         {
+            for (j = 0; < boShipmentLength)
+            {
+               tempShipment = xsArrayGetInt(boShipmentArray, j);
+               if (tempShipment > 0)
+               {
+                  if (checkConditional(boShipmentBools, j) == true && tech == tempShipment)
+                  {  
+                     totalValue = 999999;  // send it
+                     xsArraySetInt(boShipmentArray, j, -1);  // Delete the entry
+                  }
+               }
+            }
+         }
+
+
          // The value determining process is split into two parts.
          // Part 1: we switch on the unitType associated with the card. We handle some specific unit types, but that's a minority.
          // If we couldn't find a handled unit type on the card it goes to the default statement. There we assign a value to the card
@@ -2581,6 +2653,29 @@ void shipGrantedHandler(int parm = -1) // parm is unused.
                         if (xsArrayGetFloat(gResourceNeeds, mostResource) > 0.0)
                         {
                            totalValue = totalValue * 1.1;
+                        }
+                     }
+
+                     // AssertiveWall: Prioritize food/gold when trying to fast fortress
+                     if (age == cAge2)
+                     {
+                        if (btRushBoom <= 0.0 && btOffenseDefense < 0.5) // Safe Fast Fortress
+                        {
+                           totalValue = totalValue * 1.2;
+                           // Favor gold
+                           if (goldValue > 0)
+                           {
+                              totalValue = totalValue * 1.1;
+                           }
+                        }
+                        else if (btRushBoom <= 0.0) // AssertiveWall: Naked FF
+                        {
+                           totalValue = totalValue * 2.0;
+                           // Favor gold
+                           if (goldValue > 0)
+                           {
+                              totalValue = totalValue * 1.1;
+                           }
                         }
                      }
                   }
@@ -3058,6 +3153,11 @@ void shipGrantedHandler(int parm = -1) // parm is unused.
                   {
                      totalValue = totalValue * 0.5;
                   }
+                  // AssertiveWall: Encourage these on island maps
+                  if (gStartOnDifferentIslands == true)
+                  {
+                     totalValue = totalValue * 1.3;
+                  }
                   break;
                }
             }
@@ -3128,7 +3228,7 @@ void shipGrantedHandler(int parm = -1) // parm is unused.
    if (bestCard >= 0)
    {
       // Where to drop shipment.
-      if (cDifficultyCurrent >= cDifficultyExpert)
+      if (cDifficultyCurrent >= cDifficultyHard)
       {
          int gatherUnitID = -1;
          cardFlags = aiHCDeckGetCardFlags(deck, bestCard);

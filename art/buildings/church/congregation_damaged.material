@@ -1,0 +1,102 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\church\textures\congregation_MatA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\church\spanish_church_age2\textures\spanish_church_age2_MatA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\church\spanish_church_age2\textures\spanish_church_age2_MatA_Masks">
+      </texture>
+      <texture name="Details" override="buildings\church\spanish_church_age2\textures\spanish_church_age2_MatA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\town_center\west\age_3\textures\veg_fern_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\town_center\west\age_3\textures\veg_fern_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\town_center\west\age_3\textures\veg_fern_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\spanish\spanish_colony_house_01\textures\Bush_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\spanish\spanish_colony_house_01\textures\Bush_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\spanish\spanish_colony_house_01\textures\Bush_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\church\textures\congregation_MatA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\church\spanish_church_age2\textures\spanish_church_age2_MatA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\church\spanish_church_age2\textures\spanish_church_age2_MatA_Masks">
+      </texture>
+      <texture name="Details" override="buildings\church\spanish_church_age2\textures\spanish_church_age2_MatA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="MatE">
+    <materialdef name="speedtree\nonspeedtree_subsurface">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="terrain\trees\tree_homecity_british_01_export\tree_homecity_british_01_color">
+      </texture>
+      <texture name="Normals" override="terrain\trees\tree_homecity_british_01_export\tree_homecity_british_01_normal">
+      </texture>
+      <texture name="Masks" override="terrain\trees\tree_madrone_a_export\tree_madrone_a_masks">
+      </texture>
+      <texture name="SubSurface" override="terrain\trees\tree_homecity_british_01_export\tree_homecity_british_01_ss">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="MatF">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="terrain\trees\tree_homecity_british_01_export\01_bark_color">
+      </texture>
+      <texture name="Normals" override="terrain\trees\tree_homecity_british_01_export\01_bark_normal">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="maty">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

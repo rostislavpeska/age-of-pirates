@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>15</width>
+	<height>16</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="4" posx="-5.0769" posz="-10.3411" orientx="1.0000" orienty="0.0000" orientz="0.0057">zpHarbourPlatform</unit>
+		<unit variation="222" posx="6.0838" posz="-10.5250" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">deNativePropsCivilianLeaders</unit>
+		<unit variation="41" posx="7.8503" posz="-10.4672" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNativePropsAfrica</unit>
+		<unit variation="0" posx="5.5006" posz="-7.8544" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="127" posx="-5.2851" posz="-4.2089" orientx="0.9990" orienty="0.0000" orientz="-0.0454">zpHarbourPlatform</unit>
+		<unit variation="143" posx="0.1349" posz="-4.0320" orientx="0.0069" orienty="0.0000" orientz="1.0000">zpHarbourPlatform</unit>
+		<unit variation="244" posx="-10.3639" posz="-3.9619" orientx="-0.0044" orienty="0.0000" orientz="1.0000">zpHarbourPlatform</unit>
+		<unit variation="58" posx="8.3828" posz="-0.5691" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">SocketTradeRoute</unit>
+		<unit variation="4" posx="-13.4744" posz="0.6985" orientx="1.0000" orienty="0.0000" orientz="0.0057">zpHarbourPlatform</unit>
+		<unit variation="242" posx="-10.4559" posz="-0.1561" orientx="0.2012" orienty="0.0000" orientz="0.9796">zpHarbourShip</unit>
+		<unit variation="4" posx="-4.8462" posz="3.0912" orientx="1.0000" orienty="0.0000" orientz="0.0057">zpHarbourPlatform</unit>
+		<unit variation="8" posx="-5.6430" posz="2.8642" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">NativePirates</unit>
+		<unit variation="253" posx="-4.8537" posz="9.1783" orientx="0.0192" orienty="0.0000" orientz="-0.9998">zpHarbourPlatform</unit>
+		<unit variation="76" posx="7.6124" posz="8.4700" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deNativePropsAfrica</unit>
+		<unit variation="134" posx="8.7575" posz="8.8464" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deNativePropsAfrica</unit>
+		<unit variation="208" posx="11.5946" posz="9.0066" orientx="-0.9239" orienty="0.0000" orientz="0.3827">deNativePropsCivilianLeaders</unit>
+		<unit variation="105" posx="6.4367" posz="9.3935" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">dePropsColonyAfrica</unit>
+		<unit variation="102" posx="7.2356" posz="9.9465" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">dePropsColonyAfrica</unit>
+		<unit variation="224" posx="10.1745" posz="10.0049" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deNativePropsAfrica</unit>
+		<unit variation="152" posx="5.3878" posz="9.9412" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">dePropsColonyAfrica</unit>
+		<unit variation="10" posx="6.9065" posz="11.7928" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">dePropsColonyAfrica</unit>
+		<unit variation="48" posx="10.6802" posz="12.0446" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">deNativePropsCivilianLeaders</unit>
+		<unit variation="166" posx="8.2910" posz="10.8195" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">NativePirates</unit>
+		<unit variation="135" posx="7.3879" posz="13.8173" orientx="-0.3827" orienty="0.0000" orientz="0.9239">deNativePropsAfrica</unit>
+		<unit variation="190" posx="8.9413" posz="13.3514" orientx="-0.3827" orienty="0.0000" orientz="0.9239">deNativePropsAfrica</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

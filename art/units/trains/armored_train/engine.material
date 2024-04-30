@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units/trains/armored_train/textures/train_armored_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\trains\train_euro\textures\train_euro_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\trains\train_euro\textures\train_euro_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

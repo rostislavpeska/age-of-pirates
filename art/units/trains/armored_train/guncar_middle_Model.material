@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="matA">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\trains\armored_train\textures\guncar_middle_basecolor">
+      </texture>
+      <texture name="Normals" override="units\trains\armored_train\textures\guncar_middle_normals">
+      </texture>
+      <texture name="Masks" override="units\trains\armored_train\textures\guncar_middle_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

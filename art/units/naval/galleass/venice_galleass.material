@@ -1,0 +1,70 @@
+<material>
+  <submaterial name="mate">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\military_props\textures\military_props_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\military_props\textures\military_props_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\military_props\textures\military_props_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\generic_props\textures\generic_props_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\generic_props\textures\generic_props_normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\generic_props\textures\generic_props_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mata">
+    <materialdef name="default_emissive_advanced">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\galleass\textures\galleass_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\naval\galleass\textures\galleass_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\naval\galleass\textures\galleass_mata_masks">
+      </texture>
+      <texture name="Details" override="units\naval\galleass\textures\galleass_mata_details">
+      </texture>
+      <texture name="Emissive" override="units\naval\galleass\textures\galleass_mata_emissive">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\galleass\textures\venice_galleass_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="units\naval\galleass\textures\galleass_matb_normals">
+      </texture>
+      <texture name="Masks" override="units\naval\galleass\textures\venice_galleass_matb_masks">
+      </texture>
+      <texture name="Details" override="units\naval\galleass\textures\venice_galleass_matb_details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\galleass\textures\venice_galleass_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="units\naval\galleass\textures\galleass_matb_normals">
+      </texture>
+      <texture name="Masks" override="units\naval\galleass\textures\venice_galleass_matb_masks">
+      </texture>
+      <texture name="Details" override="units\naval\galleass\textures\venice_galleass_matb_details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

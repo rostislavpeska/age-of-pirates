@@ -1,0 +1,43 @@
+<tactics>
+  <action>
+    <name stringid="124920">ExplosionAttack</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>RangedAttack</anim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.01</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>InvisibleProjectile</projectile>
+    <impacteffect>effects\impacts\gun</impacteffect>
+    <rate type="All">1.0</rate>
+    <instantballistics>1</instantballistics>
+    <basedamagecap>1</basedamagecap>
+    <selfdestruct>1</selfdestruct>
+  </action>
+ <action>
+    <name stringid="68958">ChemistryInfantry</name>
+    <type>AutoRangedModify</type>
+    <persistent>1</persistent>
+    <modifyabstracttype>AbstractGunpowderTrooper</modifyabstracttype>
+    <modifymultiplier>1.15</modifymultiplier>
+    <modifytype>UnitDamage</modifytype>
+  </action>
+  <action>
+    <name stringid="68958">ChemistryCavalry</name>
+    <type>AutoRangedModify</type>
+    <persistent>1</persistent>
+    <modifyabstracttype>AbstractGunpowderCavalry</modifyabstracttype>
+    <modifymultiplier>1.15</modifymultiplier>
+    <modifytype>UnitDamage</modifytype>
+  </action>
+  <tactic>Normal
+    <action>ChemistryCavalry</action>
+    <action>ChemistryInfantry</action>
+  </tactic>
+</tactics>

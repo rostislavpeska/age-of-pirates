@@ -1,0 +1,46 @@
+<animfile>
+  <definebone>bone_muzzlel01</definebone>
+  <definebone>bone_muzzlel02</definebone>
+  <definebone>bone_muzzlel03</definebone>
+  <definebone>bone_muzzlel04</definebone>
+  <definebone>bone_muzzler01</definebone>
+  <definebone>bone_muzzler02</definebone>
+  <definebone>bone_muzzler03</definebone>
+  <definebone>bone_muzzler04</definebone>
+  <definebone>bone_debris_1a</definebone>
+  <definebone>bone_debris_1b</definebone>
+  <definebone>bone_debris_1c</definebone>
+  <definebone>bone_debris_2a</definebone>
+  <definebone>bone_debris_3a</definebone>
+  <definebone>bone_debris_3b</definebone>
+  <definebone>bone_debris_3c</definebone>
+  <definebone>bone_debris_3d</definebone>
+  <definebone>bone_debris_3e</definebone>
+  <definebone>bone_debris_3f</definebone>
+  <definebone>bone_debris_4a</definebone>
+  <definebone>bone_debris_4b</definebone>
+  <definebone>bone_debris_4c</definebone>
+  <definebone>bone_debris_5a</definebone>
+  <definebone>bone_debris_5b</definebone>
+  <definebone>bone_debris_5c</definebone>
+  <definebone>bone_debris_5d</definebone>
+  <definebone>bone_debris_6a</definebone>
+  <definebone>bone_debris_6b</definebone>
+  <definebone>bone_debris_6c</definebone>
+  <definebone>bone_debris_6d</definebone>
+  <attachment>IdleWaterFoam<component>Idlefoam<assetreference type="popcornFx"><file>water_effects\idle_waterFoam_galley.pkfx</file></assetreference></component><anim>None<component>Idlefoam</component></anim></attachment>
+  <attachment>MoveWaterFoam<component>Movefoam<assetreference type="popcornFx"><file>water_effects\move_waterFoam_galley.pkfx</file></assetreference></component><anim>None<component>Movefoam</component></anim></attachment>
+  <attachment>DeathWaterFoam<component>Deathfoam<assetreference type="popcornFx"><file>water_effects\death_waterFoam_medium.pkfx</file></assetreference></component><anim>None<component>Deathfoam</component></anim></attachment>
+  <attachment>Death_EXP<component>exp<assetreference type="popcornFx"><file>units\spc\fire_ship\Exp_ship.pkfx</file></assetreference></component><anim>None<component>exp</component></anim></attachment>
+  <attachment>Death_EXP_Wood<component>exp2<assetreference type="popcornFx"><file>projectiles\ship_debris_wood.pkfx</file></assetreference></component><anim>None<component>exp2</component></anim></attachment>
+  <attachment>Fishing_net<component>fishing_net<assetreference type="GrannyModel"><file>units\attachments\fishing_net</file></assetreference></component><anim>Idle<assetreference type="GrannyAnim"><file>units\attachments\fishing_net_galley</file></assetreference><component>fishing_net</component></anim></attachment>
+  <component>ModelComp<logic type="LowPoly"><normal><logic type="Destruction"><p1><assetreference type="GrannyModel"><file>units\naval\galley\galley_damaged</file></assetreference></p1><p99><assetreference type="GrannyModel" shape="ship_galley"><file>units\naval\galley\galley</file></assetreference></p99></logic></normal><lowpoly><assetreference type="GrannyModel" shape="ship_galley"><file>units\naval\galley\galley_low</file></assetreference></lowpoly></logic><decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture><width>10.00</width><height>15.00</height></decal></component>
+  <component>deathModel<assetreference type="GrannyModel"><file>units\naval\galley\galley_damaged</file></assetreference></component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>units\naval\galley\galley_idle</file></assetreference><component>ModelComp</component><simskeleton><model>units\naval\galley\galley_damaged</model></simskeleton><attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
+  <anim>Walk<assetreference type="GrannyAnim"><file>units\naval\galley\galley_walk</file></assetreference><component>ModelComp</component><simskeleton><model>units\naval\galley\galley_damaged</model></simskeleton><attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
+  <anim>RangedAttack<assetreference type="GrannyAnim"><file>units\naval\galley\galley_idle</file><tag type="Attack">0.10</tag><tag type="Particles" particlename="igcgalleonmuzzlel01">0.00</tag><tag type="Particles" particlename="igcgalleonmuzzlel02">0.07</tag><tag type="Particles" particlename="igcgalleonmuzzlel03">0.14</tag><tag type="Particles" particlename="igcgalleonmuzzlel04">0.21</tag></assetreference><component>ModelComp</component><simskeleton><model>units\naval\galley\galley_damaged</model></simskeleton></anim>
+  <anim>RangedAttackLeft<assetreference type="GrannyAnim"><file>units\naval\galley\galley_idle</file><tag type="Attack">0.10</tag><tag type="Particles" particlename="igcgalleonmuzzlel01">0.00</tag><tag type="Particles" particlename="igcgalleonmuzzlel02">0.07</tag><tag type="Particles" particlename="igcgalleonmuzzlel03">0.14</tag><tag type="Particles" particlename="igcgalleonmuzzlel04">0.21</tag></assetreference><component>ModelComp</component><simskeleton><model>units\naval\galley\galley_damaged</model></simskeleton></anim>
+  <anim>RangedAttackRight<assetreference type="GrannyAnim"><file>units\naval\galley\galley_idle</file><tag type="Attack">0.50</tag><tag type="Particles" particlename="igcgalleonmuzzler01">0.60</tag><tag type="Particles" particlename="igcgalleonmuzzler02">0.78</tag><tag type="Particles" particlename="igcgalleonmuzzler03">0.85</tag><tag type="Particles" particlename="igcgalleonmuzzler04">0.90</tag></assetreference><component>ModelComp</component><simskeleton><model>units\naval\galley\galley_damaged</model></simskeleton></anim>
+  <anim>GatherFish<assetreference type="GrannyAnim"><file>units\naval\galley\galley_idle</file><tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.63</tag></assetreference><component>ModelComp</component><simskeleton><model>units\naval\galley\galley_damaged</model></simskeleton><attach a="Fishing_net" frombone="MASTER" tobone="MASTER" syncanims="0"></attach></anim>
+  <anim>Death<component>deathModel</component><attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="Death_EXP" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
+</animfile>

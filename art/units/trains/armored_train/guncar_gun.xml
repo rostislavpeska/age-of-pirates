@@ -1,0 +1,56 @@
+<animfile>
+    <definebone>bone_launchpoint</definebone>
+    <definebone>bone_explosion</definebone>
+    <definebone>bone_muzzle</definebone>
+
+    <attachment>Cannon
+        <include>units\trains\armored_train\guncar_gun_base.xml</include>
+    </attachment>
+    <component>fixed gun
+        <assetreference type="GrannyModel">
+            <file>units\trains\armored_train\guncar_gun_Model</file>
+        </assetreference>
+        <attach a="Cannon" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"></attach>
+    </component>
+
+    <component>DeathModel
+        <assetreference type="GrannyModel">
+            <file>units\trains\armored_train\guncar_gun_Model</file>
+        </assetreference>
+        <attach a="Cannon" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"></attach>
+    </component>
+
+
+    <anim>Idle
+        <assetreference type="GrannyAnim">
+            <file>units\trains\armored_train\guncar_gun_idle_Anim</file>
+        </assetreference>
+        <component>fixed gun</component>
+        <simskeleton>
+			<model>units\trains\armored_train\guncar_gun_damaged_Model</model>
+			<damagetemplate>units\trains\armored_train\guncar_gun.dmg</damagetemplate>
+		</simskeleton>
+    </anim>
+    <anim>RangedAttack
+        <assetreference type="GrannyAnim">
+            <file>units\trains\armored_train\guncar_gun_attack_Anim</file>
+            <tag type="CameraShake" force="0.09" duration="0.2">0.35</tag>
+            <tag type="Attack">0.35</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="MortarShot">0.35</tag>
+            <tag type="Particles" particlename="fixedgunmuzzlefx">0.35</tag>
+        </assetreference>
+        <component>fixed gun</component>
+        <simskeleton>
+			<model>units\trains\armored_train\guncar_gun_damaged_Model</model>
+			<damagetemplate>units\trains\armored_train\guncar_gun.dmg</damagetemplate>
+		</simskeleton>
+    </anim>
+
+	<anim>Death
+        <assetreference type="GrannyAnim">
+            <file>units\trains\armored_train\wagon_damaged_Anim</file>
+        </assetreference>
+        <component>DeathModel</component>
+    </anim>
+
+</animfile>

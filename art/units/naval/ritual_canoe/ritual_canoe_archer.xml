@@ -1,0 +1,90 @@
+<animfile>
+    <definebone>Bone01</definebone>
+    <definebone>Bip01 Prop2</definebone>
+    <definebone>bone_quiver</definebone>
+    <definebone>bone_bow</definebone>
+    <definebone>Bip01 Prop1</definebone>
+    <definebone>bone_banner</definebone>
+    <definebone>Bip01 Spine</definebone>
+    <attachment>
+        arrow_attachment<anim>Idle<component></component></anim><include>units\attachments\arrow.xml</include>
+    </attachment>
+    <attachment>
+        quivers
+        <component>
+            quivers<assetreference type="GrannyModel"><file>units\natives\aztec\arrow_knight\ak_quiver</file></assetreference>
+        </component>
+        <anim>Idle<component>quivers</component></anim>
+    </attachment>
+    <attachment>
+        bows
+        <component>
+            bows<assetreference type="GrannyModel"><file>units\natives\aztec\arrow_knight\ak_bow</file></assetreference>
+        </component>
+        <anim>Idle<component>bows</component></anim>
+    </attachment>
+    <attachment>sword<include>units\natives\aztec\arrow_knight\arrow_knight_club.xml</include></attachment>
+    <attachment>
+        flaming_arrow
+        <component>
+            emitter<assetreference type="ParticleSystem"><file>effects\fire\arrowFire_Longbow.particle</file></assetreference>
+        </component>
+        <anim>Idle<component>emitter</component></anim>
+    </attachment>
+    <attachment>banners<include>units\natives\aztec\arrow_knight\arrow_knight_banner.xml</include></attachment>
+    <attachment>
+        measure tape
+        <component>
+            measure tape<assetreference type="GrannyModel"><file>units\attachments\measuring_tape</file></assetreference>
+        </component>
+        <anim>Idle<component>measure tape</component></anim>
+    </attachment>
+    <attachment>
+        saw
+        <component>
+            saw_villager<assetreference type="GrannyModel"><file>units\attachments\saw_villager</file></assetreference>
+        </component>
+        <anim>Idle<component>saw_villager</component></anim>
+    </attachment>
+    <attachment>
+        hammer
+        <component>
+            hammer<assetreference type="GrannyModel"><file>units\attachments\hammer_villager</file></assetreference>
+        </component>
+        <anim>Idle<component>hammer</component></anim>
+    </attachment>
+    <component>
+        ModelComp
+        <assetreference type="GrannyModel"><file>units\natives\aztec\arrow_knight\arrow_knight_age1</file></assetreference>
+        <decal>
+            <effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height>
+        </decal>
+        <attach a="quivers" frombone="bone_quiver" tobone="SPINE1" syncanims="0"></attach>
+    </component>
+    <anim>
+        Idle<assetreference type="GrannyAnim"><file>animation_library\range\cover\longbow_cover_idle</file></assetreference><component>ModelComp</component><attach a="bows" frombone="bone_bow" tobone="Bip01 Prop1" syncanims="0"></attach>
+    </anim>
+    <anim>
+        Walk<assetreference type="GrannyAnim"><file>animation_library\range\cover\longbow_cover_idle</file></assetreference><component>ModelComp</component><attach a="bows" frombone="bone_bow" tobone="Bip01 Prop1" syncanims="0"></attach>
+    </anim>
+    <anim>
+        GatherFish<assetreference type="GrannyAnim"><file>animation_library\IGC\naval\sitting_fishing_boat_fish</file></assetreference><component>ModelComp</component>
+    </anim>
+    <anim>
+        Death<assetreference type="GrannyAnim"><file>animation_library\range\havoc_flail</file></assetreference><component>ModelComp</component><attach a="bows" frombone="bone_bow" tobone="Bip01 Prop1" syncanims="0"></attach>
+    </anim>
+    <anim>
+        RangedAttack<assetreference type="GrannyAnim"><file>animation_library\natives\arrow_knight\volley_fire</file><tag type="Attack">0.98</tag><tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag></assetreference>
+        <assetreference type="GrannyAnim"><file>animation_library\natives\arrow_knight\volley_fire2</file><tag type="Attack">0.98</tag><tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag></assetreference>
+        <component>ModelComp</component><attach a="arrow_attachment" frombone="MASTER" tobone="Bip01 Prop2" syncanims="0"></attach><attach a="bows" frombone="bone_bow" tobone="Bip01 Prop1" syncanims="0"></attach>
+    </anim>
+    <anim>
+        Raze_Attack<assetreference type="GrannyAnim"><file>animation_library\natives\arrow_knight\volley_fire</file><tag type="Attack">0.98</tag><tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag></assetreference>
+        <assetreference type="GrannyAnim"><file>animation_library\natives\arrow_knight\volley_fire2</file><tag type="Attack">0.98</tag><tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag></assetreference>
+        <component>ModelComp</component><attach a="arrow_attachment" frombone="MASTER" tobone="Bip01 Prop2" syncanims="0"></attach><attach a="bows" frombone="bone_bow" tobone="Bip01 Prop1" syncanims="0"></attach>
+    </anim>
+    <anim>
+        Raze_Idle<assetreference type="GrannyAnim"><file>animation_library\natives\arrow_knight\volley_idle</file></assetreference><component>ModelComp</component>
+        <attach a="flaming_arrow" frombone="MASTER" tobone="Bip01 Prop2" syncanims="0"></attach><attach a="bows" frombone="bone_bow" tobone="Bip01 Prop1" syncanims="0"></attach>
+    </anim>
+</animfile>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapinfo details="300836" displayNameID="300835" loadDetails="300837" largeMapName = "zpvenice"
+    imagepath="ui\random_map\venice\venice_mini" cannotReplace="" loadBackground="ui\random_map\venice\venice_map">
+    <loadss>ui\random_map\venice\venice_01</loadss>
+    <loadss>ui\random_map\venice\venice_02</loadss>
+    <loadss>ui\random_map\venice\venice_03</loadss>
+</mapinfo>

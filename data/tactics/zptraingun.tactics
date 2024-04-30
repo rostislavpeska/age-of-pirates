@@ -1,0 +1,98 @@
+<tactics>
+  <action>
+    <name stringid="38119">CannonAttack</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>RangedAttack</anim>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.01</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>zpGreatWarShell</projectile>
+    <impacteffect>effects\impacts\mortar</impacteffect>
+    <rate type="Unit">1.0 </rate>
+    <throw>1</throw>
+    <areasortmode>Radial</areasortmode>
+    <targetground>1</targetground>
+    <basedamagecap>1</basedamagecap>
+    <perfectaccuracy>1</perfectaccuracy>
+  </action>
+  <action>
+    <name stringid="38119">BuildingAttack</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>RangedAttack</anim>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.01</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>zpGreatWarShell</projectile>
+    <impacteffect>effects\impacts\mortar</impacteffect>
+    <rate type="Building">1.0 </rate>
+    <throw>1</throw>
+    <areasortmode>Radial</areasortmode>
+    <targetground>1</targetground>
+    <basedamagecap>1</basedamagecap>
+    <perfectaccuracy>1</perfectaccuracy>
+    <excludefromrangeindicator>1</excludefromrangeindicator>
+  </action>
+  <action>
+    <name stringid="38122">LongRangeAttack</name>
+    <type>Attack</type>
+    <active>0</active>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>RangedAttack</anim>
+    <idleanim>Idle</idleanim>
+    <projectile>zpGreatWarShell</projectile>
+    <numberprojectiles>1</numberprojectiles>
+    <impacteffect>effects\impacts\mortar</impacteffect>
+    <accuracy>1.0</accuracy>
+    <aimbonus>5</aimbonus>
+    <throw>1</throw>
+    <rate type="LogicalTypeRangedUnitsAttack">1.0 </rate>
+    <perfectaccuracy>1</perfectaccuracy>
+    <areasortmode>Radial</areasortmode>
+    <targetground>1</targetground>
+    <basedamagecap>1</basedamagecap>
+    <excludefromrangeindicator>1</excludefromrangeindicator>
+  </action>
+  <action>
+    <name stringid="124920">ExplosionAttack</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>RangedAttack</anim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.01</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>InvisibleProjectile</projectile>
+    <impacteffect>effects\impacts\gun</impacteffect>
+    <rate type="Unit">1.0</rate>
+    <instantballistics>1</instantballistics>
+    <basedamagecap>1</basedamagecap>
+    <selfdestruct>1</selfdestruct>
+    <hidefromstats>1</hidefromstats>
+  </action>
+  <tactic>Normal
+    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+    <action priority="100">CannonAttack</action>
+    <action priority="50">BuildingAttack</action>
+    <action priority="1">LongRangeAttack</action>
+  </tactic>
+</tactics>

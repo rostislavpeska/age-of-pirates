@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<component>
+		ModelComp
+		<logic type="Tech">
+			<none>
+				<logic type="LowPoly">
+					<normal>
+						<assetreference type="GrannyModel">
+							<file>buildings\native_settlement\africa\nafrica_tent_e</file>
+						</assetreference>
+					</normal>
+					<lowpoly>
+						<assetreference type="GrannyModel">
+							<file>buildings\native_settlement\africa\nafrica_tent_e</file>
+						</assetreference>
+					</lowpoly>
+				</logic>
+				<decal>
+					<effecttype>bump</effecttype>
+					<texture>buildings\market\market_ground_generic_basecolor</texture>
+					<bumptexture>buildings\market\market_ground_generic_normals</bumptexture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>10.00</width>
+					<height>10.00</height>
+				</decal>
+			</none>
+			<zpUpdatePort1>
+				<logic type="LowPoly">
+					<normal>
+						<assetreference type="GrannyModel">
+							<file>buildings\market\oriental_house</file>
+						</assetreference>
+					</normal>
+					<lowpoly>
+						<assetreference type="GrannyModel">
+							<file>buildings\market\oriental_house</file>
+						</assetreference>
+					</lowpoly>
+				</logic>
+				<decal>
+					<effecttype>bump</effecttype>
+					<texture>buildings\market\market_ground_generic_basecolor</texture>
+					<bumptexture>buildings\market\market_ground_generic_normals</bumptexture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>10.00</width>
+					<height>10.00</height>
+				</decal>
+			</zpUpdatePort1>
+			<zpUpdatePort2>			
+				<assetreference type="GrannyModel">
+					<file>buildings\market\oriental_market_Model</file>
+				</assetreference>
+				<decal>
+					<effecttype>bump</effecttype>
+					<texture>buildings\market\market_ground_generic_basecolor</texture>
+					<bumptexture>buildings\market\market_ground_generic_normals</bumptexture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>10.00</width>
+					<height>10.00</height>
+				</decal>
+			</zpUpdatePort2>
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

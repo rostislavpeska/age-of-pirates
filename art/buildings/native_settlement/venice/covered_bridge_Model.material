@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\italy\italy_filler_buildings\textures\italy_filler_bridges_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\italy\italy_filler_buildings\textures\italy_filler_bridges_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\italy\italy_filler_buildings\textures\italy_filler_bridges_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

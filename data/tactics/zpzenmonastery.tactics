@@ -189,6 +189,13 @@
     <active>1</active>
     <persistent>1</persistent>
   </action>
+  <action>
+    <name stringid="300298">MaintainSoheiCavalry</name>
+    <type>Maintain</type>
+    <rate type="zpNatSoheiCavalry">1.0 </rate>
+    <active>1</active>
+    <persistent>1</persistent>
+  </action>
 
   <tactic>SoheiInf
     <protounitcommand>TacticSoheiInf</protounitcommand>
@@ -209,6 +216,11 @@
     <action>ExtraHPCavalry</action>  
     <transition>
       <tactic>SoheiArcher</tactic>
+      <length>2</length>
+      <exit>1</exit>
+    </transition>
+    <transition>
+      <tactic>SoheiCavalry</tactic>
       <length>2</length>
       <exit>1</exit>
     </transition>
@@ -234,6 +246,40 @@
     <action>ExtraHPCavalry</action>  
     <transition>
       <tactic>SoheiInf</tactic>
+      <length>2</length>
+      <exit>1</exit>
+    </transition>
+    <transition>
+      <tactic>SoheiCavalry</tactic>
+      <length>2</length>
+      <exit>1</exit>
+    </transition>
+  </tactic>
+
+  <tactic>SoheiCavalry
+    <protounitcommand>TacticSoheiCavalry</protounitcommand>
+    <active>0</active>
+    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+    <action priority="100">AntiShipAttack</action>
+    <action priority="75">CannonAttack</action>
+    <action priority="25">RangedAttack</action>
+    <action>MaintainSoheiCavalry</action>
+    <action>Spawn</action>
+    <action>ExtraBounty</action>
+    <action>ExtraBuildBounty</action>
+    <action>ExtraDamageInfantry</action>
+    <action>ExtraDamageCavalry</action>
+    <action>ExtraHPInfantry</action>
+    <action>ExtraHPCavalry</action>  
+    <transition>
+      <tactic>SoheiInf</tactic>
+      <length>2</length>
+      <exit>1</exit>
+    </transition>
+    <transition>
+      <tactic>SoheiArcher</tactic>
       <length>2</length>
       <exit>1</exit>
     </transition>

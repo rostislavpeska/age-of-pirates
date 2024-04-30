@@ -1,0 +1,50 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings/wonders/agra_fort/textures/water_fort_age2_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings/wonders/agra_fort/textures/water_fort_age2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings/wonders/agra_fort/textures/water_fort_age2_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings/wonders/agra_fort/textures/water_fort_age2_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings/wonders/agra_fort/textures/agra_fort_age2_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings/wonders/agra_fort/textures/water_fort_age2_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="textures\construction\india_towncenter_age4_construction\india_towncenter_age4_construction_BaseColor">
+      </texture>
+      <texture name="Normals" override="textures\construction\india_towncenter_age4_construction\india_towncenter_age4_construction_Normals">
+      </texture>
+      <texture name="Masks" override="textures\construction\india_towncenter_age4_construction\india_towncenter_age4_construction_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="textures\construction\scaffolding\scaffolding_BaseColor">
+      </texture>
+      <texture name="Normals" override="textures\construction\scaffolding\scaffolding_Normals">
+      </texture>
+      <texture name="Masks" override="textures\construction\scaffolding\scaffolding_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

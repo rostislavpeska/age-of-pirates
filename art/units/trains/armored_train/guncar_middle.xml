@@ -1,0 +1,32 @@
+<animfile>
+    <component>coal_car
+        <assetreference type="GrannyModel">
+            <file>units\trains\armored_train\guncar_middle_Model</file>
+        </assetreference>
+        <decal>
+            <effecttype>default</effecttype>
+            <texture>shadows_selections\shadow_circle_128x128</texture>
+            <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+            <width>1.0</width>
+            <height>1.0</height>
+        </decal>
+    </component>
+    <anim>Idle
+        <assetreference type="GrannyAnim">
+            <file>units\trains\coal_euro</file>
+        </assetreference>
+        <component>coal_car</component>
+    </anim>
+    <anim>Walk
+        <assetreference type="GrannyAnim">
+            <file>units\trains\coal_car_walk</file>
+        </assetreference>
+        <component>coal_car</component>
+    </anim>
+    <anim>Death
+        <assetreference type="GrannyAnim">
+            <file>units\trains\armored_train\guncar_middle_death_Anim</file>
+        </assetreference>
+        <component>coal_car</component>
+    </anim>
+</animfile>

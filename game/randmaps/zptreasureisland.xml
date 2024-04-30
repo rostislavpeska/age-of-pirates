@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapinfo details="300690" displayNameID="300689" loadDetails="300691" largeMapName = "zptreasureisland"
+    imagepath="ui\random_map\treasureisland\treasureisland_mini" cannotReplace="" loadBackground="ui\random_map\treasureisland\treasureisland_map">
+    <loadss>ui\random_map\treasureisland\treasureisland_01</loadss>
+    <loadss>ui\random_map\treasureisland\treasureisland_02</loadss>
+    <loadss>ui\random_map\treasureisland\treasureisland_03</loadss>
+</mapinfo>

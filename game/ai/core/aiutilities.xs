@@ -429,24 +429,59 @@ vector guessEnemyLocation(int player = -1)
    {
       player = aiGetMostHatedPlayerID();
    }
+
+   // AssertiveWall: sometimes aiGetMostHatedPlayerID() doesn't work. if that's the case, grab the first enemy player
+   if (player < 0)
+   {
+      for (i = 0; < cNumberPlayers)
+      {
+         if (kbGetPlayerTeam(i) != kbGetPlayerTeam(cMyID))
+         {
+            player = i;
+         }
+      }
+   }
+
    vector position = kbGetPlayerStartingPosition(player);
+
+   // AssertiveWall: On King of the Hill, look for the hill, not enemy players 
+   if (aiIsKOTHAllowed() == true)
+   {
+      position = getClosestGaiaUnitPosition(cUnitTypeypKingsHill, kbGetMapCenter());
+      if (gStartOnDifferentIslands != true)
+      {  // Some KoTH islands are so small any error means hitting water
+         float xError = kbGetMapXSize() * 0.05;
+         float zError = kbGetMapZSize() * 0.05;
+         position = xsVectorSetX(position, xsVectorGetX(position) + aiRandFloat(0.0 - xError, xError));
+         position = xsVectorSetZ(position, xsVectorGetZ(position) + aiRandFloat(0.0 - zError, zError));
+      }
+      return (position);
+   }
 
    if ((cDifficultyCurrent >= cDifficultyHard) && (position != cInvalidVector))
    {
       // For higher difficulties, assuming the AI played on this map before, it should have a rough idea of the enemy
       // location.
-      float xError = kbGetMapXSize() * 0.1;
-      float zError = kbGetMapZSize() * 0.1;
-      xsVectorSetX(position, xsVectorGetX(position) + aiRandFloat(0.0 - xError, xError));
-      xsVectorSetZ(position, xsVectorGetZ(position) + aiRandFloat(0.0 - zError, zError));
+      xError = kbGetMapXSize() * 0.05;  // AssertiveWall: reduced (more accurate) from 0.1
+      zError = kbGetMapZSize() * 0.05;  // AssertiveWall: reduced (more accurate) from 0.1
+      // AssertiveWall: needs to be position = to actually set the vector
+      position = xsVectorSetX(position, xsVectorGetX(position) + aiRandFloat(0.0 - xError, xError));
+      position = xsVectorSetZ(position, xsVectorGetZ(position) + aiRandFloat(0.0 - zError, zError));
    }
    else
    {
+      // AssertiveWall: For lower difficulties do the same as above, but with less accuracy
       // For lower difficulties, just simply create a mirror image of our base.
-      vector myBaseLocation = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)); // Main base location...need to find reflection.
+      xError = kbGetMapXSize() * 0.15;
+      zError = kbGetMapZSize() * 0.15;
+      // AssertiveWall: needs to be position = to actually set the vector
+      position = xsVectorSetX(position, xsVectorGetX(position) + aiRandFloat(0.0 - xError, xError));
+      position = xsVectorSetZ(position, xsVectorGetZ(position) + aiRandFloat(0.0 - zError, zError));
+
+      /*vector myBaseLocation = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)); // Main base location...need to find reflection.
       vector mapCenter = kbGetMapCenter();
       vector centerOffset = mapCenter - myBaseLocation;
-      position = mapCenter + centerOffset;
+      position = mapCenter + centerOffset;*/
    }
 
    return (position);
@@ -655,6 +690,13 @@ bool agingUp()
 //==============================================================================
 bool needMoreHouses()
 {
+   // AssertiveWall: Suppress this while build order is active
+   int buildingBOlength = xsArrayGetSize(boBuildingArray) - 1;
+   if (xsArrayGetInt(boBuildingArray, buildingBOlength) > 0 && gUseBuildOrder == true)
+   {
+      return (false);
+   }
+
    // Nothing to do with Lakota because we always max out pop cap without anything.
    if (cMyCiv == cCivXPSioux)
    {
@@ -1086,7 +1128,7 @@ int getClosestUnitByLocation(int unitTypeID = -1, int playerRelationOrID = cMyID
 
 //==============================================================================
 // AssetiveWall: getClosestVisibleUnitByLocation
-// Will return a random unit matching the parameters
+// Will return the closest unit matching the parameters
 //==============================================================================
 int getClosestVisibleUnitByLocation(int unitTypeID = -1, int playerRelationOrID = cMyID, int state = cUnitStateAlive,
                              vector location = cInvalidVector, float radius = 20.0)
@@ -1657,6 +1699,10 @@ int createSimpleBuildPlan(int puid = -1, int numberWanted = 1, int pri = 100, bo
    }
 
    int planID = -1;
+   if (gIsArchipelagoMap == true)
+   {
+      baseID = -1;
+   }
 
    // Create the right number of plans.
    for (i = 0; < numberWanted)
@@ -1876,7 +1922,7 @@ int createRepairPlan(int pri = 50)
 // createTransportPlan
 //==============================================================================
 int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint = cInvalidVector,
-                        int pri = 50, bool returnWhenDone = true)
+                        int pri = 100, bool returnWhenDone = true)
 {
    int shipQueryID = createSimpleUnitQuery(cUnitTypeTransport, cMyID, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(shipQueryID);
@@ -1885,20 +1931,33 @@ int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint 
    int unitPlanID = -1;
    int transportID = -1;
    float transportHitpoints = 0.0;
+   int bestShipValue = -1;
+   int tempShipValue = -1;
    
+   // try to look for a "best" ship
    for (i = 0; < numberFound)
    {
       shipID = kbUnitQueryGetResult(shipQueryID, i);
       unitPlanID = kbUnitGetPlanID(shipID);
-      if ((unitPlanID >= 0) && ((aiPlanGetDesiredPriority(unitPlanID) > pri) || (aiPlanGetType(unitPlanID) == cPlanTransport)))
+      // AssertiveWall: exclude ships of same pri. Previous: (aiPlanGetDesiredPriority(unitPlanID) > pri)
+      if ((unitPlanID >= 0) && ((aiPlanGetDesiredPriority(unitPlanID) >= pri) || (aiPlanGetType(unitPlanID) == cPlanTransport)))
       {
          continue;
       }
       shipHitpoints = kbUnitGetCurrentHitpoints(shipID);
-      if (shipHitpoints > transportHitpoints)
+      // AssertiveWall: calculation for ship "value"
+      tempShipValue = shipHitpoints * (100 - aiPlanGetDesiredPriority(unitPlanID));
+      if (kbUnitGetProtoUnitID(shipID) == gGalleonUnit)
+      {
+         tempShipValue = 2 * tempShipValue;
+      }
+
+      //if (shipHitpoints > transportHitpoints)
+      if (tempShipValue > bestShipValue)
       {
          transportID = shipID;
          transportHitpoints = shipHitpoints;
+         bestShipValue = tempShipValue;
       }
    }
 
@@ -1907,7 +1966,9 @@ int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint 
       return (-1);
    }
 
-   int planID = aiPlanCreate(kbGetUnitTypeName(kbUnitGetProtoUnitID(transportID)) + " Transport Plan, ", cPlanTransport);
+   // AssertiveWall: Add index here, time in seconds. I think it might be preventing me from creating too many
+   int index = xsGetTime() / 1000;
+   int planID = aiPlanCreate(kbGetUnitTypeName(kbUnitGetProtoUnitID(transportID)) + " Transport Plan, " + index, cPlanTransport);
 
    if (planID < 0)
    {
@@ -1922,30 +1983,7 @@ int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint 
    int minShips = 1;
    int wantedShips = 1;
    int maxShips = 1;
-   /*if (age <= cAge2)
-   {
-      minShips = 1;
-      wantedShips = 2;
-      maxShips = 3;
-   }
-   if (age == cAge3)
-   {
-      minShips = 1;
-      wantedShips = 2;
-      maxShips = 4;         
-   }
-   if (age == cAge4)
-   {
-      minShips = 1;
-      wantedShips = 2;
-      maxShips = 5;         
-   }
-   if (age == cAge5)
-   {
-      minShips = 1;
-      wantedShips = 3;
-      maxShips = 6;         
-   }*/
+
    // must add the transport unit otherwise other plans might try to use this unit
    aiPlanAddUnitType(planID, kbUnitGetProtoUnitID(transportID), minShips, wantedShips, maxShips);
 
@@ -2130,7 +2168,9 @@ bool isDefendingOrAttacking()
              (existingPlanID != gNavyRepairPlan) && 
              (existingPlanID != gNavyDefendPlan) &&
              (existingPlanID != gNavyAttackPlan) &&
-             (existingPlanID != gCoastalGunPlan)) // AssertiveWall: Don't stop if there's navy attack plans
+             (existingPlanID != gCoastalGunPlan) &&
+             (existingPlanID != gforwardArmyPlan) &&    // AssertiveWall: Added the forward base army plan
+             (existingPlanID != gEndlessWaterRaidPlan)) // AssertiveWall: Don't stop if there's navy attack plans
          {
             debugUtilities("isDefendingOrAttacking: don't create another combat plan because we already have one named: "
                + aiPlanGetName(existingPlanID));
@@ -2140,7 +2180,7 @@ bool isDefendingOrAttacking()
       else // Attack plan.
       {
          if ((aiPlanGetParentID(existingPlanID) < 0) && // No parent so not a reinforcing child plan.
-             (existingPlanID != gNavyAttackPlan && existingPlanID != gCoastalGunPlan))
+             (existingPlanID != gNavyAttackPlan && existingPlanID != gCoastalGunPlan && existingPlanID != gEndlessWaterRaidPlan))
          {
             debugUtilities("isDefendingOrAttacking: don't create another combat plan because we already have one named: "
                + aiPlanGetName(existingPlanID));

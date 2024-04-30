@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapinfo details="300854" displayNameID="300853" loadDetails="300855" largeMapName = "zpmediterranean"
+    imagepath="ui\random_map\zpmediterranean\zpmediterranean_mini" cannotReplace="" loadBackground="ui\random_map\zpmediterranean\zpmediterranean_map">
+    <loadss>ui\random_map\zpmediterranean\zpmediterranean_01</loadss>
+    <loadss>ui\random_map\zpmediterranean\zpmediterranean_02</loadss>
+    <loadss>ui\random_map\zpmediterranean\zpmediterranean_03</loadss>
+</mapinfo>

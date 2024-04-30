@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\market\textures\ambassador_house_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\market\textures\ambassador_house_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\market\textures\ambassador_house_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

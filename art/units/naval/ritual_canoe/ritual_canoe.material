@@ -1,0 +1,30 @@
+<material>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\tlaloc_canoe\textures\tlaloc_canoe_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\tlaloc_canoe\textures\tlaloc_canoe_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\tlaloc_canoe\textures\tlaloc_canoe_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\tlaloc_canoe\textures\tlaloc_canoe_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mata">
+    <materialdef name="default_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\tlaloc_canoe\textures\tlaloc_canoe_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\tlaloc_canoe\textures\tlaloc_canoe_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\tlaloc_canoe\textures\tlaloc_canoe_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\tlaloc_canoe\textures\tlaloc_canoe_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

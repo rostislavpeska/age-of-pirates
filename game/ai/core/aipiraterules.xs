@@ -10,85 +10,273 @@
 
 //==============================================================================
 // initializePirateRules
+// Rule starts as active, only runs as a setup rule and disables after one cycle
+// Interval set long to avoid interfering with setup.xs
 //==============================================================================
 
 rule initializePirateRules
 active
+minInterval 1
+{
+   // AssertiveWall: Check for Pirate Maps and set gStartOnDifferentIslands true for all of them
+   if (cRandomMapName == "zpburma_b" ||
+       cRandomMapName == "zpcoldwar" ||
+       cRandomMapName == "zpdeadsea" ||
+       cRandomMapName == "zpeldorado" ||
+       cRandomMapName == "zpkurils" ||
+       cRandomMapName == "zpmalta_castles" ||
+       cRandomMapName == "zpmalta" ||
+       cRandomMapName == "zpphilippines" ||
+       cRandomMapName == "zptortuga" ||
+       cRandomMapName == "zptreasureisland" ||
+       cRandomMapName == "zpvenice" ||
+       cRandomMapName == "zpmediterranean")
+   {
+      gStartOnDifferentIslands = true;
+      gIsPirateMap = true;
+      gNavyMap = true;
+
+      gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
+      gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
+   }
+
+   // AssertiveWall: Land Maps
+   if (cRandomMapName == "winterwonderlandii" ||
+       cRandomMapName == "zpwildwest" ||
+       cRandomMapName == "zpmississippi")
+   {
+      gIsPirateMap = true;
+      gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
+      gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
+   }
+
+   // AssertiveWall: Archipelago style maps
+   if (cRandomMapName == "euArchipelago" ||
+      cRandomMapName == "euArchipelagoLarge"||
+      cRandomMapName == "zpmediterranean" ||
+      cRandomMapName == "zpkurils")
+   {
+      gIsArchipelagoMap = true;
+      gStartOnDifferentIslands = true;
+      gIsPirateMap = true;
+      gNavyMap = true;
+
+      cvOkToGatherFood = false;      // Setting it false will turn off food gathering. True turns it on.
+      cvOkToGatherGold = false;      // Setting it false will turn off gold gathering. True turns it on.
+      cvOkToGatherWood = false;      // Setting it false will turn off wood gathering. True turns it on.
+      gHomeBase = kbGetPlayerStartingPosition(cMyID);
+   }
+
+   // Initializes all pirate functions
+
+   // Add rules for all pirate maps here
+   if (gIsPirateMap == true)
+   {
+      xsEnableRule("CaribTPMonitor");
+      xsEnableRule("pirateShipAbilityMonitor");
+   }
+   
+   // Initializes native specific rules
+   if (getGaiaUnitCount(cUnitTypezpNativeHousePirate) > 0)
+   {
+      xsEnableRule("MaintainPirateShips");
+      xsEnableRule("PirateTechMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseWokou) > 0)
+   {
+      xsEnableRule("MaintainWokouShips");
+      xsEnableRule("WokouTechMonitor");
+      xsEnableRule("submarineTactics");
+      xsEnableRule("airshipAbilityMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseJewish) > 0)
+   {
+      xsEnableRule("maintainJewishSettlers");
+      xsEnableRule("jewishBuildingMonitor");
+   }
+   if ((getGaiaUnitCount(cUnitTypezpSPCBlueMosque) > 0) || (getGaiaUnitCount(cUnitTypezpSPCGreatMosque) > 0))
+   {
+      xsEnableRule("maintainSufiSettlers");
+      xsEnableRule("maintainSufiBedouins");
+      xsEnableRule("SufiBigButtonMonitor");
+      xsEnableRule("SufiTechMonitor");
+      xsEnableRule("SufiWhiteFortManager");
+      xsEnableRule("zenSufiBuildingMonitor");
+   }
+   if ((getGaiaUnitCount(cUnitTypezpSPCGreatBuddha) > 0) || (getGaiaUnitCount(cUnitTypezpSPCPropZenCastle) > 0))
+   {
+      xsEnableRule("maintainZenSettlers");
+      xsEnableRule("ZenBigButtonMonitor");
+      xsEnableRule("ZenTechMonitor");
+      xsEnableRule("nativeWagonMonitor");
+      xsEnableRule("zenSufiBuildingMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeAztecTempleA) > 0)
+   {
+      xsEnableRule("zpMaintainAztecNativeVillagers");
+      xsEnableRule("zpNativeAztecBigButtonMonitor");
+      xsEnableRule("nativeWagonMonitor");
+      xsEnableRule("zpAztecTechMonitor");
+      xsEnableRule("aztecBuildingMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpWeaponFactoryWinter) > 0 || (getGaiaUnitCount(cUnitTypezpWeaponFactorySummer) > 0))
+   {
+      xsEnableRule("MaintainScientistShips");
+      xsEnableRule("MaintainScientistTanks");
+      xsEnableRule("MaintainScientistAirship");
+      xsEnableRule("zpScientistTechMonitor");
+      xsEnableRule("nativeWagonMonitor");
+      xsEnableRule("submarineTactics");
+      xsEnableRule("airshipAbilityMonitor");
+      xsEnableRule("airshipManager");
+
+      // Need a way to determine whether this is needed
+      xsEnableRule("armoredTrainMonitor");
+   }
+
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseInuit) > 0)
+   {
+      xsEnableRule("zpInuitTechMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseMaltese) > 0)
+   {
+      xsEnableRule("zpMalteseTechMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpJesuitCathedral) > 0)
+   {
+      xsEnableRule("zpJesuitTechMonitor");
+      xsEnableRule("maintainJesuitMissionary");
+      xsEnableRule("priestAbilityMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeUnitVenetianFlag) > 0)
+   {
+      xsEnableRule("VeniceTechMonitor");
+      xsEnableRule("MaintainVeniceShips");
+      xsEnableRule("nativeWagonMonitor");
+      xsEnableRule("dottoreAbilityMonitor");
+   }
+   if (getUnit(cUnitTypezpPropChristmassTree) > 0)
+   {
+      xsEnableRule("christmasTechMonitor");
+      xsEnableRule("nativeWagonMonitor");
+      xsEnableRule("polarExpressUpgradeMonitor");
+   }
+
+   if (getUnit(cUnitTypezpNativeHouseOrthodox) > 0)
+   {
+      xsEnableRule("orthodoxTechMonitor");
+      xsEnableRule("nativeWagonMonitor");
+   }
+   if (getUnit(cUnitTypezpNativeHouseWesternVillage) > 0)
+   {
+      xsEnableRule("zpWesternTechMonitor");
+      xsEnableRule("nativeWagonMonitor");
+   }
+   if (cMyCiv == cCivDEInca)
+   {
+        xsEnableRule("priestessAbilityMonitor");
+   }
+    
+   xsDisableSelf();
+}
+
+//==============================================================================
+// Monitors special behavior for armored train
+//==============================================================================
+rule armoredTrainMonitor
+inactive
 minInterval 5
 {
-    // Initializes all pirate functions if this is a pirate map
-    // Add always active rules here
-    xsEnableRule("CaribTPMonitor");
-    xsEnableRule("pirateShipAbilityMonitor");
+   // Look at all rail stations, if we have military nearby then send the train
+   // Condition: 
+   //    > 10 enemy or > 5 enemy buildings (likely in their base, killing their dudes)
+   //    > 10 friendly
+   //    -> then picks the most outnumbered station
+   //    Will send to KOTH station if there are > 10 enemy
 
-    // Test to check if this script gets run
-    //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, kbGetMapCenter());
-    
-    
-    // Initializes native specific rules
-    if (getGaiaUnitCount(cUnitTypezpNativeHousePirate) > 0)
-    {
-        xsEnableRule("MaintainPirateShips");
-        xsEnableRule("PirateTechMonitor");
-    }
-    if (getGaiaUnitCount(cUnitTypezpNativeHouseWokou) > 0)
-    {
-        xsEnableRule("MaintainWokouShips");
-        xsEnableRule("WokouTechMonitor");
-        xsEnableRule("submarineTactics");
-    }
-    if (getGaiaUnitCount(cUnitTypezpNativeHouseJewish) > 0)
-    {
-        xsEnableRule("maintainJewishSettlers");
-        xsEnableRule("jewishBuildingMonitor");
-    }
-    if ((getGaiaUnitCount(cUnitTypezpSPCBlueMosque) > 0) || (getGaiaUnitCount(cUnitTypezpSPCGreatMosque) > 0))
-    {
-        xsEnableRule("maintainSufiSettlers");
-        xsEnableRule("maintainSufiBedouins");
-        xsEnableRule("SufiBigButtonMonitor");
-        xsEnableRule("SufiTechMonitor");
-        xsEnableRule("SufiWhiteFortManager");
-        xsEnableRule("zenSufiBuildingMonitor");
-    }
-    if (getGaiaUnitCount(cUnitTypezpSPCGreatBuddha) > 0)
-    {
-        xsEnableRule("maintainZenSettlers");
-        xsEnableRule("ZenBigButtonMonitor");
-        xsEnableRule("ZenTechMonitor");
-        xsEnableRule("nativeWagonMonitor");
-        xsEnableRule("zenSufiBuildingMonitor");
-    }
-    if (getGaiaUnitCount(cUnitTypezpNativeAztecTempleA) > 0)
-    {
-        xsEnableRule("zpMaintainAztecNativeVillagers");
-        xsEnableRule("zpNativeAztecBigButtonMonitor");
-        xsEnableRule("nativeWagonMonitor");
-        xsEnableRule("zpAztecTechMonitor");
-        xsEnableRule("aztecBuildingMonitor");
-    }
-    if (getGaiaUnitCount(cUnitTypezpWeaponFactoryWinter) > 0)
-    {
-        xsEnableRule("MaintainScientistShips");
-        xsEnableRule("MaintainScientistTanks");
-        xsEnableRule("MaintainScientistAirship");
-        xsEnableRule("zpScientistTechMonitor");
-        xsEnableRule("nativeWagonMonitor");
-        xsEnableRule("submarineTactics");
-        xsEnableRule("airshipAbilityMonitor");
-        xsEnableRule("airshipManager");
-    }
+   /*if (aiPlanGetIDByTypeAndVariableType(cPlanResearch, cResearchPlanTechID, cTechzpArmoredTrainLevy) < 0)
+   {
+      researchSimpleTech(cTechzpArmoredTrainLevy, cUnitTypezpArmoredTrainBarracksBuilding, -1, 99);
+   }*/
+   
+   int stationQueryID = -1;
+   int numberFound = -1;
+   int bestStationID = -1;
+   int bestStationFriendlyArmyCount = -1;
+   int bestStationEnemyArmyCount = -999;
+   int tempFriendly = -1;
+   int tempEnemy = -1;
+   vector tempLocation = cInvalidVector;
+   int tempUnit = -1;
+   int ourStation = -1;
+   int ourStationQuery = -1;
+   bool dontReturn = false;
+   int tempNearbyEnemyBuildings = -1;
+   vector kothBuildingLoc = cInvalidVector;
+   bool chooseKOTH = false;
 
-    if (getGaiaUnitCount(cUnitTypezpNativeHouseInuit) > 0)
-    {
-        xsEnableRule("zpInuitTechMonitor");
-    }
-    if (getGaiaUnitCount(cUnitTypezpNativeHouseMaltese) > 0)
-    {
-        xsEnableRule("zpMalteseTechMonitor");
-    }
-    
-    xsDisableSelf();
+   ourStationQuery = createSimpleUnitQuery(cUnitTypeTradingPost, cPlayerRelationSelf, cUnitStateAlive);
+   numberFound = kbUnitQueryExecute(ourStationQuery);
+
+   for (i = 0; < numberFound)
+   {
+      ourStation = kbUnitQueryGetResult(ourStationQuery, i);
+      if (aiCanUseAbility(ourStation, cProtoPowerzpPowerArmouredTrain) == true)
+      {  // If someone can use the ability, then we can continue
+         dontReturn = true;
+         break;
+      }
+   }
+
+   if (dontReturn == false)
+   {
+      return;
+   }
+
+   stationQueryID = createSimpleUnitQuery(cUnitTypezpInvisibleRailwayStation, cPlayerRelationAny, cUnitStateAny);
+   numberFound = kbUnitQueryExecute(stationQueryID);
+   kothBuildingLoc = kbUnitGetPosition(getUnit(cUnitTypeypKingsHill, cPlayerRelationAny, cUnitStateAlive));
+
+   for (i = 0; < numberFound)
+   {
+      // See if there's a suitable target, starting with KOTH
+      tempUnit = kbUnitQueryGetResult(stationQueryID, i);
+      tempLocation = kbUnitGetPosition(tempUnit);
+      tempEnemy = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, tempLocation, 65.0);
+      tempNearbyEnemyBuildings = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, tempLocation, 65.0);
+
+      if (aiIsKOTHAllowed() == true)
+      { // Make sure we grab KOTH location. We'll use kothBuilding to tell whether we've found the hill nearby or not
+         
+         if (distance(tempLocation, kothBuildingLoc) < 50)
+         {
+            chooseKOTH = true;
+         }
+      }
+
+      if (tempEnemy > 10 || tempNearbyEnemyBuildings > 5)
+      {
+         tempFriendly = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly,
+               cUnitStateAlive, tempLocation, 65.0);
+         if (tempEnemy - tempFriendly > bestStationEnemyArmyCount - bestStationFriendlyArmyCount && (tempFriendly > 10 || chooseKOTH == true))
+         {
+            bestStationID = tempUnit;
+            bestStationEnemyArmyCount = tempEnemy;
+            bestStationFriendlyArmyCount = tempFriendly;
+            if (chooseKOTH == true)
+            {  // If we found the hill, and it's worth sending there, send it.
+               break;
+            }
+         }
+      }
+   }
+
+   if (bestStationID > 0)
+   {
+      aiTaskUnitSpecialPower(ourStation, cProtoPowerzpPowerArmouredTrain, bestStationID, cInvalidVector);
+   }
 }
 
 //==============================================================================
@@ -132,6 +320,74 @@ minInterval 12
              (existingPlanID != gCoastalGunPlan))
          {
             aiPlanAddUnitType(existingPlanID, cUnitTypezpAirshipAI, 1, 1, 200);
+         }
+      }
+   }
+}
+
+//==============================================================================
+// Priestess Ability Monitor
+//==============================================================================
+rule priestessAbilityMonitor
+inactive
+minInterval 12
+{
+   int priestessID = -1;
+   int enemyID = 0;
+   vector enemyLoc = cInvalidVector;
+   vector priestessLoc = cInvalidVector;
+   
+   // Subs dive if any enemy warships are nearby, otherwise surface
+   int priestessQuery = createSimpleUnitQuery(cUnitTypedePriestess, cMyID, cUnitStateAlive);
+   int numberPriestessFound = kbUnitQueryExecute(priestessQuery);
+
+   for (i = 0; < numberPriestessFound)
+   {
+      priestessID = kbUnitQueryGetResult(priestessQuery, i);
+      // Check for conversion ability
+      if (aiCanUseAbility(priestessID, cProtoPowerPowerConvert) == true)
+      {
+         priestessLoc = kbUnitGetPosition(priestessID);
+         enemyID = getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+            cUnitStateAlive, priestessLoc, 20.0);
+         enemyLoc = kbUnitGetPosition(enemyID);
+         if (enemyID > 0)
+         {
+            aiTaskUnitSpecialPower(priestessID, cProtoPowerPowerConvert, enemyID, cInvalidVector);
+         }
+      }
+   }
+}
+
+//==============================================================================
+// Jesuit Priest Ability Monitor
+//==============================================================================
+rule priestAbilityMonitor
+inactive
+minInterval 12
+{
+   int priestID = -1;
+   int enemyID = 0;
+   vector enemyLoc = cInvalidVector;
+   vector priestLoc = cInvalidVector;
+   
+   // Subs dive if any enemy warships are nearby, otherwise surface
+   int priestQuery = createSimpleUnitQuery(cUnitTypezpPriest, cMyID, cUnitStateAlive);
+   int numberPriestFound = kbUnitQueryExecute(priestQuery);
+
+   for (i = 0; < numberPriestFound)
+   {
+      priestID = kbUnitQueryGetResult(priestQuery, i);
+      // Check for conversion ability
+      if (aiCanUseAbility(priestID, cProtoPowerPowerConvert) == true)
+      {
+         priestLoc = kbUnitGetPosition(priestID);
+         enemyID = getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+            cUnitStateAlive, priestLoc, 20.0);
+         enemyLoc = kbUnitGetPosition(enemyID);
+         if (enemyID > 0)
+         {
+            aiTaskUnitSpecialPower(priestID, cProtoPowerPowerConvert, enemyID, cInvalidVector);
          }
       }
    }
@@ -254,6 +510,49 @@ minInterval 12
             if (enemyID >= 0)
             {
                aiTaskUnitSpecialPower(pirateShipID, cProtoPowerPowerLongRange, enemyID, cInvalidVector);
+            }
+         }
+      }
+   }
+}
+
+//==============================================================================
+// Dottore Ability Monitor
+//==============================================================================
+rule dottoreAbilityMonitor
+inactive
+minInterval 12
+{
+   int dottoreID = -1;
+   int enemyID = 0;
+   vector enemyLoc = cInvalidVector;
+   int friendlyNum = 0;
+   int enemyNum = 0;
+
+   // Subs dive if any enemy warships are nearby, otherwise surface
+   int dottoreQuery = createSimpleUnitQuery(cUnitTypezpNatDottore, cMyID, cUnitStateAlive);
+   int numberDottoreFound = kbUnitQueryExecute(dottoreQuery);
+
+   for (i = 0; < numberDottoreFound)
+   {
+      dottoreID = kbUnitQueryGetResult(dottoreQuery, i);
+
+      if (dottoreID >= 0)
+      {
+         vector dottoreLoc = kbUnitGetPosition(dottoreID);
+
+         if (aiCanUseAbility(dottoreID, cProtoPowerzpMustardGasWeak) == true)
+         {
+            enemyNum = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, dottoreLoc, 20.0);
+            enemyID = getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+               cUnitStateAlive, dottoreLoc, 20.0);
+            enemyLoc = kbUnitGetPosition(enemyID);
+            friendlyNum = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly, cUnitStateAlive, 
+               enemyLoc, 14.0);
+            if (enemyID >= 0 && (1.5 * friendlyNum < enemyNum))  // Gas it if we are losing
+            {  
+               aiTaskUnitSpecialPower(dottoreID, cProtoPowerzpMustardGasWeak, enemyID, cInvalidVector);
             }
          }
       }
@@ -627,7 +926,7 @@ minInterval 5
         aiPlanSetActive( build_plan, true );
     }
     
-    aiChat( cMyID, ""+aiPlanGetState( build_plan ) );
+    //aiChat( cMyID, ""+aiPlanGetState( build_plan ) );
 }
 
 //==============================================================================
@@ -746,7 +1045,7 @@ minInterval 30
 
   if (kbUnitCount(cMyID, cUnitTypezpSocketWokou, cUnitStateAny) == 0)
    {
-      aiChat( cMyID, "Wokou Socket not found");
+      //aiChat( cMyID, "Wokou Socket not found");
       return;
    }
 
@@ -758,8 +1057,8 @@ minInterval 30
     xsArraySetInt(proxy_list, 0, cUnitTypezpWokouJunkProxy);
     xsArraySetInt(ship_list, 0, cUnitTypeypWokouJunk);
 
-    xsArraySetInt(proxy_list, 1, cUnitTypezpFireShipProxy);
-    xsArraySetInt(ship_list, 1, cUnitTypeypFireship);
+    xsArraySetInt(proxy_list, 1, cUnitTypezpWokouFuchuanProxy);
+    xsArraySetInt(ship_list, 1, cUnitTypezpWokouFuchuan);
 
   }
 
@@ -815,7 +1114,7 @@ mininterval 60
 
    if (kbUnitCount(0, cUnitTypezpSPCGreatMosque, cUnitStateAny) >= 1)
     {
-        aiChat( cMyID, "Great Mosque found");
+        //aiChat( cMyID, "Great Mosque found");
         // Upgrade Great Mosque on Asian Maps
         bool canDisableSelf = researchSimpleTech(cTechzpSPCSufiGreatMosque, cUnitTypeTradingPost);
 
@@ -823,7 +1122,7 @@ mininterval 60
 
    if (kbUnitCount(0, cUnitTypezpSPCBlueMosque, cUnitStateAny) >= 1)
     {
-        aiChat( cMyID, "Blue Mosque found");
+        //aiChat( cMyID, "Blue Mosque found");
         // Upgrade Blue Mosque on Middle-East Maps
         canDisableSelf = researchSimpleTech(cTechzpSPCSufiBlueMosque, cUnitTypeTradingPost);
     }
@@ -876,7 +1175,7 @@ mininterval 60
   
    if (kbUnitCount(0, cUnitTypezpNativeAztecTempleA, cUnitStateAny) >= 1)
     {
-        aiChat( cMyID, "Aztec Temple found");
+        //aiChat( cMyID, "Aztec Temple found");
         // Upgrade Aztec Temple
         bool canDisableSelf = researchSimpleTech(cTechzpNatAztecInfluence, cUnitTypeTradingPost);
     }
@@ -1163,7 +1462,7 @@ mininterval 60
 
       // Fortified Monastery
       canDisableSelf &= researchSimpleTechByCondition(cTechzpFortifiedMonastery,
-      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpCastleZen, cUnitStateABQ) >= 1); },
+      []() -> bool { return ((kbUnitCount(cMyID, cUnitTypezpCastleZen, cUnitStateABQ) >= 1) || (kbUnitCount(cMyID, cUnitTypezpCastleZenClone, cUnitStateABQ) >= 1)); },
       cUnitTypezpCastleZen);
 
   if (canDisableSelf == true)
@@ -1396,7 +1695,7 @@ minInterval 30
 //==============================================================================
 rule nativeWagonMonitor
 inactive
-minInterval 30
+minInterval 15
 {
    int wagonQueryID = createSimpleUnitQuery(cUnitTypeAbstractWagon, cMyID, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(wagonQueryID);
@@ -1435,7 +1734,10 @@ minInterval 30
       // Vanilla.
          case cUnitTypezpSPCCastleWagon:
          {
-             buildingType = cUnitTypezpCastleZen;
+            if (kbTechGetStatus(cTechzpMountainZen) == cTechStatusActive)
+               buildingType = cUnitTypezpCastleZenClone;
+            else
+               buildingType = cUnitTypezpCastleZen;
              break;
          }
          case cUnitTypezpWaterTempleTravois:
@@ -1448,7 +1750,37 @@ minInterval 30
              buildingType = cUnitTypezpAcademy;
              break;
          }
-        
+         case cUnitTypezpDryDockWagon:
+         {
+             buildingType = cUnitTypezpDrydock;
+             break;
+         }
+         case cUnitTypezpVeniceEmbassyWagon:
+         {
+             buildingType = cUnitTypezpVeniceEmbassy;
+             break;
+         }
+         case cUnitTypezpWaterFortBuilder:
+         {
+            buildingType = cUnitTypezpWaterFort;
+            break;
+         }
+         case cUnitTypezpWorkshopWagon:
+         {
+            buildingType = cUnitTypezpWorkshop;
+         }
+         case cUnitTypezpMountainCitadelWagon:
+         {
+            buildingType = cUnitTypezpMountainCitadel;
+         }
+         case cUnitTypezpSheriffWagon:
+         {
+            buildingType = cUnitTypezpSheriffOffice;
+         }
+         case cUnitTypezpGunStoreWagon:
+         {
+            buildingType = cUnitTypezpGunStore;
+         }
       }
 
       if (buildingType < 0) // Didn't find a building so go to the next iteration.
@@ -1466,6 +1798,39 @@ minInterval 30
          {
             continue; // We can't make this building anymore so go to the next iteration.
          }
+      }
+
+      // Need a different placement for the water fort. Just use the location build plan
+      if (buildingType == cUnitTypezpWaterFort)
+      {
+         // Find a random point near gNavyVec
+         vector location = gNavyVec;
+         float xRange = 0;
+         float zRange = 0;
+         int randMinus = 1;
+         int minRange = 20 + aiRandInt(20);
+         for (j = 1; < 100)
+         {  
+            xRange = randMinus * (abs(xRange) + 1);
+            if (aiRandInt(4) > 2)
+            {
+               randMinus = -1 * randMinus;
+            }
+            zRange = randMinus * (abs(zRange) + 1);
+
+            location = xsVectorSetX(location, xsVectorGetX(location) + xRange);
+            location = xsVectorSetZ(location, xsVectorGetZ(location) + zRange);
+            if (distance(gNavyVec, location) > minRange)
+            {
+               break;
+            }
+         }
+         
+         // Create the build plan
+         planID = createLocationBuildPlan(buildingType, 1, 100, true, -1, location, 0);
+         aiPlanAddUnitType(planID, wagonType, 1, 1, 1);
+         aiPlanAddUnit(planID, wagon);
+         return;
       }
 
       // AssertiveWall: wagon plan doesn't have an escrow, and skips queue
@@ -1508,7 +1873,7 @@ mininterval 60
 //==============================================================================
 rule zpScientistTechMonitor
 inactive
-mininterval 1
+mininterval 60
 {
    if (kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0)
       {
@@ -1550,6 +1915,14 @@ mininterval 1
       []() -> bool { return ((kbTechGetStatus(cTechzpConsulateScientistkhora) == cTechStatusActive) && ( kbGetAge() >= cAge4 )); },
       cUnitTypeTradingPost);
 
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpArmoredTrainTech,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateScientistGortz) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpArmoredTrainImprove,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateScientistGortz) == cTechStatusActive) && ( kbGetAge() >= cAge4 )); },
+      cUnitTypeTradingPost);
+
   if (canDisableSelf == true)
       {
           xsDisableSelf();
@@ -1565,7 +1938,7 @@ rule MaintainScientistShips
 inactive
 minInterval 30
 {
-  const int list_size = 23;
+  const int list_size = 3;
   static int proxy_list = -1;
   static int ship_list = -1;
 
@@ -1653,9 +2026,22 @@ minInterval 30
   {
     int proxy = xsArrayGetInt(proxy_list, i);
     int ship = xsArrayGetInt(ship_list, i);
-    
+
     int maintain_plan = aiPlanGetIDByTypeAndVariableType(cPlanTrain, cTrainPlanUnitType, proxy, true);
-    int number_to_maintain = kbGetBuildLimit(cMyID, ship) - kbUnitCount(cMyID, ship);
+    int number_to_maintain = -1;
+    int militaryPopPercentage = btBiasNative * 10 + 10;
+
+   if (kbGetAge() <= cAge4)
+   {
+      // Resource equivalent to 0-20% of our military pop, same as native warriors
+      number_to_maintain = (aiGetMilitaryPop() * militaryPopPercentage) / (kbUnitCostPerResource(proxy, cResourceGold) +
+                                                                        kbUnitCostPerResource(proxy, cResourceWood) +
+                                                                        kbUnitCostPerResource(proxy, cResourceFood));
+   }
+   else
+   {
+      number_to_maintain = kbGetBuildLimit(cMyID, ship);
+   }
 
     if (maintain_plan == -1)
     {
@@ -1800,7 +2186,7 @@ minInterval 10
 
          xsArraySetInt(proxy_list, 0, cUnitTypezpAirshipAIProxy);
          xsArraySetInt(ship_list, 0, cUnitTypezpAirshipAI);
-         aiChat( cMyID, "Airship training");
+         //aiChat( cMyID, "Airship training");
       }
 
       for(i = 0; < xsArrayGetSize(proxy_list))
@@ -1835,5 +2221,546 @@ minInterval 10
             }
          }
       
+   }
+}
+
+//==============================================================================
+// Jesuit Tech Monitor
+//==============================================================================
+rule zpJesuitTechMonitor
+inactive
+mininterval 60
+{
+   if ((kbUnitCount(cMyID, cUnitTypezpSocketJesuit, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSocketJesuitEU, cUnitStateAny) == 0))
+      {
+      return; // Player has no Jesuit socket.
+      }
+
+      // Jesuit Big Button
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpJesuitCathedral,
+      []() -> bool { return (kbGetAge() >= cAge2 ); },
+      cUnitTypeTradingPost);
+
+      // Jesuit Tank
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatJesuitTank,
+      []() -> bool { return ((kbTechGetStatus(cTechzpJesuitCathedral) == cTechStatusActive) && ( kbGetAge() >= cAge4 )); },
+      cUnitTypeTradingPost);
+
+      // Jesuit Native Armies
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatJesuitArmory,
+      []() -> bool { return ((kbTechGetStatus(cTechzpJesuitCathedral) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
+// maintain Jesuit Missionaries
+//==============================================================================
+rule maintainJesuitMissionary
+inactive
+minInterval 60
+{
+  
+  const int list_size = 1;
+  static int proxy_list = -1;
+  static int ship_list = -1;
+
+  if ((kbUnitCount(cMyID, cUnitTypezpSocketJesuit, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSocketJesuitEU, cUnitStateAny) == 0))
+   {
+      return;
+   }
+
+  if (proxy_list == -1)
+  {
+    proxy_list = xsArrayCreateInt(list_size, -1, "List of Missionary Proxies");
+    ship_list = xsArrayCreateInt(list_size, -1, "List of Missionaries");
+
+    xsArraySetInt(proxy_list, 0, cUnitTypezpPriestProxy);
+    xsArraySetInt(ship_list, 0, cUnitTypezpPriest);
+  }
+
+  for(i = 0; < xsArrayGetSize(proxy_list))
+  {
+    int proxy = xsArrayGetInt(proxy_list, i);
+    int ship = xsArrayGetInt(ship_list, i);
+    
+    int maintain_plan = aiPlanGetIDByTypeAndVariableType(cPlanTrain, cTrainPlanUnitType, proxy, true);
+    int number_to_maintain = kbGetBuildLimit(cMyID, ship) - kbUnitCount(cMyID, ship);
+
+    if (maintain_plan == -1)
+    {
+      if (kbProtoUnitAvailable(proxy) == true)
+      {
+        maintain_plan = aiPlanCreate("Maintain " + kbGetProtoUnitName(proxy), cPlanTrain);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanUnitType, 0, proxy);
+        aiPlanSetVariableBool(maintain_plan, cTrainPlanUseMultipleBuildings, 0, false);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanNumberToMaintain, 0, number_to_maintain);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanBatchSize, 0, 1);
+        aiPlanSetActive(maintain_plan, true);
+      }
+    }
+    else
+    {
+      if (kbProtoUnitAvailable(proxy) == true)
+      {
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanNumberToMaintain, 0, number_to_maintain);
+      }
+      else
+      {
+        aiPlanDestroy(maintain_plan);
+      }
+    }
+  }
+}
+
+//==============================================================================
+// Maintain Proxies in Venetian Trading Posts
+//==============================================================================
+
+rule MaintainVeniceShips
+inactive
+minInterval 30
+{
+  const int list_size = 2;
+  static int proxy_list = -1;
+  static int ship_list = -1;
+
+  if (kbUnitCount(cMyID, cUnitTypezpSocketVenetians, cUnitStateAny) == 0)
+   {
+      //aiChat( cMyID, "Venice Socket not found");
+      return;
+   }
+
+  if (proxy_list == -1)
+  {
+    proxy_list = xsArrayCreateInt(list_size, -1, "List of Venice Proxies");
+    ship_list = xsArrayCreateInt(list_size, -1, "List of Venice Ships");
+
+    xsArraySetInt(proxy_list, 0, cUnitTypezpVeniceGalleyProxy);
+    xsArraySetInt(ship_list, 0, cUnitTypezpVeniceGalley);
+
+    xsArraySetInt(proxy_list, 1, cUnitTypezpGalleassProxy);
+    xsArraySetInt(ship_list, 1, cUnitTypezpGalleass);
+
+  }
+
+  for(i = 0; < xsArrayGetSize(proxy_list))
+  {
+    int proxy = xsArrayGetInt(proxy_list, i);
+    int ship = xsArrayGetInt(ship_list, i);
+    
+    int maintain_plan = aiPlanGetIDByTypeAndVariableType(cPlanTrain, cTrainPlanUnitType, proxy, true);
+    int number_to_maintain = kbGetBuildLimit(cMyID, ship) - kbUnitCount(cMyID, ship);
+
+    if (maintain_plan == -1)
+    {
+      if (kbProtoUnitAvailable(proxy) == true)
+      {
+        maintain_plan = aiPlanCreate("Maintain " + kbGetProtoUnitName(proxy), cPlanTrain);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanUnitType, 0, proxy);
+        aiPlanSetVariableBool(maintain_plan, cTrainPlanUseMultipleBuildings, 0, false);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanNumberToMaintain, 0, number_to_maintain);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanBatchSize, 0, 1);
+        aiPlanSetActive(maintain_plan, true);
+      }
+    }
+    else
+    {
+      if (kbProtoUnitAvailable(proxy) == true)
+      {
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanNumberToMaintain, 0, number_to_maintain);
+      }
+      else
+      {
+        aiPlanDestroy(maintain_plan);
+      }
+    }
+  }
+}
+
+//==============================================================================
+// Venice Tech Monitor
+//==============================================================================
+rule VeniceTechMonitor
+inactive
+minInterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketVenetians, cUnitStateAny) == 0)
+      {
+      return; // Player has no venice socket.
+      }
+
+
+      // Upgrade Ships and Cannons
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpVeniceBetterShips,
+      []() -> bool { return ( kbGetAge() >= cAge3 ); },
+      cUnitTypeTradingPost);
+
+      // Dolfin Dry Dock
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatDryDock,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateVeniceDolphin) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Cornaro Special Upgrade
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatVeniceEmbassy,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateVeniceCornaro) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Contarini Special Upgrade
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatVeniceFort,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateVeniceContarini) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Embassy Cannons
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpVeniceCannonArmy,
+      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpVeniceEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpVeniceEmbassy);
+
+      // Embassy Galleasses
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpVeniceExpeditionaryFleet,
+      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpVeniceEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpVeniceEmbassy);
+
+   if (canDisableSelf == true)
+   {
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
+// Orthodox Tech Monitor
+//==============================================================================
+rule orthodoxTechMonitor
+inactive
+minInterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketOrthodox, cUnitStateAny) == 0)
+      {
+
+      return; // Player has no venice socket.
+      }
+
+      // Georgian Outposts I
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpOrthodoxGeorgianCastle,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateOrthodoxGeorgians) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Georgian Outposts II
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpOrthodoxCitadel,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateOrthodoxGeorgians) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Russian Army
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpOrthodoxRussianJaegers,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateOrthodoxRussians) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Russian Cannons
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpOrthodoxKolokol,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateOrthodoxRussians) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Bulgarian Steamer
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpOrthodoxSteamer,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateOrthodoxBulgarians) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Bulgarian Ironclad
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpOrthodoxFleet,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateOrthodoxBulgarians) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+   if (canDisableSelf == true)
+   {
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
+/* shouldSendPolarExpress
+  Looks at how many TP's we have compared with the enemy to determine if we 
+  should try and send polar express card. 
+  Shamelessly stolen from tradeRouteUpgradeMonitor, using the globals set there
+*/
+//==============================================================================
+bool shouldSendPolarExpress()
+{
+   int numberTradingPostsOnRoute = 0;
+   int tradingPostID = -1;
+   int playerID = -1;
+   int ownedTradingPostID = -1;
+   int numberAllyTradingPosts = 0;
+   int numberEnemyTradingPosts = 0;
+   int tradeRoutePrio = 47 + (btBiasTrade * 5.0);
+
+   for (routeIndex = 0; < gNumberTradeRoutes)
+   {
+      if (xsArrayGetBool(gTradeRouteIndexMaxUpgraded, routeIndex) == true)
+      {
+         continue;
+      }
+
+      numberTradingPostsOnRoute = kbTradeRouteGetNumberTradingPosts(routeIndex);
+      ownedTradingPostID = -1;
+      numberAllyTradingPosts = 0;
+      numberEnemyTradingPosts = 0;
+      for (postIndex = 0; < numberTradingPostsOnRoute)
+      {
+         // This syscall needs no LOS and finds all IDs of (built / foundation) TPs currently on that route, 
+         // so no empty sockets are found.
+         tradingPostID = kbTradeRouteGetTradingPostID(routeIndex, postIndex); 
+         playerID = kbUnitGetPlayerID(tradingPostID);
+         if (playerID == cMyID)
+         {
+            ownedTradingPostID = tradingPostID;
+            numberAllyTradingPosts++;
+            continue;
+         }
+         if (kbIsPlayerAlly(playerID) == true)
+         {
+            numberAllyTradingPosts++;
+            continue;
+         }
+         if (kbIsPlayerAlly(playerID) == false)
+         {
+            numberEnemyTradingPosts++;
+         }
+      }
+      if (ownedTradingPostID >= 0) // If we actually found a TR on this route that is ours, do the upgrade logic.
+      {
+         // If we're here, that means the trade route isn't fully upgraded so as long as we have more TP's than 
+         //   our enemy then we'll send it.
+         if (numberAllyTradingPosts - numberEnemyTradingPosts >= 1) 
+         {
+            return true;
+         }
+      }
+   }
+   // If we're here, we didn't find any unupgraded trade routes
+   return false;
+}
+
+//==============================================================================
+// Christmas Village Tech Monitor
+//==============================================================================
+rule christmasTechMonitor
+inactive
+minInterval 30
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSPCSocketXmassVillage, cUnitStateAny) == 0)
+   {
+      return; // Player has no christmas socket.
+   }
+
+   // Hot chocolate, basically any time after reaching age 2
+   bool canDisableSelf = researchSimpleTechByCondition(cTechzpHotChocolate,
+   []() -> bool { return ( kbGetAge() >= cAge2 ); },
+   cUnitTypeTradingPost);
+
+   // Deck the halls, only after enough houses
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpDeckTheHalls,
+   []() -> bool { return (kbUnitCount(cMyID, gHouseUnit, cUnitStateAlive) > 9 ||
+                           kbUnitCount(cMyID, cUnitTypeypShrineJapanese, cUnitStateAlive) > 9); },
+   cUnitTypeTradingPost);
+
+   // Polar express, as long as it'll do something and as long as we have more TP's than the enemy
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpPolarExpress,
+   []() -> bool { return (shouldSendPolarExpress() == true); },
+   cUnitTypeTradingPost);
+
+   // Upgrade trade route to iron horse after sending polar express
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpPolarExpress,
+   []() -> bool { return (shouldSendPolarExpress() == true); },
+   cUnitTypeTradingPost);
+
+   // Send Rudolph as soon as available
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSendRudolph,
+   []() -> bool { return ( kbGetAge() >= cAge2 ); },
+   cUnitTypeTradingPost);
+
+   // Send spread the cheer after 10 minutes for large teams, 20 for medium, and 30 for solo (getAllyCount does not include self)
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSpreadTheCheer,
+   []() -> bool { return ( (getAllyCount() > 2 && xsGetTime() > 10*60*1000) ||
+                           (getAllyCount() > 1 && xsGetTime() > 20*60*1000) ||
+                           (getAllyCount() <= 0 && xsGetTime() > 30*60*1000)  ); },
+   cUnitTypeTradingPost);
+
+   // Send workshops as soon as available
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSendWorkshopFood,
+   []() -> bool { return ( kbTechGetStatus(cTechzpSendWorkshopFood) == cTechStatusObtainable ); },
+   cUnitTypeTradingPost);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSendWorkshopWood,
+   []() -> bool { return ( kbTechGetStatus(cTechzpSendWorkshopWood) == cTechStatusObtainable ); },
+   cUnitTypeTradingPost);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSendWorkshopGold,
+   []() -> bool { return ( kbTechGetStatus(cTechzpSendWorkshopGold) == cTechStatusObtainable ); },
+   cUnitTypeTradingPost);
+
+
+   if (canDisableSelf == true)
+   {
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
+// ZP Western Tech Monitor
+//==============================================================================
+rule zpWesternTechMonitor
+inactive
+mininterval 60
+{
+
+   if (kbUnitCount(cMyID, cUnitTypezpSPCSocketWesternVillage, cUnitStateAny) == 0)
+      {
+      return; // Player has no Western socket.
+      }
+
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpSendDocHolliday,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWesternWyatEarp) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatSherriffOffice,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWesternWyatEarp) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpSendPinkertonsB,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWesternPinkertons) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpSendStageCoach,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWesternPinkertons) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatApocalypseHorsemen,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWesternJesseJames) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatGunStore,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWesternJesseJames) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
+// polarExpressUpgradeMonitor
+// Same as normal upgrade monitor, but will grab final upgrade much earlier
+//==============================================================================
+rule polarExpressUpgradeMonitor
+inactive
+minInterval 90
+{
+   if (xsIsRuleEnabled("tradeRouteUpgradeMonitor") == true)
+   {
+      xsDisableRule("tradeRouteUpgradeMonitor");
+   }
+
+   // Start with updating our bool array by looking at what the first unit on the TR is, 
+   // if it's the last tier set the bool to true.
+   int firstMovingUnit = -1;
+   int firstMovingUnitProtoID = -1;
+   for (i = 0; < gNumberTradeRoutes)
+   {
+      firstMovingUnit = kbTradeRouteGetUnit(i, 0);
+      firstMovingUnitProtoID = kbUnitGetProtoUnitID(firstMovingUnit);
+      if ((firstMovingUnitProtoID == cUnitTypedeTradingFluyt) || (firstMovingUnitProtoID == cUnitTypeTrainEngine) ||
+          (firstMovingUnitProtoID == cUnitTypedeCaravanGuide))
+      {
+         xsArraySetBool(gTradeRouteIndexMaxUpgraded, i, true);
+      }
+   }
+
+   // If all the values in the bool array are set to true it means we can disable this rule since we have all the upgrades
+   // across all TRs on the map.
+   bool canDisableSelf = true;
+   for (i = 0; < gNumberTradeRoutes)
+   {
+      if (xsArrayGetBool(gTradeRouteIndexMaxUpgraded, i) == false)
+      {
+         canDisableSelf = false;
+      }
+   }
+   if (canDisableSelf == true)
+   {
+      xsDisableSelf();
+   }
+
+   int numberTradingPostsOnRoute = 0;
+   int tradingPostID = -1;
+   int playerID = -1;
+   int ownedTradingPostID = -1;
+   int numberAllyTradingPosts = 0;
+   int numberEnemyTradingPosts = 0;
+   int tradeRoutePrio = 47 + (btBiasTrade * 5.0);
+
+   for (routeIndex = 0; < gNumberTradeRoutes)
+   {
+      if (xsArrayGetBool(gTradeRouteIndexMaxUpgraded, routeIndex) == true)
+      {
+         continue;
+      }
+
+      numberTradingPostsOnRoute = kbTradeRouteGetNumberTradingPosts(routeIndex);
+      ownedTradingPostID = -1;
+      numberAllyTradingPosts = 0;
+      numberEnemyTradingPosts = 0;
+      for (postIndex = 0; < numberTradingPostsOnRoute)
+      {
+         // This syscall needs no LOS and finds all IDs of (built / foundation) TPs currently on that route, 
+         // so no empty sockets are found.
+         tradingPostID = kbTradeRouteGetTradingPostID(routeIndex, postIndex); 
+         playerID = kbUnitGetPlayerID(tradingPostID);
+         if (playerID == cMyID)
+         {
+            ownedTradingPostID = tradingPostID;
+            numberAllyTradingPosts++;
+            continue;
+         }
+         if (kbIsPlayerAlly(playerID) == true)
+         {
+            numberAllyTradingPosts++;
+            continue;
+         }
+         if (kbIsPlayerAlly(playerID) == false)
+         {
+            numberEnemyTradingPosts++;
+      }
+      }
+      if (ownedTradingPostID >= 0) // If we actually found a TR on this route that is ours, do the upgrade logic.
+      {
+         if (kbBuildingTechGetStatus(xsArrayGetInt(gTradeRouteUpgrades, cTradeRouteFirstUpgrade + (routeIndex * 2)), 
+               ownedTradingPostID) == cTechStatusObtainable)
+         {
+            // We have 1 or more TPs on this route than the enemy, doesn't work for upgrade all special maps.
+            if (numberAllyTradingPosts - numberEnemyTradingPosts >= 1) 
+            {
+               researchSimpleTech(xsArrayGetInt(gTradeRouteUpgrades, cTradeRouteFirstUpgrade + (routeIndex * 2)),
+                  -1, ownedTradingPostID, tradeRoutePrio);
+               return;
+            }
+         }
+         else if ((kbBuildingTechGetStatus(xsArrayGetInt(gTradeRouteUpgrades, cTradeRouteSecondUpgrade + (routeIndex * 2)),
+                   ownedTradingPostID) == cTechStatusObtainable))
+         {
+            if (numberAllyTradingPosts - numberEnemyTradingPosts >= 1) 
+            {
+               researchSimpleTech(xsArrayGetInt(gTradeRouteUpgrades, cTradeRouteSecondUpgrade + (routeIndex * 2)),
+                  -1, ownedTradingPostID, tradeRoutePrio);
+               return;
+            }
+         }
+      }
    }
 }

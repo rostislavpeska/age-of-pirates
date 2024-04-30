@@ -1,0 +1,11 @@
+<tactics>
+  <action>
+    <name stringid="69147">Build</name>
+    <type>Build</type>
+    <anim>Idle</anim>
+    <maxrange>0.5</maxrange>
+    <rate type="Building">1.0</rate>
+    <singleuse>1</singleuse>
+  </action>
+  <tactic>Normal<speedmodifier>1.0</speedmodifier><action>Build</action></tactic>
+</tactics>

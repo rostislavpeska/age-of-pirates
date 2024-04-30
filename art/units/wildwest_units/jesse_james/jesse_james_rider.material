@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units/wildwest_units/jesse_james/textures/jesse_james_rider_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units/spc/outlaws/textures/outlaw_rider_us_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units/spc/outlaws/textures/outlaw_rider_us_matA_Masks">
+      </texture>
+      <texture name="Details" override="null">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

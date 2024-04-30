@@ -128,23 +128,62 @@ inactive
 void addUnitsToMilitaryPlan(int planID = -1)
 {
    // TODO: don't always task the full army, leave some behind if the enemy is weak or we need more defense
-   if ((gRevolutionType & cRevolutionFinland) == 0)
+   if ((gRevolutionType & cRevolutionFinland) == 0 && gStartOnDifferentIslands == false)
    {
       aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
       return;
+   }
+   else if ((gRevolutionType & cRevolutionFinland) == 0 && gStartOnDifferentIslands == true)
+   {
+      aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
+      aiPlanSetNoMoreUnits(planID, true);
+
+      //AssertiveWall: Only add units on the mainland for island maps.
+      int armyQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+      int numberFound = kbUnitQueryExecute(armyQueryID);
+      int vilQueryID = -1;
+      int numberVilWanted = 2;
+      int unitID = -1;
+      int unitPlanID = -1;
+      vector unitLoc = cInvalidVector;
+      int numberAdded = 0;
+      int mainBaseAreaGroup = kbAreaGroupGetIDByPosition(kbGetPlayerStartingPosition(cMyID));
+
+      for (i = 0; < numberFound)
+      {
+         unitID = kbUnitQueryGetResult(armyQueryID, i);
+         unitPlanID = kbUnitGetPlanID(unitID);
+         if (aiPlanGetDesiredPriority(unitPlanID) >= 99)           // Already in the plan or on a transport
+         {
+            continue;
+         }
+         // Make sure the unit is on the mainland
+         unitLoc = kbUnitGetPosition(unitID);
+         if (kbAreAreaGroupsPassableByLand(mainBaseAreaGroup, kbAreaGroupGetIDByPosition(unitLoc)) == false)
+         {
+            continue;
+         }
+         numberAdded = numberAdded + 1;
+         aiPlanAddUnit(planID, unitID);
+      }
+   }
+
+   if (gTestingChatsOn == true)
+   {
+      aiChat(1, "Added: " + numberAdded + " of " + numberFound);
    }
 
    // For the finland revolution, keep some karelian jaegers around to sustain the economy
    int numberAvailableEconUnits = 0;
    int queryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
-   int numberFound = kbUnitQueryExecute(queryID);
+   int numberAvailFound = kbUnitQueryExecute(queryID);
 
    aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 0);
 
    // Add each unit type individually
-   for (i = 0; < numberFound)
+   for (i = 0; < numberAvailFound)
    {
-      int unitID = kbUnitQueryGetResult(queryID, i);
+      unitID = kbUnitQueryGetResult(queryID, i);
       int puid = kbUnitGetProtoUnitID(unitID);
       if (puid == gEconUnit)
       {
@@ -257,11 +296,17 @@ rule militaryManager
 inactive
 minInterval 28
 {
+   // AssertiveWall: put a pause on this until we've established a new base
+   if (gCeylonDelay == true)
+   {
+      return;
+   }
 
    static bool firstRun = false; // Flag to indicate vars, plans are initialized
    static int unitsNotMaintained = -1;
    static int unitsNotMaintainedValue = -1;
    static int unitsNotMaintainedUpgrade = -1;
+
    if (firstRun == false)
    {
       // Need to initialize, if we're allowed to.
@@ -279,12 +324,6 @@ minInterval 28
       unitsNotMaintained = xsArrayCreateInt(3, -1, "Units not maintained");
       unitsNotMaintainedValue = xsArrayCreateFloat(3, -1, "Units not maintained value");
       unitsNotMaintainedUpgrade = xsArrayCreateInt(3, -1, "Units not maintained upgrade");
-   }
-
-   // AssertiveWall: put a pause on this until we've established a new base
-   if (gCeylonDelay == true)
-   {
-      return;
    }
 
    if (gLandUnitPicker != -1)
@@ -610,7 +649,18 @@ minInterval 28
          }
       }
 
-      if (cDifficultyCurrent >= cDifficultyExpert)
+      // AssertiveWall: Change this to always prefer forward base for training military
+      if (gForwardBaseState == cForwardBaseStateActive)
+      {
+         updateMilitaryTrainPlanBuildings(gForwardBaseID);
+      }
+      else
+      {
+         updateMilitaryTrainPlanBuildings(-1);
+      }
+
+
+      /*if (cDifficultyCurrent >= cDifficultyExpert)
       {
          planID = aiPlanGetIDByTypeAndVariableType(cPlanCombat, cCombatPlanCombatType, cCombatPlanCombatTypeAttack);
          if (planID >= 0 && aiPlanGetVariableBool(planID, cCombatPlanAllowMoreUnitsDuringAttack, 0) == true)
@@ -622,7 +672,7 @@ minInterval 28
             baseID = -1;
          }
          updateMilitaryTrainPlanBuildings(baseID);
-      }
+      }*/
    }
 }
 
@@ -682,16 +732,12 @@ minInterval 15
          currentBaseIndex = -1;
          xsSetRuleMinIntervalSelf(15);
       }
-      // AssertiveWall: Check to see if the attack transport failed and keep going if it 
-      // looks like it is
-      //if (aiCheckAttackFailure() == true)
-      //{
-         // do nothing
-      //}
-      //else
-      //{
-         return;
-      //}
+      // AssertiveWall: Check to see if we're really in danger on island maps
+      // if (checkForEnemyOnIsland() == false)
+      // {
+      //   continue;
+      // }
+      return;
    }
 
    static int baseQuery = -1;
@@ -954,9 +1000,12 @@ minInterval 15
          shouldAttack = true;
          isCityState = false;
 
+
          if (isEnemy == true)
          {
-            if (currentTime - gLastAttackMissionTime < gAttackMissionInterval)
+            // AssertiveWall: Replace the minimum attack time with the more sophisticated allowedToAttack function
+            //if (currentTime - gLastAttackMissionTime < gAttackMissionInterval)
+            if (allowedToAttack() == false)
             {
                shouldAttack = false;
             }
@@ -1246,6 +1295,62 @@ minInterval 15
             shouldAttack = false;
          }
 
+         // AssertiveWall: Avoid attacking after age-up unless we can get some momentum
+         //    1. We can get the veteran upgrade of our most used unit OR
+         //    2. We sent a unit shipment
+         /*if (cDifficultyCurrent >= cDifficultyModerate)
+         {
+            // Get our favorite unit (by cost)
+            bool toggleShouldAttack1 = false;
+            bool toggleShouldAttack2 = false;
+            int favoriteUnitQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+            int numberOfUnits = kbUnitQueryExecute(favoriteUnitQuery);
+            int largestUnitCost = -1;
+            int tempUnitCost = -1;
+            int tempUnit = -1;
+            int favoriteUnit = -1;
+            for (m = 0; < numberOfUnits)
+            {
+               tempUnit = kbUnitGetProtoUnitID(kbUnitQueryGetResult(favoriteUnitQuery, m));
+               if (tempUnit != favoriteUnit)
+               {
+                  tempUnitCost = kbGetProtoUnitAICost(tempUnit) * kbUnitCount(cMyID, tempUnit, cUnitStateAlive);
+                  if (tempUnitCost > largestUnitCost)
+                  {
+                     favoriteUnit = tempUnit;
+                     largestUnitCost = tempUnitCost;
+                  }
+               }
+            }
+            // Now check if we have the appropriate veteran/guard upgrade
+            int tempTechID = kbTechTreeGetCheapestUnitUpgrade(favoriteUnit);
+            if (kbTechGetStatus(tempTechID) == cTechStatusActive)
+            {  // If we can't get it, that means we're at the highest level
+               toggleShouldAttack1 = true;
+            }
+
+            // Get our current shipment and see if it's a unit shipment
+            
+
+
+            // Final check, this is based on the old check. Booming civs don't attack within 4 min of age up
+            if ((btRushBoom <= -0.5) || (btRushBoom <= 0.0 && kbGetAge() >= cAge4))
+            {
+               if (currentTime - gAgeUpTime < 4 * 60 * 1000)
+               {
+                  toggleShouldAttack2 = true;
+               }
+            }
+            else
+            {
+               toggleShouldAttack2 = true;
+            }
+
+            if (toggleShouldAttack1 == false && toggleShouldAttack2 == false)
+            {
+               shouldAttack = false;
+            }
+         }
          if (cDifficultyCurrent >= gDifficultyExpert)
          {
             // Avoid attacking until 5 minutes passed after aging up.
@@ -1298,9 +1403,15 @@ minInterval 15
             ageInt = 0.1;
          }*/
          
-         if (mainAreaGroup != baseAreaGroup)
+         // AssertiveWall: Don't do this on island maps
+         if (mainAreaGroup != baseAreaGroup && gStartOnDifferentIslands == false)
          {
-            distancePenalty = distancePenalty + 0.3; // ageInt; Changed from 0.4
+            distancePenalty = distancePenalty + 0.4;
+         }
+         // AssertiveWall: Catch the distance penalty
+         if (distancePenalty > 0.8)
+         {
+            distancePenalty = 0.8;
          }
          distancePenalty = 1.0 - distancePenalty;
 
@@ -1342,23 +1453,32 @@ minInterval 15
       aiSetMostHatedPlayerID(targetPlayer);
    }
 
-   if (targetBaseID < 0 || targetShouldAttack == false)
+   // AssertiveWall: Check here for KOTH, not just if we aren't attacking anything else
+   if (targetBaseID < 0 || targetShouldAttack == false || defendingKOTH == true || attackingKOTH == true)
    {
       // If we got nothing, and KOTH is active, grab the KOTH location.
       if (defendingKOTH == true || attackingKOTH == true)
       {
-         targetIsEnemy = attackingKOTH;
+         targetIsEnemy = true; // AssertiveWall: only attack hill. No defend
+         targetBaseID = -1;
          int kothID = getUnit(cUnitTypeypKingsHill, cPlayerRelationAny, cUnitStateAlive);
          targetPlayer = kbUnitGetPlayerID(kothID);
          targetBaseLocation = kbUnitGetPosition(kothID);
+         // AssertiveWall: Just cheat for the KoTH location if we can't find it. Cheating outright causes issues, though
+         if (kothID < 0 || targetBaseLocation == cInvalidVector)
+         {
+            targetBaseLocation = getClosestGaiaUnitPosition(cUnitTypeypKingsHill, kbGetMapCenter());
+         }
       }
       // Exclude city state, which doesn't have a base ID.
       else if (targetPlayer > 0)
       {
          // If we haven't attacked for too long and have plenty of resources in stock, attack anyway.
          if (targetIsEnemy == true)
-         {
-            if (currentTime - gLastAttackMissionTime < 2 * gAttackMissionInterval)
+         {  
+            // AssertiveWall: Replace the minimum attack time with the more sophisticated allowedToAttack function
+            //if (currentTime - gLastAttackMissionTime < 2 * gAttackMissionInterval)
+            if (allowedToAttack() == false)
             {
                return;
             }
@@ -1383,13 +1503,26 @@ minInterval 15
       targetBaseLocation = kbBaseGetLocation(targetPlayer, targetBaseID);
    }*/
 
+   // AssertiveWall: Some testing chats:
+   if (gTestingChatsOn == true)
+   {
+      aiChat(1, "targetBaseID: " + targetBaseID + " targetPlayer: " + targetPlayer);
+      sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, targetBaseLocation);
+   }
+
    vector gatherPoint = kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
    if (targetIsEnemy == true)
    {
+      // AssertiveWall: Gather near the pickup point
+      /*if (gStartOnDifferentIslands == true && gMigrationMap == false)
+      {
+         gatherPoint = selectPickupPoint(gatherPoint, targetBaseLocation);
+      }*/
       planID = aiPlanCreate("Attack Player " + targetPlayer + " Base " + targetBaseID, cPlanCombat);
 
       aiPlanSetVariableInt(planID, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
-      if (targetBaseID >= 0)
+      // AssertiveWall: Another check here to make sure we don't use baseID on KOTH
+      if (targetBaseID >= 0 && gStartOnDifferentIslands == false && attackingKOTH == false)
       {
          aiPlanSetVariableInt(planID, cCombatPlanTargetMode, 0, cCombatPlanTargetModeBase);
          aiPlanSetVariableInt(planID, cCombatPlanTargetBaseID, 0, targetBaseID);
@@ -1399,9 +1532,14 @@ minInterval 15
          aiPlanSetVariableInt(planID, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
       }
       aiPlanSetVariableInt(planID, cCombatPlanTargetPlayerID, 0, targetPlayer);
-      aiPlanSetVariableVector(planID, cCombatPlanTargetPoint, 0, baseLocation);
+      aiPlanSetVariableVector(planID, cCombatPlanTargetPoint, 0, targetBaseLocation); //AssertiveWall: Fixed from baselocation
       aiPlanSetVariableVector(planID, cCombatPlanGatherPoint, 0, gatherPoint);
       aiPlanSetVariableFloat(planID, cCombatPlanGatherDistance, 0, 40.0);
+
+      if (gStartOnDifferentIslands == true)
+      {
+         aiPlanSetRequiresAllNeedUnits(planID, true); // AssertiveWall: here in case some units are stranded elsewhere
+      }
 
       /*baseAreaGroup = kbAreaGroupGetIDByPosition(baseLocation);
       if (mainAreaGroup == baseAreaGroup)
@@ -1415,22 +1553,42 @@ minInterval 15
       aiPlanSetVariableInt(planID, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternRandom);
 
       // Override the route when it is valid.
+      // AssertiveWall: Only do this on non-island maps. 
+      // AssertiveWall: supress this if the targetBaseID isn't valid
       int routeID = cvCreateBaseAttackRoute(targetPlayer, targetBaseID);
-      if (routeID >= 0)
+      if (routeID >= 0 && gStartOnDifferentIslands == false && targetBaseID >= 0)
       {
          aiPlanSetVariableInt(planID, cCombatPlanAttackRouteID, 0, routeID);
          // aiPlanSetVariableBool(planID, cCombatPlanRefreshAttackRoute, 0, false);
       }
 
-      if (cDifficultyCurrent >= cDifficultyHard)
+      // AssertiveWall: Keep attacking KOTH till timer runs out or outnumbered
+      if (cDifficultyCurrent >= cDifficultyHard || attackingKOTH == true)
       {
-         if (cDifficultyCurrent >= gDifficultyExpert)
+         if (cDifficultyCurrent >= cDifficultyHard) // AssertiveWall: Lowered from Expert
          {
             aiPlanSetVariableBool(planID, cCombatPlanAllowMoreUnitsDuringAttack, 0, true);
          }
          aiPlanSetVariableInt(planID, cCombatPlanRefreshFrequency, 0, 300);
-         aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeBaseGone);
-         aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+         if (attackingKOTH == true)
+         {
+            //aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat);
+            //aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+            aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget);
+            aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 600000); // Full timer 10 mins
+         }
+         else
+         {  // AssertiveWall: Now that we have a new retreat logic, no longer need this human/AI distinction
+            //if (isHuman == true)
+            //{ 
+               aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeBaseGone);
+            //}
+            /*else
+            {
+               aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeBaseGone);
+               aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+            }*/
+         }
          updateMilitaryTrainPlanBuildings(gForwardBaseID);
       }
       else
@@ -1440,7 +1598,8 @@ minInterval 15
       }
 
       // If we do not have a base, destroy the plan when we have no targets.
-      if (targetBaseID < 0)
+      // AssertiveWall: only retreat when outnumbers when attacking KOTH. Attack and stay there
+      if (targetBaseID < 0 && attackingKOTH == false)
       {
          aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget | aiPlanGetVariableInt(planID, cCombatPlanDoneMode, 0));
          aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 30000);
@@ -1453,9 +1612,44 @@ minInterval 15
 
       aiPlanSetActive(planID);
 
-      //gLandAttackPlanID = planID; // AssertiveWall: set the extern so we can kill this plan later if we need to
       gLastAttackMissionTime = xsGetTime();
       debugMilitary("***** LAUNCHING ATTACK on player " + targetPlayer + " base " + targetBaseID);
+
+      // AssertiveWall: A couple chats
+      if (targetBaseID > 0)
+      {
+         if (targetBaseID == kbBaseGetMainID(targetPlayer))
+         {  // If it's the main base, send the base chat. Otherwise, send the town chat
+            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemyBase,
+               kbBaseGetLocation(targetPlayer, targetBaseID));
+         }
+         else
+         {
+            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemyTown,
+               kbBaseGetLocation(targetPlayer, targetBaseID));
+         }
+      }
+      else
+      { // Not a base, so either a TP or settlers
+         if (getUnitCountByLocation(cUnitTypeTradingPost, cPlayerRelationEnemyNotGaia, cUnitStateAlive, targetBaseLocation, 25.0) > 0)
+         {
+            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackTradeSite,
+               kbBaseGetLocation(targetPlayer, targetBaseID));
+         }
+         else if (getUnitCountByLocation(gEconUnit, cPlayerRelationEnemyNotGaia, cUnitStateAlive, targetBaseLocation, 15.0) > 3)
+         {
+            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemySettlers,
+               kbBaseGetLocation(targetPlayer, targetBaseID));
+         }
+      }
+
+      // AssertiveWall: set the extern and start the retreat logic. This is only necessary for attacks, 
+         // and excludes defend plans except on KoTH
+      gLandAttackPlanID = planID; 
+      if (gStartOnDifferentIslands == true && gMigrationMap == false)
+      {
+         xsEnableRule("attackRetreatDelay");
+      }
    }
    else 
    {
@@ -1472,18 +1666,17 @@ minInterval 15
          aiPlanSetVariableInt(planID, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
       }
       aiPlanSetVariableInt(planID, cCombatPlanTargetPlayerID, 0, targetPlayer);
-      aiPlanSetVariableVector(planID, cCombatPlanTargetPoint, 0, baseLocation);
+      aiPlanSetVariableVector(planID, cCombatPlanTargetPoint, 0, targetBaseLocation);
       aiPlanSetVariableInt(planID, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
-      aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget | cCombatPlanDoneModeRetreat);
-      aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 30000);
-      aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+      aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget); //| cCombatPlanDoneModeRetreat); // AssertiveWall: still help even when outnumbered
+      aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 15000); // AssertiveWall: reduced to 15 seconds
+      //aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered); // AssertiveWall: see two lines above
       aiPlanSetOrphan(planID, true);
 
       addUnitsToMilitaryPlan(planID);
 
       aiPlanSetActive(planID);
 
-      //gLandAttackPlanID = planID; // AssertiveWall: set the extern so we can kill this plan later if we need to
       gLastDefendMissionTime = xsGetTime();
       debugMilitary("***** DEFENDING player " + targetPlayer + " base " + targetBaseID);
    }
@@ -1502,7 +1695,7 @@ void navalAttackPlanHandler(int planID = -1)
    Defending = 15 when not under attack so war ships that can fish will do so.
    Fishing = 19.
    Exploring = 20 so fishing ships can be used for it.
-   Repairing = 22 so the war ships do defend but will chose repairing over fishing.
+   Repairing = 24 so the war ships do defend but will chose repairing over fishing.  // AssertiveWall: incrreased to 24 from 22 to allow more plans
    Defending = 25 when under attack so war ships that can fish will actually fight.
    Attacking = 60 so all war ships will go on the attack.
    Transport = 100 so the ships will actually deliver the units reliably.
@@ -1705,8 +1898,8 @@ minInterval 30
 //==============================================================================
 rule waterDefend
 inactive
-minInterval 10
-{
+minInterval 5  
+{  // AssertiveWall: Reduced minINterval to 5 from 10
    if (gNavyDefendPlan < 0) // First run, create a persistent defend plan.
    {
       gNavyDefendPlan = aiPlanCreate("Water Defend", cPlanCombat);
@@ -1729,6 +1922,15 @@ minInterval 10
       debugMilitary("Creating primary navy defend plan at: " + gNavyVec);
       aiPlanSetActive(gNavyDefendPlan);
    }
+
+   // AssertiveWall: build a dummy plan and move fishing boats into it to control them easier
+   if (gFishingBellPlan < 0) // first run
+   {
+      gFishingBellPlan = aiPlanCreate("Fishing Dock Bell", cPlanReserve);
+      aiPlanAddUnitType(gFishingBellPlan, gFishingUnit, 0, 200, 200);
+      aiPlanSetDesiredPriority(gFishingBellPlan, 1);
+      aiPlanSetActive(gFishingBellPlan);
+   }
    
    int enemyQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
    kbUnitQuerySetSeeableOnly(enemyQuery, true); // Only stop fishing when the enemy is actually near us.
@@ -1737,14 +1939,16 @@ minInterval 10
    if (numberFound > 0)
    {
       aiPlanSetDesiredPriority(gNavyDefendPlan, 25); // Above fishing when there are enemies around.
+      aiPlanSetDesiredPriority(gFishingBellPlan, 25); // AssertiveWall: Above fishing when there are enemies around.
       gLastWSTime = 120000 + xsGetTime(); // AssertiveWall: resets clock for dock building
    
       // AssertiveWall: If enemy are too close to fishing ships, tell them to move
-      int fishBoatQuery = createSimpleUnitQuery(gFishingUnit, cMyID, cUnitStateAlive);
+      int fishBoatQuery = createSimpleUnitQuery(cUnitTypeAbstractFishingBoat, cMyID, cUnitStateAlive);
       int numberFBFound = kbUnitQueryExecute(fishBoatQuery);
       int nearbyEnFound = -1;
-      //bool rAway = false;
+      int dockUnit = -1;
       int unitID = -1;
+      int unitPlanID = -1;
       int enUnitID = -1;
       vector fBLocation = cInvalidVector;
       vector enemyLocation = cInvalidVector;
@@ -1752,28 +1956,77 @@ minInterval 10
       // AssertiveWall: Step through each fishing boat
       for (i = 0; < numberFBFound)
       {
-         //rAway = false;
          unitID = kbUnitQueryGetResult(fishBoatQuery, i);
+         unitPlanID = kbUnitGetPlanID(unitID);
+         if (aiPlanGetDesiredPriority(unitPlanID) > 19 && unitPlanID != gFishingBellPlan)
+         {  // Fishing priority is 19. Let anyone above that do their thing
+            continue;
+         }
          fBLocation = kbUnitGetPosition(unitID);
-         nearbyEnFound = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, fBLocation, 23.0); // one bigger range than a sloop
+         nearbyEnFound = getClosestVisibleUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, fBLocation, 35.0); // three bigger range than a frigate
          if (nearbyEnFound > 0)
-         {  // AssertiveWall: Look for forts, town centers, towers, then docks
-            sLocation = kbUnitGetPosition(getClosestUnitByLocation(cUnitTypeFortFrontier, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
-            if (sLocation == cInvalidVector)
+         {  
+            // AssertiveWall: First add boat to gFishingBellPlan so we can control it
+            aiPlanAddUnit(gFishingBellPlan, unitID);
+
+            // AssertiveWall: Two courses of action depending on whether its a fishing boat or something else
+            if (kbUnitGetProtoUnitID(unitID) == gFishingUnit)
             {
-               sLocation = kbUnitGetPosition(getClosestUnitByLocation(cUnitTypeTownCenter, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+               // AssertiveWall: Look for docks to garrison in. If none found then forts, town centers, towers
+               dockUnit = getUnitByLocation(gDockUnit, cPlayerRelationSelf, cUnitStateAlive, fBLocation, 200.0);
+               sLocation = kbUnitGetPosition(dockUnit);
+               if (sLocation != cInvalidVector)
+               {
+                  aiTaskUnitWork(unitID, dockUnit, true);
+                  continue;
+               }
+               
+               // Now look for the rest
+               if (sLocation == cInvalidVector)
+               {
+                  sLocation = kbUnitGetPosition(getUnitByLocation(cUnitTypeFortFrontier, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+               }
+               if (sLocation == cInvalidVector)
+               {
+                  sLocation = kbUnitGetPosition(getUnitByLocation(cUnitTypeTownCenter, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+               }
+               if (sLocation == cInvalidVector)
+               {
+                  sLocation = kbUnitGetPosition(getUnitByLocation(gTowerUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+               }
+               // No good options left, go for any dock, then gNavyVec
+               if (sLocation == cInvalidVector)
+               {
+                  dockUnit = getClosestUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 1000);
+                  sLocation = kbUnitGetPosition(dockUnit);
+                  if (sLocation != cInvalidVector)
+                  {
+                     aiTaskUnitWork(unitID, dockUnit, true);
+                     continue;
+                  }
+               }
+               if (sLocation == cInvalidVector)
+               {
+                  sLocation = gNavyVec;
+               }
+
+               if (sLocation != cInvalidVector)
+               {
+                  aiTaskUnitMove(unitID, sLocation);
+               }
             }
-            if (sLocation == cInvalidVector)
-            {
-               sLocation = kbUnitGetPosition(getClosestUnitByLocation(gTowerUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+            else
+            {  // Shoot it!
+               aiTaskUnitWork(unitID, nearbyEnFound);
             }
-            if (sLocation == cInvalidVector)
-            {
-               sLocation = kbUnitGetPosition(getClosestUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 100.0));
-            }
+         }
+         else if (nearbyEnFound <= 0)
+         {  // AssertiveWall: Ungarrison from dock
+            dockUnit = getUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 1.0);
+            sLocation = kbUnitGetPosition(dockUnit);
             if (sLocation != cInvalidVector)
             {
-               aiTaskUnitMove(unitID, sLocation);
+               aiTaskUnitEject(dockUnit);
             }
          }
       }
@@ -1781,6 +2034,7 @@ minInterval 10
    else
    {
       aiPlanSetDesiredPriority(gNavyDefendPlan, 15); // Below fishing when there are no enemies around.
+      aiPlanSetDesiredPriority(gFishingBellPlan, 1); // Below fishing when there are no enemies around.
    }
 }
 
@@ -1998,9 +2252,13 @@ minInterval 30
             gNetNavyValue += 2800; // three frigates and a caravel
          }
       }
-      else
+      else if (gNavyMap == true)
       {
          gNetNavyValue += 800.0;
+      }
+      else
+      {
+         gNetNavyValue += 400.0;
       }
       debugMilitary("Navy enemy player is " + navyEnemyPlayer + ", net navy value is " + gNetNavyValue);
 
@@ -2060,7 +2318,7 @@ minInterval 30
          {  // AssertiveWall: add 1 but don't reset cycle, unless we want a spam
             numberCanoes++;
             gNetNavyValue -= canoeValue;
-            if ((btRushBoom >= 0.5 || btBiasNative >= 0.5) && numberCanoes < 10 && age <= cAge3)
+            if ((btRushBoom >= 0.65 || btBiasNative >= 0.5) && numberCanoes < 10 && age <= cAge3)
             {
                numberCanoes++;
                gNetNavyValue -= canoeValue;
@@ -2208,9 +2466,10 @@ minInterval 30
       {
          unitID = kbUnitQueryGetResult(shipQueryID, i);
          unitPlanID = kbUnitGetPlanID(unitID);
-         if ((aiPlanGetDesiredPriority(unitPlanID) > 22) || 
+         if ((aiPlanGetDesiredPriority(unitPlanID) > 24) ||          // AssertiveWall: up from 22
              (aiPlanGetType(unitPlanID) == cPlanTransport) ||
-             (kbUnitGetHealth(unitID) > 0.95))
+             (kbUnitGetHealth(unitID) > 0.95) ||
+             (kbUnitGetActionType() != cActionTypeIdle))             // AssertiveWall: Don't steal ships that are busy doing things
          {
             continue;
          }
@@ -2762,6 +3021,12 @@ void moveDefenseReflex(vector location = cInvalidVector, float radius = -1.0, in
    {
       radius = cvDefenseReflexRadiusActive;
    }
+   // AssertiveWall: On The great turkish war, always leave the troops gathering at the command center if we're on defense
+   if (cRandomMapName == "eugreatturkishwar" && btOffenseDefense == 0)
+   {
+      location = kbUnitGetPosition(getUnit(cUnitTypedeSPCHeadquartersVienna, cPlayerRelationAlly));
+   }
+
    if (location != cInvalidVector)
    {
       float desiredRadius = radius;
@@ -2967,6 +3232,12 @@ minInterval 13
       gLandReservePlan = aiPlanCreate("Land Reserve Units", cPlanCombat);
       // All mil units, high MAX value to suck up all excess.
       aiPlanAddUnitType( gLandReservePlan, cUnitTypeLogicalTypeLandMilitary, 0, 5, 200); 
+      // AssertiveWall: control the land reserve plan more tightly on island maps
+      if (gStartOnDifferentIslands == true)
+      {
+         aiPlanSetNoMoreUnits(gLandReservePlan, true);
+         xsEnableRule("landReserveRefill");
+      }
       aiPlanSetVariableInt(gLandReservePlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeDefend);
       if (targetPoint == cInvalidVector)
       {
@@ -3067,6 +3338,7 @@ minInterval 10
    int planID = -1;
    int mainBaseID = kbBaseGetMainID(cMyID);
    int time = xsGetTime();
+   int onOurIsland = false;
 
    static int enemyArmyQuery = -1;
    if (enemyArmyQuery < 0) // First run.
@@ -3096,11 +3368,11 @@ minInterval 10
    // Check main base first.
    kbUnitQuerySetPosition(enemyArmyQuery, kbBaseGetLocation(cMyID, mainBaseID));
    // AssertiveWall: Make this ring nice and big on island maps to make sure we catch landing forces
-   // This may be causing issues. Try very small
+   // This may be causing issues. Back to normal
    if (gStartOnDifferentIslands == true)
    {
       //kbUnitQuerySetMaximumDistance(enemyArmyQuery, (kbGetMapXSize() * 0.60));
-      kbUnitQuerySetMaximumDistance(enemyArmyQuery, 30.0);
+      kbUnitQuerySetMaximumDistance(enemyArmyQuery, cvDefenseReflexSearchRadius);
    }
    else
    {
@@ -3112,22 +3384,6 @@ minInterval 10
    kbUnitQuerySetUnitType(enemyArmyQuery, cUnitTypeLogicalTypeLandMilitary); // AssertiveWall: copied from above
    kbUnitQueryResetResults(enemyArmyQuery);
    enemyArmySize = kbUnitQueryExecute(enemyArmyQuery);
-   
-   // AssertiveWall: check if any of the army is on the same island
-   if (gStartOnDifferentIslands == true)
-   {
-      for (i = 0; < enemyArmySize)
-      {
-         unitID = kbUnitQueryGetResult(enemyArmyQuery, i);
-         int tempBaseVecAreaGroupID = kbAreaGroupGetIDByPosition(kbUnitGetPosition(unitID));
-         if (kbAreAreaGroupsPassableByLand(tempBaseVecAreaGroupID, kbAreaGroupGetIDByPosition(kbBaseGetLocation(cMyID, mainBaseID))) == true)
-         {
-            unitID = -1;
-            break; // Stop checking, there are troops on our island
-         }
-         return; // only if no enemy units are on the island
-      }
-   }
 
    // Bump up by 1 to just avoid running into this when the enemy explorer and its companion get in our base...
    if (enemyArmySize >= 3)
@@ -3136,8 +3392,10 @@ minInterval 10
       debugMilitary("******** Enemy count " + enemyArmySize + ", my army count " + armySize);
       if (gDefenseReflexBaseID == mainBaseID)
       { // We're already in a defense reflex for the main base.
-         if (((armySize * 3.0) < enemyArmySize) &&
-             (enemyArmySize > 6.0)) // Army at least 3x my size and more than 6 units total.
+        // AssertiveWall: decreased from 3x to 2x
+         if ((((armySize * 2.0) < enemyArmySize) &&
+             (enemyArmySize > 6.0)) || // Army at least 3x my size and more than 6 units total.
+            (armySize * 1.5) < enemyArmySize && enemyArmySize > 50.0) // AssertiveWall: panic when enemy has a really big army
          {                          // Too big to handle.
             if ((gDefenseReflexPaused == false) && (kbUnitCount(cMyID, cUnitTypeMinuteman, cUnitStateAlive) < 1) &&
                 (kbUnitCount(cMyID, cUnitTypeypIrregular, cUnitStateAlive) < 1) &&
@@ -3370,6 +3628,7 @@ minInterval 10
          kbUnitQuerySetPosition(enemyArmyQuery, baseLoc);
          kbUnitQuerySetMaximumDistance(enemyArmyQuery, cvDefenseReflexSearchRadius);
          kbUnitQuerySetSeeableOnly(enemyArmyQuery, true);
+         kbUnitQuerySetUnitType(enemyArmyQuery, cUnitTypeLogicalTypeLandMilitary); // AssertiveWall: copied from above
          kbUnitQuerySetState(enemyArmyQuery, cUnitStateAlive);
          kbUnitQueryResetResults(enemyArmyQuery);
          enemyArmySize = kbUnitQueryExecute(enemyArmyQuery);
@@ -3410,6 +3669,13 @@ minInterval 10
             return; // If we're in trouble in any base, ignore the others.
          }
       } // For baseIndex...
+   }
+
+   // AssertiveWall: If we made it this far, no one is in trouble. Move defense reflex to forward base
+   if ((gForwardBaseState == cForwardBaseStateActive || gForwardBaseState == cForwardBaseStateBuilding) &&
+         gForwardBaseShouldDefend == true)
+   {
+      moveDefenseReflex(gForwardBaseLocation, 50, gForwardBaseID);
    }
 }
 

@@ -1,0 +1,40 @@
+<animfile>
+    <component>ModelComp
+        <assetreference type="GrannyModel">
+            <file>homecity\homecity_units\jewish_preacher</file>
+        </assetreference>
+    </component>
+    <anim>Idle
+        <assetreference type="GrannyAnim">
+            <file>homecity\homecity_units\middle_class_preacher\middle_class_preacher_state_idle</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>homecity\homecity_units\middle_class_preacher\middle_class_preacher_state_actionB</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>homecity\homecity_units\middle_class_preacher\middle_class_preacher_state_actionE</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Bored
+        <assetreference type="GrannyAnim">
+            <file>homecity\homecity_units\middle_class_preacher\middle_class_preacher_state_in</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>homecity\homecity_units\middle_class_preacher\middle_class_preacher_state_actionA</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>homecity\homecity_units\middle_class_preacher\middle_class_preacher_state_actionC</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>homecity\homecity_units\middle_class_preacher\middle_class_preacher_state_actionD</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>homecity\homecity_units\middle_class_preacher\middle_class_preacher_state_actionF</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>homecity\homecity_units\middle_class_preacher\middle_class_preacher_state_out</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+</animfile>

@@ -108,7 +108,6 @@
     <abstractattacktargettype>AbstractDock</abstractattacktargettype>
     <unitaction>ShuntAttack</unitaction>
   </power>
-
   <power name="zpPowerConvertShip" type="UnitAction">
     <displaynameid>80577</displaynameid>
     <rolloverid>80578</rolloverid>
@@ -121,4 +120,151 @@
     <unitaction>ConvertShip</unitaction>
     <allowduringnorush>0</allowduringnorush>
   </power>
+  <power name="zpMustardGasWeak" type="UnitAction">
+    <displaynameid>300774</displaynameid>
+    <rolloverid>300775</rolloverid>
+    <icon>resources\images\icons\command\plague_grenade.png</icon>
+    <minimapeventtime sendalertto="player">1</minimapeventtime>
+    <activetime>30</activetime>
+    <radius>20.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>LogicalTypeGarrisonInShips</abstractattacktargettype>
+    <unitaction>PoisonBomb</unitaction>
+  </power>
+  <power name="zpPowerArmouredTrain" type="UnitAction">
+    <displaynameid>300989</displaynameid>
+    <rolloverid>300990</rolloverid>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>15.0</radius>
+    <rangeindicatorprotoid radius="15.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>
+  </power>
+  <power name="zpPowerArmouredTrainInactive" type="UnitAction">
+    <displaynameid>300989</displaynameid>
+    <rolloverid>301001</rolloverid>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>   
+  </power>
+  <power name="zpPowerArmouredTrainNoResource" type="UnitAction">
+    <displaynameid>300989</displaynameid>
+    <rolloverid>301078</rolloverid>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>   
+  </power>
+  <power name="zpGunpowderWagonAura" type="UnitAction">
+    <displaynameid>301079</displaynameid>
+    <rolloverid>301080</rolloverid>
+    <icon>resources\images\icons\abilities\gunpowder_stores.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpKitchenAuraFieldKitchen" type="UnitAction">
+    <displaynameid>301081</displaynameid>
+    <rolloverid>301082</rolloverid>
+    <icon>resources\images\icons\abilities\field_kitchen.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpKitchenAuraCantine" type="UnitAction">
+    <displaynameid>301083</displaynameid>
+    <rolloverid>301084</rolloverid>
+    <icon>resources\images\icons\abilities\train_cantina.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPowerAreaHeal" type="UnitAction">
+    <displaynameid>301085</displaynameid>
+    <rolloverid>301086</rolloverid>
+    <icon>resources\images\icons\abilities\emergency.png</icon>
+    <minimapeventtime sendalertto="player">1</minimapeventtime>
+    <activetime>8</activetime>
+    <radius>20.0</radius>
+    <placement forceonmap="1" ally="">full</placement>
+    <abstractattacktargettype>Unit</abstractattacktargettype>
+    <unitaction>AreaHeal</unitaction>
+    <hitpointstoheal>400</hitpointstoheal>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpProtectedZone" type="UnitAction">
+    <displaynameid>301116</displaynameid>
+    <rolloverid>301117</rolloverid>
+    <icon>resources\images\icons\abilities\safe_zone.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpAmmo" type="UnitAction">
+    <displaynameid>301120</displaynameid>
+    <rolloverid>301119</rolloverid>
+    <icon>resources\images\icons\abilities\ammo.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpApocalypseHorsemen" type="UnitAction">
+    <displaynameid>400132</displaynameid>
+    <rolloverid>301124</rolloverid>
+    <icon>resources\art\units\natives\western_village\apocalypse_horsemen.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpAutoHealDocHolliday" type="UnitAction">
+    <displaynameid>49283</displaynameid>
+    <rolloverid>301130</rolloverid>
+    <icon>resources\art\units\natives\western_village\doc_holiday_regenerate_health.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPowerMGStatic" type="UnitAction">
+    <displaynameid>301139</displaynameid>
+    <rolloverid>301137</rolloverid>
+    <icon>resources\images\icons\abilities\static_mg.png</icon>
+    <activetime>4</activetime>
+    <radius>5.0</radius>
+    <placement forceonmap="1" ally="">unit</placement>
+    <unitaction>DelayedTransform</unitaction>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPowerMGmove" type="UnitAction">
+    <displaynameid>301138</displaynameid>
+    <rolloverid>301136</rolloverid>
+    <icon>resources\images\icons\abilities\ability_horse_dismount.png</icon>
+    <activetime>4</activetime>
+    <radius>5.0</radius>
+    <placement forceonmap="1" ally="">unit</placement>
+    <unitaction>DelayedTransform</unitaction>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPowerArmouredTrainInactiveStation" type="UnitAction">
+    <displaynameid>300989</displaynameid>
+    <rolloverid>301001</rolloverid>
+    <icon>resources\images\icons\command\armored_train_lrg_disabled.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>   
+  </power>
+  <power name="zpPowerArmouredTrainNoResourceStation" type="UnitAction">
+    <displaynameid>300989</displaynameid>
+    <rolloverid>301078</rolloverid>
+    <icon>resources\images\icons\command\armored_train_lrg_disabled.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>   
+  </power>
+
+
+
+
+
 </powermods>

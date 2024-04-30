@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>17</width>
+	<height>16</height>
+	<ignoreplacementrules>0</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="22" posx="-7.5012" posz="11.1682" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">spSocketTrainStationB</unit>
+	</units>
+	<tiles>
+	</tiles>
+</grouping>

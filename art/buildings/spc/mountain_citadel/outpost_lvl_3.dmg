@@ -1,0 +1,82 @@
+<damagetemplate>
+  <model name="\buildings\spc\mountain_citadel\outpost_lvl_3_damaged">
+    <impactpoint name="bone_impact_01" bone="bone_impact_01" impacttype="wood" motionstopfadetime="2.0" motionstopfadedelay="8.0" splasheffect="watersplash_med">
+      <part mesh="debris_1a" bone="bone_debris_1a" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_1b" bone="bone_debris_1b" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_1c" bone="bone_debris_1c" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_1d" bone="bone_debris_1d" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_1e" bone="bone_debris_1e" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_1f" bone="bone_debris_1f" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_1g" bone="bone_debris_1g" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+    </impactpoint>
+    <impactpoint name="bone_impact_02" bone="bone_impact_02" impacttype="wood" motionstopfadetime="2.0" motionstopfadedelay="8.0" splasheffect="watersplash_med">
+      <part mesh="debris_2b" bone="bone_debris_2b" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_2c" bone="bone_debris_2c" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_2d" bone="bone_debris_2d" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_2a" bone="bone_debris_2a" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_2e" bone="bone_debris_2e" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_2f" bone="bone_debris_2f" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_2g" bone="bone_debris_2g" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_2i" bone="bone_debris_2i" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_2j" bone="bone_debris_2j" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+    </impactpoint>
+    <impactpoint name="bone_impact_03" bone="bone_impact_03" impacttype="rooftile" mode="linked" motionstopfadetime="2.0" motionstopfadedelay="8.0" splasheffect="watersplash_med">
+      <part mesh="debris_3a" bone="bone_debris_3a" halfextents="0.25, 0.5, 1.0">
+      </part>
+      <part mesh="debris_3b" bone="bone_debris_3b" halfextents="0.25, 0.5, 1.0">
+      </part>
+      <part mesh="debris_3c" bone="bone_debris_3c" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_3d" bone="bone_debris_3d" halfextents="0.25, 0.5, 1.0" effect="effects\splinter_streamer.xml">
+      </part>
+      <part mesh="debris_3f" bone="bone_debris_3f" halfextents="0.25, 0.5, 1.0" effect="effects\splinter_streamer.xml">
+      </part>
+    </impactpoint>
+    <impactpoint name="bone_impact_04" bone="bone_impact_04" impacttype="stone" motionstopfadetime="2.0" motionstopfadedelay="8.0" splasheffect="watersplash_med">
+      <part mesh="debris_4d" bone="bone_debris_4d" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_4e" bone="bone_debris_4e" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_4a" bone="bone_debris_4a" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_4b" bone="bone_debris_4b" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_4c" bone="bone_debris_4c" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+    </impactpoint>
+    <impactpoint name="bone_impact_05" bone="bone_impact_05" impacttype="wood" motionstopfadetime="2.0" motionstopfadedelay="8.0" splasheffect="watersplash_med">
+      <part mesh="debris_5a" bone="bone_debris_5a" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_5b" bone="bone_debris_5b" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_5c" bone="bone_debris_5c" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_5d" bone="bone_debris_5d" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_5e" bone="bone_debris_5e" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+    </impactpoint>
+    <impactpoint name="bone_impact_06" bone="bone_impact_06" impacttype="wood  " mode="linked" motionstopfadetime="2.0" motionstopfadedelay="8.0" splasheffect="watersplash_med">
+      <part mesh="debris_6a" bone="bone_debris_6a" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+      <part mesh="debris_6b" bone="bone_debris_6b" halfextents="0.25, 0.5, 1.0" effect="effects\streamer.xml">
+      </part>
+    </impactpoint>
+  </model>
+</damagetemplate>

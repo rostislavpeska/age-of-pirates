@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\socket_jewish\textures\s_sultan_residence_diff_0_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\socket_jewish\textures\s_sultan_residence_diff_0_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\socket_jewish\textures\s_sultan_residence_diff_0_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

@@ -1,0 +1,40 @@
+<tactics>
+  <action>
+    <name stringid="69158">SpawnChristmasTree</name>
+    <type>Spawn</type>
+    <rate type="TreeChristmas">1.0 </rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69158">SpawnCowboy</name>
+    <type>Spawn</type>
+    <rate type="zpMercMountedOutlaw">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="43298">SpawnFoodGifts</name>
+    <type>Maintain</type>
+    <rate type="GiftFood">1.0 </rate>
+    <active>0</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="43298">SpawnWoodGifts</name>
+    <type>Maintain</type>
+    <rate type="GiftWood">1.0 </rate>
+    <active>0</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="43298">SpawnGoldGifts</name>
+    <type>Maintain</type>
+    <rate type="GiftCoin">1.0 </rate>
+    <active>0</active>
+    <persistent>1</persistent>
+  </action>
+  <tactic>Normal<action>SpawnFoodGifts</action><action>SpawnWoodGifts</action><action>SpawnGoldGifts</action><length>2</length></tactic>
+</tactics>

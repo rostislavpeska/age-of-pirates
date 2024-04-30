@@ -1,13 +1,22 @@
 <randomnamemods>
-    <protounit>zpSPCQueenAnne<civ>Default<title>300102</title></civ></protounit>
-    <protounit>zpSPCBlackPearl<civ>Default<title>300103</title></civ></protounit>
-    <protounit>zpSPCNeptuneGalley<civ>Default<title>300104</title></civ></protounit>
-    <protounit>zpMalteseRiggedShip<civ>Default<title>300137</title><title>300138</title><title>300139</title><title>300140</title><title>300141</title></civ></protounit>
-    <protounit>zpSPCLineShip<civ>Default<title>300137</title><title>300138</title><title>300139</title><title>300140</title><title>300141</title></civ></protounit>
-    <protounit>zpSPCTreasureShip<civ>Default<title>300246</title></civ></protounit>
-    <protounit>zpWokouSteamer<civ>Default<title>300223</title></civ></protounit>
-    <protounit>zpWokouFuchuan<civ>Default<title>300190</title></civ></protounit>
-    <protounit>zpSubmarine<civ>Default<title>300548</title><title>300549</title><title>300559</title><title>300560</title><title>300561</title></civ></protounit>
-    <protounit>zpNautilus<civ>Default<title>300476</title></civ></protounit>
-    <protounit>zpAirship<civ>Default<title>300614</title></civ></protounit>
+  <protounit>zpSPCQueenAnne<civ>Default<title>300102</title></civ></protounit>
+  <protounit>zpSPCBlackPearl<civ>Default<title>300103</title></civ></protounit>
+  <protounit>zpSPCNeptuneGalley<civ>Default<title>300104</title></civ></protounit>
+  <protounit>zpMalteseRiggedShip<civ>Default<title>300137</title><title>300138</title><title>300139</title><title>300140</title><title>300141</title></civ></protounit>
+  <protounit>zpSPCLineShip<civ>Default<title>300137</title><title>300138</title><title>300139</title><title>300140</title><title>300141</title></civ></protounit>
+  <protounit>zpSPCTreasureShip<civ>Default<title>300246</title></civ></protounit>
+  <protounit>zpWokouSteamer<civ>Default<title>300223</title></civ></protounit>
+  <protounit>zpWokouFuchuan<civ>Default<title>300190</title></civ></protounit>
+  <protounit>zpSubmarine<civ>Default<title>300548</title><title>300549</title><title>300559</title><title>300560</title><title>300561</title></civ></protounit>
+  <protounit>zpNautilus<civ>Default<title>300476</title></civ></protounit>
+  <protounit>zpAirship<civ>Default<title>300614</title></civ></protounit>
+  <protounit>zpSocketVenetians<civ>Default<title>300747</title><title>300748</title><title>300749</title><title>300750</title><title>300751</title><title>300752</title><title>300753</title></civ></protounit>
+  <protounit>zpWaterFort<civ>Default<title>300791</title><title>300792</title><title>300793</title><title>300794</title><title>300795</title></civ></protounit>
+  <protounit>zpVeniceGalley<civ>Default<title>300842</title><title>300843</title><title>300844</title><title>300845</title><title>300846</title><title>300847</title><title>300848</title><title>300849</title><title>300850</title><title>300851</title></civ></protounit>
+  <protounit>zpVeniceGalleyAutomatic<civ>Default<title>300842</title><title>300843</title><title>300844</title><title>300845</title><title>300846</title><title>300847</title><title>300848</title><title>300849</title><title>300850</title><title>300851</title></civ></protounit>
+  <protounit>zpGalleass<civ>Default<title>300838</title><title>300839</title><title>300840</title><title>300841</title></civ></protounit>
+  <protounit>zpMercNautilus<civ>Default<title>300476</title></civ></protounit>
+  <protounit>zpMercWokouSteamer<civ>Default<title>300223</title></civ></protounit>
+  <protounit>zpPinkerton<civ>Default<title>400084</title><title>400085</title><title>400086</title><title>400087</title><title>400088</title><title>400089</title><title>400090</title><title>400091</title><title>400092</title><title>400093</title><title>400094</title><title>400095</title><title>400096</title><title>400097</title><title>400098</title><title>400099</title></civ></protounit>
+  <protounit>zpSPCSocketWesternVillage<civ>Default<title>301148</title><title>301149</title><title>301150</title><title>301151</title><title>301152</title><title>301153</title><title>301154</title><title>301155</title><title>301156</title><title>301157</title><title>301158</title><title>301159</title><title>301160</title><title>301161</title></civ></protounit>
 </randomnamemods>

@@ -1,14 +1,5 @@
 // DEAD SEA
 // April 2023
-// Main entry point for random map script I MADE A CHANGE
-//
-
-// Modified November 16, 2005 ---> KSW
-// Iroquois references changed to Huron
-// Lakota references changed to Cheyenne
-
-// Nov 06 - YP update
-// April 2021 edited by vividlyplain for DE
 
 include "mercenaries.xs";
 include "ypAsianInclude.xs";
@@ -67,7 +58,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
    
    // LIGHT SET
 
-	rmSetLightingSet("Fertile_Crescent_Skirmish");
+	rmSetLightingSet("sonora_skirmish");
 
 
 	// Picks default terrain and water
@@ -192,7 +183,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 
 	// Native Constraints
 	int avoidSufi=rmCreateTypeDistanceConstraint("stay away from Sufi", "zpSocketSPCSufi", 40.0);
-	int avoidMaltese=rmCreateTypeDistanceConstraint("stay away from Maltese", "zpSocketMaltese", 40.0);
+	int avoidMaltese=rmCreateTypeDistanceConstraint("stay away from Maltese", "zpSocketMalteseMission", 40.0);
 	int avoidJewish=rmCreateTypeDistanceConstraint("stay away from Jewish", "zpSocketJewish", 40.0);
 	int avoidTownCenterFar=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 40.0);
 	int avoidTownCenter=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 25.0);
@@ -429,19 +420,19 @@ for(i=1; <cNumberPlayers) {
    bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "river_trail");
 
    int LakePort1ID = -1;
-   LakePort1ID = rmCreateGrouping("harbour 1", "Harbour_DeadSea02");
-   rmPlaceGroupingAtLoc(LakePort1ID, 0, 0.55, 0.3-rmZTilesToFraction(4.5), 1);
+   LakePort1ID = rmCreateGrouping("harbour 1", "Harbour_DeadSeaNW");
+   rmPlaceGroupingAtLoc(LakePort1ID, 0, 0.55, 0.3-rmZTilesToFraction(5), 1);
 
    int LakePort2ID = -1;
-   LakePort2ID = rmCreateGrouping("harbour 2", "Harbour_DeadSea03");
+   LakePort2ID = rmCreateGrouping("harbour 2", "Harbour_DeadSeaSE");
    rmPlaceGroupingAtLoc(LakePort2ID, 0, 0.45, 0.7+rmZTilesToFraction(7.0), 1);
 
    int LakePort3ID = -1;
-   LakePort3ID = rmCreateGrouping("harbour 3", "Harbour_DeadSea01");
-   rmPlaceGroupingAtLoc(LakePort3ID, 0, 0.3-rmZTilesToFraction(4.5), 0.55, 1);
+   LakePort3ID = rmCreateGrouping("harbour 3", "Harbour_DeadSeaNE");
+   rmPlaceGroupingAtLoc(LakePort3ID, 0, 0.3-rmZTilesToFraction(5), 0.55, 1);
 
    int LakePort4ID = -1;
-   LakePort4ID = rmCreateGrouping("harbour 4", "Harbour_DeadSea04");
+   LakePort4ID = rmCreateGrouping("harbour 4", "Harbour_DeadSeaSW");
    rmPlaceGroupingAtLoc(LakePort4ID, 0, 0.7+rmZTilesToFraction(7.0), 0.45, 1);
 
 
@@ -530,9 +521,9 @@ int sufi3VillageTypeID = rmRandInt(1,3);
 
 // Jewish
 
-int jewish1VillageTypeID = rmRandInt(1, 3);
-int jewish2VillageTypeID = rmRandInt(1, 3);
-int jewish3VillageTypeID = rmRandInt(1, 3);
+int jewish1VillageTypeID = rmRandInt(1, 4);
+int jewish2VillageTypeID = rmRandInt(1, 4);
+int jewish3VillageTypeID = rmRandInt(1, 4);
 
 int jewish1ID = rmCreateGrouping("jewish 1", "Jewish_Settlement_0"+jewish1VillageTypeID);
 int jewish2ID = rmCreateGrouping("jewish 2", "Jewish_Settlement_0"+jewish2VillageTypeID);
@@ -1066,67 +1057,101 @@ rmSetTriggerRunImmediately(false);
 rmSetTriggerLoop(false);
 }
 
+// Speed Always Wins Returner
+
+for (k=1; <= cNumberNonGaiaPlayers) {
+rmCreateTrigger("Cheat Returner"+k);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamInt("Param1",10);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchIncrease");
+rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerPriority(2);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(false);
+rmSetTriggerLoop(false);
+}
+
 // Consulate - Tradingpost politician switcher
 
-for (k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("Activate Consulate Japan"+k);
-rmAddTriggerCondition("ZP Player Civilization");
-rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("Civilization","Japanese");
-rmAddTriggerCondition("ZP Tech Researching (XS)");
-rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
-rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("ZP Set Tech Status (XS)");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnJapanese"); //operator
-rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("ZP Pick Consulate Tech");
-rmSetTriggerEffectParamInt("Player",k);
-rmSetTriggerPriority(4);
-rmSetTriggerActive(false);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(true);
-}
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate Japan"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","Japanese");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnJapanese"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
 
-for (k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("Activate Consulate China"+k);
-rmAddTriggerCondition("ZP Player Civilization");
-rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("Civilization","Chinese");
-rmAddTriggerCondition("ZP Tech Researching (XS)");
-rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
-rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("ZP Set Tech Status (XS)");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnChinese"); //operator
-rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("ZP Pick Consulate Tech");
-rmSetTriggerEffectParamInt("Player",k);
-rmSetTriggerPriority(4);
-rmSetTriggerActive(false);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(true);
-}
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate China"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","Chinese");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnChinese"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
 
-for (k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("Activate Consulate India"+k);
-rmAddTriggerCondition("ZP Player Civilization");
-rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("Civilization","Indians");
-rmAddTriggerCondition("ZP Tech Researching (XS)");
-rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
-rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("ZP Set Tech Status (XS)");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnIndian"); //operator
-rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("ZP Pick Consulate Tech");
-rmSetTriggerEffectParamInt("Player",k);
-rmSetTriggerPriority(4);
-rmSetTriggerActive(false);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(true);
-}
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate India"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","Indians");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnIndian"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
 
 
 for (k=1; <= cNumberNonGaiaPlayers) {
@@ -1136,7 +1161,11 @@ rmSetTriggerConditionParam("TechID","cTechzpMalteseCross"); //operator
 rmSetTriggerConditionParamInt("PlayerID",k);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffMalteseLand"); //operator
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffMaltese"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("ZP Pick Consulate Tech");
 rmSetTriggerEffectParamInt("Player",k);
@@ -1144,6 +1173,8 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
@@ -1159,12 +1190,18 @@ rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffJewish"); //operator
 rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("ZP Pick Consulate Tech");
 rmSetTriggerEffectParamInt("Player",k);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
@@ -1198,6 +1235,38 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
+// Update ports
+
+rmCreateTrigger("I Update Ports");
+rmAddTriggerCondition("Player Unit Count");
+rmSetTriggerConditionParamInt("PlayerID",0);
+rmSetTriggerConditionParam("Protounit","deCargoBoat");
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",0);
+rmSetTriggerEffectParam("TechID","cTechzpUpdatePort1"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmCreateTrigger("II Update Ports");
+rmAddTriggerCondition("Player Unit Count");
+rmSetTriggerConditionParamInt("PlayerID",0);
+rmSetTriggerConditionParam("Protounit","deTradingBarge");
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",0);
+rmSetTriggerEffectParam("TechID","cTechzpUpdatePort2"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
 
 // AI Maltese Land Fractions
 

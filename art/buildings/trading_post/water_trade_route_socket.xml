@@ -34,12 +34,12 @@
 				<logic type="LowPoly">
 					<normal>
 						<assetreference type="GrannyModel">
-							<file>homecity\buildings_west\dock_version_a</file>
+							<file>buildings\market\trading_port2_Model</file>
 						</assetreference>
 					</normal>
 					<lowpoly>
 						<assetreference type="GrannyModel">
-							<file>homecity\buildings_west\dock_version_a</file>
+							<file>buildings\market\trading_port2_Model</file>
 						</assetreference>
 					</lowpoly>
 				</logic>

@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "300956" displayNameID = "300955" loadDetails="300957" largeMapName = "zpkurils"
+    imagepath = "ui\random_map\kurils\kurils_mini" cannotReplace = "" loadBackground="ui\random_map\kurils\kurils_map">
+	<loadss>ui\random_map\kurils\kurils_01</loadss>
+    <loadss>ui\random_map\kurils\kurils_02</loadss>
+    <loadss>ui\random_map\kurils\kurils_03</loadss>
+</mapinfo>

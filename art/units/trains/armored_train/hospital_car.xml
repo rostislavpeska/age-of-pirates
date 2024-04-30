@@ -1,0 +1,85 @@
+<animfile>
+  <definebone>caboose</definebone>
+  <definebone>bone_wagon</definebone>
+  <definebone>bone_explosion</definebone>
+  <definebone>bone_hitpointbar</definebone>
+  <attachment>Death_EXP
+    <component>exp
+      <assetreference type="popcornFx">
+        <file>units\spc\fire_ship\Exp_galleon_ship.pkfx</file>
+      </assetreference>
+    </component>
+    <anim>None
+      <component>exp</component>
+    </anim>
+  </attachment>
+    <attachment>Death_EXP_Wood
+    <component>exp
+      <assetreference type="popcornFx">
+        <file>projectiles\ship_debris_wood.pkfx</file>
+      </assetreference>
+    </component>
+    <anim>None
+      <component>exp</component>
+    </anim>
+  </attachment>
+  <attachment>Wagon
+    <component>wagon
+      <assetreference type="GrannyModel">
+        <file>units\trains\armored_train\hospital_car</file>
+      </assetreference>
+    </component>
+    <anim>Idle
+      <component>wagon</component>
+    </anim>
+  </attachment>
+
+  <attachment>Wagon_death
+    <component>wagon_death
+      <assetreference type="GrannyModel">
+        <file>units\trains\armored_train\barrack_car_death</file>
+      </assetreference>
+    </component>
+    <anim>Idle
+      <component>wagon_death</component>
+    </anim>
+  </attachment>
+
+  <component>ModelComp
+    <assetreference type="GrannyModel">
+        <file>units\trains\armored_train\wagon_damaged_Model</file>
+    </assetreference>
+    <attach a="Wagon" frombone="caboose" tobone="bone_wagon" syncanims="0"></attach>
+    <decal>
+      <effecttype>default</effecttype>
+      <texture>shadows_selections\shadow_circle_128x128</texture>
+      <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+      <width>1.0</width>
+      <height>1.0</height>
+    </decal>
+  </component>
+  <component>DeathModel
+    <assetreference type="GrannyModel">
+        <file>units\trains\armored_train\wagon_damaged_Model</file>
+    </assetreference>
+    <attach a="Wagon_death" frombone="caboose" tobone="bone_wagon" syncanims="0"></attach>
+  </component>
+  <anim>Idle
+    <assetreference type="GrannyAnim">
+        <file>units\trains\armored_train\wagon_damaged_Model</file>
+    </assetreference>
+    <component>ModelComp</component>
+  </anim>
+  <anim>Walk
+    <component>ModelComp</component>
+  </anim>
+  <anim>Death
+    <assetreference type="GrannyAnim">
+      <file>units\trains\armored_train\wagon_damaged_Anim</file>
+      <tag type="SpecificSoundSet" checkvisible="1" set="BuildingPartImpact">0.12</tag>
+    </assetreference>
+    <component>DeathModel</component>
+    <attach a="Death_EXP" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    <attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="caboose" syncanims="0"></attach>
+  </anim>
+</animfile>

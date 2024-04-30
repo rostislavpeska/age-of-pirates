@@ -1,0 +1,181 @@
+<animfile>
+  <definebone>bone_launchpoint01</definebone>
+  <definebone>bone_launchpoint02</definebone>
+  <definebone>bone_launchpoint04</definebone>
+  <definebone>bone_launchpoint03</definebone>
+  <definebone>bone_launchpoint05</definebone>
+  <definebone>bone_chimney</definebone>
+  <definebone>bone_chimney1</definebone>
+  <submodel>construction stage1
+    <component>construction
+      <assetreference type="GrannyModel">
+        <file>buildings\constructions\3x3_stage1</file>
+      </assetreference>
+      <decal>
+        <effecttype>default</effecttype>
+        <texture>buildings\saloon\Saloon_floor_00</texture>
+        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+        <width>8.00</width>
+        <height>8.00</height>
+        <zoffset>0.00</zoffset>
+      </decal>
+    </component>
+    <anim>Idle
+      <component>construction</component>
+    </anim>
+  </submodel>
+  <submodel>construction stage2
+    <component>construction
+      <assetreference type="GrannyModel">
+        <file>buildings\constructions\3x3_stage2</file>
+      </assetreference>
+      <decal>
+        <effecttype>default</effecttype>
+        <texture>buildings\saloon\Saloon_floor_00</texture>
+        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+        <width>8.00</width>
+        <height>8.00</height>
+        <zoffset>0.00</zoffset>
+      </decal>
+    </component>
+    <anim>Idle
+      <component>construction</component>
+    </anim>
+  </submodel>
+  <submodel>construction stage3
+    <attachment>scaffolding
+      <component>construction3
+        <assetreference type="GrannyModel">
+          <file>buildings\constructions\3x3_stage3</file>
+        </assetreference>
+        <decal>
+          <effecttype>default</effecttype>
+          <texture>buildings\saloon\Saloon_floor_00</texture>
+          <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+          <width>8.00</width>
+          <height>8.00</height>
+          <zoffset>0.00</zoffset>
+        </decal>
+      </component>
+      <anim>Idle
+        <component>construction3</component>
+      </anim>
+    </attachment>
+    <component>saloon_construction
+      <assetreference type="GrannyModel">
+        <file>buildings\sheriff\sheriff_con</file>
+      </assetreference>
+      <attach a="scaffolding" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </component>
+    <anim>Idle
+      <component>saloon_construction</component>
+    </anim>
+  </submodel>
+  <submodel>mercenary_saloon
+    <attachment>collapse_smoke
+      <component>collapse_smoke
+        <assetreference type="popcornFx">
+          <file>smoke\collapse_smoke_3x3.pkfx</file>
+        </assetreference>
+      </component>
+      <anim>Idle
+        <component>collapse_smoke</component>
+      </anim>
+    </attachment>
+    <component>LIVE
+      <logic type="LowPoly">
+        <normal>
+          <logic type="Destruction">
+            <p1>
+              <assetreference type="GrannyModel">
+                <file>buildings\sheriff\sheriff_damaged</file>
+              </assetreference>
+            </p1>
+            <p99>
+              <assetreference type="GrannyModel" shape="saloon">
+                <file>buildings\sheriff\sheriff</file>
+              </assetreference>
+            </p99>
+          </logic>
+          <decal>
+            <effecttype>default</effecttype>
+            <texture>buildings\saloon\Saloon_floor_00</texture>
+            <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <width>8.00</width>
+            <height>10.00</height>
+            <zoffset>0.00</zoffset>
+          </decal>
+        </normal>
+        <lowpoly>
+          <assetreference type="GrannyModel" shape="saloon">
+            <file>buildings\saloon\lp_saloon</file>
+          </assetreference>
+          <decal>
+            <effecttype>default</effecttype>
+            <texture>buildings\saloon\Saloon_floor_00</texture>
+            <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <width>8.00</width>
+            <height>10.00</height>
+            <zoffset>0.00</zoffset>
+          </decal>
+        </lowpoly>
+      </logic>
+    </component>
+    <component>DEAD
+      <logic type="LowPoly">
+        <normal>
+          <assetreference type="GrannyModel">
+            <file>buildings\sheriff\sheriff_damaged</file>
+          </assetreference>
+          <decal>
+            <effecttype>default</effecttype>
+            <texture>buildings\saloon\Saloon_floor_00</texture>
+            <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <width>8.00</width>
+            <height>10.00</height>
+            <zoffset>0.00</zoffset>
+          </decal>
+        </normal>
+        <lowpoly>
+          <assetreference type="GrannyModel">
+            <file>buildings\saloon\lp_saloon</file>
+          </assetreference>
+          <decal>
+            <effecttype>default</effecttype>
+            <texture>buildings\saloon\Saloon_floor_00</texture>
+            <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <width>8.00</width>
+            <height>10.00</height>
+            <zoffset>0.00</zoffset>
+          </decal>
+        </lowpoly>
+      </logic>
+    </component>
+    <anim>Idle
+      <component>LIVE</component>
+      <simskeleton>
+        <model>buildings\sheriff\sheriff_damaged</model>
+      </simskeleton>
+    </anim>
+    <anim>Death
+      <component>DEAD</component>
+      <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </anim>
+  </submodel>
+  <component>saloon model
+    <logic type="BuildingCompletion">
+      <p0>
+        <submodelref ref="construction stage1"></submodelref>
+      </p0>
+      <p33>
+        <submodelref ref="construction stage2"></submodelref>
+      </p33>
+      <p66>
+        <submodelref ref="construction stage3"></submodelref>
+      </p66>
+      <p100>
+        <submodelref ref="mercenary_saloon"></submodelref>
+      </p100>
+    </logic>
+  </component>
+</animfile>

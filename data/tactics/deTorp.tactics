@@ -1,0 +1,371 @@
+<tactics>
+  <action>
+    <name stringid="69158">SpawnChristmasTree</name>
+    <type>Spawn</type>
+    <rate type="TreeChristmas">1.0 </rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69158">SpawnCowboy</name>
+    <type>Spawn</type>
+    <rate type="zpMercMountedOutlaw">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="91594">HuntAttack</name>
+    <type>Attack</type>
+    <active>0</active>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>RangedAttack</anim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.01</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>InvisibleProjectile</projectile>
+    <impacteffect>effects\impacts\gun</impacteffect>
+    <rate type="Huntable">1.0 </rate>
+    <instantballistics>1</instantballistics>
+    <perfectaccuracy>1</perfectaccuracy>
+  </action>
+  <action>
+    <name stringid="69158">SpawnCaroleans1</name>
+    <type>Maintain</type>
+    <rate type="deCaroleanBatch">1.0</rate>
+    <singleuse>1</singleuse>
+    <animationrate>1</animationrate>
+    <active>0</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="69158">SpawnCaroleans2</name>
+    <type>Spawn</type>
+    <rate type="deCarolean">2.0</rate>
+    <singleuse>1</singleuse>
+    <animationrate>1</animationrate>
+    <active>0</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="69158">SpawnElks</name>
+    <type>Spawn</type>
+    <rate type="Elk">2.0</rate>
+    <singleuse>1</singleuse>
+    <animationrate>1</animationrate>
+    <active>0</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="69158">SpawnSheep</name>
+    <type>Spawn</type>
+    <rate type="Sheep">2.0</rate>
+    <singleuse>1</singleuse>
+    <animationrate>1</animationrate>
+    <active>0</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="69158">SpawnTrees1</name>
+    <type>Spawn</type>
+    <rate type="TreeRockies">3.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69158">SpawnTrees2</name>
+    <type>Spawn</type>
+    <rate type="TreeRockies">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69158">SpawnCrates</name>
+    <type>Spawn</type>
+    <rate type="CrateofFood">1.0</rate>
+    <rate type="CrateofWood">1.0</rate>
+    <singleuse>1</singleuse>
+    <animationrate>1</animationrate>
+    <active>0</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="69158">SpawnMilitia</name>
+    <type>Spawn</type>
+    <rate type="Minuteman">1.0</rate>
+    <singleuse>1</singleuse>
+    <animationrate>1</animationrate>
+    <active>0</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="69158">SpawnBush</name>
+    <type>Spawn</type>
+    <rate type="deTorpBush">1.0 </rate>
+    <rate type="deTorpBush2">1.0 </rate>
+    <singleuse>1</singleuse>
+    <animationrate>1</animationrate>
+    <active>1</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="69158">SpawnBerryBush</name>
+    <type>Spawn</type>
+    <rate type="deTorpBush3">1.0 </rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnRevTree</name>
+    <type>Spawn</type>
+    <rate type="TreeRockies">1</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherWood</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="91720">AreaGatherMine</name>
+    <type>AutoRangedModify</type>
+    <modifyabstracttype>AbstractMine</modifyabstracttype>
+    <forbidunittype>Plantation</forbidunittype>
+    <includegaia>1</includegaia>
+    <active>1</active>
+    <maxrange>6.1</maxrange>
+    <persistent>1</persistent>
+    <singleunit>1</singleunit>
+    <modifytype>UnitResource</modifytype>
+    <modifyamount>0.27</modifyamount>
+    <modelattachment>effects\ypack_auras\torpgatherpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="91720">AreaGatherMine2</name>
+    <type>AutoRangedModify</type>
+    <modifyabstracttype>AbstractMine</modifyabstracttype>
+    <forbidunittype>Plantation</forbidunittype>
+    <includegaia>1</includegaia>
+    <active>0</active>
+    <maxrange>6.1</maxrange>
+    <persistent>1</persistent>
+    <singleunit>1</singleunit>
+    <modifytype>UnitResource</modifytype>
+    <modifyamount>0.54</modifyamount>
+    <modelattachment>effects\ypack_auras\torpgatherpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="91720">AreaGatherTree</name>
+    <type>AutoRangedModify</type>
+    <modifyabstracttype>Tree</modifyabstracttype>
+    <targetgaia>1</targetgaia>
+    <active>1</active>
+    <maxrange>6.2</maxrange>
+    <persistent>1</persistent>
+    <donotignoredead>1</donotignoredead>
+    <forceupdatemode>1</forceupdatemode>
+    <modifytype>UnitResource</modifytype>
+    <modifyamount>0.05</modifyamount>
+    <modifytargetlimit>5</modifytargetlimit>
+    <modelattachment>effects\ypack_auras\torpgatherpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="91720">AreaGatherTree2</name>
+    <type>AutoRangedModify</type>
+    <modifyabstracttype>Tree</modifyabstracttype>
+    <targetgaia>1</targetgaia>
+    <active>0</active>
+    <maxrange>14</maxrange>
+    <persistent>1</persistent>
+    <donotignoredead>1</donotignoredead>
+    <forceupdatemode>1</forceupdatemode>
+    <modifytype>UnitResource</modifytype>
+    <modifyamount>0.05</modifyamount>
+    <modifytargetlimit>14</modifytargetlimit>
+    <modelattachment>effects\ypack_auras\torpgatherpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="113171">AreaGatherHerdable</name>
+    <type>AutoRangedModify</type>
+    <modifyabstracttype>Herdable</modifyabstracttype>
+    <targetgaia>1</targetgaia>
+    <active>1</active>
+    <maxrange>14</maxrange>
+    <persistent>1</persistent>
+    <donotignoredead>1</donotignoredead>
+    <deadexclusive>1</deadexclusive>
+    <singleunit>1</singleunit>
+    <modifytype>UnitResource</modifytype>
+    <modifyamount>1.0</modifyamount>
+    <modelattachment>effects\ypack_auras\torpgatherpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="91720">AreaGatherHuntable</name>
+    <type>AutoRangedModify</type>
+    <modifyabstracttype>Huntable</modifyabstracttype>
+    <targetgaia>1</targetgaia>
+    <active>1</active>
+    <maxrange>14</maxrange>
+    <persistent>1</persistent>
+    <donotignoredead>1</donotignoredead>
+    <deadexclusive>1</deadexclusive>
+    <singleunit>1</singleunit>
+    <modifytype>UnitResource</modifytype>
+    <modifyamount>0.42</modifyamount>
+    <modelattachment>effects\ypack_auras\torpgatherpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="91720">AreaGatherBerryBush</name>
+    <type>AutoRangedModify</type>
+    <modifyabstracttype>AbstractBerryBush</modifyabstracttype>
+    <includegaia>1</includegaia>
+    <active>1</active>
+    <maxrange>6.1</maxrange>
+    <persistent>1</persistent>
+    <donotignoredead>1</donotignoredead>
+    <singleunit>1</singleunit>
+    <modifytype>UnitResource</modifytype>
+    <modifyamount>0.3</modifyamount>
+    <modelattachment>effects\ypack_auras\torpgatherpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="91720">AreaGatherBerryBush2</name>
+    <type>AutoRangedModify</type>
+    <modifyabstracttype>AbstractBerryBush</modifyabstracttype>
+    <includegaia>1</includegaia>
+    <active>0</active>
+    <maxrange>6.1</maxrange>
+    <persistent>1</persistent>
+    <donotignoredead>1</donotignoredead>
+    <singleunit>1</singleunit>
+    <modifytype>UnitResource</modifytype>
+    <modifyamount>0.3</modifyamount>
+    <modelattachment>effects\ypack_auras\torpgatherpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="91720">AreaGatherBlueBerryBush</name>
+    <type>AutoRangedModify</type>
+    <modifyprotoid>deTorpBush2</modifyprotoid>
+    <includegaia>1</includegaia>
+    <active>1</active>
+    <maxrange>6.1</maxrange>
+    <persistent>1</persistent>
+    <donotignoredead>1</donotignoredead>
+    <singleunit>1</singleunit>
+    <modifytype>UnitResource</modifytype>
+    <modifyamount>0.50</modifyamount>
+    <modelattachment>effects\ypack_auras\torpgatherpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="91720">AreaGatherBerryBuilding</name>
+    <type>AutoRangedModify</type>
+    <modifyprotoid>ypBerryBuilding</modifyprotoid>
+    <active>1</active>
+    <maxrange>6.1</maxrange>
+    <persistent>1</persistent>
+    <donotignoredead>1</donotignoredead>
+    <singleunit>1</singleunit>
+    <modifytype>UnitResource</modifytype>
+    <modifyamount>0.335</modifyamount>
+    <modelattachment>effects\ypack_auras\torpgatherpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="91720">AreaGatherGroveBuilding</name>
+    <type>AutoRangedModify</type>
+    <modifyprotoid>ypGroveBuilding</modifyprotoid>
+    <active>1</active>
+    <maxrange>6.1</maxrange>
+    <persistent>1</persistent>
+    <donotignoredead>1</donotignoredead>
+    <singleunit>0</singleunit>
+    <modifytype>UnitResource</modifytype>
+    <modifyamount>0.05</modifyamount>
+    <modelattachment>effects\ypack_auras\torpgatherpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="91721">AreaGatherFoodCrate</name>
+    <type>AutoRangedModify</type>
+    <modifyabstracttype>AbstractFoodCrate</modifyabstracttype>
+    <active>0</active>
+    <maxrange>14</maxrange>
+    <persistent>1</persistent>
+    <donotignoredead>1</donotignoredead>
+    <singleunit>0</singleunit>
+    <modifytype>UnitResource</modifytype>
+    <modifyamount>4.0</modifyamount>
+    <modifytargetlimit>20</modifytargetlimit>
+    <modelattachment>effects\ypack_auras\torpgatherpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="91721">AreaGatherWoodCrate</name>
+    <type>AutoRangedModify</type>
+    <modifyabstracttype>AbstractWoodCrate</modifyabstracttype>
+    <active>0</active>
+    <maxrange>14</maxrange>
+    <persistent>1</persistent>
+    <donotignoredead>1</donotignoredead>
+    <singleunit>0</singleunit>
+    <modifytype>UnitResource</modifytype>
+    <modifyamount>4.0</modifyamount>
+    <modifytargetlimit>20</modifytargetlimit>
+    <modelattachment>effects\ypack_auras\torpgatherpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="91721">AreaGatherCoinCrate</name>
+    <type>AutoRangedModify</type>
+    <modifyabstracttype>AbstractCoinCrate</modifyabstracttype>
+    <active>0</active>
+    <maxrange>14</maxrange>
+    <persistent>1</persistent>
+    <donotignoredead>1</donotignoredead>
+    <singleunit>0</singleunit>
+    <modifytype>UnitResource</modifytype>
+    <modifyamount>4.0</modifyamount>
+    <modifytargetlimit>20</modifytargetlimit>
+    <modelattachment>effects\ypack_auras\torpgatherpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="91721">AreaGatherInfiniteCrate</name>
+    <type>AutoRangedModify</type>
+    <modifyabstracttype>AbstractInfiniteCrate</modifyabstracttype>
+    <active>0</active>
+    <maxrange>14</maxrange>
+    <persistent>1</persistent>
+    <targetgaia>1</targetgaia>
+    <donotignoredead>1</donotignoredead>
+    <deadexclusive>1</deadexclusive>
+    <singleunit>0</singleunit>
+    <modifytype>UnitResource</modifytype>
+    <modifyamount>4.0</modifyamount>
+    <modifytargetlimit>20</modifytargetlimit>
+    <modelattachment>effects\ypack_auras\torpgatherpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <tactic>Normal<action>AreaGatherMine</action><action>AreaGatherMine2</action><action>AreaGatherTree</action><action>AreaGatherTree2</action><action>AreaGatherHerdable</action><action>AreaGatherHuntable</action><action>AreaGatherBerryBush</action><action>AreaGatherBerryBush2</action><action>AreaGatherBlueBerryBush</action><action>AreaGatherFoodCrate</action><action>AreaGatherWoodCrate</action><action>AreaGatherCoinCrate</action><action>AreaGatherInfiniteCrate</action><action>AreaGatherBerryBuilding</action><action>AreaGatherGroveBuilding</action><action>SpawnCaroleans1</action><action>SpawnCaroleans2</action><action>SpawnElks</action><action>SpawnCrates</action><action>SpawnSheep</action><action>SpawnMilitia</action><action>SpawnBush</action><attacktype>HuntedResource</attacktype><action priority="100">HuntAttack</action></tactic>
+</tactics>

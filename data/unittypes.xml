@@ -1,0 +1,12 @@
+<unittypes>
+  <unittype>MilitaryProductionBuilding</unittype>
+  <unittype>AbstractTorp</unittype>
+  <unittype>LogicalTypeImprovedByWaterCeremony</unittype>
+  <unittype>AbstractConsulate</unittype>
+  <unittype>AbstractResourceEnclosure</unittype>
+  <unittype>AbstractLegendaryShip</unittype>
+  <unittype>AbstractTradeRouteBuilding</unittype>
+  <unittype>AbstractArmoredTrain</unittype>
+  <unittype>MovingArmoredTrain</unittype>
+  <unittype>AbstractJamesGang</unittype>
+</unittypes>

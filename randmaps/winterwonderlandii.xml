@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "400046" displayNameID = "400045" loadDetails="400047"
+    imagepath = "ui\random_map\winter_wonderland\winter_wonderlandii_mini" cannotReplace = "" loadBackground="ui\random_map\winter_wonderland\winter_wonderlandii_map">
+    <loadss>ui\random_map\winter_wonderland\winter_wonderlandii_01</loadss>
+    <loadss>ui\random_map\winter_wonderland\winter_wonderlandii_02</loadss>
+    <loadss>ui\random_map\winter_wonderland\winter_wonderlandii_03</loadss>
+</mapinfo>

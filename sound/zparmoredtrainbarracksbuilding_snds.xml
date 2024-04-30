@@ -1,0 +1,12 @@
+<protounitsounddef>
+  <protounit name="zpArmoredTrainBarracksBuilding">
+    <soundtype name="Select">
+      <soundset name="UI_Select_Building_Outpost">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="Explosion">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

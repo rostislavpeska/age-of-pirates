@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>13</width>
+	<height>13</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="218" posx="7.7076" posz="-10.9665" orientx="1.0000" orienty="0.0000" orientz="0.0098">zpHarbourShip</unit>
+		<unit variation="250" posx="4.8538" posz="-8.0430" orientx="-0.0134" orienty="0.0000" orientz="-0.9999">zpHarbourPlatform</unit>
+		<unit variation="149" posx="4.4188" posz="-10.4837" orientx="0.9995" orienty="0.0000" orientz="0.0331">zpHarbourPlatform</unit>
+		<unit variation="192" posx="8.1925" posz="-10.9694" orientx="0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="192" posx="3.5503" posz="-8.3415" orientx="0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="192" posx="9.8806" posz="-7.0851" orientx="1.0000" orienty="0.0000" orientz="-0.0001">HarbourPathBlock</unit>
+		<unit variation="192" posx="7.1150" posz="-8.2199" orientx="0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="250" posx="9.7090" posz="-4.9206" orientx="0.9999" orienty="0.0000" orientz="-0.0134">zpHarbourPlatform</unit>
+		<unit variation="192" posx="0.1925" posz="-7.8395" orientx="0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="188" posx="1.0630" posz="-5.1746" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetian</unit>
+		<unit variation="188" posx="2.7133" posz="-6.6203" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="46" posx="2.5151" posz="-5.5970" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeUnitVenetian</unit>
+		<unit variation="188" posx="6.5442" posz="-6.5953" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="60" posx="4.7228" posz="-5.6182" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeUnitVenetianFlag</unit>
+		<unit variation="188" posx="8.3123" posz="-5.1094" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetian</unit>
+		<unit variation="60" posx="7.1896" posz="-5.7740" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeUnitVenetian</unit>
+		<unit variation="192" posx="-0.5385" posz="-4.8837" orientx="-1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="192" posx="9.8759" posz="-3.7033" orientx="1.0000" orienty="0.0000" orientz="-0.0001">HarbourPathBlock</unit>
+		<unit variation="255" posx="-1.5299" posz="-0.3914" orientx="0.0814" orienty="0.0000" orientz="-0.9967">zpHarbourPlatform</unit>
+		<unit variation="149" posx="0.6368" posz="-0.4882" orientx="-0.0331" orienty="0.0000" orientz="0.9995">zpHarbourPlatform</unit>
+		<unit variation="60" posx="-3.4003" posz="-0.2797" orientx="-0.9995" orienty="0.0000" orientz="-0.0300">zpHarbourPlatform</unit>
+		<unit variation="96" posx="5.1513" posz="-3.0204" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetian</unit>
+		<unit variation="41" posx="-8.8921" posz="-0.6383" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCPortSocket</unit>
+		<unit variation="192" posx="-0.2730" posz="-1.6243" orientx="-1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="149" posx="11.4911" posz="0.2805" orientx="0.0331" orienty="0.0000" orientz="-0.9995">zpHarbourPlatform</unit>
+		<unit variation="149" posx="9.6512" posz="0.0502" orientx="0.9995" orienty="0.0000" orientz="0.0331">zpHarbourPlatform</unit>
+		<unit variation="188" posx="1.0384" posz="-1.3355" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetian</unit>
+		<unit variation="165" posx="4.6620" posz="-2.8763" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeStatueVenetian</unit>
+		<unit variation="188" posx="8.3529" posz="-2.3440" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetian</unit>
+		<unit variation="192" posx="10.0483" posz="0.3159" orientx="1.0000" orienty="0.0000" orientz="-0.0001">HarbourPathBlock</unit>
+		<unit variation="192" posx="-0.0308" posz="1.9352" orientx="-1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="250" posx="9.7340" posz="5.3468" orientx="0.9999" orienty="0.0000" orientz="-0.0134">zpHarbourPlatform</unit>
+		<unit variation="188" posx="1.0842" posz="2.7119" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetian</unit>
+		<unit variation="188" posx="8.3992" posz="1.6310" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetian</unit>
+		<unit variation="192" posx="9.9104" posz="3.2747" orientx="1.0000" orienty="0.0000" orientz="-0.0001">HarbourPathBlock</unit>
+		<unit variation="168" posx="5.4583" posz="3.2418" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpHarbourCenterVenice</unit>
+		<unit variation="96" posx="5.0723" posz="3.5993" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetian</unit>
+		<unit variation="192" posx="9.6416" posz="6.4610" orientx="1.0000" orienty="0.0000" orientz="-0.0001">HarbourPathBlock</unit>
+		<unit variation="192" posx="-0.4740" posz="5.8946" orientx="-1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="250" posx="5.0977" posz="8.4809" orientx="0.0134" orienty="0.0000" orientz="0.9999">zpHarbourPlatform</unit>
+		<unit variation="149" posx="4.8857" posz="9.5320" orientx="0.9995" orienty="0.0000" orientz="0.0331">zpHarbourPlatform</unit>
+		<unit variation="188" posx="0.9797" posz="5.5611" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetian</unit>
+		<unit variation="188" posx="8.3806" posz="5.5937" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetian</unit>
+		<unit variation="104" posx="7.4696" posz="11.6971" orientx="-0.0420" orienty="0.0000" orientz="-0.9991">zpHarbourShip</unit>
+		<unit variation="188" posx="2.6051" posz="7.1896" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="188" posx="6.5005" posz="7.1375" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="192" posx="2.8119" posz="8.2969" orientx="0.0001" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="192" posx="4.1040" posz="8.5467" orientx="0.0001" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="192" posx="7.3636" posz="8.4198" orientx="0.0001" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="192" posx="0.4347" posz="8.3841" orientx="0.0001" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="192" posx="7.3524" posz="11.0944" orientx="1.0000" orienty="0.0000" orientz="-0.0001">HarbourPathBlock</unit>
+	</units>
+	<tiles>
+		<tilegroup type="Shoreline" subtype="caribbean\ground_shoreline1_crb">
+			<block startx="1" startz="-4" endx="1" endz="-4"></block>
+			<block startx="1" startz="3" endx="1" endz="3"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

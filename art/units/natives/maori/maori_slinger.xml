@@ -1,0 +1,164 @@
+<animfile>
+    <definebone>bip01 Prop1</definebone>
+    <definebone>bone_shield</definebone>
+    <definebone>Bip01 L ForeArm</definebone>
+    <definebone>bone_sling_launchpoint</definebone>
+    <definebone>bone_sling</definebone>
+    <attachment>sling<component>sling</component><include>units\natives\aztec\macehuatlin\macehuatlin_sling01.xml</include></attachment>
+    <attachment>torch<include>effects\projectiles\torch.xml</include></attachment>
+    <attachment>
+        shield_01
+        <component>
+            shield_01<assetreference type="GrannyModel"><file>units\africans\natives\yoruba_cavalry\yoruba_rider_shield</file></assetreference>
+        </component>
+        <anim>Idle<component>shield_01</component></anim>
+    </attachment>
+    <attachment>
+        shield_02
+        <component>
+            shield_02<assetreference type="GrannyModel"><file>units\natives\aztec\macehuatlin\macehuatlin_shield_02</file></assetreference>
+        </component>
+        <anim>Idle<component>shield_02</component></anim>
+    </attachment>
+    <attachment>
+        shield_03
+        <component>
+            shield_03<assetreference type="GrannyModel"><file>units\natives\aztec\macehuatlin\macehuatlin_shield_03</file></assetreference>
+        </component>
+        <anim>Idle<component>shield_03</component></anim>
+    </attachment>
+    <component>
+        ModelComp
+        <assetreference type="GrannyModel"><file>units\natives\maori\macehuatlin_01</file></assetreference><attach a="shield_01" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"></attach>
+        <attach a="sling" frombone="bone_sling" tobone="PROP1" syncanims="1"></attach>
+        <decal>
+            <effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height>
+        </decal>
+    </component>
+    <anim>
+        Charge_Attack<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\charge_attack1</file><tag type="Attack">0.32</tag><tag type="SpecificSoundSet" checkvisible="1" set="Swoosh">0.29</tag></assetreference>
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\charge_attack2</file><tag type="Attack">0.35</tag><tag type="SpecificSoundSet" checkvisible="1" set="Swoosh">0.32</tag></assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>
+        Volley_standing_attack
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\volley_attack1</file><tag type="Attack">0.55</tag><tag type="SpecificSoundSet" checkvisible="1" set="Swoosh">0.50</tag></assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>
+        Volley_standing_reload<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\volley_reload</file></assetreference><component>ModelComp</component>
+    </anim>
+    <anim>
+        Death_by_melee<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\death_standing_rifleman_A</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.52</tag></assetreference>
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\death_standing_rifleman_B</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.18</tag></assetreference>
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\death_standing_rifleman_C</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.73</tag></assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>
+        Death_by_range<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\death_standing_rifleman_A</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.52</tag></assetreference>
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\death_standing_rifleman_B</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.19</tag></assetreference>
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\death_standing_rifleman_C</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.73</tag></assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>
+        Death_by_havoc<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\havoc_death</file></assetreference>
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\havoc_deathB</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\havoc_deathC</file></assetreference>
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\havoc_deathD</file></assetreference><component>ModelComp</component>
+    </anim>
+    <anim>
+        Death_havoc_flail<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\havoc_flail</file></assetreference><component>ModelComp</component>
+    </anim>
+    <anim>
+        Death_havoc_spin<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\havoc_spin</file></assetreference><component>ModelComp</component>
+    </anim>
+    <anim>
+        Cheer<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\cheer_A</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\cheer_B</file></assetreference>
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\cheer_C</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\cheer_D</file></assetreference>
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\cheer_E</file></assetreference><component>ModelComp</component>
+    </anim>
+    <anim>
+        Recoil<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\recoil_A</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\recoil_C</file></assetreference>
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\recoil_E</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\recoil_G</file></assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>
+        Raze_Idle<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\torch_throw_idle</file></assetreference><component>ModelComp</component>
+        <attach a="torch" frombone="ATTACHPOINT" tobone="L HAND" syncanims="0"></attach>
+    </anim>
+    <anim>
+        Raze_Attack<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\torch_throwB</file><tag type="Attack">0.56</tag><tag type="SpecificSoundSet" checkvisible="1" set="TorchSwing">0.40</tag></assetreference>
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\torch_throwA</file><tag type="Attack">0.61</tag><tag type="SpecificSoundSet" checkvisible="1" set="TorchSwing">0.47</tag></assetreference>
+        <component>ModelComp</component><attach a="torch" frombone="ATTACHPOINT" tobone="L HAND" syncanims="0"></attach>
+    </anim>
+    <anim>
+        Cover_Ranged_Idle<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\cover_idle</file></assetreference><component>ModelComp</component>
+    </anim>
+    <anim>
+        Cover_Bored<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\cover_bored</file></assetreference><component>ModelComp</component>
+    </anim>
+    <anim>
+        Cover_Walk
+        <assetreference type="GrannyAnim">
+            <file>animation_library\natives\macehuatlin\cover_walk</file><tag type="FootstepLeft" footprinttype="HumanLeft">0.20</tag><tag type="FootstepRight" footprinttype="HumanRight">0.70</tag>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>
+        Cover_Jog
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\jog</file><tag type="FootstepLeft" footprinttype="HumanLeft">0.09</tag><tag type="FootstepRight" footprinttype="HumanRight">0.52</tag></assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>
+        Cover_Run
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\run</file><tag type="FootstepLeft" footprinttype="HumanLeft">0.05</tag><tag type="FootstepRight" footprinttype="HumanRight">0.52</tag></assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>
+        Volley_standing_idle<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\volley_idle</file></assetreference><component>ModelComp</component>
+    </anim>
+    <anim>
+        Volley_standing_bored<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\volley_idle</file></assetreference><component>ModelComp</component>
+    </anim>
+    <anim>
+        Volley_Walk
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\walk</file><tag type="FootstepLeft" footprinttype="HumanLeft">0.03</tag><tag type="FootstepRight" footprinttype="HumanRight">0.53</tag></assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>
+        Volley_Jog
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\jog</file><tag type="FootstepLeft" footprinttype="HumanLeft">0.09</tag><tag type="FootstepRight" footprinttype="HumanRight">0.52</tag></assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>
+        Volley_Run
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\run</file><tag type="FootstepLeft" footprinttype="HumanLeft">0.05</tag><tag type="FootstepRight" footprinttype="HumanRight">0.52</tag></assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>
+        Defend_Idle<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\defend_idle</file></assetreference><component>ModelComp</component>
+    </anim>
+    <anim>
+        Defend_Bored<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\defend_bored</file></assetreference><component>ModelComp</component>
+    </anim>
+    <anim>
+        Charge_Idle<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\charge_idle</file></assetreference><component>ModelComp</component>
+    </anim>
+    <anim>
+        Charge_Bored<assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\charge_idle</file></assetreference><component>ModelComp</component>
+    </anim>
+    <anim>
+        Charge_Walk
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\walk</file><tag type="FootstepLeft" footprinttype="HumanLeft">0.03</tag><tag type="FootstepRight" footprinttype="HumanRight">0.53</tag></assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>
+        Charge_Jog
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\jog</file><tag type="FootstepLeft" footprinttype="HumanLeft">0.09</tag><tag type="FootstepRight" footprinttype="HumanRight">0.52</tag></assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>
+        Charge_Run
+        <assetreference type="GrannyAnim"><file>animation_library\natives\macehuatlin\run</file><tag type="FootstepLeft" footprinttype="HumanLeft">0.05</tag><tag type="FootstepRight" footprinttype="HumanRight">0.52</tag></assetreference>
+        <component>ModelComp</component>
+    </anim>
+</animfile>

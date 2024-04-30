@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>8</width>
+	<height>18</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="204" posx="4.1548" posz="-17.6024" orientx="-1.0000" orienty="0.0000" orientz="0.0000">RiverPropsYuk</unit>
+		<unit variation="33" posx="0.0995" posz="-16.5426" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">GroundPropsYuk</unit>
+		<unit variation="33" posx="6.0329" posz="-14.5238" orientx="0.9239" orienty="0.0000" orientz="0.3827">GroundPropsYuk</unit>
+		<unit variation="232" posx="0.2551" posz="-11.3995" orientx="-0.0586" orienty="0.0000" orientz="0.9983">zpHarbourPlatform</unit>
+		<unit variation="137" posx="0.8318" posz="-14.4449" orientx="-0.9614" orienty="0.0000" orientz="0.2751">ypSMSaltpeterMan</unit>
+		<unit variation="158" posx="3.6046" posz="-14.6105" orientx="0.2515" orienty="0.0000" orientz="-0.9679">ypSMSaltpeterMan</unit>
+		<unit variation="137" posx="4.7609" posz="-10.0684" orientx="-0.9988" orienty="0.0000" orientz="-0.0489">zpHarbourPlatform</unit>
+		<unit variation="204" posx="5.0578" posz="-8.5226" orientx="-1.0000" orienty="0.0000" orientz="0.0000">RiverPropsYuk</unit>
+		<unit variation="122" posx="-1.1870" posz="-6.7690" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpSPCPortSocket</unit>
+		<unit variation="137" posx="4.6442" posz="-6.1363" orientx="-0.9988" orienty="0.0000" orientz="-0.0488">zpHarbourPlatform</unit>
+		<unit variation="137" posx="4.4583" posz="-2.5018" orientx="0.9988" orienty="0.0000" orientz="0.0488">zpHarbourPlatform</unit>
+		<unit variation="103" posx="2.1536" posz="0.9217" orientx="-0.0393" orienty="0.0000" orientz="0.9992">zpHarbourPlatform</unit>
+		<unit variation="103" posx="-4.8053" posz="0.6048" orientx="0.9992" orienty="0.0000" orientz="0.0393">zpHarbourPlatform</unit>
+		<unit variation="245" posx="-1.3624" posz="-1.2347" orientx="0.0001" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="245" posx="-5.0343" posz="-1.4523" orientx="0.0001" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="137" posx="6.5634" posz="1.4532" orientx="-0.0488" orienty="0.0000" orientz="0.9988">zpHarbourPlatform</unit>
+		<unit variation="245" posx="-6.5663" posz="0.3374" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">HarbourPathBlock</unit>
+		<unit variation="245" posx="2.3898" posz="-0.9350" orientx="0.0001" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="245" posx="4.0313" posz="0.3106" orientx="1.0000" orienty="0.0000" orientz="0.0001">HarbourPathBlock</unit>
+		<unit variation="245" posx="-6.6772" posz="3.9741" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">HarbourPathBlock</unit>
+		<unit variation="94" posx="-1.4138" posz="3.8869" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpHarbourCenterOriantalNaval</unit>
+		<unit variation="245" posx="3.9895" posz="4.0776" orientx="1.0000" orienty="0.0000" orientz="0.0001">HarbourPathBlock</unit>
+		<unit variation="103" posx="1.9457" posz="7.7957" orientx="-0.9992" orienty="0.0000" orientz="-0.0393">zpHarbourPlatform</unit>
+		<unit variation="204" posx="6.3878" posz="7.4898" orientx="-1.0000" orienty="0.0000" orientz="0.0000">RiverPropsYuk</unit>
+		<unit variation="103" posx="-5.0332" posz="7.6791" orientx="0.0394" orienty="0.0000" orientz="-0.9992">zpHarbourPlatform</unit>
+		<unit variation="245" posx="-6.7632" posz="7.9532" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">HarbourPathBlock</unit>
+		<unit variation="245" posx="3.7633" posz="6.7622" orientx="1.0000" orienty="0.0000" orientz="0.0001">HarbourPathBlock</unit>
+		<unit variation="137" posx="6.7615" posz="9.6077" orientx="-0.0488" orienty="0.0000" orientz="0.9988">zpHarbourPlatform</unit>
+		<unit variation="245" posx="1.6988" posz="9.7897" orientx="-0.0001" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="245" posx="3.8254" posz="9.7043" orientx="-0.0001" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="245" posx="-5.9701" posz="9.0980" orientx="-0.0001" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="245" posx="-2.0141" posz="9.2653" orientx="-0.0001" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="204" posx="-1.7603" posz="14.8254" orientx="-1.0000" orienty="0.0000" orientz="0.0000">RiverPropsYuk</unit>
+		<unit variation="33" posx="4.5024" posz="13.9755" orientx="0.9239" orienty="0.0000" orientz="0.3827">GroundPropsYuk</unit>
+		<unit variation="225" posx="0.8145" posz="13.8091" orientx="-0.3966" orienty="0.0000" orientz="-0.9180">ypSMSaltpeterMan</unit>
+		<unit variation="33" posx="2.1005" posz="17.2162" orientx="-0.3827" orienty="0.0000" orientz="0.9239">GroundPropsYuk</unit>
+	</units>
+	<tiles>
+		<heights>
+			<tiles x="-4" z="-9">-0.056 -0.275 -0.244 -0.244 -0.244 -0.244 -0.244 -0.264 </tiles>
+			<tiles x="-4" z="-8">-0.038 0.016 0.135 0.137 0.137 0.137 0.137 0.071 </tiles>
+			<tiles x="-4" z="-7">0.044 0.216 0.222 0.222 0.222 0.222 0.222 0.221 </tiles>
+			<tiles x="-4" z="-6">0.177 0.219 0.219 0.219 0.219 0.219 0.219 0.220 </tiles>
+			<tiles x="-4" z="-5">0.203 0.219 0.219 0.219 0.219 0.219 0.219 0.220 </tiles>
+			<tiles x="-4" z="-4">0.203 0.219 0.219 0.219 0.219 0.219 0.219 0.220 </tiles>
+			<tiles x="-4" z="-3">0.203 0.219 0.219 0.219 0.219 0.219 0.219 0.220 </tiles>
+			<tiles x="-4" z="-2">0.203 0.219 0.219 0.219 0.219 0.219 0.219 0.220 </tiles>
+			<tiles x="-4" z="-1">0.203 0.219 0.219 0.219 0.219 0.219 0.219 0.220 </tiles>
+			<tiles x="-4" z="0">0.203 0.219 0.219 0.219 0.219 0.219 0.219 0.219 </tiles>
+			<tiles x="-4" z="1">0.205 0.219 0.219 0.219 0.219 0.219 0.219 0.219 </tiles>
+			<tiles x="-4" z="2">0.211 0.219 0.219 0.219 0.219 0.219 0.219 0.219 </tiles>
+			<tiles x="-4" z="3">0.167 0.216 0.219 0.219 0.219 0.219 0.219 0.197 </tiles>
+			<tiles x="-4" z="4">-0.053 0.044 0.096 0.097 0.097 0.097 0.088 -0.067 </tiles>
+			<tiles x="-4" z="5">-0.112 -0.112 -0.102 -0.066 -0.056 -0.056 -0.056 -0.056 </tiles>
+			<tiles x="-4" z="6">-0.005 -0.005 -0.005 -0.005 -0.005 -0.005 -0.005 -0.005 </tiles>
+			<tiles x="-4" z="7">-0.005 -0.005 -0.005 -0.005 -0.005 -0.005 -0.005 -0.005 </tiles>
+			<tiles x="-4" z="8">0.002 0.002 0.002 0.002 0.002 0.002 0.002 0.002 </tiles>
+		</heights>
+	</tiles>
+</grouping>

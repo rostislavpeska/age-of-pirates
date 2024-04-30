@@ -1,0 +1,29 @@
+<animfile>
+  <component>gun
+    <logic type="Tech">
+      <none>
+        <assetreference type="GrannyModel">
+          <file>units\natives\lakota\rifle_rider\rifle_rider_1_gun</file>
+        </assetreference>
+      </none>
+      <zpCowboyRepeaters>
+        <assetreference type="GrannyModel">
+          <file>units\cavalry\us_cavalry\us_cavalry_gun</file>
+        </assetreference>
+      </zpCowboyRepeaters>
+      <zpCowboyShotguns>
+        <assetreference type="GrannyModel">
+          <file>units\attachments\shotgun</file>
+        </assetreference>
+      </zpCowboyShotguns>
+      <zpCowboyRifles>
+        <assetreference type="GrannyModel">
+          <file>units\infantry_ranged\rifleman\rifleman_gun_rank01</file>
+        </assetreference>
+      </zpCowboyRifles>
+    </logic>
+  </component>
+  <anim>Idle
+    <component>gun</component>
+  </anim>
+</animfile>

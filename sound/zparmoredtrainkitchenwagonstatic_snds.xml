@@ -1,0 +1,19 @@
+<protounitsounddef>
+  <protounit name="zpArmoredTrainKitchenWagonStatic">
+
+
+    <soundtype name="Select">
+      <soundset name="UI_Building_Economic">
+      </soundset>
+    </soundtype>
+    <soundtype name="SelectSecondary">
+      <soundset name="Kitchen_Sound">
+      </soundset>
+    </soundtype>
+
+    <soundtype name="Death">
+      <soundset name="Explosion">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

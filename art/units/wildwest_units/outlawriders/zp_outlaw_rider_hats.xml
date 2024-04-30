@@ -1,0 +1,56 @@
+<animfile>
+  <component>hat
+    <logic type="Variation">
+      <v1>
+        <assetreference type="GrannyModel">
+          <file>units\spc\outlaws\outlaw_rider_hat_us</file>
+        </assetreference>
+      </v1>
+      <v2>
+        <assetreference type="GrannyModel">
+          <file>units\spc\outlaws\outlaw_rider_hat_us</file>
+        </assetreference>
+      </v2>
+    </logic>
+    <!--<logic type="Variation">
+      <v1>
+        <assetreference type="GrannyModel">
+          <file>units\spc\outlaws\outlaw_rider_hat</file>
+        </assetreference>
+      </v1>
+      <v2>
+        <assetreference type="GrannyModel">
+          <file>units\spc\outlaws\outlaw_shotgun_hat</file>
+        </assetreference>
+      </v2>
+      <v3>
+        <assetreference type="GrannyModel">
+          <file>units\cavalry\chinaco\chinaco_hat_age3</file>
+        </assetreference>
+      </v3>
+      <v4>
+        <assetreference type="GrannyModel">
+          <file>units\spc\outlaws\outlaw_pistol_us_hat</file>
+        </assetreference>
+      </v4>
+      <v5>
+        <assetreference type="GrannyModel">
+          <file>units\spc\outlaws\outlaw_rider_hat_us</file>
+        </assetreference>
+      </v5>
+      <v6>
+        <assetreference type="GrannyModel">
+          <file>units\cavalry\chinaco\chinaco_hat_age2</file>
+        </assetreference>
+      </v6>
+      <v7>
+        <assetreference type="GrannyModel">
+          <file>units\spc\outlaws\outlaw_rider_hat</file>
+        </assetreference>
+      </v7>
+    </logic>-->
+  </component>
+  <anim>Idle
+    <component>hat</component>
+  </anim>
+</animfile>

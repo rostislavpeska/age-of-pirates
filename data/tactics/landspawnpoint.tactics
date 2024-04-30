@@ -1,0 +1,11 @@
+<tactics>
+  <action>
+    <name stringid="69776">SpawnPavisers</name>
+    <type>Spawn</type>
+    <rate type="zpNatMercPavisier">12.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <tactic>Normal<action>SpawnPavisers</action></tactic>
+</tactics>

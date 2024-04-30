@@ -1,0 +1,133 @@
+<animfile>
+    <definebone>bone_debris_1A</definebone>
+    <definebone>bone_debris_1B</definebone>
+    <definebone>bone_debris_1C</definebone>
+    <definebone>bone_debris_1D</definebone>
+    <definebone>bone_debris_1E</definebone>
+    <definebone>bone_debris_1F</definebone>
+    <definebone>bone_debris_1G</definebone>
+    <definebone>bone_debris_2A</definebone>
+    <definebone>bone_debris_2B</definebone>
+    <definebone>bone_debris_2C</definebone>
+    <definebone>bone_debris_2D</definebone>
+    <definebone>bone_debris_2E</definebone>
+    <definebone>bone_debris_2F</definebone>
+    <definebone>bone_debris_2G</definebone>
+    <definebone>bone_debris_2H</definebone>
+    <definebone>bone_debris_3A</definebone>
+    <definebone>bone_debris_3B</definebone>
+    <definebone>bone_debris_3C</definebone>
+    <definebone>bone_debris_3D</definebone>
+    <definebone>bone_debris_3E</definebone>
+    <definebone>bone_debris_3F</definebone>
+    <definebone>bone_debris_3G</definebone>
+    <definebone>bone_debris_3H</definebone>
+    <definebone>bone_debris_3I</definebone>
+    <definebone>bone_debris_4A</definebone>
+    <definebone>bone_debris_4B</definebone>
+    <definebone>bone_debris_4C</definebone>
+    <definebone>bone_debris_4D</definebone>
+    <definebone>bone_debris_4E</definebone>
+    <definebone>bone_debris_5A</definebone>
+    <definebone>bone_debris_5B</definebone>
+    <definebone>bone_debris_4F</definebone>
+
+    <submodel>
+        sub_construction_stage_02
+        <component>
+            construction_stage_02<assetreference type="GrannyModel"><file>buildings\constructions\4x4_stage2</file></assetreference>
+            <decal>
+                <effecttype>bump</effecttype><texture>buildings\plantation\EAST\age2\east_plantation_age2_ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture><width>16.50</width><height>16.50</height>
+            </decal>
+        </component>
+        <anim>Idle<component>construction_stage_02</component></anim>
+    </submodel>
+
+    <submodel>
+        sub_construction_stage_01
+        <component>
+            construction_stage_01<assetreference type="GrannyModel"><file>buildings\constructions\4x4_stage1</file></assetreference>
+            <decal>
+                <effecttype>bump</effecttype><texture>buildings\plantation\EAST\age2\east_plantation_age2_ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture><width>16.50</width><height>16.50</height>
+            </decal>
+        </component>
+        <anim>Idle<component>construction_stage_01</component></anim>
+    </submodel>
+
+    <submodel>
+        med_age2
+        <attachment>
+            collapse_smoke
+            <component>
+                collapse_smoke<assetreference type="popcornFx"><file>smoke\collapse_smoke_4x4.pkfx</file></assetreference>
+            </component>
+            <anim>Idle<component>collapse_smoke</component></anim>
+        </attachment>
+        <attachment>garden<include>buildings\church\garden.xml</include></attachment>
+        <component>
+            plantation
+            <logic type="LowPoly">
+                <normal>
+                    <logic type="Destruction">
+                        <p1>
+                            <assetreference type="GrannyModel"><file>buildings\church\congregation_damaged</file></assetreference>
+                        </p1>
+                        <p99>
+                             <assetreference type="GrannyModel" shape="med_plantation_age2"><file>buildings\church\congregation</file></assetreference>
+                        </p99>
+                    </logic>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel" shape="med_plantation_age2"><file>buildings\church\congregation</file></assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype><texture>buildings\plantation\EAST\age2\east_plantation_age2_ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture><width>16.50</width><height>16.50</height>
+            </decal>
+            <attach a="garden" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        </component>
+        <component>
+            med-death
+            <logic type="LowPoly">
+                <normal>
+                    <assetreference type="GrannyModel"><file>buildings\church\congregation_damaged</file></assetreference>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel"><file>buildings\church\congregation</file></assetreference>
+                </lowpoly>
+            </logic>
+        </component>
+        <anim>Idle<component>plantation</component></anim><anim>Death<component>med-death</component><attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
+    </submodel>
+
+    <submodel>
+        med_age2_con2
+        <attachment>
+            con
+            <component>
+                scaffolding<assetreference type="CompositeModel"><file>buildings\plantation\med\age2\med_plantation_age2_con</file></assetreference>
+            </component>
+            <anim>Idle<component>scaffolding</component></anim>
+        </attachment>
+        <component>
+            plantation<assetreference type="GrannyModel"><file>buildings\church\congregation_con</file></assetreference>
+            <decal>
+                <effecttype>bump</effecttype><texture>buildings\plantation\EAST\age2\east_plantation_age2_ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture><width>16.50</width><height>16.50</height>
+            </decal>
+            <attach a="con" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        </component>
+        <anim>Idle<component>plantation</component></anim>
+    </submodel>
+
+    <component>
+        Mill_Model    
+        <logic type="BuildingCompletion">
+            <p0><submodelref ref="sub_construction_stage_01"></submodelref></p0><p33><submodelref ref="sub_construction_stage_02"></submodelref></p33><p66><submodelref ref="med_age2_con2"></submodelref></p66>
+            <p100><submodelref ref="med_age2"></submodelref></p100>
+        </logic>
+    </component>
+</animfile>

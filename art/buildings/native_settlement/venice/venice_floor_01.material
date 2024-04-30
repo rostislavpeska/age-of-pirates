@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings/native_settlement/venice/textures/venice_ground_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings/native_settlement/venice/textures/venice_ground_normals">
+      </texture>
+      <texture name="Masks" override="buildings/native_settlement/venice/textures/venice_ground_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

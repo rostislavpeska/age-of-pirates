@@ -1,0 +1,46 @@
+<tactics>
+  <action>
+    <name stringid="69158">SpawnChristmasTree</name>
+    <type>Spawn</type>
+    <rate type="TreeChristmas">1.0 </rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69158">SpawnCowboy</name>
+    <type>Spawn</type>
+    <rate type="zpMercMountedOutlaw">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="43294">AutoGatherCoin</name>
+    <type>AutoGather</type>
+    <active>1</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="43295">AutoGatherFood</name>
+    <type>AutoGather</type>
+    <active>1</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="43296">AutoGatherWood</name>
+    <type>AutoGather</type>
+    <active>1</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="61766">AutoGatherXP</name>
+    <type>AutoGather</type>
+    <active>1</active>
+    <persistent>1</persistent>
+  </action>
+  <tactic>ShrineFood<action>AutoGatherFood</action><protounitcommand>TacticFood</protounitcommand><transition><tactic>ShrineXP</tactic><length>2</length><exit>1</exit></transition><transition><tactic>ShrineCoin</tactic><length>2</length><exit>1</exit></transition><transition><tactic>ShrineWood</tactic><length>2</length><exit>1</exit></transition></tactic>
+  <tactic>ShrineCoin<action>AutoGatherCoin</action><protounitcommand>TacticCoin</protounitcommand><transition><tactic>ShrineXP</tactic><length>2</length><exit>1</exit></transition><transition><tactic>ShrineFood</tactic><length>2</length><exit>1</exit></transition><transition><tactic>ShrineWood</tactic><length>2</length><exit>1</exit></transition></tactic>
+  <tactic>ShrineWood<action>AutoGatherWood</action><protounitcommand>TacticWood</protounitcommand><transition><tactic>ShrineXP</tactic><length>2</length><exit>1</exit></transition><transition><tactic>ShrineCoin</tactic><length>2</length><exit>1</exit></transition><transition><tactic>ShrineFood</tactic><length>2</length><exit>1</exit></transition></tactic>
+  <tactic>ShrineXP<action>AutoGatherXP</action><active>0</active><protounitcommand>TacticXP</protounitcommand><transition><tactic>ShrineCoin</tactic><length>2</length><exit>1</exit></transition><transition><tactic>ShrineWood</tactic><length>2</length><exit>1</exit></transition><transition><tactic>ShrineFood</tactic><length>2</length><exit>1</exit></transition></tactic>
+</tactics>

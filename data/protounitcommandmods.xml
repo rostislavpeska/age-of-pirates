@@ -18,6 +18,15 @@
     <command>unitSetTactic("SoheiArcher")</command>
   </protounitcommand>
   <protounitcommand>
+    <name>TacticSoheiCavalry</name>
+    <icon>resources\images\icons\command\soheicavalry_tactic_off.png</icon>
+    <activeicon>resources\images\icons\command\soheicavalry_tactic_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\soheicavalry_tactic_off.png</disabledicon>
+    <rollovertextid>300971</rollovertextid>
+    <activerollovertextid>300972</activerollovertextid>
+    <command>unitSetTactic("SoheiCavalry")</command>
+  </protounitcommand>
+  <protounitcommand>
     <name>zpTacticDive</name>
     <icon>resources\images\icons\command\zp_dive.png</icon>
     <activeicon>resources\images\icons\command\zp_dive_active.png</activeicon>
@@ -119,12 +128,65 @@
     </usemultiple>
   </protounitcommand>
   <protounitcommand>
-    <name>zpTheBlackFlag</name>
-    <command>void researchByID (4193, 1); void researchByID (4193, 2); void researchByID (4193, 3); void researchByID (4193, 4); void researchByID (4193, 5); void researchByID (4193, 6); void researchByID (4193, 7); void researchByID (4193, 8);</command>
-    <icon>resources\images\icons\techs\nat_blackflag.png</icon>
-    <disabledicon>resources\images\icons\command\tactic_monastery_coin_off.png</disabledicon>
+    <name>CongregationCoin</name>
+    <icon>resources\images\icons\command\tactic_rice_paddy_coin_off.png</icon>
+    <activeicon>resources\images\icons\command\tactic_rice_paddy_coin_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\tactic_rice_paddy_coin_off.png</disabledicon>
+    <rollovertextid>300671</rollovertextid>
+    <activerollovertextid>300674</activerollovertextid>
+    <command>unitSetTactic("ConCoin")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>CongregationFood</name>
+    <icon>resources\images\icons\command\tactic_rice_paddy_food_off.png</icon>
+    <activeicon>resources\images\icons\command\tactic_rice_paddy_food_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\tactic_rice_paddy_food_off.png</disabledicon>
+    <rollovertextid>300672</rollovertextid>
+    <activerollovertextid>300675</activerollovertextid>
+    <command>unitSetTactic("ConFood")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>CongregationXP</name>
+    <icon>resources\images\icons\techs\asians\shrine_xp.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_xp_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_xp.png</disabledicon>
+    <rollovertextid>300670</rollovertextid>
+    <activerollovertextid>300673</activerollovertextid>
+    <command>unitSetTactic("ConXP")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>TacticTraining</name>
+    <icon>resources\images\icons\command\drydock\drydock_production.png</icon>
+    <activeicon>resources\images\icons\command\drydock\drydock_production_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\drydock\drydock_production.png</disabledicon>
+    <rollovertextid>300803</rollovertextid>
+    <activerollovertextid>300802</activerollovertextid>
+    <command>unitSetTactic("TacticTraining")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticHeal</name>
+    <icon>resources\images\icons\command\drydock\drydock_repair.png</icon>
+    <activeicon>resources\images\icons\command\drydock\drydock_repair_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\drydock\drydock_repair.png</disabledicon>
+    <rollovertextid>300805</rollovertextid>
+    <activerollovertextid>300804</activerollovertextid>
+    <command>unitSetTactic("TacticHeal")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticSpawnGalley</name>
+    <icon>resources\images\icons\command\drydock\drydock_galleys.png</icon>
+    <activeicon>resources\images\icons\command\drydock\drydock_galleys_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\drydock\drydock_galleys.png</disabledicon>
+    <rollovertextid>300807</rollovertextid>
+    <activerollovertextid>300806</activerollovertextid>
+    <command>unitSetTactic("TacticSpawnGalley")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpVeniceShipment</name>
+    <command>researchByID(cTechzpNatVeteranVenetians, 252, 1)</command>
+    <icon>resources\images\icons\techs\venetian_hc\venice_galley.png</icon>
+    <disabledicon>resources\images\icons\techs\venetian_hc\venice_galley_inactive.png</disabledicon>
     <rollovertextid>300019</rollovertextid>
-    <subciv>SPCPirates</subciv>
     <usemultiple>
     </usemultiple>
   </protounitcommand>
@@ -148,8 +210,149 @@
     <command>unitSetTactic("Food")</command>
     <subciv>Miners</subciv>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpNatArmoredTrain</name>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
+    <associatedtech>zpArmoredTrainEnableShadow</associatedtech>
+    <associatedpower>zpPowerArmouredTrain</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>zpScientists</subciv>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpNatArmoredTrainDisabled</name>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
+    <associatedtech>zpArmoredTrainDisableShadow</associatedtech>
+    <associatedpower>zpPowerArmouredTrainInactive</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>zpScientists</subciv>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpNatArmoredTrainNoResource</name>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
+    <associatedtech>zpArmoredTrainNoResourceEnableShadow</associatedtech>
+    <associatedpower>zpPowerArmouredTrainNoResource</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>zpScientists</subciv>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTrainLevy</name>
+    <icon>resources\images\icons\command\spawn_flamethrowers.png</icon>
+    <spawncommand>
+    </spawncommand>
+    <unittype>zpMachineGunnerLevy</unittype>
+    <amount>8</amount>
+    <associatedtech>zpArmoredTrainLevy</associatedtech>
+    <rollovertextid>301014</rollovertextid>
+    <donotallowoverpoplimit>
+    </donotallowoverpoplimit>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpBuildTrainStation</name>
+    <icon>resources\images\icons\command\buildtrainstation.png</icon>
+    <command>uiSocketBuild(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <socketbuild>
+    </socketbuild>
+    <rollovertextid>301065</rollovertextid>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpBuildTrainStationInactive</name>
+    <icon>resources\images\icons\command\buildtrainstation_inactive.png</icon>
+    <rollovertextid>301068</rollovertextid>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpStationDeploy</name>
+    <icon>resources\images\icons\command\ability_train_station_eject.png</icon>
+    <command>ejectAll(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <associatedtech>DECommanderyDeploy</associatedtech>
+    <associatedpower>deCommanderyDeploy</associatedpower>
+    <rollovertextid>124673</rollovertextid>
+    <disabledrollovertextid>301071</disabledrollovertextid>
+    <usemultiple>
+    </usemultiple>
+    <usemediumbutton3>
+    </usemediumbutton3>
+    <deploy>
+    </deploy>
+    <notcancellable>
+    </notcancellable>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpWagonDeploy</name>
+    <icon>resources\images\icons\command\ability_train_station_eject.png</icon>
+    <command>ejectAll(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <associatedtech>zpWagonDeploy</associatedtech>
+    <associatedpower>deCommanderyDeploy</associatedpower>
+    <rollovertextid>124673</rollovertextid>
+    <disabledrollovertextid>301072</disabledrollovertextid>
+    <usemultiple>
+    </usemultiple>
+    <usemediumbutton3>
+    </usemediumbutton3>
+    <deploy>
+    </deploy>
+    <notcancellable>
+    </notcancellable>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpWagonDetonate</name>
+    <icon>resources\images\icons\abilities\ability_detonate_depot.png</icon>
+    <command>deleteUnit(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <associatedtech>DEDepotDetonate</associatedtech>
+    <rollovertextid>301088</rollovertextid>
+    <usebigbutton>
+    </usebigbutton>
+    <notcancellable>
+    </notcancellable>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpNatArmoredTrainStation</name>
+    <icon>resources\images\icons\command\armored_train_lrg.png</icon>
+    <associatedtech>zpArmoredTrainEnableShadow</associatedtech>
+    <associatedpower>zpPowerArmouredTrain</associatedpower>
+    <castpower>
+    </castpower>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpNatArmoredTrainDisabledStation</name>
+    <icon>resources\images\icons\command\armored_train_lrg_disabled.png</icon>
+    <associatedtech>zpArmoredTrainDisableShadow</associatedtech>
+    <associatedpower>zpPowerArmouredTrainInactive</associatedpower>
+    <castpower>
+    </castpower>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpNatArmoredTrainNoResourceStation</name>
+    <icon>resources\images\icons\command\armored_train_lrg_disabled.png</icon>
+    <associatedtech>zpArmoredTrainNoResourceEnableShadow</associatedtech>
+    <associatedpower>zpPowerArmouredTrainNoResource</associatedpower>
+    <castpower>
+    </castpower>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
 
-<!--
+  <!--
 
   <protounitcommand>
     <name>zpEconomyTPFood</name>
@@ -182,4 +385,4 @@
     <activerollovertextid>29586</activerollovertextid>
     <command>unitSetTactic("AutoGatherWood")</command>
   </protounitcommand>-->
-</protounitcommandmods> 
+</protounitcommandmods>

@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\homecity_units\textures\jewish_preacher_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\homecity_units\textures\jewish_preacher_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\homecity_units\middle_class_preacher\textures\middle_class_preacher_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

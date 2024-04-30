@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>9</width>
+	<height>6</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="13" posx="6.4604" posz="-4.0571" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushCoastalJapan</unit>
+		<unit variation="134" posx="0.9396" posz="-3.3261" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushCoastalJapan</unit>
+		<unit variation="218" posx="-0.9517" posz="-2.0970" orientx="0.3827" orienty="0.0000" orientz="-0.9239">Graves</unit>
+		<unit variation="56" posx="-3.1893" posz="-2.1003" orientx="0.0000" orienty="0.0000" orientz="-1.0000">Graves</unit>
+		<unit variation="61" posx="-6.1481" posz="-2.8170" orientx="0.0000" orienty="0.0039" orientz="-1.0000">SPCCasualties</unit>
+		<unit variation="197" posx="-7.8195" posz="-1.8526" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushCoastalJapan</unit>
+		<unit variation="45" posx="3.6419" posz="0.1327" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">ypNativeTempleJesuit</unit>
+		<unit variation="160" posx="-2.2543" posz="0.0079" orientx="0.3827" orienty="0.0000" orientz="-0.9239">Graves</unit>
+		<unit variation="119" posx="-0.5099" posz="-0.0991" orientx="0.3827" orienty="0.0000" orientz="-0.9239">Graves</unit>
+		<unit variation="212" posx="-4.5481" posz="0.0175" orientx="0.3827" orienty="0.0000" orientz="-0.9239">Graves</unit>
+		<unit variation="136" posx="-6.4995" posz="0.5489" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Graves</unit>
+		<unit variation="98" posx="-7.5965" posz="3.4215" orientx="-0.7071" orienty="0.0000" orientz="0.7071">UnderbrushCoastalJapan</unit>
+		<unit variation="217" posx="-0.4629" posz="3.3904" orientx="0.3827" orienty="0.0000" orientz="-0.9239">Graves</unit>
+		<unit variation="142" posx="-2.8130" posz="3.3390" orientx="0.3827" orienty="0.0000" orientz="-0.9239">Graves</unit>
+		<unit variation="110" posx="-5.1922" posz="3.5749" orientx="0.3827" orienty="0.0000" orientz="-0.9239">Graves</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

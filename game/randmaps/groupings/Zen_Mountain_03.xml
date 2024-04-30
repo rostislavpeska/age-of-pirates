@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>14</width>
+	<height>14</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="158" posx="-0.5119" posz="-9.9318" orientx="0.0001" orienty="0.0000" orientz="-1.0000">zpSocketSPCZen</unit>
+		<unit variation="10" posx="-9.1098" posz="-8.9416" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="10" posx="-7.7727" posz="-11.6669" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="10" posx="-5.7915" posz="-7.0371" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="18" posx="7.6358" posz="-10.2545" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">ypNativeTempleZen</unit>
+		<unit variation="104" posx="11.5602" posz="-9.8956" orientx="-1.0000" orienty="0.0000" orientz="0.0000">ypNativeTempleZen</unit>
+		<unit variation="43" posx="10.6717" posz="-12.6837" orientx="-0.6721" orienty="0.0000" orientz="0.7405">ypSMZenAccessory</unit>
+		<unit variation="10" posx="8.2757" posz="-10.6906" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="10" posx="6.1651" posz="-12.4060" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="172" posx="-8.0104" posz="-10.1779" orientx="0.9999" orienty="0.0000" orientz="-0.0106">ypSMZenMan</unit>
+		<unit variation="149" posx="-10.5681" posz="-9.2973" orientx="-0.8333" orienty="0.0000" orientz="-0.5528">ypSMZenAccessory</unit>
+		<unit variation="137" posx="7.9153" posz="-10.2624" orientx="-1.0000" orienty="0.0000" orientz="0.0073">ypSMZenLady</unit>
+		<unit variation="10" posx="6.3644" posz="-5.5936" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="10" posx="-9.4909" posz="-4.3008" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="46" posx="-9.3692" posz="-4.2027" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">ypNativeTempleZen</unit>
+		<unit variation="164" posx="4.5641" posz="-4.2310" orientx="-0.0004" orienty="0.0000" orientz="1.0000">ypNativeTempleZen</unit>
+		<unit variation="164" posx="-6.2941" posz="-3.8516" orientx="-0.0009" orienty="0.0000" orientz="1.0000">ypNativeTempleZen</unit>
+		<unit variation="46" posx="8.1054" posz="-4.3913" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">ypNativeTempleZen</unit>
+		<unit variation="10" posx="-2.9954" posz="-1.3881" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="10" posx="3.0763" posz="-2.4162" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="10" posx="8.1965" posz="-2.6560" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="10" posx="7.2737" posz="-1.0138" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="10" posx="-10.0201" posz="0.9788" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="10" posx="6.9037" posz="0.3277" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="56" posx="5.2169" posz="-2.0673" orientx="0.6418" orienty="0.0000" orientz="-0.7668">ypSMZenAccessory</unit>
+		<unit variation="227" posx="0.1204" posz="3.3563" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">zpSPCPropZenCastle</unit>
+		<unit variation="81" posx="-9.8522" posz="-0.7816" orientx="-1.0000" orienty="0.0000" orientz="-0.0003">ypNativeTempleZen</unit>
+		<unit variation="140" posx="-6.6640" posz="0.6950" orientx="-1.0000" orienty="0.0000" orientz="-0.0005">ypNativeTempleZen</unit>
+		<unit variation="164" posx="9.2371" posz="-0.9568" orientx="-1.0000" orienty="0.0000" orientz="-0.0010">ypNativeTempleZen</unit>
+		<unit variation="10" posx="3.5021" posz="3.0598" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="10" posx="-4.2146" posz="1.3800" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="43" posx="7.2205" posz="-0.3110" orientx="-0.6721" orienty="0.0000" orientz="0.7405">ypSMZenAccessory</unit>
+		<unit variation="20" posx="-12.0920" posz="-0.6916" orientx="-0.7719" orienty="0.0000" orientz="-0.6357">ypSMZenAccessory</unit>
+		<unit variation="10" posx="-1.2324" posz="4.2579" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="10" posx="-1.2302" posz="5.1802" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="164" posx="-9.8905" posz="3.0992" orientx="-1.0000" orienty="0.0000" orientz="-0.0009">ypNativeTempleZen</unit>
+		<unit variation="56" posx="9.3291" posz="3.5378" orientx="-1.0000" orienty="0.0000" orientz="-0.0002">ypNativeTempleZen</unit>
+		<unit variation="10" posx="8.7788" posz="5.6740" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="10" posx="5.3678" posz="5.8965" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="43" posx="-11.9415" posz="4.9392" orientx="-0.6721" orienty="0.0000" orientz="0.7405">ypSMZenAccessory</unit>
+		<unit variation="140" posx="-6.6295" posz="5.6689" orientx="-1.0000" orienty="0.0000" orientz="-0.0005">ypNativeTempleZen</unit>
+		<unit variation="10" posx="-9.2641" posz="8.0182" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="81" posx="-10.1233" posz="7.1891" orientx="-1.0000" orienty="0.0000" orientz="-0.0003">ypNativeTempleZen</unit>
+		<unit variation="10" posx="-5.1906" posz="10.9101" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="164" posx="9.1497" posz="7.6463" orientx="1.0000" orienty="0.0000" orientz="0.0004">ypNativeTempleZen</unit>
+		<unit variation="46" posx="-10.0819" posz="9.9573" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">ypNativeTempleZen</unit>
+		<unit variation="81" posx="4.7149" posz="10.8391" orientx="-0.0003" orienty="0.0000" orientz="1.0000">ypNativeTempleZen</unit>
+		<unit variation="10" posx="0.4776" posz="12.2964" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+		<unit variation="46" posx="8.9923" posz="10.1656" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">ypNativeTempleZen</unit>
+		<unit variation="11" posx="-0.4945" posz="12.4800" orientx="0.0001" orienty="0.0000" orientz="-1.0000">ypNativeTempleZen</unit>
+		<unit variation="81" posx="-5.8743" posz="11.4113" orientx="-0.0003" orienty="0.0000" orientz="1.0000">ypNativeTempleZen</unit>
+		<unit variation="63" posx="-6.1538" posz="9.6426" orientx="-0.6399" orienty="0.0000" orientz="-0.7685">ypSMZenAccessory</unit>
+		<unit variation="10" posx="6.9100" posz="14.8350" orientx="0.9236" orienty="-0.0000" orientz="0.3833">NativeTownObstruction</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

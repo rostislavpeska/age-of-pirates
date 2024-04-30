@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>1</width>
+	<height>2</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="77" posx="-0.0874" posz="0.5021" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="69" posx="0.2694" posz="0.6188" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="218" posx="0.4936" posz="0.0392" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="161" posx="0.1855" posz="-0.3589" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="104" posx="-0.1160" posz="-0.0574" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="175" posx="-0.4175" posz="0.2441" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="54" posx="-0.2123" posz="0.8634" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="254" posx="0.0553" posz="0.9517" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="64" posx="0.4001" posz="0.9644" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

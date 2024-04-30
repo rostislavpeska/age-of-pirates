@@ -19,6 +19,13 @@ minInterval 3
    {
       return;
    }
+
+   // AssertiveWall: suppress when build order is active
+   int buildingBOlength = xsArrayGetSize(boBuildingArray) - 1;
+   if (xsArrayGetInt(boBuildingArray, buildingBOlength) > 0 && gUseBuildOrder == true)
+   {
+      return;
+   }
    
    int buildPlanID = -1;
    
@@ -91,6 +98,14 @@ minInterval 3
       xsDisableSelf();
       return;
    }
+
+   // AssertiveWall: suppress when build order is active
+   int buildingBOlength = xsArrayGetSize(boBuildingArray) - 1;
+   if (xsArrayGetInt(boBuildingArray, buildingBOlength) > 0 && gUseBuildOrder == true)
+   {
+      return;
+   }
+
    
    int houseBuildPlanID = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gHouseUnit);
 
@@ -107,7 +122,7 @@ minInterval 3
 //==============================================================================
 void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
 {
-   if (puid == gDockUnit)
+   if (puid == gDockUnit || puid == cUnitTypezpDrydock || puid == cUnitTypezpWaterFort)
    {
       return;
    }
@@ -177,6 +192,7 @@ void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
       }*/
 
       // Make sure new areas we cover are in the same area group.
+      // AssertiveWall: Except on Archipelago maps, then allow different area groups
          for (i = 0; < numberAreas)
          {
             vector location = kbAreaGetCenter(i);
@@ -184,7 +200,7 @@ void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
             {
                continue;
             }
-            if (kbAreaGroupGetIDByPosition(location) == baseAreaGroup)
+            if (kbAreaGroupGetIDByPosition(location) == baseAreaGroup && gIsArchipelagoMap == false)
             {
                continue;
             }
@@ -917,6 +933,199 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
    float spacingDistance = 24 * sin((PI - towerAngle) / 2.0) / sin(towerAngle); 
    float exclusionRadius = spacingDistance / 2.0;
 
+   static int towerSearch = -1;
+   bool success = false;
+
+   if ((startingVec == cInvalidVector) || (baseVec != kbBaseGetLocation(cMyID, baseID))) // Base changed.
+   {
+      baseVec = kbBaseGetLocation(cMyID, baseID); // Start with base location
+      startingVec = baseVec;
+      startingVec = xsVectorSetX(startingVec, xsVectorGetX(startingVec) + spacingDistance);
+      startingVec = rotateByReferencePoint(baseVec, startingVec - baseVec, aiRandInt(360) / (180.0 / PI));
+   }
+
+   // AssertiveWall: First, check every dock and make sure it has a tower nearby. If it doesn't, use that as 
+   //                the testVec
+   int dockQuery = createSimpleUnitQuery(gDockUnit, cPlayerRelationAlly, cUnitStateAlive);
+   int dockNumber = kbUnitQueryExecute(dockQuery);   
+   vector tempVec = cInvalidVector;
+   vector tempCoastalPoint = cInvalidVector;
+   vector bestVec = cInvalidVector;
+   float nearbyTowers = 0;
+   float nearbyDocks = 0;
+   float towerDockRatio = 0;
+   bool dockTower = false;
+   vector v = cInvalidVector;
+   float randFloat = 0.0;
+   int floatIndex = PI * 0.004;
+   // AssertiveWall: Make sure every dock is protected
+   if (gNavyMap == true || gStartOnDifferentIslands == true)
+   {
+      for (j = 0; < dockNumber)
+      {
+         tempVec = kbUnitGetPosition(kbUnitQueryGetResult(dockQuery, j));
+         tempVec = getCoastalPoint(baseVec, tempVec, 1, false);
+         nearbyTowers = getUnitCountByLocation(gTowerUnit, cPlayerRelationAlly, cUnitStateABQ, tempVec, 25.0);
+         nearbyDocks = getUnitCountByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateABQ, tempVec, 25.0);
+         if (nearbyDocks > nearbyTowers && nearbyDocks > 0)
+         {
+            if (nearbyTowers / nearbyDocks < towerDockRatio)
+            {
+               towerDockRatio = nearbyTowers / nearbyDocks;
+               testVec = tempVec;
+               // AssertiveWall: Only build this if there aren't already a lot of towers
+               if (towerDockRatio < 1.0 && nearbyTowers < 3)
+               {
+                  dockTower = true;
+                  success = true;
+               }
+            }
+            // If the tower/dock ratio is the same, build closer to the enemy
+            else if (nearbyTowers / nearbyDocks == towerDockRatio && 
+                     (distance(tempVec, guessEnemyLocation()) < distance(testVec, guessEnemyLocation())))
+            {
+               towerDockRatio = nearbyTowers / nearbyDocks;
+               testVec = tempVec;     
+               // AssertiveWall: Only build this if there aren't already a lot of towers
+               if (towerDockRatio < 1.0 && nearbyTowers < 3)
+               {
+                  dockTower = true;
+                  success = true;
+               }
+            }
+         }
+      }
+   }
+
+   // AssertiveWall: If the least protected dock has enough towers, then build along the coast
+   //                Shown by dockTower == false. If we aren't doing this, then go on to standard land pattern
+   if ((gStartOnDifferentIslands == true) && dockTower == false)
+   {
+      for (attempt = 0; < numAttempts)
+      {  
+         v = guessEnemyLocation();  // guessed enemy location
+         baseVec = kbBaseGetLocation(cMyID, baseID);
+         if (baseVec == cInvalidVector || baseID < 0)
+         {
+            baseVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+         }
+         // Don't normalize this vector, keep it far away
+         tempVec = v - baseVec;
+         // A little under 180 degrees here.
+         randFloat = aiRandFloat(0.0 - PI * 0.4, PI * 0.4);
+         randFloat = randFloat - floatIndex * 2;
+         tempVec = rotateByReferencePoint(baseVec, tempVec, randFloat);
+         // Check the points immediately to the left and right (looking for those parts that jut out)
+         for (attemptNum = 0; < 4)
+         {
+            tempVec = rotateByReferencePoint(baseVec, tempVec, randFloat);
+            // Gets the point on the coast between these two
+            tempCoastalPoint = getCoastalPoint(baseVec, tempVec, 1, false);
+            randFloat = randFloat + floatIndex;
+            if (distance(tempCoastalPoint, baseVec) > distance(bestVec, baseVec))
+            {  // If the point is a little further away, it might be on one of the parts that jut out
+               bestVec = tempCoastalPoint;
+            }
+         }
+
+         nearbyTowers = getUnitCountByLocation(gTowerUnit, cPlayerRelationAlly, cUnitStateABQ, tempVec, 15.0);
+         if (nearbyTowers <= 0)
+         {
+            if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(tempVec), kbAreaGroupGetIDByPosition(baseVec)))
+            { // Make sure it's in the same areagroup.
+               success = true;
+               testVec = tempVec;
+               break;
+            }
+         }
+      }
+   }
+   else if (dockTower == false)
+   {
+      for (attempt = 0; < numAttempts)
+      {
+         testVec = rotateByReferencePoint(baseVec, startingVec - baseVec, towerAngle * aiRandInt(numTestVecs));
+         debugBuildings("Testing tower location at: " + testVec);
+         if (towerSearch < 0)
+         { // init
+            towerSearch = kbUnitQueryCreate("Tower placement search");
+            kbUnitQuerySetPlayerRelation(towerSearch, cPlayerRelationAny);
+            kbUnitQuerySetUnitType(towerSearch, gTowerUnit);
+            kbUnitQuerySetState(towerSearch, cUnitStateABQ);
+         }
+         kbUnitQuerySetPosition(towerSearch, testVec);
+         kbUnitQuerySetMaximumDistance(towerSearch, exclusionRadius);
+         kbUnitQueryResetResults(towerSearch);
+         if (kbUnitQueryExecute(towerSearch) < 1)
+         { // Site is clear, use it.
+            if (kbAreaGroupGetIDByPosition(testVec) == kbAreaGroupGetIDByPosition(kbBaseGetLocation(cMyID, baseID)))
+            { // Make sure it's in the same areagroup.
+               success = true;
+               break;
+            }
+         }
+      }
+   }
+
+
+   // We have found a location (success == true) or we need to just do a brute force placement around the TC.
+   if (success == false)
+   {
+      testVec = kbBaseGetLocation(cMyID, baseID);
+   }
+
+   // Instead of base ID or areas, use a center position and falloff.
+   aiPlanSetVariableVector(buildPlan, cBuildPlanCenterPosition, 0, testVec);
+   if (success == true)
+   {
+      aiPlanSetVariableFloat(buildPlan, cBuildPlanCenterPositionDistance, 0, exclusionRadius);
+   }
+   else
+   {
+      aiPlanSetVariableFloat(buildPlan, cBuildPlanCenterPositionDistance, 0, 50.0);
+   }
+
+   // Add position influence for nearby towers, this doesn't work when the allied tower is a different PUID.
+   aiPlanSetVariableInt(buildPlan, cBuildPlanInfluenceUnitTypeID, 0, gTowerUnit);
+   aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluenceUnitDistance, 0, spacingDistance);
+   aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluenceUnitValue, 0, -20.0);             // -20 points per tower
+   aiPlanSetVariableInt(buildPlan, cBuildPlanInfluenceUnitFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+
+   // Weight it to stay very close to center point.
+   aiPlanSetVariableVector(buildPlan, cBuildPlanInfluencePosition, 0, testVec);// Position influence for landing position
+   aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionDistance, 0, exclusionRadius); // 100m range.
+   aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionValue, 0, 10.0);               // 10 points for center
+   aiPlanSetVariableInt(buildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear);  // Linear slope falloff
+
+   // AssertiveWall: Bias toward front
+   aiPlanSetVariableInt(buildPlan, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
+
+   debugBuildings("Building a Tower at location: " + testVec);
+}
+
+//==============================================================================
+/* DEPRICATEDselectTowerBuildPlanPosition
+   AssertiveWall: The old version, for reference
+
+   Placement algorithm is brain-dead simple.  Check a point that is mid-edge or a
+   corner of a square around the base center.  Look for a nearby tower.  If none,
+   do a tight build plan.  If there is one, try again.    If no luck, try a build
+   plan that just avoids other towers.
+*/
+//==============================================================================
+void DEPRICATEDselectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
+{
+   int towerBL = kbGetBuildLimit(cMyID, gTowerUnit);
+   int numAttempts = 3 * towerBL / 2;
+   vector testVec = cInvalidVector;
+   static vector baseVec = cInvalidVector;
+   static vector startingVec = cInvalidVector;
+   int numTestVecs = 5 * towerBL / 4;
+   float towerAngle = (2.0 * PI) / numTestVecs;
+   // Mid- and corner-spots on a square with 'radius' spacingDistance, i.e. each side is 2 * spacingDistance.
+   float spacingDistance = 24 * sin((PI - towerAngle) / 2.0) / sin(towerAngle); 
+   float exclusionRadius = spacingDistance / 2.0;
+
    // On island maps expand the tower exclusion radius 
    if (gStartOnDifferentIslands == true)
    {
@@ -973,7 +1182,7 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
    {
       aiPlanSetVariableFloat(buildPlan, cBuildPlanCenterPositionDistance, 0, exclusionRadius);
    }
-   else if ((gStartOnDifferentIslands == true) && (cRandomMapName != "Ceylon" && cRandomMapName != "ceylonlarge") &&
+   else if ((gStartOnDifferentIslands == true) && gMigrationMap == false &&
              gIsPirateMap == false)
    {  // AssertiveWall: Nice big radius to build towers all along coast, and bias them toward front
       aiPlanSetVariableFloat(buildPlan, cBuildPlanCenterPositionDistance, 0, kbGetMapXSize() / 2.0);
@@ -1011,9 +1220,9 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
       aiPlanSetVariableInt(buildPlan, cBuildPlanInfluenceUnitFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
    }
 
-   // Weight towers to stay very close to center point, unless it's an island map, then go far away
+   // AssertiveWall: Weight towers to stay very close to center point, unless it's an island map, then go far away
    aiPlanSetVariableVector(buildPlan, cBuildPlanInfluencePosition, 0, testVec);// Position influence for landing position
-   if ((gStartOnDifferentIslands == true) && (cRandomMapName != "Ceylon" && cRandomMapName != "ceylonlarge"))
+   if ((gStartOnDifferentIslands == true) && gMigrationMap == false)
    {
       aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionDistance, 0, kbGetMapXSize() / 2.0); // Half map range.
       aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionValue, 0, -25.0);               // -30 points for center
@@ -1033,7 +1242,15 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 //==============================================================================
 bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
 {
-   bool result = true;
+   // AssertiveWall: Switch to archipelago version when desired:
+   if ((gIsArchipelagoMap == true && kbGetAge() >= cAge2) || (gIsArchipelagoMap == true && kbProtoUnitIsType(cMyID, puid, cUnitTypeAbstractWonder) == true))
+   {
+      //if (kbProtoUnitIsType(cMyID, puid, cUnitTypeAbstractWonder) == true)
+      bool result = selectArchipelagoBuildPlanPosition(planID, puid, baseID);
+      return result;
+   }
+
+   result = true;
 
    // Position.
    switch (puid)
@@ -1081,46 +1298,44 @@ bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
       case cUnitTypeDock:
       case cUnitTypeYPDockAsian:
       case cUnitTypedePort:
+      case cUnitTypezpDrydock:    // AssertiveWall: Venitian special dock from age of pirates
       {
-         // AssertiveWall: Make new dock location (newNavyVec) if enemy navy is spotted
-         //int enemyWSQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
-         //int friendlyWSQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
-         //int friendlyWSQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationAlly, cUnitStateAlive);
-         //kbUnitQuerySetSeeableOnly(enemyWSQuery, true); // Only count visible warships
-         //vector dockLocation = kbUnitGetPosition(getUnit(gDockUnit, cMyID, cUnitStateAny));
-         //kbUnitQuerySetPosition(enemyWSQuery, dockLocation);
-         //kbUnitQuerySetPosition(friendlyWSQuery, dockLocation);    // Only look for friendlies and enemies near dock
-         //kbUnitQuerySetMaximumDistance(enemyWSQuery, 50.0);
-         //kbUnitQuerySetMaximumDistance(friendlyWSQuery, 50.0);
-
-         //int enNumberWSFound = kbUnitQueryExecute(enemyWSQuery);
-         //int frNumberWSFound = kbUnitQueryExecute(friendlyWSQuery);
-         //if (enNumberWSFound >= frNumberWSFound)
          // AssertiveWall: Get a new dock position for two minutes after the first one encunters danger
          vector newNavyVec = gNavyVec;
+         vector tempVec = cInvalidVector;
+         vector mainBaseLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
          if (gLastWSTime > xsGetTime())
          {  
             float mapSize = kbGetMapXSize() / 10.0;
             // 40 chances to pick a dock position other than the starting position
             for (j = 0; < 50)
             {  // picks random fish to build by. Radius grows as j increases
-               newNavyVec = getRandomGaiaUnitPosition(cUnitTypeAbstractFish, getStartingLocation(), mapSize + j * 30.0); 
+               tempVec = getRandomGaiaUnitPosition(cUnitTypeAbstractFish, mainBaseLoc, mapSize + j * 60.0); 
+               newNavyVec = getCoastalPoint(mainBaseLoc, tempVec, 4, true);
+               // Check for whales after try 40, just in case all fish are gone
                if (newNavyVec == cInvalidVector && j > 40)
                {
-                  newNavyVec = getRandomGaiaUnitPosition(cUnitTypeAbstractWhale, getStartingLocation(), mapSize + j * 30.0);
+                  tempVec = getRandomGaiaUnitPosition(cUnitTypeAbstractWhale, mainBaseLoc, mapSize + j * 60.0);
+                  newNavyVec = getCoastalPoint(mainBaseLoc, tempVec, 4, true);
                }
-               else if (newNavyVec == cInvalidVector)
-               {
-                  newNavyVec = gNavyVec;
+               // Check to see if our point is far enough away, and valid
+               // Favor points in front of our base since back ones break the ai a lot
+               if (newNavyVec != cInvalidVector && tempVec != cInvalidVector && 
+                   distance(newNavyVec, gNavyVec) > 55.0 && distance(newNavyVec, gLastNavyVec) > 55.0)
+               {  // Make sure we don't see any enemy nearby, and make sure it's a base oriented more toward the enemy
+                  if (getUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, newNavyVec, 60.0) <= 0)
+                  {
+                     break;
+                  }
                }
-               else if (distance(newNavyVec, gNavyVec) > 75.0)
-               {
-                  //gNavyVec = newNavyVec;  // AssertiveWall: This has been having unintended effects on navy defense plans
-                  break;
-               }
+            }
+            if (newNavyVec == cInvalidVector)
+            {
+               newNavyVec = gNavyVec;
             }
          }
 
+         gLastNavyVec = newNavyVec;
          aiPlanSetVariableVector(planID, cBuildPlanDockPlacementPoint, 0,
             kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID))); // One point at main base.
          aiPlanSetVariableVector(planID, cBuildPlanDockPlacementPoint, 1, newNavyVec); // Dock location Depends on naval baseID fed to it
@@ -1130,10 +1345,18 @@ bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
       case cUnitTypeMarket:
       case cUnitTypeypTradeMarketAsian:
       case cUnitTypedeLivestockMarket:
-      {
-         // Usually we need to defend with Banks, thus placing Banks with high HP at front is a good choice.
-         aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
-         aiPlanSetBaseID(planID, baseID);
+      {  // AssertiveWall: Stick to more random placement for migration and archipelago
+         if (gMigrationMap == true || gIsArchipelagoMap == true)
+         {
+            selectClosestBuildPlanPosition(planID, baseID);
+            break;
+         }
+         else
+         {
+            // Usually we need to defend with Banks, thus placing Banks with high HP at front is a good choice.
+            aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
+            aiPlanSetBaseID(planID, baseID);
+         }
          break;
       }
       case cUnitTypeTownCenter:
@@ -1377,6 +1600,21 @@ bool addBuilderToPlan(int planID = -1, int puid = -1, int numberBuilders = 1)
          numberBuilders = round(kbProtoUnitGetBuildPoints(puid) / 30.0);
          aiPlanAddUnitType(planID, builderType, 1, numberBuilders, numberBuilders);
       }
+
+      // Add a same-island builder
+      // AssertiveWall: Try to grab a unit on the same island if archipelago map
+      /*if (gIsArchipelagoMap == true && builderType == gEconUnit)
+      {
+         vector targetLoc = aiPlanGetVariableVector(planID, cBuildPlanCenterPosition, 0); //aiPlanGetLocation(planID)
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, targetLoc);
+         int sameIslandBuilder = getClosestUnitByLocation(builderType, cPlayerRelationSelf, cUnitStateAlive, targetLoc, 150);
+         if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(targetLoc), kbAreaGroupGetIDByPosition(kbUnitGetPosition(sameIslandBuilder))) == true)
+         {
+         aiPlanAddUnitType(planID, builderType, 1, 1, 1);
+         aiPlanAddUnit(planID, sameIslandBuilder);
+         //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, targetLoc);
+         }
+      }*/
    }
 
    return (true);
@@ -1517,12 +1755,49 @@ minInterval 30
       return;
    }
 
+   // AssertiveWall: On great turkish war, set the forward base and leave it there, ignoring all other logic
+   if (cRandomMapName == "eugreatturkishwar" && btOffenseDefense == 0.0)
+   {
+      gForwardBaseState = cForwardBaseStateActive;
+      gForwardBaseLocation = kbUnitGetPosition(getUnit(cUnitTypedeSPCHeadquartersVienna, cPlayerRelationAlly));
+      gForwardBaseUpTime = xsGetTime();
+      gForwardBaseShouldDefend = true;
+      gForwardBaseID = kbBaseCreate(cMyID, "turkish defense base player: " + kbBaseGetNextID(), gForwardBaseLocation, 80.0);
+   
+      vector baseFront = xsVectorNormalize(kbGetMapCenter() - kbGetPlayerStartingPosition(cMyID));
+      kbBaseSetFrontVector(cMyID, gForwardBaseID, baseFront);
+      kbBaseSetMilitary(cMyID, gForwardBaseID, true);
+      xsDisableSelf();
+      return;
+   }
+
    int fortUnitID = -1;
    int buildingQuery = -1;
    int numberFound = 0;
    int numberMilitaryBuildings = 0;
    int buildingID = -1;
    int availableFortWagon = findWagonToBuild(cUnitTypeFortFrontier);
+   
+   // AssertiveWall: On island maps, run the forwardtowerbase if we don't have a fort wagon or base already going
+   if (gStartOnDifferentIslands == true && availableFortWagon < 0 && gForwardBaseState == cForwardBaseStateNone)
+   {
+      // Try calling it individually
+      //forwardTowerBaseManager();
+
+      //if (xsIsRuleEnabled("forwardTowerBaseManager") == false)
+      //{
+      //   xsEnableRule("forwardTowerBaseManager");
+      //}
+      if (amphibiousAssault() == true)
+      {
+         if (gTestingChatsOn == true)
+         {
+            aiChat(1, "Enabled amphibious assault");
+         }
+         xsDisableSelf();
+      }
+      return;
+   }
 
    // We have a Fort Wagon but also already have a forward base, default the Fort position.
    if ((availableFortWagon >= 0) && (gForwardBaseState != cForwardBaseStateNone))
@@ -1537,12 +1812,18 @@ minInterval 30
       {
          // We don't have a forward base, if we have a suitable Wagon we can start the chain.
          vector location = cInvalidVector;
-         if (availableFortWagon > 0) // AssertiveWall: changed from >=0
+         if (availableFortWagon >= 0)
          {
             // Get the Fort Wagon, start a build plan, if we go forward we try to defend it.
             //vector location = cInvalidVector;  AssertiveWall: moved up above
    
-            if ((btOffenseDefense >= 0.0) && (cDifficultyCurrent >= cDifficultyModerate))
+            // AssertiveWall: Use the forward island
+            if (gStartOnDifferentIslands == true && (gMigrationMap == false) &&
+               (btOffenseDefense >= 0.0) && (cDifficultyCurrent >= cDifficultyModerate))
+            {
+               location = selectForwardBaseBeachHead();
+            }
+            else if ((btOffenseDefense >= 0.0) && (cDifficultyCurrent >= cDifficultyModerate))
             {
                location = selectForwardBaseLocation();
             }
@@ -1729,6 +2010,12 @@ rule wagonMonitor
 inactive
 minInterval 10
 {
+   // AssertiveWall: put a pause on this until we've established a new base
+   if (gCeylonDelay == true)
+   {
+      return;
+   }
+   
    int wagonQueryID = createSimpleUnitQuery(cUnitTypeAbstractWagon, cMyID, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(wagonQueryID);
    if (numberFound == 0)
@@ -1746,6 +2033,7 @@ minInterval 10
    int buildLimit = -1;
    int buildingCount = -1;
    int buildingType = -1;
+   int desiredBaseID = mainBaseID; // AssertiveWall: changes to forward base for military wagons
 
    /* // AssertiveWall: commented out to see if the rest works on its own
    // First check existing Build Plans and find if we have Wagons to build.
@@ -2121,6 +2409,12 @@ minInterval 10
          }
          case cUnitTypedeMilitaryWagon:
          {
+            // AssertiveWall: send military wagons to forward base if we have one
+            if (gForwardBaseID > 0 && (gForwardBaseState == cForwardBaseStateBuilding || gForwardBaseState == cForwardBaseStateActive))
+            {
+               desiredBaseID = gForwardBaseID;
+            }
+
             if (civIsEuropean() == true)
             {
                int barracks = cUnitTypeBarracks;
@@ -2169,6 +2463,15 @@ minInterval 10
             }
          }
          // deHomesteadWagon has no defaults and will only be taken by farm/plantation plans.
+         // AssertiveWall: Handle homestead wagons in age 1 or 2. Just build a mill
+         case cUnitTypedeHomesteadWagon:
+         {
+            if (kbGetAge() <= cAge2)
+            {
+               buildingType = cUnitTypeMill;
+               break;
+            }
+         }
          case cUnitTypedeProspectorWagon:
          {
             buildingType = cUnitTypedeMineCopperBuildable;
@@ -2457,7 +2760,7 @@ minInterval 10
       }
 
       // AssertiveWall: wagon plan doesn't have an escrow, and skips queue
-      planID = createSimpleBuildPlan(buildingType, 1, 75, true, -1, mainBaseID, 0, -1, true);
+      planID = createSimpleBuildPlan(buildingType, 1, 75, true, -1, desiredBaseID, 0, -1, true);
       aiPlanAddUnitType(planID, wagonType, 1, 1, 1);
       aiPlanAddUnit(planID, wagon);
 
@@ -2481,6 +2784,7 @@ minInterval 5
    {
       return;
    }
+
 
    int planID = -1;
    int numberBuildings = 0;
@@ -2752,7 +3056,7 @@ minInterval 5
       else
       {
          // Avoid destroying plans which can be created elsewhere.
-         if (planID >= 0 && aiPlanGetState(planID) != cPlanStateBuild && aiPlanGetOrphan(planID) == false)
+         if (planID >= 0 && aiPlanGetState(planID) != cPlanStateBuild && aiPlanGetOrphan(planID) == false && gMigrationMap == false)
 		   {
             aiPlanDestroy(planID);
          }
@@ -2826,8 +3130,7 @@ minInterval 5
          if (buildForward == true && gForwardBaseID < 0)
          {
             // AssertiveWall: If an Island map, establish a beachhead
-            if (gStartOnDifferentIslands == true && ((cRandomMapName != "Ceylon" && cRandomMapName != "ceylonlarge") &&
-         (cRandomMapName != "afswahilicoast" && cRandomMapName != "afswahilicoastlarge")))
+            if (gStartOnDifferentIslands == true && (gMigrationMap == false))
             {
                location = selectForwardBaseBeachHead();
             }
@@ -2835,6 +3138,7 @@ minInterval 5
             {
                location = selectForwardBaseLocation();
             }
+
             if (location != cInvalidVector)
             {
                planID = aiPlanCreate("Forward " + kbGetUnitTypeName(buildingPUID) + " build plan ", cPlanBuild);
@@ -2864,8 +3168,23 @@ minInterval 5
                   gForwardBaseLocation = location;
                   gForwardBaseBuildPlan = planID;
 
-                  // Chat to my allies.
-                  sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+                  // AssertiveWall: Kick off a few plans to get rolling on the beachhead
+                  if (gStartOnDifferentIslands == true && (gMigrationMap == false))
+                  {
+                     // Old simpler version
+                     //establishForwardBeachHead(location);
+                     // New far more advanced version. Don't start duplicates
+                     if (gAmphibiousAssaultPlan < 0)
+                     {
+                        amphibiousAssault(location);
+                     }
+                  }
+                  else
+                  {  // AssertiveWall: Don't send these messages on island maps to avoid excessive pinging
+                     // Chat to my allies.
+                     sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+                  }
+
 
                   gForwardBaseState = cForwardBaseStateBuilding;
 
@@ -2900,14 +3219,13 @@ minInterval 5
             { // If we have forward base, build there.
                planID = createSimpleBuildPlan(buildingPUID, 1, 70, false, cMilitaryEscrowID, gForwardBaseID, 1);
             }
-            if (buildForward == true && gForwardBaseID >= 0 && gTimeToFish == true)
-            { // If it's a water map, try to build a forward dock
-               planID = createSimpleBuildPlan(gDockUnit, 1, 70, false, cMilitaryEscrowID, gForwardBaseID, 1);
-            }
             else
             {
                planID = createSimpleBuildPlan(buildingPUID, 1, 70, false, cMilitaryEscrowID, mainBaseID, 1);
             }
+            // AssertiveWall: for testing purposes
+            //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildTC,
+            //   kbBuildingPlacementGetResultPosition(aiPlanGetVariableInt(planID, cBuildPlanBuildingPlacementID, 0)));
          }
 
          // If we don't have any, set priority to slightly above default.
@@ -3018,7 +3336,8 @@ minInterval 5
    if (cDifficultyCurrent >= cDifficultyHard)
    {
       planID = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypeTownCenter);
-      if ((planID < 0) && (kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive) < 2))
+      // AssertiveWall: And we aren't being attacked
+      if ((planID < 0) && (kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive) < 2))// && gDefenseReflex == false)
       {
          // One more Town Center for Ottomans and treaty games longer than 10 minutes to go.
          if (((cMyCiv == cCivOttomans) || (aiTreatyGetEnd() > xsGetTime() + 10 * 60 * 1000)) &&
@@ -3030,6 +3349,25 @@ minInterval 5
          // If we're missing too many Villagers we create another Town Center after at least 15 minutes in game.
          else if ((xsArrayGetInt(gTargetSettlerCounts, transitionAge) - aiGetCurrentEconomyPop() > 90 * (age <= cAge3 ? 0.6 : 0.4)) &&
                   (time > 15 * 60 * 1000))
+         {
+            planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 1);
+            aiPlanSetDesiredResourcePriority(planID, 60);
+         }
+      }
+      // AssertiveWall: New Additional TC building logic
+      planID = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypeTownCenter);
+      if ((planID < 0) && (kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive) < 2))// && gDefenseReflex == false)
+      {  // Basically just build one in Age 3 if we aren't rushing
+         if (btRushBoom < 0.4 && age >= cAge3)
+         {
+            planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 1);
+            aiPlanSetDesiredResourcePriority(planID, 60);
+         }
+      }
+      // AssertiveWall: If we're in Age 4 or past 25 mins we can build 3
+      else if ((planID < 0) && (kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive) < 3))// && gDefenseReflex == false)
+      { 
+         if (age >= cAge4 || time > 25 * 60 * 1000)
          {
             planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 1);
             aiPlanSetDesiredResourcePriority(planID, 60);
@@ -3162,10 +3500,10 @@ minInterval 40
       return;
    }
 
-   // AssertiveWall: Don't build too many more towers than docks
+   // AssertiveWall: Don't build a tower until we have a dock on island maps, but only in age 2 and lower
    int dockCount = kbUnitCount(cMyID, gDockUnit, cUnitStateAlive);
    int towerCount = kbUnitCount(cMyID, gTowerUnit, cUnitStateAlive);
-   if (gStartOnDifferentIslands == true && (dockCount > towerCount - 1))
+   if (gStartOnDifferentIslands == true && kbGetAge() <= cAge2 && dockCount < 0)
    {
       return;
    }
@@ -3211,7 +3549,7 @@ minInterval 40
       if ((gStartOnDifferentIslands == true && kbUnitCount(cMyID, gDockUnit, cUnitStateABQ) > 0) 
             && (kbUnitCount(cMyID, gTowerUnit, cUnitStateABQ) < 1))
       {
-         createSimpleBuildPlan(gTowerUnit, 1, 95, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 2, true);
+         createSimpleBuildPlan(gTowerUnit, 1, 99, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 2, true);
       }
       else
       {
@@ -3283,7 +3621,8 @@ void updateWantedTowers()
          }
       }
    }
-   else if (cDifficultyCurrent <= cDifficultyHard) // Moderate / Hard.
+   // AssertiveWall: allow Hard to play the same as Extreme
+   else if (cDifficultyCurrent < cDifficultyHard) // Moderate / Hard.
    {
       if (gNumTowers > 4)
       {
@@ -3316,7 +3655,7 @@ minInterval 5
 {
    if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypeTradingPost) >= 0)
    {
-      if (gIsPirateMap == true && (gClaimNativeMissionInterval < 60 * 1000 || gClaimTradeMissionInterval < 60 * 1000))
+      if (gIsPirateMap == true)// && (gClaimNativeMissionInterval < 60 * 1000 || gClaimTradeMissionInterval < 60 * 1000))
       {
          return;
       }
@@ -3343,6 +3682,7 @@ minInterval 5
    int bestNativeSocketID = -1;
    int bestNativeDistancePenalty = 99.99;
    bool earlyTrade = false;
+   //int transportUnitID = -1;
 
    // AssertiveWall: Increase btBiasNative on pirate maps
    /*if (gIsPirateMap == true)
@@ -3557,6 +3897,9 @@ minInterval 5
       }
       
       int planID = aiPlanCreate("Trading Post Build Plan", cPlanBuild);
+      socketPosition = kbUnitGetPosition(socketID);
+      socketAreaGroup = kbAreaGroupGetIDByPosition(socketPosition);
+
       aiPlanSetVariableInt(planID, cBuildPlanBuildingTypeID, 0, cUnitTypeTradingPost);
       aiPlanSetVariableInt(planID, cBuildPlanSocketID, 0, socketID);
       
@@ -3568,6 +3911,7 @@ minInterval 5
             " to our Trading Post build plan");
          aiPlanAddUnitType(planID, wagonPUID, 1, 1, 1);
          aiPlanAddUnit(planID, wagonID);
+         //transportUnitID = wagonID;
       }
       else // Check for Heroes if we didn't manage to find a Wagon.
       {
@@ -3590,12 +3934,13 @@ minInterval 5
             if ((heroPlanID < 0) || (aiPlanGetType(heroPlanID) == cPlanDefend) || (aiPlanGetType(heroPlanID) == cPlanExplore))
             {
                heroID = unitID;
+               //transportUnitID = heroID;
                break;
             }
          }
 
-         // AssertiveWall: Skip explorer on pirate map so we can make lots
-         if (gIsPirateMap == true)
+         // AssertiveWall: Skip explorer on pirate map so we can make lots, but only for same island
+         if (gIsPirateMap == true && kbAreAreaGroupsPassableByLand(socketAreaGroup, mainAreaGroup) == true)
          {
             heroID = -1;
          }
@@ -3614,6 +3959,9 @@ minInterval 5
          if (((gRevolutionType & cRevolutionMilitary) == 0) || ((gRevolutionType & cRevolutionFinland) == cRevolutionFinland))
          {
             debugBuildings("Adding 1 gEconUnit to our Trading Post build plan");
+            //unitID = getClosestUnitByLocation(gEconUnit, cMyID, cUnitStateAlive, socketPosition, 300.0);
+            //aiPlanAddUnit(planID, unitID);
+            //transportUnitID = unitID;
             aiPlanAddUnitType(planID, gEconUnit, 1, 1, 1);
          }
          else // We didn't manage to add a Wagon or a Hero to our plan and can't use Villagers either, destroy.
@@ -3643,21 +3991,17 @@ minInterval 5
       }
       else
       {
-         aiPlanSetDesiredResourcePriority(planID, 65); // AssertiveWall: up from 55
+         aiPlanSetDesiredResourcePriority(planID, 55); // AssertiveWall: up from 55
       }
 
       // Go.
-      aiPlanSetActive(planID);
+      aiPlanSetActive(planID, true);
 
       socketPosition = kbUnitGetPosition(socketID);
-      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, socketPosition);
-      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, mainBaseLocation);
 
       if (socketID == bestNativeSocketID)
       {
          gLastClaimNativeMissionTime = time;
-      // AssertiveWall: Only for troubleshooting purposes. Pings the place the AI is trying to build a native TP
-      // sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, socketPosition);
       }
       else
       {
@@ -4060,7 +4404,8 @@ bool buildHistoricalMapSocket(int socketID = -1, int socketBuildingPUID = -1, in
    }
 
       vector socketPosition = kbUnitGetPosition(socketID);
-      sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, socketPosition);
+      // Assertivewall: broken anyway, but still very annoying
+      //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, socketPosition);
 
    debugBuildings("Creating "+kbGetUnitTypeName(socketBuildingPUID)+" build plan on socket "+kbGetUnitTypeName(kbUnitGetProtoUnitID(socketID))+".");
    createProtoUnitCommandResearchPlan(protoUnitCommandID, socketID, cEconomyEscrowID, 50, resourcePri);
@@ -4117,6 +4462,39 @@ minInterval 30
 }
 
 //==============================================================================
+// eightyYearsWarMonitor
+// AssertiveWall: based on cityStateMonitor
+// Build towers in eightyYearsWar whenever possible.
+//==============================================================================
+rule eightyYearsWarMonitor
+inactive
+minInterval 30
+{
+   if (cRandomMapName != "eueightyyearswar")
+   {
+      xsDisableSelf();
+      return;
+   }
+
+   int cityTowerQuery = createSimpleUnitQuery(cUnitTypedeSPCBatteryTowerSocket, cMyID, cUnitStateAny);
+   int numCityTowers = kbUnitQueryExecute(cityTowerQuery);
+
+   // Build city state towers.
+   if (numCityTowers > 0)
+   {
+      for (i = 0; < numCityTowers)
+      {
+         int cityTowerSocketID = kbUnitQueryGetResult(cityTowerQuery, i);
+         //buildHistoricalMapSocket(int socketID = -1, int socketBuildingPUID = -1, int protoUnitCommandID = -1, int resourcePri = 50)
+         if (buildHistoricalMapSocket(cityTowerSocketID, cUnitTypedeSPCCityTower, cProtoUnitCommanddeSocketBuildBatteryTower, 99) == true)
+         {
+            return;
+         }         
+      }
+   }
+}
+
+//==============================================================================
 // cityStateMonitor
 //
 // Build TPs and towers in city states whenever possible.
@@ -4135,13 +4513,78 @@ minInterval 30
    int numCityStates = kbUnitQueryExecute(cityStateQuery);
 
    // Build city state TPs.
+   // AssertiveWall: Have to build them the old fashioned way
    for (i = 0; i < numCityStates; i++)
    {
       int cityStateSocketID = kbUnitQueryGetResult(cityStateQuery, i);
-      if (buildHistoricalMapSocket(cityStateSocketID, cUnitTypeTradingPost, cProtoUnitCommanddeSocketBuild, 55) == true)
+      /*if (buildHistoricalMapSocket(cityStateSocketID, cUnitTypeTradingPost, cProtoUnitCommanddeSocketBuild, 55) == true)
       {
          return;
+      }*/
+
+      int planID = aiPlanCreate("Trading Post Build Plan", cPlanBuild);
+      vector socketPosition = kbUnitGetPosition(cityStateSocketID);
+      int socketAreaGroup = kbAreaGroupGetIDByPosition(socketPosition);
+
+      aiPlanSetVariableInt(planID, cBuildPlanBuildingTypeID, 0, cUnitTypeTradingPost);
+      aiPlanSetVariableInt(planID, cBuildPlanSocketID, 0, cityStateSocketID);
+      
+      int heroID = -1;
+
+      int heroQuery = createSimpleUnitQuery(cUnitTypeHero, cMyID, cUnitStateAlive);
+      int numberHeroesFound = kbUnitQueryExecute(heroQuery);
+      int heroPlanID = -1;
+      
+      for (int n = 0; n < numberHeroesFound; n++)
+      {
+         int unitID = kbUnitQueryGetResult(heroQuery, n);
+         if (unitID < 0)
+         {
+            continue;
+         }
+         if (kbProtoUnitCanTrain(kbUnitGetProtoUnitID(unitID), cUnitTypeTradingPost) == false)
+         {
+            continue;
+         }
+         heroPlanID = kbUnitGetPlanID(heroID);
+         if ((heroPlanID < 0) || (aiPlanGetType(heroPlanID) == cPlanDefend) || (aiPlanGetType(heroPlanID) == cPlanExplore))
+         {
+            heroID = unitID;
+            //transportUnitID = heroID;
+            break;
+         }
       }
+      
+      if (heroID != -1) // We'v found a suitable Hero so add him to the plan.
+      {
+         debugBuildings("Adding 1 " + kbGetProtoUnitName(kbUnitGetProtoUnitID(heroID)) + " with ID: " +
+            heroID + " to our Trading Post build plan");
+         aiPlanAddUnitType(planID, cUnitTypeHero, 1, 1, 1);
+         aiPlanAddUnit(planID, heroID);
+      }
+
+      
+      if ((heroID < 0)) // We didn't find either so we must add a Villager. 
+      {
+         if (((gRevolutionType & cRevolutionMilitary) == 0) || ((gRevolutionType & cRevolutionFinland) == cRevolutionFinland))
+         {
+            debugBuildings("Adding 1 gEconUnit to our Trading Post build plan");
+            aiPlanAddUnitType(planID, gEconUnit, 1, 1, 1);
+         }
+         else // We didn't manage to add a Wagon or a Hero to our plan and can't use Villagers either, destroy.
+         {
+            aiPlanDestroy(planID);
+            return;
+         }   
+      }
+
+      // Priority.
+      aiPlanSetDesiredPriority(planID, 97);
+      aiPlanSetDesiredResourcePriority(planID, 70);
+
+      // Go.
+      aiPlanSetActive(planID, true);
+
    }
 
    // Build city state towers.

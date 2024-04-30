@@ -1,0 +1,38 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\venice\textures\med_academy_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\venice\textures\med_academy_matb_normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\venice\textures\med_academy_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\venice\textures\med_academy_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\venice\textures\med_academy_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\venice\textures\med_academy_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\venice\textures\med_academy_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\venice\textures\med_academy_matb_normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\venice\textures\med_academy_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

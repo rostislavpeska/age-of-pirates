@@ -1,0 +1,74 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_MatA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_MatA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_MatA_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_01_MatA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_01_MatA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_01_MatA_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_02_MatA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_02_MatA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_02_MatA_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_03_MatA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_03_MatA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_03_MatA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_MatB_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_MatB_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_MatB_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_01_MatB_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_01_MatB_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_01_MatB_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_02_MatB_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_02_MatB_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_02_MatB_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_03_MatB_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_03_MatB_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\st_louis\st_louis_factory\textures\st_louis_factory_03_MatB_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

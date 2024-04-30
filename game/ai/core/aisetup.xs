@@ -257,7 +257,7 @@ void initArrays(void)
       case cDifficultyHard: // Hard.
    {
       xsArraySetInt(gTargetSettlerCounts, cAge1, 15);
-      xsArraySetInt(gTargetSettlerCounts, cAge2, 40);
+      xsArraySetInt(gTargetSettlerCounts, cAge2, 99);  // AssertiveWall: never stop. Old value 40
       if (gSPC == true)
       {
          xsArraySetInt(gTargetSettlerCounts, cAge3, 65);
@@ -275,7 +275,7 @@ void initArrays(void)
       default: // Hardest and Extreme.
    {
       xsArraySetInt(gTargetSettlerCounts, cAge1, 15);
-      xsArraySetInt(gTargetSettlerCounts, cAge2, 45);
+      xsArraySetInt(gTargetSettlerCounts, cAge2, 99);  // AssertiveWall: never stop. Old value 45
       xsArraySetInt(gTargetSettlerCounts, cAge3, 99);
       xsArraySetInt(gTargetSettlerCounts, cAge4, 99);
       xsArraySetInt(gTargetSettlerCounts, cAge5, 99);
@@ -301,6 +301,7 @@ void initArrays(void)
       {
          if (gSPC == false) // Otherwise just leave the defaults which will function fine.
          {
+            xsArraySetInt(gTargetSettlerCounts, cAge2, 80); // AssertiveWall: Added
             xsArraySetInt(gTargetSettlerCounts, cAge3, 80);
             xsArraySetInt(gTargetSettlerCounts, cAge4, 80);
             xsArraySetInt(gTargetSettlerCounts, cAge5, 80);
@@ -308,6 +309,7 @@ void initArrays(void)
       }
       else if (cDifficultyCurrent >= cDifficultyExpert)
       {
+         xsArraySetInt(gTargetSettlerCounts, cAge2, 80); // AssertiveWall: Added
          xsArraySetInt(gTargetSettlerCounts, cAge3, 80);
          xsArraySetInt(gTargetSettlerCounts, cAge4, 80);
          xsArraySetInt(gTargetSettlerCounts, cAge5, 80);
@@ -347,7 +349,7 @@ void initArrays(void)
          default: // Hard / Hardest / Extreme.
       {
          xsArraySetInt(gTargetSettlerCounts, cAge1, 15);
-            xsArraySetInt(gTargetSettlerCounts, cAge2, 35);
+            xsArraySetInt(gTargetSettlerCounts, cAge2, 50);  // AssertiveWall: never stop
          xsArraySetInt(gTargetSettlerCounts, cAge3, 50);
          xsArraySetInt(gTargetSettlerCounts, cAge4, 50);
          xsArraySetInt(gTargetSettlerCounts, cAge5, 50);
@@ -890,13 +892,18 @@ void initArrays(void)
    xsArraySetString(gMapNames, 233, "euwallachialarge");
 
    // AssertiveWall: Pirates of the Carribean Maps:
-   xsArraySetString(gMapNames, 234, "zpburma");
-   xsArraySetString(gMapNames, 235, "zpdeadsea");
-   xsArraySetString(gMapNames, 236, "zpeldorado");
-   xsArraySetString(gMapNames, 237, "zpmalta");
-   xsArraySetString(gMapNames, 238, "zptortuga");
-   xsArraySetString(gMapNames, 239, "zpcoldwar");
-   xsArraySetString(gMapNames, 240, "zppiratebay");
+   xsArraySetString(gMapNames, 234, "zpburma_b");
+   xsArraySetString(gMapNames, 235, "zpcoldwar");
+   xsArraySetString(gMapNames, 236, "zpdeadsea");
+   xsArraySetString(gMapNames, 237, "zpeldorado");
+   xsArraySetString(gMapNames, 238, "zpkurils");
+   xsArraySetString(gMapNames, 239, "zpmalta_castles");
+   xsArraySetString(gMapNames, 240, "zpmalta");
+   xsArraySetString(gMapNames, 241, "zpmediterranean");
+   xsArraySetString(gMapNames, 242, "zpphilippines");
+   xsArraySetString(gMapNames, 243, "zptortuga");
+   xsArraySetString(gMapNames, 244, "zptreasureisland");
+   xsArraySetString(gMapNames, 245, "zpvenice");
    
    // List above is up to date for the Italy/Malta release.
 
@@ -1000,23 +1007,23 @@ void analyzeGameSettingsAndType()
       else
       {  // AssertiveWall: Interval decreased to 2 minutes 
          gMaxPop = maxPop;
-         aiSetMicroFlags(cMicroLevelNormal);
+         aiSetMicroFlags(cMicroLevelHigh);
             gAttackMissionInterval = 120000; // 2.5 Minutes.
       }
       break;
    }
       case cDifficultyExpert: // Hardest.
-   {  // AssertiveWall: +22% (up from +15%). Interval decreased to 1 min
+   {  // AssertiveWall: Interval decreased to 1.5 min
       gMaxPop = maxPop;
-         gAttackMissionInterval = 60000; // 2 Minutes.
+         gAttackMissionInterval = 90000; // 2 Minutes.
          kbSetPlayerHandicap(cMyID, startingHandicap * 1.15); // +15% Boost.
       aiSetMicroFlags(cMicroLevelHigh);
       break;
    }
       case cDifficultyExtreme: // Extreme.
-   {  // AssertiveWall: +50% (up from +30%). Interval decreased to 1 min
+   {  // AssertiveWall: Interval decreased to 1.5 min
       gMaxPop = maxPop;
-         gAttackMissionInterval = 60000; // 2 Minutes.
+         gAttackMissionInterval = 90000; // 2 Minutes.
          kbSetPlayerHandicap(cMyID, startingHandicap * 1.30); // +30% Boost.
       aiSetMicroFlags(cMicroLevelHigh);
       break;
@@ -1157,21 +1164,20 @@ void analyzeMap()
       }
    }
 
-   // AssertiveWall: Check for Pirate Maps and set gStartOnDIfferentIslands true for all of them
-   if (cRandomMapName == "zpburma_b" ||
-       cRandomMapName == "zpdeadsea" ||
-       cRandomMapName == "zpeldorado" ||
-       cRandomMapName == "zpmalta" ||
-       cRandomMapName == "zptortuga" ||
-       cRandomMapName == "zpcoldwar" ||
-       cRandomMapName == "zppiratebay")
+   // AssertiveWall: Archipelago style maps
+   if (true == true) // turns this on/off for testing
    {
-      gStartOnDifferentIslands = true;
-      gIsPirateMap = true;
-      xsEnableRule("initializePirateRules");
-
-      gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
-      gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
+      if (cRandomMapName == "euArchipelago" ||
+         cRandomMapName == "euArchipelagoLarge"||
+         cRandomMapName == "zpmediterranean" ||
+         cRandomMapName == "zpkurils")
+      {
+         gIsArchipelagoMap = true;
+         cvOkToGatherFood = false;      // Setting it false will turn off food gathering. True turns it on.
+         cvOkToGatherGold = false;      // Setting it false will turn off gold gathering. True turns it on.
+         cvOkToGatherWood = false;      // Setting it false will turn off wood gathering. True turns it on.
+         gHomeBase = kbGetPlayerStartingPosition(cMyID);
+      }
    }
 
    debugSetup("Island map is " + gIslandMap + ", players start on different islands is " + gStartOnDifferentIslands);
@@ -1596,6 +1602,19 @@ void initPersonality(void)
    {
       btRushBoom = 0.0; // Don't attempt to rush in treaty or deathmatch games.
    }
+
+   // AssertiveWall: Make sure we aren't trying to boom on KoTH
+   if (aiIsKOTHAllowed() == true)
+   {
+      if (btRushBoom < 0.5)
+      {
+         btRushBoom = 0.5;
+      }
+      if (btOffenseDefense < 0.5)
+      {
+         btOffenseDefense = 0.5;
+      }
+   }
    
    // We don't allow these variables to go over 1.0 or under -1.0, 
    // and they could via the randomizer so safeguard against this.
@@ -1759,7 +1778,7 @@ void startUpChats()
             if (aiPersonalityGetPlayerUserVar(playerHistoryID, "heBeatMeLastTime") == 1.0)
             {
                heBeatMeLastTime = true;
-         }
+            }
          }
 
          bool iWonLastGame = false;
@@ -1769,37 +1788,39 @@ void startUpChats()
          }
 
          // We've loaded all the variables, now start analyzing what chat to send.
+         // AssertiveWall: give a 20% chance to skip this and use the generic one
+         // AssertiveWall: give chances to skip a lot of these
          if (isAllyThisTime == true)
          {
-            if (difficultyIsHigher == true)
+            if (difficultyIsHigher == true && aiRandInt(10) < 7)
             {
                sendStatement(pid, cAICommPromptToAllyIntroWhenDifficultyHigher);
             }
-            else if (difficultyIsLower == true)
+            else if (difficultyIsLower == true && aiRandInt(10) < 6)
             {
                sendStatement(pid, cAICommPromptToAllyIntroWhenDifficultyLower);
             }
-            else if (iCarriedHimLastTime == true)
+            else if (iCarriedHimLastTime == true && aiRandInt(10) < 8)
             {
                sendStatement(pid, cAICommPromptToAllyIntroWhenICarriedHimLastGame);
             }
-            else if (heCarriedMeLastTime == true)
+            else if (heCarriedMeLastTime == true && aiRandInt(10) < 3)
             {
                sendStatement(pid, cAICommPromptToAllyIntroWhenHeCarriedMeLastGame);
             }
-            else if (iBeatHimLastTime == true)
+            else if (iBeatHimLastTime == true && aiRandInt(10) < 4)
             {
                sendStatement(pid, cAICommPromptToAllyIntroWhenIBeatHimLastGame);
             }
-            else if (heBeatMeLastTime == true)
+            else if (heBeatMeLastTime == true && aiRandInt(10) < 4)
             {
                sendStatement(pid, cAICommPromptToAllyIntroWhenHeBeatMeLastGame);
             }
-            else if ((mapID >= 0) && (mapID == aiPersonalityGetPlayerUserVar(playerHistoryID, "lastMapID")))
+            else if ((mapID >= 0) && (mapID == aiPersonalityGetPlayerUserVar(playerHistoryID, "lastMapID")) && aiRandInt(10) < 5)
             {
                sendStatement(pid, cAICommPromptToAllyIntroWhenMapRepeats);
             }
-            else if (wasAllyLastTime == true)
+            else if (wasAllyLastTime == true && aiRandInt(10) < 7)
             {
                if (iWonLastGame == false)
                {
@@ -1817,15 +1838,15 @@ void startUpChats()
          }
          else // We are enemies.
          { 
-            if (difficultyIsHigher == true)
+            if (difficultyIsHigher == true && aiRandInt(10) < 7)
             {
                sendStatement(pid, cAICommPromptToEnemyIntroWhenDifficultyHigher);
             }
-            else if (difficultyIsLower == true)
+            else if (difficultyIsLower == true && aiRandInt(10) < 8)
             {
                sendStatement(pid, cAICommPromptToEnemyIntroWhenDifficultyLower);
             }
-            else if ((mapID >= 0) && (mapID == aiPersonalityGetPlayerUserVar(playerHistoryID, "lastMapID")))
+            else if ((mapID >= 0) && (mapID == aiPersonalityGetPlayerUserVar(playerHistoryID, "lastMapID")) && aiRandInt(10) < 3)
             {
                sendStatement(pid, cAICommPromptToEnemyIntroWhenMapRepeats);
             }
@@ -1837,23 +1858,23 @@ void startUpChats()
                int previousEnemyCount = aiPersonalityGetPlayerUserVar(playerHistoryID, "myEnemyCount");
                int previousAllyCount = aiPersonalityGetPlayerUserVar(playerHistoryID, "myAllyCount");
                
-               if (previousEnemyCount == enemyCount)
+               if (previousEnemyCount == enemyCount && aiRandInt(10) < 7)
                {                                 
                   if (previousAllyCount > allyCount) // I have fewer allies now.
                   {
                      sendStatement(pid, cAICommPromptToEnemyIntroWhenTeamOddsEasier);
-            }
+                  }
                   if (previousAllyCount < allyCount) // I have more allies now.
-            {
+                  {
                      sendStatement(pid, cAICommPromptToEnemyIntroWhenTeamOddsHarder);
+                  }
                }
-               }
-               else if (previousAllyCount == allyCount) // Else, check if allyCount is the same, but enemyCount is smaller.
+               else if (previousAllyCount == allyCount && aiRandInt(10) < 7) // Else, check if allyCount is the same, but enemyCount is smaller.
                {
                   if (previousEnemyCount > enemyCount) // I have fewer enemies now.
                   {
                      sendStatement(pid, cAICommPromptToEnemyIntroWhenTeamOddsHarder);
-            }
+                  }
                   if (previousEnemyCount < enemyCount) // I have more enemies now.
                   {
                      sendStatement(pid, cAICommPromptToEnemyIntroWhenTeamOddsEasier);
@@ -2355,6 +2376,16 @@ void init(void)
       {
          xsEnableRule("tcChats");
       }
+
+      // AssertiveWall: lull in action, explorer related taunts, wall taunt, and kothTimer
+      xsEnableRule("lull");
+      xsEnableRule("explorerChats");
+      xsEnableRule("wallChat");
+      // AssertiveWall: king of the hill chats
+      if (aiIsKOTHAllowed() == true)
+      {
+         xsEnableRule("kothTimer");
+      }
    }
    
    if (cvOkToBuild == true)
@@ -2373,11 +2404,18 @@ void init(void)
    if (cvOkToExplore == true)
    {
       // Don't start exploring if we need the explorer to build our starting TC.
+      // AssertiveWall: if we don't have enough wood that means we're on Lost and need to explore. 
+      // Note: Lost doesn't work. AI can't tell what a treasure has
       if (gStartMode != cStartModeLandResources)
       {
          xsEnableRule("exploreMonitor");
          exploreMonitor(); // Call it once directly so we instantly start with exploring instead of waiting 10 seconds.
       }
+      /*else if (kbResourceGet(cResourceWood) < 500)
+      {
+         xsEnableRule("gatherLostNuggets");
+      }*/
+      
       
       if (gNavyMap == true)
       {
@@ -2420,6 +2458,12 @@ minInterval 1
    {
       return; // Do nothing until game time is beyond 10 seconds
    }
+
+   // AssertiveWall: If this is lost, make sure we have enough resources first
+   /*if (gStartMode == cStartModeLandResources && kbResourceGet(cResourceWood) < 500)
+   {
+      return;
+   }*/
 
    aiPlanSetActive(gTCBuildPlanID);
    debugBuildings("Activating startup Town Center build plan " + gTCBuildPlanID);
@@ -2509,6 +2553,12 @@ minInterval 2
    {
       xsEnableRule("startFishing");
    }
+
+   // AssertiveWall: If there are water treasures, turn on the rule to gather them
+   if (getUnit(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateAlive) > 0)
+   {
+      xsEnableRule("gatherNavalNuggets");
+   }
    
    if (aiIsMonopolyAllowed() == true)
    {
@@ -2535,16 +2585,38 @@ minInterval 2
       cMyCiv == cCivOttomans ? 0 : xsArrayGetInt(gTargetSettlerCounts, kbGetAge()), true, 
       kbBaseGetMainID(cMyID), 1);
    aiPlanSetDesiredResourcePriority(gSettlerMaintainPlan, 70);
+
+   // AssertiveWall: Check whether we're on a migration style map
+   if (cRandomMapName == "Ceylon" ||
+         cRandomMapName == "ceylonlarge" ||
+         cRandomMapName == "afswahilicoast" ||
+         cRandomMapName == "afswahilicoastlarge" ||
+         cRandomMapName == "zpeldorado" ||
+         cRandomMapName == "zptreasureisland")
+   {
+      gMigrationMap = true;
+   }
+
+   // AssertiveWall: Start teepee monitor for Lakota
+   if (cMyCiv == cCivXPSioux)
+   {
+      xsEnableRule("teePeeMonitor");
+   }
+
+   // AssertiveWall: attacker/defender maps, and italian wars
+   checkAttackDefenseMap();
    
    if (cvOkToBuild == true)
    {
+      // AssertiveWall: Set up build orders for standard starts
+      if (kbGetAge() == cAge1 && kbResourceGet(cResourceFood) <= 0 && gUseBuildOrder == true)
+      {
+         //createBuildOrder();
+         //xsEnableRuleGroup("buildOrderRules");
+      }
+
       // AssertiveWall: Delay building if we're on ceylon or equivalent
-      if (cRandomMapName == "Ceylon" ||
-          cRandomMapName == "ceylonlarge" ||
-          cRandomMapName == "euarchipelago" ||
-          cRandomMapName == "euarchipelagolarge" ||
-          cRandomMapName == "afswahilicoast" ||
-          cRandomMapName == "afswahilicoastlarge")
+      if (gMigrationMap == true)
       {
          gCeylonDelay = true;
       }
@@ -2601,6 +2673,7 @@ minInterval 2
       xsEnableRule("useAsianLevy");
    }
 
+   // AssertiveWall: fixed last conditional, !=, vs. ==
    if ((cMyCiv != cCivIndians) && (cMyCiv != cCivSPCIndians) &&
        (cMyCiv != cCivJapanese) && (cMyCiv != cCivSPCJapanese) && (cMyCiv != cCivSPCJapaneseEnemy))
    {
@@ -2656,7 +2729,7 @@ minInterval 2
       {
          xsEnableRule("treatyCheckStartMakingArmy");
          // Intervals work on whole seconds not on ms.
-         xsSetRuleMinInterval("treatyCheckStartMakingArmy", (treatyEndTime - 10 * 60 * 1000) / 1000); 
+         xsSetRuleMinInterval("treatyCheckStartMakingArmy", (treatyEndTime - 5 * 60 * 1000) / 1000); // AssertiveWall: down to 5 from 10 minutes
       }
    }
 
@@ -2965,10 +3038,10 @@ minInterval 30
 
    if (aiGetGameStartingResources() != cGameStartingResourcesInfinite)
    {
-   // Enable everything again that we disabled before so the AI can play on like it's a regular game.
-   cvOkToGatherFood = true;
-   cvOkToGatherWood = true;
-   cvOkToGatherGold = true;
+      // Enable everything again that we disabled before so the AI can play on like it's a regular game.
+      cvOkToGatherFood = true;
+      cvOkToGatherWood = true;
+      cvOkToGatherGold = true;
    }
 
    // Lakota doesn't need houses.

@@ -1,11 +1,11 @@
 <protounitsounddef>
   <protounit name="zpMalteseGreatCannon">
     <soundtype name="Select">
-      <soundset name="ItalianLilBombardSelect">
+      <soundset name="DEItalianCannonSelect">
       </soundset>
     </soundtype>
     <soundtype name="Grunt">
-      <soundset name="CavalryGrunt">
+      <soundset name="GenericMaleGrunt">
       </soundset>
     </soundtype>
     <soundtype name="Death">
@@ -19,26 +19,12 @@
     <soundtype name="Acknowledge">
       <targetlogic>
         <choice name="default">
-          <soundset name="ItalianLilBombardAcknowledge">
+          <soundset name="DEItalianCannonAcknowledge">
           </soundset>
         </choice>
         <choice name="enemy">
-          <soundset name="ItalianLilBombardAttack">
+          <soundset name="DEItalianCannonAttack">
           </soundset>
-        </choice>
-        <choice name="build">
-        </choice>
-        <choice name="Huntable">
-        </choice>
-        <choice name="Tree">
-        </choice>
-        <choice name="AbstractMine">
-        </choice>
-        <choice name="AbstractFarm">
-        </choice>
-        <choice name="AbstractResourceCrate">
-        </choice>
-        <choice name="AbstractFruit">
         </choice>
       </targetlogic>
     </soundtype>

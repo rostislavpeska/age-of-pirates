@@ -164,6 +164,7 @@ void main(void)
 	int avoidAll=rmCreateTypeDistanceConstraint("avoid all", "all", 7.0);
   int avoidLand = rmCreateTerrainDistanceConstraint("ship avoid land", "land", true, 15.0);
   int islandConstraint=rmCreateClassDistanceConstraint("islands avoid each other", classIsland, 48.0);
+  int avoidKOTH=rmCreateTypeDistanceConstraint("stay away from Kings Hill", "ypKingsHill", 30.0);
 
   // fish & whale constraints
   int fishVsFishID=rmCreateTypeDistanceConstraint("fish v fish", fish1, 15.0);	
@@ -328,6 +329,8 @@ rmAddTradeRouteWaypoint(tradeRouteID, 0.9, 0.1);
 
 bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
 
+
+
   //~ if(cNumberNonGaiaPlayers > 4)
     	//~ rmSetAreaSize(mainIslandID, 0.6, 0.6);
       
@@ -358,6 +361,7 @@ bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
   rmAddAreaInfluenceSegment(mainIslandID, 0.2, 0.7, 0.3, 0.6);
 
   rmAddAreaConstraint(mainIslandID, islandAvoidTradeRoute);
+  rmAddAreaConstraint(mainIslandID, avoidKOTH);
   
 	rmSetAreaWarnFailure(mainIslandID, false);
 	rmBuildArea(mainIslandID);
@@ -387,6 +391,7 @@ bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
   rmAddAreaInfluenceSegment(mainIslandID2, 0.8, 0.7, 0.7, 0.6);
 
   rmAddAreaConstraint(mainIslandID2, islandAvoidTradeRoute);
+  rmAddAreaConstraint(mainIslandID2, avoidKOTH);
   
 	rmSetAreaWarnFailure(mainIslandID2, false);
 	rmBuildArea(mainIslandID2);
@@ -486,7 +491,7 @@ bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
       }
 
       // Pirate Village 2
-      if (cNumberNonGaiaPlayers >= 4){
+
          if (subCiv2 == rmGetCivID(nativeCiv3))
          {  
             int piratesVillageID2 = -1;
@@ -514,7 +519,7 @@ bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
             
             rmClearClosestPointConstraints();
          }
-        }
+
 
   
 
@@ -610,6 +615,30 @@ bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
       rmPlaceGroupingAtLoc(middleSufiVillageID, 0, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc1)-10), 1);
      
       rmSetOceanReveal(true);
+
+      // check for KOTH game mode
+      if (rmGetIsKOTH())
+      {
+        
+        int randLoc = rmRandInt(1,2);
+        float xLoc = 0.5;
+        float yLoc = 0.6;
+        float walk = 0.0;
+
+        int KotHLakeID = rmCreateArea ("KotH Lake");
+        rmSetAreaSize(KotHLakeID, rmAreaTilesToFraction(1500.0), rmAreaTilesToFraction(1500.0));
+        rmSetAreaLocation(KotHLakeID, 0.5, 0.6);
+        rmSetAreaWaterType(KotHLakeID, "indochina coast");
+        rmSetAreaCoherence(KotHLakeID, 0.8);
+        rmSetAreaObeyWorldCircleConstraint(KotHLakeID, false);
+        rmSetAreaSmoothDistance(KotHLakeID, 20);
+        rmBuildArea(KotHLakeID);
+        
+        ypKingsHillLandfill(xLoc, yLoc, rmAreaTilesToFraction(375), 2.0, "borneo_sand_a", 0);
+        ypKingsHillPlacer(xLoc, yLoc, walk, 0);
+        rmEchoInfo("XLOC = "+xLoc);
+        rmEchoInfo("XLOC = "+yLoc);
+      }
       
       // West Monastery 1
 
@@ -1023,7 +1052,7 @@ bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
    rmAddObjectDefConstraint(playerDeerID, avoidImpassableLand);
    rmSetObjectDefCreateHerd(playerDeerID, true);
 
-rmAddObjectDefConstraint(TCID, avoidTownCenter);
+rmAddObjectDefConstraint(TCID, avoidTownCenterFar);
 rmAddObjectDefConstraint(TCID, playerEdgeConstraint);
 rmAddObjectDefConstraint(TCID, avoidImpassableLand);
 rmAddObjectDefConstraint(TCID, avoidBonusIslands);
@@ -1132,20 +1161,6 @@ rmClearClosestPointConstraints();
 	// Text
 	rmSetStatusText("",0.85);
   
-  // check for KOTH game mode
-  if (rmGetIsKOTH())
-  {
-    
-    int randLoc = rmRandInt(1,2);
-    float xLoc = 0.5;
-    float yLoc = 0.125;
-    float walk = 0.025;
-    
-    ypKingsHillLandfill(xLoc, yLoc, .0075, 2.0, "borneo_sand_a", 0);
-    ypKingsHillPlacer(xLoc, yLoc, walk, 0);
-    rmEchoInfo("XLOC = "+xLoc);
-    rmEchoInfo("XLOC = "+yLoc);
-  }
   
   // MINES
 
@@ -1231,9 +1246,8 @@ rmClearClosestPointConstraints();
   
 	
 	// Resources that can be placed after forests
-  if (cNumberNonGaiaPlayers > 2)
-  {
-    int food1ID=rmCreateObjectDef("huntable1");
+
+  int food1ID=rmCreateObjectDef("huntable1");
 	rmAddObjectDefItem(food1ID, huntable1, rmRandInt(8,10), 6.0);
 	rmSetObjectDefCreateHerd(food1ID, true);
 	rmSetObjectDefMinDistance(food1ID, 0.0);
@@ -1247,7 +1261,7 @@ rmClearClosestPointConstraints();
   rmAddObjectDefConstraint(food1ID, shortAvoidImportantItem);
   
   int food2ID=rmCreateObjectDef("huntable2");
-	rmAddObjectDefItem(food2ID, huntable2, rmRandInt(2,3), 6.0);
+	rmAddObjectDefItem(food2ID, huntable1, rmRandInt(8,10), 6.0);
 	rmSetObjectDefCreateHerd(food2ID, true);
 	rmSetObjectDefMinDistance(food2ID, 0.0);
 	rmSetObjectDefMaxDistance(food2ID, rmXFractionToMeters(0.45));
@@ -1261,9 +1275,7 @@ rmClearClosestPointConstraints();
 
     rmPlaceObjectDefAtLoc(food1ID, 0, 0.5, 0.5, 2.5*cNumberNonGaiaPlayers);
     rmPlaceObjectDefAtLoc(food2ID, 0, 0.5, 0.5, 3.0*cNumberNonGaiaPlayers);
-  }
-  else
-  {
+
     //1v1 hunts
 
    /* int deerID=rmCreateObjectDef("ibex herd");
@@ -1281,28 +1293,26 @@ rmClearClosestPointConstraints();
    rmPlaceObjectDefInArea(deerID, 0, westIsland, cNumberNonGaiaPlayers);*/
     
     int mapElephants = rmCreateObjectDef("mapElephants");
-    rmAddObjectDefItem(mapElephants, "ypWildElephant", 4, 5.0);
+    rmAddObjectDefItem(mapElephants, huntable2, 1+(cNumberNonGaiaPlayers/2), 6.0);
     rmSetObjectDefCreateHerd(mapElephants, true);
     rmSetObjectDefMinDistance(mapElephants, 0);
-    rmSetObjectDefMaxDistance(mapElephants, 15);
-    rmAddObjectDefConstraint(mapElephants, avoidSocket2);
+    rmSetObjectDefMaxDistance(mapElephants, 35.0);
+    rmAddObjectDefConstraint(mapElephants, avoidImpassableLand);
+    rmAddObjectDefConstraint(mapElephants, avoidImportantItem);	
+    rmAddObjectDefConstraint(mapElephants, avoidTownCenterFar);	
     rmAddObjectDefConstraint(mapElephants, forestConstraintShort);	
-    rmAddObjectDefConstraint(mapElephants, avoidHunt3);
-    rmAddObjectDefConstraint(mapElephants, avoidAll);       
-    rmAddObjectDefConstraint(mapElephants, circleConstraint2);  
-    rmAddObjectDefConstraint(mapElephants, avoidBonusIslands); 
-    rmAddObjectDefConstraint(mapElephants, avoidWater5);  
+
     //left side
         //elifents
-    rmPlaceObjectDefAtLoc(mapElephants, 0, 0.2, 0.6, 1);
-    rmPlaceObjectDefAtLoc(mapElephants, 0, 0.4, 0.8, 1);
+    rmPlaceObjectDefAtLoc(mapElephants, 0, 0.15, 0.4, 1);
+    rmPlaceObjectDefAtLoc(mapElephants, 0, 0.3, 0.8, 1);
 
     //right side
         //elifents
-    rmPlaceObjectDefAtLoc(mapElephants, 0, 0.8, 0.6, 1);
-    rmPlaceObjectDefAtLoc(mapElephants, 0, 0.6, 0.8, 1);
+    rmPlaceObjectDefAtLoc(mapElephants, 0, 0.85, 0.4, 1);
+    rmPlaceObjectDefAtLoc(mapElephants, 0, 0.7, 0.8, 1);
 
-  }
+
 	// Text
 	rmSetStatusText("",0.90);
     
@@ -1422,6 +1432,22 @@ rmSetTriggerRunImmediately(false);
 rmSetTriggerLoop(false);
 }
 
+// Speed Always Wins Returner
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Cheat Returner"+k);
+	rmAddTriggerCondition("Timer ms");
+  rmSetTriggerConditionParamInt("Param1",10);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchIncrease");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(2);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(false);
+	rmSetTriggerLoop(false);
+	}
+
 // Update ports
 
 rmCreateTrigger("I Update Ports");
@@ -1444,64 +1470,82 @@ rmSetTriggerLoop(false);
 // Consulate - Tradingpost politician switcher
 
 for (k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("Activate Consulate Japan"+k);
-rmAddTriggerCondition("ZP Player Civilization");
-rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("Civilization","Japanese");
-rmAddTriggerCondition("ZP Tech Researching (XS)");
-rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
-rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("ZP Set Tech Status (XS)");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnJapanese"); //operator
-rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("ZP Pick Consulate Tech");
-rmSetTriggerEffectParamInt("Player",k);
-rmSetTriggerPriority(4);
-rmSetTriggerActive(false);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(true);
-}
+	rmCreateTrigger("Activate Consulate Japan"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","Japanese");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnJapanese"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
 
-for (k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("Activate Consulate China"+k);
-rmAddTriggerCondition("ZP Player Civilization");
-rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("Civilization","Chinese");
-rmAddTriggerCondition("ZP Tech Researching (XS)");
-rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
-rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("ZP Set Tech Status (XS)");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnChinese"); //operator
-rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("ZP Pick Consulate Tech");
-rmSetTriggerEffectParamInt("Player",k);
-rmSetTriggerPriority(4);
-rmSetTriggerActive(false);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(true);
-}
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate China"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","Chinese");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnChinese"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
 
-for (k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("Activate Consulate India"+k);
-rmAddTriggerCondition("ZP Player Civilization");
-rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("Civilization","Indians");
-rmAddTriggerCondition("ZP Tech Researching (XS)");
-rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
-rmSetTriggerConditionParamInt("PlayerID",k);
-rmAddTriggerEffect("ZP Set Tech Status (XS)");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnIndian"); //operator
-rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("ZP Pick Consulate Tech");
-rmSetTriggerEffectParamInt("Player",k);
-rmSetTriggerPriority(4);
-rmSetTriggerActive(false);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(true);
-}
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate India"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","Indians");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnIndian"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
 
 for (k=1; <= cNumberNonGaiaPlayers) {
 rmCreateTrigger("Activate Wokou"+k);
@@ -1512,12 +1556,18 @@ rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffWokou"); //operator
 rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("ZP Pick Consulate Tech");
 rmSetTriggerEffectParamInt("Player",k);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
@@ -1557,7 +1607,7 @@ rmCreateTrigger("TrainPrivateer1ON Plr"+k);
 rmCreateTrigger("TrainPrivateer1OFF Plr"+k);
 rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
 
-   if (cNumberNonGaiaPlayers >= 4){
+
    rmCreateTrigger("TrainPrivateer2ON Plr"+k);
    rmCreateTrigger("TrainPrivateer2OFF Plr"+k);
    rmCreateTrigger("TrainPrivateer2TIME Plr"+k);
@@ -1584,8 +1634,8 @@ rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("TrainPrivateer2OFF_Plr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamFloat("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2ON_Plr"+k));
    rmSetTriggerPriority(4);
@@ -1594,8 +1644,8 @@ rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
    rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("TrainPrivateer2TIME_Plr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamFloat("Param1",0.5);
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamFloat("Param1",200);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
    rmSetTriggerEffectParam("TechID","cTechzpWokouJunkBuildLimitReduceShadow"); //operator
@@ -1608,7 +1658,7 @@ rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
    rmSetTriggerActive(false);
    rmSetTriggerRunImmediately(true);
    rmSetTriggerLoop(false);
-   }
+
 
 rmSwitchToTrigger(rmTriggerID("TrainPrivateer1ON_Plr"+k));
 rmAddTriggerCondition("Units in Area");
@@ -1632,8 +1682,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("TrainPrivateer1OFF_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamInt("Param1",5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",1200);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
 rmSetTriggerPriority(4);
@@ -1642,8 +1692,8 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("TrainPrivateer1TIME_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamFloat("Param1",0.5);
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpWokouJunkBuildLimitReduceShadow"); //operator
@@ -1661,20 +1711,20 @@ rmSetTriggerLoop(false);
 // Fire Ship training
 
 for (k=1; <= cNumberNonGaiaPlayers) {
-rmCreateTrigger("TrainFireship1ON Plr"+k);
-rmCreateTrigger("TrainFireship1OFF Plr"+k);
-rmCreateTrigger("TrainFireship1TIME Plr"+k);
+rmCreateTrigger("trainFuchuan1ON Plr"+k);
+rmCreateTrigger("trainFuchuan1OFF Plr"+k);
+rmCreateTrigger("trainFuchuan1TIME Plr"+k);
 
-   if (cNumberNonGaiaPlayers >= 4){
-   rmCreateTrigger("TrainFireship2ON Plr"+k);
-   rmCreateTrigger("TrainFireship2OFF Plr"+k);
-   rmCreateTrigger("TrainFireship2TIME Plr"+k);
 
-   rmSwitchToTrigger(rmTriggerID("TrainFireship2ON_Plr"+k));
+   rmCreateTrigger("trainFuchuan2ON Plr"+k);
+   rmCreateTrigger("trainFuchuan2OFF Plr"+k);
+   rmCreateTrigger("trainFuchuan2TIME Plr"+k);
+
+   rmSwitchToTrigger(rmTriggerID("trainFuchuan2ON_Plr"+k));
    rmAddTriggerCondition("Units in Area");
    rmSetTriggerConditionParam("DstObject","56");
    rmSetTriggerConditionParamInt("Player",k);
-   rmSetTriggerConditionParam("UnitType","zpFireShipProxy");
+   rmSetTriggerConditionParam("UnitType","zpWokouFuchuanProxy");
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("Op",">=");
    rmSetTriggerConditionParamInt("Count",1);
@@ -1683,28 +1733,28 @@ rmCreateTrigger("TrainFireship1TIME Plr"+k);
    rmSetTriggerEffectParam("TechID","cTechzpTrainFireJunk2"); //operator
    rmSetTriggerEffectParamInt("Status",2);
    rmAddTriggerEffect("Fire Event");
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship2OFF_Plr"+k));
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2OFF_Plr"+k));
    rmAddTriggerEffect("Fire Event");
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship2TIME_Plr"+k));
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2TIME_Plr"+k));
    rmSetTriggerPriority(4);
    rmSetTriggerActive(false);
    rmSetTriggerRunImmediately(true);
    rmSetTriggerLoop(false);
 
-   rmSwitchToTrigger(rmTriggerID("TrainFireship2OFF_Plr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmSwitchToTrigger(rmTriggerID("trainFuchuan2OFF_Plr"+k));
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamFloat("Param1",1200);
    rmAddTriggerEffect("Fire Event");
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship2ON_Plr"+k));
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2ON_Plr"+k));
    rmSetTriggerPriority(4);
    rmSetTriggerActive(false);
    rmSetTriggerRunImmediately(true);
    rmSetTriggerLoop(false);
 
    
-   rmSwitchToTrigger(rmTriggerID("TrainFireship2TIME_Plr"+k));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamFloat("Param1",0.5);
+   rmSwitchToTrigger(rmTriggerID("trainFuchuan2TIME_Plr"+k));
+   rmAddTriggerCondition("Timer ms");
+   rmSetTriggerConditionParamFloat("Param1",200);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
    rmSetTriggerEffectParam("TechID","cTechzpFireJunkBuildLimitReduceShadow"); //operator
@@ -1717,13 +1767,13 @@ rmCreateTrigger("TrainFireship1TIME Plr"+k);
    rmSetTriggerActive(false);
    rmSetTriggerRunImmediately(true);
    rmSetTriggerLoop(false);
-   }
 
-rmSwitchToTrigger(rmTriggerID("TrainFireship1ON_Plr"+k));
+
+rmSwitchToTrigger(rmTriggerID("trainFuchuan1ON_Plr"+k));
 rmAddTriggerCondition("Units in Area");
 rmSetTriggerConditionParam("DstObject","3");
 rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("UnitType","zpFireShipProxy");
+rmSetTriggerConditionParam("UnitType","zpWokouFuchuanProxy");
 rmSetTriggerConditionParamInt("Dist",35);
 rmSetTriggerConditionParam("Op",">=");
 rmSetTriggerConditionParamInt("Count",1);
@@ -1732,27 +1782,27 @@ rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpTrainFireJunk1"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1OFF_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1OFF_Plr"+k));
 rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1TIME_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1TIME_Plr"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
-rmSwitchToTrigger(rmTriggerID("TrainFireship1OFF_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamInt("Param1",5);
+rmSwitchToTrigger(rmTriggerID("trainFuchuan1OFF_Plr"+k));
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",1200);
 rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1ON_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1ON_Plr"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
-rmSwitchToTrigger(rmTriggerID("TrainFireship1TIME_Plr"+k));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamFloat("Param1",0.5);
+rmSwitchToTrigger(rmTriggerID("trainFuchuan1TIME_Plr"+k));
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
 rmSetTriggerEffectParam("TechID","cTechzpFireJunkBuildLimitReduceShadow"); //operator
@@ -1792,7 +1842,7 @@ rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1off_Player"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
 rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1ON_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1ON_Plr"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
@@ -1817,13 +1867,13 @@ rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1on_Player"+k));
 rmAddTriggerEffect("Disable Trigger");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
 rmAddTriggerEffect("Disable Trigger");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireship1ON_Plr"+k));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1ON_Plr"+k));
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
 
-if (cNumberNonGaiaPlayers >= 4){
+
    for (k=1; <= cNumberNonGaiaPlayers) {
    rmCreateTrigger("Pirates2on Player"+k);
    rmCreateTrigger("Pirates2off Player"+k);
@@ -1847,7 +1897,7 @@ if (cNumberNonGaiaPlayers >= 4){
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2ON_Plr"+k));
    rmAddTriggerEffect("Fire Event");
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireShip2ON_Plr"+k));
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2ON_Plr"+k));
    rmSetTriggerPriority(4);
    rmSetTriggerActive(true);
    rmSetTriggerRunImmediately(true);
@@ -1872,67 +1922,13 @@ if (cNumberNonGaiaPlayers >= 4){
    rmAddTriggerEffect("Disable Trigger");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2ON_Plr"+k));
    rmAddTriggerEffect("Disable Trigger");
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFireShip2ON_Plr"+k));
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2ON_Plr"+k));
    rmSetTriggerPriority(4);
    rmSetTriggerActive(false);
    rmSetTriggerRunImmediately(true);
    rmSetTriggerLoop(false);
    }
-}
 
-// Send Wokou Random Ship
-
-for (k=1; <= cNumberNonGaiaPlayers) {
-
-rmCreateTrigger("Takanobu Random Ship"+k);
-rmAddTriggerCondition("ZP Tech Status Equals (XS)");
-rmSetTriggerConditionParamInt("PlayerID",k);
-rmSetTriggerConditionParam("TechID","cTechzpWokouRandomShip");
-rmSetTriggerConditionParamInt("Status",2);
-
-int randShip=-1;
-randShip = rmRandInt(1,5);
-
-if (randShip==1)
-   {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpSendQueenAnne"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-   }
-if (randShip==2)
-   {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpSendBlackPearl"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-   }
-if (randShip==3)
-   {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpSendNeptune"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-   }
-if (randShip==4)
-   {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpSendSteamer"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-   }
-if (randShip==5)
-   {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpSendSubmarine"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-   }
-rmSetTriggerPriority(4);
-rmSetTriggerActive(true);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(false);
-}
 
 // AI Pirate Captains
 
@@ -1976,7 +1972,6 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
-
 
 // Testing
 

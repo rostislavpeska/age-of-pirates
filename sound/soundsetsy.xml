@@ -2279,4 +2279,100 @@
     <sound filename="ambient\effects\fx_mov_bomber_2.wav" volume="1.0000">
     </sound>
   </soundset>
+  <soundset name="Maori_Soldier_Attack" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="maori\MaoriSoldierAttack1.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Maori_Soldier_Select" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="maori\MaoriSoldierSelect1.wav" volume="1.0000">
+    </sound>
+    <sound filename="maori\MaoriSoldierSelect3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Maori_Soldier_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="maori\MaoriSoldierMove2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+
+  <soundset name="Georgian_Soldier_Attack" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="georgian\Georgians_Soldier_Attack_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="georgian\Georgians_Soldier_Attack_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="georgian\Georgians_Soldier_Attack_3_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Georgian_Soldier_Select" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="georgian\Georgians_Soldier_Select_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="georgian\Georgians_Soldier_Select_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="georgian\Georgians_Soldier_Select_3_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Georgian_Soldier_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="georgian\Georgians_Soldier_Move_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="georgian\Georgians_Soldier_Move_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="georgian\Georgians_Soldier_Move_3_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Bulgarian_Soldier_Attack" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="bulgarian\BulgarianSpyAttack1.wav" volume="0.7000">
+    </sound>
+    <sound filename="bulgarian\BulgarianSpyAttack2.wav" volume="0.7000">
+    </sound>
+    <sound filename="bulgarian\BulgarianSpyAttack3.wav" volume="0.7000">
+    </sound>
+  </soundset>
+  <soundset name="Bulgarian_Soldier_Select" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="bulgarian\BulgarianSpySelect1.wav" volume="0.7000">
+    </sound>
+    <sound filename="bulgarian\BulgarianSpySelect2.wav" volume="0.7000">
+    </sound>
+    <sound filename="bulgarian\BulgarianSpySelect3.wav" volume="0.7000">
+    </sound>
+  </soundset>
+  <soundset name="Bulgarian_Soldier_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="bulgarian\BulgarianSpyMove1.wav" volume="0.7000">
+    </sound>
+    <sound filename="bulgarian\BulgarianSpyMove2.wav" volume="0.7000">
+    </sound>
+  </soundset>
+
+  <soundset name="Byzantine_Soldier_Attack" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="byzantine\Byzantines_Soldier_Attack_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="byzantine\Byzantines_Soldier_Attack_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="byzantine\Byzantines_Soldier_Attack_3_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="byzantine\Byzantines_Soldier_Attack_4_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Byzantine_Soldier_Select" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="byzantine\Byzantines_Soldier_Select_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="byzantine\Byzantines_Soldier_Select_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="byzantine\Byzantines_Soldier_Select_3_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Byzantine_Soldier_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="byzantine\Byzantines_Soldier_Move_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="byzantine\Byzantines_Soldier_Move_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="byzantine\Byzantines_Soldier_Move_3_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Train_Breaks" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ambient\effects\train_breaks.wav" volume="0.6000">
+    </sound>
+  </soundset>
+  <soundset name="Kitchen_Sound" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ambient\effects\kitchen_sound.wav" volume="0.6000">
+    </sound>
+  </soundset>
 </soundsetdef>

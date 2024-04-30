@@ -21,7 +21,7 @@
 			</variationid0>
 			<variationid1>
 				<assetreference type="GrannyModel">
-					<file>War of the Triple Alliance\Delta\AURs\New Buildings\aos house2</file>
+					<file>buildings\native_settlement\maltese_convent\aos_house2</file>
 				</assetreference>
 				<decal>
 					<effecttype>default</effecttype>
@@ -35,7 +35,7 @@
 			</variationid1>
 			<variationid2>
 				<assetreference type="GrannyModel">
-					<file>War of the Triple Alliance\Delta\AURs\New Buildings\aos church</file>
+					<file>buildings\native_settlement\maltese_convent\aos_church</file>
 				</assetreference>
 				<decal>
 					<effecttype>default</effecttype>

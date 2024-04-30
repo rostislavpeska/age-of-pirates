@@ -1,0 +1,114 @@
+<animfile>
+  <definebone>bone_wheel_03</definebone>
+  <definebone>bone_wheel_04</definebone>
+  <definebone>Bone_master</definebone>
+  <definebone>bone_attach_horse_a</definebone>
+  <definebone>bone_attach_horse_b</definebone>
+  <definebone>HS Bone Master</definebone>
+  <definebone>bone_attach_driver</definebone>
+  <definebone>Bip01</definebone>
+  <definebone>HS Bone Hoof Back Rt</definebone>
+  <definebone>HS Bone Hoof Back Lt</definebone>
+  <definebone>HS Bone Hoof Frnt Lt</definebone>
+  <definebone>HS Bone Hoof Frnt Rt</definebone>
+     <attachment>trade_stagecoach_horse
+      <component>trade_stagecoach_horse</component>
+      <include>units\villagers\covered_wagon\covered_wagon_horse.xml</include>
+    </attachment>
+    <attachment>trade_stagecoach_horse2
+      <component>trade_stagecoach_horse2</component>
+      <include>units\villagers\covered_wagon\covered_wagon_horse2.xml</include>
+    </attachment>
+    <attachment>trade_stagecoach_driver
+      <component>trade_stagecoach_driver</component>
+      <include>units\trade\trade_stagecoach_driver.xml</include>
+    </attachment>
+    <component>ModelComp
+      <linksection>
+        <linkoffset>0</linkoffset>
+        <linkcomponent>covered_wagon_horse</linkcomponent>
+        <linkcomponent>covered_wagon_horse2</linkcomponent>
+        <linkcomponent>covered_wagon_m0</linkcomponent>
+        <linkcomponent>trade_stagecoach_yokemain_01Shape</linkcomponent>
+        <linkcomponent>trade_stagecoach_axlefront_02Shape</linkcomponent>
+        <linkcomponent>trade_stagecoach_wheel_01Shape</linkcomponent>
+        <linkcomponent>trade_stagecoach_wheel_02Shape</linkcomponent>
+        <linkcomponent>trade_stagecoach_reign_01Shape</linkcomponent>
+        <linkconstraint>0</linkconstraint>
+      </linksection>
+      <linksection>
+        <linkoffset>0</linkoffset>
+        <linkcomponent>trade_stagecoachShape</linkcomponent>
+        <linkcomponent>trade_stagecoach_yokemain_02Shape</linkcomponent>
+        <linkcomponent>trade_stagecoach_matbShape</linkcomponent>
+        <linkcomponent>trade_stagecoach_seat_01Shape</linkcomponent>
+        <linkcomponent>trade_stagecoach_axleback_01Shape</linkcomponent>
+        <linkcomponent>trade_stagecoach_wheel_03Shape</linkcomponent>
+        <linkcomponent>trade_stagecoach_wheel_04Shape</linkcomponent>
+        <linkconstraint>1</linkconstraint>
+      </linksection>
+      <logic type="LowPoly">
+        <normal>
+          <assetreference type="GrannyModel">
+            <file>units\wildwest_units\stagecoach\armored_stagecoach</file>
+          </assetreference>
+        </normal>
+        <lowpoly>
+          <assetreference type="GrannyModel">
+            <file>units\wildwest_units\stagecoach\armored_stagecoach</file>
+          </assetreference>
+        </lowpoly>
+      </logic>
+      <decal>
+        <effecttype>default</effecttype>
+        <texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
+        <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+        <width>3.00</width>
+        <height>6.00</height>
+      </decal>
+      <watersplash>
+        <texture>units\artillery\cannon\wheel_B</texture>
+        <width>1.75</width>
+        <height>2.00</height>
+      </watersplash>
+      <attach a="trade_stagecoach_horse" frombone="" tobone="bone_attach_horse_a" syncanims="1"></attach>
+      <attach a="trade_stagecoach_horse2" frombone="" tobone="bone_attach_horse_b" syncanims="1"></attach>
+    </component>
+    <anim>Idle
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_idle</file>
+        </assetreference>
+        <component>ModelComp</component>
+        <simskeleton>
+            <model>units\wildwest_units\stagecoach\stagecoach_damaged_Model</model>
+        </simskeleton>
+         <attach a="trade_stagecoach_driver" frombone="Bip01" tobone="bone_attach_driver" syncanims="1"></attach>
+    </anim>
+    <anim>Walk
+        <assetreference type="GrannyAnim">
+          <file>units\trade\trade_stagecoach_walk</file>
+          <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof1">0.39</tag>
+          <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof2">0.55</tag>
+          <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof3">0.27</tag>
+          <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof4">0.50</tag>
+          <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof1">0.99</tag>
+          <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof2">0.03</tag>
+          <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof3">0.85</tag>
+          <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof4">1.00</tag>
+        </assetreference>
+        <component>ModelComp</component>
+        <simskeleton>
+            <model>units\wildwest_units\stagecoach\stagecoach_damaged_Model</model>
+        </simskeleton>
+         <attach a="trade_stagecoach_driver" frombone="Bip01" tobone="bone_attach_driver" syncanims="1"></attach>
+    </anim>
+    <anim>Death
+      <assetreference type="GrannyAnim">
+        <file>animation_library\wagon\wagon_death</file>
+        <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.80</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="CartBreak">0.5</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="Thud">0.2</tag>
+      </assetreference>
+      <component>ModelComp</component>
+    </anim>
+</animfile>

@@ -1,0 +1,45 @@
+<tactics>
+  <action>
+    <name stringid="103417">BankWorkRateBonus</name>
+    <type>AutoRangedModify</type>
+    <active>1</active>
+    <maxrange>40</maxrange>
+    <modifyabstracttype>AbstractBank</modifyabstracttype>
+    <persistent>1</persistent>
+    <modifytype>AutoGatherRate</modifytype>
+    <modifymultiplier>1.50</modifymultiplier>
+    <modifybase>1.0</modifybase>
+    <nostack>1</nostack>
+  </action>
+  <action>
+    <name stringid="103417">BuildingWorkRateBonus</name>
+    <type>AutoRangedModify</type>
+    <active>1</active>
+    <maxrange>40</maxrange>
+    <modifyabstracttype>Building</modifyabstracttype>
+    <forbidunittype>TradingPost</forbidunittype>
+    <forbidunittype>AbstractBank</forbidunittype>
+    <persistent>1</persistent>
+    <modifytype>AutoGatherRate</modifytype>
+    <modifymultiplier>1.2</modifymultiplier>
+    <modifybase>1.0</modifybase>
+    <nostack>1</nostack>
+  </action>
+  <action>
+    <name stringid="68961">MineGatherRateBonus</name>
+    <type>AutoRangedModify</type>
+    <active>1</active>
+    <maxrange>40</maxrange>
+    <modifyabstracttype>AbstractVillager</modifyabstracttype>
+    <forbidunittype>AbstractFishingBoat</forbidunittype>
+    <persistent>1</persistent>
+    <modifytype>GatherRate</modifytype>
+    <modifymultiplier>1.20</modifymultiplier>
+    <nostack>1</nostack>
+  </action>
+  <tactic>Normal
+    <action>BuildingWorkRateBonus</action>
+    <action>BankWorkRateBonus</action>
+    <action>MineGatherRateBonus</action>
+  </tactic>
+</tactics>

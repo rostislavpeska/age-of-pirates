@@ -1,0 +1,204 @@
+<protounitsounddef>
+	<protounit name="zpPriest">
+		<soundtype name="Select">
+			<civlogic>
+				<choice name="Nature">
+				</choice>
+				<choice name="XPAztec">
+					<soundset name="SpanishPriestSelect">
+					</soundset>
+				</choice>
+				<choice name="British">
+					<soundset name="SpanishPriestSelect">
+					</soundset>
+				</choice>
+				<choice name="Chinese">
+					<soundset name="PortuguesePriestSelect">
+					</soundset>
+				</choice>
+				<choice name="Dutch">
+					<soundset name="SpanishPriestSelect">
+					</soundset>
+				</choice>
+				<choice name="DEEthiopians">
+					<soundset name="PortuguesePriestSelect">
+					</soundset>
+				</choice>
+				<choice name="French">
+					<soundset name="SpanishPriestSelect">
+					</soundset>
+				</choice>
+				<choice name="Germans">
+					<soundset name="SpanishPriestSelect">
+					</soundset>
+				</choice>
+				<choice name="XPIroquois">
+					<soundset name="SpanishPriestSelect">
+					</soundset>
+				</choice>
+				<choice name="DEHausa">
+					<soundset name="PortuguesePriestSelect">
+					</soundset>
+				</choice>
+				<choice name="DEInca">
+					<soundset name="SpanishPriestSelect">
+					</soundset>
+				</choice>
+				<choice name="Indians">
+					<soundset name="PortuguesePriestSelect">
+					</soundset>
+				</choice>
+				<choice name="DEItalians">
+					<soundset name="SpanishPriestSelect">
+					</soundset>
+				</choice>
+				<choice name="Japanese">
+					<soundset name="PortuguesePriestSelect">
+					</soundset>
+				</choice>
+				<choice name="XPSioux">
+					<soundset name="SpanishPriestSelect">
+					</soundset>
+				</choice>
+				<choice name="DEMaltese">
+					<soundset name="SpanishPriestSelect">
+					</soundset>
+				</choice>
+				<choice name="DEMexicans">
+					<soundset name="SpanishPriestSelect">
+					</soundset>
+				</choice>
+				<choice name="Ottomans">
+					<soundset name="PortuguesePriestSelect">
+					</soundset>
+				</choice>
+				<choice name="Portuguese">
+					<soundset name="PortuguesePriestSelect">
+					</soundset>
+				</choice>
+				<choice name="Russians">
+					<soundset name="SpanishPriestSelect">
+					</soundset>
+				</choice>
+				<choice name="Spanish">
+					<soundset name="SpanishPriestSelect">
+					</soundset>
+				</choice>
+				<choice name="DESwedish">
+					<soundset name="SpanishPriestSelect">
+					</soundset>
+				</choice>
+				<choice name="DEAmericans">
+					<soundset name="SpanishPriestSelect">
+					</soundset>
+				</choice>
+			</civlogic>
+		</soundtype>
+		<soundtype name="Grunt">
+			<soundset name="GenericMaleGrunt">
+			</soundset>
+		</soundtype>
+		<soundtype name="Death">
+			<soundset name="GenericMaleDeath">
+			</soundset>
+		</soundtype>
+		<soundtype name="Creation">
+			<soundset name="NativeBirth">
+			</soundset>
+		</soundtype>
+		<soundtype name="Acknowledge">
+			<civlogic>
+				<choice name="Nature">
+				</choice>
+				<choice name="XPAztec">
+					<soundset name="SpanishPriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="British">
+					<soundset name="SpanishPriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="Chinese">
+					<soundset name="PortuguesePriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="Dutch">
+					<soundset name="SpanishPriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="DEEthiopians">
+					<soundset name="PortuguesePriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="French">
+					<soundset name="SpanishPriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="Germans">
+					<soundset name="SpanishPriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="XPIroquois">
+					<soundset name="SpanishPriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="DEHausa">
+					<soundset name="PortuguesePriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="DEInca">
+					<soundset name="SpanishPriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="Indians">
+					<soundset name="PortuguesePriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="DEItalians">
+					<soundset name="SpanishPriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="Japanese">
+					<soundset name="PortuguesePriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="XPSioux">
+					<soundset name="SpanishPriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="DEMaltese">
+					<soundset name="SpanishPriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="DEMexicans">
+					<soundset name="SpanishPriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="Ottomans">
+					<soundset name="PortuguesePriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="Portuguese">
+					<soundset name="PortuguesePriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="Russians">
+					<soundset name="SpanishPriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="Spanish">
+					<soundset name="SpanishPriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="DESwedish">
+					<soundset name="SpanishPriestAcknowledge">
+					</soundset>
+				</choice>
+				<choice name="DEAmericans">
+					<soundset name="SpanishPriestAcknowledge">
+					</soundset>
+				</choice>
+			</civlogic>
+		</soundtype>
+	</protounit>
+</protounitsounddef>
