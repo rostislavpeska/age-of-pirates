@@ -4,7 +4,7 @@ on: push
 
 jobs:
   xmls:
-    name: Searching for XML malformations
+    name: XML malformations
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -18,7 +18,7 @@ jobs:
           python _all_xmls.py
 
   strings:
-    name: Validating string tables
+    name: Stringtables
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
