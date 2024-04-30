@@ -33,6 +33,7 @@ def validate_locid(locid):
 
 
 def validate_stringmods(xml_file, expected_language):
+    error = False
     try:
         tree = ET.parse(xml_file)
         root = tree.getroot()
@@ -43,7 +44,7 @@ def validate_stringmods(xml_file, expected_language):
         if lang_name.lower() != expected_language.lower():
             print_error(
                 f"❌ Non-{str(expected_language).capitalize()} stringtable ({str(lang_name).capitalize()}) in the `{expected_language}` folder")
-            return
+            return False
 
         print_info(f"ℹ️ Validating {lang_name}")
 
@@ -90,12 +91,17 @@ def validate_stringmods(xml_file, expected_language):
             print_success(f"✅ {lang_name} stringtable validation passed!")
         else:
             print_error(f"❌ {lang_name} stringtable validation failed!")
+            error = True
 
     except Exception as e:
         print_error(f"❌ Error occurred while parsing {xml_file}: {e}")
+        error = True
+
+    return not error
 
 
 def validate_strings_folder(folder_path):
+    error = False
     for root, dirs, files in os.walk(folder_path):
         language_folder = os.path.basename(root)
         stringmods_files = [
@@ -108,9 +114,13 @@ def validate_strings_folder(folder_path):
 
         for file in stringmods_files:
             xml_file = os.path.join(root, file)
-            validate_stringmods(xml_file, language_folder)
+            error = error or validate_stringmods(xml_file, language_folder)
+
+    return not error
 
 
 if __name__ == "__main__":
     strings_folder = "data/strings"
-    validate_strings_folder(strings_folder)
+    # validate_strings_folder(strings_folder)
+    if not validate_strings_folder(strings_folder):
+        exit(1)
