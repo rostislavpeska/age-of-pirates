@@ -21,8 +21,7 @@ minInterval 3
    }
 
    // AssertiveWall: suppress when build order is active
-   int buildingBOlength = xsArrayGetSize(boBuildingArray) - 1;
-   if (xsArrayGetInt(boBuildingArray, buildingBOlength) > 0 && gUseBuildOrder == true)
+   if (xsIsRuleEnabled("buildingBuildOrderRule") == true)
    {
       return;
    }
@@ -100,8 +99,7 @@ minInterval 3
    }
 
    // AssertiveWall: suppress when build order is active
-   int buildingBOlength = xsArrayGetSize(boBuildingArray) - 1;
-   if (xsArrayGetInt(boBuildingArray, buildingBOlength) > 0 && gUseBuildOrder == true)
+   if (xsIsRuleEnabled("buildingBuildOrderRule") == true)
    {
       return;
    }
@@ -183,7 +181,20 @@ void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
       vector baseLocation = kbBaseGetLocation(cMyID, baseID);
       int baseAreaGroup = kbAreaGroupGetIDByPosition(baseLocation);
       int numberAreas = kbAreaGetNumber();
-      newDistance = kbBaseGetDistance(cMyID, baseID) + 10.0;
+      // AssertiveWall: expand more aggressively based on strategy. Old value was +10
+      int expansionInterval = 1 * 60 * 1000;
+      if (gStrategy == cStrategyGreed || gGetGreedy == true)
+      {
+         newDistance = kbBaseGetDistance(cMyID, baseID) + 30.0;
+         expansionInterval = 20 * 1000;
+      }
+      else
+      {
+         newDistance = kbBaseGetDistance(cMyID, baseID) + 20.0;
+         expansionInterval = 40 * 1000;
+      }
+
+      
       // AssertiveWall Shrink the wall radius on Island Maps
       /*if ((puid == cUnitTypeBuilding && puid != cUnitTypeLogicalTypeBuildingsNotWalls) &&
          gStartOnDifferentIslands == true)
@@ -223,7 +234,7 @@ void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
    }
 
    int time = xsGetTime();
-   if ((time - lastExpansionTime) > 1 * 60 * 1000)
+   if ((time - lastExpansionTime) > expansionInterval) // AssertiveWall: old expansionInterval = 60 sec
    {
       debugBuildings("Expanding base " + baseID + " to " + newDistance);
       kbBaseSetPositionAndDistance(cMyID, baseID, baseLocation, newDistance);
@@ -885,14 +896,24 @@ void selectTCBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 
    // Weight it to prefer the general starting neighborhood
    // AssertiveWall: use a much wider range when trying to be greedy
-   if (gGetGreedy == true)
+   if (gGetGreedy == true || gStrategy == cStrategyGreed)
    {
       aiPlanSetVariableInt(buildPlan, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
 
-      aiPlanSetVariableVector(buildPlan, cBuildPlanInfluencePosition, 0, loc);          // Position influence for landing position
-      aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionDistance, 0, 200.0); // 200m range.
-      aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionValue, 0, 100.0);    // 100 points max
-      aiPlanSetVariableInt(buildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+      if (gStrategy == cStrategyGreed && gGetGreedy == true)
+      {
+         aiPlanSetVariableVector(buildPlan, cBuildPlanInfluencePosition, 0, loc);          // Position influence for landing position
+         aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionDistance, 0, 200.0); // 200m range.
+         aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionValue, 0, 100.0);    // 100 points max
+         aiPlanSetVariableInt(buildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffNone); // Cliff Falloff
+      }
+      else
+      {
+         aiPlanSetVariableVector(buildPlan, cBuildPlanInfluencePosition, 0, loc);          // Position influence for landing position
+         aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionDistance, 0, 200.0); // 200m range.
+         aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionValue, 0, 100.0);    // 100 points max
+         aiPlanSetVariableInt(buildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+      }
    }
    else
    {
@@ -1417,7 +1438,28 @@ bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
                continue;
             }
             // This is a military building, randomize placement.
-            aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, aiRandInt(4));
+            // AssertiveWall: Alter the location preference for the strategy
+            //    Rush always front
+            //    Safe FF and Fast Industrial back until they reach their age
+            //    Everyone else forward past Age 3
+            //    Else random
+            if (gStrategy == cStrategyRush)
+            {
+               aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
+            }
+            else if ((gStrategy == cStrategySafeFF && kbGetAge() < cAge3) || 
+                     (gStrategy == cStrategyFastIndustrial && kbGetAge() < cAge4))
+            {
+               aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceBack);
+            }
+            else if (kbGetAge() >= cAge3)
+            {
+               aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
+            }
+            else
+            {
+               aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, aiRandInt(4));
+            }
             break;
          }
          aiPlanSetBaseID(planID, baseID);
@@ -1738,6 +1780,14 @@ vector selectForwardBaseLocation(void)
             retVal = retVal + delta; // Move 1/10 of way back to main base, try again.
          }
       }
+   }
+
+   // AssertiveWall: check to make sure we're actually building this forward. At least 1/3 of the map
+   int distFriendlyEnemy = distance(v, mainBaseVec);
+   int distFriendlyToFB = distance(mainBaseVec, retVal);
+   if (distFriendlyToFB < 0.35 * distFriendlyEnemy)
+   {
+      siteFound = false;
    }
 
    if (siteFound == false)
@@ -2798,6 +2848,11 @@ minInterval 5
       return;
    }
 
+   // AssertiveWall: suppress when build order is active
+   if (xsIsRuleEnabled("buildingBuildOrderRule") == true)
+   {
+      return;
+   }
 
    int planID = -1;
    int numberBuildings = 0;

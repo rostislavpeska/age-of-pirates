@@ -7,6 +7,1289 @@
 //==============================================================================
 
 //==============================================================================
+/* cannonCorners
+
+   Basically just tells a cannon to move to that position
+*/
+//==============================================================================
+int cannonCorners(int pri = 21, vector position1 = cInvalidVector, vector position2 = cInvalidVector, vector position3 = cInvalidVector, vector position4 = cInvalidVector)
+{
+   // Find some cannon to use
+   int cannonQuery = createSimpleUnitQuery(cUnitTypeAbstractArtillery, cPlayerRelationSelf, cUnitStateAlive);
+   int cannonNumber = kbUnitQueryExecute(cannonQuery);
+   int tempCannon = -1;
+   int countAdded = 0;
+
+   static int cannonCornerPlanID = -1;
+   if (cannonCornerPlanID < 0)
+   {
+      aiPlanCreate("Cannon Corner Plan", cPlanReserve);
+      aiPlanAddUnitType(cannonCornerPlanID, cUnitTypeAbstractArtillery, 0, 0, 200);
+      aiPlanSetNoMoreUnits(cannonCornerPlanID, true);
+      aiPlanSetDesiredPriority(cannonCornerPlanID, 100); // Let no one steal us
+      aiPlanSetActive(cannonCornerPlanID);
+   }
+
+   for (i = 0; < cannonNumber)
+   {
+      tempCannon = kbUnitQueryGetResult(cannonQuery, i);
+
+      if (aiPlanGetActualPriority(kbUnitGetPlanID(tempCannon)) >= pri)
+      {  // Don't add any cannon currently being used
+         continue;
+      }
+
+      if (aiPlanAddUnit(cannonCornerPlanID, tempCannon) == false)
+      {
+         aiPlanDestroy(cannonCornerPlanID);
+         cannonCornerPlanID = -1;
+         return (-1);
+      }
+
+      // We've reserved the arty. Now put it in the spots
+      if (countAdded == 0 && position1 != cInvalidVector)
+      {
+         aiTaskUnitMove(tempCannon, position1);
+         countAdded += 1;
+      }
+      else if (countAdded == 1 && position2 != cInvalidVector)
+      {
+         aiTaskUnitMove(tempCannon, position2);
+         countAdded += 1;
+      }
+      else if (countAdded == 2 && position3 != cInvalidVector)
+      {
+         aiTaskUnitMove(tempCannon, position3);
+         countAdded += 1;
+      }
+      else if (countAdded == 3 && position4 != cInvalidVector)
+      {
+         aiTaskUnitMove(tempCannon, position4);
+         countAdded += 1;
+      }
+   }
+
+   return (countAdded);
+}
+
+//==============================================================================
+/* buildFourCornerStarFort
+   builds a star fort with 2 outposts
+
+   scale = 1.4 is the smallest fort that still has gates
+   scale = 2.8 comfortably fits towers
+   scale >= 2.4 can fit outposts on corners
+*/
+//==============================================================================
+void buildFourCornerStarFort(vector position = cInvalidVector, int baseID = -1, float scale = 1.4, int pri = 80, int towerNum = 0, int cannonNum = 0)
+{
+   if (position == cInvalidVector)
+   {
+      position = selectForwardBaseLocation();
+   }
+
+   if (baseID < 0)
+   {
+      baseID = gForwardBaseID;
+   }
+
+   if (baseID < 0)
+   {
+      baseID = kbBaseGetMainID(cMyID);
+   }
+
+   //sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, position);
+
+   float positionX = xsVectorGetX(position);
+   float positionY = xsVectorGetY(position);
+   float positionZ = xsVectorGetZ(position);
+
+   // Build specified tower number
+   // 2.4 minimum scale number to fit a tower
+   vector towerPos1 = cInvalidVector;
+   vector towerPos2 = cInvalidVector; 
+   vector towerPos3 = cInvalidVector; 
+   vector towerPos4 = cInvalidVector; 
+   if (towerNum > 0)
+   {
+      int switchInt = aiRandInt(4);
+      if (switchInt == 0)
+      {
+         towerPos1 = xsVectorSet(positionX + 7.5 * scale, positionY, positionZ - 7.5 * scale); 
+         towerPos2 = xsVectorSet(positionX - 7.5 * scale, positionY, positionZ + 7.5 * scale); 
+         towerPos3 = xsVectorSet(positionX + 7.5 * scale, positionY, positionZ + 7.5 * scale); 
+         towerPos4 = xsVectorSet(positionX - 7.5 * scale, positionY, positionZ - 7.5 * scale); 
+      }
+      else if (switchInt == 1)
+      {
+         towerPos2 = xsVectorSet(positionX + 7.5 * scale, positionY, positionZ - 7.5 * scale); 
+         towerPos4 = xsVectorSet(positionX - 7.5 * scale, positionY, positionZ + 7.5 * scale); 
+         towerPos3 = xsVectorSet(positionX + 7.5 * scale, positionY, positionZ + 7.5 * scale); 
+         towerPos1 = xsVectorSet(positionX - 7.5 * scale, positionY, positionZ - 7.5 * scale); 
+      }
+      else
+      {
+         towerPos3 = xsVectorSet(positionX + 7.5 * scale, positionY, positionZ - 7.5 * scale); 
+         towerPos1 = xsVectorSet(positionX - 7.5 * scale, positionY, positionZ + 7.5 * scale); 
+         towerPos4 = xsVectorSet(positionX + 7.5 * scale, positionY, positionZ + 7.5 * scale); 
+         towerPos2 = xsVectorSet(positionX - 7.5 * scale, positionY, positionZ - 7.5 * scale); 
+      }
+
+      createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos1, 1);
+      if (towerNum >= 2)
+      {
+         createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos2, 1);
+      }
+
+      if (towerNum >= 3)
+      {
+         createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos3, 1);
+      }
+
+      if (towerNum >= 4)
+      {
+         createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos4, 1);
+      }
+   }
+
+   if (cannonNum > 0)
+   {
+      if (cannonNum == 1)
+      {
+         towerPos1 = cInvalidVector;
+         towerPos2 = cInvalidVector;
+         towerPos3 = cInvalidVector;
+      }
+      else if (cannonNum == 2)
+      {
+         towerPos1 = cInvalidVector;
+         towerPos2 = cInvalidVector;
+      }
+      else if (cannonNum == 3)
+      {
+         towerPos1 = cInvalidVector;
+      }
+
+      cannonCorners(90, towerPos4, towerPos3, towerPos2, towerPos1);
+   }
+
+   // The center position is "position"
+   // Base consists of 20 segments for 4 corner towers
+   vector start1 = xsVectorSet(positionX - 4.0 * scale, positionY, positionZ - 7.5 * scale);
+   vector end1 = xsVectorSet(positionX + 4.0 * scale, positionY, positionZ - 7.5 * scale);
+
+   vector start2 = end1;
+   vector end2 = xsVectorSet(positionX + 7.0 * scale, positionY, positionZ - 10.5 * scale);
+
+   vector start3 = end2;
+   vector end3 = xsVectorSet(positionX + 10.5 * scale, positionY, positionZ - 10.5 * scale);
+
+   vector start4 = end3;
+   vector end4 = xsVectorSet(positionX + 10.5 * scale, positionY, positionZ - 7.0 * scale);
+
+   vector start5 = end4;
+   vector end5 = xsVectorSet(positionX + 7.5 * scale, positionY, positionZ - 4.0 * scale);
+
+   vector start6 = end5;
+   vector end6 = xsVectorSet(positionX + 7.5 * scale, positionY, positionZ + 4.0 * scale);
+
+   vector start7 = end6;
+   vector end7 = xsVectorSet(positionX + 10.5 * scale, positionY, positionZ + 7.0 * scale);
+
+   vector start8 = end7;
+   vector end8 = xsVectorSet(positionX + 10.5 * scale, positionY, positionZ + 10.5 * scale);
+
+   vector start9 = end8;
+   vector end9 = xsVectorSet(positionX + 7.0 * scale, positionY, positionZ + 10.5 * scale);
+
+   vector start10 = end9;
+   vector end10 = xsVectorSet(positionX + 4.0 * scale, positionY, positionZ + 7.5 * scale);
+
+   vector start11 = end10;
+   vector end11 = xsVectorSet(positionX - 4.0 * scale, positionY, positionZ + 7.5 * scale);
+
+   vector start12 = end11;
+   vector end12 = xsVectorSet(positionX - 7.0 * scale, positionY, positionZ + 10.5 * scale);
+
+   vector start13 = end12;
+   vector end13 = xsVectorSet(positionX - 10.5 * scale, positionY, positionZ + 10.5 * scale);
+
+   vector start14 = end13;
+   vector end14 = xsVectorSet(positionX - 10.5 * scale, positionY, positionZ + 7.0 * scale);
+
+   vector start15 = end14;
+   vector end15 = xsVectorSet(positionX - 7.5 * scale, positionY, positionZ + 4.0 * scale);
+
+   vector start16 = end15;
+   vector end16 = xsVectorSet(positionX - 7.5 * scale, positionY, positionZ - 4.0 * scale);
+
+   vector start17 = end16;
+   vector end17 = xsVectorSet(positionX - 10.5 * scale, positionY, positionZ - 7.0 * scale);
+
+   vector start18 = end17;
+   vector end18 = xsVectorSet(positionX - 10.5 * scale, positionY, positionZ - 10.5 * scale);
+
+   vector start19 = end18;
+   vector end19 = xsVectorSet(positionX - 7.0 * scale, positionY, positionZ - 10.5 * scale);
+
+   vector start20 = end19;
+   vector end20 = start1;
+
+   // segment 1
+   int wallPlan1ID = aiPlanCreate("WallInBase1", cPlanBuildWall);
+   if (wallPlan1ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan1ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan1ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan1ID, cBuildWallPlanWallStart, 0, start1);
+      aiPlanSetVariableVector(wallPlan1ID, cBuildWallPlanWallEnd, 0, end1);
+      aiPlanSetVariableInt(wallPlan1ID, cBuildWallPlanNumberOfGates, 0, 1);
+      aiPlanSetBaseID(wallPlan1ID, baseID);
+      aiPlanSetEscrowID(wallPlan1ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan1ID, pri);
+      aiPlanSetActive(wallPlan1ID, true);
+   }
+
+   // segment 2
+   int wallPlan2ID = aiPlanCreate("WallInBase2", cPlanBuildWall);
+   if (wallPlan2ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan2ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan2ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan2ID, cBuildWallPlanWallStart, 0, start2);
+      aiPlanSetVariableVector(wallPlan2ID, cBuildWallPlanWallEnd, 0, end2);
+      aiPlanSetVariableInt(wallPlan2ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan2ID, baseID);
+      aiPlanSetEscrowID(wallPlan2ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan2ID, pri);
+      aiPlanSetActive(wallPlan2ID, true);
+   }
+
+   // segment 3
+   int wallPlan3ID = aiPlanCreate("WallInBase3", cPlanBuildWall);
+   if (wallPlan3ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan3ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan3ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan3ID, cBuildWallPlanWallStart, 0, start3);
+      aiPlanSetVariableVector(wallPlan3ID, cBuildWallPlanWallEnd, 0, end3);
+      aiPlanSetVariableInt(wallPlan3ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan3ID, baseID);
+      aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan3ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan3ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan3ID, pri);
+      aiPlanSetActive(wallPlan3ID, true);
+   }
+
+   // segment 4
+   int wallPlan4ID = aiPlanCreate("WallInBase4", cPlanBuildWall);
+   if (wallPlan4ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan4ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan4ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan4ID, cBuildWallPlanWallStart, 0, start4);
+      aiPlanSetVariableVector(wallPlan4ID, cBuildWallPlanWallEnd, 0, end4);
+      aiPlanSetVariableInt(wallPlan4ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan4ID, baseID);
+      aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan4ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan4ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan4ID, pri);
+      aiPlanSetActive(wallPlan4ID, true);
+   }
+
+   // segment 5
+   int wallPlan5ID = aiPlanCreate("WallInBase5", cPlanBuildWall);
+   if (wallPlan5ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan5ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan5ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan5ID, cBuildWallPlanWallStart, 0, start5);
+      aiPlanSetVariableVector(wallPlan5ID, cBuildWallPlanWallEnd, 0, end5);
+      aiPlanSetVariableInt(wallPlan5ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan5ID, baseID);
+      aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan5ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan5ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan5ID, pri);
+      aiPlanSetActive(wallPlan5ID, true);
+   }
+
+   // segment 6
+   int wallPlan6ID = aiPlanCreate("WallInBase6", cPlanBuildWall);
+   if (wallPlan6ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan6ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan6ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan6ID, cBuildWallPlanWallStart, 0, start6);
+      aiPlanSetVariableVector(wallPlan6ID, cBuildWallPlanWallEnd, 0, end6);
+      aiPlanSetVariableInt(wallPlan6ID, cBuildWallPlanNumberOfGates, 0, 1);
+      aiPlanSetBaseID(wallPlan6ID, baseID);
+      aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan6ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan6ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan6ID, pri);
+      aiPlanSetActive(wallPlan6ID, true);
+   }
+
+   // segment 7
+   int wallPlan7ID = aiPlanCreate("WallInBase7", cPlanBuildWall);
+   if (wallPlan7ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan7ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan7ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan7ID, cBuildWallPlanWallStart, 0, start7);
+      aiPlanSetVariableVector(wallPlan7ID, cBuildWallPlanWallEnd, 0, end7);
+      aiPlanSetVariableInt(wallPlan7ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan7ID, baseID);
+      aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan7ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan7ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan7ID, pri);
+      aiPlanSetActive(wallPlan7ID, true);
+   }
+
+   // segment 8
+   int wallPlan8ID = aiPlanCreate("WallInBase8", cPlanBuildWall);
+   if (wallPlan8ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan8ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan8ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan8ID, cBuildWallPlanWallStart, 0, start8);
+      aiPlanSetVariableVector(wallPlan8ID, cBuildWallPlanWallEnd, 0, end8);
+      aiPlanSetVariableInt(wallPlan8ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan8ID, baseID);
+      aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan8ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan8ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan8ID, pri);
+      aiPlanSetActive(wallPlan8ID, true);
+   }
+
+   // segment 9
+   int wallPlan9ID = aiPlanCreate("WallInBase9", cPlanBuildWall);
+   if (wallPlan9ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan9ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan9ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan9ID, cBuildWallPlanWallStart, 0, start9);
+      aiPlanSetVariableVector(wallPlan9ID, cBuildWallPlanWallEnd, 0, end9);
+      aiPlanSetVariableInt(wallPlan9ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan9ID, baseID);
+      aiPlanSetEscrowID(wallPlan9ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan9ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan9ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan9ID, pri);
+      aiPlanSetActive(wallPlan9ID, true);
+   }
+
+   // segment 10
+   int wallPlan10ID = aiPlanCreate("WallInBase10", cPlanBuildWall);
+   if (wallPlan10ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan10ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan10ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan10ID, cBuildWallPlanWallStart, 0, start10);
+      aiPlanSetVariableVector(wallPlan10ID, cBuildWallPlanWallEnd, 0, end10);
+      aiPlanSetVariableInt(wallPlan10ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan10ID, baseID);
+      aiPlanSetEscrowID(wallPlan10ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan10ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan10ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan10ID, pri);
+      aiPlanSetActive(wallPlan10ID, true);
+   }
+
+   // segment 11
+   int wallPlan11ID = aiPlanCreate("WallInBase11", cPlanBuildWall);
+   if (wallPlan11ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan11ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan11ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan11ID, cBuildWallPlanWallStart, 0, start11);
+      aiPlanSetVariableVector(wallPlan11ID, cBuildWallPlanWallEnd, 0, end11);
+      aiPlanSetVariableInt(wallPlan11ID, cBuildWallPlanNumberOfGates, 0, 1);
+      aiPlanSetBaseID(wallPlan11ID, baseID);
+      aiPlanSetEscrowID(wallPlan11ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan11ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan11ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan11ID, pri);
+      aiPlanSetActive(wallPlan11ID, true);
+   }
+
+   // segment 12
+   int wallPlan12ID = aiPlanCreate("WallInBase12", cPlanBuildWall);
+   if (wallPlan12ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan12ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan12ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan12ID, cBuildWallPlanWallStart, 0, start12);
+      aiPlanSetVariableVector(wallPlan12ID, cBuildWallPlanWallEnd, 0, end12);
+      aiPlanSetVariableInt(wallPlan12ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan12ID, baseID);
+      aiPlanSetEscrowID(wallPlan12ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan12ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan12ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan12ID, pri);
+      aiPlanSetActive(wallPlan12ID, true);
+   }
+
+   // segment 13
+   int wallPlan13ID = aiPlanCreate("WallInBase13", cPlanBuildWall);
+   if (wallPlan13ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan13ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan13ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan13ID, cBuildWallPlanWallStart, 0, start13);
+      aiPlanSetVariableVector(wallPlan13ID, cBuildWallPlanWallEnd, 0, end13);
+      aiPlanSetVariableInt(wallPlan13ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan13ID, baseID);
+      aiPlanSetEscrowID(wallPlan13ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan13ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan13ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan13ID, pri);
+      aiPlanSetActive(wallPlan13ID, true);
+   }
+
+   // segment 14
+   int wallPlan14ID = aiPlanCreate("WallInBase14", cPlanBuildWall);
+   if (wallPlan14ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan14ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan14ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan14ID, cBuildWallPlanWallStart, 0, start14);
+      aiPlanSetVariableVector(wallPlan14ID, cBuildWallPlanWallEnd, 0, end14);
+      aiPlanSetVariableInt(wallPlan14ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan14ID, baseID);
+      aiPlanSetEscrowID(wallPlan14ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan14ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan14ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan14ID, pri);
+      aiPlanSetActive(wallPlan14ID, true);
+   }
+
+   // segment 15
+   int wallPlan15ID = aiPlanCreate("WallInBase15", cPlanBuildWall);
+   if (wallPlan15ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan15ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan15ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan15ID, cBuildWallPlanWallStart, 0, start15);
+      aiPlanSetVariableVector(wallPlan15ID, cBuildWallPlanWallEnd, 0, end15);
+      aiPlanSetVariableInt(wallPlan15ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan15ID, baseID);
+      aiPlanSetEscrowID(wallPlan15ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan15ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan15ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan15ID, pri);
+      aiPlanSetActive(wallPlan15ID, true);
+   }
+
+   // segment 16
+   int wallPlan16ID = aiPlanCreate("WallInBase16", cPlanBuildWall);
+   if (wallPlan16ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan16ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan16ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan16ID, cBuildWallPlanWallStart, 0, start16);
+      aiPlanSetVariableVector(wallPlan16ID, cBuildWallPlanWallEnd, 0, end16);
+      aiPlanSetVariableInt(wallPlan16ID, cBuildWallPlanNumberOfGates, 0, 1);
+      aiPlanSetBaseID(wallPlan16ID, baseID);
+      aiPlanSetEscrowID(wallPlan16ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan16ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan16ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan16ID, pri);
+      aiPlanSetActive(wallPlan16ID, true);
+   }
+
+   // segment 17
+   int wallPlan17ID = aiPlanCreate("WallInBase17", cPlanBuildWall);
+   if (wallPlan17ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan17ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan17ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan17ID, cBuildWallPlanWallStart, 0, start17);
+      aiPlanSetVariableVector(wallPlan17ID, cBuildWallPlanWallEnd, 0, end17);
+      aiPlanSetVariableInt(wallPlan17ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan17ID, baseID);
+      aiPlanSetEscrowID(wallPlan17ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan17ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan17ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan17ID, pri);
+      aiPlanSetActive(wallPlan17ID, true);
+   }
+
+   // segment 18
+   int wallPlan18ID = aiPlanCreate("WallInBase18", cPlanBuildWall);
+   if (wallPlan18ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan18ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan18ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan18ID, cBuildWallPlanWallStart, 0, start18);
+      aiPlanSetVariableVector(wallPlan18ID, cBuildWallPlanWallEnd, 0, end18);
+      aiPlanSetVariableInt(wallPlan18ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan18ID, baseID);
+      aiPlanSetEscrowID(wallPlan18ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan18ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan18ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan18ID, pri);
+      aiPlanSetActive(wallPlan18ID, true);
+   }
+
+   // segment 19
+   int wallPlan19ID = aiPlanCreate("WallInBase19", cPlanBuildWall);
+   if (wallPlan19ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan19ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan19ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan19ID, cBuildWallPlanWallStart, 0, start19);
+      aiPlanSetVariableVector(wallPlan19ID, cBuildWallPlanWallEnd, 0, end19);
+      aiPlanSetVariableInt(wallPlan19ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan19ID, baseID);
+      aiPlanSetEscrowID(wallPlan19ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan19ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan19ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan19ID, pri);
+      aiPlanSetActive(wallPlan19ID, true);
+   }
+
+   // segment 20
+   int wallPlan20ID = aiPlanCreate("WallInBase20", cPlanBuildWall);
+   if (wallPlan20ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan20ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan20ID, gEconUnit, 0, 1, 1);
+      aiPlanSetVariableVector(wallPlan20ID, cBuildWallPlanWallStart, 0, start20);
+      aiPlanSetVariableVector(wallPlan20ID, cBuildWallPlanWallEnd, 0, end20);
+      aiPlanSetVariableInt(wallPlan20ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan20ID, baseID);
+      aiPlanSetEscrowID(wallPlan20ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan20ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan20ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan20ID, pri);
+      aiPlanSetActive(wallPlan20ID, true);
+   }
+
+   return;
+}
+
+//==============================================================================
+/* buildCornerPairStarFort
+   builds a star fort with 2 outposts
+
+   scale = 1 is smallest fort that still has gates
+   scale = ? can fit outposts on corners
+*/
+//==============================================================================
+void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, float scale = 2.0, int pri = 80, 
+                              int towerNum = 0, int cannonNum = 0)
+{
+   if (position == cInvalidVector)
+   {
+      position = selectForwardBaseLocation();
+   }
+
+   if (baseID < 0)
+   {
+      baseID = gForwardBaseID;
+   }
+
+   if (baseID < 0)
+   {
+      baseID = kbBaseGetMainID(cMyID);
+   }
+
+   //sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, position);
+
+   float positionX = xsVectorGetX(position);
+   float positionY = xsVectorGetY(position);
+   float positionZ = xsVectorGetZ(position);
+
+
+   // Build specified tower number
+   // 2.4 minimum scale number to fit a tower
+   if (towerNum > 0)
+   {
+      int switchInt = aiRandInt(2);
+      if (switchInt == 0)
+      {
+         vector towerPos1 = xsVectorSet(positionX + 7.5 * scale, positionY, positionZ - 7.5 * scale); 
+         vector towerPos2 = xsVectorSet(positionX - 7.5 * scale, positionY, positionZ + 7.5 * scale); 
+      }
+      else
+      {
+         towerPos2 = xsVectorSet(positionX + 7.5 * scale, positionY, positionZ - 7.5 * scale); 
+         towerPos1 = xsVectorSet(positionX - 7.5 * scale, positionY, positionZ + 7.5 * scale); 
+      }
+
+      createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos1, 1);
+      if (towerNum >= 2)
+      {
+         createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos2, 1);
+      }
+   }
+
+   if (cannonNum > 0)
+   {
+      if (cannonNum == 1)
+      {
+         towerPos1 = cInvalidVector;
+      }
+      cannonCorners(90, towerPos2, towerPos1);
+   }
+
+   // The center position is "position"
+   // Base consists of 12 segments for 2 corner towers
+   vector start1 = xsVectorSet(positionX - 7.5 * scale, positionY, positionZ - 7.5 * scale);
+   vector end1 = xsVectorSet(positionX + 4.0 * scale, positionY, positionZ - 7.5 * scale);
+
+   vector start2 = end1;
+   vector end2 = xsVectorSet(positionX + 7.0 * scale, positionY, positionZ - 10.5 * scale);
+
+   vector start3 = end2;
+   vector end3 = xsVectorSet(positionX + 10.5 * scale, positionY, positionZ - 10.5 * scale);
+
+   vector start4 = end3;
+   vector end4 = xsVectorSet(positionX + 10.5 * scale, positionY, positionZ - 7.0 * scale);
+
+   vector start5 = end4;
+   vector end5 = xsVectorSet(positionX + 7.5 * scale, positionY, positionZ - 4.0 * scale);
+
+   vector start6 = end5;
+   vector end6 = xsVectorSet(positionX + 7.5 * scale, positionY, positionZ + 7.5 * scale);
+
+   vector start7 = end6;
+   vector end7 = xsVectorSet(positionX - 4.0 * scale, positionY, positionZ + 7.5 * scale);
+
+   vector start8 = end7;
+   vector end8 = xsVectorSet(positionX - 7.0 * scale, positionY, positionZ + 10.5 * scale);
+
+   vector start9 = end8;
+   vector end9 = xsVectorSet(positionX - 10.5 * scale, positionY, positionZ + 10.5 * scale);
+
+   vector start10 = end9;
+   vector end10 = xsVectorSet(positionX - 10.5 * scale, positionY, positionZ + 7.0 * scale);
+
+   vector start11 = end10;
+   vector end11 = xsVectorSet(positionX - 7.5 * scale, positionY, positionZ + 4.0 * scale);
+
+   vector start12 = end11;
+   vector end12 = start1;
+
+   // segment 1
+   int wallPlan1ID = aiPlanCreate("WallInBase1", cPlanBuildWall);
+   if (wallPlan1ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan1ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan1ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan1ID, cBuildWallPlanWallStart, 0, start1);
+      aiPlanSetVariableVector(wallPlan1ID, cBuildWallPlanWallEnd, 0, end1);
+      aiPlanSetVariableInt(wallPlan1ID, cBuildWallPlanNumberOfGates, 0, 1);
+      //aiPlanSetBaseID(wallPlan1ID, baseID);
+      aiPlanSetEscrowID(wallPlan1ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan1ID, pri);
+      aiPlanSetActive(wallPlan1ID, true);
+   }
+
+   // segment 2
+   int wallPlan2ID = aiPlanCreate("WallInBase2", cPlanBuildWall);
+   if (wallPlan2ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan2ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan2ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan2ID, cBuildWallPlanWallStart, 0, start2);
+      aiPlanSetVariableVector(wallPlan2ID, cBuildWallPlanWallEnd, 0, end2);
+      aiPlanSetVariableInt(wallPlan2ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan2ID, baseID);
+      aiPlanSetEscrowID(wallPlan2ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan2ID, pri);
+      aiPlanSetActive(wallPlan2ID, true);
+   }
+
+   // segment 3
+   int wallPlan3ID = aiPlanCreate("WallInBase3", cPlanBuildWall);
+   if (wallPlan3ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan3ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan3ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan3ID, cBuildWallPlanWallStart, 0, start3);
+      aiPlanSetVariableVector(wallPlan3ID, cBuildWallPlanWallEnd, 0, end3);
+      aiPlanSetVariableInt(wallPlan3ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan3ID, baseID);
+      aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan3ID, pri);
+      aiPlanSetActive(wallPlan3ID, true);
+   }
+
+   // segment 4
+   int wallPlan4ID = aiPlanCreate("WallInBase4", cPlanBuildWall);
+   if (wallPlan4ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan4ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan4ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan4ID, cBuildWallPlanWallStart, 0, start4);
+      aiPlanSetVariableVector(wallPlan4ID, cBuildWallPlanWallEnd, 0, end4);
+      aiPlanSetVariableInt(wallPlan4ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan4ID, baseID);
+      aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan4ID, pri);
+      aiPlanSetActive(wallPlan4ID, true);
+   }
+
+   // segment 5
+   int wallPlan5ID = aiPlanCreate("WallInBase5", cPlanBuildWall);
+   if (wallPlan5ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan5ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan5ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan5ID, cBuildWallPlanWallStart, 0, start5);
+      aiPlanSetVariableVector(wallPlan5ID, cBuildWallPlanWallEnd, 0, end5);
+      aiPlanSetVariableInt(wallPlan5ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan5ID, baseID);
+      aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan5ID, pri);
+      aiPlanSetActive(wallPlan5ID, true);
+   }
+
+   // segment 6
+   int wallPlan6ID = aiPlanCreate("WallInBase6", cPlanBuildWall);
+   if (wallPlan6ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan6ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan6ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan6ID, cBuildWallPlanWallStart, 0, start6);
+      aiPlanSetVariableVector(wallPlan6ID, cBuildWallPlanWallEnd, 0, end6);
+      aiPlanSetVariableInt(wallPlan6ID, cBuildWallPlanNumberOfGates, 0, 1);
+      aiPlanSetBaseID(wallPlan6ID, baseID);
+      aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan6ID, pri);
+      aiPlanSetActive(wallPlan6ID, true);
+   }
+
+   // segment 7
+   int wallPlan7ID = aiPlanCreate("WallInBase7", cPlanBuildWall);
+   if (wallPlan7ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan7ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan7ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan7ID, cBuildWallPlanWallStart, 0, start7);
+      aiPlanSetVariableVector(wallPlan7ID, cBuildWallPlanWallEnd, 0, end7);
+      aiPlanSetVariableInt(wallPlan7ID, cBuildWallPlanNumberOfGates, 0, 1);
+      aiPlanSetBaseID(wallPlan7ID, baseID);
+      aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan7ID, pri);
+      aiPlanSetActive(wallPlan7ID, true);
+   }
+
+   // segment 8
+   int wallPlan8ID = aiPlanCreate("WallInBase8", cPlanBuildWall);
+   if (wallPlan8ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan8ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan8ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan8ID, cBuildWallPlanWallStart, 0, start8);
+      aiPlanSetVariableVector(wallPlan8ID, cBuildWallPlanWallEnd, 0, end8);
+      aiPlanSetVariableInt(wallPlan8ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan8ID, baseID);
+      aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan8ID, pri);
+      aiPlanSetActive(wallPlan8ID, true);
+   }
+
+   // segment 9
+   int wallPlan9ID = aiPlanCreate("WallInBase9", cPlanBuildWall);
+   if (wallPlan9ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan9ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan9ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan9ID, cBuildWallPlanWallStart, 0, start9);
+      aiPlanSetVariableVector(wallPlan9ID, cBuildWallPlanWallEnd, 0, end9);
+      aiPlanSetVariableInt(wallPlan9ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan9ID, baseID);
+      aiPlanSetEscrowID(wallPlan9ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan9ID, pri);
+      aiPlanSetActive(wallPlan9ID, true);
+   }
+
+   // segment 10
+   int wallPlan10ID = aiPlanCreate("WallInBase10", cPlanBuildWall);
+   if (wallPlan10ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan10ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan10ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan10ID, cBuildWallPlanWallStart, 0, start10);
+      aiPlanSetVariableVector(wallPlan10ID, cBuildWallPlanWallEnd, 0, end10);
+      aiPlanSetVariableInt(wallPlan10ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan10ID, baseID);
+      aiPlanSetEscrowID(wallPlan10ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan10ID, pri);
+      aiPlanSetActive(wallPlan10ID, true);
+   }
+
+   // segment 11
+   int wallPlan11ID = aiPlanCreate("WallInBase11", cPlanBuildWall);
+   if (wallPlan11ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan11ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan11ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan11ID, cBuildWallPlanWallStart, 0, start11);
+      aiPlanSetVariableVector(wallPlan11ID, cBuildWallPlanWallEnd, 0, end11);
+      aiPlanSetVariableInt(wallPlan11ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan11ID, baseID);
+      aiPlanSetEscrowID(wallPlan11ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan11ID, pri);
+      aiPlanSetActive(wallPlan11ID, true);
+   }
+
+   // segment 12
+   int wallPlan12ID = aiPlanCreate("WallInBase12", cPlanBuildWall);
+   if (wallPlan12ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan12ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan12ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan12ID, cBuildWallPlanWallStart, 0, start12);
+      aiPlanSetVariableVector(wallPlan12ID, cBuildWallPlanWallEnd, 0, end12);
+      aiPlanSetVariableInt(wallPlan12ID, cBuildWallPlanNumberOfGates, 0, 1);
+      aiPlanSetBaseID(wallPlan12ID, baseID);
+      aiPlanSetEscrowID(wallPlan12ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan12ID, pri);
+      aiPlanSetActive(wallPlan12ID, true);
+   }
+
+   return;
+
+}
+
+rule testStarFort
+inactive
+minInterval 20
+{
+   if (kbGetAge() < cAge3)
+   {
+      return;
+   }
+
+   if (kbUnitCount(cMyID, cUnitTypeAbstractArtillery, cUnitStateAlive) <= 0)
+   {
+      return;
+   }
+
+   //buildCornerPairStarFort(kbGetMapCenter(), kbBaseGetMainID(cMyID), 2.4, 99, 1, 1);
+   buildFourCornerStarFort(kbGetMapCenter(), kbBaseGetMainID(cMyID), 2.4, 99, 2, 0);
+   //createLocationBuildPlan(cUnitTypeBarracks, 2, 90, true, cEconomyEscrowID, kbGetMapCenter(), 1);
+   //createLocationBuildPlan(cUnitTypeStable, 2, 90, true, cEconomyEscrowID, kbGetMapCenter(), 1);
+   xsDisableSelf();
+}
+
+//==============================================================================
+/* addWarshipsToPlan: 
+   Looks for warships not currently occupied by another plan
+
+   Goes through preferred type first
+*/
+//==============================================================================
+bool addWarshipsToPlan(int planID = -1, int min = 1, int desired = 1, int pri = 10, int preferredType = -1) 
+{
+   // Add a boat
+   int tempShip = -1;
+   int puid = -1;
+   int tempShipValue = -1;
+   int countAdded = 0;
+
+   if (preferredType > 0)
+   {
+      int preferredShipQuery = createSimpleUnitQuery(preferredType, cPlayerRelationSelf, cUnitStateAlive);
+      int preferredShipNumber = kbUnitQueryExecute(preferredShipQuery);
+
+      for (i = 0; < preferredShipNumber)
+      {
+         tempShip = kbUnitQueryGetResult(preferredShipQuery, i);
+         puid = kbUnitGetProtoUnitID(tempShip);
+
+         if (aiPlanGetActualPriority(kbUnitGetPlanID(tempShip)) >= pri)
+         {
+            continue;
+         }
+
+         if (aiPlanAddUnit(planID, tempShip) == false)
+         {
+            aiPlanDestroy(planID);
+            return (false);
+         }
+         countAdded += 1;
+
+         if (countAdded >= desired)
+         {
+            return (true);
+         }
+      }
+   }
+
+   int shipQuery = createSimpleUnitQuery(preferredType, cPlayerRelationSelf, cUnitStateAlive);
+   int shipNumber = kbUnitQueryExecute(shipQuery);
+
+   for (i = 0; < shipNumber)
+   {
+      tempShip = kbUnitQueryGetResult(shipQuery, i);
+      puid = kbUnitGetProtoUnitID(tempShip);
+
+      if (aiPlanGetActualPriority(kbUnitGetPlanID(tempShip)) >= pri)
+      {
+         continue;
+      }
+
+      if (aiPlanAddUnit(planID, tempShip) == false)
+      {
+         aiPlanDestroy(planID);
+         return (false);
+      }
+      countAdded += 1;
+
+      if (countAdded >= desired)
+      {
+         return (true);
+      }
+   }
+
+   if (countAdded <= min)
+   {  // no ships, quit
+      aiPlanDestroy(planID);
+      return (false);
+   }
+
+   // Means we have more than the min, but not the desired
+   return (true);
+}
+
+//==============================================================================
+/* getCoastalPoint: 
+   Give two points. It will go in that direction until it hits water, then drop
+   back a couple steps
+
+   Typically the landPoint will be the main base
+*/
+//==============================================================================
+vector getCoastalPoint(vector landPoint = cInvalidVector, vector waterPoint = cInvalidVector, int stepsBack = 1, bool isWaterPoint = false)
+{
+	// Start at land point. Take small increments toward water point until we hit water, then use steps back or forward
+   // depending on whether waterPoint is true or false
+	vector testPoint = landPoint;
+	int range = distance(landPoint, waterPoint);
+	vector normalizedVector = xsVectorNormalize(waterPoint - landPoint);
+	vector previousPoint = testPoint;
+   vector nextPoint = cInvalidVector;
+	int testAreaID = -1;
+
+	for (i = 0; < range)
+	{
+		testPoint = testPoint + normalizedVector;
+		testAreaID = kbAreaGetIDByPosition(testPoint);
+
+		if (kbAreaGetType(testAreaID) == cAreaTypeWater)
+		{
+         if (isWaterPoint == true)
+         {
+            return (nextPoint);
+         }
+         else
+         {
+			   return (previousPoint);
+         }
+		}
+
+		previousPoint = testPoint;
+      nextPoint = testPoint;
+		for (j = 0; < stepsBack)
+		{
+			previousPoint = previousPoint - normalizedVector; // Two steps back toward land
+         nextPoint = nextPoint + normalizedVector; // Two steps toward water
+		}
+	}
+	return cInvalidVector;
+}
+
+//==============================================================================
+/* AssertiveTransportRule
+   I hate transports
+*/
+//==============================================================================
+extern int gAssertiveTransportPlan = -1;
+extern int gAssertiveTransportShip = -1;
+extern vector gAssertivePickup = cInvalidVector;
+extern vector gAssertiveDropoff = cInvalidVector;
+extern int gAssertiveTransportStage = -1;
+
+extern const int cAssertiveTransportGather = 1;               
+extern const int cAssertiveTransportLoad = 2;      
+extern const int cAssertiveTransportMove = 3; 
+extern const int cAssertiveTransportEnd = 4;       
+
+
+bool confirmAssertivePickup(vector pickup = cInvalidVector) 
+{
+   if (pickup == cInvalidVector)
+   {
+      pickup = gAssertivePickup;
+   }
+
+   if (pickup == cInvalidVector)
+   { // gAssertivePickup is bad
+      return (false);
+   }
+
+   // check for buildings in immediate vicinity of pickup
+   int buildingQ = createSimpleUnitQuery(cUnitTypeBuilding, cPlayerRelationAny, cUnitStateAlive, pickup, 5.0); 
+   int buildingNum = kbUnitQueryExecute(buildingQ);
+   if (buildingNum <= 0)
+   {
+      return(true);
+   }
+
+   // Add something to select new pickup nearby
+
+   return (false);
+}
+
+int AssertiveTransportInitiate(vector pickup = cInvalidVector, vector dropoff = cInvalidVector, int pri = 100)
+{
+   if (gAssertiveTransportPlan >= 0)
+   {
+      // Can't do anything, quit
+      return (-1);
+   }
+
+   // Fix pickup and dropoff
+   pickup = getCoastalPoint(pickup, dropoff, 1, false);
+   dropoff = getCoastalPoint(dropoff, pickup, 1, false);
+
+   // Create the plan
+   gAssertiveTransportPlan = aiPlanCreate("Assertive Transport Plan", cPlanReserve);
+   aiPlanSetDesiredPriority(gAssertiveTransportPlan, pri); 
+
+   // Add a boat
+   int shipQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive);
+   int shipNumber = kbUnitQueryExecute(shipQuery);
+   int tempShip = -1;
+   int puid = -1;
+   int tempShipValue = -1;
+   int ship1 = -1;
+   int ship1Value = -1;
+
+   if (shipNumber <= 0)
+   {  // no ships, quit
+      aiPlanDestroy(gAssertiveTransportPlan);
+      gAssertiveTransportPlan = -1;
+      return (-1);
+   }
+
+   for (i = 0; < shipNumber)
+   {
+      tempShip = kbUnitQueryGetResult(shipQuery, i);
+      puid = kbUnitGetProtoUnitID(tempShip);
+      tempShipValue = kbUnitGetHealth(tempShip) * (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                     kbUnitCostPerResource(puid, cResourceInfluence));
+      if (aiPlanGetActualPriority(kbUnitGetPlanID(tempShip)) > 22)
+      {
+         continue;
+      }
+
+      if (puid == gGalleonUnit)
+      {
+         tempShipValue = tempShipValue * 2;
+      }
+      else if (puid == gFrigateUnit)
+      {
+         tempShipValue = tempShipValue / 3;
+      }
+
+      if (tempShipValue > ship1Value)
+      {
+         ship1 = tempShip;
+         ship1Value = tempShipValue;
+      }
+   }
+
+   if (ship1 < 0)
+   {
+      // Couldn't find a ship
+      aiPlanDestroy(gAssertiveTransportPlan);
+      gAssertiveTransportPlan = -1;
+      return (-1);
+   }
+
+   aiPlanAddUnitType(gAssertiveTransportPlan, cUnitTypeAbstractWarShip, 1, 1, 1);
+   if (aiPlanAddUnit(gAssertiveTransportPlan, ship1) == false)
+   {
+      aiPlanDestroy(gAssertiveTransportPlan);
+      gAssertiveTransportPlan = -1;
+      return (-1);
+   }
+
+   aiPlanSetNoMoreUnits(gAssertiveTransportPlan, true);
+
+   // Set the parameters and activate the rule to handle the transport
+   aiPlanSetActive(gAssertiveTransportPlan);
+
+   gAssertiveTransportShip = ship1;
+   gAssertivePickup = pickup;
+   gAssertiveDropoff = dropoff;
+   gAssertiveTransportStage = cAssertiveTransportGather;
+
+   xsEnableRule("AssertiveTransportRule");
+   return (gAssertiveTransportPlan);
+}
+
+
+rule AssertiveTransportRule
+inactive
+minInterval 10
+{
+   // Can only handle one transport (for now)
+
+   // Check to make sure boat is alive
+   if (kbUnitGetHealth(gAssertiveTransportShip) <= 0)
+   {
+      gAssertiveTransportStage = cAssertiveTransportEnd;
+   }
+
+   // Confirm the pickup location is clear of buildings
+   if (gAssertiveTransportStage <= cAssertiveTransportLoad)
+   {
+      confirmAssertivePickup();
+   }
+
+   int passengerNumber = aiPlanGetNumberUnits(gAssertiveTransportPlan, cUnitTypeLogicalTypeGarrisonInShips);
+   int totalNumber = aiPlanGetNumberUnits(gAssertiveTransportPlan, cUnitTypeAll);
+   int tempUnit = -1;
+   int passengerQ = -1;
+   int loadedNum = -1;
+
+   aiChat(1, "gAssertiveTransportStage: " + gAssertiveTransportStage);
+   sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, gAssertivePickup);
+   sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, gAssertiveDropoff);
+   sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, kbUnitGetPosition(gAssertiveTransportShip));
+   
+   switch (gAssertiveTransportStage)
+	{
+      // Gather Stage
+		case cAssertiveTransportGather:
+		{
+         // Just tell everyone to move to the pickup
+         if (distance(kbUnitGetPosition(gAssertiveTransportShip), gAssertivePickup) > 15)
+         {
+            aiTaskUnitMove(gAssertiveTransportShip, gAssertivePickup);
+         }
+         else
+         {
+            gAssertiveTransportStage = cAssertiveTransportLoad;
+         }
+
+         for (i = 0; < totalNumber)
+         {
+            tempUnit = aiPlanGetUnitByIndex(gAssertiveTransportPlan, i);
+            if (kbUnitIsType(tempUnit, cUnitTypeLogicalTypeGarrisonInShips) == true)
+            {
+               if (distance(kbUnitGetPosition(tempUnit), gAssertivePickup) > 20)
+               {
+                  aiTaskUnitMove(tempUnit, gAssertivePickup);
+               }
+            }
+         }
+      }
+      case cAssertiveTransportLoad:
+		{
+         // Tell everyone to board
+         for (i = 0; < totalNumber)
+         {
+            tempUnit = aiPlanGetUnitByIndex(gAssertiveTransportPlan, i);
+            if (kbUnitIsType(tempUnit, cUnitTypeLogicalTypeGarrisonInShips) == true)
+            {
+               aiTaskUnitWork(tempUnit, gAssertiveTransportShip);
+            }
+         }
+
+         // Check how many are on board
+         passengerQ = createSimpleUnitQuery(cUnitTypeLogicalTypeGarrisonInShips, cPlayerRelationAny, cUnitStateAlive, kbUnitGetPosition(gAssertiveTransportShip), 1.0); 
+         loadedNum = kbUnitQueryExecute(passengerQ);
+         if (loadedNum == passengerNumber)
+         {
+            gAssertiveTransportStage = cAssertiveTransportMove;
+         }
+      }
+      case cAssertiveTransportMove:
+		{
+         if (distance(kbUnitGetPosition(gAssertiveTransportShip), gAssertiveDropoff) > 5)
+         {
+            aiTaskUnitMove(gAssertiveTransportShip, gAssertiveDropoff);
+         }
+         else
+         {
+            aiTaskUnitEject(gAssertiveTransportShip);
+            // Check how many are on board
+            passengerQ = createSimpleUnitQuery(cUnitTypeLogicalTypeGarrisonInShips, cPlayerRelationAny, cUnitStateAlive, kbUnitGetPosition(gAssertiveTransportShip), 1.0); 
+            loadedNum = kbUnitQueryExecute(passengerQ);
+            if (loadedNum > 0)
+            {
+               aiTaskUnitMove(gAssertiveTransportShip, gAssertiveDropoff);
+            }
+            else
+            {
+               gAssertiveTransportStage = cAssertiveTransportEnd;
+            }
+         }
+      }
+      case cAssertiveTransportEnd:
+		{
+         aiPlanDestroy(gAssertiveTransportPlan);
+         gAssertiveTransportPlan = -1;
+         gAssertiveTransportShip = -1;
+         gAssertivePickup = cInvalidVector;
+         gAssertiveDropoff = cInvalidVector;
+         gAssertiveTransportStage = -1;
+
+         xsDisableSelf();
+      }
+   }
+}
+
+//==============================================================================
+/* fixTycoonParamaters
+   alters lots of stuff for tycoon mode
+*/
+//==============================================================================
+rule fixTycoonParamaters
+inactive
+minInterval 20
+{
+   if (aiGetGameMode() != cGameModeEconomyMode)
+   {
+      xsDisableSelf();
+      return;
+   }
+
+   // Reduce military values
+   setMilPopLimit(2, 5, 10, 12, 15);
+
+   // Correct for the rush. Allow other strategies
+   if (gStrategy == cStrategyRush)
+   {
+      gStrategy = cStrategyGreed;
+   }
+
+   // Make us greedy from the beginning
+   gGetGreedy = true;
+}
+
+//==============================================================================
 /* generateGaussian
    adds units to gLandReservePlan manually to prevent adding units that aren't 
      on the same island
@@ -48,10 +1331,205 @@ rule testGaussian
 inactive
 minInterval 2
 {
+   int testUnit = getUnit(cUnitTypeAgeUpBuilding, cPlayerRelationSelf);
+   if (kbUnitIsType(testUnit, cUnitTypeLogicalTypeBuildingsNotWalls) == true)
+   {
+      aiChat(1, "True, testUnit: " + testUnit);
+   }
+   else
+   {
+      aiChat(1, "False, testUnit: " + testUnit);
+   }
    float v = generateGaussian(0.0, 0.4, 15);
    float dR = generateTripleDiceRoll(0.0, 0.4);
    //int v = (cNumberPlayers - 1) / (aiGetNumberTeams() - 1); // Gaia counts as a player and a team
-   aiChat(1, "Gaussian: " + v + " Triple Dice Roll: " + dR);
+   //aiChat(1, "Gaussian: " + v + " Triple Dice Roll: " + dR);
+}
+
+//==============================================================================
+/* getTeamStrategy
+   looks at the players/civs on our team, and returns our best strategy
+
+   Rush:                btRushBoom >= 0.5       && btOffenseDefense >= 0.5
+   Naked Fast Fortress: btRushBoom >= 0; < 0.5  && btOffenseDefense >= 0.5
+   Safe Fast Fortress:  btRushBoom >= 0; < 0.5  && btOffenseDefense <  0.5
+   Fast Industrial:     btRushBoom < 0          && btOffenseDefense >= 0.5
+   Greedy/Safe Boom:    btRushBoom < 0          && btOffenseDefense <  0.5
+*/
+//==============================================================================
+int getTeamStrategy(void)
+{
+   float rushBoom = 0.0;
+   float offenseDefense = 0.0;
+   int teamPlayerCount = 0;
+   int civType = -1;
+   int myTeam = kbGetPlayerTeam(cMyID);
+   
+   for (i = 0; < cNumberPlayers)
+   {
+      if (myTeam != kbGetPlayerTeam(i))
+      {
+         continue;
+      }
+      teamPlayerCount += 1;
+      civType = kbGetCivForPlayer(i);
+
+      switch (civType)
+      {
+         case cCivBritish: // Elizabeth: Infantry oriented.
+         case cCivTheCircle:
+         case cCivPirate:
+         case cCivSPCAct3:
+         {
+            rushBoom += 0.5;
+            offenseDefense += 0.5;
+         }
+         case cCivFrench: // Napoleon:  Cav oriented, balanced
+         {
+            rushBoom += 0.0;
+            offenseDefense += 0.0;
+         }
+         case cCivSpanish: // Isabella: Bias against natives.
+         {
+            rushBoom += 0.0;
+            offenseDefense += 1.0;
+         }
+         case cCivRussians: // Ivan:  Infantry oriented rusher
+         {
+            rushBoom += 0.5;
+            offenseDefense += 0.5;
+         }
+         case cCivGermans: // Fast fortress, cavalry oriented
+         {
+            rushBoom += 0.0;
+            offenseDefense += 0.0;
+         }
+         case cCivDutch: // Fast fortress, ignore trade routes.
+         {
+            rushBoom += 0.0;
+            offenseDefense += 0.0;
+         }
+         case cCivPortuguese: // Fast fortress, artillery oriented
+         {
+            rushBoom += 0.0;
+            offenseDefense += 0.0;
+         }
+         case cCivOttomans: // Artillery oriented, rusher
+         {
+            rushBoom += 0.5;
+            offenseDefense += 0.5;
+         }
+         case cCivXPSioux: // Extreme rush
+         {
+            rushBoom += 0.8;
+            offenseDefense += 0.5;
+         }
+         case cCivXPIroquois: // Fast fortress, trade and native bias.
+         {
+            rushBoom += 0.0;
+            offenseDefense += 0.0;
+         }
+         case cCivXPAztec: // Rusher.
+         {
+            rushBoom += 0.5;
+            offenseDefense += 1.0;
+         }
+         case cCivChinese: // Kangxi:  Fast fortress, infantry oriented
+         {
+            rushBoom += 0.0;
+            offenseDefense += 0.0;
+         }
+         case cCivJapanese: // Shogun Tokugawa Ieyasu: Rusher, ignores trade routes
+         {
+            rushBoom += 0.5;
+            offenseDefense += 0.0;
+         }
+         case cCivIndians: // Rusher, balanced
+         {
+            rushBoom += 0.5;
+            offenseDefense += 0.0;
+         }
+         case cCivDEInca: // Huayna Capac: Rusher, trade and strong native bias.
+         {
+            rushBoom += 0.5;
+            offenseDefense += 0.0;
+         }
+         case cCivDESwedish: // Gustav the Great: Rusher, small artillery focus.
+         {
+            rushBoom += 0.7;
+            offenseDefense += 0.6;
+         }
+         case cCivDEAmericans: // George Washington: Balanced.
+         {
+            rushBoom += 0.0;
+            offenseDefense += 1.0;
+         }
+         case cCivDEEthiopians: // Emperor Tewodros: Bias towards building TPs.
+         {
+            rushBoom += 0.0;
+            offenseDefense += 0.0;
+         }
+         case cCivDEHausa: // Queen Amina: Bias towards building TPs.
+         {
+            rushBoom += 0.0;
+            offenseDefense += 0.0;
+         }
+         case cCivDEMexicans: // Miguel Hidalgo: Balanced.
+         {
+            rushBoom += 0.5;
+            offenseDefense += 0.0;
+         }
+         case cCivDEItalians: // Guiseppe Garibaldi: Balanced.
+         {
+            rushBoom += 0.5;
+            offenseDefense += 0.0;
+         }
+         case cCivDEMaltese: // Jean Parisot: Balanced.
+         {
+            rushBoom += 0.5;
+            offenseDefense += 0.0;
+         }      
+      }
+   }
+
+   // A couple checks to see if we should use a team strategy
+   // Only do this with teams of 3 or 4. Keeps a team of human + ai more even
+   if (teamPlayerCount <= 2)
+   {
+      return (-1);
+   }
+
+   // Average it
+   rushBoom = rushBoom / teamPlayerCount;
+   offenseDefense = offenseDefense / teamPlayerCount;
+
+   // Randomize it
+   //rushBoom = generateTripleDiceRoll(rushBoom);
+   //offenseDefense = generateTripleDiceRoll(offenseDefense);
+
+   // Find the strategy
+   if (rushBoom >= 0.5 && offenseDefense >= 0.5)
+   {
+      gStrategy = cStrategyRush;
+   }
+   else if (rushBoom >= 0 && rushBoom < 0.5 && offenseDefense >= 0.5)
+   {
+      gStrategy = cStrategyNakedFF;
+   }
+   else if (rushBoom >= 0 && rushBoom < 0.5 && offenseDefense <  0.5)
+   {
+      gStrategy = cStrategySafeFF;
+   }
+   else if (rushBoom < 0 && offenseDefense >= 0.5)
+   {
+      gStrategy = cStrategyFastIndustrial;
+   }
+   else //if (rushBoom < 0 && offenseDefense <  0.5) Make sure we pick something
+   {
+      gStrategy = cStrategyGreed;
+   }
+
+   return (gStrategy);
 }
 
 //==============================================================================
@@ -96,10 +1574,10 @@ minInterval 10
       gGetGreedy = false;
    }
    // If we haven't been attacked in a long time
-   else if (time > gLastDefendMissionTime + smallInterval && time > gDefenseReflexTimeout + smallInterval)
+   else if (time > gLastHomeBaseDefendTime + smallInterval && time > gDefenseReflexTimeout + smallInterval)
    {  
       // It's been a little while, but has it been a long while?
-      if (time > gLastDefendMissionTime + longInterval && time > gDefenseReflexTimeout + longInterval)
+      if (time > gLastHomeBaseDefendTime + longInterval && time > gDefenseReflexTimeout + longInterval)
       {
          gGetGreedy = true;
       }
@@ -118,7 +1596,12 @@ minInterval 10
             towerCount += 4;
          }
 
-         if (towerCount >= 2 * (kbGetAge() + 1))
+         // Fort on a 1v1? turtling (2 players + gaia)
+         if (cNumberPlayers == 3 && fortCount > 0)
+         {
+            gGetGreedy = true;
+         }
+         else if (towerCount >= 2 * (kbGetAge() + 1))
          {
             gGetGreedy = true;
          }
@@ -144,7 +1627,14 @@ minInterval 10
       // Distance to 1/3 map
       else
       {
-         greedDistance = distance(mainBaseLocation, mostHatedEnemyLoc) / 3;
+         if (gStrategy == cStrategyGreed)
+         {
+            greedDistance = distance(mainBaseLocation, mostHatedEnemyLoc) / 2;
+         }
+         else
+         {
+            greedDistance = distance(mainBaseLocation, mostHatedEnemyLoc) / 3;
+         }
       }
    }
 
@@ -330,6 +1820,48 @@ int getNavyStrength(int playerRelationVar = cPlayerRelationSelf, vector location
 }
 
 //==============================================================================
+// getTeamAge
+// AssertiveWall: gets the average age of our team. Rounds down
+//==============================================================================
+
+int getTeamAge(bool ourTeam = true)
+{
+   int ageTotal = 0;
+   int numPlayers = 0;
+   int myTeam = kbGetPlayerTeam(cMyID);
+   int averageAge = -1;
+
+   if (ourTeam == false)
+   {  // Account for Gaia
+      numPlayers = -1;
+   }
+
+   for (i = 0; < cNumberPlayers)
+   {
+      if (ourTeam == true)
+      {
+         if (myTeam == kbGetPlayerTeam(i))
+         {
+            ageTotal += kbGetAgeForPlayer(i);
+            numPlayers += 1;
+         }
+      }
+      else
+      {
+         if (myTeam != kbGetPlayerTeam(i))
+         {
+            ageTotal += kbGetAgeForPlayer(i);
+            numPlayers += 1;
+         }
+      }
+   }
+
+   averageAge = ageTotal / numPlayers;
+
+   return (averageAge);
+}
+
+//==============================================================================
 // allowedToAttack
 // AssertiveWall: replaces the logic involving gAttackMissionInterval to 
 //    determine if we are allowed to attack. Instead of an interval, we'll 
@@ -341,7 +1873,7 @@ int getNavyStrength(int playerRelationVar = cPlayerRelationSelf, vector location
 bool allowedToAttack(void)
 {
    // First make sure we have enough military depending on age
-   int ageVar = kbGetAge();
+   int ageVar = getTeamAge(false);   // our team by default, currently set to enemy team
    int enAgeVar = kbGetAgeForPlayer(aiGetMostHatedPlayerID());
    int militaryQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(militaryQueryID);
@@ -372,7 +1904,7 @@ bool allowedToAttack(void)
    else if (enAgeVar == cAge2)
    {
       if (militaryStrength < 15 * playersPerTeam){return false;}
-      else if (militaryStrength > 35 * playersPerTeam){return true;}
+      else if (militaryStrength > 30 * playersPerTeam){return true;}
    }
    else if (enAgeVar == cAge3)
    {
@@ -390,224 +1922,59 @@ bool allowedToAttack(void)
       else if (militaryStrength > 60 * playersPerTeam){return true;}
    }
 
-   // The next block looks at score breakdowns to determine if we're in a good spot to attack
-
-   static int atkStartingScores = -1; // Array holding initial scores for each player
-   static int atkHighScores = -1;     // Array, each player's high-score mark
-   static int atkTeamScores = -1;
-   int teamSize = (cNumberPlayers -1) / 2;
+   // The next block looks at scores
+   int teamScore = 0;
+   int enemyScore = 0;
+   int numEnemies = -1;   // start at -1 to account for gaia
+   int numAllies = 0;
    int myTeam = kbGetPlayerTeam(cMyID);
-   int enemyTeam = -1;
-   int score = -1;
-   int firstHumanAlly = -1;
 
-   if (atkHighScores < 0)
+   for (i = 0; < cNumberPlayers)
    {
-      atkHighScores = xsArrayCreateInt(cNumberPlayers, 0, "High Scores"); // Init this below.
+      if (myTeam == kbGetPlayerTeam(i))
+      {
+         teamScore += aiGetScore(i);
+         numAllies += 1;
+      }
+      else
+      {
+         enemyScore = aiGetScore(i);
+         numEnemies += 1;
+      }
    }
-   if (atkStartingScores < 0)
+
+   // If we have an advantage in player number or we are equal, use raw score (like a 4v3 game)
+   // If we are winning by a decent amount attack, otherwise check if we are losing
+   if (numAllies >= numEnemies)
    {
-      atkStartingScores = xsArrayCreateInt(cNumberPlayers, 0, "Starting Scores"); 
-      for (player = 1; < cNumberPlayers)
+      if (teamScore > 1.2 * enemyScore)
       {
-         score = aiGetScore(player);
-         debugChats("Starting score for player: " + player + " is: " + score);
-         xsArraySetInt(atkStartingScores, player, score);
-         xsArraySetInt(atkHighScores, player, 0); // High scores will track score actual - starting score, to handle Deathmatch better.
+         return (true);
+      }
+      else if (teamScore < 0.9 * enemyScore)
+      {
+         return (false);
       }
    }
-   if (atkTeamScores < 0) // Init this below.
+   else
    {
-      atkTeamScores = xsArrayCreateInt(3, 0, "Team total scores");
+      if (teamScore / numAllies > 1.2 * enemyScore / numEnemies)
+      {
+         return (true);
+      }
+      else if (teamScore / numAllies < enemyScore / numEnemies)
+      {
+         return (false);
+      }
    }
 
-   if (firstHumanAlly < 0) // First pass of this Rule.
+   // Time as a last check
+   if (xsGetTime() - gLastAttackMissionTime < 2 * gAttackMissionInterval)
    {
-      for (player = 1; < cNumberPlayers)
-      {
-         if (kbGetPlayerTeam(player) == myTeam)
-         {
-            if ((firstHumanAlly < 1) && (kbIsPlayerHuman(player) == true))
-            {
-               firstHumanAlly = player;
-            }
-         }
-         else if (enemyTeam < 0)
-         {
-            enemyTeam = kbGetPlayerTeam(player);
-         }
-      }
+      return (true);
    }
 
-   // We can't attack during treaty.
-   if (aiTreatyActive() == true)
-   {
-      return false;
-   }
-
-   // Update team totals, check for new high scores.
-   xsArraySetInt(atkTeamScores, myTeam, 0);
-   xsArraySetInt(atkTeamScores, enemyTeam, 0);
-   int lowestRemainingScore = 100000; // Very high, will be reset by first real score.
-   int lowestRemainingPlayer = -1;
-   int highestScore = -1;
-   int highestPlayer = -1;
-
-   for (player = 1; < cNumberPlayers)
-   {
-      if (kbHasPlayerLost(player) == true)
-      {
-         continue;
-      }
-      
-      score = aiGetScore(player) - xsArrayGetInt(atkStartingScores, player); // Actual score relative to initial score.
-      
-      if (score < lowestRemainingScore)
-      {
-         lowestRemainingScore = score;
-         lowestRemainingPlayer = player;
-      }
-      if (score > highestScore)
-      {
-         highestScore = score;
-         highestPlayer = player;
-      }
-      if (score > xsArrayGetInt(atkHighScores, player))
-      {
-         xsArraySetInt(atkHighScores, player, score); // Set personal high score.
-      }
-      if (kbGetPlayerTeam(player) == myTeam)       // Update team scores.
-      {
-         xsArraySetInt(atkTeamScores, myTeam, xsArrayGetInt(atkTeamScores, myTeam) + score);
-      }
-      else // Enemy team.
-      {
-         xsArraySetInt(atkTeamScores, enemyTeam, xsArrayGetInt(atkTeamScores, enemyTeam) + score);
-      }
-   }
-
-   // Bools used to indicate chat usage, prevent re-use.
-   static bool enemyNearlyDead = false;
-   static bool enemyStrong = false;
-   static bool losingEnemyStrong = false;
-   static bool losingEnemyWeak = false;
-   static bool losingAllyStrong = false;
-   static bool losingAllyWeak = false;
-   static bool winningNormal = false;
-   static bool winningAllyStrong = false;
-   static bool winningAllyWeak = false;
-
-   static int shouldResignCount = 0;         // Set to 1, 2 and 3 as chats are used.
-   static int shouldResignLastTime = 420000; // When did I last suggest resigning?  Consider it again 3 min later.
-                                             // Defaults to 7 min, so first suggestion won't be until 10 minutes.
-
-   // Attempt to fire chats, from most specific to most general.
-   // When we chat, mark that one used and exit for now, i.e no more than one chat per rule execution.
-
-   // Check the winning / losing situations, if it's neither it's a tie.
-   bool winning = false;
-   bool losing = false;
-   float ourAverageScore = (aiGetScore(cMyID) + aiGetScore(firstHumanAlly)) / 2.0;
-
-   // We are winning chats.
-   if (xsArrayGetInt(atkTeamScores, myTeam) > (1.20 * xsArrayGetInt(atkTeamScores, enemyTeam)))
-   {
-      winning = true;
-
-      // Are we winning because my ally rocks?
-      // Try to catch up
-      if ((winningAllyStrong == false) && (firstHumanAlly == highestPlayer))
-      {
-         winningAllyStrong = true;
-         return false;
-      }
-
-      // Are we winning in spite of my weak ally?
-      // Stay offensive
-      if ((winningAllyWeak == false) && (cMyID == highestPlayer))
-      {
-         winningAllyWeak = true;
-         return true;
-      }
-
-      // OK, we're winning, but neither of us has high score.
-      // Hopefully we will both attack together
-      if (winningNormal == false)
-      {
-         winningNormal = true;
-         return true;
-      }
-   }
-
-   // We are losing chats.
-   if (xsArrayGetInt(atkTeamScores, myTeam) < (0.70 * xsArrayGetInt(atkTeamScores, enemyTeam)))
-   { 
-      losing = true;
-
-      // Talk about resigning?
-      // AssertiveWall: increase the time interval each time it's sent. 10, 15 mins
-      if ((shouldResignCount < 3) &&
-          ((xsGetTime() - shouldResignLastTime) > (5 + 5 * shouldResignCount) * 60 * 1000)) // Haven't done it 3 times or within 3 minutes.
-      {
-
-         shouldResignCount++;
-         shouldResignLastTime = xsGetTime();
-         return false;
-      }
-
-      // HEADS UP: not all chats were made for each civilization. So let's say
-      // we are playing as Germans and we've spotted a weak Hausa. If we then set
-      // losingEnemyWeak to true and send cAICommPromptToAllyWeAreLosingEnemyWeakHausa
-      // we've wasted our taunt. Because Germans don't have VO for this line.
-      // So try to only send a chat when we actually have the VO recorded for it.
-      
-      // Check for "we are losing but let's kill the weakling"
-      if ((losingEnemyWeak == false) && (kbIsPlayerEnemy(lowestRemainingPlayer) == true))
-      {
-         return true;
-      }
-
-      // Check for losing while enemy player has high score.
-      if ((losingEnemyStrong == false) && (kbIsPlayerEnemy(highestPlayer) == true))
-      {
-         return false;
-      }
-
-      // If we're here, we're losing but our team has the high score.  If it's my ally, we're losing because I suck.
-      if ((losingAllyStrong == false) && (firstHumanAlly == highestPlayer))
-      {
-         losingAllyStrong = true;
-         return false;
-      }
-      if ((losingAllyWeak == false) && (cMyID == highestPlayer))
-      {
-         losingAllyWeak = true;
-         return true;
-      }
-   } // End chats while we're losing.
-
-   if ((winning == false) && (losing == false))
-   { 
-      // Check for a near-death enemy while the match is even.
-      if ((enemyNearlyDead == false) && (kbIsPlayerEnemy(lowestRemainingPlayer) == true))
-      {
-         if ((lowestRemainingScore * 1.5) < xsArrayGetInt(atkHighScores, lowestRemainingPlayer)) // He's down to 75% of his highscore.
-         {
-            return true;
-         }
-      }
-
-      // Check for very strong enemy.
-      if ((enemyStrong == false) && (kbIsPlayerEnemy(highestPlayer) == true))
-      {
-         if ((ourAverageScore * 1.3) < highestScore) // Enemy has high score, it's at least 30% above our average.
-         { 
-            return false;
-         }
-      }
-   }
-
-   return false;
+   return (false);
 }
 
 //==============================================================================
@@ -698,53 +2065,6 @@ minInterval 1
    {
       aiChat(1, "idleVilnum: " + numberFound);
    }
-}
-
-//==============================================================================
-/* getCoastalPoint: 
-   Give two points. It will go in that direction until it hits water, then drop
-   back a couple steps
-
-   Typically the landPoint will be the main base
-*/
-//==============================================================================
-vector getCoastalPoint(vector landPoint = cInvalidVector, vector waterPoint = cInvalidVector, int stepsBack = 1, bool isWaterPoint = false)
-{
-	// Start at land point. Take small increments toward water point until we hit water, then use steps back or forward
-   // depending on whether waterPoint is true or false
-	vector testPoint = landPoint;
-	int range = distance(landPoint, waterPoint);
-	vector normalizedVector = xsVectorNormalize(waterPoint - landPoint);
-	vector previousPoint = testPoint;
-   vector nextPoint = cInvalidVector;
-	int testAreaID = -1;
-
-	for (i = 0; < range)
-	{
-		testPoint = testPoint + normalizedVector;
-		testAreaID = kbAreaGetIDByPosition(testPoint);
-
-		if (kbAreaGetType(testAreaID) == cAreaTypeWater)
-		{
-         if (isWaterPoint == true)
-         {
-            return (nextPoint);
-         }
-         else
-         {
-			   return (previousPoint);
-         }
-		}
-
-		previousPoint = testPoint;
-      nextPoint = testPoint;
-		for (j = 0; < stepsBack)
-		{
-			previousPoint = previousPoint - normalizedVector; // Two steps back toward land
-         nextPoint = nextPoint + normalizedVector; // Two steps toward water
-		}
-	}
-	return cInvalidVector;
 }
 
 
@@ -935,7 +2255,10 @@ minInterval 15
       }
 
       gEndlessWaterRaidPlan = aiPlanCreate("Endless Water Raids", cPlanCombat);
+      aiPlanSetDesiredPriority(gEndlessWaterRaidPlan, 21); // Not very important. Below exploring and nugget gathering
       aiPlanAddUnitType(gEndlessWaterRaidPlan, cUnitTypeAbstractWarShip, shipMin, 2, 3);
+         aiPlanSetNoMoreUnits(gEndlessWaterRaidPlan, true);
+         addWarshipsToPlan(gEndlessWaterRaidPlan, shipMin, 3, 21);
       aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
       aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
       //aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanTargetPlayerID, 0, navalTargetPlayer);
@@ -943,7 +2266,7 @@ minInterval 15
       aiPlanSetVariableVector(gEndlessWaterRaidPlan, cCombatPlanGatherPoint, 0, gNavyVec);
       aiPlanSetVariableFloat(gEndlessWaterRaidPlan, cCombatPlanGatherDistance, 0, 80.0); // Big gather radius
       aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternRandom);
-      aiPlanSetDesiredPriority(gEndlessWaterRaidPlan, 21); // Not very important. Below exploring and nugget gathering
+
 
 
       // AssertiveWall: Never bring any extra boats on these. Balanced refresh frequency
@@ -983,15 +2306,20 @@ minInterval 10
    if (gWaterNuggetPlan < 0)
    {
       int nuggetPlanID = aiPlanCreate("Nugget Raiding Plan", cPlanReserve);
+      aiPlanSetDesiredPriority(nuggetPlanID, 21); // Higher than fishing and exploring. Fishing boats normally explore anyway
+
       if (civIsNative() == true)
       {
          aiPlanAddUnitType(gWaterNuggetPlan, cUnitTypeAbstractWarShip, 1, 3, 5);
+         aiPlanSetNoMoreUnits(gWaterNuggetPlan, true);
+         addWarshipsToPlan(gWaterNuggetPlan, 1, 5, 21);
       }
       else
       {
          aiPlanAddUnitType(gWaterNuggetPlan, cUnitTypeAbstractWarShip, 1, 2, 3);
+         aiPlanSetNoMoreUnits(gWaterNuggetPlan, true);
+         addWarshipsToPlan(gWaterNuggetPlan, 1, 3, 21);
       }
-      aiPlanSetDesiredPriority(nuggetPlanID, 21); // Higher than fishing and exploring. Fishing boats normally explore anyway
       aiPlanSetActive(nuggetPlanID);
       gWaterNuggetPlan = nuggetPlanID;
    }
@@ -1013,10 +2341,14 @@ minInterval 10
       if (civIsNative() == true)
       {
          aiPlanAddUnitType(gWaterNuggetPlan, cUnitTypeAbstractWarShip, 1, 3, 5);
+         aiPlanSetNoMoreUnits(gWaterNuggetPlan, true);
+         addWarshipsToPlan(gWaterNuggetPlan, 1, 5, 21);
       }
       else
       {
          aiPlanAddUnitType(gWaterNuggetPlan, cUnitTypeAbstractWarShip, 1, 2, 3);
+         aiPlanSetNoMoreUnits(gWaterNuggetPlan, true);
+         addWarshipsToPlan(gWaterNuggetPlan, 1, 3, 21);
       }
    }
 
@@ -1539,7 +2871,7 @@ inactive
 //==============================================================================
 
 rule forwardBaseWall
-inactive
+active
 minInterval 10
 {
    if ((kbGetPopCap() - kbGetPop()) < 20)
@@ -1558,32 +2890,46 @@ minInterval 10
       return; // AssertiveWall: wait until the fort is building or built
    }
    
-   int wallPlanID = aiPlanCreate("FrontierWall", cPlanBuildWall);
-   float wallRadius = 30.0; // AssertiveWall: used to set wall ring size
-   int gateNumber = aiRandInt(2) + 3;      // AssertiveWall: sets number of gates
-   vector wallCenter = gForwardBaseLocation;
-
-
-   if (wallPlanID != -1)
+   if (civIsNative() != true)
    {
-      aiPlanSetVariableInt(wallPlanID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeRing);
-      aiPlanAddUnitType(wallPlanID, cUnitTypeAbstractVillager, 1, 1, 1);
-      aiPlanSetVariableVector(
-      wallPlanID, cBuildWallPlanWallRingCenterPoint, 0, wallCenter);
-      aiPlanSetVariableInt(wallPlanID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
-      
-      aiPlanSetVariableFloat(wallPlanID, cBuildWallPlanWallRingRadius, 0, wallRadius);
-      aiPlanSetVariableInt(wallPlanID, cBuildWallPlanNumberOfGates, 0, gateNumber);
-      aiPlanSetBaseID(wallPlanID, kbBaseGetMainID(cMyID));
-      aiPlanSetEscrowID(wallPlanID, cEconomyEscrowID);
-      aiPlanSetDesiredPriority(wallPlanID, 80);
-      aiPlanSetActive(wallPlanID, true);
-      sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
-      // Enable our wall gap rule, too.
-      //xsEnableRule("fillInWallGaps");
-      debugBuildings("Enabling Wall Plan for Base ID: " + kbBaseGetMainID(cMyID));
+      if (kbGetAge() >= cAge4)
+      {
+         buildFourCornerStarFort(gForwardBaseLocation, gForwardBaseID, 2.4, 90, 2, 0);
+      }
+      else
+      {
+         buildCornerPairStarFort(gForwardBaseLocation, gForwardBaseID, 2.4, 90, 2, 0);
+      }
    }
-   xsEnableRule("forwardBaseTowers");
+   else
+   {
+      int wallPlanID = aiPlanCreate("FrontierWall", cPlanBuildWall);
+      float wallRadius = 30.0; // AssertiveWall: used to set wall ring size
+      int gateNumber = aiRandInt(2) + 3;      // AssertiveWall: sets number of gates
+      vector wallCenter = gForwardBaseLocation;
+
+      if (wallPlanID != -1)
+      {
+         aiPlanSetVariableInt(wallPlanID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeRing);
+         aiPlanAddUnitType(wallPlanID, cUnitTypeAbstractVillager, 1, 1, 1);
+         aiPlanSetVariableVector(
+         wallPlanID, cBuildWallPlanWallRingCenterPoint, 0, wallCenter);
+         aiPlanSetVariableInt(wallPlanID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
+         
+         aiPlanSetVariableFloat(wallPlanID, cBuildWallPlanWallRingRadius, 0, wallRadius);
+         aiPlanSetVariableInt(wallPlanID, cBuildWallPlanNumberOfGates, 0, gateNumber);
+         aiPlanSetBaseID(wallPlanID, kbBaseGetMainID(cMyID));
+         aiPlanSetEscrowID(wallPlanID, cEconomyEscrowID);
+         aiPlanSetDesiredPriority(wallPlanID, 80);
+         aiPlanSetActive(wallPlanID, true);
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
+         // Enable our wall gap rule, too.
+         //xsEnableRule("fillInWallGaps");
+         debugBuildings("Enabling Wall Plan for Base ID: " + kbBaseGetMainID(cMyID));
+      }
+      xsEnableRule("forwardBaseTowers");
+   }
+
    xsDisableSelf();
 }
 
@@ -3426,11 +4772,11 @@ void loadForces(vector pickupPoint = cInvalidVector)
 
 
    // Make sure our existing ships are still alive
-   if (kbUnitGetHealth(gLandingShip1) < 0.0)
+   if (kbUnitGetHealth(gLandingShip1) <= 0.0)
    {
       gLandingShip1 = -1;
    }
-   if (kbUnitGetHealth(gLandingShip2) < 0.0)
+   if (kbUnitGetHealth(gLandingShip2) <= 0.0)
    {
       gLandingShip2 = -1;
    }
@@ -3570,7 +4916,7 @@ void loadForces(vector pickupPoint = cInvalidVector)
                cUnitStateAlive, kbUnitGetPosition(gLandingShip2), 1.0);
    }
 
-   if (unitsOnShip1 + unitsOnShip2 > landingForcesSize * 0.95 || 
+   if (unitsOnShip1 + unitsOnShip2 > landingForcesSize * 0.9 || 
        (unitsOnShip1 + unitsOnShip2 > 0 && xsGetTime() > gAmphibiousAssaultSavedTime + 60000))
    {
       if (gTestingChatsOn == true)
@@ -4107,9 +5453,31 @@ minInterval 20
    }
    vector attackLocation = getEnemyBase(-1, armyPower);
 
+   // Army minimums
+   int minArmy = -1;
+   int enAgeVar = kbGetAgeForPlayer(aiGetMostHatedPlayerID());
+
+   if (enAgeVar == cAge2)
+   {
+      minArmy = 15;
+   }
+   else if (enAgeVar == cAge3)
+   {
+      minArmy = 20;
+   }
+   else if (enAgeVar == cAge4)
+   {
+      minArmy = 25;
+   }
+   else if (enAgeVar == cAge5)
+   {
+      minArmy = 30;
+   }
+
+
    if (forwardAttackWave < 0)
    {
-      if ((forwardArmyCount >= 50 || armyPower > 40) && forwardArmyCount > numberForward * 0.9)
+      if ((forwardArmyCount >= 50 || armyPower > minArmy) || (armyPower > 0 && xsGetTime() > gAmphibiousPushTime + gAttackMissionInterval))// && forwardArmyCount > numberForward * 0.7)
       {
          forwardAttackWave = aiPlanCreate("Forward Attack Wave", cPlanCombat);
          aiPlanAddUnitType(forwardAttackWave, cUnitTypeLogicalTypeLandMilitary, 0, forwardArmyCount, forwardArmyCount); 
@@ -4135,6 +5503,8 @@ minInterval 20
          {
             aiChat(1, "Sending in an attack wave");
          }
+
+         gAmphibiousPushTime = xsGetTime();
       }
    }
 

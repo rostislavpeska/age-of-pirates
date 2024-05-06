@@ -2995,14 +2995,14 @@ minInterval 10
 //==============================================================================
 rule slaughterMonitor
 inactive
-minInterval 5
+minInterval 15
 {
    if (cvOkToGatherFood == false)
    {
       return;
    }
    
-   static int slaughterPlanID = -1;
+   //static int slaughterPlanID = -1;
    int numCattle = -1;
    int numSheepWanted = 0;
    int numCattleWanted = 0;
@@ -3019,7 +3019,6 @@ minInterval 5
        cMyCiv != cCivDEMexicans &&
        civIsNative() == false &&
        cMyCiv != cCivJapanese && cMyCiv != cCivSPCJapanese && cMyCiv != cCivSPCJapaneseEnemy)
-   if (true == true)
    {
       mainBaseVec = kbBaseGetLocation(cMyID, mainBaseID);
       numCattle = getUnitCountByLocation(cUnitTypeHerdable, cPlayerRelationAny, cUnitStateAny, mainBaseVec, 60.0);
@@ -3084,6 +3083,7 @@ minInterval 5
                              (kbUnitCount(cMyID, cUnitTypeypVillage, cUnitStateAlive) <= 0)))) &&
        (civIsAfrican() == false || time > 300000))
    {
+      // AssertiveWall: If we have a livestock pen built, 
       return;
    }
 
@@ -3100,34 +3100,50 @@ minInterval 5
    {
       gatherersWanted = 0;
    }
-   else
+   else if (numCattle <= 5)
    {
       gatherersWanted = 2;
    }
-
-   if (slaughterPlanID < 0) // First run or our plan went invalid.
+   else if (numCattle <= 10)
    {
-      slaughterPlanID = aiPlanCreate("Cattle slaughter", cPlanGather);
-      aiPlanSetBaseID(slaughterPlanID, kbBaseGetMainID(cMyID));
-      aiPlanSetVariableInt(slaughterPlanID, cGatherPlanResourceUnitTypeFilter, 0, cUnitTypeHerdable);
-      aiPlanSetVariableInt(slaughterPlanID, cGatherPlanResourceType, 0, cAllResources);
-      // 2-4 gatherers if there is cattle.
-      aiPlanAddUnitType(slaughterPlanID, gEconUnit, gatherersWanted, gatherersWanted, 2 * gatherersWanted);
-      aiPlanSetDesiredPriority(slaughterPlanID, 86);
-      aiPlanSetActive(slaughterPlanID);
-      debugEconomy("Activated cattle slaughter plan " + slaughterPlanID);
+      gatherersWanted = 3;
+   }
+   else if (numCattle <= 15)
+   {
+      gatherersWanted = 4;
    }
    else
    {
-      // 2-4 gatherers if there is cattle
-      aiPlanAddUnitType( slaughterPlanID, gEconUnit, gatherersWanted, gatherersWanted, 2 * gatherersWanted); 
+      gatherersWanted = 5;
    }
-   
-   if (aiPlanGetState(slaughterPlanID) == -1)
+
+   if (gSlaughterPlanID < 0 && gatherersWanted > 0) // First run or our plan went invalid.
    {
-      debugEconomy("Cattle gather plan " + slaughterPlanID + " is invalid");
-      aiPlanDestroy(slaughterPlanID); // Create a new one next run.
-      slaughterPlanID = -1;
+      gSlaughterPlanID = aiPlanCreate("Cattle slaughter", cPlanGather);
+      aiPlanSetBaseID(gSlaughterPlanID, kbBaseGetMainID(cMyID));
+      aiPlanSetVariableInt(gSlaughterPlanID, cGatherPlanResourceUnitTypeFilter, 0, cUnitTypeHerdable);
+      aiPlanSetVariableInt(gSlaughterPlanID, cGatherPlanResourceType, 0, cAllResources);
+      // 2-4 gatherers if there is cattle.
+      aiPlanAddUnitType(gSlaughterPlanID, gEconUnit, 2, gatherersWanted, gatherersWanted);
+      aiPlanSetDesiredPriority(gSlaughterPlanID, 92); // up from 86
+      aiPlanSetActive(gSlaughterPlanID);
+      debugEconomy("Activated cattle slaughter plan " + gSlaughterPlanID);
+   }
+   else if (gSlaughterPlanID >= 0 && aiPlanGetNumberUnits(gSlaughterPlanID, gEconUnit) < gatherersWanted)
+   {
+      // 2-4 gatherers if there is cattle
+      aiPlanAddUnitType(gSlaughterPlanID, gEconUnit, 2, gatherersWanted, gatherersWanted); 
+      if (aiPlanGetNumberUnits(gSlaughterPlanID, gEconUnit) < 2)
+      {
+         aiPlanDestroy(gSlaughterPlanID); // Create a new one next run.
+         gSlaughterPlanID = -1;
+      }
+   }
+   else if (aiPlanGetState(gSlaughterPlanID) == -1)
+   {
+      debugEconomy("Cattle gather plan " + gSlaughterPlanID + " is invalid");
+      aiPlanDestroy(gSlaughterPlanID); // Create a new one next run.
+      gSlaughterPlanID = -1;
    }
 }
 

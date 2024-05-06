@@ -1464,10 +1464,10 @@ void initPersonality(void)
       }
       btOffenseDefense = 0.0;
       btBiasCav = 0.0;
-         btBiasInf = 0.3;
+      btBiasInf = 0.3;
       btBiasArt = 0.0;
       btBiasNative = 1.0;
-         btBiasTrade = 0.5; // Use Tambos.
+      btBiasTrade = 0.5; // Use Tambos.
       break;
    }
    case cCivDESwedish: // Gustav the Great: Rusher, small artillery focus.
@@ -1494,7 +1494,7 @@ void initPersonality(void)
       }
       btOffenseDefense = 0.0;
       btBiasCav = 0.0;
-         btBiasInf = 0.2;
+      btBiasInf = 0.2;
       btBiasArt = 0.0;
       btBiasNative = 0.0;
       btBiasTrade = -0.5;
@@ -1505,21 +1505,21 @@ void initPersonality(void)
       btRushBoom = 0.0;
       btOffenseDefense = 0.0;
       btBiasCav = -0.3;
-         btBiasInf = 0.4;
+      btBiasInf = 0.4;
       btBiasArt = 0.0;
-         btBiasNative = 1.0;
-         btBiasTrade = 0.4;
+      btBiasNative = 1.0;
+      btBiasTrade = 0.4;
       break;
    }
       case cCivDEHausa: // Queen Amina: Bias towards building TPs.
    {
       btRushBoom = 0.0;
       btOffenseDefense = 0.0;
-         btBiasCav = 0.2;
+      btBiasCav = 0.2;
       btBiasInf = 0.0;
       btBiasArt = 0.0;
-         btBiasNative = 1.0;
-         btBiasTrade = 0.4;
+      btBiasNative = 1.0;
+      btBiasTrade = 0.4;
       break;
    }
    case cCivDEMexicans: // Miguel Hidalgo: Balanced.
@@ -1532,7 +1532,7 @@ void initPersonality(void)
       btOffenseDefense = 0.0;
       btBiasCav = -0.4;
       btBiasInf = 0.4;
-         btBiasArt = -0.3;
+      btBiasArt = -0.3;
       btBiasNative = 0.0;
       btBiasTrade = -0.5;
       break;
@@ -1607,14 +1607,14 @@ void initPersonality(void)
    }
 
    // AssertiveWall: Replace values with a triple dice roll centered around those values.
-   // For now, use default range of +/- 0.4
+   // Default range is +/- 0.4
    btRushBoom = generateTripleDiceRoll(btRushBoom);
    btOffenseDefense = generateTripleDiceRoll(btOffenseDefense);
    btBiasCav = generateTripleDiceRoll(btBiasCav, 0.1);
    btBiasInf = generateTripleDiceRoll(btBiasInf, 0.1);
    btBiasArt = generateTripleDiceRoll(btBiasArt, 0.1);
-   btBiasNative = generateTripleDiceRoll(btBiasNative, 0.1);
-   btBiasTrade = generateTripleDiceRoll(btBiasTrade, 0.1);
+   btBiasNative = generateTripleDiceRoll(btBiasNative, 0.2);
+   btBiasTrade = generateTripleDiceRoll(btBiasTrade);
 
    if (((aiTreatyActive() == true) || (aiGetGameMode() == cGameModeDeathmatch)) && 
        (btRushBoom > 0.0))
@@ -1682,7 +1682,11 @@ void initPersonality(void)
    }
 
    // AssertiveWall: Set the strategy style
-   if (btRushBoom >= 0.5 && btOffenseDefense >= 0.5)
+   if (getTeamStrategy() > 0)
+   {
+      // do nothing, gStrategy already set in getTeamStrategy
+   }
+   else if (btRushBoom >= 0.5 && btOffenseDefense >= 0.5)
    {
       gStrategy = cStrategyRush;
    }
@@ -2657,8 +2661,8 @@ minInterval 2
       // AssertiveWall: Set up build orders for standard starts
       if (kbGetAge() == cAge1 && kbResourceGet(cResourceFood) <= 0 && gUseBuildOrder == true)
       {
-         //createBuildOrder();
-         //xsEnableRuleGroup("buildOrderRules");
+         createBuildOrder();
+         xsEnableRuleGroup("buildOrderRules");
       }
 
       // AssertiveWall: Delay building if we're on ceylon or equivalent

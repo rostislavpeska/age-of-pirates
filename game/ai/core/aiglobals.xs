@@ -65,6 +65,8 @@ extern const int cStrategyFastIndustrial = 4;
 extern const int cStrategyGreed = 5;
 extern bool gGetGreedy = false;
 extern int gCalculatedGatherDistance = -1;
+extern int gLastHomeBaseDefendTime = -1;
+extern int gLastShipmentSentTime = -1;
 
 
 //==============================================================================
@@ -119,6 +121,7 @@ extern int gAmphibiousArmyPlan = -1;            // The plan to handle the amphib
 extern int gAmphibiousTransportPlan = -1;       // The plan that reserves our transports
 extern int gAmphibiousTrainPlan = -1;           // Plan for training from galleons
 extern int gAmphibiousAssaultSavedTime = -1;    // Store times along the way
+extern int gAmphibiousPushTime = -1;            // LAst time we pushed inland
 extern int gLandingShip1 = -1;                  // Stores transport ship 1
 extern int gLandingShip2 = -1;                  // Stores transport ship 2
 extern const int cGatherNavy = 0;               // First stage, gather up the navy for the assault
@@ -331,6 +334,8 @@ extern int gResourceNeeds = -1;
 extern int gExtraResourceNeeds = -1;
 extern bool gLowOnResources = false;
 extern bool gExcessResources = true;
+
+extern int gSlaughterPlanID = -1; // AssertiveWall: persistent slaughter plan
 
 extern int gGatherPlanPriorityHunt = 80;
 extern int gGatherPlanPriorityBerry = 81;

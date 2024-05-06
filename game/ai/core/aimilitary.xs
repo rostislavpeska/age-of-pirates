@@ -1601,6 +1601,15 @@ minInterval 15
       aiPlanSetActive(planID);
 
       gLastDefendMissionTime = xsGetTime();
+      // AssertiveWall: determine if we're defending a forward base or main base. Might need to make a longer rule
+      //    and step through each player.
+      if (targetBaseLocation != cInvalidVector)
+      {
+         if (distance(targetBaseLocation, gForwardBaseLocation) > distance(targetBaseLocation, mainBaseLocation))
+         {
+            gLastHomeBaseDefendTime = xsGetTime();
+         }
+      }
       debugMilitary("***** DEFENDING player " + targetPlayer + " base " + targetBaseID);
    }
 }
@@ -3668,7 +3677,14 @@ minInterval 10
 
          if (enemyCount >= allyCount + 5) // We're behind by 5 or more.
          {
-            if ((levyPlan < 0) && ((cMyCiv != cCivDEAmericans) || (numberLevyPlans < 1)))
+            // AssertiveWall: Check to see if we have a HC shipment coming
+            int time = xsGetTime();
+            int timingTime = 30000;
+            if (time < gLastShipmentSentTime + timingTime)
+            {
+               // We have a shipment coming, hang in there until it's about to arrive
+            }
+            else if ((levyPlan < 0) && ((cMyCiv != cCivDEAmericans) || (numberLevyPlans < 1)))
             {
                debugMilitary("Starting a levy plan, there are " + enemyCount +
                   " enemy units in my base against " + allyCount + " friendlies");

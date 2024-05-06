@@ -80,6 +80,7 @@ mutable void updateArchipelagoResourceDistribution(void) {}
 mutable vector getDropoffPoint(vector pickup = cInvalidVector, vector dropoff = cInvalidVector, int stepsBack = 1) {return(cInvalidVector);}
 mutable vector selectForwardBaseBeachHead(void) { return(cInvalidVector); }
 mutable void buildForwardTowers(void) { return; }
+mutable void setMilPopLimit(int age1Limit = -1, int age2Limit = -1, int age3Limit = -1, int age4Limit = -1, int age5Limit = -1) {}
 
 //==============================================================================
 // Includes.
@@ -1472,7 +1473,7 @@ minInterval 10
    int unitTypeVar = cUnitTypeLogicalTypeGarrisonInShips;
    if (gIsArchipelagoMap == true)
    {
-      unitTypeVar = cUnitTypeLogicalTypeGarrisonInShips;//cUnitTypeLogicalTypeLandMilitary;
+      unitTypeVar = cUnitTypeLogicalTypeLandMilitary; //cUnitTypeLogicalTypeGarrisonInShips;//
    }
    int baseAreaGroupID = kbAreaGroupGetIDByPosition(kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
    int areaGroupID = -1;
@@ -1532,7 +1533,7 @@ minInterval 10
 
    // once we started transporting, make sure no one can steal units from us
    // AssertiveWall: use the main base location instead of military gather point
-   int transportPlanID = createTransportPlan(position, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 100, false);
+   int transportPlanID = AssertiveTransportInitiate(position, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 100);// createTransportPlan(position, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 100, false);//
 
    if (transportPlanID < 0)
    {
@@ -1544,6 +1545,7 @@ minInterval 10
    numberFound = kbUnitQueryExecute(unitQueryID);
    aiPlanAddUnitType(transportPlanID, unitTypeVar, numberFound, numberFound, numberFound);
    aiChat(1, "numberFound: " + numberFound);
+   
    for (i = 0; < numberFound)
    {
       unitID = kbUnitQueryGetResult(unitQueryID, i);
