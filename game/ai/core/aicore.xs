@@ -1475,7 +1475,14 @@ minInterval 10
    {
       unitTypeVar = cUnitTypeLogicalTypeLandMilitary; //cUnitTypeLogicalTypeGarrisonInShips;//
    }
-   int baseAreaGroupID = kbAreaGroupGetIDByPosition(kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
+   // AssertiveWall: Home base location
+   vector baseGatherLocation = kbBaseGetMilitaryGatherPoint(cMyID, kbBaseGetMainID(cMyID));
+   if (gForwardBaseShouldDefend == true && gForwardBaseLocation != cInvalidVector)
+   {
+      baseGatherLocation = gForwardBaseLocation;
+   }
+
+   int baseAreaGroupID = kbAreaGroupGetIDByPosition(baseGatherLocation);
    int areaGroupID = -1;
    int unitQueryID = createSimpleUnitQuery(unitTypeVar, cMyID, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(unitQueryID);
@@ -1533,7 +1540,7 @@ minInterval 10
 
    // once we started transporting, make sure no one can steal units from us
    // AssertiveWall: use the main base location instead of military gather point
-   int transportPlanID = AssertiveTransportInitiate(position, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 100);// createTransportPlan(position, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 100, false);//
+   int transportPlanID = AssertiveTransportInitiate(position, baseGatherLocation, 100);// createTransportPlan(position, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 100, false);//
 
    if (transportPlanID < 0)
    {
@@ -2387,7 +2394,7 @@ minInterval 5
       xsEnableRule("age2Monitor");
       if (gMigrationMap == false)
       {
-         xsEnableRule("innerRingWall");
+         //xsEnableRule("innerRingWall");
       }
 
       xsDisableSelf();

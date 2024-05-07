@@ -217,6 +217,13 @@ extern int gLivestockPenUnit = cUnitTypeLivestockPen;
 extern int gMarketUnit = cUnitTypeMarket;
 extern int gDockUnit = cUnitTypeDock;
 
+// AssertiveWall: Star Forts and advanced wall patterns
+extern int gCannonCornerPlan = -1;
+extern vector gCannonCornerLoc1 = cInvalidVector;
+extern vector gCannonCornerLoc2 = cInvalidVector;
+extern vector gCannonCornerLoc3 = cInvalidVector;
+extern vector gCannonCornerLoc4 = cInvalidVector;
+
 //==============================================================================
 // Techs.
 //==============================================================================
