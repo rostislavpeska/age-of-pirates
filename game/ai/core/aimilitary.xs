@@ -168,11 +168,6 @@ void addUnitsToMilitaryPlan(int planID = -1)
       }
    }
 
-   if (gTestingChatsOn == true)
-   {
-      aiChat(1, "Added: " + numberAdded + " of " + numberFound);
-   }
-
    // For the finland revolution, keep some karelian jaegers around to sustain the economy
    int numberAvailableEconUnits = 0;
    int queryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
@@ -1426,13 +1421,6 @@ minInterval 15
       targetBaseLocation = kbBaseGetLocation(targetPlayer, targetBaseID);
    }*/
 
-   // AssertiveWall: Some testing chats:
-   if (gTestingChatsOn == true)
-   {
-      aiChat(1, "targetBaseID: " + targetBaseID + " targetPlayer: " + targetPlayer);
-      sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, targetBaseLocation);
-   }
-
    vector gatherPoint = kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
    if (targetIsEnemy == true)
    {
@@ -1627,7 +1615,7 @@ void navalAttackPlanHandler(int planID = -1)
    Defending = 15 when not under attack so war ships that can fish will do so.
    Fishing = 19.
    Exploring = 20 so fishing ships can be used for it.
-   Repairing = 24 so the war ships do defend but will chose repairing over fishing.  // AssertiveWall: incrreased to 24 from 22 to allow more plans
+   Repairing = 24 so the war ships do defend but will chose repairing over fishing.  // AssertiveWall: increased to 24 from 22 to allow more plans
    Defending = 25 when under attack so war ships that can fish will actually fight.
    Attacking = 60 so all war ships will go on the attack.
    Transport = 100 so the ships will actually deliver the units reliably.

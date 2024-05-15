@@ -1764,7 +1764,7 @@ vector selectForwardBaseLocation(void)
             debugBuildings("    " + retVal + " is in area group " + kbAreaGroupGetIDByPosition(retVal));
             siteFound = true;
             // Don't build too close to any enemy building.
-            if (getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateABQ, retVal, 60.0) >= 0)
+            if (getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateABQ, retVal, 80.0) >= 0) // AssertiveWall: up from 60
             {
                siteFound = false;
             }
@@ -1853,10 +1853,6 @@ minInterval 30
       //}
       if (amphibiousAssault() == true)
       {
-         if (gTestingChatsOn == true)
-         {
-            aiChat(1, "Enabled amphibious assault");
-         }
          xsDisableSelf();
       }
       return;
@@ -1881,19 +1877,18 @@ minInterval 30
             //vector location = cInvalidVector;  AssertiveWall: moved up above
    
             // AssertiveWall: Use the forward island
-            if (gStartOnDifferentIslands == true && (gMigrationMap == false) &&
-               (btOffenseDefense >= 0.0) && (cDifficultyCurrent >= cDifficultyModerate))
+            if (gStartOnDifferentIslands == true && (gMigrationMap == false)) // && (btOffenseDefense >= -10.0)
             {
                location = selectForwardBaseBeachHead();
             }
-            else if ((btOffenseDefense >= 0.0) && (cDifficultyCurrent >= cDifficultyModerate))
+            else if ((cDifficultyCurrent >= cDifficultyModerate)) //(btOffenseDefense >= -10.0) && 
             {
                location = selectForwardBaseLocation();
             }
    
             if (location == cInvalidVector)
-            {
-               createSimpleBuildPlan(cUnitTypeFortFrontier, 1, 87, true, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
+            {  // AssertiveWall: let the AI try to find a FB location again. No defensive FB's
+               //createSimpleBuildPlan(cUnitTypeFortFrontier, 1, 87, true, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
                return;
             }
    

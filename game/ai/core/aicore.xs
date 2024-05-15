@@ -1551,7 +1551,6 @@ minInterval 10
    unitQueryID = createSimpleUnitQuery(unitTypeVar, cMyID, cUnitStateAlive, position, 10.0); // down from 30
    numberFound = kbUnitQueryExecute(unitQueryID);
    aiPlanAddUnitType(transportPlanID, unitTypeVar, numberFound, numberFound, numberFound);
-   aiChat(1, "numberFound: " + numberFound);
    
    for (i = 0; < numberFound)
    {
@@ -2843,7 +2842,10 @@ minInterval 10
       // AssertiveWall: Enable forward bases in age 4 
       if (cDifficultyCurrent != cDifficultySandbox)
       {
-         xsEnableRule("forwardBaseManager");
+         if (xsIsRuleEnabled("forwardBaseManager") == false)
+         {
+            xsEnableRule("forwardBaseManager");
+         }
       }
 
       xsEnableRule("age5Monitor");

@@ -1757,7 +1757,6 @@ void commHandler(int chatID = -1, int statementID = -1)
       targetType = aiCommsGetChatTargetType(chatID); // Like cPlayerChatTargetTypePlayers or cPlayerChatTargetTypeLocation.
       target = aiCommsGetTargetListItem(chatID, 0); // Like cResourceFood or cUnitTypeAbstractArtillery.
       location = aiCommsGetTargetLocation(chatID); // Target location
-      //aiChat(1, "Verb: " + verb + " targetType: " + targetType + " target: " + target);
    }
    else if (statementID >= 0)
    {
