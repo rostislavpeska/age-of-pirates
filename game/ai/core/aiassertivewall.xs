@@ -133,6 +133,1831 @@ int cannonCorners(int pri = 21, vector position1 = cInvalidVector, vector positi
 }
 
 //==============================================================================
+/* sawtoothFort
+   builds the sawtooth fort pattern inspired by the incan fort Sacsayhuamán
+*/
+//==============================================================================
+void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalidVector, int baseID = -1, float scale = 2.0, int pri = 80, 
+                              int towerNum = 0, int cannonNum = 0, bool ravelin = false)
+{
+   scale = 5 * scale;  // make it similar size to others
+   if (position == cInvalidVector){
+      return;}
+
+   if (baseID < 0){
+      baseID = gForwardBaseID;}
+
+   if (baseID < 0){
+      baseID = kbBaseGetMainID(cMyID);}
+
+
+   float positionX = xsVectorGetX(position);
+   float positionY = xsVectorGetY(position);
+   float positionZ = xsVectorGetZ(position);
+
+   float angle = atan((xsVectorGetZ(fortCenter) - positionZ) / (xsVectorGetX(fortCenter) - positionX));
+   if ((xsVectorGetX(fortCenter) - positionX) < 0 )
+   {
+      angle = 6.28 - angle - 3.14 * .25;
+   }
+   else
+   {
+      angle = angle - 3.14 * .25;
+   } 
+
+   // Build specified tower number
+   // 2.4 minimum scale number to fit a tower
+   if (towerNum > 0)
+   {
+      int switchInt = aiRandInt(2);
+      if (switchInt == 0)
+      {
+         vector towerPos1 = xsVectorSet(positionX, positionY, positionZ + 1.2 * scale); 
+         vector towerPos2 = xsVectorSet(positionX, positionY, positionZ - 1.2 * scale); 
+      }
+      else
+      {
+         towerPos2 = xsVectorSet(positionX, positionY, positionZ + 1.2 * scale); 
+         towerPos1 = xsVectorSet(positionX, positionY, positionZ - 1.2 * scale); 
+      }
+
+      // Rotate
+      towerPos1 = rotateByReferencePoint(position, towerPos1 - position, angle);
+      towerPos2 = rotateByReferencePoint(position, towerPos2 - position, angle);
+
+      createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos1, 1);
+      if (towerNum >= 2){
+         createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos2, 1);
+      }
+   }
+
+   if (cannonNum > 0)
+   {
+      if (cannonNum == 1)
+      {
+         towerPos2 = cInvalidVector;
+      }
+      cannonCorners(pri, towerPos2, towerPos1);
+   }
+
+   // The center position is "position"
+   // Base consists of 12 segments
+   vector start1 = xsVectorSet(positionX - 1.862 * scale, positionY, positionZ + 0.626 * scale);
+   vector end1 = xsVectorSet(positionX -2.239 * scale, positionY, positionZ + 1.357 * scale);
+
+   vector start2 = end1;
+   vector end2 = xsVectorSet(positionX - 1.659 * scale, positionY, positionZ + 1.249 * scale);
+
+   vector start3 = end2;
+   vector end3 = xsVectorSet(positionX - 1.461 * scale, positionY, positionZ + 2.033 * scale);
+
+   vector start4 = end3;
+   vector end4 = xsVectorSet(positionX - 1.136 * scale, positionY, positionZ + 1.609 * scale);
+
+   vector start5 = end4;
+   vector end5 = xsVectorSet(positionX - 0.415 * scale, positionY, positionZ + 2.369 * scale);
+
+   vector start6 = end5;
+   vector end6 = xsVectorSet(positionX - 0.212 * scale, positionY, positionZ + 1.944 * scale);
+
+   vector start7 = end6;
+   vector end7 = xsVectorSet(positionX + 0.748 * scale, positionY, positionZ + 2.362 * scale);
+
+   vector start8 = end7;
+   vector end8 = xsVectorSet(positionX + 0.692 * scale, positionY, positionZ + 1.833 * scale);
+
+   vector start9 = end8;
+   vector end9 = xsVectorSet(positionX + 1.511 * scale, positionY, positionZ + 1.903 * scale);
+
+   vector start10 = end9;
+   vector end10 = xsVectorSet(positionX + 1.334 * scale, positionY, positionZ + 1.443 * scale);
+
+   vector start11 = end10;
+   vector end11 = xsVectorSet(positionX + 2.055 * scale, positionY, positionZ + 1.157 * scale);
+
+   vector start12 = end11;
+   vector end12 = xsVectorSet(positionX + 1.728 * scale, positionY, positionZ + 0.626 * scale);
+
+   vector start13 = end12;
+   vector end13 = xsVectorSet(positionX + 1.728 * scale, positionY, positionZ - 0.626 * scale);
+
+   vector start14 = end13;
+   vector end14 = xsVectorSet(positionX + 2.055 * scale, positionY, positionZ - 1.157 * scale);
+
+   vector start15 = end14;
+   vector end15 = xsVectorSet(positionX + 1.334 * scale, positionY, positionZ - 1.443 * scale);
+
+   vector start16 = end15;
+   vector end16 = xsVectorSet(positionX + 1.511 * scale, positionY, positionZ - 1.903 * scale);
+
+   vector start17 = end16;
+   vector end17 = xsVectorSet(positionX + 0.692 * scale, positionY, positionZ - 1.833 * scale);
+
+   vector start18 = end17;
+   vector end18 = xsVectorSet(positionX + 0.748 * scale, positionY, positionZ - 2.362 * scale);
+
+   vector start19 = end18;
+   vector end19 = xsVectorSet(positionX - 0.212 * scale, positionY, positionZ - 1.944 * scale);
+
+   vector start20 = end19;
+   vector end20 = xsVectorSet(positionX - 0.415 * scale, positionY, positionZ - 2.369 * scale);
+
+   vector start21 = end20;
+   vector end21 = xsVectorSet(positionX - 1.136 * scale, positionY, positionZ - 1.609 * scale);
+
+   vector start22 = end21;
+   vector end22 = xsVectorSet(positionX - 1.461 * scale, positionY, positionZ - 2.033 * scale);
+
+   vector start23 = end22;
+   vector end23 = xsVectorSet(positionX - 1.659 * scale, positionY, positionZ - 1.249 * scale);
+
+   vector start24 = end23;
+   vector end24 = xsVectorSet(positionX - 2.239 * scale, positionY, positionZ - 1.357 * scale);
+
+   vector start25 = end24;
+   vector end25 = xsVectorSet(positionX - 1.862 * scale, positionY, positionZ - 0.626 * scale);
+
+   vector start26 = end25;
+   vector end26 = start1;
+
+   // Rotate points
+   start1 = rotateByReferencePoint(position, start1 - position, angle);
+   end1 = rotateByReferencePoint(position, end1 - position, angle);
+
+   start2 = rotateByReferencePoint(position, start2 - position, angle);
+   end2 = rotateByReferencePoint(position, end2 - position, angle);
+
+   start3 = rotateByReferencePoint(position, start3 - position, angle);
+   end3 = rotateByReferencePoint(position, end3 - position, angle);
+
+   start4 = rotateByReferencePoint(position, start4 - position, angle);
+   end4 = rotateByReferencePoint(position, end4 - position, angle);
+
+   start5 = rotateByReferencePoint(position, start5 - position, angle);
+   end5 = rotateByReferencePoint(position, end5 - position, angle);
+
+   start6 = rotateByReferencePoint(position, start6 - position, angle);
+   end6 = rotateByReferencePoint(position, end6 - position, angle);
+
+   start7 = rotateByReferencePoint(position, start7 - position, angle);
+   end7 = rotateByReferencePoint(position, end7 - position, angle);
+
+   start8 = rotateByReferencePoint(position, start8 - position, angle);
+   end8 = rotateByReferencePoint(position, end8 - position, angle);
+
+   start9 = rotateByReferencePoint(position, start9 - position, angle);
+   end9 = rotateByReferencePoint(position, end9 - position, angle);
+
+   start10 = rotateByReferencePoint(position, start10 - position, angle);
+   end10 = rotateByReferencePoint(position, end10 - position, angle);
+
+   start11 = rotateByReferencePoint(position, start11 - position, angle);
+   end11 = rotateByReferencePoint(position, end11 - position, angle);
+
+   start12 = rotateByReferencePoint(position, start12 - position, angle);
+   end12 = rotateByReferencePoint(position, end12 - position, angle);
+
+   start13 = rotateByReferencePoint(position, start13 - position, angle);
+   end13 = rotateByReferencePoint(position, end13 - position, angle);
+
+   start14 = rotateByReferencePoint(position, start14 - position, angle);
+   end14 = rotateByReferencePoint(position, end14 - position, angle);
+
+   start15 = rotateByReferencePoint(position, start15 - position, angle);
+   end15 = rotateByReferencePoint(position, end15 - position, angle);
+
+   start16 = rotateByReferencePoint(position, start16 - position, angle);
+   end16 = rotateByReferencePoint(position, end16 - position, angle);
+
+   start17 = rotateByReferencePoint(position, start17 - position, angle);
+   end17 = rotateByReferencePoint(position, end17 - position, angle);
+
+   start18 = rotateByReferencePoint(position, start18 - position, angle);
+   end18 = rotateByReferencePoint(position, end18 - position, angle);
+
+   start19 = rotateByReferencePoint(position, start19 - position, angle);
+   end19 = rotateByReferencePoint(position, end19 - position, angle);
+
+   start20 = rotateByReferencePoint(position, start20 - position, angle);
+   end20 = rotateByReferencePoint(position, end20 - position, angle);
+
+   start21 = rotateByReferencePoint(position, start21 - position, angle);
+   end21 = rotateByReferencePoint(position, end21 - position, angle);
+
+   start22 = rotateByReferencePoint(position, start22 - position, angle);
+   end22 = rotateByReferencePoint(position, end22 - position, angle);
+
+   start23 = rotateByReferencePoint(position, start23 - position, angle);
+   end23 = rotateByReferencePoint(position, end23 - position, angle);
+
+   start24 = rotateByReferencePoint(position, start24 - position, angle);
+   end24 = rotateByReferencePoint(position, end24 - position, angle);
+
+   start25 = rotateByReferencePoint(position, start25 - position, angle);
+   end25 = rotateByReferencePoint(position, end25 - position, angle);
+
+   start26 = rotateByReferencePoint(position, start26 - position, angle);
+   end26 = rotateByReferencePoint(position, end26 - position, angle);
+
+
+   // segment 1
+   int wallPlan1ID = aiPlanCreate("WallInBase1", cPlanBuildWall);
+   if (wallPlan1ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan1ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan1ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan1ID, cBuildWallPlanWallStart, 0, start1);
+      aiPlanSetVariableVector(wallPlan1ID, cBuildWallPlanWallEnd, 0, end1);
+      aiPlanSetVariableInt(wallPlan1ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan1ID, baseID);
+      aiPlanSetEscrowID(wallPlan1ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan1ID, pri);
+      aiPlanSetActive(wallPlan1ID, true);
+   }
+
+   // segment 2
+   int wallPlan2ID = aiPlanCreate("WallInBase2", cPlanBuildWall);
+   if (wallPlan2ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan2ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan2ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan2ID, cBuildWallPlanWallStart, 0, start2);
+      aiPlanSetVariableVector(wallPlan2ID, cBuildWallPlanWallEnd, 0, end2);
+      aiPlanSetVariableInt(wallPlan2ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan2ID, baseID);
+      aiPlanSetEscrowID(wallPlan2ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan2ID, pri);
+      aiPlanSetActive(wallPlan2ID, true);
+   }
+
+   // segment 3
+   int wallPlan3ID = aiPlanCreate("WallInBase3", cPlanBuildWall);
+   if (wallPlan3ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan3ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan3ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan3ID, cBuildWallPlanWallStart, 0, start3);
+      aiPlanSetVariableVector(wallPlan3ID, cBuildWallPlanWallEnd, 0, end3);
+      aiPlanSetVariableInt(wallPlan3ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan3ID, baseID);
+      aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan3ID, pri);
+      aiPlanSetActive(wallPlan3ID, true);
+   }
+
+   // segment 4
+   int wallPlan4ID = aiPlanCreate("WallInBase4", cPlanBuildWall);
+   if (wallPlan4ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan4ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan4ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan4ID, cBuildWallPlanWallStart, 0, start4);
+      aiPlanSetVariableVector(wallPlan4ID, cBuildWallPlanWallEnd, 0, end4);
+      aiPlanSetVariableInt(wallPlan4ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan4ID, baseID);
+      aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan4ID, pri);
+      aiPlanSetActive(wallPlan4ID, true);
+   }
+
+   // segment 5
+   int wallPlan5ID = aiPlanCreate("WallInBase5", cPlanBuildWall);
+   if (wallPlan5ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan5ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan5ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan5ID, cBuildWallPlanWallStart, 0, start5);
+      aiPlanSetVariableVector(wallPlan5ID, cBuildWallPlanWallEnd, 0, end5);
+      aiPlanSetVariableInt(wallPlan5ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan5ID, baseID);
+      aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan5ID, pri);
+      aiPlanSetActive(wallPlan5ID, true);
+   }
+
+   // segment 6
+   int wallPlan6ID = aiPlanCreate("WallInBase6", cPlanBuildWall);
+   if (wallPlan6ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan6ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan6ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan6ID, cBuildWallPlanWallStart, 0, start6);
+      aiPlanSetVariableVector(wallPlan6ID, cBuildWallPlanWallEnd, 0, end6);
+      aiPlanSetVariableInt(wallPlan6ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan6ID, baseID);
+      aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan6ID, pri);
+      aiPlanSetActive(wallPlan6ID, true);
+   }
+
+   // segment 7
+   int wallPlan7ID = aiPlanCreate("WallInBase7", cPlanBuildWall);
+   if (wallPlan7ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan7ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan7ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan7ID, cBuildWallPlanWallStart, 0, start7);
+      aiPlanSetVariableVector(wallPlan7ID, cBuildWallPlanWallEnd, 0, end7);
+      aiPlanSetVariableInt(wallPlan7ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan7ID, baseID);
+      aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan7ID, pri);
+      aiPlanSetActive(wallPlan7ID, true);
+   }
+
+   // segment 8
+   int wallPlan8ID = aiPlanCreate("WallInBase8", cPlanBuildWall);
+   if (wallPlan8ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan8ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan8ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan8ID, cBuildWallPlanWallStart, 0, start8);
+      aiPlanSetVariableVector(wallPlan8ID, cBuildWallPlanWallEnd, 0, end8);
+      aiPlanSetVariableInt(wallPlan8ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan8ID, baseID);
+      aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan8ID, pri);
+      aiPlanSetActive(wallPlan8ID, true);
+   }
+
+   // segment 9
+   int wallPlan9ID = aiPlanCreate("WallInBase9", cPlanBuildWall);
+   if (wallPlan9ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan9ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan9ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan9ID, cBuildWallPlanWallStart, 0, start9);
+      aiPlanSetVariableVector(wallPlan9ID, cBuildWallPlanWallEnd, 0, end9);
+      aiPlanSetVariableInt(wallPlan9ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan9ID, baseID);
+      aiPlanSetEscrowID(wallPlan9ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan9ID, pri);
+      aiPlanSetActive(wallPlan9ID, true);
+   }
+
+   // segment 10
+   int wallPlan10ID = aiPlanCreate("WallInBase10", cPlanBuildWall);
+   if (wallPlan10ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan10ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan10ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan10ID, cBuildWallPlanWallStart, 0, start10);
+      aiPlanSetVariableVector(wallPlan10ID, cBuildWallPlanWallEnd, 0, end10);
+      aiPlanSetVariableInt(wallPlan10ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan10ID, baseID);
+      aiPlanSetEscrowID(wallPlan10ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan10ID, pri);
+      aiPlanSetActive(wallPlan10ID, true);
+   }
+
+   // segment 11
+   int wallPlan11ID = aiPlanCreate("WallInBase11", cPlanBuildWall);
+   if (wallPlan11ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan11ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan11ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan11ID, cBuildWallPlanWallStart, 0, start11);
+      aiPlanSetVariableVector(wallPlan11ID, cBuildWallPlanWallEnd, 0, end11);
+      aiPlanSetVariableInt(wallPlan11ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan11ID, baseID);
+      aiPlanSetEscrowID(wallPlan11ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan11ID, pri);
+      aiPlanSetActive(wallPlan11ID, true);
+   }
+
+   // segment 12
+   int wallPlan12ID = aiPlanCreate("WallInBase12", cPlanBuildWall);
+   if (wallPlan12ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan12ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan12ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan12ID, cBuildWallPlanWallStart, 0, start12);
+      aiPlanSetVariableVector(wallPlan12ID, cBuildWallPlanWallEnd, 0, end12);
+      aiPlanSetVariableInt(wallPlan12ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan12ID, baseID);
+      aiPlanSetEscrowID(wallPlan12ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan12ID, pri);
+      aiPlanSetActive(wallPlan12ID, true);
+   }
+
+   // segment 13
+   int wallPlan13ID = aiPlanCreate("WallInBase13", cPlanBuildWall);
+   if (wallPlan13ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan13ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan13ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan13ID, cBuildWallPlanWallStart, 0, start13);
+      aiPlanSetVariableVector(wallPlan13ID, cBuildWallPlanWallEnd, 0, end13);
+      aiPlanSetVariableInt(wallPlan13ID, cBuildWallPlanNumberOfGates, 0, 1);
+      aiPlanSetBaseID(wallPlan13ID, baseID);
+      aiPlanSetEscrowID(wallPlan13ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan13ID, pri);
+      aiPlanSetActive(wallPlan13ID, true);
+   }
+
+   // segment 14
+   int wallPlan14ID = aiPlanCreate("WallInBase14", cPlanBuildWall);
+   if (wallPlan14ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan14ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan14ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan14ID, cBuildWallPlanWallStart, 0, start14);
+      aiPlanSetVariableVector(wallPlan14ID, cBuildWallPlanWallEnd, 0, end14);
+      aiPlanSetVariableInt(wallPlan14ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan14ID, baseID);
+      aiPlanSetEscrowID(wallPlan14ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan14ID, pri);
+      aiPlanSetActive(wallPlan14ID, true);
+   }
+
+   // segment 15
+   int wallPlan15ID = aiPlanCreate("WallInBase15", cPlanBuildWall);
+   if (wallPlan15ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan15ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan15ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan15ID, cBuildWallPlanWallStart, 0, start15);
+      aiPlanSetVariableVector(wallPlan15ID, cBuildWallPlanWallEnd, 0, end15);
+      aiPlanSetVariableInt(wallPlan15ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan15ID, baseID);
+      aiPlanSetEscrowID(wallPlan15ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan15ID, pri);
+      aiPlanSetActive(wallPlan15ID, true);
+   }
+
+   // segment 16
+   int wallPlan16ID = aiPlanCreate("WallInBase16", cPlanBuildWall);
+   if (wallPlan16ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan16ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan16ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan16ID, cBuildWallPlanWallStart, 0, start16);
+      aiPlanSetVariableVector(wallPlan16ID, cBuildWallPlanWallEnd, 0, end16);
+      aiPlanSetVariableInt(wallPlan16ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan16ID, baseID);
+      aiPlanSetEscrowID(wallPlan16ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan16ID, pri);
+      aiPlanSetActive(wallPlan16ID, true);
+   }
+
+   // segment 17
+   int wallPlan17ID = aiPlanCreate("WallInBase17", cPlanBuildWall);
+   if (wallPlan17ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan17ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan17ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan17ID, cBuildWallPlanWallStart, 0, start17);
+      aiPlanSetVariableVector(wallPlan17ID, cBuildWallPlanWallEnd, 0, end17);
+      aiPlanSetVariableInt(wallPlan17ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan17ID, baseID);
+      aiPlanSetEscrowID(wallPlan17ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan17ID, pri);
+      aiPlanSetActive(wallPlan17ID, true);
+   }
+
+   // segment 18
+   int wallPlan18ID = aiPlanCreate("WallInBase18", cPlanBuildWall);
+   if (wallPlan18ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan18ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan18ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan18ID, cBuildWallPlanWallStart, 0, start18);
+      aiPlanSetVariableVector(wallPlan18ID, cBuildWallPlanWallEnd, 0, end18);
+      aiPlanSetVariableInt(wallPlan18ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan18ID, baseID);
+      aiPlanSetEscrowID(wallPlan18ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan18ID, pri);
+      aiPlanSetActive(wallPlan18ID, true);
+   }
+
+   // segment 19
+   int wallPlan19ID = aiPlanCreate("WallInBase19", cPlanBuildWall);
+   if (wallPlan19ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan19ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan19ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan19ID, cBuildWallPlanWallStart, 0, start19);
+      aiPlanSetVariableVector(wallPlan19ID, cBuildWallPlanWallEnd, 0, end19);
+      aiPlanSetVariableInt(wallPlan19ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan19ID, baseID);
+      aiPlanSetEscrowID(wallPlan19ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan19ID, pri);
+      aiPlanSetActive(wallPlan19ID, true);
+   }
+
+   // segment 20
+   int wallPlan20ID = aiPlanCreate("WallInBase20", cPlanBuildWall);
+   if (wallPlan20ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan20ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan20ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan20ID, cBuildWallPlanWallStart, 0, start20);
+      aiPlanSetVariableVector(wallPlan20ID, cBuildWallPlanWallEnd, 0, end20);
+      aiPlanSetVariableInt(wallPlan20ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan20ID, baseID);
+      aiPlanSetEscrowID(wallPlan20ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan20ID, pri);
+      aiPlanSetActive(wallPlan20ID, true);
+   }
+
+   // segment 21
+   int wallPlan21ID = aiPlanCreate("WallInBase21", cPlanBuildWall);
+   if (wallPlan21ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan21ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan21ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan21ID, cBuildWallPlanWallStart, 0, start21);
+      aiPlanSetVariableVector(wallPlan21ID, cBuildWallPlanWallEnd, 0, end21);
+      aiPlanSetVariableInt(wallPlan21ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan21ID, baseID);
+      aiPlanSetEscrowID(wallPlan21ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan21ID, pri);
+      aiPlanSetActive(wallPlan21ID, true);
+   }
+
+   // segment 22
+   int wallPlan22ID = aiPlanCreate("WallInBase22", cPlanBuildWall);
+   if (wallPlan22ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan22ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan22ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan22ID, cBuildWallPlanWallStart, 0, start22);
+      aiPlanSetVariableVector(wallPlan22ID, cBuildWallPlanWallEnd, 0, end22);
+      aiPlanSetVariableInt(wallPlan22ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan22ID, baseID);
+      aiPlanSetEscrowID(wallPlan22ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan22ID, pri);
+      aiPlanSetActive(wallPlan22ID, true);
+   }
+
+   // segment 23
+   int wallPlan23ID = aiPlanCreate("WallInBase23", cPlanBuildWall);
+   if (wallPlan23ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan23ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan23ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan23ID, cBuildWallPlanWallStart, 0, start23);
+      aiPlanSetVariableVector(wallPlan23ID, cBuildWallPlanWallEnd, 0, end23);
+      aiPlanSetVariableInt(wallPlan23ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan23ID, baseID);
+      aiPlanSetEscrowID(wallPlan23ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan23ID, pri);
+      aiPlanSetActive(wallPlan23ID, true);
+   }
+
+   // segment 24
+   int wallPlan24ID = aiPlanCreate("WallInBase24", cPlanBuildWall);
+   if (wallPlan24ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan24ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan24ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan24ID, cBuildWallPlanWallStart, 0, start24);
+      aiPlanSetVariableVector(wallPlan24ID, cBuildWallPlanWallEnd, 0, end24);
+      aiPlanSetVariableInt(wallPlan24ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan24ID, baseID);
+      aiPlanSetEscrowID(wallPlan24ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan24ID, pri);
+      aiPlanSetActive(wallPlan24ID, true);
+   }
+
+   // segment 25
+   int wallPlan25ID = aiPlanCreate("WallInBase25", cPlanBuildWall);
+   if (wallPlan25ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan25ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan25ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan25ID, cBuildWallPlanWallStart, 0, start25);
+      aiPlanSetVariableVector(wallPlan25ID, cBuildWallPlanWallEnd, 0, end25);
+      aiPlanSetVariableInt(wallPlan25ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan25ID, baseID);
+      aiPlanSetEscrowID(wallPlan25ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan25ID, pri);
+      aiPlanSetActive(wallPlan25ID, true);
+   }
+
+   // segment 26
+   int wallPlan26ID = aiPlanCreate("WallInBase26", cPlanBuildWall);
+   if (wallPlan26ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan26ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan26ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan26ID, cBuildWallPlanWallStart, 0, start26);
+      aiPlanSetVariableVector(wallPlan26ID, cBuildWallPlanWallEnd, 0, end26);
+      aiPlanSetVariableInt(wallPlan26ID, cBuildWallPlanNumberOfGates, 0, 1);
+      aiPlanSetBaseID(wallPlan26ID, baseID);
+      aiPlanSetEscrowID(wallPlan26ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan26ID, pri);
+      aiPlanSetActive(wallPlan26ID, true);
+   }
+
+   return;
+
+}
+
+//==============================================================================
+/* haudOverlappingRingFort
+   builds an overlapping ring fort in the style used by the Haudenesaune
+
+   This fort does not need gates
+*/
+//==============================================================================
+void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter = cInvalidVector, int baseID = -1, float scale = 2.0, int pri = 80, 
+                              int towerNum = 0, int cannonNum = 0, bool ravelin = false)
+{
+   if (position == cInvalidVector){
+      return;}
+
+   if (baseID < 0){
+      baseID = gForwardBaseID;}
+
+   if (baseID < 0){
+      baseID = kbBaseGetMainID(cMyID);}
+
+
+   float positionX = xsVectorGetX(position);
+   float positionY = xsVectorGetY(position);
+   float positionZ = xsVectorGetZ(position);
+
+   float angle = atan((xsVectorGetZ(fortCenter) - positionZ) / (xsVectorGetX(fortCenter) - positionX));
+   if ((xsVectorGetX(fortCenter) - positionX) < 0 )
+   {
+      angle = 6.28 - angle - 3.14 * .25;
+   }
+   else
+   {
+      angle = angle - 3.14 * .25;
+   } 
+
+   // Build specified tower number
+   // 2.4 minimum scale number to fit a tower
+   if (towerNum > 0)
+   {
+      int switchInt = aiRandInt(2);
+      if (switchInt == 0)
+      {
+         vector towerPos1 = xsVectorSet(positionX + 2.549 * scale, positionY, positionZ + 4.363 * scale); 
+         vector towerPos2 = xsVectorSet(positionX - 2.549 * scale, positionY, positionZ - 4.363 * scale); 
+      }
+      else
+      {
+         towerPos2 = xsVectorSet(positionX + 2.549 * scale, positionY, positionZ + 4.363 * scale); 
+         towerPos1 = xsVectorSet(positionX - 2.549 * scale, positionY, positionZ - 4.363 * scale); 
+      }
+
+      // Rotate
+      towerPos1 = rotateByReferencePoint(position, towerPos1 - position, angle);
+      towerPos2 = rotateByReferencePoint(position, towerPos2 - position, angle);
+
+      createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos1, 1);
+      if (towerNum >= 2){
+         createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos2, 1);
+      }
+   }
+
+   if (cannonNum > 0)
+   {
+      if (cannonNum == 1)
+      {
+         towerPos2 = cInvalidVector;
+      }
+      cannonCorners(pri, towerPos2, towerPos1);
+   }
+
+   // The center position is "position"
+   // Base consists of 12 segments
+   vector start1 = xsVectorSet(positionX, positionY, positionZ - 10.0 * scale);
+   vector end1 = xsVectorSet(positionX + 5.878 * scale, positionY, positionZ - 8.09 * scale);
+
+   vector start2 = end1;
+   vector end2 = xsVectorSet(positionX + 9.511 * scale, positionY, positionZ - 3.09 * scale);
+
+   vector start3 = end2;
+   vector end3 = xsVectorSet(positionX + 9.511 * scale, positionY, positionZ + 3.09 * scale);
+
+   vector start4 = end3;
+   vector end4 = xsVectorSet(positionX + 5.878 * scale, positionY, positionZ + 8.09 * scale);
+
+   vector start5 = end4;
+   vector end5 = xsVectorSet(positionX + 3.5 * scale, positionY, positionZ + 8.863 * scale);
+
+   vector start6 = end5;
+   vector end6 = xsVectorSet(positionX - 0.78 * scale, positionY, positionZ + 7.472 * scale);
+
+   vector start7 = xsVectorSet(positionX, positionY, positionZ + 10.0 * scale);
+   vector end7 = xsVectorSet(positionX - 5.878 * scale, positionY, positionZ + 8.09 * scale);
+
+   vector start8 = end7;
+   vector end8 = xsVectorSet(positionX - 9.511 * scale, positionY, positionZ + 3.09 * scale);
+
+   vector start9 = end8;
+   vector end9 = xsVectorSet(positionX - 9.511 * scale, positionY, positionZ - 3.09 * scale);
+
+   vector start10 = end9;
+   vector end10 = xsVectorSet(positionX - 5.878 * scale, positionY, positionZ - 8.09 * scale);
+
+   vector start11 = end10;
+   vector end11 = xsVectorSet(positionX - 3.5 * scale, positionY, positionZ - 8.863 * scale);
+
+   vector start12 = end11;
+   vector end12 = xsVectorSet(positionX + 0.78 * scale, positionY, positionZ - 7.472 * scale);
+
+   // Rotate points
+   start1 = rotateByReferencePoint(position, start1 - position, angle);
+   end1 = rotateByReferencePoint(position, end1 - position, angle);
+
+   start2 = rotateByReferencePoint(position, start2 - position, angle);
+   end2 = rotateByReferencePoint(position, end2 - position, angle);
+
+   start3 = rotateByReferencePoint(position, start3 - position, angle);
+   end3 = rotateByReferencePoint(position, end3 - position, angle);
+
+   start4 = rotateByReferencePoint(position, start4 - position, angle);
+   end4 = rotateByReferencePoint(position, end4 - position, angle);
+
+   start5 = rotateByReferencePoint(position, start5 - position, angle);
+   end5 = rotateByReferencePoint(position, end5 - position, angle);
+
+   start6 = rotateByReferencePoint(position, start6 - position, angle);
+   end6 = rotateByReferencePoint(position, end6 - position, angle);
+
+   start7 = rotateByReferencePoint(position, start7 - position, angle);
+   end7 = rotateByReferencePoint(position, end7 - position, angle);
+
+   start8 = rotateByReferencePoint(position, start8 - position, angle);
+   end8 = rotateByReferencePoint(position, end8 - position, angle);
+
+   start9 = rotateByReferencePoint(position, start9 - position, angle);
+   end9 = rotateByReferencePoint(position, end9 - position, angle);
+
+   start10 = rotateByReferencePoint(position, start10 - position, angle);
+   end10 = rotateByReferencePoint(position, end10 - position, angle);
+
+   start11 = rotateByReferencePoint(position, start11 - position, angle);
+   end11 = rotateByReferencePoint(position, end11 - position, angle);
+
+   start12 = rotateByReferencePoint(position, start12 - position, angle);
+   end12 = rotateByReferencePoint(position, end12 - position, angle);
+
+
+   // segment 1
+   int wallPlan1ID = aiPlanCreate("WallInBase1", cPlanBuildWall);
+   if (wallPlan1ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan1ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan1ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan1ID, cBuildWallPlanWallStart, 0, start1);
+      aiPlanSetVariableVector(wallPlan1ID, cBuildWallPlanWallEnd, 0, end1);
+      aiPlanSetVariableInt(wallPlan1ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan1ID, baseID);
+      aiPlanSetEscrowID(wallPlan1ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan1ID, pri);
+      aiPlanSetActive(wallPlan1ID, true);
+   }
+
+   // segment 2
+   int wallPlan2ID = aiPlanCreate("WallInBase2", cPlanBuildWall);
+   if (wallPlan2ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan2ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan2ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan2ID, cBuildWallPlanWallStart, 0, start2);
+      aiPlanSetVariableVector(wallPlan2ID, cBuildWallPlanWallEnd, 0, end2);
+      aiPlanSetVariableInt(wallPlan2ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan2ID, baseID);
+      aiPlanSetEscrowID(wallPlan2ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan2ID, pri);
+      aiPlanSetActive(wallPlan2ID, true);
+   }
+
+   // segment 3
+   int wallPlan3ID = aiPlanCreate("WallInBase3", cPlanBuildWall);
+   if (wallPlan3ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan3ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan3ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan3ID, cBuildWallPlanWallStart, 0, start3);
+      aiPlanSetVariableVector(wallPlan3ID, cBuildWallPlanWallEnd, 0, end3);
+      aiPlanSetVariableInt(wallPlan3ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan3ID, baseID);
+      aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan3ID, pri);
+      aiPlanSetActive(wallPlan3ID, true);
+   }
+
+   // segment 4
+   int wallPlan4ID = aiPlanCreate("WallInBase4", cPlanBuildWall);
+   if (wallPlan4ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan4ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan4ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan4ID, cBuildWallPlanWallStart, 0, start4);
+      aiPlanSetVariableVector(wallPlan4ID, cBuildWallPlanWallEnd, 0, end4);
+      aiPlanSetVariableInt(wallPlan4ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan4ID, baseID);
+      aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan4ID, pri);
+      aiPlanSetActive(wallPlan4ID, true);
+   }
+
+   // segment 5
+   int wallPlan5ID = aiPlanCreate("WallInBase5", cPlanBuildWall);
+   if (wallPlan5ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan5ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan5ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan5ID, cBuildWallPlanWallStart, 0, start5);
+      aiPlanSetVariableVector(wallPlan5ID, cBuildWallPlanWallEnd, 0, end5);
+      aiPlanSetVariableInt(wallPlan5ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan5ID, baseID);
+      aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan5ID, pri);
+      aiPlanSetActive(wallPlan5ID, true);
+   }
+
+   // segment 6
+   int wallPlan6ID = aiPlanCreate("WallInBase6", cPlanBuildWall);
+   if (wallPlan6ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan6ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan6ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan6ID, cBuildWallPlanWallStart, 0, start6);
+      aiPlanSetVariableVector(wallPlan6ID, cBuildWallPlanWallEnd, 0, end6);
+      aiPlanSetVariableInt(wallPlan6ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan6ID, baseID);
+      aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan6ID, pri);
+      aiPlanSetActive(wallPlan6ID, true);
+   }
+
+   // segment 7
+   int wallPlan7ID = aiPlanCreate("WallInBase7", cPlanBuildWall);
+   if (wallPlan7ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan7ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan7ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan7ID, cBuildWallPlanWallStart, 0, start7);
+      aiPlanSetVariableVector(wallPlan7ID, cBuildWallPlanWallEnd, 0, end7);
+      aiPlanSetVariableInt(wallPlan7ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan7ID, baseID);
+      aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan7ID, pri);
+      aiPlanSetActive(wallPlan7ID, true);
+   }
+
+   // segment 8
+   int wallPlan8ID = aiPlanCreate("WallInBase8", cPlanBuildWall);
+   if (wallPlan8ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan8ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan8ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan8ID, cBuildWallPlanWallStart, 0, start8);
+      aiPlanSetVariableVector(wallPlan8ID, cBuildWallPlanWallEnd, 0, end8);
+      aiPlanSetVariableInt(wallPlan8ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan8ID, baseID);
+      aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan8ID, pri);
+      aiPlanSetActive(wallPlan8ID, true);
+   }
+
+   // segment 9
+   int wallPlan9ID = aiPlanCreate("WallInBase9", cPlanBuildWall);
+   if (wallPlan9ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan9ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan9ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan9ID, cBuildWallPlanWallStart, 0, start9);
+      aiPlanSetVariableVector(wallPlan9ID, cBuildWallPlanWallEnd, 0, end9);
+      aiPlanSetVariableInt(wallPlan9ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan9ID, baseID);
+      aiPlanSetEscrowID(wallPlan9ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan9ID, pri);
+      aiPlanSetActive(wallPlan9ID, true);
+   }
+
+   // segment 10
+   int wallPlan10ID = aiPlanCreate("WallInBase10", cPlanBuildWall);
+   if (wallPlan10ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan10ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan10ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan10ID, cBuildWallPlanWallStart, 0, start10);
+      aiPlanSetVariableVector(wallPlan10ID, cBuildWallPlanWallEnd, 0, end10);
+      aiPlanSetVariableInt(wallPlan10ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan10ID, baseID);
+      aiPlanSetEscrowID(wallPlan10ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan10ID, pri);
+      aiPlanSetActive(wallPlan10ID, true);
+   }
+
+   // segment 11
+   int wallPlan11ID = aiPlanCreate("WallInBase11", cPlanBuildWall);
+   if (wallPlan11ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan11ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan11ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan11ID, cBuildWallPlanWallStart, 0, start11);
+      aiPlanSetVariableVector(wallPlan11ID, cBuildWallPlanWallEnd, 0, end11);
+      aiPlanSetVariableInt(wallPlan11ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan11ID, baseID);
+      aiPlanSetEscrowID(wallPlan11ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan11ID, pri);
+      aiPlanSetActive(wallPlan11ID, true);
+   }
+
+   // segment 12
+   int wallPlan12ID = aiPlanCreate("WallInBase12", cPlanBuildWall);
+   if (wallPlan12ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan12ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan12ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan12ID, cBuildWallPlanWallStart, 0, start12);
+      aiPlanSetVariableVector(wallPlan12ID, cBuildWallPlanWallEnd, 0, end12);
+      aiPlanSetVariableInt(wallPlan12ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan12ID, baseID);
+      aiPlanSetEscrowID(wallPlan12ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan12ID, pri);
+      aiPlanSetActive(wallPlan12ID, true);
+   }
+
+   return;
+
+}
+
+//==============================================================================
+/* sumterFort
+   builds the Fort Sumpter pattern. There are no ravelins and 
+   only 2 tower positions
+
+   Orientation is random. Doesn't "face" enemy positions
+*/
+//==============================================================================
+void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVector, int baseID = -1, float scale = 1.5, int pri = 80, 
+                              int towerNum = 0, int cannonNum = 0, bool ravelin = false)
+{
+   if (position == cInvalidVector){
+      return;}
+
+   if (baseID < 0){
+      baseID = gForwardBaseID;}
+
+   if (baseID < 0){
+      baseID = kbBaseGetMainID(cMyID);}
+
+
+   float positionX = xsVectorGetX(position);
+   float positionY = xsVectorGetY(position);
+   float positionZ = xsVectorGetZ(position);
+
+   float angle = aiRandFloat(0.0, 6.28);/*atan((xsVectorGetZ(fortCenter) - positionZ) / (xsVectorGetX(fortCenter) - positionX));
+   if ((xsVectorGetX(fortCenter) - positionX) < 0 )
+   {
+      angle = 6.28 - angle - 3.14 * .25;
+   }
+   else
+   {
+      angle = angle - 3.14 * .25;
+   } */
+
+   // Build specified tower number
+   // 2.4 minimum scale number to fit a tower
+   if (towerNum > 0)
+   {
+      int switchInt = aiRandInt(2);
+      if (switchInt == 0)
+      {
+         vector towerPos1 = xsVectorSet(positionX - 13.0 * scale, positionY, positionZ - 14.0 * scale); 
+         vector towerPos2 = xsVectorSet(positionX + 11.0 * scale, positionY, positionZ - 14.0 * scale); 
+      }
+      else
+      {
+         towerPos2 = xsVectorSet(positionX - 13.0 * scale, positionY, positionZ - 14.0 * scale); 
+         towerPos1 = xsVectorSet(positionX + 11.0 * scale, positionY, positionZ - 14.0 * scale); 
+      }
+
+      // Rotate
+      towerPos1 = rotateByReferencePoint(position, towerPos1 - position, angle);
+      towerPos2 = rotateByReferencePoint(position, towerPos2 - position, angle);
+
+      createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos1, 1);
+      if (towerNum >= 2){
+         createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos2, 1);
+      }
+   }
+
+   if (cannonNum > 0)
+   {
+      if (cannonNum == 1)
+      {
+         towerPos2 = cInvalidVector;
+      }
+      cannonCorners(pri, towerPos2, towerPos1);
+   }
+
+   // The center position is "position"
+   // Base consists of 12 segments
+   vector start1 = xsVectorSet(positionX - 16 * scale, positionY, positionZ - 1.0 * scale);
+   vector end1 = xsVectorSet(positionX - 4.0 * scale, positionY, positionZ + 11.0 * scale);
+
+   vector start2 = end1;
+   vector end2 = xsVectorSet(positionX + 4.0 * scale, positionY, positionZ + 11.0 * scale);
+
+   vector start3 = end2;
+   vector end3 = xsVectorSet(positionX + 16.0 * scale, positionY, positionZ - 1.0 * scale);
+
+   vector start4 = end3;
+   vector end4 = xsVectorSet(positionX + 16.0 * scale, positionY, positionZ - 13.0 * scale);
+
+   vector start5 = end4;
+   vector end5 = xsVectorSet(positionX + 12.0 * scale, positionY, positionZ - 17.0 * scale);
+
+   vector start6 = end5;
+   vector end6 = xsVectorSet(positionX - 12.0 * scale, positionY, positionZ - 17.0 * scale);
+
+   vector start7 = end6;
+   vector end7 = xsVectorSet(positionX - 16.0 * scale, positionY, positionZ - 13.0 * scale);
+
+   vector start8 = end7;
+   vector end8 = xsVectorSet(positionX - 16.0 * scale, positionY, positionZ - 1.0 * scale);
+
+   // Rotate points
+   start1 = rotateByReferencePoint(position, start1 - position, angle);
+   end1 = rotateByReferencePoint(position, end1 - position, angle);
+
+   start2 = rotateByReferencePoint(position, start2 - position, angle);
+   end2 = rotateByReferencePoint(position, end2 - position, angle);
+
+   start3 = rotateByReferencePoint(position, start3 - position, angle);
+   end3 = rotateByReferencePoint(position, end3 - position, angle);
+
+   start4 = rotateByReferencePoint(position, start4 - position, angle);
+   end4 = rotateByReferencePoint(position, end4 - position, angle);
+
+   start5 = rotateByReferencePoint(position, start5 - position, angle);
+   end5 = rotateByReferencePoint(position, end5 - position, angle);
+
+   start6 = rotateByReferencePoint(position, start6 - position, angle);
+   end6 = rotateByReferencePoint(position, end6 - position, angle);
+
+   start7 = rotateByReferencePoint(position, start7 - position, angle);
+   end7 = rotateByReferencePoint(position, end7 - position, angle);
+
+   start8 = rotateByReferencePoint(position, start8 - position, angle);
+   end8 = rotateByReferencePoint(position, end8 - position, angle);
+
+
+   // segment 1
+   int wallPlan1ID = aiPlanCreate("WallInBase1", cPlanBuildWall);
+   if (wallPlan1ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan1ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan1ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan1ID, cBuildWallPlanWallStart, 0, start1);
+      aiPlanSetVariableVector(wallPlan1ID, cBuildWallPlanWallEnd, 0, end1);
+      aiPlanSetVariableInt(wallPlan1ID, cBuildWallPlanNumberOfGates, 0, 1);
+      aiPlanSetBaseID(wallPlan1ID, baseID);
+      aiPlanSetEscrowID(wallPlan1ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan1ID, pri);
+      aiPlanSetActive(wallPlan1ID, true);
+   }
+
+   // segment 2
+   int wallPlan2ID = aiPlanCreate("WallInBase2", cPlanBuildWall);
+   if (wallPlan2ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan2ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan2ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan2ID, cBuildWallPlanWallStart, 0, start2);
+      aiPlanSetVariableVector(wallPlan2ID, cBuildWallPlanWallEnd, 0, end2);
+      aiPlanSetVariableInt(wallPlan2ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan2ID, baseID);
+      aiPlanSetEscrowID(wallPlan2ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan2ID, pri);
+      aiPlanSetActive(wallPlan2ID, true);
+   }
+
+   // segment 3
+   int wallPlan3ID = aiPlanCreate("WallInBase3", cPlanBuildWall);
+   if (wallPlan3ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan3ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan3ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan3ID, cBuildWallPlanWallStart, 0, start3);
+      aiPlanSetVariableVector(wallPlan3ID, cBuildWallPlanWallEnd, 0, end3);
+      aiPlanSetVariableInt(wallPlan3ID, cBuildWallPlanNumberOfGates, 0, 1);
+      aiPlanSetBaseID(wallPlan3ID, baseID);
+      aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan3ID, pri);
+      aiPlanSetActive(wallPlan3ID, true);
+   }
+
+   // segment 4
+   int wallPlan4ID = aiPlanCreate("WallInBase4", cPlanBuildWall);
+   if (wallPlan4ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan4ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan4ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan4ID, cBuildWallPlanWallStart, 0, start4);
+      aiPlanSetVariableVector(wallPlan4ID, cBuildWallPlanWallEnd, 0, end4);
+      aiPlanSetVariableInt(wallPlan4ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan4ID, baseID);
+      aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan4ID, pri);
+      aiPlanSetActive(wallPlan4ID, true);
+   }
+
+   // segment 5
+   int wallPlan5ID = aiPlanCreate("WallInBase5", cPlanBuildWall);
+   if (wallPlan5ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan5ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan5ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan5ID, cBuildWallPlanWallStart, 0, start5);
+      aiPlanSetVariableVector(wallPlan5ID, cBuildWallPlanWallEnd, 0, end5);
+      aiPlanSetVariableInt(wallPlan5ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan5ID, baseID);
+      aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan5ID, pri);
+      aiPlanSetActive(wallPlan5ID, true);
+   }
+
+   // segment 6
+   int wallPlan6ID = aiPlanCreate("WallInBase6", cPlanBuildWall);
+   if (wallPlan6ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan6ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan6ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan6ID, cBuildWallPlanWallStart, 0, start6);
+      aiPlanSetVariableVector(wallPlan6ID, cBuildWallPlanWallEnd, 0, end6);
+      aiPlanSetVariableInt(wallPlan6ID, cBuildWallPlanNumberOfGates, 0, 1);
+      aiPlanSetBaseID(wallPlan6ID, baseID);
+      aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan6ID, pri);
+      aiPlanSetActive(wallPlan6ID, true);
+   }
+
+   // segment 7
+   int wallPlan7ID = aiPlanCreate("WallInBase7", cPlanBuildWall);
+   if (wallPlan7ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan7ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan7ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan7ID, cBuildWallPlanWallStart, 0, start7);
+      aiPlanSetVariableVector(wallPlan7ID, cBuildWallPlanWallEnd, 0, end7);
+      aiPlanSetVariableInt(wallPlan7ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan7ID, baseID);
+      aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan7ID, pri);
+      aiPlanSetActive(wallPlan7ID, true);
+   }
+
+   // segment 8
+   int wallPlan8ID = aiPlanCreate("WallInBase8", cPlanBuildWall);
+   if (wallPlan8ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan8ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan8ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan8ID, cBuildWallPlanWallStart, 0, start8);
+      aiPlanSetVariableVector(wallPlan8ID, cBuildWallPlanWallEnd, 0, end8);
+      aiPlanSetVariableInt(wallPlan8ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan8ID, baseID);
+      aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan8ID, pri);
+      aiPlanSetActive(wallPlan8ID, true);
+   }
+
+   return;
+
+}
+
+//==============================================================================
+/* ticonderogaStarFort
+   builds the Ticonderoga Star Fort pattern. Contains two Ravelins and a 
+   somewhat lopsided 4 star pattern
+*/
+//==============================================================================
+void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = cInvalidVector, int baseID = -1, float scale = 2.0, int pri = 80, 
+                              int towerNum = 0, int cannonNum = 0, bool ravelin = false)
+{
+   if (position == cInvalidVector){
+      return;}
+
+   if (baseID < 0){
+      baseID = gForwardBaseID;}
+
+   if (baseID < 0){
+      baseID = kbBaseGetMainID(cMyID);}
+
+
+   float positionX = xsVectorGetX(position);
+   float positionY = xsVectorGetY(position);
+   float positionZ = xsVectorGetZ(position);
+
+   float angle = atan((xsVectorGetZ(fortCenter) - positionZ) / (xsVectorGetX(fortCenter) - positionX));
+   if ((xsVectorGetX(fortCenter) - positionX) < 0 )
+   {
+      angle = 6.28 - angle - 3.14 * .25;
+   }
+   else
+   {
+      angle = angle - 3.14 * .25;
+   } 
+
+   // Build specified tower number
+   // 2.4 minimum scale number to fit a tower
+   if (towerNum > 0)
+   {
+      int switchInt = aiRandInt(2);
+      if (switchInt == 0)
+      {
+         vector towerPos1 = xsVectorSet(positionX - 10.651 * scale, positionY, positionZ + 9.093 * scale); 
+         vector towerPos2 = xsVectorSet(positionX + 10.022 * scale, positionY, positionZ + 8.585 * scale); 
+         vector towerPos3 = xsVectorSet(positionX + 10.022 * scale, positionY, positionZ - 9.331 * scale); 
+         vector towerPos4 = xsVectorSet(positionX - 11.217 * scale, positionY, positionZ - 8.368 * scale); 
+      }
+      else
+      {
+         towerPos2 = xsVectorSet(positionX - 10.651 * scale, positionY, positionZ + 9.093 * scale); 
+         towerPos1 = xsVectorSet(positionX + 10.022 * scale, positionY, positionZ + 8.585 * scale); 
+         towerPos4 = xsVectorSet(positionX + 10.022 * scale, positionY, positionZ - 9.331 * scale); 
+         towerPos3 = xsVectorSet(positionX - 11.217 * scale, positionY, positionZ - 8.368 * scale); 
+      }
+
+      // Rotate
+      towerPos1 = rotateByReferencePoint(position, towerPos1 - position, angle);
+      towerPos2 = rotateByReferencePoint(position, towerPos2 - position, angle);
+      towerPos3 = rotateByReferencePoint(position, towerPos3 - position, angle);
+      towerPos4 = rotateByReferencePoint(position, towerPos4 - position, angle);
+
+      createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos1, 1);
+      if (towerNum >= 2){
+         createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos2, 1);
+      }
+      if (towerNum >= 3){
+         createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos3, 1);
+      }
+      if (towerNum >= 4){
+         createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos4, 1);
+      }
+   }
+
+   if (cannonNum > 0)
+   {
+      if (cannonNum == 1)
+      {
+         towerPos2 = cInvalidVector;
+         towerPos3 = cInvalidVector;
+         towerPos4 = cInvalidVector;
+      }
+      else if (cannonNum == 2)
+      {
+         towerPos2 = cInvalidVector;
+         towerPos3 = cInvalidVector;
+      }
+      else if (cannonNum == 3)
+      {
+         towerPos2 = cInvalidVector;
+      }
+      cannonCorners(pri, towerPos4, towerPos3, towerPos2, towerPos1);
+   }
+
+   // The center position is "position"
+   // Base consists of 12 segments
+   vector start1 = xsVectorSet(positionX - 7.764 * scale, positionY, positionZ - 8.02 * scale);
+   vector end1 = xsVectorSet(positionX + 5.845 * scale, positionY, positionZ -8.02 * scale);
+
+   vector start2 = end1;
+   vector end2 = xsVectorSet(positionX + 6.266 * scale, positionY, positionZ - 12.113 * scale);
+
+   vector start3 = end2;
+   vector end3 = xsVectorSet(positionX + 15.112 * scale, positionY, positionZ - 14.574 * scale);
+
+   vector start4 = end3;
+   vector end4 = xsVectorSet(positionX + 13.189 * scale, positionY, positionZ - 6.171 * scale);
+
+   vector start5 = end4;
+   vector end5 = xsVectorSet(positionX + 10.025 * scale, positionY, positionZ - 5.537 * scale);
+
+   vector start6 = end5;
+   vector end6 = xsVectorSet(positionX + 10.025 * scale, positionY, positionZ + 5.305 * scale);
+
+   vector start7 = end6;
+   vector end7 = xsVectorSet(positionX + 13.372 * scale, positionY, positionZ + 5.396 * scale);
+
+   vector start8 = end7;
+   vector end8 = xsVectorSet(positionX + 15.415 * scale, positionY, positionZ + 13.05 * scale);
+
+   vector start9 = end8;
+   vector end9 = xsVectorSet(positionX + 6.331 * scale, positionY, positionZ + 10.415 * scale);
+
+   vector start10 = end9;
+   vector end10 = xsVectorSet(positionX + 5.991 * scale, positionY, positionZ + 8.02 * scale);
+
+   vector start11 = end10;
+   vector end11 = xsVectorSet(positionX - 6.551 * scale, positionY, positionZ + 8.02 * scale);
+
+   vector start12 = end11;
+   vector end12 = xsVectorSet(positionX - 6.909 * scale, positionY, positionZ + 11.187 * scale);
+
+   vector start13 = end12;
+   vector end13 = xsVectorSet(positionX - 15.229 * scale, positionY, positionZ + 13.646 * scale);
+
+   vector start14 = end13;
+   vector end14 = xsVectorSet(positionX - 13.797 * scale, positionY, positionZ + 5.911 * scale);
+
+   vector start15 = end14;
+   vector end15 = xsVectorSet(positionX - 10.881 * scale, positionY, positionZ + 5.732 * scale);
+
+   vector start16 = end15;
+   vector end16 = xsVectorSet(positionX - 10.881 * scale, positionY, positionZ - 4.551 * scale);
+
+   vector start17 = end16;
+   vector end17 = xsVectorSet(positionX - 13.335 * scale, positionY, positionZ - 4.551 * scale);
+
+   vector start18 = end17;
+   vector end18 = xsVectorSet(positionX - 15.52 * scale, positionY, positionZ - 13.508 * scale);
+
+   vector start19 = end18;
+   vector end19 = xsVectorSet(positionX - 7.764 * scale, positionY, positionZ - 11.269 * scale);
+
+   vector start20 = end19;
+   vector end20 = start1;
+
+   if (ravelin == true)
+   {
+      vector start21 = xsVectorSet(positionX - 6.391 * scale, positionY, positionZ + 14.303 * scale);
+      vector end21 = xsVectorSet(positionX - 0.043 * scale, positionY, positionZ + 19.336 * scale);
+
+      vector start22 = end21;
+      vector end22 = xsVectorSet(positionX + 7.049 * scale, positionY, positionZ + 14.046 * scale);
+
+      vector start23 = xsVectorSet(positionX + 17.524 * scale, positionY, positionZ + 7.168 * scale);
+      vector end23 = xsVectorSet(positionX + 22.768 * scale, positionY, positionZ - 0.588 * scale);
+
+      vector start24 = end23;
+      vector end24 = xsVectorSet(positionX + 16.785 * scale, positionY, positionZ - 6.165 * scale);
+   }
+
+   // Rotate points
+   start1 = rotateByReferencePoint(position, start1 - position, angle);
+   end1 = rotateByReferencePoint(position, end1 - position, angle);
+
+   start2 = rotateByReferencePoint(position, start2 - position, angle);
+   end2 = rotateByReferencePoint(position, end2 - position, angle);
+
+   start3 = rotateByReferencePoint(position, start3 - position, angle);
+   end3 = rotateByReferencePoint(position, end3 - position, angle);
+
+   start4 = rotateByReferencePoint(position, start4 - position, angle);
+   end4 = rotateByReferencePoint(position, end4 - position, angle);
+
+   start5 = rotateByReferencePoint(position, start5 - position, angle);
+   end5 = rotateByReferencePoint(position, end5 - position, angle);
+
+   start6 = rotateByReferencePoint(position, start6 - position, angle);
+   end6 = rotateByReferencePoint(position, end6 - position, angle);
+
+   start7 = rotateByReferencePoint(position, start7 - position, angle);
+   end7 = rotateByReferencePoint(position, end7 - position, angle);
+
+   start8 = rotateByReferencePoint(position, start8 - position, angle);
+   end8 = rotateByReferencePoint(position, end8 - position, angle);
+
+   start9 = rotateByReferencePoint(position, start9 - position, angle);
+   end9 = rotateByReferencePoint(position, end9 - position, angle);
+
+   start10 = rotateByReferencePoint(position, start10 - position, angle);
+   end10 = rotateByReferencePoint(position, end10 - position, angle);
+
+   start11 = rotateByReferencePoint(position, start11 - position, angle);
+   end11 = rotateByReferencePoint(position, end11 - position, angle);
+
+   start12 = rotateByReferencePoint(position, start12 - position, angle);
+   end12 = rotateByReferencePoint(position, end12 - position, angle);
+
+   start13 = rotateByReferencePoint(position, start13 - position, angle);
+   end13 = rotateByReferencePoint(position, end13 - position, angle);
+
+   start14 = rotateByReferencePoint(position, start14 - position, angle);
+   end14 = rotateByReferencePoint(position, end14 - position, angle);
+
+   start15 = rotateByReferencePoint(position, start15 - position, angle);
+   end15 = rotateByReferencePoint(position, end15 - position, angle);
+
+   start16 = rotateByReferencePoint(position, start16 - position, angle);
+   end16 = rotateByReferencePoint(position, end16 - position, angle);
+
+   start17 = rotateByReferencePoint(position, start17 - position, angle);
+   end17 = rotateByReferencePoint(position, end17 - position, angle);
+
+   start18 = rotateByReferencePoint(position, start18 - position, angle);
+   end18 = rotateByReferencePoint(position, end18 - position, angle);
+
+   start19 = rotateByReferencePoint(position, start19 - position, angle);
+   end19 = rotateByReferencePoint(position, end19 - position, angle);
+
+   start20 = rotateByReferencePoint(position, start20 - position, angle);
+   end20 = rotateByReferencePoint(position, end20 - position, angle);
+
+   if (ravelin == true)
+   {
+      start21 = rotateByReferencePoint(position, start21 - position, angle);
+      end21 = rotateByReferencePoint(position, end21 - position, angle);
+
+      start22 = rotateByReferencePoint(position, start22 - position, angle);
+      end22 = rotateByReferencePoint(position, end22 - position, angle);
+
+      start23 = rotateByReferencePoint(position, start23 - position, angle);
+      end23 = rotateByReferencePoint(position, end23 - position, angle);
+
+      start24 = rotateByReferencePoint(position, start24 - position, angle);
+      end24 = rotateByReferencePoint(position, end24 - position, angle);
+   }
+
+
+   // segment 1
+   int wallPlan1ID = aiPlanCreate("WallInBase1", cPlanBuildWall);
+   if (wallPlan1ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan1ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan1ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan1ID, cBuildWallPlanWallStart, 0, start1);
+      aiPlanSetVariableVector(wallPlan1ID, cBuildWallPlanWallEnd, 0, end1);
+      aiPlanSetVariableInt(wallPlan1ID, cBuildWallPlanNumberOfGates, 0, 1);
+      aiPlanSetBaseID(wallPlan1ID, baseID);
+      aiPlanSetEscrowID(wallPlan1ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan1ID, pri);
+      aiPlanSetActive(wallPlan1ID, true);
+   }
+
+   // segment 2
+   int wallPlan2ID = aiPlanCreate("WallInBase2", cPlanBuildWall);
+   if (wallPlan2ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan2ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan2ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan2ID, cBuildWallPlanWallStart, 0, start2);
+      aiPlanSetVariableVector(wallPlan2ID, cBuildWallPlanWallEnd, 0, end2);
+      aiPlanSetVariableInt(wallPlan2ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan2ID, baseID);
+      aiPlanSetEscrowID(wallPlan2ID, cEconomyEscrowID);
+      aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
+      aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
+      aiPlanSetDesiredPriority(wallPlan2ID, pri);
+      aiPlanSetActive(wallPlan2ID, true);
+   }
+
+   // segment 3
+   int wallPlan3ID = aiPlanCreate("WallInBase3", cPlanBuildWall);
+   if (wallPlan3ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan3ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan3ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan3ID, cBuildWallPlanWallStart, 0, start3);
+      aiPlanSetVariableVector(wallPlan3ID, cBuildWallPlanWallEnd, 0, end3);
+      aiPlanSetVariableInt(wallPlan3ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan3ID, baseID);
+      aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan3ID, pri);
+      aiPlanSetActive(wallPlan3ID, true);
+   }
+
+   // segment 4
+   int wallPlan4ID = aiPlanCreate("WallInBase4", cPlanBuildWall);
+   if (wallPlan4ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan4ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan4ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan4ID, cBuildWallPlanWallStart, 0, start4);
+      aiPlanSetVariableVector(wallPlan4ID, cBuildWallPlanWallEnd, 0, end4);
+      aiPlanSetVariableInt(wallPlan4ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan4ID, baseID);
+      aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan4ID, pri);
+      aiPlanSetActive(wallPlan4ID, true);
+   }
+
+   // segment 5
+   int wallPlan5ID = aiPlanCreate("WallInBase5", cPlanBuildWall);
+   if (wallPlan5ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan5ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan5ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan5ID, cBuildWallPlanWallStart, 0, start5);
+      aiPlanSetVariableVector(wallPlan5ID, cBuildWallPlanWallEnd, 0, end5);
+      aiPlanSetVariableInt(wallPlan5ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan5ID, baseID);
+      aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan5ID, pri);
+      aiPlanSetActive(wallPlan5ID, true);
+   }
+
+   // segment 6
+   int wallPlan6ID = aiPlanCreate("WallInBase6", cPlanBuildWall);
+   if (wallPlan6ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan6ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan6ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan6ID, cBuildWallPlanWallStart, 0, start6);
+      aiPlanSetVariableVector(wallPlan6ID, cBuildWallPlanWallEnd, 0, end6);
+      aiPlanSetVariableInt(wallPlan6ID, cBuildWallPlanNumberOfGates, 0, 1);
+      aiPlanSetBaseID(wallPlan6ID, baseID);
+      aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan6ID, pri);
+      aiPlanSetActive(wallPlan6ID, true);
+   }
+
+   // segment 7
+   int wallPlan7ID = aiPlanCreate("WallInBase7", cPlanBuildWall);
+   if (wallPlan7ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan7ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan7ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan7ID, cBuildWallPlanWallStart, 0, start7);
+      aiPlanSetVariableVector(wallPlan7ID, cBuildWallPlanWallEnd, 0, end7);
+      aiPlanSetVariableInt(wallPlan7ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan7ID, baseID);
+      aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan7ID, pri);
+      aiPlanSetActive(wallPlan7ID, true);
+   }
+
+   // segment 8
+   int wallPlan8ID = aiPlanCreate("WallInBase8", cPlanBuildWall);
+   if (wallPlan8ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan8ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan8ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan8ID, cBuildWallPlanWallStart, 0, start8);
+      aiPlanSetVariableVector(wallPlan8ID, cBuildWallPlanWallEnd, 0, end8);
+      aiPlanSetVariableInt(wallPlan8ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan8ID, baseID);
+      aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan8ID, pri);
+      aiPlanSetActive(wallPlan8ID, true);
+   }
+
+   // segment 9
+   int wallPlan9ID = aiPlanCreate("WallInBase9", cPlanBuildWall);
+   if (wallPlan9ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan9ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan9ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan9ID, cBuildWallPlanWallStart, 0, start9);
+      aiPlanSetVariableVector(wallPlan9ID, cBuildWallPlanWallEnd, 0, end9);
+      aiPlanSetVariableInt(wallPlan9ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan9ID, baseID);
+      aiPlanSetEscrowID(wallPlan9ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan9ID, pri);
+      aiPlanSetActive(wallPlan9ID, true);
+   }
+
+   // segment 10
+   int wallPlan10ID = aiPlanCreate("WallInBase10", cPlanBuildWall);
+   if (wallPlan10ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan10ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan10ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan10ID, cBuildWallPlanWallStart, 0, start10);
+      aiPlanSetVariableVector(wallPlan10ID, cBuildWallPlanWallEnd, 0, end10);
+      aiPlanSetVariableInt(wallPlan10ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan10ID, baseID);
+      aiPlanSetEscrowID(wallPlan10ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan10ID, pri);
+      aiPlanSetActive(wallPlan10ID, true);
+   }
+
+   // segment 11
+   int wallPlan11ID = aiPlanCreate("WallInBase11", cPlanBuildWall);
+   if (wallPlan11ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan11ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan11ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan11ID, cBuildWallPlanWallStart, 0, start11);
+      aiPlanSetVariableVector(wallPlan11ID, cBuildWallPlanWallEnd, 0, end11);
+      aiPlanSetVariableInt(wallPlan11ID, cBuildWallPlanNumberOfGates, 0, 1);
+      aiPlanSetBaseID(wallPlan11ID, baseID);
+      aiPlanSetEscrowID(wallPlan11ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan11ID, pri);
+      aiPlanSetActive(wallPlan11ID, true);
+   }
+
+   // segment 12
+   int wallPlan12ID = aiPlanCreate("WallInBase12", cPlanBuildWall);
+   if (wallPlan12ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan12ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan12ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan12ID, cBuildWallPlanWallStart, 0, start12);
+      aiPlanSetVariableVector(wallPlan12ID, cBuildWallPlanWallEnd, 0, end12);
+      aiPlanSetVariableInt(wallPlan12ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan12ID, baseID);
+      aiPlanSetEscrowID(wallPlan12ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan12ID, pri);
+      aiPlanSetActive(wallPlan12ID, true);
+   }
+
+   // segment 13
+   int wallPlan13ID = aiPlanCreate("WallInBase13", cPlanBuildWall);
+   if (wallPlan13ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan13ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan13ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan13ID, cBuildWallPlanWallStart, 0, start13);
+      aiPlanSetVariableVector(wallPlan13ID, cBuildWallPlanWallEnd, 0, end13);
+      aiPlanSetVariableInt(wallPlan13ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan13ID, baseID);
+      aiPlanSetEscrowID(wallPlan13ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan13ID, pri);
+      aiPlanSetActive(wallPlan13ID, true);
+   }
+
+   // segment 14
+   int wallPlan14ID = aiPlanCreate("WallInBase14", cPlanBuildWall);
+   if (wallPlan14ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan14ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan14ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan14ID, cBuildWallPlanWallStart, 0, start14);
+      aiPlanSetVariableVector(wallPlan14ID, cBuildWallPlanWallEnd, 0, end14);
+      aiPlanSetVariableInt(wallPlan14ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan14ID, baseID);
+      aiPlanSetEscrowID(wallPlan14ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan14ID, pri);
+      aiPlanSetActive(wallPlan14ID, true);
+   }
+
+   // segment 15
+   int wallPlan15ID = aiPlanCreate("WallInBase15", cPlanBuildWall);
+   if (wallPlan15ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan15ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan15ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan15ID, cBuildWallPlanWallStart, 0, start15);
+      aiPlanSetVariableVector(wallPlan15ID, cBuildWallPlanWallEnd, 0, end15);
+      aiPlanSetVariableInt(wallPlan15ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan15ID, baseID);
+      aiPlanSetEscrowID(wallPlan15ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan15ID, pri);
+      aiPlanSetActive(wallPlan15ID, true);
+   }
+
+   // segment 16
+   int wallPlan16ID = aiPlanCreate("WallInBase16", cPlanBuildWall);
+   if (wallPlan16ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan16ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan16ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan16ID, cBuildWallPlanWallStart, 0, start16);
+      aiPlanSetVariableVector(wallPlan16ID, cBuildWallPlanWallEnd, 0, end16);
+      aiPlanSetVariableInt(wallPlan16ID, cBuildWallPlanNumberOfGates, 0, 1);
+      aiPlanSetBaseID(wallPlan16ID, baseID);
+      aiPlanSetEscrowID(wallPlan16ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan16ID, pri);
+      aiPlanSetActive(wallPlan16ID, true);
+   }
+
+   // segment 17
+   int wallPlan17ID = aiPlanCreate("WallInBase17", cPlanBuildWall);
+   if (wallPlan17ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan17ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan17ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan17ID, cBuildWallPlanWallStart, 0, start17);
+      aiPlanSetVariableVector(wallPlan17ID, cBuildWallPlanWallEnd, 0, end17);
+      aiPlanSetVariableInt(wallPlan17ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan17ID, baseID);
+      aiPlanSetEscrowID(wallPlan17ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan17ID, pri);
+      aiPlanSetActive(wallPlan17ID, true);
+   }
+
+   // segment 18
+   int wallPlan18ID = aiPlanCreate("WallInBase18", cPlanBuildWall);
+   if (wallPlan18ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan18ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan18ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan18ID, cBuildWallPlanWallStart, 0, start18);
+      aiPlanSetVariableVector(wallPlan18ID, cBuildWallPlanWallEnd, 0, end18);
+      aiPlanSetVariableInt(wallPlan18ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan18ID, baseID);
+      aiPlanSetEscrowID(wallPlan18ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan18ID, pri);
+      aiPlanSetActive(wallPlan18ID, true);
+   }
+
+   // segment 19
+   int wallPlan19ID = aiPlanCreate("WallInBase19", cPlanBuildWall);
+   if (wallPlan19ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan19ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan19ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan19ID, cBuildWallPlanWallStart, 0, start19);
+      aiPlanSetVariableVector(wallPlan19ID, cBuildWallPlanWallEnd, 0, end19);
+      aiPlanSetVariableInt(wallPlan19ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan19ID, baseID);
+      aiPlanSetEscrowID(wallPlan19ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan19ID, pri);
+      aiPlanSetActive(wallPlan19ID, true);
+   }
+
+   // segment 20
+   int wallPlan20ID = aiPlanCreate("WallInBase20", cPlanBuildWall);
+   if (wallPlan20ID != -1)
+   {
+      aiPlanSetVariableInt(wallPlan20ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+      aiPlanAddUnitType(wallPlan20ID, gEconUnit, 1, 1, 1);
+      aiPlanSetVariableVector(wallPlan20ID, cBuildWallPlanWallStart, 0, start20);
+      aiPlanSetVariableVector(wallPlan20ID, cBuildWallPlanWallEnd, 0, end20);
+      aiPlanSetVariableInt(wallPlan20ID, cBuildWallPlanNumberOfGates, 0, 0);
+      aiPlanSetBaseID(wallPlan20ID, baseID);
+      aiPlanSetEscrowID(wallPlan20ID, cEconomyEscrowID);
+      aiPlanSetDesiredPriority(wallPlan20ID, pri);
+      aiPlanSetActive(wallPlan20ID, true);
+   }
+
+   if (ravelin == true)
+   {
+      // segment 21
+      int wallPlan21ID = aiPlanCreate("WallInBase21", cPlanBuildWall);
+      if (wallPlan21ID != -1)
+      {
+         aiPlanSetVariableInt(wallPlan21ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+         aiPlanAddUnitType(wallPlan21ID, gEconUnit, 1, 1, 1);
+         aiPlanSetVariableVector(wallPlan21ID, cBuildWallPlanWallStart, 0, start21);
+         aiPlanSetVariableVector(wallPlan21ID, cBuildWallPlanWallEnd, 0, end21);
+         aiPlanSetVariableInt(wallPlan21ID, cBuildWallPlanNumberOfGates, 0, 0);
+         aiPlanSetBaseID(wallPlan21ID, baseID);
+         aiPlanSetEscrowID(wallPlan21ID, cEconomyEscrowID);
+         aiPlanSetDesiredPriority(wallPlan21ID, pri);
+         aiPlanSetActive(wallPlan21ID, true);
+      }
+
+      // segment 22
+      int wallPlan22ID = aiPlanCreate("WallInBase22", cPlanBuildWall);
+      if (wallPlan22ID != -1)
+      {
+         aiPlanSetVariableInt(wallPlan22ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+         aiPlanAddUnitType(wallPlan22ID, gEconUnit, 1, 1, 1);
+         aiPlanSetVariableVector(wallPlan22ID, cBuildWallPlanWallStart, 0, start22);
+         aiPlanSetVariableVector(wallPlan22ID, cBuildWallPlanWallEnd, 0, end22);
+         aiPlanSetVariableInt(wallPlan22ID, cBuildWallPlanNumberOfGates, 0, 0);
+         aiPlanSetBaseID(wallPlan22ID, baseID);
+         aiPlanSetEscrowID(wallPlan22ID, cEconomyEscrowID);
+         aiPlanSetDesiredPriority(wallPlan22ID, pri);
+         aiPlanSetActive(wallPlan22ID, true);
+      }
+
+      // segment 23
+      int wallPlan23ID = aiPlanCreate("WallInBase23", cPlanBuildWall);
+      if (wallPlan23ID != -1)
+      {
+         aiPlanSetVariableInt(wallPlan23ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+         aiPlanAddUnitType(wallPlan23ID, gEconUnit, 1, 1, 1);
+         aiPlanSetVariableVector(wallPlan23ID, cBuildWallPlanWallStart, 0, start23);
+         aiPlanSetVariableVector(wallPlan23ID, cBuildWallPlanWallEnd, 0, end23);
+         aiPlanSetVariableInt(wallPlan23ID, cBuildWallPlanNumberOfGates, 0, 0);
+         aiPlanSetBaseID(wallPlan23ID, baseID);
+         aiPlanSetEscrowID(wallPlan23ID, cEconomyEscrowID);
+         aiPlanSetDesiredPriority(wallPlan23ID, pri);
+         aiPlanSetActive(wallPlan23ID, true);
+      }
+
+      // segment 24
+      int wallPlan24ID = aiPlanCreate("WallInBase24", cPlanBuildWall);
+      if (wallPlan24ID != -1)
+      {
+         aiPlanSetVariableInt(wallPlan24ID, cBuildWallPlanWallType, 0, cBuildWallPlanWallTypeStraight);
+         aiPlanAddUnitType(wallPlan24ID, gEconUnit, 1, 1, 1);
+         aiPlanSetVariableVector(wallPlan24ID, cBuildWallPlanWallStart, 0, start24);
+         aiPlanSetVariableVector(wallPlan24ID, cBuildWallPlanWallEnd, 0, end24);
+         aiPlanSetVariableInt(wallPlan24ID, cBuildWallPlanNumberOfGates, 0, 0);
+         aiPlanSetBaseID(wallPlan24ID, baseID);
+         aiPlanSetEscrowID(wallPlan24ID, cEconomyEscrowID);
+         aiPlanSetDesiredPriority(wallPlan24ID, pri);
+         aiPlanSetActive(wallPlan24ID, true);
+      }
+   }
+
+   return;
+
+}
+
+//==============================================================================
 /* buildCrownwork
    builds a crownwork. Needs the fort center and desired position, so it can
    rotate the correct amount
@@ -576,7 +2401,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
    scale >= 2.4 can fit outposts on corners
 */
 //==============================================================================
-void buildFourCornerStarFort(vector position = cInvalidVector, int baseID = -1, float scale = 1.4, int pri = 80, int towerNum = 0, int cannonNum = 0, int crownwork = 0)
+void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter = cInvalidVector, int baseID = -1, float scale = 1.4, int pri = 80, int towerNum = 0, int cannonNum = 0, int crownwork = 0)
 {
    if (position == cInvalidVector)
    {
@@ -598,6 +2423,16 @@ void buildFourCornerStarFort(vector position = cInvalidVector, int baseID = -1, 
    float positionX = xsVectorGetX(position);
    float positionY = xsVectorGetY(position);
    float positionZ = xsVectorGetZ(position);
+
+   float angle = atan((xsVectorGetZ(fortCenter) - positionZ) / (xsVectorGetX(fortCenter) - positionX));
+   if ((xsVectorGetX(fortCenter) - positionX) < 0 )
+   {
+      angle = 6.28 - angle - 3.14 * .25;
+   }
+   else
+   {
+      angle = angle - 3.14 * .25;
+   } 
 
    // Build specified tower number
    // 2.4 minimum scale number to fit a tower
@@ -629,6 +2464,12 @@ void buildFourCornerStarFort(vector position = cInvalidVector, int baseID = -1, 
          towerPos4 = xsVectorSet(positionX + 7.5 * scale, positionY, positionZ + 7.5 * scale); 
          towerPos2 = xsVectorSet(positionX - 7.5 * scale, positionY, positionZ - 7.5 * scale); 
       }
+
+      // Rotate
+      towerPos1 = rotateByReferencePoint(position, towerPos1 - position, angle);
+      towerPos2 = rotateByReferencePoint(position, towerPos2 - position, angle);
+      towerPos3 = rotateByReferencePoint(position, towerPos3 - position, angle);
+      towerPos4 = rotateByReferencePoint(position, towerPos4 - position, angle);
 
       createLocationBuildPlan(gTowerUnit, 1, pri, true, cEconomyEscrowID, towerPos1, 1);
       if (towerNum >= 2)
@@ -670,12 +2511,17 @@ void buildFourCornerStarFort(vector position = cInvalidVector, int baseID = -1, 
 
    if (crownwork > 0)
    {
-      vector crownworkLoc1 = cInvalidVector;
-      buildCrownwork(crownworkLoc1, position, kbBaseGetMainID(cMyID), scale * 2, 99, 2, 1, true);
+      vector crownworkLoc1 = xsVectorSet(positionX + 7.5 * scale, positionY, positionZ + 7.5 * scale);
+      vector crownworkLoc2 = xsVectorSet(positionX - 7.5 * scale, positionY, positionZ - 7.5 * scale);
+      if (switchInt > 2)
+      {
+         crownworkLoc2 = xsVectorSet(positionX + 7.5 * scale, positionY, positionZ + 7.5 * scale);
+         crownworkLoc1 = xsVectorSet(positionX - 7.5 * scale, positionY, positionZ - 7.5 * scale);
+      }
+      buildCrownwork(crownworkLoc1, position, baseID, 2 * scale * 2, 99, 1, 0, true);
       if (crownwork > 1)
       {
-         vector crownworkLoc2 = cInvalidVector;
-         buildCrownwork(crownworkLoc2, position, kbBaseGetMainID(cMyID), scale * 2, 99, 2, 1, true);
+         buildCrownwork(crownworkLoc2, position, baseID, 2 * scale * 2, 99, 1, 0, true);
       }
    }
 
@@ -740,6 +2586,67 @@ void buildFourCornerStarFort(vector position = cInvalidVector, int baseID = -1, 
 
    vector start20 = end19;
    vector end20 = start1;
+
+   // Rotate points
+   start1 = rotateByReferencePoint(position, start1 - position, angle);
+   end1 = rotateByReferencePoint(position, end1 - position, angle);
+
+   start2 = rotateByReferencePoint(position, start2 - position, angle);
+   end2 = rotateByReferencePoint(position, end2 - position, angle);
+
+   start3 = rotateByReferencePoint(position, start3 - position, angle);
+   end3 = rotateByReferencePoint(position, end3 - position, angle);
+
+   start4 = rotateByReferencePoint(position, start4 - position, angle);
+   end4 = rotateByReferencePoint(position, end4 - position, angle);
+
+   start5 = rotateByReferencePoint(position, start5 - position, angle);
+   end5 = rotateByReferencePoint(position, end5 - position, angle);
+
+   start6 = rotateByReferencePoint(position, start6 - position, angle);
+   end6 = rotateByReferencePoint(position, end6 - position, angle);
+
+   start7 = rotateByReferencePoint(position, start7 - position, angle);
+   end7 = rotateByReferencePoint(position, end7 - position, angle);
+
+   start8 = rotateByReferencePoint(position, start8 - position, angle);
+   end8 = rotateByReferencePoint(position, end8 - position, angle);
+
+   start9 = rotateByReferencePoint(position, start9 - position, angle);
+   end9 = rotateByReferencePoint(position, end9 - position, angle);
+
+   start10 = rotateByReferencePoint(position, start10 - position, angle);
+   end10 = rotateByReferencePoint(position, end10 - position, angle);
+
+   start11 = rotateByReferencePoint(position, start11 - position, angle);
+   end11 = rotateByReferencePoint(position, end11 - position, angle);
+
+   start12 = rotateByReferencePoint(position, start12 - position, angle);
+   end12 = rotateByReferencePoint(position, end12 - position, angle);
+
+   start13 = rotateByReferencePoint(position, start13 - position, angle);
+   end13 = rotateByReferencePoint(position, end13 - position, angle);
+
+   start14 = rotateByReferencePoint(position, start14 - position, angle);
+   end14 = rotateByReferencePoint(position, end14 - position, angle);
+
+   start15 = rotateByReferencePoint(position, start15 - position, angle);
+   end15 = rotateByReferencePoint(position, end15 - position, angle);
+
+   start16 = rotateByReferencePoint(position, start16 - position, angle);
+   end16 = rotateByReferencePoint(position, end16 - position, angle);
+
+   start17 = rotateByReferencePoint(position, start17 - position, angle);
+   end17 = rotateByReferencePoint(position, end17 - position, angle);
+
+   start18 = rotateByReferencePoint(position, start18 - position, angle);
+   end18 = rotateByReferencePoint(position, end18 - position, angle);
+
+   start19 = rotateByReferencePoint(position, start19 - position, angle);
+   end19 = rotateByReferencePoint(position, end19 - position, angle);
+
+   start20 = rotateByReferencePoint(position, start20 - position, angle);
+   end20 = rotateByReferencePoint(position, end20 - position, angle);
 
    // segment 1
    int wallPlan1ID = aiPlanCreate("WallInBase1", cPlanBuildWall);
@@ -1416,9 +3323,20 @@ minInterval 20
       return;
    }
 
+   if (kbUnitCount(cMyID, gEconUnit, cUnitStateAlive) < 50)
+   {
+      return;
+   }
+
+   vector mainBaseLocation = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+
    //buildCornerPairStarFort(kbGetMapCenter(), kbBaseGetMainID(cMyID), 2.4, 99, 1, 1);
-   //buildFourCornerStarFort(kbGetMapCenter(), kbBaseGetMainID(cMyID), 2.4, 99, 2, 2);
-   buildCrownwork(kbGetMapCenter(), kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), kbBaseGetMainID(cMyID), 5, 99, 2, 1, true);
+   //buildFourCornerStarFort(kbGetMapCenter(), mainBaseLocation, kbBaseGetMainID(cMyID), 2.4, 99, 2, 2);
+   //sumterFort(kbGetMapCenter(), mainBaseLocation, gForwardBaseID, 1.5, 99, 2, 0);
+   //haudOverlappingRingFort(kbGetMapCenter(), mainBaseLocation, gForwardBaseID, 2.5, 99, 2, 0);
+   sawtoothFort(kbGetMapCenter(), mainBaseLocation, gForwardBaseID, 2.5, 99, 2, 0);
+   //buildFourCornerStarFort(kbGetMapCenter(), mainBaseLocation, kbBaseGetMainID(cMyID), 2.4, 99, 2, 0, 2);
+   //buildCrownwork(kbGetMapCenter(), kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), kbBaseGetMainID(cMyID), 5, 99, 2, 1, true);
    //createLocationBuildPlan(cUnitTypeBarracks, 2, 90, true, cEconomyEscrowID, kbGetMapCenter(), 1);
    //createLocationBuildPlan(cUnitTypeStable, 2, 90, true, cEconomyEscrowID, kbGetMapCenter(), 1);
    xsDisableSelf();
@@ -3462,10 +5380,12 @@ inactive
 
    Uses a number of conditions to select fancy fort layouts
 
-   Fort Styles:
+   Styles:
       - Corner Pair
       - Four Corner Star
       - Ring Wall
+      - Fort Ticonderoga
+      - Fort Sumter
 
    Additional Pieces:
       - Crownwork
@@ -3504,6 +5424,7 @@ minInterval 10
    int crownworkNum = 0;
    int ravelinNum = 0;
    int age = kbGetAge();
+   vector mainBaseLocation = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
 
    // Table of fort designs:
    /*
@@ -3558,13 +5479,37 @@ minInterval 10
       ravelinNum = 4;
    }
 
-   
-   if (civIsNative() == true)
+   // If we are trying to build this too close to base
+   if (distance(mainBaseLocation, gForwardBaseLocation) < 60)
    {
-      buildWallRing(gForwardBaseLocation, gForwardBaseID, 30.0, 4);
+      if (civIsNative() != true)
+      {
+         buildCrownwork(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 5, pri, 1, 0, true);
+      }
+   }
+   else if (civIsNative() == true)
+   {
+      if (kbUnitCount(cMyID, gEconUnit, cUnitStateAlive) < 40)
+      {
+         return;
+      }
+
+      if (cMyCiv == cCivXPIroquois)// || cMyCiv == cCivXPSioux)
+      {
+         haudOverlappingRingFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber);
+      }
+      else if (cMyCiv == cCivDEInca || cMyCiv == cCivXPAztec)
+      {
+         sawtoothFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber)
+      }
+      else
+      {
+         buildWallRing(gForwardBaseLocation, gForwardBaseID, 30.0, 4);
+      }
    }
    else
    {
+      int switcher = aiRandInt(4);
       // First corner pair
       if (gStrategy == cStrategyRush || (gStrategy == cStrategyNakedFF && age <= cAge3))
       {
@@ -3573,7 +5518,17 @@ minInterval 10
          {
             return;
          }
-         buildCornerPairStarFort(gForwardBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber);
+         switch (switcher)
+         {
+            case 1:
+            {
+               sumterFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 1.5, pri, towerNumber, cannonNumber);
+            }
+            default: 
+            {
+               buildCornerPairStarFort(gForwardBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber);
+            }
+         }
       }
       else
       {
@@ -3582,7 +5537,18 @@ minInterval 10
          {
             return;
          }
-         buildFourCornerStarFort(gForwardBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber);
+         switch (switcher)
+         {
+            case 1:
+            {
+               ticonderogaStarFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.0, pri, towerNumber, cannonNumber, true);
+            }
+            default:
+            {
+               buildFourCornerStarFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber, 0);
+               //buildFourCornerStarFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber, crownworkNum);
+            }
+         }
       }
    }
 
@@ -8836,7 +10802,8 @@ minInterval 30
    // We have a Fort Wagon but also already have a forward base, default the Fort position.
    if ((availableTowerWagon >= 0) && (gForwardBaseState != cForwardBaseStateNone))
    {
-      createSimpleBuildPlan(gTowerUnit, 1, 87, true, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
+      //createSimpleBuildPlan(gTowerUnit, 1, 87, true, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
+      createSimpleBuildPlan(gTowerUnit, 1, 87, true, cMilitaryEscrowID, gForwardBaseID, 1);
       return;
    }
 
