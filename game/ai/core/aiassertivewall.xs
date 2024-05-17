@@ -5500,7 +5500,7 @@ minInterval 10
       }
       else if (cMyCiv == cCivDEInca || cMyCiv == cCivXPAztec)
       {
-         sawtoothFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber)
+         sawtoothFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber);
       }
       else
       {
