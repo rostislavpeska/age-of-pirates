@@ -1,5 +1,7 @@
 # Age of Pirates
 
+![XML Validation](https://github.com/rostislavpeska/age-of-pirates/actions/workflows/validation.yml/badge.svg)
+
 ## Table of contents
 
 - [Table of contents](#table-of-contents)
