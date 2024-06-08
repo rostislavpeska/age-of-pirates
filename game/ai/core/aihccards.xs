@@ -238,7 +238,8 @@ highFrequency // Run every frame until it's disabled.
                      (tech == cTechHCXPAssassins) ||
                      (tech == cTechDEHCExtensiveFortificationsEuropean) || (tech == cTechHCFrontierDefenses2) ||
                      (tech == cTechHCBastionsTeam) || (tech == cTechHCMercenaryLoyalty) ||
-                     (tech == cTechDEHCFencingSchoolOttoman) || (tech == cTechHCTeamCoinCrates1));
+                     (tech == cTechDEHCFencingSchoolOttoman) || (tech == cTechHCTeamCoinCrates1) ||
+                     (tech == cTechDEHCShipSpies1Ottoman) || (tech == cTechDEHCShipSpies2Ottoman)); // AssertiveWall: added muhbir shipments to blacklist
                   break;
                }
                case cCivPortuguese:
@@ -685,9 +686,13 @@ highFrequency // Run every frame until it's disabled.
                 (tech == cTechDEHCAdvancedTambos))
             {
                // Raise priority of trade related cards when we have a trade bias otherwise reduce it.
-               if (btBiasTrade >= 0.5)
-               {
-                  cardPriority++;
+               // AssertiveWall: increase btBiasTrade requirement from 0.5 to 0.55
+               if (btBiasTrade > 0.55)
+               {  // AssertiveWall: Supress this half the time
+                  if (aiRandInt(3) == 1)
+                  {
+                     cardPriority++;
+                  }
                }
                else
                {
@@ -717,6 +722,25 @@ highFrequency // Run every frame until it's disabled.
             
             {
                cardPriority += 100;
+            }
+
+            // AssertiveWall: Make sure we pick build order cards
+            int boShipmentLength = xsArrayGetSize(boShipmentArray);
+            int tempShipment = -1;
+
+            if (xsArrayGetInt(boShipmentArray, boShipmentLength - 1) > 0 && gUseBuildOrder == true)
+            {
+               for (j = 0; < boShipmentLength)
+               {
+                  tempShipment = xsArrayGetInt(boShipmentArray, j);
+                  if (tempShipment > 0)
+                  {
+                     if (tech == tempShipment)
+                     {  
+                        cardPriority += 100; // add it
+                     }
+                  }
+               }
             }
 
             // Raise priority of very important cards.
@@ -806,9 +830,11 @@ highFrequency // Run every frame until it's disabled.
                  (tech == cTechDEHCHandCombatPortuguese) || (tech == cTechDEHCShrineHitpoints) ||
                  (tech == cTechHCRoyalDecreeOttoman) || (tech == cTechYPHCNaginataAntiInfantryDamage) || 
                  (tech == cTechYPHCMorutaruRangeJapanese) || (tech == cTechDEHCLandwehr) ||
-				 (tech == cTechDEHCElephantArmors) || (tech == cTechDEHCHandMortarOttoman) ||
-				 (tech == cTechDEHCVasaAllies1) || (tech == cTechDEHCShipBattleshipRepeat) ||
-				 (tech == cTechYPHCNavalCombatIndians)))
+				     (tech == cTechDEHCElephantArmors) || (tech == cTechDEHCHandMortarOttoman) ||
+				     (tech == cTechDEHCVasaAllies1) || (tech == cTechDEHCShipBattleshipRepeat) ||
+				     (tech == cTechYPHCNavalCombatIndians) ||
+                 // AssertiveWall: Added some cards
+                 (tech == cTechDEHCGermanTongue)))
             {
                cardPriority += 1+aiRandInt(4);
             }
@@ -1099,7 +1125,7 @@ highFrequency // Run every frame until it's disabled.
                   {
                      toPick = 2; // 2 Resource crates in the Commerce Age.
                   }
-                  if (btRushBoom > 0.0)
+                  if (gStrategy == cStrategyRush)
                   {
                      toPick++; // We stay longer in Commerce so get some resources and fewer upgrades.
                   }
@@ -1189,7 +1215,7 @@ highFrequency // Run every frame until it's disabled.
                      {
                         toPick = 4;
                      }
-                     if (btRushBoom > 0.0)
+                     if (gStrategy == cStrategyRush)
                      {
                         toPick--; // Account for the extra crate.
                      }
@@ -1201,7 +1227,7 @@ highFrequency // Run every frame until it's disabled.
                            toPick += cMyCiv == cCivDutch? 2 : 1; // Add the Bank/Blueberries card replacements here.
                         }
                         toPick += 3;
-                        if (btRushBoom > 0.0)
+                        if (gStrategy == cStrategyRush)
                         {
                            toPick++; // Account for the extra crate.
                         }
@@ -1317,7 +1343,7 @@ highFrequency // Run every frame until it's disabled.
                      }
                   }
                   // AssertiveWall: handle the island case. No units unless hard rushing
-                  else if (gStartOnDifferentIslands == true && btRushBoom < 0.5) 
+                  else if (gStartOnDifferentIslands == true && gStrategy == cStrategyRush) 
                   {
                      if ((cMyCiv == cCivIndians) || (cMyCiv == cCivPortuguese) || (cMyCiv == cCivRussians) || 
                          (cMyCiv == cCivChinese) || (cMyCiv == cCivDESwedish) || (cMyCiv == cCivDEAmericans))
@@ -2659,7 +2685,7 @@ void shipGrantedHandler(int parm = -1) // parm is unused.
                      // AssertiveWall: Prioritize food/gold when trying to fast fortress
                      if (age == cAge2)
                      {
-                        if (btRushBoom <= 0.0 && btOffenseDefense < 0.5) // Safe Fast Fortress
+                        if (gStrategy == cStrategySafeFF) // Safe Fast Fortress
                         {
                            totalValue = totalValue * 1.2;
                            // Favor gold
@@ -2668,7 +2694,7 @@ void shipGrantedHandler(int parm = -1) // parm is unused.
                               totalValue = totalValue * 1.1;
                            }
                         }
-                        else if (btRushBoom <= 0.0) // AssertiveWall: Naked FF
+                        else if (gStrategy == cStrategyNakedFF || gStrategy == cStrategyFastIndustrial) // AssertiveWall: Naked FF
                         {
                            totalValue = totalValue * 2.0;
                            // Favor gold
@@ -3271,6 +3297,19 @@ void shipGrantedHandler(int parm = -1) // parm is unused.
       }
       debugHCCards("Choosing card: " + kbGetTechName(aiHCDeckGetCardTechID(deck, bestCard)));
       aiHCDeckPlayCard(bestCard, bestCardIsExtended);
+   }
+
+   // AssertiveWall: If we're under attack and sending units, 
+   //    store the time that we send this shipment so we can time our levy
+   if (isMilitaryUnit == true)// && homeBaseUnderAttack == true)
+   {
+      int time = xsGetTime();
+      int shipmentTime = 40 * 1000;
+      // AssertiveWall: Need this check in case we send multiple. We want the levy to get sent on the first
+      if (time > gLastShipmentSentTime + shipmentTime)
+      {
+         gLastShipmentSentTime = time;
+      }
    }
 }
 

@@ -10,6 +10,7 @@ Explanation of Progress:
    - Buildings tested and mostly work
       - AI still wants to build a house
    - Home city techs drafted not tested
+      - HC Cards added to decks; drafted not tested
    - gatheringOrderRule tested and works, maybe inefficiently
    - Army training not drafted
    - Research drafted not tested
@@ -298,6 +299,7 @@ minInterval 5
 //==============================================================================
 rule researchBuildOrderRule
 inactive
+group buildOrderRules
 minInterval 5
 {
    int techBOlength = xsArrayGetSize(boResearchTechArray);
