@@ -85,9 +85,11 @@
     <rate type="Huntable">1.0</rate>
     <rate type="ypBerryBuilding">1.0</rate>
     <rate type="ypGroveBuilding">1.0</rate>
+    <!-- Congregation Gather -->
     <rate type="zpCongregation" resource="Gold">0.440000</rate>
     <rate type="zpCongregation" resource="Food">0.600000</rate>
     <rate type="zpCongregation" resource="XP">0.700000</rate>
+    <!-- Congregation Gather End -->
   </action>
   <action>
     <name stringid="69183">NoWork</name>

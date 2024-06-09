@@ -11855,7 +11855,7 @@
     <obstructionradiusz>0.9000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\native_settlement\new_stuff\inuit.xml</animfile>
+    <animfile>buildings\native_settlement\new_stuff\zpinuit.xml</animfile>
     <icon>resources\art\units\natives\native_villager_icon_64x64.png</icon>
     <portraiticon>resources\art\units\natives\native_villager_icon_portrait.png</portraiticon>
     <initialhitpoints>1560.0000</initialhitpoints>
@@ -11941,7 +11941,7 @@
     <maxrunvelocity>6.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\infantry_ranged\inuit_harpooner\inuit_harpooner.xml</animfile>
+    <animfile>units\infantry_ranged\inuit_harpooner\zpinuit_harpooner.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\natives\inuitharpooner_icon.png</icon>
@@ -12003,7 +12003,7 @@
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="7">Delete</command>
-    <tactics>harpooner.tactics</tactics>
+    <tactics>zpharpooner.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
       <damage>12.000000</damage>
@@ -12198,7 +12198,7 @@
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
-    <tactics>huskyvillager.tactics</tactics>
+    <tactics>zphuskyvillager.tactics</tactics>
     <protoaction>
       <name>Gather</name>
       <rate type="Herdable">2.000000</rate>
@@ -12207,7 +12207,7 @@
     </protoaction>
     <protoaction>
       <name>HandAttack</name>
-      <damage>9.000000</damage>
+      <damage>10.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
       <damagebonus type="Guardian">3.000000</damagebonus>
@@ -23434,7 +23434,7 @@
     <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\jesuit_chichimeca_mission\jesuit_chichimeca_mission.xml</animfile>
+    <animfile>buildings\jesuit_chichimeca_mission\zp_aboriginal_house.xml</animfile>
     <icon>resources\art\units\spc\pirates\pirate_ranged_icon.png</icon>
     <portraiticon>resources\art\units\spc\pirates\pirate_ranged_portrait.png</portraiticon>
     <initialhitpoints>1560.0000</initialhitpoints>
