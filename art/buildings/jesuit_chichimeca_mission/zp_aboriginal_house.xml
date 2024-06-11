@@ -99,7 +99,7 @@
         <attachment>chichimeca_mission
             <component>chichimeca_mission
                 <assetreference type="GrannyModel">
-                    <file>buildings\jesuit_chichimeca_mission\chichimeca_mission</file>
+                    <file>buildings\jesuit_chichimeca_mission\zpchichimeca_mission</file>
                 </assetreference>
             </component>
             <anim>Idle
