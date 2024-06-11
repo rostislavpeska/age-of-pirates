@@ -23617,6 +23617,110 @@
       <rate type="deHacienda" resource="Wood">0.250000</rate>
     </protoaction>
   </unit>
+  <unit id="20162" name="zpNatBoomerang">
+    <dbid>20162</dbid>
+    <displaynameid>301192</displaynameid>
+    <editornameid>301193</editornameid>
+    <subciv>AboriginalNatives</subciv>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>4.5000</maxvelocity>
+    <maxrunvelocity>6.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <wanderdistance>3</wanderdistance>
+    <animfile>units\natives\australia\boomerang\boomerang.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\natives\boomerang_icon.png</icon>
+    <portraiticon>resources\art\units\natives\boomerang_portrait.png</portraiticon>
+    <rollovertextid>301194</rollovertextid>
+    <shortrollovertextid>301194</shortrollovertextid>
+    <initialhitpoints>120.0000</initialhitpoints>
+    <maxhitpoints>120.0000</maxhitpoints>
+    <los>18.0000</los>
+    <projectileprotounit>Knife</projectileprotounit>
+    <autoattackrange>16.0000</autoattackrange>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>20.0000</trainpoints>
+    <bounty>10.0000</bounty>
+    <buildlimit>17</buildlimit>
+    <buildbounty>10.0000</buildbounty>
+    <cost resourcetype="Food">40.0000</cost>
+    <cost resourcetype="Wood">30.0000</cost>
+    <scorevalue>10.0000</scorevalue>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.1000">
+    </armor>
+    <sharedbuildlimitunittypes>
+      <unittype>zpNatPirateProxy</unittype>
+      <unittype>zpNatPirate</unittype>
+    </sharedbuildlimitunittypes>
+   <unittype>LogicalTypeHealed</unittype>
+		<unittype>LogicalTypeValidSharpshoot</unittype>
+		<unittype>LogicalTypeNeededForVictory</unittype>
+		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeLandMilitary</unittype>
+		<unittype>LogicalTypeScout</unittype>
+		<unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+		<unittype>LogicalTypeGarrisonInShips</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandUnitsAttack</unittype>
+		<unittype>LogicalTypeRangedUnitsAttack</unittype>
+		<unittype>LogicalTypeMinimapFilterMilitary</unittype>
+		<unittype>UnitClass</unittype>
+		<unittype>Military</unittype>
+		<unittype>Unit</unittype>
+		<unittype>AbstractInfantry</unittype>
+		<unittype>AbstractWoLInfantry</unittype>
+		<unittype>AbstractHandInfantry</unittype>
+		<unittype>AbstractRangedInfantry</unittype>
+		<unittype>AbstractWoLRangedInfantry</unittype>
+		<unittype>ConvertsHerds</unittype>
+		<unittype>CountsTowardMilitaryScore</unittype>
+		<unittype>AbstractCavalryInfantry</unittype>
+		<unittype>HasBountyValue</unittype>
+		<unittype>Ranged</unittype>
+    <flag>CollidesWithProjectiles</flag>
+		<flag>ApplyHandicapTraining</flag>
+		<flag>CorpseDecays</flag>
+		<flag>ShowGarrisonButton</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>ObscuredByUnits</flag>
+		<flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="2">Delete</command>
+    <tactics>boomerang.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>6.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+		<protoaction>
+			<name>HandAttack</name>
+			<damage>5.000000</damage>
+			<damageType>Hand</damageType>
+			<rof>1.500000</rof>
+			<damagebonus type='AbstractHeavyInfantry'>2.000000</damagebonus>
+			<damagebonus type='AbstractRangedCavalry'>1.500000</damagebonus>
+			<damagebonus type='AbstractLightInfantry'>0.750000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>VolleyAttack</name>
+			<damage>10.000000</damage>
+			<damageType>Hand</damageType>
+			<maxrange>14.000000</maxrange>
+			<rof>3.000000</rof>
+			<damagebonus type='AbstractHeavyInfantry'>2.000000</damagebonus>
+			<damagebonus type='AbstractRangedCavalry'>1.500000</damagebonus>
+			<damagebonus type='AbstractLightInfantry'>0.750000</damagebonus>
+			<projectile>Knife</projectile>
+		</protoaction>
+  </unit>
 
 
 
