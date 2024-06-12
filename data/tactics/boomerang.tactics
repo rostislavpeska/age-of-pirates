@@ -6,6 +6,7 @@
 		<type>Attack</type>
 		<maxrange>1.75</maxrange>
 		<rate type="Unit">1.0 </rate>
+		<rate type="Huntable">1.0 </rate>
 		<attackaction>1</attackaction>
 		<handlogic>1</handlogic>
 		<speedboost>1</speedboost>
@@ -43,6 +44,7 @@
 		<projectile>Bola</projectile>
 		<minrange>2</minrange>
 		<rate type="Unit">1.0 </rate>
+		<rate type="Huntable">1.0 </rate>
 	</action>
 	<action>
 		<name stringid="38135">ChargeAttack</name>
@@ -58,11 +60,29 @@
 		<damage>6.5</damage>
 		<rof>1.0</rof>
 	</action>
+	<action>
+		<name stringid="42178">Gather</name>
+		<anim>Gather</anim>
+		<typedanim type="deFurTrade">GatherBush</typedanim>
+		<type>Gather</type>
+		<maxrange>0.5</maxrange>
+		<rate type="Huntable">1.0</rate>
+	</action>
+	<action>
+		<name stringid="69151">Hunting</name>
+		<type>Hunting</type>
+		<maxrange>10</maxrange>
+		<rate type="Huntable">1.0</rate>
+		<typedmaxrange type="Huntable">10</typedmaxrange>
+	</action>
 	<tactic>
 		Volley
 		<action priority="75">VolleyAttack</action>
 		<action priority="50">BuildingAttack</action>
 		<action priority="25">HandAttack</action>
+		<action>HuntAttack</action>
+		<action>Gather</action>
+		<action>Hunting</action>
 		<attacktype>LogicalTypeRangedUnitsAttack</attacktype>
 		<autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
 		<attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
@@ -80,6 +100,9 @@
 		<action priority="75">VolleyAttack</action>
 		<action priority="50">BuildingAttack</action>
 		<action priority="25">HandAttack</action>
+		<action>HuntAttack</action>
+		<action>Gather</action>
+		<action>Hunting</action>
 		<attacktype>LogicalTypeRangedUnitsAttack</attacktype>
 		<autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
 		<attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
@@ -97,6 +120,9 @@
 		<action priority="75">VolleyAttack</action>
 		<action priority="50">BuildingAttack</action>
 		<action priority="25">HandAttack</action>
+		<action>HuntAttack</action>
+		<action>Gather</action>
+		<action>Hunting</action>
 		<attacktype>LogicalTypeRangedUnitsAttack</attacktype>
 		<autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
 		<attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
@@ -118,6 +144,9 @@
 		Melee
 		<action priority="100">BuildingAttack</action>
 		<action priority="75">HandAttack</action>
+		<action>HuntAttack</action>
+		<action>Gather</action>
+		<action>Hunting</action>
 		<attacktype>LogicalTypeRangedUnitsAttack</attacktype>
 		<autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
 		<attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>

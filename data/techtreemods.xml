@@ -4723,6 +4723,14 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpPhoenixMGunCarrier" culture="none" newname="301142">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatAboriginalTracker" culture="none" newname="301211">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercAboriginalTracker" culture="none" newname="301211">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatBoomerang" culture="none" newname="301208">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercBoomerang" culture="none" newname="301208">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -7909,7 +7917,7 @@
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\NatInuitHuntingDogs.png</icon>
     <rollovertextid>300575</rollovertextid>
-    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CountsTowardEconomicScore</flag>
     <flag>YPNativeImprovement</flag>
     <effects>
       <effect type="Data" action="Gather" amount="1.25" subtype="WorkRate" unittype="Huntable" relativity="BasePercent">
@@ -11879,8 +11887,18 @@
     <flag>Shadow</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatMaoriClubman</target>
+        <target type="ProtoUnit">zpNatBoomerang</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpNatSurvivalism</effect>
+      <effect type="TechStatus" status="obtainable">zpNatAustraliaHunting</effect>
+      <effect type="TechStatus" status="obtainable">zpNatDidjeridu</effect>
+      <effect type="TechStatus" status="obtainable">zpAustraliaExpansion</effect>
+      <effect type="TechStatus" status="obtainable">zpWarriorSocietyAboriginals</effect>
+      <effect type="TechStatus" status="obtainable">zpChampionAboriginals</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyAboriginals</effect>
+      <effect type="TechStatus" status="obtainable">DEIndianFriendshipAboriginals</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyAboriginals</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOnKhmers" type="Normal">
@@ -11978,7 +11996,184 @@
       <effect type="TechStatus" status="unobtainable">zpPickConsulateTechAvailable</effect>
     </effects>
   </tech>
+  <tech name="zpNatAustraliaHunting" type="Normal">
+    <dbid>40519</dbid>
+    <displaynameid>301198</displaynameid>
+    <cost resourcetype="Wood">175.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\australia_hunting.png</icon>
+    <rollovertextid>300575</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" action="Gather" amount="1.30" subtype="WorkRate" unittype="Huntable" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.30" subtype="WorkRate" unittype="Huntable" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatBoomerang</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatSurvivalism" type="Normal">
+    <dbid>40520</dbid>
+    <displaynameid>301199</displaynameid>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Wood">40.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\australia_survivalism.png</icon>
+    <rollovertextid>301200</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="1.07" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" amount="1.15" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatDidjeridu" type="Normal">
+    <dbid>40521</dbid>
+    <displaynameid>301201</displaynameid>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\australia_didjeridu.png</icon>
+    <rollovertextid>301202</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="active">Colonialize1</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="zpNatBoomerang" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpWarriorSocietyAboriginals" type="Normal">
+    <dbid>40522</dbid>
+    <displaynameid>301203</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">75.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\warrior_society\warrior_society.png</icon>
+    <rollovertextid>301205</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatBoomerang</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatBoomerang</target>
+      </effect>
+      <effect type="SetName" proto="zpNatBoomerang" culture="none" newname="301206">
+      </effect>
+      <effect type="SetName" proto="zpNatBoomerang" culture="none" newname="301208" reqtech="ImpLegendaryNativesShadow">
+      </effect>
 
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatAboriginalTracker</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatAboriginalTracker</target>
+      </effect>
+      <effect type="SetName" proto="zpNatAboriginalTracker" culture="none" newname="301209">
+      </effect>
+      <effect type="SetName" proto="zpNatAboriginalTracker" culture="none" newname="301211" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpChampionAboriginals" type="Normal">
+    <dbid>40523</dbid>
+    <displaynameid>301204</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\champion_natives\champion_natives.png</icon>
+    <rollovertextid>301205</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+      <techstatus status="Active">zpWarriorSocietyAboriginals</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatBoomerang</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatBoomerang</target>
+      </effect>
+      <effect type="SetName" proto="zpNatBoomerang" culture="none" newname="301207">
+      </effect>
+      <effect type="SetName" proto="zpNatBoomerang" culture="none" newname="301208" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatAboriginalTracker</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatAboriginalTracker</target>
+      </effect>
+      <effect type="SetName" proto="zpNatAboriginalTracker" culture="none" newname="301210">
+      </effect>
+      <effect type="SetName" proto="zpNatAboriginalTracker" culture="none" newname="301211" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpAustraliaExpansion" type ="Normal">
+		<dbid>40524</dbid>
+		<displaynameid>301212</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\australia_big.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>301213</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatAboriginalTracker</target>
+      </effect>
+      
+      <effect type="CommandAdd" tech="zpSPCZenRicePaddy" page="2" column="4">
+        <target type="ProtoUnit"></target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCZenCastle" page="2" column="5">
+        <target type="ProtoUnit"></target>
+      </effect>
+      <effect type="CommandAdd" tech="zpZenMountainMercenaries" page="2" column="6">
+        <target type="ProtoUnit"></target>
+      </effect>
+
+    </effects>
+	</tech>
  
 
 

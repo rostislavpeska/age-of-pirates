@@ -1193,12 +1193,28 @@
       <string _locid="301189">Emu</string>
       <string _locid="301190">ZP Emu</string>
       <string _locid="301191">Dromaius novaehollandiae</string>
-      <string _locid="301192">Boomerang Warrior</string>
-      <string _locid="301193">ZP NAT Boomerang Warrior</string>
+      <string _locid="301192">Boomerang Hunter</string>
+      <string _locid="301193">ZP NAT Boomerang Hunter</string>
       <string _locid="301194">Native Australian equipped with a boomerang.</string>
       <string _locid="301195">Aboriginal Tracker</string>
       <string _locid="301196">ZP NAT Aboriginal Tracker</string>
       <string _locid="301197">Native tracker in service of her Majesty.</string>
+      <string _locid="301198">Australian Hunting Techniques</string>
+      <string _locid="301199">Survivalism</string>
+      <string _locid="301200">Increases Villager's attack and hitpoints</string>
+      <string _locid="301201">Sound of Didjeridu</string>
+      <string _locid="301202">Ships 6 additional Boomerang Hunters</string>
+      <string _locid="301203">Warrior Society Aboriginals</string>
+      <string _locid="301204">Champion Aboriginals</string>
+      <string _locid="301205">Improves Aboriginal unit attack and hitpoints</string>
+      <string _locid="301206">Elite Boomerang Hunter</string>
+      <string _locid="301207">Champion Boomerang Hunter</string>
+      <string _locid="301208">Legendary Boomerang Hunter</string>
+      <string _locid="301209">Elite Aboriginal Tracker</string>
+      <string _locid="301210">Champion Aboriginal Tracker</string>
+      <string _locid="301211">Legendary Aboriginal Tracker</string>
+      <string _locid="301212">Australian Expansion</string>
+      <string _locid="301213">Unlocks new Australian units and techs.</string>
 
 
 

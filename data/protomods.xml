@@ -428,6 +428,8 @@
     <train row="0" page="0" column="2">zpNatBulgarianBoyar</train>
     <train row="0" page="0" column="2">zpNatMonaspa</train>
     <train row="0" page="0" column="3">zpPhoenixMGunCarrier</train>
+    <train row="0" page="0" column="1">zpNatBoomerang</train>
+    <train row="0" page="0" column="2">zpNatAboriginalTracker</train>
     
     <!-- Western Units -->
     <train row="0" page="0" column="1">zpMountedOutlaw</train>
@@ -539,6 +541,13 @@
     <tech row="0" page="1" column="1">zpOrthodoxInfluence</tech>
     <tech row="0" page="1" column="1">zpXMassExpansion</tech>
 
+    <tech row="0" page="1" column="1">zpWarriorSocietyAboriginals</tech>
+    <tech row="0" page="1" column="1">zpChampionAboriginals</tech>
+    <tech row="0" page="2" column="1">zpNatSurvivalism</tech>
+    <tech row="0" page="2" column="2">zpNatAustraliaHunting</tech>
+    <tech row="0" page="2" column="3">zpNatDidjeridu</tech>
+    <tech row="0" page="1" column="1">zpAustraliaExpansion</tech>
+
     <!-- Wild West Techs -->
     <tech row="0" page="2" column="1">zpWildWestWhiskeyFactory</tech>
     <tech row="0" page="2" column="0">zpWildWestCows</tech>
@@ -621,6 +630,8 @@
     <train row="0" page="0" column="102">zpPinkertonAgent</train>
     <train row="0" page="0" column="103">zpStageCoach</train>
     <train row="0" page="0" column="104">zpPhoenixMGunCarrier</train>
+    <train row="0" page="0" column="105">zpNatBoomerang</train>
+    <train row="0" page="0" column="106">zpNatAboriginalTracker</train>
   </unit>
   <unit name="NativeTownObstruction">
     <flag>Invulnerable</flag>
@@ -23653,11 +23664,8 @@
     <allowedage>1</allowedage>
     <armor type="Ranged" value="0.1000">
     </armor>
-    <sharedbuildlimitunittypes>
-      <unittype>zpNatPirateProxy</unittype>
-      <unittype>zpNatPirate</unittype>
-    </sharedbuildlimitunittypes>
-   <unittype>LogicalTypeHealed</unittype>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <unittype>LogicalTypeHealed</unittype>
 		<unittype>LogicalTypeValidSharpshoot</unittype>
 		<unittype>LogicalTypeNeededForVictory</unittype>
 		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
@@ -23683,6 +23691,8 @@
 		<unittype>AbstractCavalryInfantry</unittype>
 		<unittype>HasBountyValue</unittype>
 		<unittype>Ranged</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <flag>HasGatherPoint</flag>
     <flag>CollidesWithProjectiles</flag>
 		<flag>ApplyHandicapTraining</flag>
 		<flag>CorpseDecays</flag>
@@ -23708,6 +23718,7 @@
 			<damagebonus type='AbstractHeavyInfantry'>2.000000</damagebonus>
 			<damagebonus type='AbstractRangedCavalry'>1.500000</damagebonus>
 			<damagebonus type='AbstractLightInfantry'>0.750000</damagebonus>
+      <damagebonus type='Huntable'>4.000000</damagebonus>
 		</protoaction>
 		<protoaction>
 			<name>VolleyAttack</name>
@@ -23718,8 +23729,17 @@
 			<damagebonus type='AbstractHeavyInfantry'>2.000000</damagebonus>
 			<damagebonus type='AbstractRangedCavalry'>1.500000</damagebonus>
 			<damagebonus type='AbstractLightInfantry'>0.750000</damagebonus>
+      <damagebonus type='Huntable'>7.000000</damagebonus>
 			<projectile>Knife</projectile>
 		</protoaction>
+    <protoaction>
+      <name>Gather</name>
+      <rate type="Huntable">1.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>Hunting</name>
+      <rate type="Huntable">1.000000</rate>
+    </protoaction>
   </unit>
   <unit id="20163" name="zpNatAboriginalTracker">
     <dbid>20163</dbid>
@@ -23749,7 +23769,7 @@
     <trainpoints>34.0000</trainpoints>
     <bounty>12.0000</bounty>
     <buildbounty>12.0000</buildbounty>
-    <buildlimit>20</buildlimit>
+    <buildlimit>19</buildlimit>
     <cost resourcetype="Food">40.0000</cost>
     <cost resourcetype="Gold">75.0000</cost>
     <allowedage>2</allowedage>

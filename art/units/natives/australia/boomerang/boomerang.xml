@@ -6,6 +6,37 @@
 	<definebone>bone_hat</definebone>
 	<definebone>bone_weapon1_attach</definebone>
 	<definebone>bone_weapon2_attach</definebone>
+	<attachment>pickaxe
+		<component>pickaxe
+			<assetreference type="GrannyModel">
+				<file>units\attachments\pickaxe_villager</file>
+			</assetreference>
+		</component>
+		<anim>Idle
+			<component>pickaxe</component>
+		</anim>
+	</attachment>
+	<attachment>bowl
+		<component>bowl
+			<assetreference type="GrannyModel">
+				<file>units\attachments\bowl_villager</file>
+			</assetreference>
+		</component>
+		<anim>Idle
+			<component>bowl</component>
+		</anim>
+	</attachment>
+	<attachment>hoe
+		<component>hoe
+			<assetreference type="GrannyModel">
+				<file>units\attachments\hoe_villager</file>
+			</assetreference>
+		</component>
+		<anim>Idle
+			<component>hoe</component>
+		</anim>
+	</attachment>
+	<attachment>knife<component>knife<assetreference type="GrannyModel"><file>units\attachments\knife_villager</file></assetreference></component><anim>Idle<component>knife</component></anim></attachment>
 		<attachment>
 		boomerang
 		<component>
@@ -94,6 +125,22 @@
 			<file>units\africans\outlaws\african_guardian\african_guardian</file>
 		</assetreference>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+					
+
+		<decal>
+			<effecttype>default</effecttype>
+			<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
+			<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+			<width>1.0</width>
+			<height>1.0</height>
+		</decal>
+
+	</component>
+	<component>
+		GatherComp
+		<assetreference type="GrannyModel">
+			<file>units\africans\outlaws\african_guardian\african_guardian</file>
+		</assetreference>
 					
 
 		<decal>
@@ -675,4 +722,66 @@
 		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
 
 	</anim>
+	<anim>GatherChop
+            <assetreference type="GrannyAnim">
+                <file>animation_library\villager\villager_male_choptreeside</file>
+                <tag type="Attack">0.45</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="GatherWood">0.67</tag>
+            </assetreference>
+            <component>GatherComp</component>
+            <attach a="axe" frombone="MASTER" tobone="bip01 prop1" syncanims="0"></attach>
+        </anim>
+        <anim>GatherFarm
+            <assetreference type="GrannyAnim">
+                <file>animation_library\villager\villager_male_gatherfarmhoe</file>
+                <tag type="SpecificSoundSet" checkvisible="1" set="GatherFarm">0.16</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="GatherFarm">0.27</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="GatherFarm">0.39</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="GatherFarm">0.67</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="GatherFarm">0.78</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="GatherFarm">0.89</tag>
+            </assetreference>
+            <component>GatherComp</component>
+            <attach a="hoe" frombone="MASTER" tobone="bip01 prop1" syncanims="0"></attach>
+        </anim>
+        <anim>GatherBush
+            <assetreference type="GrannyAnim">
+                <file>animation_library\villager\villager_gathefruit</file>
+                <tag type="SpecificSoundSet" checkvisible="1" set="GatherFruit">0.33</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="GatherFruit">0.57</tag>
+            </assetreference>
+            <component>GatherComp</component>
+            <attach a="bowl" frombone="" tobone="bip01 prop2" syncanims="0"></attach>
+        </anim>
+        <anim>GatherMine
+            <assetreference type="GrannyAnim">
+                <file>animation_library\villager\villager_male_gathermine1</file>
+                <tag type="SpecificSoundSet" checkvisible="1" set="GatherCoin">0.90</tag>
+            </assetreference>
+            <component>GatherComp</component>
+            <attach a="pickaxe" frombone="MASTER" tobone="bip01 prop1" syncanims="0"></attach>
+        </anim>
+        <anim>GatherHunt
+            <assetreference type="GrannyAnim">
+                <file>animation_library\villager\villager_male_gatherhunt1</file>
+                <tag type="SpecificSoundSet" checkvisible="1" set="GatherMeat">0.00</tag>
+            </assetreference>
+            <component>GatherComp</component>
+            <attach a="knife" frombone="MASTER" tobone="bip01 prop1" syncanims="0"></attach>
+        </anim>
+        <anim>GatherCrate
+            <assetreference type="GrannyAnim">
+                <file>animation_library\villager\villager_male_gathercrate1</file>
+                <tag type="SpecificSoundSet" checkvisible="1" set="GatherFruit">0.56</tag>
+            </assetreference>
+            <component>GatherComp</component>
+        </anim>
+        <anim>GatherCrateAttack
+            <assetreference type="GrannyAnim">
+                <file>animation_library\villager\villager_male_gathercrate1</file>
+                <tag type="Attack">0.50</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="GatherFruit">0.56</tag>
+            </assetreference>
+            <component>GatherComp</component>
+        </anim>
 </animfile>
