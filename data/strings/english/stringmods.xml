@@ -1195,7 +1195,7 @@
       <string _locid="301191">Dromaius novaehollandiae</string>
       <string _locid="301192">Boomerang Hunter</string>
       <string _locid="301193">ZP NAT Boomerang Hunter</string>
-      <string _locid="301194">Native Australian equipped with a boomerang.</string>
+      <string _locid="301194">Native Australian hunter equipped with a boomerang. Good in battle or for hunting animals.</string>
       <string _locid="301195">Aboriginal Tracker</string>
       <string _locid="301196">ZP NAT Aboriginal Tracker</string>
       <string _locid="301197">Native tracker in service of her Majesty.</string>
@@ -1215,6 +1215,7 @@
       <string _locid="301211">Legendary Aboriginal Tracker</string>
       <string _locid="301212">Australian Expansion</string>
       <string _locid="301213">Unlocks new Australian units and techs.</string>
+      <string _locid="301214">ZP NAT MERC Boomerang Hunter</string>
 
 
 

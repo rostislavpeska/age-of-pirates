@@ -12013,6 +12013,9 @@
       <effect type="Data" action="Gather" amount="1.30" subtype="WorkRate" unittype="Huntable" relativity="BasePercent">
         <target type="ProtoUnit">zpNatBoomerang</target>
       </effect>
+      <effect type="Data" action="Gather" amount="1.30" subtype="WorkRate" unittype="Huntable" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercBoomerang</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpNatSurvivalism" type="Normal">
@@ -12050,7 +12053,7 @@
       <techstatus status="active">Colonialize1</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="zpNatBoomerang" relativity="Absolute">
+      <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="zpNatMercBoomerang" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -12083,6 +12086,16 @@
       <effect type="SetName" proto="zpNatBoomerang" culture="none" newname="301206">
       </effect>
       <effect type="SetName" proto="zpNatBoomerang" culture="none" newname="301208" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercBoomerang</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercBoomerang</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMercBoomerang" culture="none" newname="301206">
+      </effect>
+      <effect type="SetName" proto="zpNatMercBoomerang" culture="none" newname="301208" reqtech="ImpLegendaryNativesShadow">
       </effect>
 
       <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
@@ -12125,6 +12138,16 @@
       <effect type="SetName" proto="zpNatBoomerang" culture="none" newname="301207">
       </effect>
       <effect type="SetName" proto="zpNatBoomerang" culture="none" newname="301208" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercBoomerang</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercBoomerang</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMercBoomerang" culture="none" newname="301207">
+      </effect>
+      <effect type="SetName" proto="zpNatMercBoomerang" culture="none" newname="301208" reqtech="ImpLegendaryNativesShadow">
       </effect>
 
       <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
