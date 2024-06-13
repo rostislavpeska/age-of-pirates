@@ -1,0 +1,32 @@
+name: Validation
+
+on: push
+
+jobs:
+  xmls:
+    name: XML malformations
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Parse XML files
+        run: |
+          python _all_xmls.py
+
+  strings:
+    name: Stringtables
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Validate the stringtables
+        run: |
+          python _stringtables.py

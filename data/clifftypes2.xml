@@ -2050,4 +2050,49 @@
       <bottomedge>Amazon\ground4_ama</bottomedge>
     </textures>
   </cliff>
+  <cliff name="ZP Australia" blockland="1" blockwater="0" iconname="ui\editor\cliffpainteddesert">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_desert_bush1" minedgedist="0.4" maxedgedist="0.8" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush4" minedgedist=".5" maxedgedist="1" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush5" minedgedist=".5" maxedgedist="1" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush6" minedgedist=".4" maxedgedist="0.8" chance="0.05" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\underbrush\underbrush_desert_bush1" minedgedist="0.5" maxedgedist="1" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush3" minedgedist="0.5" maxedgedist="1" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush5" minedgedist="0.3" maxedgedist="0.8" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush6" minedgedist="0.5" maxedgedist="1" chance="0.05" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.075000</displacementamount>
+      <shapecurve>1v{-0.026,1.042|0.000,0.707|-0.013,0.875|25312}{0.015,0.560|0.022,0.434|0.018,0.497|7774}{0.191,0.310|0.090,0.216|0.141,0.263|19461}{0.321,0.455|0.482,0.460|0.401,0.458|23438}{0.518,0.190|0.708,0.120|0.613,0.155|13333}{0.809,0.167|0.937,0.203|0.873,0.185|20117}{0.879,0.215|1.121,-0.207|1.000,0.004|28558}</shapecurve>
+      <displacementmedianvalue>0.357000</displacementmedianvalue>
+      <triplanarscale>0.100000</triplanarscale>
+      <normalstrength>2.500000</normalstrength>
+      <secondarynormalstrength>1.000000</secondarynormalstrength>
+      <terrainblendtop>0.026000</terrainblendtop>
+      <terrainblendbottom>0.095000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\deccan_plateau\deccan_plateau_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\deccan_plateau\deccan_plateau_cliff_normals_lrg</normals>
+      <secondarynormals>terrain\cliffs\deccan_plateau\deccan_plateau_cliff_normals_sml</secondarynormals>
+      <heightmap>terrain\cliffs\deccan_plateau\deccan_plateau_cliff_height</heightmap>
+      <mask>terrain\cliffs\deccan_plateau\deccan_plateau_cliff_masks</mask>
+      <top>Painteddesert\pd_ground_diffuse_d</top>
+      <topedge>Painteddesert\pd_ground_diffuse_e</topedge>
+      <side>Painteddesert\pd_cliff_diffuse_a</side>
+      <edge>Painteddesert\pd_ground_diffuse_e</edge>
+      <bottomedge>Painteddesert\pd_ground_diffuse_i</bottomedge>
+    </textures>
+  </cliff> 
 </cliffs>
