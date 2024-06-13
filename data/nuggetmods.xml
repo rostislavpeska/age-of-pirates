@@ -12,6 +12,7 @@
       <maptype>caribbeanwater</maptype>
       <maptype>arcticwater</maptype>
       <maptype>kurils</maptype>
+      <maptype>australia</maptype>
       <guardian>ypGreatWhiteShark</guardian>
       <guardian>ypGreatWhiteShark</guardian>
       <difficulty>6</difficulty>
@@ -19,10 +20,7 @@
     <nugget>
       <name>ypWaterNuggetDriftwood</name>
       <maptype>caribbeanwater</maptype>
-    </nugget>
-    <nugget>
-      <name>ypWaterNuggetDriftwood</name>
-      <maptype>caribbeanwater</maptype>
+      <maptype>australia</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetSwordfish</name>
@@ -31,6 +29,7 @@
     <nugget>
       <name>ypWaterNuggetDolphins</name>
       <maptype>caribbeanwater</maptype>
+      <maptype>australia</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetSeaUrchins</name>
@@ -47,6 +46,7 @@
     <nugget>
       <name>ypWaterNuggetAmbergris</name>
       <maptype>caribbeanwater</maptype>
+      <maptype>australia</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetSeaLions</name>
@@ -57,16 +57,19 @@
       <name>ypWaterNuggetMu3</name>
       <maptype>arcticwater</maptype>
       <maptype>kurils</maptype>
+      <maptype>australia</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetMu2</name>
       <maptype>arcticwater</maptype>
       <maptype>kurils</maptype>
+      <maptype>australia</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetMu1</name>
       <maptype>arcticwater</maptype>
       <maptype>kurils</maptype>
+      <maptype>australia</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetLemuria2</name>
@@ -78,6 +81,306 @@
       <maptype>arcticwater</maptype>
       <maptype>kurils</maptype>
     </nugget>
+
+    <nugget>
+      <name>afCorsairLoot22</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>afCorsairLoot22Medi</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>afCorsairLoot33</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>afCorsairLoot</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>afCorsairLootMedi</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>afCorsairLoot2</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>afCorsairLoot22</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>afGoldenStool22</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>afWoodTrickle11</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>afXPTrickle11</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Basswood</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Beaver1</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Beaver2</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Beaver3</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Blanket</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Chiles3</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Cibola1A</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Cibola1B</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Cibola2A</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Cibola2B</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Cibola2C</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Cibola3A</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Cibola3B</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Cibola4A</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Cibola4B</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Cibola5</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Cibola7A</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Cibola7B</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Coihue</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>CoihueTeam</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Comstock</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Comstock11</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Coreur5</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>CoreurTwoTwo</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Coypu1</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Coypu2</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Coypu3</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>deHouseNugget3</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>deNuggetFoodTrickle</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>deNuggetXPrickle</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>GiveDoubleHP</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Jackalope</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Jeff1</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Journal2</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Kev1</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Kev2</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Kev3</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Kev4</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Kev5</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Kev5</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>KidnapBritish1</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>KidnapBritish2</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>KidnapBritish3</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>MercuryTeam</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Muskrat1</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Muskrat2</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Muskrat3</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>NavigationChart</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Settler</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Settler6</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>Squash33</name>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>zpAustralia1</name>
+      <nuggetunit>NuggetDroppedSupplies</nuggetunit>
+      <type>AdjustResource</type>
+      <rolloverstringid>90905</rolloverstringid>
+      <applystringid>90906</applystringid>
+      <resource>XP</resource>
+      <amount>100</amount>
+      <maptype>australia</maptype>
+      <guardian>zpDingoDog</guardian>
+      <guardian>zpDingoDog</guardian>
+      <difficulty>3</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpAustralia2</name>
+      <nuggetunit>NuggetDroppedSupplies</nuggetunit>
+      <type>AdjustResource</type>
+      <rolloverstringid>90905</rolloverstringid>
+      <applystringid>90906</applystringid>
+      <resource>Food</resource>
+      <amount>100</amount>
+      <maptype>australia</maptype>
+      <guardian>zpDingoDog</guardian>
+      <guardian>zpDingoDog</guardian>
+      <difficulty>3</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpAustralia3</name>
+      <nuggetunit>NuggetDroppedSupplies</nuggetunit>
+      <type>AdjustResource</type>
+      <rolloverstringid>90905</rolloverstringid>
+      <applystringid>90906</applystringid>
+      <resource>Wood</resource>
+      <amount>100</amount>
+      <maptype>australia</maptype>
+      <guardian>zpDingoDog</guardian>
+      <guardian>zpDingoDog</guardian>
+      <difficulty>3</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpAustralia4</name>
+      <nuggetunit>NuggetDroppedSupplies</nuggetunit>
+      <type>AdjustResource</type>
+      <rolloverstringid>90905</rolloverstringid>
+      <applystringid>90906</applystringid>
+      <resource>Gold</resource>
+      <amount>100</amount>
+      <maptype>australia</maptype>
+      <guardian>zpDingoDog</guardian>
+      <guardian>zpDingoDog</guardian>
+      <difficulty>3</difficulty>
+    </nugget>
+
+ 
+
     <nugget>
       <name>zpWaterNuggetBoatGather</name>
       <type>GiveTech</type>
@@ -108,6 +411,7 @@
       <amount>200</amount>
       <maptype>caribbeanwater</maptype>
       <maptype>arcticwater</maptype>
+      <maptype>australia</maptype>
       <difficulty>6</difficulty>
       <guardian>zpGuardianPrivateer</guardian>
     </nugget>
@@ -126,6 +430,7 @@
       <amount>200</amount>
       <maptype>caribbeanwater</maptype>
       <maptype>arcticwater</maptype>
+      <maptype>australia</maptype>
       <guardian>zpGuardianPrivateer</guardian>
       <difficulty>6</difficulty>
     </nugget>
@@ -140,6 +445,7 @@
       <amount>200</amount>
       <maptype>caribbeanwater</maptype>
       <maptype>arcticwater</maptype>
+      <maptype>australia</maptype>
       <guardian>zpGuardianPrivateer</guardian>
       <difficulty>6</difficulty>
     </nugget>
@@ -154,6 +460,7 @@
       <amount>185</amount>
       <maptype>caribbeanwater</maptype>
       <maptype>arcticwater</maptype>
+      <maptype>australia</maptype>
       <guardian>zpGuardianPrivateer</guardian>
       <difficulty>6</difficulty>
     </nugget>
@@ -168,6 +475,7 @@
       <amount>175</amount>
       <maptype>caribbeanwater</maptype>
       <maptype>arcticwater</maptype>
+      <maptype>australia</maptype>
       <guardian>zpGuardianPrivateer</guardian>
       <difficulty>6</difficulty>
     </nugget>
@@ -182,6 +490,7 @@
       <amount>190</amount>
       <maptype>caribbeanwater</maptype>
       <maptype>arcticwater</maptype>
+      <maptype>australia</maptype>
       <guardian>zpGuardianPrivateer</guardian>
       <difficulty>6</difficulty>
     </nugget>
