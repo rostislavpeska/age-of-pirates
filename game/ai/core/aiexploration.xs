@@ -1194,14 +1194,18 @@ minInterval 10
    static int chasquiPlan = -1;
 
    // Create maintain plan.
-   int limit = kbGetBuildLimit(cMyID, cUnitTypedeChasqui);
-   if (chasquiPlan < 0)
-   {
-      chasquiPlan = createSimpleMaintainPlan(cUnitTypedeChasqui, 1, false, kbBaseGetMainID(cMyID));
-   }
+   int limit = kbGetBuildLimit(cMyID, cUnitTypedeChasqui) - 1;  // AssertiveWall: try to avoid breaking the limit
+   // AssertiveWall: No chasqui training until age 2
    if (kbGetAge() >= cAge2)
    {
-      aiPlanSetVariableInt(chasquiPlan, cTrainPlanNumberToMaintain, 0, limit);
+      if (chasquiPlan < 0)
+      {
+         chasquiPlan = createSimpleMaintainPlan(cUnitTypedeChasqui, 1, false, kbBaseGetMainID(cMyID));
+      }
+      if (kbGetAge() >= cAge2)
+      {
+         aiPlanSetVariableInt(chasquiPlan, cTrainPlanNumberToMaintain, 0, limit);
+      }
    }
 
    // Create plan only when Chasqui available.

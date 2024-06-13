@@ -430,7 +430,7 @@ vector guessEnemyLocation(int player = -1)
       player = aiGetMostHatedPlayerID();
    }
 
-   // AssertiveWall: sometimes aiGetMostHatedPlayerID() doesn't work. if that's the case, grab the first enemy player
+   // AssertiveWall: sometimes aiGetMostHatedPlayerID() doesn't work? if that's the case, grab the first enemy player
    if (player < 0)
    {
       for (i = 0; < cNumberPlayers)
@@ -662,7 +662,7 @@ int getEnemyPlayerByTeamPosition(int position = -1)
       if (matchCount == position)
       {
          return (index);
-   }
+      }
    }
    return (-1);
 }
