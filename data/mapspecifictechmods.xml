@@ -67,4 +67,40 @@
     <tech>zpAnnoMercenaries</tech>
     <forcetech>zpNativeHeavyMap</forcetech>
   </map>
+   <map name="australia">
+    <tech>ypSaloonWokouPirate</tech>
+    <tech>SaloonTechPirate</tech>
+    <randomnumtouse>3</randomnumtouse>
+    <randomtech>SaloonBlackRider</randomtech>
+    <randomtech>SaloonCorsair</randomtech>
+    <randomtech>SaloonElmeti</randomtech>
+    <randomtech>SaloonMameluke</randomtech>
+    <randomtech>SaloonManchu</randomtech>
+    <randomtech>SaloonNinja</randomtech>
+    <randomtech>deSaloonHarquebusier</randomtech>
+    <randomtech>SaloonHighlander</randomtech>
+    <randomtech>SaloonLandsknecht</randomtech>
+    <randomtech>SaloonStradiot</randomtech>
+    <randomtech>SaloonJaeger</randomtech>
+    <randomtech>SaloonSwissPikeman</randomtech>
+    <randomtech>SaloonFusilier</randomtech>
+    <randomtech>ypSaloonArsonist</randomtech>
+    <randomtech>SaloonGreatCannon</randomtech>
+    <randomtech>DESaloonNapoleonGun</randomtech>
+    <randomtech>DESaloonZouave</randomtech>
+    <randomtech>DESaloonSudaneseRider</randomtech>
+    <randomtech>DESaloonCannoneer</randomtech>
+    <randomtech>DESaloonAskari</randomtech>
+    <randomtech>DESaloonAmazon</randomtech>
+    <randomtech>DESaloonZenata</randomtech>
+    <randomtech>DESaloonGatlingCamel</randomtech>
+    <randomtech>DESaloonKanuri</randomtech>
+    <randomtech>deSaloonGrenadier</randomtech>
+    <randomtech>deSaloonPandour</randomtech>
+    <randomtech>deSaloonRoyalHorseman</randomtech>
+    <randomtech>deSaloonPistoleer</randomtech>
+    <randomtech>deSaloonBrigadier</randomtech>
+    <randomtech>deSaloonMountedRifleman</randomtech>
+    <randomtech>deSaloonBosniak</randomtech>
+  </map>
 </mapspecifictechmods>
