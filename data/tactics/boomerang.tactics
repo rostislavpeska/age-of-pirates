@@ -128,11 +128,6 @@
 		<attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
 		<runaway>0</runaway>
 		<autoretarget>1</autoretarget>
-		<transition>
-			<tactic>Normal</tactic>
-			<length>0</length>
-			<exit>1</exit>
-		</transition>
 		<idleanim>Cover_idle</idleanim>
 		<boredanim>Cover_bored</boredanim>
 		<deathanim>Death_by_melee</deathanim>
@@ -152,16 +147,30 @@
 		<attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
 		<runaway>0</runaway>
 		<autoretarget>1</autoretarget>
-		<transition>
-			<tactic>Normal</tactic>
-			<length>0</length>
-			<exit>1</exit>
-		</transition>
 		<idleanim>Charge_idle</idleanim>
 		<boredanim>Charge_bored</boredanim>
 		<deathanim>Death_by_melee</deathanim>
 		<walkanim>Charge_walk</walkanim>
 		<joganim>Charge_jog</joganim>
 		<runanim>Charge_run</runanim>
+	</tactic>
+	<tactic>StandGround
+		<speedmodifier>1.0</speedmodifier>
+		<action priority="75">VolleyAttack</action>
+		<action priority="50">BuildingAttack</action>
+		<action priority="25">HandAttack</action>
+		<action>HuntAttack</action>
+		<action>Gather</action>
+		<action>Hunting</action>
+		<attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+		<autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+		<attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+		<runaway>0</runaway>
+		<idleanim>Volley_standing_idle</idleanim>
+		<boredanim>Volley_standing_bored</boredanim>
+		<deathanim>Death_by_melee</deathanim>
+		<walkanim>Volley_walk</walkanim>
+		<joganim>Volley_jog</joganim>
+		<runanim>Volley_run</runanim>
 	</tactic>
 </tactics>

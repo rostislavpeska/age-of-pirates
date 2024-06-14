@@ -124,23 +124,7 @@
 		<assetreference type="GrannyModel">
 			<file>units\africans\outlaws\african_guardian\african_guardian</file>
 		</assetreference>
-		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
-					
-
-		<decal>
-			<effecttype>default</effecttype>
-			<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
-			<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
-			<width>1.0</width>
-			<height>1.0</height>
-		</decal>
-
-	</component>
-	<component>
-		GatherComp
-		<assetreference type="GrannyModel">
-			<file>units\africans\outlaws\african_guardian\african_guardian</file>
-		</assetreference>
+		
 					
 
 		<decal>
@@ -171,7 +155,7 @@
 			<weight>20</weight>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -180,7 +164,7 @@
 			<file>nuggets\outlaw_kidnap\kidnap_hostageA_exit</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -201,7 +185,7 @@
 			<tag type="SpecificSoundSet" checkvisible="1" set="Swoosh">0.30</tag>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -222,7 +206,7 @@
 			<tag type="SpecificSoundSet" checkvisible="1" set="Swoosh">0.27</tag>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -231,7 +215,7 @@
 			<file>animation_library\natives\tomahawk\iroquois\volley_reload</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -249,7 +233,7 @@
 			<tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.73</tag>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -267,7 +251,7 @@
 			<tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.73</tag>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -285,7 +269,7 @@
 			<file>animation_library\range\havoc_deathD</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -294,7 +278,7 @@
 			<file>animation_library\range\havoc_flail</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -303,7 +287,7 @@
 			<file>animation_library\range\havoc_spin</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -324,6 +308,7 @@
 			<file>animation_library\shared\cheer_E</file>
 		</assetreference>
 		<component>ModelComp</component>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 	</anim>
 	<anim>
 		Recoil
@@ -340,8 +325,7 @@
 			<file>animation_library\shared\recoil_G</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
-
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 	</anim>
 	<anim>
 		HC_openDoor
@@ -349,8 +333,7 @@
 			<file>animation_library\shared\doorOpen</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon2_attach" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 	</anim>
 	<anim>
 		HC_closeDoor
@@ -358,8 +341,7 @@
 			<file>animation_library\shared\doorClose</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon2_attach" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 	</anim>
 	<anim>
 		Raze_Idle
@@ -368,7 +350,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="torch" frombone="ATTACHPOINT" tobone="L HAND" syncanims="0"/>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -385,7 +367,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="torch" frombone="ATTACHPOINT" tobone="L HAND" syncanims="0"/>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -394,7 +376,7 @@
 			<file>animation_library\natives\tomahawk\cover_idle</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -403,7 +385,7 @@
 			<file>animation_library\natives\tomahawk\cover_bored</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -414,7 +396,7 @@
 			<tag type="FootstepRight" footprinttype="HumanRight">0.70</tag>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -425,7 +407,7 @@
 			<tag type="FootstepRight" footprinttype="HumanRight">0.15</tag>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -436,7 +418,7 @@
 			<tag type="FootstepRight" footprinttype="HumanRight">0.15</tag>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -445,7 +427,7 @@
 			<file>animation_library\natives\tomahawk\iroquois\idle</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -457,7 +439,7 @@
 			<file>animation_library\natives\tomahawk\volley_boredB</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -468,7 +450,7 @@
 			<tag type="FootstepRight" footprinttype="HumanRight">0.11</tag>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -479,7 +461,7 @@
 			<tag type="FootstepRight" footprinttype="HumanRight">0.15</tag>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -490,7 +472,7 @@
 			<tag type="FootstepRight" footprinttype="HumanRight">0.15</tag>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -499,7 +481,7 @@
 			<file>animation_library\natives\tomahawk\defend_idle</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -508,7 +490,7 @@
 			<file>animation_library\natives\tomahawk\defend_bored</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -517,7 +499,7 @@
 			<file>animation_library\natives\tomahawk\iroquois\idle</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -526,7 +508,7 @@
 			<file>animation_library\natives\tomahawk\charge_idle</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -537,7 +519,7 @@
 			<tag type="FootstepRight" footprinttype="HumanRight">0.11</tag>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -548,8 +530,7 @@
 			<tag type="FootstepRight" footprinttype="HumanRight">0.15</tag>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
-
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 	</anim>
 	<anim>
 		Charge_Run
@@ -559,7 +540,7 @@
 			<tag type="FootstepRight" footprinttype="HumanRight">0.15</tag>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="PROP1" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -577,7 +558,7 @@
 			<weight>10</weight>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -586,7 +567,7 @@
 			<file>nuggets\wolf_rock\rock_anim_exit</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -601,7 +582,7 @@
 			<file>nuggets\wolf_treebent\wolf_treebent_captive_idle3</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -610,7 +591,7 @@
 			<file>nuggets\wolf_treebent\wolf_treebent_captive_exit</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -622,7 +603,7 @@
 			<file>nuggets\bear_tree\bear_tree_captive_idle2</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -631,7 +612,7 @@
 			<file>nuggets\bear_tree\bear_tree_captive_exit</file>
 		</assetreference>
 		<component>ModelComp</component>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
+		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
 
 	</anim>
 	<anim>
@@ -651,7 +632,6 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="hammer" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -669,7 +649,6 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="saw" frombone="MASTER" tobone="Bip01 Prop1" syncanims="0"/>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -684,7 +663,6 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="saw" frombone="MASTER" tobone="Bip01 Prop1" syncanims="0"/>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -719,7 +697,6 @@
 		<component>ModelComp</component>
 		<attach a="measure tape" frombone="MASTER" tobone="Bip01 Prop2" syncanims="0"/>
 		<attach a="hammer" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
-		<attach a="axe" frombone="bone_axe" tobone="bone_weapon1_attach" syncanims="0"/>
 
 	</anim>
 	<anim>GatherChop
@@ -728,8 +705,7 @@
                 <tag type="Attack">0.45</tag>
                 <tag type="SpecificSoundSet" checkvisible="1" set="GatherWood">0.67</tag>
             </assetreference>
-            <component>GatherComp</component>
-            <attach a="axe" frombone="MASTER" tobone="bip01 prop1" syncanims="0"></attach>
+            <component>ModelComp</component>
         </anim>
         <anim>GatherFarm
             <assetreference type="GrannyAnim">
@@ -741,7 +717,7 @@
                 <tag type="SpecificSoundSet" checkvisible="1" set="GatherFarm">0.78</tag>
                 <tag type="SpecificSoundSet" checkvisible="1" set="GatherFarm">0.89</tag>
             </assetreference>
-            <component>GatherComp</component>
+            <component>ModelComp</component>
             <attach a="hoe" frombone="MASTER" tobone="bip01 prop1" syncanims="0"></attach>
         </anim>
         <anim>GatherBush
@@ -750,7 +726,7 @@
                 <tag type="SpecificSoundSet" checkvisible="1" set="GatherFruit">0.33</tag>
                 <tag type="SpecificSoundSet" checkvisible="1" set="GatherFruit">0.57</tag>
             </assetreference>
-            <component>GatherComp</component>
+            <component>ModelComp</component>
             <attach a="bowl" frombone="" tobone="bip01 prop2" syncanims="0"></attach>
         </anim>
         <anim>GatherMine
@@ -758,7 +734,7 @@
                 <file>animation_library\villager\villager_male_gathermine1</file>
                 <tag type="SpecificSoundSet" checkvisible="1" set="GatherCoin">0.90</tag>
             </assetreference>
-            <component>GatherComp</component>
+            <component>ModelComp</component>
             <attach a="pickaxe" frombone="MASTER" tobone="bip01 prop1" syncanims="0"></attach>
         </anim>
         <anim>GatherHunt
@@ -766,7 +742,7 @@
                 <file>animation_library\villager\villager_male_gatherhunt1</file>
                 <tag type="SpecificSoundSet" checkvisible="1" set="GatherMeat">0.00</tag>
             </assetreference>
-            <component>GatherComp</component>
+            <component>ModelComp</component>
             <attach a="knife" frombone="MASTER" tobone="bip01 prop1" syncanims="0"></attach>
         </anim>
         <anim>GatherCrate
@@ -774,7 +750,7 @@
                 <file>animation_library\villager\villager_male_gathercrate1</file>
                 <tag type="SpecificSoundSet" checkvisible="1" set="GatherFruit">0.56</tag>
             </assetreference>
-            <component>GatherComp</component>
+            <component>ModelComp</component>
         </anim>
         <anim>GatherCrateAttack
             <assetreference type="GrannyAnim">
@@ -782,6 +758,6 @@
                 <tag type="Attack">0.50</tag>
                 <tag type="SpecificSoundSet" checkvisible="1" set="GatherFruit">0.56</tag>
             </assetreference>
-            <component>GatherComp</component>
+            <component>ModelComp</component>
         </anim>
 </animfile>

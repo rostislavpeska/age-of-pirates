@@ -23674,6 +23674,7 @@
 		<unittype>LogicalTypeHandUnitsAttack</unittype>
 		<unittype>LogicalTypeRangedUnitsAttack</unittype>
 		<unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
 		<unittype>UnitClass</unittype>
 		<unittype>Military</unittype>
 		<unittype>Unit</unittype>
@@ -23681,16 +23682,12 @@
 		<unittype>AbstractWoLInfantry</unittype>
 		<unittype>AbstractHandInfantry</unittype>
 		<unittype>AbstractRangedInfantry</unittype>
-		<unittype>AbstractWoLRangedInfantry</unittype>
 		<unittype>ConvertsHerds</unittype>
 		<unittype>CountsTowardMilitaryScore</unittype>
 		<unittype>AbstractCavalryInfantry</unittype>
 		<unittype>HasBountyValue</unittype>
 		<unittype>Ranged</unittype>
     <unittype>AbstractNativeWarrior</unittype>
-    <sharedselectionunittypes>
-      <unittype>zpNatMercBoomerang</unittype>
-    </sharedselectionunittypes>
     <flag>HasGatherPoint</flag>
     <flag>CollidesWithProjectiles</flag>
 		<flag>ApplyHandicapTraining</flag>
@@ -23699,6 +23696,9 @@
 		<flag>DontRotateObstruction</flag>
 		<flag>ObscuredByUnits</flag>
 		<flag>Tracked</flag>
+    <sharedselectionunittypes>
+      <unittype>zpNatMercBoomerang</unittype>
+    </sharedselectionunittypes>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="2">Delete</command>
@@ -23957,6 +23957,7 @@
 		<unittype>LogicalTypeHandUnitsAttack</unittype>
 		<unittype>LogicalTypeRangedUnitsAttack</unittype>
 		<unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
 		<unittype>UnitClass</unittype>
 		<unittype>Military</unittype>
 		<unittype>Unit</unittype>
@@ -23964,7 +23965,6 @@
 		<unittype>AbstractWoLInfantry</unittype>
 		<unittype>AbstractHandInfantry</unittype>
 		<unittype>AbstractRangedInfantry</unittype>
-		<unittype>AbstractWoLRangedInfantry</unittype>
 		<unittype>ConvertsHerds</unittype>
 		<unittype>CountsTowardMilitaryScore</unittype>
 		<unittype>AbstractCavalryInfantry</unittype>
@@ -24038,8 +24038,8 @@
     <wanderdistance>3</wanderdistance>
     <animfile>units\animals\ethiopian_wolf\ethiopian_wolf.xml</animfile>
     <impacttype>Animal</impacttype>
-    <icon>resources\art\units\animals\ethiopian_wolf\ethiopian_wolf_icon.png</icon>
-    <portraiticon>resources\art\units\animals\ethiopian_wolf\ethiopian_wolf_portrait.png</portraiticon>
+    <icon>resources\art\units\animals\dingo\dingo_portrait.png</icon>
+    <portraiticon>resources\art\units\animals\dingo\dingo_portrait.png</portraiticon>
     <rollovertextid>28232</rollovertextid>
     <shortrollovertextid>28231</shortrollovertextid>
     <initialhitpoints>80.0000</initialhitpoints>
@@ -24395,6 +24395,81 @@
       <damagebonus type="AbstractRangedShockInfantry">3.100000</damagebonus>
       <damagebonus type="AbstractCavalry">0.600000</damagebonus>
       <damagebonus type="AbstractLightInfantry">0.500000</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20269" name="zpCassowary">
+    <dbid>20269</dbid>
+    <displaynameid>301239</displaynameid>
+    <editornameid>301240</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>8.0000</maxvelocity>
+    <maxrunvelocity>10.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <wanderdistance>10</wanderdistance>
+    <animfile>units\animals\cassowary\cassowary.xml</animfile>
+    <impacttype>Animal</impacttype>
+    <icon>resources\art\units\animals\cassowary\cassowary_icon.png</icon>
+    <portraiticon>resources\art\units\animals\cassowary\cassowary_portrait.png</portraiticon>
+    <rollovertextid>301241</rollovertextid>
+    <shortrollovertextid>301242</shortrollovertextid>
+    <initialhitpoints>600.0000</initialhitpoints>
+    <maxhitpoints>600.0000</maxhitpoints>
+    <los>10.0000</los>
+    <unitaitype>Predator</unitaitype>
+    <initialunitaistance>Defensive</initialunitaistance>
+    <bounty resourcetype="Gold">300.0000</bounty>
+    <bounty resourcetype="XP">300.0000</bounty>
+    <initialresource resourcetype="Food">600.0000</initialresource>
+    <resourcedecay>0.7500</resourcedecay>
+    <resourcesubtype>meat</resourcesubtype>
+    <minimapcolor red="0.5000" blue="0.2500" green="0.2000">
+    </minimapcolor>
+    <gathererlimit>8</gathererlimit>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>Huntable</unittype>
+    <unittype>Guardian</unittype>
+    <unittype>AnimalGuardian</unittype>
+    <unittype>AnimalPrey</unittype>
+    <unittype>HuntedResource</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Unit</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>CorpseDecays</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>RMCanRotate</flag>
+    <flag>Wanders</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogOnlyAfterSeen</flag>
+    <flag>CivSpecificText</flag>
+    <flag>Tracked</flag>
+    <flag>InvulnerableToAreaDamage</flag>
+    <tactics>predator.tactics</tactics>
+    <protoaction>
+      <name>HandAttack</name>
+      <damage>120.000000</damage>
+      <damagetype>Hand</damagetype>
     </protoaction>
   </unit>
   

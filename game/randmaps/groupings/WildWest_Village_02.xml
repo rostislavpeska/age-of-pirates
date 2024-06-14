@@ -73,7 +73,7 @@
 		<unit variation="87" posx="8.2391" posz="11.1893" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpPropWestern</unit>
 	</units>
 	<tiles>
-		<tilegroup type="PassableLand" subtype="Texas\ground4_tex">
+		<tilegroup type="PassableLand" subtype="Texas\Path_Blend">
 			<block startx="-7" startz="0" endx="-7" endz="1"></block>
 			<block startx="-6" startz="-3" endx="-6" endz="1"></block>
 			<block startx="-5" startz="-4" endx="-5" endz="1"></block>

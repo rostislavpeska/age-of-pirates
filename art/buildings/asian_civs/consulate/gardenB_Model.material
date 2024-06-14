@@ -9,6 +9,8 @@
       </texture>
       <texture name="Masks" override="buildings\asian_civs\consulate\india\age_2\textures\india_consulate_age2_matA_Masks">
       </texture>
+      <texture name="Details" override="buildings\asian_civs\consulate\india\age_2\textures\india_consulate_age2_matA_Details">
+      </texture>
     </parameters>
   </submaterial>
   <submaterial name="matb">

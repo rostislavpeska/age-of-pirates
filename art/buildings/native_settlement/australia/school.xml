@@ -65,6 +65,9 @@
         </component>
         <anim>Idle
             <component>plantation</component>
+            <simskeleton>
+                <model>buildings\gunstore\gunstore_death</model>
+            </simskeleton>
         </anim>
         <anim>Death
             <assetreference type="GrannyAnim">
