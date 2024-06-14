@@ -2199,7 +2199,9 @@ bool isDefendingOrAttacking()
       else // Attack plan.
       {
          if ((aiPlanGetParentID(existingPlanID) < 0) && // No parent so not a reinforcing child plan.
-             (existingPlanID != gNavyAttackPlan && existingPlanID != gCoastalGunPlan && existingPlanID != gEndlessWaterRaidPlan))
+             (existingPlanID != gNavyAttackPlan && 
+              existingPlanID != gCoastalGunPlan && 
+              existingPlanID != gEndlessWaterRaidPlan))
          {
             debugUtilities("isDefendingOrAttacking: don't create another combat plan because we already have one named: "
                + aiPlanGetName(existingPlanID));

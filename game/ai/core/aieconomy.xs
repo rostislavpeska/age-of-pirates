@@ -3012,6 +3012,9 @@ minInterval 15
    int mainBaseID = kbBaseGetMainID(cMyID);
    int time = xsGetTime();
    int livestockPlanID = -1;
+   static int sheepMaintainPlan = -1;
+   static int cowMaintainPlan = -1;
+   static int llamaMaintainPlan = -1;
 
    // AssertiveWall: Build a livestock pen under certain conditions
    int numPens = 0;
@@ -3061,18 +3064,32 @@ minInterval 15
          createSimpleBuildPlan(gLivestockPenUnit, 1, 75, true, cEconomyEscrowID, mainBaseID, 1);
       }
 
-      // AssertiveWall: Maintain some herdables
+      // First creation of maintain plan
+      if (numSheepWanted > 0 && sheepMaintainPlan < 0)
+      {
+         sheepMaintainPlan = createSimpleMaintainPlan(cUnitTypeSheep, numSheepWanted, false, mainBaseID, 1);
+      }
+      if (numCattleWanted > 0 && cowMaintainPlan < 0)
+      {
+         cowMaintainPlan = createSimpleMaintainPlan(cUnitTypeCow, numCattleWanted, false, mainBaseID, 1);
+      }
+      if (numLlamaWanted > 0 && llamaMaintainPlan < 0)
+      {
+         llamaMaintainPlan = createSimpleMaintainPlan(cUnitTypeLlama, numLlamaWanted, false, mainBaseID, 1);
+      }
+
+      // AssertiveWall: Update maintain counts on some herdables
       if (kbProtoUnitAvailable(cUnitTypeSheep) == true && numSheepWanted > 0)
       {
-         createSimpleMaintainPlan(cUnitTypeSheep, numSheepWanted, false, mainBaseID, 1);
+         aiPlanSetVariableInt(sheepMaintainPlan, cTrainPlanNumberToMaintain, 0, numSheepWanted);
       }
       if (kbProtoUnitAvailable(cUnitTypeCow) == true && numCattleWanted > 0)
       {
-         createSimpleMaintainPlan(cUnitTypeCow, numCattleWanted, false, mainBaseID, 1);
+         aiPlanSetVariableInt(cowMaintainPlan, cTrainPlanNumberToMaintain, 0, numCattleWanted);
       }
       if (kbProtoUnitAvailable(cUnitTypeLlama) == true && numLlamaWanted > 0)
       {
-         createSimpleMaintainPlan(cUnitTypeLlama, numLlamaWanted, false, mainBaseID, 1);
+         aiPlanSetVariableInt(llamaMaintainPlan, cTrainPlanNumberToMaintain, 0, numLlamaWanted);
       }
    }
 

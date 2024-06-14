@@ -6268,6 +6268,11 @@ bool retreatCheck(bool forceRetreat = false)
          forceRetreat = true;
       }
 
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) <= 0)
+      {
+         forceRetreat = true;
+      }
+
       // If we're too outnumbered then retreat to gNavyVec
       if (frNavyValue * 1.2 < (enNavyValue + enTowerValue) || forceRetreat == true)
       {
@@ -7692,6 +7697,26 @@ minInterval 5
       cBuildForwardBuildings = 4;    // Fifth Stage, move vills in to build
       cEstablishForwardBase = 5;     // Sixth stage, build a whole FB
    */
+
+   // Wait until we have some ships to work with to start the chain
+   if (gAmphibiousAssaultStage == -1)
+   {
+      int currentAge = kbGetAge();
+      int minimumShips = 2;
+      if (currentAge == cAge3)
+      {
+         minimumShips = 3;
+      }
+      else if (currentAge >= cAge4)
+      {
+         minimumShips = 3;
+      }
+
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < minimumShips)
+      {
+         return;
+      }
+   }
 
    // First check to see if we're losing or one of the stages failed
    if (retreatCheck() == true || gAmphibiousAssaultStage == -1)
