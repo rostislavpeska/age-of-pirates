@@ -2369,12 +2369,13 @@ minInterval 30
       aiPlanSetVariableVector(gNavyRepairPlan, cCombatPlanGatherPoint, 0, ownDockPosition);
 
       int bestUnitID = -1;
-      unitID = aiPlanGetUnitByIndex(gNavyRepairPlan, 0);
+      // AssertiveWall: This may be causing issues where the ship moves back and forth
+      /*unitID = aiPlanGetUnitByIndex(gNavyRepairPlan, 0);
       if (kbUnitGetHealth(unitID) > 0.95)
       {
          aiTaskUnitMove(unitID, gNavyVec);
          aiPlanAddUnit(gNavyDefendPlan, unitID);
-      }
+      }*/
 
       // Look for a ship to repair.
       float unitHitpoints = 0.0;

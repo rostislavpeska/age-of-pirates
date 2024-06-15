@@ -2463,8 +2463,12 @@ void init(void)
       
       if (gNavyMap == true)
       {
-         xsEnableRule("waterExplore");
-         waterExplore(); // Call instantly to start scouting if we have starting ships.
+         // AssertiveWall: this stuff is enabled after our first water attack on island maps
+         if (gStartOnDifferentIslands == false)
+         {
+            xsEnableRule("waterExplore");
+            waterExplore(); // Call instantly to start scouting if we have starting ships.
+         }
       }
       
       if (cMyCiv == cCivDutch)

@@ -6307,6 +6307,7 @@ bool retreatCheck(bool forceRetreat = false)
             }
             aiPlanDestroy(gAmphibiousAssaultPlan);
             aiPlanDestroy(gAmphibiousArmyPlan);
+            aiPlanDestroy(gAmphibiousTransportPlan);
             gAmphibiousAssaultPlan = -1;
             gAmphibiousArmyPlan = -1;
             gNavyVec = kbUnitGetPosition(gWaterSpawnFlagID);
@@ -6432,38 +6433,48 @@ void gatherNavy(vector location = cInvalidVector)
 
       // Determine how many ships we need. Based on age for now
       int currentAge = kbGetAge();
-      int minimumShips = 2;
+      float minimumShips = 2.0;
       if (currentAge == cAge3)
       {
-         minimumShips = 3;
+         minimumShips = 3.0;
       }
       else if (currentAge >= cAge4)
       {
-         minimumShips = 3;
+         minimumShips = 3.0;
       }
 
       if (civIsNative() == true)
       {
-         minimumShips = minimumShips * 2;
+         minimumShips = minimumShips * 2.0;
       }
 
       if (cMyCiv == cCivDEInca)
       {
-         minimumShips = minimumShips - 1;
+         minimumShips = minimumShips - 1.0;
       }
 
       if (gIsArchipelagoMap == true)
       {
-         minimumShips = minimumShips - 1;
+         minimumShips = minimumShips - 1.0;
       }
 
-      if ((gatheredUnits <= 4 && gatheredUnits >= gatherTarget - 1) || (gatheredUnits > 0.7 * gatherTarget || gatheredUnits > minimumShips * 1.5))
+      if ((gatheredUnits <= 4.0 && gatheredUnits >= gatherTarget - 1.0) || 
+          (gatheredUnits > 0.7 * gatherTarget) || 
+          (gatheredUnits > minimumShips * 1.4) ||
+          ((gatheredUnits >= minimumShips) && (xsGetTime() > (2 * 60 * 1000 + gAmphibiousAssaultSavedTime))))
       {
          if (gatheredUnits >= minimumShips)
          {
             gAmphibiousAssaultStage = cBombardCoast;
             gAmphibiousAssaultSavedTime = xsGetTime();
          }
+      }
+
+      // If it's been way too long and we don't have enough ships, just end this
+      if ((gatheredUnits < minimumShips - 1 && xsGetTime() > (3 * 60 * 1000 + gAmphibiousAssaultSavedTime)) ||
+          (gatheredUnits < minimumShips && xsGetTime() > (4.5 * 60 * 1000 + gAmphibiousAssaultSavedTime)))
+      {
+         retreatCheck(true);
       }
    }
 
@@ -6863,7 +6874,7 @@ void landForces()
    if (unitsOnShip1 + unitsOnShip2 == 0)
    {  // Done transporting, move to next phase
       gAmphibiousAssaultStage = cBuildForwardBuildings;
-      //aiPlanDestroy(gAmphibiousTransportPlan);
+      aiPlanDestroy(gAmphibiousTransportPlan);
       // Explore enabling this earlier to allow more reinforcement and parallel decision making
       //xsEnableRule("forwardArmyPlan");
       return;
@@ -7639,7 +7650,7 @@ bool amphibiousAssault(vector location = cInvalidVector)
       aiPlanAddUnitType(gAmphibiousAssaultPlan, cUnitTypeAbstractWarShip, 0, 0, 200);
       //aiPlanSetNoMoreUnits(gAmphibiousAssaultPlan, true);
       aiPlanSetDesiredPriority(gAmphibiousAssaultPlan, 99); // Only lower than transport
-      aiPlanSetActive(gAmphibiousAssaultPlan);
+      //aiPlanSetActive(gAmphibiousAssaultPlan);
    }
 
    if (gAmphibiousArmyPlan < 0)
@@ -7648,7 +7659,7 @@ bool amphibiousAssault(vector location = cInvalidVector)
       aiPlanAddUnitType(gAmphibiousArmyPlan, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
       aiPlanSetNoMoreUnits(gAmphibiousArmyPlan, true);
       aiPlanSetDesiredPriority(gAmphibiousArmyPlan, 99); // Only lower than transport
-      aiPlanSetActive(gAmphibiousArmyPlan);
+      //aiPlanSetActive(gAmphibiousArmyPlan);
    }
 
    if (gAmphibiousTransportPlan < 0)
@@ -7657,14 +7668,81 @@ bool amphibiousAssault(vector location = cInvalidVector)
       aiPlanAddUnitType(gAmphibiousTransportPlan, cUnitTypeAbstractWarShip, 0, 0, 200);
       aiPlanSetNoMoreUnits(gAmphibiousTransportPlan, true);
       aiPlanSetDesiredPriority(gAmphibiousTransportPlan, 100); // Let no one steal us
-      aiPlanSetActive(gAmphibiousTransportPlan);
+      //aiPlanSetActive(gAmphibiousTransportPlan);
    }
 
    //vector pickupPoint = getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 4);
    //gatherArmy(pickupPoint);
 
    // Enable the rule to monitor the amphibious assault
+   xsEnableRule("amphibiousAssaultStandby");
+   return true;
+}
+
+//==============================================================================
+/* amphibiousAssaultStandby
+   AssertiveWall: rule to delay the start of the amphibious assault until we 
+   have enough ships
+*/
+//==============================================================================
+
+rule amphibiousAssaultStandby
+inactive
+minInterval 3
+{
+   // Wait until we have some ships to work with to start the chain
+   if (gAmphibiousAssaultStage == cGatherNavy)  // Check just in case something weird happens and this gets called multiple times
+   {  // Make sure we have enough ships
+      int currentAge = kbGetAge();
+      int minimumShips = 2;
+      if (currentAge == cAge3)
+      {
+         minimumShips = 3;
+      }
+      else if (currentAge >= cAge4)
+      {
+         minimumShips = 3;
+      }
+
+      if (civIsNative() == true)
+      {
+         minimumShips = minimumShips * 2;
+      }
+
+      if (cMyCiv == cCivDEInca)
+      {
+         minimumShips = minimumShips - 1;
+      }
+
+      if (gIsArchipelagoMap == true)
+      {
+         minimumShips = minimumShips - 1;
+      }
+
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < minimumShips)
+      {
+         return;
+      }
+   }
+   else if (xsIsRuleEnabled("amphibiousAssaultRule") == true)
+   {
+      xsDisableSelf();
+      return;
+   }
+   else
+   {  // We should never reach here
+      retreatCheck(true);
+      xsDisableSelf();
+      return;
+   }
+
    gAmphibiousAssaultSavedTime = xsGetTime();
+
+   // activate plans
+   aiPlanSetActive(gAmphibiousAssaultPlan);
+   aiPlanSetActive(gAmphibiousArmyPlan);
+   aiPlanSetActive(gAmphibiousTransportPlan);
+
    xsEnableRule("baseUnderThreat");
    if (gIsArchipelagoMap == true)
    {
@@ -7674,7 +7752,7 @@ bool amphibiousAssault(vector location = cInvalidVector)
    {
       xsEnableRule("amphibiousAssaultRule");
    }
-   return true;
+
 }
 
 //==============================================================================
@@ -7698,26 +7776,6 @@ minInterval 5
       cEstablishForwardBase = 5;     // Sixth stage, build a whole FB
    */
 
-   // Wait until we have some ships to work with to start the chain
-   if (gAmphibiousAssaultStage == -1)
-   {
-      int currentAge = kbGetAge();
-      int minimumShips = 2;
-      if (currentAge == cAge3)
-      {
-         minimumShips = 3;
-      }
-      else if (currentAge >= cAge4)
-      {
-         minimumShips = 3;
-      }
-
-      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < minimumShips)
-      {
-         return;
-      }
-   }
-
    // First check to see if we're losing or one of the stages failed
    if (retreatCheck() == true || gAmphibiousAssaultStage == -1)
    {
@@ -7738,7 +7796,7 @@ minInterval 5
    // Check for clumped ships
    if (gAmphibiousAssaultStage == cLoadForces || gAmphibiousAssaultStage == cLandForces)
    {
-      if (xsGetTime() > gAmphibiousAssaultSavedTime + 30000)
+      if (xsGetTime() > gAmphibiousAssaultSavedTime + 20000)
       {
          checkForClumpedShips(gLandingShip1, gLandingShip2);
       }
@@ -7754,12 +7812,12 @@ minInterval 5
       case cGatherNavy:
       {  // Add navy to plan and send them to the gather point
          gatherNavy(gatherPoint);
-         gatherArmy(pickupPoint);
+         //gatherArmy(pickupPoint);
          break;
       }
       case cBombardCoast:
       {
-         //gatherArmy(pickupPoint);
+         gatherArmy(pickupPoint);
          bombardCoast();
          break;
       }
@@ -8819,6 +8877,9 @@ bool shouldBuildDock()
    int age = kbGetAge();
    int time = xsGetTime();
    int dockPlanID = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit);
+   int queuedWarShips = kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateABQ) - kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive);
+   int queuedFishingBoats = kbUnitCount(cMyID, gFishingUnit, cUnitStateABQ) - kbUnitCount(cMyID, gFishingUnit, cUnitStateAlive);
+   bool shouldBuild = false;
 
    // If we already have a dock planned, return false
    if (dockPlanID > 0)
@@ -8840,9 +8901,17 @@ bool shouldBuildDock()
       ((cDifficultyCurrent >= cDifficultyHard) && (age >= cAge4) && (dockCount < 3))) && 
       ((age >= cAge2 || agingUp() == true) && (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit) <= 0)))
    {
-      return true;
+      shouldBuild = true;
    }
-   return false;
+
+   // Check if we don't have enough ships queued
+   if ((queuedWarShips + queuedFishingBoats) < dockCount)
+   {
+      shouldBuild = false;
+   }
+
+
+   return shouldBuild;
 }
 
 

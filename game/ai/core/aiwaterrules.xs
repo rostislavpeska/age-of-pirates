@@ -266,7 +266,8 @@ minInterval 20
    }
 
    if (iteration > maxIterations || kbGetAge() >= cAge3)
-   {  // If we're past the number of times we want to do this, end this rule
+   {  // If we're past the number of times we want to do this, end this rule and enable water explore
+      xsEnableRule("waterExplore");
       xsDisableSelf();
       return;
    }
