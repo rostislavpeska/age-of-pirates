@@ -3905,10 +3905,14 @@
       <command>trConvertUnitsInArea(%SrcPlayer%,%TrgPlayer%,"spSocketTrainStationActiveA",%Dist%);</command>
       <command>trConvertUnitsInArea(%SrcPlayer%,%TrgPlayer%,"spSocketTrainStationActiveB",%Dist%);</command>
     </effect>
-    <effect name="ZP Counter Invisible for Player">
+    <effect name="ZP Counter Invisible for Players">
       <param name="Name" dispname="$$22365$$Name" vartype="string">countdown</param>
-      <param name="Player" dispname="$$22301$$Player" vartype="player">1</param>
-      <command>if (trCurrentPlayer() == %Player%) {</command>
+      <param name="PlayerA" dispname="Player A" vartype="player">1</param>
+      <param name="PlayerB" dispname="Player B" vartype="player">2</param>
+      <command>if (trCurrentPlayer() == %PlayerA%) {</command>
+      <command>trCounterVisible("%Name%", false);</command>
+      <command>}</command>
+      <command>else if (trCurrentPlayer() == %PlayerB%) {</command>
       <command>trCounterVisible("%Name%", false);</command>
       <command>}</command>
       <command>else {</command>

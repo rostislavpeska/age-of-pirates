@@ -693,12 +693,12 @@
       <string _locid="300690">Migration Map, players start on very small islands with limited resources and have to migrate on one of two central islands. \n\nSettlements: Pirates, Renegades</string>
       <string _locid="300691">"We are all travelers in the wilderness of this world, and the best we can find in our travels is an honest friend." -- Robert Luis Stevenson </string>
       <string _locid="300692">ZP Socket SPC Jesuits Europe</string>
-      <string _locid="300693">Maori Clubman</string>
+      <string _locid="300693">Tewhatewha</string>
       <string _locid="300694">ZP NAT Maori Clubman</string>
       <string _locid="300695">Venetian Settlement</string>
       <string _locid="300696">ZP Socket Venetians</string>
-      <string _locid="300697">ZP NAT Maori Slinger</string>
-      <string _locid="300698">Maori Slinger</string>
+      <string _locid="300697">ZP NAT Maori Harpooner</string>
+      <string _locid="300698">Taiaha</string>
       <string _locid="300699">Pavisier</string>
       <string _locid="300700">ZP NAT Venetian Pavisier</string>
       <string _locid="300701">Venetians</string>
@@ -1247,12 +1247,12 @@
       <string _locid="301243">Warrior Society Maori</string>
       <string _locid="301244">Champion Maori</string>
       <string _locid="301245">Increases Maori attack and hitpoints</string>
-      <string _locid="301246">Elite Maori Clubman</string>
-      <string _locid="301247">Champion Maori Clubman</string>
-      <string _locid="301248">Legendary Maori Clubman</string>
-      <string _locid="301249">Elite Maori Slinger</string>
-      <string _locid="301250">Champion Maori Slinger</string>
-      <string _locid="301251">Legendary Maori Slinger</string>
+      <string _locid="301246">Elite Tewhatewha</string>
+      <string _locid="301247">Champion Tewhatewha</string>
+      <string _locid="301248">Legendary Tewhatewha</string>
+      <string _locid="301249">Elite Taiaha</string>
+      <string _locid="301250">Champion Taiaha</string>
+      <string _locid="301251">Legendary Taiaha</string>
       <string _locid="301252">Maori Colonisation</string>
       <string _locid="301253">Unlocks new Maori units and techs.</string>
       <string _locid="301254">Reveals locations of all fishes and whales</string>
@@ -1261,9 +1261,9 @@
       <string _locid="301257">Taiaha</string>
       <string _locid="301258">Waka</string>
       <string _locid="301259">Increases fishing boat efficiency and adds more hitpoints.</string>
-      <string _locid="301260">Maori Warrior with Taiaha</string>
+      <string _locid="301260">Maori native Warrior equiped with a club</string>
       <string _locid="301261">Maori matrial art techniques. Increases hand infantry damage.</string>
-
+      <string _locid="301262">Maori native harpooner. Special attack bonus against ships.</string>
 
 
 
