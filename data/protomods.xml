@@ -548,6 +548,13 @@
     <tech row="0" page="2" column="3">zpNatDidjeridu</tech>
     <tech row="0" page="1" column="1">zpAustraliaExpansion</tech>
 
+    <tech row="0" page="1" column="1">zpWarriorSocietyMaori</tech>
+    <tech row="0" page="1" column="1">zpChampionMaori</tech>
+    <tech row="0" page="2" column="1">zpMaoriFishhook</tech>
+    <tech row="0" page="2" column="2">zpMaoriTaiaha</tech>
+    <tech row="0" page="2" column="3">zpMaoriFishing</tech>
+    <tech row="0" page="1" column="1">zpMaoriExpansion</tech>
+
     <!-- Wild West Techs -->
     <tech row="0" page="2" column="1">zpWildWestWhiskeyFactory</tech>
     <tech row="0" page="2" column="0">zpWildWestCows</tech>
@@ -14345,10 +14352,10 @@
     <animfile>units\natives\maori\maori_clubman.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
-    <icon>resources\art\units\mapuche_clubman_icon.png</icon>
-    <portraiticon>resources\art\units\mapuche_clubman_portrait.png</portraiticon>
-    <rollovertextid>45011</rollovertextid>
-    <shortrollovertextid>45010</shortrollovertextid>
+    <icon>resources\art\units\natives\maori_clubman_icon.png</icon>
+    <portraiticon>resources\art\units\natives\maori_clubman_portrait.png</portraiticon>
+    <rollovertextid>301260</rollovertextid>
+    <shortrollovertextid>301260</shortrollovertextid>
     <initialhitpoints>200.0000</initialhitpoints>
     <maxhitpoints>200.0000</maxhitpoints>
     <los>12.0000</los>
@@ -14477,8 +14484,8 @@
     <animfile>units\natives\maori\maori_slinger.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
-    <icon>resources\art\units\az_macehuatlin_icon.png</icon>
-    <portraiticon>resources\art\units\az_macehuatlin_portrait.png</portraiticon>
+    <icon>resources\art\units\natives\maori_slinger_icon.png</icon>
+    <portraiticon>resources\art\units\natives\maori_slinger_portrait.png</portraiticon>
     <rollovertextid>43975</rollovertextid>
     <shortrollovertextid>43974</shortrollovertextid>
     <initialhitpoints>80.0000</initialhitpoints>

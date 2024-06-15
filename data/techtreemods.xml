@@ -4731,6 +4731,10 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMercBoomerang" culture="none" newname="301208">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMaoriClubman" culture="none" newname="301248">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMaoriSlinger" culture="none" newname="301251">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -8998,6 +9002,15 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatMaoriClubman</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyMaori</effect>
+      <effect type="TechStatus" status="obtainable">DEIndianFriendshipMaori</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyMaori</effect>
+      <effect type="TechStatus" status="obtainable">zpWarriorSocietyMaori</effect>
+      <effect type="TechStatus" status="obtainable">zpChampionMaori</effect>
+      <effect type="TechStatus" status="obtainable">zpMaoriExpansion</effect>
+      <effect type="TechStatus" status="obtainable">zpMaoriFishhook</effect>
+      <effect type="TechStatus" status="obtainable">zpMaoriTaiaha</effect>
+      <effect type="TechStatus" status="obtainable">zpMaoriFishing</effect>
     </effects>
   </tech>
   <tech name ="zpVeniceGoldBallanceShadow" type ="Normal">
@@ -12321,7 +12334,221 @@
       </effect>
     </effects>
   </tech>
- 
+  <tech name="zpNativeTreatyMaori" type="Normal">
+      <dbid>40530</dbid>
+      <researchpoints>0.0000</researchpoints>
+      <status>UNOBTAINABLE</status>
+      <flag>Shadow</flag>
+      <prereqs>
+        <techstatus status="Active">HCNativeTreaties</techstatus>
+      </prereqs>
+      <effects>
+        <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatMaoriClubman" relativity="Absolute">
+          <target type="Player">
+          </target>
+        </effect>
+      </effects>
+    </tech>
+    <tech name="DEIndianFriendshipMaori" type="Normal">
+      <dbid>40531</dbid>
+      <researchpoints>0.0000</researchpoints>
+      <status>UNOBTAINABLE</status>
+      <flag>Shadow</flag>
+      <prereqs>
+        <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+      </prereqs>
+      <effects>
+        <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMaoriClubman" relativity="Absolute">
+          <target type="Player">
+          </target>
+        </effect>
+        <effect type="TechStatus" status="active">zpWarriorSocietyMaori</effect>
+        <effect type="TechStatus" status="active">zpChampionMaori</effect>
+      </effects>
+    </tech>
+    <tech name="ypNativeTradeTreatyMaori" type="Normal">
+      <dbid>40532</dbid>
+      <researchpoints>0.0000</researchpoints>
+      <status>UNOBTAINABLE</status>
+      <flag>Shadow</flag>
+      <prereqs>
+        <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+      </prereqs>
+      <effects>
+        <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+          <target type="Player">
+          </target>
+        </effect>
+      </effects>
+    </tech>
+    <tech name="zpWarriorSocietyMaori" type="Normal">
+    <dbid>40533</dbid>
+    <displaynameid>301243</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">75.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\warrior_society\warrior_society.png</icon>
+    <rollovertextid>301245</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMaoriClubman</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMaoriClubman</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMaoriClubman" culture="none" newname="301246">
+      </effect>
+      <effect type="SetName" proto="zpNatMaoriClubman" culture="none" newname="301248" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMaoriSlinger</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMaoriSlinger</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMaoriSlinger" culture="none" newname="301249">
+      </effect>
+      <effect type="SetName" proto="zpNatMaoriSlinger" culture="none" newname="301251" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpChampionMaori" type="Normal">
+    <dbid>40534</dbid>
+    <displaynameid>301244</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\champion_natives\champion_natives.png</icon>
+    <rollovertextid>301245</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+      <techstatus status="Active">zpWarriorSocietyMaori</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMaoriClubman</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMaoriClubman</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMaoriClubman" culture="none" newname="301247">
+      </effect>
+      <effect type="SetName" proto="zpNatMaoriClubman" culture="none" newname="301248" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMaoriSlinger</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMaoriSlinger</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMaoriSlinger" culture="none" newname="301250">
+      </effect>
+      <effect type="SetName" proto="zpNatMaoriSlinger" culture="none" newname="301251" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpMaoriExpansion" type ="Normal">
+		<dbid>40535</dbid>
+		<displaynameid>301252</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\maori_big.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>301253</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMaoriSlinger</target>
+      </effect>     
+      <effect type="CommandAdd" tech="" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="zpMaoriFishhook" type="Normal">
+    <dbid>40536</dbid>
+    <displaynameid>301255</displaynameid>
+    <cost resourcetype="Wood">75.0000</cost>
+    <cost resourcetype="Gold">30.0000</cost>
+    <researchpoints>5.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\maori_maui.png</icon>
+    <rollovertextid>301254</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="RevealLOS" relativity="Absolute">
+        <target type="ProtoUnit">AbstractFishOrWhale</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpMaoriTaiaha" type="Normal">
+    <dbid>40537</dbid>
+    <displaynameid>301257</displaynameid>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>5.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\maori_taiaha.png</icon>
+    <rollovertextid>301261</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="1.15" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractHandInfantry</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpMaoriFishing" type="Normal">
+    <dbid>40538</dbid>
+    <displaynameid>301258</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Food">40.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\maori_fishing.png</icon>
+    <rollovertextid>301259</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" action="Gather" amount="1.2" subtype="WorkRate" unittype="AbstractFish" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractFishingBoat</target>
+      </effect>
+      <effect type="Data" amount="1.4" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractFishingBoat</target>
+      </effect>
+    </effects>
+  </tech>
 
 
 

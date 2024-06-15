@@ -20,9 +20,5 @@
       <soundset name="CasowaryGrowl">
       </soundset>
     </soundtype>
-    <soundtype name="Exists">
-      <soundset name="CasowaryAmbient">
-      </soundset>
-    </soundtype>
   </protounit>
 </protounitsounddef>
