@@ -761,6 +761,8 @@ void findEnemyBase(void)
       aiPlanSetVariableVector(exploreID, cExplorePlanQuitWhenPointIsVisiblePt, 0, targetLocation);
       aiPlanSetDesiredPriority(exploreID, 100);
       aiPlanSetActive(exploreID);
+      gFindBasePlanID = exploreID;
+      xsEnableRule("watchExplorer");
    }
 }
 

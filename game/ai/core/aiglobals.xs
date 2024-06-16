@@ -315,6 +315,7 @@ extern bool gLastExplorerCheck = true;  // AssertiveWall: Last time we checked i
 extern bool gLastExplorerCheck2 = true;  // AssertiveWall: Last time we checked if explorer is alive. true when alive
 extern int gExplorerID = -1;             // AssertiveWall: stores explorer ID. necessary for when explorer dies
 extern int gExplorer2ID = -1;          // AssertiveWall: stores explorer ID. necessary for when explorer dies
+extern int gFindBasePlanID = -1;        // AssertiveWall: Plan that finds the enemy base at the start of the game
 
 //==============================================================================
 // Economy.

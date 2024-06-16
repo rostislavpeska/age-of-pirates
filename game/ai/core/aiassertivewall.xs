@@ -22,6 +22,69 @@ minInterval 10
 }
 
 //==============================================================================
+/* manageMicro
+   AssertiveWall: switches our micro strategy based on how many units there are.
+      If our army gets too big, switch to less micro to avoid over-micro issues
+*/
+//==============================================================================
+
+rule manageMicro
+inactive
+minInterval 20
+{
+   int milNumber = kbUnitCount(cMyID, cUnitTypeLogicalTypeLandMilitary, cUnitStateAlive);
+   static int switcherInt = 0;   // used to prevent setting too much. 
+   
+   if (milNumber > 50 && switcherInt == 0)
+   {
+      aiSetMicroFlags(cMicroLevelNormal);
+      switcherInt = 1;
+   }
+   else if (switcherInt == 1)
+   {
+      aiSetMicroFlags(cMicroLevelHigh);
+      switcherInt = 0;
+   }
+}
+
+//==============================================================================
+/* watchExplorer
+   AssertiveWall: watches for the find base exploration plan to go away, then
+      moves the explorer back to home base if it ends
+*/
+//==============================================================================
+
+rule watchExplorer
+inactive
+minInterval 2
+{
+   static bool canDisable = false;
+   vector mainBaseLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   static int explorerID = -1;
+   static int explorer2ID = -1;
+
+   if (kbGetAge() >= cAge2)
+   {
+      xsDisableSelf();
+      return;
+   }
+   
+   if (aiPlanGetActive(gFindBasePlanID) == true)
+   {
+      explorerID = aiPlanGetUnitByIndex(gFindBasePlanID, 0);
+      explorer2ID = aiPlanGetUnitByIndex(gFindBasePlanID, 1);
+      canDisable = true;
+   }
+   else if (canDisable == true)
+   {
+      aiTaskUnitMove(explorerID, mainBaseLoc);
+      aiTaskUnitMove(explorer2ID, mainBaseLoc);
+      xsDisableSelf();
+      return;
+   }
+}
+
+//==============================================================================
 /* cannonCorners
 
    Basically just tells a cannon to move to that position
