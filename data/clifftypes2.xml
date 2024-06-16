@@ -2094,5 +2094,330 @@
       <edge>Painteddesert\pd_ground_diffuse_e</edge>
       <bottomedge>Painteddesert\pd_ground_diffuse_i</bottomedge>
     </textures>
-  </cliff> 
+  </cliff>
+  <cliff name="ZP New Zealand Low" blockland="1" blockwater="0" iconname="ui\editor\cliffceylon">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_lake_bush1" minedgedist="0.5" maxedgedist="3.5" chance="0.15" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_lake_bush2" minedgedist="0.5" maxedgedist="3.5" chance="0.15" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush1" minedgedist="0.5" maxedgedist="5.0" chance="0.05" minscale="0.75" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="0.5" maxedgedist="5.0" chance="0.15" minscale="0.75" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush3" minedgedist="0.5" maxedgedist="5.0" chance="0.15" minscale="0.75" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_fern2" minedgedist="0.5" maxedgedist="3.0" chance="0.15" minscale="1.0" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_fern1" minedgedist="0.5" maxedgedist="3.0" chance="0.15" minscale="1.0" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_log1" minedgedist="2.5" maxedgedist="4.0" chance="0.02" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_log3" minedgedist="2.5" maxedgedist="4.0" chance="0.02" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant8" minedgedist="0.5" maxedgedist="1.5" chance="0.05" minscale="0.75" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant7" minedgedist="0.5" maxedgedist="1.5" chance="0.05" minscale="0.75" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant6" minedgedist="0.5" maxedgedist="1.5" chance="0.05" minscale="0.75" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_grass1" minedgedist="3.5" maxedgedist="4.0" chance="0.05" minscale="1.0" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_grass2" minedgedist="3.5" maxedgedist="4.0" chance="0.05" minscale="1.0" maxscale="1.2" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\underbrush\underbrush_yellow_riv_bush_02" minedgedist="0.5" maxedgedist="3.5" chance="0.15" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_fern2" minedgedist="1" maxedgedist="3.0" chance="0.15" minscale="1.0" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_fern1" minedgedist="1" maxedgedist="3.0" chance="0.15" minscale="1.0" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush1" minedgedist="1" maxedgedist="2.5" chance="0.1" minscale="1" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="1" maxedgedist="2.5" chance="0.15" minscale="1" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush3" minedgedist="1" maxedgedist="2.5" chance="0.25" minscale="1" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_himal_bush2" minedgedist="1" maxedgedist="2.5" chance="0.25" minscale="1" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock2" minedgedist="3" maxedgedist="5.5" chance="0.1" minscale="0.5" maxscale="0.8" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock3" minedgedist="3" maxedgedist="5.5" chance="0.1" minscale="0.5" maxscale="0.8" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock4" minedgedist="3" maxedgedist="5.5" chance="0.1" minscale="0.5" maxscale="0.8" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock5" minedgedist="3" maxedgedist="5.5" chance="0.1" minscale="0.5" maxscale="0.8" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush5" minedgedist="2" maxedgedist="3.5" chance="0.1" minscale="0.5" maxscale="0.8" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush6" minedgedist="2" maxedgedist="3.5" chance="0.1" minscale="0.5" maxscale="0.8" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_log1" minedgedist="1" maxedgedist="2.5" chance="0.02" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_log3" minedgedist="1" maxedgedist="2.5" chance="0.02" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_stump2" minedgedist="2.5" maxedgedist="3.5" chance="0.02" minscale="1" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_grass1" minedgedist="1" maxedgedist="5.0" chance="0.02" minscale="1.0" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_grass2" minedgedist="1" maxedgedist="5.0" chance="0.03" minscale="1.0" maxscale="1.2" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.082000</displacementamount>
+      <shapecurve>1v{-0.062,1.188|0.067,0.797|0.003,0.992|11850}{0.055,0.701|0.115,0.515|0.085,0.608|7301}{0.219,0.395|0.317,0.302|0.268,0.349|30910}{0.548,0.148|0.694,0.164|0.621,0.156|9660}{0.802,0.338|0.931,0.264|0.867,0.301|19461}{0.910,0.246|1.004,-0.207|0.957,0.020|20089}</shapecurve>
+      <displacementmedianvalue>0.358000</displacementmedianvalue>
+      <triplanarscale>0.070000</triplanarscale>
+      <normalstrength>3.707000</normalstrength>
+      <secondarynormalstrength>0.905000</secondarynormalstrength>
+      <terrainblendtop>0.082000</terrainblendtop>
+      <terrainblendbottom>0.052000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\ceylon\ceylon_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\ceylon\ceylon_cliff_normals_lrg</normals>
+      <secondarynormals>terrain\cliffs\ceylon\ceylon_cliff_normals_sml</secondarynormals>
+      <heightmap>terrain\cliffs\ceylon\ceylon_cliff_height</heightmap>
+      <mask>terrain\cliffs\ceylon\ceylon_cliff_masks</mask>
+      <top>california\fakecalifgrassmix_cal</top>
+      <topedge>california\fakecalifgrassmix_cal</topedge>
+      <side>california\fakecalifgrassmix_cal</side>
+      <edge>california\groundforest_cal</edge>
+      <bottomedge>california\groundforest2_cal</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP New Zealand Medium" blockland="1" blockwater="0" iconname="ui\editor\cliffceylon">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_forest_fern1" minedgedist="0.0" maxedgedist="2.5" minscale="0.6" maxscale="1.2" chance="0.3" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="0.75" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\underbrush\underbrush_forest_fern1" minedgedist="0.0" maxedgedist="2.5" minscale="0.6" maxscale="1.5" chance="0.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.3" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush3" minedgedist="1.25" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_group_c_pat" minedgedist="1.5" maxedgedist="3.0" minscale="0.5" maxscale="1.0" chance="0.15" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_group_e_pat" minedgedist="1.5" maxedgedist="3.0" minscale="0.5" maxscale="1.0" chance="0.15" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="2.0" maxedgedist="3.5" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="2.0" maxedgedist="3.5" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.082000</displacementamount>
+      <shapecurve>1v{-0.062,1.188|0.067,0.797|0.003,0.992|11850}{0.055,0.701|0.115,0.515|0.085,0.608|7301}{0.219,0.395|0.317,0.302|0.268,0.349|30910}{0.548,0.148|0.694,0.164|0.621,0.156|9660}{0.802,0.338|0.931,0.264|0.867,0.301|19461}{0.910,0.246|1.004,-0.207|0.957,0.020|20089}</shapecurve>
+      <displacementmedianvalue>0.358000</displacementmedianvalue>
+      <triplanarscale>0.070000</triplanarscale>
+      <normalstrength>3.707000</normalstrength>
+      <secondarynormalstrength>0.905000</secondarynormalstrength>
+      <terrainblendtop>0.082000</terrainblendtop>
+      <terrainblendbottom>0.052000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\ceylon\ceylon_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\ceylon\ceylon_cliff_normals_lrg</normals>
+      <secondarynormals>terrain\cliffs\ceylon\ceylon_cliff_normals_sml</secondarynormals>
+      <heightmap>terrain\cliffs\ceylon\ceylon_cliff_height</heightmap>
+      <mask>terrain\cliffs\ceylon\ceylon_cliff_masks</mask>
+      <top>araucania\ground_grass1_ara_ozarks</top>
+      <topedge>araucania\ground_grass1_ara_ozarks</topedge>
+      <side>araucania\ground_grass1_ara_ozarks</side>
+      <edge>araucania\ground_grass1_ara_ozarks</edge>
+      <bottomedge>araucania\ground_grass1_ara_ozarks</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP New Zealand High" blockland="1" blockwater="0" iconname="ui\editor\cliffceylon">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_forest_fern1" minedgedist="0.0" maxedgedist="2.5" minscale="0.6" maxscale="1.2" chance="0.3" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="0.75" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\underbrush\underbrush_forest_fern1" minedgedist="0.0" maxedgedist="2.5" minscale="0.6" maxscale="1.5" chance="0.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.3" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush3" minedgedist="1.25" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_group_c_pat" minedgedist="1.5" maxedgedist="3.0" minscale="0.5" maxscale="1.0" chance="0.15" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_group_e_pat" minedgedist="1.5" maxedgedist="3.0" minscale="0.5" maxscale="1.0" chance="0.15" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="2.0" maxedgedist="3.5" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="2.0" maxedgedist="3.5" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.082000</displacementamount>
+      <shapecurve>1v{-0.062,1.188|0.067,0.797|0.003,0.992|11850}{0.055,0.701|0.115,0.515|0.085,0.608|7301}{0.219,0.395|0.317,0.302|0.268,0.349|30910}{0.548,0.148|0.694,0.164|0.621,0.156|9660}{0.802,0.338|0.931,0.264|0.867,0.301|19461}{0.910,0.246|1.004,-0.207|0.957,0.020|20089}</shapecurve>
+      <displacementmedianvalue>0.358000</displacementmedianvalue>
+      <triplanarscale>0.070000</triplanarscale>
+      <normalstrength>3.707000</normalstrength>
+      <secondarynormalstrength>0.905000</secondarynormalstrength>
+      <terrainblendtop>0.082000</terrainblendtop>
+      <terrainblendbottom>0.052000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\ceylon\ceylon_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\ceylon\ceylon_cliff_normals_lrg</normals>
+      <secondarynormals>terrain\cliffs\ceylon\ceylon_cliff_normals_sml</secondarynormals>
+      <heightmap>terrain\cliffs\ceylon\ceylon_cliff_height</heightmap>
+      <mask>terrain\cliffs\ceylon\ceylon_cliff_masks</mask>
+      <top>araucania\ground_dirt3_ara</top>
+      <topedge>araucania\ground_dirt3_ara</topedge>
+      <side>araucania\ground_dirt3_ara</side>
+      <edge>araucania\ground_dirt3_ara</edge>
+      <bottomedge>araucania\ground_grass1_ara_ozarks</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP New Zealand High 2" blockland="1" blockwater="0" iconname="ui\editor\cliffceylon">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\patagonia\underbrush_brush_a_snow_pat" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.1" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_brush_b_snow_pat" minedgedist="1.25" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.1" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_brush_c_snow_pat" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.1" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bushsnow1" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.1" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bushsnow2" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.1" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_a_snow_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_snow_pat" minedgedist="0.75" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_e_snow_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_snow_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\patagonia\underbrush_brush_c_snow_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.25" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_group_a_snow_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.15" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_group_b_snow_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bushsnow1" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.1" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bushsnow2" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.1" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_fernsnow_01" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.1" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_fernsnow_02" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.1" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_brush_a_snow_snow_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_group_c_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.15" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_group_d_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.1" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_group_e_pat" minedgedist="1.0" maxedgedist="3.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_a_snow_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_snow_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.25" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_e_snow_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_snow_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.082000</displacementamount>
+      <shapecurve>1v{-0.062,1.188|0.067,0.797|0.003,0.992|11850}{0.055,0.701|0.115,0.515|0.085,0.608|7301}{0.219,0.395|0.317,0.302|0.268,0.349|30910}{0.548,0.148|0.694,0.164|0.621,0.156|9660}{0.802,0.338|0.931,0.264|0.867,0.301|19461}{0.910,0.246|1.004,-0.207|0.957,0.020|20089}</shapecurve>
+      <displacementmedianvalue>0.358000</displacementmedianvalue>
+      <triplanarscale>0.070000</triplanarscale>
+      <normalstrength>3.707000</normalstrength>
+      <secondarynormalstrength>0.905000</secondarynormalstrength>
+      <terrainblendtop>0.082000</terrainblendtop>
+      <terrainblendbottom>0.052000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\ceylon\ceylon_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\ceylon\ceylon_cliff_normals_lrg</normals>
+      <secondarynormals>terrain\cliffs\ceylon\ceylon_cliff_normals_sml</secondarynormals>
+      <heightmap>terrain\cliffs\ceylon\ceylon_cliff_height</heightmap>
+      <mask>terrain\cliffs\ceylon\ceylon_cliff_masks</mask>
+      <top>araucania\ground_snow2_ara</top>
+      <topedge>araucania\ground_snow2_ara</topedge>
+      <side>araucania\ground_snow1_ara</side>
+      <edge>araucania\ground_snow2_ara</edge>
+      <bottomedge>araucania\ground_snow7_ara</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP New Zealand High 3" blockland="1" blockwater="0" iconname="ui\editor\cliffceylon">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_snow_bush1" minedgedist="0.5" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_snow_bush3" minedgedist="1.0" maxedgedist="3.0" chance="0.1" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_snow_grass2" minedgedist="2.0" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_snow_rock1" minedgedist="1.0" maxedgedist="3.0" chance="0.1" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_snow_rock3" minedgedist="1.0" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_snow_rock5" minedgedist="1.0" maxedgedist="3.0" chance="0.1" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\underbrush\underbrush_snow_group1" minedgedist=".5" maxedgedist=".5" chance="0.05" randomyaw="false">
+      </object>
+      <object name="terrain\underbrush\underbrush_snow_group2" minedgedist=".5" maxedgedist=".5" chance="0.05" randomyaw="false">
+      </object>
+      <object name="terrain\underbrush\underbrush_snow_grass1" minedgedist=".5" maxedgedist=".5" chance="0.05" randomyaw="false">
+      </object>
+      <object name="terrain\underbrush\underbrush_snow_rock2" minedgedist=".5" maxedgedist=".5" chance="0.05" randomyaw="false">
+      </object>
+      <object name="terrain\underbrush\underbrush_snow_rock4" minedgedist="1.0" maxedgedist="2.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_snow_rock6" minedgedist="1.0" maxedgedist="2.5" chance="0.05" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.082000</displacementamount>
+      <shapecurve>1v{-0.062,1.188|0.067,0.797|0.003,0.992|11850}{0.055,0.701|0.115,0.515|0.085,0.608|7301}{0.219,0.395|0.317,0.302|0.268,0.349|30910}{0.548,0.148|0.694,0.164|0.621,0.156|9660}{0.802,0.338|0.931,0.264|0.867,0.301|19461}{0.910,0.246|1.004,-0.207|0.957,0.020|20089}</shapecurve>
+      <displacementmedianvalue>0.358000</displacementmedianvalue>
+      <triplanarscale>0.070000</triplanarscale>
+      <normalstrength>3.707000</normalstrength>
+      <secondarynormalstrength>0.905000</secondarynormalstrength>
+      <terrainblendtop>0.082000</terrainblendtop>
+      <terrainblendbottom>0.052000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\ceylon\ceylon_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\ceylon\ceylon_cliff_normals_lrg</normals>
+      <secondarynormals>terrain\cliffs\ceylon\ceylon_cliff_normals_sml</secondarynormals>
+      <heightmap>terrain\cliffs\ceylon\ceylon_cliff_height</heightmap>
+      <mask>terrain\cliffs\ceylon\ceylon_cliff_masks</mask>
+      <top>araucania\ground_snow4_ara</top>
+      <topedge>araucania\ground_snow4_ara</topedge>
+      <side>araucania\ground_snow3_ara</side>
+      <edge>araucania\ground_snow4_ara</edge>
+      <bottomedge>araucania\ground_snow2_ara</bottomedge>
+    </textures>
+  </cliff>
 </cliffs>
