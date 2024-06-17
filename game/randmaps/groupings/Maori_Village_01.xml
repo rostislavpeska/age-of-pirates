@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>13</width>
+	<height>15</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="166" posx="3.1833" posz="-12.1054" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="59" posx="1.1668" posz="-13.7515" orientx="0.9239" orienty="0.0000" orientz="-0.3827">UnderbrushSaguenay</unit>
+		<unit variation="90" posx="-1.3372" posz="-12.7682" orientx="0.3827" orienty="0.0000" orientz="0.9239">UnderbrushMongolia</unit>
+		<unit variation="202" posx="2.3350" posz="-12.4793" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
+		<unit variation="43" posx="0.3834" posz="-12.3089" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
+		<unit variation="43" posx="7.2907" posz="-8.8516" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseMaori</unit>
+		<unit variation="24" posx="6.2808" posz="-12.2051" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
+		<unit variation="169" posx="6.2167" posz="-12.0995" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="4.8160" posz="-9.3491" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="1.3123" posz="-9.8797" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="-0.1934" posz="-11.6428" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="11.0465" posz="-9.3093" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="74" posx="4.4602" posz="-10.5710" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="95" posx="3.1533" posz="-10.4494" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushSaguenay</unit>
+		<unit variation="138" posx="1.8588" posz="-10.2575" orientx="0.3827" orienty="0.0000" orientz="0.9239">UnderbrushMongolia</unit>
+		<unit variation="144" posx="9.8713" posz="-11.0161" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpRuinWallSmall</unit>
+		<unit variation="204" posx="2.4282" posz="-9.1869" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="32" posx="10.8944" posz="-8.0325" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallSmall</unit>
+		<unit variation="207" posx="-3.9292" posz="-6.4734" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSocketMaori</unit>
+		<unit variation="169" posx="1.8604" posz="-6.7568" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="226" posx="3.5833" posz="-6.4333" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="166" posx="10.9256" posz="-6.0652" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">PropsNative</unit>
+		<unit variation="169" posx="1.8201" posz="-3.6435" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="109" posx="9.0992" posz="-5.7123" orientx="1.0000" orienty="0.0000" orientz="0.0000">TanningRack</unit>
+		<unit variation="87" posx="7.6511" posz="-4.8863" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushMongolia</unit>
+		<unit variation="128" posx="11.1821" posz="-5.0663" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallSmall</unit>
+		<unit variation="20" posx="2.7136" posz="-3.3592" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseMaori</unit>
+		<unit variation="169" posx="11.0362" posz="-2.3641" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="213" posx="7.3643" posz="-1.0058" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHouseMaori</unit>
+		<unit variation="169" posx="-8.1882" posz="-0.3791" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="-3.9813" posz="-0.7337" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="0.4448" posz="-0.8122" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="216" posx="-9.4464" posz="-0.1283" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="5" posx="2.6140" posz="0.8557" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNativeHouseMaori</unit>
+		<unit variation="187" posx="-0.1805" posz="-0.9955" orientx="-0.9730" orienty="0.0000" orientz="0.2310">SMTupiStoryTelling</unit>
+		<unit variation="169" posx="2.7989" posz="1.9790" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="0.2136" posz="2.9715" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="133" posx="-4.4091" posz="0.9694" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">PropsNative</unit>
+		<unit variation="115" posx="-7.2429" posz="1.9566" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">TanningRack</unit>
+		<unit variation="55" posx="0.4043" posz="2.1310" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="169" posx="-8.4325" posz="4.0820" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="38" posx="-10.3424" posz="2.1960" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushMongolia</unit>
+		<unit variation="18" posx="7.9164" posz="3.0279" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">UnderbrushBorneo</unit>
+		<unit variation="98" posx="11.1922" posz="2.2638" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallSmall</unit>
+		<unit variation="158" posx="7.3534" posz="6.3356" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseMaori</unit>
+		<unit variation="169" posx="-3.2373" posz="5.2817" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="11.6793" posz="5.0926" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="120" posx="-4.1535" posz="5.8267" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="34" posx="-8.7957" posz="5.1609" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="40" posx="-2.9522" posz="4.7324" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">PropsNative</unit>
+		<unit variation="73" posx="-5.9310" posz="4.8881" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">PropsNative</unit>
+		<unit variation="181" posx="-9.9908" posz="5.9664" orientx="1.0000" orienty="0.0000" orientz="0.0000">UnderbrushMongolia</unit>
+		<unit variation="156" posx="3.6838" posz="4.3056" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="131" posx="3.7752" posz="5.7638" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="143" posx="-0.4227" posz="4.8331" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="162" posx="-9.8968" posz="4.2116" orientx="0.0765" orienty="0.0000" orientz="0.9971">SMTupiFence</unit>
+		<unit variation="169" posx="-7.1533" posz="8.7885" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="-10.5623" posz="8.5476" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="38" posx="9.6505" posz="4.9844" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpRuinWallSmall</unit>
+		<unit variation="169" posx="5.0192" posz="8.3109" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="255" posx="-0.0286" posz="7.1572" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpNativeHouseMaori</unit>
+		<unit variation="87" posx="-7.3882" posz="8.0220" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseMaori</unit>
+		<unit variation="169" posx="-0.1440" posz="10.3297" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="131" posx="5.2391" posz="9.4916" orientx="0.3827" orienty="0.0000" orientz="0.9239">UnderbrushMongolia</unit>
+		<unit variation="72" posx="4.8231" posz="8.5033" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpRuinWallSmall</unit>
+		<unit variation="169" posx="-2.8562" posz="11.1844" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="-8.7160" posz="12.1109" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="194" posx="-10.3159" posz="11.7556" orientx="1.0000" orienty="0.0000" orientz="0.0000">UnderbrushMongolia</unit>
+		<unit variation="181" posx="-2.8960" posz="11.1238" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="138" posx="-3.3013" posz="12.1711" orientx="-0.9425" orienty="-0.0000" orientz="0.3342">SMTupiFence</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="california\ground10_cal">
+			<block startx="-5" startz="-2" endx="-5" endz="0"></block>
+			<block startx="-4" startz="-4" endx="-4" endz="0"></block>
+			<block startx="-3" startz="-5" endx="-3" endz="0"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="0"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="0"></block>
+			<block startx="0" startz="-6" endx="0" endz="0"></block>
+			<block startx="1" startz="-6" endx="1" endz="-2"></block>
+			<block startx="1" startz="0" endx="1" endz="0"></block>
+			<block startx="2" startz="-7" endx="2" endz="0"></block>
+			<block startx="-5" startz="1" endx="-5" endz="5"></block>
+			<block startx="-4" startz="1" endx="-4" endz="6"></block>
+			<block startx="-3" startz="1" endx="-3" endz="6"></block>
+			<block startx="-2" startz="1" endx="-2" endz="6"></block>
+			<block startx="-1" startz="1" endx="-1" endz="6"></block>
+			<block startx="0" startz="1" endx="0" endz="6"></block>
+			<block startx="1" startz="1" endx="1" endz="5"></block>
+			<block startx="2" startz="1" endx="2" endz="4"></block>
+			<block startx="3" startz="1" endx="3" endz="4"></block>
+			<block startx="4" startz="1" endx="4" endz="3"></block>
+			<block startx="5" startz="1" endx="5" endz="2"></block>
+			<block startx="6" startz="1" endx="6" endz="1"></block>
+			<block startx="3" startz="-7" endx="3" endz="0"></block>
+			<block startx="4" startz="-7" endx="4" endz="0"></block>
+			<block startx="5" startz="-6" endx="5" endz="0"></block>
+			<block startx="6" startz="-5" endx="6" endz="0"></block>
+		</tilegroup>
+	</tiles>
+</grouping>
