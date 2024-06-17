@@ -76,6 +76,7 @@
       <type>silkRoad2</type>
       <type>silkRoad3</type>
       <type>australia</type>
+      <type>newzealand</type>
     </maptypes>
     <minspawntime>45</minspawntime>
     <maxspawntime>180</maxspawntime>
@@ -138,6 +139,7 @@
     <maptypes>
       <type>patagonia</type>
       <type>carolina</type>
+      <type>newzealand</type>
     </maptypes>
     <minspawntime>90</minspawntime>
     <maxspawntime>300</maxspawntime>
@@ -199,6 +201,7 @@
       <type>orinoco</type>
       <type>yucatan</type>
       <type>australia</type>
+      <type>newzealand</type>
     </maptypes>
     <minspawntime>10</minspawntime>
     <maxspawntime>90</maxspawntime>
@@ -237,6 +240,7 @@
       <type>carolina</type>
       <type>patagonia</type>
       <type>australia</type>
+      <type>newzealand</type>
     </maptypes>
     <minspawntime>50</minspawntime>
     <maxspawntime>200</maxspawntime>

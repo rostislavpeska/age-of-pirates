@@ -24456,6 +24456,77 @@
       <damagetype>Hand</damagetype>
     </protoaction>
   </unit>
+  <unit id="20270" name="zpKiwi">
+    <dbid>20270</dbid>
+    <displaynameid>301263</displaynameid>
+    <editornameid>301264</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <wanderdistance>50</wanderdistance>
+    <animfile>units\animals\kiwi\kiwi.xml</animfile>
+    <impacttype>Animal</impacttype>
+    <icon>resources\art\units\animals\kiwi\kiwi_icon.png</icon>
+    <portraiticon>resources\art\units\animals\kiwi\kiwi_portrait.png</portraiticon>
+    <rollovertextid>301187</rollovertextid>
+    <shortrollovertextid>301265</shortrollovertextid>
+    <initialhitpoints>60.0000</initialhitpoints>
+    <maxhitpoints>60.0000</maxhitpoints>
+    <los>10.0000</los>
+    <unitaitype>Passive</unitaitype>
+    <trainpoints>75.0000</trainpoints>
+    <buildlimit>50</buildlimit>
+    <communityplazaweight>0.3334</communityplazaweight>
+    <initialresource resourcetype="Food">300.0000</initialresource>
+    <resourcedecay>0.7500</resourcedecay>
+    <resourcesubtype>meat</resourcesubtype>
+    <minimapcolor red="0.5000" blue="0.2500" green="0.2000">
+    </minimapcolor>
+    <gathererlimit>4</gathererlimit>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>Huntable</unittype>
+    <unittype>AnimalPrey</unittype>
+    <unittype>HuntedResource</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Unit</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>CorpseDecays</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>RMCanRotate</flag>
+    <flag>Wanders</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogOnlyAfterSeen</flag>
+    <flag>CivSpecificText</flag>
+    <flag>Tracked</flag>
+    <flag>InvulnerableToAreaDamage</flag>
+    <tactics>kiwi.tactics</tactics>
+    <protoaction>
+      <name>ShrineGather</name>
+      <rate type="AbstractShrine">0.066500</rate>
+    </protoaction>
+    <protoaction>
+      <name>HaciendaGather</name>
+      <rate type="deHacienda">1.000000</rate>
+      <rate type="deHacienda" resource="Food">0.166667</rate>
+      <rate type="deHacienda" resource="Gold">0.113334</rate>
+      <rate type="deHacienda" resource="Wood">0.250000</rate>
+    </protoaction>
+  </unit>
   
 
 
