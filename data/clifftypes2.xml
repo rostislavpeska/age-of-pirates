@@ -2232,11 +2232,11 @@
       <secondarynormals>terrain\cliffs\ceylon\ceylon_cliff_normals_sml</secondarynormals>
       <heightmap>terrain\cliffs\ceylon\ceylon_cliff_height</heightmap>
       <mask>terrain\cliffs\ceylon\ceylon_cliff_masks</mask>
-      <top>araucania\ground_grass1_ara_ozarks</top>
-      <topedge>araucania\ground_grass1_ara_ozarks</topedge>
-      <side>araucania\ground_grass1_ara_ozarks</side>
-      <edge>araucania\ground_grass1_ara_ozarks</edge>
-      <bottomedge>araucania\ground_grass1_ara_ozarks</bottomedge>
+      <top>new_england\cliff_inland_top_ne</top>
+      <topedge>new_england\cliff_inland_top_ne</topedge>
+      <side>new_england\cliff_inland_top_ne</side>
+      <edge>new_england\cliff_inland_top_ne</edge>
+      <bottomedge>new_england\cliff_inland_top_ne</bottomedge>
     </textures>
   </cliff>
   <cliff name="ZP New Zealand High" blockland="1" blockwater="0" iconname="ui\editor\cliffceylon">
@@ -2287,7 +2287,7 @@
       <topedge>araucania\ground_dirt3_ara</topedge>
       <side>araucania\ground_dirt3_ara</side>
       <edge>araucania\ground_dirt3_ara</edge>
-      <bottomedge>araucania\ground_grass1_ara_ozarks</bottomedge>
+      <bottomedge>new_england\cliff_inland_top_ne</bottomedge>
     </textures>
   </cliff>
   <cliff name="ZP New Zealand High 2" blockland="1" blockwater="0" iconname="ui\editor\cliffceylon">

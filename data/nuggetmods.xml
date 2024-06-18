@@ -330,6 +330,58 @@
       <maptype>newzealand</maptype>
     </nugget>
     <nugget>
+      <name>zpCrocodiles</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetDroppedSupplies</nuggetunit>
+      <rolloverstringid>102087</rolloverstringid>
+      <applystringid>102088</applystringid>
+      <resource>XP</resource>
+      <amount>100</amount>
+      <maptype>australia</maptype>
+      <guardian>deCrocodile</guardian>
+      <guardian>deCrocodile</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpCrocodiles</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetDroppedSupplies</nuggetunit>
+      <rolloverstringid>102087</rolloverstringid>
+      <applystringid>102088</applystringid>
+      <resource>Wood</resource>
+      <amount>100</amount>
+      <maptype>australia</maptype>
+      <guardian>deCrocodile</guardian>
+      <guardian>deCrocodile</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpCrocodiles</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetDroppedSupplies</nuggetunit>
+      <rolloverstringid>102087</rolloverstringid>
+      <applystringid>102088</applystringid>
+      <resource>Food</resource>
+      <amount>100</amount>
+      <maptype>australia</maptype>
+      <guardian>deCrocodile</guardian>
+      <guardian>deCrocodile</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpCrocodiles</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetDroppedSupplies</nuggetunit>
+      <rolloverstringid>102087</rolloverstringid>
+      <applystringid>102088</applystringid>
+      <resource>Food</resource>
+      <amount>100</amount>
+      <maptype>australia</maptype>
+      <guardian>deCrocodile</guardian>
+      <guardian>deCrocodile</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
       <name>zpAustralia1</name>
       <nuggetunit>NuggetDroppedSupplies</nuggetunit>
       <type>AdjustResource</type>
