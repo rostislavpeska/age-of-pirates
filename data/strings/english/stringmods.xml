@@ -1255,8 +1255,8 @@
       <string _locid="301251">Legendary Taiaha</string>
       <string _locid="301252">Maori Colonisation</string>
       <string _locid="301253">Unlocks new Maori units and techs.</string>
-      <string _locid="301254">Reveals locations of all fishes and whales</string>
-      <string _locid="301255">Maui's Fishhook</string>
+      <string _locid="301254">Ships Maui's helpers.</string>
+      <string _locid="301255">Maui's Spirits</string>
       <string _locid="301256">Unlocks new Maori units and techs.</string>
       <string _locid="301257">Taiaha</string>
       <string _locid="301258">Waka</string>
@@ -1270,8 +1270,15 @@
       <string _locid="301266">ZP Decorative Wall Small</string>
       <string _locid="301267">ZP Decorative Wall Medium</string>
       <string _locid="301268">ZP Decorative Wall Large</string>
-
-
+      <string _locid="301269">Jade Mine</string>
+      <string _locid="301270">ZP Mine Jade</string>
+      <string _locid="301271">New Zealand</string>
+      <string _locid="301272">Clasic naval map woth two separated big islands with a mountainous surface. \n\nSettlements: Maori \n\nAdditional settlements: Pirates or Renegades</string>
+      <string _locid="301273">New Land discovered on the opposite side of the globe but even though reminding Europe. Bon Voyage!</string>
+      <string _locid="301274">Dolphin</string>
+      <string _locid="301275">ZP Pet Dolphin</string>
+      <string _locid="301276">A tame bottlenose dolphin that poses a threat to any enemy unit that provokes it.</string>
+      <string _locid="301277">Naval Pet</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

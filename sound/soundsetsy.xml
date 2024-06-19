@@ -2395,4 +2395,16 @@
     <sound filename="ambient\animals\cassowaryambient.wav" volume="1.0000">
     </sound>
   </soundset>
+  <soundset name="DolphinAmbient" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ambient\animals\dolphin1.wav" volume="0.7000">
+    </sound>
+    <sound filename="ambient\animals\dolphin2.wav" volume="0.7000">
+    </sound>
+  </soundset>
+  <soundset name="DolphinAttack" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ambient\animals\dolphin1.wav" volume="0.7000">
+    </sound>
+    <sound filename="ypack\orcagrunt1.wav" volume="1.0000">
+    </sound>
+  </soundset>
 </soundsetdef>

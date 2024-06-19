@@ -12498,17 +12498,21 @@
   <tech name="zpMaoriFishhook" type="Normal">
     <dbid>40536</dbid>
     <displaynameid>301255</displaynameid>
-    <cost resourcetype="Wood">75.0000</cost>
-    <cost resourcetype="Gold">30.0000</cost>
+    <cost resourcetype="Food">300.0000</cost>
     <researchpoints>5.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\maori_maui.png</icon>
+    <icon>resources\images\icons\techs\maori_dolphins.png</icon>
     <rollovertextid>301254</rollovertextid>
-    <flag>CountsTowardEconomicScore</flag>
+    <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <prereqs>
+			<techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
     <effects>
-      <effect type="Data" amount="0.00" subtype="RevealLOS" relativity="Absolute">
-        <target type="ProtoUnit">AbstractFishOrWhale</target>
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="zpPetDolphin" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>

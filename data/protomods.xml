@@ -550,9 +550,9 @@
 
     <tech row="0" page="1" column="1">zpWarriorSocietyMaori</tech>
     <tech row="0" page="1" column="1">zpChampionMaori</tech>
-    <tech row="0" page="2" column="1">zpMaoriFishhook</tech>
+    <tech row="0" page="2" column="3">zpMaoriFishhook</tech>
     <tech row="0" page="2" column="2">zpMaoriTaiaha</tech>
-    <tech row="0" page="2" column="3">zpMaoriFishing</tech>
+    <tech row="0" page="2" column="1">zpMaoriFishing</tech>
     <tech row="0" page="1" column="1">zpMaoriExpansion</tech>
 
     <!-- Wild West Techs -->
@@ -14498,7 +14498,7 @@
     <buildbounty>10.0000</buildbounty>
     <cost resourcetype="Food">75.0000</cost>
     <cost resourcetype="Wood">25.0000</cost>
-    <allowedage>1</allowedage>
+    <allowedage>2</allowedage>
     <armor type="Hand" value="0.1000">
     </armor>
     <unittype>LogicalTypeHealed</unittype>
@@ -24599,6 +24599,76 @@
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>DestroyUnderBuilding</flag>
   </unit>
+  <unit id="20274" name="zpPetDolphin">
+    <dbid>20274</dbid>
+    <displaynameid>301274</displaynameid>
+    <editornameid>301275</editornameid>
+    <obstructionradiusx>1.9900</obstructionradiusx>
+    <obstructionradiusz>1.9900</obstructionradiusz>
+    <maxvelocity>8.0000</maxvelocity>
+    <maxrunvelocity>10.0000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <turnrate>12.0000</turnrate>
+    <animfile>units\animals\dolphin\dolphin.xml</animfile>
+    <impacttype>Animal</impacttype>
+    <icon>resources\art\units\animals\dolphin\dolphin_icon.png</icon>
+    <portraiticon>resources\art\units\animals\dolphin\dolphin_portrait.png</portraiticon>
+    <rollovertextid>301276</rollovertextid>
+    <shortrollovertextid>301277</shortrollovertextid>
+    <initialhitpoints>195.0000</initialhitpoints>
+    <maxhitpoints>195.0000</maxhitpoints>
+    <los>10.0000</los>
+    <unitaitype>HandCombative</unitaitype>
+    <trainpoints>10.0000</trainpoints>
+    <buildlimit>25</buildlimit>
+    <bounty>413.0000</bounty>
+    <buildbounty>4113.0000</buildbounty>
+    <cost resourcetype="Food">413.0000</cost>
+    <allowedage>0</allowedage>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>AnimalPrey</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractPet</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <flag>TieToWaterSurface</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>pet.tactics</tactics>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>16.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.000000</rof>
+    </protoaction>
+  </unit>
+  
   
 
 
@@ -24610,6 +24680,61 @@
 
 
   <!--TEST-->
+  <unit id="" name="zpMineJade">
+    <dbid></dbid>
+    <displaynameid>301269</displaynameid>
+    <editornameid>301270</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <socketoffsetx>0.0000</socketoffsetx>
+    <socketoffsetz>0.0000</socketoffsetz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\gold_mine\silver_mine.xml</animfile>
+    <impacttype>Stone</impacttype>
+    <icon>resources\art\buildings\silver_mine\silver_mine_icon.png</icon>
+    <minimapicon>ui\minimap\minimap_gold</minimapicon>
+    <portraiticon>resources\art\buildings\silver_mine\silver_mine_portrait.png</portraiticon>
+    <rollovertextid>28576</rollovertextid>
+    <shortrollovertextid>28575</shortrollovertextid>
+    <los>18.0000</los>
+    <initialresource resourcetype="Gold">2500.0000</initialresource>
+    <resourcesubtype>Gold</resourcesubtype>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <scalingaurascale>3.0</scalingaurascale>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <minimapcolor red="0.8900" blue="0.2500" green="0.7000">
+    </minimapcolor>
+    <gathererlimit>20</gathererlimit>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Gold</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>AbstractMine</unittype>
+    <unittype>MinedResource</unittype>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>FlattenGround</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>NoHPBar</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>AlwaysShowAsSocket</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
   <unit id="" name="zpSPCFlyingDutchman">
     <dbid></dbid>
     <displaynameid>301165</displaynameid>
