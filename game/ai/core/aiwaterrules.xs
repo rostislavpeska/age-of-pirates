@@ -351,6 +351,27 @@ int checkForClumpedShips(int transportShip = -1, int transportShip2 = -1)
       }
    }
 
+   if (transportShip2 > 0)
+   {
+      shipPosition = kbUnitGetPosition(transportShip2);
+      shipQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive, shipPosition, 10.0);
+      shipNumber = kbUnitQueryExecute(shipQuery);
+      tempShip = -1;
+
+      startingVec = shipPosition;
+      startingVec = xsVectorSetX(startingVec, xsVectorGetX(startingVec) + 20);
+      startingVec = rotateByReferencePoint(shipPosition, startingVec - shipPosition, aiRandInt(360) / (180.0 / PI));
+
+      for (i = 0; < shipNumber)
+      {
+         if (tempShip != transportShip && tempShip != transportShip2)
+         {
+            tempShip = kbUnitQueryGetResult(shipQuery, i);
+            aiTaskUnitMove(tempShip, startingVec);
+         }
+      }
+   }
+
    return (shipNumber);
 }
 

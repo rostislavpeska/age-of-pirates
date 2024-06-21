@@ -6187,6 +6187,22 @@ vector getEnemyBase(int enemyPlayerID = -1, int armyPower = 0)
 }
 
 //==============================================================================
+// getRandomPoint
+// 
+// Gets a random point around the center point, within that radius
+//==============================================================================
+vector getRandomPoint(vector location = cInvalidVector, int radius = 30)
+{
+   vector position = cInvalidVector;
+   float xError = radius;
+   float zError = radius;
+   position = xsVectorSetX(position, xsVectorGetX(position) + aiRandFloat(0.0 - xError, xError));
+   position = xsVectorSetZ(position, xsVectorGetZ(position) + aiRandFloat(0.0 - zError, zError));
+
+   return position;
+}
+
+//==============================================================================
 // selectPickupPoint
 // Looks at the vector between us and the enemy, and sompares several points to 
 // find the best pickup
@@ -6595,6 +6611,7 @@ void bombardCoast()
    int unitID = -1;
    int puid = -1;
    bool alreadyTasked = false;
+   vector targetLocation = cInvalidVector;
 
    // Find the two weakest ships to focus on
    for (i = 0; < enNavySize)
@@ -6675,7 +6692,8 @@ void bombardCoast()
       {
          if (distance(kbUnitGetPosition(unitID), gAmphibiousAssaultTarget) > 40)
          {
-            aiTaskUnitMove(unitID, gAmphibiousAssaultTarget);
+            targetLocation = getRandomPoint(gAmphibiousAssaultTarget, 35);
+            aiTaskUnitMove(unitID, targetLocation);
          }
       }
 

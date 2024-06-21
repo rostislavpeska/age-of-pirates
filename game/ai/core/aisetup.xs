@@ -596,7 +596,7 @@ void initArrays(void)
 
    if (civIsEuropean() == true)
    {
-   gRevolutionList = xsArrayCreateInt(20, 0, "Revolution List");
+   gRevolutionList = xsArrayCreateInt(21, 0, "Revolution List");
    xsArraySetInt(gRevolutionList, 0, cTechDERevolutionHaiti);
    xsArraySetInt(gRevolutionList, 1, cTechDERevolutionEgypt);
    xsArraySetInt(gRevolutionList, 2, cTechDERevolutionFinland);
@@ -617,6 +617,7 @@ void initArrays(void)
    xsArraySetInt(gRevolutionList, 17, cTechDERevolutionColombiaPortuguese);
    xsArraySetInt(gRevolutionList, 18, cTechDERevolutionChile);
    xsArraySetInt(gRevolutionList, 19, cTechDERevolutionSouthAfrica);
+   xsArraySetInt(gRevolutionList, 20, cTechDERevolutionFrance);         // AssertiveWall: Added french revolution
    }
 
    gAfricanAlliances = xsArrayCreateInt(8, 0, "African Alliances");

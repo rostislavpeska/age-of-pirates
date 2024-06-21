@@ -1581,7 +1581,7 @@ void revoltedHandler(int techID = -1)
    }
 
    if ((techID == cTechDERevolutionSouthAfrica) || (techID == cTechDERevolutionCanadaBritish) ||
-       (techID == cTechDERevolutionCanadaFrench))
+       (techID == cTechDERevolutionCanadaFrench) || (techID == cTechDERevolutionFrance)) // AssertiveWall: Added DERevolutionFrance
    {
       gRevolutionType = cRevolutionEconomic;
       // Delete the Trek Wagons we get from this revolution since we don't use them.
