@@ -1087,7 +1087,7 @@
     <flag>InvulnerableIfGaia</flag>
   </unit>
   <unit id="20012" name="zpSPCBlackPearl">
-    <dbid>892</dbid>
+    <dbid>20012</dbid>
     <displaynameid>300042</displaynameid>
     <editornameid>300043</editornameid>
     <obstructionradiusx>2.9900</obstructionradiusx>
@@ -12613,7 +12613,7 @@
       <damagetype>Siege</damagetype>
       <maxrange>15.000000</maxrange>
       <rof>1.000000</rof>
-      <damagecap>160.000000</damagecap>
+      <damagecap>300.000000</damagecap>
       <damagearea>1.000000</damagearea>
       <damagebonus type="zpAirship">1.500000</damagebonus>
       <damagebonus type="zpAirshipAI">1.500000</damagebonus>
@@ -12638,15 +12638,19 @@
     </protoaction>
     <protoaction>
       <name>PoisonBomb</name>
-      <damage>60.000000</damage>
+      <damage>150.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>30.000000</maxrange>
       <minrange>10.000000</minrange>
-      <maxheight>1.000000</maxheight>
       <rof>5.000000</rof>
-      <damagecap>100.000000</damagecap>
-      <damagearea>10.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
+      <maxheight>1.000000</maxheight>
+      <damagecap>180.000000</damagecap>
+      <damagearea>12.000000</damagearea>
+      <damageflags>GAIASelfAllyEnemy</damageflags>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damagebonus type="AbstractElephant">0.500000</damagebonus>
+      <damagebonus type="Tree">0.000001</damagebonus>
     </protoaction>
     <protoaction>
       <name>ExplosionAttack</name>
@@ -12663,74 +12667,57 @@
     <dbid>20131</dbid>
     <displaynameid>300612</displaynameid>
     <obstructionradiusx>0.1000</obstructionradiusx>
-    <wanderdistance>10</wanderdistance>
-    <idletimeout>1.0000</idletimeout>
-    <maxvelocity>1.000</maxvelocity>
-    <maxrunvelocity>6.0000</maxrunvelocity>
-    <lifespan>8.0000</lifespan>
-    <movementtype>land</movementtype>
-    <obstructionradiusx>0.0000</obstructionradiusx>
-    <obstructionradiusz>0.0000</obstructionradiusz>
-    <formationcategory>Mobile</formationcategory>
-    <movementtype>land</movementtype>
-    <turnrate>6.0000</turnrate>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <maxvelocity>60.0000</maxvelocity>
+    <movementtype>air</movementtype>
     <animfile>War of the Triple Alliance\Units\Great War\mustardgas.xml</animfile>
-    <impacttype>Flesh</impacttype>
-    <physicsinfo>cav</physicsinfo>
-    <initialhitpoints>2000.0000</initialhitpoints>
-    <maxhitpoints>2000.0000</maxhitpoints>
-    <los>3.0000</los>
-    <trainpoints>15.0000</trainpoints>
+    <lifespan>8.0000</lifespan>
+    <los>1.0000</los>
     <unitaitype>HandCombative</unitaitype>
-    <bounty>0.0000</bounty>
-    <resourcedecay>0.7500</resourcedecay>
-    <resourcesubtype>meat</resourcesubtype>
-    <unittype>NatureClass</unittype>
-    <unittype>AnimalPrey</unittype>
-    <unittype>Resource</unittype>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeLandMilitary</unittype>
-    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <flag>ConstrainOrientation</flag>
-    <flag>DieAtZeroResources</flag>
-    <flag>NoHPBar</flag>
-    <flag>DoNotValidateResourceInventory</flag>
-    <flag>DontRotateObstruction</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>ObscuredByUnits</flag>
-    <flag>RMCanRotate</flag>
-    <flag>VisibleUnderFogOnlyAfterSeen</flag>
-    <flag>Tracked</flag>
-    <flag>ForceToGaia</flag>
-    <flag>NotSelectable</flag>
-    <flag>NoHPBar</flag>
-    <flag>ColorTransformNonGaia</flag>
-    <flag>Wanders</flag>
+    <unittype>Projectile</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>InvulnerableIfGaia</flag>
     <flag>Invulnerable</flag>
-    <tactics>mustardgas.tactics</tactics>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSelectable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoTieToGround</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>Projectile</flag>
+    <flag>NonCollideable</flag>
+    <flag>DestroyProjectile</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>Tracked</flag>
+    <tactics>poison.tactics</tactics>
     <protoaction>
-      <name>TrampleHandAttack</name>
-      <damage>60.0000000</damage>
+      <name>HandAttack</name>
+      <damage>150.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>2.000000</rof>
-      <damagecap>100.0000000</damagecap>
-      <damagearea>30.000000</damagearea>
-      <damagebonus type="Abstractvillager">0.500000</damagebonus>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
-      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damagebonus type="AbstractElephant">0.500000</damagebonus>
+      <damagebonus type="Tree">0.000001</damagebonus>
+      <damagearea>12.000000</damagearea>
+      <damageflags>GAIASelfAllyEnemy</damageflags>
     </protoaction>
     <protoaction>
       <name>Attaching</name>
-      <damage>0.200000</damage>
+      <damage>150.000000</damage>
       <damagetype>Hand</damagetype>
-      <rof>1.000000</rof>
+      <rof>2.000000</rof>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damagebonus type="AbstractElephant">0.500000</damagebonus>
+      <damagebonus type="Tree">0.000001</damagebonus>
+      <damagearea>12.000000</damagearea>
+      <damageflags>GAIASelfAllyEnemy</damageflags>
     </protoaction>
   </unit>
   <unit id="20132" name="zpAirshipProxy">
@@ -13011,7 +12998,7 @@
   <unit id="20137" name="zpAirshipAI">
     <dbid>20137</dbid>
     <displaynameid>300605</displaynameid>
-    <editornameid>300633</editornameid>
+    <editornameid>301283</editornameid>
     <obstructionradiusx>2.0000</obstructionradiusx>
     <obstructionradiusz>2.0000</obstructionradiusz>
     <formationcategory>Protected</formationcategory>
@@ -13107,7 +13094,7 @@
       <damagecap>160.000000</damagecap>
       <damagearea>3.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="Building">5.000000</damagebonus>
+      <damagebonus type="Building">8.000000</damagebonus>
       <damagebonus type="AbstractDock">0.200000</damagebonus>
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="AbstractArtillery">2.000000</damagebonus>
@@ -13119,7 +13106,7 @@
       <damagetype>Siege</damagetype>
       <maxrange>15.000000</maxrange>
       <rof>1.000000</rof>
-      <damagecap>160.000000</damagecap>
+      <damagecap>300.000000</damagecap>
       <damagearea>1.000000</damagearea>
       <damagebonus type="zpAirship">1.500000</damagebonus>
       <damagebonus type="zpAirshipAI">1.500000</damagebonus>
@@ -13144,15 +13131,19 @@
     </protoaction>
     <protoaction>
       <name>PoisonBomb</name>
-      <damage>60.000000</damage>
+      <damage>150.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>30.000000</maxrange>
       <minrange>10.000000</minrange>
-      <maxheight>1.000000</maxheight>
       <rof>5.000000</rof>
-      <damagecap>100.000000</damagecap>
-      <damagearea>10.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
+      <maxheight>1.000000</maxheight>
+      <damagecap>180.000000</damagecap>
+      <damagearea>12.000000</damagearea>
+      <damageflags>GAIASelfAllyEnemy</damageflags>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damagebonus type="AbstractElephant">0.500000</damagebonus>
+      <damagebonus type="Tree">0.000001</damagebonus>
     </protoaction>
     <protoaction>
       <name>ExplosionAttack</name>
@@ -16226,92 +16217,78 @@
       <rate type="LogicalTypeHealed">6.000000</rate>
     </protoaction>
     <protoaction>
-      <name>PoisonBomb</name>
-      <damage>50.000000</damage>
+      <name>PoisonBombWeak</name>
+      <damage>20.000000</damage>
       <damagetype>Siege</damagetype>
-      <maxrange>7.000000</maxrange>
+      <maxrange>17.000000</maxrange>
       <minrange>5.000000</minrange>
-      <rof>3.000000</rof>
-      <damagecap>100.000000</damagecap>
-      <damagearea>50.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="AbstractVillager">2.000000</damagebonus>
+      <rof>5.000000</rof>
+      <maxheight>1.000000</maxheight>
+      <damagecap>50.000000</damagecap>
+      <damagearea>12.000000</damagearea>
+      <damageflags>GAIASelfAllyEnemy</damageflags>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damagebonus type="Tree">0.000001</damagebonus>
+      <damagebonus type="zpNatDottore">0.00010</damagebonus>
     </protoaction>
   </unit>
   <unit id="20177" name="zpMustardGasWeak">
     <dbid>20177</dbid>
     <displaynameid>300773</displaynameid>
+    
     <obstructionradiusx>0.1000</obstructionradiusx>
-    <wanderdistance>10</wanderdistance>
-    <idletimeout>1.0000</idletimeout>
-    <maxvelocity>1.000</maxvelocity>
-    <maxrunvelocity>6.0000</maxrunvelocity>
-    <lifespan>8.0000</lifespan>
-    <movementtype>land</movementtype>
-    <obstructionradiusx>0.0000</obstructionradiusx>
-    <obstructionradiusz>0.0000</obstructionradiusz>
-    <formationcategory>Mobile</formationcategory>
-    <movementtype>land</movementtype>
-    <turnrate>6.0000</turnrate>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <maxvelocity>60.0000</maxvelocity>
+    <movementtype>air</movementtype>
     <animfile>War of the Triple Alliance\Units\Great War\mustardgas.xml</animfile>
-    <impacttype>Flesh</impacttype>
-    <physicsinfo>cav</physicsinfo>
-    <initialhitpoints>2000.0000</initialhitpoints>
-    <maxhitpoints>2000.0000</maxhitpoints>
-    <los>3.0000</los>
-    <trainpoints>15.0000</trainpoints>
+    <lifespan>8.0000</lifespan>
+    <los>1.0000</los>
     <unitaitype>HandCombative</unitaitype>
-    <bounty>0.0000</bounty>
-    <resourcedecay>0.7500</resourcedecay>
-    <resourcesubtype>meat</resourcesubtype>
-    <unittype>NatureClass</unittype>
-    <unittype>AnimalPrey</unittype>
-    <unittype>Resource</unittype>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeLandMilitary</unittype>
-    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <flag>ConstrainOrientation</flag>
-    <flag>DieAtZeroResources</flag>
-    <flag>NoHPBar</flag>
-    <flag>DoNotValidateResourceInventory</flag>
-    <flag>DontRotateObstruction</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>ObscuredByUnits</flag>
-    <flag>RMCanRotate</flag>
-    <flag>VisibleUnderFogOnlyAfterSeen</flag>
-    <flag>Tracked</flag>
-    <flag>ForceToGaia</flag>
-    <flag>NotSelectable</flag>
-    <flag>NoHPBar</flag>
-    <flag>ColorTransformNonGaia</flag>
-    <flag>Wanders</flag>
+    <unittype>Projectile</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>InvulnerableIfGaia</flag>
     <flag>Invulnerable</flag>
-    <tactics>mustardgas.tactics</tactics>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSelectable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoTieToGround</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>Projectile</flag>
+    <flag>NonCollideable</flag>
+    <flag>DestroyProjectile</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>Tracked</flag>
+    <tactics>poison.tactics</tactics>
     <protoaction>
-      <name>TrampleHandAttack</name>
-      <damage>15.0000000</damage>
+      <name>HandAttack</name>
+      <damage>20.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>2.000000</rof>
-      <damagecap>30.0000000</damagecap>
-      <damagearea>30.000000</damagearea>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
-      <damagebonus type="zpNatDottore">0.00010</damagebonus>
-      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="Tree">0.000001</damagebonus>
+      <damagebonus type="zpNatDottore">0.000001</damagebonus>
+      <damagearea>12.000000</damagearea>
+      <damageflags>GAIASelfAllyEnemy</damageflags>
     </protoaction>
     <protoaction>
       <name>Attaching</name>
-      <damage>0.200000</damage>
+      <damage>20.000000</damage>
       <damagetype>Hand</damagetype>
-      <rof>1.000000</rof>
+      <rof>2.000000</rof>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damagebonus type="Tree">0.000001</damagebonus>
+      <damagebonus type="zpNatDottore">0.000001</damagebonus>
+      <damagearea>12.000000</damagearea>
+      <damageflags>GAIASelfAllyEnemy</damageflags>
     </protoaction>
   </unit>
   <unit id="20178" name="zpWaterFort">
@@ -24670,6 +24647,7 @@
   </unit>
   
   
+  
 
 
 
@@ -24680,6 +24658,196 @@
 
 
   <!--TEST-->
+
+
+  <unit id="" name="zpSPCVolcano">
+    <dbid></dbid>
+    <displaynameid>301278</displaynameid>
+    <editornameid>301279</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\spc\volcano\volcano.xml</animfile>
+    <los>150.0000</los>
+    <unittype>Unattackable</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <flag>DontRotateObstruction</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>FlyingUnit</flag>
+    <flag>NoTieToGround</flag>
+    <flag>BuildingExtendedDeathAnim</flag>
+    <flag>Invulnerable</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NonCollideable</flag>
+    <flag>Immoveable</flag>
+    <flag>NoHPBar</flag>
+    <tactics>volcano.tactics</tactics>
+    <protoaction>
+      <name>CannonAttack</name>
+      <damage>300.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>30.000000</maxrange>
+      <rof>10.000000</rof>
+      <damagecap>300.000000</damagecap>
+      <damagearea>100.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="Building">5.000000</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="" name="zpSPCVolcanoPassive">
+    <dbid></dbid>
+    <displaynameid>301278</displaynameid>
+    <editornameid>301280</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>air</movementtype>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>150.0000</los>
+    <unittype>Unattackable</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <flag>DontRotateObstruction</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>FlyingUnit</flag>
+    <flag>NoTieToGround</flag>
+    <flag>BuildingExtendedDeathAnim</flag>
+    <flag>Invulnerable</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NonCollideable</flag>
+    <flag>Immoveable</flag>
+    <flag>NoHPBar</flag>
+  </unit>
+  <unit id="" name="zpSPCVolcanoFireSpawner">
+    <dbid></dbid>
+    <displaynameid>301278</displaynameid>
+    <editornameid>301282</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0</los>
+    <unittype>Unattackable</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <flag>DontRotateObstruction</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>BuildingExtendedDeathAnim</flag>
+    <flag>Invulnerable</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NonCollideable</flag>
+    <flag>Immoveable</flag>
+    <flag>NoHPBar</flag>
+  </unit>
+  <unit id="" name="zpSPCVolcanoFire">
+    <dbid></dbid>
+    <displaynameid>301278</displaynameid>
+    <editornameid>301281</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>effects\fire\fire.xml</animfile>
+    <los>0</los>
+    <unittype>Unattackable</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <flag>DontRotateObstruction</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>BuildingExtendedDeathAnim</flag>
+    <flag>Invulnerable</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NonCollideable</flag>
+    <flag>Immoveable</flag>
+    <flag>NoHPBar</flag>
+  </unit>
+  <unit id="" name="zpMeteor">
+    <dbid></dbid>
+    <displaynameid>42965</displaynameid>
+    <obstructionradiusx>0.1000</obstructionradiusx>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <maxvelocity>60.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>effects\projectiles\fire_ball_great.xml</animfile>
+    <lifespan>6.0000</lifespan>
+    <los>0.0000</los>
+    <unittype>Projectile</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSelectable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoTieToGround</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>Projectile</flag>
+    <flag>NonCollideable</flag>
+    <flag>DestroyProjectile</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoUnitAI</flag>
+    <flag>NotPlayerPlaceable</flag>
+  </unit>
   <unit id="" name="zpMineJade">
     <dbid></dbid>
     <displaynameid>301269</displaynameid>
@@ -24833,7 +25001,139 @@
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
-
+  <!--<unit name="deHoopThrower">
+    <protoaction>
+      <name>GrenadeAttackGuardian</name>
+      <damage>16.000000</damage>
+      <damagetype>Siege</damagetype>
+      <projectile>Hoop</projectile>
+      <maxrange>16.000000</maxrange>
+      <minrange>2.000000</minrange>
+      <rof>3.000000</rof>
+      <attachprotounit>zpMustardGas</attachprotounit>
+    </protoaction>
+    <protoaction>
+      <name>GrenadeAttack</name>
+      <damage>16.000000</damage>
+      <damagecap>32.000000</damagecap>
+      <damagetype>Siege</damagetype>
+      <projectile>Hoop</projectile>
+      <maxrange>16.000000</maxrange>
+      <minrange>4.000000</minrange>
+      <rof>3.000000</rof>
+      <damagearea>2.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractHeavyInfantry">1.750000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">1.250000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">1.000000</damagebonus>
+      <damagebonus type="AbstractHeavyCavalry">0.400000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">0.400000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <attachprotounit>zpMustardGas</attachprotounit>
+    </protoaction>
+    <protoaction>
+      <name>GrenadeAttackShort</name>
+      <damage>16.000000</damage>
+      <damagecap>32.000000</damagecap>
+      <damagetype>Siege</damagetype>
+      <projectile>Hoop</projectile>
+      <maxrange>10.000000</maxrange>
+      <minrange>4.000000</minrange>
+      <rof>3.000000</rof>
+      <damagearea>2.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractHeavyInfantry">1.750000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">1.250000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">1.000000</damagebonus>
+      <damagebonus type="AbstractHeavyCavalry">0.400000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">0.400000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <attachprotounit>zpMustardGas</attachprotounit>
+    </protoaction>
+    <protoaction>
+      <name>GrenadeAttackLong</name>
+      <damage>16.000000</damage>
+      <damagecap>32.000000</damagecap>
+      <damagetype>Siege</damagetype>
+      <projectile>Hoop</projectile>
+      <maxrange>16.000000</maxrange>
+      <minrange>10.000000</minrange>
+      <rof>3.000000</rof>
+      <damagearea>2.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractHeavyInfantry">1.750000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">1.250000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">1.000000</damagebonus>
+      <damagebonus type="AbstractHeavyCavalry">0.400000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">0.400000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <attachprotounit>zpMustardGas</attachprotounit>
+    </protoaction>
+    <protoaction>
+      <name>FlameThrowerAttack</name>
+      <damage>5.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>10.000000</maxrange>
+      <minrange>0.000000</minrange>
+      <rof>0.750000</rof>
+      <damagecap>10.000000</damagecap>
+      <damagearea>4.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <chargeaction>1</chargeaction>
+      <targetlock>1</targetlock>
+      <damagebonus type="AbstractHeavyInfantry">1.750000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">1.250000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">1.000000</damagebonus>
+      <damagebonus type="AbstractHeavyCavalry">0.400000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">0.400000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <attachprotounit>zpMustardGas</attachprotounit>
+    </protoaction>
+    <protoaction>
+      <name>RocketAttack</name>
+      <damage>22.00000</damage>
+      <damagetype>Siege</damagetype>
+      <projectile>RocketShellSmall</projectile>
+      <maxrange>22.000000</maxrange>
+      <minrange>16.000000</minrange>
+      <rof>4.000000</rof>
+      <damagecap>32.000000</damagecap>
+      <damagearea>2.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <targetlock>1</targetlock>
+      <damagebonus type="AbstractInfantry">1.750000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">1.250000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">1.000000</damagebonus>
+      <damagebonus type="AbstractHeavyCavalry">0.400000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">0.400000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.250000</damagebonus>
+      <attachprotounit>zpMustardGas</attachprotounit>
+    </protoaction>
+    <protoaction>
+      <name>RocketAttackGuardian</name>
+      <damage>22.00000</damage>
+      <damagetype>Siege</damagetype>
+      <projectile>RocketShellSmall</projectile>
+      <maxrange>22.000000</maxrange>
+      <minrange>16.000000</minrange>
+      <rof>4.000000</rof>
+      <targetlock>1</targetlock>
+      <attachprotounit>zpMustardGas</attachprotounit>
+    </protoaction>
+    <protoaction>
+      <name>RocketBuildingAttack</name>
+      <damage>34.000000</damage>
+      <damagecap>68.000000</damagecap>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagetype>Siege</damagetype>
+      <projectile>RocketShellSmall</projectile>
+      <maxrange>22.000000</maxrange>
+      <minrange>14.000000</minrange>
+      <rof>4.000000</rof>
+      <attachprotounit>zpMustardGas</attachprotounit>
+    </protoaction>
+  </unit>-->
   <unit id="" name="zpTestWagon">
     <dbid></dbid>
     <displaynameid>301073</displaynameid>

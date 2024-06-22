@@ -1,0 +1,64 @@
+<animfile>
+  <definebone>cannon_launchpoint_01</definebone>
+  <definebone>cannon_launchpoint_02</definebone>
+  <definebone>cannon_launchpoint_03</definebone>
+  <definebone>cannon_launchpoint_04</definebone>
+  <definebone>cannon_launchpoint_05</definebone>
+  <definebone>cannon_launchpoint_06</definebone>
+  <definebone>cannon_launchpoint_07</definebone>
+  <definebone>bone_fuse</definebone>
+  <definebone>bone_cart</definebone>
+  <definebone>bone_wheelcannonR</definebone>
+  <definebone>bone_wheelcannonL</definebone>
+  <definebone>Bip01 Head</definebone>
+  <definebone>bone_hat</definebone>
+  <definebone>engine_smoke_fx</definebone>
+  <attachment>Explosion
+		<component>explosion
+			<assetreference type="popcornFx">
+				<file>units\spc\fire_ship\FireExplosion.pkfx</file>
+			</assetreference>
+		</component>
+		<anim>Idle
+			<component>explosion</component>
+		</anim>
+	</attachment>
+  <component>tank<assetreference type="GrannyModel"><file>units\artillery\tank\tank</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture><selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture><width>2.00</width><height>4.00</height></decal></component>
+  <component>death<assetreference type="GrannyModel"><file>units\artillery\tank\tank_death</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture><selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture><width>2.00</width><height>4.00</height></decal></component>
+  <anim>idle<assetreference type="GrannyAnim"><file>units\artillery\tank\tank_limber_idle</file></assetreference><component>tank</component></anim>
+  <anim>BombardIdle<assetreference type="GrannyAnim"><file>units\artillery\tank\tank_idle</file></assetreference><component>tank</component></anim>
+  <anim>bored<assetreference type="GrannyAnim"><file>units\artillery\tank\tank_bored</file></assetreference><component>tank</component></anim>
+  
+  <anim>volcano_attack
+    <assetreference type="GrannyAnim">
+      <file>units\artillery\tank\tank_special_attack_a</file>
+      <tag type="Attack">0.00</tag>
+      <tag type="SpecificSoundSet" checkvisible="0" set="Explosion">0.01</tag>
+      <tag type="CameraShake" force="1.0" duration="0.3">0.01</tag>
+      <tag type="SpecificSoundSet" checkvisible="0" set="Explosion">0.2</tag>
+      <tag type="CameraShake" force="0.3" duration="0.2">0.2</tag>
+
+      <tag type="SpecificSoundSet" checkvisible="1" set="Explosion">0.12</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="SettlerGunShot">0.02</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="SettlerGunShot">0.03</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="SettlerGunShot">0.06</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="SettlerGunShot">0.09</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="SettlerGunShot">0.12</tag>
+      <tag type="Particles" particlename="explosionlarge">0.00</tag>
+      <tag type="Particles" particlename="explosionsmall">0.2</tag>
+      <!--<tag type="Particles" particlename="wcsmallexp_02">0.03</tag>
+      <tag type="Particles" particlename="explosionlarge">0.06</tag>
+      <tag type="Particles" particlename="wcsmallexp_04">0.09</tag>
+      <tag type="Particles" particlename="wclargeexp">0.12</tag>
+      <tag type="Particles" particlename="wcsmallexp_04">0.1</tag>
+      <tag type="Particles" particlename="explosionsmall">0.2</tag>-->
+    </assetreference>
+    <component>tank</component>
+    <attach a="Explosion" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    <attach a="Explosion" frombone="ATTACHPOINT" tobone="bone_wheelcannonR" syncanims="0"></attach>
+    <attach a="Explosion" frombone="ATTACHPOINT" tobone="bone_wheelcannonR" syncanims="0"></attach>
+    <attach a="Explosion" frombone="ATTACHPOINT" tobone="bone_hat" syncanims="0"></attach>
+  </anim>
+  
+  <anim>death<assetreference type="GrannyAnim"><file>units\artillery\tank\tank_death_anim</file></assetreference><component>death</component></anim>
+</animfile>

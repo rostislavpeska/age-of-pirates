@@ -1001,7 +1001,7 @@ rmPlaceObjectDefAtLoc(goldID2, 0, 0.0, 0.3);
 
 if (rmGetIsKOTH() == true) {
 	int goldID3 = rmCreateObjectDef("gold mine3");
-	rmAddObjectDefItem(goldID3, "MineGold", 1, 0.0);
+	rmAddObjectDefItem(goldID3, "deShipRuins", 1, 0.0);
 	rmSetObjectDefMinDistance(goldID3, 0.0);
 	rmSetObjectDefMaxDistance(goldID3, 30);
 	rmPlaceObjectDefInArea(goldID3, 0, bonusIslandID, 1);

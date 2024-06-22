@@ -12553,6 +12553,86 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpVolcanoRangeMedium" type="Normal">
+    <dbid>40539</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" action="CannonAttack" amount="100.00" subtype="MaximumRange" relativity="Assign">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" amount="200" subtype="Damage" allactions="1" relativity="Assign">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVolcanoRangeShort" type="Normal">
+    <dbid>40540</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" action="CannonAttack" amount="50.00" subtype="MaximumRange" relativity="Assign">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" amount="250" subtype="Damage" allactions="1" relativity="Assign">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVolcanoRangeLong" type="Normal">
+    <dbid>40541</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" action="CannonAttack" amount="150.00" subtype="MaximumRange" relativity="Assign">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" amount="150" subtype="Damage" allactions="1" relativity="Assign">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVolcanoRangeUltraShort" type="Normal">
+    <dbid>40541</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" action="CannonAttack" amount="30.00" subtype="MaximumRange" relativity="Assign">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" amount="300" subtype="Damage" allactions="1" relativity="Assign">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVolcanoActive" type="Normal">
+    <dbid>40542</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpSPCVolcano" fromprotoid="zpSPCVolcanoPassive">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCVolcanoFire" fromprotoid="zpSPCVolcanoFireSpawner">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVolcanoPassive" type="Normal">
+    <dbid>40543</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpSPCVolcanoPassive" fromprotoid="zpSPCVolcano">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCVolcanoFireSpawner" fromprotoid="zpSPCVolcanoFire">
+      </effect>
+    </effects>
+  </tech>
 
 
 

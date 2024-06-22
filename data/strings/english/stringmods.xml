@@ -1255,8 +1255,8 @@
       <string _locid="301251">Legendary Taiaha</string>
       <string _locid="301252">Maori Colonisation</string>
       <string _locid="301253">Unlocks new Maori units and techs.</string>
-      <string _locid="301254">Ships Maui's helpers.</string>
-      <string _locid="301255">Maui's Spirits</string>
+      <string _locid="301254">Ships Maui's good spirits.</string>
+      <string _locid="301255">Taniwha</string>
       <string _locid="301256">Unlocks new Maori units and techs.</string>
       <string _locid="301257">Taiaha</string>
       <string _locid="301258">Waka</string>
@@ -1279,6 +1279,12 @@
       <string _locid="301275">ZP Pet Dolphin</string>
       <string _locid="301276">A tame bottlenose dolphin that poses a threat to any enemy unit that provokes it.</string>
       <string _locid="301277">Naval Pet</string>
+      <string _locid="301278">Volcano</string>
+      <string _locid="301279">ZP Volcano Active</string>
+      <string _locid="301280">ZP Volcano Passive</string>
+      <string _locid="301281">ZP Volcano Fire</string>
+      <string _locid="301282">ZP Volcano Fire Spawner</string>
+      <string _locid="301283">ZP Airship AI</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
