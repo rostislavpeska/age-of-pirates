@@ -6193,7 +6193,7 @@ vector getEnemyBase(int enemyPlayerID = -1, int armyPower = 0)
 //==============================================================================
 vector getRandomPoint(vector location = cInvalidVector, int radius = 30)
 {
-   vector position = cInvalidVector;
+   vector position = location;
    float xError = radius;
    float zError = radius;
    position = xsVectorSetX(position, xsVectorGetX(position) + aiRandFloat(0.0 - xError, xError));
