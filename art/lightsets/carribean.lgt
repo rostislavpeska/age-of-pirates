@@ -1,15 +1,15 @@
 <lightingset>
   <suncolor>162 57 29</suncolor>
   <sunintensity>6.675000</sunintensity>
-  <suninclination>-34.959167</suninclination>
-  <sunrotation>60.001274</sunrotation>
+   <suninclination>-46.811527</suninclination>
+  <sunrotation>99.123604</sunrotation>
   <lightingbalance>0.521000</lightingbalance>
   <fillcolor>127 127 127</fillcolor>
   <shadowcolor>75 63 120</shadowcolor>
   <fillintensity>0.000000</fillintensity>
-  <fillinclination>-75.964958</fillinclination>
-  <fillrotation>73.740799</fillrotation>
-  <skycubemap>lighting\environments\456-free-hdri-skies-com</skycubemap>
+  <fillinclination>-75.965248</fillinclination>
+  <fillrotation>73.741096</fillrotation>
+  <skycubemap>lighting\environments\112-free-hdri-skies-com</skycubemap>
   <hemitopcolor>154 36 66</hemitopcolor>
   <hemibottomcolor>137 65 95</hemibottomcolor>
   <hemiintensity>1.000000</hemiintensity>
@@ -33,9 +33,9 @@
   <bloomcrunching>4.475000</bloomcrunching>
   <bloomiterations>2</bloomiterations>
   <bloomtint>140 28 119</bloomtint>
-  <skycubemaprotation>-2.141000</skycubemaprotation>
-  <skycubemapwaterrotation>-0.185348</skycubemapwaterrotation>
-  <mipmapbias>-1.000000</mipmapbias>
+  <skycubemaprotation>-2.363000</skycubemaprotation>
+  <skycubemapwaterrotation>2.194000</skycubemapwaterrotation>
+  <mipmapbias>0.000000</mipmapbias>
   <tonemapluminance>0.000000</tonemapluminance>
   <tonemapinfluence>0.000000</tonemapinfluence>
   <cliffedgebrightness>0.500000</cliffedgebrightness>
@@ -64,7 +64,7 @@
   <ssaointensity>9.279000</ssaointensity>
   <ssaoradius>2.500000</ssaoradius>
   <ssaoblurradius>1.500000</ssaoblurradius>
-  <ssaoedgenormalfactor>0.500000</ssaoedgenormalfactor>
+  <ssaoedgenormalfactor>1.000000</ssaoedgenormalfactor>
   <ssaoedgedepthfactor>0.000300</ssaoedgedepthfactor>
   <waterfogdensity>0.002000</waterfogdensity>
   <waterroughness>0.056000</waterroughness>

@@ -27,6 +27,7 @@
 		<targetground>1</targetground>
 		<basedamagecap>1</basedamagecap>
 		<perfectaccuracy>1</perfectaccuracy>
+		<hidefromstats>1</hidefromstats>
 	</action>
 	<action>
 		<name stringid="300606">BombAttack</name>
@@ -112,6 +113,7 @@
 		<instantballistics>1</instantballistics>
 		<basedamagecap>1</basedamagecap>
 		<selfdestruct>1</selfdestruct>
+		<hidefromstats>1</hidefromstats>
 	</action>
 	<tactic>
 		AirshipNormal

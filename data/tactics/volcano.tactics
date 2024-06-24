@@ -18,18 +18,43 @@
     <projectile>zpMeteor</projectile>
     <impacteffect>effects\impacts\mortar</impacteffect>
     <rate type="All">1.0 </rate>
+    <rate type="zpVolcanoInvisibleTarget">1.0 </rate>
+    <rate type="AbstractInfiniteCrate">1.0 </rate>
     <areasortmode>Radial</areasortmode>
     <outerdamageareadistance>.5</outerdamageareadistance>
     <outerdamageareafactor>.5</outerdamageareafactor>
     <perfectaccuracy>1</perfectaccuracy>
     <targetground>1</targetground>
     <basedamagecap>1</basedamagecap>
+    <hidefromstats>1</hidefromstats>
   </action>  
+
+
+  <action>
+    <name stringid="69151">Hunting</name>
+    <type>Hunting</type>
+    <maxrange>250</maxrange>
+    <rate type="Huntable">1.0</rate>
+
+    <typedmaxrange type="Huntable">10</typedmaxrange>
+
+  </action>
+  <action>
+    <name stringid="42178">Gather</name>
+    <type>Gather</type>
+    <maxrange>0.5</maxrange>
+    <typedanim type="deFurTrade">volcano_attack</typedanim>
+
+    <rate type="Huntable">1.0</rate>
+
+  </action>
+
   <tactic>Bombard
     <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
     <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
     <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
     <action priority="100">CannonAttack</action>
+    <action>Hunting</action>
     <action>SpawnGatlingGun</action>
     <action>SpawnVolunteers1</action>
     <action>SpawnVolunteers2</action>

@@ -10141,6 +10141,7 @@
     <unittype>Gold</unittype>
     <unittype>AbstractWhale</unittype>
     <unittype>AbstractFishOrWhale</unittype>
+    <flag>RMCanRotate</flag>
     <flag>DontRotateObstruction</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>SelectWithObstruction</flag>
@@ -24660,6 +24661,113 @@
   <!--TEST-->
 
 
+
+
+
+  <!--<unit id="" name="zpVolcanoLava">
+    <dbid></dbid>
+    <displaynameid>301288</displaynameid>
+    <obstructionradiusx>2.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <animfile>effects\smoke\lavaflow.xml</animfile>
+    <los>0.0000</los>
+    <movementtype>land</movementtype>
+    <trainpoints>5.0000</trainpoints>
+
+    <unittype>Unattackable</unittype>
+    <unittype>EmbellishmentClass</unittype>
+
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>NoHPBar</flag>
+    <flag>HasGatherPoint</flag>
+
+    <flag>NotDeleteable</flag>
+    <flag>Invulnerable</flag>
+
+
+
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>ForceBuildingData</flag>
+
+    <flag>Tracked</flag>
+    <tactics>lavaspawner.tactics</tactics>
+  </unit>-->
+
+  <unit id="" name="zpVolcanoObstruction">
+    <dbid></dbid>
+    <displaynameid>301289</displaynameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>ForceToGaia</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>Invulnerabler</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+  </unit>
+
+  <unit id="" name="zpVolcanoInvisibleTarget">
+    <dbid></dbid>
+    <displaynameid>301278</displaynameid>
+    <editornameid>301285</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <initialhitpoints>10000000.0000</initialhitpoints>
+    <maxhitpoints>10000000.0000</maxhitpoints>
+    <rollovertextid>301287</rollovertextid>
+    <shortrollovertextid>301287</shortrollovertextid>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
+    <los>0.0000</los>
+    <armor type="Ranged" value="0.9999">
+    </armor>
+    <armor type="Siege" value="0.9999">
+    </armor>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>NotDeleteable</flag>
+    <flag>DontFlattenGround</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>NotSelectable</flag>
+  </unit>
   <unit id="" name="zpSPCVolcano">
     <dbid></dbid>
     <displaynameid>301278</displaynameid>
@@ -24670,6 +24778,7 @@
     <maxrunvelocity>0.0000</maxrunvelocity>
     <movementtype>air</movementtype>
     <animfile>buildings\spc\volcano\volcano.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
     <los>150.0000</los>
     <unittype>Unattackable</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
@@ -24703,6 +24812,7 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>NonCollideable</flag>
     <flag>Immoveable</flag>
+    <flag>ForceToGaia</flag>
     <flag>NoHPBar</flag>
     <tactics>volcano.tactics</tactics>
     <protoaction>
@@ -24715,6 +24825,7 @@
       <damagearea>100.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
       <damagebonus type="Building">5.000000</damagebonus>
+      <damagebonus type="zpVolcanoInvisibleTarget">0.000001</damagebonus>
     </protoaction>
   </unit>
   <unit id="" name="zpSPCVolcanoPassive">
@@ -24727,6 +24838,7 @@
     <maxrunvelocity>0.0000</maxrunvelocity>
     <movementtype>air</movementtype>
     <animfile>ui\editor\editor_blocks.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
     <los>150.0000</los>
     <unittype>Unattackable</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
@@ -24753,6 +24865,7 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>FlyingUnit</flag>
+    <flag>ForceToGaia</flag>
     <flag>NoTieToGround</flag>
     <flag>BuildingExtendedDeathAnim</flag>
     <flag>Invulnerable</flag>
@@ -24772,6 +24885,7 @@
     <maxrunvelocity>0.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>ui\editor\editor_blocks.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
     <los>0</los>
     <unittype>Unattackable</unittype>
     <unittype>Unit</unittype>
@@ -24782,6 +24896,7 @@
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
+    <flag>ForceToGaia</flag>
     <flag>BuildingExtendedDeathAnim</flag>
     <flag>Invulnerable</flag>
     <flag>OnlyInEditor</flag>
@@ -24799,7 +24914,8 @@
     <maxvelocity>0.0000</maxvelocity>
     <maxrunvelocity>0.0000</maxrunvelocity>
     <movementtype>land</movementtype>
-    <animfile>effects\fire\fire.xml</animfile>
+    <animfile>effects\fire\fire_nodecal.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
     <los>0</los>
     <unittype>Unattackable</unittype>
     <unittype>Unit</unittype>
@@ -24810,12 +24926,47 @@
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
+    <flag>ForceToGaia</flag>
     <flag>BuildingExtendedDeathAnim</flag>
     <flag>Invulnerable</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>NonCollideable</flag>
     <flag>Immoveable</flag>
     <flag>NoHPBar</flag>
+  </unit>
+  <unit id="" name="zpGrassFire">
+    <dbid></dbid>
+    <displaynameid>34683</displaynameid>
+    <editornameid>301290</editornameid>
+    <obstructionradiusx>0.2000</obstructionradiusx>
+    <obstructionradiusz>0.2000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>effects\fire\prop_grass_fire.xml</animfile>
+    <icon>resources\art\buildings\pyramid\pyramid_icon_64x64.png</icon>
+    <portraiticon>resources\art\buildings\pyramid\pyramid_icon_64x64.png</portraiticon>
+    <initialhitpoints>630.0000</initialhitpoints>
+    <maxhitpoints>630.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <cost resourcetype="Wood">100.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>ForceToGaia</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NotSelectable</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <command page="10" column="7">Delete</command>
   </unit>
   <unit id="" name="zpMeteor">
     <dbid></dbid>
@@ -25001,139 +25152,6 @@
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
-  <!--<unit name="deHoopThrower">
-    <protoaction>
-      <name>GrenadeAttackGuardian</name>
-      <damage>16.000000</damage>
-      <damagetype>Siege</damagetype>
-      <projectile>Hoop</projectile>
-      <maxrange>16.000000</maxrange>
-      <minrange>2.000000</minrange>
-      <rof>3.000000</rof>
-      <attachprotounit>zpMustardGas</attachprotounit>
-    </protoaction>
-    <protoaction>
-      <name>GrenadeAttack</name>
-      <damage>16.000000</damage>
-      <damagecap>32.000000</damagecap>
-      <damagetype>Siege</damagetype>
-      <projectile>Hoop</projectile>
-      <maxrange>16.000000</maxrange>
-      <minrange>4.000000</minrange>
-      <rof>3.000000</rof>
-      <damagearea>2.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="AbstractHeavyInfantry">1.750000</damagebonus>
-      <damagebonus type="AbstractLightCavalry">1.250000</damagebonus>
-      <damagebonus type="AbstractRangedShockInfantry">1.000000</damagebonus>
-      <damagebonus type="AbstractHeavyCavalry">0.400000</damagebonus>
-      <damagebonus type="AbstractCoyoteMan">0.400000</damagebonus>
-      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
-      <attachprotounit>zpMustardGas</attachprotounit>
-    </protoaction>
-    <protoaction>
-      <name>GrenadeAttackShort</name>
-      <damage>16.000000</damage>
-      <damagecap>32.000000</damagecap>
-      <damagetype>Siege</damagetype>
-      <projectile>Hoop</projectile>
-      <maxrange>10.000000</maxrange>
-      <minrange>4.000000</minrange>
-      <rof>3.000000</rof>
-      <damagearea>2.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="AbstractHeavyInfantry">1.750000</damagebonus>
-      <damagebonus type="AbstractLightCavalry">1.250000</damagebonus>
-      <damagebonus type="AbstractRangedShockInfantry">1.000000</damagebonus>
-      <damagebonus type="AbstractHeavyCavalry">0.400000</damagebonus>
-      <damagebonus type="AbstractCoyoteMan">0.400000</damagebonus>
-      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
-      <attachprotounit>zpMustardGas</attachprotounit>
-    </protoaction>
-    <protoaction>
-      <name>GrenadeAttackLong</name>
-      <damage>16.000000</damage>
-      <damagecap>32.000000</damagecap>
-      <damagetype>Siege</damagetype>
-      <projectile>Hoop</projectile>
-      <maxrange>16.000000</maxrange>
-      <minrange>10.000000</minrange>
-      <rof>3.000000</rof>
-      <damagearea>2.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="AbstractHeavyInfantry">1.750000</damagebonus>
-      <damagebonus type="AbstractLightCavalry">1.250000</damagebonus>
-      <damagebonus type="AbstractRangedShockInfantry">1.000000</damagebonus>
-      <damagebonus type="AbstractHeavyCavalry">0.400000</damagebonus>
-      <damagebonus type="AbstractCoyoteMan">0.400000</damagebonus>
-      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
-      <attachprotounit>zpMustardGas</attachprotounit>
-    </protoaction>
-    <protoaction>
-      <name>FlameThrowerAttack</name>
-      <damage>5.000000</damage>
-      <damagetype>Siege</damagetype>
-      <maxrange>10.000000</maxrange>
-      <minrange>0.000000</minrange>
-      <rof>0.750000</rof>
-      <damagecap>10.000000</damagecap>
-      <damagearea>4.000000</damagearea>
-      <damageflags>Enemy</damageflags>
-      <chargeaction>1</chargeaction>
-      <targetlock>1</targetlock>
-      <damagebonus type="AbstractHeavyInfantry">1.750000</damagebonus>
-      <damagebonus type="AbstractLightCavalry">1.250000</damagebonus>
-      <damagebonus type="AbstractRangedShockInfantry">1.000000</damagebonus>
-      <damagebonus type="AbstractHeavyCavalry">0.400000</damagebonus>
-      <damagebonus type="AbstractCoyoteMan">0.400000</damagebonus>
-      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
-      <attachprotounit>zpMustardGas</attachprotounit>
-    </protoaction>
-    <protoaction>
-      <name>RocketAttack</name>
-      <damage>22.00000</damage>
-      <damagetype>Siege</damagetype>
-      <projectile>RocketShellSmall</projectile>
-      <maxrange>22.000000</maxrange>
-      <minrange>16.000000</minrange>
-      <rof>4.000000</rof>
-      <damagecap>32.000000</damagecap>
-      <damagearea>2.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
-      <targetlock>1</targetlock>
-      <damagebonus type="AbstractInfantry">1.750000</damagebonus>
-      <damagebonus type="AbstractLightCavalry">1.250000</damagebonus>
-      <damagebonus type="AbstractRangedShockInfantry">1.000000</damagebonus>
-      <damagebonus type="AbstractHeavyCavalry">0.400000</damagebonus>
-      <damagebonus type="AbstractCoyoteMan">0.400000</damagebonus>
-      <damagebonus type="AbstractArtillery">0.250000</damagebonus>
-      <attachprotounit>zpMustardGas</attachprotounit>
-    </protoaction>
-    <protoaction>
-      <name>RocketAttackGuardian</name>
-      <damage>22.00000</damage>
-      <damagetype>Siege</damagetype>
-      <projectile>RocketShellSmall</projectile>
-      <maxrange>22.000000</maxrange>
-      <minrange>16.000000</minrange>
-      <rof>4.000000</rof>
-      <targetlock>1</targetlock>
-      <attachprotounit>zpMustardGas</attachprotounit>
-    </protoaction>
-    <protoaction>
-      <name>RocketBuildingAttack</name>
-      <damage>34.000000</damage>
-      <damagecap>68.000000</damagecap>
-      <damagearea>1.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
-      <damagetype>Siege</damagetype>
-      <projectile>RocketShellSmall</projectile>
-      <maxrange>22.000000</maxrange>
-      <minrange>14.000000</minrange>
-      <rof>4.000000</rof>
-      <attachprotounit>zpMustardGas</attachprotounit>
-    </protoaction>
-  </unit>-->
   <unit id="" name="zpTestWagon">
     <dbid></dbid>
     <displaynameid>301073</displaynameid>

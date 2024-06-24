@@ -1,0 +1,25 @@
+<tactics>
+
+  <action>
+    <name stringid="300297">MaintainSoheiInf</name>
+    <type>Maintain</type>
+    <rate type="zpVolcanoLava">1.0 </rate>
+    <active>1</active>
+    <persistent>1</persistent>
+  </action>
+
+
+  <tactic>SoheiInf
+   
+    <active>1</active>
+    
+    <action>MaintainSoheiInf</action>
+   
+    
+  </tactic>
+ 
+
+ 
+
+
+</tactics>
