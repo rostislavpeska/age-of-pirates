@@ -12699,7 +12699,7 @@
       <name>HandAttack</name>
       <damage>150.000000</damage>
       <damagetype>Hand</damagetype>
-      <rof>2.000000</rof>
+      <rof>3.000000</rof>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="AbstractElephant">0.500000</damagebonus>
@@ -12711,7 +12711,7 @@
       <name>Attaching</name>
       <damage>150.000000</damage>
       <damagetype>Hand</damagetype>
-      <rof>2.000000</rof>
+      <rof>3.000000</rof>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="AbstractElephant">0.500000</damagebonus>

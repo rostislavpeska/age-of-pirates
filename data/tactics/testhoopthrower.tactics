@@ -1,0 +1,34 @@
+<tactics>
+  <action>
+    <name stringid="38133">GrenadeAttack</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>Ranged_attack</anim>
+    <idleanim>Idle</idleanim>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.5</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>1.0</unintentionaldamagemultiplier>
+    <projectile>Hoop</projectile>
+    <impacteffect>effects\impacts\hoop</impacteffect>
+    <minrange>4</minrange>
+    <rate type="Unit">1.0 </rate>
+    <throw>0</throw>
+    <impactforcemin>450.0</impactforcemin>
+    <impactforcemax>600.0</impactforcemax>
+    <impactlaunchangle>50.0</impactlaunchangle>
+    <areasortmode>Radial</areasortmode>
+    <targetground>1</targetground>
+    <basedamagecap>1</basedamagecap>
+    <targetlock>1</targetlock>
+  </action>
+  <tactic>Volley<speedmodifier>1.0</speedmodifier><action priority="91">RocketAttackGuardian</action><action priority="90">RocketAttack</action><action priority="87">GrenadeAttackGuardian</action><action priority="86">HandAttackGuardian</action><action priority="85">GrenadeAttackLong</action><action priority="83">FlameThrowerAttack</action><action priority="81">GrenadeAttackShort</action><action priority="80">GrenadeAttack</action><action priority="76">RocketBuildingAttack</action><action priority="75">BuildingAttack</action><action priority="25">HandAttack</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death_by_melee</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+  <tactic>Defend<speedmodifier>1.0</speedmodifier><action priority="91">RocketAttackGuardian</action><action priority="90">RocketAttack</action><action priority="87">GrenadeAttackGuardian</action><action priority="86">HandAttackGuardian</action><action priority="85">GrenadeAttackLong</action><action priority="83">FlameThrowerAttack</action><action priority="81">GrenadeAttackShort</action><action priority="80">GrenadeAttack</action><action priority="76">RocketBuildingAttack</action><action priority="75">BuildingAttack</action><action priority="25">HandAttack</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death_by_melee</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+  <tactic>Stagger<speedmodifier>1.0</speedmodifier><action priority="91">RocketAttackGuardian</action><action priority="90">RocketAttack</action><action priority="87">GrenadeAttackGuardian</action><action priority="86">HandAttackGuardian</action><action priority="85">GrenadeAttackLong</action><action priority="83">FlameThrowerAttack</action><action priority="81">GrenadeAttackShort</action><action priority="80">GrenadeAttack</action><action priority="76">RocketBuildingAttack</action><action priority="75">BuildingAttack</action><action priority="25">HandAttack</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget><deathanim>Death_by_melee</deathanim><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death_by_melee</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+  <tactic>Melee<action priority="100">FlameThrowerAttack</action><action priority="90">HandAttack</action><action priority="80">RocketBuildingAttack</action><action priority="70">BuildingAttack</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death_by_melee</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+  <tactic>StandGround<speedmodifier>1.0</speedmodifier><action priority="91">RocketAttackGuardian</action><action priority="90">RocketAttack</action><action priority="87">GrenadeAttackGuardian</action><action priority="86">HandAttackGuardian</action><action priority="85">GrenadeAttackLong</action><action priority="83">FlameThrowerAttack</action><action priority="81">GrenadeAttackShort</action><action priority="80">GrenadeAttack</action><action priority="76">RocketBuildingAttack</action><action priority="75">BuildingAttack</action><action priority="25">HandAttack</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death_by_melee</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+</tactics>
