@@ -24646,63 +24646,43 @@
       <rof>1.000000</rof>
     </protoaction>
   </unit>
-  
-  
-  
-
-
-
-
-
-
-
-
-
-  <!--TEST-->
-
-
-
-
-
-  <!--<unit id="" name="zpVolcanoLava">
-    <dbid></dbid>
+  <unit id="20275" name="zpVolcanoSpawner">
+    <dbid>20275</dbid>
     <displaynameid>301288</displaynameid>
-    <obstructionradiusx>2.0000</obstructionradiusx>
-    <obstructionradiusz>2.0000</obstructionradiusz>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
-    <animfile>effects\smoke\lavaflow.xml</animfile>
-    <los>0.0000</los>
-    <movementtype>land</movementtype>
-    <trainpoints>5.0000</trainpoints>
-
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>air</movementtype>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
+    <los>150.0000</los>
     <unittype>Unattackable</unittype>
-    <unittype>EmbellishmentClass</unittype>
-
-    <flag>NoBloodOnDeath</flag>
-    <flag>DoNotDieAtZeroHitpoints</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>NoHPBar</flag>
-    <flag>HasGatherPoint</flag>
-
-    <flag>NotDeleteable</flag>
-    <flag>Invulnerable</flag>
-
-
-
-    <flag>DoNotCreateUnitGroupAutomatically</flag>
-    <flag>ForceBuildingData</flag>
-
-    <flag>Tracked</flag>
+    <unittype>Ranged</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
     <tactics>lavaspawner.tactics</tactics>
-  </unit>-->
-
-  <unit id="" name="zpVolcanoObstruction">
-    <dbid></dbid>
+    <flag>DontRotateObstruction</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>ForceToGaia</flag>
+    <flag>BuildingExtendedDeathAnim</flag>
+    <flag>Invulnerable</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NonCollideable</flag>
+    <flag>Immoveable</flag>
+    <flag>NoHPBar</flag>
+  </unit>
+  <unit id="20276" name="zpVolcanoObstruction">
+    <dbid>20276</dbid>
     <displaynameid>301289</displaynameid>
-    <obstructionradiusx>4.0000</obstructionradiusx>
-    <obstructionradiusz>4.0000</obstructionradiusz>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <animfile>ui\editor\editor_blocks.xml</animfile>
     <los>0.0000</los>
@@ -24721,9 +24701,8 @@
     <flag>PlaceAnywhere</flag>
     <flag>VisibleUnderFogIfGaia</flag>
   </unit>
-
-  <unit id="" name="zpVolcanoInvisibleTarget">
-    <dbid></dbid>
+  <unit id="20277" name="zpVolcanoInvisibleTarget">
+    <dbid>20277</dbid>
     <displaynameid>301278</displaynameid>
     <editornameid>301285</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
@@ -24768,8 +24747,8 @@
     <flag>OnlyInEditor</flag>
     <flag>NotSelectable</flag>
   </unit>
-  <unit id="" name="zpSPCVolcano">
-    <dbid></dbid>
+  <unit id="20278" name="zpSPCVolcano">
+    <dbid>20278</dbid>
     <displaynameid>301278</displaynameid>
     <editornameid>301279</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
@@ -24828,8 +24807,8 @@
       <damagebonus type="zpVolcanoInvisibleTarget">0.000001</damagebonus>
     </protoaction>
   </unit>
-  <unit id="" name="zpSPCVolcanoPassive">
-    <dbid></dbid>
+  <unit id="20279" name="zpSPCVolcanoPassive">
+    <dbid>20279</dbid>
     <displaynameid>301278</displaynameid>
     <editornameid>301280</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
@@ -24875,8 +24854,8 @@
     <flag>Immoveable</flag>
     <flag>NoHPBar</flag>
   </unit>
-  <unit id="" name="zpSPCVolcanoFireSpawner">
-    <dbid></dbid>
+  <unit id="20280" name="zpSPCVolcanoFireSpawner">
+    <dbid>20280</dbid>
     <displaynameid>301278</displaynameid>
     <editornameid>301282</editornameid>
     <obstructionradiusx>1.0000</obstructionradiusx>
@@ -24905,8 +24884,8 @@
     <flag>Immoveable</flag>
     <flag>NoHPBar</flag>
   </unit>
-  <unit id="" name="zpSPCVolcanoFire">
-    <dbid></dbid>
+  <unit id="20281" name="zpSPCVolcanoFire">
+    <dbid>20281</dbid>
     <displaynameid>301278</displaynameid>
     <editornameid>301281</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
@@ -24934,8 +24913,8 @@
     <flag>Immoveable</flag>
     <flag>NoHPBar</flag>
   </unit>
-  <unit id="" name="zpGrassFire">
-    <dbid></dbid>
+  <unit id="20282" name="zpGrassFire">
+    <dbid>20282</dbid>
     <displaynameid>34683</displaynameid>
     <editornameid>301290</editornameid>
     <obstructionradiusx>0.2000</obstructionradiusx>
@@ -24968,8 +24947,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <command page="10" column="7">Delete</command>
   </unit>
-  <unit id="" name="zpMeteor">
-    <dbid></dbid>
+  <unit id="20283" name="zpMeteor">
+    <dbid>20283</dbid>
     <displaynameid>42965</displaynameid>
     <obstructionradiusx>0.1000</obstructionradiusx>
     <obstructionradiusz>0.1000</obstructionradiusz>
@@ -24999,6 +24978,20 @@
     <flag>NoUnitAI</flag>
     <flag>NotPlayerPlaceable</flag>
   </unit>
+  
+  
+  
+
+
+
+
+
+
+
+
+
+  <!--TEST-->
+
   <unit id="" name="zpMineJade">
     <dbid></dbid>
     <displaynameid>301269</displaynameid>

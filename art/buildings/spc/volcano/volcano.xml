@@ -23,15 +23,14 @@
 			<component>explosion</component>
 		</anim>
 	</attachment>
-  <component>tank<assetreference type="GrannyModel"><file>units\artillery\tank\tank</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture><selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture><width>2.00</width><height>4.00</height></decal></component>
+  <component>tank<assetreference type="GrannyModel"><file>buildings\spc\volcano\volcano_emit_Model</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture><selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture><width>2.00</width><height>4.00</height></decal></component>
   <component>death<assetreference type="GrannyModel"><file>units\artillery\tank\tank_death</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture><selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture><width>2.00</width><height>4.00</height></decal></component>
-  <anim>idle<assetreference type="GrannyAnim"><file>units\artillery\tank\tank_limber_idle</file></assetreference><component>tank</component></anim>
-  <anim>BombardIdle<assetreference type="GrannyAnim"><file>units\artillery\tank\tank_idle</file></assetreference><component>tank</component></anim>
-  <anim>bored<assetreference type="GrannyAnim"><file>units\artillery\tank\tank_bored</file></assetreference><component>tank</component></anim>
+  <anim>idle<component>tank</component></anim>
+
   
   <anim>volcano_attack
     <assetreference type="GrannyAnim">
-      <file>units\artillery\tank\tank_special_attack_a</file>
+      <file>buildings\spc\volcano\volcano_emit_Anim</file>
       <tag type="Attack">0.00</tag>
       <tag type="SpecificSoundSet" checkvisible="0" set="Explosion">0.01</tag>
       <tag type="CameraShake" force="1.0" duration="0.3">0.01</tag>

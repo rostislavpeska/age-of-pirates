@@ -1,25 +1,11 @@
 <tactics>
-
   <action>
-    <name stringid="300297">MaintainSoheiInf</name>
-    <type>Maintain</type>
-    <rate type="zpVolcanoLava">1.0 </rate>
+    <name stringid="69776">SpawnVolcano</name>
+    <type>Spawn</type>
+    <rate type="zpSPCVolcanoPassive">1.0</rate>
     <active>1</active>
-    <persistent>1</persistent>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
   </action>
-
-
-  <tactic>SoheiInf
-   
-    <active>1</active>
-    
-    <action>MaintainSoheiInf</action>
-   
-    
-  </tactic>
- 
-
- 
-
-
+<tactic>Normal<action>Heal</action><action>SpawnVolcano</action></tactic>
 </tactics>

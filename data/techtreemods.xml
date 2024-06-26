@@ -12633,6 +12633,18 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpSpawnVolcano" type="Normal">
+    <dbid>40544</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnVolcano" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpVolcanoSpawner">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
 
 
 
