@@ -12559,10 +12559,19 @@
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="Data" action="CannonAttack" amount="100.00" subtype="MaximumRange" relativity="Assign">
+      <effect type="Data" action="CannonAttackShort" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
-      <effect type="Data" amount="200" subtype="Damage" allactions="1" relativity="Assign">
+      <effect type="Data" action="CannonAttackUltraShort" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackMedium" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackUltraLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
     </effects>
@@ -12573,10 +12582,19 @@
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="Data" action="CannonAttack" amount="50.00" subtype="MaximumRange" relativity="Assign">
+      <effect type="Data" action="CannonAttackShort" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
-      <effect type="Data" amount="250" subtype="Damage" allactions="1" relativity="Assign">
+      <effect type="Data" action="CannonAttackUltraShort" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackMedium" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackUltraLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
     </effects>
@@ -12587,24 +12605,65 @@
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="Data" action="CannonAttack" amount="150.00" subtype="MaximumRange" relativity="Assign">
+      <effect type="Data" action="CannonAttackShort" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
-      <effect type="Data" amount="150" subtype="Damage" allactions="1" relativity="Assign">
+      <effect type="Data" action="CannonAttackUltraShort" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackMedium" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackLong" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackUltraLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
     </effects>
   </tech>
   <tech name="zpVolcanoRangeUltraShort" type="Normal">
-    <dbid>40541</dbid>
+    <dbid>40545</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="Data" action="CannonAttack" amount="30.00" subtype="MaximumRange" relativity="Assign">
+      <effect type="Data" action="CannonAttackShort" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
-      <effect type="Data" amount="300" subtype="Damage" allactions="1" relativity="Assign">
+      <effect type="Data" action="CannonAttackUltraShort" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackMedium" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackUltraLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVolcanoRangeUltraLong" type="Normal">
+    <dbid>40544</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" action="CannonAttackShort" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackUltraShort" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackMedium" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackUltraLong" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
     </effects>
@@ -12618,6 +12677,21 @@
       <effect type="TransformUnit" toprotoid="zpSPCVolcano" fromprotoid="zpSPCVolcanoPassive">
       </effect>
       <effect type="TransformUnit" toprotoid="zpSPCVolcanoFire" fromprotoid="zpSPCVolcanoFireSpawner">
+      </effect>
+      <effect type="Data" action="CannonAttackShort" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackUltraShort" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackMedium" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackUltraLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
     </effects>
   </tech>
@@ -12634,7 +12708,7 @@
     </effects>
   </tech>
   <tech name="zpSpawnVolcano" type="Normal">
-    <dbid>40544</dbid>
+    <dbid>40546</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
