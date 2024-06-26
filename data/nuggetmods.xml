@@ -10,6 +10,7 @@
       <unittype>FishingBoat</unittype>
       <amount>1</amount>
       <maptype>caribbeanwater</maptype>
+      <maptype>hawaii</maptype>
       <maptype>arcticwater</maptype>
       <maptype>kurils</maptype>
       <maptype>australia</maptype>
@@ -21,34 +22,41 @@
     <nugget>
       <name>ypWaterNuggetDriftwood</name>
       <maptype>caribbeanwater</maptype>
+      <maptype>hawaii</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetSwordfish</name>
       <maptype>caribbeanwater</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetDolphins</name>
       <maptype>caribbeanwater</maptype>
+      <maptype>hawaii</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetSeaUrchins</name>
       <maptype>caribbeanwater</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetPearls</name>
       <maptype>caribbeanwater</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetFlotsam</name>
       <maptype>caribbeanwater</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetAmbergris</name>
       <maptype>caribbeanwater</maptype>
+      <maptype>hawaii</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
     </nugget>
@@ -93,241 +101,289 @@
       <name>Basswood</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Beaver1</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Beaver2</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Beaver3</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Blanket</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Chiles3</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Cibola1A</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Cibola1B</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Cibola2A</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Cibola2B</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Cibola2C</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Cibola3A</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Cibola3B</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Cibola4A</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Cibola4B</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Cibola5</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Cibola7A</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Cibola7B</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Coihue</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>CoihueTeam</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Comstock</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Comstock11</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Coreur5</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>CoreurTwoTwo</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Coypu1</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Coypu2</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Coypu3</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>deHouseNugget3</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>deNuggetFoodTrickle</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>deNuggetXPrickle</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>GiveDoubleHP</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Jackalope</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Jeff1</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Journal2</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Kev1</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Kev2</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Kev3</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Kev4</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Kev5</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Kev5</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>MercuryTeam</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Muskrat1</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Muskrat2</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Muskrat3</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>NavigationChart</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Settler</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Settler6</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Squash33</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>zpCrocodiles</name>
@@ -643,6 +699,7 @@
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
       <difficulty>6</difficulty>
       <guardian>zpGuardianPrivateer</guardian>
     </nugget>
@@ -663,6 +720,7 @@
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
       <guardian>zpGuardianPrivateer</guardian>
       <difficulty>6</difficulty>
     </nugget>
@@ -679,6 +737,7 @@
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
       <guardian>zpGuardianPrivateer</guardian>
       <difficulty>6</difficulty>
     </nugget>
@@ -695,6 +754,7 @@
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
       <guardian>zpGuardianPrivateer</guardian>
       <difficulty>6</difficulty>
     </nugget>
@@ -711,6 +771,7 @@
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
       <guardian>zpGuardianPrivateer</guardian>
       <difficulty>6</difficulty>
     </nugget>
@@ -727,6 +788,7 @@
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
       <guardian>zpGuardianPrivateer</guardian>
       <difficulty>6</difficulty>
     </nugget>

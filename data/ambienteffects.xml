@@ -26,6 +26,7 @@
       <type>yucatan</type>
       <type>yukon</type>
       <type>arcticterritories</type>
+      <type>hawaii</type>
     </maptypes>
     <minspawntime>90</minspawntime>
     <maxspawntime>300</maxspawntime>
@@ -221,6 +222,7 @@
       <type>yucatan</type>
       <type>caribbean</type>
       <type>australia</type>
+      <type>hawaii</type>
     </maptypes>
     <minspawntime>50</minspawntime>
     <maxspawntime>200</maxspawntime>
@@ -241,6 +243,7 @@
       <type>patagonia</type>
       <type>australia</type>
       <type>newzealand</type>
+      <type>hawaii</type>
     </maptypes>
     <minspawntime>50</minspawntime>
     <maxspawntime>200</maxspawntime>
