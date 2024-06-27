@@ -24801,7 +24801,7 @@
       <damagetype>Ranged</damagetype>
       <maxrange>30.000000</maxrange>
       <rof>10.000000</rof>
-      <damagecap>300.000000</damagecap>
+      <damagecap>350.000000</damagecap>
       <damagearea>75.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
       <damagebonus type="Building">6.000000</damagebonus>
