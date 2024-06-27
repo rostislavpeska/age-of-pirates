@@ -24797,7 +24797,7 @@
     <tactics>volcano.tactics</tactics>
     <protoaction>
       <name>CannonAttackUltraShort</name>
-      <damage>300.000000</damage>
+      <damage>350.000000</damage>
       <damagetype>Ranged</damagetype>
       <maxrange>30.000000</maxrange>
       <rof>10.000000</rof>
@@ -24810,12 +24810,12 @@
     </protoaction>
     <protoaction>
       <name>CannonAttackShort</name>
-      <damage>250.000000</damage>
+      <damage>200.000000</damage>
       <damagetype>Ranged</damagetype>
       <maxrange>50.000000</maxrange>
       <rof>10.000000</rof>
       <damagecap>300.000000</damagecap>
-      <damagearea>100.000000</damagearea>
+      <damagearea>40.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
       <damagebonus type="Building">6.000000</damagebonus>
       <damagebonus type="AbstractVillager">0.250000</damagebonus>
@@ -24823,36 +24823,36 @@
     </protoaction>
     <protoaction>
       <name>CannonAttackMedium</name>
-      <damage>200.000000</damage>
+      <damage>150.000000</damage>
       <damagetype>Ranged</damagetype>
       <maxrange>90.000000</maxrange>
       <rof>10.000000</rof>
       <damagecap>300.000000</damagecap>
-      <damagearea>150.000000</damagearea>
+      <damagearea>40.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
       <damagebonus type="Building">6.000000</damagebonus>
       <damagebonus type="AbstractVillager">0.250000</damagebonus>
       <damagebonus type="zpVolcanoInvisibleTarget">0.000001</damagebonus>
     </protoaction><protoaction>
       <name>CannonAttackLong</name>
-      <damage>175.000000</damage>
+      <damage>120.000000</damage>
       <damagetype>Ranged</damagetype>
       <maxrange>115.000000</maxrange>
       <rof>10.000000</rof>
       <damagecap>300.000000</damagecap>
-      <damagearea>200.000000</damagearea>
+      <damagearea>40.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
       <damagebonus type="Building">6.000000</damagebonus>
       <damagebonus type="AbstractVillager">0.250000</damagebonus>
       <damagebonus type="zpVolcanoInvisibleTarget">0.000001</damagebonus>
     </protoaction><protoaction>
       <name>CannonAttackUltraLong</name>
-      <damage>160.000000</damage>
+      <damage>80.000000</damage>
       <damagetype>Ranged</damagetype>
       <maxrange>150.000000</maxrange>
       <rof>10.000000</rof>
       <damagecap>300.000000</damagecap>
-      <damagearea>300.000000</damagearea>
+      <damagearea>40.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
       <damagebonus type="Building">6.000000</damagebonus>
       <damagebonus type="AbstractVillager">0.250000</damagebonus>
@@ -25008,7 +25008,7 @@
     <movementtype>air</movementtype>
     <animfile>effects\projectiles\fire_ball_great.xml</animfile>
     <lifespan>6.0000</lifespan>
-    <los>0.0000</los>
+    <los>1.0000</los>
     <unittype>Projectile</unittype>
     <unittype>EmbellishmentClass</unittype>
     <flag>NoIdleActions</flag>
@@ -25029,6 +25029,7 @@
     <flag>InvulnerableIfGaia</flag>
     <flag>NoUnitAI</flag>
     <flag>NotPlayerPlaceable</flag>
+    <flag>GivesLOSToAll</flag>
   </unit>
   
   
