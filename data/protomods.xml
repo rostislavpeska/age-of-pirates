@@ -24656,7 +24656,7 @@
     <movementtype>air</movementtype>
     <animfile>ui\editor\editor_blocks.xml</animfile>
     <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
-    <los>150.0000</los>
+    <los>30.0000</los>
     <unittype>Unattackable</unittype>
     <unittype>Ranged</unittype>
     <unittype>Unit</unittype>
@@ -24676,6 +24676,7 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>NonCollideable</flag>
     <flag>Immoveable</flag>
+    <flag>GivesLOSToAll</flag>
     <flag>NoHPBar</flag>
   </unit>
   <unit id="20276" name="zpVolcanoObstruction">
@@ -24946,7 +24947,7 @@
     <movementtype>land</movementtype>
     <animfile>effects\fire\fire_nodecal.xml</animfile>
     <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
-    <los>0</los>
+    <los>20</los>
     <unittype>Unattackable</unittype>
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
