@@ -596,7 +596,7 @@ void initArrays(void)
 
    if (civIsEuropean() == true)
    {
-   gRevolutionList = xsArrayCreateInt(20, 0, "Revolution List");
+   gRevolutionList = xsArrayCreateInt(21, 0, "Revolution List");
    xsArraySetInt(gRevolutionList, 0, cTechDERevolutionHaiti);
    xsArraySetInt(gRevolutionList, 1, cTechDERevolutionEgypt);
    xsArraySetInt(gRevolutionList, 2, cTechDERevolutionFinland);
@@ -617,6 +617,7 @@ void initArrays(void)
    xsArraySetInt(gRevolutionList, 17, cTechDERevolutionColombiaPortuguese);
    xsArraySetInt(gRevolutionList, 18, cTechDERevolutionChile);
    xsArraySetInt(gRevolutionList, 19, cTechDERevolutionSouthAfrica);
+   xsArraySetInt(gRevolutionList, 20, cTechDERevolutionFrance);         // AssertiveWall: Added french revolution
    }
 
    gAfricanAlliances = xsArrayCreateInt(8, 0, "African Alliances");
@@ -998,17 +999,19 @@ void analyzeGameSettingsAndType()
       if (gSPC == true)
       {
          aiSetMicroFlags(cMicroLevelHigh);
-            gAttackMissionInterval = 180000; // 3 Minutes.
+         gAttackMissionInterval = 180000; // 3 Minutes.
          gMaxPop = 185;
          // Playing on hard in the campaign is a little bit different than Random Map hard.
          // We enable some stuff for the SPC Hard AI that RM Hard AI doesn't have.
          gDifficultyExpert = cDifficultyHard;
+         xsEnableRule("manageMicro");     // AssertiveWall: Adjust micro level from high to normal when army gets too big
       }
       else
       {  // AssertiveWall: Interval decreased to 2 minutes 
          gMaxPop = maxPop;
          aiSetMicroFlags(cMicroLevelHigh);
-            gAttackMissionInterval = 120000; // 2.5 Minutes.
+         gAttackMissionInterval = 120000; // 2.5 Minutes.
+         xsEnableRule("manageMicro");     // AssertiveWall: Adjust micro level from high to normal when army gets too big
       }
       break;
    }
@@ -1018,6 +1021,7 @@ void analyzeGameSettingsAndType()
          gAttackMissionInterval = 90000; // 2 Minutes.
          kbSetPlayerHandicap(cMyID, startingHandicap * 1.15); // +15% Boost.
       aiSetMicroFlags(cMicroLevelHigh);
+      xsEnableRule("manageMicro");     // AssertiveWall: Adjust micro level from high to normal when army gets too big
       break;
    }
       case cDifficultyExtreme: // Extreme.
@@ -1026,6 +1030,7 @@ void analyzeGameSettingsAndType()
          gAttackMissionInterval = 90000; // 2 Minutes.
          kbSetPlayerHandicap(cMyID, startingHandicap * 1.30); // +30% Boost.
       aiSetMicroFlags(cMicroLevelHigh);
+      xsEnableRule("manageMicro");     // AssertiveWall: Adjust micro level from high to normal when army gets too big
       break;
    }
    }
@@ -2463,8 +2468,12 @@ void init(void)
       
       if (gNavyMap == true)
       {
-         xsEnableRule("waterExplore");
-         waterExplore(); // Call instantly to start scouting if we have starting ships.
+         // AssertiveWall: this stuff is enabled after our first water attack on island maps
+         if (gStartOnDifferentIslands == false)
+         {
+            xsEnableRule("waterExplore");
+            waterExplore(); // Call instantly to start scouting if we have starting ships.
+         }
       }
       
       if (cMyCiv == cCivDutch)

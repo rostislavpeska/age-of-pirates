@@ -6,6 +6,84 @@
 */
 //==============================================================================
 
+rule randomTests
+inactive
+minInterval 10
+{
+   int totalResources = 0;
+   totalResources = kbTotalResourceGet(cResourceFood);
+
+   aiChat(1, "totalResources: " + totalResources);
+   
+   int totalUnitQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf, cUnitStateAny);
+   int totalUnit = kbUnitQueryExecute(totalUnitQuery);
+
+   //aiChat(1, "totalResources: " + totalResources + " totalUnit: " + totalUnit);
+}
+
+//==============================================================================
+/* manageMicro
+   AssertiveWall: switches our micro strategy based on how many units there are.
+      If our army gets too big, switch to less micro to avoid over-micro issues
+*/
+//==============================================================================
+
+rule manageMicro
+inactive
+minInterval 20
+{
+   int milNumber = kbUnitCount(cMyID, cUnitTypeLogicalTypeLandMilitary, cUnitStateAlive);
+   static int switcherInt = 0;   // used to prevent setting too much. 
+   
+   if (milNumber > 50 && switcherInt == 0)
+   {
+      aiSetMicroFlags(cMicroLevelNormal);
+      switcherInt = 1;
+   }
+   else if (switcherInt == 1)
+   {
+      aiSetMicroFlags(cMicroLevelHigh);
+      switcherInt = 0;
+   }
+}
+
+//==============================================================================
+/* watchExplorer
+   AssertiveWall: watches for the find base exploration plan to go away, then
+      moves the explorer back to home base if it ends
+*/
+//==============================================================================
+
+rule watchExplorer
+inactive
+minInterval 2
+{
+   static bool canDisable = false;
+   vector mainBaseLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   static int explorerID = -1;
+   static int explorer2ID = -1;
+
+   if (kbGetAge() >= cAge2)
+   {
+      xsDisableSelf();
+      return;
+   }
+   
+   if (aiPlanGetActive(gFindBasePlanID) == true)
+   {
+      explorerID = aiPlanGetUnitByIndex(gFindBasePlanID, 0);
+      explorer2ID = aiPlanGetUnitByIndex(gFindBasePlanID, 1);
+      canDisable = true;
+   }
+   else if (canDisable == true)
+   {
+      aiTaskUnitMove(explorerID, mainBaseLoc);
+      aiTaskUnitMove(explorer2ID, mainBaseLoc);
+      xsDisableSelf();
+      return;
+   }
+}
+
 //==============================================================================
 /* cannonCorners
 
@@ -158,11 +236,11 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
    float angle = atan((xsVectorGetZ(fortCenter) - positionZ) / (xsVectorGetX(fortCenter) - positionX));
    if ((xsVectorGetX(fortCenter) - positionX) < 0 )
    {
-      angle = 6.28 - angle - 3.14 * .25;
+      angle = angle + 3.14;
    }
    else
    {
-      angle = angle - 3.14 * .25;
+      angle = angle;
    } 
 
    // Build specified tower number
@@ -785,11 +863,11 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
    float angle = atan((xsVectorGetZ(fortCenter) - positionZ) / (xsVectorGetX(fortCenter) - positionX));
    if ((xsVectorGetX(fortCenter) - positionX) < 0 )
    {
-      angle = 6.28 - angle - 3.14 * .25;
+      angle = angle + 3.14;
    }
    else
    {
-      angle = angle - 3.14 * .25;
+      angle = angle;
    } 
 
    // Build specified tower number
@@ -1367,11 +1445,11 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
    float angle = atan((xsVectorGetZ(fortCenter) - positionZ) / (xsVectorGetX(fortCenter) - positionX));
    if ((xsVectorGetX(fortCenter) - positionX) < 0 )
    {
-      angle = 6.28 - angle - 3.14 * .25;
+      angle = angle + 3.14;
    }
    else
    {
-      angle = angle - 3.14 * .25;
+      angle = angle;
    } 
 
    // Build specified tower number
@@ -1981,13 +2059,14 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
    float positionZ = xsVectorGetZ(position);
 
    float angle = atan((xsVectorGetZ(fortCenter) - positionZ) / (xsVectorGetX(fortCenter) - positionX));
+   //angle = angle - 3.14 * .25;
    if ((xsVectorGetX(fortCenter) - positionX) < 0 )
    {
-      angle = 6.28 - angle - 3.14 * .25;
+      angle = angle + 3.14;
    }
    else
    {
-      angle = angle - 3.14 * .25;
+      angle = angle;
    } 
    /*aiChat(1, "angle: " + angle);
    aiChat(1, "Math: " + (xsVectorGetZ(fortCenter) - positionZ) / (xsVectorGetX(fortCenter) - positionX));
@@ -2427,11 +2506,11 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
    float angle = atan((xsVectorGetZ(fortCenter) - positionZ) / (xsVectorGetX(fortCenter) - positionX));
    if ((xsVectorGetX(fortCenter) - positionX) < 0 )
    {
-      angle = 6.28 - angle - 3.14 * .25;
+      angle = angle + 3.14;
    }
    else
    {
-      angle = angle - 3.14 * .25;
+      angle = angle;
    } 
 
    // Build specified tower number
@@ -3334,448 +3413,14 @@ minInterval 20
    //buildFourCornerStarFort(kbGetMapCenter(), mainBaseLocation, kbBaseGetMainID(cMyID), 2.4, 99, 2, 2);
    //sumterFort(kbGetMapCenter(), mainBaseLocation, gForwardBaseID, 1.5, 99, 2, 0);
    //haudOverlappingRingFort(kbGetMapCenter(), mainBaseLocation, gForwardBaseID, 2.5, 99, 2, 0);
-   sawtoothFort(kbGetMapCenter(), mainBaseLocation, gForwardBaseID, 2.5, 99, 2, 0);
-   //buildFourCornerStarFort(kbGetMapCenter(), mainBaseLocation, kbBaseGetMainID(cMyID), 2.4, 99, 2, 0, 2);
+   //sawtoothFort(kbGetMapCenter(), mainBaseLocation, gForwardBaseID, 2.5, 99, 2, 0);
+   buildFourCornerStarFort(kbGetMapCenter(), mainBaseLocation, kbBaseGetMainID(cMyID), 2.4, 99, 2, 0, 2);
    //buildCrownwork(kbGetMapCenter(), kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), kbBaseGetMainID(cMyID), 5, 99, 2, 1, true);
    //createLocationBuildPlan(cUnitTypeBarracks, 2, 90, true, cEconomyEscrowID, kbGetMapCenter(), 1);
    //createLocationBuildPlan(cUnitTypeStable, 2, 90, true, cEconomyEscrowID, kbGetMapCenter(), 1);
    xsDisableSelf();
 }
 
-//==============================================================================
-/* addWarshipsToPlan: 
-   Looks for warships not currently occupied by another plan
-
-   Goes through preferred type first
-*/
-//==============================================================================
-bool addWarshipsToPlan(int planID = -1, int min = 1, int desired = 1, int pri = 10, int preferredType = -1) 
-{
-   // Add a boat
-   int tempShip = -1;
-   int puid = -1;
-   int tempShipValue = -1;
-   int countAdded = 0;
-
-   if (preferredType > 0)
-   {
-      int preferredShipQuery = createSimpleUnitQuery(preferredType, cPlayerRelationSelf, cUnitStateAlive);
-      int preferredShipNumber = kbUnitQueryExecute(preferredShipQuery);
-
-      for (i = 0; < preferredShipNumber)
-      {
-         tempShip = kbUnitQueryGetResult(preferredShipQuery, i);
-         puid = kbUnitGetProtoUnitID(tempShip);
-
-         if (aiPlanGetActualPriority(kbUnitGetPlanID(tempShip)) >= pri)
-         {
-            continue;
-         }
-
-         if (aiPlanAddUnit(planID, tempShip) == false)
-         {
-            aiPlanDestroy(planID);
-            return (false);
-         }
-         countAdded += 1;
-
-         if (countAdded >= desired)
-         {
-            return (true);
-         }
-      }
-   }
-
-   int shipQuery = createSimpleUnitQuery(preferredType, cPlayerRelationSelf, cUnitStateAlive);
-   int shipNumber = kbUnitQueryExecute(shipQuery);
-
-   for (i = 0; < shipNumber)
-   {
-      tempShip = kbUnitQueryGetResult(shipQuery, i);
-      puid = kbUnitGetProtoUnitID(tempShip);
-
-      if (aiPlanGetActualPriority(kbUnitGetPlanID(tempShip)) >= pri)
-      {
-         continue;
-      }
-
-      if (aiPlanAddUnit(planID, tempShip) == false)
-      {
-         aiPlanDestroy(planID);
-         return (false);
-      }
-      countAdded += 1;
-
-      if (countAdded >= desired)
-      {
-         return (true);
-      }
-   }
-
-   if (countAdded <= min)
-   {  // no ships, quit
-      aiPlanDestroy(planID);
-      return (false);
-   }
-
-   // Means we have more than the min, but not the desired
-   return (true);
-}
-
-//==============================================================================
-/* checkForClumpedShips: 
-   Sometimes ships are too clumped around the transport. Tell everyone else to 
-   move to a random point nearby
-
-   transportShip2 can also be used, preventing it from controlling ship 2
-*/
-//==============================================================================
-int checkForClumpedShips(int transportShip = -1, int transportShip2 = -1) 
-{
-   if (transportShip < 0 && transportShip2 < 0)
-   {
-      return (-1);
-   }
-
-   vector shipPosition = kbUnitGetPosition(transportShip);
-   int shipQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive, shipPosition, 10.0);
-   int shipNumber = kbUnitQueryExecute(shipQuery);
-   int tempShip = -1;
-
-   vector startingVec = shipPosition;
-   startingVec = xsVectorSetX(startingVec, xsVectorGetX(startingVec) + 20);
-   startingVec = rotateByReferencePoint(shipPosition, startingVec - shipPosition, aiRandInt(360) / (180.0 / PI));
-
-   for (i = 0; < shipNumber)
-   {
-      if (tempShip != transportShip && tempShip != transportShip2)
-      {
-         tempShip = kbUnitQueryGetResult(shipQuery, i);
-         aiTaskUnitMove(tempShip, startingVec);
-      }
-   }
-
-   return (shipNumber);
-}
-
-//==============================================================================
-/* getCoastalPoint: 
-   Give two points. It will go in that direction until it hits water, then drop
-   back a couple steps
-
-   Typically the landPoint will be the main base
-*/
-//==============================================================================
-vector getCoastalPoint(vector landPoint = cInvalidVector, vector waterPoint = cInvalidVector, int stepsBack = 1, bool isWaterPoint = false)
-{
-	// Start at land point. Take small increments toward water point until we hit water, then use steps back or forward
-   // depending on whether waterPoint is true or false
-	vector testPoint = landPoint;
-	int range = distance(landPoint, waterPoint);
-	vector normalizedVector = xsVectorNormalize(waterPoint - landPoint);
-	vector previousPoint = testPoint;
-   vector nextPoint = cInvalidVector;
-	int testAreaID = -1;
-
-	for (i = 0; < range)
-	{
-		testPoint = testPoint + normalizedVector;
-		testAreaID = kbAreaGetIDByPosition(testPoint);
-
-		if (kbAreaGetType(testAreaID) == cAreaTypeWater)
-		{
-         if (isWaterPoint == true)
-         {
-            return (nextPoint);
-         }
-         else
-         {
-			   return (previousPoint);
-         }
-		}
-
-		previousPoint = testPoint;
-      nextPoint = testPoint;
-		for (j = 0; < stepsBack)
-		{
-			previousPoint = previousPoint - normalizedVector; // Two steps back toward land
-         nextPoint = nextPoint + normalizedVector; // Two steps toward water
-		}
-	}
-	return cInvalidVector;
-}
-
-//==============================================================================
-/* AssertiveTransportRule
-   I hate transports
-*/
-//==============================================================================
-extern int gAssertiveTransportPlan = -1;
-extern int gAssertiveTransportShip = -1;
-extern vector gAssertivePickup = cInvalidVector;
-extern vector gAssertiveDropoff = cInvalidVector;
-extern int gAssertiveTransportStage = -1;
-extern int gAssertiveTransportTime = -1;
-
-extern const int cAssertiveTransportGather = 1;               
-extern const int cAssertiveTransportLoad = 2;      
-extern const int cAssertiveTransportMove = 3; 
-extern const int cAssertiveTransportEnd = 4;       
-
-
-bool confirmAssertivePickup(vector pickup = cInvalidVector) 
-{
-   if (pickup == cInvalidVector)
-   {
-      pickup = gAssertivePickup;
-   }
-
-   if (pickup == cInvalidVector)
-   { // gAssertivePickup is bad
-      return (false);
-   }
-
-   // check for buildings in immediate vicinity of pickup
-   int buildingQ = createSimpleUnitQuery(cUnitTypeBuilding, cPlayerRelationAny, cUnitStateAlive, pickup, 5.0); 
-   int buildingNum = kbUnitQueryExecute(buildingQ);
-   if (buildingNum <= 0)
-   {
-      return(true);
-   }
-
-   // Add something to select new pickup nearby
-
-   return (false);
-}
-
-int AssertiveTransportInitiate(vector pickup = cInvalidVector, vector dropoff = cInvalidVector, int pri = 100)
-{
-   if (gAssertiveTransportPlan >= 0)
-   {
-      // Can't do anything, quit
-      return (-1);
-   }
-
-   // Fix pickup and dropoff
-   pickup = getCoastalPoint(pickup, dropoff, 1, false);
-   dropoff = getCoastalPoint(dropoff, pickup, 1, false);
-
-   // Create the plan
-   gAssertiveTransportPlan = aiPlanCreate("Assertive Transport Plan", cPlanReserve);
-   aiPlanSetDesiredPriority(gAssertiveTransportPlan, pri); 
-
-   // Add a boat
-   int shipQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive);
-   int shipNumber = kbUnitQueryExecute(shipQuery);
-   int tempShip = -1;
-   int puid = -1;
-   int tempShipValue = -1;
-   int ship1 = -1;
-   int ship1Value = -1;
-
-   if (shipNumber <= 0)
-   {  // no ships, quit
-      aiPlanDestroy(gAssertiveTransportPlan);
-      gAssertiveTransportPlan = -1;
-      return (-1);
-   }
-
-   for (i = 0; < shipNumber)
-   {
-      tempShip = kbUnitQueryGetResult(shipQuery, i);
-      puid = kbUnitGetProtoUnitID(tempShip);
-      tempShipValue = kbUnitGetHealth(tempShip) * (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
-                     kbUnitCostPerResource(puid, cResourceInfluence));
-      if (aiPlanGetActualPriority(kbUnitGetPlanID(tempShip)) > 22)
-      {
-         continue;
-      }
-
-      if (puid == gGalleonUnit)
-      {
-         tempShipValue = tempShipValue * 2;
-      }
-      else if (puid == gFrigateUnit)
-      {
-         tempShipValue = tempShipValue / 3;
-      }
-
-      if (tempShipValue > ship1Value)
-      {
-         ship1 = tempShip;
-         ship1Value = tempShipValue;
-      }
-   }
-
-   if (ship1 < 0)
-   {
-      // Couldn't find a ship
-      aiPlanDestroy(gAssertiveTransportPlan);
-      gAssertiveTransportPlan = -1;
-      return (-1);
-   }
-
-   aiPlanAddUnitType(gAssertiveTransportPlan, cUnitTypeAbstractWarShip, 1, 1, 1);
-   if (aiPlanAddUnit(gAssertiveTransportPlan, ship1) == false)
-   {
-      aiPlanDestroy(gAssertiveTransportPlan);
-      gAssertiveTransportPlan = -1;
-      return (-1);
-   }
-
-   aiPlanSetNoMoreUnits(gAssertiveTransportPlan, true);
-
-   // Set the parameters and activate the rule to handle the transport
-   aiPlanSetActive(gAssertiveTransportPlan);
-
-   gAssertiveTransportShip = ship1;
-   gAssertivePickup = pickup;
-   gAssertiveDropoff = dropoff;
-   gAssertiveTransportStage = cAssertiveTransportGather;
-   gAssertiveTransportTime = xsGetTime();
-
-   xsEnableRule("AssertiveTransportRule");
-   return (gAssertiveTransportPlan);
-}
-
-
-rule AssertiveTransportRule
-inactive
-minInterval 5
-{
-   // Can only handle one transport (for now)
-
-   // Check to make sure boat is alive
-   if (kbUnitGetHealth(gAssertiveTransportShip) <= 0)
-   {
-      gAssertiveTransportStage = cAssertiveTransportEnd;
-   }
-
-   // Check if there are ships clumped up nearby
-   if (xsGetTime() > gAssertiveTransportTime + 30 * 1000)
-   {
-      int clumpedShips = checkForClumpedShips(gAssertiveTransportShip);
-   }
-
-   // Confirm the pickup location is clear of buildings
-   if (gAssertiveTransportStage <= cAssertiveTransportLoad)
-   {
-      confirmAssertivePickup();
-   }
-
-   int passengerNumber = aiPlanGetNumberUnits(gAssertiveTransportPlan, cUnitTypeLogicalTypeGarrisonInShips);
-   int totalNumber = aiPlanGetNumberUnits(gAssertiveTransportPlan, cUnitTypeAll);
-   int tempUnit = -1;
-   int passengerQ = -1;
-   int loadedNum = -1;
-   int time = xsGetTime();
-
-   //aiChat(1, "gAssertiveTransportStage: " + gAssertiveTransportStage);
-   //sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, gAssertivePickup);
-   //sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, gAssertiveDropoff);
-   //sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, kbUnitGetPosition(gAssertiveTransportShip));
-   
-   switch (gAssertiveTransportStage)
-	{
-      // Gather Stage
-		case cAssertiveTransportGather:
-		{
-         // Just tell everyone to move to the pickup
-         if (distance(kbUnitGetPosition(gAssertiveTransportShip), gAssertivePickup) > 15)
-         {
-            aiTaskUnitMove(gAssertiveTransportShip, gAssertivePickup);
-         }
-         else
-         {
-            gAssertiveTransportStage = cAssertiveTransportLoad;
-            gAssertiveTransportTime = time;
-         }
-
-         for (i = 0; < totalNumber)
-         {
-            tempUnit = aiPlanGetUnitByIndex(gAssertiveTransportPlan, i);
-            if (kbUnitIsType(tempUnit, cUnitTypeLogicalTypeGarrisonInShips) == true)
-            {
-               if (distance(kbUnitGetPosition(tempUnit), gAssertivePickup) > 20)
-               {
-                  aiTaskUnitMove(tempUnit, gAssertivePickup);
-               }
-            }
-         }
-      }
-      case cAssertiveTransportLoad:
-		{
-         // Tell everyone to board
-         for (i = 0; < totalNumber)
-         {
-            tempUnit = aiPlanGetUnitByIndex(gAssertiveTransportPlan, i);
-            if (kbUnitIsType(tempUnit, cUnitTypeLogicalTypeGarrisonInShips) == true)
-            {
-               aiTaskUnitWork(tempUnit, gAssertiveTransportShip);
-            }
-         }
-
-         // Check how many are on board, go if it's been too long
-         passengerQ = createSimpleUnitQuery(cUnitTypeLogicalTypeGarrisonInShips, cPlayerRelationAny, cUnitStateAlive, kbUnitGetPosition(gAssertiveTransportShip), 1.0); 
-         loadedNum = kbUnitQueryExecute(passengerQ);
-         if (loadedNum == passengerNumber || (gAssertiveTransportTime > (45 * 1000 + gAssertiveTransportTime)))
-         {
-            gAssertiveTransportStage = cAssertiveTransportMove;
-            aiTaskUnitMove(gAssertiveTransportShip, gAssertiveDropoff);
-            gAssertiveTransportTime = time;
-         }
-      }
-      case cAssertiveTransportMove:
-		{
-         // Check how many are on board
-         passengerQ = createSimpleUnitQuery(cUnitTypeLogicalTypeGarrisonInShips, cPlayerRelationAny, cUnitStateAlive, kbUnitGetPosition(gAssertiveTransportShip), 1.0); 
-         loadedNum = kbUnitQueryExecute(passengerQ);
-         if (loadedNum <= 0)
-         {
-            gAssertiveTransportStage = cAssertiveTransportEnd;
-            gAssertiveTransportTime = xsGetTime();
-         }
-
-         // Check if our ship is on a coastal point to drop off. Check 8 points around the boat
-         vector shipLoc = kbUnitGetPosition(gAssertiveTransportShip); // Start with base location
-         vector testVec = shipLoc;
-         testVec = xsVectorSetX(testVec, xsVectorGetX(testVec) + 4.0);
-         int areaGroupID = kbAreaGroupGetIDByPosition(testVec);
-         bool onCoast = false;
-         for (j = 0; < 8)
-         {
-            testVec = rotateByReferencePoint(shipLoc, testVec - shipLoc, j * PI / 4.0);
-            areaGroupID = kbAreaGroupGetIDByPosition(testVec);
-            if (kbAreaGroupGetType(areaGroupID) != cAreaGroupTypeWater)
-            {
-               onCoast = true;
-               break;
-            }
-         }
-
-         if (onCoast == true || distance(shipLoc, gAssertiveDropoff) < 5.0)
-         {
-            aiTaskUnitEject(gAssertiveTransportShip);
-         }
-         else
-         {
-            aiTaskUnitMove(gAssertiveTransportShip, gAssertiveDropoff);
-         }
-      }
-      case cAssertiveTransportEnd:
-		{
-         aiPlanDestroy(gAssertiveTransportPlan);
-         gAssertiveTransportPlan = -1;
-         gAssertiveTransportShip = -1;
-         gAssertivePickup = cInvalidVector;
-         gAssertiveDropoff = cInvalidVector;
-         gAssertiveTransportStage = -1;
-         gAssertiveTransportTime = -1;
-
-         xsDisableSelf();
-      }
-   }
-}
 
 //==============================================================================
 /* fixTycoonParamaters
@@ -4309,31 +3954,7 @@ minInterval 20
    }
 }
 
-//==============================================================================
-// getNavyStrength
-// AssertiveWall: gets the navy value of the given player relation at the given 
-//  location and radius
-//==============================================================================
 
-int getNavyStrength(int playerRelationVar = cPlayerRelationSelf, vector location = cInvalidVector, int radius = -1)
-{
-   // Navy Value
-   int enNavyQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, playerRelationVar, cUnitStateAlive, location, radius);
-   int enNavySize = kbUnitQueryExecute(enNavyQuery);
-   int enNavyValue = 0;
-   int unitID = -1;
-   int puid = -1;
-
-   for (i = 0; < enNavySize)
-   {
-      unitID = kbUnitQueryGetResult(enNavyQuery, i);
-      puid = kbUnitGetProtoUnitID(unitID);
-      enNavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
-                        kbUnitCostPerResource(puid, cResourceInfluence));
-   }
-
-   return (enNavyValue);
-}
 
 //==============================================================================
 // getTeamAge
@@ -4393,7 +4014,7 @@ bool allowedToAttack(void)
    int enAgeVar = getTeamAge(false);//kbGetAgeForPlayer(aiGetMostHatedPlayerID());
    int militaryQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(militaryQueryID);
-   int militaryStrength = 0;
+   float militaryStrength = 0.0;
    int puid = -1;
    int playersPerTeam = (cNumberPlayers - 1) / (aiGetNumberTeams() - 1); // Gaia counts as a player and a team
 
@@ -4711,324 +4332,6 @@ void checkAttackDefenseMap(void)
    }
 }
 
-
-//==============================================================================
-/* endlessWaterRaids
-   AssertiveWall: creates a persistent plan to roam the map and look for
-   things to attack
-
-*/
-//==============================================================================
-rule endlessWaterRaids
-inactive
-minInterval 15
-{
-   vector targetPosition = cInvalidVector;
-   int targetUnit = -1;
-   int shipMin = 1;
-
-   // First Run, or after plan gets destroyed
-   if (getUnit(cUnitTypeAbstractWarShip, cMyCiv, cUnitStateAlive) <= 0)
-   {
-      return;
-   }
-
-   // Check to see if our plan has no ships. If not, make sure it's clear before continuing
-   int numberWarships = aiPlanGetNumberUnits(gEndlessWaterRaidPlan, cUnitTypeAbstractWarShip);
-   if (numberWarships <= 0)
-   {  // Reset
-      aiPlanDestroy(gEndlessWaterRaidPlan);
-      gEndlessWaterRaidPlan = -1;
-   }
-
-   if (gEndlessWaterRaidPlan < 0)
-   {
-      // First find a random target
-      targetPosition = getRandomGaiaUnitPosition(cUnitTypeAbstractWhale, getStartingLocation(), (0.5 * kbGetMapXSize()));
-      if (targetPosition == cInvalidVector)
-      {
-         targetPosition = getRandomGaiaUnitPosition(cUnitTypeAbstractFish, getStartingLocation(), (0.5 * kbGetMapXSize()));
-      }
-      if (targetPosition == cInvalidVector)
-      {  // There are no more locations, so turn off (very rare)
-         xsDisableSelf();
-      }
-
-      // Determine minimum number of ships to send based on age
-      if (kbGetAge() == cAge2)
-      {
-         shipMin = 1;
-      }
-      else
-      {
-         shipMin = 2;
-      }
-
-      gEndlessWaterRaidPlan = aiPlanCreate("Endless Water Raids", cPlanCombat);
-      aiPlanSetDesiredPriority(gEndlessWaterRaidPlan, 21); // Not very important. Below exploring and nugget gathering
-      aiPlanAddUnitType(gEndlessWaterRaidPlan, cUnitTypeAbstractWarShip, shipMin, 2, 3);
-         aiPlanSetNoMoreUnits(gEndlessWaterRaidPlan, true);
-         addWarshipsToPlan(gEndlessWaterRaidPlan, shipMin, 3, 21);
-      aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
-      aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
-      //aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanTargetPlayerID, 0, navalTargetPlayer);
-      aiPlanSetVariableVector(gEndlessWaterRaidPlan, cCombatPlanTargetPoint, 0, targetPosition);
-      aiPlanSetVariableVector(gEndlessWaterRaidPlan, cCombatPlanGatherPoint, 0, gNavyVec);
-      aiPlanSetVariableFloat(gEndlessWaterRaidPlan, cCombatPlanGatherDistance, 0, 80.0); // Big gather radius
-      aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternRandom);
-
-
-
-      // AssertiveWall: Never bring any extra boats on these. Balanced refresh frequency
-      aiPlanSetVariableBool(gEndlessWaterRaidPlan, cCombatPlanAllowMoreUnitsDuringAttack, 0, true);
-      aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanRefreshFrequency, 0, 700);
-
-      // Done when we retreat, retreat when outnumbered, done when there's no target after 20 seconds
-      aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeNoTarget);
-      aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
-      aiPlanSetVariableInt(gEndlessWaterRaidPlan, cCombatPlanNoTargetTimeout, 0, 20000);
-      aiPlanSetBaseID(gEndlessWaterRaidPlan, kbUnitGetBaseID(getUnit(gDockUnit, cMyID, cUnitStateAlive)));
-      aiPlanSetInitialPosition(gEndlessWaterRaidPlan, gNavyVec);
-
-      aiPlanSetActive(gEndlessWaterRaidPlan);
-   }
-}
-
-//==============================================================================
-/* gatherNavalNuggets
-   AssertiveWall: looks for water nuggets to gather
-
-*/
-//==============================================================================
-rule gatherNavalNuggets
-inactive
-minInterval 10
-{
-   /*extern int gWaterNuggetPlan = -1;            // Persistent plan goes out to try and find water nuggets
-   //extern const int cWaterNuggetSearch = -1;    // Units moving to the water nugget
-   //extern const int cWaterNuggetAttack = 0;     // Units attacking the guardians 
-   //extern const int cWaterNuggetGather = 1;     // Units gathering the nugget
-   //extern int gWaterNuggetState = cWaterNuggetSearch;           // Stores the state of the water nugget plan
-   //extern int gWaterNuggetTarget = -1;          // Stores the target of whatever the water nugget plan is doing
-   */
-
-   // First Run, or after plan gets destroyed
-   if (gWaterNuggetPlan < 0)
-   {
-      int nuggetPlanID = aiPlanCreate("Nugget Raiding Plan", cPlanReserve);
-      aiPlanSetDesiredPriority(nuggetPlanID, 21); // Higher than fishing and exploring. Fishing boats normally explore anyway
-
-      if (civIsNative() == true)
-      {
-         aiPlanAddUnitType(gWaterNuggetPlan, cUnitTypeAbstractWarShip, 1, 3, 5);
-         aiPlanSetNoMoreUnits(gWaterNuggetPlan, true);
-         addWarshipsToPlan(gWaterNuggetPlan, 1, 5, 21);
-      }
-      else
-      {
-         aiPlanAddUnitType(gWaterNuggetPlan, cUnitTypeAbstractWarShip, 1, 2, 3);
-         aiPlanSetNoMoreUnits(gWaterNuggetPlan, true);
-         addWarshipsToPlan(gWaterNuggetPlan, 1, 3, 21);
-      }
-      aiPlanSetActive(nuggetPlanID);
-      gWaterNuggetPlan = nuggetPlanID;
-   }
-
-   if (xsGetTime() > gWaterNuggetTimeout + 30*1000)
-   {  // Reset
-      gWaterNuggetState = cWaterNuggetSearch;
-      gWaterNuggetTimeout = xsGetTime();
-      return;
-   }
-
-   int numberExplorerWarships = aiPlanGetNumberUnits(gWaterNuggetPlan, cUnitTypeAbstractWarShip);
-   // See if we have idle ships to add
-   int idleWarshipQuery = createSimpleIdleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
-   int numberIdleWSFound = kbUnitQueryExecute(idleWarshipQuery);
-
-   if (numberExplorerWarships < 3 && numberIdleWSFound > 0)
-   {
-      if (civIsNative() == true)
-      {
-         aiPlanAddUnitType(gWaterNuggetPlan, cUnitTypeAbstractWarShip, 1, 3, 5);
-         aiPlanSetNoMoreUnits(gWaterNuggetPlan, true);
-         addWarshipsToPlan(gWaterNuggetPlan, 1, 5, 21);
-      }
-      else
-      {
-         aiPlanAddUnitType(gWaterNuggetPlan, cUnitTypeAbstractWarShip, 1, 2, 3);
-         aiPlanSetNoMoreUnits(gWaterNuggetPlan, true);
-         addWarshipsToPlan(gWaterNuggetPlan, 1, 3, 21);
-      }
-   }
-
-   if (numberExplorerWarships <= 0)
-   {  // Reset
-      gWaterNuggetState = cWaterNuggetSearch;
-      return;
-   }
-
-   int nuggetID = -1;
-   int guardianQuery = -1;
-   int guardianID = -1;
-   int guardianNumber = -1;
-   int guardianHealth = 0;
-   vector waterNuggetLocation = cInvalidVector;
-   int bestNugget = -1;
-   int bestGuardianHP = 10000;
-   int bestGuardianID = -1;
-   vector targetLocation = cInvalidVector;
-   numberExplorerWarships = aiPlanGetNumberUnits(gWaterNuggetPlan, cUnitTypeAbstractWarShip);
-
-   switch (gWaterNuggetState)
-   {
-      case cWaterNuggetSearch:
-      {  
-         xsSetRuleMinIntervalSelf(15);
-         int explorerUnit = aiPlanGetUnitByIndex(gWaterNuggetPlan, 0);
-         vector explorerLoc = kbUnitGetPosition(explorerUnit);
-         int indexedExplorerUnit = -1;
-         int explorerFleetHP = 0;
-
-         // Looks for a suitable nugget and tells the ships to attack it
-         aiPlanSetDesiredPriority(gWaterNuggetPlan, 21);
-         for (i = 0; < numberExplorerWarships)
-         {  // Only consider units that are close together
-            indexedExplorerUnit = aiPlanGetUnitByIndex(gWaterNuggetPlan, i);
-            if (distance(kbUnitGetPosition(indexedExplorerUnit), explorerLoc) < 75)
-            {
-               explorerFleetHP = explorerFleetHP + kbUnitGetCurrentHitpoints(indexedExplorerUnit);
-            }
-         }
-
-         // Store enemy location so we can avoid it
-         vector guessedEnemyLocation = guessEnemyLocation();
-
-         // Find a suitable water nugget. Only check 5 random locations. (decrease if AI is too good at spotting treasures)
-         for (j = 0; < 5)
-         {
-            waterNuggetLocation = getRandomGaiaUnitPosition(cUnitTypeAbstractNuggetWater, explorerLoc, 0.3*kbGetMapXSize());
-            nuggetID = getUnitByLocation(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateAlive, waterNuggetLocation, 4.0);
-
-            // Check to make sure nugget is on water
-            int testAreaID = kbAreaGetIDByPosition(waterNuggetLocation);
-            if (kbAreaGetType(testAreaID) != cAreaTypeWater)
-            {
-               continue;
-            }
-
-            // skip if nugget is too close to enemy
-            if (distance(waterNuggetLocation, guessedEnemyLocation) < 150)
-            {
-               continue;
-            }
-
-            guardianHealth = 0;
-            guardianQuery = createSimpleUnitQuery(cUnitTypeGuardian, cPlayerRelationAny, cUnitStateAlive, waterNuggetLocation, 10.0);
-            guardianNumber = kbUnitQueryExecute(guardianQuery);
-
-            // Get total health of water guardians
-            if (guardianNumber > 0)
-            {
-               for (k = 0; < guardianNumber)
-               {
-                  guardianID = kbUnitQueryGetResult(guardianQuery, k);
-                  guardianHealth = guardianHealth + kbUnitGetCurrentHitpoints(guardianID);
-               }
-            }
-            // Discourage further treasures
-            guardianHealth = guardianHealth + 0.7 * distance(waterNuggetLocation, explorerLoc);
-
-            if (guardianHealth < bestGuardianHP)
-            {
-               bestNugget = nuggetID; // Store this as the best nugget
-               bestGuardianHP = guardianHealth;
-               bestGuardianID = guardianID;
-            }
-         }
-
-         // Don't bother unless there's a good chance of winning
-         if (explorerFleetHP < 1.5 * bestGuardianHP)
-         {
-            return;
-         }
-      
-         // Now tell the ships to attack it
-         if (bestNugget > 0)
-         { 
-            gWaterNuggetTarget = bestNugget;
-            gWaterNuggetTargetLoc = kbUnitGetPosition(bestNugget);
-            gWaterNuggetTimeout = xsGetTime();
-            xsSetRuleMinIntervalSelf(3);
-            if (bestGuardianID > 0)
-            {  // There are guardians, so attack
-               for (m = 0; < numberExplorerWarships)
-               {
-                  aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, m), bestGuardianID);
-               }
-               gWaterNuggetState = cWaterNuggetAttack;
-               aiPlanSetDesiredPriority(gWaterNuggetPlan, 55); // We're in it now
-            }
-            else
-            {  // No guardians, so go straight to nugget
-               for (n = 0; < numberExplorerWarships)
-               {
-                  aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, n), bestNugget);
-               }
-               gWaterNuggetState = cWaterNuggetGather;
-               aiPlanSetDesiredPriority(gWaterNuggetPlan, 90); // We're in it now
-            }
-         }
-         break;
-      }
-
-      case cWaterNuggetAttack:
-      {
-         // Keep checking our nugget until all guardians are destroyed. If our fleet is gone, reset
-         guardianNumber = getUnitCountByLocation(cUnitTypeGuardian, cPlayerRelationAny, cUnitStateAlive, gWaterNuggetTargetLoc, 10.0);
-         int currentGuardianID = getUnitByLocation(cUnitTypeGuardian, cPlayerRelationAny, cUnitStateAlive, gWaterNuggetTargetLoc, 10.0);
-
-         if (guardianNumber <= 0)
-         {
-            gWaterNuggetState = cWaterNuggetGather;
-            gWaterNuggetTarget = getUnitByLocation(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateAlive, gWaterNuggetTargetLoc, 4.0);
-            aiPlanSetDesiredPriority(gWaterNuggetPlan, 90);
-            for (s = 0; < numberExplorerWarships)
-            {
-               aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, s), gWaterNuggetTarget);
-            }
-         }
-         else
-         {
-            for (p = 0; < numberExplorerWarships)
-            {
-               aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, p), currentGuardianID);
-            }
-         }
-         break;
-      }
-
-      case cWaterNuggetGather:
-      {
-         // Keep checking our nugget until it's gone
-         // Ships are already tasked to gather nugget. Just wait until nugget is gone 
-         int nuggetsAtLoc = getUnitCountByLocation(cUnitTypeAbstractNuggetWater, cPlayerRelationAny, cUnitStateAlive, gWaterNuggetTargetLoc, 2.0);
-         if (nuggetsAtLoc > 0)
-         {
-            for (n = 0; < numberExplorerWarships)
-            {
-               aiTaskUnitWork(aiPlanGetUnitByIndex(gWaterNuggetPlan, n), gWaterNuggetTarget);
-            }
-         } 
-         else
-         {
-            gWaterNuggetState = cWaterNuggetSearch;
-            aiPlanSetDesiredPriority(gWaterNuggetPlan, 21);
-         }
-         break;
-      }
-   }
-}
 
 
 //==============================================================================
@@ -5393,6 +4696,47 @@ inactive
 */
 //==============================================================================
 
+rule upgradeWalls
+inactive
+minInterval 37
+{
+   int wallCount = kbUnitCount(cMyID, cUnitTypeAbstractWall, cUnitStateAlive);
+
+   if (wallCount <= 0 && kbGetAge() < cAge5)
+   {  // No point in researching this until we have walls
+      return;
+   }
+
+   int wallUnitID = getUnit(cUnitTypeAbstractWall, cMyID, cUnitStateAlive);
+   int wallPlanPri = 30;
+   int wallTech = cTechBastion;
+
+   switch (cMyCiv)
+   {  // Bastion is the default tech, but for others with special versions:
+      case cCivDEAmericans:
+      case cCivDEMexicans:
+      {
+         wallTech = cTechDERedoubts;
+      }
+      case cCivDEHausa:
+      case cCivDEEthiopians:
+      {
+         wallTech = cTechDECityFortifications;
+      }
+   }
+
+   if (wallCount > 12 || kbGetAge() >= cAge4)
+   {
+      wallPlanPri = 60;
+   }
+   bool canDisableSelf = researchSimpleTech(wallTech, -1, wallUnitID, wallPlanPri);
+
+   if (canDisableSelf == true)
+   {
+      xsDisableSelf();
+   }
+}
+
 rule forwardBaseWall
 inactive
 minInterval 10
@@ -5404,8 +4748,9 @@ minInterval 10
 
    if (gStartOnDifferentIslands == true)
    {  // Island maps are too crowded for this
-      xsEnableRule("forwardBaseTowers");
+      xsEnableRule("forwardBaseTowers"); // old version of placing towers at forward base. No longer used with star forts
       xsDisableSelf();
+      return;
    }
 
    if (gForwardBaseState == cForwardBaseStateNone) // || gForwardBaseState == cForwardBaseStateBuilding)
@@ -5484,7 +4829,7 @@ minInterval 10
    {
       if (civIsNative() != true)
       {
-         buildCrownwork(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 5, pri, 1, 0, true);
+         //buildCrownwork(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 5, pri, 1, 0, true);
       }
    }
    else if (civIsNative() == true)
@@ -5554,6 +4899,11 @@ minInterval 10
 
    //sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyWhenIWallIn);
 
+   // Research the wall upgrade also
+   if (xsIsRuleEnabled("upgradeWalls") == false)
+   {
+      xsEnableRule("upgradeWalls");
+   }
    xsDisableSelf();
 }
 
@@ -6562,7 +5912,7 @@ vector getEnemyBase(int enemyPlayerID = -1, int armyPower = 0)
    int buildingPower = -1;
    int unitID = -1;
    int puid = -1;
-   int militaryPower = -1;
+   float militaryPower = 0.0;
    int maxBaseAssets = -1;
    vector targetBaseLocation = cInvalidVector;
    int targetBaseID = -1;
@@ -6837,6 +6187,22 @@ vector getEnemyBase(int enemyPlayerID = -1, int armyPower = 0)
 }
 
 //==============================================================================
+// getRandomPoint
+// 
+// Gets a random point around the center point, within that radius
+//==============================================================================
+vector getRandomPoint(vector location = cInvalidVector, int radius = 30)
+{
+   vector position = location;
+   float xError = radius;
+   float zError = radius;
+   position = xsVectorSetX(position, xsVectorGetX(position) + aiRandFloat(0.0 - xError, xError));
+   position = xsVectorSetZ(position, xsVectorGetZ(position) + aiRandFloat(0.0 - zError, zError));
+
+   return position;
+}
+
+//==============================================================================
 // selectPickupPoint
 // Looks at the vector between us and the enemy, and sompares several points to 
 // find the best pickup
@@ -6849,7 +6215,7 @@ vector selectPickupPoint(vector friendlyLoc = cInvalidVector, vector enemyLoc = 
 {
    int numAttempts = 15;
    int coastDist = -1;
-   int spreadAngle = -1;
+   float spreadAngle = 0.0;
    vector tempVec = cInvalidVector;
    int nearbyBuildings = -1;
    int bestNearbyBuildings = 99;
@@ -6981,6 +6347,11 @@ bool retreatCheck(bool forceRetreat = false)
          forceRetreat = true;
       }
 
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) <= 0)
+      {
+         forceRetreat = true;
+      }
+
       // If we're too outnumbered then retreat to gNavyVec
       if (frNavyValue * 1.2 < (enNavyValue + enTowerValue) || forceRetreat == true)
       {
@@ -7015,6 +6386,7 @@ bool retreatCheck(bool forceRetreat = false)
             }
             aiPlanDestroy(gAmphibiousAssaultPlan);
             aiPlanDestroy(gAmphibiousArmyPlan);
+            aiPlanDestroy(gAmphibiousTransportPlan);
             gAmphibiousAssaultPlan = -1;
             gAmphibiousArmyPlan = -1;
             gNavyVec = kbUnitGetPosition(gWaterSpawnFlagID);
@@ -7140,38 +6512,48 @@ void gatherNavy(vector location = cInvalidVector)
 
       // Determine how many ships we need. Based on age for now
       int currentAge = kbGetAge();
-      int minimumShips = 2;
+      float minimumShips = 2.0;
       if (currentAge == cAge3)
       {
-         minimumShips = 3;
+         minimumShips = 3.0;
       }
       else if (currentAge >= cAge4)
       {
-         minimumShips = 3;
+         minimumShips = 3.0;
       }
 
       if (civIsNative() == true)
       {
-         minimumShips = minimumShips * 2;
+         minimumShips = minimumShips * 2.0;
       }
 
       if (cMyCiv == cCivDEInca)
       {
-         minimumShips = minimumShips - 1;
+         minimumShips = minimumShips - 1.0;
       }
 
       if (gIsArchipelagoMap == true)
       {
-         minimumShips = minimumShips - 1;
+         minimumShips = minimumShips - 1.0;
       }
 
-      if ((gatheredUnits <= 4 && gatheredUnits >= gatherTarget - 1) || (gatheredUnits > 0.7 * gatherTarget || gatheredUnits > minimumShips * 1.5))
+      if ((gatheredUnits <= 4.0 && gatheredUnits >= gatherTarget - 1.0) || 
+          (gatheredUnits > 0.7 * gatherTarget) || 
+          (gatheredUnits > minimumShips * 1.4) ||
+          ((gatheredUnits >= minimumShips) && (xsGetTime() > (2 * 60 * 1000 + gAmphibiousAssaultSavedTime))))
       {
          if (gatheredUnits >= minimumShips)
          {
             gAmphibiousAssaultStage = cBombardCoast;
             gAmphibiousAssaultSavedTime = xsGetTime();
          }
+      }
+
+      // If it's been way too long and we don't have enough ships, just end this
+      if ((gatheredUnits < minimumShips - 1 && xsGetTime() > (3 * 60 * 1000 + gAmphibiousAssaultSavedTime)) ||
+          (gatheredUnits < minimumShips && xsGetTime() > (4.5 * 60 * 1000 + gAmphibiousAssaultSavedTime)))
+      {
+         retreatCheck(true);
       }
    }
 
@@ -7229,6 +6611,7 @@ void bombardCoast()
    int unitID = -1;
    int puid = -1;
    bool alreadyTasked = false;
+   vector targetLocation = cInvalidVector;
 
    // Find the two weakest ships to focus on
    for (i = 0; < enNavySize)
@@ -7309,7 +6692,8 @@ void bombardCoast()
       {
          if (distance(kbUnitGetPosition(unitID), gAmphibiousAssaultTarget) > 40)
          {
-            aiTaskUnitMove(unitID, gAmphibiousAssaultTarget);
+            targetLocation = getRandomPoint(gAmphibiousAssaultTarget, 35);
+            aiTaskUnitMove(unitID, targetLocation);
          }
       }
 
@@ -7571,7 +6955,7 @@ void landForces()
    if (unitsOnShip1 + unitsOnShip2 == 0)
    {  // Done transporting, move to next phase
       gAmphibiousAssaultStage = cBuildForwardBuildings;
-      //aiPlanDestroy(gAmphibiousTransportPlan);
+      aiPlanDestroy(gAmphibiousTransportPlan);
       // Explore enabling this earlier to allow more reinforcement and parallel decision making
       //xsEnableRule("forwardArmyPlan");
       return;
@@ -8017,7 +7401,7 @@ minInterval 20
    int numberFoundArmyQuery = kbUnitQueryExecute(forwardArmyQuery);
    int forwardArmyCount = 0;
    int attackTimeSeconds = xsGetTime() / 1000;
-   int armyPower = 0;
+   float armyPower = 0.0;
    for (i = 0; < numberFoundArmyQuery)
    {
       unitID = kbUnitQueryGetResult(forwardArmyQuery, i);
@@ -8347,7 +7731,7 @@ bool amphibiousAssault(vector location = cInvalidVector)
       aiPlanAddUnitType(gAmphibiousAssaultPlan, cUnitTypeAbstractWarShip, 0, 0, 200);
       //aiPlanSetNoMoreUnits(gAmphibiousAssaultPlan, true);
       aiPlanSetDesiredPriority(gAmphibiousAssaultPlan, 99); // Only lower than transport
-      aiPlanSetActive(gAmphibiousAssaultPlan);
+      //aiPlanSetActive(gAmphibiousAssaultPlan);
    }
 
    if (gAmphibiousArmyPlan < 0)
@@ -8356,7 +7740,7 @@ bool amphibiousAssault(vector location = cInvalidVector)
       aiPlanAddUnitType(gAmphibiousArmyPlan, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
       aiPlanSetNoMoreUnits(gAmphibiousArmyPlan, true);
       aiPlanSetDesiredPriority(gAmphibiousArmyPlan, 99); // Only lower than transport
-      aiPlanSetActive(gAmphibiousArmyPlan);
+      //aiPlanSetActive(gAmphibiousArmyPlan);
    }
 
    if (gAmphibiousTransportPlan < 0)
@@ -8365,14 +7749,81 @@ bool amphibiousAssault(vector location = cInvalidVector)
       aiPlanAddUnitType(gAmphibiousTransportPlan, cUnitTypeAbstractWarShip, 0, 0, 200);
       aiPlanSetNoMoreUnits(gAmphibiousTransportPlan, true);
       aiPlanSetDesiredPriority(gAmphibiousTransportPlan, 100); // Let no one steal us
-      aiPlanSetActive(gAmphibiousTransportPlan);
+      //aiPlanSetActive(gAmphibiousTransportPlan);
    }
 
    //vector pickupPoint = getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), 4);
    //gatherArmy(pickupPoint);
 
    // Enable the rule to monitor the amphibious assault
+   xsEnableRule("amphibiousAssaultStandby");
+   return true;
+}
+
+//==============================================================================
+/* amphibiousAssaultStandby
+   AssertiveWall: rule to delay the start of the amphibious assault until we 
+   have enough ships
+*/
+//==============================================================================
+
+rule amphibiousAssaultStandby
+inactive
+minInterval 3
+{
+   // Wait until we have some ships to work with to start the chain
+   if (gAmphibiousAssaultStage == cGatherNavy)  // Check just in case something weird happens and this gets called multiple times
+   {  // Make sure we have enough ships
+      int currentAge = kbGetAge();
+      int minimumShips = 2;
+      if (currentAge == cAge3)
+      {
+         minimumShips = 3;
+      }
+      else if (currentAge >= cAge4)
+      {
+         minimumShips = 3;
+      }
+
+      if (civIsNative() == true)
+      {
+         minimumShips = minimumShips * 2;
+      }
+
+      if (cMyCiv == cCivDEInca)
+      {
+         minimumShips = minimumShips - 1;
+      }
+
+      if (gIsArchipelagoMap == true)
+      {
+         minimumShips = minimumShips - 1;
+      }
+
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < minimumShips)
+      {
+         return;
+      }
+   }
+   else if (xsIsRuleEnabled("amphibiousAssaultRule") == true)
+   {
+      xsDisableSelf();
+      return;
+   }
+   else
+   {  // We should never reach here
+      retreatCheck(true);
+      xsDisableSelf();
+      return;
+   }
+
    gAmphibiousAssaultSavedTime = xsGetTime();
+
+   // activate plans
+   aiPlanSetActive(gAmphibiousAssaultPlan);
+   aiPlanSetActive(gAmphibiousArmyPlan);
+   aiPlanSetActive(gAmphibiousTransportPlan);
+
    xsEnableRule("baseUnderThreat");
    if (gIsArchipelagoMap == true)
    {
@@ -8382,7 +7833,7 @@ bool amphibiousAssault(vector location = cInvalidVector)
    {
       xsEnableRule("amphibiousAssaultRule");
    }
-   return true;
+
 }
 
 //==============================================================================
@@ -8426,7 +7877,7 @@ minInterval 5
    // Check for clumped ships
    if (gAmphibiousAssaultStage == cLoadForces || gAmphibiousAssaultStage == cLandForces)
    {
-      if (xsGetTime() > gAmphibiousAssaultSavedTime + 30000)
+      if (xsGetTime() > gAmphibiousAssaultSavedTime + 20000)
       {
          checkForClumpedShips(gLandingShip1, gLandingShip2);
       }
@@ -8442,12 +7893,12 @@ minInterval 5
       case cGatherNavy:
       {  // Add navy to plan and send them to the gather point
          gatherNavy(gatherPoint);
-         gatherArmy(pickupPoint);
+         //gatherArmy(pickupPoint);
          break;
       }
       case cBombardCoast:
       {
-         //gatherArmy(pickupPoint);
+         gatherArmy(pickupPoint);
          bombardCoast();
          break;
       }
@@ -8992,9 +8443,9 @@ int getAreaValue(vector locationOfInterest = cInvalidVector, int searchRadius = 
 //==============================================================================
 // getAreaStrength
 //==============================================================================
-int getAreaStrength(vector locationOfInterest = cInvalidVector, int searchRadius = 10, int playerRelation = cPlayerRelationEnemyNotGaia)
+float getAreaStrength(vector locationOfInterest = cInvalidVector, int searchRadius = 10, int playerRelation = cPlayerRelationEnemyNotGaia)
 {
-   int MilitaryPower = 0;
+   float MilitaryPower = 0.0;
    int numberEnemyFound = 0;
    int unitID = -1;
    int puid = -1;
@@ -9073,11 +8524,11 @@ vector findDefensiveTargetLocation(int companyPlan = -1)
 // Look for potential locations that may serve as an offensive target
 //
 //==============================================================================
-int getFriendlyArmyValue(int companyPlan = -1)
+float getFriendlyArmyValue(int companyPlan = -1)
 {
    int unitID = -1;
    int puid = -1;
-   int armyPower = 0;
+   float armyPower = 0.0;
    int numberUnits = aiPlanGetNumberUnits(companyPlan, cUnitTypeLogicalTypeLandMilitary);
 
    for (i = 0; < numberUnits)
@@ -9192,7 +8643,7 @@ minInterval 10
    int currentTime = xsGetTime();
    bool callOff = false;
    vector unitLocation = kbUnitGetPosition(aiPlanGetUnitByIndex(gActiveRaid, 0));
-   int enemyStrength = getAreaStrength(unitLocation, 40.0, cPlayerRelationEnemyNotGaia);
+   float enemyStrength = getAreaStrength(unitLocation, 40.0, cPlayerRelationEnemyNotGaia);
    int friendlyStrength = getFriendlyArmyValue(gActiveRaid);
 
    // Call off raid after too much time passes
@@ -9298,7 +8749,7 @@ minInterval 10
 {
    vector companyLoc = kbUnitGetPosition(aiPlanGetUnitByIndex(gActiveInterdiction, 0));
    bool fallBack = false;
-   int enemyStrength = getAreaStrength(companyLoc, 20.0, cPlayerRelationEnemyNotGaia);
+   float enemyStrength = getAreaStrength(companyLoc, 20.0, cPlayerRelationEnemyNotGaia);
    int friendlyStrength = getFriendlyArmyValue(gActiveInterdiction);
    vector baseLoc = kbBaseGetLocation(cMyID, gMainBase);
 
@@ -9366,8 +8817,8 @@ minInterval 30 // Big interval. It's all decentralized
    int alphaArmyValue = 0;
    int bravoArmyValue = 0;
 
-   int enMilitaryPowerAlpha = 0;
-   int enMilitaryPowerBravo = 0;
+   float enMilitaryPowerAlpha = 0.0;
+   float enMilitaryPowerBravo = 0.0;
 
    bool offenseAlpha = false;
    bool offenseBravo = false;
@@ -9507,6 +8958,9 @@ bool shouldBuildDock()
    int age = kbGetAge();
    int time = xsGetTime();
    int dockPlanID = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit);
+   int queuedWarShips = kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateABQ) - kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive);
+   int queuedFishingBoats = kbUnitCount(cMyID, gFishingUnit, cUnitStateABQ) - kbUnitCount(cMyID, gFishingUnit, cUnitStateAlive);
+   bool shouldBuild = false;
 
    // If we already have a dock planned, return false
    if (dockPlanID > 0)
@@ -9528,9 +8982,17 @@ bool shouldBuildDock()
       ((cDifficultyCurrent >= cDifficultyHard) && (age >= cAge4) && (dockCount < 3))) && 
       ((age >= cAge2 || agingUp() == true) && (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit) <= 0)))
    {
-      return true;
+      shouldBuild = true;
    }
-   return false;
+
+   // Check if we don't have enough ships queued
+   if ((queuedWarShips + queuedFishingBoats) < dockCount)
+   {
+      shouldBuild = false;
+   }
+
+
+   return shouldBuild;
 }
 
 
@@ -9555,9 +9017,9 @@ minInterval 15
    vector baseGatherPoint = kbBaseGetMilitaryGatherPoint(cMyID, kbBaseGetMainID(cMyID));
    int opportunityID = -1;
    int opportunityRange = distance(baseGatherPoint, guessEnemyLocation());
-   int enemyStrength = 0;
+   float enemyStrength = 0.0;
    vector location = cInvalidVector;
-   int friendlyStrength = getFriendlyArmyValue(gcavalryCompanyPlan);
+   float friendlyStrength = getFriendlyArmyValue(gcavalryCompanyPlan);
 
    // First set up the persistent cavalry company plan
    if (gcavalryCompanyPlan < 0) // First run, create a persistent plan.
@@ -10592,9 +10054,9 @@ minInterval 10
 
    vector targetLocation = cInvalidVector;
    int friendlyArmySize = aiPlanGetNumberUnits(gLandAttackPlanID, cUnitTypeLogicalTypeLandMilitary);
-   int friendlyStrength = -1;
-   int allyStrength = -1;
-   int enemyStrength = -1;
+   float friendlyStrength = 0.0;
+   float allyStrength = 0.0;
+   float enemyStrength = 0.0;
    bool retreat = false;
    int tempUnit = -1;
    vector retreatLoc = cInvalidVector;
@@ -11076,7 +10538,7 @@ minInterval 30
       int forwardArmyQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive, mainLocation, 60.0);
       int numberFoundArmyQuery = kbUnitQueryExecute(forwardArmyQuery);
       int forwardArmyCount = 0;
-      int armyPower = 0;
+      float armyPower = 0.0;
       int unitID = -1;
       vector unitLoc = cInvalidVector;
       int puid = -1;

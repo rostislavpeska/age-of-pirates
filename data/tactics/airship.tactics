@@ -37,7 +37,7 @@
 		<rangedlogic>1</rangedlogic>
 		<anim>BombAttack</anim>
 		<idleanim>Idle</idleanim>
-		<projectile>ypCrow</projectile>
+		<projectile>zpCrow</projectile>
 		<numberprojectiles>1</numberprojectiles>
 		<impacteffect>effects\impacts\mortar</impacteffect>
 		<accuracy>1.0</accuracy>
@@ -58,7 +58,7 @@
 		<rangedlogic>1</rangedlogic>
 		<anim>BombAttack</anim>
 		<idleanim>Idle</idleanim>
-		<projectile>ypCrow</projectile>
+		<projectile>zpCrow</projectile>
 		<numberprojectiles>1</numberprojectiles>
 		<impacteffect>effects\impacts\bomb</impacteffect>
 		<accuracy>1.0</accuracy>
@@ -86,7 +86,7 @@
 		<spreadfactor>0.0</spreadfactor>
 		<trackrating>240</trackrating>
 		<unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
-		<projectile>ypCrow</projectile>
+		<projectile>zpCrow</projectile>
 		<minrange>10</minrange>
 		<rate type="LogicalTypeGarrisonInShips">1.0 </rate>
 		<attachprotounit>zpMustardGas</attachprotounit>

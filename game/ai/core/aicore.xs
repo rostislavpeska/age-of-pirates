@@ -89,6 +89,7 @@ mutable void setMilPopLimit(int age1Limit = -1, int age2Limit = -1, int age3Limi
 include "core\aiGlobals.xs";
 include "core\aiUtilities.xs";
 include "core\aiBuildOrders.xs";
+include "core\aiWaterRules.xs";
 include "core\aiAssertiveWall.xs";
 include "core\aiBuildings.xs";
 include "core\aiTechs.xs";
@@ -1580,7 +1581,7 @@ void revoltedHandler(int techID = -1)
    }
 
    if ((techID == cTechDERevolutionSouthAfrica) || (techID == cTechDERevolutionCanadaBritish) ||
-       (techID == cTechDERevolutionCanadaFrench))
+       (techID == cTechDERevolutionCanadaFrench) || (techID == cTechDERevolutionFrance)) // AssertiveWall: Added DERevolutionFrance
    {
       gRevolutionType = cRevolutionEconomic;
       // Delete the Trek Wagons we get from this revolution since we don't use them.
@@ -2456,6 +2457,10 @@ minInterval 5
             {
                xsEnableRule("waterAttack"); // Water attacking.
                xsEnableRule("endlessWaterRaids"); // AssertiveWall: constant raids/patrols on water
+               if (gStartOnDifferentIslands == true)
+               {
+                  xsEnableRule("firstNavalAssault"); // AssertiveWall: handles the first few attacks on water
+               }
             }
          }
       }

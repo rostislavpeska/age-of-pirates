@@ -315,6 +315,7 @@ extern bool gLastExplorerCheck = true;  // AssertiveWall: Last time we checked i
 extern bool gLastExplorerCheck2 = true;  // AssertiveWall: Last time we checked if explorer is alive. true when alive
 extern int gExplorerID = -1;             // AssertiveWall: stores explorer ID. necessary for when explorer dies
 extern int gExplorer2ID = -1;          // AssertiveWall: stores explorer ID. necessary for when explorer dies
+extern int gFindBasePlanID = -1;        // AssertiveWall: Plan that finds the enemy base at the start of the game
 
 //==============================================================================
 // Economy.
@@ -407,6 +408,7 @@ extern int gLandReservePlan = -1; // Reserve defend plan, gathers units for use 
 extern int gHealerPlan = -1;      // Defend plan that controls our healers in our base.
 extern int gCoastalGunPlan = -1;  // AssertiveWall: Plan to stage artillery near docks and coast on island maps
 extern int gEndlessWaterRaidPlan = -1; // AssertiveWall: Used to roam the map and raid areas
+extern int gFirstWaterAttack = -1;      // AssertiveWall: Used to do the first few water attacks
 
 extern bool gDefenseReflex = false; // Set true when a defense reflex is overriding normal ops.
 extern bool gDefenseReflexPaused =

@@ -430,7 +430,7 @@ vector guessEnemyLocation(int player = -1)
       player = aiGetMostHatedPlayerID();
    }
 
-   // AssertiveWall: sometimes aiGetMostHatedPlayerID() doesn't work. if that's the case, grab the first enemy player
+   // AssertiveWall: sometimes aiGetMostHatedPlayerID() doesn't work? if that's the case, grab the first enemy player
    if (player < 0)
    {
       for (i = 0; < cNumberPlayers)
@@ -662,7 +662,7 @@ int getEnemyPlayerByTeamPosition(int position = -1)
       if (matchCount == position)
       {
          return (index);
-   }
+      }
    }
    return (-1);
 }
@@ -2199,7 +2199,9 @@ bool isDefendingOrAttacking()
       else // Attack plan.
       {
          if ((aiPlanGetParentID(existingPlanID) < 0) && // No parent so not a reinforcing child plan.
-             (existingPlanID != gNavyAttackPlan && existingPlanID != gCoastalGunPlan && existingPlanID != gEndlessWaterRaidPlan))
+             (existingPlanID != gNavyAttackPlan && 
+              existingPlanID != gCoastalGunPlan && 
+              existingPlanID != gEndlessWaterRaidPlan))
          {
             debugUtilities("isDefendingOrAttacking: don't create another combat plan because we already have one named: "
                + aiPlanGetName(existingPlanID));

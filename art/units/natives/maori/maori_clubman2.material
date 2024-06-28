@@ -5,7 +5,7 @@
     <parameters>
       <texture name="BaseColor" override="units\natives\maori\textures\maori_warrior_matA_BaseColor">
       </texture>
-      <texture name="Normals" override="units\spc\africa_east\knife_thrower\textures\knife_thrower_mata_Normals">
+      <texture name="Normals" override="units\natives\maori\textures\maori_warrior_matA_Normals">
       </texture>
       <texture name="Masks" override="units\spc\africa_east\knife_thrower\textures\knife_thrower_mata_Masks">
       </texture>
