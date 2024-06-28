@@ -12574,6 +12574,7 @@
     <flag>BuildingExtendedDeathAnim</flag>
     <flag>DoNotDamageTrees</flag>
     <flag>UseSharedBuildLimit</flag>
+    <flag>DirectProjectile</flag>
     <sharedbuildlimitunittypes>
       <unittype>zpAirship</unittype>
       <unittype>zpAirshipProxy</unittype>
@@ -13068,6 +13069,7 @@
     <flag>BuildingExtendedDeathAnim</flag>
     <flag>DoNotDamageTrees</flag>
     <flag>UseSharedBuildLimit</flag>
+    <flag>DirectProjectile</flag>
     <sharedbuildlimitunittypes>
       <unittype>zpAirship</unittype>
       <unittype>zpAirshipAI</unittype>
