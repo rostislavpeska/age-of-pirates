@@ -25237,7 +25237,7 @@
     <maxrunvelocity>13.0000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>3.0000</turnrate>
-    <animfile>units\naval\war_canoe\war_canoe.xml</animfile>
+    <animfile>units\naval\war_canoe\waka.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\units\az_war_canoe_icon.png</icon>
