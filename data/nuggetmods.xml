@@ -845,6 +845,53 @@
       <difficulty>3</difficulty>
       <killunitonapply>0</killunitonapply>
     </nugget>
+    <nugget>
+      <name>zpAUWaterNuggetBoatGather</name>
+      <type>GiveTech</type>
+      <nuggetunit>ypNuggetEuropeanWreck</nuggetunit>
+      <waternugget>true</waternugget>
+      <rolloverstringid>66489</rolloverstringid>
+      <applystringid>66490</applystringid>
+      <tech>ypNuggetShipGather</tech>
+      <maptype>australia</maptype>
+      <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
+      <guardian>zpGuardianWaka</guardian>
+      <guardian>zpGuardianWaka</guardian>
+      <difficulty>6</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpAUWaterNuggetLemuria1a</name>
+      <type>AdjustResource</type>
+      <nuggetunit>ypNuggetEuropeanWreck</nuggetunit>
+      <waternugget>true</waternugget>
+      <rolloverstringid>66495</rolloverstringid>
+      <applystringid>66496</applystringid>
+      <resource>Food</resource>
+      <amount>215</amount>
+      <maptype>australia</maptype>
+      <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
+      <guardian>zpGuardianWaka</guardian>
+      <guardian>zpGuardianWaka</guardian>
+      <difficulty>6</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpAUWaterNuggetLemuria2a</name>
+      <type>AdjustResource</type>
+      <nuggetunit>ypNuggetEuropeanWreck</nuggetunit>
+      <waternugget>true</waternugget>
+      <rolloverstringid>66495</rolloverstringid>
+      <applystringid>66496</applystringid>
+      <resource>Wood</resource>
+      <amount>205</amount>
+      <maptype>australia</maptype>
+      <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
+      <guardian>zpGuardianWaka</guardian>
+      <guardian>zpGuardianWaka</guardian>
+      <difficulty>6</difficulty>
+    </nugget>
 
  
 

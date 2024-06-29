@@ -9002,6 +9002,9 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatMaoriClubman</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpWakaCanoe</target>
+      </effect>
       <effect type="TechStatus" status="obtainable">zpNativeTreatyMaori</effect>
       <effect type="TechStatus" status="obtainable">DEIndianFriendshipMaori</effect>
       <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyMaori</effect>
@@ -11901,6 +11904,9 @@
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatBoomerang</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpWakaCanoe</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpNatSurvivalism</effect>
       <effect type="TechStatus" status="obtainable">zpNatAustraliaHunting</effect>
