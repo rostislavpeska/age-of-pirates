@@ -24,7 +24,6 @@
       <maptype>caribbeanwater</maptype>
       <maptype>hawaii</maptype>
       <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetSwordfish</name>
@@ -70,21 +69,18 @@
       <maptype>arcticwater</maptype>
       <maptype>kurils</maptype>
       <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetMu2</name>
       <maptype>arcticwater</maptype>
       <maptype>kurils</maptype>
       <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetMu1</name>
       <maptype>arcticwater</maptype>
       <maptype>kurils</maptype>
       <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetLemuria2</name>
