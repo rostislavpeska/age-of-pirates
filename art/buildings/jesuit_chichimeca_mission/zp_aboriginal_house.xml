@@ -1,80 +1,7 @@
 <animfile>
     <definebone>bone_flagtexture1</definebone>
     <definebone>bone_flagtexture2</definebone>
-    <definebone>bone_falling_building</definebone>
-    <submodel>sub_construction_stage_01
-        <component>construction_stage_01
-            <assetreference type="GrannyModel">
-                <file>buildings\constructions\nat_4x4_stage1</file>
-            </assetreference>
-            <decal>
-                <effecttype>bump</effecttype>
-                <texture>buildings\constructions\2x2_construction_decal</texture>
-                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-                <width>10.00</width>
-                <height>10.00</height>
-            </decal>
-        </component>
-        <anim>Idle
-            <component>construction_stage_01</component>
-        </anim>
-    </submodel>
-    <submodel>sub_construction_stage_02
-        <component>construction_stage_02
-            <assetreference type="GrannyModel">
-                <file>buildings\constructions\nat_4x4_stage2</file>
-            </assetreference>
-            <decal>
-                <effecttype>bump</effecttype>
-                <texture>buildings\constructions\2x2_construction_decal</texture>
-                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-                <width>10.00</width>
-                <height>10.00</height>
-            </decal>
-        </component>
-        <anim>Idle
-            <component>construction_stage_02</component>
-        </anim>
-    </submodel>
-    <submodel>sub_construction_stage_03
-        <attachment>campfire_con
-            <component>campfire_con
-                <assetreference type="GrannyModel">
-                    <file>buildings\jesuit_chichimeca_mission\campfire_con</file>
-                </assetreference>
-            </component>
-            <anim>Idle
-                <component>campfire_con</component>
-            </anim>
-        </attachment>
-        <attachment>chichimeca_mission_con
-            <component>chichimeca_mission_con
-                <assetreference type="GrannyModel">
-                    <file>buildings\jesuit_chichimeca_mission\chichimeca_mission_con</file>
-                </assetreference>
-            </component>
-            <anim>Idle
-                <component>chichimeca_mission_con</component>
-            </anim>
-        </attachment>
-        <component>construction_stage_03
-            <assetreference type="GrannyModel">
-                <file>buildings\constructions\nat_4x4_stage2</file>
-            </assetreference>
-            <decal>
-                <effecttype>bump</effecttype>
-                <texture>buildings\constructions\2x2_construction_decal</texture>
-                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-                <width>10.00</width>
-                <height>10.00</height>
-            </decal>
-            <attach a="campfire_con" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
-            <attach a="chichimeca_mission_con" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
-        </component>
-        <anim>Idle
-            <component>construction_stage_03</component>
-        </anim>
-    </submodel>
+    <definebone>bone_falling_building</definebone> 
     <submodel>mission
         <attachment>fire
             <component>fire
@@ -143,47 +70,78 @@
             <attach a="chichimeca_mission_props" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
             <attach a="fire" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
         </component>
-        <component>DEAD
+        <anim>Idle
+            <component>Attachment</component>
+        </anim>
+    </submodel>
+    <submodel>mission_sm
+        <component>Attachment2
             <assetreference type="GrannyModel">
-                <file>buildings\1death_anim\Deathmodel</file>
+                <file>buildings\jesuit_chichimeca_mission\chichimeca_mission_sm_Model</file>
             </assetreference>
             <decal>
                 <effecttype>bump</effecttype>
                 <texture>buildings\native_settlement\japan_decal_01</texture>
                 <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
                 <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
-                <width>10.00</width>
-                <height>10.00</height>
+                <width>8.00</width>
+                <height>8.00</height>
             </decal>
-            <attach a="campfire" frombone="MASTER" tobone="bone_falling_building" syncanims="0"></attach>
-            <attach a="chichimeca_mission" frombone="MASTER" tobone="bone_falling_building" syncanims="0"></attach>
-            <attach a="chichimeca_mission_props" frombone="MASTER" tobone="bone_falling_building" syncanims="0"></attach>
         </component>
-        <anim>Death
-            <assetreference type="GrannyAnim">
-                <file>buildings\1death_anim\Deathmodel_Animation</file>
-            </assetreference>
-            <component>DEAD</component>
-            <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
-        </anim>
         <anim>Idle
-            <component>Attachment</component>
+            <component>Attachment2</component>
         </anim>
     </submodel>
-    <component>bank
-        <logic type="BuildingCompletion">
-            <p0>
-                <submodelref ref="sub_construction_stage_01"></submodelref>
-            </p0>
-            <p33>
-                <submodelref ref="sub_construction_stage_02"></submodelref>
-            </p33>
-            <p66>
-                <submodelref ref="sub_construction_stage_03"></submodelref>
-            </p66>
-            <p100>
+    <submodel>mission_xs
+        <component>Attachment3
+            <assetreference type="GrannyModel">
+                <file>buildings\jesuit_chichimeca_mission\chichimeca_mission_xs_Model</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_settlement\japan_decal_01</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>8.00</width>
+                <height>8.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>Attachment3</component>
+        </anim>
+    </submodel>
+    <submodel>mission_xxs
+        <component>Attachment4
+            <assetreference type="GrannyModel">
+                <file>buildings\jesuit_chichimeca_mission\chichimeca_mission_xxs_Model</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_settlement\japan_decal_01</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>8.00</width>
+                <height>8.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>Attachment4</component>
+        </anim>
+    </submodel>
+    <component>housemodel
+        <logic type="Variation">
+            <data>
                 <submodelref ref="mission"></submodelref>
-            </p100>
+            </data>
+            <data>
+                <submodelref ref="mission_sm"></submodelref>
+            </data>
+            <data>
+                <submodelref ref="mission_xs"></submodelref>
+            </data>
+            <data>
+                <submodelref ref="mission_xxs"></submodelref>
+            </data>
         </logic>
     </component>
 </animfile>
