@@ -25796,39 +25796,25 @@
       <rate type="deHacienda" resource="Wood">0.250000</rate>
     </protoaction>
   </unit>
-  
-  
-  
-
-
-
-
-
-
-
-
-
-  <!--TEST-->
-
-  <unit id="" name="zpMineJade">
-    <dbid></dbid>
-    <displaynameid>301269</displaynameid>
-    <editornameid>301270</editornameid>
+  <unit id="20239" name="zpJadeMine">
+    <dbid>20239</dbid>
+    <displaynameid>301317</displaynameid>
+    <editornameid>301318</editornameid>
     <obstructionradiusx>3.0000</obstructionradiusx>
     <obstructionradiusz>3.0000</obstructionradiusz>
     <socketoffsetx>0.0000</socketoffsetx>
     <socketoffsetz>0.0000</socketoffsetz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\gold_mine\silver_mine.xml</animfile>
+    <animfile>buildings\gold_mine\jade_mine.xml</animfile>
     <impacttype>Stone</impacttype>
-    <icon>resources\art\buildings\silver_mine\silver_mine_icon.png</icon>
+    <icon>resources\art\buildings\spc_mines\jade_mine_portrait.png</icon>
     <minimapicon>ui\minimap\minimap_gold</minimapicon>
-    <portraiticon>resources\art\buildings\silver_mine\silver_mine_portrait.png</portraiticon>
+    <portraiticon>resources\art\buildings\spc_mines\jade_mine_portrait.png</portraiticon>
     <rollovertextid>28576</rollovertextid>
     <shortrollovertextid>28575</shortrollovertextid>
     <los>18.0000</los>
-    <initialresource resourcetype="Gold">2500.0000</initialresource>
+    <initialresource resourcetype="Gold">3000.0000</initialresource>
     <resourcesubtype>Gold</resourcesubtype>
     <buildingworkrate>1.0000</buildingworkrate>
     <scalingaurascale>3.0</scalingaurascale>
@@ -25863,8 +25849,72 @@
     <flag>Tracked</flag>
     <flag>AllowSocketPlacement</flag>
     <flag>AlwaysShowAsSocket</flag>
+    <flag>RMCanRotate</flag>
     <command page="10" column="7">Delete</command>
   </unit>
+  <unit id="20240" name="zpPineapleBush">
+    <dbid>20240</dbid>
+    <displaynameid>301319</displaynameid>
+    <editornameid>301320</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>terrain\trees\pineapple_bush\pineapple_bush.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\terrain\trees\pineapple_bush\pineapplebush_icon.png</icon>
+    <portraiticon>resources\art\terrain\trees\pineapple_bush\pineapplebush_portrait.png</portraiticon>
+    <rollovertextid>30220</rollovertextid>
+    <shortrollovertextid>30219</shortrollovertextid>
+    <initialresource resourcetype="Food">1000.0000</initialresource>
+    <resourcesubtype>forage</resourcesubtype>
+    <gathererlimit>8</gathererlimit>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <scalingaurascale>1.8</scalingaurascale>
+    <decay delay="0.0000" duration="1.0000">
+    </decay>
+    <minimapcolor red="0.5000" blue="0.2500" green="0.2000">
+    </minimapcolor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeVillagersRespondToAttack</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Nature</unittype>
+    <unittype>Food</unittype>
+    <unittype>AbstractFruit</unittype>
+    <unittype>AbstractBerryBush</unittype>
+    <flag>NoHPBar</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>Invulnerable</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  
+  
+  
+
+
+
+
+
+
+
+
+
+  <!--TEST-->
   <unit id="" name="zpSPCFlyingDutchman">
     <dbid></dbid>
     <displaynameid>301165</displaynameid>

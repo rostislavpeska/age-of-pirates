@@ -50,13 +50,13 @@
         </anim>
     </attachment>
     <attachment>bowman
-        <include>units\naval\war_canoe\canoeharpooner.xml</include>
+        <include>units\naval\war_canoe\maoribowman.xml</include>
     </attachment>
     <attachment>rower1
-        <include>units\naval\war_canoe\inuitrower1.xml</include>
+        <include>units\naval\war_canoe\maorirower1.xml</include>
     </attachment>
     <attachment>rower2
-        <include>units\naval\war_canoe\inuitrower2.xml</include>
+        <include>units\naval\war_canoe\maorirower2.xml</include>
     </attachment>
     <component>ModelComp
         <assetreference type="GrannyModel">

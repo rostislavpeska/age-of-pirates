@@ -1,3 +1,16 @@
 <animfile>
-  <component>Pig_V2<assetreference type="GrannyModel"><file>units\animals\pig\Pig_V2</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_64x64</texture><selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture><width>2.0</width><height>2.00</height></decal></component><anim>Idle<assetreference type="GrannyAnim"><file>animation_library\quads\Pig_Idle</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Pig_Bored</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Pig_Eat</file></assetreference><component>Pig_V2</component></anim><anim>Death<assetreference type="GrannyAnim"><file>animation_library\quads\Pig_Die</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.30</tag></assetreference><component>Pig_V2</component></anim><anim>Walk<assetreference type="GrannyAnim"><file>animation_library\quads\Pig_Walk</file></assetreference><component>Pig_V2</component></anim>
+  <submodel>Pig_V1<component>Pig_V1<assetreference type="GrannyModel"><file>units\animals\pig\Pig_V1</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_64x64</texture><selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture><width>2.0</width><height>2.00</height></decal></component><anim>Idle<assetreference type="GrannyAnim"><file>animation_library\quads\Pig_Idle</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Pig_Bored</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Pig_Eat</file></assetreference><component>Pig_V1</component></anim><anim>Death<assetreference type="GrannyAnim"><file>animation_library\quads\Pig_Die</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.30</tag></assetreference><component>Pig_V1</component></anim><anim>Walk<assetreference type="GrannyAnim"><file>animation_library\quads\Pig_Walk</file></assetreference><component>Pig_V1</component></anim></submodel>
+  <submodel>Pig_V2<component>Pig_V2<assetreference type="GrannyModel"><file>units\animals\pig\Pig_V2</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_64x64</texture><selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture><width>2.0</width><height>2.00</height></decal></component><anim>Idle<assetreference type="GrannyAnim"><file>animation_library\quads\Pig_Idle</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Pig_Bored</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Pig_Eat</file></assetreference><component>Pig_V2</component></anim><anim>Death<assetreference type="GrannyAnim"><file>animation_library\quads\Pig_Die</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.30</tag></assetreference><component>Pig_V2</component></anim><anim>Walk<assetreference type="GrannyAnim"><file>animation_library\quads\Pig_Walk</file></assetreference><component>Pig_V2</component></anim></submodel>
+  <component>
+    <logic type="Variation">
+      <data>
+        <submodelref ref="Pig_V1">
+        </submodelref>
+      </data>
+      <data>
+        <submodelref ref="Pig_V2">
+        </submodelref>
+      </data>
+    </logic>
+  </component>
 </animfile>

@@ -1,0 +1,14 @@
+<animfile>
+  <component>pineapple_bush
+    <logic type="Variation">
+      <v1>
+        <assetreference type="GrannyModel">
+          <file>terrain\trees\pineapple_bush\PineappleBush_V1</file>
+        </assetreference>
+      </v1>
+      
+
+    </logic>
+    <decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_circle_64x64</selectedtexture><width>2.00</width><height>2.00</height></decal></component>
+  <anim>idle<component>pineapple_bush</component></anim>
+</animfile>
