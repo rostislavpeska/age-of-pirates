@@ -25578,8 +25578,8 @@
       <damagebonus type="AbstractLightInfantry">1.750000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20153" name="zpNatMercMaoriSlinger">
-    <dbid>20153</dbid>
+  <unit id="20291" name="zpNatMercMaoriSlinger">
+    <dbid>20291</dbid>
     <displaynameid>300698</displaynameid>
     <editornameid>301310</editornameid>
     <obstructionradiusx>0.4900</obstructionradiusx>
@@ -25722,6 +25722,78 @@
       <rof>1.500000</rof>
       <projectile>Javelin</projectile>
       <damagebonus type="AbstractWarship">6.000000</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20292" name="zpFeralPig">
+    <dbid>20292</dbid>
+    <displaynameid>301314</displaynameid>
+    <editornameid>301315</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <idletimeout>5.0000</idletimeout>
+    <maxvelocity>2.0000</maxvelocity>
+    <maxrunvelocity>4.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <wanderdistance>4</wanderdistance>
+    <animfile>units\animals\pig\pig.xml</animfile>
+    <impacttype>Animal</impacttype>
+    <icon>resources\art\units\animals\pig\pig_portrait.png</icon>
+    <portraiticon>resources\art\units\animals\pig\pig_portrait.png</portraiticon>
+    <rollovertextid>301187</rollovertextid>
+    <shortrollovertextid>301316</shortrollovertextid>
+    <initialhitpoints>20.0000</initialhitpoints>
+    <maxhitpoints>20.0000</maxhitpoints>
+    <los>18.0000</los>
+    <unitaitype>Passive</unitaitype>
+    <trainpoints>0.0000</trainpoints>
+    <bounty>0.0000</bounty>
+    <communityplazaweight>0.3334</communityplazaweight>
+    <initialresource resourcetype="Food">500.0000</initialresource>
+    <resourcedecay>0.7500</resourcedecay>
+    <resourcesubtype>meat</resourcesubtype>
+    <minimapcolor red="0.5000" blue="0.2500" green="0.2000">
+    </minimapcolor>
+    <gathererlimit>8</gathererlimit>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>HuntedResource</unittype>
+    <unittype>Huntable</unittype>
+    <unittype>AnimalPrey</unittype>
+    <unittype>Resource</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>CorpseDecays</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>RMCanRotate</flag>
+    <flag>Wanders</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogOnlyAfterSeen</flag>
+    <flag>CivSpecificText</flag>
+    <flag>Tracked</flag>
+    <flag>InvulnerableToAreaDamage</flag>
+    <tactics>hunt.tactics</tactics>
+    <protoaction>
+      <name>ShrineGather</name>
+      <rate type="AbstractShrine">0.066500</rate>
+    </protoaction>
+    <protoaction>
+      <name>HaciendaGather</name>
+      <rate type="deHacienda">1.000000</rate>
+      <rate type="deHacienda" resource="Food">0.166667</rate>
+      <rate type="deHacienda" resource="Gold">0.113334</rate>
+      <rate type="deHacienda" resource="Wood">0.250000</rate>
     </protoaction>
   </unit>
   
