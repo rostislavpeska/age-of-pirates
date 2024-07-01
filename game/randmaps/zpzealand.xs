@@ -60,7 +60,7 @@ rmSetBaseTerrainMix("caribbeanSkirmish");
 rmSetMapType("newzealand");
 rmSetMapType("grass");
 rmSetMapType("water");
-rmSetLightingSet("rm_afri_atlas");
+rmSetLightingSet("3x10a2_lakotavillage");
 rmSetOceanReveal(true);
 
 // Init map.
@@ -144,7 +144,7 @@ int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true
 
 // Nature Constraints
 int avoidAll=rmCreateTypeDistanceConstraint("avoid all", "all", 6.0);
-int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "mine", 35.0);
+int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "zpJadeMine", 35.0);
 int avoidGold=rmCreateTypeDistanceConstraint("avoid gold", "MineGold", 35.0);
 int mediumAvoidImpassableLand=rmCreateTerrainDistanceConstraint("medium avoid impassable land", "Land", false, 12.0);
 int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 40.0);
@@ -920,13 +920,13 @@ rmSetObjectDefMaxDistance(TCID, TCfloat);
 
 //Player resources
 int playerSilverID = rmCreateObjectDef("player silver");
-rmAddObjectDefItem(playerSilverID, "mine", 1, 0);
+rmAddObjectDefItem(playerSilverID, "zpJadeMine", 1, 0);
 rmSetObjectDefMinDistance(playerSilverID, 10.0);
 rmSetObjectDefMaxDistance(playerSilverID, 30.0);
 rmAddObjectDefConstraint(playerSilverID, avoidImpassableLand); 
 
 int playerDeerID=rmCreateObjectDef("player deer");
-rmAddObjectDefItem(playerDeerID, "Elk", rmRandInt(10,15), 10.0);
+rmAddObjectDefItem(playerDeerID, "zpFeralPig", rmRandInt(10,15), 10.0);
 rmSetObjectDefMinDistance(playerDeerID, 15.0);
 rmSetObjectDefMaxDistance(playerDeerID, 30.0);
 rmAddObjectDefConstraint(playerDeerID, avoidImpassableLand);
@@ -1009,13 +1009,13 @@ if (rmGetIsKOTH() == true) {
 
 int silverType = -1;
 int silverID = -1;
-int silverCount = (cNumberNonGaiaPlayers);
+int silverCount = (1+cNumberNonGaiaPlayers/2);
 rmEchoInfo("silver count = "+silverCount);
 
 for(i=0; < silverCount)
 {
 	int southSilverID = rmCreateObjectDef("south silver "+i);
-	rmAddObjectDefItem(southSilverID, "mine", 1, 0.0);
+	rmAddObjectDefItem(southSilverID, "zpJadeMine", 1, 0.0);
 	rmSetObjectDefMinDistance(southSilverID, 0.0);
 	rmSetObjectDefMaxDistance(southSilverID, rmXFractionToMeters(0.45));
 	rmAddObjectDefConstraint(southSilverID, avoidCoin);
@@ -1030,7 +1030,7 @@ for(i=0; < silverCount)
 for(i=0; < silverCount)
 {
 	silverID = rmCreateObjectDef("north silver "+i);
-	rmAddObjectDefItem(silverID, "mine", 1, 0.0);
+	rmAddObjectDefItem(silverID, "zpJadeMine", 1, 0.0);
 	rmSetObjectDefMinDistance(silverID, 0.0);
 	rmSetObjectDefMaxDistance(silverID, rmXFractionToMeters(0.45));
 	rmAddObjectDefConstraint(silverID, avoidCoin);
@@ -1219,14 +1219,15 @@ rmSetStatusText("",0.80);
 
 // DEER	
 int deerID=rmCreateObjectDef("deer herd");
-rmAddObjectDefItem(deerID, "Elk", rmRandInt(4,6), 10.0);
+rmAddObjectDefItem(deerID, "zpFeralPig", rmRandInt(3,5), 10.0);
 rmSetObjectDefMinDistance(deerID, 0.0);
 rmSetObjectDefMaxDistance(deerID, rmXFractionToMeters(0.5));
 rmAddObjectDefConstraint(deerID, avoidAll);
 rmAddObjectDefConstraint(deerID, avoidImpassableLand);
+rmAddObjectDefConstraint(deerID, avoidHighMountains);
 rmSetObjectDefCreateHerd(deerID, true);
-rmPlaceObjectDefInArea(deerID, 0, northIslandCliffs2, 1+cNumberNonGaiaPlayers/2);
-rmPlaceObjectDefInArea(deerID, 0, southIslandCliffs2, 1+cNumberNonGaiaPlayers/2);
+rmPlaceObjectDefInArea(deerID, 0, northIsland, 1+cNumberNonGaiaPlayers/2);
+rmPlaceObjectDefInArea(deerID, 0, southIsland, 1+cNumberNonGaiaPlayers/2);
 
 // Kiwi	
 int kiwiID=rmCreateObjectDef("kiwi herd");
@@ -1452,6 +1453,32 @@ rmSetTriggerLoop(false);
 	rmSetTriggerLoop(true);
 	}
 
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate Khmer"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","Khmers");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnKhmers"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
 
 if (nativeVariant ==2) {
 	for (k=1; <= cNumberNonGaiaPlayers) {
@@ -1528,6 +1555,8 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Khmer"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga"+k));
 rmAddTriggerEffect("Fire Event");

@@ -25,7 +25,7 @@ void main(void)
   string cliffType = "caribbean";
   string mapType1 = "hawaii";
   string mapType2 = "grass";
-  string huntable1 = "Deer";
+  string huntable1 = "zpFeralPig";
   string huntable2 = "ypWildElephant";
   string fish1 = "ypFishTuna";
   string fish2 = "FishMahi";
@@ -129,9 +129,9 @@ void main(void)
 	int whaleLand = rmCreateTerrainDistanceConstraint("whale land", "land", true, 22.0);
 	int forestObjConstraint=rmCreateTypeDistanceConstraint("forest obj", "all", 6.0);
 	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 20.0);
-	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "minecopper", 45.0);
-  int avoidGold=rmCreateTypeDistanceConstraint("avoid gold", "minegold", 35.0);
-	int avoidRandomBerries=rmCreateTypeDistanceConstraint("avoid random berries", "berrybush", 55.0);
+	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "zpJadeMine", 45.0);
+  int avoidGold=rmCreateTypeDistanceConstraint("avoid gold", "MineGold", 35.0);
+	int avoidRandomBerries=rmCreateTypeDistanceConstraint("avoid random berries", "zpPineapleBush", 55.0);
 	int avoidHuntable1=rmCreateTypeDistanceConstraint("avoid huntable1", huntable1, 30.0);
   int avoidHuntable2=rmCreateTypeDistanceConstraint("avoid huntable2", huntable2, 40.0);
 	int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 45.0); 
@@ -955,20 +955,6 @@ if(cNumberNonGaiaPlayers >=3) {
   //rmPlaceGroupingInArea(caribs4VillageID, 0, bigIslandID, 1);
 }
 
-/*if(cNumberNonGaiaPlayers >=6) {
-  int caribs5VillageID = -1;
-  int caribs5VillageType = rmRandInt(1,5);
-  caribs5VillageID = rmCreateGrouping("caribs5 city", "maori_hawaii_0"+caribs5VillageType);
-  rmAddGroupingConstraint(caribs5VillageID, avoidImpassableLand);
-  rmAddGroupingConstraint(caribs5VillageID, avoidTPLong);
-  rmAddGroupingConstraint(caribs5VillageID, avoidHighMountainsFar);
-  rmAddGroupingConstraint(caribs5VillageID, avoidJesuitLong);
-  //rmSetGroupingMinDistance(caribs5VillageID, 0);
-  //rmSetGroupingMaxDistance(caribs5VillageID, 50);
-  rmPlaceGroupingInArea(caribs5VillageID, 0, bigIslandID, 1);
-}*/
-
-
 
 	// text
 	rmSetStatusText("",0.60);
@@ -998,7 +984,7 @@ if(cNumberNonGaiaPlayers >=3) {
 
 	//Prepare to place player starting Mines 
 	int playerGoldID = rmCreateObjectDef("player silver");
-	rmAddObjectDefItem(playerGoldID, "minecopper", 1, 0);
+	rmAddObjectDefItem(playerGoldID, "zpJadeMine", 1, 0);
 	rmSetObjectDefMinDistance(playerGoldID, 12.0);
 	rmSetObjectDefMaxDistance(playerGoldID, 20.0);
 	rmAddObjectDefConstraint(playerGoldID, avoidAll);
@@ -1015,7 +1001,7 @@ if(cNumberNonGaiaPlayers >=3) {
   
   //Prepare to place player starting Berries
 	int playerBerriesID=rmCreateObjectDef("player berries");
-	rmAddObjectDefItem(playerBerriesID, "berrybush", 6, 4.0);
+	rmAddObjectDefItem(playerBerriesID, "zpPineapleBush", 6, 4.0);
   rmSetObjectDefMinDistance(playerBerriesID, 15);
   rmSetObjectDefMaxDistance(playerBerriesID, 20);		
 	rmAddObjectDefConstraint(playerBerriesID, avoidAll);
@@ -1145,25 +1131,25 @@ if(cNumberNonGaiaPlayers >=3) {
     // --------------- Make load bar move. ----------------------------------------------------------------------------
 	rmSetStatusText("",0.80);
 
-	// Scattered silver throughout island and gold in south central area
-	int goldID = rmCreateObjectDef("random gold");
-	rmAddObjectDefItem(goldID, "minegold", 1, 0);
-	rmSetObjectDefMinDistance(goldID, 0.0);
-	rmSetObjectDefMaxDistance(goldID, rmXFractionToMeters(0.3));
-	rmAddObjectDefConstraint(goldID, avoidAll);
-  rmAddObjectDefConstraint(goldID, avoidWater8);
-	rmAddObjectDefConstraint(goldID, avoidGold);
-  rmAddObjectDefConstraint(goldID, shortAvoidImpassableLand);
-  rmAddObjectDefConstraint(goldID, avoidImportantItem);
-  rmAddAreaConstraint(goldID, avoidJesuit);
-  rmAddObjectDefConstraint(goldID, avoidCoin);
-  rmAddObjectDefConstraint(goldID, avoidTP);
-  rmAddObjectDefConstraint(goldID, avoidHighMountains);
-	rmPlaceObjectDefInArea(goldID, 0, bigIslandID, 3*cNumberNonGaiaPlayers);
+
+  int jadeID = rmCreateObjectDef("random jade");
+	rmAddObjectDefItem(jadeID, "zpJadeMine", 1, 0);
+	rmSetObjectDefMinDistance(jadeID, 0.0);
+	rmSetObjectDefMaxDistance(jadeID, rmXFractionToMeters(0.3));
+	rmAddObjectDefConstraint(jadeID, avoidAll);
+  rmAddObjectDefConstraint(jadeID, avoidWater8);
+	rmAddObjectDefConstraint(jadeID, avoidGold);
+  rmAddObjectDefConstraint(jadeID, shortAvoidImpassableLand);
+  rmAddObjectDefConstraint(jadeID, avoidImportantItem);
+  rmAddAreaConstraint(jadeID, avoidJesuit);
+  rmAddObjectDefConstraint(jadeID, avoidCoin);
+  rmAddObjectDefConstraint(jadeID, avoidTP);
+  rmAddObjectDefConstraint(jadeID, avoidHighMountains);
+	rmPlaceObjectDefInArea(jadeID, 0, bigIslandID, 4*cNumberNonGaiaPlayers);
    
 	// Scattered berries all over island
 	int berriesID=rmCreateObjectDef("random berries");
-	rmAddObjectDefItem(berriesID, "berrybush", rmRandInt(5,8), 4.0); 
+	rmAddObjectDefItem(berriesID, "zpPineapleBush", rmRandInt(5,8), 4.0); 
 	rmSetObjectDefMinDistance(berriesID, 0.0);
 	rmSetObjectDefMaxDistance(berriesID, rmXFractionToMeters(0.3));
 	rmAddObjectDefConstraint(berriesID, avoidTP);   
