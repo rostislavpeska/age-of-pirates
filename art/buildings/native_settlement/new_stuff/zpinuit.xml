@@ -11,6 +11,26 @@
             <component>Igloo2</component>
         </anim>
     </attachment>
+    <attachment>Igloo2sm
+        <component>Igloo2sm
+            <assetreference type="GrannyModel">
+                <file>buildings\native_settlement\new_stuff\inuit_settlement\Igloo2_sm_Model</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>Igloo2sm</component>
+        </anim>
+    </attachment>
+    <attachment>Igloo2lg
+        <component>Igloo2lg
+            <assetreference type="GrannyModel">
+                <file>buildings\native_settlement\new_stuff\inuit_settlement\Igloo2_lg_Model</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>Igloo2lg</component>
+        </anim>
+    </attachment>
     <attachment>bass
         <include>units\animals\fish\bass.xml</include>
     </attachment>
@@ -54,13 +74,15 @@
             </data>
             <data>
                 <assetreference type="GrannyModel">
-                    <file>buildings\native_ruins\insuksuk_a</file>
+                    <file>buildings\native_settlement\new_stuff\inuit_settlement\Igloo1_sm_Model</file>
                 </assetreference>
+                <attach a="Igloo2sm" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
             </data>
             <data>
                 <assetreference type="GrannyModel">
-                    <file>buildings\native_ruins\insuksuk_b</file>
+                    <file>buildings\native_settlement\new_stuff\inuit_settlement\Igloo1_lg_Model</file>
                 </assetreference>
+                <attach a="Igloo2lg" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
             </data>
             <data>
                 <assetreference type="GrannyModel">
