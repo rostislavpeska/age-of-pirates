@@ -1,5 +1,6 @@
 <animfile>
     <definebone>bone_master</definebone>
+    <definebone>bone_canoe</definebone>
     <definebone>bone_bowman</definebone>
     <definebone>bone_rower1</definebone>
     <definebone>bone_rower2</definebone>
@@ -24,6 +25,16 @@
         </component>
         <anim>None
             <component>foam3</component>
+        </anim>
+    </attachment>
+    <attachment>ClickZone
+        <component>ClickZone
+            <assetreference type="GrannyModel">
+                <file>units\naval\war_Canoe\waka_attachment_Model</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>ClickZone</component>
         </anim>
     </attachment>
     <attachment>DeathWaterFoam
@@ -73,25 +84,26 @@
         <attach a="rower2" frombone="Bip01" tobone="bone_rower2" syncanims="1"></attach>
         <attach a="rower1" frombone="Bip01" tobone="bone_rower3" syncanims="1"></attach>
         <attach a="rower2" frombone="Bip01" tobone="bone_rower4" syncanims="1"></attach>
+        <attach a="ClickZone" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"></attach>
     </component>
     <anim>Idle
-        <!--<assetreference type="GrannyAnim">
-            <file>animation_library\naval\war_canoe\idle</file>
-        </assetreference>-->
+        <assetreference type="GrannyAnim">
+            <file>units\naval\war_canoe\waka_Anim</file>
+        </assetreference>
         <component>ModelComp</component>
         <attach a="IdleWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
     </anim>
     <anim>Walk
-        <!--assetreference type="GrannyAnim">
-            <file>animation_library\naval\war_canoe\walk</file>
+        <assetreference type="GrannyAnim">
+            <file>units\naval\war_canoe\waka_Anim</file>
             <tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.43</tag>
-        </assetreference>-->
+        </assetreference>
         <component>ModelComp</component>
         <attach a="MoveWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
     </anim>
     <anim>GatherFish
         <assetreference type="GrannyAnim">
-            <file>animation_library\naval\war_canoe\fish</file>
+            <file>units\naval\war_canoe\waka_Anim</file>
             <tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.18</tag>
         </assetreference>
         <component>ModelComp</component>
@@ -100,7 +112,7 @@
     </anim>
     <anim>Death
         <assetreference type="GrannyAnim">
-            <file>animation_library\naval\war_canoe\death</file>
+            <file>units\naval\war_canoe\waka_death_Anim</file>
             <tag type="SpecificSoundSet" checkvisible="1" set="DudeHitsWater">0.43</tag>
         </assetreference>
         <component>ModelComp</component>
@@ -108,12 +120,12 @@
     </anim>
     <anim>RangedAttack
         <assetreference type="GrannyAnim">
-            <file>animation_library\naval\war_canoe\rangeattack1</file>
+            <file>units\naval\war_canoe\waka_Anim</file>
             <tag type="Attack">0.98</tag>
             <tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag>
         </assetreference>
         <assetreference type="GrannyAnim">
-            <file>animation_library\naval\war_canoe\rangeattack1</file>
+            <file>units\naval\war_canoe\waka_Anim</file>
             <tag type="Attack">0.98</tag>
             <tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag>
         </assetreference>
@@ -122,12 +134,12 @@
     </anim>
     <anim>Raze_Attack
         <assetreference type="GrannyAnim">
-            <file>animation_library\naval\war_canoe\rangeattack1</file>
+            <file>units\naval\war_canoe\waka_Attack_Anim</file>
             <tag type="Attack">0.98</tag>
             <tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag>
         </assetreference>
         <assetreference type="GrannyAnim">
-            <file>animation_library\naval\war_canoe\rangeattack1</file>
+            <file>units\naval\war_canoe\waka_Attack_Anim</file>
             <tag type="Attack">0.98</tag>
             <tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag>
         </assetreference>
@@ -136,7 +148,7 @@
     </anim>
     <anim>Raze_Idle
         <assetreference type="GrannyAnim">
-            <file>animation_library\naval\war_canoe\idle</file>
+            <file>units\naval\war_canoe\waka_Attack_Anim</file>
         </assetreference>
         <component>ModelComp</component>
         <attach a="IdleWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
