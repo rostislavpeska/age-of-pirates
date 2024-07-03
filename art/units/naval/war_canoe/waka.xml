@@ -86,6 +86,23 @@
         <attach a="rower2" frombone="Bip01" tobone="bone_rower4" syncanims="1"></attach>
         <attach a="ClickZone" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"></attach>
     </component>
+    <component>FishingComp
+        <assetreference type="GrannyModel">
+            <file>units\naval\war_Canoe\waka_fishing_Model</file>
+        </assetreference>
+        <decal>
+            <effecttype>default</effecttype>
+            <selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture>
+            <width>5.00</width>
+            <height>8.00</height>
+        </decal>
+        <attach a="bowman" frombone="hotspot" tobone="bone_bowman" syncanims="1"></attach>
+        <attach a="rower1" frombone="Bip01" tobone="bone_rower1" syncanims="1"></attach>
+        <attach a="rower2" frombone="Bip01" tobone="bone_rower2" syncanims="1"></attach>
+        <attach a="rower1" frombone="Bip01" tobone="bone_rower3" syncanims="1"></attach>
+        <attach a="rower2" frombone="Bip01" tobone="bone_rower4" syncanims="1"></attach>
+        <attach a="ClickZone" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"></attach>
+    </component>
     <anim>Idle
         <assetreference type="GrannyAnim">
             <file>animation_library\naval\tlaloc_canoe\idle</file>
@@ -106,7 +123,7 @@
             <file>animation_library\naval\tlaloc_canoe\idle</file>
             <tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.18</tag>
         </assetreference>
-        <component>ModelComp</component>
+        <component>FishingComp</component>
         <attach a="Fishing_Net" frombone="" tobone="" syncanims="0"></attach>
         <attach a="IdleWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
     </anim>
