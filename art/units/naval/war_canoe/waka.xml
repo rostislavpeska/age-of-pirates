@@ -88,14 +88,14 @@
     </component>
     <anim>Idle
         <assetreference type="GrannyAnim">
-            <file>units\naval\war_canoe\waka_Anim</file>
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
         </assetreference>
         <component>ModelComp</component>
         <attach a="IdleWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
     </anim>
     <anim>Walk
         <assetreference type="GrannyAnim">
-            <file>units\naval\war_canoe\waka_Anim</file>
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
             <tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.43</tag>
         </assetreference>
         <component>ModelComp</component>
@@ -103,7 +103,7 @@
     </anim>
     <anim>GatherFish
         <assetreference type="GrannyAnim">
-            <file>units\naval\war_canoe\waka_Anim</file>
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
             <tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.18</tag>
         </assetreference>
         <component>ModelComp</component>
@@ -148,7 +148,7 @@
     </anim>
     <anim>Raze_Idle
         <assetreference type="GrannyAnim">
-            <file>units\naval\war_canoe\waka_Attack_Anim</file>
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
         </assetreference>
         <component>ModelComp</component>
         <attach a="IdleWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>

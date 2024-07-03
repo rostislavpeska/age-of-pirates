@@ -25158,12 +25158,12 @@
     <buildlimit>7</buildlimit>
     <bounty>25.0000</bounty>
     <buildbounty>25.0000</buildbounty>
-    <cost resourcetype="Wood">150.0000</cost>
+    <cost resourcetype="Wood">160.0000</cost>
     <cost resourcetype="Gold">110.0000</cost>
     <carrycapacity resourcetype="Food">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
     <maxcontained>50</maxcontained>
-    <allowedage>2</allowedage>
+    <allowedage>1</allowedage>
     <decay delay="0.0000" duration="0.0000">
     </decay>
     <armor type="Ranged" value="0.5000">
@@ -25359,8 +25359,8 @@
     <icon>resources\art\units\naval\spc\waka_icon.png</icon>
     <portraiticon>resources\art\units\naval\spc\waka_portrait.png</portraiticon>
     <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
-    <rollovertextid>23693</rollovertextid>
-    <shortrollovertextid>25617</shortrollovertextid>
+    <rollovertextid>301300</rollovertextid>
+    <shortrollovertextid>301300</shortrollovertextid>
     <initialhitpoints>450.0000</initialhitpoints>
     <maxhitpoints>450.0000</maxhitpoints>
     <los>29.0000</los>

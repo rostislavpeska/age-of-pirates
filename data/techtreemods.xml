@@ -12830,7 +12830,7 @@
     <flag>CheckWaterHCGatherPoint</flag>
     <flag>YPNativeImprovement</flag>
     <prereqs>
-			<techstatus status="Active">Industrialize</techstatus>
+			<techstatus status="Active">Fortressize</techstatus>
     </prereqs>
     <flag>CountsTowardMilitaryScore</flag>
       <effects>
