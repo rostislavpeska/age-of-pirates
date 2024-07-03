@@ -25145,8 +25145,8 @@
     <animfile>units\naval\war_canoe\waka.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\units\az_war_canoe_icon.png</icon>
-    <portraiticon>resources\art\units\az_war_canoe_portrait.png</portraiticon>
+    <icon>resources\art\units\naval\spc\waka_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\waka_portrait.png</portraiticon>
     <rollovertextid>301300</rollovertextid>
     <shortrollovertextid>301300</shortrollovertextid>
     <initialhitpoints>450.0000</initialhitpoints>
@@ -25356,8 +25356,8 @@
     <turnrate>12.0000</turnrate>
     <animfile>units\naval\war_canoe\waka.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\native_canoe_icon.png</icon>
-    <portraiticon>resources\art\units\native_canoe_portrait.png</portraiticon>
+    <icon>resources\art\units\naval\spc\waka_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\waka_portrait.png</portraiticon>
     <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
     <rollovertextid>23693</rollovertextid>
     <shortrollovertextid>25617</shortrollovertextid>
