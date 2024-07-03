@@ -30,7 +30,7 @@
     <attachment>ClickZone
         <component>ClickZone
             <assetreference type="GrannyModel">
-                <file>units\naval\war_Canoe\waka_attachment_Model</file>
+                <file>units\naval\waka_canoe\waka_attachment_Model</file>
             </assetreference>
         </component>
         <anim>None
@@ -61,17 +61,17 @@
         </anim>
     </attachment>
     <attachment>bowman
-        <include>units\naval\war_canoe\maoribowman.xml</include>
+        <include>units\naval\waka_canoe\maoribowman.xml</include>
     </attachment>
     <attachment>rower1
-        <include>units\naval\war_canoe\maorirower1.xml</include>
+        <include>units\naval\waka_canoe\maorirower1.xml</include>
     </attachment>
     <attachment>rower2
-        <include>units\naval\war_canoe\maorirower2.xml</include>
+        <include>units\naval\waka_canoe\maorirower2.xml</include>
     </attachment>
     <component>ModelComp
         <assetreference type="GrannyModel">
-            <file>units\naval\war_Canoe\waka_Model</file>
+            <file>units\naval\waka_canoe\waka_Model</file>
         </assetreference>
         <decal>
             <effecttype>default</effecttype>
@@ -88,7 +88,7 @@
     </component>
     <component>FishingComp
         <assetreference type="GrannyModel">
-            <file>units\naval\war_Canoe\waka_fishing_Model</file>
+            <file>units\naval\waka_canoe\waka_fishing_Model</file>
         </assetreference>
         <decal>
             <effecttype>default</effecttype>
@@ -129,7 +129,7 @@
     </anim>
     <anim>Death
         <assetreference type="GrannyAnim">
-            <file>units\naval\war_canoe\waka_death_Anim</file>
+            <file>units\naval\waka_canoe\waka_death_Anim</file>
             <tag type="SpecificSoundSet" checkvisible="1" set="DudeHitsWater">0.43</tag>
         </assetreference>
         <component>ModelComp</component>

@@ -25142,7 +25142,7 @@
     <maxrunvelocity>13.0000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>3.0000</turnrate>
-    <animfile>units\naval\war_canoe\waka.xml</animfile>
+    <animfile>units\naval\waka_canoe\waka.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\units\naval\spc\waka_icon.png</icon>
@@ -25354,7 +25354,7 @@
     <maxrunvelocity>13.0000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>12.0000</turnrate>
-    <animfile>units\naval\war_canoe\waka.xml</animfile>
+    <animfile>units\naval\waka_canoe\waka.xml</animfile>
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\naval\spc\waka_icon.png</icon>
     <portraiticon>resources\art\units\naval\spc\waka_portrait.png</portraiticon>

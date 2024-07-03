@@ -1,5 +1,5 @@
 <animfile>
-  <component>ModelComp<assetreference type="GrannyModel"><file>units\naval\war_canoe\rowers1_Final_Maori_Model</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+  <component>ModelComp<assetreference type="GrannyModel"><file>units\naval\waka_canoe\rowers1_Final_Maori_Model</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
   <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\naval\war_canoe\rower1\idle</file></assetreference><component>ModelComp</component></anim>
   <anim>Walk<assetreference type="GrannyAnim"><file>animation_library\naval\war_canoe\rower1\walk</file></assetreference><component>ModelComp</component></anim>
   <anim>GatherFish<assetreference type="GrannyAnim"><file>animation_library\naval\war_canoe\rower1\fish</file></assetreference><component>ModelComp</component></anim>
