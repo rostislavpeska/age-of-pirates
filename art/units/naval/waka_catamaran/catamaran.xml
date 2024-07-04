@@ -1,0 +1,268 @@
+<!--<animfile>
+    <definebone>bone_master</definebone>
+    <definebone>bone_canoe</definebone>
+    <definebone>bone_bowman</definebone>
+    <definebone>bone_rower1</definebone>
+    <definebone>bone_rower2</definebone>
+    <definebone>bone_rower3</definebone>
+    <definebone>bone_rower4</definebone>
+    <definebone>bone_garrisonflag</definebone>
+    <attachment>MoveWaterFoam
+        <component>foam2
+            <assetreference type="popcornFx">
+                <file>water_effects\move_waterFoam.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>foam2</component>
+        </anim>
+    </attachment>
+    <attachment>IdleWaterFoam
+        <component>foam3
+            <assetreference type="popcornFx">
+                <file>water_effects\idle_waterFoam.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>foam3</component>
+        </anim>
+    </attachment>
+    <attachment>ClickZone
+        <component>ClickZone
+            <assetreference type="GrannyModel">
+                <file>units\naval\waka_canoe\waka_attachment_Model</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>ClickZone</component>
+        </anim>
+    </attachment>
+    <attachment>DeathWaterFoam
+        <component>foam1
+            <assetreference type="popcornFx">
+                <file>water_effects\death_waterFoam_small.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>foam1</component>
+        </anim>
+    </attachment>
+    <attachment>Fishing_Net
+        <component>Fishing_Net
+            <assetreference type="GrannyModel">
+                <file>units\attachments\fishing_net</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <assetreference type="GrannyAnim">
+                <file>units\attachments\fishing_net_fishingboat</file>
+            </assetreference>
+            <component>Fishing_Net</component>
+        </anim>
+    </attachment>
+    <attachment>bowman
+        <include>units\naval\waka_canoe\maoribowman.xml</include>
+    </attachment>
+    <attachment>rower1
+        <include>units\naval\waka_canoe\maorirower1.xml</include>
+    </attachment>
+    <attachment>rower2
+        <include>units\naval\waka_canoe\maorirower2.xml</include>
+    </attachment>
+    <component>ModelComp
+        <assetreference type="GrannyModel">
+            <file>units\naval\waka_catamaran\catamaran_Model</file>
+        </assetreference>
+        <decal>
+            <effecttype>default</effecttype>
+            <selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture>
+            <width>5.00</width>
+            <height>8.00</height>
+        </decal>
+        <attach a="ClickZone" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"></attach>
+    </component>
+    <anim>Idle
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="IdleWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+    </anim>
+    <anim>Walk
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.43</tag>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="MoveWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+    </anim>
+    <anim>GatherFish
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.18</tag>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="Fishing_Net" frombone="" tobone="" syncanims="0"></attach>
+        <attach a="IdleWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+    </anim>
+    <anim>Death
+        <assetreference type="GrannyAnim">
+            <file>units\naval\waka_canoe\waka_death_Anim</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="DudeHitsWater">0.43</tag>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="DeathWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+    </anim>
+    <anim>RangedAttack
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <tag type="Attack">0.98</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <tag type="Attack">0.98</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="IdleWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+    </anim>
+    <anim>Raze_Attack
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <tag type="Attack">0.98</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <tag type="Attack">0.98</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="IdleWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+    </anim>
+    <anim>Raze_Idle
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="IdleWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+    </anim>
+</animfile>-->
+
+
+
+<animfile>
+    <definebone>bone_front_wake</definebone>
+    <definebone>bone_front_foam</definebone>
+    <definebone>bone_main</definebone>
+    <definebone>Bone_front_wake_right</definebone>
+    <definebone>Bone_front_wake_left</definebone>
+    <definebone>bone_hitpointbar</definebone>
+    <definebone>bone_launchpoint</definebone>
+    <definebone>bone_fuse</definebone>
+    <definebone>bone_cart</definebone>
+    <definebone>Bone_front_bombard</definebone>
+    <definebone>bone_muzzleR01</definebone>
+    <definebone>bone_flag_civ</definebone>
+    <definebone>bone_garrisonflag</definebone>
+    <attachment>IdleWaterFoam
+        <component>Idlefoam
+            <assetreference type="popcornFx">
+                <file>water_effects\idle_waterFoam_medium.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>Idlefoam</component>
+        </anim>
+    </attachment>
+    <attachment>MoveWaterFoam
+        <component>Movefoam
+            <assetreference type="popcornFx">
+                <file>water_effects\move_waterFoam_medium.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>Movefoam</component>
+        </anim>
+    </attachment>
+    <attachment>DeathWaterFoam
+        <component>Deathfoam
+            <assetreference type="popcornFx">
+                <file>water_effects\death_waterFoam_medium.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>Deathfoam</component>
+        </anim>
+    </attachment>
+    <attachment>Death_EXP
+        <component>exp
+            <assetreference type="popcornFx">
+                <file>units\spc\fire_ship\Exp_ship.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>exp</component>
+        </anim>
+    </attachment>
+    <attachment>Death_EXP_Wood
+        <component>exp
+            <assetreference type="popcornFx">
+                <file>projectiles\ship_debris_wood.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>exp</component>
+        </anim>
+    </attachment>
+    <component>ModelComp
+         <assetreference type="GrannyModel">
+            <file>units\naval\waka_catamaran\catamaran_Model</file>
+        </assetreference>
+        <decal>
+            <effecttype>default</effecttype>
+            <texture>shadows_selections\shadow_circle_128x128</texture>
+            <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+            <width>7.00</width>
+            <height>11.00</height>
+        </decal>
+        <watersplash>
+            <texture>units\naval\colony_ship\colony_ship_hullmask</texture>
+            <width>10.0</width>
+            <height>10.0</height>
+        </watersplash>
+    </component>
+    <anim>Idle
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </anim>
+    <anim>Walk
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </anim>
+    <anim>Death
+        <assetreference type="GrannyAnim">
+            <file>units\naval\waka_canoe\waka_death_Anim</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="DudeHitsWater">0.43</tag>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="DeathWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+    </anim>
+    <anim>BombardAttack
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <tag type="CameraShake">0.10</tag>
+            <tag type="Attack">0.02</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="MortarShot">0.02</tag>
+            <tag type="Particles" particlename="monitorbombardmuzzlefx">0.03</tag>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+</animfile>
