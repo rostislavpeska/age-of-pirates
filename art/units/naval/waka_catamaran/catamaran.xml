@@ -235,14 +235,16 @@
     </component>
     <anim>Idle
         <assetreference type="GrannyAnim">
-            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <file>units\naval\waka_catamaran\catamaran_idle_Anim</file>
+            <transitiontime>0.200</transitiontime>
         </assetreference>
         <component>ModelComp</component>
         <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
     </anim>
     <anim>Walk
         <assetreference type="GrannyAnim">
-            <file>units\naval\waka_catamaran\catamaran_Anim</file>
+            <file>units\naval\waka_catamaran\catamaran_walk_Anim</file>
+            <transitiontime>0.200</transitiontime>
         </assetreference>
         <component>ModelComp</component>
         <attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
