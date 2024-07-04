@@ -242,7 +242,7 @@
     </anim>
     <anim>Walk
         <assetreference type="GrannyAnim">
-            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <file>units\naval\waka_catamaran\catamaran_Anim</file>
         </assetreference>
         <component>ModelComp</component>
         <attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>

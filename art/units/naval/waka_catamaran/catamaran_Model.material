@@ -3,13 +3,13 @@
     <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="units\naval\waka_canoe\textures\waka_canoe_matA_BaseColor">
+      <texture name="BaseColor" override="units\naval\waka_catamaran\textures\waka_catamaran_matA_BaseColor">
       </texture>
-      <texture name="Normals" override="units\naval\waka_canoe\textures\waka_canoe_matA_Normals">
+      <texture name="Normals" override="units\naval\waka_catamaran\textures\waka_catamaran_matA_Normals">
       </texture>
-      <texture name="Masks" override="units\naval\waka_canoe\textures\waka_canoe_matA_Masks">
+      <texture name="Masks" override="units\naval\waka_catamaran\textures\waka_catamaran_matA_Masks">
       </texture>
-      <texture name="Details" override="units\naval\waka_canoe\textures\waka_canoe_matA_Details">
+      <texture name="Details" override="units\naval\waka_catamaran\textures\waka_catamaran_matA_Details">
       </texture>
     </parameters>
   </submaterial>
