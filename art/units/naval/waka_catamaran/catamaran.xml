@@ -153,17 +153,11 @@
 
 
 <animfile>
-    <definebone>bone_front_wake</definebone>
-    <definebone>bone_front_foam</definebone>
-    <definebone>bone_main</definebone>
-    <definebone>Bone_front_wake_right</definebone>
-    <definebone>Bone_front_wake_left</definebone>
+    <definebone>bone_boat_wake</definebone>
+    <definebone>bone_master</definebone>
+    <definebone>bone_canoe</definebone>
     <definebone>bone_hitpointbar</definebone>
     <definebone>bone_launchpoint</definebone>
-    <definebone>bone_fuse</definebone>
-    <definebone>bone_cart</definebone>
-    <definebone>Bone_front_bombard</definebone>
-    <definebone>bone_muzzleR01</definebone>
     <definebone>bone_flag_civ</definebone>
     <definebone>bone_garrisonflag</definebone>
     <attachment>Fishing_net
@@ -294,7 +288,7 @@
     </anim>
     <anim>GatherFish
         <assetreference type="GrannyAnim">
-            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <file>units\naval\waka_catamaran\catamaran_idle_Anim</file>
             <tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.89</tag>
         </assetreference>
         <component>ModelComp</component>
