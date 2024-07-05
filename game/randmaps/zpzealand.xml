@@ -2,4 +2,6 @@
 <mapinfo details = "301272" imagepath = "ui\random_map\new_zealand\new_zealand_mini" displayNameID = "301271" cannotReplace = ""
 		loadDetails="301273" loadBackground="ui\random_map\new_zealand\new_zealand_map">
    <loadss>ui\random_map\new_zealand\new_zealand_ss_01</loadss>
+   <loadss>ui\random_map\new_zealand\new_zealand_ss_02</loadss>
+   <loadss>ui\random_map\new_zealand\new_zealand_ss_03</loadss>
 </mapinfo>
