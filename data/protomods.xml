@@ -25244,8 +25244,8 @@
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>9.0000</maxvelocity>
-    <maxrunvelocity>11.0000</maxrunvelocity>
+    <maxvelocity>10.0000</maxvelocity>
+    <maxrunvelocity>12.0000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>2.0000</turnrate>
     <animfile>units\naval\waka_catamaran\catamaran.xml</animfile>

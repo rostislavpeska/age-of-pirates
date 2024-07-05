@@ -5,7 +5,7 @@
     <attackaction>1</attackaction>
     <rangedlogic>1</rangedlogic>
     <anim>BombardAttack</anim>
-    <idleanim>Idle</idleanim>
+    <idleanim>RangedIdle</idleanim>
     <projectile>CannonballSmall</projectile>
     <impacteffect>effects\impacts\cannon</impacteffect>
     <numberprojectiles>1</numberprojectiles>
@@ -25,7 +25,7 @@
     <attackaction>1</attackaction>
     <rangedlogic>1</rangedlogic>
     <anim>BombardAttack</anim>
-    <idleanim>Idle</idleanim>
+    <idleanim>RangedIdle</idleanim>
     <numberprojectiles>1</numberprojectiles>
     <projectile>CannonballSmall</projectile>
     <impacteffect>effects\impacts\cannon</impacteffect>
