@@ -166,6 +166,29 @@
     <definebone>bone_muzzleR01</definebone>
     <definebone>bone_flag_civ</definebone>
     <definebone>bone_garrisonflag</definebone>
+    <attachment>Fishing_net
+        <component>fishing_net
+            <assetreference type="GrannyModel">
+                <file>units\attachments\fishing_net</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <assetreference type="GrannyAnim">
+                <file>units\attachments\fishing_net_caravel</file>
+            </assetreference>
+            <component>fishing_net</component>
+        </anim>
+    </attachment>
+    <attachment>ClickZone
+        <component>ClickZone
+            <assetreference type="GrannyModel">
+                <file>units\naval\waka_catamaran\catamaran_shape_Model</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>ClickZone</component>
+        </anim>
+    </attachment>
     <attachment>IdleWaterFoam
         <component>Idlefoam
             <assetreference type="popcornFx">
@@ -232,6 +255,7 @@
             <width>10.0</width>
             <height>10.0</height>
         </watersplash>
+        <attach a="ClickZone" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"></attach>
     </component>
     <anim>Idle
         <assetreference type="GrannyAnim">
@@ -243,7 +267,7 @@
     </anim>
     <anim>Walk
         <assetreference type="GrannyAnim">
-            <file>units\naval\waka_catamaran\catamaran_walk_Anim</file>
+            <file>units\naval\waka_catamaran\catamaran_move_Anim</file>
             <transitiontime>0.200</transitiontime>
         </assetreference>
         <component>ModelComp</component>
@@ -260,11 +284,20 @@
     <anim>BombardAttack
         <assetreference type="GrannyAnim">
             <file>animation_library\naval\tlaloc_canoe\idle</file>
-            <tag type="CameraShake">0.10</tag>
             <tag type="Attack">0.02</tag>
-            <tag type="SpecificSoundSet" checkvisible="1" set="MortarShot">0.02</tag>
-            <tag type="Particles" particlename="monitorbombardmuzzlefx">0.03</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="FalconetShoot">0.08</tag>
+            <tag type="Particles" particlename="smallcannonmuzzle">0.08</tag>
+            <tag type="Particles" particlename="BattleField_Smoke_Small">0.08</tag>
+            <tag type="WindEffect" effectname="SmallArtilleryFire" effectbone="bone_launchpoint">0.08</tag>
         </assetreference>
         <component>ModelComp</component>
+    </anim>
+    <anim>GatherFish
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.89</tag>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="Fishing_net" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
     </anim>
 </animfile>
