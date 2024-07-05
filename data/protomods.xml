@@ -25917,6 +25917,59 @@
 
 
   <!--TEST-->
+
+  <unit id="20241" name="zpShipFadeProxy">
+  <!-- Works but needs to be tested on slower device -->
+    <dbid>20241</dbid>
+    <displaynameid>27726</displaynameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <movementtype>land</movementtype>
+    <animfile>effects\projectiles\musket_ball.xml</animfile>
+    <icon>resources\art\units\naval\privateer\privateer_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\naval\privateer\privateer_icon_portrait.png</portraiticon>
+    <rollovertextid>27725</rollovertextid>
+    <shortrollovertextid>27724</shortrollovertextid>
+    <initialhitpoints>900.0000</initialhitpoints>
+    <maxhitpoints>900.0000</maxhitpoints>
+    <lifespan>0.1000</lifespan>
+    <armor type="Ranged" value="0.5000">
+    </armor>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>MercType5</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
+  </unit>
+
+
   <unit id="" name="zpSPCFlyingDutchman">
     <dbid></dbid>
     <displaynameid>301165</displaynameid>
