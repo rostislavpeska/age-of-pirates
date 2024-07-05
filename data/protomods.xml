@@ -23598,7 +23598,7 @@
 			<damagebonus type='AbstractRangedCavalry'>1.500000</damagebonus>
 			<damagebonus type='AbstractLightInfantry'>0.750000</damagebonus>
       <damagebonus type='Huntable'>7.000000</damagebonus>
-			<projectile>Knife</projectile>
+			<projectile>zpBoomerangProjectile</projectile>
 		</protoaction>
     <protoaction>
       <name>Gather</name>
@@ -23881,7 +23881,7 @@
 			<damagebonus type='AbstractRangedCavalry'>1.500000</damagebonus>
 			<damagebonus type='AbstractLightInfantry'>0.750000</damagebonus>
       <damagebonus type='Huntable'>7.000000</damagebonus>
-			<projectile>Knife</projectile>
+			<projectile>zpBoomerangProjectile</projectile>
 		</protoaction>
     <protoaction>
       <name>Gather</name>
@@ -25903,6 +25903,36 @@
     <flag>DoNotValidateResourceInventory</flag>
     <flag>Tracked</flag>
     <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20242" name="zpBoomerangProjectile">
+    <dbid>20242</dbid>
+    <displaynameid>42367</displaynameid>
+    <obstructionradiusx>0.1000</obstructionradiusx>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <maxvelocity>30.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>effects\projectiles\boomerang.xml</animfile>
+    <lifespan>2.0000</lifespan>
+    <los>0.0000</los>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Projectile</unittype>
+    <flag>NoIdleActions</flag>
+    <flag>NonCollideable</flag>
+    <flag>DestroyProjectile</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NotSearchable</flag>
+    <flag>Projectile</flag>
+    <flag>NoTieToGround</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSelectable</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>AdjustPositionOnTerrainCollision</flag>
+    <flag>Invulnerable</flag>
+    <flag>NoUnitAI</flag>
   </unit>
   
   
