@@ -1187,6 +1187,7 @@ if(cNumberNonGaiaPlayers >=3) {
   rmAddObjectDefConstraint(nugget1, avoidImportantItem);
 	rmAddObjectDefConstraint(nugget1, avoidTP);
 	rmAddObjectDefConstraint(nugget1, avoidAll);
+  rmAddObjectDefConstraint(nugget1, avoidJesuit);
   rmAddObjectDefConstraint(nugget1, avoidHighMountains);
 	rmAddObjectDefConstraint(nugget1, avoidWater8);
 	rmAddObjectDefConstraint(nugget1, playerEdgeConstraint);
@@ -1228,6 +1229,7 @@ if(cNumberNonGaiaPlayers >=3) {
 	rmAddObjectDefConstraint(nugget3, avoidHardNugget);
   rmAddObjectDefConstraint(nugget3, avoidHighMountains);
   rmAddObjectDefConstraint(nugget3, mesaConstraint);
+  rmAddObjectDefConstraint(nugget3, avoidJesuit);
   rmAddObjectDefConstraint(nugget3, avoidImportantItem);
 	rmPlaceObjectDefInArea(nugget3, 0, bigIslandID, cNumberNonGaiaPlayers*1.5);
 
@@ -1286,8 +1288,8 @@ int tch0=1671; // tech operator
 int eruptionLenght = -1;
 int eqAreaDamage = 40;
 int islandSize = 110;
-int gapMin = 700;
-int gapMax = 1300;
+int gapMin = 600;
+int gapMax = 1100;
 int eruptionBreak1 = rmRandInt(gapMin,gapMax);
 int eruptionBreak2 = rmRandInt(gapMin,gapMax);
 int eruptionBreak3 = rmRandInt(gapMin,gapMax);
@@ -1932,7 +1934,7 @@ rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
 
    rmSwitchToTrigger(rmTriggerID("TrainPrivateer2OFF_Plr"+k));
    rmAddTriggerCondition("Timer ms");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2ON_Plr"+k));
    rmSetTriggerPriority(4);
@@ -1980,7 +1982,7 @@ rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("TrainPrivateer1OFF_Plr"+k));
 rmAddTriggerCondition("Timer ms");
-rmSetTriggerConditionParamInt("Param1",5);
+rmSetTriggerConditionParamInt("Param1",1200);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
 rmSetTriggerPriority(4);
@@ -2066,7 +2068,7 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
 
    rmSwitchToTrigger(rmTriggerID("BlackbTrain2OFFPlr"+k));
    rmAddTriggerCondition("Timer ms");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain2ONPlr"+k));
    rmSetTriggerPriority(4);
@@ -2097,7 +2099,7 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
 
    rmSwitchToTrigger(rmTriggerID("GraceTrain2OFFPlr"+k));
    rmAddTriggerCondition("Timer ms");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain2ONPlr"+k));
    rmSetTriggerPriority(4);
@@ -2128,7 +2130,7 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
 
    rmSwitchToTrigger(rmTriggerID("CaesarTrain2OFFPlr"+k));
    rmAddTriggerCondition("Timer ms");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain2ONPlr"+k));
    rmSetTriggerPriority(4);
@@ -2174,7 +2176,7 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
 
    rmSwitchToTrigger(rmTriggerID("BlackbTrain1OFFPlr"+k));
    rmAddTriggerCondition("Timer ms");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain1ONPlr"+k));
    rmSetTriggerPriority(4);
@@ -2206,7 +2208,7 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
 
    rmSwitchToTrigger(rmTriggerID("GraceTrain1OFFPlr"+k));
    rmAddTriggerCondition("Timer ms");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain1ONPlr"+k));
    rmSetTriggerPriority(4);
@@ -2238,7 +2240,7 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
 
    rmSwitchToTrigger(rmTriggerID("CaesarTrain1OFFPlr"+k));
    rmAddTriggerCondition("Timer ms");
-   rmSetTriggerConditionParamInt("Param1",5);
+   rmSetTriggerConditionParamInt("Param1",1200);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain1ONPlr"+k));
    rmSetTriggerPriority(4);

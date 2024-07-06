@@ -68,15 +68,15 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 
 
 	// Picks default terrain and water
-		rmSetMapElevationParameters(cElevTurbulence, 0.03, 5, 0.7, 4.0);
-		//rmSetMapElevationParameters(cElevTurbulence, 0.05, 6, 0.7, 6.0);
-		rmSetSeaType("great lakes2");
-		rmEnableLocalWater(false);
-		rmSetBaseTerrainMix("texas_dirt_Skirmish");
-		rmTerrainInitialize("deccan\ground_grass3_deccan", 1.0);
-		rmSetMapType("texas");
-	   rmSetMapType("grass");
-	   rmSetMapType("land");
+	rmSetMapElevationParameters(cElevTurbulence, 0.03, 5, 0.7, 4.0);
+	//rmSetMapElevationParameters(cElevTurbulence, 0.05, 6, 0.7, 6.0);
+	rmSetSeaType("great lakes2");
+	rmEnableLocalWater(false);
+	rmSetBaseTerrainMix("texas_dirt_Skirmish");
+	rmTerrainInitialize("deccan\ground_grass3_deccan", 1.0);
+	rmSetMapType("texas");
+	rmSetMapType("grass");
+	rmSetMapType("land");
 
 	chooseMercs();
 
@@ -1397,6 +1397,10 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	rmSetTriggerEffectParamInt("PlayerID",i);
 	rmSetTriggerEffectParam("TechID","cTechzpLandScientists"); // Renegades Land Variant
 	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",i);
+	rmSetTriggerEffectParam("TechID","cTechdeMapDisableDock"); // Disable Dock
+	rmSetTriggerEffectParamInt("Status",2);
 	}
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
@@ -1534,6 +1538,32 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	}
 
 	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate Khmer"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","Khmers");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnKhmers"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
 	rmCreateTrigger("Activate Tortuga"+k);
 	rmAddTriggerCondition("ZP Tech Researching (XS)");
 	rmSetTriggerConditionParam("TechID","cTechzpPickScientist"); //operator
@@ -1604,6 +1634,8 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Khmer"+k));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga"+k));
 	rmAddTriggerEffect("Fire Event");
@@ -2042,7 +2074,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	rmSetTriggerEffectParamInt("Status",2);
 
 	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+	rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -2095,7 +2127,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+	rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2146,7 +2178,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	rmSetTriggerEffectParamInt("Status",2);
 
 	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+	rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -2191,7 +2223,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+	rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2253,7 +2285,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	rmSetTriggerEffectParamInt("Status",2);
 
 	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+	rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -2299,7 +2331,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+	rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2360,7 +2392,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	rmSetTriggerEffectParamInt("Status",2);
 
 	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+	rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -2405,7 +2437,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+	rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2468,7 +2500,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+		rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -2513,7 +2545,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+		rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2577,7 +2609,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+		rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -2622,7 +2654,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+		rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2685,7 +2717,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+		rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -2730,7 +2762,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+		rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2783,7 +2815,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+		rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -2828,7 +2860,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+		rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -3627,6 +3659,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
 
 	// Testing
 
