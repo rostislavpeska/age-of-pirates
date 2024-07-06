@@ -24554,7 +24554,8 @@
   </unit>
   <unit id="20275" name="zpVolcanoSpawner">
     <dbid>20275</dbid>
-    <displaynameid>301288</displaynameid>
+    <displaynameid>301278</displaynameid>
+    <editornameid>301288</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
@@ -24777,6 +24778,7 @@
     <animfile>ui\editor\editor_blocks.xml</animfile>
     <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
     <los>150.0000</los>
+    <lifespan>1</lifespan>
     <unittype>Unattackable</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWalls</unittype>
@@ -24800,12 +24802,12 @@
     <flag>HasGatherPoint</flag>
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
+    <flag>NotSelectable</flag>
     <flag>Tracked</flag>
     <flag>FlyingUnit</flag>
     <flag>ForceToGaia</flag>
     <flag>NoTieToGround</flag>
     <flag>BuildingExtendedDeathAnim</flag>
-    <flag>Invulnerable</flag>
     <flag>OnlyInEditor</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>NonCollideable</flag>

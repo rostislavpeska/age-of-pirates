@@ -562,7 +562,7 @@ void main(void)
   rmSetAreaCliffHeight(basecliffID2, 4, 0.1, 0.5);
   rmSetAreaLocation(basecliffID2, 0.5, 0.5);
   rmAddAreaConstraint(basecliffID2, avoidKOTHshort);
-  //rmSetAreaReveal(basecliffID2, 100);
+  //rmSetAreaReveal(basecliffID2, 1);
   rmBuildArea(basecliffID2);
 
   int basecliffID3 = rmCreateArea("base cliff3");
@@ -1288,9 +1288,9 @@ int tch0=1671; // tech operator
 int eruptionLenght = -1;
 int eqAreaDamage = 40;
 int islandSize = 110;
-int gapMin = 600;
-int gapMax = 1100;
-int eruptionBreak1 = rmRandInt(gapMin,gapMax);
+int gapMin = 700;
+int gapMax = 1200;
+int eruptionBreak1 = rmRandInt(450,800);
 int eruptionBreak2 = rmRandInt(gapMin,gapMax);
 int eruptionBreak3 = rmRandInt(gapMin,gapMax);
 int eruptionBreak4 = rmRandInt(gapMin,gapMax);
@@ -1328,6 +1328,41 @@ rmCreateTrigger("Volcano_Long");
 rmCreateTrigger("Volcano_UltraLong");
 rmCreateTrigger("Volcano_Stop");
 rmCreateTrigger("Volcano_Damage");
+
+rmCreateTrigger("Volcano_Music1");
+rmCreateTrigger("Volcano_Music2");
+rmCreateTrigger("Volcano_MusicEnd");
+
+rmSwitchToTrigger(rmTriggerID("Volcano_Music1"));
+rmAddTriggerEffect("Music Filename");
+rmSetTriggerEffectParam("Music","music\battle\BubbleChum.mp3"); // Music Filename
+rmSetTriggerEffectParamFloat("Duration",4.0);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music2"));
+rmSetTriggerPriority(1);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(false);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("Volcano_Music2"));
+rmAddTriggerCondition("Timer");
+rmSetTriggerConditionParamInt("Param1",50);
+rmAddTriggerEffect("Music Filename");
+rmSetTriggerEffectParam("Music","music\battle\CamelsStrawsAndBacks.mp3"); // Music Filename
+rmSetTriggerEffectParamFloat("Duration",2.0);
+rmSetTriggerPriority(1);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(false);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("Volcano_MusicEnd"));
+rmAddTriggerCondition("Timer");
+rmSetTriggerConditionParamInt("Param1",5);
+rmAddTriggerEffect("Music Play");
+rmSetTriggerPriority(1);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(false);
+rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("Volcano_Damage"));
 for(i=1; <= cNumberNonGaiaPlayers) {
@@ -1381,6 +1416,8 @@ rmSetTriggerEffectParam("QVName","Eruption");
 rmSetTriggerEffectParamInt("Value",0);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start2"));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
 
 rmAddTriggerEffect("Send Chat");
 rmSetTriggerEffectParamInt("PlayerID",0);
@@ -1422,6 +1459,8 @@ rmSetTriggerEffectParam("QVName","Eruption");
 rmSetTriggerEffectParamInt("Value",0);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start3"));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
 
 rmAddTriggerEffect("Send Chat");
 rmSetTriggerEffectParamInt("PlayerID",0);
@@ -1463,6 +1502,8 @@ rmSetTriggerEffectParam("QVName","Eruption");
 rmSetTriggerEffectParamInt("Value",0);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start4"));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
 
 rmAddTriggerEffect("Send Chat");
 rmSetTriggerEffectParamInt("PlayerID",0);
@@ -1504,6 +1545,8 @@ rmSetTriggerEffectParam("QVName","Eruption");
 rmSetTriggerEffectParamInt("Value",0);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start5"));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
 
 rmAddTriggerEffect("Send Chat");
 rmSetTriggerEffectParamInt("PlayerID",0);
@@ -1545,6 +1588,8 @@ rmSetTriggerEffectParam("QVName","Eruption");
 rmSetTriggerEffectParamInt("Value",0);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start1"));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
 
 rmAddTriggerEffect("Send Chat");
 rmSetTriggerEffectParamInt("PlayerID",0);
@@ -1689,6 +1734,10 @@ rmSetTriggerEffectParam("Soundset","Earthquake");
 rmAddTriggerEffect("Quest Var Set");
 rmSetTriggerEffectParam("QVName","Eruption");
 rmSetTriggerEffectParamInt("Value",1);
+rmAddTriggerEffect("FadeOutMusic");
+rmSetTriggerEffectParamFloat("Duration",4.0);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_MusicEnd"));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
@@ -1705,10 +1754,6 @@ rmSetTriggerEffectParamInt("PlayerID",i);
 rmSetTriggerEffectParam("TechID","cTechDEEnableTradeRouteWater"); // DEEneableTradeRouteWater
 rmSetTriggerEffectParamInt("Status",2);
 }
-rmAddTriggerEffect("ZP Set Tech Status (XS)");
-rmSetTriggerEffectParamInt("PlayerID",0);
-rmSetTriggerEffectParam("TechID","cTechzpSpawnVolcano"); // Spawn Volcano
-rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Quest Var Set");
 rmSetTriggerEffectParam("QVName","Eruption");
 rmSetTriggerEffectParamInt("Value",1);
@@ -2422,6 +2467,7 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
 
 
 // Testing

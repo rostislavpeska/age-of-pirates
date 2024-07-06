@@ -2,7 +2,7 @@
   <action>
     <name stringid="69776">SpawnVolcano</name>
     <type>Spawn</type>
-    <rate type="zpSPCVolcanoPassive">1.0</rate>
+    <rate type="zpSPCVolcano">1.0</rate>
     <active>1</active>
     <persistent>0</persistent>
     <singleuse>1</singleuse>

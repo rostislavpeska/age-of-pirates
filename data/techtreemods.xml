@@ -12726,7 +12726,9 @@
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="TransformUnit" toprotoid="zpSPCVolcano" fromprotoid="zpSPCVolcanoPassive">
+      <effect type="Data" action="SpawnVolcano" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpVolcanoSpawner">
+        <target type="Player">
+        </target>
       </effect>
       <effect type="TransformUnit" toprotoid="zpSPCVolcanoFire" fromprotoid="zpSPCVolcanoFireSpawner">
       </effect>
