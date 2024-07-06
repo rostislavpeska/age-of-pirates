@@ -1295,7 +1295,7 @@ void main(void)
 		rmSetAreaWarnFailure(valleyForest, false);
 		rmSetAreaSize(valleyForest, rmAreaTilesToFraction(100), rmAreaTilesToFraction(200));
 
-		rmSetAreaForestType(valleyForest, "z74 Lush Sonorav ");
+		rmSetAreaForestType(valleyForest, "Painteddesert Forest");
 		rmSetAreaForestDensity(valleyForest, 1.0);
 		rmAddAreaToClass(valleyForest, rmClassID("classForest"));
 		rmSetAreaForestClumpiness(valleyForest, 0.0);		//DAL more forest with more clumps
@@ -2145,7 +2145,7 @@ void main(void)
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \"");
+	rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way");
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2253,7 +2253,7 @@ void main(void)
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \"");
+	rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way");
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2365,7 +2365,7 @@ void main(void)
         rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
         rmSetTriggerEffectParamInt("Start",armoredTrainActive);
         rmSetTriggerEffectParamInt("Stop",0);
-        rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \"");
+        rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way");
         rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
         rmAddTriggerEffect("ZP Set Tech Status (XS)");
         rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2477,7 +2477,7 @@ void main(void)
         rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
         rmSetTriggerEffectParamInt("Start",armoredTrainActive);
         rmSetTriggerEffectParamInt("Stop",0);
-        rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \"");
+        rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way");
         rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
         rmAddTriggerEffect("ZP Set Tech Status (XS)");
         rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2578,7 +2578,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \"");
+		rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way");
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2679,7 +2679,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \"");
+		rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way");
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2779,7 +2779,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \"");
+		rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way");
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2879,7 +2879,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \"");
+		rmSetTriggerEffectParam("Msg", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way");
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);

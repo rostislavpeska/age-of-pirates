@@ -10430,7 +10430,7 @@
     <projectileprotounit>zpTorpedo</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <trainpoints>40.0000</trainpoints>
-    <buildlimit>2</buildlimit>
+    <buildlimit>3</buildlimit>
     <bounty>80.0000</bounty>
     <buildbounty>80.0000</buildbounty>
     <cost resourcetype="Wood">300.0000</cost>
@@ -10443,6 +10443,10 @@
     <armor type="Ranged" value="0.7500">
     </armor>
     <initialtactic>zpSurface</initialtactic>
+    <sharedselectionunittypes>
+      <unittype>zpNautilus</unittype>
+      <unittype>zpMercNautilus</unittype>
+    </sharedselectionunittypes>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
@@ -10796,7 +10800,7 @@
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="4">SetGatherPointEconomy</command>
   </unit>
-  <unit name="deTank">
+  <!--<unit name="deTank">
     <buildlimit>1</buildlimit>
     <sharedbuildlimitunittypes>
       <unittype>deTank</unittype>
@@ -10808,7 +10812,7 @@
       <unittype>zpIronTankProxy</unittype>
     </sharedselectionunittypes>
     <flag>UseSharedBuildLimit</flag>
-  </unit>
+  </unit>-->
   <unit id="20110" name="zpWeaponFactoryWinter">
     <dbid>20110</dbid>
     <displaynameid>300503</displaynameid>
@@ -11152,13 +11156,14 @@
     <subciv>zpScientists</subciv>
     <displaynameid>300550</displaynameid>
     <editornameid>300543</editornameid>
-    <populationcount>5</populationcount>
+    <populationcount>4</populationcount>
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Protected</formationcategory>
     <maxvelocity>5.25000</maxvelocity>
     <maxrunvelocity>7.25000</maxrunvelocity>
     <movementtype>land</movementtype>
+    <buildlimit>1</buildlimit>
     <turnrate>3.0000</turnrate>
     <animfile>units\artillery\tank\zptank.xml</animfile>
     <impacttype>Wood</impacttype>
@@ -11205,16 +11210,10 @@
     <unittype>Military</unittype>
     <unittype>AbstractArtillery</unittype>
     <unittype>AbstractBannerArmy</unittype>
-    <sharedbuildlimitunit>deTank</sharedbuildlimitunit>
     <sharedselectionunittypes>
       <unittype>zpIronTankProxy</unittype>
       <unittype>deTank</unittype>
     </sharedselectionunittypes>
-    <sharedbuildlimitunittypes>
-      <unittype>deTank</unittype>
-      <unittype>zpIronTank</unittype>
-      <unittype>zpIronTankProxy</unittype>
-    </sharedbuildlimitunittypes>
     <flag>ConstrainOrientation</flag>
     <flag>OrientUnitWithGround</flag>
     <flag>RotateInPlace</flag>
@@ -11226,7 +11225,6 @@
     <flag>ObscuredByUnits</flag>
     <flag>Tracked</flag>
     <flag>CantBeSlowed</flag>
-    <flag>UseSharedBuildLimit</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="7">Delete</command>
@@ -11462,16 +11460,10 @@
     <unittype>Military</unittype>
     <unittype>AbstractArtillery</unittype>
     <unittype>AbstractBannerArmy</unittype>
-    <sharedbuildlimitunit>deTank</sharedbuildlimitunit>
     <sharedselectionunittypes>
       <unittype>zpIronTank</unittype>
       <unittype>deTank</unittype>
     </sharedselectionunittypes>
-    <sharedbuildlimitunittypes>
-      <unittype>deTank</unittype>
-      <unittype>zpIronTank</unittype>
-      <unittype>zpIronTankProxy</unittype>
-    </sharedbuildlimitunittypes>
     <flag>ConstrainOrientation</flag>
     <flag>OrientUnitWithGround</flag>
     <flag>RotateInPlace</flag>
@@ -11483,7 +11475,6 @@
     <flag>ObscuredByUnits</flag>
     <flag>Tracked</flag>
     <flag>CantBeSlowed</flag>
-    <flag>UseSharedBuildLimit</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="7">Delete</command>
@@ -11690,6 +11681,10 @@
       <unittype>zpNautilus</unittype>
       <unittype>zpMercNautilus</unittype>
     </sharedbuildlimitunittypes>
+    <sharedselectionunittypes>
+      <unittype>zpSubmarine</unittype>
+      <unittype>zpMercNautilus</unittype>
+    </sharedselectionunittypes>
     <protoaction>
       <name>CannonAttackDived</name>
       <damage>50.000000</damage>
@@ -17277,6 +17272,10 @@
       <unittype>zpNautilus</unittype>
       <unittype>zpMercNautilus</unittype>
     </sharedbuildlimitunittypes>
+    <sharedselectionunittypes>
+      <unittype>zpSubmarine</unittype>
+      <unittype>zpNautilus</unittype>
+    </sharedselectionunittypes>
     <protoaction>
       <name>CannonAttackDived</name>
       <damage>50.000000</damage>
@@ -19948,8 +19947,8 @@
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>301093</rollovertextid>
     <shortrollovertextid>301093</shortrollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <los>60.0000</los>
     <displayedrange>60.0</displayedrange>
     <projectileprotounit>zpGreatWarShell</projectileprotounit>
@@ -20092,8 +20091,8 @@
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>301090</rollovertextid>
     <shortrollovertextid>301090</shortrollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <los>15.0000</los>
     <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
     </minimapcolor>
@@ -20139,8 +20138,8 @@
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>23040</rollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <los>15.0000</los>
     <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
     </minimapcolor>
@@ -20187,8 +20186,8 @@
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>301095</rollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <los>15.0000</los>
     <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
     </minimapcolor>
@@ -20277,8 +20276,8 @@
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>301093</rollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <los>60.0000</los>
     <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
     </minimapcolor>
@@ -20325,8 +20324,8 @@
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>301090</rollovertextid>
     <shortrollovertextid>301090</shortrollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <los>15.0000</los>
     <buildingworkrate>1.0000</buildingworkrate>
     <armor type="Siege" value="0.0000">
@@ -20382,8 +20381,8 @@
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>33597</rollovertextid>
     <shortrollovertextid>33596</shortrollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <los>15.0000</los>
     <bounty>300.0000</bounty>
     <cost resourcetype="Gold">2000.0000</cost>
@@ -20441,8 +20440,8 @@
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>301095</rollovertextid>
     <shortrollovertextid>301095</shortrollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <projectileprotounit>InvisibleProjectile</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <los>15.0000</los>
@@ -21173,8 +21172,8 @@
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>301094</rollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <los>15.0000</los>
     <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
     </minimapcolor>
@@ -21222,8 +21221,8 @@
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>301094</rollovertextid>
     <shortrollovertextid>301094</shortrollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <los>15.0000</los>
     <displayedrange>20.0000</displayedrange>
     <bounty>100.0000</bounty>
@@ -21283,8 +21282,8 @@
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>301092</rollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <los>15.0000</los>
     <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
     </minimapcolor>
@@ -21332,8 +21331,8 @@
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>301092</rollovertextid>
     <shortrollovertextid>301092</shortrollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <los>15.0000</los>
     <bounty>100.0000</bounty>
     <buildingworkrate>1.0000</buildingworkrate>
@@ -21842,8 +21841,8 @@
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>35881</rollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <los>15.0000</los>
     <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
     </minimapcolor>
@@ -21885,8 +21884,8 @@
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>35881</rollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <los>15.0000</los>
     <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
     </minimapcolor>
@@ -22023,8 +22022,8 @@
     <icon>resources\art\units\train\armored_train_icon.png</icon>
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>301091</rollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <los>15.0000</los>
     <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
     </minimapcolor>
@@ -22072,8 +22071,8 @@
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>301091</rollovertextid>
     <shortrollovertextid>301091</shortrollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <los>15.0000</los>
     <displayedrange>20.0000</displayedrange>
     <bounty>100.0000</bounty>
@@ -22146,8 +22145,8 @@
     <portraiticon>resources\art\units\train\armored_train.png</portraiticon>
     <rollovertextid>301095</rollovertextid>
     <shortrollovertextid>301095</shortrollovertextid>
-    <initialhitpoints>2250.0000</initialhitpoints>
-    <maxhitpoints>2250.0000</maxhitpoints>
+    <initialhitpoints>2900.0000</initialhitpoints>
+    <maxhitpoints>2900.0000</maxhitpoints>
     <projectileprotounit>InvisibleProjectile</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <los>15.0000</los>
