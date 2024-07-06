@@ -1,5 +1,4 @@
 <animfile>
-    <definebone>bone_boat_wake</definebone>
     <definebone>bone_master</definebone>
     <definebone>bone_canoe</definebone>
     <definebone>bone_hitpointbar</definebone>
