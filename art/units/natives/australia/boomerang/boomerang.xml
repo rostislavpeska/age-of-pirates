@@ -6,6 +6,13 @@
 	<definebone>bone_hat</definebone>
 	<definebone>bone_weapon1_attach</definebone>
 	<definebone>bone_weapon2_attach</definebone>
+	<attachment>
+        shield
+        <component>
+            shield_01<assetreference type="GrannyModel"><file>units\natives\lakota\club_warrior\club_warrior_1_shield</file></assetreference>
+        </component>
+        <anim>Idle<component>shield_01</component></anim>
+    </attachment>
 	<attachment>pickaxe
 		<component>pickaxe
 			<assetreference type="GrannyModel">
@@ -156,6 +163,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -165,6 +173,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -186,6 +195,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -207,6 +217,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -216,6 +227,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -234,6 +246,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -252,6 +265,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -279,6 +293,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -288,6 +303,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -309,6 +325,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 	</anim>
 	<anim>
 		Recoil
@@ -326,6 +343,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 	</anim>
 	<anim>
 		HC_openDoor
@@ -334,6 +352,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 	</anim>
 	<anim>
 		HC_closeDoor
@@ -342,6 +361,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 	</anim>
 	<anim>
 		Raze_Idle
@@ -351,6 +371,7 @@
 		<component>ModelComp</component>
 		<attach a="torch" frombone="ATTACHPOINT" tobone="L HAND" syncanims="0"/>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -368,6 +389,7 @@
 		<component>ModelComp</component>
 		<attach a="torch" frombone="ATTACHPOINT" tobone="L HAND" syncanims="0"/>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -377,6 +399,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -386,6 +409,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -397,6 +421,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -408,6 +433,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -419,6 +445,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -428,6 +455,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -440,6 +468,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -451,6 +480,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -462,6 +492,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -473,6 +504,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -482,6 +514,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -491,6 +524,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -500,6 +534,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -509,6 +544,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -520,6 +556,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -531,6 +568,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 	</anim>
 	<anim>
 		Charge_Run
@@ -541,6 +579,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -559,6 +598,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -568,6 +608,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -583,6 +624,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -592,6 +634,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -604,6 +647,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
@@ -613,6 +657,7 @@
 		</assetreference>
 		<component>ModelComp</component>
 		<attach a="boomerang" frombone="bone_weapon1_attach" tobone="Bip01 Prop1" syncanims="1"/>
+		<attach a="shield" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"/>
 
 	</anim>
 	<anim>
