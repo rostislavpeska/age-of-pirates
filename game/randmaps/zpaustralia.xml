@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "301237" displayNameID = "301236" loadDetails="301238" largeMapName = "zpaustralia"
+    imagepath = "ui\random_map\australia\australia_mini" cannotReplace = "" loadBackground="ui\random_map\australia\australia_map">
+   <loadss>ui\random_map\australia\australia_ss_01</loadss>
+   <loadss>ui\random_map\australia\australia_ss_02</loadss>
+   <loadss>ui\random_map\australia\australia_ss_03</loadss>
+</mapinfo>

@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\maori\maori_statue02_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="objects\spc\aztec_props\textures\aztec_statue02_mata_normals">
+      </texture>
+      <texture name="Masks" override="objects\spc\aztec_props\textures\aztec_statue02_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\revolution\flower_patch\textures\flower_patch_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\revolution\flower_patch\textures\flower_patch_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\revolution\flower_patch\textures\flower_patch_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

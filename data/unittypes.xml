@@ -9,4 +9,5 @@
   <unittype>AbstractArmoredTrain</unittype>
   <unittype>MovingArmoredTrain</unittype>
   <unittype>AbstractJamesGang</unittype>
+  <unittype>AbstractAboriginalTracker</unittype>
 </unittypes>

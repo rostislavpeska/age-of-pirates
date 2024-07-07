@@ -1,0 +1,68 @@
+<animfile>
+    <attachment>fire_attachment_A
+        <component>fire_A
+            <assetreference type="popcornFx">
+                <file>fire\fire_A.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>fire_A</component>
+        </anim>
+    </attachment>
+    <attachment>fire_attachment_B
+        <component>fire_B
+            <assetreference type="popcornFx">
+                <file>fire\fire_b.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>fire_B</component>
+        </anim>
+    </attachment>
+    <attachment>fire_attachment_C
+        <component>fire_C
+            <assetreference type="popcornFx">
+                <file>fire\fire_C.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>fire_C</component>
+        </anim>
+    </attachment>
+    <attachment>fire_attachment_D
+        <component>fire_D
+            <assetreference type="popcornFx">
+                <file>fire\fire_D.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>fire_D</component>
+        </anim>
+    </attachment>
+    <attachment>fire_attachment_E
+        <component>fire_E
+            <assetreference type="popcornFx">
+                <file>fire\fire_E.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>fire_E</component>
+        </anim>
+    </attachment>
+    <attachment>fire_attachment_F
+        <component>fire_F
+            <assetreference type="popcornFx">
+                <file>fire\fire_F.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>fire_F</component>
+        </anim>
+    </attachment>
+    <component>fire_AA
+        <logic type="Variation"><data><assetreference type="GrannyModel"><file>effects\fire\directional_arrow</file></assetreference><attach a="fire_attachment_A" frombone="attachpoint" tobone="attachpoint"></attach></data><data><assetreference type="GrannyModel"><file>effects\fire\directional_arrow</file></assetreference><attach a="fire_attachment_B" frombone="attachpoint" tobone="attachpoint"></attach></data><data><assetreference type="GrannyModel"><file>effects\fire\directional_arrow</file></assetreference><attach a="fire_attachment_C" frombone="attachpoint" tobone="attachpoint"></attach></data><data><assetreference type="GrannyModel"><file>effects\fire\directional_arrow</file></assetreference><attach a="fire_attachment_D" frombone="attachpoint" tobone="attachpoint"></attach></data><data><assetreference type="GrannyModel"><file>effects\fire\directional_arrow</file></assetreference><attach a="fire_attachment_E" frombone="attachpoint" tobone="attachpoint"></attach></data><data><assetreference type="GrannyModel"><file>effects\fire\directional_arrow</file></assetreference><attach a="fire_attachment_F" frombone="attachpoint" tobone="attachpoint"></attach></data></logic>
+    </component>
+    <anim>Idle
+        <component>fire_AA</component>
+    </anim>
+</animfile>

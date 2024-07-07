@@ -1,0 +1,4 @@
+<animfile>
+  <component>ModelComp<assetreference type="GrannyModel"><file>units\natives\australia\boomerang\boomerang</file></assetreference></component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>units\natives\australia\boomerang\boomerang_rotate_Anim</file></assetreference><component>ModelComp</component></anim>
+</animfile>

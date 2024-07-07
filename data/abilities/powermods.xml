@@ -129,7 +129,7 @@
     <radius>20.0</radius>
     <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
     <abstractattacktargettype>LogicalTypeGarrisonInShips</abstractattacktargettype>
-    <unitaction>PoisonBomb</unitaction>
+    <unitaction>PoisonBombWeak</unitaction>
   </power>
   <power name="zpPowerArmouredTrain" type="UnitAction">
     <displaynameid>300989</displaynameid>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tactics>
+  <action>
+    <name stringid="68958">TrackerDamage</name>
+    <type>AutoRangedModify</type>
+    <persistent>1</persistent>
+    <modifyabstracttype>AbstractAboriginalTracker</modifyabstracttype>
+    <modifymultiplier>1.40</modifymultiplier>
+    <modifytype>UnitDamage</modifytype>
+  </action>
+  <action>
+    <name stringid="68960">TrackerHP</name>
+    <type>AutoRangedModify</type>
+    <persistent>1</persistent>
+    <modifyabstracttype>AbstractAboriginalTracker</modifyabstracttype>
+    <modifymultiplier>1.40</modifymultiplier>
+    <modifytype>MaxHP</modifytype>
+  </action>
+  <action>
+    <name stringid="300297">MaintainTracker</name>
+    <type>Maintain</type>
+    <rate type="zpNatAboriginalTracker">1.0 </rate>
+    <active>1</active>
+    <persistent>1</persistent>
+  </action>
+  <tactic>TacticHP
+    <action>TrackerHP</action>
+    <protounitcommand>zpTacticHP</protounitcommand>
+    <transition>
+        <tactic>TacticDamage</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticMaintain</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+  </tactic>
+  <tactic>TacticDamage
+    <action>TrackerDamage</action>
+    <protounitcommand>zpTacticDamage</protounitcommand>
+    <transition>
+        <tactic>TacticHP</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticMaintain</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+</tactic>
+<tactic>TacticMaintain
+    <action>MaintainTracker</action>
+    <protounitcommand>zpTacticMaintain</protounitcommand>
+    <transition>
+        <tactic>TacticHP</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+    <transition>
+        <tactic>TacticDamage</tactic>
+        <length>2</length>
+        <exit>1</exit>
+    </transition>
+</tactic>
+</tactics>

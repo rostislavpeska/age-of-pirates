@@ -1,0 +1,11 @@
+<tactics>
+  <action>
+    <name stringid="69776">SpawnVolcano</name>
+    <type>Spawn</type>
+    <rate type="zpSPCVolcano">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+<tactic>Normal<action>Heal</action><action>SpawnVolcano</action></tactic>
+</tactics>

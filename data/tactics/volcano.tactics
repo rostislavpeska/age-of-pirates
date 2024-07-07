@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tactics>
+  <action>
+    <name stringid="38119">CannonAttackUltraShort</name>
+    <type>RoundelExplodeAttack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <active>1</active>
+    <anim>volcano_attack</anim>
+    <idleanim>BombardIdle</idleanim>
+    <boredanim>bored</boredanim>
+    <accuracy>1.0</accuracy>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>20.5</spreadfactor>
+    <trackrating>2</trackrating>
+    <unintentionaldamagemultiplier>1.0</unintentionaldamagemultiplier>
+    <projectile>zpMeteor</projectile>
+    <impacteffect>effects\impacts\mortar</impacteffect>
+    <rate type="All">1.0 </rate>
+    <rate type="zpVolcanoInvisibleTarget">1.0 </rate>
+    <rate type="AbstractInfiniteCrate">1.0 </rate>
+    <areasortmode>Radial</areasortmode>
+    <outerdamageareadistance>.5</outerdamageareadistance>
+    <outerdamageareafactor>.5</outerdamageareafactor>
+    <perfectaccuracy>1</perfectaccuracy>
+    <targetground>1</targetground>
+    <basedamagecap>1</basedamagecap>
+    <hidefromstats>1</hidefromstats>
+  </action>
+  <action>
+    <name stringid="38119">CannonAttackShort</name>
+    <type>RoundelExplodeAttack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <active>0</active>
+    <anim>volcano_attack</anim>
+    <idleanim>BombardIdle</idleanim>
+    <boredanim>bored</boredanim>
+    <accuracy>1.0</accuracy>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>20.5</spreadfactor>
+    <trackrating>2</trackrating>
+    <unintentionaldamagemultiplier>1.0</unintentionaldamagemultiplier>
+    <projectile>zpMeteor</projectile>
+    <impacteffect>effects\impacts\mortar</impacteffect>
+    <rate type="All">1.0 </rate>
+    <rate type="zpVolcanoInvisibleTarget">1.0 </rate>
+    <rate type="AbstractInfiniteCrate">1.0 </rate>
+    <areasortmode>Radial</areasortmode>
+    <outerdamageareadistance>.5</outerdamageareadistance>
+    <outerdamageareafactor>.5</outerdamageareafactor>
+    <perfectaccuracy>1</perfectaccuracy>
+    <targetground>1</targetground>
+    <basedamagecap>1</basedamagecap>
+    <hidefromstats>1</hidefromstats>
+  </action>
+  <action>
+    <name stringid="38119">CannonAttackMedium</name>
+    <type>RoundelExplodeAttack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <active>0</active>
+    <anim>volcano_attack</anim>
+    <idleanim>BombardIdle</idleanim>
+    <boredanim>bored</boredanim>
+    <accuracy>1.0</accuracy>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>20.5</spreadfactor>
+    <trackrating>2</trackrating>
+    <unintentionaldamagemultiplier>1.0</unintentionaldamagemultiplier>
+    <projectile>zpMeteor</projectile>
+    <impacteffect>effects\impacts\mortar</impacteffect>
+    <rate type="All">1.0 </rate>
+    <rate type="zpVolcanoInvisibleTarget">1.0 </rate>
+    <rate type="AbstractInfiniteCrate">1.0 </rate>
+    <areasortmode>Radial</areasortmode>
+    <outerdamageareadistance>.5</outerdamageareadistance>
+    <outerdamageareafactor>.5</outerdamageareafactor>
+    <perfectaccuracy>1</perfectaccuracy>
+    <targetground>1</targetground>
+    <basedamagecap>1</basedamagecap>
+    <hidefromstats>1</hidefromstats>
+  </action>
+  <action>
+    <name stringid="38119">CannonAttackLong</name>
+    <type>RoundelExplodeAttack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <active>0</active>
+    <anim>volcano_attack</anim>
+    <idleanim>BombardIdle</idleanim>
+    <boredanim>bored</boredanim>
+    <accuracy>1.0</accuracy>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>20.5</spreadfactor>
+    <trackrating>2</trackrating>
+    <unintentionaldamagemultiplier>1.0</unintentionaldamagemultiplier>
+    <projectile>zpMeteor</projectile>
+    <impacteffect>effects\impacts\mortar</impacteffect>
+    <rate type="All">1.0 </rate>
+    <rate type="zpVolcanoInvisibleTarget">1.0 </rate>
+    <rate type="AbstractInfiniteCrate">1.0 </rate>
+    <areasortmode>Radial</areasortmode>
+    <outerdamageareadistance>.5</outerdamageareadistance>
+    <outerdamageareafactor>.5</outerdamageareafactor>
+    <perfectaccuracy>1</perfectaccuracy>
+    <targetground>1</targetground>
+    <basedamagecap>1</basedamagecap>
+    <hidefromstats>1</hidefromstats>
+  </action>
+  <action>
+    <name stringid="38119">CannonAttackUltraLong</name>
+    <type>RoundelExplodeAttack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <active>0</active>
+    <anim>volcano_attack</anim>
+    <idleanim>BombardIdle</idleanim>
+    <boredanim>bored</boredanim>
+    <accuracy>1.0</accuracy>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>20.5</spreadfactor>
+    <trackrating>2</trackrating>
+    <unintentionaldamagemultiplier>1.0</unintentionaldamagemultiplier>
+    <projectile>zpMeteor</projectile>
+    <impacteffect>effects\impacts\mortar</impacteffect>
+    <rate type="All">1.0 </rate>
+    <rate type="zpVolcanoInvisibleTarget">1.0 </rate>
+    <rate type="AbstractInfiniteCrate">1.0 </rate>
+    <areasortmode>Radial</areasortmode>
+    <outerdamageareadistance>.5</outerdamageareadistance>
+    <outerdamageareafactor>.5</outerdamageareafactor>
+    <perfectaccuracy>1</perfectaccuracy>
+    <targetground>1</targetground>
+    <basedamagecap>1</basedamagecap>
+    <hidefromstats>1</hidefromstats>
+  </action>
+  <tactic>Bombard
+    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+    <action priority="100">CannonAttackUltraShort</action>
+    <action priority="100">CannonAttackShort</action>
+    <action priority="100">CannonAttackMedium</action>
+    <action priority="100">CannonAttackLong</action>
+    <action priority="100">CannonAttackUltraLong</action>
+    <action>Hunting</action>
+    <action>SpawnGatlingGun</action>
+    <action>SpawnVolunteers1</action>
+    <action>SpawnVolunteers2</action>
+    <action>SpawnVolunteers3</action>
+    <action>SpawnVolunteers4</action>
+    <action>Spawn</action>
+    <action>ExtraBounty</action>
+    <action>ExtraBuildBounty</action>
+    <action>ExtraDamageInfantry</action>
+    <action>ExtraDamageCavalry</action>
+    <action>ExtraHPInfantry</action>
+    <action>ExtraHPCavalry</action>
+    <action>MaintainFedStateMilitia</action>
+    <action>SpawnHospitaller</action>
+  </tactic>
+</tactics>

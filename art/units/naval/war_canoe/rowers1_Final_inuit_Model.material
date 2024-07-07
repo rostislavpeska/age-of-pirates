@@ -1,0 +1,30 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\infantry_ranged\inuit_harpooner\textures\harpooner_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\shrine\textures\shaman_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\shrine\textures\shaman_mata_masks">
+      </texture>
+      <texture name="Details" override="units\infantry_ranged\inuit_harpooner\textures\harpooner_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\war_canoe\textures\rower1_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\war_canoe\textures\rower1_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\war_canoe\textures\rower1_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\war_canoe\textures\rower1_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

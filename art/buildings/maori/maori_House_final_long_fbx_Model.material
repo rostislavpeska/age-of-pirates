@@ -9,8 +9,6 @@
       </texture>
       <texture name="Masks" override="buildings\maori\maori_house_mata_Masks">
       </texture>
-      <texture name="Details" override="buildings\maori\maori_house_mata_Details">
-      </texture>
     </parameters>
   </submaterial>
  

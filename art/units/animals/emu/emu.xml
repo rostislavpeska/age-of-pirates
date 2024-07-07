@@ -1,0 +1,6 @@
+<animfile>
+  <component>emu<assetreference type="GrannyModel"><file>units\animals\emu\Emu</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_64x64</texture><selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture><width>2.0</width><height>2.00</height></decal></component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\quads\Emu_Idle</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Emu_Eat</file></assetreference><component>emu</component></anim>
+  <anim>Death<assetreference type="GrannyAnim"><file>animation_library\quads\Emu_Die</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.40</tag></assetreference><component>emu</component></anim>
+  <anim>Walk<assetreference type="GrannyAnim"><file>animation_library\quads\Emu_Walk</file></assetreference><component>emu</component></anim>
+</animfile>
