@@ -24577,7 +24577,7 @@
     <movementtype>air</movementtype>
     <animfile>ui\editor\editor_blocks.xml</animfile>
     <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
-    <los>30.0000</los>
+    <los>40.0000</los>
     <unittype>Unattackable</unittype>
     <unittype>Ranged</unittype>
     <unittype>Unit</unittype>
@@ -25949,6 +25949,103 @@
     <flag>Invulnerable</flag>
     <flag>NoUnitAI</flag>
   </unit>
+  <unit id="20243" name="zpVolcanoAvoider100">
+    <dbid>20244</dbid>
+    <displaynameid>301328</displaynameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>ui\editor\editor_revealer_all.xml</animfile>
+    <physicsinfo>dude</physicsinfo>
+    <initialhitpoints>1315.0000</initialhitpoints>
+    <maxhitpoints>1315.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>Building</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Invulnerable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
+    <flag>OnlyInEditor</flag>
+  </unit>
+  <unit id="20244" name="zpVolcanoAvoider125">
+    <dbid>20244</dbid>
+    <displaynameid>301329</displaynameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>ui\editor\editor_revealer_all.xml</animfile>
+    <physicsinfo>dude</physicsinfo>
+    <initialhitpoints>1315.0000</initialhitpoints>
+    <maxhitpoints>1315.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>Building</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Invulnerable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
+    <flag>OnlyInEditor</flag>
+  </unit>
+  <unit id="20245" name="zpVolcanoAvoider160">
+    <dbid>20244</dbid>
+    <displaynameid>301330</displaynameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>ui\editor\editor_revealer_all.xml</animfile>
+    <physicsinfo>dude</physicsinfo>
+    <initialhitpoints>1315.0000</initialhitpoints>
+    <maxhitpoints>1315.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>Building</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Invulnerable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
+    <flag>OnlyInEditor</flag>
+  </unit>
+  
   
   
   
@@ -25962,6 +26059,113 @@
 
 
   <!--TEST-->
+
+  <!--unit id="20246" name="zpVolcanoBurn">
+    <dbid>20246</dbid>
+    <displaynameid>301331</displaynameid>
+    <obstructionradiusx>0.1000</obstructionradiusx>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <movementtype>land</movementtype>
+    <animfile>buildings\outpost\outpost.xml</animfile>
+    <deadreplacement>BuildingRubble2x2</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildingsmall.xml</placementfile>
+    <icon>resources\art\buildings\outpost\outpost_icon_64x64.png</icon>
+    <portraiticon>resources\art\buildings\outpost\outpost_portrait.png</portraiticon>
+    <legacyhotkeycontext>BlockhouseAccel</legacyhotkeycontext>
+    <rollovertextid>26306</rollovertextid>
+    <shortrollovertextid>26305</shortrollovertextid>
+    <initialhitpoints>2000.0000</initialhitpoints>
+    <maxhitpoints>2000.0000</maxhitpoints>
+    <los>32.0000</los>
+    <projectileprotounit>Arrow</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <buildpoints>50.0000</buildpoints>
+    <freebuildpoints>150.0000</freebuildpoints>
+    <buildlimit>7</buildlimit>
+    <bounty>70.0000</bounty>
+    <buildbounty>35.0000</buildbounty>
+    <cost resourcetype="Wood">250.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <maxcontained>20</maxcontained>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>4</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractFort</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractOutpost</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>AbstractCallMinutemen</unittype>
+    <unittype>HCGatherPointPri1</unittype>
+    <unittype>AbstractDefensiveBuilding</unittype>
+    <tech row="0" page="1" column="0">FortifiedOutpost</tech>
+    <tech row="0" page="1" column="0">FrontierOutpost</tech>
+    <flag>EnterHotkeyContext</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>DisplayRange</flag>
+    <notcontain>AbstractMonk</notcontain>
+    <notcontain>ExcludeFromRansom</notcontain>
+    <notcontain>AbstractFishingBoat</notcontain>
+    <contain>AbstractVillager</contain>
+    <contain>deHomesteadWagon</contain>
+    <contain>AbstractHealer</contain>
+    <contain>ypDaimyoRegicide</contain>
+    <command page="1" column="1">SetBuildingAsHomeCityGatherPointEconomic</command>
+    <command page="1" column="2">SetBuildingAsHomeCityGatherPointMilitary</command>
+    <command page="10" column="7">Delete</command>
+    <command>CancelNativeDance</command>
+    <command>StartNativeDance</command>
+    <command page="1" column="3">deUSLevy</command>
+    <command page="1" column="3">deUSConscription</command>
+    <command page="1" column="3">deMXOutpostLevy</command>
+    <command page="1" column="4">deImmigrantsSpanishLevy</command>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="2">SetGatherPointEconomy</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <tactics>combatBuilding.tactics</tactics>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>100.000000</damage>
+      <damagetype>Hand</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>40.000000</maxrange>
+      <rof>0.100000</rof>
+    </protoaction>
+  </unit>-->
 
   <unit id="20241" name="zpShipFadeProxy">
   <!-- Works but needs to be tested on slower device -->
