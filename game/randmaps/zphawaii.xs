@@ -557,10 +557,11 @@ void main(void)
   rmSetAreaHeightBlend(basecliffID2, 0);
   rmSetAreaCliffType(basecliffID2, "ZP Hawaii Medium");
   rmSetAreaTerrainType(basecliffID2, "lava\volcano_grass");
-  rmSetAreaCliffEdge(basecliffID2, 4, 0.18, 0.0, 0.0, 2); 
+  rmSetAreaCliffEdge(basecliffID2, 1, 1.00, 0.0, 0.0, 2); 
   rmSetAreaCliffPainting(basecliffID2, true, true, true, 1.5, true);
   rmSetAreaCliffHeight(basecliffID2, 4, 0.1, 0.5);
   rmSetAreaLocation(basecliffID2, 0.5, 0.5);
+  rmAddAreaToClass(basecliffID2, classHighMountains);
   rmAddAreaConstraint(basecliffID2, avoidKOTHshort);
   //rmSetAreaReveal(basecliffID2, 1);
   rmBuildArea(basecliffID2);
@@ -579,7 +580,6 @@ void main(void)
   rmSetAreaCliffPainting(basecliffID3, true, true, true, 1.5, true);
   rmSetAreaCliffHeight(basecliffID3, 5, 0.1, 0.5);
   rmSetAreaLocation(basecliffID3, 0.5, 0.5);
-  rmAddAreaToClass(basecliffID3, classHighMountains);
   rmAddAreaConstraint(basecliffID3, avoidKOTHshort);
   rmBuildArea(basecliffID3);
 
@@ -644,10 +644,10 @@ void main(void)
   rmBuildArea(fujiPeak);  
 
   int fujiPeakTerrain = rmCreateArea("fujiPeakTerrain");
-  rmSetAreaSize(fujiPeakTerrain, rmAreaTilesToFraction(200.0), rmAreaTilesToFraction(200.0));
+  rmSetAreaSize(fujiPeakTerrain, rmAreaTilesToFraction(230.0), rmAreaTilesToFraction(230.0));
   rmSetAreaLocation(fujiPeakTerrain, 0.5, 0.5);
   rmSetAreaTerrainType(fujiPeakTerrain, "lava\crater");
-  rmSetAreaCoherence(fujiPeakTerrain, 0.9);
+  rmSetAreaCoherence(fujiPeakTerrain, 1.0);
   rmBuildArea(fujiPeakTerrain);
   
   int fujiDip = rmCreateArea("fujiDip");
@@ -680,6 +680,19 @@ void main(void)
   int volcanoCraterID = -1;
   volcanoCraterID = rmCreateGrouping("crater", "volcano_crater");
   rmPlaceGroupingAtLoc(volcanoCraterID, 1, 0.5, 0.5, 1);
+
+  int volcanoAvoider = rmCreateObjectDef("ai avoider"); 
+  if (cNumberNonGaiaPlayers <= 3)
+	  rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoider100", 1, 0.0);
+  else if (cNumberNonGaiaPlayers >= 6)
+    rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoider160", 1, 0.0);
+  else
+    rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoider125", 1, 0.0);
+	rmPlaceObjectDefAtLoc(volcanoAvoider, 0, 0.5, 0.5);
+
+  int volcanoDamage = rmCreateObjectDef("burn damage"); 
+	rmAddObjectDefItem(volcanoDamage, "zpVolcanoBurn", 1, 0.0);
+	rmPlaceObjectDefAtLoc(volcanoDamage, 0, 0.5, 0.5);
 
   
 

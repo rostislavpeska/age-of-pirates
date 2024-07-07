@@ -24603,8 +24603,8 @@
   <unit id="20276" name="zpVolcanoObstruction">
     <dbid>20276</dbid>
     <displaynameid>301289</displaynameid>
-    <obstructionradiusx>0.0001</obstructionradiusx>
-    <obstructionradiusz>0.0001</obstructionradiusz>
+    <obstructionradiusx>3.0001</obstructionradiusx>
+    <obstructionradiusz>3.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <animfile>ui\editor\editor_blocks.xml</animfile>
     <los>0.0000</los>
