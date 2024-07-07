@@ -1,4 +1,4 @@
-// HAWAII 1.0
+// HAWAII 2.0
 // 06/2024
 
 include "mercenaries.xs";
@@ -61,12 +61,12 @@ void main(void)
 	chooseMercs();
 	
 	// Set size of map
-	int playerTiles=20000;
+	int playerTiles=170000;
   if(cNumberNonGaiaPlayers <= 5)
-    playerTiles = 26000;
-  if (cNumberNonGaiaPlayers <= 3)
-		playerTiles = 30000;
-	int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
+    playerTiles = 130000;
+  if (cNumberNonGaiaPlayers <= 2)
+		playerTiles = 100000;
+	int size=2.0*sqrt(playerTiles);
 	rmEchoInfo("Map size="+size+"m x "+size+"m");
 	rmSetMapSize(size, size);
 
@@ -98,6 +98,7 @@ void main(void)
 	rmDefineClass("importantItem");
 	int classCanyon=rmDefineClass("canyon");
   int classHighMountains=rmDefineClass("high mountains");
+  int classCentralIsland=rmDefineClass("central island");
 
    // -------------Define constraints----------------------------------------
 
@@ -151,6 +152,7 @@ void main(void)
   int avoidMesa=rmCreateClassDistanceConstraint("avoid random mesas on south central portion of migration island", classCanyon, 10.0);
   int avoidHighMountains=rmCreateClassDistanceConstraint("stuff avoids high mountains", classHighMountains, 3.0);
   int avoidHighMountainsFar=rmCreateClassDistanceConstraint("stuff avoids high mountains far", classHighMountains, 12.0);
+  int avoidCentralIsland=rmCreateClassDistanceConstraint("stuff avoids central island", classCentralIsland, 30.0);
 
 	// Constraint to avoid water.
 	int avoidWater4 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 4.0);
@@ -175,7 +177,7 @@ void main(void)
 	int flagVsWokou1 = rmCreateTypeDistanceConstraint("flag avoid wokou 1", "zpWokouWaterSpawnFlag1", 40);
   int flagVsWokou2 = rmCreateTypeDistanceConstraint("flag avoid wokou  2", "zpWokouWaterSpawnFlag2", 40);
   int flagEdgeConstraint=rmCreatePieConstraint("flag edge of map", 0.5, 0.5, 0, rmGetMapXSize()-100, 0, 0, 0);
-  int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 8.0);
+  int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 12.0);
 
    //Trade Route Contstraints
    int islandAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("trade route", 6.0);
@@ -267,7 +269,7 @@ void main(void)
     int playerID=rmCreateArea("player "+i);
     rmSetPlayerArea(i, playerID);
     rmAddAreaToClass(playerID, classIsland);
-    rmSetAreaSize(playerID, rmAreaTilesToFraction(2400), rmAreaTilesToFraction(2400));
+    rmSetAreaSize(playerID, rmAreaTilesToFraction(3000), rmAreaTilesToFraction(3000));
     rmSetAreaLocPlayer(playerID, i);
     rmSetAreaWarnFailure(playerID, false);
 	  rmSetAreaCoherence(playerID, 0.5);
@@ -294,9 +296,12 @@ void main(void)
     rmSetConnectionWarnFailure(connectionID1, false);
     rmAddConnectionArea(connectionID1, centralIslandID);
     rmAddConnectionArea(connectionID1, playerID);
-    rmSetConnectionBaseHeight(connectionID1, 1.5);
-    rmBuildConnection(connectionID1);
+    rmSetConnectionBaseHeight(connectionID1, 0.5);
+    rmSetConnectionHeightBlend(connectionID1, 20);
+    rmAddConnectionTerrainReplacement(connectionID1, "ceylon\seafloor5_ceylon", "caribbean\ground_shoreline1_crb");
 
+
+    rmBuildConnection(connectionID1);
 	}
 
   // Create Bonus Islands
@@ -319,13 +324,11 @@ void main(void)
 
   if (weird==1){
     rmSetAreaSize(bonusIsland1, rmAreaTilesToFraction(2000), rmAreaTilesToFraction(2000));
-    rmSetAreaLocation(bonusIsland1, .3, .7);  
-    rmBuildArea(bonusIsland1);
+    rmSetAreaLocation(bonusIsland1, .32, .68);  
   }
   else{
     rmSetAreaSize(bonusIsland1, rmAreaTilesToFraction(800), rmAreaTilesToFraction(800));
-    rmSetAreaLocation(bonusIsland1, .3, .3);  
-    rmBuildArea(bonusIsland1);
+    rmSetAreaLocation(bonusIsland1, .32, .32);  
 
     int bonusIsland2=rmCreateArea("bonus island 2");
     rmSetAreaSize(bonusIsland2, rmAreaTilesToFraction(800), rmAreaTilesToFraction(800));
@@ -344,18 +347,18 @@ void main(void)
     rmSetAreaElevationNoiseBias(bonusIsland2, 1);
     rmAddAreaConstraint(bonusIsland2, islandConstraint);
     rmAddAreaConstraint(bonusIsland2, islandAvoidTradeRoute);
-    rmSetAreaLocation(bonusIsland2, .7, .7);  
-    rmBuildArea(bonusIsland2);
+    rmSetAreaLocation(bonusIsland2, .68, .68);  
   }
 
   int connectionID2 = rmCreateConnection ("connection bonus 1");
   rmSetConnectionType(connectionID2, cConnectAreas, false, 1);
-  rmSetConnectionWidth(connectionID2, 30, 8);
+  rmSetConnectionWidth(connectionID2, 30, 30);
   rmSetConnectionCoherence(connectionID2, 0.3);
+  rmSetConnectionHeightBlend(connectionID2, 30);
   rmSetConnectionWarnFailure(connectionID2, false);
   rmAddConnectionArea(connectionID2, centralIslandID);
   rmAddConnectionArea(connectionID2, bonusIsland1);
-  rmSetConnectionBaseHeight(connectionID2, 1.5);
+  rmSetConnectionBaseHeight(connectionID2, 0.5);
   rmBuildConnection(connectionID2);
 
   if (weird==0){
@@ -363,10 +366,11 @@ void main(void)
     rmSetConnectionType(connectionID3, cConnectAreas, false, 1);
     rmSetConnectionWidth(connectionID3, 30, 8);
     rmSetConnectionCoherence(connectionID3, 0.3);
+    rmSetConnectionHeightBlend(connectionID3, 30);
     rmSetConnectionWarnFailure(connectionID3, false);
     rmAddConnectionArea(connectionID3, centralIslandID);
     rmAddConnectionArea(connectionID3, bonusIsland2);
-    rmSetConnectionBaseHeight(connectionID3, 1.5);
+    rmSetConnectionBaseHeight(connectionID3, 0.5);
     rmBuildConnection(connectionID3);
   }
 
@@ -376,8 +380,8 @@ void main(void)
 
   // Make one big island.  
 	int bigIslandID=rmCreateArea("migration island");
-  if (cNumberNonGaiaPlayers <= 3)
-	  rmSetAreaSize(bigIslandID, rmAreaTilesToFraction(10000), rmAreaTilesToFraction(10000));
+  if (cNumberNonGaiaPlayers <= 2)
+	  rmSetAreaSize(bigIslandID, rmAreaTilesToFraction(11000), rmAreaTilesToFraction(11000));
   else if (cNumberNonGaiaPlayers >= 6)
 	  rmSetAreaSize(bigIslandID, rmAreaTilesToFraction(22000), rmAreaTilesToFraction(22000));
   else
@@ -388,6 +392,7 @@ void main(void)
 	rmSetAreaMix(bigIslandID, baseMix);
     rmAddAreaTerrainLayer(bigIslandID, "caribbean\ground3_crb", 0, 6);
 	rmAddAreaToClass(bigIslandID, classIsland);
+  rmAddAreaToClass(bigIslandID, classCentralIsland);
 	rmSetAreaObeyWorldCircleConstraint(bigIslandID, false);
 	rmSetAreaElevationType(bigIslandID, cElevTurbulence);
 	rmSetAreaElevationVariation(bigIslandID, 4.0);
@@ -407,7 +412,7 @@ void main(void)
       int controllerID1 = rmCreateObjectDef("Controler 1");
       rmAddObjectDefItem(controllerID1, "zpSPCWaterSpawnPoint", 1, 0.0);
       rmSetObjectDefMinDistance(controllerID1, 0.0);
-	   rmSetObjectDefMaxDistance(controllerID1, 30.0);
+	   rmSetObjectDefMaxDistance(controllerID1, 20.0);
       rmAddObjectDefConstraint(controllerID1, avoidImpassableLand);
       rmAddObjectDefConstraint(controllerID1, ferryOnShore); 
 
@@ -415,19 +420,19 @@ void main(void)
       int controllerID2 = rmCreateObjectDef("Controler 2");
       rmAddObjectDefItem(controllerID2, "zpSPCWaterSpawnPoint", 1, 0.0);
       rmSetObjectDefMinDistance(controllerID2, 0.0);
-	   rmSetObjectDefMaxDistance(controllerID2, 30.0);
+	   rmSetObjectDefMaxDistance(controllerID2, 20.0);
       rmAddObjectDefConstraint(controllerID2, avoidImpassableLand);
       rmAddObjectDefConstraint(controllerID2, ferryOnShore); 
 
 
       if(weird == 0){
          rmPlaceObjectDefAtLoc(controllerID1, 0, 0.3, 0.3);
-         rmPlaceObjectDefAtLoc(controllerID2, 0, 0.75, 0.75);
+         rmPlaceObjectDefAtLoc(controllerID2, 0, 0.7, 0.7);
       }
 
       else {
-         rmPlaceObjectDefAtLoc(controllerID1, 0, 0.3+rmXTilesToFraction(20), 0.7+rmXTilesToFraction(20));
-         rmPlaceObjectDefAtLoc(controllerID2, 0, 0.3-rmXTilesToFraction(20), 0.7-rmXTilesToFraction(20));
+         rmPlaceObjectDefAtLoc(controllerID1, 0, 0.32+rmXTilesToFraction(20), 0.68+rmXTilesToFraction(20));
+         rmPlaceObjectDefAtLoc(controllerID2, 0, 0.32-rmXTilesToFraction(20), 0.68-rmXTilesToFraction(20));
       }
 
 
@@ -449,6 +454,7 @@ void main(void)
       int piratewaterflagID1 = rmCreateObjectDef("pirate water flag 1");
       rmAddObjectDefItem(piratewaterflagID1, "zpPirateWaterSpawnFlag1", 1, 1.0);
       rmAddClosestPointConstraint(flagLandShort);
+      rmAddClosestPointConstraint(avoidCentralIsland);
 
       vector closeToVillage1 = rmFindClosestPointVector(ControllerLoc1, rmXFractionToMeters(1.0));
       rmPlaceObjectDefAtLoc(piratewaterflagID1, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage1)), rmZMetersToFraction(xsVectorGetZ(closeToVillage1)));
@@ -478,6 +484,7 @@ void main(void)
       int piratewaterflagID2 = rmCreateObjectDef("pirate water flag 2");
       rmAddObjectDefItem(piratewaterflagID2, "zpPirateWaterSpawnFlag2", 1, 1.0);
       rmAddClosestPointConstraint(flagLandShort);
+      rmAddClosestPointConstraint(avoidCentralIsland);
 
       vector closeToVillage2 = rmFindClosestPointVector(ControllerLoc2, rmXFractionToMeters(1.0));
       rmPlaceObjectDefAtLoc(piratewaterflagID2, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage2)), rmZMetersToFraction(xsVectorGetZ(closeToVillage2)));
@@ -512,7 +519,7 @@ void main(void)
   //==========Volcano==============
 
   int basecliffID = rmCreateArea("base cliff");
-  if (cNumberNonGaiaPlayers <= 3 || rmGetIsKOTH() == true)
+  if (cNumberNonGaiaPlayers <= 2 || rmGetIsKOTH() == true)
     rmSetAreaSize(basecliffID, rmAreaTilesToFraction(2000), rmAreaTilesToFraction(2000));
   else
     rmSetAreaSize(basecliffID, rmAreaTilesToFraction(2500), rmAreaTilesToFraction(2500));
@@ -682,7 +689,7 @@ void main(void)
   rmPlaceGroupingAtLoc(volcanoCraterID, 1, 0.5, 0.5, 1);
 
   int volcanoAvoider = rmCreateObjectDef("ai avoider"); 
-  if (cNumberNonGaiaPlayers <= 3)
+  if (cNumberNonGaiaPlayers <= 2)
 	  rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoider100", 1, 0.0);
   else if (cNumberNonGaiaPlayers >= 6)
     rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoider160", 1, 0.0);
@@ -1192,7 +1199,7 @@ if(cNumberNonGaiaPlayers >=3) {
 	// Easier nuggets
 	int nugget1= rmCreateObjectDef("nugget easy"); 
 	rmAddObjectDefItem(nugget1, "Nugget", 1, 0.0);
-	rmSetNuggetDifficulty(1, 3);
+	rmSetNuggetDifficulty(1, 2);
 	rmSetObjectDefMinDistance(nugget1, 0.0);
 	rmSetObjectDefMaxDistance(nugget1, rmXFractionToMeters(0.3));
 	rmAddObjectDefConstraint(nugget1, shortAvoidImpassableLand);
@@ -1235,13 +1242,12 @@ if(cNumberNonGaiaPlayers >=3) {
   // really tough nuggets confined to south central cliffy area
   int nugget3= rmCreateObjectDef("nugget hardest"); 
 	rmAddObjectDefItem(nugget3, "Nugget", 1, 0.0);
-	rmSetNuggetDifficulty(4, 4);
+	rmSetNuggetDifficulty(3, 4);
 	rmSetObjectDefMinDistance(nugget3, 0.0);
 	rmSetObjectDefMaxDistance(nugget3, rmXFractionToMeters(0.3));
 	rmAddObjectDefConstraint(nugget3, shortAvoidImpassableLand);
 	rmAddObjectDefConstraint(nugget3, avoidHardNugget);
   rmAddObjectDefConstraint(nugget3, avoidHighMountains);
-  rmAddObjectDefConstraint(nugget3, mesaConstraint);
   rmAddObjectDefConstraint(nugget3, avoidJesuit);
   rmAddObjectDefConstraint(nugget3, avoidImportantItem);
 	rmPlaceObjectDefInArea(nugget3, 0, bigIslandID, cNumberNonGaiaPlayers*1.5);
@@ -1309,7 +1315,7 @@ int eruptionBreak3 = rmRandInt(gapMin,gapMax);
 int eruptionBreak4 = rmRandInt(gapMin,gapMax);
 int eruptionBreak5 = rmRandInt(gapMin,gapMax);
 
-if (cNumberNonGaiaPlayers <=3) {
+if (cNumberNonGaiaPlayers <=2) {
   eruptionLenght = 80;
   islandSize = 110;
   eqAreaDamage = 30;
@@ -1645,7 +1651,7 @@ rmSetTriggerEffectParamFloat("Duration",2.0);
 rmSetTriggerEffectParamFloat("Strength",0.2);
 rmAddTriggerEffect("Play Soundset");
 rmSetTriggerEffectParam("Soundset","Earthquake");
-if (cNumberNonGaiaPlayers <=3){
+if (cNumberNonGaiaPlayers <=2){
   rmAddTriggerEffect("Fire Event");
   rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short2"));
 }
