@@ -23297,9 +23297,8 @@
     <flag>SocketSubCivAlliance</flag>
     <flag>ForceUpdateVisualWhenCnverted</flag>
     <flag>EnterHotkeyContext</flag>
-    <tactics>socketcapture.tactics</tactics>
+    <tactics>socketaboriginal.tactics</tactics>
   </unit>
-  
   <unit id="20259" name="zpNativeHouseAboriginals">
     <dbid>20259</dbid>
     <displaynameid>301183</displaynameid>
@@ -23978,6 +23977,7 @@
     <maxhitpoints>2750.0000</maxhitpoints>
     <los>12.0000</los>
     <buildpoints>30.0000</buildpoints>
+    <displayedrange>30.0000</displayedrange>
     <buildlimit>1</buildlimit>
     <bounty>100.0000</bounty>
     <buildbounty>30.0000</buildbounty>
@@ -24006,6 +24006,7 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>AbstractSchool</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -24020,20 +24021,26 @@
     <flag>InitialGarrisonOnly</flag>
     <flag>ColonyBuilding</flag>
     <flag>ColonyPlacementL</flag>
+    <flag>DisplayRange</flag>
     <flag>Tracked</flag>
     <flag>BuildingShowTactics</flag>
     <flag>HasGatherPoint</flag>
     <tactics>aboriginalschool.tactics</tactics>
-    <command page="0" column="1">zpTacticHP</command>
-    <command page="0" column="2">zpTacticDamage</command>
-    <command page="0" column="3">zpTacticMaintain</command>
+    <command page="0" column="2">zpTacticHP</command>
+    <command page="0" column="3">zpTacticDamage</command>
+    <command page="0" column="1">zpTacticMaintain</command>
     <command page="10" column="5">Eject</command>
     <command page="10" column="7">Delete</command>
+    <protoaction>
+      <name>AutoGatherXP</name>
+      <rate type="XP">0.100000</rate>
+    </protoaction>
   </unit>
   <unit id="20267" name="zpAustralianSchoolWagon">
     <dbid>20267</dbid>
     <displaynameid>301220</displaynameid>
     <editornameid>301221</editornameid>
+    <subciv>AboriginalNatives</subciv>
     <obstructionradiusx>0.9900</obstructionradiusx>
     <obstructionradiusz>0.9900</obstructionradiusz>
     <formationcategory>Protected</formationcategory>
@@ -24041,10 +24048,10 @@
     <maxrunvelocity>6.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>5.0000</turnrate>
-    <animfile>units\trade\supply_cart\supply_cart_outpost.xml</animfile>
+    <animfile>units\trade\supply_cart\supply_cart_bank.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\trade\outpost_wagon_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trade\outpost_wagon_portrait.png</portraiticon>
+    <icon>resources\art\units\bank_wagon_icon.png</icon>
+    <portraiticon>resources\art\units\bank_wagon_portrait.png</portraiticon>
     <rollovertextid>301222</rollovertextid>
     <shortrollovertextid>301222</shortrollovertextid>
     <initialhitpoints>250.0000</initialhitpoints>
@@ -24078,6 +24085,11 @@
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
+    <sharedbuildlimitunit>zpAboriginalSchool</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpAboriginalSchool</unittype>
+      <unittype>zpAustralianSchoolWagon</unittype>
+    </sharedbuildlimitunittypes>
     <train row="0" page="0" column="0">zpAboriginalSchool</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
@@ -24089,6 +24101,8 @@
     <flag>ConstrainOrientation</flag>
     <flag>OrientUnitWithGround</flag>
     <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <flag>DoNotQueue</flag>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
@@ -24122,7 +24136,7 @@
     <projectileprotounit>InvisibleProjectile</projectileprotounit>
     <autoattackrange>17.0000</autoattackrange>
     <unitaitype>RangedCombative</unitaitype>
-    <trainpoints>34.0000</trainpoints>
+    <trainpoints>40.0000</trainpoints>
     <bounty>12.0000</bounty>
     <buildbounty>12.0000</buildbounty>
     <cost resourcetype="Food">40.0000</cost>

@@ -10,4 +10,5 @@
   <unittype>MovingArmoredTrain</unittype>
   <unittype>AbstractJamesGang</unittype>
   <unittype>AbstractAboriginalTracker</unittype>
+  <unittype>AbstractSchool</unittype>
 </unittypes>
