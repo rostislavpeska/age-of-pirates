@@ -1,103 +1,12 @@
 <nuggetmods>
   <nuggets>
-    <nugget>
-      <name>zpFishingBoat</name>
-      <type>SpawnUnit</type>
-      <nuggetunit>ypNuggetSeaLionRock</nuggetunit>
-      <waternugget>true</waternugget>
-      <rolloverstringid>102298</rolloverstringid>
-      <applystringid>102299</applystringid>
-      <unittype>FishingBoat</unittype>
-      <amount>1</amount>
-      <maptype>caribbeanwater</maptype>
-      <maptype>hawaii</maptype>
-      <maptype>arcticwater</maptype>
-      <maptype>kurils</maptype>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <guardian>ypGreatWhiteShark</guardian>
-      <guardian>ypGreatWhiteShark</guardian>
-      <difficulty>6</difficulty>
-    </nugget>
-    <nugget>
-      <name>ypWaterNuggetDriftwood</name>
-      <maptype>caribbeanwater</maptype>
-      <maptype>hawaii</maptype>
-      <maptype>australia</maptype>
-    </nugget>
-    <nugget>
-      <name>ypWaterNuggetSwordfish</name>
-      <maptype>caribbeanwater</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>ypWaterNuggetDolphins</name>
-      <maptype>caribbeanwater</maptype>
-      <maptype>hawaii</maptype>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-    </nugget>
-    <nugget>
-      <name>ypWaterNuggetSeaUrchins</name>
-      <maptype>caribbeanwater</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>ypWaterNuggetPearls</name>
-      <maptype>caribbeanwater</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>ypWaterNuggetFlotsam</name>
-      <maptype>caribbeanwater</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>ypWaterNuggetAmbergris</name>
-      <maptype>caribbeanwater</maptype>
-      <maptype>hawaii</maptype>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-    </nugget>
-    <nugget>
-      <name>ypWaterNuggetSeaLions</name>
-      <maptype>arcticwater</maptype>
-      <maptype>kurils</maptype>
-    </nugget>
-    <nugget>
-      <name>ypWaterNuggetMu3</name>
-      <maptype>arcticwater</maptype>
-      <maptype>kurils</maptype>
-      <maptype>australia</maptype>
-    </nugget>
-    <nugget>
-      <name>ypWaterNuggetMu2</name>
-      <maptype>arcticwater</maptype>
-      <maptype>kurils</maptype>
-      <maptype>australia</maptype>
-    </nugget>
-    <nugget>
-      <name>ypWaterNuggetMu1</name>
-      <maptype>arcticwater</maptype>
-      <maptype>kurils</maptype>
-      <maptype>australia</maptype>
-    </nugget>
-    <nugget>
-      <name>ypWaterNuggetLemuria2</name>
-      <maptype>arcticwater</maptype>
-      <maptype>kurils</maptype>
-    </nugget>
-    <nugget>
-      <name>ypWaterNuggetLemuria1</name>
-      <maptype>arcticwater</maptype>
-      <maptype>kurils</maptype>
-    </nugget>
+
+    <!-- LAND NUGGETS -->
 
     <nugget>
       <name>Basswood</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Beaver1</name>
@@ -120,29 +29,9 @@
     <nugget>
       <name>Blanket</name>
       <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Chiles3</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Cibola1A</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Cibola1B</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Cibola2A</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
@@ -154,43 +43,11 @@
       <maptype>hawaii</maptype>
     </nugget>
     <nugget>
-      <name>Cibola2C</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
       <name>Cibola3A</name>
       <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Cibola3B</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Cibola4A</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Cibola4B</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Cibola5</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Cibola7A</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
@@ -204,8 +61,6 @@
     <nugget>
       <name>Coihue</name>
       <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>CoihueTeam</name>
@@ -216,26 +71,6 @@
     <nugget>
       <name>Comstock</name>
       <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Comstock11</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Coreur5</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>CoreurTwoTwo</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Coypu1</name>
@@ -250,40 +85,14 @@
       <maptype>hawaii</maptype>
     </nugget>
     <nugget>
-      <name>Coypu3</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>deHouseNugget3</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
       <name>deNuggetFoodTrickle</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>deNuggetXPrickle</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>GiveDoubleHP</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Jackalope</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Jeff1</name>
@@ -294,8 +103,6 @@
     <nugget>
       <name>Journal2</name>
       <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Kev1</name>
@@ -334,18 +141,6 @@
       <maptype>hawaii</maptype>
     </nugget>
     <nugget>
-      <name>MercuryTeam</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Muskrat1</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
       <name>Muskrat2</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
@@ -358,25 +153,11 @@
       <maptype>hawaii</maptype>
     </nugget>
     <nugget>
-      <name>NavigationChart</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
       <name>Settler</name>
       <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Settler6</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Squash33</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
@@ -553,6 +334,47 @@
       <killunitonapply>0</killunitonapply>
     </nugget>
     <nugget>
+      <name>zpSettler33</name>
+      <type>ConvertUnit</type>
+      <convertsettler>true</convertsettler>
+      <nuggetunit>NuggetWolfTreeBent</nuggetunit>
+      <rolloverstringid>36942</rolloverstringid>
+      <applystringid>36943</applystringid>
+      <maptype>hawaii</maptype>
+      <convertunit>
+        <unit>Settler</unit>
+        <idleanim>Wolf_Treebent_Captive_Idle</idleanim>
+        <exitanim>Wolf_Treebent_Captive_Exit</exitanim>
+        <attachdummy>bone_nuggetA</attachdummy>
+      </convertunit>
+      <guardianunit>
+        <unit>deGuardianBoar</unit>
+        <attachdummy>bone_nuggetB</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zdeGuardianBoar</unit>
+        <attachdummy>bone_nuggetC</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianBoar</unit>
+        <attachdummy>bone_nuggetD</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianBoar</unit>
+        <attachdummy>bone_nuggetE</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianBoar</unit>
+        <attachdummy>bone_nuggetF</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianBoar</unit>
+        <attachdummy>bone_nuggetG</attachdummy>
+      </guardianunit>
+      <difficulty>4</difficulty>
+      <killunitonapply>0</killunitonapply>
+    </nugget>
+    <nugget>
       <name>zpSkunk</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedSupplies</nuggetunit>
@@ -606,9 +428,7 @@
       <applystringid>31156</applystringid>
       <resource>XP</resource>
       <amount>100</amount>
-      <maptype>amazonia</maptype>
-      <maptype>orinoco</maptype>
-      <maptype>yucatan</maptype>
+      <maptype>australia</maptype>
       <guardian>zpCassowary</guardian>
       <guardian>zpCassowary</guardian>
       <difficulty>2</difficulty>
@@ -621,9 +441,7 @@
       <applystringid>31156</applystringid>
       <resource>XP</resource>
       <amount>100</amount>
-      <maptype>amazonia</maptype>
-      <maptype>orinoco</maptype>
-      <maptype>yucatan</maptype>
+      <maptype>australia</maptype>
       <guardian>zpDingoDog</guardian>
       <guardian>zpDingoDog</guardian>
       <difficulty>2</difficulty>
@@ -636,9 +454,7 @@
       <applystringid>31156</applystringid>
       <resource>XP</resource>
       <amount>150</amount>
-      <maptype>amazonia</maptype>
-      <maptype>orinoco</maptype>
-      <maptype>yucatan</maptype>
+      <maptype>australia</maptype>
       <guardian>zpDingoDog</guardian>
       <guardian>zpDingoDog</guardian>
       <guardian>zpDingoDog</guardian>
@@ -652,9 +468,7 @@
       <applystringid>31156</applystringid>
       <resource>XP</resource>
       <amount>150</amount>
-      <maptype>amazonia</maptype>
-      <maptype>orinoco</maptype>
-      <maptype>yucatan</maptype>
+      <maptype>australia</maptype>
       <guardian>zpCassowary</guardian>
       <guardian>zpCassowary</guardian>
       <guardian>zpCassowary</guardian>
@@ -842,6 +656,109 @@
       <killunitonapply>0</killunitonapply>
     </nugget>
     <nugget>
+      <name>zpOCCibola1A</name>
+      <type>AdjustResource</type>
+      <nuggetunit>zpNuggetGeyser</nuggetunit>
+      <rolloverstringid>32759</rolloverstringid>
+      <applystringid>32761</applystringid>
+      <resource>Food</resource>
+      <amount>415</amount>
+      <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGuardianClubman</guardian>
+      <difficulty>4</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpOCCibola1B</name>
+      <type>AdjustResource</type>
+      <nuggetunit>zpNuggetGeyser</nuggetunit>
+      <rolloverstringid>32759</rolloverstringid>
+      <applystringid>32761</applystringid>
+      <resource>Food</resource>
+      <amount>455</amount>
+      <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
+      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGuardianClubman</guardian>
+      <difficulty>4</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpOCCibola2A</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetPirate</nuggetunit>
+      <rolloverstringid>32762</rolloverstringid>
+      <applystringid>32763</applystringid>
+      <resource>Wood</resource>
+      <amount>250</amount>
+      <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
+      <guardianunit>
+        <unit>Pirate</unit>
+        <idleanim>NuggetPirate1_Idle</idleanim>
+        <exitanim>NuggetPirate1_Exit</exitanim>
+        <attachdummy>bone_nuggetA</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>Pirate</unit>
+        <idleanim>NuggetPirate2_Idle</idleanim>
+        <exitanim>NuggetPirate2_Exit</exitanim>
+        <attachdummy>bone_nuggetB</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>Pirate</unit>
+        <idleanim>NuggetPirate3_Idle</idleanim>
+        <exitanim>NuggetPirate3_Exit</exitanim>
+        <attachdummy>bone_nuggetC</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>Pirate</unit>
+        <attachdummy>bone_nuggetD</attachdummy>
+      </guardianunit>
+      <difficulty>4</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpOCCibola2C</name>
+      <type>AdjustResource</type>
+      <nuggetunit>zpNuggetGeyser</nuggetunit>
+      <rolloverstringid>32762</rolloverstringid>
+      <applystringid>32763</applystringid>
+      <resource>Wood</resource>
+      <amount>330</amount>
+      <maptype>hawaii</maptype>
+      <guardian>deGuardianBoar</guardian>
+      <guardian>deGuardianBoar</guardian>
+      <guardian>deGuardianBoar</guardian>
+      <guardian>deGuardianBoar</guardian>
+      <guardian>deGuardianBoar</guardian>
+      <difficulty>4</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpOCSpawnBoar</name>
+      <type>SpawnUnit</type>
+      <nuggetunit>zpNuggetGeyser</nuggetunit>
+      <rolloverstringid>124229</rolloverstringid>
+      <applystringid>124230</applystringid>
+      <unittype>dePetBoar</unittype>
+      <amount>1</amount>
+      <maptype>hawaii</maptype>
+      <guardian>deGuardianBoar</guardian>
+      <guardian>deGuardianBoar</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+
+
+    <!--WATER NUGGETS-->
+
+    <nugget>
       <name>zpAUWaterNuggetBoatGather</name>
       <type>GiveTech</type>
       <nuggetunit>ypNuggetEuropeanWreck</nuggetunit>
@@ -888,9 +805,98 @@
       <guardian>zpGuardianWaka</guardian>
       <difficulty>6</difficulty>
     </nugget>
-
- 
-
+    <nugget>
+      <name>zpFishingBoat</name>
+      <type>SpawnUnit</type>
+      <nuggetunit>ypNuggetSeaLionRock</nuggetunit>
+      <waternugget>true</waternugget>
+      <rolloverstringid>102298</rolloverstringid>
+      <applystringid>102299</applystringid>
+      <unittype>FishingBoat</unittype>
+      <amount>1</amount>
+      <maptype>caribbeanwater</maptype>
+      <maptype>hawaii</maptype>
+      <maptype>arcticwater</maptype>
+      <maptype>kurils</maptype>
+      <maptype>australia</maptype>
+      <maptype>newzealand</maptype>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <difficulty>6</difficulty>
+    </nugget>
+    <nugget>
+      <name>ypWaterNuggetDriftwood</name>
+      <maptype>caribbeanwater</maptype>
+      <maptype>hawaii</maptype>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>ypWaterNuggetSwordfish</name>
+      <maptype>caribbeanwater</maptype>
+      <maptype>hawaii</maptype>
+    </nugget>
+    <nugget>
+      <name>ypWaterNuggetDolphins</name>
+      <maptype>caribbeanwater</maptype>
+      <maptype>hawaii</maptype>
+      <maptype>australia</maptype>
+      <maptype>newzealand</maptype>
+    </nugget>
+    <nugget>
+      <name>ypWaterNuggetSeaUrchins</name>
+      <maptype>caribbeanwater</maptype>
+      <maptype>hawaii</maptype>
+    </nugget>
+    <nugget>
+      <name>ypWaterNuggetPearls</name>
+      <maptype>caribbeanwater</maptype>
+      <maptype>hawaii</maptype>
+    </nugget>
+    <nugget>
+      <name>ypWaterNuggetFlotsam</name>
+      <maptype>caribbeanwater</maptype>
+      <maptype>hawaii</maptype>
+    </nugget>
+    <nugget>
+      <name>ypWaterNuggetAmbergris</name>
+      <maptype>caribbeanwater</maptype>
+      <maptype>hawaii</maptype>
+      <maptype>australia</maptype>
+      <maptype>newzealand</maptype>
+    </nugget>
+    <nugget>
+      <name>ypWaterNuggetSeaLions</name>
+      <maptype>arcticwater</maptype>
+      <maptype>kurils</maptype>
+    </nugget>
+    <nugget>
+      <name>ypWaterNuggetMu3</name>
+      <maptype>arcticwater</maptype>
+      <maptype>kurils</maptype>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>ypWaterNuggetMu2</name>
+      <maptype>arcticwater</maptype>
+      <maptype>kurils</maptype>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>ypWaterNuggetMu1</name>
+      <maptype>arcticwater</maptype>
+      <maptype>kurils</maptype>
+      <maptype>australia</maptype>
+    </nugget>
+    <nugget>
+      <name>ypWaterNuggetLemuria2</name>
+      <maptype>arcticwater</maptype>
+      <maptype>kurils</maptype>
+    </nugget>
+    <nugget>
+      <name>ypWaterNuggetLemuria1</name>
+      <maptype>arcticwater</maptype>
+      <maptype>kurils</maptype>
+    </nugget>
     <nugget>
       <name>zpWaterNuggetBoatGather</name>
       <type>GiveTech</type>

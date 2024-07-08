@@ -26047,6 +26047,59 @@
     <flag>NotSelectable</flag>
     <flag>OnlyInEditor</flag>
   </unit>
+  <unit id="20246" name="zpNuggetGeyser">
+    <dbid>20246</dbid>
+    <displaynameid>27893</displaynameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>terrain\great_plains\geyser.xml</animfile>
+    <icon>resources\art\objects\treasure\treasure_icon_64x64.png</icon>
+    <minimapicon>ui\minimap\treasure</minimapicon>
+    <portraiticon>resources\art\objects\treasure\treasure_portrait.png</portraiticon>
+    <rollovertextid>27892</rollovertextid>
+    <shortrollovertextid>27891</shortrollovertextid>
+    <los>9.0000</los>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>AbstractNugget</unittype>
+    <unittype>AbstractNuggetLand</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>NoHPBar</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ForceToGaia</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Nugget</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>Doppled</flag>
+    <flag>Tracked</flag>
+  </unit>
   
   
   
