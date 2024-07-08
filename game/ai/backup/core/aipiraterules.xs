@@ -303,6 +303,11 @@ minInterval 12
    }
    else if (pirateShipID < 0)
    {
+      pirateShipID = getUnit(cUnitTypezpCatamaran, cMyID, cUnitStateAlive);
+      longBombard = true;
+   }
+   else if (pirateShipID < 0)
+   {
       pirateShipID = getUnit(cUnitTypezpWokouFuchuan, cMyID, cUnitStateAlive);
    }
    else if (pirateShipID < 0)
@@ -1586,6 +1591,11 @@ minInterval 15
          case cUnitTypezpVeniceEmbassyWagon:
          {
              buildingType = cUnitTypezpVeniceEmbassy;
+             break;
+         }
+         case cUnitTypezpAustralianSchoolWagon:
+         {
+             buildingType = cUnitTypezpAboriginalSchool;
              break;
          }
          case cUnitTypezpWaterFortBuilder:
