@@ -61,11 +61,13 @@ void main(void)
 	chooseMercs();
 	
 	// Set size of map
-	int playerTiles=170000;
-  if(cNumberNonGaiaPlayers <= 5)
-    playerTiles = 130000;
+	int playerTiles=200000;
+  if(cNumberNonGaiaPlayers <= 6)
+    playerTiles = 170000;
+  if(cNumberNonGaiaPlayers <= 4)
+    playerTiles = 140000;
   if (cNumberNonGaiaPlayers <= 2)
-		playerTiles = 100000;
+		playerTiles = 110000;
 	int size=2.0*sqrt(playerTiles);
 	rmEchoInfo("Map size="+size+"m x "+size+"m");
 	rmSetMapSize(size, size);
@@ -131,6 +133,7 @@ void main(void)
 	int forestObjConstraint=rmCreateTypeDistanceConstraint("forest obj", "all", 6.0);
 	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 20.0);
 	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "zpJadeMine", 45.0);
+  int avoidCoinShort=rmCreateTypeDistanceConstraint("avoid coin short", "zpJadeMine", 15.0);
   int avoidGold=rmCreateTypeDistanceConstraint("avoid gold", "MineGold", 35.0);
 	int avoidRandomBerries=rmCreateTypeDistanceConstraint("avoid random berries", "zpPineapleBush", 55.0);
 	int avoidHuntable1=rmCreateTypeDistanceConstraint("avoid huntable1", huntable1, 30.0);
@@ -156,7 +159,7 @@ void main(void)
 
 	// Constraint to avoid water.
 	int avoidWater4 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 4.0);
-	int avoidWater8 = rmCreateTerrainDistanceConstraint("avoid water long", "Land", false, 10.0);
+	int avoidWater8 = rmCreateTerrainDistanceConstraint("avoid water long", "Land", false, 15.0);
 	int avoidWater20 = rmCreateTerrainDistanceConstraint("avoid water medium", "Land", false, 20.0);
 	int avoidWater40 = rmCreateTerrainDistanceConstraint("avoid water super long", "Land", false, 40.0);
   int ferryOnShore=rmCreateTerrainMaxDistanceConstraint("ferry v. water", "water", true, 18.0);
@@ -170,7 +173,7 @@ void main(void)
   int avoidKOTHshort=rmCreateTypeDistanceConstraint("stay away from Kings Hill short", "ypKingsHill", 8.0);
   
   // flag constraints
-  int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 15.0);
+  int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 20.0);
 	int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 40);
   int flagVsPirates1 = rmCreateTypeDistanceConstraint("flag avoid pirates 1", "zpPirateWaterSpawnFlag1", 40);
   int flagVsPirates2 = rmCreateTypeDistanceConstraint("flag avoid pirates 2", "zpPirateWaterSpawnFlag2", 40);
@@ -262,7 +265,6 @@ void main(void)
   }
 
 
-	float playerFraction=rmAreaTilesToFraction(3000 - cNumberNonGaiaPlayers*100);
 	for(i=1; <cNumberPlayers)
 	{
     // Create the Player's area.
@@ -380,12 +382,13 @@ void main(void)
 
   // Make one big island.  
 	int bigIslandID=rmCreateArea("migration island");
+  rmSetAreaSize(bigIslandID, rmAreaTilesToFraction(29000), rmAreaTilesToFraction(27000));
+  if (cNumberNonGaiaPlayers <= 6)
+    rmSetAreaSize(bigIslandID, rmAreaTilesToFraction(22000), rmAreaTilesToFraction(22000));
+  if (cNumberNonGaiaPlayers <= 4)
+	  rmSetAreaSize(bigIslandID, rmAreaTilesToFraction(16000), rmAreaTilesToFraction(16000));
   if (cNumberNonGaiaPlayers <= 2)
-	  rmSetAreaSize(bigIslandID, rmAreaTilesToFraction(11000), rmAreaTilesToFraction(11000));
-  else if (cNumberNonGaiaPlayers >= 6)
-	  rmSetAreaSize(bigIslandID, rmAreaTilesToFraction(22000), rmAreaTilesToFraction(22000));
-  else
-    rmSetAreaSize(bigIslandID, rmAreaTilesToFraction(14000), rmAreaTilesToFraction(14000));
+	  rmSetAreaSize(bigIslandID, rmAreaTilesToFraction(12000), rmAreaTilesToFraction(12000));
 	rmSetAreaCoherence(bigIslandID, 0.55);
 	rmSetAreaBaseHeight(bigIslandID, 2.0);
 	rmSetAreaSmoothDistance(bigIslandID, 20);
@@ -689,12 +692,13 @@ void main(void)
   rmPlaceGroupingAtLoc(volcanoCraterID, 1, 0.5, 0.5, 1);
 
   int volcanoAvoider = rmCreateObjectDef("ai avoider"); 
-  if (cNumberNonGaiaPlayers <= 2)
-	  rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoider100", 1, 0.0);
-  else if (cNumberNonGaiaPlayers >= 6)
+  rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoider190", 1, 0.0);
+  if(cNumberNonGaiaPlayers <= 6)
     rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoider160", 1, 0.0);
-  else
+  if(cNumberNonGaiaPlayers <= 4)
     rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoider125", 1, 0.0);
+  if (cNumberNonGaiaPlayers <= 2)
+		rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoider100", 1, 0.0);
 	rmPlaceObjectDefAtLoc(volcanoAvoider, 0, 0.5, 0.5);
 
   int volcanoDamage = rmCreateObjectDef("burn damage"); 
@@ -1250,6 +1254,7 @@ if(cNumberNonGaiaPlayers >=3) {
   rmAddObjectDefConstraint(nugget3, avoidHighMountains);
   rmAddObjectDefConstraint(nugget3, avoidJesuit);
   rmAddObjectDefConstraint(nugget3, avoidImportantItem);
+  rmAddObjectDefConstraint(nugget3, avoidCoinShort);
 	rmPlaceObjectDefInArea(nugget3, 0, bigIslandID, cNumberNonGaiaPlayers*1.5);
 
     // --------------- Make load bar move. ----------------------------------------------------------------------------
@@ -1280,6 +1285,7 @@ if(cNumberNonGaiaPlayers >=3) {
 	rmSetObjectDefMinDistance(fish2ID, 0.0);
 	rmSetObjectDefMaxDistance(fish2ID, rmXFractionToMeters(0.5));
 	rmAddObjectDefConstraint(fish2ID, avoidFish2);
+  rmAddObjectDefConstraint(fish2ID, avoidFish1);
 	rmAddObjectDefConstraint(fish2ID, fishVsWhaleID);
 	rmAddObjectDefConstraint(fish2ID, fishLand);
 	rmPlaceObjectDefAtLoc(fish2ID, 0, 0.5, 0.5, 12*cNumberNonGaiaPlayers);
@@ -1304,36 +1310,38 @@ if(cNumberNonGaiaPlayers >=3) {
 
 int tch0=1671; // tech operator
 
-int eruptionLenght = -1;
-int eqAreaDamage = 40;
-int islandSize = 110;
+int eruptionLenght = 140;
+int eqAreaDamage = 20;
+int islandSize = 200;
 int gapMin = 700;
 int gapMax = 1200;
-int eruptionBreak1 = rmRandInt(450,800);
+int eruptionBreakInitial = rmRandInt(420,720);
+int eruptionBreak1 = rmRandInt(gapMin,gapMax);
 int eruptionBreak2 = rmRandInt(gapMin,gapMax);
 int eruptionBreak3 = rmRandInt(gapMin,gapMax);
 int eruptionBreak4 = rmRandInt(gapMin,gapMax);
 int eruptionBreak5 = rmRandInt(gapMin,gapMax);
 
-if (cNumberNonGaiaPlayers <=2) {
-  eruptionLenght = 80;
-  islandSize = 110;
-  eqAreaDamage = 30;
-}
-
-else if (cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers ==5) {
-  eruptionLenght = 100;
-  islandSize = 145;
-  eqAreaDamage = 30;
-}
-
-else {
+if (cNumberNonGaiaPlayers <=6) {
   eruptionLenght = 120;
   islandSize = 180;
-  eqAreaDamage = 24;
+  eqAreaDamage = 25;
+}
+
+if (cNumberNonGaiaPlayers <=4) {
+  eruptionLenght = 100;
+  islandSize = 160;
+  eqAreaDamage = 33;
+}
+
+if (cNumberNonGaiaPlayers <=2) {
+  eruptionLenght = 80;
+  islandSize = 120;
+  eqAreaDamage = 50;
 }
 
 // Volcano
+rmCreateTrigger("Volcano_StartInitial");
 rmCreateTrigger("Volcano_Start1");
 rmCreateTrigger("Volcano_Start2");
 rmCreateTrigger("Volcano_Start3");
@@ -1345,11 +1353,13 @@ rmCreateTrigger("Volcano_Short2");
 rmCreateTrigger("Volcano_Medium");
 rmCreateTrigger("Volcano_Long");
 rmCreateTrigger("Volcano_UltraLong");
+rmCreateTrigger("Volcano_XXLong");
 rmCreateTrigger("Volcano_Stop");
 rmCreateTrigger("Volcano_Damage");
 
 rmCreateTrigger("Volcano_Music1");
 rmCreateTrigger("Volcano_Music2");
+rmCreateTrigger("Volcano_Music3");
 rmCreateTrigger("Volcano_MusicEnd");
 
 rmSwitchToTrigger(rmTriggerID("Volcano_Music1"));
@@ -1369,10 +1379,27 @@ rmSetTriggerConditionParamInt("Param1",50);
 rmAddTriggerEffect("Music Filename");
 rmSetTriggerEffectParam("Music","music\battle\CamelsStrawsAndBacks.mp3"); // Music Filename
 rmSetTriggerEffectParamFloat("Duration",2.0);
+if (cNumberNonGaiaPlayers >=6){
+  rmAddTriggerEffect("Fire Event");
+  rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music3"));
+}
 rmSetTriggerPriority(1);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(false);
 rmSetTriggerLoop(false);
+
+if (cNumberNonGaiaPlayers >=6){
+  rmSwitchToTrigger(rmTriggerID("Volcano_Music3"));
+  rmAddTriggerCondition("Timer");
+  rmSetTriggerConditionParamInt("Param1",60);
+  rmAddTriggerEffect("Music Filename");
+  rmSetTriggerEffectParam("Music","music\battle\Ruinion.mp3"); // Music Filename
+  rmSetTriggerEffectParamFloat("Duration",2.0);
+  rmSetTriggerPriority(1);
+  rmSetTriggerActive(false);
+  rmSetTriggerRunImmediately(false);
+  rmSetTriggerLoop(false);
+}
 
 rmSwitchToTrigger(rmTriggerID("Volcano_MusicEnd"));
 rmAddTriggerCondition("Timer");
@@ -1400,6 +1427,49 @@ for(i=1; <= cNumberNonGaiaPlayers) {
 }
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("Volcano_StartInitial"));
+rmAddTriggerCondition("Quest Var Check");
+rmSetTriggerConditionParam("QuestVar","Eruption");
+rmSetTriggerConditionParam("Op","==");
+rmSetTriggerConditionParamInt("Value",1);
+rmAddTriggerCondition("Timer");
+rmSetTriggerConditionParamInt("Param1",eruptionBreakInitial);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",0);
+rmSetTriggerEffectParam("TechID","cTechzpVolcanoActive"); // Activates Volcano
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
+rmAddTriggerEffect("Set Lighting");
+rmSetTriggerEffectParam("SetName","carribean");
+rmSetTriggerEffectParamFloat("FadeTime",5.0);
+rmAddTriggerEffect("Shake Camera");
+rmSetTriggerEffectParamFloat("Duration",3.0);
+rmSetTriggerEffectParamFloat("Strength",0.7);
+rmAddTriggerEffect("Play Soundset");
+rmSetTriggerEffectParam("Soundset","Earthquake");
+rmAddTriggerEffect("Counter:Add Timer");
+rmSetTriggerEffectParam("Name","VolcanoEruption");
+rmSetTriggerEffectParamInt("Start",eruptionLenght);
+rmSetTriggerEffectParamInt("Stop",0);
+rmSetTriggerEffectParam("Msg", "Volcano eruption");
+rmSetTriggerEffectParamInt("Event", rmTriggerID("Volcano_Stop"));
+rmAddTriggerEffect("Quest Var Set");
+rmSetTriggerEffectParam("QVName","Eruption");
+rmSetTriggerEffectParamInt("Value",0);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start2"));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
+
+rmAddTriggerEffect("Send Chat");
+rmSetTriggerEffectParamInt("PlayerID",0);
+rmSetTriggerEffectParam("Message","The Volcano is waking up!");
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
@@ -1442,7 +1512,7 @@ rmAddTriggerEffect("Send Chat");
 rmSetTriggerEffectParamInt("PlayerID",0);
 rmSetTriggerEffectParam("Message","The Volcano is waking up!");
 rmSetTriggerPriority(4);
-rmSetTriggerActive(true);
+rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
@@ -1666,7 +1736,7 @@ rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
-if (cNumberNonGaiaPlayers >=4){
+if (cNumberNonGaiaPlayers >=3){
   rmSwitchToTrigger(rmTriggerID("Volcano_Long"));
   rmAddTriggerCondition("Timer");
   rmSetTriggerConditionParamInt("Param1",20);
@@ -1679,7 +1749,7 @@ if (cNumberNonGaiaPlayers >=4){
   rmSetTriggerEffectParamFloat("Strength",0.2);
   rmAddTriggerEffect("Play Soundset");
   rmSetTriggerEffectParam("Soundset","Earthquake");
-  if (cNumberNonGaiaPlayers <=5){
+  if (cNumberNonGaiaPlayers <=4){
     rmAddTriggerEffect("Fire Event");
     rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short2"));
   }
@@ -1695,7 +1765,7 @@ if (cNumberNonGaiaPlayers >=4){
   rmSetTriggerLoop(false);
 }
 
-if (cNumberNonGaiaPlayers >=6){
+if (cNumberNonGaiaPlayers >=5){
   rmSwitchToTrigger(rmTriggerID("Volcano_UltraLong"));
   rmAddTriggerCondition("Timer");
   rmSetTriggerConditionParamInt("Param1",20);
@@ -1703,8 +1773,6 @@ if (cNumberNonGaiaPlayers >=6){
   rmSetTriggerEffectParamInt("PlayerID",0);
   rmSetTriggerEffectParam("TechID","cTechzpVolcanoRangeUltraLong");
   rmSetTriggerEffectParamInt("Status",2);
-  rmAddTriggerEffect("Fire Event");
-  rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short2"));
   rmAddTriggerEffect("Shake Camera");
   rmSetTriggerEffectParamFloat("Duration",2.0);
   rmSetTriggerEffectParamFloat("Strength",0.2);
@@ -1712,6 +1780,37 @@ if (cNumberNonGaiaPlayers >=6){
   rmSetTriggerEffectParam("Soundset","Earthquake");
   rmAddTriggerEffect("Fire Event");
   rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Damage"));
+   if (cNumberNonGaiaPlayers <=6){
+    rmAddTriggerEffect("Fire Event");
+    rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short2"));
+  }
+  else{
+    rmAddTriggerEffect("Fire Event");
+    rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_XXLong"));
+  }
+  rmSetTriggerPriority(4);
+  rmSetTriggerActive(false);
+  rmSetTriggerRunImmediately(true);
+  rmSetTriggerLoop(false);
+}
+
+if (cNumberNonGaiaPlayers >=7){
+  rmSwitchToTrigger(rmTriggerID("Volcano_XXLong"));
+  rmAddTriggerCondition("Timer");
+  rmSetTriggerConditionParamInt("Param1",20);
+  rmAddTriggerEffect("ZP Set Tech Status (XS)");
+  rmSetTriggerEffectParamInt("PlayerID",0);
+  rmSetTriggerEffectParam("TechID","cTechzpVolcanoRangeXXLong");
+  rmSetTriggerEffectParamInt("Status",2);
+  rmAddTriggerEffect("Shake Camera");
+  rmSetTriggerEffectParamFloat("Duration",2.0);
+  rmSetTriggerEffectParamFloat("Strength",0.2);
+  rmAddTriggerEffect("Play Soundset");
+  rmSetTriggerEffectParam("Soundset","Earthquake");
+  rmAddTriggerEffect("Fire Event");
+  rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Damage"));
+  rmAddTriggerEffect("Fire Event");
+  rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short2"));
   rmSetTriggerPriority(4);
   rmSetTriggerActive(false);
   rmSetTriggerRunImmediately(true);

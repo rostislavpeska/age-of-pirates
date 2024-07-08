@@ -12630,6 +12630,9 @@
       <effect type="Data" action="CannonAttackUltraLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
+      <effect type="Data" action="CannonAttackXXLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpVolcanoRangeShort" type="Normal">
@@ -12651,6 +12654,9 @@
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
       <effect type="Data" action="CannonAttackUltraLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackXXLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
     </effects>
@@ -12676,6 +12682,9 @@
       <effect type="Data" action="CannonAttackUltraLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
+      <effect type="Data" action="CannonAttackXXLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpVolcanoRangeUltraShort" type="Normal">
@@ -12699,6 +12708,9 @@
       <effect type="Data" action="CannonAttackUltraLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
+      <effect type="Data" action="CannonAttackXXLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpVolcanoRangeUltraLong" type="Normal">
@@ -12720,6 +12732,35 @@
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
       <effect type="Data" action="CannonAttackUltraLong" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackXXLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVolcanoRangeXXLong" type="Normal">
+    <dbid>40549</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" action="CannonAttackShort" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackUltraShort" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackMedium" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackUltraLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackXXLong" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
     </effects>
@@ -12825,7 +12866,7 @@
     </effects>
   </tech>
   <tech name="zpMaoriCatamarans" type="Normal">
-    <dbid>40198</dbid>
+    <dbid>40548</dbid>
     <displaynameid>301307</displaynameid>
     <cost resourcetype ="Gold">400.0000</cost>
     <cost resourcetype ="Wood">800.0000</cost>
@@ -12851,7 +12892,7 @@
     </effects>
   </tech>
   <tech name="zpMaoriMakahikiArmy" type="Normal">
-    <dbid>40274</dbid>
+    <dbid>40550</dbid>
     <displaynameid>301311</displaynameid>
     <cost resourcetype="Food">500.0000</cost>
     <cost resourcetype="Wood">500.0000</cost>

@@ -13,30 +13,6 @@
       <maptype>australia</maptype>
     </nugget>
     <nugget>
-      <name>Cibola1A</name>
-      <maptype>australia</maptype>
-    </nugget>
-    <nugget>
-      <name>Cibola2B</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Cibola3A</name>
-      <maptype>australia</maptype>
-    </nugget>
-    <nugget>
-      <name>Cibola4A</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Cibola7B</name>
-      <maptype>australia</maptype>
-    </nugget>
-    <nugget>
       <name>Coihue</name>
       <maptype>australia</maptype>
     </nugget>
@@ -65,10 +41,6 @@
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Journal2</name>
-      <maptype>australia</maptype>
     </nugget>
     <nugget>
       <name>Kev1</name>
@@ -116,11 +88,11 @@
       <maptype>hawaii</maptype>
     </nugget>
     <nugget>
-      <name>zpCrocodiles</name>
+      <name>zpCrocodilesPlatypus</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedSupplies</nuggetunit>
-      <rolloverstringid>102087</rolloverstringid>
-      <applystringid>102088</applystringid>
+      <rolloverstringid>301332</rolloverstringid>
+      <applystringid>301333</applystringid>
       <resource>XP</resource>
       <amount>100</amount>
       <maptype>australia</maptype>
@@ -129,11 +101,11 @@
       <difficulty>2</difficulty>
     </nugget>
     <nugget>
-      <name>zpCrocodiles</name>
+      <name>zpCrocodiles2</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedSupplies</nuggetunit>
-      <rolloverstringid>102087</rolloverstringid>
-      <applystringid>102088</applystringid>
+      <rolloverstringid>66481</rolloverstringid>
+      <applystringid>66482</applystringid>
       <resource>Wood</resource>
       <amount>100</amount>
       <maptype>australia</maptype>
@@ -142,24 +114,11 @@
       <difficulty>2</difficulty>
     </nugget>
     <nugget>
-      <name>zpCrocodiles</name>
+      <name>zpCrocodiles3</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedSupplies</nuggetunit>
-      <rolloverstringid>102087</rolloverstringid>
-      <applystringid>102088</applystringid>
-      <resource>Food</resource>
-      <amount>100</amount>
-      <maptype>australia</maptype>
-      <guardian>deCrocodile</guardian>
-      <guardian>deCrocodile</guardian>
-      <difficulty>2</difficulty>
-    </nugget>
-    <nugget>
-      <name>zpCrocodiles</name>
-      <type>AdjustResource</type>
-      <nuggetunit>NuggetDroppedSupplies</nuggetunit>
-      <rolloverstringid>102087</rolloverstringid>
-      <applystringid>102088</applystringid>
+      <rolloverstringid>102089</rolloverstringid>
+      <applystringid>102090</applystringid>
       <resource>Food</resource>
       <amount>100</amount>
       <maptype>australia</maptype>
@@ -287,11 +246,11 @@
       <killunitonapply>0</killunitonapply>
     </nugget>
     <nugget>
-      <name>zpSkunk</name>
+      <name>zpPlatypus</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedSupplies</nuggetunit>
-      <rolloverstringid>29084</rolloverstringid>
-      <applystringid>29085</applystringid>
+      <rolloverstringid>301332</rolloverstringid>
+      <applystringid>301333</applystringid>
       <resource>XP</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
@@ -299,11 +258,11 @@
       <difficulty>1</difficulty>
     </nugget>
     <nugget>
-      <name>zpSkunk2</name>
+      <name>zpPlatypus2</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedSupplies</nuggetunit>
-      <rolloverstringid>29084</rolloverstringid>
-      <applystringid>29085</applystringid>
+      <rolloverstringid>301332</rolloverstringid>
+      <applystringid>301333</applystringid>
       <resource>XP</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
@@ -311,11 +270,11 @@
       <difficulty>1</difficulty>
     </nugget>
     <nugget>
-      <name>zpSkunk3</name>
+      <name>zpPlatypus3</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetWolfWagon</nuggetunit>
-      <rolloverstringid>29084</rolloverstringid>
-      <applystringid>29085</applystringid>
+      <rolloverstringid>301332</rolloverstringid>
+      <applystringid>301333</applystringid>
       <resource>XP</resource>
       <amount>80</amount>
       <maptype>australia</maptype>
@@ -387,11 +346,11 @@
       <difficulty>3</difficulty>
     </nugget>
     <nugget>
-      <name>zpCassava</name>
+      <name>zpPineapple11</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedFood</nuggetunit>
-      <rolloverstringid>28822</rolloverstringid>
-      <applystringid>28823</applystringid>
+      <rolloverstringid>28816</rolloverstringid>
+      <applystringid>28817</applystringid>
       <resource>Food</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
@@ -401,11 +360,11 @@
       <difficulty>1</difficulty>
     </nugget>
     <nugget>
-      <name>zpCassava2</name>
+      <name>zpPineapple2</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedFood</nuggetunit>
-      <rolloverstringid>28822</rolloverstringid>
-      <applystringid>28823</applystringid>
+      <rolloverstringid>28816</rolloverstringid>
+      <applystringid>28817</applystringid>
       <resource>Food</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
@@ -498,11 +457,11 @@
       <difficulty>3</difficulty>
     </nugget>
     <nugget>
-      <name>zpJadeSkull</name>
+      <name>zpJadeFigurine</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetCoveredWagon</nuggetunit>
-      <rolloverstringid>28551</rolloverstringid>
-      <applystringid>28552</applystringid>
+      <rolloverstringid>301334</rolloverstringid>
+      <applystringid>301335</applystringid>
       <resource>Gold</resource>
       <amount>120</amount>
       <maptype>hawaii</maptype>
@@ -512,11 +471,11 @@
       <difficulty>2</difficulty>
     </nugget>
     <nugget>
-      <name>zpJadeSkull11</name>
+      <name>zpJadeFigurine11</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetCoveredWagon</nuggetunit>
-      <rolloverstringid>28551</rolloverstringid>
-      <applystringid>28552</applystringid>
+      <rolloverstringid>301334</rolloverstringid>
+      <applystringid>301335</applystringid>
       <resource>Gold</resource>
       <amount>150</amount>
       <maptype>hawaii</maptype>
@@ -571,7 +530,8 @@
       <name>zpOCCibola1A</name>
       <type>AdjustResource</type>
       <nuggetunit>zpNuggetGeyser</nuggetunit>
-      <applystringid>32761</applystringid>
+      <rolloverstringid>301340</rolloverstringid>
+      <applystringid>301341</applystringid>
       <resource>Food</resource>
       <amount>415</amount>
       <maptype>newzealand</maptype>
@@ -585,10 +545,28 @@
       <difficulty>4</difficulty>
     </nugget>
     <nugget>
+      <name>zpAUCibola1A</name>
+      <type>AdjustResource</type>
+      <nuggetunit>zNuggetCave</nuggetunit>
+      <rolloverstringid>301340</rolloverstringid>
+      <applystringid>301341</applystringid>
+      <resource>Food</resource>
+      <amount>415</amount>
+      <maptype>australia</maptype>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>zpGuardianBoomerang</guardian>
+      <guardian>zpGuardianBoomerang</guardian>
+      <guardian>zpGuardianBoomerang</guardian>
+      <difficulty>4</difficulty>
+    </nugget>
+    <nugget>
       <name>zpOCCibola1B</name>
       <type>AdjustResource</type>
       <nuggetunit>zpNuggetGeyser</nuggetunit>
-      <applystringid>32761</applystringid>
+      <rolloverstringid>301340</rolloverstringid>
+      <applystringid>301341</applystringid>
       <resource>Food</resource>
       <amount>455</amount>
       <maptype>newzealand</maptype>
@@ -602,10 +580,28 @@
       <difficulty>4</difficulty>
     </nugget>
     <nugget>
+      <name>zAUCibola1B</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetCave</nuggetunit>
+      <rolloverstringid>301340</rolloverstringid>
+      <applystringid>301341</applystringid>
+      <resource>Food</resource>
+      <amount>455</amount>
+      <maptype>australia</maptype>
+      <guardian>zpGuardianBoomerang</guardian>
+      <guardian>zpGuardianBoomerang</guardian>
+      <guardian>zpGuardianBoomerang</guardian>
+      <guardian>zpGuardianBoomerang</guardian>
+      <guardian>zpGuardianBoomerang</guardian>
+      <guardian>zpGuardianBoomerang</guardian>
+      <difficulty>4</difficulty>
+    </nugget>
+    <nugget>
       <name>zpOCCibola2A</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetPirate</nuggetunit>
-      <applystringid>32763</applystringid>
+      <rolloverstringid>301340</rolloverstringid>
+      <applystringid>301341</applystringid>
       <resource>Wood</resource>
       <amount>250</amount>
       <maptype>newzealand</maptype>
@@ -638,7 +634,8 @@
       <name>zpOCCibola2C</name>
       <type>AdjustResource</type>
       <nuggetunit>zpNuggetGeyser</nuggetunit>
-      <applystringid>32763</applystringid>
+      <rolloverstringid>301340</rolloverstringid>
+      <applystringid>301341</applystringid>
       <resource>Wood</resource>
       <amount>330</amount>
       <maptype>hawaii</maptype>
@@ -684,8 +681,8 @@
       <type>AdjustHP</type>
       <targettype>Hero</targettype>
       <nuggetunit>ypNuggetCaveAsian</nuggetunit>
-      <rolloverstringid>32772</rolloverstringid>
-      <applystringid>32773</applystringid>
+      <rolloverstringid>301340</rolloverstringid>
+      <applystringid>301341</applystringid>
       <amount>2</amount>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
@@ -701,8 +698,8 @@
       <name>zpCibola1A</name>
       <type>AdjustResource</type>
       <nuggetunit>ypNuggetCaveAsian</nuggetunit>
-      <rolloverstringid>32759</rolloverstringid>
-      <applystringid>32761</applystringid>
+      <rolloverstringid>301340</rolloverstringid>
+      <applystringid>301341</applystringid>
       <resource>Food</resource>
       <amount>415</amount>
       <maptype>newzealand</maptype>
@@ -785,13 +782,13 @@
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
       <difficulty>2</difficulty>
-    </nugget>¨
+    </nugget>
     <nugget>
       <name>zpJournal2</name>
       <type>AdjustResource</type>
       <nuggetunit>zpNuggetHawaii</nuggetunit>
-      <rolloverstringid>27758</rolloverstringid>
-      <applystringid>27759</applystringid>
+      <rolloverstringid>301336</rolloverstringid>
+      <applystringid>301337</applystringid>
       <resource>XP</resource>
       <amount>320</amount>
       <maptype>hawaii</maptype>
@@ -803,12 +800,27 @@
       <difficulty>3</difficulty>
     </nugget>
     <nugget>
+      <name>zpJournal3</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetNavigationChart</nuggetunit>
+      <rolloverstringid>301336</rolloverstringid>
+      <applystringid>301337</applystringid>
+      <resource>XP</resource>
+      <amount>320</amount>
+      <maptype>australia</maptype>
+      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGuardianClubman</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <difficulty>3</difficulty>
+    </nugget>
+    <nugget>
       <name>zpGive4HP2</name>
       <type>AdjustHP</type>
       <targettype>Hero</targettype>
       <nuggetunit>zpNuggetHawaii</nuggetunit>
-      <rolloverstringid>27764</rolloverstringid>
-      <applystringid>27765</applystringid>
+      <rolloverstringid>301338</rolloverstringid>
+      <applystringid>301339</applystringid>
       <amount>1.5</amount>
       <maptype>hawaii</maptype>
       <maptype>newzealand</maptype>
