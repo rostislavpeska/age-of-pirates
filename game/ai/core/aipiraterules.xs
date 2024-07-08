@@ -8,6 +8,7 @@
 //==============================================================================
 
 
+
 //==============================================================================
 // initializePirateRules
 // Rule starts as active, only runs as a setup rule and disables after one cycle
@@ -30,9 +31,20 @@ minInterval 1
        cRandomMapName == "zptortuga" ||
        cRandomMapName == "zptreasureisland" ||
        cRandomMapName == "zpvenice" ||
-       cRandomMapName == "zpmediterranean")
+       cRandomMapName == "zpmediterranean" ||
+       cRandomMapName == "zpzealand")
    {
       gStartOnDifferentIslands = true;
+      gIsPirateMap = true;
+      gNavyMap = true;
+
+      gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
+      gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
+   }
+
+   // AssertiveWall: Naval, but not starting on different islands
+      if (cRandomMapName == "zphawaii")
+   {
       gIsPirateMap = true;
       gNavyMap = true;
 
@@ -43,7 +55,8 @@ minInterval 1
    // AssertiveWall: Land Maps
    if (cRandomMapName == "winterwonderlandii" ||
        cRandomMapName == "zpwildwest" ||
-       cRandomMapName == "zpmississippi")
+       cRandomMapName == "zpmississippi" ||
+       cRandomMapName == "zpwwcanyon")
    {
       gIsPirateMap = true;
       gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
