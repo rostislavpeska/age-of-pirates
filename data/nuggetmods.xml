@@ -9,32 +9,12 @@
       <maptype>newzealand</maptype>
     </nugget>
     <nugget>
-      <name>Beaver1</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Beaver2</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Beaver3</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
       <name>Blanket</name>
       <maptype>australia</maptype>
     </nugget>
     <nugget>
       <name>Cibola1A</name>
       <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Cibola2B</name>
@@ -55,8 +35,6 @@
     <nugget>
       <name>Cibola7B</name>
       <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>Coihue</name>
@@ -71,18 +49,6 @@
     <nugget>
       <name>Comstock</name>
       <maptype>australia</maptype>
-    </nugget>
-    <nugget>
-      <name>Coypu1</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Coypu2</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>deNuggetFoodTrickle</name>
@@ -109,48 +75,35 @@
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <difficulty>1</difficulty>
     </nugget>
     <nugget>
       <name>Kev2</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <difficulty>1</difficulty>
     </nugget>
     <nugget>
       <name>Kev3</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <difficulty>1</difficulty>
     </nugget>
     <nugget>
       <name>Kev4</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <difficulty>1</difficulty>
     </nugget>
     <nugget>
       <name>Kev5</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Kev5</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Muskrat2</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
-      <name>Muskrat3</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
+      <difficulty>1</difficulty>
     </nugget>
     <nugget>
       <name>Settler</name>
@@ -331,47 +284,6 @@
         <attachdummy>bone_nuggetG</attachdummy>
       </guardianunit>
       <difficulty>3</difficulty>
-      <killunitonapply>0</killunitonapply>
-    </nugget>
-    <nugget>
-      <name>zpSettler33</name>
-      <type>ConvertUnit</type>
-      <convertsettler>true</convertsettler>
-      <nuggetunit>NuggetWolfTreeBent</nuggetunit>
-      <rolloverstringid>36942</rolloverstringid>
-      <applystringid>36943</applystringid>
-      <maptype>hawaii</maptype>
-      <convertunit>
-        <unit>Settler</unit>
-        <idleanim>Wolf_Treebent_Captive_Idle</idleanim>
-        <exitanim>Wolf_Treebent_Captive_Exit</exitanim>
-        <attachdummy>bone_nuggetA</attachdummy>
-      </convertunit>
-      <guardianunit>
-        <unit>deGuardianBoar</unit>
-        <attachdummy>bone_nuggetB</attachdummy>
-      </guardianunit>
-      <guardianunit>
-        <unit>zdeGuardianBoar</unit>
-        <attachdummy>bone_nuggetC</attachdummy>
-      </guardianunit>
-      <guardianunit>
-        <unit>deGuardianBoar</unit>
-        <attachdummy>bone_nuggetD</attachdummy>
-      </guardianunit>
-      <guardianunit>
-        <unit>deGuardianBoar</unit>
-        <attachdummy>bone_nuggetE</attachdummy>
-      </guardianunit>
-      <guardianunit>
-        <unit>deGuardianBoar</unit>
-        <attachdummy>bone_nuggetF</attachdummy>
-      </guardianunit>
-      <guardianunit>
-        <unit>deGuardianBoar</unit>
-        <attachdummy>bone_nuggetG</attachdummy>
-      </guardianunit>
-      <difficulty>4</difficulty>
       <killunitonapply>0</killunitonapply>
     </nugget>
     <nugget>
@@ -560,7 +472,7 @@
     <nugget>
       <name>zpCanelo</name>
       <type>AdjustResource</type>
-      <nuggetunit>NuggetAbandonedCabin</nuggetunit>
+      <nuggetunit>zpNuggetLeanTo</nuggetunit>
       <rolloverstringid>29874</rolloverstringid>
       <applystringid>29875</applystringid>
       <resource>Wood</resource>
@@ -573,7 +485,7 @@
     <nugget>
       <name>zpCanelo11</name>
       <type>AdjustResource</type>
-      <nuggetunit>NuggetAbandonedCabin</nuggetunit>
+      <nuggetunit>zpNuggetHawaii</nuggetunit>
       <rolloverstringid>29874</rolloverstringid>
       <applystringid>29875</applystringid>
       <resource>Wood</resource>
@@ -659,7 +571,6 @@
       <name>zpOCCibola1A</name>
       <type>AdjustResource</type>
       <nuggetunit>zpNuggetGeyser</nuggetunit>
-      <rolloverstringid>32759</rolloverstringid>
       <applystringid>32761</applystringid>
       <resource>Food</resource>
       <amount>415</amount>
@@ -677,7 +588,6 @@
       <name>zpOCCibola1B</name>
       <type>AdjustResource</type>
       <nuggetunit>zpNuggetGeyser</nuggetunit>
-      <rolloverstringid>32759</rolloverstringid>
       <applystringid>32761</applystringid>
       <resource>Food</resource>
       <amount>455</amount>
@@ -695,7 +605,6 @@
       <name>zpOCCibola2A</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetPirate</nuggetunit>
-      <rolloverstringid>32762</rolloverstringid>
       <applystringid>32763</applystringid>
       <resource>Wood</resource>
       <amount>250</amount>
@@ -729,7 +638,6 @@
       <name>zpOCCibola2C</name>
       <type>AdjustResource</type>
       <nuggetunit>zpNuggetGeyser</nuggetunit>
-      <rolloverstringid>32762</rolloverstringid>
       <applystringid>32763</applystringid>
       <resource>Wood</resource>
       <amount>330</amount>
@@ -753,6 +661,331 @@
       <guardian>deGuardianBoar</guardian>
       <guardian>deGuardianBoar</guardian>
       <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpUnknownMinerRescue</name>
+      <type>SpawnUnit</type>
+      <nuggetunit>ypNuggetCaveAsian</nuggetunit>
+      <rolloverstringid>90927</rolloverstringid>
+      <applystringid>90928</applystringid>
+      <unittype>deMiner</unittype>
+      <amount>4</amount>
+      <maptype>newzealand</maptype>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>deGuardBucCaptain</guardian>
+      <difficulty>4</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpCibola7B</name>
+      <type>AdjustHP</type>
+      <targettype>Hero</targettype>
+      <nuggetunit>ypNuggetCaveAsian</nuggetunit>
+      <rolloverstringid>32772</rolloverstringid>
+      <applystringid>32773</applystringid>
+      <amount>2</amount>
+      <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
+      <guardian>deGuardBucCaptain</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <difficulty>4</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpCibola1A</name>
+      <type>AdjustResource</type>
+      <nuggetunit>ypNuggetCaveAsian</nuggetunit>
+      <rolloverstringid>32759</rolloverstringid>
+      <applystringid>32761</applystringid>
+      <resource>Food</resource>
+      <amount>415</amount>
+      <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>deGuardBucCaptain</guardian>
+      <difficulty>4</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpBasswoodTeam</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetDroppedWood</nuggetunit>
+      <teamnugget>1</teamnugget>
+      <rolloverstringid>90909</rolloverstringid>
+      <applystringid>90910</applystringid>
+      <resource>wood</resource>
+      <amount>50</amount>
+      <maptype>hawaii</maptype>
+      <guardian>deGuardianBoar</guardian>
+      <guardian>deGuardianBoar</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpBasswoodTeam2</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetDroppedWood</nuggetunit>
+      <teamnugget>1</teamnugget>
+      <rolloverstringid>90909</rolloverstringid>
+      <applystringid>90910</applystringid>
+      <resource>wood</resource>
+      <amount>111</amount>
+      <maptype>hawaii</maptype>
+      <maptype>newzealand</maptype>
+      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGuardianClubman</guardian>
+      <difficulty>3</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpMahogany</name>
+      <nuggetunit>zpNuggetLeanTo</nuggetunit>
+      <type>AdjustResource</type>
+      <rolloverstringid>25500</rolloverstringid>
+      <applystringid>25501</applystringid>
+      <resource>Wood</resource>
+      <amount>70</amount>
+      <maptype>hawaii</maptype>
+      <maptype>newzealand</maptype>
+      <guardian>zpGuardianClubman</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpMahogany11</name>
+      <nuggetunit>zpNuggetHawaii</nuggetunit>
+      <type>AdjustResource</type>
+      <rolloverstringid>25500</rolloverstringid>
+      <applystringid>25501</applystringid>
+      <resource>Wood</resource>
+      <amount>115</amount>
+      <maptype>hawaii</maptype>
+      <maptype>newzealand</maptype>
+      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGuardianClubman</guardian>
+      <difficulty>3</difficulty>
+    </nugget>
+    <nugget>
+      <name>Mahogany2</name>
+      <type>AdjustResource</type>
+      <nuggetunit>zpNuggetHawaii</nuggetunit>
+      <rolloverstringid>25500</rolloverstringid>
+      <applystringid>25501</applystringid>
+      <resource>Wood</resource>
+      <amount>90</amount>
+      <maptype>hawaii</maptype>
+      <maptype>newzealand</maptype>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <difficulty>2</difficulty>
+    </nugget>¨
+    <nugget>
+      <name>zpJournal2</name>
+      <type>AdjustResource</type>
+      <nuggetunit>zpNuggetHawaii</nuggetunit>
+      <rolloverstringid>27758</rolloverstringid>
+      <applystringid>27759</applystringid>
+      <resource>XP</resource>
+      <amount>320</amount>
+      <maptype>hawaii</maptype>
+      <maptype>newzealand</maptype>
+      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGuardianClubman</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <difficulty>3</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpGive4HP2</name>
+      <type>AdjustHP</type>
+      <targettype>Hero</targettype>
+      <nuggetunit>zpNuggetHawaii</nuggetunit>
+      <rolloverstringid>27764</rolloverstringid>
+      <applystringid>27765</applystringid>
+      <amount>1.5</amount>
+      <maptype>hawaii</maptype>
+      <maptype>newzealand</maptype>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>deGuardBucCaptain</guardian>
+      <difficulty>4</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpUnknownouseNugget</name>
+      <type>SpawnUnit</type>
+      <nuggetunit>zpNuggetHawaii</nuggetunit>
+      <rolloverstringid>102272</rolloverstringid>
+      <applystringid>102273</applystringid>
+      <unittype>deSPCVillageHouseTreasure</unittype>
+      <amount>1</amount>
+      <difficulty>3</difficulty>
+      <guardian>deGuardianBoar</guardian>
+      <guardian>deGuardianBoar</guardian>
+      <guardian>deGuardianBoar</guardian>
+      <guardian>deGuardianBoar</guardian>
+      <guardian>deGuardianBoar</guardian>
+      <maptype>hawaii</maptype>
+    </nugget>
+    <nugget>
+      <name>zpPetunias</name>
+      <type>AdjustResource</type>
+      <nuggetunit>zpNuggetHawaii</nuggetunit>
+      <rolloverstringid>28547</rolloverstringid>
+      <applystringid>28548</applystringid>
+      <resource>XP</resource>
+      <amount>150</amount>
+      <maptype>hawaii</maptype>
+      <maptype>newzealand</maptype>
+      <maptype>australia</maptype>
+      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGuardianClubman</guardian>
+      <difficulty>3</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpNatMaoriSlinger</name>
+      <type>ConvertUnit</type>
+      <nuggetunit>NuggetKidnap</nuggetunit>
+      <rolloverstringid>36940</rolloverstringid>
+      <applystringid>36941</applystringid>
+      <convertunit>
+        <unit>zpNatMaoriSlinger</unit>
+        <idleanim>Kidnap_HostageA_Idle</idleanim>
+        <exitanim>Kidnap_HostageA_Exit</exitanim>
+        <attachdummy>bone_hostage_A</attachdummy>
+      </convertunit>
+      <maptype>hawaii</maptype>
+      <maptype>newzealand</maptype>
+      <guardianunit>
+        <unit>Pirate</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_A</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>Pirate</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_B</attachdummy>
+      </guardianunit>
+      <difficulty>2</difficulty>
+      <killunitonapply>0</killunitonapply>
+    </nugget>
+    <nugget>
+      <name>zpNativeTracker</name>
+      <type>ConvertUnit</type>
+      <nuggetunit>NuggetKidnap</nuggetunit>
+      <rolloverstringid>36940</rolloverstringid>
+      <applystringid>36941</applystringid>
+      <convertunit>
+        <unit>zpNatAboriginalTracker</unit>
+        <idleanim>Kidnap_HostageA_Idle</idleanim>
+        <exitanim>Kidnap_HostageA_Exit</exitanim>
+        <attachdummy>bone_hostage_A</attachdummy>
+      </convertunit>
+      <maptype>australia</maptype>
+      <guardianunit>
+        <unit>zpGuardianBoomerang</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_A</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGuardianBoomerang</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_B</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGuardianBoomerang</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_C</attachdummy>
+      </guardianunit>
+      <difficulty>3</difficulty>
+      <killunitonapply>0</killunitonapply>
+    </nugget>
+    <nugget>
+      <name>zpnaUnknown1</name>
+      <nuggetunit>zpNuggetLeanTo</nuggetunit>
+      <type>AdjustResource</type>
+      <rolloverstringid>90905</rolloverstringid>
+      <applystringid>90906</applystringid>
+      <resource>Food</resource>
+      <amount>100</amount>
+      <maptype>hawaii</maptype>
+      <guardian>deGuardianBoar</guardian>
+      <guardian>deGuardianBoar</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpnaUnknown2</name>
+      <nuggetunit>zpNuggetLeanTo</nuggetunit>
+      <type>AdjustResource</type>
+      <rolloverstringid>90905</rolloverstringid>
+      <applystringid>90906</applystringid>
+      <resource>Food</resource>
+      <amount>100</amount>
+      <maptype>newzealand</maptype>
+      <guardian>zpGuardianClubman</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpnaUnknown3</name>
+      <nuggetunit>zpNuggetLeanTo</nuggetunit>
+      <type>AdjustResource</type>
+      <rolloverstringid>90905</rolloverstringid>
+      <applystringid>90906</applystringid>
+      <resource>Food</resource>
+      <amount>100</amount>
+      <maptype>australia</maptype>
+      <guardian>zpCassowary</guardian>
+      <guardian>zpCassowary</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpCorsairLoot2</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetNavigationChart</nuggetunit>
+      <rolloverstringid>102095</rolloverstringid>
+      <applystringid>102096</applystringid>
+      <resource>Gold</resource>
+      <amount>250</amount>
+      <maptype>australia</maptype>
+      <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>deGuardBucCaptain</guardian>
+      <difficulty>4</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpCorsairLoot3</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetNavigationChart</nuggetunit>
+      <rolloverstringid>102095</rolloverstringid>
+      <applystringid>102096</applystringid>
+      <resource>Gold</resource>
+      <amount>150</amount>
+      <maptype>australia</maptype>
+      <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>deGuardBucCaptain</guardian>
+      <difficulty>4</difficulty>
     </nugget>
 
 
@@ -806,6 +1039,21 @@
       <difficulty>6</difficulty>
     </nugget>
     <nugget>
+      <name>zpAUWaterNuggetLemuria2aEASY</name>
+      <type>AdjustResource</type>
+      <nuggetunit>ypNuggetEuropeanWreck</nuggetunit>
+      <waternugget>true</waternugget>
+      <rolloverstringid>66495</rolloverstringid>
+      <applystringid>66496</applystringid>
+      <resource>Wood</resource>
+      <amount>155</amount>
+      <maptype>australia</maptype>
+      <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
+      <guardian>zpGuardianWaka</guardian>
+      <difficulty>5</difficulty>
+    </nugget>
+    <nugget>
       <name>zpFishingBoat</name>
       <type>SpawnUnit</type>
       <nuggetunit>ypNuggetSeaLionRock</nuggetunit>
@@ -833,7 +1081,6 @@
     <nugget>
       <name>ypWaterNuggetSwordfish</name>
       <maptype>caribbeanwater</maptype>
-      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetDolphins</name>
@@ -845,17 +1092,14 @@
     <nugget>
       <name>ypWaterNuggetSeaUrchins</name>
       <maptype>caribbeanwater</maptype>
-      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetPearls</name>
       <maptype>caribbeanwater</maptype>
-      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetFlotsam</name>
       <maptype>caribbeanwater</maptype>
-      <maptype>hawaii</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetAmbergris</name>
@@ -898,6 +1142,14 @@
       <maptype>kurils</maptype>
     </nugget>
     <nugget>
+      <name>deWaterNuggetCoral2</name>
+      <maptype>caribbeanwater</maptype>
+    </nugget>
+    <nugget>
+      <name>afVessel</name>
+      <maptype>caribbeanwater</maptype>
+    </nugget>
+    <nugget>
       <name>zpWaterNuggetBoatGather</name>
       <type>GiveTech</type>
       <nuggetunit>ypNuggetEuropeanWreck</nuggetunit>
@@ -911,10 +1163,6 @@
       <guardian>zpGuardianCanoe</guardian>
       <guardian>zpGuardianCanoe</guardian>
       <difficulty>6</difficulty>
-    </nugget>
-    <nugget>
-      <name>afVessel</name>
-      <maptype>caribbeanwater</maptype>
     </nugget>
     <nugget>
       <name>zpSpice</name>
@@ -932,10 +1180,6 @@
       <maptype>hawaii</maptype>
       <difficulty>6</difficulty>
       <guardian>zpGuardianPrivateer</guardian>
-    </nugget>
-    <nugget>
-      <name>deWaterNuggetCoral2</name>
-      <maptype>caribbeanwater</maptype>
     </nugget>
     <nugget>
       <name>zpWaterNuggetMu1</name>
