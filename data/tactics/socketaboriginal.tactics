@@ -1,0 +1,36 @@
+<tactics>
+  <action>
+    <name stringid="69161">AutoConvert</name>
+    <type>AutoConvert</type>
+    <maxrange>12.0</maxrange>
+    <persistent>1</persistent>
+    <shortconversiondelay>1</shortconversiondelay>
+  </action>
+  <action>
+    <name stringid="103417">SchoolWorkRateBonus</name>
+    <type>AutoRangedModify</type>
+    <active>1</active>
+    <maxrange>30</maxrange>
+    <modifyabstracttype>AbstractSchool</modifyabstracttype>
+    <persistent>1</persistent>
+    <nostack>1</nostack>
+    <modifytype>BuildingWorkRate</modifytype>
+    <modifymultiplier>1.5</modifymultiplier>
+  </action>
+  <action>
+    <name stringid="103417">SchoolAutogatherBonus</name>
+    <type>AutoRangedModify</type>
+    <maxrange>30</maxrange>
+    <modifyabstracttype>AbstractSchool</modifyabstracttype>
+    <persistent>1</persistent>
+    <singleunit>1</singleunit>
+    <nostack>1</nostack>
+    <modifytype>AutoGatherAbsolute</modifytype>
+    <modifyamount>0.4</modifyamount>
+  </action>
+  <tactic>Normal
+    <action>AutoConvert</action>
+    <action>SchoolWorkRateBonus</action>
+    <action>SchoolAutogatherBonus</action>
+  </tactic>
+</tactics>

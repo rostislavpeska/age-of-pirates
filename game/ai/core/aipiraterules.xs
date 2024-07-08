@@ -162,6 +162,14 @@ minInterval 1
    {
       xsEnableRule("zpInuitTechMonitor");
    }
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseMaori) > 0)
+   {
+      xsEnableRule("zpMaoriTechMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseAboriginals) > 0)
+   {
+      xsEnableRule("zpAboriginalTechMonitor");
+   }
    if (getGaiaUnitCount(cUnitTypezpNativeHouseMaltese) > 0)
    {
       xsEnableRule("zpMalteseTechMonitor");
@@ -2780,4 +2788,72 @@ minInterval 90
          }
       }
    }
+}
+
+//==============================================================================
+// ZP Maori Tech Monitor
+//==============================================================================
+rule zpMaoriTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketMaori, cUnitStateAny) == 0)
+      {
+      return; // Player has no Maori socket.
+      }
+
+      // Maori Big Button
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpMaoriExpansion,
+      []() -> bool { return (kbGetAge() >= cAge2 ); },
+      cUnitTypeTradingPost);
+
+      // Maori catamarans
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpMaoriCatamarans,
+      []() -> bool { return ((kbTechGetStatus(cTechzpMaoriExpansion) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Maori Warriors
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpMaoriMakahikiArmy,
+      []() -> bool { return ((kbTechGetStatus(cTechzpMaoriExpansion) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
+// ZP Aboriginal Tech Monitor
+//==============================================================================
+rule zpAboriginalTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketaboriginals, cUnitStateAny) == 0)
+      {
+      return; // Player has no Aboriginal socket.
+      }
+
+      // Maori Big Button
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpAustraliaExpansion,
+      []() -> bool { return (kbGetAge() >= cAge2 ); },
+      cUnitTypeTradingPost);
+
+      // Maori catamarans
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatAboriginalSchool,
+      []() -> bool { return ((kbTechGetStatus(cTechzpAustraliaExpansion) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Maori Warriors
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatAboriginalTrackers,
+      []() -> bool { return ((kbTechGetStatus(cTechzpAustraliaExpansion) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
 }

@@ -12229,8 +12229,7 @@
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatAboriginalTracker</target>
-      </effect>
-      
+      </effect>     
       <effect type="CommandAdd" tech="zpNatAboriginalCongress" page="2" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -12240,7 +12239,6 @@
       <effect type="CommandAdd" tech="zpNatAboriginalTrackers" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-
     </effects>
 	</tech>
   <tech name="zpNatAboriginalSchool" type="Normal">
@@ -12261,6 +12259,12 @@
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpAboriginalSchool</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAustralianSchoolWagon</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpAustralianSchoolWagon" page="0" column="6">
+        <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
   </tech>
