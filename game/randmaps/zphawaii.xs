@@ -61,7 +61,7 @@ void main(void)
 	chooseMercs();
 	
 	// Set size of map
-	int playerTiles=200000;
+	int playerTiles=190000;
   if(cNumberNonGaiaPlayers <= 6)
     playerTiles = 170000;
   if(cNumberNonGaiaPlayers <= 4)
@@ -382,7 +382,7 @@ void main(void)
 
   // Make one big island.  
 	int bigIslandID=rmCreateArea("migration island");
-  rmSetAreaSize(bigIslandID, rmAreaTilesToFraction(29000), rmAreaTilesToFraction(27000));
+  rmSetAreaSize(bigIslandID, rmAreaTilesToFraction(27000), rmAreaTilesToFraction(27000));
   if (cNumberNonGaiaPlayers <= 6)
     rmSetAreaSize(bigIslandID, rmAreaTilesToFraction(22000), rmAreaTilesToFraction(22000));
   if (cNumberNonGaiaPlayers <= 4)
@@ -692,13 +692,14 @@ void main(void)
   rmPlaceGroupingAtLoc(volcanoCraterID, 1, 0.5, 0.5, 1);
 
   int volcanoAvoider = rmCreateObjectDef("ai avoider"); 
-  rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoiderXL", 1, 0.0);
-  if(cNumberNonGaiaPlayers <= 6)
-    rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoiderL", 1, 0.0);
-  if(cNumberNonGaiaPlayers <= 4)
-    rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoiderM", 1, 0.0);
   if (cNumberNonGaiaPlayers <= 2)
 		rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoiderS", 1, 0.0);
+  else if(cNumberNonGaiaPlayers <= 4)
+    rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoiderM", 1, 0.0);
+  else if(cNumberNonGaiaPlayers <= 6)
+    rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoiderL", 1, 0.0);
+  else
+    rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoiderXL", 1, 0.0);
 	rmPlaceObjectDefAtLoc(volcanoAvoider, 0, 0.5, 0.5);
 
   int volcanoDamage = rmCreateObjectDef("burn damage"); 
@@ -1340,7 +1341,7 @@ if (cNumberNonGaiaPlayers <=2) {
   eqAreaDamage = 50;
 }
 
-// Volcano
+// Volcano trigger definition
 rmCreateTrigger("Volcano_StartInitial");
 rmCreateTrigger("Volcano_Start1");
 rmCreateTrigger("Volcano_Start2");
@@ -1361,6 +1362,8 @@ rmCreateTrigger("Volcano_Music1");
 rmCreateTrigger("Volcano_Music2");
 rmCreateTrigger("Volcano_Music3");
 rmCreateTrigger("Volcano_MusicEnd");
+
+// Volcano Music
 
 rmSwitchToTrigger(rmTriggerID("Volcano_Music1"));
 rmAddTriggerEffect("Music Filename");
@@ -1410,6 +1413,8 @@ rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(false);
 rmSetTriggerLoop(false);
 
+// Volcano Area Damage
+
 rmSwitchToTrigger(rmTriggerID("Volcano_Damage"));
 for(i=1; <= cNumberNonGaiaPlayers) {
   rmAddTriggerEffect("Damage Units in Area");
@@ -1429,6 +1434,8 @@ rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
+
+// Volcano random starts
 
 rmSwitchToTrigger(rmTriggerID("Volcano_StartInitial"));
 rmAddTriggerCondition("Quest Var Check");
@@ -1688,6 +1695,8 @@ rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
+// Volcano Eruption Phases
+
 rmSwitchToTrigger(rmTriggerID("Volcano_Short"));
 rmAddTriggerCondition("Timer");
 rmSetTriggerConditionParamInt("Param1",20);
@@ -1833,6 +1842,8 @@ rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
+
+// Volcano stop
 
 rmSwitchToTrigger(rmTriggerID("Volcano_Stop"));
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
