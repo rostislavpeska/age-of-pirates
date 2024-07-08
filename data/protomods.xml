@@ -25964,7 +25964,7 @@
     <flag>Invulnerable</flag>
     <flag>NoUnitAI</flag>
   </unit>
-  <unit id="20243" name="zpVolcanoAvoider100">
+  <unit id="20243" name="zpVolcanoAvoiderS">
     <dbid>20244</dbid>
     <displaynameid>301328</displaynameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
@@ -25996,7 +25996,7 @@
     <flag>NotSelectable</flag>
     <flag>OnlyInEditor</flag>
   </unit>
-  <unit id="20244" name="zpVolcanoAvoider125">
+  <unit id="20244" name="zpVolcanoAvoiderM">
     <dbid>20244</dbid>
     <displaynameid>301329</displaynameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
@@ -26028,7 +26028,7 @@
     <flag>NotSelectable</flag>
     <flag>OnlyInEditor</flag>
   </unit>
-  <unit id="20245" name="zpVolcanoAvoider160">
+  <unit id="20245" name="zpVolcanoAvoiderL">
     <dbid>20244</dbid>
     <displaynameid>301330</displaynameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
@@ -26060,7 +26060,7 @@
     <flag>NotSelectable</flag>
     <flag>OnlyInEditor</flag>
   </unit>
-  <unit id="20248" name="zpVolcanoAvoider190">
+  <unit id="20248" name="zpVolcanoAvoiderXL">
     <dbid>20248</dbid>
     <displaynameid>301328</displaynameid>
     <obstructionradiusx>0.0001</obstructionradiusx>

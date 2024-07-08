@@ -692,13 +692,13 @@ void main(void)
   rmPlaceGroupingAtLoc(volcanoCraterID, 1, 0.5, 0.5, 1);
 
   int volcanoAvoider = rmCreateObjectDef("ai avoider"); 
-  rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoider190", 1, 0.0);
+  rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoiderXL", 1, 0.0);
   if(cNumberNonGaiaPlayers <= 6)
-    rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoider160", 1, 0.0);
+    rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoiderL", 1, 0.0);
   if(cNumberNonGaiaPlayers <= 4)
-    rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoider125", 1, 0.0);
+    rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoiderM", 1, 0.0);
   if (cNumberNonGaiaPlayers <= 2)
-		rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoider100", 1, 0.0);
+		rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoiderS", 1, 0.0);
 	rmPlaceObjectDefAtLoc(volcanoAvoider, 0, 0.5, 0.5);
 
   int volcanoDamage = rmCreateObjectDef("burn damage"); 
