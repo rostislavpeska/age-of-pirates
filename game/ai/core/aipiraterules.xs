@@ -2873,7 +2873,7 @@ rule zpAboriginalSchoolBuilder
 inactive
 minInterval 2
 {
-   if (kbUnitCount(zpAustralianSchoolWagon, cMyID) <= 0)
+   if (kbUnitCount(cUnitTypezpAustralianSchoolWagon, cMyID) <= 0)
    {
       return;
    }
@@ -2881,9 +2881,9 @@ minInterval 2
    int buildByUnit = getUnit(cUnitTypeTradingPost, cPlayerRelationSelf);
    vector buildLoc = kbUnitGetPosition(buildByUnit);
 
-   int planID = createLocationBuildPlan(zpAboriginalSchool, 1, 100, true, -1, buildLoc, 1);
+   int planID = createLocationBuildPlan(cUnitTypezpAboriginalSchool, 1, 100, true, -1, buildLoc, 1);
    // Add forward villagers
-   aiPlanAddUnit(planID, getUnit(zpAustralianSchoolWagon, cPlayerRelationSelf));
+   aiPlanAddUnit(planID, getUnit(cUnitTypezpAustralianSchoolWagon, cPlayerRelationSelf));
 
    xsDisableSelf();
 }
