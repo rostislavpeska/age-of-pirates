@@ -140,6 +140,34 @@
     <basedamagecap>1</basedamagecap>
     <hidefromstats>1</hidefromstats>
   </action>
+  <action>
+    <name stringid="38119">CannonAttackXXLong</name>
+    <type>RoundelExplodeAttack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <active>0</active>
+    <anim>volcano_attack</anim>
+    <idleanim>BombardIdle</idleanim>
+    <boredanim>bored</boredanim>
+    <accuracy>1.0</accuracy>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>20.5</spreadfactor>
+    <trackrating>2</trackrating>
+    <unintentionaldamagemultiplier>1.0</unintentionaldamagemultiplier>
+    <projectile>zpMeteor</projectile>
+    <impacteffect>effects\impacts\mortar</impacteffect>
+    <rate type="All">1.0 </rate>
+    <rate type="zpVolcanoInvisibleTarget">1.0 </rate>
+    <rate type="AbstractInfiniteCrate">1.0 </rate>
+    <areasortmode>Radial</areasortmode>
+    <outerdamageareadistance>.5</outerdamageareadistance>
+    <outerdamageareafactor>.5</outerdamageareafactor>
+    <perfectaccuracy>1</perfectaccuracy>
+    <targetground>1</targetground>
+    <basedamagecap>1</basedamagecap>
+    <hidefromstats>1</hidefromstats>
+  </action>
   <tactic>Bombard
     <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
     <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
@@ -149,6 +177,7 @@
     <action priority="100">CannonAttackMedium</action>
     <action priority="100">CannonAttackLong</action>
     <action priority="100">CannonAttackUltraLong</action>
+    <action priority="100">CannonAttackXXLong</action>
     <action>Hunting</action>
     <action>SpawnGatlingGun</action>
     <action>SpawnVolunteers1</action>

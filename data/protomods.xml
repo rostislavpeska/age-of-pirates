@@ -24748,7 +24748,7 @@
       <name>CannonAttackMedium</name>
       <damage>150.000000</damage>
       <damagetype>Ranged</damagetype>
-      <maxrange>90.000000</maxrange>
+      <maxrange>100.000000</maxrange>
       <rof>10.000000</rof>
       <damagecap>300.000000</damagecap>
       <damagearea>40.000000</damagearea>
@@ -24756,11 +24756,12 @@
       <damagebonus type="Building">6.000000</damagebonus>
       <damagebonus type="AbstractVillager">0.250000</damagebonus>
       <damagebonus type="zpVolcanoInvisibleTarget">0.000001</damagebonus>
-    </protoaction><protoaction>
+    </protoaction>
+    <protoaction>
       <name>CannonAttackLong</name>
       <damage>120.000000</damage>
       <damagetype>Ranged</damagetype>
-      <maxrange>115.000000</maxrange>
+      <maxrange>120.000000</maxrange>
       <rof>10.000000</rof>
       <damagecap>300.000000</damagecap>
       <damagearea>40.000000</damagearea>
@@ -24768,11 +24769,25 @@
       <damagebonus type="Building">6.000000</damagebonus>
       <damagebonus type="AbstractVillager">0.250000</damagebonus>
       <damagebonus type="zpVolcanoInvisibleTarget">0.000001</damagebonus>
-    </protoaction><protoaction>
+    </protoaction>
+    <protoaction>
       <name>CannonAttackUltraLong</name>
-      <damage>80.000000</damage>
+      <damage>90.000000</damage>
       <damagetype>Ranged</damagetype>
-      <maxrange>150.000000</maxrange>
+      <maxrange>155.000000</maxrange>
+      <rof>10.000000</rof>
+      <damagecap>300.000000</damagecap>
+      <damagearea>40.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="Building">6.000000</damagebonus>
+      <damagebonus type="AbstractVillager">0.250000</damagebonus>
+      <damagebonus type="zpVolcanoInvisibleTarget">0.000001</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>CannonAttackXXLong</name>
+      <damage>70.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>185.000000</maxrange>
       <rof>10.000000</rof>
       <damagecap>300.000000</damagecap>
       <damagearea>40.000000</damagearea>
@@ -25223,7 +25238,6 @@
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
-    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
@@ -25326,7 +25340,6 @@
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
-    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
@@ -25951,7 +25964,7 @@
     <flag>Invulnerable</flag>
     <flag>NoUnitAI</flag>
   </unit>
-  <unit id="20243" name="zpVolcanoAvoider100">
+  <unit id="20243" name="zpVolcanoAvoiderS">
     <dbid>20244</dbid>
     <displaynameid>301328</displaynameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
@@ -25983,7 +25996,7 @@
     <flag>NotSelectable</flag>
     <flag>OnlyInEditor</flag>
   </unit>
-  <unit id="20244" name="zpVolcanoAvoider125">
+  <unit id="20244" name="zpVolcanoAvoiderM">
     <dbid>20244</dbid>
     <displaynameid>301329</displaynameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
@@ -26015,7 +26028,7 @@
     <flag>NotSelectable</flag>
     <flag>OnlyInEditor</flag>
   </unit>
-  <unit id="20245" name="zpVolcanoAvoider160">
+  <unit id="20245" name="zpVolcanoAvoiderL">
     <dbid>20244</dbid>
     <displaynameid>301330</displaynameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
@@ -26046,6 +26059,196 @@
     <flag>Tracked</flag>
     <flag>NotSelectable</flag>
     <flag>OnlyInEditor</flag>
+  </unit>
+  <unit id="20248" name="zpVolcanoAvoiderXL">
+    <dbid>20248</dbid>
+    <displaynameid>301328</displaynameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>ui\editor\editor_revealer_all.xml</animfile>
+    <physicsinfo>dude</physicsinfo>
+    <initialhitpoints>1315.0000</initialhitpoints>
+    <maxhitpoints>1315.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>Building</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Invulnerable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
+    <flag>OnlyInEditor</flag>
+  </unit>
+  <unit id="20246" name="zpNuggetGeyser">
+    <dbid>20246</dbid>
+    <displaynameid>27893</displaynameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>nuggets\geyser.xml</animfile>
+    <icon>resources\art\objects\treasure\treasure_icon_64x64.png</icon>
+    <minimapicon>ui\minimap\treasure</minimapicon>
+    <portraiticon>resources\art\objects\treasure\treasure_portrait.png</portraiticon>
+    <rollovertextid>27892</rollovertextid>
+    <shortrollovertextid>27891</shortrollovertextid>
+    <los>9.0000</los>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>AbstractNugget</unittype>
+    <unittype>AbstractNuggetLand</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>FlattenGround</flag>
+    <flag>NoHPBar</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ForceToGaia</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Nugget</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>Doppled</flag>
+    <flag>Tracked</flag>
+  </unit>
+  <unit id="20247" name="zpNuggetLeanTo">
+    <dbid>20247</dbid>
+    <displaynameid>27893</displaynameid>
+    <obstructionradiusx>2.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\lean-to.xml</animfile>
+    <icon>resources\art\objects\treasure\treasure_icon_64x64.png</icon>
+    <minimapicon>ui\minimap\treasure</minimapicon>
+    <portraiticon>resources\art\objects\treasure\treasure_portrait.png</portraiticon>
+    <rollovertextid>27892</rollovertextid>
+    <shortrollovertextid>27891</shortrollovertextid>
+    <los>9.0000</los>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>AbstractNugget</unittype>
+    <unittype>AbstractNuggetLand</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>NoHPBar</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ForceToGaia</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Nugget</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>Doppled</flag>
+    <flag>Tracked</flag>
+  </unit>
+  <unit id="20249" name="zpNuggetHawaii">
+    <dbid>20249</dbid>
+    <displaynameid>27893</displaynameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>nuggets\hawaii.xml</animfile>
+    <icon>resources\art\objects\treasure\treasure_icon_64x64.png</icon>
+    <minimapicon>ui\minimap\treasure</minimapicon>
+    <portraiticon>resources\art\objects\treasure\treasure_portrait.png</portraiticon>
+    <rollovertextid>27892</rollovertextid>
+    <shortrollovertextid>27891</shortrollovertextid>
+    <los>9.0000</los>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>AbstractNugget</unittype>
+    <unittype>AbstractNuggetLand</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>NoHPBar</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ForceToGaia</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Nugget</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>Doppled</flag>
+    <flag>Tracked</flag>
   </unit>
   
   

@@ -890,6 +890,11 @@ void main(void)
 
 	int waterSpawnPointID = 0;
 
+	// Fake Frouping to fix the auto-grouping TC bug
+	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
+	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+	rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.5);
+
    
 	// *********** Place Home City Water Spawn Flag ***************************************************
 
@@ -1190,7 +1195,7 @@ void main(void)
 	//Place Whales as much in big west bay only as possible --------------------------------------------------------
 	int whaleID=rmCreateObjectDef("whale");
 	rmAddObjectDefItem(whaleID, "MinkeWhale", 1, 0.0);
-	rmSetObjectDefMinDistance(whaleID, 0.15);
+	rmSetObjectDefMinDistance(whaleID, rmXFractionToMeters(0.15));	
 	rmSetObjectDefMaxDistance(whaleID, rmXFractionToMeters(0.46));		//Distance whales will be placed from the starting spot (below)
 	rmAddObjectDefConstraint(whaleID, whaleVsWhaleID);
 	rmAddObjectDefConstraint(whaleID, whaleLand);
@@ -2949,7 +2954,6 @@ void main(void)
 		rmSetTriggerLoop(false);
 		}
 	}
-
 
 	// Testing
 

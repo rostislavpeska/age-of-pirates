@@ -42,13 +42,13 @@ if (subCiv1 >= 0)
 
 	
 // Set size.
-int playerTiles=23000;
-	if (cNumberNonGaiaPlayers ==4)
-		playerTiles = 22000;
-	if (cNumberNonGaiaPlayers >4)
-		playerTiles = 17500;
-	if (cNumberNonGaiaPlayers >7)
-		playerTiles = 15000;			
+int playerTiles=26000;
+if (cNumberNonGaiaPlayers ==4)
+	playerTiles = 24000;
+if (cNumberNonGaiaPlayers >4)
+	playerTiles = 21000;
+if (cNumberNonGaiaPlayers >7)
+	playerTiles = 18000;			
 int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
 rmEchoInfo("Map size="+size+"m x "+size+"m");
 rmSetMapSize(size, size);
@@ -148,7 +148,7 @@ int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "zpJadeMine", 35.0);
 int avoidGold=rmCreateTypeDistanceConstraint("avoid gold", "MineGold", 35.0);
 int mediumAvoidImpassableLand=rmCreateTerrainDistanceConstraint("medium avoid impassable land", "Land", false, 12.0);
 int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 40.0);
-int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 50.0);
+int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 30.0);
 int fishVsFishID=rmCreateTypeDistanceConstraint("fish v fish", "ypFishTuna", 20.0);
 int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 8.0);
 int whaleVsWhaleID=rmCreateTypeDistanceConstraint("whale v whale", "MinkeWhale", 50.0);
@@ -228,7 +228,7 @@ rmAddAreaToClass(northIsland, classTeamIsland);
 	// Port Sites North
 	int portSite1 = rmCreateArea ("port_site1");
 	rmSetAreaSize(portSite1, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-	rmSetAreaLocation(portSite1, 0.5+rmXTilesToFraction(23), 0.8);
+	rmSetAreaLocation(portSite1, 0.5+rmXTilesToFraction(22), 0.8);
 	rmSetAreaMix(portSite1, "california_desert2");
 	rmSetAreaCoherence(portSite1, 1);
 	rmSetAreaSmoothDistance(portSite1, 15);
@@ -247,7 +247,7 @@ rmAddAreaToClass(northIsland, classTeamIsland);
 
 	int portSite2 = rmCreateArea ("port_site2");
 	rmSetAreaSize(portSite2, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-	rmSetAreaLocation(portSite2, 0.6+rmXTilesToFraction(17),0.3+rmXTilesToFraction(17));
+	rmSetAreaLocation(portSite2, 0.6+rmXTilesToFraction(16),0.3+rmXTilesToFraction(16));
 	rmSetAreaMix(portSite2, "california_desert2");
 	rmSetAreaCoherence(portSite2, 1);
 	rmSetAreaSmoothDistance(portSite2, 15);
@@ -296,7 +296,7 @@ rmAddAreaToClass(southIsland, classTeamIsland);
 
 	int portSite3 = rmCreateArea ("port_site3");
 	rmSetAreaSize(portSite3, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-	rmSetAreaLocation(portSite3, 0.5-rmZTilesToFraction(23), 0.2);
+	rmSetAreaLocation(portSite3, 0.5-rmZTilesToFraction(22), 0.2);
 	rmSetAreaCoherence(portSite3, 1);
 	rmSetAreaMix(portSite3, "california_desert2");
 	rmSetAreaSmoothDistance(portSite3, 15);
@@ -315,7 +315,7 @@ rmAddAreaToClass(southIsland, classTeamIsland);
 
 	int portSite4 = rmCreateArea ("port_site4");
 	rmSetAreaSize(portSite4, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-	rmSetAreaLocation(portSite4, 0.4-rmXTilesToFraction(17), 0.7-rmXTilesToFraction(17));
+	rmSetAreaLocation(portSite4, 0.4-rmXTilesToFraction(16), 0.7-rmXTilesToFraction(16));
 	rmSetAreaCoherence(portSite4, 1);
 	rmSetAreaMix(portSite4, "california_desert2");
 	rmSetAreaSmoothDistance(portSite4, 15);
@@ -416,7 +416,6 @@ if (nativeVariant == 1)
 rmAddObjectDefItem(piratewaterflagID1, "zpPirateWaterSpawnFlag1", 1, 1.0);
 else
 rmAddObjectDefItem(piratewaterflagID1, "zpNativeWaterSpawnFlag1", 1, 1.0);
-rmAddClosestPointConstraint(villageEdgeConstraint);
 rmAddClosestPointConstraint(flagLand);
 
 vector closeToVillage1 = rmFindClosestPointVector(ControllerLoc1, rmXFractionToMeters(1.0));
@@ -426,7 +425,6 @@ rmClearClosestPointConstraints();
 
 int pirateportID1 = -1;
 pirateportID1 = rmCreateGrouping("pirate port 1", "Platform_Universal");
-rmAddClosestPointConstraint(villageEdgeConstraint);
 rmAddClosestPointConstraint(portOnShore);
 
 vector closeToVillage1a = rmFindClosestPointVector(ControllerLoc1, rmXFractionToMeters(1.0));
@@ -452,7 +450,6 @@ if (nativeVariant == 1)
 rmAddObjectDefItem(piratewaterflagID2, "zpPirateWaterSpawnFlag2", 1, 1.0);
 else
 rmAddObjectDefItem(piratewaterflagID2, "zpNativeWaterSpawnFlag2", 1, 1.0);
-rmAddClosestPointConstraint(villageEdgeConstraint);
 rmAddClosestPointConstraint(flagLand);
 
 vector closeToVillage2 = rmFindClosestPointVector(ControllerLoc2, rmXFractionToMeters(1.0));
@@ -462,7 +459,6 @@ rmClearClosestPointConstraints();
 
 int pirateportID2 = -1;
 pirateportID2 = rmCreateGrouping("pirate port 2", "Platform_Universal");
-rmAddClosestPointConstraint(villageEdgeConstraint);
 rmAddClosestPointConstraint(portOnShore);
 
 vector closeToVillage2a = rmFindClosestPointVector(ControllerLoc2, rmXFractionToMeters(1.0));
@@ -519,22 +515,22 @@ if (rmGetIsKOTH() == true) {
 int portID01 = rmCreateObjectDef("port 01");
 //portID01 = rmCreateGrouping("portG 01", "C:/Users/rosti/Games/Age of Empires 3 DE/76561198347905238/mods/local/Tortuga Local/RandMaps/groupings/harbour_01");
 portID01 = rmCreateGrouping("portG 01", "Harbour_Universal_SW");
-rmPlaceGroupingAtLoc(portID01, 0, 0.5+rmXTilesToFraction(11), 0.8);
+rmPlaceGroupingAtLoc(portID01, 0, 0.5+rmXTilesToFraction(10), 0.8);
 
 // Port 2
 int portID02 = rmCreateObjectDef("port 02");
 portID02 = rmCreateGrouping("portG 02", "Harbour_Universal_SE");
-rmPlaceGroupingAtLoc(portID02, 0, 0.6+rmXTilesToFraction(15),0.3+rmXTilesToFraction(6));
+rmPlaceGroupingAtLoc(portID02, 0, 0.6+rmXTilesToFraction(14),0.3+rmXTilesToFraction(5));
 
 // Port 3
 int portID03 = rmCreateObjectDef("port 03");
 portID03 = rmCreateGrouping("portG 03", "Harbour_Universal_NE");
-rmPlaceGroupingAtLoc(portID03, 0, 0.5-rmZTilesToFraction(11), 0.2);
+rmPlaceGroupingAtLoc(portID03, 0, 0.5-rmZTilesToFraction(10), 0.2);
 
 // Port 4
 int portID04 = rmCreateObjectDef("port 04");
 portID04 = rmCreateGrouping("portG 04", "Harbour_Universal_NW");
-rmPlaceGroupingAtLoc(portID04, 0, 0.4-rmXTilesToFraction(14), 0.7-rmXTilesToFraction(4));
+rmPlaceGroupingAtLoc(portID04, 0, 0.4-rmXTilesToFraction(13), 0.7-rmXTilesToFraction(3));
 
 // Text
 rmSetStatusText("",0.30);
@@ -942,6 +938,10 @@ rmAddObjectDefConstraint(TCID, avoidPirates);
 rmAddObjectDefConstraint(TCID, avoidScientists);
 rmAddObjectDefConstraint(TCID, avoidMountains);
 
+// Fake Frouping to fix the auto-grouping TC bug
+int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
+rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.5);
 
 for(i=1; <cNumberPlayers) {
 
@@ -1127,7 +1127,7 @@ rmSetStatusText("",0.70);
  
 int nuggetNorth= rmCreateObjectDef("nugget easy north"); 
 rmAddObjectDefItem(nuggetNorth, "Nugget", 1, 0.0);
-rmSetNuggetDifficulty(1, 1);
+rmSetNuggetDifficulty(1, 2);
 rmAddObjectDefConstraint(nuggetNorth, shortAvoidImpassableLand);
 rmAddObjectDefConstraint(nuggetNorth, avoidNugget);
 rmAddObjectDefConstraint(nuggetNorth, avoidAll);
@@ -1139,7 +1139,7 @@ rmPlaceObjectDefInArea(nuggetNorth, 0, northIsland, 1+cNumberNonGaiaPlayers/2);
 
 int nuggetSouth= rmCreateObjectDef("nugget easy south"); 
 rmAddObjectDefItem(nuggetSouth, "Nugget", 1, 0.0);
-rmSetNuggetDifficulty(1, 1);
+rmSetNuggetDifficulty(1, 2);
 rmAddObjectDefConstraint(nuggetSouth, shortAvoidImpassableLand);
 rmAddObjectDefConstraint(nuggetSouth, avoidNugget);
 rmAddObjectDefConstraint(nuggetSouth, avoidAll);
@@ -1151,7 +1151,7 @@ rmPlaceObjectDefInArea(nuggetSouth, 0, southIsland, 1+cNumberNonGaiaPlayers/2);
 
 int nugget2North= rmCreateObjectDef("nugget hard north"); 
 rmAddObjectDefItem(nugget2North, "Nugget", 1, 0.0);
-rmSetNuggetDifficulty(4, 4);
+rmSetNuggetDifficulty(3, 4);
 rmAddObjectDefConstraint(nugget2North, shortAvoidImpassableLand);
 rmAddObjectDefConstraint(nugget2North, avoidNugget);
 rmAddObjectDefConstraint(nugget2North, avoidAll);
@@ -1162,7 +1162,7 @@ rmPlaceObjectDefInArea(nugget2North, 0, northIslandCliffs2, 1+cNumberNonGaiaPlay
 
 int nugget2South= rmCreateObjectDef("nugget hard south"); 
 rmAddObjectDefItem(nugget2South, "Nugget", 1, 0.0);
-rmSetNuggetDifficulty(4, 4);
+rmSetNuggetDifficulty(3, 4);
 rmAddObjectDefConstraint(nugget2South, shortAvoidImpassableLand);
 rmAddObjectDefConstraint(nugget2South, avoidNugget);
 rmAddObjectDefConstraint(nugget2South, avoidAll);
