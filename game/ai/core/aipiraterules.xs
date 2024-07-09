@@ -8,6 +8,7 @@
 //==============================================================================
 
 
+
 //==============================================================================
 // initializePirateRules
 // Rule starts as active, only runs as a setup rule and disables after one cycle
@@ -30,9 +31,20 @@ minInterval 1
        cRandomMapName == "zptortuga" ||
        cRandomMapName == "zptreasureisland" ||
        cRandomMapName == "zpvenice" ||
-       cRandomMapName == "zpmediterranean")
+       cRandomMapName == "zpmediterranean" ||
+       cRandomMapName == "zpzealand")
    {
       gStartOnDifferentIslands = true;
+      gIsPirateMap = true;
+      gNavyMap = true;
+
+      gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
+      gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
+   }
+
+   // AssertiveWall: Naval, but not starting on different islands
+      if (cRandomMapName == "zphawaii")
+   {
       gIsPirateMap = true;
       gNavyMap = true;
 
@@ -43,7 +55,8 @@ minInterval 1
    // AssertiveWall: Land Maps
    if (cRandomMapName == "winterwonderlandii" ||
        cRandomMapName == "zpwildwest" ||
-       cRandomMapName == "zpmississippi")
+       cRandomMapName == "zpmississippi" ||
+       cRandomMapName == "zpwwcanyon")
    {
       gIsPirateMap = true;
       gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
@@ -151,11 +164,13 @@ minInterval 1
    }
    if (getGaiaUnitCount(cUnitTypezpNativeHouseMaori) > 0)
    {
+      gCanoeUnit = cUnitTypezpWakaCanoe;
       xsEnableRule("zpMaoriTechMonitor");
    }
    if (getGaiaUnitCount(cUnitTypezpNativeHouseAboriginals) > 0)
    {
       xsEnableRule("zpAboriginalTechMonitor");
+      xsEnableRule("zpAboriginalSchoolBuilder");
    }
    if (getGaiaUnitCount(cUnitTypezpNativeHouseMaltese) > 0)
    {
@@ -198,6 +213,7 @@ minInterval 1
     
    xsDisableSelf();
 }
+
 
 //==============================================================================
 // Monitors special behavior for armored train
@@ -505,6 +521,11 @@ minInterval 12
    else if (pirateShipID < 0)
    {
       pirateShipID = getUnit(cUnitTypezpSPCLineShip, cMyID, cUnitStateAlive);
+   }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(cUnitTypezpCatamaran, cMyID, cUnitStateAlive);
+      longBombard = true;
    }
    if (pirateShipID > 0)
    {
@@ -2782,7 +2803,7 @@ minInterval 90
 //==============================================================================
 rule zpMaoriTechMonitor
 inactive
-mininterval 60
+minInterval 60
 {
    if (kbUnitCount(cMyID, cUnitTypezpSocketMaori, cUnitStateAny) == 0)
       {
@@ -2816,24 +2837,24 @@ mininterval 60
 //==============================================================================
 rule zpAboriginalTechMonitor
 inactive
-mininterval 60
+minInterval 60
 {
    if (kbUnitCount(cMyID, cUnitTypezpSocketaboriginals, cUnitStateAny) == 0)
       {
       return; // Player has no Aboriginal socket.
       }
 
-      // Maori Big Button
+      // Aboriginal Big Button
       bool canDisableSelf = researchSimpleTechByCondition(cTechzpAustraliaExpansion,
       []() -> bool { return (kbGetAge() >= cAge2 ); },
       cUnitTypeTradingPost);
 
-      // Maori catamarans
+      // Aboriginal School
       canDisableSelf &= researchSimpleTechByCondition(cTechzpNatAboriginalSchool,
       []() -> bool { return ((kbTechGetStatus(cTechzpAustraliaExpansion) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
       cUnitTypeTradingPost);
 
-      // Maori Warriors
+      // Aboriginal Warriors
       canDisableSelf &= researchSimpleTechByCondition(cTechzpNatAboriginalTrackers,
       []() -> bool { return ((kbTechGetStatus(cTechzpAustraliaExpansion) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
       cUnitTypeTradingPost);
@@ -2843,4 +2864,26 @@ mininterval 60
           xsDisableSelf();
       }
   
+}
+
+//==============================================================================
+// ZP Aboriginal School Builder
+//==============================================================================
+rule zpAboriginalSchoolBuilder
+inactive
+minInterval 2
+{
+   if (kbUnitCount(cUnitTypezpAustralianSchoolWagon, cMyID) <= 0)
+   {
+      return;
+   }
+
+   int buildByUnit = getUnit(cUnitTypeTradingPost, cPlayerRelationSelf);
+   vector buildLoc = kbUnitGetPosition(buildByUnit);
+
+   int planID = createLocationBuildPlan(cUnitTypezpAboriginalSchool, 1, 100, true, -1, buildLoc, 1);
+   // Add forward villagers
+   aiPlanAddUnit(planID, getUnit(cUnitTypezpAustralianSchoolWagon, cPlayerRelationSelf));
+
+   xsDisableSelf();
 }
