@@ -1326,19 +1326,19 @@ int eruptionBreak5 = rmRandInt(gapMin,gapMax);
 if (cNumberNonGaiaPlayers <=6) {
   eruptionLenght = 120;
   islandSize = 180;
-  eqAreaDamage = 25;
+  eqAreaDamage = 24;
 }
 
 if (cNumberNonGaiaPlayers <=4) {
   eruptionLenght = 100;
   islandSize = 160;
-  eqAreaDamage = 33;
+  eqAreaDamage = 30;
 }
 
 if (cNumberNonGaiaPlayers <=2) {
   eruptionLenght = 80;
   islandSize = 120;
-  eqAreaDamage = 50;
+  eqAreaDamage = 40;
 }
 
 // Volcano trigger definition
@@ -2596,6 +2596,7 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
 
 
 
