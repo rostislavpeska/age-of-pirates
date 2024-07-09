@@ -170,6 +170,7 @@ minInterval 1
    if (getGaiaUnitCount(cUnitTypezpNativeHouseAboriginals) > 0)
    {
       xsEnableRule("zpAboriginalTechMonitor");
+      xsEnableRule("zpAboriginalSchoolBuilder");
    }
    if (getGaiaUnitCount(cUnitTypezpNativeHouseMaltese) > 0)
    {
@@ -2802,7 +2803,7 @@ minInterval 90
 //==============================================================================
 rule zpMaoriTechMonitor
 inactive
-mininterval 60
+minInterval 60
 {
    if (kbUnitCount(cMyID, cUnitTypezpSocketMaori, cUnitStateAny) == 0)
       {
@@ -2836,7 +2837,7 @@ mininterval 60
 //==============================================================================
 rule zpAboriginalTechMonitor
 inactive
-mininterval 60
+minInterval 60
 {
    if (kbUnitCount(cMyID, cUnitTypezpSocketaboriginals, cUnitStateAny) == 0)
       {
@@ -2863,4 +2864,26 @@ mininterval 60
           xsDisableSelf();
       }
   
+}
+
+//==============================================================================
+// ZP Aboriginal School Builder
+//==============================================================================
+rule zpAboriginalSchoolBuilder
+inactive
+minInterval 2
+{
+   if (kbUnitCount(zpAustralianSchoolWagon, cMyID) <= 0)
+   {
+      return;
+   }
+
+   int buildByUnit = getUnit(cUnitTypeTradingPost, cPlayerRelationSelf);
+   vector buildLoc = kbUnitGetPosition(buildByUnit);
+
+   int planID = createLocationBuildPlan(zpAboriginalSchool, 1, 100, true, -1, buildLoc, 1);
+   // Add forward villagers
+   aiPlanAddUnit(planID, getUnit(zpAustralianSchoolWagon, cPlayerRelationSelf));
+
+   xsDisableSelf();
 }
