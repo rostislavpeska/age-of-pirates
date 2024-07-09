@@ -164,6 +164,7 @@ minInterval 1
    }
    if (getGaiaUnitCount(cUnitTypezpNativeHouseMaori) > 0)
    {
+      gCanoeUnit = cUnitTypezpWakaCanoe;
       xsEnableRule("zpMaoriTechMonitor");
    }
    if (getGaiaUnitCount(cUnitTypezpNativeHouseAboriginals) > 0)
@@ -211,6 +212,7 @@ minInterval 1
     
    xsDisableSelf();
 }
+
 
 //==============================================================================
 // Monitors special behavior for armored train
@@ -518,6 +520,11 @@ minInterval 12
    else if (pirateShipID < 0)
    {
       pirateShipID = getUnit(cUnitTypezpSPCLineShip, cMyID, cUnitStateAlive);
+   }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(cUnitTypezpCatamaran, cMyID, cUnitStateAlive);
+      longBombard = true;
    }
    if (pirateShipID > 0)
    {
