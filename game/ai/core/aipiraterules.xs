@@ -169,6 +169,7 @@ minInterval 1
    }
    if (getGaiaUnitCount(cUnitTypezpNativeHouseAboriginals) > 0)
    {
+      gCanoeUnit = cUnitTypezpWakaCanoe;
       xsEnableRule("zpAboriginalTechMonitor");
       xsEnableRule("zpAboriginalSchoolBuilder");
    }
