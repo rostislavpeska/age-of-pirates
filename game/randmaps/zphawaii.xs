@@ -521,6 +521,40 @@ void main(void)
 
   //==========Volcano==============
 
+  // ----------- Lava Flows ---------------------------------------------------------------------------------------
+
+   int lavaflowID = rmCreateTradeRoute();
+   rmSetObjectDefTradeRouteID(lavaflowID);
+   rmAddTradeRouteWaypoint(lavaflowID, 0.5, 0.5);
+   rmAddTradeRouteWaypoint(lavaflowID, 0.5+rmXTilesToFraction(15), 0.5);
+
+   bool placedLavaflowID = rmBuildTradeRoute(lavaflowID, "lava_flow");
+
+   int lavaflowID2 = rmCreateTradeRoute();
+   rmSetObjectDefTradeRouteID(lavaflowID2);
+   rmAddTradeRouteWaypoint(lavaflowID2, 0.5, 0.5);
+   rmAddTradeRouteWaypoint(lavaflowID2, 0.5, 0.5+rmXTilesToFraction(15));
+
+   bool placedLavaflowID2 = rmBuildTradeRoute(lavaflowID2, "lava_flow");
+
+   int lavaflowID3 = rmCreateTradeRoute();
+   rmSetObjectDefTradeRouteID(lavaflowID3);
+   rmAddTradeRouteWaypoint(lavaflowID3, 0.5, 0.5);
+   rmAddTradeRouteWaypoint(lavaflowID3, 0.5-rmXTilesToFraction(15), 0.5);
+
+   bool placedLavaflowID3 = rmBuildTradeRoute(lavaflowID3, "lava_flow");
+
+   int lavaflowID4 = rmCreateTradeRoute();
+   rmSetObjectDefTradeRouteID(lavaflowID4);
+   rmAddTradeRouteWaypoint(lavaflowID4, 0.5, 0.5);
+   rmAddTradeRouteWaypoint(lavaflowID4, 0.5, 0.5-rmXTilesToFraction(15));
+
+   bool placedLavaflowID4 = rmBuildTradeRoute(lavaflowID4, "lava_flow");
+
+
+
+
+
   int basecliffID = rmCreateArea("base cliff");
   if (cNumberNonGaiaPlayers <= 2 || rmGetIsKOTH() == true)
     rmSetAreaSize(basecliffID, rmAreaTilesToFraction(2000), rmAreaTilesToFraction(2000));
@@ -667,7 +701,7 @@ void main(void)
   rmSetAreaCliffPainting(fujiDip, false, true, true, 1.5, false);
   rmSetAreaCliffHeight(fujiDip, -5, 0.1, 0.5);
   rmSetAreaCliffEdge(fujiDip, 1, 1.0, 0.0, 1.0, 0);
-  rmSetAreaTerrainType(fujiDip, "lava\lavaflow");
+  //rmSetAreaTerrainType(fujiDip, "lava\lavaflow");
   rmSetAreaCoherence(fujiDip, 1.0);
   rmBuildArea(fujiDip);
 
@@ -680,15 +714,15 @@ void main(void)
 
   int fujiDipTerrain = rmCreateArea("fujiDipTerrain");
   rmSetAreaSize(fujiDipTerrain, rmAreaTilesToFraction(25.0), rmAreaTilesToFraction(25.0));
-  rmSetAreaLocation(fujiDipTerrain, 0.5, 0.5);
+  rmSetAreaLocation(fujiDipTerrain, 0.5-rmXTilesToFraction(1), 0.5);
   rmSetAreaTerrainType(fujiDipTerrain, "lava\lavaflow");
   rmSetAreaCoherence(fujiDipTerrain, 1.0);
-  rmBuildArea(fujiDipTerrain);  
+  rmBuildArea(fujiDipTerrain);
 
   // ------------------ Volcano Crater ---------------------------------------------------------------
 
   int volcanoCraterID = -1;
-  volcanoCraterID = rmCreateGrouping("crater", "volcano_crater_lava");
+  volcanoCraterID = rmCreateGrouping("crater", "volcano_crater_noground");
   rmPlaceGroupingAtLoc(volcanoCraterID, 1, 0.5, 0.5, 1);
 
   int volcanoAvoider = rmCreateObjectDef("ai avoider"); 
@@ -1471,9 +1505,11 @@ rmAddTriggerEffect("Quest Var Set");
 rmSetTriggerEffectParam("QVName","Eruption");
 rmSetTriggerEffectParamInt("Value",0);
 rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start2"));
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start1"));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava"));
 
 rmAddTriggerEffect("Send Chat");
 rmSetTriggerEffectParamInt("PlayerID",0);
@@ -1517,6 +1553,8 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start2"));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava"));
 
 rmAddTriggerEffect("Send Chat");
 rmSetTriggerEffectParamInt("PlayerID",0);
@@ -1560,6 +1598,8 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start3"));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava"));
 
 rmAddTriggerEffect("Send Chat");
 rmSetTriggerEffectParamInt("PlayerID",0);
@@ -1603,6 +1643,8 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start4"));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava"));
 
 rmAddTriggerEffect("Send Chat");
 rmSetTriggerEffectParamInt("PlayerID",0);
@@ -1646,6 +1688,8 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start5"));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava"));
 
 rmAddTriggerEffect("Send Chat");
 rmSetTriggerEffectParamInt("PlayerID",0);
@@ -1689,6 +1733,8 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start1"));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava"));
 
 rmAddTriggerEffect("Send Chat");
 rmSetTriggerEffectParamInt("PlayerID",0);
@@ -1701,28 +1747,40 @@ rmSetTriggerLoop(false);
 // Volcano Lava Flow
 
 rmSwitchToTrigger(rmTriggerID("Volcano_Lava"));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamInt("Param1",2.0);
-rmAddTriggerEffect("ZP Set Tech Status (XS)");
-rmSetTriggerEffectParamInt("PlayerID",0);
-rmSetTriggerEffectParam("TechID","cTechzpVolcanoLava"); 
-rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava_Death"));
+
+rmAddTriggerEffect("Trade Route Toggle State");
+rmSetTriggerEffectParamInt("TradeRoute",2);
+rmSetTriggerEffectParam("ShowUnit","true");
+rmAddTriggerEffect("Trade Route Toggle State");
+rmSetTriggerEffectParamInt("TradeRoute",3);
+rmSetTriggerEffectParam("ShowUnit","true");
+rmAddTriggerEffect("Trade Route Toggle State");
+rmSetTriggerEffectParamInt("TradeRoute",4);
+rmSetTriggerEffectParam("ShowUnit","true");
+rmAddTriggerEffect("Trade Route Toggle State");
+rmSetTriggerEffectParamInt("TradeRoute",5);
+rmSetTriggerEffectParam("ShowUnit","true");
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("Volcano_Lava_Death"));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamInt("Param1",25.0);
-rmAddTriggerEffect("ZP Set Tech Status (XS)");
-rmSetTriggerEffectParamInt("PlayerID",0);
-rmSetTriggerEffectParam("TechID","cTechzpVolcanoLavaBack"); 
-rmSetTriggerEffectParamInt("Status",2);
+
+rmAddTriggerEffect("Trade Route Toggle State");
+rmSetTriggerEffectParamInt("TradeRoute",2);
+rmSetTriggerEffectParam("ShowUnit","false");
+rmAddTriggerEffect("Trade Route Toggle State");
+rmSetTriggerEffectParamInt("TradeRoute",3);
+rmSetTriggerEffectParam("ShowUnit","false");
+rmAddTriggerEffect("Trade Route Toggle State");
+rmSetTriggerEffectParamInt("TradeRoute",4);
+rmSetTriggerEffectParam("ShowUnit","false");
+rmAddTriggerEffect("Trade Route Toggle State");
+rmSetTriggerEffectParamInt("TradeRoute",5);
+rmSetTriggerEffectParam("ShowUnit","false");
 rmSetTriggerPriority(4);
-rmSetTriggerActive(false);
+rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
@@ -1744,8 +1802,6 @@ rmAddTriggerEffect("Play Soundset");
 rmSetTriggerEffectParam("Soundset","Earthquake");
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Damage"));
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava"));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
@@ -1900,10 +1956,41 @@ rmAddTriggerEffect("FadeOutMusic");
 rmSetTriggerEffectParamFloat("Duration",4.0);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_MusicEnd"));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava_Death"));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
+
+// Update Sockets
+
+rmCreateTrigger("I Update Sockets");
+rmAddTriggerCondition("Player Unit Count");
+rmSetTriggerConditionParamInt("PlayerID",0);
+rmSetTriggerConditionParam("Protounit","deTradingGalleon");
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava_Death"));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmCreateTrigger("II Update Sockets");
+rmAddTriggerCondition("Player Unit Count");
+rmSetTriggerConditionParamInt("PlayerID",0);
+rmSetTriggerConditionParam("Protounit","deTradingFluyt");
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava_Death"));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
 
 
 // Starting techs

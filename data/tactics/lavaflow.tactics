@@ -5,7 +5,7 @@
     <rate type="zpLavaFlow">1.0</rate>
     <active>1</active>
     <persistent>1</persistent>
-    <singleuse>1</singleuse>
+    <!--<singleuse>1</singleuse>-->
   </action>
 <tactic>Normal<action>Heal</action><action>SpawnLava</action></tactic>
 </tactics>
