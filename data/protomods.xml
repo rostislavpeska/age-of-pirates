@@ -24583,7 +24583,7 @@
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
-    <tactics>lavaspawner.tactics</tactics>
+    <tactics>volcanospawner.tactics</tactics>
     <flag>DontRotateObstruction</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>HasGatherPoint</flag>
@@ -24808,8 +24808,8 @@
     <movementtype>air</movementtype>
     <animfile>ui\editor\editor_blocks.xml</animfile>
     <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
-    <los>150.0000</los>
-    <lifespan>1</lifespan>
+    <los>1</los>
+    <lifespan>5</lifespan>
     <unittype>Unattackable</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWalls</unittype>
@@ -24838,7 +24838,6 @@
     <flag>FlyingUnit</flag>
     <flag>ForceToGaia</flag>
     <flag>NoTieToGround</flag>
-    <flag>BuildingExtendedDeathAnim</flag>
     <flag>OnlyInEditor</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>NonCollideable</flag>
@@ -24932,6 +24931,7 @@
     <flag>PaintTextureWhenPlacing</flag>
     <flag>ForceToGaia</flag>
     <flag>PlaceAnywhere</flag>
+    <flag>NoHPBar</flag>
     <flag>TieToWaterSurface</flag>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>NotSelectable</flag>
@@ -25828,8 +25828,8 @@
       <rate type="deHacienda" resource="Wood">0.250000</rate>
     </protoaction>
   </unit>
-  <unit id="20239" name="zpJadeMine">
-    <dbid>20239</dbid>
+  <unit id="20293" name="zpJadeMine">
+    <dbid>20293</dbid>
     <displaynameid>301317</displaynameid>
     <editornameid>301318</editornameid>
     <obstructionradiusx>3.0000</obstructionradiusx>
@@ -25884,8 +25884,8 @@
     <flag>RMCanRotate</flag>
     <command page="10" column="7">Delete</command>
   </unit>
-  <unit id="20240" name="zpPineapleBush">
-    <dbid>20240</dbid>
+  <unit id="20294" name="zpPineapleBush">
+    <dbid>20294</dbid>
     <displaynameid>301319</displaynameid>
     <editornameid>301320</editornameid>
     <obstructionradiusx>0.4900</obstructionradiusx>
@@ -25934,8 +25934,8 @@
     <flag>Tracked</flag>
     <command page="10" column="7">Delete</command>
   </unit>
-  <unit id="20242" name="zpBoomerangProjectile">
-    <dbid>20242</dbid>
+  <unit id="20295" name="zpBoomerangProjectile">
+    <dbid>20295</dbid>
     <displaynameid>42367</displaynameid>
     <obstructionradiusx>0.1000</obstructionradiusx>
     <obstructionradiusz>0.1000</obstructionradiusz>
@@ -25964,8 +25964,8 @@
     <flag>Invulnerable</flag>
     <flag>NoUnitAI</flag>
   </unit>
-  <unit id="20243" name="zpVolcanoAvoiderS">
-    <dbid>20244</dbid>
+  <unit id="20296" name="zpVolcanoAvoiderS">
+    <dbid>20296</dbid>
     <displaynameid>301328</displaynameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
@@ -25996,8 +25996,8 @@
     <flag>NotSelectable</flag>
     <flag>OnlyInEditor</flag>
   </unit>
-  <unit id="20244" name="zpVolcanoAvoiderM">
-    <dbid>20244</dbid>
+  <unit id="20297" name="zpVolcanoAvoiderM">
+    <dbid>20297</dbid>
     <displaynameid>301329</displaynameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
@@ -26028,8 +26028,8 @@
     <flag>NotSelectable</flag>
     <flag>OnlyInEditor</flag>
   </unit>
-  <unit id="20245" name="zpVolcanoAvoiderL">
-    <dbid>20244</dbid>
+  <unit id="20298" name="zpVolcanoAvoiderL">
+    <dbid>20298</dbid>
     <displaynameid>301330</displaynameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
@@ -26060,8 +26060,8 @@
     <flag>NotSelectable</flag>
     <flag>OnlyInEditor</flag>
   </unit>
-  <unit id="20248" name="zpVolcanoAvoiderXL">
-    <dbid>20248</dbid>
+  <unit id="20299" name="zpVolcanoAvoiderXL">
+    <dbid>20299</dbid>
     <displaynameid>301328</displaynameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
@@ -26092,8 +26092,8 @@
     <flag>NotSelectable</flag>
     <flag>OnlyInEditor</flag>
   </unit>
-  <unit id="20246" name="zpNuggetGeyser">
-    <dbid>20246</dbid>
+  <unit id="20300" name="zpNuggetGeyser">
+    <dbid>20300</dbid>
     <displaynameid>27893</displaynameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
     <obstructionradiusz>4.0000</obstructionradiusz>
@@ -26144,8 +26144,8 @@
     <flag>Doppled</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20247" name="zpNuggetLeanTo">
-    <dbid>20247</dbid>
+  <unit id="20301" name="zpNuggetLeanTo">
+    <dbid>20301</dbid>
     <displaynameid>27893</displaynameid>
     <obstructionradiusx>2.0000</obstructionradiusx>
     <obstructionradiusz>2.0000</obstructionradiusz>
@@ -26197,8 +26197,8 @@
     <flag>Doppled</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20249" name="zpNuggetHawaii">
-    <dbid>20249</dbid>
+  <unit id="20302" name="zpNuggetHawaii">
+    <dbid>20302</dbid>
     <displaynameid>27893</displaynameid>
     <obstructionradiusx>3.0000</obstructionradiusx>
     <obstructionradiusz>3.0000</obstructionradiusz>
@@ -26250,23 +26250,8 @@
     <flag>Doppled</flag>
     <flag>Tracked</flag>
   </unit>
-  
-  
-  
-  
-
-
-
-
-
-
-
-
-
-  <!--TEST-->
-
-  <unit id="20246" name="zpVolcanoBurn">
-    <dbid>20246</dbid>
+  <unit id="20303" name="zpVolcanoBurn">
+    <dbid>20303</dbid>
     <wanderdistance>0</wanderdistance>
 		<idletimeout>1.0000</idletimeout>
 		<maxvelocity>0.0000</maxvelocity>
@@ -26281,7 +26266,7 @@
 		<impacttype>Flesh</impacttype>
 		<physicsinfo>cav</physicsinfo>
 		<initialhitpoints>2000.0000</initialhitpoints>
-    	<maxhitpoints>2000.0000</maxhitpoints>
+    <maxhitpoints>2000.0000</maxhitpoints>
 		<los>32.0000</los>
 		<unitaitype>HandCombative</unitaitype>
 		<bounty>0.0000</bounty>
@@ -26311,6 +26296,7 @@
 		<flag>NotSelectable</flag>
 		<flag>OnlyInEditor</flag>
 		<flag>NotSearchable</flag>
+    <flag>PlaceAnywhere</flag>
 		<flag>Immoveable</flag>
 		<flag>NoHPBar</flag>
 		<flag>DoNotShowOnMiniMap</flag>
@@ -26328,7 +26314,199 @@
       <damagebonus type="zpAirship">0.200000</damagebonus>
 		</protoaction>
 	</unit>
+  <unit id="20304" name="zpLavaSpawnerVisible">
+    <dbid>20304</dbid>
+    <wanderdistance>0</wanderdistance>
+		<idletimeout>1.0000</idletimeout>
+		<maxvelocity>0.0000</maxvelocity>
+		<maxrunvelocity>0.0000</maxrunvelocity>
+		<displaynameid>301278</displaynameid>
+    <editornameid>301347</editornameid>
+		<obstructionradiusx>0.1000</obstructionradiusx>
+		<obstructionradiusz>0.1000</obstructionradiusz>
+		<formationcategory>Mobile</formationcategory>
+		<movementtype>air</movementtype>
+		<turnrate>0.0000</turnrate>
+		<animfile>terrain\lavabig.xml</animfile>
+		<impacttype>Flesh</impacttype>
+		<physicsinfo>cav</physicsinfo>
+		<initialhitpoints>2000.0000</initialhitpoints>
+    <maxhitpoints>2000.0000</maxhitpoints>
+		<los>32.0000</los>
+		<unitaitype>HandCombative</unitaitype>
+		<bounty>0.0000</bounty>
+		<resourcedecay>0.0000</resourcedecay>
+		<resourcesubtype>meat</resourcesubtype>
+		<unittype>NatureClass</unittype>
+		<unittype>AnimalPrey</unittype>
+		<unittype>Resource</unittype>
+		<unittype>LogicalTypeHealed</unittype>
+		<unittype>LogicalTypeHandunitsAutoAttack</unittype>
+		<unittype>LogicalTypeLandMilitary</unittype>
+		<unittype>LogicalTypeValidSPCunitsDeadCondition</unittype>
+		<unittype>LogicalTypeGarrisonInShips</unittype>
+		<unittype>LogicalTypeRangedunitsAutoAttack</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandunitsAttack</unittype>
+		<unittype>LogicalTypeRangedunitsAttack</unittype>
+		<unittype>LogicalTypeMinimapFilterMilitary</unittype>
+		<flag>ConstrainOrientation</flag>
+		<flag>DoNotValidateResourceInventory</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>NonAutoFormedunit</flag>
+		<flag>RMCanRotate</flag>
+		<flag>Tracked</flag>
+		<flag>NonSolid</flag>
+		<flag>ForceToGaia</flag>
+		<flag>NotSearchable</flag>
+    <flag>PlaceAnywhere</flag>
+		<flag>Immoveable</flag>
+		<flag>NoHPBar</flag>
+		<flag>DoNotShowOnMiniMap</flag>
+		<flag>InvulnerableIfGaia</flag>
+		<tactics>lavaspawner.tactics</tactics>
+	</unit>
+  <unit id="20305" name="zpLavaDeath">
+    <dbid>20305</dbid>
+    <displaynameid>301346</displaynameid>
+    <editornameid>301345</editornameid>  
+    <obstructionradiusx>0.2000</obstructionradiusx>
+    <obstructionradiusz>0.2000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <lifespan>4.0000</lifespan>
+    <movementtype>air</movementtype>
+    <animfile>terrain\lavacold.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
+    <los>0.0000</los>
+    <unittype>Unattackable</unittype>
+    <trainpoints>0.2000</trainpoints>
+    <unittype>Ranged</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <flag>DontRotateObstruction</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>ForceToGaia</flag>
+    <flag>BuildingExtendedDeathAnim</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotSelectable</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NonCollideable</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>Immoveable</flag>
+    <flag>NoHPBar</flag>
+  </unit>
+  <unit id="20306" name="zpLavaSpawner">
+    <dbid>20306</dbid>
+    <wanderdistance>0</wanderdistance>
+		<idletimeout>1.0000</idletimeout>
+		<maxvelocity>0.0000</maxvelocity>
+		<maxrunvelocity>0.0000</maxrunvelocity>
+    <displaynameid>301278</displaynameid>
+    <editornameid>301344</editornameid>
+		<obstructionradiusx>0.1000</obstructionradiusx>
+		<obstructionradiusz>0.1000</obstructionradiusz>
+		<formationcategory>Mobile</formationcategory>
+		<movementtype>air</movementtype>
+		<turnrate>0.0000</turnrate>
+		<animfile>ui\editor\editor_blocks.xml</animfile>
+		<impacttype>Flesh</impacttype>
+		<physicsinfo>cav</physicsinfo>
+		<initialhitpoints>2000.0000</initialhitpoints>
+    <maxhitpoints>2000.0000</maxhitpoints>
+		<los>32.0000</los>
+		<unitaitype>HandCombative</unitaitype>
+		<bounty>0.0000</bounty>
+		<resourcedecay>0.0000</resourcedecay>
+		<resourcesubtype>meat</resourcesubtype>
+		<unittype>NatureClass</unittype>
+		<unittype>AnimalPrey</unittype>
+		<unittype>Resource</unittype>
+		<unittype>LogicalTypeHealed</unittype>
+		<unittype>LogicalTypeHandunitsAutoAttack</unittype>
+		<unittype>LogicalTypeLandMilitary</unittype>
+		<unittype>LogicalTypeValidSPCunitsDeadCondition</unittype>
+		<unittype>LogicalTypeGarrisonInShips</unittype>
+		<unittype>LogicalTypeRangedunitsAutoAttack</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandunitsAttack</unittype>
+		<unittype>LogicalTypeRangedunitsAttack</unittype>
+		<unittype>LogicalTypeMinimapFilterMilitary</unittype>
+		<flag>ConstrainOrientation</flag>
+		<flag>DoNotValidateResourceInventory</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>NonAutoFormedunit</flag>
+		<flag>RMCanRotate</flag>
+		<flag>Tracked</flag>
+		<flag>NonSolid</flag>
+		<flag>ForceToGaia</flag>
+		<flag>NotSelectable</flag>
+		<flag>OnlyInEditor</flag>
+		<flag>NotSearchable</flag>
+    <flag>PlaceAnywhere</flag>
+		<flag>Immoveable</flag>
+		<flag>NoHPBar</flag>
+		<flag>DoNotShowOnMiniMap</flag>
+		<flag>InvulnerableIfGaia</flag>
+		<tactics>lavaspawner.tactics</tactics>
+	</unit>
+  <unit id="20307" name="zpLavaFlow">
+    <dbid>20307</dbid>
+    <displaynameid>301342</displaynameid>
+    <editornameid>301343</editornameid>
+    <obstructionradiusx>0.2000</obstructionradiusx>
+    <obstructionradiusz>0.2000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <lifespan>15.0000</lifespan>
+    <movementtype>air</movementtype>
+    <animfile>terrain\lava.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
+    <los>0.0000</los>
+    <deadreplacement>zpLavaDeath</deadreplacement>
+    <deadreplacementlifespan>3</deadreplacementlifespan>
+    <unittype>Unattackable</unittype>
+    <trainpoints>0.2000</trainpoints>
+    <unittype>Ranged</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <tactics>lavaflow.tactics</tactics>
+    <flag>DontRotateObstruction</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>ForceToGaia</flag>
+    <flag>BuildingExtendedDeathAnim</flag>
+    <flag>Invulnerable</flag>
+    <!--<flag>OnlyInEditor</flag>-->
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NonCollideable</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>Immoveable</flag>
+    <flag>NoHPBar</flag>
+  </unit>
 
+  
+  
+  
+
+
+
+
+
+
+
+
+
+  <!--TEST-->
   <unit id="20241" name="zpShipFadeProxy">
   <!-- Works but needs to be tested on slower device -->
     <dbid>20241</dbid>

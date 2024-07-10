@@ -688,7 +688,7 @@ void main(void)
   // ------------------ Volcano Crater ---------------------------------------------------------------
 
   int volcanoCraterID = -1;
-  volcanoCraterID = rmCreateGrouping("crater", "volcano_crater");
+  volcanoCraterID = rmCreateGrouping("crater", "volcano_crater_lava");
   rmPlaceGroupingAtLoc(volcanoCraterID, 1, 0.5, 0.5, 1);
 
   int volcanoAvoider = rmCreateObjectDef("ai avoider"); 
@@ -702,9 +702,9 @@ void main(void)
     rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoiderXL", 1, 0.0);
 	rmPlaceObjectDefAtLoc(volcanoAvoider, 0, 0.5, 0.5);
 
-  int volcanoDamage = rmCreateObjectDef("burn damage"); 
+  /*int volcanoDamage = rmCreateObjectDef("burn damage"); 
 	rmAddObjectDefItem(volcanoDamage, "zpVolcanoBurn", 1, 0.0);
-	rmPlaceObjectDefAtLoc(volcanoDamage, 0, 0.5, 0.5);
+	rmPlaceObjectDefAtLoc(volcanoDamage, 0, 0.5, 0.5);*/
 
   
 
@@ -1349,6 +1349,9 @@ rmCreateTrigger("Volcano_Start3");
 rmCreateTrigger("Volcano_Start4");
 rmCreateTrigger("Volcano_Start5");
 
+rmCreateTrigger("Volcano_Lava");
+rmCreateTrigger("Volcano_Lava_Death");
+
 rmCreateTrigger("Volcano_Short");
 rmCreateTrigger("Volcano_Short2");
 rmCreateTrigger("Volcano_Medium");
@@ -1695,6 +1698,34 @@ rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
+// Volcano Lava Flow
+
+rmSwitchToTrigger(rmTriggerID("Volcano_Lava"));
+rmAddTriggerCondition("Timer");
+rmSetTriggerConditionParamInt("Param1",2.0);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",0);
+rmSetTriggerEffectParam("TechID","cTechzpVolcanoLava"); 
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava_Death"));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("Volcano_Lava_Death"));
+rmAddTriggerCondition("Timer");
+rmSetTriggerConditionParamInt("Param1",25.0);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",0);
+rmSetTriggerEffectParam("TechID","cTechzpVolcanoLavaBack"); 
+rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
 // Volcano Eruption Phases
 
 rmSwitchToTrigger(rmTriggerID("Volcano_Short"));
@@ -1713,6 +1744,8 @@ rmAddTriggerEffect("Play Soundset");
 rmSetTriggerEffectParam("Soundset","Earthquake");
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Damage"));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava"));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
