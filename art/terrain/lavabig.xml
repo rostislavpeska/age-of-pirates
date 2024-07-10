@@ -1,0 +1,22 @@
+
+<animfile>
+    <attachment>fire
+        <component>fire
+            <assetreference type="popcornFx">
+                <file>fire\grass_fire_l.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>fire</component>
+        </anim>
+    </attachment>
+    <component>ball
+        <assetreference type="GrannyModel">
+            <file>effects\projectiles\ball</file>
+        </assetreference>
+        <attach a="fire" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+	</component>
+    <anim>Idle
+        <component>ball</component>
+    </anim>
+</animfile>

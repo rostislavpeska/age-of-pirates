@@ -1238,7 +1238,7 @@
       <string _locid="301234">Australian Regiment</string>
       <string _locid="301235">Ships additional Aboriginal Trackers</string>
       <string _locid="301236">Australia</string>
-      <string _locid="301237">Extra large map, ideal for FFA or gig team matches. \n\nSettlements: Aboriginal Australians, variantions with two additional naval natives: Pirates, Renegades, Wokou</string>
+      <string _locid="301237">Extra large map, ideal for FFA or big team matches. \n\nSettlements: Aboriginal Australians, variations with two additional naval natives: Pirates, Renegades, Wokou</string>
       <string _locid="301238">Your ships traveled far this time. Welcome to Australia, the Red Continent.</string>
       <string _locid="301239">Cassowary</string>
       <string _locid="301240">ZP Cassowary</string>
@@ -1343,6 +1343,15 @@
       <string _locid="301339" symbol="cStringNuggetHPBoost3Activate">%1!s! has recovered the legendary Maori Talisman, which increases hitpoints by %2!2.2f!%%.</string>
       <string _locid="301340" symbol="cStringNuggetCibola2Activate" comment="1 - player, 2 - amount, 3 - resource">%1s has uncovered cache worth %2d %3s.</string>
       <string _locid="301341" symbol="cStringNuggetCibola3" comment="1 - amount, 2 - resource">Native treasure. It contains artifacts worth %1d %2s. </string>
+      <string _locid="301342">Lava Flow</string>
+      <string _locid="301343">ZP Lava Flow</string>
+      <string _locid="301344">ZP Lava Spawner</string>
+      <string _locid="301345">ZP Lava Cold</string>
+      <string _locid="301346">Lava Cold</string>
+      <string _locid="301347">ZP Lava Spawner Visible</string>
+      <string _locid="301347">ZP Lava Spawner Trade</string>
+
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

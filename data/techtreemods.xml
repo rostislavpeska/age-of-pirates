@@ -12802,6 +12802,8 @@
     <effects>
       <effect type="TransformUnit" toprotoid="zpSPCVolcanoPassive" fromprotoid="zpSPCVolcano">
       </effect>
+      <effect type="TransformUnit" toprotoid="zpLavaDeath" fromprotoid="zpLavaFlow">
+      </effect>
       <effect type="TransformUnit" toprotoid="zpSPCVolcanoFireSpawner" fromprotoid="zpSPCVolcanoFire">
       </effect>
     </effects>
@@ -12914,6 +12916,30 @@
       <effect type="Data2" amount="1.00" amount2="7.00" subtype="FreeHomeCityUnitShipped" unittype="zpWakaCanoe" unittype2="zpNatMercMaoriSlinger" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVolcanoLava" type="Normal">
+    <dbid>40551</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpLavaSpawnerVisible" fromprotoid="zpLavaSpawner">
+      </effect>
+      <effect type="Data" action="SpawnLava" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpLavaSpawnerVisible">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVolcanoLavaBack" type="Normal">
+    <dbid>40552</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpLavaSpawner" fromprotoid="zpLavaSpawnerVisible">
       </effect>
     </effects>
   </tech>
@@ -13576,6 +13602,7 @@
       </effect>
     </effects>
   </tech>
+
   
 
   <!-- ====================================== -->
