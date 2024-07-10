@@ -2024,7 +2024,7 @@ minInterval 30
    }
 
    // AssertiveWall: Check for which canoe variety we can train
-   if (gCanoeUnit < 0)
+   if (gCanoeMaintain < 0)
    {
       if (kbProtoUnitAvailable(cUnitTypeCanoe) == true && civIsNative() == false)
       {
@@ -2044,7 +2044,9 @@ minInterval 30
    // AssertiveWall: make sure canoes can still be trained. If not, reset
    if (kbProtoUnitAvailable(gCanoeUnit) == false)
    {
-      gCanoeUnit = -1;
+      //gCanoeUnit = -1;
+      aiPlanDestroy(gCanoeMaintain);
+      gCanoeMaintain = -1;
    }
 
    int numberCaravels = 0;
