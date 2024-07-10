@@ -26393,7 +26393,7 @@
     <editornameid>301342</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.8000</maxvelocity>
+    <maxvelocity>1.0000</maxvelocity>
     <maxrunvelocity>6.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>terrain\lavabig.xml</animfile>
