@@ -26359,7 +26359,7 @@
     <obstructionradiusz>0.2000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <maxrunvelocity>0.0000</maxrunvelocity>
-    <lifespan>7.0000</lifespan>
+    <lifespan>9.0000</lifespan>
     <movementtype>air</movementtype>
     <animfile>terrain\lava.xml</animfile>
     <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
@@ -26372,7 +26372,6 @@
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
-    <!--<tactics>lavaflow.tactics</tactics>-->
     <flag>DontRotateObstruction</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>HasGatherPoint</flag>
@@ -26382,14 +26381,12 @@
     <flag>ForceToGaia</flag>
     <flag>BuildingExtendedDeathAnim</flag>
     <flag>Invulnerable</flag>
-    <!--<flag>OnlyInEditor</flag>-->
     <flag>DoNotShowOnMiniMap</flag>
     <flag>NonCollideable</flag>
     <flag>FadeOutDecalOnDeath</flag>
     <flag>Immoveable</flag>
     <flag>NoHPBar</flag>
   </unit>
-
   <unit id="20308" name="zpLavaSpawnerTrade">
     <dbid>20308</dbid>
     <displaynameid>301342</displaynameid>
