@@ -32,7 +32,6 @@
 		<unit variation="41" posx="0.1667" posz="-0.8137" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVolcanoInvisibleTarget</unit>
 		<unit variation="153" posx="0.5138" posz="1.9727" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVolcanoObstruction</unit>
 		<unit variation="153" posx="-3.7402" posz="2.4801" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVolcanoObstruction</unit>
-		<unit variation="199" posx="1.0000" posz="-1.0000" orientx="-0.5686" orienty="-0.0000" orientz="-0.8226">zpVolcanoBurn</unit>
 		<unit variation="147" posx="0.0791" posz="2.1702" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVolcanoFireSpawner</unit>
 		<unit variation="94" posx="1.5935" posz="1.4770" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVolcanoFireSpawner</unit>
 		<unit variation="223" posx="-1.5176" posz="2.2406" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVolcanoFireSpawner</unit>
