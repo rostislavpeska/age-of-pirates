@@ -37,8 +37,15 @@ minInterval 1
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
       gNavyMap = true;
+      if (haveHumanAlly() == true)
+      {
+         gClaimNativeMissionInterval = 5 * 60 * 1000; // 5 minutes, down from 10
+      }
+      else
+      {
+         gClaimNativeMissionInterval = 3 * 60 * 1000; // 5 minutes, down from 10
+      }
 
-      gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
    }
 
@@ -48,7 +55,15 @@ minInterval 1
       gIsPirateMap = true;
       gNavyMap = true;
 
-      gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
+      if (haveHumanAlly() == true)
+      {
+         gClaimNativeMissionInterval = 5 * 60 * 1000; // 5 minutes, down from 10
+      }
+      else
+      {
+         gClaimNativeMissionInterval = 3 * 60 * 1000; // 5 minutes, down from 10
+      }
+
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
    }
 
@@ -59,7 +74,15 @@ minInterval 1
        cRandomMapName == "zpwwcanyon")
    {
       gIsPirateMap = true;
-      gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
+      if (haveHumanAlly() == true)
+      {
+         gClaimNativeMissionInterval = 5 * 60 * 1000; // 5 minutes, down from 10
+      }
+      else
+      {
+         gClaimNativeMissionInterval = 3 * 60 * 1000; // 5 minutes, down from 10
+      }
+
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
    }
 
@@ -875,10 +898,19 @@ minInterval 3
 
 rule CaribTPMonitor
 inactive
-minInterval 5
+minInterval 22
 {
    if ( kbGetAge() <= cAge1 )
-   return;
+   {
+      return;
+   }
+
+   // AssertiveWall: Set up cooldown
+   static int caribTPCooldownTime = -1;
+   if (xsGetTime() < (caribTPCooldownTime + gClaimTradeMissionInterval / 2))
+   {
+      return;
+   }
     
     // Set up the query for the socket:
     static int socket_query = -1;
@@ -935,20 +967,73 @@ minInterval 5
     // If we're here, it's because at least one socket has been found (thanks to the scouts)
     
     int socket = -1;
+    int bestSocketValue = -1;
+    int tempSocket = -1;
+    int tempSocketValue = 0;
+    int hbSocket = -1;
+    bool hbBool = false;
     for( i = 0; < num_sockets )
     {
-        vector socket_position = kbUnitGetPosition( kbUnitQueryGetResult( socket_query, i ) );
-        if ( kbAreaGroupGetIDByPosition( socket_position ) == builder_areagroup )
-        {
-            // This socket is reachable
-            // See if it's already occupied:
-            if ( getUnitCountByLocation( cUnitTypeTradingPost, cPlayerRelationAny, cUnitStateABQ, socket_position, 10.0) >= 1 )
-                continue; // Yes. Well, ignore it and find the next...
+      tempSocketValue = 0;
+      tempSocket = kbUnitQueryGetResult( socket_query, i );
+      vector socket_position = kbUnitGetPosition( tempSocket );
+      // See if it's already occupied:
+      if ( getUnitCountByLocation( cUnitTypeTradingPost, cPlayerRelationAny, cUnitStateABQ, socket_position, 10.0) >= 1 )
+      {
+         continue; // Yes. Well, ignore it and find the next...
+      }
             
-            // No. Great, select it and proceed to the construction:
-            socket = kbUnitQueryGetResult( socket_query, i );
-            break;
-        }
+      if ( kbAreaGroupGetIDByPosition( socket_position ) == builder_areagroup )
+      {
+         // This socket is reachable without transport
+         tempSocketValue += 2;
+      }
+      else
+      {  // In the event that out builder is away from home base, store the home base socket
+         if ( kbAreaGroupGetIDByPosition( kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)) ) != builder_areagroup &&
+              kbAreaGroupGetIDByPosition( kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)) ) == kbAreaGroupGetIDByPosition( socket_position ))
+         {
+            if (hbSocket < 0)
+            {
+               hbSocket = tempSocket;
+            }
+         }
+         continue;
+      }
+
+      if (distance(socket_position, builder_position) < 50)
+      {
+         tempSocketValue += 3;
+      }
+      else if (distance(socket_position, builder_position) < 100)
+      {
+         tempSocketValue += 2;
+      }
+      else if (distance(socket_position, builder_position) < 200)
+      {
+         tempSocketValue += 1;
+      }
+
+      if (tempSocketValue > bestSocketValue)
+      {
+         socket = tempSocket;
+         bestSocketValue = tempSocketValue;
+      }
+    }
+
+   // AssertiveWall: Check to make sure we found one
+    if (socket < 0)
+    {
+      // AssertiveWall: if we have a hbSocket use that one
+      if (hbSocket > 0)
+      {
+         builder = getClosestUnitByLocation(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, kbUnitGetPosition(socket)); 
+         socket = hbSocket;
+      }
+      else
+      {
+         return;
+      }
     }
     
     static int build_plan = -1;
@@ -957,7 +1042,8 @@ minInterval 5
     {
         aiPlanDestroy( build_plan );
         build_plan = aiPlanCreate( "BuildCaribTP", cPlanBuild );
-        aiPlanSetDesiredPriority( build_plan, 100 );
+        aiPlanSetDesiredPriority( build_plan, 95 );  // down from 100
+        aiPlanSetDesiredResourcePriority( build_plan, 50 );  // added july 10th
         aiPlanSetEscrowID( build_plan, cEmergencyEscrowID );
         aiPlanSetVariableInt( build_plan, cBuildPlanBuildUnitID, 0, builder );
         aiPlanAddUnitType( build_plan, kbUnitGetProtoUnitID( builder ), 1, 1, 1 );
@@ -965,6 +1051,11 @@ minInterval 5
         aiPlanSetVariableInt( build_plan, cBuildPlanBuildingTypeID, 0, cUnitTypeTradingPost );
         aiPlanSetVariableInt( build_plan, cBuildPlanSocketID, 0, socket );
         aiPlanSetActive( build_plan, true );
+    }
+
+    if (build_plan > 0)
+    {
+      caribTPCooldownTime = xsGetTime();
     }
     
 }

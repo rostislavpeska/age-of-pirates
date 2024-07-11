@@ -4043,18 +4043,12 @@ minInterval 5
       }
 
       // Priority.
-      if (gIsPirateMap == true)
-      {
-         aiPlanSetDesiredPriority(planID, 99);
-      }
-      else
-      {
-         aiPlanSetDesiredPriority(planID, 97);
-      }
+      aiPlanSetDesiredPriority(planID, 97);
+
       // Very high priority so we claim a trading post right after start up.
-      if (gIsPirateMap == true)
+      if (gIsPirateMap == true && earlyTrade == false)
       {
-         aiPlanSetDesiredResourcePriority(planID, 99);
+         aiPlanSetDesiredResourcePriority(planID, 65);
       }
       else if (earlyTrade == true)
       {
