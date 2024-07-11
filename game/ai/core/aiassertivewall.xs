@@ -22,6 +22,27 @@ minInterval 10
 }
 
 //==============================================================================
+/* haveHumanAlly
+   AssertiveWall: little function to tell you whether you have a human ally
+*/
+//==============================================================================
+
+bool haveHumanAlly(void)
+{
+   //bool humanAlly = false; // Set true if we have a surviving human ally.
+   // Look for human allies.
+   for (i = 1; <= cNumberPlayers)
+   {
+      if ((kbIsPlayerAlly(i) == true) && (kbIsPlayerHuman(i) == true))
+      {
+         return true;
+      }
+   }
+
+   return false;
+}
+
+//==============================================================================
 /* manageMicro
    AssertiveWall: switches our micro strategy based on how many units there are.
       If our army gets too big, switch to less micro to avoid over-micro issues

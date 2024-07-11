@@ -37,8 +37,15 @@ minInterval 1
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
       gNavyMap = true;
+      if (haveHumanAlly() == true)
+      {
+         gClaimNativeMissionInterval = 5 * 60 * 1000; // 5 minutes, down from 10
+      }
+      else
+      {
+         gClaimNativeMissionInterval = 3 * 60 * 1000; // 5 minutes, down from 10
+      }
 
-      gClaimNativeMissionInterval = 5 * 60 * 1000; // 5 minutes, down from 10
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
    }
 
@@ -48,7 +55,15 @@ minInterval 1
       gIsPirateMap = true;
       gNavyMap = true;
 
-      gClaimNativeMissionInterval = 5 * 60 * 1000; // 5 minutes, down from 10
+      if (haveHumanAlly() == true)
+      {
+         gClaimNativeMissionInterval = 5 * 60 * 1000; // 5 minutes, down from 10
+      }
+      else
+      {
+         gClaimNativeMissionInterval = 3 * 60 * 1000; // 5 minutes, down from 10
+      }
+
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
    }
 
@@ -59,7 +74,15 @@ minInterval 1
        cRandomMapName == "zpwwcanyon")
    {
       gIsPirateMap = true;
-      gClaimNativeMissionInterval = 5 * 60 * 1000; // 5 minutes, down from 10
+      if (haveHumanAlly() == true)
+      {
+         gClaimNativeMissionInterval = 5 * 60 * 1000; // 5 minutes, down from 10
+      }
+      else
+      {
+         gClaimNativeMissionInterval = 3 * 60 * 1000; // 5 minutes, down from 10
+      }
+
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
    }
 
@@ -875,7 +898,7 @@ minInterval 3
 
 rule CaribTPMonitor
 inactive
-minInterval 5
+minInterval 22
 {
    if ( kbGetAge() <= cAge1 )
    {
@@ -884,7 +907,7 @@ minInterval 5
 
    // AssertiveWall: Set up cooldown
    static int caribTPCooldownTime = -1;
-   if (xsGetTime() < (caribTPCooldownTime + gClaimNativeMissionInterval))
+   if (xsGetTime() < (caribTPCooldownTime + gClaimTradeMissionInterval / 2))
    {
       return;
    }
@@ -947,6 +970,8 @@ minInterval 5
     int bestSocketValue = -1;
     int tempSocket = -1;
     int tempSocketValue = 0;
+    int hbSocket = -1;
+    bool hbBool = false;
     for( i = 0; < num_sockets )
     {
       tempSocketValue = 0;
@@ -964,7 +989,15 @@ minInterval 5
          tempSocketValue += 2;
       }
       else
-      {  // Only go after reachable ones for now
+      {  // In the event that out builder is away from home base, store the home base socket
+         if ( kbAreaGroupGetIDByPosition( kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)) ) != builder_areagroup &&
+              kbAreaGroupGetIDByPosition( kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)) ) == kbAreaGroupGetIDByPosition( socket_position ))
+         {
+            if (hbSocket < 0)
+            {
+               hbSocket = tempSocket;
+            }
+         }
          continue;
       }
 
@@ -991,7 +1024,16 @@ minInterval 5
    // AssertiveWall: Check to make sure we found one
     if (socket < 0)
     {
-      return;
+      // AssertiveWall: if we have a hbSocket use that one
+      if (hbSocket > 0)
+      {
+         builder = getClosestUnitByLocation(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, kbUnitGetPosition(socket)); 
+         socket = hbSocket;
+      }
+      else
+      {
+         return;
+      }
     }
     
     static int build_plan = -1;
