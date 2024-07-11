@@ -1628,7 +1628,8 @@ rmSwitchToTrigger(rmTriggerID("Volcano_Music1"));
 rmAddTriggerEffect("Music Filename");
 rmSetTriggerEffectParam("Music","music\battle\BubbleChum.mp3"); // Music Filename
 rmSetTriggerEffectParamFloat("Duration",4.0);
-rmAddTriggerEffect("Fire Event");
+rmAddTriggerEffect("Sound Timer");
+rmSetTriggerEffectParamInt("Time", 50000);
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music2"));
 rmSetTriggerPriority(1);
 rmSetTriggerActive(false);
@@ -1636,13 +1637,12 @@ rmSetTriggerRunImmediately(false);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("Volcano_Music2"));
-rmAddTriggerCondition("Timer");
-rmSetTriggerConditionParamInt("Param1",50);
 rmAddTriggerEffect("Music Filename");
 rmSetTriggerEffectParam("Music","music\battle\CamelsStrawsAndBacks.mp3"); // Music Filename
 rmSetTriggerEffectParamFloat("Duration",2.0);
 if (cNumberNonGaiaPlayers >=6){
-  rmAddTriggerEffect("Fire Event");
+  rmAddTriggerEffect("Sound Timer");
+  rmSetTriggerEffectParamInt("Time", 60000);
   rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music3"));
 }
 rmSetTriggerPriority(1);
@@ -1652,8 +1652,6 @@ rmSetTriggerLoop(false);
 
 if (cNumberNonGaiaPlayers >=6){
   rmSwitchToTrigger(rmTriggerID("Volcano_Music3"));
-  rmAddTriggerCondition("Timer");
-  rmSetTriggerConditionParamInt("Param1",60);
   rmAddTriggerEffect("Music Filename");
   rmSetTriggerEffectParam("Music","music\battle\Ruinion.mp3"); // Music Filename
   rmSetTriggerEffectParamFloat("Duration",2.0);
@@ -1667,6 +1665,10 @@ rmSwitchToTrigger(rmTriggerID("Volcano_MusicEnd"));
 rmAddTriggerCondition("Timer");
 rmSetTriggerConditionParamInt("Param1",5);
 rmAddTriggerEffect("Music Play");
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music2"));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music3"));
 rmSetTriggerPriority(1);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(false);
@@ -1990,6 +1992,10 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("Volcano_Lava_Death"));
+rmAddTriggerCondition("Quest Var Check");
+rmSetTriggerConditionParam("QuestVar","Eruption");
+rmSetTriggerConditionParam("Op","==");
+rmSetTriggerConditionParamInt("Value",1);
 rmAddTriggerEffect("Trade Route Toggle State");
 rmSetTriggerEffectParamInt("TradeRoute",2);
 rmSetTriggerEffectParam("ShowUnit","false");
@@ -3035,6 +3041,8 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
+
 
 
 

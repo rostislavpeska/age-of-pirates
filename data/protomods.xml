@@ -26252,8 +26252,288 @@
     <flag>Doppled</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20303" name="zpVolcanoBurn">
-    <dbid>20303</dbid>
+  <unit id="20308" name="zpLavaSpawnerTrade">
+    <dbid>20308</dbid>
+    <displaynameid>301342</displaynameid>
+    <editornameid>301343</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.1500</maxvelocity>
+    <maxrunvelocity>1.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>terrain\lavabig.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
+    <initialhitpoints>240.0000</initialhitpoints>
+    <maxhitpoints>240.0000</maxhitpoints>
+    <los>15.0000</los>
+    <trainpoints>30.0000</trainpoints>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20309" name="zpLavaSpawnerTradeWagon">
+    <dbid>20309</dbid>
+    <displaynameid>301342</displaynameid>
+    <editornameid>301348</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.1500</maxvelocity>
+    <maxrunvelocity>1.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>terrain\lava.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
+    <initialhitpoints>240.0000</initialhitpoints>
+    <maxhitpoints>240.0000</maxhitpoints>
+    <los>15.0000</los>
+    <trainpoints>30.0000</trainpoints>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20310" name="zpLavaSpawnerTradeWagon2">
+    <dbid>20310</dbid>
+    <displaynameid>301342</displaynameid>
+    <editornameid>301349</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.1500</maxvelocity>
+    <maxrunvelocity>1.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>terrain\lava2.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
+    <initialhitpoints>240.0000</initialhitpoints>
+    <maxhitpoints>240.0000</maxhitpoints>
+    <los>15.0000</los>
+    <trainpoints>30.0000</trainpoints>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20311" name="zpLavaSpawnerTradeWagon3">
+    <dbid>20311</dbid>
+    <displaynameid>301342</displaynameid>
+    <editornameid>301350</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.1500</maxvelocity>
+    <maxrunvelocity>1.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>terrain\lava3.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
+    <initialhitpoints>240.0000</initialhitpoints>
+    <maxhitpoints>240.0000</maxhitpoints>
+    <los>15.0000</los>
+    <trainpoints>30.0000</trainpoints>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20312" name="zpLavaSpawnerTradeWagon4">
+    <dbid>20312</dbid>
+    <displaynameid>301342</displaynameid>
+    <editornameid>301351</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.1500</maxvelocity>
+    <maxrunvelocity>1.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>terrain\lava4.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
+    <initialhitpoints>240.0000</initialhitpoints>
+    <maxhitpoints>240.0000</maxhitpoints>
+    <los>15.0000</los>
+    <trainpoints>30.0000</trainpoints>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20313" name="zpLavaSpawnerTradeWagon5">
+    <dbid>20313</dbid>
+    <displaynameid>301342</displaynameid>
+    <editornameid>301352</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.1500</maxvelocity>
+    <maxrunvelocity>1.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>terrain\lava5.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
+    <initialhitpoints>240.0000</initialhitpoints>
+    <maxhitpoints>240.0000</maxhitpoints>
+    <los>15.0000</los>
+    <trainpoints>30.0000</trainpoints>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+  <!--TEST-->
+  <unit id="" name="zpVolcanoBurn">
+    <dbid></dbid>
     <wanderdistance>0</wanderdistance>
 		<idletimeout>1.0000</idletimeout>
 		<maxvelocity>0.0000</maxvelocity>
@@ -26316,8 +26596,8 @@
       <damagebonus type="zpAirship">0.200000</damagebonus>
 		</protoaction>
 	</unit>
-  <unit id="20307" name="zpLavaFlow">
-    <dbid>20307</dbid>
+  <unit id="" name="zpLavaFlow">
+    <dbid></dbid>
     <displaynameid>301342</displaynameid>
     <editornameid>301343</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
@@ -26351,288 +26631,6 @@
     <flag>Immoveable</flag>
     <flag>NoHPBar</flag>
   </unit>
-  <unit id="20308" name="zpLavaSpawnerTrade">
-    <dbid>20308</dbid>
-    <displaynameid>301342</displaynameid>
-    <editornameid>301342</editornameid>
-    <obstructionradiusx>0.0001</obstructionradiusx>
-    <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1500</maxvelocity>
-    <maxrunvelocity>1.0000</maxrunvelocity>
-    <movementtype>land</movementtype>
-    <animfile>terrain\lavabig.xml</animfile>
-    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
-    <initialhitpoints>240.0000</initialhitpoints>
-    <maxhitpoints>240.0000</maxhitpoints>
-    <los>15.0000</los>
-    <trainpoints>30.0000</trainpoints>
-    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
-    </minimapcolor>
-    <armor type="Ranged" value="0.9000">
-    </armor>
-    <!--<tactics>lavaflow.tactics</tactics>-->
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>RailroadUnit</unittype>
-    <unittype>Unit</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>HasBountyValue</unittype>
-    <flag>NoProjectileDamage</flag>
-    <flag>NonCollideable</flag>
-    <flag>OrientUnitWithGround</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>Invulnerable</flag>
-    <flag>InvulnerableIfGaia</flag>
-    <flag>NoHPBar</flag>
-    <flag>DoNotShowOnMiniMap</flag>
-    <flag>DoNotCreateUnitGroupAutomatically</flag>
-    <flag>Tracked</flag>
-    <command page="10" column="7">Delete</command>
-  </unit>
-
-  <unit id="20309" name="zpLavaSpawnerTradeWagon">
-    <dbid>20309</dbid>
-    <displaynameid>301342</displaynameid>
-    <editornameid>301342</editornameid>
-    <obstructionradiusx>0.0001</obstructionradiusx>
-    <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1500</maxvelocity>
-    <maxrunvelocity>1.0000</maxrunvelocity>
-    <movementtype>land</movementtype>
-    <animfile>terrain\lava.xml</animfile>
-    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
-    <initialhitpoints>240.0000</initialhitpoints>
-    <maxhitpoints>240.0000</maxhitpoints>
-    <los>15.0000</los>
-    <trainpoints>30.0000</trainpoints>
-    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
-    </minimapcolor>
-    <armor type="Ranged" value="0.9000">
-    </armor>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>RailroadUnit</unittype>
-    <unittype>Unit</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>HasBountyValue</unittype>
-    <flag>NoProjectileDamage</flag>
-    <flag>NonCollideable</flag>
-    <flag>OrientUnitWithGround</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>Invulnerable</flag>
-    <flag>InvulnerableIfGaia</flag>
-    <flag>NoHPBar</flag>
-    <flag>DoNotShowOnMiniMap</flag>
-    <flag>DoNotCreateUnitGroupAutomatically</flag>
-    <flag>Tracked</flag>
-    <command page="10" column="7">Delete</command>
-  </unit>
-  <unit id="20310" name="zpLavaSpawnerTradeWagon2">
-    <dbid>20310</dbid>
-    <displaynameid>301342</displaynameid>
-    <editornameid>301342</editornameid>
-    <obstructionradiusx>0.0001</obstructionradiusx>
-    <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1500</maxvelocity>
-    <maxrunvelocity>1.0000</maxrunvelocity>
-    <movementtype>land</movementtype>
-    <animfile>terrain\lava2.xml</animfile>
-    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
-    <initialhitpoints>240.0000</initialhitpoints>
-    <maxhitpoints>240.0000</maxhitpoints>
-    <los>15.0000</los>
-    <trainpoints>30.0000</trainpoints>
-    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
-    </minimapcolor>
-    <armor type="Ranged" value="0.9000">
-    </armor>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>RailroadUnit</unittype>
-    <unittype>Unit</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>HasBountyValue</unittype>
-    <flag>NoProjectileDamage</flag>
-    <flag>NonCollideable</flag>
-    <flag>OrientUnitWithGround</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>Invulnerable</flag>
-    <flag>InvulnerableIfGaia</flag>
-    <flag>NoHPBar</flag>
-    <flag>DoNotShowOnMiniMap</flag>
-    <flag>DoNotCreateUnitGroupAutomatically</flag>
-    <flag>Tracked</flag>
-    <command page="10" column="7">Delete</command>
-  </unit>
-  <unit id="20311" name="zpLavaSpawnerTradeWagon3">
-    <dbid>20311</dbid>
-    <displaynameid>301342</displaynameid>
-    <editornameid>301342</editornameid>
-    <obstructionradiusx>0.0001</obstructionradiusx>
-    <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1500</maxvelocity>
-    <maxrunvelocity>1.0000</maxrunvelocity>
-    <movementtype>land</movementtype>
-    <animfile>terrain\lava3.xml</animfile>
-    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
-    <initialhitpoints>240.0000</initialhitpoints>
-    <maxhitpoints>240.0000</maxhitpoints>
-    <los>15.0000</los>
-    <trainpoints>30.0000</trainpoints>
-    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
-    </minimapcolor>
-    <armor type="Ranged" value="0.9000">
-    </armor>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>RailroadUnit</unittype>
-    <unittype>Unit</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>HasBountyValue</unittype>
-    <flag>NoProjectileDamage</flag>
-    <flag>NonCollideable</flag>
-    <flag>OrientUnitWithGround</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>Invulnerable</flag>
-    <flag>InvulnerableIfGaia</flag>
-    <flag>NoHPBar</flag>
-    <flag>DoNotShowOnMiniMap</flag>
-    <flag>DoNotCreateUnitGroupAutomatically</flag>
-    <flag>Tracked</flag>
-    <command page="10" column="7">Delete</command>
-  </unit>
-  <unit id="20312" name="zpLavaSpawnerTradeWagon4">
-    <dbid>20312</dbid>
-    <displaynameid>301342</displaynameid>
-    <editornameid>301342</editornameid>
-    <obstructionradiusx>0.0001</obstructionradiusx>
-    <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1500</maxvelocity>
-    <maxrunvelocity>1.0000</maxrunvelocity>
-    <movementtype>land</movementtype>
-    <animfile>terrain\lava4.xml</animfile>
-    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
-    <initialhitpoints>240.0000</initialhitpoints>
-    <maxhitpoints>240.0000</maxhitpoints>
-    <los>15.0000</los>
-    <trainpoints>30.0000</trainpoints>
-    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
-    </minimapcolor>
-    <armor type="Ranged" value="0.9000">
-    </armor>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>RailroadUnit</unittype>
-    <unittype>Unit</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>HasBountyValue</unittype>
-    <flag>NoProjectileDamage</flag>
-    <flag>NonCollideable</flag>
-    <flag>OrientUnitWithGround</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>Invulnerable</flag>
-    <flag>InvulnerableIfGaia</flag>
-    <flag>NoHPBar</flag>
-    <flag>DoNotShowOnMiniMap</flag>
-    <flag>DoNotCreateUnitGroupAutomatically</flag>
-    <flag>Tracked</flag>
-    <command page="10" column="7">Delete</command>
-  </unit>
-  <unit id="20313" name="zpLavaSpawnerTradeWagon5">
-    <dbid>20313</dbid>
-    <displaynameid>301342</displaynameid>
-    <editornameid>301342</editornameid>
-    <obstructionradiusx>0.0001</obstructionradiusx>
-    <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1500</maxvelocity>
-    <maxrunvelocity>1.0000</maxrunvelocity>
-    <movementtype>land</movementtype>
-    <animfile>terrain\lava5.xml</animfile>
-    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
-    <initialhitpoints>240.0000</initialhitpoints>
-    <maxhitpoints>240.0000</maxhitpoints>
-    <los>15.0000</los>
-    <trainpoints>30.0000</trainpoints>
-    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
-    </minimapcolor>
-    <armor type="Ranged" value="0.9000">
-    </armor>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>RailroadUnit</unittype>
-    <unittype>Unit</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>HasBountyValue</unittype>
-    <flag>NoProjectileDamage</flag>
-    <flag>NonCollideable</flag>
-    <flag>OrientUnitWithGround</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>Invulnerable</flag>
-    <flag>InvulnerableIfGaia</flag>
-    <flag>NoHPBar</flag>
-    <flag>DoNotShowOnMiniMap</flag>
-    <flag>DoNotCreateUnitGroupAutomatically</flag>
-    <flag>Tracked</flag>
-    <command page="10" column="7">Delete</command>
-  </unit>
-
-  
-  
-  
-  
-  
-
-
-
-
-
-
-
-
-
-  <!--TEST-->
     <unit id="" name="zpLavaDeath">
     <dbid></dbid>
     <displaynameid>301346</displaynameid>
