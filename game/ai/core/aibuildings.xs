@@ -3893,7 +3893,7 @@ minInterval 5
 
    // AssertiveWall: store the time when all sockets got claimed
    //       Only effects pirate maps for now
-   if (claimedNumber >= (numberSocketsFound - 1))
+   if (claimedNumber >= (numberSocketsFound - 1) && gIsPirateMap == true && haveHumanAlly() == true)
    {
       fullyClaimed = time;
       return;
