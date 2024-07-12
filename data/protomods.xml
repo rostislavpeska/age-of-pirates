@@ -26258,7 +26258,7 @@
     <editornameid>301343</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1500</maxvelocity>
+    <maxvelocity>0.1000</maxvelocity>
     <maxrunvelocity>1.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>terrain\lavabig.xml</animfile>
@@ -26302,7 +26302,7 @@
     <editornameid>301348</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1500</maxvelocity>
+    <maxvelocity>0.1000</maxvelocity>
     <maxrunvelocity>1.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>terrain\lava.xml</animfile>
@@ -26346,7 +26346,7 @@
     <editornameid>301349</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1500</maxvelocity>
+    <maxvelocity>0.1000</maxvelocity>
     <maxrunvelocity>1.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>terrain\lava2.xml</animfile>
@@ -26390,7 +26390,7 @@
     <editornameid>301350</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1500</maxvelocity>
+    <maxvelocity>0.1000</maxvelocity>
     <maxrunvelocity>1.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>terrain\lava3.xml</animfile>
@@ -26434,7 +26434,7 @@
     <editornameid>301351</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1500</maxvelocity>
+    <maxvelocity>0.1000</maxvelocity>
     <maxrunvelocity>1.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>terrain\lava4.xml</animfile>
@@ -26478,7 +26478,7 @@
     <editornameid>301352</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1500</maxvelocity>
+    <maxvelocity>0.1000</maxvelocity>
     <maxrunvelocity>1.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>terrain\lava5.xml</animfile>
@@ -26532,6 +26532,42 @@
 
 
   <!--TEST-->
+
+  <unit id="20314" name="zpLavaDeath">
+    <dbid>20314</dbid>
+    <displaynameid>301346</displaynameid>
+    <editornameid>301345</editornameid>  
+    <obstructionradiusx>0.2000</obstructionradiusx>
+    <obstructionradiusz>0.2000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <lifespan>1.0000</lifespan>
+    <movementtype>air</movementtype>
+    <animfile>terrain\lavacold.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
+    <los>0.0000</los>
+    <unittype>Unattackable</unittype>
+    <trainpoints>0.2000</trainpoints>
+    <unittype>Ranged</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <flag>DontRotateObstruction</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>ForceToGaia</flag>
+    <flag>BuildingExtendedDeathAnim</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotSelectable</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NonCollideable</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>Immoveable</flag>
+    <flag>NoHPBar</flag>
+  </unit>
   <unit id="" name="zpVolcanoBurn">
     <dbid></dbid>
     <wanderdistance>0</wanderdistance>
@@ -26631,7 +26667,7 @@
     <flag>Immoveable</flag>
     <flag>NoHPBar</flag>
   </unit>
-    <unit id="" name="zpLavaDeath">
+  <unit id="" name="zpLavaDeath">
     <dbid></dbid>
     <displaynameid>301346</displaynameid>
     <editornameid>301345</editornameid>  
