@@ -3726,14 +3726,7 @@ minInterval 5
 {
    if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypeTradingPost) >= 0)
    {
-      if (gIsPirateMap == true)// && (gClaimNativeMissionInterval < 60 * 1000 || gClaimTradeMissionInterval < 60 * 1000))
-      {
-         return;
-      }
-      else if (gIsPirateMap == false)
-      {
-         return;
-      }
+      return;
    }
  
    int numberEnemiesFound = -1;
@@ -3755,13 +3748,14 @@ minInterval 5
    bool earlyTrade = false;
    //int transportUnitID = -1;
 
-   // AssertiveWall: Increase btBiasNative on pirate maps
-   /*if (gIsPirateMap == true)
-   {
-      btBiasNative = 0.9;
-      btBiasTrade = 0.9;
-   }*/
+   // AssertiveWall: When all the sockets get fully claimed, we wait 90 sec. Effectively should wait 2 mins, since this 
+   //       rule only runs once every minute 
+   static int fullyClaimed = -90000;
 
+   if (time < (fullyClaimed + 90000) && gIsPirateMap == true && haveHumanAlly() == true)
+   {
+      return;
+   }
 
    int wagonPUID = findWagonToBuild(cUnitTypeTradingPost);
    int wagonID = -1;
@@ -3797,31 +3791,17 @@ minInterval 5
 
    int socketQuery = createSimpleUnitQuery(cUnitTypeSocket, cPlayerRelationAny, cUnitStateAny);
    int numberSocketsFound = kbUnitQueryExecute(socketQuery);
-
-   // AssertiveWall: Grab random socket
-   /*if (gIsPirateMap == true)
-   {
-      int randSocket = aiRandInt(numberSocketsFound);
-   }*/
+   int claimedNumber = 0; // AssertiveWall: track how many got claimed so we can lengthen this rule when most are claimed
 
    for (i = 0; < numberSocketsFound)
    {
       socketID = kbUnitQueryGetResult(socketQuery, i);
       socketPosition = kbUnitGetPosition(socketID);
 
-      // AssertiveWall: Grab random socket
-      /*if (gIsPirateMap == true)
-      {
-         if (i == randSocket)
-         {
-            bestNativeSocketID = socketID;
-         }
-         continue;
-      }*/
-
       // Already claimed, skipping.
       if (getUnitByLocation(cUnitTypeTradingPost, cPlayerRelationAny, cUnitStateABQ, socketPosition, 10.0) >= 0)
       {
+         claimedNumber += 1;
          continue;
       }
 
@@ -3909,6 +3889,14 @@ minInterval 5
          bestTradeSocketID = socketID;
          bestTradeDistancePenalty = distancePenalty;
       }
+   }
+
+   // AssertiveWall: store the time when all sockets got claimed
+   //       Only effects pirate maps for now
+   if (claimedNumber >= (numberSocketsFound - 1))
+   {
+      fullyClaimed = time;
+      return;
    }
 
    // AssertiveWall: Prioritize native TP on pirate maps and if doing a canoe blitz (rusher & native bias)
@@ -4056,7 +4044,7 @@ minInterval 5
       }
       else
       {
-         aiPlanSetDesiredResourcePriority(planID, 55); // AssertiveWall: up from 55
+         aiPlanSetDesiredResourcePriority(planID, 55);
       }
 
       // Go.
