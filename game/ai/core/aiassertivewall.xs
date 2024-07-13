@@ -178,6 +178,15 @@ void updateWantedTowersAssertive()
       towerNum = buildLimit;
    }
 
+   // On island maps, leave two for forward bases
+   if (gStartOnDifferentIslands == true)
+   {
+      if (towerNum > buildLimit - 2)
+      {
+         towerNum = buildLimit - 2;
+      }
+   }
+
    gNumTowers = towerNum;
 }
 
