@@ -1344,12 +1344,17 @@
       <string _locid="301340" symbol="cStringNuggetCibola2Activate" comment="1 - player, 2 - amount, 3 - resource">%1s has uncovered cache worth %2d %3s.</string>
       <string _locid="301341" symbol="cStringNuggetCibola3" comment="1 - amount, 2 - resource">Native treasure. It contains artifacts worth %1d %2s. </string>
       <string _locid="301342">Lava Flow</string>
-      <string _locid="301343">ZP Lava Flow</string>
+      <string _locid="301343">ZP Lava Flow Head</string>
       <string _locid="301344">ZP Lava Spawner</string>
       <string _locid="301345">ZP Lava Cold</string>
       <string _locid="301346">Lava Cold</string>
       <string _locid="301347">ZP Lava Spawner Visible</string>
       <string _locid="301347">ZP Lava Spawner Trade</string>
+      <string _locid="301348">ZP Lava Flow 1</string>
+      <string _locid="301349">ZP Lava Flow 2</string>
+      <string _locid="301350">ZP Lava Flow 3</string>
+      <string _locid="301351">ZP Lava Flow 4</string>
+      <string _locid="301352">ZP Lava Flow 5</string>
 
 
 

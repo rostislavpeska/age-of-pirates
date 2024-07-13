@@ -12919,7 +12919,7 @@
       </effect>
     </effects>
   </tech>
-  <tech name="zpVolcanoLava" type="Normal">
+  <!--<tech name="zpVolcanoLava" type="Normal">
     <dbid>40551</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -12932,14 +12932,24 @@
         </target>
       </effect>
     </effects>
-  </tech>
+  </tech>-->
   <tech name="zpVolcanoLavaBack" type="Normal">
     <dbid>40552</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="TransformUnit" toprotoid="zpLavaSpawner" fromprotoid="zpLavaSpawnerVisible">
+      <effect type="TransformUnit" toprotoid="zpLavaDeath" fromprotoid="zpLavaSpawnerTrade">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpLavaDeath" fromprotoid="zpLavaSpawnerTradeWagon">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpLavaDeath" fromprotoid="zpLavaSpawnerTradeWagon2">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpLavaDeath" fromprotoid="zpLavaSpawnerTradeWagon3">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpLavaDeath" fromprotoid="zpLavaSpawnerTradeWagon4">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpLavaDeath" fromprotoid="zpLavaSpawnerTradeWagon5">
       </effect>
     </effects>
   </tech>
