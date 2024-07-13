@@ -26516,6 +26516,127 @@
     <flag>Tracked</flag>
     <command page="10" column="7">Delete</command>
   </unit>
+  <unit id="20314" name="zpMarquesanHorseman">
+    <dbid>20314</dbid>
+    <displaynameid>301353</displaynameid>
+    <editornameid>301354</editornameid>
+    <populationcount>2</populationcount>
+    <obstructionradiusx>0.7900</obstructionradiusx>
+    <obstructionradiusz>0.7900</obstructionradiusz>
+    <formationcategory>Mobile</formationcategory>
+    <maxvelocity>6.7500</maxvelocity>
+    <maxrunvelocity>8.7500</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\cavalry\marquesan_horseman\marquesan_horseman.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>cav</physicsinfo>
+    <icon>resources\art\units\natives\marquesan_horseman_icon.png</icon>
+    <portraiticon>resources\art\units\natives\marquesan_horseman_portrait.png</portraiticon>
+    <rollovertextid>301355</rollovertextid>
+    <shortrollovertextid>301355</shortrollovertextid>
+    <initialhitpoints>250.0000</initialhitpoints>
+    <maxhitpoints>250.0000</maxhitpoints>
+    <los>12.0000</los>
+    <unitaitype>HandCombative</unitaitype>
+    <trainpoints>40.0000</trainpoints>
+    <bounty>20.0000</bounty>
+    <buildbounty>20.0000</buildbounty>
+    <cost resourcetype="Gold">260.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Mercenary</unittype>
+    <unittype>IndustrialMercenary</unittype>
+    <unittype>LogicalTypePickableMerc</unittype>
+    <unittype>LogicalTypePickableMercOutlaw</unittype>
+    <unittype>AbstractCavalry</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>AbstractHeavyCavalry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>AbstractHandCavalry</unittype>
+    <unittype>AbstractHandCavalryMerc</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>handCavalry.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>32.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>28.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>GuardianAttack</name>
+      <damage>28.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>28.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>TrampleHandAttack</name>
+      <damage>19.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>2.000000</rof>
+      <damagecap>45.000000</damagecap>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+    </protoaction>
+  </unit>
+  <unit name="Saloon">
+    <train row="0" page="0" column="33">zpMarquesanHorseman</train>
+  </unit>
+  <unit name="ypMonastery">
+    <train row="0" page="0" column="33">zpMarquesanHorseman</train>
+  </unit>
+  <unit name="deLombard">
+    <train row="0" page="0" column="33">zpMarquesanHorseman</train>
+  </unit>
+  <unit name="dePalace">
+    <train row="0" page="0" column="33">zpMarquesanHorseman</train>
+  </unit>
+  <unit name="deTavern">
+    <train row="0" page="0" column="33">zpMarquesanHorseman</train>
+  </unit>
 
   
   

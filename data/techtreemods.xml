@@ -12919,20 +12919,6 @@
       </effect>
     </effects>
   </tech>
-  <!--<tech name="zpVolcanoLava" type="Normal">
-    <dbid>40551</dbid>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <flag>YPInfiniteTech</flag>
-    <effects>
-      <effect type="TransformUnit" toprotoid="zpLavaSpawnerVisible" fromprotoid="zpLavaSpawner">
-      </effect>
-      <effect type="Data" action="SpawnLava" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpLavaSpawnerVisible">
-        <target type="Player">
-        </target>
-      </effect>
-    </effects>
-  </tech>-->
   <tech name="zpVolcanoLavaBack" type="Normal">
     <dbid>40552</dbid>
     <status>UNOBTAINABLE</status>
@@ -12950,6 +12936,59 @@
       <effect type="TransformUnit" toprotoid="zpLavaDeath" fromprotoid="zpLavaSpawnerTradeWagon4">
       </effect>
       <effect type="TransformUnit" toprotoid="zpLavaDeath" fromprotoid="zpLavaSpawnerTradeWagon5">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpOceaniaMercenaries" type="Normal">
+    <dbid>40553</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMarquesanHorseman</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonPirate</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypWokouPirate</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonOutlawPistol</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypRepentantOutlawPistol</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonOutlawRifleman</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypRepentantOutlawRifleman</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAustraliaMercenaries" type="Normal">
+    <dbid>40553</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonPirate</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypWokouPirate</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonOutlawPistol</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypRepentantOutlawPistol</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonOutlawRifleman</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypRepentantOutlawRifleman</target>
       </effect>
     </effects>
   </tech>
@@ -13618,6 +13657,20 @@
   <!-- ====================================== -->
   <!-- ====================================== -->
 
+<!--<tech name="zpVolcanoLava" type="Normal">
+    <dbid>40551</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpLavaSpawnerVisible" fromprotoid="zpLavaSpawner">
+      </effect>
+      <effect type="Data" action="SpawnLava" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpLavaSpawnerVisible">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>-->
 
 
 
