@@ -2389,6 +2389,14 @@ minInterval 5
          xsEnableRule("navyManager");
       }   
 
+      // AssertiveWall: fixed last conditional, !=, vs. ==
+      // also I moved this to the transition to age 2
+      if ((cMyCiv != cCivIndians) && (cMyCiv != cCivSPCIndians) &&
+         (cMyCiv != cCivJapanese) && (cMyCiv != cCivSPCJapanese) && (cMyCiv != cCivSPCJapaneseEnemy))
+      {
+         xsEnableRule("slaughterMonitor");
+      }
+
       updateResourceDistribution(true);
 
       xsEnableRule("age2Monitor");
