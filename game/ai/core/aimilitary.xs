@@ -1449,6 +1449,7 @@ minInterval 15
 
       if (gStartOnDifferentIslands == true)
       {
+         aiPlanSetDesiredPriority(planID, 100); // AssertiveWall: Give it a 100 priority to prevent other plans from stealing ship
          aiPlanSetRequiresAllNeedUnits(planID, true); // AssertiveWall: here in case some units are stranded elsewhere
       }
 
