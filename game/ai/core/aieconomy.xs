@@ -3069,16 +3069,19 @@ minInterval 15
       {
          sheepMaintainPlan = createSimpleMaintainPlan(cUnitTypeSheep, numSheepWanted, true, mainBaseID, 1);
          aiPlanSetDesiredResourcePriority(sheepMaintainPlan, 25);
+         aiPlanSetDesiredPriority(sheepMaintainPlan, 25);
       }
       if (numCattleWanted > 0 && cowMaintainPlan < 0)
       {
          cowMaintainPlan = createSimpleMaintainPlan(cUnitTypeCow, numCattleWanted, true, mainBaseID, 1);
          aiPlanSetDesiredResourcePriority(cowMaintainPlan, 25);
+         aiPlanSetDesiredPriority(cowMaintainPlan, 25);
       }
       if (numLlamaWanted > 0 && llamaMaintainPlan < 0)
       {
          llamaMaintainPlan = createSimpleMaintainPlan(cUnitTypeLlama, numLlamaWanted, true, mainBaseID, 1);
          aiPlanSetDesiredResourcePriority(llamaMaintainPlan, 25);
+         aiPlanSetDesiredPriority(llamaMaintainPlan, 25);
       }
 
       // AssertiveWall: Update maintain counts on some herdables

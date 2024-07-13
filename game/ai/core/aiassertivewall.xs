@@ -43,6 +43,145 @@ bool haveHumanAlly(void)
 }
 
 //==============================================================================
+/* updateWantedTowersAssertive
+   Replaces old rule
+
+   Calculate how many Towers (using the word Towers for Castles here too)
+   we want for this age using the btOffenseDefense variable to set up the initial values.
+   Some gTowerUnit are also military production buildings like War Huts so the
+   values below aren't a guaranteed maximum for those kinds of civs.
+   And shipments of Towers can push us above these limits too of course. */
+//==============================================================================
+void updateWantedTowersAssertive()
+{
+   int age = kbGetAge();
+   int buildLimit = kbGetBuildLimit(cMyID, gTowerUnit);
+   int towerNum = 0;
+
+   if (age == cvMaxAge)
+   {
+      towerNum = buildLimit; // Just max out on Towers in Imperial/max allowed age.
+                               // We will reduce this on lower difficulties of course.
+   }
+   // AssertiveWall: Define based on age, then disposition
+   else if (gStartOnDifferentIslands == true)
+   {
+      if (age == cAge1)
+      {
+         towerNum = 0;
+      }
+      else if (age == cAge2)
+      {
+         towerNum = 1;
+      }
+      else if (age == cAge3)
+      {
+         towerNum = 3;
+      }
+      else if (age == cAge4)
+      {
+         towerNum = 5;
+      }
+
+      if (agingUp() == true)
+      {
+         towerNum += 1;
+      }
+
+      if (gStrategy == cStrategyRush)
+      { 
+         towerNum -= 2;
+      }
+      else if (gStrategy == cStrategyFastIndustrial && kbGetAge() < cAge4)
+      {
+         // nothing
+      }
+      else if (gStrategy == cStrategyNakedFF && kbGetAge() < cAge3)
+      {
+         towerNum -= 2;
+      }
+      else if (gStrategy == cStrategySafeFF && kbGetAge() < cAge3)
+      {
+         towerNum += 1;
+      }
+   }
+   else
+   {
+      if (age == cAge1)
+      {
+         towerNum = 0;
+      }
+      else if (age == cAge2)
+      {
+         towerNum = 1;
+      }
+      else if (age == cAge3)
+      {
+         towerNum = 2;
+      }
+      else if (age == cAge4)
+      {
+         towerNum = 4;
+      }
+
+      if (agingUp() == true)
+      {
+         towerNum += 1;
+      }
+
+      if (gStrategy == cStrategyRush)
+      { 
+         towerNum -= 2;
+      }
+      else if (gStrategy == cStrategyFastIndustrial && kbGetAge() < cAge4)
+      {
+         // nothing
+      }
+      else if (gStrategy == cStrategyNakedFF && kbGetAge() < cAge3)
+      {
+         towerNum -= 2;
+      }
+      else if (gStrategy == cStrategySafeFF && kbGetAge() < cAge3)
+      {
+         towerNum += 1;
+      }
+   }
+
+   // Impose some limits based on difficulty, Hardest and Extreme just go full out.
+   if (cDifficultyCurrent <= cDifficultyEasy) // Easy / Standard.
+   {
+      if (towerNum > 2)
+      {
+         towerNum = 2;
+         if (gStartOnDifferentIslands == true)
+         {
+            towerNum += 1; // AssertiveWall: +1 for island maps
+         }
+      }
+   }
+   // AssertiveWall: allow Hard to play the same as Extreme
+   else if (cDifficultyCurrent < cDifficultyHard) // Moderate / Hard.
+   {
+      if (towerNum > 4)
+      {
+         towerNum = 4;
+         if (gStartOnDifferentIslands == true)
+         {
+            towerNum += 1; // AssertiveWall: +1 for island maps
+         }
+      }
+   }
+
+   // Safety check.
+   if (towerNum > buildLimit)
+   {
+      towerNum = buildLimit;
+   }
+
+   gNumTowers = towerNum;
+}
+
+//==============================================================================
 /* manageMicro
    AssertiveWall: switches our micro strategy based on how many units there are.
       If our army gets too big, switch to less micro to avoid over-micro issues
@@ -7797,6 +7936,12 @@ minInterval 3
    {  // Make sure we have enough ships
       int currentAge = kbGetAge();
       int minimumShips = 2;
+
+      if (agingUp() == true)
+      {  // Since this takes time, make sure we aren't about to need more
+         currentAge += 1;
+      }
+      
       if (currentAge == cAge3)
       {
          minimumShips = 3;

@@ -128,11 +128,12 @@ inactive
 void addUnitsToMilitaryPlan(int planID = -1)
 {
    // TODO: don't always task the full army, leave some behind if the enemy is weak or we need more defense
-   if ((gRevolutionType & cRevolutionFinland) == 0 && gStartOnDifferentIslands == false)
+   if ((gRevolutionType & cRevolutionFinland) == 0)// && gStartOnDifferentIslands == false)
    {
       aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
       return;
    }
+   // AssertiveWall: undo this for now
    else if ((gRevolutionType & cRevolutionFinland) == 0 && gStartOnDifferentIslands == true)
    {
       aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
@@ -1424,16 +1425,11 @@ minInterval 15
    vector gatherPoint = kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
    if (targetIsEnemy == true)
    {
-      // AssertiveWall: Gather near the pickup point
-      /*if (gStartOnDifferentIslands == true && gMigrationMap == false)
-      {
-         gatherPoint = selectPickupPoint(gatherPoint, targetBaseLocation);
-      }*/
       planID = aiPlanCreate("Attack Player " + targetPlayer + " Base " + targetBaseID, cPlanCombat);
 
       aiPlanSetVariableInt(planID, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
       // AssertiveWall: Another check here to make sure we don't use baseID on KOTH
-      if (targetBaseID >= 0 && gStartOnDifferentIslands == false && attackingKOTH == false)
+      if (targetBaseID >= 0 && attackingKOTH == false) // removed startondifferent islands
       {
          aiPlanSetVariableInt(planID, cCombatPlanTargetMode, 0, cCombatPlanTargetModeBase);
          aiPlanSetVariableInt(planID, cCombatPlanTargetBaseID, 0, targetBaseID);
@@ -1450,7 +1446,7 @@ minInterval 15
       if (gStartOnDifferentIslands == true)
       {
          aiPlanSetDesiredPriority(planID, 100); // AssertiveWall: Give it a 100 priority to prevent other plans from stealing ship
-         aiPlanSetRequiresAllNeedUnits(planID, true); // AssertiveWall: here in case some units are stranded elsewhere
+         aiPlanSetRequiresAllNeedUnits(planID, true); // AssertiveWall: not entirely sure if this is helping
       }
 
       /*baseAreaGroup = kbAreaGroupGetIDByPosition(baseLocation);
@@ -1558,9 +1554,14 @@ minInterval 15
       // AssertiveWall: set the extern and start the retreat logic. This is only necessary for attacks, 
          // and excludes defend plans except on KoTH
       gLandAttackPlanID = planID; 
-      if (gStartOnDifferentIslands == true && gMigrationMap == false)
+      if (gStartOnDifferentIslands == false && gMigrationMap == false)
       {
          xsEnableRule("attackRetreatDelay");
+      }
+      else
+      {  // AssertiveWall: Make sure plan can retreat
+         aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeBaseGone);
+         aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
       }
    }
    else 

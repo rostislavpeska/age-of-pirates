@@ -3639,7 +3639,8 @@ minInterval 40
 //==============================================================================
 void updateWantedTowers()
 {
-   int age = kbGetAge();
+   updateWantedTowersAssertive();
+   /*int age = kbGetAge();
    int buildLimit = kbGetBuildLimit(cMyID, gTowerUnit);
 
    if (age == cvMaxAge)
@@ -3711,7 +3712,7 @@ void updateWantedTowers()
    if (gNumTowers > buildLimit)
    {
       gNumTowers = buildLimit;
-   }
+   }*/
 }
 
 //==============================================================================
