@@ -12972,6 +12972,9 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
+    <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpBushranger</target>
+      </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">SaloonPirate</target>
       </effect>
