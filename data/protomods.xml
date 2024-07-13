@@ -26624,23 +26624,23 @@
   </unit>
   <unit name="Saloon">
     <train row="0" page="0" column="33">zpMarquesanHorseman</train>
-    <train row="0" page="0" column="33">zpBushranger</train>
+    <train row="0" page="0" column="33">zpBushRanger</train>
   </unit>
   <unit name="ypMonastery">
     <train row="0" page="0" column="33">zpMarquesanHorseman</train>
-    <train row="0" page="0" column="33">zpBushranger</train>
+    <train row="0" page="0" column="33">zpBushRanger</train>
   </unit>
   <unit name="deLombard">
     <train row="0" page="0" column="33">zpMarquesanHorseman</train>
-    <train row="0" page="0" column="33">zpBushranger</train>
+    <train row="0" page="0" column="33">zpBushRanger</train>
   </unit>
   <unit name="dePalace">
     <train row="0" page="0" column="33">zpMarquesanHorseman</train>
-    <train row="0" page="0" column="33">zpBushranger</train>
+    <train row="0" page="0" column="33">zpBushRanger</train>
   </unit>
   <unit name="deTavern">
     <train row="0" page="0" column="33">zpMarquesanHorseman</train>
-    <train row="0" page="0" column="33">zpBushranger</train>
+    <train row="0" page="0" column="33">zpBushRanger</train>
   </unit>
 
   

@@ -12973,7 +12973,7 @@
     <flag>Shadow</flag>
     <effects>
     <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpBushranger</target>
+        <target type="ProtoUnit">zpBushRanger</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">SaloonPirate</target>
