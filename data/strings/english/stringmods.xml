@@ -88,7 +88,6 @@
       <string _locid="300086">Mining Camp</string>
       <string _locid="300087">ZP Socket Mining Camp</string>
       <string _locid="300088">ZP SPC Pirate Fixed Gun</string>
-      <string _locid="300088">ZP SPC Pirate Fixed Gun Passive</string>
       <string _locid="300089">ZP NAT House Pirate Water</string>
       <string _locid="300090">ZP NAT Pirate Water Flag 1</string>
       <string _locid="300091">ZP NAT Pirate Water Flag 2</string>
@@ -312,7 +311,6 @@
       <string _locid="300309">ZP Trading Barque</string>
       <string _locid="300310">Trade Junk</string>
       <string _locid="300311">ZP Trade Junk</string>
-      <string _locid="300311">Sanctified Howitzer</string>
       <string _locid="300312">Heavy Howitzer</string>
       <string _locid="300313">Maltese Paladin</string>
       <string _locid="300314">Disciplined Maltese Paladin</string>
@@ -1348,7 +1346,6 @@
       <string _locid="301344">ZP Lava Spawner</string>
       <string _locid="301345">ZP Lava Cold</string>
       <string _locid="301346">Lava Cold</string>
-      <string _locid="301347">ZP Lava Spawner Visible</string>
       <string _locid="301347">ZP Lava Spawner Trade</string>
       <string _locid="301348">ZP Lava Flow 1</string>
       <string _locid="301349">ZP Lava Flow 2</string>
@@ -1358,6 +1355,9 @@
       <string _locid="301353">Marquesan Horseman</string>
       <string _locid="301354">ZP MERC Marquesan Horseman</string>
       <string _locid="301355">Polynesian mercenary warrior</string>
+      <string _locid="300356">Sanctified Howitzer</string>
+      <string _locid="300057">ZP SPC Pirate Fixed Gun Passive</string>
+      <string _locid="301358">ZP Lava Spawner Visible</string>
 
 
 
