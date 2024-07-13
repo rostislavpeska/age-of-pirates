@@ -2000,7 +2000,7 @@
   <unit id="20025" name="zpSPCFixedGunTortugaPassive">
     <dbid>20025</dbid>
     <displaynameid>33598</displaynameid>
-    <editornameid>300057</editornameid>
+    <editornameid>301357</editornameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>

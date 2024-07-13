@@ -2583,7 +2583,7 @@
       <effect type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">deMercCapturedMortar</target>
       </effect>
-      <effect type="SetName" proto="deMercCapturedMortar" culture="none" newname="300356">
+      <effect type="SetName" proto="deMercCapturedMortar" culture="none" newname="301356">
       </effect>
     </effects>
   </tech>
