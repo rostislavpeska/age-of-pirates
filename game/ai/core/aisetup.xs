@@ -2733,11 +2733,12 @@ minInterval 2
    }
 
    // AssertiveWall: fixed last conditional, !=, vs. ==
-   if ((cMyCiv != cCivIndians) && (cMyCiv != cCivSPCIndians) &&
+   // also I moved this to the transition to age 2
+   /*if ((cMyCiv != cCivIndians) && (cMyCiv != cCivSPCIndians) &&
        (cMyCiv != cCivJapanese) && (cMyCiv != cCivSPCJapanese) && (cMyCiv != cCivSPCJapaneseEnemy))
    {
       xsEnableRule("slaughterMonitor");
-   }
+   }*/
 
    if ((cMyCiv == cCivJapanese) || (cMyCiv == cCivSPCJapanese) || (cMyCiv == cCivSPCJapaneseEnemy))
    {
