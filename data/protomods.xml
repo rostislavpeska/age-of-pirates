@@ -26672,9 +26672,9 @@
     <icon>resources\art\units\outlaw\outlaw_prisoner_icon.png</icon>
     <portraiticon>resources\art\units\outlaw\outlaw_prisoner_portrait.png</portraiticon>
     <rollovertextid>301366</rollovertextid>
-    <shortrollovertextid>44138</shortrollovertextid>
-    <initialhitpoints>120.0000</initialhitpoints>
-    <maxhitpoints>120.0000</maxhitpoints>
+    <shortrollovertextid>301366</shortrollovertextid>
+    <initialhitpoints>130.0000</initialhitpoints>
+    <maxhitpoints>130.0000</maxhitpoints>
     <los>16.0000</los>
     <projectileprotounit>Thrombash</projectileprotounit>
     <autoattackrange>16.0000</autoattackrange>
@@ -26788,8 +26788,8 @@
     <flag>Immoveable</flag>
     <flag>NoHPBar</flag>
   </unit>
-  <unit id="30317" name="zpAustralianCavalry">
-    <dbid>30317</dbid>
+  <unit id="20317" name="zpAustralianCavalry">
+    <dbid>20317</dbid>
     <displaynameid>301369</displaynameid>
     <editornameid>301370</editornameid>
     <populationcount>3</populationcount>
@@ -26900,6 +26900,91 @@
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="AbstractArtillery">2.000000</damagebonus>
       <damagebonus type="AbstractCoyoteMan">2.250000</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20318" name="zpGrdEscapedPrisoner">
+    <dbid>20318</dbid>
+    <displaynameid>301362</displaynameid>
+    <editornameid>301372</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>7.0000</maxvelocity>
+    <maxrunvelocity>9.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <wanderdistance>3</wanderdistance>
+    <animfile>units\outlaw\grd_prisoner.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\outlaw\outlaw_prisoner_icon.png</icon>
+    <portraiticon>resources\art\units\outlaw\outlaw_prisoner_portrait.png</portraiticon>
+    <rollovertextid>301366</rollovertextid>
+    <shortrollovertextid>301366</shortrollovertextid>
+    <initialhitpoints>300.0000</initialhitpoints>
+    <maxhitpoints>300.0000</maxhitpoints>
+    <los>12.0000</los>
+    <projectileprotounit>Thrombash</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <initialunitaistance>Defensive</initialunitaistance>
+    <bounty>18.0000</bounty>
+    <armor type="Hand" value="0.3000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Guardian</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Wanders</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>predatorknifethrower.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>10.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>HandAttack</name>
+      <damage>12.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>KnifeAttack</name>
+      <damage>12.000000</damage>
+      <damagetype>Hand</damagetype>
+      <maxrange>8.000000</maxrange>
+      <rof>1.500000</rof>
+      <projectile>Thrombash</projectile>
     </protoaction>
   </unit>
   

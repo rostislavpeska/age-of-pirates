@@ -356,7 +356,7 @@
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
-      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGrdEscapedPrisoner</guardian>
       <difficulty>1</difficulty>
     </nugget>
     <nugget>
@@ -395,7 +395,7 @@
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
-      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGrdEscapedPrisoner</guardian>
       <difficulty>1</difficulty>
     </nugget>
     <nugget>
@@ -409,7 +409,7 @@
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
-      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGrdEscapedPrisoner</guardian>
       <difficulty>1</difficulty>
     </nugget>
     <nugget>
@@ -423,9 +423,9 @@
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
-      <guardian>zpGuardianClubman</guardian>
-      <guardian>zpGuardianClubman</guardian>
-      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGrdEscapedPrisoner</guardian>
+      <guardian>zpGrdEscapedPrisoner</guardian>
+      <guardian>deGuardianColoRider</guardian>
       <difficulty>3</difficulty>
     </nugget>
     <nugget>
@@ -539,9 +539,9 @@
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
-      <guardian>zpGuardianClubman</guardian>
-      <guardian>zpGuardianClubman</guardian>
-      <guardian>zpGuardianClubman</guardian>
+      <guardian>zpGrdEscapedPrisoner</guardian>
+      <guardian>zpGrdEscapedPrisoner</guardian>
+      <guardian>zpGrdEscapedPrisoner</guardian>
       <difficulty>4</difficulty>
     </nugget>
     <nugget>
@@ -686,12 +686,12 @@
       <amount>2</amount>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
-      <guardian>deGuardBucCaptain</guardian>
-      <guardian>Pirate</guardian>
-      <guardian>Pirate</guardian>
-      <guardian>Pirate</guardian>
-      <guardian>Pirate</guardian>
-      <guardian>Pirate</guardian>
+      <guardian>deGuardianColoRider</guardian>
+      <guardian>zpGrdEscapedPrisoner</guardian>
+      <guardian>zpGrdEscapedPrisoner</guardian>
+      <guardian>zpGrdEscapedPrisoner</guardian>
+      <guardian>zpGrdEscapedPrisoner</guardian>
+      <guardian>zpGrdEscapedPrisoner</guardian>
       <difficulty>4</difficulty>
     </nugget>
     <nugget>
@@ -704,12 +704,12 @@
       <amount>400</amount>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <guardian>zpGrdEscapedPrisoner</guardian>
+      <guardian>zpGrdEscapedPrisoner</guardian>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
-      <guardian>Pirate</guardian>
-      <guardian>Pirate</guardian>
-      <guardian>deGuardBucCaptain</guardian>
+      <guardian>deGuardianColoGeneral</guardian>
       <difficulty>4</difficulty>
     </nugget>
     <nugget>
@@ -906,19 +906,19 @@
       </convertunit>
       <maptype>australia</maptype>
       <guardianunit>
-        <unit>zpGuardianBoomerang</unit>
+        <unit>zpGrdEscapedPrisoner</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_A</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>zpGuardianBoomerang</unit>
+        <unit>zpGrdEscapedPrisoner</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_B</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>zpGuardianBoomerang</unit>
+        <unit>zpGrdEscapedPrisoner</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_C</attachdummy>
