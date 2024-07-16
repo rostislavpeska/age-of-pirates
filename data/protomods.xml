@@ -26626,26 +26626,31 @@
     <train row="0" page="0" column="33">zpMarquesanHorseman</train>
     <train row="0" page="0" column="1">zpBushRanger</train>
     <train row="0" page="0" column="2">zpEscapedPrisoner</train>
+    <train row="0" page="0" column="32">zpAustralianCavalry</train>
   </unit>
   <unit name="ypMonastery">
     <train row="0" page="0" column="33">zpMarquesanHorseman</train>
     <train row="0" page="0" column="1">zpBushRanger</train>
     <train row="0" page="0" column="2">zpEscapedPrisoner</train>
+    <train row="0" page="0" column="32">zpAustralianCavalry</train>
   </unit>
   <unit name="deLombard">
     <train row="0" page="0" column="33">zpMarquesanHorseman</train>
     <train row="0" page="0" column="1">zpBushRanger</train>
     <train row="0" page="0" column="2">zpEscapedPrisoner</train>
+    <train row="0" page="0" column="32">zpAustralianCavalry</train>
   </unit>
   <unit name="dePalace">
     <train row="0" page="0" column="33">zpMarquesanHorseman</train>
     <train row="0" page="0" column="1">zpBushRanger</train>
     <train row="0" page="0" column="2">zpEscapedPrisoner</train>
+    <train row="0" page="0" column="32">zpAustralianCavalry</train>
   </unit>
   <unit name="deTavern">
     <train row="0" page="0" column="33">zpMarquesanHorseman</train>
     <train row="0" page="0" column="1">zpBushRanger</train>
     <train row="0" page="0" column="2">zpEscapedPrisoner</train>
+    <train row="0" page="0" column="32">zpAustralianCavalry</train>
   </unit>
   <unit id="20315" name="zpEscapedPrisoner">
     <dbid>20315</dbid>
@@ -26780,6 +26785,120 @@
     <flag>FadeOutDecalOnDeath</flag>
     <flag>Immoveable</flag>
     <flag>NoHPBar</flag>
+  </unit>
+  <unit id="30317" name="zpAustralianCavalry">
+    <dbid>30317</dbid>
+    <displaynameid>301369</displaynameid>
+    <editornameid>301370</editornameid>
+    <populationcount>3</populationcount>
+    <obstructionradiusx>0.7900</obstructionradiusx>
+    <obstructionradiusz>0.7900</obstructionradiusz>
+    <formationcategory>Mobile</formationcategory>
+    <maxvelocity>7.2500</maxvelocity>
+    <maxrunvelocity>9.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\cavalry\australian_cavalry\au_cavalry_horse.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>cav</physicsinfo>
+    <icon>resources\art\units\natives\australian_cavalry_icon.png</icon>
+    <portraiticon>resources\art\units\natives\australian_cavalry_portrait.png</portraiticon>
+    <rollovertextid>301371</rollovertextid>
+    <shortrollovertextid>301371</shortrollovertextid>
+    <initialhitpoints>420.0000</initialhitpoints>
+    <maxhitpoints>420.0000</maxhitpoints>
+    <los>15.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>35.0000</trainpoints>
+    <bounty>27.0000</bounty>
+    <buildbounty>27.0000</buildbounty>
+    <cost resourcetype="Gold">270.0000</cost>
+    <allowedage>2</allowedage>
+    <armor type="Hand" value="0.4000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Mercenary</unittype>
+    <unittype>FortressMercenary</unittype>
+    <unittype>LogicalTypePickableMerc</unittype>
+    <unittype>LogicalTypePickableMercOutlaw</unittype>
+    <unittype>AbstractCavalry</unittype>
+    <unittype>AbstractLightCavalry</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>AbstractGunpowderCavalry</unittype>
+    <unittype>AbstractRangedCavalry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>musketcavalryrepeater.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>17.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>DefendRangedAttack</name>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damage>30.00000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>12.000000</maxrange>
+      <rof>2.5000</rof>
+      <targetlock>1</targetlock>
+      <damagebonus type="AbstractHeavyCavalry">3.000000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">2.250000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>18.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractHeavyCavalry">3.000000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">2.250000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>StaggerRangedAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>12.000000</maxrange>
+      <rof>2.50000</rof>
+      <targetlock>1</targetlock>
+      <damagebonus type="AbstractHeavyCavalry">3.000000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">2.250000</damagebonus>
+    </protoaction>
   </unit>
   
 

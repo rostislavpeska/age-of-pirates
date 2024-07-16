@@ -12970,11 +12970,14 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
-    <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpBushRanger</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpEscapedPrisoner</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAustralianCavalry</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypWokouPirate</target>

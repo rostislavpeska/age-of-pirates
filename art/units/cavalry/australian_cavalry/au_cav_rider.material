@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\cavalry\australian_cavalry\textures\au_cavalry_rider_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\cavalry\us_cavalry\textures\us_cavalry_age4_rider_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\cavalry\us_cavalry\textures\us_cavalry_age4_rider_mata_masks">
+      </texture>
+      <texture name="Details" override="units\cavalry\us_cavalry\textures\us_cavalry_age4_rider_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
