@@ -691,12 +691,12 @@
       <string _locid="300690">Migration Map, players start on very small islands with limited resources and have to migrate on one of two central islands. \n\nSettlements: Pirates, Renegades</string>
       <string _locid="300691">"We are all travelers in the wilderness of this world, and the best we can find in our travels is an honest friend." -- Robert Luis Stevenson </string>
       <string _locid="300692">ZP Socket SPC Jesuits Europe</string>
-      <string _locid="300693">Pouwhenua</string>
-      <string _locid="300694">ZP NAT Maori Clubman</string>
+      <string _locid="300693">Pouwhenua Clubman</string>
+      <string _locid="300694">ZP NAT Pouwhenua Clubman</string>
       <string _locid="300695">Venetian Settlement</string>
       <string _locid="300696">ZP Socket Venetians</string>
       <string _locid="300697">ZP NAT Maori Harpooner</string>
-      <string _locid="300698">Taiaha</string>
+      <string _locid="300698">Tao Spearman</string>
       <string _locid="300699">Pavisier</string>
       <string _locid="300700">ZP NAT Venetian Pavisier</string>
       <string _locid="300701">Venetians</string>
@@ -1245,18 +1245,18 @@
       <string _locid="301243">Warrior Society Maori</string>
       <string _locid="301244">Champion Maori</string>
       <string _locid="301245">Increases Maori attack and hitpoints</string>
-      <string _locid="301246">Elite Pouwhenua</string>
-      <string _locid="301247">Champion Pouwhenua</string>
-      <string _locid="301248">Legendary Pouwhenua</string>
-      <string _locid="301249">Elite Taiaha</string>
-      <string _locid="301250">Champion Taiaha</string>
-      <string _locid="301251">Legendary Taiaha</string>
+      <string _locid="301246">Elite Pouwhenua Clubman</string>
+      <string _locid="301247">Champion Pouwhenua Clubman</string>
+      <string _locid="301248">Legendary Pouwhenua Clubman</string>
+      <string _locid="301249">Elite Tao Spearman</string>
+      <string _locid="301250">Champion Tao Spearman</string>
+      <string _locid="301251">Legendary Tao Spearman</string>
       <string _locid="301252">Maori Colonisation</string>
       <string _locid="301253">Unlocks new Maori units and techs.</string>
       <string _locid="301254">Ships Maui's good spirits.</string>
       <string _locid="301255">Taniwha</string>
       <string _locid="301256">Unlocks new Maori units and techs.</string>
-      <string _locid="301257">Taiaha</string>
+      <string _locid="301257">Tao Spearman</string>
       <string _locid="301258">Te hī ika</string>
       <string _locid="301259">Increases fishing boat efficiency and adds more hitpoints.</string>
       <string _locid="301260">Maori native Warrior equiped with a club</string>
@@ -1295,7 +1295,7 @@
       <string _locid="301293">The central island around the volcano accommodates many resources but be careful, the volcano may errupt.</string>
       <string _locid="301294">Guardian Boomerang</string>
       <string _locid="301295">ZP Guardian Boomerang</string>
-      <string _locid="301296">Guardian Pouwhenua</string>
+      <string _locid="301296">Guardian Clubman</string>
       <string _locid="301297">ZP Guardian Maceman</string>
       <string _locid="301298">Waka Canoe</string>
       <string _locid="301299">ZP Waka Canoe</string>
@@ -1339,8 +1339,8 @@
       <string _locid="301337" symbol="cStringNuggetJournalActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has found the journal of Captain James Cook worth %2d %3s.</string>
       <string _locid="301338" symbol="cStringNuggetHPBoost3">The Maori Talisman, which increases Explorer or Hero hitpoints by %2.2f%%.</string>
       <string _locid="301339" symbol="cStringNuggetHPBoost3Activate">%1!s! has recovered the legendary Maori Talisman, which increases hitpoints by %2!2.2f!%%.</string>
-      <string _locid="301340" symbol="cStringNuggetCibola2Activate" comment="1 - player, 2 - amount, 3 - resource">%1s has uncovered cache worth %2d %3s.</string>
-      <string _locid="301341" symbol="cStringNuggetCibola3" comment="1 - amount, 2 - resource">Native treasure. It contains artifacts worth %1d %2s. </string>
+      <string _locid="301340" comment="1 - player, 2 - amount, 3 - resource">%1s has uncovered Carved Tekoteko worth %2d %3s.</string>
+      <string _locid="301341" comment="1 - amount, 2 - resource">Native hideout: It contains Carved Tekoteko worth %1d %2s.</string>
       <string _locid="301342">Lava Flow</string>
       <string _locid="301343">ZP Lava Flow Head</string>
       <string _locid="301344">ZP Lava Spawner</string>
@@ -1358,6 +1358,9 @@
       <string _locid="301356">Sanctified Howitzer</string>
       <string _locid="301357">ZP SPC Pirate Fixed Gun Passive</string>
       <string _locid="301358">ZP Lava Spawner Visible</string>
+      <string _locid="301359">Polynesia (Test)</string>
+      <string _locid="301360" comment="1 - player, 2 - amount, 3 - resource">%1s has uncovered Kumara worth %2d %3s.</string>
+      <string _locid="301361" comment="1 - amount, 2 - resource">Native hideout: It contains Kumara worth %1d %2s.</string>
 
 
 
