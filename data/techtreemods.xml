@@ -12802,8 +12802,6 @@
     <effects>
       <effect type="TransformUnit" toprotoid="zpSPCVolcanoPassive" fromprotoid="zpSPCVolcano">
       </effect>
-      <effect type="TransformUnit" toprotoid="zpLavaDeath" fromprotoid="zpLavaFlow">
-      </effect>
       <effect type="TransformUnit" toprotoid="zpSPCVolcanoFireSpawner" fromprotoid="zpSPCVolcanoFire">
       </effect>
     </effects>
@@ -12948,7 +12946,7 @@
         <target type="ProtoUnit">zpMarquesanHorseman</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">SaloonPirate</target>
+        <target type="ProtoUnit">zpEscapedPrisoner</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypWokouPirate</target>
@@ -12976,7 +12974,7 @@
         <target type="ProtoUnit">zpBushRanger</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">SaloonPirate</target>
+        <target type="ProtoUnit">zpEscapedPrisoner</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypWokouPirate</target>

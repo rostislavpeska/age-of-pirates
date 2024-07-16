@@ -2585,7 +2585,7 @@
       <topedge>lava\volcano_grass</topedge>
       <side>lava\volcano_grass</side>
       <edge>lava\volcano_grass</edge>
-      <bottomedge>caribbean\cliff_top1_crb</bottomedge>
+      <bottomedge>lava\volcano_grass</bottomedge>
     </textures>
   </cliff>
   <cliff name="ZP Hawaii High" blockland="1" blockwater="0" iconname="ui\editor\cliffHimalayas">
@@ -2795,11 +2795,11 @@
       <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
       <heightmap>terrain\cliffs\himalaya\himalaya_cliff_height</heightmap>
       <mask>terrain\cliffs\himalaya\himalaya_cliff_masks</mask>
-      <top>lava\volcano_shore</top>
-      <topedge>lava\volcano_shore</topedge>
-      <side>lava\volcano_shore</side>
-      <edge>lava\volcano_shore</edge>
-      <bottomedge>lava\volcano_grass</bottomedge>
+      <top>lava\volcano_grass</top>
+      <topedge>lava\volcano_grass</topedge>
+      <side>lava\volcano_grass</side>
+      <edge>llava\volcano_grass</edge>
+      <bottomedge>caribbean\ground3_crb</bottomedge>
     </textures>
   </cliff>
 </cliffs>

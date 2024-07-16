@@ -1361,6 +1361,13 @@
       <string _locid="301359">Polynesia (Test)</string>
       <string _locid="301360" comment="1 - player, 2 - amount, 3 - resource">%1s has uncovered Kumara worth %2d %3s.</string>
       <string _locid="301361" comment="1 - amount, 2 - resource">Native hideout: It contains Kumara worth %1d %2s.</string>
+      <string _locid="301362">Escaped Prisoner</string>
+      <string _locid="301363">ZP Tavern Escaped Prisoner</string>
+      <string _locid="301364">Bushranger</string>
+      <string _locid="301365">ZP Tavern Bushranger</string>
+      <string _locid="301366">A refugee from a penal colony. Skilled in throwing knives.</string>
+      <string _locid="301367">ZP Tree Caribbean</string>
+      <string _locid="301368">ZP Tree Caribbean Death</string>
 
 
 
