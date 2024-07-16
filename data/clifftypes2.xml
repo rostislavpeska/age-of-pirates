@@ -2779,6 +2779,16 @@
       <object name="terrain\new_england\shorelinerocks3_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
       </object>
     </topobjects>
+    <faceobjects>
+      <object name="terrain\underbrush\underbrush_jungle_vineHang" minedgedist="0.1" maxedgedist="0.2" chance="0.5" yawjitter="0" yawoffset="0" orienttocliff="true" minscale="0.1" maxscale="0.3" bottomdist="-1.0" topdist="1.5">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_ivy" minedgedist="0.0" maxedgedist="0.5" chance="0.5" yawjitter="30" yawoffset="180" orienttocliff="true" minscale="0.1" maxscale="0.15" bottomdist="0.5" topdist="1.0">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_vineDangle" minedgedist="0.0" maxedgedist="0.3" chance="2.0" yawjitter="45" yawoffset="0" orienttocliff="true" minscale="0.2" maxscale="0.25" bottomdist="-3.0" topdist="4.0">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_vineDangle_noLeaf" minedgedist="0.0" maxedgedist="0.3" chance="1.0" yawjitter="45" yawoffset="0" orienttocliff="true" minscale="0.2" maxscale="0.3" bottomdist="-3.0" topdist="4.4">
+      </object>
+    </faceobjects>
     <parameters>
       <displacementamount>0.150000</displacementamount>
       <shapecurve>1v{-0.038,1.130|0.032,0.863|-0.003,0.997|27170}{-0.039,0.891|0.050,0.648|0.005,0.769|27413}{0.166,0.583|0.249,0.551|0.207,0.567|20117}{0.330,0.248|0.561,0.372|0.446,0.310|23438}{0.589,0.260|0.926,0.214|0.757,0.237|13333}{0.960,0.165|0.992,0.083|0.976,0.124|32328}{0.950,0.066|1.029,-0.059|0.989,0.004|2204}</shapecurve>
