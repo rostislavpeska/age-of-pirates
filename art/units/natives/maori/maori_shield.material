@@ -3,13 +3,11 @@
     <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="units\natives\maori\textures\maori_shield_mata1_basecolor">
+      <texture name="BaseColor" override="units\natives\maori\textures\maori_shield_mata_basecolor">
       </texture>
-      <texture name="Normals" override="units\natives\maori\textures\maori_shield_mata1_normals">
+      <texture name="Normals" override="units\natives\maori\textures\maori_shield_mata_normals">
       </texture>
-      <texture name="Masks" override="units\natives\maori\textures\maori_shield_mata1_masks">
-      </texture>
-      <texture name="Details" override="units\natives\maori\textures\maori_shield_mata1_details">
+      <texture name="Masks" override="units\natives\maori\textures\maori_shield_mata_masks">
       </texture>
     </parameters>
   </submaterial>
