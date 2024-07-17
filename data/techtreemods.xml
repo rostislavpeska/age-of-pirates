@@ -12998,6 +12998,97 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
   </tech>
+  <tech name="zpTradeRouteUpgradeAustralia1" type="Normal">
+    <dbid>40555</dbid>
+    <displaynameid>301378</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <icon>resources\art\units\trade\stagecoach_icon_64x64.png</icon>
+    <rollovertextid>33293</rollovertextid>
+    <flag>UniqueProtoUnitInstance</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPLandTPOnly</flag>
+    <flag>DETradeRouteUpgrade</flag>
+    <prereqs>
+      <techstatus status="Active">zpEnableTradeRouteAustralian</techstatus>
+      <techstatus status="Active">DETradeRouteUpgrade1Enable</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="UpgradeTradeRoute" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTradeRouteUpgradeAustralia2" type="Normal">
+    <dbid>40556</dbid>
+    <displaynameid>301379</displaynameid>
+    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <icon>resources\art\units\train\train_australian_icon.png</icon>
+    <rollovertextid>122536</rollovertextid>
+    <flag>YPLandTPOnly</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>UniqueProtoUnitInstance</flag>
+    <flag>DETradeRouteUpgrade</flag>
+    <prereqs>
+      <techstatus status="Active">zpTradeRouteUpgradeAustralia1</techstatus>
+      <techstatus status="Active">DETradeRouteUpgrade2Enable</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="UpgradeTradeRoute" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpEnableTradeRouteAustralian" type="Normal">
+    <dbid>40557</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetName" proto="Travois" culture="none" newname="122538">
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="Travois" relativity="Absolute">
+        <target type="ProtoUnit">deIconEuropeanTrader1</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TrainEngine" relativity="Absolute">
+        <target type="ProtoUnit">zpIconAustralianTrainEngine</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TrainCoalcar" relativity="Absolute">
+        <target type="ProtoUnit">zpIconAustralianTrainEngine</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TrainCarCoin" relativity="Absolute">
+        <target type="ProtoUnit">zpIconAustralianTrainEngine</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TrainCar" relativity="Absolute">
+        <target type="ProtoUnit">zpIconAustralianTrainEngine</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TrainCarWood" relativity="Absolute">
+        <target type="ProtoUnit">zpIconAustralianTrainEngine</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TrainCarFood" relativity="Absolute">
+        <target type="ProtoUnit">zpIconAustralianTrainEngine</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TrainCaboose" relativity="Absolute">
+        <target type="ProtoUnit">zpIconAustralianTrainEngine</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">TradeRouteUpgrade1</effect>
+      <effect type="TechStatus" status="unobtainable">TradeRouteUpgrade2</effect>
+      <effect type="TechStatus" status="obtainable">zpTradeRouteUpgradeAustralia1</effect>
+      <effect type="TechStatus" status="obtainable">zpTradeRouteUpgradeAustralia2</effect>
+      <effect type="CommandRemove" tech="TradeRouteUpgrade1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="TradeRouteUpgrade2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
 
 
 

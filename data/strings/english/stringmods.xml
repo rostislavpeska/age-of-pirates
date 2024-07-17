@@ -1377,7 +1377,8 @@
       <string _locid="301375" symbol="cStringNuggetBasswoodActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has discovered blackbutt worth %2d %3s.</string>
       <string _locid="301376" symbol="cStringNuggetComstock" comment="1 - amount, 2 - resource">A map to the fabled gold mine worth %1d %2s.</string>
       <string _locid="301377" symbol="cStringNuggetComstockActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has discovered a map to the fabled gold mine worth %2d %3s.</string>
-
+      <string _locid="301378">Stagecoach</string>
+      <string _locid="301379">New South Wales Railways</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

@@ -555,6 +555,9 @@
     <tech row="0" page="2" column="1">zpMaoriFishing</tech>
     <tech row="0" page="1" column="1">zpMaoriExpansion</tech>
 
+    <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia1</tech>
+    <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia2</tech>
+
     <!-- Wild West Techs -->
     <tech row="0" page="2" column="1">zpWildWestWhiskeyFactory</tech>
     <tech row="0" page="2" column="0">zpWildWestCows</tech>
@@ -27201,6 +27204,170 @@
       <maxrange>15.000000</maxrange>
       <rof>3.000000</rof>
     </protoaction>
+  </unit>
+  <unit id="20321" name="zpIconAustralianTrainEngine">
+    <dbid>20321</dbid>
+    <icon>resources\art\units\train\train_australian_icon.png</icon>
+    <portraiticon>resources\art\units\train\train_australian_portrait.png</portraiticon>
+  </unit>
+  <unit id="20322" name="zpCrateofFoodAustralian">
+    <dbid>20322</dbid>
+    <displaynameid>26021</displaynameid>
+    <editornameid>33048</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\props_colony\crate_food_small.xml</animfile>
+    <icon>resources\images\icons\command\generate_food_icon.png</icon>
+    <portraiticon>resources\images\icons\command\generate_food_portrait.png</portraiticon>
+    <rollovertextid>26020</rollovertextid>
+    <shortrollovertextid>26019</shortrollovertextid>
+    <los>1.0000</los>
+    <initialresource resourcetype="Food">85.0000</initialresource>
+    <resourcesubtype>meat</resourcesubtype>
+    <allowedage>0</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <gathererlimit>8</gathererlimit>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Food</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractResourceCrate</unittype>
+    <unittype>AbstractFoodCrate</unittype>
+    <unittype>AbstractTradeCrate</unittype>
+    <unittype>AbstractTradeFoodCrate</unittype>
+    <flag>NotDeleteable</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>Immoveable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>Invulnerable</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20323" name="zpCrateofWoodAustralian">
+    <dbid>20323</dbid>
+    <displaynameid>26025</displaynameid>
+    <editornameid>33052</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\props_colony\crate_wood_small.xml</animfile>
+    <icon>resources\images\icons\command\generate_wood_icon.png</icon>
+    <portraiticon>resources\images\icons\command\generate_wood_portrait.png</portraiticon>
+    <rollovertextid>26024</rollovertextid>
+    <shortrollovertextid>26023</shortrollovertextid>
+    <los>1.0000</los>
+    <initialresource resourcetype="Wood">85.0000</initialresource>
+    <resourcesubtype>Wood</resourcesubtype>
+    <allowedage>0</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <gathererlimit>8</gathererlimit>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>AbstractResourceCrate</unittype>
+    <unittype>AbstractWoodCrate</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Wood</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>AbstractTradeCrate</unittype>
+    <unittype>AbstractTradeWoodCrate</unittype>
+    <flag>ObscuredByUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>Invulnerable</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>NotDeleteable</flag>
+    <flag>Tracked</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20324" name="zpCrateofCoinAustralian">
+    <dbid>20324</dbid>
+    <displaynameid>26029</displaynameid>
+    <editornameid>33044</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\props_colony\crate_coin_small.xml</animfile>
+    <icon>resources\images\icons\command\generate_coin_icon.png</icon>
+    <portraiticon>resources\images\icons\command\generate_coin_portrait.png</portraiticon>
+    <rollovertextid>26028</rollovertextid>
+    <shortrollovertextid>26027</shortrollovertextid>
+    <los>1.0000</los>
+    <initialresource resourcetype="Gold">85.0000</initialresource>
+    <resourcesubtype>Gold</resourcesubtype>
+    <allowedage>0</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <gathererlimit>8</gathererlimit>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Gold</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractResourceCrate</unittype>
+    <unittype>AbstractCoinCrate</unittype>
+    <unittype>AbstractTradeCrate</unittype>
+    <unittype>AbstractTradeCoinCrate</unittype>
+    <flag>NotDeleteable</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>Invulnerable</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>Immoveable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>Tracked</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <command page="10" column="7">Delete</command>
   </unit>
   
 
