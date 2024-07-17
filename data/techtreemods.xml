@@ -12993,6 +12993,11 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpMapAustralian" type="Normal">
+    <dbid>40554</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+  </tech>
 
 
 

@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\trains\textures\train_australian_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\st_louis\train\textures\train_matB_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\st_louis\train\textures\train_matB_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
