@@ -1372,7 +1372,11 @@
       <string _locid="301370">ZP Australian Light Horse</string>¨
       <string _locid="301371">Australian light carabine cavalry with repeating attack</string>
       <string _locid="301372">ZP GRD Escaped Prisoner</string>
-
+      <string _locid="301373">ZP GRD BushRanger</string>
+      <string _locid="301374" symbol="cStringNuggetBasswood" comment="1 - amount, 2 - resource">A stand of blackbutt worth %1d %2s. </string>
+      <string _locid="301375" symbol="cStringNuggetBasswoodActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has discovered blackbutt worth %2d %3s.</string>
+      <string _locid="301376" symbol="cStringNuggetComstock" comment="1 - amount, 2 - resource">A map to the fabled gold mine worth %1d %2s.</string>
+      <string _locid="301377" symbol="cStringNuggetComstockActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has discovered a map to the fabled gold mine worth %2d %3s.</string>
 
 
       <!-- ======================================== -->
