@@ -3024,7 +3024,7 @@
       <command>}</command>
       <command>rule hdkzuzkz7 active { if (true) { xsDisableSelf();</command>
     </effect>
-    <effect name="ZP Native AutoSetup: Renegades (Scientists)">
+    <effect name="ZP Native AutoSetup: Inventors (Scientists)">
       <param name="SocketRadius" dispname="Socket Training Radius (do not change)" vartype="float">35</param>
       <param name="ConversionRadius" dispname="Water Flag Distance (do not change)" vartype="float">150</param>
       <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">-1</param>
