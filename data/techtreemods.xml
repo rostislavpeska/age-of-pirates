@@ -12997,6 +12997,12 @@
     <dbid>40554</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="Travois" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
   </tech>
   <tech name="zpTradeRouteUpgradeAustralia1" type="Normal">
     <dbid>40555</dbid>
@@ -13051,10 +13057,10 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
-      <effect type="SetName" proto="Travois" culture="none" newname="122538">
+      <effect type="SetName" proto="Travois" culture="none" newname="301380">
       </effect>
       <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="Travois" relativity="Absolute">
-        <target type="ProtoUnit">deIconEuropeanTrader1</target>
+        <target type="ProtoUnit">zpIconAustralianTrvois</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TrainEngine" relativity="Absolute">
         <target type="ProtoUnit">zpIconAustralianTrainEngine</target>

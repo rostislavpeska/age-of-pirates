@@ -27369,6 +27369,11 @@
     <flag>NotPlayerPlaceable</flag>
     <command page="10" column="7">Delete</command>
   </unit>
+  <unit id="20325" name="zpIconAustralianTrvois">
+    <dbid>20325</dbid>
+    <icon>resources\art\units\trade\australian_trader.png</icon>
+    <portraiticon>resources\art\units\trade\australian_trader.png</portraiticon>
+  </unit>
   
 
   

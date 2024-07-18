@@ -1379,6 +1379,7 @@
       <string _locid="301377" symbol="cStringNuggetComstockActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has discovered a map to the fabled gold mine worth %2d %3s.</string>
       <string _locid="301378">Stagecoach</string>
       <string _locid="301379">New South Wales Railways</string>
+      <string _locid="301380">Aboriginal Trader</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
