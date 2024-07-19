@@ -2204,7 +2204,11 @@
     </sound>
   </soundset>
   <soundset name="JewishVillagerM_Attack" volume="0.7000" maxnum="4" distance="1.0000">
-    <sound filename="hebrew\confirm_M.wav" volume="1.0000">
+    <sound filename="hebrew\attack_m1.wav" volume="1.0000">
+    </sound>
+    <sound filename="hebrew\attack_m2.wav" volume="1.0000">
+    </sound>
+    <sound filename="hebrew\attack_m3.wav" volume="1.0000">
     </sound>
   </soundset>
   <soundset name="JewishVillagerF_Attack" volume="0.7000" maxnum="4" distance="1.0000">

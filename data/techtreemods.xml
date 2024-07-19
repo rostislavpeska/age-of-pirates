@@ -4739,6 +4739,12 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMercMaoriSlinger" culture="none" newname="301251">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatSettlementMilitia" culture="none" newname="301388">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercSettlementMilitia" culture="none" newname="301388">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatNomadSettlementMilitia" culture="none" newname="301395">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -4766,6 +4772,12 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyMaori</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionMaori</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyAboriginals</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionAboriginals</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpJewishGuardMilitia</effect>
     </effects>
   </tech>
   <tech name="AAStandardNativeTechsPI">
@@ -4792,6 +4804,12 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyMaori</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionMaori</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyAboriginals</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionAboriginals</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpJewishGuardMilitia</effect>
     </effects>
   </tech>
   <tech name="ypAAAsianStandardTechsPI">
@@ -4818,6 +4836,12 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyMaori</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionMaori</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyAboriginals</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionAboriginals</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpJewishGuardMilitia</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothers">
@@ -4844,6 +4868,12 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyMaori</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionMaori</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyAboriginals</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionAboriginals</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpJewishGuardMilitia</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothersGerman">
@@ -4870,6 +4900,12 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyMaori</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionMaori</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyAboriginals</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionAboriginals</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpJewishGuardMilitia</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialAmericans">
@@ -4896,6 +4932,12 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyMaori</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionMaori</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyAboriginals</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionAboriginals</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpJewishGuardMilitia</effect>
     </effects>
   </tech>
   <tech name="DEChampionNativeWarriorsAfricanShadow">
@@ -4922,6 +4964,12 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyMaori</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionMaori</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyAboriginals</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionAboriginals</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpJewishGuardMilitia</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialMexicans">
@@ -4948,6 +4996,12 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChristmasGuardTech</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyMaori</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionMaori</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyAboriginals</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionAboriginals</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpJewishGuardMilitia</effect>
     </effects>
   </tech>
   <tech name="DEHeavyFixedGun">
@@ -5777,28 +5831,27 @@
         <target type="ProtoUnit">zpNatSettlerJewish</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpAcademy</target>
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpJewishPessah</effect>
       <effect type="TechStatus" status="obtainable">zpJewishTorah</effect>
-      <effect type="TechStatus" status="obtainable">zpJewishDiaspora</effect>
       <effect type="TechStatus" status="obtainable">zpJewishYomKippur</effect>
-      <effect type="TechStatus" status="obtainable">zpNatKabalah</effect>
       <effect type="TechStatus" status="obtainable">zpJewishStar</effect>
-      <effect type="TechStatus" status="obtainable">ZPJewishGuardRiflemen</effect>
-      <effect type="TechStatus" status="obtainable">zpJewishImperialRiflemen</effect>
-      <effect type="TechStatus" status="obtainable">ZPJewishGuardWarWagons</effect>
-      <effect type="TechStatus" status="obtainable">ZPJewishImperialWarWagons</effect>
-      <effect type="TechStatus" status="obtainable">ZPJewishGuardCossacks</effect>
-      <effect type="TechStatus" status="obtainable">zpJewishImperialCossacks</effect>
-      <effect type="TechStatus" status="active">DEVeteranRiflemenShadow</effect>
+      <effect type="TechStatus" status="obtainable">ZPJewishGuardMilitia</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishVeteranMilitia</effect>
+      <effect type="TechStatus" status="obtainable">zpNatKabalah</effect>
+
       <effect type="TechStatus" status="obtainable">NativeTreatyJewish</effect>
       <effect type="TechStatus" status="obtainable">DEIndianFriendshipJewish</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyJewish</effect>
+
       <effect type="TechStatus" status="obtainable">zpJewishGermanUniversities</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishAcademy</effect>
       <effect type="TechStatus" status="obtainable">zpJewishFreeMasons</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishEmbassy</effect>
       <effect type="TechStatus" status="obtainable">zpJewishOrthodox</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishDiaspora</effect>
     </effects>
   </tech>
   <tech name="zpJewishPessah" type="Normal">
@@ -5889,7 +5942,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <prereqs>
-			<techstatus status ="Active">Colonialize</techstatus>
+      <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
         <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpJewishSettlementWagon" relativity="Absolute">
@@ -5897,10 +5950,10 @@
           </target>
         </effect>
         <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-          <target type="ProtoUnit">zpJewishSettlementWagon</target>
+          <target type="ProtoUnit">zpNatNomadSettlementMilitia</target>
         </effect>
-        <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">zpNatSettlerJewish</target>
+        <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+          <target type="ProtoUnit">zpNatNomadSettlerJewish</target>
         </effect>
         <effect type="TextOutputTechName">110130</effect>
     </effects>
@@ -5917,14 +5970,20 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <prereqs>
-			<techstatus status ="Active">Colonialize</techstatus>
+			<techstatus status ="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="1.70" subtype="Hitpoints" relativity="BasePercent">
+      <effect type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatSettlerJewish</target>
       </effect>
-      <effect type="Data" amount="1.70" subtype="Damage" allactions="1" relativity="BasePercent">
+      <effect type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatNomadSettlerJewish</target>
+      </effect>
+      <effect type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatNomadSettlerJewish</target>
       </effect>
     </effects>
   </tech>
@@ -5981,6 +6040,109 @@
       <effect type="TechStatus" status="active">zpTheBlackFlagGoldBallanceShadow</effect>
     </effects>
 	</tech>
+
+  <tech name="zpJewishVeteranMilitia" type="Normal">
+    <dbid>40209</dbid>
+    <displaynameid>301384</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">75.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\veteran_archer_infantry\veteran_archer_infantry.png</icon>
+    <rollovertextid>301389</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
+      </effect>
+      <effect type="SetName" proto="zpNatSettlementMilitia" culture="none" newname="301386">
+      </effect>
+      <effect type="SetName" proto="zpNatSettlementMilitia" culture="none" newname="301388" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercSettlementMilitia</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercSettlementMilitia</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMercSettlementMilitia" culture="none" newname="301386">
+      </effect>
+      <effect type="SetName" proto="zpNatMercSettlementMilitia" culture="none" newname="301388" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatNomadSettlementMilitia</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatNomadSettlementMilitia</target>
+      </effect>
+      <effect type="SetName" proto="zpNatNomadSettlementMilitia" culture="none" newname="301393">
+      </effect>
+      <effect type="SetName" proto="zpNatNomadSettlementMilitia" culture="none" newname="301395" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpJewishGuardMilitia" type="Normal">
+    <dbid>40210</dbid>
+    <displaynameid>301385</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\guard_archer_infantry\guard_archer_infantry.png</icon>
+    <rollovertextid>301389</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">zpJewishVeteranMilitia</techstatus>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
+      </effect>
+      <effect type="SetName" proto="zpNatSettlementMilitia" culture="none" newname="301387">
+      </effect>
+      <effect type="SetName" proto="zpNatSettlementMilitia" culture="none" newname="301388" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercSettlementMilitia</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercSettlementMilitia</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMercSettlementMilitia" culture="none" newname="301387">
+      </effect>
+      <effect type="SetName" proto="zpNatMercSettlementMilitia" culture="none" newname="301388" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatNomadSettlementMilitia</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatNomadSettlementMilitia</target>
+      </effect>
+      <effect type="SetName" proto="zpNatNomadSettlementMilitia" culture="none" newname="301394">
+      </effect>
+      <effect type="SetName" proto="zpNatNomadSettlementMilitia" culture="none" newname="301395" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+
   <tech name="zpConsulateJewishAmericans" type="Normal">
     <dbid>40205</dbid>
     <displaynameid>300427</displaynameid>
@@ -5994,21 +6156,15 @@
     <flag>YPSequesterTech</flag>
     <flag>DoNotQueue</flag>
     <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRifleman</target>
-      </effect>
       <effect type="TechStatus" status="unobtainable">zpJewishStar</effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
       <effect type="CommandRemove" tech="zpJewishStar">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="ZPJewishGuardRiflemen" page="1" column="6">
+      <effect type="CommandAdd" tech="zpJewishFreeMasons" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpJewishImperialRiflemen" page="1" column="6">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpJewishFreeMasons" page="2" column="6">
+      <effect type="CommandAdd" tech="zpJewishEmbassy" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -6062,117 +6218,8 @@
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffJewish</effect>
     </effects>
   </tech>
-  <tech name="DEVeteranRiflemenShadow">
-    <effects>
-        <effect mergeMode='add' type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
-          <target type="ProtoUnit">zpNatRifleman</target>
-        </effect>
-        <effect mergeMode='add' type="SetName" proto="zpNatRifleman" culture="none" newname="110040">
-        </effect>
-        <effect mergeMode='add' type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpNatRifleman" relativity="Absolute">
-          <target type="Player">
-          </target>
-        </effect>
-        <effect mergeMode='add' type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
-          <target type="ProtoUnit">zpNatRifleman</target>
-        </effect>
-        <effect mergeMode='add' type="Data" action="DefendRangedAttack" amount="1.00" subtype="MaximumRange" relativity="Absolute">
-          <target type="ProtoUnit">zpNatRifleman</target>
-        </effect>
-        <effect mergeMode='add' type="Data" action="StaggerRangedAttack" amount="1.00" subtype="MaximumRange" relativity="Absolute">
-          <target type="ProtoUnit">zpNatRifleman</target>
-        </effect>
-        <effect mergeMode='add' type="Data" action="VolleyRangedAttack" amount="1.00" subtype="MaximumRange" relativity="Absolute">
-          <target type="ProtoUnit">zpNatRifleman</target>
-        </effect>
-      </effects>
-  </tech>
-  <tech name="DEGuardRiflemen">
-    <effects>
-      <effect mergeMode='add' type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRifleman</target>
-      </effect>
-      <effect mergeMode='add' type="SetName" proto="zpNatRifleman" culture="none" newname="110041">
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpNatRifleman" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRifleman</target>
-      </effect>
-      <effect mergeMode='add' type="Data" action="DefendRangedAttack" amount="1.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRifleman</target>
-      </effect>
-      <effect mergeMode='add' type="Data" action="StaggerRangedAttack" amount="1.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRifleman</target>
-      </effect>
-      <effect mergeMode='add' type="Data" action="VolleyRangedAttack" amount="1.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRifleman</target>
-      </effect>
-      <effect mergeMode='add' type="TechStatus" status="active">ZPJewishGuardRiflemen</effect>
-    </effects>
-  </tech>
-  <tech name="DEImperialRiflemen">
-    <effects>
-      <effect mergeMode='add' type="SetName" proto="zpNatRifleman" culture="none" newname="110042">
-      </effect>
-      <effect mergeMode='add' type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRifleman</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatRifleman</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpNatRifleman" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect mergeMode='add' type="TechStatus" status="active">zpJewishImperialRiflemen</effect>
-    </effects>
-  </tech>
-  <tech name="ZPJewishGuardRiflemen" type="Normal">
-    <dbid>40207</dbid>
-    <displaynameid>110037</displaynameid>
-    <cost resourcetype="Wood">400.0000</cost>
-    <cost resourcetype="Gold">400.0000</cost>
-    <researchpoints>30.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
-    <rollovertextid>110039</rollovertextid>
-    <flag>YPNativeImprovement</flag>
-		<flag>UpgradeTech</flag>
-    <flag>DENativeUnitUpgrade</flag>
-		<flag>CountsTowardMilitaryScore</flag>
-    <prereqs>
-      <techstatus status="Active">Industrialize</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="TechStatus" status="active">DEGuardRiflemen</effect>
-    </effects>
-  </tech>
-  <tech name="zpJewishImperialRiflemen" type="Normal">
-    <dbid>40208</dbid>
-    <displaynameid>110038</displaynameid>
-    <cost resourcetype="Wood">1000.0000</cost>
-    <cost resourcetype="Gold">1000.0000</cost>
-    <researchpoints>30.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\imperial_infantry\imperial_infantry.png</icon>
-    <rollovertextid>110039</rollovertextid>
-    <flag>YPNativeImprovement</flag>
-		<flag>UpgradeTech</flag>
-    <flag>DENativeUnitUpgrade</flag>
-		<flag>CountsTowardMilitaryScore</flag>
-    <prereqs>
-      <techstatus status="Active">ZPJewishGuardRiflemen</techstatus>
-      <techstatus status="Active">Imperialize</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="TechStatus" status="active">DEImperialRiflemen</effect>
-    </effects>
-  </tech>
   <tech name="zpConsulateJewishGermans" type="Normal">
-    <dbid>40205</dbid>
+    <dbid>40207</dbid>
     <displaynameid>300430</displaynameid>
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
@@ -6184,98 +6231,17 @@
     <flag>YPSequesterTech</flag>
     <flag>DoNotQueue</flag>
     <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatWarWagon</target>
-      </effect>
       <effect type="TechStatus" status="unobtainable">zpJewishStar</effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
       <effect type="CommandRemove" tech="zpJewishStar">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="ZPJewishGuardWarWagons" page="1" column="6">
+      <effect type="CommandAdd" tech="zpJewishGermanUniversities" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpJewishImperialWarWagons" page="1" column="6">
+      <effect type="CommandAdd" tech="zpJewishAcademy" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpJewishGermanUniversities" page="2" column="6">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="GuardWarWagons">
-    <effects>
-      <effect mergeMode='add' type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatWarWagon</target>
-      </effect>
-      <effect mergeMode='add' type="SetName" proto="zpNatWarWagon" culture="none" newname="36746">
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpNatWarWagon" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatWarWagon</target>
-      </effect>
-      <effect mergeMode='add' type="TechStatus" status="active">ZPJewishGuardWarWagons</effect>
-    </effects>
-  </tech>
-  <tech name="ImperialWarWagons">
-    <effects>
-      <effect mergeMode='add' type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatWarWagon</target>
-      </effect>
-      <effect mergeMode='add' type="SetName" proto="zpNatWarWagon" culture="none" newname="31064">
-      </effect>
-      <effect mergeMode='add' type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatWarWagon</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpNatWarWagon" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect mergeMode='add' type="TechStatus" status="active">ZPJewishImperialWarWagons</effect>
-    </effects>
-  </tech>
-  <tech name="ZPJewishGuardWarWagons" type="Normal">
-    <dbid>40207</dbid>
-    <displaynameid>23230</displaynameid>
-    <cost resourcetype="Wood">400.0000</cost>
-    <cost resourcetype="Gold">400.0000</cost>
-    <researchpoints>30.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\guard_cavalry\guard_cavalry.png</icon>
-    <rollovertextid>23229</rollovertextid>
-    <flag>YPNativeImprovement</flag>
-		<flag>UpgradeTech</flag>
-    <flag>DENativeUnitUpgrade</flag>
-		<flag>CountsTowardMilitaryScore</flag>
-    <prereqs>
-      <techstatus status="Active">Industrialize</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="TechStatus" status="active">GuardWarWagons</effect>
-    </effects>
-  </tech>
-  <tech name="ZPJewishImperialWarWagons" type="Normal">
-    <dbid>40207</dbid>
-    <displaynameid>31062</displaynameid>
-    <cost resourcetype="Wood">1000.0000</cost>
-    <cost resourcetype="Gold">1000.0000</cost>
-    <researchpoints>30.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\imperial_cavalry\imperial_cavalry.png</icon>
-    <rollovertextid>31061</rollovertextid>
-    <flag>YPNativeImprovement</flag>
-		<flag>UpgradeTech</flag>
-    <flag>DENativeUnitUpgrade</flag>
-		<flag>CountsTowardMilitaryScore</flag>
-    <prereqs>
-      <techstatus status="Active">Imperialize</techstatus>
-      <techstatus status="Active">ZPJewishGuardWarWagons</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="TechStatus" status="active">ImperialWarWagons</effect>
     </effects>
   </tech>
   <tech name="zpConsulateJewishRussians" type="Normal">
@@ -6291,99 +6257,17 @@
     <flag>YPSequesterTech</flag>
     <flag>DoNotQueue</flag>
     <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatCossack</target>
-      </effect>
       <effect type="TechStatus" status="unobtainable">zpJewishStar</effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
       <effect type="CommandRemove" tech="zpJewishStar">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="ZPJewishGuardCossacks" page="1" column="6">
+      <effect type="CommandAdd" tech="zpJewishOrthodox" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpJewishImperialCossacks" page="1" column="6">
+      <effect type="CommandAdd" tech="zpJewishDiaspora" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpJewishOrthodox" page="2" column="6">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="GuardCossacks">
-    <effects>
-      <effect mergeMode='add' type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpNatCossack" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect mergeMode='add' type="SetName" proto="zpNatCossack" culture="none" newname="31253">
-      </effect>
-      <effect mergeMode='add' type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatCossack</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatCossack</target>
-      </effect>
-      <effect mergeMode='add' type="TechStatus" status="active">zpJewishGuardCossacks</effect>
-    </effects>
-  </tech>
-  <tech name="ImperialCossack">
-    <effects>
-      <effect mergeMode='add' type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatCossack</target>
-      </effect>
-      <effect mergeMode='add' type="SetName" proto="zpNatCossack" culture="none" newname="31056">
-      </effect>
-      <effect mergeMode='add' type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatCossack</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpNatCossack" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect mergeMode='add' type="TechStatus" status="active">zpJewishImperialCossacks</effect>
-    </effects>
-  </tech>
-  <tech name="zpJewishGuardCossacks" type="Normal">
-    <dbid>40209</dbid>
-    <displaynameid>23660</displaynameid>
-    <cost resourcetype="Wood">400.0000</cost>
-    <cost resourcetype="Gold">400.0000</cost>
-    <researchpoints>30.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\guard_cavalry\guard_cavalry.png</icon>
-    <rollovertextid>23659</rollovertextid>
-    <flag>YPNativeImprovement</flag>
-		<flag>UpgradeTech</flag>
-    <flag>DENativeUnitUpgrade</flag>
-		<flag>CountsTowardMilitaryScore</flag>
-    <prereqs>
-      <techstatus status="Active">Industrialize</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="TechStatus" status="active">VeteranCossacks</effect>
-      <effect type="TechStatus" status="active">GuardCossacks</effect>
-    </effects>
-  </tech>
-  <tech name="zpJewishImperialCossacks" type="Normal">
-    <dbid>40210</dbid>
-    <displaynameid>31054</displaynameid>
-    <cost resourcetype="Wood">1000.0000</cost>
-    <cost resourcetype="Gold">1000.0000</cost>
-    <researchpoints>30.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\imperial_cavalry\imperial_cavalry.png</icon>
-    <rollovertextid>31053</rollovertextid>
-    <flag>YPNativeImprovement</flag>
-		<flag>UpgradeTech</flag>
-    <flag>DENativeUnitUpgrade</flag>
-		<flag>CountsTowardMilitaryScore</flag>
-    <prereqs>
-      <techstatus status="Active">Imperialize</techstatus>
-      <techstatus status="Active">zpJewishGuardCossacks</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="TechStatus" status="active">ImperialCossack</effect>
     </effects>
   </tech>
   <tech name="zpConsulateMalteseCentralEuropeans" type="Normal">
@@ -6570,7 +6454,7 @@
   <tech name="zpJewishGermanUniversities" type="Normal">
     <dbid>40217</dbid>
     <displaynameid>300451</displaynameid>
-    <cost resourcetype ="Gold">300.0000</cost>
+    <cost resourcetype ="Gold">500.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\german-universities.png</icon>
@@ -6578,20 +6462,20 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <prereqs>
-      <techstatus status="Active">Industrialize</techstatus>
+      <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
+      <effect type="Data" amount="0.25" subtype="ResearchPoints" relativity="Percent">
         <target type="techAll">
         </target>
       </effect>
-      <effect type="TechStatus" status="active">zpTechBuffShadow50</effect>
+      <effect type="TechStatus" status="active">zpTechBuffShadow25</effect>
     </effects>
   </tech>
   <tech name="zpJewishOrthodox" type="Normal">
     <dbid>40218</dbid>
     <displaynameid>300453</displaynameid>
-    <cost resourcetype ="Food">300.0000</cost>
+    <cost resourcetype ="Food">500.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\orthodox_communities.png</icon>
@@ -6599,37 +6483,37 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <prereqs>
-      <techstatus status="Active">Industrialize</techstatus>
+      <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="0.75" subtype="TrainPoints" relativity="BasePercent">
+      <effect type="Data" amount="0.85" subtype="TrainPoints" relativity="BasePercent">
         <target type="ProtoUnit">Unit</target>
       </effect>
-      <effect type="Data" amount="1.25" subtype="TrainPoints" relativity="BasePercent">
+      <effect type="Data" amount="1.15" subtype="TrainPoints" relativity="BasePercent">
         <target type="ProtoUnit">Cannon</target>
       </effect>
-      <effect type="Data" amount="1.25" subtype="TrainPoints" relativity="BasePercent">
+      <effect type="Data" amount="1.15" subtype="TrainPoints" relativity="BasePercent">
         <target type="ProtoUnit">GreatBombard</target>
       </effect>
-      <effect type="Data" amount="1.25" subtype="TrainPoints" relativity="BasePercent">
+      <effect type="Data" amount="1.15" subtype="TrainPoints" relativity="BasePercent">
         <target type="ProtoUnit">Rocket</target>
       </effect>
-      <effect type="Data" amount="1.25" subtype="TrainPoints" relativity="BasePercent">
+      <effect type="Data" amount="1.15" subtype="TrainPoints" relativity="BasePercent">
         <target type="ProtoUnit">xpDogSoldier</target>
       </effect>
-      <effect type="Data" amount="1.25" subtype="TrainPoints" relativity="BasePercent">
+      <effect type="Data" amount="1.15" subtype="TrainPoints" relativity="BasePercent">
         <target type="ProtoUnit">xpSkullKnight</target>
       </effect>
-      <effect type="Data" amount="1.25" subtype="TrainPoints" relativity="BasePercent">
+      <effect type="Data" amount="1.15" subtype="TrainPoints" relativity="BasePercent">
         <target type="ProtoUnit">ypFlyingCrow</target>
       </effect>
-      <effect type="Data" amount="1.25" subtype="TrainPoints" relativity="BasePercent">
+      <effect type="Data" amount="1.15" subtype="TrainPoints" relativity="BasePercent">
         <target type="ProtoUnit">xpBuilder</target>
       </effect>
-      <effect type="Data" amount="1.25" subtype="TrainPoints" relativity="BasePercent">
+      <effect type="Data" amount="1.15" subtype="TrainPoints" relativity="BasePercent">
         <target type="ProtoUnit">xpMedicineManAztec</target>
       </effect>
-      <effect type="Data" amount="1.25" subtype="TrainPoints" relativity="BasePercent">
+      <effect type="Data" amount="1.15" subtype="TrainPoints" relativity="BasePercent">
         <target type="ProtoUnit">dePriestess</target>
       </effect>
     </effects>
@@ -6682,7 +6566,7 @@
       <techstatus status="Active">HCNativeTreaties</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatSettlerJewish" relativity="Absolute">
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMersSettlementMilitia" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -6697,14 +6581,12 @@
       <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMalteseGuard" relativity="Absolute">
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMersSettlementMilitia" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
-      <effect type="TechStatus" status="active">zpJewishGuardCossacks</effect>
-      <effect type="TechStatus" status="active">ZPJewishGuardRiflemen</effect>
-      <effect type="TechStatus" status="active">ZPJewishGuardWarWagons</effect>
-      <effect type="TechStatus" status="active">zpNatKabalah</effect>
+      <effect type="TechStatus" status="active">ZPJewishGuardMilitia</effect>
+      <effect type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
     </effects>
   </tech>
   <tech name="ypNativeTradeTreatyJewish" type="Normal">
@@ -13093,6 +12975,32 @@
       <effect type="CommandRemove" tech="TradeRouteUpgrade2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpJewishAcademy" type="Normal">
+    <dbid>40558</dbid>
+    <displaynameid>301390</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\zp_academy.png</icon>
+    <rollovertextid>300519</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpAcademyWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAcademy</target>
+      </effect>
+      <effect type="TechStatus" status="active">zpAcademyTechsShadow</effect>
     </effects>
   </tech>
 
