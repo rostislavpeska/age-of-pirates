@@ -1,0 +1,379 @@
+<animfile>
+    <definebone>HS Bone Hoof Back Rt</definebone>
+    <definebone>HS Bone Hoof Back Lt</definebone>
+    <definebone>HS Bone Master</definebone>
+    <definebone>bone_Bip01 Prop1</definebone>
+    <definebone>Bip01_Head</definebone>
+    <definebone>bone_cane</definebone>
+    <definebone>Bip01 L Hand</definebone>
+    <submodel>travois
+        <attachment>Horse_Debris
+            <component>Horse_Debris
+                <assetreference type="ParticleSystem">
+                    <file>effects\animal particles\horse_debris.particle</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>Horse_Debris</component>
+            </anim>
+        </attachment>
+        <attachment>Horse_Dust
+            <component>Horse_Dust
+                <assetreference type="ParticleSystem">
+                    <file>effects\animal particles\horse_dust.particle</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>Horse_Dust</component>
+            </anim>
+        </attachment>
+        <component>travois
+            <linksection>
+                <linkoffset>.7</linkoffset>
+                <linkcomponent>travois_cartShape</linkcomponent>
+                <linkconstraint>0</linkconstraint>
+            </linksection>
+            <linksection>
+                <linkoffset>0</linkoffset>
+                <linkcomponent>travois_Shape</linkcomponent>
+                <linkcomponent>travois_humanShape</linkcomponent>
+                <linkconstraint>1</linkconstraint>
+            </linksection>
+            <logic type="LowPoly">
+                <normal>
+                    <assetreference type="GrannyModel">
+                        <file>units\trade\travois</file>
+                    </assetreference>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>units\trade\lp_travois</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>default</effecttype>
+                <texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
+                <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+                <width>2.00</width>
+                <height>4.00</height>
+            </decal>
+            <watersplash>
+                <texture>units\artillery\cannon\wheel_B</texture>
+                <width>1.75</width>
+                <height>2.00</height>
+            </watersplash>
+        </component>
+        <anim>Walk
+            <assetreference type="GrannyAnim">
+                <file>units\trade\travois_walk</file>
+                <tag type="FootstepLeft">0.30</tag>
+                <tag type="FootstepRight">0.80</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof2">0.11</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof3">0.28</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof4">0.46</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof1">0.61</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof2">0.77</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof3">0.94</tag>
+            </assetreference>
+            <component>travois</component>
+            <attach a="Horse_Debris" frombone="HS Bone Master" tobone="HS Bone Hoof Back Lt" syncanims="0"></attach>
+            <attach a="Horse_Debris" frombone="HS Bone Master" tobone="HS Bone Hoof Back Rt" syncanims="0"></attach>
+            <attach a="Horse_Dust" frombone="HS Bone Master" tobone="HS Bone Hoof Back Lt" syncanims="0"></attach>
+            <attach a="Horse_Dust" frombone="HS Bone Master" tobone="HS Bone Hoof Back Rt" syncanims="0"></attach>
+        </anim>
+        <anim>Idle
+            <assetreference type="GrannyAnim">
+                <file>units\trade\travois_idle</file>
+                <tag type="FootstepLeft">0.30</tag>
+                <tag type="FootstepRight">0.80</tag>
+            </assetreference>
+            <component>travois</component>
+        </anim>
+        <anim>Death
+            <assetreference type="GrannyAnim">
+                <file>units\trade\indian_travois\travois_death</file>
+            </assetreference>
+            <component>travois</component>
+        </anim>
+    </submodel>
+    <submodel>rickshaw
+        <component>rickshaw
+            <linksection>
+                <linkoffset>.7</linkoffset>
+                <linkcomponent>peasantmale1</linkcomponent>
+                <linkconstraint>0</linkconstraint>
+            </linksection>
+            <linksection>
+                <linkoffset>0</linkoffset>
+                <linkcomponent>Box03</linkcomponent>
+                <linkconstraint>1</linkconstraint>
+            </linksection>
+            <logic type="LowPoly">
+                <normal>
+                    <assetreference type="GrannyModel">
+                        <file>units\asians\shared\rickshaw\rickshaw</file>
+                    </assetreference>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>units\asians\shared\rickshaw\rickshaw</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>default</effecttype>
+                <texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
+                <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+                <width>2.00</width>
+                <height>3.00</height>
+                <zoffset>-0.80</zoffset>
+            </decal>
+            <watersplash>
+                <texture>units\artillery\cannon\wheel_B</texture>
+                <width>1.75</width>
+                <height>2.00</height>
+            </watersplash>
+        </component>
+        <anim>Walk
+            <assetreference type="GrannyAnim">
+                <file>units\asians\shared\rickshaw\rickshaw_walk_A</file>
+            </assetreference>
+            <component>rickshaw</component>
+        </anim>
+        <anim>Idle
+            <assetreference type="GrannyAnim">
+                <file>units\trade\travois_idle</file>
+                <tag type="FootstepLeft">0.30</tag>
+                <tag type="FootstepRight">0.80</tag>
+            </assetreference>
+            <component>rickshaw</component>
+        </anim>
+    </submodel>
+    <submodel>indian_rickshaw
+        <component>rickshaw
+            <linksection>
+                <linkoffset>.7</linkoffset>
+                <linkcomponent>peasantmale1</linkcomponent>
+                <linkconstraint>0</linkconstraint>
+            </linksection>
+            <linksection>
+                <linkoffset>0</linkoffset>
+                <linkcomponent>Box03</linkcomponent>
+                <linkconstraint>1</linkconstraint>
+            </linksection>
+            <logic type="LowPoly">
+                <normal>
+                    <assetreference type="GrannyModel">
+                        <file>units\asians\shared\rickshaw\indian_rickshaw</file>
+                    </assetreference>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>units\asians\shared\rickshaw\indian_rickshaw</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>default</effecttype>
+                <texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
+                <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+                <width>2.00</width>
+                <height>3.00</height>
+                <zoffset>-0.80</zoffset>
+            </decal>
+            <watersplash>
+                <texture>units\artillery\cannon\wheel_B</texture>
+                <width>1.75</width>
+                <height>2.00</height>
+            </watersplash>
+        </component>
+        <anim>Walk
+            <assetreference type="GrannyAnim">
+                <file>units\asians\shared\rickshaw\rickshaw_walk_A</file>
+            </assetreference>
+            <component>rickshaw</component>
+        </anim>
+        <anim>Idle
+            <assetreference type="GrannyAnim">
+                <file>units\trade\travois_idle</file>
+                <tag type="FootstepLeft">0.30</tag>
+                <tag type="FootstepRight">0.80</tag>
+            </assetreference>
+            <component>rickshaw</component>
+        </anim>
+    </submodel>
+    <submodel>american_trader
+        <attachment>cap
+            <component>cap
+                <assetreference type="GrannyModel">
+                    <file>units\trade\american_trader\andean_cap</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>cap</component>
+            </anim>
+        </attachment>
+        <attachment>food_Crate
+            <component>crate
+                <assetreference type="GrannyModel">
+                    <file>homecity\homecity_units\resource_haulers\food_basket</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>crate</component>
+            </anim>
+        </attachment>
+        <component>ModelComp
+            <assetreference type="GrannyModel">
+                <file>units\trade\american_trader\american_trader</file>
+            </assetreference>
+            <decal>
+                <effecttype>default</effecttype>
+                <texture>shadows_selections\shadow_circle_32x32</texture>
+                <selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+                <width>1.0</width>
+                <height>1.0</height>
+            </decal>
+            <attach a="food_Crate" frombone="ATTACHPOINT" tobone="bone_Bip01 Prop1" syncanims="0"></attach>
+            <attach a="cap" frombone="ATTACHPOINT" tobone="Bip01_Head" syncanims="0"></attach>
+        </component>
+        <anim>Idle
+            <assetreference type="GrannyAnim">
+                <file>animation_library\homecity\2_leg_idle\human_carry_food_idle</file>
+            </assetreference>
+            <component>ModelComp</component>
+        </anim>
+        <anim>Walk
+            <assetreference type="GrannyAnim">
+                <file>animation_library\homecity\2_leg_walk\human_walk_carry_food</file>
+            </assetreference>
+            <component>ModelComp</component>
+        </anim>
+    </submodel>
+    <submodel>african_trader
+        <attachment>spear
+            <include>units\trade\african_trader\african_trader_spear.xml</include>
+        </attachment>
+        <component>ModelComp
+            <assetreference type="GrannyModel">
+                <file>units\trade\african_trader\african_trader</file>
+            </assetreference>
+            <decal>
+                <effecttype>default</effecttype>
+                <texture>shadows_selections\shadow_circle_32x32</texture>
+                <selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+                <width>1.0</width>
+                <height>1.0</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <assetreference type="GrannyAnim">
+                <file>animation_library\explorer\idle_explorer_A</file>
+            </assetreference>
+            <component>ModelComp</component>
+            <attach a="spear" frombone="bone_spear" tobone="bip01_Prop1" syncanims="0"></attach>
+        </anim>
+        <anim>Walk
+            <assetreference type="GrannyAnim">
+                <file>animation_library\shared\walk_generic_lower</file>
+                <file>animation_library\explorer\walk_explorer_upper</file>
+                <tag type="FootstepLeft" footprinttype="HumanLeft">0.14</tag>
+                <tag type="FootstepRight" footprinttype="HumanRight">0.61</tag>
+            </assetreference>
+            <component>ModelComp</component>
+            <attach a="spear" frombone="bone_spear" tobone="bip01_Prop1" syncanims="0"></attach>
+        </anim>
+    </submodel>
+    <submodel>european_trader
+        <component>ModelComp
+            <assetreference type="GrannyModel">
+                <file>homecity\homecity_units\tech_guy\techguy</file>
+            </assetreference>
+            <decal>
+                <effecttype>default</effecttype>
+                <texture>shadows_selections\shadow_circle_32x32</texture>
+                <selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+                <width>1.0</width>
+                <height>1.0</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <assetreference type="GrannyAnim">
+                <file>homecity\homecity_units\tech_guy\techguy_idle</file>
+            </assetreference>
+            <component>ModelComp</component>
+        </anim>
+        <anim>Walk
+            <assetreference type="GrannyAnim">
+                <file>homecity\homecity_units\tech_guy\techguy_walk</file>
+            </assetreference>
+            <component>ModelComp</component>
+        </anim>
+    </submodel>
+    <submodel>australian_trader
+        <attachment>food_CrateB
+            <component>crateB
+                <assetreference type="GrannyModel">
+                    <file>homecity\homecity_units\resource_haulers\food_basket</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>crateB</component>
+            </anim>
+        </attachment>
+        <component>ModelComp
+            <assetreference type="GrannyModel">
+                <file>units\trade\australian_trader\zpaustralian_trader</file>
+            </assetreference>
+            <decal>
+                <effecttype>default</effecttype>
+                <texture>shadows_selections\shadow_circle_32x32</texture>
+                <selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+                <width>1.0</width>
+                <height>1.0</height>
+            </decal>
+            <attach a="food_CrateB" frombone="ATTACHPOINT" tobone="bone_Bip01 Prop1" syncanims="0"></attach>
+        </component>
+        <anim>Idle
+            <assetreference type="GrannyAnim">
+                <file>animation_library\homecity\2_leg_idle\human_carry_food_idle</file>
+            </assetreference>
+            <component>ModelComp</component>
+        </anim>
+        <anim>Walk
+            <assetreference type="GrannyAnim">
+                <file>animation_library\homecity\2_leg_walk\human_walk_carry_food</file>
+            </assetreference>
+            <component>ModelComp</component>
+        </anim>
+    </submodel>
+    <component>TravoisModel
+        <logic type="Tech">
+            <none>
+                <submodelref ref="travois"></submodelref>
+            </none>
+            <ypmapfareast>
+                <submodelref ref="rickshaw"></submodelref>
+            </ypmapfareast>
+            <ypmapindian>
+                <submodelref ref="indian_rickshaw"></submodelref>
+            </ypmapindian>
+            <demapmaghreb>
+                <submodelref ref="indian_rickshaw"></submodelref>
+            </demapmaghreb>
+            <demapamerican>
+                <submodelref ref="american_trader"></submodelref>
+            </demapamerican>
+            <demapafrican>
+                <submodelref ref="african_trader"></submodelref>
+            </demapafrican>
+            <demapeuropean>
+                <submodelref ref="european_trader"></submodelref>
+            </demapeuropean>
+            <zpmapaustralian>
+                <submodelref ref="australian_trader"></submodelref>
+            </zpmapaustralian>
+        </logic>
+    </component>
+</animfile>

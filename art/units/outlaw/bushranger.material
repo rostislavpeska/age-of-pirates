@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units/wildwest_units/outlawriders/textures/outlaw_rider_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units/wildwest_units/doc_holliday/textures/doc_holliday_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units/spc/outlaws/textures/outlaw_pistol_us_matA_Masks">
+      </texture>
+      <texture name="Details" override="units/wildwest_units/outlawriders/textures/outlaw_rider_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

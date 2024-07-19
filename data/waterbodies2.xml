@@ -1464,8 +1464,8 @@
   <ocean name="ZP Hawaii Coast" cluttermix="caribbean_underwater" iconname="ui\editor\watercaribbeancoast" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="caribbean\ground_shoreline1_crb" bank="caribbean\ground_shoreline2_crb" outerbank="caribbean\ground_shoreline3_crb" slope="" color="9 110 88" deepcolor="0 0 0" depth="4.000000" fresnelscale="0.247934" fresnelbias="0.555556" alphaminvalue="0.000000" alphamaxvalue="0.914063" alphamindepth="0.000000" alphamaxdepth="1.900827" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.842105" reflectionamount="-0.222222" bumpscale="0.660000" reflectionbumpscale="0.710000" foamscale="-0.110000" texscale="1.970000" texscrollspeed="0.000000" texrotation="129.000000">
     <textureplacement>
       <texture distance="22" variance="4">caribbean\ground_shoreline1_crb</texture>
-      <texture distance="26" variance="4">ceylon\seafloor5_ceylon</texture>
-      <texture distance="30" variance="4">ceylon\seafloor4_ceylon</texture>
+      <texture distance="26" variance="4">caribbean\seafloor_coral4_crb</texture>
+      <texture distance="30" variance="4">caribbean\seafloor_coral3_crb</texture>
       <texture distance="34" variance="2">ceylon\seafloor3_ceylon</texture>
       <texture distance="40" variance="6">ceylon\seafloor1_ceylon</texture>
       <texture distance="50" variance="6">ceylon\seafloor2_ceylon</texture>
@@ -1488,6 +1488,35 @@
     <rendering scatter_color="0.191 0.746 0.594" sun_set_color="1.000 0.400 0.000" caustics_depth="2.0000" caustics_intensity="1.4000" caustics_scale="0.3000" caustics_scroll="0.0500" fft_displace="1.7900" custom_wave_scale="8.0000" reflection_normal="0.2400" refraction_normal="0.0380" scatter_amount="0.4800" fog_color_mult="0.3450" custom_wave_scatter="5.0000" surface_roughness="0.0000" fog_density="1.2000" water_color="0.665 0.874 0.954" blur_intensity="0.1600" water_brighten="2.2850" reflection_intensity="0.3230">
     </rendering>
   </ocean>
+  <ocean name="ZP Polynesian Coast" cluttermix="caribbean_underwater" iconname="ui\editor\watercaribbeancoast" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="caribbean\ground_shoreline1_crb" bank="" outerbank="" slope="" color="9 110 88" deepcolor="0 0 0" depth="4.000000" fresnelscale="0.247934" fresnelbias="0.555556" alphaminvalue="0.000000" alphamaxvalue="0.914063" alphamindepth="0.000000" alphamaxdepth="1.900827" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.842105" reflectionamount="-0.222222" bumpscale="0.660000" reflectionbumpscale="0.710000" foamscale="-0.110000" texscale="1.970000" texscrollspeed="0.000000" texrotation="129.000000">
+    <textureplacement>
+      <texture distance="22" variance="4">caribbean\ground_shoreline1_crb</texture>
+      <texture distance="26" variance="4">caribbean\seafloor_coral4_crb</texture>
+      <texture distance="30" variance="4">caribbean\seafloor_coral3_crb</texture>
+      <texture distance="34" variance="2">ceylon\seafloor3_ceylon</texture>
+      <texture distance="40" variance="6">ceylon\seafloor1_ceylon</texture>
+      <texture distance="50" variance="6">ceylon\seafloor2_ceylon</texture>
+      <texture distance="60" variance="6">caribbean\seafloor_coral0_crb</texture>
+    </textureplacement>
+    <shoreline>
+      <shorelong name="ShorelineFoam" distance="2.0" randomyaw="false">
+      </shorelong>
+      <waves bumpmap="terrain\water\waterwavebump" bumpmapcrashposition="0.45" foam1tex="terrain\waves\wavefoam" foam2tex="terrain\waves\wavefoam2" foamalphasidetex="terrain\waves\wavefoam_alpha" foamalphabacktex="terrain\waves\wavefoam_alphaback" minlength="15.00" maxlength="35.00" minconcavelength="8.69" maxconcavelength="12.74" minwidth="2.00" maxwidth="5.00" minheight="0.35" maxheight="0.65" minfadelength="8.00" maxfadelength="14.00" minspeed="0.90" maxspeed="1.20" foamstartnormalizedtime="0.10" foamnormalizedspeed="0.00" foammaxnormalizedwidth="1.00" foam1scrollspeed="0.05" foam2scrollspeed="0.23" foamfadeintime="2.00" foamfadeouttime="2.70" recedetime="3.40" recedeendscale="1.00" recedemotion="true" variance="3.50" minstartdistance="14.00" maxstartdistance="20.00" sectionlength="15.00" wavedensity="3" convexitylimit="-11.35" concavitylimit="11.21">
+      </waves>
+    </shoreline>
+    <rendering scatter_color="0.191 0.746 0.594" sun_set_color="1.000 0.400 0.000" caustics_depth="2.0000" caustics_intensity="1.4000" caustics_scale="0.3000" caustics_scroll="0.0500" fft_displace="1.7900" custom_wave_scale="8.0000" reflection_normal="0.2400" refraction_normal="0.0380" scatter_amount="0.4800" fog_color_mult="0.3450" custom_wave_scatter="5.0000" surface_roughness="0.0000" fog_density="1.2000" water_color="0.665 0.874 0.954" blur_intensity="0.1600" water_brighten="2.2850" reflection_intensity="0.3230">
+    </rendering>
+  </ocean>
+  <lake name="ZP Polynesian Coast Lake" cluttermix="caribbean_underwater" iconname="ui\editor\watercaribbeancoast" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="caribbean\ground_shoreline1_crb" bank="" outerbank="" slope="" color="9 110 88" deepcolor="0 0 0" depth="4.000000" fresnelscale="0.247934" fresnelbias="0.555556" alphaminvalue="0.000000" alphamaxvalue="0.914063" alphamindepth="0.000000" alphamaxdepth="1.900827" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.842105" reflectionamount="-0.222222" bumpscale="0.660000" reflectionbumpscale="0.710000" foamscale="-0.110000" texscale="1.970000" texscrollspeed="0.000000" texrotation="129.000000">
+    <shoreline>
+      <shorelong name="ShorelineFoam" distance="2.0" randomyaw="false">
+      </shorelong>
+      <waves bumpmap="terrain\water\waterwavebump" bumpmapcrashposition="0.45" foam1tex="terrain\waves\wavefoam" foam2tex="terrain\waves\wavefoam2" foamalphasidetex="terrain\waves\wavefoam_alpha" foamalphabacktex="terrain\waves\wavefoam_alphaback" minlength="15.00" maxlength="35.00" minconcavelength="8.69" maxconcavelength="12.74" minwidth="2.00" maxwidth="5.00" minheight="0.35" maxheight="0.65" minfadelength="8.00" maxfadelength="14.00" minspeed="0.90" maxspeed="1.20" foamstartnormalizedtime="0.10" foamnormalizedspeed="0.00" foammaxnormalizedwidth="1.00" foam1scrollspeed="0.05" foam2scrollspeed="0.23" foamfadeintime="2.00" foamfadeouttime="2.70" recedetime="3.40" recedeendscale="1.00" recedemotion="true" variance="3.50" minstartdistance="14.00" maxstartdistance="20.00" sectionlength="15.00" wavedensity="3" convexitylimit="-11.35" concavitylimit="11.21">
+      </waves>
+    </shoreline>
+    <rendering scatter_color="0.191 0.746 0.594" sun_set_color="1.000 0.400 0.000" caustics_depth="2.0000" caustics_intensity="1.4000" caustics_scale="0.3000" caustics_scroll="0.0500" fft_displace="1.7900" custom_wave_scale="8.0000" reflection_normal="0.2400" refraction_normal="0.0380" scatter_amount="0.4800" fog_color_mult="0.3450" custom_wave_scatter="5.0000" surface_roughness="0.0000" fog_density="1.2000" water_color="0.665 0.874 0.954" blur_intensity="0.1600" water_brighten="2.2850" reflection_intensity="0.3230">
+    </rendering>
+  </lake>
 
 
 </waterbodies>

@@ -22,14 +22,14 @@
 
 				<data>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\socket_jewish\customs</file>
+						<file>buildings\native_settlement\socket_jewish\jewish_house1_Model</file>
 					</assetreference>
 					<decal>
 						<effecttype>default</effecttype>
 						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
 						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-						<width>6</width>
-						<height>6</height>
+						<width>8</width>
+						<height>8</height>
 						<xoffset>0.00</xoffset>
 						<zoffset>0.00</zoffset>	
 					</decal>
@@ -37,14 +37,14 @@
 
 				<data>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\socket_jewish\constable</file>
+						<file>buildings\native_settlement\socket_jewish\jewish_house2_Model</file>
 					</assetreference>
 					<decal>
 						<effecttype>default</effecttype>
 						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
 						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-						<width>4</width>
-						<height>4</height>
+						<width>8</width>
+						<height>8</height>
 						<xoffset>0.00</xoffset>
 						<zoffset>0.00</zoffset>	
 					</decal>
@@ -67,7 +67,7 @@
 
 				<data>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\socket_jewish\workshop</file>
+						<file>buildings\native_settlement\socket_jewish\jewish_house3_Model</file>
 					</assetreference>
 					<decal>
 						<effecttype>default</effecttype>

@@ -109,6 +109,7 @@ minInterval 1
        cRandomMapName == "afswahilicoast" ||
        cRandomMapName == "afswahilicoastlarge" ||
        cRandomMapName == "zpeldorado" ||
+       //cRandomMapName == "zppolynesia" ||
        cRandomMapName == "zptreasureisland")
    {
       gMigrationMap = true;

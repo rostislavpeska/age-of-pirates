@@ -1,0 +1,28 @@
+<animfile>
+  <component>coal_car
+    <logic type="Tech">
+        <none>
+            <assetreference type="GrannyModel">
+                <file>units\trains\coal_car</file>
+            </assetreference>
+        </none>
+        <demapeuropean>
+            <logic type="Variation"><data><assetreference type="GrannyModel"><file>units\trains\coal_euro</file></assetreference></data><data><assetreference type="GrannyModel"><file>units\trains\coal_euro2</file></assetreference></data><data><assetreference type="GrannyModel"><file>units\trains\coal_euro3</file></assetreference></data><data><assetreference type="GrannyModel"><file>units\trains\coal_euro4</file></assetreference></data></logic>
+        </demapeuropean>
+        <zpmapaustralian>
+            <assetreference type="GrannyModel">
+                <file>units\trains\coal_car_australian</file>
+            </assetreference>
+        </zpmapaustralian>
+    </logic>
+    <decal>
+        <effecttype>default</effecttype>
+        <texture>shadows_selections\shadow_circle_128x128</texture>
+        <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+        <width>1.0</width>
+        <height>1.0</height>
+    </decal>
+</component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>units\trains\coal_car_walk</file></assetreference><component>coal_car</component></anim>
+  <anim>Walk<assetreference type="GrannyAnim"><file>units\trains\coal_car_walk</file></assetreference><component>coal_car</component></anim>
+</animfile>

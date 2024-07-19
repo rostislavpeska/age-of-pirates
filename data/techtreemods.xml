@@ -2583,7 +2583,7 @@
       <effect type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">deMercCapturedMortar</target>
       </effect>
-      <effect type="SetName" proto="deMercCapturedMortar" culture="none" newname="300311">
+      <effect type="SetName" proto="deMercCapturedMortar" culture="none" newname="301356">
       </effect>
     </effects>
   </tech>
@@ -12802,8 +12802,6 @@
     <effects>
       <effect type="TransformUnit" toprotoid="zpSPCVolcanoPassive" fromprotoid="zpSPCVolcano">
       </effect>
-      <effect type="TransformUnit" toprotoid="zpLavaDeath" fromprotoid="zpLavaFlow">
-      </effect>
       <effect type="TransformUnit" toprotoid="zpSPCVolcanoFireSpawner" fromprotoid="zpSPCVolcanoFire">
       </effect>
     </effects>
@@ -12919,20 +12917,6 @@
       </effect>
     </effects>
   </tech>
-  <!--<tech name="zpVolcanoLava" type="Normal">
-    <dbid>40551</dbid>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <flag>YPInfiniteTech</flag>
-    <effects>
-      <effect type="TransformUnit" toprotoid="zpLavaSpawnerVisible" fromprotoid="zpLavaSpawner">
-      </effect>
-      <effect type="Data" action="SpawnLava" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpLavaSpawnerVisible">
-        <target type="Player">
-        </target>
-      </effect>
-    </effects>
-  </tech>-->
   <tech name="zpVolcanoLavaBack" type="Normal">
     <dbid>40552</dbid>
     <status>UNOBTAINABLE</status>
@@ -12950,6 +12934,164 @@
       <effect type="TransformUnit" toprotoid="zpLavaDeath" fromprotoid="zpLavaSpawnerTradeWagon4">
       </effect>
       <effect type="TransformUnit" toprotoid="zpLavaDeath" fromprotoid="zpLavaSpawnerTradeWagon5">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpOceaniaMercenaries" type="Normal">
+    <dbid>40553</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMarquesanHorseman</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpEscapedPrisoner</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypWokouPirate</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonOutlawPistol</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypRepentantOutlawPistol</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonOutlawRifleman</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypRepentantOutlawRifleman</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAustraliaMercenaries" type="Normal">
+    <dbid>40553</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpBushRanger</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpEscapedPrisoner</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAustralianCavalry</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonOutlawPistol</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypRepentantOutlawPistol</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonOutlawRifleman</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypRepentantOutlawRifleman</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpMapAustralian" type="Normal">
+    <dbid>40554</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="Travois" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTradeRouteUpgradeAustralia1" type="Normal">
+    <dbid>40555</dbid>
+    <displaynameid>301378</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <icon>resources\art\units\trade\stagecoach_icon_64x64.png</icon>
+    <rollovertextid>33293</rollovertextid>
+    <flag>UniqueProtoUnitInstance</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPLandTPOnly</flag>
+    <flag>DETradeRouteUpgrade</flag>
+    <prereqs>
+      <techstatus status="Active">zpEnableTradeRouteAustralian</techstatus>
+      <techstatus status="Active">DETradeRouteUpgrade1Enable</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="UpgradeTradeRoute" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTradeRouteUpgradeAustralia2" type="Normal">
+    <dbid>40556</dbid>
+    <displaynameid>301379</displaynameid>
+    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <icon>resources\art\units\train\train_australian_icon.png</icon>
+    <rollovertextid>122536</rollovertextid>
+    <flag>YPLandTPOnly</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>UniqueProtoUnitInstance</flag>
+    <flag>DETradeRouteUpgrade</flag>
+    <prereqs>
+      <techstatus status="Active">zpTradeRouteUpgradeAustralia1</techstatus>
+      <techstatus status="Active">DETradeRouteUpgrade2Enable</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="UpgradeTradeRoute" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpEnableTradeRouteAustralian" type="Normal">
+    <dbid>40557</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetName" proto="Travois" culture="none" newname="301380">
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="Travois" relativity="Absolute">
+        <target type="ProtoUnit">zpIconAustralianTrvois</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TrainEngine" relativity="Absolute">
+        <target type="ProtoUnit">zpIconAustralianTrainEngine</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TrainCoalcar" relativity="Absolute">
+        <target type="ProtoUnit">zpIconAustralianTrainEngine</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TrainCarCoin" relativity="Absolute">
+        <target type="ProtoUnit">zpIconAustralianTrainEngine</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TrainCar" relativity="Absolute">
+        <target type="ProtoUnit">zpIconAustralianTrainEngine</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TrainCarWood" relativity="Absolute">
+        <target type="ProtoUnit">zpIconAustralianTrainEngine</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TrainCarFood" relativity="Absolute">
+        <target type="ProtoUnit">zpIconAustralianTrainEngine</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="TrainCaboose" relativity="Absolute">
+        <target type="ProtoUnit">zpIconAustralianTrainEngine</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">TradeRouteUpgrade1</effect>
+      <effect type="TechStatus" status="unobtainable">TradeRouteUpgrade2</effect>
+      <effect type="TechStatus" status="obtainable">zpTradeRouteUpgradeAustralia1</effect>
+      <effect type="TechStatus" status="obtainable">zpTradeRouteUpgradeAustralia2</effect>
+      <effect type="CommandRemove" tech="TradeRouteUpgrade1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="TradeRouteUpgrade2">
+        <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
   </tech>
@@ -13618,6 +13760,20 @@
   <!-- ====================================== -->
   <!-- ====================================== -->
 
+<!--<tech name="zpVolcanoLava" type="Normal">
+    <dbid>40551</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpLavaSpawnerVisible" fromprotoid="zpLavaSpawner">
+      </effect>
+      <effect type="Data" action="SpawnLava" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpLavaSpawnerVisible">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>-->
 
 
 
