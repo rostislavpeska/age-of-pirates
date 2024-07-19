@@ -427,7 +427,7 @@
       <string _locid="300425">Friendly Diasporas</string>
       <string _locid="300426">Pick a friendly Jewish Diaspora</string>
       <string _locid="300427">American Diaspora</string>
-      <string _locid="300428">Diplomatical connection \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nFreemasonry \n(Improved buildings) \n\nOpen American Relation \n(American Embassy Wagon)</string>
+      <string _locid="300428">Diplomatical connection \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nFreemasonry \n(Improved buildings) \n\nOpen American Relations \n(American Embassy Wagon)</string>
       <string _locid="300429">ZP Native Rifleman</string>
       <string _locid="300430">German Diaspora</string>
       <string _locid="300431">Research and qualitative improvents \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGerman Universities \n(Faster research) \n\nJewish Elite \n(Academy wagon)</string>
@@ -1397,7 +1397,18 @@
       <string _locid="301395">Legendary Settlement Militia (Nomad)</string>
       <string _locid="301396">Jewish Merchant (Nomad)</string>
       <string _locid="301397">Settlement Militia (Nomad)</string>
-
+      <string _locid="301398">American Embassy</string>
+      <string _locid="301399">ZP American Embassy</string>
+      <string _locid="301400">Allows to send American Shipments</string>
+      <string _locid="301401">American Embassy Wagon</string>
+      <string _locid="301402">ZP American Embassy Wagon</string>
+      <string _locid="301403">Constructs American Embassy</string>
+      <string _locid="301404">Open American Relations</string>
+      <string _locid="301405">Ships an American Embassy wagon and unlocks new American Embassy techs and units.</string>
+      <string _locid="301406">ZP NAT CON Regular</string>
+      <string _locid="301407">Marine Corps</string>
+      <string _locid="301408">Dragoon Officer</string>
+      <string _locid="301409">ZP NAT CON Carabine Cavalry</string>
 
 
 
