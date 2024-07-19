@@ -2167,14 +2167,71 @@ minInterval 30
       // 3 More Frigate or 2-4 Caravel or equivalent amount of war ships than enemy depending on difficulty
       if (cDifficultyCurrent >= cDifficultyHard && gStartOnDifferentIslands == true)
       {
-         if (age <= cAge2)
+         // AssertiveWall: Navy size based on strategy
+         if (gStrategy == cStrategyRush)
+         { 
+            if (age <= cAge2)
+            {
+               gNetNavyValue += 1200; // three caravels
+            }
+            else
+            {
+               gNetNavyValue += 2800; // two frigates and two caravels
+            }
+         }
+         else if (gStrategy == cStrategyFastIndustrial)
+         {
+            if (age <= cAge4)
+            {
+               gNetNavyValue += 800; // two caravels
+            }
+            else
+            {
+               gNetNavyValue += 2800; // two frigates and two caravels
+            }
+         }
+         else if (gStrategy == cStrategyNakedFF)
+         {
+            if (age <= cAge3)
+            {
+               gNetNavyValue += 800; // two caravels
+            }
+            else
+            {
+               gNetNavyValue += 2800; // two frigates and two caravels
+            }
+         }
+         else if (gStrategy == cStrategySafeFF)
+         {
+            if (age <= cAge3)
+            {
+               gNetNavyValue += 1200; // three caravels
+            }
+            else
+            {
+               gNetNavyValue += 2800; // two frigates and two caravels
+            }
+         }
+         else
+         {
+            if (age <= cAge2)
+            {
+               gNetNavyValue += 1600; // four caravels
+            }
+            else
+            {
+               gNetNavyValue += 2800; // three frigates and a caravel
+            }
+         }
+
+         /*if (age <= cAge2)
          {
             gNetNavyValue += 1600; // four caravels
          }
          else
          {
             gNetNavyValue += 2800; // three frigates and a caravel
-         }
+         }*/
       }
       else if (gNavyMap == true)
       {

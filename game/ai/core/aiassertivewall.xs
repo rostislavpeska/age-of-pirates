@@ -6643,6 +6643,7 @@ void gatherNavy(vector location = cInvalidVector)
    int numberFound = kbUnitQueryExecute(shipQueryID);
    int unitID = -1;
    int unitPlanID = -1;
+   vector tempLocation = cInvalidVector;
 
    for (i = 0; < numberFound)
    {
@@ -6652,14 +6653,15 @@ void gatherNavy(vector location = cInvalidVector)
       {  // Keep it close
          if (distance(kbUnitGetPosition(unitID), location) > 40)
          {
-            aiTaskUnitMove(unitID, location);
+            tempLocation = getRandomPoint(location, 37);
+            aiTaskUnitMove(unitID, tempLocation);
          }
          continue;
       }
       if ((aiPlanGetDesiredPriority(unitPlanID) == 24) ||           // Repairing
             aiPlanGetDesiredPriority(unitPlanID) == 25 ||           // Actively Defending
             aiPlanGetType(unitPlanID) == cPlanTransport ||          // Transporting
-            aiPlanGetDesiredPriority(unitPlanID) == 100 ||          // Also transporting, but maybe a reserve plan
+            aiPlanGetDesiredPriority(unitPlanID) == 100 ||          // Also transporting, but maybe a reserve plan or child attack plan
             kbUnitGetHealth(unitID) < 0.5)                          // Half health
       {
          continue;
@@ -6667,7 +6669,8 @@ void gatherNavy(vector location = cInvalidVector)
       aiPlanAddUnit(gAmphibiousAssaultPlan, unitID);
       if (gAmphibiousAssaultStage == cGatherNavy)
       {
-         aiTaskUnitMove(unitID, location);
+         tempLocation = getRandomPoint(location, 37);
+         aiTaskUnitMove(unitID, tempLocation);
       }
    }
 
@@ -7121,12 +7124,16 @@ void landForces()
       }
    }
 
-   if (unitsOnShip1 + unitsOnShip2 == 0)
+   if (unitsOnShip1 <= 0 && unitsOnShip2 <= 0)
    {  // Done transporting, move to next phase
       gAmphibiousAssaultStage = cBuildForwardBuildings;
+      gAmphibiousAssaultSavedTime = xsGetTime();
       aiPlanDestroy(gAmphibiousTransportPlan);
       // Explore enabling this earlier to allow more reinforcement and parallel decision making
-      //xsEnableRule("forwardArmyPlan");
+      if (xsIsRuleEnabled("forwardArmyPlan") == false)
+      {
+         xsEnableRule("forwardArmyPlan");
+      }
       return;
    }
 
@@ -7135,13 +7142,24 @@ void landForces()
    vector dropoff = cInvalidVector;
    vector shipLoc = cInvalidVector;
    vector tempDropoffTarget = gAmphibiousAssaultTarget;
+   vector tempDropoffTarget2 = gAmphibiousAssaultTarget;
    vector mainBaseLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
-   
-   // If the dropoff can't seem to cut it after 20 seconds, probably something in the way
-   if (xsGetTime() > gAmphibiousAssaultSavedTime + 10 * 1000)
+   static int lastTransportCheck = -1;
+
+   // Set lastTransportCheck if it's been a while
+   if (xsGetTime() > lastTransportCheck + 4 * 60 * 1000)
    {
+      lastTransportCheck = xsGetTime();
+   }
+
+   
+   // If the dropoff can't seem to cut it after 10 seconds, probably something in the way
+   if (xsGetTime() > lastTransportCheck + 10 * 1000)
+   {
+      checkForClumpedShips(gLandingShip1, gLandingShip2);
       tempDropoffTarget = selectPickupPoint(gAmphibiousAssaultTarget, mainBaseLoc);
-      gAmphibiousAssaultSavedTime = xsGetTime();
+      tempDropoffTarget2 = selectPickupPoint(gAmphibiousAssaultTarget, mainBaseLoc);
+      lastTransportCheck = xsGetTime();
    }
 
 
@@ -7149,8 +7167,9 @@ void landForces()
    {
       shipLoc = kbUnitGetPosition(gLandingShip1);
       dropoff = tempDropoffTarget;//getDropoffPoint(shipLoc, tempDropoffTarget, 0);
-      distFromShore = distance(dropoff, shipLoc);
-      if (distFromShore < 5)
+      //distFromShore = distance(dropoff, shipLoc);
+      aiTaskUnitEject(gLandingShip1, dropoff);
+      /*if (distFromShore < 5)
       {
          aiTaskUnitEject(gLandingShip1);
       }
@@ -7162,15 +7181,16 @@ void landForces()
       else
       {
          aiTaskUnitMove(gLandingShip1, dropoff);
-      }
+      }*/
    }
 
    if (unitsOnShip2 > 0)
    {
       shipLoc = kbUnitGetPosition(gLandingShip2);
-      dropoff = tempDropoffTarget;//getDropoffPoint(shipLoc, tempDropoffTarget, 0);
-      distFromShore = distance(dropoff, shipLoc);
-      if (distFromShore < 5)
+      dropoff = tempDropoffTarget2;//getDropoffPoint(shipLoc, tempDropoffTarget, 0);
+      //distFromShore = distance(dropoff, shipLoc);
+      aiTaskUnitEject(gLandingShip2, dropoff);
+      /*if (distFromShore < 5)
       {
          aiTaskUnitEject(gLandingShip2);
       }
@@ -7182,7 +7202,7 @@ void landForces()
       else
       {
          aiTaskUnitMove(gLandingShip2, dropoff);
-      }
+      }*/
    }
 
    // Add something to move the ship around if it can't reach the dropoff?
@@ -7609,7 +7629,7 @@ minInterval 20
 
    if (forwardAttackWave < 0)
    {
-      if ((forwardArmyCount >= 50 || armyPower > minArmy) || (armyPower > 0 && xsGetTime() > gAmphibiousPushTime + gAttackMissionInterval))// && forwardArmyCount > numberForward * 0.7)
+      if ((forwardArmyCount >= minArmy || armyPower > minArmy) || (armyPower > 0 && xsGetTime() > gAmphibiousPushTime + gAttackMissionInterval))// && forwardArmyCount > numberForward * 0.7)
       {
          forwardAttackWave = aiPlanCreate("Forward Attack Wave", cPlanCombat);
          aiPlanAddUnitType(forwardAttackWave, cUnitTypeLogicalTypeLandMilitary, 0, forwardArmyCount, forwardArmyCount); 
@@ -7715,7 +7735,7 @@ void establishForwardBase()
    }
    // Call it to try and take the forward army units before we destroy the plan
    forwardArmyPlan();
-   xsEnableRule("fbBuildingChain");
+   //xsEnableRule("fbBuildingChain"); 
 
    // We're done. Destroy all the plans
    // Set the center of naval operations to the forward base
@@ -7732,6 +7752,8 @@ void establishForwardBase()
 //==============================================================================
 /* FB building Chain
    builds a chain of several buildings
+
+   Note: caused china to try and build invisible projectiles
 */
 //==============================================================================
 
@@ -7918,6 +7940,7 @@ bool amphibiousAssault(vector location = cInvalidVector)
       aiPlanAddUnitType(gAmphibiousTransportPlan, cUnitTypeAbstractWarShip, 0, 0, 200);
       aiPlanSetNoMoreUnits(gAmphibiousTransportPlan, true);
       aiPlanSetDesiredPriority(gAmphibiousTransportPlan, 100); // Let no one steal us
+      aiPlanSetAllowUnderAttackResponse(gAmphibiousTransportPlan, false);  // Don't respond to attack, try to finish transport
       //aiPlanSetActive(gAmphibiousTransportPlan);
    }
 
@@ -8020,7 +8043,7 @@ minInterval 3
 
 rule amphibiousAssaultRule
 inactive
-minInterval 5
+minInterval 3
 {
    /*
       cNavyRetreat = -1;             // Retreat
@@ -8050,8 +8073,9 @@ minInterval 5
    }
 
    // Check for clumped ships
-   if (gAmphibiousAssaultStage == cLoadForces || gAmphibiousAssaultStage == cLandForces)
-   {
+   if (gAmphibiousAssaultStage == cLoadForces)
+   {  // NOTE: This will never happen this way for landings since the transport looks for new spot every 10 seconds
+      // for landings, this is called within the landForces() function
       if (xsGetTime() > gAmphibiousAssaultSavedTime + 20000)
       {
          checkForClumpedShips(gLandingShip1, gLandingShip2);
