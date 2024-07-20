@@ -26,14 +26,14 @@
     </parameters>
   </submaterial>
   <submaterial name="matc">
-    <materialdef name="default">
+    <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_basecolor">
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
       </texture>
-      <texture name="Normals" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_normals">
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\transparent_texture">
       </texture>
-      <texture name="Masks" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_masks">
+      <texture name="Masks" override="buildings\asian_civs\consulate\textures\transparent_texture">
       </texture>
     </parameters>
   </submaterial>

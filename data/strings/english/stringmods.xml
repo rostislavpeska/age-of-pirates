@@ -819,7 +819,7 @@
       <string _locid="300818">Venetian Exploration Fleet</string>
       <string _locid="300819">Ships Venetian Galleass (Can be sent in always when bellow build limit: 2)</string>
       <string _locid="300820">Venetian Expeditionary Fleet</string>
-      <string _locid="300821">Ships two Venetian Galleass ships</string>
+      <string _locid="300821">Ships Venetian Galleass and Venetian Bombard in it</string>
       <string _locid="300822">Venetian Mercenaries</string>
       <string _locid="300823">Ships Adriatic Sea Mercenaries (Can be sent always when bellow population limit)</string>
       <string _locid="300824">Doge's Guard</string>
@@ -1409,7 +1409,18 @@
       <string _locid="301407">Marine Corps</string>
       <string _locid="301408">Dragoon Officer</string>
       <string _locid="301409">ZP NAT CON Carabine Cavalry</string>
-
+      <string _locid="301410">ZP NAT CON Gatling Gun</string>
+      <string _locid="301411">Volley Gun</string>
+      <string _locid="301412">American Expeditionary Force</string>
+      <string _locid="301413">Ships Marine Infantry</string>
+      <string _locid="301414">Ships American cavalry</string>
+      <string _locid="301415">Ships American cavalry and infantry</string>
+      <string _locid="301416">American Expeditionary Company</string>
+      <string _locid="301417">American Expeditionary Army</string>
+      <string _locid="301418">American Brigade</string>
+      <string _locid="301419">Ships American cavalry, infantry and artillery</string>
+      <string _locid="301420">American Expeditionary Fleet</string>
+      <string _locid="301421">Ships Steamer full with Marine Corpses</string>
 
 
 
