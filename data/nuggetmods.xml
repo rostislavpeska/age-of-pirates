@@ -10,20 +10,7 @@
       <maptype>hawaii</maptype>
     </nugget>
     <nugget>
-      <name>Jeff1</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-    </nugget>
-    <nugget>
       <name>Kev1</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-      <difficulty>1</difficulty>
-    </nugget>
-    <nugget>
-      <name>Kev2</name>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
@@ -37,21 +24,19 @@
       <difficulty>1</difficulty>
     </nugget>
     <nugget>
-      <name>Kev4</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-      <difficulty>1</difficulty>
-    </nugget>
-    <nugget>
-      <name>Kev5</name>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-      <difficulty>1</difficulty>
-    </nugget>
-    <nugget>
       <name>Settler6</name>
+      <maptype>australia</maptype>
+      <maptype>newzealand</maptype>
+      <maptype>hawaii</maptype>
+    </nugget>
+    <nugget>
+      <name>zpKev5</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetDroppedSupplies</nuggetunit>
+      <rolloverstringid>34585</rolloverstringid>
+      <applystringid>34586</applystringid>
+      <resource>Gold</resource>
+      <amount>50</amount>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
@@ -194,6 +179,7 @@
       <nuggetunit>NuggetAbandonedCabin</nuggetunit>
       <rolloverstringid>301374</rolloverstringid>
       <applystringid>301375</applystringid>
+      <maptype>australia</maptype>
       <resource>Wood</resource>
       <amount>85</amount>
       <guardian>zpGrdBushRanger</guardian>
