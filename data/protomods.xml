@@ -27636,6 +27636,7 @@
     <train row="0" page="6" column="15">Plantation</train>
     <train row="0" page="6" column="4">deFurTrade</train>
     <train row="0" page="6" column="20">zpAcademy</train>
+    <train row="0" page="6" column="21">zpAmericanEmbassy</train>
     <train row="0" page="255" column="0">ypWJGiantBuddha2</train>
     <train row="0" page="255" column="0">ypWJGiantBuddha3</train>
     <train row="0" page="255" column="0">ypWJGiantBuddha4</train>
@@ -27896,11 +27897,9 @@
     <unittype>AbstractFindBarracks</unittype>
     <train row="0" page="0" column="0">zpNatConRegular</train>
     <train row="0" page="0" column="1">zpNatConUSCavalry</train>
-
     <tech row="0" page="1" column="0">zpNatConAmericanCompany</tech>
     <tech row="0" page="1" column="1">zpNatConAmericanForce</tech>
     <tech row="0" page="1" column="2">zpNatConAmericanArmy</tech>
-
     <tech row="0" page="2" column="1">zpNatConAmericanArmyBig</tech>
     <tech row="0" page="2" column="2">zpAmericanExpeditionaryFleet</tech>
     <flag>CollidesWithProjectiles</flag>
