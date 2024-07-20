@@ -360,8 +360,8 @@
       <string _locid="300358">ZP Maya Holcan Spearman Proxy</string>
       <string _locid="300359">Zapotec</string>
       <string _locid="300360">Jesuit</string>
-      <string _locid="300361">Temple Travois</string>
-      <string _locid="300362">ZP Temple Travois</string>
+      <string _locid="300361">Native Consulate Travois</string>
+      <string _locid="300362">ZP Native Consulate Travois</string>
       <string _locid="300363">Native Outpost</string>
       <string _locid="300364">ZP Native Outpost</string>
       <string _locid="300365">Outpost Travois</string>
@@ -371,7 +371,7 @@
       <string _locid="300369">Invite Neighbors</string>
       <string _locid="300370">Select to choose a local power with which to align.</string>
       <string _locid="300371">Allows you to build mighty defensive structures.</string>
-      <string _locid="300372">Build a local Meeting Point and pick a partner from a different tribe.</string>
+      <string _locid="300372">Build a Native Consulate and pick a partner from a different tribe.</string>
       <string _locid="300373">Delivers Skull Knights and allows their training.</string>
       <string _locid="300374">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHolcan Javelineer, Healer \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nCotton Armor, Maya Calendar, Maya Pyramids</string>
       <string _locid="300375">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nLightning Warrior \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nFood of the Gods, Cult of the Dead, Cloud People</string>
@@ -418,8 +418,8 @@
       <string _locid="300416">Jewish Settlement Wagon</string>
       <string _locid="300417">ZP NAT Jewish Trade Wagon</string>
       <string _locid="300418">Trains Jewish units, autogeathers coin and heals nearby units.</string>
-      <string _locid="300419">Migration</string>
-      <string _locid="300420">Ships a Jewish Settlement Wagon and increases Jewish Settler build limit.</string>
+      <string _locid="300419">Big Migration</string>
+      <string _locid="300420">Ships a Jewish Settlement Wagon giving you an option to train additional Jewish Merchant and Settlement Militias.</string>
       <string _locid="300421">Kabbalah</string>
       <string _locid="300422">Improves Jewish Settler attack and hitpoints.</string>
       <string _locid="300423">Yom Kippur</string>
@@ -427,12 +427,12 @@
       <string _locid="300425">Friendly Diasporas</string>
       <string _locid="300426">Pick a friendly Jewish Diaspora</string>
       <string _locid="300427">American Diaspora</string>
-      <string _locid="300428">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nSharpshooter \n\nAmerican ranged infantry. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nFreemasonry \n(Improved buildings)</string>
+      <string _locid="300428">Diplomatical connection \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nFreemasonry \n(Improved buildings) \n\nOpen American Relations \n(American Embassy Wagon)</string>
       <string _locid="300429">ZP Native Rifleman</string>
       <string _locid="300430">German Diaspora</string>
-      <string _locid="300431">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWar Wagon \n\nMighty war wagon with a cannon. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGerman Universities \n(Faster research)</string>
+      <string _locid="300431">Research and qualitative improvents \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGerman Universities \n(Faster research) \n\nJewish Elite \n(Academy wagon)</string>
       <string _locid="300432">Russian Diaspora</string>
-      <string _locid="300433">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nCossack \n\nHeavy hand cavalry training. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nOrthodox Communities \n(Faster training)</string>
+      <string _locid="300433">Quantitative Improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nOrthodox Communities \n(Faster training) \n\nBig Migration \n(Jewish Settlement Wagon)</string>
       <string _locid="300434">Elite Maltese Marksman</string>
       <string _locid="300435">ZP Maltese Marksman</string>
       <string _locid="300436">Maltese elite ranged infantry</string>
@@ -451,9 +451,9 @@
       <string _locid="300449">Legendary Gatling Camel</string>
       <string _locid="300450">Disciplined Gatling Camel</string>
       <string _locid="300451">German Universities</string>
-      <string _locid="300452">All research is done faster by 50%</string>
+      <string _locid="300452">All research is done faster by 25%</string>
       <string _locid="300453">Orthodox Communities</string>
-      <string _locid="300454">Higher birthrate causes that all units get trained faster by 25%</string>
+      <string _locid="300454">Higher birthrate causes that all units get trained faster by 15%</string>
       <string _locid="300455">Freemasonry</string>
       <string _locid="300456">All buildings get built faster and have more hitpoints.</string>
       <string _locid="300457">Salt Floe</string>
@@ -819,7 +819,7 @@
       <string _locid="300818">Venetian Exploration Fleet</string>
       <string _locid="300819">Ships Venetian Galleass (Can be sent in always when bellow build limit: 2)</string>
       <string _locid="300820">Venetian Expeditionary Fleet</string>
-      <string _locid="300821">Ships two Venetian Galleass ships</string>
+      <string _locid="300821">Ships Venetian Galleass and Venetian Bombard in it</string>
       <string _locid="300822">Venetian Mercenaries</string>
       <string _locid="300823">Ships Adriatic Sea Mercenaries (Can be sent always when bellow population limit)</string>
       <string _locid="300824">Doge's Guard</string>
@@ -934,7 +934,7 @@
       <string _locid="300932">Bulgarian Patriarchate</string>
       <string _locid="300933">Naval improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBulgarian Boyar \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nDanube Steamers, Black Sea Fleet</string>
       <string _locid="300934">Moscow Patriarchate</string>
-      <string _locid="300935">Offensive improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDvoryanin \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nRussian Guard, Tsar Kolokol</string>
+      <string _locid="300935">zpJewishDiaspora \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDvoryanin \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nRussian Guard, Tsar Kolokol</string>
       <string _locid="300936">Tsar Kolokol</string>
       <string _locid="300937">Ships two superheavy "Tsar Cannons"</string>
       <string _locid="300938">Black Sea Fleet</string>
@@ -1380,6 +1380,49 @@
       <string _locid="301378">Stagecoach</string>
       <string _locid="301379">New South Wales Railways</string>
       <string _locid="301380">Aboriginal Trader</string>
+      <string _locid="301381">ZP Nat Jewish Militia</string>
+      <string _locid="301382">ZP Nat Merc Jewish Militia</string>
+      <string _locid="301383">ZP Nat Nomad Jewish Militia</string>
+      <string _locid="301384">Veteran Jewish</string>
+      <string _locid="301385">Guard Jewish</string>
+      <string _locid="301386">Veteran Settlement Militia</string>
+      <string _locid="301387">Guard Settlement Militia</string>
+      <string _locid="301388">Legendary Settlement Militia</string>
+      <string _locid="301389">Updates Jewish units attack and hitpoints</string>
+      <string _locid="301390">Jewish Elite</string>
+      <string _locid="301391">Jewish Merchant</string>
+      <string _locid="301392">ZP NAT Nomad Jewish Settler</string>
+      <string _locid="301393">Veteran Settlement Militia (Nomad)</string>
+      <string _locid="301394">Guard Settlement Militia (Nomad)</string>
+      <string _locid="301395">Legendary Settlement Militia (Nomad)</string>
+      <string _locid="301396">Jewish Merchant (Nomad)</string>
+      <string _locid="301397">Settlement Militia (Nomad)</string>
+      <string _locid="301398">American Embassy</string>
+      <string _locid="301399">ZP American Embassy</string>
+      <string _locid="301400">Allows to send American Shipments</string>
+      <string _locid="301401">American Embassy Wagon</string>
+      <string _locid="301402">ZP American Embassy Wagon</string>
+      <string _locid="301403">Constructs American Embassy</string>
+      <string _locid="301404">Open American Relations</string>
+      <string _locid="301405">Ships an American Embassy wagon and unlocks new American Embassy techs and units.</string>
+      <string _locid="301406">ZP NAT CON Regular</string>
+      <string _locid="301407">Marine Corps</string>
+      <string _locid="301408">Dragoon Officer</string>
+      <string _locid="301409">ZP NAT CON Carabine Cavalry</string>
+      <string _locid="301410">ZP NAT CON Gatling Gun</string>
+      <string _locid="301411">Volley Gun</string>
+      <string _locid="301412">American Expeditionary Force</string>
+      <string _locid="301413">Ships Marine Infantry</string>
+      <string _locid="301414">Ships American cavalry</string>
+      <string _locid="301415">Ships American cavalry and infantry</string>
+      <string _locid="301416">American Expeditionary Company</string>
+      <string _locid="301417">American Expeditionary Army</string>
+      <string _locid="301418">American Brigade</string>
+      <string _locid="301419">Ships American cavalry, infantry and artillery</string>
+      <string _locid="301420">American Expeditionary Fleet</string>
+      <string _locid="301421">Ships Steamer full with Marine Corpses</string>
+
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

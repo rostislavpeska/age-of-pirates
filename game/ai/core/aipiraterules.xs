@@ -141,6 +141,8 @@ minInterval 1
    {
       xsEnableRule("maintainJewishSettlers");
       xsEnableRule("jewishBuildingMonitor");
+      xsEnableRule("nativeWagonMonitor");
+      xsEnableRule("zpJewishTechMonitor");
    }
    if ((getGaiaUnitCount(cUnitTypezpSPCBlueMosque) > 0) || (getGaiaUnitCount(cUnitTypezpSPCGreatMosque) > 0))
    {
@@ -808,6 +810,7 @@ inactive
 minInterval 5
 {
    int planID = -1;
+   int planBID = -1;
 
    // =================
    // Now Jewish
@@ -816,18 +819,36 @@ minInterval 5
    if (jewishVillager > 0)
    {
       // The build limit for the Academy is 1, so don't bother looking it up
-      int AcademyLimit = 1;
-      int AcademyCount = kbUnitCount(cMyID, cUnitTypezpAcademy, cUnitStateABQ);
-      if (AcademyCount < AcademyLimit)
-      {
-         planID = createSimpleBuildPlan(cUnitTypezpAcademy, 1, 90, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 0);
-         if (jewishVillager > 0)
+      if (kbTechGetStatus(cTechzpJewishAcademy) == cTechStatusActive) {
+         int AcademyLimit = 1;
+         int AcademyCount = kbUnitCount(cMyID, cUnitTypezpAcademy, cUnitStateABQ);
+         if (AcademyCount < AcademyLimit)
          {
-            aiPlanAddUnitType(planID, cUnitTypezpNatSettlerJewish, 1, 1, 1);
+            planID = createSimpleBuildPlan(cUnitTypezpAcademy, 1, 90, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 0);
+            if (jewishVillager > 0)
+            {
+               aiPlanAddUnitType(planID, cUnitTypezpNatSettlerJewish, 1, 1, 1);
+            }
+            else
+            {  // Shouldn't ever get here, but just in case
+               aiPlanDestroy(planID);
+            }
          }
-         else
-         {  // Shouldn't ever get here, but just in case
-            aiPlanDestroy(planID);
+      }
+      if (kbTechGetStatus(cTechzpJewishEmbassy) == cTechStatusActive) {
+         int AmEmbassyLimit = 1;
+         int AmEmbassyCount = kbUnitCount(cMyID, cUnitTypezpAmericanEmbassy, cUnitStateABQ);
+         if (AmEmbassyCount < AmEmbassyLimit)
+         {
+            planBID = createSimpleBuildPlan(cUnitTypezpAmericanEmbassy, 1, 90, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 0);
+            if (jewishVillager > 0)
+            {
+               aiPlanAddUnitType(planBID, cUnitTypezpNatSettlerJewish, 1, 1, 1);
+            }
+            else
+            {  // Shouldn't ever get here, but just in case
+               aiPlanDestroy(planBID);
+            }
          }
       }
    }
@@ -1871,6 +1892,11 @@ minInterval 15
          case cUnitTypezpWaterTempleTravois:
          {
              buildingType = cUnitTypezpWaterTemple;
+             break;
+         }
+         case cUnitTypezpAmericanEmbassyWagon:
+         {
+             buildingType = cUnitTypezpAmericanEmbassy;
              break;
          }
          case cUnitTypezpAcademyWagon:
@@ -2979,4 +3005,39 @@ minInterval 2
    aiPlanAddUnit(planID, getUnit(cUnitTypezpAustralianSchoolWagon, cPlayerRelationSelf));
 
    xsDisableSelf();
+}
+
+//==============================================================================
+// ZP Jewish Tech Monitor
+//==============================================================================
+rule zpJewishTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketJewish, cUnitStateAny) == 0)
+      {
+      return; // Player has no Jewish socket.
+      }
+
+      // Jewish Americans
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpJewishEmbassy,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateJewishAmericans) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Jewish Germans
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpJewishAcademy,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateJewishGermans) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Embassy Cannons
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatConAmericanArmyBig,
+      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpAmericanEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpAmericanEmbassy);
+
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
 }

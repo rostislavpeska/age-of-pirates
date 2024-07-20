@@ -10,13 +10,7 @@
         <assetreference type="GrannyModel">
             <file>units\natives\iroquois\musket_rider\musket_rider_horse2</file>
         </assetreference>
-        <decal>
-            <effecttype>default</effecttype>
-            <texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
-            <selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture>
-            <width>1.50</width>
-            <height>3.00</height>
-        </decal>
+        <decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_hero_64x64</texture><selectedtexture>shadows_selections\selection_hero_64x64</selectedtexture><width>1.50</width><height>3.00</height></decal>
         <attach a="Rider" frombone="hotspot" tobone="ATTACHPOINT" syncanims="1"></attach>
     </component>
     <anim>Walk<assetreference type="GrannyAnim"><file>animation_library\cavalry\horse_canter</file><tag type="FootstepLeft" footprinttype="Horse" footprintbone="HS BONE HOOF FRNT LT">1.00</tag><tag type="FootstepLeft" footprinttype="Horse" footprintbone="HS BONE HOOF BACK LT">0.83</tag><tag type="FootstepRight" footprinttype="Horse" footprintbone="HS BONE HOOF FRNT RT">0.70</tag><tag type="FootstepRight" footprinttype="Horse" footprintbone="HS BONE HOOF BACK RT">0.50</tag></assetreference><component>ModelComp</component></anim>
