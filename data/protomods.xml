@@ -22993,7 +22993,7 @@
     <maxhitpoints>104.0000</maxhitpoints>
     <los>10.0000</los>
     <unitaitype>Passive</unitaitype>
-    <bounty resourcetype="Gold">260.0000</bounty>
+    <bounty>0.0000</bounty>
     <communityplazaweight>0.3334</communityplazaweight>
     <initialresource resourcetype="Food">520.0000</initialresource>
     <resourcedecay>0.7500</resourcedecay>
@@ -23063,9 +23063,9 @@
     <maxhitpoints>100.0000</maxhitpoints>
     <los>10.0000</los>
     <unitaitype>Passive</unitaitype>
-    <bounty resourcetype="Gold">250.0000</bounty>
+    <bounty>0.0000</bounty>
     <communityplazaweight>0.3334</communityplazaweight>
-    <initialresource resourcetype="Food">500.0000</initialresource>
+    <initialresource resourcetype="Food">450.0000</initialresource>
     <resourcedecay>0.7500</resourcedecay>
     <resourcesubtype>meat</resourcesubtype>
     <minimapcolor red="0.5000" blue="0.2500" green="0.2000">
@@ -23925,9 +23925,8 @@
     <los>10.0000</los>
     <unitaitype>Predator</unitaitype>
     <initialunitaistance>Defensive</initialunitaistance>
-    <bounty resourcetype="Gold">300.0000</bounty>
-    <bounty resourcetype="XP">300.0000</bounty>
-    <initialresource resourcetype="Food">600.0000</initialresource>
+    <bounty>14.0000</bounty>
+    <initialresource resourcetype="Food">400.0000</initialresource>
     <resourcedecay>0.7500</resourcedecay>
     <resourcesubtype>meat</resourcesubtype>
     <minimapcolor red="0.5000" blue="0.2500" green="0.2000">
@@ -25883,7 +25882,7 @@
     <editornameid>301343</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1000</maxvelocity>
+    <maxvelocity>0.3000</maxvelocity>
     <maxrunvelocity>1.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>terrain\lavabig.xml</animfile>
@@ -25927,7 +25926,7 @@
     <editornameid>301348</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1000</maxvelocity>
+    <maxvelocity>0.3000</maxvelocity>
     <maxrunvelocity>1.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>terrain\lava.xml</animfile>
@@ -25971,7 +25970,7 @@
     <editornameid>301349</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1000</maxvelocity>
+    <maxvelocity>0.3000</maxvelocity>
     <maxrunvelocity>1.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>terrain\lava2.xml</animfile>
@@ -26015,7 +26014,7 @@
     <editornameid>301350</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1000</maxvelocity>
+    <maxvelocity>0.3000</maxvelocity>
     <maxrunvelocity>1.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>terrain\lava3.xml</animfile>
@@ -26059,7 +26058,7 @@
     <editornameid>301351</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1000</maxvelocity>
+    <maxvelocity>0.3000</maxvelocity>
     <maxrunvelocity>1.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>terrain\lava4.xml</animfile>
@@ -26103,7 +26102,7 @@
     <editornameid>301352</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.1000</maxvelocity>
+    <maxvelocity>0.3000</maxvelocity>
     <maxrunvelocity>1.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <animfile>terrain\lava5.xml</animfile>
