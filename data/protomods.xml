@@ -7571,13 +7571,15 @@
     <maxvelocity>0.0000</maxvelocity>
     <buildlimit>1</buildlimit>
     <movementtype>land</movementtype>
-    <animfile>buildings\spc\inca_temple\zp_aztec_temple.xml</animfile>
+    <animfile>buildings\asian_civs\consulate\consulate_aztec.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\buildings\water_temple.png</icon>
-    <portraiticon>resources\art\buildings\spc\inca_temple\inca_temple_portrait.png</portraiticon>
+    <icon>resources\art\buildings\native_consulate_icon.png</icon>
+    <portraiticon>resources\art\buildings\native_consulate_portrait.png</portraiticon>
     <rollovertextid>300379</rollovertextid>
     <shortrollovertextid>300379</shortrollovertextid>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
     <initialhitpoints>4500.0000</initialhitpoints>
     <maxhitpoints>4500.0000</maxhitpoints>
     <buildpoints>50.0000</buildpoints>

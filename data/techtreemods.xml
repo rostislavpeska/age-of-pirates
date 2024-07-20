@@ -5594,6 +5594,9 @@
       </effect>
       <effect type="SetName" proto="zpWaterTemple" culture="none" newname="300401">
       </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpWaterTemple" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffWaterTemple" type="Normal">
@@ -5671,6 +5674,9 @@
       <effect type="TechStatus" status="obtainable">ChampionZapotec</effect>
       <effect type="SetName" proto="zpWaterTemple" culture="none" newname="300402">
       </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpWaterTemple" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
     </effects>
   </tech>
   <tech name="zpConsulateNatJesuit" type="Normal">
@@ -5700,6 +5706,9 @@
       <effect type="TechStatus" status="obtainable">ypNatDisciplinedJesuit</effect>
       <effect type="SetName" proto="zpWaterTemple" culture="none" newname="300400">
       </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpWaterTemple" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
     </effects>
   </tech>
   <tech name ="zpAztecWaterTemple" type ="Normal">
@@ -5707,7 +5716,7 @@
 		<displaynameid>300859</displaynameid>
   	<researchpoints>20.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
-		<icon>resources\images\icons\techs\water_temple_tech.png</icon>
+		<icon>resources\images\icons\techs\native_consulate_tech.png</icon>
     <cost resourcetype ="Wood">300.0000</cost>
     <cost resourcetype ="Gold">300.0000</cost>
 		<rollovertextid>300372</rollovertextid>

@@ -360,8 +360,8 @@
       <string _locid="300358">ZP Maya Holcan Spearman Proxy</string>
       <string _locid="300359">Zapotec</string>
       <string _locid="300360">Jesuit</string>
-      <string _locid="300361">Temple Travois</string>
-      <string _locid="300362">ZP Temple Travois</string>
+      <string _locid="300361">Native Consulate Travois</string>
+      <string _locid="300362">ZP Native Consulate Travois</string>
       <string _locid="300363">Native Outpost</string>
       <string _locid="300364">ZP Native Outpost</string>
       <string _locid="300365">Outpost Travois</string>
@@ -371,7 +371,7 @@
       <string _locid="300369">Invite Neighbors</string>
       <string _locid="300370">Select to choose a local power with which to align.</string>
       <string _locid="300371">Allows you to build mighty defensive structures.</string>
-      <string _locid="300372">Build a local Meeting Point and pick a partner from a different tribe.</string>
+      <string _locid="300372">Build a Native Consulate and pick a partner from a different tribe.</string>
       <string _locid="300373">Delivers Skull Knights and allows their training.</string>
       <string _locid="300374">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHolcan Javelineer, Healer \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nCotton Armor, Maya Calendar, Maya Pyramids</string>
       <string _locid="300375">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nLightning Warrior \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nFood of the Gods, Cult of the Dead, Cloud People</string>
