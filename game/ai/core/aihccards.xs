@@ -611,6 +611,31 @@ highFrequency // Run every frame until it's disabled.
                   exclude = true;
                }
             }
+
+            // AssertiveWall: Exclude unit shipments in treaty games
+            //                Exclude resource crates unless they are inf age 4 crates
+            if (exclude == false && aiTreatyGetEnd() > 19 * 60 * 1000)
+            {
+               if ((currentCardFlags & cHCCardFlagUnit) == cHCCardFlagUnit)
+               {
+                  if (cardAgePreReq < cAge4)
+                  {
+                     if (cardAgePreReq == cAge1 && cMyCiv == cCivDEInca)
+                     {}
+                     else
+                     {
+                        exclude = true;
+                     }
+                  }
+               }
+               else if ((currentCardFlags & cHCCardFlagResourceCrate) == cHCCardFlagResourceCrate)
+               {
+                  if (cardSendCount >= 0 && cardAgePreReq < cAge4)
+                  {
+                     exclude = true;
+                  }
+               }
+            }
             
             if (exclude == true) // Clearly this card is very bad!
             {
@@ -928,6 +953,36 @@ highFrequency // Run every frame until it's disabled.
             if (i >= startingCardIndex + 7)
             {
                break;
+            }
+
+            // AssertiveWall: Treaty adjustments
+            //    Increase priority of unit upgrades in treaty
+            //    Allow for infinite age 4 resource crates
+            if (aiTreatyGetEnd() > 19 * 60 * 1000)
+            {
+               if (((currentCardFlags & cHCCardFlagUnitUpgrade) == cHCCardFlagUnitUpgrade) || (currentCardFlags == 0))
+               {
+                  cardPriority += 3 + aiRandInt(4); 
+               }
+               else if ((currentCardFlags & cHCCardFlagResourceCrate) == cHCCardFlagResourceCrate)
+               {
+                  if (cardSendCount < 0 && cardAgePreReq == cAge4)
+                  {
+                     cardPriority += 2;
+                  }
+               }
+            }
+
+            // AssertiveWall: Island adjustment. Make sure we include our caravel unit in age 2
+            if (gStartOnDifferentIslands == true)
+            {
+               if (civIsNative() == false)
+               {
+                  if (unit == gCaravelUnit)
+                  {
+                     cardPriority += 99;
+                  }
+               }
             }
          }
          
@@ -1342,17 +1397,17 @@ highFrequency // Run every frame until it's disabled.
                         toPick = 1; // Still add the Villager though.
                      }
                   }
-                  // AssertiveWall: handle the island case. No units unless hard rushing
-                  else if (gStartOnDifferentIslands == true && gStrategy == cStrategyRush) 
+                  // AssertiveWall: handle the island case. No units other than caravels and villagers unless hard rushing
+                  else if (gStartOnDifferentIslands == true && gStrategy != cStrategyRush) 
                   {
                      if ((cMyCiv == cCivIndians) || (cMyCiv == cCivPortuguese) || (cMyCiv == cCivRussians) || 
                          (cMyCiv == cCivChinese) || (cMyCiv == cCivDESwedish) || (cMyCiv == cCivDEAmericans))
                      {
-                        toPick = 0;
+                        toPick = 2;
                      }
                      else
                      {
-                        toPick = 1; // Still add the Villager though.
+                        toPick = 3; // Still add the Villager though.
                      }
                   }
                   else
@@ -1373,6 +1428,11 @@ highFrequency // Run every frame until it's disabled.
                         toPickNaval = 2;
                      }
                      debugHCCards("Naval Commerce Units: " + toPickNaval);
+                  }
+                  // AssertiveWall: make sure we pick 1 naval on island maps
+                  if (toPickNaval < 1 && gStartOnDifferentIslands == true)
+                  {
+                     toPickNaval = 1;
                   }
                   debugHCCards("Land Commerce Units/Villagers: " + (toPick - toPickNaval));
                }
@@ -1527,11 +1587,6 @@ highFrequency // Run every frame until it's disabled.
                   {
                      toPick = 2; // 2 Resource crates in the Fortress Age.
                   }
-                  // AssertiveWall: Grab one less on island maps
-                  if (gStartOnDifferentIslands == true)
-                  {
-                     toPick -= 1;
-                  }
                   debugHCCards("***Fortress crates: " + toPick);
                }
 
@@ -1608,6 +1663,11 @@ highFrequency // Run every frame until it's disabled.
                   {
                      toPickNaval = 1;
                      debugHCCards("***Naval Fortress Upgrades: " + toPickNaval);
+                  }
+                  // AssertiveWall: More upgrades in treaty
+                  if (aiTreatyGetEnd() > 19 * 60 * 1000)
+                  {
+                     toPick += 4;
                   }
                   debugHCCards("***Land Fortress Upgrades: " + (toPick - toPickNaval));
                }
@@ -1820,6 +1880,12 @@ highFrequency // Run every frame until it's disabled.
                   {
                      toPick = 0; // 0 Resource crate in the Industrial Age.
                   }
+
+                  // AssertiveWall: allow one on treaty games
+                  if (aiTreatyGetEnd() > 19 * 60 * 1000)
+                  {
+                     toPick = 1;
+                  }
                   debugHCCards("***Industrial crates: " + toPick);
                }
 
@@ -1874,11 +1940,6 @@ highFrequency // Run every frame until it's disabled.
                       (startingResources == cGameStartingResourcesUltra)) // Add crate onto this.
                   {
                      toPick++;
-                  }
-                  // AssertiveWall: Add more upgrades on island maps
-                  if (gStartOnDifferentIslands == true)
-                  {
-                     toPick += 2;
                   }
                   debugHCCards("***Land Industrial Upgrades: " + (toPick));
                }
@@ -1941,6 +2002,11 @@ highFrequency // Run every frame until it's disabled.
                {
                   toPick = 1; // Always 1 infinite land unit for Industrial.
                   debugHCCards("***Land Industrial Infinite Units: 1");
+                  // AssertiveWall: allow another on treaty games
+                  if (aiTreatyGetEnd() > 19 * 60 * 1000)
+                  {
+                     toPick = 2;
+                  }
                }
                
                if (toPick > 0)
