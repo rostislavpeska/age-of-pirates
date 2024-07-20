@@ -7481,7 +7481,7 @@ minInterval 20
    {
       gforwardArmyPlan = aiPlanCreate("Forward Army: " + gForwardBaseID, cPlanCombat);
       aiPlanAddUnitType(gforwardArmyPlan, cUnitTypeLogicalTypeLandMilitary, 0, desiredMilitary, maxMilitary); 
-      aiPlanSetVariableInt(gforwardArmyPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeDefend);
+      aiPlanSetVariableInt(gforwardArmyPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack); // Attack plans can transport, defend plans cannot
       aiPlanSetVariableInt(gforwardArmyPlan, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
       aiPlanSetVariableFloat(gforwardArmyPlan, cCombatPlanTargetEngageRange, 0, 60.0);   // Just use the engage range since it is away from base
       aiPlanSetVariableVector(gforwardArmyPlan, cCombatPlanTargetPoint, 0, gForwardBaseLocation);
@@ -8120,7 +8120,7 @@ minInterval 3
          bombardCoast(); // Keep bombarding the coast
          //moveInland();
 
-         trainFromGalleons();
+         //trainFromGalleons();
          buildForwardTowers();
          break;
       }
@@ -8128,7 +8128,7 @@ minInterval 3
       {
          // Once we're established we can let our navy do other things, except galleons
          //moveInland();
-         trainFromGalleons();
+         //trainFromGalleons();
          establishForwardBase();
          break;
       }

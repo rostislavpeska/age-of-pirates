@@ -134,10 +134,16 @@ void addUnitsToMilitaryPlan(int planID = -1)
       return;
    }
    // AssertiveWall: undo this for now
-   else if ((gRevolutionType & cRevolutionFinland) == 0 && gStartOnDifferentIslands == true)
+      int vilQueryID = -1;
+      int numberVilWanted = 2;
+      int unitID = -1;
+      int unitPlanID = -1;
+      vector unitLoc = cInvalidVector;
+      int numberAdded = 0;
+   /*else if ((gRevolutionType & cRevolutionFinland) == 0 && gStartOnDifferentIslands == true)
    {
       aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
-      aiPlanSetNoMoreUnits(planID, true);
+      //aiPlanSetNoMoreUnits(planID, true);  somehow we reach here?
 
       //AssertiveWall: Only add units on the mainland for island maps.
       int armyQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
@@ -167,7 +173,7 @@ void addUnitsToMilitaryPlan(int planID = -1)
          numberAdded = numberAdded + 1;
          aiPlanAddUnit(planID, unitID);
       }
-   }
+   }*/
 
    // For the finland revolution, keep some karelian jaegers around to sustain the economy
    int numberAvailableEconUnits = 0;
