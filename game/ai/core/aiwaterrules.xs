@@ -9,6 +9,81 @@
 */
 //==============================================================================
 
+
+//==============================================================================
+/* childTransportRule
+
+   Some plans don't have the ability to automatically transport between points
+   This rule steps through all the child plans, and sees if the start/finish 
+   points require a transport, and creates a new child transport plan if they do
+*/
+//==============================================================================
+rule childTransportRule
+inactive
+minInterval 5
+{
+   int numPlans = aiPlanGetActiveCount();
+   int existingPlanID = -1;
+   int existingParentID = -1;
+
+   // See if there are already active transport plans
+   for (j = 0; < numPlans)
+   {
+      existingPlanID = aiPlanGetIDByActiveIndex(j);
+      if (aiPlanGetType(existingPlanID) == cPlanTransport)
+      {
+         return;
+      }
+   }
+
+   // Step through plans, and see if there's a child plan we need to switch into a transport
+   
+   for (i = 0; < numPlans)
+   {
+      existingPlanID = aiPlanGetIDByActiveIndex(i);
+      if (aiPlanGetParentID(existingPlanID) < 0) // No parent so it's not a child plan
+      {
+         continue;
+      }
+
+      // We're this far, we have a child plan, likely a combat plan for gLandReserve or the primary defend plan
+      vector startingPos = kbUnitGetPosition(aiPlanGetUnitByIndex(existingPlanID, 0));
+      vector targetPos =  aiPlanGetVariableVector(existingPlanID, cCombatPlanTargetPoint, 0);
+      int startingAreaGroupID = kbAreaGroupGetIDByPosition(startingPos);
+      int targetAreaGroupID = kbAreaGroupGetIDByPosition(targetPos);
+      int childTransportPlan = -1;
+      int existingPlanUnitCount = -1;
+      int tempUnitID = -1;
+
+      if (startingPos == cInvalidVector || targetPos == cInvalidVector)
+      {
+         continue;
+      }
+
+      if (kbAreAreaGroupsPassableByLand(startingAreaGroupID, targetAreaGroupID) == false)
+      {
+         childTransportPlan = createTransportPlan(startingPos, targetPos, 100, false, true);
+         existingPlanUnitCount = aiPlanGetNumberUnits(existingPlanID, cUnitTypeLogicalTypeGarrisonInShips);
+
+         if (childTransportPlan > 0)
+         {
+            aiPlanAddUnitType(childTransportPlan, cUnitTypeLogicalTypeGarrisonInShips, existingPlanUnitCount, existingPlanUnitCount, existingPlanUnitCount);
+            aiPlanSetNoMoreUnits(childTransportPlan, true);
+            for (k = 0; < existingPlanUnitCount)
+            {
+               tempUnitID = aiPlanGetUnitByIndex(existingPlanID, k);
+               aiPlanAddUnit(childTransportPlan, tempUnitID);
+            }
+
+            existingParentID = aiPlanGetParentID(existingPlanID);
+            aiPlanSetParentID(childTransportPlan, existingParentID);
+            aiPlanSetActive(childTransportPlan);
+            return; // Only create these one at a time
+         }
+      }
+   }
+}
+
 //==============================================================================
 /* addWarshipsToPlan: 
    Looks for warships not currently occupied by another plan

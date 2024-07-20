@@ -7722,10 +7722,10 @@ void establishForwardBase()
    }
 
    // Keep things running for a minute to keep ships nearby
-   if (xsGetTime() < gAmphibiousAssaultSavedTime + 60000)
+   /*if (xsGetTime() < gAmphibiousAssaultSavedTime + 60000)
    {
       return;
-   }
+   }*/
 
    xsEnableRule("forwardBaseDestroyedCheck");
    //xsEnableRule("transferMilitary");

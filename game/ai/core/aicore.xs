@@ -2481,9 +2481,17 @@ minInterval 5
       wagonMonitor(); // Make sure we catch our age up wagon
 
       // AssertiveWall: ensure water attack is enabled
-      if ((gStartOnDifferentIslands == true && cDifficultyCurrent != cDifficultySandbox) && (xsIsRuleEnabled("waterAttack") == false))
+      if ((gStartOnDifferentIslands == true && cDifficultyCurrent != cDifficultySandbox))
       {
-         xsEnableRule("waterAttack"); // Water attacking.
+         if (xsIsRuleEnabled("waterAttack") == false)
+         {
+            xsEnableRule("waterAttack"); // Water attacking.
+         }
+
+         if (xsIsRuleEnabled("childTransportRule") == false)
+         {
+            xsEnableRule("childTransportRule"); // Makes child transport plans for plans that don't do so automatically
+         }
          //xsEnableRule("coastalGuns"); // Stage arty on coast
       }
 

@@ -1941,7 +1941,7 @@ int createRepairPlan(int pri = 50)
 // createTransportPlan
 //==============================================================================
 int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint = cInvalidVector,
-                        int pri = 100, bool returnWhenDone = true)
+                        int pri = 100, bool returnWhenDone = true, bool childBool = false)
 {
    int shipQueryID = createSimpleUnitQuery(cUnitTypeTransport, cMyID, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(shipQueryID);
@@ -1987,7 +1987,7 @@ int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint 
 
    // AssertiveWall: Add index here, time in seconds. I think it might be preventing me from creating too many
    int index = xsGetTime() / 1000;
-   int planID = aiPlanCreate(kbGetUnitTypeName(kbUnitGetProtoUnitID(transportID)) + " Transport Plan, " + index, cPlanTransport);
+   int planID = aiPlanCreate(kbGetUnitTypeName(kbUnitGetProtoUnitID(transportID)) + " Transport Plan, " + index + " Child: " + childBool, cPlanTransport);
 
    if (planID < 0)
    {
