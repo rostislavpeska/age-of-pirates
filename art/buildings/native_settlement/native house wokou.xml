@@ -22,15 +22,7 @@
 			</variationid2>
 			<variationid3>
 				<assetreference type="GrannyModel">
-					<file>buildings\native_settlement\jesuit_house_01</file>
-					<replacetexture>
-						<from>buildings\native_settlement\jesuit_house_01\textures\jesuit_house_01_mata_BaseColor</from>
-						<to>buildings\native_settlement\jesuit_house_01\textures\wokou_house_01_mata_BaseColor</to>
-					</replacetexture>
-					<replacetexture>
-						<from>buildings\native_settlement\jesuit_house_03\textures\jesuit_house_03_mata_BaseColor</from>
-						<to>buildings\native_settlement\jesuit_house_03\textures\wokou_house_03_mata_BaseColor</to>
-					</replacetexture>
+					<file>buildings\native_settlement\wokou\wokou_house_01</file>
 				</assetreference>
 			</variationid3>
 			<variationid4>
@@ -114,6 +106,10 @@
 			<variationid10>
 				<assetreference type="GrannyModel">
 					<file>buildings\asian_civs\spc\japanese_outpost\Asian_outpost\asian_outpost</file>
+					<replacetexture>
+						<from>buildings/asian_civs/spc/japanese_outpost/asian_outpost/textures/asian_outpost_mata_BaseColor</from>
+						<to>buildings\native_settlement\wokou\textures\wokou_outpost_mata_BaseColor</to>
+					</replacetexture>
 				</assetreference>
 			</variationid10>
 			<variationid11>

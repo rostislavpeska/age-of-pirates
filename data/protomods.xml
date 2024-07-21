@@ -22989,8 +22989,8 @@
     <portraiticon>resources\art\units\animals\kangaroo\kangaroo_portrait.png</portraiticon>
     <rollovertextid>301187</rollovertextid>
     <shortrollovertextid>301188</shortrollovertextid>
-    <initialhitpoints>104.0000</initialhitpoints>
-    <maxhitpoints>104.0000</maxhitpoints>
+    <initialhitpoints>20.0000</initialhitpoints>
+    <maxhitpoints>20.0000</maxhitpoints>
     <los>10.0000</los>
     <unitaitype>Passive</unitaitype>
     <bounty>0.0000</bounty>
@@ -23059,8 +23059,8 @@
     <portraiticon>resources\art\units\animals\emu\emu_portrait.png</portraiticon>
     <rollovertextid>301187</rollovertextid>
     <shortrollovertextid>301191</shortrollovertextid>
-    <initialhitpoints>100.0000</initialhitpoints>
-    <maxhitpoints>100.0000</maxhitpoints>
+    <initialhitpoints>20.0000</initialhitpoints>
+    <maxhitpoints>20.0000</maxhitpoints>
     <los>10.0000</los>
     <unitaitype>Passive</unitaitype>
     <bounty>0.0000</bounty>
@@ -23920,8 +23920,8 @@
     <portraiticon>resources\art\units\animals\cassowary\cassowary_portrait.png</portraiticon>
     <rollovertextid>301241</rollovertextid>
     <shortrollovertextid>301242</shortrollovertextid>
-    <initialhitpoints>600.0000</initialhitpoints>
-    <maxhitpoints>600.0000</maxhitpoints>
+    <initialhitpoints>210.0000</initialhitpoints>
+    <maxhitpoints>210.0000</maxhitpoints>
     <los>10.0000</los>
     <unitaitype>Predator</unitaitype>
     <initialunitaistance>Defensive</initialunitaistance>
@@ -28362,6 +28362,59 @@
       <damagebonus type="deMalteseGun">2.500000</damagebonus>
     </protoaction>
   </unit>
+  <unit id="20335" name="zpNativeHouseWokouBig">
+    <dbid>20335</dbid>
+    <displaynameid>300249</displaynameid>
+    <editornameid>301422</editornameid>
+    <subciv>Wokou</subciv>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\wokou\boatbuilding.xml</animfile>
+    <icon>resources\art\units\asians\mercenaries\wokou_pirate\wokou_pirate_icon_64.png</icon>
+    <portraiticon>resources\art\units\asians\mercenaries\wokou_pirate\wokou_pirate_icon_portrait.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NoHPBar</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+  </unit>
   
   
   
@@ -29617,7 +29670,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\gunstore\gunstore.xml</animfile>
+    <animfile>buildings\native_settlement\wokou\boatbuilding.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>
@@ -29669,141 +29722,6 @@
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
-  </unit>
-  <unit id="" name="zpPropeller">
-    <dbid>
-    </dbid>
-    <subciv>zpScientists</subciv>
-    <displaynameid>300555</displaynameid>
-    <editornameid>300611</editornameid>
-    <populationcount>8</populationcount>
-    <obstructionradiusx>2.9900</obstructionradiusx>
-    <obstructionradiusz>2.9900</obstructionradiusz>
-    <formationcategory>Protected</formationcategory>
-    <maxvelocity>5.00000</maxvelocity>
-    <maxrunvelocity>7.00000</maxrunvelocity>
-    <movementtype>air</movementtype>
-    <turnrate>3.0000</turnrate>
-    <animfile>units\balloons\propeller.xml</animfile>
-    <impacttype>Wood</impacttype>
-    <physicsinfo>house</physicsinfo>
-    <buildlimit>1</buildlimit>
-    <icon>resources\art\units\artillery\tank\tank_icon.png</icon>
-    <portraiticon>resources\art\units\artillery\tank\tank_portrait.png</portraiticon>
-    <rollovertextid>124702</rollovertextid>
-    <shortrollovertextid>124701</shortrollovertextid>
-    <initialhitpoints>3000.0000</initialhitpoints>
-    <maxhitpoints>3000.0000</maxhitpoints>
-    <los>60.0000</los>
-    <projectileprotounit>MortarShell</projectileprotounit>
-    <unitaitype>RangedCombative</unitaitype>
-    <trainpoints>45.0000</trainpoints>
-    <bounty>500.0000</bounty>
-    <buildbounty>500.0000</buildbounty>
-    <cost resourcetype="Wood">2000.0000</cost>
-    <cost resourcetype="Gold">2000.0000</cost>
-    <maxcontained>50</maxcontained>
-    <allowedage>2</allowedage>
-    <armor type="Ranged" value="0.5000">
-    </armor>
-    <armor type="Hand" value="0.5000">
-    </armor>
-    <armor type="Siege" value="0.5000">
-    </armor>
-    <unittype>LogicalTypeNavalMilitary</unittype>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeNeededForVictory</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>Ship</unittype>
-    <unittype>Transport</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>Military</unittype>
-    <unittype>Unit</unittype>
-    <unittype>AbstractWarShip</unittype>
-    <unittype>HasBountyValue</unittype>
-    <unittype>AbstractSiegeTrooper</unittype>
-    <unittype>Ranged</unittype>
-    <unittype>CountsTowardMilitaryScore</unittype>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>DontRotateObstruction</flag>
-    <flag>ApplyHandicapTraining</flag>
-    <flag>NavalUnit</flag>
-    <flag>NoFadeOnDeath</flag>
-    <flag>FadeOutDecalOnDeath</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>HeroName1</flag>
-    <flag>HasGatherPoint</flag>
-    <flag>AllowAutoGarrison</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>ForceBuildingData</flag>
-    <flag>Tracked</flag>
-    <flag>FlyingUnit</flag>
-    <contain>LogicalTypeGarrisonInShips</contain>
-    <command page="10" column="5">Eject</command>
-    <command page="10" column="1">Stop</command>
-    <command page="10" column="7">Delete</command>
-    <command page="11" column="0">Abilities</command>
-    <tactics>airship.tactics</tactics>
-    <protoaction>
-      <name>BombAttack</name>
-      <damage>80.000000</damage>
-      <damagetype>Siege</damagetype>
-      <minrange>5.000000</minrange>
-      <maxrange>6.000000</maxrange>
-      <rof>5.000000</rof>
-      <damagecap>160.000000</damagecap>
-      <damagebonus type="Building">10.000000</damagebonus>
-      <damagearea>3.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="AbstractDock">0.100000</damagebonus>
-      <damagebonus type="AbstractVillager">0.200000</damagebonus>
-    </protoaction>
-    <protoaction>
-      <name>AirshipAttack</name>
-      <damage>50.000000</damage>
-      <damagetype>Siege</damagetype>
-      <maxrange>10.000000</maxrange>
-      <rof>1.000000</rof>
-      <damagecap>160.000000</damagecap>
-      <damagearea>1.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
-    </protoaction>
-    <protoaction>
-      <name>LongRangeAttack</name>
-      <damage>250.000000</damage>
-      <damagetype>Siege</damagetype>
-      <minrange>5.000000</minrange>
-      <maxrange>6.000000</maxrange>
-      <rof>20.000000</rof>
-      <damagecap>400.000000</damagecap>
-      <damagebonus type="Building">10.000000</damagebonus>
-      <damagearea>15.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="AbstractDock">0.100000</damagebonus>
-      <damagebonus type="AbstractVillager">0.200000</damagebonus>
-      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
-    </protoaction>
-    <protoaction>
-      <name>PoisonBomb</name>
-      <damage>250.000000</damage>
-      <damagetype>Siege</damagetype>
-      <minrange>5.000000</minrange>
-      <maxrange>6.000000</maxrange>
-      <rof>20.000000</rof>
-      <damagecap>400.000000</damagecap>
-      <damagearea>250.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="AbstractVillager">2.000000</damagebonus>
-      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
-    </protoaction>
   </unit>
   <unit id="" name="zpConversionAttachment">
     <dbid>
@@ -29864,190 +29782,7 @@
       <rof>1.000000</rof>
     </protoaction>
   </unit>
-  <unit id="" name="zpArmoredTrain">
-    <dbid></dbid>
-    <displaynameid>32690</displaynameid>
-    <editornameid>300986</editornameid>
-    <obstructionradiusx>5.000</obstructionradiusx>
-    <obstructionradiusz>0.9999</obstructionradiusz>
-    <maxvelocity>2.0000</maxvelocity>
-    <maxrunvelocity>4.0000</maxrunvelocity>
-    <movementtype>land</movementtype>
-    <turnrate>20.0000</turnrate>
-    <animfile>units\trains\engine.xml</animfile>
-    <impacttype>Wood</impacttype>
-    <icon>resources\art\units\trade\spc_wagon_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trade\spc_wagon_portrait.png</portraiticon>
-    <rollovertextid>32689</rollovertextid>
-    <shortrollovertextid>32688</shortrollovertextid>
-    <los>22.0000</los>
-    <allowedage>0</allowedage>
-    <armor type="Ranged" value="0.1000">
-    </armor>
-    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>HasBountyValue</unittype>
-    <unittype>AbstractWagon</unittype>
-    <unittype>LogicalTypeEasySelectAvoid</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>Unit</unittype>
-    <unittype>Economic</unittype>
-
-    <flag>CollidesWithProjectiles</flag>
-    <flag>ApplyHandicapTraining</flag>
-    <flag>DontRotateObstruction</flag>
-    <flag>ObscuredByUnits</flag>
-    <flag>Invulnerable</flag>
-    <flag>OrientUnitWithGround</flag>
-    <flag>Tracked</flag>
-    <command page="10" column="0">Garrison</command>
-    <command page="10" column="1">Stop</command>
-    <command page="10" column="7">Delete</command>
-    <tactics>SPCResourceCart.tactics</tactics>
-  </unit>
-  <unit id="" name="zpTradeUnitTest">
-    <dbid></dbid>
-    <displaynameid>32690</displaynameid>
-    <editornameid>300986</editornameid>
-    <obstructionradiusx>0.9900</obstructionradiusx>
-    <obstructionradiusz>2.4900</obstructionradiusz>
-    <maxvelocity>0.0000</maxvelocity>
-    <movementtype>land</movementtype>
-    <animfile>buildings\trading_post\trading_post.xml</animfile>
-    <impacttype>Wood</impacttype>
-    <physicsinfo>house</physicsinfo>
-    <icon>resources\art\buildings\outpost\outpost_icon_64x64.png</icon>
-    <portraiticon>resources\art\buildings\outpost\outpost_portrait.png</portraiticon>
-    <rollovertextid>26306</rollovertextid>
-    <shortrollovertextid>26305</shortrollovertextid>
-    <initialhitpoints>2000.0000</initialhitpoints>
-    <maxhitpoints>2000.0000</maxhitpoints>
-    <los>32.0000</los>
-    <projectileprotounit>Arrow</projectileprotounit>
-    <unitaitype>RangedCombative</unitaitype>
-    <buildpoints>50.0000</buildpoints>
-    <freebuildpoints>150.0000</freebuildpoints>
-    <bounty>70.0000</bounty>
-    <buildbounty>35.0000</buildbounty>
-    <buildingworkrate>1.0000</buildingworkrate>
-    <maxcontained>20</maxcontained>
-    <allowedage>0</allowedage>
-    <armor type="Siege" value="0.0000">
-    </armor>
-    <builderlimit>4</builderlimit>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
-    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
-    <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
-    <unittype>BuildingClass</unittype>
-    <unittype>MilitaryBuilding</unittype>
-    <unittype>HasBountyValue</unittype>
-    <unittype>AbstractFort</unittype>
-    <unittype>CountsTowardMilitaryScore</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <unittype>AbstractOutpost</unittype>
-    <unittype>AbstractCanSeeStealth</unittype>
-    <unittype>AbstractDefensiveBuilding</unittype>
-    <flag>EnterHotkeyContext</flag>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>StartsAtFullEfficiency</flag>
-    <flag>Immoveable</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>Doppled</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>HasGatherPoint</flag>
-    <flag>Tracked</flag>
-    <flag>DisplayRange</flag>
-    <notcontain>AbstractMonk</notcontain>
-    <notcontain>ExcludeFromRansom</notcontain>
-    <notcontain>AbstractFishingBoat</notcontain>
-    <contain>AbstractVillager</contain>
-    <contain>deHomesteadWagon</contain>
-    <contain>AbstractHealer</contain>
-    <contain>ypDaimyoRegicide</contain>
-    <command page="10" column="7">Delete</command>
-    <command>CancelNativeDance</command>
-    <command>StartNativeDance</command>
-    <command page="10" column="5">Eject</command>
-    <command page="10" column="8">CancelAllQueued</command>
-    <command page="11" column="0">Abilities</command>
-    <tactics>tradingpost.tactics</tactics>
-    <protoaction>
-      <name>AntiShipAttack</name>
-      <damage>100.000000</damage>
-      <damagetype>Siege</damagetype>
-      <minrange>0.000000</minrange>
-      <maxrange>40.000000</maxrange>
-      <rof>3.000000</rof>
-      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
-    </protoaction>
-    <protoaction>
-      <name>SpawnArmoredTrain</name>
-      <damage>160.000000</damage>
-      <damagetype>Siege</damagetype>
-      <damagecap>320.000000</damagecap>
-      <maxrange>100000.000000</maxrange>
-      <damagebonus type="AbstractVillager">0.250000</damagebonus>
-      <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="AbstractCavalry">1.500000</damagebonus>
-      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
-      <damagebonus type="AbstractLightInfantry">1.300000</damagebonus>
-    </protoaction>
-    <protoaction>
-      <name>FireAttack</name>
-      <damage>6.666667</damage>
-      <damagetype>Siege</damagetype>
-      <minrange>0.000000</minrange>
-      <maxrange>10.000000</maxrange>
-      <rof>0.500000</rof>
-      <projectile>FireBallGreat</projectile>
-      <damagecap>30.000000</damagecap>
-      <damagebonus type="AbstractVillager">0.250000</damagebonus>
-      <damagebonus type="AbstractSiegeTrooper">0.3400000</damagebonus>
-      <damagebonus type="AbstractWarShip">3.000000</damagebonus>
-      <damagearea>1.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
-    </protoaction>
-    <protoaction>
-      <name>RangedAttack</name>
-      <damage>30.000000</damage>
-      <damagetype>Ranged</damagetype>
-      <minrange>0.000000</minrange>
-      <maxrange>24.000000</maxrange>
-      <rof>3.000000</rof>
-      <damagebonus type="AbstractVillager">0.250000</damagebonus>
-      <damagebonus type="AbstractCavalry">1.500000</damagebonus>
-      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
-      <damagebonus type="AbstractLightInfantry">1.300000</damagebonus>
-    </protoaction>
-    <protoaction>
-      <name>WignacourtAuraRange</name>
-      <damage>0.000001</damage>
-      <damagetype>Ranged</damagetype>
-      <minrange>99.000000</minrange>
-      <maxrange>36.000000</maxrange>
-      <rof>3.000000</rof>
-    </protoaction>
-  </unit>
+  
   
 
 
