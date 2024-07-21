@@ -5002,7 +5002,7 @@
     <obstructionradiusz>4.5000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\wonders\taj_mahal\taj_mahal.xml</animfile>
+    <animfile>buildings\wonders\taj_mahal\greatmosque.xml</animfile>
     <icon>resources\art\buildings\wonders\taj_mahal\taj_mahal_icon.png</icon>
     <portraiticon>resources\art\buildings\wonders\taj_mahal\taj_mahal_icon_portrait.png</portraiticon>
     <initialhitpoints>1560.0000</initialhitpoints>
