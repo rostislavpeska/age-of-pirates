@@ -13,8 +13,8 @@
 						<effecttype>default</effecttype>
 						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
 						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-						<width>8</width>
-						<height>8</height>
+						<width>13</width>
+						<height>13</height>
 						<xoffset>0.00</xoffset>
 						<zoffset>0.00</zoffset>	
 					</decal>
@@ -28,8 +28,8 @@
 						<effecttype>default</effecttype>
 						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
 						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-						<width>8</width>
-						<height>8</height>
+						<width>6</width>
+						<height>6</height>
 						<xoffset>0.00</xoffset>
 						<zoffset>0.00</zoffset>	
 					</decal>
@@ -43,6 +43,21 @@
 						<effecttype>default</effecttype>
 						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
 						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+						<width>6</width>
+						<height>6</height>
+						<xoffset>0.00</xoffset>
+						<zoffset>0.00</zoffset>	
+					</decal>
+				</data>
+
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\socket_jewish\jewish_house5_Model</file>
+					</assetreference>
+					<decal>
+						<effecttype>default</effecttype>
+						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
+						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
 						<width>8</width>
 						<height>8</height>
 						<xoffset>0.00</xoffset>
@@ -52,14 +67,14 @@
 
 				<data>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\socket_jewish\townhall_Model</file>
+						<file>buildings\native_settlement\socket_jewish\jewish_house4_Model</file>
 					</assetreference>
 					<decal>
 						<effecttype>default</effecttype>
 						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
 						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-						<width>10</width>
-						<height>10</height>
+						<width>8</width>
+						<height>8</height>
 						<xoffset>0.00</xoffset>
 						<zoffset>0.00</zoffset>	
 					</decal>
@@ -67,14 +82,14 @@
 
 				<data>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\socket_jewish\jewish_house3_Model</file>
+						<file>buildings\native_settlement\socket_jewish\customs</file>
 					</assetreference>
 					<decal>
 						<effecttype>default</effecttype>
 						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
 						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-						<width>10</width>
-						<height>10</height>
+						<width>6</width>
+						<height>6</height>
 						<xoffset>0.00</xoffset>
 						<zoffset>0.00</zoffset>	
 					</decal>
