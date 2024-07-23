@@ -1,4 +1,4 @@
-// Corsairs of Mediterranean 1.0
+// Mediterranean Islands 1.1
 
 include "mercenaries.xs";
 include "ypAsianInclude.xs";
@@ -876,7 +876,7 @@ void main(void)
 
 
     int jesuit3VillageID = -1;
-    int jesuit3VillageType = rmRandInt(1,3);
+    int jesuit3VillageType = rmRandInt(1,5);
     if (mapVariation == 1){
       jesuit3VillageID = rmCreateGrouping("jesuit 3", "sufibluemosque_0"+jesuit3VillageType);
     }
@@ -890,7 +890,7 @@ void main(void)
 
 
     int jesuit4VillageID = -1;
-    int jesuit4VillageType = rmRandInt(1,3);
+    int jesuit4VillageType = rmRandInt(1,5);
     if (mapVariation == 1){
       jesuit4VillageID = rmCreateGrouping("jesuit 4", "sufibluemosque_0"+jesuit4VillageType);
     }

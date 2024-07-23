@@ -156,4 +156,7 @@
   <zpcatamaran>
     <ability>PowerLongRange<rof>60</rof></ability>
   </zpcatamaran>
+  <zpspcflyingdutchman>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpspcflyingdutchman>
 </abilitymods>

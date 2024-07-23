@@ -155,7 +155,7 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	int deerConstraint=rmCreateTypeDistanceConstraint("avoid the deer", "deer", 40.0);
 	int shortNuggetConstraint=rmCreateTypeDistanceConstraint("avoid nugget objects", "AbstractNugget", 7.0);
 	int shortDeerConstraint=rmCreateTypeDistanceConstraint("short avoid the deer", "deer", 20.0);
-	int mooseConstraint=rmCreateTypeDistanceConstraint("avoid the moose", "moose", 40.0);
+	int mooseConstraint=rmCreateTypeDistanceConstraint("avoid the moose", "ypIbex", 40.0);
 	int avoidSheep=rmCreateTypeDistanceConstraint("sheep avoids sheep", "sheep", 55.0);
 
 	// Decoration avoidance
@@ -521,9 +521,9 @@ int sufi3VillageTypeID = rmRandInt(1,3);
 
 // Jewish
 
-int jewish1VillageTypeID = rmRandInt(1, 4);
-int jewish2VillageTypeID = rmRandInt(1, 4);
-int jewish3VillageTypeID = rmRandInt(1, 4);
+int jewish1VillageTypeID = rmRandInt(1, 5);
+int jewish2VillageTypeID = rmRandInt(1, 5);
+int jewish3VillageTypeID = rmRandInt(1, 5);
 
 int jewish1ID = rmCreateGrouping("jewish 1", "Jewish_Settlement_0"+jewish1VillageTypeID);
 int jewish2ID = rmCreateGrouping("jewish 2", "Jewish_Settlement_0"+jewish2VillageTypeID);
@@ -885,7 +885,7 @@ int saltCrater1ID = -1;
 
 // Place some extra deer herds.  
 	int mooseHerdID=rmCreateObjectDef("moose herd");
-	rmAddObjectDefItem(mooseHerdID, "moose", rmRandInt(3,3), 6.0);
+	rmAddObjectDefItem(mooseHerdID, "ypIbex", rmRandInt(3,3), 6.0);
 	rmSetObjectDefCreateHerd(mooseHerdID, true);
 	rmSetObjectDefMinDistance(mooseHerdID, 0.0);
 	rmSetObjectDefMaxDistance(mooseHerdID, rmXFractionToMeters(0.5));

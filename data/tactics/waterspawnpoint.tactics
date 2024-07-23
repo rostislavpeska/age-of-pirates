@@ -126,5 +126,25 @@
     <persistent>0</persistent>
     <singleuse>1</singleuse>
   </action>
-  <tactic>Normal<action>Heal</action><action>SpawnPrivateer</action><action>SpawnQueenAnne</action><action>SpawnBlackPearl</action><action>SpawnNeptune</action><action>SpawnWokouFireJunk</action><action>SpawnSubmarine</action><action>SpawnNautilus</action><action>SpawnGalleass</action><action>SpawnVeniceGalley</action></tactic>
+  <action>
+    <name stringid="69776">SpawnFlyingDutchman</name>
+    <type>Spawn</type>
+    <rate type="zpSPCFlyingDutchman">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <tactic>Normal
+    <action>Heal</action>
+    <action>SpawnPrivateer</action>
+    <action>SpawnQueenAnne</action>
+    <action>SpawnBlackPearl</action>
+    <action>SpawnNeptune</action>
+    <action>SpawnWokouFireJunk</action>
+    <action>SpawnSubmarine</action>
+    <action>SpawnNautilus</action>
+    <action>SpawnGalleass</action>
+    <action>SpawnVeniceGalley</action>
+    <action>SpawnFlyingDutchman</action>
+  </tactic>
 </tactics>
