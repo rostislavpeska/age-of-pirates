@@ -67,7 +67,7 @@
 		<unit variation="93" posx="5.7139" posz="9.8841" orientx="0.3827" orienty="0.0000" orientz="-0.9239">NativeTownObstruction</unit>
 		<unit variation="110" posx="7.8286" posz="8.6728" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="40" posx="9.5061" posz="8.5885" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
-		<unit variation="153" posx="3.2591" posz="10.8384" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHousePirate</unit>
+		<unit variation="153" posx="3.2591" posz="10.8384" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeTent</unit>
 		<unit variation="116" posx="9.0340" posz="9.9418" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCMineProps</unit>
 		<unit variation="233" posx="-1.8755" posz="12.3340" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="87" posx="8.2391" posz="11.1893" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpPropWestern</unit>
