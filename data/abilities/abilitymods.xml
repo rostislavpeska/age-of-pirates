@@ -159,4 +159,7 @@
   <zpspcflyingdutchman>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpspcflyingdutchman>
+  <zpspcprau>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpspcprau>
 </abilitymods>
