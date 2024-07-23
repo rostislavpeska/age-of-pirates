@@ -1,0 +1,14 @@
+<!-- converted from XMB to XML -->
+
+<animfile>
+	<component>
+		building
+		<assetreference type="GrannyModel">
+			<file>buildings\native_settlement\socket_jewish\townhall_Model</file>
+		</assetreference>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>
