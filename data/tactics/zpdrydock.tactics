@@ -56,6 +56,13 @@
         <rate type="zpVeniceGalleyAutomatic">1.0 </rate>
         <persistent>1</persistent>
     </action>
+    <action>
+        <name stringid="43299">SpawnPrivateer</name>
+        <active>0</active>
+        <type>Maintain</type>
+        <rate type="Privateer">1.0 </rate>
+        <persistent>1</persistent>
+    </action>
     
     <tactic>TacticTraining
         <action>Heal</action>
@@ -119,6 +126,7 @@
     <tactic>TacticSpawnGalley
         <action>Heal</action>
         <action>SpawnGalley</action>
+        <action>Spawnprivateer</action>
         <protounitcommand>zpTacticSpawnGalley</protounitcommand>
         <transition>
             <tactic>TacticQuality</tactic>
