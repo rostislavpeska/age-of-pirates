@@ -13222,6 +13222,9 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCFlyingDutchmanProxy</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpPetDolphin</target>
+      </effect>
       <effect type="TechStatus" status="unobtainable">zpTheBlackFlag</effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
       <effect type="CommandRemove" tech="zpTheBlackFlag">

@@ -24151,10 +24151,10 @@
     <los>10.0000</los>
     <unitaitype>HandCombative</unitaitype>
     <trainpoints>10.0000</trainpoints>
-    <buildlimit>25</buildlimit>
-    <bounty>413.0000</bounty>
-    <buildbounty>4113.0000</buildbounty>
-    <cost resourcetype="Food">413.0000</cost>
+    <buildlimit>5</buildlimit>
+    <bounty>20.0000</bounty>
+    <buildbounty>20.0000</buildbounty>
+    <cost resourcetype="Food">150.0000</cost>
     <allowedage>0</allowedage>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
@@ -24178,6 +24178,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractPet</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>Ship</unittype>
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>DontRotateObstruction</flag>
@@ -24191,12 +24192,12 @@
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="7">Delete</command>
-    <tactics>pet.tactics</tactics>
+    <tactics>navalpet.tactics</tactics>
     <protoaction>
       <name>MeleeHandAttack</name>
       <damage>16.000000</damage>
       <damagetype>Hand</damagetype>
-      <rof>1.000000</rof>
+      <rof>1.500000</rof>
     </protoaction>
   </unit>
   <unit id="20275" name="zpVolcanoSpawner">
@@ -28504,6 +28505,7 @@
     <flag>AllowAutoGarrison</flag>
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
+    <flag>AllowTrainingOnWater</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
     <contain>LogicalTypeGarrisonInShips</contain>
