@@ -804,8 +804,8 @@
       <string _locid="300803">Mass Production \nConfigure Dry Dock to build ships faster by 150%.</string>
       <string _locid="300804">This Dry Dock is focusing on repairing ships.</string>
       <string _locid="300805">Repair \nConfigure Dry Dock to repair ships faster by 300%.</string>
-      <string _locid="300806">This Dry Dock is maintaining ships.</string>
-      <string _locid="300807">Automatic Workshop \nConfigure Dry Dock to maintain ships.</string>
+      <string _locid="300806">This Dry Dock is maintaining ships. (Other ship training speed is slowed down by 50%)</string>
+      <string _locid="300807">Automatic Workshop \nConfigure Dry Dock to maintain ships. (Other ship training speed slows down by 50%)</string>
       <string _locid="300808">Venetian Embassy</string>
       <string _locid="300809">ZP Venetian Embassy</string>
       <string _locid="300810">Venetian Embassy Wagon</string>
