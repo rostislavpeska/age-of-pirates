@@ -1,0 +1,38 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\jesuit_house_01\textures\wokou_house_01_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\jesuit_house_01\textures\jesuit_house_01_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\jesuit_house_01\textures\jesuit_house_01_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\jesuit_house_01\textures\wokou_house_01_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\jesuit_house_01\textures\jesuit_house_01_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\jesuit_house_01\textures\jesuit_house_01_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\generic_props\textures\generic_props_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\generic_props\textures\generic_props_normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\generic_props\textures\generic_props_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

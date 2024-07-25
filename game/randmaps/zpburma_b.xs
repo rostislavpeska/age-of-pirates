@@ -407,13 +407,11 @@ bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
 
 
    int portSite1 = rmCreateArea ("port_site1");
-   rmSetAreaSize(portSite1, rmAreaTilesToFraction(500.0), rmAreaTilesToFraction(600.0));
+   rmSetAreaSize(portSite1, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
    rmSetAreaLocation(portSite1, 0.62, 0.35);
-   rmSetAreaMix(portSite1, baseMix);
-    rmAddAreaTerrainLayer(portSite1, "borneo\ground_sand1_borneo", 0, 4);
-    rmAddAreaTerrainLayer(portSite1, "borneo\ground_sand2_borneo", 4, 6);
-    rmAddAreaTerrainLayer(portSite1, "borneo\ground_sand3_borneo", 6, 9);
-    rmAddAreaTerrainLayer(portSite1, "borneo\ground_grass4_borneo", 9, 12);
+   rmSetAreaTerrainType(portSite1, "city\ground1_cob");
+    rmAddAreaTerrainLayer(portSite1, "city\ground1_cob", 0, 12);
+
    rmSetAreaCoherence(portSite1, 0.8);
    rmAddAreaConstraint(portSite1, islandAvoidTradeRoute);
    rmSetAreaSmoothDistance(portSite1, 20);
@@ -422,13 +420,11 @@ bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "asian_water_trail");
    rmBuildArea(portSite1);
 
    int portSite2 = rmCreateArea ("port_site2");
-   rmSetAreaSize(portSite2, rmAreaTilesToFraction(500.0), rmAreaTilesToFraction(600.0));
+   rmSetAreaSize(portSite2, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
    rmSetAreaLocation(portSite2, 0.38, 0.35);
-   rmSetAreaMix(portSite2, baseMix);
-    rmAddAreaTerrainLayer(portSite2, "borneo\ground_sand1_borneo", 0, 4);
-    rmAddAreaTerrainLayer(portSite2, "borneo\ground_sand2_borneo", 4, 6);
-    rmAddAreaTerrainLayer(portSite2, "borneo\ground_sand3_borneo", 6, 9);
-    rmAddAreaTerrainLayer(portSite2, "borneo\ground_grass4_borneo", 9, 12);
+   rmSetAreaTerrainType(portSite2, "city\ground1_cob");
+    rmAddAreaTerrainLayer(portSite2, "city\ground1_cob", 0, 12);
+
    rmSetAreaCoherence(portSite2, 0.8);
    rmAddAreaConstraint(portSite2, islandAvoidTradeRoute);
    rmSetAreaSmoothDistance(portSite2, 20);
@@ -1547,6 +1543,32 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	rmSetTriggerLoop(true);
 	}
 
+  for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate Khmer"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","Khmers");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnKhmers"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
 for (k=1; <= cNumberNonGaiaPlayers) {
 rmCreateTrigger("Activate Wokou"+k);
 rmAddTriggerCondition("ZP Tech Researching (XS)");
@@ -1592,6 +1614,8 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Khmer"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Wokou"+k));
 rmSetTriggerPriority(4);

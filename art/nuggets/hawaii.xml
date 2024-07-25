@@ -1,0 +1,4 @@
+<animfile>
+  <component>lean-to<logic type="Variation"><data><assetreference type="GrannyModel"><file>buildings\native_settlement\socket_jewish\workshop</file></assetreference></data><data><assetreference type="GrannyModel"><file>buildings\native_settlement\lp_lean-to_a</file></assetreference></data></logic><decal><effecttype>default</effecttype><texture>buildings\native_settlement\lean-to_ground</texture><selectedtexture>shadows_selections\selection_square_64x64</selectedtexture><width>6.0</width><height>6.0</height></decal></component>
+  <anim>Idle<component>lean-to</component></anim>
+</animfile>

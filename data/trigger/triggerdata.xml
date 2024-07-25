@@ -3024,7 +3024,7 @@
       <command>}</command>
       <command>rule hdkzuzkz7 active { if (true) { xsDisableSelf();</command>
     </effect>
-    <effect name="ZP Native AutoSetup: Renegades (Scientists)">
+    <effect name="ZP Native AutoSetup: Inventors (Scientists)">
       <param name="SocketRadius" dispname="Socket Training Radius (do not change)" vartype="float">35</param>
       <param name="ConversionRadius" dispname="Water Flag Distance (do not change)" vartype="float">150</param>
       <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">-1</param>
@@ -3904,6 +3904,20 @@
       <command>trConvertUnitsInArea(%SrcPlayer%,%TrgPlayer%,"spSocketTrainStationB",%Dist%);</command>
       <command>trConvertUnitsInArea(%SrcPlayer%,%TrgPlayer%,"spSocketTrainStationActiveA",%Dist%);</command>
       <command>trConvertUnitsInArea(%SrcPlayer%,%TrgPlayer%,"spSocketTrainStationActiveB",%Dist%);</command>
+    </effect>
+    <effect name="ZP Counter Invisible for Players">
+      <param name="Name" dispname="$$22365$$Name" vartype="string">countdown</param>
+      <param name="PlayerA" dispname="Player A" vartype="player">1</param>
+      <param name="PlayerB" dispname="Player B" vartype="player">2</param>
+      <command>if (trCurrentPlayer() == %PlayerA%) {</command>
+      <command>trCounterVisible("%Name%", false);</command>
+      <command>}</command>
+      <command>else if (trCurrentPlayer() == %PlayerB%) {</command>
+      <command>trCounterVisible("%Name%", false);</command>
+      <command>}</command>
+      <command>else {</command>
+      <command>trCounterVisible("%Name%", true);</command>
+      <command>}</command>
     </effect>
   </effects>
 </trigger>

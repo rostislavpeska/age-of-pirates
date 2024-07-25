@@ -352,6 +352,34 @@
     </usemultiple>
   </protounitcommand>
 
+  <protounitcommand>
+    <name>zpTacticHP</name>
+    <icon>resources\images\icons\command\school\hp_off.png</icon>
+    <activeicon>resources\images\icons\command\school\hp_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\school\hp_off.png</disabledicon>
+    <rollovertextid>301225</rollovertextid>
+    <activerollovertextid>301226</activerollovertextid>
+    <command>unitSetTactic("TacticHP")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticDamage</name>
+    <icon>resources\images\icons\command\school\damage_off.png</icon>
+    <activeicon>resources\images\icons\command\school\damage_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\school\damage_off.png</disabledicon>
+    <rollovertextid>301227</rollovertextid>
+    <activerollovertextid>301228</activerollovertextid>
+    <command>unitSetTactic("TacticDamage")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticMaintain</name>
+    <icon>resources\images\icons\command\school\tracker_off.png</icon>
+    <activeicon>resources\images\icons\command\school\tracker_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\school\tracker_off.png</disabledicon>
+    <rollovertextid>301229</rollovertextid>
+    <activerollovertextid>301230</activerollovertextid>
+    <command>unitSetTactic("TacticMaintain")</command>
+  </protounitcommand>
+
   <!--
 
   <protounitcommand>

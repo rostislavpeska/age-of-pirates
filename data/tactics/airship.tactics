@@ -27,6 +27,7 @@
 		<targetground>1</targetground>
 		<basedamagecap>1</basedamagecap>
 		<perfectaccuracy>1</perfectaccuracy>
+		<hidefromstats>1</hidefromstats>
 	</action>
 	<action>
 		<name stringid="300606">BombAttack</name>
@@ -36,7 +37,7 @@
 		<rangedlogic>1</rangedlogic>
 		<anim>BombAttack</anim>
 		<idleanim>Idle</idleanim>
-		<projectile>ypCrow</projectile>
+		<projectile>zpCrow</projectile>
 		<numberprojectiles>1</numberprojectiles>
 		<impacteffect>effects\impacts\mortar</impacteffect>
 		<accuracy>1.0</accuracy>
@@ -57,7 +58,7 @@
 		<rangedlogic>1</rangedlogic>
 		<anim>BombAttack</anim>
 		<idleanim>Idle</idleanim>
-		<projectile>ypCrow</projectile>
+		<projectile>zpCrow</projectile>
 		<numberprojectiles>1</numberprojectiles>
 		<impacteffect>effects\impacts\bomb</impacteffect>
 		<accuracy>1.0</accuracy>
@@ -78,19 +79,19 @@
 		<rangedlogic>1</rangedlogic>
 		<anim>BombAttack</anim>
 		<idleanim>Idle</idleanim>
-		<projectile>ypCrow</projectile>
-		<numberprojectiles>1</numberprojectiles>
-		<impacteffect>effects\impacts\mustardgas</impacteffect>
 		<accuracy>1.0</accuracy>
-		<aimbonus>5</aimbonus>
-		<throw>1</throw>
+		<accuracyreductionfactor>0.5</accuracyreductionfactor>
+		<aimbonus>0</aimbonus>
+		<maxspread>0</maxspread>
+		<spreadfactor>0.0</spreadfactor>
+		<trackrating>240</trackrating>
+		<unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+		<projectile>zpCrow</projectile>
+		<minrange>10</minrange>
 		<rate type="LogicalTypeGarrisonInShips">1.0 </rate>
-		<areasortmode>Radial</areasortmode>
-		<perfectaccuracy>1</perfectaccuracy>
-		<targetground>1</targetground>
-		<basedamagecap>1</basedamagecap>
-		<minrange>10.000000</minrange>
 		<attachprotounit>zpMustardGas</attachprotounit>
+		<perfectaccuracy>1</perfectaccuracy>
+		<impacteffect>effects\impacts\mustardgas</impacteffect>
 	</action>
 	<action>
 		<name stringid="124920">ExplosionAttack</name>
@@ -112,6 +113,7 @@
 		<instantballistics>1</instantballistics>
 		<basedamagecap>1</basedamagecap>
 		<selfdestruct>1</selfdestruct>
+		<hidefromstats>1</hidefromstats>
 	</action>
 	<tactic>
 		AirshipNormal

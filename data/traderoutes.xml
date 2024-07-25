@@ -631,5 +631,48 @@
       <activeicon>resources\images\icons\command\generate_coin_on.png</activeicon>
       <disabledicon>resources\images\icons\command\generate_coin_off.png</disabledicon>
     </unit>
+
+    <unit>
+      <name>zpCrateofFoodAustralian</name>
+      <count>1</count>
+      <mincount>1</mincount>
+      <maxcount>1</maxcount>
+      <countincrement>0</countincrement>
+      <activetooltipid>34054</activetooltipid>
+      <disabledtooltipid>34058</disabledtooltipid>
+      <techprereq>zpTradeRouteUpgradeAustralia1</techprereq>
+      <orprereqs>
+      </orprereqs>
+      <activeicon>resources\images\icons\command\generate_food_on.png</activeicon>
+      <disabledicon>resources\images\icons\command\generate_food_off.png</disabledicon>
+    </unit>
+    <unit>
+      <name>zpCrateofWoodAustralian</name>
+      <count>1</count>
+      <mincount>1</mincount>
+      <maxcount>1</maxcount>
+      <countincrement>0</countincrement>
+      <activetooltipid>34053</activetooltipid>
+      <disabledtooltipid>34059</disabledtooltipid>
+      <techprereq>zpTradeRouteUpgradeAustralia1</techprereq>
+      <orprereqs>
+      </orprereqs>
+      <activeicon>resources\images\icons\command\generate_wood_on.png</activeicon>
+      <disabledicon>resources\images\icons\command\generate_wood_off.png</disabledicon>
+    </unit>
+    <unit>
+      <name>zpCrateofCoinAustralian</name>
+      <count>1</count>
+      <mincount>1</mincount>
+      <maxcount>1</maxcount>
+      <countincrement>0</countincrement>
+      <activetooltipid>34055</activetooltipid>
+      <disabledtooltipid>34057</disabledtooltipid>
+      <techprereq>zpTradeRouteUpgradeAustralia1</techprereq>
+      <orprereqs>
+      </orprereqs>
+      <activeicon>resources\images\icons\command\generate_coin_on.png</activeicon>
+      <disabledicon>resources\images\icons\command\generate_coin_off.png</disabledicon>
+    </unit>
   </unitmultiples>
 </traderoutemanager>

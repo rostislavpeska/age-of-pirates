@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<randomMaps displayNameID="301433" imagepath="ui\random_map\pirate_maps" helpTextID="301434" cannotReplace="">
+  <map>zphawaii</map>
+  <map>zpzealand</map>
+  <map>zpaustralia</map>
+  <map>zpburma_b</map>
+  <map>zpcoldwar</map>
+  <map>zpdeadsea</map>
+  <map>zpeldorado</map>
+  <map>zpkurils</map>
+  <map>zpmalta</map>
+  <map>zpmalta_castles</map>
+  <map>zpmediterranean</map>
+  <map>zpmississippi</map>
+  <map>zpphilippines</map>
+  <map>zptortuga</map>
+  <map>zptreasureisland</map>
+  <map>zpvenice</map>
+  <map>zpwildwest</map>
+  <map>zpwwcanyon</map>
+</randomMaps>

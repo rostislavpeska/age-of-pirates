@@ -1,0 +1,111 @@
+
+<animfile>
+	<attachment>rock
+		<component>rock
+			<assetreference type="popcornFx">
+				<file>fire\campfire_a.pkfx</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>rock</component>
+		</anim>
+	</attachment>
+	<attachment>rock2
+		<component>rock2
+			<assetreference type="popcornFx">
+				<file>fire\fire_torch_a.pkfx</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>rock2</component>
+		</anim>
+	</attachment>
+    <component>ball
+		<logic type="Variation">
+			<data>
+				<assetreference type="GrannyModel">
+					<file>terrain\lava\lavawalker</file>
+				</assetreference>
+				<decal>
+					<effecttype>bump</effecttype>
+					<texture>terrain\lava\lavadecal_basecolor</texture>
+					<width>1.50</width>
+					<height>1.50</height>
+					<xoffset>0.00</xoffset>
+					<zoffset>-0.00</zoffset>
+				</decal>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>terrain\lava\lavawalker</file>
+				</assetreference>
+				<decal>
+					<effecttype>bump</effecttype>
+					<texture>terrain\lava\lavacolddecal_basecolor</texture>
+					<width>1.50</width>
+					<height>1.50</height>
+					<xoffset>0.00</xoffset>
+					<zoffset>-0.00</zoffset>
+				</decal>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>terrain\lava\lavawalker</file>
+				</assetreference>
+				<decal>
+					<effecttype>bump</effecttype>
+					<texture>terrain\lava\lavacolddecal_basecolor</texture>
+					<width>1.50</width>
+					<height>1.50</height>
+					<xoffset>0.00</xoffset>
+					<zoffset>-0.00</zoffset>
+				</decal>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>terrain\lava\lavawalker</file>
+				</assetreference>
+				<attach a="rock" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+				<decal>
+					<effecttype>bump</effecttype>
+					<texture>terrain\lava\lavadecal_basecolor</texture>
+					<width>1.50</width>
+					<height>1.50</height>
+					<xoffset>0.00</xoffset>
+					<zoffset>-0.00</zoffset>
+				</decal>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>terrain\lava\lavawalker</file>
+				</assetreference>
+				<decal>
+					<effecttype>bump</effecttype>
+					<texture>terrain\lava\lavacolddecal_basecolor</texture>
+					<width>1.50</width>
+					<height>1.50</height>
+					<xoffset>0.00</xoffset>
+					<zoffset>-0.00</zoffset>
+				</decal>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>terrain\lava\lavawalker</file>
+				</assetreference>
+				<decal>
+					<effecttype>bump</effecttype>
+					<texture>terrain\lava\lavacolddecal_basecolor</texture>
+					<width>1.50</width>
+					<height>1.50</height>
+					<xoffset>0.00</xoffset>
+					<zoffset>-0.00</zoffset>
+				</decal>
+			</data>
+		</logic>
+	</component>
+    <anim>Idle
+        <component>ball</component>
+    </anim>
+</animfile>

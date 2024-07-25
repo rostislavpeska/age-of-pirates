@@ -84,7 +84,7 @@
 		<unit variation="91" posx="-11.0974" posz="11.2147" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushTexas</unit>
 	</units>
 	<tiles>
-		<tilegroup type="PassableLand" subtype="Texas\ground4_tex">
+		<tilegroup type="PassableLand" subtype="Texas\Path_Blend">
 			<block startx="-5" startz="-5" endx="-5" endz="-4"></block>
 			<block startx="-5" startz="0" endx="-5" endz="1"></block>
 			<block startx="-4" startz="-6" endx="-4" endz="1"></block>

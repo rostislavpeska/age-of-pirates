@@ -1,0 +1,30 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\outlaw\textures\prisoner_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\asians\mercenaries\fugitive_dacoit\textures\dacoit_0_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\asians\mercenaries\fugitive_dacoit\textures\dacoit_0_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\asians\mercenaries\fugitive_dacoit\textures\dacoit_0_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\outlaw\textures\prisoner_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\asians\mercenaries\fugitive_dacoit\textures\dacoit_0_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\asians\mercenaries\fugitive_dacoit\textures\dacoit_0_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\asians\mercenaries\fugitive_dacoit\textures\dacoit_0_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

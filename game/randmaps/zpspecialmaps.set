@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<randomMaps displayNameID="301441" imagepath="ui\random_map\zp_special_maps" helpTextID="301442" cannotReplace="">
+  <map>zphawaii</map>
+  <map>zpkurils</map>
+  <map>zpmalta_castles</map>
+  <map>zpmediterranean</map>
+  <map>zpmississippi</map>
+  <map>zpvenice</map>
+</randomMaps>

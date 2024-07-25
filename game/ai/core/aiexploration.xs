@@ -400,11 +400,12 @@ minInterval 15
       aiPlanSetDesiredPriority(gWaterExplorePlan, 20); 
 
       // AssertiveWall: Naval "exploration" turns into patrols with multiple warships
+      //    Note: no longer do this. We have so much else going on
       int age = kbGetAge();
       int minShips = 1;
       int wantedShips = 1;
       int maxShips = 1;
-      if (age <= cAge2)
+      /*if (age <= cAge2)
       {
          minShips = 1;
          wantedShips = 2;
@@ -427,8 +428,14 @@ minInterval 15
          minShips = 3;
          wantedShips = 4;
          maxShips = 6;         
+      }*/
+      // AssertiveWall: explore with fishing boats until age 4, but prefer warships after 11 min if we have enough
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) > 3 && xsGetTime() > 11 * 60 * 1000)
+      {
+         aiPlanAddUnitType(gWaterExplorePlan, cUnitTypeAbstractWarShip, minShips, wantedShips, maxShips);
+         aiPlanSetVariableBool(gWaterExplorePlan, cExplorePlanOkToGatherNuggets, 0, true); 
       }
-      if (xsGetTime() < 9 * 60 * 1000) // AssertiveWall: explore with fishing boats for first 9 minutes
+      else if (kbGetAge() < cAge4)
       {
          aiPlanAddUnitType(gWaterExplorePlan, gFishingUnit, 1, 1, 1);
          aiPlanSetVariableBool(gWaterExplorePlan, cExplorePlanOkToGatherNuggets, 0, false); 
@@ -754,6 +761,8 @@ void findEnemyBase(void)
       aiPlanSetVariableVector(exploreID, cExplorePlanQuitWhenPointIsVisiblePt, 0, targetLocation);
       aiPlanSetDesiredPriority(exploreID, 100);
       aiPlanSetActive(exploreID);
+      gFindBasePlanID = exploreID;
+      xsEnableRule("watchExplorer");
    }
 }
 
@@ -1194,14 +1203,18 @@ minInterval 10
    static int chasquiPlan = -1;
 
    // Create maintain plan.
-   int limit = kbGetBuildLimit(cMyID, cUnitTypedeChasqui);
-   if (chasquiPlan < 0)
-   {
-      chasquiPlan = createSimpleMaintainPlan(cUnitTypedeChasqui, 1, false, kbBaseGetMainID(cMyID));
-   }
+   int limit = kbGetBuildLimit(cMyID, cUnitTypedeChasqui) - 1;  // AssertiveWall: try to avoid breaking the limit
+   // AssertiveWall: No chasqui training until age 2
    if (kbGetAge() >= cAge2)
    {
-      aiPlanSetVariableInt(chasquiPlan, cTrainPlanNumberToMaintain, 0, limit);
+      if (chasquiPlan < 0)
+      {
+         chasquiPlan = createSimpleMaintainPlan(cUnitTypedeChasqui, 1, false, kbBaseGetMainID(cMyID));
+      }
+      if (kbGetAge() >= cAge2)
+      {
+         aiPlanSetVariableInt(chasquiPlan, cTrainPlanNumberToMaintain, 0, limit);
+      }
    }
 
    // Create plan only when Chasqui available.

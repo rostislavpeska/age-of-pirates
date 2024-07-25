@@ -1,0 +1,173 @@
+<animfile>
+    <definebone>bone_master</definebone>
+    <definebone>bone_canoe</definebone>
+    <definebone>bone_bowman</definebone>
+    <definebone>bone_rower1</definebone>
+    <definebone>bone_rower2</definebone>
+    <definebone>bone_rower3</definebone>
+    <definebone>bone_rower4</definebone>
+    <definebone>bone_garrisonflag</definebone>
+    <attachment>MoveWaterFoam
+        <component>foam2
+            <assetreference type="popcornFx">
+                <file>water_effects\move_waterFoam.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>foam2</component>
+        </anim>
+    </attachment>
+    <attachment>IdleWaterFoam
+        <component>foam3
+            <assetreference type="popcornFx">
+                <file>water_effects\idle_waterFoam.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>foam3</component>
+        </anim>
+    </attachment>
+    <attachment>ClickZone
+        <component>ClickZone
+            <assetreference type="GrannyModel">
+                <file>units\naval\waka_canoe\waka_attachment_Model</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>ClickZone</component>
+        </anim>
+    </attachment>
+    <attachment>DeathWaterFoam
+        <component>foam1
+            <assetreference type="popcornFx">
+                <file>water_effects\death_waterFoam_small.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>foam1</component>
+        </anim>
+    </attachment>
+    <attachment>Fishing_Net
+        <component>Fishing_Net
+            <assetreference type="GrannyModel">
+                <file>units\attachments\fishing_net</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <assetreference type="GrannyAnim">
+                <file>units\attachments\fishing_net_fishingboat</file>
+            </assetreference>
+            <component>Fishing_Net</component>
+        </anim>
+    </attachment>
+    <attachment>bowman
+        <include>units\naval\waka_canoe\maoribowman.xml</include>
+    </attachment>
+    <attachment>rower1
+        <include>units\naval\waka_canoe\maorirower1.xml</include>
+    </attachment>
+    <attachment>rower2
+        <include>units\naval\waka_canoe\maorirower2.xml</include>
+    </attachment>
+    <component>ModelComp
+        <assetreference type="GrannyModel">
+            <file>units\naval\waka_canoe\waka_Model</file>
+        </assetreference>
+        <decal>
+            <effecttype>default</effecttype>
+            <selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture>
+            <width>5.00</width>
+            <height>8.00</height>
+        </decal>
+        <attach a="bowman" frombone="hotspot" tobone="bone_bowman" syncanims="1"></attach>
+        <attach a="rower1" frombone="Bip01" tobone="bone_rower1" syncanims="1"></attach>
+        <attach a="rower2" frombone="Bip01" tobone="bone_rower2" syncanims="1"></attach>
+        <attach a="rower1" frombone="Bip01" tobone="bone_rower3" syncanims="1"></attach>
+        <attach a="rower2" frombone="Bip01" tobone="bone_rower4" syncanims="1"></attach>
+        <attach a="ClickZone" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"></attach>
+    </component>
+    <component>FishingComp
+        <assetreference type="GrannyModel">
+            <file>units\naval\waka_canoe\waka_fishing_Model</file>
+        </assetreference>
+        <decal>
+            <effecttype>default</effecttype>
+            <selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture>
+            <width>5.00</width>
+            <height>8.00</height>
+        </decal>
+        <attach a="bowman" frombone="hotspot" tobone="bone_bowman" syncanims="1"></attach>
+        <attach a="rower1" frombone="Bip01" tobone="bone_rower1" syncanims="1"></attach>
+        <attach a="rower2" frombone="Bip01" tobone="bone_rower2" syncanims="1"></attach>
+        <attach a="rower1" frombone="Bip01" tobone="bone_rower3" syncanims="1"></attach>
+        <attach a="rower2" frombone="Bip01" tobone="bone_rower4" syncanims="1"></attach>
+        <attach a="ClickZone" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"></attach>
+    </component>
+    <anim>Idle
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="IdleWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+    </anim>
+    <anim>Walk
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.43</tag>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="MoveWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+    </anim>
+    <anim>GatherFish
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.18</tag>
+        </assetreference>
+        <component>FishingComp</component>
+        <attach a="Fishing_Net" frombone="" tobone="" syncanims="0"></attach>
+        <attach a="IdleWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+    </anim>
+    <anim>Death
+        <assetreference type="GrannyAnim">
+            <file>units\naval\waka_canoe\waka_death_Anim</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="DudeHitsWater">0.43</tag>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="DeathWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+    </anim>
+    <anim>RangedAttack
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <tag type="Attack">0.98</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <tag type="Attack">0.98</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="IdleWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+    </anim>
+    <anim>Raze_Attack
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <tag type="Attack">0.98</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+            <tag type="Attack">0.98</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.98</tag>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="IdleWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+    </anim>
+    <anim>Raze_Idle
+        <assetreference type="GrannyAnim">
+            <file>animation_library\naval\tlaloc_canoe\idle</file>
+        </assetreference>
+        <component>ModelComp</component>
+        <attach a="IdleWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+    </anim>
+</animfile>

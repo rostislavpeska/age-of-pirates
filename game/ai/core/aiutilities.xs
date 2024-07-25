@@ -430,7 +430,7 @@ vector guessEnemyLocation(int player = -1)
       player = aiGetMostHatedPlayerID();
    }
 
-   // AssertiveWall: sometimes aiGetMostHatedPlayerID() doesn't work. if that's the case, grab the first enemy player
+   // AssertiveWall: sometimes aiGetMostHatedPlayerID() doesn't work? if that's the case, grab the first enemy player
    if (player < 0)
    {
       for (i = 0; < cNumberPlayers)
@@ -662,7 +662,7 @@ int getEnemyPlayerByTeamPosition(int position = -1)
       if (matchCount == position)
       {
          return (index);
-   }
+      }
    }
    return (-1);
 }
@@ -1698,6 +1698,25 @@ int createSimpleBuildPlan(int puid = -1, int numberWanted = 1, int pri = 100, bo
       return (-1); // Return invalid plan ID.
    }
 
+   // AssertiveWall: suppress military production buildings on naked FF
+   if (gStrategy == cStrategyNakedFF)
+   {
+      if (kbGetAge() >= cAge3 || (agingUp() == true && kbGetAge() == cAge2))
+      {// do nothing
+      }
+      else
+      {
+         int numMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+         for (i = 0; < numMilitaryBuildings)
+         {
+            if (puid == xsArrayGetInt(gMilitaryBuildings, i))
+            {
+               return (-1);
+            }
+         }
+      }
+   }
+
    int planID = -1;
    if (gIsArchipelagoMap == true)
    {
@@ -1922,7 +1941,7 @@ int createRepairPlan(int pri = 50)
 // createTransportPlan
 //==============================================================================
 int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint = cInvalidVector,
-                        int pri = 100, bool returnWhenDone = true)
+                        int pri = 100, bool returnWhenDone = true, bool childBool = false)
 {
    int shipQueryID = createSimpleUnitQuery(cUnitTypeTransport, cMyID, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(shipQueryID);
@@ -1939,8 +1958,8 @@ int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint 
    {
       shipID = kbUnitQueryGetResult(shipQueryID, i);
       unitPlanID = kbUnitGetPlanID(shipID);
-      // AssertiveWall: exclude ships of same pri. Previous: (aiPlanGetDesiredPriority(unitPlanID) > pri)
-      if ((unitPlanID >= 0) && ((aiPlanGetDesiredPriority(unitPlanID) >= pri) || (aiPlanGetType(unitPlanID) == cPlanTransport)))
+      // AssertiveWall: exclude defending ships (pri == 25) or anything over 60. Previous: (aiPlanGetDesiredPriority(unitPlanID) > pri)
+      if ((unitPlanID >= 0) && ((aiPlanGetDesiredPriority(unitPlanID) > 60) || (aiPlanGetDesiredPriority(unitPlanID) == 25) || (aiPlanGetType(unitPlanID) == cPlanTransport)))
       {
          continue;
       }
@@ -1968,7 +1987,7 @@ int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint 
 
    // AssertiveWall: Add index here, time in seconds. I think it might be preventing me from creating too many
    int index = xsGetTime() / 1000;
-   int planID = aiPlanCreate(kbGetUnitTypeName(kbUnitGetProtoUnitID(transportID)) + " Transport Plan, " + index, cPlanTransport);
+   int planID = aiPlanCreate(kbGetUnitTypeName(kbUnitGetProtoUnitID(transportID)) + " Transport Plan, " + index + " Child: " + childBool, cPlanTransport);
 
    if (planID < 0)
    {
@@ -2180,7 +2199,9 @@ bool isDefendingOrAttacking()
       else // Attack plan.
       {
          if ((aiPlanGetParentID(existingPlanID) < 0) && // No parent so not a reinforcing child plan.
-             (existingPlanID != gNavyAttackPlan && existingPlanID != gCoastalGunPlan && existingPlanID != gEndlessWaterRaidPlan))
+             (existingPlanID != gNavyAttackPlan && 
+              existingPlanID != gCoastalGunPlan && 
+              existingPlanID != gEndlessWaterRaidPlan))
          {
             debugUtilities("isDefendingOrAttacking: don't create another combat plan because we already have one named: "
                + aiPlanGetName(existingPlanID));

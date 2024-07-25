@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<randomMaps displayNameID="301439" imagepath="ui\random_map\zp_migration_maps" helpTextID="301440" cannotReplace="">
+  <map>zphawaii</map>
+  <map>zpaustralia</map>
+  <map>zpdeadsea</map>
+  <map>zpeldorado</map>
+  <map>zpkurils</map>
+  <map>zpmediterranean</map>
+  <map>zpphilippines</map>
+  <map>zptreasureisland</map>
+  <map>zpwildwest</map>
+</randomMaps>

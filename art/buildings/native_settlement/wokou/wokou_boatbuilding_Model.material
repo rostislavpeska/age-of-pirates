@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\wokou\textures\wokou_boatbuilding_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\japan\boatbuilding\textures\boatbuilding_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\japan\boatbuilding\textures\boatbuilding_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\china\fencewalls01\textures\fencewalls01_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\china\fencewalls01\textures\fencewalls01_matb_normals">
+      </texture>
+      <texture name="Masks" override="homecity\china\fencewalls01\textures\fencewalls01_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

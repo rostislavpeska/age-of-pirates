@@ -1,7 +1,7 @@
 <protounitsounddef>
   <protounit name="zpSPCFlyingDutchman">
     <soundtype name="Select">
-      <soundset name="BritishPrivateerSelect">
+      <soundset name="DutchFluytSelect">
       </soundset>
     </soundtype>
     <soundtype name="Death">
@@ -13,7 +13,7 @@
       </soundset>
     </soundtype>
     <soundtype name="Acknowledge">
-      <soundset name="BritishPrivateerAcknowledge">
+      <soundset name="DutchFluytAcknowledge">
       </soundset>
     </soundtype>
     <soundtype name="Exists">

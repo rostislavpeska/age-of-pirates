@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\trains\textures\train_australian_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\st_louis\train\textures\train_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\st_louis\train\textures\train_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\trains\textures\train_australian_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\st_louis\train\textures\train_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\st_louis\train\textures\train_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

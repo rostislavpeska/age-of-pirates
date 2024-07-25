@@ -2469,7 +2469,6 @@ vector spiralizedBuildingLocation(vector startingPosition = cInvalidVector, int 
 
       if (getUnitByLocation(cUnitTypeBuilding, cPlayerRelationAny, cUnitStateABQ, testVec, bufferSpace) < 0)
       { // Site is clear, use it.
-	  	//aiChat(1, "Found location on attempt: " + attempt);
 		//testVec = selectNearbyAreaGroup(testVec);
 		if (testVec != cInvalidVector)
 		{
@@ -2498,7 +2497,6 @@ vector spiralizedBuildingLocation(vector startingPosition = cInvalidVector, int 
 
       if (getUnitByLocation(cUnitTypeBuilding, cPlayerRelationAny, cUnitStateABQ, testVec, bufferSpace) < 0)
       { // Site is clear, use it.
-	  	//aiChat(1, "Found location on attempt: " + attempt);
 		//testVec = selectNearbyAreaGroup(testVec);
 		if (testVec != cInvalidVector)
 		{
@@ -2615,7 +2613,6 @@ void selectClosestArchipelagoMainIslandBuildPlanPosition(int planID = -1, int ba
 //==============================================================================
 bool selectArchipelagoBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
 {
-	//aiChat(1, "Somehow, the Archipelago builder is running...");
    bool result = true;
    //baseID = -1;
 
@@ -3014,7 +3011,7 @@ minInterval 20
 	int currentBaseAreaGroupID = kbAreaGroupGetIDByPosition(currentBaseLoc);
 	int currentNumBuildings = getUnitCountByAreaGroup(cUnitTypeBuilding, cPlayerRelationAny, cUnitStateAlive, currentBaseLoc);
 	int numberAreas = kbAreaGroupGetNumberAreas(currentBaseAreaGroupID);
-	float buildingsPerArea = 3;
+	float buildingsPerArea = 2;
 
 	if (currentNumBuildings > numberAreas * buildingsPerArea)
 	{
@@ -3068,7 +3065,7 @@ minInterval 20
 	// Convert the area group into a good landing spot
 	newBaseLoc = kbAreaGroupGetCenter(bestBaseAreaGroup);
 	newBaseLoc = getDropoffPoint(currentBaseLoc, newBaseLoc, 5);
-	//aiChat(1, "Most vil number: " + mostVilNumber);
+
 	// Move the main base there, but only if we found some vills
 	if (mostVilNumber > 0)
 	{
@@ -3085,9 +3082,9 @@ minInterval 20
 	}
 
 	// Set land reserve plan here
-	aiPlanSetVariableVector(gLandReservePlan, cCombatPlanTargetPoint, 0, newBaseLoc);
+	//aiPlanSetVariableVector(gLandReservePlan, cCombatPlanTargetPoint, 0, newBaseLoc);
 	//kbBaseSetMilitary(cMyID, currentBase, true);
-    moveDefenseReflex(newBaseLoc, 50.0, currentBase);
+    //moveDefenseReflex(newBaseLoc, 50.0, currentBase);
 	gLastArchipelagoMove = time;
 }
 

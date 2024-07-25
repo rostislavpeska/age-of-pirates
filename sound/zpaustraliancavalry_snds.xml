@@ -1,0 +1,35 @@
+<!-- converted from XMB to XML -->
+
+<protounitsounddef>
+	<protounit name="zpAustralianCavalry">
+		<soundtype name="Select">
+			<soundset name="SaloonUnitSelect"/>
+		</soundtype>
+		<soundtype name="Grunt">
+			<soundset name="GenericMaleGrunt"/>
+		</soundtype>
+		<soundtype name="Death">
+			<soundset name="GenericMaleDeath"/>
+		</soundtype>
+		<soundtype name="Creation">
+			<soundset name="MilitaryBirth"/>
+		</soundtype>
+		<soundtype name="Acknowledge">
+			<targetlogic>
+				<choice name="default">
+					<soundset name="SaloonUnitAcknowledge"/>
+				</choice>
+				<choice name="enemy">
+					<soundset name="SaloonUnitAttack"/>
+				</choice>
+				<choice name="build"/>
+				<choice name="Huntable"/>
+				<choice name="Tree"/>
+				<choice name="AbstractMine"/>
+				<choice name="AbstractFarm"/>
+				<choice name="AbstractResourceCrate"/>
+				<choice name="AbstractFruit"/>
+			</targetlogic>
+		</soundtype>
+	</protounit>
+</protounitsounddef>

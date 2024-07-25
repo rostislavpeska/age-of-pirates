@@ -153,4 +153,13 @@
     <ability>zpPowerArmouredTrainInactiveStation<tech>zpArmoredTrainDisableShadow</tech><rof>70</rof><castifnotselected>true</castifnotselected><alwaysdisabledingrid>true</alwaysdisabledingrid></ability>
     <ability>zpPowerArmouredTrainNoResourceStation<tech>zpArmoredTrainNoResourceEnableShadow</tech><rof>70</rof><castifnotselected>true</castifnotselected><alwaysdisabledingrid>true</alwaysdisabledingrid></ability>
   </zptrainstationb>
+  <zpcatamaran>
+    <ability>PowerLongRange<rof>60</rof></ability>
+  </zpcatamaran>
+  <zpspcflyingdutchman>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpspcflyingdutchman>
+  <zpspcprau>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpspcprau>
 </abilitymods>

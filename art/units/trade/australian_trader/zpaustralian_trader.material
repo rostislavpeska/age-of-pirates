@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\trade\australian_trader\textures\australian_trader_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\trade\american_trader\textures\american_trader_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\trade\american_trader\textures\american_trader_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\trade\american_trader\textures\american_trader_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

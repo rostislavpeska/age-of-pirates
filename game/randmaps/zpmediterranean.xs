@@ -1,4 +1,4 @@
-// Corsairs of Mediterranean 1.0
+// Mediterranean Islands 1.1
 
 include "mercenaries.xs";
 include "ypAsianInclude.xs";
@@ -876,7 +876,7 @@ void main(void)
 
 
     int jesuit3VillageID = -1;
-    int jesuit3VillageType = rmRandInt(1,3);
+    int jesuit3VillageType = rmRandInt(1,5);
     if (mapVariation == 1){
       jesuit3VillageID = rmCreateGrouping("jesuit 3", "sufibluemosque_0"+jesuit3VillageType);
     }
@@ -890,7 +890,7 @@ void main(void)
 
 
     int jesuit4VillageID = -1;
-    int jesuit4VillageType = rmRandInt(1,3);
+    int jesuit4VillageType = rmRandInt(1,5);
     if (mapVariation == 1){
       jesuit4VillageID = rmCreateGrouping("jesuit 4", "sufibluemosque_0"+jesuit4VillageType);
     }
@@ -1403,6 +1403,32 @@ rmSetTriggerLoop(false);
 	rmSetTriggerLoop(true);
 	}
 
+  for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate Khmer"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","Khmers");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnKhmers"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
 for (k=1; <= cNumberNonGaiaPlayers) {
 rmCreateTrigger("Activate Maltese"+k);
 rmAddTriggerCondition("ZP Tech Researching (XS)");
@@ -1555,6 +1581,8 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Khmer"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga"+k));
 rmAddTriggerEffect("Fire Event");

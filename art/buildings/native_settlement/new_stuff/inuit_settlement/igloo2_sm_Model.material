@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\inuit_igloo\iglotexture">
+      </texture>
+      <texture name="Normals" override="buildings\inuit_igloo\iglotexturenormals">
+      </texture>
+      <texture name="Masks" override="buildings\inuit_igloo\iglotexturemask">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

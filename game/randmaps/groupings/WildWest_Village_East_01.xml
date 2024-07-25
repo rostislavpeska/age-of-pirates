@@ -9,7 +9,7 @@
 	<units>
 		<unit variation="128" posx="7.4339" posz="-13.0077" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">UnderbrushTexas</unit>
 		<unit variation="20" posx="8.5369" posz="-12.1845" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">UnderbrushTexas</unit>
-		<unit variation="153" posx="8.8700" posz="-9.9186" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNativeHousePirate</unit>
+		<unit variation="153" posx="8.8700" posz="-9.9186" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNativeTent</unit>
 		<unit variation="93" posx="3.7209" posz="-6.8691" orientx="-0.9239" orienty="-0.0000" orientz="0.3827">NativeTownObstruction</unit>
 		<unit variation="93" posx="4.1381" posz="-10.4460" orientx="-0.9239" orienty="-0.0000" orientz="0.3827">NativeTownObstruction</unit>
 		<unit variation="93" posx="8.7952" posz="-9.3914" orientx="-0.9239" orienty="-0.0000" orientz="0.3827">NativeTownObstruction</unit>

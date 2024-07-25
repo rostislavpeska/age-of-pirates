@@ -596,7 +596,7 @@ void initArrays(void)
 
    if (civIsEuropean() == true)
    {
-   gRevolutionList = xsArrayCreateInt(20, 0, "Revolution List");
+   gRevolutionList = xsArrayCreateInt(21, 0, "Revolution List");
    xsArraySetInt(gRevolutionList, 0, cTechDERevolutionHaiti);
    xsArraySetInt(gRevolutionList, 1, cTechDERevolutionEgypt);
    xsArraySetInt(gRevolutionList, 2, cTechDERevolutionFinland);
@@ -617,6 +617,7 @@ void initArrays(void)
    xsArraySetInt(gRevolutionList, 17, cTechDERevolutionColombiaPortuguese);
    xsArraySetInt(gRevolutionList, 18, cTechDERevolutionChile);
    xsArraySetInt(gRevolutionList, 19, cTechDERevolutionSouthAfrica);
+   xsArraySetInt(gRevolutionList, 20, cTechDERevolutionFrance);         // AssertiveWall: Added french revolution
    }
 
    gAfricanAlliances = xsArrayCreateInt(8, 0, "African Alliances");
@@ -998,17 +999,19 @@ void analyzeGameSettingsAndType()
       if (gSPC == true)
       {
          aiSetMicroFlags(cMicroLevelHigh);
-            gAttackMissionInterval = 180000; // 3 Minutes.
+         gAttackMissionInterval = 180000; // 3 Minutes.
          gMaxPop = 185;
          // Playing on hard in the campaign is a little bit different than Random Map hard.
          // We enable some stuff for the SPC Hard AI that RM Hard AI doesn't have.
          gDifficultyExpert = cDifficultyHard;
+         xsEnableRule("manageMicro");     // AssertiveWall: Adjust micro level from high to normal when army gets too big
       }
       else
       {  // AssertiveWall: Interval decreased to 2 minutes 
          gMaxPop = maxPop;
          aiSetMicroFlags(cMicroLevelHigh);
-            gAttackMissionInterval = 120000; // 2.5 Minutes.
+         gAttackMissionInterval = 120000; // 2.5 Minutes.
+         xsEnableRule("manageMicro");     // AssertiveWall: Adjust micro level from high to normal when army gets too big
       }
       break;
    }
@@ -1018,6 +1021,7 @@ void analyzeGameSettingsAndType()
          gAttackMissionInterval = 90000; // 2 Minutes.
          kbSetPlayerHandicap(cMyID, startingHandicap * 1.15); // +15% Boost.
       aiSetMicroFlags(cMicroLevelHigh);
+      xsEnableRule("manageMicro");     // AssertiveWall: Adjust micro level from high to normal when army gets too big
       break;
    }
       case cDifficultyExtreme: // Extreme.
@@ -1026,6 +1030,7 @@ void analyzeGameSettingsAndType()
          gAttackMissionInterval = 90000; // 2 Minutes.
          kbSetPlayerHandicap(cMyID, startingHandicap * 1.30); // +30% Boost.
       aiSetMicroFlags(cMicroLevelHigh);
+      xsEnableRule("manageMicro");     // AssertiveWall: Adjust micro level from high to normal when army gets too big
       break;
    }
    }
@@ -1218,6 +1223,15 @@ void initXSHandlers()
 /* initPersonality
    A function to set defaults that need to be in place before the loader file's
    preInit() function is called.
+
+   AssertiveWall: Table of strategies (needs adjustment)
+
+   Rush:                btRushBoom >= 0.5       && btOffenseDefense >= 0.5
+   Naked Fast Fortress: btRushBoom >= 0; < 0.5  && btOffenseDefense >= 0.5
+   Safe Fast Fortress:  btRushBoom >= 0; < 0.5  && btOffenseDefense <  0.5
+   Fast Industrial:     btRushBoom < 0          && btOffenseDefense >= 0.5
+   Greedy/Safe Boom:    btRushBoom < 0          && btOffenseDefense <  0.5
+
 */
 //==============================================================================
 void initPersonality(void)
@@ -1228,12 +1242,12 @@ void initPersonality(void)
    debugSetup("My civ is " + kbGetCivName(cMyCiv));
    switch (cMyCiv)
    {
-      case cCivBritish: // Elizabeth: Infantry oriented.
+   case cCivBritish: // Elizabeth: Infantry oriented.
    case cCivTheCircle:
    case cCivPirate:
    case cCivSPCAct3:
    {
-         btRushBoom = 0.0;
+      btRushBoom = 0.0;
       if (aiRandInt(10) < 6)
       {
          btRushBoom = 0.5;
@@ -1242,8 +1256,8 @@ void initPersonality(void)
       btBiasCav = -0.4;
       btBiasInf = 0.4;
       btBiasArt = 0.0;
-         btBiasNative = 0.5;
-         btBiasTrade = 0.0;
+      btBiasNative = 0.5;
+      btBiasTrade = 0.0;
       break;
    }
    case cCivFrench: // Napoleon:  Cav oriented, balanced
@@ -1329,9 +1343,9 @@ void initPersonality(void)
          btRushBoom = 0.5;
       }
       btOffenseDefense = 0.0;
-         btBiasCav = 0.0;
+      btBiasCav = 0.0;
       btBiasInf =    0.0;
-         btBiasArt = 0.2;
+      btBiasArt = 0.2;
       btBiasNative = 0.0;
       btBiasTrade = 0.0;
       break;
@@ -1347,8 +1361,8 @@ void initPersonality(void)
       btBiasCav = -0.3;
       btBiasInf = 0.3;
       btBiasArt = 0.1;
-         btBiasNative = 0.3;
-         btBiasTrade = 1.0;
+      btBiasNative = 0.3;
+      btBiasTrade = 1.0;
       break;
    }
    case cCivXPSioux: // Extreme rush
@@ -1359,11 +1373,11 @@ void initPersonality(void)
          btRushBoom = 0.0;
       }
       btOffenseDefense = 0.5;
-         btBiasCav = 0.4;
+      btBiasCav = 0.4;
       btBiasInf = 0.0;
       btBiasArt = 0.0;
       btBiasNative = 0.0;
-         btBiasTrade = 0.8;
+      btBiasTrade = 0.8;
       break;
    }
    case cCivXPIroquois: // Fast fortress, trade and native bias.
@@ -1375,7 +1389,7 @@ void initPersonality(void)
       }
       btOffenseDefense = 0.0;
       btBiasCav = 0.0;
-         btBiasInf = 0.2;
+      btBiasInf = 0.2;
       btBiasArt = 0.0;
       btBiasNative = 0.8;
       btBiasTrade = 1.0;
@@ -1455,10 +1469,10 @@ void initPersonality(void)
       }
       btOffenseDefense = 0.0;
       btBiasCav = 0.0;
-         btBiasInf = 0.3;
+      btBiasInf = 0.3;
       btBiasArt = 0.0;
       btBiasNative = 1.0;
-         btBiasTrade = 0.5; // Use Tambos.
+      btBiasTrade = 0.5; // Use Tambos.
       break;
    }
    case cCivDESwedish: // Gustav the Great: Rusher, small artillery focus.
@@ -1485,7 +1499,7 @@ void initPersonality(void)
       }
       btOffenseDefense = 0.0;
       btBiasCav = 0.0;
-         btBiasInf = 0.2;
+      btBiasInf = 0.2;
       btBiasArt = 0.0;
       btBiasNative = 0.0;
       btBiasTrade = -0.5;
@@ -1496,21 +1510,21 @@ void initPersonality(void)
       btRushBoom = 0.0;
       btOffenseDefense = 0.0;
       btBiasCav = -0.3;
-         btBiasInf = 0.4;
+      btBiasInf = 0.4;
       btBiasArt = 0.0;
-         btBiasNative = 1.0;
-         btBiasTrade = 0.4;
+      btBiasNative = 1.0;
+      btBiasTrade = 0.4;
       break;
    }
       case cCivDEHausa: // Queen Amina: Bias towards building TPs.
    {
       btRushBoom = 0.0;
       btOffenseDefense = 0.0;
-         btBiasCav = 0.2;
+      btBiasCav = 0.2;
       btBiasInf = 0.0;
       btBiasArt = 0.0;
-         btBiasNative = 1.0;
-         btBiasTrade = 0.4;
+      btBiasNative = 1.0;
+      btBiasTrade = 0.4;
       break;
    }
    case cCivDEMexicans: // Miguel Hidalgo: Balanced.
@@ -1523,7 +1537,7 @@ void initPersonality(void)
       btOffenseDefense = 0.0;
       btBiasCav = -0.4;
       btBiasInf = 0.4;
-         btBiasArt = -0.3;
+      btBiasArt = -0.3;
       btBiasNative = 0.0;
       btBiasTrade = -0.5;
       break;
@@ -1597,6 +1611,16 @@ void initPersonality(void)
       }  
    }
 
+   // AssertiveWall: Replace values with a triple dice roll centered around those values.
+   // Default range is +/- 0.4
+   btRushBoom = generateTripleDiceRoll(btRushBoom);
+   btOffenseDefense = generateTripleDiceRoll(btOffenseDefense);
+   btBiasCav = generateTripleDiceRoll(btBiasCav, 0.1);
+   btBiasInf = generateTripleDiceRoll(btBiasInf, 0.1);
+   btBiasArt = generateTripleDiceRoll(btBiasArt, 0.1);
+   btBiasNative = generateTripleDiceRoll(btBiasNative, 0.2);
+   btBiasTrade = generateTripleDiceRoll(btBiasTrade);
+
    if (((aiTreatyActive() == true) || (aiGetGameMode() == cGameModeDeathmatch)) && 
        (btRushBoom > 0.0))
    {
@@ -1660,7 +1684,32 @@ void initPersonality(void)
       } 
       //btBiasNative = 0.9;
       //btBiasTrade = 0.9;
+   }
 
+   // AssertiveWall: Set the strategy style
+   if (getTeamStrategy() > 0)
+   {
+      // do nothing, gStrategy already set in getTeamStrategy
+   }
+   else if (btRushBoom >= 0.5 && btOffenseDefense >= 0.5)
+   {
+      gStrategy = cStrategyRush;
+   }
+   else if (btRushBoom >= 0 && btRushBoom < 0.5 && btOffenseDefense >= 0.5)
+   {
+      gStrategy = cStrategyNakedFF;
+   }
+   else if (btRushBoom >= 0 && btRushBoom < 0.5 && btOffenseDefense <  0.5)
+   {
+      gStrategy = cStrategySafeFF;
+   }
+   else if (btRushBoom < 0 && btOffenseDefense >= 0.5)
+   {
+      gStrategy = cStrategyFastIndustrial;
+   }
+   else //if (btRushBoom < 0 && btOffenseDefense <  0.5) Make sure we pick something
+   {
+      gStrategy = cStrategyGreed;
    }
 }
       
@@ -2419,8 +2468,12 @@ void init(void)
       
       if (gNavyMap == true)
       {
-         xsEnableRule("waterExplore");
-         waterExplore(); // Call instantly to start scouting if we have starting ships.
+         // AssertiveWall: this stuff is enabled after our first water attack on island maps
+         if (gStartOnDifferentIslands == false)
+         {
+            xsEnableRule("waterExplore");
+            waterExplore(); // Call instantly to start scouting if we have starting ships.
+         }
       }
       
       if (cMyCiv == cCivDutch)
@@ -2603,6 +2656,12 @@ minInterval 2
       xsEnableRule("teePeeMonitor");
    }
 
+   // AssertiveWall: New difficulty based rules
+   if (cDifficultyCurrent >= cDifficultyHard)
+   {
+      xsEnableRule("greedManager");
+   }
+
    // AssertiveWall: attacker/defender maps, and italian wars
    checkAttackDefenseMap();
    
@@ -2611,8 +2670,8 @@ minInterval 2
       // AssertiveWall: Set up build orders for standard starts
       if (kbGetAge() == cAge1 && kbResourceGet(cResourceFood) <= 0 && gUseBuildOrder == true)
       {
-         //createBuildOrder();
-         //xsEnableRuleGroup("buildOrderRules");
+         createBuildOrder();
+         xsEnableRuleGroup("buildOrderRules");
       }
 
       // AssertiveWall: Delay building if we're on ceylon or equivalent
@@ -2674,11 +2733,12 @@ minInterval 2
    }
 
    // AssertiveWall: fixed last conditional, !=, vs. ==
-   if ((cMyCiv != cCivIndians) && (cMyCiv != cCivSPCIndians) &&
+   // also I moved this to the transition to age 2
+   /*if ((cMyCiv != cCivIndians) && (cMyCiv != cCivSPCIndians) &&
        (cMyCiv != cCivJapanese) && (cMyCiv != cCivSPCJapanese) && (cMyCiv != cCivSPCJapaneseEnemy))
    {
       xsEnableRule("slaughterMonitor");
-   }
+   }*/
 
    if ((cMyCiv == cCivJapanese) || (cMyCiv == cCivSPCJapanese) || (cMyCiv == cCivSPCJapaneseEnemy))
    {

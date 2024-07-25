@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\socket_jewish\textures\jewish_house_01_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\socket_jewish\textures\jewish_house_01_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\socket_jewish\textures\jewish_house_01_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

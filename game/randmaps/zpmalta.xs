@@ -543,10 +543,21 @@ rmAddAreaConstraint(eastIslandCliffs, islandAvoidTradeRoute);
 rmAddAreaConstraint(eastIslandCliffs, westIslandCliffConstraint);
 rmAddAreaConstraint(eastIslandCliffs, portSiteConstraint);
 rmSetAreaElevationType(eastIslandCliffs, cElevTurbulence);
+rmSetAreaCliffPainting(eastIslandCliffs, true, false, true);
 rmSetAreaElevationVariation(eastIslandCliffs, 3.0);
 rmSetAreaElevationPersistence(eastIslandCliffs, 0.2);
 rmSetAreaElevationNoiseBias(eastIslandCliffs, 1);
 rmAddAreaInfluenceSegment(eastIslandCliffs, 0.5, 0.2, 0.65, 0.45);
+rmBuildArea(eastIslandCliffs);
+
+int eastCliffTerrain=rmCreateArea("east cliff terrain"); 
+rmSetAreaSize(eastCliffTerrain, 0.07, 0.07);
+rmSetAreaLocation(eastCliffTerrain, 0.6, 0.2);
+rmSetAreaCoherence(eastCliffTerrain, 0.6);
+rmSetAreaMix(eastCliffTerrain, "Africa Desert Grass");
+rmSetAreaObeyWorldCircleConstraint(eastCliffTerrain, false);
+rmAddAreaInfluenceSegment(eastCliffTerrain, 0.5, 0.2, 0.65, 0.45);
+rmBuildArea(eastCliffTerrain);
 
 int westIslandCliffs = rmCreateArea ("west Island cliffs");
 rmSetAreaSize(westIslandCliffs, 0.07, 0.07);
@@ -566,10 +577,21 @@ rmAddAreaConstraint(westIslandCliffs, islandAvoidTradeRoute);
 rmAddAreaConstraint(westIslandCliffs, eastIslandCliffConstraint);
 rmAddAreaConstraint(westIslandCliffs, portSiteConstraint);
 rmSetAreaElevationType(westIslandCliffs, cElevTurbulence);
+rmSetAreaCliffPainting(westIslandCliffs, true, false, true);
 rmSetAreaElevationVariation(westIslandCliffs, 3.0);
 rmSetAreaElevationPersistence(westIslandCliffs, 0.2);
 rmSetAreaElevationNoiseBias(westIslandCliffs, 1);
 rmAddAreaInfluenceSegment(westIslandCliffs, 0.2, 0.5, 0.45, 0.65);
+rmBuildArea(westIslandCliffs);
+
+int westCliffTerrain=rmCreateArea("west cliff terrain"); 
+rmSetAreaSize(westCliffTerrain, 0.07, 0.07);
+rmSetAreaLocation(westCliffTerrain, 0.2, 0.6);
+rmSetAreaCoherence(westCliffTerrain, 0.6);
+rmSetAreaMix(westCliffTerrain, "Africa Desert Grass");
+rmSetAreaObeyWorldCircleConstraint(westCliffTerrain, false);
+rmAddAreaInfluenceSegment(westCliffTerrain, 0.2, 0.5, 0.45, 0.65);
+rmBuildArea(westCliffTerrain);
 
 int northIslandCliffs = rmCreateArea ("north island cliffs");
 rmSetAreaSize(northIslandCliffs, 0.035, 0.035);
@@ -591,9 +613,19 @@ rmAddAreaConstraint(northIslandCliffs, eastIslandCliffConstraint);
 rmAddAreaConstraint(northIslandCliffs, portSiteConstraint);
 rmAddAreaConstraint(northIslandCliffs, avoidControllerMedium); 
 rmSetAreaElevationType(northIslandCliffs, cElevTurbulence);
+rmSetAreaCliffPainting(northIslandCliffs, true, false, true);
 rmSetAreaElevationVariation(northIslandCliffs, 3.0);
 rmSetAreaElevationPersistence(northIslandCliffs, 0.2);
 rmSetAreaElevationNoiseBias(northIslandCliffs, 1);
+rmBuildArea(northIslandCliffs);
+
+int northCliffTerrain=rmCreateArea("north cliff terrain"); 
+rmSetAreaSize(northCliffTerrain, 0.035, 0.035);
+rmSetAreaLocation(northCliffTerrain, 0.7, 1.0);
+rmSetAreaCoherence(northCliffTerrain, 0.6);
+rmSetAreaMix(northCliffTerrain, "Africa Desert Grass");
+rmSetAreaObeyWorldCircleConstraint(northCliffTerrain, false);
+rmBuildArea(northCliffTerrain);
 
 if(cNumberNonGaiaPlayers >= 4){
    int northIslandCliffs2 = rmCreateArea ("north island cliffs 2");
@@ -616,19 +648,26 @@ if(cNumberNonGaiaPlayers >= 4){
    rmAddAreaConstraint(northIslandCliffs2, avoidControllerMedium); 
    rmAddAreaConstraint(northIslandCliffs2, portSiteConstraint);
    rmSetAreaElevationType(northIslandCliffs2, cElevTurbulence);
+   rmSetAreaCliffPainting(northIslandCliffs2, true, false, true);
    rmSetAreaElevationVariation(northIslandCliffs2, 3.0);
    rmSetAreaElevationPersistence(northIslandCliffs2, 0.2);
    rmSetAreaElevationNoiseBias(northIslandCliffs2, 1);
+   rmBuildArea(northIslandCliffs2);
+
+   int northCliffTerrain2=rmCreateArea("north cliff terrain2"); 
+   rmSetAreaSize(northCliffTerrain2, 0.035, 0.035);
+   rmSetAreaLocation(northCliffTerrain2, 1.0, 0.7);
+   rmSetAreaCoherence(northCliffTerrain2, 0.6);
+   rmSetAreaMix(northCliffTerrain2, "Africa Desert Grass");
+   rmSetAreaObeyWorldCircleConstraint(northCliffTerrain2, false);
+   rmBuildArea(northCliffTerrain2);
 }
 
 
 
-rmBuildAllAreas();
-
 // North Island Mountains
 
 
-rmBuildAllAreas();
 
 // Text
 	rmSetStatusText("",0.20);
@@ -776,9 +815,8 @@ if (cNumberNonGaiaPlayers >= 4){
       rmSetAreaCoherence(eastIslandVillage1, 0.8);
       rmSetAreaSmoothDistance(eastIslandVillage1, 5);
       rmSetAreaCliffType(eastIslandVillage1, "ZP Malta Desert Grass");
-      rmSetAreaCliffEdge(eastIslandVillage1, 1, 0.8, 0.0, 1.0, 0);
-      rmSetAreaCliffHeight(eastIslandVillage1, 1.0, 0.0, 0.5); 
-      rmSetAreaBaseHeight(eastIslandVillage1, 5.2);
+      rmSetAreaCliffEdge(eastIslandVillage1, 4, 0.18, 0.0, 0.0, 2); 
+      rmSetAreaCliffHeight(eastIslandVillage1, 4.0, 0.0, 0.5); 
       rmSetAreaElevationVariation(eastIslandVillage1, 0.0);
       rmBuildArea(eastIslandVillage1);
 
@@ -818,9 +856,8 @@ if (cNumberNonGaiaPlayers >= 4){
       rmSetAreaCoherence(eastIslandVillage2, 0.8);
       rmSetAreaSmoothDistance(eastIslandVillage2, 5);
       rmSetAreaCliffType(eastIslandVillage2, "ZP Malta Desert Grass");
-      rmSetAreaCliffEdge(eastIslandVillage2, 1, 0.8, 0.0, 1.0, 0);
-      rmSetAreaCliffHeight(eastIslandVillage2, 1.0, 0.0, 0.5);
-      rmSetAreaBaseHeight(eastIslandVillage2, 5.2);
+      rmSetAreaCliffEdge(eastIslandVillage2, 4, 0.18, 0.0, 0.0, 2); 
+      rmSetAreaCliffHeight(eastIslandVillage2, 4.0, 0.0, 0.5); 
       rmSetAreaElevationVariation(eastIslandVillage2, 0.0);
       rmBuildArea(eastIslandVillage2);
 
@@ -849,9 +886,8 @@ if (cNumberNonGaiaPlayers >= 4){
       rmSetAreaCoherence(eastIslandVillage5, 0.8);
       rmSetAreaSmoothDistance(eastIslandVillage5, 5);
       rmSetAreaCliffType(eastIslandVillage5, "ZP Malta Desert Grass");
-      rmSetAreaCliffEdge(eastIslandVillage5, 1, 0.8, 0.0, 1.0, 0);
-      rmSetAreaCliffHeight(eastIslandVillage5, 1.0, 0.0, 0.5);
-      rmSetAreaBaseHeight(eastIslandVillage5, 5.2);
+      rmSetAreaCliffEdge(eastIslandVillage5, 4, 0.18, 0.0, 0.0, 2); 
+      rmSetAreaCliffHeight(eastIslandVillage5, 4.0, 0.0, 0.5); 
       rmSetAreaElevationVariation(eastIslandVillage5, 0.0);
       rmBuildArea(eastIslandVillage5);
 
@@ -885,9 +921,8 @@ if (cNumberNonGaiaPlayers >= 4){
       rmSetAreaCoherence(eastIslandVillage3, 0.8);
       rmSetAreaSmoothDistance(eastIslandVillage3, 5);
       rmSetAreaCliffType(eastIslandVillage3, "ZP Malta Desert Grass");
-      rmSetAreaCliffEdge(eastIslandVillage3, 1, 0.8, 0.0, 1.0, 0);
-      rmSetAreaCliffHeight(eastIslandVillage3, 1.0, 0.0, 0.5);
-      rmSetAreaBaseHeight(eastIslandVillage3, 5.2);
+      rmSetAreaCliffEdge(eastIslandVillage3, 4, 0.18, 0.0, 0.0, 2); 
+      rmSetAreaCliffHeight(eastIslandVillage3, 4.0, 0.0, 0.5); 
       rmSetAreaElevationVariation(eastIslandVillage3, 0.0);
       rmBuildArea(eastIslandVillage3);
 
@@ -918,9 +953,8 @@ if (cNumberNonGaiaPlayers >= 4){
       rmSetAreaCoherence(eastIslandVillage4, 0.8);
       rmSetAreaSmoothDistance(eastIslandVillage4, 5);
       rmSetAreaCliffType(eastIslandVillage4, "ZP Malta Desert Grass");
-      rmSetAreaCliffEdge(eastIslandVillage4, 1, 0.8, 0.0, 1.0, 0);
-      rmSetAreaCliffHeight(eastIslandVillage4, 1.0, 0.0, 0.5);
-      rmSetAreaBaseHeight(eastIslandVillage4, 5.2);
+      rmSetAreaCliffEdge(eastIslandVillage4, 4, 0.18, 0.0, 0.0, 2); 
+      rmSetAreaCliffHeight(eastIslandVillage4, 4.0, 0.0, 0.5); 
       rmSetAreaElevationVariation(eastIslandVillage4, 0.0);
       rmBuildArea(eastIslandVillage4);
       
@@ -947,9 +981,8 @@ if (cNumberNonGaiaPlayers >= 4){
       rmSetAreaCoherence(eastIslandVillage6, 0.8);
       rmSetAreaSmoothDistance(eastIslandVillage6, 5);
       rmSetAreaCliffType(eastIslandVillage6, "ZP Malta Desert Grass");
-      rmSetAreaCliffEdge(eastIslandVillage6, 1, 0.8, 0.0, 1.0, 0);
-      rmSetAreaCliffHeight(eastIslandVillage6, 1.0, 0.0, 0.5);
-      rmSetAreaBaseHeight(eastIslandVillage6, 5.2);
+      rmSetAreaCliffEdge(eastIslandVillage6, 4, 0.18, 0.0, 0.0, 2); 
+      rmSetAreaCliffHeight(eastIslandVillage6, 4.0, 0.0, 0.5); 
       rmSetAreaElevationVariation(eastIslandVillage6, 0.0);
       rmBuildArea(eastIslandVillage6);
 
@@ -1562,6 +1595,32 @@ rmSetTriggerLoop(false);
 	rmSetTriggerLoop(true);
 	}
 
+   for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate Khmer"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","Khmers");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnKhmers"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
 
 for (k=1; <= cNumberNonGaiaPlayers) {
 rmCreateTrigger("Activate Tortuga"+k);
@@ -1664,6 +1723,8 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Khmer"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga"+k));
 rmAddTriggerEffect("Fire Event");
