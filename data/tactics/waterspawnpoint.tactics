@@ -134,6 +134,22 @@
     <persistent>0</persistent>
     <singleuse>1</singleuse>
   </action>
+  <action>
+    <name stringid="69776">SpawnBlackJackShip</name>
+    <type>Spawn</type>
+    <rate type="zpSPCPirateSteamer">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnPrau</name>
+    <type>Spawn</type>
+    <rate type="zpSPCPrau">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
   <tactic>Normal
     <action>Heal</action>
     <action>SpawnPrivateer</action>
@@ -146,5 +162,7 @@
     <action>SpawnGalleass</action>
     <action>SpawnVeniceGalley</action>
     <action>SpawnFlyingDutchman</action>
+    <action>SpawnBlackJackShip</action>
+    <action>SpawnPrau</action>
   </tactic>
 </tactics>

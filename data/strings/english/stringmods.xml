@@ -804,8 +804,8 @@
       <string _locid="300803">Mass Production \nConfigure Dry Dock to build ships faster by 150%.</string>
       <string _locid="300804">This Dry Dock is focusing on repairing ships.</string>
       <string _locid="300805">Repair \nConfigure Dry Dock to repair ships faster by 300%.</string>
-      <string _locid="300806">This Dry Dock is maintaining Venetian Galleys.</string>
-      <string _locid="300807">Automatic Workshop \nConfigure Dry Dock to maintain Venetian Galleys.</string>
+      <string _locid="300806">This Dry Dock is maintaining ships. (Other ship training speed is slowed down by 50%)</string>
+      <string _locid="300807">Automatic Workshop \nConfigure Dry Dock to maintain ships. (Other ship training speed slows down by 50%)</string>
       <string _locid="300808">Venetian Embassy</string>
       <string _locid="300809">ZP Venetian Embassy</string>
       <string _locid="300810">Venetian Embassy Wagon</string>
@@ -1425,7 +1425,7 @@
       <string _locid="301423">Ghost Ship</string>
       <string _locid="301424">Tortuga Fixed Gun</string>
       <string _locid="301425">Bernard Fokke</string>
-      <string _locid="301426">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nFlying Dutchman \n\nExtra durable ghost ship. Able to train sea creatures. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nTortuga Fixed Gun</string>
+      <string _locid="301426">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nFlying Dutchman \n\nExtra durable ghost ship. Able to train dolphins. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nTortuga Fixed Gun</string>
       <string _locid="301427">ZP Native Tent</string>
       <string _locid="301428">ZP Nat Town Hall</string>
       <string _locid="301429">Zeppelin</string>
@@ -1445,8 +1445,15 @@
       <string _locid="301443">Mallay Pirate Prau</string>
       <string _locid="301444">ZP SPC Wokou Prau</string>
       <string _locid="301445">ZP Nat Cetbang</string>
+      <string _locid="301446">Blackjack's Flagship</string>
+      <string _locid="301447">ZP SPC Pirate Steamer</string>
+      <string _locid="301448">Steam Powered Pirate flagship from the Pacific</string>
+      <string _locid="301449">Black Jack Anderson</string>
+      <string _locid="301450">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nVansittart \n\nPirate steamship. Increased privateer build limit. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nDry Dock</string>
+      <string _locid="301451">Vansittart</string>
+      <string _locid="301452">ZP Pirate Dry Dock</string>
 
-
+      
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
