@@ -93,4 +93,6 @@
   </zpconsulatepiratesdutchman>
   <zpconsulatepiratesblackjack portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/blackjack.png">
   </zpconsulatepiratesblackjack>
+  <zpconsulatewokousirigam portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/si_rigam.png">
+  </zpconsulatewokousirigam>
 </politicianmods>

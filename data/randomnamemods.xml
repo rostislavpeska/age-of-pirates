@@ -23,4 +23,6 @@
   <protounit>zpCatamaran<civ>Default<title>301321</title><title>301322</title><title>301323</title><title>301324</title><title>301325</title><title>301326</title><title>301327</title></civ></protounit>
   <protounit>zpSPCFlyingDutchman<civ>Default<title>301165</title></civ></protounit>
   <protounit>zpSPCPirateSteamer<civ>Default<title>301451</title></civ></protounit>
+  <protounit>zpSPCPrau<civ>Default<title>301455</title></civ></protounit>
+  <protounit>zpSPCPrauB<civ>Default<title>301456</title></civ></protounit>
 </randomnamemods>

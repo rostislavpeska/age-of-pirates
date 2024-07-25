@@ -162,6 +162,9 @@
   <zpspcprau>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpspcprau>
+  <zpspcpraub>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpspcpraub>
   <zpspcpiratesteamer>
     <ability>PowerBroadside<rof>60</rof></ability>
     <ability>zpFullSteam<rof>60</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
