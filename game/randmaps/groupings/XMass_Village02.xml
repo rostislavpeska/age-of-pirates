@@ -25,7 +25,7 @@
 		<unit variation="207" posx="11.7298" posz="-9.2217" orientx="-0.9240" orienty="0.0000" orientz="-0.3825">deNatEUPropVilMale</unit>
 		<unit variation="193" posx="-6.8163" posz="-7.0057" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpSPCEUHouseProp</unit>
 		<unit variation="41" posx="2.9014" posz="-5.3923" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
-		<unit variation="218" posx="7.9267" posz="-3.3868" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseJewish</unit>
+		<unit variation="218" posx="7.9267" posz="-3.3868" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeTownHall</unit>
 		<unit variation="41" posx="-8.9469" posz="-3.4259" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
 		<unit variation="41" posx="-5.0015" posz="-3.6850" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
 		<unit variation="103" posx="-2.9406" posz="-3.7199" orientx="0.3829" orienty="0.0000" orientz="0.9238">deNatEUPropVilFemale</unit>

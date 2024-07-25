@@ -1757,7 +1757,6 @@ void commHandler(int chatID = -1, int statementID = -1)
       targetType = aiCommsGetChatTargetType(chatID); // Like cPlayerChatTargetTypePlayers or cPlayerChatTargetTypeLocation.
       target = aiCommsGetTargetListItem(chatID, 0); // Like cResourceFood or cUnitTypeAbstractArtillery.
       location = aiCommsGetTargetLocation(chatID); // Target location
-      //aiChat(1, "Verb: " + verb + " targetType: " + targetType + " target: " + target);
    }
    else if (statementID >= 0)
    {
@@ -2325,8 +2324,28 @@ rule kothTimer
 inactive
 minInterval 1 // Count down once per second
 { 
+   // First non-player civ will send chats
+   static int playerSelector = -1;
+   if (playerSelector < 0)
+   {
+      for (i = 1; < cNumberPlayers)
+      {
+         if (kbIsPlayerHuman(i) == false)
+         {
+            playerSelector = i;
+            break;
+         }
+      }
+   }
+
+   if (cMyID != playerSelector)
+   {
+      xsDisableSelf();
+      return;
+   }
+
    int randInt = aiRandInt(2);
-   // Just a check. DOn't do anything if the timer isn't running
+   // Just a check. Don't do anything if the timer isn't running
    if (gIsKOTHRunning == false)
    {
       return;
@@ -2344,7 +2363,7 @@ minInterval 1 // Count down once per second
    if (gKOTHAllyTimer == 65)
    {
       // Make it a 50/50 shot on which one we'll send
-      if (randInt == 1)
+      /*if (randInt == 1)
       {
          // All of these are fine, except Elizabeth
          if (cMyCiv != cCivBritish)
@@ -2355,18 +2374,25 @@ minInterval 1 // Count down once per second
       else
       {
          sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemy1MinuteLeftOur4OfKind);
+      }*/
+      if (cMyCiv != cCivBritish)
+      {
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAlly1MinuteLeftOur4OfKind);
       }
+      sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemy1MinuteLeftOur4OfKind);
    }
-   if (gKOTHEnemyTimer == 60)
+   if (gKOTHEnemyTimer == 65)
    {
-      if (randInt == 1)
+      /*if (randInt == 1)
       {
          sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAlly1MinuteLeftEnemy4OfKind);
       }
       else
       {
          sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemy1MinuteLeftEnemy4OfKind);
-      }
+      }*/
+      sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAlly1MinuteLeftEnemy4OfKind);
+      sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemy1MinuteLeftEnemy4OfKind);
    }
 
    // If it is our team, count down our timer

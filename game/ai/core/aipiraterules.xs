@@ -8,6 +8,7 @@
 //==============================================================================
 
 
+
 //==============================================================================
 // initializePirateRules
 // Rule starts as active, only runs as a setup rule and disables after one cycle
@@ -30,31 +31,66 @@ minInterval 1
        cRandomMapName == "zptortuga" ||
        cRandomMapName == "zptreasureisland" ||
        cRandomMapName == "zpvenice" ||
-       cRandomMapName == "zpmediterranean")
+       cRandomMapName == "zpmediterranean" ||
+       cRandomMapName == "zpzealand")
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
       gNavyMap = true;
+      if (haveHumanAlly() == true)
+      {
+         gClaimNativeMissionInterval = 5 * 60 * 1000; // 5 minutes, down from 10
+      }
+      else
+      {
+         gClaimNativeMissionInterval = 3 * 60 * 1000; // 5 minutes, down from 10
+      }
 
-      gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
+      gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
+   }
+
+   // AssertiveWall: Naval, but not starting on different islands
+      if (cRandomMapName == "zphawaii")
+   {
+      gIsPirateMap = true;
+      gNavyMap = true;
+
+      if (haveHumanAlly() == true)
+      {
+         gClaimNativeMissionInterval = 5 * 60 * 1000; // 5 minutes, down from 10
+      }
+      else
+      {
+         gClaimNativeMissionInterval = 3 * 60 * 1000; // 5 minutes, down from 10
+      }
+
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
    }
 
    // AssertiveWall: Land Maps
    if (cRandomMapName == "winterwonderlandii" ||
        cRandomMapName == "zpwildwest" ||
-       cRandomMapName == "zpmississippi")
+       cRandomMapName == "zpmississippi" ||
+       cRandomMapName == "zpwwcanyon")
    {
       gIsPirateMap = true;
-      gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
+      if (haveHumanAlly() == true)
+      {
+         gClaimNativeMissionInterval = 5 * 60 * 1000; // 5 minutes, down from 10
+      }
+      else
+      {
+         gClaimNativeMissionInterval = 3 * 60 * 1000; // 5 minutes, down from 10
+      }
+
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
    }
 
    // AssertiveWall: Archipelago style maps
    if (cRandomMapName == "euArchipelago" ||
-      cRandomMapName == "euArchipelagoLarge"||
-      cRandomMapName == "zpmediterranean" ||
-      cRandomMapName == "zpkurils")
+       cRandomMapName == "euArchipelagoLarge"||
+       cRandomMapName == "zpmediterranean" ||
+       cRandomMapName == "zpkurils")
    {
       gIsArchipelagoMap = true;
       gStartOnDifferentIslands = true;
@@ -65,6 +101,18 @@ minInterval 1
       cvOkToGatherGold = false;      // Setting it false will turn off gold gathering. True turns it on.
       cvOkToGatherWood = false;      // Setting it false will turn off wood gathering. True turns it on.
       gHomeBase = kbGetPlayerStartingPosition(cMyID);
+   }
+
+   // AssertiveWall: Migration style maps
+   if (cRandomMapName == "Ceylon" ||
+       cRandomMapName == "ceylonlarge" ||
+       cRandomMapName == "afswahilicoast" ||
+       cRandomMapName == "afswahilicoastlarge" ||
+       cRandomMapName == "zpeldorado" ||
+       //cRandomMapName == "zppolynesia" ||
+       cRandomMapName == "zptreasureisland")
+   {
+      gMigrationMap = true;
    }
 
    // Initializes all pirate functions
@@ -93,6 +141,8 @@ minInterval 1
    {
       xsEnableRule("maintainJewishSettlers");
       xsEnableRule("jewishBuildingMonitor");
+      xsEnableRule("nativeWagonMonitor");
+      xsEnableRule("zpJewishTechMonitor");
    }
    if ((getGaiaUnitCount(cUnitTypezpSPCBlueMosque) > 0) || (getGaiaUnitCount(cUnitTypezpSPCGreatMosque) > 0))
    {
@@ -138,6 +188,17 @@ minInterval 1
    {
       xsEnableRule("zpInuitTechMonitor");
    }
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseMaori) > 0)
+   {
+      gCanoeUnit = cUnitTypezpWakaCanoe;
+      xsEnableRule("zpMaoriTechMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseAboriginals) > 0)
+   {
+      gCanoeUnit = cUnitTypezpWakaCanoe;
+      xsEnableRule("zpAboriginalTechMonitor");
+      xsEnableRule("zpAboriginalSchoolBuilder");
+   }
    if (getGaiaUnitCount(cUnitTypezpNativeHouseMaltese) > 0)
    {
       xsEnableRule("zpMalteseTechMonitor");
@@ -179,6 +240,7 @@ minInterval 1
     
    xsDisableSelf();
 }
+
 
 //==============================================================================
 // Monitors special behavior for armored train
@@ -487,6 +549,11 @@ minInterval 12
    {
       pirateShipID = getUnit(cUnitTypezpSPCLineShip, cMyID, cUnitStateAlive);
    }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(cUnitTypezpCatamaran, cMyID, cUnitStateAlive);
+      longBombard = true;
+   }
    if (pirateShipID > 0)
    {
       pirateShipLoc = kbUnitGetPosition(pirateShipID);
@@ -743,6 +810,7 @@ inactive
 minInterval 5
 {
    int planID = -1;
+   int planBID = -1;
 
    // =================
    // Now Jewish
@@ -751,18 +819,36 @@ minInterval 5
    if (jewishVillager > 0)
    {
       // The build limit for the Academy is 1, so don't bother looking it up
-      int AcademyLimit = 1;
-      int AcademyCount = kbUnitCount(cMyID, cUnitTypezpAcademy, cUnitStateABQ);
-      if (AcademyCount < AcademyLimit)
-      {
-         planID = createSimpleBuildPlan(cUnitTypezpAcademy, 1, 90, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 0);
-         if (jewishVillager > 0)
+      if (kbTechGetStatus(cTechzpJewishAcademy) == cTechStatusActive) {
+         int AcademyLimit = 1;
+         int AcademyCount = kbUnitCount(cMyID, cUnitTypezpAcademy, cUnitStateABQ);
+         if (AcademyCount < AcademyLimit)
          {
-            aiPlanAddUnitType(planID, cUnitTypezpNatSettlerJewish, 1, 1, 1);
+            planID = createSimpleBuildPlan(cUnitTypezpAcademy, 1, 90, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 0);
+            if (jewishVillager > 0)
+            {
+               aiPlanAddUnitType(planID, cUnitTypezpNatSettlerJewish, 1, 1, 1);
+            }
+            else
+            {  // Shouldn't ever get here, but just in case
+               aiPlanDestroy(planID);
+            }
          }
-         else
-         {  // Shouldn't ever get here, but just in case
-            aiPlanDestroy(planID);
+      }
+      if (kbTechGetStatus(cTechzpJewishEmbassy) == cTechStatusActive) {
+         int AmEmbassyLimit = 1;
+         int AmEmbassyCount = kbUnitCount(cMyID, cUnitTypezpAmericanEmbassy, cUnitStateABQ);
+         if (AmEmbassyCount < AmEmbassyLimit)
+         {
+            planBID = createSimpleBuildPlan(cUnitTypezpAmericanEmbassy, 1, 90, false, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 0);
+            if (jewishVillager > 0)
+            {
+               aiPlanAddUnitType(planBID, cUnitTypezpNatSettlerJewish, 1, 1, 1);
+            }
+            else
+            {  // Shouldn't ever get here, but just in case
+               aiPlanDestroy(planBID);
+            }
          }
       }
    }
@@ -834,10 +920,19 @@ minInterval 3
 
 rule CaribTPMonitor
 inactive
-minInterval 5
+minInterval 22
 {
    if ( kbGetAge() <= cAge1 )
-   return;
+   {
+      return;
+   }
+
+   // AssertiveWall: Set up cooldown
+   static int caribTPCooldownTime = -1;
+   if (xsGetTime() < (caribTPCooldownTime + gClaimTradeMissionInterval / 2))
+   {
+      return;
+   }
     
     // Set up the query for the socket:
     static int socket_query = -1;
@@ -894,20 +989,73 @@ minInterval 5
     // If we're here, it's because at least one socket has been found (thanks to the scouts)
     
     int socket = -1;
+    int bestSocketValue = -1;
+    int tempSocket = -1;
+    int tempSocketValue = 0;
+    int hbSocket = -1;
+    bool hbBool = false;
     for( i = 0; < num_sockets )
     {
-        vector socket_position = kbUnitGetPosition( kbUnitQueryGetResult( socket_query, i ) );
-        if ( kbAreaGroupGetIDByPosition( socket_position ) == builder_areagroup )
-        {
-            // This socket is reachable
-            // See if it's already occupied:
-            if ( getUnitCountByLocation( cUnitTypeTradingPost, cPlayerRelationAny, cUnitStateABQ, socket_position, 10.0) >= 1 )
-                continue; // Yes. Well, ignore it and find the next...
+      tempSocketValue = 0;
+      tempSocket = kbUnitQueryGetResult( socket_query, i );
+      vector socket_position = kbUnitGetPosition( tempSocket );
+      // See if it's already occupied:
+      if ( getUnitCountByLocation( cUnitTypeTradingPost, cPlayerRelationAny, cUnitStateABQ, socket_position, 10.0) >= 1 )
+      {
+         continue; // Yes. Well, ignore it and find the next...
+      }
             
-            // No. Great, select it and proceed to the construction:
-            socket = kbUnitQueryGetResult( socket_query, i );
-            break;
-        }
+      if ( kbAreaGroupGetIDByPosition( socket_position ) == builder_areagroup )
+      {
+         // This socket is reachable without transport
+         tempSocketValue += 2;
+      }
+      else
+      {  // In the event that out builder is away from home base, store the home base socket
+         if ( kbAreaGroupGetIDByPosition( kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)) ) != builder_areagroup &&
+              kbAreaGroupGetIDByPosition( kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)) ) == kbAreaGroupGetIDByPosition( socket_position ))
+         {
+            if (hbSocket < 0)
+            {
+               hbSocket = tempSocket;
+            }
+         }
+         continue;
+      }
+
+      if (distance(socket_position, builder_position) < 50)
+      {
+         tempSocketValue += 3;
+      }
+      else if (distance(socket_position, builder_position) < 100)
+      {
+         tempSocketValue += 2;
+      }
+      else if (distance(socket_position, builder_position) < 200)
+      {
+         tempSocketValue += 1;
+      }
+
+      if (tempSocketValue > bestSocketValue)
+      {
+         socket = tempSocket;
+         bestSocketValue = tempSocketValue;
+      }
+    }
+
+   // AssertiveWall: Check to make sure we found one
+    if (socket < 0)
+    {
+      // AssertiveWall: if we have a hbSocket use that one
+      if (hbSocket > 0)
+      {
+         builder = getClosestUnitByLocation(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, kbUnitGetPosition(socket)); 
+         socket = hbSocket;
+      }
+      else
+      {
+         return;
+      }
     }
     
     static int build_plan = -1;
@@ -916,7 +1064,8 @@ minInterval 5
     {
         aiPlanDestroy( build_plan );
         build_plan = aiPlanCreate( "BuildCaribTP", cPlanBuild );
-        aiPlanSetDesiredPriority( build_plan, 100 );
+        aiPlanSetDesiredPriority( build_plan, 95 );  // down from 100
+        aiPlanSetDesiredResourcePriority( build_plan, 50 );  // added july 10th
         aiPlanSetEscrowID( build_plan, cEmergencyEscrowID );
         aiPlanSetVariableInt( build_plan, cBuildPlanBuildUnitID, 0, builder );
         aiPlanAddUnitType( build_plan, kbUnitGetProtoUnitID( builder ), 1, 1, 1 );
@@ -925,8 +1074,12 @@ minInterval 5
         aiPlanSetVariableInt( build_plan, cBuildPlanSocketID, 0, socket );
         aiPlanSetActive( build_plan, true );
     }
+
+    if (build_plan > 0)
+    {
+      caribTPCooldownTime = xsGetTime();
+    }
     
-    //aiChat( cMyID, ""+aiPlanGetState( build_plan ) );
 }
 
 //==============================================================================
@@ -1045,7 +1198,6 @@ minInterval 30
 
   if (kbUnitCount(cMyID, cUnitTypezpSocketWokou, cUnitStateAny) == 0)
    {
-      //aiChat( cMyID, "Wokou Socket not found");
       return;
    }
 
@@ -1114,7 +1266,6 @@ mininterval 60
 
    if (kbUnitCount(0, cUnitTypezpSPCGreatMosque, cUnitStateAny) >= 1)
     {
-        //aiChat( cMyID, "Great Mosque found");
         // Upgrade Great Mosque on Asian Maps
         bool canDisableSelf = researchSimpleTech(cTechzpSPCSufiGreatMosque, cUnitTypeTradingPost);
 
@@ -1122,7 +1273,6 @@ mininterval 60
 
    if (kbUnitCount(0, cUnitTypezpSPCBlueMosque, cUnitStateAny) >= 1)
     {
-        //aiChat( cMyID, "Blue Mosque found");
         // Upgrade Blue Mosque on Middle-East Maps
         canDisableSelf = researchSimpleTech(cTechzpSPCSufiBlueMosque, cUnitTypeTradingPost);
     }
@@ -1175,7 +1325,6 @@ mininterval 60
   
    if (kbUnitCount(0, cUnitTypezpNativeAztecTempleA, cUnitStateAny) >= 1)
     {
-        //aiChat( cMyID, "Aztec Temple found");
         // Upgrade Aztec Temple
         bool canDisableSelf = researchSimpleTech(cTechzpNatAztecInfluence, cUnitTypeTradingPost);
     }
@@ -1745,6 +1894,11 @@ minInterval 15
              buildingType = cUnitTypezpWaterTemple;
              break;
          }
+         case cUnitTypezpAmericanEmbassyWagon:
+         {
+             buildingType = cUnitTypezpAmericanEmbassy;
+             break;
+         }
          case cUnitTypezpAcademyWagon:
          {
              buildingType = cUnitTypezpAcademy;
@@ -2186,7 +2340,6 @@ minInterval 10
 
          xsArraySetInt(proxy_list, 0, cUnitTypezpAirshipAIProxy);
          xsArraySetInt(ship_list, 0, cUnitTypezpAirshipAI);
-         //aiChat( cMyID, "Airship training");
       }
 
       for(i = 0; < xsArrayGetSize(proxy_list))
@@ -2332,7 +2485,6 @@ minInterval 30
 
   if (kbUnitCount(cMyID, cUnitTypezpSocketVenetians, cUnitStateAny) == 0)
    {
-      //aiChat( cMyID, "Venice Socket not found");
       return;
    }
 
@@ -2763,4 +2915,129 @@ minInterval 90
          }
       }
    }
+}
+
+//==============================================================================
+// ZP Maori Tech Monitor
+//==============================================================================
+rule zpMaoriTechMonitor
+inactive
+minInterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketMaori, cUnitStateAny) == 0)
+      {
+      return; // Player has no Maori socket.
+      }
+
+      // Maori Big Button
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpMaoriExpansion,
+      []() -> bool { return (kbGetAge() >= cAge2 ); },
+      cUnitTypeTradingPost);
+
+      // Maori catamarans
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpMaoriCatamarans,
+      []() -> bool { return ((kbTechGetStatus(cTechzpMaoriExpansion) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Maori Warriors
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpMaoriMakahikiArmy,
+      []() -> bool { return ((kbTechGetStatus(cTechzpMaoriExpansion) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
+// ZP Aboriginal Tech Monitor
+//==============================================================================
+rule zpAboriginalTechMonitor
+inactive
+minInterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketaboriginals, cUnitStateAny) == 0)
+      {
+      return; // Player has no Aboriginal socket.
+      }
+
+      // Aboriginal Big Button
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpAustraliaExpansion,
+      []() -> bool { return (kbGetAge() >= cAge2 ); },
+      cUnitTypeTradingPost);
+
+      // Aboriginal School
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatAboriginalSchool,
+      []() -> bool { return ((kbTechGetStatus(cTechzpAustraliaExpansion) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Aboriginal Warriors
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatAboriginalTrackers,
+      []() -> bool { return ((kbTechGetStatus(cTechzpAustraliaExpansion) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
+// ZP Aboriginal School Builder
+//==============================================================================
+rule zpAboriginalSchoolBuilder
+inactive
+minInterval 2
+{
+   if (kbUnitCount(cUnitTypezpAustralianSchoolWagon, cMyID) <= 0)
+   {
+      return;
+   }
+
+   int buildByUnit = getUnit(cUnitTypeTradingPost, cPlayerRelationSelf);
+   vector buildLoc = kbUnitGetPosition(buildByUnit);
+
+   int planID = createLocationBuildPlan(cUnitTypezpAboriginalSchool, 1, 100, true, -1, buildLoc, 1);
+   // Add forward villagers
+   aiPlanAddUnit(planID, getUnit(cUnitTypezpAustralianSchoolWagon, cPlayerRelationSelf));
+
+   xsDisableSelf();
+}
+
+//==============================================================================
+// ZP Jewish Tech Monitor
+//==============================================================================
+rule zpJewishTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketJewish, cUnitStateAny) == 0)
+      {
+      return; // Player has no Jewish socket.
+      }
+
+      // Jewish Americans
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpJewishEmbassy,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateJewishAmericans) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Jewish Germans
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpJewishAcademy,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateJewishGermans) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Embassy Cannons
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatConAmericanArmyBig,
+      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpAmericanEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpAmericanEmbassy);
+
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
 }

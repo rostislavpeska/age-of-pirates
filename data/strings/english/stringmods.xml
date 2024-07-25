@@ -88,7 +88,6 @@
       <string _locid="300086">Mining Camp</string>
       <string _locid="300087">ZP Socket Mining Camp</string>
       <string _locid="300088">ZP SPC Pirate Fixed Gun</string>
-      <string _locid="300088">ZP SPC Pirate Fixed Gun Passive</string>
       <string _locid="300089">ZP NAT House Pirate Water</string>
       <string _locid="300090">ZP NAT Pirate Water Flag 1</string>
       <string _locid="300091">ZP NAT Pirate Water Flag 2</string>
@@ -175,7 +174,7 @@
       <string _locid="300172" symbol="cStringNativePreAlly">"The Grandmaster may consent to form an alliance, should you build a Trading Post here."</string>
       <string _locid="300173">Ships 2 Bank Wagons. Transfor into a Banks.</string>
       <string _locid="300174">ZP Jerusalem Fixed Gun</string>
-      <string _locid="300175">Maltese Fixed Gun</string>
+      <string _locid="300175">Fixed Gun</string>
       <string _locid="300176">Heavy Maltese Fixed Gun</string>
       <string _locid="300177">Imperial Maltese Fixed Gun</string>
       <string _locid="300178">Corsairs of Mediterranean</string>
@@ -312,7 +311,6 @@
       <string _locid="300309">ZP Trading Barque</string>
       <string _locid="300310">Trade Junk</string>
       <string _locid="300311">ZP Trade Junk</string>
-      <string _locid="300311">Sanctified Howitzer</string>
       <string _locid="300312">Heavy Howitzer</string>
       <string _locid="300313">Maltese Paladin</string>
       <string _locid="300314">Disciplined Maltese Paladin</string>
@@ -362,8 +360,8 @@
       <string _locid="300358">ZP Maya Holcan Spearman Proxy</string>
       <string _locid="300359">Zapotec</string>
       <string _locid="300360">Jesuit</string>
-      <string _locid="300361">Temple Travois</string>
-      <string _locid="300362">ZP Temple Travois</string>
+      <string _locid="300361">Native Consulate Travois</string>
+      <string _locid="300362">ZP Native Consulate Travois</string>
       <string _locid="300363">Native Outpost</string>
       <string _locid="300364">ZP Native Outpost</string>
       <string _locid="300365">Outpost Travois</string>
@@ -373,7 +371,7 @@
       <string _locid="300369">Invite Neighbors</string>
       <string _locid="300370">Select to choose a local power with which to align.</string>
       <string _locid="300371">Allows you to build mighty defensive structures.</string>
-      <string _locid="300372">Build a local Meeting Point and pick a partner from a different tribe.</string>
+      <string _locid="300372">Build a Native Consulate and pick a partner from a different tribe.</string>
       <string _locid="300373">Delivers Skull Knights and allows their training.</string>
       <string _locid="300374">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHolcan Javelineer, Healer \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nCotton Armor, Maya Calendar, Maya Pyramids</string>
       <string _locid="300375">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nLightning Warrior \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nFood of the Gods, Cult of the Dead, Cloud People</string>
@@ -404,7 +402,7 @@
       <string _locid="300400">Native Consulate (Jesuit)</string>
       <string _locid="300401">Native Consulate (Maya)</string>
       <string _locid="300402">Native Consulate (Zapotec)</string>
-      <string _locid="300403">Aztec Gold (Migration Map): Discover ancient Aztec cities hidden in the jungle. Players start in divided areas on one river bank with very limited resources and have to migrate to the other bank. \n\nSettlements: Aztec Cities, Renegades</string>
+      <string _locid="300403">Aztec Gold (Migration Map): Discover ancient Aztec cities hidden in the jungle. Players start in divided areas on one river bank with very limited resources and have to migrate to the other bank. \n\nSettlements: Aztec Cities, Inventors</string>
       <string _locid="300404">The secret is hidden behind the river. The legendary ancients cities should be right there. Who discovers them first? You or your enemy?</string>
       <string _locid="300405">Jewish</string>
       <string _locid="300406">Jewish Kibbutz</string>
@@ -420,8 +418,8 @@
       <string _locid="300416">Jewish Settlement Wagon</string>
       <string _locid="300417">ZP NAT Jewish Trade Wagon</string>
       <string _locid="300418">Trains Jewish units, autogeathers coin and heals nearby units.</string>
-      <string _locid="300419">Migration</string>
-      <string _locid="300420">Ships a Jewish Settlement Wagon and increases Jewish Settler build limit.</string>
+      <string _locid="300419">Big Migration</string>
+      <string _locid="300420">Ships a Jewish Settlement Wagon giving you an option to train additional Jewish Merchant and Settlement Militias.</string>
       <string _locid="300421">Kabbalah</string>
       <string _locid="300422">Improves Jewish Settler attack and hitpoints.</string>
       <string _locid="300423">Yom Kippur</string>
@@ -429,12 +427,12 @@
       <string _locid="300425">Friendly Diasporas</string>
       <string _locid="300426">Pick a friendly Jewish Diaspora</string>
       <string _locid="300427">American Diaspora</string>
-      <string _locid="300428">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nSharpshooter \n\nAmerican ranged infantry. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nFreemasonry \n(Improved buildings)</string>
+      <string _locid="300428">Diplomatical connection \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nFreemasonry \n(Improved buildings) \n\nOpen American Relations \n(American Embassy Wagon)</string>
       <string _locid="300429">ZP Native Rifleman</string>
       <string _locid="300430">German Diaspora</string>
-      <string _locid="300431">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWar Wagon \n\nMighty war wagon with a cannon. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGerman Universities \n(Faster research)</string>
+      <string _locid="300431">Research and qualitative improvents \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGerman Universities \n(Faster research) \n\nJewish Elite \n(Academy wagon)</string>
       <string _locid="300432">Russian Diaspora</string>
-      <string _locid="300433">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nCossack \n\nHeavy hand cavalry training. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nOrthodox Communities \n(Faster training)</string>
+      <string _locid="300433">Quantitative Improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nOrthodox Communities \n(Faster training) \n\nBig Migration \n(Jewish Settlement Wagon)</string>
       <string _locid="300434">Elite Maltese Marksman</string>
       <string _locid="300435">ZP Maltese Marksman</string>
       <string _locid="300436">Maltese elite ranged infantry</string>
@@ -453,9 +451,9 @@
       <string _locid="300449">Legendary Gatling Camel</string>
       <string _locid="300450">Disciplined Gatling Camel</string>
       <string _locid="300451">German Universities</string>
-      <string _locid="300452">All research is done faster by 50%</string>
+      <string _locid="300452">All research is done faster by 25%</string>
       <string _locid="300453">Orthodox Communities</string>
-      <string _locid="300454">Higher birthrate causes that all units get trained faster by 25%</string>
+      <string _locid="300454">Higher birthrate causes that all units get trained faster by 15%</string>
       <string _locid="300455">Freemasonry</string>
       <string _locid="300456">All buildings get built faster and have more hitpoints.</string>
       <string _locid="300457">Salt Floe</string>
@@ -484,14 +482,14 @@
       <string _locid="300480">Surfaced submarine moves faster.</string>
       <string _locid="300481">Allows completely silent operation.</string>
       <string _locid="300482">Torpedo</string>
-      <string _locid="300483">Renegade's Secret Base</string>
+      <string _locid="300483">Inventors Workshop</string>
       <string _locid="300484">At home, we've been called crazy. In this wasteland we can conduct our experiments undisturbed.</string>
-      <string _locid="300485">ZP Socket Renegades</string>
-      <string _locid="300486">Pick Renegade Captain</string>
-      <string _locid="300487">Pick a renegade captain and train new units and research new techs</string>
-      <string _locid="300488">Native Water Flag</string>
-      <string _locid="300489">ZP Renegades Water Flag 1</string>
-      <string _locid="300490">ZP Renegades Water Flag 2</string>
+      <string _locid="300485">ZP Socket Inventors</string>
+      <string _locid="300486">Pick Inventor</string>
+      <string _locid="300487">Pick an Inventor and train new units and research new techs</string>
+      <string _locid="300488">Inventors Workshop Water Flag</string>
+      <string _locid="300489">ZP Inventors Water Flag 1</string>
+      <string _locid="300490">ZP Inventors Water Flag 2</string>
       <string _locid="300491">Captain Nemo</string>
       <string _locid="300492">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Submarine \n\nTechnical revolutionary and underwater explorer. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nLegendary Nautilus, Submarine Fleet</string>
       <string _locid="300493">Thaddeus Valentine</string>
@@ -503,10 +501,10 @@
       <string _locid="300499">Test Building 5</string>
       <string _locid="300500">Gatling Gun</string>
       <string _locid="300501">Protect Dock: \nSubmerged submarine stands to protects dock or trading post and doesn't move around the map. 40% Damage bonus against ships and dock. Can't attack land targets. 50% more hitpoints. Nearby Building hitpoints increased by 75%.</string>
-      <string _locid="300502">ZP SRenegade Factory Winter</string>
-      <string _locid="300503">Weapon Factory</string>
+      <string _locid="300502">ZP Inventor Workshop Winter</string>
+      <string _locid="300503">Inventors Workshop</string>
       <string _locid="300504">Native Building</string>
-      <string _locid="300505">ZP NAT Renegade Flamethrower</string>
+      <string _locid="300505">ZP NAT Inventor Flamethrower</string>
       <string _locid="300506">Logical Positivism</string>
       <string _locid="300508">All research is done faster by 25%</string>
       <string _locid="300509">Iron Fleet</string>
@@ -553,7 +551,7 @@
       <string _locid="300550">Experimental Tank</string>
       <string _locid="300551">Leonardo's Model</string>
       <string _locid="300552">The First Cold War</string>
-      <string _locid="300553">Two continents - Asia and America - separated by Bering's Strait. The real end of the world and a perfect place for renegades and technical revolutionaries. \n\nSettlements: Renegades, Inuits</string>
+      <string _locid="300553">Two continents - Asia and America - separated by Bering's Strait. The real end of the world and a perfect place for Inventors and technical revolutionaries. \n\nSettlements: Inventors, Inuits</string>
       <string _locid="300554">The First Cold War: Use the latest technical inventions to gain an advantage over the enemy.</string>
       <string _locid="300555">ZP Airship</string>
       <string _locid="300556">Wokou Pacific Allies have arrived.</string>
@@ -614,10 +612,10 @@
       <string _locid="300611">ZP Propeller Test</string>
       <string _locid="300612">ZP Mustard Gas</string>
       <string _locid="300613">Airship Broadside Attack</string>
-      <string _locid="300614">A Darkling Plain</string>
+      <string _locid="300614">Icarus</string>
       <string _locid="300615">Flying Fortress. Can transport units and can be repaired in dock as a standard ship. Explodes after taking signifficant damage.</string>
-      <string _locid="300616">Nadzimoyo Khora</string>
-      <string _locid="300617">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Airship \n\nPioneer of aviation and air pirate. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nAir Attack, Mustard Gas</string>
+      <string _locid="300616">Charles Frederick</string>
+      <string _locid="300617">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Airship \n\nPioneer of aviation and aircraft constructor. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nAir Attack, Mustard Gas</string>
       <string _locid="300618">ZP Airship Proxy</string>
       <string _locid="300619">Air Attack</string>
       <string _locid="300620">Equips your airship with flying crows and, it a special anti-airship attack and improves it's hitpoints.</string>
@@ -629,7 +627,7 @@
       <string _locid="300626">Wokou Settlement Water Flag</string>
       <string _locid="300627">ZP NAT Wokou Water Flag 1</string>
       <string _locid="300628">ZP NAT Wokou Water Flag 2</string>
-      <string _locid="300629">ZP Renegade Factory Summer</string>
+      <string _locid="300629">ZP Inventor Workshop Summer</string>
       <string _locid="300630">ZP EU Palace Wing</string>
       <string _locid="300631">Submarine dives and rams enemy ship. Strong bonus against advanced wooden ships like Frigate or Monitor.</string>
       <string _locid="300632">ZP Test Submarine Pirate</string>
@@ -690,15 +688,15 @@
       <string _locid="300687">Players start on separate islands with enough resources, trade route and a native settlement. \n\nSettlements: Pirates, Wokou, Jesuit</string>
       <string _locid="300688">The war between European and Asian Pirate troops is starting on the Philippines! Who will win?</string>
       <string _locid="300689">Treasure Island</string>
-      <string _locid="300690">Migration Map, players start on very small islands with limited resources and have to migrate on one of two central islands. \n\nSettlements: Pirates, Renegades</string>
+      <string _locid="300690">Migration Map, players start on very small islands with limited resources and have to migrate on one of two central islands. \n\nSettlements: Pirates, Inventors</string>
       <string _locid="300691">"We are all travelers in the wilderness of this world, and the best we can find in our travels is an honest friend." -- Robert Luis Stevenson </string>
       <string _locid="300692">ZP Socket SPC Jesuits Europe</string>
-      <string _locid="300693">Maori Clubman</string>
-      <string _locid="300694">ZP NAT Maori Clubman</string>
+      <string _locid="300693">Pouwhenua Clubman</string>
+      <string _locid="300694">ZP NAT Pouwhenua Clubman</string>
       <string _locid="300695">Venetian Settlement</string>
       <string _locid="300696">ZP Socket Venetians</string>
-      <string _locid="300697">ZP NAT Maori Slinger</string>
-      <string _locid="300698">Maori Slinger</string>
+      <string _locid="300697">ZP NAT Maori Harpooner</string>
+      <string _locid="300698">Tao Spearman</string>
       <string _locid="300699">Pavisier</string>
       <string _locid="300700">ZP NAT Venetian Pavisier</string>
       <string _locid="300701">Venetians</string>
@@ -711,7 +709,7 @@
       <string _locid="300708">Veteran Venetians</string>
       <string _locid="300709">Venetian units attack and hitpoints increased.</string>
       <string _locid="300710">Guard Venetians</string>
-      <string _locid="300711">Renegade unit attack and hitpoints increased.</string>
+      <string _locid="300711">Inventors unit attack and hitpoints increased.</string>
       <string _locid="300712">Maori Settlement</string>
       <string _locid="300713">ZP Socket Maori</string>
       <string _locid="300714">Leading House</string>
@@ -806,8 +804,8 @@
       <string _locid="300803">Mass Production \nConfigure Dry Dock to build ships faster by 150%.</string>
       <string _locid="300804">This Dry Dock is focusing on repairing ships.</string>
       <string _locid="300805">Repair \nConfigure Dry Dock to repair ships faster by 300%.</string>
-      <string _locid="300806">This Dry Dock is maintaining Venetian Galleys.</string>
-      <string _locid="300807">Automatic Workshop \nConfigure Dry Dock to maintain Venetian Galleys.</string>
+      <string _locid="300806">This Dry Dock is maintaining ships. (Other ship training speed is slowed down by 50%)</string>
+      <string _locid="300807">Automatic Workshop \nConfigure Dry Dock to maintain ships. (Other ship training speed slows down by 50%)</string>
       <string _locid="300808">Venetian Embassy</string>
       <string _locid="300809">ZP Venetian Embassy</string>
       <string _locid="300810">Venetian Embassy Wagon</string>
@@ -821,7 +819,7 @@
       <string _locid="300818">Venetian Exploration Fleet</string>
       <string _locid="300819">Ships Venetian Galleass (Can be sent in always when bellow build limit: 2)</string>
       <string _locid="300820">Venetian Expeditionary Fleet</string>
-      <string _locid="300821">Ships two Venetian Galleass ships</string>
+      <string _locid="300821">Ships Venetian Galleass and Venetian Bombard in it</string>
       <string _locid="300822">Venetian Mercenaries</string>
       <string _locid="300823">Ships Adriatic Sea Mercenaries (Can be sent always when bellow population limit)</string>
       <string _locid="300824">Doge's Guard</string>
@@ -881,7 +879,7 @@
       <string _locid="300877">ZP Native EU House</string>
       <string _locid="300878">Meeting House</string>
       <string _locid="300879">ZP Native Meeting House</string>
-      <string _locid="300880">ZP NAT MERC Renegade Flamethrower</string>
+      <string _locid="300880">ZP NAT MERC Inventor Flamethrower</string>
       <string _locid="300881">Flamethrower soldier with a strong flame attack. Good against Infantry.</string>
       <string _locid="300882">Christmas Village</string>
       <string _locid="300883">ZP SPC Socket Christmas Village</string>
@@ -936,7 +934,7 @@
       <string _locid="300932">Bulgarian Patriarchate</string>
       <string _locid="300933">Naval improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBulgarian Boyar \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nDanube Steamers, Black Sea Fleet</string>
       <string _locid="300934">Moscow Patriarchate</string>
-      <string _locid="300935">Offensive improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDvoryanin \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nRussian Guard, Tsar Kolokol</string>
+      <string _locid="300935">zpJewishDiaspora \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDvoryanin \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nRussian Guard, Tsar Kolokol</string>
       <string _locid="300936">Tsar Kolokol</string>
       <string _locid="300937">Ships two superheavy "Tsar Cannons"</string>
       <string _locid="300938">Black Sea Fleet</string>
@@ -957,7 +955,7 @@
       <string _locid="300953">XMass Expansion</string>
       <string _locid="300954">Pick XMass Politician</string>
       <string _locid="300955">Kuril Islands</string>
-      <string _locid="300956">Small Islands between Hokaido Island and Kamchatka Peninsula. Players have more option for migration to larger islands around. \n\nSettlements: Renegades, Wokou, Orthodox, Zen</string>
+      <string _locid="300956">Small Islands between Hokaido Island and Kamchatka Peninsula. Players have more option for migration to larger islands around. \n\nSettlements: Inventors, Wokou, Orthodox, Zen</string>
       <string _locid="300957">Kuril Islands, islands of eternal strife. Use the natives to take the technological advantage over your enemy.</string>
       <string _locid="300958">ZP Xmas PROP Christmas Tree</string>
       <string _locid="300959">ZP Xmas Sleigh</string>
@@ -991,7 +989,7 @@
       <string _locid="300987">Western Village</string>
       <string _locid="300988">ZP Socket Western Village</string>
       <string _locid="300989">Send Armored Train</string>
-      <string _locid="300990"> • Cost: 500 &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;\n • Spawns Armored Train on any railway Trade Route Trading Post Site \n • Renegade Native ability \n • Use on &lt;color=0.0, 1.0, 1.0&gt;Trading Post Site area marked with flags&lt;/color&gt; \n&lt;icon="(440,220)(resources/images/icons/command/stationarea.png)"&gt;</string>
+      <string _locid="300990"> • Cost: 500 &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;\n • Spawns Armored Train on any railway Trade Route Trading Post Site \n • Inventors Native ability \n • Use on &lt;color=0.0, 1.0, 1.0&gt;Trading Post Site area marked with flags&lt;/color&gt; \n&lt;icon="(440,220)(resources/images/icons/command/stationarea.png)"&gt;</string>
       <string _locid="300991">Railway Station</string>
       <string _locid="300992">ZP Train Station: Station</string>
       <string _locid="300993">Armored Train</string>
@@ -1002,7 +1000,7 @@
       <string _locid="300998">Unlocks a special alility: Armored Train - can send an armored train to attack enemy positions next to a Train Station.</string>
       <string _locid="300999">Armored Train</string>
       <string _locid="301000">Unlocks the Armored Train ability which can be used on enemy Trade Route Site \n • Upgrades all trade routes to the maximum level \n • Discovers all railway Trade Route Sites on the map</string>
-      <string _locid="301001"> • Cost: 500 &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;\n • Spawns Armored Train on any railway Trade Route Trading Post Site \n • Renegade Native ability \n &lt;color=1.0, 0.0, 0.0&gt;• Can't be used when another Armored Train is being on the map, when the Armored Train ability is not ready or when you control no Renegade Trade Post.&lt;/color&gt;</string>
+      <string _locid="301001"> • Cost: 500 &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;\n • Spawns Armored Train on any railway Trade Route Trading Post Site \n • Inventors Native ability \n &lt;color=1.0, 0.0, 0.0&gt;• Can't be used when another Armored Train is being on the map, when the Armored Train ability is not ready or when you control no Inventors Trade Post.&lt;/color&gt;</string>
       <string _locid="301002">ZP AT Engine Move</string>
       <string _locid="301003">ZP AT BarrackCar Move</string>
       <string _locid="301004">ZP AT GunCar Move</string>
@@ -1013,7 +1011,7 @@
       <string _locid="301009">ZP AT GunCar Static</string>
       <string _locid="301010">ZP AT CoalCar Static</string>
       <string _locid="301011">ZP Native House Western</string>
-      <string _locid="301012">ZP NAT POP Renegade Flamethrower</string>
+      <string _locid="301012">ZP NAT POP Inventors Flamethrower</string>
       <string _locid="301013">Wagon Crew</string>
       <string _locid="301014">Wagon Crew: Spawns 8 Train Crew menbers to defend the Train</string>
       <string _locid="301015">Town Station</string>
@@ -1049,7 +1047,7 @@
       <string _locid="301045">ZP Train Stopper</string>
       <string _locid="301046">ZP Invisible Trading Post</string>
       <string _locid="301047">Green Valley</string>
-      <string _locid="301048">A green valley rich in bison herds and gold mines. \n\nSettlements: Comanche, Western Village, Renegades</string>
+      <string _locid="301048">A green valley rich in bison herds and gold mines. \n\nSettlements: Comanche, Western Village, Inventors</string>
       <string _locid="301049">Construct the railroad around the valley and use armored trains to reach enemy bases.</string>
       <string _locid="301050">Armored Train (Ambulance Wagon)</string>
       <string _locid="301051">ZP AT Ambulance Move</string>
@@ -1079,7 +1077,7 @@
       <string _locid="301075">Armored Train (Kitchen Wagon)</string>
       <string _locid="301076">ZP AT KitchenWagon Static</string>
       <string _locid="301077">Unlocks full armored train potential and gives every Armored Train wagon a special active or passive ability. \n • Future Armored Train cooldown reduced by 1 min.</string>
-      <string _locid="301078"> • Cost: &lt;color=1.0, 0.0, 0.0&gt;500&lt;/color&gt; &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;\n • Spawns Armored Train on any railway Trade Route Trading Post Site \n • Renegade Native ability \n • Use on &lt;color=0.0, 1.0, 1.0&gt;Trading Post Site area marked with flags&lt;/color&gt; \n&lt;icon="(440,220)(resources/images/icons/command/stationarea.png)"&gt;</string>
+      <string _locid="301078"> • Cost: &lt;color=1.0, 0.0, 0.0&gt;500&lt;/color&gt; &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;\n • Spawns Armored Train on any railway Trade Route Trading Post Site \n • Inventors Native ability \n • Use on &lt;color=0.0, 1.0, 1.0&gt;Trading Post Site area marked with flags&lt;/color&gt; \n&lt;icon="(440,220)(resources/images/icons/command/stationarea.png)"&gt;</string>
       <string _locid="301079">Gunpowder Stores</string>
       <string _locid="301080">Improves Artillery damage and attack speed (aura)</string>
       <string _locid="301081">Field Kitchen</string>
@@ -1164,8 +1162,8 @@
       <string _locid="301160">Russellville (Frontier Town)</string>
       <string _locid="301161">Lamar (Frontier Town)</string>
       <string _locid="301162">Mississippi River</string>
-      <string _locid="301163">Large river map with two shores connected by shallows. Special King of the Hill Design. \n\nSettlements: Comanche, Western Village, Renegades (armored train)</string>
-      <string _locid="301164">Use Renegades inventions like steamships, airships, tanks or armored train to get an advantage over your enemy. Get Western hero in the Frontier Town and become "King of the River".</string>
+      <string _locid="301163">Large river map with two shores connected by shallows. Special King of the Hill Design. \n\nSettlements: Comanche, Western Village, Inventors (armored train)</string>
+      <string _locid="301164">Use Inventors inventions like steamships, airships, tanks or armored train to get an advantage over your enemy. Get Western hero in the Frontier Town and become "King of the River".</string>
       <string _locid="301165">Flying Dutchman</string>
       <string _locid="301166">ZP Flying Dutchman</string>
       <string _locid="301167">ZP Bridge Wall Small</string>
@@ -1177,7 +1175,7 @@
       <string _locid="301173">"May your belly never grumble, your heart never ache, and your horse never stumble."</string>
       <string _locid="301174">ZP Jewish Props</string>
       <string _locid="301175">The Canyon</string>
-      <string _locid="301176">Large rectangular map with separate player areas divided by a great canyon. Perfect for two teams gameplay. \n\nSettlements: Apache, Western Village, Renegades (armored train)</string>
+      <string _locid="301176">Large rectangular map with separate player areas divided by a great canyon. Perfect for two teams gameplay. \n\nSettlements: Apache, Western Village, Inventors (armored train)</string>
       <string _locid="301177">Who controls the canyon, controls the map. Build walls on the ways down to the canyon to protect your colony and build trading posts on native and trade route sites.</string>
       <string _locid="301178">Aboriginal Australians</string>
       <string _locid="301179">Aboriginal Settlement</string>
@@ -1186,6 +1184,276 @@
       <string _locid="301182">ZP Waka Canoe</string>
       <string _locid="301183">Aboriginal House</string>
       <string _locid="301184">ZP Native House Aboriginals</string>
+      <string _locid="301185">Kangaroo</string>
+      <string _locid="301186">ZP Kangaroo</string>
+      <string _locid="301187">Huntable passive animal. Harvest for Food or Gold. Hunt for Bounty of Food or Gold. Attracted to nearby Shrines. Enhances resources generated by Shrines.</string>
+      <string _locid="301188">Macropus rufus</string>
+      <string _locid="301189">Emu</string>
+      <string _locid="301190">ZP Emu</string>
+      <string _locid="301191">Dromaius novaehollandiae</string>
+      <string _locid="301192">Boomerang Hunter</string>
+      <string _locid="301193">ZP NAT Boomerang Hunter</string>
+      <string _locid="301194">Native Australian hunter equipped with a boomerang. Good in battle or for hunting animals.</string>
+      <string _locid="301195">Aboriginal Tracker</string>
+      <string _locid="301196">ZP NAT Aboriginal Tracker</string>
+      <string _locid="301197">Native tracker in service of her Majesty.</string>
+      <string _locid="301198">Australian Hunting Techniques</string>
+      <string _locid="301199">Survivalism</string>
+      <string _locid="301200">Increases Villager's attack and hitpoints</string>
+      <string _locid="301201">Sound of Didjeridu</string>
+      <string _locid="301202">Ships 6 additional Boomerang Hunters</string>
+      <string _locid="301203">Warrior Society Aboriginals</string>
+      <string _locid="301204">Champion Aboriginals</string>
+      <string _locid="301205">Improves Aboriginal unit attack and hitpoints</string>
+      <string _locid="301206">Elite Boomerang Hunter</string>
+      <string _locid="301207">Champion Boomerang Hunter</string>
+      <string _locid="301208">Legendary Boomerang Hunter</string>
+      <string _locid="301209">Elite Aboriginal Tracker</string>
+      <string _locid="301210">Champion Aboriginal Tracker</string>
+      <string _locid="301211">Legendary Aboriginal Tracker</string>
+      <string _locid="301212">United Tribes of Australia</string>
+      <string _locid="301213">Unlocks new Australian units and techs.</string>
+      <string _locid="301214">ZP NAT MERC Boomerang Hunter</string>
+      <string _locid="301215">Dingo Dog</string>
+      <string _locid="301216">ZP Dingo Dog</string>
+      <string _locid="301217">Australian School</string>
+      <string _locid="301218">ZP Australian School</string>
+      <string _locid="301219">Build next to Aboriginal Trade Post to make it work more efficient.</string>
+      <string _locid="301220">School Wagon</string>
+      <string _locid="301221">ZP Australian School Wagon</string>
+      <string _locid="301222">Allows you to construct native school</string>
+      <string _locid="301223">Village Schools</string>
+      <string _locid="301224">Build a school for an Aboriginal village and get bonuses for Aboriginal Trackers.</string>
+      <string _locid="301225">Increase Tracker HP: Configure buildingto increase Tracjker HP</string>
+      <string _locid="301226">Providing Tracker HP bonus</string>
+      <string _locid="301227">Increase Tracker Damage: Configure to increase Tracker damage</string>
+      <string _locid="301228">Providing Tracker damage bonus</string>
+      <string _locid="301229">Maintain Trackers: Configure building to maintain more Trackers</string>
+      <string _locid="301230">Maintaining Aboriginal Trackers</string>
+      <string _locid="301231">Aboriginal Congress</string>
+      <string _locid="301232">Provides 1000 XP</string>
+      <string _locid="301233">ZP NAT MERC Aboriginal Tracker</string>
+      <string _locid="301234">Australian Regiment</string>
+      <string _locid="301235">Ships additional Aboriginal Trackers</string>
+      <string _locid="301236">Australia</string>
+      <string _locid="301237">Extra large map, ideal for FFA or big team matches. \n\nSettlements: Aboriginal Australians, variations with two additional naval natives: Pirates, Inventors, Wokou</string>
+      <string _locid="301238">Your ships traveled far this time. Welcome to Australia, the Red Continent.</string>
+      <string _locid="301239">Cassowary</string>
+      <string _locid="301240">ZP Cassowary</string>
+      <string _locid="301241">Huntable predator</string>
+      <string _locid="301242">Casuarius casuarius</string>
+      <string _locid="301243">Warrior Society Maori</string>
+      <string _locid="301244">Champion Maori</string>
+      <string _locid="301245">Increases Maori attack and hitpoints</string>
+      <string _locid="301246">Elite Pouwhenua Clubman</string>
+      <string _locid="301247">Champion Pouwhenua Clubman</string>
+      <string _locid="301248">Legendary Pouwhenua Clubman</string>
+      <string _locid="301249">Elite Tao Spearman</string>
+      <string _locid="301250">Champion Tao Spearman</string>
+      <string _locid="301251">Legendary Tao Spearman</string>
+      <string _locid="301252">Maori Colonisation</string>
+      <string _locid="301253">Unlocks new Maori units and techs.</string>
+      <string _locid="301254">Ships Maui's good spirits.</string>
+      <string _locid="301255">Taniwha</string>
+      <string _locid="301256">Unlocks new Maori units and techs.</string>
+      <string _locid="301257">Tao Spearman</string>
+      <string _locid="301258">Te hī ika</string>
+      <string _locid="301259">Increases fishing boat efficiency and adds more hitpoints.</string>
+      <string _locid="301260">Maori native Warrior equiped with a club</string>
+      <string _locid="301261">Maori matrial art techniques. Increases hand infantry damage.</string>
+      <string _locid="301262">Maori native harpooner. Special attack bonus against ships.</string>
+      <string _locid="301263">Kiwi</string>
+      <string _locid="301264">ZP Kiwi</string>
+      <string _locid="301265">Apteryx haastii</string>
+      <string _locid="301266">ZP Decorative Wall Small</string>
+      <string _locid="301267">ZP Decorative Wall Medium</string>
+      <string _locid="301268">ZP Decorative Wall Large</string>
+      <string _locid="301269">Jade Mine</string>
+      <string _locid="301270">ZP Mine Jade</string>
+      <string _locid="301271">New Zealand</string>
+      <string _locid="301272">Clasic naval map woth two separated big islands with a mountainous surface. \n\nSettlements: Maori \n\nAdditional settlements: Pirates or Inventors</string>
+      <string _locid="301273">New Land discovered on the opposite side of the globe but even though reminding Europe. Bon Voyage!</string>
+      <string _locid="301274">Dolphin</string>
+      <string _locid="301275">ZP Pet Dolphin</string>
+      <string _locid="301276">A tame bottlenose dolphin that poses a threat to any enemy unit that provokes it.</string>
+      <string _locid="301277">Naval Pet</string>
+      <string _locid="301278">Volcano</string>
+      <string _locid="301279">ZP Volcano Active</string>
+      <string _locid="301280">ZP Volcano Passive</string>
+      <string _locid="301281">ZP Volcano Fire</string>
+      <string _locid="301282">ZP Volcano Fire Spawner</string>
+      <string _locid="301283">ZP Airship AI</string>
+      <string _locid="301284">TEST Airship</string>
+      <string _locid="301285">ZP Volcano Invisible Target</string>
+      <string _locid="301286">Volcano Island</string>
+      <string _locid="301287">Be careful, the volcano may errupt any time.</string>
+      <string _locid="301288">ZP Volcano Spawner</string>
+      <string _locid="301289">ZP Volcano Obstruction</string>
+      <string _locid="301290">ZP Grass Fire</string>
+      <string _locid="301291">Hawaii</string>
+      <string _locid="301292">Hawaii island with a volcano in the middle. Special variant odd player amount or more teams. Volcano in the middle of the map errupts time to time. \n\nSettlements: Pirates, Maori</string>
+      <string _locid="301293">The central island around the volcano accommodates many resources but be careful, the volcano may errupt.</string>
+      <string _locid="301294">Guardian Boomerang</string>
+      <string _locid="301295">ZP Guardian Boomerang</string>
+      <string _locid="301296">Guardian Clubman</string>
+      <string _locid="301297">ZP Guardian Maceman</string>
+      <string _locid="301298">Waka Canoe</string>
+      <string _locid="301299">ZP Waka Canoe</string>
+      <string _locid="301300">Polynesian canoe, extra fast</string>
+      <string _locid="301301">Waka Catamaran</string>
+      <string _locid="301302">ZP Waka Catamaran</string>
+      <string _locid="301303">Maori double hulled ship equiped with a swivel gun.</string>
+      <string _locid="301304">ZP Guardian Waka Canoe</string>
+      <string _locid="301305">Kumara Fields</string>
+      <string _locid="301306">Allows you to build more productive agricultural buildings and build them much faster.</string>
+      <string _locid="301307">Voyages of Discovery</string>
+      <string _locid="301308">Ships Waka Catamarans and allows you to train them in your Dock.</string>
+      <string _locid="301309">ZP NAT Merc Maori Clubman</string>
+      <string _locid="301310">ZP NAT Merc Maori Harpooner</string>
+      <string _locid="301311">Makahiki</string>
+      <string _locid="301312">Warriors from nearby island are comming to celebrate the New Year.</string>
+      <string _locid="301313">Maui's Spirits</string>
+      <string _locid="301314">Feral pig</string>
+      <string _locid="301315">ZP Feral pig</string>
+      <string _locid="301316">Wild Animal</string>
+      <string _locid="301317">Jade Mine</string>
+      <string _locid="301318">ZP Jade Mine</string>
+      <string _locid="301319">Pineaple Bush</string>
+      <string _locid="301320">ZP Pineaple Bush</string>
+      <string _locid="301321">Aotea</string>
+      <string _locid="301322">Te Arawa</string>
+      <string _locid="301323">Kurahaupō</string>
+      <string _locid="301324">Mātaatua</string>
+      <string _locid="301325">Tainui</string>
+      <string _locid="301326">Tākitimu</string>
+      <string _locid="301327">Tokomaru</string>
+      <string _locid="301328">ZP Volcano Avoider 100</string>
+      <string _locid="301329">ZP Volcano Avoider 115</string>
+      <string _locid="301330">ZP Volcano Avoider 160</string>
+      <string _locid="301331">ZP Volcano Burn</string>
+      <string _locid="301332" symbol="cStringNuggetSkunk" comment="1 - amount, 2 - resource">A den of platypus whose pelts are worth %1d %2s.</string>
+      <string _locid="301333" symbol="cStringNuggetSkunkActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has discovered platypus whose pelts are worth %2d %3s.</string>
+      <string _locid="301334" symbol="cStringNuggetJadeSkull" comment="1 - amount, 2 - resource">A jade-encrusted figurine worth %1d %2s.</string>
+      <string _locid="301335" symbol="cStringNuggetJadeSkullActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has recovered a jade-encrusted figurine worth %2d %3s.</string>
+      <string _locid="301336" symbol="cStringNuggetJournal" comment="1 - amount, 2 - resource">The journal of Captain James Cook worth %1d %2s.</string>
+      <string _locid="301337" symbol="cStringNuggetJournalActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has found the journal of Captain James Cook worth %2d %3s.</string>
+      <string _locid="301338" symbol="cStringNuggetHPBoost3">The Maori Talisman, which increases Explorer or Hero hitpoints by %2.2f%%.</string>
+      <string _locid="301339" symbol="cStringNuggetHPBoost3Activate">%1!s! has recovered the legendary Maori Talisman, which increases hitpoints by %2!2.2f!%%.</string>
+      <string _locid="301340" comment="1 - player, 2 - amount, 3 - resource">%1s has uncovered Carved Tekoteko worth %2d %3s.</string>
+      <string _locid="301341" comment="1 - amount, 2 - resource">Native hideout: It contains Carved Tekoteko worth %1d %2s.</string>
+      <string _locid="301342">Lava Flow</string>
+      <string _locid="301343">ZP Lava Flow Head</string>
+      <string _locid="301344">ZP Lava Spawner</string>
+      <string _locid="301345">ZP Lava Cold</string>
+      <string _locid="301346">Lava Cold</string>
+      <string _locid="301347">ZP Lava Spawner Trade</string>
+      <string _locid="301348">ZP Lava Flow 1</string>
+      <string _locid="301349">ZP Lava Flow 2</string>
+      <string _locid="301350">ZP Lava Flow 3</string>
+      <string _locid="301351">ZP Lava Flow 4</string>
+      <string _locid="301352">ZP Lava Flow 5</string>
+      <string _locid="301353">Marquesan Horseman</string>
+      <string _locid="301354">ZP MERC Marquesan Horseman</string>
+      <string _locid="301355">Polynesian mercenary warrior</string>
+      <string _locid="301356">Sanctified Howitzer</string>
+      <string _locid="301357">ZP SPC Pirate Fixed Gun Passive</string>
+      <string _locid="301358">ZP Lava Spawner Visible</string>
+      <string _locid="301359">Polynesia (Test)</string>
+      <string _locid="301360" comment="1 - player, 2 - amount, 3 - resource">%1s has uncovered Kumara worth %2d %3s.</string>
+      <string _locid="301361" comment="1 - amount, 2 - resource">Native hideout: It contains Kumara worth %1d %2s.</string>
+      <string _locid="301362">Convict</string>
+      <string _locid="301363">ZP Tavern Convict</string>
+      <string _locid="301364">Bushranger</string>
+      <string _locid="301365">ZP Tavern Bushranger</string>
+      <string _locid="301366">A refugee from a penal colony. Skilled in throwing knives.</string>
+      <string _locid="301367">ZP Tree Caribbean</string>
+      <string _locid="301368">ZP Tree Caribbean Death</string>
+      <string _locid="301369">Australian Light Horse</string>
+      <string _locid="301370">ZP Australian Light Horse</string>¨
+      <string _locid="301371">Australian light carabine cavalry with repeating attack</string>
+      <string _locid="301372">ZP GRD Convict</string>
+      <string _locid="301373">ZP GRD BushRanger</string>
+      <string _locid="301374" symbol="cStringNuggetBasswood" comment="1 - amount, 2 - resource">A stand of blackbutt worth %1d %2s. </string>
+      <string _locid="301375" symbol="cStringNuggetBasswoodActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has discovered blackbutt worth %2d %3s.</string>
+      <string _locid="301376" symbol="cStringNuggetComstock" comment="1 - amount, 2 - resource">A map to the fabled gold mine worth %1d %2s.</string>
+      <string _locid="301377" symbol="cStringNuggetComstockActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has discovered a map to the fabled gold mine worth %2d %3s.</string>
+      <string _locid="301378">Stagecoach</string>
+      <string _locid="301379">New South Wales Railways</string>
+      <string _locid="301380">Aboriginal Trader</string>
+      <string _locid="301381">ZP Nat Jewish Militia</string>
+      <string _locid="301382">ZP Nat Merc Jewish Militia</string>
+      <string _locid="301383">ZP Nat Nomad Jewish Militia</string>
+      <string _locid="301384">Veteran Jewish</string>
+      <string _locid="301385">Guard Jewish</string>
+      <string _locid="301386">Veteran Settlement Militia</string>
+      <string _locid="301387">Guard Settlement Militia</string>
+      <string _locid="301388">Legendary Settlement Militia</string>
+      <string _locid="301389">Updates Jewish units attack and hitpoints</string>
+      <string _locid="301390">Jewish Elite</string>
+      <string _locid="301391">Jewish Merchant</string>
+      <string _locid="301392">ZP NAT Nomad Jewish Settler</string>
+      <string _locid="301393">Veteran Settlement Militia (Nomad)</string>
+      <string _locid="301394">Guard Settlement Militia (Nomad)</string>
+      <string _locid="301395">Legendary Settlement Militia (Nomad)</string>
+      <string _locid="301396">Jewish Merchant (Nomad)</string>
+      <string _locid="301397">Settlement Militia (Nomad)</string>
+      <string _locid="301398">American Embassy</string>
+      <string _locid="301399">ZP American Embassy</string>
+      <string _locid="301400">Allows to send American Shipments</string>
+      <string _locid="301401">American Embassy Wagon</string>
+      <string _locid="301402">ZP American Embassy Wagon</string>
+      <string _locid="301403">Constructs American Embassy</string>
+      <string _locid="301404">Open American Relations</string>
+      <string _locid="301405">Ships an American Embassy wagon and unlocks new American Embassy techs and units.</string>
+      <string _locid="301406">ZP NAT CON Regular</string>
+      <string _locid="301407">Marine Corps</string>
+      <string _locid="301408">Dragoon Officer</string>
+      <string _locid="301409">ZP NAT CON Carabine Cavalry</string>
+      <string _locid="301410">ZP NAT CON Gatling Gun</string>
+      <string _locid="301411">Volley Gun</string>
+      <string _locid="301412">American Expeditionary Force</string>
+      <string _locid="301413">Ships Marine Infantry</string>
+      <string _locid="301414">Ships American cavalry</string>
+      <string _locid="301415">Ships American cavalry and infantry</string>
+      <string _locid="301416">American Expeditionary Company</string>
+      <string _locid="301417">American Expeditionary Army</string>
+      <string _locid="301418">American Brigade</string>
+      <string _locid="301419">Ships American cavalry, infantry and artillery</string>
+      <string _locid="301420">American Expeditionary Fleet</string>
+      <string _locid="301421">Ships Steamer full with Marine Corpses</string>
+      <string _locid="301422">ZP Native House Wokou Big</string>
+      <string _locid="301423">Ghost Ship</string>
+      <string _locid="301424">Tortuga Fixed Gun</string>
+      <string _locid="301425">Bernard Fokke</string>
+      <string _locid="301426">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nFlying Dutchman \n\nExtra durable ghost ship. Able to train dolphins. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nTortuga Fixed Gun</string>
+      <string _locid="301427">ZP Native Tent</string>
+      <string _locid="301428">ZP Nat Town Hall</string>
+      <string _locid="301429">Zeppelin</string>
+      <string _locid="301430">Kirov</string>
+      <string _locid="301431">Australia &amp; Oceania</string>
+      <string _locid="301432">Randomly selects from among all Australian &amp; Oceanian maps.</string>
+      <string _locid="301433">Age of Pirates Maps</string>
+      <string _locid="301434">Randomly selects from among all Age of Pirates maps.</string>
+      <string _locid="301435">Separated Islands</string>
+      <string _locid="301436">Randomly selects from among all maps where players start on separated islands.</string>
+      <string _locid="301437">Land &amp; Hybrid Maps</string>
+      <string _locid="301438">Randomly selects from among all maps where players start on the same continent.</string>
+      <string _locid="301439">Free-for-all Maps</string>
+      <string _locid="301440">Randomly selects from among all maps suitable for free-for-all play.</string>
+      <string _locid="301441">Special Maps</string>
+      <string _locid="301442">Randomly selects from among all seasonal maps or maps with an untypical layout.</string>
+      <string _locid="301443">Mallay Pirate Prau</string>
+      <string _locid="301444">ZP SPC Wokou Prau</string>
+      <string _locid="301445">ZP Nat Cetbang</string>
+      <string _locid="301446">Blackjack's Flagship</string>
+      <string _locid="301447">ZP SPC Pirate Steamer</string>
+      <string _locid="301448">Steam Powered Pirate flagship from the Pacific</string>
+      <string _locid="301449">Black Jack Anderson</string>
+      <string _locid="301450">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nVansittart \n\nPirate steamship. Increased privateer build limit. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nDry Dock</string>
+      <string _locid="301451">Vansittart</string>
+      <string _locid="301452">ZP Pirate Dry Dock</string>
+
+      
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

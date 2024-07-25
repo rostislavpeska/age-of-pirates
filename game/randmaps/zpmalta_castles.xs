@@ -95,103 +95,103 @@ void main(void)
 	// Misc variables for use later
 	int numTries = -1;
 
-	// Define some classes.
-	int classPlayer=rmDefineClass("player");
-	int classIsland=rmDefineClass("island");
-	rmDefineClass("classForest");
-	rmDefineClass("classPatch");
-	rmDefineClass("importantItem");
-	int classCanyon=rmDefineClass("canyon");
-  int classAtol=rmDefineClass("atol");
-  int classEuIsland=rmDefineClass("europe island");
-  int classAfIsland=rmDefineClass("africa island");
-  int classPortSite=rmDefineClass("portSite");
-  int classPlayerArea=rmDefineClass("player area");
-  int classBonusIsland=rmDefineClass("bonus island");
+   // Define some classes.
+   int classPlayer=rmDefineClass("player");
+   int classIsland=rmDefineClass("island");
+   rmDefineClass("classForest");
+   rmDefineClass("classPatch");
+   rmDefineClass("importantItem");
+   int classCanyon=rmDefineClass("canyon");
+   int classAtol=rmDefineClass("atol");
+   int classEuIsland=rmDefineClass("europe island");
+   int classAfIsland=rmDefineClass("africa island");
+   int classPortSite=rmDefineClass("portSite");
+   int classPlayerArea=rmDefineClass("player area");
+   int classBonusIsland=rmDefineClass("bonus island");
 
    // -------------Define constraints----------------------------------------
 
-    // Create an edge of map constraint.
-	int playerEdgeConstraint=rmCreatePieConstraint("player edge of map", 0.5, 0.5, rmXFractionToMeters(0.0), rmXFractionToMeters(0.45), rmDegreesToRadians(0), rmDegreesToRadians(360));
+      // Create an edge of map constraint.
+   int playerEdgeConstraint=rmCreatePieConstraint("player edge of map", 0.5, 0.5, rmXFractionToMeters(0.0), rmXFractionToMeters(0.45), rmDegreesToRadians(0), rmDegreesToRadians(360));
 
-	// Player area constraint.
-	int playerConstraint=rmCreateClassDistanceConstraint("stay away from players", classPlayer, 25.0);
-	int longPlayerConstraint=rmCreateClassDistanceConstraint("long stay away from players", classPlayer, 60.0);
-	int flagConstraint=rmCreateHCGPConstraint("flags avoid same", 20.0);
-	int avoidTP=rmCreateTypeDistanceConstraint("stay away from Trading Post Sockets", "SocketTradeRoute", 10.0);
-  int avoidTPLong=rmCreateTypeDistanceConstraint("stay away from Trading Post Sockets far", "SocketTradeRoute", 20.0);
-	int avoidLand = rmCreateTerrainDistanceConstraint("ship avoid land", "land", true, 15.0);
-  int mesaConstraint = rmCreateBoxConstraint("mesas stay in southern portion of island", .35, .55, .65, .35);
-  int northConstraint = rmCreateBoxConstraint("huntable constraint for north side of island", .25, .55, .8, .85);
-  int avoidTCMedium=rmCreateTypeDistanceConstraint("stay away from TC by a bit", "TownCenter", 12.0);
-  int avoidTCLong=rmCreateTypeDistanceConstraint("stay away from TC by far", "TownCenter", 30.0);
+   // Player area constraint.
+   int playerConstraint=rmCreateClassDistanceConstraint("stay away from players", classPlayer, 25.0);
+   int longPlayerConstraint=rmCreateClassDistanceConstraint("long stay away from players", classPlayer, 60.0);
+   int flagConstraint=rmCreateHCGPConstraint("flags avoid same", 20.0);
+   int avoidTP=rmCreateTypeDistanceConstraint("stay away from Trading Post Sockets", "SocketTradeRoute", 10.0);
+   int avoidTPLong=rmCreateTypeDistanceConstraint("stay away from Trading Post Sockets far", "SocketTradeRoute", 20.0);
+   int avoidLand = rmCreateTerrainDistanceConstraint("ship avoid land", "land", true, 15.0);
+   int mesaConstraint = rmCreateBoxConstraint("mesas stay in southern portion of island", .35, .55, .65, .35);
+   int northConstraint = rmCreateBoxConstraint("huntable constraint for north side of island", .25, .55, .8, .85);
+   int avoidTCMedium=rmCreateTypeDistanceConstraint("stay away from TC by a bit", "TownCenter", 12.0);
+   int avoidTCLong=rmCreateTypeDistanceConstraint("stay away from TC by far", "TownCenter", 30.0);
 
-	// Island Constraints  
-	int islandConstraint=rmCreateClassDistanceConstraint("islands avoid each other", classIsland, 40.0);
+   // Island Constraints  
+   int islandConstraint=rmCreateClassDistanceConstraint("islands avoid each other", classIsland, 40.0);
    int islandConstraintShort=rmCreateClassDistanceConstraint("islands avoid each other short", classIsland, 30.0);
-  int islandEdgeConstraint=rmCreatePieConstraint("island edge of map", 0.5, 0.5, 0, rmGetMapXSize()-5, 0, 0, 0);
-  int avoidAtol=rmCreateClassDistanceConstraint("stuff avoids atols", classAtol, 40.0);
-  int avoidBonusIslands=rmCreateClassDistanceConstraint("stuff avoids bonus island", classBonusIsland, 40.0);
-  int avoidEurope=rmCreateClassDistanceConstraint("stuff avoids eu islands", classEuIsland, 30.0);
-  int avoidAfrica=rmCreateClassDistanceConstraint("stuff avoids af islands", classAfIsland, 30.0);
-  int avoidPlayerArea=rmCreateClassDistanceConstraint("stuff avoids player area", classPlayerArea, 15.0);
-  int avoidPortArea=rmCreateClassDistanceConstraint("stuff avoids port area", classPortSite, 30.0);
-  
-	// Resource constraints - Fish, whales, forest, mines, nuggets, and sheep
-	int avoidFish1=rmCreateTypeDistanceConstraint("fish v fish", fish1, 20.0);	
-	int avoidFish2=rmCreateTypeDistanceConstraint("fish v fish2", fish2, 15.0);
-	int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 6.0);
-	int whaleVsWhaleID=rmCreateTypeDistanceConstraint("whale v whale", whale1, 75.0);	
-	int fishVsWhaleID=rmCreateTypeDistanceConstraint("fish v whale", whale1, 8.0);   
-	int whaleLand = rmCreateTerrainDistanceConstraint("whale land", "land", true, 22.0);
-	int forestObjConstraint=rmCreateTypeDistanceConstraint("forest obj", "all", 6.0);
-	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 30.0);
-	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "mine", 45.0);
-  int avoidGold=rmCreateTypeDistanceConstraint("avoid gold", "minetin", 35.0);
-	int avoidRandomBerries=rmCreateTypeDistanceConstraint("avoid random berries", "berrybush", 55.0);
-	int avoidHuntable1=rmCreateTypeDistanceConstraint("avoid huntable1", huntable1, 30.0);
-  int avoidHuntable2=rmCreateTypeDistanceConstraint("avoid huntable2", huntable2, 40.0);
-	int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 45.0); 
-  int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "abstractNugget", 45.0); 
-  int avoidNuggetWater2=rmCreateTypeDistanceConstraint("avoid water nuggets2", "abstractNugget", 70.0); 
-  int avoidHardNugget=rmCreateTypeDistanceConstraint("hard nuggets avoid other nuggets less", "abstractNugget", 20.0); 
+   int islandEdgeConstraint=rmCreatePieConstraint("island edge of map", 0.5, 0.5, 0, rmGetMapXSize()-5, 0, 0, 0);
+   int avoidAtol=rmCreateClassDistanceConstraint("stuff avoids atols", classAtol, 40.0);
+   int avoidBonusIslands=rmCreateClassDistanceConstraint("stuff avoids bonus island", classBonusIsland, 40.0);
+   int avoidEurope=rmCreateClassDistanceConstraint("stuff avoids eu islands", classEuIsland, 30.0);
+   int avoidAfrica=rmCreateClassDistanceConstraint("stuff avoids af islands", classAfIsland, 30.0);
+   int avoidPlayerArea=rmCreateClassDistanceConstraint("stuff avoids player area", classPlayerArea, 15.0);
+   int avoidPortArea=rmCreateClassDistanceConstraint("stuff avoids port area", classPortSite, 30.0);
 
-  int avoidPirates=rmCreateTypeDistanceConstraint("avoid socket pirates", "zpSocketPirates", 20.0);
-  int avoidWokou=rmCreateTypeDistanceConstraint("avoid socket wokou", "zpSocketWokou", 30.0);
-  int avoidJesuit=rmCreateTypeDistanceConstraint("avoid socket jesuit", "zpSocketMaltese", 30.0);
-  int avoidController=rmCreateTypeDistanceConstraint("stay away from Controller", "zpSPCWaterSpawnPoint", 17.0);
-  int avoidControllerFar=rmCreateTypeDistanceConstraint("stay away from Controller Far", "zpSPCWaterSpawnPoint", 70.0);
-  int avoidControllerMediumFar=rmCreateTypeDistanceConstraint("stay away from Controller Medium Far", "zpSPCWaterSpawnPoint", 25.0);
+   // Resource constraints - Fish, whales, forest, mines, nuggets, and sheep
+   int avoidFish1=rmCreateTypeDistanceConstraint("fish v fish", fish1, 20.0);	
+   int avoidFish2=rmCreateTypeDistanceConstraint("fish v fish2", fish2, 15.0);
+   int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 6.0);
+   int whaleVsWhaleID=rmCreateTypeDistanceConstraint("whale v whale", whale1, 75.0);	
+   int fishVsWhaleID=rmCreateTypeDistanceConstraint("fish v whale", whale1, 8.0);   
+   int whaleLand = rmCreateTerrainDistanceConstraint("whale land", "land", true, 22.0);
+   int forestObjConstraint=rmCreateTypeDistanceConstraint("forest obj", "all", 6.0);
+   int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 30.0);
+   int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "mine", 45.0);
+   int avoidGold=rmCreateTypeDistanceConstraint("avoid gold", "minetin", 35.0);
+   int avoidRandomBerries=rmCreateTypeDistanceConstraint("avoid random berries", "berrybush", 55.0);
+   int avoidHuntable1=rmCreateTypeDistanceConstraint("avoid huntable1", huntable1, 30.0);
+   int avoidHuntable2=rmCreateTypeDistanceConstraint("avoid huntable2", huntable2, 40.0);
+   int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 45.0); 
+   int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "abstractNugget", 45.0); 
+   int avoidNuggetWater2=rmCreateTypeDistanceConstraint("avoid water nuggets2", "abstractNugget", 70.0); 
+   int avoidHardNugget=rmCreateTypeDistanceConstraint("hard nuggets avoid other nuggets less", "abstractNugget", 20.0); 
 
-	// Avoid impassable land
-	int avoidImpassableLand=rmCreateTerrainDistanceConstraint("avoid impassable land", "Land", false, 5.0);
-	int shortAvoidImpassableLand=rmCreateTerrainDistanceConstraint("short avoid impassable land", "Land", false, 3.0);
-	int longAvoidImpassableLand=rmCreateTerrainDistanceConstraint("long avoid impassable land", "Land", false, 10.0);
-  int avoidMesa=rmCreateClassDistanceConstraint("avoid random mesas on south central portion of migration island", classCanyon, 10.0);
+   int avoidPirates=rmCreateTypeDistanceConstraint("avoid socket pirates", "zpSocketPirates", 20.0);
+   int avoidWokou=rmCreateTypeDistanceConstraint("avoid socket wokou", "zpSocketWokou", 30.0);
+   int avoidJesuit=rmCreateTypeDistanceConstraint("avoid socket jesuit", "zpSocketMaltese", 30.0);
+   int avoidController=rmCreateTypeDistanceConstraint("stay away from Controller", "zpSPCWaterSpawnPoint", 17.0);
+   int avoidControllerFar=rmCreateTypeDistanceConstraint("stay away from Controller Far", "zpSPCWaterSpawnPoint", 70.0);
+   int avoidControllerMediumFar=rmCreateTypeDistanceConstraint("stay away from Controller Medium Far", "zpSPCWaterSpawnPoint", 25.0);
 
-	// Constraint to avoid water.
-	int avoidWater4 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 4.0);
-	int avoidWater8 = rmCreateTerrainDistanceConstraint("avoid water long", "Land", false, 10.0);
-	int avoidWater20 = rmCreateTerrainDistanceConstraint("avoid water medium", "Land", false, 20.0);
-	int avoidWater40 = rmCreateTerrainDistanceConstraint("avoid water super long", "Land", false, 40.0);
-  int ferryOnShore=rmCreateTerrainMaxDistanceConstraint("ferry v. water", "water", true, 21.0);
-  int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true, 3.5);
+   // Avoid impassable land
+   int avoidImpassableLand=rmCreateTerrainDistanceConstraint("avoid impassable land", "Land", false, 5.0);
+   int shortAvoidImpassableLand=rmCreateTerrainDistanceConstraint("short avoid impassable land", "Land", false, 3.0);
+   int longAvoidImpassableLand=rmCreateTerrainDistanceConstraint("long avoid impassable land", "Land", false, 10.0);
+   int avoidMesa=rmCreateClassDistanceConstraint("avoid random mesas on south central portion of migration island", classCanyon, 10.0);
 
-  // things
-	int avoidImportantItem = rmCreateClassDistanceConstraint("avoid natives", rmClassID("importantItem"), 7.0);
-  int avoidImportantItemNatives = rmCreateClassDistanceConstraint("secrets etc avoid each other", rmClassID("importantItem"), 70.0);
-	int avoidAll=rmCreateTypeDistanceConstraint("avoid all", "all", 4.0);
-  int avoidKOTH=rmCreateTypeDistanceConstraint("stay away from Kings Hill", "ypKingsHill", 15.0);
-  
-  // flag constraints
-  int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 12.0);
-	int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 40);
-  int flagVsPirates1 = rmCreateTypeDistanceConstraint("flag avoid pirates 1", "zpPirateWaterSpawnFlag1", 40);
-  int flagVsPirates2 = rmCreateTypeDistanceConstraint("flag avoid pirates 2", "zpPirateWaterSpawnFlag2", 40);
-	int flagVsWokou1 = rmCreateTypeDistanceConstraint("flag avoid wokou 1", "zpWokouWaterSpawnFlag1", 40);
-  int flagVsWokou2 = rmCreateTypeDistanceConstraint("flag avoid wokou  2", "zpWokouWaterSpawnFlag2", 40);
-  int flagEdgeConstraint=rmCreatePieConstraint("flag edge of map", 0.5, 0.5, 0, rmGetMapXSize()-100, 0, 0, 0);
-  int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 8.0);
+   // Constraint to avoid water.
+   int avoidWater4 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 4.0);
+   int avoidWater8 = rmCreateTerrainDistanceConstraint("avoid water long", "Land", false, 10.0);
+   int avoidWater20 = rmCreateTerrainDistanceConstraint("avoid water medium", "Land", false, 20.0);
+   int avoidWater40 = rmCreateTerrainDistanceConstraint("avoid water super long", "Land", false, 40.0);
+   int ferryOnShore=rmCreateTerrainMaxDistanceConstraint("ferry v. water", "water", true, 21.0);
+   int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true, 3.5);
+
+   // things
+   int avoidImportantItem = rmCreateClassDistanceConstraint("avoid natives", rmClassID("importantItem"), 7.0);
+   int avoidImportantItemNatives = rmCreateClassDistanceConstraint("secrets etc avoid each other", rmClassID("importantItem"), 70.0);
+   int avoidAll=rmCreateTypeDistanceConstraint("avoid all", "all", 4.0);
+   int avoidKOTH=rmCreateTypeDistanceConstraint("stay away from Kings Hill", "ypKingsHill", 15.0);
+
+   // flag constraints
+   int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 12.0);
+   int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 40);
+   int flagVsPirates1 = rmCreateTypeDistanceConstraint("flag avoid pirates 1", "zpPirateWaterSpawnFlag1", 40);
+   int flagVsPirates2 = rmCreateTypeDistanceConstraint("flag avoid pirates 2", "zpPirateWaterSpawnFlag2", 40);
+   int flagVsWokou1 = rmCreateTypeDistanceConstraint("flag avoid wokou 1", "zpWokouWaterSpawnFlag1", 40);
+   int flagVsWokou2 = rmCreateTypeDistanceConstraint("flag avoid wokou  2", "zpWokouWaterSpawnFlag2", 40);
+   int flagEdgeConstraint=rmCreatePieConstraint("flag edge of map", 0.5, 0.5, 0, rmGetMapXSize()-100, 0, 0, 0);
+   int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 8.0);
 
    //Trade Route Contstraints
    int islandAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("trade route", 12.0);
@@ -222,7 +222,7 @@ void main(void)
 
    int portSite1 = rmCreateArea ("port_site1");
    rmSetAreaSize(portSite1, rmAreaTilesToFraction(630.0), rmAreaTilesToFraction(630.0));
-    rmSetAreaLocation(portSite1, 0.95-rmXTilesToFraction(25), 0.5);
+   rmSetAreaLocation(portSite1, 0.95-rmXTilesToFraction(25), 0.5);
    rmSetAreaMix(portSite1, baseMix);
    rmSetAreaCoherence(portSite1, 1);
    rmSetAreaSmoothDistance(portSite1, 20);
@@ -766,10 +766,22 @@ void main(void)
       rmAddAreaConstraint(playerID, avoidBonusIslands);
       rmAddAreaConstraint(playerID, islandAvoidTradeRoute);
       rmSetAreaCliffType(playerID, "Africa Desert Grass");
+      rmSetAreaCliffPainting(playerID, true, false, true);
       rmSetAreaCliffEdge(playerID, 1, 1.0, 0.0, 1.0, 0);
       rmSetAreaCliffHeight(playerID, 3.2, 0.0, 0.5);
       rmEchoInfo("Team area"+i);
-      rmBuildArea(playerID);   	
+      rmBuildArea(playerID); 
+
+      int playerCliffTerrain=rmCreateArea("player terrain"+i); 
+      rmSetPlayerArea(i, playerCliffTerrain);
+      rmSetAreaLocPlayer(playerCliffTerrain, i);
+      rmSetAreaSize(playerCliffTerrain, playerFraction);
+      rmSetAreaCoherence(playerCliffTerrain, 0.5);
+      rmSetAreaMix(playerCliffTerrain, "Africa Desert Grass");
+      rmSetAreaObeyWorldCircleConstraint(playerCliffTerrain, false);
+      rmEchoInfo("Team area 2"+i);
+      rmBuildArea(playerCliffTerrain);
+
       }
 
    // --------------- Make load bar move. ----------------------------------------------------------------------------
@@ -1017,6 +1029,14 @@ void main(void)
       rmAddAreaConstraint(eastIslandVillage1, islandAvoidTradeRoute);
       rmBuildArea(eastIslandVillage1);
 
+      int eastIslandVillage1Terrain=rmCreateArea("village 1 terrain"+i); 
+      rmSetAreaSize(eastIslandVillage1Terrain, rmAreaTilesToFraction(1200.0), rmAreaTilesToFraction(1200.0));
+      rmSetAreaLocation(eastIslandVillage1Terrain, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc1)));
+      rmSetAreaCoherence(eastIslandVillage1Terrain, 0.5);
+      rmSetAreaMix(eastIslandVillage1Terrain, "Africa Desert Grass");
+      rmSetAreaObeyWorldCircleConstraint(eastIslandVillage1Terrain, false);
+      rmBuildArea(eastIslandVillage1Terrain);
+
       int eastIslandVillage2 = rmCreateArea ("east island village 2");
       rmSetAreaSize(eastIslandVillage2, rmAreaTilesToFraction(1200.0), rmAreaTilesToFraction(1200.0));
       rmSetAreaLocation(eastIslandVillage2, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc2)));
@@ -1031,6 +1051,14 @@ void main(void)
       rmAddAreaConstraint(eastIslandVillage2, avoidTradeSocketsShort);
       rmAddAreaConstraint(eastIslandVillage2, islandAvoidTradeRoute);
       rmBuildArea(eastIslandVillage2);
+
+      int eastIslandVillage2Terrain=rmCreateArea("village 2 terrain"+i); 
+      rmSetAreaSize(eastIslandVillage2Terrain, rmAreaTilesToFraction(1200.0), rmAreaTilesToFraction(1200.0));
+      rmSetAreaLocation(eastIslandVillage2Terrain, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc2)));
+      rmSetAreaCoherence(eastIslandVillage2Terrain, 0.5);
+      rmSetAreaMix(eastIslandVillage2Terrain, "Africa Desert Grass");
+      rmSetAreaObeyWorldCircleConstraint(eastIslandVillage2Terrain, false);
+      rmBuildArea(eastIslandVillage2Terrain);
 
       int eastIslandVillage3 = rmCreateArea ("east island village 3");
       rmSetAreaSize(eastIslandVillage3, rmAreaTilesToFraction(1200.0), rmAreaTilesToFraction(1200.0));
@@ -1047,6 +1075,14 @@ void main(void)
       rmAddAreaConstraint(eastIslandVillage3, islandAvoidTradeRoute);
       rmBuildArea(eastIslandVillage3);
 
+      int eastIslandVillage3Terrain=rmCreateArea("village 3 terrain"+i); 
+      rmSetAreaSize(eastIslandVillage3Terrain, rmAreaTilesToFraction(1200.0), rmAreaTilesToFraction(1200.0));
+      rmSetAreaLocation(eastIslandVillage3Terrain, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc3)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc3)));
+      rmSetAreaCoherence(eastIslandVillage3Terrain, 0.5);
+      rmSetAreaMix(eastIslandVillage3Terrain, "Africa Desert Grass");
+      rmSetAreaObeyWorldCircleConstraint(eastIslandVillage3Terrain, false);
+      rmBuildArea(eastIslandVillage3Terrain);
+
       int eastIslandVillage4 = rmCreateArea ("east island village 4");
       rmSetAreaSize(eastIslandVillage4, rmAreaTilesToFraction(1200.0), rmAreaTilesToFraction(1200.0));
       rmSetAreaLocation(eastIslandVillage4, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc4)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc4)));
@@ -1061,6 +1097,14 @@ void main(void)
       rmAddAreaConstraint(eastIslandVillage4, avoidTradeSocketsShort);
       rmAddAreaConstraint(eastIslandVillage4, islandAvoidTradeRoute);
       rmBuildArea(eastIslandVillage4);
+
+      int eastIslandVillage4Terrain=rmCreateArea("village 4 terrain"+i); 
+      rmSetAreaSize(eastIslandVillage4Terrain, rmAreaTilesToFraction(1200.0), rmAreaTilesToFraction(1200.0));
+      rmSetAreaLocation(eastIslandVillage4Terrain, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc4)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc4)));
+      rmSetAreaCoherence(eastIslandVillage4Terrain, 0.5);
+      rmSetAreaMix(eastIslandVillage4Terrain, "Africa Desert Grass");
+      rmSetAreaObeyWorldCircleConstraint(eastIslandVillage4Terrain, false);
+      rmBuildArea(eastIslandVillage4Terrain);
 
       int eastIslandVillage5 = rmCreateArea ("east island village 5");
       rmSetAreaSize(eastIslandVillage5, rmAreaTilesToFraction(1200.0), rmAreaTilesToFraction(1200.0));
@@ -1077,6 +1121,14 @@ void main(void)
       rmAddAreaConstraint(eastIslandVillage5, islandAvoidTradeRoute);
       rmBuildArea(eastIslandVillage5);
 
+      int eastIslandVillage5Terrain=rmCreateArea("village 5 terrain"+i); 
+      rmSetAreaSize(eastIslandVillage5Terrain, rmAreaTilesToFraction(1200.0), rmAreaTilesToFraction(1200.0));
+      rmSetAreaLocation(eastIslandVillage5Terrain, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc5)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc5)));
+      rmSetAreaCoherence(eastIslandVillage5Terrain, 0.5);
+      rmSetAreaMix(eastIslandVillage5Terrain, "Africa Desert Grass");
+      rmSetAreaObeyWorldCircleConstraint(eastIslandVillage5Terrain, false);
+      rmBuildArea(eastIslandVillage5Terrain);
+
       int eastIslandVillage6 = rmCreateArea ("east island village 6");
       rmSetAreaSize(eastIslandVillage6, rmAreaTilesToFraction(1200.0), rmAreaTilesToFraction(1200.0));
       rmSetAreaLocation(eastIslandVillage6, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc6)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc6)));
@@ -1091,6 +1143,14 @@ void main(void)
       rmAddAreaConstraint(eastIslandVillage6, avoidTradeSocketsShort);
       rmAddAreaConstraint(eastIslandVillage6, islandAvoidTradeRoute);
       rmBuildArea(eastIslandVillage6);
+
+      int eastIslandVillage6Terrain=rmCreateArea("village 6 terrain"+i); 
+      rmSetAreaSize(eastIslandVillage6Terrain, rmAreaTilesToFraction(1200.0), rmAreaTilesToFraction(1200.0));
+      rmSetAreaLocation(eastIslandVillage6Terrain, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc6)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc6)));
+      rmSetAreaCoherence(eastIslandVillage6Terrain, 0.5);
+      rmSetAreaMix(eastIslandVillage6Terrain, "Africa Desert Grass");
+      rmSetAreaObeyWorldCircleConstraint(eastIslandVillage6Terrain, false);
+      rmBuildArea(eastIslandVillage6Terrain);
 
 
 
@@ -1686,6 +1746,32 @@ rmSetTriggerLoop(false);
 	rmSetTriggerLoop(true);
 	}
 
+   for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Consulate Khmer"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","Khmers");
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnKhmers"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
 for (k=1; <= cNumberNonGaiaPlayers) {
 rmCreateTrigger("Activate Tortuga"+k);
 rmAddTriggerCondition("ZP Tech Researching (XS)");
@@ -1760,6 +1846,8 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Khmer"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga"+k));
 rmAddTriggerEffect("Fire Event");

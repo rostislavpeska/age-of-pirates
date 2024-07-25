@@ -21,8 +21,7 @@ minInterval 3
    }
 
    // AssertiveWall: suppress when build order is active
-   int buildingBOlength = xsArrayGetSize(boBuildingArray) - 1;
-   if (xsArrayGetInt(boBuildingArray, buildingBOlength) > 0 && gUseBuildOrder == true)
+   if (xsIsRuleEnabled("buildingBuildOrderRule") == true)
    {
       return;
    }
@@ -100,8 +99,7 @@ minInterval 3
    }
 
    // AssertiveWall: suppress when build order is active
-   int buildingBOlength = xsArrayGetSize(boBuildingArray) - 1;
-   if (xsArrayGetInt(boBuildingArray, buildingBOlength) > 0 && gUseBuildOrder == true)
+   if (xsIsRuleEnabled("buildingBuildOrderRule") == true)
    {
       return;
    }
@@ -183,7 +181,20 @@ void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
       vector baseLocation = kbBaseGetLocation(cMyID, baseID);
       int baseAreaGroup = kbAreaGroupGetIDByPosition(baseLocation);
       int numberAreas = kbAreaGetNumber();
-      newDistance = kbBaseGetDistance(cMyID, baseID) + 10.0;
+      // AssertiveWall: expand more aggressively based on strategy. Old value was +10
+      int expansionInterval = 1 * 60 * 1000;
+      if (gStrategy == cStrategyGreed || gGetGreedy == true)
+      {
+         newDistance = kbBaseGetDistance(cMyID, baseID) + 30.0;
+         expansionInterval = 20 * 1000;
+      }
+      else
+      {
+         newDistance = kbBaseGetDistance(cMyID, baseID) + 20.0;
+         expansionInterval = 40 * 1000;
+      }
+
+      
       // AssertiveWall Shrink the wall radius on Island Maps
       /*if ((puid == cUnitTypeBuilding && puid != cUnitTypeLogicalTypeBuildingsNotWalls) &&
          gStartOnDifferentIslands == true)
@@ -223,7 +234,7 @@ void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
    }
 
    int time = xsGetTime();
-   if ((time - lastExpansionTime) > 1 * 60 * 1000)
+   if ((time - lastExpansionTime) > expansionInterval) // AssertiveWall: old expansionInterval = 60 sec
    {
       debugBuildings("Expanding base " + baseID + " to " + newDistance);
       kbBaseSetPositionAndDistance(cMyID, baseID, baseLocation, newDistance);
@@ -884,10 +895,33 @@ void selectTCBuildPlanPosition(int buildPlan = -1, int baseID = -1)
    aiPlanSetVariableInt(buildPlan, cBuildPlanInfluenceUnitFalloff, 3, cBPIFalloffNone); // Cliff falloff
 
    // Weight it to prefer the general starting neighborhood
-   aiPlanSetVariableVector(buildPlan, cBuildPlanInfluencePosition, 0, loc);          // Position influence for landing position
-   aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionDistance, 0, 100.0); // 100m range.
-   aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionValue, 0, 300.0);    // 300 points max
-   aiPlanSetVariableInt(buildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+   // AssertiveWall: use a much wider range when trying to be greedy
+   if (gGetGreedy == true || gStrategy == cStrategyGreed)
+   {
+      aiPlanSetVariableInt(buildPlan, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
+
+      if (gStrategy == cStrategyGreed && gGetGreedy == true)
+      {
+         aiPlanSetVariableVector(buildPlan, cBuildPlanInfluencePosition, 0, loc);          // Position influence for landing position
+         aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionDistance, 0, 200.0); // 200m range.
+         aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionValue, 0, 100.0);    // 100 points max
+         aiPlanSetVariableInt(buildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffNone); // Cliff Falloff
+      }
+      else
+      {
+         aiPlanSetVariableVector(buildPlan, cBuildPlanInfluencePosition, 0, loc);          // Position influence for landing position
+         aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionDistance, 0, 200.0); // 200m range.
+         aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionValue, 0, 100.0);    // 100 points max
+         aiPlanSetVariableInt(buildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+      }
+   }
+   else
+   {
+      aiPlanSetVariableVector(buildPlan, cBuildPlanInfluencePosition, 0, loc);          // Position influence for landing position
+      aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionDistance, 0, 100.0); // 100m range.
+      aiPlanSetVariableFloat(buildPlan, cBuildPlanInfluencePositionValue, 0, 300.0);    // 300 points max
+      aiPlanSetVariableInt(buildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+   }
 
    // AssertiveWall: If it's an island map, town centers weighted to go near docks and coast (away from start)
    if (gStartOnDifferentIslands == true)
@@ -1404,7 +1438,28 @@ bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
                continue;
             }
             // This is a military building, randomize placement.
-            aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, aiRandInt(4));
+            // AssertiveWall: Alter the location preference for the strategy
+            //    Rush always front
+            //    Safe FF and Fast Industrial back until they reach their age
+            //    Everyone else forward past Age 3
+            //    Else random
+            if (gStrategy == cStrategyRush)
+            {
+               aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
+            }
+            else if ((gStrategy == cStrategySafeFF && kbGetAge() < cAge3) || 
+                     (gStrategy == cStrategyFastIndustrial && kbGetAge() < cAge4))
+            {
+               aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceBack);
+            }
+            else if (kbGetAge() >= cAge3)
+            {
+               aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceFront);
+            }
+            else
+            {
+               aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, aiRandInt(4));
+            }
             break;
          }
          aiPlanSetBaseID(planID, baseID);
@@ -1709,7 +1764,7 @@ vector selectForwardBaseLocation(void)
             debugBuildings("    " + retVal + " is in area group " + kbAreaGroupGetIDByPosition(retVal));
             siteFound = true;
             // Don't build too close to any enemy building.
-            if (getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateABQ, retVal, 60.0) >= 0)
+            if (getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateABQ, retVal, 80.0) >= 0) // AssertiveWall: up from 60
             {
                siteFound = false;
             }
@@ -1725,6 +1780,14 @@ vector selectForwardBaseLocation(void)
             retVal = retVal + delta; // Move 1/10 of way back to main base, try again.
          }
       }
+   }
+
+   // AssertiveWall: check to make sure we're actually building this forward. At least 1/3 of the map
+   int distFriendlyEnemy = distance(v, mainBaseVec);
+   int distFriendlyToFB = distance(mainBaseVec, retVal);
+   if (distFriendlyToFB < 0.35 * distFriendlyEnemy)
+   {
+      siteFound = false;
    }
 
    if (siteFound == false)
@@ -1790,10 +1853,6 @@ minInterval 30
       //}
       if (amphibiousAssault() == true)
       {
-         if (gTestingChatsOn == true)
-         {
-            aiChat(1, "Enabled amphibious assault");
-         }
          xsDisableSelf();
       }
       return;
@@ -1818,19 +1877,18 @@ minInterval 30
             //vector location = cInvalidVector;  AssertiveWall: moved up above
    
             // AssertiveWall: Use the forward island
-            if (gStartOnDifferentIslands == true && (gMigrationMap == false) &&
-               (btOffenseDefense >= 0.0) && (cDifficultyCurrent >= cDifficultyModerate))
+            if (gStartOnDifferentIslands == true && (gMigrationMap == false)) // && (btOffenseDefense >= -10.0)
             {
                location = selectForwardBaseBeachHead();
             }
-            else if ((btOffenseDefense >= 0.0) && (cDifficultyCurrent >= cDifficultyModerate))
+            else if ((cDifficultyCurrent >= cDifficultyModerate)) //(btOffenseDefense >= -10.0) && 
             {
                location = selectForwardBaseLocation();
             }
    
             if (location == cInvalidVector)
-            {
-               createSimpleBuildPlan(cUnitTypeFortFrontier, 1, 87, true, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
+            {  // AssertiveWall: let the AI try to find a FB location again. No defensive FB's
+               //createSimpleBuildPlan(cUnitTypeFortFrontier, 1, 87, true, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
                return;
             }
    
@@ -2785,6 +2843,11 @@ minInterval 5
       return;
    }
 
+   // AssertiveWall: suppress when build order is active
+   if (xsIsRuleEnabled("buildingBuildOrderRule") == true)
+   {
+      return;
+   }
 
    int planID = -1;
    int numberBuildings = 0;
@@ -3356,16 +3419,24 @@ minInterval 5
       }
       // AssertiveWall: New Additional TC building logic
       planID = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypeTownCenter);
-      if ((planID < 0) && (kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive) < 2))// && gDefenseReflex == false)
-      {  // Basically just build one in Age 3 if we aren't rushing
-         if (btRushBoom < 0.4 && age >= cAge3)
+      if ((planID < 0) && (kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive) < 2))
+      {  // Different strategies
+         if (age >= cAge3)
+         {
+            if ((gStrategy == cStrategySafeFF) || (gStrategy == cStrategyGreed))
+            {
+               planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 1);
+               aiPlanSetDesiredResourcePriority(planID, 60);
+            }
+         }
+         else if (age >= cAge3 && xsGetTime() > 20 * 60 * 1000 && gStrategy != cStrategyFastIndustrial)
          {
             planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 1);
             aiPlanSetDesiredResourcePriority(planID, 60);
          }
       }
       // AssertiveWall: If we're in Age 4 or past 25 mins we can build 3
-      else if ((planID < 0) && (kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive) < 3))// && gDefenseReflex == false)
+      else if ((planID < 0) && (kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive) < 3))
       { 
          if (age >= cAge4 || time > 25 * 60 * 1000)
          {
@@ -3568,7 +3639,8 @@ minInterval 40
 //==============================================================================
 void updateWantedTowers()
 {
-   int age = kbGetAge();
+   updateWantedTowersAssertive();
+   /*int age = kbGetAge();
    int buildLimit = kbGetBuildLimit(cMyID, gTowerUnit);
 
    if (age == cvMaxAge)
@@ -3585,15 +3657,15 @@ void updateWantedTowers()
    }   
    else if (age == cAge2) // Set up our begin values when we're in the Commerce Age.
    {
-      if (btOffenseDefense >= 0.0)
+      if (btOffenseDefense >= 0.5)
       {
          gNumTowers += 0; // We remain at +0 Towers in Commerce if we're not defensively orientated.
       }
-      else if (btOffenseDefense >= -0.5) // Between -0.5 and 0.0
+      else if (btOffenseDefense > 0.1 && btOffenseDefense < 0.5) // Between 0.1 and 0.5
       {
          gNumTowers += civIsAsian() == true ? 1 : 2;
       }
-      else // btOffenseDefense between -0.5 and -1.0
+      else // btOffenseDefense between 0 and 0.1
       {
          gNumTowers += civIsAsian() == true ? 2 : 3;
       }
@@ -3640,7 +3712,7 @@ void updateWantedTowers()
    if (gNumTowers > buildLimit)
    {
       gNumTowers = buildLimit;
-   }
+   }*/
 }
 
 //==============================================================================
@@ -3655,14 +3727,7 @@ minInterval 5
 {
    if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypeTradingPost) >= 0)
    {
-      if (gIsPirateMap == true)// && (gClaimNativeMissionInterval < 60 * 1000 || gClaimTradeMissionInterval < 60 * 1000))
-      {
-         return;
-      }
-      else if (gIsPirateMap == false)
-      {
-         return;
-      }
+      return;
    }
  
    int numberEnemiesFound = -1;
@@ -3684,13 +3749,14 @@ minInterval 5
    bool earlyTrade = false;
    //int transportUnitID = -1;
 
-   // AssertiveWall: Increase btBiasNative on pirate maps
-   /*if (gIsPirateMap == true)
-   {
-      btBiasNative = 0.9;
-      btBiasTrade = 0.9;
-   }*/
+   // AssertiveWall: When all the sockets get fully claimed, we wait 90 sec. Effectively should wait 2 mins, since this 
+   //       rule only runs once every minute 
+   static int fullyClaimed = -90000;
 
+   if (time < (fullyClaimed + 90000) && gIsPirateMap == true && haveHumanAlly() == true)
+   {
+      return;
+   }
 
    int wagonPUID = findWagonToBuild(cUnitTypeTradingPost);
    int wagonID = -1;
@@ -3726,31 +3792,17 @@ minInterval 5
 
    int socketQuery = createSimpleUnitQuery(cUnitTypeSocket, cPlayerRelationAny, cUnitStateAny);
    int numberSocketsFound = kbUnitQueryExecute(socketQuery);
-
-   // AssertiveWall: Grab random socket
-   /*if (gIsPirateMap == true)
-   {
-      int randSocket = aiRandInt(numberSocketsFound);
-   }*/
+   int claimedNumber = 0; // AssertiveWall: track how many got claimed so we can lengthen this rule when most are claimed
 
    for (i = 0; < numberSocketsFound)
    {
       socketID = kbUnitQueryGetResult(socketQuery, i);
       socketPosition = kbUnitGetPosition(socketID);
 
-      // AssertiveWall: Grab random socket
-      /*if (gIsPirateMap == true)
-      {
-         if (i == randSocket)
-         {
-            bestNativeSocketID = socketID;
-         }
-         continue;
-      }*/
-
       // Already claimed, skipping.
       if (getUnitByLocation(cUnitTypeTradingPost, cPlayerRelationAny, cUnitStateABQ, socketPosition, 10.0) >= 0)
       {
+         claimedNumber += 1;
          continue;
       }
 
@@ -3840,6 +3892,14 @@ minInterval 5
       }
    }
 
+   // AssertiveWall: store the time when all sockets got claimed
+   //       Only effects pirate maps for now
+   if (claimedNumber >= (numberSocketsFound - 1) && gIsPirateMap == true && haveHumanAlly() == true)
+   {
+      fullyClaimed = time;
+      return;
+   }
+
    // AssertiveWall: Prioritize native TP on pirate maps and if doing a canoe blitz (rusher & native bias)
    if ((bestNativeSocketID >= 0) || (bestTradeSocketID >= 0))
    {
@@ -3856,7 +3916,7 @@ minInterval 5
          {
             socketID = bestNativeSocketID;
          }
-         else if (gStartOnDifferentIslands == true && btRushBoom >= 0.5 && btBiasNative >= 0.5 &&
+         else if (gStartOnDifferentIslands == true && (gStrategy == cStrategyRush || gStrategy == cStrategyNakedFF) && btBiasNative >= 0.5 &&
                   xsArrayGetSize(kbVPSiteQuery(cVPNative, cMyID, cVPStateCompleted)) <= 0)
          {
             socketID = bestNativeSocketID;
@@ -3972,18 +4032,12 @@ minInterval 5
       }
 
       // Priority.
-      if (gIsPirateMap == true)
-      {
-         aiPlanSetDesiredPriority(planID, 99);
-      }
-      else
-      {
-         aiPlanSetDesiredPriority(planID, 97);
-      }
+      aiPlanSetDesiredPriority(planID, 97);
+
       // Very high priority so we claim a trading post right after start up.
-      if (gIsPirateMap == true)
+      if (gIsPirateMap == true && earlyTrade == false)
       {
-         aiPlanSetDesiredResourcePriority(planID, 99);
+         aiPlanSetDesiredResourcePriority(planID, 65);
       }
       else if (earlyTrade == true)
       {
@@ -3991,7 +4045,7 @@ minInterval 5
       }
       else
       {
-         aiPlanSetDesiredResourcePriority(planID, 55); // AssertiveWall: up from 55
+         aiPlanSetDesiredResourcePriority(planID, 55);
       }
 
       // Go.

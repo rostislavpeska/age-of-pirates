@@ -1,0 +1,15 @@
+<material>
+  <submaterial name="Mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\attachments\weapons\Mclub\Mata">
+      </texture>
+      <texture name="Normals" override="units\attachments\weapons\Mclub\MataN">
+      </texture>
+<texture name="Masks" override="units\attachments\weapons\Mclub\MataM">
+      </texture>
+    </parameters>
+  </submaterial>
+ 
+</material>

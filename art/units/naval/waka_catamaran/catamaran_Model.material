@@ -1,0 +1,66 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\waka_catamaran\textures\waka_catamaran_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\waka_catamaran\textures\waka_catamaran_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\waka_catamaran\textures\waka_catamaran_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\waka_catamaran\textures\waka_catamaran_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\generic_props\textures\generic_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\generic_props\textures\generic_props_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\generic_props\textures\generic_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\military_props\textures\military_props_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\military_props\textures\military_props_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\military_props\textures\military_props_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\mercenaries\napoleon_gun\textures\napoleon_gun_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\mercenaries\napoleon_gun\textures\napoleon_gun_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\mercenaries\napoleon_gun\textures\napoleon_gun_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\waka_catamaran\textures\waka_catamaran_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\waka_catamaran\textures\waka_catamaran_matB_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\waka_catamaran\textures\waka_catamaran_matB_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\waka_catamaran\textures\waka_catamaran_matB_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

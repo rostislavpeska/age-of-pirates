@@ -904,18 +904,25 @@ minInterval 10
    int currentMilitaryPop = militaryPopLimit - aiGetAvailableMilitaryPop();
 
    // Destroy the age up plan or don't create one.
-   // AssertiveWall: ignore the army requirement on naked FF
-   if (((age >= cAge2) && (cvOkToTrainArmy == true) && (militaryPopLimit / 4 > currentMilitaryPop && (btRushBoom > 0.0 && btOffenseDefense < 0.5)) || 
-       (time < gAgeUpPlanTime)) &&
+   if (((age >= cAge2) && (cvOkToTrainArmy == true) && (militaryPopLimit / 4 > currentMilitaryPop) ||
+        (time < gAgeUpPlanTime)) &&
        (gExcessResources == false) && (firstAgeUpTime + 15 * 60 * 1000 > time))
    {
-      debugTechs("Destroying or not creating an age up plan because we're not ready for it yet");
-      if (gAgeUpResearchPlan >= 0)
+      // AssertiveWall: ignore the army requirement on naked FF
+      if (gStrategy == cStrategyFastIndustrial)
       {
-         aiPlanDestroy(gAgeUpResearchPlan);
-         gAgeUpResearchPlan = -1;
+         // do nothing
       }
-      return;
+      else // destroy the age up plan
+      {
+         debugTechs("Destroying or not creating an age up plan because we're not ready for it yet");
+         if (gAgeUpResearchPlan >= 0)
+         {
+            aiPlanDestroy(gAgeUpResearchPlan);
+            gAgeUpResearchPlan = -1;
+         }
+         return;
+      }
    }
 
    // We're now 10 minutes past the first person reaching the next age increase priority no matter what.
@@ -936,17 +943,21 @@ minInterval 10
       ageUpPriority = 48;
    }
 
-   // AssertiveWall: adjust age up priority if we're trying to fast fortress
+   // AssertiveWall: adjust age up priority if we're trying to fast fortress or fast industrial
    if (age == cAge2)
    {
-      if (btRushBoom <= 0.0 && btOffenseDefense < 0.5) // Safe Fast Fortress
+      if (gStrategy == cStrategySafeFF) // Safe Fast Fortress
       {
          ageUpPriority = ageUpPriority + 10;
       }
-      else if (btRushBoom <= 0.0) // AssertiveWall: Naked FF
+      else if (gStrategy == cStrategyNakedFF || gStrategy == cStrategyFastIndustrial) // AssertiveWall: Naked FF
       {
          ageUpPriority = 90;
       }
+   }
+   else if (age == cAge3 && gStrategy == cStrategyFastIndustrial)
+   {
+      ageUpPriority = 90;
    }
 
    debugTechs("Our ageUpPriority (resource priority) is: " + ageUpPriority);
@@ -959,9 +970,9 @@ minInterval 10
          debugTechs("WARNING our gAgeUpResearchPlan somehow died! Will try to create a new one");
          aiPlanDestroy(gAgeUpResearchPlan);
          gAgeUpResearchPlan = -1;
-            }
+      }
       else // Update the existing plan's priority.
-            {
+      {
          aiPlanSetDesiredResourcePriority(gAgeUpResearchPlan, ageUpPriority);
       }
    }
@@ -1253,7 +1264,8 @@ minInterval 30
          aiPlanSetVariableInt(gEconUpgradePlan, cResearchPlanTechID, 0, techToGet);
          aiPlanSetDesiredPriority(gEconUpgradePlan, 92);
          aiPlanSetBaseID(gEconUpgradePlan, kbBaseGetMainID(cMyID));
-         if ((time > 12 * 60 * 1000) || (btRushBoom < 0.0) || (agingUp() == true) || (age >= cAge3))
+         if ((time > 12 * 60 * 1000) || (agingUp() == true) || (age >= cAge3) ||
+               (gStrategy == cStrategyGreed || gStrategy == cStrategySafeFF))
          {
             aiPlanSetDesiredResourcePriority(gEconUpgradePlan, 55); // Above average.
          }

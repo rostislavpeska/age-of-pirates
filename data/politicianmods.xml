@@ -87,4 +87,10 @@
   </zpconsulatewesternpinkertons>
   <zpconsulatewesternjessejames portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/jessejames.png">
   </zpconsulatewesternjessejames>
+  <zpbigconsulatejapanesealliesclone portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_japanese.png">
+  </zpbigconsulatejapanesealliesclone>
+  <zpconsulatepiratesdutchman portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/bernard_fokke.png">
+  </zpconsulatepiratesdutchman>
+  <zpconsulatepiratesblackjack portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/blackjack.png">
+  </zpconsulatepiratesblackjack>
 </politicianmods>

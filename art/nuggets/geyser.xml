@@ -1,0 +1,9 @@
+<animfile>
+  <definebone>bone_geyser</definebone>
+  <attachment>smallMist0<component>smallMist1Emitter<assetreference type="Popcornfx"><file>objects\geyser_fx.pkfx</file></assetreference></component><anim>None<component>smallMist1Emitter</component></anim></attachment>
+  <attachment>smallMist1<component>smallMist1Emitter<assetreference type="Popcornfx"><file>objects\geyser.pkfx</file></assetreference></component><anim>None<component>smallMist1Emitter</component></anim></attachment>
+  <attachment>smallMist2<component>smallMist2Emitter<assetreference type="ParticleSystem"><file>terrain\great_plains\geyser_smallmist2.particle</file></assetreference></component><anim>None<component>smallMist2Emitter</component></anim></attachment>
+  <attachment>smallMist3<component>smallMist3Emitter<assetreference type="ParticleSystem"><file>terrain\great_plains\geyser_smallmist3.particle</file></assetreference></component><anim>None<component>smallMist3Emitter</component></anim></attachment>
+  <component>ModelComp<assetreference type="GrannyModel"><file>terrain\great_plains\geyser</file></assetreference></component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>terrain\great_plains\geyser_idle30s</file><tag type="SpecificSoundSet" checkvisible="1" set="AmbienceGeyserSpray">0.30</tag></assetreference><component>ModelComp</component><attach a="smallMist0" frombone="ATTACHPOINT" tobone="bone_geyser" syncanims="0"></attach><attach a="smallMist1" frombone="ATTACHPOINT" tobone="bone_geyser" syncanims="0"></attach></anim>
+</animfile>

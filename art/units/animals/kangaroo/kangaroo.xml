@@ -1,0 +1,16 @@
+<animfile>
+  <submodel>Kangaroo_V1<component>Kangaroo_V1<assetreference type="GrannyModel"><file>units\animals\kangaroo\Kangaroo_V1</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_64x64</texture><selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture><width>2.0</width><height>2.00</height></decal></component><anim>Idle<assetreference type="GrannyAnim"><file>animation_library\quads\Kangaroo_Idle_1</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Kangaroo_Idle_2</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Kangaroo_Bored_1</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Kangaroo_Bored_2</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Kangaroo_Graze_1</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Kangaroo_Graze_2</file></assetreference><component>Kangaroo_V1</component></anim><anim>Death<assetreference type="GrannyAnim"><file>animation_library\quads\Kangaroo_Die</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.60</tag></assetreference><component>Kangaroo_V1</component></anim><anim>Walk<assetreference type="GrannyAnim"><file>animation_library\quads\Kangaroo_Walk</file></assetreference><component>Kangaroo_V1</component></anim></submodel>
+  <submodel>Kangaroo_V3<component>Kangaroo_V3<assetreference type="GrannyModel"><file>units\animals\kangaroo\Kangaroo_V3</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_64x64</texture><selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture><width>2.0</width><height>2.00</height></decal></component><anim>Idle<assetreference type="GrannyAnim"><file>animation_library\quads\Kangaroo_Idle_1</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Kangaroo_Idle_2</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Kangaroo_Bored_1</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Kangaroo_Bored_2</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Kangaroo_Graze_1</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Kangaroo_Graze_2</file></assetreference><component>Kangaroo_V3</component></anim><anim>Death<assetreference type="GrannyAnim"><file>animation_library\quads\Kangaroo_Die</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.60</tag></assetreference><component>Kangaroo_V3</component></anim><anim>Walk<assetreference type="GrannyAnim"><file>animation_library\quads\Kangaroo_Walk</file></assetreference><component>Kangaroo_V3</component></anim></submodel>
+  <component>
+    <logic type="Variation">
+      <data>
+        <submodelref ref="Kangaroo_V1">
+        </submodelref>
+      </data>
+      <data>
+        <submodelref ref="Kangaroo_V3">
+        </submodelref>
+      </data>
+    </logic>
+  </component>
+</animfile>

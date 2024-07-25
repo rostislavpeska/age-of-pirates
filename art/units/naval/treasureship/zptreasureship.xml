@@ -201,9 +201,9 @@
             <file>units\naval\treasureship\zptreasureship_Idle_Anim</file>
         </assetreference>
         <component>battleship</component>
-        <!--<simskeleton>
+        <simskeleton>
             <model>units\naval\treasureship\zptreasureship</model>
-        </simskeleton>-->
+        </simskeleton>
         <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
         <attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach>
         <attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"></attach>
@@ -211,12 +211,12 @@
     </anim>
     <anim>RangedAttack
         <assetreference type="GrannyAnim">
-            <file>units\naval\battleship\battleship_idle</file>
+            <file>units\naval\treasureship\zptreasureship_Idle_Anim</file>
             <tag type="Attack">0.45</tag>
         </assetreference>
         <component>battleship</component>
         <simskeleton>
-            <model>units\naval\zptreasureship\treasureship</model>
+            <model>units\naval\treasureship\zptreasureship</model>
         </simskeleton>
         <attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach>
         <attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"></attach>

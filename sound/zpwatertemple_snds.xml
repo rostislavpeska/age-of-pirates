@@ -1,7 +1,11 @@
 <protounitsounddef>
   <protounit name="zpWaterTemple">
     <soundtype name="Select">
-      <soundset name="UI_Building_Economic">
+      <soundset name="UI_Building_Military">
+      </soundset>
+    </soundtype>
+    <soundtype name="SelectSecondary">
+      <soundset name="UI_Select_Building_Consulate">
       </soundset>
     </soundtype>
     <soundtype name="Death">
@@ -9,11 +13,7 @@
       </soundset>
     </soundtype>
     <soundtype name="Creation">
-      <soundset name="UI_Building_Economic">
-      </soundset>
-    </soundtype>
-    <soundtype name="Exists">
-      <soundset name="AmbienceFountainOfYouth">
+      <soundset name="UI_Select_Building_Consulate">
       </soundset>
     </soundtype>
   </protounit>

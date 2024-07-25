@@ -1,0 +1,35 @@
+<mix>
+  <title>Hawaii</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="1">caribbean\ground1_crb</texture>
+    <texture weight="1">caribbean\ground6_crb</texture>
+    <texture weight="1">caribbean\ground6_crb</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.9" octaves="1" persistence="0.2" emptyweight="15" posoffset="0.9">
+
+    <model weight="1" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_jungle_rock3</model>
+    <model weight="1" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_jungle_rock4</model>
+    <model weight="1" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_jungle_rock5</model>
+    <model weight="1" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_jungle_rock6</model>
+    <model weight="4" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_shell_01</model>
+    <model weight="1" scalemin="0.8" scalemax="1.6">terrain\underbrush\underbrush_jungle_plant1</model>
+    <model weight="1" scalemin="0.8" scalemax="1.6">terrain\underbrush\underbrush_jungle_plant2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.6">terrain\underbrush\underbrush_jungle_plant3</model>
+    <model weight="1" scalemin="0.8" scalemax="1.6">terrain\underbrush\underbrush_jungle_plant4</model>
+    <model weight="1" scalemin="0.3" scalemax="0.7">terrain\california\log_a_cal</model>
+    <model weight="1" scalemin="0.3" scalemax="0.7">terrain\california\log_b_cal</model>
+    <model weight="1" scalemin="0.3" scalemax="0.7">terrain\california\log_c_cal</model>
+    <model weight="1" scalemin="0.8" scalemax="1.6">terrain\underbrush\underbrush_jungle_plant5</model>
+    <model weight="1" scalemin="0.8" scalemax="1.6">terrain\underbrush\underbrush_jungle_plant6</model>
+    <model weight="1" scalemin="0.8" scalemax="1.6">terrain\underbrush\underbrush_jungle_plant7</model>
+    <model weight="1" scalemin="0.8" scalemax="1.6">terrain\underbrush\underbrush_jungle_plant8</model>
+    <model weight="2.5" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant9</model>
+    <model weight="2.5" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant10</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant11</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_grass_01</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_rock_02</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_rock_03</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_rock_04</model>
+  </objects>
+</mix>

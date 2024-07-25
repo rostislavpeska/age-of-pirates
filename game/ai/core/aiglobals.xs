@@ -47,6 +47,27 @@ extern const int cAge2conditional = -12;
 extern const int cAge3conditional = -13;
 extern const int cAge4conditional = -14;
 
+// Strategies
+/* 
+   btRushBoom: -1, 1; btOffenseDefense: 0, 1
+
+   Rush:                btRushBoom >= 0.5       && btOffenseDefense >= 0.5
+   Naked Fast Fortress: btRushBoom >= 0; < 0.5  && btOffenseDefense >= 0.5
+   Safe Fast Fortress:  btRushBoom >= 0; < 0.5  && btOffenseDefense <  0.5
+   Fast Industrial:     btRushBoom < 0          && btOffenseDefense >= 0.5
+   Greedy/Safe Boom:    btRushBoom < 0          && btOffenseDefense <  0.5 */
+   
+extern int gStrategy = -1;
+extern const int cStrategyRush = 1;
+extern const int cStrategyNakedFF = 2;
+extern const int cStrategySafeFF = 3;
+extern const int cStrategyFastIndustrial = 4;
+extern const int cStrategyGreed = 5;
+extern bool gGetGreedy = false;
+extern int gCalculatedGatherDistance = -1;
+extern int gLastHomeBaseDefendTime = -1;
+extern int gLastShipmentSentTime = -1;
+
 
 //==============================================================================
 // Islands. AssertiveWall
@@ -100,6 +121,7 @@ extern int gAmphibiousArmyPlan = -1;            // The plan to handle the amphib
 extern int gAmphibiousTransportPlan = -1;       // The plan that reserves our transports
 extern int gAmphibiousTrainPlan = -1;           // Plan for training from galleons
 extern int gAmphibiousAssaultSavedTime = -1;    // Store times along the way
+extern int gAmphibiousPushTime = -1;            // LAst time we pushed inland
 extern int gLandingShip1 = -1;                  // Stores transport ship 1
 extern int gLandingShip2 = -1;                  // Stores transport ship 2
 extern const int cGatherNavy = 0;               // First stage, gather up the navy for the assault
@@ -195,6 +217,13 @@ extern int gLivestockPenUnit = cUnitTypeLivestockPen;
 extern int gMarketUnit = cUnitTypeMarket;
 extern int gDockUnit = cUnitTypeDock;
 
+// AssertiveWall: Star Forts and advanced wall patterns
+extern int gCannonCornerPlan = -1;
+extern vector gCannonCornerLoc1 = cInvalidVector;
+extern vector gCannonCornerLoc2 = cInvalidVector;
+extern vector gCannonCornerLoc3 = cInvalidVector;
+extern vector gCannonCornerLoc4 = cInvalidVector;
+
 //==============================================================================
 // Techs.
 //==============================================================================
@@ -286,6 +315,7 @@ extern bool gLastExplorerCheck = true;  // AssertiveWall: Last time we checked i
 extern bool gLastExplorerCheck2 = true;  // AssertiveWall: Last time we checked if explorer is alive. true when alive
 extern int gExplorerID = -1;             // AssertiveWall: stores explorer ID. necessary for when explorer dies
 extern int gExplorer2ID = -1;          // AssertiveWall: stores explorer ID. necessary for when explorer dies
+extern int gFindBasePlanID = -1;        // AssertiveWall: Plan that finds the enemy base at the start of the game
 
 //==============================================================================
 // Economy.
@@ -312,6 +342,8 @@ extern int gResourceNeeds = -1;
 extern int gExtraResourceNeeds = -1;
 extern bool gLowOnResources = false;
 extern bool gExcessResources = true;
+
+extern int gSlaughterPlanID = -1; // AssertiveWall: persistent slaughter plan
 
 extern int gGatherPlanPriorityHunt = 80;
 extern int gGatherPlanPriorityBerry = 81;
@@ -376,6 +408,7 @@ extern int gLandReservePlan = -1; // Reserve defend plan, gathers units for use 
 extern int gHealerPlan = -1;      // Defend plan that controls our healers in our base.
 extern int gCoastalGunPlan = -1;  // AssertiveWall: Plan to stage artillery near docks and coast on island maps
 extern int gEndlessWaterRaidPlan = -1; // AssertiveWall: Used to roam the map and raid areas
+extern int gFirstWaterAttack = -1;      // AssertiveWall: Used to do the first few water attacks
 
 extern bool gDefenseReflex = false; // Set true when a defense reflex is overriding normal ops.
 extern bool gDefenseReflexPaused =
@@ -531,7 +564,7 @@ extern int gTargetSettlerCounts = -1; // How many settlers do we want in a given
 extern int gTargetSettlerCountsDefault = -1; // This array stores the values the non special Settler civs have.
                                              // It is then used to calculate a proper military population.
 
-extern int gDifficultyExpert = cDifficultyExpert; // Equivalent of expert difficulty, hard for SPC content.
+extern int gDifficultyExpert = cDifficultyHard; // Equivalent of expert difficulty, hard for SPC content. AssertiveWall: normalized to hard
 
 //==============================================================================
 // Debug variables.

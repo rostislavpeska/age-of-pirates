@@ -1,0 +1,20 @@
+<footprints>
+  <footprint name="HumanLeft" simpletex="effects\footprints\footprint_human_left" width="0.25" height="0.4" prefadetime="4.0" fadetime="2.0">
+  </footprint>
+  <footprint name="HumanRight" simpletex="effects\footprints\footprint_human_right" width="0.25" height="0.4" prefadetime="4.0" fadetime="2.0">
+  </footprint>
+  <footprint name="AnimalLeft" simpletex="effects\footprints\footprint_animal_left" width="0.4" height="0.4" prefadetime="4.0" fadetime="2.0">
+  </footprint>
+  <footprint name="AnimalRight" simpletex="effects\footprints\footprint_animal_right" width="0.4" height="0.4" prefadetime="4.0" fadetime="2.0">
+  </footprint>
+  <footprint name="Horse" simpletex="effects\footprints\footprint_horse" width="0.35" height="0.35" prefadetime="4.0" fadetime="2.0">
+  </footprint>
+  <footprint name="Wheel" simpletex="effects\footprints\footprint_wheel" bumptex="effects\footprints\footprint_wheel_bump" width="0.2" height="1.0" prefadetime="4.0" fadetime="2.0">
+  </footprint>
+  <footprint name="Elephant" simpletex="effects\footprints\footprint_elephant" width="0.45" height="0.45" prefadetime="4.0" fadetime="2.0">
+  </footprint>
+  <footprint name="LavaCold" simpletex="terrain\lava\lavacolddecal_basecolor" width="1.5" height="1.5" prefadetime="16.0" fadetime="3.0">
+  </footprint>
+  <footprint name="LavaFlow" simpletex="terrain\lava\lavadecal_basecolor" width="1.8" height="1.8" prefadetime="11.0" fadetime="3.0">
+  </footprint>
+</footprints>

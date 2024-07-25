@@ -1,0 +1,104 @@
+<animfile>
+	<definebone>BONE_MAIN</definebone>
+	<definebone>bone_banner</definebone>
+	<attachment>Maya_flag
+		<component>flag
+			<assetreference type="ClothFlag">
+				<flag>
+					<blending>alphatest_nocolor</blending>
+					<texture>objects\flags\mx_mayan</texture>
+					<width>2.00</width>
+					<height>1.33</height>
+				</flag>
+			</assetreference>
+		</component>
+		<anim>Idle
+			<component>flag</component>
+		</anim>
+	</attachment>
+	<attachment>Zapotec_flag
+		<component>flag2
+			<assetreference type="ClothFlag">
+				<flag>
+					<blending>alphatest_nocolor</blending>
+					<texture>objects\flags\zapotec</texture>
+					<width>2.00</width>
+					<height>1.33</height>
+				</flag>
+			</assetreference>
+		</component>
+		<anim>Idle
+			<component>flag2</component>
+		</anim>
+	</attachment>
+	<attachment>Jesuit_flag
+		<component>flag3
+			<assetreference type="ClothFlag">
+				<flag>
+					<blending>alphatest_nocolor</blending>
+					<texture>objects\flags\jesuit</texture>
+					<width>2.00</width>
+					<height>1.33</height>
+				</flag>
+			</assetreference>
+		</component>
+		<anim>Idle
+			<component>flag3</component>
+		</anim>
+	</attachment>
+	<attachment>
+            dock
+            <component>
+                dock
+                <assetreference type="GrannyModel">
+                    <file>uildings\asian_civs\consulate\garden4_Model</file>
+                </assetreference>
+            </component>
+            <anim>Idle<component>dock</component></anim>
+        </attachment>
+	<component>garden
+		<logic type="Tech">
+			<none>
+				<assetreference type="GrannyModel">
+					<file>buildings\asian_civs\consulate\garden4_Model</file>
+				</assetreference>
+			</none>
+			<zpconsulatenatmaya>
+				<assetreference type="GrannyModel">
+					<file>buildings\asian_civs\consulate\garden4_Model</file>
+				</assetreference>
+				<attach a="Maya_flag" frombone="ATTACHPOINT" tobone="bone_banner" syncanims="0"></attach>
+			</zpconsulatenatmaya>
+			<zpconsulatenatzapotec>
+				<assetreference type="GrannyModel">
+					<file>buildings\asian_civs\consulate\garden4_Model</file>
+				</assetreference>
+				<attach a="Zapotec_flag" frombone="ATTACHPOINT" tobone="bone_banner" syncanims="0"></attach>
+			</zpconsulatenatzapotec>
+			<zpconsulatenatjesuit>
+				<assetreference type="GrannyModel">
+					<file>buildings\asian_civs\consulate\garden4_Model</file>
+				</assetreference>
+				<attach a="Jesuit_flag" frombone="ATTACHPOINT" tobone="bone_banner" syncanims="0"></attach>
+			</zpconsulatenatjesuit>
+		</logic>
+	</component>
+	<component>
+		DEAD
+		<assetreference type="GrannyModel">
+			<file>buildings\1death_anim\Deathmodel</file>
+		</assetreference>
+		<attach a="dock" frombone="MASTER" tobone="bone_falling_building" syncanims="0"></attach>
+	</component>
+	<anim>
+		Idle
+		<component>garden</component>
+	</anim>
+	<anim>
+		Death
+		<assetreference type="GrannyAnim">
+			<file>buildings\1death_anim\Deathmodel_Animation</file>
+		</assetreference>
+		<component>DEAD</component>
+	</anim>
+</animfile>

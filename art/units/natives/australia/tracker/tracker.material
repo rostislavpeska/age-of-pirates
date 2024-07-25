@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\natives\australia\tracker\textures\tracker_rank01_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\infantry_ranged\rifleman\textures\rifleman_rank01_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\infantry_ranged\rifleman\textures\rifleman_rank01_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\infantry_ranged\rifleman\textures\rifleman_rank01_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
