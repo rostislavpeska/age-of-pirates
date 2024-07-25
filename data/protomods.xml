@@ -28814,6 +28814,7 @@
     <unittype>LogicalTypeShipsAndBuildings</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractLegendaryShip</unittype>
     <unittype>Ship</unittype>
     <unittype>Transport</unittype>
     <unittype>Unit</unittype>
@@ -28998,6 +28999,7 @@
     <unittype>LogicalTypeShipsAndBuildings</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractLegendaryShip</unittype>
     <unittype>Ship</unittype>
     <unittype>Transport</unittype>
     <unittype>Unit</unittype>
