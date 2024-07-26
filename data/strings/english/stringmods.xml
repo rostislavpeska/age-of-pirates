@@ -1462,6 +1462,26 @@
       <string _locid="301460">Extra durable pirate flagship. Trains sea creatures.</string>
       <string _locid="301461">Ships a secondary Prau Class flagship.</string>
       <string _locid="301462">Taiaha</string>
+      <string _locid="301463">ZP Pirate Galleass</string>
+      <string _locid="301464">Barbarossa's Flagship</string>
+      <string _locid="301465">Mighty Pirate Galley</string>
+      <string _locid="301466">Hayreddin Barbarossa</string>
+      <string _locid="301467">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nSultana \n\nHeavy corsair galley, trains barbary corsairs. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nCorsair Embassy</string>
+      <string _locid="301468">Corsair Emissary</string>
+      <string _locid="301469">Ships Corsair Emissary Wagon allowing you to build a Corsair Emmissary providing you with more techs and shipments.</string>
+      <string _locid="301470">ZP Corsair Embassy</string>
+      <string _locid="301471">Allows you to send Barbary Corsair Shipments</string>
+      <string _locid="301472">Can Construct Venetian Embassy</string>
+      <string _locid="301473">Can Construct Corsair Emissary</string>
+      <string _locid="301474">Corsair Emissary Wagon</string>
+      <string _locid="301475">ZP Corsair Embassy Wagon</string>
+      <string _locid="301476">Privateer Emissary</string>
+      <string _locid="301477">ZP Pirate Embassy</string>
+      <string _locid="301478">ZP Pirate Embassy Wagon</string>
+      <string _locid="301479">Privateer Emissary Wagon</string>
+      <string _locid="301480">Allows you to send Pirate Shipments</string>
+      <string _locid="301481">Can Construct Privateer Emissary</string>
+
 
 
 

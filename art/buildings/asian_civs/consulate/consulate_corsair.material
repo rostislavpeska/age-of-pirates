@@ -1,0 +1,38 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\corsair_consulate_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\european_consulate_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\plantation\med\age2\textures\med_plantation_age2_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

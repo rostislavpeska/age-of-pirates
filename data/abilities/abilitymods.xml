@@ -169,4 +169,8 @@
     <ability>PowerBroadside<rof>60</rof></ability>
     <ability>zpFullSteam<rof>60</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
   </zpspcpiratesteamer>
+  <zpspcpirategalleass>
+    <ability>dePowerRoundelPierceAttack<rof>60</rof><sharedcooldown>true</sharedcooldown><castonself>true</castonself></ability>
+    <ability>dePowerShunt<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>
+  </zpspcpirategalleass>
 </abilitymods>
