@@ -5,7 +5,7 @@
     <parameters>
       <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\garden5_matA_BaseColor">
       </texture>
-      <texture name="Normals" override="buildings\asian_civs\consulate\textures\garden_matA_Normals">
+      <texture name="Normals" override="buildings\asian_civs\consulate\india\age_2\textures\india_consulate_age2_matA_Normals">
       </texture>
       <texture name="Masks" override="buildings\asian_civs\consulate\india\age_2\textures\india_consulate_age2_matA_Masks">
       </texture>
