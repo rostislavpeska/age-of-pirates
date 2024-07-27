@@ -173,4 +173,7 @@
     <ability>dePowerRoundelPierceAttack<rof>60</rof><sharedcooldown>true</sharedcooldown><castonself>true</castonself></ability>
     <ability>dePowerShunt<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>
   </zpspcpirategalleass>
+  <zpcorsairgalley>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpcorsairgalley>
 </abilitymods>
