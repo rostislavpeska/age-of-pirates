@@ -9185,9 +9185,13 @@ bool shouldBuildDock()
    }
 
    // Check if we don't have enough ships queued
-   if ((queuedWarShips + queuedFishingBoats) < dockCount)
+   // Only do this if we already have at least 1 dock
+   if (dockCount >= 1 && gIsPirateMap == false)
    {
-      shouldBuild = false;
+      if ((queuedWarShips + queuedFishingBoats) < dockCount)
+      {
+         shouldBuild = false;
+      }
    }
 
 
