@@ -3,7 +3,7 @@
     <materialdef name="default">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="buildings\native_settlement\pirates\textures\new_house_pirate_02_BaseColor">
+      <texture name="BaseColor" override="buildings\native_settlement\pirates\textures\new_house_pirate_02_plr_BaseColor">
       </texture>
       <texture name="Normals" override="buildings\native_settlement\pirates\textures\new_house_pirate_02_Normals">
       </texture>
