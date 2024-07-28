@@ -6634,7 +6634,7 @@
     <unitaitype>HandCombative</unitaitype>
     <initialunitaistance>Defensive</initialunitaistance>
     <bounty>12.0000</bounty>
-    <buildlimit>16</buildlimit>
+    <buildlimit>17</buildlimit>
     <trainpoints>20.0000</trainpoints>
     <buildbounty>12.0000</buildbounty>
     <cost resourcetype="Gold">110.0000</cost>
@@ -29427,13 +29427,8 @@
     <unittype>AbstractSiegeTrooper</unittype>
     <unittype>Ranged</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
-    <train row="0" page="0" column="0">zpNatVeniceGuard</train>
-    <train row="0" page="0" column="1">zpNatDottore</train>
-    <train row="0" page="0" column="2">zpVenetianBombard</train>
-    <train row="0" page="0" column="3">zpNatMalteseKnight</train>
-    <train row="0" page="0" column="4">zpNatMalteseGuard</train>
-    <train row="0" page="0" column="5">zpNatConquistador</train>
-    <train row="0" page="0" column="6">zpNatConquistadorMusketeer</train>
+    <train row="0" page="0" column="0">zpNatCorsair</train>
+    <train row="0" page="0" column="1">deREVBarbaryMarksman</train>
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>DontRotateObstruction</flag>
@@ -29764,15 +29759,13 @@
     <unittype>HasBountyValue</unittype>
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractFindBarracks</unittype>
-    <train row="0" page="0" column="0">zpNatVeniceGuard</train>
-    <train row="0" page="0" column="1">zpNatDottore</train>
-    <train row="0" page="0" column="3">zpVenetianBombard</train>
-    <tech row="0" page="1" column="1">zpVeniceArmy</tech>
-    <tech row="0" page="1" column="0">zpVeniceCavalry</tech>
-    <tech row="0" page="1" column="2">zpVeniceExplorationFleet</tech>
-    <tech row="0" page="1" column="1">zpVeniceCannonArmy</tech>
-    <tech row="0" page="2" column="1">zpVeniceExpeditionaryFleet</tech>
-    <tech row="0" page="2" column="2">zpVeniceEnforcement</tech>
+    <train row="0" page="0" column="0">zpNatPirate</train>
+    <train row="0" page="0" column="1">zpPirateCetbang</train>
+    <tech row="0" page="1" column="0">zpPirateArmy</tech>
+    <tech row="0" page="1" column="1">zpPirateExpeditionaryForce</tech>
+    <tech row="0" page="1" column="2">zpPirateExplorationFleet</tech>
+    <tech row="0" page="2" column="1">zpPirateExpeditionaryFleet</tech>
+    <tech row="0" page="2" column="1">zpPirateRecruits</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -29923,6 +29916,9 @@
     <unittype>Unit</unittype>
     <unittype>Transport</unittype>
     <unittype>Ship</unittype>
+    <train row="0" page="0" column="0">zpNatPirate</train>
+    <train row="0" page="0" column="1">zpNatCorsair</train>
+    <train row="0" page="0" column="2">deREVBarbaryMarksman</train>
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>DontRotateObstruction</flag>
@@ -30154,6 +30150,107 @@
       <damage>23.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
+    </protoaction>
+  </unit>
+  <unit id="20355" name="zpPirateRiggedShip">
+    <dbid>20355</dbid>
+    <displaynameid>301506</displaynameid>
+    <editornameid>301507</editornameid>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>7.5000</maxvelocity>
+    <maxrunvelocity>9.5000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <turnrate>1.0000</turnrate>
+    <civflagoverride>objects\flags\pirate</civflagoverride>
+    <animfile>units\naval\galleon\galleon_spc.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\units\naval\spc\galleon_spc_icon_32x32.png</icon>
+    <portraiticon>resources\art\units\naval\spc\galleon_spc_icon_portrait.png</portraiticon>
+    <rollovertextid>301508</rollovertextid>
+    <shortrollovertextid>301508</shortrollovertextid>
+    <initialhitpoints>1750.0000</initialhitpoints>
+    <maxhitpoints>1750.0000</maxhitpoints>
+    <los>30.0000</los>
+    <projectileprotounit>Cannonball</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <bounty>100.0000</bounty>
+    <buildbounty>100.0000</buildbounty>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <trainpoints>40.0000</trainpoints>
+    <maxcontained>50</maxcontained>
+    <allowedage>1</allowedage>
+    <buildlimit>1</buildlimit>
+    <armor type="Ranged" value="0.7500">
+    </armor>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractSiegeTrooper</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Transport</unittype>
+    <unittype>Ship</unittype>
+    <train row="0" page="0" column="1">zpNatPirate</train>
+    <train row="0" page="0" column="2">zpPirateCetbang</train>
+    <flag>TieToWaterSurface</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <command page="11" column="0">Abilities</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <tactics>frigate.tactics</tactics>
+    <protoaction>
+      <name>BroadsideAttack</name>
+      <damage>37.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <rof>0.050000</rof>
+      <damagecap>60.000000</damagecap>
+      <damagebonus type="Ship">2.000000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>84.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>20.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>164.000000</damagecap>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
  

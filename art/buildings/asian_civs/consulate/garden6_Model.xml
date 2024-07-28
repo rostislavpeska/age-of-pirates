@@ -1,6 +1,7 @@
 <animfile>
 	<definebone>BONE_MAIN</definebone>
 	<definebone>bone_banner</definebone>
+	<definebone>bone_garden</definebone>
 	<attachment>Venice_flag
 		<component>flag
 			<assetreference type="ClothFlag">
@@ -20,7 +21,7 @@
             <component>
                 dock
                 <assetreference type="GrannyModel">
-                    <file>uildings\asian_civs\consulate\garden5_Model</file>
+                    <file>uildings\asian_civs\consulate\garden7_Model</file>
                 </assetreference>
             </component>
             <anim>Idle<component>dock</component></anim>
@@ -28,7 +29,7 @@
 	<component>
 		garden
 		<assetreference type="GrannyModel">
-			<file>buildings\asian_civs\consulate\garden5_Model</file>
+			<file>buildings\asian_civs\consulate\garden7_Model</file>
 		</assetreference>
 		<attach a="Venice_flag" frombone="ATTACHPOINT" tobone="bone_banner" syncanims="0"></attach>
 	</component>

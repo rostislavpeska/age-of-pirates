@@ -1,5 +1,38 @@
 <animfile>
-    <definebone>bone_falling_building</definebone>
+    <definebone>bone_debris_1A</definebone>
+    <definebone>bone_debris_1B</definebone>
+    <definebone>bone_debris_1C</definebone>
+    <definebone>bone_debris_1D</definebone>
+    <definebone>bone_debris_1E</definebone>
+    <definebone>bone_debris_1F</definebone>
+    <definebone>bone_debris_1G</definebone>
+    <definebone>bone_debris_2A</definebone>
+    <definebone>bone_debris_2B</definebone>
+    <definebone>bone_debris_2C</definebone>
+    <definebone>bone_debris_2D</definebone>
+    <definebone>bone_debris_2E</definebone>
+    <definebone>bone_debris_2F</definebone>
+    <definebone>bone_debris_2G</definebone>
+    <definebone>bone_debris_2H</definebone>
+    <definebone>bone_debris_3A</definebone>
+    <definebone>bone_debris_3B</definebone>
+    <definebone>bone_debris_3C</definebone>
+    <definebone>bone_debris_3D</definebone>
+    <definebone>bone_debris_3E</definebone>
+    <definebone>bone_debris_3F</definebone>
+    <definebone>bone_debris_3G</definebone>
+    <definebone>bone_debris_3H</definebone>
+    <definebone>bone_debris_3I</definebone>
+    <definebone>bone_debris_4A</definebone>
+    <definebone>bone_debris_4B</definebone>
+    <definebone>bone_debris_4C</definebone>
+    <definebone>bone_debris_4D</definebone>
+    <definebone>bone_debris_4E</definebone>
+    <definebone>bone_debris_5A</definebone>
+    <definebone>bone_debris_5B</definebone>
+    <definebone>bone_debris_4F</definebone>
+    <definebone>bone_garden</definebone>
+
     <submodel>
         sub_construction_stage_02
         <component>
@@ -33,46 +66,50 @@
             </component>
             <anim>Idle<component>collapse_smoke</component></anim>
         </attachment>
-        <attachment>
-            dock
-            <component>
-                dock
-                <assetreference type="GrannyModel">
-                    <file>buildings\native_settlement\pirates\new_house_pirate_02_plr_Model</file>
-                </assetreference>
-            </component>
-            <anim>Idle<component>dock</component></anim>
-        </attachment>
         <attachment>garden<include>buildings\asian_civs\consulate\garden6_Model.xml</include></attachment>
         <component>
             plantation
-            <assetreference type="GrannyModel" shape="med_plantation_age2">
-                <file>buildings\native_settlement\pirates\new_house_pirate_02_plr_Model</file>
-            </assetreference>
+            <logic type="LowPoly">
+                <normal>
+                    <logic type="Destruction">
+                        <p1>
+                            <assetreference type="GrannyModel"><file>buildings\asian_civs\consulate\consulate_pirates_damaged</file></assetreference>
+                        </p1>
+                        <p99>
+                             <assetreference type="GrannyModel" shape="med_plantation_age2"><file>buildings\asian_civs\consulate\consulate_pirates</file></assetreference>
+                        </p99>
+                    </logic>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel" shape="med_plantation_age2"><file>buildings\asian_civs\consulate\consulate_pirates</file></assetreference>
+                </lowpoly>
+            </logic>
             <decal>
                 <effecttype>bump</effecttype><texture>buildings\asian_civs\consulate\consulate_ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture><width>10.0</width><height>10.0</height>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>10.0</width>
+                <height>10.0</height>
+                <xoffset>0.00</xoffset>
+                <zoffset>0.50</zoffset>
             </decal>
             <attach a="garden" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
         </component>
         <component>
             med-death
-            <assetreference type="GrannyModel">
-                <file>buildings\1death_anim\Deathmodel</file>
-            </assetreference>
-            <attach a="dock" frombone="ATTACHPOINT" tobone="bone_falling_building" syncanims="0"></attach>
-            <attach a="garden" frombone="ATTACHPOINT" tobone="bone_falling_building" syncanims="0"></attach>
+            <logic type="LowPoly">
+                <normal>
+                    <assetreference type="GrannyModel"><file>buildings\asian_civs\consulate\consulate_pirates_damaged</file></assetreference>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel"><file>buildings\asian_civs\consulate\consulate_pirates</file></assetreference>
+                </lowpoly>
+            </logic>
+            <attach a="garden" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"></attach>
         </component>
         <anim>Idle
             <component>plantation</component>
-            <simskeleton>
-                <model>buildings\gunstore\gunstore_death</model>
-            </simskeleton>
         </anim>
         <anim>Death
-            <assetreference type="GrannyAnim">
-                <file>buildings\1death_anim\Deathmodel_Animation</file>
-            </assetreference>
             <component>med-death</component>
             <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0">
             </attach>
@@ -91,10 +128,12 @@
         </attachment>
         <attachment>garden<include>buildings\asian_civs\consulate\garden_con_Model.xml</include></attachment>
         <component>
-            plantation<assetreference type="GrannyModel"><file>buildings\native_settlement\pirates\new_house_pirate_02_con_Model</file></assetreference>
+            plantation<assetreference type="GrannyModel"><file>buildings\asian_civs\consulate\consulate_pirates_con</file></assetreference>
             <decal>
                 <effecttype>bump</effecttype><texture>buildings\asian_civs\consulate\consulate_ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
                 <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture><width>10.0</width><height>10.0</height>
+                 <xoffset>0.00</xoffset>
+                <zoffset>0.50</zoffset>
             </decal>
             <attach a="con" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
             <attach a="garden" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>

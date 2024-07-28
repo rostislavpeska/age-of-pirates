@@ -1701,6 +1701,7 @@
       <effect type="TechStatus" status="obtainable">zpTortugaFixedGunBld</effect>
       <effect type="TechStatus" status="obtainable">zpTortugaDryDock</effect>
       <effect type="TechStatus" status="obtainable">zpNatCorsairEmbassy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatPirateEmbassy</effect>
     </effects>
   </tech>
   <tech name="zpPirateBuildLimitAddShadow" type="Normal">
@@ -13324,7 +13325,8 @@
       <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
       <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseAlliesClone</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
-      <effect type="TechStatus" status="obtainable">zpConsulatePiratesGrace</effect>
+      <!--<effect type="TechStatus" status="obtainable">zpConsulatePiratesGrace</effect>-->
+      <effect type="TechStatus" status="obtainable">zpConsulatePiratesGraceClone</effect>
       <effect type="TechStatus" status="obtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="obtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
@@ -13680,6 +13682,7 @@
       <effect type="TechStatus" status="obtainable">zpCorsairExplorationFleet</effect>
       <effect type="TechStatus" status="obtainable">zpCorsairBrigade</effect>
       <effect type="TechStatus" status="obtainable">zpCorsairExpeditionaryFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairImproveMarksmen</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffPiratesMedi" type="Normal">
@@ -13879,9 +13882,229 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpCorsairImproveMarksmen" type="Normal">
+    <dbid>40583</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">deREVBarbaryMarksman</target>
+      </effect>
+      <effect type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">deREVBarbaryMarksmant</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatPirateEmbassy" type="Normal">
+    <dbid>40584</dbid>
+    <displaynameid>301498</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\pirate_embassy_tech.png</icon>
+    <rollovertextid>301469</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpPirateEmbassyWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpPirateEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpPirateCetbang</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpPirateExpeditionaryForce</effect>
+      <effect type="TechStatus" status="obtainable">zpPirateExplorationFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpPirateExpeditionaryFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpPirateArmy</effect>
+      <effect type="TechStatus" status="obtainable">zpPirateRecruits</effect>
+    </effects>
+  </tech>
+  <tech name="zpPirateExplorationFleet" type="Normal">
+    <dbid>40583</dbid>
+    <displaynameid>301500</displaynameid>
+    <cost resourcetype="Gold">1500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\pirates_fleet_small.png</icon>
+    <rollovertextid>301501</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data2" amount="1.00" amount2="10.00" subtype="FreeHomeCityUnitShipped" unittype="Privateer" unittype2="zpNatPirate" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpPirateArmy" type="Normal">
+    <dbid>40584</dbid>
+    <displaynameid>301502</displaynameid>
+    <cost resourcetype="Gold">800.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\pirate_pirates.png</icon>
+    <rollovertextid>301503</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="zpNatPirate" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpPirateExpeditionaryForce" type="Normal">
+    <dbid>40585</dbid>
+    <displaynameid>301504</displaynameid>
+    <cost resourcetype="Gold">1400.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\pirates_cannons.png</icon>
+    <rollovertextid>301505</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>YPCheckPopCap</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="zpNatPirate" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="4.00" subtype="FreeHomeCityUnit" unittype="zpPirateCetbang" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpPirateExpeditionaryFleet" type="Normal">
+    <dbid>40582</dbid>
+    <displaynameid>301509</displaynameid>
+    <cost resourcetype="Gold">1900.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\pirates_fleet_big.png</icon>
+    <rollovertextid>301510</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data2" amount="1.00" amount2="6.00" subtype="FreeHomeCityUnitShipped" unittype="zpPirateRiggedShip" unittype2="zpPirateCetbang" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpPirateRecruits" type="Normal">
+    <dbid>40583</dbid>
+    <displaynameid>300098</displaynameid>
+    <cost resourcetype="Gold">200.0000</cost>
+    <cost resourcetype="Food">350.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\home_city\hc_2x_red_seal_ship.png</icon>
+    <rollovertextid>300099</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status ="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="AddTrain" unittype="zpNatPirate" relativity="Absolute">
+        <target type="ProtoUnit">Privateer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="AddTrain" unittype="zpNatPirate" relativity="Absolute">
+        <target type="ProtoUnit">deStartingUnitPrivateer</target>
+      </effect>
+      <effect type="Data" amount="0.5" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatPirate</target>
+      </effect>
+      <effect type="Data" amount="0.8" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatPirate</target>
+      </effect>
+      <effect type="Data" amount="640.00" subtype="Cost" resource="Gold" relativity="Assign">
+        <target type="Tech">zpPirateArmy</target>
+      </effect>
+      <effect type="Data" amount="1280.00" subtype="Cost" resource="Gold" relativity="Assign">
+        <target type="Tech">zpPirateExpeditionaryForce</target>
+      </effect>
+      <effect type="Data" amount="1300.00" subtype="Cost" resource="Gold" relativity="Assign">
+        <target type="Tech">zpPirateExplorationFleet</target>
+      </effect>
+      <effect type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
+        <target type="Tech">zpPirateExpeditionaryForce</target>
+      </effect>
+      <effect type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
+        <target type="Tech">zpPirateArmy</target>
+      </effect>
+      <effect type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
+        <target type="Tech">zpPirateExpeditionaryFleet</target>
+      </effect>
+      <effect type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
+        <target type="Tech">zpPirateExplorationFleet</target>
+      </effect>
+    </effects>
+  </tech>
+  
 
 
+<!--TEST-->
 
+<tech name="zpConsulatePiratesGraceClone" type="Normal">
+    <dbid></dbid>
+    <displaynameid>300020</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\nat_blackflag.png</icon>
+    <rollovertextid>301511</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCBlackPearlProxy</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpTheBlackFlag</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpTheBlackFlag">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="6.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatPirate</target>
+      </effect>
+      <!--<effect type="CommandAdd" tech="zpNatPirateRecruits" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>-->
+      <effect type="CommandAdd" tech="zpNatPirateEmbassy" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  
 
 
 

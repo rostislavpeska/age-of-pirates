@@ -176,4 +176,7 @@
   <zpcorsairgalley>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpcorsairgalley>
+  <zppirateriggedship>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zppirateriggedship>
 </abilitymods>
