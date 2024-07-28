@@ -782,6 +782,7 @@
     <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
+    <civflagoverride>objects\flags\pirate</civflagoverride>
     <animfile>buildings\native_settlement\native house pirate.xml</animfile>
     <icon>resources\art\units\spc\pirates\pirate_ranged_icon.png</icon>
     <portraiticon>resources\art\units\spc\pirates\pirate_ranged_portrait.png</portraiticon>
@@ -6665,6 +6666,9 @@
     <unittype>CountsTowardMilitaryScore</unittype>
     <unittype>AbstractHandInfantry</unittype>
     <unittype>ConvertsHerds</unittype>
+    <sharedselectionunittypes>
+      <unittype>zpNatMercCorsair</unittype>
+    </sharedselectionunittypes>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -29611,15 +29615,13 @@
     <unittype>HasBountyValue</unittype>
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractFindBarracks</unittype>
-    <train row="0" page="0" column="0">zpNatVeniceGuard</train>
-    <train row="0" page="0" column="1">zpNatDottore</train>
-    <train row="0" page="0" column="3">zpVenetianBombard</train>
-    <tech row="0" page="1" column="1">zpVeniceArmy</tech>
-    <tech row="0" page="1" column="0">zpVeniceCavalry</tech>
-    <tech row="0" page="1" column="2">zpVeniceExplorationFleet</tech>
-    <tech row="0" page="1" column="1">zpVeniceCannonArmy</tech>
-    <tech row="0" page="2" column="1">zpVeniceExpeditionaryFleet</tech>
-    <tech row="0" page="2" column="2">zpVeniceEnforcement</tech>
+    <train row="0" page="0" column="0">zpNatCorsair</train>
+    <train row="0" page="0" column="1">deREVBarbaryMarksman</train>
+    <tech row="0" page="1" column="0">zpCorsairArmy</tech>
+    <tech row="0" page="1" column="1">zpCorsairMarksmen</tech>
+    <tech row="0" page="1" column="2">zpCorsairExplorationFleet</tech>
+    <tech row="0" page="2" column="1">zpCorsairBrigade</tech>
+    <tech row="0" page="2" column="1">zpCorsairExpeditionaryFleet</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -29876,7 +29878,7 @@
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\units\naval\galley\galley_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\naval\galley\corsair_galley_portrait.png</portraiticon>
+    <portraiticon>resources\art\units\naval\spc\corsair_galley_portrait.png</portraiticon>
     <rollovertextid>27711</rollovertextid>
     <shortrollovertextid>27710</shortrollovertextid>
     <initialhitpoints>700.0000</initialhitpoints>
@@ -29885,7 +29887,7 @@
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <trainpoints>40.0000</trainpoints>
-    <buildlimit>3</buildlimit>
+    <buildlimit>1</buildlimit>
     <bounty>40.0000</bounty>
     <buildbounty>40.0000</buildbounty>
     <cost resourcetype="Wood">300.0000</cost>
@@ -29969,6 +29971,189 @@
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
       <damagearea>1.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+  </unit>
+  <unit id="20353" name="zpPirateCetbang">
+    <dbid>20353</dbid>
+    <displaynameid>301485</displaynameid>
+    <editornameid>301486</editornameid>
+    <populationcount>2</populationcount>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>3.5000</maxvelocity>
+    <maxrunvelocity>5.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>3.0000</turnrate>
+    <animfile>units\revolution\cetbang\pirate_cetbang.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\revolution\cetbang_icon.png</icon>
+    <portraiticon>resources\art\units\revolution\cetbang_portrait.png</portraiticon>
+    <rollovertextid>80803</rollovertextid>
+    <shortrollovertextid>25635</shortrollovertextid>
+    <initialhitpoints>150.0000</initialhitpoints>
+    <maxhitpoints>150.0000</maxhitpoints>
+    <los>26.0000</los>
+    <projectileprotounit>CannonballSmall</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <bounty>30.0000</bounty>
+    <buildbounty>30.0000</buildbounty>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <allowedage>2</allowedage>
+    <armor type="Ranged" value="0.7500">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractArtillery</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <flag>RotateInPlace</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <command page="9" column="0">Tactic4</command>
+    <command page="9" column="1">Tactic3</command>
+    <tactics>leathercannon.tactics</tactics>
+    <protoaction>
+      <name>CannonAttack</name>
+      <damage>55.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>26.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="Ship">6.000000</damagebonus>
+      <damagebonus type="AbstractInfantry">3.000000</damagebonus>
+      <damagebonus type="xpArrowKnight">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damagecap>110.000000</damagecap>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+  </unit>
+  <unit id="20354" name="zpNatMercCorsair">
+    <dbid>20354</dbid>
+    <displaynameid>300323</displaynameid>
+    <editornameid>301497</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>6.0000</maxvelocity>
+    <maxrunvelocity>8.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <wanderdistance>3</wanderdistance>
+    <animfile>units\spc\barbary_corsair\zp_native_corsair.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\mercenaries\barbary_corsair\barbary_corsair_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\mercenaries\barbary_corsair\barbary_corsair_portrait.png</portraiticon>
+    <rollovertextid>35252</rollovertextid>
+    <shortrollovertextid>35252</shortrollovertextid>
+    <initialhitpoints>110.0000</initialhitpoints>
+    <maxhitpoints>110.0000</maxhitpoints>
+    <los>15.0000</los>
+    <unitaitype>HandCombative</unitaitype>
+    <initialunitaistance>Defensive</initialunitaistance>
+    <bounty>12.0000</bounty>
+    <trainpoints>20.0000</trainpoints>
+    <buildbounty>12.0000</buildbounty>
+    <cost resourcetype="Gold">110.0000</cost>
+    <scorevalue>10.0000</scorevalue>
+    <allowedage>1</allowedage>
+    <armor type="Hand" value="0.1000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractHandInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>MercType1</unittype>
+    <sharedselectionunittypes>
+      <unittype>zpNatCorsair</unittype>
+    </sharedselectionunittypes>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="2">Delete</command>
+    <tactics>swordsman.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>9.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CoverBuildingAttack</name>
+      <damage>5.000000</damage>
+      <damagetype>Siege</damagetype>
+    </protoaction>
+    <protoaction>
+      <name>CoverHandAttack</name>
+      <damage>12.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>23.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>23.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
     </protoaction>
   </unit>
  

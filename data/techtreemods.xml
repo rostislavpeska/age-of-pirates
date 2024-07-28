@@ -957,6 +957,15 @@
 			<effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
 				<target type ="ProtoUnit">SaloonPirate</target></effect>
 			<effect type ="SetName" proto ="SaloonPirate" culture ="none" newname ="300234"></effect>
+
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercCorsair</target>
+      </effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercCorsair</target>
+      </effect>
+      <effect type ="SetName" proto ="zpNatMercCorsair" culture ="none" newname ="300347"></effect>
+      <effect type="SetName" proto="zpNatMercCorsair" culture="none" newname="300348" reqtech="ImpLegendaryNativesShadow"></effect>
 		</effects>
 	</tech>
   <tech name ="zpNatDisciplinedPirate" type ="Normal">
@@ -996,6 +1005,14 @@
 			<effect type ="Data" amount ="1.10" subtype ="Hitpoints" relativity ="BasePercent">
 				<target type ="ProtoUnit">SaloonPirate</target></effect>
 			<effect type ="SetName" proto ="SaloonPirate" culture ="none" newname ="300233"></effect>
+      <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercCorsair</target>
+      </effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercCorsair</target>
+      </effect>
+      <effect type ="SetName" proto ="zpNatMercCorsair" culture ="none" newname ="300346"></effect>
+      <effect type="SetName" proto="zpNatMercCorsair" culture="none" newname="300348" reqtech="ImpLegendaryNativesShadow"></effect>
 		</effects>
 	</tech>
   <tech name ="zpTheBlackFlag" type ="Normal">
@@ -4775,6 +4792,8 @@
       <effect mergemode="add" type="SetName" proto="zpNatMercSettlementMilitia" culture="none" newname="301388">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatNomadSettlementMilitia" culture="none" newname="301395">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercCorsair" culture="none" newname="300348">
       </effect>
     </effects>
   </tech>
@@ -13615,6 +13634,20 @@
       <effect type="CommandRemove" tech="zpTheBlackFlag">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCorsair</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Assign">
+        <target type="ProtoUnit">zpNatPirate</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatPirate">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatPirate">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNatCorsair" fromprotoid="zpNatPirate">
+      </effect>
       <effect type="CommandAdd" tech="zpNatCorsairEmbassy" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -13639,6 +13672,14 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpCorsairEmbassy</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deREVBarbaryMarksman</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairArmy</effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairMarksmen</effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairExplorationFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairBrigade</effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairExpeditionaryFleet</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffPiratesMedi" type="Normal">
@@ -13718,6 +13759,121 @@
         <target type="ProtoUnit">zpSPCQueenAnne</target>
       </effect>
       <effect type="Data" action="SpawnSultana" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpPirateWaterSpawnFlag2">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCorsairArmy" type="Normal">
+    <dbid>40580</dbid>
+    <displaynameid>301487</displaynameid>
+    <cost resourcetype="Gold">800.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\corsair_corsairs.png</icon>
+    <rollovertextid>301488</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="zpNatCorsair" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCorsairMarksmen" type="Normal">
+    <dbid>40581</dbid>
+    <displaynameid>301489</displaynameid>
+    <cost resourcetype="Gold">800.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\corsair_marksmen.png</icon>
+    <rollovertextid>301490</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>YPCheckPopCap</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="deREVBarbaryMarksman" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCorsairBrigade" type="Normal">
+    <dbid>40582</dbid>
+    <displaynameid>301491</displaynameid>
+    <cost resourcetype="Gold">1500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\corsair_army_big.png</icon>
+    <rollovertextid>301492</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>YPCheckPopCap</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="zpNatMercCorsair" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="deREVBarbaryMarksman" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="ypConsulateGreatBombard" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCorsairExplorationFleet" type="Normal">
+    <dbid>40583</dbid>
+    <displaynameid>301493</displaynameid>
+    <cost resourcetype="Gold">350.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\corsair_fleet_small.png</icon>
+    <rollovertextid>301494</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpCorsairGalley" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCorsairExpeditionaryFleet" type="Normal">
+    <dbid>40582</dbid>
+    <displaynameid>301495</displaynameid>
+    <cost resourcetype="Gold">1200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\corsair_fleet_big.png</icon>
+    <rollovertextid>301496</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data2" amount="1.00" amount2="1.00" subtype="FreeHomeCityUnitShipped" unittype="zpCorsairGalley" unittype2="ypConsulateGreatBombard" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
