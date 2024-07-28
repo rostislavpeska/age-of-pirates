@@ -1162,8 +1162,9 @@
     <unittype>AbstractWarShip</unittype>
     <unittype>AbstractLegendaryShip</unittype>
     <flag>UseSharedBuildLimit</flag>
-    <train row="0" page="0" column="1">zpNatPirate</train>
-    <train row="0" page="0" column="1">zpNatWokouPirate</train>
+    <train row="0" page="0" column="0">zpNatPirate</train>
+    <train row="0" page="0" column="1">zpPirateCetbang</train>
+    <train row="0" page="0" column="2">zpNatWokouPirate</train>
     <train row="0" page="0" column="3">zpNatWokouMonk</train>
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
@@ -29983,8 +29984,8 @@
     <turnrate>3.0000</turnrate>
     <animfile>units\revolution\cetbang\pirate_cetbang.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\revolution\cetbang_icon.png</icon>
-    <portraiticon>resources\art\units\revolution\cetbang_portrait.png</portraiticon>
+    <icon>resources\art\units\natives\pirate_cetbang_icon.png</icon>
+    <portraiticon>resources\art\units\natives\pirate_cetbang_portrait.png</portraiticon>
     <rollovertextid>80803</rollovertextid>
     <shortrollovertextid>25635</shortrollovertextid>
     <initialhitpoints>150.0000</initialhitpoints>

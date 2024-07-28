@@ -3,13 +3,11 @@
     <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\pirate_consulate_mata_BaseColor">
+      <texture name="BaseColor" override="textures\construction\east_plantation_age2_con\east_plantation_age2_con_basecolor">
       </texture>
-      <texture name="Normals" override="buildings\plantation\east\age2\textures\east_plantation_age2_mata_Normals">
+      <texture name="Normals" override="textures\construction\east_plantation_age2_con\east_plantation_age2_con_normals">
       </texture>
-      <texture name="Masks" override="buildings\plantation\east\age2\textures\east_plantation_age2_mata_Masks">
-      </texture>
-      <texture name="Details" override="buildings\asian_civs\consulate\textures\pirate_consulate_mata_Details">
+      <texture name="Masks" override="textures\construction\east_plantation_age2_con\east_plantation_age2_con_masks">
       </texture>
     </parameters>
   </submaterial>

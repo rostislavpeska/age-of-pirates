@@ -13507,6 +13507,7 @@
       <effect type="CommandAdd" tech="zpWokouSecondaryFlagship" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpWokouImproveCetbangs</effect>
     </effects>
   </tech>
   <tech name="zpTrainPrau1" type="Normal">
@@ -13891,10 +13892,10 @@
       <techstatus status="Active">Imperialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">deREVBarbaryMarksman</target>
       </effect>
-      <effect type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">deREVBarbaryMarksmant</target>
       </effect>
     </effects>
@@ -13926,6 +13927,7 @@
       <effect type="TechStatus" status="obtainable">zpPirateExpeditionaryFleet</effect>
       <effect type="TechStatus" status="obtainable">zpPirateArmy</effect>
       <effect type="TechStatus" status="obtainable">zpPirateRecruits</effect>
+      <effect type="TechStatus" status="obtainable">zpPiratesImproveCetbangs</effect>
     </effects>
   </tech>
   <tech name="zpPirateExplorationFleet" type="Normal">
@@ -13999,7 +14001,7 @@
     </effects>
   </tech>
   <tech name="zpPirateExpeditionaryFleet" type="Normal">
-    <dbid>40582</dbid>
+    <dbid>40586</dbid>
     <displaynameid>301509</displaynameid>
     <cost resourcetype="Gold">1900.0000</cost>
     <researchpoints>30.0000</researchpoints>
@@ -14019,7 +14021,7 @@
     </effects>
   </tech>
   <tech name="zpPirateRecruits" type="Normal">
-    <dbid>40583</dbid>
+    <dbid>40587</dbid>
     <displaynameid>300098</displaynameid>
     <cost resourcetype="Gold">200.0000</cost>
     <cost resourcetype="Food">350.0000</cost>
@@ -14064,6 +14066,40 @@
       </effect>
       <effect type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
         <target type="Tech">zpPirateExplorationFleet</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpPiratesImproveCetbangs" type="Normal">
+    <dbid>40588</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpPirateCetbang</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpPirateCetbang</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpWokouImproveCetbangs" type="Normal">
+    <dbid>40589</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">deREVCetbang</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">deREVCetbang</target>
       </effect>
     </effects>
   </tech>
