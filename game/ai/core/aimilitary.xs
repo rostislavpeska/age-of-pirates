@@ -2042,6 +2042,10 @@ minInterval 30
       {
          gCanoeUnit = cUnitTypeypMarathanCatamaran;
       }
+      else if (kbProtoUnitAvailable(cUnitTypedeMercBattleship) == true)
+      {
+         gCanoeUnit = cUnitTypedeMercBattleship;
+      }
 
       // AssertiveWall: Create a native canoe maintain plan once we know what canoe unit we are using
       if (gCanoeUnit >= 0)

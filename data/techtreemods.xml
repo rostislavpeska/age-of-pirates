@@ -164,6 +164,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -194,10 +195,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
@@ -242,10 +245,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
@@ -290,10 +295,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
@@ -950,6 +957,15 @@
 			<effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
 				<target type ="ProtoUnit">SaloonPirate</target></effect>
 			<effect type ="SetName" proto ="SaloonPirate" culture ="none" newname ="300234"></effect>
+
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercCorsair</target>
+      </effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercCorsair</target>
+      </effect>
+      <effect type ="SetName" proto ="zpNatMercCorsair" culture ="none" newname ="300347"></effect>
+      <effect type="SetName" proto="zpNatMercCorsair" culture="none" newname="300348" reqtech="ImpLegendaryNativesShadow"></effect>
 		</effects>
 	</tech>
   <tech name ="zpNatDisciplinedPirate" type ="Normal">
@@ -989,6 +1005,14 @@
 			<effect type ="Data" amount ="1.10" subtype ="Hitpoints" relativity ="BasePercent">
 				<target type ="ProtoUnit">SaloonPirate</target></effect>
 			<effect type ="SetName" proto ="SaloonPirate" culture ="none" newname ="300233"></effect>
+      <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercCorsair</target>
+      </effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercCorsair</target>
+      </effect>
+      <effect type ="SetName" proto ="zpNatMercCorsair" culture ="none" newname ="300346"></effect>
+      <effect type="SetName" proto="zpNatMercCorsair" culture="none" newname="300348" reqtech="ImpLegendaryNativesShadow"></effect>
 		</effects>
 	</tech>
   <tech name ="zpTheBlackFlag" type ="Normal">
@@ -1676,6 +1700,9 @@
       <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyPirates</effect>
       <effect type="TechStatus" status="obtainable">zpTortugaFixedGunBld</effect>
       <effect type="TechStatus" status="obtainable">zpTortugaDryDock</effect>
+      <effect type="TechStatus" status="obtainable">zpNatCorsairEmbassy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatPirateEmbassy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatCorsairRevolt</effect>
     </effects>
   </tech>
   <tech name="zpPirateBuildLimitAddShadow" type="Normal">
@@ -2351,6 +2378,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
@@ -2367,6 +2395,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
@@ -2519,7 +2548,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <prereqs>
-      <techstatus status="Active">Fortressize</techstatus>
+      <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpJerusalemWagon" relativity="Absolute">
@@ -2732,6 +2761,7 @@
       <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyMaltese</effect>
       <effect type="TechStatus" status="obtainable">YPNativeJunk</effect>
       <effect type="TechStatus" status="obtainable">zpWokouRandomShip</effect>
+      <effect type="TechStatus" status="obtainable">zpWokouSecondaryFlagship</effect>
     </effects>
   </tech>
   <tech name="zpTrainWokouJunk1" type="Normal">
@@ -3140,12 +3170,14 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
@@ -3848,10 +3880,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
     </effects>
@@ -4761,6 +4795,8 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatNomadSettlementMilitia" culture="none" newname="301395">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercCorsair" culture="none" newname="300348">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -5636,6 +5672,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
@@ -5643,6 +5680,7 @@
       <effect type="TechStatus" status="obtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
@@ -6238,6 +6276,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
@@ -6248,6 +6287,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
@@ -6419,6 +6459,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
@@ -6431,6 +6472,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
@@ -6750,6 +6792,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
@@ -6767,6 +6810,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
@@ -8823,6 +8867,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
@@ -8832,6 +8877,7 @@
       <effect type="TechStatus" status="obtainable">zpConsulateVeniceContarini</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
@@ -10217,6 +10263,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
@@ -10231,6 +10278,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -10507,6 +10555,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
@@ -10521,6 +10570,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -10927,6 +10977,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
@@ -10943,6 +10994,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
@@ -11515,6 +11567,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
@@ -11531,6 +11584,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
@@ -11879,10 +11933,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
@@ -12512,7 +12568,7 @@
   </tech>
   <tech name="zpMaoriTaiaha" type="Normal">
     <dbid>40537</dbid>
-    <displaynameid>301257</displaynameid>
+    <displaynameid>301462</displaynameid>
     <cost resourcetype="Food">100.0000</cost>
     <cost resourcetype="Gold">100.0000</cost>
     <researchpoints>5.0000</researchpoints>
@@ -13210,7 +13266,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <prereqs>
-      <techstatus status="Active">Fortressize</techstatus>
+      <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpJerusalemWagon" relativity="Absolute">
@@ -13270,10 +13326,12 @@
       <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
       <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseAlliesClone</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
-      <effect type="TechStatus" status="obtainable">zpConsulatePiratesGrace</effect>
+      <!--<effect type="TechStatus" status="obtainable">zpConsulatePiratesGrace</effect>-->
+      <effect type="TechStatus" status="obtainable">zpConsulatePiratesGraceClone</effect>
       <effect type="TechStatus" status="obtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="obtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
@@ -13288,6 +13346,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -13300,7 +13359,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
 
-      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPirates</effect>
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPiratesAustralia</effect>
     </effects>
   </tech>
   <tech name="zpTrainFlyingDutchman1" type="Normal">
@@ -13357,7 +13416,7 @@
       <effect type="CommandRemove" tech="zpTheBlackFlag">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpTortugaDryDock" page="2" column="10">
+      <effect type="CommandAdd" tech="zpTortugaDryDock" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="Data" action="SpawnGalley" amount="0.00" subtype="ActionEnable" relativity="Absolute">
@@ -13379,6 +13438,9 @@
     <rollovertextid>300769</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpDryDockWagon" relativity="Absolute">
         <target type="Player">
@@ -13419,9 +13481,716 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpConsulateWokouSiRigam" type="Normal">
+    <dbid>40570</dbid>
+    <displaynameid>301453</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\wokou_small.png</icon>
+    <rollovertextid>301454</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deREVCetbang</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCPrauProxy</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpBlackmailing</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpBlackmailing">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpWokouSecondaryFlagship" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpWokouImproveCetbangs</effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainPrau1" type="Normal">
+    <dbid>40571</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpWokouFuchuan</target>
+      </effect>
+      <effect type="Data" action="SpawnPrau" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpWokouWaterSpawnFlag1">
+        <target type="Player">
+        </target>
+      </effect> 
+    </effects>
+  </tech>
+  <tech name="zpTrainPrau2" type="Normal">
+    <dbid>40572</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpWokouFuchuan</target>
+      </effect>
+      <effect type="Data" action="SpawnPrau" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpWokouWaterSpawnFlag2">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTurnConsulateOffWokouSouth" type="Normal">
+    <dbid>40573</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseAlliesClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokouSouth</effect>
+    </effects>
+  </tech>
+  <tech name="zpWokouSecondaryFlagship" type="Normal">
+    <dbid>40574</dbid>
+    <displaynameid>301456</displaynameid>
+    <cost resourcetype="Gold">800.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\zp_indonesian_fleet.png</icon>
+    <rollovertextid>301461</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpWokouFuchuan</target>
+      </effect>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCPrauB" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulatePiratesBarbarossa" type="Normal">
+    <dbid>40575</dbid>
+    <displaynameid>301466</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\nat_blackflag.png</icon>
+    <rollovertextid>301467</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCPirateGalleassProxy</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpTheBlackFlag</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpTheBlackFlag">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCorsair</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Assign">
+        <target type="ProtoUnit">zpNatPirate</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatPirate">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatPirate">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNatCorsair" fromprotoid="zpNatPirate">
+      </effect>
+      <effect type="CommandAdd" tech="zpNatCorsairEmbassy" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatCorsairEmbassy" type="Normal">
+    <dbid>40576</dbid>
+    <displaynameid>301468</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\corsair_embassy_tech.png</icon>
+    <rollovertextid>301469</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpCorsairEmbassyWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpCorsairEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deREVBarbaryMarksman</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairArmy</effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairMarksmen</effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairExplorationFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairBrigade</effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairExpeditionaryFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairImproveMarksmen</effect>
+    </effects>
+  </tech>
+  <tech name="zpTurnConsulateOffPiratesMedi" type="Normal">
+    <dbid>40577</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseAlliesClone</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulatePiratesBlackbeard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
+      <!--<effect type="TechStatus" status="obtainable">zpConsulatePiratesBlackCaesar</effect>-->
+      <effect type="TechStatus" status="obtainable">zpConsulatePiratesBlackCaesarClone</effect>
+
+      <effect type="TechStatus" status="obtainable">zpConsulatePiratesBarbarossa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPiratesMedi</effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainSultana1" type="Normal">
+    <dbid>40578</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCQueenAnne</target>
+      </effect>
+      <effect type="Data" action="SpawnSultana" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpPirateWaterSpawnFlag1">
+        <target type="Player">
+        </target>
+      </effect> 
+    </effects>
+  </tech>
+  <tech name="zpTrainSultana2" type="Normal">
+    <dbid>40579</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCQueenAnne</target>
+      </effect>
+      <effect type="Data" action="SpawnSultana" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpPirateWaterSpawnFlag2">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCorsairArmy" type="Normal">
+    <dbid>40580</dbid>
+    <displaynameid>301487</displaynameid>
+    <cost resourcetype="Gold">800.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\corsair_corsairs.png</icon>
+    <rollovertextid>301488</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="zpNatCorsair" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCorsairMarksmen" type="Normal">
+    <dbid>40581</dbid>
+    <displaynameid>301489</displaynameid>
+    <cost resourcetype="Gold">800.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\corsair_marksmen.png</icon>
+    <rollovertextid>301490</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>YPCheckPopCap</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="deREVBarbaryMarksman" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCorsairBrigade" type="Normal">
+    <dbid>40582</dbid>
+    <displaynameid>301491</displaynameid>
+    <cost resourcetype="Gold">1500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\corsair_army_big.png</icon>
+    <rollovertextid>301492</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>YPCheckPopCap</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="zpNatMercCorsair" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="deREVBarbaryMarksman" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="ypConsulateGreatBombard" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCorsairExplorationFleet" type="Normal">
+    <dbid>40583</dbid>
+    <displaynameid>301493</displaynameid>
+    <cost resourcetype="Gold">350.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\corsair_fleet_small.png</icon>
+    <rollovertextid>301494</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpCorsairGalley" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCorsairExpeditionaryFleet" type="Normal">
+    <dbid>40582</dbid>
+    <displaynameid>301495</displaynameid>
+    <cost resourcetype="Gold">1200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\corsair_fleet_big.png</icon>
+    <rollovertextid>301496</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data2" amount="1.00" amount2="1.00" subtype="FreeHomeCityUnitShipped" unittype="zpCorsairGalley" unittype2="ypConsulateGreatBombard" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCorsairImproveMarksmen" type="Normal">
+    <dbid>40583</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">deREVBarbaryMarksman</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">deREVBarbaryMarksmant</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatPirateEmbassy" type="Normal">
+    <dbid>40584</dbid>
+    <displaynameid>301498</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\pirate_embassy_tech.png</icon>
+    <rollovertextid>301469</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpPirateEmbassyWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpPirateEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpPirateCetbang</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpPirateExpeditionaryForce</effect>
+      <effect type="TechStatus" status="obtainable">zpPirateExplorationFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpPirateExpeditionaryFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpPirateArmy</effect>
+      <effect type="TechStatus" status="obtainable">zpPirateRecruits</effect>
+      <effect type="TechStatus" status="obtainable">zpPiratesImproveCetbangs</effect>
+    </effects>
+  </tech>
+  <tech name="zpPirateExplorationFleet" type="Normal">
+    <dbid>40583</dbid>
+    <displaynameid>301500</displaynameid>
+    <cost resourcetype="Gold">1500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\pirates_fleet_small.png</icon>
+    <rollovertextid>301501</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data2" amount="1.00" amount2="10.00" subtype="FreeHomeCityUnitShipped" unittype="Privateer" unittype2="zpNatPirate" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpPirateArmy" type="Normal">
+    <dbid>40584</dbid>
+    <displaynameid>301502</displaynameid>
+    <cost resourcetype="Gold">800.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\pirate_pirates.png</icon>
+    <rollovertextid>301503</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="zpNatPirate" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpPirateExpeditionaryForce" type="Normal">
+    <dbid>40585</dbid>
+    <displaynameid>301504</displaynameid>
+    <cost resourcetype="Gold">1400.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\pirates_cannons.png</icon>
+    <rollovertextid>301505</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>YPCheckPopCap</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="zpNatPirate" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="4.00" subtype="FreeHomeCityUnit" unittype="zpPirateCetbang" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpPirateExpeditionaryFleet" type="Normal">
+    <dbid>40586</dbid>
+    <displaynameid>301509</displaynameid>
+    <cost resourcetype="Gold">1900.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\pirates_fleet_big.png</icon>
+    <rollovertextid>301510</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data2" amount="1.00" amount2="6.00" subtype="FreeHomeCityUnitShipped" unittype="zpPirateRiggedShip" unittype2="zpPirateCetbang" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpPirateRecruits" type="Normal">
+    <dbid>40587</dbid>
+    <displaynameid>300098</displaynameid>
+    <cost resourcetype="Gold">200.0000</cost>
+    <cost resourcetype="Food">350.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\home_city\hc_2x_red_seal_ship.png</icon>
+    <rollovertextid>300099</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status ="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="AddTrain" unittype="zpNatPirate" relativity="Absolute">
+        <target type="ProtoUnit">Privateer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="AddTrain" unittype="zpNatPirate" relativity="Absolute">
+        <target type="ProtoUnit">deStartingUnitPrivateer</target>
+      </effect>
+      <effect type="Data" amount="0.5" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatPirate</target>
+      </effect>
+      <effect type="Data" amount="0.8" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatPirate</target>
+      </effect>
+      <effect type="Data" amount="640.00" subtype="Cost" resource="Gold" relativity="Assign">
+        <target type="Tech">zpPirateArmy</target>
+      </effect>
+      <effect type="Data" amount="1280.00" subtype="Cost" resource="Gold" relativity="Assign">
+        <target type="Tech">zpPirateExpeditionaryForce</target>
+      </effect>
+      <effect type="Data" amount="1300.00" subtype="Cost" resource="Gold" relativity="Assign">
+        <target type="Tech">zpPirateExplorationFleet</target>
+      </effect>
+      <effect type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
+        <target type="Tech">zpPirateExpeditionaryForce</target>
+      </effect>
+      <effect type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
+        <target type="Tech">zpPirateArmy</target>
+      </effect>
+      <effect type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
+        <target type="Tech">zpPirateExpeditionaryFleet</target>
+      </effect>
+      <effect type="Data" amount="0.5" subtype="ResearchPoints" relativity="Percent">
+        <target type="Tech">zpPirateExplorationFleet</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpPiratesImproveCetbangs" type="Normal">
+    <dbid>40588</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpPirateCetbang</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpPirateCetbang</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpWokouImproveCetbangs" type="Normal">
+    <dbid>40589</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">deREVCetbang</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">deREVCetbang</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatCorsairRevolt" type="Normal">
+    <dbid>40590</dbid>
+    <displaynameid>300100</displaynameid>
+    <cost resourcetype="Food">400.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\barbary_corsairs.png</icon>
+    <rollovertextid>301513</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCorsair</target>
+      </effect>
+      <effect type="Data2" amount="2.00" amount2="8.00" subtype="FreeHomeCityUnitShipped" unittype="zpCorsairGalley" unittype2="zpNatMercCorsair" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="-6.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCorsair</target>
+      </effect>
+    </effects>
+  </tech>
+  
 
 
+<!--TEST-->
 
+<tech name="zpConsulatePiratesGraceClone" type="Normal">
+    <dbid></dbid>
+    <displaynameid>300020</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\nat_blackflag.png</icon>
+    <rollovertextid>301511</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCBlackPearlProxy</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpTheBlackFlag</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpTheBlackFlag">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="6.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatPirate</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatPirateEmbassy" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulatePiratesBlackCaesarClone" type="Normal">
+    <dbid></dbid>
+    <displaynameid>300051</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\nat_blackflag.png</icon>
+    <rollovertextid>301512</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCNeptuneGalleyProxy</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpTheBlackFlag</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpTheBlackFlag">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatCorsairRevolt" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  
 
 
 
