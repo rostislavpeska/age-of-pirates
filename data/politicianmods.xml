@@ -101,4 +101,6 @@
   <!--TEST-->
   <zpconsulatepiratesgraceclone portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/grace.png">
   </zpconsulatepiratesgraceclone>
+  <zpconsulatepiratesblackcaesarclone portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/blackcaesar.png">
+  </zpconsulatepiratesblackcaesarclone>
 </politicianmods>

@@ -406,8 +406,8 @@
     <train row="0" page="0" column="1">zpNatGatlingCamel</train>
     <train row="0" page="0" column="6">zpSettlerSufi</train>
     <train row="0" page="0" column="6">zpSettlerSufiB</train>
-    <train row="0" page="0" column="1">zpNatCorsair</train>
-    <train row="0" page="0" column="2">zpNatMarksman</train>
+    <train row="0" page="0" column="2">zpNatCorsair</train>
+    <train row="0" page="0" column="3">zpNatMarksman</train>
     <train row="0" page="0" column="2">zpNatSettlerJewish</train>
     <train row="0" page="0" column="1">zpNatSettlementMilitia</train>
     <train row="0" page="0" column="1">zpNatHoopThrower</train>
@@ -1287,8 +1287,10 @@
     <unittype>Ranged</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
     <unittype>AbstractLegendaryShip</unittype>
+    <!--TO BE REMOVED-->
     <train row="0" page="0" column="1">zpNatCorsair</train>
     <train row="0" page="0" column="2">zpNatMarksman</train>
+    <!--TO BE REMOVED-->
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>DontRotateObstruction</flag>
@@ -29881,7 +29883,7 @@
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <trainpoints>40.0000</trainpoints>
-    <buildlimit>1</buildlimit>
+    <buildlimit>2</buildlimit>
     <bounty>40.0000</bounty>
     <buildbounty>40.0000</buildbounty>
     <cost resourcetype="Wood">300.0000</cost>

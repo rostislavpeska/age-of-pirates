@@ -1493,7 +1493,7 @@
       <string _locid="301491">Barbary Assalut Brigade</string>
       <string _locid="301492">Ships corsair army with a mighty Great Bombard</string>
       <string _locid="301493">Barbary Exploration Fleet</string>
-      <string _locid="301494">Ships Corsair galley. (Can be sent in always when bellow build limit: 1)</string>
+      <string _locid="301494">Ships Corsair galley. (Can be sent in always when bellow build limit: 2)</string>
       <string _locid="301495">Barbary Assalut Fleet</string>
       <string _locid="301496">Ships a Corsair Galley with a Great Bombard on board.</string>
       <string _locid="301497">ZP Nat Merc Corsair</string>
@@ -1511,6 +1511,8 @@
       <string _locid="301509">Privateer Expeditionary Fleet</string>
       <string _locid="301510">Sends a Rigged Ship full with Carronades.</string>
       <string _locid="301511">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBlack Pearl \n\nVery fast, trains buccaneers, increases their build limit. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nPrivateer Emissary</string>
+      <string _locid="301512">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nNeptune's Galley \n\nPowerful oriental ship with a long-range attack. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nBarbary Revolution</string>
+      <string _locid="301513">Ships Corsair Galleys full of Corsairs, unlocks native corsair training.</string>
 
 
       <!-- ======================================== -->

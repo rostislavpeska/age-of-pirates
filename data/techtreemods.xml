@@ -1702,6 +1702,7 @@
       <effect type="TechStatus" status="obtainable">zpTortugaDryDock</effect>
       <effect type="TechStatus" status="obtainable">zpNatCorsairEmbassy</effect>
       <effect type="TechStatus" status="obtainable">zpNatPirateEmbassy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatCorsairRevolt</effect>
     </effects>
   </tech>
   <tech name="zpPirateBuildLimitAddShadow" type="Normal">
@@ -13706,7 +13707,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
-      <effect type="TechStatus" status="obtainable">zpConsulatePiratesBlackCaesar</effect>
+      <!--<effect type="TechStatus" status="obtainable">zpConsulatePiratesBlackCaesar</effect>-->
+      <effect type="TechStatus" status="obtainable">zpConsulatePiratesBlackCaesarClone</effect>
+
       <effect type="TechStatus" status="obtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
@@ -14103,6 +14106,30 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpNatCorsairRevolt" type="Normal">
+    <dbid>40590</dbid>
+    <displaynameid>300100</displaynameid>
+    <cost resourcetype="Food">400.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\barbary_corsairs.png</icon>
+    <rollovertextid>301513</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCorsair</target>
+      </effect>
+      <effect type="Data2" amount="2.00" amount2="8.00" subtype="FreeHomeCityUnitShipped" unittype="zpCorsairGalley" unittype2="zpNatMercCorsair" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="-6.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCorsair</target>
+      </effect>
+    </effects>
+  </tech>
   
 
 
@@ -14132,10 +14159,33 @@
       <effect type="Data" amount="6.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatPirate</target>
       </effect>
-      <!--<effect type="CommandAdd" tech="zpNatPirateRecruits" page="2" column="5">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>-->
       <effect type="CommandAdd" tech="zpNatPirateEmbassy" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulatePiratesBlackCaesarClone" type="Normal">
+    <dbid></dbid>
+    <displaynameid>300051</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\nat_blackflag.png</icon>
+    <rollovertextid>301512</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCNeptuneGalleyProxy</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpTheBlackFlag</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpTheBlackFlag">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatCorsairRevolt" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
