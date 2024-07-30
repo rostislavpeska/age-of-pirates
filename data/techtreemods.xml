@@ -3258,7 +3258,7 @@
 
   <tech name="zpNatIronFleet" type="Normal">
     <dbid>40122</dbid>
-    <displaynameid>300190</displaynameid>
+    <displaynameid>301514</displaynameid>
     <cost resourcetype="Gold">500.0000</cost>
     <cost resourcetype="Wood">500.0000</cost>
     <researchpoints>30.0000</researchpoints>
