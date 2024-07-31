@@ -10,7 +10,7 @@
       <string _locid="300006" symbol="cStringAbilityNameWildfire">Greek Fire</string>
       <string _locid="300007" symbol="cStringAbilityRolloverWildfire">Effective attack that burns enemy ships to dust.</string>
       <string _locid="300009">Edward Teach</string>
-      <string _locid="300010">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nQueen Anne's Revenge \n\nPowerfull ship destroyer with greek fire attack. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nQueen Anne's Privateers</string>
+      <string _locid="300010">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nQueen Anne's Revenge \n\nSpecial Greek fire attack. Increased Privateer build limit. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nQueen's Privateers</string>
       <string _locid="300011">Pirates</string>
       <string _locid="300012" symbol="cStringNativePreAlly">"Take what you can, give nothing back!"</string>
       <string _locid="300013" symbol="cStringNativePostAlly">"Roll out the barrels of rum!"</string>
@@ -95,7 +95,7 @@
       <string _locid="300093">Pirate Settlement Water Flag</string>
       <string _locid="300094">Black Pearl: Pirate flagsip with a powerful broadside attack ability. Trains buccaneers.</string>
       <string _locid="300095">Neptune's Galley: Powerful pirate siege ship with broadside attack and long-range siege attack abilities.</string>
-      <string _locid="300096">Queen Anne's Privateers</string>
+      <string _locid="300096">Queen's Privateers</string>
       <string _locid="300097">Increases all pirate ship (all classes) attack and hitpoints.</string>
       <string _locid="300098">The Recruitment</string>
       <string _locid="300099">Privateers can train Buccaneers. Decreasing Buccaneer costs and training time.</string>
@@ -203,20 +203,20 @@
       <string _locid="300201">Pick Wokou Captain</string>
       <string _locid="300202">Blackmail a politician to improve your influence.</string>
       <string _locid="300203">Sao Feng</string>
-      <string _locid="300204">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWokou Monk \n\nNative archer as a secondary unit. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nThe Big Theft (Treasure Ship with Sao Feng on board)</string>
+      <string _locid="300204">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWokou Archer \n\nNative archer as a secondary unit. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nThe Big Theft (Treasure Ship with Sao Feng on board)</string>
       <string _locid="300205">ZP SPC Sao Feng</string>
       <string _locid="300206">Asian Pirate Captain</string>
-      <string _locid="300207">ZP NAT Wokou Monk</string>
+      <string _locid="300207">ZP NAT Wokou Archer</string>
       <string _locid="300208">Bloodthirsty Wokou</string>
       <string _locid="300209">Notorious Wokou</string>
-      <string _locid="300210">Bloodthirsty Wokou Monk</string>
-      <string _locid="300211">Notorious Wokou Monk</string>
+      <string _locid="300210">Bloodthirsty Wokou Archer</string>
+      <string _locid="300211">Notorious Wokou Archer</string>
       <string _locid="300212">The Big Theft</string>
       <string _locid="300213">Ships a Treasure Ship stolen by your Wokou alies with Sao Feng himself on board.</string>
       <string _locid="300214">Friendly Shipyard</string>
       <string _locid="300215">ZP SHP Destroyer</string>
       <string _locid="300216">Matsura Takanobu</string>
-      <string _locid="300217">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWokou Monk \n\nNative archer. Shipments from foreign allies. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nPacific Allies (Random Legendary Ship)</string>
+      <string _locid="300217">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWokou Archer \n\nNative archer. Shipments from foreign allies. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nPacific Allies (Random Legendary Ship)</string>
       <string _locid="300218">The Iron Fleet</string>
       <string _locid="300219">Ships Fire Junks and enables you a Fire Junk training in your Dock.</string>
       <string _locid="300220">Destroyer</string>
@@ -318,7 +318,7 @@
       <string _locid="300316">Legendary Maltese Knight</string>
       <string _locid="300317">Legendary Maltese Guard</string>
       <string _locid="300318">Legendary Buccaneer</string>
-      <string _locid="300319">Legendary Wokou Monk</string>
+      <string _locid="300319">Legendary Wokou Archer</string>
       <string _locid="300320">Legendary Wokou Pirate</string>
       <string _locid="300321">Legendary Sohei Yumi</string>
       <string _locid="300322">ZP NAT Corsair</string>
@@ -1514,7 +1514,7 @@
       <string _locid="301512">Mutineer</string>
       <string _locid="301513">Ships Corsair Galleys full of Corsairs, unlocks native corsair training.</string>
       <string _locid="301514">Kamikaze</string>
-      <string _locid="301515">Swallow's Flagship</string>
+      <string _locid="301515">Kidnaped Frigate</string>
       <string _locid="301516">Cyprus</string>
       <string _locid="301517">Heavy ship of European construction able to train mutineers</string>
       <string _locid="301518">ZP Cyprus Frigate</string>
@@ -1526,6 +1526,10 @@
       <string _locid="301524">Bloodthirsty Mutineer</string>
       <string _locid="301525">Notorious Mutineer</string>
       <string _locid="301526">Legendary Mutineer</string>
+      <string _locid="301527">ZP Nat Merc Mutineer</string>
+      <string _locid="301528">Wokou Archer</string>
+      <string _locid="301529">Emperror's Decret</string>
+      <string _locid="301530">Signifficantly improves Wokou Army Attack and Hitpoints.</string>
 
 
 

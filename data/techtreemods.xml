@@ -127,7 +127,7 @@
       <effect type="CommandAdd" proto="zpNatWokouMonk" page="0" column="2">
         <target type="ProtoUnit">ypWokouJunk</target>
       </effect>
-      <effect type="CommandAdd" proto="zpNatWokouArmy" page="0" column="3">
+      <effect type="CommandAdd" proto="zpNatMutineer" page="0" column="3">
         <target type="ProtoUnit">ypWokouJunk</target>
       </effect>
     </effects>
@@ -2003,6 +2003,8 @@
       </effect>
       <effect type="SetName" proto="deStartingUnitPrivateer" culture="none" newname="301511">
       </effect>
+      <effect type="SetName" proto="zpPrivateerProxy" culture="none" newname="301511">
+      </effect>
     </effects>
   </tech>
   <tech name="zpNatPirateRecruits" type="Normal">
@@ -2916,7 +2918,7 @@
   </tech>
   <tech name ="zpNatHonoredWokou" type ="Normal">
 		<dbid>40111</dbid>
-		<displaynameid>300198</displaynameid>
+		<displaynameid>300209</displaynameid>
 		<cost resourcetype ="Food">300.0000</cost>
 		<cost resourcetype ="Gold">400.0000</cost>
 		<researchpoints>10.0000</researchpoints>
@@ -2959,26 +2961,13 @@
 			<effect type ="SetName" proto ="zpNatMutineer" culture ="none" newname ="301525"></effect>
       <effect type="SetName" proto="zpNatMutineer" culture="none" newname="301526" reqtech="ImpLegendaryNativesShadow">
       </effect>
-
-      <effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">ypWokouPirate</target></effect>
-			<effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-				<target type ="ProtoUnit">ypWokouPirate</target></effect>
-
-      <effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">ypWokouBlindMonk</target></effect>
-			<effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-				<target type ="ProtoUnit">ypWokouBlindMonk</target></effect>
-
-      <effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">ypWokouWanderingHorseman</target></effect>
-			<effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-				<target type ="ProtoUnit">ypWokouWanderingHorseman</target></effect>
-
-      <effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">ypWokouWaywardRonin</target></effect>
-			<effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-				<target type ="ProtoUnit">ypWokouWaywardRonin</target></effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMutineer</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMutineer</target></effect>
+			<effect type ="SetName" proto ="zpNatMercMutineer" culture ="none" newname ="301525"></effect>
+      <effect type="SetName" proto="zpNatMercMutineer" culture="none" newname="301526" reqtech="ImpLegendaryNativesShadow">
+      </effect>
 		</effects>
 	</tech>
   <tech name ="zpNatDisciplinedWokou" type ="Normal">
@@ -3019,27 +3008,13 @@
 			<effect type ="SetName" proto ="zpNatMutineer" culture ="none" newname ="301524"></effect>
       <effect type="SetName" proto="zpNatMutineer" culture="none" newname="301526" reqtech="ImpLegendaryNativesShadow">
       </effect>
-
-      <effect type ="Data" amount ="1.10" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-				<target type ="ProtoUnit">ypWokouPirate</target></effect>
-			<effect type ="Data" amount ="1.10" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">ypWokouPirate</target></effect>
-
-      <effect type ="Data" amount ="1.10" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-				<target type ="ProtoUnit">ypWokouBlindMonk</target></effect>
-			<effect type ="Data" amount ="1.10" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">ypWokouBlindMonk</target></effect>
-
-
-      <effect type ="Data" amount ="1.10" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-				<target type ="ProtoUnit">ypWokouWanderingHorseman</target></effect>
-			<effect type ="Data" amount ="1.10" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">ypWokouWanderingHorseman</target></effect>
-
-      <effect type ="Data" amount ="1.10" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-				<target type ="ProtoUnit">ypWokouWaywardRonin</target></effect>
-			<effect type ="Data" amount ="1.10" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">ypWokouWaywardRonin</target></effect>
+      <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMutineer</target></effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMutineer</target></effect>
+			<effect type ="SetName" proto ="zpNatMercMutineer" culture ="none" newname ="301524"></effect>
+      <effect type="SetName" proto="zpNatMercMutineer" culture="none" newname="301526" reqtech="ImpLegendaryNativesShadow">
+      </effect>
 		</effects>
 	</tech>
   <tech name="ypNativeTradeTreatyWokou" type="Normal">
@@ -4806,6 +4781,8 @@
       <effect mergemode="add" type="SetName" proto="zpNatMercCorsair" culture="none" newname="300348">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMutineer" culture="none" newname="301526">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercMutineer" culture="none" newname="301526">
       </effect>
     </effects>
   </tech>
@@ -14182,7 +14159,7 @@
     <cost resourcetype="Gold">1000.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\zp_indonesian_fleet.png</icon>
+    <icon>resources\images\icons\techs\cyprus_mutiny.png</icon>
     <rollovertextid>301522</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>
@@ -14191,7 +14168,7 @@
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data2" amount="1.00" amount2="8.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCCyprusFrigate" unittype2="zpNatWokouPirate" relativity="Absolute">
+      <effect type="Data2" amount="1.00" amount2="8.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCCyprusFrigate" unittype2="zpNatMercMutineer" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -14210,6 +14187,39 @@
       <effect type="Data" amount="-6.00" subtype="PopulationCount" relativity="Absolute">
         <target type="ProtoUnit">zpNatWokouArmy</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpExaltedWokou</effect>
+    </effects>
+  </tech>
+  <tech name="zpExaltedWokou" type="Normal">
+    <dbid>40593</dbid>
+    <displaynameid>301529</displaynameid>
+    <cost resourcetype="Food">600.0000</cost>
+    <cost resourcetype="Gold">600.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\swallow_imperial_decret.png</icon>
+    <rollovertextid>301530</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type ="Data" amount ="1.50" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">ypWokouPirate</target></effect>
+			<effect type ="Data" amount ="1.50" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">ypWokouPirate</target></effect>
+      <effect type ="Data" amount ="1.50" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">ypWokouBlindMonk</target></effect>
+			<effect type ="Data" amount ="1.50" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">ypWokouBlindMonk</target></effect>
+      <effect type ="Data" amount ="1.50" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">ypWokouWanderingHorseman</target></effect>
+			<effect type ="Data" amount ="1.50" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">ypWokouWanderingHorseman</target></effect>
+      <effect type ="Data" amount ="1.50" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">ypWokouWaywardRonin</target></effect>
+			<effect type ="Data" amount ="1.50" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">ypWokouWaywardRonin</target></effect>
     </effects>
   </tech>
   
