@@ -10,7 +10,7 @@
       <string _locid="300006" symbol="cStringAbilityNameWildfire">Greek Fire</string>
       <string _locid="300007" symbol="cStringAbilityRolloverWildfire">Effective attack that burns enemy ships to dust.</string>
       <string _locid="300009">Edward Teach</string>
-      <string _locid="300010">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nQueen Anne's Revenge \n\nGreek fire attack. Stronger fleet with every age upgrade. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nFountain of Youth</string>
+      <string _locid="300010">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nQueen Anne's Revenge \n\nGreek fire attack. Stronger fleet with every age-up. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nTreasure of Ponce de León</string>
       <string _locid="300011">Pirates</string>
       <string _locid="300012" symbol="cStringNativePreAlly">"Take what you can, give nothing back!"</string>
       <string _locid="300013" symbol="cStringNativePostAlly">"Roll out the barrels of rum!"</string>
@@ -1538,7 +1538,12 @@
       <string _locid="301536">Transforms into temple</string>
       <string _locid="301537">Fountain of Youth</string>
       <string _locid="301538">Transforms into temple</string>
-
+      <string _locid="301539">Treasure Galleon</string>
+      <string _locid="301540">ZP Treasure Galleon</string>
+      <string _locid="301541">Santiago</string>
+      <string _locid="301542">Treasure of Ponce de León</string>
+      <string _locid="301543">Ships a Treasure Galleon which generates gold.</string>
+      <string _locid="301544">Generates Gold. Works more efficient while being close to a Dock.</string>
 
 
       <!-- ======================================== -->

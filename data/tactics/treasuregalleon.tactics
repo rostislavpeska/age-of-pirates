@@ -1,0 +1,35 @@
+<tactics>
+  <action>
+    <name stringid="38133">RangedAttack</name>
+    <type>BroadsideAttack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>Idle</anim>
+    <idleanim>Idle</idleanim>
+    <projectile>Cannonball</projectile>
+    <numberprojectiles>1</numberprojectiles>
+    <impacteffect>effects\impacts\cannon</impacteffect>
+    <accuracy>1.0</accuracy>
+    <maxheight>0</maxheight>
+    <accuracyreductionfactor>0.5</accuracyreductionfactor>
+    <aimbonus>5</aimbonus>
+    <rate type="All">1.0 </rate>
+    <areasortmode>Directional</areasortmode>
+    <targetground>1</targetground>
+    <basedamagecap>1</basedamagecap>
+    <perfectaccuracy>1</perfectaccuracy>
+    <unrandomizecannonrof>1</unrandomizecannonrof>
+  </action>
+  <action>
+    <dbaction>BoatManager</dbaction>
+    <name stringid="69156">BoatManager</name>
+    <type>BoatManager</type>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="43019">AutoGather</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+  </action>
+  <tactic>Standard<action priority="100">RangedAttack</action><action>BoatManager</action><action>AutoGather</action><attacktype>LogicalTypeRangedUnitsAutoAttack</attacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
+</tactics>
