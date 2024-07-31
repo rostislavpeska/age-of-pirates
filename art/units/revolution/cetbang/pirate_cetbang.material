@@ -1,0 +1,28 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\revolution\cetbang\textures\cetbang_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\revolution\cetbang\textures\cetbang_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\revolution\cetbang\textures\cetbang_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+       <texture name="BaseColor" override="units\spc\pirates\textures\pirate_1a_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\pirates\textures\pirate_1a_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\pirates\textures\pirate_1a_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\spc\pirates\textures\pirate_1a_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
