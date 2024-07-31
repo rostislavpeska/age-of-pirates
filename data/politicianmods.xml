@@ -97,6 +97,8 @@
   </zpconsulatewokousirigam>
   <zpconsulatepiratesbarbarossa portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/barbarossa.png">
   </zpconsulatepiratesbarbarossa>
+  <zpconsulatewokouswallow portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/william_swallow.png">
+  </zpconsulatewokouswallow >
 
   <!--TEST-->
   <zpconsulatepiratesgraceclone portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/grace.png">

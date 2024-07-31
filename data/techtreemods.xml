@@ -55,6 +55,9 @@
       <effect type="CommandAdd" tech="zpNatPirateAdmiral" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">Privateer</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpConsulatePiratesGrace" type="Normal">
@@ -78,10 +81,10 @@
       <effect type="CommandRemove" tech="zpTheBlackFlag">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="Data" amount="8.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="6.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatPirate</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatPirateRecruits" page="2" column="5">
+      <effect type="CommandAdd" tech="zpNatPirateEmbassy" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -165,6 +168,7 @@
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -201,6 +205,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
@@ -251,6 +256,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
@@ -301,6 +307,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
@@ -1496,21 +1503,7 @@
       <effect type="CommandRemove" tech="zpTheBlackFlag">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatCorsair</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Assign">
-        <target type="ProtoUnit">zpNatPirate</target>
-      </effect>
-      <effect type="CommandRemove" proto="zpNatPirate">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" proto="zpNatPirate">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="TransformUnit" toprotoid="zpNatCorsair" fromprotoid="zpNatPirate">
-      </effect>
-      <effect type="CommandAdd" tech="zpNatPirateCorsairs" page="2" column="6">
+      <effect type="CommandAdd" tech="zpNatCorsairRevolt" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -1968,8 +1961,8 @@
   <tech name="zpNatPirateAdmiral" type="Normal">
     <dbid>40071</dbid>
     <displaynameid>300096</displaynameid>
-    <cost resourcetype="Gold">350.0000</cost>
-    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <cost resourcetype="Wood">400.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\americans\brigadier_general.png</icon>
@@ -1980,24 +1973,35 @@
 			<techstatus status ="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type ="Data" amount ="1.30" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-				<target type ="ProtoUnit">Privateer</target></effect>
-			<effect type ="Data" amount ="1.30" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-				<target type ="ProtoUnit">deSPCPrivateer</target></effect>
-      <effect type ="Data" amount ="1.30" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-        <target type ="ProtoUnit">deStartingUnitPrivateer</target></effect>
-      <effect type ="Data" amount ="1.30" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-        <target type ="ProtoUnit">zpSPCQueenAnne</target></effect>  
-			<effect type ="Data" amount ="1.30" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">Privateer</target></effect>
-			<effect type ="Data" amount ="1.30" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">deSPCPrivateer</target></effect>
-      <effect type ="Data" amount ="1.30" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">deStartingUnitPrivateer</target></effect>
-      <effect type ="Data" amount ="1.30" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">zpSPCQueenAnne</target></effect>
-      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">Privateer</target>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">Privateer</target>
+      </effect>
+			<effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">deSPCPrivateer</target>
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+        <target type ="ProtoUnit">deStartingUnitPrivateer</target>
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+        <target type ="ProtoUnit">zpSPCQueenAnne</target>
+      </effect>  
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">Privateer</target>
+      </effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">deSPCPrivateer</target>
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">deStartingUnitPrivateer</target>
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpSPCQueenAnne</target>
+      </effect>
+      <effect type="SetName" proto="Privateer" culture="none" newname="301511">
+      </effect>
+      <effect type="SetName" proto="deSPCPrivateer" culture="none" newname="301511">
+      </effect>
+      <effect type="SetName" proto="deStartingUnitPrivateer" culture="none" newname="301511">
       </effect>
     </effects>
   </tech>
@@ -2396,6 +2400,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
@@ -2762,6 +2767,7 @@
       <effect type="TechStatus" status="obtainable">YPNativeJunk</effect>
       <effect type="TechStatus" status="obtainable">zpWokouRandomShip</effect>
       <effect type="TechStatus" status="obtainable">zpWokouSecondaryFlagship</effect>
+      <effect type="TechStatus" status="obtainable">zpWokouCyprusMutiny</effect>
     </effects>
   </tech>
   <tech name="zpTrainWokouJunk1" type="Normal">
@@ -2945,29 +2951,34 @@
 			<effect type ="SetName" proto ="zpNatWokouMonk" culture ="none" newname ="300211"></effect>
       <effect type="SetName" proto="zpNatWokouPirate" culture="none" newname="300319" reqtech="ImpLegendaryNativesShadow">
       </effect>
+
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMutineer</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMutineer</target></effect>
+			<effect type ="SetName" proto ="zpNatMutineer" culture ="none" newname ="301525"></effect>
+      <effect type="SetName" proto="zpNatMutineer" culture="none" newname="301526" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+
       <effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouPirate</target></effect>
 			<effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouPirate</target></effect>
-			<effect type ="SetName" proto ="ypWokouPirate" culture ="none" newname ="300198"></effect>
 
       <effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouBlindMonk</target></effect>
 			<effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouBlindMonk</target></effect>
-			<effect type ="SetName" proto ="ypWokouBlindMonk" culture ="none" newname ="300211"></effect>
 
       <effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouWanderingHorseman</target></effect>
 			<effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouWanderingHorseman</target></effect>
-			<effect type ="SetName" proto ="ypWokouWanderingHorseman" culture ="none" newname ="300231"></effect>
 
       <effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouWaywardRonin</target></effect>
 			<effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouWaywardRonin</target></effect>
-			<effect type ="SetName" proto ="ypWokouWaywardRonin" culture ="none" newname ="300232"></effect>
 		</effects>
 	</tech>
   <tech name ="zpNatDisciplinedWokou" type ="Normal">
@@ -3001,30 +3012,34 @@
 			<effect type ="SetName" proto ="zpNatWokouMonk" culture ="none" newname ="300210"></effect>
       <effect type="SetName" proto="zpNatWokouMonk" culture="none" newname="300319" reqtech="ImpLegendaryNativesShadow">
       </effect>
+      <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMutineer</target></effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMutineer</target></effect>
+			<effect type ="SetName" proto ="zpNatMutineer" culture ="none" newname ="301524"></effect>
+      <effect type="SetName" proto="zpNatMutineer" culture="none" newname="301526" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+
       <effect type ="Data" amount ="1.10" subtype ="Damage" allactions ="1" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouPirate</target></effect>
 			<effect type ="Data" amount ="1.10" subtype ="Hitpoints" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouPirate</target></effect>
-			<effect type ="SetName" proto ="ypWokouPirate" culture ="none" newname ="300200"></effect>
 
       <effect type ="Data" amount ="1.10" subtype ="Damage" allactions ="1" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouBlindMonk</target></effect>
 			<effect type ="Data" amount ="1.10" subtype ="Hitpoints" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouBlindMonk</target></effect>
-			<effect type ="SetName" proto ="ypWokouBlindMonk" culture ="none" newname ="300210"></effect>
 
 
       <effect type ="Data" amount ="1.10" subtype ="Damage" allactions ="1" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouWanderingHorseman</target></effect>
 			<effect type ="Data" amount ="1.10" subtype ="Hitpoints" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouWanderingHorseman</target></effect>
-			<effect type ="SetName" proto ="ypWokouWanderingHorseman" culture ="none" newname ="300229"></effect>
 
       <effect type ="Data" amount ="1.10" subtype ="Damage" allactions ="1" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouWaywardRonin</target></effect>
 			<effect type ="Data" amount ="1.10" subtype ="Hitpoints" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouWaywardRonin</target></effect>
-			<effect type ="SetName" proto ="ypWokouWaywardRonin" culture ="none" newname ="300230"></effect>
 		</effects>
 	</tech>
   <tech name="ypNativeTradeTreatyWokou" type="Normal">
@@ -3099,24 +3114,12 @@
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatWokouArmy</target>
+        <target type="ProtoUnit">zpNatWokouMonk</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpBlackmailing</effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
       <effect type="CommandRemove" tech="zpBlackmailing">
         <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="Data" amount="-1.00" subtype="PopulationCount" relativity="Absolute">
-        <target type="ProtoUnit">ypWokouBlindMonk</target>
-      </effect>
-      <effect type="Data" amount="-1.00" subtype="PopulationCount" relativity="Absolute">
-        <target type="ProtoUnit">ypWokouWanderingHorseman</target>
-      </effect>
-      <effect type="Data" amount="-1.00" subtype="PopulationCount" relativity="Absolute">
-        <target type="ProtoUnit">ypWokouWaywardRonin</target>
-      </effect>
-      <effect type="Data" amount="-6.00" subtype="PopulationCount" relativity="Absolute">
-        <target type="ProtoUnit">zpNatWokouArmy</target>
       </effect>
       <effect type="CommandAdd" tech="zpNatTreasureFleet" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
@@ -3178,6 +3181,7 @@
       <effect type="TechStatus" status="obtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
@@ -3675,6 +3679,9 @@
       <effect type="CommandAdd" tech="zpNatIronFleet" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatWokouPirate</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpTrainWokouFuchuan1" type="Normal">
@@ -3886,6 +3893,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
     </effects>
@@ -4797,6 +4805,8 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMercCorsair" culture="none" newname="300348">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMutineer" culture="none" newname="301526">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -5681,6 +5691,7 @@
       <effect type="TechStatus" status="obtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
@@ -6288,6 +6299,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
@@ -6473,6 +6485,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
@@ -6811,6 +6824,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
@@ -8878,6 +8892,7 @@
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
@@ -10279,6 +10294,7 @@
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -10571,6 +10587,7 @@
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -10995,6 +11012,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
@@ -11585,6 +11603,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
@@ -11939,6 +11958,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
@@ -13326,8 +13346,7 @@
       <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
       <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseAlliesClone</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
-      <!--<effect type="TechStatus" status="obtainable">zpConsulatePiratesGrace</effect>-->
-      <effect type="TechStatus" status="obtainable">zpConsulatePiratesGraceClone</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulatePiratesGrace</effect>
       <effect type="TechStatus" status="obtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="obtainable">zpConsulatePiratesBlackJack</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
@@ -13347,6 +13366,7 @@
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -13567,9 +13587,10 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateWokouSaoFeng</effect>
-      <effect type="TechStatus" status="obtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
@@ -13607,10 +13628,10 @@
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
-    <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpWokouFuchuan</target>
       </effect>
-    <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCPrauB" relativity="Absolute">
         <target type="Player">
         </target>
@@ -13707,9 +13728,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
-      <!--<effect type="TechStatus" status="obtainable">zpConsulatePiratesBlackCaesar</effect>-->
-      <effect type="TechStatus" status="obtainable">zpConsulatePiratesBlackCaesarClone</effect>
-
+      <effect type="TechStatus" status="obtainable">zpConsulatePiratesBlackCaesar</effect>
       <effect type="TechStatus" status="obtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
@@ -13726,6 +13745,7 @@
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
@@ -14130,12 +14150,74 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpConsulateWokouSwallow" type="Normal">
+    <dbid>40591</dbid>
+    <displaynameid>301519</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\wokou_small.png</icon>
+    <rollovertextid>301520</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMutineer</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpBlackmailing</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpBlackmailing">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpWokouCyprusMutiny" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpWokouCyprusMutiny" type="Normal">
+    <dbid>40592</dbid>
+    <displaynameid>301521</displaynameid>
+    <cost resourcetype="Gold">1000.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\zp_indonesian_fleet.png</icon>
+    <rollovertextid>301522</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data2" amount="1.00" amount2="8.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCCyprusFrigate" unittype2="zpNatWokouPirate" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatWokouArmy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">ypWokouBlindMonk</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">ypWokouWanderingHorseman</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">ypWokouWaywardRonin</target>
+      </effect>
+      <effect type="Data" amount="-6.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatWokouArmy</target>
+      </effect>
+    </effects>
+  </tech>
   
 
 
 <!--TEST-->
 
-<tech name="zpConsulatePiratesGraceClone" type="Normal">
+<!--<tech name="zpConsulatePiratesGraceClone" type="Normal">
     <dbid></dbid>
     <displaynameid>300020</displaynameid>
     <cost resourcetype="Gold">250.0000</cost>
@@ -14189,7 +14271,7 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
-  </tech>
+  </tech>-->
   
 
 

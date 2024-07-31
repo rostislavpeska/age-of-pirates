@@ -179,4 +179,7 @@
   <zppirateriggedship>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zppirateriggedship>
+  <zpspccyprusfrigate>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpspccyprusfrigate>
 </abilitymods>
