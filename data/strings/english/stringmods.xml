@@ -10,7 +10,7 @@
       <string _locid="300006" symbol="cStringAbilityNameWildfire">Greek Fire</string>
       <string _locid="300007" symbol="cStringAbilityRolloverWildfire">Effective attack that burns enemy ships to dust.</string>
       <string _locid="300009">Edward Teach</string>
-      <string _locid="300010">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nQueen Anne's Revenge \n\nSpecial Greek fire attack. Increased Privateer build limit. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nQueen's Privateers</string>
+      <string _locid="300010">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nQueen Anne's Revenge \n\nGreek fire attack. Stronger fleet with every age upgrade. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nFountain of Youth</string>
       <string _locid="300011">Pirates</string>
       <string _locid="300012" symbol="cStringNativePreAlly">"Take what you can, give nothing back!"</string>
       <string _locid="300013" symbol="cStringNativePostAlly">"Roll out the barrels of rum!"</string>
@@ -376,7 +376,7 @@
       <string _locid="300374">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHolcan Javelineer, Healer \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nCotton Armor, Maya Calendar, Maya Pyramids</string>
       <string _locid="300375">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nLightning Warrior \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nFood of the Gods, Cult of the Dead, Cloud People</string>
       <string _locid="300376">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nConquistador \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nFlying Buttress, Smokeless Powder, Christian Schools</string>
-      <string _locid="300377">Transforms into temple</string>
+      <string _locid="300377">Transforms into native conculate</string>
       <string _locid="300378">Transforms into outpost</string>
       <string _locid="300379">Center of local trade</string>
       <string _locid="300380">ZP Native Aztec Temple A</string>
@@ -1530,8 +1530,14 @@
       <string _locid="301528">Wokou Archer</string>
       <string _locid="301529">Emperror's Decret</string>
       <string _locid="301530">Signifficantly improves Wokou Army Attack and Hitpoints.</string>
-
-
+      <string _locid="301531">Temple of the Water</string>
+      <string _locid="301532">ZP Temple of the Water</string>
+      <string _locid="301533">South American Native Temple. Building with special abilities.</string>
+      <string _locid="301534">Temple Travois</string>
+      <string _locid="301535">ZP Water Temple Travois</string>
+      <string _locid="301536">Transforms into temple</string>
+      <string _locid="301537">Fountain of Youth</string>
+      <string _locid="301538">Transforms into temple</string>
 
 
 

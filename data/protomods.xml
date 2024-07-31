@@ -30581,6 +30581,142 @@
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
     </protoaction>
   </unit>
+  <unit id="20359" name="zpIncaTemple">
+    <dbid>20359</dbid>
+    <displaynameid>301531</displaynameid>
+    <editornameid>301532</editornameid>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>5.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <buildlimit>1</buildlimit>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\inca_temple\zp_aztec_temple.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\water_temple.png</icon>
+    <portraiticon>resources\art\buildings\spc\inca_temple\inca_temple_portrait.png</portraiticon>
+    <rollovertextid>301533</rollovertextid>
+    <shortrollovertextid>301533</shortrollovertextid>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <initialhitpoints>4500.0000</initialhitpoints>
+    <maxhitpoints>4500.0000</maxhitpoints>
+    <buildpoints>50.0000</buildpoints>
+    <los>14.0000</los>
+    <bounty>150.0000</bounty>
+    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>2</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Economic</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>InitialGarrisonOnly</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="7">Delete</command>
+    <command page="11" column="0">Abilities</command>
+  </unit>
+  <unit id="20360" name="zpIncaTempleTravois">
+    <dbid>20360</dbid>
+    <displaynameid>301534</displaynameid>
+    <editornameid>301535</editornameid>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>5.0000</maxvelocity>
+    <maxrunvelocity>7.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>5.0000</turnrate>
+    <animfile>units\natives\aztec_native_travois.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trade\travois_icon_64.png</icon>
+    <portraiticon>resources\art\units\trade\travois_icon_portrait.png</portraiticon>
+    <rollovertextid>301536</rollovertextid>
+    <shortrollovertextid>301536</shortrollovertextid>
+    <initialhitpoints>500.0000</initialhitpoints>
+    <maxhitpoints>500.0000</maxhitpoints>
+    <los>18.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>Civilian</unitaitype>
+    <trainpoints>60.0000</trainpoints>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractWagon</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>CannotConvertHill</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ValidIdleVillager</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <train row="0" page="6" column="0">zpIncaTemple</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>DeadReplacementWhenDestroyed</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <flag>UnitTransformFree</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>coveredwagon.tactics</tactics>
+    <protoaction>
+      <name>Build</name>
+      <rate type="zpIncaTemple">3.000000</rate>
+    </protoaction>
+  </unit>
  
 
     

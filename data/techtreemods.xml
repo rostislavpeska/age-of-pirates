@@ -52,12 +52,11 @@
       <effect type="CommandRemove" tech="zpTheBlackFlag">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatPirateAdmiral" page="2" column="6">
+      <effect type="CommandAdd" tech="zpFountainOfYouth" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">Privateer</target>
-      </effect>
+      <effect type="TechStatus" status="obtainable">zpUpdatePrivateersI</effect>
+      <effect type="TechStatus" status="obtainable">zpUpdatePrivateersII</effect>
     </effects>
   </tech>
   <tech name="zpConsulatePiratesGrace" type="Normal">
@@ -1683,9 +1682,6 @@
       <effect type="TechStatus" status="obtainable">zpPirateTreasures</effect>
       <effect type="TechStatus" status="obtainable">zpNatGunpowderBarrels</effect>
       <effect type="TechStatus" status="obtainable">zpNatBlackSails</effect>
-      <effect type="TechStatus" status="obtainable">zpNatPirateAdmiral</effect>
-      <effect type="TechStatus" status="obtainable">zpNatPirateRecruits</effect>
-      <effect type="TechStatus" status="obtainable">zpNatPirateCorsairs</effect>
       <effect type="TechStatus" status="obtainable">zpTheBlackFlag</effect>
       <effect type="TechStatus" status="obtainable">NativeTreatyPirates</effect>
       <effect type="TechStatus" status="obtainable">DEIndianFriendshipPirates</effect>
@@ -1696,6 +1692,7 @@
       <effect type="TechStatus" status="obtainable">zpNatCorsairEmbassy</effect>
       <effect type="TechStatus" status="obtainable">zpNatPirateEmbassy</effect>
       <effect type="TechStatus" status="obtainable">zpNatCorsairRevolt</effect>
+      <effect type="TechStatus" status="obtainable">zpFountainOfYouth</effect>
     </effects>
   </tech>
   <tech name="zpPirateBuildLimitAddShadow" type="Normal">
@@ -14220,6 +14217,106 @@
 				<target type ="ProtoUnit">ypWokouWaywardRonin</target></effect>
 			<effect type ="Data" amount ="1.50" subtype ="Hitpoints" relativity ="BasePercent">
 				<target type ="ProtoUnit">ypWokouWaywardRonin</target></effect>
+    </effects>
+  </tech>
+  <tech name ="zpFountainOfYouth" type ="Normal">
+		<dbid>40594</dbid>
+		<displaynameid>301537</displaynameid>
+  	<researchpoints>20.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\water_temple_tech.png</icon>
+    <cost resourcetype ="Wood">300.0000</cost>
+    <cost resourcetype ="Gold">300.0000</cost>
+		<rollovertextid>301538</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>    
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpIncaTemple</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpIncaTempleTravois" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="zpUpdatePrivateersI" type="Normal">
+    <dbid>40595</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+			<techstatus status ="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type ="Data" amount ="1.15" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">Privateer</target>
+      </effect>
+			<effect type ="Data" amount ="1.15" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">deSPCPrivateer</target>
+      </effect>
+      <effect type ="Data" amount ="1.15" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+        <target type ="ProtoUnit">deStartingUnitPrivateer</target>
+      </effect>
+      <effect type ="Data" amount ="1.10" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+        <target type ="ProtoUnit">zpSPCQueenAnne</target>
+      </effect>  
+			<effect type ="Data" amount ="1.15" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">Privateer</target>
+      </effect>
+			<effect type ="Data" amount ="1.15" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">deSPCPrivateer</target>
+      </effect>
+      <effect type ="Data" amount ="1.15" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">deStartingUnitPrivateer</target>
+      </effect>
+      <effect type ="Data" amount ="1.10" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpSPCQueenAnne</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">Privateer</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUpdatePrivateersII" type="Normal">
+    <dbid>40596</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+			<techstatus status ="Active">Imperialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type ="Data" amount ="1.25" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">Privateer</target>
+      </effect>
+			<effect type ="Data" amount ="1.25" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">deSPCPrivateer</target>
+      </effect>
+      <effect type ="Data" amount ="1.25" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+        <target type ="ProtoUnit">deStartingUnitPrivateer</target>
+      </effect>
+      <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+        <target type ="ProtoUnit">zpSPCQueenAnne</target>
+      </effect>  
+			<effect type ="Data" amount ="1.25" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">Privateer</target>
+      </effect>
+			<effect type ="Data" amount ="1.25" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">deSPCPrivateer</target>
+      </effect>
+      <effect type ="Data" amount ="1.25" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">deStartingUnitPrivateer</target>
+      </effect>
+      <effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpSPCQueenAnne</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">Privateer</target>
+      </effect>
     </effects>
   </tech>
   
