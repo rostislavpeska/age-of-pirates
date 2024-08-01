@@ -30736,8 +30736,8 @@
     <rollovertextid>301544</rollovertextid>
     <shortrollovertextid>301544</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>2000.0000</initialhitpoints>
-    <maxhitpoints>2000.0000</maxhitpoints>
+    <initialhitpoints>3000.0000</initialhitpoints>
+    <maxhitpoints>3000.0000</maxhitpoints>
     <los>26.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -30751,29 +30751,23 @@
     <allowedage>1</allowedage>
     <armor type="Ranged" value="0.7500">
     </armor>
-    <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
     <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
     <unittype>LogicalTypeVillagersAttack</unittype>
     <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>LogicalTypeMalteseCivBonusHealsWhenIdle</unittype>
-    <unittype>LogicalTypeMalteseCivBonusArtilleryAndShips</unittype>
-    <unittype>LogicalTypeMalteseCivBonus</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
     <unittype>Ship</unittype>
-    <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
-    <unittype>HasBountyValue</unittype>
-    <unittype>AbstractFishingBoat</unittype>
-    <unittype>Ranged</unittype>
-    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>Unit</unittype>
     <unittype>AbstractTreasureShip</unittype>
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
@@ -30794,18 +30788,7 @@
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
-    <tactics>treasuregalleon.tactics</tactics>
-    <protoaction>
-      <name>RangedAttack</name>
-      <damage>20.000000</damage>
-      <damagetype>Siege</damagetype>
-      <maxrange>15.000000</maxrange>
-      <rof>2.000000</rof>
-      <damagecap>40.000000</damagecap>
-      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
-      <damagearea>1.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
-    </protoaction>
+    <tactics>autogatherer.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
       <rate type="Gold">1.000000</rate>

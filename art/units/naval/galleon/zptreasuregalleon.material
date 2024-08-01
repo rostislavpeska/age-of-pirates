@@ -3,7 +3,7 @@
     <materialdef name="default">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="units\naval\galleon\textures\zp_treasuregalleon_mata_basecolor">
+      <texture name="BaseColor" override="units\naval\galleon\textures\galleon_hurricane_damaged_mata_basecolor">
       </texture>
       <texture name="Normals" override="units\naval\galleon\textures\galleon_hurricane_damaged_mata_normals">
       </texture>
