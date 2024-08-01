@@ -2758,7 +2758,7 @@
       <effect type="TechStatus" status="obtainable">zpNatDisciplinedWokou</effect> 
       <effect type="TechStatus" status="obtainable">zpNatHonoredWokou</effect>
       <effect type="TechStatus" status="obtainable">zpNatTreasureFleet</effect>
-      <effect type="TechStatus" status="obtainable">zpNatIronFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpNatWokouEmbassy</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>         
       <effect type="TechStatus" status="obtainable">NativeTreatyWokou</effect>
       <effect type="TechStatus" status="obtainable">DEIndianFriendshipWokou</effect>
@@ -2938,10 +2938,13 @@
 			<effect type ="SetName" proto ="zpNatWokouPirate" culture ="none" newname ="300198"></effect>
       <effect type="SetName" proto="zpNatWokouPirate" culture="none" newname="300320" reqtech="ImpLegendaryNativesShadow">
       </effect>
-			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">zpNatWokouPirate</target></effect>
+      <effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercWokouPirate</target></effect>
 			<effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-				<target type ="ProtoUnit">zpNatWokouPirate</target></effect>
+				<target type ="ProtoUnit">zpNatMercWokouPirate</target></effect>
+			<effect type ="SetName" proto ="zpNatMercWokouPirate" culture ="none" newname ="300198"></effect>
+      <effect type="SetName" proto="zpNatMercWokouPirate" culture="none" newname="300320" reqtech="ImpLegendaryNativesShadow">
+      </effect>
 			<effect type ="SetName" proto ="zpNatWokouPirate" culture ="none" newname ="300198"></effect>
       <effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
 				<target type ="ProtoUnit">zpNatWokouMonk</target></effect>
@@ -2950,7 +2953,6 @@
 			<effect type ="SetName" proto ="zpNatWokouMonk" culture ="none" newname ="300211"></effect>
       <effect type="SetName" proto="zpNatWokouPirate" culture="none" newname="300319" reqtech="ImpLegendaryNativesShadow">
       </effect>
-
       <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
 				<target type ="ProtoUnit">zpNatMutineer</target></effect>
 			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
@@ -2990,6 +2992,13 @@
 				<target type ="ProtoUnit">zpNatWokouPirate</target></effect>
 			<effect type ="SetName" proto ="zpNatWokouPirate" culture ="none" newname ="300200"></effect>
       <effect type="SetName" proto="zpNatWokouPirate" culture="none" newname="300320" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercWokouPirate</target></effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercWokouPirate</target></effect>
+			<effect type ="SetName" proto ="zpNatMercWokouPirate" culture ="none" newname ="300200"></effect>
+      <effect type="SetName" proto="zpNatMercWokouPirate" culture="none" newname="300320" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
 				<target type ="ProtoUnit">zpNatWokouMonk</target></effect>
@@ -3648,7 +3657,7 @@
       <effect type="CommandRemove" tech="zpBlackmailing">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatIronFleet" page="2" column="6">
+      <effect type="CommandAdd" tech="zpNatWokouEmbassy" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
@@ -4689,6 +4698,8 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatWokouPirate" culture="none" newname="300320">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercWokouPirate" culture="none" newname="300320">
+      </effect>
       <effect mergemode="add" type="SetName" proto="zpNatWokouMonk" culture="none" newname="300319">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatSoheiArcher" culture="none" newname="300321">
@@ -5306,9 +5317,6 @@
         <target type="ProtoUnit">ypWokouJunk</target>
       </effect>
       <effect type="CommandAdd" proto="zpNatWokouMonk" page="0" column="4">
-        <target type="ProtoUnit">ypWokouJunk</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpNatWokouArmy" page="0" column="4">
         <target type="ProtoUnit">ypWokouJunk</target>
       </effect>
     </effects>
@@ -14335,6 +14343,133 @@
     </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpTreasureGalleon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatWokouEmbassy" type="Normal">
+    <dbid>40598</dbid>
+    <displaynameid>301545</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\wokou_embassy_tech.png</icon>
+    <rollovertextid>301551</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpWokouEmbassyWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpWokouEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatWokouArmy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">ypWokouBlindMonk</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">ypWokouWanderingHorseman</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">ypWokouWaywardRonin</target>
+      </effect>
+      <effect type="Data" amount="-6.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatWokouArmy</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpExaltedWokou</effect>
+      <effect type="TechStatus" status="obtainable">zpWokouExpeditionaryCompany</effect>
+      <effect type="TechStatus" status="obtainable">zpWokouExpeditionaryForce</effect>
+      <effect type="TechStatus" status="obtainable">zpWokouFireJunksInfinite</effect>
+      <effect type="TechStatus" status="obtainable">zpWokouCannonArmy</effect>
+    </effects>
+  </tech>
+  <tech name="zpWokouExpeditionaryForce" type="Normal">
+    <dbid>40584</dbid>
+    <displaynameid>301553</displaynameid>
+    <cost resourcetype="Gold">1200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\wokou_landing.png</icon>
+    <rollovertextid>301555</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data2" amount="1.00" amount2="8.00" subtype="FreeHomeCityUnitShipped" unittype="ypWokouJunk" unittype2="zpNatWokouPirate" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpWokouExpeditionaryCompany" type="Normal">
+    <dbid>40585</dbid>
+    <displaynameid>301552</displaynameid>
+    <cost resourcetype="Gold">800.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\wokou_pirates.png</icon>
+    <rollovertextid>301554</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="zpNatWokouPirate" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpWokouFireJunksInfinite" type="Normal">
+    <dbid>40586</dbid>
+    <displaynameid>301514</displaynameid>
+    <cost resourcetype="Gold">550.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\wokou_fire_galleys.png</icon>
+    <rollovertextid>301556</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+    <flag>DECheckBuildLimit</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="ypFireship" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpWokouCannonArmy" type="Normal">
+    <dbid>40587</dbid>
+    <displaynameid>301557</displaynameid>
+    <cost resourcetype="Gold">1400.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\wokou_army_big.png</icon>
+    <rollovertextid>301558</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="zpNatMercWokouPirate" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>

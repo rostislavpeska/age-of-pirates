@@ -3760,6 +3760,9 @@
     <buildlimit>16</buildlimit>
     <armor type="Hand" value="0.3000">
     </armor>
+    <sharedselectionunittypes>
+      <unittype>zpNatMercWokouPirate</unittype>
+    </sharedselectionunittypes>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
@@ -4744,7 +4747,7 @@
     <maxrunvelocity>9.0000</maxrunvelocity>
     <turnrate>18.0000</turnrate>
     <animfile>units\asians\mercenaries\blind_monk\blind_monk.xml</animfile>
-    <icon>resources\art\units\asians\chinese\wokou_army\wokou_army_icon_64.png</icon>
+    <icon>resources\images\icons\techs\wokou_army_unit.png</icon>
     <portraiticon>resources\art\units\asians\chinese\wokou_army\wokou_army_icon_64.png</portraiticon>
     <rollovertextid>300235</rollovertextid>
     <shortrollovertextid>300235</shortrollovertextid>
@@ -30792,6 +30795,269 @@
     <protoaction>
       <name>Autogather</name>
       <rate type="Gold">1.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20362" name="zpWokouEmbassy">
+    <dbid>20362</dbid>
+    <displaynameid>301545</displaynameid>
+    <editornameid>301546</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <civflagoverride>objects\flags\wokou</civflagoverride>
+    <animfile>buildings\asian_civs\consulate\consulate_wokou.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\wokou_embassy_icon.png</icon>
+    <portraiticon>resources\art\buildings\wokou_embassy_portrait.png</portraiticon>
+    <rollovertextid>301547</rollovertextid>
+    <shortrollovertextid>301547</shortrollovertextid>
+    <initialhitpoints>3500.0000</initialhitpoints>
+    <maxhitpoints>3500.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>50.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>100.0000</bounty>
+    <buildbounty>50.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>CountsTowardEconomyModeScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractFindBarracks</unittype>
+    <train row="0" page="0" column="0">zpNatWokouPirate</train>
+    <train row="0" page="0" column="1">zpNatWokouArmy</train>
+    <tech row="0" page="1" column="0">zpWokouExpeditionaryCompany</tech>
+    <tech row="0" page="1" column="1">zpWokouExpeditionaryForce</tech>
+    <tech row="0" page="1" column="2">zpWokouFireJunksInfinite</tech>
+    <tech row="0" page="2" column="0">zpWokouCannonArmy</tech>
+    <tech row="0" page="2" column="1">zpExaltedWokou</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>InitialGarrisonOnly</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>EnterHotkeyContext</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="8">CancelAllQueued</command>
+  </unit>
+  <unit id="20363" name="zpWokouEmbassyWagon">
+    <dbid>20363</dbid>
+    <displaynameid>301548</displaynameid>
+    <editornameid>301549</editornameid>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>5.0000</turnrate>
+    <animfile>units\villagers\indian_rickshaw.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\asians\shared\rickshaw\indian_rickshaw_icon.png</icon>
+    <portraiticon>resources\art\units\asians\shared\rickshaw\rickshaw1_icon_portrait.png</portraiticon>
+    <rollovertextid>301550</rollovertextid>
+    <shortrollovertextid>301550</shortrollovertextid>
+    <initialhitpoints>250.0000</initialhitpoints>
+    <maxhitpoints>250.0000</maxhitpoints>
+    <los>18.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>Civilian</unitaitype>
+    <trainpoints>2.5000</trainpoints>
+    <sharedbuildlimitunit>ypTradeMarketAsian</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>ypTradeMarketAsian</unittype>
+      <unittype>deIndianMarketRickshaw</unittype>
+      <unittype>deTrainIndianMarketRickshaw</unittype>
+    </sharedbuildlimitunittypes>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <allowedage>3</allowedage>
+    <armor type="Siege" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ValidIdleVillager</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>AbstractWagon</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>CannotConvertHill</unittype>
+    <unittype>Economic</unittype>
+    <unittype>EconomicUnit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <train row="0" page="0" column="0">zpWokouEmbassy</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>DeadReplacementWhenDestroyed</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <flag>DoNotQueue</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>coveredwagon.tactics</tactics>
+    <protoaction>
+      <name>Build</name>
+      <rate type="zpWokouEmbassy">3.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20364" name="zpNatMercWokouPirate">
+    <dbid>20364</dbid>
+    <displaynameid>62056</displaynameid>
+    <editornameid>301559</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>5.0000</maxvelocity>
+    <maxrunvelocity>7.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\asians\mercenaries\wokou_pirate\wokou_pirate.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\asians\mercenaries\wokou_pirate\wokou_pirate_icon_64.png</icon>
+    <portraiticon>resources\art\units\asians\mercenaries\wokou_pirate\wokou_pirate_icon_portrait.png</portraiticon>
+    <rollovertextid>62055</rollovertextid>
+    <shortrollovertextid>62054</shortrollovertextid>
+    <initialhitpoints>150.0000</initialhitpoints>
+    <maxhitpoints>150.0000</maxhitpoints>
+    <los>12.0000</los>
+    <unitaitype>HandCombative</unitaitype>
+    <trainpoints>33.0000</trainpoints>
+    <bounty>23.0000</bounty>
+    <buildbounty>23.0000</buildbounty>
+    <cost resourcetype="Gold">115.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Hand" value="0.3000">
+    </armor>
+    <sharedselectionunittypes>
+      <unittype>zpNatWokouPirate</unittype>
+    </sharedselectionunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractOutlaw</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>AbstractHandInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractWokou</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>MercType1</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Wanders</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>wokouInfantry.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CoverBuildingAttack</name>
+      <damage>6.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CoverHandAttack</name>
+      <damagebonus type="AbstractVillager">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">2.500000</damagebonus>
+      <damage>5.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>HandAttack</name>
+      <damagebonus type="AbstractVillager">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">2.500000</damagebonus>
+      <damage>10.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
     </protoaction>
   </unit>
  

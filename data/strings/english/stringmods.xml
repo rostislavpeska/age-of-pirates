@@ -243,7 +243,7 @@
       <string _locid="300241">Pacific Allies</string>
       <string _locid="300242">Sends a random legendary pirate ship</string>
       <string _locid="300243">Madame Ching</string>
-      <string _locid="300244">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nFloating Dragon \n\nMighty flagship. Wokou Pirate build limit increased.  \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nKamikaze (Fire Junks)</string>
+      <string _locid="300244">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nFloating Dragon \n\nMighty flagship. Wokou Pirate build limit increased.  \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nWokou Emissary</string>
       <string _locid="300245">Wokou Flagship with powerful broadside attack.</string>
       <string _locid="300246">The Emperess</string>
       <string _locid="300247">Choose a Wokou Pirate leader and get new special units and technologies.</string>
@@ -1544,6 +1544,22 @@
       <string _locid="301542">Treasure of Ponce de León</string>
       <string _locid="301543">Ships a Treasure Galleon which generates gold.</string>
       <string _locid="301544">Generates Gold. Works more efficient while being close to a Dock.</string>
+      <string _locid="301545">Wokou Emissary</string>
+      <string _locid="301546">ZP Wokou Embassy</string>
+      <string _locid="301547">Allows to send Wokou Shipments </string>
+      <string _locid="301548">Wokou Emissary Rickshaw</string>
+      <string _locid="301549">ZP Wokou Embassy Rickshaw</string>
+      <string _locid="301550">Can construct Wokou Emissary</string>
+      <string _locid="301551">Ships Wokou Emissary Rickshaw allowing you to construct Wokou Emissary and send Wokou shipments. Wokou outlaw population costs signifficantly decreased.</string>
+      <string _locid="301552">Wokou Expeditionary Company</string>
+      <string _locid="301553">Wokou Landing Group</string>
+      <string _locid="301554">Sends Wokou Pirates (Can be sent in always when bellow build limit: 21 per settlement)</string>
+      <string _locid="301555">Sends Wokou Junk full of Wokou Pirates (Can be sent in always when bellow build limit of each)</string>
+      <string _locid="301556">Sends 3 Fire Junks (Can be sent in always when bellow build limit: 10)</string>
+      <string _locid="301557">Wokou Expeditionary Army</string>
+      <string _locid="301558">Ships Wokou Pirates with a mighty cannon</string>
+      <string _locid="301559">ZP Nat Merc Wokou Pirate</string>
+
 
 
       <!-- ======================================== -->
