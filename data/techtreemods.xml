@@ -3227,7 +3227,7 @@
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatWokouMonk</target>
+        <target type="ProtoUnit">zpKoreanBombard</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpBlackmailing</effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
@@ -14458,7 +14458,7 @@
   <tech name="zpWokouCannonArmy" type="Normal">
     <dbid>40587</dbid>
     <displaynameid>301557</displaynameid>
-    <cost resourcetype="Gold">1400.0000</cost>
+    <cost resourcetype="Gold">2000.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\wokou_army_big.png</icon>
@@ -14470,6 +14470,10 @@
     </prereqs>
     <effects>
       <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="zpNatMercWokouPirate" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpKoreanBombard" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>

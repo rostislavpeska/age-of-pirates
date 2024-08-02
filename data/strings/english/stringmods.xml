@@ -215,8 +215,8 @@
       <string _locid="300213">Ships a Treasure Ship stolen by your Wokou alies with Sao Feng himself on board.</string>
       <string _locid="300214">Friendly Shipyard</string>
       <string _locid="300215">ZP SHP Destroyer</string>
-      <string _locid="300216">Matsura Takanobu</string>
-      <string _locid="300217">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWokou Archer \n\nNative archer. Shipments from foreign allies. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nPacific Allies (Random Legendary Ship)</string>
+      <string _locid="300216">Wang Zhi</string>
+      <string _locid="300217">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHongyipao Cannon \n\nHeavy Korean Cannon (native). \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nPacific Allies (Random Legendary Ship)</string>
       <string _locid="300218">The Iron Fleet</string>
       <string _locid="300219">Ships Fire Junks and enables you a Fire Junk training in your Dock.</string>
       <string _locid="300220">Destroyer</string>
@@ -1559,6 +1559,9 @@
       <string _locid="301557">Wokou Expeditionary Army</string>
       <string _locid="301558">Ships Wokou Pirates with a mighty cannon</string>
       <string _locid="301559">ZP Nat Merc Wokou Pirate</string>
+      <string _locid="301560">Hongyipao Cannon</string>
+      <string _locid="301561">ZP Korean Bombard</string>
+      <string _locid="301562">Superheavy Korean Cannon. Good against buildings but very  slow.</string>
 
 
 
