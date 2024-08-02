@@ -1544,7 +1544,7 @@ rmSetTriggerConditionParam("TechID","cTechzpTheBlackFlag"); //operator
 rmSetTriggerConditionParamInt("PlayerID",k);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPirates"); //operator
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPiratesMedi"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
@@ -1751,13 +1751,13 @@ rmSwitchToTrigger(rmTriggerID("GraceTrain1ONPlr"+k));
 rmAddTriggerCondition("Units in Area");
 rmSetTriggerConditionParam("DstObject","5");
 rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("UnitType","zpSPCBlackPearlProxy");
+rmSetTriggerConditionParam("UnitType","zpSPCPirateGalleassProxy");
 rmSetTriggerConditionParamInt("Dist",35);
 rmSetTriggerConditionParam("Op",">=");
 rmSetTriggerConditionParamInt("Count",1);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParam("TechID","cTechzpTrainBlackPearl1"); //operator
+rmSetTriggerEffectParam("TechID","cTechzpTrainSultana1"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
@@ -1904,7 +1904,7 @@ if (pirateCaptain==2)
    {
       rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesGrace"); //operator
+      rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesBarbarossa"); //operator
       rmSetTriggerEffectParamInt("Status",2);
    }
 if (pirateCaptain==3)
