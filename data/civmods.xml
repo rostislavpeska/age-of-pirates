@@ -69,7 +69,7 @@
       <tech>zpNativeWokou</tech>
     </agetech>
     <multipleblocktrain>
-      <building>TradingPost</building>
+      <building>zpWokouEmbassy</building>
       <multipleblockunit>zpNatWokouArmy</multipleblockunit>
       <units>
         <unit>ypWokouBlindMonk</unit>
@@ -91,73 +91,7 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
-      <building>zpSPCTreasureShip</building>
-      <multipleblockunit>zpNatWokouArmy</multipleblockunit>
-      <units>
-        <unit>ypWokouBlindMonk</unit>
-      </units>
-      <units>
-        <unit>ypWokouWanderingHorseman</unit>
-      </units>
-      <units>
-        <unit>ypWokouWaywardRonin</unit>
-      </units>
-      <unitcounts>
-        <count>3</count>
-      </unitcounts>
-      <unitcounts>
-        <count>1</count>
-      </unitcounts>
-      <unitcounts>
-        <count>2</count>
-      </unitcounts>
-    </multipleblocktrain>
-    <multipleblocktrain>
-      <building>zpWhiteFort</building>
-      <multipleblockunit>zpNatWokouArmy</multipleblockunit>
-      <units>
-        <unit>ypWokouBlindMonk</unit>
-      </units>
-      <units>
-        <unit>ypWokouWanderingHorseman</unit>
-      </units>
-      <units>
-        <unit>ypWokouWaywardRonin</unit>
-      </units>
-      <unitcounts>
-        <count>3</count>
-      </unitcounts>
-      <unitcounts>
-        <count>1</count>
-      </unitcounts>
-      <unitcounts>
-        <count>2</count>
-      </unitcounts>
-    </multipleblocktrain>
-    <multipleblocktrain>
-      <building>NativeEmbassy</building>
-      <multipleblockunit>zpNatWokouArmy</multipleblockunit>
-      <units>
-        <unit>ypWokouBlindMonk</unit>
-      </units>
-      <units>
-        <unit>ypWokouWanderingHorseman</unit>
-      </units>
-      <units>
-        <unit>ypWokouWaywardRonin</unit>
-      </units>
-      <unitcounts>
-        <count>3</count>
-      </unitcounts>
-      <unitcounts>
-        <count>1</count>
-      </unitcounts>
-      <unitcounts>
-        <count>2</count>
-      </unitcounts>
-    </multipleblocktrain>
-    <multipleblocktrain>
-      <building>ypWokouJunk</building>
+      <building>zpSPCCyprusFrigate</building>
       <multipleblockunit>zpNatWokouArmy</multipleblockunit>
       <units>
         <unit>ypWokouBlindMonk</unit>

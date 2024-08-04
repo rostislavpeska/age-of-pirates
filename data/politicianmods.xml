@@ -91,4 +91,18 @@
   </zpbigconsulatejapanesealliesclone>
   <zpconsulatepiratesdutchman portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/bernard_fokke.png">
   </zpconsulatepiratesdutchman>
+  <zpconsulatepiratesblackjack portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/blackjack.png">
+  </zpconsulatepiratesblackjack>
+  <zpconsulatewokousirigam portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/si_rigam.png">
+  </zpconsulatewokousirigam>
+  <zpconsulatepiratesbarbarossa portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/barbarossa.png">
+  </zpconsulatepiratesbarbarossa>
+  <zpconsulatewokouswallow portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/william_swallow.png">
+  </zpconsulatewokouswallow >
+
+  <!--TEST-->
+  <zpconsulatepiratesgraceclone portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/grace.png">
+  </zpconsulatepiratesgraceclone>
+  <zpconsulatepiratesblackcaesarclone portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/blackcaesar.png">
+  </zpconsulatepiratesblackcaesarclone>
 </politicianmods>

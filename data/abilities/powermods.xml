@@ -262,6 +262,26 @@
     <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
     <unitaction>SpawnArmoredTrain</unitaction>   
   </power>
+  <power name="zpFullSteam" type="GeneralEffect">
+    <displaynameid>110558</displaynameid>
+    <rolloverid>110559</rolloverid>
+    <icon>resources\images\icons\abilities\ability_full_steam.png</icon>
+    <minimapeventtime sendalertto="none">1</minimapeventtime>
+    <activetime>8</activetime>
+    <effect type="MaximumVelocity" relativity="Percent" amount="1.40">
+      <target type="ProtoUnit">zpSPCPirateSteamer</target>
+    </effect>
+    <effect type="MaximumVelocity" relativity="Percent" amount="1.40">
+      <target type="ProtoUnit">zpWokouSteamer</target>
+    </effect>
+    <effect type="MaximumVelocity" relativity="Percent" amount="1.40">
+      <target type="ProtoUnit">zpMercWokouSteamer</target>
+    </effect>
+    <messagealertplayerrelation>none</messagealertplayerrelation>
+    <placement forceonmap="1" ally="">unit</placement>
+    <allowduringnorush>1</allowduringnorush>
+    <soundset type="StartSound" listenertype="Caster">DEPowerFullSteam</soundset>
+  </power>
 
 
 

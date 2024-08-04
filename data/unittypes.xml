@@ -11,4 +11,5 @@
   <unittype>AbstractJamesGang</unittype>
   <unittype>AbstractAboriginalTracker</unittype>
   <unittype>AbstractSchool</unittype>
+  <unittype>AbstractTreasureShip</unittype>
 </unittypes>

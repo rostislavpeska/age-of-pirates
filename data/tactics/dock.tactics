@@ -98,6 +98,19 @@
     <active>0</active>
     <persistent>1</persistent>
   </action>
+
+  <action>
+    <name stringid="103417">GalleonAutogatherBonus</name>
+    <type>AutoRangedModify</type>
+    <maxrange>40</maxrange>
+    <modifyabstracttype>AbstractTreasureShip</modifyabstracttype>
+    <persistent>1</persistent>
+    <singleunit>1</singleunit>
+    <nostack>1</nostack>
+    <modifytype>AutoGatherAbsolute</modifytype>
+    <modifyamount>2.5</modifyamount>
+  </action>
+
   <tactic>Normal
     <action>SpawnSettler</action>
     <action>SpawnCoureur</action>
@@ -106,6 +119,7 @@
     <action>SpawnJapanese</action>
     <action>SpawnAsian</action>
     <action>SpawnIndian</action>
+    <action>GalleonAutogatherBonus</action>
     
     <action>Heal</action><action>SpawnBoat</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action priority="100">AntiShipAttack</action></tactic>
 </tactics>

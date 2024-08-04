@@ -1,0 +1,54 @@
+<animfile>
+	<definebone>BONE_MAIN</definebone>
+	<definebone>bone_banner</definebone>
+	<definebone>bone_garden</definebone>
+	<attachment>Venice_flag
+		<component>flag
+			<assetreference type="ClothFlag">
+				<flag>
+					<blending>alphatest_nocolor</blending>
+					<texture>objects\flags\pirate</texture>
+					<width>2.00</width><height>1.33</height>
+				</flag>
+			</assetreference>  
+		</component>
+		<anim>Idle
+			<component>flag</component>
+		</anim>
+	</attachment>
+	<attachment>
+            dock
+            <component>
+                dock
+                <assetreference type="GrannyModel">
+                    <file>uildings\asian_civs\consulate\garden7_Model</file>
+                </assetreference>
+            </component>
+            <anim>Idle<component>dock</component></anim>
+        </attachment>
+	<component>
+		garden
+		<assetreference type="GrannyModel">
+			<file>buildings\asian_civs\consulate\garden7_Model</file>
+		</assetreference>
+		<attach a="Venice_flag" frombone="ATTACHPOINT" tobone="bone_banner" syncanims="0"></attach>
+	</component>
+	<component>
+		DEAD
+		<assetreference type="GrannyModel">
+			<file>buildings\1death_anim\Deathmodel</file>
+		</assetreference>
+		<attach a="dock" frombone="MASTER" tobone="bone_falling_building" syncanims="0"></attach>
+	</component>
+	<anim>
+		Idle
+		<component>garden</component>
+	</anim>
+	<anim>
+		Death
+		<assetreference type="GrannyAnim">
+			<file>buildings\1death_anim\Deathmodel_Animation</file>
+		</assetreference>
+		<component>DEAD</component>
+	</anim>
+</animfile>

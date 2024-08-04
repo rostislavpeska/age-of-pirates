@@ -814,9 +814,10 @@ if (cNumberNonGaiaPlayers >= 4){
       rmSetAreaLocation(eastIslandVillage1, rmXMetersToFraction(xsVectorGetX(malteseControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(malteseControllerLoc1)));
       rmSetAreaCoherence(eastIslandVillage1, 0.8);
       rmSetAreaSmoothDistance(eastIslandVillage1, 5);
+      rmSetAreaBaseHeight(eastIslandVillage1, 5.0);
       rmSetAreaCliffType(eastIslandVillage1, "ZP Malta Desert Grass");
-      rmSetAreaCliffEdge(eastIslandVillage1, 4, 0.18, 0.0, 0.0, 2); 
-      rmSetAreaCliffHeight(eastIslandVillage1, 4.0, 0.0, 0.5); 
+      rmSetAreaCliffEdge(eastIslandVillage1, 2, 0.40, 0.0, 0.0, 2); 
+      rmSetAreaCliffHeight(eastIslandVillage1, 2.0, 0.0, 0.5); 
       rmSetAreaElevationVariation(eastIslandVillage1, 0.0);
       rmBuildArea(eastIslandVillage1);
 
@@ -856,8 +857,9 @@ if (cNumberNonGaiaPlayers >= 4){
       rmSetAreaCoherence(eastIslandVillage2, 0.8);
       rmSetAreaSmoothDistance(eastIslandVillage2, 5);
       rmSetAreaCliffType(eastIslandVillage2, "ZP Malta Desert Grass");
-      rmSetAreaCliffEdge(eastIslandVillage2, 4, 0.18, 0.0, 0.0, 2); 
-      rmSetAreaCliffHeight(eastIslandVillage2, 4.0, 0.0, 0.5); 
+      rmSetAreaBaseHeight(eastIslandVillage2, 5.0);
+      rmSetAreaCliffEdge(eastIslandVillage2, 2, 0.40, 0.0, 0.0, 2); 
+      rmSetAreaCliffHeight(eastIslandVillage2, 2.0, 0.0, 0.5); 
       rmSetAreaElevationVariation(eastIslandVillage2, 0.0);
       rmBuildArea(eastIslandVillage2);
 
@@ -886,8 +888,9 @@ if (cNumberNonGaiaPlayers >= 4){
       rmSetAreaCoherence(eastIslandVillage5, 0.8);
       rmSetAreaSmoothDistance(eastIslandVillage5, 5);
       rmSetAreaCliffType(eastIslandVillage5, "ZP Malta Desert Grass");
-      rmSetAreaCliffEdge(eastIslandVillage5, 4, 0.18, 0.0, 0.0, 2); 
-      rmSetAreaCliffHeight(eastIslandVillage5, 4.0, 0.0, 0.5); 
+      rmSetAreaBaseHeight(eastIslandVillage5, 5.0);
+      rmSetAreaCliffEdge(eastIslandVillage5, 2, 0.40, 0.0, 0.0, 2); 
+      rmSetAreaCliffHeight(eastIslandVillage5, 2.0, 0.0, 0.5); 
       rmSetAreaElevationVariation(eastIslandVillage5, 0.0);
       rmBuildArea(eastIslandVillage5);
 
@@ -921,8 +924,9 @@ if (cNumberNonGaiaPlayers >= 4){
       rmSetAreaCoherence(eastIslandVillage3, 0.8);
       rmSetAreaSmoothDistance(eastIslandVillage3, 5);
       rmSetAreaCliffType(eastIslandVillage3, "ZP Malta Desert Grass");
-      rmSetAreaCliffEdge(eastIslandVillage3, 4, 0.18, 0.0, 0.0, 2); 
-      rmSetAreaCliffHeight(eastIslandVillage3, 4.0, 0.0, 0.5); 
+      rmSetAreaBaseHeight(eastIslandVillage3, 5.0);
+      rmSetAreaCliffEdge(eastIslandVillage3, 2, 0.40, 0.0, 0.0, 2); 
+      rmSetAreaCliffHeight(eastIslandVillage3, 2.0, 0.0, 0.5); 
       rmSetAreaElevationVariation(eastIslandVillage3, 0.0);
       rmBuildArea(eastIslandVillage3);
 
@@ -953,8 +957,9 @@ if (cNumberNonGaiaPlayers >= 4){
       rmSetAreaCoherence(eastIslandVillage4, 0.8);
       rmSetAreaSmoothDistance(eastIslandVillage4, 5);
       rmSetAreaCliffType(eastIslandVillage4, "ZP Malta Desert Grass");
-      rmSetAreaCliffEdge(eastIslandVillage4, 4, 0.18, 0.0, 0.0, 2); 
-      rmSetAreaCliffHeight(eastIslandVillage4, 4.0, 0.0, 0.5); 
+      rmSetAreaBaseHeight(eastIslandVillage4, 5.0);
+      rmSetAreaCliffEdge(eastIslandVillage4, 2, 0.40, 0.0, 0.0, 2); 
+      rmSetAreaCliffHeight(eastIslandVillage4, 2.0, 0.0, 0.5); 
       rmSetAreaElevationVariation(eastIslandVillage4, 0.0);
       rmBuildArea(eastIslandVillage4);
       
@@ -981,8 +986,9 @@ if (cNumberNonGaiaPlayers >= 4){
       rmSetAreaCoherence(eastIslandVillage6, 0.8);
       rmSetAreaSmoothDistance(eastIslandVillage6, 5);
       rmSetAreaCliffType(eastIslandVillage6, "ZP Malta Desert Grass");
-      rmSetAreaCliffEdge(eastIslandVillage6, 4, 0.18, 0.0, 0.0, 2); 
-      rmSetAreaCliffHeight(eastIslandVillage6, 4.0, 0.0, 0.5); 
+      rmSetAreaBaseHeight(eastIslandVillage6, 5.0);
+      rmSetAreaCliffEdge(eastIslandVillage6, 2, 0.40, 0.0, 0.0, 2); 
+      rmSetAreaCliffHeight(eastIslandVillage6, 2.0, 0.0, 0.5); 
       rmSetAreaElevationVariation(eastIslandVillage6, 0.0);
       rmBuildArea(eastIslandVillage6);
 
@@ -1629,7 +1635,7 @@ rmSetTriggerConditionParam("TechID","cTechzpTheBlackFlag"); //operator
 rmSetTriggerConditionParamInt("PlayerID",k);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPirates"); //operator
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPiratesMedi"); //operator
 rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",k);
@@ -1919,13 +1925,13 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmAddTriggerCondition("Units in Area");
    rmSetTriggerConditionParam("DstObject","282");
    rmSetTriggerConditionParamInt("Player",k);
-   rmSetTriggerConditionParam("UnitType","zpSPCBlackPearlProxy");
+   rmSetTriggerConditionParam("UnitType","zpSPCPirateGalleassProxy");
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("Op",">=");
    rmSetTriggerConditionParamInt("Count",1);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
-   rmSetTriggerEffectParam("TechID","cTechzpTrainBlackPearl2"); //operator
+   rmSetTriggerEffectParam("TechID","cTechzpTrainSultana2"); //operator
    rmSetTriggerEffectParamInt("Status",2);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip2TIMEPlr"+k));
@@ -2028,13 +2034,13 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
    rmAddTriggerCondition("Units in Area");
    rmSetTriggerConditionParam("DstObject","9");
    rmSetTriggerConditionParamInt("Player",k);
-   rmSetTriggerConditionParam("UnitType","zpSPCBlackPearlProxy");
+   rmSetTriggerConditionParam("UnitType","zpSPCPirateGalleassProxy");
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("Op",">=");
    rmSetTriggerConditionParamInt("Count",1);
    rmAddTriggerEffect("ZP Set Tech Status (XS)");
    rmSetTriggerEffectParamInt("PlayerID",k);
-   rmSetTriggerEffectParam("TechID","cTechzpTrainBlackPearl1"); //operator
+   rmSetTriggerEffectParam("TechID","cTechzpTrainSultana1"); //operator
    rmSetTriggerEffectParamInt("Status",2);
    rmAddTriggerEffect("Fire Event");
    rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
@@ -2248,7 +2254,7 @@ if (pirateCaptain==2)
    {
       rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesGrace"); //operator
+      rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesBarbarossa"); //operator
       rmSetTriggerEffectParamInt("Status",2);
    }
 if (pirateCaptain==3)
