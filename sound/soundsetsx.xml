@@ -1824,11 +1824,11 @@
     </sound>
   </soundset>
   <soundset name="BlackJack_Ship_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
-    <sound filename="aussie\Blackjack_Ship_Move01.wav" volume="1.0000">
+    <sound filename="aussie\Blackjack_Ship_Move01.wav" volume="1.5000">
     </sound>
-    <sound filename="aussie\Blackjack_Ship_Move02.wav" volume="1.0000">
+    <sound filename="aussie\Blackjack_Ship_Move02.wav" volume="1.5000">
     </sound>
-    <sound filename="aussie\Blackjack_Ship_Move03.wav" volume="1.0000">
+    <sound filename="aussie\Blackjack_Ship_Move03.wav" volume="1.5000">
     </sound>
   </soundset>
   <soundset name="BlackJack_Ship_Select" volume="1.0000" maxnum="4" distance="1.0000">
@@ -1853,6 +1853,12 @@
     <sound filename="zp_misc\Cyprus_ship_Acknowledge02.wav" volume="1.0000">
     </sound>
     <sound filename="zp_misc\Cyprus_ship_Acknowledge03.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Berber_Ship_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="zp_misc\Berber_ship_Acknowledge01.wav" volume="1.0000">
+    </sound>
+    <sound filename="zp_misc\Berber_ship_Acknowledge02.wav" volume="1.0000">
     </sound>
   </soundset>
 </soundsetdef>
