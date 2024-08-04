@@ -1365,7 +1365,7 @@
     </protoaction>
   </unit>
   <unit id="20014" name="zpNatPirateBlackPearl">
-    <dbid>20004</dbid>
+    <dbid>20014</dbid>
     <displaynameid>300046</displaynameid>
     <editornameid>300047</editornameid>
     <subciv>NatPirates</subciv>
@@ -21384,7 +21384,7 @@
     <command page="1" column="0">zpBuildTrainStationInactive</command>
   </unit>
   <unit id="20221" name="spSocketTrainStationB">
-    <dbid>20222</dbid>
+    <dbid>20221</dbid>
     <displaynameid>301064</displaynameid>
     <editornameid>301070</editornameid>
     <socketbuildprotounit>zpTrainStationB</socketbuildprotounit>
