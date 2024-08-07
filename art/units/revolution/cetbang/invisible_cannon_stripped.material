@@ -1,0 +1,74 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="units\spc\russian_cannon\textures\papal_cannon_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\russian_cannon\textures\papal_cannon_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+       <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="units\mercenaries\zouave\textures\papal_zouave_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\mercenaries\zouave\textures\papal_zouave_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+       <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="units\mercenaries\zouave\textures\papal_zouave_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\mercenaries\zouave\textures\papal_zouave_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+       <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="units\spc\russian_cannon\textures\cannon_brush_matD_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\russian_cannon\textures\cannon_brush_matD_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+       <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="units\spc\russian_cannon\textures\cannon_loader_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\russian_cannon\textures\cannon_loader_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matf">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+       <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="units\mercenaries\zouave\textures\papal_zouave_hat_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\mercenaries\zouave\textures\papal_zouave_hat_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

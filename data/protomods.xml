@@ -619,6 +619,7 @@
     <train row="0" page="0" column="84">zpNatMalteseKnight</train>
     <train row="0" page="0" column="85">zpNatWokouPirate</train>
     <train row="0" page="0" column="86">zpNatWokouMonk</train>
+    <train row="0" page="0" column="87">zpKoreanBombard</train>
     <train row="0" page="0" column="88">zpNatSoheiProxy</train>
     <train row="0" page="0" column="89">zpNatSoheiArcher</train>
     <train row="0" page="0" column="89">zpNatSoheiCavalry</train>
@@ -31076,8 +31077,8 @@
     <turnrate>3.0000</turnrate>
     <animfile>units\revolution\cetbang\korean_bombard.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\units\natives\pirate_cetbang_icon.png</icon>
-    <portraiticon>resources\art\units\natives\pirate_cetbang_portrait.png</portraiticon>
+    <icon>resources\art\units\natives\korean_bombard_icon.png</icon>
+    <portraiticon>resources\art\units\natives\korean_bombard_portrait.png</portraiticon>
     <rollovertextid>301562</rollovertextid>
     <shortrollovertextid>301562</shortrollovertextid>
     <initialhitpoints>460.0000</initialhitpoints>
@@ -31088,7 +31089,7 @@
     <trainpoints>30.0000</trainpoints>
     <bounty>30.0000</bounty>
     <buildbounty>30.0000</buildbounty>
-    <cost resourcetype="Gold">550.0000</cost>
+    <cost resourcetype="Gold">450.0000</cost>
     <cost resourcetype="Wood">150.0000</cost>
     <allowedage>2</allowedage>
     <armor type="Ranged" value="0.7500">
@@ -31132,7 +31133,7 @@
     <tactics>leathercannon.tactics</tactics>
     <protoaction>
       <name>CannonAttack</name>
-      <damage>180.000000</damage>
+      <damage>160.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>26.000000</maxrange>
       <rof>4.000000</rof>

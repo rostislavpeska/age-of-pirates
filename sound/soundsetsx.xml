@@ -1861,4 +1861,44 @@
     <sound filename="zp_misc\Berber_ship_Acknowledge02.wav" volume="1.0000">
     </sound>
   </soundset>
+
+  <soundset name="Blackbeard_Select" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="zp_misc\Blackbeard_selection01.wav" volume="1.0000">
+    </sound>
+    <sound filename="zp_misc\Blackbeard_selection03.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Blackbeard_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="zp_misc\Blackbeard_move01.wav" volume="1.0000">
+    </sound>
+    <sound filename="zp_misc\Blackbeard_move02.wav" volume="1.0000">
+    </sound>
+    <sound filename="zp_misc\Blackbeard_move03.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Blackbeard_Attack" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="zp_misc\Blackbeard_attack01.wav" volume="1.0000">
+    </sound>
+    <sound filename="zp_misc\Blackbeard_attack02.wav" volume="1.0000">
+    </sound>
+    <sound filename="zp_misc\Blackbeard_attack03.wav" volume="1.0000">
+    </sound>
+  </soundset>
+
+  <soundset name="Nemo_Select" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="zp_misc\Battlecruiser_Select01.wav" volume="1.0000">
+    </sound>
+    <sound filename="zp_misc\Battlecruiser_Select02.wav" volume="1.0000">
+    </sound>
+    <sound filename="zp_misc\Battlecruiser_Select03.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Nemo_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="zp_misc\Battlecruiser_Move01.wav" volume="1.0000">
+    </sound>
+    <sound filename="zp_misc\Battlecruiser_Move02.wav" volume="1.0000">
+    </sound>
+    <sound filename="zp_misc\Battlecruiser_Move03.wav" volume="1.0000">
+    </sound>
+  </soundset>
 </soundsetdef>

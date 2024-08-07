@@ -15,22 +15,23 @@
             <component>battlefield_smoke</component>
         </anim>
     </attachment>
-    <attachment>hat
-        <component>hat
-            <assetreference type="GrannyModel">
-                <file>units\infantry_ranged\musketeer\musketeer_3age_hat</file>
-            </assetreference>
-        </component>
-        <anim>Idle
-            <component>hat</component>
-        </anim>
-    </attachment>
+    <attachment>hat<component>hat<assetreference type="GrannyModel"><file>units/asians/shared/peasant/hat_irr</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
     <attachment>stick
         <include>units\attachments\flaming_stick.xml</include>
     </attachment>
+    <attachment>clickzone
+        <component>clickzone
+            <assetreference type="GrannyModel">
+                <file>units\revolution\cetbang\invisible_cetbang</file>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>clickzone</component>
+        </anim>
+    </attachment>
     <component>cannon_Stripped
         <assetreference type="GrannyModel">
-            <file>units\spc\russian_cannon\papal_cannon_stripped</file>
+            <file>units\revolution\cetbang\korean_bombard</file>
         </assetreference>
         <decal>
             <effecttype>default</effecttype>
@@ -44,6 +45,7 @@
             <width>1.75</width>
             <height>2.00</height>
         </watersplash>
+        <attach a="clickzone" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
     </component>
     <anim>Walk
         <assetreference type="GrannyAnim">
