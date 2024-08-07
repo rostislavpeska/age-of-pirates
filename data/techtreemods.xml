@@ -14481,6 +14481,15 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpAotWKhmers" type="Normal">
+    <dbid>40588</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status ="Active">Age0Khmers</techstatus>
+    </prereqs>
+  </tech>
   
 
 
