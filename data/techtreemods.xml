@@ -10955,6 +10955,8 @@
       </effect>
       <effect type="TechStatus" status="unobtainable">DETradeRouteUpgrade1Enable</effect>
       <effect type="TechStatus" status="unobtainable">DETradeRouteUpgrade2Enable</effect>
+      <effect type="TechStatus" status="unobtainable">zpTradeRouteUpgradeAustralia1</effect>
+      <effect type="TechStatus" status="unobtainable">zpTradeRouteUpgradeAustralia2</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffScientistsLand" type="Normal">

@@ -1466,7 +1466,7 @@
       <string _locid="301464">Barbarossa's Flagship</string>
       <string _locid="301465">Mighty Pirate Galley</string>
       <string _locid="301466">Hayreddin Barbarossa</string>
-      <string _locid="301467">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nSultana \n\nHeavy corsair galley, all Buccaneers become Corsairs. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nCorsair Embassy</string>
+      <string _locid="301467">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nSultana \n\nHeavy corsair galley, all Buccaneers become Corsairs. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nCorsair Emissary</string>
       <string _locid="301468">Corsair Emissary</string>
       <string _locid="301469">Ships Corsair Emissary Wagon allowing you to build a Corsair Emmissary providing you with more techs and shipments.</string>
       <string _locid="301470">ZP Corsair Embassy</string>
@@ -1562,6 +1562,9 @@
       <string _locid="301560">Hongyipao Cannon</string>
       <string _locid="301561">ZP Korean Bombard</string>
       <string _locid="301562">Superheavy Korean Cannon. Good against buildings but very  slow.</string>
+      <string _locid="301563">Blue Mountains</string>
+      <string _locid="301564">Team map with mountains dividing the team areas. \n\nSettlements: Aboriginal Australians, Inventors (land variation with armored train)</string>
+      <string _locid="301565">Build railways along the blue mountains and make alliance with the natives.</string>
 
 
 

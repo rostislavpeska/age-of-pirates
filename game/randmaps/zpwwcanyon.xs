@@ -1488,7 +1488,7 @@ void main(void)
 
 	// Cooldowns
 	int armoredTrainActive = 90;
-	int armoredTrainCooldown = 10; //300
+	int armoredTrainCooldown = 300;
 	int armoredTrainCooldown2 = 240;
 	int noStations = 2;
 	int trainDirection = 22;
