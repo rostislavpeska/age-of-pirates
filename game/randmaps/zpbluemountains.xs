@@ -220,7 +220,7 @@ void main(void)
 	// Native Constraints
 	int AvoidAboriginals=rmCreateTypeDistanceConstraint("stay away from Aboriginal", "zpSocketAboriginals", 25.0);
 	int AvoidAboriginalsLong=rmCreateTypeDistanceConstraint("stay away from Aboriginal Long", "zpSocketAboriginals", 50.0);
-	int avoidInventors=rmCreateTypeDistanceConstraint("stay away from Maltese", "zpSocketScientists", 25.0);
+	int avoidInventors=rmCreateTypeDistanceConstraint("stay away from Maltese", "zpSocketScientists", 35.0);
 	int avoidTownCenterFar=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 40.0);
 	int avoidTradeSocket=rmCreateTypeDistanceConstraint("stay away from Trade Socket", "SocketTradeRoute", 25.0);
 	int avoidTradeSocketShort=rmCreateTypeDistanceConstraint("stay away from Trade Socket Short", "SocketTradeRoute", 25.0);
@@ -613,7 +613,7 @@ void main(void)
 	// Mountain Terrain
 
 	int mountainsID=rmCreateArea("italy mountains"); 
-	rmSetAreaSize(mountainsID, 0.3, 0.3);
+	rmSetAreaSize(mountainsID, 0.27, 0.27);
     rmSetAreaLocation(mountainsID, 0.5, 0.5);
     rmSetAreaCoherence(mountainsID, 0.5);
     rmSetAreaSmoothDistance(mountainsID, 15);
@@ -863,8 +863,8 @@ void main(void)
 	// Starting mines
 	int playerGoldID = rmCreateObjectDef("player mine");
 	rmAddObjectDefItem(playerGoldID, "minegold", 1, 0);
-	rmSetObjectDefMinDistance(playerGoldID, 12.0);
-	rmSetObjectDefMaxDistance(playerGoldID, 20.0);
+	rmSetObjectDefMinDistance(playerGoldID, 8.0);
+	rmSetObjectDefMaxDistance(playerGoldID, 25.0);
 	rmAddObjectDefToClass(playerGoldID, classStartingResource);
 	rmAddObjectDefConstraint(playerGoldID, avoidTradeRouteSocketMin);
 	rmAddObjectDefConstraint(playerGoldID, avoidTrainStationA);
@@ -872,6 +872,7 @@ void main(void)
 	rmAddObjectDefConstraint(playerGoldID, avoidStartingResourcesShort);
 	rmAddObjectDefConstraint(playerGoldID, avoidTradeRouteMin);
 	rmAddObjectDefConstraint(playerGoldID, avoidImpassableLand);
+	rmAddObjectDefConstraint(playerGoldID, avoidMountains);
 	rmAddObjectDefConstraint(playerGoldID, longPlayerEdgeConstraint);
 
 	// Starting Trees
@@ -887,6 +888,7 @@ void main(void)
 	rmAddObjectDefConstraint(playerTreeID, avoidTrainStationA);
 	rmAddObjectDefConstraint(playerTreeID, avoidTrainStationB);
 	rmAddObjectDefConstraint(playerTreeID, avoidTradeRouteSocketMin);
+	rmAddObjectDefConstraint(playerTreeID, avoidMountains);
 	rmAddObjectDefConstraint(playerTreeID, longPlayerEdgeConstraint);
 
 	// Starting berries
@@ -901,7 +903,23 @@ void main(void)
 	rmAddObjectDefConstraint(playerBerriesID, avoidTrainStationA);
 	rmAddObjectDefConstraint(playerBerriesID, avoidTrainStationB);
 	rmAddObjectDefConstraint(playerBerriesID, avoidTradeRouteMin);
+	rmAddObjectDefConstraint(playerBerriesID, avoidMountains);
 	rmAddObjectDefConstraint(playerBerriesID, longPlayerEdgeConstraint);
+
+	// Starting herds
+	int playerHerdID = rmCreateObjectDef("starting herd");
+	rmAddObjectDefItem(playerHerdID, "zpEmu", 6, 4.0);
+	rmSetObjectDefMinDistance(playerHerdID, 12);
+	rmSetObjectDefMaxDistance(playerHerdID, 25);
+	rmSetObjectDefCreateHerd(playerHerdID, true);
+	rmAddObjectDefToClass(playerHerdID, classStartingResource);		
+	rmAddObjectDefConstraint(playerHerdID, avoidStartingResourcesShort);
+	rmAddObjectDefConstraint(playerHerdID, avoidTradeRouteSocketMin);
+	rmAddObjectDefConstraint(playerHerdID, avoidTrainStationA);
+	rmAddObjectDefConstraint(playerHerdID, avoidTrainStationB);
+	rmAddObjectDefConstraint(playerHerdID, avoidTradeRouteMin);
+	rmAddObjectDefConstraint(playerHerdID, avoidMountains);
+	rmAddObjectDefConstraint(playerHerdID, longPlayerEdgeConstraint);
 
 	// Starting treasures
 	int playerNuggetID = rmCreateObjectDef("player nugget"); 
@@ -915,6 +933,7 @@ void main(void)
 	rmAddObjectDefConstraint(playerNuggetID, avoidTradeRouteMin);
 	rmAddObjectDefConstraint(playerNuggetID, avoidTrainStationA);
 	rmAddObjectDefConstraint(playerNuggetID, avoidTrainStationB);
+	rmAddObjectDefConstraint(playerNuggetID, avoidMountains);
 	rmAddObjectDefConstraint(playerNuggetID, longPlayerEdgeConstraint);
 
 	// Fake Frouping to fix the auto-grouping TC bug
@@ -938,7 +957,7 @@ void main(void)
 		rmPlaceObjectDefAtLoc(playerGoldID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 		rmPlaceObjectDefAtLoc(startingUnits, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 		rmPlaceObjectDefAtLoc(playerNuggetID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-		
+		rmPlaceObjectDefAtLoc(playerHerdID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 
     }
 
@@ -1148,7 +1167,7 @@ void main(void)
 
 	// Place some extra deer herds.  
 	int deerHerdID=rmCreateObjectDef("northern deer herd");
-	rmAddObjectDefItem(deerHerdID, "zpEmu", rmRandInt(4,7), 6.0);
+	rmAddObjectDefItem(deerHerdID, "zpRedKangaroo", rmRandInt(4,6), 6.0);
 	rmSetObjectDefCreateHerd(deerHerdID, true);
 	rmSetObjectDefMinDistance(deerHerdID, rmXFractionToMeters(0.03));
 	rmSetObjectDefMaxDistance(deerHerdID, rmXFractionToMeters(0.45));
@@ -1162,14 +1181,15 @@ void main(void)
 	rmAddObjectDefConstraint(deerHerdID, deerConstraint);
 	rmAddObjectDefConstraint(deerHerdID, avoidMountains);
 	rmAddObjectDefConstraint(deerHerdID, southEast);
-	numTries=cNumberNonGaiaPlayers;
+	rmAddObjectDefConstraint(deerHerdID, avoidKangaroos);
+	numTries=cNumberNonGaiaPlayers/2;
 	for (i=0; <numTries)
 	{
 		rmPlaceObjectDefAtLoc(deerHerdID, 0, 0.5, 0.5);
 	}
 
 	int deerHerdID2=rmCreateObjectDef("southern deer herd");
-	rmAddObjectDefItem(deerHerdID2, "zpEmu", rmRandInt(4,7), 6.0);
+	rmAddObjectDefItem(deerHerdID2, "zpRedKangaroo", rmRandInt(4,6), 6.0);
 	rmSetObjectDefCreateHerd(deerHerdID2, true);
 	rmSetObjectDefMinDistance(deerHerdID2, rmXFractionToMeters(0.03));
 	rmSetObjectDefMaxDistance(deerHerdID2, rmXFractionToMeters(0.45));
@@ -1183,14 +1203,15 @@ void main(void)
 	rmAddObjectDefConstraint(deerHerdID2, deerConstraint);
 	rmAddObjectDefConstraint(deerHerdID2, northWest);
 	rmAddObjectDefConstraint(deerHerdID2, avoidMountains);
-	numTries=cNumberNonGaiaPlayers;
+	rmAddObjectDefConstraint(deerHerdID2, avoidKangaroos);
+	numTries=cNumberNonGaiaPlayers/2;
 	for (i=0; <numTries)
 	{
 		rmPlaceObjectDefAtLoc(deerHerdID2, 0, 0.5, 0.5);
 	}
 
 	int deerHerdID3=rmCreateObjectDef("middle deer herd");
-	rmAddObjectDefItem(deerHerdID3, "zpEmu", rmRandInt(4,7), 6.0);
+	rmAddObjectDefItem(deerHerdID3, "zpEmu", rmRandInt(7,10), 6.0);
 	rmSetObjectDefCreateHerd(deerHerdID3, true);
 	rmSetObjectDefMinDistance(deerHerdID3, rmXFractionToMeters(0.03));
 	rmSetObjectDefMaxDistance(deerHerdID3, rmXFractionToMeters(0.45));
