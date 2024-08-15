@@ -176,7 +176,7 @@ int avoidImportantItemNatives = rmCreateClassDistanceConstraint("secrets etc avo
 int avoidAll=rmCreateTypeDistanceConstraint("avoid all", "all", 4.0);
 int avoidKOTH=rmCreateTypeDistanceConstraint("stay away from Kings Hill", "ypKingsHill", 30.0);
 int avoidKOTHshort=rmCreateTypeDistanceConstraint("stay away from Kings Hill short", "ypKingsHill", 8.0);
-int avoidPlayerCenter=rmCreateTypeDistanceConstraint("stay away from PlayerCenter", "zpSPCWaterSpawnPoint", 12.0);
+int avoidPlayerCenter=rmCreateTypeDistanceConstraint("stay away from PlayerCenter", "zpSPCWaterSpawnPoint", 13.0);
 
 // flag constraints
 int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 15.0);
@@ -242,8 +242,8 @@ else
     weird = 0;
 
 if (cNumberNonGaiaPlayers <=2){
-    rmSetPlacementSection(0.125, 0.124);
-    rmPlacePlayersCircular(0.10, 0.10, 0);
+    rmSetPlacementSection(0.375, 0.374);
+    rmPlacePlayersCircular(0.11, 0.11, 0);
 }
 if (cNumberNonGaiaPlayers ==3){
     rmSetPlacementSection(0.125, 0.791);
@@ -708,12 +708,11 @@ rmSetAreaTerrainType(basecliffID2, "lava\volcano_grass");
 rmSetAreaCliffEdge(basecliffID2, 1, 1.00, 0.0, 0.0, 2); 
 rmSetAreaCliffPainting(basecliffID2, true, true, true, 1.5, true);
 rmSetAreaCliffHeight(basecliffID2, 0, 0.1, 0.5);
-
-    rmSetAreaBaseHeight(basecliffID2, 6.0);
-
+rmSetAreaBaseHeight(basecliffID2, 6.0);
 rmSetAreaLocation(basecliffID2, 0.5, 0.5);
 rmAddAreaToClass(basecliffID2, classHighMountains);
 rmAddAreaConstraint(basecliffID2, avoidKOTHshort);
+rmAddAreaConstraint(basecliffID2, avoidPlayerCenter);	
 //rmSetAreaReveal(basecliffID2, 1);
 rmBuildArea(basecliffID2);
 
@@ -725,6 +724,7 @@ rmSetAreaLocation(fujiPeaklvl3, 0.5, 0.5);
 rmSetAreaTerrainType(fujiPeaklvl3, "lava\volcano_grass");
 rmSetAreaBaseHeight(fujiPeaklvl3, 11.0);
 rmAddAreaConstraint(fujiPeaklvl3, avoidKOTHshort);
+rmAddAreaConstraint(fujiPeaklvl3, avoidPlayerCenter);
 rmSetAreaSmoothDistance(fujiPeaklvl3, 50);
 rmSetAreaCoherence(fujiPeaklvl3, .7);
 rmBuildArea(fujiPeaklvl3);  
@@ -741,7 +741,8 @@ rmBuildArea(volcanoMountainTerrain3);
 int basecliffID31 = rmCreateArea("base cliff31");
 rmSetAreaSize(basecliffID31, rmAreaTilesToFraction(160.0), rmAreaTilesToFraction(160.0));
 rmSetAreaWarnFailure(basecliffID31, false);
-rmSetAreaObeyWorldCircleConstraint(basecliffID31, false);		
+rmSetAreaObeyWorldCircleConstraint(basecliffID31, false);
+rmAddAreaConstraint(basecliffID31, avoidPlayerCenter);		
 rmAddAreaToClass(basecliffID31, rmClassID("classPlateau"));
 rmSetAreaElevationVariation(basecliffID31, 5);
 rmSetAreaCoherence(basecliffID31, .6);
@@ -760,7 +761,8 @@ rmBuildArea(basecliffID31);
 int basecliffID32 = rmCreateArea("base cliff32");
 rmSetAreaSize(basecliffID32, rmAreaTilesToFraction(160.0), rmAreaTilesToFraction(160.0));
 rmSetAreaWarnFailure(basecliffID32, false);
-rmSetAreaObeyWorldCircleConstraint(basecliffID32, false);		
+rmSetAreaObeyWorldCircleConstraint(basecliffID32, false);
+rmAddAreaConstraint(basecliffID32, avoidPlayerCenter);		
 rmAddAreaToClass(basecliffID32, rmClassID("classPlateau"));
 rmSetAreaElevationVariation(basecliffID32, 5);
 rmSetAreaCoherence(basecliffID32, .6);
@@ -779,7 +781,8 @@ rmBuildArea(basecliffID32);
 int basecliffID33 = rmCreateArea("base cliff33");
 rmSetAreaSize(basecliffID33, rmAreaTilesToFraction(160.0), rmAreaTilesToFraction(160.0));
 rmSetAreaWarnFailure(basecliffID33, false);
-rmSetAreaObeyWorldCircleConstraint(basecliffID33, false);		
+rmSetAreaObeyWorldCircleConstraint(basecliffID33, false);	
+rmAddAreaConstraint(basecliffID33, avoidPlayerCenter);	
 rmAddAreaToClass(basecliffID33, rmClassID("classPlateau"));
 rmSetAreaElevationVariation(basecliffID33, 5);
 rmSetAreaCoherence(basecliffID33, .6);
@@ -798,7 +801,8 @@ rmBuildArea(basecliffID33);
 int basecliffID34 = rmCreateArea("base cliff34");
 rmSetAreaSize(basecliffID34, rmAreaTilesToFraction(160.0), rmAreaTilesToFraction(160.0));
 rmSetAreaWarnFailure(basecliffID34, false);
-rmSetAreaObeyWorldCircleConstraint(basecliffID34, false);		
+rmSetAreaObeyWorldCircleConstraint(basecliffID34, false);	
+rmAddAreaConstraint(basecliffID34, avoidPlayerCenter);	
 rmAddAreaToClass(basecliffID34, rmClassID("classPlateau"));
 rmSetAreaElevationVariation(basecliffID34, 5);
 rmSetAreaCoherence(basecliffID34, .6);
@@ -822,6 +826,7 @@ rmSetAreaLocation(fujiPeaklvl4, 0.5, 0.5);
 rmSetAreaTerrainType(fujiPeaklvl4, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeaklvl4, 15.0);
 rmAddAreaConstraint(fujiPeaklvl4, avoidKOTHshort);
+rmAddAreaConstraint(fujiPeaklvl4, avoidPlayerCenter);
 rmSetAreaSmoothDistance(fujiPeaklvl4, 40);
 rmSetAreaCoherence(fujiPeaklvl4, .8);
 rmBuildArea(fujiPeaklvl4);  
@@ -844,6 +849,7 @@ rmSetAreaElevationVariation(basecliffID41, 3);
 rmSetAreaLocation(basecliffID41, 0.5+rmXTilesToFraction(7), 0.5-rmXTilesToFraction(7));
 rmAddAreaConstraint(basecliffID41, avoidKOTHshort);
 rmAddAreaConstraint(basecliffID41, cliffAvoidTradeRoute);
+rmAddAreaConstraint(basecliffID41, avoidPlayerCenter);
 rmBuildArea(basecliffID41);
 
 int basecliffID42 = rmCreateArea("base cliff42");
@@ -864,6 +870,7 @@ rmSetAreaElevationVariation(basecliffID42, 3);
 rmSetAreaLocation(basecliffID42, 0.5-rmXTilesToFraction(7), 0.5-rmXTilesToFraction(7));
 rmAddAreaConstraint(basecliffID42, avoidKOTHshort);
 rmAddAreaConstraint(basecliffID42, cliffAvoidTradeRoute);
+rmAddAreaConstraint(basecliffID42, avoidPlayerCenter);
 rmBuildArea(basecliffID42);
 
 int basecliffID43 = rmCreateArea("base cliff43");
@@ -884,6 +891,7 @@ rmSetAreaElevationVariation(basecliffID43, 3);
 rmSetAreaLocation(basecliffID43, 0.5-rmXTilesToFraction(7), 0.5+rmXTilesToFraction(7));
 rmAddAreaConstraint(basecliffID43, avoidKOTHshort);
 rmAddAreaConstraint(basecliffID43, cliffAvoidTradeRoute);
+rmAddAreaConstraint(basecliffID43, avoidPlayerCenter);
 rmBuildArea(basecliffID43);
 
 int basecliffID44 = rmCreateArea("base cliff44");
@@ -904,6 +912,7 @@ rmSetAreaElevationVariation(basecliffID44, 3);
 rmSetAreaLocation(basecliffID44, 0.5+rmXTilesToFraction(7), 0.5+rmXTilesToFraction(7));
 rmAddAreaConstraint(basecliffID44, avoidKOTHshort);
 rmAddAreaConstraint(basecliffID44, cliffAvoidTradeRoute);
+rmAddAreaConstraint(basecliffID44, avoidPlayerCenter);
 rmBuildArea(basecliffID44);
 
 // Level 5
@@ -914,6 +923,7 @@ rmSetAreaLocation(fujiPeaklvl5, 0.5, 0.5);
 rmSetAreaTerrainType(fujiPeaklvl5, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeaklvl5, 19.0);
 rmAddAreaConstraint(fujiPeaklvl5, avoidKOTHshort);
+rmAddAreaConstraint(fujiPeaklvl5, avoidPlayerCenter);
 rmSetAreaSmoothDistance(fujiPeaklvl5, 40);
 rmSetAreaCoherence(fujiPeaklvl5, .8);
 rmBuildArea(fujiPeaklvl5); 
@@ -936,6 +946,7 @@ rmSetAreaElevationVariation(basecliffID51, 3);
 rmSetAreaLocation(basecliffID51, 0.5+rmXTilesToFraction(5), 0.5-rmXTilesToFraction(5));
 rmAddAreaConstraint(basecliffID51, avoidKOTHshort);
 rmAddAreaConstraint(basecliffID51, cliffAvoidTradeRoute);
+rmAddAreaConstraint(basecliffID51, avoidPlayerCenter);
 rmBuildArea(basecliffID51);
 
 int basecliffID52 = rmCreateArea("base cliff52");
@@ -956,6 +967,7 @@ rmSetAreaElevationVariation(basecliffID52, 3);
 rmSetAreaLocation(basecliffID52, 0.5-rmXTilesToFraction(5), 0.5-rmXTilesToFraction(5));
 rmAddAreaConstraint(basecliffID52, avoidKOTHshort);
 rmAddAreaConstraint(basecliffID52, cliffAvoidTradeRoute);
+rmAddAreaConstraint(basecliffID52, avoidPlayerCenter);
 rmBuildArea(basecliffID52);
 
 int basecliffID53 = rmCreateArea("base cliff23");
@@ -976,6 +988,7 @@ rmSetAreaElevationVariation(basecliffID53, 3);
 rmSetAreaLocation(basecliffID53, 0.5-rmXTilesToFraction(5), 0.5+rmXTilesToFraction(5));
 rmAddAreaConstraint(basecliffID53, avoidKOTHshort);
 rmAddAreaConstraint(basecliffID53, cliffAvoidTradeRoute);
+rmAddAreaConstraint(basecliffID53, avoidPlayerCenter);
 rmBuildArea(basecliffID53);
 
 int basecliffID54 = rmCreateArea("base cliff54");
@@ -996,6 +1009,7 @@ rmSetAreaElevationVariation(basecliffID54, 3);
 rmSetAreaLocation(basecliffID54, 0.5+rmXTilesToFraction(5), 0.5+rmXTilesToFraction(5));
 rmAddAreaConstraint(basecliffID54, avoidKOTHshort);
 rmAddAreaConstraint(basecliffID54, cliffAvoidTradeRoute);
+rmAddAreaConstraint(basecliffID54, avoidPlayerCenter);
 rmBuildArea(basecliffID54);
 
 // Level 6
@@ -1006,6 +1020,7 @@ rmSetAreaLocation(fujiPeaklvl6, 0.5, 0.5);
 rmSetAreaTerrainType(fujiPeaklvl6, "lava\crater");
 rmSetAreaBaseHeight(fujiPeaklvl6, 23.0);
 rmAddAreaConstraint(fujiPeaklvl6, avoidKOTHshort);
+rmAddAreaConstraint(fujiPeaklvl6, avoidPlayerCenter);
 rmSetAreaCoherence(fujiPeaklvl6, .9);
 rmBuildArea(fujiPeaklvl6);  
 
@@ -3541,26 +3556,26 @@ int wokouCaptain=-1;
 wokouCaptain = rmRandInt(1,3);
 
 if (wokouCaptain==1)
-   {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpConsulateWokouSaoFeng"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-   }
+{
+    rmAddTriggerEffect("ZP Set Tech Status (XS)");
+    rmSetTriggerEffectParamInt("PlayerID",k);
+    rmSetTriggerEffectParam("TechID","cTechzpConsulateWokouSaoFeng"); //operator
+    rmSetTriggerEffectParamInt("Status",2);
+}
 if (wokouCaptain==2)
-   {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpConsulateWokouTakanobu"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-   }
+{
+    rmAddTriggerEffect("ZP Set Tech Status (XS)");
+    rmSetTriggerEffectParamInt("PlayerID",k);
+    rmSetTriggerEffectParam("TechID","cTechzpConsulateWokouSiRigam"); //operator
+    rmSetTriggerEffectParamInt("Status",2);
+}
 if (wokouCaptain==3)
-   {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpConsulateWokouMadameChing"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-   }
+{
+    rmAddTriggerEffect("ZP Set Tech Status (XS)");
+    rmSetTriggerEffectParamInt("PlayerID",k);
+    rmSetTriggerEffectParam("TechID","cTechzpConsulateWokouSwallow"); //operator
+    rmSetTriggerEffectParamInt("Status",2);
+}
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
