@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapinfo details="301567" displayNameID="301566" loadDetails="301568" largeMapName = "zppolynesia"
+    imagepath="ui\random_map\polynesia\polynesia_mini" cannotReplace="" loadBackground="ui\random_map\polynesia\polynesia_map">
+    <loadss>ui\random_map\polynesia\polynesia_01</loadss>
+    <loadss>ui\random_map\polynesia\polynesia_02</loadss>
+    <loadss>ui\random_map\polynesia\polynesia_03</loadss>
+</mapinfo>

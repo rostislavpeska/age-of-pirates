@@ -31148,6 +31148,9 @@
       <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
     </protoaction>
   </unit>
+  <unit name="HumpbackWhale">
+    <flag>RMCanRotate</flag>
+  </unit>
  
 
     
