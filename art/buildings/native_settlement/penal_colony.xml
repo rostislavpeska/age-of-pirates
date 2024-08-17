@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_prop</definebone>
+		<component>
+		house
+		<logic type="Variation">
+			<variationid0>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\penal_colony\au_colony_building1_Model</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<texture>nuggets\dropped_resource\dropped_resource_decalA</texture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>8.00</width>
+					<height>8.00</height>
+				</decal>
+			</variationid0>
+			<variationid1>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\penal_colony\au_colony_building2_Model</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<texture>nuggets\dropped_resource\dropped_resource_decalA</texture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>8.00</width>
+					<height>8.00</height>
+				</decal>
+			</variationid1>
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>house</component>
+	</anim>
+</animfile>
