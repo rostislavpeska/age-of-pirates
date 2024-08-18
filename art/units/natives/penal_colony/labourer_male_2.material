@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\villagers\we_villager_male_2\textures\we_villager_male_2_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\villagers\we_villager_male_2\textures\we_villager_male_2_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\villagers\we_villager_male_2\textures\we_villager_male_2_mata_masks">
+      </texture>
+      <texture name="Details" override="units\villagers\we_villager_male_2\textures\we_villager_male_2_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

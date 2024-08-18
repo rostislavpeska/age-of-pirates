@@ -16,7 +16,7 @@
       <string _locid="300013" symbol="cStringNativePostAlly">"Roll out the barrels of rum!"</string>
       <string _locid="300014" symbol="cStringNativeNotAlly">"Don't take it personally. Someone just paid us more."</string>
       <string _locid="300015">ZP Socket Pirates</string>
-      <string _locid="300016">Pirate Village</string>
+      <string _locid="300016">Pirates Lair</string>
       <string _locid="300017" symbol="cStringNativePreAlly"> "Take what you can, give nothing back!"</string>
       <string _locid="300018">ZP Trading Post Clone</string>
       <string _locid="300019">Legendary captain: Choose a legendary pirate captain with a mighty flagship.</string>
@@ -183,7 +183,7 @@
       <string _locid="300181">Maltese Order Flagship</string>
       <string _locid="300182">ZP NAT Barbary Corsair</string>
       <string _locid="300183">Black Caesar's Corsair</string>
-      <string _locid="300184">Wokou Pirates</string>
+      <string _locid="300184">Wokou Lair</string>
       <string _locid="300185">ZP Socket Wokou</string>
       <string _locid="300186">ZP NAT Wokou Pirate</string>
       <string _locid="300187">ZP SPC Treasure Ship</string>
@@ -1575,6 +1575,8 @@
       <string _locid="301573">ZP Flag Penal Colony</string>
       <string _locid="301574">Penal Colony</string>
       <string _locid="301575">ZP Socket Penal Colony</string>
+      <string _locid="301576">Convict Labourer</string>
+      <string _locid="301577">ZP NAT Convict Labourer</string>
 
 
 
