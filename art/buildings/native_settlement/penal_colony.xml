@@ -11,10 +11,10 @@
 				</assetreference>
 				<decal>
 					<effecttype>default</effecttype>
-					<texture>nuggets\dropped_resource\dropped_resource_decalA</texture>
+					<texture>buildings\native_settlement\japan_decal_01</texture>
 					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-					<width>8.00</width>
-					<height>8.00</height>
+					<width>5.00</width>
+					<height>5.00</height>
 				</decal>
 			</variationid0>
 			<variationid1>
@@ -23,12 +23,84 @@
 				</assetreference>
 				<decal>
 					<effecttype>default</effecttype>
-					<texture>nuggets\dropped_resource\dropped_resource_decalA</texture>
+					<texture>buildings\native_settlement\japan_decal_01</texture>
 					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
 					<width>8.00</width>
-					<height>8.00</height>
+					<height>15.00</height>
 				</decal>
 			</variationid1>
+			<variationid2>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\penal_colony\prison_tower_Model</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<texture>buildings\native_settlement\japan_decal_01</texture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>5.00</width>
+					<height>5.00</height>
+				</decal>
+			</variationid2>
+			<variationid3>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\penal_colony\prison_wall_Model</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<texture>buildings\native_settlement\japan_decal_01</texture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>8.00</width>
+					<height>4.00</height>
+				</decal>
+			</variationid3>
+			<variationid4>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\penal_colony\prison_gate_Model</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<texture>buildings\native_settlement\japan_decal_01</texture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>8.00</width>
+					<height>4.00</height>
+				</decal>
+			</variationid4>
+			<variationid5>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\penal_colony\prison_prop1_Model</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<texture>buildings\native_settlement\japan_decal_01</texture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>3.00</width>
+					<height>3.00</height>
+				</decal>
+			</variationid5>
+			<variationid6>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\penal_colony\prison_prop2_Model</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<texture>buildings\native_settlement\japan_decal_01</texture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>4.00</width>
+					<height>8.00</height>
+				</decal>
+			</variationid6>
+			<variationid7>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\penal_colony\au_colony_building3_Model</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<texture>buildings\native_settlement\japan_decal_01</texture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>15.00</width>
+					<height>8.00</height>
+				</decal>
+			</variationid7>
 		</logic>
 	</component>
 	<anim>

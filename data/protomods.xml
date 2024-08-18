@@ -1875,11 +1875,11 @@
     </sharedbuildlimitunittypes>
     <flag>UseSharedBuildLimit</flag>
   </unit>
-  <unit id="20024" name="zpSocketMiners">
+  <unit id="20024" name="zpSocketPenalColony">
     <dbid>20024</dbid>
-    <displaynameid>300086</displaynameid>
-    <editornameid>300087</editornameid>
-    <subciv>Miners</subciv>
+    <displaynameid>301574</displaynameid>
+    <editornameid>301575</editornameid>
+    <subciv>PenalColony</subciv>
     <socketbuildprotounit>TradingPost</socketbuildprotounit>
     <socketbuildrate>1.2000</socketbuildrate>
     <socketbuildcommandid>deSocketBuildEuropean</socketbuildcommandid>
@@ -1889,8 +1889,9 @@
     <movementtype>land</movementtype>
     <autoconvertsoundset>SocketCapture</autoconvertsoundset>
     <animfile>buildings\trading_post\jesuit_outpost_socket.xml</animfile>
-    <minimapicon>ui\minimap\t</minimapicon>
-    <portraiticon>resources\art\units\spc\miner\miner_portrait.png</portraiticon>
+    <minimapicon>ui\minimap\asian_native_site</minimapicon>
+    <capturedminimapicon>ui\minimap\asian_native_site_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\penal_colony.png</portraiticon>
     <rollovertextid>300017</rollovertextid>
     <shortrollovertextid>300017</shortrollovertextid>
     <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
@@ -31196,26 +31197,35 @@
     <flag>NotSelectable</flag>
     <command page="10" column="0">Delete</command>
   </unit>
- 
-
-    
-  
-  
-  
-  
-  
-
-
-
-
-
-
-
-
-
-  <!--TEST-->
-  <unit id="" name="zpNativeHousePenalColony">
-    <dbid></dbid>
+  <unit id="20367" name="zpPenalColonyFlag">
+    <dbid>20367</dbid>
+    <displaynameid>301572</displaynameid>
+    <editornameid>301573</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <civflagoverride>objects\flags\eureka</civflagoverride>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotSearchable</flag>
+    <flag>VariationLocked</flag>
+  </unit>
+  <unit id="20368" name="zpNativeHousePenalColony">
+    <dbid>20368</dbid>
     <displaynameid>301569</displaynameid>
     <editornameid>301570</editornameid>
     <subciv>NatPirates</subciv>
@@ -31266,6 +31276,25 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
+  
+ 
+
+    
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+  <!--TEST-->
 
 
 

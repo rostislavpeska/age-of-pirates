@@ -18,7 +18,7 @@
     <visibleineditor>0</visibleineditor>
   </civ>
   <civ>
-    <name>Miners</name>
+    <name>PenalColony</name>
     <main>0</main>
     <subcivtype>3</subcivtype>
     <portrait>ui\native_allies\aztec</portrait>
@@ -30,7 +30,7 @@
     <unalliedid>300012</unalliedid>
     <agetech>
       <age>Age0</age>
-      <tech>zpNativeEconomyMiners</tech>
+      <tech>zpNativePenalColony</tech>
     </agetech>
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>

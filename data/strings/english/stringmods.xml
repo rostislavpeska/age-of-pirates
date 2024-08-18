@@ -85,8 +85,8 @@
       <string _locid="300083">The Piracy</string>
       <string _locid="300084">Highly increases ship guardian attack. Slightly helps your Explolrer to fight with outlaws.</string>
       <string _locid="300085">Pick Legendary Captain</string>
-      <string _locid="300086">Mining Camp</string>
-      <string _locid="300087">ZP Socket Mining Camp</string>
+      <string _locid="300086">Penal Colony</string>
+      <string _locid="300087">ZP Socket Penal Colony</string>
       <string _locid="300088">ZP SPC Pirate Fixed Gun</string>
       <string _locid="300089">ZP NAT House Pirate Water</string>
       <string _locid="300090">ZP NAT Pirate Water Flag 1</string>
@@ -1571,6 +1571,10 @@
       <string _locid="301569">Penal Colony</string>
       <string _locid="301570">ZP Native House Penal Colony</string>
       <string _locid="301571">ZP PROP Market Stall</string>
+      <string _locid="301572">Penal Colony Flag</string>
+      <string _locid="301573">ZP Flag Penal Colony</string>
+      <string _locid="301574">Penal Colony</string>
+      <string _locid="301575">ZP Socket Penal Colony</string>
 
 
 

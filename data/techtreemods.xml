@@ -14492,6 +14492,14 @@
       <techstatus status ="Active">Age0Khmers</techstatus>
     </prereqs>
   </tech>
+  <tech name="zpNativePenalColony" type="Normal">
+    <dbid>40589</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      
+    </effects>
+  </tech>
   
 
 
