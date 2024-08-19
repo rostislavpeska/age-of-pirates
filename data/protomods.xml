@@ -720,7 +720,8 @@
     <tech row="0" page="1" column="1">zpGuardPenalColony</tech>
     <tech row="0" page="2" column="0">zpNatMiningColony</tech>
     <tech row="0" page="2" column="1">zpNatAustralianSteel</tech>
-    <tech row="0" page="2" column="2">zpNatAustralianLabourers</tech>
+    <tech row="0" page="2" column="3">zpNatAustralianLabourers</tech>
+    <tech row="0" page="2" column="2">zpNatShoemakerWorkshop</tech>
     <tech row="0" page="1" column="1">zpPenalColonyRevolt</tech>
 
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia1</tech>
@@ -2056,8 +2057,8 @@
     <minimapicon>ui\minimap\asian_native_site</minimapicon>
     <capturedminimapicon>ui\minimap\asian_native_site_c</capturedminimapicon>
     <portraiticon>resources\art\units\natives\penal_colony.png</portraiticon>
-    <rollovertextid>300017</rollovertextid>
-    <shortrollovertextid>300017</shortrollovertextid>
+    <rollovertextid>300602</rollovertextid>
+    <shortrollovertextid>300602</shortrollovertextid>
     <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
     <los>12.0000</los>
     <unittype>LogicalTypeBuildingsNotWalls</unittype>
