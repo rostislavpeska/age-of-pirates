@@ -319,6 +319,14 @@
     <subcivtype>3</subcivtype>
   </action>
   <action>
+    <name stringid="43019">AutoGatherColonyGold</name>
+    <type>AutoGather</type>
+    <active>0</active>
+    <persistent>1</persistent>
+    <subciv>PenalColony</subciv>
+    <autogatherteam>0</autogatherteam>
+  </action>
+  <action>
     <name stringid="300989">SpawnArmoredTrain</name>
     <type>Attack</type>
     <attackaction>1</attackaction>
@@ -340,5 +348,5 @@
     <hidefromstats>1</hidefromstats>
     <excludefromrangeindicator>1</excludefromrangeindicator>
   </action>
-  <tactic>Normal<attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action priority="100">ChargeRangedAttack</action><action priority="95">RangedGarrisonAttack</action><action priority="95">RangedAttack</action><action>SpawnArmoredTrain</action><action>HPAura</action><action>MaintainNatBlackwoodArcher</action><action>MaintainNativeSharktoothBowman</action><action>MaintainNatClubman</action><action>MaintainNatHolcanSpearman</action><action>MaintainNatAxeRider</action><action>MaintainNatAxeRiderDogSoldier</action><action>MaintainNatTomahawk</action><action>MaintainNatMantlet</action><action>MaintainNatBolasWarrior</action><action>MaintainNatHuaminca</action><action>MaintainNatTracker</action><action>MaintainNatHorseArcher</action><action>MaintainNatRifleman</action><action>MaintainNatBlogunWarrior</action><action>MaintainNatJaguarWarrior</action><action>MaintainNatEagleWarrior</action><action>AutoGatherXP</action><action>AutoGatherGold</action><action>AutoGatherXPNative</action><action>AutoGatherXPTrickleEconomics</action><action>AutoGatherInfluence</action><action>UniversityAutoGatherBonus</action><action>GreenwichTime</action><action>AutoGatherMarketDistrictFood</action><action>AutoGatherMarketDistrictWood</action><action>AutoGatherMarketDistrictGold</action><action>AutoGatherReligiousDistrict</action><action>AutoGatherXPDefaultNative</action><action>AutoGatherXPSouthNative</action><action>AutoGatherXPAsianNative</action><action>AutoGatherXPAfricanNative</action></tactic>
+  <tactic>Normal<attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><action priority="100">ChargeRangedAttack</action><action priority="95">RangedGarrisonAttack</action><action priority="95">RangedAttack</action><action>SpawnArmoredTrain</action><action>HPAura</action><action>MaintainNatBlackwoodArcher</action><action>MaintainNativeSharktoothBowman</action><action>MaintainNatClubman</action><action>MaintainNatHolcanSpearman</action><action>MaintainNatAxeRider</action><action>MaintainNatAxeRiderDogSoldier</action><action>MaintainNatTomahawk</action><action>MaintainNatMantlet</action><action>MaintainNatBolasWarrior</action><action>MaintainNatHuaminca</action><action>MaintainNatTracker</action><action>MaintainNatHorseArcher</action><action>MaintainNatRifleman</action><action>MaintainNatBlogunWarrior</action><action>MaintainNatJaguarWarrior</action><action>MaintainNatEagleWarrior</action><action>AutoGatherColonyGold</action><action>AutoGatherXP</action><action>AutoGatherGold</action><action>AutoGatherXPNative</action><action>AutoGatherXPTrickleEconomics</action><action>AutoGatherInfluence</action><action>UniversityAutoGatherBonus</action><action>GreenwichTime</action><action>AutoGatherMarketDistrictFood</action><action>AutoGatherMarketDistrictWood</action><action>AutoGatherMarketDistrictGold</action><action>AutoGatherReligiousDistrict</action><action>AutoGatherXPDefaultNative</action><action>AutoGatherXPSouthNative</action><action>AutoGatherXPAsianNative</action><action>AutoGatherXPAfricanNative</action></tactic>
 </tactics>

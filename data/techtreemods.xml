@@ -4794,6 +4794,8 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMercMutineer" culture="none" newname="301526">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatColonialGuard" culture="none" newname="301584">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -14499,9 +14501,163 @@
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatConvictLabourer</target>
-      </effect>  
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatColonialGuard</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatMiningColony</effect>
+      <effect type="TechStatus" status="obtainable">zpVeteranPenalColony</effect>
+      <effect type="TechStatus" status="obtainable">zpGuardPenalColony</effect>
+      <effect type="TechStatus" status="obtainable">zpNatAustralianSteel</effect>
+      <effect type="TechStatus" status="obtainable">zpNatAustralianLabourers</effect>
+      <effect type="TechStatus" status="obtainable">zpPenalColonyRevolt</effect>
     </effects>
   </tech>
+  <tech name="zpNatMiningColony" type="Normal">
+    <dbid>40590</dbid>
+    <displaynameid>301581</displaynameid>
+    <cost resourcetype="Food">175.0000</cost>
+    <cost resourcetype="Gold">175.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\mining_colony.png</icon>
+    <rollovertextid>28747</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" action="Gather" amount="1.25" subtype="WorkRate" unittype="AbstractMine" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.25" subtype="WorkRate" unittype="AbstractMountainMonastery" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVeteranPenalColony" type="Normal">
+    <dbid>40591</dbid>
+    <displaynameid>301586</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
+    <rollovertextid>301585</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialGuard</target>
+      </effect>
+      <effect type="SetName" proto="zpNatColonialGuard" culture="none" newname="301582">
+      </effect>
+      <effect type="SetName" proto="zpNatColonialGuard" culture="none" newname="301584" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialGuard</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpGuardPenalColony" type="Normal">
+    <dbid>40592</dbid>
+    <displaynameid>301587</displaynameid>
+    <cost resourcetype="Wood">600.0000</cost>
+    <cost resourcetype="Gold">600.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
+    <rollovertextid>301585</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+      <techstatus status="Active">zpVeteranPenalColony</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialGuard</target>
+      </effect>
+      <effect type="SetName" proto="zpNatColonialGuard" culture="none" newname="301583">
+      </effect>
+      <effect type="SetName" proto="zpNatColonialGuard" culture="none" newname="301584" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialGuard</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatAustralianSteel" type="Normal">
+    <dbid>301588</dbid>
+    <displaynameid>301588</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\australian_steel.png</icon>
+    <rollovertextid>301589</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.15" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractHandInfantry</target>
+      </effect>
+      <effect type="Data" amount="1.15" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractHandCavalry</target>
+      </effect>
+      <effect type="Data" amount="1.15" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractHandInfantry</target>
+      </effect>
+      <effect type="Data" amount="1.15" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractHandCavalry</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatAustralianLabourers" type="Normal">
+    <displaynameid>301591</displaynameid>
+    <cost resourcetype="Wood">300.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\colony_export.png</icon>
+    <rollovertextid>301592</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" action="AutoGatherColonyGold" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpPenalColonyRevolt" type ="Normal">
+		<dbid>301593</dbid>
+		<displaynameid>301593</displaynameid>
+  	<researchpoints>100.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\penal_colony_big.png</iconwpf>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>301594</rollovertextid>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>YPInfiniteTech</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <flag>DoNotQueue</flag>
+    <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianFishingBoat</effect>
+      <effect type="TechStatus" status="active">zpTheBlackFlagGoldBallanceShadow</effect>
+    </effects>
+	</tech>
   
 
 
