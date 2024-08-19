@@ -1595,13 +1595,14 @@
       <string _locid="301594">Leave the colony in firm hands or encourage rebellion.</string>
       <string _locid="301595">Sir Henry Parkes</string>
       <string _locid="301596">Transforms Convict Labourers into Australian Citzens \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nRum Corpsmen \n\nAustralian Industry (Factory Wagon)</string>
-      <string _locid="301597">Phill Cunningham</string>
+      <string _locid="301597">Phil Cunningham</string>
       <string _locid="301598">Transforms Convict Labourers and Wardens into Mutineers \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nCitizens of Australia \n\nFree the Heroes (Random outlaw hero)</string>
       <string _locid="301599">Cpt. Patrick Logan</string>
       <string _locid="301600">Slightly increases Convict Labourer build limit \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nOvertime Labour \n\nFortified Colony (Fort Wagon)</string>
       <string _locid="301601">Shoemaker's Workshop</string>
       <string _locid="300602" symbol="cStringNativePreAlly"> "So farway from home... Will you let us suffer or help us to break free?"</string>
-
+      <string _locid="301603">ZP NAT PROP Penal Colony Guards</string>
+      <string _locid="301604">ZP NAT PROP Penal Colony</string>
 
 
 
