@@ -41,10 +41,10 @@ void main(void)
 		if (subCiv1 >= 0)
 			rmSetSubCiv(1, "AboriginalNatives");
   
-		subCiv2=rmGetCivID("AboriginalNatives");
-		rmEchoInfo("subCiv2 is AboriginalNatives "+subCiv2);
+		subCiv2=rmGetCivID("PenalColony");
+		rmEchoInfo("subCiv2 is PenalColony "+subCiv2);
 		if (subCiv2 >= 0)
-			rmSetSubCiv(2, "AboriginalNatives");
+			rmSetSubCiv(2, "PenalColony");
 	}
 
     // Picks the map size
@@ -56,7 +56,7 @@ void main(void)
 
 	int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
 	rmEchoInfo("Map size="+size+"m x "+size+"m");
-	rmSetMapSize(size, size);
+	rmSetMapSize(1.2*size, size);
 	// rmSetMapElevationParameters(cElevTurbulence, 0.4, 6, 0.5, 3.0);  // DAL - original
 	
 	rmSetMapElevationHeightBlend(-9);
@@ -220,7 +220,8 @@ void main(void)
 	// Native Constraints
 	int AvoidAboriginals=rmCreateTypeDistanceConstraint("stay away from Aboriginal", "zpSocketAboriginals", 25.0);
 	int AvoidAboriginalsLong=rmCreateTypeDistanceConstraint("stay away from Aboriginal Long", "zpSocketAboriginals", 50.0);
-	int avoidInventors=rmCreateTypeDistanceConstraint("stay away from Maltese", "zpSocketScientists", 35.0);
+	int avoidInventors=rmCreateTypeDistanceConstraint("stay away from Inventors", "zpSocketScientists", 25.0);
+	int avoidPenalColony=rmCreateTypeDistanceConstraint("stay away from Penal Colony", "zpSocketPenalColony", 25.0);
 	int avoidTownCenterFar=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 40.0);
 	int avoidTradeSocket=rmCreateTypeDistanceConstraint("stay away from Trade Socket", "SocketTradeRoute", 25.0);
 	int avoidTradeSocketShort=rmCreateTypeDistanceConstraint("stay away from Trade Socket Short", "SocketTradeRoute", 25.0);
@@ -568,47 +569,6 @@ void main(void)
 		rmEchoInfo("XLOC = "+yLoc);
 	}
 
-    // Renegades
-
-	int maltese1VillageTypeID = rmRandInt(5,6);
-	int maltese1ID = -1;
-	maltese1ID = rmCreateGrouping("maltese 1", "Scientist_Lab06");
-	rmSetGroupingMinDistance(maltese1ID, 0);
-	rmSetGroupingMaxDistance(maltese1ID, 50);
-	rmAddGroupingConstraint(maltese1ID, avoidWater30);
-	rmAddGroupingConstraint(maltese1ID, farAvoidTradeSockets);
-    rmAddGroupingConstraint(maltese1ID, avoidInventors);
-    rmAddGroupingConstraint(maltese1ID, avoidImpassableLand);
-	rmAddGroupingConstraint(maltese1ID, avoidTradeSocketFar);
-	rmAddGroupingConstraint(maltese1ID, avoidTradeRouteFar2);
-	
-
-	int maltese2VillageTypeID = 11-maltese1VillageTypeID;
-	int maltese2ID = -1;
-	maltese2ID = rmCreateGrouping("maltese 2", "Scientist_Lab05");
-	rmSetGroupingMinDistance(maltese2ID, 0);
-	rmSetGroupingMaxDistance(maltese2ID, 50);
-	rmAddGroupingConstraint(maltese2ID, avoidWater30);
-	rmAddGroupingConstraint(maltese2ID, farAvoidTradeSockets);
-    rmAddGroupingConstraint(maltese2ID, avoidInventors);
-    rmAddGroupingConstraint(maltese2ID, avoidImpassableLand);
-	rmAddGroupingConstraint(maltese2ID, avoidTradeSocketFar);
-	rmAddGroupingConstraint(maltese2ID, avoidTradeRouteFar2);
-
-
- 	if (cNumberNonGaiaPlayers >2){	
-		rmPlaceGroupingAtLoc(maltese1ID, 0, 0.5, 0.1);
-		rmPlaceGroupingAtLoc(maltese2ID, 0, 0.5, 0.9);
-	}
-	else{
-		rmPlaceGroupingAtLoc(maltese1ID, 0, 0.7, 0.15);
-		rmPlaceGroupingAtLoc(maltese2ID, 0, 0.3, 0.85);
-	}
-
-	
-
-	// Text
-	rmSetStatusText("",0.30);
 
 	// Mountain Terrain
 
@@ -641,7 +601,7 @@ void main(void)
     rmBuildArea(mountainsIDTerrain);
 
 	int northWest=rmCreateArea("north west"); 
-    rmSetAreaSize(northWest, 0.2, 0.2);
+    rmSetAreaSize(northWest, 0.1, 0.1);
     rmSetAreaLocation(northWest, 0.5, 0.9);
     rmSetAreaCoherence(northWest, 1.0);
     rmSetAreaObeyWorldCircleConstraint(northWest, false);
@@ -649,7 +609,7 @@ void main(void)
     rmBuildArea(northWest);
 
 	int southEast=rmCreateArea("south east"); 
-    rmSetAreaSize(southEast, 0.2, 0.2);
+    rmSetAreaSize(southEast, 0.1, 0.1);
     rmSetAreaLocation(southEast, 0.5, 0.1);
     rmSetAreaCoherence(southEast, 1.0);
     rmSetAreaObeyWorldCircleConstraint(southEast, false);
@@ -657,8 +617,83 @@ void main(void)
     rmBuildArea(southEast);
 
 	int mountainsIDsConstraint=rmCreateAreaConstraint("stay in mountains", mountainsID);
-	int westConstraint=rmCreateAreaConstraint("stay West", northWest);
-	int eastConstraint=rmCreateAreaConstraint("stay East", southEast);
+	int westConstraint=rmCreateAreaConstraint("stay NorthWest", northWest);
+	int eastConstraint=rmCreateAreaConstraint("stay SouthEast", southEast);
+
+	// Text
+	rmSetStatusText("",0.30);
+
+	// Renegades
+
+	int maltese1VillageTypeID = rmRandInt(5,6);
+	int maltese1ID = -1;
+	maltese1ID = rmCreateGrouping("maltese 1", "Scientist_Lab06");
+	rmSetGroupingMinDistance(maltese1ID, 0);
+	rmSetGroupingMaxDistance(maltese1ID, 50);
+	rmAddGroupingConstraint(maltese1ID, avoidWater30);
+	rmAddGroupingConstraint(maltese1ID, farAvoidTradeSockets);
+    rmAddGroupingConstraint(maltese1ID, avoidInventors);
+	rmAddGroupingConstraint(maltese1ID, avoidPenalColony);
+	rmAddGroupingConstraint(maltese1ID, mountainsIDsConstraint);
+    rmAddGroupingConstraint(maltese1ID, avoidImpassableLand);
+	rmAddGroupingConstraint(maltese1ID, avoidTradeSocketFar);
+	rmAddGroupingConstraint(maltese1ID, avoidTradeRouteFar2);
+	
+
+	int maltese2VillageTypeID = 11-maltese1VillageTypeID;
+	int maltese2ID = -1;
+	maltese2ID = rmCreateGrouping("maltese 2", "Scientist_Lab05");
+	rmSetGroupingMinDistance(maltese2ID, 0);
+	rmSetGroupingMaxDistance(maltese2ID, 50);
+	rmAddGroupingConstraint(maltese2ID, avoidWater30);
+	rmAddGroupingConstraint(maltese2ID, farAvoidTradeSockets);
+    rmAddGroupingConstraint(maltese2ID, avoidInventors);
+	rmAddGroupingConstraint(maltese2ID, mountainsIDsConstraint);
+	rmAddGroupingConstraint(maltese2ID, avoidPenalColony);
+    rmAddGroupingConstraint(maltese2ID, avoidImpassableLand);
+	rmAddGroupingConstraint(maltese2ID, avoidTradeSocketFar);
+	rmAddGroupingConstraint(maltese2ID, avoidTradeRouteFar2);
+
+	rmPlaceGroupingAtLoc(maltese1ID, 0, 0.2, 0.45);
+
+	if (cNumberNonGaiaPlayers >3)
+		rmPlaceGroupingAtLoc(maltese2ID, 0, 0.7, 0.55);
+
+
+	// Penal Colonies
+
+	int jewish1VillageTypeID = rmRandInt(1, 3);
+	int jewish2VillageTypeID = rmRandInt(1, 3);
+
+	int jewish1ID = rmCreateGrouping("jewish 1", "Penal_colony_0"+jewish1VillageTypeID);
+	int jewish2ID = rmCreateGrouping("jewish 2", "Penal_colony_0"+jewish2VillageTypeID);
+
+	rmSetGroupingMinDistance(jewish1ID, 0);
+	rmSetGroupingMaxDistance(jewish1ID, 50);
+	rmSetGroupingMinDistance(jewish2ID, 0);
+	rmSetGroupingMaxDistance(jewish2ID, 50);
+
+    rmAddGroupingConstraint(jewish1ID, avoidWater30);
+	rmAddGroupingConstraint(jewish1ID, farAvoidTradeSockets);
+    rmAddGroupingConstraint(jewish1ID, avoidInventors);
+	rmAddGroupingConstraint(jewish1ID, avoidPenalColony);
+	rmAddGroupingConstraint(jewish1ID, mountainsIDsConstraint);
+	rmAddGroupingConstraint(jewish1ID, avoidTradeRouteFar2);
+    rmAddGroupingConstraint(jewish1ID, avoidImpassableLand);
+	rmAddGroupingConstraint(jewish1ID, avoidTradeSocketFar);
+    rmAddGroupingConstraint(jewish2ID, avoidWater30);
+	rmAddGroupingConstraint(jewish2ID, farAvoidTradeSockets);
+    rmAddGroupingConstraint(jewish2ID, avoidInventors);
+	rmAddGroupingConstraint(jewish2ID, avoidPenalColony);
+	rmAddGroupingConstraint(jewish2ID, mountainsIDsConstraint);
+	rmAddGroupingConstraint(jewish2ID, avoidTradeRouteFar2);
+    rmAddGroupingConstraint(jewish2ID, avoidImpassableLand);
+	rmAddGroupingConstraint(jewish2ID, avoidTradeSocketFar);
+
+	rmPlaceGroupingAtLoc(jewish1ID, 0, 0.8, 0.55);
+
+	if (cNumberNonGaiaPlayers >3)
+		rmPlaceGroupingAtLoc(jewish2ID, 0, 0.3, 0.45);
 
 	
 
@@ -667,62 +702,70 @@ void main(void)
     int Aboriginal1VillageTypeID = rmRandInt(1,5);
 	int mosque1ID = -1;
 	mosque1ID = rmCreateGrouping("mosque 1", "Native_Aboriginal_0"+Aboriginal1VillageTypeID);
-	rmSetGroupingMinDistance(mosque1ID, 20);
-	rmSetGroupingMaxDistance(mosque1ID, rmXFractionToMeters(0.5));
+	rmSetGroupingMinDistance(mosque1ID, 0);
+	rmSetGroupingMaxDistance(mosque1ID, 50);
 	rmAddGroupingConstraint(mosque1ID, avoidImpassableLand);
 	rmAddGroupingConstraint(mosque1ID, avoidTownCenterFar);
 	rmAddGroupingConstraint(mosque1ID, circleConstraint);
 	rmAddGroupingConstraint(mosque1ID, AvoidAboriginalsLong);
-	rmAddGroupingConstraint(mosque1ID, mountainsIDsConstraint);
+	rmAddGroupingConstraint(mosque1ID, farAvoidTradeSockets);
+	rmAddGroupingConstraint(mosque1ID, avoidMountains);
 	rmAddGroupingConstraint(mosque1ID, avoidWater30);
-	rmPlaceGroupingAtLoc(mosque1ID, 0, 0.5, 0.5, 1);
+	if(cNumberNonGaiaPlayers >= 3)
+		rmPlaceGroupingAtLoc(mosque1ID, 0, 0.7, 0.85, 1);
+	else
+			rmPlaceGroupingAtLoc(mosque1ID, 0, 0.5, 0.85, 1);
 
 
 	int Aboriginal2VillageTypeID = rmRandInt(1,5);
 	int mosque2ID = -1;
 	mosque2ID = rmCreateGrouping("mosque 2", "Native_Aboriginal_0"+Aboriginal2VillageTypeID);
-	rmSetGroupingMinDistance(mosque2ID, 20);
-	rmSetGroupingMaxDistance(mosque2ID, rmXFractionToMeters(0.5));
+	rmSetGroupingMinDistance(mosque2ID, 0);
+	rmSetGroupingMaxDistance(mosque2ID, 50);
 	rmAddGroupingConstraint(mosque2ID, avoidImpassableLand);
 	rmAddGroupingConstraint(mosque2ID, avoidTownCenterFar);
 	rmAddGroupingConstraint(mosque2ID, AvoidAboriginalsLong);
+	rmAddGroupingConstraint(mosque2ID, farAvoidTradeSockets);
 	rmAddGroupingConstraint(mosque2ID, circleConstraint);
-	rmAddGroupingConstraint(mosque2ID, mountainsIDsConstraint);
+	rmAddGroupingConstraint(mosque2ID, avoidMountains);
 	rmAddGroupingConstraint(mosque2ID, avoidWater30);
-	rmPlaceGroupingAtLoc(mosque2ID, 0, 0.5, 0.5, 1);
+	if(cNumberNonGaiaPlayers >= 3)
+		rmPlaceGroupingAtLoc(mosque2ID, 0, 0.7, 0.15, 1);
+	else
+		rmPlaceGroupingAtLoc(mosque1ID, 0, 0.5, 0.15, 1);
 
 
 	if(cNumberNonGaiaPlayers >= 3){
 		int Aboriginal3VillageTypeID = rmRandInt(1,5);
 		int mosque3ID = -1;
 		mosque3ID = rmCreateGrouping("Aboriginal Village 3", "Native_Aboriginal_0"+Aboriginal3VillageTypeID);
-		rmSetGroupingMinDistance(mosque3ID, 20);
-		rmSetGroupingMaxDistance(mosque3ID, rmXFractionToMeters(0.5));
+		rmSetGroupingMinDistance(mosque3ID, 0);
+		rmSetGroupingMaxDistance(mosque3ID, 50);
 		rmAddGroupingConstraint(mosque3ID, avoidImpassableLand);
 		rmAddGroupingConstraint(mosque3ID, avoidTownCenterFar);
 		rmAddGroupingConstraint(mosque3ID, circleConstraint);
 		rmAddGroupingConstraint(mosque3ID, AvoidAboriginalsLong);
-		rmAddGroupingConstraint(mosque3ID, mountainsIDsConstraint);
+		rmAddGroupingConstraint(mosque3ID, farAvoidTradeSockets);
+		rmAddGroupingConstraint(mosque3ID, avoidMountains);
+		rmAddGroupingConstraint(mosque3ID, southEast);
 		rmAddGroupingConstraint(mosque3ID, avoidWater30);
-		rmPlaceGroupingAtLoc(mosque3ID, 0, 0.5, 0.5, 1);
+		rmPlaceGroupingAtLoc(mosque3ID, 0, 0.3, 0.85, 1);
 
 		int Aboriginal4VillageTypeID = rmRandInt(1,5);
 		int mosque4ID = -1;
 		mosque4ID = rmCreateGrouping("Aboriginal Village 4", "Native_Aboriginal_0"+Aboriginal4VillageTypeID);
-		rmSetGroupingMinDistance(mosque4ID, 20);
-		rmSetGroupingMaxDistance(mosque4ID, rmXFractionToMeters(0.5));
+		rmSetGroupingMinDistance(mosque4ID, 0);
+		rmSetGroupingMaxDistance(mosque4ID, 50);
 		rmAddGroupingConstraint(mosque4ID, avoidImpassableLand);
 		rmAddGroupingConstraint(mosque4ID, avoidTownCenterFar);
 		rmAddGroupingConstraint(mosque4ID, circleConstraint);
 		rmAddGroupingConstraint(mosque4ID, AvoidAboriginalsLong);
-		rmAddGroupingConstraint(mosque4ID, mountainsIDsConstraint);
+		rmAddGroupingConstraint(mosque4ID, farAvoidTradeSockets);
+		rmAddGroupingConstraint(mosque4ID, avoidMountains);
+		rmAddGroupingConstraint(mosque4ID, northWest);
 		rmAddGroupingConstraint(mosque4ID, avoidWater30);
-		if(cNumberNonGaiaPlayers >= 6){
-			rmPlaceGroupingAtLoc(mosque4ID, 0, 0.5, 0.5, 2);
-		}
-		else {
-			rmPlaceGroupingAtLoc(mosque4ID, 0, 0.5, 0.5, 1);
-		}
+		rmPlaceGroupingAtLoc(mosque4ID, 0, 0.3, 0.15, 1);
+
 	}
 
 	// Text
@@ -857,6 +900,7 @@ void main(void)
 	rmAddObjectDefConstraint(TCID, avoidTrainStationA);
 	rmAddObjectDefConstraint(TCID, avoidTrainStationB);
 	rmAddObjectDefConstraint(TCID, playerEdgeConstraint);
+	rmAddObjectDefConstraint(TCID, AvoidAboriginals);
 	rmSetObjectDefMinDistance(TCID, 10.0);
 	rmSetObjectDefMaxDistance(TCID, 17.0);
 
@@ -1034,6 +1078,7 @@ void main(void)
 		rmAddAreaConstraint(ffaCliffs, avoidTownCenterFar);
 		rmAddAreaConstraint(ffaCliffs, avoidSmallCliffs);
 		rmAddAreaConstraint(ffaCliffs, avoidInventors);
+		rmAddAreaConstraint(ffaCliffs, avoidPenalColony);
 		rmAddAreaConstraint(ffaCliffs, avoidTradeSocket);
 		rmAddAreaConstraint(ffaCliffs, avoidHarbour);
 		rmAddAreaConstraint(ffaCliffs, AvoidAboriginals);
@@ -1072,6 +1117,7 @@ void main(void)
 		rmAddAreaConstraint(northForest, avoidTradeSocket);
 		rmAddAreaConstraint(northForest, avoidHarbour);
 		rmAddAreaConstraint(northForest, AvoidAboriginals);
+		rmAddAreaConstraint(northForest, avoidPenalColony);
 		rmAddAreaConstraint(northForest, avoidTradeRoute);
 		rmAddAreaConstraint(northForest, avoidSmallCliffsShort);
 		rmAddAreaConstraint(northForest, avoidWater20);
@@ -1111,6 +1157,7 @@ void main(void)
 		rmAddAreaConstraint(southForest, avoidHarbour);
 		rmAddAreaConstraint(southForest, AvoidAboriginals);
 		rmAddAreaConstraint(southForest, avoidTradeRoute);
+		rmAddAreaConstraint(southForest, avoidPenalColony);
 		rmAddAreaConstraint(southForest, avoidSmallCliffsShort);
 		rmAddAreaConstraint(southForest, avoidWater20);
 		rmAddAreaConstraint(southForest, avoidKOTH);
@@ -1147,6 +1194,7 @@ void main(void)
 		rmAddAreaConstraint(valleyForest, avoidInventors);
 		rmAddAreaConstraint(valleyForest, avoidTradeSocket);
 		rmAddAreaConstraint(valleyForest, AvoidAboriginals);
+		rmAddAreaConstraint(valleyForest, avoidPenalColony);
 		rmAddAreaConstraint(valleyForest, avoidSmallCliffsShort);
 		rmAddAreaConstraint(valleyForest, avoidKOTH);
 		rmAddAreaConstraint(valleyForest, forestConstraint);   // DAL adeed, to keep forests away from each other.
@@ -1621,6 +1669,33 @@ void main(void)
 	rmSetTriggerLoop(true);
 	}
 
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate PenalColony"+k);
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPenalColonyRevolt"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPenalColony"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
 
 	// Specific for human players
 
@@ -1643,6 +1718,8 @@ void main(void)
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Khmer"+k));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_PenalColony"+k));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -3586,11 +3663,11 @@ void main(void)
 	rmSetTriggerLoop(false);
 	}
 
-	// AI Western Leaders
+	// AI Australian Leaders
 
 	for (k=1; <= cNumberNonGaiaPlayers) {
 
-	rmCreateTrigger("ZP Pick Western Leader"+k);
+	rmCreateTrigger("ZP Pick Australian Leader"+k);
 	rmAddTriggerCondition("ZP PLAYER Human");
 	rmSetTriggerConditionParamInt("Player",k);
 	rmSetTriggerConditionParam("MyBool", "false");
@@ -3599,28 +3676,28 @@ void main(void)
 	rmSetTriggerConditionParamInt("TechID",586);
 	rmSetTriggerConditionParamInt("Status",2);
 
-	int westernLeader=-1;
-	westernLeader = rmRandInt(1,3);
+	int AustralianLeader=-1;
+	AustralianLeader = rmRandInt(1,3);
 
-	if (westernLeader==1)
+	if (AustralianLeader==1)
 	{
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpConsulateWesternWyatEarp"); //operator
+		rmSetTriggerEffectParam("TechID","cTechzpConsulatePenalColonyParkes"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 	}
-	if (westernLeader==2)
+	if (AustralianLeader==2)
 	{
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpConsulateWesternPinkertons"); //operator
+		rmSetTriggerEffectParam("TechID","cTechzpConsulatePenalColonyCunningham"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 	}
-	if (westernLeader==3)
+	if (AustralianLeader==3)
 	{
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpConsulateWesternJesseJames"); //operator
+		rmSetTriggerEffectParam("TechID","cTechzpConsulatePenalColonyLogan"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 	}
 	rmSetTriggerPriority(4);
@@ -3628,7 +3705,6 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
-
 	// Testing
 
 	/*for (k=1; <= cNumberNonGaiaPlayers) {
