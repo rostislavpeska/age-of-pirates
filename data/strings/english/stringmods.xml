@@ -1600,7 +1600,7 @@
       <string _locid="301599">Cpt. Patrick Logan</string>
       <string _locid="301600">Sets up a harsh regime in the penal colony \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nConvict Patrole \n\nFortified Colony (Fort Wagon)</string>
       <string _locid="301601">Shoemaker's Workshop</string>
-      <string _locid="300602" symbol="cStringNativePreAlly"> "So farway from home... Will you let us suffer or help us to break free?"</string>
+      <string _locid="301602" symbol="cStringNativePreAlly"> "So farway from home... Will you let us suffer or help us to break free?"</string>
       <string _locid="301603">ZP NAT PROP Penal Colony Guards</string>
       <string _locid="301604">ZP NAT PROP Penal Colony</string>
       <string _locid="301605">Colonial Warden</string>
