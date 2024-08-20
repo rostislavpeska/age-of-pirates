@@ -24,7 +24,7 @@
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpspctreasureship>
   <zpwokousteamer>
-    <ability>deFullSteam<rof>90</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
+    <ability>zpFullSteam<rof>90</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
   </zpwokousteamer>
   <zpwokoufuchuan>
     <ability>PowerBroadside<rof>60</rof></ability>
@@ -78,7 +78,7 @@
     <ability>zpPowerShunt<allowwhilestealthed>true</allowwhilestealthed><rof>60</rof></ability>
   </zpmercnautilus>
   <zpmercwokousteamer>
-    <ability>deFullSteam<rof>90</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
+    <ability>zpFullSteam<rof>90</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
   </zpmercwokousteamer>
   <zpnatsoheileader>
     <ability>ypUnitDaimyoAura<alwaysdisabledingrid>true</alwaysdisabledingrid></ability>
@@ -162,4 +162,21 @@
   <zpspcprau>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpspcprau>
+  <zpspcpraub>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpspcpraub>
+  <zpspcpiratesteamer>
+    <ability>PowerBroadside<rof>60</rof></ability>
+    <ability>zpFullSteam<rof>60</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
+  </zpspcpiratesteamer>
+  <zpspcpirategalleass>
+    <ability>dePowerRoundelPierceAttack<rof>60</rof><sharedcooldown>true</sharedcooldown><castonself>true</castonself></ability>
+    <ability>dePowerShunt<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>
+  </zpspcpirategalleass>
+  <zpcorsairgalley>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpcorsairgalley>
+  <zppirateriggedship>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zppirateriggedship>
 </abilitymods>

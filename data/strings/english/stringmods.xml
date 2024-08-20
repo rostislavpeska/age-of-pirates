@@ -98,7 +98,7 @@
       <string _locid="300096">Admiral of the Pirates</string>
       <string _locid="300097">Increases all pirate ship (all classes) attack and hitpoints. Increasing privateer build limit.</string>
       <string _locid="300098">The Recruitment</string>
-      <string _locid="300099">Privateers can train bucaneers. Decreasing Buccaneer costs and training time.</string>
+      <string _locid="300099">Privateers can train Buccaneers. Decreasing Buccaneer costs and training time.</string>
       <string _locid="300100">Barbary Revolution</string>
       <string _locid="300101">Enables to train new units.</string>
       <string _locid="300102">Queen Anne's Revenge</string>
@@ -239,11 +239,11 @@
       <string _locid="300237">Privateer Tax</string>
       <string _locid="300238">Choose the Wokou commander.</string>
       <string _locid="300239">ZP Wokou Fuchuan</string>
-      <string _locid="300240">Madame Ching's Flagship</string>
+      <string _locid="300240">Wokou Flagship</string>
       <string _locid="300241">Pacific Allies</string>
       <string _locid="300242">Sends a random legendary pirate ship</string>
       <string _locid="300243">Madame Ching</string>
-      <string _locid="300244">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nFloating Dragon \n\nMighty flagship able to train wokou pirates.  \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nKamigadze (Fire Junks)</string>
+      <string _locid="300244">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nFloating Dragon \n\nMighty flagship able to train wokou pirates.  \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nKamikaze (Fire Junks)</string>
       <string _locid="300245">Wokou Flagship with powerful broadside attack.</string>
       <string _locid="300246">The Emperess</string>
       <string _locid="300247">Choose a Wokou Pirate leader and get new special units and technologies.</string>
@@ -804,8 +804,8 @@
       <string _locid="300803">Mass Production \nConfigure Dry Dock to build ships faster by 150%.</string>
       <string _locid="300804">This Dry Dock is focusing on repairing ships.</string>
       <string _locid="300805">Repair \nConfigure Dry Dock to repair ships faster by 300%.</string>
-      <string _locid="300806">This Dry Dock is maintaining Venetian Galleys.</string>
-      <string _locid="300807">Automatic Workshop \nConfigure Dry Dock to maintain Venetian Galleys.</string>
+      <string _locid="300806">This Dry Dock is maintaining ships. (Other ship training speed is slowed down by 50%)</string>
+      <string _locid="300807">Automatic Workshop \nConfigure Dry Dock to maintain ships. (Other ship training speed slows down by 50%)</string>
       <string _locid="300808">Venetian Embassy</string>
       <string _locid="300809">ZP Venetian Embassy</string>
       <string _locid="300810">Venetian Embassy Wagon</string>
@@ -813,7 +813,7 @@
       <string _locid="300812">Ships a Venetian Embassy Wagon and unlocks more Venetian shipments which can be sent from the Embassy building.</string>
       <string _locid="300813">Allows to send Venetian Shipments</string>
       <string _locid="300814">San Marco Guard</string>
-      <string _locid="300815">Ships Doge's Guards (Can be sent in always when bellow build limit: 12)</string>
+      <string _locid="300815">Ships Doge's Guards (Can be sent in always when bellow build limit: 14 per settlement)</string>
       <string _locid="300816">Venetian Bombard</string>
       <string _locid="300817">Ships Venetian Bombard (Can be sent in always when bellow build limit: 2)</string>
       <string _locid="300818">Venetian Exploration Fleet</string>
@@ -1424,8 +1424,8 @@
       <string _locid="301422">ZP Native House Wokou Big</string>
       <string _locid="301423">Ghost Ship</string>
       <string _locid="301424">Tortuga Fixed Gun</string>
-      <string _locid="301425">Bernard Fokke</string>
-      <string _locid="301426">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nFlying Dutchman \n\nExtra durable ghost ship. Able to train sea creatures. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nTortuga Fixed Gun</string>
+      <string _locid="301425">David Jones</string>
+      <string _locid="301426">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nFlying Dutchman \n\nExtra durable ghost ship. Able to train dolphins. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nTortuga Fixed Gun</string>
       <string _locid="301427">ZP Native Tent</string>
       <string _locid="301428">ZP Nat Town Hall</string>
       <string _locid="301429">Zeppelin</string>
@@ -1442,10 +1442,78 @@
       <string _locid="301440">Randomly selects from among all maps suitable for free-for-all play.</string>
       <string _locid="301441">Special Maps</string>
       <string _locid="301442">Randomly selects from among all seasonal maps or maps with an untypical layout.</string>
-      <string _locid="301443">Mallay Pirate Prau</string>
-      <string _locid="301444">ZP SPC Wokou Prau</string>
+      <string _locid="301443">Indonesian Pirate Flagship</string>
+      <string _locid="301444">ZP SPC Wokou Prau 1</string>
       <string _locid="301445">ZP Nat Cetbang</string>
-
+      <string _locid="301446">Blackjack's Flagship</string>
+      <string _locid="301447">ZP SPC Pirate Steamer</string>
+      <string _locid="301448">Steam Powered Pirate flagship from the Australia</string>
+      <string _locid="301449">Black Jack Anderson</string>
+      <string _locid="301450">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nVansittart \n\nPirate steamship. Increased privateer build limit. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nDry Dock</string>
+      <string _locid="301451">Vansittart</string>
+      <string _locid="301452">ZP Pirate Dry Dock</string>
+      <string _locid="301453">Si Ragam</string>
+      <string _locid="301454">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nRatu Laut (flagship) \n\nIndonesian flagship. Trains Cetbang cannons. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nJaya (secondary flagship)</string>
+      <string _locid="301455">Ratu Laut</string>
+      <string _locid="301456">Jaya</string>
+      <string _locid="301457">ZP SPC Wokou Prau 2</string>
+      <string _locid="301458">Ships a secondary flagship called Jaya and increases Wokou flagship build limit.</string>
+      <string _locid="301459">Prau Class: Heavielly armed flagship from South-East Asia.</string>
+      <string _locid="301460">Extra durable pirate flagship. Trains sea creatures.</string>
+      <string _locid="301461">Ships a secondary Prau Class flagship.</string>
+      <string _locid="301462">Taiaha</string>
+      <string _locid="301463">ZP Pirate Galleass</string>
+      <string _locid="301464">Barbarossa's Flagship</string>
+      <string _locid="301465">Mighty Pirate Galley</string>
+      <string _locid="301466">Hayreddin Barbarossa</string>
+      <string _locid="301467">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nSultana \n\nHeavy corsair galley, all Buccaneers become Corsairs. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nCorsair Embassy</string>
+      <string _locid="301468">Corsair Emissary</string>
+      <string _locid="301469">Ships Corsair Emissary Wagon allowing you to build a Corsair Emmissary providing you with more techs and shipments.</string>
+      <string _locid="301470">ZP Corsair Embassy</string>
+      <string _locid="301471">Allows you to send Barbary Corsair Shipments</string>
+      <string _locid="301472">Can Construct Venetian Embassy</string>
+      <string _locid="301473">Can Construct Corsair Emissary</string>
+      <string _locid="301474">Corsair Emissary Wagon</string>
+      <string _locid="301475">ZP Corsair Embassy Wagon</string>
+      <string _locid="301476">Privateer Emissary</string>
+      <string _locid="301477">ZP Pirate Embassy</string>
+      <string _locid="301478">ZP Pirate Embassy Wagon</string>
+      <string _locid="301479">Privateer Emissary Wagon</string>
+      <string _locid="301480">Allows you to send Pirate Shipments</string>
+      <string _locid="301481">Can Construct Privateer Emissary</string>
+      <string _locid="301482">Sultana</string>
+      <string _locid="301483">Corsair Galley</string>
+      <string _locid="301484">ZP Corsair Galley</string>
+      <string _locid="301485">Carronade</string>
+      <string _locid="301486">ZP Carronade</string>
+      <string _locid="301487">Barbary Expeditionary Company</string>
+      <string _locid="301488">Ship a small group of Corsairs (Can be sent in always when bellow build limit: 17 per settlement)</string>
+      <string _locid="301489">Barbary Marksmen</string>
+      <string _locid="301490">Ships corsair marksmen</string>
+      <string _locid="301491">Barbary Assalut Brigade</string>
+      <string _locid="301492">Ships corsair army with a mighty Great Bombard</string>
+      <string _locid="301493">Barbary Exploration Fleet</string>
+      <string _locid="301494">Ships Corsair galley. (Can be sent in always when bellow build limit: 2)</string>
+      <string _locid="301495">Barbary Assalut Fleet</string>
+      <string _locid="301496">Ships a Corsair Galley with a Great Bombard on board.</string>
+      <string _locid="301497">ZP Nat Merc Corsair</string>
+      <string _locid="301498">Privateer Emissary</string>
+      <string _locid="301499">Ships Privateer Emissary Wagon allowing you to build a Privateer Emmissary providing you with more techs and shipments.</string>
+      <string _locid="301500">Privateer Expedition</string>
+      <string _locid="301501">Ships a Privateer full of Buccaneers. (Can be sent in always when bellow privateer or Buccaneer build limit)</string>
+      <string _locid="301502">Privateer Expeditionary Company</string>
+      <string _locid="301503">Ships more Buccaneers. (Can be sent in always when bellow build limit: 23 per settlement)</string>
+      <string _locid="301504">Privateer Expeditionary Force</string>
+      <string _locid="301505">Ships buccaneers and Carronades (Can be sent in always when bellow build limit or pop limit)</string>
+      <string _locid="301506">Pirate Rigged Ship</string>
+      <string _locid="301507">ZP Pirate Rigged Ship</string>
+      <string _locid="301508">Large pirate ship. Can train Buccaneers and Carronades.</string>
+      <string _locid="301509">Privateer Expeditionary Fleet</string>
+      <string _locid="301510">Sends a Rigged Ship full with Carronades.</string>
+      <string _locid="301511">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBlack Pearl \n\nVery fast, trains buccaneers, increases their build limit. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nPrivateer Emissary</string>
+      <string _locid="301512">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nNeptune's Galley \n\nPowerful oriental ship with a long-range attack. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nBarbary Revolution</string>
+      <string _locid="301513">Ships Corsair Galleys full of Corsairs, unlocks native corsair training.</string>
+      <string _locid="301514">Kamikaze</string>
 
 
       <!-- ======================================== -->

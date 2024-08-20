@@ -1,0 +1,54 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\pirate_consulate_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\plantation\east\age2\textures\east_plantation_age2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\plantation\east\age2\textures\east_plantation_age2_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings\asian_civs\consulate\textures\pirate_consulate_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\pirate_consulate_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\plantation\east\age2\textures\east_plantation_age2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\plantation\east\age2\textures\east_plantation_age2_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings\asian_civs\consulate\textures\pirate_consulate_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

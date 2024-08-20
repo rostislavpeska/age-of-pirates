@@ -2618,7 +2618,7 @@ void main(void)
 
 		rmSwitchToTrigger(rmTriggerID("TrainJunk2OFF_Plr"+k));
 		rmAddTriggerCondition("Timer ms");
-		rmSetTriggerConditionParamInt("Param1",5);
+		rmSetTriggerConditionParamInt("Param1", 1200);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainJunk2ON_Plr"+k));
 		rmSetTriggerPriority(4);
@@ -2666,7 +2666,7 @@ void main(void)
 
 		rmSwitchToTrigger(rmTriggerID("TrainJunk1OFF_Plr"+k));
 		rmAddTriggerCondition("Timer ms");
-		rmSetTriggerConditionParamInt("Param1",5);
+		rmSetTriggerConditionParamInt("Param1", 1200);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainJunk1ON_Plr"+k));
 		rmSetTriggerPriority(4);
@@ -2726,7 +2726,7 @@ void main(void)
 
 		rmSwitchToTrigger(rmTriggerID("trainFuchuan2OFF_Plr"+k));
 		rmAddTriggerCondition("Timer ms");
-		rmSetTriggerConditionParamInt("Param1",5);
+		rmSetTriggerConditionParamInt("Param1", 1200);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2ON_Plr"+k));
 		rmSetTriggerPriority(4);
@@ -2775,7 +2775,7 @@ void main(void)
 
 		rmSwitchToTrigger(rmTriggerID("trainFuchuan1OFF_Plr"+k));
 		rmAddTriggerCondition("Timer ms");
-		rmSetTriggerConditionParamInt("Param1",5);
+		rmSetTriggerConditionParamInt("Param1", 1200);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1ON_Plr"+k));
 		rmSetTriggerPriority(4);

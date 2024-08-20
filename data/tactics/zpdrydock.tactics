@@ -43,6 +43,18 @@
         <modifybase>1.0</modifybase>
     </action>
     <action>
+        <name stringid="125075">DockWorkRateMalus</name>
+        <type>AutoRangedModify</type>
+        <active>1</active>
+        <maxrange>1</maxrange>
+        <persistent>1</persistent>
+        <modifyself>1</modifyself>
+        <modifytype>BuildingWorkRate</modifytype>
+        <modifyabstracttype>AbstractDock</modifyabstracttype>
+        <modifymultiplier>0.5</modifymultiplier>
+        <modifybase>1.0</modifybase>
+    </action>
+    <action>
         <name stringid="69155">HealBonus</name>
         <type>Heal</type>
         <maxrange>24</maxrange>
@@ -53,7 +65,14 @@
         <name stringid="43299">SpawnGalley</name>
         <active>1</active>
         <type>Maintain</type>
-        <rate type="zpVeniceGalleyAutomatic">1.0 </rate>
+        <rate type="zpVeniceGalley">1.0 </rate>
+        <persistent>1</persistent>
+    </action>
+    <action>
+        <name stringid="43299">SpawnPrivateer</name>
+        <active>0</active>
+        <type>Maintain</type>
+        <rate type="Privateer">1.0 </rate>
         <persistent>1</persistent>
     </action>
     
@@ -119,6 +138,8 @@
     <tactic>TacticSpawnGalley
         <action>Heal</action>
         <action>SpawnGalley</action>
+        <action>Spawnprivateer</action>
+        <action>DockWorkRateMalus</action>
         <protounitcommand>zpTacticSpawnGalley</protounitcommand>
         <transition>
             <tactic>TacticQuality</tactic>

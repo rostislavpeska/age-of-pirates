@@ -1,0 +1,16 @@
+<tactics>
+  <action>
+    <name stringid="38135">MeleeHandAttack</name>
+    <type>Attack</type>
+    <maxrange>1.75</maxrange>
+    <rate type="AbstractShip">1.0 </rate>
+    <rate type="WaterGuardian">1.0 </rate>
+    <rate type="AbstractDock">1.0 </rate>
+    <attackaction>1</attackaction>
+    <handlogic>1</handlogic>
+    <speedboost>1</speedboost>
+    <anim>HandAttack</anim>
+    <impacteffect>effects\impacts\melee_no_weapon</impacteffect>
+  </action>
+  <tactic>Standard<action priority="100">MeleeHandAttack</action><action>Discover</action><speedmodifier>1.0</speedmodifier><attacktype>LogicalTypeHandUnitsAttack</attacktype><autoattacktype>LogicalTypeHandUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeHandUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
+</tactics>
