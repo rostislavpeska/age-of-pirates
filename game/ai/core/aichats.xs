@@ -7,6 +7,28 @@
 */
 //==============================================================================
 
+/*
+Comm prompts not yet added:
+cAICommPromptToAllyBattleStartMyFavor
+cAICommPromptToAllyIWillClaimTradeSite
+cAICommPromptToAllyIWillClaimNativeSite
+cAICommPromptToAllyIWillDefendLocation
+cAICommPromptToAllyIWillDefendBuilding
+cAICommPromptToAllyIWillDefendNativeSite
+cAICommPromptToAllyIWillDefendTradeSite
+cAICommPromptToAllyIWillDefendTown
+cAICommPromptToAllyBattleOverIWonFromBehind
+cAICommPromptToAllyBattleOverIWonAsExpected
+cAICommPromptToAllyWhenEnemyGetsNativeLead
+cAICommPromptToAllyWhenEnemyGetsTradeLead
+cAICommPromptToAllyWhenHeTakesNativeLead
+cAICommPromptToAllyWhenHeTakesTradeLead
+cAICommPromptToEnemyHisTCIsolated
+cAICommPromptToEnemyHisTCNearAlly
+
+
+*/
+
 //==============================================================================
 /* sendStatement
 
