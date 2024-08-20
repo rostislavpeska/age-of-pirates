@@ -193,6 +193,7 @@ void main(void)
 	int shortAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("short trade route", 3.0);
 	int avoidTradeRouteFar = rmCreateTradeRouteDistanceConstraint("trade route far", 8.0);
 	int avoidTradeRouteFar2 = rmCreateTradeRouteDistanceConstraint("trade route far 2", 10.0);
+	int avoidTradeRouteFar3 = rmCreateTradeRouteDistanceConstraint("trade route far 3", 30.0);
 	int avoidTradeSockets = rmCreateTypeDistanceConstraint("avoid trade sockets", "sockettraderoute", 8.0);
 	int farAvoidTradeSockets = rmCreateTypeDistanceConstraint("far avoid trade sockets", "sockettraderoute", 12.0);
 	int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 6.0);
@@ -624,13 +625,13 @@ void main(void)
 	// Text
 	rmSetStatusText("",0.30);
 
-	// Renegades
+	// Inventors
 
 	int maltese1VillageTypeID = rmRandInt(5,6);
 	int maltese1ID = -1;
 	maltese1ID = rmCreateGrouping("maltese 1", "Scientist_Lab06");
 	rmSetGroupingMinDistance(maltese1ID, 0);
-	rmSetGroupingMaxDistance(maltese1ID, 50);
+	rmSetGroupingMaxDistance(maltese1ID, 40);
 	rmAddGroupingConstraint(maltese1ID, avoidWater30);
 	rmAddGroupingConstraint(maltese1ID, farAvoidTradeSockets);
     rmAddGroupingConstraint(maltese1ID, avoidInventors);
@@ -638,14 +639,15 @@ void main(void)
 	rmAddGroupingConstraint(maltese1ID, mountainsIDsConstraint);
     rmAddGroupingConstraint(maltese1ID, avoidImpassableLand);
 	rmAddGroupingConstraint(maltese1ID, avoidTradeSocketFar);
-	rmAddGroupingConstraint(maltese1ID, avoidTradeRouteFar2);
+	rmAddGroupingConstraint(maltese1ID, avoidTradeRouteFar3);
+	rmAddGroupingConstraint(maltese1ID, avoidKOTH);
 	
 
 	int maltese2VillageTypeID = 11-maltese1VillageTypeID;
 	int maltese2ID = -1;
 	maltese2ID = rmCreateGrouping("maltese 2", "Scientist_Lab05");
 	rmSetGroupingMinDistance(maltese2ID, 0);
-	rmSetGroupingMaxDistance(maltese2ID, 50);
+	rmSetGroupingMaxDistance(maltese2ID, 40);
 	rmAddGroupingConstraint(maltese2ID, avoidWater30);
 	rmAddGroupingConstraint(maltese2ID, farAvoidTradeSockets);
     rmAddGroupingConstraint(maltese2ID, avoidInventors);
@@ -653,12 +655,13 @@ void main(void)
 	rmAddGroupingConstraint(maltese2ID, avoidPenalColony);
     rmAddGroupingConstraint(maltese2ID, avoidImpassableLand);
 	rmAddGroupingConstraint(maltese2ID, avoidTradeSocketFar);
-	rmAddGroupingConstraint(maltese2ID, avoidTradeRouteFar2);
+	rmAddGroupingConstraint(maltese2ID, avoidTradeRouteFar3);
+	rmAddGroupingConstraint(maltese2ID, avoidKOTH);
 
-	rmPlaceGroupingAtLoc(maltese1ID, 0, 0.2, 0.45);
+	rmPlaceGroupingAtLoc(maltese1ID, 0, 0.15, 0.5);
 
 	if (cNumberNonGaiaPlayers >3)
-		rmPlaceGroupingAtLoc(maltese2ID, 0, 0.7, 0.55);
+		rmPlaceGroupingAtLoc(maltese2ID, 0, 0.65, 0.5);
 
 
 	// Penal Colonies
@@ -670,31 +673,33 @@ void main(void)
 	int jewish2ID = rmCreateGrouping("jewish 2", "Penal_colony_0"+jewish2VillageTypeID);
 
 	rmSetGroupingMinDistance(jewish1ID, 0);
-	rmSetGroupingMaxDistance(jewish1ID, 70);
+	rmSetGroupingMaxDistance(jewish1ID, 40);
 	rmSetGroupingMinDistance(jewish2ID, 0);
-	rmSetGroupingMaxDistance(jewish2ID, 70);
+	rmSetGroupingMaxDistance(jewish2ID, 40);
 
     rmAddGroupingConstraint(jewish1ID, avoidWater30);
 	rmAddGroupingConstraint(jewish1ID, farAvoidTradeSockets);
     rmAddGroupingConstraint(jewish1ID, avoidInventorsLong);
 	rmAddGroupingConstraint(jewish1ID, avoidPenalColony);
 	rmAddGroupingConstraint(jewish1ID, mountainsIDsConstraint);
-	rmAddGroupingConstraint(jewish1ID, avoidTradeRouteFar2);
+	rmAddGroupingConstraint(jewish1ID, avoidTradeRouteFar3);
     rmAddGroupingConstraint(jewish1ID, avoidImpassableLand);
 	rmAddGroupingConstraint(jewish1ID, avoidTradeSocketFar);
+	rmAddGroupingConstraint(jewish1ID, avoidKOTH);
     rmAddGroupingConstraint(jewish2ID, avoidWater30);
 	rmAddGroupingConstraint(jewish2ID, farAvoidTradeSockets);
     rmAddGroupingConstraint(jewish2ID, avoidInventorsLong);
 	rmAddGroupingConstraint(jewish2ID, avoidPenalColony);
 	rmAddGroupingConstraint(jewish2ID, mountainsIDsConstraint);
-	rmAddGroupingConstraint(jewish2ID, avoidTradeRouteFar2);
+	rmAddGroupingConstraint(jewish2ID, avoidTradeRouteFar3);
     rmAddGroupingConstraint(jewish2ID, avoidImpassableLand);
 	rmAddGroupingConstraint(jewish2ID, avoidTradeSocketFar);
+	rmAddGroupingConstraint(jewish2ID, avoidKOTH);
 
-	rmPlaceGroupingAtLoc(jewish1ID, 0, 0.8, 0.55);
+	rmPlaceGroupingAtLoc(jewish1ID, 0, 0.85, 0.5);
 
 	if (cNumberNonGaiaPlayers >3)
-		rmPlaceGroupingAtLoc(jewish2ID, 0, 0.3, 0.45);
+		rmPlaceGroupingAtLoc(jewish2ID, 0, 0.35, 0.5);
 
 	
 
@@ -1233,6 +1238,7 @@ void main(void)
 	rmAddObjectDefConstraint(deerHerdID, avoidMountains);
 	rmAddObjectDefConstraint(deerHerdID, southEast);
 	rmAddObjectDefConstraint(deerHerdID, avoidKangaroos);
+	rmAddObjectDefConstraint(deerHerdID, avoidSmallCliffsShort);
 	numTries=cNumberNonGaiaPlayers/2;
 	for (i=0; <numTries)
 	{
@@ -1255,6 +1261,7 @@ void main(void)
 	rmAddObjectDefConstraint(deerHerdID2, northWest);
 	rmAddObjectDefConstraint(deerHerdID2, avoidMountains);
 	rmAddObjectDefConstraint(deerHerdID2, avoidKangaroos);
+	rmAddObjectDefConstraint(deerHerdID2, avoidSmallCliffsShort);
 	numTries=cNumberNonGaiaPlayers/2;
 	for (i=0; <numTries)
 	{
@@ -1275,6 +1282,7 @@ void main(void)
 	rmAddObjectDefConstraint(deerHerdID3, avoidImpassableLand);
 	rmAddObjectDefConstraint(deerHerdID3, deerConstraint);
 	rmAddObjectDefConstraint(deerHerdID3, mountainsIDsConstraint);
+	rmAddObjectDefConstraint(deerHerdID3, avoidSmallCliffsShort);
 	numTries=cNumberNonGaiaPlayers*3;
 	for (i=0; <numTries)
 	{
@@ -1295,6 +1303,7 @@ void main(void)
 	rmAddObjectDefConstraint(mooseHerdID, shortDeerConstraint);
 	rmAddObjectDefConstraint(mooseHerdID, mountainsIDsConstraint);
 	rmAddObjectDefConstraint(mooseHerdID, avoidKangaroos);
+	rmAddObjectDefConstraint(mooseHerdID, avoidSmallCliffsShort);
 	numTries=3*cNumberNonGaiaPlayers;
 	for (i=0; <numTries/2)
 	{
