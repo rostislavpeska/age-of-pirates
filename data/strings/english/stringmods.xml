@@ -10,18 +10,18 @@
       <string _locid="300006" symbol="cStringAbilityNameWildfire">Greek Fire</string>
       <string _locid="300007" symbol="cStringAbilityRolloverWildfire">Effective attack that burns enemy ships to dust.</string>
       <string _locid="300009">Edward Teach</string>
-      <string _locid="300010">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nQueen Anne's Revenge \n\nPowerfull ship destroyer with greek fire attack. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nAdmiral of the Pirates</string>
+      <string _locid="300010">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nQueen Anne's Revenge \n\nGreek fire attack. Stronger fleet with every age-up. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nTreasure of Ponce de León</string>
       <string _locid="300011">Pirates</string>
       <string _locid="300012" symbol="cStringNativePreAlly">"Take what you can, give nothing back!"</string>
       <string _locid="300013" symbol="cStringNativePostAlly">"Roll out the barrels of rum!"</string>
       <string _locid="300014" symbol="cStringNativeNotAlly">"Don't take it personally. Someone just paid us more."</string>
       <string _locid="300015">ZP Socket Pirates</string>
-      <string _locid="300016">Pirate Village</string>
+      <string _locid="300016">Pirates Lair</string>
       <string _locid="300017" symbol="cStringNativePreAlly"> "Take what you can, give nothing back!"</string>
       <string _locid="300018">ZP Trading Post Clone</string>
       <string _locid="300019">Legendary captain: Choose a legendary pirate captain with a mighty flagship.</string>
       <string _locid="300020">Grace O'Malley</string>
-      <string _locid="300021">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBlack Pearl \n\nVery fast, trains buccaneers, increases their build limit. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nThe Recruitment</string>
+      <string _locid="300021">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBlack Pearl \n\nVery fast, trains buccaneers, increases their build limit. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nPrivateer Emissary</string>
       <string _locid="300023">For the rest of the game, a very small trickle of Coin enriches you.</string>
       <string _locid="300024">Tortuga</string>
       <string _locid="300025">ZP NAT Buccaneer</string>
@@ -49,7 +49,7 @@
       <string _locid="300047">ZP NAT Black Pearl Buccaneer</string>
       <string _locid="300048">Black Pearl Bloodthirsty Buccaneer</string>
       <string _locid="300049">Black Pearl Notorious Buccaneer</string>
-      <string _locid="300050">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nNeptune's Galley \n\nLong-range attack. All buccaneers become corsairs. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nBarbary Revolution</string>
+      <string _locid="300050">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nNeptune's Galley \n\nPowerful oriental ship with a long-range attack. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nBarbary Revolution</string>
       <string _locid="300051">Black Caesar</string>
       <string _locid="300052">ZP TEST</string>
       <string _locid="300053">Recruit Privateer</string>
@@ -85,8 +85,8 @@
       <string _locid="300083">The Piracy</string>
       <string _locid="300084">Highly increases ship guardian attack. Slightly helps your Explolrer to fight with outlaws.</string>
       <string _locid="300085">Pick Legendary Captain</string>
-      <string _locid="300086">Mining Camp</string>
-      <string _locid="300087">ZP Socket Mining Camp</string>
+      <string _locid="300086">Penal Colony</string>
+      <string _locid="300087">ZP Socket Penal Colony</string>
       <string _locid="300088">ZP SPC Pirate Fixed Gun</string>
       <string _locid="300089">ZP NAT House Pirate Water</string>
       <string _locid="300090">ZP NAT Pirate Water Flag 1</string>
@@ -95,8 +95,8 @@
       <string _locid="300093">Pirate Settlement Water Flag</string>
       <string _locid="300094">Black Pearl: Pirate flagsip with a powerful broadside attack ability. Trains buccaneers.</string>
       <string _locid="300095">Neptune's Galley: Powerful pirate siege ship with broadside attack and long-range siege attack abilities.</string>
-      <string _locid="300096">Admiral of the Pirates</string>
-      <string _locid="300097">Increases all pirate ship (all classes) attack and hitpoints. Increasing privateer build limit.</string>
+      <string _locid="300096">Queen's Privateers</string>
+      <string _locid="300097">Increases all pirate ship (all classes) attack and hitpoints.</string>
       <string _locid="300098">The Recruitment</string>
       <string _locid="300099">Privateers can train Buccaneers. Decreasing Buccaneer costs and training time.</string>
       <string _locid="300100">Barbary Revolution</string>
@@ -183,7 +183,7 @@
       <string _locid="300181">Maltese Order Flagship</string>
       <string _locid="300182">ZP NAT Barbary Corsair</string>
       <string _locid="300183">Black Caesar's Corsair</string>
-      <string _locid="300184">Wokou Pirates</string>
+      <string _locid="300184">Wokou Lair</string>
       <string _locid="300185">ZP Socket Wokou</string>
       <string _locid="300186">ZP NAT Wokou Pirate</string>
       <string _locid="300187">ZP SPC Treasure Ship</string>
@@ -197,26 +197,26 @@
       <string _locid="300195">Grants resources for future control of Trading Routes.\n • Trade Routes: Future income improved by +25%</string>
       <string _locid="300196">Turtle Armor</string>
       <string _locid="300197">The Dragon Clan</string>
-      <string _locid="300198">Elite Wokou Pirate</string>
+      <string _locid="300198">Notorious Wokou Pirate</string>
       <string _locid="300199">Upgrade Wokou unit's attack and hitpoints.</string>
-      <string _locid="300200">Veteran Wokou Pirate</string>
+      <string _locid="300200">Bloodthirsty Wokou Pirate</string>
       <string _locid="300201">Pick Wokou Captain</string>
       <string _locid="300202">Blackmail a politician to improve your influence.</string>
       <string _locid="300203">Sao Feng</string>
-      <string _locid="300204">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWokou Army \n\nCosts population but is cheap and gets trained very fast. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nThe Big Theft (Treasure Ship)</string>
+      <string _locid="300204">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWokou Archer \n\nNative archer as a secondary unit. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nThe Big Theft (Treasure Ship with Sao Feng on board)</string>
       <string _locid="300205">ZP SPC Sao Feng</string>
       <string _locid="300206">Asian Pirate Captain</string>
-      <string _locid="300207">ZP NAT Wokou Monk</string>
-      <string _locid="300208">Veteran Wokou</string>
-      <string _locid="300209">Elite Wokou</string>
-      <string _locid="300210">Veteran Wokou Monk</string>
-      <string _locid="300211">Elite Wokou Monk</string>
+      <string _locid="300207">ZP NAT Wokou Archer</string>
+      <string _locid="300208">Bloodthirsty Wokou</string>
+      <string _locid="300209">Notorious Wokou</string>
+      <string _locid="300210">Bloodthirsty Wokou Archer</string>
+      <string _locid="300211">Notorious Wokou Archer</string>
       <string _locid="300212">The Big Theft</string>
       <string _locid="300213">Ships a Treasure Ship stolen by your Wokou alies with Sao Feng himself on board.</string>
       <string _locid="300214">Friendly Shipyard</string>
       <string _locid="300215">ZP SHP Destroyer</string>
-      <string _locid="300216">Matsura Takanobu</string>
-      <string _locid="300217">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWokou Monk \n\nNative archer. Shipments from foreign allies. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nPacific Allies (Random Legendary Ship)</string>
+      <string _locid="300216">Wang Zhi</string>
+      <string _locid="300217">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHongyipao Cannon \n\nHeavy Korean Cannon (native). \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nPacific Allies (Random Legendary Ship)</string>
       <string _locid="300218">The Iron Fleet</string>
       <string _locid="300219">Ships Fire Junks and enables you a Fire Junk training in your Dock.</string>
       <string _locid="300220">Destroyer</string>
@@ -228,10 +228,10 @@
       <string _locid="300226">Ships a Jesuit Socket Wagon</string>
       <string _locid="300227">Jesuit Mission Wagon</string>
       <string _locid="300228">ZP SPC Jesuit Mission Wagon</string>
-      <string _locid="300229">Veteran Wokou Horseman</string>
-      <string _locid="300230">Veteran Wokou Ronin</string>
-      <string _locid="300231">Elite Wokou Horseman</string>
-      <string _locid="300232">Elite Wokou Ronin</string>
+      <string _locid="300229">Bloodthirsty Wokou Horseman</string>
+      <string _locid="300230">Bloodthirsty Wokou Ronin</string>
+      <string _locid="300231">Notorious Wokou Horseman</string>
+      <string _locid="300232">Notorious Wokou Ronin</string>
       <string _locid="300233">Bloodthirsty Pirate</string>
       <string _locid="300234">Notorious Pirate</string>
       <string _locid="300235">A Wokou force of archers, ronins and a horseman, good for raiding enemy ports.\n3 Wokou Monk: archer with a lucky shot, good against infantry.\n2 Wokou Ronins \n1 Wokou Rider</string>
@@ -243,7 +243,7 @@
       <string _locid="300241">Pacific Allies</string>
       <string _locid="300242">Sends a random legendary pirate ship</string>
       <string _locid="300243">Madame Ching</string>
-      <string _locid="300244">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nFloating Dragon \n\nMighty flagship able to train wokou pirates.  \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nKamikaze (Fire Junks)</string>
+      <string _locid="300244">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nFloating Dragon \n\nMighty flagship. Wokou Pirate build limit increased.  \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nWokou Emissary</string>
       <string _locid="300245">Wokou Flagship with powerful broadside attack.</string>
       <string _locid="300246">The Emperess</string>
       <string _locid="300247">Choose a Wokou Pirate leader and get new special units and technologies.</string>
@@ -318,7 +318,7 @@
       <string _locid="300316">Legendary Maltese Knight</string>
       <string _locid="300317">Legendary Maltese Guard</string>
       <string _locid="300318">Legendary Buccaneer</string>
-      <string _locid="300319">Legendary Wokou Monk</string>
+      <string _locid="300319">Legendary Wokou Archer</string>
       <string _locid="300320">Legendary Wokou Pirate</string>
       <string _locid="300321">Legendary Sohei Yumi</string>
       <string _locid="300322">ZP NAT Corsair</string>
@@ -376,7 +376,7 @@
       <string _locid="300374">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHolcan Javelineer, Healer \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nCotton Armor, Maya Calendar, Maya Pyramids</string>
       <string _locid="300375">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nLightning Warrior \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nFood of the Gods, Cult of the Dead, Cloud People</string>
       <string _locid="300376">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nConquistador \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nFlying Buttress, Smokeless Powder, Christian Schools</string>
-      <string _locid="300377">Transforms into temple</string>
+      <string _locid="300377">Transforms into native conculate</string>
       <string _locid="300378">Transforms into outpost</string>
       <string _locid="300379">Center of local trade</string>
       <string _locid="300380">ZP Native Aztec Temple A</string>
@@ -1424,7 +1424,7 @@
       <string _locid="301422">ZP Native House Wokou Big</string>
       <string _locid="301423">Ghost Ship</string>
       <string _locid="301424">Tortuga Fixed Gun</string>
-      <string _locid="301425">David Jones</string>
+      <string _locid="301425">Davy Jones</string>
       <string _locid="301426">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nFlying Dutchman \n\nExtra durable ghost ship. Able to train dolphins. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nTortuga Fixed Gun</string>
       <string _locid="301427">ZP Native Tent</string>
       <string _locid="301428">ZP Nat Town Hall</string>
@@ -1466,7 +1466,7 @@
       <string _locid="301464">Barbarossa's Flagship</string>
       <string _locid="301465">Mighty Pirate Galley</string>
       <string _locid="301466">Hayreddin Barbarossa</string>
-      <string _locid="301467">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nSultana \n\nHeavy corsair galley, all Buccaneers become Corsairs. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nCorsair Embassy</string>
+      <string _locid="301467">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nSultana \n\nHeavy corsair galley, all Buccaneers become Corsairs. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nCorsair Emissary</string>
       <string _locid="301468">Corsair Emissary</string>
       <string _locid="301469">Ships Corsair Emissary Wagon allowing you to build a Corsair Emmissary providing you with more techs and shipments.</string>
       <string _locid="301470">ZP Corsair Embassy</string>
@@ -1510,10 +1510,124 @@
       <string _locid="301508">Large pirate ship. Can train Buccaneers and Carronades.</string>
       <string _locid="301509">Privateer Expeditionary Fleet</string>
       <string _locid="301510">Sends a Rigged Ship full with Carronades.</string>
-      <string _locid="301511">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBlack Pearl \n\nVery fast, trains buccaneers, increases their build limit. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nPrivateer Emissary</string>
-      <string _locid="301512">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nNeptune's Galley \n\nPowerful oriental ship with a long-range attack. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nBarbary Revolution</string>
+      <string _locid="301511">Royal Privateer</string>
+      <string _locid="301512">Mutineer</string>
       <string _locid="301513">Ships Corsair Galleys full of Corsairs, unlocks native corsair training.</string>
       <string _locid="301514">Kamikaze</string>
+      <string _locid="301515">Kidnaped Frigate</string>
+      <string _locid="301516">Cyprus</string>
+      <string _locid="301517">Heavy ship of European construction able to train mutineers</string>
+      <string _locid="301518">ZP Cyprus Frigate</string>
+      <string _locid="301519">William Swallow</string>
+      <string _locid="301520">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nMutineer \n\nAustralian Convict who escaped to japan. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nCyprus Mutiny (Wokou Frigate)</string>
+      <string _locid="301521">Cyprus Mutiny</string>
+      <string _locid="301522">Ships a Frigate able to train Mutineers and Wokou units. Wokou outlaw population costs signifficantly decreased.</string>
+      <string _locid="301523">ZP NAT Mutineer</string>
+      <string _locid="301524">Bloodthirsty Mutineer</string>
+      <string _locid="301525">Notorious Mutineer</string>
+      <string _locid="301526">Legendary Mutineer</string>
+      <string _locid="301527">ZP Nat Merc Mutineer</string>
+      <string _locid="301528">Wokou Archer</string>
+      <string _locid="301529">Emperror's Decret</string>
+      <string _locid="301530">Signifficantly improves Wokou Army Attack and Hitpoints.</string>
+      <string _locid="301531">Temple of the Water</string>
+      <string _locid="301532">ZP Temple of the Water</string>
+      <string _locid="301533">South American Native Temple. Building with special abilities.</string>
+      <string _locid="301534">Temple Travois</string>
+      <string _locid="301535">ZP Water Temple Travois</string>
+      <string _locid="301536">Transforms into temple</string>
+      <string _locid="301537">Fountain of Youth</string>
+      <string _locid="301538">Transforms into temple</string>
+      <string _locid="301539">Treasure Galleon</string>
+      <string _locid="301540">ZP Treasure Galleon</string>
+      <string _locid="301541">Santiago</string>
+      <string _locid="301542">Treasure of Ponce de León</string>
+      <string _locid="301543">Ships a Treasure Galleon which generates gold.</string>
+      <string _locid="301544">Generates Gold. Works more efficient while being close to a Dock.</string>
+      <string _locid="301545">Wokou Emissary</string>
+      <string _locid="301546">ZP Wokou Embassy</string>
+      <string _locid="301547">Allows to send Wokou Shipments </string>
+      <string _locid="301548">Wokou Emissary Rickshaw</string>
+      <string _locid="301549">ZP Wokou Embassy Rickshaw</string>
+      <string _locid="301550">Can construct Wokou Emissary</string>
+      <string _locid="301551">Ships Wokou Emissary Rickshaw allowing you to construct Wokou Emissary and send Wokou shipments. Wokou outlaw population costs signifficantly decreased.</string>
+      <string _locid="301552">Wokou Expeditionary Company</string>
+      <string _locid="301553">Wokou Landing Group</string>
+      <string _locid="301554">Sends Wokou Pirates (Can be sent in always when bellow build limit: 21 per settlement)</string>
+      <string _locid="301555">Sends Wokou Junk full of Wokou Pirates (Can be sent in always when bellow build limit of each)</string>
+      <string _locid="301556">Sends 3 Fire Junks (Can be sent in always when bellow build limit: 10)</string>
+      <string _locid="301557">Wokou Expeditionary Army</string>
+      <string _locid="301558">Ships Wokou Pirates with a mighty cannon</string>
+      <string _locid="301559">ZP Nat Merc Wokou Pirate</string>
+      <string _locid="301560">Hongyipao Cannon</string>
+      <string _locid="301561">ZP Korean Bombard</string>
+      <string _locid="301562">Superheavy Korean Cannon. Good against buildings but very  slow.</string>
+      <string _locid="301563">Blue Mountains</string>
+      <string _locid="301564">Team map with mountains dividing the team areas. \n\nSettlements: Aboriginal Australians, Penal Colony, Inventors (land variation with armored train)</string>
+      <string _locid="301565">Build railways along the blue mountains and make alliance with the natives.</string>
+      <string _locid="301566">Polynesia</string>
+      <string _locid="301567">Large volcano island migration map. Players have to migrate away from the volcano right after the start of the game. \n\nSettlements: Maori, Pirates, Wokou</string>
+      <string _locid="301568">Beware, the volcano errupts soon. Find a safer place for your colony.</string>
+      <string _locid="301569">Penal Colony</string>
+      <string _locid="301570">ZP Native House Penal Colony</string>
+      <string _locid="301571">ZP PROP Market Stall</string>
+      <string _locid="301572">Penal Colony Flag</string>
+      <string _locid="301573">ZP Flag Penal Colony</string>
+      <string _locid="301574">Penal Colony</string>
+      <string _locid="301575">ZP Socket Penal Colony</string>
+      <string _locid="301576">Convict Labourer</string>
+      <string _locid="301577">ZP NAT Convict Labourer</string>
+      <string _locid="301578">Rum Corpsman</string>
+      <string _locid="301579">ZP NAT Rum Corpsman</string>
+      <string _locid="301580">Colonial Footman with lower hitpoints but high damage.</string>
+      <string _locid="301581">Mining Colony</string>
+      <string _locid="301582">Veteran Rum Corpsman</string>
+      <string _locid="301583">Guard Rum Corpsman</string>
+      <string _locid="301584">Legendary Rum Corpsman</string>
+      <string _locid="301585">Improves Penal Volony military unit attack and hitpoints.</string>
+      <string _locid="301586">Veteran Penal Colony Military</string>
+      <string _locid="301587">Guard Penal Colony Military</string>
+      <string _locid="301588">Australian Steel</string>
+      <string _locid="301589">Increases hand infantry and hand cavalry attack and hitpoints</string>
+      <string _locid="301591">Colony Export</string>
+      <string _locid="301592">Every colony consistently generates small amount of gold.</string>
+      <string _locid="301593">Penal Colony Governance</string>
+      <string _locid="301594">Leave the colony in firm hands or encourage rebellion.</string>
+      <string _locid="301595">Sir Henry Parkes</string>
+      <string _locid="301596">Transforms Convict Labourers into Australian Citzens \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nRum Corps \n\nAustralian Industry (Factory Wagon)</string>
+      <string _locid="301597">Phil Cunningham</string>
+      <string _locid="301598">Transforms Guards to Deserters and Labourers to Mutineers \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGreat Rebellion \n\nUtopia (Additional Town)</string>
+      <string _locid="301599">Cpt. Patrick Logan</string>
+      <string _locid="301600">Sets up a harsh regime in the penal colony \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nConvict Patrole \n\nFortified Colony (Fort Wagon)</string>
+      <string _locid="301601">Shoemaker's Workshop</string>
+      <string _locid="300602" symbol="cStringNativePreAlly"> "So farway from home... Will you let us suffer or help us to break free?"</string>
+      <string _locid="301603">ZP NAT PROP Penal Colony Guards</string>
+      <string _locid="301604">ZP NAT PROP Penal Colony</string>
+      <string _locid="301605">Colonial Warden</string>
+      <string _locid="301606">Veteran Colonial Warden</string>
+      <string _locid="301607">Guard Colonial Warden</string>
+      <string _locid="301608">Legendary Colonial Warden</string>
+      <string _locid="301609">ZP NAT Colonial Warden</string>
+      <string _locid="301610">Rum Corps</string>
+      <string _locid="301611">Transforms Colonial Warden into Rum Corpsmen which benefit from promotions.</string>
+      <string _locid="301612">Devoted Australian Footman with lower hitpoints but high damage. Benefits from promotions.</string>
+      <string _locid="301613">Australian Industry</string>
+      <string _locid="301614">Australian Citizen</string>
+      <string _locid="301615">Fortified Colony</string>
+      <string _locid="301616">Convict Patrole</string>
+      <string _locid="301617">Convict Labourers gather much faster when the guards are nearby.</string>
+      <string _locid="301618">Convict Gather Rate Bonus</string>
+      <string _locid="301619">ZP NAT Mutineer AU</string>
+      <string _locid="301620">ZP NAT Deserter</string>
+      <string _locid="301621">Deserter</string>
+      <string _locid="301622">Deserted Colonial Footman with lower hitpoints but high damage.</string>
+      <string _locid="301623">Veteran Deserter</string>
+      <string _locid="301624">Guard deserter</string>
+      <string _locid="301625">Legendary Deserter</string>
+      <string _locid="301626">Great Rebellion</string>
+      <string _locid="301627">Ships Mutineers from all over the Australian continent. Slightly increases Mutineer build limit.</string>
+      <string _locid="301628">Utopia</string>
+      <string _locid="301629">Ships a covered wagon and increases Town Center Build Limit</string>
 
 
       <!-- ======================================== -->

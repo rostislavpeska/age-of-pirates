@@ -151,6 +151,14 @@
           <soundset name="SpanishSettlerMaleSelect">
           </soundset>
         </choice>
+         <choice name="DEItalians">
+          <soundset name="DEItalianSettlerMaleSelect">
+          </soundset>
+        </choice>
+        <choice name="DEMaltese">
+          <soundset name="DEItalianSettlerMaleSelect">
+          </soundset>
+        </choice>
 
       </civlogic>
     </soundtype>
@@ -298,6 +306,14 @@
         </choice>
         <choice name="DEAmericans">
           <soundset name="DEAmericanSettlerMaleAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="DEItalians">
+          <soundset name="DEItalianSettlerMaleAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="DEMaltese">
+          <soundset name="DEItalianSettlerMaleAcknowledge">
           </soundset>
         </choice>
 

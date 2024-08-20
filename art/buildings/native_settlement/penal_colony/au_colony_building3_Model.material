@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\dutch\dockhouse_02\textures\dockhouse_02_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\dutch\dockhouse_02\textures\dockhouse_02_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\dutch\dockhouse_02\textures\dockhouse_02_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

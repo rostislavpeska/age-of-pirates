@@ -179,4 +179,10 @@
   <zppirateriggedship>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zppirateriggedship>
+  <zpspccyprusfrigate>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpspccyprusfrigate>
+  <zpnatcolonialguard>
+    <ability>dePromotionHitpoints<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatcolonialguard>
 </abilitymods>

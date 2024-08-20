@@ -1,0 +1,38 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\wokou_consulate_con_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\japan\age_2\textures\japan_consulate_age2_con_stage3_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\consulate\japan\age_2\textures\japan_consulate_age2_con_stage3_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\wokou_consulate_con_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\japan\age_2\textures\japan_consulate_age2_con_stage3_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\consulate\japan\age_2\textures\japan_consulate_age2_con_stage3_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_Normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

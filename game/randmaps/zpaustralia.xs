@@ -1471,7 +1471,7 @@ void main(void)
 		rmSetTriggerConditionParamInt("PlayerID",k);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPirates"); //operator
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPiratesAustralia"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -1500,7 +1500,7 @@ void main(void)
 		rmSetTriggerConditionParamInt("PlayerID",k);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffWokou"); //operator
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffWokouSouth"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -1702,15 +1702,15 @@ void main(void)
 
 		rmSwitchToTrigger(rmTriggerID("BlackbTrain2ONPlr"+k));
 		rmAddTriggerCondition("Units in Area");
-		rmSetTriggerConditionParam("DstObject",pirate2ID); // Unique Object ID Village 4
+		rmSetTriggerConditionParam("DstObject",pirate2ID);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParam("UnitType","zpSPCQueenAnneProxy");
+		rmSetTriggerConditionParam("UnitType","zpSPCPirateSteamerProxy");
 		rmSetTriggerConditionParamInt("Dist",35);
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpTrainQueenAnne2"); //operator
+		rmSetTriggerEffectParam("TechID","cTechzpTrainPirateSteamer2"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip2TIMEPlr"+k));
@@ -1764,15 +1764,15 @@ void main(void)
 
 		rmSwitchToTrigger(rmTriggerID("CaesarTrain2ONPlr"+k));
 		rmAddTriggerCondition("Units in Area");
-		rmSetTriggerConditionParam("DstObject",pirate2ID); // Unique Object ID Village 4
+		rmSetTriggerConditionParam("DstObject",pirate2ID);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParam("UnitType","zpSPCNeptuneGalleyProxy");
+		rmSetTriggerConditionParam("UnitType","zpSPCFlyingDutchmanProxy");
 		rmSetTriggerConditionParamInt("Dist",35);
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpTrainNeptune2"); //operator
+		rmSetTriggerEffectParam("TechID","cTechzpTrainFlyingDutchman2"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip2TIMEPlr"+k));
@@ -1810,15 +1810,15 @@ void main(void)
 		// Blackbeard
 		rmSwitchToTrigger(rmTriggerID("BlackbTrain1ONPlr"+k));
 		rmAddTriggerCondition("Units in Area");
-		rmSetTriggerConditionParam("DstObject",pirate1ID); // Unique Object ID Village 3
+		rmSetTriggerConditionParam("DstObject",pirate1ID);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParam("UnitType","zpSPCQueenAnneProxy");
+		rmSetTriggerConditionParam("UnitType","zpSPCPirateSteamerProxy");
 		rmSetTriggerConditionParamInt("Dist",35);
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpTrainQueenAnne1"); //operator
+		rmSetTriggerEffectParam("TechID","cTechzpTrainPirateSteamer1"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
@@ -1874,15 +1874,15 @@ void main(void)
 		// Caesar
 		rmSwitchToTrigger(rmTriggerID("CaesarTrain1ONPlr"+k));
 		rmAddTriggerCondition("Units in Area");
-		rmSetTriggerConditionParam("DstObject",pirate1ID); // Unique Object ID Village 3
+		rmSetTriggerConditionParam("DstObject",pirate1ID);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParam("UnitType","zpSPCNeptuneGalleyProxy");
+		rmSetTriggerConditionParam("UnitType","zpSPCFlyingDutchmanProxy");
 		rmSetTriggerConditionParamInt("Dist",35);
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpTrainNeptune1"); //operator
+		rmSetTriggerEffectParam("TechID","cTechzpTrainFlyingDutchman1"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
@@ -2056,7 +2056,7 @@ void main(void)
 		{
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
 			rmSetTriggerEffectParamInt("PlayerID",k);
-			rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesBlackbeard"); //operator
+			rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesBlackJack"); //operator
 			rmSetTriggerEffectParamInt("Status",2);
 		}
 		if (pirateCaptain==2)
@@ -2070,7 +2070,7 @@ void main(void)
 		{
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
 			rmSetTriggerEffectParamInt("PlayerID",k);
-			rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesBlackCaesar"); //operator
+			rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesDutchman"); //operator
 			rmSetTriggerEffectParamInt("Status",2);
 		}
 		rmSetTriggerPriority(4);
@@ -2707,13 +2707,13 @@ void main(void)
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",wokou2ID);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParam("UnitType","zpWokouFuchuanProxy");
+		rmSetTriggerConditionParam("UnitType","zpSPCPrauProxy");
 		rmSetTriggerConditionParamInt("Dist",35);
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpTrainFireJunk2"); //operator
+		rmSetTriggerEffectParam("TechID","cTechzpTrainPrau2"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan2OFF_Plr"+k));
@@ -2756,13 +2756,13 @@ void main(void)
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",wokou1ID);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParam("UnitType","zpWokouFuchuanProxy");
+		rmSetTriggerConditionParam("UnitType","zpSPCPrauProxy");
 		rmSetTriggerConditionParamInt("Dist",35);
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpTrainFireJunk1"); //operator
+		rmSetTriggerEffectParam("TechID","cTechzpTrainPrau1"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainFuchuan1OFF_Plr"+k));
@@ -2938,14 +2938,14 @@ void main(void)
 		{
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
 			rmSetTriggerEffectParamInt("PlayerID",k);
-			rmSetTriggerEffectParam("TechID","cTechzpConsulateWokouTakanobu"); //operator
+			rmSetTriggerEffectParam("TechID","cTechzpConsulateWokouSiRigam"); //operator
 			rmSetTriggerEffectParamInt("Status",2);
 		}
 		if (wokouCaptain==3)
 		{
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
 			rmSetTriggerEffectParamInt("PlayerID",k);
-			rmSetTriggerEffectParam("TechID","cTechzpConsulateWokouMadameChing"); //operator
+			rmSetTriggerEffectParam("TechID","cTechzpConsulateWokouSwallow"); //operator
 			rmSetTriggerEffectParamInt("Status",2);
 		}
 		rmSetTriggerPriority(4);
