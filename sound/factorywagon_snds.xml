@@ -52,6 +52,14 @@
           <soundset name="SpanishSettlerMaleSelect">
           </soundset>
         </choice>
+        <choice name="DEItalians">
+          <soundset name="DEItalianSettlerMaleSelect">
+          </soundset>
+        </choice>
+        <choice name="DEMaltese">
+          <soundset name="DEItalianSettlerMaleSelect">
+          </soundset>
+        </choice>
         <choice name="Pirate">
         </choice>
         <choice name="TheCircle">
@@ -267,6 +275,14 @@
         </choice>
         <choice name="DEMexicans">
           <soundset name="SpanishSettlerMaleAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="DEItalians">
+          <soundset name="DEItalianSettlerMaleAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="DEMaltese">
+          <soundset name="DEItalianSettlerMaleAcknowledge">
           </soundset>
         </choice>
 

@@ -2970,20 +2970,7 @@
 			<effect type ="SetName" proto ="zpNatWokouMonk" culture ="none" newname ="300211"></effect>
       <effect type="SetName" proto="zpNatWokouPirate" culture="none" newname="300319" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-				<target type ="ProtoUnit">zpNatMutineer</target></effect>
-			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">zpNatMutineer</target></effect>
-			<effect type ="SetName" proto ="zpNatMutineer" culture ="none" newname ="301525"></effect>
-      <effect type="SetName" proto="zpNatMutineer" culture="none" newname="301526" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-				<target type ="ProtoUnit">zpNatMercMutineer</target></effect>
-			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">zpNatMercMutineer</target></effect>
-			<effect type ="SetName" proto ="zpNatMercMutineer" culture ="none" newname ="301525"></effect>
-      <effect type="SetName" proto="zpNatMercMutineer" culture="none" newname="301526" reqtech="ImpLegendaryNativesShadow">
-      </effect>
+      <effect type="TechStatus" status="obtainable">zpGuardMutineers</effect>
 		</effects>
 	</tech>
   <tech name ="zpNatDisciplinedWokou" type ="Normal">
@@ -3024,20 +3011,7 @@
 			<effect type ="SetName" proto ="zpNatWokouMonk" culture ="none" newname ="300210"></effect>
       <effect type="SetName" proto="zpNatWokouMonk" culture="none" newname="300319" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-				<target type ="ProtoUnit">zpNatMutineer</target></effect>
-			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">zpNatMutineer</target></effect>
-			<effect type ="SetName" proto ="zpNatMutineer" culture ="none" newname ="301524"></effect>
-      <effect type="SetName" proto="zpNatMutineer" culture="none" newname="301526" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
-				<target type ="ProtoUnit">zpNatMercMutineer</target></effect>
-			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
-				<target type ="ProtoUnit">zpNatMercMutineer</target></effect>
-			<effect type ="SetName" proto ="zpNatMercMutineer" culture ="none" newname ="301524"></effect>
-      <effect type="SetName" proto="zpNatMercMutineer" culture="none" newname="301526" reqtech="ImpLegendaryNativesShadow">
-      </effect>
+      <effect type="TechStatus" status="obtainable">zpVeteranMutineers</effect>
 		</effects>
 	</tech>
   <tech name="ypNativeTradeTreatyWokou" type="Normal">
@@ -4813,6 +4787,10 @@
       <effect mergemode="add" type="SetName" proto="zpNatMercMutineer" culture="none" newname="301526">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatColonialGuard" culture="none" newname="301584">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatColonialGuardOrig" culture="none" newname="301608">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatColonialGuardDeserted" culture="none" newname="301625">
       </effect>
     </effects>
   </tech>
@@ -14219,6 +14197,7 @@
       <effect type="CommandAdd" tech="zpWokouCyprusMutiny" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="TechStatus" status="active">zpEnableMutineer</effect>
     </effects>
   </tech>
   <tech name="zpWokouCyprusMutiny" type="Normal">
@@ -14560,7 +14539,7 @@
         <target type="ProtoUnit">zpNatConvictLabourer</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatColonialGuard</target>
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpNatMiningColony</effect>
       <effect type="TechStatus" status="obtainable">zpVeteranPenalColony</effect>
@@ -14573,6 +14552,12 @@
       <effect type="TechStatus" status="obtainable">zpIndianFriendshipPenalColony</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyPenalColony</effect>
+      <effect type="TechStatus" status="obtainable">zpNatRumCorps</effect>
+      <effect type="TechStatus" status="obtainable">zpNatAustralianFactory</effect>
+      <effect type="TechStatus" status="obtainable">zpNatAustralianFort</effect>
+      <effect type="TechStatus" status="obtainable">zpNatConvictPatrole</effect>
+      <effect type="TechStatus" status="obtainable">zpGreatMutiny</effect>
+      <effect type="TechStatus" status="obtainable">zpUtopia</effect>
     </effects>
   </tech>
   <tech name="zpNatMiningColony" type="Normal">
@@ -14622,6 +14607,27 @@
       <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatColonialGuard</target>
       </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+      <effect type="SetName" proto="zpNatColonialGuardOrig" culture="none" newname="301606">
+      </effect>
+      <effect type="SetName" proto="zpNatColonialGuardOrig" culture="none" newname="301608" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialGuardDeserted</target>
+      </effect>
+      <effect type="SetName" proto="zpNatColonialGuardDeserted" culture="none" newname="301623">
+      </effect>
+      <effect type="SetName" proto="zpNatColonialGuardDeserted" culture="none" newname="301625" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialGuardDeserted</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpVeteranMutineers</effect>
     </effects>
   </tech>
   <tech name="zpGuardPenalColony" type="Normal">
@@ -14652,6 +14658,27 @@
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatColonialGuard</target>
       </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+      <effect type="SetName" proto="zpNatColonialGuardOrig" culture="none" newname="301607">
+      </effect>
+      <effect type="SetName" proto="zpNatColonialGuardOrig" culture="none" newname="301608" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialGuardDeserted</target>
+      </effect>
+      <effect type="SetName" proto="zpNatColonialGuardDeserted" culture="none" newname="301624">
+      </effect>
+      <effect type="SetName" proto="zpNatColonialGuardDeserted" culture="none" newname="301625" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialGuardDeserted</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpGuardMutineers</effect>
     </effects>
   </tech>
   <tech name="zpNatAustralianSteel" type="Normal">
@@ -14742,9 +14769,13 @@
       <effect type="CommandRemove" tech="zpPenalColonyRevolt">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="" page="2" column="6">
+      <effect type="CommandAdd" tech="zpNatRumCorps" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" tech="zpNatAustralianFactory" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="active">zpTransformConvictsToCitzens</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffPenalColony" type="Normal">
@@ -14821,9 +14852,38 @@
       <effect type="CommandRemove" tech="zpPenalColonyRevolt">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="" page="2" column="6">
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatColonialGuardDeserted</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Assign">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatColonialGuardOrig">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandRemove" proto="zpNatColonialGuardOrig">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNatColonialGuardDeserted" fromprotoid="zpNatColonialGuardOrig">
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMutineerAU</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Assign">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatConvictLabourer">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNatMutineerAU" fromprotoid="zpNatConvictLabourer">
+      </effect>
+      <effect type="CommandAdd" tech="zpGreatMutiny" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpUtopia" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="active">zpEnableMutineer</effect>
     </effects>
   </tech>
   <tech name="zpConsulatePenalColonyLogan" type="Normal">
@@ -14844,7 +14904,10 @@
       <effect type="CommandRemove" tech="zpPenalColonyRevolt">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="" page="2" column="6">
+      <effect type="CommandAdd" tech="zpNatConvictPatrole" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatAustralianFort" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -14913,6 +14976,245 @@
       <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatRumCorps" type="Normal">
+    <dbid>40604</dbid>
+    <displaynameid>301610</displaynameid>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\rum_corpsmen.png</icon>
+    <rollovertextid>301611</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatColonialGuard</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Assign">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatColonialGuardOrig">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatColonialGuardOrig">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNatColonialGuard" fromprotoid="zpNatColonialGuardOrig">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatAustralianFactory" type="Normal">
+    <dbid>40605</dbid>
+    <displaynameid>301613</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\money_factory.png</icon>
+    <rollovertextid>71286</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Factory</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="FactoryWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTransformConvictsToCitzens" type="Normal">
+    <dbid>40606</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type ="SetName" proto ="zpNatConvictLabourer" culture ="none" newname ="301614"></effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpNatConvictLabourer" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatConvictLabourer" relativity="Absolute">
+        <target type="ProtoUnit">zpAustralianCitizen</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.20" subtype="WorkRate" unittype="Building" relativity="Assign">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.20" subtype="WorkRate" unittype="Manor" relativity="Assign">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.20" subtype="WorkRate" unittype="House" relativity="Assign">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.20" subtype="WorkRate" unittype="Church" relativity="Assign">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.20" subtype="WorkRate" unittype="deField" relativity="Assign">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatAustralianFort" type="Normal">
+    <dbid>40607</dbid>
+    <displaynameid>301615</displaynameid>
+    <cost resourcetype="Wood">600.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\australian_fort.png</icon>
+    <rollovertextid>71287</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="FortWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">FortFrontier</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">FortFrontier</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatConvictPatrole" type="Normal">
+    <dbid>40608</dbid>
+    <displaynameid>301616</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\penal_colony_patrol.png</icon>
+    <rollovertextid>301617</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" action="MineGatherRateBonus" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+      <effect type="Data" action="FarmGatherRateBonus" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+      <effect type="Data" action="TreeGatherRateBonus" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+      <effect type="Data" action="HuntGatherRateBonus" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVeteranMutineers" type="Normal">
+    <dbid>40609</dbid>
+    <flag>Shadow</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status="Active">zpEnableMutineer</techstatus>
+    </prereqs>
+    <effects>
+      <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMutineer</target></effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMutineer</target></effect>
+			<effect type ="SetName" proto ="zpNatMutineer" culture ="none" newname ="301524"></effect>
+      <effect type="SetName" proto="zpNatMutineer" culture="none" newname="301526" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMutineer</target></effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMutineer</target></effect>
+			<effect type ="SetName" proto ="zpNatMercMutineer" culture ="none" newname ="301524"></effect>
+      <effect type="SetName" proto="zpNatMercMutineer" culture="none" newname="301526" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMutineerAU</target></effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMutineerAU</target></effect>
+			<effect type ="SetName" proto ="zpNatMutineerAU" culture ="none" newname ="301524"></effect>
+      <effect type="SetName" proto="zpNatMutineerAU" culture="none" newname="301526" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpGuardMutineers" type="Normal">
+    <dbid>40610</dbid>
+    <flag>Shadow</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status="Active">zpEnableMutineer</techstatus>
+    </prereqs>
+    <effects>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMutineer</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMutineer</target></effect>
+			<effect type ="SetName" proto ="zpNatMutineer" culture ="none" newname ="301525"></effect>
+      <effect type="SetName" proto="zpNatMutineer" culture="none" newname="301526" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMutineer</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMutineer</target></effect>
+			<effect type ="SetName" proto ="zpNatMercMutineer" culture ="none" newname ="301525"></effect>
+      <effect type="SetName" proto="zpNatMercMutineer" culture="none" newname="301526" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMutineerAU</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMutineerAU</target></effect>
+			<effect type ="SetName" proto ="zpNatMutineerAU" culture ="none" newname ="301525"></effect>
+      <effect type="SetName" proto="zpNatMutineerAU" culture="none" newname="301526" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpEnableMutineer" type="Normal">
+    <dbid>40611</dbid>
+    <flag>Shadow</flag>
+  </tech>
+  <tech name="zpGreatMutiny" type="Normal">
+    <dbid>40612</dbid>
+    <displaynameid>301626</displaynameid>
+    <cost resourcetype="Gold">1000.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\great_mutiny.png</icon>
+    <rollovertextid>301627</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="20.00" subtype="FreeHomeCityUnit" unittype="zpNatMercMutineer" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="3.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMutineerAU</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUtopia" type="Normal">
+    <dbid>40612</dbid>
+    <displaynameid>301628</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\utopia_town.png</icon>
+    <rollovertextid>301629</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="CoveredWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">TownCenter</target>
       </effect>
     </effects>
   </tech>

@@ -12,4 +12,5 @@
   <unittype>AbstractAboriginalTracker</unittype>
   <unittype>AbstractSchool</unittype>
   <unittype>AbstractTreasureShip</unittype>
+  <unittype>AbstractConvictLabourer</unittype>
 </unittypes>

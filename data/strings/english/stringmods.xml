@@ -1577,13 +1577,13 @@
       <string _locid="301575">ZP Socket Penal Colony</string>
       <string _locid="301576">Convict Labourer</string>
       <string _locid="301577">ZP NAT Convict Labourer</string>
-      <string _locid="301578">Colonial Warden</string>
-      <string _locid="301579">ZP NAT Colonial Warden</string>
+      <string _locid="301578">Rum Corpsman</string>
+      <string _locid="301579">ZP NAT Rum Corpsman</string>
       <string _locid="301580">Colonial Footman with lower hitpoints but high damage.</string>
       <string _locid="301581">Mining Colony</string>
-      <string _locid="301582">Veteran Colonial Warden</string>
-      <string _locid="301583">Guard Colonial Warden</string>
-      <string _locid="301584">Legendary Colonial Warden</string>
+      <string _locid="301582">Veteran Rum Corpsman</string>
+      <string _locid="301583">Guard Rum Corpsman</string>
+      <string _locid="301584">Legendary Rum Corpsman</string>
       <string _locid="301585">Improves Penal Volony military unit attack and hitpoints.</string>
       <string _locid="301586">Veteran Penal Colony Military</string>
       <string _locid="301587">Guard Penal Colony Military</string>
@@ -1594,17 +1594,40 @@
       <string _locid="301593">Penal Colony Governance</string>
       <string _locid="301594">Leave the colony in firm hands or encourage rebellion.</string>
       <string _locid="301595">Sir Henry Parkes</string>
-      <string _locid="301596">Transforms Convict Labourers into Australian Citzens \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nRum Corpsmen \n\nAustralian Industry (Factory Wagon)</string>
+      <string _locid="301596">Transforms Convict Labourers into Australian Citzens \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nRum Corps \n\nAustralian Industry (Factory Wagon)</string>
       <string _locid="301597">Phil Cunningham</string>
-      <string _locid="301598">Transforms Convict Labourers and Wardens into Mutineers \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nCitizens of Australia \n\nFree the Heroes (Random outlaw hero)</string>
+      <string _locid="301598">Transforms Guards to Deserters and Labourers to Mutineers \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGreat Rebellion \n\nUtopia (Additional Town)</string>
       <string _locid="301599">Cpt. Patrick Logan</string>
-      <string _locid="301600">Slightly increases Convict Labourer build limit \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nOvertime Labour \n\nFortified Colony (Fort Wagon)</string>
+      <string _locid="301600">Sets up a harsh regime in the penal colony \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nConvict Patrole \n\nFortified Colony (Fort Wagon)</string>
       <string _locid="301601">Shoemaker's Workshop</string>
       <string _locid="300602" symbol="cStringNativePreAlly"> "So farway from home... Will you let us suffer or help us to break free?"</string>
       <string _locid="301603">ZP NAT PROP Penal Colony Guards</string>
       <string _locid="301604">ZP NAT PROP Penal Colony</string>
-
-
+      <string _locid="301605">Colonial Warden</string>
+      <string _locid="301606">Veteran Colonial Warden</string>
+      <string _locid="301607">Guard Colonial Warden</string>
+      <string _locid="301608">Legendary Colonial Warden</string>
+      <string _locid="301609">ZP NAT Colonial Warden</string>
+      <string _locid="301610">Rum Corps</string>
+      <string _locid="301611">Transforms Colonial Warden into Rum Corpsmen which benefit from promotions.</string>
+      <string _locid="301612">Devoted Australian Footman with lower hitpoints but high damage. Benefits from promotions.</string>
+      <string _locid="301613">Australian Industry</string>
+      <string _locid="301614">Australian Citizen</string>
+      <string _locid="301615">Fortified Colony</string>
+      <string _locid="301616">Convict Patrole</string>
+      <string _locid="301617">Convict Labourers gather much faster when the guards are nearby.</string>
+      <string _locid="301618">Convict Gather Rate Bonus</string>
+      <string _locid="301619">ZP NAT Mutineer AU</string>
+      <string _locid="301620">ZP NAT Deserter</string>
+      <string _locid="301621">Deserter</string>
+      <string _locid="301622">Deserted Colonial Footman with lower hitpoints but high damage.</string>
+      <string _locid="301623">Veteran Deserter</string>
+      <string _locid="301624">Guard deserter</string>
+      <string _locid="301625">Legendary Deserter</string>
+      <string _locid="301626">Great Rebellion</string>
+      <string _locid="301627">Ships Mutineers from all over the Australian continent. Slightly increases Mutineer build limit.</string>
+      <string _locid="301628">Utopia</string>
+      <string _locid="301629">Ships a covered wagon and increases Town Center Build Limit</string>
 
 
       <!-- ======================================== -->
