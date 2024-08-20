@@ -79,14 +79,14 @@
 			</variationid5>
 			<variationid6>
 				<assetreference type="GrannyModel">
-					<file>buildings\native_settlement\penal_colony\prison_prop2_Model</file>
+					<file>buildings\native_settlement\penal_colony\bigtower_Model</file>
 				</assetreference>
 				<decal>
 					<effecttype>default</effecttype>
 					<texture>buildings\native_settlement\japan_decal_01</texture>
 					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-					<width>4.00</width>
-					<height>8.00</height>
+					<width>6.00</width>
+					<height>6.00</height>
 				</decal>
 			</variationid6>
 			<variationid7>
