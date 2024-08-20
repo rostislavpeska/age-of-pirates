@@ -52,7 +52,7 @@ void main(void)
 	if (cNumberNonGaiaPlayers >2)
 		playerTiles = 12000;
 	if (cNumberNonGaiaPlayers >4)
-		playerTiles = 10500;			
+		playerTiles = 11000;			
 
 	int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
 	rmEchoInfo("Map size="+size+"m x "+size+"m");
@@ -218,10 +218,11 @@ void main(void)
 
 
 	// Native Constraints
-	int AvoidAboriginals=rmCreateTypeDistanceConstraint("stay away from Aboriginal", "zpSocketAboriginals", 25.0);
+	int AvoidAboriginals=rmCreateTypeDistanceConstraint("stay away from Aboriginal", "zpSocketAboriginals", 30.0);
 	int AvoidAboriginalsLong=rmCreateTypeDistanceConstraint("stay away from Aboriginal Long", "zpSocketAboriginals", 50.0);
-	int avoidInventors=rmCreateTypeDistanceConstraint("stay away from Inventors", "zpSocketScientists", 25.0);
-	int avoidPenalColony=rmCreateTypeDistanceConstraint("stay away from Penal Colony", "zpSocketPenalColony", 25.0);
+	int avoidInventors=rmCreateTypeDistanceConstraint("stay away from Inventors", "zpSocketScientists", 30.0);
+	int avoidInventorsLong=rmCreateTypeDistanceConstraint("stay away from Inventors Long", "zpSocketScientists", 50.0);
+	int avoidPenalColony=rmCreateTypeDistanceConstraint("stay away from Penal Colony", "zpSocketPenalColony", 33.0);
 	int avoidTownCenterFar=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 40.0);
 	int avoidTradeSocket=rmCreateTypeDistanceConstraint("stay away from Trade Socket", "SocketTradeRoute", 25.0);
 	int avoidTradeSocketShort=rmCreateTypeDistanceConstraint("stay away from Trade Socket Short", "SocketTradeRoute", 25.0);
@@ -669,13 +670,13 @@ void main(void)
 	int jewish2ID = rmCreateGrouping("jewish 2", "Penal_colony_0"+jewish2VillageTypeID);
 
 	rmSetGroupingMinDistance(jewish1ID, 0);
-	rmSetGroupingMaxDistance(jewish1ID, 50);
+	rmSetGroupingMaxDistance(jewish1ID, 70);
 	rmSetGroupingMinDistance(jewish2ID, 0);
-	rmSetGroupingMaxDistance(jewish2ID, 50);
+	rmSetGroupingMaxDistance(jewish2ID, 70);
 
     rmAddGroupingConstraint(jewish1ID, avoidWater30);
 	rmAddGroupingConstraint(jewish1ID, farAvoidTradeSockets);
-    rmAddGroupingConstraint(jewish1ID, avoidInventors);
+    rmAddGroupingConstraint(jewish1ID, avoidInventorsLong);
 	rmAddGroupingConstraint(jewish1ID, avoidPenalColony);
 	rmAddGroupingConstraint(jewish1ID, mountainsIDsConstraint);
 	rmAddGroupingConstraint(jewish1ID, avoidTradeRouteFar2);
@@ -683,7 +684,7 @@ void main(void)
 	rmAddGroupingConstraint(jewish1ID, avoidTradeSocketFar);
     rmAddGroupingConstraint(jewish2ID, avoidWater30);
 	rmAddGroupingConstraint(jewish2ID, farAvoidTradeSockets);
-    rmAddGroupingConstraint(jewish2ID, avoidInventors);
+    rmAddGroupingConstraint(jewish2ID, avoidInventorsLong);
 	rmAddGroupingConstraint(jewish2ID, avoidPenalColony);
 	rmAddGroupingConstraint(jewish2ID, mountainsIDsConstraint);
 	rmAddGroupingConstraint(jewish2ID, avoidTradeRouteFar2);
@@ -711,10 +712,12 @@ void main(void)
 	rmAddGroupingConstraint(mosque1ID, farAvoidTradeSockets);
 	rmAddGroupingConstraint(mosque1ID, avoidMountains);
 	rmAddGroupingConstraint(mosque1ID, avoidWater30);
-	if(cNumberNonGaiaPlayers >= 3)
-		rmPlaceGroupingAtLoc(mosque1ID, 0, 0.7, 0.85, 1);
+	if(cNumberNonGaiaPlayers <= 2)
+		rmPlaceGroupingAtLoc(mosque1ID, 0, 0.7, 0.15, 1);
+	else if(cNumberNonGaiaPlayers == 3)
+		rmPlaceGroupingAtLoc(mosque1ID, 0, 0.5, 0.15, 1);
 	else
-			rmPlaceGroupingAtLoc(mosque1ID, 0, 0.5, 0.85, 1);
+		rmPlaceGroupingAtLoc(mosque1ID, 0, 0.7, 0.15, 1);
 
 
 	int Aboriginal2VillageTypeID = rmRandInt(1,5);
@@ -729,10 +732,8 @@ void main(void)
 	rmAddGroupingConstraint(mosque2ID, circleConstraint);
 	rmAddGroupingConstraint(mosque2ID, avoidMountains);
 	rmAddGroupingConstraint(mosque2ID, avoidWater30);
-	if(cNumberNonGaiaPlayers >= 3)
-		rmPlaceGroupingAtLoc(mosque2ID, 0, 0.7, 0.15, 1);
-	else
-		rmPlaceGroupingAtLoc(mosque1ID, 0, 0.5, 0.15, 1);
+	rmPlaceGroupingAtLoc(mosque1ID, 0, 0.3, 0.85, 1);
+
 
 
 	if(cNumberNonGaiaPlayers >= 3){
@@ -749,8 +750,10 @@ void main(void)
 		rmAddGroupingConstraint(mosque3ID, avoidMountains);
 		rmAddGroupingConstraint(mosque3ID, southEast);
 		rmAddGroupingConstraint(mosque3ID, avoidWater30);
-		rmPlaceGroupingAtLoc(mosque3ID, 0, 0.3, 0.85, 1);
+		rmPlaceGroupingAtLoc(mosque3ID, 0, 0.7, 0.85, 1);
+	}
 
+	if(cNumberNonGaiaPlayers >= 4){
 		int Aboriginal4VillageTypeID = rmRandInt(1,5);
 		int mosque4ID = -1;
 		mosque4ID = rmCreateGrouping("Aboriginal Village 4", "Native_Aboriginal_0"+Aboriginal4VillageTypeID);
@@ -877,7 +880,7 @@ void main(void)
 		else{
 		rmPlacePlayer(1, 0.25, 0.2);
 		rmPlacePlayer(2, 0.42, 0.2);
-		rmPlacePlayer(3, 0.58, 0.0);
+		rmPlacePlayer(3, 0.58, 0.2);
 		rmPlacePlayer(4, 0.75, 0.2);
 		rmPlacePlayer(5, 0.25, 0.8);
 		rmPlacePlayer(6, 0.42, 0.8);
@@ -3705,6 +3708,7 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
 	// Testing
 
 	/*for (k=1; <= cNumberNonGaiaPlayers) {
