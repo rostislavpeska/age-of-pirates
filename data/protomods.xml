@@ -2638,7 +2638,6 @@
     <flag>NoFadeOnDeath</flag>
     <flag>FadeOutDecalOnDeath</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>HeroName1</flag>
     <flag>HasGatherPoint</flag>
     <flag>AllowAutoGarrison</flag>
     <flag>ObscuresUnits</flag>
@@ -13294,7 +13293,6 @@
     <flag>NoFadeOnDeath</flag>
     <flag>FadeOutDecalOnDeath</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>HeroName1</flag>
     <flag>HasGatherPoint</flag>
     <flag>AllowAutoGarrison</flag>
     <flag>ObscuresUnits</flag>
@@ -25298,7 +25296,6 @@
     <flag>NoFadeOnDeath</flag>
     <flag>FadeOutDecalOnDeath</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>HeroName1</flag>
     <flag>HasGatherPoint</flag>
     <flag>AllowAutoGarrison</flag>
     <flag>ObscuresUnits</flag>
@@ -31381,7 +31378,7 @@
     <movementtype>land</movementtype>
     <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
     <unittype>EmbellishmentClass</unittype>
-    <civflagoverride>objects\flags\eureka</civflagoverride>
+    <civflagoverride>objects\flags\penal_colony</civflagoverride>
     <flag>NoHPBar</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
