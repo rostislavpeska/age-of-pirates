@@ -1416,7 +1416,7 @@
     <rendering scatter_color="0.303 0.433 0.410" sun_set_color="1.000 0.400 0.000" caustics_depth="0.5000" caustics_intensity="4.0000" caustics_scale="0.2000" caustics_scroll="0.0480" fft_displace="0.6000" custom_wave_scale="8.0000" reflection_normal="0.5000" refraction_normal="0.0350" scatter_amount="0.5090" fog_color_mult="0.1500" custom_wave_scatter="5.0000" surface_roughness="0.0100" fog_density="0.4600" water_color="0.292 0.875 0.546" blur_intensity="0.2800" water_brighten="0.2500" reflection_intensity="0.1000">
     </rendering>
   </lake>
-  <ocean name="ZP Pacific Coast" cluttermix="caribbean_underwater" iconname="ui\editor\watercaribbeancoast" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="zpaustralia\groundshore_australia" bank="texas\river1_tex" outerbank="Texas\Path_Blend" slope="" color="9 110 88" deepcolor="0 0 0" depth="5.000000" fresnelscale="0.247934" fresnelbias="0.555556" alphaminvalue="0.000000" alphamaxvalue="0.914063" alphamindepth="0.000000" alphamaxdepth="1.900827" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.842105" reflectionamount="-0.222222" bumpscale="0.660000" reflectionbumpscale="0.710000" foamscale="-0.110000" texscale="1.970000" texscrollspeed="0.000000" texrotation="129.000000">
+  <ocean name="ZP Pacific Coast" cluttermix="caribbean_underwater" iconname="ui\editor\watercaribbeancoast" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="zpaustralia\groundshore_australia" bank="Africa\sand_afr" outerbank="Africa\pathBlend_afr" slope="" color="9 110 88" deepcolor="0 0 0" depth="5.000000" fresnelscale="0.247934" fresnelbias="0.555556" alphaminvalue="0.000000" alphamaxvalue="0.914063" alphamindepth="0.000000" alphamaxdepth="1.900827" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.842105" reflectionamount="-0.222222" bumpscale="0.660000" reflectionbumpscale="0.710000" foamscale="-0.110000" texscale="1.970000" texscrollspeed="0.000000" texrotation="129.000000">
     <textureplacement>
       <texture distance="12" variance="4">caribbean\ground_shoreline1_crb</texture>
       <texture distance="16" variance="6">caribbean\seafloor_coral4_crb</texture>
@@ -1439,10 +1439,15 @@
     <rendering scatter_color="0.000 0.364 0.415" sun_set_color="1.000 0.400 0.000" caustics_depth="4.0000" caustics_intensity="1.4200" caustics_scale="0.2500" caustics_scroll="0.0560" fft_displace="1.7500" custom_wave_scale="8.0000" reflection_normal="0.3800" refraction_normal="0.0230" scatter_amount="0.6220" fog_color_mult="0.9670" custom_wave_scatter="5.0000" surface_roughness="0.0600" fog_density="0.2000" water_color="0.037 0.502 0.579" blur_intensity="0.0300" water_brighten="2.3930" reflection_intensity="0.9060">
     </rendering>
   </ocean>
-  <lake name="ZP Australia Red Lake" iconname="ui\editor\waterpainteddesertlake" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="zpaustralia\groundshore_australia" bank="AfricaSavanna\ground_shore1_afriSavanna" outerbank="AfricaSavanna\ground_shore2_afriSavanna" slope="" color="31 76 128" deepcolor="0 0 0" depth="2.000000" fresnelscale="3.801653" fresnelbias="0.343750" alphaminvalue="0.000000" alphamaxvalue="1.000000" alphamindepth="-1.500000" alphamaxdepth="2.500000" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.000000" reflectionamount="0.203125" bumpscale="0.340000" reflectionbumpscale="0.270000" foamscale="-0.030000" texscale="2.000000" texscrollspeed="0.000000" texrotation="99.999992">
+  <lake name="ZP Australia Red Lake" iconname="ui\editor\waterpainteddesertlake" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="pampas\river_shoreline2_pam" bank="pampas\river_shoreline2_pam" outerbank="Africa\pathBlend_afr" slope="" color="31 76 128" deepcolor="0 0 0" depth="2.000000" fresnelscale="3.801653" fresnelbias="0.343750" alphaminvalue="0.000000" alphamaxvalue="1.000000" alphamindepth="-1.500000" alphamaxdepth="2.500000" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.000000" reflectionamount="0.203125" bumpscale="0.340000" reflectionbumpscale="0.270000" foamscale="-0.030000" texscale="2.000000" texscrollspeed="0.000000" texrotation="99.999992">
+    <shoreline>
+      <shorelong name="ShorelineFoam" distance="2.0" randomyaw="true">
+      </shorelong>
+      <waves bumpmap="terrain\water\waterwavebump" bumpmapcrashposition="0.50" foam1tex="terrain\waves\wavefoam" foam2tex="terrain\waves\wavefoam2" foamalphasidetex="terrain\waves\wavefoam_alpha" foamalphabacktex="terrain\waves\wavefoam_alphaback" minlength="12.74" maxlength="19.63" minconcavelength="11.53" maxconcavelength="13.96" minwidth="3.34" maxwidth="4.68" minheight="0.35" maxheight="0.41" minfadelength="1.82" maxfadelength="6.61" minspeed="0.85" maxspeed="2.18" foamstartnormalizedtime="0.08" foamnormalizedspeed="0.00" foammaxnormalizedwidth="1.00" foam1scrollspeed="0.00" foam2scrollspeed="0.00" foamfadeintime="0.50" foamfadeouttime="2.31" recedetime="2.39" recedeendscale="1.17" recedemotion="true" variance="3.06" minstartdistance="15.14" maxstartdistance="17.78" sectionlength="15.00" wavedensity="3" convexitylimit="-9.73" concavitylimit="10.11">
+      </waves>
+    </shoreline>
     <item starttile="2" endtile="9" chance="0.05" jitter="0.4">PropFish</item>
-    <item starttile="2" endtile="9" chance="0.1" jitter="0.4">UnderbrushYukon</item>
-    <item starttile="3" endtile="4" chance="0.05" jitter="0.4">GroundPropsYuk</item>
+    <item starttile="2" endtile="4" chance="0.01" jitter="0.4">RiverPropsYuk</item>
     <rendering scatter_color="1.000 0.300 0.200" sun_set_color="1.000 0.400 0.200" caustics_depth="1.1000" caustics_intensity="0.9400" caustics_scale="0.3000" caustics_scroll="0.0140" fft_displace="1.8400" custom_wave_scale="8.0000" reflection_normal="1.0000" refraction_normal="0.0320" scatter_amount="0.2210" fog_color_mult="0.7310" custom_wave_scatter="5.0000" surface_roughness="0.0000" fog_density="0.5140" water_color="0.400 0.438 0.402" blur_intensity="0.0700" water_brighten="10.0000" reflection_intensity="0.3540">
     </rendering>
   </lake>
@@ -1515,6 +1520,18 @@
       </waves>
     </shoreline>
     <rendering scatter_color="0.191 0.746 0.594" sun_set_color="1.000 0.400 0.000" caustics_depth="2.0000" caustics_intensity="1.4000" caustics_scale="0.3000" caustics_scroll="0.0500" fft_displace="1.7900" custom_wave_scale="8.0000" reflection_normal="0.2400" refraction_normal="0.0380" scatter_amount="0.4800" fog_color_mult="0.3450" custom_wave_scatter="5.0000" surface_roughness="0.0000" fog_density="1.2000" water_color="0.665 0.874 0.954" blur_intensity="0.1600" water_brighten="2.2850" reflection_intensity="0.3230">
+    </rendering>
+  </lake>
+  <lake name="ZP Australia Red Lake Shallow" iconname="ui\editor\waterpainteddesertlake" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="pampas\river_shoreline2_pam" bank="pampas\river_shoreline2_pam" outerbank="Africa\pathBlend_afr" slope="" color="31 76 128" deepcolor="0 0 0" depth="0.5000" fresnelscale="3.801653" fresnelbias="0.343750" alphaminvalue="0.000000" alphamaxvalue="1.000000" alphamindepth="-1.500000" alphamaxdepth="2.500000" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.000000" reflectionamount="0.203125" bumpscale="0.340000" reflectionbumpscale="0.270000" foamscale="-0.030000" texscale="2.000000" texscrollspeed="0.000000" texrotation="99.999992">
+    <item starttile="2" endtile="9" chance="0.05" jitter="0.4">PropFish</item>
+    <item starttile="5" endtile="9" chance="0.01" jitter="0.4">RiverPropsYuk</item>
+    <shoreline>
+      <shorelong name="ShorelineFoam" distance="2.0" randomyaw="true">
+      </shorelong>
+      <waves bumpmap="terrain\water\waterwavebump" bumpmapcrashposition="0.50" foam1tex="terrain\waves\wavefoam" foam2tex="terrain\waves\wavefoam2" foamalphasidetex="terrain\waves\wavefoam_alpha" foamalphabacktex="terrain\waves\wavefoam_alphaback" minlength="12.74" maxlength="19.63" minconcavelength="11.53" maxconcavelength="13.96" minwidth="3.34" maxwidth="4.68" minheight="0.35" maxheight="0.41" minfadelength="1.82" maxfadelength="6.61" minspeed="0.85" maxspeed="2.18" foamstartnormalizedtime="0.08" foamnormalizedspeed="0.00" foammaxnormalizedwidth="1.00" foam1scrollspeed="0.00" foam2scrollspeed="0.00" foamfadeintime="0.50" foamfadeouttime="2.31" recedetime="2.39" recedeendscale="1.17" recedemotion="true" variance="3.06" minstartdistance="15.14" maxstartdistance="17.78" sectionlength="15.00" wavedensity="3" convexitylimit="-9.73" concavitylimit="10.11">
+      </waves>
+    </shoreline>
+    <rendering scatter_color="1.000 0.300 0.200" sun_set_color="1.000 0.400 0.200" caustics_depth="1.1000" caustics_intensity="0.9400" caustics_scale="0.3000" caustics_scroll="0.0140" fft_displace="1.8400" custom_wave_scale="8.0000" reflection_normal="1.0000" refraction_normal="0.0320" scatter_amount="0.2210" fog_color_mult="0.7310" custom_wave_scatter="5.0000" surface_roughness="0.0000" fog_density="0.5140" water_color="0.400 0.438 0.402" blur_intensity="0.0700" water_brighten="10.0000" reflection_intensity="0.3540">
     </rendering>
   </lake>
 

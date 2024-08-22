@@ -13030,6 +13030,7 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type ="SetName" proto ="deFishNilePerch" culture ="none" newname ="301630"></effect>
     </effects>
   </tech>
   <tech name="zpTradeRouteUpgradeAustralia1" type="Normal">
