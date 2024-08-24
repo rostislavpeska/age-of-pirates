@@ -821,6 +821,9 @@
     <train row="0" page="0" column="105">zpNatBoomerang</train>
     <train row="0" page="0" column="106">zpNatAboriginalTracker</train>
     <train row="0" page="0" column="107">zpNatSettlementMilitia</train>
+    <train row="0" page="0" column="108">zpNatColonialGuardOrig</train>
+    <train row="0" page="0" column="108">zpNatColonialGuard</train>
+    <train row="0" page="0" column="108">zpNatColonialGuardDeserted</train>
   </unit>
   <unit name="NativeTownObstruction">
     <flag>Invulnerable</flag>
@@ -29792,7 +29795,7 @@
     <tech row="0" page="1" column="0">zpCorsairArmy</tech>
     <tech row="0" page="1" column="1">zpCorsairMarksmen</tech>
     <tech row="0" page="1" column="2">zpCorsairExplorationFleet</tech>
-    <tech row="0" page="2" column="1">zpCorsairBrigade</tech>
+    <tech row="0" page="2" column="0">zpCorsairBrigade</tech>
     <tech row="0" page="2" column="1">zpCorsairExpeditionaryFleet</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -29941,7 +29944,7 @@
     <tech row="0" page="1" column="0">zpPirateArmy</tech>
     <tech row="0" page="1" column="1">zpPirateExpeditionaryForce</tech>
     <tech row="0" page="1" column="2">zpPirateExplorationFleet</tech>
-    <tech row="0" page="2" column="1">zpPirateExpeditionaryFleet</tech>
+    <tech row="0" page="2" column="0">zpPirateExpeditionaryFleet</tech>
     <tech row="0" page="2" column="1">zpPirateRecruits</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>

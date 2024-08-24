@@ -122,6 +122,7 @@ minInterval 1
    {
       xsEnableRule("CaribTPMonitor");
       xsEnableRule("pirateShipAbilityMonitor");
+      xsEnableRule("nativeWagonMonitor");
    }
    
    // Initializes native specific rules
@@ -135,7 +136,7 @@ minInterval 1
       xsEnableRule("MaintainWokouShips");
       xsEnableRule("WokouTechMonitor");
       xsEnableRule("submarineTactics");
-      xsEnableRule("airshipAbilityMonitor");
+      xsEnableRule("nativeWagonMonitor");
    }
    if (getGaiaUnitCount(cUnitTypezpNativeHouseJewish) > 0)
    {
@@ -236,6 +237,11 @@ minInterval 1
    if (cMyCiv == cCivDEInca)
    {
         xsEnableRule("priestessAbilityMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeHousePenalColony) > 0)
+   {
+      xsEnableRule("zpPenalColonyTechMonitor");
+      xsEnableRule("zpMaintainConvictLabourers");
    }
     
    xsDisableSelf();
@@ -531,6 +537,14 @@ minInterval 12
    {
       pirateShipID = getUnit(cUnitTypezpSPCNeptuneGalley, cMyID, cUnitStateAlive);
       longBombard = true;
+   }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(cUnitTypezpSPCFlyingDutchman, cMyID, cUnitStateAlive);
+   }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(cUnitTypezpSPCPirateSteamer, cMyID, cUnitStateAlive);
    }
    else if (pirateShipID < 0)
    {
@@ -1090,7 +1104,7 @@ rule MaintainPirateShips
 inactive
 minInterval 30
 {
-  const int list_size = 4;
+  const int list_size = 7;
   static int proxy_list = -1;
   static int ship_list = -1;
 
@@ -1115,6 +1129,17 @@ minInterval 30
 
     xsArraySetInt(proxy_list, 3, cUnitTypezpSPCNeptuneGalleyProxy);
     xsArraySetInt(ship_list, 3, cUnitTypezpSPCNeptuneGalley);
+
+    xsArraySetInt(proxy_list, 4, cUnitTypezpSPCPirateGalleassProxy);
+    xsArraySetInt(ship_list, 4, cUnitTypezpSPCPirateGalleass);
+
+    xsArraySetInt(proxy_list, 5, cUnitTypezpSPCPirateSteamerProxy);
+    xsArraySetInt(ship_list, 5, cUnitTypezpSPCPirateSteamer);
+
+    xsArraySetInt(proxy_list, 6, cUnitTypezpSPCFlyingDutchmanProxy);
+    xsArraySetInt(ship_list, 6, cUnitTypezpSPCFlyingDutchman);
+
+    
   }
 
   for(i = 0; < xsArrayGetSize(proxy_list))
@@ -1192,7 +1217,7 @@ rule MaintainWokouShips
 inactive
 minInterval 30
 {
-  const int list_size = 2;
+  const int list_size = 3;
   static int proxy_list = -1;
   static int ship_list = -1;
 
@@ -1211,6 +1236,9 @@ minInterval 30
 
     xsArraySetInt(proxy_list, 1, cUnitTypezpWokouFuchuanProxy);
     xsArraySetInt(ship_list, 1, cUnitTypezpWokouFuchuan);
+
+    xsArraySetInt(proxy_list, 2, cUnitTypezpSPCPrauProxy);
+    xsArraySetInt(ship_list, 2, cUnitTypezpSPCPrau);
 
   }
 
@@ -1499,19 +1527,52 @@ mininterval 60
       cUnitTypeTradingPost);
 
       // Black Caesar Special Upgrade
-      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatPirateCorsairs,
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatCorsairRevolt,
       []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePiratesBlackCaesar) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
       cUnitTypeTradingPost);
 
       // Blackbeard Special Upgrade
-      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatPirateAdmiral,
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatTreasureGalleon,
       []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePiratesBlackbeard) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
       cUnitTypeTradingPost);
 
       // Grace Special Upgrade
-      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatPirateRecruits,
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatPirateEmbassy,
       []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePiratesGrace) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
       cUnitTypeTradingPost);
+
+      // Barbarossa Special Upgrade
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatCorsairEmbassy,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePiratesBarbarossa) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Davy Jones Special Upgrade
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpTortugaFixedGunBld,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePiratesDutchman) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // BlackJack Special Upgrade
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpTortugaDryDock,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePiratesBlackJack) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Privateer Embassy
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpPirateExpeditionaryFleet,
+      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpPirateEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpPirateEmbassy);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpPirateRecruits,
+      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpPirateEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpPirateEmbassy);
+
+      // Corsair Embassy
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpCorsairBrigade,
+      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpCorsairEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpCorsairEmbassy);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpCorsairExpeditionaryFleet,
+      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpCorsairEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpCorsairEmbassy);
 
   if (canDisableSelf == true)
       {
@@ -1547,9 +1608,14 @@ mininterval 60
       cUnitTypeTradingPost);
 
       // Ching Upgrade
-      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatIronFleet,
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatWokouEmbassy,
       []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWokouMadameChing) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
       cUnitTypeTradingPost);
+
+      // Wokou Embassy
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpWokouCannonArmy,
+      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpWokouEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpWokouEmbassy);
 
   if (canDisableSelf == true)
       {
@@ -1912,6 +1978,21 @@ minInterval 15
          case cUnitTypezpVeniceEmbassyWagon:
          {
              buildingType = cUnitTypezpVeniceEmbassy;
+             break;
+         }
+         case cUnitTypezpPirateEmbassyWagon:
+         {
+             buildingType = cUnitTypezpPirateEmbassy;
+             break;
+         }
+         case cUnitTypezpCorsairEmbassyWagon:
+         {
+             buildingType = cUnitTypezpCorsairEmbassy;
+             break;
+         }
+         case cUnitTypezpWokouEmbassyWagon:
+         {
+             buildingType = cUnitTypezpWokouEmbassy;
              break;
          }
          case cUnitTypezpWaterFortBuilder:
@@ -3040,4 +3121,80 @@ mininterval 60
           xsDisableSelf();
       }
   
+}
+
+//==============================================================================
+// ZP Penal Colony Tech Monitor
+//==============================================================================
+rule zpPenalColonyTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketPenalColony, cUnitStateAny) == 0)
+      {
+      return; // Player has no Penal Colony socket.
+      }
+
+      // Penal Colony Parkes
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpNatRumCorps,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePenalColonyParkes) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatAustralianFactory,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePenalColonyParkes) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Penal Colony Cunningham
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpGreatMutiny,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePenalColonyCunningham) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpUtopia,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePenalColonyCunningham) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Penal Colony Logan
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatAustralianFort,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePenalColonyLogan) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
+// maintain Convict Labourers
+//==============================================================================
+rule zpMaintainConvictLabourers
+inactive
+minInterval 60
+{
+   static int convictPlan = -1;
+
+   if (kbUnitCount(cMyID, cUnitTypezpSocketPenalColony, cUnitStateAny) == 0)
+   {
+      return;
+   }
+
+   // Check build limit.
+   int buildLimit = kbGetBuildLimit(cMyID, cUnitTypezpNatConvictLabourer);
+
+   if (kbUnitCount(cMyID, cUnitTypeTradingPost, cUnitStateAlive) < 1)
+   {
+      buildLimit = 0;
+   }
+
+   // Create/update maintain plan
+   if ((convictPlan < 0) && (buildLimit >= 1))
+   {
+      convictPlan = createSimpleMaintainPlan(cUnitTypezpNatConvictLabourer, buildLimit, true, kbBaseGetMainID(cMyID), 1);
+   }
+   else
+   {
+      aiPlanSetVariableInt(convictPlan, cTrainPlanNumberToMaintain, 0, buildLimit);
+   }
 }
