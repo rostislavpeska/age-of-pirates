@@ -1612,6 +1612,16 @@ mininterval 60
       []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWokouMadameChing) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
       cUnitTypeTradingPost);
 
+      // Si Ragam Upgrade
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpWokouSecondaryFlagship,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWokouSiRigam) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Swallow Upgrade
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpWokouCyprusMutiny,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWokouSwallow) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
       // Wokou Embassy
       canDisableSelf &= researchSimpleTechByCondition(cTechzpWokouCannonArmy,
       []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpWokouEmbassy, cUnitStateABQ) >= 1); },
