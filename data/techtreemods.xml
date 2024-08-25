@@ -55,6 +55,9 @@
       <effect type="CommandAdd" tech="zpNatTreasureGalleon" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" proto="zpSPCQueenAnneProxy" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
       <effect type="TechStatus" status="obtainable">zpUpdatePrivateersI</effect>
       <effect type="TechStatus" status="obtainable">zpUpdatePrivateersII</effect>
     </effects>
@@ -84,6 +87,9 @@
         <target type="ProtoUnit">zpNatPirate</target>
       </effect>
       <effect type="CommandAdd" tech="zpNatPirateEmbassy" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCBlackPearlProxy" page="0" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -1517,6 +1523,9 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandAdd" tech="zpNatCorsairRevolt" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCNeptuneGalleyProxy" page="0" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -3096,6 +3105,9 @@
       <effect type="CommandAdd" tech="zpNatTreasureFleet" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" proto="zpNatWokouMonk" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
 
@@ -3228,7 +3240,9 @@
       <effect type="CommandRemove" tech="zpBlackmailing">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-
+      <effect type="CommandAdd" proto="zpKoreanBombard" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
       <effect type="CommandAdd" tech="zpWokouRandomShip" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -3657,6 +3671,9 @@
       <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatWokouPirate</target>
       </effect>
+      <effect type="CommandAdd" proto="zpWokouFuchuanProxy" page="0" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpTrainWokouFuchuan1" type="Normal">
@@ -3737,6 +3754,12 @@
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpCastleZen</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatSoheiArcher" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSettlerZen" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpSPCZenMonasteryExpansion</effect>
     </effects>
@@ -4472,6 +4495,12 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandAdd" tech="zpSufiIndianMercenaries" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatWarElephantProxy" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSettlerSufi" page="0" column="3">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpSPCSufiBlueMosque</effect>
@@ -6416,6 +6445,12 @@
       <effect type="CommandAdd" tech="zpSufiAfricanMercenaries" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" proto="zpNatGatlingCamel" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSettlerSufiB" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
       <effect type="TechStatus" status="unobtainable">zpSPCSufiGreatMosque</effect>
     </effects>
 	</tech>
@@ -6858,6 +6893,9 @@
       <effect type="CommandAdd" tech="zpImperialSubmarine" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" proto="zpNautilusProxy" page="0" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpTrainSubmarine1" type="Normal">
@@ -6926,6 +6964,9 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandAdd" tech="zpTankBattalion" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpIronTank" page="0" column="2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -7004,6 +7045,9 @@
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpWokouSteamer" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+      <effect type="CommandAdd" proto="zpWokouSteamerProxy" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
   </tech>
@@ -7621,6 +7665,9 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSubmarineProxy</target>
       </effect>
+      <effect type="CommandAdd" proto="zpSubmarineProxy" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpImperialSubmarine" type="Normal">
@@ -7688,8 +7735,8 @@
   <tech name="zpTankBattalion" type="Normal">
     <dbid>40252</dbid>
     <displaynameid>300546</displaynameid>
-    <cost resourcetype="Gold">1500.0000</cost>
-    <cost resourcetype="Wood">1500.0000</cost>
+    <cost resourcetype="Gold">1200.0000</cost>
+    <cost resourcetype="Wood">1200.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <rollovertextid>300547</rollovertextid>
     <status>UNOBTAINABLE</status>
@@ -7701,9 +7748,6 @@
       <techstatus status="Active">zpIronTanks</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">zpIronTank</target>
-      </effect>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpIronTank" relativity ="Absolute">
 				<target type ="Player"></target>
 			</effect>
@@ -7712,10 +7756,10 @@
 			</effect>
       <effect type="TransformUnit" toprotoid="zpIronTankProxy" fromprotoid="deTank">
       </effect>
-      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpIronTank</target>
       </effect>
-      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpIronTankProxy</target>
       </effect>
       <effect type="SetName" proto="zpIronTank" culture="none" newname="300542">
@@ -8104,6 +8148,9 @@
       <effect type="CommandAdd" tech="zpInuitFriends" page="2" column="7">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" proto="zpInuitTorchman" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
 	</tech>
   <tech name="zpInuitFeeders" type="Normal">
@@ -8200,6 +8247,9 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandAdd" tech="zpMustardGas" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpAirshipProxy" page="0" column="2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -8308,6 +8358,12 @@
         <target type="ProtoUnit">zpAirshipAIProxy</target>
       </effect>
       <effect type="TransformUnit" toprotoid="zpAirshipAI" fromprotoid="zpAirship">
+      </effect>
+      <effect type="CommandAdd" proto="zpAirshipAIProxy" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpAirshipProxy">
+        <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
   </tech>
@@ -8549,6 +8605,12 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandAdd" tech="zpNatJesuitArmory" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatConquistadorMusketeer" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpPriestProxy" page="0" column="3">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -9344,6 +9406,9 @@
       <effect type="CommandAdd" tech="zpNatDryDock" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" proto="zpGalleassProxy" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpTrainVeniceGalley1" type="Normal">
@@ -9473,6 +9538,9 @@
       <effect type="CommandAdd" tech="zpNatVeniceEmbassy" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" proto="zpNatDottore" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
       <effect type="TechStatus" status="obtainable">zpVeniceArmy</effect>
       <effect type="TechStatus" status="obtainable">zpVeniceExplorationFleet</effect>
       <effect type="TechStatus" status="obtainable">zpVeniceCannonArmy</effect>
@@ -9504,6 +9572,9 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandAdd" tech="zpNatVeniceFort" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpVenetianBombard" page="0" column="2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpFortifiedVeniceFort</effect>
@@ -10194,6 +10265,9 @@
       <effect type="CommandAdd" tech="zpOrthodoxGeorgianCastle" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" proto="zpNatMonaspa" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpConsulateOrthodoxBulgarians" type="Normal">
@@ -10223,6 +10297,9 @@
       <effect type="CommandAdd" tech="zpOrthodoxSteamer" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" proto="zpNatBulgarianBoyar" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpConsulateOrthodoxRussians" type="Normal">
@@ -10250,6 +10327,9 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandAdd" tech="zpOrthodoxRussianJaegers" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatDvoryanin" page="0" column="2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -10683,6 +10763,12 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpCastleZenClone</target>
       </effect>
+      <effect type="CommandAdd" proto="zpNatSoheiCavalry" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSettlerZen" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
       <effect type="TechStatus" status="unobtainable">zpSPCZenBuddha</effect>
     </effects>
 	</tech>
@@ -10756,19 +10842,13 @@
     <prereqs>
       <techstatus status="Active">DEAge0Inca</techstatus>
       <techstatus status="Active">deMapEuropean</techstatus>
-      <techstatus status="Active">zpIsPirateMap</techstatus>
+      <techstatus status="Active">zpNatCorsairRevolt</techstatus>
     </prereqs>
     <effects>
-      <effect type="CommandRemove" proto="zpSubmarineProxy">
+      <effect type="CommandRemove" proto="zpNatCorsair">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandRemove" proto="zpNatMarksman">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpNatMarksman" page="1" column="0">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpSubmarineProxy" page="1" column="0">
+      <effect type="CommandAdd" proto="zpNatCorsair" page="1" column="0">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -10942,6 +11022,9 @@
       </effect>
       <effect type="TechStatus" status="obtainable">zpScientistsVeteranMG</effect>
       <effect type="TechStatus" status="obtainable">zpScientistsGuardMG</effect>
+      <effect type="CommandAdd" proto="zpPhoenixMGunCarrier" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpArmoredTrainTech" type="Normal">
@@ -11487,6 +11570,9 @@
       <effect type="CommandAdd" tech="zpNatSherriffOffice" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" proto="zpDeputy" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name ="zpWesternAgeUp" type ="Normal">
@@ -11541,6 +11627,9 @@
       <effect type="CommandAdd" tech="zpSendStageCoach" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" proto="zpPinkertonAgent" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpConsulateWesternJesseJames" type="Normal">
@@ -11568,6 +11657,9 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandAdd" tech="zpNatApocalypseHorsemen" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpJamesGang" page="0" column="2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -12267,6 +12359,9 @@
       <effect type="CommandAdd" tech="zpNatAboriginalTrackers" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" proto="zpNatAboriginalTracker" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
 	</tech>
   <tech name="zpNatAboriginalSchool" type="Normal">
@@ -12575,6 +12670,9 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandAdd" tech="zpMaoriMakahikiArmy" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatMaoriSlinger" page="0" column="2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -13342,6 +13440,9 @@
       <effect type="CommandAdd" tech="zpTortugaFixedGunBld" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" proto="zpSPCFlyingDutchmanProxy" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffPiratesAustralia" type="Normal">
@@ -13463,6 +13564,9 @@
       <effect type="Data" action="Spawnprivateer" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpDryDock</target>
       </effect>
+      <effect type="CommandAdd" proto="zpSPCPirateSteamerProxy" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpTortugaDryDock" type="Normal">
@@ -13547,6 +13651,9 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpWokouImproveCetbangs</effect>
+      <effect type="CommandAdd" proto="zpSPCPrauProxy" page="0" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpTrainPrau1" type="Normal">
@@ -13695,6 +13802,12 @@
       <effect type="TransformUnit" toprotoid="zpNatCorsair" fromprotoid="zpNatPirate">
       </effect>
       <effect type="CommandAdd" tech="zpNatCorsairEmbassy" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCPirateGalleassProxy" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatCorsair" page="0" column="2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -14169,8 +14282,11 @@
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data" amount="-6.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="-8.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatCorsair</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatCorsair" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
   </tech>
@@ -14199,6 +14315,9 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="TechStatus" status="active">zpEnableMutineer</effect>
+      <effect type="CommandAdd" proto="zpNatMutineer" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpWokouCyprusMutiny" type="Normal">
@@ -14884,6 +15003,12 @@
       <effect type="CommandAdd" tech="zpUtopia" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" proto="zpNatColonialGuardDeserted" page="0" column="1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatMutineerAU" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
       <effect type="TechStatus" status="active">zpEnableMutineer</effect>
     </effects>
   </tech>
@@ -15004,6 +15129,9 @@
         <target type="ProtoUnit">NativeEmbassy</target>
       </effect>
       <effect type="TransformUnit" toprotoid="zpNatColonialGuard" fromprotoid="zpNatColonialGuardOrig">
+      </effect>
+      <effect type="CommandAdd" proto="zpNatColonialGuard" page="0" column="1">
+        <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
   </tech>
@@ -15216,6 +15344,44 @@
       </effect>
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">TownCenter</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIncaTamboShadowSubmarines" type="Normal">
+    <dbid>40613</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEAge0Inca</techstatus>
+      <techstatus status="Active">deMapEuropean</techstatus>
+      <techstatus status="Active">zpConsulateScientistNemo</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="CommandRemove" proto="zpNautilusProxy">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNautilusProxy" page="1" column="0">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIncaTamboShadowArmoredTrain" type="Normal">
+    <dbid>40614</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEAge0Inca</techstatus>
+      <techstatus status="Active">deMapEuropean</techstatus>
+      <techstatus status="Active">zpConsulateScientistGortz</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="CommandRemove" proto="zpPhoenixMGunCarrier">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpPhoenixMGunCarrier" page="1" column="0">
+        <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
   </tech>
@@ -15912,6 +16078,9 @@
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpStageCoach</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpStageCoach" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
   </tech>
