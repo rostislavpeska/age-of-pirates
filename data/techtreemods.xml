@@ -13128,6 +13128,10 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpNativeRiverTrader" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
       <effect type ="SetName" proto ="deFishNilePerch" culture ="none" newname ="301630"></effect>
     </effects>
   </tech>

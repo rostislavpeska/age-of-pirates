@@ -536,8 +536,11 @@
     <tactics>socketcapture.tactics</tactics>
   </unit>
   <unit name="TradingPost">
+    <!--MALTESE-->
     <train row="0" page="0" column="1">zpNatMalteseGuard</train>
     <train row="0" page="0" column="2">zpNatMalteseKnight</train>
+
+    <!--PIRATES-->
     <train row="0" page="0" column="1">zpNatPirate</train>
     <train row="0" page="0" column="3">zpPrivateerProxy</train>
     <!--<train row="0" page="0" column="4">zpSPCQueenAnneProxy</train>
@@ -548,6 +551,8 @@
     <train row="0" page="0" column="4">zpSPCPirateGalleassProxy</train>
     <train row="0" page="0" column="3">zpNatMarksman</train>
     <train row="0" page="0" column="2">zpNatCorsair</train>-->
+
+    <!--WOKOU-->
     <train row="0" page="0" column="1">zpNatWokouPirate</train>
     <train row="0" page="0" column="4">zpWokouJunkProxy</train>
     <!--<train row="0" page="0" column="2">zpNatWokouMonk</train>
@@ -555,17 +560,25 @@
     <train row="0" page="0" column="2">zpKoreanBombard</train>
     <train row="0" page="0" column="5">zpWokouFuchuanProxy</train>
     <train row="0" page="0" column="5">zpSPCPrauProxy</train>-->
+
+    <!--ZEN-->
     <train row="0" page="0" column="1">zpNatSoheiProxy</train>
     <!--<train row="0" page="0" column="5">zpNatSoheiArcher</train>
     <train row="0" page="0" column="5">zpNatSoheiCavalry</train>
     <train row="0" page="0" column="6">zpSettlerZen</train>-->
+
+    <!--SUFI-->
     <train row="0" page="0" column="1">zpNatQizilbashProxy</train>
     <!--<train row="0" page="0" column="1">zpNatWarElephantProxy</train>
     <train row="0" page="0" column="1">zpNatGatlingCamel</train>
     <train row="0" page="0" column="6">zpSettlerSufi</train>
     <train row="0" page="0" column="6">zpSettlerSufiB</train>-->
+
+    <!--JEWISH-->
     <train row="0" page="0" column="2">zpNatSettlerJewish</train>
     <train row="0" page="0" column="1">zpNatSettlementMilitia</train>
+
+    <!--INVENTORS-->
     <train row="0" page="0" column="1">zpNatHoopThrower</train>
     <!--train row="0" page="0" column="3">zpWokouSteamerProxy</train>
     <train row="0" page="0" column="4">zpSubmarineProxy</train>
@@ -574,38 +587,51 @@
     <train row="0" page="0" column="2">zpPhoenixMGunCarrier</train>
     <train row="0" page="0" column="2">zpAirshipProxy</train>
     <train row="0" page="0" column="2">zpAirshipAIProxy</train>-->
+
+    <!--INUITS-->
     <train row="0" page="0" column="1">zpNatInuitHarpooner</train>
     <train row="0" page="0" column="3">zpInuitDogVillager</train>
     <!--<train row="0" page="0" column="2">zpInuitTorchman</train>-->
+
+    <!--JESUIT-->
     <train row="0" page="0" column="1">zpNatConquistador</train>
     <!--<train row="0" page="0" column="2">zpNatConquistadorMusketeer</train>
     <train row="0" page="0" column="3">zpPriestProxy</train>-->
+
+    <!--VENETIANS-->
     <train row="0" page="0" column="1">zpNatVeniceGuard</train>
     <train row="0" page="0" column="3">zpVeniceGalleyProxy</train>
     <!--<train row="0" page="0" column="2">zpVenetianBombard</train>
     <train row="0" page="0" column="4">zpGalleassProxy</train>
     <train row="0" page="0" column="2">zpNatDottore</train>-->
+
+    <!--MAORI-->
     <train row="0" page="0" column="1">zpNatMaoriClubman</train>
     <!--<train row="0" page="0" column="2">zpNatMaoriSlinger</train>-->
+
+    <!--ORTHODOX-->
     <train row="0" page="0" column="1">zpNatWarriorMonk</train>
     <!--<train row="0" page="0" column="2">zpNatDvoryanin</train>
     <train row="0" page="0" column="2">zpNatBulgarianBoyar</train>
     <train row="0" page="0" column="2">zpNatMonaspa</train>-->
+
+    <!--ABORIGINALS-->
     <train row="0" page="0" column="1">zpNatBoomerang</train>
     <!--<train row="0" page="0" column="2">zpNatAboriginalTracker</train>-->
+
+    <!--PENAL COLONY-->
     <train row="0" page="0" column="1">zpNatColonialGuardOrig</train>
+    <train row="0" page="0" column="2">zpNatConvictLabourer</train>
     <!--<train row="0" page="0" column="1">zpNatColonialGuard</train>
     <train row="0" page="0" column="1">zpNatColonialGuardDeserted</train>
     <train row="0" page="0" column="2">zpNatMutineerAU</train>-->
-    <train row="0" page="0" column="2">zpNatConvictLabourer</train>
     
-    <!-- Western Units -->
+    <!-- WESTERN -->
     <train row="0" page="0" column="1">zpMountedOutlaw</train>
     <!--<train row="0" page="0" column="2">zpDeputy</train>
     <train row="0" page="0" column="2">zpJamesGang</train>
     <train row="0" page="0" column="2">zpPinkertonAgent</train>
     <train row="0" page="0" column="3">zpStageCoach</train>-->
-    
 
     <!-- Christmas units and techs Added by AssertiveWall-->
     <train row="0" page="0" column="1">zpNatElfsGuard</train>
@@ -32295,6 +32321,82 @@
       <damagebonus type="AbstractCoyoteMan">1.150000</damagebonus>
     </protoaction>
   </unit>
+  <unit id="20377" name="zpWaterfall">
+    <dbid>20377</dbid>
+    <displaynameid>301635</displaynameid>
+    <editornameid>301634</editornameid>
+    <obstructionradiusx>0.1000</obstructionradiusx>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>water</movementtype>
+    <animfile>effects\river\zp_waterfall.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>Immoveable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ForceToGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>Tracked</flag>
+  </unit>
+  <unit id="20378" name="zpAboriginalRiverTrader">
+    <dbid>20378</dbid>
+    <displaynameid>301637</displaynameid>
+    <editornameid>301636</editornameid>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <animfile>units\trade\naval\aboriginal_canoe.xml</animfile>
+    <icon>resources\art\units\naval\fishing_boat\ethiopia_fishing_boat_portrait_icon.png</icon>
+    <portraiticon>resources\art\units\naval\fishing_boat\ethiopia_fishing_boat_portrait.png</portraiticon>
+    <rollovertextid>29374</rollovertextid>
+    <shortrollovertextid>29373</shortrollovertextid>
+    <initialhitpoints>240.0000</initialhitpoints>
+    <maxhitpoints>240.0000</maxhitpoints>
+    <los>15.0000</los>
+    <trainpoints>30.0000</trainpoints>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Tracked</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>VisibleUnderFog</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+
   
  
 
