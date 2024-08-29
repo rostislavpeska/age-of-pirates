@@ -1901,4 +1901,8 @@
     <sound filename="zp_misc\Battlecruiser_Move03.wav" volume="1.0000">
     </sound>
   </soundset>
+  <soundset name="AmbienceWaterfall" volume="0.4500" maxnum="1" distance="1.0000">
+    <sound filename="ambient\FountainOfYouth\1.wav" volume="1.0000">
+    </sound>
+  </soundset>
 </soundsetdef>
