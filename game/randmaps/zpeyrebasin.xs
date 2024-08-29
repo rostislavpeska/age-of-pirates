@@ -3934,7 +3934,7 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 
 // Testing
 
-for (k=1; <= cNumberNonGaiaPlayers) {
+/*for (k=1; <= cNumberNonGaiaPlayers) {
 
 	rmCreateTrigger("ZP Test Plr"+k);
 	rmAddTriggerCondition("ZP PLAYER Human");
@@ -3952,15 +3952,15 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	rmSetTriggerEffectParamInt("PlayerID",k);
 	rmSetTriggerEffectParamFloat("TechID",527);
 	rmSetTriggerEffectParamInt("Status",2);
-	/*rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
 	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainTech");
-	rmSetTriggerEffectParamInt("Status",2);*/
+	rmSetTriggerEffectParamInt("Status",2);
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
-}
+}*/
 
 
 // Text
