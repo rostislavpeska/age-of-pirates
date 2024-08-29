@@ -1256,11 +1256,13 @@ void main(void)
 
 	rmCreateTrigger("Starting Techs");
 	rmSwitchToTrigger(rmTriggerID("Starting techs"));
-	for(i=0; <= cNumberNonGaiaPlayers) {
+	for(i=1; <= cNumberNonGaiaPlayers) {
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",i);
 	rmSetTriggerEffectParam("TechID","cTechDEEnableTradeRouteWater"); // DEEneableTradeRouteWater
 	rmSetTriggerEffectParamInt("Status",2);
+	}
+	for(i=0; <= cNumberNonGaiaPlayers) {
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",i);
 	rmSetTriggerEffectParam("TechID","cTechzpAustraliaMercenaries"); // Australian Mercenaries

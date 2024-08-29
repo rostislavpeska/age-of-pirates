@@ -2,7 +2,19 @@
   <attachment>
     WaterFall
     <component>
-        Spray_Emitter_top<assetreference type="popcornFx"><file>water_effects\inca_temple_waterfall.pkfx</file></assetreference>
+      Spray_Emitter_top
+      <!--<logic type="Variation">
+        <data>-->
+          <assetreference type="popcornFx">
+            <file>water_effects\inca_temple_waterfall.pkfx</file>
+          </assetreference>
+        <!--</data>
+        <data>
+          <assetreference type="popcornFx">
+            <file>water_effects\spc_waterfall.pkfx</file>
+          </assetreference>
+        </data>
+      </logic>-->
     </component>
     <anim>None<component>Spray_Emitter_top</component></anim>
   </attachment>
