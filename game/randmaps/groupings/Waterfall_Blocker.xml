@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>15</width>
+	<height>4</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="20" posx="-7.6224" posz="-2.3406" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="185" posx="0.1968" posz="-2.4320" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="144" posx="7.2090" posz="-2.4589" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="144" posx="10.1578" posz="-2.2354" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="203" posx="-12.8146" posz="-0.5944" orientx="-1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="228" posx="-3.8647" posz="-2.4887" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="160" posx="12.0800" posz="-1.3087" orientx="1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="144" posx="3.7728" posz="-2.6063" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="41" posx="-11.6626" posz="-2.3215" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="248" posx="-12.7317" posz="1.0752" orientx="-1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="39" posx="12.1191" posz="1.7775" orientx="1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="102" posx="-7.1005" posz="3.1051" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="144" posx="-0.3769" posz="3.2606" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="144" posx="10.4640" posz="3.1039" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="75" posx="-3.5173" posz="3.0820" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="144" posx="3.1306" posz="3.3034" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="144" posx="6.8530" posz="3.1761" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="161" posx="-10.8456" posz="3.0280" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+	</units>
+	<tiles></tiles>
+</grouping>
