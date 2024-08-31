@@ -89,7 +89,13 @@ void main(void)
 
 	// Picks the map size
 	int playerTiles=13000;
-	if (PlayerNum >= 4){
+	if (PlayerNum == 4){
+		playerTiles = 12700;
+	}
+	if (PlayerNum == 5){
+		playerTiles = 12400;
+	}
+	if (PlayerNum >= 6){
 		playerTiles = 11000;
 	}
 			
@@ -374,7 +380,7 @@ void main(void)
 		rmSetAreaSize(upperLakeID, 0.05, 0.05);
 	rmSetAreaCoherence(upperLakeID, 1.0);
 	rmSetAreaBaseHeight(upperLakeID, 7.0);
-	if (cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 7)
+	if (cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 7 || cNumberNonGaiaPlayers == 4)
 		rmSetAreaLocation(upperLakeID, 0.5, 0.85);
 	else
 		rmSetAreaLocation(upperLakeID, 0.5, 0.845);
@@ -491,8 +497,10 @@ void main(void)
 
 	int waterfallGroupingID = -1;
 	waterfallGroupingID = rmCreateGrouping("waterfall", "Waterfall");
-	if (cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 6 || cNumberNonGaiaPlayers == 7 || cNumberNonGaiaPlayers == 8)
+	if (cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 6 || cNumberNonGaiaPlayers == 7 || cNumberNonGaiaPlayers == 8)
 		rmPlaceGroupingAtLoc(waterfallGroupingID, 0, 0.5, 0.72);
+	else if (cNumberNonGaiaPlayers == 5)
+		rmPlaceGroupingAtLoc(waterfallGroupingID, 0, 0.5, 0.717);
 	else
 		rmPlaceGroupingAtLoc(waterfallGroupingID, 0, 0.5, 0.715);
 
@@ -507,11 +515,11 @@ void main(void)
 
 	int bridgeGroupingID = -1;
 	bridgeGroupingID = rmCreateGrouping("river bridge", "mississippi_bridge_01");
-	if (cNumberNonGaiaPlayers == 2 || cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 7){
+	if (cNumberNonGaiaPlayers == 2 || cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 7 || cNumberNonGaiaPlayers == 5){
 		rmPlaceGroupingAtLoc(bridgeGroupingID, 0, 0.42, 0.9+rmXMetersToFraction(10));
 		rmPlaceGroupingAtLoc(bridgeGroupingID, 0, 0.575, 0.9+rmXMetersToFraction(10));
 	}
-	if (cNumberNonGaiaPlayers == 4 || cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 8){
+	if (cNumberNonGaiaPlayers == 4 || cNumberNonGaiaPlayers == 8){
 		rmPlaceGroupingAtLoc(bridgeGroupingID, 0, 0.42, 0.9+rmXMetersToFraction(2));
 		rmPlaceGroupingAtLoc(bridgeGroupingID, 0, 0.575, 0.9+rmXMetersToFraction(2));
 	}
@@ -522,9 +530,9 @@ void main(void)
 
 	int bridgeSite1 = rmCreateArea ("bridge site 1");
 	rmSetAreaSize(bridgeSite1, rmAreaTilesToFraction(550.0), rmAreaTilesToFraction(550.0));
-	if (cNumberNonGaiaPlayers == 2 || cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 7)
+	if (cNumberNonGaiaPlayers == 2 || cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 7 || cNumberNonGaiaPlayers == 5)
 		rmSetAreaLocation(bridgeSite1, 0.42-rmXMetersToFraction(28), 0.9+rmXMetersToFraction(10));
-	if (cNumberNonGaiaPlayers == 4 || cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 8)
+	if (cNumberNonGaiaPlayers == 4 || cNumberNonGaiaPlayers == 8)
 		rmSetAreaLocation(bridgeSite1, 0.42-rmXMetersToFraction(28), 0.9+rmXMetersToFraction(2));
 	if (cNumberNonGaiaPlayers == 6)
 		rmSetAreaLocation(bridgeSite1, 0.42-rmXMetersToFraction(28), 0.9-rmXMetersToFraction(3));
@@ -536,9 +544,9 @@ void main(void)
 
 	int bridgeSite2 = rmCreateArea ("bridge site 2");
 	rmSetAreaSize(bridgeSite2, rmAreaTilesToFraction(450.0), rmAreaTilesToFraction(550.0));
-	if (cNumberNonGaiaPlayers == 2 || cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 7)
+	if (cNumberNonGaiaPlayers == 2 || cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 7 || cNumberNonGaiaPlayers == 5)
 		rmSetAreaLocation(bridgeSite2, 0.42+rmXMetersToFraction(20), 0.9+rmXMetersToFraction(10));
-	if (cNumberNonGaiaPlayers == 4 || cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 8)
+	if (cNumberNonGaiaPlayers == 4 || cNumberNonGaiaPlayers == 8)
 		rmSetAreaLocation(bridgeSite2, 0.42+rmXMetersToFraction(20), 0.9+rmXMetersToFraction(2));
 	if (cNumberNonGaiaPlayers == 6)
 		rmSetAreaLocation(bridgeSite2, 0.42+rmXMetersToFraction(20), 0.9-rmXMetersToFraction(3));
@@ -550,9 +558,9 @@ void main(void)
 
 	int bridgeSite3 = rmCreateArea ("bridge site 3");
 	rmSetAreaSize(bridgeSite3, rmAreaTilesToFraction(550.0), rmAreaTilesToFraction(550.0));
-	if (cNumberNonGaiaPlayers == 2 || cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 7)
+	if (cNumberNonGaiaPlayers == 2 || cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 7 || cNumberNonGaiaPlayers == 5)
 		rmSetAreaLocation(bridgeSite3, 0.575+rmXMetersToFraction(30), 0.9+rmXMetersToFraction(10));
-	if (cNumberNonGaiaPlayers == 4 || cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 8)
+	if (cNumberNonGaiaPlayers == 4 || cNumberNonGaiaPlayers == 8)
 		rmSetAreaLocation(bridgeSite3, 0.575+rmXMetersToFraction(30), 0.9+rmXMetersToFraction(2));
 	if (cNumberNonGaiaPlayers == 6)
 		rmSetAreaLocation(bridgeSite3, 0.575+rmXMetersToFraction(30), 0.9-rmXMetersToFraction(3));
@@ -564,9 +572,9 @@ void main(void)
 
 	int bridgeSite4 = rmCreateArea ("bridge site 4");
 	rmSetAreaSize(bridgeSite4, rmAreaTilesToFraction(450.0), rmAreaTilesToFraction(450.0));
-	if (cNumberNonGaiaPlayers == 2 || cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 7)
+	if (cNumberNonGaiaPlayers == 2 || cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 7 || cNumberNonGaiaPlayers == 5 )
 		rmSetAreaLocation(bridgeSite4, 0.575-rmXMetersToFraction(20), 0.9+rmXMetersToFraction(10));
-	if (cNumberNonGaiaPlayers == 4 || cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 8)
+	if (cNumberNonGaiaPlayers == 4 || cNumberNonGaiaPlayers == 8)
 		rmSetAreaLocation(bridgeSite4, 0.575-rmXMetersToFraction(20), 0.9+rmXMetersToFraction(2));
 	if (cNumberNonGaiaPlayers == 6)
 		rmSetAreaLocation(bridgeSite4, 0.575-rmXMetersToFraction(20), 0.9-rmXMetersToFraction(3));
@@ -791,10 +799,10 @@ void main(void)
 
 	// Penal Colonies
 
-	int penalColony1Type = rmRandInt(1, 3);
-	int penalColony2Type = rmRandInt(1, 3);
-	int penalColony3Type = rmRandInt(1, 3);
-	int penalColony4Type = rmRandInt(1, 3);
+	int penalColony1Type = rmRandInt(1, 5);
+	int penalColony2Type = rmRandInt(1, 5);
+	int penalColony3Type = rmRandInt(1, 5);
+	int penalColony4Type = rmRandInt(1, 5);
 
 	int penalColony1ID = rmCreateGrouping("jewish 1", "Penal_Colony_0"+penalColony1Type);
 	int penalColony2ID = rmCreateGrouping("jewish 2", "Penal_Colony_0"+penalColony2Type);

@@ -676,8 +676,8 @@ void main(void)
 
 	// Penal Colonies
 
-	int jewish1VillageTypeID = rmRandInt(1, 3);
-	int jewish2VillageTypeID = rmRandInt(1, 3);
+	int jewish1VillageTypeID = rmRandInt(1, 5);
+	int jewish2VillageTypeID = rmRandInt(1, 5);
 
 	int jewish1ID = rmCreateGrouping("jewish 1", "Penal_Colony_0"+jewish1VillageTypeID);
 	int jewish2ID = rmCreateGrouping("jewish 2", "Penal_Colony_0"+jewish2VillageTypeID);

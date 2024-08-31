@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_prop</definebone>
+		<component>
+		house
+		<logic type="Variation">
+			<variationid0>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\korowai\treehouse_Model</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>5.00</width>
+					<height>5.00</height>
+				</decal>
+			</variationid0>
+			<variationid1>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\korowai\treehouse_short_Model</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>8.00</width>
+					<height>15.00</height>
+				</decal>
+			</variationid1>
+			<variationid2>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\korowai\treehouse_thin_Model</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>8.00</width>
+					<height>15.00</height>
+				</decal>
+			</variationid2>
+			<variationid3>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\korowai\treehouse_wide_Model</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>8.00</width>
+					<height>15.00</height>
+				</decal>
+			</variationid3>
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>house</component>
+	</anim>
+</animfile>

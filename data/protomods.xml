@@ -33381,7 +33381,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\napoleonic_era\arsenal_old.xml</animfile>
+    <animfile>buildings\native_settlement\korowai\treehouse.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>
