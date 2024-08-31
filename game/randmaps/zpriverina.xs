@@ -368,14 +368,15 @@ void main(void)
 	rmSetAreaCoherence(downerLakeID, 1.0);
 	rmSetAreaLocation(downerLakeID, 0.5, 0.60);
 	rmSetAreaSmoothDistance(downerLakeID, 10);
+	rmAddAreaInfluenceSegment(downerLakeID, 0.4, 0.65, 0.6, 0.65);
 	rmBuildArea(downerLakeID);
 
 	int upperLakeID=rmCreateArea("Upper Lake");
 	rmSetAreaWaterType(upperLakeID, "ZP Riverina Waterfalls");
 	if (cNumberNonGaiaPlayers == 6)
-		rmSetAreaSize(upperLakeID, 0.043, 0.043);
+		rmSetAreaSize(upperLakeID, 0.055, 0.055);
 	else if (cNumberNonGaiaPlayers == 8)
-		rmSetAreaSize(upperLakeID, 0.044, 0.044);
+		rmSetAreaSize(upperLakeID, 0.055, 0.055);
 	else
 		rmSetAreaSize(upperLakeID, 0.05, 0.05);
 	rmSetAreaCoherence(upperLakeID, 1.0);
@@ -385,6 +386,7 @@ void main(void)
 	else
 		rmSetAreaLocation(upperLakeID, 0.5, 0.845);
 	rmAddAreaToClass(upperLakeID, classMountains);
+	rmAddAreaInfluenceSegment(upperLakeID, 0.4, 0.8, 0.6, 0.8);
 	rmSetAreaSmoothDistance(upperLakeID, 10);
 	rmBuildArea(upperLakeID);
 
@@ -497,9 +499,9 @@ void main(void)
 
 	int waterfallGroupingID = -1;
 	waterfallGroupingID = rmCreateGrouping("waterfall", "Waterfall");
-	if (cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 6 || cNumberNonGaiaPlayers == 7 || cNumberNonGaiaPlayers == 8)
-		rmPlaceGroupingAtLoc(waterfallGroupingID, 0, 0.5, 0.72);
-	else if (cNumberNonGaiaPlayers == 5)
+	if (cNumberNonGaiaPlayers == 8)
+		rmPlaceGroupingAtLoc(waterfallGroupingID, 0, 0.5, 0.717);
+	else if (cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 7)
 		rmPlaceGroupingAtLoc(waterfallGroupingID, 0, 0.5, 0.717);
 	else
 		rmPlaceGroupingAtLoc(waterfallGroupingID, 0, 0.5, 0.715);
@@ -992,6 +994,13 @@ void main(void)
 	rmSetObjectDefMaxDistance(StartAreaTreeID, 25.0);
 
 	rmSetStatusText("",0.60); 
+
+	int waterSpawnPointID = 0;
+
+	// Fake grouping - prevent autogrouping Bug
+	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
+	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+	rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.5);
 
 	// Player placement
 
@@ -1580,6 +1589,7 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
 
 	// Testing
 

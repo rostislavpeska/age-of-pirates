@@ -92,8 +92,7 @@ void main(void)
 		playerTiles = 24000;
   if (cNumberNonGaiaPlayers ==1)
 		playerTiles = 64000;
-	if (cNumberNonGaiaPlayers >6)
-		playerTiles = 15000;		
+
 
 	int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
 	rmEchoInfo("Map size="+size+"m x "+size+"m");
@@ -1048,31 +1047,54 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       float teamStartLoc = rmRandFloat(0.0, 1.0);
 		if(cNumberTeams > 2)
 		{
-			rmSetPlacementSection(0.80, 0.60);
+			rmSetPlacementSection(0.15, 0.85);
 			rmSetTeamSpacingModifier(0.75);
 			rmPlacePlayersCircular(0.22, 0.32, 0);
 		}
 		else
 		{
+      if (cNumberNonGaiaPlayers >= 6) {
+			// 6 players in 2 teams
+        if (teamStartLoc > 0.5)
+        {
+          rmSetPlacementTeam(0);
+          rmSetPlacementSection(0.60, 0.85);
+          rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
+          rmSetPlacementTeam(1);
+          rmSetPlacementSection(0.15, 0.40);
+          rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
+        }
+        else
+        {
+          rmSetPlacementTeam(0);
+          rmSetPlacementSection(0.15, 0.40);
+          rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
+          rmSetPlacementTeam(1);
+          rmSetPlacementSection(0.60, 0.85);
+          rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
+        }
+      }
+      else {
 			// 4 players in 2 teams
-			if (teamStartLoc > 0.5)
-			{
-				rmSetPlacementTeam(0);
-				rmSetPlacementSection(0.60, 0.80);
-				rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
-				rmSetPlacementTeam(1);
-				rmSetPlacementSection(0.20, 0.40);
-				rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
-			}
-			else
-			{
-				rmSetPlacementTeam(0);
-				rmSetPlacementSection(0.20, 0.40);
-				rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
-				rmSetPlacementTeam(1);
-				rmSetPlacementSection(0.60, 0.80);
-				rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
-			}
+        if (teamStartLoc > 0.5)
+        {
+          rmSetPlacementTeam(0);
+          rmSetPlacementSection(0.60, 0.80);
+          rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
+          rmSetPlacementTeam(1);
+          rmSetPlacementSection(0.20, 0.40);
+          rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
+        }
+        else
+        {
+          rmSetPlacementTeam(0);
+          rmSetPlacementSection(0.20, 0.40);
+          rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
+          rmSetPlacementTeam(1);
+          rmSetPlacementSection(0.60, 0.80);
+          rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
+        }
+      }
 		}
 
 
@@ -1113,6 +1135,7 @@ int TCfloat = -1;
   rmAddObjectDefConstraint(startingTCID, avoidWater10);
   rmAddObjectDefConstraint(startingTCID, avoidBonusIslands);
   rmAddObjectDefConstraint(startingTCID, avoidMountains);
+  rmAddObjectDefConstraint(startingTCID, avoidTownCenterFar);
 	rmAddObjectDefToClass(startingTCID, rmClassID("player"));
 
   // Text
