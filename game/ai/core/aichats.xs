@@ -23,8 +23,7 @@ cAICommPromptToAllyWhenEnemyGetsNativeLead
 cAICommPromptToAllyWhenEnemyGetsTradeLead
 cAICommPromptToAllyWhenHeTakesNativeLead
 cAICommPromptToAllyWhenHeTakesTradeLead
-cAICommPromptToEnemyHisTCIsolated
-cAICommPromptToEnemyHisTCNearAlly
+
 
 
 */

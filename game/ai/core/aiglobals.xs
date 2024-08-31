@@ -486,6 +486,8 @@ extern int gFrigateUnit = cUnitTypeFrigate;
 extern int gMonitorUnit = cUnitTypeMonitor;
 extern int gCanoeUnit = -1;                    // Canoe type determined in navymanager
 
+extern int gRaidPlanID = -1;             // AssertiveWall: used for persistent raid plan
+
 //==============================================================================
 // Home City cards.
 //==============================================================================

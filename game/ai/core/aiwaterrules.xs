@@ -25,15 +25,22 @@ minInterval 5
    int numPlans = aiPlanGetActiveCount();
    int existingPlanID = -1;
    int existingParentID = -1;
+   int numTransportPlans = 0;
 
-   // See if there are already active transport plans
+   // See if there are already too many active transport plans
    for (j = 0; < numPlans)
    {
       existingPlanID = aiPlanGetIDByActiveIndex(j);
       if (aiPlanGetType(existingPlanID) == cPlanTransport)
       {
-         return;
+         numTransportPlans += 1;
       }
+   }
+
+   // Keep a boat free
+   if (numTransportPlans > (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) - 1))
+   {
+      return;
    }
 
    // Step through plans, and see if there's a child plan we need to switch into a transport

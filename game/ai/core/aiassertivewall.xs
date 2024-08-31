@@ -22,6 +22,420 @@ minInterval 10
 }
 
 //==============================================================================
+// getTeamAge
+// AssertiveWall: gets the average age of our team. Rounds down
+//==============================================================================
+
+int getTeamAge(bool ourTeam = true)
+{
+   int ageTotal = 0;
+   int numPlayers = 0;
+   int myTeam = kbGetPlayerTeam(cMyID);
+   int averageAge = -1;
+
+   if (ourTeam == false)
+   {  // Account for Gaia
+      numPlayers = -1;
+   }
+
+   for (i = 0; < cNumberPlayers)
+   {
+      if (ourTeam == true)
+      {
+         if (myTeam == kbGetPlayerTeam(i))
+         {
+            ageTotal += kbGetAgeForPlayer(i);
+            numPlayers += 1;
+         }
+      }
+      else
+      {
+         if (myTeam != kbGetPlayerTeam(i))
+         {
+            ageTotal += kbGetAgeForPlayer(i);
+            numPlayers += 1;
+         }
+      }
+   }
+
+   averageAge = ageTotal / numPlayers;
+
+   return (averageAge);
+}
+
+//==============================================================================
+/* raidManager , raidEnabler , desparationRaidEnabler
+   AssertiveWall: looks for stray villagers to raid. 
+
+   plan gets made once, then deleted. Need to keep it persistent
+
+   enabler just goes through conditions on when to enable the raid manager.
+   desparationRaidEnabler kicks in when we start falling behind
+*/
+//==============================================================================
+rule desparationRaidEnabler
+inactive
+minInterval 10
+{
+   if (xsIsRuleEnabled("raidManager") == true)
+   {
+      xsDisableSelf();
+      return;
+   }
+
+   bool timeForDesparationRaid = false;
+
+   // The next block looks at scores
+   int teamScore = 0;
+   int enemyScore = 0;
+   int numEnemies = -1;   // start at -1 to account for gaia
+   int numAllies = 0;
+   int myTeam = kbGetPlayerTeam(cMyID);
+
+   for (i = 0; < cNumberPlayers)
+   {
+      if (myTeam == kbGetPlayerTeam(i))
+      {
+         teamScore += aiGetScore(i);
+         numAllies += 1;
+      }
+      else
+      {
+         enemyScore = aiGetScore(i);
+         numEnemies += 1;
+      }
+   }
+
+   // If we are winning by a decent amount attack, otherwise check if we are losing
+   if (((teamScore / numAllies < (1.1 * enemyScore / numEnemies)) && getTeamAge(true) < getTeamAge(false)) ||
+         (teamScore / numAllies < (0.9 * enemyScore / numEnemies)))
+   {
+      timeForDesparationRaid = true;
+   }
+
+   if (timeForDesparationRaid == true)
+   {
+      xsEnableRule("raidManager");
+      xsDisableSelf();
+   }
+}
+
+rule raidEnabler
+inactive
+minInterval 10
+{
+   if (gStartOnDifferentIslands == true)
+   {  // defend plan can't transport across water
+      xsDisableSelf();
+      return;
+   }
+
+   int age = kbGetAge();
+   if (age < cAge2)
+   {
+      return;
+   }
+
+   // Special case since they get lots of cavalry. 90% chance of wanting to raid
+   if (cMyCiv == cCivGermans || cMyCiv == cCivXPSioux)
+   {
+      if (aiRandInt(10) == 1)
+      {
+         xsEnableRule("desparationRaidEnabler");         
+         xsDisableSelf();
+         return;
+      }
+      else
+      {
+         xsEnableRule("raidManager");
+         return;
+      }
+   }
+
+   if (gStrategy == cStrategyRush)
+   {  // 80% chance of raiding when rushing
+      if (aiRandInt(10) <= 2)
+      {
+         xsEnableRule("desparationRaidEnabler");         
+         xsDisableSelf();
+         return;
+      }
+      else
+      {
+         xsEnableRule("raidManager");
+         return;
+      }
+   }
+   else if (gStrategy == cStrategyNakedFF)
+   {  // 40% chance once we hit age 3
+      if (age >= cAge3)
+      {
+         if (aiRandInt(10) <= 6)
+         {
+            xsEnableRule("desparationRaidEnabler");
+            xsDisableSelf();
+            return;
+         }
+         else
+         {
+            xsEnableRule("raidManager");
+            return;
+         }
+      }
+   }
+   else if (gStrategy == cStrategySafeFF)
+   {  // 60% chance of raiding
+      if (aiRandInt(10) <= 4)
+      {
+         xsEnableRule("desparationRaidEnabler");         
+         xsDisableSelf();
+         return;
+      }
+      else
+      {
+         xsEnableRule("raidManager");
+         return;
+      }
+   }
+   else if (gStrategy == cStrategyFastIndustrial)
+   {  // 50% chance of raiding
+      if (aiRandInt(10) <= 5)
+      {
+         xsEnableRule("desparationRaidEnabler");         
+         xsDisableSelf();
+         return;
+      }
+      else
+      {
+         xsEnableRule("raidManager");
+         return;
+      }
+   }
+   else
+   {  // 30% chance of raiding
+      if (aiRandInt(10) <= 7)
+      {
+         xsEnableRule("desparationRaidEnabler");         
+         xsDisableSelf();
+         return;
+      }
+      else
+      {
+         xsEnableRule("raidManager");
+         return;
+      }
+   }
+}
+
+rule raidManager
+inactive
+minInterval 10
+{
+   // Ensure we have enough cav
+   int cavNumber = kbUnitCount(cMyID, cUnitTypeAbstractCavalry, cUnitStateAlive) + kbUnitCount(cMyID, cUnitTypeAbstractCoyoteMan, cUnitStateAlive);
+   int minCav = 2 + kbGetAge();
+   //static int raidPlanID = -1;
+
+   if (cavNumber < minCav)
+   {
+      return;
+   }
+
+   if (aiPlanGetActive(gRaidPlanID) == false)
+   {
+      gRaidPlanID = -1;
+   }
+
+   // Look for stray undefended villagers, favoring those closer to us
+   vector ourLocation = kbUnitGetPosition(aiPlanGetUnitByIndex(gRaidPlanID, 0));
+   vector homeBase = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   if (gForwardBaseState == cForwardBaseStateActive)
+   {
+      homeBase = gForwardBaseLocation;
+   }
+
+   if (ourLocation == cInvalidVector)
+   {
+      ourLocation = homeBase;
+   }
+
+   int villagerQuery = createSimpleUnitQuery(cUnitTypeAbstractVillager, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
+   int numberVilFound = kbUnitQueryExecute(villagerQuery);
+   int tempVil = -1;
+   vector tempLocation = cInvalidVector;
+   int vilClumpSize = 0;
+   int bestClumpSize = 0;
+   vector bestLocation = cInvalidVector;
+   int tempDistance = 9999;
+   int bestDistance = 9999;
+   int tempNearbyTowers = -1;
+   int tempNearbyMilitary = -1;
+   int tempNearbyTC = -1;
+   bool freeRaid = false;
+   int numInPlan = -1;
+   static int nextChatSend = 300000;
+
+   if (gRaidPlanID < 0) // First run, create a persistent plan.
+   {
+      gRaidPlanID = aiPlanCreate("Persistent Raiding Plan", cPlanCombat);
+
+      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanCombatType, 0, cCombatPlanCombatTypeDefend);
+      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+      aiPlanSetVariableVector(gRaidPlanID, cCombatPlanTargetPoint, 0, homeBase);
+      aiPlanSetInitialPosition(gRaidPlanID, homeBase);
+      aiPlanSetVariableFloat(gRaidPlanID, cCombatPlanGatherDistance, 0, 30.0);
+      aiPlanSetVariableFloat(gRaidPlanID, cCombatPlanTargetEngageRange, 0, 25.0);
+      aiPlanSetDesiredPriority(gRaidPlanID, 30);  // Lower than standard attack so they can join
+      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
+      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRefreshFrequency, 0, 300);
+      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOpportunistic);
+      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternMRU);
+      //aiPlanSetVariableInt(gRaidPlanID, cCombatPlanNoTargetTimeout, 0, 2000);
+      
+      // Just a small number of cav
+      aiPlanAddUnitType(gRaidPlanID, cUnitTypeAbstractCavalry, 0, minCav, minCav);
+      aiPlanAddUnitType(gRaidPlanID, cUnitTypeAbstractCoyoteMan, 0, minCav, minCav);
+
+      aiPlanSetActive(gRaidPlanID);
+   }
+
+   numInPlan = aiPlanGetNumberUnits(gRaidPlanID, cUnitTypeAbstractCavalry) + aiPlanGetNumberUnits(gRaidPlanID, cUnitTypeAbstractCoyoteMan);
+   if (numInPlan < minCav)
+   {
+      aiPlanAddUnitType(gRaidPlanID, cUnitTypeAbstractCavalry, 2, minCav, minCav);
+      aiPlanAddUnitType(gRaidPlanID, cUnitTypeAbstractCoyoteMan, 2, minCav, minCav);
+   }
+
+   // Find the "closest" villager clump. each extra villager is worth 10m, for a max of 40m
+   // defensive buildings weight as "further" away
+   // avoid raiding anywhere with troops or too many towers nearby
+   for (i = 0; < numberVilFound)
+   {
+      tempVil = kbUnitQueryGetResult(villagerQuery, i);
+      tempLocation = kbUnitGetPosition(tempVil);
+      vilClumpSize = getUnitCountByLocation(cUnitTypeAbstractVillager, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         tempLocation, 8.0);
+      tempNearbyTowers = getUnitCountByLocation(cUnitTypeAbstractDefensiveBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         tempLocation, 25.0);
+      tempNearbyMilitary = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         tempLocation, 40.0);
+      tempNearbyTC = getUnitCountByLocation(cUnitTypeTownCenter, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         tempLocation, 40.0);
+
+      if (tempNearbyMilitary > 2 || tempNearbyTowers > 1)
+      {  // Still go for it if there's only 1 tower or a tiny force
+         continue;
+      }
+
+      if (tempNearbyTC > 0) // Currently can't handle garrisoned vills
+      {
+         continue;
+      }
+
+      if (vilClumpSize > 4)
+      {
+         vilClumpSize = 4;
+      }
+      tempDistance = distance(ourLocation, tempLocation) - 10 * vilClumpSize + 40 * (tempNearbyTowers + tempNearbyTC) + 20 * tempNearbyMilitary;
+
+      if (tempDistance < bestDistance)
+      {
+         bestClumpSize = vilClumpSize;
+         bestLocation = tempLocation;
+         bestDistance = tempDistance;
+         if (tempNearbyTowers <= 0)
+         {
+            freeRaid = true;
+         }
+      }
+   }
+
+   // If we're here, we can't see any villagers to raid. Check random resources around the player's base
+   // randomly skips through the query as it goes. Makes sure the mine isn't too close to enemy defenses
+   if (bestLocation == cInvalidVector)
+   {
+      vector enemyLocation = guessEnemyLocation();
+      int halfMapRange = distance(enemyLocation, kbGetMapCenter());
+      int goldMineQuery = createSimpleFoggedUnitQuery(cUnitTypeResource, 0, cUnitStateAny, enemyLocation, halfMapRange);
+      int mineNumber = kbUnitQueryExecute(goldMineQuery);
+      int tempMineID = -1;
+      static int nextMine = 0;
+      static bool anotherMineAllowed = true;
+
+      // Don't move to next mine until we are near it
+      tempLocation = aiPlanGetVariableVector(gRaidPlanID, cCombatPlanTargetPoint, 0);
+      tempDistance = distance(ourLocation, tempLocation);
+
+      if (distance(ourLocation, tempLocation) < 35)
+      {  // We can choose another place to check as long as we're close enough to our current target
+         anotherMineAllowed = true;
+      }
+
+      if (anotherMineAllowed == true)
+      {  
+         for (i = 0; < mineNumber)
+         {
+            tempMineID = kbUnitQueryGetResult(goldMineQuery, i);
+
+            if (kbProtoUnitIsType(0, kbUnitGetProtoUnitID(tempMineID), cUnitTypeWood) == true)
+            {  // Skip trees
+               continue;
+            }
+
+            tempLocation = kbUnitGetPosition(tempMineID);
+            if (distance(ourLocation, tempLocation) < 35)
+            {  // Ignore the one we are right next to
+               continue;
+            }
+            tempNearbyTowers = getUnitCountByLocation(cUnitTypeAbstractDefensiveBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+               tempLocation, 25.0);
+            tempNearbyMilitary = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+               tempLocation, 40.0);
+            tempNearbyTC = getUnitCountByLocation(cUnitTypeTownCenter, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+               tempLocation, 40.0);
+
+            if (tempNearbyMilitary > 2 || tempNearbyTowers > 0 || tempNearbyTC > 0)
+            {  // Don't randomly check any dangerous spots
+               continue;
+            }
+
+            tempDistance = distance(ourLocation, tempLocation) + 20 * tempNearbyMilitary;
+
+            if (kbUnitGetActionTypeByIndex(tempMineID, 0) == cActionTypeDeath)
+            {  // Prioritize dead hunts
+               tempDistance = tempDistance / 4;
+               break;
+            }
+            
+            if (tempDistance < bestDistance && tempLocation != cInvalidVector)
+            {
+               bestClumpSize = vilClumpSize;
+               bestLocation = tempLocation;
+               bestDistance = tempDistance;
+               anotherMineAllowed = false;
+            }
+         }
+      }
+   }
+
+   if (bestLocation != cInvalidVector)
+   {
+      aiPlanSetVariableVector(gRaidPlanID, cCombatPlanTargetPoint, 0, bestLocation);
+
+      if (xsGetTime() > nextChatSend)
+      {
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemySettlers, bestLocation);
+         nextChatSend = 2 * nextChatSend + aiRandInt(60000);
+      }
+   }
+   else if (anotherMineAllowed == true)
+   {  // If we're here, we tried to look for a random mine to raid but couldn't find one
+      aiPlanSetVariableVector(gRaidPlanID, cCombatPlanTargetPoint, 0, homeBase);
+   }
+
+}
+
+//==============================================================================
 /* haveHumanAlly
    AssertiveWall: little function to tell you whether you have a human ally
 */
@@ -3838,11 +4252,12 @@ int getTeamStrategy(void)
    //offenseDefense = generateTripleDiceRoll(offenseDefense);
 
    // Find the strategy
-   if (rushBoom >= 0.5 && offenseDefense >= 0.5)
+   // Fudge these numbers to get more rushing
+   if (rushBoom >= 0.2 && offenseDefense >= 0.2)
    {
       gStrategy = cStrategyRush;
    }
-   else if (rushBoom >= 0 && rushBoom < 0.5 && offenseDefense >= 0.5)
+   else if (rushBoom >= 0 && rushBoom < 0.5 && offenseDefense >= 0.2)
    {
       gStrategy = cStrategyNakedFF;
    }
@@ -4124,48 +4539,6 @@ minInterval 20
 }
 
 
-
-//==============================================================================
-// getTeamAge
-// AssertiveWall: gets the average age of our team. Rounds down
-//==============================================================================
-
-int getTeamAge(bool ourTeam = true)
-{
-   int ageTotal = 0;
-   int numPlayers = 0;
-   int myTeam = kbGetPlayerTeam(cMyID);
-   int averageAge = -1;
-
-   if (ourTeam == false)
-   {  // Account for Gaia
-      numPlayers = -1;
-   }
-
-   for (i = 0; < cNumberPlayers)
-   {
-      if (ourTeam == true)
-      {
-         if (myTeam == kbGetPlayerTeam(i))
-         {
-            ageTotal += kbGetAgeForPlayer(i);
-            numPlayers += 1;
-         }
-      }
-      else
-      {
-         if (myTeam != kbGetPlayerTeam(i))
-         {
-            ageTotal += kbGetAgeForPlayer(i);
-            numPlayers += 1;
-         }
-      }
-   }
-
-   averageAge = ageTotal / numPlayers;
-
-   return (averageAge);
-}
 
 //==============================================================================
 // allowedToAttack
@@ -5631,6 +6004,7 @@ minInterval 3
    int area = 0;
    int areaGroup = -1;
    vector startingLoc = kbGetPlayerStartingPosition(cMyID);
+   bool takenIsland = false;
    int unit = getUnitByLocation(cUnitTypeAbstractVillager, cMyID, cUnitStateAlive, startingLoc, 100); // getUnit(cUnitTypeCoveredWagon, cMyID, cUnitStateAlive);
 
    areaCount = kbAreaGetNumber();
@@ -5664,11 +6038,39 @@ minInterval 3
          continue;
       }*/
 
-      // Check to make sure this area is connected to center island
-      if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(kbGetMapCenter()), areaGroup) == false)
+      // Check to make sure this area is connected to center island, unless it's polynesia then find closest
+      // island that isn't connected to starting area
+      if (cRandomMapName == "zppolynesia")
       {
-         continue;
+         for (i = 1; <= cNumberPlayers)
+         {
+            if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(kbGetPlayerStartingPosition(i)), areaGroup) == true)
+            {
+               takenIsland = true;
+            }
+            else if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(kbGetMapCenter()), areaGroup) == true)
+            {
+               takenIsland = true;
+            }
+            else if (distance(kbGetMapCenter(), kbAreaGetCenter(area)) < distance(kbGetMapCenter(), startingLoc))
+            {
+               takenIsland = true;
+            }
+         }
+
+         if (takenIsland == true)
+         {
+            continue;
+         }
       }
+      else
+      {
+         if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(kbGetMapCenter()), areaGroup) == false)
+         {
+            continue;
+         }
+      }
+
 
       bool bordersWater = false;
       int borderAreaCount = kbAreaGetNumberBorderAreas(area);
@@ -5701,6 +6103,8 @@ minInterval 3
    gCeylonStartingTargetArea = closestArea;
    kbBaseSetPositionAndDistance(cMyID, kbBaseGetMainID(cMyID), kbAreaGetCenter(gCeylonStartingTargetArea), 100.0);
    xsEnableRule("buildingMonitorDelayed");
+
+   //sendStatement(cPlayerRelationAlly, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(closestArea));
 
    // Move someone toward the center so we can see our landing spot
    /*aiTaskUnitMove(getUnit(shipType, cMyID, cUnitStateAlive), kbAreaGetCenter(closestArea));
@@ -7262,7 +7666,7 @@ void trainFromGalleons()
    for (i = 0; < gNumArmyUnitTypes)
    {
       unitToTrain = kbUnitPickGetResult(gLandUnitPicker, i);
-      if (kbProtoUnitIsType(unitToTrain, cUnitTypeAbstractArtillery) == false)
+      if (kbProtoUnitIsType(cMyID, unitToTrain, cUnitTypeAbstractArtillery) == false)
       {
          break;
       }
@@ -10539,7 +10943,10 @@ minInterval 30
             // Chat to my allies.
             sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
             gForwardBaseState = cForwardBaseStateBuilding;
-            establishForwardBeachHead(gForwardBaseLocation);
+            if (gStartOnDifferentIslands == true)
+            {  // This should no longer be used now that we have the amphibious assault rule
+               establishForwardBeachHead(gForwardBaseLocation); 
+            }
 
             debugBuildings("");
             debugBuildings("BUILDING FORWARD BASE, MOVING DEFEND PLANS TO COVER");
