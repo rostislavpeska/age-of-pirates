@@ -206,17 +206,17 @@ void main(void)
 	int flagEdgeConstraint = rmCreatePieConstraint("flags away from edge of map", 0.5, 0.5, rmGetMapXSize()-200, rmGetMapXSize()-100, 0, 0, 0);  
   int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 10.0);
 
-    //dk
-    int avoidWater5 = rmCreateTerrainDistanceConstraint("avoid water long", "Land", false, 5.0);
-    int avoidSocket=rmCreateTypeDistanceConstraint("avoid socket", "Socket", 20.0);
-    int avoidSocket2=rmCreateTypeDistanceConstraint("avoid socket long", "Socket", 40.0);
-    int avoidTradeRouteSmall = rmCreateTradeRouteDistanceConstraint("objects avoid trade route small", 6.0);
-    int forestConstraintShort=rmCreateClassDistanceConstraint("object vs. forest", rmClassID("classForest"), 4.0);
-    int avoidHunt2=rmCreateTypeDistanceConstraint("herds avoid herds2", "huntable", 32.0);
-    int avoidHunt3=rmCreateTypeDistanceConstraint("herds avoid herds3", "huntable", 14.0);
-	  int avoidAll2=rmCreateTypeDistanceConstraint("avoid all2", "all", 4.0);
-    int avoidGoldTypeFar = rmCreateTypeDistanceConstraint("avoid gold type  far 2", "gold", 32.0);
-    int circleConstraint2=rmCreatePieConstraint("circle Constraint2", 0.5, 0.5, 0, rmZFractionToMeters(0.48), rmDegreesToRadians(0), rmDegreesToRadians(360));
+  //dk
+  int avoidWater5 = rmCreateTerrainDistanceConstraint("avoid water long", "Land", false, 5.0);
+  int avoidSocket=rmCreateTypeDistanceConstraint("avoid socket", "Socket", 20.0);
+  int avoidSocket2=rmCreateTypeDistanceConstraint("avoid socket long", "Socket", 40.0);
+  int avoidTradeRouteSmall = rmCreateTradeRouteDistanceConstraint("objects avoid trade route small", 6.0);
+  int forestConstraintShort=rmCreateClassDistanceConstraint("object vs. forest", rmClassID("classForest"), 4.0);
+  int avoidHunt2=rmCreateTypeDistanceConstraint("herds avoid herds2", "huntable", 32.0);
+  int avoidHunt3=rmCreateTypeDistanceConstraint("herds avoid herds3", "huntable", 14.0);
+  int avoidAll2=rmCreateTypeDistanceConstraint("avoid all2", "all", 4.0);
+  int avoidGoldTypeFar = rmCreateTypeDistanceConstraint("avoid gold type  far 2", "gold", 32.0);
+  int circleConstraint2=rmCreatePieConstraint("circle Constraint2", 0.5, 0.5, 0, rmZFractionToMeters(0.48), rmDegreesToRadians(0), rmDegreesToRadians(360));
 
   // Avoid Water
   int avoidWater2 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 2.0);
@@ -233,8 +233,13 @@ void main(void)
   int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true, 3.5);
   int avoidControllerShort=rmCreateTypeDistanceConstraint("stay away from Controller Short", "zpSPCWaterSpawnPoint", 25.0);
   int avoidControllerFar=rmCreateTypeDistanceConstraint("stay away from Controller Far", "zpSPCWaterSpawnPoint", 60.0);
-   int avoidTradeSocket=rmCreateTypeDistanceConstraint("stay away from Trade Socket", "zpSPCPortSocket", 10.0);
-   int avoidTradeSocketFar=rmCreateTypeDistanceConstraint("stay away from Trade Socket Far", "zpSPCPortSocket", 35.0);
+  int avoidTradeSocket=rmCreateTypeDistanceConstraint("stay away from Trade Socket", "zpSPCPortSocket", 10.0);
+  int avoidTradeSocketFar=rmCreateTypeDistanceConstraint("stay away from Trade Socket Far", "zpSPCPortSocket", 35.0);
+
+  // Avoid Natives
+  int avoidMaltese=rmCreateTypeDistanceConstraint("stay away from Maltese", "zpSocketMaltese", 20.0);
+  int avoidOrthodox=rmCreateTypeDistanceConstraint("stay away from TOrthodox", "zpSocketOrthodox", 20.0);
+  int avoidJesuit=rmCreateTypeDistanceConstraint("stay away from Jesuit", "zpSocketJesuitEU", 20.0);
 
 // ************************** DEFINE OBJECTS ****************************
 	
@@ -1250,6 +1255,9 @@ else
   rmAddObjectDefConstraint(berriesID, shortAvoidImportantItem);
   rmAddObjectDefConstraint(berriesID, shortAvoidResource);
   rmAddObjectDefConstraint(berriesID, eastIslandConstraint);
+  rmAddObjectDefConstraint(berriesID, shortAvoidResource);
+  rmAddObjectDefConstraint(berriesID, avoidMaltese);
+  rmAddObjectDefConstraint(berriesID, avoidOrthodox);
   rmPlaceObjectDefPerPlayer(berriesID, false, 1.5);
 
   int berriesID2=rmCreateObjectDef("berries 2");
@@ -1262,6 +1270,9 @@ else
   rmAddObjectDefConstraint(berriesID2, shortAvoidImportantItem);
   rmAddObjectDefConstraint(berriesID2, shortAvoidResource);
   rmAddObjectDefConstraint(berriesID2, westIslandConstraint);
+  rmAddObjectDefConstraint(berriesID2, avoidMaltese);
+  rmAddObjectDefConstraint(berriesID2, avoidOrthodox);
+  rmAddObjectDefConstraint(berriesID2, avoidJesuit);
   rmPlaceObjectDefPerPlayer(berriesID2, false, 1.5);
   
   // Text

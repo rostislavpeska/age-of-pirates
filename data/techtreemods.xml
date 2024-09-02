@@ -15389,6 +15389,19 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpNativeKorowai" type="Normal">
+    <dbid>40416</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpWakaCanoe</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatKorowaiArcher</target>
+      </effect>
+    </effects>
+  </tech>
   
 
 
