@@ -15496,14 +15496,20 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <effects>
-      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="zpNatKorowaiSpearman" resource="Food" extrabounty="true" bountyrate="50.00" relativity="Assign">
+      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="zpNatKorowaiSpearman" resource="Food" extrabounty="true" bountyrate="100.00" relativity="Assign">
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="zpNatKorowaiArcher" resource="Food" extrabounty="true" bountyrate="50.00" relativity="Assign">
+      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="zpNatKorowaiArcher" resource="Food" extrabounty="true" bountyrate="100.00" relativity="Assign">
         <target type="Player">
         </target>
       </effect> 
+      <effect type="Data" action="ExtraBounty" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatKorowaiArcher</target>
+      </effect>
+      <effect type="Data" action="ExtraBounty" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatKorowaiSpearman</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpWarriorSocietyKorowai" type="Normal">
@@ -15628,9 +15634,8 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <effects>
-      <effect type="Data" amount="1.20" subtype="ResourceTrickleRate" resource="Wood" relativity="Absolute">
-        <target type="Player">
-        </target>
+      <effect type="Data" action="AutoGatherKorowaiWood" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
   </tech>
