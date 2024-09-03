@@ -288,8 +288,9 @@ minInterval 10
       aiPlanSetDesiredPriority(gRaidPlanID, 30);  // Lower than standard attack so they can join
       aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
       aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRefreshFrequency, 0, 300);
+      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat);
       aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOpportunistic);
-      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternMRU);
+      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternLRU);
       //aiPlanSetVariableInt(gRaidPlanID, cCombatPlanNoTargetTimeout, 0, 2000);
       
       // Just a small number of cav
