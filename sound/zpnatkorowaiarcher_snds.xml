@@ -26,6 +26,10 @@
           <soundset name="Korowai_Warrior_Attack">
           </soundset>
         </choice>
+        <choice name="build">
+          <soundset name="Korowai_Warrior_Acknowledge">
+          </soundset>
+        </choice>
       </targetlogic>
     </soundtype>
   </protounit>

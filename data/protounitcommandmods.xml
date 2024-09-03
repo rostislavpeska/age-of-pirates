@@ -379,6 +379,24 @@
     <activerollovertextid>301230</activerollovertextid>
     <command>unitSetTactic("TacticMaintain")</command>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpBuildingUncover</name>
+    <icon>resources\images\icons\command\treeoutpost\attack_off.png</icon>
+    <activeicon>resources\images\icons\command\treeoutpost\attack_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\treeoutpost\attack_off.png</disabledicon>
+    <rollovertextid>301684</rollovertextid>
+    <activerollovertextid>301685</activerollovertextid>
+    <command>unitSetTactic("Uncovered")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpBuildingStealth</name>
+    <icon>resources\images\icons\command\treeoutpost\stealth_off.png</icon>
+    <activeicon>resources\images\icons\command\treeoutpost\stealth_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\treeoutpost\stealth_off.png</disabledicon>
+    <rollovertextid>301682</rollovertextid>
+    <activerollovertextid>301683</activerollovertextid>
+    <command>unitSetTactic("StealthBuilding")</command>
+  </protounitcommand>
 
   <!--
 

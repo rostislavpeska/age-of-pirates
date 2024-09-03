@@ -15479,6 +15479,7 @@
       <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyKorowai</effect>
       <effect type="TechStatus" status="obtainable">zpNativeTreatyKorowai</effect>
       <effect type="TechStatus" status="obtainable">zpNatKorowaiArmy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatTreehouseOutposts</effect>
     </effects>
   </tech>
   <tech name="zpNatKorowaiMedicine" type="Normal">
@@ -15661,7 +15662,10 @@
       <effect type="CommandAdd" tech="zpNatWoodAbundance" page="2" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatKorowaiArmy" page="2" column="4">
+      <effect type="CommandAdd" tech="zpNatTreehouseOutposts" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatKorowaiArmy" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -15746,6 +15750,32 @@
       <effect type="Data" amount="16.00" subtype="FreeHomeCityUnit" unittype="zpNatMercKorowaiArcher" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatTreehouseOutposts" type="Normal">
+    <dbid>40627</dbid>
+    <displaynameid>301680</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\korowai_outpost.png</icon>
+    <rollovertextid>301681</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpTreehouseOutpostTravois" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpKorowaiOutpost</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatKorowaiArcher</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercKorowaiArcher</target>
       </effect>
     </effects>
   </tech>
