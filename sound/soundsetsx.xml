@@ -1929,4 +1929,36 @@
     <sound filename="korowai\korowai_attack_03.wav" volume="1.0000">
     </sound>
   </soundset>
+  <soundset name="Aboriginal_Soldier_Attack" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="aboriginal\aboriginal_attack_01.wav" volume="1.0000">
+    </sound>
+    <sound filename="aboriginal\aboriginal_attack_02.wav" volume="1.0000">
+    </sound>
+    <sound filename="aboriginal\aboriginal_attack_03.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Aboriginal_Soldier_Select" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="aboriginal\aboriginal_select_01.wav" volume="1.0000">
+    </sound>
+    <sound filename="aboriginal\aboriginal_select_02.wav" volume="1.0000">
+    </sound>
+    <sound filename="aboriginal\aboriginal_select_03.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Aboriginal_Soldier_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="aboriginal\aboriginal_acknowledge_01.wav" volume="1.0000">
+    </sound>
+    <sound filename="aboriginal\aboriginal_acknowledge_02.wav" volume="1.0000">
+    </sound>
+    <sound filename="aboriginal\aboriginal_acknowledge_03.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Aboriginal_Soldier_Hunt" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="aboriginal\aboriginal_hunt_01.wav" volume="1.0000">
+    </sound>
+    <sound filename="aboriginal\aboriginal_hunt_02.wav" volume="1.0000">
+    </sound>
+    <sound filename="aboriginal\aboriginal_hunt_03.wav" volume="1.0000">
+    </sound>
+  </soundset>
 </soundsetdef>

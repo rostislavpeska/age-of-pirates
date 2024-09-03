@@ -2387,18 +2387,6 @@
     <sound filename="ambient\effects\kitchen_sound.wav" volume="0.6000">
     </sound>
   </soundset>
-  <soundset name="Aboriginal_Soldier_Attack" volume="1.0000" maxnum="4" distance="1.0000">
-    <sound filename="aboriginal\AboriginalSoldierAttack.wav" volume="1.0000">
-    </sound>
-  </soundset>
-  <soundset name="Aboriginal_Soldier_Select" volume="1.0000" maxnum="4" distance="1.0000">
-    <sound filename="aboriginal\AboriginalSoldierSelect.wav" volume="1.0000">
-    </sound>
-  </soundset>
-  <soundset name="Aboriginal_Soldier_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
-    <sound filename="aboriginal\AboriginalSoldierMove.wav" volume="1.0000">
-    </sound>
-  </soundset>
   <soundset name="CasowaryGrowl" volume="1.0000" maxnum="4" distance="1.0000">
     <sound filename="ambient\animals\cassowarygrowl.wav" volume="1.0000">
     </sound>

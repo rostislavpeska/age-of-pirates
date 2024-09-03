@@ -12,8 +12,8 @@
 				<decal>
 					<effecttype>default</effecttype>
 					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-					<width>5.00</width>
-					<height>5.00</height>
+					<width>7.00</width>
+					<height>7.00</height>
 				</decal>
 			</variationid0>
 			<variationid1>
@@ -23,8 +23,8 @@
 				<decal>
 					<effecttype>default</effecttype>
 					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-					<width>8.00</width>
-					<height>15.00</height>
+					<width>7.00</width>
+					<height>7.00</height>
 				</decal>
 			</variationid1>
 			<variationid2>
@@ -34,8 +34,8 @@
 				<decal>
 					<effecttype>default</effecttype>
 					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-					<width>8.00</width>
-					<height>15.00</height>
+					<width>5.00</width>
+					<height>5.00</height>
 				</decal>
 			</variationid2>
 			<variationid3>
@@ -46,9 +46,31 @@
 					<effecttype>default</effecttype>
 					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
 					<width>8.00</width>
-					<height>15.00</height>
+					<height>8.00</height>
 				</decal>
 			</variationid3>
+			<variationid4>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\korowai\treehouse_low_Model</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>8.00</width>
+					<height>8.00</height>
+				</decal>
+			</variationid4>
+			<variationid5>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\korowai\treehouse_thin_low_Model</file>
+				</assetreference>
+				<decal>
+					<effecttype>default</effecttype>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>5.00</width>
+					<height>5.00</height>
+				</decal>
+			</variationid5>
 		</logic>
 	</component>
 	<anim>

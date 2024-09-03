@@ -759,6 +759,13 @@
     <tech row="0" page="2" column="2">zpNatShoemakerWorkshop</tech>
     <tech row="0" page="1" column="1">zpPenalColonyRevolt</tech>
 
+    <tech row="0" page="1" column="1">zpWarriorSocietyKorowai</tech>
+    <tech row="0" page="1" column="1">zpChampionKorowai</tech>
+    <tech row="0" page="2" column="0">zpNatKorowaiCanibalism</tech>
+    <tech row="0" page="2" column="1">zpNatKorowaiMedicine</tech>
+    <tech row="0" page="2" column="2">zpNatKorowaiStealth</tech>
+    <tech row="0" page="2" column="2">zpKorowaiExpansion</tech>
+
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia1</tech>
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia2</tech>
 
@@ -32530,8 +32537,7 @@
     <buildlimit>16</buildlimit>
     <bounty>10.0000</bounty>
     <buildbounty>10.0000</buildbounty>
-    <cost resourcetype="Food">50.0000</cost>
-    <cost resourcetype="Wood">50.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
     <allowedage>1</allowedage>
     <armor type="Ranged" value="0.2000">
     </armor>
@@ -32565,6 +32571,7 @@
     <unittype>AbstractRangedInfantry</unittype>
     <unittype>LogicalTypeInfantryVolleyTactic</unittype>
     <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -32576,7 +32583,7 @@
     <command page="10" column="7">Delete</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
-    <tactics>optstealtharcheraccurate.tactics</tactics>
+    <tactics>korowaiarcher.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
       <damage>10.000000</damage>
@@ -32690,15 +32697,15 @@
     <selectionpriority>20</selectionpriority>
     <rollovertextid>22813</rollovertextid>
     <shortrollovertextid>25696</shortrollovertextid>
-    <initialhitpoints>100.0000</initialhitpoints>
-    <maxhitpoints>100.0000</maxhitpoints>
+    <initialhitpoints>150.0000</initialhitpoints>
+    <maxhitpoints>150.0000</maxhitpoints>
     <los>12.0000</los>
     <unitaitype>HandCombative</unitaitype>
     <trainpoints>27.0000</trainpoints>
     <bounty>8.0000</bounty>
     <buildbounty>8.0000</buildbounty>
     <cost resourcetype="Food">40.0000</cost>
-    <cost resourcetype="Wood">40.0000</cost>
+    <cost resourcetype="Wood">60.0000</cost>
     <allowedage>1</allowedage>
     <armor type="Hand" value="0.1000">
     </armor>
@@ -32776,6 +32783,57 @@
       <damagebonus type="AbstractCavalry">5.000000</damagebonus>
       <damagebonus type="AbstractLightInfantry">3.500000</damagebonus>
     </protoaction>
+  </unit>
+  <unit id="20383" name="zpPropPalm">
+    <dbid>20383</dbid>
+    <displaynameid>301650</displaynameid>
+    <editornameid>301651</editornameid>
+    <obstructionradiusx>0.2000</obstructionradiusx>
+    <obstructionradiusz>0.2000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>terrain\tree_borneo.xml</animfile>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\spc\pirates\pirate_ranged_icon.png</icon>
+    <portraiticon>resources\art\units\spc\pirates\pirate_ranged_portrait.png</portraiticon>
+    <rollovertextid>301650</rollovertextid>
+    <shortrollovertextid>301650</shortrollovertextid>
+    <initialhitpoints>1315.0000</initialhitpoints>
+    <maxhitpoints>1315.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Building</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>Invulnerable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
+    <command page="10" column="0">Delete</command>
+    <tactics>garrisonable.tactics</tactics>
   </unit>
 
   

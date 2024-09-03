@@ -1,6 +1,6 @@
 <material>
   <submaterial name="mata">
-    <materialdef name="default">
+    <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
       <texture name="BaseColor" override="buildings\native_settlement\korowai\textures\Treehouse_Mata_BaseColor">

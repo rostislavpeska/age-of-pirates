@@ -1,4 +1,27 @@
 <techtreemods>
+  <tech name="zpNatKorowaiStealth" type="Normal">
+    <dbid>40617</dbid>
+    <displaynameid>301654</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Wood">250.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\korowai_camouflage.png</icon>
+    <rollovertextid>301655</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" action="Stealth" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatKorowaiArcher</target>
+      </effect>
+      <effect type="Data" amount="1.00" tactic="Stealth" subtype="TacticEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatKorowaiArcher</target>
+      </effect>
+    </effects>
+  </tech>
   <tech name="zpNativeMaltese" type="Normal">
     <dbid>40001</dbid>
     <status>UNOBTAINABLE</status>
@@ -4821,6 +4844,10 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatColonialGuardDeserted" culture="none" newname="301625">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatKorowaiArcher" culture="none" newname="301663">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatKorowaiSpearman" culture="none" newname="301666">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -4854,6 +4881,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChampionAboriginals</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpJewishGuardMilitia</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranPenalColony</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPenalColony</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
     </effects>
   </tech>
   <tech name="AAStandardNativeTechsPI">
@@ -4886,6 +4917,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChampionAboriginals</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpJewishGuardMilitia</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranPenalColony</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPenalColony</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
     </effects>
   </tech>
   <tech name="ypAAAsianStandardTechsPI">
@@ -4918,6 +4953,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChampionAboriginals</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpJewishGuardMilitia</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranPenalColony</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPenalColony</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothers">
@@ -4950,6 +4989,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChampionAboriginals</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpJewishGuardMilitia</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranPenalColony</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPenalColony</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothersGerman">
@@ -4982,6 +5025,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChampionAboriginals</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpJewishGuardMilitia</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranPenalColony</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPenalColony</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialAmericans">
@@ -5014,6 +5061,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChampionAboriginals</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpJewishGuardMilitia</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranPenalColony</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPenalColony</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
     </effects>
   </tech>
   <tech name="DEChampionNativeWarriorsAfricanShadow">
@@ -5046,6 +5097,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChampionAboriginals</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpJewishGuardMilitia</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranPenalColony</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPenalColony</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialMexicans">
@@ -5078,6 +5133,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpChampionAboriginals</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpJewishGuardMilitia</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranPenalColony</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPenalColony</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
     </effects>
   </tech>
   <tech name="DEHeavyFixedGun">
@@ -15390,7 +15449,7 @@
     </effects>
   </tech>
   <tech name="zpNativeKorowai" type="Normal">
-    <dbid>40416</dbid>
+    <dbid>40415</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -15400,12 +15459,207 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatKorowaiArcher</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpNatKorowaiMedicine</effect>
+      <effect type="TechStatus" status="obtainable">zpNatKorowaiStealth</effect>
+      <effect type="TechStatus" status="obtainable">zpNatKorowaiCanibalism</effect>
+      <effect type="TechStatus" status="obtainable">zpWarriorSocietyKorowai</effect>
+      <effect type="TechStatus" status="obtainable">zpChampionKorowai</effect>
+      <effect type="TechStatus" status="obtainable">zpKorowaiExpansion</effect>
+      <effect type="TechStatus" status="obtainable">zpNatWoodAbundance</effect>
     </effects>
   </tech>
+  <tech name="zpNatKorowaiMedicine" type="Normal">
+    <dbid>40616</dbid>
+    <displaynameid>301652</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\korowai_medicine.png</icon>
+    <rollovertextid>301653</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" action="Heal" amount="1.35" subtype="WorkRate" unittype="LogicalTypeHealed" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractHealer</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatKorowaiCanibalism" type="Normal">
+    <dbid>40618</dbid>
+    <displaynameid>301656</displaynameid>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\korowai_canibalism.png</icon>
+    <rollovertextid>301657</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="zpNatKorowaiSpearman" resource="Food" extrabounty="true" bountyrate="50.00" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="zpNatKorowaiArcher" resource="Food" extrabounty="true" bountyrate="50.00" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect> 
+    </effects>
+  </tech>
+  <tech name="zpWarriorSocietyKorowai" type="Normal">
+    <dbid>40619</dbid>
+    <displaynameid>301658</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">75.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\warrior_society\warrior_society.png</icon>
+    <rollovertextid>301660</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatKorowaiArcher</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatKorowaiArcher</target>
+      </effect>
+      <effect type="SetName" proto="zpNatKorowaiArcher" culture="none" newname="301661">
+      </effect>
+      <effect type="SetName" proto="zpNatKorowaiArcher" culture="none" newname="301663" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatKorowaiSpearman</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatKorowaiSpearman</target>
+      </effect>
+      <effect type="SetName" proto="zpNatKorowaiSpearman" culture="none" newname="301664">
+      </effect>
+      <effect type="SetName" proto="zpNatKorowaiSpearman" culture="none" newname="301666" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpChampionKorowai" type="Normal">
+    <dbid>40620</dbid>
+    <displaynameid>301659</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\champion_natives\champion_natives.png</icon>
+    <rollovertextid>301660</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+      <techstatus status="Active">zpWarriorSocietyKorowai</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatKorowaiArcher</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatKorowaiArcher</target>
+      </effect>
+      <effect type="SetName" proto="zpNatKorowaiArcher" culture="none" newname="301662">
+      </effect>
+      <effect type="SetName" proto="zpNatKorowaiArcher" culture="none" newname="301663" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatKorowaiSpearman</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatKorowaiSpearman</target>
+      </effect>
+      <effect type="SetName" proto="zpNatKorowaiSpearman" culture="none" newname="301665">
+      </effect>
+      <effect type="SetName" proto="zpNatKorowaiSpearman" culture="none" newname="301666" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpKorowaiExpansion" type ="Normal">
+		<dbid>40621</dbid>
+		<displaynameid>301667</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\korowai_expansion.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>301668</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatKorowaiSpearman</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatKorowaiSpearman" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatWoodAbundance" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="zpNatWoodAbundance" type="Normal">
+    <dbid>40622</dbid>
+    <displaynameid>301669</displaynameid>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\korowai_canopy.png</icon>
+    <rollovertextid>301670</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="ResourceTrickleRate" resource="Wood" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+
+
   
 
 
 <!--TEST-->
+
+<!--<tech name="zpKorowaiStealthShadow" type="Normal">
+    <dbid></dbid>
+    <displaynameid>44638</displaynameid>
+    <cost resourcetype="Ships">1.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\native\heyoka.png</icon>
+    <rollovertextid>44637</rollovertextid>
+    <flag>HomeCity</flag>
+    <effects>
+      <effect type="TextOutput">48882</effect>
+      <effect type="Data" action="Stealth" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatKorowaiArcher</target>
+      </effect>
+      <effect type="Data" amount="1.00" tactic="Stealth" subtype="TacticEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatKorowaiArcher</target>
+      </effect>
+    </effects>
+  </tech>-->
 
 <!--<tech name="zpConsulatePiratesGraceClone" type="Normal">
     <dbid></dbid>
