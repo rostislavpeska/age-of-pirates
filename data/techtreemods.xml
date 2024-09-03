@@ -20,6 +20,12 @@
       <effect type="Data" amount="1.00" tactic="Stealth" subtype="TacticEnable" relativity="Absolute">
         <target type="ProtoUnit">zpNatKorowaiArcher</target>
       </effect>
+      <effect type="Data" action="Stealth" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercKorowaiArcher</target>
+      </effect>
+      <effect type="Data" amount="1.00" tactic="Stealth" subtype="TacticEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercKorowaiArcher</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpNativeMaltese" type="Normal">
@@ -4847,6 +4853,8 @@
       <effect mergemode="add" type="SetName" proto="zpNatKorowaiArcher" culture="none" newname="301663">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatKorowaiSpearman" culture="none" newname="301666">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercKorowaiArcher" culture="none" newname="301663">
       </effect>
     </effects>
   </tech>
@@ -15466,6 +15474,11 @@
       <effect type="TechStatus" status="obtainable">zpChampionKorowai</effect>
       <effect type="TechStatus" status="obtainable">zpKorowaiExpansion</effect>
       <effect type="TechStatus" status="obtainable">zpNatWoodAbundance</effect>
+      <effect type="TechStatus" status="obtainable">DEIndianFriendshipKorowai</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyKorowai</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyKorowai</effect>
+      <effect type="TechStatus" status="obtainable">zpNatKorowaiArmy</effect>
     </effects>
   </tech>
   <tech name="zpNatKorowaiMedicine" type="Normal">
@@ -15503,12 +15516,19 @@
       <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="zpNatKorowaiArcher" resource="Food" extrabounty="true" bountyrate="100.00" relativity="Assign">
         <target type="Player">
         </target>
+      </effect>
+      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="zpNatMercKorowaiArcher" resource="Food" extrabounty="true" bountyrate="100.00" relativity="Assign">
+        <target type="Player">
+        </target>
       </effect> 
       <effect type="Data" action="ExtraBounty" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpNatKorowaiArcher</target>
       </effect>
       <effect type="Data" action="ExtraBounty" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpNatKorowaiSpearman</target>
+      </effect>
+      <effect type="Data" action="ExtraBounty" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercKorowaiArcher</target>
       </effect>
     </effects>
   </tech>
@@ -15539,6 +15559,16 @@
       <effect type="SetName" proto="zpNatKorowaiArcher" culture="none" newname="301661">
       </effect>
       <effect type="SetName" proto="zpNatKorowaiArcher" culture="none" newname="301663" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercKorowaiArcher</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercKorowaiArcher</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMercKorowaiArcher" culture="none" newname="301661">
+      </effect>
+      <effect type="SetName" proto="zpNatMercKorowaiArcher" culture="none" newname="301663" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatKorowaiSpearman</target>
@@ -15582,6 +15612,16 @@
       <effect type="SetName" proto="zpNatKorowaiArcher" culture="none" newname="301663" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercKorowaiArcher</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercKorowaiArcher</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMercKorowaiArcher" culture="none" newname="301662">
+      </effect>
+      <effect type="SetName" proto="zpNatMercKorowaiArcher" culture="none" newname="301663" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatKorowaiSpearman</target>
       </effect>
       <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
@@ -15621,6 +15661,9 @@
       <effect type="CommandAdd" tech="zpNatWoodAbundance" page="2" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" tech="zpNatKorowaiArmy" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
 	</tech>
   <tech name="zpNatWoodAbundance" type="Normal">
@@ -15636,6 +15679,73 @@
     <effects>
       <effect type="Data" action="AutoGatherKorowaiWood" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTreatyKorowai" type="Normal">
+    <dbid>40623</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatMercKorowaiArcher" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="DEIndianFriendshipKorowai" type="Normal">
+    <dbid>40624</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMercKorowaiArcher" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
+      <effect type="TechStatus" status="active">zpChampionKorowai</effect>
+    </effects>
+  </tech>
+  <tech name="ypNativeTradeTreatyKorowai" type="Normal">
+    <dbid>40625</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatKorowaiArmy" type="Normal">
+    <dbid>40626</dbid>
+    <displaynameid>301672</displaynameid>
+    <cost resourcetype="Wood">1200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\korowai_army.png</icon>
+    <rollovertextid>301673</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="16.00" subtype="FreeHomeCityUnit" unittype="zpNatMercKorowaiArcher" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>
