@@ -32530,8 +32530,8 @@
     <portraiticon>resources\art\units\natives\korowai_bowman_portrait.png</portraiticon>
     <rollovertextid>301646</rollovertextid>
     <shortrollovertextid>301647</shortrollovertextid>
-    <initialhitpoints>115.0000</initialhitpoints>
-    <maxhitpoints>115.0000</maxhitpoints>
+    <initialhitpoints>110.0000</initialhitpoints>
+    <maxhitpoints>110.0000</maxhitpoints>
     <los>18.0000</los>
     <projectileprotounit>Arrow</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -32864,8 +32864,8 @@
     <portraiticon>resources\art\units\natives\korowai_bowman_portrait.png</portraiticon>
     <rollovertextid>301646</rollovertextid>
     <shortrollovertextid>301647</shortrollovertextid>
-    <initialhitpoints>115.0000</initialhitpoints>
-    <maxhitpoints>115.0000</maxhitpoints>
+    <initialhitpoints>110.0000</initialhitpoints>
+    <maxhitpoints>110.0000</maxhitpoints>
     <los>18.0000</los>
     <projectileprotounit>Arrow</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
