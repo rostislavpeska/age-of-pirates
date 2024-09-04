@@ -32519,8 +32519,8 @@
     <obstructionradiusz>0.4900</obstructionradiusz>
     <stealthdiscoveryradius>2.0000</stealthdiscoveryradius>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>5.5000</maxvelocity>
-    <maxrunvelocity>7.5000</maxrunvelocity>
+    <maxvelocity>6.0000</maxvelocity>
+    <maxrunvelocity>8.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
     <animfile>units\natives\korowai\bowman.xml</animfile>
@@ -32853,8 +32853,8 @@
     <obstructionradiusz>0.4900</obstructionradiusz>
     <stealthdiscoveryradius>2.0000</stealthdiscoveryradius>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>5.5000</maxvelocity>
-    <maxrunvelocity>7.5000</maxrunvelocity>
+    <maxvelocity>6.0000</maxvelocity>
+    <maxrunvelocity>8.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
     <animfile>units\natives\korowai\bowman.xml</animfile>
