@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "301684" displayNameID = "301683" loadDetails="301685" largeMapName = "zpatols"
+    imagepath = "ui\random_map\atols\atols_mini" cannotReplace = "" loadBackground="ui\random_map\atols\atols_map">
+   <loadss>ui\random_map\atols\atols_01</loadss>
+   <loadss>ui\random_map\atols\atols_02</loadss>
+   <loadss>ui\random_map\atols\atols_03</loadss>
+</mapinfo>
