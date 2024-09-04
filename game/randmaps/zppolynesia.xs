@@ -83,7 +83,7 @@ rmSetMapType(mapType1);
 rmSetMapType(mapType2);
 rmSetMapType("water");
 rmSetLightingSet("borneo_skirmish");
-//rmSetOceanReveal(true);
+rmSetOceanReveal(true);
 
 // Initialize map.
 rmTerrainInitialize(baseTerrain);
