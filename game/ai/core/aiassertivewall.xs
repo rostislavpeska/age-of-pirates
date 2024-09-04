@@ -6025,6 +6025,7 @@ minInterval 3
    vector enPosition = kbGetPlayerStartingPosition(getEnemyPlayerByTeamPosition(1));
    int closestArea = -1;
    float closestAreaDistance = kbGetMapXSize();
+   //bool hasMaoriHouse = false;
 
    for (area = 0; < areaCount)
    {
@@ -6043,6 +6044,8 @@ minInterval 3
       // island that isn't connected to starting area
       if (cRandomMapName == "zppolynesia")
       {
+         takenIsland = false;
+         //hasMaoriHouse = false;
          for (i = 1; <= cNumberPlayers)
          {
             if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(kbGetPlayerStartingPosition(i)), areaGroup) == true)
@@ -6063,6 +6066,24 @@ minInterval 3
          {
             continue;
          }
+
+         // Make sure there is a maori house on the island
+         /*int settlementQuery = createSimpleUnitQuery(cUnitTypezpNativeHouseMaori, cPlayerRelationAny);
+         int numberMaoriHouses = kbUnitQueryExecute(settlementQuery);
+         for (i = 0; < numberMaoriHouses)
+         {
+            vector maoriHouseLoc = kbUnitGetPosition(kbUnitQueryGetResult(settlementQuery, i));
+            if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(maoriHouseLoc), areaGroup) == true)
+            {
+               hasMaoriHouse = true;
+               break;
+            }
+         }
+
+         if (hasMaoriHouse == false)
+         {
+            continue;
+         }*/
       }
       else
       {
@@ -6105,7 +6126,7 @@ minInterval 3
    kbBaseSetPositionAndDistance(cMyID, kbBaseGetMainID(cMyID), kbAreaGetCenter(gCeylonStartingTargetArea), 100.0);
    xsEnableRule("buildingMonitorDelayed");
 
-   //sendStatement(cPlayerRelationAlly, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(closestArea));
+   //sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(closestArea));
 
    // Move someone toward the center so we can see our landing spot
    /*aiTaskUnitMove(getUnit(shipType, cMyID, cUnitStateAlive), kbAreaGetCenter(closestArea));
