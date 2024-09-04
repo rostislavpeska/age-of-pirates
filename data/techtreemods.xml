@@ -2384,7 +2384,7 @@
     </effects>
 	</tech>
   <tech name="zpConsulateMalteseVenetians" type="Normal">
-    <dbid>40639</dbid>
+    <dbid>40713</dbid>
     <displaynameid>300144</displaynameid>
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
@@ -9270,7 +9270,7 @@
     </effects>
   </tech>
   <tech name="zpVeniceTrade" type="Normal">
-    <dbid>40314</dbid>
+    <dbid>40714</dbid>
     <displaynameid>300754</displaynameid>
     <cost resourcetype ="Gold">400.0000</cost>
     <researchpoints>50.0000</researchpoints>
@@ -12476,7 +12476,7 @@
     </effects>
   </tech>
   <tech name="zpNatAboriginalTrackers" type="Normal">
-    <dbid>40688</dbid>
+    <dbid>40715</dbid>
     <displaynameid>301234</displaynameid>
     <cost resourcetype="Food">440.0000</cost>
     <cost resourcetype="Gold">800.0000</cost>
@@ -13588,7 +13588,7 @@
     </effects>
   </tech>
   <tech name="zpTrainFlyingDutchman2" type="Normal">
-    <dbid>40689</dbid>
+    <dbid>40716</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
@@ -15026,7 +15026,7 @@
     </effects>
   </tech>
   <tech name="zpConsulatePenalColonyCunningham" type="Normal">
-    <dbid>40598</dbid>
+    <dbid>40717</dbid>
     <displaynameid>301597</displaynameid>
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
