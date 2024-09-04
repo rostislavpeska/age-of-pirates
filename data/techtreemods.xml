@@ -1575,7 +1575,7 @@
     </effects>
   </tech>
   <tech name="zpTortugaDock" type="Normal">
-    <dbid>40048</dbid>
+    <dbid>40628</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
   </tech>
@@ -1620,7 +1620,7 @@
     </prereqs>
   </tech>
   <tech name="zpTortugaFixedGunDisable" type="Normal">
-    <dbid>40051</dbid>
+    <dbid>40629</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -2008,7 +2008,7 @@
     </effects>
   </tech>
   <tech name="zpNatPirateAdmiral" type="Normal">
-    <dbid>40071</dbid>
+    <dbid>40630</dbid>
     <displaynameid>300096</displaynameid>
     <cost resourcetype="Gold">400.0000</cost>
     <cost resourcetype="Wood">400.0000</cost>
@@ -2057,7 +2057,7 @@
     </effects>
   </tech>
   <tech name="zpNatPirateRecruits" type="Normal">
-    <dbid>40071</dbid>
+    <dbid>40631</dbid>
     <displaynameid>300098</displaynameid>
     <cost resourcetype="Gold">200.0000</cost>
     <cost resourcetype="Food">350.0000</cost>
@@ -2086,7 +2086,7 @@
     </effects>
   </tech>
   <tech name="zpNatPirateCorsairs" type="Normal">
-    <dbid>40071</dbid>
+    <dbid>40632</dbid>
     <displaynameid>300100</displaynameid>
     <cost resourcetype="Gold">800.0000</cost>
     <cost resourcetype="Food">800.0000</cost>
@@ -2232,7 +2232,7 @@
 		</effects>
 	</tech>
    <tech name ="zpNatHonoredMaltese" type ="Normal">
-		<dbid>40034</dbid>
+		<dbid>40633</dbid>
 		<displaynameid>300124</displaynameid>
 		<cost resourcetype ="Food">400.0000</cost>
 		<cost resourcetype ="Gold">300.0000</cost>
@@ -2267,7 +2267,7 @@
 		</effects>
 	</tech>
   <tech name="zpNatMalteseMedicine" type="Normal">
-    <dbid>40053</dbid>
+    <dbid>40634</dbid>
     <displaynameid>300126</displaynameid>
     <cost resourcetype="Food">150.0000</cost>
     <cost resourcetype="Gold">150.0000</cost>
@@ -2290,7 +2290,7 @@
     </effects>
   </tech>
   <tech name="zpNatMalteseFishCuisine" type="Normal">
-    <dbid>40053</dbid>
+    <dbid>40635</dbid>
     <displaynameid>300128</displaynameid>
     <cost resourcetype="Wood">75.0000</cost>
     <cost resourcetype="Gold">50.0000</cost>
@@ -2314,7 +2314,7 @@
     </effects>
   </tech>
   <tech name="zpNatMalteseFortifications" type="Normal">
-    <dbid>40053</dbid>
+    <dbid>40636</dbid>
     <displaynameid>300135</displaynameid>
     <cost resourcetype="Wood">100.0000</cost>
     <cost resourcetype="Gold">100.0000</cost>
@@ -2337,7 +2337,7 @@
     </effects>
   </tech>
   <tech name="zpNatMalteseExplorationFleet" type="Normal">
-    <dbid>40054</dbid>
+    <dbid>40637</dbid>
     <displaynameid>300133</displaynameid>
     <cost resourcetype="Food">300.0000</cost>
     <cost resourcetype="Gold">500.0000</cost>
@@ -2359,7 +2359,7 @@
     </effects>
   </tech>
   <tech name ="zpMalteseCross" type ="Normal">
-		<dbid>40055</dbid>
+		<dbid>40638</dbid>
 		<displaynameid>300142</displaynameid>
   	<researchpoints>100.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
@@ -2384,7 +2384,7 @@
     </effects>
 	</tech>
   <tech name="zpConsulateMalteseVenetians" type="Normal">
-    <dbid>40056</dbid>
+    <dbid>40639</dbid>
     <displaynameid>300144</displaynameid>
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
@@ -2410,7 +2410,7 @@
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffMaltese" type="Normal">
-    <dbid>40057</dbid>
+    <dbid>40639</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
@@ -2466,7 +2466,7 @@
     </effects>
   </tech>
   <tech name="zpNatMalteseExpeditionaryFleet" type="Normal">
-    <dbid>40058</dbid>
+    <dbid>40641</dbid>
     <displaynameid>300148</displaynameid>
     <cost resourcetype="Food">500.0000</cost>
     <cost resourcetype="Gold">1000.0000</cost>
@@ -2494,7 +2494,7 @@
     </effects>
   </tech>
   <tech name="zpConsulateMalteseFlorentians" type="Normal">
-    <dbid>40059</dbid>
+    <dbid>40642</dbid>
     <displaynameid>300154</displaynameid>
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
@@ -2520,7 +2520,7 @@
     </effects>
   </tech>
   <tech name="zpConsulateMalteseJerusalem" type="Normal">
-    <dbid>40059</dbid>
+    <dbid>40643</dbid>
     <displaynameid>300156</displaynameid>
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
@@ -2546,7 +2546,7 @@
     </effects>
   </tech>
   <tech name="zpNatMalteseBanking" type="Normal">
-    <dbid>40060</dbid>
+    <dbid>40644</dbid>
     <displaynameid>300158</displaynameid>
     <cost resourcetype="Food">350.0000</cost>
     <cost resourcetype="Wood">250.0000</cost>
@@ -2572,7 +2572,7 @@
     </effects>
   </tech>
   <tech name="zpNatMalteseFactory" type="Normal">
-    <dbid>40061</dbid>
+    <dbid>40645</dbid>
     <displaynameid>300159</displaynameid>
     <cost resourcetype="Wood">200.0000</cost>
     <cost resourcetype="Gold">400.0000</cost>
@@ -2596,7 +2596,7 @@
     </effects>
   </tech>
   <tech name="zpNatMalteseOutposts" type="Normal">
-    <dbid>40062</dbid>
+    <dbid>40648</dbid>
     <displaynameid>300160</displaynameid>
     <cost resourcetype="Wood">100.0000</cost>
     <cost resourcetype="Gold">600.0000</cost>
@@ -2622,7 +2622,7 @@
     </effects>
   </tech>
   <tech name="zpNatMalteseFort" type="Normal">
-    <dbid>40063</dbid>
+    <dbid>40649</dbid>
     <displaynameid>300164</displaynameid>
     <cost resourcetype="Wood">600.0000</cost>
     <cost resourcetype="Gold">500.0000</cost>
@@ -2663,7 +2663,7 @@
     </effects>
   </tech>
   <tech name="zpImperialCapturedHowitzer" type="Normal">
-    <dbid>40064</dbid>
+    <dbid>40650</dbid>
     <displaynameid>300167</displaynameid>
     <cost resourcetype="Wood">1500.0000</cost>
     <cost resourcetype="Gold">1500.0000</cost>
@@ -2730,7 +2730,7 @@
     </effects>
   </tech>
   <tech name="zpNatMalteseArchitecture" type="Normal">
-    <dbid>40065</dbid>
+    <dbid>40651</dbid>
     <displaynameid>300165</displaynameid>
     <cost resourcetype="Wood">150.0000</cost>
     <researchpoints>10.0000</researchpoints>
@@ -5927,7 +5927,7 @@
     </effects>
   </tech>
   <tech name="zpGaiaWaterTradeUnit" type="Normal">
-    <dbid>40181</dbid>
+    <dbid>40653</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -6087,7 +6087,7 @@
     </effects>
   </tech>
   <tech name="zpJewishDiaspora" type="Normal">
-    <dbid>40202</dbid>
+    <dbid>40654</dbid>
     <displaynameid>300419</displaynameid>
     <rollovertextid>300420</rollovertextid>
     <cost resourcetype ="Wood">400.0000</cost>
@@ -6116,7 +6116,7 @@
     </effects>
   </tech>
   <tech name="zpNatKabalah" type="Normal">
-    <dbid>40203</dbid>
+    <dbid>40655</dbid>
     <displaynameid>300421</displaynameid>
     <cost resourcetype="Food">150.0000</cost>
     <cost resourcetype="Gold">75.0000</cost>
@@ -6145,7 +6145,7 @@
     </effects>
   </tech>
   <tech name="zpJewishYomKippur" type="Normal">
-    <dbid>40203</dbid>
+    <dbid>40656</dbid>
     <displaynameid>300423</displaynameid>
     <rollovertextid>300424</rollovertextid>
     <cost resourcetype ="Wood">100.0000</cost>
@@ -6709,7 +6709,7 @@
     </effects>
   </tech>
   <tech name="zpJewishFreeMasons" type="Normal">
-    <dbid>40218</dbid>
+    <dbid>40657</dbid>
     <displaynameid>300455</displaynameid>
     <cost resourcetype ="Wood">500.0000</cost>
     <researchpoints>30.0000</researchpoints>
@@ -6981,7 +6981,7 @@
     </effects>
   </tech>
   <tech name="zpTrainSubmarine2" type="Normal">
-    <dbid>40229</dbid>
+    <dbid>40658</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
@@ -7007,7 +7007,7 @@
     </effects>
   </tech>
   <tech name="zpConsulateScientistValentine" type="Normal">
-    <dbid>40228</dbid>
+    <dbid>40660</dbid>
     <displaynameid>300493</displaynameid>
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
@@ -7039,7 +7039,7 @@
     </effects>
   </tech>
   <tech name="zpSendSubmarine" type="Normal">
-    <dbid>40229</dbid>
+    <dbid>40659</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -7051,7 +7051,7 @@
     </effects>
   </tech>
   <tech name="zpScientistsTechBuff" type="Normal">
-    <dbid>40230</dbid>
+    <dbid>40661</dbid>
     <displaynameid>300506</displaynameid>
     <cost resourcetype ="Gold">200.0000</cost>
     <researchpoints>30.0000</researchpoints>
@@ -7497,7 +7497,7 @@
     </effects>
   </tech>
   <tech name="zpAcademyAstronomy1" type="Normal">
-    <dbid>40244</dbid>
+    <dbid>40662</dbid>
     <displaynameid>300533</displaynameid>
     <cost resourcetype="Food">200.0000</cost>
     <cost resourcetype="Gold">200.0000</cost>
@@ -7525,7 +7525,7 @@
     </effects>
   </tech>
   <tech name="zpAcademyAstronomy2" type="Normal">
-    <dbid>40245</dbid>
+    <dbid>40663</dbid>
     <displaynameid>300534</displaynameid>
     <cost resourcetype="Food">400.0000</cost>
     <cost resourcetype="Gold">400.0000</cost>
@@ -7703,7 +7703,7 @@
     </effects>
   </tech>
   <tech name="zpReduceSteamerBuildLimit" type="Normal">
-    <dbid>40247</dbid>
+    <dbid>40664</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
@@ -7936,7 +7936,7 @@
     </effects>
   </tech>
   <tech name="zpTrainNautilus1" type="Normal">
-    <dbid>40259</dbid>
+    <dbid>40665</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
@@ -8608,7 +8608,7 @@
     </effects>
   </tech>
   <tech name="zpNativeTradeTreatyJesuit" type="Normal">
-    <dbid>40257</dbid>
+    <dbid>40666</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -9204,7 +9204,7 @@
     </effects>
   </tech>
   <tech name="zpHCVenetianShipImprovement" type="Normal">
-    <dbid>40312</dbid>
+    <dbid>40668</dbid>
     <displaynameid>300722</displaynameid>
     <researchpoints>30.0000</researchpoints>
     <cost resourcetype ="Gold">1000.0000</cost>
@@ -9234,7 +9234,7 @@
     </effects>
   </tech>
   <tech name="zpHCVenetianCannons" type="Normal">
-    <dbid>40314</dbid>
+    <dbid>40667</dbid>
     <displaynameid>300728</displaynameid>
     <researchpoints>30.0000</researchpoints>
     <cost resourcetype ="Gold">1000.0000</cost>
@@ -9252,7 +9252,7 @@
     </effects>
   </tech>
   <tech name="zpHCVenetianBattleship" type="Normal">
-    <dbid>40313</dbid>
+    <dbid>40669</dbid>
     <displaynameid>300725</displaynameid>
     <researchpoints>30.0000</researchpoints>
     <cost resourcetype ="Gold">1000.0000</cost>
@@ -9298,7 +9298,7 @@
     </effects>
   </tech>
   <tech name="zpVeniceSextant" type="Normal">
-    <dbid>40315</dbid>
+    <dbid>40670</dbid>
     <displaynameid>300756</displaynameid>
     <cost resourcetype="Wood">150.0000</cost>
     <cost resourcetype="Gold">75.0000</cost>
@@ -9368,7 +9368,7 @@
     </effects>
   </tech>
   <tech name="zpVenicePileFoundation" type="Normal">
-    <dbid>40065</dbid>
+    <dbid>40652</dbid>
     <displaynameid>300758</displaynameid>
     <cost resourcetype="Wood">200.0000</cost>
     <researchpoints>10.0000</researchpoints>
@@ -9509,7 +9509,7 @@
     </effects>
   </tech>
   <tech name="zpVeniceGalleyBuildLimitReduceShadow" type="Normal">
-    <dbid>40316</dbid>
+    <dbid>40671</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
@@ -9520,7 +9520,7 @@
     </effects>
   </tech>
   <tech name="zpTrainGalleass1" type="Normal">
-    <dbid>40317</dbid>
+    <dbid>40672</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
@@ -9535,7 +9535,7 @@
     </effects>
   </tech>
   <tech name="zpTrainGalleass2" type="Normal">
-    <dbid>40318</dbid>
+    <dbid>40673</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
@@ -9618,7 +9618,7 @@
     </effects>
   </tech>
   <tech name="zpConsulateVeniceContarini" type="Normal">
-    <dbid>40321</dbid>
+    <dbid>40674</dbid>
     <displaynameid>300779</displaynameid>
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
@@ -9673,7 +9673,7 @@
     </effects>
   </tech>
   <tech name="zpFortifiedVeniceFort" type="Normal">
-    <dbid>40322</dbid>
+    <dbid>40675</dbid>
     <displaynameid>300787</displaynameid>
     <cost resourcetype="Wood">250.0000</cost>
     <cost resourcetype="Gold">250.0000</cost>
@@ -10549,7 +10549,7 @@
     </effects>
   </tech>
   <tech name ="zpOrthodoxRussianJaegers" type ="Normal">
-		<dbid>40361</dbid>
+		<dbid>40676</dbid>
 		<displaynameid>300941</displaynameid>
   	<cost resourcetype ="Food">600.0000</cost>
 		<cost resourcetype ="Gold">600.0000</cost>
@@ -10944,7 +10944,7 @@
     </effects>
   </tech>
   <tech name="zpPeruEmbassyNativeHeavyMap" type="Normal">
-    <dbid>40376</dbid>
+    <dbid>40677</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>OBTAINABLE</status>
     <flag>Shadow</flag>
@@ -11440,7 +11440,7 @@
     </effects>
   </tech>
   <tech name="zpArmoredTrainLockShadow" type="Normal">
-    <dbid>40388</dbid>
+    <dbid>40678</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
@@ -11449,7 +11449,7 @@
     </effects>
   </tech>
   <tech name="zpArmoredTrainBack" type="Normal">
-    <dbid>40389</dbid>
+    <dbid>40679</dbid>
     <displaynameid>301042</displaynameid>
     <researchpoints>5.0000</researchpoints>
     <status>UNOBTAINABLE</status>
@@ -11459,7 +11459,7 @@
     <flag>Shadow</flag>
   </tech>
   <tech name="zpTrainStationUpgradeA" type="Normal">
-    <dbid>40390</dbid>
+    <dbid>40680</dbid>
     <flag>Shadow</flag>
     <status>UNOBTAINABLE</status>
     <effects>
@@ -11468,7 +11468,7 @@
     </effects>
   </tech>
   <tech name="zpTrainStationUpgradeB" type="Normal">
-    <dbid>40391</dbid>
+    <dbid>40681</dbid>
     <flag>Shadow</flag>
     <status>UNOBTAINABLE</status>
     <effects>
@@ -11477,7 +11477,7 @@
     </effects>
   </tech>
   <tech name="zpWagonDeploy" type="Normal">
-    <dbid>40392</dbid>
+    <dbid>40682</dbid>
     <displaynameid>124673</displaynameid>
     <researchpoints>2.5000</researchpoints>
     <status>UNOBTAINABLE</status>
@@ -11485,7 +11485,7 @@
     <flag>Shadow</flag>
   </tech>
   <tech name="zpArmoredTrainImprove" type="Normal">
-    <dbid>40393</dbid>
+    <dbid>40683</dbid>
     <displaynameid>300997</displaynameid>
     <cost resourcetype="Wood">2000.0000</cost>
     <cost resourcetype="Gold">2000.0000</cost>
@@ -11534,7 +11534,7 @@
     </effects>
   </tech>
   <tech name ="zpArmoredTrainGoldBallanceShadow" type ="Normal">
-		<dbid>40394</dbid>
+		<dbid>40684</dbid>
 		<status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
@@ -11546,7 +11546,7 @@
     </effects>
 	</tech>
   <tech name="zpArmoredTrainNoResourceShadow" type="Normal">
-    <dbid>40395</dbid>
+    <dbid>40685</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
@@ -11599,7 +11599,7 @@
     </effects>
   </tech>
   <tech name="zpArmoredTrainSpeedUp" type="Normal">
-    <dbid>40399</dbid>
+    <dbid>40686</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
@@ -11947,7 +11947,7 @@
     </effects>
   </tech>
   <tech name="zpHeroImperializeShadow" type="Normal">
-    <dbid>40411</dbid>
+    <dbid>40687</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>OBTAINABLE</status>
     <flag>Shadow</flag>
@@ -12476,7 +12476,7 @@
     </effects>
   </tech>
   <tech name="zpNatAboriginalTrackers" type="Normal">
-    <dbid>40526</dbid>
+    <dbid>40688</dbid>
     <displaynameid>301234</displaynameid>
     <cost resourcetype="Food">440.0000</cost>
     <cost resourcetype="Gold">800.0000</cost>
@@ -13159,7 +13159,7 @@
     </effects>
   </tech>
   <tech name="zpAustraliaMercenaries" type="Normal">
-    <dbid>40553</dbid>
+    <dbid>40689</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -13573,7 +13573,7 @@
     </effects>
   </tech>
   <tech name="zpTrainFlyingDutchman1" type="Normal">
-    <dbid>40568</dbid>
+    <dbid>40688</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
@@ -13588,7 +13588,7 @@
     </effects>
   </tech>
   <tech name="zpTrainFlyingDutchman2" type="Normal">
-    <dbid>40569</dbid>
+    <dbid>40689</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
@@ -13695,7 +13695,7 @@
     </effects>
   </tech>
   <tech name="zpConsulateWokouSiRigam" type="Normal">
-    <dbid>40570</dbid>
+    <dbid>40690</dbid>
     <displaynameid>301453</displaynameid>
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
@@ -13728,7 +13728,7 @@
     </effects>
   </tech>
   <tech name="zpTrainPrau1" type="Normal">
-    <dbid>40571</dbid>
+    <dbid>40691</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
@@ -14095,7 +14095,7 @@
     </effects>
   </tech>
   <tech name="zpCorsairExpeditionaryFleet" type="Normal">
-    <dbid>40582</dbid>
+    <dbid>40692</dbid>
     <displaynameid>301495</displaynameid>
     <cost resourcetype="Gold">1200.0000</cost>
     <researchpoints>30.0000</researchpoints>
@@ -14115,7 +14115,7 @@
     </effects>
   </tech>
   <tech name="zpCorsairImproveMarksmen" type="Normal">
-    <dbid>40583</dbid>
+    <dbid>40693</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -14162,7 +14162,7 @@
     </effects>
   </tech>
   <tech name="zpPirateExplorationFleet" type="Normal">
-    <dbid>40583</dbid>
+    <dbid>40694</dbid>
     <displaynameid>301500</displaynameid>
     <cost resourcetype="Gold">1500.0000</cost>
     <researchpoints>30.0000</researchpoints>
@@ -14184,7 +14184,7 @@
     </effects>
   </tech>
   <tech name="zpPirateArmy" type="Normal">
-    <dbid>40584</dbid>
+    <dbid>40695</dbid>
     <displaynameid>301502</displaynameid>
     <cost resourcetype="Gold">800.0000</cost>
     <researchpoints>30.0000</researchpoints>
@@ -14252,7 +14252,7 @@
     </effects>
   </tech>
   <tech name="zpPirateRecruits" type="Normal">
-    <dbid>40587</dbid>
+    <dbid>40699</dbid>
     <displaynameid>300098</displaynameid>
     <cost resourcetype="Gold">200.0000</cost>
     <cost resourcetype="Food">350.0000</cost>
@@ -14301,7 +14301,7 @@
     </effects>
   </tech>
   <tech name="zpPiratesImproveCetbangs" type="Normal">
-    <dbid>40588</dbid>
+    <dbid>40700</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -14318,7 +14318,7 @@
     </effects>
   </tech>
   <tech name="zpWokouImproveCetbangs" type="Normal">
-    <dbid>40589</dbid>
+    <dbid>40701</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -14335,7 +14335,7 @@
     </effects>
   </tech>
   <tech name="zpNatCorsairRevolt" type="Normal">
-    <dbid>40590</dbid>
+    <dbid>40702</dbid>
     <displaynameid>300100</displaynameid>
     <cost resourcetype="Food">400.0000</cost>
     <cost resourcetype="Gold">400.0000</cost>
@@ -14362,7 +14362,7 @@
     </effects>
   </tech>
   <tech name="zpConsulateWokouSwallow" type="Normal">
-    <dbid>40591</dbid>
+    <dbid>40703</dbid>
     <displaynameid>301519</displaynameid>
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
@@ -14392,7 +14392,7 @@
     </effects>
   </tech>
   <tech name="zpWokouCyprusMutiny" type="Normal">
-    <dbid>40592</dbid>
+    <dbid>40704</dbid>
     <displaynameid>301521</displaynameid>
     <cost resourcetype="Gold">1000.0000</cost>
     <researchpoints>30.0000</researchpoints>
@@ -14429,7 +14429,7 @@
     </effects>
   </tech>
   <tech name="zpExaltedWokou" type="Normal">
-    <dbid>40593</dbid>
+    <dbid>40705</dbid>
     <displaynameid>301529</displaynameid>
     <cost resourcetype="Food">600.0000</cost>
     <cost resourcetype="Gold">600.0000</cost>
@@ -14461,7 +14461,7 @@
     </effects>
   </tech>
   <tech name ="zpFountainOfYouth" type ="Normal">
-		<dbid>40594</dbid>
+		<dbid>40706</dbid>
 		<displaynameid>301537</displaynameid>
   	<researchpoints>20.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
@@ -14485,7 +14485,7 @@
     </effects>
 	</tech>
   <tech name="zpUpdatePrivateersI" type="Normal">
-    <dbid>40595</dbid>
+    <dbid>40707</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -14523,7 +14523,7 @@
     </effects>
   </tech>
   <tech name="zpUpdatePrivateersII" type="Normal">
-    <dbid>40596</dbid>
+    <dbid>40708</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -14561,7 +14561,7 @@
     </effects>
   </tech>
   <tech name="zpNatTreasureGalleon" type="Normal">
-    <dbid>40597</dbid>
+    <dbid>40709</dbid>
     <displaynameid>301542</displaynameid>
     <cost resourcetype="Gold">500.0000</cost>
     <researchpoints>30.0000</researchpoints>
@@ -14623,7 +14623,7 @@
     </effects>
   </tech>
   <tech name="zpWokouExpeditionaryForce" type="Normal">
-    <dbid>40584</dbid>
+    <dbid>40710</dbid>
     <displaynameid>301553</displaynameid>
     <cost resourcetype="Gold">1200.0000</cost>
     <researchpoints>30.0000</researchpoints>
@@ -14645,7 +14645,7 @@
     </effects>
   </tech>
   <tech name="zpWokouExpeditionaryCompany" type="Normal">
-    <dbid>40585</dbid>
+    <dbid>40697</dbid>
     <displaynameid>301552</displaynameid>
     <cost resourcetype="Gold">800.0000</cost>
     <researchpoints>30.0000</researchpoints>
@@ -14667,7 +14667,7 @@
     </effects>
   </tech>
   <tech name="zpWokouFireJunksInfinite" type="Normal">
-    <dbid>40586</dbid>
+    <dbid>40698</dbid>
     <displaynameid>301514</displaynameid>
     <cost resourcetype="Gold">550.0000</cost>
     <researchpoints>30.0000</researchpoints>
@@ -15399,7 +15399,7 @@
     </effects>
   </tech>
   <tech name="zpUtopia" type="Normal">
-    <dbid>40612</dbid>
+    <dbid>40711</dbid>
     <displaynameid>301628</displaynameid>
     <cost resourcetype="Wood">500.0000</cost>
     <researchpoints>30.0000</researchpoints>
@@ -15457,7 +15457,7 @@
     </effects>
   </tech>
   <tech name="zpNativeKorowai" type="Normal">
-    <dbid>40415</dbid>
+    <dbid>40712</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
