@@ -9,24 +9,10 @@
         <accuracy>1.0</accuracy>
         <accuracyreductionfactor>0.01</accuracyreductionfactor>
         <aimbonus>0</aimbonus>
-        <maxspread>5</maxspread>
-        <spreadfactor>0.25</spreadfactor>
-        <trackrating>12</trackrating>
-        <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
-        <projectile>Arrow</projectile>
-        <rate type="Unit">1.0</rate>
-        <instantballistics>1</instantballistics>
-    </action>
-    <action>
-        <name stringid="38133">RangedAttackStealth</name>
-        <type>Attack</type>
-        <attackaction>1</attackaction>
-        <rangedlogic>1</rangedlogic>
-        <anim>RangedAttack</anim>
-        <maxheight>0</maxheight>
-        <accuracy>1.0</accuracy>
-        <accuracyreductionfactor>0.01</accuracyreductionfactor>
-        <aimbonus>0</aimbonus>
+        <scalebycontainedunittype>
+            <rate type="zpNatKorowaiArcher">0.1</rate>
+            <rate type="zpNatMercKorowaiArcher">0.1</rate>
+        </scalebycontainedunittype>
         <maxspread>5</maxspread>
         <spreadfactor>0.25</spreadfactor>
         <trackrating>12</trackrating>
@@ -37,28 +23,16 @@
     </action>
     <action>
         <name stringid="46491">Stealth</name>
-        <type>AutoStealth</type>
-        <maxrange>25.0</maxrange>
-        <autostealthdelay>5.0</autostealthdelay>
+        <type>Stealth</type>
+        <maxrange>30.0</maxrange>
         <active>1</active>
         <persistent>1</persistent>
-        <disableautoattack>1</disableautoattack>
     </action>
-    <!--<action>
-        <name stringid="68960">ExtraLOS</name>
-        <type>AutoRangedModify</type>
-        <persistent>1</persistent>
-        <modifyabstracttype>AbstractOutpost</modifyabstracttype>
-        <modifymultiplier>5.00</modifymultiplier>
-        <modifytype>lineofsight</modifytype>
-      </action>-->
-    <tactic>Uncovered
-        <!--<action>ExtraLOS</action>-->
+    <tactic>Normal
         <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
         <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
         <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
         <action priority="100">RangedAttack</action>
-        <protounitcommand>zpBuildingUncover</protounitcommand>
         <transition>
             <tactic>Stealth</tactic>
             <length>2</length>
@@ -67,13 +41,10 @@
     </tactic>
     <tactic>Stealth
         <action>Stealth</action>
-        <checkifcanstealth range="25.0">1</checkifcanstealth>
-        <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
-        <action priority="100">RangedAttackStealth</action>
-        <protounitcommand>zpBuildingStealth</protounitcommand>
+        <checkifcanstealth range="30.0">1</checkifcanstealth>
         <transition>
-            <tactic>Uncovered</tactic>
-            <length>2</length>
+            <tactic>Normal</tactic>
+            <length>0.3</length>
             <exit>1</exit>
         </transition>
     </tactic>
