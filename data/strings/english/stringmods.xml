@@ -1681,9 +1681,9 @@
       <string _locid="301680">Treehouse Outposts</string>
       <string _locid="301681">Ships Treehouse Outpost Travois and allows Treehouse Archers to construct Treehouse Outposts.</string>
       <string _locid="301682">Hide Outpost</string>
-      <string _locid="301683">This outpost is hidden from enemy's eyes</string>
+      <string _locid="301683">This outpost is hidden from enemy's eyes but attacks slower</string>
       <string _locid="301684">Uncover outpost</string>
-      <string _locid="301685">This outpost is uncovered</string>
+      <string _locid="301685">This outpost is uncovered and has faster attack</string>
 
 
       <!-- ======================================== -->

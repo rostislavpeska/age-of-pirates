@@ -395,7 +395,7 @@
     <disabledicon>resources\images\icons\command\treeoutpost\stealth_off.png</disabledicon>
     <rollovertextid>301682</rollovertextid>
     <activerollovertextid>301683</activerollovertextid>
-    <command>unitSetTactic("StealthBuilding")</command>
+    <command>unitSetTactic("Stealth")</command>
   </protounitcommand>
 
   <!--

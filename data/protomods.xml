@@ -179,9 +179,6 @@
   <unit id="444" name="Galley">
     <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
   </unit>
-  <unit id="445" name="Privateer">
-    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
-  </unit>
   <unit id="511" name="Monitor">
     <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
   </unit>
@@ -225,9 +222,6 @@
     <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
   </unit>
   <unit id="953" name="ypFune">
-    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
-  </unit>
-  <unit id="973" name="ypWokouJunk">
     <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
   </unit>
   <unit id="997" name="ypWarJunk">
@@ -2086,6 +2080,7 @@
     <flag>NotPlayerPlaceable</flag>
   </unit>
   <unit name="Privateer">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <sharedbuildlimitunittypes>
       <unittype>zpPrivateerProxy</unittype>
       <unittype>Privateer</unittype>
@@ -4115,6 +4110,7 @@
     <flag>NotPlayerPlaceable</flag>
   </unit>
   <unit name="ypWokouJunk">
+    <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <sharedbuildlimitunittypes>
       <unittype>zpWokouJunkProxy</unittype>
       <unittype>ypWokouJunk</unittype>
@@ -22994,7 +22990,7 @@
       <damagebonus type="AbstractLightInfantry">0.600000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20242" name="zpRuinWallSmall">
+  <unit id="20242" name="zpBridgeWallSmall">
     <dbid>20242</dbid>
     <displaynameid>29909</displaynameid>
     <editornameid>301167</editornameid>
@@ -23018,7 +23014,7 @@
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>DestroyUnderBuilding</flag>
   </unit>
-  <unit id="20243" name="zpRuinWallMedium">
+  <unit id="20243" name="zpBridgeWallMedium">
     <dbid>20243</dbid>
     <displaynameid>29911</displaynameid>
     <editornameid>301168</editornameid>
@@ -23042,7 +23038,7 @@
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>DestroyUnderBuilding</flag>
   </unit>
-  <unit id="20244" name="zpRuinWallLarge">
+  <unit id="20244" name="zpBridgeWallLarge">
     <dbid>20244</dbid>
     <displaynameid>29913</displaynameid>
     <editornameid>301169</editornameid>
@@ -24338,8 +24334,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>RMCanRotate</flag>
+    <flag>PlaceAnywhere</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
-    <flag>DestroyUnderBuilding</flag>
   </unit>
   <unit id="20272" name="zpDecoWallMedium">
     <dbid>20272</dbid>
@@ -24360,10 +24356,10 @@
     <flag>NoUnitAI</flag>
     <flag>StartOnNoUpdate</flag>
     <flag>DoNotShowOnMiniMap</flag>
+    <flag>PlaceAnywhere</flag>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>RMCanRotate</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
-    <flag>DestroyUnderBuilding</flag>
   </unit>
   <unit id="20273" name="zpDecoWallLarge">
     <dbid>20273</dbid>
@@ -24384,10 +24380,10 @@
     <flag>NoUnitAI</flag>
     <flag>StartOnNoUpdate</flag>
     <flag>DoNotShowOnMiniMap</flag>
+    <flag>PlaceAnywhere</flag>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>RMCanRotate</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
-    <flag>DestroyUnderBuilding</flag>
   </unit>
   <unit id="20274" name="zpPetDolphin">
     <dbid>20274</dbid>
@@ -33031,26 +33027,29 @@
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
+    <stealthdiscoveryradius>1.0000</stealthdiscoveryradius>
     <placementfile>buildingsmall.xml</placementfile>
     <icon>resources\art\buildings\spc\treehouse_outpost_icon.png</icon>
     <portraiticon>resources\art\buildings\spc\treehouse_outpost_portrait.png</portraiticon>
     <rollovertextid>301678</rollovertextid>
     <shortrollovertextid>301678</shortrollovertextid>
-    <initialhitpoints>2000.0000</initialhitpoints>
-    <maxhitpoints>2000.0000</maxhitpoints>
-    <los>42.0000</los>
+    <initialhitpoints>1500.0000</initialhitpoints>
+    <maxhitpoints>1500.0000</maxhitpoints>
+    <los>52.0000</los>
     <projectileprotounit>Arrow</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <buildpoints>50.0000</buildpoints>
     <buildlimit>5</buildlimit>
     <bounty>70.0000</bounty>
     <buildbounty>35.0000</buildbounty>
-    <cost resourcetype="Wood">75.0000</cost>
+    <cost resourcetype="Wood">120.0000</cost>
     <buildingworkrate>1.0000</buildingworkrate>
     <maxcontained>20</maxcontained>
     <allowedage>0</allowedage>
     <armor type="Siege" value="0.0000">
     </armor>
+    <train row="0" page="1" column="1">zpNatKorowaiArcher</train>
+    <train row="0" page="1" column="2">zpNatKorowaiSpearman</train>
     <builderlimit>4</builderlimit>
     <unittype>LogicalTypeValidSabotage</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
@@ -33113,11 +33112,23 @@
     <tactics>treehouseoutpost.tactics</tactics>
     <protoaction>
       <name>RangedAttack</name>
-      <damage>30.000000</damage>
+      <damage>25.000000</damage>
       <damagetype>Ranged</damagetype>
       <minrange>0.000000</minrange>
       <maxrange>24.000000</maxrange>
       <rof>2.000000</rof>
+      <damagebonus type="AbstractVillager">0.250000</damagebonus>
+      <damagebonus type="AbstractCavalry">1.500000</damagebonus>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.300000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttackStealth</name>
+      <damage>25.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>24.000000</maxrange>
+      <rof>4.000000</rof>
       <damagebonus type="AbstractVillager">0.250000</damagebonus>
       <damagebonus type="AbstractCavalry">1.500000</damagebonus>
       <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>

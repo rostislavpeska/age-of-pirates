@@ -15756,7 +15756,7 @@
   <tech name="zpNatTreehouseOutposts" type="Normal">
     <dbid>40627</dbid>
     <displaynameid>301680</displaynameid>
-    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Wood">500.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\korowai_outpost.png</icon>

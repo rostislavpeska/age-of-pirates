@@ -18,35 +18,63 @@
         <instantballistics>1</instantballistics>
     </action>
     <action>
+        <name stringid="38133">RangedAttackStealth</name>
+        <type>Attack</type>
+        <attackaction>1</attackaction>
+        <rangedlogic>1</rangedlogic>
+        <anim>RangedAttack</anim>
+        <maxheight>0</maxheight>
+        <accuracy>1.0</accuracy>
+        <accuracyreductionfactor>0.01</accuracyreductionfactor>
+        <aimbonus>0</aimbonus>
+        <maxspread>5</maxspread>
+        <spreadfactor>0.25</spreadfactor>
+        <trackrating>12</trackrating>
+        <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+        <projectile>Arrow</projectile>
+        <rate type="Unit">1.0</rate>
+        <instantballistics>1</instantballistics>
+    </action>
+    <action>
         <name stringid="46491">Stealth</name>
-        <type>Stealth</type>
+        <type>AutoStealth</type>
         <maxrange>25.0</maxrange>
+        <autostealthdelay>5.0</autostealthdelay>
         <active>1</active>
         <persistent>1</persistent>
-      </action>
+        <disableautoattack>1</disableautoattack>
+    </action>
+    <!--<action>
+        <name stringid="68960">ExtraLOS</name>
+        <type>AutoRangedModify</type>
+        <persistent>1</persistent>
+        <modifyabstracttype>AbstractOutpost</modifyabstracttype>
+        <modifymultiplier>5.00</modifymultiplier>
+        <modifytype>lineofsight</modifytype>
+      </action>-->
     <tactic>Uncovered
+        <!--<action>ExtraLOS</action>-->
         <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
         <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
         <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
         <action priority="100">RangedAttack</action>
         <protounitcommand>zpBuildingUncover</protounitcommand>
         <transition>
-            <tactic>StealthBuilding</tactic>
+            <tactic>Stealth</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>
     </tactic>
-    <tactic>StealthBuilding
+    <tactic>Stealth
         <action>Stealth</action>
         <checkifcanstealth range="25.0">1</checkifcanstealth>
         <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+        <action priority="100">RangedAttackStealth</action>
         <protounitcommand>zpBuildingStealth</protounitcommand>
         <transition>
             <tactic>Uncovered</tactic>
-            <length>0.3</length>
+            <length>2</length>
             <exit>1</exit>
-            <automatic>1</automatic>
-            <commandautomatic>1</commandautomatic>
         </transition>
     </tactic>
 </tactics>
