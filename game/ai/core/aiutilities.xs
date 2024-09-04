@@ -810,6 +810,51 @@ int createSimpleUnitQuery(int unitTypeID = -1, int playerRelationOrID = cMyID, i
    return (unitQueryID);
 }
 
+//==============================================================================
+// createSimpleFoggedUnitQuery
+// AssertiveWall: same as createSimpleUnitQuery except it should see things 
+//    under fog
+//==============================================================================
+int createSimpleFoggedUnitQuery(int unitTypeID = -1, int playerRelationOrID = cMyID, int state = cUnitStateAlive,
+                          vector position = cInvalidVector, float radius = -1.0)
+{
+   static int unitQueryID = -1;
+
+   // If we don't have the query yet, create one.
+   if (unitQueryID < 0)
+   {
+      unitQueryID = kbUnitQueryCreate("miscSimpleUnitQuery");
+   }
+
+   // Define a query to get all matching units
+   if (unitQueryID != -1)
+   {
+      if (playerRelationOrID > 1000) // Too big for player ID number
+      {
+         kbUnitQuerySetPlayerID(unitQueryID, -1); // Clear the player ID, so playerRelation takes precedence.
+         kbUnitQuerySetPlayerRelation(unitQueryID, playerRelationOrID);
+      }
+      else
+      {
+         kbUnitQuerySetPlayerRelation(unitQueryID, -1);
+         kbUnitQuerySetPlayerID(unitQueryID, playerRelationOrID);
+      }
+      kbUnitQuerySetUnitType(unitQueryID, unitTypeID);
+      kbUnitQuerySetState(unitQueryID, state);
+      kbUnitQuerySetPosition(unitQueryID, position);
+      kbUnitQuerySetMaximumDistance(unitQueryID, radius);
+      kbUnitQuerySetIgnoreKnockedOutUnits(unitQueryID, true);
+      kbUnitQuerySetSeeableOnly(unitQueryID, false); // AssertiveWall: only change
+   }
+   else
+   {
+      return (-1);
+   }
+
+   kbUnitQueryResetResults(unitQueryID);
+   return (unitQueryID);
+}
+
 
 //==============================================================================
 // createSimpleIdleUnitQuery
@@ -2189,7 +2234,8 @@ bool isDefendingOrAttacking()
              (existingPlanID != gNavyAttackPlan) &&
              (existingPlanID != gCoastalGunPlan) &&
              (existingPlanID != gforwardArmyPlan) &&    // AssertiveWall: Added the forward base army plan
-             (existingPlanID != gEndlessWaterRaidPlan)) // AssertiveWall: Don't stop if there's navy attack plans
+             (existingPlanID != gEndlessWaterRaidPlan) && // AssertiveWall: Don't stop if there's navy attack plans
+             (existingPlanID != gRaidPlanID))            // AssertiveWall: Allow simultaneous raids
          {
             debugUtilities("isDefendingOrAttacking: don't create another combat plan because we already have one named: "
                + aiPlanGetName(existingPlanID));
@@ -2199,9 +2245,11 @@ bool isDefendingOrAttacking()
       else // Attack plan.
       {
          if ((aiPlanGetParentID(existingPlanID) < 0) && // No parent so not a reinforcing child plan.
-             (existingPlanID != gNavyAttackPlan && 
-              existingPlanID != gCoastalGunPlan && 
-              existingPlanID != gEndlessWaterRaidPlan))
+             (existingPlanID != gNavyAttackPlan) && 
+             (existingPlanID != gCoastalGunPlan) && 
+             (existingPlanID != gEndlessWaterRaidPlan) &&
+             (existingPlanID != gforwardArmyPlan) &&    // AssertiveWall: Added the forward base army plan
+             (existingPlanID != gRaidPlanID))     // AssertiveWall: Allow simultaneous raids
          {
             debugUtilities("isDefendingOrAttacking: don't create another combat plan because we already have one named: "
                + aiPlanGetName(existingPlanID));

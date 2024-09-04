@@ -2456,6 +2456,7 @@ minInterval 5
          }
          else if (cDifficultyCurrent != cDifficultySandbox) // We never attack on Easy.
          {
+            xsEnableRule("raidEnabler");  // AssertiveWall: enables raids
             xsEnableRule("mostHatedEnemy"); // Picks a target for us to attack.
             mostHatedEnemy(); // Instantly get a target so our managers have something to work with.
             xsEnableRule("attackManager"); // Land attacking / defending allies.
