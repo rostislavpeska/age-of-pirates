@@ -536,77 +536,105 @@
     <tactics>socketcapture.tactics</tactics>
   </unit>
   <unit name="TradingPost">
+    <!--MALTESE-->
     <train row="0" page="0" column="1">zpNatMalteseGuard</train>
     <train row="0" page="0" column="2">zpNatMalteseKnight</train>
+
+    <!--PIRATES-->
     <train row="0" page="0" column="1">zpNatPirate</train>
     <train row="0" page="0" column="3">zpPrivateerProxy</train>
-    <train row="0" page="0" column="4">zpSPCQueenAnneProxy</train>
+    <!--<train row="0" page="0" column="4">zpSPCQueenAnneProxy</train>
     <train row="0" page="0" column="4">zpSPCBlackPearlProxy</train>
     <train row="0" page="0" column="4">zpSPCNeptuneGalleyProxy</train>
     <train row="0" page="0" column="4">zpSPCFlyingDutchmanProxy</train>
     <train row="0" page="0" column="4">zpSPCPirateSteamerProxy</train>
     <train row="0" page="0" column="4">zpSPCPirateGalleassProxy</train>
+    <train row="0" page="0" column="3">zpNatMarksman</train>
+    <train row="0" page="0" column="2">zpNatCorsair</train>-->
+
+    <!--WOKOU-->
     <train row="0" page="0" column="1">zpNatWokouPirate</train>
     <train row="0" page="0" column="4">zpWokouJunkProxy</train>
-    <train row="0" page="0" column="2">zpNatWokouMonk</train>
+    <!--<train row="0" page="0" column="2">zpNatWokouMonk</train>
     <train row="0" page="0" column="2">zpNatMutineer</train>
     <train row="0" page="0" column="2">zpKoreanBombard</train>
-    <train row="0" page="0" column="5">zpWokouSteamerProxy</train>
     <train row="0" page="0" column="5">zpWokouFuchuanProxy</train>
-    <train row="0" page="0" column="5">zpSPCPrauProxy</train>
-    <train row="0" page="0" column="4">zpNatSoheiProxy</train>
-    <train row="0" page="0" column="5">zpNatSoheiArcher</train>
+    <train row="0" page="0" column="5">zpSPCPrauProxy</train>-->
+
+    <!--ZEN-->
+    <train row="0" page="0" column="1">zpNatSoheiProxy</train>
+    <!--<train row="0" page="0" column="5">zpNatSoheiArcher</train>
     <train row="0" page="0" column="5">zpNatSoheiCavalry</train>
-    <train row="0" page="0" column="6">zpSettlerZen</train>
+    <train row="0" page="0" column="6">zpSettlerZen</train>-->
+
+    <!--SUFI-->
     <train row="0" page="0" column="1">zpNatQizilbashProxy</train>
-    <train row="0" page="0" column="1">zpNatWarElephantProxy</train>
+    <!--<train row="0" page="0" column="1">zpNatWarElephantProxy</train>
     <train row="0" page="0" column="1">zpNatGatlingCamel</train>
     <train row="0" page="0" column="6">zpSettlerSufi</train>
-    <train row="0" page="0" column="6">zpSettlerSufiB</train>
-    <train row="0" page="0" column="2">zpNatCorsair</train>
-    <train row="0" page="0" column="3">zpNatMarksman</train>
+    <train row="0" page="0" column="6">zpSettlerSufiB</train>-->
+
+    <!--JEWISH-->
     <train row="0" page="0" column="2">zpNatSettlerJewish</train>
     <train row="0" page="0" column="1">zpNatSettlementMilitia</train>
+
+    <!--INVENTORS-->
     <train row="0" page="0" column="1">zpNatHoopThrower</train>
-    <train row="0" page="0" column="3">zpSubmarineProxy</train>
-    <train row="0" page="0" column="3">zpLeonardosTankProxy</train>
-    <train row="0" page="0" column="3">zpIronTank</train>
-    <train row="0" page="0" column="4">zpNautilusProxy</train>
+    <!--train row="0" page="0" column="3">zpWokouSteamerProxy</train>
+    <train row="0" page="0" column="4">zpSubmarineProxy</train>
+    <train row="0" page="0" column="2">zpIronTank</train>
+    <train row="0" page="0" column="5">zpNautilusProxy</train>
+    <train row="0" page="0" column="2">zpPhoenixMGunCarrier</train>
+    <train row="0" page="0" column="2">zpAirshipProxy</train>
+    <train row="0" page="0" column="2">zpAirshipAIProxy</train>-->
+
+    <!--INUITS-->
     <train row="0" page="0" column="1">zpNatInuitHarpooner</train>
     <train row="0" page="0" column="3">zpInuitDogVillager</train>
-    <train row="0" page="0" column="2">zpInuitTorchman</train>
-    <train row="0" page="0" column="4">zpAirshipProxy</train>
-    <train row="0" page="0" column="5">zpAirshipAIProxy</train>
+    <!--<train row="0" page="0" column="2">zpInuitTorchman</train>-->
+
+    <!--JESUIT-->
     <train row="0" page="0" column="1">zpNatConquistador</train>
-    <train row="0" page="0" column="2">zpNatConquistadorMusketeer</train>
-    <train row="0" page="0" column="3">zpPriestProxy</train>
+    <!--<train row="0" page="0" column="2">zpNatConquistadorMusketeer</train>
+    <train row="0" page="0" column="3">zpPriestProxy</train>-->
+
+    <!--VENETIANS-->
     <train row="0" page="0" column="1">zpNatVeniceGuard</train>
-    <train row="0" page="0" column="2">zpVenetianBombard</train>
     <train row="0" page="0" column="3">zpVeniceGalleyProxy</train>
+    <!--<train row="0" page="0" column="2">zpVenetianBombard</train>
     <train row="0" page="0" column="4">zpGalleassProxy</train>
+    <train row="0" page="0" column="2">zpNatDottore</train>-->
+
+    <!--MAORI-->
     <train row="0" page="0" column="1">zpNatMaoriClubman</train>
-    <train row="0" page="0" column="2">zpNatMaoriSlinger</train>
-    <train row="0" page="0" column="2">zpNatDottore</train>
+    <!--<train row="0" page="0" column="2">zpNatMaoriSlinger</train>-->
+
+    <!--ORTHODOX-->
     <train row="0" page="0" column="1">zpNatWarriorMonk</train>
-    <train row="0" page="0" column="2">zpNatDvoryanin</train>
+    <!--<train row="0" page="0" column="2">zpNatDvoryanin</train>
     <train row="0" page="0" column="2">zpNatBulgarianBoyar</train>
-    <train row="0" page="0" column="2">zpNatMonaspa</train>
-    <train row="0" page="0" column="3">zpPhoenixMGunCarrier</train>
+    <train row="0" page="0" column="2">zpNatMonaspa</train>-->
+
+    <!--ABORIGINALS-->
     <train row="0" page="0" column="1">zpNatBoomerang</train>
-    <train row="0" page="0" column="2">zpNatAboriginalTracker</train>
+    <!--<train row="0" page="0" column="2">zpNatAboriginalTracker</train>-->
+
+    <!--PENAL COLONY-->
     <train row="0" page="0" column="1">zpNatColonialGuardOrig</train>
-    <train row="0" page="0" column="1">zpNatColonialGuard</train>
-    <train row="0" page="0" column="1">zpNatColonialGuardDeserted</train>
     <train row="0" page="0" column="2">zpNatConvictLabourer</train>
-    <train row="0" page="0" column="2">zpNatMutineerAU</train>
+    <!--<train row="0" page="0" column="1">zpNatColonialGuard</train>
+    <train row="0" page="0" column="1">zpNatColonialGuardDeserted</train>
+    <train row="0" page="0" column="2">zpNatMutineerAU</train>-->
     
-    <!-- Western Units -->
+    <!-- WESTERN -->
     <train row="0" page="0" column="1">zpMountedOutlaw</train>
-    <train row="0" page="0" column="2">zpDeputy</train>
+    <!--<train row="0" page="0" column="2">zpDeputy</train>
     <train row="0" page="0" column="2">zpJamesGang</train>
     <train row="0" page="0" column="2">zpPinkertonAgent</train>
-    <train row="0" page="0" column="3">zpStageCoach</train>
-    
+    <train row="0" page="0" column="3">zpStageCoach</train>-->
+
+    <!-- KOROWAI -->
+    <train row="0" page="0" column="1">zpNatKorowaiArcher</train>
 
     <!-- Christmas units and techs Added by AssertiveWall-->
     <train row="0" page="0" column="1">zpNatElfsGuard</train>
@@ -731,6 +759,13 @@
     <tech row="0" page="2" column="2">zpNatShoemakerWorkshop</tech>
     <tech row="0" page="1" column="1">zpPenalColonyRevolt</tech>
 
+    <tech row="0" page="1" column="1">zpWarriorSocietyKorowai</tech>
+    <tech row="0" page="1" column="1">zpChampionKorowai</tech>
+    <tech row="0" page="2" column="0">zpNatKorowaiCanibalism</tech>
+    <tech row="0" page="2" column="1">zpNatKorowaiMedicine</tech>
+    <tech row="0" page="2" column="2">zpNatKorowaiStealth</tech>
+    <tech row="0" page="2" column="2">zpKorowaiExpansion</tech>
+
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia1</tech>
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia2</tech>
 
@@ -761,6 +796,11 @@
       <name>AutoGatherColonyGold</name>
       <type>AutoGather</type>
       <rate type="Gold">0.850000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherKorowaiWood</name>
+      <type>AutoGather</type>
+      <rate type="Wood">0.120000</rate>
     </protoaction>
   </unit>
   <unit name="ypConsulate">
@@ -821,6 +861,11 @@
     <train row="0" page="0" column="105">zpNatBoomerang</train>
     <train row="0" page="0" column="106">zpNatAboriginalTracker</train>
     <train row="0" page="0" column="107">zpNatSettlementMilitia</train>
+    <train row="0" page="0" column="108">zpNatColonialGuardOrig</train>
+    <train row="0" page="0" column="108">zpNatColonialGuard</train>
+    <train row="0" page="0" column="108">zpNatColonialGuardDeserted</train>
+    <train row="0" page="0" column="109">zpNatKorowaiArcher</train>
+    <train row="0" page="0" column="110">zpNatKorowaiSpearman</train>
   </unit>
   <unit name="NativeTownObstruction">
     <flag>Invulnerable</flag>
@@ -2064,8 +2109,8 @@
     <minimapicon>ui\minimap\asian_native_site</minimapicon>
     <capturedminimapicon>ui\minimap\asian_native_site_c</capturedminimapicon>
     <portraiticon>resources\art\units\natives\penal_colony.png</portraiticon>
-    <rollovertextid>300602</rollovertextid>
-    <shortrollovertextid>300602</shortrollovertextid>
+    <rollovertextid>301602</rollovertextid>
+    <shortrollovertextid>301602</shortrollovertextid>
     <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
     <los>12.0000</los>
     <unittype>LogicalTypeBuildingsNotWalls</unittype>
@@ -2638,7 +2683,6 @@
     <flag>NoFadeOnDeath</flag>
     <flag>FadeOutDecalOnDeath</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>HeroName1</flag>
     <flag>HasGatherPoint</flag>
     <flag>AllowAutoGarrison</flag>
     <flag>ObscuresUnits</flag>
@@ -11003,7 +11047,7 @@
     <subciv>zpScientists</subciv>
     <displaynameid>300550</displaynameid>
     <editornameid>300543</editornameid>
-    <populationcount>4</populationcount>
+    <populationcount>0</populationcount>
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Protected</formationcategory>
@@ -13294,7 +13338,6 @@
     <flag>NoFadeOnDeath</flag>
     <flag>FadeOutDecalOnDeath</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>HeroName1</flag>
     <flag>HasGatherPoint</flag>
     <flag>AllowAutoGarrison</flag>
     <flag>ObscuresUnits</flag>
@@ -22590,7 +22633,6 @@
     <flag>NotDeleteable</flag>
     <tactics>zpgunstore.tactics</tactics>
     <command page="10" column="8">CancelAllQueued</command>
-    <command page="10" column="2">SetGatherPointEconomy</command>
     <command page="11" column="0">Abilities</command>
     <protoaction>
       <name>ExplosionAttack</name>
@@ -23102,7 +23144,7 @@
   <unit id="20247" name="zpSocketaboriginals">
     <dbid>20247</dbid>
     <displaynameid>301179</displaynameid>
-    <editornameid>301179</editornameid>
+    <editornameid>301180</editornameid>
     <subciv>AboriginalNatives</subciv>
     <socketbuildprotounit>TradingPost</socketbuildprotounit>
     <socketbuildrate>1.2000</socketbuildrate>
@@ -25298,7 +25340,6 @@
     <flag>NoFadeOnDeath</flag>
     <flag>FadeOutDecalOnDeath</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>HeroName1</flag>
     <flag>HasGatherPoint</flag>
     <flag>AllowAutoGarrison</flag>
     <flag>ObscuresUnits</flag>
@@ -29795,7 +29836,7 @@
     <tech row="0" page="1" column="0">zpCorsairArmy</tech>
     <tech row="0" page="1" column="1">zpCorsairMarksmen</tech>
     <tech row="0" page="1" column="2">zpCorsairExplorationFleet</tech>
-    <tech row="0" page="2" column="1">zpCorsairBrigade</tech>
+    <tech row="0" page="2" column="0">zpCorsairBrigade</tech>
     <tech row="0" page="2" column="1">zpCorsairExpeditionaryFleet</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -29944,7 +29985,7 @@
     <tech row="0" page="1" column="0">zpPirateArmy</tech>
     <tech row="0" page="1" column="1">zpPirateExpeditionaryForce</tech>
     <tech row="0" page="1" column="2">zpPirateExplorationFleet</tech>
-    <tech row="0" page="2" column="1">zpPirateExpeditionaryFleet</tech>
+    <tech row="0" page="2" column="0">zpPirateExpeditionaryFleet</tech>
     <tech row="0" page="2" column="1">zpPirateRecruits</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -31381,7 +31422,7 @@
     <movementtype>land</movementtype>
     <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
     <unittype>EmbellishmentClass</unittype>
-    <civflagoverride>objects\flags\eureka</civflagoverride>
+    <civflagoverride>objects\flags\penal_colony</civflagoverride>
     <flag>NoHPBar</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
@@ -32296,6 +32337,862 @@
       <damagebonus type="AbstractCoyoteMan">1.150000</damagebonus>
     </protoaction>
   </unit>
+  <unit id="20377" name="zpWaterfall">
+    <dbid>20377</dbid>
+    <displaynameid>301635</displaynameid>
+    <editornameid>301634</editornameid>
+    <obstructionradiusx>0.1000</obstructionradiusx>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>water</movementtype>
+    <animfile>effects\river\zp_waterfall.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>Immoveable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ForceToGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>Tracked</flag>
+  </unit>
+  <unit id="20378" name="zpAboriginalRiverTrader">
+    <dbid>20378</dbid>
+    <displaynameid>301637</displaynameid>
+    <editornameid>301636</editornameid>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <animfile>units\trade\naval\aboriginal_canoe.xml</animfile>
+    <icon>resources\art\units\naval\fishing_boat\ethiopia_fishing_boat_portrait_icon.png</icon>
+    <portraiticon>resources\art\units\naval\fishing_boat\ethiopia_fishing_boat_portrait.png</portraiticon>
+    <rollovertextid>29374</rollovertextid>
+    <shortrollovertextid>29373</shortrollovertextid>
+    <initialhitpoints>240.0000</initialhitpoints>
+    <maxhitpoints>240.0000</maxhitpoints>
+    <los>15.0000</los>
+    <trainpoints>30.0000</trainpoints>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Tracked</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>VisibleUnderFog</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20379" name="zpSocketKorowai">
+    <dbid>20379</dbid>
+    <displaynameid>301641</displaynameid>
+    <editornameid>301642</editornameid>
+    <subciv>Korowai</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.2000</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildNative</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\socket_south_america.xml</animfile>
+    <minimapicon>ui\minimap\n</minimapicon>
+    <capturedminimapicon>ui\minimap\n_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\native_korowai.png</portraiticon>
+    <rollovertextid>32940</rollovertextid>
+    <shortrollovertextid>32940</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>12.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>Socket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
+  </unit>
+  <unit id="20380" name="zpNativeHouseKorowai">
+    <dbid>20380</dbid>
+    <displaynameid>301641</displaynameid>
+    <editornameid>301643</editornameid>
+    <subciv>Korowai</subciv>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\korowai\treehouse.xml</animfile>
+    <icon>resources\art\units\natives\native_korowai.png</icon>
+    <portraiticon>resources\art\units\natives\native_korowai.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+  </unit>
+  <unit id="20381" name="zpNatKorowaiArcher">
+    <dbid>20381</dbid>
+    <displaynameid>301644</displaynameid>
+    <editornameid>301645</editornameid>
+    <populationcount>0</populationcount>
+    <subciv>Korowai</subciv>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <stealthdiscoveryradius>2.0000</stealthdiscoveryradius>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>5.5000</maxvelocity>
+    <maxrunvelocity>7.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\korowai\bowman.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\natives\korowai_bowman_icon.png</icon>
+    <portraiticon>resources\art\units\natives\korowai_bowman_portrait.png</portraiticon>
+    <rollovertextid>301646</rollovertextid>
+    <shortrollovertextid>301647</shortrollovertextid>
+    <initialhitpoints>115.0000</initialhitpoints>
+    <maxhitpoints>115.0000</maxhitpoints>
+    <los>18.0000</los>
+    <projectileprotounit>Arrow</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <buildlimit>16</buildlimit>
+    <bounty>10.0000</bounty>
+    <buildbounty>10.0000</buildbounty>
+    <cost resourcetype="Wood">100.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.2000">
+    </armor>
+    <sharedselectionunittypes>
+      <unittype>zpNatMercKorowaiArcher</unittype>
+    </sharedselectionunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractArcher</unittype>
+    <unittype>AbstractFootArcher</unittype>
+    <unittype>AbstractArchaicInfantry</unittype>
+    <unittype>AbstractSkirmisher</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <train row="0" page="1" column="0">zpKorowaiOutpost</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <tactics>korowaiarcher.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>10.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>10.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>8.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>DefendRangedAttack</name>
+      <damage>16.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof type="MinRange" target="1.00">1.500000</rof>
+      <targetlock>1</targetlock>
+      <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">2.500000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.600000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.600000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>8.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>StaggerHandAttack</name>
+      <damage>8.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>StaggerRangedAttack</name>
+      <damage>16.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof type="MinRange" target="1.00">1.500000</rof>
+      <targetlock>1</targetlock>
+      <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">2.500000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.600000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.600000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>VolleyHandAttack</name>
+      <damage>8.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>VolleyRangedAttack</name>
+      <damage>16.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof type="MinRange" target="1.00">1.500000</rof>
+      <targetlock>1</targetlock>
+      <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">2.500000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.600000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.600000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>Build</name>
+      <rate type="zpKorowaiOutpost">2.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20382" name="zpNatKorowaiSpearman">
+    <dbid>2382</dbid>
+    <displaynameid>301648</displaynameid>
+    <editornameid>301649</editornameid>
+    <populationcount>0</populationcount>
+    <subciv>Korowai</subciv>
+    <buildlimit>12</buildlimit>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>5.5000</maxvelocity>
+    <maxrunvelocity>7.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\korowai\spearman.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\natives\korowai_spearman_icon.png</icon>
+    <portraiticon>resources\art\units\natives\korowai_spearman_portrait.png</portraiticon>
+    <selectionpriority>20</selectionpriority>
+    <rollovertextid>22813</rollovertextid>
+    <shortrollovertextid>25696</shortrollovertextid>
+    <initialhitpoints>150.0000</initialhitpoints>
+    <maxhitpoints>150.0000</maxhitpoints>
+    <los>12.0000</los>
+    <unitaitype>HandCombative</unitaitype>
+    <trainpoints>27.0000</trainpoints>
+    <bounty>12.0000</bounty>
+    <buildbounty>12.0000</buildbounty>
+    <cost resourcetype="Food">40.0000</cost>
+    <cost resourcetype="Wood">80.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Hand" value="0.1000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractHandInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractPikeman</unittype>
+    <unittype>AbstractArchaicInfantry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <tactics>korowaipikeman.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>32.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CoverBuildingAttack</name>
+      <damage>16.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CoverHandAttack</name>
+      <damage>7.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">5.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">3.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>12.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">5.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">3.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>12.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">5.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">3.500000</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20383" name="zpPropPalm">
+    <dbid>20383</dbid>
+    <displaynameid>301650</displaynameid>
+    <editornameid>301651</editornameid>
+    <obstructionradiusx>0.2000</obstructionradiusx>
+    <obstructionradiusz>0.2000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>terrain\tree_borneo.xml</animfile>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\spc\pirates\pirate_ranged_icon.png</icon>
+    <portraiticon>resources\art\units\spc\pirates\pirate_ranged_portrait.png</portraiticon>
+    <rollovertextid>301650</rollovertextid>
+    <shortrollovertextid>301650</shortrollovertextid>
+    <initialhitpoints>1315.0000</initialhitpoints>
+    <maxhitpoints>1315.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Building</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>Invulnerable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
+    <command page="10" column="0">Delete</command>
+    <tactics>garrisonable.tactics</tactics>
+  </unit>
+  <unit id="20384" name="zpNatMercKorowaiArcher">
+    <dbid>20384</dbid>
+    <displaynameid>301644</displaynameid>
+    <editornameid>301671</editornameid>
+    <populationcount>0</populationcount>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <stealthdiscoveryradius>2.0000</stealthdiscoveryradius>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>5.5000</maxvelocity>
+    <maxrunvelocity>7.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\korowai\bowman.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\natives\korowai_bowman_icon.png</icon>
+    <portraiticon>resources\art\units\natives\korowai_bowman_portrait.png</portraiticon>
+    <rollovertextid>301646</rollovertextid>
+    <shortrollovertextid>301647</shortrollovertextid>
+    <initialhitpoints>115.0000</initialhitpoints>
+    <maxhitpoints>115.0000</maxhitpoints>
+    <los>18.0000</los>
+    <projectileprotounit>Arrow</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <bounty>10.0000</bounty>
+    <buildbounty>10.0000</buildbounty>
+    <cost resourcetype="Wood">100.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.2000">
+    </armor>
+    <sharedselectionunittypes>
+      <unittype>zpNatKorowaiArcher</unittype>
+    </sharedselectionunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractArcher</unittype>
+    <unittype>AbstractFootArcher</unittype>
+    <unittype>AbstractArchaicInfantry</unittype>
+    <unittype>AbstractSkirmisher</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>MercType1</unittype>
+    <train row="0" page="1" column="0">zpKorowaiOutpost</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <tactics>korowaiarcher.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>10.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>10.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>8.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>DefendRangedAttack</name>
+      <damage>16.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof type="MinRange" target="1.00">1.500000</rof>
+      <targetlock>1</targetlock>
+      <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">2.500000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.600000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.600000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>8.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>StaggerHandAttack</name>
+      <damage>8.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>StaggerRangedAttack</name>
+      <damage>16.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof type="MinRange" target="1.00">1.500000</rof>
+      <targetlock>1</targetlock>
+      <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">2.500000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.600000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.600000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>VolleyHandAttack</name>
+      <damage>8.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>VolleyRangedAttack</name>
+      <damage>16.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof type="MinRange" target="1.00">1.500000</rof>
+      <targetlock>1</targetlock>
+      <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
+      <damagebonus type="AbstractRangedShockInfantry">2.500000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.600000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.600000</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20385" name="zpKorowaiOutpost">
+    <dbid>20385</dbid>
+    <displaynameid>301675</displaynameid>
+    <editornameid>301674</editornameid>
+    <obstructionradiusx>2.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\korowai\outpost.xml</animfile>
+    <deadreplacement>BuildingRubble2x2</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildingsmall.xml</placementfile>
+    <icon>resources\art\buildings\spc\treehouse_outpost_icon.png</icon>
+    <portraiticon>resources\art\buildings\spc\treehouse_outpost_portrait.png</portraiticon>
+    <rollovertextid>301678</rollovertextid>
+    <shortrollovertextid>301678</shortrollovertextid>
+    <initialhitpoints>2000.0000</initialhitpoints>
+    <maxhitpoints>2000.0000</maxhitpoints>
+    <los>42.0000</los>
+    <projectileprotounit>Arrow</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <buildpoints>50.0000</buildpoints>
+    <buildlimit>5</buildlimit>
+    <bounty>70.0000</bounty>
+    <buildbounty>35.0000</buildbounty>
+    <cost resourcetype="Wood">75.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <maxcontained>20</maxcontained>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>4</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractFort</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractOutpost</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>AbstractCallMinutemen</unittype>
+    <unittype>HCGatherPointPri1</unittype>
+    <unittype>AbstractDefensiveBuilding</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>Tracked</flag>
+    <flag>DisplayRange</flag>
+    <flag>BuildingShowTactics</flag>
+    <notcontain>AbstractMonk</notcontain>
+    <notcontain>ExcludeFromRansom</notcontain>
+    <notcontain>AbstractFishingBoat</notcontain>
+    <contain>AbstractVillager</contain>
+    <contain>zpNatKorowaiArcher</contain>
+    <contain>zpNatMercKorowaiArcher</contain>
+    <contain>zpNatKorowaiSpearman</contain>
+    <contain>deHomesteadWagon</contain>
+    <contain>AbstractHealer</contain>
+    <contain>ypDaimyoRegicide</contain>
+    <command page="0" column="2">zpBuildingUncover</command>
+    <command page="0" column="3">zpBuildingStealth</command>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="11" column="0">Abilities</command>
+    <command>CancelNativeDance</command>
+    <command>StartNativeDance</command>
+    <tactics>treehouseoutpost.tactics</tactics>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>24.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagebonus type="AbstractVillager">0.250000</damagebonus>
+      <damagebonus type="AbstractCavalry">1.500000</damagebonus>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.300000</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20386" name="zpTreehouseOutpostTravois">
+    <dbid>20386</dbid>
+    <displaynameid>301676</displaynameid>
+    <editornameid>301677</editornameid>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>5.0000</maxvelocity>
+    <maxrunvelocity>7.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>5.0000</turnrate>
+    <animfile>units\trade\indian_travois\native_travois.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trade\travois_icon_64.png</icon>
+    <portraiticon>resources\art\units\trade\travois_icon_portrait.png</portraiticon>
+    <rollovertextid>301679</rollovertextid>
+    <shortrollovertextid>301679</shortrollovertextid>
+    <initialhitpoints>500.0000</initialhitpoints>
+    <maxhitpoints>500.0000</maxhitpoints>
+    <los>18.0000</los>
+    <unitaitype>Civilian</unitaitype>
+    <trainpoints>60.0000</trainpoints>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractWagon</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>CannotConvertHill</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ValidIdleVillager</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <train row="0" page="6" column="0">zpKorowaiOutpost</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>DeadReplacementWhenDestroyed</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <flag>UnitTransformFree</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>coveredwagon.tactics</tactics>
+    <protoaction>
+      <name>Build</name>
+      <rate type="zpKorowaiOutpost">3.000000</rate>
+    </protoaction>
+  </unit>
+
   
  
 
@@ -33280,7 +34177,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\napoleonic_era\arsenal_old.xml</animfile>
+    <animfile>buildings\native_settlement\korowai\treehouse.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>
@@ -35328,7 +36225,6 @@
     <armor type="Ranged" value="0.2500">
     </armor>
     <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeNeededForVictory</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
     <unittype>LogicalTypeLandMilitary</unittype>
     <unittype>LogicalTypeScout</unittype>
@@ -35661,7 +36557,6 @@
     </armor>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
-    <unittype>LogicalTypeNeededForVictory</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
     <unittype>LogicalTypeLandMilitary</unittype>
     <unittype>LogicalTypeScout</unittype>

@@ -1,0 +1,17 @@
+<mix>
+  <title>California Snow Ground 2</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="2">Africa\pathBlend_afr</texture>
+    <texture weight="2">Africa\path_afr</texture>
+  </paint>
+
+
+  <objects mode="turbulence" freq="0.1" octaves="3" persistence="0.9" emptyweight="20" posoffset="0.5">
+    <model weight="1" scalemin="0.3" scalemax="1.0">terrain\underbrush\underbrush_desert_bush5</model>
+    <model weight="1" scalemin="0.3" scalemax="1.0">terrain\underbrush\underbrush_desert_bush6</model>
+    <model weight="2" scalemin="0.3" scalemax="1.0">terrain\spc\east_africa\underbrush_east_africa_rock2</model>
+    <model weight="2" scalemin="0.3" scalemax="1.0">terrain\spc\east_africa\underbrush_east_africa_rock3</model>
+    <model weight="2" scalemin="0.2" scalemax="1.0">terrain\spc\east_africa\underbrush_east_africa_rock4</model>
+  </objects>
+</mix>
