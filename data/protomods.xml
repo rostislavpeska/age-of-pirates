@@ -2234,8 +2234,8 @@
       <damagearea>6.000000</damagearea>
     </protoaction>
   </unit>
-  <unit id="20025" name="zpSPCFixedGunTortugaPassive">
-    <dbid>20025</dbid>
+  <unit id="20386" name="zpSPCFixedGunTortugaPassive">
+    <dbid>20386</dbid>
     <displaynameid>33598</displaynameid>
     <editornameid>301357</editornameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
@@ -3096,8 +3096,8 @@
     </sharedbuildlimitunittypes>
     <flag>UseSharedBuildLimit</flag>
   </unit>
-  <unit id="20037" name="zpSPCLineShip">
-    <dbid>20037</dbid>
+  <unit id="20387" name="zpSPCLineShip">
+    <dbid>20387</dbid>
     <displaynameid>300146</displaynameid>
     <editornameid>300147</editornameid>
     <obstructionradiusx>2.9900</obstructionradiusx>
@@ -3894,8 +3894,8 @@
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
-  <unit id="20038" name="zpSocketWokou">
-    <dbid>20038</dbid>
+  <unit id="20388" name="zpSocketWokou">
+    <dbid>20388</dbid>
     <displaynameid>300184</displaynameid>
     <editornameid>300185</editornameid>
     <subciv>Wokou</subciv>
@@ -3943,8 +3943,8 @@
     <flag>EnterHotkeyContext</flag>
     <tactics>socketcapture.tactics</tactics>
   </unit>
-  <unit id="20039" name="zpNatWokouPirate">
-    <dbid>20039</dbid>
+  <unit id="20389" name="zpNatWokouPirate">
+    <dbid>20389</dbid>
     <displaynameid>62056</displaynameid>
     <editornameid>300186</editornameid>
     <subciv>Wokou</subciv>
@@ -4048,8 +4048,8 @@
       <damagebonus type="AbstractCavalry">2.000000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20040" name="zpWokouJunkProxy">
-    <dbid>20040</dbid>
+  <unit id="20390" name="zpWokouJunkProxy">
+    <dbid>20390</dbid>
     <displaynameid>61666</displaynameid>
     <subciv>Wokou</subciv>
     <obstructionradiusx>0.4900</obstructionradiusx>
@@ -4122,8 +4122,8 @@
       <rate type="Gold">0.500000</rate>
     </protoaction>
   </unit>
-  <unit id="20041" name="zpVenetianWagonAsian">
-    <dbid>20041</dbid>
+  <unit id="20391" name="zpVenetianWagonAsian">
+    <dbid>20391</dbid>
     <displaynameid>300150</displaynameid>
     <editornameid>300191</editornameid>
     <obstructionradiusx>0.9900</obstructionradiusx>
@@ -4213,8 +4213,8 @@
       <maxrange>3.000000</maxrange>
     </protoaction>
   </unit>
-  <unit id="20042" name="zpSaoFeng">
-    <dbid>20042</dbid>
+  <unit id="20392" name="zpSaoFeng">
+    <dbid>20392</dbid>
     <displaynameid>300203</displaynameid>
     <editornameid>300205</editornameid>
     <obstructionradiusx>0.7900</obstructionradiusx>
@@ -4341,8 +4341,8 @@
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
-  <unit id="20043" name="zpNatWokouMonk">
-    <dbid>20043</dbid>
+  <unit id="20393" name="zpNatWokouMonk">
+    <dbid>20393</dbid>
     <displaynameid>301528</displaynameid>
     <editornameid>300207</editornameid>
     <obstructionradiusx>0.4900</obstructionradiusx>
@@ -5206,8 +5206,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20052" name="zpSPCGreatBuddha">
-    <dbid>20052</dbid>
+  <unit id="20394" name="zpSPCGreatBuddha">
+    <dbid>20394</dbid>
     <displaynameid>300251</displaynameid>
     <editornameid>300252</editornameid>
     <subciv>SPCZen</subciv>
@@ -5258,8 +5258,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20052" name="zpSPCGreatMosque">
-    <dbid>20052</dbid>
+  <unit id="20395" name="zpSPCGreatMosque">
+    <dbid>20395</dbid>
     <displaynameid>300253</displaynameid>
     <editornameid>300254</editornameid>
     <subciv>SPCSufi</subciv>
@@ -5310,8 +5310,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20052" name="zpSettlerZen">
-    <dbid>20052</dbid>
+  <unit id="20396" name="zpSettlerZen">
+    <dbid>20396</dbid>
     <displaynameid>300257</displaynameid>
     <editornameid>300258</editornameid>
     <subciv>SPCZen</subciv>
@@ -8077,8 +8077,8 @@
       <rof>3.000000</rof>
     </protoaction>
   </unit>
-  <unit id="20081" name="zpAztecOutpostTravois">
-    <dbid>20081</dbid>
+  <unit id="20402" name="zpAztecOutpostTravois">
+    <dbid>20402</dbid>
     <displaynameid>300365</displaynameid>
     <editornameid>300366</editornameid>
     <obstructionradiusx>0.9900</obstructionradiusx>
@@ -8199,8 +8199,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20083" name="zpNativeAztecTempleB">
-    <dbid>20083</dbid>
+  <unit id="20397" name="zpNativeAztecTempleB">
+    <dbid>20397</dbid>
     <displaynameid>23579</displaynameid>
     <editornameid>300381</editornameid>
     <subciv>Aztecs</subciv>
@@ -8252,8 +8252,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20084" name="zpNativeAztecOutpost">
-    <dbid>20084</dbid>
+  <unit id="20398" name="zpNativeAztecOutpost">
+    <dbid>20398</dbid>
     <displaynameid>23579</displaynameid>
     <editornameid>300382</editornameid>
     <subciv>Aztecs</subciv>
@@ -8305,8 +8305,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20085" name="zpNativeRiverTrader">
-    <dbid>20085</dbid>
+  <unit id="20399" name="zpNativeRiverTrader">
+    <dbid>20399</dbid>
     <displaynameid>300383</displaynameid>
     <editornameid>300384</editornameid>
     <obstructionradiusx>2.9900</obstructionradiusx>
@@ -8353,8 +8353,8 @@
     <flag>VisibleUnderFog</flag>
     <command page="10" column="7">Delete</command>
   </unit>
-  <unit id="20086" name="zpTradeCaravel">
-    <dbid>20086</dbid>
+  <unit id="20400" name="zpTradeCaravel">
+    <dbid>20400</dbid>
     <displaynameid>300385</displaynameid>
     <editornameid>300386</editornameid>
     <obstructionradiusx>2.9900</obstructionradiusx>
@@ -8401,8 +8401,8 @@
     <flag>VisibleUnderFog</flag>
     <command page="10" column="7">Delete</command>
   </unit>
-  <unit id="20087" name="zpTradeSteamer">
-    <dbid>20087</dbid>
+  <unit id="20401" name="zpTradeSteamer">
+    <dbid>20401</dbid>
     <displaynameid>300387</displaynameid>
     <editornameid>300388</editornameid>
     <obstructionradiusx>2.9900</obstructionradiusx>
@@ -9813,8 +9813,8 @@
       <damagebonus type="AbstractVillager">0.250000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20088" name="zpSettlerSufiB">
-    <dbid>20088</dbid>
+  <unit id="20403" name="zpSettlerSufiB">
+    <dbid>20403</dbid>
     <displaynameid>300465</displaynameid>
     <editornameid>300466</editornameid>
     <subciv>SPCSufi</subciv>
@@ -10000,8 +10000,8 @@
       <rate type="Tree">1.000000</rate>
     </protoaction>
   </unit>
-  <unit id="20089" name="zpSaltMineWater">
-    <dbid>20089</dbid>
+  <unit id="20404" name="zpSaltMineWater">
+    <dbid>20404</dbid>
     <displaynameid>300457</displaynameid>
     <editornameid>300459</editornameid>
     <obstructionradiusx>8.0000</obstructionradiusx>
@@ -14838,8 +14838,8 @@
     <flag>EnterHotkeyContext</flag>
     <tactics>socketcapture.tactics</tactics>
   </unit>
-  <unit id="20159" name="zpNativeHouseVenetian">
-    <dbid>20159</dbid>
+  <unit id="20405" name="zpNativeHouseVenetian">
+    <dbid>20405</dbid>
     <displaynameid>300730</displaynameid>
     <editornameid>300731</editornameid>
     <subciv>zpVenetians</subciv>
@@ -14889,8 +14889,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20160" name="zpNativeStatueVenetian">
-    <dbid>20160</dbid>
+  <unit id="20407" name="zpNativeStatueVenetian">
+    <dbid>20407</dbid>
     <displaynameid>300730</displaynameid>
     <editornameid>300732</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
@@ -14940,8 +14940,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20160" name="zpNativeUnitVenetian">
-    <dbid>20160</dbid>
+  <unit id="20408" name="zpNativeUnitVenetian">
+    <dbid>20408</dbid>
     <displaynameid>300730</displaynameid>
     <editornameid>300733</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
@@ -16863,8 +16863,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20169" name="zpVeniceGalleyAutomatic">
-    <dbid>20169</dbid>
+  <unit id="20410" name="zpVeniceGalleyAutomatic">
+    <dbid>20410</dbid>
     <displaynameid>300744</displaynameid>
     <editornameid>300745</editornameid>
     <obstructionradiusx>2.9900</obstructionradiusx>
@@ -16983,8 +16983,8 @@
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
-  <unit id="20158" name="zpMercVenetianBombard">
-    <dbid>20158</dbid>
+  <unit id="20412" name="zpMercVenetianBombard">
+    <dbid>20412</dbid>
     <displaynameid>300726</displaynameid>
     <editornameid>300862</editornameid>
     <buildlimit>2</buildlimit>
@@ -17070,8 +17070,8 @@
       <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20159" name="zpMercNautilus">
-    <dbid>20159</dbid>
+  <unit id="20406" name="zpMercNautilus">
+    <dbid>20406</dbid>
     <displaynameid>300557</displaynameid>
     <editornameid>300863</editornameid>
     <obstructionradiusx>2.9900</obstructionradiusx>
@@ -17230,8 +17230,8 @@
       <damagebonus type="deMalteseGun">2.500000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20160" name="zpMercWokouSteamer">
-    <dbid>20160</dbid>
+  <unit id="20409" name="zpMercWokouSteamer">
+    <dbid>20409</dbid>
     <displaynameid>300220</displaynameid>
     <editornameid>300864</editornameid>
     <obstructionradiusx>2.9900</obstructionradiusx>
@@ -17345,8 +17345,8 @@
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
-  <unit id="20161" name="zpSocketOrthodox">
-    <dbid>20161</dbid>
+  <unit id="20413" name="zpSocketOrthodox">
+    <dbid>20413</dbid>
     <displaynameid>300867</displaynameid>
     <editornameid>300868</editornameid>
     <subciv>zpOrthodox</subciv>
@@ -17394,8 +17394,8 @@
     <flag>EnterHotkeyContext</flag>
     <tactics>socketcapture.tactics</tactics>
   </unit>
-  <unit id="20162" name="zpSocketMalteseMission">
-    <dbid>20162</dbid>
+  <unit id="20414" name="zpSocketMalteseMission">
+    <dbid>20414</dbid>
     <displaynameid>300869</displaynameid>
     <editornameid>300870</editornameid>
     <subciv>Maltese</subciv>
@@ -17445,8 +17445,8 @@
     <flag>EnterHotkeyContext</flag>
     <tactics>socketcapture.tactics</tactics>
   </unit>
-  <unit id="20163" name="zpNativeHouseOrthodox">
-    <dbid>20163</dbid>
+  <unit id="20415" name="zpNativeHouseOrthodox">
+    <dbid>20415</dbid>
     <displaynameid>300871</displaynameid>
     <editornameid>300872</editornameid>
     <obstructionradiusx>3.0000</obstructionradiusx>
@@ -17506,8 +17506,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20164" name="zpSPCHarbour">
-    <dbid>20164</dbid>
+  <unit id="20416" name="zpSPCHarbour">
+    <dbid>20416</dbid>
     <displaynameid>300032</displaynameid>
     <editornameid>300873</editornameid>
     <obstructionradiusx>3.0000</obstructionradiusx>
@@ -17560,8 +17560,8 @@
     <flag>SelectWithObstruction</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20165" name="zpSPCHarbourB">
-    <dbid>20165</dbid>
+  <unit id="20417" name="zpSPCHarbourB">
+    <dbid>20417</dbid>
     <displaynameid>300032</displaynameid>
     <editornameid>300874</editornameid>
     <obstructionradiusx>3.0000</obstructionradiusx>
@@ -17614,8 +17614,8 @@
     <flag>SelectWithObstruction</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id ="20166" name ="zpChristmassTree">
-		<dbid>20166</dbid>
+  <unit id ="20418" name ="zpChristmassTree">
+		<dbid>20418</dbid>
 		<displaynameid>300875</displaynameid>
 		<editornameid>300876</editornameid>
 		<obstructionradiusx>1.000</obstructionradiusx>
@@ -17660,8 +17660,8 @@
     <flag>Tracked</flag>
     <flag>StartOnNoUpdate</flag>
 	</unit>
-  <unit id="20167" name="zpSPCEUHouseProp">
-    <dbid>20167</dbid>
+  <unit id="20419" name="zpSPCEUHouseProp">
+    <dbid>20419</dbid>
     <displaynameid>22839</displaynameid>
     <editornameid>300877</editornameid>
     <populationcapaddition>10</populationcapaddition>
@@ -17730,8 +17730,8 @@
     <flag>NotSelectable</flag>
     <flag>Invulnerable</flag>
   </unit>
-  <unit id="20168" name="zpSPCMeetingHouse">
-    <dbid>20168</dbid>
+  <unit id="20420" name="zpSPCMeetingHouse">
+    <dbid>20420</dbid>
     <displaynameid>300878</displaynameid>
     <editornameid>300879</editornameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
@@ -17791,8 +17791,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20169" name="zpSPCSocketXmassVillage">
-    <dbid>20169</dbid>
+  <unit id="20411" name="zpSPCSocketXmassVillage">
+    <dbid>20411</dbid>
     <displaynameid>300882</displaynameid>
     <editornameid>300883</editornameid>
     <subciv>zpXmassVillage</subciv>
@@ -17842,8 +17842,8 @@
     <flag>EnterHotkeyContext</flag>
     <tactics>socketcapture.tactics</tactics>
   </unit>
-  <unit id="20170" name="zpNatWarriorMonk">
-    <dbid>20170</dbid>
+  <unit id="20421" name="zpNatWarriorMonk">
+    <dbid>20422</dbid>
     <displaynameid>300884</displaynameid>
     <editornameid>300885</editornameid>
     <populationcount>0</populationcount>
@@ -18018,8 +18018,8 @@
       <rate type="zpMountainCitadel">2.000000</rate>
     </protoaction>
   </unit>
-  <unit id="20171" name="zpNatDvoryanin">
-    <dbid>20171</dbid>
+  <unit id="20423" name="zpNatDvoryanin">
+    <dbid>20423</dbid>
     <displaynameid>300903</displaynameid>
     <editornameid>300904</editornameid>
     <populationcount>0</populationcount>
@@ -18132,8 +18132,8 @@
       <damagebonus type="AbstractCoyoteMan">3.500000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20172" name="zpNatBulgarianBoyar">
-    <dbid>20172</dbid>
+  <unit id="20424" name="zpNatBulgarianBoyar">
+    <dbid>20424</dbid>
     <displaynameid>300908</displaynameid>
     <editornameid>300909</editornameid>
     <populationcount>0</populationcount>
@@ -18241,8 +18241,8 @@
       <damagebonus type="AbstractArtillery">1.250000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20173" name="zpNatMonaspa">
-    <dbid>20173</dbid>
+  <unit id="20425" name="zpNatMonaspa">
+    <dbid>20425</dbid>
     <displaynameid>300913</displaynameid>
     <editornameid>300914</editornameid>
     <populationcount>0</populationcount>
@@ -18350,8 +18350,8 @@
       <damageflags>Enemy</damageflags>
     </protoaction>
   </unit>
-  <unit id="20174" name="zpMountainCitadel">
-    <dbid>20174</dbid>
+  <unit id="20426" name="zpMountainCitadel">
+    <dbid>20426</dbid>
     <displaynameid>300918</displaynameid>
     <editornameid>300919</editornameid>
     <obstructionradiusx>3.5000</obstructionradiusx>
@@ -18494,8 +18494,8 @@
       <rof>3.000000</rof>
     </protoaction>
   </unit>
-  <unit id="20175" name="zpMountainCitadelWagon">
-    <dbid>20175</dbid>
+  <unit id="20427" name="zpMountainCitadelWagon">
+    <dbid>20427</dbid>
     <displaynameid>300920</displaynameid>
     <editornameid>300921</editornameid>
     <obstructionradiusx>0.9900</obstructionradiusx>
@@ -18657,8 +18657,8 @@
       <damagebonus type="deMalteseGun">2.500000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20177" name="zpNatGatlingGun">
-    <dbid>20177</dbid>
+  <unit id="20428" name="zpNatGatlingGun">
+    <dbid>20428</dbid>
     <displaynameid>45211</displaynameid>
     <editornameid>45212</editornameid>
     <populationcount>4</populationcount>
@@ -18758,8 +18758,8 @@
       <damagebonus type="deMalteseGun">2.500000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20178" name="zpNativeHouseOrthodoxSouth">
-    <dbid>20178</dbid>
+  <unit id="20429" name="zpNativeHouseOrthodoxSouth">
+    <dbid>20429</dbid>
     <displaynameid>300871</displaynameid>
     <editornameid>300940</editornameid>
     <obstructionradiusx>3.0000</obstructionradiusx>
@@ -18819,8 +18819,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20179" name="zpSPCPropZenCastle">
-    <dbid>20179</dbid>
+  <unit id="20430" name="zpSPCPropZenCastle">
+    <dbid>20430</dbid>
     <displaynameid>300251</displaynameid>
     <editornameid>300961</editornameid>
     <subciv>SPCZen</subciv>
@@ -18871,8 +18871,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20180" name="zpNatSoheiCavalry">
-    <dbid>20180</dbid>
+  <unit id="20431" name="zpNatSoheiCavalry">
+    <dbid>20431</dbid>
     <displaynameid>300962</displaynameid>
     <editornameid>300963</editornameid>
     <populationcount>0</populationcount>
@@ -18992,8 +18992,8 @@
       <rof>1.500000</rof>
     </protoaction>
   </unit>
-  <unit id="20181" name="zpNatCataphract">
-    <dbid>20181</dbid>
+  <unit id="20432" name="zpNatCataphract">
+    <dbid>20432</dbid>
     <displaynameid>300964</displaynameid>
     <editornameid>300965</editornameid>
     <obstructionradiusx>0.7900</obstructionradiusx>
@@ -19102,8 +19102,8 @@
       <rate type="LogicalTypeHealed">6.000000</rate>
     </protoaction>
   </unit>
-  <unit id="20182" name="zpCastleZenClone">
-    <dbid>2012</dbid>
+  <unit id="20433" name="zpCastleZenClone">
+    <dbid>20433</dbid>
     <displaynameid>300291</displaynameid>
     <editornameid>300973</editornameid>
     <obstructionradiusx>6.0000</obstructionradiusx>
@@ -19228,8 +19228,8 @@
       <damagebonus type="AbstractLightInfantry">1.300000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20183" name="zpNatMercSoheiCavalry">
-    <dbid>20183</dbid>
+  <unit id="20434" name="zpNatMercSoheiCavalry">
+    <dbid>20434</dbid>
     <displaynameid>300962</displaynameid>
     <editornameid>300974</editornameid>
     <populationcount>0</populationcount>
@@ -19348,8 +19348,8 @@
       <rof>1.500000</rof>
     </protoaction>
   </unit>
-  <unit id="20184" name="zpNatSoheiLeader">
-    <dbid>20184</dbid>
+  <unit id="20435" name="zpNatSoheiLeader">
+    <dbid>20435</dbid>
     <displaynameid>300977</displaynameid>
     <editornameid>300978</editornameid>
     <populationcount>2</populationcount>
@@ -33321,9 +33321,9 @@
     <flag>NoHPBar</flag>
   </unit>-->
 
-  <unit id="20241" name="zpShipFadeProxy">
+  <unit id="" name="zpShipFadeProxy">
   <!-- Works but needs to be tested on slower device -->
-    <dbid>20241</dbid>
+    <dbid></dbid>
     <displaynameid>27726</displaynameid>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
@@ -34181,8 +34181,8 @@
       <damagebonus type="AbstractVillager">0.200000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20015" name="zpTestBld1">
-    <dbid>20015</dbid>
+  <unit id="" name="zpTestBld1">
+    <dbid></dbid>
     <displaynameid>300495</displaynameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
     <obstructionradiusz>4.0000</obstructionradiusz>
@@ -34241,8 +34241,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20015" name="zpTestBld2">
-    <dbid>20015</dbid>
+  <unit id="" name="zpTestBld2">
+    <dbid></dbid>
     <displaynameid>300496</displaynameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
     <obstructionradiusz>4.0000</obstructionradiusz>
