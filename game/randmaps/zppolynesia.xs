@@ -20,8 +20,8 @@ string paintMix = "ceylon_sand_a";
 string baseTerrain = "water";
 string playerTerrain = "borneo\ground_sand3_borneo";
 string seaType = "ZP Polynesian Coast";
-string startTreeType = "TreeAmazon";
-string forestType = "z79 hawaii";
+string startTreeType = "ypTreeCeylon";
+string forestType = "z51 Hyrcanian Palms";
 string cliffType = "caribbean";
 string mapType1 = "hawaii";
 string mapType2 = "grass";
@@ -133,7 +133,7 @@ int bonusIslandConstraint=rmCreateClassDistanceConstraint("bonus islands avoid e
 // Resource constraints - Fish, whales, forest, mines, nuggets, and sheep
 int avoidFish1=rmCreateTypeDistanceConstraint("fish v fish", fish1, 20.0);	
 int avoidFish2=rmCreateTypeDistanceConstraint("fish v fish2", fish2, 15.0);
-int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 6.0);
+int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 8.0);
 int whaleVsWhaleID=rmCreateTypeDistanceConstraint("whale v whale", whale1, 25.0);	
 int fishVsWhaleID=rmCreateTypeDistanceConstraint("fish v whale", whale1, 8.0);   
 int whaleLand = rmCreateTerrainDistanceConstraint("whale land", "land", true, 12.0);
@@ -189,6 +189,8 @@ int flagVsWokou1 = rmCreateTypeDistanceConstraint("flag avoid wokou 1", "zpWokou
 int flagVsWokou2 = rmCreateTypeDistanceConstraint("flag avoid wokou  2", "zpWokouWaterSpawnFlag2", 40);
 int flagEdgeConstraint=rmCreatePieConstraint("flag edge of map", 0.5, 0.5, 0, rmGetMapXSize()-100, 0, 0, 0);
 int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 12.0);
+
+int RevealerVSRevealer=rmCreateTypeDistanceConstraint("revealer v revealer", "zpCinematicRevealerToAll", 10.0);
 
 //Trade Route Contstraints
 int islandAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("trade route", 10.0);
@@ -1460,6 +1462,7 @@ for (i=0; <numTries) {
     rmSetAreaForestDensity(forest, 0.6);
     rmSetAreaForestClumpiness(forest, 0.1);
     rmSetAreaForestUnderbrush(forest, 0.6);
+    rmSetAreaTerrainType(forest, "caribbean\groundforest_crb");
     rmSetAreaMinBlobs(forest, 1);
     rmSetAreaMaxBlobs(forest, 5);
     rmSetAreaMinBlobDistance(forest, 16.0);
@@ -1648,14 +1651,15 @@ if (cNumberNonGaiaPlayers <5)		// If less than 5 players, place extra fish.
     rmPlaceObjectDefAtLoc(fish2ID, 0, 0.5, 0.5, 5*cNumberNonGaiaPlayers);	
 }
 
-/*int randomTreeID=rmCreateObjectDef("random tree");
-rmAddObjectDefItem(randomTreeID, "treeAmazon", 1, 0.0);
+int randomTreeID=rmCreateObjectDef("random tree");
+rmAddObjectDefItem(randomTreeID, "ypTreeCeylon", 1, 0.0);
 rmSetObjectDefMinDistance(randomTreeID, 0.0);
 rmSetObjectDefMaxDistance(randomTreeID, rmXFractionToMeters(0.5));
 rmAddObjectDefConstraint(randomTreeID, avoidImpassableLand);
 rmAddObjectDefConstraint(randomTreeID, avoidAll); 
+rmAddObjectDefConstraint(randomTreeID, islandConstraint); 
 
-rmPlaceObjectDefAtLoc(randomTreeID, 0, 0.5, 0.5, 25*cNumberNonGaiaPlayers);*/
+rmPlaceObjectDefAtLoc(randomTreeID, 0, 0.5, 0.5, 25*cNumberNonGaiaPlayers);
 
 
 // ------Triggers------------------------------------------------------------------------------------//
@@ -1668,7 +1672,8 @@ int islandSize = 170;
 int gapMin = 700;
 int gapMax = 1200;
 int eruptionBreakInitial = 720;
-int eruptionBreakInitialLong = 10;
+int eruptionBreakInitialLong = 1200;
+int eruptionBreakInitialMedium = 960;
 int eruptionBreak1 = rmRandInt(gapMin,gapMax);
 int eruptionBreak2 = rmRandInt(gapMin,gapMax);
 int eruptionBreak3 = rmRandInt(gapMin,gapMax);
@@ -1761,6 +1766,7 @@ if (cNumberNonGaiaPlayers <=2) {
 // Volcano trigger definition
 rmCreateTrigger("Volcano_Counter_Hard");
 rmCreateTrigger("Volcano_Counter_Easy");
+rmCreateTrigger("Volcano_Counter_Moderate");
 rmCreateTrigger("Volcano_StartInitial");
 rmCreateTrigger("Volcano_Start1");
 rmCreateTrigger("Volcano_Start2");
@@ -1869,7 +1875,7 @@ rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("Volcano_Counter_Hard"));
 rmAddTriggerCondition("Difficulty Level");
-rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParam("Op",">");
 rmSetTriggerConditionParamInt("Level",3);
 rmAddTriggerEffect("Counter:Add Timer");
 rmSetTriggerEffectParam("Name","VolcanoCounter");
@@ -1879,6 +1885,8 @@ rmSetTriggerEffectParam("Msg", "Volcano erupts in");
 rmSetTriggerEffectParamInt("Event", rmTriggerID("Volcano_StartInitial"));
 rmAddTriggerEffect("Disable Trigger");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Counter_Easy"));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Counter_Moderate"));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
@@ -1887,7 +1895,7 @@ rmSetTriggerLoop(false);
 rmSwitchToTrigger(rmTriggerID("Volcano_Counter_Easy"));
 rmAddTriggerCondition("Difficulty Level");
 rmSetTriggerConditionParam("Op","<");
-rmSetTriggerConditionParamInt("Level",3);
+rmSetTriggerConditionParamInt("Level",2);
 rmAddTriggerEffect("Counter:Add Timer");
 rmSetTriggerEffectParam("Name","VolcanoCounter");
 rmSetTriggerEffectParamInt("Start", eruptionBreakInitialLong);
@@ -1896,6 +1904,30 @@ rmSetTriggerEffectParam("Msg", "Volcano erupts in");
 rmSetTriggerEffectParamInt("Event", rmTriggerID("Volcano_StartInitial"));
 rmAddTriggerEffect("Disable Trigger");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Counter_Hard"));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Counter_Moderate"));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("Volcano_Counter_Moderate"));
+rmAddTriggerCondition("Difficulty Level");
+rmSetTriggerConditionParam("Op","<=");
+rmSetTriggerConditionParamInt("Level",3);
+rmAddTriggerCondition("Difficulty Level");
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Level",2);
+rmAddTriggerEffect("Counter:Add Timer");
+rmSetTriggerEffectParam("Name","VolcanoCounter");
+rmSetTriggerEffectParamInt("Start", eruptionBreakInitialMedium);
+rmSetTriggerEffectParamInt("Stop",0);
+rmSetTriggerEffectParam("Msg", "Volcano erupts in");
+rmSetTriggerEffectParamInt("Event", rmTriggerID("Volcano_StartInitial"));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Counter_Hard"));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Counter_Easy"));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
@@ -2558,6 +2590,10 @@ rmSetTriggerEffectParamInt("PlayerID",i);
 rmSetTriggerEffectParam("TechID","cTechzpOceaniaMercenaries"); // Mercenary
 rmSetTriggerEffectParamInt("Status",2);
 }
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",0);
+rmSetTriggerEffectParam("TechID","cTechzpPolynesiaVolcano"); // Polynesia Volcano
+rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Quest Var Set");
 rmSetTriggerEffectParam("QVName","Eruption");
 rmSetTriggerEffectParamInt("Value",1);
@@ -3703,7 +3739,6 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
-
 
 
 

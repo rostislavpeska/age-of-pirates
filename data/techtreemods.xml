@@ -15779,6 +15779,28 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpPolynesiaVolcano" type="Normal">
+    <dbid>40720</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="CannonAttackMedium" amount="90.00" subtype="MaximumRange" relativity="Assign">
+        <target type="ProtoUnit">NatMantlet</target>
+      </effect>
+      <effect type="Data" action="CannonAttackLong" amount="110.00" subtype="MaximumRange" relativity="Assign">
+        <target type="ProtoUnit">NatMantlet</target>
+      </effect>
+      <effect type="Data" action="CannonAttackUltraLong" amount="135.00" subtype="MaximumRange" relativity="Assign">
+        <target type="ProtoUnit">NatMantlet</target>
+      </effect>
+      <effect type="Data" action="CannonAttackXXLong" amount="165.00" subtype="MaximumRange" relativity="Assign">
+        <target type="ProtoUnit">NatMantlet</target>
+      </effect>
+      <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+    </effects>
+  </tech>
+
 
 
   
