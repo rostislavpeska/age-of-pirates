@@ -70,7 +70,7 @@ int playerTiles=29000;
 if(cNumberNonGaiaPlayers < 5)
 playerTiles = 35000;
 if (cNumberNonGaiaPlayers < 3)
-    playerTiles = 44000;
+    playerTiles = 45000;
 int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
 rmEchoInfo("Map size="+size+"m x "+size+"m");
 rmSetMapSize(size, size);
@@ -363,7 +363,7 @@ rmSetAreaMix(connectionIsland1a, baseMix);
 rmSetAreaObeyWorldCircleConstraint(connectionIsland1a, false);
 rmAddAreaConstraint(connectionIsland1a, islandConstraintLong);
 rmAddAreaConstraint(connectionIsland1a, islandAvoidTradeRoute);
-rmSetAreaLocation(connectionIsland1a, .8, .4);  
+rmSetAreaLocation(connectionIsland1a, .82, .38);  
 rmBuildArea(connectionIsland1a);
 
 int connectionIsland1b=rmCreateArea("connection island 1b");
@@ -380,7 +380,7 @@ rmSetAreaMix(connectionIsland1b, baseMix);
 rmSetAreaObeyWorldCircleConstraint(connectionIsland1b, false);
 rmAddAreaConstraint(connectionIsland1b, islandConstraintLong);
 rmAddAreaConstraint(connectionIsland1b, islandAvoidTradeRoute);
-rmSetAreaLocation(connectionIsland1b, .6, .2);  
+rmSetAreaLocation(connectionIsland1b, .62, .18);  
 rmBuildArea(connectionIsland1b);
 
 int connectionIsland2a=rmCreateArea("connection island 2a");
@@ -397,7 +397,7 @@ rmSetAreaMix(connectionIsland2a, baseMix);
 rmSetAreaObeyWorldCircleConstraint(connectionIsland2a, false);
 rmAddAreaConstraint(connectionIsland2a, islandConstraintLong);
 rmAddAreaConstraint(connectionIsland2a, islandAvoidTradeRoute);
-rmSetAreaLocation(connectionIsland2a, .4, .8);  
+rmSetAreaLocation(connectionIsland2a, .38, .82);  
 rmBuildArea(connectionIsland2a);
 
 int connectionIsland2b=rmCreateArea("connection island 2b");
@@ -414,7 +414,7 @@ rmSetAreaMix(connectionIsland2b, baseMix);
 rmSetAreaObeyWorldCircleConstraint(connectionIsland2b, false);
 rmAddAreaConstraint(connectionIsland2b, islandConstraintLong);
 rmAddAreaConstraint(connectionIsland2b, islandAvoidTradeRoute);
-rmSetAreaLocation(connectionIsland2b, .2, .6);  
+rmSetAreaLocation(connectionIsland2b, .18, .62);  
 rmBuildArea(connectionIsland2b);
 
 int connectionID11 = rmCreateConnection ("connection 11");
@@ -1663,12 +1663,12 @@ rmPlaceObjectDefAtLoc(randomTreeID, 0, 0.5, 0.5, 25*cNumberNonGaiaPlayers);*/
 int tch0=1671; // tech operator
 
 int eruptionLenght = 140;
-int eqAreaDamage = 20;
-int islandSize = 200;
+int eqAreaDamage = 25;
+int islandSize = 170;
 int gapMin = 700;
 int gapMax = 1200;
 int eruptionBreakInitial = 720;
-int eruptionBreakInitialLong = 960;
+int eruptionBreakInitialLong = 10;
 int eruptionBreak1 = rmRandInt(gapMin,gapMax);
 int eruptionBreak2 = rmRandInt(gapMin,gapMax);
 int eruptionBreak3 = rmRandInt(gapMin,gapMax);
@@ -1742,20 +1742,20 @@ volcanoID = "277";
 
 if (cNumberNonGaiaPlayers <=6) {
   eruptionLenght = 120;
-  islandSize = 180;
-  eqAreaDamage = 24;
+  islandSize = 150;
+  eqAreaDamage = 30;
 }
 
 if (cNumberNonGaiaPlayers <=4) {
   eruptionLenght = 100;
-  islandSize = 160;
-  eqAreaDamage = 30;
+  islandSize = 130;
+  eqAreaDamage = 40;
 }
 
 if (cNumberNonGaiaPlayers <=2) {
   eruptionLenght = 80;
-  islandSize = 120;
-  eqAreaDamage = 40;
+  islandSize = 90;
+  eqAreaDamage = 57;
 }
 
 // Volcano trigger definition
