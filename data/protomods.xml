@@ -789,12 +789,12 @@
     <protoaction>
       <name>AutoGatherColonyGold</name>
       <type>AutoGather</type>
-      <rate type="Gold">0.850000</rate>
+      <rate type="Gold">2.000000</rate>
     </protoaction>
     <protoaction>
       <name>AutoGatherKorowaiWood</name>
       <type>AutoGather</type>
-      <rate type="Wood">0.120000</rate>
+      <rate type="Wood">3.000000</rate>
     </protoaction>
   </unit>
   <unit name="ypConsulate">
