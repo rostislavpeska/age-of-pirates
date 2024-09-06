@@ -203,6 +203,7 @@ minInterval 1
    if (getGaiaUnitCount(cUnitTypezpNativeHouseMaltese) > 0)
    {
       xsEnableRule("zpMalteseTechMonitor");
+      xsEnableRule("zpFixedGunBuilder");
    }
    if (getGaiaUnitCount(cUnitTypezpJesuitCathedral) > 0)
    {
@@ -217,19 +218,19 @@ minInterval 1
       xsEnableRule("nativeWagonMonitor");
       xsEnableRule("dottoreAbilityMonitor");
    }
-   if (getUnit(cUnitTypezpPropChristmassTree) > 0)
+   if (getGaiaUnitCount(cUnitTypezpPropChristmassTree) > 0)
    {
       xsEnableRule("christmasTechMonitor");
       xsEnableRule("nativeWagonMonitor");
       xsEnableRule("polarExpressUpgradeMonitor");
    }
 
-   if (getUnit(cUnitTypezpNativeHouseOrthodox) > 0)
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseOrthodox) > 0)
    {
       xsEnableRule("orthodoxTechMonitor");
       xsEnableRule("nativeWagonMonitor");
    }
-   if (getUnit(cUnitTypezpNativeHouseWesternVillage) > 0)
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseWesternVillage) > 0)
    {
       xsEnableRule("zpWesternTechMonitor");
       xsEnableRule("nativeWagonMonitor");
@@ -245,6 +246,75 @@ minInterval 1
    }
     
    xsDisableSelf();
+}
+
+//==============================================================================
+// ZP Fixed gun builder
+//    Only builds the maltese native fixed gun
+//==============================================================================
+rule zpFixedGunBuilder
+inactive
+minInterval 8
+{
+   if (kbUnitCount(cMyID, cUnitTypezpJerusalemWagon, cUnitStateAlive) <= 0)
+   {
+      return;
+   }
+
+   // Find a location, copied from the new select tower build position rule
+   vector baseVec = cInvalidVector;
+   vector testVec = cInvalidVector;
+   bool success = false;
+   int towerSearch = -1;
+   static vector startingVec = cInvalidVector;
+   int towerBL = kbGetBuildLimit(cMyID, gTowerUnit);
+   int numTestVecs = 5 * towerBL / 4;
+   float towerAngle = (2.0 * PI) / numTestVecs;
+   float spacingDistance = 24 * sin((PI - towerAngle) / 2.0) / sin(towerAngle); 
+   float exclusionRadius = spacingDistance / 2.0;
+
+   if (startingVec == cInvalidVector) // Base changed.
+   {
+      baseVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)); // Start with base location
+      startingVec = baseVec;
+      startingVec = xsVectorSetX(startingVec, xsVectorGetX(startingVec) + spacingDistance);
+      startingVec = rotateByReferencePoint(baseVec, startingVec - baseVec, aiRandInt(360) / (180.0 / PI));
+   }
+
+   for (attempt = 0; < 30)
+   {
+      testVec = rotateByReferencePoint(baseVec, startingVec - baseVec, towerAngle * aiRandInt(numTestVecs));
+      debugBuildings("Testing tower location at: " + testVec);
+      if (towerSearch < 0)
+      { // init
+         towerSearch = kbUnitQueryCreate("Tower placement search");
+         kbUnitQuerySetPlayerRelation(towerSearch, cPlayerRelationAny);
+         kbUnitQuerySetUnitType(towerSearch, gTowerUnit);
+         kbUnitQuerySetState(towerSearch, cUnitStateABQ);
+      }
+      kbUnitQuerySetPosition(towerSearch, testVec);
+      kbUnitQuerySetMaximumDistance(towerSearch, exclusionRadius);
+      kbUnitQueryResetResults(towerSearch);
+      if (kbUnitQueryExecute(towerSearch) < 1)
+      { // Site is clear, use it.
+         if (kbAreaGroupGetIDByPosition(testVec) == kbAreaGroupGetIDByPosition(kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID))))
+         { // Make sure it's in the same areagroup.
+            success = true;
+            break;
+         }
+      }
+   }
+
+   if (success == true)
+   {
+      int planID = createLocationBuildPlan(cUnitTypezpMalteseGun, 1, 100, true, -1, testVec, 1);
+      // Add wagon
+      aiPlanAddUnitType(planID, cUnitTypezpJerusalemWagon, 1, 1, 1);
+      aiPlanAddUnit(planID, getUnit(cUnitTypezpJerusalemWagon, cPlayerRelationSelf));
+      sendStatement(2, cAICommPromptToAllyIWillBuildMilitaryBase, testVec);
+
+      xsDisableSelf();
+   }
 }
 
 
@@ -3083,7 +3153,7 @@ rule zpAboriginalSchoolBuilder
 inactive
 minInterval 2
 {
-   if (kbUnitCount(cUnitTypezpAustralianSchoolWagon, cMyID) <= 0)
+   if (kbUnitCount(cMyID, cUnitTypezpAustralianSchoolWagon) <= 0)
    {
       return;
    }
