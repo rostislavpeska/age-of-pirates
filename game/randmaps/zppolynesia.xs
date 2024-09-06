@@ -20,8 +20,8 @@ string paintMix = "ceylon_sand_a";
 string baseTerrain = "water";
 string playerTerrain = "borneo\ground_sand3_borneo";
 string seaType = "ZP Polynesian Coast";
-string startTreeType = "TreeAmazon";
-string forestType = "z79 hawaii";
+string startTreeType = "ypTreeCeylon";
+string forestType = "z51 Hyrcanian Palms";
 string cliffType = "caribbean";
 string mapType1 = "hawaii";
 string mapType2 = "grass";
@@ -68,9 +68,9 @@ chooseMercs();
 // Set size of map
 int playerTiles=29000;
 if(cNumberNonGaiaPlayers < 5)
-playerTiles = 32000;
+playerTiles = 35000;
 if (cNumberNonGaiaPlayers < 3)
-    playerTiles = 42000;
+    playerTiles = 45000;
 int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
 rmEchoInfo("Map size="+size+"m x "+size+"m");
 rmSetMapSize(size, size);
@@ -82,8 +82,8 @@ rmSetBaseTerrainMix(baseMix);
 rmSetMapType(mapType1);
 rmSetMapType(mapType2);
 rmSetMapType("water");
-rmSetLightingSet("borneo_skirmish");
-//rmSetOceanReveal(true);
+rmSetLightingSet("age304_caribbean");
+rmSetOceanReveal(true);
 
 // Initialize map.
 rmTerrainInitialize(baseTerrain);
@@ -105,6 +105,7 @@ int classCanyon=rmDefineClass("canyon");
 int classHighMountains=rmDefineClass("high mountains");
 int classCentralIsland=rmDefineClass("central island");
 int classPortSite=rmDefineClass("portSite");
+int classBonusIsland=rmDefineClass("bonus island");
 
 // -------------Define constraints----------------------------------------
 
@@ -117,7 +118,7 @@ int longPlayerConstraint=rmCreateClassDistanceConstraint("long stay away from pl
 int flagConstraint=rmCreateHCGPConstraint("flags avoid same", 20.0);
 int avoidTP=rmCreateTypeDistanceConstraint("stay away from Trading Post Sockets", "SocketTradeRoute", 10.0);
 int avoidTPLong=rmCreateTypeDistanceConstraint("stay away from Trading Post Sockets far", "SocketTradeRoute", 20.0);
-int avoidLand = rmCreateTerrainDistanceConstraint("ship avoid land", "land", true, 15.0);
+int avoidLand = rmCreateTerrainDistanceConstraint("ship avoid land", "land", true, 18.0);
 int mesaConstraint = rmCreateBoxConstraint("mesas stay in southern portion of island", .35, .55, .65, .35);
 int northConstraint = rmCreateBoxConstraint("huntable constraint for north side of island", .25, .55, .8, .85);
 int avoidTCMedium=rmCreateTypeDistanceConstraint("stay away from TC by a bit", "TownCenter", 12.0);
@@ -127,11 +128,12 @@ int avoidTCLong=rmCreateTypeDistanceConstraint("stay away from TC by far", "Town
 int islandConstraint=rmCreateClassDistanceConstraint("islands avoid each other", classIsland, 25.0);
 int islandConstraintLong=rmCreateClassDistanceConstraint("islands avoid each other long", classIsland, 55.0);
 int islandEdgeConstraint=rmCreatePieConstraint("island edge of map", 0.5, 0.5, 0, rmGetMapXSize()-5, 0, 0, 0);
+int bonusIslandConstraint=rmCreateClassDistanceConstraint("bonus islands avoid each other", classBonusIsland, 15.0);
 
 // Resource constraints - Fish, whales, forest, mines, nuggets, and sheep
 int avoidFish1=rmCreateTypeDistanceConstraint("fish v fish", fish1, 20.0);	
 int avoidFish2=rmCreateTypeDistanceConstraint("fish v fish2", fish2, 15.0);
-int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 6.0);
+int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 8.0);
 int whaleVsWhaleID=rmCreateTypeDistanceConstraint("whale v whale", whale1, 25.0);	
 int fishVsWhaleID=rmCreateTypeDistanceConstraint("fish v whale", whale1, 8.0);   
 int whaleLand = rmCreateTerrainDistanceConstraint("whale land", "land", true, 12.0);
@@ -187,6 +189,8 @@ int flagVsWokou1 = rmCreateTypeDistanceConstraint("flag avoid wokou 1", "zpWokou
 int flagVsWokou2 = rmCreateTypeDistanceConstraint("flag avoid wokou  2", "zpWokouWaterSpawnFlag2", 40);
 int flagEdgeConstraint=rmCreatePieConstraint("flag edge of map", 0.5, 0.5, 0, rmGetMapXSize()-100, 0, 0, 0);
 int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 12.0);
+
+int RevealerVSRevealer=rmCreateTypeDistanceConstraint("revealer v revealer", "zpCinematicRevealerToAll", 10.0);
 
 //Trade Route Contstraints
 int islandAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("trade route", 10.0);
@@ -346,6 +350,97 @@ if(rmGetIsKOTH()) {
     }
 }
 
+// Create Connections
+int connectionIsland1a=rmCreateArea("connection island 1a");
+rmSetAreaSize(connectionIsland1a, 0.01, 0.01);
+rmSetAreaCoherence(connectionIsland1a, 0.5);
+rmSetAreaBaseHeight(connectionIsland1a, 2.0);
+rmSetAreaSmoothDistance(connectionIsland1a, 20);
+rmSetAreaMix(connectionIsland1a, baseMix);
+    rmAddAreaTerrainLayer(connectionIsland1a, "caribbean\ground_shoreline1_crb", 0, 1);
+    rmAddAreaTerrainLayer(connectionIsland1a, "caribbean\ground_shoreline2_crb", 1, 2);
+    rmAddAreaTerrainLayer(connectionIsland1a, "caribbean\ground4_crb", 2, 4);
+    rmAddAreaTerrainLayer(connectionIsland1a, "caribbean\ground3_crb", 4, 6);
+    rmAddAreaTerrainLayer(connectionIsland1a, "caribbean\ground2_crb", 6, 8);
+rmSetAreaObeyWorldCircleConstraint(connectionIsland1a, false);
+rmAddAreaConstraint(connectionIsland1a, islandConstraintLong);
+rmAddAreaConstraint(connectionIsland1a, islandAvoidTradeRoute);
+rmSetAreaLocation(connectionIsland1a, .82, .38);  
+rmBuildArea(connectionIsland1a);
+
+int connectionIsland1b=rmCreateArea("connection island 1b");
+rmSetAreaSize(connectionIsland1b, 0.01, 0.01);
+rmSetAreaCoherence(connectionIsland1b, 0.5);
+rmSetAreaBaseHeight(connectionIsland1b, 2.0);
+rmSetAreaSmoothDistance(connectionIsland1b, 20);
+rmSetAreaMix(connectionIsland1b, baseMix);
+    rmAddAreaTerrainLayer(connectionIsland1b, "caribbean\ground_shoreline1_crb", 0, 1);
+    rmAddAreaTerrainLayer(connectionIsland1b, "caribbean\ground_shoreline2_crb", 1, 2);
+    rmAddAreaTerrainLayer(connectionIsland1b, "caribbean\ground4_crb", 2, 4);
+    rmAddAreaTerrainLayer(connectionIsland1b, "caribbean\ground3_crb", 4, 6);
+    rmAddAreaTerrainLayer(connectionIsland1b, "caribbean\ground2_crb", 6, 8);
+rmSetAreaObeyWorldCircleConstraint(connectionIsland1b, false);
+rmAddAreaConstraint(connectionIsland1b, islandConstraintLong);
+rmAddAreaConstraint(connectionIsland1b, islandAvoidTradeRoute);
+rmSetAreaLocation(connectionIsland1b, .62, .18);  
+rmBuildArea(connectionIsland1b);
+
+int connectionIsland2a=rmCreateArea("connection island 2a");
+rmSetAreaSize(connectionIsland2a, 0.01, 0.01);
+rmSetAreaCoherence(connectionIsland2a, 0.5);
+rmSetAreaBaseHeight(connectionIsland2a, 2.0);
+rmSetAreaSmoothDistance(connectionIsland2a, 20);
+rmSetAreaMix(connectionIsland2a, baseMix);
+    rmAddAreaTerrainLayer(connectionIsland2a, "caribbean\ground_shoreline1_crb", 0, 1);
+    rmAddAreaTerrainLayer(connectionIsland2a, "caribbean\ground_shoreline2_crb", 1, 2);
+    rmAddAreaTerrainLayer(connectionIsland2a, "caribbean\ground4_crb", 2, 4);
+    rmAddAreaTerrainLayer(connectionIsland2a, "caribbean\ground3_crb", 4, 6);
+    rmAddAreaTerrainLayer(connectionIsland2a, "caribbean\ground2_crb", 6, 8);
+rmSetAreaObeyWorldCircleConstraint(connectionIsland2a, false);
+rmAddAreaConstraint(connectionIsland2a, islandConstraintLong);
+rmAddAreaConstraint(connectionIsland2a, islandAvoidTradeRoute);
+rmSetAreaLocation(connectionIsland2a, .38, .82);  
+rmBuildArea(connectionIsland2a);
+
+int connectionIsland2b=rmCreateArea("connection island 2b");
+rmSetAreaSize(connectionIsland2b, 0.01, 0.01);
+rmSetAreaCoherence(connectionIsland2b, 0.5);
+rmSetAreaBaseHeight(connectionIsland2b, 2.0);
+rmSetAreaSmoothDistance(connectionIsland2b, 20);
+rmSetAreaMix(connectionIsland2b, baseMix);
+    rmAddAreaTerrainLayer(connectionIsland2b, "caribbean\ground_shoreline1_crb", 0, 1);
+    rmAddAreaTerrainLayer(connectionIsland2b, "caribbean\ground_shoreline2_crb", 1, 2);
+    rmAddAreaTerrainLayer(connectionIsland2b, "caribbean\ground4_crb", 2, 4);
+    rmAddAreaTerrainLayer(connectionIsland2b, "caribbean\ground3_crb", 4, 6);
+    rmAddAreaTerrainLayer(connectionIsland2b, "caribbean\ground2_crb", 6, 8);
+rmSetAreaObeyWorldCircleConstraint(connectionIsland2b, false);
+rmAddAreaConstraint(connectionIsland2b, islandConstraintLong);
+rmAddAreaConstraint(connectionIsland2b, islandAvoidTradeRoute);
+rmSetAreaLocation(connectionIsland2b, .18, .62);  
+rmBuildArea(connectionIsland2b);
+
+int connectionID11 = rmCreateConnection ("connection 11");
+//rmSetConnectionType(connectionID11, cConnectAreas, false, 1);
+rmSetConnectionWidth(connectionID11, 30, 8);
+rmSetConnectionCoherence(connectionID11, 0.3);
+rmSetConnectionWarnFailure(connectionID11, false);
+rmAddConnectionArea(connectionID11, connectionIsland1a);
+rmAddConnectionArea(connectionID11, connectionIsland1b);
+rmSetConnectionBaseHeight(connectionID11, 0.5);
+rmSetConnectionHeightBlend(connectionID11, 20);
+rmBuildConnection(connectionID11);
+
+int connectionID12 = rmCreateConnection ("connection 22");
+//rmSetConnectionType(connectionID12, cConnectAreas, false, 1);
+rmSetConnectionWidth(connectionID12, 30, 8);
+rmSetConnectionCoherence(connectionID12, 0.3);
+rmSetConnectionWarnFailure(connectionID12, false);
+rmAddConnectionArea(connectionID12, connectionIsland2a);
+rmAddConnectionArea(connectionID12, connectionIsland2b);
+rmSetConnectionBaseHeight(connectionID12, 0.5);
+rmSetConnectionHeightBlend(connectionID12, 20);
+rmBuildConnection(connectionID12);
+
 // Create Bonus Islands
 int bonusIsland1=rmCreateArea("bonus island 1");
 rmSetAreaSize(bonusIsland1, 0.06, 0.06);
@@ -358,7 +453,7 @@ rmSetAreaMix(bonusIsland1, baseMix);
     rmAddAreaTerrainLayer(bonusIsland1, "caribbean\ground4_crb", 2, 4);
     rmAddAreaTerrainLayer(bonusIsland1, "caribbean\ground3_crb", 4, 6);
     rmAddAreaTerrainLayer(bonusIsland1, "caribbean\ground2_crb", 6, 8);
-rmAddAreaToClass(bonusIsland1, classIsland);
+rmAddAreaToClass(bonusIsland1, classBonusIsland);
 rmSetAreaObeyWorldCircleConstraint(bonusIsland1, false);
 rmSetAreaElevationType(bonusIsland1, cElevTurbulence);
 rmSetAreaElevationVariation(bonusIsland1, 4.0);
@@ -367,8 +462,10 @@ rmSetAreaElevationOctaves(bonusIsland1, 3);
 rmSetAreaElevationPersistence(bonusIsland1, 0.2);
 rmSetAreaElevationNoiseBias(bonusIsland1, 1);
 rmAddAreaConstraint(bonusIsland1, islandConstraintLong);
+rmAddAreaConstraint(bonusIsland1, bonusIslandConstraint);
 rmAddAreaConstraint(bonusIsland1, islandAvoidTradeRoute);
 rmSetAreaLocation(bonusIsland1, .5, .8);  
+
 
 int bonusIsland2=rmCreateArea("bonus island 2");
 rmSetAreaSize(bonusIsland2, 0.06, 0.06);
@@ -381,7 +478,7 @@ rmSetAreaMix(bonusIsland2, baseMix);
     rmAddAreaTerrainLayer(bonusIsland2, "caribbean\ground4_crb", 2, 4);
     rmAddAreaTerrainLayer(bonusIsland2, "caribbean\ground3_crb", 4, 6);
     rmAddAreaTerrainLayer(bonusIsland2, "caribbean\ground2_crb", 6, 8);
-rmAddAreaToClass(bonusIsland2, classIsland);
+rmAddAreaToClass(bonusIsland2, classBonusIsland);
 rmSetAreaObeyWorldCircleConstraint(bonusIsland2, false);
 rmSetAreaElevationType(bonusIsland2, cElevTurbulence);
 rmSetAreaElevationVariation(bonusIsland2, 2.0);
@@ -390,6 +487,7 @@ rmSetAreaElevationOctaves(bonusIsland2, 3);
 rmSetAreaElevationPersistence(bonusIsland2, 0.2);
 rmSetAreaElevationNoiseBias(bonusIsland2, 1);
 rmAddAreaConstraint(bonusIsland2, islandConstraintLong);
+rmAddAreaConstraint(bonusIsland2, bonusIslandConstraint);
 rmAddAreaConstraint(bonusIsland2, islandAvoidTradeRoute);
 rmSetAreaLocation(bonusIsland2, .5, .2);  
 
@@ -404,7 +502,7 @@ rmSetAreaMix(bonusIsland3, baseMix);
     rmAddAreaTerrainLayer(bonusIsland3, "caribbean\ground4_crb", 2, 4);
     rmAddAreaTerrainLayer(bonusIsland3, "caribbean\ground3_crb", 4, 6);
     rmAddAreaTerrainLayer(bonusIsland3, "caribbean\ground2_crb", 6, 8);
-rmAddAreaToClass(bonusIsland3, classIsland);
+rmAddAreaToClass(bonusIsland3, classBonusIsland);
 rmSetAreaObeyWorldCircleConstraint(bonusIsland3, false);
 rmSetAreaElevationType(bonusIsland3, cElevTurbulence);
 rmSetAreaElevationVariation(bonusIsland3, 2.0);
@@ -413,6 +511,7 @@ rmSetAreaElevationOctaves(bonusIsland3, 3);
 rmSetAreaElevationPersistence(bonusIsland3, 0.2);
 rmSetAreaElevationNoiseBias(bonusIsland3, 1);
 rmAddAreaConstraint(bonusIsland3, islandConstraintLong);
+rmAddAreaConstraint(bonusIsland3, bonusIslandConstraint);
 rmAddAreaConstraint(bonusIsland3, islandAvoidTradeRoute);
 rmSetAreaLocation(bonusIsland3, .2, .5);  
 
@@ -427,7 +526,7 @@ rmSetAreaMix(bonusIsland4, baseMix);
     rmAddAreaTerrainLayer(bonusIsland4, "caribbean\ground4_crb", 2, 4);
     rmAddAreaTerrainLayer(bonusIsland4, "caribbean\ground3_crb", 4, 6);
     rmAddAreaTerrainLayer(bonusIsland4, "caribbean\ground2_crb", 6, 8);
-rmAddAreaToClass(bonusIsland4, classIsland);
+rmAddAreaToClass(bonusIsland4, classBonusIsland);
 rmSetAreaObeyWorldCircleConstraint(bonusIsland4, false);
 rmSetAreaElevationType(bonusIsland4, cElevTurbulence);
 rmSetAreaElevationVariation(bonusIsland4, 2.0);
@@ -436,6 +535,7 @@ rmSetAreaElevationOctaves(bonusIsland4, 3);
 rmSetAreaElevationPersistence(bonusIsland4, 0.2);
 rmSetAreaElevationNoiseBias(bonusIsland4, 1);
 rmAddAreaConstraint(bonusIsland4, islandConstraintLong);
+rmAddAreaConstraint(bonusIsland4, bonusIslandConstraint);
 rmAddAreaConstraint(bonusIsland4, islandAvoidTradeRoute);
 rmSetAreaLocation(bonusIsland4, .8, .5);  
 
@@ -482,9 +582,9 @@ rmAddObjectDefConstraint(controllerID4, ferryOnShore);
 
       
 rmPlaceObjectDefAtLoc(controllerID1, 0, 0.65, 0.85);
-rmPlaceObjectDefAtLoc(controllerID3, 0, 0.85, 0.35);
+rmPlaceObjectDefAtLoc(controllerID3, 0, 0.85, 0.65);
 rmPlaceObjectDefAtLoc(controllerID2, 0, 0.35, 0.15);
-rmPlaceObjectDefAtLoc(controllerID4, 0, 0.15, 0.65);
+rmPlaceObjectDefAtLoc(controllerID4, 0, 0.15, 0.35);
 
 vector ControllerLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID1, 0));
 vector ControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID2, 0));
@@ -1362,6 +1462,7 @@ for (i=0; <numTries) {
     rmSetAreaForestDensity(forest, 0.6);
     rmSetAreaForestClumpiness(forest, 0.1);
     rmSetAreaForestUnderbrush(forest, 0.6);
+    rmSetAreaTerrainType(forest, "caribbean\groundforest_crb");
     rmSetAreaMinBlobs(forest, 1);
     rmSetAreaMaxBlobs(forest, 5);
     rmSetAreaMinBlobDistance(forest, 16.0);
@@ -1550,14 +1651,15 @@ if (cNumberNonGaiaPlayers <5)		// If less than 5 players, place extra fish.
     rmPlaceObjectDefAtLoc(fish2ID, 0, 0.5, 0.5, 5*cNumberNonGaiaPlayers);	
 }
 
-/*int randomTreeID=rmCreateObjectDef("random tree");
-rmAddObjectDefItem(randomTreeID, "treeAmazon", 1, 0.0);
+int randomTreeID=rmCreateObjectDef("random tree");
+rmAddObjectDefItem(randomTreeID, "ypTreeCeylon", 1, 0.0);
 rmSetObjectDefMinDistance(randomTreeID, 0.0);
 rmSetObjectDefMaxDistance(randomTreeID, rmXFractionToMeters(0.5));
 rmAddObjectDefConstraint(randomTreeID, avoidImpassableLand);
 rmAddObjectDefConstraint(randomTreeID, avoidAll); 
+rmAddObjectDefConstraint(randomTreeID, islandConstraint); 
 
-rmPlaceObjectDefAtLoc(randomTreeID, 0, 0.5, 0.5, 25*cNumberNonGaiaPlayers);*/
+rmPlaceObjectDefAtLoc(randomTreeID, 0, 0.5, 0.5, 25*cNumberNonGaiaPlayers);
 
 
 // ------Triggers------------------------------------------------------------------------------------//
@@ -1565,11 +1667,13 @@ rmPlaceObjectDefAtLoc(randomTreeID, 0, 0.5, 0.5, 25*cNumberNonGaiaPlayers);*/
 int tch0=1671; // tech operator
 
 int eruptionLenght = 140;
-int eqAreaDamage = 20;
-int islandSize = 200;
+int eqAreaDamage = 25;
+int islandSize = 170;
 int gapMin = 700;
 int gapMax = 1200;
-int eruptionBreakInitial = rmRandInt(420,720);
+int eruptionBreakInitial = 720;
+int eruptionBreakInitialLong = 1200;
+int eruptionBreakInitialMedium = 960;
 int eruptionBreak1 = rmRandInt(gapMin,gapMax);
 int eruptionBreak2 = rmRandInt(gapMin,gapMax);
 int eruptionBreak3 = rmRandInt(gapMin,gapMax);
@@ -1643,24 +1747,26 @@ volcanoID = "277";
 
 if (cNumberNonGaiaPlayers <=6) {
   eruptionLenght = 120;
-  islandSize = 180;
-  eqAreaDamage = 24;
+  islandSize = 150;
+  eqAreaDamage = 30;
 }
 
 if (cNumberNonGaiaPlayers <=4) {
   eruptionLenght = 100;
-  islandSize = 160;
-  eqAreaDamage = 30;
+  islandSize = 130;
+  eqAreaDamage = 40;
 }
 
 if (cNumberNonGaiaPlayers <=2) {
   eruptionLenght = 80;
-  islandSize = 120;
-  eqAreaDamage = 40;
+  islandSize = 90;
+  eqAreaDamage = 57;
 }
 
 // Volcano trigger definition
-rmCreateTrigger("Volcano_Counter");
+rmCreateTrigger("Volcano_Counter_Hard");
+rmCreateTrigger("Volcano_Counter_Easy");
+rmCreateTrigger("Volcano_Counter_Moderate");
 rmCreateTrigger("Volcano_StartInitial");
 rmCreateTrigger("Volcano_Start1");
 rmCreateTrigger("Volcano_Start2");
@@ -1767,13 +1873,61 @@ rmSetTriggerLoop(false);
 
 // Volcano random starts
 
-rmSwitchToTrigger(rmTriggerID("Volcano_Counter"));
+rmSwitchToTrigger(rmTriggerID("Volcano_Counter_Hard"));
+rmAddTriggerCondition("Difficulty Level");
+rmSetTriggerConditionParam("Op",">");
+rmSetTriggerConditionParamInt("Level",3);
 rmAddTriggerEffect("Counter:Add Timer");
 rmSetTriggerEffectParam("Name","VolcanoCounter");
-rmSetTriggerEffectParamInt("Start", 600);
+rmSetTriggerEffectParamInt("Start", eruptionBreakInitial);
 rmSetTriggerEffectParamInt("Stop",0);
 rmSetTriggerEffectParam("Msg", "Volcano erupts in");
 rmSetTriggerEffectParamInt("Event", rmTriggerID("Volcano_StartInitial"));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Counter_Easy"));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Counter_Moderate"));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("Volcano_Counter_Easy"));
+rmAddTriggerCondition("Difficulty Level");
+rmSetTriggerConditionParam("Op","<");
+rmSetTriggerConditionParamInt("Level",2);
+rmAddTriggerEffect("Counter:Add Timer");
+rmSetTriggerEffectParam("Name","VolcanoCounter");
+rmSetTriggerEffectParamInt("Start", eruptionBreakInitialLong);
+rmSetTriggerEffectParamInt("Stop",0);
+rmSetTriggerEffectParam("Msg", "Volcano erupts in");
+rmSetTriggerEffectParamInt("Event", rmTriggerID("Volcano_StartInitial"));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Counter_Hard"));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Counter_Moderate"));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("Volcano_Counter_Moderate"));
+rmAddTriggerCondition("Difficulty Level");
+rmSetTriggerConditionParam("Op","<=");
+rmSetTriggerConditionParamInt("Level",3);
+rmAddTriggerCondition("Difficulty Level");
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Level",2);
+rmAddTriggerEffect("Counter:Add Timer");
+rmSetTriggerEffectParam("Name","VolcanoCounter");
+rmSetTriggerEffectParamInt("Start", eruptionBreakInitialMedium);
+rmSetTriggerEffectParamInt("Stop",0);
+rmSetTriggerEffectParam("Msg", "Volcano erupts in");
+rmSetTriggerEffectParamInt("Event", rmTriggerID("Volcano_StartInitial"));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Counter_Hard"));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Counter_Easy"));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
@@ -1787,7 +1941,7 @@ rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
 rmAddTriggerEffect("Set Lighting");
-rmSetTriggerEffectParam("SetName","spcjc4brain");
+rmSetTriggerEffectParam("SetName","carribean");
 rmSetTriggerEffectParamFloat("FadeTime",5.0);
 rmAddTriggerEffect("Shake Camera");
 rmSetTriggerEffectParamFloat("Duration",3.0);
@@ -1832,7 +1986,7 @@ rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
 rmAddTriggerEffect("Set Lighting");
-rmSetTriggerEffectParam("SetName","spcjc4brain");
+rmSetTriggerEffectParam("SetName","carribean");
 rmSetTriggerEffectParamFloat("FadeTime",5.0);
 rmAddTriggerEffect("Shake Camera");
 rmSetTriggerEffectParamFloat("Duration",3.0);
@@ -1877,7 +2031,7 @@ rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
 rmAddTriggerEffect("Set Lighting");
-rmSetTriggerEffectParam("SetName","spcjc4brain");
+rmSetTriggerEffectParam("SetName","carribean");
 rmSetTriggerEffectParamFloat("FadeTime",5.0);
 rmAddTriggerEffect("Shake Camera");
 rmSetTriggerEffectParamFloat("Duration",3.0);
@@ -1922,7 +2076,7 @@ rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
 rmAddTriggerEffect("Set Lighting");
-rmSetTriggerEffectParam("SetName","spcjc4brain");
+rmSetTriggerEffectParam("SetName","carribean");
 rmSetTriggerEffectParamFloat("FadeTime",5.0);
 rmAddTriggerEffect("Shake Camera");
 rmSetTriggerEffectParamFloat("Duration",3.0);
@@ -1967,7 +2121,7 @@ rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
 rmAddTriggerEffect("Set Lighting");
-rmSetTriggerEffectParam("SetName","spcjc4brain");
+rmSetTriggerEffectParam("SetName","carribean");
 rmSetTriggerEffectParamFloat("FadeTime",5.0);
 rmAddTriggerEffect("Shake Camera");
 rmSetTriggerEffectParamFloat("Duration",3.0);
@@ -2012,7 +2166,7 @@ rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
 rmAddTriggerEffect("Set Lighting");
-rmSetTriggerEffectParam("SetName","spcjc4brain");
+rmSetTriggerEffectParam("SetName","carribean");
 rmSetTriggerEffectParamFloat("FadeTime",5.0);
 rmAddTriggerEffect("Shake Camera");
 rmSetTriggerEffectParamFloat("Duration",3.0);
@@ -2356,7 +2510,7 @@ rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start"));
 rmAddTriggerEffect("Set Lighting");
-rmSetTriggerEffectParam("SetName","borneo_skirmish");
+rmSetTriggerEffectParam("SetName","age304_caribbean");
 rmSetTriggerEffectParamFloat("FadeTime",5.0);
 rmAddTriggerEffect("Shake Camera");
 rmSetTriggerEffectParamFloat("Duration",1.0);
@@ -2436,6 +2590,10 @@ rmSetTriggerEffectParamInt("PlayerID",i);
 rmSetTriggerEffectParam("TechID","cTechzpOceaniaMercenaries"); // Mercenary
 rmSetTriggerEffectParamInt("Status",2);
 }
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",0);
+rmSetTriggerEffectParam("TechID","cTechzpPolynesiaVolcano"); // Polynesia Volcano
+rmSetTriggerEffectParamInt("Status",2);
 rmAddTriggerEffect("Quest Var Set");
 rmSetTriggerEffectParam("QVName","Eruption");
 rmSetTriggerEffectParamInt("Value",1);
@@ -3581,7 +3739,6 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
-
 
 
 

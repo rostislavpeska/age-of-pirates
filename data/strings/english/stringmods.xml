@@ -1676,14 +1676,14 @@
       <string _locid="301675">Treehouse Outpost</string>
       <string _locid="301676">Treehouse Outpost Travois</string>
       <string _locid="301677">ZP Treehouse Outpost Travois</string>
-      <string _locid="301678">Korowai native outpost, can be hidden from enemies.</string>
+      <string _locid="301678">Korowai native outpost, can be hidden from enemies. Increased attack while Treehouse Archers are being garrisoned in it.</string>
       <string _locid="301679">Builds Treehouse Outpost</string>
       <string _locid="301680">Treehouse Outposts</string>
       <string _locid="301681">Ships Treehouse Outpost Travois and allows Treehouse Archers to construct Treehouse Outposts.</string>
-      <string _locid="301682">Hide Outpost</string>
-      <string _locid="301683">This outpost is hidden from enemy's eyes</string>
-      <string _locid="301684">Uncover outpost</string>
-      <string _locid="301685">This outpost is uncovered</string>
+      <string _locid="301682">Korowai native outpost</string>
+      <string _locid="301683">Atols</string>
+      <string _locid="301684">A collection of very small Pacific islands. Enough resources to build a fully water-based economy. \n\nSettlements: Pirates, Wokou</string>
+      <string _locid="301685">Local waters provide you with everything you need to build a strong economy. The waters are rich on fishes and whales. Small islands are full of trees.</string>
 
 
       <!-- ======================================== -->

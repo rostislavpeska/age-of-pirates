@@ -1,0 +1,19 @@
+name: Proto Validation
+run-name: Validating Proto in a push by ${{ github.actor }}
+
+on: push
+
+jobs:
+  xml-validation:
+    name: Validating Proto
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Python Setup
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Begin Validation
+        run: |
+          python _proto.py

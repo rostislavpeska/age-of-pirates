@@ -1,6 +1,9 @@
 # Age of Pirates
 
-![XML Validation](https://github.com/rostislavpeska/age-of-pirates/actions/workflows/validation.yml/badge.svg)
+![XML Files](https://github.com/rostislavpeska/age-of-pirates/actions/workflows/xml_malformations.yml/badge.svg)
+![StringTables](https://github.com/rostislavpeska/age-of-pirates/actions/workflows/stringtables.yml/badge.svg)
+![Proto](https://github.com/rostislavpeska/age-of-pirates/actions/workflows/proto.yml/badge.svg)
+![TechTree](https://github.com/rostislavpeska/age-of-pirates/actions/workflows/techtree.yml/badge.svg)
 
 ## Table of contents
 
