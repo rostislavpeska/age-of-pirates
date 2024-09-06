@@ -90,6 +90,7 @@ minInterval 1
    if (cRandomMapName == "euArchipelago" ||
        cRandomMapName == "euArchipelagoLarge"||
        cRandomMapName == "zpmediterranean" ||
+       cRandomMapName == "zpatols" ||
        cRandomMapName == "zpkurils")
    {
       gIsArchipelagoMap = true;
