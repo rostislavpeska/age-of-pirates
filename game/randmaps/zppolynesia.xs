@@ -70,7 +70,7 @@ int playerTiles=29000;
 if(cNumberNonGaiaPlayers < 5)
 playerTiles = 35000;
 if (cNumberNonGaiaPlayers < 3)
-    playerTiles = 45000;
+    playerTiles = 48000;
 int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
 rmEchoInfo("Map size="+size+"m x "+size+"m");
 rmSetMapSize(size, size);
@@ -105,7 +105,8 @@ int classCanyon=rmDefineClass("canyon");
 int classHighMountains=rmDefineClass("high mountains");
 int classCentralIsland=rmDefineClass("central island");
 int classPortSite=rmDefineClass("portSite");
-int classBonusIsland=rmDefineClass("bonus island");
+int classBonusIslandEast=rmDefineClass("bonus island east");
+int classBonusIslandWest=rmDefineClass("bonus island west");
 
 // -------------Define constraints----------------------------------------
 
@@ -128,7 +129,11 @@ int avoidTCLong=rmCreateTypeDistanceConstraint("stay away from TC by far", "Town
 int islandConstraint=rmCreateClassDistanceConstraint("islands avoid each other", classIsland, 25.0);
 int islandConstraintLong=rmCreateClassDistanceConstraint("islands avoid each other long", classIsland, 55.0);
 int islandEdgeConstraint=rmCreatePieConstraint("island edge of map", 0.5, 0.5, 0, rmGetMapXSize()-5, 0, 0, 0);
-int bonusIslandConstraint=rmCreateClassDistanceConstraint("bonus islands avoid each other", classBonusIsland, 15.0);
+int eastBonusIslandConstraintShort=rmCreateClassDistanceConstraint("east bonus islands avoid each other short", classBonusIslandEast, 8.0);
+int eastBonusIslandConstraint=rmCreateClassDistanceConstraint("east bonus islands avoid each other", classBonusIslandEast, 35.0);
+
+int westBonusIslandConstraintShort=rmCreateClassDistanceConstraint("west bonus islands avoid each other short", classBonusIslandWest, 8.0);
+int westBonusIslandConstraint=rmCreateClassDistanceConstraint("west bonus islands avoid each other", classBonusIslandWest, 35.0);
 
 // Resource constraints - Fish, whales, forest, mines, nuggets, and sheep
 int avoidFish1=rmCreateTypeDistanceConstraint("fish v fish", fish1, 20.0);	
@@ -453,7 +458,7 @@ rmSetAreaMix(bonusIsland1, baseMix);
     rmAddAreaTerrainLayer(bonusIsland1, "caribbean\ground4_crb", 2, 4);
     rmAddAreaTerrainLayer(bonusIsland1, "caribbean\ground3_crb", 4, 6);
     rmAddAreaTerrainLayer(bonusIsland1, "caribbean\ground2_crb", 6, 8);
-rmAddAreaToClass(bonusIsland1, classBonusIsland);
+rmAddAreaToClass(bonusIsland1, classBonusIslandWest);
 rmSetAreaObeyWorldCircleConstraint(bonusIsland1, false);
 rmSetAreaElevationType(bonusIsland1, cElevTurbulence);
 rmSetAreaElevationVariation(bonusIsland1, 4.0);
@@ -462,7 +467,8 @@ rmSetAreaElevationOctaves(bonusIsland1, 3);
 rmSetAreaElevationPersistence(bonusIsland1, 0.2);
 rmSetAreaElevationNoiseBias(bonusIsland1, 1);
 rmAddAreaConstraint(bonusIsland1, islandConstraintLong);
-rmAddAreaConstraint(bonusIsland1, bonusIslandConstraint);
+rmAddAreaConstraint(bonusIsland1, westBonusIslandConstraintShort);
+rmAddAreaConstraint(bonusIsland1, eastBonusIslandConstraint);
 rmAddAreaConstraint(bonusIsland1, islandAvoidTradeRoute);
 rmSetAreaLocation(bonusIsland1, .5, .8);  
 
@@ -478,7 +484,7 @@ rmSetAreaMix(bonusIsland2, baseMix);
     rmAddAreaTerrainLayer(bonusIsland2, "caribbean\ground4_crb", 2, 4);
     rmAddAreaTerrainLayer(bonusIsland2, "caribbean\ground3_crb", 4, 6);
     rmAddAreaTerrainLayer(bonusIsland2, "caribbean\ground2_crb", 6, 8);
-rmAddAreaToClass(bonusIsland2, classBonusIsland);
+rmAddAreaToClass(bonusIsland2, classBonusIslandEast);
 rmSetAreaObeyWorldCircleConstraint(bonusIsland2, false);
 rmSetAreaElevationType(bonusIsland2, cElevTurbulence);
 rmSetAreaElevationVariation(bonusIsland2, 2.0);
@@ -487,7 +493,8 @@ rmSetAreaElevationOctaves(bonusIsland2, 3);
 rmSetAreaElevationPersistence(bonusIsland2, 0.2);
 rmSetAreaElevationNoiseBias(bonusIsland2, 1);
 rmAddAreaConstraint(bonusIsland2, islandConstraintLong);
-rmAddAreaConstraint(bonusIsland2, bonusIslandConstraint);
+rmAddAreaConstraint(bonusIsland2, eastBonusIslandConstraintShort);
+rmAddAreaConstraint(bonusIsland2, westBonusIslandConstraint);
 rmAddAreaConstraint(bonusIsland2, islandAvoidTradeRoute);
 rmSetAreaLocation(bonusIsland2, .5, .2);  
 
@@ -502,7 +509,7 @@ rmSetAreaMix(bonusIsland3, baseMix);
     rmAddAreaTerrainLayer(bonusIsland3, "caribbean\ground4_crb", 2, 4);
     rmAddAreaTerrainLayer(bonusIsland3, "caribbean\ground3_crb", 4, 6);
     rmAddAreaTerrainLayer(bonusIsland3, "caribbean\ground2_crb", 6, 8);
-rmAddAreaToClass(bonusIsland3, classBonusIsland);
+rmAddAreaToClass(bonusIsland3, classBonusIslandWest);
 rmSetAreaObeyWorldCircleConstraint(bonusIsland3, false);
 rmSetAreaElevationType(bonusIsland3, cElevTurbulence);
 rmSetAreaElevationVariation(bonusIsland3, 2.0);
@@ -511,7 +518,8 @@ rmSetAreaElevationOctaves(bonusIsland3, 3);
 rmSetAreaElevationPersistence(bonusIsland3, 0.2);
 rmSetAreaElevationNoiseBias(bonusIsland3, 1);
 rmAddAreaConstraint(bonusIsland3, islandConstraintLong);
-rmAddAreaConstraint(bonusIsland3, bonusIslandConstraint);
+rmAddAreaConstraint(bonusIsland3, eastBonusIslandConstraint);
+rmAddAreaConstraint(bonusIsland3, westBonusIslandConstraintShort);
 rmAddAreaConstraint(bonusIsland3, islandAvoidTradeRoute);
 rmSetAreaLocation(bonusIsland3, .2, .5);  
 
@@ -526,7 +534,7 @@ rmSetAreaMix(bonusIsland4, baseMix);
     rmAddAreaTerrainLayer(bonusIsland4, "caribbean\ground4_crb", 2, 4);
     rmAddAreaTerrainLayer(bonusIsland4, "caribbean\ground3_crb", 4, 6);
     rmAddAreaTerrainLayer(bonusIsland4, "caribbean\ground2_crb", 6, 8);
-rmAddAreaToClass(bonusIsland4, classBonusIsland);
+rmAddAreaToClass(bonusIsland4, classBonusIslandEast);
 rmSetAreaObeyWorldCircleConstraint(bonusIsland4, false);
 rmSetAreaElevationType(bonusIsland4, cElevTurbulence);
 rmSetAreaElevationVariation(bonusIsland4, 2.0);
@@ -535,7 +543,8 @@ rmSetAreaElevationOctaves(bonusIsland4, 3);
 rmSetAreaElevationPersistence(bonusIsland4, 0.2);
 rmSetAreaElevationNoiseBias(bonusIsland4, 1);
 rmAddAreaConstraint(bonusIsland4, islandConstraintLong);
-rmAddAreaConstraint(bonusIsland4, bonusIslandConstraint);
+rmAddAreaConstraint(bonusIsland4, eastBonusIslandConstraintShort);
+rmAddAreaConstraint(bonusIsland4, westBonusIslandConstraint);
 rmAddAreaConstraint(bonusIsland4, islandAvoidTradeRoute);
 rmSetAreaLocation(bonusIsland4, .8, .5);  
 
@@ -3739,7 +3748,6 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
-
 
 
 // Testing
