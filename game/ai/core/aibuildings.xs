@@ -980,6 +980,7 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 
    // AssertiveWall: First, check every dock and make sure it has a tower nearby. If it doesn't, use that as 
    //                the testVec
+   //    NOTE: the part about bestvec and getting the tower on those parts that jut out is currently written but not used
    int dockQuery = createSimpleUnitQuery(gDockUnit, cPlayerRelationAlly, cUnitStateAlive);
    int dockNumber = kbUnitQueryExecute(dockQuery);   
    vector tempVec = cInvalidVector;
