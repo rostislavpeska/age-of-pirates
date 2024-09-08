@@ -102,6 +102,12 @@ minInterval 1
       cvOkToGatherGold = false;      // Setting it false will turn off gold gathering. True turns it on.
       cvOkToGatherWood = false;      // Setting it false will turn off wood gathering. True turns it on.
       gHomeBase = kbGetPlayerStartingPosition(cMyID);
+
+      // Atolls are a subset of Archipelago
+      if (cRandomMapName == "zpatols")
+      {
+         gIsAtollMap = true;
+      }
    }
 
    // AssertiveWall: Migration style maps

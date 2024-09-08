@@ -2362,9 +2362,16 @@ minInterval 5
          }
          if (gIsArchipelagoMap == true)
          {
-            xsEnableRule("moveArchipelagoBase");
             //xsEnableRule("generalTransportFailsafe");
             xsEnableRule("moveOutOfWayVil");
+            if (gIsAtollMap == true)
+            {
+               // Special atoll rules go here
+            }
+            else
+            {
+               xsEnableRule("moveArchipelagoBase");
+            }
          }         
       }
 

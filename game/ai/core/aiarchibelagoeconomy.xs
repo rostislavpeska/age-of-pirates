@@ -3285,6 +3285,14 @@ vector analyzeEnemyIslandsToAttackByShip()
 	return (bestAreaGroupLocation);
 }
 
+void navalIslandAttackPlanHandler(int planID = -1)
+{
+   if (aiPlanGetState(planID) == -1)
+   {
+      // Done so reset the global.
+      gIslandAttackPlan = -1;
+   }
+}
 
 //==============================================================================
 //
@@ -3298,7 +3306,8 @@ inactive
 minInterval 25
 {
 	// We're allowed to attack and don't have any active water attacks
-	if (gNavyAttackPlan < 0)
+
+	if (gIslandAttackPlan < 0)
 	{
 		vector enemyIslandLoc = analyzeEnemyIslandsToAttackByShip();
 		if (enemyIslandLoc != cInvalidVector)
@@ -3307,7 +3316,7 @@ minInterval 25
 			int navalTargetPlayer = kbUnitGetPlayerID(targetBuildingID);
 
 			int towerNum = getUnitCountByLocation(gTowerUnit, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
-         			enemyIslandLoc, 40.0);
+					enemyIslandLoc, 40.0);
 			int warshipNum = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
 					enemyIslandLoc, 40.0);
 			int fortNum = getUnitCountByLocation(cUnitTypeAbstractFort, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
@@ -3316,9 +3325,9 @@ minInterval 25
 					enemyIslandLoc, 40.0);
 			int shipMin = 1 + towerNum + warshipNum + 3 * fortNum;
 			int shipDesired = 2 + 2 * towerNum + warshipNum + 4 * fortNum + artyNum;
-			if (shipMin > 5)
+			if (shipMin > 4)
 			{
-				shipMin = 5;  // Don't let this get too out of hand
+				shipMin = 4;  // Don't let this get too out of hand
 			}
 			if (civIsNative() == true)
 			{
@@ -3326,39 +3335,41 @@ minInterval 25
 				shipDesired = 4 * shipDesired;
 			}
 			
-			gNavyAttackPlan = aiPlanCreate("NAVAL Island Attack Player: " + navalTargetPlayer + ", targetBuildingID: " + targetBuildingID, cPlanCombat);
+			gIslandAttackPlan = aiPlanCreate("NAVAL Island Attack Player: " + navalTargetPlayer + ", targetBuildingID: " + targetBuildingID, cPlanCombat);
 			
-			aiPlanAddUnitType(gNavyAttackPlan, cUnitTypeAbstractWarShip, shipMin, shipDesired, 200);
-			aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
-			aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
-			aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanTargetPlayerID, 0, navalTargetPlayer);
-			aiPlanSetVariableVector(gNavyAttackPlan, cCombatPlanTargetPoint, 0, enemyIslandLoc);
-			aiPlanSetVariableVector(gNavyAttackPlan, cCombatPlanGatherPoint, 0, gNavyVec);
-			aiPlanSetVariableFloat(gNavyAttackPlan, cCombatPlanGatherDistance, 0, 40.0);
-			aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternRandom);
-			aiPlanSetDesiredPriority(gNavyAttackPlan, 60); // Per the chart
+			aiPlanAddUnitType(gIslandAttackPlan, cUnitTypeAbstractWarShip, shipMin, shipDesired, 200);
+			//aiPlanAddUnitType(gIslandAttackPlan, cUnitTypeAbstractWarShip, 1, shipDesired, 200);
+
+			aiPlanSetVariableInt(gIslandAttackPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
+			aiPlanSetVariableInt(gIslandAttackPlan, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+			aiPlanSetVariableInt(gIslandAttackPlan, cCombatPlanTargetPlayerID, 0, navalTargetPlayer);
+			aiPlanSetVariableVector(gIslandAttackPlan, cCombatPlanTargetPoint, 0, enemyIslandLoc);
+			aiPlanSetVariableVector(gIslandAttackPlan, cCombatPlanGatherPoint, 0, gNavyVec);
+			aiPlanSetVariableFloat(gIslandAttackPlan, cCombatPlanGatherDistance, 0, 40.0);
+			aiPlanSetVariableInt(gIslandAttackPlan, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternRandom);
+			aiPlanSetDesiredPriority(gIslandAttackPlan, 60); // Per the chart
 
 
 			if (cDifficultyCurrent >= cDifficultyModerate)
 			{
-				aiPlanSetVariableBool(gNavyAttackPlan, cCombatPlanAllowMoreUnitsDuringAttack, 0, true);
-				aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanRefreshFrequency, 0, 300);
+				aiPlanSetVariableBool(gIslandAttackPlan, cCombatPlanAllowMoreUnitsDuringAttack, 0, true);
+				aiPlanSetVariableInt(gIslandAttackPlan, cCombatPlanRefreshFrequency, 0, 300);
 			}
 			else
 			{
-				aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanRefreshFrequency, 0, 1000);
+				aiPlanSetVariableInt(gIslandAttackPlan, cCombatPlanRefreshFrequency, 0, 1000);
 			}
 
-			aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeNoTarget);
-			aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
-			aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanNoTargetTimeout, 0, 30000);
-			aiPlanSetBaseID(gNavyAttackPlan, kbUnitGetBaseID(getUnit(gDockUnit, cMyID, cUnitStateAlive)));
-			aiPlanSetInitialPosition(gNavyAttackPlan, gNavyVec);
+			aiPlanSetVariableInt(gIslandAttackPlan, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeNoTarget);
+			aiPlanSetVariableInt(gIslandAttackPlan, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+			aiPlanSetVariableInt(gIslandAttackPlan, cCombatPlanNoTargetTimeout, 0, 10000);
+			aiPlanSetBaseID(gIslandAttackPlan, kbUnitGetBaseID(getUnit(gDockUnit, cMyID, cUnitStateAlive)));
+			aiPlanSetInitialPosition(gIslandAttackPlan, gNavyVec);
 
-			aiPlanSetActive(gNavyAttackPlan);
+			aiPlanSetActive(gIslandAttackPlan);
 			gLastNavalAttackTime = xsGetTime();
 
-			aiPlanSetEventHandler(gNavyAttackPlan, cPlanEventStateChange, "navalAttackPlanHandler");
+			aiPlanSetEventHandler(gIslandAttackPlan, cPlanEventStateChange, "navalIslandAttackPlanHandler");
 		}
 	}
 

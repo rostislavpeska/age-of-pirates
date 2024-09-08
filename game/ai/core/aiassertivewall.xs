@@ -4885,9 +4885,13 @@ void checkAttackDefenseMap(void)
 */
 //==============================================================================
 
-vector getRandomIsland()
+vector getRandomIsland(vector startingLoc = cInvalidVector)
 {
-   vector startingLoc = kbGetPlayerStartingPosition(cMyID);
+   if (startingLoc == cInvalidVector)
+   {
+      startingLoc = kbGetPlayerStartingPosition(cMyID);
+   }
+
    int startingAreaID = kbAreaGetIDByPosition(startingLoc);
    vector testLoc = cInvalidVector;
    int testAreaID = -1;
@@ -8310,6 +8314,13 @@ minInterval 10
 //==============================================================================
 bool amphibiousAssault(vector location = cInvalidVector)
 {
+   // Note: temporarily turning this off on archipelago maps
+   if (gIsArchipelagoMap == true)
+   {
+      return false;
+   }
+
+
    if (gAmphibiousAssaultStage > cGatherNavy)
    {  // Already running
       return false;
