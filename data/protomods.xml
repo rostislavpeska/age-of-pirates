@@ -24401,8 +24401,8 @@
     <portraiticon>resources\art\units\animals\dolphin\dolphin_portrait.png</portraiticon>
     <rollovertextid>301276</rollovertextid>
     <shortrollovertextid>301277</shortrollovertextid>
-    <initialhitpoints>195.0000</initialhitpoints>
-    <maxhitpoints>195.0000</maxhitpoints>
+    <initialhitpoints>225.0000</initialhitpoints>
+    <maxhitpoints>225.0000</maxhitpoints>
     <los>10.0000</los>
     <unitaitype>HandCombative</unitaitype>
     <trainpoints>10.0000</trainpoints>
@@ -33364,6 +33364,81 @@
       <damage>6.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
+    </protoaction>
+  </unit>
+  <unit id="20448" name="zpRedNeckedWallaby">
+    <dbid>20448</dbid>
+    <displaynameid>301695</displaynameid>
+    <editornameid>301696</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <maxvelocity>8.0000</maxvelocity>
+    <maxrunvelocity>10.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <wanderdistance>50</wanderdistance>
+    <animfile>units\animals\wallaby\wallaby.xml</animfile>
+    <impacttype>Animal</impacttype>
+    <icon>resources\art\units\animals\wallaby\wallaby_icon.png</icon>
+    <portraiticon>resources\art\units\animals\wallaby\wallaby_portrait.png</portraiticon>
+    <rollovertextid>301187</rollovertextid>
+    <shortrollovertextid>301697</shortrollovertextid>
+    <initialhitpoints>20.0000</initialhitpoints>
+    <maxhitpoints>20.0000</maxhitpoints>
+    <los>5.0000</los>
+    <unitaitype>Passive</unitaitype>
+    <trainpoints>75.0000</trainpoints>
+    <buildlimit>50</buildlimit>
+    <sharedbuildlimitunit>RedNeckedWallaby</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>RedNeckedWallaby</unittype>
+    </sharedbuildlimitunittypes>
+    <communityplazaweight>0.3334</communityplazaweight>
+    <initialresource resourcetype="Food">300.0000</initialresource>
+    <resourcedecay>0.7500</resourcedecay>
+    <resourcesubtype>meat</resourcesubtype>
+     <minimapcolor red="0.5000" blue="0.2500" green="0.2000">
+    </minimapcolor>
+    <gathererlimit>8</gathererlimit>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>Huntable</unittype>
+    <unittype>AnimalPrey</unittype>
+    <unittype>HuntedResource</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Unit</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>CorpseDecays</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>RMCanRotate</flag>
+    <flag>Wanders</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogOnlyAfterSeen</flag>
+    <flag>CivSpecificText</flag>
+    <flag>Tracked</flag>
+    <flag>InvulnerableToAreaDamage</flag>
+    <tactics>hunt.tactics</tactics>
+    <protoaction>
+      <name>ShrineGather</name>
+      <rate type="AbstractShrine">0.066500</rate>
+    </protoaction>
+    <protoaction>
+      <name>HaciendaGather</name>
+      <rate type="deHacienda">1.000000</rate>
+      <rate type="deHacienda" resource="Food">0.166667</rate>
+      <rate type="deHacienda" resource="Gold">0.113334</rate>
+      <rate type="deHacienda" resource="Wood">0.250000</rate>
     </protoaction>
   </unit>
 
