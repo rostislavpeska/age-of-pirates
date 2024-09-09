@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapinfo details="301693" displayNameID="301692" loadDetails="301694" largeMapName = "melanesiaLarge"
+    imagepath="ui\random_map\melanesia\melanesia_mini" cannotReplace="" loadBackground="ui\random_map\melanesia\melanesia_map">
+    <loadss>ui\random_map\melanesia\melanesia_01</loadss>
+    <loadss>ui\random_map\melanesia\melanesia_02</loadss>
+    <loadss>ui\random_map\melanesia\melanesia_03</loadss>
+</mapinfo>
