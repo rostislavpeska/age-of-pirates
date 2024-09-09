@@ -15801,6 +15801,102 @@
     </effects>
   </tech>
 
+  <tech name="zpVolcanoActiveB" type="Normal">
+    <dbid>40721</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" action="SpawnVolcano" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpVolcanoSpawnerB">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCVolcanoFireB" fromprotoid="zpSPCVolcanoFireSpawnerB">
+      </effect>
+      <effect type="Data" action="CannonAttackShort" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackUltraShort" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackMedium" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackUltraLong" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVolcanoPassiveB" type="Normal">
+    <dbid>40722</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpSPCVolcanoPassive" fromprotoid="zpSPCVolcano">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCVolcanoFireSpawnerB" fromprotoid="zpSPCVolcanoFireB">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSpawnVolcanoB" type="Normal">
+    <dbid>40723</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnVolcano" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpVolcanoSpawnerB">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpMelanesiaVolcano" type="Normal">
+    <dbid>40724</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="CannonAttackMedium" amount="90.00" subtype="MaximumRange" relativity="Assign">
+        <target type="ProtoUnit">NatMantlet</target>
+      </effect>
+      <effect type="Data" action="CannonAttackLong" amount="110.00" subtype="MaximumRange" relativity="Assign">
+        <target type="ProtoUnit">NatMantlet</target>
+      </effect>
+      <effect type="Data" action="CannonAttackUltraLong" amount="135.00" subtype="MaximumRange" relativity="Assign">
+        <target type="ProtoUnit">NatMantlet</target>
+      </effect>
+      <effect type="Data" action="CannonAttackXXLong" amount="165.00" subtype="MaximumRange" relativity="Assign">
+        <target type="ProtoUnit">NatMantlet</target>
+      </effect>
+      <effect type ="Data" amount ="0.80" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpMapOceania" type="Normal">
+    <dbid>40725</dbid>
+    <status>UNOBTAINABLE</status>
+    <effects>
+			<effect type="TechStatus" status="active">YPEnableAsianNativeOutpost</effect>
+		</effects>
+  </tech>
+  <tech name="zpMapOceaniab" type="Normal">
+    <dbid>40726</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPEnableAsianNativeOutpost</techstatus>
+      <techstatus status="Active">zpMapOceania</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">ypTradeRouteUpgrade1</effect>
+      <effect type="TechStatus" status="unobtainable">ypTradeRouteUpgrade2</effect>
+		</effects>
+  </tech>
+
 
 
   
