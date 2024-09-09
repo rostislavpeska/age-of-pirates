@@ -2235,7 +2235,8 @@ bool isDefendingOrAttacking()
              (existingPlanID != gCoastalGunPlan) &&
              (existingPlanID != gforwardArmyPlan) &&    // AssertiveWall: Added the forward base army plan
              (existingPlanID != gEndlessWaterRaidPlan) && // AssertiveWall: Don't stop if there's navy attack plans
-             (existingPlanID != gRaidPlanID))            // AssertiveWall: Allow simultaneous raids
+             (existingPlanID != gRaidPlanID) &&          // AssertiveWall: Allow simultaneous raids
+             (existingPlanID != gIslandAttackPlan))            
          {
             debugUtilities("isDefendingOrAttacking: don't create another combat plan because we already have one named: "
                + aiPlanGetName(existingPlanID));
@@ -2249,7 +2250,8 @@ bool isDefendingOrAttacking()
              (existingPlanID != gCoastalGunPlan) && 
              (existingPlanID != gEndlessWaterRaidPlan) &&
              (existingPlanID != gforwardArmyPlan) &&    // AssertiveWall: Added the forward base army plan
-             (existingPlanID != gRaidPlanID))     // AssertiveWall: Allow simultaneous raids
+             (existingPlanID != gRaidPlanID) &&     // AssertiveWall: Allow simultaneous raids
+             (existingPlanID != gIslandAttackPlan))
          {
             debugUtilities("isDefendingOrAttacking: don't create another combat plan because we already have one named: "
                + aiPlanGetName(existingPlanID));

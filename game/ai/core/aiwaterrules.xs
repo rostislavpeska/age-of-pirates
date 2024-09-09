@@ -9,6 +9,24 @@
 */
 //==============================================================================
 
+//==============================================================================
+/* forwardIslandTower
+
+   Grabs random unoccupied islands and plops down a tower on it. Useful for 
+   maps with lots of islands
+
+*/
+//==============================================================================
+rule forwardIslandTower
+inactive
+minInterval 5
+{
+   int radiusOfInfluence = -1;
+   vector mainBaseLoc = cInvalidVector;
+
+   // Find a good 
+   //getRandomIsland
+}
 
 //==============================================================================
 /* childTransportRule
@@ -50,6 +68,11 @@ minInterval 5
       existingPlanID = aiPlanGetIDByActiveIndex(i);
       if (aiPlanGetParentID(existingPlanID) < 0) // No parent so it's not a child plan
       {
+         continue;
+      }
+
+      if (aiPlanGetNumberUnits(existingPlanID, cUnitTypeAbstractWarShip) > 0)
+      {  // This plan is laready using warships for whatever it is doing
          continue;
       }
 

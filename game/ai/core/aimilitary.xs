@@ -128,64 +128,23 @@ inactive
 void addUnitsToMilitaryPlan(int planID = -1)
 {
    // TODO: don't always task the full army, leave some behind if the enemy is weak or we need more defense
-   if ((gRevolutionType & cRevolutionFinland) == 0)// && gStartOnDifferentIslands == false)
+   if ((gRevolutionType & cRevolutionFinland) == 0)
    {
       aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
       return;
    }
-   // AssertiveWall: undo this for now
-      int vilQueryID = -1;
-      int numberVilWanted = 2;
-      int unitID = -1;
-      int unitPlanID = -1;
-      vector unitLoc = cInvalidVector;
-      int numberAdded = 0;
-   /*else if ((gRevolutionType & cRevolutionFinland) == 0 && gStartOnDifferentIslands == true)
-   {
-      aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
-      //aiPlanSetNoMoreUnits(planID, true);  somehow we reach here?
-
-      //AssertiveWall: Only add units on the mainland for island maps.
-      int armyQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
-      int numberFound = kbUnitQueryExecute(armyQueryID);
-      int vilQueryID = -1;
-      int numberVilWanted = 2;
-      int unitID = -1;
-      int unitPlanID = -1;
-      vector unitLoc = cInvalidVector;
-      int numberAdded = 0;
-      int mainBaseAreaGroup = kbAreaGroupGetIDByPosition(kbGetPlayerStartingPosition(cMyID));
-
-      for (i = 0; < numberFound)
-      {
-         unitID = kbUnitQueryGetResult(armyQueryID, i);
-         unitPlanID = kbUnitGetPlanID(unitID);
-         if (aiPlanGetDesiredPriority(unitPlanID) >= 99)           // Already in the plan or on a transport
-         {
-            continue;
-         }
-         // Make sure the unit is on the mainland
-         unitLoc = kbUnitGetPosition(unitID);
-         if (kbAreAreaGroupsPassableByLand(mainBaseAreaGroup, kbAreaGroupGetIDByPosition(unitLoc)) == false)
-         {
-            continue;
-         }
-         numberAdded = numberAdded + 1;
-         aiPlanAddUnit(planID, unitID);
-      }
-   }*/
 
    // For the finland revolution, keep some karelian jaegers around to sustain the economy
    int numberAvailableEconUnits = 0;
    int queryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
-   int numberAvailFound = kbUnitQueryExecute(queryID);
+   int numberFound = kbUnitQueryExecute(queryID);
 
    aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 0);
 
    // Add each unit type individually
-   for (i = 0; < numberAvailFound)
+   for (i = 0; < numberFound)
    {
-      unitID = kbUnitQueryGetResult(queryID, i);
+      int unitID = kbUnitQueryGetResult(queryID, i);
       int puid = kbUnitGetProtoUnitID(unitID);
       if (puid == gEconUnit)
       {
@@ -1565,9 +1524,16 @@ minInterval 15
          xsEnableRule("attackRetreatDelay");
       }
       else
-      {  // AssertiveWall: Make sure plan can retreat
+      {  // AssertiveWall: Make sure plan can retreat on water maps
          aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeBaseGone);
          aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+         aiPlanSetVariableBool(planID, cCombatPlanAllowMoreUnitsDuringAttack, 0, false);
+         
+         if (targetBaseID < 0)
+         {
+            aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget | aiPlanGetVariableInt(planID, cCombatPlanDoneMode, 0));
+            aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 30000);
+         }
       }
    }
    else 
