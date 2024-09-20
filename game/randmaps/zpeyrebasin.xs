@@ -1438,7 +1438,7 @@ string unitID6 = "258";
 string unitID7 = "308";
 string unitID8 = "358";
 int armoredTrainActive = 90;
-int armoredTrainCooldown = 10;
+int armoredTrainCooldown = 300;
 int armoredTrainCooldown2 = 240;
 
 // Ship Training

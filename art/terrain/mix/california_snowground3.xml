@@ -1,0 +1,15 @@
+<mix>
+  <title>California Snow Ground 3</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="10" persistence="0.5">
+    <texture weight="1">Africa\ground3_afr</texture>
+    <texture weight="1">Africa\ground4_afr</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="60" posoffset="0.5">
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_grass_01</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_shrub_01</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_grass_02</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_shrub_02</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_shrub_03</model>
+  </objects>
+</mix>

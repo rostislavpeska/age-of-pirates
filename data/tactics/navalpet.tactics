@@ -7,6 +7,7 @@
     <rate type="WaterGuardian">1.0 </rate>
     <rate type="AbstractDock">1.0 </rate>
     <rate type="AbstractFishingBoat">1.0 </rate>
+    <rate type="NavalPet">1.0 </rate>
     <attackaction>1</attackaction>
     <handlogic>1</handlogic>
     <speedboost>1</speedboost>

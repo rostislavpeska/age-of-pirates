@@ -24395,7 +24395,7 @@
     <maxrunvelocity>10.0000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>12.0000</turnrate>
-    <animfile>units\animals\dolphin\dolphin.xml</animfile>
+    <animfile>units\animals\bottlenose_dolphin\bottlenosedolphin.xml</animfile>
     <impacttype>Animal</impacttype>
     <icon>resources\art\units\animals\dolphin\dolphin_icon.png</icon>
     <portraiticon>resources\art\units\animals\dolphin\dolphin_portrait.png</portraiticon>
@@ -24432,6 +24432,7 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractPet</unittype>
+    <unittype>NavalPet</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
     <unittype>Ship</unittype>
     <flag>TieToWaterSurface</flag>

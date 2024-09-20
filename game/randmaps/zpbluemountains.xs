@@ -625,81 +625,145 @@ void main(void)
 	// Text
 	rmSetStatusText("",0.30);
 
-	// Inventors
+	// Inventors 1
 
-	int maltese1VillageTypeID = rmRandInt(5,6);
-	int maltese1ID = -1;
-	maltese1ID = rmCreateGrouping("maltese 1", "Scientist_Lab06");
-	rmSetGroupingMinDistance(maltese1ID, 0);
-	rmSetGroupingMaxDistance(maltese1ID, 40);
-	rmAddGroupingConstraint(maltese1ID, avoidWater30);
-	rmAddGroupingConstraint(maltese1ID, farAvoidTradeSockets);
-    rmAddGroupingConstraint(maltese1ID, avoidInventors);
-	rmAddGroupingConstraint(maltese1ID, avoidPenalColony);
-	rmAddGroupingConstraint(maltese1ID, mountainsIDsConstraint);
-    rmAddGroupingConstraint(maltese1ID, avoidImpassableLand);
-	rmAddGroupingConstraint(maltese1ID, avoidTradeSocketFar);
-	rmAddGroupingConstraint(maltese1ID, avoidTradeRouteFar3);
-	rmAddGroupingConstraint(maltese1ID, avoidKOTH);
-	
+	int scientistControllerID = rmCreateObjectDef("maltese controller 1");
+	rmAddObjectDefItem(scientistControllerID, "zpSPCWaterSpawnPoint", 1, 0.0);
+	rmSetObjectDefMinDistance(scientistControllerID, 0.0);
+	rmSetObjectDefMaxDistance(scientistControllerID, 20);
+	rmAddObjectDefConstraint(scientistControllerID, farAvoidTradeSockets);
+	rmAddObjectDefConstraint(scientistControllerID, avoidInventors);
+	rmAddObjectDefConstraint(scientistControllerID, avoidPenalColony);
+	rmAddObjectDefConstraint(scientistControllerID, avoidImpassableLand);
+	rmAddObjectDefConstraint(scientistControllerID, avoidTradeSocketFar);
+	rmAddObjectDefConstraint(scientistControllerID, avoidTradeRouteFar2);
+	rmPlaceObjectDefAtLoc(scientistControllerID, 0, 0.15, 0.48);
+	vector scientistControllerLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(scientistControllerID, 0));
 
-	int maltese2VillageTypeID = 11-maltese1VillageTypeID;
-	int maltese2ID = -1;
-	maltese2ID = rmCreateGrouping("maltese 2", "Scientist_Lab05");
-	rmSetGroupingMinDistance(maltese2ID, 0);
-	rmSetGroupingMaxDistance(maltese2ID, 40);
-	rmAddGroupingConstraint(maltese2ID, avoidWater30);
-	rmAddGroupingConstraint(maltese2ID, farAvoidTradeSockets);
-    rmAddGroupingConstraint(maltese2ID, avoidInventors);
-	rmAddGroupingConstraint(maltese2ID, mountainsIDsConstraint);
-	rmAddGroupingConstraint(maltese2ID, avoidPenalColony);
-    rmAddGroupingConstraint(maltese2ID, avoidImpassableLand);
-	rmAddGroupingConstraint(maltese2ID, avoidTradeSocketFar);
-	rmAddGroupingConstraint(maltese2ID, avoidTradeRouteFar3);
-	rmAddGroupingConstraint(maltese2ID, avoidKOTH);
+	int inventorVillage1 = rmCreateArea ("inventor village 1");
+	int inventorVillage2 = rmCreateArea ("inventor village 2");
+	int penalColony1 = rmCreateArea ("penal colony 1");
+	int penalColony2 = rmCreateArea ("penal colony 2");
 
-	rmPlaceGroupingAtLoc(maltese1ID, 0, 0.15, 0.5);
+	rmSetAreaSize(inventorVillage1, rmAreaTilesToFraction(450.0), rmAreaTilesToFraction(450.0));
+	rmSetAreaLocation(inventorVillage1, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc1)));
+	rmSetAreaCoherence(inventorVillage1, 0.8);
+	rmSetAreaBaseHeight(inventorVillage1, 9.0);
+	rmSetAreaSmoothDistance(inventorVillage1, 30);
+	rmSetAreaElevationType(inventorVillage1, cElevTurbulence);
+	rmSetAreaElevationPersistence(inventorVillage1, 0.2);
+	rmSetAreaElevationNoiseBias(inventorVillage1, 1);
+	rmSetAreaElevationVariation(inventorVillage1, 0.0);
+	rmSetAreaHeightBlend(inventorVillage1, 3.5);
+	rmBuildArea(inventorVillage1);
 
-	if (cNumberNonGaiaPlayers >3)
-		rmPlaceGroupingAtLoc(maltese2ID, 0, 0.65, 0.5);
+	int inventors1VillageID = -1;
+	inventors1VillageID = rmCreateGrouping("maltese 1", "Scientist_Lab06");
+	rmAddGroupingConstraint(inventors1VillageID, avoidImpassableLand);
+	rmPlaceGroupingAtLoc(inventors1VillageID, 0, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc1)), 1);
 
+	// Inventors 2
 
-	// Penal Colonies
+	if (cNumberNonGaiaPlayers >3){	
+		int scientistControllerID2 = rmCreateObjectDef("maltese controller 2");
+		rmAddObjectDefItem(scientistControllerID2, "zpSPCWaterSpawnPoint", 1, 0.0);
+		rmSetObjectDefMinDistance(scientistControllerID2, 0.0);
+		rmSetObjectDefMaxDistance(scientistControllerID2, 20);
+		rmAddObjectDefConstraint(scientistControllerID2, farAvoidTradeSockets);
+		rmAddObjectDefConstraint(scientistControllerID2, avoidInventors);
+		rmAddObjectDefConstraint(scientistControllerID2, avoidPenalColony);
+		rmAddObjectDefConstraint(scientistControllerID2, avoidImpassableLand);
+		rmAddObjectDefConstraint(scientistControllerID2, avoidTradeSocketFar);
+		rmAddObjectDefConstraint(scientistControllerID2, avoidTradeRouteFar2);
+		rmPlaceObjectDefAtLoc(scientistControllerID2, 0, 0.65, 0.52);
+		vector scientistControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(scientistControllerID2, 0));
+
+		rmSetAreaSize(inventorVillage2, rmAreaTilesToFraction(450.0), rmAreaTilesToFraction(450.0));
+		rmSetAreaLocation(inventorVillage2, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc2)));
+		rmSetAreaCoherence(inventorVillage2, 0.8);
+		rmSetAreaBaseHeight(inventorVillage2, 9.0);
+		rmSetAreaSmoothDistance(inventorVillage2, 30);
+		rmSetAreaElevationType(inventorVillage2, cElevTurbulence);
+		rmSetAreaElevationPersistence(inventorVillage2, 0.2);
+		rmSetAreaElevationNoiseBias(inventorVillage2, 1);
+		rmSetAreaElevationVariation(inventorVillage2, 0.0);
+		rmSetAreaHeightBlend(inventorVillage2, 3.5);
+		rmBuildArea(inventorVillage2);
+
+		int inventors2VillageID = -1;
+		inventors2VillageID = rmCreateGrouping("maltese 2", "Scientist_Lab05");
+		rmAddGroupingConstraint(inventors2VillageID, avoidImpassableLand);
+		rmPlaceGroupingAtLoc(inventors2VillageID, 0, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc2)), 1);      
+	}
+
+	// Penal Colony 1
+
+	int colonyControllerID = rmCreateObjectDef("maltese controller 3");
+	rmAddObjectDefItem(colonyControllerID, "zpSPCWaterSpawnPoint", 1, 0.0);
+	rmSetObjectDefMinDistance(colonyControllerID, 0.0);
+	rmSetObjectDefMaxDistance(colonyControllerID, 20);
+	rmAddObjectDefConstraint(colonyControllerID, farAvoidTradeSockets);
+	rmAddObjectDefConstraint(colonyControllerID, avoidInventors);
+	rmAddObjectDefConstraint(colonyControllerID, avoidPenalColony);
+	rmAddObjectDefConstraint(colonyControllerID, avoidImpassableLand);
+	rmAddObjectDefConstraint(colonyControllerID, avoidTradeSocketFar);
+	rmAddObjectDefConstraint(colonyControllerID, avoidTradeRouteFar2);
+	rmPlaceObjectDefAtLoc(colonyControllerID, 0, 0.85, 0.52);
+	vector colonyControllerLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(colonyControllerID, 0));
+
+	rmSetAreaSize(penalColony1, rmAreaTilesToFraction(450.0), rmAreaTilesToFraction(450.0));
+	rmSetAreaLocation(penalColony1, rmXMetersToFraction(xsVectorGetX(colonyControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(colonyControllerLoc1)));
+	rmSetAreaCoherence(penalColony1, 0.8);
+	rmSetAreaBaseHeight(penalColony1, 9.0);
+	rmSetAreaSmoothDistance(penalColony1, 30);
+	rmSetAreaElevationType(penalColony1, cElevTurbulence);
+	rmSetAreaElevationPersistence(penalColony1, 0.2);
+	rmSetAreaElevationNoiseBias(penalColony1, 1);
+	rmSetAreaElevationVariation(penalColony1, 0.0);
+	rmSetAreaHeightBlend(penalColony1, 3.5);
+	rmBuildArea(penalColony1);
 
 	int jewish1VillageTypeID = rmRandInt(1, 5);
 	int jewish2VillageTypeID = rmRandInt(1, 5);
 
-	int jewish1ID = rmCreateGrouping("jewish 1", "Penal_colony_0"+jewish1VillageTypeID);
-	int jewish2ID = rmCreateGrouping("jewish 2", "Penal_colony_0"+jewish2VillageTypeID);
+	int penalColonyVillage1ID = -1;
+	penalColonyVillage1ID = rmCreateGrouping("maltese 3", "Penal_colony_0"+jewish1VillageTypeID);
+	rmAddGroupingConstraint(penalColonyVillage1ID, avoidImpassableLand);
+	rmPlaceGroupingAtLoc(penalColonyVillage1ID, 0, rmXMetersToFraction(xsVectorGetX(colonyControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(colonyControllerLoc1)), 1);
 
-	rmSetGroupingMinDistance(jewish1ID, 0);
-	rmSetGroupingMaxDistance(jewish1ID, 40);
-	rmSetGroupingMinDistance(jewish2ID, 0);
-	rmSetGroupingMaxDistance(jewish2ID, 40);
+	// Penal Colony 2
 
-    rmAddGroupingConstraint(jewish1ID, avoidWater30);
-	rmAddGroupingConstraint(jewish1ID, farAvoidTradeSockets);
-    rmAddGroupingConstraint(jewish1ID, avoidInventorsLong);
-	rmAddGroupingConstraint(jewish1ID, avoidPenalColony);
-	rmAddGroupingConstraint(jewish1ID, mountainsIDsConstraint);
-	rmAddGroupingConstraint(jewish1ID, avoidTradeRouteFar3);
-    rmAddGroupingConstraint(jewish1ID, avoidImpassableLand);
-	rmAddGroupingConstraint(jewish1ID, avoidTradeSocketFar);
-	rmAddGroupingConstraint(jewish1ID, avoidKOTH);
-    rmAddGroupingConstraint(jewish2ID, avoidWater30);
-	rmAddGroupingConstraint(jewish2ID, farAvoidTradeSockets);
-    rmAddGroupingConstraint(jewish2ID, avoidInventorsLong);
-	rmAddGroupingConstraint(jewish2ID, avoidPenalColony);
-	rmAddGroupingConstraint(jewish2ID, mountainsIDsConstraint);
-	rmAddGroupingConstraint(jewish2ID, avoidTradeRouteFar3);
-    rmAddGroupingConstraint(jewish2ID, avoidImpassableLand);
-	rmAddGroupingConstraint(jewish2ID, avoidTradeSocketFar);
-	rmAddGroupingConstraint(jewish2ID, avoidKOTH);
+	if (cNumberNonGaiaPlayers >3){	
+		int colonyControllerID2 = rmCreateObjectDef("maltese controller 4");
+		rmAddObjectDefItem(colonyControllerID2, "zpSPCWaterSpawnPoint", 1, 0.0);
+		rmSetObjectDefMinDistance(colonyControllerID2, 0.0);
+		rmSetObjectDefMaxDistance(colonyControllerID2, 20);
+		rmAddObjectDefConstraint(colonyControllerID2, farAvoidTradeSockets);
+		rmAddObjectDefConstraint(colonyControllerID2, avoidInventors);
+		rmAddObjectDefConstraint(colonyControllerID2, avoidPenalColony);
+		rmAddObjectDefConstraint(colonyControllerID2, avoidImpassableLand);
+		rmAddObjectDefConstraint(colonyControllerID2, avoidTradeSocketFar);
+		rmAddObjectDefConstraint(colonyControllerID2, avoidTradeRouteFar2);
+		rmPlaceObjectDefAtLoc(colonyControllerID2, 0, 0.35, 0.48);
+		vector colonyControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(colonyControllerID2, 0));
 
-	rmPlaceGroupingAtLoc(jewish1ID, 0, 0.85, 0.5);
+		rmSetAreaSize(penalColony2, rmAreaTilesToFraction(450.0), rmAreaTilesToFraction(450.0));
+		rmSetAreaLocation(penalColony2, rmXMetersToFraction(xsVectorGetX(colonyControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(colonyControllerLoc2)));
+		rmSetAreaCoherence(penalColony2, 0.8);
+		rmSetAreaBaseHeight(penalColony2, 9.0);
+		rmSetAreaSmoothDistance(penalColony2, 30);
+		rmSetAreaElevationType(penalColony2, cElevTurbulence);
+		rmSetAreaElevationPersistence(penalColony2, 0.2);
+		rmSetAreaElevationNoiseBias(penalColony2, 1);
+		rmSetAreaElevationVariation(penalColony2, 0.0);
+		rmSetAreaHeightBlend(penalColony2, 3.5);
+		rmBuildArea(penalColony2);
 
-	if (cNumberNonGaiaPlayers >3)
-		rmPlaceGroupingAtLoc(jewish2ID, 0, 0.35, 0.5);
+		int penalColonyVillage2ID = -1;
+		penalColonyVillage2ID = rmCreateGrouping("maltese 4", "Penal_colony_0"+jewish2VillageTypeID);
+		rmAddGroupingConstraint(penalColonyVillage2ID, avoidImpassableLand);
+		rmPlaceGroupingAtLoc(penalColonyVillage2ID, 0, rmXMetersToFraction(xsVectorGetX(colonyControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(colonyControllerLoc2)), 1);      
+	}
 
 	
 
