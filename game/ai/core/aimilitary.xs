@@ -754,6 +754,8 @@ minInterval 15
    int crateFlagQuery = -1;
    int numberBasesProcessed = 0;
    int age = kbGetAge();
+   bool targetTransportRequired = false;  // AssertiveWall: only attack plans can transport
+   bool transportRequired = false;
 
    if (baseQuery < 0) // First run.
    {
@@ -1285,10 +1287,12 @@ minInterval 15
             affordable = (armyPower + militaryPower + buildingPower) / enemyMilitaryPower;
          }
          
-         // AssertiveWall: Don't do this on island maps
-         if (mainAreaGroup != baseAreaGroup && gStartOnDifferentIslands == false)
+         // AssertiveWall: Store whether we need a transport
+         transportRequired = false;
+         if (mainAreaGroup != baseAreaGroup)
          {
             distancePenalty = distancePenalty + 0.4;
+            transportRequired = true;
          }
          
          // AssertiveWall: Catch the distance penalty
@@ -1310,6 +1314,7 @@ minInterval 15
             targetDistancePenalty = distancePenalty;
             targetScore = score;
             targetShouldAttack = shouldAttack;
+            targetTransportRequired = transportRequired;
          }
 
          numberBasesProcessed++;
@@ -1388,7 +1393,7 @@ minInterval 15
    }*/
 
    vector gatherPoint = kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
-   if (targetIsEnemy == true)
+   if (targetIsEnemy == true || targetTransportRequired == true)  // AssertiveWall: only attack plans can transport
    {
       planID = aiPlanCreate("Attack Player " + targetPlayer + " Base " + targetBaseID, cPlanCombat);
 
@@ -1527,12 +1532,17 @@ minInterval 15
       {  // AssertiveWall: Make sure plan can retreat on water maps
          aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeBaseGone);
          aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
-         aiPlanSetVariableBool(planID, cCombatPlanAllowMoreUnitsDuringAttack, 0, false);
+         //aiPlanSetVariableBool(planID, cCombatPlanAllowMoreUnitsDuringAttack, 0, false);  // AssertiveWall: I think this might be causing issues with plan not getting a transport added?
          
          if (targetBaseID < 0)
          {
             aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget | aiPlanGetVariableInt(planID, cCombatPlanDoneMode, 0));
             aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 30000);
+         }
+
+         if (targetTransportRequired == true || gIsArchipelagoMap == true)
+         {
+            xsEnableRule("attackTimeoutTransportRequired");
          }
       }
    }

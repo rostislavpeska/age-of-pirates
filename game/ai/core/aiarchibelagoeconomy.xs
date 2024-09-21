@@ -256,13 +256,6 @@ bool resourceCloserToAlly(int resourceID = -1)
 	return(false);
 }
 
-int getAgingUpAge(void)
-{
-	if (agingUp() == true)
-		return(kbGetAge() + 1);
-	return(kbGetAge());
-}
-
 
 // ================================================================================
 //	getClosestUnit
@@ -3271,7 +3264,7 @@ vector analyzeEnemyIslandsToAttackByShip()
 		// Look for densely populated islands (typically small, easy to bombard with ships)
 		// Add a multiplier for the distance
 		dist = distance(tempAreaGroupLocation, gNavyVec);
-		int tempUnitCount = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationEnemy, cUnitStateAlive, 
+		int tempUnitCount = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
 											  tempAreaGroupLocation, 20);
 		tempDensity = 1.0 * tempUnitCount / (kbAreaGroupGetNumberAreas(areaGroup));// * dist);
 

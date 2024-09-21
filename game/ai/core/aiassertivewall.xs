@@ -21,6 +21,14 @@ minInterval 10
    //aiChat(1, "totalResources: " + totalResources + " totalUnit: " + totalUnit);
 }
 
+// Little function from NewMercies
+int getAgingUpAge(void)
+{
+	if (agingUp() == true)
+		return(kbGetAge() + 1);
+	return(kbGetAge());
+}
+
 //==============================================================================
 // getTeamAge
 // AssertiveWall: gets the average age of our team. Rounds down
@@ -61,6 +69,37 @@ int getTeamAge(bool ourTeam = true)
    averageAge = ageTotal / numPlayers;
 
    return (averageAge);
+}
+
+//==============================================================================
+/* updatePopEarlyMonitor
+
+   Watches for when we're aging up, and then updates the population counts
+   This is to ensure that the AI stops throttling its military after queuing
+   the age up. popManager() knows to calculate the age up via getAgingUpAge()
+*/
+//==============================================================================
+rule updatePopEarlyMonitor
+inactive
+group tcComplete
+minInterval 10
+{
+   static int numberOfHits = 0;
+
+   if (numberOfHits > kbGetAge())
+   {
+      return;
+   }
+   else if (agingUp() == true)
+   {
+      updateSettlersAndPopManager();
+      numberOfHits += 1;
+   }
+
+   if (kbGetAge() == cvMaxAge)
+   {
+      xsDisableSelf();
+   }
 }
 
 //==============================================================================
@@ -287,7 +326,6 @@ minInterval 10
       aiPlanSetVariableFloat(gRaidPlanID, cCombatPlanTargetEngageRange, 0, 25.0);
       aiPlanSetDesiredPriority(gRaidPlanID, 30);  // Lower than standard attack so they can join
       aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
-      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRefreshFrequency, 0, 300);
       aiPlanSetVariableInt(gRaidPlanID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat);
       aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOpportunistic);
       aiPlanSetVariableInt(gRaidPlanID, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternLRU);

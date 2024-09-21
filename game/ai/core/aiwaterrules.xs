@@ -24,9 +24,61 @@ minInterval 5
    int radiusOfInfluence = -1;
    vector mainBaseLoc = cInvalidVector;
 
-   // Find a good 
+   // Find a good island
    //getRandomIsland
 }
+
+
+//==============================================================================
+/* attackTimeoutTransportRequired
+   AssertiveWall: kills the transport plan if it doesn't leave the island after
+      too long
+
+*/
+//==============================================================================
+rule attackTimeoutTransportRequired
+inactive
+minInterval 10
+{
+   if (gLandAttackPlanID < 0)
+   {
+      // No attack plan to work with
+      xsDisableSelf();
+      return;
+   }
+
+   vector baseLocation = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   vector planLocation = aiPlanGetLocation(gLandAttackPlanID);
+   vector initialLocation = aiPlanGetInitialPosition(gLandAttackPlanID);
+
+   if (xsGetTime() > gLastAttackMissionTime + 600000)
+   {  // Ten minutes, just delete the plan
+      aiPlanDestroy(gLandAttackPlanID);
+      gLandAttackPlanID = -1;
+      xsDisableSelf();
+      return;
+   }
+   else if (xsGetTime() > gLastAttackMissionTime + 120000)
+   {  // Two minutes, check if we're still stuck on main base location or the plan's initial position
+      if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(planLocation), 
+                     kbAreaGroupGetIDByPosition(baseLocation)) == true)
+      {
+         aiPlanDestroy(gLandAttackPlanID);
+         gLandAttackPlanID = -1;
+         xsDisableSelf();
+         return;
+      }
+      else if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(planLocation), 
+                     kbAreaGroupGetIDByPosition(initialLocation)) == true)
+      {
+         aiPlanDestroy(gLandAttackPlanID);
+         gLandAttackPlanID = -1;
+         xsDisableSelf();
+         return;
+      }
+   }
+}
+
 
 //==============================================================================
 /* childTransportRule
