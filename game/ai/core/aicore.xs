@@ -2364,6 +2364,7 @@ minInterval 5
          {
             //xsEnableRule("generalTransportFailsafe");
             xsEnableRule("moveOutOfWayVil");
+            xsEnableRule("forwardIslandTower");
             if (gIsAtollMap == true)
             {
                // Special atoll rules go here

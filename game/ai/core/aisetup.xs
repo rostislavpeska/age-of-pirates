@@ -1174,15 +1174,18 @@ void analyzeMap()
    {
       if (cRandomMapName == "euArchipelago" ||
          cRandomMapName == "euArchipelagoLarge"||
-         cRandomMapName == "zpmediterranean" ||
-         cRandomMapName == "zpatols" ||
-         cRandomMapName == "zpkurils")
+         cRandomMapName == "euMediterranean")
       {
          gIsArchipelagoMap = true;
          cvOkToGatherFood = false;      // Setting it false will turn off food gathering. True turns it on.
          cvOkToGatherGold = false;      // Setting it false will turn off gold gathering. True turns it on.
          cvOkToGatherWood = false;      // Setting it false will turn off wood gathering. True turns it on.
          gHomeBase = kbGetPlayerStartingPosition(cMyID);
+
+         if (cRandomMapName == "euMediterranean")
+         {
+            gIsAtollMap = true;
+         }
       }
    }
 

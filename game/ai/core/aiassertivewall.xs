@@ -21,7 +21,12 @@ minInterval 10
    //aiChat(1, "totalResources: " + totalResources + " totalUnit: " + totalUnit);
 }
 
-// Little function from NewMercies
+
+//==============================================================================
+// getAgingUpAge
+// Little function from NewMercies to get your current age, or the one you are 
+// aging into
+//==============================================================================
 int getAgingUpAge(void)
 {
 	if (agingUp() == true)
@@ -4913,75 +4918,6 @@ void checkAttackDefenseMap(void)
    }
 }
 
-
-
-//==============================================================================
-/* getRandomIsland
-   AssertiveWall: Searches through tiles around your island and gives a location 
-   of the closest island that's not another player's starting island
-   In use by archipelago build placement
-*/
-//==============================================================================
-
-vector getRandomIsland(vector startingLoc = cInvalidVector)
-{
-   if (startingLoc == cInvalidVector)
-   {
-      startingLoc = kbGetPlayerStartingPosition(cMyID);
-   }
-
-   int startingAreaID = kbAreaGetIDByPosition(startingLoc);
-   vector testLoc = cInvalidVector;
-   int testAreaID = -1;
-   float j = 0.0;
-   float k = 0.0;
-   int m = 0;
-   int occupiedFriendly = 0;
-   int occupiedEnemy = 0;
-
-
-   for (i = 0; < 200)
-   {
-      testLoc = startingLoc;
-      // Get a random vector near our base
-      if (i < 100)
-      {
-         m = i;
-      }
-      else
-      {
-         m = i - 100;
-      }
-      j = m * kbGetMapXSize() / 150.0; // Normalized for RM map area
-      k = m * kbGetMapZSize() / 150.0;
-      testLoc = xsVectorSet(xsVectorGetX(testLoc) + aiRandFloat(0.0 - j, j), 0.0, 
-                xsVectorGetZ(testLoc) + aiRandFloat(0.0 - k, k));
-      
-      testAreaID = kbAreaGetIDByPosition(testLoc);
-
-      // Check how occupied it is. 
-      occupiedFriendly = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAlly, cUnitStateAlive, testLoc, 50.0);
-      occupiedEnemy = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, testLoc, 50.0);
-      
-      if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(testLoc), kbAreaGroupGetIDByPosition(startingLoc)) == false
-            && kbAreaGetType(kbAreaGetIDByPosition(testLoc)) != cAreaTypeWater)
-      {      
-         // Past 100, take whatever we can get that isn't home base
-         if (i > 100)
-         {
-            return testLoc;
-         }
-
-         // If it isn't occupied by anyone, try and take it
-         if (occupiedFriendly <= 0 && occupiedEnemy <= 0)
-         {
-            return testLoc;
-         }
-      }
-   }
-   // Prefer to return something valid if no islands can be found
-   return startingLoc;
-}
 
 
 
