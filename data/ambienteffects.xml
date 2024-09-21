@@ -68,6 +68,8 @@
       <type>fertilecrescent</type>
       <type>yellowRiver</type>
       <type>borneo</type>
+      <type>melanesia</type>
+      <type>guinea</type>
       <type>japan</type>
       <type>mongolia</type>
       <type>himalayas</type>
@@ -223,6 +225,8 @@
       <type>caribbean</type>
       <type>australia</type>
       <type>hawaii</type>
+      <type>melanesia</type>
+      <type>guinea</type>
     </maptypes>
     <minspawntime>50</minspawntime>
     <maxspawntime>200</maxspawntime>
@@ -244,6 +248,8 @@
       <type>australia</type>
       <type>newzealand</type>
       <type>hawaii</type>
+      <type>melanesia</type>
+      <type>guinea</type>
     </maptypes>
     <minspawntime>50</minspawntime>
     <maxspawntime>200</maxspawntime>

@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>15</width>
+	<height>16</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="166" posx="6.3568" posz="-14.1138" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="169" posx="-0.1934" posz="-10.6428" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="6.2167" posz="-11.0995" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="166" posx="3.1833" posz="-11.1054" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="90" posx="-1.3372" posz="-11.7682" orientx="0.3827" orienty="0.0000" orientz="0.9239">UnderbrushMongolia</unit>
+		<unit variation="236" posx="4.2337" posz="-11.9102" orientx="-0.9207" orienty="0.0000" orientz="-0.3903">TreeGreatPlainsGrassGreen</unit>
+		<unit variation="21" posx="3.3418" posz="-12.4464" orientx="0.9076" orienty="0.0000" orientz="-0.4199">TreeGreatPlainsGrassGreen</unit>
+		<unit variation="198" posx="8.4247" posz="-13.0402" orientx="-0.7622" orienty="-0.0000" orientz="0.6474">TreeGreatPlainsGrassGreen</unit>
+		<unit variation="161" posx="7.7034" posz="-12.9232" orientx="0.8454" orienty="0.0000" orientz="-0.5342">TreeGreatPlainsGrassGreen</unit>
+		<unit variation="40" posx="6.9679" posz="-12.1877" orientx="-0.5678" orienty="0.0000" orientz="-0.8232">TreeGreatPlainsGrassGreen</unit>
+		<unit variation="24" posx="5.6024" posz="-12.7953" orientx="0.9420" orienty="0.0000" orientz="-0.3356">TreeGreatPlainsGrassGreen</unit>
+		<unit variation="139" posx="6.1874" posz="-12.7950" orientx="0.1686" orienty="0.0000" orientz="0.9857">TreeGreatPlainsGrassGreen</unit>
+		<unit variation="27" posx="5.6908" posz="-12.8314" orientx="1.0000" orienty="0.0000" orientz="0.0000">UnderbrushGreatPlains</unit>
+		<unit variation="138" posx="2.8741" posz="-12.4348" orientx="-0.7429" orienty="0.0000" orientz="0.6694">SMTupiFence</unit>
+		<unit variation="169" posx="11.0465" posz="-8.3093" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="1.3123" posz="-8.8797" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="4.8160" posz="-8.3491" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="43" posx="8.4977" posz="-9.1646" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseMaori</unit>
+		<unit variation="251" posx="4.7254" posz="-11.4309" orientx="0.1244" orienty="0.0000" orientz="0.9922">TreeGreatPlainsGrassGreen</unit>
+		<unit variation="64" posx="3.2853" posz="-11.5370" orientx="0.7046" orienty="0.0000" orientz="0.7096">TreeGreatPlainsGrassGreen</unit>
+		<unit variation="187" posx="3.2035" posz="-11.5506" orientx="-0.3128" orienty="0.0000" orientz="-0.9498">TreeGreatPlainsGrassGreen</unit>
+		<unit variation="174" posx="5.3100" posz="-10.9295" orientx="-0.0711" orienty="0.0000" orientz="-0.9975">TreeGreatPlainsGrassGreen</unit>
+		<unit variation="138" posx="1.8588" posz="-9.2575" orientx="0.3827" orienty="0.0000" orientz="0.9239">UnderbrushMongolia</unit>
+		<unit variation="74" posx="4.4602" posz="-9.5710" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="207" posx="-4.3274" posz="-6.1332" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSocketMaori</unit>
+		<unit variation="138" posx="12.0855" posz="-8.9491" orientx="0.0289" orienty="0.0000" orientz="-0.9996">TreeGreatPlainsGrass</unit>
+		<unit variation="54" posx="10.6956" posz="-8.3021" orientx="-0.8609" orienty="0.0000" orientz="-0.5088">TreeGreatPlainsGrass</unit>
+		<unit variation="171" posx="11.9003" posz="-8.4212" orientx="-0.6820" orienty="0.0000" orientz="0.7314">TreeGreatPlainsGrass</unit>
+		<unit variation="65" posx="11.6965" posz="-9.0346" orientx="0.2184" orienty="0.0000" orientz="-0.9759">TreeGreatPlainsGrass</unit>
+		<unit variation="69" posx="12.0296" posz="-8.9614" orientx="0.5657" orienty="0.0000" orientz="-0.8246">TreeGreatPlainsGrass</unit>
+		<unit variation="204" posx="2.4282" posz="-8.1869" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="166" posx="12.8464" posz="-8.1377" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="169" posx="10.7652" posz="-5.8264" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="1.8604" posz="-5.7568" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="226" posx="3.5833" posz="-5.4333" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="109" posx="7.1805" posz="-5.2772" orientx="1.0000" orienty="0.0000" orientz="0.0000">TanningRack</unit>
+		<unit variation="77" posx="8.5616" posz="-5.8997" orientx="-0.3173" orienty="0.0000" orientz="-0.9483">TreeGreatPlainsGrass</unit>
+		<unit variation="176" posx="9.4087" posz="-6.1356" orientx="-0.7207" orienty="0.0000" orientz="-0.6933">TreeGreatPlainsGrass</unit>
+		<unit variation="163" posx="9.7824" posz="-6.9178" orientx="-1.0000" orienty="0.0000" orientz="-0.0026">TreeGreatPlainsGrass</unit>
+		<unit variation="85" posx="11.1807" posz="-6.3705" orientx="-0.2539" orienty="0.0000" orientz="0.9672">TreeGreatPlainsGrass</unit>
+		<unit variation="139" posx="12.5668" posz="-6.6719" orientx="-0.2884" orienty="0.0000" orientz="0.9575">TreeGreatPlainsGrass</unit>
+		<unit variation="58" posx="12.3491" posz="-7.3244" orientx="0.9947" orienty="0.0000" orientz="0.1026">TreeGreatPlainsGrass</unit>
+		<unit variation="225" posx="8.9239" posz="-5.8557" orientx="-0.8193" orienty="0.0000" orientz="0.5734">TreeGreatPlainsGrass</unit>
+		<unit variation="169" posx="1.8201" posz="-2.6435" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="160" posx="8.8199" posz="-4.6461" orientx="0.7517" orienty="0.0000" orientz="-0.6595">TreeGreatPlainsGrass</unit>
+		<unit variation="150" posx="8.7076" posz="-5.2285" orientx="0.0684" orienty="0.0000" orientz="-0.9977">TreeGreatPlainsGrass</unit>
+		<unit variation="150" posx="12.0452" posz="-5.1850" orientx="0.8952" orienty="0.0000" orientz="0.4457">TreeGreatPlainsGrass</unit>
+		<unit variation="61" posx="11.5310" posz="-3.9118" orientx="0.4525" orienty="0.0000" orientz="-0.8918">TreeGreatPlainsGrass</unit>
+		<unit variation="238" posx="10.9865" posz="-4.4259" orientx="0.9935" orienty="0.0000" orientz="0.1137">TreeGreatPlainsGrass</unit>
+		<unit variation="17" posx="9.9292" posz="-4.1807" orientx="0.9233" orienty="0.0000" orientz="-0.3841">TreeGreatPlainsGrass</unit>
+		<unit variation="50" posx="9.2643" posz="-4.1678" orientx="0.9534" orienty="0.0000" orientz="-0.3016">TreeGreatPlainsGrass</unit>
+		<unit variation="166" posx="8.4870" posz="-4.7321" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="169" posx="-8.1522" posz="-0.1880" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="11.0362" posz="-1.3641" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="20" posx="2.7136" posz="-2.3592" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseMaori</unit>
+		<unit variation="169" posx="0.4448" posz="0.1878" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="-3.9813" posz="0.2663" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="213" posx="7.9919" posz="0.0655" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHouseMaori</unit>
+		<unit variation="169" posx="0.2136" posz="3.9715" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="187" posx="-0.1805" posz="0.0045" orientx="-0.9730" orienty="0.0000" orientz="0.2310">SMTupiStoryTelling</unit>
+		<unit variation="169" posx="2.7989" posz="2.9790" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="5" posx="2.6140" posz="1.8557" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseMaori</unit>
+		<unit variation="226" posx="-9.3038" posz="1.5195" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="133" posx="-4.4091" posz="1.9694" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="115" posx="-6.6521" posz="3.2074" orientx="0.3827" orienty="0.0000" orientz="-0.9239">TanningRack</unit>
+		<unit variation="55" posx="0.4043" posz="3.1310" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="143" posx="10.6358" posz="2.7569" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="216" posx="-10.7354" posz="2.9052" orientx="-0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
+		<unit variation="169" posx="-9.3132" posz="5.1939" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="226" posx="-9.0348" posz="3.0212" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="74" posx="-9.1608" posz="4.2596" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsNative</unit>
+		<unit variation="74" posx="-8.2433" posz="4.0777" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsNative</unit>
+		<unit variation="74" posx="-7.8992" posz="3.4646" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsNative</unit>
+		<unit variation="157" posx="10.7925" posz="3.7578" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="1" posx="11.4305" posz="4.1083" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="182" posx="9.6679" posz="3.3318" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="96" posx="12.3480" posz="4.1011" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="80" posx="12.3388" posz="4.7130" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="18" posx="12.0085" posz="3.8488" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="137" posx="0.7365" posz="3.8566" orientx="-0.5763" orienty="-0.0000" orientz="-0.8172">SMIncanCookpotWoman</unit>
+		<unit variation="169" posx="-3.2373" posz="6.2817" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="11.6793" posz="6.0926" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="87" posx="-7.9821" posz="7.5237" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpNativeHouseMaori</unit>
+		<unit variation="169" posx="-10.5007" posz="6.1595" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="158" posx="7.9047" posz="7.8515" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseMaori</unit>
+		<unit variation="34" posx="-8.7957" posz="6.1609" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="73" posx="-5.9310" posz="5.8881" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="120" posx="-4.1535" posz="6.8267" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="143" posx="-0.4227" posz="5.8331" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="156" posx="3.6838" posz="5.3056" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="226" posx="9.9845" posz="5.2389" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="223" posx="10.6786" posz="6.2078" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="200" posx="10.1152" posz="5.2656" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="230" posx="10.9261" posz="6.2365" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="219" posx="10.2536" posz="5.7640" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="123" posx="11.8609" posz="6.5443" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="104" posx="11.6352" posz="6.8852" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="151" posx="11.6735" posz="6.7892" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="98" posx="11.2796" posz="6.4421" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="40" posx="-2.9522" posz="5.7324" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="166" posx="13.0251" posz="5.4414" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="73" posx="12.3440" posz="5.4907" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="44" posx="12.2432" posz="5.6482" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="137" posx="12.1797" posz="5.7116" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">DuneGrass</unit>
+		<unit variation="255" posx="0.3882" posz="8.9768" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseMaori</unit>
+		<unit variation="169" posx="-10.5623" posz="9.5476" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="-7.1533" posz="9.7885" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="-10.9285" posz="8.6712" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="5.0192" posz="9.3109" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="169" posx="-0.1440" posz="11.3297" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="118" posx="6.9708" posz="10.6519" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropGrassShort</unit>
+		<unit variation="207" posx="6.5109" posz="10.4431" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropGrassShort</unit>
+		<unit variation="166" posx="11.5821" posz="11.3841" orientx="0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="98" posx="5.0053" posz="9.5152" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropGrassShort</unit>
+		<unit variation="130" posx="5.3479" posz="9.9225" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropGrassShort</unit>
+		<unit variation="47" posx="4.4699" posz="10.2351" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropGrassShort</unit>
+		<unit variation="170" posx="4.4143" posz="10.1320" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropGrassShort</unit>
+		<unit variation="74" posx="4.3568" posz="9.9804" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropGrassShort</unit>
+		<unit variation="169" posx="-2.8562" posz="12.1844" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="56" posx="6.8747" posz="12.9717" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropGrassShort</unit>
+		<unit variation="29" posx="7.6026" posz="11.3246" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropGrassShort</unit>
+		<unit variation="181" posx="-2.8960" posz="12.1238" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="224" posx="4.8168" posz="12.4032" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropGrassShort</unit>
+		<unit variation="166" posx="6.7390" posz="14.4951" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="27" posx="7.8701" posz="13.2126" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropGrassShort</unit>
+		<unit variation="18" posx="8.2188" posz="13.1606" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropGrassShort</unit>
+		<unit variation="251" posx="9.3498" posz="13.0862" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropGrassShort</unit>
+		<unit variation="193" posx="9.3744" posz="13.0616" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropGrassShort</unit>
+		<unit variation="21" posx="5.6479" posz="13.2094" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropGrassShort</unit>
+		<unit variation="162" posx="-4.3891" posz="13.8308" orientx="0.9504" orienty="0.0000" orientz="0.3109">SMTupiFence</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="texas\walking_path_tex">
+			<block startx="-5" startz="-2" endx="-5" endz="-1"></block>
+			<block startx="-4" startz="-4" endx="-4" endz="-1"></block>
+			<block startx="-3" startz="-5" endx="-3" endz="-1"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-1"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="-1"></block>
+			<block startx="0" startz="-6" endx="0" endz="-1"></block>
+			<block startx="-5" startz="0" endx="-5" endz="5"></block>
+			<block startx="-4" startz="0" endx="-4" endz="6"></block>
+			<block startx="-3" startz="0" endx="-3" endz="6"></block>
+			<block startx="-2" startz="0" endx="-2" endz="6"></block>
+			<block startx="-1" startz="0" endx="-1" endz="6"></block>
+			<block startx="0" startz="0" endx="0" endz="6"></block>
+			<block startx="1" startz="0" endx="1" endz="5"></block>
+			<block startx="2" startz="0" endx="2" endz="4"></block>
+			<block startx="3" startz="0" endx="3" endz="4"></block>
+			<block startx="4" startz="0" endx="4" endz="3"></block>
+			<block startx="5" startz="0" endx="5" endz="2"></block>
+			<block startx="6" startz="0" endx="6" endz="1"></block>
+			<block startx="1" startz="-6" endx="1" endz="-2"></block>
+			<block startx="2" startz="-7" endx="2" endz="-1"></block>
+			<block startx="3" startz="-7" endx="3" endz="-1"></block>
+			<block startx="4" startz="-7" endx="4" endz="-1"></block>
+			<block startx="5" startz="-6" endx="5" endz="-1"></block>
+			<block startx="6" startz="-5" endx="6" endz="-1"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

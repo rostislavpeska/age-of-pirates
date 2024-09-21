@@ -647,8 +647,8 @@ void main(void)
     rmSetAreaSize(eastMountainTerrain, 0.033, 0.033);
     rmSetAreaLocation(eastMountainTerrain, 0.5, 0.2);
     rmSetAreaCoherence(eastMountainTerrain, 0.3);
-    rmSetAreaMix(eastMountainTerrain, "Deccan_Grass_A");
-    rmAddAreaTerrainLayer(eastMountainTerrain, "Africa\groundStraw_afr", 0, 6);
+    rmSetAreaMix(eastMountainTerrain, "california_snowground3");
+    rmAddAreaTerrainLayer(eastMountainTerrain, "Africa\ground2_afr", 0, 6);
     rmSetAreaObeyWorldCircleConstraint(eastMountainTerrain, false);
     rmAddAreaConstraint(eastMountainTerrain, avoidWater2);
     rmBuildArea(eastMountainTerrain);
@@ -657,8 +657,8 @@ void main(void)
     rmSetAreaSize(westMountainTerrain, 0.017, 0.017);
     rmSetAreaLocation(westMountainTerrain, 0.2, 0.6);
     rmSetAreaCoherence(westMountainTerrain, 0.3);
-    rmSetAreaMix(westMountainTerrain, "Deccan_Grass_A");
-    rmAddAreaTerrainLayer(westMountainTerrain, "Africa\groundStraw_afr", 0, 6);
+    rmSetAreaMix(westMountainTerrain, "california_snowground3");
+    rmAddAreaTerrainLayer(westMountainTerrain, "Africa\ground2_afr", 0, 6);
     rmSetAreaObeyWorldCircleConstraint(westMountainTerrain, false);
     rmAddAreaConstraint(westMountainTerrain, avoidWater2);
 

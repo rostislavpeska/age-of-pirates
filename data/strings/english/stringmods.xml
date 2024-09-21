@@ -1280,14 +1280,14 @@
       <string _locid="301278">Volcano</string>
       <string _locid="301279">ZP Volcano Active</string>
       <string _locid="301280">ZP Volcano Passive</string>
-      <string _locid="301281">ZP Volcano Fire</string>
-      <string _locid="301282">ZP Volcano Fire Spawner</string>
+      <string _locid="301281">ZP Volcano Fire A</string>
+      <string _locid="301282">ZP Volcano Fire Spawner A</string>
       <string _locid="301283">ZP Airship AI</string>
       <string _locid="301284">TEST Airship</string>
       <string _locid="301285">ZP Volcano Invisible Target</string>
       <string _locid="301286">Volcano Island</string>
       <string _locid="301287">Be careful, the volcano may errupt any time.</string>
-      <string _locid="301288">ZP Volcano Spawner</string>
+      <string _locid="301288">ZP Volcano Spawner A</string>
       <string _locid="301289">ZP Volcano Obstruction</string>
       <string _locid="301290">ZP Grass Fire</string>
       <string _locid="301291">Hawaii</string>
@@ -1681,9 +1681,22 @@
       <string _locid="301680">Treehouse Outposts</string>
       <string _locid="301681">Ships Treehouse Outpost Travois and allows Treehouse Archers to construct Treehouse Outposts.</string>
       <string _locid="301682">Korowai native outpost</string>
-      <string _locid="301683">Atols</string>
+      <string _locid="301683">Micronesia</string>
       <string _locid="301684">A collection of very small Pacific islands. Enough resources to build a fully water-based economy. \n\nSettlements: Pirates, Wokou</string>
       <string _locid="301685">Local waters provide you with everything you need to build a strong economy. The waters are rich on fishes and whales. Small islands are full of trees.</string>
+      <string _locid="301686">ZP Volcano Spawner B</string>
+      <string _locid="301687">ZP Volcano Fire Spawner B</string>
+      <string _locid="301688">ZP Volcano Fire B</string>
+      <string _locid="301689">Cannibal Raider</string>
+      <string _locid="301690">ZP GRD Cannibal Raider</string>
+      <string _locid="301691">Treasure Guardian</string>
+      <string _locid="301692">Melanesia</string>
+      <string _locid="301693">Large Archipelago map with various tropical islands and two volcano islands. Lot of natives and resources. \n\nSettlements: Pirates, Wokou, Korowai, Maori, Jesuit</string>
+      <string _locid="301694">The nearby islands are big enough to build a colony there but beware and rather stay away from the volcanos..</string>
+      <string _locid="301695">Feral Wallaby</string>
+      <string _locid="301696">ZP Feral Wallaby</string>
+      <string _locid="301697">Notamacropus rufogriseus</string>
+
 
 
       <!-- ======================================== -->

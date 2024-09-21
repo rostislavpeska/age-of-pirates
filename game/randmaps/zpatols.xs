@@ -775,6 +775,11 @@ void main(void)
 	// --------------- Make load bar move. ----------------------------------------------------------------------------`
 	rmSetStatusText("",0.70);
 
+  // Fake Frouping to fix the auto-grouping TC bug
+  int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
+  rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+  rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.4, 0.4);
+
 	for(i=1; <cNumberPlayers) {
     
     

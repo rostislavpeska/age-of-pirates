@@ -24395,14 +24395,14 @@
     <maxrunvelocity>10.0000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>12.0000</turnrate>
-    <animfile>units\animals\dolphin\dolphin.xml</animfile>
+    <animfile>units\animals\bottlenose_dolphin\bottlenosedolphin.xml</animfile>
     <impacttype>Animal</impacttype>
     <icon>resources\art\units\animals\dolphin\dolphin_icon.png</icon>
     <portraiticon>resources\art\units\animals\dolphin\dolphin_portrait.png</portraiticon>
     <rollovertextid>301276</rollovertextid>
     <shortrollovertextid>301277</shortrollovertextid>
-    <initialhitpoints>195.0000</initialhitpoints>
-    <maxhitpoints>195.0000</maxhitpoints>
+    <initialhitpoints>225.0000</initialhitpoints>
+    <maxhitpoints>225.0000</maxhitpoints>
     <los>10.0000</los>
     <unitaitype>HandCombative</unitaitype>
     <trainpoints>10.0000</trainpoints>
@@ -24432,6 +24432,7 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractPet</unittype>
+    <unittype>NavalPet</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
     <unittype>Ship</unittype>
     <flag>TieToWaterSurface</flag>
@@ -33186,6 +33187,259 @@
     <protoaction>
       <name>Build</name>
       <rate type="zpKorowaiOutpost">3.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20444" name="zpVolcanoSpawnerB">
+    <dbid>20444</dbid>
+    <displaynameid>301278</displaynameid>
+    <editornameid>301686</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>air</movementtype>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
+    <los>40.0000</los>
+    <unittype>Unattackable</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <tactics>volcanospawner.tactics</tactics>
+    <flag>DontRotateObstruction</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>ForceToGaia</flag>
+    <flag>BuildingExtendedDeathAnim</flag>
+    <flag>Invulnerable</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NonCollideable</flag>
+    <flag>Immoveable</flag>
+    <flag>GivesLOSToAll</flag>
+    <flag>NoHPBar</flag>
+  </unit>
+  <unit id="20445" name="zpSPCVolcanoFireSpawnerB">
+    <dbid>20445</dbid>
+    <displaynameid>301278</displaynameid>
+    <editornameid>301687</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
+    <los>0</los>
+    <unittype>Unattackable</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <flag>DontRotateObstruction</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>ForceToGaia</flag>
+    <flag>BuildingExtendedDeathAnim</flag>
+    <flag>Invulnerable</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NonCollideable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>Immoveable</flag>
+    <flag>NoHPBar</flag>
+  </unit>
+  <unit id="20446" name="zpSPCVolcanoFireB">
+    <dbid>20446</dbid>
+    <displaynameid>301278</displaynameid>
+    <editornameid>301688</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>effects\fire\fire_nodecal.xml</animfile>
+    <portraiticon>resources\art\buildings\volcano_portrait.png</portraiticon>
+    <los>20</los>
+    <unittype>Unattackable</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <flag>DontRotateObstruction</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>ForceToGaia</flag>
+    <flag>BuildingExtendedDeathAnim</flag>
+    <flag>Invulnerable</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NonCollideable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>Immoveable</flag>
+    <flag>NoHPBar</flag>
+  </unit>
+  <unit id="20447" name="zpGrdCannibal">
+    <dbid>20447</dbid>
+    <displaynameid>301689</displaynameid>
+    <editornameid>301690</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>7.0000</maxvelocity>
+    <maxrunvelocity>9.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <wanderdistance>3</wanderdistance>
+    <animfile>units\natives\korowai\bowman_outlaw.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\outlaw\canibal_raider_portrait.png</icon>
+    <portraiticon>resources\art\units\outlaw\canibal_raider_portrait.png</portraiticon>
+    <rollovertextid>301691</rollovertextid>
+    <shortrollovertextid>301691</shortrollovertextid>
+    <initialhitpoints>225.0000</initialhitpoints>
+    <maxhitpoints>225.0000</maxhitpoints>
+    <los>20.0000</los>
+    <projectileprotounit>Arrow</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <initialunitaistance>Defensive</initialunitaistance>
+    <bounty>15.0000</bounty>
+    <armor type="Ranged" value="0.3000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>Guardian</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Wanders</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>predatorMonk.tactics</tactics>
+    <protoaction>
+      <name>BowAttack</name>
+      <damage>13.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>13.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>HandAttack</name>
+      <damage>6.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+  </unit>
+  <unit id="20448" name="zpRedNeckedWallaby">
+    <dbid>20448</dbid>
+    <displaynameid>301695</displaynameid>
+    <editornameid>301696</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <maxvelocity>8.0000</maxvelocity>
+    <maxrunvelocity>10.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <wanderdistance>50</wanderdistance>
+    <animfile>units\animals\wallaby\wallaby.xml</animfile>
+    <impacttype>Animal</impacttype>
+    <icon>resources\art\units\animals\wallaby\wallaby_icon.png</icon>
+    <portraiticon>resources\art\units\animals\wallaby\wallaby_portrait.png</portraiticon>
+    <rollovertextid>301187</rollovertextid>
+    <shortrollovertextid>301697</shortrollovertextid>
+    <initialhitpoints>20.0000</initialhitpoints>
+    <maxhitpoints>20.0000</maxhitpoints>
+    <los>5.0000</los>
+    <unitaitype>Passive</unitaitype>
+    <trainpoints>75.0000</trainpoints>
+    <buildlimit>50</buildlimit>
+    <sharedbuildlimitunit>RedNeckedWallaby</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>RedNeckedWallaby</unittype>
+    </sharedbuildlimitunittypes>
+    <communityplazaweight>0.3334</communityplazaweight>
+    <initialresource resourcetype="Food">300.0000</initialresource>
+    <resourcedecay>0.7500</resourcedecay>
+    <resourcesubtype>meat</resourcesubtype>
+     <minimapcolor red="0.5000" blue="0.2500" green="0.2000">
+    </minimapcolor>
+    <gathererlimit>8</gathererlimit>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>Huntable</unittype>
+    <unittype>AnimalPrey</unittype>
+    <unittype>HuntedResource</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Unit</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>CorpseDecays</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>RMCanRotate</flag>
+    <flag>Wanders</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogOnlyAfterSeen</flag>
+    <flag>CivSpecificText</flag>
+    <flag>Tracked</flag>
+    <flag>InvulnerableToAreaDamage</flag>
+    <tactics>hunt.tactics</tactics>
+    <protoaction>
+      <name>ShrineGather</name>
+      <rate type="AbstractShrine">0.066500</rate>
+    </protoaction>
+    <protoaction>
+      <name>HaciendaGather</name>
+      <rate type="deHacienda">1.000000</rate>
+      <rate type="deHacienda" resource="Food">0.166667</rate>
+      <rate type="deHacienda" resource="Gold">0.113334</rate>
+      <rate type="deHacienda" resource="Wood">0.250000</rate>
     </protoaction>
   </unit>
 

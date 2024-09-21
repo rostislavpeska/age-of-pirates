@@ -1,7 +1,0 @@
-<animfile>
-  <component>dolphin<assetreference type="GrannyModel"><file>units\animals\dolphin\Dolphin</file></assetreference><decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_circle_128x128</selectedtexture><width>6.00</width><height>6.00</height><zoffset>0.20</zoffset></decal></component>
-  <anim>HandAttack<assetreference type="GrannyAnim"><file>units\animals\dolphin\Dolphin_Attack</file><tag type="Attack">0.24</tag><tag type="SpecificSoundSet" checkvisible="1" set="DolphinAttack">0.9</tag></assetreference><component>dolphin</component></anim>
-  <anim>Idle<assetreference type="GrannyAnim"><file>units\animals\dolphin\Dolphin_Idle</file></assetreference><component>dolphin</component></anim>
-  <anim>Death<assetreference type="GrannyAnim"><file>units\animals\dolphin\Dolphin_Die</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.40</tag></assetreference><component>dolphin</component></anim>
-  <anim>Walk<assetreference type="GrannyAnim"><file>units\animals\dolphin\Dolphin_Swim</file></assetreference><component>dolphin</component></anim>
-</animfile>

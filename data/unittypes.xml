@@ -13,4 +13,5 @@
   <unittype>AbstractSchool</unittype>
   <unittype>AbstractTreasureShip</unittype>
   <unittype>AbstractConvictLabourer</unittype>
+  <unittype>NavalPet</unittype>
 </unittypes>
