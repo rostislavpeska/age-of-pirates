@@ -6102,6 +6102,12 @@ minInterval 3
    // Move main base 
    gCeylonStartingTargetArea = closestArea;
    kbBaseSetPositionAndDistance(cMyID, kbBaseGetMainID(cMyID), kbAreaGetCenter(gCeylonStartingTargetArea), 100.0);
+   
+   aiPlanSetVariableVector(gLandReservePlan, cCombatPlanTargetPoint, 0, kbAreaGetCenter(gCeylonStartingTargetArea));
+   aiPlanSetVariableVector(gLandDefendPlan0, cCombatPlanTargetPoint, 0, kbAreaGetCenter(gCeylonStartingTargetArea));
+   
+   //moveDefenseReflex(kbAreaGetCenter(gCeylonStartingTargetArea), 50.0, kbBaseGetMainID(cMyID));
+   
    xsEnableRule("buildingMonitorDelayed");
 
    //sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(closestArea));
