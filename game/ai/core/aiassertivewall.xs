@@ -21,6 +21,19 @@ minInterval 10
    //aiChat(1, "totalResources: " + totalResources + " totalUnit: " + totalUnit);
 }
 
+
+//==============================================================================
+// getAgingUpAge
+// Little function from NewMercies to get your current age, or the one you are 
+// aging into
+//==============================================================================
+int getAgingUpAge(void)
+{
+	if (agingUp() == true)
+		return(kbGetAge() + 1);
+	return(kbGetAge());
+}
+
 //==============================================================================
 // getTeamAge
 // AssertiveWall: gets the average age of our team. Rounds down
@@ -61,6 +74,37 @@ int getTeamAge(bool ourTeam = true)
    averageAge = ageTotal / numPlayers;
 
    return (averageAge);
+}
+
+//==============================================================================
+/* updatePopEarlyMonitor
+
+   Watches for when we're aging up, and then updates the population counts
+   This is to ensure that the AI stops throttling its military after queuing
+   the age up. popManager() knows to calculate the age up via getAgingUpAge()
+*/
+//==============================================================================
+rule updatePopEarlyMonitor
+inactive
+group tcComplete
+minInterval 10
+{
+   static int numberOfHits = 0;
+
+   if (numberOfHits > kbGetAge())
+   {
+      return;
+   }
+   else if (agingUp() == true)
+   {
+      updateSettlersAndPopManager();
+      numberOfHits += 1;
+   }
+
+   if (kbGetAge() == cvMaxAge)
+   {
+      xsDisableSelf();
+   }
 }
 
 //==============================================================================
@@ -287,7 +331,6 @@ minInterval 10
       aiPlanSetVariableFloat(gRaidPlanID, cCombatPlanTargetEngageRange, 0, 25.0);
       aiPlanSetDesiredPriority(gRaidPlanID, 30);  // Lower than standard attack so they can join
       aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
-      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRefreshFrequency, 0, 300);
       aiPlanSetVariableInt(gRaidPlanID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat);
       aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOpportunistic);
       aiPlanSetVariableInt(gRaidPlanID, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternLRU);
@@ -4877,75 +4920,6 @@ void checkAttackDefenseMap(void)
 
 
 
-//==============================================================================
-/* getRandomIsland
-   AssertiveWall: Searches through tiles around your island and gives a location 
-   of the closest island that's not another player's starting island
-   In use by archipelago build placement
-*/
-//==============================================================================
-
-vector getRandomIsland(vector startingLoc = cInvalidVector)
-{
-   if (startingLoc == cInvalidVector)
-   {
-      startingLoc = kbGetPlayerStartingPosition(cMyID);
-   }
-
-   int startingAreaID = kbAreaGetIDByPosition(startingLoc);
-   vector testLoc = cInvalidVector;
-   int testAreaID = -1;
-   float j = 0.0;
-   float k = 0.0;
-   int m = 0;
-   int occupiedFriendly = 0;
-   int occupiedEnemy = 0;
-
-
-   for (i = 0; < 200)
-   {
-      testLoc = startingLoc;
-      // Get a random vector near our base
-      if (i < 100)
-      {
-         m = i;
-      }
-      else
-      {
-         m = i - 100;
-      }
-      j = m * kbGetMapXSize() / 150.0; // Normalized for RM map area
-      k = m * kbGetMapZSize() / 150.0;
-      testLoc = xsVectorSet(xsVectorGetX(testLoc) + aiRandFloat(0.0 - j, j), 0.0, 
-                xsVectorGetZ(testLoc) + aiRandFloat(0.0 - k, k));
-      
-      testAreaID = kbAreaGetIDByPosition(testLoc);
-
-      // Check how occupied it is. 
-      occupiedFriendly = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAlly, cUnitStateAlive, testLoc, 50.0);
-      occupiedEnemy = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, testLoc, 50.0);
-      
-      if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(testLoc), kbAreaGroupGetIDByPosition(startingLoc)) == false
-            && kbAreaGetType(kbAreaGetIDByPosition(testLoc)) != cAreaTypeWater)
-      {      
-         // Past 100, take whatever we can get that isn't home base
-         if (i > 100)
-         {
-            return testLoc;
-         }
-
-         // If it isn't occupied by anyone, try and take it
-         if (occupiedFriendly <= 0 && occupiedEnemy <= 0)
-         {
-            return testLoc;
-         }
-      }
-   }
-   // Prefer to return something valid if no islands can be found
-   return startingLoc;
-}
-
-
 
 //==============================================================================
 /* dockWallOne - dockWallThree
@@ -6128,6 +6102,12 @@ minInterval 3
    // Move main base 
    gCeylonStartingTargetArea = closestArea;
    kbBaseSetPositionAndDistance(cMyID, kbBaseGetMainID(cMyID), kbAreaGetCenter(gCeylonStartingTargetArea), 100.0);
+   
+   aiPlanSetVariableVector(gLandReservePlan, cCombatPlanTargetPoint, 0, kbAreaGetCenter(gCeylonStartingTargetArea));
+   aiPlanSetVariableVector(gLandDefendPlan0, cCombatPlanTargetPoint, 0, kbAreaGetCenter(gCeylonStartingTargetArea));
+   
+   //moveDefenseReflex(kbAreaGetCenter(gCeylonStartingTargetArea), 50.0, kbBaseGetMainID(cMyID));
+   
    xsEnableRule("buildingMonitorDelayed");
 
    //sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(closestArea));

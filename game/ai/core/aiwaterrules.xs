@@ -10,6 +10,94 @@
 //==============================================================================
 
 //==============================================================================
+// getMidpoint
+// AssertiveWall: Gets the midpoint between two vectors.
+//==============================================================================
+vector getMidpoint(vector point1 = cInvalidVector, vector point2 = cInvalidVector)
+{
+   if (point1 == cInvalidVector || point2 == cInvalidVector)
+   {
+      return cInvalidVector;
+   }
+
+   vector midpointVec = cInvalidVector;
+   float xVec = (xsVectorGetX(point1) + xsVectorGetX(point2)) * 0.5;
+   float yVec = (xsVectorGetY(point1) + xsVectorGetY(point2)) * 0.5;
+   float zVec = (xsVectorGetZ(point1) + xsVectorGetZ(point2)) * 0.5;
+   
+   midpointVec = xsVectorSet(xVec, yVec, zVec);
+   return midpointVec;
+}
+
+//==============================================================================
+/* getRandomIsland
+   AssertiveWall: Searches through tiles around your island and gives a location 
+   of the closest island that's not another player's starting island
+   In use by archipelago build placement
+*/
+//==============================================================================
+
+vector getRandomIsland(vector startingLoc = cInvalidVector)
+{
+   if (startingLoc == cInvalidVector)
+   {
+      startingLoc = kbGetPlayerStartingPosition(cMyID);
+   }
+
+   int startingAreaID = kbAreaGetIDByPosition(startingLoc);
+   vector testLoc = cInvalidVector;
+   int testAreaID = -1;
+   float j = 0.0;
+   float k = 0.0;
+   int m = 0;
+   int occupiedFriendly = 0;
+   int occupiedEnemy = 0;
+
+
+   for (i = 0; < 200)
+   {
+      testLoc = startingLoc;
+      // Get a random vector near our base
+      if (i < 100)
+      {
+         m = i;
+      }
+      else
+      {
+         m = i - 100;
+      }
+      j = m * kbGetMapXSize() / 150.0; // Normalized for RM map area
+      k = m * kbGetMapZSize() / 150.0;
+      testLoc = xsVectorSet(xsVectorGetX(testLoc) + aiRandFloat(0.0 - j, j), 0.0, 
+                xsVectorGetZ(testLoc) + aiRandFloat(0.0 - k, k));
+      
+      testAreaID = kbAreaGetIDByPosition(testLoc);
+
+      // Check how occupied it is. 
+      occupiedFriendly = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAlly, cUnitStateAlive, testLoc, 50.0);
+      occupiedEnemy = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, testLoc, 50.0);
+      
+      if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(testLoc), kbAreaGroupGetIDByPosition(startingLoc)) == false
+            && kbAreaGetType(kbAreaGetIDByPosition(testLoc)) != cAreaTypeWater)
+      {      
+         // Past 100, take whatever we can get that isn't home base
+         if (i > 100)
+         {
+            return testLoc;
+         }
+
+         // If it isn't occupied by anyone, try and take it
+         if (occupiedFriendly <= 0 && occupiedEnemy <= 0)
+         {
+            return testLoc;
+         }
+      }
+   }
+   // Prefer to return something valid if no islands can be found
+   return startingLoc;
+}
+
+//==============================================================================
 /* forwardIslandTower
 
    Grabs random unoccupied islands and plops down a tower on it. Useful for 
@@ -19,14 +107,124 @@
 //==============================================================================
 rule forwardIslandTower
 inactive
-minInterval 5
+minInterval 10
 {
-   int radiusOfInfluence = -1;
-   vector mainBaseLoc = cInvalidVector;
+   // Check if we're already building a tower
+   if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gTowerUnit) > 0)
+   {
+      return;
+   }
 
-   // Find a good 
-   //getRandomIsland
+   // Don't make any more Tower build plans if we're already at our calculated limit.
+   if (kbUnitCount(cMyID, gTowerUnit, cUnitStateABQ) >= gNumTowers)
+   {
+      return;
+   }
+
+   int distToEnemy = -1;
+   vector mainBaseLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   static vector advancingPosition = cInvalidVector;
+   vector newVec = cInvalidVector;
+   int advancingRadius = -1;
+   int enemyBuilding = -1;
+   vector enemyBuildingLoc = cInvalidVector;
+
+   if (advancingPosition == cInvalidVector)
+   {
+      advancingPosition = kbGetPlayerStartingPosition(cMyID);
+   }
+
+   // set a new advance position if we have no tower near advancing position
+   int forwardestTower = getClosestUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, advancingPosition);
+
+   if (forwardestTower < 0)
+   {
+      advancingPosition = kbGetPlayerStartingPosition(cMyID);
+   }
+   else if (distance(advancingPosition, kbUnitGetPosition(forwardestTower)) > 50)
+   {
+      advancingPosition = kbUnitGetPosition(forwardestTower);
+   }
+
+   // Set the advancing position
+      // Get the distance to the closest enemy building
+   enemyBuilding = getClosestUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, advancingPosition); 
+   enemyBuildingLoc = kbUnitGetPosition(enemyBuilding);
+   if (enemyBuilding < 0)
+   {
+      enemyBuildingLoc = guessEnemyLocation();
+   }
+   distToEnemy = distance(advancingPosition, enemyBuildingLoc);
+   
+   // Find a good island
+      // Get the midpoint between our advance position and the enemy base if they are far enough apart
+   if (distToEnemy > 75)
+   {
+      newVec = getMidpoint(advancingPosition, enemyBuildingLoc);
+   }
+   else
+   {
+      newVec = advancingPosition;
+   }
+
+   if (newVec != cInvalidVector)
+   {
+      advancingPosition = getRandomIsland(newVec);
+      createLocationBuildPlan(gTowerUnit, 1, 100, true, -1, advancingPosition, 1);
+   }
 }
+
+
+//==============================================================================
+/* attackTimeoutTransportRequired
+   AssertiveWall: kills the transport plan if it doesn't leave the island after
+      too long
+
+*/
+//==============================================================================
+rule attackTimeoutTransportRequired
+inactive
+minInterval 10
+{
+   if (gLandAttackPlanID < 0)
+   {
+      // No attack plan to work with
+      xsDisableSelf();
+      return;
+   }
+
+   vector baseLocation = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   vector planLocation = aiPlanGetLocation(gLandAttackPlanID);
+   vector initialLocation = aiPlanGetInitialPosition(gLandAttackPlanID);
+
+   if (xsGetTime() > gLastAttackMissionTime + 600000)
+   {  // Ten minutes, just delete the plan
+      aiPlanDestroy(gLandAttackPlanID);
+      gLandAttackPlanID = -1;
+      xsDisableSelf();
+      return;
+   }
+   else if (xsGetTime() > gLastAttackMissionTime + 120000)
+   {  // Two minutes, check if we're still stuck on main base location or the plan's initial position
+      if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(planLocation), 
+                     kbAreaGroupGetIDByPosition(baseLocation)) == true)
+      {
+         aiPlanDestroy(gLandAttackPlanID);
+         gLandAttackPlanID = -1;
+         xsDisableSelf();
+         return;
+      }
+      else if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(planLocation), 
+                     kbAreaGroupGetIDByPosition(initialLocation)) == true)
+      {
+         aiPlanDestroy(gLandAttackPlanID);
+         gLandAttackPlanID = -1;
+         xsDisableSelf();
+         return;
+      }
+   }
+}
+
 
 //==============================================================================
 /* childTransportRule

@@ -288,7 +288,7 @@ void setMilPopLimit(int age1Limit = 10, int age2Limit = 30, int age3Limit = 80,
 //==============================================================================
 void popManager(bool revoltedMilitary = false, bool revoltedEconomic = false)
 {
-   int age = kbGetAge();
+   int age = getAgingUpAge(); // AssertiveWall: If we're aging up, calculates like we're in the next age already
    int maxMil = -1;
 
    debugCore("gMaxPop: " + gMaxPop);
@@ -2364,6 +2364,7 @@ minInterval 5
          {
             //xsEnableRule("generalTransportFailsafe");
             xsEnableRule("moveOutOfWayVil");
+            xsEnableRule("forwardIslandTower");
             if (gIsAtollMap == true)
             {
                // Special atoll rules go here
