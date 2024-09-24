@@ -626,7 +626,7 @@ rmAddGroupingToClass(jesuitID0, rmClassID("patch"));
 
 int jesuitID1Type = rmRandInt(1,3);
 if (mapVariant == 1)
-	jesuitID1 = rmCreateGrouping("jesuit site 2", "sufi_greatmosque_01");
+	jesuitID1 = rmCreateGrouping("jesuit site 2", "sufi_greatmosque_04");
 else
 	jesuitID1 = rmCreateGrouping("jesuit site 2", "Jesuit_Cathedral_Tropic_0"+jesuitID1Type);
 rmAddGroupingToClass(jesuitID1, rmClassID("patch"));
