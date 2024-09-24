@@ -10032,6 +10032,7 @@
     <unittype>Gold</unittype>
     <unittype>AbstractWhale</unittype>
     <unittype>AbstractFishOrWhale</unittype>
+    <unittype>AbstractUnderwaterMine</unittype>
     <flag>RMCanRotate</flag>
     <flag>DontRotateObstruction</flag>
     <flag>NonAutoFormedUnit</flag>
@@ -24403,7 +24404,7 @@
     <shortrollovertextid>301277</shortrollovertextid>
     <initialhitpoints>225.0000</initialhitpoints>
     <maxhitpoints>225.0000</maxhitpoints>
-    <los>10.0000</los>
+    <los>35.0000</los>
     <unitaitype>HandCombative</unitaitype>
     <trainpoints>10.0000</trainpoints>
     <buildlimit>5</buildlimit>
@@ -24417,7 +24418,6 @@
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
     <unittype>LogicalTypeScout</unittype>
     <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
     <unittype>LogicalTypeVillagersAttack</unittype>
@@ -33462,7 +33462,314 @@
 
 
   <!--TEST-->
-
+  <unit id="20449" name="zpDiver">
+    <dbid>20449</dbid>
+    <displaynameid>301699</displaynameid>
+    <editornameid>301700</editornameid>
+    <populationcount>0</populationcount>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>2.0000</maxvelocity>
+    <maxrunvelocity>3.0000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\infantry_ranged\deep_sea_diver\deep_sea_diver.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\naval\deep_sea_diver_icon.png</icon>
+    <portraiticon>resources\art\units\naval\deep_sea_diver_portrait.png</portraiticon>
+    <rollovertextid>301701</rollovertextid>
+    <shortrollovertextid>301701</shortrollovertextid>
+    <initialhitpoints>300.0000</initialhitpoints>
+    <maxhitpoints>300.0000</maxhitpoints>
+    <los>16.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <autoattackrange>16.0000</autoattackrange>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <buildlimit>20</buildlimit>
+    <bounty>12.0000</bounty>
+    <buildbounty>12.0000</buildbounty>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Gold">40.0000</cost>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Influence">1.0000</carrycapacity>
+    <allowedage>3</allowedage>
+    <armor type="Hand" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Navalpet</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>AbstractFishingBoat</unittype>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+	  <flag>StartEnabled</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>deep_sea_diver.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>6.000000</maxrange>
+      <rof>6.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>DefendRangedAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>2.000000</minrange>
+      <maxrange>12.000000</maxrange>
+      <rof>6.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>StaggerHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>StaggerRangedAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>2.000000</minrange>
+      <maxrange>12.000000</maxrange>
+      <rof>6.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>VolleyHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>VolleyRangedAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>2.000000</minrange>
+      <maxrange>12.000000</maxrange>
+      <rof>6.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>Gather</name>
+      <rate type="AbstractUnderwaterMine" resource="Gold">2.000000</rate>
+      <rate type="AbstractUnderwaterMine" resource="Wood">2.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20450" name="zpSapphirelMine">
+    <dbid>20450</dbid>
+    <displaynameid>301702</displaynameid>
+    <editornameid>301703</editornameid>
+    <obstructionradiusx>2.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <idletimeout>3.0000</idletimeout>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <animfile>terrain\minerals\sapphire\sapphire.xml</animfile>
+    <impacttype>Stone</impacttype>
+    <icon>resources\art\terrain\minerals\sapphire\sapphire_icon.png</icon>
+    <portraiticon>resources\art\terrain\minerals\sapphire\sapphire_portrait.png</portraiticon>
+    <rollovertextid>301704</rollovertextid>
+    <shortrollovertextid>301704</shortrollovertextid>
+    <los>9.0000</los>
+    <initialresource resourcetype="Gold">1500.0000</initialresource>
+    <resourcesubtype>fish</resourcesubtype>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <gathererlimit>4</gathererlimit>
+    <minimapcolor red="0.8900" blue="0.2500" green="0.7000">
+    </minimapcolor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeVillagersRespondToAttack</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>Nature</unittype>
+    <unittype>Fish</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Gold</unittype>
+    <unittype>AbstractUnderwaterMine</unittype>
+    <unittype>AbstractFishOrWhale</unittype>
+    <flag>RMCanRotate</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>DontSortAlphaPolys</flag>
+    <flag>NonCollideable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NavalUnit</flag>
+    <flag>NonSolid</flag>
+    <flag>UnlimitedSupply</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>VisibleUnderFog</flag>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+  </unit>
+  <unit id="20451" name="zpSunkenShipGold">
+    <dbid>20451</dbid>
+    <displaynameid>301705</displaynameid>
+    <editornameid>301706</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <idletimeout>3.0000</idletimeout>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <animfile>objects\spc\spanish_ship_ruins\spanish_ship_ruins.xml</animfile>
+    <impacttype>Stone</impacttype>
+    <icon>resources\art\objects\spc\spanish_ship_ruins\ship_ruins_icon_64x64.png</icon>
+    <portraiticon>resources\art\objects\spc\spanish_ship_ruins\ship_ruins_portrait.png</portraiticon>
+    <rollovertextid>301704</rollovertextid>
+    <shortrollovertextid>301704</shortrollovertextid>
+    <los>9.0000</los>
+    <initialresource resourcetype="Gold">1500.0000</initialresource>
+    <resourcesubtype>fish</resourcesubtype>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <gathererlimit>4</gathererlimit>
+    <minimapcolor red="0.8900" blue="0.2500" green="0.7000">
+    </minimapcolor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeVillagersRespondToAttack</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>Nature</unittype>
+    <unittype>Fish</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Gold</unittype>
+    <unittype>AbstractUnderwaterMine</unittype>
+    <unittype>AbstractFishOrWhale</unittype>
+    <flag>RMCanRotate</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>DontSortAlphaPolys</flag>
+    <flag>NonCollideable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NavalUnit</flag>
+    <flag>NonSolid</flag>
+    <flag>UnlimitedSupply</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>VisibleUnderFog</flag>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+  </unit>
+  <unit id="20452" name="zpSunkenShipWood">
+    <dbid>20452</dbid>
+    <displaynameid>301707</displaynameid>
+    <editornameid>301708</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <idletimeout>3.0000</idletimeout>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <animfile>objects\spc\igc_shipwreck\igc_shipwreck.xml</animfile>
+    <impacttype>Stone</impacttype>
+    <icon>resources\art\objects\spc\spanish_ship_ruins\ship_ruins_icon_64x64.png</icon>
+    <portraiticon>resources\art\objects\spc\spanish_ship_ruins\ship_ruins_portrait.png</portraiticon>
+    <rollovertextid>301709</rollovertextid>
+    <shortrollovertextid>301709</shortrollovertextid>
+    <los>9.0000</los>
+    <initialresource resourcetype="Wood">1500.0000</initialresource>
+    <resourcesubtype>fish</resourcesubtype>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <gathererlimit>4</gathererlimit>
+    <minimapcolor red="0.1900" blue="0.1800" green="0.2500">
+    </minimapcolor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeVillagersRespondToAttack</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>Nature</unittype>
+    <unittype>Fish</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Wood</unittype>
+    <unittype>AbstractUnderwaterMine</unittype>
+    <unittype>AbstractFishOrWhale</unittype>
+    <flag>RMCanRotate</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>DontSortAlphaPolys</flag>
+    <flag>NonCollideable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NavalUnit</flag>
+    <flag>NonSolid</flag>
+    <flag>UnlimitedSupply</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>VisibleUnderFog</flag>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+  </unit>
 
 
 

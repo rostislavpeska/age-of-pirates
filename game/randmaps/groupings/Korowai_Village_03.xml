@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>13</width>
+	<height>15</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="194" posx="3.7383" posz="-12.7684" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNativePropsCiviliansFemale</unit>
+		<unit variation="200" posx="5.8404" posz="-13.0611" orientx="-0.7071" orienty="0.0000" orientz="0.7071">deNativePropsCiviliansMale</unit>
+		<unit variation="47" posx="1.0044" posz="-12.9903" orientx="0.9239" orienty="0.0000" orientz="0.3826">PropsNative</unit>
+		<unit variation="184" posx="3.1425" posz="-13.0867" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Skulls</unit>
+		<unit variation="1" posx="7.5978" posz="-12.2332" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsNative</unit>
+		<unit variation="41" posx="7.0817" posz="-13.4604" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsNative</unit>
+		<unit variation="47" posx="6.0004" posz="-14.8351" orientx="0.0001" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="87" posx="-0.0520" posz="-8.6011" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="169" posx="0.7178" posz="-11.8124" orientx="0.9238" orienty="-0.0000" orientz="-0.3828">NativeTownObstruction</unit>
+		<unit variation="87" posx="4.0129" posz="-10.2862" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="87" posx="7.2007" posz="-11.3853" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="169" posx="6.2838" posz="-13.9014" orientx="0.9238" orienty="-0.0000" orientz="-0.3828">NativeTownObstruction</unit>
+		<unit variation="169" posx="9.5576" posz="-11.1411" orientx="0.9238" orienty="-0.0000" orientz="-0.3828">NativeTownObstruction</unit>
+		<unit variation="31" posx="5.5342" posz="-10.3842" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="177" posx="0.0148" posz="-9.8959" orientx="0.9239" orienty="0.0000" orientz="-0.3827">Skulls</unit>
+		<unit variation="238" posx="2.5283" posz="-11.3471" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="112" posx="9.1706" posz="-10.4309" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsNative</unit>
+		<unit variation="96" posx="10.1172" posz="-10.8730" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="70" posx="10.6079" posz="-10.2114" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="47" posx="10.2008" posz="-10.7145" orientx="-0.9238" orienty="0.0000" orientz="0.3828">PropsNative</unit>
+		<unit variation="87" posx="5.8756" posz="-6.9584" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="37" posx="8.3792" posz="-10.2529" orientx="-0.9239" orienty="0.0000" orientz="0.3827">deNativePropsCiviliansFemaleSitting</unit>
+		<unit variation="46" posx="8.4638" posz="-8.0477" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Skulls</unit>
+		<unit variation="84" posx="-6.2778" posz="-6.2255" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSocketKorowai</unit>
+		<unit variation="87" posx="-0.3501" posz="-4.1767" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="87" posx="-0.6319" posz="-4.7771" orientx="-0.9239" orienty="-0.0000" orientz="-0.3825">NativeTownObstruction</unit>
+		<unit variation="87" posx="8.7076" posz="-5.7453" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="87" posx="1.9668" posz="-5.2522" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="87" posx="4.6014" posz="-4.5141" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="141" posx="3.5689" posz="-6.1939" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpNativeHouseKorowai</unit>
+		<unit variation="196" posx="0.4077" posz="-7.8567" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="154" posx="1.2857" posz="-6.2509" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsNative</unit>
+		<unit variation="96" posx="-0.0087" posz="-6.9087" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="20" posx="2.8972" posz="-4.6777" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpNativeHouseKorowai</unit>
+		<unit variation="48" posx="6.1475" posz="-6.4476" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpPropPalm</unit>
+		<unit variation="87" posx="-6.4464" posz="-0.2370" orientx="-0.9239" orienty="-0.0000" orientz="-0.3825">NativeTownObstruction</unit>
+		<unit variation="87" posx="-9.0953" posz="-0.1471" orientx="-0.9239" orienty="-0.0000" orientz="-0.3825">NativeTownObstruction</unit>
+		<unit variation="87" posx="7.2489" posz="-0.2013" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="87" posx="-8.1430" posz="0.8214" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="87" posx="-4.0352" posz="1.2399" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="87" posx="-0.1579" posz="0.4672" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="87" posx="-2.2481" posz="0.5475" orientx="-0.9239" orienty="-0.0000" orientz="-0.3825">NativeTownObstruction</unit>
+		<unit variation="225" posx="-11.3809" posz="-0.1066" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsNative</unit>
+		<unit variation="125" posx="-7.1652" posz="-0.2838" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsNative</unit>
+		<unit variation="177" posx="-9.0317" posz="0.0150" orientx="0.9239" orienty="0.0000" orientz="0.3827">Skulls</unit>
+		<unit variation="6" posx="4.6526" posz="-2.6056" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpPropPalm</unit>
+		<unit variation="10" posx="-2.5528" posz="2.5861" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpNativeHouseKorowai</unit>
+		<unit variation="87" posx="-2.9117" posz="3.2210" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="87" posx="-10.7929" posz="3.5362" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="87" posx="-10.3251" posz="2.2941" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="87" posx="2.2402" posz="2.3717" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="70" posx="6.2097" posz="1.3873" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="41" posx="0.4260" posz="-0.5320" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropPalm</unit>
+		<unit variation="41" posx="-1.2995" posz="4.1978" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpNativeHouseKorowai</unit>
+		<unit variation="87" posx="-9.7778" posz="5.9374" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="87" posx="-10.6388" posz="5.9078" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="87" posx="6.5548" posz="5.0406" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="107" posx="-11.3038" posz="3.5128" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Skulls</unit>
+		<unit variation="28" posx="-2.7261" posz="3.5605" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsNative</unit>
+		<unit variation="123" posx="-9.8188" posz="1.7277" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpPropPalm</unit>
+		<unit variation="232" posx="3.5720" posz="1.8689" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpPropPalm</unit>
+		<unit variation="222" posx="-5.7000" posz="4.7391" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">zpNativeHouseKorowai</unit>
+		<unit variation="141" posx="-7.6946" posz="5.0351" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHouseKorowai</unit>
+		<unit variation="87" posx="-5.9819" posz="7.0373" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="104" posx="-11.3730" posz="4.7790" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsNative</unit>
+		<unit variation="210" posx="-9.6501" posz="3.6142" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropPalm</unit>
+		<unit variation="87" posx="0.6531" posz="9.4481" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="87" posx="5.6968" posz="9.3678" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeTownObstruction</unit>
+		<unit variation="46" posx="-2.0945" posz="10.0048" orientx="-0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
+		<unit variation="96" posx="-8.5314" posz="9.6457" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="201" posx="4.5272" posz="9.1745" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpPropPalm</unit>
+		<unit variation="206" posx="-6.3650" posz="9.8738" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpPropPalm</unit>
+		<unit variation="168" posx="-0.6748" posz="9.7237" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpPropPalm</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

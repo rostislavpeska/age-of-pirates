@@ -1,0 +1,22 @@
+<mix>
+  <title>Australia Rainforest</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="2">AfricaRainforest\ground_grass3_afriRainforest</texture>
+    <texture weight="1">AfricaRainforest\ground_grass2_afriRainforest</texture>
+    <texture weight="1">AfricaRainforest\ground_grass1_afriRainforest</texture>
+    <texture weight="3">AfricaRainforest\ground_grass4_afriRainforest</texture>
+    <texture weight="4">AfricaRainforest\ground_dirt1_afriRainforest</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.60" octaves="3" persistence="0.75" emptyweight="75" posoffset="0.5">
+    <model weight="3" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_underbrush_01</model>
+    <model weight="3" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_underbrush_02</model>
+    <model weight="3" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_underbrush_03</model>
+    <model weight="3" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_underbrush_04</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_underbrush_05</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_grass_01</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_rock_02</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_rock_03</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_rock_04</model>
+  </objects>
+</mix>

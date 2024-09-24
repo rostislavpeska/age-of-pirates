@@ -1691,12 +1691,26 @@
       <string _locid="301690">ZP GRD Cannibal Raider</string>
       <string _locid="301691">Treasure Guardian</string>
       <string _locid="301692">Melanesia</string>
-      <string _locid="301693">Large Archipelago map with various tropical islands and two volcano islands. Lot of natives and resources. \n\nSettlements: Pirates, Wokou, Korowai, Maori, Jesuit</string>
+      <string _locid="301693">Large Archipelago map with various tropical islands and two volcano islands. Lot of natives and resources. \n\nSettlements: Pirates, Wokou, Inventors, Korowai, Jesuits</string>
       <string _locid="301694">The nearby islands are big enough to build a colony there but beware and rather stay away from the volcanos..</string>
       <string _locid="301695">Feral Wallaby</string>
       <string _locid="301696">ZP Feral Wallaby</string>
       <string _locid="301697">Notamacropus rufogriseus</string>
-
+      <string _locid="301698">ZP SPC Flying Submarine</string>
+      <string _locid="301699">Diver</string>
+      <string _locid="301700">ZP Diver</string>
+      <string _locid="301701">Deep Sea Diver</string>
+      <string _locid="301702">Sapphire Mine</string>
+      <string _locid="301703">ZP Underwater Sapphire Mine</string>
+      <string _locid="301704">Underwater Gold Resource</string>
+      <string _locid="301705">Sunken Galleon</string>
+      <string _locid="301706">ZP Underwater Galleon Gold</string>
+      <string _locid="301707">Shipwrack</string>
+      <string _locid="301708">ZP Underwater Shipwrack Wood</string>
+      <string _locid="301709">Underwater Wood Resource</string>
+      <string _locid="301710">Large river islands surrounded by marshes. That's New Guinea also called Papua. West Papua and East New Papua differ from each other not only by various natives. \n\nSettlements: Wokou, Korowai, Jesuit (Eastern variant), Sufi (Western variant)</string>
+      <string _locid="301711">New Guinea</string>
+      <string _locid="301712">Marshes full of crocodiles and forests full of canibals. Beware and explore the surrounding carefuly.</string>
 
 
       <!-- ======================================== -->

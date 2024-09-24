@@ -15,6 +15,7 @@
         <rate type="AbstractDock">1.0 </rate>
         <rate type="WaterGuardian">1.0 </rate>
         <rate type="AbstractFishingBoat">1.0 </rate>
+        <rate type="NavalPet">1.0 </rate>
         <maxheight>0</maxheight>
         <outerdamageareadistance>.25</outerdamageareadistance>
         <outerdamageareafactor>.20</outerdamageareafactor>
@@ -39,6 +40,7 @@
         <rate type="AbstractDock">1.0 </rate>
         <rate type="WaterGuardian">1.0 </rate>
         <rate type="AbstractFishingBoat">1.0 </rate>
+        <rate type="NavalPet">1.0 </rate>
         <maxheight>0</maxheight>
         <outerdamageareadistance>.25</outerdamageareadistance>
         <areasortmode>Directional</areasortmode>

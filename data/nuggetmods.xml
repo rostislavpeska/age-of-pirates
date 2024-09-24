@@ -60,6 +60,7 @@
       <applystringid>42888</applystringid>
       <icon>discover_villages</icon>
       <maptype>australia</maptype>
+      <maptype>newguinea</maptype>
       <convertunit>
         <unit>Settler</unit>
         <idleanim>Kidnap_HostageA_Idle</idleanim>
@@ -174,6 +175,7 @@
       <resource>XP</resource>
       <amount>420</amount>
       <maptype>australia</maptype>
+      <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <guardian>zpGrdBushRanger</guardian>
       <guardian>zpGrdBushRanger</guardian>
@@ -205,6 +207,7 @@
       <resource>XP</resource>
       <amount>100</amount>
       <maptype>australia</maptype>
+      <maptype>newguinea</maptype>
       <guardian>deCrocodile</guardian>
       <guardian>deCrocodile</guardian>
       <difficulty>2</difficulty>
@@ -218,6 +221,7 @@
       <resource>Wood</resource>
       <amount>100</amount>
       <maptype>australia</maptype>
+      <maptype>newguinea</maptype>
       <guardian>deCrocodile</guardian>
       <guardian>deCrocodile</guardian>
       <difficulty>2</difficulty>
@@ -231,6 +235,7 @@
       <resource>Food</resource>
       <amount>100</amount>
       <maptype>australia</maptype>
+      <maptype>newguinea</maptype>
       <guardian>deCrocodile</guardian>
       <guardian>deCrocodile</guardian>
       <difficulty>2</difficulty>
@@ -308,6 +313,7 @@
       <resource>Gold</resource>
       <amount>35</amount>
       <maptype>australia</maptype>
+      <maptype>newguinea</maptype>
       <guardian>zpCassowary</guardian>
       <difficulty>1</difficulty>
     </nugget>
@@ -375,6 +381,7 @@
       <resource>XP</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
+      <maptype>newguinea</maptype>
       <guardian>zpCassowary</guardian>
       <difficulty>1</difficulty>
     </nugget>
@@ -387,6 +394,7 @@
       <resource>XP</resource>
       <amount>80</amount>
       <maptype>australia</maptype>
+      <maptype>newguinea</maptype>
       <guardianunit>
         <unit>zpCassowary</unit>
         <attachdummy>bone_nuggetA</attachdummy>
@@ -409,6 +417,7 @@
       <resource>XP</resource>
       <amount>100</amount>
       <maptype>australia</maptype>
+      <maptype>newguinea</maptype>
       <guardian>zpCassowary</guardian>
       <guardian>zpCassowary</guardian>
       <difficulty>2</difficulty>
@@ -427,7 +436,7 @@
       <difficulty>2</difficulty>
     </nugget>
     <nugget>
-      <name>zpSloth3</name>
+      <name>zpSloth3b</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetCoveredWagon</nuggetunit>
       <rolloverstringid>31155</rolloverstringid>
@@ -449,6 +458,7 @@
       <resource>XP</resource>
       <amount>150</amount>
       <maptype>australia</maptype>
+      <maptype>newguinea</maptype>
       <guardian>zpCassowary</guardian>
       <guardian>zpCassowary</guardian>
       <guardian>zpCassowary</guardian>
@@ -463,6 +473,7 @@
       <resource>Food</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
+      <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
@@ -503,6 +514,7 @@
       <resource>Food</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
+      <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
@@ -518,6 +530,7 @@
       <resource>Wood</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
+      <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
@@ -533,6 +546,7 @@
       <resource>Wood</resource>
       <amount>125</amount>
       <maptype>australia</maptype>
+      <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
@@ -615,6 +629,7 @@
         <attachdummy>bone_hostage_A</attachdummy>
       </convertunit>
       <maptype>australia</maptype>
+      <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <guardianunit>
@@ -653,6 +668,7 @@
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
+      <maptype>newguinea</maptype>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
@@ -725,6 +741,7 @@
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
+      <maptype>newguinea</maptype>
       <guardianunit>
         <unit>Pirate</unit>
         <idleanim>NuggetPirate1_Idle</idleanim>
@@ -759,6 +776,7 @@
       <amount>330</amount>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
+      <maptype>newguinea</maptype>
       <guardian>deGuardianBoar</guardian>
       <guardian>deGuardianBoar</guardian>
       <guardian>deGuardianBoar</guardian>
@@ -776,6 +794,7 @@
       <amount>1</amount>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
+      <maptype>newguinea</maptype>
       <guardian>deGuardianBoar</guardian>
       <guardian>deGuardianBoar</guardian>
       <difficulty>2</difficulty>
@@ -789,6 +808,7 @@
       <unittype>deMiner</unittype>
       <amount>4</amount>
       <maptype>newzealand</maptype>
+      <maptype>newguinea</maptype>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
@@ -808,6 +828,7 @@
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
+      <maptype>newguinea</maptype>
       <guardian>deGuardianColoRider</guardian>
       <guardian>zpGrdEscapedPrisoner</guardian>
       <guardian>zpGrdEscapedPrisoner</guardian>
@@ -827,6 +848,7 @@
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
+      <maptype>newguinea</maptype>
       <guardian>zpGrdEscapedPrisoner</guardian>
       <guardian>zpGrdEscapedPrisoner</guardian>
       <guardian>Pirate</guardian>
@@ -846,6 +868,7 @@
       <amount>50</amount>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
+      <maptype>newguinea</maptype>
       <guardian>deGuardianBoar</guardian>
       <guardian>deGuardianBoar</guardian>
       <difficulty>2</difficulty>
@@ -907,6 +930,7 @@
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>newguinea</maptype>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
       <difficulty>2</difficulty>
@@ -1094,6 +1118,7 @@
       <resource>Food</resource>
       <amount>100</amount>
       <maptype>australia</maptype>
+      <maptype>newguinea</maptype>
       <guardian>zpCassowary</guardian>
       <guardian>zpCassowary</guardian>
       <difficulty>2</difficulty>
@@ -1145,6 +1170,7 @@
       <resource>Food</resource>
       <amount>75</amount>
       <maptype>melanesia</maptype>
+      <maptype>australia</maptype>
       <guardian>zpGrdCannibal</guardian>
       <guardian>zpGrdCannibal</guardian>
       <difficulty>12</difficulty>
@@ -1158,6 +1184,7 @@
       <resource>food</resource>
       <amount>90</amount>
       <maptype>melanesia</maptype>
+      <maptype>australia</maptype>
       <guardian>ypMonitorLizard</guardian>
       <guardian>ypMonitorLizard</guardian>
       <guardian>ypMonitorLizard</guardian>
@@ -1172,6 +1199,7 @@
       <resource>wood</resource>
       <amount>115</amount>
       <maptype>melanesia</maptype>
+      <maptype>australia</maptype>
       <guardianunit>
         <unit>ypMonitorLizard</unit>
         <idleanim>wagon_Idle01</idleanim>
@@ -1196,6 +1224,7 @@
       <resource>XP</resource>
       <amount>80</amount>
       <maptype>melanesia</maptype>
+      <maptype>australia</maptype>
       <guardianunit>
         <unit>zpCassowary</unit>
         <attachdummy>bone_nuggetA</attachdummy>
@@ -1218,6 +1247,7 @@
       <resource>XP</resource>
       <amount>100</amount>
       <maptype>melanesia</maptype>
+      <maptype>australia</maptype>
       <guardian>zpCassowary</guardian>
       <guardian>zpCassowary</guardian>
       <difficulty>12</difficulty>
@@ -1231,6 +1261,7 @@
       <resource>XP</resource>
       <amount>150</amount>
       <maptype>melanesia</maptype>
+      <maptype>australia</maptype>
       <guardian>deCrocodile</guardian>
       <guardian>deCrocodile</guardian>
       <guardian>deCrocodile</guardian>
@@ -1245,6 +1276,7 @@
       <resource>Wood</resource>
       <amount>150</amount>
       <maptype>melanesia</maptype>
+      <maptype>australia</maptype>
       <guardian>deCrocodile</guardian>
       <guardian>deCrocodile</guardian>
       <difficulty>13</difficulty>
@@ -1263,6 +1295,7 @@
         <attachdummy>bone_hostage_A</attachdummy>
       </convertunit>
       <maptype>melanesia</maptype>
+      <maptype>australia</maptype>
       <guardianunit>
         <unit>zpGrdCannibal</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
@@ -1289,46 +1322,6 @@
       <killunitonapply>0</killunitonapply>
     </nugget>
     <nugget>
-      <name>zpSettlerCannibals</name>
-      <type>ConvertUnit</type>
-      <convertsettler>true</convertsettler>
-      <nuggetunit>NuggetKidnap</nuggetunit>
-      <rolloverstringid>36942</rolloverstringid>
-      <applystringid>36943</applystringid>
-      <convertunit>
-        <unit>Settler</unit>
-        <idleanim>Kidnap_HostageA_Idle</idleanim>
-        <exitanim>Kidnap_HostageA_Exit</exitanim>
-        <attachdummy>bone_hostage_A</attachdummy>
-      </convertunit>
-      <maptype>melanesia</maptype>
-      <maptype>newguinea</maptype>
-      <guardianunit>
-        <unit>zpGrdCannibal</unit>
-        <idleanim>Kidnap_OutlawA_Idle</idleanim>
-        <exitanim>Kidnap_OutlawA_Exit</exitanim>
-        <attachdummy>bone_outlaw_A</attachdummy>
-      </guardianunit>
-      <guardianunit>
-        <unit>zpGrdCannibal</unit>
-        <idleanim>Kidnap_OutlawA_Idle</idleanim>
-        <exitanim>Kidnap_OutlawA_Exit</exitanim>
-        <attachdummy>bone_outlaw_B</attachdummy>
-      </guardianunit>
-      <guardianunit>
-        <unit>zpGrdCannibal</unit>
-        <idleanim>Kidnap_OutlawA_Idle</idleanim>
-        <exitanim>Kidnap_OutlawA_Exit</exitanim>
-        <attachdummy>bone_outlaw_C</attachdummy>
-      </guardianunit>
-      <guardianunit>
-        <unit>zpGrdCannibal</unit>
-        <attachdummy>bone_outlaw_D</attachdummy>
-      </guardianunit>
-      <difficulty>3</difficulty>
-      <killunitonapply>0</killunitonapply>
-    </nugget>
-    <nugget>
       <name>zpAUSettlerCannibalsSPC</name>
       <type>ConvertUnit</type>
       <convertsettler>true</convertsettler>
@@ -1337,6 +1330,7 @@
       <applystringid>42888</applystringid>
       <icon>discover_villages</icon>
       <maptype>melanesia</maptype>
+      <maptype>australia</maptype>
       <convertunit>
         <unit>Settler</unit>
         <idleanim>Kidnap_HostageA_Idle</idleanim>
@@ -1394,6 +1388,7 @@
         <attachdummy>bone_hostage_A</attachdummy>
       </convertunit>
       <maptype>melanesia</maptype>
+      <maptype>australia</maptype>
       <guardianunit>
         <unit>zpGrdCannibal</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
@@ -1428,9 +1423,10 @@
       <resource>Food</resource>
       <amount>415</amount>
       <maptype>melanesia</maptype>
-      <guardian>Pirate</guardian>
-      <guardian>Pirate</guardian>
-      <guardian>Pirate</guardian>
+      <maptype>australia</maptype>
+      <guardian>ypWokou</guardian>
+      <guardian>ypWokou</guardian>
+      <guardian>ypWokou</guardian>
       <guardian>zpGrdCannibal</guardian>
       <guardian>zpGrdCannibal</guardian>
       <guardian>zpGrdCannibal</guardian>
@@ -1445,6 +1441,7 @@
       <resource>Food</resource>
       <amount>455</amount>
       <maptype>melanesia</maptype>
+      <maptype>australia</maptype>
       <guardian>zpGrdCannibal</guardian>
       <guardian>zpGrdCannibal</guardian>
       <guardian>zpGrdCannibal</guardian>
@@ -1462,6 +1459,7 @@
       <applystringid>42888</applystringid>
       <icon>discover_villages</icon>
       <maptype>melanesia</maptype>
+      <maptype>australia</maptype>
       <convertunit>
         <unit>zpNatMaoriSlinger</unit>
         <idleanim>Kidnap_HostageA_Idle</idleanim>
@@ -1503,6 +1501,274 @@
         <unit>zpGrdCannibal</unit>
       </guardianunit>
       <difficulty>14</difficulty>
+      <killunitonapply>0</killunitonapply>
+    </nugget>
+
+    <nugget>
+      <name>zpEggplant</name>
+      <type>AdjustResource</type>
+      <nuggetunit>ypNuggetDroppedFoodAsian</nuggetunit>
+      <rolloverstringid>65443</rolloverstringid>
+      <applystringid>65444</applystringid>
+      <resource>Food</resource>
+      <amount>75</amount>
+      <maptype>newguinea</maptype>
+      <guardian>zpGrdCannibal</guardian>
+      <guardian>zpGrdCannibal</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpMustard</name>
+      <type>AdjustResource</type>
+      <nuggetunit>ypNuggetDroppedFoodAsian</nuggetunit>
+      <rolloverstringid>65451</rolloverstringid>
+      <applystringid>65452</applystringid>
+      <resource>food</resource>
+      <amount>90</amount>
+      <maptype>newguinea</maptype>
+      <guardian>ypMonitorLizard</guardian>
+      <guardian>ypMonitorLizard</guardian>
+      <guardian>ypMonitorLizard</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpGumTreeLost</name>
+      <type>AdjustResource</type>
+      <nuggetunit>ypNuggetWagonAsian</nuggetunit>
+      <rolloverstringid>29679</rolloverstringid>
+      <applystringid>29680</applystringid>
+      <resource>wood</resource>
+      <amount>115</amount>
+      <maptype>newguinea</maptype>
+      <guardianunit>
+        <unit>ypMonitorLizard</unit>
+        <idleanim>wagon_Idle01</idleanim>
+        <attachdummy>bone_nuggetA</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>ypMonitorLizard</unit>
+        <idleanim>wagon_Idle01</idleanim>
+        <attachdummy>bone_nuggetA</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>ypMonitorLizard</unit>
+      </guardianunit>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpSettlerCannibals</name>
+      <type>ConvertUnit</type>
+      <convertsettler>true</convertsettler>
+      <nuggetunit>NuggetKidnap</nuggetunit>
+      <rolloverstringid>36942</rolloverstringid>
+      <applystringid>36943</applystringid>
+      <convertunit>
+        <unit>Settler</unit>
+        <idleanim>Kidnap_HostageA_Idle</idleanim>
+        <exitanim>Kidnap_HostageA_Exit</exitanim>
+        <attachdummy>bone_hostage_A</attachdummy>
+      </convertunit>
+      <maptype>newguinea</maptype>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_A</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_B</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_C</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+        <attachdummy>bone_outlaw_D</attachdummy>
+      </guardianunit>
+      <difficulty>3</difficulty>
+      <killunitonapply>0</killunitonapply>
+    </nugget>
+    <nugget>
+      <name>zpAUSettlerCannibals</name>
+      <type>ConvertUnit</type>
+      <convertsettler>true</convertsettler>
+      <nuggetunit>NuggetKidnap</nuggetunit>
+      <rolloverstringid>42887</rolloverstringid>
+      <applystringid>42888</applystringid>
+      <icon>discover_villages</icon>
+      <maptype>newguinea</maptype>
+      <convertunit>
+        <unit>Settler</unit>
+        <idleanim>Kidnap_HostageA_Idle</idleanim>
+        <exitanim>Kidnap_HostageA_Exit</exitanim>
+        <attachdummy>bone_hostage_A</attachdummy>
+      </convertunit>
+      <convertunit>
+        <unit>Settler</unit>
+        <idleanim>Kidnap_HostageA_Idle</idleanim>
+        <exitanim>Kidnap_HostageA_Exit</exitanim>
+        <attachdummy>bone_hostage_B</attachdummy>
+      </convertunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_A</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_B</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_C</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+        <attachdummy>bone_outlaw_D</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+      </guardianunit>
+      <difficulty>4</difficulty>
+      <killunitonapply>0</killunitonapply>
+    </nugget>
+    <nugget>
+      <name>zpSettler5Cannibals</name>
+      <type>ConvertUnit</type>
+      <convertsettler>true</convertsettler>
+      <nuggetunit>NuggetKidnap</nuggetunit>
+      <rolloverstringid>36942</rolloverstringid>
+      <applystringid>36943</applystringid>
+      <convertunit>
+        <unit>Settler</unit>
+        <idleanim>Kidnap_HostageA_Idle</idleanim>
+        <exitanim>Kidnap_HostageA_Exit</exitanim>
+        <attachdummy>bone_hostage_A</attachdummy>
+      </convertunit>
+      <maptype>newguinea</maptype>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_A</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_B</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_C</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+        <attachdummy>bone_outlaw_D</attachdummy>
+      </guardianunit>
+      <difficulty>3</difficulty>
+      <killunitonapply>0</killunitonapply>
+    </nugget>
+    <nugget>
+      <name>zpAUCibola1ACannibals</name>
+      <type>AdjustResource</type>
+      <nuggetunit>ypNuggetCaveAsian</nuggetunit>
+      <rolloverstringid>301361</rolloverstringid>
+      <applystringid>301360</applystringid>
+      <resource>Food</resource>
+      <amount>415</amount>
+      <maptype>newguinea</maptype>
+      <guardian>ypWokou</guardian>
+      <guardian>ypWokou</guardian>
+      <guardian>ypWokou</guardian>
+      <guardian>zpGrdCannibal</guardian>
+      <guardian>zpGrdCannibal</guardian>
+      <guardian>zpGrdCannibal</guardian>
+      <difficulty>4</difficulty>
+    </nugget>
+    <nugget>
+      <name>zAUCibola1BCannibals</name>
+      <type>AdjustResource</type>
+      <nuggetunit>ypNuggetCaveAsian</nuggetunit>
+      <rolloverstringid>301361</rolloverstringid>
+      <applystringid>301360</applystringid>
+      <resource>Food</resource>
+      <amount>455</amount>
+      <maptype>newguinea</maptype>
+      <guardian>zpGrdCannibal</guardian>
+      <guardian>zpGrdCannibal</guardian>
+      <guardian>zpGrdCannibal</guardian>
+      <guardian>zpGrdCannibal</guardian>
+      <guardian>zpGrdCannibal</guardian>
+      <guardian>zpGrdCannibal</guardian>
+      <difficulty>4</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpMaoriSlingerCannibals</name>
+      <type>ConvertUnit</type>
+      <convertsettler>true</convertsettler>
+      <nuggetunit>NuggetKidnap</nuggetunit>
+      <rolloverstringid>42887</rolloverstringid>
+      <applystringid>42888</applystringid>
+      <icon>discover_villages</icon>
+      <maptype>newguinea</maptype>
+      <convertunit>
+        <unit>zpNatMaoriSlinger</unit>
+        <idleanim>Kidnap_HostageA_Idle</idleanim>
+        <exitanim>Kidnap_HostageA_Exit</exitanim>
+        <attachdummy>bone_hostage_A</attachdummy>
+      </convertunit>
+      <convertunit>
+        <unit>zpNatMaoriSlinger</unit>
+        <idleanim>Kidnap_HostageA_Idle</idleanim>
+        <exitanim>Kidnap_HostageA_Exit</exitanim>
+        <attachdummy>bone_hostage_B</attachdummy>
+      </convertunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_A</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_B</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_C</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+        <attachdummy>bone_outlaw_D</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGrdCannibal</unit>
+      </guardianunit>
+      <difficulty>4</difficulty>
       <killunitonapply>0</killunitonapply>
     </nugget>
 
@@ -1693,6 +1959,14 @@
     <nugget>
       <name>afVessel</name>
       <maptype>caribbeanwater</maptype>
+    </nugget>
+    <nugget>
+      <name>afDuck</name>
+      <maptype>newguinea</maptype>
+    </nugget>
+    <nugget>
+      <name>afClams</name>
+      <maptype>newguinea</maptype>
     </nugget>
     <nugget>
       <name>zpWaterNuggetBoatGather</name>
