@@ -15912,6 +15912,8 @@
     <train row="0" page="1" column="12">zpSPCLineShip</train>
     <train row="0" page="1" column="13">zpRitualCanoe</train>
     <train row="0" page="1" column="14">zpInuitWarCanoe</train>
+    <train row="0" page="1" column="15">zpWakaCanoe</train>
+    <train row="0" page="1" column="16">zpCatamaran</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
