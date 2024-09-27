@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "301718" displayNameID = "301717" loadDetails="301719" largeMapName = "zpzptasmania"
+    imagepath = "ui\random_map\zptasmania\zptasmania_mini" cannotReplace = "" loadBackground="ui\random_map\zptasmania\zptasmania_map">
+   <loadss>ui\random_map\zptasmania\zptasmania_01</loadss>
+   <loadss>ui\random_map\zptasmania\zptasmania_02</loadss>
+   <loadss>ui\random_map\zptasmania\zptasmania_03</loadss>
+</mapinfo>

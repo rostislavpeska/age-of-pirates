@@ -1,6 +1,6 @@
 <material>
   <submaterial name="mata">
-    <materialdef name="default">
+    <materialdef name="default_emissive_advanced">
     </materialdef>
     <parameters>
       <texture name="BaseColor" override="units\generals\textures\astronaut2_mata_BaseColor">
@@ -11,6 +11,16 @@
       </texture>
       <texture name="Details" override="units\generals\textures\astronaut2_mata_Details">
       </texture>
+      <texture name="Emissive" override="units\generals\textures\astronaut2_mata_Emissive">
+      </texture>
+      <float name="EmissiveIntensity" override="1.4400">
+      </float>
+      <vector4 name="EmissiveColor" override="1.000, 1.000, 1.000, 0.000">
+      </vector4>
+      <float name="Lift Metallic" override="1.0000">
+      </float>
+      <float name="AO Intensity" override="1.4440">
+      </float>
     </parameters>
   </submaterial>
   <submaterial name="matb">

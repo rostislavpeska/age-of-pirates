@@ -28,25 +28,11 @@
         </assetreference>
         <attach a="harpoon2_Model" frombone="MASTER" tobone="BIP01 PROP1" syncanims="0"></attach>
         <attach a="harpoon1_Model" frombone="MASTER" tobone="BIP01 PROP1" syncanims="0"></attach>
-        <decal>
-            <effecttype>default</effecttype>
-            <texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
-            <selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
-            <width>1.0</width>
-            <height>1.0</height>
-        </decal>
     </component>
     <component>GatherComp
         <assetreference type="GrannyModel">
             <file>units\generals\diver</file>
         </assetreference>
-        <decal>
-            <effecttype>default</effecttype>
-            <texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
-            <selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
-            <width>1.0</width>
-            <height>1.0</height>
-        </decal>
     </component>
     <anim>Pickup<assetreference type="GrannyAnim"><file>animation_library\explorer\pickup_explorer_A</file><tag type="SpecificSoundSet" checkvisible="1" set="GatherFruit">0.35</tag></assetreference><component>GatherComp</component><simskeleton><model>units\naval\galley\corsair_galley_damaged</model></simskeleton></anim>
     <anim>Death_by_melee<assetreference type="GrannyAnim"><file>animation_library\range\death_standing_rifleman_A</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.51</tag></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\death_standing_rifleman_B</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.18</tag></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\death_standing_rifleman_C</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.73</tag></assetreference><component>ModelComp</component><simskeleton><model>units\naval\galley\corsair_galley_damaged</model></simskeleton><attach a="rifle" frombone="bone_gun" tobone="BIP01 PROP1" syncanims="0"></attach></anim>

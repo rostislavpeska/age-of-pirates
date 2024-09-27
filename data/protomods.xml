@@ -33471,7 +33471,7 @@
     <shortrollovertextid>301701</shortrollovertextid>
     <initialhitpoints>300.0000</initialhitpoints>
     <maxhitpoints>300.0000</maxhitpoints>
-    <los>16.0000</los>
+    <los>22.0000</los>
     <projectileprotounit>InvisibleProjectile</projectileprotounit>
     <autoattackrange>16.0000</autoattackrange>
     <unitaitype>RangedCombative</unitaitype>
@@ -33527,7 +33527,7 @@
     <flag>ObscuredByUnits</flag>
     <flag>VisibleUnderFogIfGaia</flag>
     <flag>Tracked</flag>
-	  <flag>StartEnabled</flag>
+	  <!--<flag>StartEnabled</flag>-->
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="7">Delete</command>
@@ -33657,7 +33657,7 @@
     <maxvelocity>4.0000</maxvelocity>
     <maxrunvelocity>6.0000</maxrunvelocity>
     <movementtype>water</movementtype>
-    <animfile>objects\spc\spanish_ship_ruins\spanish_ship_ruins.xml</animfile>
+    <animfile>objects\spc\ship_ruins_nodecal.xml</animfile>
     <impacttype>Stone</impacttype>
     <icon>resources\art\objects\spc\spanish_ship_ruins\ship_ruins_icon_64x64.png</icon>
     <portraiticon>resources\art\objects\spc\spanish_ship_ruins\ship_ruins_portrait.png</portraiticon>
@@ -33713,8 +33713,8 @@
     <movementtype>water</movementtype>
     <animfile>objects\spc\igc_shipwreck\igc_shipwreck.xml</animfile>
     <impacttype>Stone</impacttype>
-    <icon>resources\art\objects\spc\spanish_ship_ruins\ship_ruins_icon_64x64.png</icon>
-    <portraiticon>resources\art\objects\spc\spanish_ship_ruins\ship_ruins_portrait.png</portraiticon>
+    <icon>resources\art\terrain\minerals\sunken_caravel\sunken_caravel.png</icon>
+    <portraiticon>resources\art\terrain\minerals\sunken_caravel\sunken_caravel.png</portraiticon>
     <rollovertextid>301709</rollovertextid>
     <shortrollovertextid>301709</shortrollovertextid>
     <los>9.0000</los>
