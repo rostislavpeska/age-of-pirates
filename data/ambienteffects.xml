@@ -9,6 +9,7 @@
       <type>california</type>
       <type>caribbean</type>
       <type>australia</type>
+      <type>tasmania</type>
       <type>carolina</type>
       <type>greatLakes</type>
       <type>greatPlains</type>
@@ -80,6 +81,7 @@
       <type>silkRoad2</type>
       <type>silkRoad3</type>
       <type>australia</type>
+      <type>tasmania</type>
       <type>newzealand</type>
     </maptypes>
     <minspawntime>45</minspawntime>
@@ -249,6 +251,7 @@
       <type>carolina</type>
       <type>patagonia</type>
       <type>australia</type>
+      <type>tasmania</type>
       <type>newzealand</type>
       <type>hawaii</type>
       <type>melanesia</type>

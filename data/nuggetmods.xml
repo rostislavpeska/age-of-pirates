@@ -6,6 +6,7 @@
     <nugget>
       <name>CoihueTeam</name>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
@@ -14,6 +15,7 @@
     <nugget>
       <name>Kev1</name>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
@@ -23,6 +25,7 @@
     <nugget>
       <name>Kev3</name>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
@@ -32,6 +35,7 @@
     <nugget>
       <name>Settler6</name>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
@@ -46,6 +50,7 @@
       <resource>Gold</resource>
       <amount>50</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
@@ -60,6 +65,7 @@
       <applystringid>42888</applystringid>
       <icon>discover_villages</icon>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newguinea</maptype>
       <convertunit>
         <unit>Settler</unit>
@@ -107,6 +113,7 @@
     <nugget>
       <name>zpComstock</name>
       <type>AdjustResource</type>
+      <maptype>tasmania</maptype>
       <nuggetunit>NuggetPirate</nuggetunit>
       <rolloverstringid>301376</rolloverstringid>
       <applystringid>301377</applystringid>
@@ -146,6 +153,7 @@
       <resource>Wood</resource>
       <amount>120</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <guardianunit>
         <unit>zpGrdBushRanger</unit>
         <idleanim>NuggetPirate1_Idle</idleanim>
@@ -175,6 +183,7 @@
       <resource>XP</resource>
       <amount>420</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <guardian>zpGrdBushRanger</guardian>
@@ -192,6 +201,7 @@
       <rolloverstringid>301374</rolloverstringid>
       <applystringid>301375</applystringid>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <resource>Wood</resource>
       <amount>85</amount>
       <guardian>zpGrdBushRanger</guardian>
@@ -473,6 +483,7 @@
       <resource>Food</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
@@ -489,6 +500,7 @@
       <resource>Food</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <guardian>zpGuardianBoomerang</guardian>
       <difficulty>1</difficulty>
     </nugget>
@@ -501,6 +513,7 @@
       <resource>Food</resource>
       <amount>100</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <guardian>zpGuardianBoomerang</guardian>
       <guardian>zpGuardianBoomerang</guardian>
       <difficulty>2</difficulty>
@@ -514,6 +527,7 @@
       <resource>Food</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
@@ -530,6 +544,7 @@
       <resource>Wood</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
@@ -546,6 +561,7 @@
       <resource>Wood</resource>
       <amount>125</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
@@ -564,6 +580,7 @@
       <resource>Wood</resource>
       <amount>75</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <guardian>zpGuardianBoomerang</guardian>
       <guardian>zpGuardianBoomerang</guardian>
       <difficulty>2</difficulty>
@@ -579,6 +596,7 @@
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>tasmania</maptype>
       <guardian>zpGuardianClubman</guardian>
       <guardian>zpGuardianClubman</guardian>
       <guardian>zpGuardianClubman</guardian>
@@ -595,6 +613,7 @@
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>tasmania</maptype>
       <guardian>zpGuardianClubman</guardian>
       <guardian>zpGuardianClubman</guardian>
       <difficulty>2</difficulty>
@@ -629,6 +648,7 @@
         <attachdummy>bone_hostage_A</attachdummy>
       </convertunit>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
@@ -667,6 +687,7 @@
       <amount>415</amount>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>tasmania</maptype>
       <maptype>melanesia</maptype>
       <maptype>newguinea</maptype>
       <guardian>Pirate</guardian>
@@ -686,6 +707,7 @@
       <resource>Food</resource>
       <amount>415</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
@@ -722,6 +744,7 @@
       <resource>Food</resource>
       <amount>455</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <guardian>zpGuardianBoomerang</guardian>
       <guardian>zpGuardianBoomerang</guardian>
       <guardian>zpGuardianBoomerang</guardian>
@@ -742,6 +765,7 @@
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
       <maptype>newguinea</maptype>
+      <maptype>tasmania</maptype>
       <guardianunit>
         <unit>Pirate</unit>
         <idleanim>NuggetPirate1_Idle</idleanim>
@@ -809,6 +833,7 @@
       <amount>4</amount>
       <maptype>newzealand</maptype>
       <maptype>newguinea</maptype>
+      <maptype>tasmania</maptype>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
@@ -829,6 +854,7 @@
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
       <maptype>newguinea</maptype>
+      <maptype>tasmania</maptype>
       <guardian>deGuardianColoRider</guardian>
       <guardian>zpGrdEscapedPrisoner</guardian>
       <guardian>zpGrdEscapedPrisoner</guardian>
@@ -849,6 +875,7 @@
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
       <maptype>newguinea</maptype>
+      <maptype>tasmania</maptype>
       <guardian>zpGrdEscapedPrisoner</guardian>
       <guardian>zpGrdEscapedPrisoner</guardian>
       <guardian>Pirate</guardian>
@@ -931,6 +958,7 @@
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
       <maptype>newguinea</maptype>
+      <maptype>tasmania</maptype>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
       <difficulty>2</difficulty>
@@ -961,6 +989,7 @@
       <resource>XP</resource>
       <amount>320</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <guardian>zpGuardianClubman</guardian>
       <guardian>zpGuardianClubman</guardian>
       <guardian>Pirate</guardian>
@@ -978,6 +1007,7 @@
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>tasmania</maptype>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
@@ -1062,6 +1092,7 @@
         <attachdummy>bone_hostage_A</attachdummy>
       </convertunit>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <guardianunit>
         <unit>zpGrdEscapedPrisoner</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
@@ -1132,6 +1163,7 @@
       <resource>Gold</resource>
       <amount>250</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
@@ -1158,7 +1190,7 @@
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
       <guardian>deGuardBucCaptain</guardian>
-      <difficulty>4</difficulty>
+      <difficulty>2</difficulty>
     </nugget>
 
     <nugget>
@@ -1784,6 +1816,7 @@
       <applystringid>66490</applystringid>
       <tech>ypNuggetShipGather</tech>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
@@ -1801,6 +1834,7 @@
       <resource>Food</resource>
       <amount>215</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
@@ -1818,6 +1852,7 @@
       <resource>Wood</resource>
       <amount>205</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
@@ -1835,6 +1870,7 @@
       <resource>Wood</resource>
       <amount>155</amount>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
@@ -1856,6 +1892,7 @@
       <maptype>arcticwater</maptype>
       <maptype>kurils</maptype>
       <maptype>australia</maptype>
+      <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <guardian>ypGreatWhiteShark</guardian>
       <guardian>ypGreatWhiteShark</guardian>
@@ -1879,6 +1916,7 @@
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>tasmania</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetSeaUrchins</name>
@@ -1900,6 +1938,7 @@
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>tasmania</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetSeaLions</name>
@@ -1996,6 +2035,7 @@
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>tasmania</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
       <difficulty>6</difficulty>
@@ -2014,6 +2054,7 @@
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>tasmania</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
       <guardian>zpGuardianPrivateer</guardian>
@@ -2032,6 +2073,7 @@
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>tasmania</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
       <guardian>zpGuardianPrivateer</guardian>
@@ -2050,6 +2092,7 @@
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>tasmania</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
       <guardian>zpGuardianPrivateer</guardian>
@@ -2068,6 +2111,7 @@
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>tasmania</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
       <guardian>zpGuardianPrivateer</guardian>
@@ -2086,6 +2130,7 @@
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>tasmania</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
       <guardian>zpGuardianPrivateer</guardian>

@@ -33755,6 +33755,32 @@
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
   </unit>
+  <unit id="20453" name="zpSPCSeaFloor">
+    <dbid>20453</dbid>
+    <displaynameid>301720</displaynameid>
+    <editornameid>301721</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>water</movementtype>
+    <animfile>objects\decal\underwater_decal.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>VariationLocked</flag>
+  </unit>
 
   
  

@@ -5,7 +5,7 @@
   <sunrotation>94.738152</sunrotation>
   <lightingbalance>0.714000</lightingbalance>
   <fillcolor>127 127 127</fillcolor>
-  <shadowcolor>13 59 250</shadowcolor>
+  <shadowcolor>0 50 255</shadowcolor>
   <fillintensity>4.686000</fillintensity>
   <fillinclination>-69.558289</fillinclination>
   <fillrotation>134.991440</fillrotation>
@@ -18,9 +18,9 @@
   <displaygamma>2.205000</displaygamma>
   <displaybrightness>1.000000</displaybrightness>
   <dithernoiseintensity>0.040000</dithernoiseintensity>
-  <fogdensity>2000.000000</fogdensity>
+  <fogdensity>1000.000000</fogdensity>
   <fogstart>92.627998</fogstart>
-  <contactshadowintensity>0.400000</contactshadowintensity>
+  <contactshadowintensity>0.600000</contactshadowintensity>
   <fogcolor>0 100 250</fogcolor>
   <heightfogenabled>1</heightfogenabled>
   <heightfogtop>11.640000</heightfogtop>

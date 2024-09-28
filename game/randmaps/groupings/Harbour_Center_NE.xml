@@ -30,7 +30,7 @@
 		<unit variation="4" posx="3.0732" posz="-4.6865" orientx="-1.0000" orienty="0.0000" orientz="-0.0057">zpHarbourPlatform</unit>
 		<unit variation="251" posx="9.8266" posz="-4.6329" orientx="0.1315" orienty="0.0000" orientz="-0.9913">ShorelineRockBigNE</unit>
 		<unit variation="93" posx="8.2531" posz="-6.7140" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
-		<unit variation="41" posx="-10.7176" posz="-3.4858" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCPortSocket</unit>
+		<unit variation="41" posx="-10.7176" posz="-3.4858" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSPCPortSocket</unit>
 		<unit variation="93" posx="13.2380" posz="-5.0527" orientx="1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
 		<unit variation="93" posx="11.3608" posz="-6.4758" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
 		<unit variation="4" posx="11.4744" posz="-2.6985" orientx="-1.0000" orienty="0.0000" orientz="-0.0057">zpHarbourPlatform</unit>

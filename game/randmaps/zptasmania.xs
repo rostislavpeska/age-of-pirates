@@ -93,11 +93,16 @@ void main(void)
 	}
 	
 	// Set size of map
-	int playerTiles = 25000;
+	int playerTiles = 28000;
+	if (cNumberNonGaiaPlayers >2)
+		playerTiles = 25000;
 	if (cNumberNonGaiaPlayers >4)
-		playerTiles = 21000;
+		playerTiles = 22000;
 	if (cNumberNonGaiaPlayers >6)
-		playerTiles = 18000;		
+		if (cNumberTeams == 2)
+			playerTiles = 18000;
+		else
+			playerTiles = 22000;	
 
 	int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
 	rmEchoInfo("Map size="+size+"m x "+size+"m");
@@ -107,7 +112,7 @@ void main(void)
 	rmSetSeaLevel(1.0);          
 	rmSetSeaType(seaType);
 	rmSetBaseTerrainMix(baseTerrainMix);
-	rmSetMapType("australia");
+	rmSetMapType("tasmania");
 	rmSetMapType("grass");
 	rmSetMapType("water");
 	rmSetLightingSet(lightingSet);
@@ -159,7 +164,7 @@ void main(void)
 	int fishVsWhaleID=rmCreateTypeDistanceConstraint("fish v whale", "MinkeWhale", 40.0);    //Was 34.0 -- This is for trying to keep fish out of "whale bay".
 	int whaleLand = rmCreateTerrainDistanceConstraint("whale land", "land", true, 20.0);   // Was 18.0.  This is to keep whales from swimming inside of land.
 	int forestObjConstraint=rmCreateTypeDistanceConstraint("forest obj", "all", 6.0);
-	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 40.0);
+	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 30.0);
 	int avoidResource=rmCreateTypeDistanceConstraint("resource avoid resource", "resource", 10.0);
 	int SaltVsSaltID=rmCreateTypeDistanceConstraint("salt v salt", "zpSaltMineWater", 20.0);	//Was 8.0
 	int avoidCoin=-1;
@@ -168,11 +173,11 @@ void main(void)
 	// Drop coin constraint on bigger maps
 	if ( cNumberNonGaiaPlayers > 5 )
 	{
-		avoidCoin = rmCreateTypeDistanceConstraint("avoid coin", "minegold", 75.0);
+		avoidCoin = rmCreateTypeDistanceConstraint("avoid coin", "mineCopper", 40.0);
 	}
 	else
 	{
-		avoidCoin = rmCreateTypeDistanceConstraint("avoid coin", "minegold", 85.0);	// 85.0 seems the best for event minegold distribution.  This number tells minegolds how far they should try to avoid each other.  Useful for spreading them out more evenly.
+		avoidCoin = rmCreateTypeDistanceConstraint("avoid coin", "mineCopper", 50.0);	// 85.0 seems the best for event mineCopper distribution.  This number tells mineCoppers how far they should try to avoid each other.  Useful for spreading them out more evenly.
 	}
 	int avoidRandomBerries=rmCreateTypeDistanceConstraint("avoid random berries", "berrybush", 50.0);	//Attempting to spread them out more evenly.
 	int avoidRandomTurkeys=rmCreateTypeDistanceConstraint("avoid random emu", "zpRedNeckedWallaby", 40.0);	//Attempting to spread them out more evenly.
@@ -188,12 +193,13 @@ void main(void)
 
 	// Constraint to avoid water.
 	int avoidWater1 = rmCreateTerrainDistanceConstraint("avoid water 1", "Land", false, 0.5);
-	int avoidWater2 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 2.0);   //I added this one so I could experiment with it.
+	int avoidWater2 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 2.0);
+	int avoidWater5 = rmCreateTerrainDistanceConstraint("avoid water 5", "Land", false, 1.0);   //I added this one so I could experiment with it.
 	int avoidWater8 = rmCreateTerrainDistanceConstraint("avoid water long", "Land", false, 8.0);
 	int avoidWater20 = rmCreateTerrainDistanceConstraint("avoid water medium", "Land", false, 20.0);
 	int avoidWater40 = rmCreateTerrainDistanceConstraint("avoid water super long", "Land", false, 40.0);  //Added this one too.
 	int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 28.0);
-	int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 25); //Was 15, but made larger so ships don't sometimes stomp each other when arriving from HC.
+	int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 80); //Was 15, but made larger so ships don't sometimes stomp each other when arriving from HC.
 	int avoidTradeRoute = rmCreateTradeRouteDistanceConstraint("trade route", 3.0);
 	int avoidSocket = rmCreateClassDistanceConstraint("avoid socket", classNatives , 10.0);
 	int avoidNativesFar = rmCreateClassDistanceConstraint("avoid natives far", classNatives , 18.0);
@@ -207,7 +213,8 @@ void main(void)
 	int islandAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("trade route island", 15.0);
 	int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 12.0);
 	int avoidTradeSocket = rmCreateTypeDistanceConstraint("avoid trade sockets", "sockettraderoute", 12.0);
-	int avoidTradeSocketFar = rmCreateTypeDistanceConstraint("avoid trade sockets far", "sockettraderoute", 35.0);
+	int avoidTradeSocketMedium = rmCreateTypeDistanceConstraint("avoid trade sockets medium", "sockettraderoute", 20.0);
+	int avoidTradeSocketFar = rmCreateTypeDistanceConstraint("avoid trade sockets far", "sockettraderoute", 45.0);
 	int avoidScientists=rmCreateTypeDistanceConstraint("stay away from Scientists", "zpSocketScientists", 35.0);
 	int avoidPirates=rmCreateTypeDistanceConstraint("stay away from Pirates", "zpSocketPirates", 35.0);
 	int avoidWokou=rmCreateTypeDistanceConstraint("stay away from Wokou", "zpSocketPenalColony", 35.0);
@@ -248,15 +255,15 @@ void main(void)
 
 	int portSite1 = rmCreateArea ("port_site1");
 	rmSetAreaSize(portSite1, rmAreaTilesToFraction(400.0), rmAreaTilesToFraction(400.0));
-	rmSetAreaTerrainType(portSite1, "california\groundshore3c_cal");
+	rmSetAreaTerrainType(portSite1, "california\groundshore1_cal");
 	rmSetAreaCoherence(portSite1, 1);
 	rmAddAreaToClass(portSite1, classPortSite);
 	rmSetAreaSmoothDistance(portSite1, 15);
 	rmSetAreaBaseHeight(portSite1, 2.2);
 
 	int portSite2 = rmCreateArea ("port_site2");
-	rmSetAreaSize(portSite2, rmAreaTilesToFraction(400.0), rmAreaTilesToFraction(400.0));
-	rmSetAreaTerrainType(portSite2, "california\groundshore3c_cal");
+	rmSetAreaSize(portSite2, rmAreaTilesToFraction(650.0), rmAreaTilesToFraction(650.0));
+	rmSetAreaTerrainType(portSite2, "california\groundshore1_cal");
 	rmSetAreaCoherence(portSite2, 1);
 	rmAddAreaToClass(portSite2, classPortSite);
 	rmSetAreaSmoothDistance(portSite2, 15);
@@ -264,24 +271,24 @@ void main(void)
 
 	int portSite3 = rmCreateArea ("port_site3");
 	rmSetAreaSize(portSite3, rmAreaTilesToFraction(400.0), rmAreaTilesToFraction(400.0));
-	rmSetAreaTerrainType(portSite3, "california\groundshore3c_cal");
+	rmSetAreaTerrainType(portSite3, "california\groundshore1_cal");
 	rmSetAreaCoherence(portSite3, 1);
 	rmAddAreaToClass(portSite3, classPortSite);
 	rmSetAreaSmoothDistance(portSite3, 15);
 	rmSetAreaBaseHeight(portSite3, 2.2);
 
 	int stationGrouping01 = -1;
-	stationGrouping01 = rmCreateGrouping("station grouping 01", "Harbour_Universal_SW");
+	stationGrouping01 = rmCreateGrouping("station grouping 01", "Harbour_Center_SW");
 	rmSetGroupingMinDistance(stationGrouping01, 0.0);
 	rmSetGroupingMaxDistance (stationGrouping01, 0.0);
 
 	int stationGrouping02 = -1;
-	stationGrouping02 = rmCreateGrouping("station grouping 02", "Harbour_Universal_SE");
+	stationGrouping02 = rmCreateGrouping("station grouping 02", "Harbour_Center_SE");
 	rmSetGroupingMinDistance(stationGrouping02, 0.0);
 	rmSetGroupingMaxDistance (stationGrouping02, 0.0);
 
 	int stationGrouping03 = -1;
-	stationGrouping03 = rmCreateGrouping("station grouping 03", "Harbour_Universal_S");
+	stationGrouping03 = rmCreateGrouping("station grouping 03", "Harbour_Center_S");
 	rmSetGroupingMinDistance(stationGrouping03, 0.0);
 	rmSetGroupingMaxDistance (stationGrouping03, 0.0);
 	
@@ -297,7 +304,7 @@ void main(void)
 
 	socketLoc11  = rmGetTradeRouteWayPoint(tradeRouteID, 0.50);
 	rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
-	rmSetAreaLocation(portSite2, rmXMetersToFraction(xsVectorGetX(socketLoc11)+30), rmZMetersToFraction(xsVectorGetZ(socketLoc11)+30));
+	rmSetAreaLocation(portSite2, rmXMetersToFraction(xsVectorGetX(socketLoc11)+32), rmZMetersToFraction(xsVectorGetZ(socketLoc11)+32));
 	rmBuildArea(portSite2);
 	//rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(socketLoc)+18), rmZMetersToFraction(xsVectorGetZ(socketLoc)+18));
 
@@ -315,8 +322,9 @@ void main(void)
 	rmSetAreaBaseHeight(bigIslandID, 2.0);
 	rmSetAreaSmoothDistance(bigIslandID, 50);
 	rmSetAreaMix(bigIslandID, "california_grassrocks");
-		rmAddAreaTerrainLayer(bigIslandID, "california\groundshore3b_cal", 0, 3);
-		rmAddAreaTerrainLayer(bigIslandID, "california\groundshore3c_cal", 3, 6);
+		rmAddAreaTerrainLayer(bigIslandID, "california\groundshore1_cal", 0, 3);
+		rmAddAreaTerrainLayer(bigIslandID, "california\groundshore3b_cal", 3, 6);
+		rmAddAreaTerrainLayer(bigIslandID, "california\groundshore3c_cal", 6, 9);
 	rmAddAreaConstraint(bigIslandID, islandAvoidTradeRoute);
 	rmAddAreaConstraint(bigIslandID, islandConstraint);
 	rmAddAreaToClass(bigIslandID, classIsland);
@@ -343,8 +351,9 @@ void main(void)
 	rmSetAreaBaseHeight(northIslandID, 2.0);
 	rmSetAreaSmoothDistance(northIslandID, 50);
 	rmSetAreaMix(northIslandID, "california_grassrocks");
-		rmAddAreaTerrainLayer(northIslandID, "california\groundshore3b_cal", 0, 3);
-		rmAddAreaTerrainLayer(northIslandID, "california\groundshore3c_cal", 3, 6);
+		rmAddAreaTerrainLayer(northIslandID, "california\groundshore1_cal", 0, 2);
+		rmAddAreaTerrainLayer(northIslandID, "california\groundshore3b_cal", 2, 4);
+		rmAddAreaTerrainLayer(northIslandID, "california\groundshore3c_cal", 4, 6);
 	rmAddAreaConstraint(northIslandID, islandAvoidTradeRoute);
 	rmAddAreaConstraint(northIslandID, islandConstraint);
 	rmAddAreaToClass(northIslandID, classIsland);
@@ -465,14 +474,14 @@ void main(void)
 	rmSetAreaMaxBlobDistance(coastMountains, 10.0);
 	rmSetAreaSmoothDistance(coastMountains, 15);
 	rmAddAreaConstraint(coastMountains, avoidPortSite);
-	rmAddAreaConstraint(coastMountains, avoidWater1);
+	rmAddAreaConstraint(coastMountains, avoidWater5);
 	rmAddAreaConstraint(coastMountains, avoidPirates);
 	rmSetAreaCliffType(coastMountains, "ZP Tasmania Coast");
 	rmSetAreaCliffEdge(coastMountains, 1, 1.0, 0.0, 1.0, 0);
 	rmSetAreaCliffHeight(coastMountains, 0.0, 0.0, 0.5);
 	rmSetAreaHeightBlend(coastMountains, 4);
 	rmSetAreaMix(coastMountains, "california_grass");
-	rmSetAreaCliffPainting(coastMountains, false, true, true, 1.5, true);
+	rmSetAreaCliffPainting(coastMountains, true, true, true, 1.5, true);
 	rmSetAreaElevationType(coastMountains, cElevTurbulence);
 	rmSetAreaBaseHeight(coastMountains, 7.0);
 	rmSetAreaElevationVariation(coastMountains, 1.0);
@@ -480,9 +489,20 @@ void main(void)
 	rmSetAreaElevationNoiseBias(coastMountains, 1);
 	rmBuildArea(coastMountains);
 
+	int coastMountainsTerrain2=rmCreateArea("coast mountains terrain"); 
+	rmSetAreaSize(coastMountainsTerrain2, 0.18, 0.18);
+	rmSetAreaLocation(coastMountainsTerrain2, 0.47, 0.47);
+	rmSetAreaCoherence(coastMountainsTerrain2, 0.8);
+	rmAddAreaConstraint(coastMountainsTerrain2, avoidPortSite);
+	rmAddAreaConstraint(coastMountainsTerrain2, avoidWater5);
+	rmAddAreaConstraint(coastMountainsTerrain2, avoidPirates);
+	rmSetAreaMix(coastMountainsTerrain2, "california_grassrocks");
+	rmSetAreaObeyWorldCircleConstraint(coastMountainsTerrain2, false);
+	rmBuildArea(coastMountainsTerrain2);
+
 	int rampID1 = rmCreateArea("rampID1");
 	rmSetAreaSize(rampID1, rmAreaTilesToFraction(300.0), rmAreaTilesToFraction(300.0));
-	rmSetAreaLocation(rampID1, 0.45, 0.7);
+	rmSetAreaLocation(rampID1, 0.45, 0.75);
 	rmSetAreaMix(rampID1, "california_grass");
 	rmSetAreaBaseHeight(rampID1, 6.0);
 	rmSetAreaSmoothDistance(rampID1, 15);
@@ -492,7 +512,7 @@ void main(void)
 
 	int rampID2 = rmCreateArea("rampID2");
 	rmSetAreaSize(rampID2, rmAreaTilesToFraction(300.0), rmAreaTilesToFraction(300.0));
-	rmSetAreaLocation(rampID2, 0.7, 0.45);
+	rmSetAreaLocation(rampID2, 0.75, 0.45);
 	rmSetAreaMix(rampID2, "california_grass");
 	rmSetAreaBaseHeight(rampID2, 6.0);
 	rmSetAreaSmoothDistance(rampID2, 15);
@@ -533,7 +553,7 @@ void main(void)
 
 	int centralMountains = rmCreateArea ("cantral cliffs");
 	rmSetAreaSize(centralMountains, 0.05, 0.05);
-	rmSetAreaLocation(centralMountains, 0.47, 0.47);
+	rmSetAreaLocation(centralMountains, 0.48, 0.48);
 	rmSetAreaCoherence(centralMountains, 0.6);
 	rmSetAreaMinBlobs(centralMountains, 8);
 	rmSetAreaMaxBlobs(centralMountains, 12);
@@ -552,7 +572,7 @@ void main(void)
 
 	int centralMountainTerrain2=rmCreateArea("cantral mountains terrain"); 
 	rmSetAreaSize(centralMountainTerrain2, 0.05, 0.05);
-	rmSetAreaLocation(centralMountainTerrain2, 0.47, 0.47);
+	rmSetAreaLocation(centralMountainTerrain2, 0.48, 0.48);
 	rmSetAreaCoherence(centralMountainTerrain2, 0.6);
 	rmSetAreaMix(centralMountainTerrain2, "newengland_grass");
 	rmSetAreaObeyWorldCircleConstraint(centralMountainTerrain2, false);
@@ -646,11 +666,11 @@ void main(void)
 	// Trade Sockets
 
 
-	rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(socketLoc)+20), rmZMetersToFraction(xsVectorGetZ(socketLoc)));
+	rmPlaceGroupingAtLoc(stationGrouping01, 0, rmXMetersToFraction(xsVectorGetX(socketLoc)+20), rmZMetersToFraction(xsVectorGetZ(socketLoc)+4));
 
-	rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(socketLoc11)+18), rmZMetersToFraction(xsVectorGetZ(socketLoc11)+18));
+	rmPlaceGroupingAtLoc(stationGrouping03, 0, rmXMetersToFraction(xsVectorGetX(socketLoc11)+17), rmZMetersToFraction(xsVectorGetZ(socketLoc11)+17));
 
-	rmPlaceGroupingAtLoc(stationGrouping02, 0, rmXMetersToFraction(xsVectorGetX(socketLoc12)), rmZMetersToFraction(xsVectorGetZ(socketLoc12)+20));
+	rmPlaceGroupingAtLoc(stationGrouping02, 0, rmXMetersToFraction(xsVectorGetX(socketLoc12)-2), rmZMetersToFraction(xsVectorGetZ(socketLoc12)+21));
 
 	// --------------- Make load bar move. ----------------------------------------------------------------------------
 	rmSetStatusText("",0.50);
@@ -705,11 +725,13 @@ void main(void)
 
 	// Penal Colonies
 
-	int jewish1VillageTypeID = rmRandInt(1, 5);
-	int jewish2VillageTypeID = rmRandInt(1, 5);
+	int jewish1VillageTypeID = rmRandInt(1, 3);
+	int jewish2VillageTypeID = 4-jewish1VillageTypeID;
+	if (jewish2VillageTypeID ==2)
+		jewish2VillageTypeID = 3;
 
-	int jewish1ID = rmCreateGrouping("jewish 1", "Penal_Colony_0"+jewish1VillageTypeID);
-	int jewish2ID = rmCreateGrouping("jewish 2", "Penal_Colony_0"+jewish2VillageTypeID);
+	int jewish1ID = rmCreateGrouping("jewish 1", "Tasmania_Colony_0"+jewish1VillageTypeID);
+	int jewish2ID = rmCreateGrouping("jewish 2", "Tasmania_Colony_0"+jewish2VillageTypeID);
 
 	rmSetGroupingMinDistance(jewish1ID, 0);
 	rmSetGroupingMaxDistance(jewish1ID, 20);
@@ -726,7 +748,7 @@ void main(void)
 		
 	int caribsVillageID = -1;
 	int caribsVillageType = rmRandInt(1,5);
-	caribsVillageID = rmCreateGrouping("caribs city", "Native_Aboriginal_0"+caribsVillageType);
+	caribsVillageID = rmCreateGrouping("caribs city", "Aboriginal_Tasmania_0"+caribsVillageType);
 	rmAddGroupingToClass(caribsVillageID, classNatives);
 	rmSetGroupingMinDistance(caribsVillageID, 0.0);
 	rmSetGroupingMaxDistance(caribsVillageID, 30.0);
@@ -736,7 +758,7 @@ void main(void)
 
 	int caribs2VillageID = -1;
 	int caribs2VillageType = rmRandInt(1,5);
-	caribs2VillageID = rmCreateGrouping("caribs2 city", "Native_Aboriginal_0"+caribs2VillageType);
+	caribs2VillageID = rmCreateGrouping("caribs2 city", "Aboriginal_Tasmania_0"+caribs2VillageType);
 	rmAddGroupingToClass(caribs2VillageID, classNatives);			
 	rmAddGroupingConstraint(caribs2VillageID, avoidImpassableLand);
 	rmSetGroupingMinDistance(caribs2VillageID, 0.0);
@@ -745,8 +767,8 @@ void main(void)
 
 
 	// Special AREA CONSTRAINTS and use it to make resources avoid the mountain in center:
-	int smallMesaConstraint = rmCreateAreaDistanceConstraint("avoid Small Mesa", centralMountains4, 30.0);
-	int smallMesaShortConstraint = rmCreateAreaDistanceConstraint("avoid Small Mesa Short", centralMountains4, 15.0);
+	int smallMesaConstraint = rmCreateAreaDistanceConstraint("avoid Small Mesa", centralMountains4, rmXFractionToMeters(0.08));
+	int smallMesaShortConstraint = rmCreateAreaDistanceConstraint("avoid Small Mesa Short", centralMountains4, rmXFractionToMeters(0.04));
 		
 	// --------------- Make load bar move. ----------------------------------------------------------------------------
 	rmSetStatusText("",0.70);
@@ -910,18 +932,29 @@ void main(void)
 
 	// Scattered MINES
 	int goldID = rmCreateObjectDef("random gold");
-	rmAddObjectDefItem(goldID, "minegold", 1, 0);
+	rmAddObjectDefItem(goldID, "mineCopper", 1, 0);
 	rmSetObjectDefMinDistance(goldID, 0.0);
-	rmSetObjectDefMaxDistance(goldID, rmXFractionToMeters(0.5));
+	rmSetObjectDefMaxDistance(goldID, 50);
 	rmAddObjectDefConstraint(goldID, avoidTC);
 	rmAddObjectDefConstraint(goldID, avoidCW);
 	rmAddObjectDefConstraint(goldID, avoidAll);
 	rmAddObjectDefConstraint(goldID, avoidCoin);
-	rmAddObjectDefConstraint(goldID, avoidWater20);
-    rmAddObjectDefConstraint(goldID, avoidImpassableLand);
+	rmAddObjectDefConstraint(goldID, avoidWater8);
+    rmAddObjectDefConstraint(goldID, shortAvoidImpassableLand);
 	rmAddObjectDefConstraint(goldID, smallMesaShortConstraint);
-	rmPlaceObjectDefInArea(goldID, 0, coastMountains, cNumberNonGaiaPlayers*3);
-	rmPlaceObjectDefInArea(goldID, 0, northIslandID, rmRandInt(0, 2));
+	rmPlaceObjectDefInArea(goldID, 0, coastMountains, cNumberNonGaiaPlayers*5);
+	rmPlaceObjectDefInArea(goldID, 0, northIslandID, rmRandInt(1, 2));
+
+	int goldID2 = rmCreateObjectDef("random gold 2");
+	rmAddObjectDefItem(goldID2, "mineCopper", 1, 0);
+	rmSetObjectDefMinDistance(goldID2, 0.0);
+	rmSetObjectDefMaxDistance(goldID2, 50);
+	rmAddObjectDefConstraint(goldID2, avoidWater8);
+	rmAddObjectDefConstraint(goldID2, avoidCoin);
+    rmAddObjectDefConstraint(goldID2, shortAvoidImpassableLand);
+	rmPlaceObjectDefAtLoc(goldID2, 0, 0.35, 0.35);
+	rmPlaceObjectDefAtLoc(goldID2, 0, 0.45, 0.8);
+	rmPlaceObjectDefAtLoc(goldID2, 0, 0.8, 0.45);
 
 	// Scattered BERRRIES		
 	int berriesID=rmCreateObjectDef("random berries");
@@ -1003,12 +1036,13 @@ void main(void)
 	rmAddObjectDefConstraint(nugget2, avoidTC);
 	rmAddObjectDefConstraint(nugget2, avoidCW);
 	rmAddObjectDefConstraint(nugget2, avoidAll);
-	rmAddObjectDefConstraint(nugget2, avoidWater20);
+	rmAddObjectDefConstraint(nugget2, avoidWater8);
+	rmAddObjectDefConstraint(nugget2, avoidTradeSocket);
 	rmAddObjectDefConstraint(nugget2, smallMesaConstraint);
 	rmAddObjectDefConstraint(nugget2, playerEdgeConstraint);
-
 	rmSetNuggetDifficulty(3, 4);
-	rmPlaceObjectDefInArea(nugget2, 0, bigIslandID, cNumberNonGaiaPlayers*2);
+	rmPlaceObjectDefInArea(nugget2, 0, bigIslandID, cNumberNonGaiaPlayers);
+	rmPlaceObjectDefInArea(nugget2, 0, northIslandID, cNumberNonGaiaPlayers/2);
 	
 
 	// Easier nuggets
@@ -1023,9 +1057,11 @@ void main(void)
 	//rmAddObjectDefConstraint(nugget1, avoidCW);
 	rmAddObjectDefConstraint(nugget1, avoidAll);
 	rmAddObjectDefConstraint(nugget1, avoidWater20);
-	rmAddObjectDefConstraint(nugget1, smallMesaConstraint);
+	rmAddObjectDefConstraint(nugget1, smallMesaShortConstraint);
+	rmAddObjectDefConstraint(nugget1, avoidTradeSocket);
 	rmAddObjectDefConstraint(nugget1, playerEdgeConstraint);
-	rmPlaceObjectDefInArea(nugget1, 0, bigIslandID, cNumberNonGaiaPlayers*4);
+	rmPlaceObjectDefInArea(nugget1, 0, bigIslandID, cNumberNonGaiaPlayers*2);
+	rmPlaceObjectDefInArea(nugget1, 0, northIslandID, cNumberNonGaiaPlayers);
 
 	// Water Nuggets - Hard and Easy
 	int nugget2b = rmCreateObjectDef("nugget water hard" + i); 
@@ -1069,6 +1105,7 @@ void main(void)
 	rmSetObjectDefMaxDistance(fishID, rmXFractionToMeters(0.5));
 	rmAddObjectDefConstraint(fishID, fishVsFishID);
 	rmAddObjectDefConstraint(fishID, fishVsWhaleID);
+	rmAddObjectDefConstraint(fishID, avoidTradeSocketMedium);
 	rmAddObjectDefConstraint(fishID, fishLand);
 	rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 14*cNumberNonGaiaPlayers); 
 
@@ -1952,10 +1989,40 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
+	// Update ports
+
+	rmCreateTrigger("I Update Ports");
+	rmAddTriggerCondition("Player Unit Count");
+	rmSetTriggerConditionParamInt("PlayerID",0);
+	rmSetTriggerConditionParam("Protounit","deTradingGalleon");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpUpdatePort1"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("II Update Ports");
+	rmAddTriggerCondition("Player Unit Count");
+	rmSetTriggerConditionParamInt("PlayerID",0);
+	rmSetTriggerConditionParam("Protounit","deTradingFluyt");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpUpdatePort2"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 	
 	// Testing
-
-
 
 	/*for (k=1; <= cNumberNonGaiaPlayers) {
 

@@ -1,0 +1,16 @@
+<animfile>
+    <component>railway_decals
+        <assetreference type="GrannyModel">
+            <file>objects\spc\spc_railway\decal_rock</file>
+        </assetreference>
+        <decal>
+            <effecttype>bump</effecttype>
+            <texture>terrain\decal\seacave_decal_basecolor</texture>
+            <width>10.00</width>
+            <height>10.00</height>
+        </decal>
+    </component>
+    <anim>Idle
+        <component>railway_decals</component>
+    </anim>
+</animfile>
