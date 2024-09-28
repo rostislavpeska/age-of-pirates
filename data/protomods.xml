@@ -494,8 +494,8 @@
     <movementtype>land</movementtype>
     <autoconvertsoundset>SocketCapture</autoconvertsoundset>
     <animfile>buildings\trading_post\jesuit_outpost_socket.xml</animfile>
-    <minimapicon>ui\minimap\asian_native_site</minimapicon>
-    <capturedminimapicon>ui\minimap\asian_native_site_c</capturedminimapicon>
+    <minimapicon>ui\minimap\naval_site</minimapicon>
+    <capturedminimapicon>ui\minimap\naval_site_c</capturedminimapicon>
     <portraiticon>resources\art\units\natives\pirate_natives.png</portraiticon>
     <rollovertextid>300017</rollovertextid>
     <shortrollovertextid>300017</shortrollovertextid>
@@ -3908,8 +3908,8 @@
     <movementtype>land</movementtype>
     <autoconvertsoundset>SocketCapture</autoconvertsoundset>
     <animfile>buildings\trading_post\jesuit_outpost_socket.xml</animfile>
-    <minimapicon>ui\minimap\asian_native_site</minimapicon>
-    <capturedminimapicon>ui\minimap\asian_native_site_c</capturedminimapicon>
+    <minimapicon>ui\minimap\naval_site</minimapicon>
+    <capturedminimapicon>ui\minimap\naval_site_c</capturedminimapicon>
     <portraiticon>resources\art\units\natives\wokou_natives.png</portraiticon>
     <rollovertextid>300017</rollovertextid>
     <shortrollovertextid>300017</shortrollovertextid>
@@ -10493,8 +10493,8 @@
     <movementtype>land</movementtype>
     <autoconvertsoundset>SocketCapture</autoconvertsoundset>
     <animfile>buildings\trading_post\europe_outpost_socket.xml</animfile>
-    <minimapicon>ui\minimap\royal_house</minimapicon>
-    <capturedminimapicon>ui\minimap\royal_house_c</capturedminimapicon>
+    <minimapicon>ui\minimap\inventor_site</minimapicon>
+    <capturedminimapicon>ui\minimap\inventor_site_c</capturedminimapicon>
     <portraiticon>resources\art\units\natives\scientist.png</portraiticon>
     <rollovertextid>300484</rollovertextid>
     <shortrollovertextid>300484</shortrollovertextid>
@@ -14804,8 +14804,8 @@
     <movementtype>land</movementtype>
     <autoconvertsoundset>SocketCapture</autoconvertsoundset>
     <animfile>buildings\trading_post\europe_outpost_socket.xml</animfile>
-    <minimapicon>ui\minimap\royal_house</minimapicon>
-    <capturedminimapicon>ui\minimap\royal_house_c</capturedminimapicon>
+    <minimapicon>ui\minimap\naval_site</minimapicon>
+    <capturedminimapicon>ui\minimap\naval_site_c</capturedminimapicon>
     <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
     <rollovertextid>300729</rollovertextid>
     <shortrollovertextid>300729</shortrollovertextid>
@@ -33780,6 +33780,234 @@
     <flag>RMCanRotate</flag>
     <flag>NonCollideable</flag>
     <flag>VariationLocked</flag>
+  </unit>
+  <unit id="20454" name="zpBarracudaColony">
+    <dbid>20454</dbid>
+    <displaynameid>301722</displaynameid>
+    <editornameid>301723</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>5.0000</maxvelocity>
+    <maxrunvelocity>7.0000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <turnrate>18.0000</turnrate>
+    <wanderdistance>50</wanderdistance>
+    <animfile>units\animals\barracuda\barracuda_colony.xml</animfile>
+    <icon>resources\art\units\animals\barracuda\barracuda_icon.png</icon>
+    <portraiticon>resources\art\units\animals\barracuda\barracuda_portrait.png</portraiticon>
+    <rollovertextid>301724</rollovertextid>
+    <shortrollovertextid>301725</shortrollovertextid>
+    <initialhitpoints>20.0000</initialhitpoints>
+    <maxhitpoints>20.0000</maxhitpoints>
+    <los>10.0000</los>
+    <unitaitype>Passive</unitaitype>
+    <bounty>0.0000</bounty>
+    <initialresource resourcetype="Food">5000.0000</initialresource>
+    <resourcesubtype>fish</resourcesubtype>
+    <decay delay="0.0000" duration="1.0000">
+    </decay>
+    <minimapcolor red="0.5000" blue="0.5000" green="0.5000">
+    </minimapcolor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeVillagersRespondToAttack</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Fish</unittype>
+    <unittype>Food</unittype>
+    <unittype>Nature</unittype>
+    <unittype>AbstractFish</unittype>
+    <unittype>AbstractFishOrWhale</unittype>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>Wanders</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NonCollideable</flag>
+    <flag>NavalUnit</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>Invulnerable</flag>
+    <flag>NonSolid</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>Tracked</flag>
+    <tactics>hunt.tactics</tactics>
+  </unit>
+  <unit id="20455" name="zpClownfish">
+    <dbid>20455</dbid>
+    <displaynameid>301726</displaynameid>
+    <editornameid>301728</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>5.0000</maxvelocity>
+    <maxrunvelocity>7.0000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <wanderdistance>50</wanderdistance>
+    <animfile>units\animals\clownfish\clownfish.xml</animfile>
+    <icon>resources\art\units\animals\clownfish\clownfish_icon.png</icon>
+    <portraiticon>resources\art\units\animals\clownfish\clownfish_portrait.png</portraiticon>
+    <rollovertextid>301731</rollovertextid>
+    <shortrollovertextid>301731</shortrollovertextid>
+    <initialhitpoints>20.0000</initialhitpoints>
+    <maxhitpoints>20.0000</maxhitpoints>
+    <los>10.0000</los>
+    <unitaitype>Passive</unitaitype>
+    <trainpoints>75.0000</trainpoints>
+    <buildlimit>20</buildlimit>
+    <bounty>0.0000</bounty>
+    <decay delay="0.0000" duration="1.0000">
+    </decay>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeVillagersRespondToAttack</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Nature</unittype>
+    <unittype>NatureClass</unittype>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>Wanders</flag>
+    <flag>NotSelectable</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NonCollideable</flag>
+    <flag>NavalUnit</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>Invulnerable</flag>
+    <flag>NonSolid</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>Tracked</flag>
+    <tactics>hunt.tactics</tactics>
+  </unit>
+  <unit id="20456" name="zpOctopus">
+    <dbid>20456</dbid>
+    <displaynameid>301729</displaynameid>
+    <editornameid>301730</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>5.0000</maxvelocity>
+    <maxrunvelocity>7.0000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <wanderdistance>50</wanderdistance>
+    <animfile>units\animals\octopus\octopus.xml</animfile>
+    <icon>resources\art\units\animals\octopus\octopus_icon.png</icon>
+    <portraiticon>resources\art\units\animals\octopus\octopus_portrait.png</portraiticon>
+    <rollovertextid>301725</rollovertextid>
+    <shortrollovertextid>301725</shortrollovertextid>
+    <initialhitpoints>20.0000</initialhitpoints>
+    <maxhitpoints>20.0000</maxhitpoints>
+    <los>10.0000</los>
+    <unitaitype>Passive</unitaitype>
+    <trainpoints>75.0000</trainpoints>
+    <buildlimit>10</buildlimit>
+    <bounty>0.0000</bounty>
+    <initialresource resourcetype="Food">200.0000</initialresource>
+    <resourcesubtype>fish</resourcesubtype>
+    <decay delay="0.0000" duration="1.0000">
+    </decay>
+    <minimapcolor red="0.5000" blue="0.5000" green="0.5000">
+    </minimapcolor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeVillagersRespondToAttack</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Fish</unittype>
+    <unittype>Food</unittype>
+    <unittype>Nature</unittype>
+    <unittype>AbstractFish</unittype>
+    <unittype>AbstractFishOrWhale</unittype>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>Wanders</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NonCollideable</flag>
+    <flag>NavalUnit</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>Invulnerable</flag>
+    <flag>NonSolid</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>Tracked</flag>
+    <tactics>hunt.tactics</tactics>
+  </unit>
+  <unit id="20457" name="zpBarracudaSingle">
+    <dbid>20457</dbid>
+    <displaynameid>301732</displaynameid>
+    <editornameid>301733</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>5.0000</maxvelocity>
+    <maxrunvelocity>7.0000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <wanderdistance>50</wanderdistance>
+    <animfile>units\animals\barracuda\barracuda.xml</animfile>
+    <icon>resources\art\units\animals\barracuda\barracuda_icon.png</icon>
+    <portraiticon>resources\art\units\animals\barracuda\barracuda_portrait.png</portraiticon>
+    <rollovertextid>301725</rollovertextid>
+    <shortrollovertextid>301725</shortrollovertextid>
+    <initialhitpoints>20.0000</initialhitpoints>
+    <maxhitpoints>20.0000</maxhitpoints>
+    <los>10.0000</los>
+    <unitaitype>Passive</unitaitype>
+    <trainpoints>75.0000</trainpoints>
+    <buildlimit>10</buildlimit>
+    <bounty>0.0000</bounty>
+    <initialresource resourcetype="Food">100.0000</initialresource>
+    <resourcesubtype>fish</resourcesubtype>
+    <decay delay="0.0000" duration="1.0000">
+    </decay>
+    <minimapcolor red="0.5000" blue="0.5000" green="0.5000">
+    </minimapcolor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeVillagersRespondToAttack</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Fish</unittype>
+    <unittype>Food</unittype>
+    <unittype>Nature</unittype>
+    <unittype>AbstractFish</unittype>
+    <unittype>AbstractFishOrWhale</unittype>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>Wanders</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NonCollideable</flag>
+    <flag>NavalUnit</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>Invulnerable</flag>
+    <flag>NonSolid</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>Tracked</flag>
+    <tactics>hunt.tactics</tactics>
   </unit>
 
   
