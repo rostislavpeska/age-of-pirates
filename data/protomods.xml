@@ -34009,6 +34009,82 @@
     <flag>Tracked</flag>
     <tactics>hunt.tactics</tactics>
   </unit>
+  <unit id="20458" name="zpPearlSource">
+    <dbid>20458</dbid>
+    <displaynameid>301734</displaynameid>
+    <editornameid>301735</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\gold_mine\coral_mine.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\terrain\minerals\pearls\pearls_portrait.png</icon>
+    <minimapicon>ui\minimap\minimap_gold</minimapicon>
+    <portraiticon>resources\art\terrain\minerals\pearls\pearls_portrait.png</portraiticon>
+    <rollovertextid>28576</rollovertextid>
+    <shortrollovertextid>28575</shortrollovertextid>
+    <initialresource resourcetype="Gold">4000.0000</initialresource>
+    <resourcesubtype>forage</resourcesubtype>
+    <gathererlimit>16</gathererlimit>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <scalingaurascale>1.8</scalingaurascale>
+    <decay delay="0.0000" duration="1.0000">
+    </decay>
+    <minimapcolor red="0.8900" blue="0.2500" green="0.7000">
+    </minimapcolor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Nature</unittype>
+    <unittype>Gold</unittype>
+    <unittype>AbstractFruit</unittype>
+    <unittype>AbstractMine</unittype>
+    <flag>NoHPBar</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>Invulnerable</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20459" name="zpUnderbrushCoral">
+    <dbid>20459</dbid>
+    <displaynameid>301736</displaynameid>
+    <editornameid>301737</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>terrain\underbrush\coral.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>VariationLocked</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+  </unit>
 
   
  
