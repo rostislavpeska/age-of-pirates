@@ -6783,7 +6783,7 @@ vector getRandomPoint(vector location = cInvalidVector, int radius = 30)
 
 //==============================================================================
 // selectPickupPoint
-// Looks at the vector between us and the enemy, and sompares several points to 
+// Looks at the vector between us and the enemy, and compares several points to 
 // find the best pickup
 // Similar process as how coastal tower locations are picked
 // To use this for dropoff points, just invert the friendly and enemy locations,

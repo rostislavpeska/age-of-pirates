@@ -19,7 +19,7 @@ rule initializePirateRules
 active
 minInterval 1
 {
-   // AssertiveWall: Check for Pirate Maps and set gStartOnDifferentIslands true for all of them
+   // AssertiveWall: Age of Pirates maps that we want to count as Starting on Different Islands
    if (cRandomMapName == "zpburma_b" ||
        cRandomMapName == "zpcoldwar" ||
        cRandomMapName == "zpdeadsea" ||
@@ -28,6 +28,7 @@ minInterval 1
        cRandomMapName == "zpmalta_castles" ||
        cRandomMapName == "zpmalta" ||
        cRandomMapName == "zpphilippines" ||
+       cRandomMapName == "zptasmania" ||
        cRandomMapName == "zptortuga" ||
        cRandomMapName == "zptreasureisland" ||
        cRandomMapName == "zpvenice" ||
@@ -120,6 +121,12 @@ minInterval 1
        cRandomMapName == "zptreasureisland")
    {
       gMigrationMap = true;
+   }
+
+   // AssertiveWall: Treat Tasmania as a special thing. Do not include it as a migration map
+   if (cRandomMapName == "zptasmania")
+   {
+      xsEnableRule("tasmaniaStart");
    }
 
    // Initializes all pirate functions
@@ -254,6 +261,111 @@ minInterval 1
     
    xsDisableSelf();
 }
+
+//==============================================================================
+/* taskConvictLabor
+   Tasks laborors so they don't stand idle while tc is build
+*/
+//==============================================================================
+
+void taskConvictLabor(void)
+{
+   int convictQuery = createSimpleUnitQuery(cUnitTypeAbstractVillager, cPlayerRelationSelf, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(convictQuery);
+   int tempConvict = -1;
+   vector tempConvictLoc = cInvalidVector;
+   int closestFood = -1;
+
+   for (i = 0; < numberFound)
+   {
+      tempConvict = kbUnitQueryGetResult(convictQuery, i);
+      if (closestFood < 0)
+      {
+         tempConvictLoc = kbUnitGetPosition(tempConvict);
+         closestFood = getClosestGaiaUnit(cUnitTypeHuntable, tempConvictLoc);
+      }
+
+      aiTaskUnitWork(tempConvict, closestFood);
+   }
+}
+
+//==============================================================================
+/* tasmaniaFailsafe
+   Reinits in case the TC isn't building
+*/
+//==============================================================================
+
+rule tasmaniaFailsafe
+inactive
+minInterval 20
+{
+   if (kbUnitCount(cMyID, cUnitTypeCoveredWagon, cUnitStateAlive) > 0)
+   {
+      init();
+   }
+   else
+   {
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
+/* tasmaniaStart
+   Starting conditions based on Tasmania start
+*/
+//==============================================================================
+
+rule tasmaniaStart
+inactive
+minInterval 3
+{
+   // Move ships toward center island and plop down a base there
+   int shipQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive);
+   int shipNumber = kbUnitQueryExecute(shipQuery);
+   int tempShip = -1;
+   vector tempShipLocation = cInvalidVector;
+   vector targetPoint = kbGetMapCenter();    // for simplicity just use middle of map
+   static vector baseDropoffPoint = cInvalidVector;
+   vector dropoffPoint = cInvalidVector;
+   int unitsOnBoard = -1;
+   bool canDisable = true;
+
+   for (i = 0; < shipNumber)
+   {
+      tempShip = kbUnitQueryGetResult(shipQuery, i);
+      tempShipLocation = kbUnitGetPosition(tempShip);
+      unitsOnBoard = getUnitCountByLocation(cUnitTypeLogicalTypeGarrisonInShips, cMyID, cUnitStateAlive, tempShipLocation, 2.0);
+      if (unitsOnBoard <= 0)
+      {
+         continue;
+      }
+
+      canDisable = false;
+      dropoffPoint = selectPickupPoint(targetPoint, tempShipLocation, 5, false);
+      if (dropoffPoint != cInvalidVector)
+      {
+         aiTaskUnitEject(tempShip, dropoffPoint);
+         if (baseDropoffPoint == cInvalidVector)
+         {
+            baseDropoffPoint = dropoffPoint;
+         }
+      }
+      else
+      {
+         aiTaskUnitMove(tempShip, targetPoint);
+      }
+   }
+
+   if (canDisable == true && baseDropoffPoint != cInvalidVector)
+   {
+      // Don't need to move main base since it doesn't exist yet. 
+      init();  // This restarts the AI and gets the TC building as if it was a land TC wagon
+      xsEnableRule("tasmaniaFailsafe");  // redoes the init in case the wagon isn't building
+      taskConvictLabor();
+      xsDisableSelf();
+   }
+}
+
 
 //==============================================================================
 // ZP Fixed gun builder
