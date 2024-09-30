@@ -19,7 +19,7 @@
       </texture>
       <texture name="Normals" override="buildings\gold_mine\coral_mine\textures\coral_normals">
       </texture>
-      <texture name="Masks" override="buildings\gold_mine\coral_mine\textures\yellow_coral_basecolor">
+      <texture name="Masks" override="buildings\gold_mine\coral_mine\textures\red_coral_basecolor">
       </texture>
     </parameters>
   </submaterial>
@@ -31,7 +31,7 @@
       </texture>
       <texture name="Normals" override="buildings\gold_mine\coral_mine\textures\coral_normals">
       </texture>
-      <texture name="Masks" override="buildings\gold_mine\coral_mine\textures\yellow_coral_basecolor">
+      <texture name="Masks" override="buildings\gold_mine\coral_mine\textures\red_coral_basecolor">
       </texture>
     </parameters>
   </submaterial>
@@ -43,7 +43,7 @@
       </texture>
       <texture name="Normals" override="buildings\gold_mine\coral_mine\textures\coral_normals">
       </texture>
-      <texture name="Masks" override="buildings\gold_mine\coral_mine\textures\yellow_coral_basecolor">
+      <texture name="Masks" override="buildings\gold_mine\coral_mine\textures\red_coral_basecolor">
       </texture>
     </parameters>
   </submaterial>
@@ -55,7 +55,7 @@
       </texture>
       <texture name="Normals" override="buildings\gold_mine\coral_mine\textures\coral_normals">
       </texture>
-      <texture name="Masks" override="buildings\gold_mine\coral_mine\textures\yellow_coral_basecolor">
+      <texture name="Masks" override="buildings\gold_mine\coral_mine\textures\red_coral_basecolor">
       </texture>
     </parameters>
   </submaterial>

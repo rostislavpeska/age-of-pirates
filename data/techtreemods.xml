@@ -3727,7 +3727,7 @@
     <flag>Shadow</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">zpWokouSteamer</target>
+        <target type="ProtoUnit">zpWokouFuchuan</target>
       </effect>
       <effect type="Data" action="SpawnWokouFuchuan" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpPirateWaterSpawnFlag2">
         <target type="Player">
@@ -6850,6 +6850,7 @@
       <effect type="TechStatus" status="obtainable">zpArmoredTrainTech</effect>
       <effect type="TechStatus" status="obtainable">zpScientistArtillery</effect>
       <effect type="TechStatus" status="active">zpScientistsActive</effect>
+      <effect type="TechStatus" status="obtainable">zpScientistUnderwaterExploration</effect>
     </effects>
   </tech>
   <tech name ="zpPickScientist" type ="Normal">
@@ -7734,6 +7735,9 @@
       </effect>
       <effect type="CommandAdd" proto="zpSubmarineProxy" page="0" column="4">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpSubmarine</target>
       </effect>
     </effects>
   </tech>
@@ -15895,6 +15899,54 @@
       <effect type="TechStatus" status="unobtainable">ypTradeRouteUpgrade1</effect>
       <effect type="TechStatus" status="unobtainable">ypTradeRouteUpgrade2</effect>
 		</effects>
+  </tech>
+  <tech name="zpScientistUnderwaterExploration" type="Normal">
+    <dbid>40726</dbid>
+    <displaynameid>301738</displaynameid>
+    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">600.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\underwater_exploration.png</icon>
+    <rollovertextid>301739</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <flag>TeamTech</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSubmarine</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpDiver</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSubmarineProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSubmarine" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSubmarineProxy" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnderwaterScientists" type="Normal">
+    <dbid>40727</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" tech="zpScientistIronFleet">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpScientistUnderwaterExploration" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
   </tech>
 
 

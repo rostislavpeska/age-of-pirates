@@ -5031,6 +5031,7 @@
     <train row="0" page="0" column="12">zpRitualCanoe</train>
     <train row="0" page="0" column="12">zpWakaCanoe</train>
     <train row="0" page="0" column="13">zpCatamaran</train>
+    <train row="0" page="0" column="14">zpSubmarine</train>
   </unit>
   <unit name="dePort">
     <train row="0" page="0" column="11">ypFireship</train>
@@ -5038,6 +5039,7 @@
     <train row="0" page="0" column="12">zpRitualCanoe</train>
     <train row="0" page="0" column="12">zpWakaCanoe</train>
     <train row="0" page="0" column="13">zpCatamaran</train>
+    <train row="0" page="0" column="14">zpSubmarine</train>
   </unit>
   <unit id="20050" name="zpWokouFuchuanProxy">
     <dbid>20050</dbid>
@@ -10318,7 +10320,7 @@
     <projectileprotounit>zpTorpedo</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <trainpoints>40.0000</trainpoints>
-    <buildlimit>3</buildlimit>
+    <buildlimit>1</buildlimit>
     <bounty>80.0000</bounty>
     <buildbounty>80.0000</buildbounty>
     <cost resourcetype="Wood">300.0000</cost>
@@ -13142,6 +13144,7 @@
     <train row="0" page="0" column="12">zpRitualCanoe</train>
     <train row="0" page="0" column="12">zpWakaCanoe</train>
     <train row="0" page="0" column="13">zpCatamaran</train>
+    <train row="0" page="0" column="14">zpSubmarine</train>
   </unit>
   <unit id="20139" name="zpAImigrationPoint">
     <dbid>20139</dbid>
@@ -15914,6 +15917,7 @@
     <train row="0" page="1" column="14">zpInuitWarCanoe</train>
     <train row="0" page="1" column="15">zpWakaCanoe</train>
     <train row="0" page="1" column="16">zpCatamaran</train>
+    <train row="0" page="1" column="17">zpSubmarine</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -34057,6 +34061,7 @@
     <flag>Invulnerable</flag>
     <flag>DoNotValidateResourceInventory</flag>
     <flag>Tracked</flag>
+    <flag>RMCanRotate</flag>
     <command page="10" column="7">Delete</command>
   </unit>
   <unit id="20459" name="zpUnderbrushCoral">

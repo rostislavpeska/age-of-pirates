@@ -108,24 +108,4 @@
 		<unit variation="181" posx="-4.8954" posz="9.1898" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
 		<unit variation="138" posx="-5.0724" posz="10.9982" orientx="-0.9027" orienty="0.0000" orientz="-0.4302">SMTupiFence</unit>
 	</units>
-	<tiles>
-		<tilegroup type="PassableLand" subtype="texas\walking_path_tex">
-			<block startx="-6" startz="-2" endx="-6" endz="1"></block>
-			<block startx="-5" startz="-5" endx="-5" endz="1"></block>
-			<block startx="-4" startz="-6" endx="-4" endz="1"></block>
-			<block startx="-3" startz="-6" endx="-3" endz="1"></block>
-			<block startx="-2" startz="-6" endx="-2" endz="1"></block>
-			<block startx="-1" startz="-6" endx="-1" endz="1"></block>
-			<block startx="0" startz="-6" endx="0" endz="1"></block>
-			<block startx="1" startz="-6" endx="1" endz="1"></block>
-			<block startx="-5" startz="2" endx="-5" endz="2"></block>
-			<block startx="-4" startz="2" endx="-4" endz="2"></block>
-			<block startx="-3" startz="2" endx="-3" endz="2"></block>
-			<block startx="-2" startz="2" endx="-2" endz="3"></block>
-			<block startx="-1" startz="2" endx="-1" endz="3"></block>
-			<block startx="0" startz="2" endx="0" endz="2"></block>
-			<block startx="2" startz="-6" endx="2" endz="0"></block>
-			<block startx="3" startz="-5" endx="3" endz="-1"></block>
-		</tilegroup>
-	</tiles>
 </grouping>
