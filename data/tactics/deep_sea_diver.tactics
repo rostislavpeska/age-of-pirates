@@ -217,6 +217,13 @@
     <maxrange>1.0</maxrange>
     <rate type="AbstractUnderwaterMine">0.4</rate>
   </action>
+  <action>
+    <name stringid="69147">Build</name>
+    <type>Build</type>
+    <anim>Build</anim>
+    <maxrange>0.2</maxrange>
+    <rate type="Building">1.0</rate>
+  </action>
   <tactic>Volley
     <action priority="100">GrenadeAttack</action>
     <action priority="90">VolleyRangedAttack</action>

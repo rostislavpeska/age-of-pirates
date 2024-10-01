@@ -158,6 +158,22 @@
     <persistent>0</persistent>
     <singleuse>1</singleuse>
   </action>
+  <action>
+    <name stringid="69776">SpawnSubmarineSPC</name>
+    <type>Spawn</type>
+    <rate type="zpSubmarineTransport">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnNautilusSPC</name>
+    <type>Spawn</type>
+    <rate type="zpNautilusTransport">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
   <tactic>Normal
     <action>Heal</action>
     <action>SpawnPrivateer</action>
@@ -173,5 +189,7 @@
     <action>SpawnBlackJackShip</action>
     <action>SpawnPrau</action>
     <action>SpawnSultana</action>
+    <action>SpawnSubmarineSPC</action>
+    <action>SpawnNautilusSPC</action>
   </tactic>
 </tactics>

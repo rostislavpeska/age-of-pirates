@@ -2149,6 +2149,19 @@
       <param name="Status" dispname="$$22340$$Status" vartype="techstatus">2</param>
       <command>trTechSetStatus(%PlayerID%, %TechID%, %Status%);</command>
     </effect>
+    <effect name="ZP Set Tech Status Conditional (XS)">
+      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+      <param name="TechCondition" dispname="$$22311$$Tech Condition" vartype="string">TechName</param>
+      <param name="Tech1ID" dispname="$$22311$$Requred Tech" vartype="string">TechName</param>
+      <param name="Tech2ID" dispname="$$22311$$Alt Tech" vartype="string">TechName</param>
+      <param name="Status" dispname="$$22340$$Status" vartype="techstatus">2</param>
+      <command>if (trTechStatusCheck(%PlayerID%, %TechCondition%, cTechStatusActive) == true) {</command>
+      <command>trTechSetStatus(%PlayerID%, %Tech1ID%, %Status%);</command>
+      <command>}</command>
+      <command>else {</command>
+      <command>trTechSetStatus(%PlayerID%, %Tech2ID%, %Status%);</command>
+      <command>}</command>
+    </effect>
     <effect name="ZP Home City View">
       <param name="Player" dispname="$$22301$$Player" vartype="player">1</param>
       <command>if(trCurrentPlayer()==%Player%){</command>

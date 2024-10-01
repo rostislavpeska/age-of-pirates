@@ -1,0 +1,22 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_emissive_advanced">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\submarine\textures\submarine_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\submarine\textures\submarine_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\naval\submarine\textures\submarine_mata_masks">
+      </texture>
+      <texture name="Details" override="units\naval\submarine\textures\submarine_mata_details">
+      </texture>
+      <texture name="Emissive" override="units\naval\submarine\textures\submarine_mata_emissive">
+      </texture>
+      <float name="EmissiveIntensity" override="5.0000">
+      </float>
+      <vector4 name="EmissiveColor" override="1.000, 1.000, 0.300, 0.000">
+      </vector4>
+    </parameters>
+  </submaterial>
+</material>

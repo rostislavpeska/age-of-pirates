@@ -17,6 +17,9 @@
         <rate type="AbstractFishingBoat">1.0 </rate>
         <rate type="NavalPet">1.0 </rate>
         <maxheight>0</maxheight>
+        <scalebycontainedunittype>
+            <rate type="zpCaptainNemo">1.5</rate>
+        </scalebycontainedunittype>
         <outerdamageareadistance>.25</outerdamageareadistance>
         <outerdamageareafactor>.20</outerdamageareafactor>
         <perfectaccuracy>1</perfectaccuracy>
@@ -42,6 +45,9 @@
         <rate type="AbstractFishingBoat">1.0 </rate>
         <rate type="NavalPet">1.0 </rate>
         <maxheight>0</maxheight>
+        <scalebycontainedunittype>
+            <rate type="zpCaptainNemo">1.5</rate>
+        </scalebycontainedunittype>
         <outerdamageareadistance>.25</outerdamageareadistance>
         <areasortmode>Directional</areasortmode>
         <outerdamageareafactor>.20</outerdamageareafactor>
@@ -59,6 +65,9 @@
         <attackaction>1</attackaction>
         <handlogic>1</handlogic>
         <speedboost>1</speedboost>
+        <scalebycontainedunittype>
+            <rate type="zpCaptainNemo">0.75</rate>
+        </scalebycontainedunittype>
         <anim>RamAttack</anim>
         <impacteffect>effects\impacts\melee</impacteffect>
         <targetspeedboost>1</targetspeedboost>
@@ -76,6 +85,9 @@
         <maxspread>5</maxspread>
         <spreadfactor>0.25</spreadfactor>
         <trackrating>12</trackrating>
+        <scalebycontainedunittype>
+            <rate type="zpCaptainNemo">0.75</rate>
+        </scalebycontainedunittype>
         <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
         <projectile>InvisibleProjectile</projectile>
         <numberprojectiles>1</numberprojectiles>

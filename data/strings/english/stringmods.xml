@@ -1732,8 +1732,8 @@
       <string _locid="301731">Amphiprioninae</string>
       <string _locid="301732">Barracuda</string>
       <string _locid="301733">ZP Barracuda</string>
-      <string _locid="301734">Pearl Reef</string>
-      <string _locid="301735">ZP Pearl Reef</string>
+      <string _locid="301734">Pearls</string>
+      <string _locid="301735">ZP Pearls</string>
       <string _locid="301736">Underbrush Coral</string>
       <string _locid="301737">ZP Underbrush Coral</string>
       <string _locid="301738">Underwater Exploration</string>
@@ -1741,6 +1741,19 @@
       <string _locid="301740">Cook Islands</string>
       <string _locid="301741">Cook Islands Description</string>
       <string _locid="301742">Cook Islands Loading</string>
+      <string _locid="301743">Diving Bell</string>
+      <string _locid="301744">ZP Diving Bell</string>
+      <string _locid="301745">Captain Nemo</string>
+      <string _locid="301746">ZP Captain Nemo</string>
+      <string _locid="301747">Hero Submarine Captain</string>
+      <string _locid="301748">Can be garrisoned in submarines and signifficantly increase it's attack.</string>
+      <string _locid="300749">Captain Nemo (Map Bonus)</string>
+      <string _locid="300750">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Submarine \n\n&lt;color=0.0, 1.0, 0.0&gt;Bonus:&lt;/color&gt; Ships Captain Nemo hero character. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nLegendary Nautilus, Submarine Fleet</string>
+      <string _locid="300751">ZP Submarine Transport</string>
+      <string _locid="300752">ZP Nautilus Transport</string>
+
+
+
 
 
       <!-- ======================================== -->

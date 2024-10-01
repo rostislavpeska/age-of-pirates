@@ -99,6 +99,31 @@
         <height>10.0</height>
     </watersplash>
 </component>
+<component>DiveComp
+    <logic type="LowPoly">
+        <normal>
+            <assetreference type="GrannyModel">
+                <file>units\naval\submarine\spcsubmarine_underwater</file>
+            </assetreference>
+        </normal>
+        <lowpoly>
+            <assetreference type="GrannyModel">
+                <file>units\naval\submarine\spcsubmarine_underwater</file>
+            </assetreference>
+        </lowpoly>
+    </logic>
+    <decal>
+        <effecttype>default</effecttype>
+        <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+        <width>7.00</width>
+        <height>11.00</height>
+    </decal>
+    <watersplash>
+        <texture>units\naval\colony_ship\colony_ship_hullmask</texture>
+        <width>10.0</width>
+        <height>10.0</height>
+    </watersplash>
+</component>
 <component>Death
     <assetreference type="GrannyModel">
         <file>units\naval\galleon\galleon_zpspc_damaged</file>
@@ -120,7 +145,7 @@
     <assetreference type="GrannyAnim">
         <file>units\naval\submarine\submarine_dived_in</file>
     </assetreference>
-    <component>ModelComp</component>
+    <component>DiveComp</component>
     <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
 
 </anim>
@@ -167,7 +192,7 @@
         <tag type="SpecificSoundSet" checkvisible="1" set="Submarine_Dive">0.20</tag>
         <tag type="WindEffect" effectname="MediumArtilleryFire" effectbone="bone_launchpoint02">0.37</tag>
     </assetreference>
-    <component>ModelComp</component>
+    <component>DiveComp</component>
 
     <attach a="RocketThrust1" frombone="ATTACHPOINT" tobone="bone_launchpoint01" syncanims="0"></attach>
     <attach a="RocketThrust2" frombone="ATTACHPOINT" tobone="bone_launchpoint02" syncanims="0"></attach>
@@ -228,7 +253,7 @@
         <tag type="Particles" particlename="GatlingMuzzle01">0.78</tag>
         <tag type="Particles" particlename="GatlingMuzzle01">0.89</tag>
     </assetreference>
-    <component>ModelComp</component>
+    <component>DiveComp</component>
 
     <attach a="GatlingGunShoot" frombone="ATTACHPOINT" tobone="bone_Gatling" syncanims="0"></attach>
 </anim>
@@ -239,7 +264,7 @@
         <tag type="SpecificSoundSet" checkvisible="1" set="ShipDeath">0.90</tag>
         <tag type="SpecificSoundSet" checkvisible="1" set="Submarine_Dive">0.50</tag>
     </assetreference>
-    <component>ModelComp</component>
+    <component>DiveComp</component>
     <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
 </anim>
 

@@ -7760,15 +7760,26 @@
       <effect type="Data" amount="2.00" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNautilus</target>
       </effect>
+      <effect type="Data" amount="2.00" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNautilusTransport</target>
+      </effect>
       <effect type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpSubmarine</target>
+      </effect>
+      <effect type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSubmarineTransport</target>
       </effect>
       <effect type="SetName" proto="zpNautilus" culture="none" newname="300558">
       </effect>
       <effect type="SetName" proto="zpNautilusProxy" culture="none" newname="300558">
       </effect>
+      <effect type="SetName" proto="zpNautilusTransport" culture="none" newname="300558">
+      </effect>
       <effect type="Data" action="ShuntAttack" amount="1.50" subtype="Damage" relativity="BasePercent">
         <target type="ProtoUnit">zpNautilus</target>
+      </effect>
+      <effect type="Data" action="ShuntAttack" amount="1.50" subtype="Damage" relativity="BasePercent">
+        <target type="ProtoUnit">zpNautilusTransport</target>
       </effect>
     </effects>
   </tech>
@@ -15926,6 +15937,9 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSubmarineProxy</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpDivingBell</target>
+      </effect>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSubmarine" relativity="Absolute">
         <target type="Player">
         </target>
@@ -15946,8 +15960,126 @@
       <effect type="CommandAdd" tech="zpScientistUnderwaterExploration" page="2" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="SetName" tech="zpConsulateScientistNemo" newname="300749" newrollover="300750">
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpSendNemo</effect>
     </effects>
   </tech>
+  <tech name="zpSendNemo" type="Normal">
+    <dbid>40728</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status ="Active">zpConsulateScientistNemo</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpCaptainNemo" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainSubmarineSPC1" type="Normal">
+    <dbid>40729</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpSubmarine</target>
+      </effect>
+      <effect type="Data" action="SpawnSubmarineSPC" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpNativeWaterSpawnFlag1">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainSubmarineSPC2" type="Normal">
+    <dbid>40730</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpSubmarine</target>
+      </effect>
+      <effect type="Data" action="SpawnSubmarineSPC" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpNativeWaterSpawnFlag2">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainNautilusSPC1" type="Normal">
+    <dbid>40731</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNautilus</target>
+      </effect>
+      <effect type="Data" action="SpawnNautilusSPC" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpNativeWaterSpawnFlag1">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainNautilusSPC2" type="Normal">
+    <dbid>40732</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNautilus</target>
+      </effect>
+      <effect type="Data" action="SpawnNautilusSPC" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpNativeWaterSpawnFlag2">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTransformNemoSubmarines" type="Normal">
+    <dbid>40733</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpSubmarineTransport" fromprotoid="zpSubmarine">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNautilusTransport" fromprotoid="zpNautilus">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNautilusTransport" fromprotoid="zpMercNautilus">
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSubmarine</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSubmarineTransport</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpActivateSubmarineSPC</effect>
+    </effects>
+  </tech>
+  <tech name="zpActivateSubmarineSPC" type="Normal">
+    <dbid>40734</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status ="Active">zpScientistUnderwaterExploration</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpSubmarineTransport" fromprotoid="zpSubmarine">
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSubmarine</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSubmarineTransport</target>
+      </effect>
+    </effects>
+  </tech>
+
 
 
 
