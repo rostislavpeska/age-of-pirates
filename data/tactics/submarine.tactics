@@ -16,6 +16,7 @@
         <rate type="WaterGuardian">1.0 </rate>
         <rate type="AbstractFishingBoat">1.0 </rate>
         <rate type="NavalPet">1.0 </rate>
+        <rate type="zpDivingBell">1.0 </rate>
         <maxheight>0</maxheight>
         <scalebycontainedunittype>
             <rate type="zpCaptainNemo">1.5</rate>
@@ -44,6 +45,7 @@
         <rate type="WaterGuardian">1.0 </rate>
         <rate type="AbstractFishingBoat">1.0 </rate>
         <rate type="NavalPet">1.0 </rate>
+        <rate type="zpDivingBell">1.0 </rate>
         <maxheight>0</maxheight>
         <scalebycontainedunittype>
             <rate type="zpCaptainNemo">1.5</rate>
@@ -147,16 +149,17 @@
         <modifybase>1.0</modifybase>
         <modifytype>BaseHP</modifytype>
         <modifymultiplier>1.75</modifymultiplier>
-    </action>      
+    </action>        
 
 
     <!--TACTICS-->
 
     <tactic>zpSurface
         <protounitcommand>zpTacticSurface</protounitcommand>
-        <action priotity="25">GatlingAttack</action>
         <action priotity="100">CannonAttackSurfaced</action>
+        <action priotity="25">GatlingAttack</action>
         <action priority="2">ShuntAttack</action>
+        <!--<action>>DiverSupport</action>-->
         <action>Discover</action>
         <action>BoatManager</action>
         <transition>

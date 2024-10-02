@@ -1,11 +1,20 @@
 <animfile>
+  <definebone>bone_falling_building</definebone>
   <submodel>completed
       <attachment>dock
           <component>bell
-              <assetreference type="GrannyModel"><file>buildings\gold_mine\diving_bell_Model</file></assetreference>
+                <assetreference type="GrannyModel"><file>buildings\gold_mine\diving_bell_Model</file></assetreference>
           </component>
           <anim>Idle
               <component>bell</component>
+          </anim>
+      </attachment>
+      <attachment>clickzone
+          <component>clickzone
+                <assetreference type="GrannyModel"><file>buildings\gold_mine\diving_bell_invisible_Model</file></assetreference>
+          </component>
+          <anim>Idle
+              <component>clickzone</component>
           </anim>
       </attachment>
       <attachment>
@@ -16,7 +25,14 @@
           <anim>Idle<component>collapse_smoke</component></anim>
       </attachment>
       <component>LIVE
-          <assetreference type="GrannyModel"><file>buildings\gold_mine\diving_bell_Model</file></assetreference>
+        <assetreference type="GrannyModel"><file>buildings\gold_mine\diving_bell_Model</file></assetreference>
+        <attach a="clickzone" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+        <decal>
+            <effecttype>bump</effecttype>
+            <texture>terrain\decal\seacave_decal_basecolor</texture>
+            <width>10.00</width>
+            <height>10.00</height>
+        </decal>
       </component>
       <component>
           DEAD
@@ -44,6 +60,12 @@
       <attachment>dock_con
           <component>bell_con
               <assetreference type="GrannyModel"><file>buildings\gold_mine\diving_bell_con_Model</file></assetreference>
+              <decal>
+                    <effecttype>bump</effecttype>
+                    <texture>terrain\decal\seacave_decal_basecolor</texture>
+                    <width>10.00</width>
+                    <height>10.00</height>
+                </decal>
           </component>
           <anim>Idle
               <component>bell_con</component>
@@ -64,6 +86,12 @@
           <assetreference type="GrannyModel">
               <file>buildings\constructions\2x2_stage2</file>
           </assetreference>
+          <decal>
+                <effecttype>bump</effecttype>
+                <texture>terrain\decal\seacave_decal_basecolor</texture>
+                <width>10.00</width>
+                <height>10.00</height>
+            </decal>
       </component>
       <anim>Idle
           <component>construction_stage_02</component>
@@ -74,6 +102,12 @@
           <assetreference type="GrannyModel">
               <file>buildings\constructions\2x2_stage1</file>
           </assetreference>
+          <decal>
+                <effecttype>bump</effecttype>
+                <texture>terrain\decal\seacave_decal_basecolor</texture>
+                <width>10.00</width>
+                <height>10.00</height>
+            </decal>
       </component>
       <anim>Idle
           <component>construction_stage_01</component>

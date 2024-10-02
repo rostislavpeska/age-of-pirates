@@ -7,33 +7,6 @@
     <persistent>1</persistent>
   </action>
   <action>
-    <name stringid="90362">GrenadeAttack</name>
-    <type>Attack</type>
-    <attackaction>1</attackaction>
-    <rangedlogic>1</rangedlogic>
-    <anim>Grenade_Attack</anim>
-    <idleanim>Grenade_idle</idleanim>
-    <active>0</active>
-    <accuracy>1.0</accuracy>
-    <accuracyreductionfactor>0.5</accuracyreductionfactor>
-    <aimbonus>0</aimbonus>
-    <maxspread>5</maxspread>
-    <spreadfactor>0.25</spreadfactor>
-    <trackrating>12</trackrating>
-    <unintentionaldamagemultiplier>1.0</unintentionaldamagemultiplier>
-    <projectile>Grenade</projectile>
-    <impacteffect>effects\impacts\grenade</impacteffect>
-    <minrange>2</minrange>
-    <rate type="Unit">1.0 </rate>
-    <throw>1</throw>
-    <impactforcemin>450.0</impactforcemin>
-    <impactforcemax>600.0</impactforcemax>
-    <impactlaunchangle>50.0</impactlaunchangle>
-    <areasortmode>Radial</areasortmode>
-    <targetground>1</targetground>
-    <basedamagecap>1</basedamagecap>
-  </action>
-  <action>
     <name stringid="38127">VolleyRangedAttack</name>
     <type>Attack</type>
     <attackaction>1</attackaction>
@@ -172,20 +145,6 @@
     <speedboost>1</speedboost>
     <anim>Raze_attack</anim>
     <idleanim>Raze_idle</idleanim>
-    <impacteffect>effects\impacts\torch</impacteffect>
-    <projectile>TorchProjectile</projectile>
-  </action>
-  <action>
-    <name stringid="90363">GrenadeBuildingAttack</name>
-    <type>Attack</type>
-    <rangedlogic>1</rangedlogic>
-    <maxrange>12</maxrange>
-    <rate type="LogicalTypeShipsAndBuildings">1.0</rate>
-    <attackaction>1</attackaction>
-    <speedboost>1</speedboost>
-    <anim>Grenade_Attack</anim>
-    <idleanim>Grenade_idle</idleanim>
-    <active>0</active>
     <projectile>Grenade</projectile>
     <impacteffect>effects\impacts\grenade</impacteffect>
   </action>
@@ -198,24 +157,11 @@
     <rate type="AbstractNuggetWater">1.0</rate>
   </action>
   <action>
-    <name stringid="43019">AutoGatherInfluence</name>
-    <type>AutoGather</type>
-    <active>0</active>
-    <persistent>1</persistent>
-  </action>
-  <!--<action>
-    <name stringid="42178">Gather</name>
-    <type>Gather</type>
-    <maxrange>0.5</maxrange>
-    <anim>GatherMine</anim>
-    <rate type="AbstractMine">1.0</rate>
-    <rate type="AbstractFish">1.0</rate>
-  </action>-->
-  <action>
     <name stringid="42178">Gather</name>
     <type>Gather</type>
     <maxrange>1.0</maxrange>
-    <rate type="AbstractUnderwaterMine">0.4</rate>
+    <anim>Build</anim>
+    <rate type="AbstractUnderwaterMine">1.0</rate>
   </action>
   <action>
     <name stringid="69147">Build</name>
@@ -224,20 +170,14 @@
     <maxrange>0.2</maxrange>
     <rate type="Building">1.0</rate>
   </action>
-  <tactic>Volley
-    <action priority="100">GrenadeAttack</action>
+  <tactic>DiverVolley
     <action priority="90">VolleyRangedAttack</action>
-    <action priority="75">GrenadeBuildingAttack</action>
     <action priority="75">BuildingAttack</action>
-    <action priority="50">ChopAttack</action>
-    <action priority="40">HandAttackCrate</action>
     <action priority="25">VolleyHandAttack</action>
     <action>Build</action>
     <action>Gather</action>
     <action>CrateGather</action>
-    <action>Hunting</action>
     <action>Discover</action>
-    <action>AutoGatherInfluence</action>
     <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
     <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
     <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
@@ -256,131 +196,13 @@
     <joganim>Volley_jog</joganim>
     <runanim>Volley_run</runanim>
 </tactic>
-<tactic>Defend
-    <action priority="100">GrenadeAttack</action>
-    <action priority="90">DefendRangedAttack</action>
-    <action priority="75">GrenadeBuildingAttack</action>
-    <action priority="75">BuildingAttack</action>
-    <action priority="50">ChopAttack</action>
-    <action priority="40">HandAttackCrate</action>
-    <action priority="25">DefendHandAttack</action>
-    <action>Build</action>
-    <action>Gather</action>
-    <action>CrateGather</action>
-    <action>Hunting</action>
-    <action>Discover</action>
-    <action>AutoGatherInfluence</action>
-    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
-    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
-    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
-    <runaway>0</runaway>
-    <transition>
-        <tactic>Stealth</tactic>
-        <length>2</length>
-        <anim>Cover_In</anim>
-        <exit>1</exit>
-    </transition>
-    <autoretarget>1</autoretarget>
-    <idleanim>Defend_idle</idleanim>
-    <boredanim>Defend_bored</boredanim>
-    <deathanim>Death_by_melee</deathanim>
-    <walkanim>Defend_walk</walkanim>
-    <joganim>Defend_jog</joganim>
-    <runanim>Defend_run</runanim>
-</tactic>
-<tactic>Stagger
-    <action priority="100">GrenadeAttack</action>
-    <action priority="90">StaggerRangedAttack</action>
-    <action priority="75">GrenadeBuildingAttack</action>
-    <action priority="75">BuildingAttack</action>
-    <action priority="50">ChopAttack</action>
-    <action priority="40">HandAttackCrate</action>
-    <action priority="25">StaggerHandAttack</action>
-    <action>Build</action>
-    <action>Gather</action>
-    <action>CrateGather</action>
-    <action>Hunting</action>
-    <action>Discover</action>
-    <action>AutoGatherInfluence</action>
-    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
-    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
-    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
-    <runaway>0</runaway>
-    <transition>
-        <tactic>Stealth</tactic>
-        <length>2</length>
-        <anim>Cover_In</anim>
-        <exit>1</exit>
-    </transition>
-    <autoretarget>1</autoretarget>
-    <idleanim>Cover_ranged_idle</idleanim>
-    <boredanim>Cover_bored</boredanim>
-    <deathanim>Death_by_melee</deathanim>
-    <walkanim>Cover_walk</walkanim>
-    <joganim>Cover_jog</joganim>
-    <runanim>Cover_run</runanim>
-</tactic>
-<tactic>Melee
-    <action priority="100">GrenadeBuildingAttack</action>
-    <action priority="100">BuildingAttack</action>
-    <action priority="50">ChopAttack</action>
-    <action priority="40">HandAttackCrate</action>
-    <action priority="25">MeleeHandAttack</action>
-    <action>Build</action>
-    <action>Gather</action>
-    <action>CrateGather</action>
-    <action>Hunting</action>
-    <action>Discover</action>
-    <action>AutoGatherInfluence</action>
-    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
-    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
-    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
-    <runaway>0</runaway>
-    <transition>
-        <tactic>Stealth</tactic>
-        <length>2</length>
-        <anim>Cover_In</anim>
-        <exit>1</exit>
-    </transition>
-    <autoretarget>1</autoretarget>
-    <idleanim>Charge_idle</idleanim>
-    <boredanim>Charge_bored</boredanim>
-    <deathanim>Death_by_melee</deathanim>
-    <walkanim>Charge_walk</walkanim>
-    <joganim>Charge_jog</joganim>
-    <runanim>Charge_run</runanim>
-</tactic>
-<tactic>Stealth
+<tactic>DiverStealth
     <action>Stealth</action>
     <checkifcanstealth range="25.0">1</checkifcanstealth>
     <speedmodifier>0.8</speedmodifier>
     <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
     <transition>
         <tactic>Volley</tactic>
-        <length>0.3</length>
-        <anim>Cover_Out</anim>
-        <exit>1</exit>
-        <automatic>1</automatic>
-        <commandautomatic>1</commandautomatic>
-    </transition>
-    <transition>
-        <tactic>Defend</tactic>
-        <length>0.3</length>
-        <anim>Cover_Out</anim>
-        <exit>1</exit>
-        <automatic>1</automatic>
-        <commandautomatic>1</commandautomatic>
-    </transition>
-    <transition>
-        <tactic>Stagger</tactic>
-        <length>0.3</length>
-        <anim>Cover_Out</anim>
-        <exit>1</exit>
-        <automatic>1</automatic>
-        <commandautomatic>1</commandautomatic>
-    </transition>
-    <transition>
-        <tactic>Melee</tactic>
         <length>0.3</length>
         <anim>Cover_Out</anim>
         <exit>1</exit>

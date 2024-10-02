@@ -17,4 +17,6 @@
   <unittype>AbstractUnderwaterMine</unittype>
   <unittype>AbstractNavalCaptain</unittype>
   <unittype>AbstractSubmarine</unittype>
+  <unittype>AbstractDiver</unittype>
+  <unittype>AbstractUnderwaterBuilding</unittype>
 </unittypes>

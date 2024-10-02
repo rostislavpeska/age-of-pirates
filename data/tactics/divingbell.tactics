@@ -1,0 +1,47 @@
+<tactics>
+  <action>
+    <name stringid="43294">AutoGatherCoin</name>
+    <type>AutoGather</type>
+    <active>1</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="43295">AutoGatherFood</name>
+    <type>AutoGather</type>
+    <active>1</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="61766">AutoGatherXP</name>
+    <type>AutoGather</type>
+    <active>1</active>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="301618">GatherRateBonus</name>
+    <type>AutoRangedModify</type>
+    <maxrange>30</maxrange>
+    <modifyabstracttype>AbstractDiver</modifyabstracttype>
+    <persistent>1</persistent>
+    <modifytype>GatherRate</modifytype>
+    <modifymultiplier>2.5</modifymultiplier>
+    <nostack>1</nostack>
+    <modelattachment>effects\ypack_auras\econpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="112435">ExtraHPDiver</name>
+    <type>AutoRangedModify</type>
+    <active>1</active>
+    <maxrange>30</maxrange>
+    <nostack>1</nostack>
+    <modifyabstracttype>AbstractDiver</modifyabstracttype>
+    <persistent>1</persistent>
+    <modifybase>1.0</modifybase>
+    <modifytype>BaseHP</modifytype>
+    <modifymultiplier>1.5</modifymultiplier>
+  </action>       
+  <tactic>ShrineFood<action>AutoGatherFood</action><action>GatherRateBonus</action><action>ExtraHPDiver</action><protounitcommand>TacticFood</protounitcommand><transition><tactic>ShrineXP</tactic><length>2</length><exit>1</exit></transition><transition><tactic>ShrineCoin</tactic><length>2</length><exit>1</exit></transition><transition><length>2</length><exit>1</exit></transition></tactic>
+  <tactic>ShrineCoin<action>AutoGatherCoin</action><action>GatherRateBonus</action><action>ExtraHPDiver</action><protounitcommand>TacticCoin</protounitcommand><transition><tactic>ShrineXP</tactic><length>2</length><exit>1</exit></transition><transition><tactic>ShrineFood</tactic><length>2</length><exit>1</exit></transition><transition><length>2</length><exit>1</exit></transition></tactic>
+  <tactic>ShrineXP<action>AutoGatherXP</action><action>GatherRateBonus</action><action>ExtraHPDiver</action><protounitcommand>TacticXP</protounitcommand><transition><tactic>ShrineCoin</tactic><length>2</length><exit>1</exit></transition><transition><length>2</length><exit>1</exit></transition><transition><tactic>ShrineFood</tactic><length>2</length><exit>1</exit></transition></tactic>
+</tactics>

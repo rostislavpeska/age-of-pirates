@@ -9,6 +9,7 @@
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newguinea</maptype>
     </nugget>
@@ -18,6 +19,7 @@
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newguinea</maptype>
       <difficulty>1</difficulty>
@@ -28,6 +30,7 @@
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newguinea</maptype>
       <difficulty>1</difficulty>
@@ -38,6 +41,7 @@
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newguinea</maptype>
     </nugget>
@@ -53,6 +57,7 @@
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newguinea</maptype>
     </nugget>
@@ -487,6 +492,7 @@
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <guardian>zpGrdEscapedPrisoner</guardian>
       <difficulty>1</difficulty>
@@ -531,6 +537,7 @@
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <guardian>zpGrdEscapedPrisoner</guardian>
       <difficulty>1</difficulty>
@@ -548,6 +555,7 @@
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <guardian>zpGrdEscapedPrisoner</guardian>
       <difficulty>1</difficulty>
@@ -565,6 +573,7 @@
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <guardian>zpGrdEscapedPrisoner</guardian>
       <guardian>zpGrdEscapedPrisoner</guardian>
@@ -594,6 +603,7 @@
       <resource>Wood</resource>
       <amount>120</amount>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
       <maptype>tasmania</maptype>
@@ -611,6 +621,7 @@
       <resource>Gold</resource>
       <amount>120</amount>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
       <maptype>tasmania</maptype>
@@ -627,6 +638,7 @@
       <resource>Gold</resource>
       <amount>150</amount>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
       <guardian>zpGuardianClubman</guardian>
@@ -652,6 +664,7 @@
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <guardianunit>
         <unit>zpGuardianClubman</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
@@ -687,6 +700,7 @@
       <amount>415</amount>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>tasmania</maptype>
       <maptype>melanesia</maptype>
       <maptype>newguinea</maptype>
@@ -726,6 +740,7 @@
       <amount>455</amount>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <guardian>zpGuardianClubman</guardian>
       <guardian>zpGuardianClubman</guardian>
@@ -763,6 +778,7 @@
       <amount>250</amount>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newguinea</maptype>
       <maptype>tasmania</maptype>
@@ -852,6 +868,7 @@
       <amount>2</amount>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newguinea</maptype>
       <maptype>tasmania</maptype>
@@ -873,6 +890,7 @@
       <amount>400</amount>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newguinea</maptype>
       <maptype>tasmania</maptype>
@@ -910,6 +928,7 @@
       <resource>wood</resource>
       <amount>111</amount>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
       <guardian>zpGuardianClubman</guardian>
@@ -926,6 +945,7 @@
       <resource>Wood</resource>
       <amount>70</amount>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
       <guardian>zpGuardianClubman</guardian>
@@ -940,6 +960,7 @@
       <resource>Wood</resource>
       <amount>115</amount>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
       <guardian>zpGuardianClubman</guardian>
@@ -955,6 +976,7 @@
       <resource>Wood</resource>
       <amount>90</amount>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
       <maptype>newguinea</maptype>
@@ -972,6 +994,7 @@
       <resource>XP</resource>
       <amount>320</amount>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
       <guardian>zpGuardianClubman</guardian>
@@ -1005,6 +1028,7 @@
       <applystringid>301339</applystringid>
       <amount>1.5</amount>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
       <maptype>tasmania</maptype>
@@ -1041,6 +1065,7 @@
       <resource>XP</resource>
       <amount>150</amount>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
       <maptype>australia</maptype>
@@ -1062,6 +1087,7 @@
         <attachdummy>bone_hostage_A</attachdummy>
       </convertunit>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
       <guardianunit>
@@ -1166,6 +1192,7 @@
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
@@ -1186,6 +1213,7 @@
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
@@ -1902,17 +1930,20 @@
       <name>ypWaterNuggetDriftwood</name>
       <maptype>caribbeanwater</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetSwordfish</name>
       <maptype>caribbeanwater</maptype>
+      <maptype>cookislands</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetDolphins</name>
       <maptype>caribbeanwater</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
@@ -1935,6 +1966,7 @@
       <name>ypWaterNuggetAmbergris</name>
       <maptype>caribbeanwater</maptype>
       <maptype>hawaii</maptype>
+      <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
@@ -1979,21 +2011,19 @@
     <nugget>
       <name>ypWaterNuggetLemuria1a</name>
       <maptype>melanesia</maptype>
-      <maptype>newguinea</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetLemuria2a</name>
       <maptype>melanesia</maptype>
-      <maptype>newguinea</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetBoatHP</name>
       <maptype>melanesia</maptype>
-      <maptype>newguinea</maptype>
     </nugget>
     <nugget>
       <name>deWaterNuggetCoral2</name>
       <maptype>caribbeanwater</maptype>
+      <maptype>cookislands</maptype>
     </nugget>
     <nugget>
       <name>afVessel</name>
@@ -2168,5 +2198,52 @@
       <guardian>zpGuardianCanoe</guardian>
       <difficulty>6</difficulty>
     </nugget>
+    <nugget>
+      <name>zpWaterNuggetDivingBell1</name>
+      <type>SpawnUnit</type>
+      <waternugget>true</waternugget>
+      <nuggetunit>zpNuggetDivingBell</nuggetunit>
+      <rolloverstringid>102272</rolloverstringid>
+      <applystringid>102273</applystringid>
+      <unittype>zpDivingBellReward</unittype>
+      <amount>1</amount>
+      <maptype>cookislands</maptype>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <difficulty>16</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpWaterNuggetUnderwaterCave</name>
+      <type>SpawnUnit</type>
+      <waternugget>true</waternugget>
+      <nuggetunit>zpNuggetUnderwaterCave</nuggetunit>
+      <rolloverstringid>301761</rolloverstringid>
+      <applystringid>301762</applystringid>
+      <unittype>zpDiver</unittype>
+      <amount>2</amount>
+      <maptype>cookislands</maptype>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <difficulty>16</difficulty>
+    </nugget>
+
+      <!--<type>ConvertUnit</type>
+      <waternugget>true</waternugget>
+      <nuggetunit>ypNuggetEuropeanWreck</nuggetunit>
+      <rolloverstringid>102272</rolloverstringid>
+      <applystringid>102273</applystringid>
+      <maptype>cookislands</maptype>
+      <convertunit>
+        <unit>zpDivingBell</unit>
+      </convertunit>
+      <guardianunit>
+        <unit>zpGuardianPrivateer</unit>
+      </guardianunit>
+      <killunitonapply>0</killunitonapply>
+      <difficulty>6</difficulty>
+    </nugget>-->
+
   </nuggets>
 </nuggetmods>

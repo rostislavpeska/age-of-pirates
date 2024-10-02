@@ -1732,7 +1732,7 @@
       <string _locid="301731">Amphiprioninae</string>
       <string _locid="301732">Barracuda</string>
       <string _locid="301733">ZP Barracuda</string>
-      <string _locid="301734">Pearls</string>
+      <string _locid="301734">Shallow Water Pearls</string>
       <string _locid="301735">ZP Pearls</string>
       <string _locid="301736">Underbrush Coral</string>
       <string _locid="301737">ZP Underbrush Coral</string>
@@ -1747,11 +1747,20 @@
       <string _locid="301746">ZP Captain Nemo</string>
       <string _locid="301747">Hero Submarine Captain</string>
       <string _locid="301748">Can be garrisoned in submarines and signifficantly increase it's attack.</string>
-      <string _locid="300749">Captain Nemo (Map Bonus)</string>
-      <string _locid="300750">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Submarine \n\n&lt;color=0.0, 1.0, 0.0&gt;Bonus:&lt;/color&gt; Ships Captain Nemo hero character. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nLegendary Nautilus, Submarine Fleet</string>
-      <string _locid="300751">ZP Submarine Transport</string>
-      <string _locid="300752">ZP Nautilus Transport</string>
-
+      <string _locid="301749">Captain Nemo (Map Bonus)</string>
+      <string _locid="301750">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Submarine \n\n&lt;color=0.0, 1.0, 0.0&gt;Bonus:&lt;/color&gt; Ships Captain Nemo hero character. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nLegendary Nautilus, Submarine Fleet</string>
+      <string _locid="301751">ZP Submarine Transport</string>
+      <string _locid="301752">ZP Nautilus Transport</string>
+      <string _locid="301753">Generates resources and provides gather bonus and hitpoint bonus to nearby divers. Very resistent to any unit's attack except Divers and submerged Submarines.</string>
+      <string _locid="301754">Diver life support building.</string>
+      <string _locid="301755">Deep Water Pearls</string>
+      <string _locid="301756">ZP Pearls Underwater</string>
+      <string _locid="301757">Old Diving Bell</string>
+      <string _locid="301758">ZP Diving Bell Reward</string>
+      <string _locid="301759">Old deserted Diving Bell that can be claimed</string>
+      <string _locid="301760">Underwater Cave</string>
+      <string _locid="301761" symbol="cStringNuggeteuSpawnBoar" comment="1 - amount, 2 - resource">Underwater unit with harpoon attack. Can gather underwater resources.</string>
+      <string _locid="301762" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued Divers.</string>
 
 
 

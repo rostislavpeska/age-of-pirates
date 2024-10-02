@@ -12069,7 +12069,7 @@
       <effect type="CommandRemove" tech="zpScientistIronFleet">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpScientistArtillery" page="2" column="4">
+      <effect type="CommandAdd" tech="zpScientistArtillery" page="2" column="3">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -15912,7 +15912,7 @@
 		</effects>
   </tech>
   <tech name="zpScientistUnderwaterExploration" type="Normal">
-    <dbid>40726</dbid>
+    <dbid>40735</dbid>
     <displaynameid>301738</displaynameid>
     <cost resourcetype="Wood">300.0000</cost>
     <cost resourcetype="Gold">600.0000</cost>
@@ -15932,13 +15932,22 @@
         <target type="ProtoUnit">zpSubmarine</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpDiver</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSubmarineProxy</target>
       </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpDivingBell</target>
+      <effect type="CommandAdd" proto="zpDiver" page="2" column="1">
+        <target type="ProtoUnit">zpSubmarine</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpDiver" page="2" column="1">
+        <target type="ProtoUnit">zpSubmarineTransport</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpDiver" page="2" column="1">
+        <target type="ProtoUnit">zpNautilus</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpDiver" page="2" column="1">
+        <target type="ProtoUnit">zpNautilusTransport</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpDiver" page="2" column="1">
+        <target type="ProtoUnit">zpMercNautilus</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSubmarine" relativity="Absolute">
         <target type="Player">
@@ -15957,10 +15966,10 @@
       <effect type="CommandRemove" tech="zpScientistIronFleet">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpScientistUnderwaterExploration" page="2" column="4">
+      <effect type="CommandAdd" tech="zpScientistUnderwaterExploration" page="2" column="3">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="SetName" tech="zpConsulateScientistNemo" newname="300749" newrollover="300750">
+      <effect type="SetName" tech="zpConsulateScientistNemo" newname="301749" newrollover="301750">
       </effect>
       <effect type="TechStatus" status="obtainable">zpSendNemo</effect>
     </effects>
