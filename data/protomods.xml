@@ -33539,6 +33539,7 @@
     <unittype>AbstractCanSeeStealth</unittype>
     <unittype>AbstractDiver</unittype>
     <unittype>ValidIdleVillager</unittype>
+    <unittype>AbstractVillager</unittype>
     <unittype>Military</unittype>
     <train row="0" page="0" column="1">zpDivingBell</train>
     <flag>NavalUnit</flag>
@@ -34593,7 +34594,7 @@
     <cost resourcetype="Wood">100.0000</cost>
     <cost resourcetype="Gold">200.0000</cost>
     <buildingworkrate>1.0000</buildingworkrate>
-    <maxcontained>10</maxcontained>
+    <placementfile>divingbell.xml</placementfile>
     <allowedage>0</allowedage>
     <armor type="Siege" value="0.9000">
     </armor>
@@ -34630,7 +34631,6 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractUnderwaterBuilding</unittype>
-    <unittype>AbstractShrine</unittype>
     <train row="0" page="1" column="1">zpDiver</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -34649,13 +34649,14 @@
     <flag>StartEnabled</flag>
     <flag>UseSharedBuildLimit</flag>
     <flag>DisplayRange</flag>
+    <flag>BuildingShowTactics</flag>
     <tactics>divingbell.tactics</tactics>
     <command page="10" column="7">Delete</command>
     <command page="10" column="5">Eject</command>
     <command page="10" column="8">CancelAllQueued</command>
-    <command page="0" column="3">TacticXPShrine</command>
-    <command page="0" column="0">TacticFood</command>
-    <command page="0" column="2">TacticCoin</command>
+    <command page="0" column="3">DivingBellFood</command>
+    <command page="0" column="0">DivingBellXP</command>
+    <command page="0" column="2">DivingBellCoin</command>
     <protoaction>
       <name>AutoGatherCoin</name>
       <rate type="Gold">0.095000</rate>
@@ -34788,7 +34789,6 @@
     <cost resourcetype="Wood">100.0000</cost>
     <cost resourcetype="Gold">200.0000</cost>
     <buildingworkrate>1.0000</buildingworkrate>
-    <maxcontained>10</maxcontained>
     <allowedage>0</allowedage>
     <armor type="Siege" value="0.9000">
     </armor>
@@ -34826,7 +34826,6 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractUnderwaterBuilding</unittype>
-    <unittype>AbstractShrine</unittype>
     <train row="0" page="1" column="1">zpDiver</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -34845,13 +34844,14 @@
     <flag>StartEnabled</flag>
     <flag>UseSharedBuildLimit</flag>
     <flag>DisplayRange</flag>
+    <flag>BuildingShowTactics</flag>
     <tactics>divingbell.tactics</tactics>
     <command page="10" column="7">Delete</command>
     <command page="10" column="5">Eject</command>
     <command page="10" column="8">CancelAllQueued</command>
-    <command page="0" column="0">TacticFood</command>
-    <command page="0" column="3">TacticXPShrine</command>
-    <command page="0" column="2">TacticCoin</command>
+    <command page="0" column="3">DivingBellFood</command>
+    <command page="0" column="0">DivingBellXP</command>
+    <command page="0" column="2">DivingBellCoin</command>
     <protoaction>
       <name>AutoGatherCoin</name>
       <rate type="Gold">0.095000</rate>
@@ -34903,6 +34903,98 @@
     <flag>Doppled</flag>
     <flag>NavalUnit</flag>
     <flag>Tracked</flag>
+  </unit>
+  <unit id="20468" name="zpGuardianSubmarine">
+    <dbid>20468</dbid>
+    <displaynameid>301773</displaynameid>
+    <editornameid>301774</editornameid>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>5.5000</maxvelocity>
+    <maxrunvelocity>7.5000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <turnrate>1.0000</turnrate>
+    <animfile>units\naval\submarine\spcsubmarine.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\units\naval\spc\nautilus_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\nautilus_portrait.png</portraiticon>
+    <rollovertextid>301775</rollovertextid>
+    <shortrollovertextid>301775</shortrollovertextid>
+    <initialhitpoints>2225.0000</initialhitpoints>
+    <maxhitpoints>2225.0000</maxhitpoints>
+    <los>34.0000</los>
+    <unitaitype>Predator</unitaitype>
+    <initialunitaistance>Defensive</initialunitaistance>
+    <projectileprotounit>zpTorpedo</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <bounty resourcetype="XP">100.0000</bounty>
+    <bounty resourcetype="Gold">200.0000</bounty>
+    <chaosduration>50.0000</chaosduration>
+    <maxcontained>50</maxcontained>
+    <allowedage>1</allowedage>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Transport</unittype>
+    <unittype>MercType5</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>Guardian</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>WaterGuardian</unittype>
+    <unittype>AbstractSubmarine</unittype>
+    <flag>TieToWaterSurface</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>guardiansubmarine.tactics</tactics>
+    <protoaction>
+      <name>CannonAttackDived</name>
+      <damage>50.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>25.000000</maxrange>
+      <rof>1.000000</rof>
+      <damagecap>600.000000</damagecap>
+      <damagebonus type="Ship">2.000000</damagebonus>
+      <damagebonus type="AbstractSubmarine">2.000000</damagebonus>
+      <damagebonus type="AbstractUnderwaterBuilding">9.000000</damagebonus>
+      <damagebonus type="zpDiver">5.000000</damagebonus>
+      <damagearea>4.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
   </unit>
 
   

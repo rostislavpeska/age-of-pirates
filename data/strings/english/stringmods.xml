@@ -1759,9 +1759,21 @@
       <string _locid="301758">ZP Diving Bell Reward</string>
       <string _locid="301759">Old deserted Diving Bell that can be claimed</string>
       <string _locid="301760">Underwater Cave</string>
-      <string _locid="301761" symbol="cStringNuggeteuSpawnBoar" comment="1 - amount, 2 - resource">Underwater unit with harpoon attack. Can gather underwater resources.</string>
-      <string _locid="301762" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued Divers.</string>
-
+      <string _locid="301761" symbol="cStringNuggeteuSpawnBoar" comment="1 - amount, 2 - resource">Hidden divers equipped with harpoon. Caan gather underwater resources.</string>
+      <string _locid="301762" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued 2 Divers.</string>
+      <string _locid="301763" symbol="cStringNuggeteuSpawnBoar" comment="1 - amount, 2 - resource">Dolphin pets.</string>
+      <string _locid="301764" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued 2 Dolphins.</string>
+      <string _locid="301765">Configure Diving Bell to generate Food</string>
+      <string _locid="301766">This Diving Bell is generating Food</string>
+      <string _locid="301767">Configure Diving Bell to generate Coin</string>
+      <string _locid="301768">This Diving Bell is generating Coin</string>
+      <string _locid="301769">Configure Diving Bell to generate XP</string>
+      <string _locid="301770">This Diving Bell is generating XP</string>
+      <string _locid="301771" symbol="cStringNuggeteuSpawnBoar" comment="1 - amount, 2 - resource">Dolphin pet.</string>
+      <string _locid="301772" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued a Dolphin.</string>
+      <string _locid="301773">Pirate Submarine</string>
+      <string _locid="301774">ZP Guardian Submarine</string>
+      <string _locid="301775">Evil Pirate Submarine guarding a treasure.</string>
 
 
 

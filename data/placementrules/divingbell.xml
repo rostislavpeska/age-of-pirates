@@ -1,0 +1,5 @@
+<placementrules>
+  <distanceatleastfromcliff distance="6" errorstringid="25529">
+  </distanceatleastfromcliff>
+  <distanceatmostfromtype player="any" foundation="any" distance="20" errorstringid="72549">AbstractUnderwaterMine</distanceatmostfromtype>
+</placementrules>

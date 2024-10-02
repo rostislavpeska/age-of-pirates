@@ -2023,7 +2023,6 @@
     <nugget>
       <name>deWaterNuggetCoral2</name>
       <maptype>caribbeanwater</maptype>
-      <maptype>cookislands</maptype>
     </nugget>
     <nugget>
       <name>afVessel</name>
@@ -2069,7 +2068,7 @@
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
       <difficulty>6</difficulty>
-      <guardian>zpGuardianPrivateer</guardian>
+      <guardian>dePrivateerGuardian</guardian>
     </nugget>
     <nugget>
       <name>zpWaterNuggetMu1</name>
@@ -2087,7 +2086,7 @@
       <maptype>tasmania</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
-      <guardian>zpGuardianPrivateer</guardian>
+      <guardian>dePrivateerGuardian</guardian>
       <difficulty>6</difficulty>
     </nugget>
     <nugget>
@@ -2106,7 +2105,7 @@
       <maptype>tasmania</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
-      <guardian>zpGuardianPrivateer</guardian>
+      <guardian>dePrivateerGuardian</guardian>
       <difficulty>6</difficulty>
     </nugget>
     <nugget>
@@ -2125,7 +2124,7 @@
       <maptype>tasmania</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
-      <guardian>zpGuardianPrivateer</guardian>
+      <guardian>dePrivateerGuardian</guardian>
       <difficulty>6</difficulty>
     </nugget>
     <nugget>
@@ -2144,7 +2143,7 @@
       <maptype>tasmania</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
-      <guardian>zpGuardianPrivateer</guardian>
+      <guardian>dePrivateerGuardian</guardian>
       <difficulty>6</difficulty>
     </nugget>
     <nugget>
@@ -2163,7 +2162,7 @@
       <maptype>tasmania</maptype>
       <maptype>hawaii</maptype>
       <maptype>melanesia</maptype>
-      <guardian>zpGuardianPrivateer</guardian>
+      <guardian>dePrivateerGuardian</guardian>
       <difficulty>6</difficulty>
     </nugget>
     <nugget>
@@ -2211,6 +2210,8 @@
       <guardian>ypGreatWhiteShark</guardian>
       <guardian>ypGreatWhiteShark</guardian>
       <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
       <difficulty>16</difficulty>
     </nugget>
     <nugget>
@@ -2226,24 +2227,85 @@
       <guardian>ypGreatWhiteShark</guardian>
       <guardian>ypGreatWhiteShark</guardian>
       <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
       <difficulty>16</difficulty>
     </nugget>
-
-      <!--<type>ConvertUnit</type>
+    <nugget>
+      <name>zpWaterCaveDolphins</name>
+      <type>SpawnUnit</type>
       <waternugget>true</waternugget>
-      <nuggetunit>ypNuggetEuropeanWreck</nuggetunit>
+      <nuggetunit>zpNuggetUnderwaterCave</nuggetunit>
+      <rolloverstringid>301763</rolloverstringid>
+      <applystringid>301764</applystringid>
+      <unittype>zpPetDolphin</unittype>
+      <amount>2</amount>
+      <maptype>cookislands</maptype>
+      <maptype>newzealand</maptype>
+      <maptype>australia</maptype>
+      <maptype>hawaii</maptype>
+      <maptype>melanesia</maptype>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <difficulty>6</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpWaterCaveDolphin1</name>
+      <type>SpawnUnit</type>
+      <waternugget>true</waternugget>
+      <nuggetunit>zpNuggetUnderwaterCave</nuggetunit>
+      <rolloverstringid>301771</rolloverstringid>
+      <applystringid>301772</applystringid>
+      <unittype>zpPetDolphin</unittype>
+      <amount>1</amount>
+      <maptype>cookislands</maptype>
+      <maptype>newzealand</maptype>
+      <maptype>australia</maptype>
+      <maptype>hawaii</maptype>
+      <maptype>melanesia</maptype>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <difficulty>6</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpAUWaterNuggetBoatGatherCookIslands</name>
+      <type>GiveTech</type>
+      <nuggetunit>ypNuggetTurtleIsland</nuggetunit>
+      <waternugget>true</waternugget>
+      <rolloverstringid>66489</rolloverstringid>
+      <applystringid>66490</applystringid>
+      <tech>ypNuggetShipGather</tech>
+      <maptype>cookislands</maptype>
+      <guardian>zpGuardianWaka</guardian>
+      <guardian>zpGuardianWaka</guardian>
+      <difficulty>6</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpWaterNuggetUnderwaterCaveSubmarine</name>
+      <type>SpawnUnit</type>
+      <waternugget>true</waternugget>
+      <nuggetunit>zpNuggetUnderwaterCave</nuggetunit>
+      <rolloverstringid>301761</rolloverstringid>
+      <applystringid>301762</applystringid>
+      <unittype>zpDiver</unittype>
+      <amount>2</amount>
+      <maptype>cookislands</maptype>
+      <guardian>zpGuardianSubmarine</guardian>
+      <difficulty>17</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpWaterNuggetDivingBell1Submarine</name>
+      <type>SpawnUnit</type>
+      <waternugget>true</waternugget>
+      <nuggetunit>zpNuggetDivingBell</nuggetunit>
       <rolloverstringid>102272</rolloverstringid>
       <applystringid>102273</applystringid>
+      <unittype>zpDivingBellReward</unittype>
+      <amount>1</amount>
       <maptype>cookislands</maptype>
-      <convertunit>
-        <unit>zpDivingBell</unit>
-      </convertunit>
-      <guardianunit>
-        <unit>zpGuardianPrivateer</unit>
-      </guardianunit>
-      <killunitonapply>0</killunitonapply>
-      <difficulty>6</difficulty>
-    </nugget>-->
-
+      <guardian>zpGuardianSubmarine</guardian>
+      <difficulty>17</difficulty>
+    </nugget>
   </nuggets>
 </nuggetmods>

@@ -41,7 +41,52 @@
     <modifytype>BaseHP</modifytype>
     <modifymultiplier>1.5</modifymultiplier>
   </action>       
-  <tactic>ShrineFood<action>AutoGatherFood</action><action>GatherRateBonus</action><action>ExtraHPDiver</action><protounitcommand>TacticFood</protounitcommand><transition><tactic>ShrineXP</tactic><length>2</length><exit>1</exit></transition><transition><tactic>ShrineCoin</tactic><length>2</length><exit>1</exit></transition><transition><length>2</length><exit>1</exit></transition></tactic>
-  <tactic>ShrineCoin<action>AutoGatherCoin</action><action>GatherRateBonus</action><action>ExtraHPDiver</action><protounitcommand>TacticCoin</protounitcommand><transition><tactic>ShrineXP</tactic><length>2</length><exit>1</exit></transition><transition><tactic>ShrineFood</tactic><length>2</length><exit>1</exit></transition><transition><length>2</length><exit>1</exit></transition></tactic>
-  <tactic>ShrineXP<action>AutoGatherXP</action><action>GatherRateBonus</action><action>ExtraHPDiver</action><protounitcommand>TacticXP</protounitcommand><transition><tactic>ShrineCoin</tactic><length>2</length><exit>1</exit></transition><transition><length>2</length><exit>1</exit></transition><transition><tactic>ShrineFood</tactic><length>2</length><exit>1</exit></transition></tactic>
+  <tactic>DivingBellXP
+    <protounitcommand>DivingBellXP</protounitcommand>
+    <action>AutoGatherXP</action>
+    <action>GatherRateBonus</action>
+    <action>ExtraHPDiver</action>
+    <transition>
+      <tactic>DivingBellCoin</tactic>
+      <length>2</length>
+      <exit>1</exit>
+    </transition>
+    <transition>
+      <tactic>DivingBellFood</tactic>
+      <length>2</length>
+      <exit>1</exit>
+    </transition>
+  </tactic>
+  <tactic>DivingBellCoin
+      <protounitcommand>DivingBellCoin</protounitcommand>
+      <action>AutoGatherCoin</action>
+      <action>GatherRateBonus</action>
+      <action>ExtraHPDiver</action>
+      <transition>
+          <tactic>DivingBellXP</tactic>
+          <length>2</length>
+          <exit>1</exit>
+      </transition>
+      <transition>
+          <tactic>DivingBellFood</tactic>
+          <length>2</length>
+          <exit>1</exit>
+      </transition>
+  </tactic>
+  <tactic>DivingBellFood
+      <protounitcommand>DivingBellFood</protounitcommand>
+      <action>AutoGatherFood</action>
+      <action>GatherRateBonus</action>
+      <action>ExtraHPDiver</action>
+      <transition>
+          <tactic>DivingBellXP</tactic>
+          <length>2</length>
+          <exit>1</exit>
+      </transition>
+      <transition>
+          <tactic>DivingBellCoin</tactic>
+          <length>2</length>
+          <exit>1</exit>
+      </transition>
+  </tactic>
 </tactics>

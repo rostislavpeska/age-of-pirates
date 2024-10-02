@@ -2,8 +2,6 @@
   <component>sapphire
     <assetreference type="GrannyModel"><file>buildings\gold_mine\underwater_cave_Model</file></assetreference>
     <decal>
-        <effecttype>bump</effecttype>
-        <texture>terrain\decal\seacave_decal_basecolor</texture>
         <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
         <width>10.00</width>
         <height>10.00</height>
