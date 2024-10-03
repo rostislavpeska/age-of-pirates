@@ -2576,10 +2576,6 @@ rmSetTriggerLoop(false);
     rmAddTriggerCondition("ZP PLAYER Human");
     rmSetTriggerConditionParamInt("Player",k);
     rmSetTriggerConditionParam("MyBool", "true");
-    rmAddTriggerCondition("ZP Tech Status Equals (XS)");
-    rmSetTriggerConditionParamInt("PlayerID",k);
-    rmSetTriggerConditionParam("TechID","cTechzpConsulateScientistNemo");
-    rmSetTriggerConditionParamInt("Status",2);
     rmAddTriggerEffect("ZP Set Tech Status (XS)");
     rmSetTriggerEffectParamInt("PlayerID",k);
     rmSetTriggerEffectParam("TechID","cTechzpTransformNemoSubmarines"); //operator
@@ -2589,7 +2585,6 @@ rmSetTriggerLoop(false);
     rmSetTriggerRunImmediately(true);
     rmSetTriggerLoop(false);
     }
-
 
 
 
