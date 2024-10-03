@@ -34632,6 +34632,11 @@
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractUnderwaterBuilding</unittype>
     <train row="0" page="1" column="1">zpDiver</train>
+    <tech row="0" page="2" column="0">zpDiversSpawn</tech>
+    <tech row="0" page="2" column="1">zpDiversLifeSupport</tech>
+    <tech row="0" page="2" column="2">zpDiversExtraBell</tech>
+    <tech row="0" page="2" column="3">zpDiversMinerals</tech>
+    <tech row="0" page="2" column="4">zpDiverSpeargun</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -34654,6 +34659,7 @@
     <command page="10" column="7">Delete</command>
     <command page="10" column="5">Eject</command>
     <command page="10" column="8">CancelAllQueued</command>
+    <command page="0" column="4">DivingBellStealth</command>
     <command page="0" column="3">DivingBellFood</command>
     <command page="0" column="0">DivingBellXP</command>
     <command page="0" column="2">DivingBellCoin</command>
@@ -34849,6 +34855,7 @@
     <command page="10" column="7">Delete</command>
     <command page="10" column="5">Eject</command>
     <command page="10" column="8">CancelAllQueued</command>
+    <command page="0" column="4">DivingBellStealth</command>
     <command page="0" column="3">DivingBellFood</command>
     <command page="0" column="0">DivingBellXP</command>
     <command page="0" column="2">DivingBellCoin</command>

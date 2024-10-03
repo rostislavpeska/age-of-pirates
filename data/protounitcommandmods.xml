@@ -406,6 +406,15 @@
     <activerollovertextid>301766</activerollovertextid>
     <command>unitSetTactic("DivingBellFood")</command>
   </protounitcommand>
+  <protounitcommand>
+    <name>DivingBellStealth</name>
+    <icon>resources\images\icons\command\tactics_build_stealth_avl.png</icon>
+    <activeicon>resources\images\icons\command\tactics_build_stealth_cur.png</activeicon>
+    <disabledicon>resources\images\icons\command\tactics_build_stealth_un_avl.png</disabledicon>
+    <rollovertextid>301776</rollovertextid>
+    <activerollovertextid>301777</activerollovertextid>
+    <command>unitSetTactic("DivingBellStealth")</command>
+  </protounitcommand>
 
   <!--
 

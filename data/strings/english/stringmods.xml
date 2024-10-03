@@ -1716,7 +1716,7 @@
       <string _locid="301715">Large two-team map with separate continents (New Guinea and Australia) and a couple of bonus islands. Both continents have completely different vibes. \n\nSettlements: Korowai, Wokou, Aboriginal Australians, Pirates</string>
       <string _locid="301716">If you start either in Australia or New Guinea, the starting continent provides you with enough resources. Even though, if you need more, you may build additional colonies on the bonus islands. But take care of your fleet. This area is known for really heavy storms.</string>
       <string _locid="301717">Tasmania</string>
-      <string _locid="301718">Players start with one Privateer and one Waka Canoe in the middle of the sea close to Tasmanian shore. You have to find a right space for landing but beware, some landingg spots are well protected by cliffs but they are not that rich on resources. \n\nSettlements: Aboriginal Australians, Penal Colony, Pirates</string>
+      <string _locid="301718">Players start with one Privateer and one Waka Canoe in the middle of the sea close to Tasmanian shore. You have to find a right spot for landing but beware, some landing areas are well protected by cliffs but they are not that rich on resources. \n\nSettlements: Aboriginal Australians, Penal Colony, Pirates</string>
       <string _locid="301719">Don't panic, the land is close. You just have to find the right landing spot but beware, some landingg spots are well protected by cliffs but they are not that rich on resources.</string>
       <string _locid="301720">Sea Floor</string>
       <string _locid="301721">ZP SPC Sea Floor</string>
@@ -1763,17 +1763,31 @@
       <string _locid="301762" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued 2 Divers.</string>
       <string _locid="301763" symbol="cStringNuggeteuSpawnBoar" comment="1 - amount, 2 - resource">Dolphin pets.</string>
       <string _locid="301764" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued 2 Dolphins.</string>
-      <string _locid="301765">Configure Diving Bell to generate Food</string>
-      <string _locid="301766">This Diving Bell is generating Food</string>
-      <string _locid="301767">Configure Diving Bell to generate Coin</string>
-      <string _locid="301768">This Diving Bell is generating Coin</string>
-      <string _locid="301769">Configure Diving Bell to generate XP</string>
-      <string _locid="301770">This Diving Bell is generating XP</string>
+      <string _locid="301765">Configure Diving Bell to generate Food and provide gather bonus to divers</string>
+      <string _locid="301766">This Diving Bell is generating Food and providing gather bonus to divers</string>
+      <string _locid="301767">Configure Diving Bell to generate Coin and provide gather bonus to divers</string>
+      <string _locid="301768">This Diving Bell is generating Coin and providing gather bonus to divers</string>
+      <string _locid="301769">Configure Diving Bell to generate XP and provide gather bonus to divers</string>
+      <string _locid="301770">This Diving Bell is generating XP and providing gather bonus to divers</string>
       <string _locid="301771" symbol="cStringNuggeteuSpawnBoar" comment="1 - amount, 2 - resource">Dolphin pet.</string>
       <string _locid="301772" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued a Dolphin.</string>
       <string _locid="301773">Pirate Submarine</string>
       <string _locid="301774">ZP Guardian Submarine</string>
       <string _locid="301775">Evil Pirate Submarine guarding a treasure.</string>
+      <string _locid="301776">Configure Diving Bell to be unvisible for enemies but providing no gather bonus to divers</string>
+      <string _locid="301777">This Diving Bell is unvisible for enemies but is providing no gather bonus to divers</string>
+      <string _locid="301778">Diving Crew</string>
+      <string _locid="301779">Spawns 2 divers from every Diving Bell</string>
+      <string _locid="301780">Extended Life support</string>
+      <string _locid="301781">Increases Diver support aura range and diver hitpoint bonus. Submarines can also provide a limited HP bonus for divers.</string>
+      <string _locid="301782">Diver gather bonus long</string>
+      <string _locid="301783">Diver hitpoint bonus extender</string>
+      <string _locid="301784">Underwater Command Center</string>
+      <string _locid="301785">Allows your divers to construct an additional Diving Bell</string>
+      <string _locid="301786">Deep Sea Mining</string>
+      <string _locid="301787">Divers gather resources faster. Diving Bell autogather works faster too.</string>
+      <string _locid="301788">Automatic Spearguns</string>
+      <string _locid="301789">Improves diver's attack</string>
 
 
 
