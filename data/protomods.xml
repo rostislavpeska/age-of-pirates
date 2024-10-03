@@ -10442,7 +10442,7 @@
     </protoaction>
     <protoaction>
       <name>GatlingAttack</name>
-      <damage>17.000000</damage>
+      <damage>5.000000</damage>
       <damagetype>Siege</damagetype>
       <minrange>0.000000</minrange>
       <maxrange>25.000000</maxrange>
@@ -11638,7 +11638,7 @@
     </protoaction>
     <protoaction>
       <name>GatlingAttack</name>
-      <damage>17.000000</damage>
+      <damage>5.000000</damage>
       <damagetype>Siege</damagetype>
       <minrange>0.000000</minrange>
       <maxrange>25.000000</maxrange>
@@ -17240,7 +17240,7 @@
     </protoaction>
     <protoaction>
       <name>GatlingAttack</name>
-      <damage>17.000000</damage>
+      <damage>5.000000</damage>
       <damagetype>Siege</damagetype>
       <minrange>0.000000</minrange>
       <maxrange>25.000000</maxrange>
@@ -31532,8 +31532,8 @@
     <selectionpriority>10</selectionpriority>
     <rollovertextid>43686</rollovertextid>
     <shortrollovertextid>43685</shortrollovertextid>
-    <initialhitpoints>150.0000</initialhitpoints>
-    <maxhitpoints>150.0000</maxhitpoints>
+    <initialhitpoints>90.0000</initialhitpoints>
+    <maxhitpoints>90.0000</maxhitpoints>
     <los>14.0000</los>
     <projectileprotounit>InvisibleProjectile</projectileprotounit>
     <unitaitype>Civilian</unitaitype>
@@ -33510,6 +33510,10 @@
     </armor>
     <armor type="Siege" value="0.8000">
     </armor>
+
+    <unitregen>-1.0000</unitregen>
+
+
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
@@ -33820,8 +33824,8 @@
     <dbid>20454</dbid>
     <displaynameid>301722</displaynameid>
     <editornameid>301723</editornameid>
-    <obstructionradiusx>3.0000</obstructionradiusx>
-    <obstructionradiusz>3.0000</obstructionradiusz>
+    <obstructionradiusx>2.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
     <maxvelocity>5.0000</maxvelocity>
     <maxrunvelocity>7.0000</maxrunvelocity>
     <movementtype>water</movementtype>
@@ -33932,8 +33936,8 @@
     <dbid>20456</dbid>
     <displaynameid>301729</displaynameid>
     <editornameid>301730</editornameid>
-    <obstructionradiusx>2.0000</obstructionradiusx>
-    <obstructionradiusz>2.0000</obstructionradiusz>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
     <maxvelocity>5.0000</maxvelocity>
     <maxrunvelocity>7.0000</maxrunvelocity>
     <movementtype>water</movementtype>
@@ -34271,6 +34275,7 @@
     </armor>
     <initialtactic>zpSurface</initialtactic>
     <sharedselectionunittypes>
+      <unittype>zpSubmarine</unittype>
       <unittype>zpNautilus</unittype>
       <unittype>zpMercNautilus</unittype>
       <unittype>zpNautilusTransport</unittype>
@@ -34383,7 +34388,7 @@
     </protoaction>
     <protoaction>
       <name>GatlingAttack</name>
-      <damage>17.000000</damage>
+      <damage>5.000000</damage>
       <damagetype>Siege</damagetype>
       <minrange>0.000000</minrange>
       <maxrange>25.000000</maxrange>
@@ -34496,7 +34501,7 @@
       <unittype>zpNautilusTransport</unittype>
     </sharedbuildlimitunittypes>
     <sharedselectionunittypes>
-      <unittype>zpNautilusTransport</unittype>
+      <unittype>zpNautilus</unittype>
       <unittype>zpSubmarineTransport</unittype>
       <unittype>zpSubmarine</unittype>
       <unittype>zpMercNautilus</unittype>
@@ -34551,7 +34556,7 @@
     </protoaction>
     <protoaction>
       <name>GatlingAttack</name>
-      <damage>17.000000</damage>
+      <damage>5.000000</damage>
       <damagetype>Siege</damagetype>
       <minrange>0.000000</minrange>
       <maxrange>25.000000</maxrange>
@@ -34637,6 +34642,7 @@
     <tech row="0" page="2" column="2">zpDiversExtraBell</tech>
     <tech row="0" page="2" column="3">zpDiversMinerals</tech>
     <tech row="0" page="2" column="4">zpDiverSpeargun</tech>
+    <tech row="0" page="2" column="5">zpDiversUnlockSubmarine</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -34833,6 +34839,12 @@
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractUnderwaterBuilding</unittype>
     <train row="0" page="1" column="1">zpDiver</train>
+    <tech row="0" page="2" column="0">zpDiversSpawn</tech>
+    <tech row="0" page="2" column="1">zpDiversLifeSupport</tech>
+    <tech row="0" page="2" column="2">zpDiversExtraBell</tech>
+    <tech row="0" page="2" column="3">zpDiversMinerals</tech>
+    <tech row="0" page="2" column="4">zpDiverSpeargun</tech>
+    <tech row="0" page="2" column="5">zpDiversUnlockSubmarine</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>

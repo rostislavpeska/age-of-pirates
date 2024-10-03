@@ -25,7 +25,7 @@
     <persistent>1</persistent>
   </action>
   <action>
-    <name stringid="301618">GatherRateBonus</name>
+    <name stringid="301790">GatherRateBonus</name>
     <type>AutoRangedModify</type>
     <maxrange>35</maxrange>
     <active>1</active>
@@ -34,32 +34,33 @@
     <modifytype>GatherRate</modifytype>
     <modifymultiplier>2.5</modifymultiplier>
     <nostack>1</nostack>
+    <nostackignorepuid>1</nostackignorepuid>
     <modelattachment>effects\ypack_auras\econpower.xml</modelattachment>
     <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
   </action>
   <action>
-    <name stringid="112435">ExtraHPDiver</name>
-    <type>AutoRangedModify</type>
+    <name stringid="301791">ExtraHPDiver</name>
     <active>1</active>
+    <type>AutoRangedModify</type>
     <maxrange>35</maxrange>
-    <nostack>1</nostack>
     <modifyabstracttype>AbstractDiver</modifyabstracttype>
     <persistent>1</persistent>
-    <modifybase>1.0</modifybase>
-    <modifytype>BaseHP</modifytype>
-    <modifymultiplier>1.3</modifymultiplier>
+    <modifytype>HealRate</modifytype>
+    <modifyamount>2</modifyamount>
+    <nostack>1</nostack>
+    <nostackignorepuid>1</nostackignorepuid>
   </action>     
   <action>
     <name stringid="301783">ExtraHPDiverLong</name>
-    <type>AutoRangedModify</type>
     <active>0</active>
+    <type>AutoRangedModify</type>
     <maxrange>50</maxrange>
-    <nostack>1</nostack>
     <modifyabstracttype>AbstractDiver</modifyabstracttype>
     <persistent>1</persistent>
-    <modifybase>1.0</modifybase>
-    <modifytype>BaseHP</modifytype>
-    <modifymultiplier>1.8</modifymultiplier>
+    <modifytype>HealRate</modifytype>
+    <modifyamount>2</modifyamount>
+    <nostack>1</nostack>
+    <nostackignorepuid>1</nostackignorepuid>
   </action>
   <action>
     <name stringid="69776">SpawnDivers</name>
@@ -79,6 +80,7 @@
     <modifytype>GatherRate</modifytype>
     <modifymultiplier>2.5</modifymultiplier>
     <nostack>1</nostack>
+    <nostackignorepuid>1</nostackignorepuid>
     <modelattachment>effects\ypack_auras\econpower.xml</modelattachment>
     <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
   </action>  
@@ -158,6 +160,7 @@
       <checkifcanstealth range="30.0">1</checkifcanstealth>
       <protounitcommand>DivingBellStealth</protounitcommand>
       <action>SpawnDivers</action>
+      <action>Stealth</action>
       <action>ExtraHPDiverLong</action>
       <action>ExtraHPDiver</action>
       <transition>

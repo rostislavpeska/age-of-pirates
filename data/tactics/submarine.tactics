@@ -151,16 +151,18 @@
         <modifymultiplier>1.75</modifymultiplier>
     </action>
     <action>
-        <name stringid="112435">ExtraHPDiver</name>
-        <type>AutoRangedModify</type>
+        <name stringid="301791">ExtraHPDiverLong</name>
         <active>0</active>
+        <type>AutoRangedModify</type>
         <maxrange>25</maxrange>
-        <nostack>1</nostack>
         <modifyabstracttype>AbstractDiver</modifyabstracttype>
         <persistent>1</persistent>
-        <modifybase>1.0</modifybase>
-        <modifytype>BaseHP</modifytype>
-        <modifymultiplier>1.8</modifymultiplier>
+        <modifytype>HealRate</modifytype>
+        <modifyamount>2</modifyamount>
+        <nostack>1</nostack>
+        <nostackignorepuid>1</nostackignorepuid>
+        <modelattachment>effects\ypack_auras\econpower.xml</modelattachment>
+        <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
     </action>
 
 
@@ -174,7 +176,7 @@
         <!--<action>>DiverSupport</action>-->
         <action>Discover</action>
         <action>BoatManager</action>
-        <action>ExtraHPDiver</action>
+        <action>ExtraHPDiverLong</action>
         <transition>
             <tactic>zpStealth</tactic>
             <length>2</length>
@@ -218,7 +220,7 @@
         <action priority="100">CannonAttackDived</action>
         <action priority="2">ShuntAttack</action>
         <action>Discover</action>
-        <action>ExtraHPDiver</action>
+        <action>ExtraHPDiverLong</action>
         <transition>
             <tactic>zpStealth</tactic>
             <length>0.3</length>
@@ -264,7 +266,7 @@
         <action priority="100">CannonAttackDived</action>
         <action priority="2">ShuntAttack</action>
         <action>Discover</action>
-        <action>ExtraHPDiver</action>
+        <action>ExtraHPDiverLong</action>
         <transition>
             <tactic>zpStealth</tactic>
             <length>0.3</length>
@@ -312,7 +314,7 @@
         <action priority="2">ShuntAttack</action>
         <action>Discover</action>
         <action>Stealth</action>
-        <action>ExtraHPDiver</action>
+        <action>ExtraHPDiverLong</action>
         <checkifcanstealth range="25.0">1</checkifcanstealth>
         <transition>
             <tactic>zpDive</tactic>

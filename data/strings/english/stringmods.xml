@@ -1699,7 +1699,7 @@
       <string _locid="301698">ZP SPC Flying Submarine</string>
       <string _locid="301699">Deep Sea Diver</string>
       <string _locid="301700">ZP Deep Sea Diver</string>
-      <string _locid="301701">Deep Sea Diver, gathers underwater resources.</string>
+      <string _locid="301701">Desperately need a Diving Bell to provide him a life support.</string>
       <string _locid="301702">Rare Minerals</string>
       <string _locid="301703">ZP Underwater Mineral Mine</string>
       <string _locid="301704">Underwater Gold Resource</string>
@@ -1711,7 +1711,7 @@
       <string _locid="301710">Large river islands surrounded by marshes. That's New Guinea also called Papua. West Papua and East New Papua differ from each other not only by various natives. \n\nSettlements: Wokou, Korowai, Jesuit (Eastern variant), Sufi (Western variant)</string>
       <string _locid="301711">New Guinea</string>
       <string _locid="301712">Marshes full of crocodiles and forests full of canibals. Beware and explore the surrounding carefuly.</string>
-      <string _locid="301713">Stealth Deep Sea Diver with a harpoon attack. Can gather underwater resources. Moves very slow.</string>
+      <string _locid="301713">Stealth Deep Sea Diver with a harpoon attack. Can gather underwater resources. Desperately need a Diving Bell to provide him a life support. Moves very slow.</string>
       <string _locid="301714">Torres Strait</string>
       <string _locid="301715">Large two-team map with separate continents (New Guinea and Australia) and a couple of bonus islands. Both continents have completely different vibes. \n\nSettlements: Korowai, Wokou, Aboriginal Australians, Pirates</string>
       <string _locid="301716">If you start either in Australia or New Guinea, the starting continent provides you with enough resources. Even though, if you need more, you may build additional colonies on the bonus islands. But take care of your fleet. This area is known for really heavy storms.</string>
@@ -1736,8 +1736,8 @@
       <string _locid="301735">ZP Pearls</string>
       <string _locid="301736">Underbrush Coral</string>
       <string _locid="301737">ZP Underbrush Coral</string>
-      <string _locid="301738">Underwater Exploration</string>
-      <string _locid="301739">Ships a Submarine which can train Deep Sea Divers able to gather resources from underwater mines and shipwrecks. Allows submarine training - either from Trading post and the Dock. &lt;color=0.0, 1.0, 0.0&gt;TEAM TECH&lt;/color&gt;</string>
+      <string _locid="301738">Deep Sea Pioneers</string>
+      <string _locid="301739">Ships a Submarine which can train Deep Sea Divers able to gather resources from underwater mines and shipwrecks. Allows submarine training - either from Inventor Trading post and the Dock. &lt;color=0.0, 1.0, 0.0&gt;TEAM TECH&lt;/color&gt;</string>
       <string _locid="301740">Cook Islands</string>
       <string _locid="301741">Cook Islands Description</string>
       <string _locid="301742">Cook Islands Loading</string>
@@ -1788,6 +1788,8 @@
       <string _locid="301787">Divers gather resources faster. Diving Bell autogather works faster too.</string>
       <string _locid="301788">Automatic Spearguns</string>
       <string _locid="301789">Improves diver's attack</string>
+      <string _locid="301790">Diver gather bonus</string>
+      <string _locid="301791">Diver hitpoint bonus</string>
 
 
 

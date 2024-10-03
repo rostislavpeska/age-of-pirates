@@ -15254,6 +15254,9 @@
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpNatConvictLabourer" relativity ="Absolute">
 				<target type ="Player"></target>
 			</effect>
+      <effect type="Data" amount="1.60" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
       <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatConvictLabourer" relativity="Absolute">
         <target type="ProtoUnit">zpAustralianCitizen</target>
       </effect>
@@ -15929,9 +15932,6 @@
     </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpSubmarine</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSubmarineProxy</target>
       </effect>
       <effect type="CommandAdd" proto="zpDiver" page="2" column="1">
@@ -15949,13 +15949,10 @@
       <effect type="CommandAdd" proto="zpDiver" page="2" column="1">
         <target type="ProtoUnit">zpMercNautilus</target>
       </effect>
-      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSubmarine" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
       <effect type="CommandAdd" proto="zpSubmarineProxy" page="0" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="TechStatus" status="active">zpDiversUnlockSubmarine</effect>
     </effects>
   </tech>
   <tech name="zpUnderwaterScientists" type="Normal">
@@ -16060,13 +16057,8 @@
       </effect>
       <effect type="TransformUnit" toprotoid="zpNautilusTransport" fromprotoid="zpMercNautilus">
       </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpSubmarine</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpSubmarineTransport</target>
-      </effect>
       <effect type="TechStatus" status="obtainable">zpActivateSubmarineSPC</effect>
+      <effect type="TechStatus" status="unobtainable">zpActivateSubmarineStandard</effect>
     </effects>
   </tech>
   <tech name="zpActivateSubmarineSPC" type="Normal">
@@ -16078,10 +16070,9 @@
       <techstatus status ="Active">zpScientistUnderwaterExploration</techstatus>
     </prereqs>
     <effects>
-      <effect type="TransformUnit" toprotoid="zpSubmarineTransport" fromprotoid="zpSubmarine">
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpSubmarine</target>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSubmarineTransport" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSubmarineTransport</target>
@@ -16148,19 +16139,19 @@
       <effect type="Data" action="GatherRateBonus" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpDivingBellReward</target>
       </effect>
-      <effect type="Data" action="ExtraHPDiver" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+      <effect type="Data" action="ExtraHPDiverLong" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSubmarine</target>
       </effect>
-      <effect type="Data" action="ExtraHPDiver" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+      <effect type="Data" action="ExtraHPDiverLong" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSubmarineTransport</target>
       </effect>
-      <effect type="Data" action="ExtraHPDiver" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+      <effect type="Data" action="ExtraHPDiverLong" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpNautilus</target>
       </effect>
-      <effect type="Data" action="ExtraHPDiver" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+      <effect type="Data" action="ExtraHPDiverLong" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpNautilusTransport</target>
       </effect>
-      <effect type="Data" action="ExtraHPDiver" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+      <effect type="Data" action="ExtraHPDiverLong" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpMercNautilus</target>
       </effect>
     </effects>
@@ -16188,7 +16179,7 @@
     <displaynameid>301786</displaynameid>
     <cost resourcetype="Gold">600.0000</cost>
     <researchpoints>20.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
+    <status>OBTAINABLE</status>
     <icon>resources\images\icons\techs\underwater_minerals.png</icon>
     <rollovertextid>301787</rollovertextid>
     <flag>CountsTowardEconomicScore</flag>
@@ -16198,19 +16189,28 @@
       <effect type="Data" action="Gather" amount="1.50" subtype="WorkRate" unittype="AbstractUnderwaterMine" relativity="BasePercent">
         <target type="ProtoUnit">AbstractDiver</target>
       </effect>
-      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
-        <target type="ProtoUnit">deSPCPapalEmbassy</target>
+      <effect type="Data" action="AutoGatherXP" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpDivingBell</target>
       </effect>
-      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
-        <target type="ProtoUnit">deSPCPapalEmbassy</target>
+      <effect type="Data" action="AutoGatherCoin" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpDivingBell</target>
       </effect>
-      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="Food" relativity="BasePercent">
-        <target type="ProtoUnit">deSPCPapalEmbassy</target>
+      <effect type="Data" action="AutoGatherFood" amount="2.00" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpDivingBell</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXP" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpDivingBellReward</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpDivingBellReward</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="2.00" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpDivingBellReward</target>
       </effect>
     </effects>
   </tech>
   <tech name="zpDiverSpeargun" type="Normal">
-    <dbid>40747</dbid>
+    <dbid>40748</dbid>
     <displaynameid>301788</displaynameid>
     <cost resourcetype="Gold">250.0000</cost>
     <cost resourcetype="Wood">250.0000</cost>
@@ -16225,6 +16225,41 @@
       <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpDiver</target>
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpActivateSubmarineStandard" type="Normal">
+    <dbid>40749</dbid>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status ="Active">zpScientistUnderwaterExploration</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSubmarine" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSubmarine</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpDiversUnlockSubmarine" type="Normal">
+    <dbid>40750</dbid>
+    <displaynameid>301738</displaynameid>
+    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">600.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <icon>resources\images\icons\techs\underwater_exploration.png</icon>
+    <rollovertextid>301739</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <prereqs>
+			<techstatus status ="Active">Imperialize</techstatus></prereqs>
+		<effects>
+      <effect type="TechStatus" status="active">zpScientistUnderwaterExploration</effect>
     </effects>
   </tech>
 
