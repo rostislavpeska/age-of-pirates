@@ -20,7 +20,7 @@
   <action>
     <name stringid="301618">GatherRateBonus</name>
     <type>AutoRangedModify</type>
-    <maxrange>30</maxrange>
+    <maxrange>35</maxrange>
     <modifyabstracttype>AbstractDiver</modifyabstracttype>
     <persistent>1</persistent>
     <modifytype>GatherRate</modifytype>
@@ -33,7 +33,7 @@
     <name stringid="112435">ExtraHPDiver</name>
     <type>AutoRangedModify</type>
     <active>1</active>
-    <maxrange>30</maxrange>
+    <maxrange>35</maxrange>
     <nostack>1</nostack>
     <modifyabstracttype>AbstractDiver</modifyabstracttype>
     <persistent>1</persistent>
