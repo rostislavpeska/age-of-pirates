@@ -1010,15 +1010,10 @@ void main(void)
 			
 		int randLoc = rmRandInt(1,2);	
 		float xLoc = 0.55;	
-		float yLoc = 0.25;	
-		float walk = 0.035;	
+		float yLoc = 0.55;	
+		float walk = 0.035;			
 			
-		if(randLoc == 1 || cNumberTeams > 2 || cNumberNonGaiaPlayers <= 3){	
-		xLoc = .48;	
-		yLoc = .53;	
-		}	
-			
-		ypKingsHillPlacer(xLoc, yLoc, walk, smallMesaConstraint);	
+		ypKingsHillPlacer(xLoc, yLoc, walk, smallMesaShortConstraint);	
 		rmEchoInfo("XLOC = "+xLoc);	
 		rmEchoInfo("XLOC = "+yLoc);	
 	}	
