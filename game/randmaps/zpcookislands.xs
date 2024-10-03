@@ -24,7 +24,7 @@ void main(void)
   string startTreeType = "ypTreeCeylon";
   string forestType = "Ceylon Forest";
   string cliffType = "ceylon";
-  string mapType1 = "hawaii";
+  string mapType1 = "cookislands";
   string mapType2 = "grass";
   string huntable1 = "zpFeralPig";
   string huntable2 = "ypWildElephant";
@@ -104,6 +104,7 @@ void main(void)
   int classTeamIsland=rmDefineClass("teamIsland");
   int classBonusIsland=rmDefineClass("bonusIsland");
   int classTeamCliff=rmDefineClass("teamCliff");
+  int classUnderwaterPatch=rmDefineClass("underwaterPatch");
 
    // -------------Define constraints----------------------------------------
 
@@ -121,6 +122,7 @@ void main(void)
 	int avoidTP=rmCreateTypeDistanceConstraint("stay away from Trading Post Sockets", "SocketTradeRoute", 10.0);
   int avoidTPLong=rmCreateTypeDistanceConstraint("stay away from Trading Post Sockets far", "SocketTradeRoute", 35.0);
 	int avoidLand = rmCreateTerrainDistanceConstraint("ship avoid land", "land", true, 15.0);
+  int avoidLandLong = rmCreateTerrainDistanceConstraint("ship avoid land long", "land", true, 30.0);
   int avoidLandShort = rmCreateTerrainDistanceConstraint("ship avoid land short", "land", true, 5.0);
   int mesaConstraint = rmCreateBoxConstraint("mesas stay in southern portion of island", .35, .55, .65, .35);
   int northConstraint = rmCreateBoxConstraint("huntable constraint for north side of island", .25, .55, .8, .85);
@@ -133,6 +135,7 @@ void main(void)
   int avoidBonusIslands=rmCreateClassDistanceConstraint("avoid bonus island constraint", classBonusIsland, 28.0);
   int avoidBonusIslandsShort=rmCreateClassDistanceConstraint("avoid bonus island constraint short", classBonusIsland, 27.0);
   int avoidTeamCliffs=rmCreateClassDistanceConstraint("avoid team cliff constraint", classTeamCliff, 28.0);
+  int avoidTeamCliffsShort=rmCreateClassDistanceConstraint("avoid team cliff constraint short", classTeamCliff, 6.0);
   int avoidTeamIslands=rmCreateClassDistanceConstraint("avoid team island constraint", classTeamIsland, 28.0);
   int avoidTeamIslandsShort=rmCreateClassDistanceConstraint("avoid team island short", classTeamIsland, 20.0);
   int avoidTeamIslands1=rmCreateClassDistanceConstraint("avoid team island 1", classTeamIsland, 1.0);
@@ -156,7 +159,9 @@ void main(void)
 	int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 45.0); 
   int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "abstractNugget", 45.0); 
   int avoidNuggetWater2=rmCreateTypeDistanceConstraint("avoid water nuggets2", "abstractNugget", 100.0);
+  int avoidNuggetWater3=rmCreateTypeDistanceConstraint("avoid water nuggets3", "abstractNugget", 70.0);
   int avoidHardNugget=rmCreateTypeDistanceConstraint("hard nuggets avoid other nuggets less", "abstractNugget", 20.0); 
+  int avoidPatch=rmCreateClassDistanceConstraint("stay away from water patch", classUnderwaterPatch, 50.0);
 
   int avoidPirates=rmCreateTypeDistanceConstraint("avoid socket pirates", "zpSocketPirates", 30.0);
   int avoidScientists=rmCreateTypeDistanceConstraint("avoid socket Scientists", "zpSocketScientists", 30.0);
@@ -193,6 +198,7 @@ void main(void)
   int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 8.0);
 
    //Trade Route Contstraints
+   int islandAvoidTradeRouteShort = rmCreateTradeRouteDistanceConstraint("trade route island short", 4.0);
    int islandAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("trade route", 6.0);
    int ObjectAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("object avoid trade route", 7.0);
 
@@ -397,7 +403,32 @@ void main(void)
   float playerFraction=rmAreaTilesToFraction(7000 - cNumberNonGaiaPlayers*300);
 
   if (cNumberNonGaiaPlayers ==3 ){
-  for(i=0; <cNumberPlayers)
+    for(i=0; <cNumberPlayers) {
+      // Create the area.
+      int teamCliffID1=rmCreateArea("team cliff 1"+i);
+      rmSetAreaSize(teamCliffID1, rmAreaTilesToFraction(6000.0), rmAreaTilesToFraction(6000.0));
+      rmSetAreaMinBlobs(teamCliffID1, 30);
+      rmSetAreaMaxBlobs(teamCliffID1, 45);
+      rmSetAreaMinBlobDistance(teamCliffID1, 20.0);
+      rmSetAreaMaxBlobDistance(teamCliffID1, 40.0);
+      rmSetAreaCoherence(teamCliffID1, 0.45);
+      rmSetAreaBaseHeight(teamCliffID1, -5.0);
+      rmSetAreaSmoothDistance(teamCliffID1, 40);
+      rmSetAreaCliffType(teamCliffID1, "Cave");
+      rmSetAreaCliffEdge(teamCliffID1, 1, 1.0, 0.1, 1.0, 0);
+      rmSetAreaCliffHeight(teamCliffID1, 0, 1.0, 1.0);
+      rmSetAreaHeightBlend(teamCliffID1, 1.9);
+      rmAddAreaConstraint(teamCliffID1, islandAvoidTradeRouteShort); 
+      rmAddAreaConstraint(teamCliffID1, avoidBonusIslandsShort);
+      rmAddAreaConstraint(teamCliffID1, avoidTeamCliffs);
+      rmSetAreaElevationVariation(teamCliffID1, 0.0);
+      rmSetAreaWarnFailure(teamCliffID1, false);
+      rmAddAreaToClass(teamCliffID1, classTeamCliff);
+      rmSetAreaLocPlayer(teamCliffID1, i);
+      rmEchoInfo("Team cliff"+i);
+      rmBuildArea(teamCliffID1);
+    }
+    for(i=0; <cNumberPlayers)
     {
       // Create the area.
       int teamID2=rmCreateArea("team 2"+i);
@@ -429,30 +460,30 @@ void main(void)
       
     }*/
     for(i=0; <cNumberTeams) {
-        // Create the area.
-        int teamCliffID2=rmCreateArea("team cliff"+i);
-        rmSetAreaSize(teamCliffID2, isleSize, isleSize);
-        rmSetAreaMinBlobs(teamCliffID2, 30);
-        rmSetAreaMaxBlobs(teamCliffID2, 45);
-        rmSetAreaMinBlobDistance(teamCliffID2, 20.0);
-        rmSetAreaMaxBlobDistance(teamCliffID2, 40.0);
-        rmSetAreaCoherence(teamCliffID2, 0.45);
-        rmSetAreaBaseHeight(teamCliffID2, -5.0);
-        rmSetAreaSmoothDistance(teamCliffID2, 40);
-        rmSetAreaCliffType(teamCliffID2, "Cave");
-        rmSetAreaCliffEdge(teamCliffID2, 1, 1.0, 0.1, 1.0, 0);
-        rmSetAreaCliffHeight(teamCliffID2, 0, 1.0, 1.0);
-        rmSetAreaHeightBlend(teamCliffID2, 1.9);
-        rmAddAreaConstraint(teamCliffID2, islandAvoidTradeRoute); 
-        rmAddAreaConstraint(teamCliffID2, avoidBonusIslandsShort);
-        rmAddAreaConstraint(teamCliffID2, avoidTeamCliffs);
-        rmSetAreaElevationVariation(teamCliffID2, 0.0);
-        rmSetAreaWarnFailure(teamCliffID2, false);
-        rmAddAreaToClass(teamCliffID2, classTeamCliff);
-        rmSetAreaLocTeam(teamCliffID2, i);
-        rmEchoInfo("Team cliff"+i);
-        rmBuildArea(teamCliffID2);
-      }
+      // Create the area.
+      int teamCliffID2=rmCreateArea("team cliff"+i);
+      rmSetAreaSize(teamCliffID2, isleSize, isleSize);
+      rmSetAreaMinBlobs(teamCliffID2, 30);
+      rmSetAreaMaxBlobs(teamCliffID2, 45);
+      rmSetAreaMinBlobDistance(teamCliffID2, 20.0);
+      rmSetAreaMaxBlobDistance(teamCliffID2, 40.0);
+      rmSetAreaCoherence(teamCliffID2, 0.45);
+      rmSetAreaBaseHeight(teamCliffID2, -5.0);
+      rmSetAreaSmoothDistance(teamCliffID2, 40);
+      rmSetAreaCliffType(teamCliffID2, "Cave");
+      rmSetAreaCliffEdge(teamCliffID2, 1, 1.0, 0.1, 1.0, 0);
+      rmSetAreaCliffHeight(teamCliffID2, 0, 1.0, 1.0);
+      rmSetAreaHeightBlend(teamCliffID2, 1.9);
+      rmAddAreaConstraint(teamCliffID2, islandAvoidTradeRouteShort); 
+      rmAddAreaConstraint(teamCliffID2, avoidBonusIslandsShort);
+      rmAddAreaConstraint(teamCliffID2, avoidTeamCliffs);
+      rmSetAreaElevationVariation(teamCliffID2, 0.0);
+      rmSetAreaWarnFailure(teamCliffID2, false);
+      rmAddAreaToClass(teamCliffID2, classTeamCliff);
+      rmSetAreaLocTeam(teamCliffID2, i);
+      rmEchoInfo("Team cliff"+i);
+      rmBuildArea(teamCliffID2);
+    }
     for(i=0; <cNumberTeams)
     {
       // Create the area.
@@ -710,6 +741,25 @@ void main(void)
         underwaterCaveID = rmCreateGrouping("underwater_grouping", "underwater_grouping2");
       rmPlaceGroupingAtLoc(underwaterCaveID, 0, 0.5, 0.5, 1);
 
+      int patchNum = cNumberNonGaiaPlayers;
+
+      int underwaterPatchID = -1;
+      underwaterPatchID = rmCreateGrouping("underwater_patch", "underwater_grouping_xs");
+      rmAddGroupingConstraint(underwaterPatchID, avoidPatch);
+      rmAddGroupingToClass(underwaterPatchID, classUnderwaterPatch);
+      rmAddGroupingConstraint(underwaterPatchID, avoidLandLong);
+      rmAddGroupingConstraint(underwaterPatchID, avoidTeamCliffsShort);
+      rmAddGroupingConstraint(underwaterPatchID, avoidPatch);
+      rmAddGroupingToClass(underwaterPatchID, classUnderwaterPatch);
+      if (cNumberNonGaiaPlayers<6)
+        rmSetGroupingMinDistance(underwaterPatchID, 45.0);
+      else
+        rmSetGroupingMinDistance(underwaterPatchID, 60.0);
+	    rmSetGroupingMaxDistance(underwaterPatchID, rmXFractionToMeters(0.12));
+      for(i=0; <patchNum) {
+        rmPlaceGroupingAtLoc(underwaterPatchID, 0, 0.5, 0.5, 1);
+      }
+
 
       // Placing Player Trade Route Sockets
 
@@ -814,7 +864,7 @@ void main(void)
 	//Prepare to place player starting Mines 
 	int playerGoldID = rmCreateObjectDef("player silver");
 	rmAddObjectDefItem(playerGoldID, "zpJadeMine", 1, 0);
-	rmSetObjectDefMinDistance(playerGoldID, 12.0);
+	rmSetObjectDefMinDistance(playerGoldID, 7.0);
 	rmSetObjectDefMaxDistance(playerGoldID, 20.0);
 	rmAddObjectDefConstraint(playerGoldID, avoidAll);
   rmAddObjectDefConstraint(playerGoldID, avoidImpassableLand);
@@ -1007,10 +1057,30 @@ void main(void)
 	rmSetObjectDefMaxDistance(coralID, rmXFractionToMeters(0.5));
   rmAddObjectDefConstraint(coralID, avoidTeamIslands1);
   rmAddObjectDefConstraint(coralID, avoidLandShort);
-  for (i=0; <cNumberPlayers)
-  {
-    rmPlaceObjectDefInArea(coralID, 0, rmAreaID("team cliff"+i), 35);
+  if (cNumberNonGaiaPlayers == 3){
+    for (i=0; <cNumberPlayers)
+    {
+      rmPlaceObjectDefInArea(coralID, 0, rmAreaID("team cliff 1"+i), 30);
+    }
   }
+  else{
+  for (i=0; <cNumberTeams)
+    {
+      rmPlaceObjectDefInArea(coralID, 0, rmAreaID("team cliff"+i), cNumberNonGaiaPlayers/cNumberTeams*30);
+    }
+  }
+
+  // Decorative Fishes
+  /*int clownID = rmCreateObjectDef("decorative fish");
+	rmAddObjectDefItem(clownID, "zpClownfish", 1, 0);
+	rmSetObjectDefMinDistance(clownID, 0.0);
+	rmSetObjectDefMaxDistance(clownID, rmXFractionToMeters(0.5));
+  rmAddObjectDefConstraint(clownID, avoidTeamIslands1);
+  rmAddObjectDefConstraint(clownID, avoidLandShort);
+  for (i=0; <cNumberTeams)
+  {
+    rmPlaceObjectDefInArea(clownID, 0, rmAreaID("team cliff"+i), cNumberNonGaiaPlayers/cNumberTeams*5);
+  }*/
 
 
   /*int silverID = rmCreateObjectDef("random silver");
@@ -1081,7 +1151,25 @@ void main(void)
 	}
 
 	// Water nuggets
-  int nuggetCount = 2;
+  int nuggetCount = cNumberNonGaiaPlayers;
+  int bonusNuggets = rmRandInt(1, 2);
+
+  int NUGGETspc = rmCreateObjectDef("nugget water SPC" + i); 
+  rmAddObjectDefItem(NUGGETspc, "ypNuggetBoat", 1, 0.0);
+  rmSetNuggetDifficulty(16, 16);
+  rmSetObjectDefMinDistance(NUGGETspc, rmXFractionToMeters(0.0));
+  rmSetObjectDefMaxDistance(NUGGETspc, rmXFractionToMeters(0.12));
+  rmAddObjectDefConstraint(NUGGETspc, avoidLand);
+  rmAddObjectDefConstraint(NUGGETspc, avoidNuggetWater3);
+  rmAddObjectDefConstraint(NUGGETspc, playerEdgeConstraint);
+  if (bonusNuggets ==1){
+    rmPlaceObjectDefAtLoc(NUGGETspc, 0, 0.5, 0.5, nuggetCount-1);
+  }
+  else{
+    rmPlaceObjectDefAtLoc(NUGGETspc, 0, 0.5, 0.5, nuggetCount-2);
+    rmSetNuggetDifficulty(17, 17);
+    rmPlaceObjectDefAtLoc(NUGGETspc, 0, 0.5, 0.5, 1);
+  }
 
   int nugget2b = rmCreateObjectDef("nugget water hard" + i); 
   rmAddObjectDefItem(nugget2b, "ypNuggetBoat", 1, 0.0);
@@ -1091,7 +1179,7 @@ void main(void)
   rmAddObjectDefConstraint(nugget2b, avoidLand);
   rmAddObjectDefConstraint(nugget2b, avoidNuggetWater2);
   rmAddObjectDefConstraint(nugget2b, playerEdgeConstraint);
-  rmPlaceObjectDefPerPlayer(nugget2b, false, nuggetCount/2);
+  rmPlaceObjectDefPerPlayer(nugget2b, false, 2);
   
   int nugget2= rmCreateObjectDef("nugget water" + i); 
   rmAddObjectDefItem(nugget2, "ypNuggetBoat", 1, 0.0);
@@ -1101,7 +1189,7 @@ void main(void)
   rmAddObjectDefConstraint(nugget2, avoidLand);
   rmAddObjectDefConstraint(nugget2, avoidNuggetWater);
   rmAddObjectDefConstraint(nugget2, playerEdgeConstraint);
-  rmPlaceObjectDefPerPlayer(nugget2, false, nuggetCount);
+  rmPlaceObjectDefPerPlayer(nugget2, false, 3);
   
   // really tough nuggets confined to south central cliffy area
   int nugget3= rmCreateObjectDef("nugget hardest"); 
@@ -1129,7 +1217,7 @@ void main(void)
 	rmSetObjectDefMaxDistance(whaleID, rmXFractionToMeters(0.45));
 	rmAddObjectDefConstraint(whaleID, whaleVsWhaleID);
 	rmAddObjectDefConstraint(whaleID, whaleLand);
-	rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*4); 
+	rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*2); 
 
 	// Place Random Fish everywhere, but restrained to avoid whales ------------------------------------------------------
 
@@ -1997,9 +2085,11 @@ rmSetTriggerLoop(false);
 		rmSetTriggerConditionParamInt("Dist",35);
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmAddTriggerEffect("ZP Set Tech Status Conditional (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpTrainSubmarine2"); //operator
+		rmSetTriggerEffectParam("TechCondition","cTechzpTransformNemoSubmarines"); //operator
+		rmSetTriggerEffectParam("Tech1ID","cTechzpTrainSubmarineSPC2"); //operator
+    rmSetTriggerEffectParam("Tech2ID","cTechzpTrainSubmarine2"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainSubmarine2OFF_Plr"+k));
@@ -2046,9 +2136,11 @@ rmSetTriggerLoop(false);
 		rmSetTriggerConditionParamInt("Dist",35);
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+    rmAddTriggerEffect("ZP Set Tech Status Conditional (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpTrainSubmarine1"); //operator
+		rmSetTriggerEffectParam("TechCondition","cTechzpTransformNemoSubmarines"); //operator
+		rmSetTriggerEffectParam("Tech1ID","cTechzpTrainSubmarineSPC1"); //operator
+    rmSetTriggerEffectParam("Tech2ID","cTechzpTrainSubmarine1"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainSubmarine1OFF_Plr"+k));
@@ -2230,9 +2322,11 @@ rmSetTriggerLoop(false);
 		rmSetTriggerConditionParamInt("Dist",35);
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmAddTriggerEffect("ZP Set Tech Status Conditional (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpTrainNautilus2"); //operator
+    rmSetTriggerEffectParam("TechCondition","cTechzpTransformNemoSubmarines"); //operator
+		rmSetTriggerEffectParam("Tech1ID","cTechzpTrainNautilusSPC2"); //operator
+    rmSetTriggerEffectParam("Tech2ID","cTechzpTrainNautilus2"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Nautilus2TIMEPlr"+k));
@@ -2276,9 +2370,11 @@ rmSetTriggerLoop(false);
 		rmSetTriggerConditionParamInt("Dist",35);
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmAddTriggerEffect("ZP Set Tech Status Conditional (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpTrainNautilus1"); //operator
+    rmSetTriggerEffectParam("TechCondition","cTechzpTransformNemoSubmarines"); //operator
+		rmSetTriggerEffectParam("Tech1ID","cTechzpTrainNautilusSPC1"); //operator
+    rmSetTriggerEffectParam("Tech2ID","cTechzpTrainNautilus1"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Nautilus1TIMEPlr"+k));
@@ -2475,7 +2571,24 @@ rmSetTriggerLoop(false);
 		rmSetTriggerLoop(false);
 		}
 
-
+    for(k=1; <= cNumberNonGaiaPlayers) {
+    rmCreateTrigger("Submarine Transform"+k);
+    rmAddTriggerCondition("ZP PLAYER Human");
+    rmSetTriggerConditionParamInt("Player",k);
+    rmSetTriggerConditionParam("MyBool", "true");
+    rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+    rmSetTriggerConditionParamInt("PlayerID",k);
+    rmSetTriggerConditionParam("TechID","cTechzpConsulateScientistNemo");
+    rmSetTriggerConditionParamInt("Status",2);
+    rmAddTriggerEffect("ZP Set Tech Status (XS)");
+    rmSetTriggerEffectParamInt("PlayerID",k);
+    rmSetTriggerEffectParam("TechID","cTechzpTransformNemoSubmarines"); //operator
+    rmSetTriggerEffectParamInt("Status",2);
+    rmSetTriggerPriority(4);
+    rmSetTriggerActive(true);
+    rmSetTriggerRunImmediately(true);
+    rmSetTriggerLoop(false);
+    }
 
 
 
