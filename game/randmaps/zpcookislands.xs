@@ -72,8 +72,10 @@ void main(void)
 	int playerTiles=25000;
   if(cNumberNonGaiaPlayers < 5)
     playerTiles = 30000;
-  if (cNumberNonGaiaPlayers < 4)
-		playerTiles = 40000;
+  if (cNumberNonGaiaPlayers == 3)
+		playerTiles = 35000;
+  if (cNumberNonGaiaPlayers == 2)
+		playerTiles = 42000;
 	int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
 	rmEchoInfo("Map size="+size+"m x "+size+"m");
 	rmSetMapSize(size, size);
@@ -132,8 +134,14 @@ void main(void)
 	// Island Constraints  
 	int islandConstraint=rmCreateClassDistanceConstraint("islands avoid each other", classIsland, 58.0);
   int islandConstraintShort=rmCreateClassDistanceConstraint("islands avoid each other short", classIsland, 38.0);
-  int avoidBonusIslands=rmCreateClassDistanceConstraint("avoid bonus island constraint", classBonusIsland, 28.0);
-  int avoidBonusIslandsShort=rmCreateClassDistanceConstraint("avoid bonus island constraint short", classBonusIsland, 27.0);
+  if (cNumberNonGaiaPlayers<=2){
+    int avoidBonusIslands=rmCreateClassDistanceConstraint("avoid bonus island constraint", classBonusIsland, 23.0);
+    int avoidBonusIslandsShort=rmCreateClassDistanceConstraint("avoid bonus island constraint short", classBonusIsland, 22.0);
+  }
+  else{
+    avoidBonusIslands=rmCreateClassDistanceConstraint("avoid bonus island constraint", classBonusIsland, 28.0);
+    avoidBonusIslandsShort=rmCreateClassDistanceConstraint("avoid bonus island constraint short", classBonusIsland, 27.0);
+  }
   int avoidTeamCliffs=rmCreateClassDistanceConstraint("avoid team cliff constraint", classTeamCliff, 28.0);
   int avoidTeamCliffsShort=rmCreateClassDistanceConstraint("avoid team cliff constraint short", classTeamCliff, 6.0);
   int avoidTeamIslands=rmCreateClassDistanceConstraint("avoid team island constraint", classTeamIsland, 28.0);
@@ -152,7 +160,7 @@ void main(void)
 	int forestObjConstraint=rmCreateTypeDistanceConstraint("forest obj", "all", 6.0);
 	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 30.0);
 	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "zpJadeMine", 45.0);
-  int avoidGold=rmCreateTypeDistanceConstraint("avoid gold", "zpPearlSource", 35.0);
+  int avoidGold=rmCreateTypeDistanceConstraint("avoid gold", "zpPearlSource", 40.0);
 	int avoidRandomBerries=rmCreateTypeDistanceConstraint("avoid random berries", "berrybush", 55.0);
 	int avoidHuntable1=rmCreateTypeDistanceConstraint("avoid huntable1", huntable1, 30.0);
   int avoidHuntable2=rmCreateTypeDistanceConstraint("avoid huntable2", huntable2, 40.0);
@@ -400,7 +408,7 @@ void main(void)
   rmAddAreaToClass(bonusIslandID4, classBonusIsland);
   rmBuildArea(bonusIslandID4);
 
-  float playerFraction=rmAreaTilesToFraction(7000 - cNumberNonGaiaPlayers*300);
+  float playerFraction=rmAreaTilesToFraction(7500 - cNumberNonGaiaPlayers*300);
 
   if (cNumberNonGaiaPlayers ==3 ){
     for(i=0; <cNumberPlayers) {
@@ -425,7 +433,7 @@ void main(void)
       rmSetAreaWarnFailure(teamCliffID1, false);
       rmAddAreaToClass(teamCliffID1, classTeamCliff);
       rmSetAreaLocPlayer(teamCliffID1, i);
-      rmEchoInfo("Team cliff"+i);
+      rmEchoInfo("Team cliff 1"+i);
       rmBuildArea(teamCliffID1);
     }
     for(i=0; <cNumberPlayers)
@@ -438,15 +446,21 @@ void main(void)
       rmSetAreaMinBlobDistance(teamID2, 20.0);
       rmSetAreaMaxBlobDistance(teamID2, 40.0);
       rmSetAreaCoherence(teamID2, 0.45);
-      rmSetAreaBaseHeight(teamID2, -0.5);
+      rmSetAreaBaseHeight(teamID2, -0.25);
       rmSetAreaSmoothDistance(teamID2, 40);
       rmSetAreaHeightBlend(teamID2, 1.9);
+      rmSetAreaMix(teamID2, baseMix);
       rmAddAreaConstraint(teamID2, islandAvoidTradeRoute);
       rmAddAreaConstraint(teamID2, playerIslandConstraint); 
       rmAddAreaConstraint(teamID2, avoidBonusIslands);
       rmAddAreaConstraint(teamID2, avoidTeamIslands);
-      rmSetAreaElevationType(teamID2, cElevTurbulence);
-      rmSetAreaElevationVariation(teamID2, 0.0);
+      rmSetAreaElevationNoiseBias(teamID2, 0);
+      rmSetAreaElevationEdgeFalloffDist(teamID2, 6);
+      rmSetAreaElevationVariation(teamID2, 0.5);
+      rmSetAreaElevationPersistence(teamID2, .4);
+      rmSetAreaElevationOctaves(teamID2, 5);
+      rmSetAreaElevationMinFrequency(teamID2, 0.02);
+      rmSetAreaElevationType(teamID2, cElevTurbulence); 
       rmSetAreaWarnFailure(teamID2, false);
       rmAddAreaToClass(teamID2, classTeamIsland);
       rmSetAreaLocPlayer(teamID2, i);
@@ -1042,14 +1056,12 @@ void main(void)
 	int goldID = rmCreateObjectDef("random gold");
 	rmAddObjectDefItem(goldID, "zpPearlSource", 1, 0);
 	rmSetObjectDefMinDistance(goldID, 0.0);
-	rmSetObjectDefMaxDistance(goldID, 0.0);
+	rmSetObjectDefMaxDistance(goldID, 30.0);
 	rmAddObjectDefConstraint(goldID, avoidAll);
 	rmAddObjectDefConstraint(goldID, avoidGold);
   rmAddObjectDefConstraint(goldID, avoidImportantItem);
-  rmAddAreaConstraint(goldID, avoidMaori);
   rmAddObjectDefConstraint(goldID, avoidCoin);
   rmAddObjectDefConstraint(goldID, avoidLandShort);
-  rmAddObjectDefConstraint(goldID, avoidTP);
   //rmPlaceObjectDefAtLoc(goldID, 0, 0.15, 0.5);
 
   if (cNumberNonGaiaPlayers==3){
@@ -1105,7 +1117,7 @@ void main(void)
     rmAddObjectDefConstraint(silverID, shortAvoidImpassableLand);
     for (i=0; <cNumberPlayers)
     {
-      rmPlaceObjectDefInArea(silverID, 0, rmAreaID("player "+i), 1);
+      rmPlaceObjectDefInArea(silverID, 0, rmAreaID("player "+i), 2);
     }
   }
    
