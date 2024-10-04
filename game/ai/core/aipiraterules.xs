@@ -305,6 +305,10 @@ minInterval 20
    }
    else
    {
+      // Make sure a couple things reset
+      //aiPlanDestroy(gLandReservePlan);
+      //aiPlanDestroy(gLandDefendPlan0);
+      defend0(); // run this one just in case gLandReservePlan or gLandDefendPlan0 aren't set
       xsDisableSelf();
    }
 }
