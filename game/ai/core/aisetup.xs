@@ -2069,7 +2069,7 @@ void prepareForInit()
          {
             initCeylonNomadStart(); // Transport our Covered Wagon to the mainland on Ceylon.
          }
-         else
+         else if (cRandomMapName != "zptasmania") // AssertiveWall: Tasmania needs to delay init() until wagon lands
          {
             xsEnableRule("initRule"); // This will call init() after 3 seconds of delay.
          }
