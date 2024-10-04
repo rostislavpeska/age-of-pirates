@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\Great War\Minelayer\textures\navalmine_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\Great War\Minelayer\textures\navalmine_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\Great War\Minelayer\textures\navalmine_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

@@ -1,4 +1,0 @@
-<animfile>
-  <component>sapphire<logic type="Variation"><v1><assetreference type="GrannyModel"><file>terrain\minerals\sapphire\Sapphire_V1</file></assetreference></v1><v2><assetreference type="GrannyModel"><file>terrain\minerals\sapphire\Sapphire_V2</file></assetreference></v2></logic></component>
-  <anim>idle<component>sapphire</component></anim>
-</animfile>

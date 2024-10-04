@@ -2307,5 +2307,21 @@
       <guardian>zpGuardianSubmarine</guardian>
       <difficulty>17</difficulty>
     </nugget>
+    <nugget>
+      <name>zpWaterNuggetUnderwaterCaveB</name>
+      <type>SpawnUnit</type>
+      <waternugget>true</waternugget>
+      <nuggetunit>zpNuggetUnderwaterCave</nuggetunit>
+      <rolloverstringid>301807</rolloverstringid>
+      <applystringid>301808</applystringid>
+      <unittype>zpDiver</unittype>
+      <amount>1</amount>
+      <maptype>cookislands</maptype>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <difficulty>16</difficulty>
+    </nugget>
   </nuggets>
 </nuggetmods>

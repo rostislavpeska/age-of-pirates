@@ -16222,8 +16222,8 @@
     <prereqs>
 			<techstatus status ="Active">Industrialize</techstatus></prereqs>
 		<effects>
-      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpDiver</target>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNavalmine</target>
       </effect>
     </effects>
   </tech>
@@ -16260,6 +16260,32 @@
 			<techstatus status ="Active">Imperialize</techstatus></prereqs>
 		<effects>
       <effect type="TechStatus" status="active">zpScientistUnderwaterExploration</effect>
+    </effects>
+  </tech>
+  <tech name="zpImperialDivers" type="Normal">
+    <dbid>40751</dbid>
+    <displaynameid>301805</displaynameid>
+    <cost resourcetype="Wood">1500.0000</cost>
+    <cost resourcetype="Gold">1500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>BTAINABLE</status>
+    <icon>resources\images\icons\techs\imperial_archer_infantry\imperial_archer_infantry.png</icon>
+    <rollovertextid>301806</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>ForceLastInLine</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">Crossbowman</target>
+      </effect>
+      <effect type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">Crossbowman</target>
+      </effect>
+      <effect type="SetName" proto="Crossbowman" culture="none" newname="301804">
+      </effect>
     </effects>
   </tech>
 

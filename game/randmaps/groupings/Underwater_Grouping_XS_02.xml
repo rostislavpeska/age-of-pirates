@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>20</width>
+	<height>15</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="128" posx="-4.0361" posz="-12.0416" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpUnderbrushCoral</unit>
+		<unit variation="162" posx="0.7969" posz="-12.6595" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpUnderbrushCoral</unit>
+		<unit variation="86" posx="-6.3441" posz="-11.6048" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushCoral</unit>
+		<unit variation="6" posx="3.0528" posz="-11.6557" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpUnderbrushCoral</unit>
+		<unit variation="110" posx="3.9504" posz="-10.0013" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpUnderbrushCoral</unit>
+		<unit variation="2" posx="-10.0670" posz="-8.1807" orientx="0.3827" orienty="0.0000" orientz="0.9239">UnderbrushCoast</unit>
+		<unit variation="174" posx="5.6637" posz="-8.7510" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">UnderbrushCoast</unit>
+		<unit variation="124" posx="-0.7355" posz="-8.9576" orientx="0.3827" orienty="0.0000" orientz="0.9239">UnderbrushCoast</unit>
+		<unit variation="139" posx="-11.4581" posz="-7.0299" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushCoral</unit>
+		<unit variation="13" posx="-1.8586" posz="-8.9308" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCSeaFloor</unit>
+		<unit variation="153" posx="0.5876" posz="-8.7726" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCSeaFloor</unit>
+		<unit variation="216" posx="-4.7028" posz="-6.0624" orientx="0.9715" orienty="0.0000" orientz="-0.2372">zpSapphirelMineSmall</unit>
+		<unit variation="94" posx="4.6991" posz="-6.0880" orientx="0.3827" orienty="0.0000" orientz="0.9239">UnderbrushCoast</unit>
+		<unit variation="133" posx="-12.0503" posz="-5.5068" orientx="-0.8778" orienty="0.0000" orientz="0.4790">zpBarracudaSingle</unit>
+		<unit variation="236" posx="-6.6022" posz="-6.7903" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCSeaFloor</unit>
+		<unit variation="235" posx="2.4978" posz="-6.2478" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCSeaFloor</unit>
+		<unit variation="248" posx="-14.8806" posz="-1.8553" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushCoral</unit>
+		<unit variation="188" posx="0.5221" posz="-2.9822" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCSeaFloor</unit>
+		<unit variation="189" posx="6.2184" posz="-2.1271" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpUnderbrushCoral</unit>
+		<unit variation="209" posx="6.6511" posz="-3.8159" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpUnderbrushCoral</unit>
+		<unit variation="80" posx="-10.2072" posz="-1.9249" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCSeaFloor</unit>
+		<unit variation="121" posx="-8.5335" posz="-1.7265" orientx="0.6573" orienty="0.0000" orientz="0.7536">zpClownfish</unit>
+		<unit variation="127" posx="-5.2122" posz="-1.2431" orientx="0.5225" orienty="0.0000" orientz="0.8526">zpBarracudaSingle</unit>
+		<unit variation="2" posx="2.8110" posz="-2.3147" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCSeaFloor</unit>
+		<unit variation="130" posx="2.9265" posz="0.0347" orientx="0.3827" orienty="0.0000" orientz="0.9239">UnderbrushCoast</unit>
+		<unit variation="238" posx="1.1863" posz="-0.6974" orientx="-0.3601" orienty="0.0000" orientz="0.9329">zpSapphirelMineSmall</unit>
+		<unit variation="130" posx="-11.6457" posz="-0.2762" orientx="-0.8559" orienty="-0.0000" orientz="0.5171">zpBarracudaColony</unit>
+		<unit variation="43" posx="6.7526" posz="-0.7146" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushCoral</unit>
+		<unit variation="247" posx="7.0423" posz="-0.5591" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">UnderbrushCoast</unit>
+		<unit variation="142" posx="-15.4703" posz="1.2034" orientx="0.3827" orienty="0.0000" orientz="0.9239">UnderbrushCoast</unit>
+		<unit variation="96" posx="-14.6313" posz="0.3437" orientx="-0.9980" orienty="0.0000" orientz="-0.0629">zpClownfish</unit>
+		<unit variation="134" posx="-6.3217" posz="-0.2968" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCSeaFloor</unit>
+		<unit variation="80" posx="-8.1612" posz="0.7248" orientx="0.7155" orienty="0.0000" orientz="-0.6986">zpSapphirelMineSmall</unit>
+		<unit variation="69" posx="-11.7288" posz="1.8078" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCSeaFloor</unit>
+		<unit variation="25" posx="-7.4636" posz="1.0812" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCSeaFloor</unit>
+		<unit variation="172" posx="-7.3619" posz="2.7441" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCSeaFloor</unit>
+		<unit variation="253" posx="0.7526" posz="2.8142" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCSeaFloor</unit>
+		<unit variation="95" posx="1.4625" posz="1.9824" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCSeaFloor</unit>
+		<unit variation="138" posx="-15.2481" posz="3.6763" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushCoral</unit>
+		<unit variation="236" posx="4.2482" posz="3.2381" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpUnderbrushCoral</unit>
+		<unit variation="245" posx="-12.1797" posz="5.7229" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpUnderbrushCoral</unit>
+		<unit variation="89" posx="-13.0059" posz="4.8674" orientx="-0.7071" orienty="0.0000" orientz="0.7071">UnderbrushCoast</unit>
+		<unit variation="98" posx="-12.3285" posz="4.0007" orientx="0.1636" orienty="0.0000" orientz="0.9865">zpClownfish</unit>
+		<unit variation="244" posx="-5.4120" posz="3.1203" orientx="0.6346" orienty="0.0000" orientz="-0.7728">zpClownfish</unit>
+		<unit variation="82" posx="-4.6422" posz="4.4256" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCSeaFloor</unit>
+		<unit variation="174" posx="-2.1047" posz="3.9202" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCSeaFloor</unit>
+		<unit variation="56" posx="10.0000" posz="8.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">ypSquid</unit>
+		<unit variation="207" posx="4.8207" posz="5.5043" orientx="0.3827" orienty="0.0000" orientz="0.9239">UnderbrushCoast</unit>
+		<unit variation="2" posx="-9.3421" posz="5.3823" orientx="-0.2926" orienty="0.0000" orientz="0.9562">zpClownfish</unit>
+		<unit variation="130" posx="-9.0131" posz="5.3687" orientx="-0.9169" orienty="-0.0000" orientz="0.3991">zpBarracudaSingle</unit>
+		<unit variation="162" posx="-6.9104" posz="7.3434" orientx="-0.7071" orienty="0.0000" orientz="0.7071">UnderbrushCoast</unit>
+		<unit variation="87" posx="-0.7451" posz="5.8152" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCSeaFloor</unit>
+		<unit variation="18" posx="2.4941" posz="7.5334" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpUnderbrushCoral</unit>
+		<unit variation="160" posx="-10.6226" posz="6.9820" orientx="0.3827" orienty="0.0000" orientz="0.9239">UnderbrushCoast</unit>
+		<unit variation="200" posx="-1.2468" posz="6.5792" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushCoral</unit>
+		<unit variation="162" posx="-5.8334" posz="8.4715" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushCoral</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="ceylon\seafloor5_ceylon">
+			<block startx="-10" startz="-7" endx="-10" endz="-6"></block>
+			<block startx="-9" startz="-7" endx="-9" endz="-6"></block>
+			<block startx="-8" startz="-7" endx="-8" endz="-6"></block>
+			<block startx="-7" startz="-7" endx="-7" endz="-6"></block>
+			<block startx="-6" startz="-7" endx="-6" endz="-6"></block>
+			<block startx="-5" startz="-7" endx="-5" endz="-7"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="ceylon\seafloor4_ceylon">
+			<block startx="-10" startz="-5" endx="-10" endz="-3"></block>
+			<block startx="-9" startz="-5" endx="-9" endz="-3"></block>
+			<block startx="-8" startz="-5" endx="-8" endz="-3"></block>
+			<block startx="-7" startz="-5" endx="-7" endz="-3"></block>
+			<block startx="-6" startz="-5" endx="-6" endz="-3"></block>
+			<block startx="-5" startz="-6" endx="-5" endz="-4"></block>
+			<block startx="-4" startz="-7" endx="-4" endz="-4"></block>
+			<block startx="-3" startz="-7" endx="-3" endz="-5"></block>
+			<block startx="-2" startz="-7" endx="-2" endz="-5"></block>
+			<block startx="-1" startz="-7" endx="-1" endz="-6"></block>
+			<block startx="0" startz="-7" endx="0" endz="-6"></block>
+			<block startx="1" startz="-7" endx="1" endz="-7"></block>
+			<block startx="2" startz="-7" endx="2" endz="-7"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="ceylon\seafloor3_ceylon">
+			<block startx="-10" startz="-2" endx="-10" endz="-1"></block>
+			<block startx="-9" startz="-2" endx="-9" endz="-1"></block>
+			<block startx="-8" startz="-2" endx="-8" endz="-1"></block>
+			<block startx="-7" startz="-2" endx="-7" endz="-1"></block>
+			<block startx="-6" startz="-2" endx="-6" endz="-1"></block>
+			<block startx="-5" startz="-3" endx="-5" endz="-2"></block>
+			<block startx="-4" startz="-3" endx="-4" endz="-2"></block>
+			<block startx="-3" startz="-4" endx="-3" endz="-3"></block>
+			<block startx="-2" startz="-4" endx="-2" endz="-3"></block>
+			<block startx="-1" startz="-5" endx="-1" endz="-3"></block>
+			<block startx="0" startz="-5" endx="0" endz="-4"></block>
+			<block startx="1" startz="-6" endx="1" endz="-5"></block>
+			<block startx="2" startz="-6" endx="2" endz="-5"></block>
+			<block startx="3" startz="-7" endx="3" endz="-5"></block>
+			<block startx="4" startz="-7" endx="4" endz="-6"></block>
+			<block startx="5" startz="-7" endx="5" endz="-6"></block>
+			<block startx="6" startz="-7" endx="6" endz="-7"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="ceylon\seafloor1_ceylon">
+			<block startx="-10" startz="0" endx="-10" endz="0"></block>
+			<block startx="-9" startz="0" endx="-9" endz="0"></block>
+			<block startx="-8" startz="0" endx="-8" endz="0"></block>
+			<block startx="-7" startz="0" endx="-7" endz="0"></block>
+			<block startx="-6" startz="0" endx="-6" endz="0"></block>
+			<block startx="-5" startz="-1" endx="-5" endz="0"></block>
+			<block startx="-10" startz="1" endx="-10" endz="2"></block>
+			<block startx="-9" startz="1" endx="-9" endz="3"></block>
+			<block startx="-8" startz="1" endx="-8" endz="2"></block>
+			<block startx="-7" startz="1" endx="-7" endz="2"></block>
+			<block startx="-6" startz="1" endx="-6" endz="2"></block>
+			<block startx="-5" startz="1" endx="-5" endz="1"></block>
+			<block startx="-2" startz="1" endx="-2" endz="1"></block>
+			<block startx="-4" startz="-1" endx="-4" endz="0"></block>
+			<block startx="-3" startz="-2" endx="-3" endz="0"></block>
+			<block startx="-2" startz="-2" endx="-2" endz="0"></block>
+			<block startx="-1" startz="-2" endx="-1" endz="0"></block>
+			<block startx="0" startz="-3" endx="0" endz="0"></block>
+			<block startx="1" startz="-4" endx="1" endz="-1"></block>
+			<block startx="2" startz="-4" endx="2" endz="-2"></block>
+			<block startx="3" startz="-4" endx="3" endz="-2"></block>
+			<block startx="4" startz="-5" endx="4" endz="-2"></block>
+			<block startx="5" startz="-5" endx="5" endz="-3"></block>
+			<block startx="6" startz="-6" endx="6" endz="-3"></block>
+			<block startx="7" startz="-7" endx="7" endz="-4"></block>
+			<block startx="8" startz="-7" endx="8" endz="-5"></block>
+			<block startx="9" startz="-7" endx="9" endz="-5"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="ceylon\seafloor2_ceylon">
+			<block startx="-10" startz="3" endx="-10" endz="7"></block>
+			<block startx="-9" startz="4" endx="-9" endz="7"></block>
+			<block startx="-8" startz="3" endx="-8" endz="7"></block>
+			<block startx="-7" startz="3" endx="-7" endz="7"></block>
+			<block startx="-6" startz="3" endx="-6" endz="7"></block>
+			<block startx="-5" startz="2" endx="-5" endz="7"></block>
+			<block startx="-4" startz="2" endx="-4" endz="7"></block>
+			<block startx="-3" startz="2" endx="-3" endz="6"></block>
+			<block startx="-2" startz="3" endx="-2" endz="6"></block>
+			<block startx="-1" startz="1" endx="-1" endz="1"></block>
+			<block startx="-1" startz="3" endx="-1" endz="6"></block>
+			<block startx="0" startz="3" endx="0" endz="5"></block>
+			<block startx="1" startz="1" endx="1" endz="5"></block>
+			<block startx="2" startz="1" endx="2" endz="4"></block>
+			<block startx="3" startz="1" endx="3" endz="3"></block>
+			<block startx="4" startz="1" endx="4" endz="3"></block>
+			<block startx="5" startz="1" endx="5" endz="3"></block>
+			<block startx="6" startz="1" endx="6" endz="2"></block>
+			<block startx="7" startz="1" endx="7" endz="1"></block>
+			<block startx="8" startz="1" endx="8" endz="1"></block>
+			<block startx="9" startz="1" endx="9" endz="1"></block>
+			<block startx="1" startz="0" endx="1" endz="0"></block>
+			<block startx="2" startz="-1" endx="2" endz="0"></block>
+			<block startx="3" startz="-1" endx="3" endz="0"></block>
+			<block startx="4" startz="-1" endx="4" endz="0"></block>
+			<block startx="5" startz="-2" endx="5" endz="0"></block>
+			<block startx="6" startz="-2" endx="6" endz="0"></block>
+			<block startx="7" startz="-3" endx="7" endz="0"></block>
+			<block startx="8" startz="-4" endx="8" endz="0"></block>
+			<block startx="9" startz="-4" endx="9" endz="0"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="caribbean\seafloor_coral1_crb">
+			<block startx="-4" startz="1" endx="-4" endz="1"></block>
+			<block startx="-3" startz="1" endx="-3" endz="1"></block>
+			<block startx="-3" startz="7" endx="-3" endz="7"></block>
+			<block startx="-2" startz="2" endx="-2" endz="2"></block>
+			<block startx="-2" startz="7" endx="-2" endz="7"></block>
+			<block startx="-1" startz="2" endx="-1" endz="2"></block>
+			<block startx="-1" startz="7" endx="-1" endz="7"></block>
+			<block startx="0" startz="1" endx="0" endz="2"></block>
+			<block startx="0" startz="6" endx="0" endz="7"></block>
+			<block startx="1" startz="6" endx="1" endz="7"></block>
+			<block startx="2" startz="5" endx="2" endz="7"></block>
+			<block startx="3" startz="4" endx="3" endz="7"></block>
+			<block startx="4" startz="4" endx="4" endz="7"></block>
+			<block startx="5" startz="4" endx="5" endz="7"></block>
+			<block startx="6" startz="3" endx="6" endz="7"></block>
+			<block startx="7" startz="2" endx="7" endz="7"></block>
+			<block startx="8" startz="2" endx="8" endz="6"></block>
+			<block startx="9" startz="2" endx="9" endz="6"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="caribbean\seafloor_coral2_crb">
+			<block startx="8" startz="7" endx="8" endz="7"></block>
+			<block startx="9" startz="7" endx="9" endz="7"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

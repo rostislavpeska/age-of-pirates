@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<tactics>
+	<action>
+		<name stringid="444176">MortarAttack</name>
+		<type>Attack</type>
+		<attackaction>1</attackaction>
+		<anim>MineBlow</anim>
+		<idleanim>Idle</idleanim>
+		<rangedlogic>1</rangedlogic>
+		<maxrange>5</maxrange>
+		<impacteffect>effects\impacts\cannon</impacteffect>
+		<rate type="Guardian">1.0 </rate>
+		<rate type="LogicalTypeShipsAndBuildings">1.0 </rate>
+		<basedamagecap>1</basedamagecap>
+		<projectile>Air_projectile</projectile>
+		<throw>1</throw>
+		<impactforcemin>500.0f</impactforcemin>
+		<impactforcemax>800.0f</impactforcemax>
+		<outerdamageareadistance>.45</outerdamageareadistance>
+		<outerdamageareafactor>.5</outerdamageareafactor>
+		<impactlaunchangle>65.0</impactlaunchangle>
+		<areasortmode>Directional</areasortmode>
+		<targetground>1</targetground>
+		<numberbounces>0</numberbounces>
+		<basedamagecap>1</basedamagecap>
+		<perfectaccuracy>1</perfectaccuracy>
+
+		<selfdestruct>1</selfdestruct>
+		<physicsonselfdestruct>1</physicsonselfdestruct>
+	</action>
+	<action>
+		<dbaction>BoatManager</dbaction>
+		<name>BoatManager</name>
+		<type>BoatManager</type>
+		<persistent>1</persistent>
+	</action>
+	<tactic>
+		Normal
+		<attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+		<autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+		<attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+		<action priority="100">MortarAttack</action>
+		<action priority="50">MineBlow3</action>
+		<action priority="70">MineBlow2</action>
+		<action>BoatManager</action>
+	</tactic>
+</tactics>

@@ -35,8 +35,6 @@
     <modifymultiplier>2.5</modifymultiplier>
     <nostack>1</nostack>
     <nostackignorepuid>1</nostackignorepuid>
-    <modelattachment>effects\ypack_auras\econpower.xml</modelattachment>
-    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
   </action>
   <action>
     <name stringid="301791">ExtraHPDiver</name>
@@ -49,6 +47,8 @@
     <modifyamount>2</modifyamount>
     <nostack>1</nostack>
     <nostackignorepuid>1</nostackignorepuid>
+    <modelattachment>effects\ypack_auras\econpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
   </action>     
   <action>
     <name stringid="301783">ExtraHPDiverLong</name>
@@ -61,6 +61,8 @@
     <modifyamount>2</modifyamount>
     <nostack>1</nostack>
     <nostackignorepuid>1</nostackignorepuid>
+    <modelattachment>effects\ypack_auras\econpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
   </action>
   <action>
     <name stringid="69776">SpawnDivers</name>
@@ -81,8 +83,6 @@
     <modifymultiplier>2.5</modifymultiplier>
     <nostack>1</nostack>
     <nostackignorepuid>1</nostackignorepuid>
-    <modelattachment>effects\ypack_auras\econpower.xml</modelattachment>
-    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
   </action>  
   <tactic>DivingBellXP
     <protounitcommand>DivingBellXP</protounitcommand>
