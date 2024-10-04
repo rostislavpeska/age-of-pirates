@@ -6,6 +6,8 @@
   <unittype>zpSubmarine</unittype>
   <unittype>zpNautilus</unittype>
   <unittype>zpMercNautilus</unittype>
+  <unittype>zpSubmarineTransport</unittype>
+  <unittype>zpNautilusTransport</unittype>
   <unittype>zpDocHolliday</unittype>
   <unittype>zpKorowaiOutpost</unittype>
 </tacticdisplay>

@@ -185,4 +185,13 @@
   <zpnatcolonialguard>
     <ability>dePromotionHitpoints<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpnatcolonialguard>
+  <zpcaptainnemo>
+    <ability>PowerCrackshot<rof>90</rof></ability>
+  </zpcaptainnemo>
+  <zpsubmarinetransport>
+    <ability>zpPowerShunt<allowwhilestealthed>true</allowwhilestealthed><rof>60</rof></ability>
+  </zpsubmarinetransport>
+  <zpnautilustransport>
+    <ability>zpPowerShunt<allowwhilestealthed>true</allowwhilestealthed><rof>60</rof></ability>
+  </zpnautilustransport>
 </abilitymods>

@@ -771,6 +771,41 @@
     <unavailableicon>resources\images\icons\command\target_unit.png</unavailableicon>
     <rolloverstringid>301146</rolloverstringid>
   </squadmode>
+  <squadmode>
+    <name>DiverStealth</name>
+    <tactic>DiverStealth</tactic>
+    <allowautopick>0</allowautopick>
+    <unittype>Military</unittype>
+    <targetunittype>All</targetunittype>
+    <stance>Defensive</stance>
+    <formationtype>Line</formationtype>
+    <formationlinelinespacing>0.8</formationlinelinespacing>
+    <formationlinecolumnspacing>0.8</formationlinecolumnspacing>
+    <randomspacingoffset>0.35</randomspacingoffset>
+    <cooldowntime>5000</cooldowntime>
+    <transitiontimein>500</transitiontimein>
+    <activeicon>resources\images\icons\command\diver_stealth_on.png</activeicon>
+    <availableicon>resources\images\icons\command\diver_stealth_off.png</availableicon>
+    <unavailableicon>resources\images\icons\command\diver_stealth_off.png</unavailableicon>
+    <rolloverstringid>46492</rolloverstringid>
+  </squadmode>
+  <squadmode>
+    <name>DiverVolley</name>
+    <tactic>DiverVolley</tactic>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <targetunittype>All</targetunittype>
+    <stance>Defensive</stance>
+    <formationtype>Line</formationtype>
+    <formationlinelinespacing>0.8</formationlinelinespacing>
+    <formationlinecolumnspacing>0.8</formationlinecolumnspacing>
+    <randomspacingoffset>0.35</randomspacingoffset>
+    <cooldowntime>5000</cooldowntime>
+    <transitiontimein>500</transitiontimein>
+    <activeicon>resources\images\icons\command\diver_volley_on.png</activeicon>
+    <availableicon>resources\images\icons\command\diver_volley_off.png</availableicon>
+    <unavailableicon>resources\images\icons\command\diver_volley_off.png</unavailableicon>
+    <rolloverstringid>31348</rolloverstringid>
+  </squadmode>
   
   <!-- Added by AssertiveWall -->
   <squadmode>

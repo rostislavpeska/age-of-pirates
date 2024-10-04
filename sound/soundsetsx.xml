@@ -1965,4 +1965,10 @@
     <sound filename="ambient\effects\thunder_strike.wav" volume="1.0000">
     </sound>
   </soundset>
+  <soundset name="Bubble_Sound" volume="0.8000" maxnum="4" distance="1.0000">
+    <sound filename="ambient\effects\bubble_sound.wav" volume="1.0000">
+    </sound>
+    <sound filename="ambient\effects\bubble_sound2.wav" volume="1.0000">
+    </sound>
+  </soundset>
 </soundsetdef>

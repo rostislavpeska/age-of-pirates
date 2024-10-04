@@ -27,6 +27,8 @@
           </soundset>
         </choice>
         <choice name="build">
+          <soundset name="IndianNanibAttack">
+          </soundset>
         </choice>
         <choice name="Huntable">
         </choice>

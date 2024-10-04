@@ -1697,11 +1697,11 @@
       <string _locid="301696">ZP Feral Wallaby</string>
       <string _locid="301697">Notamacropus rufogriseus</string>
       <string _locid="301698">ZP SPC Flying Submarine</string>
-      <string _locid="301699">Diver</string>
-      <string _locid="301700">ZP Diver</string>
-      <string _locid="301701">Deep Sea Diver</string>
-      <string _locid="301702">Sapphire Mine</string>
-      <string _locid="301703">ZP Underwater Sapphire Mine</string>
+      <string _locid="301699">Deep Sea Diver</string>
+      <string _locid="301700">ZP Deep Sea Diver</string>
+      <string _locid="301701">Desperately need a Diving Bell to provide him a life support.</string>
+      <string _locid="301702">Rare Minerals</string>
+      <string _locid="301703">ZP Underwater Mineral Mine</string>
       <string _locid="301704">Underwater Gold Resource</string>
       <string _locid="301705">Sunken Galleon</string>
       <string _locid="301706">ZP Underwater Galleon Gold</string>
@@ -1711,13 +1711,13 @@
       <string _locid="301710">Large river islands surrounded by marshes. That's New Guinea also called Papua. West Papua and East New Papua differ from each other not only by various natives. \n\nSettlements: Wokou, Korowai, Jesuit (Eastern variant), Sufi (Western variant)</string>
       <string _locid="301711">New Guinea</string>
       <string _locid="301712">Marshes full of crocodiles and forests full of canibals. Beware and explore the surrounding carefuly.</string>
-      <string _locid="301713">Stealth Deep sea diver with a harpoon attack. Can gather underwater resources. Moves very slow.</string>
+      <string _locid="301713">Stealth Deep Sea Diver with a harpoon attack. Can gather underwater resources. Desperately need a Diving Bell to provide him a life support. Moves very slow.</string>
       <string _locid="301714">Torres Strait</string>
       <string _locid="301715">Large two-team map with separate continents (New Guinea and Australia) and a couple of bonus islands. Both continents have completely different vibes. \n\nSettlements: Korowai, Wokou, Aboriginal Australians, Pirates</string>
       <string _locid="301716">If you start either in Australia or New Guinea, the starting continent provides you with enough resources. Even though, if you need more, you may build additional colonies on the bonus islands. But take care of your fleet. This area is known for really heavy storms.</string>
-      <string _locid="301717">Tasmania (Beta)</string>
-      <string _locid="301718">Tasmania Description: NO AI SUPPORTED</string>
-      <string _locid="301719">Tasmania Loading Screen: NO AI SUPPORTED</string>
+      <string _locid="301717">Tasmania</string>
+      <string _locid="301718">Players start with one Privateer and one Waka Canoe in the middle of the sea close to Tasmanian shore. You have to find a right spot for landing but beware, some landing areas are well protected by cliffs but they are not that rich on resources. \n\nSettlements: Aboriginal Australians, Penal Colony, Pirates</string>
+      <string _locid="301719">Don't panic, the land is close. You just have to find the right landing spot but beware, some landingg spots are well protected by cliffs but they are not that rich on resources.</string>
       <string _locid="301720">Sea Floor</string>
       <string _locid="301721">ZP SPC Sea Floor</string>
       <string _locid="301722">Barracuda Colony</string>
@@ -1732,10 +1732,64 @@
       <string _locid="301731">Amphiprioninae</string>
       <string _locid="301732">Barracuda</string>
       <string _locid="301733">ZP Barracuda</string>
-      <string _locid="301734">Pearl Source</string>
-      <string _locid="301735">ZP Pearl Source</string>
+      <string _locid="301734">Shallow Water Pearls</string>
+      <string _locid="301735">ZP Pearls</string>
       <string _locid="301736">Underbrush Coral</string>
       <string _locid="301737">ZP Underbrush Coral</string>
+      <string _locid="301738">Deep Sea Pioneers</string>
+      <string _locid="301739">Ships a Submarine which can train Deep Sea Divers able to gather resources from underwater mines and shipwrecks. Allows submarine training - either from Inventor Trading post and the Dock. &lt;color=0.0, 1.0, 0.0&gt;TEAM TECH&lt;/color&gt;</string>
+      <string _locid="301740">Cook Islands</string>
+      <string _locid="301741">Cook Islands Description</string>
+      <string _locid="301742">Cook Islands Loading</string>
+      <string _locid="301743">Diving Bell</string>
+      <string _locid="301744">ZP Diving Bell</string>
+      <string _locid="301745">Captain Nemo</string>
+      <string _locid="301746">ZP Captain Nemo</string>
+      <string _locid="301747">Hero Submarine Captain</string>
+      <string _locid="301748">Can be garrisoned in submarines and signifficantly increase it's attack.</string>
+      <string _locid="301749">Captain Nemo (Map Bonus)</string>
+      <string _locid="301750">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Submarine \n\n&lt;color=0.0, 1.0, 0.0&gt;Bonus:&lt;/color&gt; Ships Captain Nemo hero character. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nLegendary Nautilus, Submarine Fleet</string>
+      <string _locid="301751">ZP Submarine Transport</string>
+      <string _locid="301752">ZP Nautilus Transport</string>
+      <string _locid="301753">Generates resources and provides gather bonus and hitpoint bonus to nearby divers. Very resistent to any unit's attack except Divers and submerged Submarines.</string>
+      <string _locid="301754">Diver life support building.</string>
+      <string _locid="301755">Deep Water Pearls</string>
+      <string _locid="301756">ZP Pearls Underwater</string>
+      <string _locid="301757">Old Diving Bell</string>
+      <string _locid="301758">ZP Diving Bell Reward</string>
+      <string _locid="301759">Old deserted Diving Bell that can be claimed</string>
+      <string _locid="301760">Underwater Cave</string>
+      <string _locid="301761" symbol="cStringNuggeteuSpawnBoar" comment="1 - amount, 2 - resource">Hidden divers equipped with harpoon. Caan gather underwater resources.</string>
+      <string _locid="301762" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued 2 Divers.</string>
+      <string _locid="301763" symbol="cStringNuggeteuSpawnBoar" comment="1 - amount, 2 - resource">Dolphin pets.</string>
+      <string _locid="301764" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued 2 Dolphins.</string>
+      <string _locid="301765">Configure Diving Bell to generate Food and provide gather bonus to divers</string>
+      <string _locid="301766">This Diving Bell is generating Food and providing gather bonus to divers</string>
+      <string _locid="301767">Configure Diving Bell to generate Coin and provide gather bonus to divers</string>
+      <string _locid="301768">This Diving Bell is generating Coin and providing gather bonus to divers</string>
+      <string _locid="301769">Configure Diving Bell to generate XP and provide gather bonus to divers</string>
+      <string _locid="301770">This Diving Bell is generating XP and providing gather bonus to divers</string>
+      <string _locid="301771" symbol="cStringNuggeteuSpawnBoar" comment="1 - amount, 2 - resource">Dolphin pet.</string>
+      <string _locid="301772" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued a Dolphin.</string>
+      <string _locid="301773">Pirate Submarine</string>
+      <string _locid="301774">ZP Guardian Submarine</string>
+      <string _locid="301775">Evil Pirate Submarine guarding a treasure.</string>
+      <string _locid="301776">Configure Diving Bell to be unvisible for enemies but providing no gather bonus to divers</string>
+      <string _locid="301777">This Diving Bell is unvisible for enemies but is providing no gather bonus to divers</string>
+      <string _locid="301778">Diving Crew</string>
+      <string _locid="301779">Spawns 2 divers from every Diving Bell</string>
+      <string _locid="301780">Extended Life support</string>
+      <string _locid="301781">Increases Diver support aura range and diver hitpoint bonus. Submarines can also provide a limited HP bonus for divers.</string>
+      <string _locid="301782">Diver gather bonus long</string>
+      <string _locid="301783">Diver hitpoint bonus extender</string>
+      <string _locid="301784">Underwater Command Center</string>
+      <string _locid="301785">Allows your divers to construct an additional Diving Bell</string>
+      <string _locid="301786">Deep Sea Mining</string>
+      <string _locid="301787">Divers gather resources faster. Diving Bell autogather works faster too.</string>
+      <string _locid="301788">Automatic Spearguns</string>
+      <string _locid="301789">Improves diver's attack</string>
+      <string _locid="301790">Diver gather bonus</string>
+      <string _locid="301791">Diver hitpoint bonus</string>
 
 
 

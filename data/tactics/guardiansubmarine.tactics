@@ -1,0 +1,57 @@
+<tactics>
+  <action>
+      <name stringid="300482">CannonAttackDived</name>
+      <type>Attack</type>
+      <attackaction>1</attackaction>
+      <rangedlogic>1</rangedlogic>
+      <anim>Bombard_ranged_attack_dived</anim>
+      <accuracy>1.0</accuracy>
+      <aimbonus>5</aimbonus>
+      <trackrating>2</trackrating>
+      <unintentionaldamagemultiplier>1.0</unintentionaldamagemultiplier>
+      <projectile>zpTorpedo</projectile>
+      <impacteffect>effects\impacts\cannon</impacteffect>
+      <rate type="LogicalTypeNavalMilitary">1.0 </rate>
+      <rate type="AbstractDock">1.0 </rate>
+      <rate type="WaterGuardian">1.0 </rate>
+      <rate type="AbstractFishingBoat">1.0 </rate>
+      <rate type="NavalPet">1.0 </rate>
+      <rate type="zpDivingBell">1.0 </rate>
+      <maxheight>0</maxheight>
+      <scalebycontainedunittype>
+          <rate type="zpCaptainNemo">1.5</rate>
+      </scalebycontainedunittype>
+      <outerdamageareadistance>.25</outerdamageareadistance>
+      <outerdamageareafactor>.20</outerdamageareafactor>
+      <perfectaccuracy>1</perfectaccuracy>
+      <areasortmode>Directional</areasortmode>
+      <targetground>1</targetground>
+      <basedamagecap>1</basedamagecap>
+  </action>
+  <action>
+    <dbaction>BoatManager</dbaction>
+    <name stringid="69156">BoatManager</name>
+    <type>BoatManager</type>
+    <persistent>1</persistent>
+  </action>
+  <tactic>Normal
+    <speedmodifier>1.0</speedmodifier>
+    <action priority="100">CannonAttackDived</action>
+    <action>BoatManager</action>
+    <idleanim>Dived</idleanim>
+    <boredanim>Dived</boredanim>
+    <deathanim>Death_dived</deathanim>
+    <walkanim>Dived</walkanim>
+    <joganim>Dived</joganim>
+    <runanim>Dived</runanim>
+    <idleanim>Dived</idleanim>
+    <boredanim>Dived</boredanim>
+    <walkanim>Dived</walkanim>
+    <joganim>Dived</joganim>
+    <runanim>Dived</runanim>
+    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+    <runaway>1</runaway>
+    <autoretarget>1</autoretarget>
+  </tactic>
+</tactics>

@@ -16,7 +16,11 @@
         <rate type="WaterGuardian">1.0 </rate>
         <rate type="AbstractFishingBoat">1.0 </rate>
         <rate type="NavalPet">1.0 </rate>
+        <rate type="zpDivingBell">1.0 </rate>
         <maxheight>0</maxheight>
+        <scalebycontainedunittype>
+            <rate type="zpCaptainNemo">1.5</rate>
+        </scalebycontainedunittype>
         <outerdamageareadistance>.25</outerdamageareadistance>
         <outerdamageareafactor>.20</outerdamageareafactor>
         <perfectaccuracy>1</perfectaccuracy>
@@ -41,7 +45,11 @@
         <rate type="WaterGuardian">1.0 </rate>
         <rate type="AbstractFishingBoat">1.0 </rate>
         <rate type="NavalPet">1.0 </rate>
+        <rate type="zpDivingBell">1.0 </rate>
         <maxheight>0</maxheight>
+        <scalebycontainedunittype>
+            <rate type="zpCaptainNemo">1.5</rate>
+        </scalebycontainedunittype>
         <outerdamageareadistance>.25</outerdamageareadistance>
         <areasortmode>Directional</areasortmode>
         <outerdamageareafactor>.20</outerdamageareafactor>
@@ -59,6 +67,9 @@
         <attackaction>1</attackaction>
         <handlogic>1</handlogic>
         <speedboost>1</speedboost>
+        <scalebycontainedunittype>
+            <rate type="zpCaptainNemo">0.75</rate>
+        </scalebycontainedunittype>
         <anim>RamAttack</anim>
         <impacteffect>effects\impacts\melee</impacteffect>
         <targetspeedboost>1</targetspeedboost>
@@ -76,6 +87,9 @@
         <maxspread>5</maxspread>
         <spreadfactor>0.25</spreadfactor>
         <trackrating>12</trackrating>
+        <scalebycontainedunittype>
+            <rate type="zpCaptainNemo">0.75</rate>
+        </scalebycontainedunittype>
         <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
         <projectile>InvisibleProjectile</projectile>
         <numberprojectiles>1</numberprojectiles>
@@ -135,18 +149,34 @@
         <modifybase>1.0</modifybase>
         <modifytype>BaseHP</modifytype>
         <modifymultiplier>1.75</modifymultiplier>
-    </action>      
+    </action>
+    <action>
+        <name stringid="301791">ExtraHPDiverLong</name>
+        <active>0</active>
+        <type>AutoRangedModify</type>
+        <maxrange>25</maxrange>
+        <modifyabstracttype>AbstractDiver</modifyabstracttype>
+        <persistent>1</persistent>
+        <modifytype>HealRate</modifytype>
+        <modifyamount>2</modifyamount>
+        <nostack>1</nostack>
+        <nostackignorepuid>1</nostackignorepuid>
+        <modelattachment>effects\ypack_auras\econpower.xml</modelattachment>
+        <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+    </action>
 
 
     <!--TACTICS-->
 
     <tactic>zpSurface
         <protounitcommand>zpTacticSurface</protounitcommand>
-        <action priotity="25">GatlingAttack</action>
         <action priotity="100">CannonAttackSurfaced</action>
+        <action priotity="25">GatlingAttack</action>
         <action priority="2">ShuntAttack</action>
+        <!--<action>>DiverSupport</action>-->
         <action>Discover</action>
         <action>BoatManager</action>
+        <action>ExtraHPDiverLong</action>
         <transition>
             <tactic>zpStealth</tactic>
             <length>2</length>
@@ -190,6 +220,7 @@
         <action priority="100">CannonAttackDived</action>
         <action priority="2">ShuntAttack</action>
         <action>Discover</action>
+        <action>ExtraHPDiverLong</action>
         <transition>
             <tactic>zpStealth</tactic>
             <length>0.3</length>
@@ -235,6 +266,7 @@
         <action priority="100">CannonAttackDived</action>
         <action priority="2">ShuntAttack</action>
         <action>Discover</action>
+        <action>ExtraHPDiverLong</action>
         <transition>
             <tactic>zpStealth</tactic>
             <length>0.3</length>
@@ -282,6 +314,7 @@
         <action priority="2">ShuntAttack</action>
         <action>Discover</action>
         <action>Stealth</action>
+        <action>ExtraHPDiverLong</action>
         <checkifcanstealth range="25.0">1</checkifcanstealth>
         <transition>
             <tactic>zpDive</tactic>

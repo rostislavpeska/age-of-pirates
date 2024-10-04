@@ -2,10 +2,7 @@
   <component>sapphire
     <assetreference type="GrannyModel"><file>buildings\gold_mine\coral_mine_Model</file></assetreference>
     <decal>
-      <effecttype>bump</effecttype>
-      <texture>terrain\decal\seacave_decal_basecolor</texture>
       <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-      <bumptexture>terrain\decal\seacave_decal_basecolor</bumptexture>
       <width>10.00</width>
       <height>10.00</height>
       <xoffset>0.00</xoffset>

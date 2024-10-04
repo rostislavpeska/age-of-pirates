@@ -379,6 +379,42 @@
     <activerollovertextid>301230</activerollovertextid>
     <command>unitSetTactic("TacticMaintain")</command>
   </protounitcommand>
+  <protounitcommand>
+    <name>DivingBellXP</name>
+    <icon>resources\images\icons\techs\asians\shrine_xp.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_xp_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_xp.png</disabledicon>
+    <rollovertextid>301769</rollovertextid>
+    <activerollovertextid>301770</activerollovertextid>
+    <command>unitSetTactic("DivingBellXP")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>DivingBellCoin</name>
+    <icon>resources\images\icons\techs\asians\shrine_coin.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_coin_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_coin.png</disabledicon>
+    <rollovertextid>301767</rollovertextid>
+    <activerollovertextid>301768</activerollovertextid>
+    <command>unitSetTactic("DivingBellCoin")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>DivingBellFood</name>
+    <icon>resources\images\icons\techs\asians\shrine_food.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_food_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_food.png</disabledicon>
+    <rollovertextid>301765</rollovertextid>
+    <activerollovertextid>301766</activerollovertextid>
+    <command>unitSetTactic("DivingBellFood")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>DivingBellStealth</name>
+    <icon>resources\images\icons\command\tactics_build_stealth_avl.png</icon>
+    <activeicon>resources\images\icons\command\tactics_build_stealth_cur.png</activeicon>
+    <disabledicon>resources\images\icons\command\tactics_build_stealth_un_avl.png</disabledicon>
+    <rollovertextid>301776</rollovertextid>
+    <activerollovertextid>301777</activerollovertextid>
+    <command>unitSetTactic("DivingBellStealth")</command>
+  </protounitcommand>
 
   <!--
 

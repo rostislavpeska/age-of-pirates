@@ -28,6 +28,7 @@
       <type>yukon</type>
       <type>arcticterritories</type>
       <type>hawaii</type>
+      <type>cookislands</type>
     </maptypes>
     <minspawntime>90</minspawntime>
     <maxspawntime>300</maxspawntime>
@@ -229,6 +230,7 @@
       <type>caribbean</type>
       <type>australia</type>
       <type>hawaii</type>
+      <type>cookislands</type>
       <type>newguinea</type>
       <type>melanesia</type>
       <type>guinea</type>
@@ -254,6 +256,7 @@
       <type>tasmania</type>
       <type>newzealand</type>
       <type>hawaii</type>
+      <type>cookislands</type>
       <type>melanesia</type>
       <type>guinea</type>
     </maptypes>
