@@ -16268,7 +16268,7 @@
     <cost resourcetype="Wood">1500.0000</cost>
     <cost resourcetype="Gold">1500.0000</cost>
     <researchpoints>30.0000</researchpoints>
-    <status>BTAINABLE</status>
+    <status>OBTAINABLE</status>
     <icon>resources\images\icons\techs\imperial_archer_infantry\imperial_archer_infantry.png</icon>
     <rollovertextid>301806</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
@@ -16279,12 +16279,12 @@
     </prereqs>
     <effects>
       <effect type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">Crossbowman</target>
+        <target type="ProtoUnit">zpDiver</target>
       </effect>
       <effect type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">Crossbowman</target>
+        <target type="ProtoUnit">zpDiver</target>
       </effect>
-      <effect type="SetName" proto="Crossbowman" culture="none" newname="301804">
+      <effect type="SetName" proto="zpDiver" culture="none" newname="301804">
       </effect>
     </effects>
   </tech>

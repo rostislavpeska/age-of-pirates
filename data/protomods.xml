@@ -35015,27 +35015,6 @@
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
-
-  
- 
-
-    
-  
-  
-  
-  
-  
-
-
-
-
-
-
-
-
-
-  <!--TEST-->
-
   <unit id="20469" name="zpNavalmine">
 		<dbid>20469</dbid>
 		<displaynameid>301792</displaynameid>
@@ -35159,6 +35138,27 @@
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
   </unit>
+
+  
+ 
+
+    
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+  <!--TEST-->
+
 
   <!--<unit name="WaypointFlag">
     <flag mergeMode='remove'>TieToWaterSurface</flag>   
