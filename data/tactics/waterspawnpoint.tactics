@@ -150,6 +150,14 @@
     <persistent>0</persistent>
     <singleuse>1</singleuse>
   </action>
+  <action>
+    <name stringid="69776">SpawnSultana</name>
+    <type>Spawn</type>
+    <rate type="zpSPCPirateGalleass">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
   <tactic>Normal
     <action>Heal</action>
     <action>SpawnPrivateer</action>
@@ -164,5 +172,6 @@
     <action>SpawnFlyingDutchman</action>
     <action>SpawnBlackJackShip</action>
     <action>SpawnPrau</action>
+    <action>SpawnSultana</action>
   </tactic>
 </tactics>
