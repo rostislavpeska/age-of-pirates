@@ -5,11 +5,11 @@
       </soundset>
     </soundtype>
     <soundtype name="Grunt">
-      <soundset name="GenericMaleGrunt">
+      <soundset name="Bubble_Sound">
       </soundset>
     </soundtype>
     <soundtype name="Death">
-      <soundset name="GenericMaleDeath">
+      <soundset name="Bubble_Sound">
       </soundset>
     </soundtype>
     <soundtype name="Creation">
@@ -27,20 +27,32 @@
           </soundset>
         </choice>
         <choice name="build">
-          <soundset name="IndianNanibAttack">
+          <soundset name="IndianNanibAcknowledge">
           </soundset>
         </choice>
         <choice name="Huntable">
+          <soundset name="IndianNanibAcknowledge">
+          </soundset>
         </choice>
         <choice name="Tree">
+          <soundset name="IndianNanibAcknowledge">
+          </soundset>
         </choice>
         <choice name="AbstractMine">
+          <soundset name="IndianNanibAcknowledge">
+          </soundset>
         </choice>
         <choice name="AbstractFarm">
+          <soundset name="IndianNanibAcknowledge">
+          </soundset>
         </choice>
         <choice name="AbstractResourceCrate">
+          <soundset name="IndianNanibAcknowledge">
+          </soundset>
         </choice>
         <choice name="AbstractFruit">
+          <soundset name="IndianNanibAcknowledge">
+          </soundset>
         </choice>
       </targetlogic>
     </soundtype>

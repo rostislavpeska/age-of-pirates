@@ -1798,6 +1798,8 @@
     </sound>
     <sound filename="aussie\Aussie_Horseman_Selection02.wav" volume="1.0000">
     </sound>
+    <sound filename="aussie\Aussie_Horseman_Selection03.wav" volume="1.0000">
+    </sound>
   </soundset>
   <soundset name="Bushranger_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
     <sound filename="aussie\Bushranger_Move02.wav" volume="1.0000">
@@ -1864,6 +1866,8 @@
 
   <soundset name="Blackbeard_Select" volume="1.0000" maxnum="4" distance="1.0000">
     <sound filename="zp_misc\Blackbeard_selection01.wav" volume="1.0000">
+    </sound>
+    <sound filename="zp_misc\Blackbeard_selection02.wav" volume="1.0000">
     </sound>
     <sound filename="zp_misc\Blackbeard_selection03.wav" volume="1.0000">
     </sound>
