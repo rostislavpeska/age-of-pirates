@@ -161,7 +161,7 @@
     <type>Gather</type>
     <maxrange>1.0</maxrange>
     <anim>Build</anim>
-    <rate type="AbstractUnderwaterMine">0.8</rate>
+    <rate type="AbstractUnderwaterMine">1.25</rate>
   </action>
   <action>
     <name stringid="69147">Build</name>

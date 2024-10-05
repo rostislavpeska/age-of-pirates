@@ -32,7 +32,7 @@
     <modifyabstracttype>AbstractDiver</modifyabstracttype>
     <persistent>1</persistent>
     <modifytype>GatherRate</modifytype>
-    <modifymultiplier>2.5</modifymultiplier>
+    <modifymultiplier>1.5</modifymultiplier>
     <nostack>1</nostack>
     <nostackignorepuid>1</nostackignorepuid>
   </action>
@@ -80,7 +80,7 @@
     <modifyabstracttype>AbstractDiver</modifyabstracttype>
     <persistent>1</persistent>
     <modifytype>GatherRate</modifytype>
-    <modifymultiplier>2.5</modifymultiplier>
+    <modifymultiplier>1.5</modifymultiplier>
     <nostack>1</nostack>
     <nostackignorepuid>1</nostackignorepuid>
   </action>  
