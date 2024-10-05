@@ -2325,8 +2325,19 @@ mininterval 60
 
       canDisableSelf = researchSimpleTech(cTechzpScientistsBaloons, cUnitTypeTradingPost);
 
+      // standard scientists with a Destroyer dhip
       canDisableSelf &= researchSimpleTechByCondition(cTechzpScientistIronFleet,
-      []() -> bool { return (kbGetAge() >= cAge2 ); },,
+      []() -> bool { return ((kbTechGetStatus(cTechzpUnderwaterScientists) == cTechStatusUnobtainable) && (kbTechGetStatus(cTechzpLandScientists) == cTechStatusUnobtainable) && (kbGetAge() >= cAge2)); },,
+      cUnitTypeTradingPost);
+
+      // Land scientists variant (Currentkly not working because of pop limit, but is prepared for the future tech replacement)
+      /*canDisableSelf &= researchSimpleTechByCondition(cTechzpScientistArtillery,
+      []() -> bool { return ((kbTechGetStatus(cTechzpLandScientists) == cTechStatusActive) && (kbGetAge() >= cAge3)); },,
+      cUnitTypeTradingPost);*/
+
+      // Underwater scientist variant
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpScientistUnderwaterExploration,
+      []() -> bool { return ((kbTechGetStatus(cTechzpUnderwaterScientists) == cTechStatusActive) && (kbGetAge() >= cAge3)); },,
       cUnitTypeTradingPost);
 
       canDisableSelf &= researchSimpleTechByCondition(cTechzpImperialSubmarine,
