@@ -284,11 +284,6 @@
 		<unit variation="0" posx="18.2385" posz="-10.8484" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSeaFloor</unit>
 		<unit variation="56" posx="24.4072" posz="-9.2977" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushCoral</unit>
 		<unit variation="59" posx="33.1912" posz="-9.6404" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushCoral</unit>
-		<unit variation="6" posx="-1.0000" posz="-6.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="80" posx="-5.0000" posz="-6.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="113" posx="3.0000" posz="-6.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="186" posx="-3.0000" posz="-6.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="72" posx="1.0000" posz="-6.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
 		<unit variation="164" posx="-63.4348" posz="-6.9414" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushCoral</unit>
 		<unit variation="17" posx="-49.0966" posz="-7.0027" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSeaFloor</unit>
 		<unit variation="251" posx="-50.3336" posz="-6.2868" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpUnderbrushCoral</unit>
@@ -304,26 +299,14 @@
 		<unit variation="0" posx="20.0414" posz="-8.5231" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSeaFloor</unit>
 		<unit variation="72" posx="24.4924" posz="-7.6437" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSeaFloor</unit>
 		<unit variation="55" posx="-21.9803" posz="-6.9444" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpUnderbrushCoral</unit>
-		<unit variation="66" posx="3.0000" posz="-4.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="224" posx="-1.0000" posz="-4.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="62" posx="1.0000" posz="-4.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="20" posx="-5.0000" posz="-4.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="56" posx="-3.0000" posz="-4.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
 		<unit variation="237" posx="21.1163" posz="-5.9505" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushCoral</unit>
 		<unit variation="0" posx="6.4326" posz="-6.2440" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSeaFloor</unit>
 		<unit variation="0" posx="14.1510" posz="-6.3551" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSeaFloor</unit>
 		<unit variation="0" posx="13.3638" posz="-5.0244" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSeaFloor</unit>
 		<unit variation="0" posx="21.5053" posz="-6.5675" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSeaFloor</unit>
-		<unit variation="220" posx="-1.0000" posz="-2.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="4" posx="1.0000" posz="-2.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
 		<unit variation="228" posx="-39.0696" posz="-2.7706" orientx="-0.5853" orienty="-0.0000" orientz="-0.8108">zpSunkenShipWood</unit>
-		<unit variation="165" posx="-6.0000" posz="-5.0000" orientx="-0.5042" orienty="0.0000" orientz="-0.8636">AIStart</unit>
 		<unit variation="54" posx="-51.9808" posz="-4.6395" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpUnderbrushCoral</unit>
 		<unit variation="72" posx="-46.1262" posz="-3.6698" orientx="-0.4643" orienty="0.0000" orientz="0.8857">zpBarracudaColony</unit>
-		<unit variation="34" posx="-6.0000" posz="-5.0000" orientx="-0.9402" orienty="0.0000" orientz="0.3407">AIStart</unit>
-		<unit variation="58" posx="-6.0000" posz="-5.0000" orientx="0.6210" orienty="0.0000" orientz="0.7838">AIStart</unit>
-		<unit variation="161" posx="-6.0000" posz="-5.0000" orientx="0.6816" orienty="0.0000" orientz="0.7317">AIStart</unit>
-		<unit variation="14" posx="-6.0000" posz="-5.0000" orientx="-0.9695" orienty="0.0000" orientz="0.2451">AIStart</unit>
 		<unit variation="14" posx="34.1359" posz="-4.0235" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpUnderbrushCoral</unit>
 		<unit variation="252" posx="-21.2742" posz="-4.6994" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpUnderbrushCoral</unit>
 		<unit variation="50" posx="-17.9298" posz="-3.5973" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpUnderbrushCoral</unit>
@@ -346,9 +329,6 @@
 		<unit variation="68" posx="39.7401" posz="-3.1647" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpUnderbrushCoral</unit>
 		<unit variation="208" posx="-30.4980" posz="-2.1345" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpUnderbrushCoral</unit>
 		<unit variation="251" posx="-15.1334" posz="-2.1458" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushCoral</unit>
-		<unit variation="56" posx="-1.0000" posz="0.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="62" posx="3.0000" posz="0.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="247" posx="1.0000" posz="0.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
 		<unit variation="4" posx="-46.8929" posz="-1.2365" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSeaFloor</unit>
 		<unit variation="192" posx="-34.1450" posz="-2.3578" orientx="0.7323" orienty="0.0000" orientz="0.6809">zpClownfish</unit>
 		<unit variation="0" posx="-37.0782" posz="-2.3393" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSeaFloor</unit>
@@ -364,11 +344,6 @@
 		<unit variation="0" posx="20.9328" posz="-1.5662" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSeaFloor</unit>
 		<unit variation="0" posx="26.6216" posz="-1.0659" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSeaFloor</unit>
 		<unit variation="155" posx="29.6419" posz="-0.2773" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpUnderbrushCoral</unit>
-		<unit variation="114" posx="-1.0000" posz="2.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="141" posx="1.0000" posz="2.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="215" posx="3.0000" posz="2.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="152" posx="-3.0000" posz="2.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="116" posx="-5.0000" posz="2.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
 		<unit variation="192" posx="-49.5037" posz="0.4277" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSeaFloor</unit>
 		<unit variation="198" posx="-43.7290" posz="0.0970" orientx="-0.4593" orienty="0.0000" orientz="-0.8883">zpClownfish</unit>
 		<unit variation="0" posx="-31.8516" posz="-0.5052" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSeaFloor</unit>
