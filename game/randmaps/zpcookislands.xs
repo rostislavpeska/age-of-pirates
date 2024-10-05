@@ -75,7 +75,7 @@ void main(void)
   if (cNumberNonGaiaPlayers == 3)
 		playerTiles = 35000;
   if (cNumberNonGaiaPlayers == 2)
-		playerTiles = 42000;
+		playerTiles = 45000;
 	int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
 	rmEchoInfo("Map size="+size+"m x "+size+"m");
 	rmSetMapSize(size, size);
@@ -957,19 +957,25 @@ void main(void)
 		rmPlaceObjectDefAtLoc(playerFoodID, 0, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc))); 
     rmPlaceObjectDefAtLoc(playerBerriesID, 0, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc))); 
    
-   // Player Native
+    // Player Native
 
-    int whichSettlement = rmRandInt(1,5);
+    if (cNumberNonGaiaPlayers<=2)
+      int whichSettlement = 5;
+    else
+      whichSettlement = rmRandInt(1,5);
 
     int playerNativeID = -1;
     playerNativeID = rmCreateGrouping("player native "+i, "maori_tropic_0"+whichSettlement);
     rmSetGroupingMinDistance(playerNativeID, 30);
-    rmSetGroupingMaxDistance(playerNativeID, 50);
+    rmSetGroupingMaxDistance(playerNativeID, 60);
     rmAddGroupingConstraint(playerNativeID, avoidAll);
     rmAddGroupingConstraint(playerNativeID, avoidImpassableLand);
     rmAddGroupingConstraint(playerNativeID, avoidTCLong);
     rmAddGroupingConstraint(playerNativeID, avoidTPLong);
-    rmAddObjectDefConstraint(playerNativeID, avoidWater20);
+    if (cNumberNonGaiaPlayers ==2)
+      rmAddObjectDefConstraint(playerNativeID, avoidWater8);
+    else
+      rmAddObjectDefConstraint(playerNativeID, avoidWater20);
 
 
     rmPlaceGroupingAtLoc(playerNativeID, 0, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
@@ -2604,7 +2610,6 @@ rmSetTriggerLoop(false);
     rmSetTriggerRunImmediately(true);
     rmSetTriggerLoop(false);
     }
-
 
 
   // Testing
