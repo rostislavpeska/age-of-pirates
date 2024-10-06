@@ -23272,8 +23272,8 @@
     <editornameid>301186</editornameid>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
-    <maxvelocity>8.0000</maxvelocity>
-    <maxrunvelocity>10.0000</maxrunvelocity>
+    <maxvelocity>3.0000</maxvelocity>
+    <maxrunvelocity>5.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
     <wanderdistance>50</wanderdistance>
@@ -23342,8 +23342,8 @@
     <editornameid>301190</editornameid>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
-    <maxvelocity>8.0000</maxvelocity>
-    <maxrunvelocity>10.0000</maxrunvelocity>
+    <maxvelocity>3.0000</maxvelocity>
+    <maxrunvelocity>5.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
     <wanderdistance>50</wanderdistance>
@@ -24203,8 +24203,8 @@
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <formationcategory>Body</formationcategory>
-    <maxvelocity>8.0000</maxvelocity>
-    <maxrunvelocity>10.0000</maxrunvelocity>
+    <maxvelocity>3.0000</maxvelocity>
+    <maxrunvelocity>5.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
     <wanderdistance>10</wanderdistance>
@@ -33400,8 +33400,8 @@
     <editornameid>301696</editornameid>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
-    <maxvelocity>8.0000</maxvelocity>
-    <maxrunvelocity>10.0000</maxrunvelocity>
+    <maxvelocity>2.0000</maxvelocity>
+    <maxrunvelocity>4.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
     <wanderdistance>50</wanderdistance>
