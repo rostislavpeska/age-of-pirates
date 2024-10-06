@@ -160,24 +160,27 @@ void main(void)
 	int fishVsFishID=rmCreateTypeDistanceConstraint("fish v fish", "ypFishTuna", 25.0);			// was 50.0
 	// int fishVsFishTarponID=rmCreateTypeDistanceConstraint("fish v fish2", "fishTarpon", 20.0);  // was 40.0 
 	int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 8.0);			
-	int whaleVsWhaleID=rmCreateTypeDistanceConstraint("whale v whale", "MinkeWhale", 30.0);	//Was 8.0
+	int whaleVsWhaleID=rmCreateTypeDistanceConstraint("whale v whale", "MinkeWhale", 50.0);	//Was 8.0
 	int fishVsWhaleID=rmCreateTypeDistanceConstraint("fish v whale", "MinkeWhale", 40.0);    //Was 34.0 -- This is for trying to keep fish out of "whale bay".
-	int whaleLand = rmCreateTerrainDistanceConstraint("whale land", "land", true, 20.0);   // Was 18.0.  This is to keep whales from swimming inside of land.
+	int whaleLand = rmCreateTerrainDistanceConstraint("whale land", "land", true, 17.0);   // Was 18.0.  This is to keep whales from swimming inside of land.
 	int forestObjConstraint=rmCreateTypeDistanceConstraint("forest obj", "all", 6.0);
 	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 30.0);
 	int avoidResource=rmCreateTypeDistanceConstraint("resource avoid resource", "resource", 10.0);
 	int SaltVsSaltID=rmCreateTypeDistanceConstraint("salt v salt", "zpSaltMineWater", 20.0);	//Was 8.0
 	int avoidCoin=-1;
+	int avoidGold=-1;
 	int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "abstractNugget", 45.0); 
   int avoidNuggetWater2=rmCreateTypeDistanceConstraint("avoid water nuggets2", "abstractNugget", 100.0);
 	// Drop coin constraint on bigger maps
 	if ( cNumberNonGaiaPlayers > 5 )
 	{
 		avoidCoin = rmCreateTypeDistanceConstraint("avoid coin", "mineCopper", 40.0);
+		avoidGold = rmCreateTypeDistanceConstraint("avoid gold", "mineGold", 40.0);
 	}
 	else
 	{
 		avoidCoin = rmCreateTypeDistanceConstraint("avoid coin", "mineCopper", 50.0);	// 85.0 seems the best for event mineCopper distribution.  This number tells mineCoppers how far they should try to avoid each other.  Useful for spreading them out more evenly.
+		avoidGold = rmCreateTypeDistanceConstraint("avoid gold", "mineGold", 50.0);
 	}
 	int avoidRandomBerries=rmCreateTypeDistanceConstraint("avoid random berries", "berrybush", 50.0);	//Attempting to spread them out more evenly.
 	int avoidRandomTurkeys=rmCreateTypeDistanceConstraint("avoid random emu", "zpRedNeckedWallaby", 40.0);	//Attempting to spread them out more evenly.
@@ -791,71 +794,6 @@ void main(void)
 
     for(i=1; < cNumberNonGaiaPlayers + 1) {
 
-		/*if (rmGetPlayerCiv(i) == rmGetCivID("DEItalians"))
-		{
-			shipType = "Galleass";
-			shipType2 = "Caravel";
-		}
-		else if (rmGetPlayerCiv(i) == rmGetCivID("Dutch"))
-		{
-			shipType = "Fluyt";
-			shipType2 = "Caravel";
-		}
-		else if (rmGetPlayerCiv(i) == rmGetCivID("Ottomans"))
-		{
-			shipType = "Galleon";
-			shipType2 = "Galley";
-		}
-		else if (rmGetPlayerCiv(i) == rmGetCivID("DEMaltese"))
-		{
-			shipType = "Galleon";
-			shipType2 = "DeOrderGalley";
-		}
-		else if (rmGetPlayerCiv(i) == rmGetCivID("Chinese"))
-		{
-			shipType = "ypFuchuan";
-			shipType2 = "ypWarJunk";
-		}
-		else if (rmGetPlayerCiv(i) == rmGetCivID("Japanese"))
-		{
-			shipType = "ypAtakebune";
-			shipType2 = "ypFune";
-		}
-		else if (rmGetPlayerCiv(i) == rmGetCivID("DEAmericans"))
-		{
-			shipType = "deSteamer";
-			shipType2 = "deSloop";
-		}
-		else if (rmGetPlayerCiv(i) ==  rmGetCivID("DEMexicans"))
-		{
-			shipType = "Galleon";
-			shipType2 = "deSloop";
-		}
-		else if (rmGetPlayerCiv(i) == rmGetCivID("DEEthiopians") || rmGetPlayerCiv(i) ==  rmGetCivID("DEHausa"))
-		{
-			shipType = "deBattleCanoe";
-			shipType2 = "deBattleCanoe";
-		}
-		else if ( rmGetPlayerCiv(i) ==  rmGetCivID("XPIroquois") || rmGetPlayerCiv(i) ==  rmGetCivID("XPSioux"))
-		{
-			shipType = "Privateer";
-			shipType2 = "Privateer";
-		}
-		else if ( rmGetPlayerCiv(i) == rmGetCivID("XPAztec"))
-		{
-			shipType = "xpTlalocCanoe";
-			shipType2 = "xpTlalocCanoe";
-		}
-		else if ( rmGetPlayerCiv(i) == rmGetCivID("DEInca"))
-		{
-			shipType = "deChinchaRaft";
-			shipType2 = "deChinchaRaft";
-		}
-		else
-		{
-			shipType = "Galleon";
-			shipType2 = "Caravel";
-		}*/
 
         rmPlaceObjectDefAtLoc(colonyShipID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 
@@ -868,8 +806,6 @@ void main(void)
 		rmAddObjectDefItem(catamaranID, "CoveredWagon", 1, 0.0);
 		if (rmGetPlayerCiv(i) == rmGetCivID("Japanese"))
 			rmAddObjectDefItem(catamaranID, "ypGroveWagon", 1, 0.0);
-		if (rmGetPlayerCiv(i) == rmGetCivID("Dutch"))
-			rmAddObjectDefItem(catamaranID, "ypBankWagon", 1, 0.0);
 		rmAddObjectDefItem(catamaranID, "zpNatConvictLabourer", 1, 0.0);
 		rmAddObjectDefItem(catamaranID, "zpNatConvictLabourer", 1, 0.0);
 		rmAddObjectDefItem(catamaranID, "zpNatConvictLabourer", 1, 0.0);
@@ -932,18 +868,18 @@ void main(void)
 
 	// Scattered MINES
 	int goldID = rmCreateObjectDef("random gold");
-	rmAddObjectDefItem(goldID, "mineCopper", 1, 0);
+	rmAddObjectDefItem(goldID, "mineGold", 1, 0);
 	rmSetObjectDefMinDistance(goldID, 0.0);
 	rmSetObjectDefMaxDistance(goldID, 50);
 	rmAddObjectDefConstraint(goldID, avoidTC);
 	rmAddObjectDefConstraint(goldID, avoidCW);
 	rmAddObjectDefConstraint(goldID, avoidAll);
 	rmAddObjectDefConstraint(goldID, avoidCoin);
+	rmAddObjectDefConstraint(goldID, avoidGold);
 	rmAddObjectDefConstraint(goldID, avoidWater8);
     rmAddObjectDefConstraint(goldID, shortAvoidImpassableLand);
 	rmAddObjectDefConstraint(goldID, smallMesaShortConstraint);
 	rmPlaceObjectDefInArea(goldID, 0, coastMountains, cNumberNonGaiaPlayers*5);
-	rmPlaceObjectDefInArea(goldID, 0, northIslandID, rmRandInt(1, 2));
 
 	int goldID2 = rmCreateObjectDef("random gold 2");
 	rmAddObjectDefItem(goldID2, "mineCopper", 1, 0);
@@ -951,10 +887,12 @@ void main(void)
 	rmSetObjectDefMaxDistance(goldID2, 50);
 	rmAddObjectDefConstraint(goldID2, avoidWater8);
 	rmAddObjectDefConstraint(goldID2, avoidCoin);
+	rmAddObjectDefConstraint(goldID2, avoidGold);
     rmAddObjectDefConstraint(goldID2, shortAvoidImpassableLand);
 	rmPlaceObjectDefAtLoc(goldID2, 0, 0.35, 0.35);
 	rmPlaceObjectDefAtLoc(goldID2, 0, 0.45, 0.8);
 	rmPlaceObjectDefAtLoc(goldID2, 0, 0.8, 0.45);
+	rmPlaceObjectDefInArea(goldID2, 0, northIslandID, rmRandInt(1, 2));
 
 	// Scattered BERRRIES		
 	int berriesID=rmCreateObjectDef("random berries");
@@ -1145,6 +1083,39 @@ void main(void)
 		scientist2ID = "100";
 
 	}
+
+	rmCreateTrigger("Tasmania_Counter");
+	rmCreateTrigger("Tasmania_Normalize");
+
+	rmSwitchToTrigger(rmTriggerID("Tasmania_Counter"));
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpTasmaniaStart"); // Blocks ship attack
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmAddTriggerEffect("Counter:Add Timer");
+	rmSetTriggerEffectParam("Name","TasmaniaCounter");
+	rmSetTriggerEffectParamInt("Start", 120);
+	rmSetTriggerEffectParamInt("Stop",0);
+	rmSetTriggerEffectParam("Msg", "Ship attack enabled in");
+	rmSetTriggerEffectParamInt("Event", rmTriggerID("Tasmania_Normalize"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Tasmania_Normalize"));
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpTasmaniaPlay"); // Normalize ships
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 
 
 	// Starting techs

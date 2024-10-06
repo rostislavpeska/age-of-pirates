@@ -16288,6 +16288,42 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpTasmaniaStart" type="Normal">
+    <dbid>40752</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="BroadsideAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">Privateer</target>
+      </effect>
+      <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">Privateer</target>
+      </effect>
+      <effect type="Data" action="BuildingAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpWakaCanoe</target>
+      </effect>
+      <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpWakaCanoe</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTasmaniaPlay" type="Normal">
+    <dbid>40753</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="BroadsideAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">Privateer</target>
+      </effect>
+      <effect type="Data" action="RangedAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">Privateer</target>
+      </effect>
+      <effect type="Data" action="BuildingAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpWakaCanoe</target>
+      </effect>
+      <effect type="Data" action="RangedAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpWakaCanoe</target>
+      </effect>
+    </effects>
+  </tech>
 
 
 

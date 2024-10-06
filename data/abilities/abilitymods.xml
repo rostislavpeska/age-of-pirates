@@ -194,4 +194,11 @@
   <zpnautilustransport>
     <ability>zpPowerShunt<allowwhilestealthed>true</allowwhilestealthed><rof>60</rof></ability>
   </zpnautilustransport>
+
+  <zpwokoudiver>
+    <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
+  </zpwokoudiver>
+  <zpwokoudiverland>
+    <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
+  </zpwokoudiverland>
 </abilitymods>

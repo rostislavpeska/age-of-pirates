@@ -1,5 +1,5 @@
 
-// New Zealand
+// Torres Strait
 // 06/2024
 
 include "mercenaries.xs";
@@ -1104,8 +1104,9 @@ rmSetObjectDefMinDistance(randomTreeID, 0.0);
 rmSetObjectDefMaxDistance(randomTreeID, rmXFractionToMeters(0.45));
 rmAddObjectDefConstraint(randomTreeID, shortAvoidImpassableLand);
 rmAddObjectDefConstraint(randomTreeID, avoidAll); 
+rmAddObjectDefConstraint(randomTreeID, avoidWater10); 
 
-rmPlaceObjectDefAtLoc(randomTreeID, 0, 0.5, 0.5, 50*cNumberNonGaiaPlayers);
+rmPlaceObjectDefAtLoc(randomTreeID, 0, 0.5, 0.5, 40*cNumberNonGaiaPlayers);
 
 //Water revealers
 
@@ -1146,7 +1147,7 @@ rmSetTriggerEffectParamFloat("FadeTime",5.0);
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Storm_Strike"));
 rmAddTriggerEffect("Render Rain");
-rmSetTriggerEffectParamInt("Percent", 100);
+rmSetTriggerEffectParamInt("Percent", 1.0);
 rmAddTriggerEffect("Counter:Add Timer");
 rmSetTriggerEffectParam("Name","StormCounter");
 rmSetTriggerEffectParamInt("Start", stormLenght);
@@ -1166,7 +1167,7 @@ rmSetTriggerEffectParamInt("EventID", rmTriggerID("Storm_Strike"));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Storm_Start"));
 rmAddTriggerEffect("Render Rain");
-rmSetTriggerEffectParamInt("Percent", 30);
+rmSetTriggerEffectParamInt("Percent", 0.3);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);

@@ -1807,7 +1807,8 @@
       <string _locid="301806">Signifficantly increases Diver's attack and hitpoints.</string>
       <string _locid="301807" symbol="cStringNuggeteuSpawnBoar" comment="1 - amount, 2 - resource">Hidden diver equipped with harpoon. Can gather underwater resources.</string>
       <string _locid="301808" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued 1 Diver.</string>
-      <string _locid="301809">ZP TEST Pearl Hunter</string>
+      <string _locid="301809">ZP TEST Pearl Hunter Water</string>
+      <string _locid="301810">ZP TEST Pearl Hunter Land</string>
 
 
       <!-- ======================================== -->
