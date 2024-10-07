@@ -1,7 +1,7 @@
 <protounitsounddef>
   <protounit name="zpDiver">
     <soundtype name="Select">
-      <soundset name="IndianNanibSelect">
+      <soundset name="Diver_Select">
       </soundset>
     </soundtype>
     <soundtype name="Grunt">
@@ -19,39 +19,39 @@
     <soundtype name="Acknowledge">
       <targetlogic>
         <choice name="default">
-          <soundset name="IndianNanibAcknowledge">
+          <soundset name="Diver_Acknowledge">
           </soundset>
         </choice>
         <choice name="enemy">
-          <soundset name="IndianNanibAttack">
+          <soundset name="Diver_Attack">
           </soundset>
         </choice>
         <choice name="build">
-          <soundset name="IndianNanibAcknowledge">
+          <soundset name="Diver_Acknowledge">
           </soundset>
         </choice>
         <choice name="Huntable">
-          <soundset name="IndianNanibAcknowledge">
+          <soundset name="Diver_Acknowledge">
           </soundset>
         </choice>
         <choice name="Tree">
-          <soundset name="IndianNanibAcknowledge">
+          <soundset name="Diver_Acknowledge">
           </soundset>
         </choice>
         <choice name="AbstractMine">
-          <soundset name="IndianNanibAcknowledge">
+          <soundset name="Diver_Acknowledge">
           </soundset>
         </choice>
         <choice name="AbstractFarm">
-          <soundset name="IndianNanibAcknowledge">
+          <soundset name="Diver_Acknowledge">
           </soundset>
         </choice>
         <choice name="AbstractResourceCrate">
-          <soundset name="IndianNanibAcknowledge">
+          <soundset name="Diver_Acknowledge">
           </soundset>
         </choice>
         <choice name="AbstractFruit">
-          <soundset name="IndianNanibAcknowledge">
+          <soundset name="Diver_Acknowledge">
           </soundset>
         </choice>
       </targetlogic>

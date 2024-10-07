@@ -35160,6 +35160,45 @@
 
   <!--TEST-->
 
+  <unit id="" name="zpVolcanoFloor">
+    <dbid></dbid>
+    <displaynameid>29937</displaynameid>
+    <editornameid>301039</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <rollovertextid>30051</rollovertextid>
+    <shortrollovertextid>30052</shortrollovertextid>
+    <animfile>terrain\decal\volcano_floor.xml</animfile>
+    <portraiticon>resources\art\trade_route\trade_route_1_portrait.png</portraiticon>
+    <los>0.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>AbstractTradeRouteBuilding</unittype>
+    <flag>FlattenGround</flag>
+    <flag>NoUnitAI</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>ForceToGaia</flag>
+    <flag>Invulnerable</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>AlwaysShowAsSocket</flag>
+    <flag>Tracked</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>PlaceAnywhere</flag>   
+  </unit>
+
   <unit id="" name="zpWokouDiver">
     <dbid></dbid>
     <displaynameid>301699</displaynameid>

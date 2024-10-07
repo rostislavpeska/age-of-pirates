@@ -1,0 +1,24 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_emissive_advanced">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="terrain\materials\lava\lavaflow_basecolor">
+      </texture>
+      <texture name="Normals" override="terrain\materials\lava\lavaflow_Normals">
+      </texture>
+      <texture name="Masks" override="terrain\materials\lava\lavaflow_Masks">
+      </texture>
+      <texture name="Emissive" override="terrain\materials\lava\lavaflow_Emissive">
+      </texture>
+      <float name="EmissiveIntensity" override="45.0000">
+      </float>
+      <vector4 name="EmissiveColor" override="1.000, 0.000, 0.000, 0.000">
+      </vector4>
+      <float name="Lift Metallic" override="1.0000">
+      </float>
+      <float name="AO Intensity" override="1.4440">
+      </float>
+    </parameters>
+  </submaterial>
+</material>

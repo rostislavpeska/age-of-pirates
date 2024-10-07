@@ -1,0 +1,4 @@
+<animfile>
+  <component>aztec map<notshadowcaster></notshadowcaster><assetreference type="GrannyModel"><file>terrain\decal\volcano_floor</file></assetreference></component>
+  <anim>Idle<component>aztec map</component></anim>
+</animfile>

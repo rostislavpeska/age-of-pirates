@@ -1894,7 +1894,7 @@
     </sound>
     <sound filename="zp_misc\Battlecruiser_Select02.wav" volume="1.0000">
     </sound>
-    <sound filename="zp_misc\Battlecruiser_Select03.wav" volume="1.0000">
+    <sound filename="zp_misc\Battlecruiser_captain_Select02.wav" volume="1.0000">
     </sound>
   </soundset>
   <soundset name="Nemo_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
