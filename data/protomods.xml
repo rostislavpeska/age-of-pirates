@@ -15929,7 +15929,7 @@
     <train row="0" page="1" column="15">zpWakaCanoe</train>
     <train row="0" page="1" column="16">zpCatamaran</train>
     <train row="0" page="1" column="17">zpSubmarine</train>
-    <train row="0" page="0" column="17">zpSubmarineTransport</train>
+    <train row="0" page="1" column="17">zpSubmarineTransport</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>

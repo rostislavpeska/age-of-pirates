@@ -1,19 +1,19 @@
 <protounitsounddef>
   <protounit name="zpNavalmine">
-    <soundtype name="Select">
-      <soundset name="UI_Building_Military">
-      </soundset>
-    </soundtype>
-    <soundtype name="SelectSecondary">
-      <soundset name="UI_Select_Building_Fort">
-      </soundset>
-    </soundtype>
     <soundtype name="Death">
       <soundset name="BuildingDestruction">
       </soundset>
     </soundtype>
     <soundtype name="Creation">
-      <soundset name="UI_Select_Building_Fort">
+      <soundset name="UI_Building_Military">
+      </soundset>
+    </soundtype>
+    <soundtype name="Select">
+      <soundset name="UI_Building_Military">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="Explosion">
       </soundset>
     </soundtype>
   </protounit>
