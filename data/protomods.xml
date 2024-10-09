@@ -12477,7 +12477,7 @@
     <flag>BuildingExtendedDeathAnim</flag>
     <flag>DoNotDamageTrees</flag>
     <flag>UseSharedBuildLimit</flag>
-    <flag>DirectProjectile</flag>
+     <!--<flag>DirectProjectile</flag>-->
     <sharedbuildlimitunittypes>
       <unittype>zpAirship</unittype>
       <unittype>zpAirshipProxy</unittype>
@@ -12972,7 +12972,7 @@
     <flag>BuildingExtendedDeathAnim</flag>
     <flag>DoNotDamageTrees</flag>
     <flag>UseSharedBuildLimit</flag>
-    <flag>DirectProjectile</flag>
+    <!--<flag>DirectProjectile</flag>-->
     <sharedbuildlimitunittypes>
       <unittype>zpAirship</unittype>
       <unittype>zpAirshipAI</unittype>
@@ -25076,7 +25076,7 @@
     <flag>NonCollideable</flag>
     <flag>DestroyProjectile</flag>
     <flag>DontRotateObstruction</flag>
-    <flag>DirectProjectile</flag>
+    <!--<flag>DirectProjectile</flag>-->
     <flag>Invulnerable</flag>
     <flag>InvulnerableIfGaia</flag>
     <flag>NoUnitAI</flag>
