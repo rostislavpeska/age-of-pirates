@@ -12477,7 +12477,7 @@
     <flag>BuildingExtendedDeathAnim</flag>
     <flag>DoNotDamageTrees</flag>
     <flag>UseSharedBuildLimit</flag>
-     <!--<flag>DirectProjectile</flag>-->
+    <!--<flag>DirectProjectile</flag>-->
     <sharedbuildlimitunittypes>
       <unittype>zpAirship</unittype>
       <unittype>zpAirshipProxy</unittype>
