@@ -10953,7 +10953,10 @@
       <effect type="CommandRemove" proto="SaloonOutlawPistol">
         <target type="ProtoUnit">NativeEmbassy</target>
       </effect>
-      <effect type="CommandRemove" proto="zpNatMarksman">
+      <effect type="CommandRemove" proto="zpNatCorsair">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>     
+      <effect type="CommandRemove" proto="zpNatWokouMonk">
         <target type="ProtoUnit">NativeEmbassy</target>
       </effect>     
     </effects>
@@ -10971,9 +10974,12 @@
       <effect type="CommandRemove" proto="SaloonOutlawPistol">
         <target type="ProtoUnit">NativeEmbassy</target>
       </effect>
-      <effect type="CommandRemove" proto="zpNatMarksman">
+      <effect type="CommandRemove" proto="zpNatCorsair">
         <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>     
+      </effect>
+      <effect type="CommandRemove" proto="zpNatWokouMonk">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>    
     </effects>
   </tech>
   <tech name="zpPeruEmbassyNativeHeavyQuechua" type="Normal">
@@ -10989,9 +10995,12 @@
       <effect type="CommandRemove" proto="SaloonOutlawPistol">
         <target type="ProtoUnit">NativeEmbassy</target>
       </effect>
-      <effect type="CommandRemove" proto="zpNatMarksman">
+      <effect type="CommandRemove" proto="zpNatCorsair">
         <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>   
+      </effect>
+      <effect type="CommandRemove" proto="zpNatWokouMonk">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>     
     </effects>
   </tech>
   <tech name="zpNativeWesternVillage" type="Normal">

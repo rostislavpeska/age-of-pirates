@@ -56,10 +56,10 @@ void main(void)
     if (subCiv1 >= 0)
     rmSetSubCiv(1, "NatPirates");
 
-  subCiv2=rmGetCivID("MaoriNatives");
-    rmEchoInfo("subCiv2 is MaoriNatives "+subCiv2);
+  subCiv2=rmGetCivID("zpScientists");
+    rmEchoInfo("subCiv2 is zpScientists "+subCiv2);
     if (subCiv2 >= 0)
-        rmSetSubCiv(2, "MaoriNatives");
+        rmSetSubCiv(2, "zpScientists");
 
 
   subCiv3=rmGetCivID("Korowai");
@@ -167,9 +167,9 @@ void main(void)
 
   int avoidPirates=rmCreateTypeDistanceConstraint("avoid socket pirates", "zpSocketPirates", 25.0);
   int avoidWokou=rmCreateTypeDistanceConstraint("avoid socket wokou", "zpSocketWokou", 25.0);
-  int avoidJesuit=rmCreateTypeDistanceConstraint("avoid socket jesuit", "zpSPCSocketJesuit", 25.0);
+  int avoidJesuit=rmCreateTypeDistanceConstraint("avoid socket jesuit", "zpSocketJesuit", 25.0);
   int avoidKorowai=rmCreateTypeDistanceConstraint("avoid socket korowai", "zpSocketKorowai", 25.0);
-  int avoidMaori=rmCreateTypeDistanceConstraint("avoid socket maori", "zpSocketMaori", 25.0);
+  int avoidMaori=rmCreateTypeDistanceConstraint("avoid socket maori", "zpSocketScientists", 25.0);
   int avoidController=rmCreateTypeDistanceConstraint("stay away from Controller", "zpSPCWaterSpawnPoint", 17.0);
   int avoidControllerFar=rmCreateTypeDistanceConstraint("stay away from Controller Far", "zpSPCWaterSpawnPoint", 60.0);
   int avoidControllerMediumFar=rmCreateTypeDistanceConstraint("stay away from Controller Medium Far", "zpSPCWaterSpawnPoint", 25.0);
@@ -188,6 +188,7 @@ void main(void)
   int avoidWater30 = rmCreateTerrainDistanceConstraint("avoid water 30 long", "Land", false, 30.0);
 	int avoidWater40 = rmCreateTerrainDistanceConstraint("avoid water super long", "Land", false, 40.0);
   int ferryOnShore=rmCreateTerrainMaxDistanceConstraint("ferry v. water", "water", true, 18.0);
+  int ferryOnShore20=rmCreateTerrainMaxDistanceConstraint("ferry v. water 20", "water", true, 20.0);
   int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true, 4.5);
 
   // things
@@ -206,19 +207,28 @@ void main(void)
   int flagEdgeConstraint=rmCreatePieConstraint("flag edge of map", 0.5, 0.5, 0, rmGetMapXSize()-100, 0, 0, 0);
   int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 8.0);
 
-   //Trade Route Contstraints
-   int islandAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("trade route", 15.0);
-   int ObjectAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("object avoid trade route", 7.0);
-   int avoidTradeSockets = rmCreateTypeDistanceConstraint("avoid trade sockets", "sockettraderoute", 30.0);
+  //Trade Route Contstraints
+  int islandAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("trade route", 15.0);
+  int ObjectAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("object avoid trade route", 7.0);
+  int avoidTradeSockets = rmCreateTypeDistanceConstraint("avoid trade sockets", "sockettraderoute", 30.0);
 
 
-   int avoidKOTHshort=rmCreateTypeDistanceConstraint("stay away from Kings Hill short", "ypKingsHill", 8.0);
-   int cliffAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("cliff rade route", 2.0);
-   int avoidHighMountains=rmCreateClassDistanceConstraint("stuff avoids high mountains", classHighMountains, 3.0);
-    int avoidHighMountainsFar=rmCreateClassDistanceConstraint("stuff avoids high mountains far", classHighMountains, 20.0);
+  int avoidKOTHshort=rmCreateTypeDistanceConstraint("stay away from Kings Hill short", "ypKingsHill", 8.0);
+  int cliffAvoidTradeRoute = rmCreateTradeRouteDistanceConstraint("cliff rade route", 2.0);
+  int avoidHighMountains=rmCreateClassDistanceConstraint("stuff avoids high mountains", classHighMountains, 3.0);
+  int avoidHighMountainsFar=rmCreateClassDistanceConstraint("stuff avoids high mountains far", classHighMountains, 20.0);
 
-    int avoidMaoriLong=rmCreateTypeDistanceConstraint("avoid socket maori long", "zpSocketMaori", 85.0);
-    int avoidkorowaiLong=rmCreateTypeDistanceConstraint("avoid socket korowai long", "zpSocketKorowai", 85.0);
+  if (cNumberNonGaiaPlayers <=3 ){
+    int avoidMaoriLong=rmCreateTypeDistanceConstraint("avoid socket maori long", "zpSocketScientists", 65.0);
+    int avoidkorowaiLong=rmCreateTypeDistanceConstraint("avoid socket korowai long", "zpSocketKorowai", 65.0);
+    int avoidJesuitLong=rmCreateTypeDistanceConstraint("avoid socket jesuit long", "zpSocketJesuit", 65.0);
+  }
+
+  else{
+    avoidMaoriLong=rmCreateTypeDistanceConstraint("avoid socket maori long", "zpSocketScientists", 85.0);
+    avoidkorowaiLong=rmCreateTypeDistanceConstraint("avoid socket korowai long", "zpSocketKorowai", 85.0);
+    avoidJesuitLong=rmCreateTypeDistanceConstraint("avoid socket jesuit long", "zpSocketJesuit", 85.0);
+  }
 
 
 
@@ -292,8 +302,14 @@ void main(void)
 
   // Make one big island.  
     int smallIslandID=rmCreateArea("corsair island");
-    rmSetAreaSize(smallIslandID, 0.06, 0.06);
-    rmSetAreaCoherence(smallIslandID, 0.45);
+    if (cNumberNonGaiaPlayers <=3){
+      rmSetAreaSize(smallIslandID, 0.065, 0.065);
+      rmSetAreaCoherence(smallIslandID, 0.7);
+    }
+    else{
+      rmSetAreaSize(smallIslandID, 0.06, 0.06);
+      rmSetAreaCoherence(smallIslandID, 0.45);
+    }
     rmSetAreaBaseHeight(smallIslandID, 2.0);
     rmSetAreaSmoothDistance(smallIslandID, 20);
     rmSetAreaMix(smallIslandID, baseMix);
@@ -318,8 +334,14 @@ void main(void)
 
 
     int smallIsland2ID=rmCreateArea("corsair island2");
-    rmSetAreaSize(smallIsland2ID, 0.06, 0.06);
-    rmSetAreaCoherence(smallIsland2ID, 0.45);
+    if (cNumberNonGaiaPlayers <=3){
+      rmSetAreaSize(smallIsland2ID, 0.065, 0.065);
+      rmSetAreaCoherence(smallIsland2ID, 0.7);
+    }
+    else{
+      rmSetAreaSize(smallIsland2ID, 0.06, 0.06);
+      rmSetAreaCoherence(smallIsland2ID, 0.45);
+    }
     rmSetAreaBaseHeight(smallIsland2ID, 2.0);
     rmSetAreaSmoothDistance(smallIsland2ID, 20);
     rmSetAreaMix(smallIsland2ID, paintMix);
@@ -557,7 +579,7 @@ rmSetObjectDefMaxDistance(controllerID1, 30.0);
 rmAddObjectDefConstraint(controllerID1, avoidImpassableLand);
 rmAddObjectDefConstraint(controllerID1, ferryOnShore); 
 rmAddObjectDefConstraint(controllerID1, avoidEurope); 
-
+rmAddObjectDefConstraint(controllerID1, avoidAtol); 
 
 int controllerID2 = rmCreateObjectDef("Controler 2");
 rmAddObjectDefItem(controllerID2, "zpSPCWaterSpawnPoint", 1, 0.0);
@@ -566,6 +588,7 @@ rmSetObjectDefMaxDistance(controllerID2, 30.0);
 rmAddObjectDefConstraint(controllerID2, avoidImpassableLand);
 rmAddObjectDefConstraint(controllerID2, ferryOnShore); 
 rmAddObjectDefConstraint(controllerID2, avoidEurope); 
+rmAddObjectDefConstraint(controllerID2, avoidAtol); 
 
 int controllerID3 = rmCreateObjectDef("Controler 3");
 rmAddObjectDefItem(controllerID3, "zpSPCWaterSpawnPoint", 1, 0.0);
@@ -574,6 +597,7 @@ rmSetObjectDefMaxDistance(controllerID3, 30.0);
 rmAddObjectDefConstraint(controllerID3, avoidImpassableLand);
 rmAddObjectDefConstraint(controllerID3, ferryOnShore); 
 rmAddObjectDefConstraint(controllerID3, avoidEurope); 
+rmAddObjectDefConstraint(controllerID3, avoidAtol); 
 
 int controllerID4 = rmCreateObjectDef("Controler 4");
 rmAddObjectDefItem(controllerID4, "zpSPCWaterSpawnPoint", 1, 0.0);
@@ -582,17 +606,28 @@ rmSetObjectDefMaxDistance(controllerID4, 30.0);
 rmAddObjectDefConstraint(controllerID4, avoidImpassableLand);
 rmAddObjectDefConstraint(controllerID4, ferryOnShore);
 rmAddObjectDefConstraint(controllerID4, avoidEurope); 
+rmAddObjectDefConstraint(controllerID4, avoidAtol); 
+
+int controllerID5 = rmCreateObjectDef("Controler 5");
+rmAddObjectDefItem(controllerID5, "zpSPCWaterSpawnPoint", 1, 0.0);
+rmSetObjectDefMinDistance(controllerID5, 0.0);
+rmSetObjectDefMaxDistance(controllerID5, 30.0);
+rmAddObjectDefConstraint(controllerID5, avoidImpassableLand);
+rmAddObjectDefConstraint(controllerID5, ferryOnShore);
+rmAddObjectDefConstraint(controllerID5, avoidAtol); 
 
       
-rmPlaceObjectDefAtLoc(controllerID1, 0, 0.3, 0.2);
-rmPlaceObjectDefAtLoc(controllerID2, 0, 0.7, 0.2);
-rmPlaceObjectDefAtLoc(controllerID3, 0, 0.3, 0.8);
-rmPlaceObjectDefAtLoc(controllerID4, 0, 0.7, 0.8);
+rmPlaceObjectDefAtLoc(controllerID1, 0, 0.3, 0.3);
+rmPlaceObjectDefAtLoc(controllerID2, 0, 0.7, 0.3);
+rmPlaceObjectDefAtLoc(controllerID3, 0, 0.3, 0.7);
+rmPlaceObjectDefAtLoc(controllerID4, 0, 0.7, 0.7);
+rmPlaceObjectDefAtLoc(controllerID5, 0, 0.5, 0.58);
 
 vector ControllerLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID1, 0));
 vector ControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID2, 0));
 vector ControllerLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID3, 0));
 vector ControllerLoc4 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID4, 0));
+vector ControllerLoc5 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID5, 0));
 
       // Pirate Village 1
 
@@ -708,6 +743,36 @@ vector ControllerLoc4 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID4,
       rmPlaceGroupingAtLoc(pirateportID4, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage4a)), rmZMetersToFraction(xsVectorGetZ(closeToVillage4a)));
       
       rmClearClosestPointConstraints();
+
+      // Scientist Village
+
+      int piratesVillageID5 = -1;
+      piratesVillageID5 = rmCreateGrouping("pirate city 5", "Scientist_Lab05");
+      rmSetGroupingMinDistance(piratesVillageID5, 0);
+      rmSetGroupingMaxDistance(piratesVillageID5, 25);
+      rmAddGroupingConstraint(piratesVillageID5, ferryOnShore20);
+
+      rmPlaceGroupingAtLoc(piratesVillageID5, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc5)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc5)), 1);
+
+      int piratewaterflagID5 = rmCreateObjectDef("pirate water flag 5");
+      rmAddObjectDefItem(piratewaterflagID5, "zpNativeWaterSpawnFlag1", 1, 1.0);
+      rmAddClosestPointConstraint(flagLandShort);
+      rmAddClosestPointConstraint(ObjectAvoidTradeRoute);
+
+      vector closeToVillage5 = rmFindClosestPointVector(ControllerLoc5, rmXFractionToMeters(1.0));
+      rmPlaceObjectDefAtLoc(piratewaterflagID5, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage5)), rmZMetersToFraction(xsVectorGetZ(closeToVillage5)));
+
+      rmClearClosestPointConstraints();
+
+      int pirateportID5 = -1;
+      pirateportID5 = rmCreateGrouping("pirate port 5", "Platform_Universal");
+      rmAddClosestPointConstraint(portOnShore);
+      rmAddClosestPointConstraint(ObjectAvoidTradeRoute);
+
+      vector closeToVillage5a = rmFindClosestPointVector(ControllerLoc5, rmXFractionToMeters(1.0));
+      rmPlaceGroupingAtLoc(pirateportID5, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage5a)), rmZMetersToFraction(xsVectorGetZ(closeToVillage5a)));
+
+      rmClearClosestPointConstraints();
 	
 
 
@@ -718,16 +783,28 @@ vector ControllerLoc4 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID4,
 
 int lavaflowID = rmCreateTradeRoute();
 rmSetObjectDefTradeRouteID(lavaflowID);
-rmAddTradeRouteWaypoint(lavaflowID, 0.5, 0.93);
-rmAddTradeRouteWaypoint(lavaflowID, 0.5+rmXTilesToFraction(12), 0.93);
-
+if (cNumberNonGaiaPlayers == 4){
+  rmAddTradeRouteWaypoint(lavaflowID, 0.5, 0.925);
+  rmAddTradeRouteWaypoint(lavaflowID, 0.5+rmXTilesToFraction(10), 0.925);
+}
+else{
+  rmAddTradeRouteWaypoint(lavaflowID, 0.5, 0.93);
+  rmAddTradeRouteWaypoint(lavaflowID, 0.5+rmXTilesToFraction(10), 0.93);
+}
 bool placedLavaflowID = rmBuildTradeRoute(lavaflowID, "lava_flow");
 
 
 int lavaflowID3 = rmCreateTradeRoute();
 rmSetObjectDefTradeRouteID(lavaflowID3);
-rmAddTradeRouteWaypoint(lavaflowID3, 0.5, 0.93);
-rmAddTradeRouteWaypoint(lavaflowID3, 0.5-rmXTilesToFraction(12), 0.93);
+
+if (cNumberNonGaiaPlayers == 4){
+  rmAddTradeRouteWaypoint(lavaflowID3, 0.5, 0.925);
+rmAddTradeRouteWaypoint(lavaflowID3, 0.5-rmXTilesToFraction(10), 0.925);
+}
+else{
+  rmAddTradeRouteWaypoint(lavaflowID3, 0.5, 0.93);
+rmAddTradeRouteWaypoint(lavaflowID3, 0.5-rmXTilesToFraction(10), 0.93);
+}
 
 bool placedLavaflowID3 = rmBuildTradeRoute(lavaflowID3, "lava_flow");
 
@@ -738,11 +815,14 @@ bool placedLavaflowID3 = rmBuildTradeRoute(lavaflowID3, "lava_flow");
 // Level 2
 
 int basecliffID2 = rmCreateArea("base cliff2");
-rmSetAreaSize(basecliffID2, rmAreaTilesToFraction(1200.0), rmAreaTilesToFraction(1200.0));
+if (cNumberNonGaiaPlayers <=3)
+  rmSetAreaSize(basecliffID2, rmAreaTilesToFraction(1000.0), rmAreaTilesToFraction(1000.0));
+else
+  rmSetAreaSize(basecliffID2, rmAreaTilesToFraction(1200.0), rmAreaTilesToFraction(1200.0));
 rmSetAreaWarnFailure(basecliffID2, false);
 rmSetAreaObeyWorldCircleConstraint(basecliffID2, false);		
 rmSetAreaElevationVariation(basecliffID2, 4);
-rmSetAreaCoherence(basecliffID2, .7);
+rmSetAreaCoherence(basecliffID2, .8);
 rmSetAreaHeightBlend(basecliffID2, 0);
 rmSetAreaCliffType(basecliffID2, "ZP Melanesia Medium");
 rmSetAreaTerrainType(basecliffID2, "lava\volcano_borneo");
@@ -1065,7 +1145,7 @@ rmBuildArea(fujiDipTerrain);
 int lavaflowID2 = rmCreateTradeRoute();
 rmSetObjectDefTradeRouteID(lavaflowID2);
 rmAddTradeRouteWaypoint(lavaflowID2, 0.5, 0.07);
-rmAddTradeRouteWaypoint(lavaflowID2, 0.5+rmXTilesToFraction(12), 0.07);
+rmAddTradeRouteWaypoint(lavaflowID2, 0.5+rmXTilesToFraction(10), 0.07);
 
 bool placedLavaflowID2 = rmBuildTradeRoute(lavaflowID2, "lava_flow");
 
@@ -1073,7 +1153,7 @@ bool placedLavaflowID2 = rmBuildTradeRoute(lavaflowID2, "lava_flow");
 int lavaflowID4 = rmCreateTradeRoute();
 rmSetObjectDefTradeRouteID(lavaflowID4);
 rmAddTradeRouteWaypoint(lavaflowID4, 0.5, 0.07);
-rmAddTradeRouteWaypoint(lavaflowID4, 0.5-rmXTilesToFraction(12), 0.07);
+rmAddTradeRouteWaypoint(lavaflowID4, 0.5-rmXTilesToFraction(10), 0.07);
 
 bool placedLavaflowID4 = rmBuildTradeRoute(lavaflowID4, "lava_flow");
 
@@ -1081,11 +1161,14 @@ bool placedLavaflowID4 = rmBuildTradeRoute(lavaflowID4, "lava_flow");
 // Level 2
 
 int basecliffSoutID2 = rmCreateArea("base cliff south 2");
-rmSetAreaSize(basecliffSoutID2, rmAreaTilesToFraction(1200.0), rmAreaTilesToFraction(1200.0));
+if (cNumberNonGaiaPlayers <=3)
+  rmSetAreaSize(basecliffSoutID2, rmAreaTilesToFraction(1000.0), rmAreaTilesToFraction(1000.0));
+else
+  rmSetAreaSize(basecliffSoutID2, rmAreaTilesToFraction(1200.0), rmAreaTilesToFraction(1200.0));
 rmSetAreaWarnFailure(basecliffSoutID2, false);
 rmSetAreaObeyWorldCircleConstraint(basecliffSoutID2, false);		
 rmSetAreaElevationVariation(basecliffSoutID2, 4);
-rmSetAreaCoherence(basecliffSoutID2, .7);
+rmSetAreaCoherence(basecliffSoutID2, .8);
 rmSetAreaHeightBlend(basecliffSoutID2, 0);
 rmSetAreaCliffType(basecliffSoutID2, "ZP Melanesia Medium");
 rmSetAreaTerrainType(basecliffSoutID2, "lava\volcano_borneo");
@@ -1571,7 +1654,7 @@ if(rmGetIsKOTH()) {
   
 	// ADDITIONAL NATIVES
 
-  int maori2VillageID = -1;
+  /*int maori2VillageID = -1;
   maori2VillageID = rmCreateGrouping("maori2 city", "maori_tropic_01");
   rmAddGroupingConstraint(maori2VillageID, avoidTCLong);
   rmAddGroupingConstraint(maori2VillageID, avoidImpassableLand);
@@ -1587,27 +1670,29 @@ if(rmGetIsKOTH()) {
   rmAddGroupingConstraint(maori4VillageID, avoidMaoriLong);
   rmAddGroupingConstraint(maori4VillageID, avoidHighMountainsFar);
   rmAddGroupingConstraint(maori4VillageID, avoidWater20);
-  rmPlaceGroupingInArea(maori4VillageID, 0, smallIsland2ID, 1);
+  rmPlaceGroupingInArea(maori4VillageID, 0, smallIsland2ID, 1);*/
 
 
   int korowai2VillageID = -1;
-  int korowai2VillageType = rmRandInt(1,2);
+  int korowai2VillageType = rmRandInt(1,5);
   korowai2VillageID = rmCreateGrouping("korowai2 city", "korowai_village_0"+korowai2VillageType);
   rmAddGroupingConstraint(korowai2VillageID, avoidTCLong);
   rmAddGroupingConstraint(korowai2VillageID, avoidImpassableLand);
   rmAddGroupingConstraint(korowai2VillageID, avoidkorowaiLong);
   rmAddGroupingConstraint(korowai2VillageID, avoidHighMountainsFar);
-  rmAddGroupingConstraint(korowai2VillageID, avoidWater20);
+  if (cNumberNonGaiaPlayers>=4)
+    rmAddGroupingConstraint(korowai2VillageID, avoidWater20);
   rmPlaceGroupingInArea(korowai2VillageID, 0, smallIslandID, 1);
 
   int korowai4VillageID = -1;
-  int korowai4VillageType = rmRandInt(1,2);
+  int korowai4VillageType = rmRandInt(1,5);
   korowai4VillageID = rmCreateGrouping("korowai4 city", "korowai_village_0"+korowai4VillageType);
   rmAddGroupingConstraint(korowai4VillageID, avoidTCLong);
   rmAddGroupingConstraint(korowai4VillageID, avoidImpassableLand);
   rmAddGroupingConstraint(korowai4VillageID, avoidkorowaiLong);
   rmAddGroupingConstraint(korowai4VillageID, avoidHighMountainsFar);
-  rmAddGroupingConstraint(korowai4VillageID, avoidWater20);
+  if (cNumberNonGaiaPlayers>=4)
+    rmAddGroupingConstraint(korowai4VillageID, avoidWater20);
   rmPlaceGroupingInArea(korowai4VillageID, 0, smallIslandID, 1);
 
 
@@ -1617,8 +1702,10 @@ if(rmGetIsKOTH()) {
   rmAddGroupingConstraint(jesuit2VillageID, avoidTCLong);
   rmAddGroupingConstraint(jesuit2VillageID, avoidImpassableLand);
   rmAddGroupingConstraint(jesuit2VillageID, avoidHighMountainsFar);
-  rmAddGroupingConstraint(jesuit2VillageID, avoidWater20);
-  rmPlaceGroupingInArea(jesuit2VillageID, 0, smallIsland3ID, 1);
+  rmAddGroupingConstraint(jesuit2VillageID, avoidJesuitLong);
+  if (cNumberNonGaiaPlayers>=4)
+    rmAddGroupingConstraint(jesuit2VillageID, avoidWater20);
+  rmPlaceGroupingInArea(jesuit2VillageID, 0, smallIsland2ID, 1);
 
   int jesuit4VillageID = -1;
   int jesuit4VillageType = rmRandInt(1,3);
@@ -1626,17 +1713,19 @@ if(rmGetIsKOTH()) {
   rmAddGroupingConstraint(jesuit4VillageID, avoidTCLong);
   rmAddGroupingConstraint(jesuit4VillageID, avoidImpassableLand);
   rmAddGroupingConstraint(jesuit4VillageID, avoidHighMountainsFar);
-  rmAddGroupingConstraint(jesuit4VillageID, avoidWater20);
-  rmPlaceGroupingInArea(jesuit4VillageID, 0, playerIsland5ID, 1);
+  if (cNumberNonGaiaPlayers>=4)
+    rmAddGroupingConstraint(jesuit4VillageID, avoidWater20);
+  rmAddGroupingConstraint(jesuit4VillageID, avoidJesuitLong);
+  rmPlaceGroupingInArea(jesuit4VillageID, 0, smallIsland2ID, 1);
 
-  int jesuit1VillageID = -1;
+  /*int jesuit1VillageID = -1;
   int jesuit1VillageType = rmRandInt(1,3);
   jesuit1VillageID = rmCreateGrouping("jesuit1 city", "Jesuit_Cathedral_Tropic_0"+jesuit1VillageType);
   rmAddGroupingConstraint(jesuit1VillageID, avoidTCLong);
   rmAddGroupingConstraint(jesuit1VillageID, avoidImpassableLand);
   rmAddGroupingConstraint(jesuit1VillageID, avoidHighMountainsFar);
   rmAddGroupingConstraint(jesuit1VillageID, avoidWater20);
-  rmPlaceGroupingInArea(jesuit1VillageID, 0, playerIsland6ID, 1);
+  rmPlaceGroupingInArea(jesuit1VillageID, 0, playerIsland6ID, 1);*/
 
 
 
@@ -1706,6 +1795,11 @@ if(rmGetIsKOTH()) {
 	// *********** Place Home City Water Spawn Flag ***************************************************
   
   rmClearClosestPointConstraints();
+
+  // Fake Frouping to fix the auto-grouping TC bug
+  int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
+  rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+  rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.4, 0.4);
 
 	for(i=1; <cNumberPlayers) {
 
@@ -2108,17 +2202,18 @@ int eruptionBreak3 = rmRandInt(gapMin,gapMax);
 int eruptionBreak4 = rmRandInt(gapMin,gapMax);
 int eruptionBreak5 = rmRandInt(gapMin,gapMax);
 
-string volcanoID = "270";
-string volcanoID2 = "316";
+string volcanoID = "360";
+string volcanoID2 = "406";
 string pirate1Socket = "5";
 string pirate2Socket = "41";
 string pirate1ID = "8";
 string pirate2ID = "65";
 string wokou1ID = "99";
 string wokou2ID = "113";
+string scientistsID = "163";
 
-string port1ID = "350";
-string port2ID = "400";
+string port1ID = "440";
+string port2ID = "490";
 
 
 
@@ -3020,6 +3115,10 @@ rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",i);
 rmSetTriggerEffectParam("TechID","cTechzpOceaniaMercenaries"); // Mercenary
 rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",i);
+rmSetTriggerEffectParam("TechID","cTechzpNativeHeavyMap"); // Native Embassy Techs
+rmSetTriggerEffectParamInt("Status",2);
 }
 for(i=0; <= cNumberNonGaiaPlayers) {
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -3223,6 +3322,33 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(true);
 }
 
+for (k=1; <= cNumberNonGaiaPlayers) {
+rmCreateTrigger("Activate Renegades"+k);
+rmAddTriggerCondition("ZP Tech Researching (XS)");
+rmSetTriggerConditionParam("TechID","cTechzpPickScientist"); //operator
+rmSetTriggerConditionParamInt("PlayerID",k);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffScientists"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Pick Consulate Tech");
+rmSetTriggerEffectParamInt("Player",k);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(true);
+}
+
 
 // Specific for human players
 
@@ -3245,6 +3371,8 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Wokou"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Renegades"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
@@ -4201,6 +4329,281 @@ if (wokouCaptain==3)
     rmSetTriggerEffectParam("TechID","cTechzpConsulateWokouSwallow"); //operator
     rmSetTriggerEffectParamInt("Status",2);
 }
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+}
+
+
+// Submarine Training
+
+for (k=1; <= cNumberNonGaiaPlayers) {
+rmCreateTrigger("TrainSubmarine1ON Plr"+k);
+rmCreateTrigger("TrainSubmarine1OFF Plr"+k);
+rmCreateTrigger("TrainSubmarine1TIME Plr"+k);
+
+rmSwitchToTrigger(rmTriggerID("TrainSubmarine1ON_Plr"+k));
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",scientistsID); // Unique Object ID Village 1
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("UnitType","zpSubmarineProxy");
+rmSetTriggerConditionParamInt("Dist",35);
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpTrainSubmarine1"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainSubmarine1OFF_Plr"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainSubmarine1TIME_Plr"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("TrainSubmarine1OFF_Plr"+k));
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamInt("Param1",1200);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainSubmarine1ON_Plr"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("TrainSubmarine1TIME_Plr"+k));
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpReduceSubmarineBuildLimit"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpTrainSubmarine1"); //operator
+rmSetTriggerEffectParamInt("Status",0);
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+}
+
+// Unique ship Training
+
+for (k=1; <= cNumberNonGaiaPlayers) {
+rmCreateTrigger("Steamer1TIMEPlr"+k);
+
+rmCreateTrigger("SteamerTrain1ONPlr"+k);
+rmCreateTrigger("SteamerTrain1OFFPlr"+k);
+
+
+// Build limit reducer
+rmSwitchToTrigger(rmTriggerID("Steamer1TIMEPlr"+k));
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpReduceSteamerBuildLimit"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+// Steamer 1
+rmSwitchToTrigger(rmTriggerID("SteamerTrain1ONPlr"+k));
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",scientistsID); // Unique Object ID Village 1
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("UnitType","zpWokouSteamerProxy");
+rmSetTriggerConditionParamInt("Dist",35);
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpTrainWokouSteamer1"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Steamer1TIMEPlr"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("SteamerTrain1OFFPlr"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("SteamerTrain1OFFPlr"+k));
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamInt("Param1",1200);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("SteamerTrain1ONPlr"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+  
+
+}
+
+// Nautilus Training
+
+for (k=1; <= cNumberNonGaiaPlayers) {
+rmCreateTrigger("Nautilus1TIMEPlr"+k);
+
+rmCreateTrigger("Nautilus1ONPlr"+k);
+rmCreateTrigger("Nautilus1OFFPlr"+k);
+
+// Build limit reducer 1
+rmSwitchToTrigger(rmTriggerID("Nautilus1TIMEPlr"+k));
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",200);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpReduceNautilusBuildLimit"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+// Nautilus 1
+rmSwitchToTrigger(rmTriggerID("Nautilus1ONPlr"+k));
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",scientistsID); // Unique Object ID Village 1
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("UnitType","zpNautilusProxy");
+rmSetTriggerConditionParamInt("Dist",35);
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpTrainNautilus1"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Nautilus1TIMEPlr"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Nautilus1OFFPlr"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("Nautilus1OFFPlr"+k));
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamInt("Param1",1200);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Nautilus1ONPlr"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+}
+
+// Renegade trading post activation
+
+for (k=1; <= cNumberNonGaiaPlayers) {
+rmCreateTrigger("Renegades1on Player"+k);
+rmCreateTrigger("Renegades1off Player"+k);
+
+rmSwitchToTrigger(rmTriggerID("Renegades1on_Player"+k));
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",scientistsID); // Unique Object ID Village 1
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParamInt("Dist",35);
+rmSetTriggerConditionParam("UnitType","TradingPost");
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamFloat("Count",1);
+rmAddTriggerEffect("Convert Units in Area");
+rmSetTriggerEffectParam("SrcObject",scientistsID); // Unique Object ID Village 1
+rmSetTriggerEffectParamInt("SrcPlayer",0);
+rmSetTriggerEffectParamInt("TrgPlayer",k);
+rmSetTriggerEffectParam("UnitType","zpNativeWaterSpawnFlag1");
+rmSetTriggerEffectParamInt("Dist",150);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Renegades1off_Player"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainSubmarine1ON_Plr"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("SteamerTrain1ONPlr"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Nautilus1ONPlr"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("Renegades1off_Player"+k));
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",scientistsID); // Unique Object ID Village 1
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParamInt("Dist",35);
+rmSetTriggerConditionParam("UnitType","TradingPost");
+rmSetTriggerConditionParam("Op","==");
+rmSetTriggerConditionParamFloat("Count",0);
+rmAddTriggerEffect("Convert Units in Area");
+rmSetTriggerEffectParam("SrcObject",scientistsID); // Unique Object ID Village 1
+rmSetTriggerEffectParamInt("SrcPlayer",k);
+rmSetTriggerEffectParamInt("TrgPlayer",0);
+rmSetTriggerEffectParam("UnitType","zpNativeWaterSpawnFlag1");
+rmSetTriggerEffectParamInt("Dist",150);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Renegades1on_Player"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainSubmarine1ON_Plr"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("SteamerTrain1ONPlr"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Nautilus1ONPlr"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+}
+
+// AI Renegade Captains
+
+for (k=1; <= cNumberNonGaiaPlayers) {
+
+rmCreateTrigger("ZP Pick Renegade Captain"+k);
+rmAddTriggerCondition("ZP PLAYER Human");
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("MyBool", "false");
+rmAddTriggerCondition("Tech Status Equals");
+rmSetTriggerConditionParamInt("PlayerID",k);
+rmSetTriggerConditionParamInt("TechID",586);
+rmSetTriggerConditionParamInt("Status",2);
+
+int renegadeCaptain=-1;
+renegadeCaptain = rmRandInt(1,3);
+
+if (renegadeCaptain==1)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistNemo"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+if (renegadeCaptain==2)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistValentine"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+if (renegadeCaptain==3)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistkhora"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpAIAirshipSetup"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);

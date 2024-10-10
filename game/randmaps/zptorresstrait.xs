@@ -287,7 +287,7 @@ rmBuildArea(southIsland);
 int portSite1 = rmCreateArea ("port_site1");
 rmSetAreaSize(portSite1, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
 rmSetAreaLocation(portSite1, 0.9, 0.35+rmXTilesToFraction(22));
-rmSetAreaTerrainType(portSite1, "caribbean\ground_shoreline1_crb");
+rmSetAreaTerrainType(portSite1, "borneo\shoreline1_borneo");
 rmSetAreaCoherence(portSite1, 1);
 rmSetAreaSmoothDistance(portSite1, 15);
 rmSetAreaBaseHeight(portSite1, 3.5);
@@ -297,7 +297,7 @@ rmBuildArea(portSite1);
 int portSite2 = rmCreateArea ("port_site2");
 rmSetAreaSize(portSite2, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
 rmSetAreaLocation(portSite2, 0.7,0.35+rmXTilesToFraction(22));
-rmSetAreaTerrainType(portSite2, "caribbean\ground_shoreline1_crb");
+rmSetAreaTerrainType(portSite2, "borneo\shoreline1_borneo");
 rmSetAreaCoherence(portSite2, 1);
 rmSetAreaSmoothDistance(portSite2, 15);
 rmSetAreaBaseHeight(portSite2, 3.5);
@@ -315,8 +315,8 @@ rmSetAreaMinBlobDistance(northIsland, 8.0);
 rmSetAreaMaxBlobDistance(northIsland, 10.0);
 rmSetAreaSmoothDistance(northIsland, 15);
 rmSetAreaMix(northIsland, "indochina_grass_a");
-	rmAddAreaTerrainLayer(northIsland, "caribbean\ground_shoreline1_crb", 0, 5);
-	rmAddAreaTerrainLayer(northIsland, "borneo\ground_grass1_borneo", 5, 8);
+	rmAddAreaTerrainLayer(northIsland, "borneo\shoreline1_borneo", 0, 5);
+	rmAddAreaTerrainLayer(northIsland, "borneo\ground_sand3_borneo", 5, 8);
 rmSetAreaBaseHeight(northIsland, 3.5);
 rmAddAreaConstraint(northIsland, islandConstraint);
 rmAddAreaConstraint(northIsland, islandAvoidTradeRoute);
@@ -340,7 +340,7 @@ int portSite5 = rmCreateArea ("port_site5");
 rmSetAreaSize(portSite5, rmAreaTilesToFraction(500.0), rmAreaTilesToFraction(500.0));
 rmSetAreaLocation(portSite5, 0.5, 0.78);
 rmSetAreaCoherence(portSite5, 1);
-rmSetAreaTerrainType(portSite5, "caribbean\ground_shoreline1_crb");
+rmSetAreaTerrainType(portSite5, "borneo\shoreline1_borneo");
 rmSetAreaSmoothDistance(portSite5, 15);
 rmSetAreaBaseHeight(portSite5, 2.5);
 rmAddAreaToClass(portSite5, classPortSite);
@@ -359,8 +359,8 @@ rmSetAreaMinBlobDistance(bonusIslandID, 8.0);
 rmSetAreaMaxBlobDistance(bonusIslandID, 10.0);
 rmSetAreaSmoothDistance(bonusIslandID, 15);
 rmSetAreaMix(bonusIslandID, "indochina_grass_a");
-	rmAddAreaTerrainLayer(bonusIslandID, "caribbean\ground_shoreline1_crb", 0, 5);
-	rmAddAreaTerrainLayer(bonusIslandID, "borneo\ground_grass1_borneo", 5, 8);
+	rmAddAreaTerrainLayer(bonusIslandID, "borneo\shoreline1_borneo", 0, 5);
+	rmAddAreaTerrainLayer(bonusIslandID, "borneo\ground_sand3_borneo", 5, 8);
 rmSetAreaBaseHeight(bonusIslandID, 2.5);
 rmAddAreaConstraint(bonusIslandID, islandConstraint);
 rmAddAreaConstraint(bonusIslandID, islandAvoidTradeRoute); 
@@ -1211,6 +1211,10 @@ rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",i);
 rmSetTriggerEffectParam("TechID","cTechzpAustraliaMercenaries"); // Australian Mercenaries
 rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",i);
+rmSetTriggerEffectParam("TechID","cTechzpNativeHeavyMap"); // Native Embassy Techs
+rmSetTriggerEffectParamInt("Status",2);
 }
 for(i=0; <= cNumberNonGaiaPlayers) {
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -1958,6 +1962,7 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
 
 
 
