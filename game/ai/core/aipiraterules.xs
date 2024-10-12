@@ -3302,11 +3302,6 @@ minInterval 60
       []() -> bool { return (kbGetAge() >= cAge2 ); },
       cUnitTypeTradingPost);
 
-      // Korowai Stealth
-      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatKorowaiStealth,
-      []() -> bool { return (kbGetAge() >= cAge2 ); },
-      cUnitTypeTradingPost);
-
       // Korowai Warriors
       canDisableSelf &= researchSimpleTechByCondition(cTechzpNatKorowaiArmy,
       []() -> bool { return ((kbTechGetStatus(cTechzpKorowaiExpansion) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
