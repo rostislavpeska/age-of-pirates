@@ -843,6 +843,7 @@ rmSetAreaLocation(fujiPeaklvl3, 0.5, 0.93);
 rmSetAreaTerrainType(fujiPeaklvl3, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeaklvl3, 10.0);
 rmAddAreaConstraint(fujiPeaklvl3, avoidKOTHshort);
+rmSetAreaHeightBlend(fujiPeaklvl3, 2.0);
 rmSetAreaSmoothDistance(fujiPeaklvl3, 50);
 rmSetAreaCoherence(fujiPeaklvl3, .7);
 rmBuildArea(fujiPeaklvl3);  
@@ -926,6 +927,7 @@ rmSetAreaSize(fujiPeaklvl4, rmAreaTilesToFraction(450.0), rmAreaTilesToFraction(
 rmSetAreaLocation(fujiPeaklvl4, 0.5, 0.93);
 rmSetAreaTerrainType(fujiPeaklvl4, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeaklvl4, 14.0);
+rmSetAreaHeightBlend(fujiPeaklvl4, 2.0);
 rmAddAreaConstraint(fujiPeaklvl4, avoidKOTHshort);
 rmSetAreaSmoothDistance(fujiPeaklvl4, 40);
 rmSetAreaCoherence(fujiPeaklvl4, .8);
@@ -1016,6 +1018,7 @@ rmSetAreaTerrainType(fujiPeaklvl5, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeaklvl5, 18.0);
 rmAddAreaConstraint(fujiPeaklvl5, avoidKOTHshort);
 rmSetAreaSmoothDistance(fujiPeaklvl5, 40);
+rmSetAreaHeightBlend(fujiPeaklvl5, 2.0);
 rmSetAreaCoherence(fujiPeaklvl5, .8);
 rmBuildArea(fujiPeaklvl5); 
 
@@ -1190,6 +1193,7 @@ rmSetAreaTerrainType(fujiPeakSouthlvl3, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeakSouthlvl3, 10.0);
 rmAddAreaConstraint(fujiPeakSouthlvl3, avoidKOTHshort);
 rmSetAreaSmoothDistance(fujiPeakSouthlvl3, 50);
+rmSetAreaHeightBlend(fujiPeakSouthlvl3, 2.0);
 rmSetAreaCoherence(fujiPeakSouthlvl3, .7);
 rmBuildArea(fujiPeakSouthlvl3);  
 
@@ -1274,6 +1278,7 @@ rmSetAreaTerrainType(fujiPeakSouthlvl4, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeakSouthlvl4, 14.0);
 rmAddAreaConstraint(fujiPeakSouthlvl4, avoidKOTHshort);
 rmSetAreaSmoothDistance(fujiPeakSouthlvl4, 40);
+rmSetAreaHeightBlend(fujiPeakSouthlvl4, 2.0);
 rmSetAreaCoherence(fujiPeakSouthlvl4, .8);
 rmBuildArea(fujiPeakSouthlvl4);  
 
@@ -1362,6 +1367,7 @@ rmSetAreaTerrainType(fujiPeakSouthlvl5, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeakSouthlvl5, 18.0);
 rmAddAreaConstraint(fujiPeakSouthlvl5, avoidKOTHshort);
 rmSetAreaSmoothDistance(fujiPeakSouthlvl5, 40);
+rmSetAreaHeightBlend(fujiPeakSouthlvl5, 2.0);
 rmSetAreaCoherence(fujiPeakSouthlvl5, .8);
 rmBuildArea(fujiPeakSouthlvl5); 
 
