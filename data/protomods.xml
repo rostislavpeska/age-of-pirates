@@ -4227,6 +4227,7 @@
     <animfile>units\natives\sao_feng.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
+    <minimapicon>ui\minimap\hero</minimapicon>
     <icon>resources\art\units\natives\saofeng_icon.png</icon>
     <portraiticon>resources\art\units\natives\saofeng_portrait.png</portraiticon>
     <rollovertextid>300206</rollovertextid>
@@ -10056,6 +10057,7 @@
     <flag>Invulnerable</flag>
     <flag>ForceBuildingData</flag>
     <flag>VisibleUnderFog</flag>
+    <flag>Tracked</flag>
     <command page="10" column="7">Delete</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
@@ -33679,6 +33681,7 @@
     <flag>Invulnerable</flag>
     <flag>ForceBuildingData</flag>
     <flag>VisibleUnderFog</flag>
+    <flag>Tracked</flag>
     <command page="10" column="7">Delete</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
@@ -33734,6 +33737,7 @@
     <flag>Invulnerable</flag>
     <flag>ForceBuildingData</flag>
     <flag>VisibleUnderFog</flag>
+    <flag>Tracked</flag>
     <command page="10" column="7">Delete</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
@@ -33789,6 +33793,7 @@
     <flag>Invulnerable</flag>
     <flag>ForceBuildingData</flag>
     <flag>VisibleUnderFog</flag>
+    <flag>Tracked</flag>
     <command page="10" column="7">Delete</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
@@ -34136,6 +34141,7 @@
     <animfile>units\spc\captain_nemo\captain_nemo.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
+    <minimapicon>ui\minimap\hero</minimapicon>
     <icon>resources\art\units\heroes\captain_nemo_icon.png</icon>
     <portraiticon>resources\art\units\heroes\captain_nemo_portrait.png</portraiticon>
     <rollovertextid>301748</rollovertextid>
@@ -34734,6 +34740,7 @@
     <flag>Invulnerable</flag>
     <flag>ForceBuildingData</flag>
     <flag>VisibleUnderFog</flag>
+    <flag>Tracked</flag>
     <command page="10" column="7">Delete</command>
   </unit>
   <unit id="20465" name="zpNuggetDivingBell">
@@ -35135,6 +35142,7 @@
     <flag>Invulnerable</flag>
     <flag>ForceBuildingData</flag>
     <flag>VisibleUnderFog</flag>
+    <flag>Tracked</flag>
     <command page="10" column="7">Delete</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
@@ -37990,6 +37998,7 @@
     <animfile>units\wildwest_units\doc_holliday\doc_holliday.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
+    <minimapicon>ui\minimap\hero</minimapicon>
     <icon>resources\art\units\natives\doc_holiday_icon.png</icon>
     <portraiticon>resources\art\units\natives\doc_holiday.png</portraiticon>
     <rollovertextid>400071</rollovertextid>
@@ -38118,6 +38127,7 @@
     <animfile>units\wildwest_units\wyatt_earp\wyatt_earp.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
+    <minimapicon>ui\minimap\hero</minimapicon>
     <icon>resources\art\units\natives\wyatt.png</icon>
     <portraiticon>resources\art\units\natives\wyatt_portrait.png</portraiticon>
     <rollovertextid>400074</rollovertextid>
@@ -38250,6 +38260,7 @@
     <animfile>units\wildwest_units\jesse_james\jesse_james.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
+    <minimapicon>ui\minimap\hero</minimapicon>
     <icon>resources\art\units\natives\jessejames.png</icon>
     <portraiticon>resources\art\units\natives\jessejames_portrait.png</portraiticon>
     <rollovertextid>400077</rollovertextid>
@@ -38512,6 +38523,7 @@
     <animfile>units\wildwest_units\pinkerton\pinkerton.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
+    <minimapicon>ui\minimap\hero</minimapicon>
     <icon>resources\art\units\natives\pinkerton.png</icon>
     <portraiticon>resources\art\units\natives\pinkerton_portrait.png</portraiticon>
     <rollovertextid>400083</rollovertextid>

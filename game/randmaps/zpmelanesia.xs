@@ -617,10 +617,10 @@ rmAddObjectDefConstraint(controllerID5, ferryOnShore);
 rmAddObjectDefConstraint(controllerID5, avoidAtol); 
 
       
-rmPlaceObjectDefAtLoc(controllerID1, 0, 0.3, 0.3);
-rmPlaceObjectDefAtLoc(controllerID2, 0, 0.7, 0.3);
-rmPlaceObjectDefAtLoc(controllerID3, 0, 0.3, 0.7);
-rmPlaceObjectDefAtLoc(controllerID4, 0, 0.7, 0.7);
+rmPlaceObjectDefAtLoc(controllerID1, 0, 0.25, 0.28);
+rmPlaceObjectDefAtLoc(controllerID2, 0, 0.75, 0.28);
+rmPlaceObjectDefAtLoc(controllerID3, 0, 0.25, 0.72);
+rmPlaceObjectDefAtLoc(controllerID4, 0, 0.75, 0.72);
 rmPlaceObjectDefAtLoc(controllerID5, 0, 0.5, 0.58);
 
 vector ControllerLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID1, 0));
