@@ -6,21 +6,6 @@
 */
 //==============================================================================
 
-rule randomTests
-inactive
-minInterval 10
-{
-   int totalResources = 0;
-   totalResources = kbTotalResourceGet(cResourceFood);
-
-   aiChat(1, "totalResources: " + totalResources);
-   
-   int totalUnitQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf, cUnitStateAny);
-   int totalUnit = kbUnitQueryExecute(totalUnitQuery);
-
-   //aiChat(1, "totalResources: " + totalResources + " totalUnit: " + totalUnit);
-}
-
 
 //==============================================================================
 // getAgingUpAge
@@ -4698,6 +4683,46 @@ bool allowedToAttack(void)
    }
 
    return (false);
+}
+
+//==============================================================================
+// getRandomGaiaUnit
+// Query closest unit's position from gaia's perspective, use with caution to avoid cheating.
+// AssertiveWall: based on getClosestGaiaUnitPosition but returns random unit
+//==============================================================================
+int getRandomGaiaUnit(int unitTypeID = -1, vector position = cInvalidVector, float radius = -1.0)
+{
+   xsSetContextPlayer(0);
+   int gaiaUnitQueryID = kbUnitQueryCreate("getRandomGaiaUnitQuery");
+
+   // Define a query to get all matching units.
+   if (gaiaUnitQueryID != -1)
+   {
+      kbUnitQuerySetPlayerID(gaiaUnitQueryID, 0);
+      kbUnitQuerySetUnitType(gaiaUnitQueryID, unitTypeID);
+      kbUnitQuerySetState(gaiaUnitQueryID, cUnitStateAny);
+      kbUnitQuerySetPosition(gaiaUnitQueryID, position);
+      kbUnitQuerySetMaximumDistance(gaiaUnitQueryID, radius);
+   }
+   else
+   {
+      xsSetContextPlayer(cMyID);
+      return (-1);
+   }
+
+   kbUnitQueryResetResults(gaiaUnitQueryID);
+   int numFound = kbUnitQueryExecute(gaiaUnitQueryID);
+
+   if (numFound > 0)
+   {
+      // Get the location of a random unit
+      int randomNum = aiRandInt(numFound);
+      int closestUnit = kbUnitQueryGetResult(gaiaUnitQueryID, randomNum); 
+      xsSetContextPlayer(cMyID);
+      return (closestUnit);
+   }
+   xsSetContextPlayer(cMyID);
+   return (-1);
 }
 
 //==============================================================================
@@ -11203,4 +11228,23 @@ minInterval 30
 
       gLastAttackMissionTime = currentTime;
    }
+}
+
+rule randomTests
+inactive
+minInterval 10
+{
+
+   int randGaiaUnit = getUnit(cUnitTypeAbstractUnderwaterMine, cPlayerRelationAny);// getRandomGaiaUnit(cUnitTypezpSunkenShipWood, kbGetMapCenter(), 60);
+   aiChat(1, "test gaia unit: " + randGaiaUnit);
+
+   /*int totalResources = 0;
+   totalResources = kbTotalResourceGet(cResourceFood);
+
+   aiChat(1, "totalResources: " + totalResources);
+   
+   int totalUnitQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf, cUnitStateAny);
+   int totalUnit = kbUnitQueryExecute(totalUnitQuery);*/
+
+   //aiChat(1, "totalResources: " + totalResources + " totalUnit: " + totalUnit);
 }

@@ -33,7 +33,8 @@ minInterval 1
        cRandomMapName == "zptreasureisland" ||
        cRandomMapName == "zpvenice" ||
        cRandomMapName == "zpmediterranean" ||
-       cRandomMapName == "zpzealand")
+       cRandomMapName == "zpzealand" ||
+       cRandomMapName == "zpcookislands")
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
@@ -140,6 +141,10 @@ minInterval 1
    }
    
    // Initializes native specific rules
+   if (getGaiaUnitCount(cUnitTypeAbstractUnderwaterMine) > 0)
+   {
+      //xsEnableRule("underwaterOperations");
+   }
    if (getGaiaUnitCount(cUnitTypezpNativeHousePirate) > 0)
    {
       xsEnableRule("MaintainPirateShips");
@@ -260,6 +265,312 @@ minInterval 1
    }
     
    xsDisableSelf();
+}
+
+//==============================================================================
+/* getUnderwaterAreaOfOperations
+   Returns where we should focus our underwater efforts on. 
+*/
+//==============================================================================
+
+vector getUnderwaterAreaOfOperations(void)
+{
+   vector returnVector = kbGetMapCenter();
+
+   int divingBellQuery = createSimpleUnitQuery(cUnitTypezpDivingBell, cPlayerRelationSelf, cUnitStateAlive);
+   int numberBells = kbUnitQueryExecute(divingBellQuery);
+
+   if (numberBells > 0)
+   {
+      returnVector = kbUnitGetPosition(kbUnitQueryGetResult(divingBellQuery, 0));
+   }
+
+   return returnVector;
+}
+
+//==============================================================================
+/* underWaterNavalStrengthAtLoc
+   Calculates naval strength, including warships, divers, and mines. 
+*/
+//==============================================================================
+
+int underWaterNavalStrengthAtLoc(int playerRelation = -1, vector location = cInvalidVector, int radius = 30)
+{
+      // Enemy Navy Value
+      int NavyQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, playerRelation, cUnitStateAlive, location, radius);
+      int NavySize = kbUnitQueryExecute(NavyQuery);
+      int NavyValue = 0;
+      int MineQuery = createSimpleUnitQuery(cUnitTypezpNavalmine, playerRelation, cUnitStateAlive, location, radius);
+      int MineSize = kbUnitQueryExecute(MineQuery);
+      int unitID = -1;
+      int puid = -1;
+
+      for (i = 0; < NavySize)
+      {
+         unitID = kbUnitQueryGetResult(NavyQuery, i);
+         puid = kbUnitGetProtoUnitID(unitID);
+         NavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                           kbUnitCostPerResource(puid, cResourceInfluence));
+      }
+
+      for (i = 0; < MineSize)
+      {
+         unitID = kbUnitQueryGetResult(MineQuery, i);
+         puid = kbUnitGetProtoUnitID(unitID);
+         NavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                           kbUnitCostPerResource(puid, cResourceInfluence));
+      }
+
+   return (NavyValue);
+}
+
+//==============================================================================
+/* addDiversToReservePlan
+   Adds divers to the reserve plan, unless they are in a build plan
+*/
+//==============================================================================
+
+void addDiversToReservePlan(void)
+{
+   static int diverReservePlan = -1;
+
+   // First run
+   if (diverReservePlan < 0)
+   {
+      diverReservePlan = aiPlanCreate("Diver Reserve Plan", cPlanReserve);
+      aiPlanAddUnitType(diverReservePlan, cUnitTypezpDiver, 0, 0, 200);
+      //aiPlanSetNoMoreUnits(diverReservePlan, true);
+      aiPlanSetDesiredPriority(diverReservePlan, 60); 
+   }
+
+   int diverQuery = createSimpleUnitQuery(cUnitTypezpDiver, cPlayerRelationSelf, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(diverQuery);
+   int tempDiver = -1;
+   int currentDiverPlan = -1;
+   int tempDiverPlanID = -1;
+
+   for (i = 0; < numberFound)
+   {
+      tempDiver = kbUnitQueryGetResult(diverQuery, i);
+      tempDiverPlanID = kbUnitGetPlanID(tempDiver);
+      currentDiverPlan = aiPlanGetType(tempDiverPlanID);
+      if (currentDiverPlan != cPlanBuild && tempDiverPlanID != diverReservePlan)
+      {
+         aiPlanAddUnit(diverReservePlan, tempDiver);
+      }
+   }
+}
+
+//==============================================================================
+/* taskIdleDiverVills
+   Tasks underwater divers to nearest resource
+*/
+//==============================================================================
+
+void taskIdleDiverVills(vector location = cInvalidVector)
+{
+   int diverQuery = createSimpleIdleUnitQuery(cUnitTypezpDiver, cPlayerRelationSelf, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(diverQuery);
+   int tempDiver = -1;
+   vector tempDiverLoc = cInvalidVector;
+   vector tempResLocation = cInvalidVector;
+   //int resourceQuery = createSimpleUnitQuery(cUnitTypeAbstractUnderwaterMine, cPlayerRelationAny, cUnitStateAlive);
+   //int resourceNumber = kbUnitQueryExecute(resourceQuery);
+   int tempClosestRes = -1;
+   int tempDiverCount = -1;
+
+   if (location == cInvalidVector)
+   {
+      location = getUnderwaterAreaOfOperations();
+   }
+
+   for (i = 0; < numberFound)
+   {
+      tempDiver = kbUnitQueryGetResult(diverQuery, i);
+      tempClosestRes = getRandomGaiaUnit(cUnitTypeAbstractUnderwaterMine, location, 30);
+      aiTaskUnitWork(tempDiver, tempClosestRes);
+      /*for (j = 0; < resourceNumber)
+      {
+         tempClosestRes = kbUnitQueryGetResult(resourceQuery, j);
+         tempResLocation = kbUnitGetPosition(tempClosestRes);
+         tempDiverCount = getUnitCountByLocation(cUnitTypezpDiver, cPlayerRelationAny, cUnitStateAlive, tempResLocation, 4.0);
+         if (tempDiverCount < 4)
+         {
+            aiTaskUnitWork(tempDiver, tempClosestRes);
+         }
+      }*/
+   }
+}
+
+//==============================================================================
+// createUnderwaterLocationBuildPlan
+//==============================================================================
+int createUnderwaterLocationBuildPlan(int puid = -1, int number = 1, int pri = 100, bool economy = true,
+                            int escrowID = -1, vector position = cInvalidVector, int builderType = -1)
+{
+   if (cvOkToBuild == false)
+   {
+      return (-1);
+   }
+   // Create the right number of plans.
+   for (i = 0; < number)
+   {
+      int planID = aiPlanCreate("Underwater location Build Plan, " + number + " " + kbGetUnitTypeName(puid), cPlanBuild);
+      int closestBuilder = -1;
+      if (planID < 0)
+      {
+         return (-1);
+      }
+
+      if (builderType < 0)
+      {
+         builderType = cUnitTypezpDiver;
+      }
+      // What to build
+      aiPlanSetVariableInt(planID, cBuildPlanBuildingTypeID, 0, puid);
+
+      aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, position);
+      aiPlanSetVariableFloat(planID, cBuildPlanCenterPositionDistance, 0, 30.0);
+
+      // 3 meter separation
+      aiPlanSetVariableFloat(planID, cBuildPlanBuildingBufferSpace, 0, 3.0);
+
+      // Priority.
+      aiPlanSetDesiredPriority(planID, pri);
+
+      // Builders.
+      closestBuilder = getClosestUnitByLocation(builderType, cPlayerRelationSelf, cUnitStateAlive, position); 
+      aiPlanAddUnitType(planID, builderType, 1, 1, 1);
+
+      aiPlanSetVariableVector(planID, cBuildPlanInfluencePosition, 0, position);              // Influence toward position
+      aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionDistance, 0, 100.0);          // 100m range.
+      aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionValue, 0, 200.0);             // 200 points max
+      aiPlanSetVariableInt(planID, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+
+      debugBuildings("Created an Underwater Location Build Plan for: " + kbGetUnitTypeName(puid) + " with plan number: " + planID);
+      aiPlanSetActive(planID);
+   }
+   return (planID); // Only really useful if number == 1, otherwise returns last value.
+}
+
+//==============================================================================
+/* createUnderwaterAttackPlan
+   Generate an attack plan at the desired location
+*/
+//==============================================================================
+
+int createUnderwaterAttackPlan(vector location = cInvalidVector, int pri = 60)
+{
+   int enArmyStrength = -1;
+
+   return (-1);
+}
+
+//==============================================================================
+/* fortifyUnderwaterAO
+   Places underwater mines and diving bells around the AO. Builds bells before 
+   mines
+*/
+//==============================================================================
+
+int fortifyUnderwaterAO(vector location = cInvalidVector)
+{
+   int diverQuery = createSimpleUnitQuery(cUnitTypezpDiver, cPlayerRelationSelf, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(diverQuery);
+   if (numberFound < 0)
+   {
+      return (-1);
+   }
+
+   if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypezpDivingBell) > 0 ||
+       aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypezpNavalmine) > 0)
+   {  // Only build one underwater thing at a time. SOmewhat necessary if we only grab closest miner to build
+      return (-1);
+   }
+
+   int divingBellQuery = createSimpleUnitQuery(cUnitTypezpDivingBell, cPlayerRelationSelf, cUnitStateAlive);
+   int numberBells = kbUnitQueryExecute(divingBellQuery);
+   int divingBellLimit = kbGetBuildLimit(cMyID, cUnitTypezpDivingBell);
+   int buildPri = 10;
+   vector buildLocation = location;
+   int planID = -1;
+
+   if (numberBells <= 0)
+   {
+      buildPri = 90;
+   }
+   else
+   {
+      buildLocation = getRandomPoint(location);
+   }
+
+   if (numberBells < divingBellLimit)
+   {
+      planID = createUnderwaterLocationBuildPlan(cUnitTypezpDivingBell, 1, buildPri, true, cEconomyEscrowID, buildLocation, cUnitTypezpDiver);
+   }
+
+   if (planID < 0)
+   {
+      int seaMineQuery = createSimpleUnitQuery(cUnitTypezpNavalmine, cPlayerRelationSelf, cUnitStateAlive);
+      int numberSeaMines = kbUnitQueryExecute(seaMineQuery);
+      int desiredMineNumber = gNumTowers; // piggy back off this for time being
+      if (desiredMineNumber > kbGetBuildLimit(cMyID, cUnitTypezpNavalmine))
+      {
+         desiredMineNumber = kbGetBuildLimit(cMyID, cUnitTypezpNavalmine);
+      }
+      buildLocation = getRandomPoint(location, 60);
+
+      if (numberSeaMines < desiredMineNumber)
+      {
+         planID = createUnderwaterLocationBuildPlan(cUnitTypezpNavalmine, 1, 70, true, cEconomyEscrowID, buildLocation, cUnitTypezpDiver);
+      }
+   }
+   
+   return planID;
+
+}
+
+//==============================================================================
+/* underwaterOperations
+   Manages the underwater stuff
+*/
+//==============================================================================
+
+rule underwaterOperations
+inactive
+minInterval 20
+{
+   static int diverMaintainPlan = -1;
+   int diverBuildLimit = kbGetBuildLimit(cMyID, cUnitTypezpDiver);
+
+   // First run, create maintain plan for divers once we can train them
+   if (kbProtoUnitAvailable(cUnitTypezpDiver) == true || kbUnitCount(cMyID, cUnitTypeAbstractSubmarine, cUnitStateAlive) > 0)
+   {
+      if (diverMaintainPlan < 0)
+      {
+         diverMaintainPlan = createSimpleMaintainPlan(cUnitTypezpDiver, diverBuildLimit, true);  
+      }
+   }
+
+
+   vector underwaterAO = getUnderwaterAreaOfOperations();
+   int ourStrength = underWaterNavalStrengthAtLoc(cPlayerRelationAlly, underwaterAO, 40);
+   int enemyStrength = underWaterNavalStrengthAtLoc(cPlayerRelationEnemyNotGaia, underwaterAO, 40);
+
+   addDiversToReservePlan();          // Put divers into reserve plan before trying to task
+   taskIdleDiverVills(underwaterAO);  // We can always safely do this. Only tasks idle divers
+
+   if (ourStrength >= enemyStrength)
+   {
+      // We have the advantage, so send all our surface boats here
+      gNavyVec = underwaterAO;
+      fortifyUnderwaterAO(underwaterAO);  // Build mines and diving bells
+   }
+   else
+   {  // We need to retake it if the enemy has it. The function will calculate if this is a good idea
+      int attackPlanID = createUnderwaterAttackPlan(underwaterAO, 60);
+      gNavyVec = kbUnitGetPosition(gWaterSpawnFlagID);
+   }
 }
 
 //==============================================================================
