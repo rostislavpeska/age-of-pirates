@@ -906,9 +906,8 @@
       <name>zpBasswoodTeam</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedWood</nuggetunit>
-      <teamnugget>1</teamnugget>
-      <rolloverstringid>90909</rolloverstringid>
-      <applystringid>90910</applystringid>
+      <rolloverstringid>301811</rolloverstringid>
+      <applystringid>301812</applystringid>
       <resource>wood</resource>
       <amount>50</amount>
       <maptype>hawaii</maptype>
@@ -922,9 +921,8 @@
       <name>zpBasswoodTeam2</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedWood</nuggetunit>
-      <teamnugget>1</teamnugget>
-      <rolloverstringid>90909</rolloverstringid>
-      <applystringid>90910</applystringid>
+      <rolloverstringid>301811</rolloverstringid>
+      <applystringid>301812</applystringid>
       <resource>wood</resource>
       <amount>111</amount>
       <maptype>hawaii</maptype>

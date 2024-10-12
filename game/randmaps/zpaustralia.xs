@@ -150,7 +150,7 @@ void main(void)
 	int fishVsFishID=rmCreateTypeDistanceConstraint("fish v fish", "ypFishTuna", 25.0);			// was 50.0
 	// int fishVsFishTarponID=rmCreateTypeDistanceConstraint("fish v fish2", "fishTarpon", 20.0);  // was 40.0 
 	int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 8.0);			
-	int whaleVsWhaleID=rmCreateTypeDistanceConstraint("whale v whale", "MinkeWhale", 30.0);	//Was 8.0
+	int whaleVsWhaleID=rmCreateTypeDistanceConstraint("whale v whale", "MinkeWhale", 60.0);	//Was 8.0
 	int fishVsWhaleID=rmCreateTypeDistanceConstraint("fish v whale", "MinkeWhale", 40.0);    //Was 34.0 -- This is for trying to keep fish out of "whale bay".
 	int whaleLand = rmCreateTerrainDistanceConstraint("whale land", "land", true, 20.0);   // Was 18.0.  This is to keep whales from swimming inside of land.
 	int forestObjConstraint=rmCreateTypeDistanceConstraint("forest obj", "all", 6.0);
@@ -158,7 +158,7 @@ void main(void)
 	int avoidResource=rmCreateTypeDistanceConstraint("resource avoid resource", "resource", 10.0);
 	int SaltVsSaltID=rmCreateTypeDistanceConstraint("salt v salt", "zpSaltMineWater", 20.0);	//Was 8.0
 	int avoidCoin=-1;
-	int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "abstractNugget", 45.0); 
+	int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "abstractNugget", 55.0); 
   int avoidNuggetWater2=rmCreateTypeDistanceConstraint("avoid water nuggets2", "abstractNugget", 100.0);
 	// Drop coin constraint on bigger maps
 	if ( cNumberNonGaiaPlayers > 5 )
@@ -173,7 +173,7 @@ void main(void)
 	int avoidRandomTurkeys=rmCreateTypeDistanceConstraint("avoid random emu", "zpEmu", 40.0);	//Attempting to spread them out more evenly.
 	int avoidKangaroos=rmCreateTypeDistanceConstraint("avoid random kangaroo", "zpRedKangaroo", 40.0);	//Attempting to spread them out more evenly.
 	int avoidCassowary=rmCreateTypeDistanceConstraint("avoid random cassowary", "zpCassowary", 70.0);	//Attempting to spread them out more evenly.
-	int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 54.0);  //Was 60.0 -- attempting to get more nuggets in south half of isle.
+	int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 64.0);  //Was 60.0 -- attempting to get more nuggets in south half of isle.
 	int avoidSheep=rmCreateTypeDistanceConstraint("sheep avoids sheep", "sheep", 120.0);  //Added sheep 11-28-05 JSB
 
 	// Avoid impassable land
@@ -249,9 +249,9 @@ void main(void)
 	// Make one big island.  
 	int bigIslandID=rmCreateArea("big lone island");
 	rmSetAreaSize(bigIslandID, 0.25, 0.25);
-	rmSetAreaCoherence(bigIslandID, 0.95);				//Determines raggedness of island's coastline.  Lower the number, more the blobby.
+	rmSetAreaCoherence(bigIslandID, 0.9);				//Determines raggedness of island's coastline.  Lower the number, more the blobby.
 	rmSetAreaBaseHeight(bigIslandID, 2.0);
-	rmSetAreaSmoothDistance(bigIslandID, 50);
+	rmSetAreaSmoothDistance(bigIslandID, 20);
 	rmSetAreaMix(bigIslandID, islandTerrainMix);
 	rmAddAreaTerrainLayer(bigIslandID, "Africa\pathBlend_afr", 0, 6);
 	rmAddAreaConstraint(bigIslandID, islandAvoidTradeRoute);
@@ -827,6 +827,7 @@ void main(void)
 	rmAddObjectDefConstraint(TCID, avoidScientists);
 	rmAddObjectDefConstraint(TCID, avoidPirates);
 	rmAddObjectDefConstraint(TCID, avoidWokou);
+	rmAddAreaToClass(TCID, rmClassID("importantItem")); 
 	//	rmAddObjectDefConstraint(TCID, avoidTC);
 	//	rmAddObjectDefConstraint(TCID, avoidCW);
     	
@@ -847,6 +848,7 @@ void main(void)
 	rmAddObjectDefConstraint(playerGoldID, avoidAll);
 	rmAddObjectDefConstraint(playerGoldID, avoidTradeSocket);
     rmAddObjectDefConstraint(playerGoldID, avoidImpassableLand);
+	rmAddAreaToClass(playerGoldID, rmClassID("importantItem")); 
 
 	//Prepare to place player starting Crates (mostly food)
 	int playerCrateID=rmCreateObjectDef("starting crates");
@@ -857,6 +859,7 @@ void main(void)
 	rmSetObjectDefMaxDistance(playerCrateID, 10);
 	rmAddObjectDefConstraint(playerCrateID, avoidAll);
 	rmAddObjectDefConstraint(playerCrateID, shortAvoidImpassableLand);
+	rmAddAreaToClass(playerCrateID, rmClassID("importantItem")); 
 
 	//Prepare to place player starting Turkeys
 	int playerTurkeyID=rmCreateObjectDef("player turkeys");
@@ -866,6 +869,7 @@ void main(void)
 	rmAddObjectDefConstraint(playerTurkeyID, avoidAll);
     rmAddObjectDefConstraint(playerTurkeyID, avoidImpassableLand);
     rmSetObjectDefCreateHerd(playerTurkeyID, true);
+	rmAddAreaToClass(playerTurkeyID, rmClassID("importantItem")); 
 
 	int playerTurkeyID2=rmCreateObjectDef("player turkeys second hunt");
     rmAddObjectDefItem(playerTurkeyID2, "zpEmu", rmRandInt(8,9), 6.0);	//(X,X) - number of objects.  The last # is the range of distance around the center point that the objects will place.  Low means tight, higher means more widely scattered.
@@ -874,6 +878,7 @@ void main(void)
 	rmAddObjectDefConstraint(playerTurkeyID2, avoidAll);
     rmAddObjectDefConstraint(playerTurkeyID2, avoidImpassableLand);
     rmSetObjectDefCreateHerd(playerTurkeyID2, true);
+	rmAddAreaToClass(playerTurkeyID2, rmClassID("importantItem")); 
 
 	//Prepare to place player starting trees
 	int StartAreaTreeID=rmCreateObjectDef("starting trees");
@@ -882,6 +887,7 @@ void main(void)
 	rmAddObjectDefConstraint(StartAreaTreeID, avoidWater8);
 	rmSetObjectDefMinDistance(StartAreaTreeID, 16.0);	//changed from 12.0 
 	rmSetObjectDefMaxDistance(StartAreaTreeID, 22.0);	//Changed from 19.0
+	rmAddAreaToClass(StartAreaTreeID, rmClassID("importantItem")); 
 
 	int waterSpawnPointID = 0;
 
