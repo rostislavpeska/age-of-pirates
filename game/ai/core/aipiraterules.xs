@@ -208,6 +208,11 @@ minInterval 1
       gCanoeUnit = cUnitTypezpWakaCanoe;
       xsEnableRule("zpMaoriTechMonitor");
    }
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseKorowai) > 0)
+   {
+      gCanoeUnit = cUnitTypezpWakaCanoe;
+      xsEnableRule("zpKorowaiTechMonitor");
+   }
    if (getGaiaUnitCount(cUnitTypezpNativeHouseAboriginals) > 0)
    {
       gCanoeUnit = cUnitTypezpWakaCanoe;
@@ -3271,6 +3276,40 @@ minInterval 60
       // Aboriginal Warriors
       canDisableSelf &= researchSimpleTechByCondition(cTechzpNatAboriginalTrackers,
       []() -> bool { return ((kbTechGetStatus(cTechzpAustraliaExpansion) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
+// ZP Korowai Tech Monitor
+//==============================================================================
+rule zpKorowaiTechMonitor
+inactive
+minInterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketKorowai, cUnitStateAny) == 0)
+      {
+      return; // Player has no Korowai socket.
+      }
+
+      // Korowai Big Button
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpKorowaiExpansion,
+      []() -> bool { return (kbGetAge() >= cAge2 ); },
+      cUnitTypeTradingPost);
+
+      // Korowai Stealth
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatKorowaiStealth,
+      []() -> bool { return (kbGetAge() >= cAge2 ); },
+      cUnitTypeTradingPost);
+
+      // Korowai Warriors
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatKorowaiArmy,
+      []() -> bool { return ((kbTechGetStatus(cTechzpKorowaiExpansion) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
       cUnitTypeTradingPost);
 
   if (canDisableSelf == true)
