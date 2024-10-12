@@ -555,8 +555,8 @@ int nativeID4 = -1;
 int jesuitID0 = -1;
 int jesuitID1 = -1;
 
-int natDistance = cNumberNonGaiaPlayers*4;
-int avoidNatives = rmCreateClassDistanceConstraint("natives avoid natives", rmClassID("patch"), 35+natDistance);
+int natDistance = cNumberNonGaiaPlayers*6;
+int avoidNatives = rmCreateClassDistanceConstraint("natives avoid natives", rmClassID("patch"), 31+natDistance);
 
 int nativeID0Type = rmRandInt(1,2);
 nativeID0 = rmCreateGrouping("native site 0", "Korowai_Village_0"+nativeID0Type);
@@ -654,8 +654,14 @@ else {
 }
 
 //place korowai	
-rmPlaceGroupingAtLoc(nativeID0, 0, 0.3, 0.5);
-rmPlaceGroupingAtLoc(nativeID1, 0, 0.7, 0.5);
+if (PlayerNum <= 3){
+	rmPlaceGroupingAtLoc(nativeID0, 0, 0.3, 0.5);
+	rmPlaceGroupingAtLoc(nativeID1, 0, 0.7, 0.5);
+}
+else{
+	rmPlaceGroupingAtLoc(nativeID0, 0, 0.2, 0.5);
+	rmPlaceGroupingAtLoc(nativeID1, 0, 0.8, 0.5);
+}
 
 if (PlayerNum >= 3){
 	if (mapVariant == 1)

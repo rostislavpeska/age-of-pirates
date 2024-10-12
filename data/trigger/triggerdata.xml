@@ -3932,5 +3932,87 @@
       <command>trCounterVisible("%Name%", true);</command>
       <command>}</command>
     </effect>
+    <effect name="ZP Native AutoSetup: Western">
+      <command>}}</command>
+      <command>rule Western_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int WesternFaction=-1;</command>
+      <command>if (WesternFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomWesternFaction", 0, 2);</command>
+      <command>WesternFaction = trQuestVarGet("RandomWesternFaction");</command>
+      <command>}</command>
+      <command>if (WesternFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateWesternWyatEarp, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (WesternFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateWesternPinkertons, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (WesternFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateWesternJesseJames, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpWesternAgeUp)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffWestern, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hdkzuzkz2985684 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: PenalColony">
+      <command>}}</command>
+      <command>rule PenalColony_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int PenalColonyFaction=-1;</command>
+      <command>if (PenalColonyFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomPenalColonyFaction", 0, 2);</command>
+      <command>PenalColonyFaction = trQuestVarGet("RandomPenalColonyFaction");</command>
+      <command>}</command>
+      <command>if (PenalColonyFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulatePenalColonyParkes, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (PenalColonyFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulatePenalColonyCunningham, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (PenalColonyFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulatePenalColonyLogan, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpPenalColonyRevolt)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffPenalColony, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hdkzuzkz2985598454 active { if (true) { //</command>
+    </effect>
   </effects>
 </trigger>
