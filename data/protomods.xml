@@ -24268,7 +24268,8 @@
     <tactics>predator.tactics</tactics>
     <protoaction>
       <name>HandAttack</name>
-      <damage>120.000000</damage>
+      <damage>26.000000</damage>
+      <rof>3.000000</rof>
       <damagetype>Hand</damagetype>
     </protoaction>
   </unit>
