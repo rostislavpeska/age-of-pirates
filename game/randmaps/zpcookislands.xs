@@ -115,7 +115,10 @@ void main(void)
 
   int playerIslandConstraint=rmCreatePieConstraint("player island constraint", 0.5, 0.5, rmXFractionToMeters(0.2), rmXFractionToMeters(0.5), rmDegreesToRadians(0), rmDegreesToRadians(360));
   int bonusIslandConstraint=rmCreatePieConstraint("bonus island constraint", 0.5, 0.5, rmXFractionToMeters(0.13), rmXFractionToMeters(0.22), rmDegreesToRadians(0), rmDegreesToRadians(360));
-
+  if (cNumberNonGaiaPlayers<6)
+    int underwaterPatchConstraint=rmCreatePieConstraint("underwater patch constraint", 0.5, 0.5, 60, rmXFractionToMeters(0.15), rmDegreesToRadians(0), rmDegreesToRadians(360));
+  else
+    underwaterPatchConstraint=rmCreatePieConstraint("underwater patch constraint", 0.5, 0.5, 80, rmXFractionToMeters(0.14), rmDegreesToRadians(0), rmDegreesToRadians(360));
 
 	// Player area constraint.
 	int playerConstraint=rmCreateClassDistanceConstraint("stay away from players", classPlayer, 25.0);
@@ -124,7 +127,7 @@ void main(void)
 	int avoidTP=rmCreateTypeDistanceConstraint("stay away from Trading Post Sockets", "SocketTradeRoute", 10.0);
   int avoidTPLong=rmCreateTypeDistanceConstraint("stay away from Trading Post Sockets far", "SocketTradeRoute", 35.0);
 	int avoidLand = rmCreateTerrainDistanceConstraint("ship avoid land", "land", true, 15.0);
-  int avoidLandLong = rmCreateTerrainDistanceConstraint("ship avoid land long", "land", true, 25.0);
+  int avoidLandLong = rmCreateTerrainDistanceConstraint("ship avoid land long", "land", true, 20.0);
   int avoidLandShort = rmCreateTerrainDistanceConstraint("ship avoid land short", "land", true, 5.0);
   int mesaConstraint = rmCreateBoxConstraint("mesas stay in southern portion of island", .35, .55, .65, .35);
   int northConstraint = rmCreateBoxConstraint("huntable constraint for north side of island", .25, .55, .8, .85);
@@ -169,7 +172,7 @@ void main(void)
   int avoidNuggetWater2=rmCreateTypeDistanceConstraint("avoid water nuggets2", "abstractNugget", 100.0);
   int avoidNuggetWater3=rmCreateTypeDistanceConstraint("avoid water nuggets3", "abstractNugget", 60.0);
   int avoidHardNugget=rmCreateTypeDistanceConstraint("hard nuggets avoid other nuggets less", "abstractNugget", 20.0); 
-  int avoidPatch=rmCreateClassDistanceConstraint("stay away from water patch", classUnderwaterPatch, 35.0);
+  int avoidPatch=rmCreateClassDistanceConstraint("stay away from water patch", classUnderwaterPatch, 40.0);
 
   int avoidPirates=rmCreateTypeDistanceConstraint("avoid socket pirates", "zpSocketPirates", 30.0);
   int avoidScientists=rmCreateTypeDistanceConstraint("avoid socket Scientists", "zpSocketScientists", 30.0);
@@ -202,6 +205,8 @@ void main(void)
   int flagVsPirates2 = rmCreateTypeDistanceConstraint("flag avoid pirates 2", "zpPirateWaterSpawnFlag2", 40);
 	int flagVsScientists1 = rmCreateTypeDistanceConstraint("flag avoid Scientists 1", "zpNativeWaterspawnFlag1", 40);
   int flagVsScientists2 = rmCreateTypeDistanceConstraint("flag avoid Scientists 2", "zpNativeWaterspawnFlag2", 40);
+  int flagVsScientists1Short = rmCreateTypeDistanceConstraint("flag avoid Scientists 1 short", "zpNativeWaterspawnFlag1", 20);
+  int flagVsScientists2Short = rmCreateTypeDistanceConstraint("flag avoid Scientists 2 short", "zpNativeWaterspawnFlag2", 20);
   int flagEdgeConstraint=rmCreatePieConstraint("flag edge of map", 0.5, 0.5, 0, rmGetMapXSize()-100, 0, 0, 0);
   int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 8.0);
 
@@ -221,7 +226,7 @@ void main(void)
   int deadSeaLakeOuterID=rmCreateArea("Lake Eyre03");
 	rmSetAreaWaterType(deadSeaLakeOuterID, "ZP Cook Islands 3");
 	rmSetAreaSize(deadSeaLakeOuterID, 0.15, 0.15);
-	rmSetAreaCoherence(deadSeaLakeOuterID, 0.8);
+	rmSetAreaCoherence(deadSeaLakeOuterID, 1.0);
 	rmSetAreaLocation(deadSeaLakeOuterID, 0.5, 0.5);
 	rmSetAreaSmoothDistance(deadSeaLakeOuterID, 10);
 	rmBuildArea(deadSeaLakeOuterID);
@@ -229,7 +234,7 @@ void main(void)
   int deadSeaLakeMediumID=rmCreateArea("Lake Eyre02");
 	rmSetAreaWaterType(deadSeaLakeMediumID, "ZP Cook Islands 2");
 	rmSetAreaSize(deadSeaLakeMediumID, 0.1, 0.1);
-	rmSetAreaCoherence(deadSeaLakeMediumID, 0.8);
+	rmSetAreaCoherence(deadSeaLakeMediumID, 1.0);
 	rmSetAreaLocation(deadSeaLakeMediumID, 0.5, 0.5);
 	rmSetAreaSmoothDistance(deadSeaLakeMediumID, 10);
 	rmBuildArea(deadSeaLakeMediumID);
@@ -237,7 +242,7 @@ void main(void)
   int deadSeaLakeDeepID=rmCreateArea("Lake Eyre");
 	rmSetAreaWaterType(deadSeaLakeDeepID, "ZP Cook Islands");
 	rmSetAreaSize(deadSeaLakeDeepID, 0.06, 0.06);
-	rmSetAreaCoherence(deadSeaLakeDeepID, 0.8);
+	rmSetAreaCoherence(deadSeaLakeDeepID, 1.0);
 	rmSetAreaLocation(deadSeaLakeDeepID, 0.5, 0.5);
 	rmSetAreaSmoothDistance(deadSeaLakeDeepID, 10);
 	rmBuildArea(deadSeaLakeDeepID);
@@ -758,7 +763,7 @@ void main(void)
   int patchNum = -1;
 
   if (cNumberNonGaiaPlayers ==2)
-    patchNum = 2;
+    patchNum = 3;
   if (cNumberNonGaiaPlayers ==3)
     patchNum = 4;
   if (cNumberNonGaiaPlayers ==4)
@@ -766,27 +771,30 @@ void main(void)
   if (cNumberNonGaiaPlayers ==5)
     patchNum = 6;
   if (cNumberNonGaiaPlayers ==6)
-    patchNum = 3;
-  if (cNumberNonGaiaPlayers ==7)
     patchNum = 5;
-  if (cNumberNonGaiaPlayers ==8)
+  if (cNumberNonGaiaPlayers ==7)
     patchNum = 6;
+  if (cNumberNonGaiaPlayers ==8)
+    patchNum = 7;
 
 
   for(i=0; <patchNum) {
+    int patchArea = rmCreateArea ("underwater_patch_area"+i);
+    rmSetAreaSize(patchArea, rmAreaTilesToFraction(200.0), rmAreaTilesToFraction(200.0));
+    rmSetAreaCoherence(patchArea, 1.0);
+    rmAddAreaConstraint(patchArea, avoidPatch);
+    rmAddAreaConstraint(patchArea, avoidTeamCliffsShort);
+    rmAddAreaConstraint(patchArea, flagVsScientists1Short);
+    rmAddAreaConstraint(patchArea, flagVsScientists2Short);
+    rmAddAreaConstraint(patchArea, avoidLandLong);
+    rmAddAreaConstraint(patchArea, underwaterPatchConstraint);
+    rmAddAreaToClass(patchArea, classUnderwaterPatch);
+    rmBuildArea(patchArea);
+
     int patchType = (rmRandInt(1, 3));
     int underwaterPatchID = -1;
     underwaterPatchID = rmCreateGrouping("underwater_patch"+i, "underwater_grouping_xs_0"+patchType);
-    rmAddGroupingConstraint(underwaterPatchID, avoidPatch);
-    rmAddGroupingToClass(underwaterPatchID, classUnderwaterPatch);
-    rmAddGroupingConstraint(underwaterPatchID, avoidLandLong);
-    rmAddGroupingConstraint(underwaterPatchID, avoidTeamCliffsShort);
-    if (cNumberNonGaiaPlayers<6)
-      rmSetGroupingMinDistance(underwaterPatchID, 45.0);
-    else
-      rmSetGroupingMinDistance(underwaterPatchID, 60.0);
-    rmSetGroupingMaxDistance(underwaterPatchID, rmXFractionToMeters(0.12));
-    rmPlaceGroupingAtLoc(underwaterPatchID, 0, 0.5, 0.5, 1);
+    rmPlaceGroupingInArea(underwaterPatchID, 0, rmAreaID("underwater_patch_area"+i), 1);
   }
 
 
@@ -1176,25 +1184,38 @@ void main(void)
 	}
 
 	// Water nuggets
+
+  // Special nuggets to unlock diver training
   int nuggetCount = cNumberNonGaiaPlayers;
   int bonusNuggets = rmRandInt(1, 2);
 
   int NUGGETspc = rmCreateObjectDef("nugget water SPC" + i); 
   rmAddObjectDefItem(NUGGETspc, "ypNuggetBoat", 1, 0.0);
   rmSetNuggetDifficulty(16, 16);
-  rmSetObjectDefMinDistance(NUGGETspc, rmXFractionToMeters(0.0));
-  rmSetObjectDefMaxDistance(NUGGETspc, rmXFractionToMeters(0.12));
   rmAddObjectDefConstraint(NUGGETspc, avoidLand);
-  rmAddObjectDefConstraint(NUGGETspc, avoidNuggetWater3);
-  rmAddObjectDefConstraint(NUGGETspc, playerEdgeConstraint);
   if (bonusNuggets ==1){
-    rmPlaceObjectDefAtLoc(NUGGETspc, 0, 0.5, 0.5, nuggetCount);
+    for(i=0; <patchNum) {
+      rmPlaceObjectDefInArea(NUGGETspc, 0,  rmAreaID("underwater_patch_area"+i), 1);
+    }
   }
   else{
-    rmPlaceObjectDefAtLoc(NUGGETspc, 0, 0.5, 0.5, nuggetCount-1);
+    for(i=1; <patchNum) {
+      rmPlaceObjectDefInArea(NUGGETspc, 0,  rmAreaID("underwater_patch_area"+i), 1);
+    }
     rmSetNuggetDifficulty(17, 17);
-    rmPlaceObjectDefAtLoc(NUGGETspc, 0, 0.5, 0.5, 1);
+    rmPlaceObjectDefInArea(NUGGETspc, 0,  rmAreaID("underwater_patch_area"+0), 1);
   }
+
+  // Extra special nuggets for PvP
+  if (cNumberTeams>2){
+    int NUGGETspc2 = rmCreateObjectDef("nugget water SPC2"); 
+    rmAddObjectDefItem(NUGGETspc2, "ypNuggetBoat", 1, 0.0);
+    rmSetNuggetDifficulty(15, 15);
+    rmAddObjectDefConstraint(NUGGETspc2, avoidLand);
+    rmAddObjectDefConstraint(NUGGETspc2, avoidNuggetWater);
+    rmPlaceObjectDefInArea(NUGGETspc2, 0,  deadSeaLakeMediumID, cNumberNonGaiaPlayers/2);
+  }
+
 
   int nugget2b = rmCreateObjectDef("nugget water hard" + i); 
   rmAddObjectDefItem(nugget2b, "ypNuggetBoat", 1, 0.0);
@@ -2610,6 +2631,7 @@ rmSetTriggerLoop(false);
     rmSetTriggerRunImmediately(true);
     rmSetTriggerLoop(false);
     }
+
 
 
   // Testing

@@ -2429,7 +2429,7 @@
       <rolloverstringid>301761</rolloverstringid>
       <applystringid>301762</applystringid>
       <unittype>zpDiver</unittype>
-      <amount>2</amount>
+      <amount>3</amount>
       <maptype>cookislands</maptype>
       <guardian>zpGuardianSubmarine</guardian>
       <difficulty>17</difficulty>
@@ -2462,6 +2462,39 @@
       <guardian>ypGreatWhiteShark</guardian>
       <guardian>ypGreatWhiteShark</guardian>
       <difficulty>16</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpWaterNuggetUnderwaterCaveAdd</name>
+      <type>SpawnUnit</type>
+      <waternugget>true</waternugget>
+      <nuggetunit>zpNuggetUnderwaterCave</nuggetunit>
+      <rolloverstringid>301761</rolloverstringid>
+      <applystringid>301762</applystringid>
+      <unittype>zpDiver</unittype>
+      <amount>2</amount>
+      <maptype>cookislands</maptype>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <difficulty>15</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpWaterNuggetUnderwaterCaveBAdd</name>
+      <type>SpawnUnit</type>
+      <waternugget>true</waternugget>
+      <nuggetunit>zpNuggetUnderwaterCave</nuggetunit>
+      <rolloverstringid>301807</rolloverstringid>
+      <applystringid>301808</applystringid>
+      <unittype>zpDiver</unittype>
+      <amount>1</amount>
+      <maptype>cookislands</maptype>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <difficulty>15</difficulty>
     </nugget>
   </nuggets>
 </nuggetmods>
