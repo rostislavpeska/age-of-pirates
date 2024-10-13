@@ -33662,6 +33662,7 @@
     <unittype>Resource</unittype>
     <unittype>Gold</unittype>
     <unittype>AbstractUnderwaterMine</unittype>
+    <unittype>GatherableOnlyByDivers</unittype>
     <unittype>AbstractFishOrWhale</unittype>
     <unittype>MinedResource</unittype>
     <flag>RMCanRotate</flag>
@@ -33718,6 +33719,7 @@
     <unittype>Resource</unittype>
     <unittype>Gold</unittype>
     <unittype>AbstractUnderwaterMine</unittype>
+    <unittype>GatherableOnlyByDivers</unittype>
     <unittype>AbstractFishOrWhale</unittype>
     <unittype>MinedResource</unittype>
     <flag>RMCanRotate</flag>
@@ -33774,6 +33776,7 @@
     <unittype>Resource</unittype>
     <unittype>Wood</unittype>
     <unittype>AbstractUnderwaterMine</unittype>
+    <unittype>GatherableOnlyByDivers</unittype>
     <unittype>AbstractFishOrWhale</unittype>
     <unittype>MinedResource</unittype>
     <flag>RMCanRotate</flag>
@@ -34642,6 +34645,7 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractUnderwaterBuilding</unittype>
+    <unittype>AbstractDivingBell</unittype>
     <train row="0" page="1" column="1">zpDiver</train>
     <tech row="0" page="1" column="2">zpImperialDivers</tech>
     <tech row="0" page="2" column="0">zpDiversSpawn</tech>
@@ -34846,6 +34850,7 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractUnderwaterBuilding</unittype>
+    <unittype>AbstractDivingBell</unittype>
     <train row="0" page="1" column="1">zpDiver</train>
     <tech row="0" page="1" column="2">zpImperialDivers</tech>
     <tech row="0" page="2" column="0">zpDiversSpawn</tech>
@@ -35123,6 +35128,7 @@
     <unittype>Resource</unittype>
     <unittype>Gold</unittype>
     <unittype>AbstractUnderwaterMine</unittype>
+    <unittype>GatherableOnlyByDivers</unittype>
     <unittype>AbstractFishOrWhale</unittype>
     <unittype>MinedResource</unittype>
     <flag>RMCanRotate</flag>
