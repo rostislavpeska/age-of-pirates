@@ -143,7 +143,7 @@ minInterval 1
    // Initializes native specific rules
    if (getGaiaUnitCount(cUnitTypeAbstractUnderwaterMine) > 0)
    {
-      //xsEnableRule("underwaterOperations");
+      xsEnableRule("underwaterOperations");
    }
    if (getGaiaUnitCount(cUnitTypezpNativeHousePirate) > 0)
    {
@@ -268,6 +268,88 @@ minInterval 1
 }
 
 //==============================================================================
+/* getUnderwaterResourceClump
+   Returns closest clump of underwater resources
+*/
+//==============================================================================
+
+vector getUnderwaterResourceClump(int closeMidFar = -1)
+{
+   xsSetContextPlayer(0);
+   static int unitQueryID = -1;
+   int unitTypeID = cUnitTypeAbstractUnderwaterMine;
+   vector position = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+
+   if (closeMidFar < 0)
+   {
+      // determine based on disposition
+      if (gStrategy == cStrategyGreed)
+      {
+         closeMidFar = 2;
+      }
+      else if (gStrategy == cStrategyFastIndustrial)
+      {
+         closeMidFar = 0;
+      }
+      else
+      {
+         closeMidFar = 1;
+      }
+   }
+
+   // If we don't have the query yet, create one.
+   if (unitQueryID < 0)
+   {
+      unitQueryID = kbUnitQueryCreate("getUnderwaterResourceClumpQuery");
+   }
+
+   // Define a query to get all matching units.
+   if (unitQueryID != -1)
+   {
+      kbUnitQuerySetPlayerID(unitQueryID, 0);
+      kbUnitQuerySetUnitType(unitQueryID, unitTypeID);
+      kbUnitQuerySetState(unitQueryID, cUnitStateAlive);
+      kbUnitQuerySetPosition(unitQueryID, position);
+      kbUnitQuerySetAscendingSort(unitQueryID, true);
+   }
+   else
+   {
+      xsSetContextPlayer(cMyID);
+      return (cInvalidVector);
+   }
+
+   kbUnitQueryResetResults(unitQueryID);
+   int numFound = kbUnitQueryExecute(unitQueryID);
+
+   if (numFound > 0)
+   {
+      // Determine if we're looking for close, mid, or far
+      int closenessVar = 0;
+      if (closeMidFar == 0)
+      {  // Closest
+         closenessVar = 0;
+      }
+      else if (closeMidFar == 1)
+      {  // Close, but not yet mid
+         closenessVar = numFound / 3;
+      }
+      else if (closeMidFar == 2)
+      {  // Middle
+         closenessVar = numFound / 2;
+      }
+      else
+      {  // A little past middle
+         closenessVar = numFound / 1.5;
+      }
+      vector closestClumpPosition = kbUnitGetPosition(kbUnitQueryGetResult(unitQueryID, closenessVar)); 
+      xsSetContextPlayer(cMyID);
+      return (closestClumpPosition);
+   }
+   xsSetContextPlayer(cMyID);
+   return (cInvalidVector);
+}
+
+//==============================================================================
 /* getUnderwaterAreaOfOperations
    Returns where we should focus our underwater efforts on. 
 */
@@ -275,7 +357,8 @@ minInterval 1
 
 vector getUnderwaterAreaOfOperations(void)
 {
-   vector returnVector = kbGetMapCenter();
+   vector returnVector = cInvalidVector;
+   vector homePosition = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
 
    int divingBellQuery = createSimpleUnitQuery(cUnitTypezpDivingBell, cPlayerRelationSelf, cUnitStateAlive);
    int numberBells = kbUnitQueryExecute(divingBellQuery);
@@ -283,6 +366,17 @@ vector getUnderwaterAreaOfOperations(void)
    if (numberBells > 0)
    {
       returnVector = kbUnitGetPosition(kbUnitQueryGetResult(divingBellQuery, 0));
+   }
+   else
+   {
+      // Look for closest underwater resource clump
+      
+      returnVector = getUnderwaterResourceClump(); 
+   }
+
+   if (returnVector == cInvalidVector)
+   {
+      returnVector = kbGetMapCenter();
    }
 
    return returnVector;
@@ -531,6 +625,49 @@ int fortifyUnderwaterAO(vector location = cInvalidVector)
 }
 
 //==============================================================================
+/* moveSubtoLocation
+   Moves our submarine to the location. Also makes it dive just for funsies
+*/
+//==============================================================================
+
+bool moveSubtoLocation(vector location = cInvalidVector, int subUnit = -1)
+{
+   if (subUnit < 0)
+   {
+      subUnit = getUnit(cUnitTypeAbstractSubmarine, cMyID, cUnitStateAlive);
+   }
+
+   static int subReservePlan = -1;
+
+   // First run
+   if (subReservePlan < 0)
+   {
+      subReservePlan = aiPlanCreate("Submarine Reserve Plan", cPlanReserve);
+      aiPlanAddUnitType(subReservePlan, kbUnitGetProtoUnitID(subUnit), 0, 0, 200);
+      //aiPlanSetNoMoreUnits(subReservePlan, true);
+      aiPlanSetDesiredPriority(subReservePlan, 60); 
+   }
+
+   int currentSubPlan = aiPlanGetType(subUnit);
+   if (currentSubPlan != subReservePlan)
+   {
+      aiPlanAddUnit(subReservePlan, subUnit);
+   }
+
+   vector subLocation = kbUnitGetPosition(subUnit);
+
+   if (distance(subLocation, location) > 35)
+   {
+      aiTaskUnitMove(subUnit, location);
+      return false;
+   }
+
+   aiPlanDestroy(subReservePlan);
+   subReservePlan = -1;
+   return true;
+}
+
+//==============================================================================
 /* underwaterOperations
    Manages the underwater stuff
 */
@@ -538,22 +675,33 @@ int fortifyUnderwaterAO(vector location = cInvalidVector)
 
 rule underwaterOperations
 inactive
-minInterval 20
+minInterval 10
 {
    static int diverMaintainPlan = -1;
    int diverBuildLimit = kbGetBuildLimit(cMyID, cUnitTypezpDiver);
+   int subUnit = getUnit(cUnitTypeAbstractSubmarine, cMyID, cUnitStateAlive);
+   vector underwaterAO = getUnderwaterAreaOfOperations();
 
-   // First run, create maintain plan for divers once we can train them
-   if (kbProtoUnitAvailable(cUnitTypezpDiver) == true || kbUnitCount(cMyID, cUnitTypeAbstractSubmarine, cUnitStateAlive) > 0)
+   // First runs before we have divers, create maintain plan for divers once we can train them
+   if (kbProtoUnitAvailable(cUnitTypezpDiver) == true || kbUnitCount(cUnitTypeAbstractSubmarine, cMyID, cUnitStateAlive) > 0)
    {
       if (diverMaintainPlan < 0)
       {
          diverMaintainPlan = createSimpleMaintainPlan(cUnitTypezpDiver, diverBuildLimit, true);  
       }
+
+      if (kbUnitCount(cMyID, cUnitTypezpDiver, cUnitStateABQ) <= 0)
+      {
+         if (subUnit > 0)
+         {
+            if (moveSubtoLocation(underwaterAO, subUnit) == true)
+            {
+               aiTaskUnitTrain(subUnit, cUnitTypezpDiver);
+            }
+         }
+      }
    }
 
-
-   vector underwaterAO = getUnderwaterAreaOfOperations();
    int ourStrength = underWaterNavalStrengthAtLoc(cPlayerRelationAlly, underwaterAO, 40);
    int enemyStrength = underWaterNavalStrengthAtLoc(cPlayerRelationEnemyNotGaia, underwaterAO, 40);
 
@@ -1394,7 +1542,7 @@ minInterval 3
       {
          unitID = aiPlanGetUnitByIndex(gNavyAttackPlan, i);
          puid = kbUnitGetProtoUnitID(unitID);
-         if (puid == cUnitTypezpSubmarine || puid == cUnitTypezpNautilus)
+         if (kbProtoUnitIsType(cMyID, puid, cUnitTypeAbstractSubmarine) == true || puid == cUnitTypezpSubmarine || puid == cUnitTypezpNautilus)
          {
             aiUnitSetTactic(unitID, subTactic);
          }
@@ -1414,7 +1562,7 @@ minInterval 3
    {
       shipID = kbUnitQueryGetResult(shipQuery, i);
       psid = kbUnitGetProtoUnitID(shipID);
-      if (psid == cUnitTypezpSubmarine || psid == cUnitTypezpNautilus)
+      if (kbProtoUnitIsType(cMyID, psid, cUnitTypeAbstractSubmarine) == true || psid == cUnitTypezpSubmarine || psid == cUnitTypezpNautilus)
       {
          shipLoc = kbUnitGetPosition(shipID);
          nearbyEnFound = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, shipLoc, 45.0); // Submarine range is 30
