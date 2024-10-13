@@ -4,28 +4,14 @@
     <!-- LAND NUGGETS -->
 
     <nugget>
-      <name>CoihueTeam</name>
-      <maptype>australia</maptype>
-      <maptype>tasmania</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-      <maptype>cookislands</maptype>
-      <maptype>melanesia</maptype>
-      <maptype>newguinea</maptype>
-    </nugget>
-    <nugget>
-      <name>Kev1</name>
-      <maptype>australia</maptype>
-      <maptype>tasmania</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-      <maptype>cookislands</maptype>
-      <maptype>melanesia</maptype>
-      <maptype>newguinea</maptype>
-      <difficulty>1</difficulty>
-    </nugget>
-    <nugget>
-      <name>Kev3</name>
+      <name>zpKev1</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetDroppedFood</nuggetunit>
+      <rolloverstringid>34577</rolloverstringid>
+      <applystringid>34578</applystringid>
+      <resource>Food</resource>
+      <amount>75</amount>
+      <guardian>Pirate</guardian>
       <maptype>australia</maptype>
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
@@ -36,7 +22,14 @@
       <difficulty>1</difficulty>
     </nugget>
     <nugget>
-      <name>Settler6</name>
+      <name>zpKev3</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetDroppedWood</nuggetunit>
+      <rolloverstringid>34581</rolloverstringid>
+      <applystringid>34582</applystringid>
+      <resource>Wood</resource>
+      <amount>75</amount>
+      <guardian>Pirate</guardian>
       <maptype>australia</maptype>
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
@@ -44,6 +37,7 @@
       <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newguinea</maptype>
+      <difficulty>1</difficulty>
     </nugget>
     <nugget>
       <name>zpKev5</name>
@@ -52,7 +46,7 @@
       <rolloverstringid>34585</rolloverstringid>
       <applystringid>34586</applystringid>
       <resource>Gold</resource>
-      <amount>50</amount>
+      <amount>25</amount>
       <maptype>australia</maptype>
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
@@ -1004,7 +998,7 @@
     <nugget>
       <name>zpJournal3</name>
       <type>AdjustResource</type>
-      <nuggetunit>NuggetNavigationChart</nuggetunit>
+      <nuggetunit>zpNavigationChart</nuggetunit>
       <rolloverstringid>301336</rolloverstringid>
       <applystringid>301337</applystringid>
       <resource>XP</resource>
@@ -1181,7 +1175,7 @@
     <nugget>
       <name>zpCorsairLoot2</name>
       <type>AdjustResource</type>
-      <nuggetunit>NuggetNavigationChart</nuggetunit>
+      <nuggetunit>zpNavigationChart</nuggetunit>
       <rolloverstringid>102095</rolloverstringid>
       <applystringid>102096</applystringid>
       <resource>Gold</resource>
@@ -1203,7 +1197,7 @@
     <nugget>
       <name>zpCorsairLoot3</name>
       <type>AdjustResource</type>
-      <nuggetunit>NuggetNavigationChart</nuggetunit>
+      <nuggetunit>zpNavigationChart</nuggetunit>
       <rolloverstringid>102095</rolloverstringid>
       <applystringid>102096</applystringid>
       <resource>Gold</resource>
