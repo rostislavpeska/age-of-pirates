@@ -34701,7 +34701,7 @@
     <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>water</movementtype>
-    <animfile>buildings\gold_mine\coral_mine_deep.xml</animfile>
+    <animfile>buildings\gold_mine\coral_mine.xml</animfile>
     <impacttype>Wood</impacttype>
     <icon>resources\art\terrain\minerals\pearls\deep_pearls_portrait.png</icon>
     <minimapicon>ui\minimap\minimap_whale</minimapicon>
@@ -35214,8 +35214,8 @@
     <tactics>predator.tactics</tactics>
     <protoaction>
       <name>HandAttack</name>
-      <damage>9.000000</damage>
-      <rof>1.500000</rof>
+      <damage>18.000000</damage>
+      <rof>3.000000</rof>
       <damagetype>Hand</damagetype>
     </protoaction>
   </unit>
@@ -35342,7 +35342,7 @@
     <maxrunvelocity>3.0000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\natives\maori\maori_javeliner.xml</animfile>
+    <animfile>units\infantry_ranged\deep_sea_diver\orang_laut_diver_skeleton.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\naval\deep_sea_diver_icon.png</icon>
@@ -35483,11 +35483,11 @@
     </protoaction>
     <protoaction>
       <name>VolleyRangedAttack</name>
-      <damage>10.000000</damage>
+      <damage>20.000000</damage>
       <damagetype>Ranged</damagetype>
       <minrange>2.000000</minrange>
       <maxrange>15.000000</maxrange>
-      <rof>1.500000</rof>
+      <rof>3.000000</rof>
       <projectile>Javelin</projectile>
       <damagebonus type="AbstractWarship">6.000000</damagebonus>
     </protoaction>

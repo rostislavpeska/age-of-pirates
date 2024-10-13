@@ -205,8 +205,8 @@ void main(void)
   int flagVsPirates2 = rmCreateTypeDistanceConstraint("flag avoid pirates 2", "zpPirateWaterSpawnFlag2", 40);
 	int flagVsScientists1 = rmCreateTypeDistanceConstraint("flag avoid Scientists 1", "zpNativeWaterspawnFlag1", 40);
   int flagVsScientists2 = rmCreateTypeDistanceConstraint("flag avoid Scientists 2", "zpNativeWaterspawnFlag2", 40);
-  int flagVsScientists1Short = rmCreateTypeDistanceConstraint("flag avoid Scientists 1 short", "zpNativeWaterspawnFlag1", 20);
-  int flagVsScientists2Short = rmCreateTypeDistanceConstraint("flag avoid Scientists 2 short", "zpNativeWaterspawnFlag2", 20);
+  int flagVsScientists1Short = rmCreateTypeDistanceConstraint("flag avoid Scientists 1 short", "zpNativeWaterspawnFlag1", 15);
+  int flagVsScientists2Short = rmCreateTypeDistanceConstraint("flag avoid Scientists 2 short", "zpNativeWaterspawnFlag2", 15);
   int flagEdgeConstraint=rmCreatePieConstraint("flag edge of map", 0.5, 0.5, 0, rmGetMapXSize()-100, 0, 0, 0);
   int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 8.0);
 

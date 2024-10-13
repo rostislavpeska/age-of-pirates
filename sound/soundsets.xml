@@ -7313,4 +7313,8 @@
     <sound filename="zp_misc\diver_move2.wav" volume="1.0000">
     </sound>
   </soundset>
+  <soundset name="TasmanianDevil_Ambient" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ambient\animals\tasmaniandevilambient.wav" volume="1.0000">
+    </sound>
+  </soundset>
 </soundsetdef>
