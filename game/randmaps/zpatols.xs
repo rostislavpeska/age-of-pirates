@@ -111,6 +111,7 @@ void main(void)
 
   // Create an edge of map constraint.
 	int playerEdgeConstraint=rmCreatePieConstraint("player edge of map", 0.5, 0.5, rmXFractionToMeters(0.0), rmXFractionToMeters(0.43), rmDegreesToRadians(0), rmDegreesToRadians(360));
+  int treasureEdgeConstraint=rmCreatePieConstraint("treasure edge of map", 0.5, 0.5, rmXFractionToMeters(0.0), rmXFractionToMeters(0.47), rmDegreesToRadians(0), rmDegreesToRadians(360));
 
   // Cardinal Directions
   int staySouthPart = rmCreatePieConstraint("Stay south part", 0.55, 0.55,rmXFractionToMeters(0.0), rmXFractionToMeters(0.60), rmDegreesToRadians(180),rmDegreesToRadians(360));
@@ -1109,44 +1110,48 @@ void main(void)
   rmAddObjectDefItem(nugget2b, "ypNuggetBoat", 1, 0.0);
   rmSetNuggetDifficulty(6, 6);
   rmSetObjectDefMinDistance(nugget2b, rmXFractionToMeters(0.25));
-  rmSetObjectDefMaxDistance(nugget2b, rmXFractionToMeters(1.0));
+  rmSetObjectDefMaxDistance(nugget2b, rmXFractionToMeters(0.45));
   rmAddObjectDefConstraint(nugget2b, avoidLand);
   rmAddObjectDefConstraint(nugget2b, avoidNuggetWater2);
   rmAddObjectDefConstraint(nugget2b, ObjectAvoidTradeRoute);
   rmAddObjectDefConstraint(nugget2b, staySouthPart);
+  rmAddObjectDefConstraint(nugget2b, treasureEdgeConstraint);
   rmPlaceObjectDefPerPlayer(nugget2b, false, nuggetCount/2);
 
   int nuggetB= rmCreateObjectDef("nugget water" + i); 
   rmAddObjectDefItem(nuggetB, "ypNuggetBoat", 1, 0.0);
   rmSetNuggetDifficulty(5, 5);
   rmSetObjectDefMinDistance(nuggetB, rmXFractionToMeters(0.0));
-  rmSetObjectDefMaxDistance(nuggetB, rmXFractionToMeters(1.0));
+  rmSetObjectDefMaxDistance(nuggetB, rmXFractionToMeters(0.45));
   rmAddObjectDefConstraint(nuggetB, avoidLand);
   rmAddObjectDefConstraint(nuggetB, avoidNuggetWater);
   rmAddObjectDefConstraint(nuggetB, ObjectAvoidTradeRoute);
   rmAddObjectDefConstraint(nuggetB, staySouthPart);
+  rmAddObjectDefConstraint(nuggetB, treasureEdgeConstraint);
   rmPlaceObjectDefPerPlayer(nuggetB, false, nuggetCount);
 
   int nnugget2bNorth = rmCreateObjectDef("nugget water hard 2" + i); 
   rmAddObjectDefItem(nnugget2bNorth, "ypNuggetBoat", 1, 0.0);
   rmSetNuggetDifficulty(6, 6);
   rmSetObjectDefMinDistance(nnugget2bNorth, rmXFractionToMeters(0.25));
-  rmSetObjectDefMaxDistance(nnugget2bNorth, rmXFractionToMeters(1.0));
+  rmSetObjectDefMaxDistance(nnugget2bNorth, rmXFractionToMeters(0.45));
   rmAddObjectDefConstraint(nnugget2bNorth, avoidLand);
   rmAddObjectDefConstraint(nnugget2bNorth, avoidNuggetWater2);
   rmAddObjectDefConstraint(nnugget2bNorth, ObjectAvoidTradeRoute);
   rmAddObjectDefConstraint(nnugget2bNorth, stayNorthHalf);
+  rmAddObjectDefConstraint(nnugget2bNorth, treasureEdgeConstraint);
   rmPlaceObjectDefPerPlayer(nnugget2bNorth, false, nuggetCount/2);
 
   int nuggetBNorth= rmCreateObjectDef("nugget water 2" + i); 
   rmAddObjectDefItem(nuggetBNorth, "ypnuggetBoat", 1, 0.0)    ;
   rmSetNuggetDifficulty(5, 5);
   rmSetObjectDefMinDistance(nuggetBNorth, rmXFractionToMeters(0.0));
-  rmSetObjectDefMaxDistance(nuggetBNorth, rmXFractionToMeters(1.0));
+  rmSetObjectDefMaxDistance(nuggetBNorth, rmXFractionToMeters(0.45));
   rmAddObjectDefConstraint(nuggetBNorth, avoidLand);
   rmAddObjectDefConstraint(nuggetBNorth, avoidNuggetWater);
   rmAddObjectDefConstraint(nuggetBNorth, ObjectAvoidTradeRoute);
   rmAddObjectDefConstraint(nuggetBNorth, stayNorthHalf);
+  rmAddObjectDefConstraint(nuggetBNorth, treasureEdgeConstraint);
   rmPlaceObjectDefPerPlayer(nuggetBNorth, false, nuggetCount);
 
   // Starter shipment triggers
