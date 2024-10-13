@@ -33628,7 +33628,7 @@
     </protoaction>
     <protoaction>
       <name>Build</name>
-      <rate type="zpDivingBell">2.500000</rate>
+      <rate type="zpDivingBell">1.000000</rate>
     </protoaction>
   </unit>
   <unit id="20450" name="zpSapphirelMine">
@@ -34598,7 +34598,7 @@
     <maxhitpoints>1900.0000</maxhitpoints>
     <los>34.0000</los>
     <unitaitype>RangedCombative</unitaitype>
-    <buildpoints>120.0000</buildpoints>
+    <buildpoints>40.0000</buildpoints>
     <buildlimit>1</buildlimit>
     <bounty>20.0000</bounty>
     <buildbounty>20.0000</buildbounty>
