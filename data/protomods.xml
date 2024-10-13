@@ -33484,8 +33484,8 @@
     <maxrunvelocity>3.0000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\infantry_ranged\deep_sea_diver\deep_sea_diver.xml</animfile>
-    <impacttype>Flesh</impacttype>
+    <animfile>units\infantry_ranged\deep_sea_diver\deep_sea_diver_skeleton.xml</animfile>
+    <impacttype>Stone</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\naval\deep_sea_diver_icon.png</icon>
     <portraiticon>resources\art\units\naval\deep_sea_diver_portrait.png</portraiticon>
