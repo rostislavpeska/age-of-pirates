@@ -136,12 +136,13 @@ int avoidGold=rmCreateTypeDistanceConstraint("avoid gold", "MineGold", 35.0);
 int avoidRandomBerries=rmCreateTypeDistanceConstraint("avoid random berries", "zpPineapleBush", 55.0);
 int avoidHuntable1=rmCreateTypeDistanceConstraint("avoid huntable1", huntable1, 30.0);
 int avoidHuntable2=rmCreateTypeDistanceConstraint("avoid huntable2", huntable2, 40.0);
-int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 45.0); 
-int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "abstractNugget", 45.0); 
-int avoidNuggetWater2=rmCreateTypeDistanceConstraint("avoid water nuggets2", "abstractNugget", 100.0);
-int avoidHardNugget=rmCreateTypeDistanceConstraint("hard nuggets avoid other nuggets less", "abstractNugget", 20.0); 
+int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 30.0); 
+int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "abstractNugget", 80.0); 
+int avoidNuggetWater2=rmCreateTypeDistanceConstraint("avoid water nuggets2", "abstractNugget", 120.0);
+int avoidHardNugget=rmCreateTypeDistanceConstraint("hard nuggets avoid other nuggets less", "abstractNugget", 50.0); 
 
 int avoidPirates=rmCreateTypeDistanceConstraint("avoid socket pirates", "zpSocketPirates", 40.0);
+int avoidPiratesFar=rmCreateTypeDistanceConstraint("avoid socket pirates far", "zpSocketPirates", 60.0);
 int avoidWokou=rmCreateTypeDistanceConstraint("avoid socket wokou", "zpSocketWokou", 30.0);
 int avoidJesuit=rmCreateTypeDistanceConstraint("avoid socket jesuit", "zpSocketMaori", 30.0);
 int avoidJesuitLong=rmCreateTypeDistanceConstraint("avoid socket jesuit long", "zpSocketMaori", 65.0);
@@ -625,6 +626,7 @@ rmSetAreaLocation(fujiPeaklvl3, 0.5, 0.5);
 rmSetAreaTerrainType(fujiPeaklvl3, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeaklvl3, 14.0);
 rmAddAreaConstraint(fujiPeaklvl3, avoidKOTHshort);
+rmSetAreaHeightBlend(fujiPeaklvl3, 2.0);
 rmSetAreaSmoothDistance(fujiPeaklvl3, 50);
 rmSetAreaCoherence(fujiPeaklvl3, .7);
 rmBuildArea(fujiPeaklvl3);  
@@ -722,6 +724,7 @@ rmSetAreaLocation(fujiPeaklvl4, 0.5, 0.5);
 rmSetAreaTerrainType(fujiPeaklvl4, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeaklvl4, 18.0);
 rmAddAreaConstraint(fujiPeaklvl4, avoidKOTHshort);
+rmSetAreaHeightBlend(fujiPeaklvl4, 2.0);
 rmSetAreaSmoothDistance(fujiPeaklvl4, 40);
 rmSetAreaCoherence(fujiPeaklvl4, .8);
 rmBuildArea(fujiPeaklvl4);  
@@ -815,6 +818,7 @@ rmSetAreaTerrainType(fujiPeaklvl5, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeaklvl5, 22.0);
 rmAddAreaConstraint(fujiPeaklvl5, avoidKOTHshort);
 rmSetAreaSmoothDistance(fujiPeaklvl5, 40);
+rmSetAreaHeightBlend(fujiPeaklvl5, 2.0);
 rmSetAreaCoherence(fujiPeaklvl5, .8);
 rmBuildArea(fujiPeaklvl5); 
 
@@ -1247,6 +1251,7 @@ rmSetObjectDefMaxDistance(TCID, avoidPirates);
 rmAddObjectDefConstraint(TCID, avoidWokou);
 rmAddObjectDefConstraint(TCID, avoidJesuit);
 rmAddObjectDefConstraint(TCID, avoidWater8);
+//rmAddAreaToClass(TCID, rmClassID("importantItem")); 
 
 //Prepare to place Explorers, Explorer's dog, etc.
 int startingUnits = rmCreateStartingUnitsObjectDef(5.0);
@@ -1254,6 +1259,7 @@ rmSetObjectDefMinDistance(startingUnits, 8.0);
 rmSetObjectDefMaxDistance(startingUnits, 12.0);
 rmAddObjectDefConstraint(startingUnits, avoidAll);
 rmAddObjectDefConstraint(startingUnits, avoidImpassableLand);
+//rmAddAreaToClass(startingUnits, rmClassID("importantItem")); 
 
 //Prepare to place player starting Mines 
 int playerGoldID = rmCreateObjectDef("player silver");
@@ -1262,6 +1268,7 @@ rmSetObjectDefMinDistance(playerGoldID, 12.0);
 rmSetObjectDefMaxDistance(playerGoldID, 20.0);
 rmAddObjectDefConstraint(playerGoldID, avoidAll);
 rmAddObjectDefConstraint(playerGoldID, avoidImpassableLand);
+//rmAddAreaToClass(playerGoldID, rmClassID("importantItem")); 
 
 //Prepare to place player starting food
 int playerFoodID=rmCreateObjectDef("player food");
@@ -1271,6 +1278,7 @@ rmSetObjectDefMaxDistance(playerFoodID, 15);
 rmAddObjectDefConstraint(playerFoodID, avoidAll);
 rmAddObjectDefConstraint(playerFoodID, avoidImpassableLand);
 rmSetObjectDefCreateHerd(playerFoodID, true);
+//rmAddAreaToClass(playerFoodID, rmClassID("importantItem")); 
 
 //Prepare to place player starting Berries
 int playerBerriesID=rmCreateObjectDef("player berries");
@@ -1279,6 +1287,7 @@ rmSetObjectDefMinDistance(playerBerriesID, 15);
 rmSetObjectDefMaxDistance(playerBerriesID, 20);		
 rmAddObjectDefConstraint(playerBerriesID, avoidAll);
 rmAddObjectDefConstraint(playerBerriesID, avoidImpassableLand);
+//rmAddAreaToClass(playerBerriesID, rmClassID("importantItem")); 
 
 //Prepare to place player starting trees
 int StartAreaTreeID=rmCreateObjectDef("starting trees");
@@ -1287,6 +1296,7 @@ rmAddObjectDefConstraint(StartAreaTreeID, avoidAll);
 rmAddObjectDefConstraint(StartAreaTreeID, avoidImpassableLand);
 rmSetObjectDefMinDistance(StartAreaTreeID, 10.0);
 rmSetObjectDefMaxDistance(StartAreaTreeID, 17.0);
+//rmAddAreaToClass(StartAreaTreeID, rmClassID("importantItem")); 
 
 // Starting area nuggets
 int playerNuggetID=rmCreateObjectDef("player nugget");
@@ -1295,6 +1305,16 @@ rmSetObjectDefMinDistance(playerNuggetID, 10.0);
 rmSetObjectDefMaxDistance(playerNuggetID, 15.0);
 rmAddObjectDefConstraint(playerNuggetID, avoidAll);
 rmAddObjectDefConstraint(playerNuggetID, shortAvoidImpassableLand);
+//rmAddAreaToClass(playerNuggetID, rmClassID("importantItem")); 
+
+int playerNuggetID2=rmCreateObjectDef("player nugget2");
+rmAddObjectDefItem(playerNuggetID2, "nugget", 1, 0.0);
+rmSetObjectDefMinDistance(playerNuggetID2, 25.0);
+rmSetObjectDefMaxDistance(playerNuggetID2, 40.0);
+rmAddObjectDefConstraint(playerNuggetID2, avoidAll);
+rmAddObjectDefConstraint(playerNuggetID2, shortAvoidImpassableLand);
+//rmAddAreaToClass(playerNuggetID2, rmClassID("importantItem")); 
+
 
 int waterSpawnPointID = 0;
 
@@ -1328,6 +1348,9 @@ for(i=1; <cNumberPlayers) {
     // Place starting nugget
     rmSetNuggetDifficulty(1, 1);
     rmPlaceObjectDefAtLoc(playerNuggetID, 0, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+
+    rmSetNuggetDifficulty(2, 2);
+    rmPlaceObjectDefAtLoc(playerNuggetID2, 0, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 
     if(ypIsAsian(i) && rmGetNomadStart() == false)
     rmPlaceObjectDefAtLoc(ypMonasteryBuilder(i), i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
@@ -1416,6 +1439,7 @@ rmAddObjectDefConstraint(jadeID, shortAvoidImpassableLand);
 rmAddObjectDefConstraint(jadeID, avoidImportantItem);
 rmAddAreaConstraint(jadeID, avoidJesuit);
 rmAddObjectDefConstraint(jadeID, avoidCoin);
+rmAddObjectDefConstraint(jadeID, avoidPirates);
 rmAddObjectDefConstraint(jadeID, avoidTP);
 rmAddObjectDefConstraint(jadeID, avoidHighMountains);
 rmPlaceObjectDefInArea(jadeID, 0, bigIslandID, 4*cNumberNonGaiaPlayers);
@@ -1450,11 +1474,11 @@ rmPlaceObjectDefInArea(foodID1, 0, bigIslandID, 3*cNumberNonGaiaPlayers+1);
 // Define and place Nuggets
 
 // Easier nuggets
-int nugget1= rmCreateObjectDef("nugget easy"); 
+/*int nugget1= rmCreateObjectDef("nugget easy"); 
 rmAddObjectDefItem(nugget1, "Nugget", 1, 0.0);
 rmSetNuggetDifficulty(1, 2);
 rmSetObjectDefMinDistance(nugget1, 0.0);
-rmSetObjectDefMaxDistance(nugget1, rmXFractionToMeters(0.3));
+rmSetObjectDefMaxDistance(nugget1, rmXFractionToMeters(0.25));
 rmAddObjectDefConstraint(nugget1, shortAvoidImpassableLand);
 rmAddObjectDefConstraint(nugget1, avoidNugget);
 rmAddObjectDefConstraint(nugget1, avoidImportantItem);
@@ -1462,15 +1486,15 @@ rmAddObjectDefConstraint(nugget1, avoidTP);
 rmAddObjectDefConstraint(nugget1, avoidAll);
 rmAddObjectDefConstraint(nugget1, avoidJesuit);
 rmAddObjectDefConstraint(nugget1, avoidHighMountains);
-rmAddObjectDefConstraint(nugget1, avoidWater8);
+rmAddObjectDefConstraint(nugget1, avoidWater4);
 rmAddObjectDefConstraint(nugget1, playerEdgeConstraint);
-for (i=0; <cNumberPlayers)
+for (i=1; <cNumberPlayers)
 {
     rmPlaceObjectDefInArea(nugget1, 0, rmAreaID("player "+i), 2);
-}
+}*/
 
 // Water nuggets
-int nuggetCount = 2;
+int nuggetCount = cNumberNonGaiaPlayers;
 
 int nugget2b = rmCreateObjectDef("nugget water hard" + i); 
 rmAddObjectDefItem(nugget2b, "ypNuggetBoat", 1, 0.0);
@@ -1504,7 +1528,7 @@ rmAddObjectDefConstraint(nugget3, avoidHighMountains);
 rmAddObjectDefConstraint(nugget3, avoidJesuit);
 rmAddObjectDefConstraint(nugget3, avoidImportantItem);
 rmAddObjectDefConstraint(nugget3, avoidCoinShort);
-rmPlaceObjectDefInArea(nugget3, 0, bigIslandID, cNumberNonGaiaPlayers*1.5);
+rmPlaceObjectDefInArea(nugget3, 0, bigIslandID, cNumberNonGaiaPlayers*2);
 
 // --------------- Make load bar move. ----------------------------------------------------------------------------
 rmSetStatusText("",0.90);

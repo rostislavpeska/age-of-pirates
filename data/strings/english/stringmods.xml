@@ -1809,6 +1809,8 @@
       <string _locid="301808" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued 1 Diver.</string>
       <string _locid="301809">ZP TEST Pearl Hunter Water</string>
       <string _locid="301810">ZP TEST Pearl Hunter Land</string>
+      <string _locid="301811" symbol="cStringdeTeamNugget">A hidden cache worth %1d %2s for the entire team.</string>
+      <string _locid="301812" symbol="cStringdeTeamNuggetActivate">%1s discovered a hidden cache worth %2d %3s for their team.</string>
 
 
       <!-- ======================================== -->

@@ -24209,7 +24209,7 @@
     <maxrunvelocity>5.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <wanderdistance>10</wanderdistance>
+    <wanderdistance>5</wanderdistance>
     <animfile>units\animals\cassowary\cassowary.xml</animfile>
     <impacttype>Animal</impacttype>
     <icon>resources\art\units\animals\cassowary\cassowary_icon.png</icon>
@@ -24268,7 +24268,8 @@
     <tactics>predator.tactics</tactics>
     <protoaction>
       <name>HandAttack</name>
-      <damage>120.000000</damage>
+      <damage>26.000000</damage>
+      <rof>3.000000</rof>
       <damagetype>Hand</damagetype>
     </protoaction>
   </unit>

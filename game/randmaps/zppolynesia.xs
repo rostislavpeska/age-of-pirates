@@ -835,6 +835,7 @@ rmSetAreaBaseHeight(fujiPeaklvl3, 11.0);
 rmAddAreaConstraint(fujiPeaklvl3, avoidKOTHshort);
 rmAddAreaConstraint(fujiPeaklvl3, avoidPlayerCenter);
 rmSetAreaSmoothDistance(fujiPeaklvl3, 50);
+rmSetAreaHeightBlend(fujiPeaklvl3, 2.0);
 rmSetAreaCoherence(fujiPeaklvl3, .7);
 rmBuildArea(fujiPeaklvl3);  
 
@@ -936,6 +937,7 @@ rmSetAreaTerrainType(fujiPeaklvl4, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeaklvl4, 15.0);
 rmAddAreaConstraint(fujiPeaklvl4, avoidKOTHshort);
 rmAddAreaConstraint(fujiPeaklvl4, avoidPlayerCenter);
+rmSetAreaHeightBlend(fujiPeaklvl4, 2.0);
 rmSetAreaSmoothDistance(fujiPeaklvl4, 40);
 rmSetAreaCoherence(fujiPeaklvl4, .8);
 rmBuildArea(fujiPeaklvl4);  
@@ -1034,6 +1036,7 @@ rmSetAreaBaseHeight(fujiPeaklvl5, 19.0);
 rmAddAreaConstraint(fujiPeaklvl5, avoidKOTHshort);
 rmAddAreaConstraint(fujiPeaklvl5, avoidPlayerCenter);
 rmSetAreaSmoothDistance(fujiPeaklvl5, 40);
+rmSetAreaHeightBlend(fujiPeaklvl5, 2.0);
 rmSetAreaCoherence(fujiPeaklvl5, .8);
 rmBuildArea(fujiPeaklvl5); 
 
@@ -1698,56 +1701,56 @@ string wokou1ID = "97";
 string wokou2ID = "113";
 
 if (cNumberNonGaiaPlayers == 1){
-pirate1ID = "6";
+pirate1ID = "7";
 pirate2ID = "65";
 wokou1ID = "97";
 wokou2ID = "113";
 volcanoID = "270";
 }
 if (cNumberNonGaiaPlayers == 2){
-pirate1ID = "7";
+pirate1ID = "8";
 pirate2ID = "66";
 wokou1ID = "98";
 wokou2ID = "114";
 volcanoID = "271";
 }
 if (cNumberNonGaiaPlayers == 3){
-pirate1ID = "8";
+pirate1ID = "9";
 pirate2ID = "67";
 wokou1ID = "99";
 wokou2ID = "115";
 volcanoID = "272";
 }
 if (cNumberNonGaiaPlayers == 4){
-pirate1ID = "9";
+pirate1ID = "10";
 pirate2ID = "68";
 wokou1ID = "100";
 wokou2ID = "116";
 volcanoID = "273";
 }
 if (cNumberNonGaiaPlayers == 5){
-pirate1ID = "10";
+pirate1ID = "11";
 pirate2ID = "69";
 wokou1ID = "101";
 wokou2ID = "117";
 volcanoID = "274";
 }
 if (cNumberNonGaiaPlayers == 6){
-pirate1ID = "11";
+pirate1ID = "12";
 pirate2ID = "70";
 wokou1ID = "102";
 wokou2ID = "118";
 volcanoID = "275";
 }
 if (cNumberNonGaiaPlayers == 7){
-pirate1ID = "12";
+pirate1ID = "13";
 pirate2ID = "71";
 wokou1ID = "103";
 wokou2ID = "119";
 volcanoID = "276";
 }
 if (cNumberNonGaiaPlayers == 8){
-pirate1ID = "13";
+pirate1ID = "14";
 pirate2ID = "72";
 wokou1ID = "104";
 wokou2ID = "120";

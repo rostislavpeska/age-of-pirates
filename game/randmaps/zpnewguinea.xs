@@ -88,7 +88,7 @@ int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true
 int flagVsWokou1 = rmCreateTypeDistanceConstraint("flag avoid wokou1", "zpWokouWaterSpawnFlag1", 15);
 int flagVsWokou2 = rmCreateTypeDistanceConstraint("flag avoid wokou2", "zpWokouWaterSpawnFlag2", 15);
 int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid other", "HomeCityWaterSpawnFlag", 15);
-int avoidPirates=rmCreateTypeDistanceConstraint("avoid socket pirates", "zpSocketWokou", 60.0);
+int avoidPirates=rmCreateTypeDistanceConstraint("avoid socket pirates", "zpSocketWokou", 40.0+cNumberNonGaiaPlayers*4);
 int avoidPiratesShort=rmCreateTypeDistanceConstraint("avoid socket pirates short", "zpSocketWokou", 15.0);
 int avoidAll=rmCreateTypeDistanceConstraint("avoid all", "all", 6.0);
 int avoidTradeSockets = rmCreateTypeDistanceConstraint("avoid trade sockets", "sockettraderoute", 20.0);
@@ -555,10 +555,10 @@ int nativeID4 = -1;
 int jesuitID0 = -1;
 int jesuitID1 = -1;
 
-int natDistance = cNumberNonGaiaPlayers*2;
-int avoidNatives = rmCreateClassDistanceConstraint("natives avoid natives", rmClassID("patch"), 60+natDistance);
+int natDistance = cNumberNonGaiaPlayers*6;
+int avoidNatives = rmCreateClassDistanceConstraint("natives avoid natives", rmClassID("patch"), 31+natDistance);
 
-int nativeID0Type = rmRandInt(1,5);
+int nativeID0Type = rmRandInt(1,2);
 nativeID0 = rmCreateGrouping("native site 0", "Korowai_Village_0"+nativeID0Type);
 rmSetGroupingMinDistance(nativeID0, 0.00);
 rmSetGroupingMaxDistance(nativeID0, rmXFractionToMeters(0.35));
@@ -566,11 +566,12 @@ rmAddGroupingToClass(nativeID0, rmClassID("patch"));
 rmAddGroupingConstraint(nativeID0, avoidNatives);
 rmAddGroupingConstraint(nativeID0, avoidWaterShort);
 rmAddGroupingConstraint(nativeID0, avoidPlateauSPC);
-rmAddGroupingConstraint(nativeID0, avoidCenter);
+if (cNumberNonGaiaPlayers>=4)
+	rmAddGroupingConstraint(nativeID0, avoidCenter);
 rmAddGroupingConstraint(nativeID0, avoidPirates);
 rmAddGroupingConstraint(nativeID0, circleConstraint2);
 
-int nativeID1Type = rmRandInt(1,5);
+int nativeID1Type = rmRandInt(1,2);
 nativeID1 = rmCreateGrouping("native site 1", "Korowai_Village_0"+nativeID1Type);
 rmSetGroupingMinDistance(nativeID1, 0.00);
 rmSetGroupingMaxDistance(nativeID1, rmXFractionToMeters(0.35));
@@ -578,11 +579,12 @@ rmAddGroupingToClass(nativeID1, rmClassID("patch"));
 rmAddGroupingConstraint(nativeID1, avoidNatives);
 rmAddGroupingConstraint(nativeID1, avoidWaterShort);
 rmAddGroupingConstraint(nativeID1, avoidPlateauSPC);
-rmAddGroupingConstraint(nativeID1, avoidCenter);
+if (cNumberNonGaiaPlayers>=4)
+	rmAddGroupingConstraint(nativeID1, avoidCenter);
 rmAddGroupingConstraint(nativeID1, avoidPirates);
 rmAddGroupingConstraint(nativeID1, circleConstraint2);
 
-int nativeID2Type = rmRandInt(1,5);
+int nativeID2Type = rmRandInt(3,5);
 nativeID2 = rmCreateGrouping("native site 2", "Korowai_Village_0"+nativeID2Type);
 rmSetGroupingMinDistance(nativeID2, 0.00);
 rmSetGroupingMaxDistance(nativeID2, rmXFractionToMeters(0.35));
@@ -594,7 +596,7 @@ rmAddGroupingConstraint(nativeID2, avoidCenter);
 rmAddGroupingConstraint(nativeID2, avoidPirates);
 rmAddGroupingConstraint(nativeID2, circleConstraint2);
 
-int nativeID3Type = rmRandInt(1,5);
+int nativeID3Type = rmRandInt(3,5);
 nativeID3 = rmCreateGrouping("native site 3", "Korowai_Village_0"+nativeID3Type);
 rmSetGroupingMinDistance(nativeID3, 0.00);
 rmSetGroupingMaxDistance(nativeID3, rmXFractionToMeters(0.35));
@@ -652,11 +654,20 @@ else {
 }
 
 //place korowai	
-rmPlaceGroupingAtLoc(nativeID0, 0, 0.2, 0.5);
-rmPlaceGroupingAtLoc(nativeID1, 0, 0.8, 0.5);
+if (PlayerNum <= 3){
+	rmPlaceGroupingAtLoc(nativeID0, 0, 0.3, 0.5);
+	rmPlaceGroupingAtLoc(nativeID1, 0, 0.7, 0.5);
+}
+else{
+	rmPlaceGroupingAtLoc(nativeID0, 0, 0.2, 0.5);
+	rmPlaceGroupingAtLoc(nativeID1, 0, 0.8, 0.5);
+}
 
 if (PlayerNum >= 3){
-	rmPlaceGroupingAtLoc(nativeID2, 0, 0.5, 0.8);
+	if (mapVariant == 1)
+		rmPlaceGroupingAtLoc(nativeID2, 0, 0.5, 0.8);
+	else
+		rmPlaceGroupingAtLoc(nativeID2, 0, 0.5, 0.2);
 	rmPlaceGroupingAtLoc(nativeID3, 0, 0.5, 0.4);
 }
 if (PlayerNum >= 7)
