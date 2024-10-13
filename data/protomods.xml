@@ -35148,6 +35148,71 @@
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
   </unit>
+  <unit id="20471" name="zpTasmanianDevil">
+    <dbid>20471</dbid>
+    <displaynameid>301813</displaynameid>
+    <editornameid>301814</editornameid>
+    <obstructionradiusx>0.6400</obstructionradiusx>
+    <obstructionradiusz>0.6400</obstructionradiusz>
+    <idletimeout>5.0000</idletimeout>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>7.0000</maxvelocity>
+    <maxrunvelocity>9.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <wanderdistance>3</wanderdistance>
+    <animfile>units\animals\tasmanian_devil\tasmaniandevil.xml</animfile>
+    <impacttype>Animal</impacttype>
+    <icon>resources\art\units\animals\tasmanian_devil\tasmaniandevil_icon.png</icon>
+    <portraiticon>resources\art\units\animals\tasmanian_devil\tasmaniandevil_portrait.png</portraiticon>
+    <rollovertextid>28232</rollovertextid>
+    <shortrollovertextid>301815</shortrollovertextid>
+    <initialhitpoints>80.0000</initialhitpoints>
+    <maxhitpoints>80.0000</maxhitpoints>
+    <los>9.0000</los>
+    <unitaitype>Predator</unitaitype>
+    <initialunitaistance>Defensive</initialunitaistance>
+    <bounty>6.0000</bounty>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>AnimalPrey</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>Guardian</unittype>
+    <unittype>AnimalGuardian</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>RMCanRotate</flag>
+    <flag>Wanders</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <tactics>predator.tactics</tactics>
+    <protoaction>
+      <name>HandAttack</name>
+      <damage>9.000000</damage>
+      <rof>1.500000</rof>
+      <damagetype>Hand</damagetype>
+    </protoaction>
+  </unit>
 
   
  
