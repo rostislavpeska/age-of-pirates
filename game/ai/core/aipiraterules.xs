@@ -274,6 +274,52 @@ minInterval 1
 }
 
 //==============================================================================
+/* underWaterNavalStrengthAtLoc
+   Calculates naval strength, including warships, divers, and mines. 
+*/
+//==============================================================================
+
+int underWaterNavalStrengthAtLoc(int playerRelation = -1, vector location = cInvalidVector, int radius = 30)
+{
+      // Enemy Navy Value
+      int NavyQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, playerRelation, cUnitStateAlive, location, radius);
+      int NavySize = kbUnitQueryExecute(NavyQuery);
+      int NavyValue = 0;
+      int MineQuery = createSimpleUnitQuery(cUnitTypezpNavalmine, playerRelation, cUnitStateAlive, location, radius);
+      int MineSize = kbUnitQueryExecute(MineQuery);
+      int unitID = -1;
+      int puid = -1;
+      int DiverQuery = createSimpleUnitQuery(cUnitTypeAbstractDiver, playerRelation, cUnitStateAlive, location, radius);
+      int DiverSize = kbUnitQueryExecute(DiverQuery);
+
+      for (i = 0; < NavySize)
+      {
+         unitID = kbUnitQueryGetResult(NavyQuery, i);
+         puid = kbUnitGetProtoUnitID(unitID);
+         NavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                           kbUnitCostPerResource(puid, cResourceInfluence));
+      }
+
+      for (i = 0; < MineSize)
+      {
+         unitID = kbUnitQueryGetResult(MineQuery, i);
+         puid = kbUnitGetProtoUnitID(unitID);
+         NavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                           kbUnitCostPerResource(puid, cResourceInfluence));
+      }
+
+      for (i = 0; < DiverSize)
+      {
+         unitID = kbUnitQueryGetResult(DiverQuery, i);
+         puid = kbUnitGetProtoUnitID(unitID);
+         NavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                           kbUnitCostPerResource(puid, cResourceInfluence));
+      }
+
+   return (NavyValue);
+}
+
+//==============================================================================
 /* getUnderwaterResourceClump
    Returns closest clump of underwater resources
 */
@@ -348,6 +394,12 @@ vector getUnderwaterResourceClump(int closeMidFar = -1)
          closenessVar = numFound / 1.5;
       }
       vector closestClumpPosition = kbUnitGetPosition(kbUnitQueryGetResult(unitQueryID, closenessVar)); 
+      int enWarshipStrength = underWaterNavalStrengthAtLoc(cPlayerRelationEnemyNotGaia, closestClumpPosition, 20);
+      int frWarshipStrength = underWaterNavalStrengthAtLoc(cPlayerRelationAlly, closestClumpPosition, 20);
+      if (enWarshipStrength > frWarshipStrength)
+      {  // Default to closest one if the desired area has enemies
+         closestClumpPosition = kbUnitGetPosition(kbUnitQueryGetResult(unitQueryID, 0)); 
+      }
       xsSetContextPlayer(cMyID);
       return (closestClumpPosition);
    }
@@ -388,41 +440,6 @@ vector getUnderwaterAreaOfOperations(void)
    return returnVector;
 }
 
-//==============================================================================
-/* underWaterNavalStrengthAtLoc
-   Calculates naval strength, including warships, divers, and mines. 
-*/
-//==============================================================================
-
-int underWaterNavalStrengthAtLoc(int playerRelation = -1, vector location = cInvalidVector, int radius = 30)
-{
-      // Enemy Navy Value
-      int NavyQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, playerRelation, cUnitStateAlive, location, radius);
-      int NavySize = kbUnitQueryExecute(NavyQuery);
-      int NavyValue = 0;
-      int MineQuery = createSimpleUnitQuery(cUnitTypezpNavalmine, playerRelation, cUnitStateAlive, location, radius);
-      int MineSize = kbUnitQueryExecute(MineQuery);
-      int unitID = -1;
-      int puid = -1;
-
-      for (i = 0; < NavySize)
-      {
-         unitID = kbUnitQueryGetResult(NavyQuery, i);
-         puid = kbUnitGetProtoUnitID(unitID);
-         NavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
-                           kbUnitCostPerResource(puid, cResourceInfluence));
-      }
-
-      for (i = 0; < MineSize)
-      {
-         unitID = kbUnitQueryGetResult(MineQuery, i);
-         puid = kbUnitGetProtoUnitID(unitID);
-         NavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
-                           kbUnitCostPerResource(puid, cResourceInfluence));
-      }
-
-   return (NavyValue);
-}
 
 //==============================================================================
 /* addDiversToReservePlan
@@ -459,6 +476,54 @@ void addDiversToReservePlan(void)
          aiPlanAddUnit(diverReservePlan, tempDiver);
       }
    }
+}
+
+//==============================================================================
+/* diverDefenseReflex
+   Tasks underwater divers to nearest resource
+*/
+//==============================================================================
+
+bool diverDefenseReflex(vector location = cInvalidVector)
+{
+   int diverQuery = createSimpleUnitQuery(cUnitTypezpDiver, cPlayerRelationSelf, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(diverQuery);
+   int tempDiver = -1;
+   vector tempDiverLoc = cInvalidVector;
+   vector tempResLocation = cInvalidVector;
+   int tempClosestEn = -1;
+   int tempDiverCount = -1;
+   int tempDiverPlanID = -1;
+   int currentDiverPlan = -1;
+   bool attacking = false;
+
+   if (location == cInvalidVector)
+   {
+      location = getUnderwaterAreaOfOperations();
+   }
+
+   tempClosestEn = getClosestUnitByLocation(cUnitTypeShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, location, 40);
+   if (tempClosestEn < 0)
+   {
+      tempClosestEn = getClosestUnitByLocation(cUnitTypeAbstractDiver, cPlayerRelationEnemyNotGaia, cUnitStateAlive, location, 40);
+   }
+
+   if (tempClosestEn > 0)
+   {
+      attacking = true;
+      for (i = 0; < numberFound)
+      {
+         tempDiver = kbUnitQueryGetResult(diverQuery, i);
+         tempDiverPlanID = kbUnitGetPlanID(tempDiver);
+         currentDiverPlan = aiPlanGetType(tempDiverPlanID);
+         if (currentDiverPlan != cPlanBuild)
+         {
+            aiTaskUnitWork(tempDiver, tempClosestEn);
+         }
+      }
+   }
+
+   return attacking;
 }
 
 //==============================================================================
@@ -712,19 +777,38 @@ minInterval 10
    int enemyStrength = underWaterNavalStrengthAtLoc(cPlayerRelationEnemyNotGaia, underwaterAO, 40);
 
    addDiversToReservePlan();          // Put divers into reserve plan before trying to task
-   taskIdleDiverVills(underwaterAO);  // We can always safely do this. Only tasks idle divers
-
-   if (ourStrength >= enemyStrength)
-   {
-      // We have the advantage, so send all our surface boats here
-      gNavyVec = underwaterAO;
+   
+   if (diverDefenseReflex(underwaterAO) == false)
+   {  // Task divers to resources if we don't have anyone to attack
+      taskIdleDiverVills(underwaterAO);
       fortifyUnderwaterAO(underwaterAO);  // Build mines and diving bells
-   }
-   else
-   {  // We need to retake it if the enemy has it. The function will calculate if this is a good idea
-      int attackPlanID = createUnderwaterAttackPlan(underwaterAO, 60);
       gNavyVec = kbUnitGetPosition(gWaterSpawnFlagID);
    }
+   else  // We're attacking something, so see if we should send ships
+   {  
+      if (ourStrength > 1.5 * enemyStrength)
+      {
+         // We have the advantage, so no need to defend
+         gNavyVec = kbUnitGetPosition(gWaterSpawnFlagID);
+      }
+      else
+      {  
+         ourStrength = ourStrength + underWaterNavalStrengthAtLoc(cPlayerRelationAlly, kbUnitGetPosition(gWaterSpawnFlagID), 40);
+         if (ourStrength > enemyStrength)
+         {
+            // We need help and we can help with what we have
+            gNavyVec = underwaterAO;
+         }
+      }
+   }
+
+   if (aiPlanGetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0) != gNavyVec)
+   {  // Moves the navy defend plan
+      aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0, gNavyVec);
+      aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanGatherPoint, 0, gNavyVec);
+   }
+
+
 }
 
 //==============================================================================
@@ -732,7 +816,7 @@ minInterval 10
 //==============================================================================
 rule zpDiverTechMonitor
 inactive
-mininterval 60
+minInterval 60
 {
    if (kbUnitCount(cMyID, cUnitTypeAbstractDivingBell, cUnitStateAny) == 0)
       {
