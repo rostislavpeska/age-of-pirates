@@ -211,6 +211,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
@@ -2455,6 +2458,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
@@ -3211,6 +3217,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect> 
@@ -5785,6 +5794,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
@@ -6384,6 +6396,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
@@ -6579,6 +6594,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
@@ -6925,6 +6943,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
@@ -9037,6 +9058,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
@@ -10463,6 +10487,9 @@
       <effect type="TechStatus" status="obtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="obtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
@@ -11197,7 +11224,10 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
-      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
@@ -11800,7 +11830,10 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
-      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>  
       <effect type="TechStatus" status="obtainable">zpConsulateWesternWyatEarp</effect> 
       <effect type="TechStatus" status="obtainable">zpConsulateWesternPinkertons</effect>  
@@ -13587,6 +13620,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
@@ -13828,6 +13864,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
@@ -13984,6 +14023,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
@@ -15040,6 +15082,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
       <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>

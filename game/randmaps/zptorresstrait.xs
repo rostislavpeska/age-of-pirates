@@ -150,6 +150,7 @@ int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true
 int avoidAll=rmCreateTypeDistanceConstraint("avoid all", "all", 6.0);
 int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "zpJadeMine", 35.0);
 int avoidGold=rmCreateTypeDistanceConstraint("avoid gold", "MineGold", 35.0);
+int avoidGoldShort=rmCreateTypeDistanceConstraint("avoid gold short", "MineGold", 30.0);
 int mediumAvoidImpassableLand=rmCreateTerrainDistanceConstraint("medium avoid impassable land", "Land", false, 12.0);
 int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 30.0);
 int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 30.0);
@@ -745,13 +746,15 @@ rmAddObjectDefConstraint(TCID, avoidTownCenterFar);
 rmAddObjectDefConstraint(TCID, playerEdgeConstraint);
 rmAddObjectDefConstraint(TCID, avoidImpassableLand);
 rmAddObjectDefConstraint(TCID, playersAwayPort);
-if (cNumberTeams <= 2 || cNumberNonGaiaPlayers <=4)
+if (cNumberTeams <= 2 || cNumberNonGaiaPlayers <=4){
 	rmAddObjectDefConstraint(TCID, avoidBonusIslands);
+	rmAddObjectDefConstraint(TCID, avoidMountains);
+}
 rmAddObjectDefConstraint(TCID, avoidKorowaiLong);
 rmAddObjectDefConstraint(TCID, avoidAboriginalsLong);
 rmAddObjectDefConstraint(TCID, avoidPirates);
 rmAddObjectDefConstraint(TCID, avoidWokou);
-rmAddObjectDefConstraint(TCID, avoidMountains);
+rmAddObjectDefConstraint(TCID, avoidWater10);
 
 // Fake Frouping to fix the auto-grouping TC bug
 int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
@@ -811,16 +814,22 @@ rmSetStatusText("",0.50);
 int goldID = rmCreateObjectDef("gold mine");
 rmAddObjectDefItem(goldID, "MineGold", 1, 0.0);
 rmSetObjectDefMinDistance(goldID, 0.0);
-rmSetObjectDefMaxDistance(goldID, 30);
+rmSetObjectDefMaxDistance(goldID, 60);
 rmAddObjectDefConstraint(goldID, avoidAll);
+rmAddObjectDefConstraint(goldID, avoidGoldShort);
 rmAddObjectDefConstraint(goldID, avoidImpassableLand);
-rmPlaceObjectDefAtLoc(goldID, 0, 0.5, 0.8);
+rmAddObjectDefConstraint(goldID, avoidTeamIslands);
+rmPlaceObjectDefAtLoc(goldID, 0, 0.5, 0.8, cNumberTeams/2);
 
 int goldID2 = rmCreateObjectDef("gold mine2");
 rmAddObjectDefItem(goldID2, "MineGold", 1, 0.0);
 rmSetObjectDefMinDistance(goldID2, 0.0);
-rmSetObjectDefMaxDistance(goldID2, 30);
-rmPlaceObjectDefAtLoc(goldID2, 0, 0.5, 0.2);
+rmSetObjectDefMaxDistance(goldID2, 60);
+rmAddObjectDefConstraint(goldID2, avoidAll);
+rmAddObjectDefConstraint(goldID2, avoidGoldShort);
+rmAddObjectDefConstraint(goldID2, avoidImpassableLand);
+rmAddObjectDefConstraint(goldID2, avoidTeamIslands);
+rmPlaceObjectDefAtLoc(goldID2, 0, 0.5, 0.2, cNumberTeams/2);
 
 
 int silverType = -1;

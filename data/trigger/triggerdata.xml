@@ -4014,5 +4014,46 @@
       <command>}</command>
       <command>rule hdkzuzkz2985598454 active { if (true) { //</command>
     </effect>
+    <effect name="ZP Native AutoSetup: XMassVillage">
+      <command>}}</command>
+      <command>rule XMassVillage_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int XMassVillageFaction=-1;</command>
+      <command>if (XMassVillageFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomXMassVillageFaction", 0, 2);</command>
+      <command>XMassVillageFaction = trQuestVarGet("RandomXMassVillageFaction");</command>
+      <command>}</command>
+      <command>if (XMassVillageFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateXMass3, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (XMassVillageFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateXMass2, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (XMassVillageFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateXMass1, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpXMassExpansion)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffXMass, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hrtzzz298559412547 active { if (true) { //</command>
+    </effect>
   </effects>
 </trigger>
