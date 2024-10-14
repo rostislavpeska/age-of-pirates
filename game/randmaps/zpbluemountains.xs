@@ -972,6 +972,7 @@ void main(void)
 	rmAddObjectDefConstraint(TCID, avoidTrainStationA);
 	rmAddObjectDefConstraint(TCID, avoidTrainStationB);
 	rmAddObjectDefConstraint(TCID, playerEdgeConstraint);
+	rmAddObjectDefConstraint(TCID, avoidTradeRouteMin);
 	rmAddObjectDefConstraint(TCID, AvoidAboriginals);
 	rmSetObjectDefMinDistance(TCID, 10.0);
 	rmSetObjectDefMaxDistance(TCID, 17.0);

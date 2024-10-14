@@ -1,5 +1,5 @@
-// Lake Eyre
-// 08/2024
+// WILD WEST
+// January 2024
 
 int TeamNum = cNumberTeams;
 int PlayerNum = cNumberNonGaiaPlayers;
@@ -775,7 +775,7 @@ rmSetAreaLocation(pirateSite1, rmXMetersToFraction(xsVectorGetX(ControllerLoc)),
 rmSetAreaMix(pirateSite1, "california_snowground2");
 rmSetAreaCoherence(pirateSite1, 1);
 rmSetAreaSmoothDistance(pirateSite1, 30);
-rmSetAreaBaseHeight(pirateSite1, 0.0);
+rmSetAreaBaseHeight(pirateSite1, 1.0);
 rmBuildArea(pirateSite1);
 
 int pirateSite2 = rmCreateArea ("pirate_site2");
@@ -784,7 +784,7 @@ rmSetAreaLocation(pirateSite2, rmXMetersToFraction(xsVectorGetX(ControllerLoc2))
 rmSetAreaMix(pirateSite2, "california_snowground2");
 rmSetAreaCoherence(pirateSite2, 1);
 rmSetAreaSmoothDistance(pirateSite2, 30);
-rmSetAreaBaseHeight(pirateSite2, 0.0);
+rmSetAreaBaseHeight(pirateSite2, 1.0);
 rmBuildArea(pirateSite2);
 
 // Pirate Village 1
@@ -964,6 +964,7 @@ rmAddObjectDefConstraint(TCID, avoidTradeRouteSocketMin);
 rmAddObjectDefConstraint(TCID, avoidTrainStationA);
 rmAddObjectDefConstraint(TCID, avoidTrainStationB);
 rmAddObjectDefConstraint(TCID, longPlayerEdgeConstraint);
+rmAddObjectDefConstraint(TCID, avoidTradeRouteMin);
 rmSetObjectDefMinDistance(TCID, 10.0);
 rmSetObjectDefMaxDistance(TCID, 17.0);
 

@@ -960,7 +960,7 @@
       <difficulty>3</difficulty>
     </nugget>
     <nugget>
-      <name>Mahogany2</name>
+      <name>zpMahogany2</name>
       <type>AdjustResource</type>
       <nuggetunit>zpNuggetHawaii</nuggetunit>
       <rolloverstringid>25500</rolloverstringid>
