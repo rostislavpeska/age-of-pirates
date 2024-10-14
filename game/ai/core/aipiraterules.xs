@@ -273,6 +273,42 @@ minInterval 1
 }
 
 //==============================================================================
+/* underWaterNavalStrengthAtLoc
+   Calculates naval strength, including warships, divers, and mines. 
+*/
+//==============================================================================
+
+int underWaterNavalStrengthAtLoc(int playerRelation = -1, vector location = cInvalidVector, int radius = 30)
+{
+      // Enemy Navy Value
+      int NavyQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, playerRelation, cUnitStateAlive, location, radius);
+      int NavySize = kbUnitQueryExecute(NavyQuery);
+      int NavyValue = 0;
+      int MineQuery = createSimpleUnitQuery(cUnitTypezpNavalmine, playerRelation, cUnitStateAlive, location, radius);
+      int MineSize = kbUnitQueryExecute(MineQuery);
+      int unitID = -1;
+      int puid = -1;
+
+      for (i = 0; < NavySize)
+      {
+         unitID = kbUnitQueryGetResult(NavyQuery, i);
+         puid = kbUnitGetProtoUnitID(unitID);
+         NavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                           kbUnitCostPerResource(puid, cResourceInfluence));
+      }
+
+      for (i = 0; < MineSize)
+      {
+         unitID = kbUnitQueryGetResult(MineQuery, i);
+         puid = kbUnitGetProtoUnitID(unitID);
+         NavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                           kbUnitCostPerResource(puid, cResourceInfluence));
+      }
+
+   return (NavyValue);
+}
+
+//==============================================================================
 /* getUnderwaterResourceClump
    Returns closest clump of underwater resources
 */
@@ -347,6 +383,12 @@ vector getUnderwaterResourceClump(int closeMidFar = -1)
          closenessVar = numFound / 1.5;
       }
       vector closestClumpPosition = kbUnitGetPosition(kbUnitQueryGetResult(unitQueryID, closenessVar)); 
+      int enWarshipStrength = underWaterNavalStrengthAtLoc(cPlayerRelationEnemyNotGaia, closestClumpPosition, 20);
+      int frWarshipStrength = underWaterNavalStrengthAtLoc(cPlayerRelationAlly, closestClumpPosition, 20);
+      if (enWarshipStrength > frWarshipStrength)
+      {  // Default to closest one if the desired area has enemies
+         closestClumpPosition = kbUnitGetPosition(kbUnitQueryGetResult(unitQueryID, 0)); 
+      }
       xsSetContextPlayer(cMyID);
       return (closestClumpPosition);
    }
@@ -387,41 +429,6 @@ vector getUnderwaterAreaOfOperations(void)
    return returnVector;
 }
 
-//==============================================================================
-/* underWaterNavalStrengthAtLoc
-   Calculates naval strength, including warships, divers, and mines. 
-*/
-//==============================================================================
-
-int underWaterNavalStrengthAtLoc(int playerRelation = -1, vector location = cInvalidVector, int radius = 30)
-{
-      // Enemy Navy Value
-      int NavyQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, playerRelation, cUnitStateAlive, location, radius);
-      int NavySize = kbUnitQueryExecute(NavyQuery);
-      int NavyValue = 0;
-      int MineQuery = createSimpleUnitQuery(cUnitTypezpNavalmine, playerRelation, cUnitStateAlive, location, radius);
-      int MineSize = kbUnitQueryExecute(MineQuery);
-      int unitID = -1;
-      int puid = -1;
-
-      for (i = 0; < NavySize)
-      {
-         unitID = kbUnitQueryGetResult(NavyQuery, i);
-         puid = kbUnitGetProtoUnitID(unitID);
-         NavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
-                           kbUnitCostPerResource(puid, cResourceInfluence));
-      }
-
-      for (i = 0; < MineSize)
-      {
-         unitID = kbUnitQueryGetResult(MineQuery, i);
-         puid = kbUnitGetProtoUnitID(unitID);
-         NavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
-                           kbUnitCostPerResource(puid, cResourceInfluence));
-      }
-
-   return (NavyValue);
-}
 
 //==============================================================================
 /* addDiversToReservePlan
@@ -721,8 +728,15 @@ minInterval 10
    }
    else
    {  // We need to retake it if the enemy has it. The function will calculate if this is a good idea
-      int attackPlanID = createUnderwaterAttackPlan(underwaterAO, 60);
+      //int attackPlanID = createUnderwaterAttackPlan(underwaterAO, 60);
+      // NOTE: For now, just let normal attack manager deal with it. 
       gNavyVec = kbUnitGetPosition(gWaterSpawnFlagID);
+   }
+
+   if (aiPlanGetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0) != gNavyVec)
+   {  // Moves the navy defend plan
+      aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0, gNavyVec);
+      aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanGatherPoint, 0, gNavyVec);
    }
 }
 
