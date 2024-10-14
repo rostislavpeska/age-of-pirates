@@ -33484,8 +33484,8 @@
     <maxrunvelocity>3.0000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\infantry_ranged\deep_sea_diver\deep_sea_diver.xml</animfile>
-    <impacttype>Flesh</impacttype>
+    <animfile>units\infantry_ranged\deep_sea_diver\deep_sea_diver_skeleton.xml</animfile>
+    <impacttype>Stone</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\naval\deep_sea_diver_icon.png</icon>
     <portraiticon>resources\art\units\naval\deep_sea_diver_portrait.png</portraiticon>
@@ -33628,7 +33628,7 @@
     </protoaction>
     <protoaction>
       <name>Build</name>
-      <rate type="zpDivingBell">2.500000</rate>
+      <rate type="zpDivingBell">1.000000</rate>
     </protoaction>
   </unit>
   <unit id="20450" name="zpSapphirelMine">
@@ -33662,6 +33662,7 @@
     <unittype>Resource</unittype>
     <unittype>Gold</unittype>
     <unittype>AbstractUnderwaterMine</unittype>
+    <unittype>GatherableOnlyByDivers</unittype>
     <unittype>AbstractFishOrWhale</unittype>
     <unittype>MinedResource</unittype>
     <flag>RMCanRotate</flag>
@@ -33718,6 +33719,7 @@
     <unittype>Resource</unittype>
     <unittype>Gold</unittype>
     <unittype>AbstractUnderwaterMine</unittype>
+    <unittype>GatherableOnlyByDivers</unittype>
     <unittype>AbstractFishOrWhale</unittype>
     <unittype>MinedResource</unittype>
     <flag>RMCanRotate</flag>
@@ -33774,6 +33776,7 @@
     <unittype>Resource</unittype>
     <unittype>Wood</unittype>
     <unittype>AbstractUnderwaterMine</unittype>
+    <unittype>GatherableOnlyByDivers</unittype>
     <unittype>AbstractFishOrWhale</unittype>
     <unittype>MinedResource</unittype>
     <flag>RMCanRotate</flag>
@@ -34598,7 +34601,7 @@
     <maxhitpoints>1900.0000</maxhitpoints>
     <los>34.0000</los>
     <unitaitype>RangedCombative</unitaitype>
-    <buildpoints>120.0000</buildpoints>
+    <buildpoints>40.0000</buildpoints>
     <buildlimit>1</buildlimit>
     <bounty>20.0000</bounty>
     <buildbounty>20.0000</buildbounty>
@@ -34642,6 +34645,7 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractUnderwaterBuilding</unittype>
+    <unittype>AbstractDivingBell</unittype>
     <train row="0" page="1" column="1">zpDiver</train>
     <tech row="0" page="1" column="2">zpImperialDivers</tech>
     <tech row="0" page="2" column="0">zpDiversSpawn</tech>
@@ -34697,7 +34701,7 @@
     <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>water</movementtype>
-    <animfile>buildings\gold_mine\coral_mine_deep.xml</animfile>
+    <animfile>buildings\gold_mine\coral_mine.xml</animfile>
     <impacttype>Wood</impacttype>
     <icon>resources\art\terrain\minerals\pearls\deep_pearls_portrait.png</icon>
     <minimapicon>ui\minimap\minimap_whale</minimapicon>
@@ -34846,6 +34850,7 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractUnderwaterBuilding</unittype>
+    <unittype>AbstractDivingBell</unittype>
     <train row="0" page="1" column="1">zpDiver</train>
     <tech row="0" page="1" column="2">zpImperialDivers</tech>
     <tech row="0" page="2" column="0">zpDiversSpawn</tech>
@@ -35123,6 +35128,7 @@
     <unittype>Resource</unittype>
     <unittype>Gold</unittype>
     <unittype>AbstractUnderwaterMine</unittype>
+    <unittype>GatherableOnlyByDivers</unittype>
     <unittype>AbstractFishOrWhale</unittype>
     <unittype>MinedResource</unittype>
     <flag>RMCanRotate</flag>
@@ -35147,6 +35153,122 @@
     <command page="10" column="7">Delete</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
+  </unit>
+  <unit id="20471" name="zpTasmanianDevil">
+    <dbid>20471</dbid>
+    <displaynameid>301813</displaynameid>
+    <editornameid>301814</editornameid>
+    <obstructionradiusx>0.6400</obstructionradiusx>
+    <obstructionradiusz>0.6400</obstructionradiusz>
+    <idletimeout>5.0000</idletimeout>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>7.0000</maxvelocity>
+    <maxrunvelocity>9.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <wanderdistance>3</wanderdistance>
+    <animfile>units\animals\tasmanian_devil\tasmaniandevil.xml</animfile>
+    <impacttype>Animal</impacttype>
+    <icon>resources\art\units\animals\tasmanian_devil\tasmaniandevil_icon.png</icon>
+    <portraiticon>resources\art\units\animals\tasmanian_devil\tasmaniandevil_portrait.png</portraiticon>
+    <rollovertextid>28232</rollovertextid>
+    <shortrollovertextid>301815</shortrollovertextid>
+    <initialhitpoints>80.0000</initialhitpoints>
+    <maxhitpoints>80.0000</maxhitpoints>
+    <los>9.0000</los>
+    <unitaitype>Predator</unitaitype>
+    <initialunitaistance>Defensive</initialunitaistance>
+    <bounty>6.0000</bounty>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>AnimalPrey</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>Guardian</unittype>
+    <unittype>AnimalGuardian</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>RMCanRotate</flag>
+    <flag>Wanders</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <tactics>predator.tactics</tactics>
+    <protoaction>
+      <name>HandAttack</name>
+      <damage>18.000000</damage>
+      <rof>3.000000</rof>
+      <damagetype>Hand</damagetype>
+    </protoaction>
+  </unit>
+  <unit id="20472" name="zpNavigationChart">
+    <dbid>20472</dbid>
+    <displaynameid>36210</displaynameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>nuggets\spc_navigation_chart\spc_navigation_chart.xml</animfile>
+    <icon>resources\art\objects\treasure\treasure_icon_64x64.png</icon>
+    <minimapicon>ui\minimap\treasure</minimapicon>
+    <portraiticon>resources\art\objects\treasure\treasure_portrait.png</portraiticon>
+    <los>9.0000</los>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>AbstractNugget</unittype>
+    <unittype>AbstractNuggetLand</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>NoHPBar</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ForceToGaia</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Nugget</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>Doppled</flag>
+    <flag>Tracked</flag>
   </unit>
 
   
@@ -35220,7 +35342,7 @@
     <maxrunvelocity>3.0000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\natives\maori\maori_javeliner.xml</animfile>
+    <animfile>units\infantry_ranged\deep_sea_diver\orang_laut_diver_skeleton.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\naval\deep_sea_diver_icon.png</icon>
@@ -35361,11 +35483,11 @@
     </protoaction>
     <protoaction>
       <name>VolleyRangedAttack</name>
-      <damage>10.000000</damage>
+      <damage>20.000000</damage>
       <damagetype>Ranged</damagetype>
       <minrange>2.000000</minrange>
       <maxrange>15.000000</maxrange>
-      <rof>1.500000</rof>
+      <rof>3.000000</rof>
       <projectile>Javelin</projectile>
       <damagebonus type="AbstractWarship">6.000000</damagebonus>
     </protoaction>

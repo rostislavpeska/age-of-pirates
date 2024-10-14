@@ -1,0 +1,365 @@
+<animfile>
+    <definebone>Bone_master</definebone>
+    <definebone>Bone_diver</definebone>
+    <attachment>Rider<include>units\infantry_ranged\deep_sea_diver\orang_laut_diver.xml</include></attachment>
+    <component>ModelComp
+        <assetreference type="GrannyModel">
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_Model</file>
+        </assetreference>
+        <attach a="Rider" frombone="MASTER" tobone="Bone_diver" syncanims="1"></attach>
+    </component>
+    <anim>Pickup
+        <assetreference type="GrannyAnim">
+            <file>animation_library\explorer\pickup_explorer_A</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Bubble_Sound">0.35</tag>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Death_by_melee
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\death_standing_rifleman_A</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.51</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\death_standing_rifleman_B</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.18</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\death_standing_rifleman_C</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.73</tag>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Death_by_range
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\death_standing_rifleman_A</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.52</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\death_standing_rifleman_B</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.17</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\death_standing_rifleman_C</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.72</tag>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Death_by_havoc
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\havoc_death</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\havoc_deathB</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\havoc_deathC</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\havoc_deathD</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Death_havoc_flail
+        <assetreference type="GrannyAnim">
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_idle_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Death_havoc_spin
+        <assetreference type="GrannyAnim">
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_idle_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Cheer
+       <assetreference type="GrannyAnim">
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_idle_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Recoil
+        <assetreference type="GrannyAnim">
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_idle_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Raze_Idle
+        <assetreference type="GrannyAnim">
+            <transitiontime>0.200</transitiontime>
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_idle_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Raze_Attack
+        <assetreference type="GrannyAnim">
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_idle_Anim</file>
+            <tag type="Attack">0.66</tag>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Cover_ranged_idle
+        <assetreference type="GrannyAnim">
+            <transitiontime>0.200</transitiontime>
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_idle_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Cover_bored
+       <assetreference type="GrannyAnim">
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_idle_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+   <anim animlengthoverride="3.0000">Cover_Walk
+       <assetreference type="GrannyAnim">
+            <transitiontime>0.200</transitiontime>
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_walk_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+   <anim animlengthoverride="3.0000">Cover_Jog
+        <assetreference type="GrannyAnim">
+            <transitiontime>0.200</transitiontime>
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_walk_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+   <anim animlengthoverride="3.0000">Cover_Run
+        <assetreference type="GrannyAnim">
+            <transitiontime>0.200</transitiontime>
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_walk_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Volley_standing_attack
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\volley\volley_standing_fire</file>
+            <tag type="Attack">0.46</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.46</tag>
+            <tag type="Particles" particlename="archertorch">0.46</tag>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Volley_standing_idle
+       <assetreference type="GrannyAnim">
+            <transitiontime>0.200</transitiontime>
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_idle_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Volley_standing_bored
+        <assetreference type="GrannyAnim">
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_idle_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+   <anim animlengthoverride="3.0000">Volley_walk
+        <assetreference type="GrannyAnim">
+            <transitiontime>0.200</transitiontime>
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_walk_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+   <anim animlengthoverride="3.0000">Volley_jog
+        <assetreference type="GrannyAnim">
+            <transitiontime>0.200</transitiontime>
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_walk_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+   <anim animlengthoverride="3.0000">Volley_run
+        <assetreference type="GrannyAnim">
+            <transitiontime>0.200</transitiontime>
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_walk_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+   <anim animlengthoverride="3.0000">Defend_idle
+        <assetreference type="GrannyAnim">
+            <transitiontime>0.200</transitiontime>
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_idle_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Defend_bored
+        <assetreference type="GrannyAnim">
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_idle_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Charge_idle
+        <assetreference type="GrannyAnim">
+            <transitiontime>0.200</transitiontime>
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_idle_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Charge_bored
+       <assetreference type="GrannyAnim">
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_idle_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Charge_attack
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\charge\cacadore_charge_attackA</file>
+            <tag type="Attack">0.51</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Swoosh">0.40</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\charge\cacadore_charge_attackB</file>
+            <tag type="Attack">0.52</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Swoosh">0.34</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\charge\charge_attackA</file>
+            <tag type="Attack">0.52</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\charge\charge_attackB</file>
+            <tag type="Attack">0.70</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\charge\charge_attackC</file>
+            <tag type="Attack">0.50</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Swoosh">0.42</tag>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+   <anim animlengthoverride="3.0000">Charge_Walk
+        <assetreference type="GrannyAnim">
+            <transitiontime>0.200</transitiontime>
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_walk_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+   <anim animlengthoverride="3.0000">Charge_Jog
+        <assetreference type="GrannyAnim">
+            <transitiontime>0.200</transitiontime>
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_walk_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+   <anim animlengthoverride="3.0000">Charge_Run
+        <assetreference type="GrannyAnim">
+            <transitiontime>0.200</transitiontime>
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_walk_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    
+    <anim animlengthoverride="2.0000">GatherMine
+        <assetreference type="GrannyAnim">
+            <file>animation_library\villager\villager_male_gathermine1</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Bubble_Sound">0.86</tag>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim animlengthoverride="2.0000">GatherHunt
+        <assetreference type="GrannyAnim">
+            <file>animation_library\villager\villager_male_gatherhunt1</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="GatherMeat">0.46</tag>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>GatherBush
+        <assetreference type="GrannyAnim">
+            <file>animation_library\villager\villager_gathefruit</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="GatherFruit">0.33</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="GatherFruit">0.57</tag>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>GatherCrate
+        <assetreference type="GrannyAnim">
+            <file>animation_library\villager\villager_male_gathercrate1</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="GatherFruit">0.56</tag>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>GatherCrateAttack
+        <assetreference type="GrannyAnim">
+            <file>units\infantry_ranged\deep_sea_diver\diver_attachment_idle_Anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>BuildLifting
+        <assetreference type="GrannyAnim">
+            <file>animation_library\2_leg_task\BuildLifting</file>
+            <weight>90</weight>
+            <tag type="Attack">0.66</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Bubble_Sound">0.37</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Bubble_Sound">0.67</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Bubble_Sound">1.00</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\2_leg_task\human_build_standing_idlea</file>
+            <weight>10</weight>
+            <tag type="Attack">0.66</tag>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>BuildSaw
+        <assetreference type="GrannyAnim">
+            <file>animation_library\2_leg_task\human_saw_standing</file>
+            <weight>90</weight>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Bubble_Sound">0.05</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Bubble_Sound">0.32</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Bubble_Sound">0.77</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\2_leg_task\human_saw_standing_idlea</file>
+            <weight>10</weight>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>BuildStaking
+        <assetreference type="GrannyAnim">
+            <file>animation_library\2_leg_task\human_saw_a</file>
+            <weight>90</weight>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\2_leg_task\human_saw_idlea</file>
+            <weight>10</weight>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>Build
+        <assetreference type="GrannyAnim">
+            <file>animation_library\villager\villager_male_build1</file>
+            <weight>90</weight>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Bubble_Sound">0.36</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Bubble_Sound">0.65</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Bubble_Sound">1.00</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\2_leg_task\Build_b</file>
+            <weight>10</weight>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\2_leg_task\Build_c</file>
+            <weight>10</weight>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\2_leg_task\Build_d</file>
+            <weight>10</weight>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\2_leg_task\Build_e</file>
+            <weight>10</weight>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\2_leg_task\Build_f</file>
+            <weight>10</weight>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+    <anim>GatherFish
+        <assetreference type="GrannyAnim">
+            <file>animation_library\villager\villager_male_gathercrate1</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Bubble_Sound">0.56</tag>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
+</animfile>

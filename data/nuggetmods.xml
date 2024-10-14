@@ -4,28 +4,14 @@
     <!-- LAND NUGGETS -->
 
     <nugget>
-      <name>CoihueTeam</name>
-      <maptype>australia</maptype>
-      <maptype>tasmania</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-      <maptype>cookislands</maptype>
-      <maptype>melanesia</maptype>
-      <maptype>newguinea</maptype>
-    </nugget>
-    <nugget>
-      <name>Kev1</name>
-      <maptype>australia</maptype>
-      <maptype>tasmania</maptype>
-      <maptype>newzealand</maptype>
-      <maptype>hawaii</maptype>
-      <maptype>cookislands</maptype>
-      <maptype>melanesia</maptype>
-      <maptype>newguinea</maptype>
-      <difficulty>1</difficulty>
-    </nugget>
-    <nugget>
-      <name>Kev3</name>
+      <name>zpKev1</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetDroppedFood</nuggetunit>
+      <rolloverstringid>34577</rolloverstringid>
+      <applystringid>34578</applystringid>
+      <resource>Food</resource>
+      <amount>75</amount>
+      <guardian>Pirate</guardian>
       <maptype>australia</maptype>
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
@@ -36,7 +22,14 @@
       <difficulty>1</difficulty>
     </nugget>
     <nugget>
-      <name>Settler6</name>
+      <name>zpKev3</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetDroppedWood</nuggetunit>
+      <rolloverstringid>34581</rolloverstringid>
+      <applystringid>34582</applystringid>
+      <resource>Wood</resource>
+      <amount>75</amount>
+      <guardian>Pirate</guardian>
       <maptype>australia</maptype>
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
@@ -44,6 +37,7 @@
       <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newguinea</maptype>
+      <difficulty>1</difficulty>
     </nugget>
     <nugget>
       <name>zpKev5</name>
@@ -52,7 +46,7 @@
       <rolloverstringid>34585</rolloverstringid>
       <applystringid>34586</applystringid>
       <resource>Gold</resource>
-      <amount>50</amount>
+      <amount>25</amount>
       <maptype>australia</maptype>
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
@@ -1004,7 +998,7 @@
     <nugget>
       <name>zpJournal3</name>
       <type>AdjustResource</type>
-      <nuggetunit>NuggetNavigationChart</nuggetunit>
+      <nuggetunit>zpNavigationChart</nuggetunit>
       <rolloverstringid>301336</rolloverstringid>
       <applystringid>301337</applystringid>
       <resource>XP</resource>
@@ -1181,7 +1175,7 @@
     <nugget>
       <name>zpCorsairLoot2</name>
       <type>AdjustResource</type>
-      <nuggetunit>NuggetNavigationChart</nuggetunit>
+      <nuggetunit>zpNavigationChart</nuggetunit>
       <rolloverstringid>102095</rolloverstringid>
       <applystringid>102096</applystringid>
       <resource>Gold</resource>
@@ -1203,7 +1197,7 @@
     <nugget>
       <name>zpCorsairLoot3</name>
       <type>AdjustResource</type>
-      <nuggetunit>NuggetNavigationChart</nuggetunit>
+      <nuggetunit>zpNavigationChart</nuggetunit>
       <rolloverstringid>102095</rolloverstringid>
       <applystringid>102096</applystringid>
       <resource>Gold</resource>
@@ -1829,6 +1823,148 @@
       <difficulty>4</difficulty>
       <killunitonapply>0</killunitonapply>
     </nugget>
+     <nugget>
+      <name>zpSettler3Tasmania</name>
+      <type>ConvertUnit</type>
+      <convertsettler>true</convertsettler>
+      <nuggetunit>NuggetWolfTreeBent</nuggetunit>
+      <rolloverstringid>36942</rolloverstringid>
+      <applystringid>36943</applystringid>
+      <maptype>tasmania</maptype>
+      <convertunit>
+        <unit>Settler</unit>
+        <attachdummy>bone_nuggetA</attachdummy>
+      </convertunit>
+      <guardianunit>
+        <unit>zpTasmanianDevil</unit>
+        <attachdummy>bone_nuggetB</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpTasmanianDevil</unit>
+        <attachdummy>bone_nuggetC</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpTasmanianDevil</unit>
+        <attachdummy>bone_nuggetD</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpTasmanianDevil</unit>
+        <attachdummy>bone_nuggetE</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpTasmanianDevil</unit>
+        <attachdummy>bone_nuggetF</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpTasmanianDevil</unit>
+        <attachdummy>bone_nuggetG</attachdummy>
+      </guardianunit>
+      <difficulty>3</difficulty>
+      <killunitonapply>0</killunitonapply>
+    </nugget>
+    <nugget>
+      <name>zpPlatypusTasmania</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetDroppedSupplies</nuggetunit>
+      <rolloverstringid>301332</rolloverstringid>
+      <applystringid>301333</applystringid>
+      <resource>XP</resource>
+      <amount>40</amount>
+      <maptype>tasmania</maptype>
+      <guardian>zpTasmanianDevil</guardian>
+      <difficulty>1</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpSloth2Tasmania</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetCoveredWagon</nuggetunit>
+      <rolloverstringid>31155</rolloverstringid>
+      <applystringid>31156</applystringid>
+      <resource>XP</resource>
+      <amount>100</amount>
+      <maptype>tasmania</maptype>
+      <guardian>zpTasmanianDevil</guardian>
+      <guardian>zpTasmanianDevil</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpSloth3bTasmania</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetCoveredWagon</nuggetunit>
+      <rolloverstringid>31155</rolloverstringid>
+      <applystringid>31156</applystringid>
+      <resource>XP</resource>
+      <amount>150</amount>
+      <maptype>tasmania</maptype>
+      <guardian>zpTasmanianDevil</guardian>
+      <guardian>zpTasmanianDevil</guardian>
+      <guardian>zpTasmanianDevil</guardian>
+      <difficulty>3</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpTasmania1</name>
+      <nuggetunit>NuggetDroppedSupplies</nuggetunit>
+      <type>AdjustResource</type>
+      <rolloverstringid>90905</rolloverstringid>
+      <applystringid>90906</applystringid>
+      <resource>XP</resource>
+      <amount>100</amount>
+      <maptype>tasmania</maptype>
+      <guardian>zpTasmanianDevil</guardian>
+      <guardian>zpTasmanianDevil</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpTasmania2</name>
+      <nuggetunit>NuggetDroppedSupplies</nuggetunit>
+      <type>AdjustResource</type>
+      <rolloverstringid>90905</rolloverstringid>
+      <applystringid>90906</applystringid>
+      <resource>Food</resource>
+      <amount>100</amount>
+      <maptype>tasmania</maptype>
+      <guardian>zpTasmanianDevil</guardian>
+      <guardian>zpTasmanianDevil</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpTasmania3</name>
+      <nuggetunit>NuggetDroppedSupplies</nuggetunit>
+      <type>AdjustResource</type>
+      <rolloverstringid>90905</rolloverstringid>
+      <applystringid>90906</applystringid>
+      <resource>Wood</resource>
+      <amount>100</amount>
+      <maptype>tasmania</maptype>
+      <guardian>zpTasmanianDevil</guardian>
+      <guardian>zpTasmanianDevil</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpTasmania4</name>
+      <nuggetunit>NuggetDroppedSupplies</nuggetunit>
+      <type>AdjustResource</type>
+      <rolloverstringid>90905</rolloverstringid>
+      <applystringid>90906</applystringid>
+      <resource>Gold</resource>
+      <amount>100</amount>
+      <maptype>tasmania</maptype>
+      <guardian>zpTasmanianDevil</guardian>
+      <guardian>zpTasmanianDevil</guardian>
+      <difficulty>2</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpRubberTasmania</name>
+      <type>AdjustResource</type>
+      <nuggetunit>NuggetDroppedCoin</nuggetunit>
+      <rolloverstringid>27754</rolloverstringid>
+      <applystringid>27755</applystringid>
+      <resource>Gold</resource>
+      <amount>35</amount>
+      <maptype>tasmania</maptype>
+      <guardian>zpTasmanianDevil</guardian>
+      <difficulty>1</difficulty>
+    </nugget>
 
 
     <!--WATER NUGGETS-->
@@ -2287,7 +2423,7 @@
       <rolloverstringid>301761</rolloverstringid>
       <applystringid>301762</applystringid>
       <unittype>zpDiver</unittype>
-      <amount>2</amount>
+      <amount>3</amount>
       <maptype>cookislands</maptype>
       <guardian>zpGuardianSubmarine</guardian>
       <difficulty>17</difficulty>
@@ -2320,6 +2456,39 @@
       <guardian>ypGreatWhiteShark</guardian>
       <guardian>ypGreatWhiteShark</guardian>
       <difficulty>16</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpWaterNuggetUnderwaterCaveAdd</name>
+      <type>SpawnUnit</type>
+      <waternugget>true</waternugget>
+      <nuggetunit>zpNuggetUnderwaterCave</nuggetunit>
+      <rolloverstringid>301761</rolloverstringid>
+      <applystringid>301762</applystringid>
+      <unittype>zpDiver</unittype>
+      <amount>2</amount>
+      <maptype>cookislands</maptype>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <difficulty>15</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpWaterNuggetUnderwaterCaveBAdd</name>
+      <type>SpawnUnit</type>
+      <waternugget>true</waternugget>
+      <nuggetunit>zpNuggetUnderwaterCave</nuggetunit>
+      <rolloverstringid>301807</rolloverstringid>
+      <applystringid>301808</applystringid>
+      <unittype>zpDiver</unittype>
+      <amount>1</amount>
+      <maptype>cookislands</maptype>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <difficulty>15</difficulty>
     </nugget>
   </nuggets>
 </nuggetmods>

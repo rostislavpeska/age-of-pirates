@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<damagetemplate>
+	<model name="units\infantry_ranged\deep_sea_diver\diver_attachment_Model">
+		<impactpoint name="boneimpact01" bone="boneimpact01" impacttype=""/>
+		<impactpoint name="boneimpact02" bone="boneimpact02" impacttype=""/>
+	</model>
+</damagetemplate>

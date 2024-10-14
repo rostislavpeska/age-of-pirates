@@ -19,4 +19,6 @@
   <unittype>AbstractSubmarine</unittype>
   <unittype>AbstractDiver</unittype>
   <unittype>AbstractUnderwaterBuilding</unittype>
+  <unittype>AbstractDivingBell</unittype>
+  <unittype>GatherableOnlyByDivers</unittype>
 </unittypes>

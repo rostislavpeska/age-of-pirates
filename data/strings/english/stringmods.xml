@@ -376,7 +376,7 @@
       <string _locid="300374">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHolcan Javelineer, Healer \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nCotton Armor, Maya Calendar, Maya Pyramids</string>
       <string _locid="300375">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nLightning Warrior \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nFood of the Gods, Cult of the Dead, Cloud People</string>
       <string _locid="300376">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nConquistador \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nFlying Buttress, Smokeless Powder, Christian Schools</string>
-      <string _locid="300377">Transforms into native conculate</string>
+      <string _locid="300377">Transforms into native consulate</string>
       <string _locid="300378">Transforms into outpost</string>
       <string _locid="300379">Center of local trade</string>
       <string _locid="300380">ZP Native Aztec Temple A</string>
@@ -1490,11 +1490,11 @@
       <string _locid="301488">Ship a small group of Corsairs (Can be sent in always when bellow build limit: 17 per settlement)</string>
       <string _locid="301489">Barbary Marksmen</string>
       <string _locid="301490">Ships corsair marksmen</string>
-      <string _locid="301491">Barbary Assalut Brigade</string>
+      <string _locid="301491">Barbary Asalut Brigade</string>
       <string _locid="301492">Ships corsair army with a mighty Great Bombard</string>
       <string _locid="301493">Barbary Exploration Fleet</string>
       <string _locid="301494">Ships Corsair galley. (Can be sent in always when bellow build limit: 2)</string>
-      <string _locid="301495">Barbary Assalut Fleet</string>
+      <string _locid="301495">Barbary Asalut Fleet</string>
       <string _locid="301496">Ships a Corsair Galley with a Great Bombard on board.</string>
       <string _locid="301497">ZP Nat Merc Corsair</string>
       <string _locid="301498">Privateer Emissary</string>
@@ -1584,7 +1584,7 @@
       <string _locid="301582">Veteran Rum Corpsman</string>
       <string _locid="301583">Guard Rum Corpsman</string>
       <string _locid="301584">Legendary Rum Corpsman</string>
-      <string _locid="301585">Improves Penal Volony military unit attack and hitpoints.</string>
+      <string _locid="301585">Improves Penal Colony military unit attack and hitpoints.</string>
       <string _locid="301586">Veteran Penal Colony Military</string>
       <string _locid="301587">Guard Penal Colony Military</string>
       <string _locid="301588">Australian Steel</string>
@@ -1760,7 +1760,7 @@
       <string _locid="301759">Old deserted Diving Bell that can be claimed</string>
       <string _locid="301760">Underwater Cave</string>
       <string _locid="301761" symbol="cStringNuggeteuSpawnBoar" comment="1 - amount, 2 - resource">Hidden divers equipped with harpoon. Can gather underwater resources.</string>
-      <string _locid="301762" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued 2 Divers.</string>
+      <string _locid="301762" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued Divers.</string>
       <string _locid="301763" symbol="cStringNuggeteuSpawnBoar" comment="1 - amount, 2 - resource">Dolphin pets.</string>
       <string _locid="301764" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued 2 Dolphins.</string>
       <string _locid="301765">Configure Diving Bell to generate Food and provide gather bonus to divers</string>
@@ -1771,9 +1771,9 @@
       <string _locid="301770">This Diving Bell is generating XP and providing gather bonus to divers</string>
       <string _locid="301771" symbol="cStringNuggeteuSpawnBoar" comment="1 - amount, 2 - resource">Dolphin pet.</string>
       <string _locid="301772" symbol="cStringNuggeteuSpawnBoarActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has rescued a Dolphin.</string>
-      <string _locid="301773">Pirate Submarine</string>
+      <string _locid="301773">Marauding Submarine</string>
       <string _locid="301774">ZP Guardian Submarine</string>
-      <string _locid="301775">Evil Pirate Submarine guarding a treasure.</string>
+      <string _locid="301775">Evil Marauding Submarine guarding a treasure.</string>
       <string _locid="301776">Configure Diving Bell to be unvisible for enemies but providing no gather bonus to divers</string>
       <string _locid="301777">This Diving Bell is unvisible for enemies but is providing no gather bonus to divers</string>
       <string _locid="301778">Diving Crew</string>
@@ -1790,8 +1790,8 @@
       <string _locid="301789">Allows Divers to install naval mines to protect nearby Diving Bells.</string>
       <string _locid="301790">Diver gather bonus</string>
       <string _locid="301791">Diver hitpoint bonus</string>
-      <string _locid="301792">Navalmine</string>
-      <string _locid="301793">ZP Navalmine</string>
+      <string _locid="301792">Naval mine</string>
+      <string _locid="301793">ZP Naval mine</string>
       <string _locid="301794">Invisible for enemies. Explodes automatically.</string>
       <string _locid="301795">Explodes when an enemy ship touches it. Invisible for enemies but not very effective against submarines, divers and naval pets.</string>
       <string _locid="301796">Diving Bell must be placed close to an underwater mineral resource or a shipwreck</string>
@@ -1811,6 +1811,11 @@
       <string _locid="301810">ZP TEST Pearl Hunter Land</string>
       <string _locid="301811" symbol="cStringdeTeamNugget">A hidden cache worth %1d %2s for the entire team.</string>
       <string _locid="301812" symbol="cStringdeTeamNuggetActivate">%1s discovered a hidden cache worth %2d %3s for their team.</string>
+      <string _locid="301813">Tasmanian Devil</string>
+      <string _locid="301814">ZP Tasmanian Devil</string>
+      <string _locid="301815">Sarcophilus harrisii</string>
+
+
 
 
       <!-- ======================================== -->

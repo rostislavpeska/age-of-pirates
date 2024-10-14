@@ -141,9 +141,10 @@ minInterval 1
    }
    
    // Initializes native specific rules
-   if (getGaiaUnitCount(cUnitTypeAbstractUnderwaterMine) > 0)
+   if (getGaiaUnitCount(cUnitTypeGatherableOnlyByDivers) > 0)
    {
       xsEnableRule("underwaterOperations");
+      xsEnableRule("zpDiverTechMonitor");
    }
    if (getGaiaUnitCount(cUnitTypezpNativeHousePirate) > 0)
    {
@@ -738,6 +739,54 @@ minInterval 10
       aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0, gNavyVec);
       aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanGatherPoint, 0, gNavyVec);
    }
+}
+
+//==============================================================================
+// ZP Diver tech Monitor
+//==============================================================================
+rule zpDiverTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypeAbstractDivingBell, cUnitStateAny) == 0)
+      {
+      return; // Player has no Scientist socket.
+      }
+
+      // Diving Bell faster gathering
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpDiversMinerals,
+      []() -> bool { return (kbGetAge() >= cAge3 ); },
+      cUnitTypeAbstractDivingBell);
+
+      canDisableSelf = researchSimpleTechByCondition(cTechzpDiverSpeargun,
+      []() -> bool { return (kbGetAge() >= cAge3 ); },
+      cUnitTypeAbstractDivingBell);
+
+      canDisableSelf = researchSimpleTechByCondition(cTechzpDiversUnlockSubmarine,
+      []() -> bool { return (kbGetAge() >= cAge4 ); },
+      cUnitTypeAbstractDivingBell);
+
+      canDisableSelf = researchSimpleTechByCondition(cTechzpDiversExtraBell,
+      []() -> bool { return (kbGetAge() >= cAge3 ); },
+      cUnitTypeAbstractDivingBell);
+
+      canDisableSelf = researchSimpleTechByCondition(cTechzpDiversLifeSupport,
+      []() -> bool { return (kbGetAge() >= cAge3 ); },
+      cUnitTypeAbstractDivingBell);
+
+      canDisableSelf = researchSimpleTechByCondition(cTechzpDiversSpawn,
+      []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractDivingBell, cUnitStateAlive) > 1) && (kbGetAge() >= cAge3 )); },
+      cUnitTypeAbstractDivingBell);
+
+      canDisableSelf = researchSimpleTechByCondition(cTechzpImperialDivers,
+      []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractDiver, cUnitStateAlive) > 4) && (kbGetAge() >= cAge4 )); },
+      cUnitTypeAbstractDivingBell);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
 }
 
 //==============================================================================
