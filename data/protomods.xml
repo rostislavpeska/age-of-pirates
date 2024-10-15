@@ -7868,6 +7868,7 @@
     <train row="0" page="0" column="1">NatMedicineMan</train>
     <train row="0" page="0" column="2">ypNatConquistador</train>
     <train row="0" page="0" column="3">NatLightningWarrior</train>
+    <train row="0" page="0" column="4">NatBlackwoodArcher</train>
     <tech row="0" page="2" column="1">zpPickNativeConsulateTechAvailable</tech>
     <tech row="0" page="2" column="1">NatCottonArmor</tech>
     <tech row="0" page="2" column="2">NatCalendar</tech>
@@ -7884,6 +7885,11 @@
     <tech row="0" page="2" column="3">NatXPZapotecCloudPeople</tech>
     <tech row="0" page="1" column="1">WarriorSocietyZapotec</tech>
     <tech row="0" page="1" column="1">ChampionZapotec</tech>
+    <tech row="0" page="1" column="1">WarriorSocietyTupi</tech>
+    <tech row="0" page="1" column="1">ChampionTupi</tech>
+    <tech row="0" page="2" column="1">NatAnimalLore</tech>
+    <tech row="0" page="2" column="2">NatPoisonArrowFrogs</tech>
+    <tech row="0" page="2" column="3">NatForestBurning</tech>
     <unittype>LogicalTypeValidSabotage</unittype>
     <unittype>LogicalTypeMinimapFilterEconomic</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
@@ -35268,6 +35274,57 @@
     <flag>ObscuresUnits</flag>
     <flag>NotPlayerPlaceable</flag>
     <flag>Doppled</flag>
+    <flag>Tracked</flag>
+  </unit>
+  <unit id="20473" name="zpNativeHouseVenetianLand">
+    <dbid>20473</dbid>
+    <displaynameid>300730</displaynameid>
+    <editornameid>301816</editornameid>
+    <subciv>zpVenetians</subciv>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\venetian_buildings.xml</animfile>
+    <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
 

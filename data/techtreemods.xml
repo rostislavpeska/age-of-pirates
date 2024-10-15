@@ -193,6 +193,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
@@ -251,6 +252,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseCentralEuropeans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
@@ -305,6 +307,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseCentralEuropeans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
@@ -359,6 +362,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseCentralEuropeans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
@@ -2439,6 +2443,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
@@ -3203,6 +3208,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
@@ -6375,6 +6381,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
@@ -6579,6 +6586,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
@@ -6925,6 +6933,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateScientistValentine</effect>
@@ -9036,6 +9045,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
@@ -10469,6 +10479,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
@@ -10768,6 +10779,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
@@ -11208,6 +11220,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="obtainable">zpconsulatescientistkhora</effect>
@@ -11814,6 +11827,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
       <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
@@ -12192,6 +12206,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateMalteseCentralEuropeans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
@@ -13602,6 +13617,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
@@ -13850,6 +13866,7 @@
       <effect type="TechStatus" status="obtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
@@ -14005,6 +14022,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
@@ -15064,6 +15082,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
@@ -16377,6 +16396,98 @@
       <effect type="Data" action="RangedAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpWakaCanoe</target>
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpTurnConsulateOffWaterTempleUnknown" type="Normal">
+    <dbid>40754</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseAlliesClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateNatMaya</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateNatTupi</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateNatTupi" type="Normal">
+    <dbid>40755</dbid>
+    <displaynameid>301817</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\tech_tupi.png</icon>
+    <rollovertextid>301818</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpPickNativeConsulateTechAvailable</effect>
+      <effect civ="Tupi" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player"></target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NatBlackwoodArcher</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">NatAnimalLore</effect>
+      <effect type="TechStatus" status="obtainable">NatPoisonArrowFrogs</effect>
+      <effect type="TechStatus" status="obtainable">ChampionTupi</effect>
+      <effect type="TechStatus" status="obtainable">NatForestBurning</effect>
+      <effect type="TechStatus" status="obtainable">WarriorSocietyTupi</effect>
+      <effect type="SetName" proto="zpWaterTemple" culture="none" newname="301819">
+      </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpWaterTemple" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
     </effects>
   </tech>
 

@@ -3740,7 +3740,7 @@
       <command>AztecFaction = trQuestVarGet("RandomAztecFaction");</command>
       <command>}</command>
       <command>if (AztecFaction == 0) {</command>
-      <command>trTechSetStatus(playerID, cTechzpConsulateNatJesuit, cTechStatusActive);</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateNatTupi, cTechStatusActive);</command>
       <command>}</command>
       <command>if (AztecFaction == 1) {</command>
       <command>trTechSetStatus(playerID, cTechzpConsulateNatMaya, cTechStatusActive);</command>
@@ -3752,7 +3752,7 @@
       <command>}</command>
       <command>// For humans, TurnOffConsulate if NativeConsulate is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpPickNativeConsulateTechAvailable)) {</command>
-      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffWaterTemple, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffWaterTempleUnknown, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
       <command>xsEnableRule("Italian_Ballance");</command>
       <command>xsEnableRule("Cheat_Returner");</command>

@@ -1814,8 +1814,10 @@
       <string _locid="301813">Tasmanian Devil</string>
       <string _locid="301814">ZP Tasmanian Devil</string>
       <string _locid="301815">Sarcophilus harrisii</string>
-
-
+      <string _locid="301816">ZP House Venetian Land</string>
+      <string _locid="301817">Tupi</string>
+      <string _locid="301818">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBlackwood Archer \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nAnimal Lore, Poison Arrow Frogs, Forest Burning</string>
+      <string _locid="301819">Native Consulate (Tupi)</string>
 
 
       <!-- ======================================== -->

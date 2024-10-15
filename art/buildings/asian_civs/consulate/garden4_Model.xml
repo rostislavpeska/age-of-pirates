@@ -31,6 +31,21 @@
 			<component>flag2</component>
 		</anim>
 	</attachment>
+	<attachment>Tupi_flag
+		<component>flag22
+			<assetreference type="ClothFlag">
+				<flag>
+					<blending>alphatest_nocolor</blending>
+					<texture>objects\flags\tupi</texture>
+					<width>2.00</width>
+					<height>1.33</height>
+				</flag>
+			</assetreference>
+		</component>
+		<anim>Idle
+			<component>flag22</component>
+		</anim>
+	</attachment>
 	<attachment>Jesuit_flag
 		<component>flag3
 			<assetreference type="ClothFlag">
@@ -81,6 +96,12 @@
 				</assetreference>
 				<attach a="Jesuit_flag" frombone="ATTACHPOINT" tobone="bone_banner" syncanims="0"></attach>
 			</zpconsulatenatjesuit>
+			<zpconsulatenattupi>
+				<assetreference type="GrannyModel">
+					<file>buildings\asian_civs\consulate\garden4_Model</file>
+				</assetreference>
+				<attach a="Tupi_flag" frombone="ATTACHPOINT" tobone="bone_banner" syncanims="0"></attach>
+			</zpconsulatenattupi>
 		</logic>
 	</component>
 	<component>

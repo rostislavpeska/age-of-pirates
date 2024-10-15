@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>13</width>
+	<height>12</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="127" posx="-1.8945" posz="-11.4109" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="213" posx="0.4960" posz="-11.4739" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="127" posx="2.8143" posz="-11.4228" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="37" posx="-7.6465" posz="-8.1570" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSocketVenetians</unit>
+		<unit variation="9" posx="-4.8345" posz="-9.4450" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="5.3024" posz="-9.9956" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="7.6757" posz="-6.3795" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="6.7340" posz="-10.2454" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="-2.8584" posz="-6.9021" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="0.9827" posz="-10.7365" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="130" posx="8.0254" posz="-8.1421" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetianLand</unit>
+		<unit variation="9" posx="-3.3724" posz="-4.7645" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="0.0024" posz="-3.9825" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="3.4484" posz="-4.5368" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="254" posx="-0.6844" posz="-7.0829" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deNatEUPropStatue</unit>
+		<unit variation="133" posx="3.1993" posz="-6.9778" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">PropsPottedPlants</unit>
+		<unit variation="9" posx="-7.2117" posz="-2.8974" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="-10.0011" posz="-2.8642" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="-4.4654" posz="-3.3403" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="27" posx="-7.6974" posz="-3.8694" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="250" posx="-1.6503" posz="-5.0390" orientx="-0.3827" orienty="0.0000" orientz="0.9239">deNatEUPropVilMale</unit>
+		<unit variation="112" posx="0.8517" posz="-5.3993" orientx="-0.9239" orienty="-0.0000" orientz="0.3827">deNatEUPropVilLeaders</unit>
+		<unit variation="251" posx="0.3666" posz="-4.1929" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNativeUnitVenetianFlag</unit>
+		<unit variation="39" posx="7.9859" posz="-4.8792" orientx="0.7194" orienty="0.0000" orientz="-0.6946">deSPCTreeCypressProp</unit>
+		<unit variation="9" posx="6.0243" posz="-0.8777" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="4" posx="-1.6384" posz="-3.0235" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropVilMale</unit>
+		<unit variation="76" posx="-0.1058" posz="-3.1469" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">deNatEUPropVilFemale</unit>
+		<unit variation="125" posx="2.1676" posz="-3.5424" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropVilLeaders</unit>
+		<unit variation="157" posx="2.7896" posz="-1.7824" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropVilMale</unit>
+		<unit variation="9" posx="3.2220" posz="-3.4092" orientx="-0.7071" orienty="0.0000" orientz="0.7071">deNatEUPropVilFemale</unit>
+		<unit variation="9" posx="-8.5401" posz="1.9229" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="119" posx="-10.2088" posz="-0.7394" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deNatEUPropVilGuards</unit>
+		<unit variation="151" posx="7.3613" posz="-1.5507" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNativeHouseVenetianLand</unit>
+		<unit variation="9" posx="-10.3062" posz="3.7697" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="-3.7877" posz="2.1018" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="7.7550" posz="3.4904" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="8.5229" posz="2.7422" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="67" posx="11.2083" posz="1.5830" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">PropsPottedPlants</unit>
+		<unit variation="133" posx="-1.2872" posz="1.3811" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNativeHouseVenetianLand</unit>
+		<unit variation="99" posx="8.3134" posz="2.4783" orientx="-0.9946" orienty="0.0000" orientz="-0.1036">deSPCTreeCypressProp</unit>
+		<unit variation="9" posx="1.2953" posz="5.1526" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="9.2964" posz="7.8088" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="9.7754" posz="7.8017" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="84" posx="9.6407" posz="6.6828" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">PropsPottedPlants</unit>
+		<unit variation="41" posx="-8.3082" posz="4.0469" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNativeHouseVenetianLand</unit>
+		<unit variation="9" posx="-7.3785" posz="9.2407" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="-9.3886" posz="9.0084" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="-2.3850" posz="9.1032" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="9" posx="4.4595" posz="9.7535" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
+		<unit variation="222" posx="8.4043" posz="6.9834" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNativeHouseVenetianLand</unit>
+		<unit variation="119" posx="-10.4186" posz="8.8871" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropVilGuards</unit>
+		<unit variation="192" posx="-0.1703" posz="8.7288" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNativeHouseVenetianLand</unit>
+		<unit variation="15" posx="-6.2342" posz="10.1896" orientx="0.0478" orienty="0.0000" orientz="-0.9989">deSPCTreeCypressProp</unit>
+		<unit variation="211" posx="4.6077" posz="9.7080" orientx="0.1055" orienty="0.0000" orientz="-0.9944">deSPCTreeCypressProp</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
+			<block startx="-6" startz="-5" endx="-6" endz="-5"></block>
+			<block startx="-6" startz="-4" endx="-6" endz="-3"></block>
+			<block startx="-5" startz="-4" endx="-5" endz="-2"></block>
+			<block startx="-5" startz="3" endx="-5" endz="3"></block>
+			<block startx="-4" startz="-4" endx="-4" endz="-1"></block>
+			<block startx="-4" startz="2" endx="-4" endz="3"></block>
+			<block startx="-3" startz="-4" endx="-3" endz="3"></block>
+			<block startx="-2" startz="-4" endx="-2" endz="3"></block>
+			<block startx="-1" startz="-4" endx="-1" endz="3"></block>
+			<block startx="0" startz="-4" endx="0" endz="3"></block>
+			<block startx="1" startz="-4" endx="1" endz="3"></block>
+			<block startx="2" startz="-4" endx="2" endz="3"></block>
+			<block startx="-5" startz="-6" endx="-5" endz="-5"></block>
+			<block startx="-4" startz="-6" endx="-4" endz="-5"></block>
+			<block startx="-3" startz="-5" endx="-3" endz="-5"></block>
+			<block startx="-2" startz="-5" endx="-2" endz="-5"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="-5"></block>
+			<block startx="0" startz="-6" endx="0" endz="-5"></block>
+			<block startx="1" startz="-6" endx="1" endz="-5"></block>
+			<block startx="2" startz="-6" endx="2" endz="-5"></block>
+			<block startx="-5" startz="4" endx="-5" endz="4"></block>
+			<block startx="-4" startz="4" endx="-4" endz="4"></block>
+			<block startx="-3" startz="4" endx="-3" endz="5"></block>
+			<block startx="-2" startz="4" endx="-2" endz="5"></block>
+			<block startx="-1" startz="4" endx="-1" endz="5"></block>
+			<block startx="0" startz="4" endx="0" endz="5"></block>
+			<block startx="1" startz="4" endx="1" endz="4"></block>
+			<block startx="2" startz="4" endx="2" endz="4"></block>
+			<block startx="3" startz="4" endx="3" endz="4"></block>
+			<block startx="4" startz="4" endx="4" endz="4"></block>
+			<block startx="5" startz="4" endx="5" endz="4"></block>
+			<block startx="3" startz="-5" endx="3" endz="-5"></block>
+			<block startx="3" startz="-4" endx="3" endz="3"></block>
+			<block startx="4" startz="-3" endx="4" endz="3"></block>
+			<block startx="5" startz="3" endx="5" endz="3"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="city\ground1_city_street_p45_ground">
+			<block startx="-4" startz="0" endx="-4" endz="0"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

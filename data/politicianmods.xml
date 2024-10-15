@@ -105,5 +105,7 @@
   </zpconsulatepenalcolonycunningham>
   <zpconsulatepenalcolonylogan portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/patricklogan.png">
   </zpconsulatepenalcolonylogan>
+  <zpconsulatenattupi portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_tupi.png">
+  </zpconsulatenattupi>
 
 </politicianmods>
