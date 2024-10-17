@@ -1,0 +1,50 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\arsenal\west\age_3\textures\zp_arsenal_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\arsenal\west\age_3\textures\zp_arsenal_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\arsenal\west\age_3\textures\zp_arsenal_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\market\textures\westmarket_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\market\textures\westmarket_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\market\textures\westmarket_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

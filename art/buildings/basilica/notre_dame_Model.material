@@ -1,0 +1,111 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\french_notredame_colormap1">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\french_notredame_bumpspec1">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\french_notredame_masks1">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\french_notredame_colormap1">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\french_notredame_bumpspec1">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\french_notredame_masks1">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\french_notredame_colormap2">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\french_notredame_bumpspec2">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\french_notredame_masks2">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\french_notredame_colormap2">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\french_notredame_bumpspec2">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\french_notredame_masks2">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\french_notredame_colormap1">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\french_notredame_bumpspec1">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\french_notredame_masks1">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matf">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\french_notredame_colormap1">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\french_notredame_bumpspec1">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\french_notredame_masks1">
+      </texture>
+    </parameters>
+  </submaterial>
+
+  <submaterial name="matx">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\german_cathedral_gold_orange_1">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\german_cathedral_bumpspec1">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\german_cathedral_masks_1">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="maty">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\german_cathedral_gold_orange_1">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\german_cathedral_bumpspec1">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\german_cathedral_masks_1">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\german_cathedral_gold_orange_1">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\german_cathedral_bumpspec1">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\german_cathedral_masks_1">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

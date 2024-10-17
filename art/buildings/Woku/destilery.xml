@@ -1,0 +1,21 @@
+<!-- converted from XMB to XML -->
+
+<animfile>
+	<component>
+		ModelComp
+		<assetreference type="GrannyModel">
+			<file>buildings\woku\IH_Destillery_Model</file>
+		</assetreference>
+		<decal>
+			<effecttype>default</effecttype>
+			<texture>buildings\house\east_house_age2_a_ground</texture>
+			<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+			<width>6.0</width>
+			<height>6.0</height>
+		</decal>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>
