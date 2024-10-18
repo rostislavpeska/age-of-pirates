@@ -1,0 +1,15 @@
+<tactics>
+  <action>
+    <name stringid="43019">AutoGather</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+    <autogatherteam>1</autogatherteam>
+  </action>
+  <action>
+    <name>AutoConvert</name>
+    <type>AutoConvert</type>
+    <maxrange>20.0</maxrange>
+    <persistent>1</persistent>
+  </action>
+  <tactic>Normal<action>SpawnCardinal</action><action>AutoGather</action><action priority="25">AutoConvert</action></tactic>
+</tactics>

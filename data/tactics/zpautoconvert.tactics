@@ -1,0 +1,9 @@
+<tactics>
+  <action>
+    <name>AutoConvert</name>
+    <type>AutoConvert</type>
+    <maxrange>10.0</maxrange>
+    <persistent>1</persistent>
+  </action>
+  <tactic>Autoconvert<action priority="25">AutoConvert</action></tactic>
+</tactics>

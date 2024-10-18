@@ -9,6 +9,8 @@
       </texture>
       <texture name="Masks" override="buildings\Woku\IH_Masks">
       </texture>
-         </parameters>
+      <texture name="Details" override="buildings\Woku\IH_Details">
+      </texture>
+    </parameters>
   </submaterial>
 </material>

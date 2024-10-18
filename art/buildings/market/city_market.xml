@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<component>
+		ModelComp
+		<logic type="BuildingCompletion">
+			<p0>
+				<assetreference type="GrannyModel">
+					<file>buildings\constructions\con_small_1</file>
+				</assetreference>
+                <decal>
+                    <effecttype>bump</effecttype>
+                    <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                    <width>10.00</width>
+                    <height>10.00</height>
+                    <xoffset>-0.10</xoffset>
+                    <zoffset>-0.10</zoffset>
+                </decal>
+			</p0>
+			<p33>
+				<assetreference type="GrannyModel">
+					<file>buildings\constructions\con_small_2</file>
+				</assetreference>
+                <decal>
+                    <effecttype>bump</effecttype>
+                    <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                    <width>10.00</width>
+                    <height>10.00</height>
+                    <xoffset>-0.10</xoffset>
+                    <zoffset>-0.10</zoffset>
+                </decal>
+			</p33>
+			<p66>
+				<assetreference type="GrannyModel">
+					<file>buildings\constructions\con_small_3</file>
+				</assetreference>
+                <decal>
+                    <effecttype>bump</effecttype>
+                    <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                    <width>10.00</width>
+                    <height>10.00</height>
+                    <xoffset>-0.10</xoffset>
+                    <zoffset>-0.10</zoffset>
+                </decal>
+			</p66>
+			<p100>
+				<assetreference type="GrannyModel">
+					<file>buildings\market\west market standin</file>
+				</assetreference>
+				<decal>
+                    <effecttype>bump</effecttype>
+                    <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                    <width>10.00</width>
+                    <height>10.00</height>
+                    <xoffset>-0.10</xoffset>
+                    <zoffset>-0.10</zoffset>
+                </decal>
+			</p100>
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

@@ -1,0 +1,17 @@
+<animfile>
+    <component>Palaces
+        <assetreference type="GrannyModel">
+            <file>buildings\native_settlement\europe\palaces\roof_gr01_wall_gr01</file>
+        </assetreference>
+        <decal>
+            <effecttype>default</effecttype>
+            <texture>buildings\native_settlement\japan_decal_01</texture>
+            <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <width>12.00</width>
+            <height>12.00</height>
+        </decal>
+    </component>
+    <anim>Idle
+        <component>Palaces</component>
+    </anim>
+</animfile>

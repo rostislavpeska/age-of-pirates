@@ -415,6 +415,16 @@
     <activerollovertextid>301777</activerollovertextid>
     <command>unitSetTactic("DivingBellStealth")</command>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpSocketBuildOrchad</name>
+    <icon>resources\images\icons\command\build_orchad.png</icon>
+    <command>uiSocketBuild(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <socketbuild>
+    </socketbuild>
+    <rollovertextid>301863</rollovertextid>
+  </protounitcommand>
 
   <!--
 

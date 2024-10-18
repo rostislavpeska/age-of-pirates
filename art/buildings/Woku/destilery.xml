@@ -10,8 +10,8 @@
 			<effecttype>default</effecttype>
 			<texture>buildings\house\east_house_age2_a_ground</texture>
 			<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-			<width>6.0</width>
-			<height>6.0</height>
+			<width>10.0</width>
+			<height>10.0</height>
 		</decal>
 	</component>
 	<anim>
