@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\buildings_east\building_generic_eastern_02\textures\building_generic_eastern_02_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_east\building_generic_eastern_02\textures\building_generic_eastern_02_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_east\building_generic_eastern_02\textures\building_generic_eastern_02_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

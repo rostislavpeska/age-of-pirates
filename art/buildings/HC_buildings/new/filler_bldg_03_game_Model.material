@@ -1,0 +1,38 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\spanish\filler_bldg_01\textures\filler_bldg_01_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\spanish\filler_bldg_01\textures\filler_bldg_01_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\spanish\filler_bldg_01\textures\filler_bldg_01_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\spanish\filler_bldg_01\textures\filler_bldg_01_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\spanish\filler_bldg_01\textures\filler_bldg_01_matB_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\spanish\filler_bldg_01\textures\filler_bldg_01_matB_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\homecity\textures\generic_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="generic_props\homecity\textures\generic_props_Normals">
+      </texture>
+      <texture name="Masks" override="generic_props\homecity\textures\generic_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

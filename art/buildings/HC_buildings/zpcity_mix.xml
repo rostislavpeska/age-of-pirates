@@ -1,0 +1,101 @@
+<animfile>
+	<component>
+		building
+		<logic type="Variation">
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\hc_buildings\new\building_generic_eastern_01_game_Model</file>
+					</assetreference>
+				</data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\hc_buildings\new\building_generic_eastern_02_game_Model</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\socket_jewish\townhall_Model</file>
+					</assetreference>
+				</data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\hc_buildings\new\filler_bldg_03_game_Model</file>
+					</assetreference>
+				</data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\hc_buildings\new\french_fillerhouse_game_Model</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\jesuit_church_01</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\jesuit_church_02</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\jesuit_church_03</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\jesuit_school_01</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\jesuit_school_02</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\maltese_convent\maltese_church_01</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\maltese_convent\aos_church</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\maltese_convent\forttowermodified</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\maltese_convent\fortmodified</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\maltese_convent\fortcornermodified</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\venice\venice_church</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\general_store\general_store_age4</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\market\trading_port2_Model</file>
+					</assetreference>
+			    </data>
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>

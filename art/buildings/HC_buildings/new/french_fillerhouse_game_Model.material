@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\french\french_fillerhouse\textures\french_fillerhouse_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\french\french_fillerhouse\textures\french_fillerhouse_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\french\french_fillerhouse\textures\french_fillerhouse_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\french\french_fillerhouse\textures\french_fillerhouse_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\french\french_fillerhouse\textures\french_fillerhouse_matb_normals">
+      </texture>
+      <texture name="Masks" override="homecity\french\french_fillerhouse\textures\french_fillerhouse_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
