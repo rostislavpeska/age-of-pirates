@@ -36771,6 +36771,7 @@
       <rate type="deLivestockMarket">0.250000</rate>
       <rate type="zpSPCTownMill">0.500000</rate>
       <rate type="zpSPCCityMarket">0.250000</rate>
+      <rate type="zpLivestockPenClone">0.500000</rate>
     </protoaction>
     <protoaction>
       <name>GatherHacienda</name>
@@ -36891,7 +36892,376 @@
   </unit>
 
 
+  <unit id="20499" name="zpSPCFortWallProp">
+    <dbid>20499</dbid>
+    <displaynameid>123010</displaynameid>
+    <editornameid>301865</editornameid>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\fort\spc_fort_wall_large.xml</animfile>
+    <minimapsize>1</minimapsize>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
+    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
+    <rollovertextid>24926</rollovertextid>
+    <shortrollovertextid>25745</shortrollovertextid>
+    <initialhitpoints>1500.0000</initialhitpoints>
+    <maxhitpoints>1500.0000</maxhitpoints>
+    <los>1.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <cost resourcetype="Wood">5.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>AbstractWall</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <flag>SelectWithObstruction</flag>
+    <flag>Doppled</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>wallBuild</flag>
+    <flag>NeverShowButton</flag>
+    <flag>UseAlignedObstructionOnMinimap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>TileAlignPlacement</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>FlattenGround</flag>
+    <flag>Tracked</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>Invulnerable</flag>
+  </unit>
+  <unit id="20500" name="zpSPCFortCornerProp">
+    <dbid>20500</dbid>
+    <displaynameid>123011</displaynameid>
+    <editornameid>301866</editornameid>
+    <obstructionradiusx>2.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\fort\spc_fort_corner.xml</animfile>
+    <minimapsize>1</minimapsize>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
+    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
+    <rollovertextid>34893</rollovertextid>
+    <shortrollovertextid>34892</shortrollovertextid>
+    <initialhitpoints>1500.0000</initialhitpoints>
+    <maxhitpoints>1500.0000</maxhitpoints>
+    <los>1.0000</los>
+    <projectileprotounit>Arrow</projectileprotounit>
+    <buildpoints>2.0000</buildpoints>
+    <cost resourcetype="Wood">5.0000</cost>
+    <cost resourcetype="Gold">0.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>AbstractWall</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>wallBuild</flag>
+    <flag>Tracked</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>Invulnerable</flag>
+  </unit>
+  <unit id="20501" name="zpSPCFortGateProp">
+    <dbid>20501</dbid>
+    <displaynameid>301867</displaynameid>
+    <editornameid>301868</editornameid>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\fort\spc_fort_gate.xml</animfile>
+    <allowedheightvariance>4.0000</allowedheightvariance>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\spc\fort\spc_fort_gate_icon64x64.png</icon>
+    <portraiticon>resources\art\buildings\spc\fort\spc_fort_gate_portrait.png</portraiticon>
+    <rollovertextid>34603</rollovertextid>
+    <shortrollovertextid>34647</shortrollovertextid>
+    <initialhitpoints>5250.0000</initialhitpoints>
+    <maxhitpoints>5250.0000</maxhitpoints>
+    <unitregen damagetimeout="6.0">0.0000</unitregen>
+    <los>6.0000</los>
+    <cost resourcetype="Wood">65.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>AbstractWall</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>Doppled</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>PlayerOwnsObstruction</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>UseAlignedObstructionOnMinimap</flag>
+    <flag>wallBuild</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>DontFlattenGround</flag>
+    <flag>Tracked</flag>
+    
+    <command page="10" column="7">Delete</command>
+  </unit>
 
+
+  <unit id="20502" name="zpSPCFortTowerProp">
+    <dbid>20502</dbid>
+    <displaynameid>301870</displaynameid>
+    <editornameid>301869</editornameid>
+    <obstructionradiusx>2.5000</obstructionradiusx>
+    <obstructionradiusz>2.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\tower\tower.xml</animfile>
+    <minimapsize>1</minimapsize>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\outpost\outpost_icon_64x64.png</icon>
+    <portraiticon>resources\art\buildings\spc\tower\battery_tower_portrait.png</portraiticon>
+    <rollovertextid>34893</rollovertextid>
+    <shortrollovertextid>34892</shortrollovertextid>
+    <initialhitpoints>1500.0000</initialhitpoints>
+    <maxhitpoints>1500.0000</maxhitpoints>
+    <los>1.0000</los>
+    <projectileprotounit>Arrow</projectileprotounit>
+    <buildpoints>2.0000</buildpoints>
+    <cost resourcetype="Wood">5.0000</cost>
+    <cost resourcetype="Gold">0.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>AbstractWall</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>wallBuild</flag>
+    <flag>Tracked</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>Invulnerable</flag>
+  </unit>
+
+
+  <unit id="" name="zpLivestockPenClone">
+    <dbid></dbid>
+    <displaynameid>29032</displaynameid>
+    <editornameid>301871</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\livestock pen\livestock pen.xml</animfile>
+    <deadreplacement>BuildingRubble3x3</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>livestockpen</physicsinfo>
+    <placementfile>buildingsmall.xml</placementfile>
+    <icon>resources\art\buildings\livestock pen\livestock_pen_icon.png</icon>
+    <portraiticon>resources\art\buildings\livestock pen\livestock_pen_portrait.png</portraiticon>
+    <rollovertextid>29031</rollovertextid>
+    <shortrollovertextid>29030</shortrollovertextid>
+    <initialhitpoints>1200.0000</initialhitpoints>
+    <maxhitpoints>1200.0000</maxhitpoints>
+    <los>10.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <freebuildpoints>75.0000</freebuildpoints>
+    <bounty>60.0000</bounty>
+    <buildbounty>30.0000</buildbounty>
+    <cost resourcetype="Wood">150.0000</cost>
+    <carrycapacity resourcetype="Food">100.0000</carrycapacity>
+    <initialresource resourcetype="Food">999.0000</initialresource>
+    <resourcesubtype>grain</resourcesubtype>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <gathererlimit>10</gathererlimit>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractFarm</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Food</unittype>
+    <unittype>Economic</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <train row="0" page="0" column="0">Sheep</train>
+    <tech row="0" page="1" column="5">SelectiveBreeding</tech>
+    <flag>UnlimitedSupply</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="2">SetGatherPointEconomy</command>
+    <command page="10" column="8">CancelAllQueued</command>
+  </unit>
+  <unit id="" name="zpFortGateClone">
+    <dbid></dbid>
+    <displaynameid>34604</displaynameid>
+    <editornameid>301872</editornameid>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\fort\spc_fort_gate.xml</animfile>
+    <allowedheightvariance>4.0000</allowedheightvariance>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\spc\fort\spc_fort_gate_icon64x64.png</icon>
+    <portraiticon>resources\art\buildings\spc\fort\spc_fort_gate_portrait.png</portraiticon>
+    <rollovertextid>34603</rollovertextid>
+    <shortrollovertextid>34647</shortrollovertextid>
+    <initialhitpoints>5250.0000</initialhitpoints>
+    <maxhitpoints>5250.0000</maxhitpoints>
+    <unitregen damagetimeout="6.0">0.0000</unitregen>
+    <los>6.0000</los>
+    <cost resourcetype="Wood">65.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>AbstractWall</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>Doppled</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>PlayerOwnsObstruction</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>UseAlignedObstructionOnMinimap</flag>
+    <flag>wallBuild</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>DontFlattenGround</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
 
 
 
@@ -36900,6 +37270,8 @@
 
 
   <!--TEST-->
+
+
 
   
   <unit id="" name="zpGreatBasilica">
