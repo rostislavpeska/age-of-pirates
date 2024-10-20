@@ -33550,7 +33550,6 @@
     <unittype>AbstractCanSeeStealth</unittype>
     <unittype>AbstractDiver</unittype>
     <unittype>ValidIdleVillager</unittype>
-    <unittype>AbstractVillager</unittype>
     <unittype>Military</unittype>
     <train row="0" page="0" column="1">zpDivingBell</train>
     <train row="0" page="1" column="1">zpNavalmine</train>
@@ -35227,7 +35226,7 @@
   </unit>
   <unit id="20472" name="zpNavigationChart">
     <dbid>20472</dbid>
-    <displaynameid>36210</displaynameid>
+    <displaynameid>27893</displaynameid>
     <obstructionradiusx>1.0000</obstructionradiusx>
     <obstructionradiusz>1.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
@@ -36890,8 +36889,6 @@
     <tactics>autoconvert.tactics</tactics>
     <command page="1" column="0">zpSocketBuildOrchad</command>
   </unit>
-
-
   <unit id="20499" name="zpSPCFortWallProp">
     <dbid>20499</dbid>
     <displaynameid>123010</displaynameid>
@@ -37190,6 +37187,64 @@
     <flag>ColonyPlacementL</flag>
     <flag>Tracked</flag>
     <flag>HasGatherPoint</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>Invulnerable</flag>
+  </unit>
+  <unit id="20504" name="zpSPCFortWallSmallProp">
+    <dbid>20504</dbid>
+    <displaynameid>123010</displaynameid>
+    <editornameid>301875</editornameid>
+    <obstructionradiusx>2.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\fort\spc_fort_wall_small.xml</animfile>
+    <minimapsize>1</minimapsize>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
+    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
+    <rollovertextid>24926</rollovertextid>
+    <shortrollovertextid>25745</shortrollovertextid>
+    <initialhitpoints>1500.0000</initialhitpoints>
+    <maxhitpoints>1500.0000</maxhitpoints>
+    <los>1.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <cost resourcetype="Wood">5.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>AbstractWall</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <flag>SelectWithObstruction</flag>
+    <flag>Doppled</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>wallBuild</flag>
+    <flag>NeverShowButton</flag>
+    <flag>UseAlignedObstructionOnMinimap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>TileAlignPlacement</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>FlattenGround</flag>
+    <flag>Tracked</flag>
     <flag>ForceToGaia</flag>
     <flag>NotSelectable</flag>
     <flag>Invulnerable</flag>
