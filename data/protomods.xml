@@ -29317,7 +29317,6 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
-    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
@@ -29577,7 +29576,6 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
-    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
@@ -30585,7 +30583,6 @@
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
-    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
@@ -35011,8 +35008,6 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>VisibleUnderFogIfGaia</flag>
     <flag>Tracked</flag>
-    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
-    <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>

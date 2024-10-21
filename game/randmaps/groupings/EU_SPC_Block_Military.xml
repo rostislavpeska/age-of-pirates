@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>13</width>
+	<height>13</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="167" posx="-2.5034" posz="-8.3177" orientx="0.0002" orienty="0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="157" posx="5.2691" posz="-9.6206" orientx="0.0002" orienty="0.0000" orientz="-1.0000">WallStraight2</unit>
+		<unit variation="167" posx="2.8761" posz="-9.0761" orientx="1.0000" orienty="0.0000" orientz="0.0003">WallConnector</unit>
+		<unit variation="157" posx="-5.1904" posz="-8.1378" orientx="0.0000" orienty="0.0000" orientz="-1.0000">WallStraight2</unit>
+		<unit variation="178" posx="-9.0105" posz="-5.1233" orientx="-1.0000" orienty="0.0000" orientz="0.0000">WallStraight2</unit>
+		<unit variation="157" posx="9.4718" posz="-5.7384" orientx="1.0000" orienty="0.0000" orientz="0.0002">WallStraight2</unit>
+		<unit variation="167" posx="8.8990" posz="-4.3078" orientx="1.0000" orienty="0.0000" orientz="0.0003">WallConnector</unit>
+		<unit variation="33" posx="1.2921" posz="-3.0943" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="212" posx="-0.4163" posz="-2.7991" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="206" posx="-1.9964" posz="-3.2385" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="234" posx="3.6829" posz="-3.4708" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="90" posx="5.8914" posz="-3.5145" orientx="-0.9239" orienty="0.0051" orientz="-0.3827">deNatRoyalDragoon</unit>
+		<unit variation="167" posx="-8.8788" posz="-2.5452" orientx="0.0001" orienty="0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="157" posx="8.8061" posz="-1.0473" orientx="1.0000" orienty="0.0000" orientz="0.0002">WallStraight2</unit>
+		<unit variation="11" posx="-2.3039" posz="-1.5058" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="30" posx="1.4322" posz="-1.0073" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="226" posx="-0.4956" posz="-1.0332" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="176" posx="5.7274" posz="-1.0985" orientx="-0.9239" orienty="0.0051" orientz="-0.3827">deNatRoyalDragoon</unit>
+		<unit variation="105" posx="3.5145" posz="-1.5043" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="157" posx="-9.2334" posz="-0.3815" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">WallStraight2</unit>
+		<unit variation="230" posx="-2.1935" posz="0.4595" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="80" posx="1.0686" posz="0.7957" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="250" posx="-0.5979" posz="0.8809" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="157" posx="5.5099" posz="1.2247" orientx="-0.9239" orienty="0.0051" orientz="-0.3827">deNatRoyalDragoon</unit>
+		<unit variation="86" posx="3.2698" posz="0.6741" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="103" posx="-4.9857" posz="0.9140" orientx="1.0000" orienty="-0.0039" orientz="-0.0000">deNatRoyalDragoon</unit>
+		<unit variation="167" posx="8.8028" posz="0.9123" orientx="1.0000" orienty="0.0000" orientz="0.0003">WallConnector</unit>
+		<unit variation="167" posx="-9.2019" posz="2.0088" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="130" posx="2.9074" posz="2.7258" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="234" posx="0.9640" posz="2.8287" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="134" posx="-0.8553" posz="2.6466" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="179" posx="-2.3673" posz="2.5795" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="96" posx="-9.2192" posz="5.0192" orientx="-1.0000" orienty="0.0000" orientz="0.0000">WallStraight2</unit>
+		<unit variation="157" posx="8.7175" posz="3.6042" orientx="1.0000" orienty="0.0000" orientz="0.0002">WallStraight2</unit>
+		<unit variation="167" posx="-2.5575" posz="8.5705" orientx="0.0002" orienty="0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="157" posx="5.6329" posz="8.1416" orientx="0.0002" orienty="0.0000" orientz="-1.0000">WallStraight2</unit>
+		<unit variation="167" posx="3.8843" posz="8.3642" orientx="1.0000" orienty="0.0000" orientz="0.0001">WallConnector</unit>
+		<unit variation="27" posx="-5.3106" posz="8.5102" orientx="0.0000" orienty="0.0000" orientz="-1.0000">WallStraight2</unit>
+		<unit variation="203" posx="7.7018" posz="-8.0598" orientx="-0.0001" orienty="0.0000" orientz="1.0000">zpMountainCitadel</unit>
+		<unit variation="203" posx="-7.6181" posz="-6.8913" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpMountainCitadel</unit>
+		<unit variation="203" posx="7.5994" posz="5.9198" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">zpMountainCitadel</unit>
+		<unit variation="49" posx="-7.5706" posz="7.2407" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpMountainCitadel</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
+			<block startx="-6" startz="-6" endx="-6" endz="-6"></block>
+			<block startx="-6" startz="-5" endx="-6" endz="2"></block>
+			<block startx="-5" startz="-5" endx="-5" endz="-5"></block>
+			<block startx="-5" startz="-6" endx="-5" endz="-6"></block>
+			<block startx="-4" startz="-6" endx="-4" endz="-6"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="-6"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-6"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="-6"></block>
+			<block startx="0" startz="-6" endx="0" endz="-6"></block>
+			<block startx="1" startz="-6" endx="1" endz="-6"></block>
+			<block startx="2" startz="-6" endx="2" endz="-6"></block>
+			<block startx="-6" startz="3" endx="-6" endz="6"></block>
+			<block startx="-5" startz="3" endx="-5" endz="6"></block>
+			<block startx="-4" startz="5" endx="-4" endz="6"></block>
+			<block startx="-3" startz="6" endx="-3" endz="6"></block>
+			<block startx="-2" startz="6" endx="-2" endz="6"></block>
+			<block startx="-1" startz="6" endx="-1" endz="6"></block>
+			<block startx="0" startz="6" endx="0" endz="6"></block>
+			<block startx="1" startz="6" endx="1" endz="6"></block>
+			<block startx="2" startz="6" endx="2" endz="6"></block>
+			<block startx="3" startz="6" endx="3" endz="6"></block>
+			<block startx="4" startz="6" endx="4" endz="6"></block>
+			<block startx="5" startz="5" endx="5" endz="6"></block>
+			<block startx="6" startz="3" endx="6" endz="6"></block>
+			<block startx="3" startz="-6" endx="3" endz="-6"></block>
+			<block startx="4" startz="-6" endx="4" endz="-6"></block>
+			<block startx="5" startz="-6" endx="5" endz="-6"></block>
+			<block startx="6" startz="-6" endx="6" endz="-6"></block>
+			<block startx="6" startz="-5" endx="6" endz="2"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="california\ground10_cal">
+			<block startx="-5" startz="-4" endx="-5" endz="2"></block>
+			<block startx="-4" startz="-5" endx="-4" endz="2"></block>
+			<block startx="-3" startz="-5" endx="-3" endz="2"></block>
+			<block startx="-2" startz="-5" endx="-2" endz="2"></block>
+			<block startx="-1" startz="-5" endx="-1" endz="2"></block>
+			<block startx="0" startz="-5" endx="0" endz="2"></block>
+			<block startx="1" startz="-5" endx="1" endz="2"></block>
+			<block startx="2" startz="-5" endx="2" endz="2"></block>
+			<block startx="-4" startz="3" endx="-4" endz="4"></block>
+			<block startx="-3" startz="3" endx="-3" endz="5"></block>
+			<block startx="-2" startz="3" endx="-2" endz="5"></block>
+			<block startx="-1" startz="3" endx="-1" endz="5"></block>
+			<block startx="0" startz="3" endx="0" endz="5"></block>
+			<block startx="1" startz="3" endx="1" endz="5"></block>
+			<block startx="2" startz="3" endx="2" endz="5"></block>
+			<block startx="3" startz="3" endx="3" endz="5"></block>
+			<block startx="4" startz="3" endx="4" endz="5"></block>
+			<block startx="5" startz="3" endx="5" endz="4"></block>
+			<block startx="3" startz="-5" endx="3" endz="2"></block>
+			<block startx="4" startz="-5" endx="4" endz="2"></block>
+			<block startx="5" startz="-5" endx="5" endz="2"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

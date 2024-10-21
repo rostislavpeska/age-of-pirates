@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>13</width>
+	<height>28</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="24" posx="-3.2232" posz="-27.6635" orientx="-0.0080" orienty="0.0000" orientz="-1.0000">deNatEUPropVilGuards</unit>
+		<unit variation="249" posx="-6.9921" posz="-26.1859" orientx="-0.0012" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="10" posx="-9.0139" posz="-26.0573" orientx="-0.0062" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="24" posx="3.1868" posz="-27.6819" orientx="-0.0080" orienty="0.0000" orientz="-1.0000">deNatEUPropVilGuards</unit>
+		<unit variation="249" posx="6.7923" posz="-26.2929" orientx="-0.0012" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="10" posx="8.9866" posz="-26.1256" orientx="-0.0062" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="10" posx="4.9521" posz="-26.1103" orientx="-0.0062" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="174" posx="-10.7037" posz="-19.9994" orientx="-1.0000" orienty="0.0000" orientz="-0.0003">deNatEUPropWingC</unit>
+		<unit variation="10" posx="-5.0181" posz="-26.0383" orientx="-0.0062" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="174" posx="10.3870" posz="-20.1119" orientx="-1.0000" orienty="0.0000" orientz="-0.0003">deNatEUPropWingC</unit>
+		<unit variation="0" posx="-11.2929" posz="-22.5597" orientx="0.9998" orienty="0.0000" orientz="-0.0210">SPCPathBlock3</unit>
+		<unit variation="176" posx="-0.2611" posz="-23.3062" orientx="-0.0003" orienty="0.0000" orientz="1.0000">deSocketBourbon</unit>
+		<unit variation="0" posx="4.9647" posz="-22.7688" orientx="-0.9998" orienty="0.0000" orientz="0.0211">SPCPathBlock3</unit>
+		<unit variation="0" posx="-7.7923" posz="-25.3342" orientx="-0.0210" orienty="0.0000" orientz="-0.9998">SPCPathBlock3</unit>
+		<unit variation="0" posx="7.9336" posz="-25.9918" orientx="-0.0209" orienty="0.0000" orientz="-0.9998">SPCPathBlock3</unit>
+		<unit variation="0" posx="10.8421" posz="-22.8999" orientx="0.9998" orienty="0.0000" orientz="-0.0209">SPCPathBlock3</unit>
+		<unit variation="20" posx="-7.5451" posz="-23.7448" orientx="0.9208" orienty="0.0000" orientz="-0.3900">zpBourbonFlag</unit>
+		<unit variation="20" posx="7.1367" posz="-23.7145" orientx="0.9208" orienty="0.0000" orientz="-0.3900">zpBourbonFlag</unit>
+		<unit variation="0" posx="-4.9589" posz="-20.5436" orientx="0.9998" orienty="0.0000" orientz="-0.0210">SPCPathBlock3</unit>
+		<unit variation="189" posx="-5.6391" posz="-23.3105" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropCannon</unit>
+		<unit variation="192" posx="4.9943" posz="-23.2851" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropCannon</unit>
+		<unit variation="0" posx="-11.4626" posz="-16.6728" orientx="0.9998" orienty="0.0000" orientz="-0.0210">SPCPathBlock3</unit>
+		<unit variation="0" posx="1.5947" posz="-18.0362" orientx="-0.0211" orienty="0.0000" orientz="-0.9998">SPCPathBlock3</unit>
+		<unit variation="0" posx="-1.5234" posz="-17.5311" orientx="-0.0211" orienty="0.0000" orientz="-0.9998">SPCPathBlock3</unit>
+		<unit variation="0" posx="10.2581" posz="-13.1723" orientx="0.9998" orienty="0.0000" orientz="-0.0209">SPCPathBlock3</unit>
+		<unit variation="0" posx="-11.5878" posz="-10.1643" orientx="0.9998" orienty="0.0000" orientz="-0.0210">SPCPathBlock3</unit>
+		<unit variation="67" posx="-5.7139" posz="-12.6893" orientx="1.0000" orienty="0.0000" orientz="0.0008">deNatEUPropStatue</unit>
+		<unit variation="24" posx="-11.5459" posz="-12.7187" orientx="-1.0000" orienty="0.0000" orientz="0.0080">deNatEUPropVilGuards</unit>
+		<unit variation="24" posx="-4.0636" posz="-12.1764" orientx="1.0000" orienty="0.0000" orientz="-0.0072">deNatEUPropVilGuards</unit>
+		<unit variation="92" posx="4.7826" posz="-12.7084" orientx="-1.0000" orienty="0.0000" orientz="-0.0007">deNatEUPropStatue</unit>
+		<unit variation="24" posx="3.7543" posz="-13.1495" orientx="-1.0000" orienty="0.0000" orientz="0.0072">deNatEUPropVilGuards</unit>
+		<unit variation="24" posx="11.1442" posz="-12.5546" orientx="1.0000" orienty="0.0000" orientz="-0.0080">deNatEUPropVilGuards</unit>
+		<unit variation="62" posx="-8.4604" posz="-8.5654" orientx="1.0000" orienty="0.0000" orientz="0.0002">deNativePropsEuroPalaces</unit>
+		<unit variation="62" posx="7.7918" posz="-8.6336" orientx="1.0000" orienty="0.0000" orientz="0.0002">deNativePropsEuroPalaces</unit>
+		<unit variation="0" posx="10.6184" posz="-6.1540" orientx="0.9998" orienty="0.0000" orientz="-0.0209">SPCPathBlock3</unit>
+		<unit variation="85" posx="-10.4056" posz="-1.3623" orientx="-0.3827" orienty="0.0000" orientz="0.9239">deNatEUPropWingG</unit>
+		<unit variation="85" posx="9.9436" posz="-1.3302" orientx="-0.3824" orienty="0.0000" orientz="-0.9240">deNatEUPropWingG</unit>
+		<unit variation="0" posx="-11.4792" posz="-2.8253" orientx="0.9998" orienty="0.0000" orientz="-0.0210">SPCPathBlock3</unit>
+		<unit variation="24" posx="-12.0198" posz="-4.1201" orientx="-1.0000" orienty="0.0000" orientz="0.0080">deNatEUPropVilGuards</unit>
+		<unit variation="24" posx="-4.3638" posz="-3.8378" orientx="1.0000" orienty="0.0000" orientz="-0.0072">deNatEUPropVilGuards</unit>
+		<unit variation="67" posx="4.8591" posz="-4.7046" orientx="-1.0000" orienty="0.0000" orientz="-0.0008">deNatEUPropStatue</unit>
+		<unit variation="24" posx="3.5215" posz="-5.2081" orientx="-1.0000" orienty="0.0000" orientz="0.0072">deNatEUPropVilGuards</unit>
+		<unit variation="0" posx="10.7771" posz="-0.2106" orientx="0.9998" orienty="0.0000" orientz="-0.0209">SPCPathBlock3</unit>
+		<unit variation="92" posx="-5.4559" posz="-2.9358" orientx="1.0000" orienty="0.0000" orientz="0.0008">deNatEUPropStatue</unit>
+		<unit variation="73" posx="-1.5389" posz="-1.8147" orientx="0.9236" orienty="0.0000" orientz="0.3833">UnderbrushCoastalJapan</unit>
+		<unit variation="0" posx="-0.8262" posz="-1.7596" orientx="-1.0000" orienty="-0.0000" orientz="-0.0006">UnderbrushCoastalJapan</unit>
+		<unit variation="0" posx="0.0427" posz="0.8904" orientx="-1.0000" orienty="-0.0000" orientz="-0.0006">UnderbrushCoastalJapan</unit>
+		<unit variation="73" posx="-0.8244" posz="0.5445" orientx="-1.0000" orienty="0.0000" orientz="-0.0006">UnderbrushCoastalJapan</unit>
+		<unit variation="73" posx="-2.2499" posz="0.7363" orientx="0.9241" orienty="0.0000" orientz="-0.3821">UnderbrushCoastalJapan</unit>
+		<unit variation="246" posx="-1.1944" posz="0.2403" orientx="0.0005" orienty="0.0000" orientz="-1.0000">deNatEUPropStatue</unit>
+		<unit variation="24" posx="11.3354" posz="-1.3550" orientx="1.0000" orienty="0.0000" orientz="-0.0080">deNatEUPropVilGuards</unit>
+		<unit variation="0" posx="-1.3302" posz="2.2633" orientx="-1.0000" orienty="-0.0000" orientz="-0.0006">UnderbrushCoastalJapan</unit>
+		<unit variation="174" posx="-11.0756" posz="7.6068" orientx="-1.0000" orienty="0.0000" orientz="-0.0002">deNatEUPropWingC</unit>
+		<unit variation="174" posx="10.2095" posz="7.4221" orientx="-1.0000" orienty="0.0000" orientz="-0.0002">deNatEUPropWingC</unit>
+		<unit variation="0" posx="-11.4181" posz="4.6139" orientx="0.9998" orienty="0.0000" orientz="-0.0210">SPCPathBlock3</unit>
+		<unit variation="24" posx="-6.9262" posz="3.1424" orientx="1.0000" orienty="0.0000" orientz="-0.0079">deNatEUPropVilGuards</unit>
+		<unit variation="24" posx="-5.4415" posz="2.9242" orientx="1.0000" orienty="0.0000" orientz="-0.0079">deNatEUPropVilGuards</unit>
+		<unit variation="236" posx="1.0133" posz="4.2075" orientx="-1.0000" orienty="0.0000" orientz="-0.0009">deNatEUPropVilFemale</unit>
+		<unit variation="24" posx="-2.3019" posz="3.9081" orientx="-1.0000" orienty="0.0000" orientz="0.0079">deNatEUPropVilGuards</unit>
+		<unit variation="24" posx="-4.3309" posz="3.0298" orientx="1.0000" orienty="0.0000" orientz="-0.0079">deNatEUPropVilGuards</unit>
+		<unit variation="57" posx="3.6099" posz="3.2565" orientx="0.0004" orienty="0.0000" orientz="-1.0000">deNatEUPropStagecoach</unit>
+		<unit variation="0" posx="10.6829" posz="6.8521" orientx="0.9998" orienty="0.0000" orientz="-0.0209">SPCPathBlock3</unit>
+		<unit variation="24" posx="-6.8606" posz="5.0785" orientx="1.0000" orienty="0.0000" orientz="-0.0079">deNatEUPropVilGuards</unit>
+		<unit variation="24" posx="-5.5698" posz="4.8034" orientx="1.0000" orienty="0.0000" orientz="-0.0079">deNatEUPropVilGuards</unit>
+		<unit variation="24" posx="-4.0951" posz="5.0529" orientx="1.0000" orienty="0.0000" orientz="-0.0079">deNatEUPropVilGuards</unit>
+		<unit variation="53" posx="0.6048" posz="5.7854" orientx="-0.7065" orienty="0.0000" orientz="-0.7077">deNatEUPropVilLeaders</unit>
+		<unit variation="24" posx="-3.8226" posz="7.3797" orientx="-0.0080" orienty="0.0000" orientz="-1.0000">deNatEUPropVilGuards</unit>
+		<unit variation="24" posx="2.7764" posz="7.3091" orientx="-0.0080" orienty="0.0000" orientz="-1.0000">deNatEUPropVilGuards</unit>
+		<unit variation="0" posx="-11.5381" posz="11.5161" orientx="0.9998" orienty="0.0000" orientz="-0.0210">SPCPathBlock3</unit>
+		<unit variation="92" posx="3.6367" posz="9.1579" orientx="0.0007" orienty="0.0000" orientz="-1.0000">deNatEUPropStatue</unit>
+		<unit variation="67" posx="-4.8566" posz="9.2284" orientx="0.0008" orienty="0.0000" orientz="-1.0000">deNatEUPropStatue</unit>
+		<unit variation="62" posx="-0.5846" posz="12.3252" orientx="0.0063" orienty="0.0000" orientz="1.0000">deNativePropsEuroPalaces</unit>
+		<unit variation="203" posx="-8.3648" posz="12.6063" orientx="-0.0063" orienty="0.0000" orientz="-1.0000">deNatEUPropWingCshort</unit>
+		<unit variation="203" posx="7.6221" posz="12.4176" orientx="-0.0063" orienty="0.0000" orientz="-1.0000">deNatEUPropWingCshort</unit>
+		<unit variation="0" posx="10.8232" posz="14.6784" orientx="0.9998" orienty="0.0000" orientz="-0.0209">SPCPathBlock3</unit>
+		<unit variation="0" posx="-11.6114" posz="17.7431" orientx="0.9998" orienty="0.0000" orientz="-0.0210">SPCPathBlock3</unit>
+		<unit variation="10" posx="-12.2863" posz="16.0150" orientx="-1.0000" orienty="0.0000" orientz="0.0058">deNatEUPropFence</unit>
+		<unit variation="10" posx="11.4283" posz="15.1137" orientx="-1.0000" orienty="0.0000" orientz="0.0057">deNatEUPropFence</unit>
+		<unit variation="131" posx="8.2020" posz="16.6575" orientx="-0.0768" orienty="0.0000" orientz="-0.9970">deSPCTreeCypressProp</unit>
+		<unit variation="52" posx="-12.3696" posz="17.7237" orientx="-1.0000" orienty="0.0000" orientz="-0.0010">deNatEUPropFence</unit>
+		<unit variation="57" posx="-4.5652" posz="17.4790" orientx="0.3827" orienty="0.0000" orientz="0.9239">deNatEUPropVilLeaders</unit>
+		<unit variation="52" posx="11.3268" posz="16.9574" orientx="-1.0000" orienty="0.0000" orientz="-0.0010">deNatEUPropFence</unit>
+		<unit variation="133" posx="-10.2352" posz="17.4253" orientx="-0.9884" orienty="0.0000" orientz="-0.1516">deSPCTreeCypressProp</unit>
+		<unit variation="10" posx="-12.2744" posz="20.1318" orientx="-1.0000" orienty="0.0000" orientz="0.0058">deNatEUPropFence</unit>
+		<unit variation="111" posx="-0.6692" posz="19.7637" orientx="1.0000" orienty="0.0000" orientz="0.0007">deNatEUPropStatue</unit>
+		<unit variation="10" posx="11.4929" posz="19.4304" orientx="-1.0000" orienty="0.0000" orientz="0.0057">deNatEUPropFence</unit>
+		<unit variation="79" posx="-8.4072" posz="20.7036" orientx="0.3827" orienty="0.0000" orientz="-0.9239">deUnderbrushFlowersJapan</unit>
+		<unit variation="244" posx="2.9838" posz="19.2640" orientx="-0.9239" orienty="0.0000" orientz="0.3827">deNatEUPropVilLeaders</unit>
+		<unit variation="111" posx="-5.3439" posz="20.5625" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushCoastalJapan</unit>
+		<unit variation="251" posx="-4.4441" posz="18.6392" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropVilLeaders</unit>
+		<unit variation="0" posx="-11.8864" posz="22.9630" orientx="0.9998" orienty="0.0000" orientz="-0.0210">SPCPathBlock3</unit>
+		<unit variation="0" posx="11.2702" posz="22.3497" orientx="0.9998" orienty="0.0000" orientz="-0.0209">SPCPathBlock3</unit>
+		<unit variation="223" posx="10.2883" posz="20.7487" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">zpPropsFlowers</unit>
+		<unit variation="52" posx="-12.3005" posz="22.1923" orientx="-1.0000" orienty="0.0000" orientz="-0.0010">deNatEUPropFence</unit>
+		<unit variation="236" posx="3.1096" posz="21.0679" orientx="-0.9235" orienty="0.0000" orientz="-0.3835">deNatEUPropVilFemale</unit>
+		<unit variation="138" posx="3.6341" posz="22.7491" orientx="0.9239" orienty="0.0000" orientz="-0.3827">deUnderbrushFlowersJapan</unit>
+		<unit variation="46" posx="6.0171" posz="21.4484" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushCoastalJapan</unit>
+		<unit variation="107" posx="-5.1522" posz="22.7368" orientx="0.9239" orienty="0.0000" orientz="-0.3827">deUnderbrushFlowersJapan</unit>
+		<unit variation="52" posx="11.3815" posz="21.2980" orientx="-1.0000" orienty="0.0000" orientz="-0.0010">deNatEUPropFence</unit>
+		<unit variation="104" posx="-10.4526" posz="22.4684" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpPropsFlowers</unit>
+		<unit variation="50" posx="-9.3160" posz="24.0429" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="247" posx="10.4001" posz="22.7429" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpPropsFlowers</unit>
+		<unit variation="252" posx="6.5022" posz="22.8755" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">zpPropsFlowers</unit>
+		<unit variation="10" posx="11.6377" posz="23.8273" orientx="-1.0000" orienty="0.0000" orientz="0.0057">deNatEUPropFence</unit>
+		<unit variation="203" posx="-1.0822" posz="25.1588" orientx="-0.0062" orienty="0.0000" orientz="-1.0000">deNatEUPropWingCshort</unit>
+		<unit variation="89" posx="-10.5002" posz="23.7122" orientx="0.3866" orienty="0.0000" orientz="0.9223">deSPCTreeCypressProp</unit>
+		<unit variation="133" posx="8.5348" posz="23.8789" orientx="-0.9884" orienty="0.0000" orientz="-0.1516">deSPCTreeCypressProp</unit>
+		<unit variation="0" posx="5.0212" posz="25.0917" orientx="-0.0209" orienty="0.0000" orientz="-0.9998">SPCPathBlock3</unit>
+		<unit variation="160" posx="-8.6768" posz="25.0424" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpPropsFlowers</unit>
+		<unit variation="165" posx="-6.1272" posz="25.2406" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpPropsFlowers</unit>
+		<unit variation="10" posx="-12.2110" posz="24.5630" orientx="-1.0000" orienty="0.0000" orientz="0.0058">deNatEUPropFence</unit>
+		<unit variation="10" posx="-6.4288" posz="26.4085" orientx="0.0058" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="164" posx="5.7631" posz="24.8800" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="249" posx="6.9760" posz="26.0539" orientx="-0.0012" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="10" posx="9.2625" posz="26.3621" orientx="-0.0058" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="10" posx="4.9338" posz="26.1383" orientx="-0.0058" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="119" posx="11.5352" posz="25.8817" orientx="0.0005" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="0" posx="-1.1840" posz="25.8322" orientx="-0.0209" orienty="0.0000" orientz="-0.9998">SPCPathBlock3</unit>
+		<unit variation="0" posx="-8.4209" posz="26.0419" orientx="-0.0209" orienty="0.0000" orientz="-0.9998">SPCPathBlock3</unit>
+		<unit variation="0" posx="8.3871" posz="25.3383" orientx="-0.0209" orienty="0.0000" orientz="-0.9998">SPCPathBlock3</unit>
+		<unit variation="249" posx="-8.4166" posz="26.4476" orientx="-0.0012" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="119" posx="-12.0076" posz="26.5956" orientx="0.0005" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="10" posx="-10.5095" posz="26.6346" orientx="0.0058" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
+			<block startx="-6" startz="-14" endx="-6" endz="-13"></block>
+			<block startx="-5" startz="-14" endx="-5" endz="-13"></block>
+			<block startx="-4" startz="-14" endx="-4" endz="-13"></block>
+			<block startx="-3" startz="-14" endx="-3" endz="-13"></block>
+			<block startx="-2" startz="-14" endx="-2" endz="-13"></block>
+			<block startx="-1" startz="-14" endx="-1" endz="-13"></block>
+			<block startx="0" startz="-14" endx="0" endz="-13"></block>
+			<block startx="1" startz="-14" endx="1" endz="-13"></block>
+			<block startx="2" startz="-14" endx="2" endz="-13"></block>
+			<block startx="-6" startz="-12" endx="-6" endz="-5"></block>
+			<block startx="-6" startz="-4" endx="-6" endz="3"></block>
+			<block startx="-5" startz="-4" endx="2" endz="3"></block>
+			<block startx="-5" startz="-12" endx="2" endz="-5"></block>
+			<block startx="3" startz="-12" endx="3" endz="-5"></block>
+			<block startx="4" startz="-12" endx="4" endz="-5"></block>
+			<block startx="5" startz="-12" endx="5" endz="-5"></block>
+			<block startx="6" startz="-12" endx="6" endz="-5"></block>
+			<block startx="3" startz="-4" endx="3" endz="3"></block>
+			<block startx="4" startz="-4" endx="4" endz="3"></block>
+			<block startx="5" startz="-4" endx="5" endz="3"></block>
+			<block startx="6" startz="-4" endx="6" endz="3"></block>
+			<block startx="3" startz="-14" endx="3" endz="-13"></block>
+			<block startx="4" startz="-14" endx="4" endz="-13"></block>
+			<block startx="5" startz="-14" endx="5" endz="-13"></block>
+			<block startx="6" startz="-13" endx="6" endz="-13"></block>
+			<block startx="-6" startz="4" endx="-6" endz="7"></block>
+			<block startx="-6" startz="12" endx="-6" endz="13"></block>
+			<block startx="-5" startz="13" endx="-5" endz="13"></block>
+			<block startx="-2" startz="13" endx="-2" endz="13"></block>
+			<block startx="-1" startz="13" endx="-1" endz="13"></block>
+			<block startx="0" startz="12" endx="0" endz="13"></block>
+			<block startx="1" startz="12" endx="1" endz="13"></block>
+			<block startx="2" startz="12" endx="2" endz="13"></block>
+			<block startx="-5" startz="4" endx="-5" endz="6"></block>
+			<block startx="-4" startz="4" endx="-4" endz="5"></block>
+			<block startx="-3" startz="4" endx="-3" endz="6"></block>
+			<block startx="-2" startz="4" endx="-2" endz="6"></block>
+			<block startx="-2" startz="10" endx="-2" endz="10"></block>
+			<block startx="-1" startz="4" endx="-1" endz="7"></block>
+			<block startx="0" startz="4" endx="0" endz="8"></block>
+			<block startx="0" startz="10" endx="0" endz="10"></block>
+			<block startx="1" startz="4" endx="1" endz="7"></block>
+			<block startx="1" startz="11" endx="1" endz="11"></block>
+			<block startx="2" startz="4" endx="2" endz="6"></block>
+			<block startx="2" startz="10" endx="2" endz="10"></block>
+			<block startx="3" startz="4" endx="3" endz="5"></block>
+			<block startx="4" startz="4" endx="4" endz="5"></block>
+			<block startx="5" startz="4" endx="5" endz="6"></block>
+			<block startx="6" startz="4" endx="6" endz="8"></block>
+			<block startx="3" startz="13" endx="3" endz="13"></block>
+			<block startx="6" startz="13" endx="6" endz="13"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Texas\Path_Blend">
+			<block startx="-1" startz="12" endx="-1" endz="12"></block>
+			<block startx="-5" startz="7" endx="-5" endz="7"></block>
+			<block startx="-4" startz="6" endx="-4" endz="8"></block>
+			<block startx="-3" startz="7" endx="-3" endz="8"></block>
+			<block startx="-2" startz="7" endx="-2" endz="9"></block>
+			<block startx="-2" startz="11" endx="-2" endz="11"></block>
+			<block startx="-1" startz="8" endx="-1" endz="11"></block>
+			<block startx="0" startz="9" endx="0" endz="9"></block>
+			<block startx="0" startz="11" endx="0" endz="11"></block>
+			<block startx="1" startz="8" endx="1" endz="10"></block>
+			<block startx="2" startz="7" endx="2" endz="9"></block>
+			<block startx="3" startz="6" endx="3" endz="8"></block>
+			<block startx="4" startz="7" endx="4" endz="7"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="nwterritory\ground_grass1_nwt">
+			<block startx="-6" startz="8" endx="-6" endz="9"></block>
+			<block startx="-4" startz="13" endx="-4" endz="13"></block>
+			<block startx="-3" startz="12" endx="-3" endz="13"></block>
+			<block startx="-2" startz="12" endx="-2" endz="12"></block>
+			<block startx="-5" startz="8" endx="-5" endz="8"></block>
+			<block startx="-4" startz="9" endx="-4" endz="9"></block>
+			<block startx="-3" startz="9" endx="-3" endz="10"></block>
+			<block startx="2" startz="11" endx="2" endz="11"></block>
+			<block startx="3" startz="9" endx="3" endz="10"></block>
+			<block startx="4" startz="6" endx="4" endz="6"></block>
+			<block startx="4" startz="8" endx="4" endz="9"></block>
+			<block startx="5" startz="7" endx="5" endz="8"></block>
+			<block startx="6" startz="9" endx="6" endz="9"></block>
+			<block startx="6" startz="11" endx="6" endz="11"></block>
+			<block startx="3" startz="12" endx="3" endz="12"></block>
+			<block startx="4" startz="13" endx="4" endz="13"></block>
+			<block startx="5" startz="12" endx="5" endz="13"></block>
+			<block startx="6" startz="12" endx="6" endz="12"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="nwterritory\ground_grass1a_nwt">
+			<block startx="-6" startz="10" endx="-6" endz="11"></block>
+			<block startx="-5" startz="12" endx="-5" endz="12"></block>
+			<block startx="-4" startz="12" endx="-4" endz="12"></block>
+			<block startx="-5" startz="9" endx="-5" endz="11"></block>
+			<block startx="-4" startz="10" endx="-4" endz="11"></block>
+			<block startx="-3" startz="11" endx="-3" endz="11"></block>
+			<block startx="3" startz="11" endx="3" endz="11"></block>
+			<block startx="4" startz="10" endx="4" endz="11"></block>
+			<block startx="5" startz="9" endx="5" endz="11"></block>
+			<block startx="6" startz="10" endx="6" endz="10"></block>
+			<block startx="4" startz="12" endx="4" endz="12"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

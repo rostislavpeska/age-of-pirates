@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>13</width>
+	<height>40</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="10" posx="-7.3643" posz="-34.1323" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSPCFortWallProp</unit>
+		<unit variation="244" posx="-5.9143" posz="-29.6550" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSPCFortCornerProp</unit>
+		<unit variation="10" posx="-7.3637" posz="-24.4317" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSPCFortWallProp</unit>
+		<unit variation="139" posx="-6.7436" posz="-20.5528" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpSPCFortCornerProp</unit>
+		<unit variation="139" posx="2.1395" posz="-20.2151" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpSPCFortCornerProp</unit>
+		<unit variation="10" posx="5.0555" posz="-16.2732" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpSPCFortWallProp</unit>
+		<unit variation="10" posx="-2.5963" posz="-19.6765" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpSPCFortWallProp</unit>
+		<unit variation="178" posx="-11.6274" posz="-17.0079" orientx="0.9239" orienty="-0.0000" orientz="0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="16" posx="-9.8078" posz="-16.4809" orientx="0.9239" orienty="-0.0000" orientz="0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="185" posx="1.5482" posz="-12.4276" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpSPCFortTowerProp</unit>
+		<unit variation="139" posx="9.3264" posz="-12.6237" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSPCFortCornerProp</unit>
+		<unit variation="73" posx="-7.0593" posz="-10.8514" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpSPCPortSocket</unit>
+		<unit variation="183" posx="5.4043" posz="-8.8150" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpSPCFortWallProp</unit>
+		<unit variation="82" posx="12.1294" posz="-7.8975" orientx="0.7071" orienty="-0.0000" orientz="0.7071">deGuardianMusketeer</unit>
+		<unit variation="251" posx="-10.3597" posz="-5.5104" orientx="0.9239" orienty="-0.0000" orientz="0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="251" posx="-9.0360" posz="-5.5609" orientx="0.9239" orienty="-0.0000" orientz="0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="0" posx="12.3237" posz="-5.5947" orientx="0.7071" orienty="-0.0000" orientz="0.7071">deGuardianMusketeer</unit>
+		<unit variation="195" posx="9.8724" posz="-6.2595" orientx="0.7071" orienty="-0.0000" orientz="0.7071">deGuardianMusketeer</unit>
+		<unit variation="216" posx="-0.3950" posz="-4.8055" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpSPCFortWallSmallProp</unit>
+		<unit variation="139" posx="2.3973" posz="-5.3508" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpSPCFortCornerProp</unit>
+		<unit variation="244" posx="-2.1366" posz="-5.1144" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpSPCFortCornerProp</unit>
+		<unit variation="106" posx="-1.3163" posz="0.6413" orientx="1.0000" orienty="0.0000" orientz="-0.0000">SPCFortGate</unit>
+		<unit variation="106" posx="-1.3163" posz="0.6413" orientx="1.0000" orienty="0.0000" orientz="-0.0000">SPCXPWoodFortGate</unit>
+		<unit variation="237" posx="-10.1653" posz="-2.3081" orientx="0.9239" orienty="-0.0000" orientz="0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="233" posx="0.2568" posz="5.3204" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpSPCFortWallSmallProp</unit>
+		<unit variation="244" posx="2.1012" posz="5.6449" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpSPCFortCornerProp</unit>
+		<unit variation="217" posx="12.0717" posz="5.4196" orientx="0.7071" orienty="-0.0000" orientz="0.7071">deGuardianMusketeer</unit>
+		<unit variation="217" posx="9.1840" posz="5.0563" orientx="0.7071" orienty="-0.0000" orientz="0.7071">deGuardianMusketeer</unit>
+		<unit variation="247" posx="5.4012" posz="9.0897" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpSPCFortWallProp</unit>
+		<unit variation="244" posx="-1.7229" posz="6.2000" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCFortCornerProp</unit>
+		<unit variation="79" posx="11.7696" posz="7.7245" orientx="0.7071" orienty="-0.0000" orientz="0.7071">deGuardianMusketeer</unit>
+		<unit variation="159" posx="-10.7155" posz="7.8289" orientx="0.9239" orienty="-0.0000" orientz="0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="32" posx="-9.7279" posz="9.7717" orientx="0.9239" orienty="-0.0000" orientz="0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="113" posx="-11.3562" posz="10.1829" orientx="0.9239" orienty="0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="89" posx="0.3291" posz="12.3556" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpSPCFortTowerProp</unit>
+		<unit variation="244" posx="9.1354" posz="11.7206" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSPCFortCornerProp</unit>
+		<unit variation="210" posx="4.6540" posz="15.8421" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpSPCFortWallProp</unit>
+		<unit variation="157" posx="-11.5616" posz="13.0990" orientx="0.9239" orienty="-0.0000" orientz="0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="117" posx="-7.3413" posz="13.0369" orientx="0.9239" orienty="-0.0021" orientz="-0.3827">Falconet</unit>
+		<unit variation="227" posx="-9.9912" posz="12.9191" orientx="0.9239" orienty="-0.0000" orientz="0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="18" posx="-10.3972" posz="14.6940" orientx="0.9239" orienty="0.0000" orientz="-0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="49" posx="-11.4984" posz="15.6464" orientx="0.9239" orienty="-0.0000" orientz="0.3827">deNatRoyalMusketeer</unit>
+		<unit variation="244" posx="-6.2941" posz="20.6305" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpSPCFortCornerProp</unit>
+		<unit variation="244" posx="1.8307" posz="20.0487" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpSPCFortCornerProp</unit>
+		<unit variation="68" posx="-2.9833" posz="19.7468" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCFortWallProp</unit>
+		<unit variation="79" posx="-7.2482" posz="24.3582" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSPCFortWallProp</unit>
+		<unit variation="244" posx="-6.4422" posz="29.8149" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSPCFortCornerProp</unit>
+		<unit variation="79" posx="-7.1881" posz="33.6906" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSPCFortWallProp</unit>
+	</units>
+	<tiles></tiles>
+</grouping>
