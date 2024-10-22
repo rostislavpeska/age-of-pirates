@@ -13,7 +13,7 @@
       </texture>
       <texture name="Emissive" override="units\generals\textures\astronaut2_mata_Emissive">
       </texture>
-      <float name="EmissiveIntensity" override="15.0000">
+      <float name="EmissiveIntensity" override="25.0000">
       </float>
       <vector4 name="EmissiveColor" override="1.000, 1.000, 1.000, 0.000">
       </vector4>
@@ -21,18 +21,6 @@
       </float>
       <float name="AO Intensity" override="1.4440">
       </float>
-    </parameters>
-  </submaterial>
-  <submaterial name="matb">
-    <materialdef name="default">
-    </materialdef>
-    <parameters>
-      <texture name="BaseColor" override="units\generals\textures\astronaut2_matb_BaseColor">
-      </texture>
-      <texture name="Normals" override="units\generals\textures\astronaut2_matb_Normals">
-      </texture>
-      <texture name="Masks" override="units\generals\textures\astronaut2_matb_Masks">
-      </texture>
     </parameters>
   </submaterial>
 </material>

@@ -1751,7 +1751,7 @@
       <string _locid="301750">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Submarine \n\n&lt;color=0.0, 1.0, 0.0&gt;Bonus:&lt;/color&gt; Ships Captain Nemo hero character. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nLegendary Nautilus, Submarine Fleet</string>
       <string _locid="301751">ZP Submarine Transport</string>
       <string _locid="301752">ZP Nautilus Transport</string>
-      <string _locid="301753">Generates resources and provides gather bonus and hitpoint bonus to nearby divers. Very resistent to any unit's attack except Divers and submerged Submarines.</string>
+      <string _locid="301753">Provides life support for nearby divers. Gather bonus aura. Generates resources. Very resistent to any unit's attack except Divers and submerged Submarines.</string>
       <string _locid="301754">Diver life support building.</string>
       <string _locid="301755">Deep Water Pearls</string>
       <string _locid="301756">ZP Pearls Underwater</string>
