@@ -148,7 +148,7 @@ void main(void)
   int avoidTeamCliffs=rmCreateClassDistanceConstraint("avoid team cliff constraint", classTeamCliff, 28.0);
   int avoidTeamCliffsShort=rmCreateClassDistanceConstraint("avoid team cliff constraint short", classTeamCliff, 6.0);
   int avoidTeamIslands=rmCreateClassDistanceConstraint("avoid team island constraint", classTeamIsland, 28.0);
-  int avoidTeamIslandsShort=rmCreateClassDistanceConstraint("avoid team island short", classTeamIsland, 20.0);
+  int avoidTeamIslandsShort=rmCreateClassDistanceConstraint("avoid team island short", classTeamIsland, 15.0);
   int avoidTeamIslands1=rmCreateClassDistanceConstraint("avoid team island 1", classTeamIsland, 1.0);
   int islandEdgeConstraint=rmCreatePieConstraint("island edge of map", 0.5, 0.5, 0, rmGetMapXSize()-5, 0, 0, 0);
   
@@ -199,12 +199,12 @@ void main(void)
   int avoidKOTH=rmCreateTypeDistanceConstraint("stay away from Kings Hill", "ypKingsHill", 30.0);
   
   // flag constraints
-  int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 30.0);
+  int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 15.0);
 	int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 40);
-  int flagVsPirates1 = rmCreateTypeDistanceConstraint("flag avoid pirates 1", "zpPirateWaterSpawnFlag1", 40);
-  int flagVsPirates2 = rmCreateTypeDistanceConstraint("flag avoid pirates 2", "zpPirateWaterSpawnFlag2", 40);
-	int flagVsScientists1 = rmCreateTypeDistanceConstraint("flag avoid Scientists 1", "zpNativeWaterspawnFlag1", 40);
-  int flagVsScientists2 = rmCreateTypeDistanceConstraint("flag avoid Scientists 2", "zpNativeWaterspawnFlag2", 40);
+  int flagVsPirates1 = rmCreateTypeDistanceConstraint("flag avoid pirates 1", "zpPirateWaterSpawnFlag1", 15);
+  int flagVsPirates2 = rmCreateTypeDistanceConstraint("flag avoid pirates 2", "zpPirateWaterSpawnFlag2", 15);
+	int flagVsScientists1 = rmCreateTypeDistanceConstraint("flag avoid Scientists 1", "zpNativeWaterspawnFlag1", 15);
+  int flagVsScientists2 = rmCreateTypeDistanceConstraint("flag avoid Scientists 2", "zpNativeWaterspawnFlag2", 15);
   int flagVsScientists1Short = rmCreateTypeDistanceConstraint("flag avoid Scientists 1 short", "zpNativeWaterspawnFlag1", 15);
   int flagVsScientists2Short = rmCreateTypeDistanceConstraint("flag avoid Scientists 2 short", "zpNativeWaterspawnFlag2", 15);
   int flagEdgeConstraint=rmCreatePieConstraint("flag edge of map", 0.5, 0.5, 0, rmGetMapXSize()-100, 0, 0, 0);
@@ -1002,7 +1002,6 @@ void main(void)
 		// Place water spawn points for the players along with a canoe
 		waterSpawnPointID=rmCreateObjectDef("colony ship "+i);
 		rmAddObjectDefItem(waterSpawnPointID, "HomeCityWaterSpawnFlag", 1, 10.0);
-		rmAddClosestPointConstraint(flagVsFlag);
     rmAddClosestPointConstraint(flagVsPirates1);
     rmAddClosestPointConstraint(flagVsPirates2);
     rmAddClosestPointConstraint(flagVsScientists1);
