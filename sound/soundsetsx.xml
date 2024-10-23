@@ -1826,8 +1826,6 @@
     </sound>
   </soundset>
   <soundset name="BlackJack_Ship_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
-    <sound filename="aussie\Blackjack_Ship_Move01.wav" volume="1.5000">
-    </sound>
     <sound filename="aussie\Blackjack_Ship_Move02.wav" volume="1.5000">
     </sound>
     <sound filename="aussie\Blackjack_Ship_Move03.wav" volume="1.5000">
