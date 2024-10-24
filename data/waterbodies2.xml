@@ -1826,7 +1826,7 @@
 
   <ocean name="ZP Great Barrier Reef" cluttermix="ceylon_underwater" iconname="ui\editor\watercaribbeancoast" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="caribbean\ground_shoreline1_crb" bank="AfricaSavanna\ground_shore1_afriSavanna" outerbank="AfricaSavanna\ground_shore2_afriSavanna" slope="" color="9 110 88" deepcolor="0 0 0" depth="8" fresnelscale="0.247934" fresnelbias="0.555556" alphaminvalue="0.000000" alphamaxvalue="0.914063" alphamindepth="0.000000" alphamaxdepth="1.900827" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.842105" reflectionamount="-0.222222" bumpscale="0.660000" reflectionbumpscale="0.710000" foamscale="-0.110000" texscale="1.970000" texscrollspeed="0.000000" texrotation="129.000000">
     <textureplacement>
-      <texture distance="18" variance="2">california\groundshore1_cal</texture>
+      <texture distance="18" variance="2">caribbean\ground_shoreline1_crb</texture>
       <texture distance="24" variance="6">caribbean\seafloor_coral4_crb</texture>
       <texture distance="30" variance="6">caribbean\seafloor_coral3_crb</texture>
       <texture distance="34" variance="2">ceylon\seafloor3_ceylon</texture>
