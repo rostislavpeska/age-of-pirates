@@ -16,7 +16,7 @@
       <string _locid="300013" symbol="cStringNativePostAlly">"Roll out the barrels of rum!"</string>
       <string _locid="300014" symbol="cStringNativeNotAlly">"Don't take it personally. Someone just paid us more."</string>
       <string _locid="300015">ZP Socket Pirates</string>
-      <string _locid="300016">Pirates Lair</string>
+      <string _locid="300016">Pirate's Lair</string>
       <string _locid="300017" symbol="cStringNativePreAlly"> "Take what you can, give nothing back!"</string>
       <string _locid="300018">ZP Trading Post Clone</string>
       <string _locid="300019">Legendary captain: Choose a legendary pirate captain with a mighty flagship.</string>
@@ -1708,7 +1708,7 @@
       <string _locid="301707">Shipwreck</string>
       <string _locid="301708">ZP Underwater Shipwreck Wood</string>
       <string _locid="301709">Underwater Wood Resource</string>
-      <string _locid="301710">Large river islands surrounded by marshes. That's New Guinea also called Papua. West Papua and East New Papua differ from each other not only by various natives. \n\nSettlements: Wokou, Korowai, Jesuit (Eastern variant), Sufi (Western variant)</string>
+      <string _locid="301710">Large river islands surrounded by marshes. That's New Guinea also called Papua. West Papua and East New Papua differ from each other not only by various natives. \n\nSettlements: Wokou, Korowai, Jesuit / Sufi</string>
       <string _locid="301711">New Guinea</string>
       <string _locid="301712">Marshes full of crocodiles and forests full of canibals. Beware and explore the surrounding carefuly.</string>
       <string _locid="301713">Stealth Deep Sea Diver with a harpoon attack. Can gather underwater resources. Desperately need a Diving Bell to provide him a life support. Moves very slow.</string>
@@ -1737,7 +1737,7 @@
       <string _locid="301736">Underbrush Coral</string>
       <string _locid="301737">ZP Underbrush Coral</string>
       <string _locid="301738">Deep Sea Pioneers</string>
-      <string _locid="301739">Ships a Submarine which can train Deep Sea Divers able to gather resources from underwater mines and shipwrecks. Allows submarine training - either from Inventor Trading post and the Dock. &lt;color=0.0, 1.0, 0.0&gt;TEAM TECH&lt;/color&gt;</string>
+      <string _locid="301739">Ships a Submarine which can train Divers able to gather resources from underwater mines and shipwrecks. Allows submarine training - either from Inventor Trading post and the Dock. &lt;color=0.0, 1.0, 0.0&gt;TEAM TECH&lt;/color&gt;</string>
       <string _locid="301740">Cook Islands</string>
       <string _locid="301741">Large map with team islands. Players start on islands with limited resources. Most of the resources on this map are placed under the water and can be gathered only by divers. \n\nSettlements: Maori, Inventors (Nemo Bonus), Pirates</string>
       <string _locid="301742">Unlock the underwater world by taking Inventors Trade Post and researching a special tech or rescuing Divers from sharks.</string>

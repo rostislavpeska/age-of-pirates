@@ -808,8 +808,18 @@ rmAddTradeRouteWaypoint(lavaflowID3, 0.5-rmXTilesToFraction(10), 0.93);
 
 bool placedLavaflowID3 = rmBuildTradeRoute(lavaflowID3, "lava_flow");
 
-    
+int stopperID=rmCreateObjectDef("Volceno Center 1");
+rmAddObjectDefItem(stopperID, "zpSPCWaterSpawnPoint", 1, 0.0);
+rmSetObjectDefAllowOverlap(stopperID, true);
+rmSetObjectDefMinDistance(stopperID, 0.0);
+rmSetObjectDefMaxDistance(stopperID, 0.0);  
 
+rmSetObjectDefTradeRouteID(stopperID, lavaflowID);
+vector stopperLoc = rmGetTradeRouteWayPoint(lavaflowID, 0.01);
+rmPlaceObjectDefAtPoint(stopperID, 0, stopperLoc);
+vector volcanoLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID, 0));
+
+    
 // ------------------ Volcano Terrain -----------------------------------------------------------------------
 
 // Level 2
@@ -829,7 +839,7 @@ rmSetAreaTerrainType(basecliffID2, "lava\volcano_borneo");
 rmSetAreaCliffEdge(basecliffID2, 1, 1.00, 0.0, 0.0, 2); 
 rmSetAreaCliffPainting(basecliffID2, true, true, true, 1.5, true);
 rmSetAreaCliffHeight(basecliffID2, 4, 0.1, 0.5);
-rmSetAreaLocation(basecliffID2, 0.5, 0.93);
+rmSetAreaLocation(basecliffID2, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc1))+rmZTilesToFraction(1));
 rmAddAreaToClass(basecliffID2, classHighMountains);
 rmAddAreaConstraint(basecliffID2, avoidKOTHshort);
 //rmSetAreaReveal(basecliffID2, 1);
@@ -839,7 +849,7 @@ rmBuildArea(basecliffID2);
 
 int fujiPeaklvl3 = rmCreateArea("fujiPeaklvl3");
 rmSetAreaSize(fujiPeaklvl3, rmAreaTilesToFraction(850.0), rmAreaTilesToFraction(850.0));
-rmSetAreaLocation(fujiPeaklvl3, 0.5, 0.93);
+rmSetAreaLocation(fujiPeaklvl3, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc1))+rmZTilesToFraction(1));
 rmSetAreaTerrainType(fujiPeaklvl3, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeaklvl3, 10.0);
 rmAddAreaConstraint(fujiPeaklvl3, avoidKOTHshort);
@@ -924,7 +934,7 @@ rmBuildArea(basecliffID34);
 
 int fujiPeaklvl4 = rmCreateArea("fujiPeaklvl4");
 rmSetAreaSize(fujiPeaklvl4, rmAreaTilesToFraction(450.0), rmAreaTilesToFraction(450.0));
-rmSetAreaLocation(fujiPeaklvl4, 0.5, 0.93);
+rmSetAreaLocation(fujiPeaklvl4, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc1))+rmZTilesToFraction(1));
 rmSetAreaTerrainType(fujiPeaklvl4, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeaklvl4, 14.0);
 rmSetAreaHeightBlend(fujiPeaklvl4, 2.0);
@@ -1013,7 +1023,7 @@ rmBuildArea(basecliffID44);
 
 int fujiPeaklvl5 = rmCreateArea("fujiPeaklvl5");
 rmSetAreaSize(fujiPeaklvl5, rmAreaTilesToFraction(380.0), rmAreaTilesToFraction(380.0));
-rmSetAreaLocation(fujiPeaklvl5, 0.5, 0.93);
+rmSetAreaLocation(fujiPeaklvl5, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc1))+rmZTilesToFraction(1));
 rmSetAreaTerrainType(fujiPeaklvl5, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeaklvl5, 18.0);
 rmAddAreaConstraint(fujiPeaklvl5, avoidKOTHshort);
@@ -1102,7 +1112,7 @@ rmBuildArea(basecliffID54);
 
 int fujiPeaklvl6 = rmCreateArea("fujiPeaklvl6");
 rmSetAreaSize(fujiPeaklvl6, rmAreaTilesToFraction(100.0), rmAreaTilesToFraction(100.0));
-rmSetAreaLocation(fujiPeaklvl6, 0.5, 0.93);
+rmSetAreaLocation(fujiPeaklvl6, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc1))+rmZTilesToFraction(1));
 rmSetAreaTerrainType(fujiPeaklvl6, "lava\crater");
 rmSetAreaBaseHeight(fujiPeaklvl6, 22.0);
 rmAddAreaConstraint(fujiPeaklvl6, avoidKOTHshort);
@@ -1111,14 +1121,14 @@ rmBuildArea(fujiPeaklvl6);
 
 int fujiPeaklvl6Terrain = rmCreateArea("fujiPeaklvl6Terrain");
 rmSetAreaSize(fujiPeaklvl6Terrain, rmAreaTilesToFraction(210.0), rmAreaTilesToFraction(210.0));
-rmSetAreaLocation(fujiPeaklvl6Terrain, 0.5, 0.93);
+rmSetAreaLocation(fujiPeaklvl6Terrain, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc1))+rmZTilesToFraction(1));
 rmSetAreaTerrainType(fujiPeaklvl6Terrain, "lava\crater");
 rmSetAreaCoherence(fujiPeaklvl6Terrain, 1.0);
 rmBuildArea(fujiPeaklvl6Terrain);
 
 int fujiDip = rmCreateArea("fujiDip");
 rmSetAreaSize(fujiDip, rmAreaTilesToFraction(30.0), rmAreaTilesToFraction(30.0));
-rmSetAreaLocation(fujiDip, 0.5, 0.93);
+rmSetAreaLocation(fujiDip, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc1))+rmZTilesToFraction(1));
 rmSetAreaCliffType(fujiDip, "ZP Hawaii Crater");
 rmSetAreaCliffPainting(fujiDip, false, true, true, 1.5, false);
 rmSetAreaCliffHeight(fujiDip, -5, 0.1, 0.5);
@@ -1129,7 +1139,7 @@ rmBuildArea(fujiDip);
 
 int fujiDipTerrain1 = rmCreateArea("fujiDipTerrain1");
 rmSetAreaSize(fujiDipTerrain1, rmAreaTilesToFraction(30.0), rmAreaTilesToFraction(30.0));
-rmSetAreaLocation(fujiDipTerrain1, 0.5, 0.93);
+rmSetAreaLocation(fujiDipTerrain1, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc1))+rmZTilesToFraction(1));
 rmSetAreaTerrainType(fujiDipTerrain1, "lava\crater_passable");
 rmSetAreaCoherence(fujiDipTerrain1, 1.0);
 rmBuildArea(fujiDipTerrain1);  
@@ -1160,6 +1170,17 @@ rmAddTradeRouteWaypoint(lavaflowID4, 0.5-rmXTilesToFraction(10), 0.07);
 
 bool placedLavaflowID4 = rmBuildTradeRoute(lavaflowID4, "lava_flow");
 
+int stopperID2=rmCreateObjectDef("Volceno Center 2");
+rmAddObjectDefItem(stopperID2, "zpSPCWaterSpawnPoint", 1, 0.0);
+rmSetObjectDefAllowOverlap(stopperID2, true);
+rmSetObjectDefMinDistance(stopperID2, 0.0);
+rmSetObjectDefMaxDistance(stopperID2, 0.0);  
+
+rmSetObjectDefTradeRouteID(stopperID, lavaflowID2);
+vector stopperLoc2 = rmGetTradeRouteWayPoint(lavaflowID2, 0.01);
+rmPlaceObjectDefAtPoint(stopperID2, 0, stopperLoc2);
+vector volcanoLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID2, 0));
+
 
 // Level 2
 
@@ -1178,7 +1199,7 @@ rmSetAreaTerrainType(basecliffSoutID2, "lava\volcano_borneo");
 rmSetAreaCliffEdge(basecliffSoutID2, 1, 1.00, 0.0, 0.0, 2); 
 rmSetAreaCliffPainting(basecliffSoutID2, true, true, true, 1.5, true);
 rmSetAreaCliffHeight(basecliffSoutID2, 4, 0.1, 0.5);
-rmSetAreaLocation(basecliffSoutID2, 0.5, 0.07);
+rmSetAreaLocation(basecliffSoutID2, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc2)));
 rmAddAreaToClass(basecliffSoutID2, classHighMountains);
 rmAddAreaConstraint(basecliffSoutID2, avoidKOTHshort);
 //rmSetAreaReveal(basecliffSoutID2, 1);
@@ -1188,7 +1209,7 @@ rmBuildArea(basecliffSoutID2);
 
 int fujiPeakSouthlvl3 = rmCreateArea("fujiPeakSouthlvl3");
 rmSetAreaSize(fujiPeakSouthlvl3, rmAreaTilesToFraction(850.0), rmAreaTilesToFraction(850.0));
-rmSetAreaLocation(fujiPeakSouthlvl3, 0.5, 0.07);
+rmSetAreaLocation(fujiPeakSouthlvl3, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc2)));
 rmSetAreaTerrainType(fujiPeakSouthlvl3, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeakSouthlvl3, 10.0);
 rmAddAreaConstraint(fujiPeakSouthlvl3, avoidKOTHshort);
@@ -1273,7 +1294,7 @@ rmBuildArea(basecliffSoutID34);
 
 int fujiPeakSouthlvl4 = rmCreateArea("fujiPeakSouthlvl4");
 rmSetAreaSize(fujiPeakSouthlvl4, rmAreaTilesToFraction(450.0), rmAreaTilesToFraction(450.0));
-rmSetAreaLocation(fujiPeakSouthlvl4, 0.5, 0.07);
+rmSetAreaLocation(fujiPeakSouthlvl4, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc2)));
 rmSetAreaTerrainType(fujiPeakSouthlvl4, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeakSouthlvl4, 14.0);
 rmAddAreaConstraint(fujiPeakSouthlvl4, avoidKOTHshort);
@@ -1362,7 +1383,7 @@ rmBuildArea(basecliffSoutID44);
 
 int fujiPeakSouthlvl5 = rmCreateArea("fujiPeakSouthlvl5");
 rmSetAreaSize(fujiPeakSouthlvl5, rmAreaTilesToFraction(380.0), rmAreaTilesToFraction(380.0));
-rmSetAreaLocation(fujiPeakSouthlvl5, 0.5, 0.07);
+rmSetAreaLocation(fujiPeakSouthlvl5, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc2)));
 rmSetAreaTerrainType(fujiPeakSouthlvl5, "lava\volcano_dirt");
 rmSetAreaBaseHeight(fujiPeakSouthlvl5, 18.0);
 rmAddAreaConstraint(fujiPeakSouthlvl5, avoidKOTHshort);
@@ -1451,7 +1472,7 @@ rmBuildArea(basecliffSoutID54);
 
 int fujiPeakSouthlvl6 = rmCreateArea("fujiPeakSouthlvl6");
 rmSetAreaSize(fujiPeakSouthlvl6, rmAreaTilesToFraction(100.0), rmAreaTilesToFraction(100.0));
-rmSetAreaLocation(fujiPeakSouthlvl6, 0.5, 0.07);
+rmSetAreaLocation(fujiPeakSouthlvl6, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc2)));
 rmSetAreaTerrainType(fujiPeakSouthlvl6, "lava\crater");
 rmSetAreaBaseHeight(fujiPeakSouthlvl6, 22.0);
 rmAddAreaConstraint(fujiPeakSouthlvl6, avoidKOTHshort);
@@ -1460,14 +1481,14 @@ rmBuildArea(fujiPeakSouthlvl6);
 
 int fujiPeakSouthlvl6Terrain = rmCreateArea("fujiPeakSouthlvl6Terrain");
 rmSetAreaSize(fujiPeakSouthlvl6Terrain, rmAreaTilesToFraction(210.0), rmAreaTilesToFraction(210.0));
-rmSetAreaLocation(fujiPeakSouthlvl6Terrain, 0.5, 0.07);
+rmSetAreaLocation(fujiPeakSouthlvl6Terrain, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc2)));
 rmSetAreaTerrainType(fujiPeakSouthlvl6Terrain, "lava\crater");
 rmSetAreaCoherence(fujiPeakSouthlvl6Terrain, 1.0);
 rmBuildArea(fujiPeakSouthlvl6Terrain);
 
 int fujiDipSouth = rmCreateArea("fujiDipSouth");
 rmSetAreaSize(fujiDipSouth, rmAreaTilesToFraction(30.0), rmAreaTilesToFraction(30.0));
-rmSetAreaLocation(fujiDipSouth, 0.5, 0.07);
+rmSetAreaLocation(fujiDipSouth, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc2)));
 rmSetAreaCliffType(fujiDipSouth, "ZP Hawaii Crater");
 rmSetAreaCliffPainting(fujiDipSouth, false, true, true, 1.5, false);
 rmSetAreaCliffHeight(fujiDipSouth, -5, 0.1, 0.5);
@@ -1478,7 +1499,7 @@ rmBuildArea(fujiDipSouth);
 
 int fujiDipSouthTerrain1 = rmCreateArea("fujiDipSouthTerrain1");
 rmSetAreaSize(fujiDipSouthTerrain1, rmAreaTilesToFraction(30.0), rmAreaTilesToFraction(30.0));
-rmSetAreaLocation(fujiDipSouthTerrain1, 0.5, 0.07);
+rmSetAreaLocation(fujiDipSouthTerrain1, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc2)));
 rmSetAreaTerrainType(fujiDipSouthTerrain1, "lava\crater_passable");
 rmSetAreaCoherence(fujiDipSouthTerrain1, 1.0);
 rmBuildArea(fujiDipSouthTerrain1);  
@@ -1497,7 +1518,9 @@ rmBuildArea(fujiDipSouthTerrain);
 
 int volcanoCraterID = -1;
 volcanoCraterID = rmCreateGrouping("crater", "volcano_crater_small_A");
-rmPlaceGroupingAtLoc(volcanoCraterID, 1, 0.5-rmXTilesToFraction(1.0), 0.93, 1);
+rmPlaceGroupingAtLoc(volcanoCraterID, 1, 0.5-rmXTilesToFraction(1.0), rmZMetersToFraction(xsVectorGetZ(volcanoLoc1))+rmZTilesToFraction(1), 1);
+rmSetGroupingMinDistance(volcanoCraterID, 0);
+rmSetGroupingMaxDistance(volcanoCraterID, 0);
 
 int volcanoAvoider = rmCreateObjectDef("ai avoider"); 
 if (cNumberNonGaiaPlayers <= 2)
@@ -1508,13 +1531,14 @@ else if(cNumberNonGaiaPlayers <= 6)
 rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoiderL", 1, 0.0);
 else
 rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoiderXL", 1, 0.0);
-rmPlaceObjectDefAtLoc(volcanoAvoider, 0, 0.5, 0.93);
+
+ rmPlaceObjectDefAtLoc(volcanoAvoider, 0, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc1))+rmZTilesToFraction(1));
 
 // Crater 2
 
 int volcanoCraterID2 = -1;
 volcanoCraterID2 = rmCreateGrouping("crater2", "volcano_crater_small_B");
-rmPlaceGroupingAtLoc(volcanoCraterID2, 1, 0.5-rmXTilesToFraction(1.0), 0.07, 1);
+rmPlaceGroupingAtLoc(volcanoCraterID2, 1, 0.5-rmXTilesToFraction(1.0), rmZMetersToFraction(xsVectorGetZ(volcanoLoc2)), 1);
 
 int volcanoAvoider2 = rmCreateObjectDef("ai avoider2"); 
 if (cNumberNonGaiaPlayers <= 2)
@@ -1525,7 +1549,7 @@ else if(cNumberNonGaiaPlayers <= 6)
 rmAddObjectDefItem(volcanoAvoider2, "zpVolcanoAvoiderL", 1, 0.0);
 else
 rmAddObjectDefItem(volcanoAvoider2, "zpVolcanoAvoiderXL", 1, 0.0);
-rmPlaceObjectDefAtLoc(volcanoAvoider2, 0, 0.5, 0.07);
+rmPlaceObjectDefAtLoc(volcanoAvoider2, 0, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc2)));
 
 
 	//==========KotH==============
@@ -2208,8 +2232,8 @@ int eruptionBreak3 = rmRandInt(gapMin,gapMax);
 int eruptionBreak4 = rmRandInt(gapMin,gapMax);
 int eruptionBreak5 = rmRandInt(gapMin,gapMax);
 
-string volcanoID = "360";
-string volcanoID2 = "406";
+string volcanoID = "361";
+string volcanoID2 = "408";
 string pirate1Socket = "5";
 string pirate2Socket = "41";
 string pirate1ID = "8";

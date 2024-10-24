@@ -7869,15 +7869,18 @@
 			</effect>
       <effect type="TransformUnit" toprotoid="zpIronTankProxy" fromprotoid="deTank">
       </effect>
-      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpIronTank</target>
       </effect>
-      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpIronTankProxy</target>
       </effect>
       <effect type="SetName" proto="zpIronTank" culture="none" newname="300542">
       </effect>
       <effect type="SetName" proto="zpIronTankProxy" culture="none" newname="300542">
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpIronTank</target>
       </effect>
     </effects>
   </tech>

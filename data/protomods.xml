@@ -11062,7 +11062,7 @@
     <subciv>zpScientists</subciv>
     <displaynameid>300550</displaynameid>
     <editornameid>300543</editornameid>
-    <populationcount>0</populationcount>
+    <populationcount>6</populationcount>
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Protected</formationcategory>
@@ -33559,6 +33559,7 @@
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
     <flag>VisibleUnderFogIfGaia</flag>
+    <flag>DontTrainInBatches</flag>
     <flag>Tracked</flag>
     <flag>StartEnabled</flag>
     <command page="10" column="1">Stop</command>
