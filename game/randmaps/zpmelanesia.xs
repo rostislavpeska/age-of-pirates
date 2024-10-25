@@ -1552,21 +1552,6 @@ rmAddObjectDefItem(volcanoAvoider2, "zpVolcanoAvoiderXL", 1, 0.0);
 rmPlaceObjectDefAtLoc(volcanoAvoider2, 0, 0.5, rmZMetersToFraction(xsVectorGetZ(volcanoLoc2)));
 
 
-	//==========KotH==============
-
-// check for KOTH game mode
-if(rmGetIsKOTH()) {
-
-    float xLoc = 0.5;
-    float yLoc = 0.5;
-    float walk = 0.00;
-
-    ypKingsHillPlacer(xLoc, yLoc, walk, 0);
-    rmEchoInfo("XLOC = "+xLoc);
-    rmEchoInfo("XLOC = "+yLoc);
-}
-
-
 // Port Sites
 
    int portSite1 = rmCreateArea ("port_site1");
