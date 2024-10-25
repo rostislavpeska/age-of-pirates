@@ -9,6 +9,7 @@
       <type>california</type>
       <type>caribbean</type>
       <type>australia</type>
+      <type>barrierreef</type>
       <type>tasmania</type>
       <type>carolina</type>
       <type>greatLakes</type>
@@ -82,6 +83,7 @@
       <type>silkRoad2</type>
       <type>silkRoad3</type>
       <type>australia</type>
+      <type>barrierreef</type>
       <type>tasmania</type>
       <type>newzealand</type>
     </maptypes>
@@ -208,6 +210,7 @@
       <type>orinoco</type>
       <type>yucatan</type>
       <type>australia</type>
+      <type>barrierreef</type>
       <type>newguinea</type>
       <type>newzealand</type>
     </maptypes>
@@ -229,6 +232,7 @@
       <type>yucatan</type>
       <type>caribbean</type>
       <type>australia</type>
+      <type>barrierreef</type>
       <type>hawaii</type>
       <type>cookislands</type>
       <type>newguinea</type>
@@ -253,6 +257,7 @@
       <type>carolina</type>
       <type>patagonia</type>
       <type>australia</type>
+      <type>barrierreef</type>
       <type>tasmania</type>
       <type>newzealand</type>
       <type>hawaii</type>

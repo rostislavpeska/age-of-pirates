@@ -13,6 +13,7 @@
       <amount>75</amount>
       <guardian>Pirate</guardian>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
@@ -31,6 +32,7 @@
       <amount>75</amount>
       <guardian>Pirate</guardian>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
@@ -48,6 +50,7 @@
       <resource>Gold</resource>
       <amount>25</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
@@ -64,6 +67,7 @@
       <applystringid>42888</applystringid>
       <icon>discover_villages</icon>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <maptype>newguinea</maptype>
       <convertunit>
@@ -119,6 +123,7 @@
       <resource>Gold</resource>
       <amount>275</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <guardianunit>
         <unit>zpGrdBushRanger</unit>
         <idleanim>NuggetPirate1_Idle</idleanim>
@@ -152,6 +157,7 @@
       <resource>Wood</resource>
       <amount>120</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <guardianunit>
         <unit>zpGrdBushRanger</unit>
@@ -182,6 +188,7 @@
       <resource>XP</resource>
       <amount>420</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
@@ -200,6 +207,7 @@
       <rolloverstringid>301374</rolloverstringid>
       <applystringid>301375</applystringid>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <resource>Wood</resource>
       <amount>85</amount>
@@ -216,6 +224,7 @@
       <resource>XP</resource>
       <amount>100</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>newguinea</maptype>
       <guardian>deCrocodile</guardian>
       <guardian>deCrocodile</guardian>
@@ -230,6 +239,7 @@
       <resource>Wood</resource>
       <amount>100</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>newguinea</maptype>
       <guardian>deCrocodile</guardian>
       <guardian>deCrocodile</guardian>
@@ -244,6 +254,7 @@
       <resource>Food</resource>
       <amount>100</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>newguinea</maptype>
       <guardian>deCrocodile</guardian>
       <guardian>deCrocodile</guardian>
@@ -322,6 +333,7 @@
       <resource>Gold</resource>
       <amount>35</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>newguinea</maptype>
       <guardian>zpCassowary</guardian>
       <difficulty>1</difficulty>
@@ -390,6 +402,7 @@
       <resource>XP</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>newguinea</maptype>
       <guardian>zpCassowary</guardian>
       <difficulty>1</difficulty>
@@ -403,6 +416,7 @@
       <resource>XP</resource>
       <amount>80</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>newguinea</maptype>
       <guardianunit>
         <unit>zpCassowary</unit>
@@ -426,6 +440,7 @@
       <resource>XP</resource>
       <amount>100</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>newguinea</maptype>
       <guardian>zpCassowary</guardian>
       <guardian>zpCassowary</guardian>
@@ -467,6 +482,7 @@
       <resource>XP</resource>
       <amount>150</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>newguinea</maptype>
       <guardian>zpCassowary</guardian>
       <guardian>zpCassowary</guardian>
@@ -482,6 +498,7 @@
       <resource>Food</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
@@ -500,6 +517,7 @@
       <resource>Food</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <guardian>zpGuardianBoomerang</guardian>
       <difficulty>1</difficulty>
@@ -513,6 +531,7 @@
       <resource>Food</resource>
       <amount>100</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <guardian>zpGuardianBoomerang</guardian>
       <guardian>zpGuardianBoomerang</guardian>
@@ -527,6 +546,7 @@
       <resource>Food</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
@@ -545,6 +565,7 @@
       <resource>Wood</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
@@ -563,6 +584,7 @@
       <resource>Wood</resource>
       <amount>125</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
@@ -583,6 +605,7 @@
       <resource>Wood</resource>
       <amount>75</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <guardian>zpGuardianBoomerang</guardian>
       <guardian>zpGuardianBoomerang</guardian>
@@ -601,6 +624,7 @@
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
       <maptype>tasmania</maptype>
+      <maptype>barrierreef</maptype>
       <guardian>zpGuardianClubman</guardian>
       <guardian>zpGuardianClubman</guardian>
       <guardian>zpGuardianClubman</guardian>
@@ -619,6 +643,7 @@
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
       <maptype>tasmania</maptype>
+      <maptype>barrierreef</maptype>
       <guardian>zpGuardianClubman</guardian>
       <guardian>zpGuardianClubman</guardian>
       <difficulty>2</difficulty>
@@ -635,6 +660,7 @@
       <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>barrierreef</maptype>
       <guardian>zpGuardianClubman</guardian>
       <guardian>zpGuardianClubman</guardian>
       <guardian>zpGuardianClubman</guardian>
@@ -654,6 +680,7 @@
         <attachdummy>bone_hostage_A</attachdummy>
       </convertunit>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <maptype>newguinea</maptype>
       <maptype>newzealand</maptype>
@@ -693,6 +720,7 @@
       <resource>Food</resource>
       <amount>415</amount>
       <maptype>newzealand</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>hawaii</maptype>
       <maptype>cookislands</maptype>
       <maptype>tasmania</maptype>
@@ -715,6 +743,7 @@
       <resource>Food</resource>
       <amount>415</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <guardian>Pirate</guardian>
       <guardian>Pirate</guardian>
@@ -923,6 +952,7 @@
       <maptype>cookislands</maptype>
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
+      <maptype>barrierreef</maptype>
       <guardian>zpGuardianClubman</guardian>
       <guardian>zpGuardianClubman</guardian>
       <guardian>zpGuardianClubman</guardian>
@@ -1004,6 +1034,7 @@
       <resource>XP</resource>
       <amount>320</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <guardian>zpGuardianClubman</guardian>
       <guardian>zpGuardianClubman</guardian>
@@ -1061,6 +1092,7 @@
       <maptype>melanesia</maptype>
       <maptype>newzealand</maptype>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <guardian>zpGuardianClubman</guardian>
       <guardian>zpGuardianClubman</guardian>
       <guardian>zpGuardianClubman</guardian>
@@ -1110,6 +1142,7 @@
         <attachdummy>bone_hostage_A</attachdummy>
       </convertunit>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <guardianunit>
         <unit>zpGrdEscapedPrisoner</unit>
@@ -1167,6 +1200,7 @@
       <resource>Food</resource>
       <amount>100</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>newguinea</maptype>
       <guardian>zpCassowary</guardian>
       <guardian>zpCassowary</guardian>
@@ -1181,6 +1215,7 @@
       <resource>Gold</resource>
       <amount>250</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
@@ -1203,6 +1238,7 @@
       <resource>Gold</resource>
       <amount>150</amount>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
       <maptype>cookislands</maptype>
@@ -1223,6 +1259,7 @@
       <amount>75</amount>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <guardian>zpGrdCannibal</guardian>
       <guardian>zpGrdCannibal</guardian>
       <difficulty>12</difficulty>
@@ -1237,6 +1274,7 @@
       <amount>90</amount>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <guardian>ypMonitorLizard</guardian>
       <guardian>ypMonitorLizard</guardian>
       <guardian>ypMonitorLizard</guardian>
@@ -1252,6 +1290,7 @@
       <amount>115</amount>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <guardianunit>
         <unit>ypMonitorLizard</unit>
         <idleanim>wagon_Idle01</idleanim>
@@ -1277,6 +1316,7 @@
       <amount>80</amount>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <guardianunit>
         <unit>zpCassowary</unit>
         <attachdummy>bone_nuggetA</attachdummy>
@@ -1300,6 +1340,7 @@
       <amount>100</amount>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <guardian>zpCassowary</guardian>
       <guardian>zpCassowary</guardian>
       <difficulty>12</difficulty>
@@ -1314,6 +1355,7 @@
       <amount>150</amount>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <guardian>deCrocodile</guardian>
       <guardian>deCrocodile</guardian>
       <guardian>deCrocodile</guardian>
@@ -1329,6 +1371,7 @@
       <amount>150</amount>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <guardian>deCrocodile</guardian>
       <guardian>deCrocodile</guardian>
       <difficulty>13</difficulty>
@@ -1348,6 +1391,7 @@
       </convertunit>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <guardianunit>
         <unit>zpGrdCannibal</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
@@ -1383,6 +1427,7 @@
       <icon>discover_villages</icon>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <convertunit>
         <unit>Settler</unit>
         <idleanim>Kidnap_HostageA_Idle</idleanim>
@@ -1441,6 +1486,7 @@
       </convertunit>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <guardianunit>
         <unit>zpGrdCannibal</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
@@ -1476,6 +1522,7 @@
       <amount>415</amount>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <guardian>ypWokou</guardian>
       <guardian>ypWokou</guardian>
       <guardian>ypWokou</guardian>
@@ -1494,6 +1541,7 @@
       <amount>455</amount>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <guardian>zpGrdCannibal</guardian>
       <guardian>zpGrdCannibal</guardian>
       <guardian>zpGrdCannibal</guardian>
@@ -1512,6 +1560,7 @@
       <icon>discover_villages</icon>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
+      <maptype>barrierreef</maptype>
       <convertunit>
         <unit>zpNatMaoriSlinger</unit>
         <idleanim>Kidnap_HostageA_Idle</idleanim>
@@ -2065,6 +2114,7 @@
       <maptype>caribbeanwater</maptype>
       <maptype>hawaii</maptype>
       <maptype>cookislands</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
     </nugget>
@@ -2072,12 +2122,14 @@
       <name>ypWaterNuggetSwordfish</name>
       <maptype>caribbeanwater</maptype>
       <maptype>cookislands</maptype>
+      <maptype>barrierreef</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetDolphins</name>
       <maptype>caribbeanwater</maptype>
       <maptype>hawaii</maptype>
       <maptype>cookislands</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>melanesia</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
@@ -2375,6 +2427,7 @@
       <unittype>zpPetDolphin</unittype>
       <amount>2</amount>
       <maptype>cookislands</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>newzealand</maptype>
       <maptype>australia</maptype>
       <maptype>hawaii</maptype>
@@ -2394,6 +2447,7 @@
       <unittype>zpPetDolphin</unittype>
       <amount>1</amount>
       <maptype>cookislands</maptype>
+      <maptype>barrierreef</maptype>
       <maptype>newzealand</maptype>
       <maptype>australia</maptype>
       <maptype>hawaii</maptype>
@@ -2411,6 +2465,7 @@
       <applystringid>66490</applystringid>
       <tech>ypNuggetShipGather</tech>
       <maptype>cookislands</maptype>
+      <maptype>barrierreef</maptype>
       <guardian>zpGuardianWaka</guardian>
       <guardian>zpGuardianWaka</guardian>
       <difficulty>6</difficulty>
@@ -2467,6 +2522,7 @@
       <unittype>zpDiver</unittype>
       <amount>2</amount>
       <maptype>cookislands</maptype>
+      <maptype>barrierreef</maptype>
       <guardian>ypGreatWhiteShark</guardian>
       <guardian>ypGreatWhiteShark</guardian>
       <guardian>ypGreatWhiteShark</guardian>
@@ -2484,6 +2540,7 @@
       <unittype>zpDiver</unittype>
       <amount>1</amount>
       <maptype>cookislands</maptype>
+      <maptype>barrierreef</maptype>
       <guardian>ypGreatWhiteShark</guardian>
       <guardian>ypGreatWhiteShark</guardian>
       <guardian>ypGreatWhiteShark</guardian>
