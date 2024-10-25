@@ -40,7 +40,7 @@ rmSetMapType("water");
 rmSetMapType("tropical");
 rmSetMapType("barrierreef");
 rmTerrainInitialize("water");
-rmSetLightingSet("yucatan_skirmish");
+rmSetLightingSet("painteddesert_skirmish");
 
 // Define some classes
 
@@ -349,7 +349,7 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	}
 
 int reefCliff = rmCreateArea("reefCliff");
-rmSetAreaSize(reefCliff, 0.12, 0.12); 
+rmSetAreaSize(reefCliff, 0.13, 0.13); 
 rmSetAreaLocation(reefCliff, 0.99, 0.5);
 rmAddAreaInfluenceSegment(reefCliff, 0.96, 0.01, 0.99, 0.5);
 rmAddAreaInfluenceSegment(reefCliff, 0.99, 0.5, 0.96, 0.99);
@@ -357,7 +357,7 @@ rmSetAreaMinBlobs(reefCliff, 30);
 rmSetAreaMaxBlobs(reefCliff, 45);
 rmSetAreaMinBlobDistance(reefCliff, 20.0);
 rmSetAreaMaxBlobDistance(reefCliff, 40.0);
-rmSetAreaCoherence(reefCliff, 0.5);
+rmSetAreaCoherence(reefCliff, 0.4);
 rmSetAreaBaseHeight(reefCliff, -5.0);
 rmSetAreaSmoothDistance(reefCliff, 40);
 rmSetAreaCliffType(reefCliff, "Cave_IGC");

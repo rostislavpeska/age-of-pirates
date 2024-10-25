@@ -2,8 +2,9 @@
   <title>Australia Rainforest</title>
   <icon>terrain\mix\jimmy</icon>
   <paint mode="turbulence" freq="0.15" octaves="10" persistence="0.5">
-    <texture weight="1">Africa\ground3_afr</texture>
-    <texture weight="1">Africa\ground4_afr</texture>
+    <texture weight="2">Africa\ground3_afr</texture>
+    <texture weight="2">Africa\ground4_afr</texture>
+    <texture weight="1">andes\ground07_and</texture>
   </paint>
   <objects mode="turbulence" freq="0.60" octaves="3" persistence="0.75" emptyweight="75" posoffset="0.5">
     <model weight="3" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_underbrush_01</model>
