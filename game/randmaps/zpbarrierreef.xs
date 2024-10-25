@@ -40,7 +40,7 @@ rmSetMapType("water");
 rmSetMapType("tropical");
 rmSetMapType("barrierreef");
 rmTerrainInitialize("water");
-rmSetLightingSet("painteddesert_skirmish");
+rmSetLightingSet("yucatan_skirmish");
 
 // Define some classes
 
@@ -71,7 +71,7 @@ int circleConstraint=rmCreatePieConstraint("circle Constraint", 0.5, 0.5, 0, rmZ
 int circleConstraint2=rmCreatePieConstraint("circle Constraint2", 0.5, 0.5, 0, rmZFractionToMeters(0.48), rmDegreesToRadians(0), rmDegreesToRadians(360));
 
 //Nature
-int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 20.0);
+int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 35.0);
 int forestConstraintShort=rmCreateClassDistanceConstraint("object vs. forest", rmClassID("classForest"), 4.0);      
 int avoidHunt=rmCreateTypeDistanceConstraint("hunts avoid hunts", "huntable", 55.0);
 int waterHunt = rmCreateTerrainMaxDistanceConstraint("hunts stay near the water", "land", false, 10.0);
@@ -1033,8 +1033,6 @@ rmAddObjectDefToClass(mapTrees, rmClassID("classForest"));
 rmSetObjectDefMinDistance(mapTrees, 0);
 rmSetObjectDefMaxDistance(mapTrees, rmXFractionToMeters(3.45));
 rmAddObjectDefConstraint(mapTrees, avoidTradeRouteSmall);
-rmAddObjectDefConstraint(mapTrees, avoidCoin);
-rmAddObjectDefConstraint(mapTrees, avoidGold);
 rmAddObjectDefConstraint(mapTrees, forestConstraint);
 rmAddObjectDefConstraint(mapTrees, avoidTownCenter);	
 rmAddObjectDefConstraint(mapTrees, avoidWater5);	
@@ -1051,8 +1049,6 @@ rmAddObjectDefToClass(mapTrees2, rmClassID("classForest"));
 rmSetObjectDefMinDistance(mapTrees2, 0);
 rmSetObjectDefMaxDistance(mapTrees2, rmXFractionToMeters(3.45));
 rmAddObjectDefConstraint(mapTrees2, avoidTradeRouteSmall);
-rmAddObjectDefConstraint(mapTrees2, avoidCoin);
-rmAddObjectDefConstraint(mapTrees2, avoidGold);
 rmAddObjectDefConstraint(mapTrees2, forestConstraint);
 rmAddObjectDefConstraint(mapTrees2, avoidTownCenter);	
 rmAddObjectDefConstraint(mapTrees2, avoidWater5);	
@@ -2485,37 +2481,6 @@ rmSetTriggerLoop(false);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
-
-
-  // Testing
-
-  for (k=1; <= cNumberNonGaiaPlayers) {
-
-  rmCreateTrigger("ZP Test Plr"+k);
-  rmAddTriggerCondition("ZP PLAYER Human");
-  rmSetTriggerConditionParamInt("Player",k);
-  rmSetTriggerConditionParam("MyBool", "true");
-  rmAddTriggerEffect("Set Tech Status");
-  rmSetTriggerEffectParamInt("PlayerID",k);
-  rmSetTriggerEffectParamFloat("TechID",537);
-  rmSetTriggerEffectParamInt("Status",2);
-  rmAddTriggerEffect("Set Tech Status");
-  rmSetTriggerEffectParamInt("PlayerID",k);
-  rmSetTriggerEffectParamFloat("TechID",2804);
-  rmSetTriggerEffectParamInt("Status",2);
-  rmAddTriggerEffect("Set Tech Status");
-  rmSetTriggerEffectParamInt("PlayerID",k);
-  rmSetTriggerEffectParamFloat("TechID",527);
-  rmSetTriggerEffectParamInt("Status",2);
-  rmSetTriggerPriority(4);
-  rmSetTriggerActive(true);
-  rmSetTriggerRunImmediately(true);
-  rmSetTriggerLoop(false);
-  }
-
-    // --------------- Make load bar move. ----------------------------------------------------------------------------
-	rmSetStatusText("",0.99);
-}
 
   // Testing
 
