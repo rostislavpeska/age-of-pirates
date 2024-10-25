@@ -27,7 +27,7 @@
           </soundset>
         </choice>
         <choice name="build">
-            <soundset name="Nemo_hero_Attack">
+            <soundset name="Nemo_hero_Acknowledge">
             </soundset>
         </choice>
         <choice name="Huntable">

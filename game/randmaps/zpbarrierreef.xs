@@ -55,7 +55,7 @@ int classCenter = rmDefineClass("center");
 int classUnderwaterPatch = rmDefineClass("underwaterPatch");
 
 // Variables for later use
-string baseMix = "california_snowground3";
+string baseMix = "california_snowground5";
 string whale1 = "MinkeWhale";
 string fish1 = "ypFishMolaMola";
 string fish2 = "FishMahi";
@@ -112,8 +112,8 @@ int avoidCenter = rmCreateClassDistanceConstraint("avoid center", rmClassID("cen
 int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "AbstractNugget", 60.0);
 int avoidNuggetShort=rmCreateTypeDistanceConstraint("nugget avoid nugget short", "AbstractNugget", 30.0);
 int avoidGold=rmCreateTypeDistanceConstraint("avoid gold", "zpPearlSource", 35.0);
-int avoidAll=rmCreateTypeDistanceConstraint("avoid all", "all", 4.0);
-int avoidMinerals=rmCreateTypeDistanceConstraint("avoid all", "AbstractUnderwaterMine", 5.0);
+int avoidAll=rmCreateTypeDistanceConstraint("avoid all", "all", 5.0);
+int avoidMinerals=rmCreateTypeDistanceConstraint("avoid minerals", "AbstractUnderwaterMine", 5.0);
 int avoidLandShort = rmCreateTerrainDistanceConstraint("ship avoid land short", "land", true, 5.0);
 int avoidLand = rmCreateTerrainDistanceConstraint("ship avoid land", "land", true, 15.0);
 int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 8.0);
@@ -993,23 +993,7 @@ for (i=0; <cNumberPlayers)
 
 rmPlaceObjectDefInArea(coralID, 0, reefCliff, cNumberNonGaiaPlayers*20);
 
-// Decorative Jungle Propd
-int underbrushlID = rmCreateObjectDef("random underbrush");
-rmAddObjectDefItem(underbrushlID, "UnderbrushBorneo", 1, 0);
-rmSetObjectDefMinDistance(underbrushlID, 0.0);
-rmSetObjectDefMaxDistance(underbrushlID, rmXFractionToMeters(0.5));
 
-for (i=0; <cNumberPlayers)
-{
-	rmPlaceObjectDefInArea(underbrushlID, 0, rmAreaID("playerIsland"+i), 70);
-	rmPlaceObjectDefInArea(underbrushlID, 0, rmAreaID("tradeIsland"+i), 10);
-}
-
-rmPlaceObjectDefInArea(underbrushlID, 0, bonusIslandID, 70);
-rmPlaceObjectDefInArea(underbrushlID, 0, bonusIslandID2, 70);
-rmPlaceObjectDefInArea(underbrushlID, 0, bonusIslandID3, 50);
-rmPlaceObjectDefInArea(underbrushlID, 0, bonusIslandID4, 50);
- 
 // Hunts
 int pronghornHunts = rmCreateObjectDef("pronghornHunts");
 rmAddObjectDefItem(pronghornHunts, "zpRedNeckedWallaby", 8, 14.0);
@@ -2470,6 +2454,68 @@ rmSetTriggerLoop(false);
     rmSetTriggerLoop(false);
     }
 
+	// Update ports
+
+	rmCreateTrigger("I Update Ports");
+	rmAddTriggerCondition("Player Unit Count");
+	rmSetTriggerConditionParamInt("PlayerID",0);
+	rmSetTriggerConditionParam("Protounit","deTradingGalleon");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpUpdatePort1"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("II Update Ports");
+	rmAddTriggerCondition("Player Unit Count");
+	rmSetTriggerConditionParamInt("PlayerID",0);
+	rmSetTriggerConditionParam("Protounit","deTradingFluyt");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpUpdatePort2"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+
+  // Testing
+
+  for (k=1; <= cNumberNonGaiaPlayers) {
+
+  rmCreateTrigger("ZP Test Plr"+k);
+  rmAddTriggerCondition("ZP PLAYER Human");
+  rmSetTriggerConditionParamInt("Player",k);
+  rmSetTriggerConditionParam("MyBool", "true");
+  rmAddTriggerEffect("Set Tech Status");
+  rmSetTriggerEffectParamInt("PlayerID",k);
+  rmSetTriggerEffectParamFloat("TechID",537);
+  rmSetTriggerEffectParamInt("Status",2);
+  rmAddTriggerEffect("Set Tech Status");
+  rmSetTriggerEffectParamInt("PlayerID",k);
+  rmSetTriggerEffectParamFloat("TechID",2804);
+  rmSetTriggerEffectParamInt("Status",2);
+  rmAddTriggerEffect("Set Tech Status");
+  rmSetTriggerEffectParamInt("PlayerID",k);
+  rmSetTriggerEffectParamFloat("TechID",527);
+  rmSetTriggerEffectParamInt("Status",2);
+  rmSetTriggerPriority(4);
+  rmSetTriggerActive(true);
+  rmSetTriggerRunImmediately(true);
+  rmSetTriggerLoop(false);
+  }
+
+    // --------------- Make load bar move. ----------------------------------------------------------------------------
+	rmSetStatusText("",0.99);
+}
 
   // Testing
 
