@@ -3,6 +3,8 @@
 	Great Barrier Reef - Pirates Edition
 			  by dansil92
 			  Oct 15 2024
+
+	Edited by Baltazer Oct 25 2024
 ===============================================
 */
 
@@ -22,6 +24,9 @@ int sizeX = 200*cNumberNonGaiaPlayers;
 int sizeY = 320;
 
 if (cNumberNonGaiaPlayers == 2){
+	if(rmGetIsKOTH()){
+		sizeX = 500;
+	}
 	sizeY = 320;
 }
 
@@ -466,7 +471,6 @@ rmAddAreaInfluenceSegment(reefShallows, 0.99, 0.5, 0.96, 0.99);
 rmSetAreaSmoothDistance(reefShallows, 10);
 rmSetAreaCoherence(reefShallows, .5);
 rmSetAreaBaseHeight(reefShallows, -0.5);
-rmSetAreaSmoothDistance(reefShallows, 10);
 rmSetAreaHeightBlend(reefShallows, 1);
 rmSetAreaElevationNoiseBias(reefShallows, 0);
 rmSetAreaElevationEdgeFalloffDist(reefShallows, 10);
@@ -484,6 +488,28 @@ rmSetAreaMaxBlobDistance(reefShallows, 40.0);
 rmSetAreaMix(reefShallows, baseMix);
 rmSetAreaObeyWorldCircleConstraint(reefShallows, false);
 rmBuildArea(reefShallows);
+
+if (rmGetIsKOTH()){
+
+	float xLoc = 0.92;
+	float yLoc = 0.5;
+	float walk = 0.0;
+
+	int KotHVariant = rmRandInt(1, 2);
+
+	int kothIsland=rmCreateArea("kothIsland");
+    rmSetAreaWarnFailure(kothIsland, false);
+    rmSetAreaSize(kothIsland, rmAreaTilesToFraction(350), rmAreaTilesToFraction(350));
+	rmSetAreaMix(kothIsland, baseMix);
+	rmSetAreaLocation(kothIsland, 0.92, 0.5);
+    rmSetAreaCoherence(kothIsland, 0.99);
+	rmSetAreaHeightBlend(kothIsland, 2);
+    rmSetAreaSmoothDistance(kothIsland, 15);
+    rmSetAreaBaseHeight(kothIsland, 2.0);
+    rmAddAreaToClass(kothIsland, classBonusIsland);
+	rmBuildArea(kothIsland);
+	
+}
 
 int bonusIslandID = rmCreateArea ("bonus island");
 if (cNumberNonGaiaPlayers <= 3)
@@ -783,6 +809,14 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	int portID = rmCreateObjectDef("port"+i);
 	portID = rmCreateGrouping("port"+i, "harbour_center_river_NE");
     rmPlaceGroupingAtLoc(portID, 0, 0.43, rmPlayerLocZFraction(i));
+}
+
+// King of the Hill
+
+if(rmGetIsKOTH()) {
+	ypKingsHillPlacer(xLoc, yLoc, walk, 0);
+	rmEchoInfo("XLOC = "+xLoc);
+	rmEchoInfo("XLOC = "+yLoc);
 }
 
 // ******************** Underwater areas ******************************
@@ -2439,7 +2473,7 @@ rmSetTriggerLoop(false);
 
   // Testing
 
-  for (k=1; <= cNumberNonGaiaPlayers) {
+  /*for (k=1; <= cNumberNonGaiaPlayers) {
 
   rmCreateTrigger("ZP Test Plr"+k);
   rmAddTriggerCondition("ZP PLAYER Human");
@@ -2461,7 +2495,7 @@ rmSetTriggerLoop(false);
   rmSetTriggerActive(true);
   rmSetTriggerRunImmediately(true);
   rmSetTriggerLoop(false);
-  }
+  }*/
 
     // --------------- Make load bar move. ----------------------------------------------------------------------------
 	rmSetStatusText("",0.99);
