@@ -1824,8 +1824,9 @@
     </rendering>
   </lake>
 
-  <ocean name="ZP Great Barrier Reef" cluttermix="ceylon_underwater" iconname="ui\editor\watercaribbeancoast" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="caribbean\ground_shoreline1_crb" bank="AfricaSavanna\ground_shore1_afriSavanna" outerbank="AfricaSavanna\ground_shore2_afriSavanna" slope="" color="9 110 88" deepcolor="0 0 0" depth="8" fresnelscale="0.247934" fresnelbias="0.555556" alphaminvalue="0.000000" alphamaxvalue="0.914063" alphamindepth="0.000000" alphamaxdepth="1.900827" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.842105" reflectionamount="-0.222222" bumpscale="0.660000" reflectionbumpscale="0.710000" foamscale="-0.110000" texscale="1.970000" texscrollspeed="0.000000" texrotation="129.000000">
+  <ocean name="ZP Great Barrier Reef" cluttermix="ceylon_underwater" iconname="ui\editor\watercaribbeancoast" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="borneo\seafloor1_borneo" bank="AfricaSavanna\ground_shore1_afriSavanna" outerbank="AfricaSavanna\ground_shore2_afriSavanna" slope="" color="9 110 88" deepcolor="0 0 0" depth="8" fresnelscale="0.247934" fresnelbias="0.555556" alphaminvalue="0.000000" alphamaxvalue="0.914063" alphamindepth="0.000000" alphamaxdepth="1.900827" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.842105" reflectionamount="-0.222222" bumpscale="0.660000" reflectionbumpscale="0.710000" foamscale="-0.110000" texscale="1.970000" texscrollspeed="0.000000" texrotation="129.000000">
     <textureplacement>
+      <texture distance="3" variance="2">borneo\seafloor1_borneo</texture>
       <texture distance="18" variance="2">caribbean\ground_shoreline1_crb</texture>
       <texture distance="24" variance="6">caribbean\seafloor_coral4_crb</texture>
       <texture distance="30" variance="6">caribbean\seafloor_coral3_crb</texture>
@@ -1835,8 +1836,13 @@
       <texture distance="60" variance="6">caribbean\seafloor_coral1_crb</texture>
       <texture distance="75" variance="6">caribbean\seafloor_coral2_crb</texture>
       <texture distance="90" variance="6">caribbean\seafloor_coral0_crb</texture>
-
     </textureplacement>
+    <beachtextureplacement>
+      <texture distance="3.0" variance="1">AfricaSavanna\ground_shore1_afriSavanna</texture>
+      <texture distance="6.0" variance="1">AfricaSavanna\ground_shore2_afriSavanna</texture>
+      <texture distance="9.0" variance="1">Africa\pathBlend_afr</texture>
+      <texture distance="12.0" variance="1">Africa\ground2_afr</texture>
+    </beachtextureplacement>
     <shoreline>
       <shorelong name="ShorelineFoam" distance="2.0" randomyaw="false">
       </shorelong>
