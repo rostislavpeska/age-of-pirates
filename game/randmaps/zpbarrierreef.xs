@@ -33,14 +33,14 @@ if (cNumberNonGaiaPlayers == 2){
 rmSetMapSize(sizeY, sizeX);
 
 
-rmSetSeaType("ZP Great Barrier Reef");
+rmSetSeaType("ZP Great Barrier Reef 4");
 rmSetOceanReveal(true);
 rmEnableLocalWater(true);
 rmSetMapType("water");
 rmSetMapType("tropical");
 rmSetMapType("barrierreef");
 rmTerrainInitialize("water");
-rmSetLightingSet("painteddesert_skirmish");
+rmSetLightingSet("rm_afri_horn");
 
 // Define some classes
 
@@ -69,6 +69,7 @@ int stayNorthPart = rmCreatePieConstraint("Stay north part", 0.5, 0.55,rmXFracti
 int staySouthPart = rmCreatePieConstraint("Stay south part", 0.5, 0.55,rmXFractionToMeters(0.0), rmXFractionToMeters(5.30), rmDegreesToRadians(180),rmDegreesToRadians(360));
 int circleConstraint=rmCreatePieConstraint("circle Constraint", 0.5, 0.5, 0, rmZFractionToMeters(0.49), rmDegreesToRadians(0), rmDegreesToRadians(360));
 int circleConstraint2=rmCreatePieConstraint("circle Constraint2", 0.5, 0.5, 0, rmZFractionToMeters(0.48), rmDegreesToRadians(0), rmDegreesToRadians(360));
+int edgeConstraint = rmCreateBoxConstraint("stay in edge", 0.05, 0.05, 0.95, 0.95);
 
 //Nature
 int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 35.0);
@@ -89,7 +90,7 @@ int avoidTradeRouteFar = rmCreateTradeRouteDistanceConstraint("objects avoid tra
 int avoidSocket=rmCreateClassDistanceConstraint("socket avoidance", rmClassID("socketClass"), 25.0);
         
 // Player Constraints
-int avoidTownCenter=rmCreateTypeDistanceConstraint("avoid Town Center", "townCenter", 35.0);
+int avoidTownCenter=rmCreateTypeDistanceConstraint("avoid Town Center", "townCenter", 30.0);
 int avoidTownCenterSmall=rmCreateTypeDistanceConstraint("avoid Town Center small", "townCenter", 15.0);
 int avoidTownCenterMore=rmCreateTypeDistanceConstraint("avoid Town Center more", "townCenter", 40.0);  
 
@@ -122,7 +123,11 @@ int ferryOnShore=rmCreateTerrainMaxDistanceConstraint("ferry v. water", "water",
 int avoidImpassableLand=rmCreateTerrainDistanceConstraint("avoid impassable land", "Land", false, 5.0);
 int avoidController=rmCreateTypeDistanceConstraint("stay away from Controller", "zpSPCWaterSpawnPoint", 30.0);
 int avoidPiratesShort=rmCreateTypeDistanceConstraint("avoid socket pirates short", "zpSocketPirates", 20.0);
+int avoidPirates=rmCreateTypeDistanceConstraint("avoid socket pirates", "zpSocketPirates", 30.0);
 int avoidInventorsShort=rmCreateTypeDistanceConstraint("avoid socket scientists short", "zpSocketScientists", 20.0);
+int avoidInventors=rmCreateTypeDistanceConstraint("avoid socket scientists", "zpSocketScientists", 30.0);
+int avoidHarbourSocket=rmCreateTypeDistanceConstraint("avoid harbour socket", "zpSPCPortSocket", 15.0);
+int avoidHarbourPlatform=rmCreateTypeDistanceConstraint("avoid harbour platform", "zpHarbourPlatform", 15.0);
 int shortAvoidImpassableLand=rmCreateTerrainDistanceConstraint("short avoid impassable land", "Land", false, 3.0);
 int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "abstractNugget", 45.0); 
 
@@ -270,7 +275,7 @@ rmSetStatusText("",0.4);
 
 for(i=1; < cNumberNonGaiaPlayers + 1) {
 	int deadSeaLakeOuterID=rmCreateArea("Lake Eyre03"+i);
-	rmSetAreaWaterType(deadSeaLakeOuterID, "ZP Cook Islands 3");
+	rmSetAreaWaterType(deadSeaLakeOuterID, "ZP Great Barrier Reef 3");
 	rmSetAreaSize(deadSeaLakeOuterID, 0.09, 0.09);
 	rmSetAreaCoherence(deadSeaLakeOuterID, 1.0);
 	rmSetAreaLocation(deadSeaLakeOuterID, 0.6, rmPlayerLocZFraction(i));
@@ -279,7 +284,7 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 }
 for(i=1; < cNumberNonGaiaPlayers + 1) {
 	int deadSeaLakeMediumID=rmCreateArea("Lake Eyre02"+i);
-	rmSetAreaWaterType(deadSeaLakeMediumID, "ZP Cook Islands 2");
+	rmSetAreaWaterType(deadSeaLakeMediumID, "ZP Great Barrier Reef 2");
 	rmSetAreaSize(deadSeaLakeMediumID, 0.06, 0.06);
 	rmSetAreaCoherence(deadSeaLakeMediumID, 1.0);
 	rmSetAreaLocation(deadSeaLakeMediumID, 0.6, rmPlayerLocZFraction(i));
@@ -288,7 +293,7 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 }
 for(i=1; < cNumberNonGaiaPlayers + 1) {
 	int deadSeaLakeDeepID=rmCreateArea("Lake Eyre"+i);
-	rmSetAreaWaterType(deadSeaLakeDeepID, "ZP Cook Islands");
+	rmSetAreaWaterType(deadSeaLakeDeepID, "ZP Great Barrier Reef");
 	rmSetAreaSize(deadSeaLakeDeepID, 0.03, 0.03);
 	rmSetAreaCoherence(deadSeaLakeDeepID, 1.0);
 	rmSetAreaLocation(deadSeaLakeDeepID, 0.6, rmPlayerLocZFraction(i));
@@ -517,7 +522,7 @@ if (cNumberNonGaiaPlayers <= 3)
 else
 	rmSetAreaSize(bonusIslandID, rmAreaTilesToFraction(1700.0), rmAreaTilesToFraction(1700.0));
 rmSetAreaLocation(bonusIslandID, 0.93, 0.01);
-rmSetAreaCoherence(bonusIslandID, 0.4);
+rmSetAreaCoherence(bonusIslandID, 0.5);
 rmSetAreaMinBlobs(bonusIslandID, 8);
 rmSetAreaMaxBlobs(bonusIslandID, 12);
 rmSetAreaMinBlobDistance(bonusIslandID, 8.0);
@@ -542,7 +547,7 @@ if (cNumberNonGaiaPlayers <= 3)
 else
 	rmSetAreaSize(bonusIslandID2, rmAreaTilesToFraction(1700.0), rmAreaTilesToFraction(1700.0));
 rmSetAreaLocation(bonusIslandID2, 0.93, 0.99);
-rmSetAreaCoherence(bonusIslandID2, 0.4);
+rmSetAreaCoherence(bonusIslandID2, 0.6);
 rmSetAreaMinBlobs(bonusIslandID2, 8);
 rmSetAreaMaxBlobs(bonusIslandID2, 12);
 rmSetAreaMinBlobDistance(bonusIslandID2, 8.0);
@@ -908,7 +913,12 @@ rmAddObjectDefConstraint(playerNuggetID2, avoidNuggetShort);
 rmAddObjectDefConstraint(playerNuggetID2, shortAvoidImpassableLand);
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>> Make loader move >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-rmSetStatusText("",0.5);      
+rmSetStatusText("",0.5);   
+
+// Fake Frouping to fix the auto-grouping TC bug
+int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
+rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.5);
 
 // Place players
 for(i=1; < cNumberNonGaiaPlayers + 1) {
@@ -1018,6 +1028,7 @@ rmAddObjectDefConstraint(nuggetID, avoidTradeRouteSmall);
 rmAddObjectDefConstraint(nuggetID, avoidSocket); 
 rmAddObjectDefConstraint(nuggetID, avoidWater2); 
 rmAddObjectDefConstraint(nuggetID, stayNorthPart);	
+rmAddObjectDefConstraint(nuggetID, edgeConstraint);	
 rmSetNuggetDifficulty(12, 14); 
 rmPlaceObjectDefAtLoc(nuggetID, 0, 0.5, 0.5, 3*cNumberNonGaiaPlayers);   
 
@@ -1036,8 +1047,7 @@ rmAddObjectDefConstraint(mapTrees, avoidTradeRouteSmall);
 rmAddObjectDefConstraint(mapTrees, forestConstraint);
 rmAddObjectDefConstraint(mapTrees, avoidTownCenter);	
 rmAddObjectDefConstraint(mapTrees, avoidWater5);	
-rmAddObjectDefConstraint(mapTrees, avoidPiratesShort);	
-rmAddObjectDefConstraint(mapTrees, avoidInventorsShort);	
+rmAddObjectDefConstraint(mapTrees, avoidHarbourSocket);	
 rmAddObjectDefConstraint(mapTrees, staySouthPart);	
 rmPlaceObjectDefAtLoc(mapTrees, 0, 0.5, 0.5, 20*cNumberNonGaiaPlayers);
 
@@ -1051,9 +1061,10 @@ rmSetObjectDefMaxDistance(mapTrees2, rmXFractionToMeters(3.45));
 rmAddObjectDefConstraint(mapTrees2, avoidTradeRouteSmall);
 rmAddObjectDefConstraint(mapTrees2, forestConstraint);
 rmAddObjectDefConstraint(mapTrees2, avoidTownCenter);	
+rmAddObjectDefConstraint(mapTrees2, avoidHarbourPlatform);	
 rmAddObjectDefConstraint(mapTrees2, avoidWater5);	
-rmAddObjectDefConstraint(mapTrees2, avoidPiratesShort);	
-rmAddObjectDefConstraint(mapTrees2, avoidInventorsShort);	
+rmAddObjectDefConstraint(mapTrees2, avoidPirates);	
+rmAddObjectDefConstraint(mapTrees2, avoidInventors);	
 rmAddObjectDefConstraint(mapTrees2, stayNorthPart);
 rmPlaceObjectDefAtLoc(mapTrees2, 0, 0.5, 0.5, 15*cNumberNonGaiaPlayers);
 
@@ -1116,6 +1127,7 @@ rmSetObjectDefMaxDistance(nugget2b, rmXFractionToMeters(1.0));
 rmAddObjectDefConstraint(nugget2b, avoidLand);
 rmAddObjectDefConstraint(nugget2b, avoidNuggetWater);
 rmAddObjectDefConstraint(nugget2b, avoidPatch);
+rmAddObjectDefConstraint(nugget2b, edgeConstraint);	
 rmPlaceObjectDefPerPlayer(nugget2b, false, 2);
 
 int nugget2= rmCreateObjectDef("nugget water" + i); 
@@ -1126,6 +1138,7 @@ rmSetObjectDefMaxDistance(nugget2, rmXFractionToMeters(1.0));
 rmAddObjectDefConstraint(nugget2, avoidLand);
 rmAddObjectDefConstraint(nugget2, avoidNuggetWater);
 rmAddObjectDefConstraint(nugget2, avoidPatch);
+rmAddObjectDefConstraint(nugget2, edgeConstraint);	
 rmPlaceObjectDefPerPlayer(nugget2, false, 3);
 
 // ------Triggers--------//
