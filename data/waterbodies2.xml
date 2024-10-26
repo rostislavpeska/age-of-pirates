@@ -1793,7 +1793,6 @@
     <rendering scatter_color="0.056 0.370 0.322" sun_set_color="1.000 0.400 0.000" caustics_depth="2.5000" caustics_intensity="2.3200" caustics_scale="0.2000" caustics_scroll="0.0610" fft_displace="1.1000" custom_wave_scale="8.0000" reflection_normal="1.0000" refraction_normal="0.0130" scatter_amount="0.7890" fog_color_mult="0.2270" custom_wave_scatter="5.0000" surface_roughness="0.0500" fog_density="3.0000" water_color="0.314 0.970 0.675" blur_intensity="0.8000" water_brighten="2.0030" reflection_intensity="0.4970">
     </rendering>
   </ocean>
-
   <lake name="ZP Bering Strait Transparent" iconname="ui\editor\watergreatlakesice" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="great_lakes\ground_shoreline2_gl" bank="" outerbank="" cliffbanks="Rocky Mountain2" slope="" color="25 96 116" deepcolor="0 0 0" depth="6.000000" fresnelscale="3.140496" fresnelbias="0.171875" alphaminvalue="0.000000" alphamaxvalue="1.000000" alphamindepth="-1.074380" alphamaxdepth="1.404959" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.487603" reflectionamount="0.015625" bumpscale="0.500000" reflectionbumpscale="0.560000" foamscale="-0.050000" texscale="2.000000" texscrollspeed="1.750000" texrotation="69.000000">
     <shoreline>
       <shorelong name="ShorelineFoam" distance="2.0" randomyaw="true">
@@ -1807,8 +1806,7 @@
     <rendering scatter_color="0.000 1.000 0.950" sun_set_color="1.000 0.400 0.000" caustics_depth="1.0000" caustics_intensity="1.4000" caustics_scale="0.3000" caustics_scroll="0.0500" fft_displace="1.0000" custom_wave_scale="8.0000" reflection_normal="1.0000" refraction_normal="0.0300" scatter_amount="0.0400" fog_color_mult="0.0100" custom_wave_scatter="5.0000" surface_roughness="0.0500" fog_density="1.0000" water_color="1.000 1.000 1.000" blur_intensity="0.0200" water_brighten="1.5000" reflection_intensity="0.0001">
     </rendering>
   </lake>
-
-  <ocean name="ZP Great Barrier Reef" cluttermix="ceylon_underwater" iconname="ui\editor\watercaribbeancoast" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="borneo\seafloor1_borneo" bank="AfricaSavanna\ground_shore1_afriSavanna" outerbank="AfricaSavanna\ground_shore1_afriSavanna" slope="" color="9 110 88" deepcolor="0 0 0" depth="8" fresnelscale="0.247934" fresnelbias="0.555556" alphaminvalue="0.000000" alphamaxvalue="0.914063" alphamindepth="0.000000" alphamaxdepth="1.900827" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.842105" reflectionamount="-0.222222" bumpscale="0.660000" reflectionbumpscale="0.710000" foamscale="-0.110000" texscale="1.970000" texscrollspeed="0.000000" texrotation="129.000000">
+  <ocean name="ZP Great Barrier Reef 4" cluttermix="ceylon_underwater" iconname="ui\editor\watercaribbeancoast" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="borneo\seafloor1_borneo" bank="AfricaSavanna\ground_shore1_afriSavanna" outerbank="AfricaSavanna\ground_shore1_afriSavanna" slope="" color="9 110 88" deepcolor="0 0 0" depth="8" fresnelscale="0.247934" fresnelbias="0.555556" alphaminvalue="0.000000" alphamaxvalue="0.914063" alphamindepth="0.000000" alphamaxdepth="1.900827" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.842105" reflectionamount="-0.222222" bumpscale="0.660000" reflectionbumpscale="0.710000" foamscale="-0.110000" texscale="1.970000" texscrollspeed="0.000000" texrotation="129.000000">
     <textureplacement>
       <texture distance="3" variance="2">borneo\seafloor1_borneo</texture>
       <texture distance="18" variance="2">caribbean\ground_shoreline1_crb</texture>
@@ -1833,28 +1831,91 @@
       <waves bumpmap="terrain\water\waterwavebump" bumpmapcrashposition="0.45" foam1tex="terrain\waves\wavefoam" foam2tex="terrain\waves\wavefoam2" foamalphasidetex="terrain\waves\wavefoam_alpha" foamalphabacktex="terrain\waves\wavefoam_alphaback" minlength="15.00" maxlength="35.00" minconcavelength="8.69" maxconcavelength="12.74" minwidth="2.00" maxwidth="5.00" minheight="0.35" maxheight="0.65" minfadelength="8.00" maxfadelength="14.00" minspeed="0.90" maxspeed="1.20" foamstartnormalizedtime="0.10" foamnormalizedspeed="0.00" foammaxnormalizedwidth="1.00" foam1scrollspeed="0.05" foam2scrollspeed="0.23" foamfadeintime="2.00" foamfadeouttime="2.70" recedetime="3.40" recedeendscale="1.00" recedemotion="true" variance="3.50" minstartdistance="14.00" maxstartdistance="20.00" sectionlength="15.00" wavedensity="3" convexitylimit="-11.35" concavitylimit="11.21">
       </waves>
     </shoreline>
-    <rendering scatter_color="0.500 0.900 1.000" sun_set_color="0.000 0.000 0.000" caustics_depth="0.8000" caustics_intensity="1.4000" caustics_scale="0.1200" caustics_scroll="0.0460" fft_displace="0.5400" custom_wave_scale="8.0000" reflection_normal="0.0500" refraction_normal="0.0300" scatter_amount="0.0400" fog_color_mult="0.2000" custom_wave_scatter="5.0000" surface_roughness="0.0200" fog_density="0.4000" water_color="0.3 0.7 0.8" blur_intensity="0.0400" water_brighten="4.000" reflection_intensity="0.0200">
+    <rendering scatter_color="0.500 0.900 1.000" sun_set_color="0.000 0.000 0.000" caustics_depth="0.8000" caustics_intensity="1.4000" caustics_scale="0.1200" caustics_scroll="0.0460" fft_displace="0.5400" custom_wave_scale="8.0000" reflection_normal="0.0500" refraction_normal="0.0300" scatter_amount="0.0400" fog_color_mult="0.2000" custom_wave_scatter="5.0000" surface_roughness="0.0200" fog_density="0.4000" water_color="0.3 0.8 0.77" blur_intensity="0.0400" water_brighten="4.000" reflection_intensity="0.0200">
     </rendering>
   </ocean>
-
-  <!--<ocean name="ZP Torres Strait Ocean" cluttermix="ceylon_underwater" iconname="ui\editor\watercaribbeancoast" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="borneo\seafloor1_borneo" bank="borneo\seafloor1_borneo" outerbank="" slope="" color="9 110 88" deepcolor="0 0 0" depth="6" fresnelscale="0.247934" fresnelbias="0.555556" alphaminvalue="0.000000" alphamaxvalue="0.914063" alphamindepth="0.000000" alphamaxdepth="1.900827" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.842105" reflectionamount="-0.222222" bumpscale="0.660000" reflectionbumpscale="0.710000" foamscale="-0.110000" texscale="1.970000" texscrollspeed="0.000000" texrotation="129.000000">
+  <ocean name="ZP Great Barrier Reef" cluttermix="ceylon_underwater" iconname="ui\editor\watercaribbeancoast" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="ceylon\ground_shoreline2_ceylon" bank="ceylon\ground_shoreline2_ceylon" outerbank="ceylon\ground_shoreline1_ceylon" slope="" color="9 110 88" deepcolor="0 0 0" depth="8" fresnelscale="0.247934" fresnelbias="0.555556" alphaminvalue="0.000000" alphamaxvalue="0.914063" alphamindepth="0.000000" alphamaxdepth="1.900827" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.842105" reflectionamount="-0.222222" bumpscale="0.660000" reflectionbumpscale="0.710000" foamscale="-0.110000" texscale="1.970000" texscrollspeed="0.000000" texrotation="129.000000">
     <textureplacement>
-      <texture distance="8" variance="2">borneo\seafloor1_borneo</texture>
-      <texture distance="14" variance="4">caribbean\ground_shoreline1_crb</texture>
-      <texture distance="20" variance="4">caribbean\seafloor_coral4_crb</texture>
-      <texture distance="24" variance="2">caribbean\seafloor_coral3_crb</texture>
-      <texture distance="30" variance="6">ceylon\seafloor1_ceylon</texture>
-      <texture distance="40" variance="6">ceylon\seafloor2_ceylon</texture>
-      <texture distance="50" variance="6">caribbean\seafloor_coral0_crb</texture>
+      <texture distance="3" variance="2">borneo\seafloor1_borneo</texture>
+      <texture distance="18" variance="2">caribbean\ground_shoreline1_crb</texture>
+      <texture distance="24" variance="6">caribbean\seafloor_coral4_crb</texture>
+      <texture distance="30" variance="6">caribbean\seafloor_coral3_crb</texture>
+      <texture distance="34" variance="2">ceylon\seafloor3_ceylon</texture>
+      <texture distance="40" variance="6">ceylon\seafloor1_ceylon</texture>
+      <texture distance="50" variance="6">ceylon\seafloor2_ceylon</texture>
+      <texture distance="60" variance="6">caribbean\seafloor_coral1_crb</texture>
+      <texture distance="75" variance="6">caribbean\seafloor_coral2_crb</texture>
+      <texture distance="90" variance="6">caribbean\seafloor_coral0_crb</texture>
     </textureplacement>
+    <beachtextureplacement>
+      <texture distance="6.0" variance="1">AfricaSavanna\ground_shore1_afriSavanna</texture>
+      <texture distance="8.0" variance="1">Texas\cliff_edge_tex</texture>
+      <texture distance="10.0" variance="1">Africa\pathBlend_afr</texture>
+      <texture distance="12.0" variance="1">Africa\ground2_afr</texture>
+    </beachtextureplacement>
     <shoreline>
       <shorelong name="ShorelineFoam" distance="2.0" randomyaw="false">
       </shorelong>
       <waves bumpmap="terrain\water\waterwavebump" bumpmapcrashposition="0.45" foam1tex="terrain\waves\wavefoam" foam2tex="terrain\waves\wavefoam2" foamalphasidetex="terrain\waves\wavefoam_alpha" foamalphabacktex="terrain\waves\wavefoam_alphaback" minlength="15.00" maxlength="35.00" minconcavelength="8.69" maxconcavelength="12.74" minwidth="2.00" maxwidth="5.00" minheight="0.35" maxheight="0.65" minfadelength="8.00" maxfadelength="14.00" minspeed="0.90" maxspeed="1.20" foamstartnormalizedtime="0.10" foamnormalizedspeed="0.00" foammaxnormalizedwidth="1.00" foam1scrollspeed="0.05" foam2scrollspeed="0.23" foamfadeintime="2.00" foamfadeouttime="2.70" recedetime="3.40" recedeendscale="1.00" recedemotion="true" variance="3.50" minstartdistance="14.00" maxstartdistance="20.00" sectionlength="15.00" wavedensity="3" convexitylimit="-11.35" concavitylimit="11.21">
       </waves>
     </shoreline>
-    <rendering scatter_color="0.191 0.746 0.594" sun_set_color="1.000 0.400 0.000" caustics_depth="2.0000" caustics_intensity="1.4000" caustics_scale="0.3000" caustics_scroll="0.0500" fft_displace="1.7900" custom_wave_scale="8.0000" reflection_normal="0.2400" refraction_normal="0.0380" scatter_amount="0.4800" fog_color_mult="0.3450" custom_wave_scatter="5.0000" surface_roughness="0.0000" fog_density="1.2000" water_color="0.665 0.874 0.954" blur_intensity="0.1600" water_brighten="2.2850" reflection_intensity="0.3230">
+    <rendering scatter_color="0.500 0.900 1.000" sun_set_color="0.000 0.000 0.000" caustics_depth="0.8000" caustics_intensity="1.4000" caustics_scale="0.1200" caustics_scroll="0.0460" fft_displace="0.5400" custom_wave_scale="8.0000" reflection_normal="0.0500" refraction_normal="0.0300" scatter_amount="0.0400" fog_color_mult="0.0500" custom_wave_scatter="5.0000" surface_roughness="0.0200" fog_density="0.1000" water_color="0.3 0.8 0.77" blur_intensity="0.0050" water_brighten="4.000" reflection_intensity="0.0001">
     </rendering>
-  </ocean>-->
-
+  </ocean>
+  <ocean name="ZP Great Barrier Reef 2" cluttermix="ceylon_underwater" iconname="ui\editor\watercaribbeancoast" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="ceylon\ground_shoreline2_ceylon" bank="ceylon\ground_shoreline2_ceylon" outerbank="ceylon\ground_shoreline1_ceylon" slope="" color="9 110 88" deepcolor="0 0 0" depth="8" fresnelscale="0.247934" fresnelbias="0.555556" alphaminvalue="0.000000" alphamaxvalue="0.914063" alphamindepth="0.000000" alphamaxdepth="1.900827" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.842105" reflectionamount="-0.222222" bumpscale="0.660000" reflectionbumpscale="0.710000" foamscale="-0.110000" texscale="1.970000" texscrollspeed="0.000000" texrotation="129.000000">
+    <textureplacement>
+      <texture distance="3" variance="2">borneo\seafloor1_borneo</texture>
+      <texture distance="18" variance="2">caribbean\ground_shoreline1_crb</texture>
+      <texture distance="24" variance="6">caribbean\seafloor_coral4_crb</texture>
+      <texture distance="30" variance="6">caribbean\seafloor_coral3_crb</texture>
+      <texture distance="34" variance="2">ceylon\seafloor3_ceylon</texture>
+      <texture distance="40" variance="6">ceylon\seafloor1_ceylon</texture>
+      <texture distance="50" variance="6">ceylon\seafloor2_ceylon</texture>
+      <texture distance="60" variance="6">caribbean\seafloor_coral1_crb</texture>
+      <texture distance="75" variance="6">caribbean\seafloor_coral2_crb</texture>
+      <texture distance="90" variance="6">caribbean\seafloor_coral0_crb</texture>
+    </textureplacement>
+    <beachtextureplacement>
+      <texture distance="6.0" variance="1">AfricaSavanna\ground_shore1_afriSavanna</texture>
+      <texture distance="8.0" variance="1">Texas\cliff_edge_tex</texture>
+      <texture distance="10.0" variance="1">Africa\pathBlend_afr</texture>
+      <texture distance="12.0" variance="1">Africa\ground2_afr</texture>
+    </beachtextureplacement>
+    <shoreline>
+      <shorelong name="ShorelineFoam" distance="2.0" randomyaw="false">
+      </shorelong>
+      <waves bumpmap="terrain\water\waterwavebump" bumpmapcrashposition="0.45" foam1tex="terrain\waves\wavefoam" foam2tex="terrain\waves\wavefoam2" foamalphasidetex="terrain\waves\wavefoam_alpha" foamalphabacktex="terrain\waves\wavefoam_alphaback" minlength="15.00" maxlength="35.00" minconcavelength="8.69" maxconcavelength="12.74" minwidth="2.00" maxwidth="5.00" minheight="0.35" maxheight="0.65" minfadelength="8.00" maxfadelength="14.00" minspeed="0.90" maxspeed="1.20" foamstartnormalizedtime="0.10" foamnormalizedspeed="0.00" foammaxnormalizedwidth="1.00" foam1scrollspeed="0.05" foam2scrollspeed="0.23" foamfadeintime="2.00" foamfadeouttime="2.70" recedetime="3.40" recedeendscale="1.00" recedemotion="true" variance="3.50" minstartdistance="14.00" maxstartdistance="20.00" sectionlength="15.00" wavedensity="3" convexitylimit="-11.35" concavitylimit="11.21">
+      </waves>
+    </shoreline>
+    <rendering scatter_color="0.500 0.900 1.000" sun_set_color="0.000 0.000 0.000" caustics_depth="0.8000" caustics_intensity="1.4000" caustics_scale="0.1200" caustics_scroll="0.0460" fft_displace="0.5400" custom_wave_scale="8.0000" reflection_normal="0.0500" refraction_normal="0.0300" scatter_amount="0.0400" fog_color_mult="0.1000" custom_wave_scatter="5.0000" surface_roughness="0.0200" fog_density="0.2000" water_color="0.3 0.8 0.77" blur_intensity="0.0200" water_brighten="4.000" reflection_intensity="0.0010">
+    </rendering>
+  </ocean>
+  <ocean name="ZP Great Barrier Reef 3" cluttermix="ceylon_underwater" iconname="ui\editor\watercaribbeancoast" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="ceylon\ground_shoreline2_ceylon" bank="ceylon\ground_shoreline2_ceylon" outerbank="ceylon\ground_shoreline1_ceylon" slope="" color="9 110 88" deepcolor="0 0 0" depth="8" fresnelscale="0.247934" fresnelbias="0.555556" alphaminvalue="0.000000" alphamaxvalue="0.914063" alphamindepth="0.000000" alphamaxdepth="1.900827" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.842105" reflectionamount="-0.222222" bumpscale="0.660000" reflectionbumpscale="0.710000" foamscale="-0.110000" texscale="1.970000" texscrollspeed="0.000000" texrotation="129.000000">
+    <textureplacement>
+      <texture distance="3" variance="2">borneo\seafloor1_borneo</texture>
+      <texture distance="18" variance="2">caribbean\ground_shoreline1_crb</texture>
+      <texture distance="24" variance="6">caribbean\seafloor_coral4_crb</texture>
+      <texture distance="30" variance="6">caribbean\seafloor_coral3_crb</texture>
+      <texture distance="34" variance="2">ceylon\seafloor3_ceylon</texture>
+      <texture distance="40" variance="6">ceylon\seafloor1_ceylon</texture>
+      <texture distance="50" variance="6">ceylon\seafloor2_ceylon</texture>
+      <texture distance="60" variance="6">caribbean\seafloor_coral1_crb</texture>
+      <texture distance="75" variance="6">caribbean\seafloor_coral2_crb</texture>
+      <texture distance="90" variance="6">caribbean\seafloor_coral0_crb</texture>
+    </textureplacement>
+    <beachtextureplacement>
+      <texture distance="6.0" variance="1">AfricaSavanna\ground_shore1_afriSavanna</texture>
+      <texture distance="8.0" variance="1">Texas\cliff_edge_tex</texture>
+      <texture distance="10.0" variance="1">Africa\pathBlend_afr</texture>
+      <texture distance="12.0" variance="1">Africa\ground2_afr</texture>
+    </beachtextureplacement>
+    <shoreline>
+      <shorelong name="ShorelineFoam" distance="2.0" randomyaw="false">
+      </shorelong>
+      <waves bumpmap="terrain\water\waterwavebump" bumpmapcrashposition="0.45" foam1tex="terrain\waves\wavefoam" foam2tex="terrain\waves\wavefoam2" foamalphasidetex="terrain\waves\wavefoam_alpha" foamalphabacktex="terrain\waves\wavefoam_alphaback" minlength="15.00" maxlength="35.00" minconcavelength="8.69" maxconcavelength="12.74" minwidth="2.00" maxwidth="5.00" minheight="0.35" maxheight="0.65" minfadelength="8.00" maxfadelength="14.00" minspeed="0.90" maxspeed="1.20" foamstartnormalizedtime="0.10" foamnormalizedspeed="0.00" foammaxnormalizedwidth="1.00" foam1scrollspeed="0.05" foam2scrollspeed="0.23" foamfadeintime="2.00" foamfadeouttime="2.70" recedetime="3.40" recedeendscale="1.00" recedemotion="true" variance="3.50" minstartdistance="14.00" maxstartdistance="20.00" sectionlength="15.00" wavedensity="3" convexitylimit="-11.35" concavitylimit="11.21">
+      </waves>
+    </shoreline>
+    <rendering scatter_color="0.500 0.900 1.000" sun_set_color="0.000 0.000 0.000" caustics_depth="0.8000" caustics_intensity="1.4000" caustics_scale="0.1200" caustics_scroll="0.0460" fft_displace="0.5400" custom_wave_scale="8.0000" reflection_normal="0.0500" refraction_normal="0.0300" scatter_amount="0.0400" fog_color_mult="0.1500" custom_wave_scatter="5.0000" surface_roughness="0.0200" fog_density="0.3000" water_color="0.3 0.8 0.77" blur_intensity="0.0300" water_brighten="4.000" reflection_intensity="0.0050">
+    </rendering>
+  </ocean>
 </waterbodies>
