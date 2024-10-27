@@ -1719,7 +1719,7 @@
       <string _locid="301718">Players start with one Privateer and one Waka Canoe in the middle of the sea close to Tasmanian shore. You have to find a right spot for landing but beware, some landing areas are well protected by cliffs but they are not that rich on resources. \n\nSettlements: Aboriginal Australians, Penal Colony, Pirates</string>
       <string _locid="301719">Don't panic, the land is close. You just have to find the right landing spot but beware, some landingg spots are well protected by cliffs but they are not that rich on resources.</string>
       <string _locid="301720">Sea Floor</string>
-      <string _locid="301721">ZP SPC Sea Floor</string>
+      <string _locid="301721">ZP SPC Sea Floor Ceylon</string>
       <string _locid="301722">Barracuda Colony</string>
       <string _locid="301723">ZP Barracuda Colony</string>
       <string _locid="301724">Fish Colony: Moving around the map, source of food</string>
@@ -1877,6 +1877,28 @@
       <string _locid="301876">Great Barrier Reef</string>
       <string _locid="301877">Players start on separate islands on a coral reef rich on pearls, underwater minerals and sunken shipwrecks. \n\nSettlements: Inventors, Pirates</string>
       <string _locid="301878">Use the starting Diving Bell to train divers. Protect the diving bell from the start of the game until you're able to trade divers able to build a new one.</string>
+      <string _locid="301879">Wood Production Building</string>
+      <string _locid="301880">Food Production Building</string>
+      <string _locid="301881">Coin Production Building</string>
+      <string _locid="301882">Wood Production Building, generates Wood for the whole team.</string>
+      <string _locid="301883">Food Production Building, generates Food for the whole team.</string>
+      <string _locid="301884">Coin Production Building, generates Coin for the whole team.</string>
+      <string _locid="301885">Coin Production Building, generates Coin for the whole team. Spawns vaults.</string>
+      <string _locid="301886">Production Building, generates resources for the whole team.</string>
+      <string _locid="301887">Production Building</string>
+      <string _locid="301888">Shrine type building</string>
+      <string _locid="301889">Shrine type building, generates specific resources for the whole team</string>
+      <string _locid="301890">Food Production Building, Livestock pen type building</string>
+      <string _locid="301891">Food Production Building, Livestock pen type building, feeds herdable animals.</string>
+      <string _locid="301892">ZP Zoo Giraffe</string>
+      <string _locid="301893">ZP Zoo Zebra</string>
+      <string _locid="301894">ZP Zoo Elephant</string>
+      <string _locid="301895">ZP Zoo Kangaroo</string>
+      <string _locid="301896">ZP Bridge Face</string>
+      <string _locid="301897">ZP Bridge Fence</string>
+      <string _locid="301898">ZP SPC Sea Floor Caribbean</string>
+      <string _locid="301899">ZP PROP Building Mix</string>
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

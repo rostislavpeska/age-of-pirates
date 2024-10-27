@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animfile>
+	<attachment>
+		market
+		<component>MARKET
+			<assetreference type="GrannyModel">
+				<file>buildings\market\west market standin invisible</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>MARKET</component>
+		</anim>
+	</attachment>
+	<component>ModelComp
+		<assetreference type="GrannyModel">
+			<file>buildings\bridge\bridge_face_s_Model</file>
+		</assetreference>
+		<attach a="market" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"/>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

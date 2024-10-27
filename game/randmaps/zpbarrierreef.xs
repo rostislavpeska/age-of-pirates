@@ -784,8 +784,6 @@ rmBuildArea(pirateSite4);
 
 int piratesVillageID4 = -1;
 piratesVillageID4 = rmCreateGrouping("pirate city 4", "Scientist_lab06");
-rmSetGroupingMinDistance(piratesVillageID4, 0);
-rmSetGroupingMaxDistance(piratesVillageID4, 20);
 rmAddGroupingConstraint(piratesVillageID4, ferryOnShore);
 
 rmPlaceGroupingAtLoc(piratesVillageID4, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc4)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc4)), 1);
