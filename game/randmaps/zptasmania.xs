@@ -804,8 +804,6 @@ void main(void)
 		int catamaranID=rmCreateObjectDef("Catamaran"+i);
 		rmAddObjectDefItem(catamaranID, shipType, 1, 5.0);
 		rmAddObjectDefItem(catamaranID, "CoveredWagon", 1, 0.0);
-		if (rmGetPlayerCiv(i) == rmGetCivID("Japanese"))
-			rmAddObjectDefItem(catamaranID, "ypGroveWagon", 1, 0.0);
 		rmAddObjectDefItem(catamaranID, "zpNatConvictLabourer", 1, 0.0);
 		rmAddObjectDefItem(catamaranID, "zpNatConvictLabourer", 1, 0.0);
 		rmAddObjectDefItem(catamaranID, "zpNatConvictLabourer", 1, 0.0);
