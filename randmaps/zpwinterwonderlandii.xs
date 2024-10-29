@@ -32,12 +32,6 @@ void main(void)
 
 	// Strings
 	// sometimes make it all snow
-	/* paintmix5: player area
-	   paintmix4: mountain
-	   paintmix1: mountain
-	   paintmix7: forest
-
-	*/
 	int forecast = rmRandInt(1,4);
 	if (forecast == 1)
 	{
@@ -83,27 +77,17 @@ void main(void)
 	string cliffPaint2 = "rockies\ground4_roc";
 	string food1 = "Reindeer";
 	string food2 = "elk";
-	string treeType1 = "TreeYukon";	//"TreeYukon";
-	string treeType2 = "TreeYukonSnow";
+	string treeType1 = "TreeYukon";	// TreeYukon
+	string treeType2 = "TreeYukonSnow";	// TreeYukonSnow
 	string treeType3 = "TreeGreatLakesSnow";	// TreeGreatLakesSnow
-	string treeType4 = "TreeNewEnglandSnow";
-	string treeType5 = "TreeRockiesSnow";
-	string treeType6 = "TreeChristmas";  // "TreeRockies";
+	string treeType4 = "TreeNewEnglandSnow";	// TreeNewEnglandSnow
+	string treeType5 = "TreeRockiesSnow";	// TreeRockiesSnow
+	string treeType6 = "TreeChristmas";  // TreeChristmas
 	string treeType7 = "TreeChristmas";	// TreeGreatLakes
 	string natType1 = "zpXmassVillage"; 
 	string natType2 = "";
 	string natGrpName1 = "XMass_Village0";
 	string natGrpName2 = "";
-/*	if (rmRandFloat(0,1) <= 0.50)
-	{
-		natType2 = "Cree";
-		natGrpName2 = "native cree village ";
-	}
-	else
-	{
-		natType2 = "Klamath";
-		natGrpName2 = "native klamath village ";
-	}*/
 	string propType1 = "UnderbrushRockiesSnow";
 	string propType2 = "UnderbrushPatagoniaSnow";
 	string propType3 = "UnderbrushRockies";
@@ -170,39 +154,31 @@ void main(void)
 	
 	// ____________________ Constraints ____________________
 	// These are used to have objects and areas avoid each other
-	// Cardinal Directions - "halves" of the map.
+	// Cardinal Directions
 	int NWConstraint = rmCreateBoxConstraint("stay in NW portion", 0, 0.5, 1, 1);
 	int SEConstraint = rmCreateBoxConstraint("stay in SE portion", 0, 0, 1, 0.5);
 	int NEConstraint = rmCreateBoxConstraint("stay in NE portion", 0.5, 0, 1, 1);
 	int SWConstraint = rmCreateBoxConstraint("stay in SW portion", 0, 0, 0.5, 1);
 	int staySouthHalf = rmCreatePieConstraint("Stay south half", 0.50, 0.50,rmXFractionToMeters(0.0), rmXFractionToMeters(0.50), rmDegreesToRadians(190),rmDegreesToRadians(350));
 	int stayNorthHalf = rmCreatePieConstraint("Stay north half", 0.50, 0.50,rmXFractionToMeters(0.0), rmXFractionToMeters(0.50), rmDegreesToRadians(010),rmDegreesToRadians(170));
-
-	// Cardinal Directions & Map placement
+    int staySud = rmCreatePieConstraint("Stay South", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.43), rmDegreesToRadians(210), rmDegreesToRadians(240));
+    int stayNor = rmCreatePieConstraint("Stay North", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.43), rmDegreesToRadians(030), rmDegreesToRadians(060));
+    int stayWst = rmCreatePieConstraint("Stay West", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.43), rmDegreesToRadians(300), rmDegreesToRadians(330));
+    int stayEst = rmCreatePieConstraint("Stay East", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.43), rmDegreesToRadians(120), rmDegreesToRadians(150));
+    int staySW = rmCreatePieConstraint("Stay SW", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.43), rmDegreesToRadians(170), rmDegreesToRadians(190));
+    int stayNW = rmCreatePieConstraint("Stay NW", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.43), rmDegreesToRadians(350), rmDegreesToRadians(010));
+    int stayNE = rmCreatePieConstraint("Stay NE", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.43), rmDegreesToRadians(080), rmDegreesToRadians(100));
+    int staySE = rmCreatePieConstraint("Stay SE", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.43), rmDegreesToRadians(260), rmDegreesToRadians(280));
 	int avoidEdge = rmCreatePieConstraint("Avoid Edge",0.5,0.5, rmXFractionToMeters(0.0),rmXFractionToMeters(0.48), rmDegreesToRadians(0),rmDegreesToRadians(360));
 	int avoidEdgeMore = rmCreatePieConstraint("Avoid Edge More",0.5,0.5, rmXFractionToMeters(0.0),rmXFractionToMeters(0.45), rmDegreesToRadians(0),rmDegreesToRadians(360));
 	int avoidCenter = rmCreatePieConstraint("Avoid Center",0.5,0.5,rmXFractionToMeters(0.18), rmXFractionToMeters(0.5), rmDegreesToRadians(0),rmDegreesToRadians(360));
 	int avoidCenterMin = rmCreatePieConstraint("Avoid Center min",0.5,0.5,rmXFractionToMeters(0.1), rmXFractionToMeters(0.5), rmDegreesToRadians(0),rmDegreesToRadians(360));
 	int stayCenter = rmCreatePieConstraint("Stay Center", 0.50, 0.50, rmXFractionToMeters(0.0), rmXFractionToMeters(0.28), rmDegreesToRadians(0),rmDegreesToRadians(360));
 	int stayCenterMore = rmCreatePieConstraint("Stay Center more",0.45,0.45,rmXFractionToMeters(0.0), rmXFractionToMeters(0.26), rmDegreesToRadians(0),rmDegreesToRadians(360));
-
 	int circleConstraint=rmCreatePieConstraint("circle Constraint", 0.5, 0.5, 0, rmZFractionToMeters(0.47), rmDegreesToRadians(0), rmDegreesToRadians(360));
-
-    //dk
-    int avoidAll_dk=rmCreateTypeDistanceConstraint("avoid all_dk", "all", 3.0);
-    int avoidWater5_dk = rmCreateTerrainDistanceConstraint("avoid water long_dk", "Land", false, 5.0);
-    int avoidSocket2_dk=rmCreateClassDistanceConstraint("socket avoidance gold_dk", rmClassID("socketClass"), 8.0);
-    int avoidTradeRouteSmall_dk = rmCreateTradeRouteDistanceConstraint("objects avoid trade route small_dk", 6.0);
-    int forestConstraintShort_dk=rmCreateClassDistanceConstraint("object vs. forest_dk", classForest, 2.0);
-    int avoidHunt2_dk=rmCreateTypeDistanceConstraint("herds avoid herds2_dk", "huntable", 32.0);
-    int avoidHunt3_dk=rmCreateTypeDistanceConstraint("herds avoid herds3_dk", "huntable", 18.0);
-	int avoidAll2_dk=rmCreateTypeDistanceConstraint("avoid all2_dk", "all", 4.0);
-    int avoidGoldTypeFar_dk = rmCreateTypeDistanceConstraint("avoid gold type  far 2_dk", "mine", 38.0);
-    int circleConstraint2_dk=rmCreatePieConstraint("circle Constraint2_dk", 0.5, 0.5, 0, rmZFractionToMeters(0.48), rmDegreesToRadians(0), rmDegreesToRadians(360));
-	int avoidMineForest_dk=rmCreateTypeDistanceConstraint("avoid mines forest _dk", "mine", 5.0);
 	
 	// Resource avoidance
-	int avoidForest=rmCreateClassDistanceConstraint("avoid forest", rmClassID("Forest"), 26.0);
+	int avoidForest=rmCreateClassDistanceConstraint("avoid forest", rmClassID("Forest"), 24.0);
 	int avoidForestMed=rmCreateClassDistanceConstraint("avoid forest med", rmClassID("Forest"), 20.0);
 	int avoidForestFar=rmCreateClassDistanceConstraint("avoid forest far", rmClassID("Forest"), 34.0);
 	int avoidForestShort=rmCreateClassDistanceConstraint("avoid forest short", rmClassID("Forest"), 15.0);
@@ -357,7 +333,7 @@ void main(void)
 	rmSetAreaTerrainType(outerRimID, cliffPaint1);  
 	rmSetAreaCliffType(outerRimID, mntType1);  
 	rmSetAreaCliffEdge(outerRimID, 1, 1.0, 0.0, 0.0, 0);
-	rmSetAreaCliffHeight(outerRimID, -4, 1.0, 0.3);
+	rmSetAreaCliffHeight(outerRimID, -6, 1.0, 0.3);
 	rmSetAreaCliffPainting(outerRimID, true, true, true);
 	rmAddAreaToClass(outerRimID, rmClassID("classCliff"));
 	rmBuildArea(outerRimID);
@@ -375,7 +351,7 @@ void main(void)
 	rmSetAreaTerrainType(playerLevelID, cliffPaint1);  
 	rmSetAreaCliffType(playerLevelID, mntType1);  
 	rmSetAreaCliffEdge(playerLevelID, 1, 1.0, 0.0, 0.0, 0);
-	rmSetAreaCliffHeight(playerLevelID, -8, 1.0, 0.3);
+	rmSetAreaCliffHeight(playerLevelID, -10, 1.0, 0.3);
 	rmSetAreaCliffPainting(playerLevelID, false, false, true);
 //	rmAddAreaToClass(playerLevelID, rmClassID("classCliff"));
 //	rmBuildArea(playerLevelID);	
@@ -426,12 +402,6 @@ void main(void)
     rmSetObjectDefMinDistance(socketID, 2.0);
     rmSetObjectDefMaxDistance(socketID, 8.0);      
 
-/*	int socketID2=rmCreateObjectDef("sockets to dock Trade Posts2");
-    rmAddObjectDefItem(socketID2, "SocketTradeRoute", 1, 0.0);
-    rmSetObjectDefAllowOverlap(socketID2, true);
-    rmSetObjectDefMinDistance(socketID2, 2.0);
-    rmSetObjectDefMaxDistance(socketID2, 8.0);      
-*/
 	rmSetObjectDefTradeRouteID(socketID, tradeRouteID);
 	if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 	{
@@ -519,19 +489,7 @@ void main(void)
 		rmAddTradeRouteWaypoint(tradeRouteID, 0.50, 0.93); 
 	}
     
-/*    rmSetObjectDefTradeRouteID(socketID2, tradeRouteID2);
-	rmAddTradeRouteWaypoint(tradeRouteID2, 0.20, 0.70);
-	if (TeamNum > 2 || abs(teamZeroCount - teamOneCount) > 1) {
-		rmAddTradeRouteWaypoint(tradeRouteID2, 0.30, 0.80);
-		rmAddTradeRouteWaypoint(tradeRouteID2, 0.40, 0.85);
-		rmAddTradeRouteWaypoint(tradeRouteID2, 0.50, 0.90);
-		rmAddTradeRouteWaypoint(tradeRouteID2, 0.60, 0.85);
-		rmAddTradeRouteWaypoint(tradeRouteID2, 0.70, 0.80);
-		}
-	rmAddTradeRouteWaypoint(tradeRouteID2, 0.80, 0.70);
-*/	
     rmBuildTradeRoute(tradeRouteID, toiletPaper);
-//    rmBuildTradeRoute(tradeRouteID2, toiletPaper);
 	
 	float sktLoc1 = 0.04; // up from .02
 	if (TeamNum > 2 || abs(teamZeroCount - teamOneCount) > 1)
@@ -688,15 +646,7 @@ void main(void)
 			rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		}						
 	}
-/*    vector socketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID2, sktLoc1);
-    rmPlaceObjectDefAtPoint(socketID2, 0, socketLoc2);
-	if (TeamNum > 2 || abs(teamZeroCount - teamOneCount) > 1) {
-		socketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID2, sktLoc2);
-		rmPlaceObjectDefAtPoint(socketID2, 0, socketLoc2);
-		}
-	socketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID2, sktLoc3);
-    rmPlaceObjectDefAtPoint(socketID2, 0, socketLoc2);
-*/
+
 	rmSetStatusText("",0.30);
 
 	// Paint Areas
@@ -731,20 +681,10 @@ void main(void)
 	int whichVillage3 = rmRandInt(1,3);
 	int whichVillage4 = rmRandInt(1,3);
 
-//	if (whichNative == 1)
-//	{
-		nativeID0 = rmCreateGrouping("native A", natGrpName1+whichVillage1);
-		nativeID1 = rmCreateGrouping("native B", natGrpName1+whichVillage2);
-		nativeID2 = rmCreateGrouping("native C", natGrpName1+whichVillage3);
-		nativeID3 = rmCreateGrouping("native D", natGrpName1+whichVillage4);
-//	}
-//	else
-//	{
-//		nativeID0 = rmCreateGrouping("native A", natGrpName2+whichVillage1);
-//		nativeID1 = rmCreateGrouping("native B", natGrpName2+whichVillage2);
-//		nativeID2 = rmCreateGrouping("native C", natGrpName1+whichVillage3);	
-//		nativeID3 = rmCreateGrouping("native D", natGrpName1+whichVillage4);	
-//	}	
+	nativeID0 = rmCreateGrouping("native A", natGrpName1+whichVillage1);
+	nativeID1 = rmCreateGrouping("native B", natGrpName1+whichVillage2);
+	nativeID2 = rmCreateGrouping("native C", natGrpName1+whichVillage3);
+	nativeID3 = rmCreateGrouping("native D", natGrpName1+whichVillage4);
 	
 	rmAddGroupingToClass(nativeID0, rmClassID("natives"));
 	rmAddGroupingToClass(nativeID1, rmClassID("natives"));
@@ -784,14 +724,6 @@ void main(void)
 			}
 		}
 	}
-
-//	if (PlayerNum == 2)
-//		rmPlaceGroupingAtLoc(nativeID2, 0, 0.50, 0.50);
-//	else
-//	{
-//		rmPlaceGroupingAtLoc(nativeID2, 0, 0.50, 0.63);
-//		rmPlaceGroupingAtLoc(nativeID3, 0, 0.50, 0.37);
-//	}
 
 	// ____________________ Avoidance Islands ____________________
 	int midIslandID=rmCreateArea("Mid Island");
@@ -947,8 +879,6 @@ void main(void)
 	rmAddObjectDefConstraint(playerNuggetID, avoidStartingResourcesShort);
 	if (abs(teamZeroCount - teamOneCount) > 1)
 		rmAddObjectDefConstraint(playerNuggetID, avoidMidIslandFar);
-//	else 
-//		rmAddObjectDefConstraint(playerNuggetID, avoidMidIsland);
 	rmAddObjectDefConstraint(playerNuggetID, avoidNuggetMin);
 	rmAddObjectDefConstraint(playerNuggetID, avoidNativesShort);
 	rmAddObjectDefConstraint(playerNuggetID, avoidImpassableLandMin);
@@ -1018,7 +948,7 @@ void main(void)
 	else
 	{
 		rmSetAreaLocation(centralMount1ID, 0.50, 0.50);
-		rmSetAreaSize(centralMount1ID, 0.20);
+		rmSetAreaSize(centralMount1ID, 0.15);
 	}
 	rmSetAreaWarnFailure(centralMount1ID, false);
 	rmSetAreaCliffType(centralMount1ID, mntType2);
@@ -1071,7 +1001,7 @@ void main(void)
 	int avoidRamp2 = rmCreateCliffRampDistanceConstraint("avoid ramp2", centralMount2ID, 10);
 
 	// Static Mines 
-	int staticgoldID = rmCreateObjectDef("static gold");
+	int staticgoldID = rmCreateObjectDef("static gold"+i);
 	rmAddObjectDefItem(staticgoldID, "MineGold", 1, 0.0);
 	rmSetObjectDefMinDistance(staticgoldID, rmXFractionToMeters(0.0));
 	rmSetObjectDefMaxDistance(staticgoldID, rmXFractionToMeters(0.0));
@@ -1094,14 +1024,14 @@ void main(void)
 	else
 	{
 		rmSetAreaLocation(centralPeak1ID, 0.50, 0.50);
-		rmSetAreaSize(centralPeak1ID, 0.05);
+		rmSetAreaSize(centralPeak1ID, 0.03);
 	}
 	rmSetAreaWarnFailure(centralPeak1ID, false);
 	rmSetAreaCliffType(centralPeak1ID, mntType2);
 	if (rmGetIsKOTH() == true)
 		rmSetAreaCliffEdge(centralPeak1ID, 3, 0.275, 0.0, 0.0, 0);
 	else
-		rmSetAreaCliffEdge(centralPeak1ID, 1, 1.00, 0.0, 0.0, 0);
+		rmSetAreaCliffEdge(centralPeak1ID, 2, 0.333, 0.0, 0.0, 0);
 	rmSetAreaCliffHeight(centralPeak1ID, 6.0, 2.0, 0.3);
 	rmSetAreaCoherence(centralPeak1ID, 0.8);
 	rmSetAreaSmoothDistance(centralPeak1ID, 12);
@@ -1196,11 +1126,44 @@ void main(void)
 	}
 	
 	int avoidKOTH = rmCreateAreaDistanceConstraint("avoid koth island", kingislandID, 4.0);
+
+	// Santa's Village
+	if ((TeamNum > 2 || abs(teamZeroCount - teamOneCount) > 1) && rmGetIsKOTH() == false)
+		rmPlaceGroupingAtLoc(nativeID0, 0, 0.50, 0.50);
+
 	
 	// Text
 	rmSetStatusText("",0.60);
 
 	// ____________________ Mines ____________________
+	// Mount Mines 
+	int mountgoldcount = 4;
+	if (TeamNum > 2 || abs(teamZeroCount - teamOneCount) > 1 || rmGetIsKOTH() == true)
+	{
+		for (i=0; < mountgoldcount)
+		{
+			int mountGoldID = rmCreateObjectDef("mount gold"+i);
+			rmAddObjectDefItem(mountGoldID, "MineGold", 1, 0.0);
+			rmSetObjectDefMinDistance(mountGoldID, rmXFractionToMeters(0.0));
+			rmSetObjectDefMaxDistance(mountGoldID, rmXFractionToMeters(0.45));
+			rmAddObjectDefToClass(mountGoldID, classGold);
+			rmAddObjectDefConstraint(mountGoldID, avoidImpassableLand);
+			rmAddObjectDefConstraint(mountGoldID, stayMount1);
+			rmAddObjectDefConstraint(mountGoldID, avoidPeak1);
+			rmAddObjectDefConstraint(mountGoldID, avoidTownCenterFar);
+			rmAddObjectDefConstraint(mountGoldID, avoidRamp1);
+			if (i < 1)
+				rmAddObjectDefConstraint(mountGoldID, stayNor);
+			else if (i < 2)
+				rmAddObjectDefConstraint(mountGoldID, stayEst);
+			else if (i < 3)
+				rmAddObjectDefConstraint(mountGoldID, staySud);
+			else
+				rmAddObjectDefConstraint(mountGoldID, stayWst);
+			rmPlaceObjectDefAtLoc(mountGoldID, 0, 0.50, 0.50);
+		}
+	}
+
 	// Team Mines
 	int minecount = 3*PlayerNum;
 	if (TeamNum > 2 || abs(teamZeroCount - teamOneCount) > 1)
@@ -1240,15 +1203,15 @@ void main(void)
 	for (i=0; < rdmTreeCount)
 	{
 		int randomtreeID = rmCreateObjectDef("random tree "+i);
-		rmAddObjectDefItem(randomtreeID, treeType1, rmRandInt(1,3), 3.0);
-		rmAddObjectDefItem(randomtreeID, treeType2, rmRandInt(1,3), 3.0);
-		rmAddObjectDefItem(randomtreeID, treeType3, rmRandInt(1,3), 3.0);
-		rmAddObjectDefItem(randomtreeID, treeType4, rmRandInt(1,3), 3.0);
+		rmAddObjectDefItem(randomtreeID, treeType1, rmRandInt(0,2), 3.0);
+		rmAddObjectDefItem(randomtreeID, treeType2, rmRandInt(0,2), 3.0);
+		rmAddObjectDefItem(randomtreeID, treeType3, rmRandInt(0,2), 3.0);
+		rmAddObjectDefItem(randomtreeID, treeType4, rmRandInt(0,2), 3.0);
 		rmSetObjectDefMinDistance(randomtreeID,  rmXFractionToMeters(0.00));
 		rmSetObjectDefMaxDistance(randomtreeID,  rmXFractionToMeters(0.48));
 		rmAddObjectDefToClass(randomtreeID, classForest);
 		rmAddObjectDefConstraint(randomtreeID, avoidImpassableLand);
-		rmAddObjectDefConstraint(randomtreeID, avoidForestShort);
+		rmAddObjectDefConstraint(randomtreeID, avoidForestMed);
 		rmAddObjectDefConstraint(randomtreeID, avoidGoldShort);
 		rmAddObjectDefConstraint(randomtreeID, avoidIslandMin);
 		rmAddObjectDefConstraint(randomtreeID, avoidStartingResourcesMin);
@@ -1291,11 +1254,13 @@ void main(void)
         int valleyForestPatchID = rmCreateArea("main forest patch"+i);
         rmSetAreaWarnFailure(valleyForestPatchID, false);
 		rmSetAreaObeyWorldCircleConstraint(valleyForestPatchID, true);
-        rmSetAreaSize(valleyForestPatchID, rmAreaTilesToFraction(55));
+        rmSetAreaSize(valleyForestPatchID, rmAreaTilesToFraction(51+PlayerNum*2));
         rmSetAreaCoherence(valleyForestPatchID, 0.2);
 		rmSetAreaMix(valleyForestPatchID, paintMix7);
+		rmAddAreaConstraint(valleyForestPatchID, avoidTownCenter);
+		rmAddAreaConstraint(valleyForestPatchID, avoidStartingResourcesShort);
 		rmAddAreaConstraint(valleyForestPatchID, avoidTradeRouteSocketShort);
-		rmAddAreaConstraint(valleyForestPatchID, avoidForestShort);
+		rmAddAreaConstraint(valleyForestPatchID, avoidForest);
 		rmAddAreaConstraint(valleyForestPatchID, avoidGoldTypeMin);
 		rmAddAreaConstraint(valleyForestPatchID, avoidNativesShort); 
 		rmAddAreaConstraint(valleyForestPatchID, stayBorder); 
@@ -1318,18 +1283,17 @@ void main(void)
 		stayInValleyForestPatch = rmCreateAreaMaxDistanceConstraint("stay in valley forest patch"+i, valleyForestPatchID, 0.0);
 
 		int valleyForestTreeID = rmCreateObjectDef("valley forest trees"+i);
-		rmAddObjectDefItem(valleyForestTreeID, treeType6, 1+PlayerNum/4, 3+PlayerNum);
-		rmAddObjectDefItem(valleyForestTreeID, treeType2, 1+PlayerNum/2, 3+PlayerNum);
-		rmAddObjectDefItem(valleyForestTreeID, treeType3, 1+PlayerNum/2, 3+PlayerNum);
-		rmAddObjectDefItem(valleyForestTreeID, treeType4, 1+PlayerNum/2, 3+PlayerNum);
+		rmAddObjectDefItem(valleyForestTreeID, treeType6, 1+PlayerNum/4, 3+PlayerNum/2);
+		rmAddObjectDefItem(valleyForestTreeID, treeType2, 1+PlayerNum/4, 3+PlayerNum/2);
+		rmAddObjectDefItem(valleyForestTreeID, treeType3, 1+PlayerNum/4, 3+PlayerNum/2);
+		rmAddObjectDefItem(valleyForestTreeID, treeType4, 1+PlayerNum/4, 3+PlayerNum/2);
 		rmSetObjectDefMinDistance(valleyForestTreeID, rmXFractionToMeters(0.00));
 		rmSetObjectDefMaxDistance(valleyForestTreeID, rmXFractionToMeters(0.50));
 		rmAddObjectDefToClass(valleyForestTreeID, classForest);
 		rmAddObjectDefConstraint(valleyForestTreeID, stayInValleyForestPatch);
 		rmAddObjectDefConstraint(valleyForestTreeID, avoidTradeRouteSocketMin);
 		rmAddObjectDefConstraint(valleyForestTreeID, avoidImpassableLandMin);
-		rmAddObjectDefConstraint(valleyForestTreeID, avoidIslandMin);
-		rmPlaceObjectDefAtLoc(valleyForestTreeID, 0, 0.50, 0.50, 5);
+		rmPlaceObjectDefAtLoc(valleyForestTreeID, 0, 0.50, 0.50, 2);
     }
 
 	// Text
@@ -1389,29 +1353,43 @@ void main(void)
 		rmAddObjectDefConstraint(nugget4ID, avoidTradeRouteSocketMin);
 		rmAddObjectDefConstraint(nugget4ID, avoidTradeRouteShort);
 		rmAddObjectDefConstraint(nugget4ID, avoidGoldMin);
-		rmAddObjectDefConstraint(nugget4ID, stayBorder);	
+//		rmAddObjectDefConstraint(nugget4ID, stayBorder);	
 		rmAddObjectDefConstraint(nugget4ID, avoidForestMin);	
-		rmAddObjectDefConstraint(nugget4ID, avoidEdge); 
+//		rmAddObjectDefConstraint(nugget4ID, avoidEdge); 
 		rmAddObjectDefConstraint(nugget4ID, avoidNatives); 
 		rmAddObjectDefConstraint(nugget4ID, avoidImpassableLand); 
 		rmAddObjectDefConstraint(nugget4ID, avoidIsland); 
-		if (i < treasure4count/2)
+		if (TeamNum == 2 && abs(teamZeroCount - teamOneCount) <= 1 && rmGetIsKOTH() == false)
 		{
-			rmAddObjectDefConstraint(nugget4ID, stayMount1);
-			rmAddObjectDefConstraint(nugget4ID, avoidPeak1);
-			rmAddObjectDefConstraint(nugget4ID, avoidRamp1);
+			if (i < treasure4count/2)
+			{
+				rmAddObjectDefConstraint(nugget4ID, stayMount1);
+				rmAddObjectDefConstraint(nugget4ID, avoidPeak1);
+				rmAddObjectDefConstraint(nugget4ID, avoidRamp1);
+			}
+			else
+			{
+				rmAddObjectDefConstraint(nugget4ID, stayMount2);
+				rmAddObjectDefConstraint(nugget4ID, avoidPeak2);
+				rmAddObjectDefConstraint(nugget4ID, avoidRamp2);
+			}
 		}
 		else
 		{
-			rmAddObjectDefConstraint(nugget4ID, stayMount2);
-			rmAddObjectDefConstraint(nugget4ID, avoidPeak2);
-			rmAddObjectDefConstraint(nugget4ID, avoidRamp2);
+				rmAddObjectDefConstraint(nugget4ID, stayMount1);
+				rmAddObjectDefConstraint(nugget4ID, avoidPeak1);
+				rmAddObjectDefConstraint(nugget4ID, avoidRamp1);
+				if (i < 1)
+					rmAddObjectDefConstraint(nugget4ID, stayNW);
+				else if (i < 2)
+					rmAddObjectDefConstraint(nugget4ID, staySW);
+				else if (i < 3)
+					rmAddObjectDefConstraint(nugget4ID, stayNE);
+				else if (i < 4)
+					rmAddObjectDefConstraint(nugget4ID, staySE);
 		}
-//		if (PlayerNum > 2)
-//		{
-			rmSetNuggetDifficulty(4,4);
-			rmPlaceObjectDefAtLoc(nugget4ID, 0, 0.50, 0.50, 1);
-//		}
+		rmSetNuggetDifficulty(4,4);
+		rmPlaceObjectDefAtLoc(nugget4ID, 0, 0.50, 0.50, 1);
 	}
 
 	// Treasures L3
@@ -1464,7 +1442,7 @@ void main(void)
 		rmAddObjectDefConstraint(nugget2ID, avoidEdge);	
 		rmAddObjectDefConstraint(nugget2ID, stayBorder); 
 		rmAddObjectDefConstraint(nugget2ID, avoidNatives); 
-		rmAddObjectDefConstraint(nugget2ID, avoidTownCenterFar); 
+		rmAddObjectDefConstraint(nugget2ID, avoidTownCenterMed); 
 		rmAddObjectDefConstraint(nugget2ID, avoidStartingResources); 
 		rmAddObjectDefConstraint(nugget2ID, avoidImpassableLand); 
 		rmAddObjectDefConstraint(nugget2ID, avoidIslandMin);
@@ -1749,4 +1727,3 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	rmSetStatusText("", 1.00);
 
 } // END
-	
