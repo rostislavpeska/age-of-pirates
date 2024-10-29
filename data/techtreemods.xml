@@ -16543,7 +16543,7 @@
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">zpNativeTradeTreatySansculottes</effect>
       <effect type="TechStatus" status="obtainable">zpNativeTreatySansculottes</effect>
-      <effect type="TechStatus" status="obtainable">zpRevolutionFrance</effect>
+      <effect type="TechStatus" status="obtainable">zpSansculotteRevolution</effect>
     </effects>
   </tech>
   <tech name="zpVeteranSansculottes" type="Normal">
@@ -16674,38 +16674,464 @@
   </tech>
   <tech name="zpRevolutionFrance" type="Normal">
     <dbid>40762</dbid>
-    <displaynameid>125352</displaynameid>
-    <cost resourcetype="Food">1000.0000</cost>
-    <cost resourcetype="Wood">1000.0000</cost>
-    <cost resourcetype="Gold">1000.0000</cost>
-    <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\revolution.png</icon>
-    <rollovertextid>125354</rollovertextid>
-    <flag>YPNativeImprovement</flag>
-    <prereqs>
-      <techstatus status="Active">Fortressize</techstatus>
-    </prereqs>
+    <flag>Shadow</flag>
     <effects>
-      <effect type="TransformUnit" toprotoid="xpColonialMilitia" fromprotoid="Settler">
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpCoureurSansculotteStandard</target>
       </effect>
-      <effect type="TransformUnit" toprotoid="xpColonialMilitia" fromprotoid="Coureur">
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="Settler">
       </effect>
-      <effect type="TransformUnit" toprotoid="xpColonialMilitia" fromprotoid="CoureurCree">
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="Coureur">
       </effect>
-      <effect type="TransformUnit" toprotoid="xpColonialMilitia" fromprotoid="deNatNomad">
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="CoureurCree">
       </effect>
-      <effect type="TransformUnit" toprotoid="xpColonialMilitia" fromprotoid="SettlerNative">
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="deNatNomad">
       </effect>
-      <effect type="TransformUnit" toprotoid="xpColonialMilitia" fromprotoid="Pilgrim">
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="SettlerNative">
       </effect>
-      <effect type="TransformUnit" toprotoid="xpColonialMilitia" fromprotoid="ypSettlerAsian">
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="Pilgrim">
       </effect>
-      <effect type="TransformUnit" toprotoid="xpColonialMilitia" fromprotoid="ypSettlerJapanese">
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="ypSettlerAsian">
       </effect>
-      <effect type="TransformUnit" toprotoid="xpColonialMilitia" fromprotoid="ypSettlerIndian">
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="ypSettlerJapanese">
       </effect>
-      <effect type="TransformUnit" toprotoid="xpColonialMilitia" fromprotoid="deSettlerAfrican">
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="ypSettlerIndian">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="deSettlerAfrican">
+      </effect>
+      <effect type="CommandAdd" proto="zpCoureurSansculotteStandard" page="0" column="1">
+        <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpCoureurSansculotteStandard" page="0" column="1">
+        <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpSansculotteRevolution" type ="Normal">
+		<dbid>40763</dbid>
+		<displaynameid>301917</displaynameid>
+  	<researchpoints>100.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\sansculottes_big.png</iconwpf>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>301918</rollovertextid>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>YPInfiniteTech</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <flag>DoNotQueue</flag>
+    <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianFishingBoat</effect>
+      <effect type="TechStatus" status="active">zpTheBlackFlagGoldBallanceShadow</effect>
+    </effects>
+	</tech>
+  <tech name="zpConsulateRevLafayette" type="Normal">
+    <dbid>40764</dbid>
+    <displaynameid>301919</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\sansculottes_small.png</icon>
+    <rollovertextid>301920</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpSansculotteRevolution</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpSansculotteRevolution">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+
+      <effect type="TechStatus" status="active">zpRevolutionFrance</effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateRevJacobine" type="Normal">
+    <dbid>40765</dbid>
+    <displaynameid>301921</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\sansculottes_small.png</icon>
+    <rollovertextid>301922</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpSansculotteRevolution</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpSansculotteRevolution">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+
+      <effect type="TechStatus" status="active">zpRevolutionFrance</effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateRevNapoleon" type="Normal">
+    <dbid>40766</dbid>
+    <displaynameid>301923</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\sansculottes_small.png</icon>
+    <rollovertextid>301924</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpSansculotteRevolution</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpSansculotteRevolution">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+
+      <effect type="TechStatus" status="active">zpRevolutionFrance</effect>
+    </effects>
+  </tech>
+  <tech name="zpTurnConsulateOffSansculottes" type="Normal">
+    <dbid>40767</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseAlliesClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="obtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="obtainable">zpConsulateRevLafayette</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffSansculottes</effect>
+    </effects>
+  </tech>
+  <tech name="zpForbidRevolutions" type="Normal">
+    <dbid>40768</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">XPRevolutionLouverture</effect>
+      <effect type="TechStatus" status="unobtainable">XPRevolutionWashington</effect>
+      <effect type="TechStatus" status="unobtainable">XPRevolutionHidalgo</effect>
+      <effect type="TechStatus" status="unobtainable">XPRevolutionBonifacio</effect>
+      <effect type="TechStatus" status="unobtainable">XPRevolutionBolivar</effect>
+      <effect type="TechStatus" status="unobtainable">XPRevolutionSanMartin</effect>
+      <effect type="TechStatus" status="unobtainable">XPRevolutionSantander</effect>
+      <effect type="TechStatus" status="unobtainable">XPRevolutionOHiggins</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionHaiti</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionUSA</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionMexico</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionBrazil</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionPeru</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionArgentina</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionColombia</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionChile</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionCanadaFrench</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionEgypt</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionFinland</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionHungaryOttoman</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionIndonesia</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionRomania</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionSouthAfrica</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionBarbaryStates</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionCanadaBritish</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionHungaryGerman</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionHungaryRussian</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionColombiaPortuguese</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionMXCentralAmerica</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionMXBajaCalifornia</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionMXYucatan</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionMXRioGrande</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionMXMaya</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionMXCalifornia</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionMXTexas</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionHungaryMaltese</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionFrance</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionFranceNE</effect>
+      <effect type="CommandRemove" tech="XPRevolutionLouverture">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionWashington">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionHidalgo">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionBonifacio">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionBolivar">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionSanMartin">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionSantander">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionOHiggins">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHaiti">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionUSA">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMexico">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionBrazil">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionPeru">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionArgentina">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionColombia">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionChile">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionCanadaFrench">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionEgypt">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionFinland">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHungaryOttoman">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionIndonesia">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionRomania">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionSouthAfrica">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionBarbaryStates">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionCanadaBritish">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHungaryGerman">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHungaryRussian">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionColombiaPortuguese">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXCentralAmerica">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXBajaCalifornia">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXYucatan">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXRioGrande">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXMaya">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXCalifornia">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXTexas">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHungaryMaltese">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionFrance">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionFranceNE">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionLouverture">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionWashington">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionHidalgo">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionBonifacio">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionBolivar">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionSanMartin">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionSantander">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionOHiggins">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHaiti">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionUSA">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMexico">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionBrazil">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionPeru">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionArgentina">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionColombia">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionChile">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionCanadaFrench">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionEgypt">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionFinland">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHungaryOttoman">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionIndonesia">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionRomania">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionSouthAfrica">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionBarbaryStates">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionCanadaBritish">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHungaryGerman">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHungaryRussian">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionColombiaPortuguese">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXCentralAmerica">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXBajaCalifornia">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXYucatan">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXRioGrande">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXMaya">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXCalifornia">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXTexas">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHungaryMaltese">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionFrance">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionFranceNE">
+          <target type="ProtoUnit">deSPCCommandPost</target>
       </effect>
     </effects>
   </tech>

@@ -108,4 +108,11 @@
   <zpconsulatenattupi portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_tupi.png">
   </zpconsulatenattupi>
 
+  <zpconsulaterevjacobine portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_jacobine.png">
+  </zpconsulaterevjacobine>
+  <zpconsulaterevlafayette portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_lafayette.png">
+  </zpconsulaterevlafayette>
+  <zpconsulaterevnapoleon portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_napoleon.png">
+  </zpconsulaterevnapoleon>
+
 </politicianmods>

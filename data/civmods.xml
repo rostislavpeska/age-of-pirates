@@ -407,6 +407,19 @@
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>
+  <civ>
+    <name>zpRevParis</name>
+    <main>0</main>
+    <displaynameid>301916</displaynameid>
+    <displayrevolutionflag>0</displayrevolutionflag>
+    <revolutionhomecityname>301916</revolutionhomecityname>
+    <homecityflagtexture>objects\flags\paris_republic</homecityflagtexture>
+    <postgameflagiconwpf>resources/images/icons/flags/postgame_flag_paris_republic.png</postgameflagiconwpf>
+    <homecityflagiconwpf>resources/images/icons/flags/flag_paris_republic.png</homecityflagiconwpf>
+    <homecityflagbuttonwpf>resources/images/icons/flags/flag_hc_paris_republic.png</homecityflagbuttonwpf>
+    <visible>0</visible>
+    <visibleineditor>0</visibleineditor>
+  </civ>
   <!--<civ>
     <name>zpCivPirate</name>
     <main>1</main>
