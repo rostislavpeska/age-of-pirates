@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>8</width>
+	<height>22</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="177" posx="4.0474" posz="-18.1541" orientx="-0.7412" orienty="0.0000" orientz="-0.6713">PropSwan</unit>
+		<unit variation="177" posx="4.4348" posz="-15.1011" orientx="-0.7412" orienty="0.0000" orientz="-0.6713">PropSwan</unit>
+		<unit variation="120" posx="-2.0885" posz="-19.7828" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="31" posx="-2.1754" posz="-17.7811" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="175" posx="7.0000" posz="-13.0000" orientx="0.0000" orienty="-0.0000" orientz="1.0000">FishCod</unit>
+		<unit variation="138" posx="-2.8461" posz="-17.8542" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="79" posx="-2.1097" posz="-14.5682" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="171" posx="-5.4222" posz="-14.8590" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFence</unit>
+		<unit variation="54" posx="-2.1130" posz="-11.7719" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="208" posx="2.4461" posz="-7.7353" orientx="0.9996" orienty="0.0000" orientz="0.0269">zpHarbourPlatform</unit>
+		<unit variation="31" posx="-2.7458" posz="-11.3097" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="208" posx="-1.9157" posz="-8.5113" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="147" posx="4.7747" posz="-9.0846" orientx="0.0000" orienty="-0.0000" orientz="1.0000">Duck</unit>
+		<unit variation="128" posx="-2.1023" posz="-4.4265" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="218" posx="2.8752" posz="-5.2794" orientx="0.0000" orienty="-0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="157" posx="-5.3226" posz="-5.9129" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFence</unit>
+		<unit variation="222" posx="0.0649" posz="-2.3538" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="206" posx="2.7304" posz="-3.6479" orientx="0.0000" orienty="-0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="179" posx="2.2744" posz="-3.6468" orientx="0.0000" orienty="-0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="3" posx="-1.7571" posz="-3.8671" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="25" posx="2.2976" posz="-0.6354" orientx="-0.9999" orienty="0.0000" orientz="-0.0118">zpHarbourPlatform</unit>
+		<unit variation="99" posx="0.2675" posz="-0.5085" orientx="0.0205" orienty="0.0000" orientz="-0.9998">zpHarbourPlatform</unit>
+		<unit variation="129" posx="-2.7780" posz="-2.0925" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="131" posx="-3.6927" posz="-2.1294" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeStatueVenetian</unit>
+		<unit variation="147" posx="-1.6320" posz="-1.4907" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="221" posx="-1.8573" posz="-0.5987" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="141" posx="2.4684" posz="-0.3748" orientx="0.0000" orienty="-0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="44" posx="2.5912" posz="0.1578" orientx="0.0000" orienty="-0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="186" posx="0.1954" posz="0.6836" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="110" posx="-2.0905" posz="1.4662" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="124" posx="-3.5402" posz="1.5802" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeStatueVenetian</unit>
+		<unit variation="131" posx="-1.9215" posz="3.9919" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="227" posx="-2.1544" posz="2.0863" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="64" posx="2.4334" posz="2.0400" orientx="0.0000" orienty="-0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="176" posx="3.6679" posz="2.4965" orientx="0.0000" orienty="-0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="208" posx="2.3337" posz="6.7023" orientx="0.9996" orienty="0.0000" orientz="0.0269">zpHarbourPlatform</unit>
+		<unit variation="69" posx="5.3211" posz="5.5461" orientx="-0.2575" orienty="0.0000" orientz="0.9663">zpHarbourShip</unit>
+		<unit variation="180" posx="-5.3654" posz="5.9074" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFence</unit>
+		<unit variation="151" posx="2.3048" posz="5.8255" orientx="0.0000" orienty="-0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="114" posx="2.1911" posz="6.9561" orientx="0.0000" orienty="-0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="62" posx="2.3634" posz="5.6646" orientx="0.0000" orienty="-0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="57" posx="-1.8984" posz="7.2899" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="175" posx="2.3107" posz="7.6412" orientx="0.0000" orienty="-0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="132" posx="-2.1111" posz="9.4183" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="206" posx="-2.1023" posz="11.5157" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="67" posx="-2.5842" posz="10.4861" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="30" posx="-2.6968" posz="14.4774" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="146" posx="4.3394" posz="14.3083" orientx="0.0000" orienty="-0.0000" orientz="1.0000">DuckFamily</unit>
+		<unit variation="104" posx="-5.3987" posz="14.8202" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFence</unit>
+		<unit variation="145" posx="-2.0778" posz="16.5740" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="11" posx="-2.1669" posz="17.8477" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="67" posx="-2.0023" posz="18.2483" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
+		<unit variation="46" posx="-2.1498" posz="19.0733" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpNativeUnitVenetianPoles</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
+			<block startx="-4" startz="-11" endx="-4" endz="-7"></block>
+			<block startx="-3" startz="-11" endx="-3" endz="-7"></block>
+			<block startx="-2" startz="-11" endx="-2" endz="-7"></block>
+			<block startx="-1" startz="-11" endx="-1" endz="-7"></block>
+			<block startx="0" startz="-11" endx="0" endz="-7"></block>
+			<block startx="1" startz="-11" endx="1" endz="-7"></block>
+			<block startx="2" startz="-11" endx="2" endz="-7"></block>
+			<block startx="3" startz="-11" endx="3" endz="-7"></block>
+			<block startx="-4" startz="-6" endx="-4" endz="1"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="1"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="1"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="1"></block>
+			<block startx="-4" startz="2" endx="-4" endz="9"></block>
+			<block startx="-3" startz="2" endx="-3" endz="9"></block>
+			<block startx="-2" startz="2" endx="-2" endz="9"></block>
+			<block startx="-1" startz="2" endx="-1" endz="9"></block>
+			<block startx="0" startz="2" endx="0" endz="9"></block>
+			<block startx="1" startz="2" endx="1" endz="9"></block>
+			<block startx="2" startz="2" endx="2" endz="9"></block>
+			<block startx="3" startz="2" endx="3" endz="9"></block>
+			<block startx="0" startz="-6" endx="0" endz="1"></block>
+			<block startx="1" startz="-6" endx="1" endz="1"></block>
+			<block startx="2" startz="-6" endx="2" endz="1"></block>
+			<block startx="3" startz="-6" endx="3" endz="1"></block>
+			<block startx="-4" startz="10" endx="-4" endz="10"></block>
+			<block startx="-3" startz="10" endx="-3" endz="10"></block>
+			<block startx="-2" startz="10" endx="-2" endz="10"></block>
+			<block startx="-1" startz="10" endx="-1" endz="10"></block>
+			<block startx="0" startz="10" endx="0" endz="10"></block>
+			<block startx="1" startz="10" endx="1" endz="10"></block>
+			<block startx="2" startz="10" endx="2" endz="10"></block>
+			<block startx="3" startz="10" endx="3" endz="10"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

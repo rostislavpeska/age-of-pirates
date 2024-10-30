@@ -18472,6 +18472,7 @@
     <flag>Tracked</flag>
     <flag>DisplayRange</flag>
     <flag>HideGarrisonFlag</flag>
+    <flag>AllowPlacementOnIce</flag>
     <notcontain>AbstractMonk</notcontain>
     <notcontain>ExcludeFromRansom</notcontain>
     <notcontain>AbstractFishingBoat</notcontain>
@@ -38710,6 +38711,84 @@
 
 
   <!--TEST-->
+  <!--<unit name="WallConnector">
+    <obstructionradiusx>0.5000</obstructionradiusx>
+    <obstructionradiusx>0.5000</obstructionradiusx>
+    <placementfile>zpbarricade.xml</placementfile>
+    <animfile>buildings\wall\barricade\wall_tower.xml</animfile>
+    <flag>AllowPlacementOnIce</flag>
+    <flag>PlaceAnywhere</flag>
+    <unittype mergemode="remove">AbstractWall</unittype>
+    <unittype mergemode="remove">MilitaryBuilding</unittype>
+    <unittype mergemode="remove">ColonyBuilding</unittype>
+    <flag mergemode="remove">ColonyBuilding</flag>
+    <flag mergemode="remove">wallBuild</flag>
+  </unit>
+  <unit name="WallStraight1">
+    <obstructionradiusx>0.5000</obstructionradiusx>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <placementfile>zpbarricade.xml</placementfile>
+    <animfile>buildings\wall\barricade\wall_1x1.xml</animfile>
+    <flag>AllowPlacementOnIce</flag>
+    <flag>PlaceAnywhere</flag>
+    <unittype mergemode="remove">AbstractWall</unittype>
+    <unittype mergemode="remove">MilitaryBuilding</unittype>
+    <unittype mergemode="remove">ColonyBuilding</unittype>
+    <flag mergemode="remove">ColonyBuilding</flag>
+    <flag mergemode="remove">wallBuild</flag>
+  </unit>
+  <unit name="WallStraight2">
+    <obstructionradiusx>0.5000</obstructionradiusx>
+    <obstructionradiusx>2.0000</obstructionradiusx>
+    <placementfile>zpbarricade.xml</placementfile>
+    <animfile>buildings\wall\barricade\wall_1x2.xml</animfile>
+    <flag>AllowPlacementOnIce</flag>
+    <flag>PlaceAnywhere</flag>
+    <unittype mergemode="remove">AbstractWall</unittype>
+    <unittype mergemode="remove">MilitaryBuilding</unittype>
+    <unittype mergemode="remove">ColonyBuilding</unittype>
+    <flag mergemode="remove">ColonyBuilding</flag>
+    <flag mergemode="remove">wallBuild</flag>
+  </unit>
+  <unit name="WallStraight3">
+    <obstructionradiusx>0.5000</obstructionradiusx>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <placementfile>zpbarricade.xml</placementfile>
+    <animfile>buildings\wall\barricade\wall_1x3.xml</animfile>
+    <flag>AllowPlacementOnIce</flag>
+    <flag>PlaceAnywhere</flag>
+    <unittype mergemode="remove">AbstractWall</unittype>
+    <unittype mergemode="remove">MilitaryBuilding</unittype>
+    <unittype mergemode="remove">ColonyBuilding</unittype>
+    <flag mergemode="remove">ColonyBuilding</flag>
+    <flag mergemode="remove">wallBuild</flag>
+  </unit>
+  <unit name="WallStraight4">
+    <obstructionradiusx>0.5000</obstructionradiusx>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <placementfile>zpbarricade.xml</placementfile>
+    <animfile>buildings\wall\barricade\wall_1x4.xml</animfile>
+    <flag>AllowPlacementOnIce</flag>
+    <flag>PlaceAnywhere</flag>
+    <unittype mergemode="remove">AbstractWall</unittype>
+    <unittype mergemode="remove">MilitaryBuilding</unittype>
+    <unittype mergemode="remove">ColonyBuilding</unittype>
+    <flag mergemode="remove">ColonyBuilding</flag>
+    <flag mergemode="remove">wallBuild</flag>
+  </unit>
+  <unit name="WallStraight5">
+    <obstructionradiusx>0.5000</obstructionradiusx>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <placementfile>zpbarricade.xml</placementfile>
+    <animfile>buildings\wall\barricade\wall_1x5.xml</animfile>
+    <flag>AllowPlacementOnIce</flag>
+    <flag>PlaceAnywhere</flag>
+    <unittype mergemode="remove">AbstractWall</unittype>
+    <unittype mergemode="remove">MilitaryBuilding</unittype>
+    <unittype mergemode="remove">ColonyBuilding</unittype>
+    <flag mergemode="remove">ColonyBuilding</flag>
+    <flag mergemode="remove">wallBuild</flag>
+  </unit>-->
 
   <!--<unit id="" name="zpBarricade1">
     <dbid></dbid>
