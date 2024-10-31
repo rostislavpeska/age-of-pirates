@@ -1841,8 +1841,8 @@
       <string _locid="301840">ZP SPC Paris Cognac Destilery</string>
       <string _locid="301841">ZP SPC Paris Forester</string>
       <string _locid="301842">King's Forester</string>
-      <string _locid="301843">Demolisher's Camp</string>
-      <string _locid="301844">ZP SPC Paris Demolisher</string>
+      <string _locid="301843">Warehouse</string>
+      <string _locid="301844">ZP SPC Paris Warehouse</string>
       <string _locid="301845">Menagerie</string>
       <string _locid="301846">ZP SPC Paris Menagerie</string>
       <string _locid="301847">ZP SPC Paris Rubble</string>
@@ -1915,7 +1915,7 @@
       <string _locid="301914">The Great French Revolution!</string>
       <string _locid="301915">%s has risen the Revolution Flag!</string>
       <string _locid="301916">Republic of Paris</string>
-      <string _locid="301917">The Great French revolution</string>
+      <string _locid="301917">La Revolution!</string>
       <string _locid="301918">Revolts to one of the revolutionary factions. \n • Initiates a special type of revolution \n • Transforms all your settlers into Sansculottes \n • Allows Sansculotte training from your Town Center \n • Changes you civilization to one of the revolutionary factions without loosing access to your original homecity and the option to advance to higher age (including Imperial Age)</string>
       <string _locid="301919">Gilbert du Motier (Republic of Paris)</string>
       <string _locid="301920">Marquis de Lafayette, nobleman and moderate Republican \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGalerie Lafayette \nAmerican Embassy</string>
@@ -1940,8 +1940,20 @@
       <string _locid="301939">ZP NAT Royal Dragoon Clone</string>
       <string _locid="301940">ZP NAT Royal Horseman Clone</string>
       <string _locid="301941">ZP Socket EU SPC Bourbon</string>
-      <string _locid="301942">La Restitution</string>
+      <string _locid="301942">La Restitution!</string>
       <string _locid="301943">Unlocks additional Bourbon techs</string>
+      <string _locid="301944">Unlocks additional Bourbon techs &lt;color=1.0, 0.0, 0.0&gt;\n • Avialble only for the team "Monarchists".&lt;/color&gt;</string>
+      <string _locid="301945">Revolts to one of the revolutionary factions. \n • Initiates a special type of revolution \n • Transforms all your settlers into Sansculottes \n • Allows Sansculotte training from your Town Center \n • Changes you civilization to one of the revolutionary factions without loosing access to your original homecity and the option to advance to higher age (including Imperial Age)\n&lt;color=1.0, 0.0, 0.0&gt; • Avialble only for the team "Revolutionaries".&lt;/color&gt;</string>
+      <string _locid="301946">ZP Paris Palaces</string>
+      <string _locid="301947">ZP Bourbon Chateau</string>
+      <string _locid="301948">Bourbon Château</string>
+      <string _locid="301949">Château Wagon</string>
+      <string _locid="301950">ZP Bourbon Chateau Wagon</string>
+      <string _locid="301951">Château Royal</string>
+      <string _locid="301952">Allows you to construct a Bourbon summmer palace in the countryside. Increases Bourbon unit build limit.</string>
+      <string _locid="301953">Bourbon Palace, can train native units and provides you with native improvements.</string>
+      <string _locid="301954">Bourbon Palace</string>
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

@@ -17563,6 +17563,7 @@
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyBourbon</effect>
       <effect type="TechStatus" status="obtainable">zpBourbonExpansion</effect>
+      <effect type="TechStatus" status="obtainable">zpNatChateauRoyal</effect>
       <effect type="Data" amount="1.00" subtype="GrantsPowerDuration" protopower="zpNatPowerRoyalMarch" relativity="Assign">
         <target type="Player">
         </target>
@@ -17737,6 +17738,9 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatRoyalHorsemanBourbonProxy</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercRoyalHorseman</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpNativeTreatyBourbon" type="Normal">
@@ -17825,11 +17829,77 @@
       <effect type="CommandAdd" tech="" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="" page="2" column="6">
+      <effect type="CommandAdd" tech="zpNatChateauRoyal" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
 	</tech>
+  <tech name="zpNatBigbuttonDisableShadow" type="Normal">
+    <dbid>40787</dbid>
+    <researchpoints>0.5000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpNatBourbonBigbuttonDisableShadow" type="Normal">
+    <dbid>40788</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" tech="zpBourbonExpansion">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpNatBourbonBigbuttonDisableShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatSansculoteoffShadow" type="Normal">
+    <dbid>40789</dbid>
+    <researchpoints>0.5000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpNatSansculotteBigbuttonDisableShadow" type="Normal">
+    <dbid>40790</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" tech="zpSansculotteRevolution">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpNatSansculotteBigbuttonDisableShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatChateauRoyal" type="Normal">
+    <dbid>40791</dbid>
+    <displaynameid>301951</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <cost resourcetype="Gold">600.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\bourbon_chateau.png</icon>
+    <rollovertextid>301952</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpBourbonSummerPalaceWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect civ="SPCBourbon" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player"></target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRoyalDragoon</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercBattleship</target>
+      </effect>
+    </effects>
+  </tech>
   
   
 

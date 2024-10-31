@@ -306,6 +306,28 @@
     <alwaysaddtoplayer>1</alwaysaddtoplayer>
     <soundset type="StartSound" listenertype="Caster">DENatPowerBourbon</soundset>
   </power>
+  <power name="zpPowerBourbonExpansion" type="UnitAction">
+    <displaynameid>301942</displaynameid>
+    <rolloverid>301944</rolloverid>
+    <icon>resources\images\icons\techs\spcbourbon_expansion.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>   
+  </power>
+  <power name="zpPowerSansculotteExpansion" type="UnitAction">
+    <displaynameid>301917</displaynameid>
+    <rolloverid>301945</rolloverid>
+    <icon>resources\images\icons\techs\sansculottes_big.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>   
+  </power>
 
 
 
