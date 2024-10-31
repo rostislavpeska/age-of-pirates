@@ -16709,7 +16709,7 @@
     </effects>
   </tech>
   <tech name ="zpSansculotteRevolution" type ="Normal">
-		<dbid>40763</dbid>
+		<dbid>40769</dbid>
 		<displaynameid>301917</displaynameid>
   	<researchpoints>100.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
@@ -17133,6 +17133,267 @@
       <effect type="CommandRemove" tech="DERevolutionFranceNE">
           <target type="ProtoUnit">deSPCCommandPost</target>
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpDisableWalls" type="Normal">
+    <dbid>40770</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">Bastion</effect>
+      <effect type="TechStatus" status="unobtainable">DERedoubts</effect>
+      <effect type="TechStatus" status="unobtainable">DECityFortifications</effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">SettlerNative</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">SettlerNative</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">SettlerNative</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">CoureurCree</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">CoureurCree</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">CoureurCree</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">SettlerWagon</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">SettlerWagon</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">SettlerWagon</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">Coureur</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">Coureur</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">Coureur</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">Settler</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">Settler</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">Settler</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">deUnknownPilgrim</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">deUnknownPilgrim</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">deUnknownPilgrim</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">deREVFilibuster</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">deREVFilibuster</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">deREVFilibuster</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">deREVNativeVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">deREVNativeVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">deREVNativeVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">deNatMercNomad</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">deNatMercNomad</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">deNatMercNomad</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">deNatNomad</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">deNatNomad</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">deNatNomad</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">deAfricanVillagerNugget</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">deAfricanVillagerNugget</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">deAfricanVillagerNugget</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">deSettlerAfrican</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">deSettlerAfrican</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">deSettlerAfrican</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypSettlerIceCream</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypSettlerIceCream</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypSettlerIceCream</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypMigrantArmyMedium</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypMigrantArmyMedium</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypMigrantArmyMedium</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypMigrantOx</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypMigrantOx</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypMigrantOx</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypMigrantArmySmall</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypMigrantArmySmall</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypMigrantArmySmall</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypMigrantArmyLarge</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypMigrantArmyLarge</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypMigrantArmyLarge</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypMigrantGoats</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypMigrantGoats</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypMigrantGoats</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypSettlerJapanese</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypSettlerJapanese</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypSettlerJapanese</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypSettlerIndian</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypSettlerIndian</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypSettlerIndian</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypSettlerAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypSettlerAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypSettlerAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">Pilgrim</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">Pilgrim</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">Pilgrim</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">zpSettlerZen</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">zpSettlerZen</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">zpSettlerZen</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">zpNatNomadSettlerJewish</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">zpNatNomadSettlerJewish</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">zpNatNomadSettlerJewish</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">zpNatCoureurSansculotte</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">zpNatCoureurSansculotte</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">zpNatCoureurSansculotte</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">zpCoureurSansculotteStandard</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">zpCoureurSansculotteStandard</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">zpCoureurSansculotteStandard</target>
+      </effect>  
     </effects>
   </tech>
 

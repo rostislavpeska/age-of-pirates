@@ -1,14 +1,5 @@
 <animfile>
-    <definebone>bone_decor00</definebone>
-    <definebone>bone_decor01</definebone>
-    <definebone>bone_decor02</definebone>
-    <definebone>bone_debris_1a</definebone>
-    <definebone>bone_debris_1b</definebone>
-    <definebone>bone_debris_1c</definebone>
-    <definebone>bone_debris_1d</definebone>
-    <definebone>bone_debris_1e</definebone>
-    <definebone>bone_debris_1f</definebone>
-    <definebone>bone_debris_1g</definebone>
+    <definebone>bone_falling_building</definebone>
     <submodel>wood
         <attachment>collapse_smoke
             <component>collapse_smoke
@@ -20,28 +11,58 @@
                 <component>collapse_smoke</component>
             </anim>
         </attachment>
+        <attachment>
+            dock
+            <component>
+                dock
+                <assetreference type="GrannyModel">
+                    <file>buildings\native_settlement\barricade\wall_wood_d_Model</file>
+                </assetreference>
+            </component>
+            <anim>Idle<component>dock</component></anim>
+        </attachment>
         <component>woodWall
-            <assetreference type="GrannyModel">
-                <file>buildings\native_settlement\wall_wood_d</file>
-            </assetreference>
-            <decal>
-                <effecttype>bump</effecttype>
-                <texture>buildings\wall\wall_wood_stone_ground_large</texture>
-                <selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
-                <bumptexture>buildings\wall\wall_wood_stone_ground_large_bumpmap</bumptexture>
-                <width>8.40</width>
-                <height>2.50</height>
-            </decal>
+            <logic type="BuildingCompletion">
+                <p0>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\props_colony\box_d</file>
+                    </assetreference>
+                    <attach a="props" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+                    <decal>
+                        <effecttype>bump</effecttype>
+                        <texture>buildings\wall\wall_wood_redoubt_ground_small</texture>
+                        <selectedtexture>shadows_selections\selection_square_64x128</selectedtexture>
+                        <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                        <width>8.40</width>
+                        <height>2.50</height>
+                    </decal>
+                </p0>
+			    <p100>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\native_settlement\barricade\wall_wood_d_Model</file>
+                    </assetreference>
+                    <attach a="props" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+                    <decal>
+                        <effecttype>bump</effecttype>
+                        <texture>buildings\wall\wall_wood_redoubt_ground_large</texture>
+                        <selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
+                        <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                        <width>8.40</width>
+                        <height>2.50</height>
+                    </decal>
+                </p100>
+            </logic>
         </component>
         <component>woodWall_death
             <assetreference type="GrannyModel">
-                <file>buildings\native_settlement\wall_wood_d</file>
+                <file>buildings\1death_anim\Deathmodel</file>
             </assetreference>
+            <attach a="dock" frombone="MASTER" tobone="bone_falling_building" syncanims="0"></attach>
             <decal>
                 <effecttype>bump</effecttype>
-                <texture>buildings\wall\wall_wood_stone_ground_large</texture>
+                <texture>buildings\wall\wall_wood_redoubt_ground_large</texture>
                 <selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
-                <bumptexture>buildings\wall\wall_wood_stone_ground_large_bumpmap</bumptexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
                 <width>8.40</width>
                 <height>2.50</height>
             </decal>
@@ -53,6 +74,9 @@
             </simskeleton>
         </anim>
         <anim>Death
+            <assetreference type="GrannyAnim">
+                <file>buildings\1death_anim\Deathmodel_Animation</file>
+            </assetreference>
             <component>woodWall_death</component>
             <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
         </anim>

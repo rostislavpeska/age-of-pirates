@@ -21,4 +21,5 @@
   <unittype>AbstractUnderwaterBuilding</unittype>
   <unittype>AbstractDivingBell</unittype>
   <unittype>GatherableOnlyByDivers</unittype>
+  <unittype>AbstractCityManison</unittype>
 </unittypes>
