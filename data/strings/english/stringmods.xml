@@ -1936,7 +1936,12 @@
       <string _locid="301935">Allows Sansculottes and revolutionaries to construct barricades to prevent enemy units to pass through the streets.</string>
       <string _locid="301936">Café Procope</string>
       <string _locid="301937">Allows you to train native Revolutionaries and Sansculottes from all Bastions in the city.</string>
-
+      <string _locid="301938">ZP NAT Royal Musketeer Clone</string>
+      <string _locid="301939">ZP NAT Royal Dragoon Clone</string>
+      <string _locid="301940">ZP NAT Royal Horseman Clone</string>
+      <string _locid="301941">ZP Socket EU SPC Bourbon</string>
+      <string _locid="301942">La Restitution</string>
+      <string _locid="301943">Unlocks additional Bourbon techs</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

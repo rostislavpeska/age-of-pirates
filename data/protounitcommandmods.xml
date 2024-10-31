@@ -425,6 +425,17 @@
     </socketbuild>
     <rollovertextid>301863</rollovertextid>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpNatBourbonRoyalMarchSmall</name>
+    <icon>resources\images\icons\abilities\ability_royal_march_lrg.png</icon>
+    <associatedtech>zpNatBourbonRoyalMarch</associatedtech>
+    <associatedpower>zpNatPowerRoyalMarch</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>SPCBourbon</subciv>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
 
   <!--
 

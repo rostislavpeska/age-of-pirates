@@ -796,6 +796,11 @@
     <train row="0" page="0" column="2">zpNatCoureurSansculotte</train>
     <train row="0" page="0" column="1">zpNatRevolutionary</train>
 
+    <!-- BOURBON -->
+    <train row="0" page="0" column="1">zpNatRoyalMusketeer</train>
+    <train row="0" page="0" column="2">zpNatRoyalDragoon</train>
+    <train row="0" page="0" column="3">zpNatRoyalHorsemanBourbonProxy</train>
+
     <!-- Christmas units and techs Added by AssertiveWall-->
     <train row="0" page="0" column="1">zpNatElfsGuard</train>
     <!--<train row="0" page="0" column="2">zpNatElfsSapper</train>-->
@@ -933,6 +938,15 @@
     <tech row="0" page="2" column="2">zpSansculotteBrricades</tech>
     <tech row="0" page="2" column="3">zpSansculotteBastions</tech>
 
+    <tech row="0" page="1" column="1">zpVeteranBourbon</tech>
+    <tech row="0" page="1" column="1">zpGuardBourbon</tech>n
+    <tech row="0" page="2" column="1">zpNatBourbonReforms</tech>
+    <tech row="0" page="2" column="2">zpNatBourbonRoyalTax</tech>
+    <tech row="0" page="2" column="3">zpNatBourbonChouannerie</tech>
+    <tech row="0" page="2" column="4">zpNatBourbonMaisonDuRoi</tech>
+    <tech row="0" page="0" column="20">zpNatBourbonRoyalMarch</tech>
+    <tech row="0" page="2" column="2">zpBourbonExpansion</tech>
+
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia1</tech>
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia2</tech>
 
@@ -950,6 +964,7 @@
     <command page="0" column="20">zpNatArmoredTrain</command>
     <command page="0" column="20">zpNatArmoredTrainDisabled</command>
     <command page="0" column="20">zpNatArmoredTrainNoResource</command>
+    <command page="0" column="4">zpNatBourbonRoyalMarchSmall</command>
     <protoaction>
       <name>SpawnArmoredTrain</name>
       <damage>1.000000</damage>
@@ -38989,6 +39004,537 @@
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
     <tactics>zpautoconvert.tactics</tactics>
+  </unit>
+  <unit id="20521" name="zpNatRoyalMusketeer">
+    <dbid>20521</dbid>
+    <displaynameid>122104</displaynameid>
+    <editornameid>301938</editornameid>
+    <populationcount>0</populationcount>
+    <buildlimit>15</buildlimit>
+    <subciv>SPCBourbon</subciv>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>4.5000</maxvelocity>
+    <maxrunvelocity>6.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\europeans\royal_musketeer\royal_musketeer.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\natives\europeans\royal_musketeer_icon.png</icon>
+    <portraiticon>resources\art\units\natives\europeans\royal_musketeer_portrait.png</portraiticon>
+    <rollovertextid>122108</rollovertextid>
+    <shortrollovertextid>44370</shortrollovertextid>
+    <initialhitpoints>160.0000</initialhitpoints>
+    <maxhitpoints>160.0000</maxhitpoints>
+    <los>16.0000</los>
+    <rechargetime>60.0000</rechargetime>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <bounty>12.0000</bounty>
+    <buildbounty>12.0000</buildbounty>
+    <cost resourcetype="Food">75.0000</cost>
+    <cost resourcetype="Gold">40.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Hand" value="0.4000">
+    </armor>
+    <sharedselectionunittypes>
+      <unittype>deNatMercRoyalMusketeer</unittype>
+      <unittype>deNatRoyalMusketeer</unittype>
+    </sharedselectionunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>AbstractMusketeer</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>royalmusketeer.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>19.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.6000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>DefendRangedAttack</name>
+      <damage>22.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>12.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.6000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>StaggerHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.6000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>StaggerRangedAttack</name>
+      <damage>22.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>12.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>VolleyHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.6000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>VolleyRangedAttack</name>
+      <damage>22.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>12.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>ChargePistolAttack</name>
+      <damage>44.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>12.000000</maxrange>
+      <minrange>0.000000</minrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractVillager">0.75000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>MortarAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Siege</damagetype>
+      <minrange>2.000000</minrange>
+      <maxrange>14.000000</maxrange>
+      <rof>1.500000</rof>
+      <damagecap>57.000000</damagecap>
+      <damagearea>2.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractArtillery">0.2500000</damagebonus>
+      <damagebonus type="AbstractSkirmisher">0.7500000</damagebonus>
+    </protoaction>
+  </unit>
+  <unit name="deNatRoyalMusketeer">
+    <sharedselectionunittypes>
+      <unittype>deNatMercRoyalMusketeer</unittype>
+      <unittype>zpNatRoyalMusketeer</unittype>
+    </sharedselectionunittypes>
+  </unit>
+  <unit name="deNatMercRoyalMusketeer">
+    <sharedselectionunittypes>
+      <unittype>deNatRoyalMusketeer</unittype>
+      <unittype>zpNatRoyalMusketeer</unittype>
+    </sharedselectionunittypes>
+  </unit>
+  <unit id="20522" name="zpNatRoyalDragoon">
+    <dbid>20522</dbid>
+    <displaynameid>122075</displaynameid>
+    <editornameid>301939</editornameid>
+    <populationcount>0</populationcount>
+    <subciv>SPCBourbon</subciv>
+    <obstructionradiusx>0.7900</obstructionradiusx>
+    <obstructionradiusz>0.7900</obstructionradiusz>
+    <formationcategory>Mobile</formationcategory>
+    <maxvelocity>7.000</maxvelocity>
+    <maxrunvelocity>9.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\europeans\royal_dragoon\royal_dragoon_horse.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>cav</physicsinfo>
+    <icon>resources\art\units\natives\europeans\royal_dragoon_icon.png</icon>
+    <portraiticon>resources\art\units\natives\europeans\royal_dragoon_portrait.png</portraiticon>
+    <rollovertextid>122098</rollovertextid>
+    <shortrollovertextid>43880</shortrollovertextid>
+    <initialhitpoints>190.0000</initialhitpoints>
+    <maxhitpoints>190.0000</maxhitpoints>
+    <los>20.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>40.0000</trainpoints>
+    <buildlimit>10</buildlimit>
+    <bounty>20.0000</bounty>
+    <buildbounty>20.0000</buildbounty>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <allowedage>2</allowedage>
+    <armor type="Ranged" value="0.2000">
+    </armor>
+    <sharedselectionunittypes>
+      <unittype>deNatMercRoyalDragoon</unittype>
+      <unittype>deNatRoyalDragoon</unittype>
+    </sharedselectionunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractCavalry</unittype>
+    <unittype>AbstractLightCavalry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractGunpowderCavalry</unittype>
+    <unittype>AbstractRangedCavalry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <flag>DoNotDamageTrees</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>royaldragoon.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>6.500000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>1.500000</rof>
+      <maxrange>6.000000</maxrange>
+    </protoaction>
+    <protoaction>
+      <name>DefendRangedAttack</name>
+      <damage>18.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>2.000000</minrange>
+      <maxrange>16.000000</maxrange>
+      <rof>2.50000</rof>
+      <damagebonus type="AbstractHeavyCavalry">2.500000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">1.9000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <targetlock>1</targetlock>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>22.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractHeavyCavalry">1.34000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">1.20000</damagebonus>
+      <damagebonus type="AbstractArtillery">1.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>GuardianAttack</name>
+      <damage>22.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>TrampleHandAttack</name>
+      <damage>14.666667</damage>
+      <damagetype>Hand</damagetype>
+      <rof>2.000000</rof>
+      <damagecap>58.666667</damagecap>
+      <damagearea>3.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractHeavyCavalry">1.34000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">1.20000</damagebonus>
+      <damagebonus type="AbstractArtillery">1.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>StaggerRangedAttack</name>
+      <damage>17.500000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>2.000000</minrange>
+      <maxrange>16.000000</maxrange>
+      <rof>2.50000</rof>
+      <damagebonus type="AbstractHeavyCavalry">2.500000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">1.9000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <targetlock>1</targetlock>
+    </protoaction>
+    <protoaction>
+      <name>GuardianRangedAttack</name>
+      <damage>17.500000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>2.000000</minrange>
+      <maxrange>15.000000</maxrange>
+      <rof>2.50000</rof>
+    </protoaction>
+    <protoaction>
+      <name>TuckTuckTuckAttack</name>
+      <damage>5.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagecap>10.000000</damagecap>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="Tree">0.000000</damagebonus>
+      <damagebonus type="HuntedResource">0.000000</damagebonus>
+      <damagebonus type="Building">0.25000</damagebonus>
+      <damagebonus type="AbstractHeavyInfantry">0.7500</damagebonus>
+      <damagebonus type="AbstractLightCavalry">0.7500</damagebonus>
+    </protoaction>
+  </unit>
+  <unit name="deNatRoyalDragoon">
+    <sharedselectionunittypes>
+      <unittype>deNatMercRoyalDragoon</unittype>
+      <unittype>zpNatRoyalDragoon</unittype>
+    </sharedselectionunittypes>
+  </unit>
+  <unit name="deNatMercRoyalDragoon">
+    <sharedselectionunittypes>
+      <unittype>deNatRoyalDragoon</unittype>
+      <unittype>zpNatRoyalDragoon</unittype>
+    </sharedselectionunittypes>
+  </unit>
+  <unit id="20523" name="zpNatRoyalHorsemanBourbonProxy">
+    <dbid>20523</dbid>
+    <displaynameid>122080</displaynameid>
+    <editornameid>301940</editornameid>
+    <subciv>SPCBourbon</subciv>
+    <populationcount>4</populationcount>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>4.5000</maxvelocity>
+    <maxrunvelocity>6.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\asians\chinese\chu_ko_nu\chu_ko_nu.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\mercenaries\royal_horseman\royal_horseman_icon.png</icon>
+    <portraiticon>resources\art\units\mercenaries\royal_horseman\royal_horseman_portrait.png</portraiticon>
+    <rollovertextid>122082</rollovertextid>
+    <shortrollovertextid>62966</shortrollovertextid>
+    <initialhitpoints>750.0000</initialhitpoints>
+    <maxhitpoints>750.0000</maxhitpoints>
+    <los>16.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>55.0000</trainpoints>
+    <bounty>40.0000</bounty>
+    <buildbounty>40.0000</buildbounty>
+    <cost resourcetype="Gold">400.0000</cost>
+    <allowedage>3</allowedage>
+    <armor type="Hand" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>Mercenary</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>AbstractBannerArmy</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <flag>ForceBatchTrain</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>musketBayonet.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>32.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>DefendRangedAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>32.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>StaggerHandAttack</name>
+      <damage>32.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>StaggerRangedAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>VolleyHandAttack</name>
+      <damage>32.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>VolleyRangedAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20524" name="zpSocketSPCBourbon">
+    <dbid>20524</dbid>
+    <displaynameid>122142</displaynameid>
+    <editornameid>301941</editornameid>
+    <subciv>SPCBourbon</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.0286</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildEuropean</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\europe_outpost_socket.xml</animfile>
+    <minimapicon>ui\minimap\royal_house</minimapicon>
+    <capturedminimapicon>ui\minimap\royal_house_c</capturedminimapicon>
+    <portraiticon>resources\art\buildings\native_settlement\native_site_bourbon_icon_portrait.png</portraiticon>
+    <rollovertextid>122400</rollovertextid>
+    <shortrollovertextid>61104</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>9.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>FlattenGround</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
   </unit>
 
 
