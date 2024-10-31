@@ -1929,7 +1929,7 @@
       <string _locid="301928">Can't be built in the middle of the street.</string>
       <string _locid="301929">Barricade</string>
       <string _locid="301930">ZP Paris Bastion</string>
-      <string _locid="301931">ZP Paris Convertable</string>
+      <string _locid="301931">ZP Paris Bastion Convertable</string>
       <string _locid="301932">Paris Underground</string>
       <string _locid="301933">Reveals all city resource buildings and Bastions.</string>
       <string _locid="301934">Les barricades</string>
@@ -1953,6 +1953,13 @@
       <string _locid="301952">Allows you to construct a Bourbon summmer palace in the countryside. Increases Bourbon unit build limit.</string>
       <string _locid="301953">Bourbon Palace, can train native units and provides you with native improvements.</string>
       <string _locid="301954">Bourbon Palace</string>
+      <string _locid="301955">Military Camp</string>
+      <string _locid="301956">ZP Military Camp</string>
+      <string _locid="301957">Night Watch</string>
+      <string _locid="301958">Allows Royal Musketeers to build Military camps right in the city.</string>
+      <string _locid="301959">Allies of the revolution</string>
+      <string _locid="301960">Galeries Lafayette</string>
+      <string _locid="301961">All Paris city resource buildings work faster by 10%</string>
 
 
       <!-- ======================================== -->

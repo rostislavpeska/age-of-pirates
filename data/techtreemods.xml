@@ -234,6 +234,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPirates</effect>
     </effects>
@@ -289,6 +292,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnJapanese</effect>
     </effects>
@@ -344,6 +350,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnChinese</effect>
     </effects>
@@ -399,6 +408,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnIndian</effect>
     </effects>
@@ -2485,6 +2497,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMaltese</effect>     
     </effects>
@@ -3245,6 +3260,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokou</effect>
     </effects>
@@ -5862,6 +5880,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
@@ -6465,6 +6486,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffJewish</effect>
     </effects>
@@ -6664,6 +6688,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
 
       <effect type="TechStatus" status="active">zpBigButtonResearchDone</effect>
@@ -7014,6 +7041,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientists</effect>
     </effects>
@@ -9133,6 +9163,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffVenice</effect>
     </effects>
@@ -10578,6 +10611,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodox</effect>
     </effects>
@@ -10878,6 +10914,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffXMass</effect>
     </effects>
@@ -11319,6 +11358,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientistsLand</effect>
     </effects>
@@ -11926,6 +11968,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientistsLand</effect>
     </effects>
@@ -12301,6 +12346,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnKhmer</effect>
     </effects>
@@ -13716,6 +13764,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPiratesAustralia</effect>
     </effects>
@@ -13961,6 +14012,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokouSouth</effect>
     </effects>
@@ -14121,6 +14175,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPiratesMedi</effect>
     </effects>
@@ -15181,6 +15238,9 @@
       <effect type="TechStatus" status="obtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="obtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="obtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPenalColony</effect>
     </effects>
@@ -16525,6 +16585,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
@@ -16582,6 +16645,8 @@
       <effect type="TechStatus" status="obtainable">zpParisUnderground</effect>
       <effect type="TechStatus" status="obtainable">zpSansculotteBrricades</effect>
       <effect type="TechStatus" status="obtainable">zpSansculotteBastions</effect>
+      <effect type="TechStatus" status="obtainable">zpLafayetteEmbassy</effect>
+      <effect type="TechStatus" status="obtainable">zpGalerieLafayette</effect>
     </effects>
   </tech>
   <tech name="zpVeteranSansculottes" type="Normal">
@@ -16789,7 +16854,12 @@
       <effect type="CommandRemove" tech="zpSansculotteRevolution">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-
+      <effect type="CommandAdd" tech="zpGalerieLafayette" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpLafayetteEmbassy" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
       <effect type="TechStatus" status="active">zpRevolutionFrance</effect>
     </effects>
   </tech>
@@ -17564,6 +17634,7 @@
       <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyBourbon</effect>
       <effect type="TechStatus" status="obtainable">zpBourbonExpansion</effect>
       <effect type="TechStatus" status="obtainable">zpNatChateauRoyal</effect>
+      <effect type="TechStatus" status="obtainable">zpNatNightWatch</effect>
       <effect type="Data" amount="1.00" subtype="GrantsPowerDuration" protopower="zpNatPowerRoyalMarch" relativity="Assign">
         <target type="Player">
         </target>
@@ -17826,8 +17897,11 @@
     </prereqs>
     <flag>NativeDance</flag>
     <effects>
-      <effect type="CommandAdd" tech="" page="2" column="5">
+      <effect type="CommandAdd" tech="zpNatNightWatch" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatNightWatch" page="2" column="5">
+        <target type="ProtoUnit">zpBourbonSummerPalace</target>
       </effect>
       <effect type="CommandAdd" tech="zpNatChateauRoyal" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
@@ -17881,6 +17955,9 @@
     <rollovertextid>301952</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+		</prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpBourbonSummerPalaceWagon" relativity="Absolute">
         <target type="Player">
@@ -17900,7 +17977,148 @@
       </effect>
     </effects>
   </tech>
-  
+  <tech name="zpNatNightWatch" type="Normal">
+    <dbid>40792</dbid>
+    <displaynameid>301957</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\nightwatch.png</icon>
+    <rollovertextid>301958</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMilitaryCamp</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpLafayetteEmbassy" type="Normal">
+    <dbid>40793</dbid>
+    <displaynameid>301959</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\jewish_american_embassy_tech.png</icon>
+    <rollovertextid>301405</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpAmericanEmbassyWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpAmericanEmbassyShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpGalerieLafayette" type="Normal">
+    <dbid>40794</dbid>
+    <displaynameid>301960</displaynameid>
+    <cost resourcetype="Food">300.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\galeries_lafayette.png</icon>
+    <rollovertextid>301961</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpGalerieLafayetteShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpGalerieLafayetteShadow" type="Normal">
+    <dbid>40795</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="Autogather" amount="1.10" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCNotreDame</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.10" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.10" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.10" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.10" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.10" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.10" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXPTeam" amount="1.10" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.10" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCNationalBank</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.10" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCTownMill</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.10" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCGoldSmelter</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.10" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCDestilery</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.10" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCForester</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.10" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCDemolisher</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.10" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.10" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="1.10" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXP" amount="1.10" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAmericanEmbassyShadow" type="Normal">
+    <dbid>40796</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAmericanEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConRegular</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConUSCavalry</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatConAmericanCompany</effect>
+      <effect type="TechStatus" status="obtainable">zpNatConAmericanForce</effect>
+      <effect type="TechStatus" status="obtainable">zpNatConAmericanArmy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatConAmericanArmyBig</effect>
+      <effect type="TechStatus" status="obtainable">zpAmericanExpeditionaryFleet</effect>
+    </effects>
+  </tech>
   
 
 

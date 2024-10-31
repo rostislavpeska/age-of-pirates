@@ -200,6 +200,9 @@
   <zpbourbonsummerpalace>
     <ability>zpNatPowerRoyalMarch<activetimecooldown>true</activetimecooldown><rof>275.0</rof><castonself>true</castonself></ability>
   </zpbourbonsummerpalace>
+  <zpnatroyalmusketeer>
+    <ability>deChargeAbilityChargedPistol<tech>DERoyalMusketeerPistolCharge</tech><bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatroyalmusketeer>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
