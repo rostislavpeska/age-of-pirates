@@ -1928,7 +1928,14 @@
       <string _locid="301927">ZP REV Sansculotte</string>
       <string _locid="301928">Can't be built in the middle of the street.</string>
       <string _locid="301929">Barricade</string>
-
+      <string _locid="301930">ZP Paris Bastion</string>
+      <string _locid="301931">ZP Paris Convertable</string>
+      <string _locid="301932">Paris Underground</string>
+      <string _locid="301933">Reveals all city resource buildings and Bastions.</string>
+      <string _locid="301934">Les barricades</string>
+      <string _locid="301935">Allows Sansculottes and revolutionaries to construct barricades to prevent enemy units to pass through the streets.</string>
+      <string _locid="301936">Café Procope</string>
+      <string _locid="301937">Allows you to train native Revolutionaries and Sansculottes from all Bastions in the city.</string>
 
 
       <!-- ======================================== -->

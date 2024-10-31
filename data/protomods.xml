@@ -929,6 +929,9 @@
     <tech row="0" page="1" column="1">zpVeteranSansculottes</tech>
     <tech row="0" page="1" column="1">zpGuardSansculottes</tech>
     <tech row="0" page="1" column="1">zpSansculotteRevolution</tech>
+    <tech row="0" page="2" column="1">zpParisUnderground</tech>
+    <tech row="0" page="2" column="2">zpSansculotteBrricades</tech>
+    <tech row="0" page="2" column="3">zpSansculotteBastions</tech>
 
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia1</tech>
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia2</tech>
@@ -35430,6 +35433,7 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractChurch</unittype>
     <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
     <train row="0" page="0" column="0">MercElmeti</train>
     <train row="0" page="0" column="1">MercSwissPikeman</train>
@@ -35520,6 +35524,7 @@
     <unittype>AbstractFindOtherEconomicBuilding</unittype>
     <unittype>AbstractFindOtherMilitaryBuilding</unittype>
     <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
     <flag>VisibleUnderFog</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -35630,6 +35635,7 @@
     <unittype>Building</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
     <flag>VisibleUnderFog</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -35722,6 +35728,7 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractBank</unittype>
     <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -35800,6 +35807,7 @@
     <unittype>Building</unittype>
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
     <flag>ColorTransformNonGaia</flag>
     <flag>UnlimitedSupply</flag>
     <flag>CollidesWithProjectiles</flag>
@@ -35878,6 +35886,7 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -35961,6 +35970,7 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -36043,6 +36053,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -36126,6 +36137,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -36214,6 +36226,7 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>Resource</unittype>
     <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -38225,6 +38238,12 @@
       <maxrange>12.000000</maxrange>
       <rof>4.000000</rof>
     </protoaction>
+    <protoaction>
+      <name>Build</name>
+      <maxrange>1.0</maxrange>
+      <active>1</active>
+      <rate type="Building">1.0</rate>
+    </protoaction>
   </unit>
   <unit id="20517" name="zpNatMercRevolutionary">
     <dbid>20517</dbid>
@@ -38390,6 +38409,12 @@
       <damagetype>Siege</damagetype>
       <maxrange>12.000000</maxrange>
       <rof>4.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>Build</name>
+      <maxrange>1.0</maxrange>
+      <active>1</active>
+      <rate type="Building">1.0</rate>
     </protoaction>
   </unit>
   <unit id="20518" name="zpCoureurSansculotteStandard">
@@ -38753,11 +38778,222 @@
   <unit name="SPCPathBlock3">
     <unittype>AbstractCityManison</unittype>
   </unit>
-
+  <unit id="20519" name="zpParisCitadel">
+    <dbid>20519</dbid>
+    <displaynameid>300918</displaynameid>
+    <editornameid>301930</editornameid>
+    <obstructionradiusx>2.5000</obstructionradiusx>
+    <obstructionradiusz>2.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\mountain_citadel\mountain_citadel.xml</animfile>
+    <deadreplacement>BuildingRubble2x2</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildingsmall.xml</placementfile>
+    <icon>resources\art\buildings\bastion_icon.png</icon>
+    <portraiticon>resources\art\buildings\bastion_portrait.png</portraiticon>
+    <legacyhotkeycontext>BlockhouseAccel</legacyhotkeycontext>
+    <rollovertextid>26306</rollovertextid>
+    <shortrollovertextid>26305</shortrollovertextid>
+    <initialhitpoints>3000.0000</initialhitpoints>
+    <maxhitpoints>3000.0000</maxhitpoints>
+    <los>32.0000</los>
+    <projectileprotounit>Arrow</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <buildpoints>50.0000</buildpoints>
+    <freebuildpoints>150.0000</freebuildpoints>
+    <buildlimit>5</buildlimit>
+    <bounty>70.0000</bounty>
+    <buildbounty>50.0000</buildbounty>
+    <cost resourcetype="Wood">300.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <maxcontained>20</maxcontained>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>4</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractFort</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractOutpost</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>AbstractCallMinutemen</unittype>
+    <unittype>HCGatherPointPri1</unittype>
+    <unittype>AbstractDefensiveBuilding</unittype>
+    <tech row="0" page="1" column="0">zpCitadelCannons</tech>
+    <flag>EnterHotkeyContext</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>DisplayRange</flag>
+    <flag>HideGarrisonFlag</flag>
+    <flag>AllowPlacementOnIce</flag>
+    <notcontain>AbstractMonk</notcontain>
+    <notcontain>ExcludeFromRansom</notcontain>
+    <notcontain>AbstractFishingBoat</notcontain>
+    <contain>AbstractVillager</contain>
+    <contain>deHomesteadWagon</contain>
+    <contain>AbstractHealer</contain>
+    <contain>ypDaimyoRegicide</contain>
+    <command page="1" column="1">SetBuildingAsHomeCityGatherPointEconomic</command>
+    <command page="1" column="2">SetBuildingAsHomeCityGatherPointMilitary</command>
+    <command page="10" column="7">Delete</command>
+    <command>CancelNativeDance</command>
+    <command>StartNativeDance</command>
+    <command page="1" column="3">deUSLevy</command>
+    <command page="1" column="3">deUSConscription</command>
+    <command page="1" column="3">deMXOutpostLevy</command>
+    <command page="1" column="4">deImmigrantsSpanishLevy</command>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="2">SetGatherPointEconomy</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <tactics>combatBuilding.tactics</tactics>
+     <protoaction>
+      <name>AntiShipAttack</name>
+      <damage>100.000000</damage>
+      <damagetype>Siege</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>40.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>CannonAttack</name>
+      <damage>60.000000</damage>
+      <damagetype>Siege</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>24.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>120.000000</damagecap>
+      <damagebonus type="AbstractVillager">0.250000</damagebonus>
+      <damagearea>3.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractCavalry">1.500000</damagebonus>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.300000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>45.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>24.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractVillager">0.250000</damagebonus>
+      <damagebonus type="AbstractCavalry">1.500000</damagebonus>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.300000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>WignacourtAuraRange</name>
+      <damage>0.000001</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>99.000000</minrange>
+      <maxrange>36.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+  </unit>
+  <unit id="20520" name="zpParisCitadelGaia">
+    <dbid>20520</dbid>
+    <displaynameid>300918</displaynameid>
+    <editornameid>301931</editornameid>
+    <obstructionradiusx>2.5000</obstructionradiusx>
+    <obstructionradiusz>2.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\mountain_citadel\mountain_citadel.xml</animfile>
+    <deadreplacement>BuildingRubble2x2</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildingsmall.xml</placementfile>
+    <icon>resources\art\buildings\bastion_icon.png</icon>
+    <portraiticon>resources\art\buildings\bastion_portrait.png</portraiticon>
+    <legacyhotkeycontext>BlockhouseAccel</legacyhotkeycontext>
+    <rollovertextid>26306</rollovertextid>
+    <shortrollovertextid>26305</shortrollovertextid>
+    <initialhitpoints>3000.0000</initialhitpoints>
+    <maxhitpoints>3000.0000</maxhitpoints>
+    <los>32.0000</los>
+    <projectileprotounit>Arrow</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <buildpoints>50.0000</buildpoints>
+    <freebuildpoints>150.0000</freebuildpoints>
+    <buildlimit>5</buildlimit>
+    <bounty>70.0000</bounty>
+    <buildbounty>50.0000</buildbounty>
+    <cost resourcetype="Wood">300.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <maxcontained>20</maxcontained>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>AbstractWall</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>wallBuild</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <tactics>zpautoconvert.tactics</tactics>
+  </unit>
 
 
   <!--BELONGS TO PARIS MAPMODS-->
-  <!--<unit name="WallConnector">
+  <unit name="WallConnector">
     <displaynameid>301929</displaynameid>
     <initialhitpoints>600.0000</initialhitpoints>
     <maxhitpoints>600.0000</maxhitpoints>
@@ -38936,7 +39172,7 @@
   <unit name="deCommandery">
     <placementfile>buildinglarge_city.xml</placementfile>
   </unit>
-  -->
+
 
   
 
