@@ -1960,7 +1960,12 @@
       <string _locid="301959">Allies of the revolution</string>
       <string _locid="301960">Galeries Lafayette</string>
       <string _locid="301961">All Paris city resource buildings work faster by 10%</string>
-
+      <string _locid="301962">Bastille</string>
+      <string _locid="301963">ZP Bastille</string>
+      <string _locid="301964">Royal Court</string>
+      <string _locid="301965">ZP Royal Court</string>
+      <string _locid="301966">City Hall</string>
+      <string _locid="301967">ZP City Hall</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+  <definebone>bone_amFlg</definebone>
+  <attachment>tall flag<component>flag<assetreference type="ClothFlag"><flag><blending>alphatest_color</blending><specialtexture></specialtexture><width>1.50</width><height>1.0</height></flag></assetreference></component><anim>Idle<component>flag</component></anim></attachment>
+	<component>
+		ModelComp
+    <assetreference type="GrannyModel">
+      <file>buildings\spc\koth\townhall_Model</file>
+    </assetreference>
+    <attach a="tall flag" frombone="ATTACHPOINT" tobone="bone_amFlg" syncanims="0"></attach>
+    <decal>
+      <effecttype>bump</effecttype>
+      <texture>buildings\state_capitol\textures\state_capitol_ground</texture>
+      <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+      <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+      <width>18.25</width>
+      <height>18.25</height>
+    </decal>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

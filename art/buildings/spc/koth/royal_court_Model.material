@@ -1,0 +1,50 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_emissive_advanced">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\american\american_academy\textures\american_academy_02_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\american\american_academy\textures\american_academy_02_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\american\american_academy\textures\american_academy_02_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\american\american_academy\textures\american_academy_02_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\american\american_academy\textures\american_academy_02_matB_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\american\american_academy\textures\american_academy_02_matB_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\american\american_academy\textures\american_academy_02_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\american\american_academy\textures\american_academy_02_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\american\american_academy\textures\american_academy_02_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\american\american_academy\textures\american_academy_02_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\american\american_academy\textures\american_academy_02_matB_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\american\american_academy\textures\american_academy_02_matB_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

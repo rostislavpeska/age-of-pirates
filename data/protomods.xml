@@ -39930,6 +39930,213 @@
     <command page="10" column="8">CancelAllQueued</command>
     <tactics>barracks.tactics</tactics>
   </unit>
+  <unit id="20528" name="zpBastille">
+    <dbid>20528</dbid>
+    <displaynameid>301962</displaynameid>
+    <editornameid>301963</editornameid>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>6.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\koth\koth.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\fort\fort_icon.png</icon>
+    <minimapicon>ui\minimap\fort_star_16x16</minimapicon>
+    <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
+    <rollovertextid>64127</rollovertextid>
+    <shortrollovertextid>64126</shortrollovertextid>
+    <initialhitpoints>6500.0000</initialhitpoints>
+    <maxhitpoints>6500.0000</maxhitpoints>
+    <los>38.0000</los>
+    <bounty>240.0000</bounty>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>AbstractTownCenter</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
+    <unittype>AbstractFindFort</unittype>
+    <flag>Invulnerable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>StartingColonyBuilding</flag>
+    <flag>ColonyPlacementCenter</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>Tracked</flag>
+    <flag>NotDeleteable</flag>
+    <tactics>ypkingshill.tactics</tactics>
+  </unit>
+  <unit id="20529" name="zpRoyalCourt">
+    <dbid>20529</dbid>
+    <displaynameid>301964</displaynameid>
+    <editornameid>301965</editornameid>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>6.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\koth\royal_court_Model.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\fort\fort_icon.png</icon>
+    <minimapicon>ui\minimap\fort_star_16x16</minimapicon>
+    <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
+    <rollovertextid>64127</rollovertextid>
+    <shortrollovertextid>64126</shortrollovertextid>
+    <initialhitpoints>6500.0000</initialhitpoints>
+    <maxhitpoints>6500.0000</maxhitpoints>
+    <los>38.0000</los>
+    <bounty>240.0000</bounty>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>AbstractTownCenter</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
+    <unittype>AbstractFindFort</unittype>
+    <flag>Invulnerable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>StartingColonyBuilding</flag>
+    <flag>ColonyPlacementCenter</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>Tracked</flag>
+    <flag>NotDeleteable</flag>
+    <tactics>ypkingshill.tactics</tactics>
+  </unit>
+  <unit id="20530" name="zpCityHall">
+    <dbid>20530</dbid>
+    <displaynameid>301966</displaynameid>
+    <editornameid>301967</editornameid>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>6.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\koth\townhall_Model.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\fort\fort_icon.png</icon>
+    <minimapicon>ui\minimap\fort_star_16x16</minimapicon>
+    <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
+    <rollovertextid>64127</rollovertextid>
+    <shortrollovertextid>64126</shortrollovertextid>
+    <initialhitpoints>6500.0000</initialhitpoints>
+    <maxhitpoints>6500.0000</maxhitpoints>
+    <los>38.0000</los>
+    <bounty>240.0000</bounty>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>AbstractTownCenter</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
+    <unittype>AbstractFindFort</unittype>
+    <flag>Invulnerable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>StartingColonyBuilding</flag>
+    <flag>ColonyPlacementCenter</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>Tracked</flag>
+    <flag>NotDeleteable</flag>
+    <tactics>ypkingshill.tactics</tactics>
+  </unit>
 
 
   <!--BELONGS TO PARIS MAPMODS-->
@@ -40114,381 +40321,11 @@
   </unit>
 
 
-  
+<!--TEST--> 
 
-  <!--<unit id="" name="zpBarricade1">
-    <dbid></dbid>
-    <displaynameid>301904</displaynameid>
-    <editornameid>301903</editornameid>
-    <obstructionradiusx>1.0000</obstructionradiusx>
-    <obstructionradiusz>1.0000</obstructionradiusz>
-    <maxvelocity>0.0000</maxvelocity>
-    <movementtype>land</movementtype>
-    <animfile>buildings\wall\wall_1x1.xml</animfile>
-    <impacttype>Stone</impacttype>
-    <physicsinfo>house</physicsinfo>
-    <placementfile>wall.xml</placementfile>
-    <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
-    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
-    <rollovertextid>24923</rollovertextid>
-    <shortrollovertextid>25741</shortrollovertextid>
-    <initialhitpoints>1000.0000</initialhitpoints>
-    <maxhitpoints>1000.0000</maxhitpoints>
-    <los>1.0000</los>
-    <buildpoints>5.0000</buildpoints>
-    <freebuildpoints>12.0</freebuildpoints>
-    <cost resourcetype="Wood">6.0000</cost>
-    <buildingworkrate>1.0000</buildingworkrate>
-    <allowedage>0</allowedage>
-    <decay delay="0.0000" duration="0.0000">
-    </decay>
-    <armor type="Siege" value="0.0000">
-    </armor>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype>ColonyBuilding</unittype>
-    <unittype>AbstractWall</unittype>
-    <unittype>MilitaryBuilding</unittype>
-    <unittype>BuildingClass</unittype>
-    <tech row="0" page="1" column="0">Bastion</tech>
-    <tech row="0" page="1" column="0">DERedoubts</tech>
-    <tech row="0" page="1" column="0">DECityFortifications</tech>
-    <flag>FlattenGround</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>Doppled</flag>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>Immoveable</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>wallBuild</flag>
-    <flag>NeverShowButton</flag>
-    <flag>UseAlignedObstructionOnMinimap</flag>
-    <flag>NoIdleActions</flag>
-    <flag>TileAlignPlacement</flag>
-    <flag>ColonyBuilding</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>Tracked</flag>
-    <flag>StartEnabled</flag>
-    <command page="10" column="7">Delete</command>
-    <tactics>wall.tactics</tactics>
-  </unit>
-  <unit id="" name="zpBarricade5">
-    <dbid></dbid>
-    <displaynameid>301904</displaynameid>
-    <editornameid>301903</editornameid>
-    <obstructionradiusx>5.0000</obstructionradiusx>
-    <obstructionradiusz>1.0000</obstructionradiusz>
-    <maxvelocity>0.0000</maxvelocity>
-    <movementtype>land</movementtype>
-    <animfile>buildings\wall\wall_1x5.xml</animfile>
-    <impacttype>Stone</impacttype>
-    <physicsinfo>house</physicsinfo>
-    <placementfile>wall.xml</placementfile>
-    <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
-    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
-    <rollovertextid>24926</rollovertextid>
-    <shortrollovertextid>25745</shortrollovertextid>
-    <initialhitpoints>1000.0000</initialhitpoints>
-    <maxhitpoints>1000.0000</maxhitpoints>
-    <los>1.0000</los>
-    <buildpoints>7.0000</buildpoints>
-    <freebuildpoints>13.0</freebuildpoints>
-    <cost resourcetype="Wood">10.0000</cost>
-    <buildingworkrate>1.0000</buildingworkrate>
-    <allowedage>0</allowedage>
-    <decay delay="0.0000" duration="0.0000">
-    </decay>
-    <armor type="Siege" value="0.0000">
-    </armor>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>BuildingClass</unittype>
-    <unittype>MilitaryBuilding</unittype>
-    <unittype>AbstractWall</unittype>
-    <unittype>ColonyBuilding</unittype>
-    <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <tech row="0" page="1" column="0">Bastion</tech>
-    <tech row="0" page="1" column="0">DERedoubts</tech>
-    <tech row="0" page="1" column="0">DECityFortifications</tech>
-    <flag>SelectWithObstruction</flag>
-    <flag>Doppled</flag>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>Immoveable</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>wallBuild</flag>
-    <flag>NeverShowButton</flag>
-    <flag>UseAlignedObstructionOnMinimap</flag>
-    <flag>NoIdleActions</flag>
-    <flag>TileAlignPlacement</flag>
-    <flag>ColonyBuilding</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>FlattenGround</flag>
-    <flag>Tracked</flag>
-    <flag>StartEnabled</flag>
-    <command page="6" column="0">Transform</command>
-    <command page="10" column="7">Delete</command>
-    <tactics>wall.tactics</tactics>
-  </unit>
-  <unit id="" name="zpBarricade2">
-    <dbid></dbid>
-    <displaynameid>301904</displaynameid>
-    <editornameid>301903</editornameid>
-    <obstructionradiusx>2.0000</obstructionradiusx>
-    <obstructionradiusz>1.0000</obstructionradiusz>
-    <maxvelocity>0.0000</maxvelocity>
-    <movementtype>land</movementtype>
-    <animfile>buildings\wall\wall_1x2.xml</animfile>
-    <impacttype>Stone</impacttype>
-    <physicsinfo>house</physicsinfo>
-    <placementfile>wall.xml</placementfile>
-    <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
-    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
-    <rollovertextid>25379</rollovertextid>
-    <shortrollovertextid>25742</shortrollovertextid>
-    <initialhitpoints>1000.0000</initialhitpoints>
-    <maxhitpoints>1000.0000</maxhitpoints>
-    <los>1.0000</los>
-    <buildpoints>7.0000</buildpoints>
-    <freebuildpoints>13.0</freebuildpoints>
-    <cost resourcetype="Wood">10.0000</cost>
-    <buildingworkrate>1.0000</buildingworkrate>
-    <allowedage>0</allowedage>
-    <decay delay="0.0000" duration="0.0000">
-    </decay>
-    <armor type="Siege" value="0.0000">
-    </armor>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype>BuildingClass</unittype>
-    <unittype>MilitaryBuilding</unittype>
-    <unittype>AbstractWall</unittype>
-    <unittype>ColonyBuilding</unittype>
-    <tech row="0" page="1" column="0">Bastion</tech>
-    <tech row="0" page="1" column="0">DERedoubts</tech>
-    <tech row="0" page="1" column="0">DECityFortifications</tech>
-    <flag>FlattenGround</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>Doppled</flag>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>Immoveable</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>wallBuild</flag>
-    <flag>NeverShowButton</flag>
-    <flag>UseAlignedObstructionOnMinimap</flag>
-    <flag>NoIdleActions</flag>
-    <flag>TileAlignPlacement</flag>
-    <flag>ColonyBuilding</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>Tracked</flag>
-    <flag>VisibleUnderFogIfGaia</flag>
-    <flag>StartEnabled</flag>
-    <command page="10" column="7">Delete</command>
-    <tactics>wall.tactics</tactics>
-  </unit>
-  <unit id="" name="zpBarricade3">
-    <dbid></dbid>
-    <displaynameid>301904</displaynameid>
-    <editornameid>301903</editornameid>
-    <obstructionradiusx>3.0000</obstructionradiusx>
-    <obstructionradiusz>1.0000</obstructionradiusz>
-    <maxvelocity>0.0000</maxvelocity>
-    <movementtype>land</movementtype>
-    <animfile>buildings\wall\wall_1x3.xml</animfile>
-    <impacttype>Stone</impacttype>
-    <physicsinfo>house</physicsinfo>
-    <placementfile>wall.xml</placementfile>
-    <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
-    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
-    <rollovertextid>25382</rollovertextid>
-    <shortrollovertextid>25743</shortrollovertextid>
-    <initialhitpoints>1500.0000</initialhitpoints>
-    <maxhitpoints>1500.0000</maxhitpoints>
-    <los>1.0000</los>
-    <buildpoints>5.0000</buildpoints>
-    <freebuildpoints>12.0</freebuildpoints>
-    <cost resourcetype="Wood">5.0000</cost>
-    <buildingworkrate>1.0000</buildingworkrate>
-    <allowedage>0</allowedage>
-    <decay delay="0.0000" duration="0.0000">
-    </decay>
-    <armor type="Siege" value="0.0000">
-    </armor>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>ColonyBuilding</unittype>
-    <unittype>AbstractWall</unittype>
-    <unittype>MilitaryBuilding</unittype>
-    <unittype>BuildingClass</unittype>
-    <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <tech row="0" page="1" column="0">Bastion</tech>
-    <tech row="0" page="1" column="0">DERedoubts</tech>
-    <tech row="0" page="1" column="0">DECityFortifications</tech>
-    <flag>SelectWithObstruction</flag>
-    <flag>Doppled</flag>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>Immoveable</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>wallBuild</flag>
-    <flag>NeverShowButton</flag>
-    <flag>UseAlignedObstructionOnMinimap</flag>
-    <flag>NoIdleActions</flag>
-    <flag>TileAlignPlacement</flag>
-    <flag>ColonyBuilding</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>FlattenGround</flag>
-    <flag>Tracked</flag>
-    <flag>StartEnabled</flag>
-    <command page="10" column="7">Delete</command>
-  </unit>
-  <unit id="" name="zpBarricade4">
-    <dbid></dbid>
-    <displaynameid>301904</displaynameid>
-    <editornameid>301903</editornameid>
-    <obstructionradiusx>4.0000</obstructionradiusx>
-    <obstructionradiusz>1.0000</obstructionradiusz>
-    <maxvelocity>0.0000</maxvelocity>
-    <movementtype>land</movementtype>
-    <animfile>buildings\wall\wall_1x4.xml</animfile>
-    <impacttype>Stone</impacttype>
-    <physicsinfo>house</physicsinfo>
-    <placementfile>wall.xml</placementfile>
-    <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
-    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
-    <rollovertextid>25385</rollovertextid>
-    <shortrollovertextid>25744</shortrollovertextid>
-    <initialhitpoints>1500.0000</initialhitpoints>
-    <maxhitpoints>1500.0000</maxhitpoints>
-    <los>1.0000</los>
-    <buildpoints>5.0000</buildpoints>
-    <freebuildpoints>12.0</freebuildpoints>
-    <cost resourcetype="Wood">5.0000</cost>
-    <buildingworkrate>1.0000</buildingworkrate>
-    <allowedage>0</allowedage>
-    <decay delay="0.0000" duration="0.0000">
-    </decay>
-    <armor type="Siege" value="0.0000">
-    </armor>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype>BuildingClass</unittype>
-    <unittype>MilitaryBuilding</unittype>
-    <unittype>AbstractWall</unittype>
-    <unittype>ColonyBuilding</unittype>
-    <tech row="0" page="1" column="0">Bastion</tech>
-    <tech row="0" page="1" column="0">DERedoubts</tech>
-    <tech row="0" page="1" column="0">DECityFortifications</tech>
-    <flag>FlattenGround</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>Doppled</flag>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>Immoveable</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>wallBuild</flag>
-    <flag>NeverShowButton</flag>
-    <flag>UseAlignedObstructionOnMinimap</flag>
-    <flag>NoIdleActions</flag>
-    <flag>TileAlignPlacement</flag>
-    <flag>ColonyBuilding</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>Tracked</flag>
-    <flag>StartEnabled</flag>
-    <command page="6" column="0">Transform</command>
-    <command page="10" column="7">Delete</command>
-  </unit>
-  <unit id="" name="zpBarricade0">
-    <dbid></dbid>
-    <displaynameid>301904</displaynameid>
-    <editornameid>301903</editornameid>
-    <obstructionradiusx>1.0000</obstructionradiusx>
-    <obstructionradiusz>1.0000</obstructionradiusz>
-    <maxvelocity>0.0000</maxvelocity>
-    <movementtype>land</movementtype>
-    <animfile>buildings\wall\wall_tower.xml</animfile>
-    <impacttype>Stone</impacttype>
-    <physicsinfo>house</physicsinfo>
-    <placementfile>wall.xml</placementfile>
-    <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
-    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
-    <rollovertextid>34893</rollovertextid>
-    <shortrollovertextid>34892</shortrollovertextid>
-    <initialhitpoints>1000.0000</initialhitpoints>
-    <maxhitpoints>1000.0000</maxhitpoints>
-    <los>2.0000</los>
-    <projectileprotounit>Arrow</projectileprotounit>
-    <buildpoints>1.0000</buildpoints>
-    <freebuildpoints>5.0</freebuildpoints>
-    <cost resourcetype="Wood">10.0000</cost>
-    <cost resourcetype="Gold">0.0000</cost>
-    <buildingworkrate>1.0000</buildingworkrate>
-    <allowedage>0</allowedage>
-    <decay delay="0.0000" duration="0.0000">
-    </decay>
-    <armor type="Siege" value="0.0000">
-    </armor>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>BuildingClass</unittype>
-    <unittype>AbstractWall</unittype>
-    <unittype>MilitaryBuilding</unittype>
-    <unittype>ColonyBuilding</unittype>
-    <unittype>Building</unittype>
-    <unittype>CountsTowardMilitaryScore</unittype>
-    <unittype>HasBountyValue</unittype>
-    <tech row="0" page="1" column="0">Bastion</tech>
-    <tech row="0" page="1" column="0">DERedoubts</tech>
-    <tech row="0" page="1" column="0">DECityFortifications</tech>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>StartsAtFullEfficiency</flag>
-    <flag>Immoveable</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>Doppled</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>PaintTextureWhenPlacing</flag>
-    <flag>FlattenGround</flag>
-    <flag>ColonyBuilding</flag>
-    <flag>wallBuild</flag>
-    <flag>Tracked</flag>
-    <flag>StartEnabled</flag>
-    <command page="10" column="7">Delete</command>
-    <tactics>wall.tactics</tactics>
+  <!--<unit name="ypKingsHill">
+    <animfile>buildings\spc\koth\koth.xml</animfile>
+    <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
   </unit>-->
 
 
@@ -42087,7 +41924,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\bridge\brdge_face.xml</animfile>
+    <animfile>buildings\spc\koth\townhall_Model.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>
@@ -42147,7 +41984,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\woku\destilery.xml</animfile>
+    <animfile>buildings\spc\koth\royal_court_Model.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>
