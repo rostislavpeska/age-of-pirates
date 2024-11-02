@@ -11,7 +11,6 @@
     <attach a="tall flag" frombone="ATTACHPOINT" tobone="bone_amFlg" syncanims="0"></attach>
     <decal>
       <effecttype>bump</effecttype>
-      <texture>buildings\state_capitol\textures\state_capitol_ground</texture>
       <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
       <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
       <width>18.25</width>

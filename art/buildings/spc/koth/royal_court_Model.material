@@ -3,11 +3,11 @@
     <materialdef name="default_emissive_advanced">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="homecity\american\american_academy\textures\american_academy_02_matA_BaseColor">
+      <texture name="BaseColor" override="homecity\revolution\st_louis_academy_v1\textures\st_louis_academy_v1_06_matA_BaseColor">
       </texture>
-      <texture name="Normals" override="homecity\american\american_academy\textures\american_academy_02_matA_Normals">
+      <texture name="Normals" override="homecity\revolution\st_louis_academy_v1\textures\st_louis_academy_v1_06_matA_Normals">
       </texture>
-      <texture name="Masks" override="homecity\american\american_academy\textures\american_academy_02_matA_Masks">
+      <texture name="Masks" override="homecity\revolution\st_louis_academy_v1\textures\st_louis_academy_v1_06_matA_Masks">
       </texture>
     </parameters>
   </submaterial>
@@ -15,11 +15,11 @@
     <materialdef name="default">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="homecity\american\american_academy\textures\american_academy_02_matB_BaseColor">
+      <texture name="BaseColor" override="homecity\revolution\st_louis_academy_v1\textures\st_louis_academy_v1_06_matB_BaseColor">
       </texture>
-      <texture name="Normals" override="homecity\american\american_academy\textures\american_academy_02_matB_Normals">
+      <texture name="Normals" override="homecity\revolution\st_louis_academy_v1\textures\st_louis_academy_v1_06_matB_Normals">
       </texture>
-      <texture name="Masks" override="homecity\american\american_academy\textures\american_academy_02_matB_Masks">
+      <texture name="Masks" override="homecity\revolution\st_louis_academy_v1\textures\st_louis_academy_v1_06_matB_Masks">
       </texture>
     </parameters>
   </submaterial>
@@ -27,11 +27,11 @@
     <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="homecity\american\american_academy\textures\american_academy_02_matA_BaseColor">
+      <texture name="BaseColor" override="homecity\revolution\st_louis_academy_v1\textures\st_louis_academy_v1_06_matA_BaseColor">
       </texture>
-      <texture name="Normals" override="homecity\american\american_academy\textures\american_academy_02_matA_Normals">
+      <texture name="Normals" override="homecity\revolution\st_louis_academy_v1\textures\st_louis_academy_v1_06_matA_Normals">
       </texture>
-      <texture name="Masks" override="homecity\american\american_academy\textures\american_academy_02_matA_Masks">
+      <texture name="Masks" override="homecity\revolution\st_louis_academy_v1\textures\st_louis_academy_v1_06_matA_Masks">
       </texture>
     </parameters>
   </submaterial>
@@ -39,11 +39,11 @@
     <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="homecity\american\american_academy\textures\american_academy_02_matB_BaseColor">
+      <texture name="BaseColor" override="homecity\revolution\st_louis_academy_v1\textures\st_louis_academy_v1_06_matB_BaseColor">
       </texture>
-      <texture name="Normals" override="homecity\american\american_academy\textures\american_academy_02_matB_Normals">
+      <texture name="Normals" override="homecity\revolution\st_louis_academy_v1\textures\st_louis_academy_v1_06_matB_Normals">
       </texture>
-      <texture name="Masks" override="homecity\american\american_academy\textures\american_academy_02_matB_Masks">
+      <texture name="Masks" override="homecity\revolution\st_louis_academy_v1\textures\st_louis_academy_v1_06_matB_Masks">
       </texture>
     </parameters>
   </submaterial>
