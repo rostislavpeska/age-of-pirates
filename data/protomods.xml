@@ -17793,6 +17793,7 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractCityManison</unittype>
+    <flag>DoNotShowOnMiniMap</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -35410,7 +35411,7 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\basilica\basilica_icon.png</icon>
-    <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
     <portraiticon>resources\art\buildings\spc\notre_dame.png</portraiticon>
     <rollovertextid>123017</rollovertextid>
     <shortrollovertextid>123016</shortrollovertextid>
@@ -35500,7 +35501,7 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\factory\shared_factory_icon.png</icon>
-    <minimapicon>ui\minimap\minimap_cog</minimapicon>
+    <!--<minimapicon>ui\minimap\minimap_cog</minimapicon>-->
     <portraiticon>resources\art\buildings\factory\shared_factory_portrait.png</portraiticon>
     <rollovertextid>301886</rollovertextid>
     <shortrollovertextid>301887</shortrollovertextid>
@@ -35612,7 +35613,7 @@
     <placementfile>villagebuildingsmall.xml</placementfile>
     <icon>resources\art\buildings\market\market_icon.png</icon>
     <portraiticon>resources\art\buildings\market\market_portrait.png</portraiticon>
-    <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
     <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
     <rollovertextid>301886</rollovertextid>
     <shortrollovertextid>301887</shortrollovertextid>
@@ -35706,7 +35707,7 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\bank\bank_icon.png</icon>
     <portraiticon>resources\art\buildings\bank\bank_portrait.png</portraiticon>
-    <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
     <rollovertextid>301885</rollovertextid>
     <shortrollovertextid>301881</shortrollovertextid>
     <initialhitpoints>3000.0000</initialhitpoints>
@@ -35786,7 +35787,7 @@
     <animfile>buildings\mill\mill_gaia.xml</animfile>
     <physicsinfo>mill</physicsinfo>
     <icon>resources\art\buildings\mill\mill_icon.png</icon>
-    <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
     <portraiticon>resources\art\buildings\mill\mill_portrait.png</portraiticon>
     <civflagoverride>objects\flags\none</civflagoverride>
     <rollovertextid>301891</rollovertextid>
@@ -35865,7 +35866,7 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\spc\gold_smelter.png</icon>
     <portraiticon>resources\art\buildings\spc\gold_smelter.png</portraiticon>
-    <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
     <rollovertextid>301884</rollovertextid>
     <shortrollovertextid>301881</shortrollovertextid>
     <initialhitpoints>2000.0000</initialhitpoints>
@@ -35949,7 +35950,7 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\spc\destilery.png</icon>
     <portraiticon>resources\art\buildings\spc\destilery.png</portraiticon>
-    <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
     <rollovertextid>301883</rollovertextid>
     <shortrollovertextid>301880</shortrollovertextid>
     <initialhitpoints>2000.0000</initialhitpoints>
@@ -36033,7 +36034,7 @@
     <placementfile>buildingsmall.xml</placementfile>
     <icon>resources\art\buildings\spc\forester.png</icon>
     <portraiticon>resources\art\buildings\spc\forester.png</portraiticon>
-    <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
     <rollovertextid>301882</rollovertextid>
     <shortrollovertextid>301879</shortrollovertextid>
     <initialhitpoints>2000.0000</initialhitpoints>
@@ -36117,7 +36118,7 @@
     <placementfile>buildingsmall.xml</placementfile>
     <icon>resources\art\buildings\spc\spc_warehouse.png</icon>
     <portraiticon>resources\art\buildings\spc\spc_warehouse.png</portraiticon>
-    <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
     <rollovertextid>301882</rollovertextid>
     <shortrollovertextid>301879</shortrollovertextid>
     <initialhitpoints>2000.0000</initialhitpoints>
@@ -36199,7 +36200,7 @@
     <physicsinfo>barracks</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\spc\menagerie.png</icon>
-    <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
     <portraiticon>resources\art\buildings\spc\menagerie.png</portraiticon>
     <rollovertextid>301889</rollovertextid>
     <shortrollovertextid>301888</shortrollovertextid>
@@ -36463,6 +36464,7 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
+    <flag>DoNotShowOnMiniMap</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -36964,10 +36966,10 @@
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
     <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
-    <rollovertextid>24926</rollovertextid>
-    <shortrollovertextid>25745</shortrollovertextid>
-    <initialhitpoints>1500.0000</initialhitpoints>
-    <maxhitpoints>1500.0000</maxhitpoints>
+    <rollovertextid>34613</rollovertextid>
+    <shortrollovertextid>34644</shortrollovertextid>
+    <initialhitpoints>4500.0000</initialhitpoints>
+    <maxhitpoints>4500.0000</maxhitpoints>
     <los>1.0000</los>
     <buildpoints>5.0000</buildpoints>
     <cost resourcetype="Wood">5.0000</cost>
@@ -37023,10 +37025,10 @@
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
     <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
-    <rollovertextid>34893</rollovertextid>
-    <shortrollovertextid>34892</shortrollovertextid>
-    <initialhitpoints>1500.0000</initialhitpoints>
-    <maxhitpoints>1500.0000</maxhitpoints>
+    <rollovertextid>34613</rollovertextid>
+    <shortrollovertextid>34644</shortrollovertextid>
+    <initialhitpoints>4500.0000</initialhitpoints>
+    <maxhitpoints>4500.0000</maxhitpoints>
     <los>1.0000</los>
     <projectileprotounit>Arrow</projectileprotounit>
     <buildpoints>2.0000</buildpoints>
@@ -37138,10 +37140,10 @@
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\buildings\outpost\outpost_icon_64x64.png</icon>
     <portraiticon>resources\art\buildings\spc\tower\battery_tower_portrait.png</portraiticon>
-    <rollovertextid>34893</rollovertextid>
-    <shortrollovertextid>34892</shortrollovertextid>
-    <initialhitpoints>1500.0000</initialhitpoints>
-    <maxhitpoints>1500.0000</maxhitpoints>
+    <rollovertextid>26306</rollovertextid>
+    <shortrollovertextid>26305</shortrollovertextid>
+    <initialhitpoints>2000.0000</initialhitpoints>
+    <maxhitpoints>2000.0000</maxhitpoints>
     <los>1.0000</los>
     <projectileprotounit>Arrow</projectileprotounit>
     <buildpoints>2.0000</buildpoints>
@@ -37238,6 +37240,7 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractCityManison</unittype>
+    <flag>DoNotShowOnMiniMap</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -37270,10 +37273,10 @@
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
     <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
-    <rollovertextid>24926</rollovertextid>
-    <shortrollovertextid>25745</shortrollovertextid>
-    <initialhitpoints>1500.0000</initialhitpoints>
-    <maxhitpoints>1500.0000</maxhitpoints>
+    <rollovertextid>34608</rollovertextid>
+    <shortrollovertextid>34643</shortrollovertextid>
+    <initialhitpoints>4500.0000</initialhitpoints>
+    <maxhitpoints>4500.0000</maxhitpoints>
     <los>1.0000</los>
     <buildpoints>5.0000</buildpoints>
     <cost resourcetype="Wood">5.0000</cost>
@@ -39945,7 +39948,7 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\fort\fort_icon.png</icon>
-    <minimapicon>ui\minimap\fort_star_16x16</minimapicon>
+    <minimapicon>ui\minimap\victory_building</minimapicon>
     <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
     <rollovertextid>64127</rollovertextid>
     <shortrollovertextid>64126</shortrollovertextid>
@@ -40014,7 +40017,7 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\fort\fort_icon.png</icon>
-    <minimapicon>ui\minimap\fort_star_16x16</minimapicon>
+    <minimapicon>ui\minimap\victory_building</minimapicon>
     <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
     <rollovertextid>64127</rollovertextid>
     <shortrollovertextid>64126</shortrollovertextid>
@@ -40083,7 +40086,7 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\fort\fort_icon.png</icon>
-    <minimapicon>ui\minimap\fort_star_16x16</minimapicon>
+    <minimapicon>ui\minimap\victory_building</minimapicon>
     <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
     <rollovertextid>64127</rollovertextid>
     <shortrollovertextid>64126</shortrollovertextid>
@@ -40137,7 +40140,530 @@
     <flag>NotDeleteable</flag>
     <tactics>ypkingshill.tactics</tactics>
   </unit>
-
+  <unit id="20531" name="zpSPCFortBarracksProp">
+    <dbid>20531</dbid>
+    <displaynameid>301974</displaynameid>
+    <editornameid>301969</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\fort\spc_fort_wall_barracks.xml</animfile>
+    <minimapsize>1</minimapsize>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\barracks\barracks_icon.png</icon>
+    <portraiticon>resources\art\buildings\barracks\barracks_portraits.png</portraiticon>
+    <rollovertextid>22846</rollovertextid>
+    <shortrollovertextid>25610</shortrollovertextid>
+    <initialhitpoints>4500.0000</initialhitpoints>
+    <maxhitpoints>4500.0000</maxhitpoints>
+    <los>1.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <cost resourcetype="Wood">5.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>AbstractWall</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <flag>SelectWithObstruction</flag>
+    <flag>Doppled</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>wallBuild</flag>
+    <flag>NeverShowButton</flag>
+    <flag>UseAlignedObstructionOnMinimap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>TileAlignPlacement</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>FlattenGround</flag>
+    <flag>Tracked</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>Invulnerable</flag>
+  </unit>
+  <unit id="20532" name="zpSPCFortBarracks">
+    <dbid>20532</dbid>
+    <displaynameid>301974</displaynameid>
+    <editornameid>301971</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\fort\spc_fort_wall_barracks.xml</animfile>
+    <minimapsize>1</minimapsize>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\barracks\barracks_icon.png</icon>
+    <portraiticon>resources\art\buildings\barracks\barracks_portraits.png</portraiticon>
+    <rollovertextid>22846</rollovertextid>
+    <shortrollovertextid>25610</shortrollovertextid>
+    <initialhitpoints>4500.0000</initialhitpoints>
+    <maxhitpoints>4500.0000</maxhitpoints>
+    <los>1.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <cost resourcetype="Wood">5.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>MilitaryProductionBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractBarracks2</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <train row="0" page="0" column="0">Crossbowman</train>
+    <train row="0" page="0" column="0">Longbowman</train>
+    <train row="0" page="0" column="0">dePavisier</train>
+    <train row="0" page="0" column="4">Musketeer</train>
+    <train row="0" page="0" column="4">Janissary</train>
+    <train row="0" page="0" column="5">Cacadore</train>
+    <train row="0" page="0" column="5">Skirmisher</train>
+    <train row="0" page="0" column="5">deBersagliere</train>
+    <train row="0" page="0" column="5">deAzap</train>
+    <train row="0" page="0" column="0">deBarbaryArcher</train>
+    <train row="0" page="0" column="1">deBarbarySpearman</train>
+    <train row="0" page="0" column="2">deBarbarySkirmisher</train>
+    <train row="0" page="0" column="0">deSPCUSRegular</train>
+    <train row="0" page="0" column="1">deSPCUSVolunteer</train>
+    <train row="0" page="0" column="1">deStateMilitia</train>
+    <train row="0" page="0" column="1">Pikeman</train>
+    <train row="0" page="0" column="2">Halberdier</train>
+    <train row="0" page="0" column="2">Rodelero</train>
+    <train row="0" page="0" column="2">Dopplesoldner</train>
+    <train row="0" page="0" column="2">Boneguard</train>
+    <train row="0" page="0" column="2">BoneguardAge2</train>
+    <train row="0" page="0" column="2">deHospitaller</train>
+    <train row="0" page="0" column="4">deCarolean</train>
+    <train row="0" page="0" column="2">deRegular</train>
+    <train row="0" page="0" column="3">deRifleman</train>
+    <train row="0" page="0" column="0">deInsurgente</train>
+    <train row="0" page="0" column="1">deSoldado</train>
+    <train row="0" page="0" column="2">deEmboscador</train>
+    <train row="0" page="0" column="4">deMalteseMusketeer</train>
+    <train row="0" page="0" column="2">Boneguard</train>
+    <train row="0" page="0" column="2">BoneguardAge2</train>
+    <tech row="0" page="1" column="2">ImperialNassauers</tech>
+    <tech row="0" page="1" column="4">ImperialRedcoat</tech>
+    <tech row="0" page="1" column="4">GuardMusketeers</tech>
+    <tech row="0" page="1" column="0">GuardLongbowmen</tech>
+    <tech row="0" page="1" column="2">VeteranDopplesoldners</tech>
+    <tech row="0" page="1" column="4">VeteranJanissaries</tech>
+    <tech row="0" page="1" column="2">VeteranRodeleros</tech>
+    <tech row="0" page="1" column="1">VeteranPikemen</tech>
+    <tech row="0" page="1" column="1">GuardPikemen</tech>
+    <tech row="0" page="1" column="1">ImperialPikemen</tech>
+    <tech row="0" page="1" column="2">GuardHalberdiers</tech>
+    <tech row="0" page="1" column="2">ImperialEspada</tech>
+    <tech row="0" page="1" column="4">VeteranMusketeers</tech>
+    <tech row="0" page="1" column="5">ImperialNeedleGun</tech>
+    <tech row="0" page="1" column="5">GuardSkirmishers</tech>
+    <tech row="0" page="1" column="5">RevImpSkirmishers</tech>
+    <tech row="0" page="1" column="0">VeteranCrossbowmen</tech>
+    <tech row="0" page="1" column="0">GuardCrossbowmen</tech>
+    <tech row="0" page="1" column="0">ImperialCrossbowmen</tech>
+    <tech row="0" page="1" column="0">RGOrdinanceBesteiro</tech>
+    <tech row="0" page="1" column="0">ImperialOrdinanceBesteiro</tech>
+    <tech row="0" page="1" column="0">RevImpCrossbowmen</tech>
+    <tech row="0" page="1" column="0">DEVeteranPavisiers</tech>
+    <tech row="0" page="1" column="0">DEGuardPavisiers</tech>
+    <tech row="0" page="1" column="0">DEImperialPavisiers</tech>
+    <tech row="0" page="1" column="2">RGNassausLinearTactics</tech>
+    <tech row="0" page="1" column="5">GuardCacadores</tech>
+    <tech row="0" page="1" column="5">RGVoltigeur</tech>
+    <tech row="0" page="1" column="2">GuardRodeleros</tech>
+    <tech row="0" page="1" column="1">RGTercio</tech>
+    <tech row="0" page="1" column="1">RGDalkarl</tech>
+    <tech row="0" page="1" column="1">RGOrdinancePikemen</tech>
+    <tech row="0" page="1" column="4">RGRedcoats</tech>
+    <tech row="0" page="1" column="2">ImperialDopplesoldner</tech>
+    <tech row="0" page="1" column="2">ImperialHalberdiers</tech>
+    <tech row="0" page="1" column="4">ImperialJanissaries</tech>
+    <tech row="0" page="1" column="0">ImperialLongbowmen</tech>
+    <tech row="0" page="1" column="5">ImperialSkirmishers</tech>
+    <tech row="0" page="1" column="5">DEImperialBersaglieri</tech>
+    <tech row="0" page="1" column="5">ImperialVoltigeur</tech>
+    <tech row="0" page="1" column="5">RGPrussianNeedleGun</tech>
+    <tech row="0" page="1" column="5">DEVeteranAzaps</tech>
+    <tech row="0" page="1" column="5">DEGuardAzaps</tech>
+    <tech row="0" page="1" column="5">DEImperialAzaps</tech>
+    <tech row="0" page="1" column="6">DEImperialCounterJaegers</tech>
+    <tech row="0" page="1" column="4">GuardJanissaries</tech>
+    <tech row="0" page="1" column="0">VeteranLongbowmen</tech>
+    <tech row="0" page="1" column="2">RGEspadachins</tech>
+    <tech row="0" page="1" column="1">ImperialTercio</tech>
+    <tech row="0" page="1" column="1">ImperialDalkarl</tech>
+    <tech row="0" page="1" column="1">ImperialOrdinancePikemen</tech>
+    <tech row="0" page="1" column="4">RGGuerreiros</tech>
+    <tech row="0" page="1" column="5">ImperialCacadores</tech>
+    <tech row="0" page="1" column="5">RevImpCacadores</tech>
+    <tech row="0" page="1" column="4">ImperialMusketeers</tech>
+    <tech row="0" page="1" column="4">RevImpMusketeers</tech>
+    <tech row="0" page="1" column="2">GuardDopplesoldners</tech>
+    <tech row="0" page="1" column="4">ImperialGuerreiros</tech>
+    <tech row="0" page="1" column="4">VeteranCaroleans</tech>
+    <tech row="0" page="1" column="4">GuardCaroleans</tech>
+    <tech row="0" page="1" column="4">ImperialCaroleans</tech>
+    <tech row="0" page="1" column="0">DEVeteranBarbaryArchers</tech>
+    <tech row="0" page="1" column="1">DEVeteranBarbarySpearmen</tech>
+    <tech row="0" page="1" column="2">DEGuardBarbarySkirmishers</tech>
+    <tech row="0" page="1" column="4">DEVeteranBarbaryCorsairs</tech>
+    <tech row="0" page="1" column="4">DEGuardBarbaryCorsairs</tech>
+    <tech row="0" page="1" column="0">DEImperialRegulars</tech>
+    <tech row="0" page="1" column="1">DEImperialVolunteers</tech>
+    <tech row="0" page="1" column="0">DEImperialSPCRegulars</tech>
+    <tech row="0" page="1" column="1">DEImperialSPCVolunteers</tech>
+    <tech row="0" page="1" column="1">DEVeteranStateMilitia</tech>
+    <tech row="0" page="1" column="1">DEGuardStateMilitia</tech>
+    <tech row="0" page="1" column="1">DEVolunteers</tech>
+    <tech row="0" page="1" column="2">DEVeteranUSRegulars</tech>
+    <tech row="0" page="1" column="2">DEGuardUSRegulars</tech>
+    <tech row="0" page="1" column="2">DEImperialUSRegulars</tech>
+    <tech row="0" page="1" column="3">DEGuardRiflemen</tech>
+    <tech row="0" page="1" column="3">DEImperialRiflemen</tech>
+    <tech row="0" page="1" column="0">DEVeteranInsurgentes</tech>
+    <tech row="0" page="1" column="1">DEVeteranSoldados</tech>
+    <tech row="0" page="1" column="1">DEGuardSoldados</tech>
+    <tech row="0" page="1" column="1">DEImperialSoldados</tech>
+    <tech row="0" page="1" column="2">DEVeteranEmboscadors</tech>
+    <tech row="0" page="1" column="2">DEVigilantes</tech>
+    <tech row="0" page="1" column="2">DEImperialVigilantes</tech>
+    <tech row="0" page="1" column="4">DEVeteranSentinels</tech>
+    <tech row="0" page="1" column="4">DEGuardSentinels</tech>
+    <tech row="0" page="1" column="4">DEImperialSentinels</tech>
+    <tech row="0" page="1" column="2">DEVeteranHospitallers</tech>
+    <tech row="0" page="1" column="2">DEGuardHospitallers</tech>
+    <tech row="0" page="1" column="2">DEImperialHospitallers</tech>
+    <tech row="0" page="1" column="2">DEVeteranRussianMusketeers</tech>
+    <tech row="0" page="1" column="2">DEGuardRussianMusketeers</tech>
+    <tech row="0" page="1" column="2">DEImperialRussianMusketeers</tech>
+    <tech row="0" page="1" column="3">DEVeteranRussianHalberdiers</tech>
+    <tech row="0" page="1" column="3">DEGuardRussianHalberdiers</tech>
+    <tech row="0" page="1" column="3">DEImperialRussianHalberdiers</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>InitialGarrisonOnly</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <tactics>barracks.tactics</tactics>
+  </unit>
+  <unit id="20531" name="zpSPCFortStableProp">
+    <dbid>20531</dbid>
+    <displaynameid>301975</displaynameid>
+    <editornameid>301970</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\fort\spc_fort_wall_stable.xml</animfile>
+    <minimapsize>1</minimapsize>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\stables\stables_icon.png</icon>
+    <portraiticon>resources\art\buildings\stables\stables_portrait.png</portraiticon>
+    <rollovertextid>22918</rollovertextid>
+    <shortrollovertextid>25727</shortrollovertextid>
+    <initialhitpoints>4500.0000</initialhitpoints>
+    <maxhitpoints>4500.0000</maxhitpoints>
+    <los>1.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <cost resourcetype="Wood">5.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>AbstractWall</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <flag>SelectWithObstruction</flag>
+    <flag>Doppled</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>wallBuild</flag>
+    <flag>NeverShowButton</flag>
+    <flag>UseAlignedObstructionOnMinimap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>TileAlignPlacement</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>FlattenGround</flag>
+    <flag>Tracked</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>Invulnerable</flag>
+  </unit>
+  <unit id="20531" name="zpSPCFortStable">
+    <dbid>20531</dbid>
+    <displaynameid>301975</displaynameid>
+    <editornameid>301972</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\fort\spc_fort_wall_stable.xml</animfile>
+    <minimapsize>1</minimapsize>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\stables\stables_icon.png</icon>
+    <portraiticon>resources\art\buildings\stables\stables_portrait.png</portraiticon>
+    <rollovertextid>22918</rollovertextid>
+    <shortrollovertextid>25727</shortrollovertextid>
+    <initialhitpoints>4500.0000</initialhitpoints>
+    <maxhitpoints>4500.0000</maxhitpoints>
+    <los>1.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <cost resourcetype="Wood">5.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractStables</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>MilitaryProductionBuilding</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <train row="0" page="0" column="0">Uhlan</train>
+    <train row="0" page="0" column="1">Oprichnik</train>
+    <train row="0" page="0" column="2">CavalryArcher</train>
+    <train row="0" page="0" column="0">Hussar</train>
+    <train row="0" page="0" column="0">deDeli</train>
+    <train row="0" page="0" column="1">WarWagon</train>
+    <train row="0" page="0" column="1">Ruyter</train>
+    <train row="0" page="0" column="1">deFinnishRider</train>
+    <train row="0" page="0" column="2">Dragoon</train>
+    <train row="0" page="0" column="2">deUSCavalry</train>
+    <train row="0" page="0" column="1">Lancer</train>
+    <train row="0" page="0" column="1">deChinaco</train>
+    <train row="0" page="0" column="1">Cuirassier</train>
+    <train row="0" page="0" column="0">Cossack</train>
+    <train row="0" page="0" column="0">deBarbaryCavalry</train>
+    <train row="0" page="0" column="1">deBedouinHorseArcher</train>
+    <train row="0" page="0" column="0">ypSteppeRider</train>
+    <train row="0" page="0" column="1">ypKeshik</train>
+    <train row="0" page="0" column="2">CavalryArcher</train>
+    <train row="0" page="0" column="3">ypMeteorHammer</train>
+    <train row="0" page="0" column="4">ypIronFlail</train>
+    <train row="0" page="0" column="3">deItalianCavalry</train>
+    <train row="0" page="0" column="3">deCounterDragoon</train>
+    <train row="0" page="0" column="3">deREVPolishLancer</train>
+    <tech row="0" page="1" column="1">ImperialCarabineer</tech>
+    <tech row="0" page="1" column="0">ImperialCossack</tech>
+    <tech row="0" page="1" column="2">ImperialCavalryArchers</tech>
+    <tech row="0" page="1" column="2">ImperialDragoons</tech>
+    <tech row="0" page="1" column="0">ImperialHussars</tech>
+    <tech row="0" page="1" column="2">ImperialJinetes</tech>
+    <tech row="0" page="1" column="0">ImperialCzapkaUhlans</tech>
+    <tech row="0" page="1" column="0">RGCzapkaUhlans</tech>
+    <tech row="0" page="1" column="2">RGTartarLoyalists</tech>
+    <tech row="0" page="1" column="1">RGGarrochista</tech>
+    <tech row="0" page="1" column="1">GuardRuyters</tech>
+    <tech row="0" page="1" column="1">DEGuardUSCavalryDutch</tech>
+    <tech row="0" page="1" column="2">DEGuardUSCavalry</tech>
+    <tech row="0" page="1" column="2">DEImperialUSCavalry</tech>
+    <tech row="0" page="1" column="0">RGGardener</tech>
+    <tech row="0" page="1" column="0">GuardCossacks</tech>
+    <tech row="0" page="1" column="0">VeteranCossacks</tech>
+    <tech row="0" page="1" column="1">GuardWarWagons</tech>
+    <tech row="0" page="1" column="2">GuardCavalryArchers</tech>
+    <tech row="0" page="1" column="1">RGGendarmes</tech>
+    <tech row="0" page="1" column="1">RGCarabineer</tech>
+    <tech row="0" page="1" column="0">VeteranUhlans</tech>
+    <tech row="0" page="1" column="2">GuardDragoons</tech>
+    <tech row="0" page="1" column="0">GuardHussars</tech>
+    <tech row="0" page="1" column="0">VeteranHussars</tech>
+    <tech row="0" page="1" column="0">VeteranDelis</tech>
+    <tech row="0" page="1" column="0">Rumeliots</tech>
+    <tech row="0" page="1" column="0">ImperialRumeliots</tech>
+    <tech row="0" page="1" column="0">RGLifeGuardHussars</tech>
+    <tech row="0" page="1" column="1">ImperialGarrochistas</tech>
+    <tech row="0" page="1" column="2">ImperialTartarLoyalist</tech>
+    <tech row="0" page="1" column="0">GuardUhlans</tech>
+    <tech row="0" page="1" column="0">ImperialGardener</tech>
+    <tech row="0" page="1" column="0">ImperialLifeGuard</tech>
+    <tech row="0" page="1" column="2">RGJinetes</tech>
+    <tech row="0" page="1" column="1">GuardOprichniks</tech>
+    <tech row="0" page="1" column="1">ImperialOprichniks</tech>
+    <tech row="0" page="1" column="1">ImperialGendarme</tech>
+    <tech row="0" page="1" column="1">ImperialWarWagons</tech>
+    <tech row="0" page="1" column="0">DEVeteranBarbaryCavalry</tech>
+    <tech row="0" page="1" column="0">DEGuardBarbaryCavalry</tech>
+    <tech row="0" page="1" column="1">DEGuardBedouinHorseArcher</tech>
+    <tech row="0" page="1" column="2">DEGuardMameluke</tech>
+    <tech row="0" page="1" column="0">YPDisciplinedSteppeRider</tech>
+    <tech row="0" page="1" column="0">YPHonoredSteppeRider</tech>
+    <tech row="0" page="1" column="0">YPExaltedSteppeRider</tech>
+    <tech row="0" page="1" column="1">YPDisciplinedKeshik</tech>
+    <tech row="0" page="1" column="1">YPHonoredKeshik</tech>
+    <tech row="0" page="1" column="1">YPExaltedKeshik</tech>
+    <tech row="0" page="1" column="3">YPHonoredMeteorHammer</tech>
+    <tech row="0" page="1" column="3">YPExaltedMeteorHammer</tech>
+    <tech row="0" page="1" column="4">YPHonoredIronFlail</tech>
+    <tech row="0" page="1" column="4">YPExaltedIronFlail</tech>
+    <tech row="0" page="1" column="1">RGDrabants</tech>
+    <tech row="0" page="1" column="1">ImperialDrabants</tech>
+    <tech row="0" page="1" column="1">DEVeteranChinacos</tech>
+    <tech row="0" page="1" column="1">DECharros</tech>
+    <tech row="0" page="1" column="1">DEImperialCharros</tech>
+    <tech row="0" page="1" column="3">DEGuardItalianCavalry</tech>
+    <tech row="0" page="1" column="3">DEImperialItalianCavalry</tech>
+    <tech row="0" page="1" column="3">DEGuardCounterDragoons</tech>
+    <tech row="0" page="1" column="3">DEImperialCounterDragoons</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>InitialGarrisonOnly</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="8">CancelAllQueued</command>
+  </unit>
+  <unit id="20504" name="zpSPCFortWallMediumProp">
+    <dbid>20504</dbid>
+    <displaynameid>123010</displaynameid>
+    <editornameid>301973</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\fort\spc_fort_wall_medium.xml</animfile>
+    <minimapsize>1</minimapsize>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
+    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
+    <rollovertextid>34613</rollovertextid>
+    <shortrollovertextid>34644</shortrollovertextid>
+    <initialhitpoints>4500.0000</initialhitpoints>
+    <maxhitpoints>4500.0000</maxhitpoints>
+    <los>1.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <cost resourcetype="Wood">5.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>AbstractWall</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <flag>SelectWithObstruction</flag>
+    <flag>Doppled</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>wallBuild</flag>
+    <flag>NeverShowButton</flag>
+    <flag>UseAlignedObstructionOnMinimap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>TileAlignPlacement</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>FlattenGround</flag>
+    <flag>Tracked</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>Invulnerable</flag>
+  </unit>
 
   <!--BELONGS TO PARIS MAPMODS-->
   <unit name="WallConnector">
@@ -40319,14 +40845,18 @@
   <unit name="deCommandery">
     <placementfile>buildinglarge_city.xml</placementfile>
   </unit>
+  <unit name="deSPCWaterlooHouseProp">
+    <flag>DoNotShowOnMiniMap</flag>
+  </unit>
 
 
 <!--TEST--> 
 
-  <!--<unit name="ypKingsHill">
+  <unit name="ypKingsHill">
     <animfile>buildings\spc\koth\koth.xml</animfile>
+    <minimapicon>ui\minimap\victory_building</minimapicon>
     <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
-  </unit>-->
+  </unit>
 
 
   <unit id="20513" name="zpWanderingStagecoach">

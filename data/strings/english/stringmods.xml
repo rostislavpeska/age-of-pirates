@@ -1966,6 +1966,15 @@
       <string _locid="301965">ZP Royal Court</string>
       <string _locid="301966">City Hall</string>
       <string _locid="301967">ZP City Hall</string>
+      <string _locid="301968">City of Paris</string>
+      <string _locid="301969">ZP Fort Wall Barracks Prop</string>
+      <string _locid="301970">ZP Fort Wall Stable Prop</string>
+      <string _locid="301971">ZP Fort Wall Barracks</string>
+      <string _locid="301972">ZP Fort Wall Stable</string>
+      <string _locid="301973">ZP Fort Wall Medium Prop</string>
+      <string _locid="301974">Fort Barracks</string>
+      <string _locid="301975">Fort Stable</string>
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
