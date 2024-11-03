@@ -87,6 +87,9 @@
     <ability>zpPowerArmouredTrain<tech>zpArmoredTrainUnlockShadow</tech><subciv>zpScientists</subciv><rof>0.1</rof><castifnotselected>true</castifnotselected><subcivalliancefactor>0.5</subcivalliancefactor><subcivstartincooldown>true</subcivstartincooldown><activetimecooldown>true</activetimecooldown></ability>
     <ability>zpPowerArmouredTrainInactive<tech>zpArmoredTrainLockShadow</tech><subciv>zpScientists</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
     <ability>zpPowerArmouredTrainNoResource<tech>zpArmoredTrainNoResourceShadow</tech><subciv>zpScientists</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>  
+    <ability>zpNatPowerRoyalMarch<tech>Colonialize</tech><subciv>SPCBourbon</subciv><activetimecooldown>true</activetimecooldown><rof>275.0</rof><castonself>true</castonself></ability>
+    <ability>zpPowerBourbonExpansion<tech>zpNatBourbonBigbuttonDisableShadow</tech><subciv>SPCBourbon</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
+    <ability>zpPowerSansculotteExpansion<tech>zpNatSansculotteBigbuttonDisableShadow</tech><subciv>zpSansculottes</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>    
   </tradingpost>
   <zparmoredtraingun>
     <ability>dePowerPeninsularFixedGunLongRangeAttack<rof>60</rof><tech>zpArmoredTrainImprove</tech></ability>
@@ -194,6 +197,12 @@
   <zpnautilustransport>
     <ability>zpPowerShunt<allowwhilestealthed>true</allowwhilestealthed><rof>60</rof></ability>
   </zpnautilustransport>
+  <zpbourbonsummerpalace>
+    <ability>zpNatPowerRoyalMarch<activetimecooldown>true</activetimecooldown><rof>275.0</rof><castonself>true</castonself></ability>
+  </zpbourbonsummerpalace>
+  <zpnatroyalmusketeer>
+    <ability>deChargeAbilityChargedPistol<tech>DERoyalMusketeerPistolCharge</tech><bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatroyalmusketeer>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

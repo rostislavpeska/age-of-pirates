@@ -282,6 +282,52 @@
     <allowduringnorush>1</allowduringnorush>
     <soundset type="StartSound" listenertype="Caster">DEPowerFullSteam</soundset>
   </power>
+  <power name="zpNatPowerRoyalMarch" type="GeneralEffect">
+    <displaynameid>122544</displaynameid>
+    <rolloverid>122545</rolloverid>
+    <timerrolloverid>122547</timerrolloverid>
+    <icon>resources\images\icons\abilities\ability_royal_march_lrg.png</icon>
+    <minimapeventtime sendalertto="none">1</minimapeventtime>
+    <activetime>15</activetime>
+    <effect type="MaximumVelocity" relativity="BasePercent" amount="1.05">
+      <target type="ProtoUnit">Unit</target>
+    </effect>
+    <effect type="MaximumVelocity" relativity="BasePercent" amount="1.05">
+      <target type="ProtoUnit">AbstractInfantry</target>
+    </effect>
+    <effect type="MaximumVelocity" relativity="BasePercent" amount="1.05">
+      <target type="ProtoUnit">LogicalTypeLandEconomy</target>
+    </effect>
+    <effect type="MaximumVelocity" relativity="BasePercent" amount="1.025">
+      <target type="ProtoUnit">AbstractLightInfantry</target>
+    </effect>
+    <placement forceonmap="1" ally="">full</placement>
+    <allowduringnorush>1</allowduringnorush>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+    <soundset type="StartSound" listenertype="Caster">DENatPowerBourbon</soundset>
+  </power>
+  <power name="zpPowerBourbonExpansion" type="UnitAction">
+    <displaynameid>301942</displaynameid>
+    <rolloverid>301944</rolloverid>
+    <icon>resources\images\icons\techs\spcbourbon_expansion.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>   
+  </power>
+  <power name="zpPowerSansculotteExpansion" type="UnitAction">
+    <displaynameid>301917</displaynameid>
+    <rolloverid>301945</rolloverid>
+    <icon>resources\images\icons\techs\sansculottes_big.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>   
+  </power>
 
 
 

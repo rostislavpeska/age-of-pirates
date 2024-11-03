@@ -3447,46 +3447,8 @@
       <bottomedge>Africa\ground3_afr</bottomedge>
     </textures>
   </cliff>
-
-
   <cliff name="ZP City" blockland="1" blockwater="0" iconname="ui\editor\cliffnewenglandinland">
     <modelset>Default</modelset>
-    <!--<topobjects>
-      <object name="buildings\props_colony\bush_a" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_b" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_c" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_d" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_e" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_f" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_g" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_h" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_i" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_j" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_k" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\barrel_a" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\barrel_b" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\box_a" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\box_b" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\goods_a" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props\market_stall1_Model" minedgedist="1.2" maxedgedist="2.0" chance="0.01" randomyaw="true">
-      </object>
-    </topobjects>-->
     <parameters>
       <displacementamount>0.000001</displacementamount>
       <displacementmedianvalue>0.000001</displacementmedianvalue>
@@ -3505,45 +3467,8 @@
       <bottomedge>city\ground1_city_street_ground</bottomedge>
     </textures>
   </cliff>
-
   <cliff name="ZP Bridge" blockland="1" blockwater="0" iconname="ui\editor\cliffnewenglandinland">
     <modelset>Default</modelset>
-    <!--<topobjects>
-      <object name="buildings\props_colony\bush_a" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_b" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_c" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_d" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_e" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_f" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_g" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_h" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_i" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_j" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\bush_k" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\barrel_a" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\barrel_b" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\box_a" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\box_b" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props_colony\goods_a" minedgedist="0.7" maxedgedist="1.0" chance="0.01" randomyaw="false">
-      </object>
-      <object name="buildings\props\market_stall1_Model" minedgedist="1.2" maxedgedist="2.0" chance="0.01" randomyaw="true">
-      </object>
-    </topobjects>-->
     <parameters>
       <displacementamount>0.000000</displacementamount>
       <displacementmedianvalue>0.000000</displacementmedianvalue>

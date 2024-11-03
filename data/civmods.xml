@@ -407,6 +407,51 @@
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>
+  <civ>
+    <name>zpRevParis</name>
+    <main>0</main>
+    <displaynameid>301916</displaynameid>
+    <displayrevolutionflag>0</displayrevolutionflag>
+    <revolutionhomecityname>301916</revolutionhomecityname>
+    <homecityflagtexture>objects\flags\paris_republic</homecityflagtexture>
+    <postgameflagiconwpf>resources/images/icons/flags/postgame_flag_paris_republic.png</postgameflagiconwpf>
+    <homecityflagiconwpf>resources/images/icons/flags/flag_paris_republic.png</homecityflagiconwpf>
+    <homecityflagbuttonwpf>resources/images/icons/flags/flag_hc_paris_republic.png</homecityflagbuttonwpf>
+    <visible>0</visible>
+    <visibleineditor>0</visibleineditor>
+  </civ>
+  <civ>
+    <name>SPCBourbon</name>
+    <main>0</main>
+    <subcivtype>4</subcivtype>
+    <portrait>buildings\native_settlement\native_site_bourbon_icon_portrait.png</portrait>
+    <culture>Stone</culture>
+    <displaynameid>122142</displaynameid>
+    <rollovernameid>122142</rollovernameid>
+    <alliedid>122402</alliedid>
+    <alliedotherid>122401</alliedotherid>
+    <unalliedid>122400</unalliedid>
+    <agetech>
+      <age>Age0</age>
+      <tech>zpSPCNativeBourbon</tech>
+    </agetech>
+    <agetech>
+      <age>Age1</age>
+      <tech>zpSPCNativeBourbonColonialize</tech>
+    </agetech>
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpNatRoyalHorsemanBourbonProxy</multipleblockunit>
+      <units>
+        <unit>deMercRoyalHorseman</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <visible>0</visible>
+    <visibleineditor>0</visibleineditor>
+  </civ>
   <!--<civ>
     <name>zpCivPirate</name>
     <main>1</main>

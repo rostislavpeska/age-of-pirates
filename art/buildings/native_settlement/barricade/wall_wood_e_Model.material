@@ -1,0 +1,74 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings/native_settlement/wall_wood_a/textures/wall_wood_a_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings/native_settlement/wall_wood_a/textures/wall_wood_a_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings/native_settlement/wall_wood_a/textures/wall_wood_a_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\buildings_east\prop_ee_market\prop_ee_market_02\textures\prop_ee_market_02_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_east\prop_ee_market\prop_ee_market_02\textures\prop_ee_market_02_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_east\prop_ee_market\prop_ee_market_02\textures\prop_ee_market_02_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="objects\spc\igc_shipwreck\textures\debris01_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="objects\spc\igc_shipwreck\textures\debris01_mata_Normals">
+      </texture>
+      <texture name="Masks" override="objects\spc\igc_shipwreck\textures\debris01_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="objects\spc\igc_shipwreck\textures\debris01_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="objects\spc\igc_shipwreck\textures\debris01_mata_Normals">
+      </texture>
+      <texture name="Masks" override="objects\spc\igc_shipwreck\textures\debris01_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="objects\spc\igc_shipwreck\textures\debris01_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="objects\spc\igc_shipwreck\textures\debris01_mata_Normals">
+      </texture>
+      <texture name="Masks" override="objects\spc\igc_shipwreck\textures\debris01_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+   <submaterial name="matf">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\buildings_east\prop_ee_market\prop_ee_market_02\textures\prop_ee_market_02_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_east\prop_ee_market\prop_ee_market_02\textures\prop_ee_market_02_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_east\prop_ee_market\prop_ee_market_02\textures\prop_ee_market_02_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

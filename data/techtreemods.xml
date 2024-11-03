@@ -28,6 +28,19 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpFrenchRevolutionShadow" type="Normal">
+    <dbid>40763</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpRevolutionFrance</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TextEffectOutput" reason="Revolution" selfmsg="301914" playermsg="301915">
+      </effect>
+    </effects>
+  </tech>
   <tech name="zpNativeMaltese" type="Normal">
     <dbid>40001</dbid>
     <status>UNOBTAINABLE</status>
@@ -221,6 +234,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPirates</effect>
     </effects>
@@ -276,6 +292,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnJapanese</effect>
     </effects>
@@ -331,6 +350,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnChinese</effect>
     </effects>
@@ -386,6 +408,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnIndian</effect>
     </effects>
@@ -2472,6 +2497,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMaltese</effect>     
     </effects>
@@ -3232,6 +3260,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokou</effect>
     </effects>
@@ -4871,6 +4902,14 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMercKorowaiArcher" culture="none" newname="301663">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatRevolutionary" culture="none" newname="301910">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercRevolutionary" culture="none" newname="301910">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatRoyalMusketeer" culture="none" newname="122422">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatRoyalDragoon" culture="none" newname="122008">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -4908,6 +4947,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardPenalColony</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranSansculottes</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
     </effects>
   </tech>
   <tech name="AAStandardNativeTechsPI">
@@ -4944,6 +4987,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardPenalColony</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranSansculottes</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
     </effects>
   </tech>
   <tech name="ypAAAsianStandardTechsPI">
@@ -4980,6 +5027,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardPenalColony</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranSansculottes</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothers">
@@ -5016,6 +5067,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardPenalColony</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranSansculottes</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothersGerman">
@@ -5052,6 +5107,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardPenalColony</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranSansculottes</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialAmericans">
@@ -5088,6 +5147,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardPenalColony</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranSansculottes</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
     </effects>
   </tech>
   <tech name="DEChampionNativeWarriorsAfricanShadow">
@@ -5124,6 +5187,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardPenalColony</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranSansculottes</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialMexicans">
@@ -5160,6 +5227,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardPenalColony</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyKorowai</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionKorowai</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranSansculottes</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
     </effects>
   </tech>
   <tech name="DEHeavyFixedGun">
@@ -5809,6 +5880,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
@@ -6412,6 +6486,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffJewish</effect>
     </effects>
@@ -6611,6 +6688,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
 
       <effect type="TechStatus" status="active">zpBigButtonResearchDone</effect>
@@ -6961,6 +7041,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientists</effect>
     </effects>
@@ -9080,6 +9163,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffVenice</effect>
     </effects>
@@ -10356,6 +10442,21 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpParisCitadel</target>
+      </effect>
+      <effect type="SetName" proto="zpParisCitadel" culture="none" newname="300925">
+      </effect>
+      <effect type="Data" action="CannonAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpParisCitadel</target>
+      </effect>
+      <effect type="Data" action="AntiShipAttack" amount="2.00" subtype="Damage" relativity="BasePercent">
+        <target type="ProtoUnit">zpParisCitadel</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpParisCitadel" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpConsulateOrthodoxGeorgians" type="Normal">
@@ -10510,6 +10611,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodox</effect>
     </effects>
@@ -10810,6 +10914,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffXMass</effect>
     </effects>
@@ -11251,6 +11358,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientistsLand</effect>
     </effects>
@@ -11858,6 +11968,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientistsLand</effect>
     </effects>
@@ -12233,6 +12346,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnKhmer</effect>
     </effects>
@@ -13648,6 +13764,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPiratesAustralia</effect>
     </effects>
@@ -13893,6 +14012,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokouSouth</effect>
     </effects>
@@ -14053,6 +14175,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPiratesMedi</effect>
     </effects>
@@ -15113,6 +15238,9 @@
       <effect type="TechStatus" status="obtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="obtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="obtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPenalColony</effect>
     </effects>
@@ -16457,6 +16585,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
       <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
@@ -16493,6 +16624,1561 @@
 			</effect>
     </effects>
   </tech>
+  <tech name="zpNativeSansculottes" type="Normal">
+    <dbid>40756</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCoureurSansculotte</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpVeteranSansculottes</effect>
+      <effect type="TechStatus" status="obtainable">zpGuardSansculottes</effect>
+      <effect type="TechStatus" status="obtainable">zpIndianFriendshipSansculottes</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTradeTreatySansculottes</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatySansculottes</effect>
+      <effect type="TechStatus" status="obtainable">zpSansculotteRevolution</effect>
+      <effect type="TechStatus" status="obtainable">zpParisUnderground</effect>
+      <effect type="TechStatus" status="obtainable">zpSansculotteBrricades</effect>
+      <effect type="TechStatus" status="obtainable">zpSansculotteBastions</effect>
+      <effect type="TechStatus" status="obtainable">zpLafayetteEmbassy</effect>
+      <effect type="TechStatus" status="obtainable">zpGalerieLafayette</effect>
+    </effects>
+  </tech>
+  <tech name="zpVeteranSansculottes" type="Normal">
+    <dbid>40757</dbid>
+    <displaynameid>301911</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
+    <rollovertextid>301913</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
+      <effect type="SetName" proto="zpNatRevolutionary" culture="none" newname="301908">
+      </effect>
+      <effect type="SetName" proto="zpNatRevolutionary" culture="none" newname="301910" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercRevolutionary</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMercRevolutionary" culture="none" newname="301908">
+      </effect>
+      <effect type="SetName" proto="zpNatMercRevolutionary" culture="none" newname="301910" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercRevolutionary</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpGuardSansculottes" type="Normal">
+    <dbid>40758</dbid>
+    <displaynameid>301912</displaynameid>
+    <cost resourcetype="Wood">600.0000</cost>
+    <cost resourcetype="Gold">600.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
+    <rollovertextid>301913</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+      <techstatus status="Active">zpVeteranSansculottes</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
+      <effect type="SetName" proto="zpNatRevolutionary" culture="none" newname="301909">
+      </effect>
+      <effect type="SetName" proto="zpNatRevolutionary" culture="none" newname="301910" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercRevolutionary</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMercRevolutionary" culture="none" newname="301909">
+      </effect>
+      <effect type="SetName" proto="zpNatMercRevolutionary" culture="none" newname="301910" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercRevolutionary</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTreatySansculottes" type="Normal">
+    <dbid>40759</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatMercRevolutionary" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="DEIndianFriendshipSansculottes" type="Normal">
+    <dbid>40760</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMercRevolutionary" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpVeteranSansculottes</effect>
+      <effect type="TechStatus" status="active">zpGuardSansculottes</effect>
+    </effects>
+  </tech>
+  <tech name="ypNativeTradeTreatySansculottes" type="Normal">
+    <dbid>40761</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpRevolutionFrance" type="Normal">
+    <dbid>40762</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpCoureurSansculotteStandard</target>
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="Settler">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="Coureur">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="CoureurCree">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="deNatNomad">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="SettlerNative">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="Pilgrim">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="ypSettlerAsian">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="ypSettlerJapanese">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="ypSettlerIndian">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpCoureurSansculotteStandard" fromprotoid="deSettlerAfrican">
+      </effect>
+      <effect type="CommandAdd" proto="zpCoureurSansculotteStandard" page="0" column="1">
+        <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpCoureurSansculotteStandard" page="0" column="1">
+        <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpSansculotteRevolution" type ="Normal">
+		<dbid>40769</dbid>
+		<displaynameid>301917</displaynameid>
+  	<researchpoints>100.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\sansculottes_big.png</iconwpf>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>301918</rollovertextid>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>YPInfiniteTech</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <flag>DoNotQueue</flag>
+    <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianFishingBoat</effect>
+      <effect type="TechStatus" status="active">zpTheBlackFlagGoldBallanceShadow</effect>
+    </effects>
+	</tech>
+  <tech name="zpConsulateRevLafayette" type="Normal">
+    <dbid>40764</dbid>
+    <displaynameid>301919</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\sansculottes_small.png</icon>
+    <rollovertextid>301920</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpSansculotteRevolution</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpSansculotteRevolution">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpGalerieLafayette" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpLafayetteEmbassy" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="active">zpRevolutionFrance</effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateRevJacobine" type="Normal">
+    <dbid>40765</dbid>
+    <displaynameid>301921</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\sansculottes_small.png</icon>
+    <rollovertextid>301922</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpSansculotteRevolution</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpSansculotteRevolution">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+
+      <effect type="TechStatus" status="active">zpRevolutionFrance</effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateRevNapoleon" type="Normal">
+    <dbid>40766</dbid>
+    <displaynameid>301923</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\sansculottes_small.png</icon>
+    <rollovertextid>301924</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpSansculotteRevolution</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpSansculotteRevolution">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+
+      <effect type="TechStatus" status="active">zpRevolutionFrance</effect>
+    </effects>
+  </tech>
+  <tech name="zpTurnConsulateOffSansculottes" type="Normal">
+    <dbid>40767</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseAlliesClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="obtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="obtainable">zpConsulateRevLafayette</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffSansculottes</effect>
+    </effects>
+  </tech>
+  <tech name="zpForbidRevolutions" type="Normal">
+    <dbid>40768</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">XPRevolutionLouverture</effect>
+      <effect type="TechStatus" status="unobtainable">XPRevolutionWashington</effect>
+      <effect type="TechStatus" status="unobtainable">XPRevolutionHidalgo</effect>
+      <effect type="TechStatus" status="unobtainable">XPRevolutionBonifacio</effect>
+      <effect type="TechStatus" status="unobtainable">XPRevolutionBolivar</effect>
+      <effect type="TechStatus" status="unobtainable">XPRevolutionSanMartin</effect>
+      <effect type="TechStatus" status="unobtainable">XPRevolutionSantander</effect>
+      <effect type="TechStatus" status="unobtainable">XPRevolutionOHiggins</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionHaiti</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionUSA</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionMexico</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionBrazil</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionPeru</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionArgentina</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionColombia</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionChile</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionCanadaFrench</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionEgypt</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionFinland</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionHungaryOttoman</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionIndonesia</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionRomania</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionSouthAfrica</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionBarbaryStates</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionCanadaBritish</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionHungaryGerman</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionHungaryRussian</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionColombiaPortuguese</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionMXCentralAmerica</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionMXBajaCalifornia</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionMXYucatan</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionMXRioGrande</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionMXMaya</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionMXCalifornia</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionMXTexas</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionHungaryMaltese</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionFrance</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionFranceNE</effect>
+      <effect type="CommandRemove" tech="XPRevolutionLouverture">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionWashington">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionHidalgo">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionBonifacio">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionBolivar">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionSanMartin">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionSantander">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionOHiggins">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHaiti">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionUSA">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMexico">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionBrazil">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionPeru">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionArgentina">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionColombia">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionChile">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionCanadaFrench">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionEgypt">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionFinland">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHungaryOttoman">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionIndonesia">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionRomania">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionSouthAfrica">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionBarbaryStates">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionCanadaBritish">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHungaryGerman">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHungaryRussian">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionColombiaPortuguese">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXCentralAmerica">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXBajaCalifornia">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXYucatan">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXRioGrande">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXMaya">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXCalifornia">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXTexas">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHungaryMaltese">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionFrance">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionFranceNE">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionLouverture">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionWashington">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionHidalgo">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionBonifacio">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionBolivar">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionSanMartin">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionSantander">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="XPRevolutionOHiggins">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHaiti">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionUSA">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMexico">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionBrazil">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionPeru">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionArgentina">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionColombia">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionChile">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionCanadaFrench">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionEgypt">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionFinland">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHungaryOttoman">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionIndonesia">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionRomania">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionSouthAfrica">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionBarbaryStates">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionCanadaBritish">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHungaryGerman">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHungaryRussian">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionColombiaPortuguese">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXCentralAmerica">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXBajaCalifornia">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXYucatan">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXRioGrande">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXMaya">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXCalifornia">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionMXTexas">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionHungaryMaltese">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionFrance">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionFranceNE">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpDisableWalls" type="Normal">
+    <dbid>40770</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">Bastion</effect>
+      <effect type="TechStatus" status="unobtainable">DERedoubts</effect>
+      <effect type="TechStatus" status="unobtainable">DECityFortifications</effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">SettlerNative</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">SettlerNative</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">SettlerNative</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">CoureurCree</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">CoureurCree</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">CoureurCree</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">SettlerWagon</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">SettlerWagon</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">SettlerWagon</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">Coureur</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">Coureur</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">Coureur</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">Settler</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">Settler</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">Settler</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">deUnknownPilgrim</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">deUnknownPilgrim</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">deUnknownPilgrim</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">deREVFilibuster</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">deREVFilibuster</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">deREVFilibuster</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">deREVNativeVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">deREVNativeVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">deREVNativeVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">deNatMercNomad</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">deNatMercNomad</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">deNatMercNomad</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">deNatNomad</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">deNatNomad</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">deNatNomad</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">deAfricanVillagerNugget</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">deAfricanVillagerNugget</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">deAfricanVillagerNugget</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">deSettlerAfrican</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">deSettlerAfrican</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">deSettlerAfrican</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypSettlerIceCream</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypSettlerIceCream</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypSettlerIceCream</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypMigrantArmyMedium</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypMigrantArmyMedium</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypMigrantArmyMedium</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypMigrantOx</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypMigrantOx</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypMigrantOx</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypMigrantArmySmall</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypMigrantArmySmall</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypMigrantArmySmall</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypMigrantArmyLarge</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypMigrantArmyLarge</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypMigrantArmyLarge</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypMigrantGoats</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypMigrantGoats</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypMigrantGoats</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypSettlerJapanese</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypSettlerJapanese</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypSettlerJapanese</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypSettlerIndian</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypSettlerIndian</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypSettlerIndian</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">ypSettlerAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">ypSettlerAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">ypSettlerAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">Pilgrim</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">Pilgrim</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">Pilgrim</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">zpSettlerZen</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">zpSettlerZen</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">zpSettlerZen</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">zpNatNomadSettlerJewish</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">zpNatNomadSettlerJewish</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">zpNatNomadSettlerJewish</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">zpNatCoureurSansculotte</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">zpNatCoureurSansculotte</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">zpNatCoureurSansculotte</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallConnector">
+        <target type="ProtoUnit">zpCoureurSansculotteStandard</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight2">
+        <target type="ProtoUnit">zpCoureurSansculotteStandard</target>
+      </effect>
+      <effect type="CommandRemove" proto="WallStraight5">
+        <target type="ProtoUnit">zpCoureurSansculotteStandard</target>
+      </effect>  
+    </effects>
+  </tech>
+  <tech name="zpConvertBastions" type="Normal">
+    <dbid>40771</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpParisCitadel" fromprotoid="zpParisCitadelGaia">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConvertBastions</effect>
+    </effects>
+  </tech>
+  <tech name="zpParisUnderground" type="Normal">
+    <dbid>40772</dbid>
+    <displaynameid>301932</displaynameid>
+    <cost resourcetype="Food">50.0000</cost>
+    <cost resourcetype="Gold">50.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\paris_underground.png</icon>
+    <rollovertextid>301933</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="RevealLOS" relativity="Absolute">
+        <target type="ProtoUnit">AbstractImportantCityBuilding</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSansculotteBrricades" type="Normal">
+    <dbid>40773</dbid>
+    <displaynameid>301934</displaynameid>
+    <cost resourcetype="Food">50.0000</cost>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\sansculotte_barricades.png</icon>
+    <rollovertextid>301935</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
+        <target type="ProtoUnit">zpCoureurSansculotteStandard</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
+        <target type="ProtoUnit">zpCoureurSansculotteStandard</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
+        <target type="ProtoUnit">zpCoureurSansculotteStandard</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
+        <target type="ProtoUnit">zpNatCoureurSansculotte</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
+        <target type="ProtoUnit">zpNatCoureurSansculotte</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
+        <target type="ProtoUnit">zpNatCoureurSansculotte</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
+        <target type="ProtoUnit">zpNatMercRevolutionary</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
+        <target type="ProtoUnit">zpNatMercRevolutionary</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
+        <target type="ProtoUnit">zpNatMercRevolutionary</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSansculotteBastions" type="Normal">
+    <dbid>40774</dbid>
+    <displaynameid>301936</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cafe_procope.png</icon>
+    <rollovertextid>301937</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="CommandAdd" proto="zpNatRevolutionary" page="0" column="1">
+        <target type="ProtoUnit">zpParisCitadel</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatCoureurSansculotte" page="0" column="2">
+        <target type="ProtoUnit">zpParisCitadel</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCNativeBourbon" type="Normal">
+    <dbid>40775</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRoyalDragoon</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercBattleship</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpVeteranBourbon</effect>
+      <effect type="TechStatus" status="obtainable">zpGuardBourbon</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBourbonRoyalMarch</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBourbonReforms</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBourbonRoyalTax</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBourbonChouannerie</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBourbonMaisonDuRoi</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyBourbon</effect>
+      <effect type="TechStatus" status="obtainable">zpIndianFriendshipBourbon</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyBourbon</effect>
+      <effect type="TechStatus" status="obtainable">zpBourbonExpansion</effect>
+      <effect type="TechStatus" status="obtainable">zpNatChateauRoyal</effect>
+      <effect type="TechStatus" status="obtainable">zpNatNightWatch</effect>
+      <effect type="Data" amount="1.00" subtype="GrantsPowerDuration" protopower="zpNatPowerRoyalMarch" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCNativeBourbonColonialize" type="Normal">
+    <dbid>40775</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpNatBourbonRoyalMarch</effect>
+    </effects>
+  </tech>
+  <tech name="zpVeteranBourbon" type="Normal">
+    <dbid>40776</dbid>
+    <displaynameid>122416</displaynameid>
+    <cost resourcetype="Wood">125.0000</cost>
+    <cost resourcetype="Gold">125.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
+    <rollovertextid>122419</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="SetName" proto="zpNatRoyalMusketeer" culture="none" newname="122420">
+      </effect>
+      <effect type="SetName" proto="zpNatRoyalMusketeer" culture="none" newname="122422" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="TechStatus" status="active">DEVeteranBourbon</effect>
+    </effects>
+  </tech>
+  <tech name="zpGuardBourbon" type="Normal">
+    <dbid>40777</dbid>
+    <displaynameid>122417</displaynameid>
+    <cost resourcetype="Wood">350.0000</cost>
+    <cost resourcetype="Gold">350.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
+    <rollovertextid>122419</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">zpVeteranBourbon</techstatus>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="SetName" proto="zpNatRoyalMusketeer" culture="none" newname="122421">
+      </effect>
+      <effect type="SetName" proto="zpNatRoyalMusketeer" culture="none" newname="122422" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRoyalDragoon</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRoyalDragoon</target>
+      </effect>
+      <effect type="SetName" proto="zpNatRoyalDragoon" culture="none" newname="122007">
+      </effect>
+      <effect type="SetName" proto="zpNatRoyalDragoon" culture="none" newname="122008" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="TechStatus" status="active">DEGuardBourbon</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatBourbonReforms" type="Normal">
+    <dbid>40778</dbid>
+    <displaynameid>122286</displaynameid>
+    <cost resourcetype="Food">300.0000</cost>
+    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\bourbon\bourbon_reforms.png</icon>
+    <rollovertextid>122285</rollovertextid>
+    <valuetext>{techResourceAmount(DENatBourbonReforms)}</valuetext>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEUsesValueText</flag>
+    <effects>
+      <effect type="Data2" amount="0.20" subtype="ResourceByKBStat" kbstat="totalTechReward" resource="XP" resourcecap="2000.00" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="EnableTechXPReward" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatBourbonRoyalTax" type="Normal">
+    <dbid>40779</dbid>
+    <displaynameid>122288</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\bourbon\taille_royal.png</icon>
+    <rollovertextid>122287</rollovertextid>
+    <valuetext>{techResourceAmount(DENatBourbonRoyalTax)}</valuetext>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEUsesValueText</flag>
+    <effects>
+      <effect type="Data2" amount="35.00" subtype="ResourceByKBQuery" resource="Gold" queryunittype="LogicalTypeBuildingsNotWallsOrGroves" querystate="Alive" resourcecap="10000.00" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data2" amount="-35.00" subtype="ResourceByKBQuery" resource="Gold" queryunittype="deFurTrade" querystate="Alive" resourcecap="1000000.00" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatBourbonChouannerie" type="Normal">
+    <dbid>40780</dbid>
+    <displaynameid>122290</displaynameid>
+    <cost resourcetype="Food">275.0000</cost>
+    <researchpoints>15.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\bourbon\chouannerie.png</icon>
+    <rollovertextid>122289</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="DamageBonus" unittype="AbstractInfantry" allactions="1" relativity="Absolute">
+        <target type="ProtoUnit">LogicalTypeLandEconomy</target>
+      </effect>
+      <effect type="Data" amount="-0.34" subtype="DamageBonus" unittype="AbstractInfantry" allactions="1" relativity="Absolute">
+        <target type="ProtoUnit">Coureur</target>
+      </effect>
+      <effect type="Data" amount="-0.34" subtype="DamageBonus" unittype="AbstractInfantry" allactions="1" relativity="Absolute">
+        <target type="ProtoUnit">CoureurCree</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatBourbonMaisonDuRoi" type="Normal">
+    <dbid>40781</dbid>
+    <displaynameid>122292</displaynameid>
+    <cost resourcetype="Gold">750.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\bourbon\maison_du_roi.png</icon>
+    <rollovertextid>122291</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="SetOnShipmentSentTech" amount="1.00">DEShipRoyalHorseman</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRoyalHorsemanBourbonProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercRoyalHorseman</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTreatyBourbon" type="Normal">
+    <dbid>40782</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="4.00" subtype="FreeHomeCityUnit" unittype="deNatMercRoyalMusketeer" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIndianFriendshipBourbon" type="Normal">
+    <dbid>40783</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="deNatMercRoyalMusketeer" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="deNatRoyalDragoon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">DEVeteranBourbon</effect>
+      <effect type="TechStatus" status="active">DEGuardBourbon</effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTradeTreatyBourbon" type="Normal">
+    <dbid>40784</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatBourbonRoyalMarch" type="Normal">
+    <dbid>40785</dbid>
+    <displaynameid>122544</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\abilities\ability_royal_march_lrg.png</icon>
+    <rollovertextid>122545</rollovertextid>
+    <flag>YPNoTextMessage</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEHideAdvancedRollover</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name ="zpBourbonExpansion" type ="Normal">
+		<dbid>40786</dbid>
+		<displaynameid>301942</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\spcbourbon_expansion.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>301943</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="CommandAdd" tech="zpNatNightWatch" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatNightWatch" page="2" column="5">
+        <target type="ProtoUnit">zpBourbonSummerPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatChateauRoyal" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="zpNatBigbuttonDisableShadow" type="Normal">
+    <dbid>40787</dbid>
+    <researchpoints>0.5000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpNatBourbonBigbuttonDisableShadow" type="Normal">
+    <dbid>40788</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" tech="zpBourbonExpansion">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpNatBourbonBigbuttonDisableShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatSansculoteoffShadow" type="Normal">
+    <dbid>40789</dbid>
+    <researchpoints>0.5000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpNatSansculotteBigbuttonDisableShadow" type="Normal">
+    <dbid>40790</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" tech="zpSansculotteRevolution">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpNatSansculotteBigbuttonDisableShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatChateauRoyal" type="Normal">
+    <dbid>40791</dbid>
+    <displaynameid>301951</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <cost resourcetype="Gold">600.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\bourbon_chateau.png</icon>
+    <rollovertextid>301952</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+		</prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpBourbonSummerPalaceWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect civ="SPCBourbon" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player"></target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRoyalDragoon</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercBattleship</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatNightWatch" type="Normal">
+    <dbid>40792</dbid>
+    <displaynameid>301957</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\nightwatch.png</icon>
+    <rollovertextid>301958</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMilitaryCamp</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpLafayetteEmbassy" type="Normal">
+    <dbid>40793</dbid>
+    <displaynameid>301959</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\jewish_american_embassy_tech.png</icon>
+    <rollovertextid>301405</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpAmericanEmbassyWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpAmericanEmbassyShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpGalerieLafayette" type="Normal">
+    <dbid>40794</dbid>
+    <displaynameid>301960</displaynameid>
+    <cost resourcetype="Food">300.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\galeries_lafayette.png</icon>
+    <rollovertextid>301961</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpGalerieLafayetteShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpGalerieLafayetteShadow" type="Normal">
+    <dbid>40795</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="Autogather" amount="1.10" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCNotreDame</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.10" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.10" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.10" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.10" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.10" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.10" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXPTeam" amount="1.10" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.10" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCNationalBank</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.10" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCTownMill</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.10" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCGoldSmelter</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.10" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCDestilery</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.10" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCForester</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.10" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCDemolisher</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.10" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.10" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="1.10" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXP" amount="1.10" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAmericanEmbassyShadow" type="Normal">
+    <dbid>40796</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAmericanEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConRegular</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConUSCavalry</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatConAmericanCompany</effect>
+      <effect type="TechStatus" status="obtainable">zpNatConAmericanForce</effect>
+      <effect type="TechStatus" status="obtainable">zpNatConAmericanArmy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatConAmericanArmyBig</effect>
+      <effect type="TechStatus" status="obtainable">zpAmericanExpeditionaryFleet</effect>
+    </effects>
+  </tech>
+  <tech name="zpMapAmerican" type="Normal">
+    <dbid>40797</dbid>
+    <status>UNOBTAINABLE</status>
+    <effects>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpMapEastern" type="Normal">
+    <dbid>40798</dbid>
+    <status>UNOBTAINABLE</status>
+    <effects>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpMapMediterranean" type="Normal">
+    <dbid>40799</dbid>
+    <status>UNOBTAINABLE</status>
+    <effects>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpMapFareast" type="Normal">
+    <dbid>40800</dbid>
+    <status>UNOBTAINABLE</status>
+    <effects>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpMapIndian" type="Normal">
+    <dbid>40801</dbid>
+    <status>UNOBTAINABLE</status>
+  </tech>
+  <tech name="zpMapMiddleEast" type="Normal">
+    <dbid>40802</dbid>
+    <status>UNOBTAINABLE</status>
+    <effects>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpMapAfrican" type="Normal">
+    <dbid>40803</dbid>
+    <status>UNOBTAINABLE</status>
+    <effects>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
+    </effects>
+  </tech>
+  
+
 
 
 

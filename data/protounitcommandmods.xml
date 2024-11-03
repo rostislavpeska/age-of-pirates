@@ -425,6 +425,53 @@
     </socketbuild>
     <rollovertextid>301863</rollovertextid>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpNatBourbonRoyalMarchSmall</name>
+    <icon>resources\images\icons\abilities\ability_royal_march_lrg.png</icon>
+    <associatedtech>zpNatBourbonRoyalMarch</associatedtech>
+    <associatedpower>zpNatPowerRoyalMarch</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>SPCBourbon</subciv>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpBourbonExpansionFake</name>
+    <icon>resources\images\icons\techs\spcbourbon_expansion.png</icon>
+    <associatedtech>zpNatBigbuttonDisableShadow</associatedtech>
+    <associatedpower>zpPowerBourbonExpansion</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>SPCBourbon</subciv>
+    <usemultiple>
+    </usemultiple>
+    <usebigbutton>
+    </usebigbutton>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpSansculottexpansionFake</name>
+    <icon>resources\images\icons\techs\sansculottes_big.png</icon>
+    <associatedtech>zpNatSansculoteoffShadow</associatedtech>
+    <associatedpower>zpPowerSansculotteExpansion</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>zpSansculottes</subciv>
+    <usemultiple>
+    </usemultiple>
+    <usebigbutton>
+    </usebigbutton>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpNatBourbonRoyalMarcUniversal</name>
+    <icon>resources\images\icons\abilities\ability_royal_march_lrg.png</icon>
+    <associatedtech>zpNatBourbonRoyalMarch</associatedtech>
+    <associatedpower>zpNatPowerRoyalMarch</associatedpower>
+    <castpower>
+    </castpower>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
 
   <!--
 
