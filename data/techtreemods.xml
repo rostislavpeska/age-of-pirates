@@ -7989,7 +7989,6 @@
   <tech name="zpItalianSettlerBallance" type="Normal">
     <dbid>40254</dbid>
     <status>UNOBTAINABLE</status>
-    <status>YPInfiniteTech</status>
     <flag>Shadow</flag>
     <effects>
       <effects>
@@ -8048,7 +8047,6 @@
   <tech name="zpItalianGondolaBallance" type="Normal">
     <dbid>40258</dbid>
     <status>UNOBTAINABLE</status>
-    <status>YPInfiniteTech</status>
     <flag>Shadow</flag>
     <effects>
       <effects>
@@ -8060,7 +8058,6 @@
   <tech name="zpRevealerWarFog" type="Normal">
     <dbid>40259</dbid>
     <status>UNOBTAINABLE</status>
-    <status>YPInfiniteTech</status>
     <flag>Shadow</flag>
     <effects>
       <effect type="TransformUnit" toprotoid="zpCinematicRevealerToAllPassive" fromprotoid="zpCinematicRevealerToAll">
@@ -17608,7 +17605,7 @@
     </effects>
   </tech>
   <tech name="zpSPCNativeBourbon" type="Normal">
-    <dbid>40775</dbid>
+    <dbid>40805</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>

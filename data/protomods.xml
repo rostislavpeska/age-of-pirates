@@ -11179,8 +11179,8 @@
     <maxvelocity>0.0000</maxvelocity>
     <buildlimit>1</buildlimit>
     <movementtype>land</movementtype>
-    <placementfile>buildinglarge.xml</placementfile>
     <animfile>buildings\spc\academy\zp_academy.xml</animfile>
+    <placementfile>buildinglarge_city.xml</placementfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\buildings\academy_icon.png</icon>
@@ -13943,7 +13943,7 @@
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <placementfile>mill.xml</placementfile>
+    <placementfile>mill_city.xml</placementfile>
     <icon>resources\art\buildings\jesuit_building_icon.png</icon>
     <portraiticon>resources\art\buildings\jesuit_building_portrait.png</portraiticon>
     <rollovertextid>300681</rollovertextid>
@@ -36948,7 +36948,7 @@
     <flag>Tracked</flag>
     <flag>AllowSocketPlacement</flag>
     <flag>NotDeleteable</flag>
-    <tactics>autoconvert.tactics</tactics>
+    <tactics>zpautoconvert.tactics</tactics>
     <command page="1" column="0">zpSocketBuildOrchad</command>
   </unit>
   <unit id="20499" name="zpSPCFortWallProp">
@@ -39660,8 +39660,8 @@
     <command page="10" column="8">CancelAllQueued</command>
     <command page="11" column="0">Abilities</command>
   </unit>
-  <unit id="20526" name="zpBourbonSummerPalaceWagon">
-    <dbid>20526</dbid>
+  <unit id="20537" name="zpBourbonSummerPalaceWagon">
+    <dbid>20537</dbid>
     <displaynameid>301949</displaynameid>
     <editornameid>301950</editornameid>
     <obstructionradiusx>0.9900</obstructionradiusx>
@@ -40592,8 +40592,8 @@
     <command page="10" column="7">Delete</command>
     <command page="10" column="8">CancelAllQueued</command>
   </unit>
-  <unit id="20504" name="zpSPCFortWallMediumProp">
-    <dbid>20504</dbid>
+  <unit id="20532" name="zpSPCFortWallMediumProp">
+    <dbid>20533</dbid>
     <displaynameid>123010</displaynameid>
     <editornameid>301973</editornameid>
     <obstructionradiusx>3.0000</obstructionradiusx>
@@ -40654,8 +40654,8 @@
     <minimapicon>ui\minimap\victory_building</minimapicon>
     <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
   </unit>
-  <unit id="20505" name="zpInvisibleGateSocket">
-    <dbid>20505</dbid>
+  <unit id="20534" name="zpInvisibleGateSocket">
+    <dbid>20534</dbid>
     <displaynameid>301976</displaynameid>
     <obstructionradiusx>5.0000</obstructionradiusx>
     <obstructionradiusz>2.0000</obstructionradiusz>
@@ -40681,8 +40681,8 @@
     <flag>PlaceAnywhere</flag>
     <flag>OnlyInEditor</flag>
   </unit>
-  <unit id="20506" name="zpSPCCapturableFlagInvisible">
-    <dbid>20506</dbid>
+  <unit id="20535" name="zpSPCCapturableFlagInvisible">
+    <dbid>20535</dbid>
     <displaynameid>32671</displaynameid>
     <editornameid>123087</editornameid>
     <panelnameid>301977</panelnameid>
@@ -40716,8 +40716,8 @@
     <flag>OnlyInEditor</flag>
     <tactics>captureflag.tactics</tactics>
   </unit>
-  <unit id="20507" name="zpParisFlag">
-    <dbid>20507</dbid>
+  <unit id="20536" name="zpParisFlag">
+    <dbid>20536</dbid>
     <displaynameid>32671</displaynameid>
     <editornameid>123087</editornameid>
     <panelnameid>301978</panelnameid>
@@ -40849,9 +40849,6 @@
   <unit name="Outpost">
     <placementfile>buildingsmall_city.xml</placementfile>
   </unit>
-  <unit name="zpAcademy">
-    <placementfile>buildinglarge_city.xml</placementfile>
-  </unit>
   <unit name="ArtilleryDepot">
     <placementfile>buildinglarge_city.xml</placementfile>
   </unit>
@@ -40904,9 +40901,6 @@
     <placementfile>mill_city.xml</placementfile>
   </unit>
   <unit name="Plantation">
-    <placementfile>mill_city.xml</placementfile>
-  </unit>
-  <unit name="zpCongregation">
     <placementfile>mill_city.xml</placementfile>
   </unit>
   <unit name="deGranary">

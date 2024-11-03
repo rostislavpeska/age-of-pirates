@@ -30,7 +30,7 @@
 		<unit variation="216" posx="-2.8317" posz="-6.2446" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSPCFortWallSmallProp</unit>
 		<unit variation="0" posx="11.3237" posz="-4.5947" orientx="0.7071" orienty="-0.0000" orientz="0.7071">deGuardianMusketeer</unit>
 		<unit variation="106" posx="-2.3520" posz="0.8113" orientx="1.0000" orienty="0.0000" orientz="-0.0000">SPCFortGate</unit>
-		<unit variation="106" posx="-2.3520" posz="0.8113" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpTrainStopper</unit>
+		<unit variation="106" posx="-2.3520" posz="0.8113" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpInvisibleGateSocket</unit>
 		<unit variation="244" posx="-2.1553" posz="9.5500" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpSPCFortCornerProp</unit>
 		<unit variation="216" posx="-2.8660" posz="7.8271" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSPCFortWallSmallProp</unit>
 		<unit variation="244" posx="1.7459" posz="10.6799" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpSPCFortCornerProp</unit>
