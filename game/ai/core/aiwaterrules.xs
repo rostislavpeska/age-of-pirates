@@ -1293,3 +1293,36 @@ minInterval 10
       }
    }
 }
+
+//==============================================================================
+/* fishingBellMonitor
+   AssertiveWall: manages fishing boats ungarrisoning docks. Garrison is managed
+   in the military manager
+
+*/
+//==============================================================================
+rule fishingBellMonitor
+inactive
+minInterval 5
+{
+   int numberBoats = aiPlanGetNumberUnits(gFishingBellPlan, gFishingUnit);
+   int tempBoat = -1;
+   int tempNearbyEnemy = -1;
+   int dockUnit = -1;
+   vector fBLocation = cInvalidVector;
+   
+   for (i = 0; < numberBoats)
+   {
+      tempBoat = aiPlanGetUnitByIndex(gFishingBellPlan, i);
+      fBLocation = kbUnitGetPosition(tempBoat);
+      tempNearbyEnemy = getClosestVisibleUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, fBLocation, 35.0); // three bigger range than a frigate
+      if (tempNearbyEnemy < 0)
+      {  // AssertiveWall: Ungarrison from dock
+         dockUnit = getUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 1.0);
+         if (dockUnit > 0)
+         {
+            aiTaskUnitEject(dockUnit);
+         }
+      }
+   }
+}
