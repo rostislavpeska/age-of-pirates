@@ -18177,6 +18177,30 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpConvertWall" type="Normal">
+    <dbid>40804</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortCorner" fromprotoid="zpSPCFortCornerProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="deSPCEuroTower" fromprotoid="zpSPCFortTowerProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="SPCFortWallSmall" fromprotoid="zpSPCFortWallSmallProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCFortBarracks" fromprotoid="zpSPCFortBarracksProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCFortStable" fromprotoid="zpSPCFortStableProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="SPCFortWallLarge" fromprotoid="zpSPCFortWallProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="SPCFortWallMedium" fromprotoid="zpSPCFortWallMediumProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocket">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConvertWall</effect>
+    </effects>
+  </tech>
   
 
 

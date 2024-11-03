@@ -21590,7 +21590,6 @@
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
-    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
     <unittype>LogicalTypeBuildingsNotWalls</unittype>
     <unittype>LogicalTypeShipsAndBuildings</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
@@ -36964,8 +36963,8 @@
     <minimapsize>1</minimapsize>
     <impacttype>Stone</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
-    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
+    <icon>resources\art\buildings\spc\fort\spc_fort_wall_icon64x64.png</icon>
+    <portraiticon>resources\art\buildings\spc\fort\spc_fort_wall_portrait.png</portraiticon>
     <rollovertextid>34613</rollovertextid>
     <shortrollovertextid>34644</shortrollovertextid>
     <initialhitpoints>4500.0000</initialhitpoints>
@@ -37007,8 +37006,6 @@
     <flag>ObscuresUnits</flag>
     <flag>FlattenGround</flag>
     <flag>Tracked</flag>
-    <flag>ForceToGaia</flag>
-    <flag>NotSelectable</flag>
     <flag>Invulnerable</flag>
   </unit>
   <unit id="20500" name="zpSPCFortCornerProp">
@@ -37023,8 +37020,8 @@
     <minimapsize>1</minimapsize>
     <impacttype>Stone</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
-    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
+    <icon>resources\art\buildings\spc\fort\spc_fort_wall_icon64x64.png</icon>
+    <portraiticon>resources\art\buildings\spc\fort\spc_fort_wall_portrait.png</portraiticon>
     <rollovertextid>34613</rollovertextid>
     <shortrollovertextid>34644</shortrollovertextid>
     <initialhitpoints>4500.0000</initialhitpoints>
@@ -37068,8 +37065,6 @@
     <flag>ColonyBuilding</flag>
     <flag>wallBuild</flag>
     <flag>Tracked</flag>
-    <flag>ForceToGaia</flag>
-    <flag>NotSelectable</flag>
     <flag>Invulnerable</flag>
   </unit>
   <unit id="20501" name="zpSPCFortGateProp">
@@ -37183,8 +37178,6 @@
     <flag>ColonyBuilding</flag>
     <flag>wallBuild</flag>
     <flag>Tracked</flag>
-    <flag>ForceToGaia</flag>
-    <flag>NotSelectable</flag>
     <flag>Invulnerable</flag>
   </unit>
   <unit id="20503" name="zpSPCCityBuildingMix">
@@ -37271,8 +37264,8 @@
     <minimapsize>1</minimapsize>
     <impacttype>Stone</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
-    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
+    <icon>resources\art\buildings\spc\fort\spc_fort_wall_icon64x64.png</icon>
+    <portraiticon>resources\art\buildings\spc\fort\spc_fort_wall_portrait.png</portraiticon>
     <rollovertextid>34608</rollovertextid>
     <shortrollovertextid>34643</shortrollovertextid>
     <initialhitpoints>4500.0000</initialhitpoints>
@@ -37314,8 +37307,6 @@
     <flag>ObscuresUnits</flag>
     <flag>FlattenGround</flag>
     <flag>Tracked</flag>
-    <flag>ForceToGaia</flag>
-    <flag>NotSelectable</flag>
     <flag>Invulnerable</flag>
   </unit>
   <unit id="20505" name="zpZooGiraffe">
@@ -38817,8 +38808,8 @@
     <legacyhotkeycontext>BlockhouseAccel</legacyhotkeycontext>
     <rollovertextid>26306</rollovertextid>
     <shortrollovertextid>26305</shortrollovertextid>
-    <initialhitpoints>3000.0000</initialhitpoints>
-    <maxhitpoints>3000.0000</maxhitpoints>
+    <initialhitpoints>2500.0000</initialhitpoints>
+    <maxhitpoints>2500.0000</maxhitpoints>
     <los>32.0000</los>
     <projectileprotounit>Arrow</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -38962,8 +38953,8 @@
     <legacyhotkeycontext>BlockhouseAccel</legacyhotkeycontext>
     <rollovertextid>26306</rollovertextid>
     <shortrollovertextid>26305</shortrollovertextid>
-    <initialhitpoints>3000.0000</initialhitpoints>
-    <maxhitpoints>3000.0000</maxhitpoints>
+    <initialhitpoints>2500.0000</initialhitpoints>
+    <maxhitpoints>2500.0000</maxhitpoints>
     <los>32.0000</los>
     <projectileprotounit>Arrow</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -40195,8 +40186,6 @@
     <flag>ObscuresUnits</flag>
     <flag>FlattenGround</flag>
     <flag>Tracked</flag>
-    <flag>ForceToGaia</flag>
-    <flag>NotSelectable</flag>
     <flag>Invulnerable</flag>
   </unit>
   <unit id="20532" name="zpSPCFortBarracks">
@@ -40449,8 +40438,6 @@
     <flag>ObscuresUnits</flag>
     <flag>FlattenGround</flag>
     <flag>Tracked</flag>
-    <flag>ForceToGaia</flag>
-    <flag>NotSelectable</flag>
     <flag>Invulnerable</flag>
   </unit>
   <unit id="20531" name="zpSPCFortStable">
@@ -40617,8 +40604,8 @@
     <minimapsize>1</minimapsize>
     <impacttype>Stone</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
-    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
+    <icon>resources\art\buildings\spc\fort\spc_fort_wall_icon64x64.png</icon>
+    <portraiticon>resources\art\buildings\spc\fort\spc_fort_wall_portrait.png</portraiticon>
     <rollovertextid>34613</rollovertextid>
     <shortrollovertextid>34644</shortrollovertextid>
     <initialhitpoints>4500.0000</initialhitpoints>
@@ -40660,10 +40647,108 @@
     <flag>ObscuresUnits</flag>
     <flag>FlattenGround</flag>
     <flag>Tracked</flag>
-    <flag>ForceToGaia</flag>
-    <flag>NotSelectable</flag>
     <flag>Invulnerable</flag>
   </unit>
+  <unit name="ypKingsHill">
+    <animfile>buildings\spc\koth\koth.xml</animfile>
+    <minimapicon>ui\minimap\victory_building</minimapicon>
+    <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
+  </unit>
+  <unit id="20505" name="zpInvisibleGateSocket">
+    <dbid>20505</dbid>
+    <displaynameid>301976</displaynameid>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>Invulnerable</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>NoHPBar</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>OnlyInEditor</flag>
+  </unit>
+  <unit id="20506" name="zpSPCCapturableFlagInvisible">
+    <dbid>20506</dbid>
+    <displaynameid>32671</displaynameid>
+    <editornameid>123087</editornameid>
+    <panelnameid>301977</panelnameid>
+    <panelrolloverid>123195</panelrolloverid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>ui\editor\editor_revealer.xml</animfile>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
+    <los>15.0000</los>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unit</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>Tracked</flag>
+    <flag>VariationLocked</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>OnlyInEditor</flag>
+    <tactics>captureflag.tactics</tactics>
+  </unit>
+  <unit id="20507" name="zpParisFlag">
+    <dbid>20507</dbid>
+    <displaynameid>32671</displaynameid>
+    <editornameid>123087</editornameid>
+    <panelnameid>301978</panelnameid>
+    <panelrolloverid>123195</panelrolloverid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
+    <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <los>15.0000</los>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unit</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>Tracked</flag>
+    <flag>VariationLocked</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+  </unit>
+
 
   <!--BELONGS TO PARIS MAPMODS-->
   <unit name="WallConnector">
@@ -40848,16 +40933,14 @@
   <unit name="deSPCWaterlooHouseProp">
     <flag>DoNotShowOnMiniMap</flag>
   </unit>
+  <unit name="SPCFortGate">
+    <unittype>ConvertsHerds</unittype>
+    <flag>PlaceAnywhere</flag>
+    <buildpoints>0.0000</buildpoints>
+  </unit>
 
 
 <!--TEST--> 
-
-  <unit name="ypKingsHill">
-    <animfile>buildings\spc\koth\koth.xml</animfile>
-    <minimapicon>ui\minimap\victory_building</minimapicon>
-    <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
-  </unit>
-
 
   <unit id="20513" name="zpWanderingStagecoach">
     <dbid>20513</dbid>
@@ -41479,15 +41562,6 @@
   </unit>
 
 
-  <!--<unit name="WaypointFlag">
-    <flag mergeMode='remove'>TieToWaterSurface</flag>   
-  </unit>
-  <unit name="ArrivalFlag">
-    <flag mergeMode='remove'>TieToWaterSurface</flag>   
-  </unit>
-  <unit name="MoveTo">
-    <flag mergeMode='remove'>TieToWaterSurface</flag>   
-  </unit>-->
 
 
 
