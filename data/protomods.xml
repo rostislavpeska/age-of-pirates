@@ -40684,8 +40684,8 @@
   <unit id="20535" name="zpSPCCapturableFlagInvisible">
     <dbid>20535</dbid>
     <displaynameid>32671</displaynameid>
-    <editornameid>123087</editornameid>
-    <panelnameid>301977</panelnameid>
+    <editornameid>301977</editornameid>
+    <panelnameid>123194</panelnameid>
     <panelrolloverid>123195</panelrolloverid>
     <obstructionradiusx>1.0000</obstructionradiusx>
     <obstructionradiusz>1.0000</obstructionradiusz>
@@ -40719,8 +40719,8 @@
   <unit id="20536" name="zpParisFlag">
     <dbid>20536</dbid>
     <displaynameid>32671</displaynameid>
-    <editornameid>123087</editornameid>
-    <panelnameid>301978</panelnameid>
+    <editornameid>301978</editornameid>
+    <panelnameid>123194</panelnameid>
     <panelrolloverid>123195</panelrolloverid>
     <obstructionradiusx>1.0000</obstructionradiusx>
     <obstructionradiusz>1.0000</obstructionradiusz>
@@ -40728,6 +40728,42 @@
     <movementtype>land</movementtype>
     <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
     <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <los>15.0000</los>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unit</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>Tracked</flag>
+    <flag>VariationLocked</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+  </unit>
+  <unit id="20537" name="zpTollStationIcon">
+    <dbid>20537</dbid>
+    <icon>resources\art\buildings\spc\tollstation.png</icon>
+    <portraiticon>resources\art\buildings\spc\tollstation.png</portraiticon>
+  </unit>
+  <unit id="20538" name="zpParisFlagNoIcon">
+    <dbid>20538</dbid>
+    <displaynameid>32671</displaynameid>
+    <editornameid>301980</editornameid>
+    <panelnameid>123194</panelnameid>
+    <panelrolloverid>123195</panelrolloverid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
     <los>15.0000</los>
     <unittype>EmbellishmentClass</unittype>
     <unittype>Unit</unittype>
