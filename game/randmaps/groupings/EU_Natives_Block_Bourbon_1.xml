@@ -176,7 +176,7 @@
 		<unit variation="128" posx="5.0731" posz="29.2845" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
 	</units>
 	<tiles>
-		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
+		<tilegroup type="Block" subtype="city\ground1_city_street_ground">
 			<block startx="-7" startz="-15" endx="-7" endz="-15"></block>
 			<block startx="-6" startz="-15" endx="-6" endz="-15"></block>
 			<block startx="-5" startz="-15" endx="-5" endz="-15"></block>

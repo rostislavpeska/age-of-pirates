@@ -50,6 +50,7 @@
 		<unit variation="157" posx="5.3226" posz="5.9129" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFence</unit>
 		<unit variation="208" posx="1.9157" posz="8.5113" orientx="-1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
 		<unit variation="147" posx="-4.7747" posz="9.0846" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Duck</unit>
+		<unit variation="175" posx="-7.0000" posz="13.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">FishCod</unit>
 		<unit variation="54" posx="2.1130" posz="11.7719" orientx="-1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
 		<unit variation="31" posx="2.7458" posz="11.3097" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="177" posx="-4.4348" posz="15.1011" orientx="0.7412" orienty="-0.0000" orientz="0.6713">PropSwan</unit>

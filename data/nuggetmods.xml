@@ -2021,7 +2021,7 @@
       <nuggetunit>NuggetCapturableBuildingBig</nuggetunit>
       <type>ConvertUnit</type>
       <amount>1</amount>
-      <maptype>westEurope</maptype>
+      <maptype>piratehistoricalmap</maptype>
       <convertunit>
         <unit>zpParisCitadelGaia</unit>
         <attachdummy>bone_nuggetA</attachdummy>
@@ -2045,7 +2045,7 @@
       <nuggetunit>NuggetCapturableBuildingBig</nuggetunit>
       <type>ConvertUnit</type>
       <amount>1</amount>
-      <maptype>westEurope</maptype>
+      <maptype>piratehistoricalmap</maptype>
       <convertunit>
         <unit>zpParisCitadelGaia</unit>
         <attachdummy>bone_nuggetA</attachdummy>
@@ -2069,7 +2069,7 @@
       <nuggetunit>NuggetCapturableBuildingBig</nuggetunit>
       <type>ConvertUnit</type>
       <amount>1</amount>
-      <maptype>westEurope</maptype>
+      <maptype>piratehistoricalmap</maptype>
       <convertunit>
         <unit>zpParisCitadelGaia</unit>
         <attachdummy>bone_nuggetA</attachdummy>
@@ -2093,7 +2093,7 @@
       <nuggetunit>NuggetCapturableBuildingBig</nuggetunit>
       <type>ConvertUnit</type>
       <amount>1</amount>
-      <maptype>westEurope</maptype>
+      <maptype>piratehistoricalmap</maptype>
       <convertunit>
         <unit>zpParisCitadelGaia</unit>
         <attachdummy>bone_nuggetA</attachdummy>
