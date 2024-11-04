@@ -38813,7 +38813,7 @@
     <los>32.0000</los>
     <projectileprotounit>Arrow</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
-    <buildpoints>50.0000</buildpoints>
+    <buildpoints>0.0000</buildpoints>
     <freebuildpoints>150.0000</freebuildpoints>
     <buildlimit>5</buildlimit>
     <bounty>70.0000</bounty>
@@ -38958,7 +38958,7 @@
     <los>32.0000</los>
     <projectileprotounit>Arrow</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
-    <buildpoints>50.0000</buildpoints>
+    <buildpoints>0.0000</buildpoints>
     <freebuildpoints>150.0000</freebuildpoints>
     <buildlimit>5</buildlimit>
     <bounty>70.0000</bounty>
@@ -38999,7 +38999,6 @@
     <flag>wallBuild</flag>
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
-    <tactics>zpautoconvert.tactics</tactics>
   </unit>
   <unit id="20521" name="zpNatRoyalMusketeer">
     <dbid>20521</dbid>
