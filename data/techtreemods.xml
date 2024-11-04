@@ -7989,7 +7989,6 @@
   <tech name="zpItalianSettlerBallance" type="Normal">
     <dbid>40254</dbid>
     <status>UNOBTAINABLE</status>
-    <status>YPInfiniteTech</status>
     <flag>Shadow</flag>
     <effects>
       <effects>
@@ -8048,7 +8047,6 @@
   <tech name="zpItalianGondolaBallance" type="Normal">
     <dbid>40258</dbid>
     <status>UNOBTAINABLE</status>
-    <status>YPInfiniteTech</status>
     <flag>Shadow</flag>
     <effects>
       <effects>
@@ -8060,7 +8058,6 @@
   <tech name="zpRevealerWarFog" type="Normal">
     <dbid>40259</dbid>
     <status>UNOBTAINABLE</status>
-    <status>YPInfiniteTech</status>
     <flag>Shadow</flag>
     <effects>
       <effect type="TransformUnit" toprotoid="zpCinematicRevealerToAllPassive" fromprotoid="zpCinematicRevealerToAll">
@@ -17608,7 +17605,7 @@
     </effects>
   </tech>
   <tech name="zpSPCNativeBourbon" type="Normal">
-    <dbid>40775</dbid>
+    <dbid>40805</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -18175,6 +18172,71 @@
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
         <target type ="Player"></target>
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpConvertWall" type="Normal">
+    <dbid>40804</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortCorner" fromprotoid="zpSPCFortCornerProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="deSPCEuroTower" fromprotoid="zpSPCFortTowerProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="SPCFortWallSmall" fromprotoid="zpSPCFortWallSmallProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCFortBarracks" fromprotoid="zpSPCFortBarracksProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCFortStable" fromprotoid="zpSPCFortStableProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="SPCFortWallLarge" fromprotoid="zpSPCFortWallProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="SPCFortWallMedium" fromprotoid="zpSPCFortWallMediumProp">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConvertWall</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate" type="Normal">
+    <dbid>40805</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocket">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate</effect>
+    </effects>
+  </tech>
+  <tech name="zpConvertWallBack" type="Normal">
+    <dbid>40806</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpSPCFortCornerProp" fromprotoid="SPCFortCorner">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCFortTowerProp" fromprotoid="deSPCEuroTower">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCFortWallSmallProp" fromprotoid="SPCFortWallSmall">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCFortBarracksProp" fromprotoid="zpSPCFortBarracks">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCFortStableProp" fromprotoid="zpSPCFortStable">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCFortWallProp" fromprotoid="SPCFortWallLarge">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCFortWallMediumProp" fromprotoid="SPCFortWallMedium">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConvertWallBack</effect>
+    </effects>
+  </tech>
+  <tech name="zpTollstation" type="Normal">
+    <dbid>40807</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpSPCPortSocket" relativity="Absolute">
+        <target type="ProtoUnit">zpTollStationIcon</target>
+      </effect>
+      <effect type ="SetName" proto ="zpSPCPortSocket" culture ="none" newname ="301979"></effect>
     </effects>
   </tech>
   

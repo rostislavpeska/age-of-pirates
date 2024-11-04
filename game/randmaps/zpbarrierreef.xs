@@ -157,7 +157,7 @@ int teamZeroCount = rmGetNumberPlayersOnTeam(0);
 int teamOneCount = rmGetNumberPlayersOnTeam(1);
 
 
-if ( cNumberTeams == 2 || ((teamZeroCount - teamOneCount) == 0)){
+if ( cNumberTeams == 2 && ((teamZeroCount - teamOneCount) == 0)){
 	if (spawnSwitch ==0){
 
 		if (PlayerNum == 2)

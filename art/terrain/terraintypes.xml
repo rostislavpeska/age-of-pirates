@@ -518,7 +518,7 @@
       <subtype impacttype="terrainsnow" bump="yukon\ground2specbump_yuk" sparkle="sparkle" height_strength="1.9280" texture_scale="30.0000" bump_scale="2.3510" grass_length="0.0000" chroma_key_tolerance="1.0000" chroma_key_color="0.450 0.940 0.050" height_offset="0.0000" grass_lean_strength="1.0000" grass_atlas_begin="0" grass_atlas_end="3" chroma_key_blur="0" chroma_key_contrast="1.0000" chroma_key_offset="0.0000" cutscene_texture_scale="0.0000" grass_width="1.0000" mapcolor_name="Dirt" uiname="Yukon Ground 3 Special Impassable">yukon\ground3_SPCnonbuild_yuk</subtype>
     </uiclass>
   </type>
-  <type name="Ice2" uiname="Ice/Passable All Nonbuildable AllowPlacementOnIce" impassablewater="" nonsolid="" allowplacementonice="">
+  <type name="Block" uiname="CityBlock" mapcolor="1 56 184" impassablewater="">
     <uiclass uiname="City">
       <subtype impacttype="terraindirt" bump="city\ground1_bump_cob" height_strength="0.8950" texture_scale="18.0000" bump_scale="1.0000" grass_length="0.0000" chroma_key_tolerance="2.5560" chroma_key_color="0.450 0.940 0.050" height_offset="-0.5000" grass_lean_strength="0.0000" grass_atlas_begin="36" grass_atlas_end="36" chroma_key_blur="0" chroma_key_contrast="2.8040" chroma_key_offset="0.3500" cutscene_texture_scale="25.0000" grass_width="0.0000" mapcolor_name="Dirt-Snow" uiname="City Ground 1 Street Ice">city\ground1_city_street_ground</subtype>
     </uiclass>

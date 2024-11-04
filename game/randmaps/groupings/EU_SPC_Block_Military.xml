@@ -7,10 +7,10 @@
 	<selectassingleunit>0</selectassingleunit>
 	<workonassingleunit>0</workonassingleunit>
 	<units>
-		<unit variation="208" posx="-9.0177" posz="-13.9166" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPottedPlants</unit>
 		<unit variation="6" posx="-5.3120" posz="-13.9303" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
-		<unit variation="160" posx="7.3355" posz="-14.0417" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
 		<unit variation="84" posx="13.2329" posz="-13.0950" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="208" posx="-9.0177" posz="-13.9166" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPottedPlants</unit>
+		<unit variation="160" posx="7.3355" posz="-14.0417" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
 		<unit variation="210" posx="-11.9236" posz="-12.1830" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">deNatEUPropStatue</unit>
 		<unit variation="68" posx="-2.1670" posz="-10.6262" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">deNatEUPropStatue</unit>
 		<unit variation="104" posx="13.8072" posz="-11.0931" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
@@ -21,15 +21,15 @@
 		<unit variation="34" posx="5.6635" posz="-10.0003" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpSPCFortCornerProp</unit>
 		<unit variation="157" posx="3.2178" posz="-9.4231" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCFortWallMediumProp</unit>
 		<unit variation="201" posx="-0.6250" posz="-9.1264" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpSPCFortWallSmallProp</unit>
-		<unit variation="34" posx="0.7772" posz="-10.2884" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpSPCFortCornerProp</unit>
+		<unit variation="34" posx="0.7772" posz="-10.2884" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCFortCornerProp</unit>
 		<unit variation="153" posx="-13.7999" posz="-8.9763" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPottedPlants</unit>
 		<unit variation="83" posx="10.0378" posz="-9.7293" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
 		<unit variation="179" posx="-10.4386" posz="-8.5297" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deGuardianMusketeer</unit>
 		<unit variation="90" posx="-7.8401" posz="-9.1657" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deGuardianMusketeer</unit>
-		<unit variation="166" posx="-5.7147" posz="-4.9961" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">SPCFortGate</unit>
-		<unit variation="166" posx="-5.7147" posz="-4.9961" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpTrainStopper</unit>
 		<unit variation="157" posx="7.7750" posz="-7.1323" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpSPCFortWallMediumProp</unit>
+		<unit variation="166" posx="-5.7147" posz="-4.9961" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">SPCFortGate</unit>
 		<unit variation="37" posx="-13.7962" posz="-6.6222" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
+		<unit variation="166" posx="-5.7147" posz="-4.9961" orientx="-0.7071" orienty="0.0055" orientz="-0.7071">zpInvisibleGateSocket</unit>
 		<unit variation="136" posx="-8.9810" posz="-7.5452" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deGuardianMusketeer</unit>
 		<unit variation="34" posx="9.6268" posz="-6.1904" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpSPCFortCornerProp</unit>
 		<unit variation="7" posx="-10.4464" posz="-6.0798" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deGuardianMusketeer</unit>
@@ -39,12 +39,12 @@
 		<unit variation="177" posx="2.7422" posz="-2.0810" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatRoyalMusketeer</unit>
 		<unit variation="15" posx="1.0055" posz="-1.9346" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatRoyalMusketeer</unit>
 		<unit variation="34" posx="-10.7518" posz="0.9250" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCFortCornerProp</unit>
+		<unit variation="145" posx="1.1016" posz="1.5340" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCCapturableFlagInvisible</unit>
 		<unit variation="117" posx="14.1535" posz="0.3874" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
-		<unit variation="145" posx="1.1016" posz="1.5340" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deSPCCapturableFlag</unit>
 		<unit variation="20" posx="-2.5079" posz="0.0244" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatRoyalMusketeer</unit>
-		<unit variation="94" posx="-1.0286" posz="0.0168" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatRoyalMusketeer</unit>
 		<unit variation="198" posx="3.1068" posz="0.4057" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatRoyalMusketeer</unit>
 		<unit variation="0" posx="0.8057" posz="0.0251" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatRoyalMusketeer</unit>
+		<unit variation="94" posx="-1.0286" posz="0.0168" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatRoyalMusketeer</unit>
 		<unit variation="157" posx="-10.0654" posz="3.1245" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCFortWallMediumProp</unit>
 		<unit variation="141" posx="-13.5357" posz="2.6403" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
 		<unit variation="107" posx="-1.8875" posz="1.9586" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatRoyalMusketeer</unit>
@@ -53,6 +53,7 @@
 		<unit variation="126" posx="3.3799" posz="2.1898" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatRoyalMusketeer</unit>
 		<unit variation="239" posx="1.6874" posz="2.0016" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatRoyalMusketeer</unit>
 		<unit variation="78" posx="5.9358" posz="3.6548" orientx="-0.7071" orienty="0.0055" orientz="-0.7071">deMercRoyalHorseman</unit>
+		<unit variation="167" posx="0.8968" posz="1.4438" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpParisFlag</unit>
 		<unit variation="157" posx="9.3608" posz="4.9125" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCFortWallMediumProp</unit>
 		<unit variation="226" posx="-3.3683" posz="3.6917" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatRoyalMusketeer</unit>
 		<unit variation="14" posx="-1.6665" posz="3.6095" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatRoyalMusketeer</unit>
@@ -63,6 +64,7 @@
 		<unit variation="157" posx="-8.0105" posz="7.9457" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCFortWallMediumProp</unit>
 		<unit variation="156" posx="13.7693" posz="7.7595" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="231" posx="4.1571" posz="6.4668" orientx="-0.7071" orienty="0.0055" orientz="-0.7071">deMercRoyalHorseman</unit>
+		<unit variation="33" posx="8.4484" posz="9.2691" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCFortTowerProp</unit>
 		<unit variation="207" posx="-1.9965" posz="8.5300" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCFortBarracksProp</unit>
 		<unit variation="233" posx="-13.8752" posz="8.2159" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
 		<unit variation="72" posx="-11.0455" posz="9.5888" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
@@ -78,7 +80,6 @@
 		<unit variation="186" posx="-1.0406" posz="14.4489" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
 		<unit variation="153" posx="2.9442" posz="-7.1921" orientx="0.0000" orienty="0.0000" orientz="1.0000">Outpost</unit>
 		<unit variation="126" posx="-7.8161" posz="4.4927" orientx="1.0000" orienty="0.0000" orientz="0.0000">Outpost</unit>
-		<unit variation="33" posx="8.4484" posz="9.2691" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCFortTowerProp</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">

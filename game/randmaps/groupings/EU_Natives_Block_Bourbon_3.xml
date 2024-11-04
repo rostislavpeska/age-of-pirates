@@ -129,7 +129,7 @@
 		<unit variation="184" posx="-8.0035" posz="14.6571" orientx="-0.3817" orienty="0.0000" orientz="-0.9243">PropsPottedPlants</unit>
 	</units>
 	<tiles>
-		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
+		<tilegroup type="Block" subtype="city\ground1_city_street_ground">
 			<block startx="-7" startz="-7" endx="0" endz="0"></block>
 			<block startx="-7" startz="1" endx="-7" endz="7"></block>
 			<block startx="-6" startz="1" endx="-6" endz="7"></block>
