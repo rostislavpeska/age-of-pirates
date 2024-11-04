@@ -8433,8 +8433,22 @@ minInterval 3
       int minimumShips = 2;
 
       if (agingUp() == true)
-      {  // Since this takes time, make sure we aren't about to need more
+      {  // Since this takes time, make sure we aren't about to need more ships
          currentAge += 1;
+      }
+
+      // Allow civs to run their standard attack plans first
+      if (gStrategy == cStrategyRush)
+      {
+         if (currentAge < cAge3) {return;}
+      }
+      else if (gStrategy == cStrategyNakedFF || gStrategy == cStrategySafeFF)
+      {
+         if (currentAge < cAge4) {return;}
+      }
+      else
+      {
+         if (currentAge < cAge4 || xsGetTime() < 35 * 60 * 1000) {return;}
       }
       
       if (currentAge == cAge3)
@@ -8443,7 +8457,7 @@ minInterval 3
       }
       else if (currentAge >= cAge4)
       {
-         minimumShips = 3;
+         minimumShips = 4;
       }
 
       if (civIsNative() == true)

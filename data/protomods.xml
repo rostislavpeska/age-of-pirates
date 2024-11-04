@@ -42777,19 +42777,19 @@
     <portraiticon>resources\art\units\natives\christmass_content\christmas_jaeger.png</portraiticon>
     <rollovertextid>400039</rollovertextid>
     <shortrollovertextid>400039</shortrollovertextid>
-    <initialhitpoints>135.0000</initialhitpoints>
-    <maxhitpoints>135.0000</maxhitpoints>
+    <initialhitpoints>250.0000</initialhitpoints>
+    <maxhitpoints>250.0000</maxhitpoints>
     <los>20.0000</los>
     <projectileprotounit>InvisibleProjectile</projectileprotounit>
     <autoattackrange>16.0000</autoattackrange>
     <unitaitype>RangedCombative</unitaitype>
-    <trainpoints>38.0000</trainpoints>
+    <trainpoints>20.0000</trainpoints>
     <bounty>13.0000</bounty>
     <buildbounty>13.0000</buildbounty>
     <cost resourcetype="Wood">30.0000</cost>
     <cost resourcetype="Gold">80.0000</cost>
     <allowedage>1</allowedage>
-    <armor type="Ranged" value="0.4000">
+    <armor type="Ranged" value="0.1500">
     </armor>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
@@ -42850,10 +42850,10 @@
     </protoaction>
     <protoaction>
       <name>DefendRangedAttack</name>
-      <damage>12.000000</damage>
+      <damage>14.000000</damage>
       <damagetype>Ranged</damagetype>
       <minrange>2.000000</minrange>
-      <maxrange>20.000000</maxrange>
+      <maxrange>17.000000</maxrange>
       <rof>3.000000</rof>
       <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
       <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
@@ -42885,10 +42885,10 @@
     </protoaction>
     <protoaction>
       <name>StaggerRangedAttack</name>
-      <damage>12.000000</damage>
+      <damage>14.000000</damage>
       <damagetype>Ranged</damagetype>
       <minrange>2.000000</minrange>
-      <maxrange>20.000000</maxrange>
+      <maxrange>17.000000</maxrange>
       <rof>3.000000</rof>
       <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
       <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
@@ -42909,10 +42909,10 @@
     </protoaction>
     <protoaction>
       <name>VolleyRangedAttack</name>
-      <damage>12.000000</damage>
+      <damage>14.000000</damage>
       <damagetype>Ranged</damagetype>
       <minrange>2.000000</minrange>
-      <maxrange>20.000000</maxrange>
+      <maxrange>17.000000</maxrange>
       <rof>3.000000</rof>
       <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
       <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
