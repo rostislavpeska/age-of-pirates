@@ -10454,6 +10454,21 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpParisCitadelPassage</target>
+      </effect>
+      <effect type="SetName" proto="zpParisCitadelPassage" culture="none" newname="300925">
+      </effect>
+      <effect type="Data" action="CannonAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpParisCitadelPassage</target>
+      </effect>
+      <effect type="Data" action="AntiShipAttack" amount="2.00" subtype="Damage" relativity="BasePercent">
+        <target type="ProtoUnit">zpParisCitadelPassage</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpParisCitadelPassage" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpConsulateOrthodoxGeorgians" type="Normal">
@@ -17514,17 +17529,21 @@
   <tech name="zpParisUnderground" type="Normal">
     <dbid>40772</dbid>
     <displaynameid>301932</displaynameid>
-    <cost resourcetype="Food">50.0000</cost>
-    <cost resourcetype="Gold">50.0000</cost>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
     <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\paris_underground.png</icon>
     <rollovertextid>301933</rollovertextid>
-    <flag>CountsTowardEconomicScore</flag>
+    <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>
     <effects>
-      <effect type="Data" amount="0.00" subtype="RevealLOS" relativity="Absolute">
-        <target type="ProtoUnit">AbstractImportantCityBuilding</target>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpParisCitadelWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpParisCitadelPassage</target>
       </effect>
     </effects>
   </tech>

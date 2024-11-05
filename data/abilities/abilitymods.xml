@@ -203,6 +203,12 @@
   <zpnatroyalmusketeer>
     <ability>deChargeAbilityChargedPistol<tech>DERoyalMusketeerPistolCharge</tech><bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
   </zpnatroyalmusketeer>
+  <zppariscitadel>
+    <ability>deCommanderyDeploy<rof>90</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
+  </zppariscitadel>
+  <zppariscitadelpassage>
+    <ability>deCommanderyDeploy<rof>90</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
+  </zppariscitadelpassage>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

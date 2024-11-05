@@ -1,0 +1,9 @@
+<animfile>
+    <definebone>silvermine</definebone>
+  <component>
+    lean-to
+     <assetreference type="GrannyModel"><file>nuggets\guilottine\guilotine_Model</file></assetreference>
+    <decal><effecttype>default</effecttype><texture>buildings\native_settlement\lean-to_ground</texture><selectedtexture>shadows_selections\selection_square_64x64</selectedtexture><width>6.0</width><height>6.0</height></decal>
+</component>
+  <anim>Idle<component>lean-to</component></anim>
+</animfile>

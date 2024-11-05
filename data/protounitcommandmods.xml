@@ -472,6 +472,25 @@
     <usemultiple>
     </usemultiple>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpPassageDeploy</name>
+    <icon>resources\images\icons\command\ability_passage_eject.png</icon>
+    <command>ejectAll(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <associatedtech>DECommanderyDeploy</associatedtech>
+    <associatedpower>deCommanderyDeploy</associatedpower>
+    <rollovertextid>124673</rollovertextid>
+    <disabledrollovertextid>301986</disabledrollovertextid>
+    <usemultiple>
+    </usemultiple>
+    <usemediumbutton3>
+    </usemediumbutton3>
+    <deploy>
+    </deploy>
+    <notcancellable>
+    </notcancellable>
+  </protounitcommand>
 
   <!--
 

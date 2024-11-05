@@ -1979,7 +1979,12 @@
       <string _locid="301978">ZP SPC Fort Flag</string>
       <string _locid="301979">Toll Station</string>
       <string _locid="301980">ZP SPC Fort Flag No Icon</string>
-
+      <string _locid="301981">Guillotine</string>
+      <string _locid="301982">ZP Paris Bastion Passage</string>
+      <string _locid="301983">Defensive Building with Underground Passage</string>
+  	  <string _locid="301984">ZP Paris Bastion Wagon</string>
+      <string _locid="301985">Bastion Wagon</string>
+      <string _locid="301986">Units cannot currently deploy from Underground Passage beneath this building.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

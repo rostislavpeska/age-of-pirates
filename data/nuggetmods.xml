@@ -2103,11 +2103,53 @@
         <idleanim>NuggetPirate1_Idle</idleanim>
         <exitanim>NuggetPirate1_Exit</exitanim>
       </guardianunit>
-      <guardian>deGuardianHighwayman</guardian>
+      <guardian>deGuardianCuirassier</guardian>
       <guardian>deGuardianCuirassier</guardian>
       <guardian>deGuardianCuirassier</guardian>
       <guardian>deGuardianCuirassier</guardian>
       <difficulty>194</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpGuillotine1</name>
+      <type>AdjustResource</type>
+      <nuggetunit>zpNuggetGuillotine</nuggetunit>
+      <rolloverstringid>29874</rolloverstringid>
+      <applystringid>29875</applystringid>
+      <resource>Wood</resource>
+      <amount>120</amount>
+      <maptype>piratehistoricalmap</maptype>
+      <guardian>deGuardianCuirassier</guardian>
+      <guardian>deGuardianCuirassier</guardian>
+      <difficulty>192</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpGuillotine2</name>
+      <type>ConvertUnit</type>
+      <convertsettler>true</convertsettler>
+      <nuggetunit>zpNuggetGuillotine</nuggetunit>
+      <rolloverstringid>36942</rolloverstringid>
+      <applystringid>36943</applystringid>
+      <convertunit>
+        <unit>Settler</unit>
+        <idleanim>Kidnap_HostageA_Idle</idleanim>
+        <exitanim>Kidnap_HostageA_Exit</exitanim>
+        <attachdummy>silvermine</attachdummy>
+      </convertunit>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>deGuardianCuirassier</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianCuirassier</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianMusketeer</unit>
+      </guardianunit>
+      <difficulty>192</difficulty>
+      <killunitonapply>0</killunitonapply>
     </nugget>
 
 
