@@ -328,7 +328,25 @@
     <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
     <unitaction>SpawnArmoredTrain</unitaction>   
   </power>
-
+  <power name="zpAbilityInspiringFlagFrench" type="TempUnit">
+    <displaynameid>110177</displaynameid>
+    <rolloverid>301996</rolloverid>
+    <icon>resources\images\icons\abilities\inspiring_flag_french_icon.png</icon>
+    <minimapeventtime sendalertto="ally">1</minimapeventtime>
+    <activetime>5</activetime>
+    <createunit quantity="1" radius="0" delay="0.0" permanent="" singleinstance="">deInspiringFlag</createunit>
+    <placement forceonmap="1">full</placement>
+    <rangeindicatorprotoid radius="24.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
+    <allowduringnorush>1</allowduringnorush>
+    <displayplacementruleserrors>1</displayplacementruleserrors>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+  </power>
+  <power name="zpAthosCrewAura" type="UnitAction">
+    <displaynameid>302013</displaynameid>
+    <rolloverid>302014</rolloverid>
+    <icon>resources\images\icons\abilities\musketeer_unity.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
 
 
 

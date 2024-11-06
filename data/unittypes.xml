@@ -23,4 +23,5 @@
   <unittype>GatherableOnlyByDivers</unittype>
   <unittype>AbstractCityManison</unittype>
   <unittype>AbstractImportantCityBuilding</unittype>
+  <unittype>zpAbstractHeroMusketeer</unittype>
 </unittypes>

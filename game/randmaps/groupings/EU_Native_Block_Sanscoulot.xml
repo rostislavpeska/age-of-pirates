@@ -4,8 +4,8 @@
 	<width>15</width>
 	<height>15</height>
 	<ignoreplacementrules>1</ignoreplacementrules>
-	<selectassingleunit>0</selectassingleunit>
-	<workonassingleunit>0</workonassingleunit>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
 	<units>
 		<unit variation="0" posx="4.9087" posz="-14.3849" orientx="1.0000" orienty="0.0000" orientz="-0.0007">PropsPoles</unit>
 		<unit variation="5" posx="8.7648" posz="-14.1415" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushDeccan</unit>

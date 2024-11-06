@@ -1,7 +1,7 @@
 <protounitsounddef>
   <protounit name="zpAmericanEmbassyWagon">
     <soundtype name="Select">
-      <soundset name="DEAmericanSettlerMaleSelectt">
+      <soundset name="DEAmericanSettlerMaleSelect">
       </soundset>
     </soundtype>
     <soundtype name="Grunt">
