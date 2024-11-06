@@ -16659,6 +16659,9 @@
       <effect type="TechStatus" status="obtainable">zpSansculotteBastions</effect>
       <effect type="TechStatus" status="obtainable">zpLafayetteEmbassy</effect>
       <effect type="TechStatus" status="obtainable">zpGalerieLafayette</effect>
+      <effect type="TechStatus" status="obtainable">zpSansculotteSpiritRevolution</effect>
+      <effect type="TechStatus" status="obtainable">zpSansculotteLoyalDistricts</effect>
+      <effect type="TechStatus" status="obtainable">zpStormBarricades</effect>
     </effects>
   </tech>
   <tech name="zpVeteranSansculottes" type="Normal">
@@ -16893,7 +16896,12 @@
       <effect type="CommandRemove" tech="zpSansculotteRevolution">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-
+      <effect type="CommandAdd" tech="zpStormBarricades" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSansculotteLoyalDistricts" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
       <effect type="TechStatus" status="active">zpRevolutionFrance</effect>
     </effects>
   </tech>
@@ -17529,8 +17537,7 @@
   <tech name="zpParisUnderground" type="Normal">
     <dbid>40772</dbid>
     <displaynameid>301932</displaynameid>
-    <cost resourcetype="Wood">400.0000</cost>
-    <cost resourcetype="Gold">100.0000</cost>
+    <cost resourcetype="Wood">300.0000</cost>
     <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\paris_underground.png</icon>
@@ -17538,7 +17545,7 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>
     <effects>
-      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpParisCitadelWagon" relativity="Absolute">
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpParisCitadelWagon" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -18004,9 +18011,6 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpMilitaryCamp</target>
-      </effect>
       <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">deNatRoyalMusketeer</target>
       </effect>
@@ -18258,10 +18262,107 @@
       <effect type ="SetName" proto ="zpSPCPortSocket" culture ="none" newname ="301979"></effect>
     </effects>
   </tech>
-  
-
-
-
+  <tech name="zpEnableMilitaryCamp" type="Normal">
+    <dbid>40808</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMilitaryCamp</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpMilitaryCamp" page="6" column="2">
+        <target type="ProtoUnit">Explorer</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSansculotteSpiritRevolution" type="Normal">
+    <dbid>40809</dbid>
+    <displaynameid>301987</displaynameid>
+    <cost resourcetype ="Food">300.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\revolution_spirit.png</icon>
+    <rollovertextid>301988</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="0.9" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">Unit</target>
+      </effect>
+      <effect type="Data" amount="1.10" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">Cannon</target>
+      </effect>
+      <effect type="Data" amount="1.10" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">GreatBombard</target>
+      </effect>
+      <effect type="Data" amount="1.10" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">Rocket</target>
+      </effect>
+      <effect type="Data" amount="1.10" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">xpDogSoldier</target>
+      </effect>
+      <effect type="Data" amount="1.10" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">xpSkullKnight</target>
+      </effect>
+      <effect type="Data" amount="1.10" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">ypFlyingCrow</target>
+      </effect>
+      <effect type="Data" amount="1.10" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">xpBuilder</target>
+      </effect>
+      <effect type="Data" amount="1.10" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">xpMedicineManAztec</target>
+      </effect>
+      <effect type="Data" amount="1.10" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">dePriestess</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSansculotteLoyalDistricts" type="Normal">
+    <dbid>40810</dbid>
+    <displaynameid>301989</displaynameid>
+    <cost resourcetype ="Food">500.0000</cost>
+    <cost resourcetype ="Gold">300.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\loyal_districts.png</icon>
+    <rollovertextid>301990</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="15.00" subtype="PopulationCapExtra" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpStormBarricades" type="Normal">
+    <dbid>40811</dbid>
+    <displaynameid>301991</displaynameid>
+    <cost resourcetype ="Wood">500.0000</cost>
+    <cost resourcetype ="Gold">300.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\stormbarricades.png</icon>
+    <rollovertextid>301992</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpGunpowderWagon</target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpGunpowderWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="CommandAdd" proto="zpGunpowderWagon" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
 
 
   

@@ -209,6 +209,9 @@
   <zppariscitadelpassage>
     <ability>deCommanderyDeploy<rof>90</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
   </zppariscitadelpassage>
+  <!--<explorer>
+    <ability>deAbilityInspiringFlag<tech>DEGeneralInspiringFlagShadow</tech><rof>180</rof><donotforcestop>true</donotforcestop></ability>
+  </explorer>-->
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

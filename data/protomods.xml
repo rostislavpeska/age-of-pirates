@@ -934,7 +934,8 @@
     <tech row="0" page="1" column="1">zpVeteranSansculottes</tech>
     <tech row="0" page="1" column="1">zpGuardSansculottes</tech>
     <tech row="0" page="1" column="1">zpSansculotteRevolution</tech>
-    <tech row="0" page="2" column="1">zpParisUnderground</tech>
+    <tech row="0" page="2" column="0">zpSansculotteSpiritRevolution</tech>
+    <tech row="0" page="2" column="4">zpParisUnderground</tech>
     <tech row="0" page="2" column="2">zpSansculotteBrricades</tech>
     <tech row="0" page="2" column="3">zpSansculotteBastions</tech>
 
@@ -41037,6 +41038,79 @@
       <rof>3.000000</rof>
     </protoaction>
   </unit>
+  <unit id="20542" name="zpGunpowderWagon">
+    <dbid>20542</dbid>
+    <displaynameid>301993</displaynameid>
+    <editornameid>301994</editornameid>
+    <subciv>zpSansculottes</subciv>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>3.0000</turnrate>
+    <animfile>units\trade\supply_cart\supply_cart_gunpowder.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trade\spc_wagon_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trade\spc_wagon_portrait.png</portraiticon>
+    <rollovertextid>301995</rollovertextid>
+    <shortrollovertextid>301995</shortrollovertextid>
+    <initialhitpoints>450.0000</initialhitpoints>
+    <maxhitpoints>450.0000</maxhitpoints>
+    <trainpoints>50.0000</trainpoints>
+    <buildbounty>35.0000</buildbounty>
+    <cost resourcetype="Gold">100.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <los>22.0000</los>
+    <buildlimit>1</buildlimit>
+    <unitaitype>RangedCombative</unitaitype>
+    <bounty>35.0000</bounty>
+    <allowedage>0</allowedage>
+    <armor type="Ranged" value="0.1000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractHandSiege</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractSiegeTrooper</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>RotateInPlace</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>zpdetonatewagon.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>6000.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+  </unit>
 
 
 
@@ -41236,6 +41310,9 @@
     <placementfile>buildinglarge_city.xml</placementfile>
   </unit>
   <unit name="deCommandery">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit id="20330" name="zpAmericanEmbassy">
     <placementfile>buildinglarge_city.xml</placementfile>
   </unit>
   <unit name="deSPCWaterlooHouseProp">

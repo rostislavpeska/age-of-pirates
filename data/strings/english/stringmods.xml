@@ -1931,7 +1931,7 @@
       <string _locid="301930">ZP Paris Bastion</string>
       <string _locid="301931">ZP Paris Bastion Convertable</string>
       <string _locid="301932">Paris Underground</string>
-      <string _locid="301933">Reveals all city resource buildings and Bastions.</string>
+      <string _locid="301933">Ships one Bastion Wagon and allows you to construct a Bastion and connect it with your Bastions in the city through an underground passage.</string>
       <string _locid="301934">Les barricades</string>
       <string _locid="301935">Allows Sansculottes and revolutionaries to construct barricades to prevent enemy units to pass through the streets.</string>
       <string _locid="301936">Café Procope</string>
@@ -1985,6 +1985,19 @@
   	  <string _locid="301984">ZP Paris Bastion Wagon</string>
       <string _locid="301985">Bastion Wagon</string>
       <string _locid="301986">Units cannot currently deploy from Underground Passage beneath this building.</string>
+      <string _locid="301987">Spirit of the revolution</string>
+      <string _locid="301988">All units get trained faster by 10%</string>
+      <string _locid="301989">Loyal Districts</string>
+      <string _locid="301990">Increases your maximum population by 15.</string>
+      <string _locid="301991">Storm the Barricades</string>
+      <string _locid="301992">Allows you to train a gunpowder wagon which can detonate next to enemy building.</string>
+      <string _locid="301993">Gunpowder Wagon</string>
+      <string _locid="301994">ZP GunpowderWagon</string>
+      <string _locid="301995">Can strike enemy buildings and walls and detonate next to them</string>
+
+
+
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
