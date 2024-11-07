@@ -1803,7 +1803,7 @@ minInterval 30
 rule waterDefend
 inactive
 minInterval 5  
-{  // AssertiveWall: Reduced minINterval to 5 from 10
+{  // AssertiveWall: Reduced minInterval to 5 from 10
    if (gNavyDefendPlan < 0) // First run, create a persistent defend plan.
    {
       gNavyDefendPlan = aiPlanCreate("Water Defend", cPlanCombat);
@@ -1827,13 +1827,18 @@ minInterval 5
       aiPlanSetActive(gNavyDefendPlan);
    }
 
-   // AssertiveWall: build a dummy plan and move fishing boats into it to control them easier
+   // AssertiveWall: build a dummy plan and move fishing boats into it to control them easier. 
+   //                Enables fishingBellMonitor to ungarrison boats from docks
    if (gFishingBellPlan < 0) // first run
    {
       gFishingBellPlan = aiPlanCreate("Fishing Dock Bell", cPlanReserve);
       aiPlanAddUnitType(gFishingBellPlan, gFishingUnit, 0, 200, 200);
       aiPlanSetDesiredPriority(gFishingBellPlan, 1);
       aiPlanSetActive(gFishingBellPlan);
+      if (xsIsRuleEnabled("fishingBellMonitor") == false)
+      {
+         xsEnableRule("fishingBellMonitor");
+      }
    }
    
    int enemyQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
@@ -1925,10 +1930,9 @@ minInterval 5
             }
          }
          else if (nearbyEnFound <= 0)
-         {  // AssertiveWall: Ungarrison from dock
+         {  // AssertiveWall: Ungarrison from dock. Should be unnecessary, also handled in fishingBellMonitor
             dockUnit = getUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 1.0);
-            sLocation = kbUnitGetPosition(dockUnit);
-            if (sLocation != cInvalidVector)
+            if (dockUnit > 0)
             {
                aiTaskUnitEject(dockUnit);
             }

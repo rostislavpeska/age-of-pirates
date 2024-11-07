@@ -2753,11 +2753,11 @@ void shipGrantedHandler(int parm = -1) // parm is unused.
                      {
                         if (gStrategy == cStrategySafeFF) // Safe Fast Fortress
                         {
-                           totalValue = totalValue * 1.2;
+                           totalValue = totalValue * 1.25;
                            // Favor gold
                            if (goldValue > 0)
                            {
-                              totalValue = totalValue * 1.1;
+                              totalValue = totalValue * 1.5;
                            }
                         }
                         else if (gStrategy == cStrategyNakedFF || gStrategy == cStrategyFastIndustrial) // AssertiveWall: Naked FF
@@ -2766,7 +2766,7 @@ void shipGrantedHandler(int parm = -1) // parm is unused.
                            // Favor gold
                            if (goldValue > 0)
                            {
-                              totalValue = totalValue * 1.1;
+                              totalValue = totalValue * 1.5;
                            }
                         }
                      }

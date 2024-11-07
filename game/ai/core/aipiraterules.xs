@@ -34,7 +34,8 @@ minInterval 1
        cRandomMapName == "zpvenice" ||
        cRandomMapName == "zpmediterranean" ||
        cRandomMapName == "zpzealand" ||
-       cRandomMapName == "zpcookislands")
+       cRandomMapName == "zpcookislands" ||
+       cRandomMapName == "zpbarrierreef")
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
@@ -93,7 +94,8 @@ minInterval 1
        cRandomMapName == "euArchipelagoLarge"||
        cRandomMapName == "zpmediterranean" ||
        cRandomMapName == "zpatols" ||
-       cRandomMapName == "zpkurils")
+       cRandomMapName == "zpkurils" ||
+       cRandomMapName == "zpbarrierreef")
    {
       gIsArchipelagoMap = true;
       gStartOnDifferentIslands = true;
@@ -106,7 +108,8 @@ minInterval 1
       gHomeBase = kbGetPlayerStartingPosition(cMyID);
 
       // Atolls are a subset of Archipelago
-      if (cRandomMapName == "zpatols")
+      if (cRandomMapName == "zpatols" ||
+          cRandomMapName == "zpbarrierreef")
       {
          gIsAtollMap = true;
       }

@@ -6886,7 +6886,7 @@ vector selectPickupPoint(vector friendlyLoc = cInvalidVector, vector enemyLoc = 
 
 //==============================================================================
 // Checks to see if we should retreat
-// 
+// true means we are retreating
 //==============================================================================
 bool retreatCheck(bool forceRetreat = false)
 {
@@ -6997,6 +6997,12 @@ bool retreatCheck(bool forceRetreat = false)
 
             return true;
          }
+
+         // set the military to main base again
+         aiPlanSetVariableVector(gLandReservePlan, cCombatPlanTargetPoint, 0, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
+         aiPlanSetVariableVector(gLandDefendPlan0, cCombatPlanTargetPoint, 0, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
+
+         xsDisableRule("fbBuildingChain"); // stop building forward buildings here
       }
    }
 
@@ -7694,9 +7700,9 @@ void trainFromGalleons()
    int unitToTrain = -1;
 
    // Find a suitable unit to train. Just anything for now
-   for (i = 0; < gNumArmyUnitTypes)
+   for (i = 0; < 50)
    {
-      unitToTrain = kbUnitPickGetResult(gLandUnitPicker, i);
+      unitToTrain = kbUnitGetProtoUnitID(getUnit(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive));
       if (kbProtoUnitIsType(cMyID, unitToTrain, cUnitTypeAbstractArtillery) == false)
       {
          break;
@@ -7781,9 +7787,9 @@ void buildForwardTowers()
       return;
    }
 
-   if (towerBuildLimit - towerCount >= 3)
+   if (towerBuildLimit - towerCount >= 2)
    {
-      towersToBuild = 3;
+      towersToBuild = 2;
    }
    else
    {
@@ -7811,6 +7817,14 @@ void buildForwardTowers()
    else
    {
       planID = createLocationBuildPlan(gTowerUnit, towersToBuild, 100, true, -1, gAmphibiousAssaultTarget, 1);
+   }
+
+   if (planID > 0)
+   {
+      if (xsIsRuleEnabled("fbBuildingChain") == false)
+      {
+         xsEnableRule("fbBuildingChain"); 
+      }
    }
    
    return;
@@ -8134,7 +8148,7 @@ void establishForwardBase()
       gForwardBaseShouldDefend = true;
 
       kbBaseSetMilitary(cMyID, gForwardBaseID, true);
-      moveDefenseReflex(gAmphibiousAssaultTarget, 50.0, gForwardBaseID);
+      //moveDefenseReflex(gAmphibiousAssaultTarget, 50.0, gForwardBaseID); // defense plans can't cross water
 
       // Add all forward buildings to the forward base
       int buildingQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeBuildingsNotWalls, cPlayerRelationSelf, cUnitStateAlive,
@@ -8172,9 +8186,12 @@ void establishForwardBase()
    forwardArmyPlan();
    //xsEnableRule("fbBuildingChain"); 
 
+   // set the military to the forward base
+   aiPlanSetVariableVector(gLandReservePlan, cCombatPlanTargetPoint, 0, gAmphibiousAssaultTarget);
+   aiPlanSetVariableVector(gLandDefendPlan0, cCombatPlanTargetPoint, 0, gAmphibiousAssaultTarget);
+
    // We're done. Destroy all the plans
-   // Set the center of naval operations to the forward base
-   //gNavyVec = getCoastalPoint(guessEnemyLocation(), gAmphibiousAssaultTarget, 15, true);
+   //gNavyVec = getCoastalPoint(guessEnemyLocation(), gAmphibiousAssaultTarget, 15, true);    // Set the center of naval operations to the forward base
    gAmphibiousAssaultStage = -1;//cGatherNavy;
    aiPlanDestroy(gAmphibiousAssaultPlan);
    aiPlanDestroy(gAmphibiousArmyPlan);
@@ -8182,6 +8199,7 @@ void establishForwardBase()
    gAmphibiousTransportPlan = -1;
    gAmphibiousAssaultPlan = -1;
    gAmphibiousArmyPlan = -1;
+
 }
 
 //==============================================================================
@@ -8196,69 +8214,66 @@ rule fbBuildingChain
 inactive
 minInterval 30
 {  
-   if (gForwardBaseState != cForwardBaseStateActive)
-   {
-      // Quit early if we don't have the fb
-      xsDisableSelf();
+   // Make a couple military building plans to get the jump on the FB building logic
+   static int buildingPlan0 = -1;
+   static int buildingPlan1 = -1;
+   int building0 = xsArrayGetInt(gMilitaryBuildings, 0);  // typically barracks
+   int building1 = xsArrayGetInt(gMilitaryBuildings, 1);  // typically stable
+   bool makeAnother = false;
+   int barracksNum = 2;
+   int stableNum = 1;
+   int vilIndex = 0;
+   if (btBiasCav > btBiasInf)
+   {  // Swap barracks and stable
+      building0 = xsArrayGetInt(gMilitaryBuildings, 1);  // typically stable
+      building1 = xsArrayGetInt(gMilitaryBuildings, 0);  // typically barracks
+   }
+
+   if (xsGetTime() > 30 * 60 * 1000 || kbGetAge() >= cAge4)
+   {  // Double values in late game
+      barracksNum = 2 * barracksNum;
+      stableNum = 2 * stableNum;
+   }
+
+   if (aiPlanGetActive(buildingPlan0) == true && aiPlanGetActive(buildingPlan1) == true)
+   {  // Only do two at a time
       return;
    }
 
-   // Make a couple military building plans to get the jump on the FB building logic
-   int building0 = xsArrayGetInt(gMilitaryBuildings, 0);  // typically barracks
-   int building1 = xsArrayGetInt(gMilitaryBuildings, 1);  // typically stable
-   int tempBuilding = -1;
-   bool makeAnother = false;
-   int barracksNum = 1;
-   int stableNum = 2;
-   int vilIndex = 0;
-   if (btBiasInf >= btBiasCav)
-   {
-      barracksNum = 2;
-      stableNum = 1;
-   }
-
    int building0num = getUnitCountByLocation(building0, cPlayerRelationSelf, cUnitStateABQ, gAmphibiousAssaultTarget, 30);
-   int building1num = -1;
-
-   if (building0num == 0)
-   {
-      makeAnother = true;
-      tempBuilding = building0num;
-   }
-   else
-   {
-      building0num = getUnitCountByLocation(building0, cPlayerRelationSelf, cUnitStateABQ, gAmphibiousAssaultTarget, 30);
-      building1num = getUnitCountByLocation(building1, cPlayerRelationSelf, cUnitStateABQ, gAmphibiousAssaultTarget, 30);
-   }
+   int building1num = getUnitCountByLocation(building1, cPlayerRelationSelf, cUnitStateABQ, gAmphibiousAssaultTarget, 30);
 
    if (building0num < barracksNum)
    {
       makeAnother = true;
-      tempBuilding = building0num;
    }
    else if (building1num < stableNum)
    {
       makeAnother = true;
-      tempBuilding = building1num;
-   }
-   else
-   {
-      // We have enough, disable self
-      xsDisableSelf();
    }
 
    if (makeAnother == true)
    {
-      int plan0 = createLocationBuildPlan(tempBuilding, barracksNum, 100, true, -1, gAmphibiousAssaultTarget, 1);
-
-      int vilQuery = createSimpleUnitQuery(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 40);
-      int numberVil = kbUnitQueryExecute(vilQuery);
-      if (numberVil > 0)
+      vector randomNearbyLoc = getRandomPoint(gAmphibiousAssaultTarget, 30);
+      if (aiPlanGetActive(buildingPlan0) == false)
       {
-         for (i = 0; < numberVil)
-         {  // Add forward villagers
-            aiPlanAddUnit(plan0, kbUnitQueryGetResult(vilQuery, i));
+         buildingPlan0 = createLocationBuildPlan(building0, barracksNum, 100, true, -1, randomNearbyLoc, 1);
+
+         int vilQuery = createSimpleUnitQuery(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 40);
+         int numberVil = kbUnitQueryExecute(vilQuery);
+         if (numberVil > 0)
+         {
+            for (i = 0; < numberVil)
+            {  // Add forward villagers
+               aiPlanAddUnit(buildingPlan0, kbUnitQueryGetResult(vilQuery, i));
+            }
          }
+      }
+
+      if (aiPlanGetActive(buildingPlan1) == false)
+      {
+         randomNearbyLoc = getRandomPoint(gAmphibiousAssaultTarget, 30);
+         buildingPlan1 = createLocationBuildPlan(building1, stableNum, 100, true, -1, randomNearbyLoc, 1);
       }
    }
 }
@@ -8280,6 +8295,12 @@ minInterval 10
 
          //endDefenseReflex();
          moveDefenseReflex();
+
+         // set the military to main base again
+         aiPlanSetVariableVector(gLandReservePlan, cCombatPlanTargetPoint, 0, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
+         aiPlanSetVariableVector(gLandDefendPlan0, cCombatPlanTargetPoint, 0, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
+
+         xsDisableRule("fbBuildingChain");  // stop building forward buildings here
 
          //gAmphibiousAssaultStage = cGatherNavy;
          gAmphibiousAssaultStage = -1;
@@ -8412,8 +8433,22 @@ minInterval 3
       int minimumShips = 2;
 
       if (agingUp() == true)
-      {  // Since this takes time, make sure we aren't about to need more
+      {  // Since this takes time, make sure we aren't about to need more ships
          currentAge += 1;
+      }
+
+      // Allow civs to run their standard attack plans first
+      if (gStrategy == cStrategyRush)
+      {
+         if (currentAge < cAge3) {return;}
+      }
+      else if (gStrategy == cStrategyNakedFF || gStrategy == cStrategySafeFF)
+      {
+         if (currentAge < cAge4) {return;}
+      }
+      else
+      {
+         if (currentAge < cAge4 || xsGetTime() < 35 * 60 * 1000) {return;}
       }
       
       if (currentAge == cAge3)
@@ -8422,7 +8457,7 @@ minInterval 3
       }
       else if (currentAge >= cAge4)
       {
-         minimumShips = 3;
+         minimumShips = 4;
       }
 
       if (civIsNative() == true)
@@ -8562,7 +8597,7 @@ minInterval 3
          bombardCoast(); // Keep bombarding the coast
          //moveInland();
 
-         //trainFromGalleons();
+         trainFromGalleons();
          buildForwardTowers();
          break;
       }
@@ -8570,7 +8605,7 @@ minInterval 3
       {
          // Once we're established we can let our navy do other things, except galleons
          //moveInland();
-         //trainFromGalleons();
+         trainFromGalleons();
          establishForwardBase();
          break;
       }
