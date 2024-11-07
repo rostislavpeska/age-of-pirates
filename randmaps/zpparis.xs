@@ -64,6 +64,8 @@ void main(void)
 		sizeX = 833;
 	rmSetMapSize(sizeX, sizeZ);
 	// rmSetMapElevationParameters(cElevTurbulence, 0.4, 6, 0.5, 3.0);  // DAL - original
+
+	rmSetAllMapReveal(true);
 	
 	rmSetMapElevationHeightBlend(1);
 	
@@ -301,7 +303,6 @@ void main(void)
     rmRiverAddWaypoint(riverID, 0.5, 0.0);
     rmRiverAddWaypoint(riverID, 0.5, 1.0);
 	rmRiverBuild(riverID);
-	rmRiverReveal(riverID, 01);
 
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!! ISLANDS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -358,7 +359,6 @@ void main(void)
     rmAddAreaConstraint(shoreLineSouth , citySouthConstraint);
     rmAddAreaToClass(shoreLineSouth , rmClassID("classPlateau"));
     rmSetAreaObeyWorldCircleConstraint(shoreLineSouth, false);
-	rmSetAreaReveal(shoreLineSouth, 10);
     rmBuildArea(shoreLineSouth); 
 
     int shoreLineNorth = rmCreateArea("shore North");
@@ -374,7 +374,6 @@ void main(void)
     rmAddAreaConstraint(shoreLineNorth , cityNorthConstraint);
     rmAddAreaToClass(shoreLineNorth , rmClassID("classPlateau"));
     rmSetAreaObeyWorldCircleConstraint(shoreLineNorth, false);
-	rmSetAreaReveal(shoreLineNorth, 10);
     rmBuildArea(shoreLineNorth); 
 
 	// Streets terrain

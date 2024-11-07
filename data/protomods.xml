@@ -39932,7 +39932,7 @@
     <shortrollovertextid>64126</shortrollovertextid>
     <initialhitpoints>6500.0000</initialhitpoints>
     <maxhitpoints>6500.0000</maxhitpoints>
-    <los>38.0000</los>
+    <los>30.0000</los>
     <bounty>240.0000</bounty>
     <allowedage>0</allowedage>
     <armor type="Siege" value="0.0000">
@@ -39959,6 +39959,7 @@
     <unittype>Building</unittype>
     <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
     <unittype>AbstractFindFort</unittype>
+    <flag>GivesLOSToAll</flag>
     <flag>Invulnerable</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -40001,7 +40002,7 @@
     <shortrollovertextid>64126</shortrollovertextid>
     <initialhitpoints>6500.0000</initialhitpoints>
     <maxhitpoints>6500.0000</maxhitpoints>
-    <los>38.0000</los>
+    <los>30.0000</los>
     <bounty>240.0000</bounty>
     <allowedage>0</allowedage>
     <armor type="Siege" value="0.0000">
@@ -40047,6 +40048,7 @@
     <flag>ColorTransformNonGaia</flag>
     <flag>Tracked</flag>
     <flag>NotDeleteable</flag>
+    <flag>GivesLOSToAll</flag>
     <tactics>ypkingshill.tactics</tactics>
   </unit>
   <unit id="20530" name="zpCityHall">
@@ -40070,7 +40072,7 @@
     <shortrollovertextid>64126</shortrollovertextid>
     <initialhitpoints>6500.0000</initialhitpoints>
     <maxhitpoints>6500.0000</maxhitpoints>
-    <los>38.0000</los>
+    <los>30.0000</los>
     <bounty>240.0000</bounty>
     <allowedage>0</allowedage>
     <armor type="Siege" value="0.0000">
@@ -40116,6 +40118,7 @@
     <flag>ColorTransformNonGaia</flag>
     <flag>Tracked</flag>
     <flag>NotDeleteable</flag>
+    <flag>GivesLOSToAll</flag>
     <tactics>ypkingshill.tactics</tactics>
   </unit>
   <unit id="20531" name="zpSPCFortBarracksProp">

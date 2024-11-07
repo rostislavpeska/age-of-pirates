@@ -18569,6 +18569,12 @@
       <effect type="CommandAdd" proto="deNatMercRoyalMusketeer" page="0" column="20">
         <target type="ProtoUnit">Blockhouse</target>
       </effect>
+      <effect type="CommandAdd" proto="deNatMercRoyalDragoon" page="0" column="21">
+        <target type="ProtoUnit">zpSPCFortStable</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercRoyalMusketeer" page="0" column="20">
+        <target type="ProtoUnit">zpSPCFortBarracks</target>
+      </effect>
     </effects>
   </tech>
   <tech name="DERevolutionFranceNE">
