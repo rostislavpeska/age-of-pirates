@@ -4,8 +4,8 @@
 	<width>15</width>
 	<height>15</height>
 	<ignoreplacementrules>1</ignoreplacementrules>
-	<selectassingleunit>0</selectassingleunit>
-	<workonassingleunit>0</workonassingleunit>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
 	<units>
 		<unit variation="217" posx="-11.4357" posz="-13.6954" orientx="-0.3826" orienty="-0.0000" orientz="-0.9239">UnderbrushCalifornia</unit>
 		<unit variation="217" posx="-2.3884" posz="-13.7549" orientx="-1.0000" orienty="-0.0000" orientz="-0.0001">UnderbrushCalifornia</unit>
