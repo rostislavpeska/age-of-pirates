@@ -18342,6 +18342,9 @@
       <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpNatRoyalMusketeer</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSansculotteSpiritRevolution" type="Normal">
