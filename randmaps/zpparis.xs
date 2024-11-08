@@ -717,7 +717,7 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 // Outer Center
 
 	rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ7);
-	rmPlaceGroupingAtLoc(blockBourbon, 0, locXm3, locZ2);
+	rmPlaceGroupingAtLoc(blockSansculot, 0, locXm3, locZ2);
 
 	rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX3, locZ2);
 	rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locXm3, locZ7);
@@ -1074,6 +1074,24 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
     
 // ************************* TRIGGERS ******************************
 
+	// Map Objectives
+	rmObjectiveScreenSetTitle(302018);
+	rmObjectiveScreenSetGoal(302021);
+	rmObjectiveAdd(302022, 302023, true, true, true); // General objective
+	rmObjectiveAdd(302024, 302023, true, true, true); // Royal Court REV
+	rmObjectiveSetTeam(2, 1);
+	rmObjectiveAdd(302024, 302023, true, true, true); // Royal Court ROY
+	rmObjectiveSetTeam(3, 2);
+	rmObjectiveAdd(302025, 302023, true, true, true); // City Hall REV
+	rmObjectiveSetTeam(4, 1);
+	rmObjectiveAdd(302025, 302023, true, true, true); // City Hall ROY
+	rmObjectiveSetTeam(5, 2);
+	rmObjectiveAdd(302026, 302023, true, true, true); // Bastille REV
+	rmObjectiveSetTeam(6, 1);
+	rmObjectiveAdd(302026, 302023, true, true, true); // Bastille ROY
+	rmObjectiveSetTeam(7, 2);
+
+	// Targeting Unit IDs
 	int cityStateFlag1 = rmGetGroupingInstanceUnitByType(cityState1, "zpSPCCapturableFlagInvisible");
 	int cityStateFlag2 = rmGetGroupingInstanceUnitByType(cityState2, "zpSPCCapturableFlagInvisible");
 
@@ -1090,25 +1108,45 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 	int stopper1ID =gateStopper1+0;
 	int stopper2ID =gateStopper2+0;
 
-	int victoryCountDown = 30;
+	int victoryCountDown = 240;
 
 	// Starting techs
 
 	rmCreateTrigger("Starting Techs");
 	rmSwitchToTrigger(rmTriggerID("Starting techs"));
 	for(i=1; <= cNumberNonGaiaPlayers) {
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID",i);
-	rmSetTriggerEffectParam("TechID","cTechzpForbidRevolutions"); // No normal revolutions on this map
-	rmSetTriggerEffectParamInt("Status",2);
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID",i);
-	rmSetTriggerEffectParam("TechID","cTechzpDisableWalls"); // No normal revolutions on this map
-	rmSetTriggerEffectParamInt("Status",2);
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID",i);
-	rmSetTriggerEffectParam("TechID","cTechzpEnableMilitaryCamp"); // No normal revolutions on this map
-	rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpForbidRevolutions"); // No normal revolutions on this map
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpDisableWalls"); // No normal revolutions on this map
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpEnableMilitaryCamp"); // No normal revolutions on this map
+		rmSetTriggerEffectParamInt("Status",2);
+		if (rmGetPlayerTeam(i) == 0) {
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",i);
+			rmSetTriggerEffectParam("TechID","cTechzpNatBourbonBigbuttonDisableShadow"); // Disable Bourbon techs for Revolutionaries
+			rmSetTriggerEffectParamInt("Status",2);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",i);
+			rmSetTriggerEffectParam("TechID","cTechzpNatBigbuttonDisableShadow"); // Disable Bourbon techs for Revolutionaries
+			rmSetTriggerEffectParamInt("Status",2);
+		}
+		else {
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",i);
+			rmSetTriggerEffectParam("TechID","cTechzpNatSansculotteBigbuttonDisableShadow"); // Disable Sansculotte Big button for Royalists
+			rmSetTriggerEffectParamInt("Status",2);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",i);
+			rmSetTriggerEffectParam("TechID","cTechzpNatSansculoteoffShadow"); // Disable Bourbon techs for Revolutionaries
+			rmSetTriggerEffectParamInt("Status",2);
+		}
 	}
 	for(i=0; <= cNumberNonGaiaPlayers) {
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -1136,7 +1174,14 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 	for(i = 1; < cNumberTeams+1)
     {
         rmCreateTrigger("TeamVictory"+i);
-        
+		rmCreateTrigger("Victory_Init"+i);
+		rmCreateTrigger("RoyalCourt_ON"+i);
+		rmCreateTrigger("CityHall_ON"+i);
+		rmCreateTrigger("Bastille_ON"+i);
+		rmCreateTrigger("Victory_Counter"+i);
+		rmCreateTrigger("Victory_Counter_OFF"+i);
+
+	   // Team Victory 
 		rmSwitchToTrigger(rmTriggerID("TeamVictory"+i));
 		rmAddTriggerEffect("Team Victory");
         rmSetTriggerEffectParamInt("TeamID", i);
@@ -1145,156 +1190,191 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
         rmSetTriggerRunImmediately(true);
         rmSetTriggerLoop(false);
         
-    }
+		// Initialize default values
+		rmSwitchToTrigger(rmTriggerID("Victory_Init"+i));
+		rmAddTriggerEffect("Quest Var Set");
+		rmSetTriggerEffectParam("QVName","victoryBuildings"+i);
+		rmSetTriggerEffectParamInt("Value",0);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
 
-	rmCreateTrigger("Royal_Court_INIT");
-	rmCreateTrigger("Royal_Court_REV");
-	rmCreateTrigger("Royal_Court_ROY");
-	rmCreateTrigger("Victory_Counter_REV");
-	rmCreateTrigger("Victory_Counter_ROY");
-	rmCreateTrigger("Victory_Counter_REV_OFF");
-	rmCreateTrigger("Victory_Counter_ROY_OFF");
+		// Royal Court ownership
+		rmSwitchToTrigger(rmTriggerID("RoyalCourt_ON"+i));
+		rmAddTriggerCondition("Team Unit Count");
+		rmSetTriggerConditionParamInt("TeamID",i);
+		rmSetTriggerConditionParam("Protounit","zpRoyalCourt");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
 
-	rmSwitchToTrigger(rmTriggerID("Royal_Court_INIT"));
-	rmAddTriggerEffect("Counter Set Text Team");
-	rmSetTriggerEffectParam("Name", "royalCourt");
-	rmSetTriggerEffectParam("Msg", "Royal Court: 0/0"); // Belongs to gaia
-	rmSetTriggerEffectParam("EnemyMsg", "Royal Court: 0/0"); // Belongs to gaia
-	rmSetTriggerEffectParamInt("RefTeamID", 1);
-	rmAddTriggerEffect("Quest Var Set");
-	rmSetTriggerEffectParam("QVName","RoyalCourtOwn");
-	rmSetTriggerEffectParamInt("Value",-1);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
+		rmAddTriggerEffect("Quest Var Modify");
+		if (i==1)
+			rmSetTriggerEffectParam("QVName","victoryBuildings1");
+		else
+			rmSetTriggerEffectParam("QVName","victoryBuildings2");
+		rmSetTriggerEffectParam("Oper","+");
+		rmSetTriggerEffectParamInt("Value",1);
 
-	/*rmSwitchToTrigger(rmTriggerID("Royal_Court_REV"));
-	rmAddTriggerCondition("Team Unit Count");
-	rmSetTriggerConditionParamInt("TeamID",1);
-	rmSetTriggerConditionParam("Protounit","zpRoyalCourt");
-	rmSetTriggerConditionParam("Op",">=");
-	rmSetTriggerConditionParamInt("Count",1);
-	rmAddTriggerEffect("Quest Var Set");
-	rmSetTriggerEffectParam("QVName","RoyalCourtOwn");
-	rmSetTriggerEffectParamInt("Value",0);
-	rmAddTriggerEffect("Counter Set Text Team");
-	rmSetTriggerEffectParam("Name", "royalCourt");
-	rmSetTriggerEffectParam("Msg", "Royal Court: 1/0"); // Belongs to REV
-	rmSetTriggerEffectParam("EnemyMsg", "Royal Court: 0/0");
-	rmSetTriggerEffectParamInt("RefTeamID", 1);
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Royal_Court_ROY"));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
+		rmAddTriggerEffect("Quest Var Modify");
+		if (i==1)
+			rmSetTriggerEffectParam("QVName","victoryBuildings2");
+		else
+			rmSetTriggerEffectParam("QVName","victoryBuildings1");
+		rmSetTriggerEffectParam("Oper","-");
+		rmSetTriggerEffectParamInt("Value",1);
 
-	rmSwitchToTrigger(rmTriggerID("Royal_Court_ROY"));
-	rmAddTriggerCondition("Team Unit Count");
-	rmSetTriggerConditionParamInt("TeamID",2);
-	rmSetTriggerConditionParam("Protounit","zpRoyalCourt");
-	rmSetTriggerConditionParam("Op",">=");
-	rmSetTriggerConditionParamInt("Count",1);
-	rmAddTriggerEffect("Quest Var Set");
-	rmSetTriggerEffectParam("QVName","RoyalCourtOwn");
-	rmSetTriggerEffectParamInt("Value",1);
-	rmAddTriggerEffect("Counter Set Text Team");
-	rmSetTriggerEffectParam("Name", "royalCourt");
-	rmSetTriggerEffectParam("Msg", "Royal Court: 0/0"); // Belongs to REV
-	rmSetTriggerEffectParam("EnemyMsg", "Royal Court: 1/0");
-	rmSetTriggerEffectParamInt("RefTeamID", 1);
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Royal_Court_REV"));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
+		rmAddTriggerEffect("Objective : Complete");
+		if (i==1)
+			rmSetTriggerEffectParamInt("Objective", 2);
+		else
+			rmSetTriggerEffectParamInt("Objective", 3);
 
-	rmSwitchToTrigger(rmTriggerID("Victory_Counter_REV"));
-	rmAddTriggerCondition("Quest Var Check");
-	rmSetTriggerConditionParam("QuestVar", "RoyalCourtOwn");
-	rmSetTriggerConditionParam("Op", "==");
-	rmSetTriggerConditionParamFloat("Value", 0);
-	rmAddTriggerEffect("Counter:Add Timer");
-	rmSetTriggerEffectParam("Name","VictoryCounterREV");
-	rmSetTriggerEffectParamInt("Start", victoryCountDown);
-	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Revolutionaries team victory"); // Counter Revolutionaries
-	rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory1"));
-	
-	rmAddTriggerEffect("Counter Visible");
-	rmSetTriggerEffectParam("Name","royalCourt");
-	rmSetTriggerEffectParamInt("Value", 0);
+		rmAddTriggerEffect("Objective : Incomplete");
+		if (i==1)
+			rmSetTriggerEffectParamInt("Objective", 3);
+		else
+			rmSetTriggerEffectParamInt("Objective", 2);
 
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_REV_OFF"));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
+		rmAddTriggerEffect("Fire Event");
+		if (i==1)
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("RoyalCourt_ON2"));
+		else
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("RoyalCourt_ON1"));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
 
-	rmSwitchToTrigger(rmTriggerID("Victory_Counter_REV_OFF"));
-	rmAddTriggerCondition("Quest Var Check");
-	rmSetTriggerConditionParam("QuestVar", "RoyalCourtOwn");
-	rmSetTriggerConditionParam("Op", "==");
-	rmSetTriggerConditionParamFloat("Value", 1);
-	rmAddTriggerEffect("Counter Stop");
-	rmSetTriggerEffectParam("Name","VictoryCounterREV");
+		// Bastille ownership
+		rmSwitchToTrigger(rmTriggerID("Bastille_ON"+i));
+		rmAddTriggerCondition("Team Unit Count");
+		rmSetTriggerConditionParamInt("TeamID",i);
+		rmSetTriggerConditionParam("Protounit","zpBastille");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
 
-	rmAddTriggerEffect("Counter Visible");
-	rmSetTriggerEffectParam("Name","royalCourt");
-	rmSetTriggerEffectParamInt("Value", 1);
+		rmAddTriggerEffect("Quest Var Modify");
+		if (i==1)
+			rmSetTriggerEffectParam("QVName","victoryBuildings1");
+		else
+			rmSetTriggerEffectParam("QVName","victoryBuildings2");
+		rmSetTriggerEffectParam("Oper","+");
+		rmSetTriggerEffectParamInt("Value",1);
 
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_REV"));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(false);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
+		rmAddTriggerEffect("Quest Var Modify");
+		if (i==1)
+			rmSetTriggerEffectParam("QVName","victoryBuildings2");
+		else
+			rmSetTriggerEffectParam("QVName","victoryBuildings1");
+		rmSetTriggerEffectParam("Oper","-");
+		rmSetTriggerEffectParamInt("Value",1);
 
-	rmSwitchToTrigger(rmTriggerID("Victory_Counter_ROY"));
-	rmAddTriggerCondition("Quest Var Check");
-	rmSetTriggerConditionParam("QuestVar", "RoyalCourtOwn");
-	rmSetTriggerConditionParam("Op", "==");
-	rmSetTriggerConditionParamFloat("Value", 1);
-	rmAddTriggerEffect("Counter:Add Timer");
-	rmSetTriggerEffectParam("Name","VictoryCounterREV");
-	rmSetTriggerEffectParamInt("Start", victoryCountDown);
-	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Royalists team victory"); // // Counter Royalists
-	rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory2"));
+		rmAddTriggerEffect("Objective : Complete");
+		if (i==1)
+			rmSetTriggerEffectParamInt("Objective", 6);
+		else
+			rmSetTriggerEffectParamInt("Objective", 7);
 
-	rmAddTriggerEffect("Counter Visible");
-	rmSetTriggerEffectParam("Name","royalCourt");
-	rmSetTriggerEffectParamInt("Value", 0);
+		rmAddTriggerEffect("Objective : Incomplete");
+		if (i==1)
+			rmSetTriggerEffectParamInt("Objective", 7);
+		else
+			rmSetTriggerEffectParamInt("Objective", 6);
 
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_ROY_OFF"));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
+		rmAddTriggerEffect("Fire Event");
+		if (i==1)
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Bastille_ON2"));
+		else
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Bastille_ON1"));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
 
-	rmSwitchToTrigger(rmTriggerID("Victory_Counter_ROY_OFF"));
-	rmAddTriggerCondition("Quest Var Check");
-	rmSetTriggerConditionParam("QuestVar", "RoyalCourtOwn");
-	rmSetTriggerConditionParam("Op", "==");
-	rmSetTriggerConditionParamFloat("Value", 0);
-	rmAddTriggerEffect("Counter Stop");
-	rmSetTriggerEffectParam("Name","VictoryCounterREV");
+		// City Hall
+		rmSwitchToTrigger(rmTriggerID("CityHall_ON"+i));
+		rmAddTriggerCondition("Team Unit Count");
+		rmSetTriggerConditionParamInt("TeamID",i);
+		rmSetTriggerConditionParam("Protounit","zpCityHall");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
 
-	rmAddTriggerEffect("Counter Visible");
-	rmSetTriggerEffectParam("Name","royalCourt");
-	rmSetTriggerEffectParamInt("Value", 1);
+		rmAddTriggerEffect("Quest Var Modify");
+		if (i==1)
+			rmSetTriggerEffectParam("QVName","victoryBuildings1");
+		else
+			rmSetTriggerEffectParam("QVName","victoryBuildings2");
+		rmSetTriggerEffectParam("Oper","+");
+		rmSetTriggerEffectParamInt("Value",1);
 
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_ROY"));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(false);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);*/
+		rmAddTriggerEffect("Quest Var Modify");
+		if (i==1)
+			rmSetTriggerEffectParam("QVName","victoryBuildings2");
+		else
+			rmSetTriggerEffectParam("QVName","victoryBuildings1");
+		rmSetTriggerEffectParam("Oper","-");
+		rmSetTriggerEffectParamInt("Value",1);
 
+		rmAddTriggerEffect("Objective : Complete");
+		if (i==1)
+			rmSetTriggerEffectParamInt("Objective", 4);
+		else
+			rmSetTriggerEffectParamInt("Objective", 5);
+
+		rmAddTriggerEffect("Objective : Incomplete");
+		if (i==1)
+			rmSetTriggerEffectParamInt("Objective", 5);
+		else
+			rmSetTriggerEffectParamInt("Objective", 4);
+
+		rmAddTriggerEffect("Fire Event");
+		if (i==1)
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("CityHall_ON2"));
+		else
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("CityHall_ON1"));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		// Victory Counter
+		rmSwitchToTrigger(rmTriggerID("Victory_Counter"+i));
+		rmAddTriggerCondition("Quest Var Check");
+		rmSetTriggerConditionParam("QuestVar", "victoryBuildings"+i);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamFloat("Value", 3);
+		rmAddTriggerEffect("Counter:Add Timer");
+		rmSetTriggerEffectParam("Name","VictoryCounter"+i);
+		rmSetTriggerEffectParamInt("Start", victoryCountDown);
+		rmSetTriggerEffectParamInt("Stop",0);
+		if (i==1)
+			rmSetTriggerEffectParam("Msg","Team ATTACKERS (Revolutionaries) wins in"); // Counter Revolutionaries
+		else
+			rmSetTriggerEffectParam("Msg","Team DEFENDERS (Royalists) wins in"); // Counter Revolutionaries
+		rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+i));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+i));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Victory_Counter_OFF"+i));
+		rmAddTriggerCondition("Quest Var Check");
+		rmSetTriggerConditionParam("QuestVar", "victoryBuildings"+i);
+		rmSetTriggerConditionParam("Op", "<");
+		rmSetTriggerConditionParamFloat("Value", 3);
+		rmAddTriggerEffect("Counter Stop");
+		rmSetTriggerEffectParam("Name","VictoryCounter"+i);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter"+i));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+	}
 
 	// Italian Vilager Balance
 
