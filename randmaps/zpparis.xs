@@ -54,14 +54,14 @@ void main(void)
 	}
 
     int sizeZ = 360;
-	int sizeX = 583;
+	int sizeX = 573;
 
 	if (cNumberNonGaiaPlayers >=3)
-		sizeX = 663;
+		sizeX = 653;
 	if (cNumberNonGaiaPlayers >=5)
-		sizeX = 763;
+		sizeX = 753;
 	if (cNumberNonGaiaPlayers >=7)
-		sizeX = 863;
+		sizeX = 853;
 	rmSetMapSize(sizeX, sizeZ);
 	// rmSetMapElevationParameters(cElevTurbulence, 0.4, 6, 0.5, 3.0);  // DAL - original
 
@@ -1378,7 +1378,7 @@ rmSetStatusText("",0.70);
 	rmObjectiveScreenSetTitle(302018);
 	rmObjectiveScreenSetGoal(302021);
 	rmObjectiveAdd(302022, 302023, true, true, true); // General objective
-	rmObjectiveAdd(302024, 302023, true, true, true); // Royal Court REV
+	/*rmObjectiveAdd(302024, 302023, true, true, true); // Royal Court REV
 	rmObjectiveSetTeam(2, 1);
 	rmObjectiveAdd(302024, 302023, true, true, true); // Royal Court ROY
 	rmObjectiveSetTeam(3, 2);
@@ -1389,7 +1389,7 @@ rmSetStatusText("",0.70);
 	rmObjectiveAdd(302026, 302023, true, true, true); // Bastille REV
 	rmObjectiveSetTeam(6, 1);
 	rmObjectiveAdd(302026, 302023, true, true, true); // Bastille ROY
-	rmObjectiveSetTeam(7, 2);
+	rmObjectiveSetTeam(7, 2);*/
 
 	// Targeting Unit IDs
 	int cityStateFlag1 = rmGetGroupingInstanceUnitByType(cityState1, "zpSPCCapturableFlagInvisible");
@@ -1415,7 +1415,7 @@ rmSetStatusText("",0.70);
 	int stopper1ID =gateStopper1+0;
 	int stopper2ID =gateStopper2+0;
 
-	int victoryCountDown = 30;
+	int victoryCountDown = 480;
 
 	// Starting techs
 
@@ -1556,7 +1556,10 @@ rmSetStatusText("",0.70);
 		rmCreateTrigger("Bastille_ON"+i);
 		rmCreateTrigger("Victory_Counter"+i);
 		rmCreateTrigger("Victory_Counter_OFF"+i);
+	}
 
+	for(i = 1; < cNumberTeams+1)
+    {
 	   // Team Victory 
 		rmSwitchToTrigger(rmTriggerID("TeamVictory"+i));
 		rmAddTriggerEffect("Team Victory");
@@ -1567,7 +1570,7 @@ rmSetStatusText("",0.70);
         rmSetTriggerLoop(false);
         
 		// Royal Court ownership
-		rmSwitchToTrigger(rmTriggerID("RoyalCourt_ON"+i));
+		/*rmSwitchToTrigger(rmTriggerID("RoyalCourt_ON"+i));
 		rmAddTriggerCondition("Team Unit Count");
 		rmSetTriggerConditionParamInt("TeamID",i);
 		rmSetTriggerConditionParam("Protounit","zpRoyalCourt");
@@ -1654,7 +1657,7 @@ rmSetStatusText("",0.70);
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
+		rmSetTriggerLoop(false);*/
 
 		// Victory Counter
 		rmSwitchToTrigger(rmTriggerID("Victory_Counter"+i));

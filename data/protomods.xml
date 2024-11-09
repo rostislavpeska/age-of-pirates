@@ -39961,7 +39961,6 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
     <unittype>AbstractTownCenter</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>BuildingClass</unittype>
     <unittype>Economic</unittype>
     <unittype>Building</unittype>
@@ -40029,7 +40028,6 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
     <unittype>AbstractTownCenter</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>BuildingClass</unittype>
     <unittype>Economic</unittype>
     <unittype>Building</unittype>
@@ -40097,7 +40095,6 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
     <unittype>AbstractTownCenter</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>BuildingClass</unittype>
     <unittype>Economic</unittype>
     <unittype>Building</unittype>
