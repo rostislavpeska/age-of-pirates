@@ -17659,7 +17659,7 @@
     </effects>
   </tech>
   <tech name="zpSPCNativeBourbon" type="Normal">
-    <dbid>40805</dbid>
+    <dbid>40816</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>

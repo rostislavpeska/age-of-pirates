@@ -40368,8 +40368,8 @@
     <command page="10" column="8">CancelAllQueued</command>
     <tactics>barracks.tactics</tactics>
   </unit>
-  <unit id="20531" name="zpSPCFortStableProp">
-    <dbid>20531</dbid>
+  <unit id="20550" name="zpSPCFortStableProp">
+    <dbid>20550</dbid>
     <displaynameid>301975</displaynameid>
     <editornameid>301970</editornameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
@@ -40425,8 +40425,8 @@
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
   </unit>
-  <unit id="20531" name="zpSPCFortStable">
-    <dbid>20531</dbid>
+  <unit id="20551" name="zpSPCFortStable">
+    <dbid>20551</dbid>
     <displaynameid>301975</displaynameid>
     <editornameid>301972</editornameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
@@ -40577,7 +40577,7 @@
     <command page="10" column="7">Delete</command>
     <command page="10" column="8">CancelAllQueued</command>
   </unit>
-  <unit id="20532" name="zpSPCFortWallMediumProp">
+  <unit id="20533" name="zpSPCFortWallMediumProp">
     <dbid>20533</dbid>
     <displaynameid>123010</displaynameid>
     <editornameid>301973</editornameid>
@@ -40733,8 +40733,8 @@
     <flag>ApplyFlagOverrideIfGaia</flag>
     <flag>ForceUpdateVisualWhenCnverted</flag>
   </unit>
-  <unit id="20537" name="zpTollStationIcon">
-    <dbid>20537</dbid>
+  <unit id="20553" name="zpTollStationIcon">
+    <dbid>20553</dbid>
     <icon>resources\art\buildings\spc\tollstation.png</icon>
     <portraiticon>resources\art\buildings\spc\tollstation.png</portraiticon>
   </unit>
