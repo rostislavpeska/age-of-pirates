@@ -41856,6 +41856,7 @@
     <tactics>captureflag.tactics</tactics>
   </unit>
   <unit id="20549" name="zpAIStartUrbanMap">
+    <!--Only for map where you have to destroy GAIA gate to enter the city-->
     <dbid>20549</dbid>
     <displaynameid>302028</displaynameid>
     <obstructionradiusx>1.0000</obstructionradiusx>
