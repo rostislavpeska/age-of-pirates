@@ -1,0 +1,12 @@
+<animfile>
+  <definebone>bone_hostage_A</definebone>
+  <definebone>bone_hostage_B</definebone>
+  <definebone>bone_campfire</definebone>
+  <definebone>bone_outlaw_A</definebone>
+  <definebone>bone_outlaw_B</definebone>
+  <definebone>bone_outlaw_C</definebone>
+  <definebone>bone_outlaw_D</definebone>
+  <definebone>bone_outlaw_E</definebone>
+  <component>kidnap_null<assetreference type="GrannyModel"><file>nuggets\outlaw_kidnap\kidnap_guillotine_Model</file></assetreference><decal><effecttype>bump</effecttype><texture>nuggets\dropped_resource\dropped_resource_decalA</texture><bumptexture>nuggets\dropped_resource\dropped_resource_decalA_bump</bumptexture><width>9.00</width><height>9.00</height></decal><attach a="campfire" frombone="MASTER" tobone="bone_campfire" syncanims="0"></attach></component>
+  <anim>Idle<component>kidnap_null</component></anim>
+</animfile>

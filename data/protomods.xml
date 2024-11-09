@@ -40777,8 +40777,8 @@
   <unit id="20539" name="zpNuggetGuillotine">
     <dbid>20539</dbid>
     <displaynameid>301981</displaynameid>
-    <obstructionradiusx>0.0001</obstructionradiusx>
-    <obstructionradiusz>0.0001</obstructionradiusz>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>nuggets\guillotine.xml</animfile>
@@ -41881,6 +41881,60 @@
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>Invulnerable</flag>
     <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+  </unit>
+  <unit id="20550" name="zpNuggetKidnapGuillotine">
+    <dbid>20550</dbid>
+    <displaynameid>35412</displaynameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <flattenterrainexpand>2.0000</flattenterrainexpand>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>nuggets\outlaw_kidnap\kidnap_guillotine.xml</animfile>
+    <icon>resources\art\objects\treasure\treasure_icon_64x64.png</icon>
+    <minimapicon>ui\minimap\treasure</minimapicon>
+    <portraiticon>resources\art\objects\treasure\treasure_portrait.png</portraiticon>
+    <rollovertextid>35411</rollovertextid>
+    <shortrollovertextid>35410</shortrollovertextid>
+    <los>9.0000</los>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>AbstractNugget</unittype>
+    <unittype>AbstractNuggetLand</unittype>
+    <flag>Doppled</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>NoHPBar</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ForceToGaia</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Nugget</flag>
+    <flag>ObscuresUnits</flag>
     <flag>Tracked</flag>
   </unit>
 

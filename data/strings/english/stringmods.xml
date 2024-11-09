@@ -2016,7 +2016,7 @@
       <string _locid="302015">Leader of the crew with a powerful Hawheye attack and hitpoint aura for the others.</string>
       <string _locid="302016">Wine lover and master of pub brawls.</string>
       <string _locid="302017">Future Priest with Healing and Convert abilities.</string>
-      <string _locid="302018">Storming of the Bastille</string>
+      <string _locid="302018">Storming of the Bastille (Beta)</string>
       <string _locid="302019">Paris 1789 Historical Map: \nBoth teams start outside of the city and have the same goal: Take Bastille, Royal Court and City Hall buildings and hold them for the rest of the game. Both sides can use different native techs. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Revolutionaries which can use special Sansculotte techs \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Royalists which can use special Bourbon techs \n\nSettlements: Sansculotte, Bourbon, Jesuit, Maltese</string>
       <string _locid="302020">Achieve a Team Victory by capturing and holding all three victory buildings: Royal Court, City Hall and Bastille. Take your team natives trading post too get more advanced native improvements. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt;Sansculotte natives \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Bourbon natives</string>
       <string _locid="302021">Battle for control of the city.</string>
@@ -2028,7 +2028,8 @@
       <string _locid="302027">ZP SPC Capturable Flag</string>
       <string _locid="302028">ZP AI Break Gaia Gates Init</string>
       <string _locid="302029">Capture the Victory building by moving troops into the area.</string>
-
+      <string _locid="302030" symbol="cStringNuggetCanelo" comment="1 - amount, 2 - resource">An unused guillotine worth %1d %2s.</string>
+      <string _locid="302031" symbol="cStringNuggetCaneloActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has discovered unused guillotine worth %2d %3s.</string>
 
 
 
