@@ -1392,6 +1392,15 @@ minInterval 15
       targetBaseLocation = kbBaseGetLocation(targetPlayer, targetBaseID);
    }*/
 
+   // AssertiveWall: Check if we need a transport. If we do, make sure we have a warship to transport with
+   if (targetTransportRequired == true)
+   {
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) <= 0)
+      {
+         return;
+      }
+   }
+
    vector gatherPoint = kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
    if (targetIsEnemy == true || targetTransportRequired == true)  // AssertiveWall: only attack plans can transport
    {

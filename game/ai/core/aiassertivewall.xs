@@ -11270,7 +11270,7 @@ inactive
 minInterval 10
 {
 
-   int randGaiaUnit = getUnit(cUnitTypeAbstractUnderwaterMine, cPlayerRelationAny);// getRandomGaiaUnit(cUnitTypezpSunkenShipWood, kbGetMapCenter(), 60);
+   int randGaiaUnit = -1; //getUnit(cUnitTypeAbstractUnderwaterMine, cPlayerRelationAny);// getRandomGaiaUnit(cUnitTypezpSunkenShipWood, kbGetMapCenter(), 60);
    aiChat(1, "test gaia unit: " + randGaiaUnit);
 
    /*int totalResources = 0;

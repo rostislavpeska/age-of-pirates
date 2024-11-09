@@ -2130,6 +2130,31 @@
       <string _locid="400135">Outfit your armies with the guns that won the west.</string>
       <string _locid="400136" symbol="cStringNativePreAlly"> "May your belly never grumble, your heart never ache, and your horse never stumble."</string>
 
+      <!-- ===================================== -->
+      <!-- Christmas 2024 -->
+      <!-- ===================================== -->
+      <string _locid="400150">Grinch Mountain</string>
+      <string _locid="400151">zp Grinch Mountain</string>
+      <string _locid="400152" symbol="cStringNativePreAlly"> "Oh the noise. Oh the noise, Noise, Noise, NOISE!"</string>
+      <string _locid="400153">Nutcracker Village</string>
+      <string _locid="400154">zp Nutcracker Village</string>
+      <string _locid="400155" symbol="cStringNativePreAlly"> "Nutcracker PLACEHOLDER"</string>
+      <string _locid="400156">C3 Light Cannon</string>
+      <string _locid="400157">zp C3 Light Cannon</string>
+      <string _locid="400158">C6 Hardy Light Cannon</string>
+      <string _locid="400159">C7 Seasoned Light Cannon</string>
+      <string _locid="400160">C9 Storied Light Cannon</string>
+      <string _locid="400161">Festive artillery piece firing decorative lights.</string>
+      <string _locid="400162">Grinch</string>
+      <string _locid="400163">zp Grinch</string>
+      <string _locid="400164">Cuddly as a cactus, charming as an eel.</string>
+      <string _locid="400165">A bad banana with a greasy black peel.</string>
+      <string _locid="400166">Hardy Grinch</string>
+      <string _locid="400167">Seasoned Grinch</string>
+      <string _locid="400168">Storied Grinch</string>
+      
+
+
 
       <!-- ===================================== -->
       <!-- ===================================== -->

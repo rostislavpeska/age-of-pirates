@@ -18986,6 +18986,20 @@
     </effects>
   </tech>
 
+
+  <!-- ================Christmas 2024====================== -->
+  <tech name="zpNativeGrinchVillage" type="Normal">
+    <dbid>50050</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpTilanusGrinch</target>
+      </effect>
+      <!--<effect type="TechStatus" status="obtainable">zpSpreadTheCheer</effect>-->
+    </effects>
+  </tech>
+
   
 
   <!-- ====================================== -->
