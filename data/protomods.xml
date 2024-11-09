@@ -39936,8 +39936,8 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\fort\fort_icon.png</icon>
     <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
-    <rollovertextid>64127</rollovertextid>
-    <shortrollovertextid>64126</shortrollovertextid>
+    <rollovertextid>302029</rollovertextid>
+    <shortrollovertextid>302029</shortrollovertextid>
     <initialhitpoints>6500.0000</initialhitpoints>
     <maxhitpoints>6500.0000</maxhitpoints>
     <los>30.0000</los>
@@ -40003,8 +40003,8 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\fort\fort_icon.png</icon>
     <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
-    <rollovertextid>64127</rollovertextid>
-    <shortrollovertextid>64126</shortrollovertextid>
+    <rollovertextid>302029</rollovertextid>
+    <shortrollovertextid>302029</shortrollovertextid>
     <initialhitpoints>6500.0000</initialhitpoints>
     <maxhitpoints>6500.0000</maxhitpoints>
     <los>30.0000</los>
@@ -40070,8 +40070,8 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\fort\fort_icon.png</icon>
     <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
-    <rollovertextid>64127</rollovertextid>
-    <shortrollovertextid>64126</shortrollovertextid>
+    <rollovertextid>302029</rollovertextid>
+    <shortrollovertextid>302029</shortrollovertextid>
     <initialhitpoints>6500.0000</initialhitpoints>
     <maxhitpoints>6500.0000</maxhitpoints>
     <los>30.0000</los>
