@@ -1404,7 +1404,7 @@
       <string _locid="301402">ZP American Embassy Wagon</string>
       <string _locid="301403">Constructs American Embassy</string>
       <string _locid="301404">Open American Relations</string>
-      <string _locid="301405">Ships an American Embassy wagon and unlocks new American Embassy techs and units.</string>
+      <string _locid="301405">Ships enforcements from over the sea and American Embassy wagon allowing you to build American Embassy.</string>
       <string _locid="301406">ZP NAT CON Regular</string>
       <string _locid="301407">Marine Corps</string>
       <string _locid="301408">Dragoon Officer</string>
@@ -1918,11 +1918,11 @@
       <string _locid="301917">La Revolution!</string>
       <string _locid="301918">Revolts to one of the revolutionary factions. \n • Initiates a special type of revolution \n • Transforms all your settlers into Sansculottes \n • Allows Sansculotte training from your Town Center \n • Changes you civilization to one of the revolutionary factions without loosing access to your original homecity and the option to advance to higher age (including Imperial Age)</string>
       <string _locid="301919">Gilbert du Motier (Republic of Paris)</string>
-      <string _locid="301920">Marquis de Lafayette, nobleman and moderate Republican \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGalerie Lafayette \nAmerican Embassy</string>
+      <string _locid="301920">Marquis de Lafayette, nobleman and moderate republican \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGalerie Lafayette \nAllies of the revolution</string>
       <string _locid="301921">Maximilien Robespierre (French Republic)</string>
-      <string _locid="301922">Radical revolutionary, increases Revolutionary build limit. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nJacobin's Reign \nRevolutionary Tribunal</string>
+      <string _locid="301922">Radical revolutionary leader, population improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nStorm the Barricades \nLoyal Districts</string>
       <string _locid="301923">Napoleon Bonaparte (French Empire)</string>
-      <string _locid="301924">Commander of revolutionary armies, military improvements. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGrande Armée \nFrench Empire</string>
+      <string _locid="301924">Commander of revolutionary armies, military improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nArtillery Camps \nNapoleonic Era</string>
       <string _locid="301925">Republic of France</string>
       <string _locid="301926">French Empire</string>
       <string _locid="301927">ZP REV Sansculotte</string>
@@ -1931,7 +1931,7 @@
       <string _locid="301930">ZP Paris Bastion</string>
       <string _locid="301931">ZP Paris Bastion Convertable</string>
       <string _locid="301932">Paris Underground</string>
-      <string _locid="301933">Reveals all city resource buildings and Bastions.</string>
+      <string _locid="301933">Ships one Bastion Wagons and allows you to construct connect newly constructed Bastions with your Bastions in the city through an underground passage.</string>
       <string _locid="301934">Les barricades</string>
       <string _locid="301935">Allows Sansculottes and revolutionaries to construct barricades to prevent enemy units to pass through the streets.</string>
       <string _locid="301936">Café Procope</string>
@@ -1940,10 +1940,10 @@
       <string _locid="301939">ZP NAT Royal Dragoon Clone</string>
       <string _locid="301940">ZP NAT Royal Horseman Clone</string>
       <string _locid="301941">ZP Socket EU SPC Bourbon</string>
-      <string _locid="301942">La Restitution!</string>
+      <string _locid="301942">The Sun King Era</string>
       <string _locid="301943">Unlocks additional Bourbon techs</string>
-      <string _locid="301944">Unlocks additional Bourbon techs &lt;color=1.0, 0.0, 0.0&gt;\n • Avialble only for the team "Monarchists".&lt;/color&gt;</string>
-      <string _locid="301945">Revolts to one of the revolutionary factions. \n • Initiates a special type of revolution \n • Transforms all your settlers into Sansculottes \n • Allows Sansculotte training from your Town Center \n • Changes you civilization to one of the revolutionary factions without loosing access to your original homecity and the option to advance to higher age (including Imperial Age)\n&lt;color=1.0, 0.0, 0.0&gt; • Avialble only for the team "Revolutionaries".&lt;/color&gt;</string>
+      <string _locid="301944">Unlocks additional Bourbon techs \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Allows Royal Musketeers to construct Military Camps and be trained from them \n • Military Camp build limit increased to 6 &lt;color=1.0, 0.0, 0.0&gt;\n • Avialble only for the team "DEFENDERS".&lt;/color&gt;</string>
+      <string _locid="301945">Revolts to one of the revolutionary factions. \n • Initiates a special type of revolution \n • Transforms all your settlers into Sansculottes \n • Allows Sansculotte training from your Town Center \n • Unlocks Explorer Inspiring Flag ability \n • Increases Explorer hitpoints by 30% \n • Changes you civilization to one of the revolutionary factions without loosing access to your original homecity and the option to advance to higher age (including Imperial Age)\n&lt;color=1.0, 0.0, 0.0&gt; • Avialble only for the team "ATTACKERS".&lt;/color&gt;</string>
       <string _locid="301946">ZP Paris Palaces</string>
       <string _locid="301947">ZP Bourbon Chateau</string>
       <string _locid="301948">Bourbon Château</string>
@@ -1955,11 +1955,11 @@
       <string _locid="301954">Bourbon Palace</string>
       <string _locid="301955">Military Camp</string>
       <string _locid="301956">ZP Military Camp</string>
-      <string _locid="301957">Night Watch</string>
-      <string _locid="301958">Allows Royal Musketeers to build Military camps right in the city.</string>
+      <string _locid="301957">Captain of the Guards</string>
+      <string _locid="301958">Ships Captain D'Artagnan able to train Three Musketeers</string>
       <string _locid="301959">Allies of the revolution</string>
       <string _locid="301960">Galeries Lafayette</string>
-      <string _locid="301961">All Paris city resource buildings work faster by 10%</string>
+      <string _locid="301961">All Paris city resource buildings work faster by 20%</string>
       <string _locid="301962">Bastille</string>
       <string _locid="301963">ZP Bastille</string>
       <string _locid="301964">Royal Court</string>
@@ -1979,7 +1979,52 @@
       <string _locid="301978">ZP SPC Fort Flag</string>
       <string _locid="301979">Toll Station</string>
       <string _locid="301980">ZP SPC Fort Flag No Icon</string>
-
+      <string _locid="301981">Guillotine</string>
+      <string _locid="301982">ZP Paris Bastion Passage</string>
+      <string _locid="301983">Defensive Building with Underground Passage</string>
+  	  <string _locid="301984">ZP Paris Bastion Wagon</string>
+      <string _locid="301985">Bastion Wagon</string>
+      <string _locid="301986">Units cannot currently deploy from Underground Passage beneath this building.</string>
+      <string _locid="301987">Spirit of the revolution</string>
+      <string _locid="301988">All units get trained faster by 10%</string>
+      <string _locid="301989">Loyal Districts</string>
+      <string _locid="301990">Increases your maximum population by 20.</string>
+      <string _locid="301991">Storm the Barricades</string>
+      <string _locid="301992">Allows you to train a gunpowder wagon which can detonate next to enemy building.</string>
+      <string _locid="301993">Gunpowder Wagon</string>
+      <string _locid="301994">ZP GunpowderWagon</string>
+      <string _locid="301995">Can strike enemy buildings and walls and detonate next to them</string>
+      <string _locid="301996">Plants the Revolutionary flag to boost morale! Nearby military units (excluding artillery) and buildings inflict more damage and are created faster. Flags cannot be planted near starting Town Centers, and only one flag can be planted at a time.</string>
+      <string _locid="301997">Napoleonic Era</string>
+      <string _locid="301998">Transforms Bourbon Royal Musketeers into Foot Carrabiniers and Royal Musketeers into Horse Carrabiniers. Allows you to train Bourbon units as standard Barrack / Stable units.</string>
+      <string _locid="301999">Artillery Camps</string>
+      <string _locid="302000">Add Artillery training to your Military Camps</string>
+      <string _locid="302001">Captain D'Artagnan</string>
+      <string _locid="302002">ZP SPC D'Artagnan</string>
+      <string _locid="302003">Musketeer Captain</string>
+      <string _locid="302004">Musketeer Captain, can train the others from the crew.</string>
+      <string _locid="302005">Aramis</string>
+      <string _locid="302006">ZP Aramis</string>
+      <string _locid="302007">Hero Musketeer with special abilities</string>
+      <string _locid="302008">Portos</string>
+      <string _locid="302009">ZP Portos</string>
+      <string _locid="302010">Athos</string>
+      <string _locid="302011">ZP Athos</string>
+      <string _locid="302012">Extra hitpoints for the crew</string>
+      <string _locid="302013">All for one and one for all</string>
+      <string _locid="302014">25% extra hitpoint bonus for the other crew members</string>
+      <string _locid="302015">Leader of the crew with a powerful Hawheye attack and hitpoint aura for the others.</string>
+      <string _locid="302016">Wine lover and master of pub brawls.</string>
+      <string _locid="302017">Future Priest with Healing and Convert abilities.</string>
+      <string _locid="302018">Storming of the Bastille</string>
+      <string _locid="302019">Paris 1789 Historical Map: \nBoth teams start outside of the city and have the same goal: Take Bastille, Royal Court and City Hall buildings and hold them for the rest of the game. Both sides can use different native techs. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Revolutionaries which can use special Sansculotte techs \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Royalists which can use special Bourbon techs \n\nSettlements: Sansculotte, Bourbon, Jesuit, Maltese</string>
+      <string _locid="302020">Achieve a Team Victory by capturing and holding all three victory buildings: Royal Court, City Hall and Bastille. Take your team natives trading post too get more advanced native improvements. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt;Sansculotte natives \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Bourbon natives</string>
+      <string _locid="302021">Battle for control of the city.</string>
+      <string _locid="302022">Achieve a Team Victory by capturing and holding all three victory buildings.</string>
+      <string _locid="302023">Once all nearby enemies are defeated, a Building converts to you when you're close enough to it. Controlling and holding all necessary buildings until the end of the Team Victory timer will result a victory.</string>
+      <string _locid="302024">Royal Court</string>
+      <string _locid="302025">City Hall</string>
+      <string _locid="302026">Bastille</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

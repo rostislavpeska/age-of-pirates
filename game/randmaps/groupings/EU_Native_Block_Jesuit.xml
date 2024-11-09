@@ -4,8 +4,8 @@
 	<width>15</width>
 	<height>15</height>
 	<ignoreplacementrules>1</ignoreplacementrules>
-	<selectassingleunit>0</selectassingleunit>
-	<workonassingleunit>0</workonassingleunit>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
 	<units>
 		<unit variation="184" posx="-8.3524" posz="-14.0114" orientx="0.9239" orienty="0.0000" orientz="-0.3826">zpPropsFlowers</unit>
 		<unit variation="189" posx="-13.5685" posz="-13.5629" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpPropsFlowers</unit>
