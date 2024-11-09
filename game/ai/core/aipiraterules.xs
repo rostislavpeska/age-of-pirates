@@ -133,12 +133,6 @@ minInterval 1
       xsEnableRule("tasmaniaStart");
    }
 
-   // AssertiveWall: City Maps
-   if (cRandomMapName == "zpparis")
-   {
-      xsEnableRule("cityGateKiller");
-   }
-
    // Initializes all pirate functions
 
    // Add rules for all pirate maps here
@@ -150,6 +144,10 @@ minInterval 1
    }
    
    // Initializes native specific rules
+   if (kbUnitCount(cMyID, cUnitTypezpAIStartUrbanMap, cUnitStateAny) > 0)
+   {
+      xsEnableRule("cityGateKiller"); // starts the chain to enable all the city attacking
+   }
    if (getGaiaUnitCount(cUnitTypeGatherableOnlyByDivers) > 0)
    {
       xsEnableRule("underwaterOperations");
@@ -339,44 +337,29 @@ inactive
 minInterval 10
 {
    // Analyze map to see how many attack plans we need
-   int attackPlansNeeded = 0;
    int tempUnit = -1;
    int counter = 0;
    int planID = -1;
-
-   attackPlansNeeded = attackPlansNeeded + getGaiaUnitCount(cUnitTypezpBastille);
-   attackPlansNeeded = attackPlansNeeded + getGaiaUnitCount(cUnitTypezpCityHall);
-   attackPlansNeeded = attackPlansNeeded + getGaiaUnitCount(cUnitTypezpRoyalCourt);
+   int capturableFlagQuery = createSimpleGaiaUnitQuery(cUnitTypezpSPCCapturableFlagNoIcon, cUnitStateAlive);
+   int attackPlansNeeded = kbUnitQueryExecute(capturableFlagQuery);
 
    cityAttackPlanArray = xsArrayCreateInt(attackPlansNeeded, -1, "City Attack Plans");
    cityTargetUnitArray = xsArrayCreateInt(attackPlansNeeded, -1, "City Attack Targets");
 
-
-   tempUnit = getUnit(cUnitTypezpBastille, cPlayerRelationAny, cUnitStateAlive);
-   if (tempUnit > 0)
-   {
-      xsArraySetInt(cityTargetUnitArray, counter, tempUnit);
-      counter += 1;
-   }
-
-   tempUnit = getUnit(cUnitTypezpCityHall, cPlayerRelationAny, cUnitStateAlive);
-   if (tempUnit > 0)
-   {
-      xsArraySetInt(cityTargetUnitArray, counter, tempUnit);
-      counter += 1;
-   }
-
-   tempUnit = getUnit(cUnitTypezpRoyalCourt, cPlayerRelationAny, cUnitStateAlive);
-   if (tempUnit > 0)
-   {
-      xsArraySetInt(cityTargetUnitArray, counter, tempUnit);
-      counter += 1;
-   }
-
    for (i = 0; < attackPlansNeeded)
    {
+      tempUnit = kbUnitQueryGetResult(capturableFlagQuery, i);
       planID = createCityAttackPlan(i);
-      xsArraySetInt(cityAttackPlanArray, i, planID);
+
+      if (tempUnit > 0)
+      {
+         xsArraySetInt(cityTargetUnitArray, i, tempUnit);
+      }
+
+      if (planID > 0)
+      {
+         xsArraySetInt(cityAttackPlanArray, i, planID);
+      }
    }
 
    if (xsIsRuleEnabled("attackManager") == true)
@@ -403,10 +386,16 @@ minInterval 4
    vector enemyTargetLocation = kbUnitGetPosition(enemyTarget);
    vector tempLocation = cInvalidVector;
    int tempUnit = -1;
+   int fortUnitID = -1;
 
    if (enemyTarget < 0)
    {
       enemyTarget = getClosestGaiaUnit(cUnitTypeSPCFortGate, mainBaseLocation);
+   }
+
+   if (xsIsRuleEnabled("attackManager") == true)
+   {
+      xsDisableRule("attackManager");
    }
 
    if (tempEnemyTarget != enemyTarget || enemyTarget < 0)
@@ -415,6 +404,14 @@ minInterval 4
       {
          xsEnableRule("initializeCityAttackmanager");
       }
+      // Set the forward base at the gate. This should prevent the AI from building more FB's
+      fortUnitID = getClosestUnitByLocation(cUnitTypeSPCFortGate, cPlayerRelationAlly, cUnitStateAlive, enemyTargetLocation, 30);
+      gForwardBaseState = cForwardBaseStateActive;
+      gForwardBaseID = kbBaseCreate(cMyID, "Forward City Wall Base: " + kbBaseGetNextID(), enemyTargetLocation, 40.0);
+      gForwardBaseLocation = enemyTargetLocation;
+      gForwardBaseUpTime = xsGetTime();
+      gForwardBaseShouldDefend = kbUnitIsType(fortUnitID, cUnitTypeSPCFortGate);
+
       aiPlanDestroy(gateKillerPlan);
       xsDisableSelf();
    }
@@ -529,11 +526,12 @@ minInterval 10
       }
       else
       {  // check if we've reached the location (keep in mind we aren't in combat)
+         // this priority is lowest since we are already where we need to be
          tempTargetID = xsArrayGetInt(cityTargetUnitArray, i);
          tempTargetPosition = kbUnitGetPosition(tempTargetID);
          if (distance(tempTargetPosition, tempPlanPosition) < 30)
          {
-            aiPlanSetDesiredPriority(tempPlanID, 30);
+            aiPlanSetDesiredPriority(tempPlanID, 20);
             aiTaskUnitMove(aiPlanGetUnitByIndex(tempPlanID, 0), tempTargetPosition);
          }
       }
