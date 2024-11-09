@@ -119,6 +119,9 @@ void main(void)
 	int classPortSite=rmDefineClass("portSite");
 	int classStreet=rmDefineClass("classStreet");
 
+	// Spawn Switch
+	float spawnSwitch = rmRandInt(0,1);
+
 	// -------------Define constraints
 	// These are used to have objects and areas avoid each other
 	
@@ -278,6 +281,7 @@ void main(void)
 
     int tradeRouteID = rmCreateTradeRoute();
     rmSetObjectDefTradeRouteID(stopperID, tradeRouteID);
+	rmSetObjectDefTradeRouteID(socketID, tradeRouteID);
    
     rmAddTradeRouteWaypoint(tradeRouteID, 0.0, .5);
     rmAddTradeRouteWaypoint(tradeRouteID, .5, .5);
@@ -348,13 +352,15 @@ void main(void)
     int classPatch = rmDefineClass("patch");
     int avoidPatch = rmCreateClassDistanceConstraint("avoid patch", rmClassID("patch"), 22.0);
     int avoidPlateauShort = rmCreateClassDistanceConstraint("avoid patch 1", rmClassID("classPlateau"), 2.0);
-	int avoidStreet = rmCreateClassDistanceConstraint("avoid patch 1", classStreet, 5.0);
+	int avoidStreet = rmCreateClassDistanceConstraint("avoid street", classStreet, 10.0);
     int classCenter = rmDefineClass("center");
     int avoidCenter = rmCreateClassDistanceConstraint("avoid center", rmClassID("center"), 6.0);
     int circleConstraint2=rmCreatePieConstraint("circle Constraint2", 0.5, 0.5, 0, rmZFractionToMeters(0.48), rmDegreesToRadians(0), rmDegreesToRadians(360));
 	int avoidWall=rmCreateTypeDistanceConstraint("avoid wall object", "AbstractWall", 0.001);
 	int avoidWallMedium=rmCreateTypeDistanceConstraint("avoid wall object medium", "AbstractWall", 2.0);
 	int avoidWallLong=rmCreateTypeDistanceConstraint("avoid wall object long", "AbstractWall", 10.0);
+
+	rmSetStatusText("",0.30);
         
     // Shorelines to make the bridges look smooth
 
@@ -446,7 +452,7 @@ void main(void)
 
 
 	// Text
-	rmSetStatusText("",0.70);
+	rmSetStatusText("",0.40);
 
 
     //===========dansil code start============
@@ -547,6 +553,9 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
     rmSetGroupingMinDistance(blockMaltese, 0.00);
     rmSetGroupingMaxDistance(blockMaltese, 0.50);
 	rmAddGroupingToClass(blockMaltese, rmClassID("classBlock"));
+
+	// Text
+	rmSetStatusText("",0.50);
 
 // Outer Center
 
@@ -701,7 +710,7 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 
 //	int cityRandomizer = rmRandInt(0,0);
 
-	rmSetStatusText("",0.80);
+	rmSetStatusText("",0.60);
 
 // Placement Variables
 int jesuitMaltese = rmRandInt(1, 2);
@@ -726,40 +735,63 @@ int jesuitMaltese = rmRandInt(1, 2);
 	rmPlaceGroupingAtLoc(blockMarket, 0, locX2, locZ1);
 	rmPlaceGroupingAtLoc(blockMarket, 0, locXm2, locZ8);
 
+	if (cNumberNonGaiaPlayers>=4){
+		rmPlaceGroupingAtLoc(blockMarket, 0, locX2, locZ8);
+		rmPlaceGroupingAtLoc(blockMarket, 0, locXm2, locZ1);
+	}
+
 	rmPlaceGroupingAtLoc(blockBank, 0, locX1, locZ7);
 	rmPlaceGroupingAtLoc(blockBank, 0, locXm1, locZ2);
 
-	if (jesuitMaltese ==1){
+	if (cNumberNonGaiaPlayers>=4){
+		rmPlaceGroupingAtLoc(blockBank, 0, locX1, locZ2);
+	rmPlaceGroupingAtLoc(blockBank, 0, locXm1, locZ7);
+	}
+
+	/*if (jesuitMaltese ==1){
 		rmPlaceGroupingAtLoc(blockJesuit, 0, locX2, locZ5);
 		rmPlaceGroupingAtLoc(blockMaltese, 0, locXm2, locZ4);
 	}
 	else{
 		rmPlaceGroupingAtLoc(blockMaltese, 0, locX2, locZ5);
 		rmPlaceGroupingAtLoc(blockJesuit, 0, locXm2, locZ4);
-	}
+	}*/
 
 // Outer Center
 
 	rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ7);
 	rmPlaceGroupingAtLoc(blockSansculot, 0, locXm3, locZ2);
 
+	if (cNumberNonGaiaPlayers>=4){
+		if (spawnSwitch ==0){
+			rmPlaceGroupingAtLoc(blockSansculot, 0, locX1, locZ0);
+			rmPlaceGroupingAtLoc(blockBourbon, 0, locXm1, locZ9);
+		}
+		else{
+			rmPlaceGroupingAtLoc(blockBourbon, 0, locX1, locZ0);
+			rmPlaceGroupingAtLoc(blockSansculot, 0, locXm1, locZ9);
+		}
+	}
+
 	rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX3, locZ2);
 	rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locXm3, locZ7);
 
-	rmPlaceGroupingAtLoc(blockFactory, 0, locX2, locZ9);
-	rmPlaceGroupingAtLoc(blockFactory, 0, locXm2, locZ0);
+	rmPlaceGroupingAtLoc(blockFactory, 0, locX3, locZ8);
+	rmPlaceGroupingAtLoc(blockFactory, 0, locXm3, locZ1);
 
 	int cityState1 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locX3, locZ4, 0);
 	int cityState2 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locXm3, locZ5, 0);
 
-	int victoryGrouping2 = rmPlaceGroupingInstanceAtLoc(blockCourt, locX3, locZ8, 0);
-	int victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locXm3, locZ1, 0);
+	int victoryGrouping2 = rmPlaceGroupingInstanceAtLoc(blockCourt, locX3, locZ1, 0);
+	int victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locXm3, locZ8, 0);
 
 
 // Suburb
 
-	rmPlaceGroupingAtLoc(blockMill, 0, locX4, locZ5);
-	rmPlaceGroupingAtLoc(blockMill, 0, locXm4, locZ4);
+	if (cNumberNonGaiaPlayers>=4){
+		rmPlaceGroupingAtLoc(blockMill, 0, locX4, locZ5);
+		rmPlaceGroupingAtLoc(blockMill, 0, locXm4, locZ4);
+	}
 
 	rmPlaceGroupingAtLoc(blockDestilery, 0, locX4, locZ3);
 	rmPlaceGroupingAtLoc(blockDestilery, 0, locXm4, locZ6);
@@ -767,11 +799,18 @@ int jesuitMaltese = rmRandInt(1, 2);
 	rmPlaceGroupingAtLoc(blockWarehouse, 0, locX4, locZ9);
 	rmPlaceGroupingAtLoc(blockWarehouse, 0, locXm4, locZ0);
 
-	rmPlaceGroupingAtLoc(blockForester, 0, locX4, locZ0);
-	rmPlaceGroupingAtLoc(blockForester, 0, locXm4, locZ9);
+	if (cNumberNonGaiaPlayers>=4){
+		rmPlaceGroupingAtLoc(blockForester, 0, locX4, locZ0);
+		rmPlaceGroupingAtLoc(blockForester, 0, locXm4, locZ9);
+	}
 
 	rmPlaceGroupingAtLoc(blockConstruction, 0, locX4, locZ4);
 	rmPlaceGroupingAtLoc(blockConstruction, 0, locXm4, locZ5);
+
+	if (cNumberNonGaiaPlayers>=4){
+		rmPlaceGroupingAtLoc(blockConstruction, 0, locX4, locZ8);
+		rmPlaceGroupingAtLoc(blockConstruction, 0, locXm4, locZ1);
+	}
 
 // Everywhere
 
@@ -835,7 +874,7 @@ int jesuitMaltese = rmRandInt(1, 2);
 	rmPlaceGroupingAtLoc(blockHouse06, 0, locX4, locZ5);
 	rmPlaceGroupingAtLoc(blockHouse01, 0, locX4, locZ6);
 	rmPlaceGroupingAtLoc(blockHouse02, 0, locX4, locZ7);
-	rmPlaceGroupingAtLoc(blockHouse03, 0, locX4, locZ8);
+	//rmPlaceGroupingAtLoc(blockHouse03, 0, locX4, locZ8);
 	rmPlaceGroupingAtLoc(blockHouse04, 0, locX4, locZ9);
 
 // North Bank
@@ -881,7 +920,7 @@ int jesuitMaltese = rmRandInt(1, 2);
 	//fourth row
 
 	rmPlaceGroupingAtLoc(blockHouse05, 0, locXm4, locZ0);
-	rmPlaceGroupingAtLoc(blockHouse06, 0, locXm4, locZ1);
+	//rmPlaceGroupingAtLoc(blockHouse06, 0, locXm4, locZ1);
 	rmPlaceGroupingAtLoc(blockHouse01, 0, locXm4, locZ2);
 	rmPlaceGroupingAtLoc(blockHouse02, 0, locXm4, locZ3);
 	rmPlaceGroupingAtLoc(blockHouse03, 0, locXm4, locZ4);
@@ -907,6 +946,8 @@ int jesuitMaltese = rmRandInt(1, 2);
 
 //================we will add the other 4 rows after the groupings are defined and the randomizer is working=========
 
+rmSetStatusText("",0.70);
+
 
 // Add city hills
 
@@ -915,7 +956,7 @@ int jesuitMaltese = rmRandInt(1, 2);
 		// City Hill Bottom
 		int smallPatch = rmCreateArea("smallPatch"+j);
 		rmSetAreaSize(smallPatch, rmAreaTilesToFraction(100), rmAreaTilesToFraction(100));
-		rmSetAreaTerrainType(smallPatch, "city\ground1_cob_dark");
+		//rmSetAreaTerrainType(smallPatch, "city\ground1_cob_dark");
 		rmAddAreaToClass(smallPatch, rmClassID("classPlateau"));
 		rmSetAreaHeightBlend(smallPatch, 3);
 		rmSetAreaCoherence(smallPatch, 1.0);
@@ -936,7 +977,6 @@ int jesuitMaltese = rmRandInt(1, 2);
 		// City Hill Ramp
 		int smallPatchRamp = rmCreateArea("smallPatchRamp"+j);
 		rmSetAreaSize(smallPatchRamp, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
-		rmSetAreaTerrainType(smallPatchRamp, "city\ground1_cob_dark");
 		rmSetAreaHeightBlend(smallPatchRamp, 3);
 		rmSetAreaCoherence(smallPatchRamp, 1.0);
 		rmSetAreaHeightBlend(smallPatchRamp, 2);
@@ -1032,22 +1072,22 @@ int jesuitMaltese = rmRandInt(1, 2);
 
 		// City Hill Top
 		int largePatch = rmCreateArea("largePatch"+j);
-		rmSetAreaSize(largePatch, rmAreaTilesToFraction(200), rmAreaTilesToFraction(200));
+		rmSetAreaSize(largePatch, rmAreaTilesToFraction(170), rmAreaTilesToFraction(170));
 		rmSetAreaTerrainType(largePatch, "city\ground1_cob_dark");
 		rmAddAreaToClass(largePatch, rmClassID("classPlateau"));
 		rmSetAreaHeightBlend(largePatch, 3);
 		rmSetAreaCoherence(largePatch, 1.0);
 		if (j == 0){
-		rmSetAreaLocation(largePatch, 0.5-rmXTilesToFraction(100), 0.8);
+		rmSetAreaLocation(largePatch, 0.5-rmXTilesToFraction(97), 0.8);
 		}
 		if (j == 1){
-		rmSetAreaLocation(largePatch, 0.5-rmXTilesToFraction(100), 0.2);
+		rmSetAreaLocation(largePatch, 0.5-rmXTilesToFraction(97), 0.2);
 		}
 		if (j == 2){
-		rmSetAreaLocation(largePatch, 0.5+rmXTilesToFraction(100), 0.2);
+		rmSetAreaLocation(largePatch, 0.5+rmXTilesToFraction(97), 0.2);
 		}
 		if (j == 3){
-		rmSetAreaLocation(largePatch, 0.5+rmXTilesToFraction(100), 0.8);
+		rmSetAreaLocation(largePatch, 0.5+rmXTilesToFraction(97), 0.8);
 		}
 		rmBuildArea(largePatch);  
 
@@ -1061,19 +1101,19 @@ int jesuitMaltese = rmRandInt(1, 2);
 		rmAddAreaToClass(patchRoad, classStreet);
 		if (j == 0){
 		rmSetAreaLocation(patchRoad, 0.5-rmXTilesToFraction(95), 0.8);
-		rmAddAreaInfluenceSegment(patchRoad, 0.5-rmXTilesToFraction(92), 0.8, 0.5-rmXTilesToFraction(100), 0.8);
+		rmAddAreaInfluenceSegment(patchRoad, 0.5-rmXTilesToFraction(85), 0.8, 0.5-rmXTilesToFraction(100), 0.8);
 		}
 		if (j == 1){
 		rmSetAreaLocation(patchRoad, 0.5-rmXTilesToFraction(95), 0.2);
-		rmAddAreaInfluenceSegment(patchRoad, 0.5-rmXTilesToFraction(92), 0.2, 0.5-rmXTilesToFraction(100), 0.2);
+		rmAddAreaInfluenceSegment(patchRoad, 0.5-rmXTilesToFraction(85), 0.2, 0.5-rmXTilesToFraction(100), 0.2);
 		}
 		if (j == 2){
 		rmSetAreaLocation(patchRoad, 0.5+rmXTilesToFraction(95), 0.2);
-		rmAddAreaInfluenceSegment(patchRoad, 0.5+rmXTilesToFraction(92), 0.2, 0.5+rmXTilesToFraction(100), 0.2);
+		rmAddAreaInfluenceSegment(patchRoad, 0.5+rmXTilesToFraction(85), 0.2, 0.5+rmXTilesToFraction(100), 0.2);
 		}
 		if (j == 3){
 		rmSetAreaLocation(patchRoad, 0.5+rmXTilesToFraction(95), 0.8);
-		rmAddAreaInfluenceSegment(patchRoad, 0.5+rmXTilesToFraction(92), 0.8, 0.5+rmXTilesToFraction(100), 0.8);
+		rmAddAreaInfluenceSegment(patchRoad, 0.5+rmXTilesToFraction(85), 0.8, 0.5+rmXTilesToFraction(100), 0.8);
 		}
 		rmBuildArea(patchRoad);  
 		
@@ -1174,13 +1214,14 @@ int jesuitMaltese = rmRandInt(1, 2);
 
 	}
 
+	rmSetStatusText("",0.80);
+
 
 //==============================================================
 //dansil player placement
 //==============================================================
 
 // =============Player placement ======================= 
-	float spawnSwitch = rmRandInt(0,1);
 	//spawnSwitch = 0.1;
 
 
@@ -1196,9 +1237,9 @@ int jesuitMaltese = rmRandInt(1, 2);
 			if (PlayerNum == 4)
 			{			
 				rmSetPlacementTeam(0);
-				rmPlacePlayersLine(0.1, 0.75, 0.1, 0.4, 0, 0);
+				rmPlacePlayersLine(0.1, 0.75, 0.1, 0.25, 0, 0);
 				rmSetPlacementTeam(1);
-				rmPlacePlayersLine(0.9, 0.25, 0.9, 0.6, 0, 0);
+				rmPlacePlayersLine(0.9, 0.25, 0.9, 0.75, 0, 0);
 
 			}
 
@@ -1223,9 +1264,9 @@ int jesuitMaltese = rmRandInt(1, 2);
 			if (PlayerNum == 4)
 			{			
 				rmSetPlacementTeam(1);
-				rmPlacePlayersLine(0.1, 0.75, 0.1, 0.4, 0, 0);
+				rmPlacePlayersLine(0.1, 0.75, 0.1, 0.25, 0, 0);
 				rmSetPlacementTeam(0);
-				rmPlacePlayersLine(0.9, 0.25, 0.9, 0.6, 0, 0);
+				rmPlacePlayersLine(0.9, 0.25, 0.9, 0.75, 0, 0);
 			}
 
 
@@ -1264,7 +1305,15 @@ int jesuitMaltese = rmRandInt(1, 2);
 	rmSetObjectDefMaxDistance(berryID, 17.0);
 	rmAddObjectDefConstraint(berryID, shortAvoidCoin);
 
+	int aiStartUrban = rmCreateObjectDef("is city map");
+	rmAddObjectDefItem(aiStartUrban, "zpAIStartUrbanMap", 1, 0.0);
+
 //place tcs
+
+	// Fake Frouping to fix the auto-grouping TC bug
+	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
+	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+	rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.65);
     
     for(i=1; < cNumberNonGaiaPlayers + 1) {
 		int id=rmCreateArea("Player"+i);
@@ -1278,6 +1327,7 @@ int jesuitMaltese = rmRandInt(1, 2);
         rmPlaceObjectDefAtLoc(foodID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
         rmPlaceObjectDefAtLoc(goldID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
         rmPlaceObjectDefAtLoc(berryID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+		rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);
 
 	}
 
@@ -2064,6 +2114,10 @@ int jesuitMaltese = rmRandInt(1, 2);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","zpParisFlagNoIcon");
 		rmSetTriggerEffectParamInt("Dist",35);
+		for (i=1; <= cNumberNonGaiaPlayers) {
+			rmAddTriggerEffect("Disable Trigger");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Military_Block1_Plr"+i));
+		}
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
@@ -2141,6 +2195,10 @@ int jesuitMaltese = rmRandInt(1, 2);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","zpParisFlagNoIcon");
 		rmSetTriggerEffectParamInt("Dist",35);
+		for (i=1; <= cNumberNonGaiaPlayers) {
+			rmAddTriggerEffect("Disable Trigger");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Military_Block2_Plr"+i));
+		}
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);

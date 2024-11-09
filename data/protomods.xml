@@ -41852,6 +41852,31 @@
     <flag>ForceUpdateVisualWhenCnverted</flag>
     <tactics>captureflag.tactics</tactics>
   </unit>
+  <unit id="20549" name="zpAIStartUrbanMap">
+    <dbid>20549</dbid>
+    <displaynameid>302028</displaynameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>air</movementtype>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>NoUnitAI</flag>
+    <flag>NotSearchable</flag>
+    <flag>Immoveable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>NonCollideable</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Invulnerable</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+  </unit>
 
 
 
