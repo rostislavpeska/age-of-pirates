@@ -35682,19 +35682,19 @@
     <tactics>parismarket.tactics</tactics>
     <protoaction>
       <name>AutoGatherXPTeam</name>
-      <rate type="XP">1.767500</rate>
+      <rate type="XP">0.7</rate>
     </protoaction>
     <protoaction>
       <name>AutoGatherFoodTeam</name>
-      <rate type="Food">1.767500</rate>
+      <rate type="Food">0.7</rate>
     </protoaction>
     <protoaction>
       <name>AutoGatherWoodTeam</name>
-      <rate type="Wood">1.767500</rate>
+      <rate type="Wood">0.7</rate>
     </protoaction>
     <protoaction>
       <name>AutoGatherCoinTeam</name>
-      <rate type="Gold">1.767500</rate>
+      <rate type="Gold">0.7</rate>
     </protoaction>
   </unit>
   <unit id="20478" name="zpSPCNationalBank">
@@ -35753,24 +35753,23 @@
     <unittype>AbstractBank</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
-    <flag>AllowAutoGarrison</flag>
+    <flag>VisibleUnderFog</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>ObscuresUnits</flag>
-    <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>Doppled</flag>
     <flag>SelectWithObstruction</flag>
     <flag>PaintTextureWhenPlacing</flag>
     <flag>FlattenGround</flag>
     <flag>ColonyBuilding</flag>
-    <flag>ColonyPlacementL</flag>
     <flag>HasGatherPoint</flag>
     <flag>Tracked</flag>
-    <flag>Invulnerable</flag>
+    <flag>EnterHotkeyContext</flag>
     <flag>NotDeleteable</flag>
+    <flag>Invulnerable</flag>
     <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
@@ -35779,7 +35778,7 @@
     <tactics>parisbuilding.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
-      <rate type="Gold">3.000000</rate>
+      <rate type="Gold">2.000000</rate>
     </protoaction>
   </unit>
   <unit id="20479" name="zpSPCTownMill">
@@ -35850,10 +35849,11 @@
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
     <flag>InvulnerableToAreaDamage</flag>
+    <flag>VisibleUnderFog</flag>
     <tactics>parisbuilding.tactics</tactics>
     <protoaction>
       <name>AutoGather</name>
-      <rate type="Food">5.00000</rate>
+      <rate type="Food">2.00000</rate>
     </protoaction>
   </unit>
   <unit id="20480" name="zpSPCGoldSmelter">
@@ -35931,13 +35931,14 @@
     <flag>NotDeleteable</flag>
     <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>VisibleUnderFog</flag>
     <command page="10" column="3">SetGatherPointEconomy</command>
     <command page="10" column="8">CancelAllQueued</command>
     <command page="10" column="5">Eject</command>
     <tactics>parisbuilding.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
-      <rate type="Gold">2.000000</rate>
+      <rate type="Gold">1.500000</rate>
     </protoaction>
   </unit>
   <unit id="20481" name="zpSPCDestilery">
@@ -36015,13 +36016,14 @@
     <flag>NotDeleteable</flag>
     <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>VisibleUnderFog</flag>
     <command page="10" column="3">SetGatherPointEconomy</command>
     <command page="10" column="8">CancelAllQueued</command>
     <command page="10" column="5">Eject</command>
     <tactics>parisbuilding.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
-      <rate type="Food">2.500000</rate>
+      <rate type="Food">1.500000</rate>
     </protoaction>
   </unit>
   <unit id="20482" name="zpSPCForester">
@@ -36098,13 +36100,14 @@
     <flag>NotDeleteable</flag>
     <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>VisibleUnderFog</flag>
     <command page="10" column="3">SetGatherPointEconomy</command>
     <command page="10" column="8">CancelAllQueued</command>
     <command page="10" column="5">Eject</command>
     <tactics>parisbuilding.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
-      <rate type="Wood">4.000000</rate>
+      <rate type="Wood">2.000000</rate>
     </protoaction>
   </unit>
   <unit id="20483" name="zpSPCDemolisher">
@@ -36182,13 +36185,14 @@
     <flag>NotDeleteable</flag>
     <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>VisibleUnderFog</flag>
     <command page="10" column="3">SetGatherPointEconomy</command>
     <command page="10" column="8">CancelAllQueued</command>
     <command page="10" column="5">Eject</command>
     <tactics>parisbuilding.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
-      <rate type="Wood">3.000000</rate>
+      <rate type="Wood">1.500000</rate>
     </protoaction>
   </unit>
   <unit id="20484" name="zpSPCMenagerie">
@@ -36270,6 +36274,7 @@
     <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
     <flag>Invulnerable</flag>
+    <flag>VisibleUnderFog</flag>
     <command page="9" column="0">TacticFood</command>
     <command page="9" column="2">TacticCoin</command>
     <command page="9" column="3">TacticXPShrine</command>
