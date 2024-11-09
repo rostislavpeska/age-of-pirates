@@ -54,14 +54,14 @@ void main(void)
 	}
 
     int sizeZ = 360;
-	int sizeX = 533;
+	int sizeX = 583;
 
 	if (cNumberNonGaiaPlayers >=3)
-		sizeX = 633;
+		sizeX = 663;
 	if (cNumberNonGaiaPlayers >=5)
-		sizeX = 733;
+		sizeX = 763;
 	if (cNumberNonGaiaPlayers >=7)
-		sizeX = 833;
+		sizeX = 863;
 	rmSetMapSize(sizeX, sizeZ);
 	// rmSetMapElevationParameters(cElevTurbulence, 0.4, 6, 0.5, 3.0);  // DAL - original
 
@@ -117,6 +117,7 @@ void main(void)
 	int classStartingResource = rmDefineClass("startingResource");
     int classMountains=rmDefineClass("mountains");
 	int classPortSite=rmDefineClass("portSite");
+	int classStreet=rmDefineClass("classStreet");
 
 	// -------------Define constraints
 	// These are used to have objects and areas avoid each other
@@ -286,10 +287,18 @@ void main(void)
     // Place train stopper, because without it the islands son't spawn
     vector socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.5);
     rmPlaceObjectDefAtPoint(stopperID, 0, socketLoc1);
-	socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.10);
-	rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
-	socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.90);
-	rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
+	if (cNumberNonGaiaPlayers ==2){
+		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.05);
+		rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
+		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.95);
+		rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
+	}
+	else{
+		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.10);
+		rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
+		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.90);
+		rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
+	}
 
 
 
@@ -313,7 +322,9 @@ void main(void)
     rmSetGroupingMinDistance(bastilleGrouping, 0.00);
     rmSetGroupingMaxDistance(bastilleGrouping, 0.00);
 	rmAddGroupingToClass(bastilleGrouping, rmClassID("classPlateau"));
-	rmPlaceGroupingAtLoc(bastilleGrouping, 0, 0.5-rmXTilesToFraction(1), 0.5+rmXTilesToFraction(3));
+	//rmPlaceGroupingAtLoc(bastilleGrouping, 0, 0.5-rmXTilesToFraction(1), 0.5+rmXTilesToFraction(4));
+
+	int victoryGrouping1 = rmPlaceGroupingInstanceAtLoc(bastilleGrouping, 0.5-rmXTilesToFraction(1), 0.5+rmXTilesToFraction(4), 0);
 
     // Nothe Dame West
     int notredameGrouping = rmCreateGrouping("bridge2", "EU_island_Notre_Dame");
@@ -337,6 +348,7 @@ void main(void)
     int classPatch = rmDefineClass("patch");
     int avoidPatch = rmCreateClassDistanceConstraint("avoid patch", rmClassID("patch"), 22.0);
     int avoidPlateauShort = rmCreateClassDistanceConstraint("avoid patch 1", rmClassID("classPlateau"), 2.0);
+	int avoidStreet = rmCreateClassDistanceConstraint("avoid patch 1", classStreet, 5.0);
     int classCenter = rmDefineClass("center");
     int avoidCenter = rmCreateClassDistanceConstraint("avoid center", rmClassID("center"), 6.0);
     int circleConstraint2=rmCreatePieConstraint("circle Constraint2", 0.5, 0.5, 0, rmZFractionToMeters(0.48), rmDegreesToRadians(0), rmDegreesToRadians(360));
@@ -386,6 +398,7 @@ void main(void)
     rmAddAreaConstraint(streetsSouth , citySouthConstraint);
 	rmAddAreaConstraint(streetsSouth , avoidWater4);
     rmSetAreaObeyWorldCircleConstraint(streetsSouth, false);
+	rmAddAreaToClass(streetsSouth , classStreet);
     rmBuildArea(streetsSouth); 
 
 	// Streets terrain
@@ -398,6 +411,7 @@ void main(void)
     rmAddAreaConstraint(streetsNorth , cityNorthConstraint);
 	rmAddAreaConstraint(streetsNorth , avoidWater4);
     rmSetAreaObeyWorldCircleConstraint(streetsNorth, false);
+	rmAddAreaToClass(streetsNorth, classStreet);
     rmBuildArea(streetsNorth); 
 
     // Countryside terrain
@@ -441,6 +455,8 @@ void main(void)
 		//Constraints
 
 int avoidBlock =rmCreateClassDistanceConstraint("stuff vs. blocks", rmClassID("classBlock"), .001);
+int avoidBlockLong =rmCreateClassDistanceConstraint("stuff vs. blocks long", rmClassID("classBlock"), 10.0);
+int avoidBlockMedium =rmCreateClassDistanceConstraint("stuff vs. blocks medium", rmClassID("classBlock"), 7.0);
 
 int cliffConstraint = rmCreateBoxConstraint("stay close to city", 0.5-rmXTilesToFraction(95), -0.5, 0.5+rmXTilesToFraction(95), 1.5);
 int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
@@ -687,6 +703,8 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 
 	rmSetStatusText("",0.80);
 
+// Placement Variables
+int jesuitMaltese = rmRandInt(1, 2);
 
 //===================place the stuff=========================
 
@@ -711,8 +729,14 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 	rmPlaceGroupingAtLoc(blockBank, 0, locX1, locZ7);
 	rmPlaceGroupingAtLoc(blockBank, 0, locXm1, locZ2);
 
-	rmPlaceGroupingAtLoc(blockJesuit, 0, locX2, locZ5);
-	rmPlaceGroupingAtLoc(blockMaltese, 0, locXm2, locZ4);
+	if (jesuitMaltese ==1){
+		rmPlaceGroupingAtLoc(blockJesuit, 0, locX2, locZ5);
+		rmPlaceGroupingAtLoc(blockMaltese, 0, locXm2, locZ4);
+	}
+	else{
+		rmPlaceGroupingAtLoc(blockMaltese, 0, locX2, locZ5);
+		rmPlaceGroupingAtLoc(blockJesuit, 0, locXm2, locZ4);
+	}
 
 // Outer Center
 
@@ -728,8 +752,9 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 	int cityState1 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locX3, locZ4, 0);
 	int cityState2 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locXm3, locZ5, 0);
 
-	rmPlaceGroupingAtLoc(blockCourt, 0, locX3, locZ8);
-	rmPlaceGroupingAtLoc(blockTownHall, 0, locXm3, locZ1);
+	int victoryGrouping2 = rmPlaceGroupingInstanceAtLoc(blockCourt, locX3, locZ8, 0);
+	int victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locXm3, locZ1, 0);
+
 
 // Suburb
 
@@ -883,45 +908,270 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 //================we will add the other 4 rows after the groupings are defined and the randomizer is working=========
 
 
-//add player areas
+// Add city hills
 
-	//as with most of my code, don't ask how this works
 	for (j=0; < 4) {   
-	int wallCliffs = rmCreateArea("wallCliffs"+j);
-	rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(900), rmAreaTilesToFraction(900));
-	rmSetAreaObeyWorldCircleConstraint(wallCliffs, false);
-	rmAddAreaToClass(wallCliffs, rmClassID("classPlateau"));
-	rmAddAreaConstraint(wallCliffs, avoidBlock);
-	rmAddAreaConstraint(wallCliffs, avoidPlateauShort);
-	//rmAddAreaConstraint(wallCliffs, cliffConstraint);
-	rmAddAreaConstraint(wallCliffs, avoidTradeRouteFar);
-	rmAddAreaConstraint(wallCliffs, avoidWall);
-	rmSetAreaCliffType(wallCliffs, "Northwest Territory");
-	rmSetAreaCliffEdge(wallCliffs, 1, 1, 0.0, 0.0, 2); //4,.225 looks cool too
-	rmSetAreaCliffPainting(wallCliffs, true, true, true, 1.5, true);
-	rmSetAreaCliffHeight(wallCliffs, 0, 0, 0.5);
-	rmSetAreaBaseHeight(wallCliffs, 6.0);
-	//rmSetAreaSmoothDistance(wallCliffs, 10);
-	rmSetAreaHeightBlend(wallCliffs, 3);
-	rmSetAreaCoherence(wallCliffs, .93);
-	if (j == 0){
-	rmSetAreaLocation(wallCliffs, 0.5-rmXTilesToFraction(92), 0.8);
-	rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(92), 0.66, 0.5-rmXTilesToFraction(92), 1.0);
+
+		// City Hill Bottom
+		int smallPatch = rmCreateArea("smallPatch"+j);
+		rmSetAreaSize(smallPatch, rmAreaTilesToFraction(100), rmAreaTilesToFraction(100));
+		rmSetAreaTerrainType(smallPatch, "city\ground1_cob_dark");
+		rmAddAreaToClass(smallPatch, rmClassID("classPlateau"));
+		rmSetAreaHeightBlend(smallPatch, 3);
+		rmSetAreaCoherence(smallPatch, 1.0);
+		if (j == 0){
+		rmSetAreaLocation(smallPatch, 0.5-rmXTilesToFraction(85), 0.8);
+		}
+		if (j == 1){
+		rmSetAreaLocation(smallPatch, 0.5-rmXTilesToFraction(85), 0.2);
+		}
+		if (j == 2){
+		rmSetAreaLocation(smallPatch, 0.5+rmXTilesToFraction(85), 0.2);
+		}
+		if (j == 3){
+		rmSetAreaLocation(smallPatch, 0.5+rmXTilesToFraction(85), 0.8);
+		}
+		rmBuildArea(smallPatch);  
+
+		// City Hill Ramp
+		int smallPatchRamp = rmCreateArea("smallPatchRamp"+j);
+		rmSetAreaSize(smallPatchRamp, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaTerrainType(smallPatchRamp, "city\ground1_cob_dark");
+		rmSetAreaHeightBlend(smallPatchRamp, 3);
+		rmSetAreaCoherence(smallPatchRamp, 1.0);
+		rmSetAreaHeightBlend(smallPatchRamp, 2);
+		rmSetAreaSmoothDistance(smallPatchRamp, 7);
+		rmSetAreaBaseHeight(smallPatchRamp, 7.0);
+		if (j == 0){
+		rmSetAreaLocation(smallPatchRamp, 0.5-rmXTilesToFraction(90), 0.8);
+		}
+		if (j == 1){
+		rmSetAreaLocation(smallPatchRamp, 0.5-rmXTilesToFraction(90), 0.2);
+		}
+		if (j == 2){
+		rmSetAreaLocation(smallPatchRamp, 0.5+rmXTilesToFraction(90), 0.2);
+		}
+		if (j == 3){
+		rmSetAreaLocation(smallPatchRamp, 0.5+rmXTilesToFraction(90), 0.8);
+		}
+		rmBuildArea(smallPatchRamp);  
+
+		// WallBlockerCliff
+		int wallBlocker = rmCreateArea("wallBlocker"+j);
+		rmSetAreaSize(wallBlocker, rmAreaTilesToFraction(100), rmAreaTilesToFraction(100));
+		rmSetAreaObeyWorldCircleConstraint(wallBlocker, false);
+		rmAddAreaConstraint(wallBlocker, avoidPlateauShort);
+		rmAddAreaConstraint(wallBlocker, avoidTradeRouteFar);
+		rmAddAreaConstraint(wallBlocker, avoidWall);
+		rmSetAreaCliffType(wallBlocker, "Northwest Territory");
+		rmSetAreaCliffEdge(wallBlocker, 1, 1, 0.0, 0.0, 2); //4,.225 looks cool too
+		rmSetAreaCliffPainting(wallBlocker, false, true, true, 1.5, true);
+		rmSetAreaCliffHeight(wallBlocker, 0, 0, 0.5);
+		rmSetAreaBaseHeight(wallBlocker, 6.0);
+		rmSetAreaHeightBlend(wallBlocker, 3);
+		rmSetAreaCoherence(wallBlocker, 1.0);
+		if (j == 0){
+		rmSetAreaLocation(wallBlocker, 0.5-rmXTilesToFraction(92), 0.62);
+		}
+		if (j == 1){
+		rmSetAreaLocation(wallBlocker, 0.5-rmXTilesToFraction(92), 0.4);
+		}
+		if (j == 2){
+		rmSetAreaLocation(wallBlocker, 0.5+rmXTilesToFraction(92), 0.4);
+		}
+		if (j == 3){
+		rmSetAreaLocation(wallBlocker, 0.5+rmXTilesToFraction(92), 0.62);
+		}
+		rmBuildArea(wallBlocker);  
+
+		// City Hill Cliff
+		int wallCliffs = rmCreateArea("wallCliffs"+j);
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(1200), rmAreaTilesToFraction(1200));
+		rmSetAreaObeyWorldCircleConstraint(wallCliffs, false);
+		rmAddAreaToClass(wallCliffs, rmClassID("classPlateau"));
+		rmAddAreaConstraint(wallCliffs, avoidBlock);
+		rmAddAreaConstraint(wallCliffs, avoidPlateauShort);
+		rmAddAreaConstraint(wallCliffs, avoidTradeRouteFar);
+		rmAddAreaConstraint(wallCliffs, avoidWall);
+		rmSetAreaCliffType(wallCliffs, "Northwest Territory");
+		rmSetAreaCliffEdge(wallCliffs, 1, 1, 0.0, 0.0, 2); //4,.225 looks cool too
+		rmSetAreaCliffPainting(wallCliffs, false, true, true, 1.5, true);
+		rmSetAreaCliffHeight(wallCliffs, 0, 0, 0.5);
+		rmSetAreaBaseHeight(wallCliffs, 6.0);
+		rmSetAreaHeightBlend(wallCliffs, 3);
+		rmSetAreaCoherence(wallCliffs, .93);
+		if (j == 0){
+		rmSetAreaLocation(wallCliffs, 0.5-rmXTilesToFraction(92), 0.8);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(92), 0.66, 0.5-rmXTilesToFraction(92), 1.0);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(92), 0.7, 0.5-rmXTilesToFraction(105), 0.75);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(105), 0.75, 0.5-rmXTilesToFraction(105), 0.85);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(105), 0.85, 0.5-rmXTilesToFraction(92), 0.9);
+		}
+		if (j == 1){
+		rmSetAreaLocation(wallCliffs, 0.5-rmXTilesToFraction(92), 0.2);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(92), 0.37, 0.5-rmXTilesToFraction(92), 0.0);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(92), 0.3, 0.5-rmXTilesToFraction(105), 0.25);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(105), 0.25, 0.5-rmXTilesToFraction(105), 0.15);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(105), 0.15, 0.5-rmXTilesToFraction(92), 0.1);
+		}
+		if (j == 2){
+		rmSetAreaLocation(wallCliffs, 0.5+rmXTilesToFraction(92), 0.2);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(92), 0.37, 0.5+rmXTilesToFraction(92), 0.0);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(92), 0.3, 0.5+rmXTilesToFraction(105), 0.25);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(105), 0.25, 0.5+rmXTilesToFraction(105), 0.15);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(105), 0.15, 0.5+rmXTilesToFraction(92), 0.1);
+		}
+		if (j == 3){
+		rmSetAreaLocation(wallCliffs, 0.5+rmXTilesToFraction(92), 0.8);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(92), 0.66, 0.5+rmXTilesToFraction(92), 1.0);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(92), 0.7, 0.5+rmXTilesToFraction(105), 0.75);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(105), 0.75, 0.5+rmXTilesToFraction(105), 0.85);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(105), 0.85, 0.5+rmXTilesToFraction(92), 0.9);
+		}
+		rmBuildArea(wallCliffs);  
+
+		// City Hill Top
+		int largePatch = rmCreateArea("largePatch"+j);
+		rmSetAreaSize(largePatch, rmAreaTilesToFraction(200), rmAreaTilesToFraction(200));
+		rmSetAreaTerrainType(largePatch, "city\ground1_cob_dark");
+		rmAddAreaToClass(largePatch, rmClassID("classPlateau"));
+		rmSetAreaHeightBlend(largePatch, 3);
+		rmSetAreaCoherence(largePatch, 1.0);
+		if (j == 0){
+		rmSetAreaLocation(largePatch, 0.5-rmXTilesToFraction(100), 0.8);
+		}
+		if (j == 1){
+		rmSetAreaLocation(largePatch, 0.5-rmXTilesToFraction(100), 0.2);
+		}
+		if (j == 2){
+		rmSetAreaLocation(largePatch, 0.5+rmXTilesToFraction(100), 0.2);
+		}
+		if (j == 3){
+		rmSetAreaLocation(largePatch, 0.5+rmXTilesToFraction(100), 0.8);
+		}
+		rmBuildArea(largePatch);  
+
+		// City Road
+		int patchRoad = rmCreateArea("patchRoad"+j);
+		rmSetAreaSize(patchRoad, rmAreaTilesToFraction(50), rmAreaTilesToFraction(50));
+		rmSetAreaTerrainType(patchRoad, "city\ground1_cob_dark");
+		rmAddAreaToClass(patchRoad, rmClassID("classPlateau"));
+		rmSetAreaHeightBlend(patchRoad, 3);
+		rmSetAreaCoherence(patchRoad, 1.0);
+		rmAddAreaToClass(patchRoad, classStreet);
+		if (j == 0){
+		rmSetAreaLocation(patchRoad, 0.5-rmXTilesToFraction(95), 0.8);
+		rmAddAreaInfluenceSegment(patchRoad, 0.5-rmXTilesToFraction(92), 0.8, 0.5-rmXTilesToFraction(100), 0.8);
+		}
+		if (j == 1){
+		rmSetAreaLocation(patchRoad, 0.5-rmXTilesToFraction(95), 0.2);
+		rmAddAreaInfluenceSegment(patchRoad, 0.5-rmXTilesToFraction(92), 0.2, 0.5-rmXTilesToFraction(100), 0.2);
+		}
+		if (j == 2){
+		rmSetAreaLocation(patchRoad, 0.5+rmXTilesToFraction(95), 0.2);
+		rmAddAreaInfluenceSegment(patchRoad, 0.5+rmXTilesToFraction(92), 0.2, 0.5+rmXTilesToFraction(100), 0.2);
+		}
+		if (j == 3){
+		rmSetAreaLocation(patchRoad, 0.5+rmXTilesToFraction(95), 0.8);
+		rmAddAreaInfluenceSegment(patchRoad, 0.5+rmXTilesToFraction(92), 0.8, 0.5+rmXTilesToFraction(100), 0.8);
+		}
+		rmBuildArea(patchRoad);  
+		
 	}
-	if (j == 1){
-	rmSetAreaLocation(wallCliffs, 0.5-rmXTilesToFraction(92), 0.2);
-	rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(92), 0.37, 0.5-rmXTilesToFraction(92), 0.0);
-	}
-	if (j == 2){
-	rmSetAreaLocation(wallCliffs, 0.5+rmXTilesToFraction(92), 0.2);
-	rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(92), 0.37, 0.5+rmXTilesToFraction(92), 0.0);
+
+// Place additional objects
+
+	// Groupings
+	int jesuitVillageType = rmRandInt(1, 3);
+	int jesuitMonasteryID = rmCreateGrouping("countryMonastery1", "Jesuit_Cathedral_EU_0"+jesuitVillageType);
+    rmSetGroupingMinDistance(jesuitMonasteryID, 0.00);
+    rmSetGroupingMaxDistance(jesuitMonasteryID, 0.50);
+	rmAddGroupingToClass(jesuitMonasteryID, rmClassID("classBlock"));
+
+	int malteseVillageType = rmRandInt(1, 5);
+	int malteseMonasteryID = rmCreateGrouping("countryMonastery2", "maltese_village0"+malteseVillageType);
+    rmSetGroupingMinDistance(malteseMonasteryID, 0.00);
+    rmSetGroupingMaxDistance(malteseMonasteryID, 0.50);
+	rmAddGroupingToClass(malteseMonasteryID, rmClassID("classBlock"));
+
+	int blockMillVillage = rmCreateGrouping("Mill3", "EU_Resource_Block_Food3");
+    rmSetGroupingMinDistance(blockMillVillage, 0.00);
+    rmSetGroupingMaxDistance(blockMillVillage, 0.50);
+	rmAddGroupingToClass(blockMillVillage, rmClassID("classBlock"));
 	
+	int countryVar = rmRandInt(1, 2);
+
+	if (countryVar ==1){
+		if (jesuitMaltese ==1){
+			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5-rmXTilesToFraction(100), 0.8, 1);
+			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5+rmXTilesToFraction(100), 0.2, 1);
+		}
+		else{
+			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5-rmXTilesToFraction(100), 0.8, 1);
+			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5+rmXTilesToFraction(100), 0.2, 1);
+		}
+		rmPlaceGroupingAtLoc(blockMillVillage, 0, 0.5+rmXTilesToFraction(100), 0.8, 1);
+		rmPlaceGroupingAtLoc(blockMillVillage, 0, 0.5-rmXTilesToFraction(100), 0.2, 1);
 	}
-	if (j == 3){
-	rmSetAreaLocation(wallCliffs, 0.5+rmXTilesToFraction(92), 0.8);
-	rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(92), 0.66, 0.5+rmXTilesToFraction(92), 1.0);
+	else{
+		if (jesuitMaltese ==1){
+			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5-rmXTilesToFraction(100), 0.2, 1);
+			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5+rmXTilesToFraction(100), 0.8, 1);
+		}
+		else{
+			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5-rmXTilesToFraction(100), 0.2, 1);
+			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5+rmXTilesToFraction(100), 0.8, 1);
+		}
+		rmPlaceGroupingAtLoc(blockMillVillage, 0, 0.5+rmXTilesToFraction(100), 0.2, 1);
+		rmPlaceGroupingAtLoc(blockMillVillage, 0, 0.5-rmXTilesToFraction(100), 0.8, 1);
 	}
-	rmBuildArea(wallCliffs);  
+
+	// Forester
+	int foresterID = rmCreateObjectDef("random forester");
+	rmAddObjectDefItem(foresterID, "zpSPCForester", 1, 0);
+	rmAddObjectDefConstraint(foresterID, avoidBlockMedium);
+	if (countryVar ==1){
+		rmPlaceObjectDefInArea(foresterID, 0, rmAreaID("wallCliffs1"), 1);
+		rmPlaceObjectDefInArea(foresterID, 0, rmAreaID("wallCliffs3"), 1);
+	}
+	else{
+		rmPlaceObjectDefInArea(foresterID, 0, rmAreaID("wallCliffs0"), 1);
+		rmPlaceObjectDefInArea(foresterID, 0, rmAreaID("wallCliffs2"), 1);
+	}
+
+	// Random Houses
+	int randomHouseID = rmCreateObjectDef("random house");
+	rmAddObjectDefItem(randomHouseID, "zpSPCVillageHouseProp", 1, 0);
+	rmAddObjectDefConstraint(randomHouseID, avoidBlockLong);
+	for (j=0; < 4) {   
+
+      rmPlaceObjectDefInArea(randomHouseID, 0, rmAreaID("wallCliffs"+j), 6);
+
+	}
+
+	// Random Trees
+	int cliffTreeID = rmCreateObjectDef("cliffTree");
+	rmAddObjectDefItem(cliffTreeID, "TreePonderosaPine", rmRandInt(6,7), rmRandFloat(11.0,12.0));
+	rmAddObjectDefItem(cliffTreeID, "TreeGreatPlains", rmRandInt(3,4), 10.0);
+	rmAddObjectDefItem(cliffTreeID, "underbrushTexasGrass", rmRandInt(6,7), 12.0);
+	rmAddObjectDefItem(cliffTreeID, "deer", 2, 6.0);
+	rmAddObjectDefToClass(cliffTreeID, rmClassID("classForest")); 
+	rmAddObjectDefConstraint(cliffTreeID, avoidBlockMedium);
+	rmAddObjectDefConstraint(cliffTreeID, avoidStreet);
+	for (j=0; < 4) {   
+
+      rmPlaceObjectDefInArea(cliffTreeID, 0, rmAreaID("wallCliffs"+j), 4);
+
+	}
+
+	// Random Flowers
+	int flowersID = rmCreateObjectDef("cliffFlower");
+	rmAddObjectDefItem(flowersID, "deUnderbrushFlowersJapan", rmRandInt(2,3), rmRandFloat(4.0,5.0));
+	rmAddObjectDefConstraint(flowersID, avoidBlockMedium);
+	rmAddObjectDefConstraint(flowersID, avoidStreet);
+	for (j=0; < 4) {   
+      rmPlaceObjectDefInArea(flowersID, 0, rmAreaID("wallCliffs"+j), 4);
+
 	}
 
 
@@ -1100,15 +1350,22 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 	int gateStopper1 = rmGetGroupingInstanceUnitByType(cityWall1, "zpTrainStopper");
 	int gateStopper2 = rmGetGroupingInstanceUnitByType(cityWall2, "zpTrainStopper");
 
+	int victoryFlag1 = rmGetGroupingInstanceUnitByType(victoryGrouping1, "zpSPCCapturableFlagNoIcon");
+	int victoryFlag2 = rmGetGroupingInstanceUnitByType(victoryGrouping2, "zpSPCCapturableFlagNoIcon");
+	int victoryFlag3 = rmGetGroupingInstanceUnitByType(victoryGrouping3, "zpSPCCapturableFlagNoIcon");
+
 	int flag1ID =cityStateFlag1+1;
 	int flag2ID =cityStateFlag2+1;
+	int flag3ID =victoryFlag1+1;
+	int flag4ID =victoryFlag2+1;
+	int flag5ID =victoryFlag3+1;
 	
 	int socket1ID =gateSocket1+0;
 	int socket2ID =gateSocket2+0;
 	int stopper1ID =gateStopper1+0;
 	int stopper2ID =gateStopper2+0;
 
-	int victoryCountDown = 240;
+	int victoryCountDown = 30;
 
 	// Starting techs
 
@@ -1169,12 +1426,81 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
+	// Convert Flags
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("ConvertCourt_Plr"+k);
+	rmCreateTrigger("ConvertBastille_Plr"+k);
+	rmCreateTrigger("ConvertCityHall_Plr"+k);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmSwitchToTrigger(rmTriggerID("ConvertBastille_Plr"+k));
+	rmAddTriggerCondition("Units Owned");
+	rmSetTriggerConditionParam("SrcObject",""+flag3ID);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+flag3ID);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpBastille");
+	rmSetTriggerEffectParamInt("Dist",35);
+	for (i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ConvertBastille_Plr"+i));
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmSwitchToTrigger(rmTriggerID("ConvertCourt_Plr"+k));
+	rmAddTriggerCondition("Units Owned");
+	rmSetTriggerConditionParam("SrcObject",""+flag4ID);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+flag4ID);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpRoyalCourt");
+	rmSetTriggerEffectParamInt("Dist",35);
+	for (i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ConvertCourt_Plr"+i));
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmSwitchToTrigger(rmTriggerID("ConvertCityHall_Plr"+k));
+	rmAddTriggerCondition("Units Owned");
+	rmSetTriggerConditionParam("SrcObject",""+flag5ID);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+flag5ID);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpCityHall");
+	rmSetTriggerEffectParamInt("Dist",35);
+	for (i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ConvertCityHall_Plr"+i));
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
 	// Victory Conditions
 
 	for(i = 1; < cNumberTeams+1)
     {
         rmCreateTrigger("TeamVictory"+i);
-		rmCreateTrigger("Victory_Init"+i);
 		rmCreateTrigger("RoyalCourt_ON"+i);
 		rmCreateTrigger("CityHall_ON"+i);
 		rmCreateTrigger("Bastille_ON"+i);
@@ -1190,16 +1516,6 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
         rmSetTriggerRunImmediately(true);
         rmSetTriggerLoop(false);
         
-		// Initialize default values
-		rmSwitchToTrigger(rmTriggerID("Victory_Init"+i));
-		rmAddTriggerEffect("Quest Var Set");
-		rmSetTriggerEffectParam("QVName","victoryBuildings"+i);
-		rmSetTriggerEffectParamInt("Value",0);
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(true);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
-
 		// Royal Court ownership
 		rmSwitchToTrigger(rmTriggerID("RoyalCourt_ON"+i));
 		rmAddTriggerCondition("Team Unit Count");
@@ -1207,24 +1523,8 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 		rmSetTriggerConditionParam("Protounit","zpRoyalCourt");
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
-
-		rmAddTriggerEffect("Quest Var Modify");
-		if (i==1)
-			rmSetTriggerEffectParam("QVName","victoryBuildings1");
-		else
-			rmSetTriggerEffectParam("QVName","victoryBuildings2");
-		rmSetTriggerEffectParam("Oper","+");
-		rmSetTriggerEffectParamInt("Value",1);
-
-		rmAddTriggerEffect("Quest Var Modify");
-		if (i==1)
-			rmSetTriggerEffectParam("QVName","victoryBuildings2");
-		else
-			rmSetTriggerEffectParam("QVName","victoryBuildings1");
-		rmSetTriggerEffectParam("Oper","-");
-		rmSetTriggerEffectParamInt("Value",1);
-
 		rmAddTriggerEffect("Objective : Complete");
+
 		if (i==1)
 			rmSetTriggerEffectParamInt("Objective", 2);
 		else
@@ -1253,24 +1553,8 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 		rmSetTriggerConditionParam("Protounit","zpBastille");
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
-
-		rmAddTriggerEffect("Quest Var Modify");
-		if (i==1)
-			rmSetTriggerEffectParam("QVName","victoryBuildings1");
-		else
-			rmSetTriggerEffectParam("QVName","victoryBuildings2");
-		rmSetTriggerEffectParam("Oper","+");
-		rmSetTriggerEffectParamInt("Value",1);
-
-		rmAddTriggerEffect("Quest Var Modify");
-		if (i==1)
-			rmSetTriggerEffectParam("QVName","victoryBuildings2");
-		else
-			rmSetTriggerEffectParam("QVName","victoryBuildings1");
-		rmSetTriggerEffectParam("Oper","-");
-		rmSetTriggerEffectParamInt("Value",1);
-
 		rmAddTriggerEffect("Objective : Complete");
+
 		if (i==1)
 			rmSetTriggerEffectParamInt("Objective", 6);
 		else
@@ -1299,24 +1583,8 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 		rmSetTriggerConditionParam("Protounit","zpCityHall");
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
-
-		rmAddTriggerEffect("Quest Var Modify");
-		if (i==1)
-			rmSetTriggerEffectParam("QVName","victoryBuildings1");
-		else
-			rmSetTriggerEffectParam("QVName","victoryBuildings2");
-		rmSetTriggerEffectParam("Oper","+");
-		rmSetTriggerEffectParamInt("Value",1);
-
-		rmAddTriggerEffect("Quest Var Modify");
-		if (i==1)
-			rmSetTriggerEffectParam("QVName","victoryBuildings2");
-		else
-			rmSetTriggerEffectParam("QVName","victoryBuildings1");
-		rmSetTriggerEffectParam("Oper","-");
-		rmSetTriggerEffectParamInt("Value",1);
-
 		rmAddTriggerEffect("Objective : Complete");
+
 		if (i==1)
 			rmSetTriggerEffectParamInt("Objective", 4);
 		else
@@ -1340,14 +1608,16 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 
 		// Victory Counter
 		rmSwitchToTrigger(rmTriggerID("Victory_Counter"+i));
-		rmAddTriggerCondition("Quest Var Check");
-		rmSetTriggerConditionParam("QuestVar", "victoryBuildings"+i);
-		rmSetTriggerConditionParam("Op", ">=");
-		rmSetTriggerConditionParamFloat("Value", 3);
+		rmAddTriggerCondition("Team Unit Count");
+		rmSetTriggerConditionParamInt("TeamID",i);
+		rmSetTriggerConditionParam("Protounit","zpSPCCapturableFlagNoIcon");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",3);
 		rmAddTriggerEffect("Counter:Add Timer");
 		rmSetTriggerEffectParam("Name","VictoryCounter"+i);
 		rmSetTriggerEffectParamInt("Start", victoryCountDown);
 		rmSetTriggerEffectParamInt("Stop",0);
+
 		if (i==1)
 			rmSetTriggerEffectParam("Msg","Team ATTACKERS (Revolutionaries) wins in"); // Counter Revolutionaries
 		else
@@ -1361,10 +1631,11 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 		rmSetTriggerLoop(false);
 
 		rmSwitchToTrigger(rmTriggerID("Victory_Counter_OFF"+i));
-		rmAddTriggerCondition("Quest Var Check");
-		rmSetTriggerConditionParam("QuestVar", "victoryBuildings"+i);
-		rmSetTriggerConditionParam("Op", "<");
-		rmSetTriggerConditionParamFloat("Value", 3);
+		rmAddTriggerCondition("Team Unit Count");
+		rmSetTriggerConditionParamInt("TeamID",i);
+		rmSetTriggerConditionParam("Protounit","zpSPCCapturableFlagNoIcon");
+		rmSetTriggerConditionParam("Op","<");
+		rmSetTriggerConditionParamInt("Count",3);
 		rmAddTriggerEffect("Counter Stop");
 		rmSetTriggerEffectParam("Name","VictoryCounter"+i);
 		rmAddTriggerEffect("Fire Event");
@@ -1732,6 +2003,13 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 		rmSetTriggerConditionParamInt("Dist",35);
 		rmSetTriggerConditionParam("Op","==");
 		rmSetTriggerConditionParamInt("Count",0);
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+flag1ID);
+		rmSetTriggerConditionParamInt("Player",0);
+		rmSetTriggerConditionParam("UnitType","Outpost");
+		rmSetTriggerConditionParamInt("Dist",35);
+		rmSetTriggerConditionParam("Op","==");
+		rmSetTriggerConditionParamInt("Count",0);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+flag1ID);
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
@@ -1784,7 +2062,7 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 		rmSetTriggerEffectParam("SrcObject",""+flag1ID);
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpParisFlag");
+		rmSetTriggerEffectParam("UnitType","zpParisFlagNoIcon");
 		rmSetTriggerEffectParamInt("Dist",35);
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
@@ -1799,6 +2077,13 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 		rmSetTriggerConditionParam("DstObject",""+flag2ID);
 		rmSetTriggerConditionParamInt("Player",0);
 		rmSetTriggerConditionParam("UnitType","SPCFortGate");
+		rmSetTriggerConditionParamInt("Dist",35);
+		rmSetTriggerConditionParam("Op","==");
+		rmSetTriggerConditionParamInt("Count",0);
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+flag2ID);
+		rmSetTriggerConditionParamInt("Player",0);
+		rmSetTriggerConditionParam("UnitType","Outpost");
 		rmSetTriggerConditionParamInt("Dist",35);
 		rmSetTriggerConditionParam("Op","==");
 		rmSetTriggerConditionParamInt("Count",0);
@@ -1854,7 +2139,7 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 		rmSetTriggerEffectParam("SrcObject",""+flag2ID);
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpParisFlag");
+		rmSetTriggerEffectParam("UnitType","zpParisFlagNoIcon");
 		rmSetTriggerEffectParamInt("Dist",35);
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);

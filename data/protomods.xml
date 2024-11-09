@@ -36291,7 +36291,7 @@
   </unit>
   <unit id="20485" name="zpTreeRubble">
     <dbid>20485</dbid>
-    <editornameid>26071</editornameid>
+    <displaynameid>26071</displaynameid>
     <editornameid>301847</editornameid>
     <obstructionradiusx>2.0000</obstructionradiusx>
     <obstructionradiusz>2.0000</obstructionradiusz>
@@ -36485,6 +36485,7 @@
     <flag>ForceToGaia</flag>
     <flag>NotSelectable</flag>
     <flag>Invulnerable</flag>
+    <flag>RMCanRotate</flag>
   </unit>
   <unit id="20489" name="zpSocketSansculottes">
     <dbid>20489</dbid>
@@ -39926,7 +39927,6 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\fort\fort_icon.png</icon>
-    <minimapicon>ui\minimap\victory_building</minimapicon>
     <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
     <rollovertextid>64127</rollovertextid>
     <shortrollovertextid>64126</shortrollovertextid>
@@ -39979,7 +39979,6 @@
     <flag>ColorTransformNonGaia</flag>
     <flag>Tracked</flag>
     <flag>NotDeleteable</flag>
-    <tactics>ypkingshill.tactics</tactics>
   </unit>
   <unit id="20529" name="zpRoyalCourt">
     <dbid>20529</dbid>
@@ -39996,7 +39995,6 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\fort\fort_icon.png</icon>
-    <minimapicon>ui\minimap\victory_building</minimapicon>
     <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
     <rollovertextid>64127</rollovertextid>
     <shortrollovertextid>64126</shortrollovertextid>
@@ -40049,7 +40047,6 @@
     <flag>Tracked</flag>
     <flag>NotDeleteable</flag>
     <flag>GivesLOSToAll</flag>
-    <tactics>ypkingshill.tactics</tactics>
   </unit>
   <unit id="20530" name="zpCityHall">
     <dbid>20530</dbid>
@@ -40066,7 +40063,6 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\fort\fort_icon.png</icon>
-    <minimapicon>ui\minimap\victory_building</minimapicon>
     <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
     <rollovertextid>64127</rollovertextid>
     <shortrollovertextid>64126</shortrollovertextid>
@@ -40119,7 +40115,6 @@
     <flag>Tracked</flag>
     <flag>NotDeleteable</flag>
     <flag>GivesLOSToAll</flag>
-    <tactics>ypkingshill.tactics</tactics>
   </unit>
   <unit id="20531" name="zpSPCFortBarracksProp">
     <dbid>20531</dbid>
@@ -41822,6 +41817,40 @@
       <maxrange>16.000000</maxrange>
       <rof>3.000000</rof>
     </protoaction>
+  </unit>
+  <unit id="20548" name="zpSPCCapturableFlagNoIcon">
+    <dbid>20548</dbid>
+    <displaynameid>32671</displaynameid>
+    <editornameid>302027</editornameid>
+    <panelnameid>123194</panelnameid>
+    <panelrolloverid>123195</panelrolloverid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag_playercolored.xml</animfile>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
+    <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <los>15.0000</los>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unit</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>Tracked</flag>
+    <flag>VariationLocked</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <tactics>captureflag.tactics</tactics>
   </unit>
 
 

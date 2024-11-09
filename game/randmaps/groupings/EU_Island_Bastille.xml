@@ -245,6 +245,7 @@
 		<unit variation="116" posx="-14.2466" posz="26.6016" orientx="0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
 		<unit variation="174" posx="-10.8130" posz="26.7881" orientx="0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
 		<unit variation="53" posx="-8.3413" posz="26.7795" orientx="0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="186" posx="-2.0" posz="-5.3011" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCCapturableFlagNoIcon</unit>
 	</units>
 	<tiles>
 		<tilegroup type="Shoreline" subtype="new_england\shoreline2_ne">

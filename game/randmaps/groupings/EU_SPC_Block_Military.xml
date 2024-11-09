@@ -53,7 +53,7 @@
 		<unit variation="126" posx="3.3799" posz="2.1898" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatRoyalMusketeer</unit>
 		<unit variation="239" posx="1.6874" posz="2.0016" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatRoyalMusketeer</unit>
 		<unit variation="78" posx="5.9358" posz="3.6548" orientx="-0.7071" orienty="0.0055" orientz="-0.7071">deMercRoyalHorseman</unit>
-		<unit variation="167" posx="0.8968" posz="1.4438" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpParisFlag</unit>
+		<unit variation="167" posx="0.8968" posz="1.4438" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpParisFlagNoIcon</unit>
 		<unit variation="157" posx="9.3608" posz="4.9125" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCFortWallMediumProp</unit>
 		<unit variation="226" posx="-3.3683" posz="3.6917" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatRoyalMusketeer</unit>
 		<unit variation="14" posx="-1.6665" posz="3.6095" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatRoyalMusketeer</unit>
