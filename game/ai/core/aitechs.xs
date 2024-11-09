@@ -908,8 +908,8 @@ minInterval 10
         (time < gAgeUpPlanTime)) &&
        (gExcessResources == false) && (firstAgeUpTime + 15 * 60 * 1000 > time))
    {
-      // AssertiveWall: ignore the army requirement on naked FF
-      if (gStrategy == cStrategyFastIndustrial)
+      // AssertiveWall: ignore the army requirement on naked FF and FI
+      if (gStrategy == cStrategyFastIndustrial || gStrategy == cStrategyNakedFF)
       {
          // do nothing
       }
@@ -943,8 +943,8 @@ minInterval 10
       ageUpPriority = 48;
    }
 
-   // AssertiveWall: adjust age up priority if we're trying to fast fortress or fast industrial
-   if (age == cAge2)
+   // AssertiveWall: adjust age up priority if we're trying to fast fortress or fast industrial. Use the agingUpAge to start preparing in transition
+   if (getAgingUpAge() == cAge2)
    {
       if (gStrategy == cStrategySafeFF) // Safe Fast Fortress
       {

@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "90520" displayNameID = "105090" loadDetails="90519" isLargeMap=""
+    imagepath  = "ui\random_map\cascade_range\cascade_range_mini" cannotReplace = "" loadBackground="ui\random_map\cascade_range\cascade_range_map">
+    <loadss>ui\random_map\cascade_range\cascade_range_ss_01</loadss>
+    <loadss>ui\random_map\cascade_range\cascade_range_ss_02</loadss>
+    <loadss>ui\random_map\cascade_range\cascade_range_ss_03</loadss>
+</mapinfo>

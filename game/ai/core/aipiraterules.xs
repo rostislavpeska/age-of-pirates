@@ -133,6 +133,12 @@ minInterval 1
       xsEnableRule("tasmaniaStart");
    }
 
+   // AssertiveWall: City Maps
+   if (cRandomMapName == "zpparis")
+   {
+      xsEnableRule("cityGateKiller");
+   }
+
    // Initializes all pirate functions
 
    // Add rules for all pirate maps here
@@ -274,6 +280,295 @@ minInterval 1
    }
     
    xsDisableSelf();
+}
+
+//==============================================================================
+/* createCityAttackPlan
+   sets up a persistent plan and returns the ID
+*/
+//==============================================================================
+
+int createCityAttackPlan(int count = 0)
+{
+   int planID = -1;
+   vector homeBase = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+
+   planID = aiPlanCreate("City Attack Plan " + count, cPlanCombat);
+
+   aiPlanSetVariableInt(planID, cCombatPlanCombatType, 0, cCombatPlanCombatTypeDefend);
+   aiPlanSetVariableInt(planID, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+   aiPlanSetVariableVector(planID, cCombatPlanTargetPoint, 0, homeBase);
+   aiPlanSetInitialPosition(planID, homeBase);
+   aiPlanSetVariableFloat(planID, cCombatPlanGatherDistance, 0, 30.0);
+   aiPlanSetVariableFloat(planID, cCombatPlanTargetEngageRange, 0, 45.0);
+   aiPlanSetDesiredPriority(planID, 30);  // Lower than standard attack so they can join
+   aiPlanSetVariableInt(planID, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
+   aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat);
+   aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeNone);
+   aiPlanSetVariableInt(planID, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternLRU);
+   //aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 2000);
+   
+   // Just a small number of cav
+   aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 10, 200);
+
+   aiPlanSetActive(planID, true);
+
+   return (planID);
+
+}
+
+//==============================================================================
+/* CityAttackmanager
+   conducts all the attack management for city maps
+
+   Note: This creates multiple persistent plans and is not compatible with water
+   maps or any other attacking behavior
+
+   All "attack" plans are coded as defend plans to keep them persistent
+
+   initializeCityAttackmanager analyzes the map and creates the attack plan array
+*/
+//==============================================================================
+
+extern int cityAttackPlanArray = -1;         // stores the attack plans
+extern int cityTargetUnitArray = -1;         // stores the units we should try to capture
+extern int citySecondaryTargetUnitArray = -1;         // stores the units we should try to capture
+
+rule initializeCityAttackmanager
+inactive
+minInterval 10
+{
+   // Analyze map to see how many attack plans we need
+   int attackPlansNeeded = 0;
+   int tempUnit = -1;
+   int counter = 0;
+   int planID = -1;
+
+   attackPlansNeeded = attackPlansNeeded + getGaiaUnitCount(cUnitTypezpBastille);
+   attackPlansNeeded = attackPlansNeeded + getGaiaUnitCount(cUnitTypezpCityHall);
+   attackPlansNeeded = attackPlansNeeded + getGaiaUnitCount(cUnitTypezpRoyalCourt);
+
+   cityAttackPlanArray = xsArrayCreateInt(attackPlansNeeded, -1, "City Attack Plans");
+   cityTargetUnitArray = xsArrayCreateInt(attackPlansNeeded, -1, "City Attack Targets");
+
+
+   tempUnit = getUnit(cUnitTypezpBastille, cPlayerRelationAny, cUnitStateAlive);
+   if (tempUnit > 0)
+   {
+      xsArraySetInt(cityTargetUnitArray, counter, tempUnit);
+      counter += 1;
+   }
+
+   tempUnit = getUnit(cUnitTypezpCityHall, cPlayerRelationAny, cUnitStateAlive);
+   if (tempUnit > 0)
+   {
+      xsArraySetInt(cityTargetUnitArray, counter, tempUnit);
+      counter += 1;
+   }
+
+   tempUnit = getUnit(cUnitTypezpRoyalCourt, cPlayerRelationAny, cUnitStateAlive);
+   if (tempUnit > 0)
+   {
+      xsArraySetInt(cityTargetUnitArray, counter, tempUnit);
+      counter += 1;
+   }
+
+   for (i = 0; < attackPlansNeeded)
+   {
+      planID = createCityAttackPlan(i);
+      xsArraySetInt(cityAttackPlanArray, i, planID);
+   }
+
+   if (xsIsRuleEnabled("attackManager") == true)
+   {
+      xsDisableRule("attackManager");
+   }
+
+   xsEnableRule("cityAttackmanager");
+   xsDisableSelf();
+
+}
+
+rule cityGateKiller
+inactive
+minInterval 4
+{
+   static int gateKillerPlan = -1;
+   int friendlyStrength = -1;
+   int enemyStrength = -1;
+   vector mainBaseLocation = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   static int enemyTarget = -1;
+   int tempEnemyTarget = getClosestGaiaUnit(cUnitTypeSPCFortGate, mainBaseLocation);
+   int tempTargetToShoot = -1;
+   vector enemyTargetLocation = kbUnitGetPosition(enemyTarget);
+   vector tempLocation = cInvalidVector;
+   int tempUnit = -1;
+
+   if (enemyTarget < 0)
+   {
+      enemyTarget = getClosestGaiaUnit(cUnitTypeSPCFortGate, mainBaseLocation);
+   }
+
+   if (tempEnemyTarget != enemyTarget || enemyTarget < 0)
+   {  // this means we killed the closer one
+      if (xsIsRuleEnabled("initializeCityAttackmanager") == false)
+      {
+         xsEnableRule("initializeCityAttackmanager");
+      }
+      aiPlanDestroy(gateKillerPlan);
+      xsDisableSelf();
+   }
+
+   if (gateKillerPlan < 0)
+   {
+      gateKillerPlan = aiPlanCreate("Gate Killer Plan", cPlanReserve);
+      aiPlanAddUnitType(gateKillerPlan, cUnitTypeLogicalTypeLandMilitary, 0, 100, 200);
+      aiPlanSetDesiredPriority(gateKillerPlan, 90); 
+      aiPlanSetActive(gateKillerPlan);
+   }
+
+   friendlyStrength = getFriendlyArmyValue(gateKillerPlan);
+   enemyStrength = getAreaStrength(enemyTargetLocation, 30, cPlayerRelationEnemy);
+
+   if (friendlyStrength > 1.5 * enemyStrength && enemyStrength > 0)
+   {
+      for (i = 0; < aiPlanGetNumberUnits(gateKillerPlan, cUnitTypeLogicalTypeLandMilitary))
+      {
+         tempUnit = aiPlanGetUnitByIndex(gateKillerPlan, i);
+         tempLocation = kbUnitGetPosition(tempUnit);
+
+         tempTargetToShoot = getClosestGaiaUnit(cUnitTypeLogicalTypeLandMilitary, enemyTargetLocation, 30);
+         if (tempTargetToShoot > 0)
+         {
+            aiTaskUnitWork(tempUnit, tempTargetToShoot);
+         }
+         else
+         {
+            aiTaskUnitWork(tempUnit, enemyTarget);
+         }
+      }
+   }
+   else if (friendlyStrength > 1.5 * enemyStrength)
+   {
+      for (i = 0; < aiPlanGetNumberUnits(gateKillerPlan, cUnitTypeLogicalTypeLandMilitary))
+      {
+         tempUnit = aiPlanGetUnitByIndex(gateKillerPlan, i);
+         aiTaskUnitWork(tempUnit, enemyTarget);
+      }
+   }
+
+}
+
+
+rule cityAttackmanager
+inactive
+minInterval 10
+{
+   // Analyze the targets and see if any require defense
+   int primaryTargetNumber = xsArrayGetSize(cityTargetUnitArray);
+   int worstSituation = -1;
+   int worstRatio = -1;
+   int tempPlanID = -1;
+   int tempTargetID = -1;
+   vector tempPlanPosition = cInvalidVector;
+   vector tempTargetPosition = cInvalidVector;
+   int friendlyStrength = -1;
+   int enemyStrength = -1;
+   vector homeBase = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   vector mainBase = homeBase;
+   int distanceFromHome = -1;
+   int furthestDistanceFromHome = -1;
+   int furthestPlanID = -1;
+
+   if (xsIsRuleEnabled("attackManager") == true)
+   {
+      xsDisableRule("attackManager");
+   }
+
+   // Determine home base as most forward base not in combat
+   for (j = 0; < primaryTargetNumber)
+   {
+      tempPlanID = xsArrayGetInt(cityAttackPlanArray, j);
+      if (aiPlanGetVariableBool(tempPlanID, cCombatPlanInCombat, 0) == false)
+      {
+         tempPlanPosition = aiPlanGetLocation(tempPlanID);
+         distanceFromHome = distance(tempPlanPosition, mainBase);
+         if (furthestDistanceFromHome > distanceFromHome)
+         {
+            homeBase = tempPlanPosition;
+            furthestDistanceFromHome = distanceFromHome;
+            furthestPlanID = tempPlanID;
+         }
+      }
+   }
+   aiPlanSetDesiredPriority(furthestPlanID, 55);  // Set the mid priority so most people will go here
+   
+   // Handle cases where someone is under attack
+   for (i = 0; < primaryTargetNumber)
+   {
+      tempPlanID = xsArrayGetInt(cityAttackPlanArray, i);
+      if (aiPlanGetVariableBool(tempPlanID, cCombatPlanInCombat, 0) == true)
+      {  // we're in combat, see if we need help
+         tempPlanPosition = aiPlanGetLocation(tempPlanID);
+         friendlyStrength = getAreaStrength(tempPlanPosition, 30, cPlayerRelationAlly);
+         enemyStrength = getAreaStrength(tempPlanPosition, 30, cPlayerRelationEnemy);
+
+         if (friendlyStrength > enemyStrength)
+         {  // do nothing since we are winning, but don't let idle plans steal from us
+            aiPlanSetDesiredPriority(tempPlanID, 30);
+         }
+         else if (friendlyStrength < enemyStrength && (friendlyStrength * 2 > enemyStrength))
+         {  // Try and send help if we have a chance
+            aiPlanSetDesiredPriority(tempPlanID, 80);
+         }
+         else if (friendlyStrength < enemyStrength)
+         {  // No chance, try to fall back. Will likely fight to death
+            aiPlanSetDesiredPriority(tempPlanID, 20);
+            aiPlanSetVariableVector(tempPlanID, cCombatPlanTargetPoint, 0, homeBase);
+         }
+      }
+      else
+      {  // check if we've reached the location (keep in mind we aren't in combat)
+         tempTargetID = xsArrayGetInt(cityTargetUnitArray, i);
+         tempTargetPosition = kbUnitGetPosition(tempTargetID);
+         if (distance(tempTargetPosition, tempPlanPosition) < 30)
+         {
+            aiPlanSetDesiredPriority(tempPlanID, 30);
+            aiTaskUnitMove(aiPlanGetUnitByIndex(tempPlanID, 0), tempTargetPosition);
+         }
+      }
+   }
+
+
+   // Now go through each location and see if it's attackable
+   for (i = 0; < primaryTargetNumber)
+   {
+      tempPlanID = xsArrayGetInt(cityAttackPlanArray, i);
+      tempTargetID = xsArrayGetInt(cityTargetUnitArray, i);
+      tempPlanPosition = aiPlanGetLocation(tempPlanID);
+      tempTargetPosition = kbUnitGetPosition(tempTargetID);
+
+      if (aiPlanGetVariableBool(tempPlanID, cCombatPlanInCombat, 0) == true)
+      {  // Don't attack if we're in combat
+         continue;
+      }
+
+      // check if we're not there
+      if (distance(tempPlanPosition, tempTargetPosition) > 30)
+      {
+         friendlyStrength = getFriendlyArmyValue(tempPlanID);
+         enemyStrength = getAreaStrength(tempTargetPosition, 30, cPlayerRelationEnemy);
+         if (friendlyStrength > (enemyStrength * 1.2))
+         {
+            aiPlanSetDesiredPriority(tempPlanID, 60);
+            aiPlanSetVariableVector(tempPlanID, cCombatPlanTargetPoint, 0, tempTargetPosition);
+         }
+         else
+         {  // add units to plan
+            aiPlanSetDesiredPriority(tempPlanID, 30);
+         }
+      }
+   }
 }
 
 //==============================================================================
