@@ -5071,6 +5071,9 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
+      <effect mergemode="add" type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothersGerman">
@@ -5111,6 +5114,9 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
+      <effect mergemode="add" type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialAmericans">
@@ -18753,6 +18759,17 @@
     <effects>
       <effect type="Data" amount="3.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpMilitaryCamp</target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="deEUMapUpdateVisuals">
+     <effects>
+      <effect mergemode="add" type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpNativeEmbassyParisReward" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNativeEmbassyParisReward" relativity="Absolute">
+        <target type="ProtoUnit">deIconEuropeanEmbassy</target>
       </effect>
     </effects>
 	</tech>

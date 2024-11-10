@@ -164,7 +164,8 @@ void main(void)
 	int forestObjConstraint=rmCreateTypeDistanceConstraint("forest obj", "all", 6.0);
 	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 25.0);
 	int avoidResource=rmCreateTypeDistanceConstraint("resource avoid resource", "resource", 20.0);
-	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "Mine", 30.0);
+	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "MineTin", 30.0);
+	int avoidSilver=rmCreateTypeDistanceConstraint("avoid silver", "Mine", 30.0);
 	int shortAvoidCoin=rmCreateTypeDistanceConstraint("short avoid coin", "gold", 10.0);
 	int avoidStartResource=rmCreateTypeDistanceConstraint("start resource no overlap", "resource", 10.0);
     int avoidMountains=rmCreateClassDistanceConstraint("stuff avoids mountains", classMountains, 20.0);
@@ -187,7 +188,7 @@ void main(void)
 	int avoidNativesShort=rmCreateClassDistanceConstraint("stuff avoids natives short", rmClassID("natives"), 8.0);
 	int avoidNatives=rmCreateClassDistanceConstraint("stuff avoids natives", rmClassID("natives"), 30.0);
 	int avoidSecrets=rmCreateClassDistanceConstraint("stuff avoids secrets", rmClassID("secrets"), 20.0);
-	int avoidNuggets=rmCreateClassDistanceConstraint("stuff avoids nuggets", rmClassID("nuggets"), 60.0);
+	int avoidNugget=rmCreateClassDistanceConstraint("stuff avoids nuggets", rmClassID("nuggets"), 60.0);
 	int deerConstraint=rmCreateTypeDistanceConstraint("avoid the deer", "deer", 40.0);
 	int shortNuggetConstraint=rmCreateTypeDistanceConstraint("avoid nugget objects", "AbstractNugget", 7.0);
 	int shortDeerConstraint=rmCreateTypeDistanceConstraint("short avoid the deer", "deer", 20.0);
@@ -646,10 +647,10 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
     rmSetGroupingMaxDistance(blockBastion02, 0.50);
 	rmAddGroupingToClass(blockBastion02, rmClassID("classBlock"));
 
-	int blockBastion03 = rmCreateGrouping("Bastion3", "EU_House_Block_Bastion03");
-    rmSetGroupingMinDistance(blockBastion03, 0.00);
-    rmSetGroupingMaxDistance(blockBastion03, 0.50);
-	rmAddGroupingToClass(blockBastion03, rmClassID("classBlock"));
+	int blockEmbassy = rmCreateGrouping("Native Embassy", "EU_House_Block_Embassy");
+    rmSetGroupingMinDistance(blockEmbassy, 0.00);
+    rmSetGroupingMaxDistance(blockEmbassy, 0.50);
+	rmAddGroupingToClass(blockEmbassy, rmClassID("classBlock"));
 
 	// Treasure Blocks
 	int blockTreasure01 = rmCreateGrouping("Treasure1", "EU_House_Block_Treasure1");
@@ -817,8 +818,12 @@ int jesuitMaltese = rmRandInt(1, 2);
 	rmSetNuggetDifficulty(194, 194);
 	rmPlaceGroupingAtLoc(blockBastion01, 0, locX3, locZ3);
 	rmPlaceGroupingAtLoc(blockBastion02, 0, locXm3, locZ6);
-	rmPlaceGroupingAtLoc(blockBastion03, 0, locX3, locZ6);
 	rmPlaceGroupingAtLoc(blockBastion01, 0, locXm3, locZ3);
+	rmPlaceGroupingAtLoc(blockBastion02, 0, locX3, locZ6);
+
+	rmSetNuggetDifficulty(195, 195);
+	rmPlaceGroupingAtLoc(blockEmbassy, 0, locX1, locZ5);
+	rmPlaceGroupingAtLoc(blockEmbassy, 0, locXm1, locZ4);
 
 	rmSetNuggetDifficulty(192, 192);
 	rmPlaceGroupingAtLoc(blockTreasure02, 0, locXm4, locZ2);
@@ -1039,6 +1044,7 @@ rmSetStatusText("",0.70);
 		rmAddAreaConstraint(wallCliffs, avoidTradeRouteFar);
 		rmAddAreaConstraint(wallCliffs, avoidWall);
 		rmSetAreaCliffType(wallCliffs, "Northwest Territory");
+		rmAddAreaToClass(wallCliffs , classMountains);
 		rmSetAreaCliffEdge(wallCliffs, 1, 1, 0.0, 0.0, 2); //4,.225 looks cool too
 		rmSetAreaCliffPainting(wallCliffs, false, true, true, 1.5, true);
 		rmSetAreaCliffHeight(wallCliffs, 0, 0, 0.5);
@@ -1148,24 +1154,24 @@ rmSetStatusText("",0.70);
 
 	if (countryVar ==1){
 		if (jesuitMaltese ==1){
-			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5-rmXTilesToFraction(100), 0.8, 1);
-			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5+rmXTilesToFraction(100), 0.2, 1);
+			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5-rmXTilesToFraction(99), 0.8, 1);
+			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5+rmXTilesToFraction(99), 0.2, 1);
 		}
 		else{
-			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5-rmXTilesToFraction(100), 0.8, 1);
-			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5+rmXTilesToFraction(100), 0.2, 1);
+			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5-rmXTilesToFraction(99), 0.8, 1);
+			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5+rmXTilesToFraction(99), 0.2, 1);
 		}
 		rmPlaceGroupingAtLoc(blockMillVillage, 0, 0.5+rmXTilesToFraction(100), 0.8, 1);
 		rmPlaceGroupingAtLoc(blockMillVillage, 0, 0.5-rmXTilesToFraction(100), 0.2, 1);
 	}
 	else{
 		if (jesuitMaltese ==1){
-			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5-rmXTilesToFraction(100), 0.2, 1);
-			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5+rmXTilesToFraction(100), 0.8, 1);
+			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5-rmXTilesToFraction(99), 0.2, 1);
+			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5+rmXTilesToFraction(99), 0.8, 1);
 		}
 		else{
-			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5-rmXTilesToFraction(100), 0.2, 1);
-			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5+rmXTilesToFraction(100), 0.8, 1);
+			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5-rmXTilesToFraction(99), 0.2, 1);
+			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5+rmXTilesToFraction(99), 0.8, 1);
 		}
 		rmPlaceGroupingAtLoc(blockMillVillage, 0, 0.5+rmXTilesToFraction(100), 0.2, 1);
 		rmPlaceGroupingAtLoc(blockMillVillage, 0, 0.5-rmXTilesToFraction(100), 0.8, 1);
@@ -1175,6 +1181,7 @@ rmSetStatusText("",0.70);
 	int foresterID = rmCreateObjectDef("random forester");
 	rmAddObjectDefItem(foresterID, "zpSPCForester", 1, 0);
 	rmAddObjectDefConstraint(foresterID, avoidBlockMedium);
+	rmAddObjectDefConstraint(foresterID, playerEdgeConstraint);
 	if (countryVar ==1){
 		rmPlaceObjectDefInArea(foresterID, 0, rmAreaID("wallCliffs1"), 1);
 		rmPlaceObjectDefInArea(foresterID, 0, rmAreaID("wallCliffs3"), 1);
@@ -1188,11 +1195,26 @@ rmSetStatusText("",0.70);
 	int randomHouseID = rmCreateObjectDef("random house");
 	rmAddObjectDefItem(randomHouseID, "zpSPCVillageHouseProp", 1, 0);
 	rmAddObjectDefConstraint(randomHouseID, avoidBlockLong);
+	rmAddObjectDefConstraint(randomHouseID, playerEdgeConstraint);
 	for (j=0; < 4) {   
-
-      rmPlaceObjectDefInArea(randomHouseID, 0, rmAreaID("wallCliffs"+j), 6);
-
+      	rmPlaceObjectDefInArea(randomHouseID, 0, rmAreaID("wallCliffs"+j), 6);
 	}
+
+	// Random Gold
+	int randomGoldID = rmCreateObjectDef("random mine");
+	rmAddObjectDefItem(randomGoldID, "Mine", 1, 0.0);
+	rmSetObjectDefMinDistance(randomGoldID, 0.0);
+	rmSetObjectDefMaxDistance(randomGoldID, rmXFractionToMeters(0.45));
+	rmAddObjectDefConstraint(randomGoldID, avoidSilver);
+	rmAddObjectDefConstraint(randomGoldID, avoidAll);
+	rmAddObjectDefConstraint(randomGoldID, avoidBlockLong);
+	rmAddObjectDefConstraint(randomGoldID, playerEdgeConstraint);
+	if (cNumberNonGaiaPlayers>=4){ 
+		for (j=0; < 4) {   
+			rmPlaceObjectDefInArea(randomGoldID, 0, rmAreaID("wallCliffs"+j), 2);
+		}
+	}
+	
 
 	// Random Trees
 	int cliffTreeID = rmCreateObjectDef("cliffTree");
@@ -1304,6 +1326,13 @@ rmSetStatusText("",0.70);
 	rmSetObjectDefMaxDistance(goldID, 15.0);
 	rmAddObjectDefConstraint(goldID, avoidTradeRouteMin);
 
+	/*int goldID2 = rmCreateObjectDef("starting gold 2");
+	rmAddObjectDefItem(goldID2, "MineTin", 1, 2.0);
+	rmSetObjectDefMinDistance(goldID2, 20.0);
+	rmSetObjectDefMaxDistance(goldID2, 50.0);
+	rmAddObjectDefConstraint(goldID2, avoidTradeRouteMin);
+	rmAddObjectDefConstraint(goldID2, avoidCoin);*/
+
 	int berryID = rmCreateObjectDef("starting berries");
 	rmAddObjectDefItem(berryID, "BerryBush", 5, 4.0);
 	rmSetObjectDefMinDistance(berryID, 16.0);
@@ -1333,6 +1362,8 @@ rmSetStatusText("",0.70);
         rmPlaceObjectDefAtLoc(goldID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
         rmPlaceObjectDefAtLoc(berryID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 		rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);
+		/*if (cNumberNonGaiaPlayers >=4)
+			rmPlaceObjectDefAtLoc(goldID2, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));*/
 
 	}
 
@@ -1355,6 +1386,43 @@ rmSetStatusText("",0.70);
 	rmAddObjectDefConstraint(countrysideTrees, avoidWallLong);
 	rmAddObjectDefConstraint(countrysideTrees, avoidTownCenter);	
 	rmPlaceObjectDefAtLoc(countrysideTrees, 0, 0.5, 0.5, 50*cNumberNonGaiaPlayers);   
+
+	// Nuggets
+
+	int nuggetNorth= rmCreateObjectDef("nugget easy north"); 
+	rmAddObjectDefItem(nuggetNorth, "Nugget", 1, 0.0);
+	rmSetNuggetDifficulty(1, 2);
+	rmAddObjectDefConstraint(nuggetNorth, shortAvoidImpassableLand);
+	rmAddObjectDefConstraint(nuggetNorth, avoidNugget);
+	rmAddObjectDefConstraint(nuggetNorth, avoidBlockMedium);
+	rmAddObjectDefConstraint(nuggetNorth, avoidTownCenter);
+	rmAddObjectDefConstraint(nuggetNorth, avoidMountains);
+	rmAddObjectDefConstraint(nuggetNorth, playerEdgeConstraint);
+	rmPlaceObjectDefInArea(nuggetNorth, 0, countrysideNorth, cNumberNonGaiaPlayers);
+
+	int nuggetSouth= rmCreateObjectDef("nugget easy south"); 
+	rmAddObjectDefItem(nuggetSouth, "Nugget", 1, 0.0);
+	rmSetNuggetDifficulty(1, 2);
+	rmAddObjectDefConstraint(nuggetSouth, shortAvoidImpassableLand);
+	rmAddObjectDefConstraint(nuggetSouth, avoidNugget);
+	rmAddObjectDefConstraint(nuggetSouth, avoidBlockMedium);
+	rmAddObjectDefConstraint(nuggetSouth, avoidTownCenter);
+	rmAddObjectDefConstraint(nuggetSouth, avoidMountains);
+	rmAddObjectDefConstraint(nuggetSouth, playerEdgeConstraint);
+	rmPlaceObjectDefInArea(nuggetSouth, 0, countrysideSouth, cNumberNonGaiaPlayers);
+
+	int nuggetHard= rmCreateObjectDef("nugget hard"); 
+	rmAddObjectDefItem(nuggetHard, "Nugget", 1, 0.0);
+	rmSetNuggetDifficulty(121, 121);
+	rmAddObjectDefConstraint(nuggetHard, shortAvoidImpassableLand);
+	rmAddObjectDefConstraint(nuggetHard, avoidAll);
+	rmAddObjectDefConstraint(nuggetHard, avoidBlockMedium);
+	rmAddObjectDefConstraint(nuggetHard, playerEdgeConstraint);
+	rmPlaceObjectDefInArea(nuggetHard, 0, rmAreaID("wallCliffs1"), 1);
+	rmPlaceObjectDefInArea(nuggetHard, 0, rmAreaID("wallCliffs2"), 1);
+	rmPlaceObjectDefInArea(nuggetHard, 0, rmAreaID("wallCliffs3"), 1);
+	rmPlaceObjectDefInArea(nuggetHard, 0, rmAreaID("wallCliffs0"), 1);
+
 
 
 

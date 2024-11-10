@@ -2188,6 +2188,26 @@
       <killunitonapply>0</killunitonapply>
       <difficulty>192</difficulty>
     </nugget>
+    <nugget>
+      <name>zpEmbassyParis</name>
+      <rolloverstringid>124120</rolloverstringid>
+      <applystringid>124121</applystringid>
+      <nuggetunit>NuggetCapturableBuildingBig</nuggetunit>
+      <type>ConvertUnit</type>
+      <amount>1</amount>
+      <maptype>piratehistoricalmap</maptype>
+      <convertunit>
+        <unit>zpNativeEmbassyParisReward</unit>
+        <attachdummy>bone_nuggetA</attachdummy>
+      </convertunit>
+      <guardian>deGuardianMusketeer</guardian>
+      <guardian>deGuardianMusketeer</guardian>
+      <guardian>deGuardianMusketeer</guardian>
+      <guardian>deGuardianHalberdier</guardian>
+      <guardian>deGuardianHalberdier</guardian>
+      <guardian>deGuardianHalberdier</guardian>
+      <difficulty>195</difficulty>
+    </nugget>
 
 
     <!--WATER NUGGETS-->

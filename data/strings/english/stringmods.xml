@@ -2032,6 +2032,7 @@
       <string _locid="302031" symbol="cStringNuggetCaneloActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has discovered unused guillotine worth %2d %3s.</string>
       <string _locid="302032">ZP PROP Obelisk</string>
       <string _locid="302033">Can't be placed on a bridge.</string>
+      <string _locid="302034">ZP Native Embassy Paris Reward</string>
 
 
 
