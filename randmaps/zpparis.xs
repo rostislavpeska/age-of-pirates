@@ -646,6 +646,11 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
     rmSetGroupingMaxDistance(blockBastion02, 0.50);
 	rmAddGroupingToClass(blockBastion02, rmClassID("classBlock"));
 
+	int blockBastion03 = rmCreateGrouping("Bastion3", "EU_House_Block_Bastion03");
+    rmSetGroupingMinDistance(blockBastion03, 0.00);
+    rmSetGroupingMaxDistance(blockBastion03, 0.50);
+	rmAddGroupingToClass(blockBastion03, rmClassID("classBlock"));
+
 	// Treasure Blocks
 	int blockTreasure01 = rmCreateGrouping("Treasure1", "EU_House_Block_Treasure1");
     rmSetGroupingMinDistance(blockTreasure01, 0.00);
@@ -656,11 +661,6 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
     rmSetGroupingMinDistance(blockTreasure02, 0.00);
     rmSetGroupingMaxDistance(blockTreasure02, 0.50);
 	rmAddGroupingToClass(blockTreasure02, rmClassID("classBlock"));
-
-	int blockTreasure03 = rmCreateGrouping("Treasure3", "EU_House_Block_Treasure3");
-    rmSetGroupingMinDistance(blockTreasure03, 0.00);
-    rmSetGroupingMaxDistance(blockTreasure03, 0.50);
-	rmAddGroupingToClass(blockTreasure03, rmClassID("classBlock"));
 
 	// House Blocks
 	int blockHouse01 = rmCreateGrouping("house1", "EU_House_Block_01");
@@ -817,11 +817,14 @@ int jesuitMaltese = rmRandInt(1, 2);
 	rmSetNuggetDifficulty(194, 194);
 	rmPlaceGroupingAtLoc(blockBastion01, 0, locX3, locZ3);
 	rmPlaceGroupingAtLoc(blockBastion02, 0, locXm3, locZ6);
+	rmPlaceGroupingAtLoc(blockBastion03, 0, locX3, locZ6);
+	rmPlaceGroupingAtLoc(blockBastion01, 0, locXm3, locZ3);
 
 	rmSetNuggetDifficulty(192, 192);
-	rmPlaceGroupingAtLoc(blockTreasure03, 0, locX3, locZ6);
-	rmPlaceGroupingAtLoc(blockTreasure02, 0, locXm3, locZ3);
+	rmPlaceGroupingAtLoc(blockTreasure02, 0, locXm4, locZ2);
 	rmPlaceGroupingAtLoc(blockTreasure01, 0, locXm1, locZ0);
+	rmPlaceGroupingAtLoc(blockTreasure02, 0, locX4, locZ7);
+	rmPlaceGroupingAtLoc(blockTreasure01, 0, locX1, locZ9);
 
 
 // South Bank
@@ -874,7 +877,8 @@ int jesuitMaltese = rmRandInt(1, 2);
 	rmPlaceGroupingAtLoc(blockHouse06, 0, locX4, locZ5);
 	rmPlaceGroupingAtLoc(blockHouse01, 0, locX4, locZ6);
 	rmPlaceGroupingAtLoc(blockHouse02, 0, locX4, locZ7);
-	//rmPlaceGroupingAtLoc(blockHouse03, 0, locX4, locZ8);
+	if (cNumberNonGaiaPlayers <=3)
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locX4, locZ8);
 	rmPlaceGroupingAtLoc(blockHouse04, 0, locX4, locZ9);
 
 // North Bank
@@ -920,7 +924,8 @@ int jesuitMaltese = rmRandInt(1, 2);
 	//fourth row
 
 	rmPlaceGroupingAtLoc(blockHouse05, 0, locXm4, locZ0);
-	//rmPlaceGroupingAtLoc(blockHouse06, 0, locXm4, locZ1);
+	if (cNumberNonGaiaPlayers <=3)
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locXm4, locZ1);
 	rmPlaceGroupingAtLoc(blockHouse01, 0, locXm4, locZ2);
 	rmPlaceGroupingAtLoc(blockHouse02, 0, locXm4, locZ3);
 	rmPlaceGroupingAtLoc(blockHouse03, 0, locXm4, locZ4);
