@@ -2030,7 +2030,8 @@
       <string _locid="302029">Capture the Victory building by moving troops into the area.</string>
       <string _locid="302030" symbol="cStringNuggetCanelo" comment="1 - amount, 2 - resource">An unused guillotine worth %1d %2s.</string>
       <string _locid="302031" symbol="cStringNuggetCaneloActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has discovered unused guillotine worth %2d %3s.</string>
-
+      <string _locid="302032">ZP PROP Obelisk</string>
+      <string _locid="302033">Can't be placed on a bridge.</string>
 
 
 

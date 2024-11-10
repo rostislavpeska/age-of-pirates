@@ -186,5 +186,8 @@
 			<flag>PlaceAnywhere</flag>
 			<buildpoints>0.0000</buildpoints>
 		</unit>
+		<unit name="Dock">
+			<placementfile>dock_city.xml</placementfile>
+		</unit>
 	</protomods>
 </mods>

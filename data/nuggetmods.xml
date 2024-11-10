@@ -2026,14 +2026,10 @@
         <unit>zpParisCitadelGaia</unit>
         <attachdummy>bone_nuggetA</attachdummy>
       </convertunit>
-      <guardianunit>
-        <unit>deGuardianHighwayman</unit>
-        <idleanim>NuggetPirate1_Idle</idleanim>
-        <exitanim>NuggetPirate1_Exit</exitanim>
-      </guardianunit>
       <guardian>deGuardianHalberdier</guardian>
       <guardian>deGuardianHalberdier</guardian>
       <guardian>deGuardianHalberdier</guardian>
+      <guardian>deGuardianPikeman</guardian>
       <guardian>deGuardianPikeman</guardian>
       <guardian>deGuardianPikeman</guardian>
       <difficulty>194</difficulty>
@@ -2050,14 +2046,9 @@
         <unit>zpParisCitadelGaia</unit>
         <attachdummy>bone_nuggetA</attachdummy>
       </convertunit>
-      <guardianunit>
-        <unit>deGuardianHighwayman</unit>
-        <idleanim>NuggetPirate1_Idle</idleanim>
-        <exitanim>NuggetPirate1_Exit</exitanim>
-      </guardianunit>
-      <guardian>deGuardianMusketeer</guardian>
-      <guardian>deGuardianMusketeer</guardian>
-      <guardian>deGuardianMusketeer</guardian>
+      <guardian>deGuardianCuirassier</guardian>
+      <guardian>deGuardianCuirassier</guardian>
+      <guardian>deGuardianPikeman</guardian>
       <guardian>deGuardianPikeman</guardian>
       <guardian>deGuardianPikeman</guardian>
       <difficulty>194</difficulty>
@@ -2074,16 +2065,12 @@
         <unit>zpParisCitadelGaia</unit>
         <attachdummy>bone_nuggetA</attachdummy>
       </convertunit>
-      <guardianunit>
-        <unit>deGuardianHighwayman</unit>
-        <idleanim>NuggetPirate1_Idle</idleanim>
-        <exitanim>NuggetPirate1_Exit</exitanim>
-      </guardianunit>
       <guardian>deGuardianMusketeer</guardian>
       <guardian>deGuardianMusketeer</guardian>
-      <guardian>deGuardianPikeman</guardian>
-      <guardian>deGuardianPikeman</guardian>
-      <guardian>deGuardianPikeman</guardian>
+      <guardian>deGuardianMusketeer</guardian>
+      <guardian>deGuardianHalberdier</guardian>
+      <guardian>deGuardianHalberdier</guardian>
+      <guardian>deGuardianHalberdier</guardian>
       <difficulty>194</difficulty>
     </nugget>
     <nugget>
@@ -2098,13 +2085,9 @@
         <unit>zpParisCitadelGaia</unit>
         <attachdummy>bone_nuggetA</attachdummy>
       </convertunit>
-      <guardianunit>
-        <unit>deGuardianHighwayman</unit>
-        <idleanim>NuggetPirate1_Idle</idleanim>
-        <exitanim>NuggetPirate1_Exit</exitanim>
-      </guardianunit>
-      <guardian>deGuardianCuirassier</guardian>
-      <guardian>deGuardianCuirassier</guardian>
+      <guardian>deGuardianMusketeer</guardian>
+      <guardian>deGuardianMusketeer</guardian>
+      <guardian>deGuardianMusketeer</guardian>
       <guardian>deGuardianCuirassier</guardian>
       <guardian>deGuardianCuirassier</guardian>
       <difficulty>194</difficulty>
@@ -2154,7 +2137,53 @@
         <attachdummy>bone_outlaw_C</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>OutlawRider</unit>
+        <unit>deGuardianCuirassier</unit>
+      </guardianunit>
+      <killunitonapply>0</killunitonapply>
+      <difficulty>192</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpGuillotine3</name>
+      <type>ConvertUnit</type>
+      <convertsettler>true</convertsettler>
+      <nuggetunit>zpNuggetKidnapGuillotine</nuggetunit>
+      <rolloverstringid>36942</rolloverstringid>
+      <applystringid>36943</applystringid>
+      <convertunit>
+        <unit>Settler</unit>
+        <idleanim>Kidnap_HostageA_Idle</idleanim>
+        <exitanim>Kidnap_HostageA_Exit</exitanim>
+        <attachdummy>bone_hostage_A</attachdummy>
+      </convertunit>
+      <convertunit>
+        <unit>Settler</unit>
+        <idleanim>Kidnap_HostageA_Idle</idleanim>
+        <exitanim>Kidnap_HostageA_Exit</exitanim>
+        <attachdummy>bone_hostage_B</attachdummy>
+      </convertunit>
+      <guardianunit>
+        <unit>deGuardianMusketeer</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_A</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianMusketeer</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_B</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianMusketeer</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_C</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianCuirassier</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianCuirassier</unit>
       </guardianunit>
       <killunitonapply>0</killunitonapply>
       <difficulty>192</difficulty>

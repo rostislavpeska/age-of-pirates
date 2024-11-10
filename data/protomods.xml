@@ -41883,8 +41883,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20550" name="zpNuggetKidnapGuillotine">
-    <dbid>20550</dbid>
+  <unit id="20554" name="zpNuggetKidnapGuillotine">
+    <dbid>20554</dbid>
     <displaynameid>35412</displaynameid>
     <obstructionradiusx>1.0000</obstructionradiusx>
     <obstructionradiusz>1.0000</obstructionradiusz>
@@ -41936,6 +41936,30 @@
     <flag>Nugget</flag>
     <flag>ObscuresUnits</flag>
     <flag>Tracked</flag>
+  </unit>
+  <unit id="20555" name="zpNatEUPropObelisk">
+    <dbid>20555</dbid>
+    <displaynameid>62299</displaynameid>
+    <editornameid>302032</editornameid>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>nuggets\stela\obelisk_nodecal.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>RMCanRotate</flag>
   </unit>
 
 
