@@ -58,12 +58,21 @@ void main(void)
 
 	if (cNumberNonGaiaPlayers >=3)
 		sizeX = 653;
-	if (cNumberNonGaiaPlayers >=5)
-		sizeX = 753;
-	if (cNumberNonGaiaPlayers >=7)
+	if (cNumberNonGaiaPlayers >=6)
 		sizeX = 853;
 	rmSetMapSize(sizeX, sizeZ);
 	// rmSetMapElevationParameters(cElevTurbulence, 0.4, 6, 0.5, 3.0);  // DAL - original
+
+	// Big city for 6+ players
+	int bigCity = 0;
+	if (cNumberNonGaiaPlayers>=6)
+		bigCity = 1;
+	int citySize = 0;
+	//int citySizeN = 0.5;
+	if (bigCity == 1){
+		citySize = 34;
+		//citySizeN = rmXTilesToFraction(34);
+	}
 
 	rmSetAllMapReveal(true);
 	
@@ -261,8 +270,8 @@ void main(void)
     rmSetGroupingMaxDistance(northeastWall, 0.00);
 	rmAddGroupingToClass(northeastWall, rmClassID("classBlock"));
 
-	int cityWall1 = rmPlaceGroupingInstanceAtLoc(southwestWall, 0.5-rmXTilesToFraction(90), 0.519, 0);
-	int cityWall2 = rmPlaceGroupingInstanceAtLoc(northeastWall, 0.5+rmXTilesToFraction(90), 0.512, 0);
+	int cityWall1 = rmPlaceGroupingInstanceAtLoc(southwestWall, 0.5-rmXTilesToFraction(citySize+90), 0.519, 0);
+	int cityWall2 = rmPlaceGroupingInstanceAtLoc(northeastWall, 0.5+rmXTilesToFraction(citySize+90), 0.512, 0);
 
 
 	// ********************* Trade Route *******************************
@@ -347,8 +356,8 @@ void main(void)
 
     // Additional Constraints - based on dansil original constraints
     int cityConstraint = rmCreateBoxConstraint("stay in the city", 0.2, 0.0, 0.8, 1.0);
-    int citySouthConstraint = rmCreateBoxConstraint("stay in the city south", 0.5-rmXTilesToFraction(85), 0.0, 0.5-rmXTilesToFraction(16), 1.0);
-    int cityNorthConstraint = rmCreateBoxConstraint("stay in the city north", 0.5+rmXTilesToFraction(16), 0.0, 0.5+rmXTilesToFraction(85), 1.0);
+    int citySouthConstraint = rmCreateBoxConstraint("stay in the city south", 0.5-rmXTilesToFraction(citySize+85), 0.0, 0.5-rmXTilesToFraction(16), 1.0);
+    int cityNorthConstraint = rmCreateBoxConstraint("stay in the city north", 0.5+rmXTilesToFraction(16), 0.0, 0.5+rmXTilesToFraction(citySize+85), 1.0);
 
     int classPatch = rmDefineClass("patch");
     int avoidPatch = rmCreateClassDistanceConstraint("avoid patch", rmClassID("patch"), 22.0);
@@ -731,106 +740,268 @@ int jesuitMaltese = rmRandInt(1, 2);
 	rmPlaceGroupingAtLoc(blockPark, 0, locXm2, locZ6);
 	rmPlaceGroupingAtLoc(blockPark, 0, locX2, locZ4);
 
-// City Center
 
-	rmPlaceGroupingAtLoc(blockMarket, 0, locX2, locZ1);
-	rmPlaceGroupingAtLoc(blockMarket, 0, locXm2, locZ8);
+	if (bigCity==0){
+	// City Center
 
-	if (cNumberNonGaiaPlayers>=4){
-		rmPlaceGroupingAtLoc(blockMarket, 0, locX2, locZ8);
-		rmPlaceGroupingAtLoc(blockMarket, 0, locXm2, locZ1);
-	}
+		rmPlaceGroupingAtLoc(blockMarket, 0, locX2, locZ1);
+		rmPlaceGroupingAtLoc(blockMarket, 0, locXm2, locZ8);
 
-	rmPlaceGroupingAtLoc(blockBank, 0, locX1, locZ7);
-	rmPlaceGroupingAtLoc(blockBank, 0, locXm1, locZ2);
+		if (cNumberNonGaiaPlayers>=4){
+			rmPlaceGroupingAtLoc(blockMarket, 0, locX2, locZ8);
+			rmPlaceGroupingAtLoc(blockMarket, 0, locXm2, locZ1);
+		}
 
-	if (cNumberNonGaiaPlayers>=4){
-		rmPlaceGroupingAtLoc(blockBank, 0, locX1, locZ2);
-	rmPlaceGroupingAtLoc(blockBank, 0, locXm1, locZ7);
-	}
+		rmPlaceGroupingAtLoc(blockBank, 0, locX1, locZ7);
+		rmPlaceGroupingAtLoc(blockBank, 0, locXm1, locZ2);
 
-	/*if (jesuitMaltese ==1){
-		rmPlaceGroupingAtLoc(blockJesuit, 0, locX2, locZ5);
-		rmPlaceGroupingAtLoc(blockMaltese, 0, locXm2, locZ4);
-	}
-	else{
-		rmPlaceGroupingAtLoc(blockMaltese, 0, locX2, locZ5);
-		rmPlaceGroupingAtLoc(blockJesuit, 0, locXm2, locZ4);
-	}*/
+		if (cNumberNonGaiaPlayers>=4){
+			rmPlaceGroupingAtLoc(blockBank, 0, locX1, locZ2);
+		rmPlaceGroupingAtLoc(blockBank, 0, locXm1, locZ7);
+		}
 
-// Outer Center
-
-	rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ7);
-	rmPlaceGroupingAtLoc(blockSansculot, 0, locXm3, locZ2);
-
-	if (cNumberNonGaiaPlayers>=4){
-		if (spawnSwitch ==0){
-			rmPlaceGroupingAtLoc(blockSansculot, 0, locX1, locZ0);
-			rmPlaceGroupingAtLoc(blockBourbon, 0, locXm1, locZ9);
+		/*if (jesuitMaltese ==1){
+			rmPlaceGroupingAtLoc(blockJesuit, 0, locX2, locZ5);
+			rmPlaceGroupingAtLoc(blockMaltese, 0, locXm2, locZ4);
 		}
 		else{
-			rmPlaceGroupingAtLoc(blockBourbon, 0, locX1, locZ0);
-			rmPlaceGroupingAtLoc(blockSansculot, 0, locXm1, locZ9);
+			rmPlaceGroupingAtLoc(blockMaltese, 0, locX2, locZ5);
+			rmPlaceGroupingAtLoc(blockJesuit, 0, locXm2, locZ4);
+		}*/
+
+	// Outer Center
+
+		rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ7);
+		rmPlaceGroupingAtLoc(blockSansculot, 0, locXm3, locZ2);
+
+		if (cNumberNonGaiaPlayers>=4){
+			if (spawnSwitch ==0){
+				rmPlaceGroupingAtLoc(blockSansculot, 0, locX1, locZ0);
+				rmPlaceGroupingAtLoc(blockBourbon, 0, locXm1, locZ9);
+			}
+			else{
+				rmPlaceGroupingAtLoc(blockBourbon, 0, locX1, locZ0);
+				rmPlaceGroupingAtLoc(blockSansculot, 0, locXm1, locZ9);
+			}
 		}
+
+		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX3, locZ2);
+		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locXm3, locZ7);
+
+		rmPlaceGroupingAtLoc(blockFactory, 0, locX3, locZ8);
+		rmPlaceGroupingAtLoc(blockFactory, 0, locXm3, locZ1);
+
+		int cityState1 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locX3, locZ4, 0);
+		int cityState2 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locXm3, locZ5, 0);
+
+		int victoryGrouping2 = rmPlaceGroupingInstanceAtLoc(blockCourt, locX3, locZ1, 0);
+		int victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locXm3, locZ8, 0);
+
+
+	// Suburb
+
+		if (cNumberNonGaiaPlayers>=4){
+			rmPlaceGroupingAtLoc(blockMill, 0, locX4, locZ5);
+			rmPlaceGroupingAtLoc(blockMill, 0, locXm4, locZ4);
+		}
+
+		rmPlaceGroupingAtLoc(blockDestilery, 0, locX4, locZ3);
+		rmPlaceGroupingAtLoc(blockDestilery, 0, locXm4, locZ6);
+
+		rmPlaceGroupingAtLoc(blockWarehouse, 0, locX4, locZ9);
+		rmPlaceGroupingAtLoc(blockWarehouse, 0, locXm4, locZ0);
+
+		if (cNumberNonGaiaPlayers>=4){
+			rmPlaceGroupingAtLoc(blockWarehouse, 0, locX4, locZ0);
+			rmPlaceGroupingAtLoc(blockWarehouse, 0, locXm4, locZ9);
+		}
+
+		rmPlaceGroupingAtLoc(blockConstruction, 0, locX4, locZ4);
+		rmPlaceGroupingAtLoc(blockConstruction, 0, locXm4, locZ5);
+
+		if (cNumberNonGaiaPlayers>=4){
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX4, locZ8);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locXm4, locZ1);
+		}
+
+	// Everywhere
+
+		rmSetNuggetDifficulty(194, 194);
+		rmPlaceGroupingAtLoc(blockBastion01, 0, locX3, locZ3);
+		rmPlaceGroupingAtLoc(blockBastion02, 0, locXm3, locZ6);
+		rmPlaceGroupingAtLoc(blockBastion01, 0, locXm3, locZ3);
+		rmPlaceGroupingAtLoc(blockBastion02, 0, locX3, locZ6);
+
+		rmSetNuggetDifficulty(195, 195);
+		rmPlaceGroupingAtLoc(blockEmbassy, 0, locX1, locZ5);
+		rmPlaceGroupingAtLoc(blockEmbassy, 0, locXm1, locZ4);
+
+		rmSetNuggetDifficulty(192, 192);
+		rmPlaceGroupingAtLoc(blockTreasure02, 0, locXm4, locZ2);
+		rmPlaceGroupingAtLoc(blockTreasure01, 0, locXm1, locZ0);
+		rmPlaceGroupingAtLoc(blockTreasure02, 0, locX4, locZ7);
+		rmPlaceGroupingAtLoc(blockTreasure01, 0, locX1, locZ9);
+
 	}
 
-	rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX3, locZ2);
-	rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locXm3, locZ7);
+	else{
+	// City Center
 
-	rmPlaceGroupingAtLoc(blockFactory, 0, locX3, locZ8);
-	rmPlaceGroupingAtLoc(blockFactory, 0, locXm3, locZ1);
+		rmPlaceGroupingAtLoc(blockMarket, 0, locX2, locZ1);
+		rmPlaceGroupingAtLoc(blockMarket, 0, locXm2, locZ8);
 
-	int cityState1 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locX3, locZ4, 0);
-	int cityState2 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locXm3, locZ5, 0);
+		rmPlaceGroupingAtLoc(blockMarket, 0, locX3, locZ5);
+		rmPlaceGroupingAtLoc(blockMarket, 0, locXm3, locZ4);
 
-	int victoryGrouping2 = rmPlaceGroupingInstanceAtLoc(blockCourt, locX3, locZ1, 0);
-	int victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locXm3, locZ8, 0);
+		rmPlaceGroupingAtLoc(blockBank, 0, locX1, locZ7);
+		rmPlaceGroupingAtLoc(blockBank, 0, locXm1, locZ2);
+
+		rmPlaceGroupingAtLoc(blockBank, 0, locX1, locZ2);
+		rmPlaceGroupingAtLoc(blockBank, 0, locXm1, locZ7);
+
+		rmPlaceGroupingAtLoc(blockBank, 0, locX3, locZ4);
+		rmPlaceGroupingAtLoc(blockBank, 0, locXm3, locZ5);
+
+		if (cNumberNonGaiaPlayers==8){
+			rmPlaceGroupingAtLoc(blockBank, 0, locX2, locZ8);
+			rmPlaceGroupingAtLoc(blockBank, 0, locXm2, locZ1);
+		}
+
+		if (jesuitMaltese ==1){
+			rmPlaceGroupingAtLoc(blockJesuit, 0, locX2, locZ5);
+			rmPlaceGroupingAtLoc(blockMaltese, 0, locXm2, locZ4);
+		}
+		else{
+			rmPlaceGroupingAtLoc(blockMaltese, 0, locX2, locZ5);
+			rmPlaceGroupingAtLoc(blockJesuit, 0, locXm2, locZ4);
+		}
+
+	// Outer Center
+
+		if (spawnSwitch ==0){
+			rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ7);
+			rmPlaceGroupingAtLoc(blockBourbon, 0, locXm3, locZ2);
+
+			rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ2);
+			rmPlaceGroupingAtLoc(blockBourbon, 0, locXm3, locZ7);
+
+			rmPlaceGroupingAtLoc(blockSansculot, 0, locX4, locZ6);
+			rmPlaceGroupingAtLoc(blockBourbon, 0, locXm4, locZ3);
+
+			if (cNumberNonGaiaPlayers==8){
+				rmPlaceGroupingAtLoc(blockSansculot, 0, locX5, locZ5);
+				rmPlaceGroupingAtLoc(blockBourbon, 0, locXm5, locZ4);
+			}
+		}
+
+		if (spawnSwitch ==1){
+			rmPlaceGroupingAtLoc(blockBourbon, 0, locX3, locZ7);
+			rmPlaceGroupingAtLoc(blockSansculot, 0, locXm3, locZ2);
+
+			rmPlaceGroupingAtLoc(blockBourbon, 0, locX3, locZ2);
+			rmPlaceGroupingAtLoc(blockSansculot, 0, locXm3, locZ7);
+
+			rmPlaceGroupingAtLoc(blockBourbon, 0, locX4, locZ6);
+			rmPlaceGroupingAtLoc(blockSansculot, 0, locXm4, locZ3);
+
+			if (cNumberNonGaiaPlayers==8){
+				rmPlaceGroupingAtLoc(blockBourbon, 0, locX5, locZ5);
+				rmPlaceGroupingAtLoc(blockSansculot, 0, locXm5, locZ4);
+			}
+		}
+
+		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX4, locZ2);
+		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locXm4, locZ7);
+
+		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX4, locZ7);
+		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locXm4, locZ2);
+
+		rmPlaceGroupingAtLoc(blockFactory, 0, locX3, locZ8);
+		rmPlaceGroupingAtLoc(blockFactory, 0, locXm3, locZ1);
+
+		cityState1 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locX4, locZ4, 0);
+		cityState2 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locXm4, locZ5, 0);
+
+		victoryGrouping2 = rmPlaceGroupingInstanceAtLoc(blockCourt, locX4, locZ8, 0);
+		victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locXm4, locZ1, 0);
 
 
-// Suburb
+	// Suburb
 
-	if (cNumberNonGaiaPlayers>=4){
-		rmPlaceGroupingAtLoc(blockMill, 0, locX4, locZ5);
-		rmPlaceGroupingAtLoc(blockMill, 0, locXm4, locZ4);
-	}
 
-	rmPlaceGroupingAtLoc(blockDestilery, 0, locX4, locZ3);
-	rmPlaceGroupingAtLoc(blockDestilery, 0, locXm4, locZ6);
+		rmPlaceGroupingAtLoc(blockMill, 0, locX6, locZ2);
+		rmPlaceGroupingAtLoc(blockMill, 0, locXm6, locZ7);
 
-	rmPlaceGroupingAtLoc(blockWarehouse, 0, locX4, locZ9);
-	rmPlaceGroupingAtLoc(blockWarehouse, 0, locXm4, locZ0);
+		rmPlaceGroupingAtLoc(blockMill, 0, locX5, locZ1);
+		rmPlaceGroupingAtLoc(blockMill, 0, locXm5, locZ8);
 
-	if (cNumberNonGaiaPlayers>=4){
+		if (cNumberNonGaiaPlayers==8){
+			rmPlaceGroupingAtLoc(blockMill, 0, locX5, locZ8);
+			rmPlaceGroupingAtLoc(blockMill, 0, locXm5, locZ1);
+		}
+
+		rmPlaceGroupingAtLoc(blockDestilery, 0, locX6, locZ3);
+		rmPlaceGroupingAtLoc(blockDestilery, 0, locXm6, locZ6);
+
+		rmPlaceGroupingAtLoc(blockDestilery, 0, locX6, locZ6);
+		rmPlaceGroupingAtLoc(blockDestilery, 0, locXm6, locZ3);
+
+		rmPlaceGroupingAtLoc(blockWarehouse, 0, locX6, locZ9);
+		rmPlaceGroupingAtLoc(blockWarehouse, 0, locXm6, locZ0);
+
+		rmPlaceGroupingAtLoc(blockWarehouse, 0, locX6, locZ1);
+		rmPlaceGroupingAtLoc(blockWarehouse, 0, locXm6, locZ8);
+
+		rmPlaceGroupingAtLoc(blockWarehouse, 0, locX6, locZ4);
+		rmPlaceGroupingAtLoc(blockWarehouse, 0, locXm6, locZ5);
+
+		rmPlaceGroupingAtLoc(blockWarehouse, 0, locX5, locZ2);
+		rmPlaceGroupingAtLoc(blockWarehouse, 0, locXm5, locZ7);
+
 		rmPlaceGroupingAtLoc(blockForester, 0, locX4, locZ0);
 		rmPlaceGroupingAtLoc(blockForester, 0, locXm4, locZ9);
+
+		rmPlaceGroupingAtLoc(blockConstruction, 0, locX6, locZ5);
+		rmPlaceGroupingAtLoc(blockConstruction, 0, locXm6, locZ4);
+
+		rmPlaceGroupingAtLoc(blockConstruction, 0, locX5, locZ4);
+		rmPlaceGroupingAtLoc(blockConstruction, 0, locXm5, locZ5);
+
+		rmPlaceGroupingAtLoc(blockConstruction, 0, locX6, locZ7);
+		rmPlaceGroupingAtLoc(blockConstruction, 0, locXm6, locZ2);
+
+		if (cNumberNonGaiaPlayers==8){
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX4, locZ9);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locXm4, locZ0);
+		}
+
+	// Everywhere
+
+		rmSetNuggetDifficulty(194, 194);
+		rmPlaceGroupingAtLoc(blockBastion01, 0, locX3, locZ3);
+		rmPlaceGroupingAtLoc(blockBastion02, 0, locXm3, locZ6);
+		rmPlaceGroupingAtLoc(blockBastion01, 0, locXm3, locZ3);
+		rmPlaceGroupingAtLoc(blockBastion02, 0, locX3, locZ6);
+		rmPlaceGroupingAtLoc(blockBastion01, 0, locX4, locZ5);
+		rmPlaceGroupingAtLoc(blockBastion02, 0, locXm4, locZ5);
+		rmPlaceGroupingAtLoc(blockBastion01, 0, locXm6, locZ0);
+		rmPlaceGroupingAtLoc(blockBastion02, 0, locX6, locZ9);
+
+		rmSetNuggetDifficulty(195, 195);
+		rmPlaceGroupingAtLoc(blockEmbassy, 0, locX1, locZ5);
+		rmPlaceGroupingAtLoc(blockEmbassy, 0, locXm1, locZ4);
+
+		rmSetNuggetDifficulty(192, 192);
+		rmPlaceGroupingAtLoc(blockTreasure02, 0, locXm1, locZ9);
+		rmPlaceGroupingAtLoc(blockTreasure01, 0, locXm1, locZ0);
+		rmPlaceGroupingAtLoc(blockTreasure02, 0, locX1, locZ0);
+		rmPlaceGroupingAtLoc(blockTreasure01, 0, locX1, locZ9);
+		rmPlaceGroupingAtLoc(blockTreasure02, 0, locXm5, locZ0);
+		rmPlaceGroupingAtLoc(blockTreasure01, 0, locX5, locZ9);
+		rmPlaceGroupingAtLoc(blockTreasure02, 0, locXm6, locZ9);
+		rmPlaceGroupingAtLoc(blockTreasure01, 0, locX6, locZ0);
+
 	}
-
-	rmPlaceGroupingAtLoc(blockConstruction, 0, locX4, locZ4);
-	rmPlaceGroupingAtLoc(blockConstruction, 0, locXm4, locZ5);
-
-	if (cNumberNonGaiaPlayers>=4){
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX4, locZ8);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locXm4, locZ1);
-	}
-
-// Everywhere
-
-	rmSetNuggetDifficulty(194, 194);
-	rmPlaceGroupingAtLoc(blockBastion01, 0, locX3, locZ3);
-	rmPlaceGroupingAtLoc(blockBastion02, 0, locXm3, locZ6);
-	rmPlaceGroupingAtLoc(blockBastion01, 0, locXm3, locZ3);
-	rmPlaceGroupingAtLoc(blockBastion02, 0, locX3, locZ6);
-
-	rmSetNuggetDifficulty(195, 195);
-	rmPlaceGroupingAtLoc(blockEmbassy, 0, locX1, locZ5);
-	rmPlaceGroupingAtLoc(blockEmbassy, 0, locXm1, locZ4);
-
-	rmSetNuggetDifficulty(192, 192);
-	rmPlaceGroupingAtLoc(blockTreasure02, 0, locXm4, locZ2);
-	rmPlaceGroupingAtLoc(blockTreasure01, 0, locXm1, locZ0);
-	rmPlaceGroupingAtLoc(blockTreasure02, 0, locX4, locZ7);
-	rmPlaceGroupingAtLoc(blockTreasure01, 0, locX1, locZ9);
-
 
 // South Bank
 
@@ -884,7 +1055,39 @@ int jesuitMaltese = rmRandInt(1, 2);
 	rmPlaceGroupingAtLoc(blockHouse02, 0, locX4, locZ7);
 	if (cNumberNonGaiaPlayers <=3)
 		rmPlaceGroupingAtLoc(blockHouse03, 0, locX4, locZ8);
-	rmPlaceGroupingAtLoc(blockHouse04, 0, locX4, locZ9);
+	if (bigCity == 0)
+		rmPlaceGroupingAtLoc(blockHouse04, 0, locX4, locZ9);
+	
+	if (bigCity == 1){
+
+		//fifth row
+
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX5, locZ0);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX5, locZ1);
+		rmPlaceGroupingAtLoc(blockHouse01, 0, locX5, locZ2);
+		rmPlaceGroupingAtLoc(blockHouse02, 0, locX5, locZ3);
+		//rmPlaceGroupingAtLoc(blockHouse03, 0, locX5, locZ4);
+		rmPlaceGroupingAtLoc(blockHouse04, 0, locX5, locZ5);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX5, locZ6);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX5, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse01, 0, locX5, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse02, 0, locX5, locZ9);
+
+		//sixth row
+
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locX6, locZ0);
+		rmPlaceGroupingAtLoc(blockHouse04, 0, locX6, locZ1);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX6, locZ2);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX6, locZ3);
+		rmPlaceGroupingAtLoc(blockHouse01, 0, locX6, locZ4);
+		//rmPlaceGroupingAtLoc(blockHouse02, 0, locX6, locZ5);
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locX6, locZ6);
+		//rmPlaceGroupingAtLoc(blockHouse04, 0, locX6, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX6, locZ8);
+		if (cNumberNonGaiaPlayers<8)
+			rmPlaceGroupingAtLoc(blockHouse06, 0, locX6, locZ9);
+		
+	}
 
 // North Bank
 
@@ -928,7 +1131,8 @@ int jesuitMaltese = rmRandInt(1, 2);
 
 	//fourth row
 
-	rmPlaceGroupingAtLoc(blockHouse05, 0, locXm4, locZ0);
+	if (bigCity == 0)
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locXm4, locZ0);
 	if (cNumberNonGaiaPlayers <=3)
 		rmPlaceGroupingAtLoc(blockHouse06, 0, locXm4, locZ1);
 	rmPlaceGroupingAtLoc(blockHouse01, 0, locXm4, locZ2);
@@ -939,6 +1143,36 @@ int jesuitMaltese = rmRandInt(1, 2);
 	rmPlaceGroupingAtLoc(blockHouse06, 0, locXm4, locZ7);
 	rmPlaceGroupingAtLoc(blockHouse01, 0, locXm4, locZ8);
 	rmPlaceGroupingAtLoc(blockHouse02, 0, locXm4, locZ9);
+
+	if (bigCity == 1){
+		
+		//fifth row
+
+		rmPlaceGroupingAtLoc(blockHouse02, 0, locXm5, locZ0);
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locXm5, locZ1);
+		rmPlaceGroupingAtLoc(blockHouse04, 0, locXm5, locZ2);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locXm5, locZ3);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locXm5, locZ4);
+		//rmPlaceGroupingAtLoc(blockHouse01, 0, locXm5, locZ5);
+		rmPlaceGroupingAtLoc(blockHouse02, 0, locXm5, locZ6);
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locXm5, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse04, 0, locXm5, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locXm5, locZ9);
+
+		//sixth row
+
+		if (cNumberNonGaiaPlayers <8)
+			rmPlaceGroupingAtLoc(blockHouse06, 0, locXm6, locZ0);
+		rmPlaceGroupingAtLoc(blockHouse01, 0, locXm6, locZ1);
+		//rmPlaceGroupingAtLoc(blockHouse02, 0, locXm6, locZ2);
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locXm6, locZ3);
+		//rmPlaceGroupingAtLoc(blockHouse04, 0, locXm6, locZ4);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locXm6, locZ5);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locXm6, locZ6);
+		rmPlaceGroupingAtLoc(blockHouse01, 0, locXm6, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse02, 0, locXm6, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locXm6, locZ9);
+	}
 
 // Decorations
 
@@ -971,16 +1205,16 @@ rmSetStatusText("",0.70);
 		rmSetAreaHeightBlend(smallPatch, 3);
 		rmSetAreaCoherence(smallPatch, 1.0);
 		if (j == 0){
-		rmSetAreaLocation(smallPatch, 0.5-rmXTilesToFraction(85), 0.8);
+		rmSetAreaLocation(smallPatch, 0.5-rmXTilesToFraction(citySize+85), 0.8);
 		}
 		if (j == 1){
-		rmSetAreaLocation(smallPatch, 0.5-rmXTilesToFraction(85), 0.2);
+		rmSetAreaLocation(smallPatch, 0.5-rmXTilesToFraction(citySize+85), 0.2);
 		}
 		if (j == 2){
-		rmSetAreaLocation(smallPatch, 0.5+rmXTilesToFraction(85), 0.2);
+		rmSetAreaLocation(smallPatch, 0.5+rmXTilesToFraction(citySize+85), 0.2);
 		}
 		if (j == 3){
-		rmSetAreaLocation(smallPatch, 0.5+rmXTilesToFraction(85), 0.8);
+		rmSetAreaLocation(smallPatch, 0.5+rmXTilesToFraction(citySize+85), 0.8);
 		}
 		rmBuildArea(smallPatch);  
 
@@ -993,16 +1227,16 @@ rmSetStatusText("",0.70);
 		rmSetAreaSmoothDistance(smallPatchRamp, 7);
 		rmSetAreaBaseHeight(smallPatchRamp, 7.0);
 		if (j == 0){
-		rmSetAreaLocation(smallPatchRamp, 0.5-rmXTilesToFraction(90), 0.8);
+		rmSetAreaLocation(smallPatchRamp, 0.5-rmXTilesToFraction(citySize+90), 0.8);
 		}
 		if (j == 1){
-		rmSetAreaLocation(smallPatchRamp, 0.5-rmXTilesToFraction(90), 0.2);
+		rmSetAreaLocation(smallPatchRamp, 0.5-rmXTilesToFraction(citySize+90), 0.2);
 		}
 		if (j == 2){
-		rmSetAreaLocation(smallPatchRamp, 0.5+rmXTilesToFraction(90), 0.2);
+		rmSetAreaLocation(smallPatchRamp, 0.5+rmXTilesToFraction(citySize+90), 0.2);
 		}
 		if (j == 3){
-		rmSetAreaLocation(smallPatchRamp, 0.5+rmXTilesToFraction(90), 0.8);
+		rmSetAreaLocation(smallPatchRamp, 0.5+rmXTilesToFraction(citySize+90), 0.8);
 		}
 		rmBuildArea(smallPatchRamp);  
 
@@ -1021,16 +1255,16 @@ rmSetStatusText("",0.70);
 		rmSetAreaHeightBlend(wallBlocker, 3);
 		rmSetAreaCoherence(wallBlocker, 1.0);
 		if (j == 0){
-		rmSetAreaLocation(wallBlocker, 0.5-rmXTilesToFraction(92), 0.62);
+		rmSetAreaLocation(wallBlocker, 0.5-rmXTilesToFraction(citySize+92), 0.62);
 		}
 		if (j == 1){
-		rmSetAreaLocation(wallBlocker, 0.5-rmXTilesToFraction(92), 0.4);
+		rmSetAreaLocation(wallBlocker, 0.5-rmXTilesToFraction(citySize+92), 0.4);
 		}
 		if (j == 2){
-		rmSetAreaLocation(wallBlocker, 0.5+rmXTilesToFraction(92), 0.4);
+		rmSetAreaLocation(wallBlocker, 0.5+rmXTilesToFraction(citySize+92), 0.4);
 		}
 		if (j == 3){
-		rmSetAreaLocation(wallBlocker, 0.5+rmXTilesToFraction(92), 0.62);
+		rmSetAreaLocation(wallBlocker, 0.5+rmXTilesToFraction(citySize+92), 0.62);
 		}
 		rmBuildArea(wallBlocker);  
 
@@ -1052,32 +1286,32 @@ rmSetStatusText("",0.70);
 		rmSetAreaHeightBlend(wallCliffs, 3);
 		rmSetAreaCoherence(wallCliffs, .93);
 		if (j == 0){
-		rmSetAreaLocation(wallCliffs, 0.5-rmXTilesToFraction(92), 0.8);
-		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(92), 0.66, 0.5-rmXTilesToFraction(92), 1.0);
-		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(92), 0.7, 0.5-rmXTilesToFraction(105), 0.75);
-		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(105), 0.75, 0.5-rmXTilesToFraction(105), 0.85);
-		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(105), 0.85, 0.5-rmXTilesToFraction(92), 0.9);
+		rmSetAreaLocation(wallCliffs, 0.5-rmXTilesToFraction(citySize+92), 0.8);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(citySize+92), 0.66, 0.5-rmXTilesToFraction(citySize+92), 1.0);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(citySize+92), 0.7, 0.5-rmXTilesToFraction(citySize+105), 0.75);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(citySize+105), 0.75, 0.5-rmXTilesToFraction(citySize+105), 0.85);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(citySize+105), 0.85, 0.5-rmXTilesToFraction(citySize+92), 0.9);
 		}
 		if (j == 1){
-		rmSetAreaLocation(wallCliffs, 0.5-rmXTilesToFraction(92), 0.2);
-		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(92), 0.37, 0.5-rmXTilesToFraction(92), 0.0);
-		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(92), 0.3, 0.5-rmXTilesToFraction(105), 0.25);
-		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(105), 0.25, 0.5-rmXTilesToFraction(105), 0.15);
-		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(105), 0.15, 0.5-rmXTilesToFraction(92), 0.1);
+		rmSetAreaLocation(wallCliffs, 0.5-rmXTilesToFraction(citySize+92), 0.2);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(citySize+92), 0.37, 0.5-rmXTilesToFraction(citySize+92), 0.0);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(citySize+92), 0.3, 0.5-rmXTilesToFraction(citySize+105), 0.25);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(citySize+105), 0.25, 0.5-rmXTilesToFraction(citySize+105), 0.15);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5-rmXTilesToFraction(citySize+105), 0.15, 0.5-rmXTilesToFraction(citySize+92), 0.1);
 		}
 		if (j == 2){
-		rmSetAreaLocation(wallCliffs, 0.5+rmXTilesToFraction(92), 0.2);
-		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(92), 0.37, 0.5+rmXTilesToFraction(92), 0.0);
-		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(92), 0.3, 0.5+rmXTilesToFraction(105), 0.25);
-		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(105), 0.25, 0.5+rmXTilesToFraction(105), 0.15);
-		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(105), 0.15, 0.5+rmXTilesToFraction(92), 0.1);
+		rmSetAreaLocation(wallCliffs, 0.5+rmXTilesToFraction(citySize+92), 0.2);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(citySize+92), 0.37, 0.5+rmXTilesToFraction(citySize+92), 0.0);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(citySize+92), 0.3, 0.5+rmXTilesToFraction(citySize+105), 0.25);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(citySize+105), 0.25, 0.5+rmXTilesToFraction(citySize+105), 0.15);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(citySize+105), 0.15, 0.5+rmXTilesToFraction(citySize+92), 0.1);
 		}
 		if (j == 3){
-		rmSetAreaLocation(wallCliffs, 0.5+rmXTilesToFraction(92), 0.8);
-		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(92), 0.66, 0.5+rmXTilesToFraction(92), 1.0);
-		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(92), 0.7, 0.5+rmXTilesToFraction(105), 0.75);
-		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(105), 0.75, 0.5+rmXTilesToFraction(105), 0.85);
-		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(105), 0.85, 0.5+rmXTilesToFraction(92), 0.9);
+		rmSetAreaLocation(wallCliffs, 0.5+rmXTilesToFraction(citySize+92), 0.8);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(citySize+92), 0.66, 0.5+rmXTilesToFraction(citySize+92), 1.0);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(citySize+92), 0.7, 0.5+rmXTilesToFraction(citySize+105), 0.75);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(citySize+105), 0.75, 0.5+rmXTilesToFraction(citySize+105), 0.85);
+		rmAddAreaInfluenceSegment(wallCliffs, 0.5+rmXTilesToFraction(citySize+105), 0.85, 0.5+rmXTilesToFraction(citySize+92), 0.9);
 		}
 		rmBuildArea(wallCliffs);  
 
@@ -1089,16 +1323,16 @@ rmSetStatusText("",0.70);
 		rmSetAreaHeightBlend(largePatch, 3);
 		rmSetAreaCoherence(largePatch, 1.0);
 		if (j == 0){
-		rmSetAreaLocation(largePatch, 0.5-rmXTilesToFraction(97), 0.8);
+		rmSetAreaLocation(largePatch, 0.5-rmXTilesToFraction(citySize+97), 0.8);
 		}
 		if (j == 1){
-		rmSetAreaLocation(largePatch, 0.5-rmXTilesToFraction(97), 0.2);
+		rmSetAreaLocation(largePatch, 0.5-rmXTilesToFraction(citySize+97), 0.2);
 		}
 		if (j == 2){
-		rmSetAreaLocation(largePatch, 0.5+rmXTilesToFraction(97), 0.2);
+		rmSetAreaLocation(largePatch, 0.5+rmXTilesToFraction(citySize+97), 0.2);
 		}
 		if (j == 3){
-		rmSetAreaLocation(largePatch, 0.5+rmXTilesToFraction(97), 0.8);
+		rmSetAreaLocation(largePatch, 0.5+rmXTilesToFraction(citySize+97), 0.8);
 		}
 		rmBuildArea(largePatch);  
 
@@ -1111,20 +1345,20 @@ rmSetStatusText("",0.70);
 		rmSetAreaCoherence(patchRoad, 1.0);
 		rmAddAreaToClass(patchRoad, classStreet);
 		if (j == 0){
-		rmSetAreaLocation(patchRoad, 0.5-rmXTilesToFraction(95), 0.8);
-		rmAddAreaInfluenceSegment(patchRoad, 0.5-rmXTilesToFraction(85), 0.8, 0.5-rmXTilesToFraction(100), 0.8);
+		rmSetAreaLocation(patchRoad, 0.5-rmXTilesToFraction(citySize+95), 0.8);
+		rmAddAreaInfluenceSegment(patchRoad, 0.5-rmXTilesToFraction(citySize+85), 0.8, 0.5-rmXTilesToFraction(citySize+100), 0.8);
 		}
 		if (j == 1){
-		rmSetAreaLocation(patchRoad, 0.5-rmXTilesToFraction(95), 0.2);
-		rmAddAreaInfluenceSegment(patchRoad, 0.5-rmXTilesToFraction(85), 0.2, 0.5-rmXTilesToFraction(100), 0.2);
+		rmSetAreaLocation(patchRoad, 0.5-rmXTilesToFraction(citySize+95), 0.2);
+		rmAddAreaInfluenceSegment(patchRoad, 0.5-rmXTilesToFraction(citySize+85), 0.2, 0.5-rmXTilesToFraction(citySize+100), 0.2);
 		}
 		if (j == 2){
-		rmSetAreaLocation(patchRoad, 0.5+rmXTilesToFraction(95), 0.2);
-		rmAddAreaInfluenceSegment(patchRoad, 0.5+rmXTilesToFraction(85), 0.2, 0.5+rmXTilesToFraction(100), 0.2);
+		rmSetAreaLocation(patchRoad, 0.5+rmXTilesToFraction(citySize+95), 0.2);
+		rmAddAreaInfluenceSegment(patchRoad, 0.5+rmXTilesToFraction(citySize+85), 0.2, 0.5+rmXTilesToFraction(citySize+100), 0.2);
 		}
 		if (j == 3){
-		rmSetAreaLocation(patchRoad, 0.5+rmXTilesToFraction(95), 0.8);
-		rmAddAreaInfluenceSegment(patchRoad, 0.5+rmXTilesToFraction(85), 0.8, 0.5+rmXTilesToFraction(100), 0.8);
+		rmSetAreaLocation(patchRoad, 0.5+rmXTilesToFraction(citySize+95), 0.8);
+		rmAddAreaInfluenceSegment(patchRoad, 0.5+rmXTilesToFraction(citySize+85), 0.8, 0.5+rmXTilesToFraction(citySize+100), 0.8);
 		}
 		rmBuildArea(patchRoad);  
 		
@@ -1154,27 +1388,27 @@ rmSetStatusText("",0.70);
 
 	if (countryVar ==1){
 		if (jesuitMaltese ==1){
-			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5-rmXTilesToFraction(99), 0.8, 1);
-			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5+rmXTilesToFraction(99), 0.2, 1);
+			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5-rmXTilesToFraction(citySize+99), 0.8, 1);
+			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5+rmXTilesToFraction(citySize+99), 0.2, 1);
 		}
 		else{
-			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5-rmXTilesToFraction(99), 0.8, 1);
-			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5+rmXTilesToFraction(99), 0.2, 1);
+			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5-rmXTilesToFraction(citySize+99), 0.8, 1);
+			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5+rmXTilesToFraction(citySize+99), 0.2, 1);
 		}
-		rmPlaceGroupingAtLoc(blockMillVillage, 0, 0.5+rmXTilesToFraction(100), 0.8, 1);
-		rmPlaceGroupingAtLoc(blockMillVillage, 0, 0.5-rmXTilesToFraction(100), 0.2, 1);
+		rmPlaceGroupingAtLoc(blockMillVillage, 0, 0.5+rmXTilesToFraction(citySize+100), 0.8, 1);
+		rmPlaceGroupingAtLoc(blockMillVillage, 0, 0.5-rmXTilesToFraction(citySize+100), 0.2, 1);
 	}
 	else{
 		if (jesuitMaltese ==1){
-			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5-rmXTilesToFraction(99), 0.2, 1);
-			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5+rmXTilesToFraction(99), 0.8, 1);
+			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5-rmXTilesToFraction(citySize+99), 0.2, 1);
+			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5+rmXTilesToFraction(citySize+99), 0.8, 1);
 		}
 		else{
-			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5-rmXTilesToFraction(99), 0.2, 1);
-			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5+rmXTilesToFraction(99), 0.8, 1);
+			rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.5-rmXTilesToFraction(citySize+99), 0.2, 1);
+			rmPlaceGroupingAtLoc(malteseMonasteryID, 0, 0.5+rmXTilesToFraction(citySize+99), 0.8, 1);
 		}
-		rmPlaceGroupingAtLoc(blockMillVillage, 0, 0.5+rmXTilesToFraction(100), 0.2, 1);
-		rmPlaceGroupingAtLoc(blockMillVillage, 0, 0.5-rmXTilesToFraction(100), 0.8, 1);
+		rmPlaceGroupingAtLoc(blockMillVillage, 0, 0.5+rmXTilesToFraction(citySize+100), 0.2, 1);
+		rmPlaceGroupingAtLoc(blockMillVillage, 0, 0.5-rmXTilesToFraction(citySize+100), 0.8, 1);
 	}
 
 	// Forester
@@ -1261,7 +1495,7 @@ rmSetStatusText("",0.70);
 				rmPlacePlayer(2, 0.93, 0.35);
 			}
 
-			if (PlayerNum == 4)
+			if (PlayerNum == 3 || PlayerNum == 4)
 			{			
 				rmSetPlacementTeam(0);
 				rmPlacePlayersLine(0.1, 0.75, 0.1, 0.25, 0, 0);
@@ -1271,9 +1505,9 @@ rmSetStatusText("",0.70);
 			}
 
 			rmSetPlacementTeam(0);
-			rmPlacePlayersLine(0.15, 0.72, 0.15, 0.35, 0, 0);
+			rmPlacePlayersLine(0.10, 0.9, 0.10, 0.1, 0, 0);
 			rmSetPlacementTeam(1);
-			rmPlacePlayersLine(0.85, 0.28, 0.85, 0.65, 0, 0);
+			rmPlacePlayersLine(0.90, 0.1, 0.90, 0.9, 0, 0);
 
 
 		}
@@ -1288,7 +1522,7 @@ rmSetStatusText("",0.70);
 
 
 
-			if (PlayerNum == 4)
+			if (PlayerNum == 3 || PlayerNum == 4)
 			{			
 				rmSetPlacementTeam(1);
 				rmPlacePlayersLine(0.1, 0.75, 0.1, 0.25, 0, 0);
@@ -1297,10 +1531,10 @@ rmSetStatusText("",0.70);
 			}
 
 
-				rmSetPlacementTeam(1);
-				rmPlacePlayersLine(0.25, 0.72, 0.25, 0.35, 0, 0);
-				rmSetPlacementTeam(0);
-				rmPlacePlayersLine(0.75, 0.28, 0.75, 0.65, 0, 0);
+			rmSetPlacementTeam(1);
+			rmPlacePlayersLine(0.10, 0.9, 0.10, 0.1, 0, 0);
+			rmSetPlacementTeam(0);
+			rmPlacePlayersLine(0.90, 0.1, 0.90, 0.9, 0, 0);
 
 		}
 	}
@@ -1442,12 +1676,21 @@ rmSetStatusText("",0.70);
 	rmAddObjectDefConstraint(fishID, playerEdgeConstraint);
 	rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 20*cNumberNonGaiaPlayers);
 
+	//********************* GENERAL SETUP *************************
 
-	
+	// ____________________ LOCAL MERCENARIES ____________________
+    rmDisableDefaultMercs(true);
+    rmDisableCivTypeMercRestriction(true);
+    rmEnableMerc("MercSwissPikeman", -1);
+    rmEnableMerc("MercLandsknecht", -1);
+    rmEnableMerc("MercElmeti", -1);
+    rmEnableMerc("MercGreatCannon", -1);
+    rmEnableMerc("deMercCannoneer", -1);
+    rmEnableMerc("deMercPistoleer", -1);
     
-// ************************* TRIGGERS ******************************
+    rmForbidTradeMonopoly(true);
 
-	// Map Objectives
+	// _________________ Map Objectives ______________________________
 	rmObjectiveScreenSetTitle(302018);
 	rmObjectiveScreenSetGoal(302021);
 	rmObjectiveAdd(302022, 302023, true, true, true); // General objective
@@ -1463,6 +1706,8 @@ rmSetStatusText("",0.70);
 	rmObjectiveSetTeam(6, 1);
 	rmObjectiveAdd(302026, 302023, true, true, true); // Bastille ROY
 	rmObjectiveSetTeam(7, 2);*/
+
+	// ************************* TRIGGERS ******************************
 
 	// Targeting Unit IDs
 	int cityStateFlag1 = rmGetGroupingInstanceUnitByType(cityState1, "zpSPCCapturableFlagInvisible");

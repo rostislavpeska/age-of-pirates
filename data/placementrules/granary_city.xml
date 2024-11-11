@@ -18,4 +18,5 @@
   <distanceatleastfromtype player="any" foundation="any" distance="12" errorstringid="123337">deSPCHeadquartersVienna</distanceatleastfromtype>
   <distanceatmostfromtype player="team" foundation="any" distance="75" errorstringid="46622" norushonly="true">FirstTC</distanceatmostfromtype>
   <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="301928">AbstractCityManison</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="302033">zpBridgeFace</distanceatleastfromtype>
 </placementrules>

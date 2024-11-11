@@ -36880,8 +36880,8 @@
     <shortrollovertextid>65995</shortrollovertextid>
     <los>12.0000</los>
     <buildpoints>5.0000</buildpoints>
-    <cost resourcetype="Wood">3000.0000</cost>
-    <initialresource resourcetype="Food">200.0000</initialresource>
+    <cost resourcetype="Wood">200.0000</cost>
+    <initialresource resourcetype="Food">3000.0000</initialresource>
     <gathererlimit>28</gathererlimit>
     <resourcesubtype>forage</resourcesubtype>
     <buildingworkrate>1.0000</buildingworkrate>
@@ -37627,7 +37627,6 @@
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>RMCanRotate</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
-    <flag>DestroyUnderBuilding</flag>
   </unit>
   <unit id="20510" name="zpSPCSeaFloor2">
     <dbid>20510</dbid>
@@ -42235,6 +42234,9 @@
 
 
 <!--TEST--> 
+  <!--<unit id="20513" name="deSPCRowboat">
+    <movementtype>air</movementtype>
+  </unit>-->
 
   <unit id="20513" name="zpWanderingStagecoach">
     <dbid>20513</dbid>
