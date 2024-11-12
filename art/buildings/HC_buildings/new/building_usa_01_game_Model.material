@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\american\american_filler_buildings\textures\american_filler_buildings_matc_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\american\american_filler_buildings\textures\american_filler_buildings_matc_normals">
+      </texture>
+      <texture name="Masks" override="homecity\american\american_filler_buildings\textures\american_filler_buildings_matc_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

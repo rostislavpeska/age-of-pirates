@@ -180,6 +180,7 @@
 		</unit>
 		<unit name="deSPCWaterlooHouseProp">
 			<flag>DoNotShowOnMiniMap</flag>
+			<animfile>buildings\native_settlement\zp_native_eu_houses_red_nosmoke.xml</animfile>
 		</unit>
 		<unit name="SPCFortGate">
 			<unittype>ConvertsHerds</unittype>
@@ -188,6 +189,15 @@
 		</unit>
 		<unit name="Dock">
 			<placementfile>dock_city.xml</placementfile>
+		</unit>
+		<unit name="zpSPCEUHouseProp">
+			<animfile>buildings\native_settlement\zp_native_eu_houses_nosmoke.xml</animfile>
+		</unit>
+		<unit name="zpSPCVillageHouseProp">
+			<animfile>buildings\native_settlement\zp_native_village_houses_nosmoke.xml</animfile>
+		</unit>
+		<unit name="deEmbassyTravois">
+			<animfile>units\trade\supply_cart\supply_cart_bank.xml</animfile>
 		</unit>
 	</protomods>
 </mods>
