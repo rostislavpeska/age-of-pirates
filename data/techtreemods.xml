@@ -18459,8 +18459,6 @@
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="TechStatus" status="active">zpVeteranBourbon</effect>
-      <effect type="TechStatus" status="active">zpGuardBourbon</effect>
       <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
       </effect>
@@ -18776,6 +18774,14 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type="TechStatus" status="unobtainable">DEVeteranBourbon</effect>
+      <effect type="TechStatus" status="unobtainable">DEGuardBourbon</effect>
+      <effect type="TechStatus" status="unobtainable">DENatBourbonReforms</effect>
+      <effect type="TechStatus" status="unobtainable">DENatBourbonRoyalTax</effect>
+      <effect type="TechStatus" status="obtainable">zpVeteranBourbon</effect>
+      <effect type="TechStatus" status="obtainable">zpGuardBourbon</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBourbonReforms</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBourbonRoyalTax</effect>
     </effects>
   </tech>
   <tech name="zpBonusBourbon" type="Normal">
@@ -18842,6 +18848,8 @@
       <effect type="CommandAdd" proto="deNatMercRoyalMusketeer" page="0" column="20">
         <target type="ProtoUnit">zpSPCFortBarracks</target>
       </effect>
+      <effect type="TechStatus" status="active">zpVeteranBourbon</effect>
+      <effect type="TechStatus" status="active">zpGuardBourbon</effect>
     </effects>
   </tech>
 
