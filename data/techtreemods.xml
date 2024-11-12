@@ -18447,8 +18447,8 @@
   <tech name="zpRevolutionFranceNE" type="Normal">
     <dbid>40812</dbid>
     <displaynameid>301997</displaynameid>
-    <cost resourcetype ="Food">1500.0000</cost>
-    <cost resourcetype ="Gold">1500.0000</cost>
+    <cost resourcetype ="Food">1750.0000</cost>
+    <cost resourcetype ="Gold">1750.0000</cost>
     <researchpoints>20.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\revolution\napoleonic_era.png</icon>
