@@ -1427,6 +1427,7 @@
     <flag>StartOnAnimationUpdate</flag>
     <flag>InvulnerableIfGaia</flag>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
+		<flag>StartOnNoUpdate</flag>
   </unit>
   <unit id="20010" name="zpHarbourShip">
     <dbid>20010</dbid>
@@ -1472,6 +1473,7 @@
     <flag>StartOnAnimationUpdate</flag>
     <flag>InvulnerableIfGaia</flag>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>StartOnNoUpdate</flag>
   </unit>
   <unit id="20011" name="HarbourPathBlock">
     <dbid>20011</dbid>
@@ -31493,6 +31495,7 @@
     <flag>InvulnerableIfGaia</flag>
     <flag>Tracked</flag>
     <flag>NotSelectable</flag>
+    <flag>StartOnNoUpdate</flag>
     <command page="10" column="0">Delete</command>
   </unit>
   <unit id="20367" name="zpPenalColonyFlag">
@@ -37398,6 +37401,7 @@
     <flag>ForceToGaia</flag>
     <flag>NotSelectable</flag>
     <flag>Invulnerable</flag>
+    <flag>StartOnNoUpdate</flag>
   </unit>
   <unit id="20504" name="zpSPCFortWallSmallProp">
     <dbid>20504</dbid>
@@ -37761,6 +37765,7 @@
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>RMCanRotate</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NoIdleActions</flag>
   </unit>
   <unit id="20510" name="zpSPCSeaFloor2">
     <dbid>20510</dbid>
@@ -37811,6 +37816,7 @@
     <flag>RMCanRotate</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>DestroyUnderBuilding</flag>
+    <flag>NoIdleActions</flag>
   </unit>
   <unit id="20512" name="zpSPROPBuildingMix">
     <dbid>20512</dbid>
