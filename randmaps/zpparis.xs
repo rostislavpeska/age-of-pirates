@@ -2925,7 +2925,7 @@ rmSetStatusText("",0.70);
 
 	// AI Revolutionary Fractions
 
-	for (k=1; <= cNumberNonGaiaPlayers) {
+	/*for (k=1; <= cNumberNonGaiaPlayers) {
 	if (rmGetPlayerTeam(k) == 0) {
 		rmCreateTrigger("ZP_Iniciate_Revolution"+k);
 		rmCreateTrigger("ZP_Execute_Revolution"+k);
@@ -2992,7 +2992,7 @@ rmSetStatusText("",0.70);
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
 	}
-	}
+	}*/
 
 	// Testing
 
