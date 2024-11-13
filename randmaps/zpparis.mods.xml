@@ -193,15 +193,12 @@
 		</unit>
 		<unit name="zpSPCEUHouseProp">
 			<animfile>buildings\native_settlement\zp_native_eu_houses_nosmoke.xml</animfile>
-			<flag>StartOnNoUpdate</flag>
 		</unit>
 		<unit name="zpSPCVillageHouseProp">
 			<animfile>buildings\native_settlement\zp_native_village_houses_nosmoke.xml</animfile>
-			<flag>StartOnNoUpdate</flag>
 		</unit>
 		<unit name="deEmbassyTravois">
 			<animfile>units\trade\supply_cart\supply_cart_bank.xml</animfile>
-			<flag>StartOnNoUpdate</flag>
 		</unit>
 		<unit name="deNatEUPropStatue">
 			<flag>NoIdleActions</flag>

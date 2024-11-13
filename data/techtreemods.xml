@@ -17662,6 +17662,12 @@
       <effect type="CommandAdd" proto="zpNatCoureurSansculotte" page="0" column="2">
         <target type="ProtoUnit">zpParisCitadel</target>
       </effect>
+      <effect type="CommandAdd" proto="zpNatRevolutionary" page="0" column="1">
+        <target type="ProtoUnit">zpParisCitadelPassage</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatCoureurSansculotte" page="0" column="2">
+        <target type="ProtoUnit">zpParisCitadelPassage</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSPCNativeBourbon" type="Normal">

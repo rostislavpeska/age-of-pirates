@@ -17781,26 +17781,8 @@
     </armor>
     <builderlimit>8</builderlimit>
     <buildingworkrate>0.5000</buildingworkrate>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>BuildingClass</unittype>
-    <unittype>Economic</unittype>
-    <unittype>ColonyBuilding</unittype>
-    <unittype>AbstractHouse</unittype>
     <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>HasBountyValue</unittype>
     <unittype>AbstractCityManison</unittype>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>CollidesWithProjectiles</flag>
@@ -17820,6 +17802,7 @@
     <flag>ForceToGaia</flag>
     <flag>NotSelectable</flag>
     <flag>Invulnerable</flag>
+    <flag>StartOnNoUpdate</flag>
   </unit>
   <unit id="20420" name="zpSPCMeetingHouse">
     <dbid>20420</dbid>
@@ -36592,26 +36575,9 @@
     </armor>
     <builderlimit>8</builderlimit>
     <buildingworkrate>0.5000</buildingworkrate>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>BuildingClass</unittype>
-    <unittype>Economic</unittype>
-    <unittype>ColonyBuilding</unittype>
-    <unittype>AbstractHouse</unittype>
     <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCityManison</unittype>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -36630,7 +36596,7 @@
     <flag>ForceToGaia</flag>
     <flag>NotSelectable</flag>
     <flag>Invulnerable</flag>
-    <flag>RMCanRotate</flag>
+    <flag>StartOnNoUpdate</flag>
   </unit>
   <unit id="20489" name="zpSocketSansculottes">
     <dbid>20489</dbid>
@@ -37362,26 +37328,8 @@
     </armor>
     <builderlimit>8</builderlimit>
     <buildingworkrate>0.5000</buildingworkrate>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>BuildingClass</unittype>
-    <unittype>Economic</unittype>
-    <unittype>ColonyBuilding</unittype>
-    <unittype>AbstractHouse</unittype>
     <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>HasBountyValue</unittype>
     <unittype>AbstractCityManison</unittype>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>CollidesWithProjectiles</flag>
@@ -37850,26 +37798,10 @@
     </armor>
     <builderlimit>8</builderlimit>
     <buildingworkrate>0.5000</buildingworkrate>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>BuildingClass</unittype>
-    <unittype>Economic</unittype>
-    <unittype>ColonyBuilding</unittype>
-    <unittype>AbstractHouse</unittype>
     <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <flag>DoNotShowOnMiniMap</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -37887,7 +37819,7 @@
     <flag>ForceToGaia</flag>
     <flag>NotSelectable</flag>
     <flag>Invulnerable</flag>
-    <flag>DoNotShowOnMiniMap</flag>
+    <flag>StartOnNoUpdate</flag>
   </unit>
   <unit id="20514" name="zpNatCoureurSansculotte">
     <dbid>20514</dbid>
