@@ -18721,7 +18721,7 @@
     </effects>
 	</tech>
   <tech name="zpAncienRegimeNormalizer" type="Normal">
-    <dbid>40816</dbid>
+    <dbid>408187</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>OBTAINABLE</status>
     <flag>Shadow</flag>
@@ -18796,7 +18796,7 @@
     <flag>Shadow</flag>
   </tech>
   <tech name="zpNapoleonicEraIcons" type="Normal">
-    <dbid>40812</dbid>
+    <dbid>40819</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>OBTAINABLE</status>
     <flag>Shadow</flag>
