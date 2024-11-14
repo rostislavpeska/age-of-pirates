@@ -2932,6 +2932,9 @@ rmSetStatusText("",0.70);
 		rmCreateTrigger("ZP_Timer_Revolution"+k);
 
 		rmSwitchToTrigger(rmTriggerID("ZP_Iniciate_Revolution"+k));
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "false");
 		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
 		rmSetTriggerConditionParamInt("PlayerID",k);
 		rmSetTriggerConditionParam("TechID","cTechIndustrialize");
@@ -2992,7 +2995,7 @@ rmSetStatusText("",0.70);
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
 	}
-	}*/
+	}
 
 	// Testing
 
