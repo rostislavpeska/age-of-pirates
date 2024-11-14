@@ -1918,13 +1918,13 @@
       <string _locid="301917">La Revolution!</string>
       <string _locid="301918">Revolts to one of the revolutionary factions. \n • Initiates a special type of revolution \n • Transforms all your settlers into Sansculottes \n • Allows Sansculotte training from your Town Center \n • Changes you civilization to one of the revolutionary factions without loosing access to your original homecity and the option to advance to higher age (including Imperial Age)</string>
       <string _locid="301919">Gilbert du Motier (Republic of Paris)</string>
-      <string _locid="301920">Marquis de Lafayette, nobleman and moderate republican \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGalerie Lafayette \nAllies of the revolution</string>
+      <string _locid="301920">Nobleman and moderate republican, trains more revolutionaries \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGalerie Lafayette \nAllies of the revolution</string>
       <string _locid="301921">Maximilien Robespierre (French Republic)</string>
       <string _locid="301922">Radical revolutionary leader, population improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nStorm the Barricades \nLoyal Districts</string>
       <string _locid="301923">Napoleon Bonaparte (French Empire)</string>
       <string _locid="301924">Commander of revolutionary armies, military improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nArtillery Camps \nNapoleonic Era</string>
       <string _locid="301925">Republic of France</string>
-      <string _locid="301926">French Empire</string>
+      <string _locid="301926">French Empire</string>5
       <string _locid="301927">ZP REV Sansculotte</string>
       <string _locid="301928">Can't be built in the middle of the street.</string>
       <string _locid="301929">Barricade</string>
@@ -1996,7 +1996,7 @@
       <string _locid="301995">Can strike enemy buildings and walls and detonate next to them</string>
       <string _locid="301996">Plants the Revolutionary flag to boost morale! Nearby military units (excluding artillery) and buildings inflict more damage and are created faster. Flags cannot be planted near starting Town Centers, and only one flag can be planted at a time.</string>
       <string _locid="301997">Napoleonic Era</string>
-      <string _locid="301998">Transforms Bourbon Royal Musketeers into Foot Carrabiniers and Royal Musketeers into Horse Carrabiniers. Allows you to train Bourbon units as standard Barrack / Stable units.</string>
+      <string _locid="301998">Transforms Bourbon Royal Musketeers into Foot Carrabiniers and Royal Dragoons into Horse Carrabiniers. Allows you to train Bourbon units as standard Barrack / Stable units.</string>
       <string _locid="301999">Artillery Camps</string>
       <string _locid="302000">Add Artillery training to your Military Camps</string>
       <string _locid="302001">Captain D'Artagnan</string>
@@ -2040,7 +2040,8 @@
       <string _locid="302039">Labrador Coast</string>
       <string _locid="302040">Rectangular shoreline map with a railway going along the shore. The railway and the coast gets longer with more players. \n\nNative settlements: Inuits, Scientists (Armored Train)</string>
       <string _locid="302041">Labrador coast is very long. Use railway stations and armored train to reach out very distant enemies.</string>
-
+      <string _locid="302042">Jewish District</string>
+      <string _locid="302043">ZP Socket Jewish EU</string>
 
 
       <!-- ======================================== -->

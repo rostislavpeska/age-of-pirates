@@ -39733,7 +39733,7 @@
     <command page="10" column="7">Delete</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
-    <command page="11" column="0">Abilities</command>
+    <!--<command page="11" column="0">Abilities</command>-->
   </unit>
   <unit id="20537" name="zpBourbonSummerPalaceWagon">
     <dbid>20537</dbid>
@@ -42325,6 +42325,55 @@
     <flag>DoNotValidateResourceInventory</flag>
     <flag>Tracked</flag>
     <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20558" name="zpSocketJewishEU">
+    <dbid>20558</dbid>
+    <displaynameid>302042</displaynameid>
+    <editornameid>302043</editornameid>
+    <subciv>Jewish</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.2000</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildEuropean</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\jesuit_outpost_socket.xml</animfile>
+    <minimapicon>ui\minimap\asian_native_site</minimapicon>
+    <capturedminimapicon>ui\minimap\asian_native_site_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\yodit_portrait.png</portraiticon>
+    <rollovertextid>61105</rollovertextid>
+    <shortrollovertextid>61104</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>12.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>Socket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
   </unit>
 
 
