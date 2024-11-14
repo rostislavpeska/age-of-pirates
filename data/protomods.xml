@@ -36465,6 +36465,7 @@
     <flag>RMCanRotate</flag>
     <flag>Tracked</flag>
     <flag>StartOnNoUpdate</flag>
+    <flag>NoHPBar</flag>
   </unit>
   <unit id="20486" name="zpValuableSource">
     <dbid>20486</dbid>
