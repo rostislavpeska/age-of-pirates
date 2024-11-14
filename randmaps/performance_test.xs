@@ -850,7 +850,7 @@ int jesuitMaltese = rmRandInt(1, 2);
 
 		if (spawnSwitch ==0){
 			rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ7);
-			rmPlaceGroupingAtLoc(blockSansculot, 0, locXm3, locZ2);
+			rmPlaceGroupingAtLoc(blockBourbon, 0, locXm3, locZ2);
 
 			rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ2);
 			rmPlaceGroupingAtLoc(blockBourbon, 0, locXm3, locZ7);
@@ -865,7 +865,7 @@ int jesuitMaltese = rmRandInt(1, 2);
 		}
 
 		if (spawnSwitch ==1){
-			rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ7);
+			rmPlaceGroupingAtLoc(blockBourbon, 0, locX3, locZ7);
 			rmPlaceGroupingAtLoc(blockSansculot, 0, locXm3, locZ2);
 
 			rmPlaceGroupingAtLoc(blockBourbon, 0, locX3, locZ2);
@@ -946,7 +946,7 @@ int jesuitMaltese = rmRandInt(1, 2);
 // South Bank
 
 	//first row
-	rmPlaceGroupingAtLoc(blockHouse01, 0, locX1, locZ0);
+	/*rmPlaceGroupingAtLoc(blockHouse01, 0, locX1, locZ0);
 	rmPlaceGroupingAtLoc(blockHouse02, 0, locX1, locZ1);
 	rmPlaceGroupingAtLoc(blockHouse03, 0, locX1, locZ2);
 	rmPlaceGroupingAtLoc(blockHouse04, 0, locX1, locZ3);
@@ -1002,7 +1002,7 @@ int jesuitMaltese = rmRandInt(1, 2);
 
 		//fifth row
 
-		rmPlaceGroupingAtLoc(blockHouse05, 0, locX5, locZ0);
+		/*rmPlaceGroupingAtLoc(blockHouse05, 0, locX5, locZ0);
 		rmPlaceGroupingAtLoc(blockHouse06, 0, locX5, locZ1);
 		rmPlaceGroupingAtLoc(blockHouse01, 0, locX5, locZ2);
 		rmPlaceGroupingAtLoc(blockHouse02, 0, locX5, locZ3);
@@ -1011,14 +1011,14 @@ int jesuitMaltese = rmRandInt(1, 2);
 		rmPlaceGroupingAtLoc(blockHouse05, 0, locX5, locZ6);
 		rmPlaceGroupingAtLoc(blockHouse06, 0, locX5, locZ7);
 		rmPlaceGroupingAtLoc(blockHouse01, 0, locX5, locZ8);
-		rmPlaceGroupingAtLoc(blockHouse02, 0, locX5, locZ9);
+		rmPlaceGroupingAtLoc(blockHouse02, 0, locX5, locZ9);*/
 		
-	}
+	//}
 
 // North Bank
 
 	//first row
-	rmPlaceGroupingAtLoc(blockHouse05, 0, locXm1, locZ0);
+	/*rmPlaceGroupingAtLoc(blockHouse05, 0, locXm1, locZ0);
 	rmPlaceGroupingAtLoc(blockHouse06, 0, locXm1, locZ1);
 	rmPlaceGroupingAtLoc(blockHouse01, 0, locXm1, locZ2);
 	rmPlaceGroupingAtLoc(blockHouse02, 0, locXm1, locZ3);
@@ -1074,7 +1074,7 @@ int jesuitMaltese = rmRandInt(1, 2);
 		
 		//fifth row
 
-		rmPlaceGroupingAtLoc(blockHouse02, 0, locXm5, locZ0);
+		/*rmPlaceGroupingAtLoc(blockHouse02, 0, locXm5, locZ0);
 		rmPlaceGroupingAtLoc(blockHouse03, 0, locXm5, locZ1);
 		rmPlaceGroupingAtLoc(blockHouse04, 0, locXm5, locZ2);
 		rmPlaceGroupingAtLoc(blockHouse05, 0, locXm5, locZ3);
@@ -1083,9 +1083,9 @@ int jesuitMaltese = rmRandInt(1, 2);
 		rmPlaceGroupingAtLoc(blockHouse02, 0, locXm5, locZ6);
 		rmPlaceGroupingAtLoc(blockHouse03, 0, locXm5, locZ7);
 		rmPlaceGroupingAtLoc(blockHouse04, 0, locXm5, locZ8);
-		rmPlaceGroupingAtLoc(blockHouse05, 0, locXm5, locZ9);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locXm5, locZ9);*/
 
-	}
+	//}
 
 // Decorations
 
@@ -1763,7 +1763,7 @@ rmSetStatusText("",0.70);
 	//----- VICTORY CONDITIONS -----
 
 	// Convert Flags
-	for (k=1; <= cNumberNonGaiaPlayers) {
+	/*for (k=1; <= cNumberNonGaiaPlayers) {
 	rmCreateTrigger("ConvertCourt_Plr"+k);
 	rmCreateTrigger("ConvertBastille_Plr"+k);
 	rmCreateTrigger("ConvertCityHall_Plr"+k);
@@ -2886,113 +2886,6 @@ rmSetStatusText("",0.70);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(true);
-
-	// AI Maltese Fractions
-
-	for (k=1; <= cNumberNonGaiaPlayers) {
-
-	rmCreateTrigger("ZP Pick Maltese Fraction"+k);
-	rmAddTriggerCondition("ZP PLAYER Human");
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParam("MyBool", "false");
-	rmAddTriggerCondition("Tech Status Equals");
-	rmSetTriggerConditionParamInt("PlayerID",k);
-	rmSetTriggerConditionParamInt("TechID",586);
-	rmSetTriggerConditionParamInt("Status",2);
-
-	int malteseFraction=-1;
-	malteseFraction = rmRandInt(1,2);
-
-	if (malteseFraction==1)
-	{
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseFlorentians"); //operator
-		rmSetTriggerEffectParamInt("Status",2);
-	}
-	if (malteseFraction==2)
-	{
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseJerusalem"); //operator
-		rmSetTriggerEffectParamInt("Status",2);
-	}
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-	}
-
-	// AI Revolutionary Fractions
-
-	for (k=1; <= cNumberNonGaiaPlayers) {
-	if (rmGetPlayerTeam(k) == 0) {
-		rmCreateTrigger("ZP_Iniciate_Revolution"+k);
-		rmCreateTrigger("ZP_Execute_Revolution"+k);
-		rmCreateTrigger("ZP_Timer_Revolution"+k);
-
-		rmSwitchToTrigger(rmTriggerID("ZP_Iniciate_Revolution"+k));
-		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
-		rmSetTriggerConditionParamInt("PlayerID",k);
-		rmSetTriggerConditionParam("TechID","cTechIndustrialize");
-		rmSetTriggerConditionParamInt("Status",2);
-		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Timer_Revolution"+k));
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(true);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
-
-		rmSwitchToTrigger(rmTriggerID("ZP_Timer_Revolution"+k));
-		rmAddTriggerCondition("Timer");
-		rmSetTriggerConditionParamInt("Param1",10);
-		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
-		rmSetTriggerConditionParamInt("PlayerID",k);
-		rmSetTriggerConditionParam("TechID","cTechzpNativeSansculottes");
-		rmSetTriggerConditionParamInt("Status",2);
-		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Execute_Revolution"+k));
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(false);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
-
-		rmSwitchToTrigger(rmTriggerID("ZP_Execute_Revolution"+k));
-		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
-		rmSetTriggerConditionParamInt("PlayerID",k);
-		rmSetTriggerConditionParam("TechID","cTechzpNativeSansculottes");
-		rmSetTriggerConditionParamInt("Status",2);
-
-		int revFraction=-1;
-		revFraction = rmRandInt(1,3);
-
-		if (revFraction==1)
-		{
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID",k);
-			rmSetTriggerEffectParam("TechID","cTechzpConsulateRevLafayette"); //operator
-			rmSetTriggerEffectParamInt("Status",2);
-		}
-		if (revFraction==2)
-		{
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID",k);
-			rmSetTriggerEffectParam("TechID","cTechzpConsulateRevJacobine"); //operator
-			rmSetTriggerEffectParamInt("Status",2);
-		}
-		if (revFraction==3)
-		{
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID",k);
-			rmSetTriggerEffectParam("TechID","cTechzpConsulateRevNapoleon"); //operator
-			rmSetTriggerEffectParamInt("Status",2);
-		}
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(false);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
-	}
-	}*/
 
 	// Testing
 

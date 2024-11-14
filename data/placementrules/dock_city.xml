@@ -9,15 +9,6 @@
   <obstructionatleastfromtype player="any" foundation="any" distance="8" errorstringid="72586">deFurTrade</obstructionatleastfromtype>
   <distanceatleastfromtype player="any" foundation="any" distance="35" errorstringid="69985">ypKingsHill</distanceatleastfromtype>
   <distanceatleastfromtype player="enemy" foundation="any" distance="65" errorstringid="25521">FirstTC</distanceatleastfromtype>
-  <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="301928">AbstractCityManison</distanceatleastfromtype>
-  <distanceatleastfromcliff distance="4" errorstringid="25529">
-  </distanceatleastfromcliff>
-  <distanceatmostfromtype player="team" foundation="any" distance="75" errorstringid="46622" norushonly="true">FirstTC</distanceatmostfromtype>
-  <distanceatleastfromtype player="any" foundation="any" distance="4" errorstringid="110197">deInspiringFlag</distanceatleastfromtype>
-  <distanceatleastfromtype player="any" foundation="any" distance="6" errorstringid="110588" nugget="true">AbstractNugget</distanceatleastfromtype>
-  <distanceatleastfromtype player="any" foundation="any" distance="18" errorstringid="123113">deSPCCapturableFlag</distanceatleastfromtype>
-  <distanceatleastfromtype player="any" foundation="any" distance="16" errorstringid="123320">deSPCPeninsularFixedGun</distanceatleastfromtype>
-  <distanceatleastfromtype player="any" foundation="any" distance="16" errorstringid="125166">deRMFoodMill</distanceatleastfromtype>
-  <distanceatleastfromtype player="any" foundation="any" distance="12" errorstringid="123337">deSPCHeadquartersVienna</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="7" errorstringid="110197">deInspiringFlag</distanceatleastfromtype>
   <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="302033">zpBridgeFace</distanceatleastfromtype>
 </placementrules>

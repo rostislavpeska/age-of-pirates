@@ -1,0 +1,4 @@
+<animfile>
+  <component>cabin<assetreference type="GrannyModel"><file>nuggets\african\stela\obelisk</file></assetreference></component>
+  <anim>Idle<component>cabin</component></anim>
+</animfile>

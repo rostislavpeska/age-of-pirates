@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "302040" displayNameID = "302039" loadDetails="302041" largeMapName = "zplabrador"
+    imagepath = "ui\random_map\labradorcoast\labradorcoast_mini" cannotReplace = "" loadBackground="ui\random_map\labradorcoast\labradorcoast_map">
+   <loadss>ui\random_map\labradorcoast\labradorcoast_01</loadss>
+   <loadss>ui\random_map\labradorcoast\labradorcoast_02</loadss>
+   <loadss>ui\random_map\labradorcoast\labradorcoast_03</loadss>
+</mapinfo>

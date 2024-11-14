@@ -276,6 +276,17 @@ minInterval 1
       xsEnableRule("zpPenalColonyTechMonitor");
       xsEnableRule("zpMaintainConvictLabourers");
    }
+   if (getGaiaUnitCount(cUnitTypezpSPCEUHouseSansculottes) > 0)
+   {
+      xsEnableRule("zpSansculotteTechMonitor");
+      xsEnableRule("nativeWagonMonitor");
+      //xsEnableRule("zpMaintainSansculotteCoreurs");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNatEUVerseilles) > 0)
+   {
+      xsEnableRule("zpBourbonTechMonitor");
+      xsEnableRule("nativeWagonMonitor");
+   }
     
    xsDisableSelf();
 }
@@ -3187,6 +3198,10 @@ minInterval 15
          {
             buildingType = cUnitTypezpGunStore;
          }
+         case cUnitTypezpBourbonSummerPalaceWagon:
+         {
+            buildingType = cUnitTypezpBourbonSummerPalace;
+         }
       }
 
       if (buildingType < 0) // Didn't find a building so go to the next iteration.
@@ -4403,6 +4418,116 @@ minInterval 60
    if ((convictPlan < 0) && (buildLimit >= 1))
    {
       convictPlan = createSimpleMaintainPlan(cUnitTypezpNatConvictLabourer, buildLimit, true, kbBaseGetMainID(cMyID), 1);
+   }
+   else
+   {
+      aiPlanSetVariableInt(convictPlan, cTrainPlanNumberToMaintain, 0, buildLimit);
+   }
+}
+
+//==============================================================================
+// ZP Sansculotte Tech Monitor
+//==============================================================================
+rule zpSansculotteTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketSansculottes, cUnitStateAny) == 0)
+      {
+      return; // Player has no Maltese socket.
+      }
+
+      // Sansculotte Lafayette
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpGalerieLafayette,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateRevLafayette) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpLafayetteEmbassy,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateRevLafayette) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Sansculotte Robespierre
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpSansculotteLoyalDistricts,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateRevJacobine) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Sansculotte Napoleon
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpRevolutionFranceNE,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateRevNapoleon) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // General Techs
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpSansculotteBrricades,
+      []() -> bool { return ( kbGetAge() >= cAge1 ); },
+      cUnitTypeTradingPost);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
+// ZP SPCBourbon Tech Monitor
+//==============================================================================
+rule zpBourbonTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketSPCBourbon, cUnitStateAny) == 0)
+      {
+      return; // Player has no Maltese socket.
+      }
+
+      // Big button variants
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpBourbonExpansion,
+      []() -> bool { return ((kbTechGetStatus(cTechzpParisSetup) == cTechStatusUnobtainable) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpBourbonExpansionSPC,
+      []() -> bool { return ((kbTechGetStatus(cTechzpParisSetup) == cTechStatusActive) && (kbTechGetStatus(cTechzpParisSetup) == cTechStatusActive) && (kbTechGetStatus(cTechzpNatBourbonBigbuttonDisableShadow) == cTechStatusUnobtainable) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Cheteau Royal
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatChateauRoyal,
+      []() -> bool { return (((kbTechGetStatus(cTechzpBourbonExpansionSPC) == cTechStatusActive) || (kbTechGetStatus(cTechzpBourbonExpansion) == cTechStatusActive)) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
+// maintain Sansculotte Coreurss
+//==============================================================================
+rule zpMaintainSansculotteCoreurs
+inactive
+minInterval 60
+{
+   static int convictPlan = -1;
+
+   if (kbUnitCount(cMyID, cUnitTypezpSocketSansculottes, cUnitStateAny) == 0)
+   {
+      return;
+   }
+
+   // Check build limit.
+   int buildLimit = kbGetBuildLimit(cMyID, cUnitTypezpNatCoureurSansculotte);
+
+   if (kbUnitCount(cMyID, cUnitTypeTradingPost, cUnitStateAlive) < 1)
+   {
+      buildLimit = 0;
+   }
+
+   // Create/update maintain plan
+   if ((convictPlan < 0) && (buildLimit >= 1))
+   {
+      convictPlan = createSimpleMaintainPlan(cUnitTypezpNatCoureurSansculotte, buildLimit, true, kbBaseGetMainID(cMyID), 1);
    }
    else
    {

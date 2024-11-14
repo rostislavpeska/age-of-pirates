@@ -5071,6 +5071,9 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
+      <effect mergemode="add" type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothersGerman">
@@ -5111,6 +5114,9 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
+      <effect mergemode="add" type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialAmericans">
@@ -16898,6 +16904,9 @@
       <effect type="CommandAdd" tech="zpLafayetteEmbassy" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="Data" amount="8.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
       <effect type="TechStatus" status="active">zpRevolutionFrance</effect>
     </effects>
   </tech>
@@ -17656,6 +17665,12 @@
       <effect type="CommandAdd" proto="zpNatCoureurSansculotte" page="0" column="2">
         <target type="ProtoUnit">zpParisCitadel</target>
       </effect>
+      <effect type="CommandAdd" proto="zpNatRevolutionary" page="0" column="1">
+        <target type="ProtoUnit">zpParisCitadelPassage</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatCoureurSansculotte" page="0" column="2">
+        <target type="ProtoUnit">zpParisCitadelPassage</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSPCNativeBourbon" type="Normal">
@@ -18095,14 +18110,15 @@
   <tech name="zpGalerieLafayette" type="Normal">
     <dbid>40794</dbid>
     <displaynameid>301960</displaynameid>
-    <cost resourcetype="Food">300.0000</cost>
-    <cost resourcetype="Gold">200.0000</cost>
+    <cost resourcetype="Food">400.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
     <researchpoints>20.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\galeries_lafayette.png</icon>
     <rollovertextid>301961</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>TeamTech</flag>
     <effects>
       <effect type="TechStatus" status="active">zpGalerieLafayetteShadow</effect>
     </effects>
@@ -18111,58 +18127,58 @@
     <dbid>40795</dbid>
     <flag>Shadow</flag>
     <effects>
-      <effect type="Data" action="Autogather" amount="1.20" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+      <effect type="Data" action="Autogather" amount="1.40" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCNotreDame</target>
       </effect>
-      <effect type="Data" action="AutoGatherCoinTeam" amount="1.20" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.40" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactory</target>
       </effect>
-      <effect type="Data" action="AutoGatherFoodTeam" amount="1.20" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.40" subtype="WorkRate" unittype="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactory</target>
       </effect>
-      <effect type="Data" action="AutoGatherWoodTeam" amount="1.20" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.40" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactory</target>
       </effect>
-      <effect type="Data" action="AutoGatherWoodTeam" amount="1.20" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.40" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCityMarket</target>
       </effect>
-      <effect type="Data" action="AutoGatherCoinTeam" amount="1.20" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.40" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCityMarket</target>
       </effect>
-      <effect type="Data" action="AutoGatherFoodTeam" amount="1.20" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.40" subtype="WorkRate" unittype="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCityMarket</target>
       </effect>
-      <effect type="Data" action="AutoGatherXPTeam" amount="1.20" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherXPTeam" amount="1.40" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCityMarket</target>
       </effect>
-      <effect type="Data" action="AutoGather" amount="1.20" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+      <effect type="Data" action="AutoGather" amount="1.40" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCNationalBank</target>
       </effect>
-      <effect type="Data" action="AutoGather" amount="1.20" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+      <effect type="Data" action="AutoGather" amount="1.40" subtype="WorkRate" unittype="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCTownMill</target>
       </effect>
-      <effect type="Data" action="AutoGather" amount="1.20" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+      <effect type="Data" action="AutoGather" amount="1.40" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCGoldSmelter</target>
       </effect>
-      <effect type="Data" action="AutoGather" amount="1.20" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+      <effect type="Data" action="AutoGather" amount="1.40" subtype="WorkRate" unittype="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCDestilery</target>
       </effect>
-      <effect type="Data" action="AutoGather" amount="1.20" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+      <effect type="Data" action="AutoGather" amount="1.40" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCForester</target>
       </effect>
-      <effect type="Data" action="AutoGather" amount="1.20" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+      <effect type="Data" action="AutoGather" amount="1.40" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCDemolisher</target>
       </effect>
-      <effect type="Data" action="AutoGatherCoin" amount="1.20" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherCoin" amount="1.40" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCMenagerie</target>
       </effect>
-      <effect type="Data" action="AutoGatherFood" amount="1.20" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherFood" amount="1.40" subtype="WorkRate" unittype="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCMenagerie</target>
       </effect>
-      <effect type="Data" action="AutoGatherWood" amount="1.20" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherWood" amount="1.40" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCMenagerie</target>
       </effect>
-      <effect type="Data" action="AutoGatherXP" amount="1.20" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherXP" amount="1.40" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCMenagerie</target>
       </effect>
     </effects>
@@ -18310,7 +18326,7 @@
       <effect type ="SetName" proto ="zpSPCPortSocket" culture ="none" newname ="301979"></effect>
     </effects>
   </tech>
-  <tech name="zpEnableMilitaryCamp" type="Normal">
+  <tech name="zpParisSetup" type="Normal">
     <dbid>40808</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -18345,6 +18361,8 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">deSPCCommandPost</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
+      <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
     </effects>
   </tech>
   <tech name="zpSansculotteSpiritRevolution" type="Normal">
@@ -18438,8 +18456,8 @@
   <tech name="zpRevolutionFranceNE" type="Normal">
     <dbid>40812</dbid>
     <displaynameid>301997</displaynameid>
-    <cost resourcetype ="Food">1500.0000</cost>
-    <cost resourcetype ="Gold">1500.0000</cost>
+    <cost resourcetype ="Food">1750.0000</cost>
+    <cost resourcetype ="Gold">1750.0000</cost>
     <researchpoints>20.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\revolution\napoleonic_era.png</icon>
@@ -18450,8 +18468,6 @@
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="TechStatus" status="active">zpVeteranBourbon</effect>
-      <effect type="TechStatus" status="active">zpGuardBourbon</effect>
       <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
       </effect>
@@ -18516,68 +18532,7 @@
         <target type="Player">
         </target>
       </effect>
-      <effect type="SetName" proto="zpNatRoyalMusketeer" culture="none" newname="126580" newrollover="126581">
-      </effect>
-      <effect type="SetName" proto="zpNatRoyalDragoon" culture="none" newname="126582" newrollover="126583">
-      </effect>
-      <effect type="SetName" proto="deNatMercRoyalMusketeer" culture="none" newname="126580" newrollover="126581">
-      </effect>
-      <effect type="SetName" proto="deNatMercRoyalDragoon" culture="none" newname="126582" newrollover="126583">
-      </effect>
-      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatRoyalMusketeer" relativity="Absolute">
-        <target type="ProtoUnit">deIconNatFootCarabinier</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatRoyalDragoon" relativity="Absolute">
-        <target type="ProtoUnit">deIconNatHorseCarabinier</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deNatMercRoyalMusketeer" relativity="Absolute">
-        <target type="ProtoUnit">deIconNatMercFootCarabinier</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deNatMercRoyalDragoon" relativity="Absolute">
-        <target type="ProtoUnit">deIconNatMercHorseCarabinier</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Assign">
-        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
-      </effect>
-      <effect type="Data" amount="2.00" subtype="PopulationCount" relativity="Assign">
-        <target type="ProtoUnit">deNatMercRoyalDragoon</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deNatMercRoyalDragoon</target>
-      </effect>
-      <effect type="CommandAdd" proto="deNatMercRoyalMusketeer" page="0" column="20">
-        <target type="ProtoUnit">Barracks</target>
-      </effect>
-      <effect type="CommandAdd" proto="deNatMercRoyalDragoon" page="0" column="20">
-        <target type="ProtoUnit">Stable</target>
-      </effect>
-      <effect type="CommandAdd" proto="deNatMercRoyalMusketeer" page="0" column="40">
-        <target type="ProtoUnit">zpMilitaryCamp</target>
-      </effect>
-      <effect type="CommandAdd" proto="deNatMercRoyalDragoon" page="0" column="41">
-        <target type="ProtoUnit">zpMilitaryCamp</target>
-      </effect>
-      <effect type="CommandAdd" proto="deNatMercRoyalDragoon" page="0" column="21">
-        <target type="ProtoUnit">FortFrontier</target>
-      </effect>
-      <effect type="CommandAdd" proto="deNatMercRoyalMusketeer" page="0" column="20">
-        <target type="ProtoUnit">FortFrontier</target>
-      </effect>
-      <effect type="CommandAdd" proto="deNatMercRoyalDragoon" page="0" column="21">
-        <target type="ProtoUnit">Blockhouse</target>
-      </effect>
-      <effect type="CommandAdd" proto="deNatMercRoyalMusketeer" page="0" column="20">
-        <target type="ProtoUnit">Blockhouse</target>
-      </effect>
-      <effect type="CommandAdd" proto="deNatMercRoyalDragoon" page="0" column="21">
-        <target type="ProtoUnit">zpSPCFortStable</target>
-      </effect>
-      <effect type="CommandAdd" proto="deNatMercRoyalMusketeer" page="0" column="20">
-        <target type="ProtoUnit">zpSPCFortBarracks</target>
-      </effect>
+      <effect type="TechStatus" status="active">DEHCAncienRegime</effect>
     </effects>
   </tech>
   <tech name="DERevolutionFranceNE">
@@ -18754,8 +18709,171 @@
       <effect type="Data" amount="3.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpMilitaryCamp</target>
       </effect>
+      <effect type="TechStatus" status="active">DEHCAncienRegime</effect>
     </effects>
 	</tech>
+  <tech name="deEUMapUpdateVisuals">
+     <effects>
+      <effect mergemode="add" type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpNativeEmbassyParisReward" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNativeEmbassyParisReward" relativity="Absolute">
+        <target type="ProtoUnit">deIconEuropeanEmbassy</target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="zpAncienRegimeNormalizer" type="Normal">
+    <dbid>408187</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpBonusBourbon</techstatus>
+      <techstatus status="Active">DEHCAncienRegime</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="CommandRemove" tech="DEVeteranBourbon">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandRemove" tech="DEGuardBourbon">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatBourbonReforms">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatBourbonRoyalTax">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpVeteranBourbon" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpGuardBourbon" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatBourbonReforms" page="2" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatBourbonRoyalTax" page="2" column="2">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercRoyalMusketeer" page="0" column="1">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercRoyalDragoon" page="0" column="2">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpVeteranBourbon" page="1" column="1">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpGuardBourbon" page="1" column="1">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatBourbonReforms" page="2" column="1">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatBourbonRoyalTax" page="2" column="2">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
+      <effect civ="Bourbon" type="Data" amount="0.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect civ="SPCBourbon" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">DEVeteranBourbon</effect>
+      <effect type="TechStatus" status="unobtainable">DEGuardBourbon</effect>
+      <effect type="TechStatus" status="unobtainable">DENatBourbonReforms</effect>
+      <effect type="TechStatus" status="unobtainable">DENatBourbonRoyalTax</effect>
+      <effect type="TechStatus" status="obtainable">zpVeteranBourbon</effect>
+      <effect type="TechStatus" status="obtainable">zpGuardBourbon</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBourbonReforms</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBourbonRoyalTax</effect>
+    </effects>
+  </tech>
+  <tech name="zpBonusBourbon" type="Normal">
+    <dbid>40817</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+  </tech>
+  <tech name="zpNapoleonicEraIcons" type="Normal">
+    <dbid>40819</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpRevolutionFranceNE</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatRoyalMusketeer" relativity="Absolute">
+        <target type="ProtoUnit">deIconNatFootCarabinier</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatRoyalDragoon" relativity="Absolute">
+        <target type="ProtoUnit">deIconNatHorseCarabinier</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deNatMercRoyalMusketeer" relativity="Absolute">
+        <target type="ProtoUnit">deIconNatMercFootCarabinier</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deNatMercRoyalDragoon" relativity="Absolute">
+        <target type="ProtoUnit">deIconNatMercHorseCarabinier</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercRoyalMusketeer" page="0" column="20">
+        <target type="ProtoUnit">Barracks</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercRoyalDragoon" page="0" column="20">
+        <target type="ProtoUnit">Stable</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercRoyalMusketeer" page="0" column="40">
+        <target type="ProtoUnit">zpMilitaryCamp</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercRoyalDragoon" page="0" column="41">
+        <target type="ProtoUnit">zpMilitaryCamp</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercRoyalDragoon" page="0" column="21">
+        <target type="ProtoUnit">FortFrontier</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercRoyalMusketeer" page="0" column="20">
+        <target type="ProtoUnit">FortFrontier</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercRoyalDragoon" page="0" column="21">
+        <target type="ProtoUnit">Blockhouse</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercRoyalMusketeer" page="0" column="20">
+        <target type="ProtoUnit">Blockhouse</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercRoyalDragoon" page="0" column="21">
+        <target type="ProtoUnit">zpSPCFortStable</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercRoyalMusketeer" page="0" column="20">
+        <target type="ProtoUnit">zpSPCFortBarracks</target>
+      </effect>
+      <effect type="TechStatus" status="active">zpVeteranBourbon</effect>
+      <effect type="TechStatus" status="active">zpGuardBourbon</effect>
+    </effects>
+  </tech>
+  <tech name="zpNapoleonicEraNames" type="Normal">
+    <dbid>40820</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpRevolutionFranceNE</techstatus>
+      <techstatus status="Active">zpVeteranBourbon</techstatus>
+      <techstatus status="Active">zpGuardBourbon</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="SetName" proto="zpNatRoyalMusketeer" culture="none" newname="126580" newrollover="126581">
+      </effect>
+      <effect type="SetName" proto="zpNatRoyalDragoon" culture="none" newname="126582" newrollover="126583">
+      </effect>
+      <effect type="SetName" proto="deNatMercRoyalMusketeer" culture="none" newname="126580" newrollover="126581">
+      </effect>
+      <effect type="SetName" proto="deNatMercRoyalDragoon" culture="none" newname="126582" newrollover="126583">
+      </effect>
+    </effects>
+  </tech>
 
 
   

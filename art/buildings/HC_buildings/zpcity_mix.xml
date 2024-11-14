@@ -89,7 +89,7 @@
 			    </data>
                 <data>
 					<assetreference type="GrannyModel">
-						<file>buildings\market\trading_port2_Model</file>
+						<file>buildings\hc_buildings\new\building_usa_01_game_Model</file>
 					</assetreference>
 			    </data>
 		</logic>

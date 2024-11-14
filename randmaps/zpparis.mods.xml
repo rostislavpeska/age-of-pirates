@@ -180,11 +180,70 @@
 		</unit>
 		<unit name="deSPCWaterlooHouseProp">
 			<flag>DoNotShowOnMiniMap</flag>
+			<animfile>buildings\native_settlement\zp_native_eu_houses_red_nosmoke.xml</animfile>
+			<flag>StartOnNoUpdate</flag>
 		</unit>
 		<unit name="SPCFortGate">
 			<unittype>ConvertsHerds</unittype>
 			<flag>PlaceAnywhere</flag>
 			<buildpoints>0.0000</buildpoints>
+		</unit>
+		<unit name="Dock">
+			<placementfile>dock_city.xml</placementfile>
+		</unit>
+		<unit name="zpSPCEUHouseProp">
+			<animfile>buildings\native_settlement\zp_native_eu_houses_nosmoke.xml</animfile>
+		</unit>
+		<unit name="zpSPCVillageHouseProp">
+			<animfile>buildings\native_settlement\zp_native_village_houses_nosmoke.xml</animfile>
+		</unit>
+		<unit name="deEmbassyTravois">
+			<animfile>units\trade\supply_cart\supply_cart_bank.xml</animfile>
+		</unit>
+		<unit name="deNatEUPropStatue">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="deNatEUPropFence">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="ypSMJesuitAccessory">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>
+		</unit>
+		<unit name="zpNatEUVerseilles">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNativeHouseMaltese">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNatEUPropWingC">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNativeHouseVenetian">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNativeStatueVenetian">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNativeUnitVenetian">			
+			<flag>NoIdleActions</flag>
+		</unit>
+		<unit name="deNatEUPropVilGuards">			
+			<flag>NoIdleActions</flag>
+		</unit>
+		<unit name="deNatEUPropVilMale">			
+			<flag>NoIdleActions</flag>
+		</unit>
+		<unit name="deNatEUPropVilFemale">
+			<flag>NoIdleActions</flag>
 		</unit>
 	</protomods>
 </mods>
