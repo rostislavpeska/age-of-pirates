@@ -316,6 +316,40 @@ int createCityAttackPlan(int count = 0)
 }
 
 //==============================================================================
+/* getSecondaryObjectiveLoc
+   Looks for a secondary objective
+*/
+//==============================================================================
+
+vector getSecondaryObjectiveLoc(int planID = -1, int radius = 40)
+{
+   vector planPosition = aiPlanGetLocation(planID);
+   int tempEnemyTarget = -1;
+   vector tempEnemyTargetLoc = cInvalidVector;
+   int friendlyStrength = -1;
+   int enemyStrength = -1;
+   int importantBuildingQuery = createAdvancedGaiaUnitQuery(cUnitTypezpSPCCapturableFlagNoIcon, cUnitStateAlive, planPosition, radius, true);
+   int numberFound = kbUnitQueryExecute(importantBuildingQuery);
+
+   friendlyStrength = getFriendlyArmyValue(planID);
+
+   // Look for some stuff that we can try to take
+   for (i = 0; < numberFound)
+   {
+      tempEnemyTarget = kbUnitQueryGetResult(importantBuildingQuery, i);
+      tempEnemyTargetLoc = kbUnitGetPosition(tempEnemyTarget);
+      enemyStrength = getAreaStrength(tempEnemyTargetLoc, 30, cPlayerRelationEnemy);
+
+      if (friendlyStrength > (1.3 * enemyStrength))
+      {
+         return (tempEnemyTargetLoc);
+      }
+   }
+
+   return (cInvalidVector);
+}
+
+//==============================================================================
 /* CityAttackmanager
    conducts all the attack management for city maps
 
@@ -372,6 +406,28 @@ minInterval 10
 
 }
 
+rule rerunCityGateKiller
+inactive
+minInterval 30
+{
+   if (getGaiaUnitCount(cUnitTypeSPCFortGate) <= 0)
+   {
+      // no gates left, disable
+      xsDisableSelf();
+      return;
+   }
+
+   // Just wait until we have a decent sized army to go after a gate again
+   if (kbUnitCount(cMyID, cUnitTypeLogicalTypeLandMilitary) > 40)
+   {
+      if (xsIsRuleEnabled("cityGateKiller") == false)
+      {
+         xsEnableRule("cityGateKiller");
+      }
+   }
+}
+
+
 rule cityGateKiller
 inactive
 minInterval 4
@@ -400,7 +456,7 @@ minInterval 4
 
    if (tempEnemyTarget != enemyTarget || enemyTarget < 0)
    {  // this means we killed the closer one
-      if (xsIsRuleEnabled("initializeCityAttackmanager") == false)
+      if (xsIsRuleEnabled("cityAttackmanager") == false)
       {
          xsEnableRule("initializeCityAttackmanager");
       }
@@ -412,8 +468,15 @@ minInterval 4
       gForwardBaseUpTime = xsGetTime();
       gForwardBaseShouldDefend = kbUnitIsType(fortUnitID, cUnitTypeSPCFortGate);
 
+      enemyTarget = getClosestGaiaUnit(cUnitTypeSPCFortGate, mainBaseLocation);  // set this to the next closest one for the future
+
       aiPlanDestroy(gateKillerPlan);
+      gateKillerPlan = -1;
       xsDisableSelf();
+      if (xsIsRuleEnabled("rerunCityGateKiller") == false)
+      {
+         xsEnableRule("rerunCityGateKiller");
+      }
    }
 
    if (gateKillerPlan < 0)
@@ -476,6 +539,7 @@ minInterval 10
    int distanceFromHome = -1;
    int furthestDistanceFromHome = -1;
    int furthestPlanID = -1;
+   vector secondaryObjectiveLocation = cInvalidVector;
 
    if (xsIsRuleEnabled("attackManager") == true)
    {
@@ -556,14 +620,25 @@ minInterval 10
       {
          friendlyStrength = getFriendlyArmyValue(tempPlanID);
          enemyStrength = getAreaStrength(tempTargetPosition, 30, cPlayerRelationEnemy);
-         if (friendlyStrength > (enemyStrength * 1.2))
+         if (friendlyStrength > (enemyStrength * 1.3))
          {
             aiPlanSetDesiredPriority(tempPlanID, 60);
             aiPlanSetVariableVector(tempPlanID, cCombatPlanTargetPoint, 0, tempTargetPosition);
          }
          else
-         {  // add units to plan
-            aiPlanSetDesiredPriority(tempPlanID, 30);
+         {  
+            // We can't attack the main objective, so look for a secondary objective nearby
+            secondaryObjectiveLocation = getSecondaryObjectiveLoc(tempPlanID);
+            if (secondaryObjectiveLocation != cInvalidVector)
+            {
+               aiPlanSetDesiredPriority(tempPlanID, 40);
+               aiPlanSetVariableVector(tempPlanID, cCombatPlanTargetPoint, 0, secondaryObjectiveLocation);
+            }
+            else
+            {
+               // just add units to plan
+               aiPlanSetDesiredPriority(tempPlanID, 30);
+            }
          }
       }
    }

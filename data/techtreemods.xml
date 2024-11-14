@@ -19512,6 +19512,28 @@
       <!--<effect type="TechStatus" status="obtainable">zpSpreadTheCheer</effect>-->
     </effects>
   </tech>
+  <tech name="zpXmassMercenaries" type="Normal">
+    <dbid>50051</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpChristmasOrganGun</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonOutlawPistol</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypRepentantOutlawPistol</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonOutlawRifleman</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypRepentantOutlawRifleman</target>
+      </effect>
+    </effects>
+  </tech>
 
   
 

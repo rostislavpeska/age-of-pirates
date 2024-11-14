@@ -119,7 +119,7 @@ void main(void)
 	rmTerrainInitialize(cliffPaint1, 12.00); 
 	rmSetMapType(treasureSet);
 	rmSetMapType("ScenarioFreezing");
-	rmSetMapType("grass");
+	rmSetMapType("snow");
 	rmSetMapType("land");
 	rmSetGlobalSnow(1.0);
     rmSetLightingSet(shineAlight);
