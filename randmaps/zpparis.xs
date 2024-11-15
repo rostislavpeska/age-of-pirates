@@ -307,10 +307,16 @@ void main(void)
 		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.95);
 		rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	}
-	else{
+	else if (cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==4){
 		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.10);
 		rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.90);
+		rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
+	}
+	else{
+		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.05);
+		rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
+		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.95);
 		rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	}
 
@@ -1411,16 +1417,16 @@ rmSetStatusText("",0.70);
 			if (PlayerNum == 3 || PlayerNum == 4)
 			{			
 				rmSetPlacementTeam(0);
-				rmPlacePlayersLine(0.1, 0.75, 0.1, 0.25, 0, 0);
+				rmPlacePlayersLine(0.1, 0.77, 0.1, 0.27, 0, 0);
 				rmSetPlacementTeam(1);
-				rmPlacePlayersLine(0.9, 0.25, 0.9, 0.75, 0, 0);
+				rmPlacePlayersLine(0.9, 0.27, 0.9, 0.77, 0, 0);
 
 			}
 
 			rmSetPlacementTeam(0);
-			rmPlacePlayersLine(0.10, 0.9, 0.10, 0.1, 0, 0);
+			rmPlacePlayersLine(0.10, 0.9, 0.10, 0.25, 0, 0);
 			rmSetPlacementTeam(1);
-			rmPlacePlayersLine(0.90, 0.1, 0.90, 0.9, 0, 0);
+			rmPlacePlayersLine(0.90, 0.10, 0.90, 0.75, 0, 0);
 
 
 		}
@@ -1438,16 +1444,16 @@ rmSetStatusText("",0.70);
 			if (PlayerNum == 3 || PlayerNum == 4)
 			{			
 				rmSetPlacementTeam(1);
-				rmPlacePlayersLine(0.1, 0.75, 0.1, 0.25, 0, 0);
+				rmPlacePlayersLine(0.1, 0.77, 0.1, 0.27, 0, 0);
 				rmSetPlacementTeam(0);
-				rmPlacePlayersLine(0.9, 0.25, 0.9, 0.75, 0, 0);
+				rmPlacePlayersLine(0.9, 0.27, 0.9, 0.77, 0, 0);
 			}
 
 
 			rmSetPlacementTeam(1);
-			rmPlacePlayersLine(0.10, 0.9, 0.10, 0.1, 0, 0);
+			rmPlacePlayersLine(0.10, 0.9, 0.10, 0.25, 0, 0);
 			rmSetPlacementTeam(0);
-			rmPlacePlayersLine(0.90, 0.1, 0.90, 0.9, 0, 0);
+			rmPlacePlayersLine(0.90, 0.10, 0.90, 0.75, 0, 0);
 
 		}
 	}
@@ -1472,6 +1478,7 @@ rmSetStatusText("",0.70);
 	rmSetObjectDefMinDistance(goldID, 14.0);
 	rmSetObjectDefMaxDistance(goldID, 15.0);
 	rmAddObjectDefConstraint(goldID, avoidTradeRouteMin);
+	rmAddObjectDefConstraint(goldID, avoidAll);
 
 	/*int goldID2 = rmCreateObjectDef("starting gold 2");
 	rmAddObjectDefItem(goldID2, "MineTin", 1, 2.0);
@@ -1485,6 +1492,7 @@ rmSetStatusText("",0.70);
 	rmSetObjectDefMinDistance(berryID, 16.0);
 	rmSetObjectDefMaxDistance(berryID, 17.0);
 	rmAddObjectDefConstraint(berryID, shortAvoidCoin);
+	rmAddObjectDefConstraint(berryID, avoidAll);
 
 	int aiStartUrban = rmCreateObjectDef("is city map");
 	rmAddObjectDefItem(aiStartUrban, "zpAIStartUrbanMap", 1, 0.0);
@@ -1502,7 +1510,13 @@ rmSetStatusText("",0.70);
 		int startID = rmCreateObjectDef("object"+i);
 		rmAddObjectDefItem(startID, "deSPCCommandPost", 1, 2.0);
 		rmSetObjectDefMinDistance(startID, 0.0);
-        rmSetObjectDefMaxDistance(startID, 1.0);
+		if (cNumberNonGaiaPlayers >=5){
+        	rmSetObjectDefMaxDistance(startID, 10.0);
+			rmAddObjectDefConstraint(startID, avoidTradeRouteMin);
+		}
+		else{
+        	rmSetObjectDefMaxDistance(startID, 1.0);
+		}
 		rmPlaceObjectDefAtLoc(startID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
         rmPlaceObjectDefAtLoc(playerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
         rmPlaceObjectDefAtLoc(foodID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
@@ -1541,6 +1555,7 @@ rmSetStatusText("",0.70);
 	rmSetNuggetDifficulty(1, 2);
 	rmAddObjectDefConstraint(nuggetNorth, shortAvoidImpassableLand);
 	rmAddObjectDefConstraint(nuggetNorth, avoidNugget);
+	rmAddObjectDefConstraint(nuggetNorth, avoidAll);
 	rmAddObjectDefConstraint(nuggetNorth, avoidBlockMedium);
 	rmAddObjectDefConstraint(nuggetNorth, avoidTownCenter);
 	rmAddObjectDefConstraint(nuggetNorth, avoidMountains);
@@ -1554,6 +1569,7 @@ rmSetStatusText("",0.70);
 	rmAddObjectDefConstraint(nuggetSouth, avoidNugget);
 	rmAddObjectDefConstraint(nuggetSouth, avoidBlockMedium);
 	rmAddObjectDefConstraint(nuggetSouth, avoidTownCenter);
+	rmAddObjectDefConstraint(nuggetSouth, avoidAll);
 	rmAddObjectDefConstraint(nuggetSouth, avoidMountains);
 	rmAddObjectDefConstraint(nuggetSouth, playerEdgeConstraint);
 	rmPlaceObjectDefInArea(nuggetSouth, 0, countrysideSouth, cNumberNonGaiaPlayers);

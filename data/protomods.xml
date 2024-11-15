@@ -42375,6 +42375,177 @@
     <flag>EnterHotkeyContext</flag>
     <tactics>socketcapture.tactics</tactics>
   </unit>
+  <unit id="20559" name="zpSPCLouisXVI">
+    <dbid>20559</dbid>
+    <displaynameid>302044</displaynameid>
+    <editornameid>302045</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\spc\stuart_black\spc_stuart_black.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <icon>resources\art\units\spc\stuart_black\stuart_black_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\spc\stuart_black\stuart_black_igc_icon.png</portraiticon>
+    <rollovertextid>302046</rollovertextid>
+    <shortrollovertextid>302046</shortrollovertextid>
+    <initialhitpoints>300.0000</initialhitpoints>
+    <maxhitpoints>300.0000</maxhitpoints>
+    <los>24.0000</los>
+    <autoattackrange>16.0000</autoattackrange>
+    <unitaitype>Passive</unitaitype>
+    <bounty>40.0000</bounty>
+    <allowedage>0</allowedage>
+    <armor type="Hand" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractHandInfantry</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Hero</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>NotDeleteable</flag>
+    <flag>KnockoutDeath</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="11" column="0">Abilities</command>
+  </unit>
+  <unit id="20560" name="zpSPMarieAntoinette">
+    <dbid>20560</dbid>
+    <displaynameid>302047</displaynameid>
+    <editornameid>302048</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>buildings\native_settlement\europe\villagers\prop_female.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <icon>resources\art\units\spc\stuart_black\stuart_black_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\spc\stuart_black\stuart_black_igc_icon.png</portraiticon>
+    <rollovertextid>302049</rollovertextid>
+    <shortrollovertextid>302049</shortrollovertextid>
+    <initialhitpoints>300.0000</initialhitpoints>
+    <maxhitpoints>300.0000</maxhitpoints>
+    <los>24.0000</los>
+    <autoattackrange>16.0000</autoattackrange>
+    <unitaitype>Passive</unitaitype>
+    <bounty>40.0000</bounty>
+    <allowedage>0</allowedage>
+    <armor type="Hand" value="0.2000">
+    </armor>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractHandInfantry</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Hero</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>NotDeleteable</flag>
+    <flag>KnockoutDeath</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="11" column="0">Abilities</command>
+  </unit>
+  <unit id="20561" name="zpSPCRoyalOrangerie">
+    <dbid>20561</dbid>
+    <displaynameid>302050</displaynameid>
+    <editornameid>302051</editornameid>
+    <obstructionradiusx>7.5000</obstructionradiusx>
+    <obstructionradiusz>7.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\stockades\orangerie.xml</animfile>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\spc\stockades\stockades_portrait.png</icon>
+    <portraiticon>resources\art\buildings\spc\stockades\stockades_portrait.png</portraiticon>
+    <rollovertextid>302052</rollovertextid>
+    <shortrollovertextid>302052</shortrollovertextid>
+    <initialhitpoints>1000.0000</initialhitpoints>
+    <maxhitpoints>1000.0000</maxhitpoints>
+    <los>14.0000</los>
+    <bounty>150.0000</bounty>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>2</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>InitialGarrisonOnly</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
 
 
 

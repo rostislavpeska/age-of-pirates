@@ -18337,8 +18337,9 @@
       <effect type="CommandAdd" proto="zpMilitaryCamp" page="6" column="2">
         <target type="ProtoUnit">Explorer</target>
       </effect>
-      <effect type="Data" amount="100.00" subtype="PopulationCapAddition" relativity="Assign">
-        <target type="ProtoUnit">deSPCCommandPost</target>
+      <effect type="Data" amount="80.00" subtype="PopulationCap" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
       <effect type="CommandRemove" tech="zpBourbonExpansion">
         <target type="ProtoUnit">TradingPost</target>
@@ -18916,6 +18917,26 @@
       <effect type="TechStatus" status="obtainable">DEGuardBourbon</effect>
       <effect type="TechStatus" status="obtainable">DENatBourbonReforms</effect>
       <effect type="TechStatus" status="obtainable">DENatBourbonRoyalTax</effect>
+    </effects>
+  </tech>
+  <tech name="zpNapoleonicEraNamesLegendary" type="Normal">
+    <dbid>40822</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpNapoleonicEraNames</techstatus>
+      <techstatus status="Active">ImpLegendaryNativesShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="SetName" proto="zpNatRoyalMusketeer" culture="none" newname="126580" newrollover="126581">
+      </effect>
+      <effect type="SetName" proto="zpNatRoyalDragoon" culture="none" newname="126582" newrollover="126583">
+      </effect>
+      <effect type="SetName" proto="deNatMercRoyalMusketeer" culture="none" newname="126580" newrollover="126581">
+      </effect>
+      <effect type="SetName" proto="deNatMercRoyalDragoon" culture="none" newname="126582" newrollover="126583">
+      </effect>
     </effects>
   </tech>
  

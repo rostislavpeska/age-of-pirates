@@ -6,6 +6,43 @@
 */
 //==============================================================================
 
+//==============================================================================
+// createAdvancedGaiaUnitQuery
+// Similar to ceateSimpleGaiaUnitQuery except you don't need to set player 
+// context and you can choose to sort the results
+//==============================================================================
+int createAdvancedGaiaUnitQuery(int unitTypeID = -1, int state = cUnitStateAlive, vector position = cInvalidVector,
+                              float radius = -1.0, bool sortAscending = false)
+{
+   static int unitQueryID = -1;
+
+   // If we don't have the query yet, create one.
+   if (unitQueryID < 0)
+   {
+      unitQueryID = kbUnitQueryCreate("miscSimpleUnitQuery");
+   }
+
+   // Define a query to get all matching units
+   if (unitQueryID != -1)
+   {
+      kbUnitQuerySetPlayerID(unitQueryID, 0);
+      kbUnitQuerySetUnitType(unitQueryID, unitTypeID);
+      kbUnitQuerySetState(unitQueryID, state);
+      kbUnitQuerySetPosition(unitQueryID, position);
+      kbUnitQuerySetMaximumDistance(unitQueryID, radius);
+      if (sortAscending == true)
+      {
+         kbUnitQuerySetAscendingSort(unitQueryID, true);
+      }
+   }
+   else
+   {
+      return (-1);
+   }
+
+   kbUnitQueryResetResults(unitQueryID);
+   return (unitQueryID);
+}
 
 //==============================================================================
 // getAgingUpAge
