@@ -279,7 +279,7 @@ minInterval 1
    if (getGaiaUnitCount(cUnitTypezpSPCEUHouseSansculottes) > 0)
    {
       xsEnableRule("zpSansculotteTechMonitor");
-      xsEnableRule("zpSansculotteConverterMonitor")
+      xsEnableRule("zpSansculotteConverterMonitor");
       xsEnableRule("nativeWagonMonitor");
       //xsEnableRule("zpMaintainSansculotteCoreurs");
    }

@@ -46621,9 +46621,9 @@
   <portraiticon>resources\art\units\artillery\organ_gun\organ_gun_portrait.png</portraiticon>
   <rollovertextid>400161</rollovertextid>
   <shortrollovertextid>400161</shortrollovertextid>
-  <initialhitpoints>150.0000</initialhitpoints>
-  <maxhitpoints>150.0000</maxhitpoints>
-  <los>28.0000</los>
+  <initialhitpoints>140.0000</initialhitpoints>
+  <maxhitpoints>140.0000</maxhitpoints>
+  <los>30.0000</los>
   <projectileprotounit>zpLightProjectile</projectileprotounit>
   <unitaitype>RangedCombative</unitaitype>
   <trainpoints>40.0000</trainpoints>
@@ -46671,10 +46671,10 @@
   <tactics>xmassorgangun.tactics</tactics>
   <protoaction>
     <name>CannonAttack</name>
-    <damage>33.000000</damage>
+    <damage>25.000000</damage>
     <damagetype>Siege</damagetype>
     <minrange>0.000000</minrange>
-    <maxrange>26.000000</maxrange>
+    <maxrange>28.000000</maxrange>
     <rof>4.000000</rof>
     <damagecap>60.000000</damagecap>
     <damagebonus type="AbstractArtillery">0.500000</damagebonus>
