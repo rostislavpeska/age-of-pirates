@@ -489,6 +489,7 @@ minInterval 4
       {
          xsEnableRule("rerunCityGateKiller");
       }
+      return;
    }
 
    if (gateKillerPlan < 0)
