@@ -2992,7 +2992,7 @@ rmSetStatusText("",0.70);
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
 	}
-	}*/
+	}
 
 	// Testing
 

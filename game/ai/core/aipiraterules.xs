@@ -279,6 +279,7 @@ minInterval 1
    if (getGaiaUnitCount(cUnitTypezpSPCEUHouseSansculottes) > 0)
    {
       xsEnableRule("zpSansculotteTechMonitor");
+      xsEnableRule("zpSansculotteConverterMonitor")
       xsEnableRule("nativeWagonMonitor");
       //xsEnableRule("zpMaintainSansculotteCoreurs");
    }
@@ -4426,11 +4427,29 @@ minInterval 60
 }
 
 //==============================================================================
+// ZP Sansculotte Convert Eco Unit Monitor
+//==============================================================================
+rule zpSansculotteConverterMonitor
+inactive
+minInterval 5
+{
+   // super simple. See if our villagers have been converted
+   if (kbUnitCount(cMyID, gEconUnit, cUnitStateAlive) <= 0)
+   {
+      if (kbUnitCount(cMyID, cUnitTypezpNatCoureurSansculotte, cUnitStateAlive) > 0)
+      {
+         gEconUnit = cUnitTypezpNatCoureurSansculotte;
+         xsDisableSelf();
+      }
+   }
+}
+
+//==============================================================================
 // ZP Sansculotte Tech Monitor
 //==============================================================================
 rule zpSansculotteTechMonitor
 inactive
-mininterval 60
+minInterval 60
 {
    if (kbUnitCount(cMyID, cUnitTypezpSocketSansculottes, cUnitStateAny) == 0)
       {
