@@ -1,0 +1,54 @@
+<animfile>
+  <attachment>attachment_cannon_ball_trail
+    <component>cannon_ball_trail
+      <assetreference type="ParticleSystem">
+        <file>effects\projectiles\cannon_ball_trail.particle</file>
+      </assetreference>
+    </component>
+    <anim>Idle
+      <component>cannon_ball_trail</component>
+    </anim>
+  </attachment>
+  <component>ball
+    <logic type="Variation">
+      <v1>
+        <assetreference type="GrannyModel">
+          <file>units\christmas_units\light_projectile\cannonball_small</file>
+        </assetreference>
+      </v1>
+      <v2>
+        <assetreference type="GrannyModel">
+          <file>units\christmas_units\light_projectile\cannonball_small</file>
+          <materialvariant index="1"></materialvariant>
+        </assetreference>
+      </v2>
+      <v3>
+        <assetreference type="GrannyModel">
+          <file>units\christmas_units\light_projectile\cannonball_small</file>
+          <materialvariant index="2"></materialvariant>
+        </assetreference>
+      </v3>
+      <v4>
+        <assetreference type="GrannyModel">
+          <file>units\christmas_units\light_projectile\cannonball_small</file>
+          <materialvariant index="3"></materialvariant>
+        </assetreference>
+      </v4>
+      <v5>
+        <assetreference type="GrannyModel">
+          <file>units\christmas_units\light_projectile\cannonball_small</file>
+          <materialvariant index="4"></materialvariant>
+        </assetreference>
+      </v5>
+    </logic>
+    <watersplash>
+      <texture>effects\projectiles\cannonball_splash</texture>
+      <width>3.5</width>
+      <height>3.5</height>
+    </watersplash>
+  </component>
+  <anim>Idle
+    <component>ball</component>
+    <attach a="attachment_cannon_ball_trail" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+  </anim>
+</animfile>
