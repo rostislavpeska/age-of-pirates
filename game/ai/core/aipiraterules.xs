@@ -4440,6 +4440,7 @@ minInterval 5
       if (kbUnitCount(cMyID, cUnitTypezpNatCoureurSansculotte, cUnitStateAlive) > 0)
       {
          gEconUnit = cUnitTypezpNatCoureurSansculotte;
+         aiPlanSetVariableInt(gSettlerMaintainPlan, cTrainPlanUnitType, 0, cUnitTypezpNatCoureurSansculotte);
          xsDisableSelf();
       }
    }

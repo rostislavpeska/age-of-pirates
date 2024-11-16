@@ -112,7 +112,7 @@
 			<shortrollovertextid>400178</shortrollovertextid>
 			<icon>resources\art\units\natives\christmass_content\cocoa_cafe_icon.png</icon>
 			<portraiticon>resources\art\units\natives\christmass_content\cocoa_cafe.png</portraiticon>
-			<AnimFile>units/christmas_units/cocoa_cafe/tavern.xml</AnimFile>
+			<AnimFile>units\christmas_units\cocoa_cafe\tavern.xml</AnimFile>
 		</unit>
 		<unit name="Saloon">
 			<displaynameid>400177</displaynameid>
@@ -120,7 +120,7 @@
 			<shortrollovertextid>400178</shortrollovertextid>
 			<icon>resources\art\units\natives\christmass_content\cocoa_cafe_icon.png</icon>
 			<portraiticon>resources\art\units\natives\christmass_content\cocoa_cafe.png</portraiticon>
-			<AnimFile>units/christmas_units/cocoa_cafe/tavern.xml</AnimFile>
+			<AnimFile>units\christmas_units\cocoa_cafe\tavern.xml</AnimFile>
 		</unit>
 	</ProtoMods>
 </Mods>

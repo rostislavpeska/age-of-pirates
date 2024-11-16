@@ -46921,7 +46921,7 @@
   <command page="10" column="0">Garrison</command>
   <command page="10" column="7">Delete</command>
   <command page="11" column="0">Abilities</command>
-  <tactics>pikeman.tactics</tactics>
+  <tactics>xmasspolearm.tactics</tactics>
   <protoaction>
     <name>BuildingAttack</name>
     <damage>30.000000</damage>

@@ -29,19 +29,10 @@
   </attachment>
   <attachment>halberd
     <component>halberd
-      <logic type="Tech">
-        <none>
-          <assetreference type="GrannyModel">
-            <file>units\christmas_units\xmass_polearm\christmas_polearm</file>
-          </assetreference>
-        </none>
-        <deguardrussianhalberdiers>
-          <assetreference type="GrannyModel">
-            <file>units\christmas_units\xmass_polearm\christmas_polearm</file>
-            <materialvariant index="1"></materialvariant>
-          </assetreference>
-        </deguardrussianhalberdiers>
-      </logic>
+      <assetreference type="GrannyModel">
+        <file>units\christmas_units\xmass_polearm\lance_long</file>
+        <materialvariant index="1"></materialvariant>
+      </assetreference>
     </component>
     <anim>Idle
       <component>halberd</component>
@@ -49,42 +40,19 @@
   </attachment>
   <attachment>halberd_alt
     <component>halberd
-      <logic type="Tech">
-        <none>
-          <assetreference type="GrannyModel">
-            <file>units\infantry\russian_halberdier\russian_spontoon_attack</file>
-          </assetreference>
-        </none>
-        <deguardrussianhalberdiers>
-          <assetreference type="GrannyModel">
-            <file>units\infantry\russian_halberdier\russian_spontoon_attack</file>
-            <materialvariant index="1"></materialvariant>
-          </assetreference>
-        </deguardrussianhalberdiers>
-      </logic>
+        <assetreference type="GrannyModel">
+          <file>units\christmas_units\xmass_polearm\lance_long</file>
+          <materialvariant index="1"></materialvariant>
+        </assetreference>
     </component>
     <anim>Idle
       <component>halberd</component>
     </anim>
   </attachment>
   <component>ModelComp
-    <logic type="Tech">
-      <none>
-        <assetreference type="GrannyModel">
-          <file>units\infantry\russian_halberdier\russian_halberdier_age2</file>
-        </assetreference>
-      </none>
-      <deveteranrussianhalberdiers>
-        <assetreference type="GrannyModel">
-          <file>units\infantry\russian_halberdier\russian_halberdier_age3</file>
-        </assetreference>
-      </deveteranrussianhalberdiers>
-      <deguardrussianhalberdiers>
-        <assetreference type="GrannyModel">
-          <file>units\infantry\russian_halberdier\russian_halberdier_age4</file>
-        </assetreference>
-      </deguardrussianhalberdiers>
-    </logic>
+      <assetreference type="GrannyModel">
+        <file>units\christmas_units\xmass_polearm\polearm_unit</file>
+      </assetreference>
     <decal>
       <effecttype>default</effecttype>
       <texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
