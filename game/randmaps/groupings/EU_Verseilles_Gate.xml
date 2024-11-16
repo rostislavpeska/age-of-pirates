@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>18</width>
+	<height>5</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="50" posx="-6.1199" posz="-0.9761" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropWingCshort</unit>
+		<unit variation="171" posx="6.9101" posz="-0.8209" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropWingCshort</unit>
+		<unit variation="79" posx="6.9910" posz="-0.4000" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="183" posx="-5.8577" posz="-0.7139" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="192" posx="-13.2675" posz="-1.7884" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropVilGuards</unit>
+		<unit variation="192" posx="-10.0839" posz="-1.5280" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropVilGuards</unit>
+		<unit variation="192" posx="10.0691" posz="-1.2312" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropVilGuards</unit>
+		<unit variation="192" posx="13.6483" posz="-1.0302" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropVilGuards</unit>
+		<unit variation="156" posx="-11.3242" posz="1.6673" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropWingC</unit>
+		<unit variation="237" posx="12.0220" posz="1.6286" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropWingC</unit>
+		<unit variation="11" posx="14.5345" posz="1.5518" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="82" posx="-14.0555" posz="1.8835" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="148" posx="0.3704" posz="2.3634" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">CWallGate</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

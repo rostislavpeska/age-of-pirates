@@ -39716,7 +39716,6 @@
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>ObscuresUnits</flag>
-    <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>Doppled</flag>
     <flag>SelectWithObstruction</flag>
@@ -39728,6 +39727,7 @@
     <flag>HasGatherPoint</flag>
     <flag>EnterHotkeyContext</flag>
     <flag>Tracked</flag>
+    <flag>ForceFullTechUpdate</flag>
     <flag>StartEnabled</flag>
     <command page="0" column="4">zpNatBourbonRoyalMarcUniversal</command>
     <command page="10" column="7">Delete</command>
@@ -42388,8 +42388,8 @@
     <turnrate>18.0000</turnrate>
     <animfile>units\spc\stuart_black\spc_stuart_black.xml</animfile>
     <impacttype>Flesh</impacttype>
-    <icon>resources\art\units\spc\stuart_black\stuart_black_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\spc\stuart_black\stuart_black_igc_icon.png</portraiticon>
+    <icon>resources\art\units\heroes\louisxvi.png</icon>
+    <portraiticon>resources\art\units\heroes\louisxvi.png</portraiticon>
     <rollovertextid>302046</rollovertextid>
     <shortrollovertextid>302046</shortrollovertextid>
     <initialhitpoints>300.0000</initialhitpoints>
@@ -42451,8 +42451,8 @@
     <turnrate>18.0000</turnrate>
     <animfile>buildings\native_settlement\europe\villagers\prop_female.xml</animfile>
     <impacttype>Flesh</impacttype>
-    <icon>resources\art\units\spc\stuart_black\stuart_black_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\spc\stuart_black\stuart_black_igc_icon.png</portraiticon>
+    <icon>resources\art\units\heroes\marie_antoinette.png</icon>
+    <portraiticon>resources\art\units\heroes\marie_antoinette.png</portraiticon>
     <rollovertextid>302049</rollovertextid>
     <shortrollovertextid>302049</shortrollovertextid>
     <initialhitpoints>300.0000</initialhitpoints>
@@ -42499,8 +42499,8 @@
     <animfile>buildings\spc\stockades\orangerie.xml</animfile>
     <impacttype>Stone</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\buildings\spc\stockades\stockades_portrait.png</icon>
-    <portraiticon>resources\art\buildings\spc\stockades\stockades_portrait.png</portraiticon>
+    <icon>resources\art\buildings\spc\orangerie.png</icon>
+    <portraiticon>resources\art\buildings\spc\orangerie.png</portraiticon>
     <rollovertextid>302052</rollovertextid>
     <shortrollovertextid>302052</shortrollovertextid>
     <initialhitpoints>1000.0000</initialhitpoints>

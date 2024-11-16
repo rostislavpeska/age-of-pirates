@@ -1,4 +1,29 @@
 <techtreemods>
+  <tech name="zpChateauRoyalShadow" type="Normal">
+    <dbid>40823</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpNatChateauRoyal</techstatus>
+      <typecount unit="zpBourbonSummerPalace" count="1" operator="gte" state="aliveState">
+      </typecount>
+    </prereqs>
+    <effects>
+      <effect civ="SPCBourbon" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player"></target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRoyalDragoon</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercBattleship</target>
+      </effect>
+    </effects>
+  </tech>
   <tech name="zpNatKorowaiStealth" type="Normal">
     <dbid>40617</dbid>
     <displaynameid>301654</displaynameid>
@@ -18044,18 +18069,6 @@
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpBourbonSummerPalaceWagon" relativity="Absolute">
         <target type="Player">
         </target>
-      </effect>
-      <effect civ="SPCBourbon" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
-        <target type="Player"></target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalDragoon</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deMercBattleship</target>
       </effect>
     </effects>
   </tech>
