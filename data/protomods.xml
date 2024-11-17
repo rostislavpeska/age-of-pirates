@@ -42681,8 +42681,8 @@
     <flag>InitialGarrisonOnly</flag>
     <flag>ColonyBuilding</flag>
     <flag>ColonyPlacementL</flag>
+    <flag>NotDeleteable</flag>
     <flag>Tracked</flag>
-    <command page="10" column="7">Delete</command>
   </unit>
   <unit id="20563" name="zpSPCVillageHousePropB">
     <dbid>20563</dbid>

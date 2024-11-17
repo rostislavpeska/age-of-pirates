@@ -18978,7 +18978,7 @@
     </effects>
   </tech>
   <tech name="zpNatRevCavalryCommander" type="Normal">
-    <dbid>40823</dbid>
+    <dbid>40824</dbid>
     <displaynameid>302057</displaynameid>
     <cost resourcetype="Gold">500.0000</cost>
     <researchpoints>1.0000</researchpoints>
