@@ -317,8 +317,8 @@
       <rof>3.000000</rof>
     </protoaction>
   </unit>
-  <unit id="20489" name="zpNatEclaireur">
-    <dbid>20489</dbid>
+  <unit id="20562" name="zpNatEclaireur">
+    <dbid>20562</dbid>
     <displaynameid>126826</displaynameid>
     <editornameid>302054</editornameid>
     <populationcount>0</populationcount>
@@ -36604,7 +36604,6 @@
     <flag>RMCanRotate</flag>
     <flag>Tracked</flag>
     <flag>StartOnNoUpdate</flag>
-    <flag>NoHPBar</flag>
   </unit>
   <unit id="20486" name="zpValuableSource">
     <dbid>20486</dbid>
@@ -42685,8 +42684,8 @@
     <flag>Tracked</flag>
     <command page="10" column="7">Delete</command>
   </unit>
-  <unit id="20488" name="zpSPCVillageHousePropB">
-    <dbid>20488</dbid>
+  <unit id="20563" name="zpSPCVillageHousePropB">
+    <dbid>20563</dbid>
     <displaynameid>22839</displaynameid>
     <editornameid>302053</editornameid>
     <populationcapaddition>10</populationcapaddition>
