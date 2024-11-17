@@ -738,6 +738,7 @@ void main(void)
 	int nativeID2 = -1;
     int nativeID3 = -1;
 	int grinchRand = rmRandInt(1,2);
+	int villageRand = rmRandInt(1,2);
 		
 	// Now Grinch grouping
 	nativeID0 = rmCreateGrouping("Nootka village 1", "grinchMtnGroup_0"+grinchRand); //+5
@@ -749,17 +750,16 @@ void main(void)
 //	rmAddGroupingConstraint(nativeID0, avoidNatives);
 	rmPlaceGroupingAtLoc(nativeID0, 0, 0.5, 0.7);
 
-	nativeID2 = rmCreateGrouping("Klamath village 1", "native klamath village "+1); //+1
+	// Large Xmass grouping
+	nativeID2 = rmCreateGrouping("Klamath village 1", "xmass_village_lrg_" + villageRand); //+1
     rmSetGroupingMinDistance(nativeID2, 0.00);
     rmSetGroupingMaxDistance(nativeID2, 0.00);
 //	rmAddGroupingConstraint(nativeID2, avoidImpassableLand);
 	rmAddGroupingToClass(nativeID2, rmClassID("natives"));
 //  rmAddGroupingToClass(nativeID2, rmClassID("importantItem"));
 //	rmAddGroupingConstraint(nativeID2, avoidNatives);
-	/*if (TeamNum <= 2)
-		rmPlaceGroupingAtLoc(nativeID2, 0, 0.58, 0.58);
-	else
-		rmPlaceGroupingAtLoc(nativeID2, 0, 0.40, 0.38);*/
+	rmPlaceGroupingAtLoc(nativeID2, 0, 0.5, 0.32);
+
 	
 	nativeID1 = rmCreateGrouping("Nootka village 2", "native nootka village "+1);
     rmSetGroupingMinDistance(nativeID1, 0.00);

@@ -19773,6 +19773,52 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpXmassGrenadierShadow" type="Normal">
+    <dbid>50052</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>OrPrereqs</flag>
+    <prereqs>
+      <techstatus status="Active">zpXmassMercenaries</techstatus>
+      <techstatus status="Active">zpNativeGrinchVillage</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="CopyTacticAnims" fromtactic="GrenadierMortar" totactic="Volley" relativity="Assign">
+        <target type="ProtoUnit">zpChristmasGrenadier</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="CopyTacticAnims" fromtactic="GrenadierMortar" totactic="Defend" relativity="Assign">
+        <target type="ProtoUnit">zpChristmasGrenadier</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="CopyTacticAnims" fromtactic="GrenadierMortar" totactic="Stagger" relativity="Assign">
+        <target type="ProtoUnit">zpChristmasGrenadier</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="CopyTacticAnims" fromtactic="GrenadierMortar" totactic="StandGround" relativity="Assign">
+        <target type="ProtoUnit">zpChristmasGrenadier</target>
+      </effect>
+      <effect type="Data" action="MortarAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpChristmasGrenadier</target>
+      </effect>
+      <effect type="Data" action="VolleyRangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpChristmasGrenadier</target>
+      </effect>
+      <effect type="Data" action="DefendRangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpChristmasGrenadier</target>
+      </effect>
+      <effect type="Data" action="StaggerRangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpChristmasGrenadier</target>
+      </effect>
+      <effect type="Data" action="MortarBuildingAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpChristmasGrenadier</target>
+      </effect>
+      <effect type="Data" action="BuildingAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpChristmasGrenadier</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="LOS" relativity="Absolute">
+        <target type="ProtoUnit">zpChristmasGrenadier</target>
+      </effect>
+    </effects>
+  </tech>
 
   
 
