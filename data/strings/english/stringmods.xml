@@ -1934,8 +1934,8 @@
       <string _locid="301933">Ships one Bastion Wagons and allows you to construct connect newly constructed Bastions with your Bastions in the city through an underground passage.</string>
       <string _locid="301934">Les barricades</string>
       <string _locid="301935">Allows Sansculottes and revolutionaries to construct barricades to prevent enemy units to pass through the streets.</string>
-      <string _locid="301936">Café Procope</string>
-      <string _locid="301937">Allows you to train native Revolutionaries and Sansculottes from all Bastions in the city.</string>
+      <string _locid="301936">Milice Révolutionnaire</string>
+      <string _locid="301937">Allows you to train Sansculotte native units from all Bastions in the city.</string>
       <string _locid="301938">ZP NAT Royal Musketeer Clone</string>
       <string _locid="301939">ZP NAT Royal Dragoon Clone</string>
       <string _locid="301940">ZP NAT Royal Horseman Clone</string>
@@ -1959,7 +1959,7 @@
       <string _locid="301958">Ships Captain D'Artagnan able to train Three Musketeers</string>
       <string _locid="301959">Allies of the revolution</string>
       <string _locid="301960">Galerie Lafayette</string>
-      <string _locid="301961">All convertable city resource buildings work faster by 40% while being owned either by you or any of your team members. &lt;color=0.0, 1.0, 0.0&gt;TEAM TECH&lt;/color&gt;</string>
+      <string _locid="301961">All convertable city resource buildings work faster by 50% while being owned either by you or any of your team members. &lt;color=0.0, 1.0, 0.0&gt;TEAM TECH&lt;/color&gt;</string>
       <string _locid="301962">Bastille</string>
       <string _locid="301963">ZP Bastille</string>
       <string _locid="301964">Royal Court</string>

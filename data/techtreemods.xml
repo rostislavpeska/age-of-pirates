@@ -17699,13 +17699,19 @@
       <effect type="CommandAdd" proto="zpNatRevolutionary" page="0" column="1">
         <target type="ProtoUnit">zpParisCitadel</target>
       </effect>
-      <effect type="CommandAdd" proto="zpNatCoureurSansculotte" page="0" column="2">
+      <effect type="CommandAdd" proto="zpNatEclaireur" page="0" column="2">
+        <target type="ProtoUnit">zpParisCitadel</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatCoureurSansculotte" page="0" column="3">
         <target type="ProtoUnit">zpParisCitadel</target>
       </effect>
       <effect type="CommandAdd" proto="zpNatRevolutionary" page="0" column="1">
         <target type="ProtoUnit">zpParisCitadelPassage</target>
       </effect>
-      <effect type="CommandAdd" proto="zpNatCoureurSansculotte" page="0" column="2">
+      <effect type="CommandAdd" proto="zpNatEclaireur" page="0" column="2">
+        <target type="ProtoUnit">zpParisCitadelPassage</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatCoureurSansculotte" page="0" column="3">
         <target type="ProtoUnit">zpParisCitadelPassage</target>
       </effect>
     </effects>
@@ -18135,8 +18141,9 @@
   <tech name="zpGalerieLafayette" type="Normal">
     <dbid>40794</dbid>
     <displaynameid>301960</displaynameid>
-    <cost resourcetype="Food">400.0000</cost>
+    <cost resourcetype="Food">300.0000</cost>
     <cost resourcetype="Gold">300.0000</cost>
+    <cost resourcetype="Wood">300.0000</cost>
     <researchpoints>20.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\galeries_lafayette.png</icon>
@@ -18155,58 +18162,58 @@
     <dbid>40795</dbid>
     <flag>Shadow</flag>
     <effects>
-      <effect type="Data" action="Autogather" amount="1.40" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+      <effect type="Data" action="Autogather" amount="1.50" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCNotreDame</target>
       </effect>
-      <effect type="Data" action="AutoGatherCoinTeam" amount="1.40" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.50" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactory</target>
       </effect>
-      <effect type="Data" action="AutoGatherFoodTeam" amount="1.40" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.50" subtype="WorkRate" unittype="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactory</target>
       </effect>
-      <effect type="Data" action="AutoGatherWoodTeam" amount="1.40" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.50" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactory</target>
       </effect>
-      <effect type="Data" action="AutoGatherWoodTeam" amount="1.40" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.50" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCityMarket</target>
       </effect>
-      <effect type="Data" action="AutoGatherCoinTeam" amount="1.40" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.50" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCityMarket</target>
       </effect>
-      <effect type="Data" action="AutoGatherFoodTeam" amount="1.40" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.50" subtype="WorkRate" unittype="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCityMarket</target>
       </effect>
-      <effect type="Data" action="AutoGatherXPTeam" amount="1.40" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherXPTeam" amount="1.50" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCityMarket</target>
       </effect>
-      <effect type="Data" action="AutoGather" amount="1.40" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+      <effect type="Data" action="AutoGather" amount="1.50" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCNationalBank</target>
       </effect>
-      <effect type="Data" action="AutoGather" amount="1.40" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+      <effect type="Data" action="AutoGather" amount="1.50" subtype="WorkRate" unittype="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCTownMill</target>
       </effect>
-      <effect type="Data" action="AutoGather" amount="1.40" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+      <effect type="Data" action="AutoGather" amount="1.50" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCGoldSmelter</target>
       </effect>
-      <effect type="Data" action="AutoGather" amount="1.40" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+      <effect type="Data" action="AutoGather" amount="1.50" subtype="WorkRate" unittype="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCDestilery</target>
       </effect>
-      <effect type="Data" action="AutoGather" amount="1.40" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+      <effect type="Data" action="AutoGather" amount="1.50" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCForester</target>
       </effect>
-      <effect type="Data" action="AutoGather" amount="1.40" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+      <effect type="Data" action="AutoGather" amount="1.50" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCDemolisher</target>
       </effect>
-      <effect type="Data" action="AutoGatherCoin" amount="1.40" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherCoin" amount="1.50" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCMenagerie</target>
       </effect>
-      <effect type="Data" action="AutoGatherFood" amount="1.40" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherFood" amount="1.50" subtype="WorkRate" unittype="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCMenagerie</target>
       </effect>
-      <effect type="Data" action="AutoGatherWood" amount="1.40" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherWood" amount="1.50" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCMenagerie</target>
       </effect>
-      <effect type="Data" action="AutoGatherXP" amount="1.40" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherXP" amount="1.50" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCMenagerie</target>
       </effect>
     </effects>
