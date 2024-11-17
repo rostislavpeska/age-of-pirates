@@ -16935,10 +16935,10 @@
       <effect type="CommandRemove" tech="zpSansculotteRevolution">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpGalerieLafayette" page="2" column="5">
+      <effect type="CommandAdd" tech="zpGalerieLafayette" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatRevCavalryCommander" page="2" column="6">
+      <effect type="CommandAdd" tech="zpNatRevCavalryCommander" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="Data" amount="8.00" subtype="BuildLimit" relativity="Absolute">
@@ -18144,6 +18144,9 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>TeamTech</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpGalerieLafayetteShadow</effect>
     </effects>
