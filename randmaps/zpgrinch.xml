@@ -4,4 +4,17 @@
     <loadss>ui\random_map\winter_wonderland\winter_wonderlandii_01</loadss>
     <loadss>ui\random_map\winter_wonderland\winter_wonderlandii_02</loadss>
     <loadss>ui\random_map\winter_wonderland\winter_wonderlandii_03</loadss>
+    <enforcedSettings>
+        <setting type="FFA" state="forbidden" />
+        <setting type="RecordGame" state="forbidden" />
+        <setting type="TwoTeams" state="enforced" />
+        <setting type="OneVsAll" state="forbidden" />
+        <setting type="AltTeamNames" state="enforced" />
+    </enforcedSettings>
+    <recommendedSettings>
+        <civilization>French</civilization>
+        <civilization>Spanish</civilization>
+        <civilization>British</civilization>
+        <civilization>DEItalians</civilization>
+    </recommendedSettings>
 </mapinfo>

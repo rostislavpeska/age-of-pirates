@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>22</width>
+	<height>35</height>
+	<ignoreplacementrules>0</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="238" posx="-15.7365" posz="-30.0270" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushRockiesSnow</unit>
+		<unit variation="76" posx="3.6095" posz="-29.1351" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpSPCEUHouseProp</unit>
+		<unit variation="84" posx="-8.8237" posz="-27.6446" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpSPCEUHouseProp</unit>
+		<unit variation="71" posx="7.2689" posz="-26.6605" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpSPCEUHouseProp</unit>
+		<unit variation="173" posx="-13.8085" posz="-24.0468" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpSPCEUHouseProp</unit>
+		<unit variation="229" posx="9.8667" posz="-21.9834" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpSPCEUHouseProp</unit>
+		<unit variation="140" posx="4.4589" posz="-20.5980" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushRockiesSnow</unit>
+		<unit variation="117" posx="-16.1825" posz="-19.2638" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpSPCEUHouseProp</unit>
+		<unit variation="240" posx="10.7550" posz="-16.9171" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCEUHouseProp</unit>
+		<unit variation="209" posx="1.3168" posz="-15.3164" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>
+		<unit variation="113" posx="-17.1066" posz="-13.6120" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpSPCEUHouseProp</unit>
+		<unit variation="247" posx="-10.8279" posz="-9.1497" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCSocketXmassVillage</unit>
+		<unit variation="167" posx="9.8348" posz="-11.6598" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCEUHouseProp</unit>
+		<unit variation="213" posx="1.8866" posz="-10.8441" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropChristmassTree</unit>
+		<unit variation="236" posx="-18.3700" posz="-8.0104" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCEUHouseProp</unit>
+		<unit variation="254" posx="9.6612" posz="-7.4105" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushRockiesSnow</unit>
+		<unit variation="113" posx="-0.1161" posz="-6.7755" orientx="0.7071" orienty="0.0000" orientz="0.7071">PropsPoles</unit>
+		<unit variation="157" posx="11.2559" posz="-1.9082" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCMeetingHouse</unit>
+		<unit variation="121" posx="-0.1804" posz="1.0705" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsPoles</unit>
+		<unit variation="71" posx="-7.6670" posz="1.4511" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">PropsPoles</unit>
+		<unit variation="253" posx="7.4189" posz="1.5052" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushRockiesSnow</unit>
+		<unit variation="220" posx="-19.5732" posz="3.1576" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCEUHouseProp</unit>
+		<unit variation="229" posx="-11.9651" posz="4.0730" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropChristmassTree</unit>
+		<unit variation="64" posx="1.1373" posz="3.6399" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropChristmassTree</unit>
+		<unit variation="104" posx="8.9708" posz="6.1535" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCEUHouseProp</unit>
+		<unit variation="119" posx="-18.8109" posz="8.5440" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpSPCEUHouseProp</unit>
+		<unit variation="67" posx="8.8027" posz="11.7955" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCEUHouseProp</unit>
+		<unit variation="253" posx="-17.9675" posz="14.4405" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpSPCEUHouseProp</unit>
+		<unit variation="56" posx="5.2342" posz="15.4539" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushRockiesSnow</unit>
+		<unit variation="45" posx="0.4891" posz="15.8789" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>
+		<unit variation="185" posx="8.6769" posz="16.8521" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCEUHouseProp</unit>
+		<unit variation="101" posx="-8.3017" posz="16.4659" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>
+		<unit variation="62" posx="-12.2061" posz="18.2977" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushRockiesSnow</unit>
+		<unit variation="153" posx="-15.7260" posz="19.7755" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpSPCEUHouseProp</unit>
+		<unit variation="186" posx="7.1053" posz="22.2677" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpSPCEUHouseProp</unit>
+		<unit variation="173" posx="-10.3977" posz="23.9232" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCEUHouseProp</unit>
+		<unit variation="79" posx="2.1204" posz="24.6264" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCEUHouseProp</unit>
+	</units>
+	<tiles>
+		<tilegroup type="Block" subtype="city\ground1_city_street_ground">
+			<block startx="-3" startz="-13" endx="-3" endz="-12"></block>
+			<block startx="-2" startz="-14" endx="-2" endz="-12"></block>
+			<block startx="-1" startz="-14" endx="-1" endz="-12"></block>
+			<block startx="0" startz="-13" endx="0" endz="-12"></block>
+			<block startx="-6" startz="-8" endx="-6" endz="-7"></block>
+			<block startx="-5" startz="-9" endx="-5" endz="-6"></block>
+			<block startx="-4" startz="-11" endx="-4" endz="-4"></block>
+			<block startx="-3" startz="-11" endx="-3" endz="-4"></block>
+			<block startx="-2" startz="-11" endx="-2" endz="-4"></block>
+			<block startx="-1" startz="-11" endx="-1" endz="-4"></block>
+			<block startx="0" startz="-11" endx="0" endz="-6"></block>
+			<block startx="-11" startz="-3" endx="-11" endz="0"></block>
+			<block startx="-10" startz="-3" endx="-10" endz="1"></block>
+			<block startx="-9" startz="-3" endx="-9" endz="1"></block>
+			<block startx="-8" startz="-3" endx="-8" endz="1"></block>
+			<block startx="-7" startz="-3" endx="-7" endz="0"></block>
+			<block startx="-3" startz="13" endx="-3" endz="13"></block>
+			<block startx="-2" startz="13" endx="-2" endz="13"></block>
+			<block startx="-6" startz="-3" endx="-6" endz="0"></block>
+			<block startx="-5" startz="-3" endx="-5" endz="0"></block>
+			<block startx="-4" startz="-3" endx="-4" endz="4"></block>
+			<block startx="-3" startz="-3" endx="-3" endz="4"></block>
+			<block startx="-2" startz="-3" endx="-2" endz="4"></block>
+			<block startx="-1" startz="-3" endx="-1" endz="4"></block>
+			<block startx="0" startz="-3" endx="0" endz="0"></block>
+			<block startx="1" startz="-3" endx="1" endz="0"></block>
+			<block startx="-4" startz="5" endx="-4" endz="12"></block>
+			<block startx="-3" startz="5" endx="-3" endz="12"></block>
+			<block startx="-2" startz="5" endx="-2" endz="12"></block>
+			<block startx="-1" startz="5" endx="-1" endz="12"></block>
+			<block startx="2" startz="-3" endx="2" endz="0"></block>
+			<block startx="3" startz="-2" endx="3" endz="-1"></block>
+		</tilegroup>
+	</tiles>
+</grouping>
