@@ -4935,6 +4935,8 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatRoyalDragoon" culture="none" newname="122008">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatEclaireur" culture="none" newname="302056">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -16703,7 +16705,7 @@
       <effect type="TechStatus" status="obtainable">zpParisUnderground</effect>
       <effect type="TechStatus" status="obtainable">zpSansculotteBrricades</effect>
       <effect type="TechStatus" status="obtainable">zpSansculotteBastions</effect>
-      <effect type="TechStatus" status="obtainable">zpLafayetteEmbassy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatRevCavalryCommander</effect>
       <effect type="TechStatus" status="obtainable">zpGalerieLafayette</effect>
       <effect type="TechStatus" status="obtainable">zpSansculotteSpiritRevolution</effect>
       <effect type="TechStatus" status="obtainable">zpSansculotteLoyalDistricts</effect>
@@ -16788,6 +16790,16 @@
       </effect>
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatMercRevolutionary</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatEclaireur</target>
+      </effect>
+      <effect type="SetName" proto="zpNatEclaireur" culture="none" newname="302055">
+      </effect>
+      <effect type="SetName" proto="zpNatEclaireur" culture="none" newname="302056" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatEclaireur</target>
       </effect>
     </effects>
   </tech>
@@ -16926,7 +16938,7 @@
       <effect type="CommandAdd" tech="zpGalerieLafayette" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpLafayetteEmbassy" page="2" column="6">
+      <effect type="CommandAdd" tech="zpNatRevCavalryCommander" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="Data" amount="8.00" subtype="BuildLimit" relativity="Absolute">
@@ -18547,6 +18559,7 @@
         </target>
       </effect>
       <effect type="TechStatus" status="active">DEHCAncienRegime</effect>
+      <effect type="TechStatus" status="unobtainable">DERoyalMusketeerPistolCharge</effect>
     </effects>
   </tech>
   <tech name="DERevolutionFranceNE">
@@ -18949,6 +18962,25 @@
       <effect type="SetName" proto="deNatMercRoyalMusketeer" culture="none" newname="126580" newrollover="126581">
       </effect>
       <effect type="SetName" proto="deNatMercRoyalDragoon" culture="none" newname="126582" newrollover="126583">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatRevCavalryCommander" type="Normal">
+    <dbid>40823</dbid>
+    <displaynameid>302057</displaynameid>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\lafayette_commander.png</icon>
+    <rollovertextid>302058</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatEclaireur</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatEclaireur" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
   </tech>

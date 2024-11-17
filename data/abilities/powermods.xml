@@ -347,6 +347,12 @@
     <icon>resources\images\icons\abilities\musketeer_unity.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
+  <power name="zpPassiveAbilityMortar" type="GeneralEffect">
+    <displaynameid>104668</displaynameid>
+    <rolloverid>104669</rolloverid>
+    <icon>resources\images\icons\abilities\passive_battle_bluster.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
 
 
 

@@ -317,6 +317,138 @@
       <rof>3.000000</rof>
     </protoaction>
   </unit>
+  <unit id="20489" name="zpNatEclaireur">
+    <dbid>20489</dbid>
+    <displaynameid>126826</displaynameid>
+    <editornameid>302054</editornameid>
+    <populationcount>0</populationcount>
+    <subciv>zpSansculottes</subciv>
+    <obstructionradiusx>0.7900</obstructionradiusx>
+    <obstructionradiusz>0.7900</obstructionradiusz>
+    <formationcategory>Mobile</formationcategory>
+    <maxvelocity>7.0000</maxvelocity>
+    <maxrunvelocity>9.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\revolution\polish_lancer\polish_lancer_horse.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>cav</physicsinfo>
+    <icon>resources\art\units\revolution\revolutionary_scout_icon.png</icon>
+    <portraiticon>resources\art\units\revolution\revolutionary_scout_portrait.png</portraiticon>
+    <rollovertextid>126827</rollovertextid>
+    <shortrollovertextid>25650</shortrollovertextid>
+    <initialhitpoints>190.0000</initialhitpoints>
+    <maxhitpoints>190.0000</maxhitpoints>
+    <los>24.0000</los>
+    <unitaitype>HandCombative</unitaitype>
+    <trainpoints>20.0000</trainpoints>
+    <bounty>10.0000</bounty>
+    <buildbounty>10.0000</buildbounty>
+    <buildlimit>10</buildlimit>
+    <cost resourcetype="Wood">100.0000</cost>
+    <allowedage>2</allowedage>
+    <armor type="Ranged" value="0.1000">
+    </armor>
+    <veterancybonus>
+      <rank id="0">
+        <veterancymodify modifytype="Speed">1.0725</veterancymodify>
+      </rank>
+      <rank id="1">
+        <veterancymodify modifytype="Speed">1.145</veterancymodify>
+      </rank>
+      <rank id="2">
+        <veterancymodify modifytype="Speed">1.2200</veterancymodify>
+      </rank>
+    </veterancybonus>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractCavalry</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractLancer</unittype>
+    <unittype>AbstractHeavyCavalry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractHandCavalry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>AbstractFindScout</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <flag>ExperienceUnit</flag>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>handCavalry.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>10.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractArtillery">3.000000</damagebonus>
+      <damagebonus type="AbstractInfantry">2.000000</damagebonus>
+      <damagebonus type="Mercenary">2.500000</damagebonus>
+      <damagebonus type="AbstractVillager">0.250000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>GuardianAttack</name>
+      <damage>10.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>10.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractArtillery">3.000000</damagebonus>
+      <damagebonus type="AbstractInfantry">2.000000</damagebonus>
+      <damagebonus type="Mercenary">2.500000</damagebonus>
+      <damagebonus type="AbstractVillager">0.250000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>TrampleHandAttack</name>
+      <damage>7.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>2.000000</rof>
+      <damagecap>39.000000</damagecap>
+      <damagebonus type="AbstractArtillery">3.000000</damagebonus>
+      <damagebonus type="AbstractInfantry">2.000000</damagebonus>
+      <damagebonus type="Mercenary">2.500000</damagebonus>
+      <damagebonus type="AbstractVillager">0.250000</damagebonus>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+    </protoaction>
+  </unit>
   <unit id="202" name="IGCFishingBoat">
     <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
   </unit>
@@ -793,8 +925,8 @@
     <train row="0" page="0" column="1">zpNatKorowaiArcher</train>
 
     <!-- SANSCULOTTES -->
-    <train row="0" page="0" column="2">zpNatCoureurSansculotte</train>
     <train row="0" page="0" column="1">zpNatRevolutionary</train>
+    <train row="0" page="0" column="3">zpNatCoureurSansculotte</train>
 
     <!-- BOURBON -->
     <train row="0" page="0" column="1">zpNatRoyalMusketeer</train>
@@ -36580,7 +36712,6 @@
     <buildingworkrate>0.5000</buildingworkrate>
     <unittype>BuildingClass</unittype>
     <unittype>Building</unittype>
-    <unittype>AbstractCityManison</unittype>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -36969,7 +37100,7 @@
   </unit>
   <unit id="20497" name="zpBerryBuildingBuilt">
     <dbid>20497</dbid>
-    <displaynameid>65997</displaynameid>
+    <displaynameid>302059</displaynameid>
     <editornameid>301860</editornameid>
     <obstructionradiusx>3.0000</obstructionradiusx>
     <obstructionradiusz>3.0000</obstructionradiusz>
@@ -36978,12 +37109,12 @@
     <deadreplacement>zpBerryBuildingSocket</deadreplacement>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\asian_civs\orchard\orchard.xml</animfile>
+    <animfile>terrain\plants\grape_vine\grape_vine_orchard.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\buildings\asian_civs\orchard\orchard_icon_64.png</icon>
-    <portraiticon>resources\art\buildings\asian_civs\orchard\orchard_icon_portrait.png</portraiticon>
-    <rollovertextid>65996</rollovertextid>
-    <shortrollovertextid>65995</shortrollovertextid>
+    <icon>resources\art\buildings\spc\vineyard.png</icon>
+    <portraiticon>resources\art\buildings\spc\vineyard.png</portraiticon>
+    <rollovertextid>302060</rollovertextid>
+    <shortrollovertextid>302060</shortrollovertextid>
     <los>12.0000</los>
     <buildpoints>5.0000</buildpoints>
     <cost resourcetype="Wood">200.0000</cost>
@@ -37040,8 +37171,8 @@
     <movementtype>land</movementtype>
     <animfile>buildings\spc\city_tower\city_tower_socket.xml</animfile>
     <placementfile>orchard.xml</placementfile>
-    <icon>resources\art\buildings\asian_civs\orchard\orchard_icon_64.png</icon>
-    <portraiticon>resources\art\buildings\asian_civs\orchard\orchard_icon_portrait.png</portraiticon>
+    <icon>resources\art\buildings\spc\vineyard.png</icon>
+    <portraiticon>resources\art\buildings\spc\vineyard.png</portraiticon>
     <rollovertextid>301862</rollovertextid>
     <shortrollovertextid>301862</shortrollovertextid>
     <los>5.0000</los>
@@ -39660,6 +39791,7 @@
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>buildings\native_settlement\palaces\bourbon_summer_palace.xml</animfile>
+    <civflagoverride>objects\flags\natives\bourbon_french</civflagoverride>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge_city.xml</placementfile>
@@ -42286,13 +42418,13 @@
     <obstructionradiusz>0.4900</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>terrain\tree_berrybush.xml</animfile>
+    <animfile>terrain\plants\grape_vine\grape_vine.xml</animfile>
     <impacttype>Wood</impacttype>
-    <icon>resources\art\terrain\trees\berrybush_icon_64.png</icon>
-    <portraiticon>resources\art\terrain\trees\berrybush_portriat.png</portraiticon>
+    <icon>resources\art\buildings\spc\vineyard.png</icon>
+    <portraiticon>resources\art\buildings\spc\vineyard.png</portraiticon>
     <rollovertextid>302037</rollovertextid>
     <shortrollovertextid>302037</shortrollovertextid>
-    <initialresource resourcetype="Food">1000.0000</initialresource>
+    <initialresource resourcetype="Food">500.0000</initialresource>
     <resourcesubtype>forage</resourcesubtype>
     <gathererlimit>8</gathererlimit>
     <buildingworkrate>1.0000</buildingworkrate>
@@ -42547,6 +42679,61 @@
     <flag>ColonyPlacementL</flag>
     <flag>Tracked</flag>
     <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20488" name="zpSPCVillageHousePropB">
+    <dbid>20488</dbid>
+    <displaynameid>22839</displaynameid>
+    <editornameid>302053</editornameid>
+    <populationcapaddition>10</populationcapaddition>
+    <obstructionradiusx>2.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\hb_villages\house.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>villagebuildingsmall.xml</placementfile>
+    <icon>resources\art\buildings\house\house_icon.png</icon>
+    <portraiticon>resources\art\buildings\house\house_portrait.png</portraiticon>
+    <civflagoverride>objects\flags\italian</civflagoverride>
+    <rollovertextid>41971</rollovertextid>
+    <shortrollovertextid>41970</shortrollovertextid>
+    <initialhitpoints>1200.0000</initialhitpoints>
+    <maxhitpoints>1200.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>10.0000</buildpoints>
+    <buildlimit>20</buildlimit>
+    <bounty>40.0000</bounty>
+    <buildbounty>20.0000</buildbounty>
+    <cost resourcetype="Wood">100.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <buildingworkrate>0.5000</buildingworkrate>
+    <unittype>BuildingClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>Tracked</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>Invulnerable</flag>
+    <flag>StartOnNoUpdate</flag>
   </unit>
 
 

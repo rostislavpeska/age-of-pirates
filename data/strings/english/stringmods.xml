@@ -1858,11 +1858,11 @@
       <string _locid="301857">ZP Underbrush Construction Mine</string>
       <string _locid="301858">Domesticated Pig</string>
       <string _locid="301859">ZP Domesticated Pig</string>
-      <string _locid="301860">ZP Cherry Orchad</string>
+      <string _locid="301860">ZP Vineyard</string>
       <string _locid="301861">ZP Cherry Orchad Socket</string>
-      <string _locid="301862">Can build Cherry Orchad</string>
-      <string _locid="301863">Build Cherry Orchad</string>
-      <string _locid="301864">Cherry Orchad Foundetion</string>
+      <string _locid="301862">Can build Vineyard</string>
+      <string _locid="301863">Build Vineyard</string>
+      <string _locid="301864">Vineyard Foundetion</string>
       <string _locid="301865">ZP PROP Fort Wall Large</string>
       <string _locid="301866">ZP PROP Fort Corner</string>
       <string _locid="301867">City Gate</string>
@@ -1918,7 +1918,7 @@
       <string _locid="301917">La Revolution!</string>
       <string _locid="301918">Revolts to one of the revolutionary factions. \n • Initiates a special type of revolution \n • Transforms all your settlers into Sansculottes \n • Allows Sansculotte training from your Town Center \n • Changes you civilization to one of the revolutionary factions without loosing access to your original homecity and the option to advance to higher age (including Imperial Age)</string>
       <string _locid="301919">Gilbert du Motier (Republic of Paris)</string>
-      <string _locid="301920">Nobleman and moderate republican, trains more revolutionaries \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGalerie Lafayette \nAllies of the revolution</string>
+      <string _locid="301920">Nobleman and moderate republican, trains more revolutionaries \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGalerie Lafayette \nCavalry Commander</string>
       <string _locid="301921">Maximilien Robespierre (French Republic)</string>
       <string _locid="301922">Radical revolutionary leader, population improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nStorm the Barricades \nLoyal Districts</string>
       <string _locid="301923">Napoleon Bonaparte (French Empire)</string>
@@ -2020,7 +2020,7 @@
       <string _locid="302019">Paris 1789 Historical Map: \nBoth teams start outside of the city and have the same goal: Take Bastille, Royal Court and City Hall buildings and hold them for the rest of the game. Both sides can use different native techs. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Revolutionaries which can use special Sansculotte techs \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Royalists which can use special Bourbon techs \n\nSettlements: Sansculotte, Bourbon, Jesuit, Maltese</string>
       <string _locid="302020">Achieve a Team Victory by capturing and holding all three victory buildings: Royal Court, City Hall and Bastille. Take your team natives trading post too get more advanced native improvements. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt;Sansculotte natives \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Bourbon natives</string>
       <string _locid="302021">Battle for control of the city.</string>
-      <string _locid="302022">Achieve a Team Victory by capturing and holding all three victory buildings (marked with a team color flag): Royal Court, Bastille and City Hall</string>
+      <string _locid="302022">Achieve &lt;color=1.0, 1.0, 0.0&gt;ATTACKERS&lt;/color&gt; Team Victory by capturing and holding all three victory buildings (marked with a team color flag): Royal Court, Bastille and City Hall</string>
       <string _locid="302023">Once all nearby enemies are defeated, a Building converts to you when you're close enough to it. Controlling and holding all necessary buildings until the end of the Team Victory timer will result a victory.</string>
       <string _locid="302024">Royal Court</string>
       <string _locid="302025">City Hall</string>
@@ -2051,6 +2051,15 @@
       <string _locid="302050">Royal Orangerie</string>
       <string _locid="302051">ZP SOC Royal Orangerie</string>
       <string _locid="302052">Protects nobility from being captured</string>
+      <string _locid="302053">ZP PROP Village House Block</string>
+      <string _locid="302054">ZP NAT Eclaireur</string>
+      <string _locid="302055">Eclaireur of the Guard</string>
+      <string _locid="302056">Legendary Eclaireur</string>
+      <string _locid="302057">Cavalry Commander</string>
+      <string _locid="302058">Allows you to train Eclarieurs from your Trading Post</string>
+      <string _locid="302059">Vineyard</string>
+      <string _locid="302060">Food resource</string>
+      <string _locid="302061">Achieve &lt;color=1.0, 1.0, 0.0&gt;DEFENDERS&lt;/color&gt; Team Victory by capturing and holding all three victory buildings (marked with a team color flag): Royal Court, Bastille and City Hall</string>
 
 
       <!-- ======================================== -->
