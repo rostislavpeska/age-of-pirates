@@ -140,7 +140,7 @@
 			<block startx="6" startz="-7" endx="6" endz="-7"></block>
 			<block startx="7" startz="-7" endx="7" endz="0"></block>
 		</tilegroup>
-		<tilegroup type="PassableLand" subtype="texas\walking_path_tex">
+		<tilegroup type="PassableLand" subtype="Texas\Path_Blend">
 			<block startx="-6" startz="-6" endx="-6" endz="0"></block>
 			<block startx="-5" startz="-6" endx="-5" endz="-6"></block>
 			<block startx="-5" startz="-1" endx="-5" endz="0"></block>

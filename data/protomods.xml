@@ -36603,7 +36603,7 @@
     <flag>NoIdleActions</flag>
     <flag>RMCanRotate</flag>
     <flag>Tracked</flag>
-    <flag>StartOnNoUpdate</flag>
+    <flag>StartsAtFullEfficiency</flag>
   </unit>
   <unit id="20486" name="zpValuableSource">
     <dbid>20486</dbid>
@@ -42641,8 +42641,9 @@
     <portraiticon>resources\art\buildings\spc\orangerie.png</portraiticon>
     <rollovertextid>302052</rollovertextid>
     <shortrollovertextid>302052</shortrollovertextid>
-    <initialhitpoints>1000.0000</initialhitpoints>
-    <maxhitpoints>1000.0000</maxhitpoints>
+    <initialhitpoints>12000.0000</initialhitpoints>
+    <maxhitpoints>12000.0000</maxhitpoints>
+    <unitregen damagetimeout="6.0">0.2500</unitregen>
     <los>14.0000</los>
     <bounty>150.0000</bounty>
     <buildingworkrate>1.0000</buildingworkrate>
@@ -42683,6 +42684,7 @@
     <flag>ColonyPlacementL</flag>
     <flag>NotDeleteable</flag>
     <flag>Tracked</flag>
+    <flag>NotRepairable</flag>
   </unit>
   <unit id="20563" name="zpSPCVillageHousePropB">
     <dbid>20563</dbid>

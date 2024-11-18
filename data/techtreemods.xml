@@ -18996,6 +18996,54 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpVerseillesDefenderSetup" type="Normal">
+    <dbid>40825</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMilitaryCamp</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpMilitaryCamp" page="6" column="2">
+        <target type="ProtoUnit">Explorer</target>
+      </effect>
+      <effect type="Data" amount="80.00" subtype="PopulationCap" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="CommandRemove" tech="zpBourbonExpansion">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpBourbonExpansion">
+        <target type="ProtoUnit">zpBourbonSummerPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpBourbonExpansionSPC" page="2" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
+      </effect>
+      <effect type="Data" action="Build" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
+      <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
+      <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="Data" amount="0.25" subtype="UnitRegenRate" relativity="Assign">
+        <target type="ProtoUnit">deSPCHeadquartersVienna</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="ProtoUnitFlag" flagid="233" relativity="Assign">
+        <target type="ProtoUnit">deSPCHeadquartersVienna</target>
+      </effect>
+    </effects>
+  </tech>
  
 
 
