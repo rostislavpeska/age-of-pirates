@@ -2060,6 +2060,9 @@
       <string _locid="302059">Vineyard</string>
       <string _locid="302060">Food resource</string>
       <string _locid="302061">Achieve &lt;color=1.0, 1.0, 0.0&gt;DEFENDERS&lt;/color&gt; Team Victory by capturing and holding all three victory buildings (marked with a team color flag): Royal Court, Bastille and City Hall</string>
+      <string _locid="302062">Food resource</string>
+      <string _locid="302063">Imperial Cathedral</string>
+      <string _locid="302064">ZP Imperial Cathedral</string>
 
 
       <!-- ======================================== -->

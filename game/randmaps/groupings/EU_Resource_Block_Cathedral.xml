@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>15</width>
+	<height>15</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="16" posx="-9.6738" posz="-13.5080" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
+		<unit variation="41" posx="-12.6460" posz="-13.5764" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsColony</unit>
+		<unit variation="85" posx="-3.3624" posz="-13.5603" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPottedPlants</unit>
+		<unit variation="16" posx="-1.1377" posz="-13.6822" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsPoles</unit>
+		<unit variation="244" posx="6.2374" posz="-13.4957" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPottedPlants</unit>
+		<unit variation="255" posx="0.9126" posz="-13.4368" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPottedPlants</unit>
+		<unit variation="41" posx="14.0635" posz="-13.7326" orientx="-0.9239" orienty="0.0000" orientz="0.3827">PropsColony</unit>
+		<unit variation="85" posx="10.8131" posz="-14.1947" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsPottedPlants</unit>
+		<unit variation="16" posx="8.4654" posz="-13.8847" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsPoles</unit>
+		<unit variation="122" posx="6.2594" posz="-11.5025" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">deNatEUPropVilMale</unit>
+		<unit variation="212" posx="2.4485" posz="-11.2804" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropVilMale</unit>
+		<unit variation="41" posx="3.5362" posz="-2.8707" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCGermanCathedral</unit>
+		<unit variation="85" posx="7.3036" posz="-9.2176" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsPottedPlants</unit>
+		<unit variation="129" posx="13.8509" posz="-9.1033" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsColony</unit>
+		<unit variation="85" posx="-0.2919" posz="-9.2903" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsPottedPlants</unit>
+		<unit variation="16" posx="13.6942" posz="-7.8027" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsPoles</unit>
+		<unit variation="205" posx="-8.5259" posz="-8.9537" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="176" posx="-3.7993" posz="-8.7275" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="89" posx="-8.5796" posz="-8.0060" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPROPBuildingMix</unit>
+		<unit variation="233" posx="-13.9602" posz="-7.3304" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
+		<unit variation="205" posx="-11.4970" posz="-3.8474" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="205" posx="-9.3703" posz="-3.2516" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="205" posx="-8.5882" posz="-7.1673" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="176" posx="-3.7254" posz="-7.6295" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="176" posx="-3.6227" posz="-6.7601" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="30" posx="-10.3041" posz="-3.5828" orientx="-0.9910" orienty="0.0000" orientz="-0.1336">zpSPCEUHouseProp</unit>
+		<unit variation="26" posx="-1.1816" posz="-4.4290" orientx="0.8110" orienty="0.0000" orientz="0.5851">deSPCTreeCypressProp</unit>
+		<unit variation="176" posx="-4.1141" posz="-4.9359" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="85" posx="-3.1086" posz="-2.0035" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsPottedPlants</unit>
+		<unit variation="85" posx="13.4024" posz="-1.9609" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsPottedPlants</unit>
+		<unit variation="214" posx="9.0573" posz="-2.6881" orientx="0.0975" orienty="0.0000" orientz="0.9952">deSPCTreeCypressProp</unit>
+		<unit variation="176" posx="-4.4094" posz="-3.3136" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="205" posx="-9.0702" posz="2.6299" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="176" posx="-4.2932" posz="-1.3845" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="85" posx="-3.4117" posz="1.6129" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsPottedPlants</unit>
+		<unit variation="205" posx="-11.1068" posz="3.5293" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="176" posx="-4.4725" posz="0.5037" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="85" posx="13.5074" posz="3.0831" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsPottedPlants</unit>
+		<unit variation="130" posx="-9.8630" posz="3.0284" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="52" posx="-0.8231" posz="3.3693" orientx="-0.7293" orienty="-0.0000" orientz="-0.6842">deSPCTreeCypressProp</unit>
+		<unit variation="205" posx="-10.7418" posz="6.9748" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="205" posx="-8.3301" posz="6.2312" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="176" posx="-4.4990" posz="2.1380" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="129" posx="-13.9313" posz="4.2508" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
+		<unit variation="214" posx="9.3506" posz="4.3609" orientx="0.0975" orienty="0.0000" orientz="0.9952">deSPCTreeCypressProp</unit>
+		<unit variation="176" posx="-4.7335" posz="4.1573" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="176" posx="-3.8193" posz="5.5296" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="16" posx="13.4639" posz="6.4450" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsPoles</unit>
+		<unit variation="41" posx="-14.1837" posz="7.5210" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
+		<unit variation="75" posx="7.4771" posz="7.4820" orientx="0.2249" orienty="0.0000" orientz="-0.9744">deSPCTreeCypressProp</unit>
+		<unit variation="176" posx="-1.1003" posz="7.6751" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="111" posx="-4.5818" posz="8.1894" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPROPBuildingMix</unit>
+		<unit variation="205" posx="-5.8818" posz="7.0840" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="182" posx="13.6401" posz="9.0646" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsColony</unit>
+		<unit variation="19" posx="1.2581" posz="9.9966" orientx="-0.9968" orienty="-0.0000" orientz="-0.0798">deSPCTreeCypressProp</unit>
+		<unit variation="142" posx="-9.0155" posz="9.2920" orientx="0.0170" orienty="0.0000" orientz="0.9999">zpSPCEUHouseProp</unit>
+		<unit variation="205" posx="-5.8723" posz="9.1745" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="182" posx="-13.9063" posz="13.1667" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
+		<unit variation="176" posx="-11.9732" posz="13.3784" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
+		<unit variation="74" posx="3.9352" posz="14.4058" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
+		<unit variation="16" posx="-6.9956" posz="14.7726" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsPoles</unit>
+	</units>
+	<tiles>
+		<tilegroup type="Block" subtype="city\ground1_city_street_ground">
+			<block startx="-7" startz="-7" endx="-7" endz="0"></block>
+			<block startx="-6" startz="-7" endx="-6" endz="0"></block>
+			<block startx="-5" startz="-7" endx="-5" endz="0"></block>
+			<block startx="-4" startz="-7" endx="-4" endz="0"></block>
+			<block startx="-3" startz="-7" endx="-3" endz="0"></block>
+			<block startx="-2" startz="-7" endx="-2" endz="-3"></block>
+			<block startx="-2" startz="0" endx="-2" endz="0"></block>
+			<block startx="-1" startz="-7" endx="-1" endz="-3"></block>
+			<block startx="-1" startz="0" endx="-1" endz="0"></block>
+			<block startx="0" startz="-7" endx="0" endz="-3"></block>
+			<block startx="0" startz="-1" endx="0" endz="0"></block>
+			<block startx="-7" startz="1" endx="-7" endz="7"></block>
+			<block startx="-6" startz="1" endx="-6" endz="7"></block>
+			<block startx="-5" startz="1" endx="-5" endz="7"></block>
+			<block startx="-4" startz="1" endx="-4" endz="7"></block>
+			<block startx="-3" startz="1" endx="-3" endz="7"></block>
+			<block startx="-2" startz="1" endx="-2" endz="7"></block>
+			<block startx="-1" startz="3" endx="-1" endz="7"></block>
+			<block startx="0" startz="1" endx="0" endz="1"></block>
+			<block startx="0" startz="3" endx="0" endz="7"></block>
+			<block startx="1" startz="1" endx="1" endz="3"></block>
+			<block startx="1" startz="6" endx="1" endz="7"></block>
+			<block startx="2" startz="3" endx="2" endz="3"></block>
+			<block startx="2" startz="6" endx="2" endz="7"></block>
+			<block startx="3" startz="6" endx="3" endz="7"></block>
+			<block startx="4" startz="1" endx="4" endz="1"></block>
+			<block startx="4" startz="6" endx="4" endz="7"></block>
+			<block startx="5" startz="1" endx="5" endz="1"></block>
+			<block startx="5" startz="4" endx="5" endz="7"></block>
+			<block startx="6" startz="1" endx="6" endz="7"></block>
+			<block startx="7" startz="1" endx="7" endz="7"></block>
+			<block startx="1" startz="-7" endx="1" endz="0"></block>
+			<block startx="2" startz="-7" endx="2" endz="-4"></block>
+			<block startx="2" startz="-1" endx="2" endz="0"></block>
+			<block startx="3" startz="-7" endx="3" endz="-4"></block>
+			<block startx="3" startz="-1" endx="3" endz="0"></block>
+			<block startx="4" startz="-7" endx="4" endz="-4"></block>
+			<block startx="4" startz="0" endx="4" endz="0"></block>
+			<block startx="5" startz="-7" endx="5" endz="-2"></block>
+			<block startx="5" startz="0" endx="5" endz="0"></block>
+			<block startx="6" startz="-7" endx="6" endz="0"></block>
+			<block startx="7" startz="-7" endx="7" endz="0"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="nwterritory\ground_grass1_nwt">
+			<block startx="-2" startz="-2" endx="-2" endz="-1"></block>
+			<block startx="-1" startz="-2" endx="-1" endz="-1"></block>
+			<block startx="0" startz="-2" endx="0" endz="-2"></block>
+			<block startx="-1" startz="1" endx="-1" endz="2"></block>
+			<block startx="0" startz="2" endx="0" endz="2"></block>
+			<block startx="1" startz="4" endx="1" endz="5"></block>
+			<block startx="2" startz="1" endx="2" endz="2"></block>
+			<block startx="2" startz="4" endx="2" endz="5"></block>
+			<block startx="3" startz="1" endx="3" endz="5"></block>
+			<block startx="4" startz="2" endx="4" endz="5"></block>
+			<block startx="5" startz="2" endx="5" endz="3"></block>
+			<block startx="2" startz="-3" endx="2" endz="-2"></block>
+			<block startx="3" startz="-3" endx="3" endz="-2"></block>
+			<block startx="4" startz="-3" endx="4" endz="-1"></block>
+			<block startx="5" startz="-1" endx="5" endz="-1"></block>
+		</tilegroup>
+	</tiles>
+</grouping>
