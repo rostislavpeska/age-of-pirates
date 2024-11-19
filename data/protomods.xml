@@ -42638,6 +42638,7 @@
     <impacttype>Stone</impacttype>
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\buildings\spc\orangerie.png</icon>
+    <minimapicon>ui\minimap\highlighted item</minimapicon>
     <portraiticon>resources\art\buildings\spc\orangerie.png</portraiticon>
     <rollovertextid>302052</rollovertextid>
     <shortrollovertextid>302052</shortrollovertextid>
@@ -42685,6 +42686,7 @@
     <flag>NotDeleteable</flag>
     <flag>Tracked</flag>
     <flag>NotRepairable</flag>
+    <flag>GivesLOSToAll</flag>
   </unit>
   <unit id="20563" name="zpSPCVillageHousePropB">
     <dbid>20563</dbid>
