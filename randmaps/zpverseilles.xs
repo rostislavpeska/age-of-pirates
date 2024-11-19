@@ -1442,7 +1442,7 @@ rmSetStatusText("",0.70);
 	int royalOrangerie = rmGetGroupingInstanceUnitByType(verseillesPalace1, "zpSPCRoyalOrangerie");
 
 	// Victory Timer
-	int victoryCountDown = 480;
+	int victoryCountDown = 1800;
 
 	//----- START -----
 
@@ -2074,7 +2074,7 @@ rmSetStatusText("",0.70);
 
 	// Testing
 
-for (k=1; <= cNumberNonGaiaPlayers) {
+/*for (k=1; <= cNumberNonGaiaPlayers) {
 
 	rmCreateTrigger("ZP Test Plr"+k);
 	rmAddTriggerCondition("ZP PLAYER Human");
@@ -2104,7 +2104,7 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
-}
+}*/
 
 	// Text
 	rmSetStatusText("",0.99);

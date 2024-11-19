@@ -35672,6 +35672,7 @@
     <flag>NotDeleteable</flag>
     <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>VisibleUnderFog</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
     <command page="10" column="5">Eject</command>
