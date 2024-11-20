@@ -1,5 +1,5 @@
-// Paris
-// October 2024
+// Verseilles
+// November 2024
 
 int TeamNum = cNumberTeams;
 int PlayerNum = cNumberNonGaiaPlayers;
@@ -877,48 +877,6 @@ rmSetStatusText("",0.70);
 	rmPlaceGroupingAtLoc(blockMenagerie, 0, 0.51, mapCenter+rmZTilesToFraction(65), 1);
 		
 
-
-	// Random Gold
-	/*int randomGoldID = rmCreateObjectDef("random mine");
-	rmAddObjectDefItem(randomGoldID, "Mine", 1, 0.0);
-	rmSetObjectDefMinDistance(randomGoldID, 0.0);
-	rmSetObjectDefMaxDistance(randomGoldID, rmXFractionToMeters(0.45));
-	rmAddObjectDefConstraint(randomGoldID, avoidSilver);
-	rmAddObjectDefConstraint(randomGoldID, avoidAll);
-	rmAddObjectDefConstraint(randomGoldID, avoidBlockLong);
-	rmAddObjectDefConstraint(randomGoldID, playerEdgeConstraint);
-	if (cNumberNonGaiaPlayers>=4){ 
-		for (j=0; < 4) {   
-			rmPlaceObjectDefInArea(randomGoldID, 0, rmAreaID("wallCliffs"+j), 2);
-		}
-	}
-	
-
-	// Random Trees
-	int cliffTreeID = rmCreateObjectDef("cliffTree");
-	rmAddObjectDefItem(cliffTreeID, "TreePonderosaPine", rmRandInt(6,7), rmRandFloat(11.0,12.0));
-	rmAddObjectDefItem(cliffTreeID, "TreeGreatPlains", rmRandInt(3,4), 10.0);
-	rmAddObjectDefItem(cliffTreeID, "underbrushTexasGrass", rmRandInt(6,7), 12.0);
-	rmAddObjectDefItem(cliffTreeID, "deer", 2, 6.0);
-	rmAddObjectDefToClass(cliffTreeID, rmClassID("classForest")); 
-	rmAddObjectDefConstraint(cliffTreeID, avoidBlockMedium);
-	rmAddObjectDefConstraint(cliffTreeID, avoidStreet);
-	for (j=0; < 4) {   
-
-      rmPlaceObjectDefInArea(cliffTreeID, 0, rmAreaID("wallCliffs"+j), 4);
-
-	}
-
-	// Random Flowers
-	int flowersID = rmCreateObjectDef("cliffFlower");
-	rmAddObjectDefItem(flowersID, "deUnderbrushFlowersJapan", rmRandInt(2,3), rmRandFloat(4.0,5.0));
-	rmAddObjectDefConstraint(flowersID, avoidBlockMedium);
-	rmAddObjectDefConstraint(flowersID, avoidStreet);
-	for (j=0; < 4) {   
-      rmPlaceObjectDefInArea(flowersID, 0, rmAreaID("wallCliffs"+j), 4);
-
-	}*/
-
 	rmSetStatusText("",0.80);
 
 
@@ -932,8 +890,14 @@ rmSetStatusText("",0.70);
 	if (cNumberTeams == 2){
 		if (PlayerNum == 2)
 		{
-			rmPlacePlayer(2, 0.5, 0.87);
-			rmPlacePlayer(1, locX6, locZ6);
+			if (rmGetPlayerTeam(1) == 0) {
+				rmPlacePlayer(2, 0.5, 0.87);
+				rmPlacePlayer(1, locX6, locZ6);
+			}
+			else {
+				rmPlacePlayer(1, 0.5, 0.87);
+				rmPlacePlayer(2, locX6, locZ6);
+			}
 			int playerAreaConstraint = rmCreateBoxConstraint("stay in player area", 0.2-rmZTilesToFraction(3), mapCenter-rmZTilesToFraction(70), 0.81+rmZTilesToFraction(3), mapCenter-rmZTilesToFraction(124));
 			int playerStreetConstraint = rmCreateBoxConstraint("stay in street", 0.2, mapCenter-rmZTilesToFraction(70), 0.81, mapCenter-rmZTilesToFraction(122));
 		}
@@ -942,7 +906,11 @@ rmSetStatusText("",0.70);
 			{	
 				rmSetPlacementTeam(1);
 				rmPlacePlayersLine(0.2, 0.87, 0.8, 0.87, 0, 0);
-				rmPlacePlayer(1, locX6, locZ6);
+				for(i=1; <= cNumberNonGaiaPlayers) {
+					if (rmGetPlayerTeam(i) == 0) {
+						rmPlacePlayer(i, locX6, locZ6);
+					}
+				}
 				playerAreaConstraint = rmCreateBoxConstraint("stay in player area", 0.2-rmZTilesToFraction(3), mapCenter-rmZTilesToFraction(70), 0.81+rmZTilesToFraction(3), mapCenter-rmZTilesToFraction(124));
 				playerStreetConstraint = rmCreateBoxConstraint("stay in street", 0.2, mapCenter-rmZTilesToFraction(70), 0.81, mapCenter-rmZTilesToFraction(122));
 			}
@@ -950,8 +918,10 @@ rmSetStatusText("",0.70);
 			{	
 				rmSetPlacementTeam(1);
 				rmPlacePlayersLine(0.2, 0.87, 0.8, 0.87, 0, 0);
-				rmPlacePlayer(1, locX3, locZ6);
-				rmPlacePlayer(2, locX7, locZ6);
+
+				rmSetPlacementTeam(0);
+				rmPlacePlayersLine(locX3, locZ6, locX7, locZ6, 0, 0);
+
 				playerAreaConstraint = rmCreateBoxConstraint("stay in player area", 0.2-rmZTilesToFraction(3), mapCenter-rmZTilesToFraction(70), 0.81+rmZTilesToFraction(3), mapCenter-rmZTilesToFraction(124));
 				playerStreetConstraint = rmCreateBoxConstraint("stay in street", 0.2, mapCenter-rmZTilesToFraction(70), 0.81, mapCenter-rmZTilesToFraction(122));
 			}	
@@ -1136,34 +1106,35 @@ rmSetStatusText("",0.70);
 	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
 	rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.65);
     
-    for(i=firstDefender; < cNumberNonGaiaPlayers + 1) {
-		int id=rmCreateArea("Player"+i);
-		rmSetPlayerArea(i, id);
-		int startID = rmCreateObjectDef("object"+i);
-		rmAddObjectDefItem(startID, "deSPCCommandPost", 1, 2.0);
-		rmSetObjectDefMinDistance(startID, 0.0);
-        rmSetObjectDefMaxDistance(startID, 1.0);
-		rmPlaceObjectDefAtLoc(startID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
-        rmPlaceObjectDefAtLoc(playerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
-        rmPlaceObjectDefAtLoc(foodID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
-        rmPlaceObjectDefAtLoc(goldID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
-        rmPlaceObjectDefAtLoc(berryID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
-		rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);
-		/*if (cNumberNonGaiaPlayers >=4)
-			rmPlaceObjectDefAtLoc(goldID2, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));*/
+    for(i=1; <= cNumberNonGaiaPlayers) {
+		if (rmGetPlayerTeam(i) == 1) {
+			int id=rmCreateArea("Player"+i);
+			rmSetPlayerArea(i, id);
+			int startID = rmCreateObjectDef("object"+i);
+			rmAddObjectDefItem(startID, "deSPCCommandPost", 1, 2.0);
+			rmSetObjectDefMinDistance(startID, 0.0);
+			rmSetObjectDefMaxDistance(startID, 1.0);
+			rmPlaceObjectDefAtLoc(startID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			rmPlaceObjectDefAtLoc(playerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			rmPlaceObjectDefAtLoc(foodID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			rmPlaceObjectDefAtLoc(goldID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			rmPlaceObjectDefAtLoc(berryID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);
+			/*if (cNumberNonGaiaPlayers >=4)
+				rmPlaceObjectDefAtLoc(goldID2, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));*/
+		}
 
-	}
-
-	for(i=1; < firstDefender) {
-		id=rmCreateArea("Player"+i);
-		rmSetPlayerArea(i, id);
-		rmPlaceGroupingAtLoc(blockPlayerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
-		rmPlaceGroupingAtLoc(blockPlayerGold, i, rmPlayerLocXFraction(i)+rmXTilesToFraction(17), rmPlayerLocZFraction(i));
-		rmPlaceGroupingAtLoc(blockPlayerFood, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i)+rmZTilesToFraction(17));
-		rmPlaceGroupingAtLoc(blockPlayerWood, i, rmPlayerLocXFraction(i)+rmXTilesToFraction(17), rmPlayerLocZFraction(i)+rmZTilesToFraction(17));
-		if (teamZeroCount <=5){
-			rmPlaceGroupingAtLoc(blockConstruction, 0, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i)-rmZTilesToFraction(17));
-			rmPlaceGroupingAtLoc(blockConstruction, 0, rmPlayerLocXFraction(i)+rmXTilesToFraction(17), rmPlayerLocZFraction(i)-rmZTilesToFraction(17));
+		if (rmGetPlayerTeam(i) == 0) {
+			id=rmCreateArea("Player"+i);
+			rmSetPlayerArea(i, id);
+			rmPlaceGroupingAtLoc(blockPlayerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			rmPlaceGroupingAtLoc(blockPlayerGold, i, rmPlayerLocXFraction(i)+rmXTilesToFraction(17), rmPlayerLocZFraction(i));
+			rmPlaceGroupingAtLoc(blockPlayerFood, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i)+rmZTilesToFraction(17));
+			rmPlaceGroupingAtLoc(blockPlayerWood, i, rmPlayerLocXFraction(i)+rmXTilesToFraction(17), rmPlayerLocZFraction(i)+rmZTilesToFraction(17));
+			if (teamZeroCount <=5){
+				rmPlaceGroupingAtLoc(blockConstruction, 0, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i)-rmZTilesToFraction(17));
+				rmPlaceGroupingAtLoc(blockConstruction, 0, rmPlayerLocXFraction(i)+rmXTilesToFraction(17), rmPlayerLocZFraction(i)-rmZTilesToFraction(17));
+			}
 		}
 
 	}
@@ -1599,7 +1570,7 @@ rmSetStatusText("",0.70);
 	rmAddTriggerEffect("Team Victory");
 	rmSetTriggerEffectParamInt("TeamID", 1);
 	rmSetTriggerPriority(4); 
-	rmSetTriggerActive(false);
+	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
