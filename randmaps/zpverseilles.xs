@@ -55,7 +55,16 @@ void main(void)
 
 	int teamZeroCount = rmGetNumberPlayersOnTeam(0);
 	int teamOneCount = rmGetNumberPlayersOnTeam(1);
-	int firstDefender = teamZeroCount+1;
+	int firstDefender = -1;
+
+	for (i = 1; <= cNumberNonGaiaPlayers)
+    {
+        if (rmGetPlayerTeam(i) == 1)
+        {
+            firstDefender = i;
+            break;
+        }
+    }
 
     int sizeZ = 560;
 	int sizeX = 360;
@@ -103,7 +112,7 @@ void main(void)
     rmSetMapType("default");
     rmSetMapType("westEurope");
 	rmSetMapType("piratehistoricalmap");
-    rmSetMapType("euroTradeRouteUpgradeAll");
+    rmSetMapType("euroTradeRouteCapture");
 
 	chooseMercs();
 
