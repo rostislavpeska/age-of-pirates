@@ -294,6 +294,8 @@ void main(void)
 	int cemetaryConstraint=rmCreateClassDistanceConstraint("stay away from cemetary", classCemetary, 40.0);
 	int cemetaryConstraintShort=rmCreateClassDistanceConstraint("stay away from cemetary short", classCemetary, 5.0);
 
+    int avoidPark = rmCreateTypeDistanceConstraint("avoid park tree", "deSPCTreeCypressProp", 30);
+
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.10);
 
@@ -323,7 +325,7 @@ void main(void)
     rmAddTradeRouteWaypoint(tradeRouteID, 0.0, .55);
     rmAddTradeRouteWaypoint(tradeRouteID, .5, .55);
     rmAddTradeRouteWaypoint(tradeRouteID, 1.00, .55);
-    rmBuildTradeRoute(tradeRouteID, "eu_stone_trail");
+    rmBuildTradeRoute(tradeRouteID, "dirt");
 
 	vector socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.5);
     rmPlaceObjectDefAtPoint(stopperID, 0, socketLoc1);
@@ -1353,6 +1355,7 @@ rmSetStatusText("",0.70);
 	rmAddObjectDefConstraint(nuggetNorth, avoidTownCenter);
 	rmAddObjectDefConstraint(nuggetNorth, avoidMountains);
 	rmAddObjectDefConstraint(nuggetNorth, avoidStreetZero);
+    rmAddObjectDefConstraint(nuggetNorth, avoidPark);
 	rmAddObjectDefConstraint(nuggetNorth, playerEdgeConstraint);
 	rmPlaceObjectDefInArea(nuggetNorth, 0, countrysideNorth, cNumberNonGaiaPlayers);
 
@@ -1373,6 +1376,7 @@ rmSetStatusText("",0.70);
 	rmSetNuggetDifficulty(3, 4);
 	rmAddObjectDefConstraint(nuggetHard, shortAvoidImpassableLand);
 	rmAddObjectDefConstraint(nuggetHard, avoidAll);
+    rmAddObjectDefConstraint(nuggetHard, avoidPark);
 	rmAddObjectDefConstraint(nuggetHard, avoidBlockMedium);
 	rmAddObjectDefConstraint(nuggetHard, playerEdgeConstraint);
 	rmPlaceObjectDefInArea(nuggetHard, 0, countrysideNorth, cNumberNonGaiaPlayers);
@@ -1385,6 +1389,7 @@ rmSetStatusText("",0.70);
 	rmAddObjectDefConstraint(randomGoldID, avoidSilver);
 	rmAddObjectDefConstraint(randomGoldID, avoidAll);
 	rmAddObjectDefConstraint(randomGoldID, avoidBlockLong);
+    rmAddObjectDefConstraint(randomGoldID, avoidPark);
 	rmAddObjectDefConstraint(randomGoldID, playerEdgeConstraint);
 	rmPlaceObjectDefInArea(randomGoldID, 0, countrysideNorth, cNumberNonGaiaPlayers);
 
@@ -1493,6 +1498,9 @@ rmSetStatusText("",0.70);
 	rmSetTriggerEffectParam("TechID","cTechdeEUMapUpdateVisuals"); // European Embassy
 	rmSetTriggerEffectParamInt("Status",2);
 	}
+    rmAddTriggerEffect("Trade Route Set Level");
+	rmSetTriggerEffectParamInt("TradeRoute",1);
+	rmSetTriggerEffectParamInt("Level",1);
 	rmAddTriggerEffect("Player : Override Civilization for Flag");
 	rmSetTriggerEffectParamInt("Player",0);
 	rmSetTriggerEffectParam("Civilization","SPCBourbon");
