@@ -14136,6 +14136,9 @@
       <effect type="CommandRemove" proto="zpNatPirate">
         <target type="ProtoUnit">NativeEmbassy</target>
       </effect>
+      <effect type="CommandRemove" proto="zpNatPirate">
+        <target type="ProtoUnit">zpCorsairGalley</target>
+      </effect>
       <effect type="TransformUnit" toprotoid="zpNatCorsair" fromprotoid="zpNatPirate">
       </effect>
       <effect type="CommandAdd" tech="zpNatCorsairEmbassy" page="2" column="6">

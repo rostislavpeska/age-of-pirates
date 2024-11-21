@@ -235,7 +235,7 @@
       <string _locid="300233">Bloodthirsty Pirate</string>
       <string _locid="300234">Notorious Pirate</string>
       <string _locid="300235">A Wokou force of archers, ronins and a horseman, good for raiding enemy ports.\n3 Wokou Monk: archer with a lucky shot, good against infantry.\n2 Wokou Ronins \n1 Wokou Rider</string>
-      <string _locid="300236">Ships a Wokou army and reduces Wokou units population costs.</string>
+      <string _locid="300236">Ships a Wokou army and reduces Wokou Ronin, Wokou Monk and Wokou Horseman population costs.</string>
       <string _locid="300237">Privateer Tax</string>
       <string _locid="300238">Choose the Wokou commander.</string>
       <string _locid="300239">ZP Wokou Fuchuan</string>
@@ -1521,7 +1521,7 @@
       <string _locid="301519">William Swallow</string>
       <string _locid="301520">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nMutineer \n\nAustralian Convict who escaped to japan. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nCyprus Mutiny (Wokou Frigate)</string>
       <string _locid="301521">Cyprus Mutiny</string>
-      <string _locid="301522">Ships a Frigate able to train Mutineers and Wokou units. Wokou outlaw population costs signifficantly decreased.</string>
+      <string _locid="301522">Ships a Frigate able to train Mutineers and Wokou units. Wokou Ronin, Wokou Monk and Wokou Horseman population costs signifficantly decreased.</string>
       <string _locid="301523">ZP NAT Mutineer</string>
       <string _locid="301524">Bloodthirsty Mutineer</string>
       <string _locid="301525">Notorious Mutineer</string>
@@ -1550,7 +1550,7 @@
       <string _locid="301548">Wokou Emissary Rickshaw</string>
       <string _locid="301549">ZP Wokou Embassy Rickshaw</string>
       <string _locid="301550">Can construct Wokou Emissary</string>
-      <string _locid="301551">Ships Wokou Emissary Rickshaw allowing you to construct Wokou Emissary and send Wokou shipments. Wokou outlaw population costs signifficantly decreased.</string>
+      <string _locid="301551">Ships Wokou Emissary Rickshaw allowing you to construct Wokou Emissary and send Wokou shipments.  Wokou Ronin, Wokou Monk and Wokou Horseman population costs signifficantly decreased.</string>
       <string _locid="301552">Wokou Expeditionary Company</string>
       <string _locid="301553">Wokou Landing Group</string>
       <string _locid="301554">Sends Wokou Pirates (Can be sent in always when bellow build limit: 21 per settlement)</string>
