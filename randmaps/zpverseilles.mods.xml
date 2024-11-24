@@ -245,5 +245,8 @@
 		<unit name="deNatEUPropVilFemale">
 			<flag>NoIdleActions</flag>
 		</unit>
+		<unit name="CWallGate">
+			<animfile>buildings\wall\barricade\verseilles_gate.xml</animfile>
+		</unit>
 	</protomods>
 </mods>

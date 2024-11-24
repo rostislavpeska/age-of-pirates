@@ -56,12 +56,21 @@ void main(void)
 	int teamZeroCount = rmGetNumberPlayersOnTeam(0);
 	int teamOneCount = rmGetNumberPlayersOnTeam(1);
 	int firstDefender = -1;
+	int firstAttacker = -1;
 
 	for (i = 1; <= cNumberNonGaiaPlayers)
     {
         if (rmGetPlayerTeam(i) == 1)
         {
             firstDefender = i;
+            break;
+        }
+    }
+	for (i = 1; <= cNumberNonGaiaPlayers)
+    {
+        if (rmGetPlayerTeam(i) == 0)
+        {
+            firstAttacker = i;
             break;
         }
     }
@@ -91,7 +100,7 @@ void main(void)
 	rmSetMapElevationHeightBlend(1);
 	
 	// Picks a default water height
-	rmSetSeaLevel(0.0);
+	rmSetSeaLevel(1.0);
    
    	// LIGHT SET
 
@@ -262,7 +271,7 @@ void main(void)
 	int avoidTradeSocketFar=rmCreateTypeDistanceConstraint("stay away from Trade Socket far", "SocketTradeRoute", 40.0);
 	int avoidTradeSocketFar2=rmCreateTypeDistanceConstraint("stay away from Trade Socket far 2", "SocketTradeRoute", 45.0);
 	int avoidTradeRouteMin = rmCreateTradeRouteDistanceConstraint("trade route min", 5.0);
-	int avoidTradeRouteWall = rmCreateTradeRouteDistanceConstraint("trade route wall", 7.0);
+	int avoidTradeRouteWall = rmCreateTradeRouteDistanceConstraint("trade route wall", 4.0);
 	int avoidTownCenter=rmCreateTypeDistanceConstraint("avoid Town Center Far", "deSPCCommandPost", 25.0);
 	int avoidTownCenterShort=rmCreateTypeDistanceConstraint("avoid Town Center Short", "deSPCCommandPost", 6.0);
 
@@ -333,13 +342,110 @@ void main(void)
 	vector stoperLoc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID, 0));
 	float mapCenter = rmZMetersToFraction(xsVectorGetZ(stoperLoc));
 
-
 	// Cardinal Constraints
 
 	int Northward=rmCreateBoxConstraint("northMapConstraint", 0.0, 1.0, 1.0, mapCenter, 0.01);
 	int Southward=rmCreateBoxConstraint("southMapConstraint", 0.0, mapCenter, 1.0, 0.0, 0.01);
 	int citySouthConstraint = rmCreateBoxConstraint("stay in the city south", 0.0, mapCenter+rmZTilesToFraction(7), 1.0, mapCenter-rmZTilesToFraction(72));
 	int streetSouthConstraint = rmCreateBoxConstraint("stay in the street south", 0.0, mapCenter+rmZTilesToFraction(7), 1.0, mapCenter-rmZTilesToFraction(70));
+
+
+	// Roads
+
+	// Countryside terrain
+
+    int countrysideNorth = rmCreateArea("countryside N");
+    rmSetAreaSize(countrysideNorth , 0.6, 0.6);
+    rmSetAreaLocation(countrysideNorth , 0.5, 0.85);		
+    rmSetAreaCoherence(countrysideNorth , 1.0);
+    rmSetAreaBaseHeight(countrysideNorth, 1.0);
+    rmAddAreaConstraint(countrysideNorth , avoidPlateauShort);
+	rmAddAreaConstraint(countrysideNorth , avoidWallMedium);
+	rmAddAreaConstraint(countrysideNorth , avoidWater4);
+    rmSetAreaMix(countrysideNorth, "nwt_grass1");
+    rmSetAreaElevationType(countrysideNorth, cElevTurbulence);
+    rmSetAreaElevationVariation(countrysideNorth, 0.0);
+    rmSetAreaElevationPersistence(countrysideNorth, 0.2);
+    rmSetAreaElevationNoiseBias(countrysideNorth, 1);
+    rmBuildArea(countrysideNorth); 
+
+
+	int menagerieRoad = rmCreateArea("menagerieRoad");
+    rmSetAreaSize(menagerieRoad , 0.002, 0.002);
+    rmSetAreaLocation(menagerieRoad , 0.51, mapCenter+rmZTilesToFraction(27));	
+	rmSetAreaTerrainType(menagerieRoad, "Texas\Path_Blend");	
+	rmAddAreaInfluenceSegment(menagerieRoad,0.51, mapCenter+rmZTilesToFraction(27), 0.51, mapCenter+rmZTilesToFraction(65));
+    rmSetAreaCoherence(menagerieRoad , 1.0);
+	rmAddAreaToClass(menagerieRoad , classStreet);
+    rmBuildArea(menagerieRoad ); 
+
+	/*int jesuitRoad1 = rmCreateArea("jesuitRoad1");
+    rmSetAreaSize(jesuitRoad1 , 0.003, 0.003);
+    rmSetAreaLocation(jesuitRoad1 , 0.51, mapCenter+rmZTilesToFraction(27));	
+	rmSetAreaTerrainType(jesuitRoad1, "Texas\Path_Blend");	
+	rmAddAreaInfluenceSegment(jesuitRoad1,0.51, mapCenter+rmZTilesToFraction(27), 0.82, 0.75);
+    rmSetAreaCoherence(jesuitRoad1 , 1.0);
+	rmAddAreaToClass(jesuitRoad1 , classStreet);
+    rmBuildArea(jesuitRoad1 ); 
+
+	int jesuitRoad2 = rmCreateArea("jesuitRoad2");
+    rmSetAreaSize(jesuitRoad2 , 0.003, 0.003);
+    rmSetAreaLocation(jesuitRoad2 , 0.51, mapCenter+rmZTilesToFraction(27));	
+	rmSetAreaTerrainType(jesuitRoad2, "Texas\Path_Blend");	
+	rmAddAreaInfluenceSegment(jesuitRoad2,0.51, mapCenter+rmZTilesToFraction(27), 0.18, 0.75);
+    rmSetAreaCoherence(jesuitRoad2 , 1.0);
+	rmAddAreaToClass(jesuitRoad2 , classStreet);
+    rmBuildArea(jesuitRoad2 ); 
+
+	int gateRoad1 = rmCreateArea("gateRoad1");
+    rmSetAreaSize(gateRoad1 , 0.002, 0.002);
+    rmSetAreaLocation(gateRoad1 , 0.82, 0.75);	
+	rmSetAreaTerrainType(gateRoad1, "Texas\Path_Blend");	
+	rmAddAreaInfluenceSegment(gateRoad1, 0.825, mapCenter+rmZTilesToFraction(10), 0.82, 0.75);
+    rmSetAreaCoherence(gateRoad1 , 1.0);
+	rmAddAreaToClass(gateRoad1 , classStreet);
+    rmBuildArea(gateRoad1 ); 
+
+	int gateRoad2 = rmCreateArea("gateRoad2");
+    rmSetAreaSize(gateRoad2 , 0.002, 0.002);
+    rmSetAreaLocation(gateRoad2 , 0.18, 0.75);	
+	rmSetAreaTerrainType(gateRoad2, "Texas\Path_Blend");	
+	rmAddAreaInfluenceSegment(gateRoad2, 0.175, mapCenter+rmZTilesToFraction(10), 0.18, 0.75);
+    rmSetAreaCoherence(gateRoad2 , 1.0);
+	rmAddAreaToClass(gateRoad2 , classStreet);
+    rmBuildArea(gateRoad2 ); */
+
+	// Lakes
+
+	int basinsID=rmCreateArea("Verseilles Basins");
+	rmSetAreaWaterType(basinsID, "ZP Verseilles Pond");
+	rmSetAreaSize(basinsID, 0.008, 0.008);
+	rmSetAreaCoherence(basinsID, 1.0);
+	rmSetAreaLocation(basinsID, 0.5, mapCenter+rmZTilesToFraction(57));
+	rmAddAreaInfluenceSegment(basinsID,0.435, mapCenter+rmZTilesToFraction(57), 0.605, mapCenter+rmZTilesToFraction(57));
+	rmSetAreaSmoothDistance(basinsID, 10);
+	rmSetAreaBaseHeight(basinsID, 1.0);
+	rmBuildArea(basinsID);
+
+	int basinsID2=rmCreateArea("Verseilles Basins2");
+	rmSetAreaWaterType(basinsID2, "ZP Verseilles Pond");
+	rmSetAreaSize(basinsID2, 0.007, 0.007);
+	rmSetAreaCoherence(basinsID2, 1.0);
+	rmSetAreaLocation(basinsID2, 0.35, mapCenter+rmZTilesToFraction(37));
+	rmAddAreaInfluenceSegment(basinsID2,0.35, mapCenter+rmZTilesToFraction(14), 0.35, mapCenter+rmZTilesToFraction(41));
+	rmSetAreaSmoothDistance(basinsID2, 10);
+	rmSetAreaBaseHeight(basinsID2, 1.0);
+	rmBuildArea(basinsID2);
+
+	int basinsID3=rmCreateArea("Verseilles Basins3");
+	rmSetAreaWaterType(basinsID3, "ZP Verseilles Pond");
+	rmSetAreaSize(basinsID3, 0.007, 0.007);
+	rmSetAreaCoherence(basinsID3, 1.0);
+	rmSetAreaLocation(basinsID3, 0.696, mapCenter+rmZTilesToFraction(37));
+	rmAddAreaInfluenceSegment(basinsID3,0.695, mapCenter+rmZTilesToFraction(14), 0.695, mapCenter+rmZTilesToFraction(41));
+	rmSetAreaSmoothDistance(basinsID3, 10);
+	rmSetAreaBaseHeight(basinsID3, 1.0);
+	rmBuildArea(basinsID3);
 
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
@@ -374,69 +480,6 @@ void main(void)
 	rmAddAreaToClass(streetsSouth , rmClassID("classPlateau"));
     rmBuildArea(streetsSouth); 
 
-
-    // Countryside terrain
-
-    int countrysideNorth = rmCreateArea("countryside N");
-    rmSetAreaSize(countrysideNorth , 0.6, 0.6);
-    rmSetAreaLocation(countrysideNorth , 0.5, 0.75);		
-    rmSetAreaCoherence(countrysideNorth , 1.0);
-    rmSetAreaBaseHeight(countrysideNorth, 1.0);
-    rmAddAreaConstraint(countrysideNorth , avoidPlateauShort);
-	rmAddAreaConstraint(countrysideNorth , avoidWallMedium);
-    rmSetAreaMix(countrysideNorth, "nwt_grass1");
-    rmSetAreaElevationType(countrysideNorth, cElevTurbulence);
-    rmSetAreaElevationVariation(countrysideNorth, 0.0);
-    rmSetAreaElevationPersistence(countrysideNorth, 0.2);
-    rmSetAreaElevationNoiseBias(countrysideNorth, 1);
-    rmBuildArea(countrysideNorth); 
-
-	// Roads
-
-	int menagerieRoad = rmCreateArea("menagerieRoad");
-    rmSetAreaSize(menagerieRoad , 0.002, 0.002);
-    rmSetAreaLocation(menagerieRoad , 0.51, mapCenter+rmZTilesToFraction(27));	
-	rmSetAreaTerrainType(menagerieRoad, "Texas\Path_Blend");	
-	rmAddAreaInfluenceSegment(menagerieRoad,0.51, mapCenter+rmZTilesToFraction(27), 0.51, mapCenter+rmZTilesToFraction(65));
-    rmSetAreaCoherence(menagerieRoad , 1.0);
-	rmAddAreaToClass(menagerieRoad , classStreet);
-    rmBuildArea(menagerieRoad ); 
-
-	int jesuitRoad1 = rmCreateArea("jesuitRoad1");
-    rmSetAreaSize(jesuitRoad1 , 0.003, 0.003);
-    rmSetAreaLocation(jesuitRoad1 , 0.51, mapCenter+rmZTilesToFraction(27));	
-	rmSetAreaTerrainType(jesuitRoad1, "Texas\Path_Blend");	
-	rmAddAreaInfluenceSegment(jesuitRoad1,0.51, mapCenter+rmZTilesToFraction(27), 0.82, 0.75);
-    rmSetAreaCoherence(jesuitRoad1 , 1.0);
-	rmAddAreaToClass(jesuitRoad1 , classStreet);
-    rmBuildArea(jesuitRoad1 ); 
-
-	int jesuitRoad2 = rmCreateArea("jesuitRoad2");
-    rmSetAreaSize(jesuitRoad2 , 0.003, 0.003);
-    rmSetAreaLocation(jesuitRoad2 , 0.51, mapCenter+rmZTilesToFraction(27));	
-	rmSetAreaTerrainType(jesuitRoad2, "Texas\Path_Blend");	
-	rmAddAreaInfluenceSegment(jesuitRoad2,0.51, mapCenter+rmZTilesToFraction(27), 0.18, 0.75);
-    rmSetAreaCoherence(jesuitRoad2 , 1.0);
-	rmAddAreaToClass(jesuitRoad2 , classStreet);
-    rmBuildArea(jesuitRoad2 ); 
-
-	int gateRoad1 = rmCreateArea("gateRoad1");
-    rmSetAreaSize(gateRoad1 , 0.002, 0.002);
-    rmSetAreaLocation(gateRoad1 , 0.82, 0.75);	
-	rmSetAreaTerrainType(gateRoad1, "Texas\Path_Blend");	
-	rmAddAreaInfluenceSegment(gateRoad1, 0.825, mapCenter+rmZTilesToFraction(10), 0.82, 0.75);
-    rmSetAreaCoherence(gateRoad1 , 1.0);
-	rmAddAreaToClass(gateRoad1 , classStreet);
-    rmBuildArea(gateRoad1 ); 
-
-	int gateRoad2 = rmCreateArea("gateRoad2");
-    rmSetAreaSize(gateRoad2 , 0.002, 0.002);
-    rmSetAreaLocation(gateRoad2 , 0.18, 0.75);	
-	rmSetAreaTerrainType(gateRoad2, "Texas\Path_Blend");	
-	rmAddAreaInfluenceSegment(gateRoad2, 0.175, mapCenter+rmZTilesToFraction(10), 0.18, 0.75);
-    rmSetAreaCoherence(gateRoad2 , 1.0);
-	rmAddAreaToClass(gateRoad2 , classStreet);
-    rmBuildArea(gateRoad2 ); 
 
 
 	// Text
@@ -485,12 +528,12 @@ void main(void)
 // Fixed Placement
 
 	// Palace
-	int blockPalaceBig01 = rmCreateGrouping("palace1", "EU_Verseilles_2v2");
+	int blockPalaceBig01 = rmCreateGrouping("palace1", "Verseilles_Mega2");
     rmSetGroupingMinDistance(blockPalaceBig01, 0.00);
     rmSetGroupingMaxDistance(blockPalaceBig01, 0.50);
 	rmAddGroupingToClass(blockPalaceBig01, rmClassID("classBlock"));
 
-	// Palace
+	// Cathedral
 	int blockCathedral = rmCreateGrouping("cathedral", "EU_Resource_Block_Cathedral");
     rmSetGroupingMinDistance(blockCathedral, 0.00);
     rmSetGroupingMaxDistance(blockCathedral, 0.50);
@@ -688,11 +731,12 @@ int jesuitMaltese = rmRandInt(1, 2);
 // Fixed stuff first
 
 	// Palace
-	int verseillesPalace1 = rmPlaceGroupingInstanceAtLoc(blockPalaceBig01, 0.513, mapCenter+rmZTilesToFraction(27), 0);
 
-	rmPlaceGroupingAtLoc(blockWall, firstDefender, 0.175, mapCenter+rmZTilesToFraction(10));
+	int verseillesPalace1 = rmPlaceGroupingInstanceAtLoc(blockPalaceBig01, 0.513, mapCenter+rmZTilesToFraction(35), 0);
 
-	rmPlaceGroupingAtLoc(blockWall, firstDefender, 0.825, mapCenter+rmZTilesToFraction(10));
+	//rmPlaceGroupingAtLoc(blockWall, firstDefender, 0.175, mapCenter+rmZTilesToFraction(10));
+
+	//rmPlaceGroupingAtLoc(blockWall, firstDefender, 0.825, mapCenter+rmZTilesToFraction(10));
 
 
 	// Fixed Stuff
@@ -820,13 +864,32 @@ rmSetStatusText("",0.70);
 
 // Add city hills
 
-	for (j=0; < 4) {   
+// City Hill Ramp
+
+for (j=0; < 2) {  
+		int smallPatchRamp = rmCreateArea("smallPatchRamp"+j);
+		rmSetAreaSize(smallPatchRamp, rmAreaTilesToFraction(450), rmAreaTilesToFraction(450));
+		rmSetAreaHeightBlend(smallPatchRamp, 3);
+		rmSetAreaCoherence(smallPatchRamp, 1.0);
+		rmSetAreaHeightBlend(smallPatchRamp, 2);
+		rmSetAreaSmoothDistance(smallPatchRamp, 7);
+		rmSetAreaBaseHeight(smallPatchRamp, 6.0);
+		if (j == 0){
+		rmSetAreaLocation(smallPatchRamp, 0.08, mapCenter+rmZTilesToFraction(45));
+		}
+		if (j == 1){
+		rmSetAreaLocation(smallPatchRamp, 0.93, mapCenter+rmZTilesToFraction(45));
+		}
+		rmBuildArea(smallPatchRamp);  
+
+		}
+
+	for (j=0; < 6) {   
 
 		 
 
 		// City Hill Cliff
 		int wallCliffs = rmCreateArea("wallCliffs"+j);
-		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
 		rmSetAreaObeyWorldCircleConstraint(wallCliffs, false);
 		rmAddAreaToClass(wallCliffs, rmClassID("classPlateau"));
 		rmAddAreaConstraint(wallCliffs, avoidFence);
@@ -837,24 +900,43 @@ rmSetStatusText("",0.70);
 		rmSetAreaCliffEdge(wallCliffs, 1, 1, 0.0, 0.0, 2); //4,.225 looks cool too
 		rmSetAreaCliffPainting(wallCliffs, false, true, true, 1.5, true);
 		rmSetAreaCliffHeight(wallCliffs, 0, 0, 0.5);
-		rmSetAreaBaseHeight(wallCliffs, 6.0);
+		rmSetAreaBaseHeight(wallCliffs, 5.0);
 		rmSetAreaHeightBlend(wallCliffs, 3);
-		rmSetAreaCoherence(wallCliffs, .93);
 		if (j == 0){
-		rmSetAreaLocation(wallCliffs, 0.68, mapCenter+rmZTilesToFraction(15));
-		rmAddAreaInfluenceSegment(wallCliffs, 0.65, mapCenter+rmZTilesToFraction(15), 0.71, mapCenter+rmZTilesToFraction(15));
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaCoherence(wallCliffs, .93);
+		rmSetAreaLocation(wallCliffs, 0.9, mapCenter+rmZTilesToFraction(9));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.78, mapCenter+rmZTilesToFraction(9), 1.0, mapCenter+rmZTilesToFraction(9));
 		}
 		if (j == 1){
-		rmSetAreaLocation(wallCliffs, 0.97, mapCenter+rmZTilesToFraction(15));
-		rmAddAreaInfluenceSegment(wallCliffs, 0.94, mapCenter+rmZTilesToFraction(15), 1.0, mapCenter+rmZTilesToFraction(15));
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaCoherence(wallCliffs, .93);
+		rmSetAreaLocation(wallCliffs, 0.1, mapCenter+rmZTilesToFraction(9));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.0, mapCenter+rmZTilesToFraction(9), 0.26, mapCenter+rmZTilesToFraction(9));
 		}
 		if (j == 2){
-		rmSetAreaLocation(wallCliffs, 0.03, mapCenter+rmZTilesToFraction(15));
-		rmAddAreaInfluenceSegment(wallCliffs, 0.0, mapCenter+rmZTilesToFraction(15), 0.06, mapCenter+rmZTilesToFraction(15));
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaCoherence(wallCliffs, .93);
+		rmSetAreaLocation(wallCliffs, 0.9, mapCenter+rmZTilesToFraction(46));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.78, mapCenter+rmZTilesToFraction(46), 1.0, mapCenter+rmZTilesToFraction(46));
 		}
 		if (j == 3){
-		rmSetAreaLocation(wallCliffs, 0.32, mapCenter+rmZTilesToFraction(15));
-		rmAddAreaInfluenceSegment(wallCliffs, 0.29, mapCenter+rmZTilesToFraction(15), 0.35, mapCenter+rmZTilesToFraction(15));
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaCoherence(wallCliffs, .93);
+		rmSetAreaLocation(wallCliffs, 0.1, mapCenter+rmZTilesToFraction(46));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.0, mapCenter+rmZTilesToFraction(46), 0.27, mapCenter+rmZTilesToFraction(46));
+		}
+		if (j == 4){
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(1200), rmAreaTilesToFraction(1200));
+		rmSetAreaCoherence(wallCliffs, .8);
+		rmSetAreaLocation(wallCliffs, 0.08, mapCenter+rmZTilesToFraction(27));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.08, mapCenter+rmZTilesToFraction(17), 0.08, mapCenter+rmZTilesToFraction(38));
+		}
+		if (j == 5){
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(1200), rmAreaTilesToFraction(1200));
+		rmSetAreaCoherence(wallCliffs, .8);
+		rmSetAreaLocation(wallCliffs, 0.93, mapCenter+rmZTilesToFraction(27));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.93, mapCenter+rmZTilesToFraction(17), 0.93, mapCenter+rmZTilesToFraction(38));
 		}
 		rmBuildArea(wallCliffs);  
 		
@@ -875,8 +957,8 @@ rmSetStatusText("",0.70);
     rmSetGroupingMaxDistance(jesuitMonasteryID2, 0.50);
 	rmAddGroupingToClass(jesuitMonasteryID2, rmClassID("classBlock"));
 
-	rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.18, 0.75, 1);
-	rmPlaceGroupingAtLoc(jesuitMonasteryID2, 0, 0.82, 0.75, 1);
+	rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.08, mapCenter+rmZTilesToFraction(30), 1);
+	rmPlaceGroupingAtLoc(jesuitMonasteryID2, 0, 0.93, mapCenter+rmZTilesToFraction(30), 1);
 
 
 	// Menagerie
@@ -885,7 +967,7 @@ rmSetStatusText("",0.70);
     rmSetGroupingMaxDistance(blockMenagerie, 0.50);
 	rmAddGroupingToClass(blockMenagerie, rmClassID("classBlock"));
 
-	rmPlaceGroupingAtLoc(blockMenagerie, 0, 0.51, mapCenter+rmZTilesToFraction(65), 1);
+	rmPlaceGroupingAtLoc(blockMenagerie, 0, 0.51, mapCenter+rmZTilesToFraction(70), 1);
 		
 
 	rmSetStatusText("",0.80);
@@ -902,11 +984,11 @@ rmSetStatusText("",0.70);
 		if (PlayerNum == 2)
 		{
 			if (rmGetPlayerTeam(1) == 0) {
-				rmPlacePlayer(2, 0.5, 0.87);
+				rmPlacePlayer(2, 0.7, 0.87);
 				rmPlacePlayer(1, locX6, locZ6);
 			}
 			else {
-				rmPlacePlayer(1, 0.5, 0.87);
+				rmPlacePlayer(1, 0.7, 0.87);
 				rmPlacePlayer(2, locX6, locZ6);
 			}
 			int playerAreaConstraint = rmCreateBoxConstraint("stay in player area", 0.2-rmZTilesToFraction(3), mapCenter-rmZTilesToFraction(70), 0.81+rmZTilesToFraction(3), mapCenter-rmZTilesToFraction(124));
@@ -1190,7 +1272,7 @@ rmSetStatusText("",0.70);
     rmSetGroupingMinDistance(verseillesGate, 0.00);
     rmSetGroupingMaxDistance(verseillesGate, 0.50);
 	rmAddGroupingToClass(verseillesGate, rmClassID("classBlock"));
-	rmPlaceGroupingAtLoc(verseillesGate, 1, 0.51, mapCenter-rmZTilesToFraction(126));	
+	rmPlaceGroupingAtLoc(verseillesGate, firstAttacker, 0.51, mapCenter-rmZTilesToFraction(126));	
 
 	// Place Additional Blocks
 
@@ -1431,13 +1513,37 @@ rmSetStatusText("",0.70);
 
 	//----- START -----
 
-	// Convert Orangerie
+	// Convert Units
 
 	rmCreateTrigger("Convert Orangerie");
 	rmAddTriggerEffect("Convert");
 	rmSetTriggerEffectParam("SrcObject",""+royalOrangerie);
 	rmSetTriggerEffectParamInt("PlayerID",firstDefender);
 	rmSetTriggerPriority(4);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+royalOrangerie);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",firstDefender);
+	rmSetTriggerEffectParam("UnitType","SPCFortGate");
+	rmSetTriggerEffectParamInt("Dist",200);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+royalOrangerie);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",firstDefender);
+	rmSetTriggerEffectParam("UnitType","DESPCEuroTower");
+	rmSetTriggerEffectParamInt("Dist",200);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+royalOrangerie);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",firstAttacker);
+	rmSetTriggerEffectParam("UnitType","CWallGate");
+	rmSetTriggerEffectParamInt("Dist",200);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+royalOrangerie);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",firstAttacker);
+	rmSetTriggerEffectParam("UnitType","Outpost");
+	rmSetTriggerEffectParamInt("Dist",200);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
