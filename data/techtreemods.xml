@@ -19706,7 +19706,10 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpTilanusGrinch</target>
       </effect>
-      <!--<effect type="TechStatus" status="obtainable">zpSpreadTheCheer</effect>-->
+      <effect type="TechStatus" status="obtainable">zpGrinchExpansion</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGrinchBuildingRob</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGrinchCostReduction</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGrinchScouting</effect>
     </effects>
   </tech>
   <tech name="zpXmassMercenaries" type="Normal">
@@ -19716,6 +19719,12 @@
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpChristmasOrganGun</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpChristmasGrenadier</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpChristmasPolearm</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">SaloonOutlawPistol</target>
@@ -19777,7 +19786,166 @@
       </effect>
     </effects>
   </tech>
-
+  <tech name="zpNativeGrinchEmbassy" type="Normal">
+    <dbid>50053</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>TeamTech</flag>
+    <prereqs>
+      <techstatus status="Active">zpNativeGrinchVillage</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpTilanusGrinchMerc</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGrinchTeammateBuildLimit</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGrinchTeammateBuildingRob</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatGrinchTeammateBuildLimit" type="Normal">
+    <dbid>50055</dbid>
+    <displaynameid>400185</displaynameid>
+    <cost resourcetype="Wood">125.0000</cost>
+    <cost resourcetype="Gold">125.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\grinch_limit.png</icon>
+    <rollovertextid>400186</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.50" subtype="BuildLimit" relativity="BasePercent">
+        <target type="ProtoUnit">zpTilanusGrinchMerc</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatGrinchTeammateBuildingRob" type="Normal">
+    <dbid>50056</dbid>
+    <displaynameid>400187</displaynameid>
+    <cost resourcetype="Gold">125.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\grinch_rob_2.png</icon>
+    <rollovertextid>400188</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="Building" resource="Gold" extrabounty="true" bountyrate="10.00" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="Building" resource="Food" extrabounty="true" bountyrate="10.00" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpGrinchExpansion" type ="Normal">
+		<dbid>50057</dbid>
+		<displaynameid>400189</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\art\units\natives\christmass_content\grinch_small.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\art\units\natives\christmass_content\grinch_big.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>400190</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="BasePercent">
+        <target type="ProtoUnit">zpTilanusGrinch</target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="zpNatGrinchBuildingRob" type="Normal">
+    <dbid>50058</dbid>
+    <displaynameid>400191</displaynameid>
+    <cost resourcetype="Wood">125.0000</cost>
+    <cost resourcetype="Gold">125.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\grinch_rob.png</icon>
+    <rollovertextid>400192</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="Building" resource="Gold" extrabounty="true" bountyrate="10.00" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="Building" resource="Food" extrabounty="true" bountyrate="10.00" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatGrinchCostReduction" type="Normal">
+    <dbid>50059</dbid>
+    <displaynameid>400193</displaynameid>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Gold">150.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\grinch_cost.png</icon>
+    <rollovertextid>400194</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="0.85" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractInfantry</target>
+      </effect>
+      <effect type="Data" amount="0.85" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractLightInfantry</target>
+      </effect>
+      <effect type="Data" amount="1.15" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">xpSkullKnight</target>
+      </effect>
+      <effect type="Data" amount="1.15" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">xpMedicineManAztec</target>
+      </effect>
+      <effect type="Data" amount="0.85" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractLightInfantry</target>
+      </effect>
+      <effect type="Data" amount="0.85" subtype="Cost" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractLightInfantry</target>
+      </effect>
+      <effect type="Data" amount="0.85" subtype="Cost" resource="Food" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractLightInfantry</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatGrinchScouting" type="Normal">
+    <dbid>50060</dbid>
+    <displaynameid>400195</displaynameid>
+    <cost resourcetype="Food">300.0000</cost>
+    <cost resourcetype="Wood">300.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\grinch_scout.png</icon>
+    <rollovertextid>400196</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="6.00" subtype="LOS" relativity="Absolute">
+        <target type="ProtoUnit">zpTilanusGrinch</target>
+      </effect>
+      <effect type="Data" amount="6.00" subtype="LOS" relativity="Absolute">
+        <target type="ProtoUnit">zpTilanusGrinchMerc</target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpTilanusGrinch" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
   
 
   <!-- ====================================== -->

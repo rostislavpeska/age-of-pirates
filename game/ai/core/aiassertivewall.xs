@@ -298,7 +298,7 @@ inactive
 minInterval 10
 {
    // Ensure we have enough cav
-   int cavNumber = kbUnitCount(cMyID, cUnitTypeAbstractCavalry, cUnitStateAlive) + kbUnitCount(cMyID, cUnitTypeAbstractCoyoteMan, cUnitStateAlive);
+   int cavNumber = kbUnitCount(cMyID, cUnitTypeAbstractHeavyCavalry, cUnitStateAlive) + kbUnitCount(cMyID, cUnitTypeAbstractCoyoteMan, cUnitStateAlive);
    int minCav = 2 + kbGetAge();
    //static int raidPlanID = -1;
 
@@ -354,21 +354,21 @@ minInterval 10
       aiPlanSetDesiredPriority(gRaidPlanID, 30);  // Lower than standard attack so they can join
       aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
       aiPlanSetVariableInt(gRaidPlanID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat);
-      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOpportunistic);
+      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
       aiPlanSetVariableInt(gRaidPlanID, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternLRU);
       //aiPlanSetVariableInt(gRaidPlanID, cCombatPlanNoTargetTimeout, 0, 2000);
       
       // Just a small number of cav
-      aiPlanAddUnitType(gRaidPlanID, cUnitTypeAbstractCavalry, 0, minCav, minCav);
+      aiPlanAddUnitType(gRaidPlanID, cUnitTypeAbstractHeavyCavalry, 0, minCav, minCav);
       aiPlanAddUnitType(gRaidPlanID, cUnitTypeAbstractCoyoteMan, 0, minCav, minCav);
 
       aiPlanSetActive(gRaidPlanID);
    }
 
-   numInPlan = aiPlanGetNumberUnits(gRaidPlanID, cUnitTypeAbstractCavalry) + aiPlanGetNumberUnits(gRaidPlanID, cUnitTypeAbstractCoyoteMan);
+   numInPlan = aiPlanGetNumberUnits(gRaidPlanID, cUnitTypeAbstractHeavyCavalry) + aiPlanGetNumberUnits(gRaidPlanID, cUnitTypeAbstractCoyoteMan);
    if (numInPlan < minCav)
    {
-      aiPlanAddUnitType(gRaidPlanID, cUnitTypeAbstractCavalry, 2, minCav, minCav);
+      aiPlanAddUnitType(gRaidPlanID, cUnitTypeAbstractHeavyCavalry, 2, minCav, minCav);
       aiPlanAddUnitType(gRaidPlanID, cUnitTypeAbstractCoyoteMan, 2, minCav, minCav);
    }
 
@@ -4625,6 +4625,17 @@ bool allowedToAttack(void)
    float militaryStrength = 0.0;
    int puid = -1;
    int playersPerTeam = (cNumberPlayers - 1) / (aiGetNumberTeams() - 1); // Gaia counts as a player and a team
+   float pptFudgeFactor = 1.0;  // fudge the player per team number when teams get bigger
+
+   if (playersPerTeam == 3)
+   {
+      pptFudgeFactor = 1.1;
+   }
+   else if (playersPerTeam > 3)
+   {
+      pptFudgeFactor = 1.2;
+   }
+
 
    for (i = 0; < numberFound)
    {
@@ -4648,23 +4659,23 @@ bool allowedToAttack(void)
    if (militaryStrength >= aiGetMilitaryPop() * playersPerTeam && playersPerTeam == 1){return true;}
    else if (enAgeVar == cAge2)
    {
-      if (militaryStrength < 15 * playersPerTeam){return false;}
-      else if (militaryStrength > 30 * playersPerTeam){return true;}
+      if (militaryStrength < 15 * playersPerTeam * pptFudgeFactor){return false;}
+      else if (militaryStrength > 30 * playersPerTeam * pptFudgeFactor){return true;}
    }
    else if (enAgeVar == cAge3)
    {
-      if (militaryStrength < 20 * playersPerTeam){return false;}
-      else if (militaryStrength > 45 * playersPerTeam){return true;}
+      if (militaryStrength < 20 * playersPerTeam * pptFudgeFactor){return false;}
+      else if (militaryStrength > 45 * playersPerTeam * pptFudgeFactor){return true;}
    }
    else if (enAgeVar == cAge4)
    {
-      if (militaryStrength < 25 * playersPerTeam){return false;}
-      else if (militaryStrength > 55 * playersPerTeam){return true;}
+      if (militaryStrength < 25 * playersPerTeam * pptFudgeFactor){return false;}
+      else if (militaryStrength > 55 * playersPerTeam * pptFudgeFactor){return true;}
    }
    else if (enAgeVar == cAge5)
    {
-      if (militaryStrength < 30 * playersPerTeam){return false;}
-      else if (militaryStrength > 60 * playersPerTeam){return true;}
+      if (militaryStrength < 30 * playersPerTeam * pptFudgeFactor){return false;}
+      else if (militaryStrength > 60 * playersPerTeam * pptFudgeFactor){return true;}
    }
 
    // The next block looks at scores
@@ -4692,11 +4703,11 @@ bool allowedToAttack(void)
    // If we are winning by a decent amount attack, otherwise check if we are losing
    if (numAllies >= numEnemies)
    {
-      if (teamScore > 1.2 * enemyScore)
+      if (teamScore > 1.2 * enemyScore * pptFudgeFactor)
       {
          return (true);
       }
-      else if (teamScore < 0.8 * enemyScore)
+      else if (teamScore < 0.8 * enemyScore * pptFudgeFactor)
       {
          return (false);
       }
@@ -5324,6 +5335,13 @@ rule forwardBaseWall
 inactive
 minInterval 10
 {
+   static bool alreadyBuiltOne = false;
+   if (alreadyBuiltOne == true)
+   {
+      xsDisableSelf();
+      return;
+   }
+
    if ((kbGetPopCap() - kbGetPop()) < 20)
    {
       return; // Don't start walls until we have pop room
@@ -5487,6 +5505,8 @@ minInterval 10
    {
       xsEnableRule("upgradeWalls");
    }
+   
+   alreadyBuiltOne = true;
    xsDisableSelf();
 }
 
