@@ -47425,11 +47425,11 @@
   <maxrunvelocity>6.2500</maxrunvelocity>
   <movementtype>land</movementtype>
   <turnrate>18.0000</turnrate>
-  <animfile>units\christmas_units\tilanus_grinch\jaeger.xml</animfile>
+  <animfile>units\christmas_units\tilanus_grinch\pathfinder.xml</animfile>
   <impacttype>Flesh</impacttype>
   <physicsinfo>dude</physicsinfo>
-  <icon>resources\art\units\natives\christmass_content\grinch_64x64.png</icon>
-  <portraiticon>resources\art\units\natives\christmass_content\grinch.png</portraiticon>
+  <icon>resources\art\units\natives\christmass_content\grinch_path_64x64.png</icon>
+  <portraiticon>resources\art\units\natives\christmass_content\grinch_path.png</portraiticon>
   <rollovertextid>400199</rollovertextid>
   <shortrollovertextid>400200</shortrollovertextid>
   <initialhitpoints>135.0000</initialhitpoints>
