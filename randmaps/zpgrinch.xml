@@ -12,9 +12,12 @@
         <setting type="AltTeamNames" state="enforced" />
     </enforcedSettings>
     <recommendedSettings>
-        <civilization>French</civilization>
-        <civilization>Spanish</civilization>
         <civilization>British</civilization>
-        <civilization>DEItalians</civilization>
+        <civilization>French</civilization>
+        <civilization>Dutch</civilization>
+        <civilization>Russians</civilization>
+        <civilization>Germans</civilization>
+        <civilization>DESwedish</civilization>
+        <civilization>DEAmericans</civilization>
     </recommendedSettings>
 </mapinfo>

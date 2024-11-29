@@ -293,6 +293,53 @@ minInterval 1
 }
 
 //==============================================================================
+/* Check for attack/defence special map
+   AssertiveWall: Checks to see if the map is a special attack or defend map,
+   and sets btbias accordingly
+*/
+//==============================================================================
+void checkAttackDefenseMapAoP(void)
+{
+   int headquarters = -1;
+
+   // Look for the different HQ buildings
+   headquarters = getUnit(cUnitTypedeSPCHeadquarters, cPlayerRelationAlly);
+   if (headquarters < 0)
+   {
+      headquarters = getUnit(cUnitTypedeSPCHeadquartersVienna, cPlayerRelationAlly);
+   }
+
+   if (headquarters < 0)
+   {
+      headquarters = getUnit(cUnitTypezpSPCRoyalOrangerie, cPlayerRelationAlly);
+   }
+
+   if (headquarters > 0)
+   { // defender
+      btOffenseDefense = 0.0;
+
+      gForwardBaseState = cForwardBaseStateActive;
+      gForwardBaseLocation = kbUnitGetPosition(headquarters);
+      gForwardBaseUpTime = xsGetTime();
+      gForwardBaseShouldDefend = true;
+      gForwardBaseID = kbBaseCreate(cMyID, "AoP defense base player: " + kbBaseGetNextID(), gForwardBaseLocation, 80.0);
+   
+      vector baseFront = xsVectorNormalize(kbGetMapCenter() - kbGetPlayerStartingPosition(cMyID));
+      kbBaseSetFrontVector(cMyID, gForwardBaseID, baseFront);
+      kbBaseSetMilitary(cMyID, gForwardBaseID, true);
+      xsDisableSelf();
+      return;
+   }
+   else
+   { // attacker
+      if (btOffenseDefense < 0.8)
+      {
+         btOffenseDefense = 0.8;
+      }
+   }
+}
+
+//==============================================================================
 /* createCityAttackPlan
    sets up a persistent plan and returns the ID
 */

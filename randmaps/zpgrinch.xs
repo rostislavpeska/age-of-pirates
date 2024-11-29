@@ -59,9 +59,9 @@ void main(void)
 	// Set up Natives
 	int subCiv0 = -1;
 	int subCiv1 = -1;
-	subCiv0 = rmGetCivID("Klamath");
+	subCiv0 = rmGetCivID("zpXmassVillage");
 	subCiv1 = rmGetCivID("zpGrinchVillage");
-	rmSetSubCiv(0, "Klamath");
+	rmSetSubCiv(0, "zpXmassVillage");
 	rmSetSubCiv(1, "zpGrinchVillage");
 
 	

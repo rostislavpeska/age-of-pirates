@@ -117,7 +117,7 @@
   <attachment>hats
     <component>hats
       <assetreference type="GrannyModel">
-        <file>units\infantry_ranged\grenadier\grenadier_age4_hat</file>
+        <file>units\natives\europeans\lipka_tatar\lipka_tatar_rider_hat</file>
       </assetreference>
     </component>
     <anim>Idle
@@ -136,7 +136,7 @@
   </attachment>
   <component>ModelComp
     <assetreference type="GrannyModel">
-      <file>units\infantry_ranged\grenadier\grenadier_age2</file>
+      <file>units\infantry_ranged\musketeer\musketeer_3age</file>
     </assetreference>
     <attach a="hats" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
     <attach a="pouch" frombone="bone_pouch" tobone="PELVIS" syncanims="0"></attach>
