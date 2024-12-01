@@ -1,0 +1,4 @@
+<animfile>
+  <component>grape_vine<assetreference type="GrannyModel"><file>terrain\plants\grape_vine\GrapeVine</file></assetreference><decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_circle_64x64</selectedtexture><width>1.00</width><height>1.00</height></decal></component>
+  <anim>idle<component>grape_vine</component></anim>
+</animfile>

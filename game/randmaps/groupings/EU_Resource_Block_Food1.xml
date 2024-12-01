@@ -15,10 +15,10 @@
 		<unit variation="205" posx="-5.1301" posz="-10.8493" orientx="0.0000" orienty="0.0000" orientz="1.0000">FenceRock</unit>
 		<unit variation="153" posx="-7.8014" posz="-10.2134" orientx="0.3827" orienty="0.0000" orientz="0.9239">FenceRock</unit>
 		<unit variation="105" posx="6.2824" posz="-11.7919" orientx="0.0000" orienty="0.0000" orientz="-1.0000">FenceRock</unit>
-		<unit variation="24" posx="9.4867" posz="-10.4840" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVillageHouseProp</unit>
+		<unit variation="24" posx="9.4867" posz="-10.4840" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVillageHousePropB</unit>
 		<unit variation="12" posx="-6.0000" posz="-10.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpGrapeBush</unit>
 		<unit variation="239" posx="6.1822" posz="-9.6553" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpGrapeBush</unit>
-		<unit variation="128" posx="-9.2444" posz="-8.8302" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCVillageHouseProp</unit>
+		<unit variation="128" posx="-9.2444" posz="-8.8302" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCVillageHousePropB</unit>
 		<unit variation="105" posx="-11.8049" posz="-7.8831" orientx="1.0000" orienty="0.0000" orientz="0.0000">FenceRock</unit>
 		<unit variation="185" posx="2.3523" posz="-7.8686" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">dePropsAnimalsChicken</unit>
 		<unit variation="0" posx="-0.3715" posz="-7.5198" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">dePropsAnimalsChicken</unit>
@@ -65,10 +65,10 @@
 		<unit variation="1" posx="-5.3739" posz="9.0297" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="48" posx="-6.0000" posz="8.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpGrapeBush</unit>
 		<unit variation="86" posx="6.0000" posz="8.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpGrapeBush</unit>
-		<unit variation="97" posx="-10.0333" posz="9.6432" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVillageHouseProp</unit>
-		<unit variation="173" posx="-4.7169" posz="10.1153" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVillageHouseProp</unit>
-		<unit variation="79" posx="10.1871" posz="9.7077" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVillageHouseProp</unit>
-		<unit variation="153" posx="5.1840" posz="9.8921" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVillageHouseProp</unit>
+		<unit variation="97" posx="-10.0333" posz="9.6432" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVillageHousePropB</unit>
+		<unit variation="173" posx="-4.7169" posz="10.1153" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVillageHousePropB</unit>
+		<unit variation="79" posx="10.1871" posz="9.7077" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVillageHousePropB</unit>
+		<unit variation="153" posx="5.1840" posz="9.8921" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVillageHousePropB</unit>
 		<unit variation="52" posx="-14.1601" posz="11.6481" orientx="0.9238" orienty="-0.0000" orientz="0.3828">UnderbrushCoastalJapan</unit>
 		<unit variation="217" posx="-13.7700" posz="13.4643" orientx="-0.3824" orienty="0.0000" orientz="-0.9240">UnderbrushCalifornia</unit>
 		<unit variation="11" posx="-2.0553" posz="15.0216" orientx="-0.9249" orienty="0.0000" orientz="-0.3802">PropsPoles</unit>

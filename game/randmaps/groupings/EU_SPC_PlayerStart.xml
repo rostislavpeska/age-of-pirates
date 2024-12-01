@@ -10,9 +10,9 @@
 		<unit variation="194" posx="7.7079" posz="9.0209" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">TownCenter</unit>
 		<unit variation="196" posx="12.2828" posz="-10.9770" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpUnderbrushConstructionColony</unit>
 		<unit variation="196" posx="9.9808" posz="-11.1621" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpUnderbrushConstructionColony</unit>
-		<unit variation="86" posx="-8.2619" posz="-8.8918" orientx="1.0000" orienty="0.0000" orientz="0.0000">deTavern</unit>
-		<unit variation="61" posx="8.3544" posz="-2.8640" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Market</unit>
-		<unit variation="194" posx="-3.5437" posz="9.0514" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Barracks</unit>
+		<unit variation="86" posx="-7.5332" posz="-8.3680" orientx="1.0000" orienty="0.0000" orientz="0.0000">deTavern</unit>
+		<unit variation="61" posx="8.4243" posz="-4.5811" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Market</unit>
+		<unit variation="194" posx="-4.3110" posz="9.0575" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Barracks</unit>
 		<unit variation="26" posx="-12.0331" posz="9.3515" orientx="0.9240" orienty="0.0000" orientz="-0.3823">zpUnderbrushConstructionMine</unit>
 		<unit variation="196" posx="1.9109" posz="8.7981" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpUnderbrushConstructionColony</unit>
 		<unit variation="35" posx="-10.4331" posz="11.1305" orientx="0.2001" orienty="0.0000" orientz="0.9798">zpUnderbrushConstructionJesuit</unit>

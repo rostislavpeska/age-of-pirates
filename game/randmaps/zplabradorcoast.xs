@@ -29,9 +29,9 @@ sizeY = 275;
 rmSetMapSize(sizeY, sizeX);
 
 
-rmSetMapType("land");
+rmSetMapType("water");
 rmSetMapType("snow");
-rmSetMapType("ArcticTerritories");
+rmSetMapType("yukon");
 rmSetSeaType("ZP Labrador Coast");
 
 rmTerrainInitialize("water");

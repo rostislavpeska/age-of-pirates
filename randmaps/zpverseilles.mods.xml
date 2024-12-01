@@ -1,0 +1,252 @@
+<?xml version="1.0"?>
+<mods>
+	<protomods>
+		<!--BELONGS TO PARIS MAPMODS-->
+		<unit name="WallConnector">
+			<displaynameid>301929</displaynameid>
+			<initialhitpoints>600.0000</initialhitpoints>
+			<maxhitpoints>600.0000</maxhitpoints>
+			<buildpoints>0.5000</buildpoints>
+			<cost resourcetype="Wood">5.0000</cost>
+			<cost resourcetype="Gold">0.0000</cost>
+			<icon>resources\art\buildings\spc\barricade_icon.png</icon>
+			<portraiticon>resources\art\buildings\spc\barricade.png</portraiticon>
+			<animfile>buildings\wall\barricade\wall_tower.xml</animfile> 
+		</unit>
+		<unit name="WallStraight1">  
+			<displaynameid>301929</displaynameid>
+			<initialhitpoints>600.0000</initialhitpoints>
+			<maxhitpoints>600.0000</maxhitpoints>
+			<buildpoints>2.0000</buildpoints>
+			<cost resourcetype="Wood">2.0000</cost>
+			<cost resourcetype="Gold">0.0000</cost>
+			<icon>resources\art\buildings\spc\barricade_icon.png</icon>
+			<portraiticon>resources\art\buildings\spc\barricade.png</portraiticon>
+			<animfile>buildings\wall\barricade\wall_1x1.xml</animfile>
+		</unit>
+		<unit name="WallStraight2">   
+			<displaynameid>301929</displaynameid>
+			<initialhitpoints>600.0000</initialhitpoints>
+			<maxhitpoints>600.0000</maxhitpoints>
+			<buildpoints>3.0000</buildpoints>
+			<cost resourcetype="Wood">2.0000</cost>
+			<cost resourcetype="Gold">0.0000</cost>
+			<icon>resources\art\buildings\spc\barricade_icon.png</icon>
+			<portraiticon>resources\art\buildings\spc\barricade.png</portraiticon>
+			<animfile>buildings\wall\barricade\wall_1x2.xml</animfile>
+		</unit>
+		<unit name="WallStraight3">  
+			<displaynameid>301929</displaynameid>
+			<initialhitpoints>800.0000</initialhitpoints>
+			<maxhitpoints>800.0000</maxhitpoints>
+			<buildpoints>3.0000</buildpoints>
+			<cost resourcetype="Wood">3.0000</cost>
+			<cost resourcetype="Gold">0.0000</cost>
+			<icon>resources\art\buildings\spc\barricade_icon.png</icon>
+			<portraiticon>resources\art\buildings\spc\barricade.png</portraiticon>
+			<animfile>buildings\wall\barricade\wall_1x3.xml</animfile>
+		</unit>
+		<unit name="WallStraight4"> 
+			<displaynameid>301929</displaynameid>
+			<initialhitpoints>800.0000</initialhitpoints>
+			<maxhitpoints>800.0000</maxhitpoints>
+			<buildpoints>3.0000</buildpoints>
+			<cost resourcetype="Wood">3.0000</cost>
+			<cost resourcetype="Gold">0.0000</cost>
+			<icon>resources\art\buildings\spc\barricade_icon.png</icon>
+			<portraiticon>resources\art\buildings\spc\barricade.png</portraiticon>
+			<animfile>buildings\wall\barricade\wall_1x4.xml</animfile>
+			<command mergeMode='remove' page="6" column="0">Transform</command>
+		</unit>
+		<unit name="WallStraight5">  
+			<displaynameid>301929</displaynameid>
+			<initialhitpoints>800.0000</initialhitpoints>
+			<maxhitpoints>800.0000</maxhitpoints>
+			<buildpoints>3.0000</buildpoints>
+			<cost resourcetype="Wood">3.0000</cost>
+			<cost resourcetype="Gold">0.0000</cost>
+			<icon>resources\art\buildings\spc\barricade_icon.png</icon>
+			<portraiticon>resources\art\buildings\spc\barricade.png</portraiticon>
+			<animfile>buildings\wall\barricade\wall_1x5.xml</animfile>
+			<command mergeMode='remove' page="6" column="0">Transform</command>
+		</unit>
+		<unit name="House">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="HouseEast">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="HouseMed">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="Manor">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="TownCenter">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Market">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Barracks">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Stable">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Blockhouse">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="Outpost">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="ArtilleryDepot">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Arsenal">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="LivestockPen">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="Bank">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deTavern">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Saloon">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Capitol">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deStateCapitol">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deLivestockMarket">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="dePalace">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="NativeEmbassy">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deHouseAfrican">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="deOutpostAfrican">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="deUniversity">
+			<placementfile>university_city.xml</placementfile>
+		</unit>
+		<unit name="deWarCamp">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="deTower">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="Mill">
+			<placementfile>mill_city.xml</placementfile>
+		</unit>
+		<unit name="Plantation">
+			<placementfile>mill_city.xml</placementfile>
+		</unit>
+		<unit name="deGranary">
+			<placementfile>granary_city.xml</placementfile>
+		</unit>
+		<unit name="deField">
+			<placementfile>field_city.xml</placementfile>
+		</unit>
+		<unit name="FortFrontier">
+			<placementfile>fortfrontier_city.xml</placementfile>
+		</unit>
+		<unit name="FortFrontier">
+			<placementfile>fortfrontier_city.xml</placementfile>
+		</unit>
+		<unit name="Factory">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deLombard">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deCommandery">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit id="20330" name="zpAmericanEmbassy">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deSPCWaterlooHouseProp">
+			<flag>DoNotShowOnMiniMap</flag>
+			<animfile>buildings\native_settlement\zp_native_eu_houses_red_nosmoke.xml</animfile>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="SPCFortGate">
+			<unittype>ConvertsHerds</unittype>
+			<flag>PlaceAnywhere</flag>
+			<buildpoints>0.0000</buildpoints>
+		</unit>
+		<unit name="Dock">
+			<placementfile>dock_city.xml</placementfile>
+		</unit>
+		<unit name="zpSPCEUHouseProp">
+			<animfile>buildings\native_settlement\zp_native_eu_houses_nosmoke.xml</animfile>
+		</unit>
+		<unit name="zpSPCVillageHouseProp">
+			<animfile>buildings\native_settlement\zp_native_village_houses_nosmoke.xml</animfile>
+		</unit>
+		<unit name="deEmbassyTravois">
+			<animfile>units\trade\supply_cart\supply_cart_bank.xml</animfile>
+		</unit>
+		<unit name="deNatEUPropStatue">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="deNatEUPropFence">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="ypSMJesuitAccessory">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>
+		</unit>
+		<unit name="zpNatEUVerseilles">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNativeHouseMaltese">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNatEUPropWingC">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNativeHouseVenetian">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNativeStatueVenetian">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNativeUnitVenetian">			
+			<flag>NoIdleActions</flag>
+		</unit>
+		<unit name="deNatEUPropVilGuards">			
+			<flag>NoIdleActions</flag>
+		</unit>
+		<unit name="deNatEUPropVilMale">			
+			<flag>NoIdleActions</flag>
+		</unit>
+		<unit name="deNatEUPropVilFemale">
+			<flag>NoIdleActions</flag>
+		</unit>
+		<unit name="CWallGate">
+			<animfile>buildings\wall\barricade\verseilles_gate.xml</animfile>
+		</unit>
+	</protomods>
+</mods>

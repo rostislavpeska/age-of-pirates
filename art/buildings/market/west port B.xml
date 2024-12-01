@@ -24,7 +24,13 @@
 					<file>buildings\market\trading_port2_Model</file>
 				</assetreference>
 				<decal>
-				</decal>
+                    <effecttype>bump</effecttype>
+                    <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                    <width>10.00</width>
+                    <height>10.00</height>
+                    <xoffset>-0.10</xoffset>
+                    <zoffset>-0.10</zoffset>
+                </decal>
 			</p100>
 		</logic>
 	</component>

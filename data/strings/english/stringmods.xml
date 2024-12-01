@@ -235,7 +235,7 @@
       <string _locid="300233">Bloodthirsty Pirate</string>
       <string _locid="300234">Notorious Pirate</string>
       <string _locid="300235">A Wokou force of archers, ronins and a horseman, good for raiding enemy ports.\n3 Wokou Monk: archer with a lucky shot, good against infantry.\n2 Wokou Ronins \n1 Wokou Rider</string>
-      <string _locid="300236">Ships a Wokou army and reduces Wokou units population costs.</string>
+      <string _locid="300236">Ships a Wokou army and reduces Wokou Ronin, Wokou Monk and Wokou Horseman population costs.</string>
       <string _locid="300237">Privateer Tax</string>
       <string _locid="300238">Choose the Wokou commander.</string>
       <string _locid="300239">ZP Wokou Fuchuan</string>
@@ -1521,7 +1521,7 @@
       <string _locid="301519">William Swallow</string>
       <string _locid="301520">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nMutineer \n\nAustralian Convict who escaped to japan. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nCyprus Mutiny (Wokou Frigate)</string>
       <string _locid="301521">Cyprus Mutiny</string>
-      <string _locid="301522">Ships a Frigate able to train Mutineers and Wokou units. Wokou outlaw population costs signifficantly decreased.</string>
+      <string _locid="301522">Ships a Frigate able to train Mutineers and Wokou units. Wokou Ronin, Wokou Monk and Wokou Horseman population costs signifficantly decreased.</string>
       <string _locid="301523">ZP NAT Mutineer</string>
       <string _locid="301524">Bloodthirsty Mutineer</string>
       <string _locid="301525">Notorious Mutineer</string>
@@ -1550,7 +1550,7 @@
       <string _locid="301548">Wokou Emissary Rickshaw</string>
       <string _locid="301549">ZP Wokou Embassy Rickshaw</string>
       <string _locid="301550">Can construct Wokou Emissary</string>
-      <string _locid="301551">Ships Wokou Emissary Rickshaw allowing you to construct Wokou Emissary and send Wokou shipments. Wokou outlaw population costs signifficantly decreased.</string>
+      <string _locid="301551">Ships Wokou Emissary Rickshaw allowing you to construct Wokou Emissary and send Wokou shipments.  Wokou Ronin, Wokou Monk and Wokou Horseman population costs signifficantly decreased.</string>
       <string _locid="301552">Wokou Expeditionary Company</string>
       <string _locid="301553">Wokou Landing Group</string>
       <string _locid="301554">Sends Wokou Pirates (Can be sent in always when bellow build limit: 21 per settlement)</string>
@@ -1858,11 +1858,11 @@
       <string _locid="301857">ZP Underbrush Construction Mine</string>
       <string _locid="301858">Domesticated Pig</string>
       <string _locid="301859">ZP Domesticated Pig</string>
-      <string _locid="301860">ZP Cherry Orchad</string>
+      <string _locid="301860">ZP Vineyard</string>
       <string _locid="301861">ZP Cherry Orchad Socket</string>
-      <string _locid="301862">Can build Cherry Orchad</string>
-      <string _locid="301863">Build Cherry Orchad</string>
-      <string _locid="301864">Cherry Orchad Foundetion</string>
+      <string _locid="301862">Can build Vineyard</string>
+      <string _locid="301863">Build Vineyard</string>
+      <string _locid="301864">Vineyard Foundetion</string>
       <string _locid="301865">ZP PROP Fort Wall Large</string>
       <string _locid="301866">ZP PROP Fort Corner</string>
       <string _locid="301867">City Gate</string>
@@ -1918,7 +1918,7 @@
       <string _locid="301917">La Revolution!</string>
       <string _locid="301918">Revolts to one of the revolutionary factions. \n • Initiates a special type of revolution \n • Transforms all your settlers into Sansculottes \n • Allows Sansculotte training from your Town Center \n • Changes you civilization to one of the revolutionary factions without loosing access to your original homecity and the option to advance to higher age (including Imperial Age)</string>
       <string _locid="301919">Gilbert du Motier (Republic of Paris)</string>
-      <string _locid="301920">Nobleman and moderate republican, trains more revolutionaries \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGalerie Lafayette \nAllies of the revolution</string>
+      <string _locid="301920">Nobleman and moderate republican, trains more revolutionaries \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nCavalry Commander \nGalerie Lafayette</string>
       <string _locid="301921">Maximilien Robespierre (French Republic)</string>
       <string _locid="301922">Radical revolutionary leader, population improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nStorm the Barricades \nLoyal Districts</string>
       <string _locid="301923">Napoleon Bonaparte (French Empire)</string>
@@ -1934,8 +1934,8 @@
       <string _locid="301933">Ships one Bastion Wagons and allows you to construct connect newly constructed Bastions with your Bastions in the city through an underground passage.</string>
       <string _locid="301934">Les barricades</string>
       <string _locid="301935">Allows Sansculottes and revolutionaries to construct barricades to prevent enemy units to pass through the streets.</string>
-      <string _locid="301936">Café Procope</string>
-      <string _locid="301937">Allows you to train native Revolutionaries and Sansculottes from all Bastions in the city.</string>
+      <string _locid="301936">Milice Révolutionnaire</string>
+      <string _locid="301937">Allows you to train Sansculotte native units from all Bastions in the city.</string>
       <string _locid="301938">ZP NAT Royal Musketeer Clone</string>
       <string _locid="301939">ZP NAT Royal Dragoon Clone</string>
       <string _locid="301940">ZP NAT Royal Horseman Clone</string>
@@ -1959,7 +1959,7 @@
       <string _locid="301958">Ships Captain D'Artagnan able to train Three Musketeers</string>
       <string _locid="301959">Allies of the revolution</string>
       <string _locid="301960">Galerie Lafayette</string>
-      <string _locid="301961">All convertable city resource buildings work faster by 40% while being owned either by you or any of your team members. &lt;color=0.0, 1.0, 0.0&gt;TEAM TECH&lt;/color&gt;</string>
+      <string _locid="301961">All convertable city resource buildings work faster by 50% while being owned either by you or any of your team members. &lt;color=0.0, 1.0, 0.0&gt;TEAM TECH&lt;/color&gt;</string>
       <string _locid="301962">Bastille</string>
       <string _locid="301963">ZP Bastille</string>
       <string _locid="301964">Royal Court</string>
@@ -2020,7 +2020,7 @@
       <string _locid="302019">Paris 1789 Historical Map: \nBoth teams start outside of the city and have the same goal: Take Bastille, Royal Court and City Hall buildings and hold them for the rest of the game. Both sides can use different native techs. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Revolutionaries which can use special Sansculotte techs \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Royalists which can use special Bourbon techs \n\nSettlements: Sansculotte, Bourbon, Jesuit, Maltese</string>
       <string _locid="302020">Achieve a Team Victory by capturing and holding all three victory buildings: Royal Court, City Hall and Bastille. Take your team natives trading post too get more advanced native improvements. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt;Sansculotte natives \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Bourbon natives</string>
       <string _locid="302021">Battle for control of the city.</string>
-      <string _locid="302022">Achieve a Team Victory by capturing and holding all three victory buildings (marked with a team color flag): Royal Court, Bastille and City Hall</string>
+      <string _locid="302022">Achieve &lt;color=1.0, 1.0, 0.0&gt;ATTACKERS&lt;/color&gt; Team Victory by capturing and holding all three victory buildings (marked with a team color flag): Royal Court, Bastille and City Hall</string>
       <string _locid="302023">Once all nearby enemies are defeated, a Building converts to you when you're close enough to it. Controlling and holding all necessary buildings until the end of the Team Victory timer will result a victory.</string>
       <string _locid="302024">Royal Court</string>
       <string _locid="302025">City Hall</string>
@@ -2051,6 +2051,27 @@
       <string _locid="302050">Royal Orangerie</string>
       <string _locid="302051">ZP SOC Royal Orangerie</string>
       <string _locid="302052">Protects nobility from being captured</string>
+      <string _locid="302053">ZP PROP Village House Block</string>
+      <string _locid="302054">ZP NAT Eclaireur</string>
+      <string _locid="302055">Eclaireur of the Guard</string>
+      <string _locid="302056">Legendary Eclaireur</string>
+      <string _locid="302057">Cavalry Commander</string>
+      <string _locid="302058">Allows you to train Eclarieurs from your Trading Post</string>
+      <string _locid="302059">Vineyard</string>
+      <string _locid="302060">Food resource</string>
+      <string _locid="302061">Achieve &lt;color=1.0, 1.0, 0.0&gt;DEFENDERS&lt;/color&gt; Team Victory by capturing and holding all three victory buildings (marked with a team color flag): Royal Court, Bastille and City Hall</string>
+      <string _locid="302062">Food resource</string>
+      <string _locid="302063">Imperial Cathedral</string>
+      <string _locid="302064">ZP Imperial Cathedral</string>
+      <string _locid="302065">Destroy the Royal Orangerie and capture the King Louis XVI and his wife Marie Antoinette before the time runs out.</string>
+      <string _locid="302066">Destroy the Royal Orangerie building in the gardens of the Verseilles palace. The building is highlighted on the map.</string>
+      <string _locid="302067">Protect the King Louis XVI and his wife Marie Antoinette in the Royal Orangerie before the Garde du Corps comes.</string>
+      <string _locid="302068">Don't let your enemy to destroy the Royal Orangerie building, otherwise you lose the game.</string>
+      <string _locid="302069">March to Verseilles (Beta)</string>
+      <string _locid="302070">After the big protests in Paris and the fall of the Bastile the king Louis XVI hid himself in the gardens of the Verseilles palace.</string>
+      <string _locid="302071">City of Verseilles</string>
+      <string _locid="302072">Women's March on Versailles - the second most important event during the French revolution which led to capturing the king Louis XVI. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Revolutionaries which start in the City of Verseilles surrounded by capturable buildings generating resources \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Royalists starting in the palace gardens behind a massive wall \n\nSettlements: Sansculotte, Jewish, Bourbon, Jesuit</string>
+      <string _locid="302073">Can't be built in the middle of the garden.</string>
 
 
       <!-- ======================================== -->

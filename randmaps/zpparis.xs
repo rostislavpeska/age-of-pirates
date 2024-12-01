@@ -197,7 +197,7 @@ void main(void)
 	int avoidNativesShort=rmCreateClassDistanceConstraint("stuff avoids natives short", rmClassID("natives"), 8.0);
 	int avoidNatives=rmCreateClassDistanceConstraint("stuff avoids natives", rmClassID("natives"), 30.0);
 	int avoidSecrets=rmCreateClassDistanceConstraint("stuff avoids secrets", rmClassID("secrets"), 20.0);
-	int avoidNugget=rmCreateClassDistanceConstraint("stuff avoids nuggets", rmClassID("nuggets"), 60.0);
+	int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 50.0);
 	int deerConstraint=rmCreateTypeDistanceConstraint("avoid the deer", "deer", 40.0);
 	int shortNuggetConstraint=rmCreateTypeDistanceConstraint("avoid nugget objects", "AbstractNugget", 7.0);
 	int shortDeerConstraint=rmCreateTypeDistanceConstraint("short avoid the deer", "deer", 20.0);
@@ -1610,31 +1610,34 @@ rmSetStatusText("",0.70);
 	// ____________________ LOCAL MERCENARIES ____________________
     rmDisableDefaultMercs(true);
     rmDisableCivTypeMercRestriction(true);
-    rmEnableMerc("MercSwissPikeman", -1);
-    rmEnableMerc("MercLandsknecht", -1);
-    rmEnableMerc("MercElmeti", -1);
-    rmEnableMerc("MercGreatCannon", -1);
-    rmEnableMerc("deMercCannoneer", -1);
-    rmEnableMerc("deMercPistoleer", -1);
+	rmEnableMerc("deSaloonInquisitor", -1);
+	rmEnableMerc("deMercPistoleer", -1);
+	rmEnableMerc("deMercMountedRifleman", -1);
+    rmEnableMerc("deMercNapoleonGun", -1);
+    rmEnableMerc("demercZouave", -1);
     
     rmForbidTradeMonopoly(true);
 
 	// _________________ Map Objectives ______________________________
 	rmObjectiveScreenSetTitle(302018);
 	rmObjectiveScreenSetGoal(302021);
-	rmObjectiveAdd(302022, 302023, true, true, true); // General objective
+	rmObjectiveAdd(302022, 302023, true, true, true); // General objective REV
+	rmObjectiveSetTeam(1, 1);
+	rmObjectiveAdd(302061, 302023, true, true, true); // General objective ROY
+	rmObjectiveSetTeam(2, 2);
+
 	rmObjectiveAdd(302024, 302023, true, true, true); // Royal Court REV
-	rmObjectiveSetTeam(2, 1);
+	rmObjectiveSetTeam(3, 1);
 	rmObjectiveAdd(302024, 302023, true, true, true); // Royal Court ROY
-	rmObjectiveSetTeam(3, 2);
+	rmObjectiveSetTeam(4, 2);
 	rmObjectiveAdd(302025, 302023, true, true, true); // City Hall REV
-	rmObjectiveSetTeam(4, 1);
+	rmObjectiveSetTeam(5, 1);
 	rmObjectiveAdd(302025, 302023, true, true, true); // City Hall ROY
-	rmObjectiveSetTeam(5, 2);
+	rmObjectiveSetTeam(6, 2);
 	rmObjectiveAdd(302026, 302023, true, true, true); // Bastille REV
-	rmObjectiveSetTeam(6, 1);
+	rmObjectiveSetTeam(7, 1);
 	rmObjectiveAdd(302026, 302023, true, true, true); // Bastille ROY
-	rmObjectiveSetTeam(7, 2);
+	rmObjectiveSetTeam(8, 2);
 
 	// ************************* TRIGGERS ******************************
 
@@ -1887,15 +1890,15 @@ rmSetStatusText("",0.70);
 		rmAddTriggerEffect("Objective : Complete");
 
 		if (i==1)
-			rmSetTriggerEffectParamInt("Objective", 2);
-		else
 			rmSetTriggerEffectParamInt("Objective", 3);
+		else
+			rmSetTriggerEffectParamInt("Objective", 4);
 
 		rmAddTriggerEffect("Objective : Incomplete");
 		if (i==1)
-			rmSetTriggerEffectParamInt("Objective", 3);
+			rmSetTriggerEffectParamInt("Objective", 4);
 		else
-			rmSetTriggerEffectParamInt("Objective", 2);
+			rmSetTriggerEffectParamInt("Objective", 3);
 
 		rmAddTriggerEffect("Fire Event");
 		if (i==1)
@@ -1917,15 +1920,15 @@ rmSetStatusText("",0.70);
 		rmAddTriggerEffect("Objective : Complete");
 
 		if (i==1)
-			rmSetTriggerEffectParamInt("Objective", 6);
-		else
 			rmSetTriggerEffectParamInt("Objective", 7);
+		else
+			rmSetTriggerEffectParamInt("Objective", 8);
 
 		rmAddTriggerEffect("Objective : Incomplete");
 		if (i==1)
-			rmSetTriggerEffectParamInt("Objective", 7);
+			rmSetTriggerEffectParamInt("Objective", 8);
 		else
-			rmSetTriggerEffectParamInt("Objective", 6);
+			rmSetTriggerEffectParamInt("Objective", 7);
 
 		rmAddTriggerEffect("Fire Event");
 		if (i==1)
@@ -1947,15 +1950,15 @@ rmSetStatusText("",0.70);
 		rmAddTriggerEffect("Objective : Complete");
 
 		if (i==1)
-			rmSetTriggerEffectParamInt("Objective", 4);
-		else
 			rmSetTriggerEffectParamInt("Objective", 5);
+		else
+			rmSetTriggerEffectParamInt("Objective", 6);
 
 		rmAddTriggerEffect("Objective : Incomplete");
 		if (i==1)
-			rmSetTriggerEffectParamInt("Objective", 5);
+			rmSetTriggerEffectParamInt("Objective", 6);
 		else
-			rmSetTriggerEffectParamInt("Objective", 4);
+			rmSetTriggerEffectParamInt("Objective", 5);
 
 		rmAddTriggerEffect("Fire Event");
 		if (i==1)

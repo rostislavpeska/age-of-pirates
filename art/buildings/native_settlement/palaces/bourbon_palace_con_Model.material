@@ -3,7 +3,7 @@
     <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="buildings\native_settlement\europe\palaces\textures\wall_fr01_mata_BaseColor">
+      <texture name="BaseColor" override="buildings\native_settlement\palaces\textures\royal_palace_mata_BaseColor">
       </texture>
       <texture name="Normals" override="buildings\native_settlement\europe\palaces\textures\wall_fr01_mata_Normals">
       </texture>

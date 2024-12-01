@@ -7,7 +7,7 @@
             <component>
                 dock
                 <assetreference type="GrannyModel">
-                    <file>buildings\native_settlement\europe\palaces\roof_fr01_wall_fr01</file>
+                    <file>buildings\native_settlement\palaces\bourbon_palace_Model</file>
                 </assetreference>
             </component>
             <anim>Idle<component>dock</component></anim>
@@ -22,7 +22,7 @@
         <attachment>garden<include>buildings\native_settlement\palaces\bourbon_garden.xml</include></attachment>
         <component>
             dry dock
-            <assetreference type="GrannyModel"><file>buildings\native_settlement\europe\palaces\roof_fr01_wall_fr01</file></assetreference>
+            <assetreference type="GrannyModel"><file>buildings\native_settlement\palaces\bourbon_palace_Model</file></assetreference>
             <attach a="garden" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
             <decal>
                 <effecttype>bump</effecttype>

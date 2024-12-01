@@ -1,0 +1,150 @@
+<animfile>
+    <definebone>bone_flag_civ</definebone>
+    <definebone>bone_hitpointbar</definebone>
+    <submodel>orchard
+        <attachment>collapse_smoke
+            <component>collapse_smoke
+                <assetreference type="popcornFx">
+                    <file>smoke\collapse_smoke_3x3.pkfx</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>collapse_smoke</component>
+            </anim>
+        </attachment>
+        <component>LIVE
+            <logic type="LowPoly">
+                <normal>
+                    <logic type="Destruction">
+                        <p1>
+                            <assetreference type="GrannyModel">
+                                <file>terrain\plants\grape_vine\GrapeVine_Orchard</file>
+                            </assetreference>
+                        </p1>
+                        <p99>
+                            <assetreference type="GrannyModel">
+                                <file>terrain\plants\grape_vine\GrapeVine_Orchard</file>
+                            </assetreference>
+                        </p99>
+                    </logic>
+                </normal>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\asian_civs\orchard\orchard_grove_base</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>10.00</width>
+                <height>10.00</height>
+            </decal>
+        </component>
+        <component>DEAD
+            <logic type="LowPoly">
+                <normal>
+                    <assetreference type="GrannyModel">
+                        <file>terrain\plants\grape_vine\GrapeVine_Orchard</file>
+                    </assetreference>
+                </normal>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\asian_civs\orchard\orchard_grove_base</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>10.00</width>
+                <height>10.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>LIVE</component>
+            <simskeleton>
+                <model>buildings\asian_civs\orchard\asian_orchard</model>
+            </simskeleton>
+        </anim>
+        <anim>Death
+            <component>DEAD</component>
+            <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        </anim>
+    </submodel>
+    <submodel>generic_con2
+        <attachment>con
+            <component>scaffolding
+                <assetreference type="GrannyModel">
+                    <file>buildings\asian_civs\construction\asi_3x3_stage2</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>scaffolding</component>
+            </anim>
+        </attachment>
+        <component>generic
+            <assetreference type="GrannyModel">
+                <file>terrain\plants\grape_vine\GrapeVine_Orchard</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\asian_civs\orchard\orchard_grove_base</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>10.00</width>
+                <height>10.00</height>
+            </decal>
+            <attach a="con" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        </component>
+        <anim>Idle
+            <component>generic</component>
+        </anim>
+    </submodel>
+    <submodel>sub_construction_stage_02
+        <component>construction_stage_02
+            <assetreference type="GrannyModel">
+                <file>buildings\asian_civs\construction\asi_3x3_stage2</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\asian_civs\orchard\orchard_grove_base</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>10.00</width>
+                <height>10.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>construction_stage_02</component>
+        </anim>
+    </submodel>
+    <submodel>sub_construction_stage_01
+        <component>construction_stage_01
+            <assetreference type="GrannyModel">
+                <file>buildings\asian_civs\construction\asi_3x3_stage1</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\asian_civs\orchard\orchard_grove_base</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>10.00</width>
+                <height>10.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>construction_stage_01</component>
+        </anim>
+    </submodel>
+    <component>livestock pen
+        <logic type="BuildingCompletion">
+            <p0>
+                <submodelref ref="sub_construction_stage_01"></submodelref>
+            </p0>
+            <p33>
+                <submodelref ref="sub_construction_stage_02"></submodelref>
+            </p33>
+            <p66>
+                <submodelref ref="generic_con2"></submodelref>
+            </p66>
+            <p100>
+                <submodelref ref="orchard"></submodelref>
+            </p100>
+        </logic>
+    </component>
+</animfile>
