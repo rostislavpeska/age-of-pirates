@@ -43,12 +43,11 @@ void main(void)
 	rmSetSeaType("great lakes");
 //	rmSetBaseTerrainMix("rockies_grass"); // nwt_grass1	// greatlakes_snow
 	rmTerrainInitialize("great_lakes\ground_snow2_gl", 4.0); // NWterritory\ground_grass2_nwt  NWterritory\ground_grass2_nwt
-	rmSetMapType("rockies"); 
+	rmSetMapType("yukon"); 
 	rmSetMapType("snow");
 	rmSetMapType("land");
 	rmSetLightingSet("WinterWonderLand"); //
 	rmSetGlobalSnow(0.9);
-	
 
 	// Choose Mercs
 	chooseMercs();
@@ -63,8 +62,6 @@ void main(void)
 	subCiv1 = rmGetCivID("zpGrinchVillage");
 	rmSetSubCiv(0, "zpXmassVillage");
 	rmSetSubCiv(1, "zpGrinchVillage");
-
-	
 
 	//Define some classes. These are used later for constraints.
 	int classPlayer = rmDefineClass("Players");
@@ -91,24 +88,28 @@ void main(void)
 	// ************************************* CONTRAINTS *****************************************
 	// These are used to have objects and areas avoid each other
    
-   
 	// Cardinal Directions & Map placement
 	int avoidEdge = rmCreatePieConstraint("Avoid Edge",0.5,0.5, rmXFractionToMeters(0.0),rmXFractionToMeters(0.47), rmDegreesToRadians(0),rmDegreesToRadians(360));
 	int avoidEdgeMore = rmCreatePieConstraint("Avoid Edge More",0.5,0.5, rmXFractionToMeters(0.0),rmXFractionToMeters(0.45), rmDegreesToRadians(0),rmDegreesToRadians(360));
 	int stayEdge = rmCreatePieConstraint("Stay Edge",0.5,0.5,rmXFractionToMeters(0.42), rmXFractionToMeters(0.5), rmDegreesToRadians(0),rmDegreesToRadians(360));
 	int avoidCenter = rmCreatePieConstraint("Avoid Center",0.5,0.5,rmXFractionToMeters(0.28), rmXFractionToMeters(0.5), rmDegreesToRadians(0),rmDegreesToRadians(360));
 	int stayCenter = rmCreatePieConstraint("Stay Center",0.5,0.5,rmXFractionToMeters(0.0), rmXFractionToMeters(0.25), rmDegreesToRadians(0),rmDegreesToRadians(360));
-
+    int stayVillageSide = rmCreatePieConstraint("Stay Village Side", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.45), rmDegreesToRadians(090), rmDegreesToRadians(270));
+    int stayGrinchSide = rmCreatePieConstraint("Stay Grinch Side", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.45), rmDegreesToRadians(270), rmDegreesToRadians(090));
 	
 	// Resource avoidance
 	int avoidForestFar=rmCreateClassDistanceConstraint("avoid forest far", rmClassID("Forest"), 40.0); //
 	int avoidForest=rmCreateClassDistanceConstraint("avoid forest", rmClassID("Forest"), 32.0); //29.0 
 	int avoidForestShort=rmCreateClassDistanceConstraint("avoid forest short", rmClassID("Forest"), 24.0); //
 	int avoidForestMin=rmCreateClassDistanceConstraint("avoid forest min", rmClassID("Forest"), 4.0);
-	int avoidElkFar = rmCreateTypeDistanceConstraint("avoid elk far", "elk", 58.0+PlayerNum);
-	int avoidElk = rmCreateTypeDistanceConstraint("avoid elk", "elk", 45.0);
-	int avoidElkShort = rmCreateTypeDistanceConstraint("avoid elk short", "elk", 16.0);
-	int avoidElkMin = rmCreateTypeDistanceConstraint("avoid elk min", "elk", 5.0);
+	int avoidMooseFar = rmCreateTypeDistanceConstraint("avoid moose far", "Moose", 58.0+PlayerNum);
+	int avoidMoose = rmCreateTypeDistanceConstraint("avoid moose", "Moose", 45.0);
+	int avoidMooseShort = rmCreateTypeDistanceConstraint("avoid moose short", "Moose", 16.0);
+	int avoidMooseMin = rmCreateTypeDistanceConstraint("avoid moose min", "Moose", 5.0);
+	int avoidReindeerFar = rmCreateTypeDistanceConstraint("avoid Reindeer far", "Reindeer", 58.0+PlayerNum);
+	int avoidReindeer = rmCreateTypeDistanceConstraint("avoid Reindeer", "Reindeer", 45.0);
+	int avoidReindeerShort = rmCreateTypeDistanceConstraint("avoid Reindeer short", "Reindeer", 16.0);
+	int avoidReindeerMin = rmCreateTypeDistanceConstraint("avoid Reindeer min", "Reindeer", 5.0);
 	int avoidBerriesFar = rmCreateTypeDistanceConstraint("avoid berries far", "berrybush", 56.0);
 	int avoidBerries = rmCreateTypeDistanceConstraint("avoid  berries", "berrybush", 40.0);
 	int avoidBerriesShort = rmCreateTypeDistanceConstraint("avoid  berries short", "berrybush", 30.0);
@@ -121,8 +122,8 @@ void main(void)
 	int avoidGold = rmCreateClassDistanceConstraint ("gold avoid gold med", rmClassID("Gold"), 30.0);
 	int avoidGoldFar = rmCreateClassDistanceConstraint ("gold avoid gold far", rmClassID("Gold"), 60.0);
 	int avoidGoldVeryFar = rmCreateClassDistanceConstraint ("gold avoid gold very far", rmClassID("Gold"), 72.0);
-	int avoidNuggetShort = rmCreateTypeDistanceConstraint("nugget avoid nugget short", "AbstractNugget", 40.0);
-	int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "AbstractNugget", 38.0);
+	int avoidNuggetShort = rmCreateTypeDistanceConstraint("nugget avoid nugget short", "AbstractNugget", 30.0);
+	int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "AbstractNugget", 44.0);
 	int avoidFish=rmCreateTypeDistanceConstraint("avoid fish", "fish", 8.0);
 	
 	int avoidTownCenterVeryFar=rmCreateTypeDistanceConstraint("avoid Town Center Very Far", "townCenter", 82.0);
@@ -135,8 +136,6 @@ void main(void)
 	int avoidNativesFar = rmCreateClassDistanceConstraint("stuff avoids natives far", rmClassID("natives"), 14.0);
 	int avoidStartingResources  = rmCreateClassDistanceConstraint("avoid starting resource", rmClassID("startingResource"), 8.0);
 	int avoidStartingResourcesShort  = rmCreateClassDistanceConstraint("avoid starting resource short", rmClassID("startingResource"), 4.0);
-	
-	
 
 	// Land and terrain constraints
 	int avoidImpassableLand = rmCreateTerrainDistanceConstraint("avoid impassable land", "Land", false, 6.0);
@@ -149,9 +148,9 @@ void main(void)
 	int stayInWater = rmCreateTerrainMaxDistanceConstraint("stay in water ", "water", true, 0.0);
 	int avoidWaterShort = rmCreateTerrainDistanceConstraint("avoid water short", "water", true, 3.0);
 	int avoidWaterMed = rmCreateTerrainDistanceConstraint("avoid water med", "water", true, 8.0);
-	int avoidPatch = rmCreateClassDistanceConstraint("patch avoid patch", rmClassID("patch"), 12.0);
+	int avoidPatch = rmCreateClassDistanceConstraint("patch avoid patch", rmClassID("patch"), 24.0);
 	int avoidPatch2 = rmCreateClassDistanceConstraint("patch avoid patch 2", rmClassID("patch2"), 12.0);
-	int avoidPatch3 = rmCreateClassDistanceConstraint("patch avoid patch 3", rmClassID("patch3"), 15.0);
+	int avoidPatch3 = rmCreateClassDistanceConstraint("patch avoid patch 3", rmClassID("patch3"), 24.0);
 	int avoidPatch4 = rmCreateClassDistanceConstraint("patch avoid patch 4", rmClassID("patch4"), 24.0);
 	int avoidGrass = rmCreateClassDistanceConstraint("grass avoid grass", rmClassID("grass"), 10.0);
 	int avoidCliffMin = rmCreateClassDistanceConstraint("avoid cliff min", rmClassID("Cliffs"), 1.0);
@@ -166,13 +165,10 @@ void main(void)
 	int avoidColonyShipShort = rmCreateTypeDistanceConstraint("avoid colony ship short", "HomeCityWaterSpawnFlag", 10.0);		
 	
 	// VP avoidance
-	int avoidTradeRoute = rmCreateTradeRouteDistanceConstraint("trade route", 10.0);
-	int avoidTradeRouteShort = rmCreateTradeRouteDistanceConstraint("trade route short", 5.0);
+	int avoidTradeRoute = rmCreateTradeRouteDistanceConstraint("trade route", 8.0);
+	int avoidTradeRouteShort = rmCreateTradeRouteDistanceConstraint("trade route short", 4.0);
 	int avoidTradeRouteSocket = rmCreateTypeDistanceConstraint("avoid trade route socket", "socketTradeRoute", 8.0);
 	int avoidImportantItem=rmCreateClassDistanceConstraint("secrets etc avoid each other", rmClassID("importantItem"), 10.0);
-   
-	
-	
 	
 	// ***********************************************************************************************
 	
@@ -203,24 +199,24 @@ void main(void)
 				if (teamZeroCount == 2) // 2v2
 				{
 					rmSetPlacementTeam(0);
-					rmSetPlacementSection(0.960, 0.080); //
+					rmSetPlacementSection(0.94, 0.06); //
 					rmSetTeamSpacingModifier(0.25);
 					rmPlacePlayersCircular(0.34, 0.34, 0);
 
 					rmSetPlacementTeam(1);
-					rmSetPlacementSection(0.460, 0.580); //
+					rmSetPlacementSection(0.44, 0.56); //
 					rmSetTeamSpacingModifier(0.25);
 					rmPlacePlayersCircular(0.34, 0.34, 0);
 				}
 				else // 3v3, 4v4
 				{
 					rmSetPlacementTeam(0);
-					rmSetPlacementSection(0.930, 0.125); //
+					rmSetPlacementSection(0.90, 0.10); //
 					rmSetTeamSpacingModifier(0.25);
 					rmPlacePlayersCircular(0.34, 0.34, 0);
 
 					rmSetPlacementTeam(1);
-					rmSetPlacementSection(0.430, 0.625); //
+					rmSetPlacementSection(0.40, 0.60); //
 					rmSetTeamSpacingModifier(0.25);
 					rmPlacePlayersCircular(0.34, 0.34, 0);
 				}
@@ -236,9 +232,9 @@ void main(void)
 
 						rmSetPlacementTeam(1);
 						if (teamOneCount == 2)
-							rmSetPlacementSection(0.460, 0.580); //
+							rmSetPlacementSection(0.44, 0.56); //
 						else
-							rmSetPlacementSection(0.400, 0.650); //
+							rmSetPlacementSection(0.40, 0.60); //
 						rmSetTeamSpacingModifier(0.25);
 						rmPlacePlayersCircular(0.34, 0.34, 0);
 					}
@@ -246,9 +242,9 @@ void main(void)
 					{
 						rmSetPlacementTeam(0);
 						if (teamZeroCount == 2)
-							rmSetPlacementSection(0.960, 0.080); //
+							rmSetPlacementSection(0.94, 0.06); //
 						else
-							rmSetPlacementSection(0.900, 0.150); //
+							rmSetPlacementSection(0.90, 0.10); //
 						rmSetTeamSpacingModifier(0.25);
 						rmPlacePlayersCircular(0.34, 0.34, 0);
 
@@ -261,24 +257,24 @@ void main(void)
 					if (teamZeroCount < teamOneCount) // 2v3, 2v4, etc.
 					{
 						rmSetPlacementTeam(0);
-						rmSetPlacementSection(0.960, 0.080); //
+						rmSetPlacementSection(0.93, 0.07); //
 						rmSetTeamSpacingModifier(0.25);
 						rmPlacePlayersCircular(0.34, 0.34, 0);
 
 						rmSetPlacementTeam(1);
-						rmSetPlacementSection(0.400, 0.650); //
+						rmSetPlacementSection(0.40, 0.60); //
 						rmSetTeamSpacingModifier(0.25);
 						rmPlacePlayersCircular(0.34, 0.34, 0);
 					}
 					else // 3v2, 4v2, etc.
 					{
 						rmSetPlacementTeam(0);
-						rmSetPlacementSection(0.900, 0.150); //
+						rmSetPlacementSection(0.90, 0.10); //
 						rmSetTeamSpacingModifier(0.25);
 						rmPlacePlayersCircular(0.34, 0.34, 0);
 
 						rmSetPlacementTeam(1);
-						rmSetPlacementSection(0.460, 0.580); //
+						rmSetPlacementSection(0.43, 0.57); //
 						rmSetTeamSpacingModifier(0.25);
 						rmPlacePlayersCircular(0.34, 0.34, 0);
 					}
@@ -286,12 +282,12 @@ void main(void)
 				else // 3v4, 4v3, etc.
 				{
 					rmSetPlacementTeam(0);
-					rmSetPlacementSection(0.930, 0.125); //
+					rmSetPlacementSection(0.90, 0.10); //
 					rmSetTeamSpacingModifier(0.25);
 					rmPlacePlayersCircular(0.34, 0.34, 0);
 
 					rmSetPlacementTeam(1);
-					rmSetPlacementSection(0.430, 0.625); //
+					rmSetPlacementSection(0.40, 0.60); //
 					rmSetTeamSpacingModifier(0.25);
 					rmPlacePlayersCircular(0.34, 0.34, 0);
 				}
@@ -299,9 +295,7 @@ void main(void)
 		}
 		else // FFA
 		{
-			rmSetPlacementSection(0.380, 0.120);
-		//	rmSetTeamSpacingModifier(0.25);
-			rmPlacePlayersCircular(0.33, 0.33, 0.0);
+			// invalid option
 		}
 	
 		
@@ -311,342 +305,118 @@ void main(void)
 	rmSetStatusText("",0.30);
 	
 	// ******************************************** MAP LAYOUT AND LANDSCAPE DESIGN **************************************************
-	
 	int groundID = rmCreateArea("ground");
     rmSetAreaWarnFailure(groundID, false);
 	rmSetAreaObeyWorldCircleConstraint(groundID, false);
     rmSetAreaSize(groundID, 1.0, 1.0);
-	rmSetAreaMix(groundID, "rockies_grass");	// greatlakes_grass	// nwt_grass1 
-//	rmSetAreaTerrainType(groundID, "great_lakes\ground_snow2_w_gl");
+	if (rmRandFloat(0,1) <= 0.15)
+		rmSetAreaMix(groundID, "rockies_grass");
+	else if (rmRandFloat(0,1) <= 0.20)
+		rmSetAreaMix(groundID, "rockies_grass_snow");
+	else if (rmRandFloat(0,1) <= 0.25)
+		rmSetAreaMix(groundID, "rockies_grass_snowa");
+	else if (rmRandFloat(0,1) <= 0.33)
+		rmSetAreaMix(groundID, "rockies_grass_snowc");
+	else
+		rmSetAreaMix(groundID, "rockies_grass_snowb");
     rmSetAreaCoherence(groundID, 0.0);
-//	rmAddAreaConstraint(groundID, avoidImpassableLandZero);	
-//	rmAddAreaConstraint(groundID, avoidPlateau1);
-//	rmAddAreaConstraint(groundID, avoidPlateau2);
-//	rmAddAreaConstraint(groundID, avoidCliff);
     rmBuildArea(groundID); 
-	
-	
-	//Lake1
-	int Lake1ID = rmCreateArea("Lake1");
-	rmSetAreaSize(Lake1ID, 0.05, 0.055);
-	rmSetAreaLocation(Lake1ID, 1.0, 0.72);
-	rmAddAreaInfluenceSegment(Lake1ID, 1.0, 0.68, 0.83, 0.48); // 0.62, 0.62
-	rmSetAreaWaterType(Lake1ID, "Rockies Lake"); //great lakes ice	// Northwest Territory Water
-	rmSetAreaSmoothDistance(Lake1ID, 12);
-	rmSetAreaCoherence(Lake1ID, 0.6);
-	rmSetAreaObeyWorldCircleConstraint(Lake1ID, false);
-	if (TeamNum <= 2)
-		//rmBuildArea(Lake1ID);
-	
-	int stayNearLake1 = rmCreateAreaMaxDistanceConstraint("stay near lake 1", Lake1ID, 14.0);
-	
-	//Lake2
-	int Lake2ID = rmCreateArea("Lake2");
-	rmSetAreaSize(Lake2ID, 0.05, 0.055);
-	rmSetAreaLocation(Lake2ID, 0.0, 0.28);
-	rmAddAreaInfluenceSegment(Lake2ID, 0.0, 0.32, 0.17, 0.52); // 0.62, 0.62
-	rmSetAreaWaterType(Lake2ID, "Rockies Lake"); //great lakes ice	// Northwest Territory Water
-	rmSetAreaSmoothDistance(Lake2ID, 12);
-	rmSetAreaCoherence(Lake2ID, 0.6);
-	rmSetAreaObeyWorldCircleConstraint(Lake2ID, false);
-	if (TeamNum <= 2)
-		//rmBuildArea(Lake2ID);
-	
-	int stayNearLake2 = rmCreateAreaMaxDistanceConstraint("stay near lake 2", Lake2ID, 14.0);
 
-	//Lake3
-	int Lake3ID = rmCreateArea("Lake3");
-	rmSetAreaSize(Lake3ID, 0.05, 0.0565);
-	rmSetAreaLocation(Lake3ID, 1.0, 0.5);
-	rmAddAreaInfluenceSegment(Lake3ID, 1.0, 0.5, 0.80, 0.5); // 0.62, 0.62
-	rmSetAreaWaterType(Lake3ID, "Rockies Lake"); //great lakes ice	// Northwest Territory Water
-	rmSetAreaSmoothDistance(Lake3ID, 12);
-	rmSetAreaCoherence(Lake3ID, 0.6);
-	rmSetAreaObeyWorldCircleConstraint(Lake3ID, false);
-	if (TeamNum >= 3)
-		//rmBuildArea(Lake3ID);
-	
-	int stayNearLake3 = rmCreateAreaMaxDistanceConstraint("stay near lake 3", Lake3ID, 15.0);
-	
-	// Plateau template
-	int TemplateID = rmCreateArea("plateau template");
-	rmSetAreaSize(TemplateID, 0.34, 0.34);
-	rmSetAreaWarnFailure(TemplateID, false);
-//	rmSetAreaMix(TemplateID, "rockies_snow");
-	rmSetAreaCoherence(TemplateID, 0.65);
-	rmSetAreaSmoothDistance(TemplateID, 10);
-	rmSetAreaLocation(TemplateID, 0.5, 0.5);
-	rmBuildArea(TemplateID);
-	
-	int avoidTemplate = rmCreateAreaDistanceConstraint("avoid template", TemplateID, 3.0);
-	
-	
-	// Snow rim template
-	int Template2ID = rmCreateArea("snow rim template");
-	rmSetAreaSize(Template2ID, 0.50, 0.50);
-	rmSetAreaWarnFailure(Template2ID, false);
-//	rmSetAreaMix(Template2ID, "rockies_snow");
-	rmSetAreaCoherence(Template2ID, 0.8);
-	rmSetAreaSmoothDistance(Template2ID, 6);
-	rmSetAreaLocation(Template2ID, 0.5, 0.5);
-	rmBuildArea(Template2ID);
+	// Trade Routes
+	int tradeRouteID = rmCreateTradeRoute();
+    int tradeRouteID2 = rmCreateTradeRoute();
 
-	int avoidTemplate2 = rmCreateAreaDistanceConstraint("avoid template2", Template2ID, 1.5);
-	
+	int socketID=rmCreateObjectDef("sockets to dock Trade Posts");
+    rmAddObjectDefItem(socketID, "SocketTradeRoute", 1, 0.0);
+    rmSetObjectDefAllowOverlap(socketID, true);
+    rmSetObjectDefMinDistance(socketID, 2.0);
+    rmSetObjectDefMaxDistance(socketID, 8.0);      
 
-	// Border1 template
-	int Template3ID = rmCreateArea("border1 template");
-	rmSetAreaSize(Template3ID, 0.63, 0.63);
-	rmSetAreaWarnFailure(Template3ID, false);
-//	rmSetAreaMix(Template3ID, "rockies_snow");
-	rmSetAreaCoherence(Template3ID, 0.8);
-	rmSetAreaSmoothDistance(Template3ID, 10);
-	rmSetAreaLocation(Template3ID, 0.5, 0.5);
-	rmBuildArea(Template3ID);
-
-	int avoidTemplate3 = rmCreateAreaDistanceConstraint("avoid template3", Template3ID, 1.5);
+	int socketID2=rmCreateObjectDef("sockets to dock Trade Posts2");
+    rmAddObjectDefItem(socketID2, "SocketTradeRoute", 1, 0.0);
+    rmSetObjectDefAllowOverlap(socketID2, true);
+    rmSetObjectDefMinDistance(socketID2, 2.0);
+    rmSetObjectDefMaxDistance(socketID2, 8.0);      
 	
-	// Border2 template
-	int Template4ID = rmCreateArea("border2 template");
-	rmSetAreaSize(Template4ID, 0.67, 0.67);
-	rmSetAreaWarnFailure(Template4ID, false);
-//	rmSetAreaMix(Template4ID, "rockies_snow");
-	rmSetAreaCoherence(Template4ID, 0.9);
-	rmSetAreaSmoothDistance(Template4ID, 12);
-	rmSetAreaLocation(Template4ID, 0.5, 0.5);
-	rmBuildArea(Template4ID);
-
-	int avoidTemplate4 = rmCreateAreaDistanceConstraint("avoid template4", Template4ID, 1.5);
+	rmSetObjectDefTradeRouteID(socketID, tradeRouteID);
+	rmAddTradeRouteWaypoint(tradeRouteID, 0.92, 0.80);
+	rmAddRandomTradeRouteWaypoints(tradeRouteID, 0.70, 0.50, 2, 4); 
+	rmAddRandomTradeRouteWaypoints(tradeRouteID, 0.92, 0.20, 2, 4); 
+    
+    rmSetObjectDefTradeRouteID(socketID2, tradeRouteID2);
+	rmAddTradeRouteWaypoint(tradeRouteID2, 0.08, 0.80);
+	rmAddRandomTradeRouteWaypoints(tradeRouteID2, 0.30, 0.50, 2, 4); 
+	rmAddRandomTradeRouteWaypoints(tradeRouteID2, 0.08, 0.20, 2, 4); 
 	
+    rmBuildTradeRoute(tradeRouteID, "xmassnow");
+    rmBuildTradeRoute(tradeRouteID2, "xmassnow");
 	
-	// Plateau
-	for(i=1; < 3)
+	float sktLoc1 = 0.10;
+	float sktLoc2 = 0.50;
+	float sktLoc3 = 0.90;
+	
+    vector socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, sktLoc1);
+    rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
+	if (PlayerNum > 4)
 	{
-		int plateauID = rmCreateArea("plateau"+i);
-		rmSetAreaSize(plateauID, 0.30, 0.30); //0.23, 0.23
-		rmSetAreaWarnFailure(plateauID, false);
-		rmSetAreaObeyWorldCircleConstraint(plateauID, false);
-	//	rmSetAreaCliffType(plateauID, "araucania north coast"); // araucania north coast
-	//	rmSetAreaCliffPainting(plateauID, false, true, true, 0.5 , true); //  paintGround,  paintOutsideEdge,  paintSide,  minSideHeight,  paintInsideEdge
-		rmSetAreaMix(plateauID, "rockies_grass_snowa");	// greatlakes_grass	// nwt_grass1 
-	//	rmSetAreaTerrainType(plateauID, "yukon\ground_grass2_gl");
-		rmSetAreaBaseHeight(plateauID, 7.0);
-		rmSetAreaHeightBlend(plateauID, 2.0);
-		rmSetAreaElevationType(plateauID, cElevTurbulence);
-		rmSetAreaElevationVariation(plateauID, 7.0);
-		rmSetAreaElevationMinFrequency(plateauID, 0.05);
-		rmSetAreaElevationOctaves(plateauID, 3);
-		rmSetAreaElevationPersistence(plateauID, 0.5);
-	//	rmSetAreaBaseHeight(plateauID, 5, 0.0, 0.8); 
-	//	rmSetAreaCliffEdge(plateauID, 5, 0.083, 0.0, 0.30, 1); 
-		rmSetAreaCoherence(plateauID, 0.8);
-		rmSetAreaSmoothDistance(plateauID, 6);
-	//	rmAddAreaToClass(plateauID, rmClassID("Cliffs"));
-		rmAddAreaConstraint(plateauID, avoidTemplate);	
-		rmAddAreaConstraint (plateauID, avoidImpassableLandMin);
-//		rmAddAreaConstraint (plateauID, avoidWaterMed);
-		if (i < 2)
-			rmSetAreaLocation(plateauID, 0.0, 1.0);
-		else	
-			rmSetAreaLocation(plateauID, 1.0, 0.0);
-		if (TeamNum <= 2)
-			//rmBuildArea(plateauID);
-		rmCreateAreaDistanceConstraint("avoid plateau "+i, plateauID, 0.2);
-		rmCreateAreaMaxDistanceConstraint("stay in plateau "+i, plateauID, 0.0);
+		socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, sktLoc2);
+		rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);		
 	}
+	socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, sktLoc3);
+    rmPlaceObjectDefAtPoint(socketID, 0, socketLoc1);
 	
-	int avoidPlateau1 = rmConstraintID("avoid plateau 1");
-	int avoidPlateau2 = rmConstraintID("avoid plateau 2");
-	int stayInPlateau1 = rmConstraintID("stay in plateau 1");
-	int stayInPlateau2 = rmConstraintID("stay in plateau 2");
-		
-	
-	// Plateau FFA
-	int plateau3ID = rmCreateArea("plateau FFA");
-	rmSetAreaSize(plateau3ID, 0.60, 0.60); //0.23, 0.23
-	rmSetAreaWarnFailure(plateau3ID, false);
-	rmSetAreaObeyWorldCircleConstraint(plateau3ID, false);
-//	rmSetAreaCliffType(plateau3ID, "araucania north coast"); // araucania north coast
-//	rmSetAreaCliffPainting(plateau3ID, false, true, true, 0.5 , true); //  paintGround,  paintOutsideEdge,  paintSide,  minSideHeight,  paintInsideEdge
-	rmSetAreaMix(plateau3ID, "rockies_grass_snowa");	// greatlakes_grass	// nwt_grass1 
-//	rmSetAreaTerrainType(plateau3ID, "yukon\ground_grass2_gl");
-	rmSetAreaBaseHeight(plateau3ID, 7.0);
-	rmSetAreaHeightBlend(plateau3ID, 2.0);
-	rmSetAreaElevationType(plateau3ID, cElevTurbulence);
-	rmSetAreaElevationVariation(plateau3ID, 7.0);
-	rmSetAreaElevationMinFrequency(plateau3ID, 0.05);
-	rmSetAreaElevationOctaves(plateau3ID, 3);
-	rmSetAreaElevationPersistence(plateau3ID, 0.5);
-//	rmSetAreaBaseHeight(plateau3ID, 5, 0.0, 0.8); 
-//	rmSetAreaCliffEdge(plateau3ID, 5, 0.083, 0.0, 0.30, 1); 
-	rmSetAreaCoherence(plateau3ID, 0.8);
-	rmSetAreaSmoothDistance(plateau3ID, 6);
-//	rmAddAreaToClass(plateau3ID, rmClassID("Cliffs"));
-	rmAddAreaConstraint(plateau3ID, avoidTemplate);	
-//	rmAddAreaConstraint (plateau3ID, avoidWaterMed);
-	rmAddAreaConstraint (plateau3ID, avoidImpassableLandMin);
-	rmSetAreaLocation(plateau3ID, 0.0, 0.5);
-	if (TeamNum >= 3)
-		rmBuildArea(plateau3ID);
-	
-	int avoidPlateau3 = rmCreateAreaDistanceConstraint("avoid plateau 3", plateau3ID, 3.0);
-	int stayInPlateau3 = rmCreateAreaMaxDistanceConstraint("stay in plateau 3", plateau3ID, 0.0);
-
-	
-	// Snow rim
-	for(i=1; < 3)
+    vector socketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID2, sktLoc1);
+    rmPlaceObjectDefAtPoint(socketID2, 0, socketLoc2);
+	if (PlayerNum > 4)
 	{
-		int snowrimID = rmCreateArea("snow rim"+i);
-		rmSetAreaSize(snowrimID, 0.17, 0.17); //0.08, 0.08
-		rmSetAreaWarnFailure(snowrimID, false);
-		rmSetAreaObeyWorldCircleConstraint(snowrimID, false);
-		rmSetAreaMix(snowrimID, "rockies_grass_snowb");
-//		rmSetAreaTerrainType(snowrimID, "araucania\ground_snow3_ara");
-//		rmSetAreaTerrainType(snowrimID, "yukon\ground2_yuk");
-//		rmAddAreaTerrainLayer(snowrimID, "yukon\ground1_yuk", 0, 2);
-		rmSetAreaCoherence(snowrimID, 1.0);
-		rmAddAreaConstraint(snowrimID, avoidTemplate);		
-		if (i < 2)
-			rmSetAreaLocation(snowrimID, 0.0, 1.0);
-		else	
-			rmSetAreaLocation(snowrimID, 1.0, 0.0);
-		rmAddAreaConstraint(snowrimID, avoidTemplate2);
-		rmAddAreaConstraint (snowrimID, avoidImpassableLand);
-		if (TeamNum <= 2)
-			rmBuildArea(snowrimID);
-		rmCreateAreaDistanceConstraint("avoid snow rim "+i, snowrimID, 3.0);
-		rmCreateAreaDistanceConstraint("avoid snow rim far "+i, snowrimID, 15.0);
-		rmCreateAreaMaxDistanceConstraint("stay in snow rim "+i, snowrimID, 0.0);
+		socketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID2, sktLoc2);
+		rmPlaceObjectDefAtPoint(socketID2, 0, socketLoc2);
 	}
-	
-	int avoidSnowRim1 = rmConstraintID("avoid snow rim 1");
-	int avoidSnowRim2 = rmConstraintID("avoid snow rim 2");
-	int avoidSnowRim1Far = rmConstraintID("avoid snow rim far 1");
-	int avoidSnowRim2Far = rmConstraintID("avoid snow rim far 2");
-	int stayInSnowRim1 = rmConstraintID("stay in snow rim 1");
-	int stayInSnowRim2 = rmConstraintID("stay in snow rim 2");
-	
-	
-	// Snow rim FFA
-	int snowrim3ID = rmCreateArea("snow rim FFA");
-	rmSetAreaSize(snowrim3ID, 0.38, 0.38); //0.08, 0.08
-	rmSetAreaWarnFailure(snowrim3ID, false);
-	rmSetAreaObeyWorldCircleConstraint(snowrim3ID, false);
-	rmSetAreaMix(snowrim3ID, "rockies_grass_snowb");
-//	rmSetAreaTerrainType(snowrim3ID, "araucania\ground_snow3_ara");
-//	rmSetAreaTerrainType(snowrim3ID, "yukon\ground2_yuk");
-//	rmAddAreaTerrainLayer(snowrim3ID, "yukon\ground1_yuk", 0, 2);
-	rmSetAreaCoherence(snowrim3ID, 1.0);
-	rmAddAreaConstraint(snowrim3ID, avoidTemplate);		
-	rmSetAreaLocation(snowrim3ID, 0.0, 0.5);
-	rmAddAreaConstraint(snowrim3ID, avoidTemplate2);
-	rmAddAreaConstraint (snowrim3ID, avoidImpassableLand);
-	if (TeamNum >= 3)
-		rmBuildArea(snowrim3ID);
-			
-	int avoidSnowRim3 = rmCreateAreaDistanceConstraint("avoid snow rim 3 ", snowrim3ID, 3.0);
-	int avoidSnowRim3Far = rmCreateAreaDistanceConstraint("avoid snow rim far 3 ", snowrim3ID, 15.0);
-	int stayInSnowRim3 = rmCreateAreaMaxDistanceConstraint("stay in snow rim 3", snowrim3ID, 0.0);
-
-	
-	// Rocky border
-	for(i=1; < 3)
-	{
-		int borderID = rmCreateArea("border"+i);
-		rmSetAreaSize(borderID, 0.10, 0.10); //0.08, 0.08
-		rmSetAreaWarnFailure(borderID, false);
-		rmSetAreaObeyWorldCircleConstraint(borderID, false);
-		rmSetAreaCliffType(borderID, "rocky mountain edge"); //new england snow, rocky mountain edge
-	//	rmSetAreaCliffPainting(borderID, false, true, true, true); //  paintGround,  paintOutsideEdge,  paintSide,  minSideHeight,  paintInsideEdge
-		rmSetAreaTerrainType(borderID, "rockies\groundsnow1_roc");
-		rmSetAreaCliffHeight(borderID, 10, 0.0, 0.2); 
-		rmSetAreaCliffEdge(borderID, 1, 1.0, 0.0, 0.0, 1); 
-		rmSetAreaCoherence(borderID, 0.5);
-		rmSetAreaSmoothDistance(borderID, 4);
-		rmAddAreaToClass(borderID, rmClassID("Cliffs"));
-		if (i <2)
-			rmSetAreaLocation(borderID, 0.0, 0.7);
-		else
-			rmSetAreaLocation(borderID, 1.0, 0.3);
-		rmAddAreaConstraint(borderID, avoidTemplate3);
-		rmAddAreaConstraint (borderID, avoidImpassableLandMin);
-		rmAddAreaConstraint (borderID, avoidWaterMed);
-		if (TeamNum <= 2)
-			rmBuildArea(borderID);
-	}
-	
-	int avoidBorder = rmCreateAreaDistanceConstraint("avoid border", borderID, 8.0);
-
-	
-	// Rocky border FFA
-	int border3ID = rmCreateArea("border FFA");
-	rmSetAreaSize(border3ID, 0.23, 0.23); //0.08, 0.08
-	rmSetAreaWarnFailure(border3ID, false);
-	rmSetAreaObeyWorldCircleConstraint(border3ID, false);
-	rmSetAreaCliffType(border3ID, "rocky mountain edge"); //new england snow, rocky mountain edge
-//	rmSetAreaCliffPainting(border3ID, false, true, true, true); //  paintGround,  paintOutsideEdge,  paintSide,  minSideHeight,  paintInsideEdge
-	rmSetAreaTerrainType(border3ID, "rockies\groundsnow1_roc");
-	rmSetAreaCliffHeight(border3ID, 10, 0.0, 0.2); 
-	rmSetAreaCliffEdge(border3ID, 1, 1.0, 0.0, 0.0, 1); 
-	rmSetAreaCoherence(border3ID, 0.5);
-	rmSetAreaSmoothDistance(border3ID, 4);
-	rmAddAreaToClass(border3ID, rmClassID("Cliffs"));
-	rmSetAreaLocation(border3ID, 0.0, 0.5);
-	rmAddAreaConstraint(border3ID, avoidTemplate3);
-	rmAddAreaConstraint (border3ID, avoidImpassableLandMin);
-	rmAddAreaConstraint (border3ID, avoidWaterMed);
-	if (TeamNum >= 3)
-		rmBuildArea(border3ID);
-		
-	int avoidBorder3 = rmCreateAreaDistanceConstraint("avoid border 3", border3ID, 8.0);
-	
+	socketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID2, sktLoc3);
+    rmPlaceObjectDefAtPoint(socketID2, 0, socketLoc2);
 
 	// Grinch Mountain
-	// paint it snowy
-		int grinchMountainSnowID = rmCreateArea("grinch snow rim");
-		rmSetAreaSize(grinchMountainSnowID, 0.37, 0.37); //0.08, 0.08
-		rmSetAreaWarnFailure(grinchMountainSnowID, false);
-		rmSetAreaObeyWorldCircleConstraint(grinchMountainSnowID, false);
-		rmSetAreaMix(grinchMountainSnowID, "rockies_snow");
-			rmSetAreaBaseHeight(grinchMountainSnowID, 4.0);
-			rmSetAreaHeightBlend(grinchMountainSnowID, 2.0);
-			rmSetAreaElevationType(grinchMountainSnowID, cElevTurbulence);
-			rmSetAreaElevationVariation(grinchMountainSnowID, 5.0);
-			rmSetAreaElevationMinFrequency(grinchMountainSnowID, 0.05);
-			rmSetAreaElevationOctaves(grinchMountainSnowID, 3);
-			rmSetAreaElevationPersistence(grinchMountainSnowID, 0.5);
-//		rmSetAreaTerrainType(grinchMountainSnowID, "araucania\ground_snow3_ara");
-//		rmSetAreaTerrainType(grinchMountainSnowID, "yukon\ground2_yuk");
-//		rmAddAreaTerrainLayer(grinchMountainSnowID, "yukon\ground1_yuk", 0, 2);
-		rmSetAreaCoherence(grinchMountainSnowID, 1.0);
-		rmSetAreaLocation(grinchMountainSnowID, 0.5, 1.0);
-		rmBuildArea(grinchMountainSnowID);
-
-
-	// cliff portion
-		int grinchMountainBaseID = rmCreateArea("player level");
+		// cliff portion
+		int grinchMountainBaseID = rmCreateArea("grinch mountain");
 		rmSetAreaLocation(grinchMountainBaseID, 0.5, 1.0);
 		rmSetAreaWarnFailure(grinchMountainBaseID, false);
-		rmSetAreaSize(grinchMountainBaseID,0.37);
-		rmSetAreaCoherence(grinchMountainBaseID, 0.90);
+		rmSetAreaSize(grinchMountainBaseID, 0.33);
+		rmSetAreaCoherence(grinchMountainBaseID, 0.85);
 		rmSetAreaObeyWorldCircleConstraint(grinchMountainBaseID, false);
 		rmSetAreaTerrainType(grinchMountainBaseID, "rockies\groundsnow1_roc");  
 		rmSetAreaCliffType(grinchMountainBaseID, "rocky mountain edge");  
 		rmSetAreaCliffEdge(grinchMountainBaseID, 1, 1.0, 0.0, 0.0, 0);
-		rmSetAreaCliffHeight(grinchMountainBaseID, 4, 0.0, 0.2);
+		rmSetAreaCliffEdge(grinchMountainBaseID, 5, 0.1, 0.0, 0.34, 1);
+		rmSetAreaCliffHeight(grinchMountainBaseID, 10, 0.0, 0.2);
 		rmSetAreaCliffPainting(grinchMountainBaseID, false, false, true);
 	//	rmAddAreaToClass(grinchMountainBaseID, rmClassID("classCliff"));
+		rmAddAreaConstraint(grinchMountainBaseID, avoidTradeRoute);
+		rmAddAreaConstraint(grinchMountainBaseID, avoidTradeRouteSocket);
 		rmBuildArea(grinchMountainBaseID);	
+
+		int avoidGrinchMountain = rmCreateAreaDistanceConstraint("avoid grinch mountain", grinchMountainBaseID, 8.0);
+		int StayInGrinchMountain = rmCreateAreaMaxDistanceConstraint("stay in grinch mountain", grinchMountainBaseID, 0.0);
+		int StayNearGrinchMountain = rmCreateAreaMaxDistanceConstraint("stay near grinch mountain", grinchMountainBaseID, 2.0);
+
+		// paint it snowy
+		int grinchMountainSnowID = rmCreateArea("grinch snow paint");
+		rmSetAreaSize(grinchMountainSnowID, 0.35);
+		rmSetAreaWarnFailure(grinchMountainSnowID, false);
+		rmSetAreaObeyWorldCircleConstraint(grinchMountainSnowID, false);
+		rmSetAreaMix(grinchMountainSnowID, "rockies_snow");
+		rmSetAreaCoherence(grinchMountainSnowID, 1.0);
+		rmSetAreaLocation(grinchMountainSnowID, 0.5, 1.0);
+		rmAddAreaConstraint(grinchMountainSnowID, StayNearGrinchMountain);
+		rmBuildArea(grinchMountainSnowID);
 	
-	
-	// Patches yellow flowers
-	for (i=0; < 12*PlayerNum)
+	// Patches 
+	for (i=0; < 3*PlayerNum)
     {
-        int patch1ID = rmCreateArea("plateau yellow patch"+i);
+        int patch1ID = rmCreateArea("plateau patch"+i);
         rmSetAreaWarnFailure(patch1ID, false);
 		rmSetAreaObeyWorldCircleConstraint(patch1ID, false);
-        rmSetAreaSize(patch1ID, rmAreaTilesToFraction(80), rmAreaTilesToFraction(120));
-		rmSetAreaTerrainType(patch1ID, "rockies\ground1_roc");	// great_lakes\ground_snow1_gl	// NWterritory\ground_grass5_nwt
+        rmSetAreaSize(patch1ID, rmAreaTilesToFraction(99), rmAreaTilesToFraction(123));
+		rmSetAreaMix(patch1ID, "italy_snow_dirt");
         rmAddAreaToClass(patch1ID, rmClassID("patch"));
         rmSetAreaMinBlobs(patch1ID, 1);
         rmSetAreaMaxBlobs(patch1ID, 5);
@@ -655,28 +425,17 @@ void main(void)
         rmSetAreaCoherence(patch1ID, 0.0);
 		rmAddAreaConstraint(patch1ID, avoidImpassableLandMin);
 		rmAddAreaConstraint(patch1ID, avoidPatch);
-		if (TeamNum <= 2)
-		{
-			rmAddAreaConstraint(patch1ID, avoidSnowRim1Far);
-			rmAddAreaConstraint(patch1ID, avoidSnowRim2Far);
-		}
-		else
-			rmAddAreaConstraint(patch1ID, avoidSnowRim3Far);
-//		rmAddAreaConstraint(patch1ID, avoidBorder);
-		rmAddAreaConstraint(patch1ID, avoidCliff);
+		rmAddAreaConstraint(patch1ID, StayInGrinchMountain);
         rmBuildArea(patch1ID); 
     }
 	
-	// Patches white flowers
-	for (i=0; < 12*PlayerNum)
+	for (i=0; < 8*PlayerNum)
     {
-        int patch2ID = rmCreateArea("plateau white patch"+i);
+        int patch2ID = rmCreateArea("grass patch"+i);
         rmSetAreaWarnFailure(patch2ID, false);
 		rmSetAreaObeyWorldCircleConstraint(patch2ID, false);
-        rmSetAreaSize(patch2ID, rmAreaTilesToFraction(80), rmAreaTilesToFraction(120));
-//		rmSetAreaTerrainType(patch2ID, "great_lakes\ground_snow1_w_gl");
-        rmAddAreaTerrainReplacement(patch1ID, "NWterritory\ground_grass2_nwt", "NWterritory\ground_grass5_nwt"); 
-	//	rmSetAreaTerrainType(patch2ID, "NWterritory\ground_grass5_nwt");
+        rmSetAreaSize(patch2ID, rmAreaTilesToFraction(99), rmAreaTilesToFraction(123));
+		rmSetAreaMix(patch2ID, "italy_snow");
 	    rmAddAreaToClass(patch2ID, rmClassID("patch2"));
         rmSetAreaMinBlobs(patch2ID, 1);
         rmSetAreaMaxBlobs(patch2ID, 5);
@@ -685,31 +444,21 @@ void main(void)
         rmSetAreaCoherence(patch2ID, 0.0);
 		rmAddAreaConstraint(patch2ID, avoidImpassableLandMin);
 		rmAddAreaConstraint(patch2ID, avoidPatch2);
-		if (TeamNum <= 2)
-		{
-			rmAddAreaConstraint(patch2ID, avoidSnowRim1Far);
-			rmAddAreaConstraint(patch2ID, avoidSnowRim2Far);
-		}
-		else
-			rmAddAreaConstraint(patch2ID, avoidSnowRim3Far);
-//		rmAddAreaConstraint(patch2ID, avoidBorder);
-		rmAddAreaConstraint(patch2ID, avoidCliff);
-//        rmBuildArea(patch2ID); 
+		rmAddAreaConstraint(patch2ID, avoidGrinchMountain);
+        rmBuildArea(patch2ID); 
     }
 	
 	// Players area
 	for (i=1; < numPlayer)
 	{
-	int playerareaID = rmCreateArea("playerarea"+i);
-	rmSetPlayerArea(i, playerareaID);
-	rmSetAreaSize(playerareaID, 0.06, 0.06);
-	rmSetAreaCoherence(playerareaID, 1.0);
-	rmSetAreaWarnFailure(playerareaID, false);
-//	rmSetAreaMix(playerareaID, "rockies_snow");
-	rmSetAreaLocPlayer(playerareaID, i);
-	rmBuildArea(playerareaID);
-	int avoidPlayerArea = rmCreateAreaDistanceConstraint("avoid player area "+i, playerareaID, 2.0);
-	int stayInPlayerArea = rmCreateAreaMaxDistanceConstraint("stay in player area "+i, playerareaID, 0.0);
+		int playerareaID = rmCreateArea("playerarea"+i);
+		rmSetPlayerArea(i, playerareaID);
+		rmSetAreaSize(playerareaID, 0.06, 0.06);
+		rmSetAreaCoherence(playerareaID, 1.0);
+		rmSetAreaWarnFailure(playerareaID, false);
+//		rmSetAreaMix(playerareaID, "rockies_snow");
+		rmSetAreaLocPlayer(playerareaID, i);
+		rmBuildArea(playerareaID);
 	}
 
 	// ******************************************************************************************************
@@ -719,20 +468,9 @@ void main(void)
 
 	// ------------------------------------------------------ KOTH ---------------------------------------------------------------------
 
-	if (rmGetIsKOTH()) {
-
-		int randLoc = rmRandInt(1,3);
-		float xLoc = 0.5;
-		float yLoc = 0.5;
-		float walk = 0.00;
-
-		ypKingsHillPlacer(xLoc, yLoc, walk, 0);
-		rmEchoInfo("XLOC = "+xLoc);
-		rmEchoInfo("XLOC = "+yLoc);
-	}
+//		invalid option
 	
 	// ******************************************** NATIVES *************************************************
-
 	int nativeID0 = -1;
     int nativeID1 = -1;
 	int nativeID2 = -1;
@@ -828,71 +566,63 @@ void main(void)
 	int TCID = rmCreateObjectDef("player TC");
 	int startingUnits = rmCreateStartingUnitsObjectDef(5.0);
 	if (rmGetNomadStart())
-	{
 		rmAddObjectDefItem(TCID, "CoveredWagon", 1, 0.0);
-	}
 	else
-	{
-	rmAddObjectDefItem(TCID, "TownCenter", 1, 0.0);
-	}
+		rmAddObjectDefItem(TCID, "TownCenter", 1, 0.0);
 	rmAddObjectDefToClass(TCID, classStartingResource);
 	rmSetObjectDefMinDistance(TCID, 0.0);
 	rmSetObjectDefMaxDistance(TCID, 0.0);
     
-    if(cNumberNonGaiaPlayers>4){
-        rmSetObjectDefMaxDistance(TCID, 0.0);
-    }
-    int teamZeroCount_dk = rmGetNumberPlayersOnTeam(0);
-	int teamOneCount_dk = rmGetNumberPlayersOnTeam(1);
-    if((cNumberTeams == 2) && (teamZeroCount_dk != teamOneCount_dk)){
-        rmSetObjectDefMaxDistance(TCID, 0.0);
-    }
-    
 	// Starting mines
-	int playergoldID = rmCreateObjectDef("player mine");
-	rmAddObjectDefItem(playergoldID, "minetin", 1, 0);
-	rmSetObjectDefMinDistance(playergoldID, 12.0);
-	rmSetObjectDefMaxDistance(playergoldID, 14.0);
-	rmAddObjectDefToClass(playergoldID, classStartingResource);
-	rmAddObjectDefToClass(playergoldID, classGold);
-	rmAddObjectDefConstraint(playergoldID, avoidImpassableLand);
-	rmAddObjectDefConstraint(playergoldID, avoidNatives);
-	rmAddObjectDefConstraint(playergoldID, avoidStartingResources);
-	rmAddObjectDefConstraint(playergoldID, stayMidIsland);
+	int playerGoldID = rmCreateObjectDef("player mine");
+	rmAddObjectDefItem(playerGoldID, "MineCopper", 1, 0);
+	rmSetObjectDefMinDistance(playerGoldID, 12.0);
+	rmSetObjectDefMaxDistance(playerGoldID, 14.0);
+	rmAddObjectDefToClass(playerGoldID, classStartingResource);
+	rmAddObjectDefToClass(playerGoldID, classGold);
+	rmAddObjectDefConstraint(playerGoldID, avoidImpassableLand);
+	rmAddObjectDefConstraint(playerGoldID, avoidNatives);
+	rmAddObjectDefConstraint(playerGoldID, avoidStartingResources);
+	rmAddObjectDefConstraint(playerGoldID, stayMidIsland);
 	
 	// 2nd mine
-	int playergold2ID = rmCreateObjectDef("player second mine");
-	rmAddObjectDefItem(playergold2ID, "minetin", 1, 0);
-	rmSetObjectDefMinDistance(playergold2ID, 40.0); //58
-	rmSetObjectDefMaxDistance(playergold2ID, 44.0); //62
-	rmAddObjectDefToClass(playergold2ID, classStartingResource);
-	rmAddObjectDefToClass(playergold2ID, classGold);
-	rmAddObjectDefConstraint(playergold2ID, avoidImpassableLand);
-	rmAddObjectDefConstraint(playergold2ID, avoidCliff);
-	rmAddObjectDefConstraint(playergold2ID, avoidNatives);
-	rmAddObjectDefConstraint(playergold2ID, avoidGoldTypeShort);
-	rmAddObjectDefConstraint(playergold2ID, avoidStartingResources);
-	rmAddObjectDefConstraint(playergold2ID, avoidCenter);
-	rmAddObjectDefConstraint(playergold2ID, avoidMidIslandFar);
-//	if (teamZeroCount != teamOneCount)
-		rmAddObjectDefConstraint(playergold2ID, stayNearEdge);
+	int playerGold2ID = rmCreateObjectDef("player second mine");
+	rmAddObjectDefItem(playerGold2ID, "MineGold", 1, 0);
+	rmSetObjectDefMinDistance(playerGold2ID, 40.0); //58
+	rmSetObjectDefMaxDistance(playerGold2ID, 44.0); //62
+	rmAddObjectDefToClass(playerGold2ID, classStartingResource);
+	rmAddObjectDefToClass(playerGold2ID, classGold);
+	rmAddObjectDefConstraint(playerGold2ID, avoidImpassableLand);
+	rmAddObjectDefConstraint(playerGold2ID, avoidNatives);
+	rmAddObjectDefConstraint(playerGold2ID, avoidGoldTypeShort);
+	rmAddObjectDefConstraint(playerGold2ID, avoidStartingResources);
+	rmAddObjectDefConstraint(playerGold2ID, avoidCenter);
+	rmAddObjectDefConstraint(playerGold2ID, avoidMidIslandFar);
 	
 	// Starting berries
-	int playerberriesID = rmCreateObjectDef("player berries");
-	rmAddObjectDefItem(playerberriesID, "berrybush", 4, 4.0);
-	rmSetObjectDefMinDistance(playerberriesID, 12.0);
-	rmSetObjectDefMaxDistance(playerberriesID, 14.0);
-	rmAddObjectDefToClass(playerberriesID, classStartingResource);
-	rmAddObjectDefConstraint(playerberriesID, avoidTradeRoute);
-	rmAddObjectDefConstraint(playerberriesID, avoidImpassableLand);
-	rmAddObjectDefConstraint(playerberriesID, avoidNatives);
-	rmAddObjectDefConstraint(playerberriesID, avoidStartingResources);
-//	if (PlayerNum == 2)
-//		rmAddObjectDefConstraint(playerberriesID, stayMidIsland);
+	int playerBerriesID = rmCreateObjectDef("player berries");
+	rmAddObjectDefItem(playerBerriesID, "berrybush", 4, 4.0);
+	rmSetObjectDefMinDistance(playerBerriesID, 12.0);
+	rmSetObjectDefMaxDistance(playerBerriesID, 14.0);
+	rmAddObjectDefToClass(playerBerriesID, classStartingResource);
+	rmAddObjectDefConstraint(playerBerriesID, avoidImpassableLand);
+	rmAddObjectDefConstraint(playerBerriesID, avoidNatives);
+	rmAddObjectDefConstraint(playerBerriesID, avoidStartingResources);
 	
 	// Starting trees
+	int playerTreeChristmasID = rmCreateObjectDef("player trees xmas");
+	rmAddObjectDefItem(playerTreeChristmasID, "zpChristmassTree", 5, 5.0);
+    rmSetObjectDefMinDistance(playerTreeChristmasID, 12);
+    rmSetObjectDefMaxDistance(playerTreeChristmasID, 16);
+	rmAddObjectDefToClass(playerTreeChristmasID, classStartingResource);
+	rmAddObjectDefToClass(playerTreeChristmasID, classForest);
+	rmAddObjectDefConstraint(playerTreeChristmasID, avoidForestShort);
+    rmAddObjectDefConstraint(playerTreeChristmasID, avoidImpassableLand);
+	rmAddObjectDefConstraint(playerTreeChristmasID, avoidStartingResourcesShort);
+	rmAddObjectDefConstraint(playerTreeChristmasID, avoidGrinchMountain);
+
 	int playerTreeID = rmCreateObjectDef("player trees");
-	rmAddObjectDefItem(playerTreeID, "ypTreeHimalayas", rmRandInt(5,5), 5.0);	// TreeGreatLakesSnow
+	rmAddObjectDefItem(playerTreeID, "TreeGreatLakesSnow", 5, 5.0);
     rmSetObjectDefMinDistance(playerTreeID, 12);
     rmSetObjectDefMaxDistance(playerTreeID, 16);
 	rmAddObjectDefToClass(playerTreeID, classStartingResource);
@@ -900,57 +630,80 @@ void main(void)
 	rmAddObjectDefConstraint(playerTreeID, avoidForestShort);
     rmAddObjectDefConstraint(playerTreeID, avoidImpassableLand);
 	rmAddObjectDefConstraint(playerTreeID, avoidStartingResourcesShort);
-	rmAddObjectDefConstraint(playerTreeID, avoidPlateau1);
-	rmAddObjectDefConstraint(playerTreeID, avoidPlateau2);
+	rmAddObjectDefConstraint(playerTreeID, StayInGrinchMountain);
+	
+	// Starting trees far
+	int playerTreeChristmas2ID = rmCreateObjectDef("player trees xmas far");
+	rmAddObjectDefItem(playerTreeChristmas2ID, "zpChristmassTree", 1, 4.0);
+	rmAddObjectDefItem(playerTreeChristmas2ID, "TreeYukon", 6, 8.0);
+	rmAddObjectDefItem(playerTreeChristmas2ID, "TreeYukonSnow", 6, 8.0);
+    rmSetObjectDefMinDistance(playerTreeChristmas2ID, 36);
+    rmSetObjectDefMaxDistance(playerTreeChristmas2ID, 40);
+	rmAddObjectDefToClass(playerTreeChristmas2ID, classStartingResource);
+	rmAddObjectDefToClass(playerTreeChristmas2ID, classForest);
+	rmAddObjectDefConstraint(playerTreeChristmas2ID, avoidForest);
+    rmAddObjectDefConstraint(playerTreeChristmas2ID, avoidImpassableLand);
+	rmAddObjectDefConstraint(playerTreeChristmas2ID, avoidStartingResources);
+	rmAddObjectDefConstraint(playerTreeChristmas2ID, avoidMidIslandMin);
+	rmAddObjectDefConstraint(playerTreeChristmas2ID, avoidNatives);
+	rmAddObjectDefConstraint(playerTreeChristmas2ID, avoidGrinchMountain);
+
+	int playerTree2ID = rmCreateObjectDef("player trees far");
+	rmAddObjectDefItem(playerTree2ID, "TreeGreatLakesSnow", 7, 8.0);
+	rmAddObjectDefItem(playerTree2ID, "TreeYukonSnow", 6, 8.0);
+    rmSetObjectDefMinDistance(playerTree2ID, 36);
+    rmSetObjectDefMaxDistance(playerTree2ID, 40);
+	rmAddObjectDefToClass(playerTree2ID, classStartingResource);
+	rmAddObjectDefToClass(playerTree2ID, classForest);
+	rmAddObjectDefConstraint(playerTree2ID, avoidForest);
+    rmAddObjectDefConstraint(playerTree2ID, avoidImpassableLand);
+	rmAddObjectDefConstraint(playerTree2ID, avoidStartingResources);
+	rmAddObjectDefConstraint(playerTree2ID, avoidMidIslandMin);
+	rmAddObjectDefConstraint(playerTree2ID, avoidNatives);
+	rmAddObjectDefConstraint(playerTree2ID, StayInGrinchMountain);
 			
 	// Starting herd
-	int playerherdID = rmCreateObjectDef("starting herd");
-	rmAddObjectDefItem(playerherdID, "elk", rmRandInt(10,10), 7.0);
-	rmSetObjectDefMinDistance(playerherdID, 16.0);
-	rmSetObjectDefMaxDistance(playerherdID, 16.0);
-	rmSetObjectDefCreateHerd(playerherdID, true);
-	rmAddObjectDefToClass(playerherdID, classStartingResource);
-	rmAddObjectDefConstraint(playerherdID, avoidImpassableLand);
-	rmAddObjectDefConstraint(playerherdID, avoidNatives);
-	rmAddObjectDefConstraint(playerherdID, avoidStartingResourcesShort);
+	int playerHerdID = rmCreateObjectDef("starting herd");
+	rmAddObjectDefItem(playerHerdID, "Reindeer", 10, 7.0);
+	rmSetObjectDefMinDistance(playerHerdID, 16.0);
+	rmSetObjectDefMaxDistance(playerHerdID, 16.0);
+	rmSetObjectDefCreateHerd(playerHerdID, true);
+	rmAddObjectDefToClass(playerHerdID, classStartingResource);
+	rmAddObjectDefConstraint(playerHerdID, avoidImpassableLand);
+	rmAddObjectDefConstraint(playerHerdID, avoidNatives);
+	rmAddObjectDefConstraint(playerHerdID, avoidStartingResourcesShort);
 		
 	// 2nd herd
-	int playerherd2ID = rmCreateObjectDef("2nd herd");
-    if (PlayerNum == 2)
-		rmAddObjectDefItem(playerherd2ID, "elk", rmRandInt(6,6), 5.0);
-	else
-		rmAddObjectDefItem(playerherd2ID, "elk", 8, 5.0);
-    rmSetObjectDefMinDistance(playerherd2ID, 40);
-    rmSetObjectDefMaxDistance(playerherd2ID, 46);
-	rmAddObjectDefToClass(playerherd2ID, classStartingResource);
-	rmSetObjectDefCreateHerd(playerherd2ID, true);
-	rmAddObjectDefConstraint(playerherd2ID, avoidElk); //Short
-	rmAddObjectDefConstraint(playerherd2ID, avoidImpassableLandShort);
-	rmAddObjectDefConstraint(playerherd2ID, avoidNatives);
-	rmAddObjectDefConstraint(playerherd2ID, avoidStartingResources);
-	rmAddObjectDefConstraint(playerherd2ID, avoidCliffMed);
-	rmAddObjectDefConstraint(playerherd2ID, avoidMidIslandFar);
-	if (teamZeroCount != teamOneCount)
-		rmAddObjectDefConstraint(playerherd2ID, stayNearEdge);
+	int playerHerd2ID = rmCreateObjectDef("2nd herd");
+	rmAddObjectDefItem(playerHerd2ID, "Reindeer", 8, 5.0);
+    rmSetObjectDefMinDistance(playerHerd2ID, 34);
+    rmSetObjectDefMaxDistance(playerHerd2ID, 38);
+	rmAddObjectDefToClass(playerHerd2ID, classStartingResource);
+	rmSetObjectDefCreateHerd(playerHerd2ID, true);
+	rmAddObjectDefConstraint(playerHerd2ID, avoidReindeerShort);
+	rmAddObjectDefConstraint(playerHerd2ID, avoidImpassableLandShort);
+	rmAddObjectDefConstraint(playerHerd2ID, avoidNatives);
+	rmAddObjectDefConstraint(playerHerd2ID, avoidStartingResources);
+	rmAddObjectDefConstraint(playerHerd2ID, avoidCliffMed);
+	rmAddObjectDefConstraint(playerHerd2ID, avoidMidIslandMin);
 	
-/*	// 3nd herd
-	int playerherd3ID = rmCreateObjectDef("3nd herd");
-    rmAddObjectDefItem(playerherd3ID, "guanaco", rmRandInt(7,7), 5.0);
-    rmSetObjectDefMinDistance(playerherd3ID, 45);
-    rmSetObjectDefMaxDistance(playerherd3ID, 48);
-	rmAddObjectDefToClass(playerherd3ID, classStartingResource);
-	rmSetObjectDefCreateHerd(playerherd3ID, true);
-	rmAddObjectDefConstraint(playerherd3ID, avoidRhea); //Short
-	rmAddObjectDefConstraint(playerherd3ID, avoidElk);
-	rmAddObjectDefConstraint(playerherd3ID, avoidImpassableLandShort);
-	rmAddObjectDefConstraint(playerherd3ID, avoidNatives);
-	rmAddObjectDefConstraint(playerherd3ID, avoidStartingResources);
-*/
+	// 3nd herd
+	int playerHerd3ID = rmCreateObjectDef("3nd herd");
+    rmAddObjectDefItem(playerHerd3ID, "Reindeer", 6, 5.0);
+    rmSetObjectDefMinDistance(playerHerd3ID, 45);
+    rmSetObjectDefMaxDistance(playerHerd3ID, 48);
+	rmAddObjectDefToClass(playerHerd3ID, classStartingResource);
+	rmSetObjectDefCreateHerd(playerHerd3ID, true);
+	rmAddObjectDefConstraint(playerHerd3ID, avoidReindeer);
+	rmAddObjectDefConstraint(playerHerd3ID, avoidImpassableLandShort);
+	rmAddObjectDefConstraint(playerHerd3ID, avoidNatives);
+	rmAddObjectDefConstraint(playerHerd3ID, avoidStartingResources);
+	rmAddObjectDefConstraint(playerHerd3ID, avoidMidIslandFar);
 	
 	// Starting treasures
 	int playerNuggetID = rmCreateObjectDef("player nugget"); 
 	rmAddObjectDefItem(playerNuggetID, "Nugget", 1, 0.0);
-	rmSetNuggetDifficulty(1, 1);
+	rmSetNuggetDifficulty(2, 2);
 	rmSetObjectDefMinDistance(playerNuggetID, 24.0);
 	rmSetObjectDefMaxDistance(playerNuggetID, 26.0);
 	rmAddObjectDefToClass(playerNuggetID, classStartingResource);
@@ -958,44 +711,35 @@ void main(void)
 	rmAddObjectDefConstraint(playerNuggetID, avoidImpassableLandShort);
 	rmAddObjectDefConstraint(playerNuggetID, avoidNatives);
 	rmAddObjectDefConstraint(playerNuggetID, avoidStartingResources);
-//	rmAddObjectDefConstraint(playerNuggetID, avoidNuggetShort);
-	rmAddObjectDefConstraint(playerNuggetID, avoidCliffMed);
 		
-	// Water spawn flag
-	int colonyShipID = 0;
-	colonyShipID=rmCreateObjectDef("colony ship "+i);
-	rmAddObjectDefItem(colonyShipID, "HomeCityWaterSpawnFlag", 1, 1.0);
-	rmSetObjectDefMinDistance(colonyShipID, rmXFractionToMeters(0.1));
-	rmSetObjectDefMaxDistance(colonyShipID, rmXFractionToMeters(0.40));
-	rmAddObjectDefConstraint(colonyShipID, avoidColonyShip);
-	rmAddObjectDefConstraint(colonyShipID, avoidLand);
-	rmAddObjectDefConstraint(colonyShipID, avoidEdge);
-//  vector colonyShipLocation=rmGetUnitPosition(rmGetUnitPlacedOfPlayer(colonyShipID, i));
-//  rmSetHomeCityWaterSpawnPoint(i, colonyShipLocation);
-	
-	
 	// ******** Place ********
 	
 	for(i=1; <numPlayer)
 	{
 		rmPlaceObjectDefAtLoc(TCID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+	}
+	for(i=1; <numPlayer)
+	{
 		vector TCLoc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(TCID, i));
-
 		rmPlaceObjectDefAtLoc(startingUnits, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-		rmPlaceObjectDefAtLoc(playergoldID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-		rmPlaceObjectDefAtLoc(playergold2ID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-		rmPlaceObjectDefAtLoc(playerberriesID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+		rmPlaceObjectDefAtLoc(playerGoldID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+		rmPlaceObjectDefAtLoc(playerGold2ID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+		rmPlaceObjectDefAtLoc(playerBerriesID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+		rmPlaceObjectDefAtLoc(playerTreeChristmasID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+		rmPlaceObjectDefAtLoc(playerTreeChristmasID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 		rmPlaceObjectDefAtLoc(playerTreeID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 		rmPlaceObjectDefAtLoc(playerTreeID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-		rmPlaceObjectDefAtLoc(playerherdID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-		rmPlaceObjectDefAtLoc(playerherd2ID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+		rmPlaceObjectDefAtLoc(playerHerdID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+		rmPlaceObjectDefAtLoc(playerHerd2ID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+		rmPlaceObjectDefAtLoc(playerHerd3ID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 		rmPlaceObjectDefAtLoc(playerNuggetID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+		rmPlaceObjectDefAtLoc(playerTree2ID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+		rmPlaceObjectDefAtLoc(playerTreeChristmas2ID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 				
 		if(ypIsAsian(i) && rmGetNomadStart() == false)
-		rmPlaceObjectDefAtLoc(ypMonasteryBuilder(i), i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+			rmPlaceObjectDefAtLoc(ypMonasteryBuilder(i), i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 		
 		vector closestPoint = rmFindClosestPointVector(TCLoc, rmXFractionToMeters(1.0));
-		rmPlaceObjectDefAtLoc(colonyShipID, i, rmXMetersToFraction(xsVectorGetX(closestPoint)), rmZMetersToFraction(xsVectorGetZ(closestPoint)));
 	}
 
 	// ************************************************************************************************
@@ -1004,168 +748,38 @@ void main(void)
 	rmSetStatusText("",0.60);
 	
 	// ************************************** COMMON RESOURCES ****************************************
-  
-   
+ 
 	// ********** Mines ***********
 	
 		int goldcount = 3*PlayerNum;  //
 
 	//Mines
-	int goldID = rmCreateObjectDef("gold");
-		rmAddObjectDefItem(goldID, "Minetin", 1, 0.0);
-		if (PlayerNum > 2) {
-			rmSetObjectDefMinDistance(goldID, rmXFractionToMeters(0.10));
-			rmSetObjectDefMaxDistance(goldID, rmXFractionToMeters(0.5));
-			}
-		else {
-			rmSetObjectDefMinDistance(goldID, rmXFractionToMeters(0.00));
-			rmSetObjectDefMaxDistance(goldID, rmXFractionToMeters(0.03));
-			}
+	for (i=0; < goldcount)
+	{
+		int goldID = rmCreateObjectDef("gold"+i);
+		rmAddObjectDefItem(goldID, "Mine", 1, 0.0);
+		rmSetObjectDefMinDistance(goldID, rmXFractionToMeters(0.00));
+		rmSetObjectDefMaxDistance(goldID, rmXFractionToMeters(0.45));
 		rmAddObjectDefToClass(goldID, classGold);
 		rmAddObjectDefConstraint(goldID, avoidImpassableLand);
 		rmAddObjectDefConstraint(goldID, avoidNatives);
 		rmAddObjectDefConstraint(goldID, avoidStartingResources);
-		rmAddObjectDefConstraint(goldID, avoidCliffFar);
 		rmAddObjectDefConstraint(goldID, avoidEdge);
-		if (PlayerNum > 2) {
-			rmAddObjectDefConstraint(goldID, avoidGoldFar);
-			rmAddObjectDefConstraint(goldID, avoidTownCenterFar);
-			rmPlaceObjectDefAtLoc(goldID, 0, 0.50, 0.50, goldcount);
-			}
-		else {
-			rmPlaceObjectDefAtLoc(goldID, 0, 0.80, 0.30);
-			rmPlaceObjectDefAtLoc(goldID, 0, 0.20, 0.70);
-			rmPlaceObjectDefAtLoc(goldID, 0, 0.70, 0.50);
-			rmPlaceObjectDefAtLoc(goldID, 0, 0.30, 0.50);
-			rmPlaceObjectDefAtLoc(goldID, 0, 0.75, 0.80);
-			rmPlaceObjectDefAtLoc(goldID, 0, 0.25, 0.20);
-			}
+		rmAddObjectDefConstraint(goldID, avoidGoldFar);
+		rmAddObjectDefConstraint(goldID, avoidTownCenterFar);
+		if (i < goldcount/2)
+			rmAddObjectDefConstraint(goldID, stayGrinchSide);
+		else
+			rmAddObjectDefConstraint(goldID, stayVillageSide);
+		rmPlaceObjectDefAtLoc(goldID, 0, 0.50, 0.50, 1);
+	}
 		
 	// ****************************
 	
 	// Text
 	rmSetStatusText("",0.70);
-	
+
 	// ********** Forest **********
-	
-	// Lake forest
-	int lakeforestcount = 4;
-	int stayInLakeForest = -1;
-	
-	for (i=0; < lakeforestcount)
-	{
-		int lakeforestID = rmCreateArea("lake forest"+i);
-		rmSetAreaWarnFailure(lakeforestID, false);
-		rmSetAreaSize(lakeforestID, rmAreaTilesToFraction(110), rmAreaTilesToFraction(120));
-//		rmSetAreaTerrainType(lakeforestID, "pampas\groundforest_pam");
-//		if (i < 2)
-//			rmSetAreaTerrainType(lakeforestID, "great_lakes\ground_snow2_gl");
-		rmSetAreaTerrainType(lakeforestID, "great_lakes\ground_forest_gl");
-		rmSetAreaObeyWorldCircleConstraint(lakeforestID, false);
-		rmSetAreaCoherence(lakeforestID, 0.0);
-		rmSetAreaSmoothDistance(lakeforestID, 5);
-		rmAddAreaToClass(lakeforestID, classForest);
-		rmAddAreaConstraint(lakeforestID, avoidForestShort);
-		rmAddAreaConstraint(lakeforestID, avoidGoldTypeMin);
-		rmAddAreaConstraint(lakeforestID, avoidNatives);
-		rmAddAreaConstraint(lakeforestID, avoidImpassableLandMin);
-		rmAddAreaConstraint(lakeforestID, avoidCliffMin);
-		rmAddAreaConstraint(lakeforestID, avoidStartingResources);
-		if (TeamNum <= 2)
-		{
-			if (i==0 || i==2)
-				rmAddAreaConstraint(lakeforestID, stayNearLake1);
-			else
-				rmAddAreaConstraint(lakeforestID, stayNearLake2);
-			if (i == 0)	
-				rmAddAreaConstraint(lakeforestID, stayInPlateau1);
-			else if (i == 1)
-				rmAddAreaConstraint(lakeforestID, stayInPlateau2);
-			if ( i >= 2)
-			{
-				rmAddAreaConstraint(lakeforestID, avoidPlateau1);
-				rmAddAreaConstraint(lakeforestID, avoidPlateau2);
-			}
-		}
-		else
-		{
-			rmAddAreaConstraint(lakeforestID, stayNearLake3);
-			if (i <= 2)	
-					rmAddAreaConstraint(lakeforestID, stayInPlateau3);
-			else 	
-				rmAddAreaConstraint(lakeforestID, avoidPlateau3);
-		}
-	
-			
-		rmBuildArea(lakeforestID);
-		
-		stayInLakeForest = rmCreateAreaMaxDistanceConstraint("stay in lake forest"+i, lakeforestID, 0);
-		
-			int lakeforesttreeID = rmCreateObjectDef("lake forest trees"+i);
-			if (i < 2)
-				rmAddObjectDefItem(lakeforesttreeID, "TreeRockies", rmRandInt(2,3), 3.0);	// ypTreeHimalayas
-			else
-				rmAddObjectDefItem(lakeforesttreeID, "TreeRockies", rmRandInt(2,3), 3.0);	// TreeGreatLakesSnow
-			rmSetObjectDefMinDistance(lakeforesttreeID,  rmXFractionToMeters(0.0));
-			rmSetObjectDefMaxDistance(lakeforesttreeID,  rmXFractionToMeters(0.5));
-			rmAddObjectDefToClass(lakeforesttreeID, classForest);
-		//	rmAddObjectDefConstraint(lakeforesttreeID, avoidForestShort);
-			rmAddObjectDefConstraint(lakeforesttreeID, avoidImpassableLandMin);
-			rmAddObjectDefConstraint(lakeforesttreeID, stayInLakeForest);	
-			rmPlaceObjectDefAtLoc(lakeforesttreeID, 0, 0.50, 0.50, rmRandInt(10,12));
-		
-	}
-	
-	
-	// Plateau forest
-	int plateauforestcount = 4*PlayerNum;
-	int stayInPlateauForest = -1;
-	
-	for (i=0; < plateauforestcount)
-	{
-		int plateauforestID = rmCreateArea("plateau forest"+i);
-		rmSetAreaWarnFailure(plateauforestID, false);
-		rmSetAreaSize(plateauforestID, rmAreaTilesToFraction(120), rmAreaTilesToFraction(130));
-//		rmSetAreaTerrainType(plateauforestID, "pampas\groundforest_pam");
-		rmSetAreaTerrainType(plateauforestID, "great_lakes\ground_forest_gl");	// ground_snow2_gl
-		rmSetAreaObeyWorldCircleConstraint(plateauforestID, false);
-		rmSetAreaCoherence(plateauforestID, 0.0);
-		rmSetAreaSmoothDistance(plateauforestID, 5);
-		rmAddAreaToClass(plateauforestID, classForest);
-		rmAddAreaConstraint(plateauforestID, avoidForest);
-		rmAddAreaConstraint(plateauforestID, avoidGoldTypeMin);
-		rmAddAreaConstraint(plateauforestID, avoidStartingResources);
-		rmAddAreaConstraint(plateauforestID, avoidNatives);
-		rmAddAreaConstraint(plateauforestID, avoidImpassableLandMin);
-		rmAddAreaConstraint(plateauforestID, avoidCliffMin);
-		rmAddAreaConstraint(plateauforestID, avoidTownCenter);
-		if (TeamNum <= 2)
-		{
-			if (i < plateauforestcount/2)	
-				rmAddAreaConstraint(plateauforestID, stayInPlateau1);
-			else 
-				rmAddAreaConstraint(plateauforestID, stayInPlateau2);
-		}
-		else
-			rmAddAreaConstraint(plateauforestID, stayInPlateau3);
-			
-		rmBuildArea(plateauforestID);
-		
-		stayInPlateauForest = rmCreateAreaMaxDistanceConstraint("stay in plateau forest"+i, plateauforestID, 0);
-		
-		int plateauforesttreeID = rmCreateObjectDef("plateau forest trees"+i);
-			rmAddObjectDefItem(plateauforesttreeID, "ypTreeHimalayas", rmRandInt(2,4), 3.0);	// TreeRockies
-			rmSetObjectDefMinDistance(plateauforesttreeID,  rmXFractionToMeters(0.0));
-			rmSetObjectDefMaxDistance(plateauforesttreeID,  rmXFractionToMeters(0.5));
-			rmAddObjectDefToClass(plateauforesttreeID, classForest);
-		//	rmAddObjectDefConstraint(plateauforesttreeID, avoidForestShort);
-			rmAddObjectDefConstraint(plateauforesttreeID, avoidImpassableLandMin);
-			rmAddObjectDefConstraint(plateauforesttreeID, stayInPlateauForest);	
-			rmAddObjectDefConstraint(plateauforesttreeID, avoidCliffMin);	
-			rmPlaceObjectDefAtLoc(plateauforesttreeID, 0, 0.50, 0.50, rmRandInt(9,10));
-		
-	}
-	
 	// Valley forest
 	int valleyforestcount = 3*PlayerNum;
 	int stayInValleyForest = -1;
@@ -1175,8 +789,6 @@ void main(void)
 		int valleyforestID = rmCreateArea("valley forest"+i);
 		rmSetAreaWarnFailure(valleyforestID, false);
 		rmSetAreaSize(valleyforestID, rmAreaTilesToFraction(120), rmAreaTilesToFraction(130));
-		rmSetAreaTerrainType(valleyforestID, "great_lakes\ground_forest_gl");
-//		rmSetAreaTerrainType(valleyforestID, "pampas\groundforest_pam");
 		rmSetAreaObeyWorldCircleConstraint(valleyforestID, false);
 		rmSetAreaCoherence(valleyforestID, 0.0);
 		rmSetAreaSmoothDistance(valleyforestID, 5);
@@ -1187,32 +799,34 @@ void main(void)
 		rmAddAreaConstraint(valleyforestID, avoidStartingResourcesShort);
 		rmAddAreaConstraint(valleyforestID, avoidNativesFar);
 		rmAddAreaConstraint(valleyforestID, avoidImpassableLandMin);
-		rmAddAreaConstraint(valleyforestID, avoidCliffMin);
 		rmAddAreaConstraint(valleyforestID, avoidTownCenter);
-		if (TeamNum <= 2)
+		if (i < valleyforestcount/2)
 		{
-			rmAddAreaConstraint(valleyforestID, avoidPlateau1);
-			rmAddAreaConstraint(valleyforestID, avoidPlateau2);
+			rmSetAreaMix(valleyforestID, "italy_snow_forest");
+			rmAddAreaConstraint(valleyforestID, stayGrinchSide);
 		}
 		else
-			rmAddAreaConstraint(valleyforestID, avoidPlateau3);
+		{
+			rmSetAreaMix(valleyforestID, "rockies_snow_forest");
+			rmAddAreaConstraint(valleyforestID, stayVillageSide);
+		}
 			
 		rmBuildArea(valleyforestID);
 		
 		stayInValleyForest = rmCreateAreaMaxDistanceConstraint("stay in valley forest"+i, valleyforestID, 0);
 		
 		int valleyforesttreeID = rmCreateObjectDef("valley forest trees"+i);
-			rmAddObjectDefItem(valleyforesttreeID, "TreeRockies", rmRandInt(2,4), 3.0);	// TreeGreatLakesSnow
-			rmSetObjectDefMinDistance(valleyforesttreeID,  rmXFractionToMeters(0.0));
-			rmSetObjectDefMaxDistance(valleyforesttreeID,  rmXFractionToMeters(0.5));
-			rmAddObjectDefToClass(valleyforesttreeID, classForest);
-		//	rmAddObjectDefConstraint(valleyforesttreeID, avoidForestShort);
-			rmAddObjectDefConstraint(valleyforesttreeID, avoidImpassableLandMin);
-			rmAddObjectDefConstraint(valleyforesttreeID, stayInValleyForest);	
-			rmPlaceObjectDefAtLoc(valleyforesttreeID, 0, 0.50, 0.50, rmRandInt(9,10));
+		rmAddObjectDefItem(valleyforesttreeID, "TreeYukon", rmRandInt(1,4), 5.0);
+		rmAddObjectDefItem(valleyforesttreeID, "TreeYukonSnow", rmRandInt(1,4), 5.0);
+		rmSetObjectDefMinDistance(valleyforesttreeID,  rmXFractionToMeters(0.0));
+		rmSetObjectDefMaxDistance(valleyforesttreeID,  rmXFractionToMeters(0.5));
+		rmAddObjectDefToClass(valleyforesttreeID, classForest);
+		rmAddObjectDefConstraint(valleyforesttreeID, avoidImpassableLandMin);
+		rmAddObjectDefConstraint(valleyforesttreeID, stayInValleyForest);	
+		rmPlaceObjectDefAtLoc(valleyforesttreeID, 0, 0.50, 0.50, rmRandInt(2,3));
 		
 	}
-		
+
 	// ********************************
 	
 	// Text
@@ -1220,155 +834,149 @@ void main(void)
 	
 	// ************ Herds *************
 
-	//Elk herds
-	int pocketHerdID = rmCreateObjectDef("pocket herd");
-		rmAddObjectDefItem(pocketHerdID, "elk", 8, 5.0);
-		rmSetObjectDefMinDistance(pocketHerdID, rmXFractionToMeters(0.00));
-		rmSetObjectDefMaxDistance(pocketHerdID, rmXFractionToMeters(0.025));
-		rmSetObjectDefCreateHerd(pocketHerdID, true);
-		rmAddObjectDefConstraint(pocketHerdID, avoidStartingResourcesShort);
-		rmAddObjectDefConstraint(pocketHerdID, avoidImpassableLand);
-		rmAddObjectDefConstraint(pocketHerdID, avoidNatives);
-		rmAddObjectDefConstraint(pocketHerdID, avoidGoldMin);
-		rmAddObjectDefConstraint(pocketHerdID, avoidForestMin);
-		rmAddObjectDefConstraint(pocketHerdID, avoidCliffFar);
-		rmAddObjectDefConstraint(pocketHerdID, avoidTownCenterShort);
-		rmAddObjectDefConstraint(pocketHerdID, avoidElkShort);
-		rmAddObjectDefConstraint(pocketHerdID, avoidEdge);
-		if (TeamNum == 2) {
-			if (PlayerNum > 4) {
-				rmPlaceObjectDefAtLoc(pocketHerdID, 0, 0.45, 0.10);
-				rmPlaceObjectDefAtLoc(pocketHerdID, 0, 0.55, 0.90);
-				}
-			else if (PlayerNum > 6) {
-				rmPlaceObjectDefAtLoc(pocketHerdID, 0, 0.50, 0.90);
-				rmPlaceObjectDefAtLoc(pocketHerdID, 0, 0.50, 0.10);
-				rmPlaceObjectDefAtLoc(pocketHerdID, 0, 0.60, 0.90);
-				rmPlaceObjectDefAtLoc(pocketHerdID, 0, 0.40, 0.10);
-				}
-			}
-
 	int herdcount = 3*PlayerNum;
 	
-	int elkherdID = rmCreateObjectDef("elk herd");
-		rmAddObjectDefItem(elkherdID, "elk", rmRandInt(6,6), 5.0);
-		if (PlayerNum > 2)
-			rmSetObjectDefMinDistance(elkherdID, rmXFractionToMeters(0.075));
+	for (i=0; < herdcount)
+	{
+		int herdID = rmCreateObjectDef("map herd"+i);
+		if (rmRandFloat(0,1) <= 0.50)
+			rmAddObjectDefItem(herdID, "Reindeer", 10, 5.0);
 		else
-			rmSetObjectDefMinDistance(elkherdID, rmXFractionToMeters(0.0));
-		rmSetObjectDefMaxDistance(elkherdID, rmXFractionToMeters(0.5));
-		rmSetObjectDefCreateHerd(elkherdID, true);
-		rmAddObjectDefConstraint(elkherdID, avoidStartingResources);
-		rmAddObjectDefConstraint(elkherdID, avoidImpassableLand);
-		rmAddObjectDefConstraint(elkherdID, avoidNatives);
-		rmAddObjectDefConstraint(elkherdID, avoidGoldTypeShort);
-		rmAddObjectDefConstraint(elkherdID, avoidForestMin);
-		rmAddObjectDefConstraint(elkherdID, avoidCliffFar);
-		rmAddObjectDefConstraint(elkherdID, avoidTownCenterFar);
-		rmAddObjectDefConstraint(elkherdID, avoidElkFar);
-		rmAddObjectDefConstraint(elkherdID, avoidEdge);
-		rmPlaceObjectDefAtLoc(elkherdID, 0, 0.50, 0.50, herdcount);
+			rmAddObjectDefItem(herdID, "Moose", 8, 5.0);
+		rmSetObjectDefMinDistance(herdID, rmXFractionToMeters(0.0));
+		rmSetObjectDefMaxDistance(herdID, rmXFractionToMeters(0.45));
+		rmSetObjectDefCreateHerd(herdID, true);
+		rmAddObjectDefConstraint(herdID, avoidStartingResources);
+		rmAddObjectDefConstraint(herdID, avoidImpassableLand);
+		rmAddObjectDefConstraint(herdID, avoidNatives);
+		rmAddObjectDefConstraint(herdID, avoidGoldTypeShort);
+		rmAddObjectDefConstraint(herdID, avoidForestMin);
+		rmAddObjectDefConstraint(herdID, avoidTownCenterFar);
+		rmAddObjectDefConstraint(herdID, avoidMooseFar);
+		rmAddObjectDefConstraint(herdID, avoidReindeerFar);
+		rmAddObjectDefConstraint(herdID, avoidEdge);
+		rmPlaceObjectDefAtLoc(herdID, 0, 0.50, 0.50, 1);
+	}
 
 	// ********************************
-	
-	// ************ Berries *************
-	
-	//Berries
-	int berriescount = 3*PlayerNum;
-	
-	int berriesID = rmCreateObjectDef("berries");
-		rmAddObjectDefItem(berriesID, "berrybush", rmRandInt(4,4), 5.0);
-		rmSetObjectDefMinDistance(berriesID, rmXFractionToMeters(0.0));
-		rmSetObjectDefMaxDistance(berriesID, rmXFractionToMeters(0.5));
-		rmSetObjectDefCreateHerd(berriesID, true);
-		rmAddObjectDefConstraint(berriesID, avoidStartingResources);
-		rmAddObjectDefConstraint(berriesID, avoidImpassableLand);
-		rmAddObjectDefConstraint(berriesID, avoidNatives);
-		rmAddObjectDefConstraint(berriesID, avoidGoldTypeShort);
-		rmAddObjectDefConstraint(berriesID, avoidForestMin);
-		rmAddObjectDefConstraint(berriesID, avoidCliffFar);
-		rmAddObjectDefConstraint(berriesID, avoidTownCenterFar);
-		rmAddObjectDefConstraint(berriesID, avoidElkShort);
-		rmAddObjectDefConstraint(berriesID, avoidBerriesFar);
-		rmAddObjectDefConstraint(berriesID, avoidEdge);
-		rmPlaceObjectDefAtLoc(berriesID, 0, 0.50, 0.50, berriescount);
 
-	// ********************************
+	// ********** Random tree clumps **********
+	int rdmtreecount = 4+2*PlayerNum;
 	
-	
-	// Random tree clumps
-	int randomtreeID = rmCreateObjectDef("random tree");
-		rmAddObjectDefItem(randomtreeID, "TreeRockies", rmRandInt(3,5), 4.0);	// TreeGreatLakesSnow
+	for (i=0; < rdmtreecount)
+	{
+		int randomtreeID = rmCreateObjectDef("random tree");
+		rmAddObjectDefItem(randomtreeID, "TreeYukon", rmRandInt(1,3), 5.0);
+		rmAddObjectDefItem(randomtreeID, "TreeYukonSnow", rmRandInt(1,3), 5.0);
 		rmSetObjectDefMinDistance(randomtreeID,  rmXFractionToMeters(0.0));
-		rmSetObjectDefMaxDistance(randomtreeID,  rmXFractionToMeters(0.5));
+		rmSetObjectDefMaxDistance(randomtreeID,  rmXFractionToMeters(0.48));
 		rmAddObjectDefToClass(randomtreeID, classForest);
 		rmAddObjectDefConstraint(randomtreeID, avoidStartingResources);
 		rmAddObjectDefConstraint(randomtreeID, avoidForestShort);
 		rmAddObjectDefConstraint(randomtreeID, avoidNatives);
 		rmAddObjectDefConstraint(randomtreeID, avoidGoldTypeMin);
-		rmAddObjectDefConstraint(randomtreeID, avoidElkMin);
-		rmAddObjectDefConstraint(randomtreeID, avoidBerriesMin);
+		rmAddObjectDefConstraint(randomtreeID, avoidMooseMin);
+		rmAddObjectDefConstraint(randomtreeID, avoidReindeerMin);
 		rmAddObjectDefConstraint(randomtreeID, avoidImpassableLandShort);
 		rmAddObjectDefConstraint(randomtreeID, avoidStartingResourcesShort);
-		if (TeamNum <= 2)
-		{
-			rmAddObjectDefConstraint(randomtreeID, avoidPlateau1);	
-			rmAddObjectDefConstraint(randomtreeID, avoidPlateau2);	
-		}
-		else
-			rmAddObjectDefConstraint(randomtreeID, avoidPlateau3);	
-		rmAddObjectDefConstraint(randomtreeID, avoidTownCenter);
-		rmPlaceObjectDefAtLoc(randomtreeID, 0, 0.50, 0.50, 4+PlayerNum);
-	
+		rmAddObjectDefConstraint(randomtreeID, avoidTownCenterFar);
+		if (i < rdmtreecount/4)
+			rmAddObjectDefConstraint(randomtreeID, stayGrinchSide);
+		else if (i < rdmtreecount/2)
+			rmAddObjectDefConstraint(randomtreeID, stayVillageSide);
+		rmPlaceObjectDefAtLoc(randomtreeID, 0, 0.50, 0.50, 1);
+	}
+
 	// ********************************
 	
 	// Text
 	rmSetStatusText("",0.90);
 
 	// ********** Treasures ***********
-	
-	// Treasures 	
-	int NuggetID = rmCreateObjectDef("Nugget"); 
-	rmAddObjectDefItem(NuggetID, "Nugget", 1, 0.0);
-	rmSetObjectDefMinDistance(NuggetID, 0);
-    rmSetObjectDefMaxDistance(NuggetID, rmXFractionToMeters(0.5));
-	rmSetNuggetDifficulty(1,1);
-	rmAddObjectDefConstraint(NuggetID, avoidStartingResources);
-	rmAddObjectDefConstraint(NuggetID, avoidNugget);
-	rmAddObjectDefConstraint(NuggetID, avoidNatives);
-	rmAddObjectDefConstraint(NuggetID, avoidCliffFar);
-	rmAddObjectDefConstraint(NuggetID, avoidImpassableLand);
-	rmAddObjectDefConstraint(NuggetID, avoidGoldTypeMin);
-	rmAddObjectDefConstraint(NuggetID, avoidElkMin);
-	rmAddObjectDefConstraint(NuggetID, avoidBerriesMin);	
-	rmAddObjectDefConstraint(NuggetID, avoidForestMin);	
-	rmAddObjectDefConstraint(NuggetID, avoidTownCenterFar);
-	rmAddObjectDefConstraint(NuggetID, avoidEdge);
-	
-	rmPlaceObjectDefAtLoc(NuggetID, 0, 0.50, 0.50, 6*PlayerNum);
+
+	int treasure4count = PlayerNum;
+	int treasure3count = 2*PlayerNum;
+	int treasure2count = 4*PlayerNum;
+
+	// Tier 4 	
+	for (i=0; < treasure4count)
+	{
+		int nugget4ID = rmCreateObjectDef("Nugget 4"+i); 
+		rmAddObjectDefItem(nugget4ID, "Nugget", 1, 0.0);
+		rmSetObjectDefMinDistance(nugget4ID, 0);
+    	rmSetObjectDefMaxDistance(nugget4ID, rmXFractionToMeters(0.25));
+		rmSetNuggetDifficulty(4,4);
+		rmAddObjectDefConstraint(nugget4ID, avoidStartingResources);
+		rmAddObjectDefConstraint(nugget4ID, avoidNugget);
+		rmAddObjectDefConstraint(nugget4ID, avoidNatives);
+		rmAddObjectDefConstraint(nugget4ID, avoidImpassableLand);
+		rmAddObjectDefConstraint(nugget4ID, avoidGoldTypeMin);
+		rmAddObjectDefConstraint(nugget4ID, avoidMooseMin);
+		rmAddObjectDefConstraint(nugget4ID, avoidReindeerMin);
+		rmAddObjectDefConstraint(nugget4ID, avoidBerriesMin);	
+		rmAddObjectDefConstraint(nugget4ID, avoidForestMin);	
+		rmAddObjectDefConstraint(nugget4ID, avoidTownCenterFar);
+		if (i<treasure4count/2)
+			rmAddObjectDefConstraint(nugget4ID, stayGrinchSide);
+		else
+			rmAddObjectDefConstraint(nugget4ID, stayVillageSide);
+		rmPlaceObjectDefAtLoc(nugget4ID, 0, 0.50, 0.50, 1);
+	}
+
+	// Tier 3
+	for (i=0; < treasure3count)
+	{
+		int nugget3ID = rmCreateObjectDef("Nugget 3"+i); 
+		rmAddObjectDefItem(nugget3ID, "Nugget", 1, 0.0);
+		rmSetObjectDefMinDistance(nugget3ID, 0);
+    	rmSetObjectDefMaxDistance(nugget3ID, rmXFractionToMeters(0.35));
+		rmSetNuggetDifficulty(3,3);
+		rmAddObjectDefConstraint(nugget3ID, avoidStartingResources);
+		rmAddObjectDefConstraint(nugget3ID, avoidNugget);
+		rmAddObjectDefConstraint(nugget3ID, avoidNatives);
+		rmAddObjectDefConstraint(nugget3ID, avoidImpassableLand);
+		rmAddObjectDefConstraint(nugget3ID, avoidGoldTypeMin);
+		rmAddObjectDefConstraint(nugget3ID, avoidMooseMin);
+		rmAddObjectDefConstraint(nugget3ID, avoidReindeerMin);
+		rmAddObjectDefConstraint(nugget3ID, avoidBerriesMin);	
+		rmAddObjectDefConstraint(nugget3ID, avoidForestMin);	
+		rmAddObjectDefConstraint(nugget3ID, avoidTownCenterFar);
+		if (i<treasure3count/2)
+			rmAddObjectDefConstraint(nugget3ID, stayGrinchSide);
+		else
+			rmAddObjectDefConstraint(nugget3ID, stayVillageSide);
+		rmPlaceObjectDefAtLoc(nugget3ID, 0, 0.50, 0.50, 1);
+	}
+
+	// Tier 2
+	for (i=0; < treasure2count)
+	{
+		int nugget2ID = rmCreateObjectDef("Nugget 2"+i); 
+		rmAddObjectDefItem(nugget2ID, "Nugget", 1, 0.0);
+		rmSetObjectDefMinDistance(nugget2ID, 0);
+    	rmSetObjectDefMaxDistance(nugget2ID, rmXFractionToMeters(0.45));
+		rmSetNuggetDifficulty(2,2);
+		rmAddObjectDefConstraint(nugget2ID, avoidStartingResources);
+		rmAddObjectDefConstraint(nugget2ID, avoidNugget);
+		rmAddObjectDefConstraint(nugget2ID, avoidNatives);
+		rmAddObjectDefConstraint(nugget2ID, avoidImpassableLand);
+		rmAddObjectDefConstraint(nugget2ID, avoidGoldTypeMin);
+		rmAddObjectDefConstraint(nugget2ID, avoidMooseMin);
+		rmAddObjectDefConstraint(nugget2ID, avoidReindeerMin);
+		rmAddObjectDefConstraint(nugget2ID, avoidBerriesMin);	
+		rmAddObjectDefConstraint(nugget2ID, avoidForestMin);	
+		rmAddObjectDefConstraint(nugget2ID, avoidTownCenterFar);
+		rmAddObjectDefConstraint(nugget2ID, avoidEdge);
+		if (i<treasure2count/2)
+			rmAddObjectDefConstraint(nugget2ID, stayGrinchSide);
+		else
+			rmAddObjectDefConstraint(nugget2ID, stayVillageSide);
+		rmPlaceObjectDefAtLoc(nugget2ID, 0, 0.50, 0.50, 1);
+	}
 		
 	// ********************************
-	
-	//Fish
-	int fishID = rmCreateObjectDef("fish");
-	rmAddObjectDefItem(fishID, "Fishsalmon", rmRandInt(2,2), 6.0);
-	rmSetObjectDefMinDistance(fishID, 0.0);
-	rmSetObjectDefMaxDistance(fishID, rmXFractionToMeters(0.5));
-	rmAddObjectDefConstraint(fishID, avoidFish);
-	rmAddObjectDefConstraint(fishID, avoidLand);
-	rmAddObjectDefConstraint(fishID, avoidEdge);
-	rmAddObjectDefConstraint(fishID, avoidColonyShipShort);
 
-	if (TeamNum <= 2)
-	{
-		rmPlaceObjectDefAtLoc(fishID, 0, 1.00, 0.70, 3+PlayerNum/2);
-		rmPlaceObjectDefAtLoc(fishID, 0, 0.00, 0.30, 3+PlayerNum/2);
-	}
-	else
-	{
-		rmPlaceObjectDefAtLoc(fishID, 0, 1.00, 0.50, 3+PlayerNum/2);
-		rmPlaceObjectDefAtLoc(fishID, 0, 1.00, 0.50, 3+PlayerNum/2);
-	}
+	// ********** Triggers ***********
 
 	// Starting Tech
 	
@@ -1386,6 +994,8 @@ void main(void)
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
 	
+	// ********************************
+
 	// Text
 	rmSetStatusText("",1.00);
 	
