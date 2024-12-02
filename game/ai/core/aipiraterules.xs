@@ -325,7 +325,7 @@ void checkAttackDefenseMapAoP(void)
 
    if (headquarters > 0)
    { // defender
-      btOffenseDefense = 0.0;
+      //btOffenseDefense = 0.0;  might be causing issues with gStrategy
 
       gForwardBaseState = cForwardBaseStateActive;
       gForwardBaseLocation = headquartersLoc;
