@@ -307,6 +307,7 @@ minInterval 1
 void checkAttackDefenseMapAoP(void)
 {
    int headquarters = -1;
+   vector headquartersLoc = cInvalidVector;
 
    // Look for the different HQ buildings
    headquarters = getUnit(cUnitTypedeSPCHeadquarters, cPlayerRelationAlly);
@@ -320,12 +321,14 @@ void checkAttackDefenseMapAoP(void)
       headquarters = getUnit(cUnitTypezpSPCRoyalOrangerie, cPlayerRelationAlly);
    }
 
+   headquartersLoc = kbUnitGetPosition(headquarters);
+
    if (headquarters > 0)
    { // defender
       btOffenseDefense = 0.0;
 
       gForwardBaseState = cForwardBaseStateActive;
-      gForwardBaseLocation = kbUnitGetPosition(headquarters);
+      gForwardBaseLocation = headquartersLoc;
       gForwardBaseUpTime = xsGetTime();
       gForwardBaseShouldDefend = true;
       gForwardBaseID = kbBaseCreate(cMyID, "AoP defense base player: " + kbBaseGetNextID(), gForwardBaseLocation, 80.0);
