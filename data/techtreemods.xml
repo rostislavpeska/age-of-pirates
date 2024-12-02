@@ -19908,6 +19908,9 @@
       <effect type="TechStatus" status="obtainable">zpNatGrinchBuildingRob</effect>
       <effect type="TechStatus" status="obtainable">zpNatGrinchCostReduction</effect>
       <effect type="TechStatus" status="obtainable">zpNatGrinchScouting</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyGrinch</effect>
+      <effect type="TechStatus" status="obtainable">zpIndianFriendshipGrinch</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyGrinch</effect>
     </effects>
   </tech>
   <tech name="zpXmassMercenaries" type="Normal">
@@ -20075,11 +20078,11 @@
     <flag>YPNativeImprovement</flag>
     <flag>TeamTech</flag>
     <effects>
-      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="Building" resource="Gold" extrabounty="true" bountyrate="10.00" relativity="Assign">
+      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="Building" resource="Gold" extrabounty="true" bountyrate="15.00" relativity="Assign">
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="Building" resource="Food" extrabounty="true" bountyrate="10.00" relativity="Assign">
+      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="Building" resource="Food" extrabounty="true" bountyrate="15.00" relativity="Assign">
         <target type="Player">
         </target>
       </effect>
@@ -20088,35 +20091,33 @@
   <tech name="zpNatGrinchCostReduction" type="Normal">
     <dbid>50059</dbid>
     <displaynameid>400193</displaynameid>
-    <cost resourcetype="Wood">250.0000</cost>
-    <cost resourcetype="Gold">150.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
     <researchpoints>60.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\art\units\natives\christmass_content\grinch_cost.png</icon>
     <rollovertextid>400194</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>
+    <flag>TeamTech</flag>
     <effects>
       <effect type="Data" amount="0.85" subtype="TrainPoints" relativity="BasePercent">
-        <target type="ProtoUnit">AbstractInfantry</target>
+        <target type="ProtoUnit">zpTilanusGrinch</target>
       </effect>
       <effect type="Data" amount="0.85" subtype="TrainPoints" relativity="BasePercent">
-        <target type="ProtoUnit">AbstractLightInfantry</target>
-      </effect>
-      <effect type="Data" amount="1.15" subtype="TrainPoints" relativity="BasePercent">
-        <target type="ProtoUnit">xpSkullKnight</target>
-      </effect>
-      <effect type="Data" amount="1.15" subtype="TrainPoints" relativity="BasePercent">
-        <target type="ProtoUnit">xpMedicineManAztec</target>
+        <target type="ProtoUnit">zpTilanusGrinchMerc</target>
       </effect>
       <effect type="Data" amount="0.85" subtype="Cost" resource="Gold" relativity="BasePercent">
-        <target type="ProtoUnit">AbstractLightInfantry</target>
+        <target type="ProtoUnit">zpTilanusGrinch</target>
       </effect>
       <effect type="Data" amount="0.85" subtype="Cost" resource="Wood" relativity="BasePercent">
-        <target type="ProtoUnit">AbstractLightInfantry</target>
+        <target type="ProtoUnit">zpTilanusGrinch</target>
       </effect>
-      <effect type="Data" amount="0.85" subtype="Cost" resource="Food" relativity="BasePercent">
-        <target type="ProtoUnit">AbstractLightInfantry</target>
+      <effect type="Data" amount="0.85" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpTilanusGrinchMerc</target>
+      </effect>
+      <effect type="Data" amount="0.85" subtype="Cost" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpTilanusGrinchMerc</target>
       </effect>
     </effects>
   </tech>
@@ -20138,9 +20139,160 @@
       <effect type="Data" amount="6.00" subtype="LOS" relativity="Absolute">
         <target type="ProtoUnit">zpTilanusGrinchMerc</target>
       </effect>
-      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpTilanusGrinch" relativity="Absolute">
+      <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="zpTilanusGrinchMerc" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTreatyGrinch" type="Normal">
+    <dbid>50061</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="4.00" subtype="FreeHomeCityUnit" unittype="zpTilanusGrinch" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIndianFriendshipGrinch" type="Normal">
+    <dbid>50062</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpTilanusGrinch" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpChristmasVeteranTech</effect>
+      <effect type="TechStatus" status="active">zpChristmasGuardTech</effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTradeTreatyGrinchScout" type="Normal">
+    <dbid>50063</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTreatyGrinchScout" type="Normal">
+    <dbid>50064</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="4.00" subtype="FreeHomeCityUnit" unittype="zpTilanusGrinchMerc" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIndianFriendshipGrinchScout" type="Normal">
+    <dbid>50065</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpTilanusGrinchMerc" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpChristmasVeteranTech</effect>
+      <effect type="TechStatus" status="active">zpChristmasGuardTech</effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTradeTreatyGrinch" type="Normal">
+    <dbid>50066</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpGrinchVeteranTech" type="Normal">
+    <dbid>50067</dbid>
+    <displaynameid>400166</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">75.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
+    <rollovertextid>400206</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpTilanusGrinch</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpTilanusGrinch</target>
+      </effect>
+      <effect type ="SetName" proto ="zpTilanusGrinch" culture ="none" newname ="400166">
+      </effect>
+      <effect type="SetName" proto="zpTilanusGrinch" culture="none" newname="400168" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpGrinchGuardTech" type="Normal">
+    <dbid>50068</dbid>
+		<displaynameid>400167</displaynameid>
+		<cost resourcetype ="Wood">400.0000</cost>
+		<cost resourcetype ="Gold">300.0000</cost>
+		<researchpoints>10.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
+		<rollovertextid>400207</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>UpgradeTech</flag>
+    <flag>DENativeUnitUpgrade</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+		<prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+			<techstatus status ="active">zpChristmasVeteranTech</techstatus>
+		</prereqs>
+    <effects>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpTilanusGrinch</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpTilanusGrinch</target>
+      </effect>
+      <effect type ="SetName" proto ="zpTilanusGrinch" culture ="none" newname ="400167">
+      </effect>
+      <effect type="SetName" proto="zpTilanusGrinch" culture="none" newname="400168" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>

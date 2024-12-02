@@ -106,5 +106,75 @@
 			<Icon>resources\art\units\natives\christmass_content\christmas_tp_64x64.png</Icon>
 			<PortraitIcon>resources\art\units\natives\christmass_content\christmas_tp.png</PortraitIcon>
 		</Unit>
+		<Unit name='NuggetDroppedWood'>
+			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
+			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
+			<AnimFile>buildings\props_colony\gifts\gift_wood.xml</AnimFile>
+			<Icon>resources\art\buildings\props_colony\gifts\gift_wood.png</Icon>
+			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_wood.png</PortraitIcon>
+		</Unit>
+		<Unit name='NuggetCave'>
+			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
+			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
+			<AnimFile>buildings\props_colony\gifts\gift_gold.xml</AnimFile>
+			<Icon>resources\art\buildings\props_colony\gifts\gift_gold.png</Icon>
+			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_gold.png</PortraitIcon>
+		</Unit>
+		<Unit name='NuggetPirate'>
+			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
+			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
+			<AnimFile>buildings\props_colony\gifts\gift_gold.xml</AnimFile>
+			<Icon>resources\art\buildings\props_colony\gifts\gift_gold.png</Icon>
+			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_gold.png</PortraitIcon>
+		</Unit>
+		<Unit name='NuggetBeaver'>
+			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
+			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
+			<AnimFile>buildings\props_colony\gifts\gift_gold.xml</AnimFile>
+			<Icon>resources\art\buildings\props_colony\gifts\gift_gold.png</Icon>
+			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_gold.png</PortraitIcon>
+		</Unit>
+		<Unit name='NuggetDroppedSupplies'>
+			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
+			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
+			<AnimFile>buildings\props_colony\gifts\gift_wood.xml</AnimFile>
+			<Icon>resources\art\buildings\props_colony\gifts\gift_wood.png</Icon>
+			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_wood.png</PortraitIcon>
+		</Unit>
+		<Unit name='NuggetWolfRock'>
+			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
+			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
+			<AnimFile>buildings\props_colony\gifts\gift_wood.xml</AnimFile>
+			<Icon>resources\art\buildings\props_colony\gifts\gift_wood.png</Icon>
+			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_wood.png</PortraitIcon>
+		</Unit>
+		<Unit name='NuggetKidnap'>
+			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
+			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
+			<AnimFile>buildings\props_colony\gifts\gift_wood.xml</AnimFile>
+			<Icon>resources\art\buildings\props_colony\gifts\gift_wood.png</Icon>
+			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_wood.png</PortraitIcon>
+		</Unit>
+		<Unit name='NuggetBearTree'>
+			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
+			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
+			<AnimFile>buildings\props_colony\gifts\gift_wood.xml</AnimFile>
+			<Icon>resources\art\buildings\props_colony\gifts\gift_wood.png</Icon>
+			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_wood.png</PortraitIcon>
+		</Unit>
+		<Unit name='NuggetWolfTreebent'>
+			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
+			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
+			<AnimFile>buildings\props_colony\gifts\gift_wood.xml</AnimFile>
+			<Icon>resources\art\buildings\props_colony\gifts\gift_wood.png</Icon>
+			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_wood.png</PortraitIcon>
+		</Unit>
+		<Unit name='NuggetKidnapBrit'>
+			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
+			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
+			<AnimFile>buildings\props_colony\gifts\gift_gold.xml</AnimFile>
+			<Icon>resources\art\buildings\props_colony\gifts\gift_gold.png</Icon>
+			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_gold.png</PortraitIcon>
+		</Unit>
 	</ProtoMods>
 </Mods>
