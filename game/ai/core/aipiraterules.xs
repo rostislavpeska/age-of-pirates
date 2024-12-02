@@ -89,6 +89,12 @@ minInterval 1
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
    }
 
+   // Attack/Defend style maps
+   if (cRandomMapName == "zpverseilles")
+   {
+      xsEnableRule("initializecheckAttackDefenseMapAoP"); // 
+   }
+
    // AssertiveWall: Archipelago style maps
    if (cRandomMapName == "euArchipelago" ||
        cRandomMapName == "euArchipelagoLarge"||
@@ -301,6 +307,7 @@ minInterval 1
 void checkAttackDefenseMapAoP(void)
 {
    int headquarters = -1;
+   vector headquartersLoc = cInvalidVector;
 
    // Look for the different HQ buildings
    headquarters = getUnit(cUnitTypedeSPCHeadquarters, cPlayerRelationAlly);
@@ -314,12 +321,14 @@ void checkAttackDefenseMapAoP(void)
       headquarters = getUnit(cUnitTypezpSPCRoyalOrangerie, cPlayerRelationAlly);
    }
 
+   headquartersLoc = kbUnitGetPosition(headquarters);
+
    if (headquarters > 0)
    { // defender
-      btOffenseDefense = 0.0;
+      //btOffenseDefense = 0.0;  might be causing issues with gStrategy
 
       gForwardBaseState = cForwardBaseStateActive;
-      gForwardBaseLocation = kbUnitGetPosition(headquarters);
+      gForwardBaseLocation = headquartersLoc;
       gForwardBaseUpTime = xsGetTime();
       gForwardBaseShouldDefend = true;
       gForwardBaseID = kbBaseCreate(cMyID, "AoP defense base player: " + kbBaseGetNextID(), gForwardBaseLocation, 80.0);
@@ -327,6 +336,8 @@ void checkAttackDefenseMapAoP(void)
       vector baseFront = xsVectorNormalize(kbGetMapCenter() - kbGetPlayerStartingPosition(cMyID));
       kbBaseSetFrontVector(cMyID, gForwardBaseID, baseFront);
       kbBaseSetMilitary(cMyID, gForwardBaseID, true);
+      endDefenseReflex();
+      gDefendingObjective = true;
       xsDisableSelf();
       return;
    }
@@ -337,6 +348,30 @@ void checkAttackDefenseMapAoP(void)
          btOffenseDefense = 0.8;
       }
    }
+}
+
+rule initializecheckAttackDefenseMapAoP
+inactive
+minInterval 10
+{
+   checkAttackDefenseMapAoP();
+   if (cRandomMapName == "zpverseilles")
+   {
+      if (xsIsRuleEnabled("desparationRaidEnabler") == true)
+      {
+         xsDisableRule("desparationRaidEnabler");
+      }
+      if (xsIsRuleEnabled("raidEnabler") == true)
+      {
+         xsDisableRule("raidEnabler");
+      }
+      if (xsIsRuleEnabled("raidManager") == true)
+      {
+         xsDisableRule("raidManager");
+      }
+   }
+
+   xsDisableSelf();
 }
 
 //==============================================================================

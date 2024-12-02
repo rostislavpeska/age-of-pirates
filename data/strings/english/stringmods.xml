@@ -2238,13 +2238,13 @@
       <string _locid="400159">C7 Seasoned Light Cannon</string>
       <string _locid="400160">C9 Storied Light Cannon</string>
       <string _locid="400161">Festive artillery piece firing decorative lights.</string>
-      <string _locid="400162">Grinch</string>
-      <string _locid="400163">zp Grinch</string>
+      <string _locid="400162">Grinch Sharpshooter</string>
+      <string _locid="400163">zp Grinch Sharpshooter</string>
       <string _locid="400164">Cuddly as a cactus, charming as an eel.</string>
       <string _locid="400165">A bad banana with a greasy black peel.</string>
-      <string _locid="400166">Hardy Grinch</string>
-      <string _locid="400167">Seasoned Grinch</string>
-      <string _locid="400168">Storied Grinch</string>
+      <string _locid="400166">Hardy Grinch Sharpshooter</string>
+      <string _locid="400167">Seasoned Grinch Sharpshooter</string>
+      <string _locid="400168">Storied Grinch Sharpshooter</string>
       <string _locid="400169">39 1/2 Foot Polearm</string>
       <string _locid="400170">zp Christmas Polearm</string>
       <string _locid="400171">A long reaching polearm to keep the grinch at bay.</string>
@@ -2267,20 +2267,23 @@
       <string _locid="400188">Description Grinch Rob Houses</string>
       <string _locid="400189">Grinch Expansion</string>
       <string _locid="400190">Grinch Expansion Description</string>
-      <string _locid="400191">Grinch Rob Houses</string>
+      <string _locid="400191">TEAM Grinch Rob Houses</string>
       <string _locid="400192">Description Grinch Rob Houses</string>
-      <string _locid="400193">Grinch Cost Swap</string>
-      <string _locid="400194">Producing your own uniforms reduces the cost of your light infantry and improves all infantry training speed.</string>
+      <string _locid="400193">TEAM Curtain Uniforms</string>
+      <string _locid="400194">Producing your own uniforms reduces the cost of your Grinch units and improves their training speed.</string>
       <string _locid="400195">Town Scouting</string>
-      <string _locid="400196">Ships a small batch of Grinch units and greatly improves their line of sight.</string>
+      <string _locid="400196">Ships a small batch of Grinch Pathfinders and greatly improves their line of sight.</string>
       <string _locid="400197">Grinch Pathfinder</string>
       <string _locid="400198">zp Grinch Pathfinder</string>
-      <string _locid="400199">Cuddly as a cactus, charming as an eel.</string>
+      <string _locid="400199">A nasty, wasty skunk that shadow techs</string>
       <string _locid="400200">A bad banana with a greasy black peel.</string>
       <string _locid="400201">Hardy Grinch Pathfinder</string>
       <string _locid="400202">Seasoned Grinch Pathfinder</string>
       <string _locid="400203">Storied Grinch Pathfinder</string>
-
+      <string _locid="400204">Seasonal Overtime</string>
+      <string _locid="400205">Allows you to construct another Cocoa Café</string>
+      <string _locid="400206">Upgrades your Grinch Sharpshooters to veteran level.</string>
+      <string _locid="400207">Upgrades your Grinch Sharpshooters to guard level.</string>
 
       <!-- ===================================== -->
       <!-- ===================================== -->

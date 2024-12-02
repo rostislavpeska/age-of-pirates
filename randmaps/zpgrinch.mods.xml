@@ -106,6 +106,22 @@
 			<Icon>resources\art\units\natives\christmass_content\christmas_tp_64x64.png</Icon>
 			<PortraitIcon>resources\art\units\natives\christmass_content\christmas_tp.png</PortraitIcon>
 		</Unit>
+		<unit name="deTavern">
+			<displaynameid>400177</displaynameid>
+			<rollovertextid>400178</rollovertextid>
+			<shortrollovertextid>400178</shortrollovertextid>
+			<icon>resources\art\units\natives\christmass_content\cocoa_cafe_icon.png</icon>
+			<portraiticon>resources\art\units\natives\christmass_content\cocoa_cafe.png</portraiticon>
+			<AnimFile>units\christmas_units\cocoa_cafe\tavern.xml</AnimFile>
+		</unit>
+		<unit name="Saloon">
+			<displaynameid>400177</displaynameid>
+			<rollovertextid>400178</rollovertextid>
+			<shortrollovertextid>400178</shortrollovertextid>
+			<icon>resources\art\units\natives\christmass_content\cocoa_cafe_icon.png</icon>
+			<portraiticon>resources\art\units\natives\christmass_content\cocoa_cafe.png</portraiticon>
+			<AnimFile>units\christmas_units\cocoa_cafe\tavern.xml</AnimFile>
+		</unit>
 		<Unit name='NuggetDroppedWood'>
 			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
 			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>

@@ -1820,7 +1820,7 @@ minInterval 30
    }
 
    // AssertiveWall: On great turkish war, set the forward base and leave it there, ignoring all other logic
-   if (cRandomMapName == "eugreatturkishwar" && btOffenseDefense == 0.0)
+   if ((cRandomMapName == "eugreatturkishwar" && btOffenseDefense == 0.0) || gDefendingObjective == true)
    {
       gForwardBaseState = cForwardBaseStateActive;
       gForwardBaseLocation = kbUnitGetPosition(getUnit(cUnitTypedeSPCHeadquartersVienna, cPlayerRelationAlly));

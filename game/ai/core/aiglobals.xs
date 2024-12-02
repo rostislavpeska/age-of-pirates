@@ -480,6 +480,8 @@ extern int gKOTHTeam = -1;          // TeamID of team that will win if the KOTH 
 extern int gKOTHAllyTimer = -1;         // AssertiveWall: keep the timer counting
 extern int gKOTHEnemyTimer = -1;         // AssertiveWall: keep the timer counting. Only works with 2 teams
 
+extern bool gDefendingObjective = false;    // AssertiveWall: Useful for attack/defend maps
+
 extern int gArmyUnitMaintainPlans = -1;
 
 extern int gCaravelUnit = cUnitTypeCaravel;
