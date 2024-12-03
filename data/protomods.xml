@@ -47503,19 +47503,19 @@
   <tactics>xmasspolearm.tactics</tactics>
   <protoaction>
     <name>BuildingAttack</name>
-    <damage>40.000000</damage>
+    <damage>32.000000</damage>
     <damagetype>Siege</damagetype>
     <rof>3.000000</rof>
   </protoaction>
   <protoaction>
     <name>CoverBuildingAttack</name>
-    <damage>20.000000</damage>
+    <damage>16.000000</damage>
     <damagetype>Siege</damagetype>
     <rof>3.000000</rof>
   </protoaction>
   <protoaction>
     <name>CoverHandAttack</name>
-    <damage>14.000000</damage>
+    <damage>12.000000</damage>
     <damagetype>Hand</damagetype>
     <rof>1.500000</rof>
     <damagebonus type="AbstractCavalry">1.750000</damagebonus>
@@ -47523,7 +47523,7 @@
   </protoaction>
   <protoaction>
     <name>DefendHandAttack</name>
-    <damage>28.000000</damage>
+    <damage>24.000000</damage>
     <damagetype>Hand</damagetype>
     <rof>1.500000</rof>
     <damagebonus type="AbstractCavalry">1.750000</damagebonus>
@@ -47531,7 +47531,7 @@
   </protoaction>
   <protoaction>
     <name>MeleeHandAttack</name>
-    <damage>28.000000</damage>
+    <damage>24.000000</damage>
     <damagetype>Hand</damagetype>
     <rof>1.500000</rof>
     <damagebonus type="AbstractCavalry">1.750000</damagebonus>
