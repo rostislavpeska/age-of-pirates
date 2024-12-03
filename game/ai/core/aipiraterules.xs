@@ -101,7 +101,8 @@ minInterval 1
        cRandomMapName == "zpmediterranean" ||
        cRandomMapName == "zpatols" ||
        cRandomMapName == "zpkurils" ||
-       cRandomMapName == "zpbarrierreef")
+       cRandomMapName == "zpbarrierreef" ||
+       cRandomMapName == "zpmelanesia")
    {
       gIsArchipelagoMap = true;
       gStartOnDifferentIslands = true;
@@ -115,7 +116,8 @@ minInterval 1
 
       // Atolls are a subset of Archipelago
       if (cRandomMapName == "zpatols" ||
-          cRandomMapName == "zpbarrierreef")
+          cRandomMapName == "zpbarrierreef" ||
+          cRandomMapName == "zpmelanesia")
       {
          gIsAtollMap = true;
       }

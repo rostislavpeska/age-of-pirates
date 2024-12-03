@@ -1488,10 +1488,15 @@ void main(void)
 	rmCreateTrigger("Starting Techs");
 	rmSwitchToTrigger(rmTriggerID("Starting techs"));
 	for(i=1; <= cNumberNonGaiaPlayers) {
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID",i);
-	rmSetTriggerEffectParam("TechID","cTechzpXmassTradeRoute"); // XMass Trade Route Techs
-	rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpXmassTradeRoute"); // XMass Trade Route Techs
+		rmSetTriggerEffectParamInt("Status",2);
+
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechdeEUMapUpdateVisuals"); // European Embassy
+		rmSetTriggerEffectParamInt("Status",2);
 	}
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);

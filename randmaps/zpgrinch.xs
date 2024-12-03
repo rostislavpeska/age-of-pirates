@@ -611,7 +611,7 @@ void main(void)
 	
 	// Starting trees
 	int playerTreeChristmasID = rmCreateObjectDef("player trees xmas");
-	rmAddObjectDefItem(playerTreeChristmasID, "zpChristmassTree", 5, 5.0);
+	rmAddObjectDefItem(playerTreeChristmasID, "TreeChristmas", 5, 5.0);
     rmSetObjectDefMinDistance(playerTreeChristmasID, 12);
     rmSetObjectDefMaxDistance(playerTreeChristmasID, 16);
 	rmAddObjectDefToClass(playerTreeChristmasID, classStartingResource);
@@ -634,7 +634,7 @@ void main(void)
 	
 	// Starting trees far
 	int playerTreeChristmas2ID = rmCreateObjectDef("player trees xmas far");
-	rmAddObjectDefItem(playerTreeChristmas2ID, "zpChristmassTree", 1, 4.0);
+	rmAddObjectDefItem(playerTreeChristmas2ID, "TreeChristmas", 1, 4.0);
 	rmAddObjectDefItem(playerTreeChristmas2ID, "TreeYukon", 6, 8.0);
 	rmAddObjectDefItem(playerTreeChristmas2ID, "TreeYukonSnow", 6, 8.0);
     rmSetObjectDefMinDistance(playerTreeChristmas2ID, 36);
@@ -986,6 +986,11 @@ void main(void)
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpXmassMercenaries"); // Christmas Mercenaries
+		rmSetTriggerEffectParamInt("Status",2);
+
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechdeEUMapUpdateVisuals"); // European Embassy
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
