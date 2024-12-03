@@ -2263,27 +2263,29 @@
       <string _locid="400184">zp PROP Xmass Waterloo House</string>
       <string _locid="400185">Grinch Merc Increase</string>
       <string _locid="400186">Description Grinch Merc Increase</string>
-      <string _locid="400187">Grinch Rob Houses</string>
-      <string _locid="400188">Description Grinch Rob Houses</string>
+      <string _locid="400187">Pathfinder Scouting Party</string>
+      <string _locid="400188">Ships a small batch of pathfinders and improves their hitpoints and line of sight.</string>
       <string _locid="400189">Grinch Expansion</string>
       <string _locid="400190">Grinch Expansion Description</string>
       <string _locid="400191">TEAM Grinch Rob Houses</string>
       <string _locid="400192">Description Grinch Rob Houses</string>
-      <string _locid="400193">TEAM Curtain Uniforms</string>
-      <string _locid="400194">Producing your own uniforms reduces the cost of your Grinch units and improves their training speed.</string>
-      <string _locid="400195">Town Scouting</string>
-      <string _locid="400196">Ships a small batch of Grinch Pathfinders and greatly improves their line of sight.</string>
+      <string _locid="400193">TEAM Repurposed Uniforms</string>
+      <string _locid="400194">Producing your own uniforms reduces the cost of your Grinch units and improves their training speed. More effective for Sharpshooters than Pathfinders.</string>
+      <string _locid="400195">TEAM Chimney Divers</string>
+      <string _locid="400196">Ships a small batch of Grinch Sharpshooters and improves the siege damage of all grinch units.</string>
       <string _locid="400197">Grinch Pathfinder</string>
       <string _locid="400198">zp Grinch Pathfinder</string>
-      <string _locid="400199">A nasty, wasty skunk that shadow techs</string>
+      <string _locid="400199">A nasty, wasty skunk that shadow techs.</string>
       <string _locid="400200">A bad banana with a greasy black peel.</string>
       <string _locid="400201">Hardy Grinch Pathfinder</string>
       <string _locid="400202">Seasoned Grinch Pathfinder</string>
       <string _locid="400203">Storied Grinch Pathfinder</string>
-      <string _locid="400204">Seasonal Overtime</string>
-      <string _locid="400205">Allows you to construct another Cocoa Café</string>
-      <string _locid="400206">Upgrades your Grinch Sharpshooters to veteran level.</string>
-      <string _locid="400207">Upgrades your Grinch Sharpshooters to guard level.</string>
+      <string _locid="400204">TEAM Mandatory Overtime</string>
+      <string _locid="400205">Allows you and your teammates to construct another Cocoa Café</string>
+      <string _locid="400206">Upgrade your Grinch Sharpshooters to veteran level.</string>
+      <string _locid="400207">Upgrade your Grinch Sharpshooters to guard level.</string>
+      <string _locid="400208">Grinch Large Batch</string>
+      <string _locid="400209">Description of grinch large batch</string>
 
       <!-- ===================================== -->
       <!-- ===================================== -->
