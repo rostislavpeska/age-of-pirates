@@ -1,0 +1,66 @@
+<animfile>
+    <submodel>policeman
+        <component>ModelComp<assetreference type="GrannyModel"><file>homecity\homecity_units\middle_class_policeman\middleclass_policeman</file></assetreference></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>homecity\homecity_units\middle_class_policeman\policeman_idle_a</file></assetreference><component>ModelComp</component></anim>
+        <anim>Walk<assetreference type="GrannyAnim"><file>homecity\homecity_units\middle_class_policeman\policeman_walk_a</file></assetreference><assetreference type="GrannyAnim"><file>homecity\homecity_units\middle_class_policeman\policeman_walk_b</file></assetreference><assetreference type="GrannyAnim"><file>homecity\homecity_units\middle_class_policeman\policeman_walk_c</file></assetreference><component>ModelComp</component></anim>
+        <anim>Bored<assetreference type="GrannyAnim"><file>homecity\homecity_units\middle_class_policeman\policeman_bored_a</file></assetreference><assetreference type="GrannyAnim"><file>homecity\homecity_units\middle_class_policeman\policeman_bored_b</file></assetreference><component>ModelComp</component></anim>
+    </submodel>
+    <submodel>hunchback
+        <component>ModelComp2<assetreference type="GrannyModel"><file>homecity\homecity_units\hunchback\hunchback</file></assetreference><decal><effecttype>default</effecttype><texture>shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>homecity\homecity_units\hunchback\hunchback_idle</file></assetreference><component>ModelComp2</component></anim>
+        <anim>Bored_A<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\HUNCHBACK\hunchback_bored_a</file></assetreference><component>ModelComp2</component></anim>
+        <anim>Bored_B<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\HUNCHBACK\hunchback_bored_b</file></assetreference><component>ModelComp2</component></anim>
+        <anim>Bored_C<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\HUNCHBACK\hunchback_bored_c</file></assetreference><component>ModelComp2</component></anim>
+    </submodel>
+    <submodel>mime
+        <component>ModelComp3<assetreference type="GrannyModel"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime</file></assetreference><decal><effecttype>default</effecttype><texture>shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_idle</file></assetreference><component>ModelComp3</component></anim>
+        <anim>Bored_A<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_bored_a</file></assetreference><component>ModelComp3</component></anim>
+        <anim>Bored_B<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_bored_b</file></assetreference><component>ModelComp3</component></anim>
+        <anim>Bored_C<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_bored_c</file></assetreference><component>ModelComp3</component></anim>
+        <anim>Bored_D<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_bored_d</file></assetreference><component>ModelComp3</component></anim>
+        <anim>into_idle<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_into</file></assetreference><component>ModelComp3</component></anim>
+        <anim>out of idle<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_out_of</file></assetreference><component>ModelComp3</component></anim>
+        <anim>walk<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_walk</file></assetreference><component>ModelComp3</component></anim>
+    </submodel>
+    <submodel>butcher
+        <component>ModelComp4<assetreference type="GrannyModel"><file>homecity\homecity_units\middle_class_butcher\middle_class_butcher</file></assetreference><decal><effecttype>default</effecttype><texture>shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\homecity\2_leg_idle\human_idle_homecity_male_b</file></assetreference><component>ModelComp4</component></anim>
+        <anim>Bored<assetreference type="GrannyAnim"><file>animation_library\homecity\2_leg_bored\human_bored_homecity_male_b</file></assetreference><component>ModelComp4</component></anim>
+        <anim>Walk<assetreference type="GrannyAnim"><file>animation_library\homecity\2_leg_walk\human_walk_homecity_male_a</file><tag type="FootstepLeft">0.30</tag><tag type="FootstepRight">0.80</tag></assetreference><component>ModelComp4</component></anim>
+        <anim>Applause_A<assetreference type="GrannyAnim"><file>animation_library\homecity\2_leg_applause\human_applause_a1</file></assetreference><component>ModelComp4</component></anim>
+        <anim>Applause_B<assetreference type="GrannyAnim"><file>animation_library\homecity\2_leg_applause\human_applause_b1</file></assetreference><component>ModelComp4</component></anim>
+        <anim>Applause_C<assetreference type="GrannyAnim"><file>animation_library\homecity\2_leg_applause\human_applause_c1</file></assetreference><component>ModelComp4</component></anim>
+        <anim>Applause_D<assetreference type="GrannyAnim"><file>animation_library\homecity\2_leg_applause\human_applause_d1</file></assetreference><component>ModelComp4</component></anim>
+        <anim>Applause_E<assetreference type="GrannyAnim"><file>animation_library\homecity\2_leg_applause\human_applause_e1</file></assetreference><component>ModelComp4</component></anim>
+        <anim>OpenDoor<assetreference type="GrannyAnim"><file>animation_library\homecity\2_leg_task\human_opendoor_homecity_male</file></assetreference><component>ModelComp4</component></anim>
+        <anim>CloseDoor<assetreference type="GrannyAnim"><file>animation_library\homecity\2_leg_task\human_closedoor_homecity_male</file></assetreference><component>ModelComp4</component></anim>
+    </submodel>
+    <submodel>drunk
+        <component>ModelComp5<assetreference type="GrannyModel"><file>homecity\homecity_units\drunk\drunk</file></assetreference><decal><effecttype>default</effecttype><texture>shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>homecity\homecity_units\drunk\drunk_idle</file></assetreference><component>ModelComp5</component></anim>
+        <anim>Bored<assetreference type="GrannyAnim"><file>homecity\homecity_units\drunk\drunk_bored_a</file></assetreference><assetreference type="GrannyAnim"><file>homecity\homecity_units\drunk\drunk_bored_b</file></assetreference><component>ModelComp5</component></anim>
+        <anim>Walk<assetreference type="GrannyAnim"><file>homecity\homecity_units\drunk\drunk_walk</file></assetreference><component>ModelComp5</component></anim>
+        <anim>Into Idle<assetreference type="GrannyAnim"><file>homecity\homecity_units\drunk\drunk_transition_into_idle</file></assetreference><component>ModelComp5</component></anim>
+        <anim>Out of Idle<assetreference type="GrannyAnim"><file>homecity\homecity_units\drunk\drunk_transition_out_of_idle</file></assetreference><component>ModelComp5</component></anim>
+    </submodel>
+    <component>
+		<logic type="Variation">
+			<data>
+				<submodelref ref="policerman"/>
+			</data>
+			<data>
+				<submodelref ref="hunchback"/>
+			</data>
+			<data>
+				<submodelref ref="mime"/>
+			</data>
+			<data>
+				<submodelref ref="butcher"/>
+			</data>
+			<data>
+				<submodelref ref="drunk"/>
+			</data>
+		</logic>
+	</component>
+</animfile>
