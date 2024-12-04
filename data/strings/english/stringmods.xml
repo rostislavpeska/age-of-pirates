@@ -1736,8 +1736,8 @@
       <string _locid="301735">ZP Pearls</string>
       <string _locid="301736">Underbrush Coral</string>
       <string _locid="301737">ZP Underbrush Coral</string>
-      <string _locid="301738">Deep Sea Pioneers</string>
-      <string _locid="301739">Ships a Submarine which can train Divers able to gather resources from underwater mines and shipwrecks. Allows submarine training - either from Inventor Trading post and the Dock. &lt;color=0.0, 1.0, 0.0&gt;TEAM TECH&lt;/color&gt;</string>
+      <string _locid="301738">Team Deep Sea Pioneers</string>
+      <string _locid="301739">Ships a Submarine which can train Divers able to gather resources from underwater mines and shipwrecks. Allows submarine training - either from Inventor Trading post and the Dock.</string>
       <string _locid="301740">Cook Islands</string>
       <string _locid="301741">Large map with team islands. Players start on islands with limited resources. Most of the resources on this map are placed under the water and can be gathered only by divers. \n\nSettlements: Maori, Inventors (Nemo Bonus), Pirates</string>
       <string _locid="301742">Unlock the underwater world by taking Inventors Trade Post and researching a special tech or rescuing Divers from sharks.</string>
@@ -1918,7 +1918,7 @@
       <string _locid="301917">La Revolution!</string>
       <string _locid="301918">Revolts to one of the revolutionary factions. \n • Initiates a special type of revolution \n • Transforms all your settlers into Sansculottes \n • Allows Sansculotte training from your Town Center \n • Changes you civilization to one of the revolutionary factions without loosing access to your original homecity and the option to advance to higher age (including Imperial Age)</string>
       <string _locid="301919">Gilbert du Motier (Republic of Paris)</string>
-      <string _locid="301920">Nobleman and moderate republican, trains more revolutionaries \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nCavalry Commander \nGalerie Lafayette</string>
+      <string _locid="301920">Nobleman and moderate republican, trains more revolutionaries \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nCavalry Commander \nTeam Galerie Lafayette</string>
       <string _locid="301921">Maximilien Robespierre (French Republic)</string>
       <string _locid="301922">Radical revolutionary leader, population improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nStorm the Barricades \nLoyal Districts</string>
       <string _locid="301923">Napoleon Bonaparte (French Empire)</string>
@@ -1958,8 +1958,8 @@
       <string _locid="301957">Captain of the Guards</string>
       <string _locid="301958">Ships Captain D'Artagnan able to train Three Musketeers</string>
       <string _locid="301959">Allies of the revolution</string>
-      <string _locid="301960">Galerie Lafayette</string>
-      <string _locid="301961">All convertable city resource buildings work faster by 50% while being owned either by you or any of your team members. &lt;color=0.0, 1.0, 0.0&gt;TEAM TECH&lt;/color&gt;</string>
+      <string _locid="301960">Team Galerie Lafayette</string>
+      <string _locid="301961">All convertable city resource buildings work faster by 50% while being owned either by you or any of your team members.</string>
       <string _locid="301962">Bastille</string>
       <string _locid="301963">ZP Bastille</string>
       <string _locid="301964">Royal Court</string>

@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "400213" displayNameID = "400212" loadDetails="400214"
+    imagepath = "ui\random_map\grinch_mountain\grinch_mini" cannotReplace = "" loadBackground="ui\random_map\winter_wonderland\winter_wonderlandii_map">
+    <loadss>ui\random_map\grinch_mountain\grinch_mountain_01</loadss>
+    <loadss>ui\random_map\grinch_mountain\grinch_mountain_02</loadss>
+    <loadss>ui\random_map\grinch_mountain\grinch_mountain_03</loadss>
+    <enforcedSettings>
+        <setting type="FFA" state="forbidden" />
+        <setting type="RecordGame" state="forbidden" />
+        <setting type="TwoTeams" state="enforced" />
+        <setting type="DefaultRules" state="enforced" />
+        <setting type="OneVsAll" state="forbidden" />
+        <setting type="AltTeamNames" state="enforced" />
+    </enforcedSettings>
+    <recommendedSettings>
+        <civilization>British</civilization>
+        <civilization>French</civilization>
+        <civilization>Dutch</civilization>
+        <civilization>Russians</civilization>
+        <civilization>Germans</civilization>
+        <civilization>DESwedish</civilization>
+        <civilization>DEAmericans</civilization>
+    </recommendedSettings>
+</mapinfo>
