@@ -2289,7 +2289,7 @@
       <string _locid="400210">TEAM Unlock Embassy</string>
       <string _locid="400211">Unlock the native embassy for your team, allowing them to train Grinch Pathfinders and research additional techs.</string>
       <string _locid="400212">Grinch Mountain</string>
-      <string _locid="400213">Two sided festive map. Victory conditions are standard, with each side having access to one type of native. \n\n&lt;color=1.0, 1.0, 0.0&gt;TATTACKERS:&lt;/color&gt; Start with the Grinch on Mt. Crumpit. \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Start in the valley with a large Christmas Village. \n\nSettlements: Mt. Crumpit, Christmas Village</string>
+      <string _locid="400213">Two sided festive map. Victory conditions are standard, with each side having access to one type of native. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Start with the Grinch on Mt. Crumpit. \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Start in the valley with a large Christmas Village. \n\nSettlements: Mt. Crumpit, Christmas Village</string>
       <string _locid="400214">The Grinch hated Christmas! The whole Christmas season! Now, please don't ask why. No one quite knows the reason. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Start with the Grinch on Mt. Crumpit. \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Start in the valley with a large Christmas Village. \n\nSettlements: Mt. Crumpit, Christmas Village</string>
 
       <!-- ===================================== -->
