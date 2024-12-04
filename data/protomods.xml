@@ -950,10 +950,11 @@
     <train row="0" page="0" column="1">zpTilanusGrinch</train>
     <tech row="0" page="1" column="1">zpGrinchVeteranTech</tech>
     <tech row="0" page="1" column="1">zpGrinchGuardTech</tech>
-    <tech row="0" page="2" column="0">zpNatGrinchLargeBatch</tech>
     <tech row="0" page="2" column="0">zpGrinchExpansion</tech>
-    <tech row="0" page="2" column="1">zpNatGrinchBuildingRob</tech>
-    <tech row="0" page="2" column="2">zpXmassOvertime</tech>
+    <tech row="0" page="2" column="0">zpNatGrinchLargeBatch</tech>
+    <tech row="0" page="2" column="1">zpNativeGrinchEmbassy</tech>
+    <tech row="0" page="2" column="2">zpNatGrinchBuildingRob</tech>
+    <tech row="0" page="2" column="3">zpXmassOvertime</tech>
     <!--<tech row="0" page="2" column="2">zpNatGrinchCostReduction</tech>-->
     <!--<tech row="0" page="2" column="3">zpNatGrinchChimneyDivers</tech>-->
 

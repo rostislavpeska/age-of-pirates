@@ -1481,13 +1481,67 @@ void main(void)
 		rmAddObjectDefConstraint(valleyPropsID, avoidEmbellishment);
 //		rmPlaceObjectDefAtLoc(valleyPropsID, 0, 0.50, 0.50, 6+3*PlayerNum);
 
+	// ____________________ LOCAL MERCENARIES ____________________
+    rmDisableDefaultMercs(true);
+    rmDisableCivTypeMercRestriction(true);
+
+	// Add 2 random outlaws
+	int randOutlawInt = rmRandInt(1, 3);  
+	if (randOutlawInt == 1)
+	{   rmEnableOutlaw("SaloonOutlawPistol");
+    	rmEnableOutlaw("SaloonOutlawRifleman"); }
+	else if (randOutlawInt == 2)
+	{   rmEnableOutlaw("SaloonOutlawPistol");
+		rmEnableOutlaw("SaloonOutlawRider"); }
+	else
+	{   rmEnableOutlaw("SaloonOutlawRifleman");
+		rmEnableOutlaw("SaloonOutlawRider"); }
+
+	// Add 2 christmas Mercs
+	/*int xmassMercRandInt = rmRandInt(1, 3);  
+	if (xmassMercRandInt == 1)
+	{   rmEnableMerc("zpChristmasGrenadier", -1);
+		rmEnableMerc("zpChristmasPolearm", -1); }
+	else if (xmassMercRandInt == 2)
+	{   rmEnableMerc("zpChristmasGrenadier", -1);
+		rmEnableMerc("zpChristmasOrganGun", -1); }
+	else
+	{   rmEnableMerc("zpChristmasPolearm", -1);
+		rmEnableMerc("zpChristmasOrganGun", -1); }*/
+
+	// One random one in addition to the festive ones
+    int mercRandInt = rmRandInt(1, 9);
+	if (mercRandInt == 1)
+	{ rmEnableMerc("MercLandsknecht", -1); }
+	else if (mercRandInt == 2)
+	{ rmEnableMerc("MercSwissPikeman", -1); }
+	else if (mercRandInt == 3)
+	{ rmEnableMerc("MercHighlander", -1); }
+	else if (mercRandInt == 4)
+	{ rmEnableMerc("MercJaeger", -1); }
+	else if (mercRandInt == 5)
+	{ rmEnableMerc("MercFusilier", -1); }
+	else if (mercRandInt == 6)
+	{ rmEnableMerc("deMercZouave", -1); }
+	else if (mercRandInt == 7)
+	{ rmEnableMerc("deMercPandour", -1); }
+	else if (mercRandInt == 8)
+	{ rmEnableMerc("deMercRoyalHorseman", -1); }
+	else
+	{ rmEnableMerc("deMercMountedRifleman", -1); }
 	
+    
 
 	// Starting techs
 
 	rmCreateTrigger("Starting Techs");
 	rmSwitchToTrigger(rmTriggerID("Starting techs"));
 	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpXmassMercenaries"); // Christmas Mercenaries
+		rmSetTriggerEffectParamInt("Status",2);
+
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpXmassTradeRoute"); // XMass Trade Route Techs

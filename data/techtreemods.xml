@@ -19904,7 +19904,9 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpTilanusGrinch</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">zpGrinchExpansion</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeGrinchEmbassy</effect>
       <effect type="TechStatus" status="obtainable">zpNatGrinchBuildingRob</effect>
       <effect type="TechStatus" status="obtainable">zpNatGrinchCostReduction</effect>
       <effect type="TechStatus" status="obtainable">zpNatGrinchChimneyDivers</effect>
@@ -19931,30 +19933,14 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpChristmasPolearm</target>
       </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">SaloonOutlawPistol</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">ypRepentantOutlawPistol</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">SaloonOutlawRifleman</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">ypRepentantOutlawRifleman</target>
-      </effect>
+      <effect type="TechStatus" status="obtainable">zpXmassGrenadierShadow</effect>
     </effects>
   </tech>
   <tech name="zpXmassGrenadierShadow" type="Normal">
     <dbid>50052</dbid>
     <researchpoints>0.0000</researchpoints>
-    <status>OBTAINABLE</status>
+    <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
-    <flag>OrPrereqs</flag>
-    <prereqs>
-      <techstatus status="Active">zpXmassMercenaries</techstatus>
-      <techstatus status="Active">zpNativeGrinchVillage</techstatus>
-    </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="CopyTacticAnims" fromtactic="GrenadierMortar" totactic="Volley" relativity="Assign">
         <target type="ProtoUnit">zpChristmasGrenadier</target>
@@ -19993,12 +19979,16 @@
   </tech>
   <tech name="zpNativeGrinchEmbassy" type="Normal">
     <dbid>50053</dbid>
-    <researchpoints>0.0000</researchpoints>
-    <status>OBTAINABLE</status>
-    <flag>Shadow</flag>
-    <flag>TeamTech</flag>
+    <displaynameid>400210</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">50.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\grinch_embassy.png</icon>
+    <rollovertextid>400211</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
     <prereqs>
-      <techstatus status="Active">zpNativeGrinchVillage</techstatus>
+      <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -20076,10 +20066,10 @@
       <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="BasePercent">
         <target type="ProtoUnit">zpTilanusGrinch</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatGrinchChimneyDivers" page="2" column="3">
+      <effect type="CommandAdd" tech="zpNatGrinchChimneyDivers" page="2" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatGrinchCostReduction" page="2" column="4">
+      <effect type="CommandAdd" tech="zpNatGrinchCostReduction" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -20348,7 +20338,7 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>
     <prereqs>
-      <techstatus status ="active">Colonialize</techstatus>
+      <techstatus status ="active">Fortressize</techstatus>
     </prereqs>
     <effects>
       <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpTilanusGrinch" relativity="Absolute">

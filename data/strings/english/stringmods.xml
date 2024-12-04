@@ -2226,9 +2226,9 @@
       <!-- ===================================== -->
       <!-- Christmas 2024 -->
       <!-- ===================================== -->
-      <string _locid="400150">Grinch Mountain</string>
+      <string _locid="400150">Mt. Crumpit</string>
       <string _locid="400151">zp Grinch Mountain</string>
-      <string _locid="400152" symbol="cStringNativePreAlly"> "Oh the noise. Oh the noise, Noise, Noise, NOISE!"</string>
+      <string _locid="400152" symbol="cStringNativePreAlly"> "For fifty-three years we've put up with it now! We MUST stop this Christmas from coming! ... But HOW?"</string>
       <string _locid="400153">Nutcracker Village</string>
       <string _locid="400154">zp Nutcracker Village</string>
       <string _locid="400155" symbol="cStringNativePreAlly"> "Nutcracker PLACEHOLDER"</string>
@@ -2286,6 +2286,11 @@
       <string _locid="400207">Upgrade your Grinch Sharpshooters to guard level.</string>
       <string _locid="400208">Grinch Volunteer Rifles</string>
       <string _locid="400209">Ships a large batch of Grinch Sharpshooters.</string>
+      <string _locid="400210">TEAM Unlock Grinch Embassy</string>
+      <string _locid="400211">Description unlocking grinch embassy</string>
+      <string _locid="400212">Grinch Mountain</string>
+      <string _locid="400213">Two sided festive map. Victory conditions are standard, with each side having access to one type of native. \n\n&lt;color=1.0, 1.0, 0.0&gt;TEAM 1:&lt;/color&gt; Start with the Grinch on Mt. Crumpit. \n\n&lt;color=1.0, 1.0, 0.0&gt;TEAM 2:&lt;/color&gt; Start in the valley with a large Christmas Village. \n\nSettlements: Mt. Crumpit, Christmas Village</string>
+      <string _locid="400214">The Grinch hated Christmas! The whole Christmas season! Now, please don't ask why. No one quite knows the reason. \n\n&lt;color=1.0, 1.0, 0.0&gt;TEAM 1:&lt;/color&gt; Start with the Grinch on Mt. Crumpit. \n\n&lt;color=1.0, 1.0, 0.0&gt;TEAM 2:&lt;/color&gt; Start in the valley with a large Christmas Village. \n\nSettlements: Mt. Crumpit, Christmas Village</string>
 
       <!-- ===================================== -->
       <!-- ===================================== -->
