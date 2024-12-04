@@ -10,7 +10,7 @@
         <setting type="TwoTeams" state="enforced" />
         <setting type="DefaultRules" state="enforced" />
         <setting type="OneVsAll" state="forbidden" />
-        <!--<setting type="AltTeamNames" state="enforced" />-->
+        <setting type="AltTeamNames" state="enforced" />
     </enforcedSettings>
     <recommendedSettings>
         <civilization>British</civilization>
