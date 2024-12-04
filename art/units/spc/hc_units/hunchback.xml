@@ -1,0 +1,7 @@
+<animfile>
+  <component>ModelComp<assetreference type="GrannyModel"><file>homecity\homecity_units\hunchback\hunchback</file></assetreference><decal><effecttype>default</effecttype><texture>shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\HUNCHBACK\hunchback_bored_b</file></assetreference><component>ModelComp</component></anim>
+  <anim>Bored_A<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\HUNCHBACK\hunchback_bored_a</file></assetreference><component>ModelComp</component></anim>
+  <anim>Bored_B<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\HUNCHBACK\hunchback_bored_b</file></assetreference><component>ModelComp</component></anim>
+  <anim>Bored_C<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\HUNCHBACK\hunchback_bored_c</file></assetreference><component>ModelComp</component></anim>
+</animfile>
