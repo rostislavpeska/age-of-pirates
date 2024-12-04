@@ -951,9 +951,10 @@
     <tech row="0" page="1" column="1">zpGrinchVeteranTech</tech>
     <tech row="0" page="1" column="1">zpGrinchGuardTech</tech>
     <tech row="0" page="2" column="0">zpGrinchExpansion</tech>
-    <tech row="0" page="2" column="1">zpNatGrinchBuildingRob</tech>
-    <tech row="0" page="2" column="2">zpXmassOvertime</tech>
-    <tech row="0" page="2" column="2">zpNatGrinchLargeBatch</tech>
+    <tech row="0" page="2" column="0">zpNatGrinchLargeBatch</tech>
+    <tech row="0" page="2" column="1">zpNativeGrinchEmbassy</tech>
+    <tech row="0" page="2" column="2">zpNatGrinchBuildingRob</tech>
+    <tech row="0" page="2" column="3">zpXmassOvertime</tech>
     <!--<tech row="0" page="2" column="2">zpNatGrinchCostReduction</tech>-->
     <!--<tech row="0" page="2" column="3">zpNatGrinchChimneyDivers</tech>-->
 
@@ -1155,10 +1156,10 @@
     <train row="0" page="0" column="100">zpCandyHowitzer</train>
     <train row="0" page="0" column="100">zpSantaHelper</train>
     <train row="0" page="0" column="101">zpTilanusGrinch</train>
-    <train row="0" page="0" column="101">zpTilanusGrinchMerc</train>
+    <train row="0" page="0" column="102">zpTilanusGrinchMerc</train>
       <!-- Techs for grinch embassy -->
-    <tech row="0" page="2" column="0">zpNatGrinchTeammateBuildLimit</tech>
-    <tech row="0" page="2" column="1">zpNatGrinchTeammatePathfinding</tech>
+    <tech row="0" page="2" column="0">zpNatGrinchTeammatePathfinding</tech>
+    <tech row="0" page="2" column="1">zpNatGrinchTeammateBuildLimit</tech>
     <!-- =============================================== -->
     <train row="0" page="0" column="81">zpNatPirate</train>
     <train row="0" page="0" column="83">zpNatMalteseGuard</train>
@@ -42338,10 +42339,10 @@
     <train row="0" page="0" column="100">zpCandyHowitzer</train>
     <train row="0" page="0" column="100">zpSantaHelper</train>
     <train row="0" page="0" column="101">zpTilanusGrinch</train>
-    <train row="0" page="0" column="101">zpTilanusGrinchMerc</train>
+    <train row="0" page="0" column="102">zpTilanusGrinchMerc</train>
       <!-- Techs for grinch embassy -->
-    <tech row="0" page="2" column="0">zpNatGrinchTeammateBuildLimit</tech>
-    <tech row="0" page="2" column="1">zpNatGrinchTeammatePathfinding</tech>
+    <tech row="0" page="2" column="0">zpNatGrinchTeammatePathfinding</tech>
+    <tech row="0" page="2" column="1">zpNatGrinchTeammateBuildLimit</tech>
 
     <!-- =============================================== -->
     <train row="0" page="0" column="81">zpNatPirate</train>
@@ -45422,7 +45423,7 @@
     <trainpoints>30.0000</trainpoints>
     <bounty>12.0000</bounty>
     <buildbounty>12.0000</buildbounty>
-    <cost resourcetype="Wood">115.0000</cost>
+    <cost resourcetype="Wood">90.0000</cost>
     <allowedage>1</allowedage>
     <armor type="Hand" value="0.3000">
     </armor>
@@ -45742,8 +45743,8 @@
     <command page="10" column="7">Delete</command>
     <command page="9" column="0">Tactic4</command>
     <command page="9" column="1">Tactic3</command>
-    <tactics>horseartillery.tactics</tactics>
-    <protoaction>
+    <tactics>xmasshorseartillery.tactics</tactics>
+    <!--<protoaction>
       <name>CannonAttack</name>
       <damage>100.000000</damage>
       <damagetype>Siege</damagetype>
@@ -45757,7 +45758,7 @@
       <damagebonus type="Building">2.000000</damagebonus>
       <damagebonus type="Ship">3.000000</damagebonus>
       <damagebonus type="xpArrowKnight">0.500000</damagebonus>
-    </protoaction>
+    </protoaction>-->
     <protoaction>
       <name>CaseShotAttack</name>
       <damage>11.000000</damage>
@@ -47542,23 +47543,23 @@
   <portraiticon>resources\art\units\natives\christmass_content\grinch.png</portraiticon>
   <rollovertextid>400164</rollovertextid>
   <shortrollovertextid>400165</shortrollovertextid>
-  <initialhitpoints>135.0000</initialhitpoints>
-  <maxhitpoints>135.0000</maxhitpoints>
-  <los>20.0000</los>
+  <initialhitpoints>105.0000</initialhitpoints>
+  <maxhitpoints>105.0000</maxhitpoints>
+  <los>27.0000</los>
   <projectileprotounit>InvisibleProjectile</projectileprotounit>
   <autoattackrange>16.0000</autoattackrange>
   <unitaitype>RangedCombative</unitaitype>
   <trainpoints>38.0000</trainpoints>
-  <bounty>13.0000</bounty>
-  <buildbounty>13.0000</buildbounty>
-  <cost resourcetype="Wood">30.0000</cost>
-  <cost resourcetype="Gold">80.0000</cost>
+  <bounty>12.0000</bounty>
+  <buildbounty>12.0000</buildbounty>
+  <cost resourcetype="Food">40.0000</cost>
+  <cost resourcetype="Gold">65.0000</cost>
   <allowedage>1</allowedage>
-  <armor type="Ranged" value="0.4000">
+  <armor type="Ranged" value="0.3500">
   </armor>
-  <sharedselectionunittypes>
+  <!--<sharedselectionunittypes>
     <unittype>zpTilanusGrinchMerc</unittype>
-  </sharedselectionunittypes>
+  </sharedselectionunittypes>-->
   <unittype>LogicalTypeHealed</unittype>
   <unittype>LogicalTypeValidSharpshoot</unittype>
   <unittype>LogicalTypeNeededForVictory</unittype>
@@ -47610,90 +47611,90 @@
     <damage>8.000000</damage>
     <damagetype>Hand</damagetype>
     <rof>1.500000</rof>
-    <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
-    <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
-    <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
+    <damagebonus type="AbstractHeavyInfantry">2.500000</damagebonus>
+    <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
+    <damagebonus type="AbstractRangedShockInfantry">2.250000</damagebonus>
     <damagebonus type="AbstractCavalry">0.750000</damagebonus>
     <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
   </protoaction>
   <protoaction>
     <name>DefendRangedAttack</name>
-    <damage>12.000000</damage>
+    <damage>15.000000</damage>
     <damagetype>Ranged</damagetype>
     <minrange>2.000000</minrange>
     <maxrange>20.000000</maxrange>
     <rof>3.000000</rof>
-    <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+    <damagebonus type="AbstractHeavyInfantry">2.500000</damagebonus>
     <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
-    <damagebonus type="AbstractRangedShockInfantry">2.500000</damagebonus>
-    <damagebonus type="AbstractCavalry">0.600000</damagebonus>
-    <damagebonus type="AbstractLightInfantry">0.500000</damagebonus>
+    <damagebonus type="AbstractRangedShockInfantry">2.250000</damagebonus>
+    <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
   </protoaction>
   <protoaction>
     <name>MeleeHandAttack</name>
     <damage>8.000000</damage>
     <damagetype>Hand</damagetype>
     <rof>1.500000</rof>
-    <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
-    <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
-    <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
-    <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
+    <damagebonus type="AbstractHeavyInfantry">2.500000</damagebonus>
+    <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
+    <damagebonus type="AbstractRangedShockInfantry">2.250000</damagebonus>
     <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
   </protoaction>
   <protoaction>
     <name>StaggerHandAttack</name>
     <damage>8.000000</damage>
     <damagetype>Hand</damagetype>
     <rof>1.500000</rof>
-    <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
-    <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
-    <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
-    <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
+    <damagebonus type="AbstractHeavyInfantry">2.500000</damagebonus>
+    <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
+    <damagebonus type="AbstractRangedShockInfantry">2.250000</damagebonus>
     <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
   </protoaction>
   <protoaction>
     <name>StaggerRangedAttack</name>
-    <damage>12.000000</damage>
+    <damage>15.000000</damage>
     <damagetype>Ranged</damagetype>
     <minrange>2.000000</minrange>
     <maxrange>20.000000</maxrange>
     <rof>3.000000</rof>
-    <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+    <damagebonus type="AbstractHeavyInfantry">2.500000</damagebonus>
     <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
-    <damagebonus type="AbstractRangedShockInfantry">2.500000</damagebonus>
-    <damagebonus type="AbstractCavalry">0.600000</damagebonus>
-    <damagebonus type="AbstractLightInfantry">0.500000</damagebonus>
+    <damagebonus type="AbstractRangedShockInfantry">2.250000</damagebonus>
+    <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
   </protoaction>
   <protoaction>
     <name>VolleyHandAttack</name>
     <damage>8.000000</damage>
     <damagetype>Hand</damagetype>
     <rof>1.500000</rof>
-    <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
-    <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
-    <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
+    <damagebonus type="AbstractHeavyInfantry">2.500000</damagebonus>
+    <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
+    <damagebonus type="AbstractRangedShockInfantry">2.250000</damagebonus>
     <damagebonus type="AbstractCavalry">0.750000</damagebonus>
     <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
   </protoaction>
   <protoaction>
     <name>VolleyRangedAttack</name>
-    <damage>12.000000</damage>
+    <damage>15.000000</damage>
     <damagetype>Ranged</damagetype>
     <minrange>2.000000</minrange>
     <maxrange>20.000000</maxrange>
     <rof>3.000000</rof>
-    <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
+    <damagebonus type="AbstractHeavyInfantry">2.500000</damagebonus>
     <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
-    <damagebonus type="AbstractRangedShockInfantry">2.500000</damagebonus>
-    <damagebonus type="AbstractCavalry">0.600000</damagebonus>
-    <damagebonus type="AbstractLightInfantry">0.500000</damagebonus>
+    <damagebonus type="AbstractRangedShockInfantry">2.250000</damagebonus>
+    <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
   </protoaction>
 </unit>
 <unit id="21154" name="zpChristmasPolearm">
   <dbid>21154</dbid>
   <displaynameid>400169</displaynameid>
   <editornameid>400170</editornameid>
-  <populationcount>1</populationcount>
+  <populationcount>2</populationcount>
   <obstructionradiusx>0.4900</obstructionradiusx>
   <obstructionradiusz>0.4900</obstructionradiusz>
   <formationcategory>Body</formationcategory>
@@ -47704,18 +47705,18 @@
   <animfile>units\christmas_units\xmass_polearm\polearm.xml</animfile>
   <impacttype>Flesh</impacttype>
   <physicsinfo>dude</physicsinfo>
-  <icon>resources\art\units\infantry\poruchik\poruchik_icon.png</icon>
-  <portraiticon>resources\art\units\infantry\poruchik\poruchik_portrait.png</portraiticon>
+  <icon>resources\art\units\natives\christmass_content\long_polearm_64x64.png</icon>
+  <portraiticon>resources\art\units\natives\christmass_content\long_polearm.png</portraiticon>
   <rollovertextid>400171</rollovertextid>
   <shortrollovertextid>400172</shortrollovertextid>
-  <initialhitpoints>175.0000</initialhitpoints>
-  <maxhitpoints>175.0000</maxhitpoints>
+  <initialhitpoints>275.0000</initialhitpoints>
+  <maxhitpoints>275.0000</maxhitpoints>
   <los>12.0000</los>
   <unitaitype>HandCombative</unitaitype>
   <trainpoints>33.0000</trainpoints>
   <bounty>9.0000</bounty>
   <buildbounty>9.0000</buildbounty>
-  <cost resourcetype="Gold">90.0000</cost>
+  <cost resourcetype="Gold">125.0000</cost>
   <allowedage>1</allowedage>
   <armor type="Hand" value="0.2000">
   </armor>
@@ -47758,19 +47759,19 @@
   <tactics>xmasspolearm.tactics</tactics>
   <protoaction>
     <name>BuildingAttack</name>
-    <damage>25.000000</damage>
+    <damage>32.000000</damage>
     <damagetype>Siege</damagetype>
     <rof>3.000000</rof>
   </protoaction>
   <protoaction>
     <name>CoverBuildingAttack</name>
-    <damage>15.000000</damage>
+    <damage>16.000000</damage>
     <damagetype>Siege</damagetype>
     <rof>3.000000</rof>
   </protoaction>
   <protoaction>
     <name>CoverHandAttack</name>
-    <damage>10.000000</damage>
+    <damage>12.000000</damage>
     <damagetype>Hand</damagetype>
     <rof>1.500000</rof>
     <damagebonus type="AbstractCavalry">1.750000</damagebonus>
@@ -47778,7 +47779,7 @@
   </protoaction>
   <protoaction>
     <name>DefendHandAttack</name>
-    <damage>20.000000</damage>
+    <damage>24.000000</damage>
     <damagetype>Hand</damagetype>
     <rof>1.500000</rof>
     <damagebonus type="AbstractCavalry">1.750000</damagebonus>
@@ -47786,7 +47787,7 @@
   </protoaction>
   <protoaction>
     <name>MeleeHandAttack</name>
-    <damage>20.000000</damage>
+    <damage>24.000000</damage>
     <damagetype>Hand</damagetype>
     <rof>1.500000</rof>
     <damagebonus type="AbstractCavalry">1.750000</damagebonus>
@@ -47851,15 +47852,10 @@
   <trainpoints>42.0000</trainpoints>
   <bounty>16.0000</bounty>
   <buildbounty>16.0000</buildbounty>
-  <cost resourcetype="Gold">140.0000</cost>
-  <allowedage>1</allowedage>
-  <armor type="Ranged" value="0.4500">
+  <cost resourcetype="Gold">180.0000</cost>
+  <allowedage>2</allowedage>
+  <armor type="Ranged" value="0.4000">
   </armor>
-  <sharedselectionunittypes>
-    <unittype>deLegionGrenadier</unittype>
-    <unittype>ypConsulateYoungGarde</unittype>
-    <unittype>Grenadier</unittype>
-  </sharedselectionunittypes>
   <unittype>LogicalTypeHealed</unittype>
   <unittype>LogicalTypeValidSharpshoot</unittype>
   <unittype>LogicalTypeNeededForVictory</unittype>
@@ -48063,21 +48059,21 @@
   <shortrollovertextid>400200</shortrollovertextid>
   <initialhitpoints>135.0000</initialhitpoints>
   <maxhitpoints>135.0000</maxhitpoints>
-  <los>20.0000</los>
+  <los>27.0000</los>
   <projectileprotounit>InvisibleProjectile</projectileprotounit>
   <autoattackrange>16.0000</autoattackrange>
   <unitaitype>RangedCombative</unitaitype>
   <trainpoints>38.0000</trainpoints>
-  <bounty>13.0000</bounty>
-  <buildbounty>13.0000</buildbounty>
-  <cost resourcetype="Wood">30.0000</cost>
-  <cost resourcetype="Gold">80.0000</cost>
+  <bounty>12.0000</bounty>
+  <buildbounty>12.0000</buildbounty>
+  <cost resourcetype="Food">50.0000</cost>
+  <cost resourcetype="Gold">50.0000</cost>
   <allowedage>1</allowedage>
-  <armor type="Ranged" value="0.4000">
+  <armor type="Ranged" value="0.3500">
   </armor>
-  <sharedselectionunittypes>
+  <!--<sharedselectionunittypes>
     <unittype>zpTilanusGrinch</unittype>
-  </sharedselectionunittypes>
+  </sharedselectionunittypes>-->
   <unittype>LogicalTypeHealed</unittype>
   <unittype>LogicalTypeValidSharpshoot</unittype>
   <unittype>LogicalTypeNeededForVictory</unittype>
@@ -48120,13 +48116,13 @@
   <tactics>riflemanaccurate.tactics</tactics>
   <protoaction>
     <name>BuildingAttack</name>
-    <damage>8.000000</damage>
+    <damage>10.000000</damage>
     <damagetype>Siege</damagetype>
     <rof>3.000000</rof>
   </protoaction>
   <protoaction>
     <name>DefendHandAttack</name>
-    <damage>8.000000</damage>
+    <damage>10.000000</damage>
     <damagetype>Hand</damagetype>
     <rof>1.500000</rof>
     <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
@@ -48137,55 +48133,55 @@
   </protoaction>
   <protoaction>
     <name>DefendRangedAttack</name>
-    <damage>12.000000</damage>
+    <damage>11.000000</damage>
     <damagetype>Ranged</damagetype>
     <minrange>2.000000</minrange>
     <maxrange>20.000000</maxrange>
     <rof>3.000000</rof>
     <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
-    <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
-    <damagebonus type="AbstractRangedShockInfantry">2.500000</damagebonus>
-    <damagebonus type="AbstractCavalry">0.600000</damagebonus>
-    <damagebonus type="AbstractLightInfantry">0.500000</damagebonus>
+    <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
+    <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
+    <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
   </protoaction>
   <protoaction>
     <name>MeleeHandAttack</name>
-    <damage>8.000000</damage>
+    <damage>10.000000</damage>
     <damagetype>Hand</damagetype>
     <rof>1.500000</rof>
     <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
     <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
     <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
-    <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
     <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
   </protoaction>
   <protoaction>
     <name>StaggerHandAttack</name>
-    <damage>8.000000</damage>
+    <damage>10.000000</damage>
     <damagetype>Hand</damagetype>
     <rof>1.500000</rof>
     <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
     <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
     <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
-    <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
     <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
   </protoaction>
   <protoaction>
     <name>StaggerRangedAttack</name>
-    <damage>12.000000</damage>
+    <damage>11.000000</damage>
     <damagetype>Ranged</damagetype>
     <minrange>2.000000</minrange>
     <maxrange>20.000000</maxrange>
     <rof>3.000000</rof>
     <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
-    <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
-    <damagebonus type="AbstractRangedShockInfantry">2.500000</damagebonus>
-    <damagebonus type="AbstractCavalry">0.600000</damagebonus>
-    <damagebonus type="AbstractLightInfantry">0.500000</damagebonus>
+    <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
+    <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
+    <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
   </protoaction>
   <protoaction>
     <name>VolleyHandAttack</name>
-    <damage>8.000000</damage>
+    <damage>10.000000</damage>
     <damagetype>Hand</damagetype>
     <rof>1.500000</rof>
     <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
@@ -48196,16 +48192,16 @@
   </protoaction>
   <protoaction>
     <name>VolleyRangedAttack</name>
-    <damage>12.000000</damage>
+    <damage>11.000000</damage>
     <damagetype>Ranged</damagetype>
     <minrange>2.000000</minrange>
     <maxrange>20.000000</maxrange>
     <rof>3.000000</rof>
     <damagebonus type="AbstractHeavyInfantry">2.000000</damagebonus>
-    <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
-    <damagebonus type="AbstractRangedShockInfantry">2.500000</damagebonus>
-    <damagebonus type="AbstractCavalry">0.600000</damagebonus>
-    <damagebonus type="AbstractLightInfantry">0.500000</damagebonus>
+    <damagebonus type="AbstractLightCavalry">2.000000</damagebonus>
+    <damagebonus type="AbstractRangedShockInfantry">2.000000</damagebonus>
+    <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
   </protoaction>
 </unit>
 

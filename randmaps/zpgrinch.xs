@@ -486,17 +486,89 @@ void main(void)
 	rmAddGroupingToClass(nativeID0, rmClassID("natives"));
 //  rmAddGroupingToClass(nativeID0, rmClassID("importantItem"));
 //	rmAddGroupingConstraint(nativeID0, avoidNatives);
-	rmPlaceGroupingAtLoc(nativeID0, 0, 0.5, 0.7);
+	int randomizerInt = rmRandInt(1, 2);
+
+	if (PlayerNum == 2)
+	{
+		if (randomizerInt == 1)
+		{ rmPlaceGroupingAtLoc(nativeID0, 0, 0.4, 0.68); }
+		else
+		{ rmPlaceGroupingAtLoc(nativeID0, 0, 0.6, 0.68); }
+		
+	}
+	else if (PlayerNum == 3)
+	{
+		if (randomizerInt == 1)
+		{ rmPlaceGroupingAtLoc(nativeID0, 0, 0.45, 0.68); }
+		else
+		{ rmPlaceGroupingAtLoc(nativeID0, 0, 0.55, 0.68); }
+	}
+	else if (PlayerNum < 6)
+	{
+		rmPlaceGroupingAtLoc(nativeID0, 0, 0.5, 0.7);
+	}
+	else if (PlayerNum < 8)
+	{
+		rmPlaceGroupingAtLoc(nativeID0, 0, 0.5, 0.7);
+	}
+	else
+	{
+		rmPlaceGroupingAtLoc(nativeID0, 0, 0.5, 0.7);
+	}
 
 	// Large Xmass grouping
-	nativeID2 = rmCreateGrouping("Klamath village 1", "xmass_village_lrg_" + villageRand); //+1
+	// Based on player count
+	if (PlayerNum < 4)
+	{
+		nativeID2 = rmCreateGrouping("Klamath village 1", "xmass_village_lrg_" + villageRand); //+1
+	}
+	else if (PlayerNum < 6)
+	{
+		nativeID2 = rmCreateGrouping("Klamath village 1", "xmass_village_lrg_dbl_" + villageRand); //+1
+	}
+	else if (PlayerNum < 8)
+	{
+		nativeID2 = rmCreateGrouping("Klamath village 1", "xmass_village_lrg_trip_" + villageRand); //+1
+	}
+	else
+	{
+		nativeID2 = rmCreateGrouping("Klamath village 1", "xmass_village_lrg_quad_" + villageRand); //+1
+	}
+	
     rmSetGroupingMinDistance(nativeID2, 0.00);
-    rmSetGroupingMaxDistance(nativeID2, 0.00);
+    rmSetGroupingMaxDistance(nativeID2, 10.00);
 //	rmAddGroupingConstraint(nativeID2, avoidImpassableLand);
 	rmAddGroupingToClass(nativeID2, rmClassID("natives"));
 //  rmAddGroupingToClass(nativeID2, rmClassID("importantItem"));
 //	rmAddGroupingConstraint(nativeID2, avoidNatives);
-	rmPlaceGroupingAtLoc(nativeID2, 0, 0.5, 0.32);
+	
+	if (PlayerNum == 2)
+	{
+		if (randomizerInt == 1)
+		{ rmPlaceGroupingAtLoc(nativeID2, 0, 0.62, 0.32); }
+		else
+		{ rmPlaceGroupingAtLoc(nativeID2, 0, 0.4, 0.32); }
+		
+	}
+	else if (PlayerNum == 3)
+	{
+		if (randomizerInt == 1)
+		{ rmPlaceGroupingAtLoc(nativeID2, 0, 0.53, 0.32); }
+		else
+		{ rmPlaceGroupingAtLoc(nativeID2, 0, 0.47, 0.32); }
+	}
+	else if (PlayerNum < 6)
+	{
+		rmPlaceGroupingAtLoc(nativeID2, 0, 0.5, 0.3);
+	}
+	else if (PlayerNum < 8)
+	{
+		rmPlaceGroupingAtLoc(nativeID2, 0, 0.5, 0.28);
+	}
+	else
+	{
+		rmPlaceGroupingAtLoc(nativeID2, 0, 0.5, 0.28);
+	}
 
 	
 	nativeID1 = rmCreateGrouping("Nootka village 2", "native nootka village "+1);
@@ -611,7 +683,7 @@ void main(void)
 	
 	// Starting trees
 	int playerTreeChristmasID = rmCreateObjectDef("player trees xmas");
-	rmAddObjectDefItem(playerTreeChristmasID, "zpChristmassTree", 5, 5.0);
+	rmAddObjectDefItem(playerTreeChristmasID, "TreeChristmas", 5, 5.0);
     rmSetObjectDefMinDistance(playerTreeChristmasID, 12);
     rmSetObjectDefMaxDistance(playerTreeChristmasID, 16);
 	rmAddObjectDefToClass(playerTreeChristmasID, classStartingResource);
@@ -634,7 +706,7 @@ void main(void)
 	
 	// Starting trees far
 	int playerTreeChristmas2ID = rmCreateObjectDef("player trees xmas far");
-	rmAddObjectDefItem(playerTreeChristmas2ID, "zpChristmassTree", 1, 4.0);
+	rmAddObjectDefItem(playerTreeChristmas2ID, "TreeChristmas", 1, 4.0);
 	rmAddObjectDefItem(playerTreeChristmas2ID, "TreeYukon", 6, 8.0);
 	rmAddObjectDefItem(playerTreeChristmas2ID, "TreeYukonSnow", 6, 8.0);
     rmSetObjectDefMinDistance(playerTreeChristmas2ID, 36);
@@ -976,6 +1048,57 @@ void main(void)
 		
 	// ********************************
 
+	// ____________________ LOCAL MERCENARIES ____________________
+    rmDisableDefaultMercs(true);
+    rmDisableCivTypeMercRestriction(true);
+
+	// Add 2 random outlaws
+	int randOutlawInt = rmRandInt(1, 3);  
+	if (randOutlawInt == 1)
+	{   rmEnableOutlaw("SaloonOutlawPistol");
+    	rmEnableOutlaw("SaloonOutlawRifleman"); }
+	else if (randOutlawInt == 2)
+	{   rmEnableOutlaw("SaloonOutlawPistol");
+		rmEnableOutlaw("SaloonOutlawRider"); }
+	else
+	{   rmEnableOutlaw("SaloonOutlawRifleman");
+		rmEnableOutlaw("SaloonOutlawRider"); }
+
+	// Add 2 christmas Mercs
+	/*int xmassMercRandInt = rmRandInt(1, 3);  
+	if (xmassMercRandInt == 1)
+	{   rmEnableMerc("zpChristmasGrenadier", -1);
+		rmEnableMerc("zpChristmasPolearm", -1); }
+	else if (xmassMercRandInt == 2)
+	{   rmEnableMerc("zpChristmasGrenadier", -1);
+		rmEnableMerc("zpChristmasOrganGun", -1); }
+	else
+	{   rmEnableMerc("zpChristmasPolearm", -1);
+		rmEnableMerc("zpChristmasOrganGun", -1); }*/
+
+	// One random one in addition to the festive ones
+    int mercRandInt = rmRandInt(1, 9);
+	if (mercRandInt == 1)
+	{ rmEnableMerc("MercLandsknecht", -1); }
+	else if (mercRandInt == 2)
+	{ rmEnableMerc("MercSwissPikeman", -1); }
+	else if (mercRandInt == 3)
+	{ rmEnableMerc("MercHighlander", -1); }
+	else if (mercRandInt == 4)
+	{ rmEnableMerc("MercJaeger", -1); }
+	else if (mercRandInt == 5)
+	{ rmEnableMerc("MercFusilier", -1); }
+	else if (mercRandInt == 6)
+	{ rmEnableMerc("deMercZouave", -1); }
+	else if (mercRandInt == 7)
+	{ rmEnableMerc("deMercPandour", -1); }
+	else if (mercRandInt == 8)
+	{ rmEnableMerc("deMercRoyalHorseman", -1); }
+	else
+	{ rmEnableMerc("deMercMountedRifleman", -1); }
+	
+    
+
 	// ********** Triggers ***********
 
 	// Starting Tech
@@ -986,6 +1109,11 @@ void main(void)
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpXmassMercenaries"); // Christmas Mercenaries
+		rmSetTriggerEffectParamInt("Status",2);
+
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechdeEUMapUpdateVisuals"); // European Embassy
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");

@@ -2235,9 +2235,9 @@
       <!-- ===================================== -->
       <!-- Christmas 2024 -->
       <!-- ===================================== -->
-      <string _locid="400150">Grinch Mountain</string>
+      <string _locid="400150">Mt. Crumpit</string>
       <string _locid="400151">zp Grinch Mountain</string>
-      <string _locid="400152" symbol="cStringNativePreAlly"> "Oh the noise. Oh the noise, Noise, Noise, NOISE!"</string>
+      <string _locid="400152" symbol="cStringNativePreAlly"> "For fifty-three years we've put up with it now! We MUST stop this Christmas from coming! ... But HOW?"</string>
       <string _locid="400153">Nutcracker Village</string>
       <string _locid="400154">zp Nutcracker Village</string>
       <string _locid="400155" symbol="cStringNativePreAlly"> "Nutcracker PLACEHOLDER"</string>
@@ -2266,22 +2266,22 @@
       <string _locid="400178">A cozy cafe perfect for the season.</string>
       <string _locid="400179">Northlighter</string>
       <string _locid="400180">zp Christmas gren Northlighter</string>
-      <string _locid="400181">Grenadier equipped with a mortar to launch festive grenades.</string>
+      <string _locid="400181">Grenadier equipped with a mortar that launches festive grenades.</string>
       <string _locid="400182">Christmas grenadier</string>
       <string _locid="400183">Christmas Village House</string>
       <string _locid="400184">zp PROP Xmass Waterloo House</string>
-      <string _locid="400185">Grinch Merc Increase</string>
-      <string _locid="400186">Description Grinch Merc Increase</string>
+      <string _locid="400185">Holiday Malcontents</string>
+      <string _locid="400186">Increases the build limit of Grinch Pathfinders.</string>
       <string _locid="400187">Pathfinder Scouting Party</string>
       <string _locid="400188">Ships a small batch of pathfinders and improves their hitpoints and line of sight.</string>
-      <string _locid="400189">Grinch Expansion</string>
-      <string _locid="400190">Grinch Expansion Description</string>
-      <string _locid="400191">TEAM Grinch Rob Houses</string>
-      <string _locid="400192">Description Grinch Rob Houses</string>
+      <string _locid="400189">An Aweful Idea</string>
+      <string _locid="400190">A wonderful, horrible, aweful idea</string>
+      <string _locid="400191">TEAM King of Sinful Sots</string>
+      <string _locid="400192">Take the presents and roast-beast, providing a bounty of food and gold when destroying buildings.</string>
       <string _locid="400193">TEAM Repurposed Uniforms</string>
       <string _locid="400194">Producing your own uniforms reduces the cost of your Grinch units and improves their training speed. More effective for Sharpshooters than Pathfinders.</string>
       <string _locid="400195">TEAM Chimney Divers</string>
-      <string _locid="400196">Ships a small batch of Grinch Sharpshooters and improves the siege damage of all grinch units.</string>
+      <string _locid="400196">Improves the siege damage of all grinch units.</string>
       <string _locid="400197">Grinch Pathfinder</string>
       <string _locid="400198">zp Grinch Pathfinder</string>
       <string _locid="400199">A nasty, wasty skunk that shadow techs.</string>
@@ -2293,8 +2293,13 @@
       <string _locid="400205">Allows you and your teammates to construct another Cocoa Café</string>
       <string _locid="400206">Upgrade your Grinch Sharpshooters to veteran level.</string>
       <string _locid="400207">Upgrade your Grinch Sharpshooters to guard level.</string>
-      <string _locid="400208">Grinch Large Batch</string>
-      <string _locid="400209">Description of grinch large batch</string>
+      <string _locid="400208">Grinch Volunteer Rifles</string>
+      <string _locid="400209">Ships a large batch of Grinch Sharpshooters.</string>
+      <string _locid="400210">TEAM Unlock Embassy</string>
+      <string _locid="400211">Unlock the native embassy for your team, allowing them to train Grinch Pathfinders and research additional techs.</string>
+      <string _locid="400212">Grinch Mountain</string>
+      <string _locid="400213">Two sided festive map. Victory conditions are standard, with each side having access to one type of native. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Start with the Grinch on Mt. Crumpit. \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Start in the valley with a large Christmas Village. \n\nSettlements: Mt. Crumpit, Christmas Village</string>
+      <string _locid="400214">The Grinch hated Christmas! The whole Christmas season! Now, please don't ask why. No one quite knows the reason. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Start with the Grinch on Mt. Crumpit. \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Start in the valley with a large Christmas Village. \n\nSettlements: Mt. Crumpit, Christmas Village</string>
 
       <!-- ===================================== -->
       <!-- ===================================== -->

@@ -157,40 +157,40 @@
 			<Icon>resources\art\buildings\props_colony\gifts\gift_wood.png</Icon>
 			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_wood.png</PortraitIcon>
 		</Unit>
-		<Unit name='NuggetWolfRock'>
+		<!--<Unit name='NuggetWolfRock'>
 			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
 			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
 			<AnimFile>buildings\props_colony\gifts\gift_wood.xml</AnimFile>
 			<Icon>resources\art\buildings\props_colony\gifts\gift_wood.png</Icon>
 			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_wood.png</PortraitIcon>
-		</Unit>
-		<Unit name='NuggetKidnap'>
+		</Unit>-->
+		<!--<Unit name='NuggetKidnap'>
 			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
 			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
 			<AnimFile>buildings\props_colony\gifts\gift_wood.xml</AnimFile>
 			<Icon>resources\art\buildings\props_colony\gifts\gift_wood.png</Icon>
 			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_wood.png</PortraitIcon>
-		</Unit>
-		<Unit name='NuggetBearTree'>
+		</Unit>-->
+		<!--<Unit name='NuggetBearTree'>
 			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
 			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
 			<AnimFile>buildings\props_colony\gifts\gift_wood.xml</AnimFile>
 			<Icon>resources\art\buildings\props_colony\gifts\gift_wood.png</Icon>
 			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_wood.png</PortraitIcon>
-		</Unit>
-		<Unit name='NuggetWolfTreebent'>
+		</Unit>-->
+		<!--<Unit name='NuggetWolfTreebent'>
 			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
 			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
 			<AnimFile>buildings\props_colony\gifts\gift_wood.xml</AnimFile>
 			<Icon>resources\art\buildings\props_colony\gifts\gift_wood.png</Icon>
 			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_wood.png</PortraitIcon>
-		</Unit>
-		<Unit name='NuggetKidnapBrit'>
+		</Unit>-->
+		<!--<Unit name='NuggetKidnapBrit'>
 			<ObstructionRadiusX>1.5000</ObstructionRadiusX>
 			<ObstructionRadiusZ>1.5000</ObstructionRadiusZ>
 			<AnimFile>buildings\props_colony\gifts\gift_gold.xml</AnimFile>
 			<Icon>resources\art\buildings\props_colony\gifts\gift_gold.png</Icon>
 			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_gold.png</PortraitIcon>
-		</Unit>
+		</Unit>-->
 	</ProtoMods>
 </Mods>
