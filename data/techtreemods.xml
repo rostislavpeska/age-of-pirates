@@ -20122,13 +20122,13 @@
       <effect type="Data" amount="0.8" subtype="Cost" resource="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpTilanusGrinch</target>
       </effect>
-      <effect type="Data" amount="0.8" subtype="Cost" resource="Wood" relativity="BasePercent">
+      <effect type="Data" amount="0.8" subtype="Cost" resource="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpTilanusGrinch</target>
       </effect>
       <effect type="Data" amount="0.9" subtype="Cost" resource="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpTilanusGrinchMerc</target>
       </effect>
-      <effect type="Data" amount="0.9" subtype="Cost" resource="Wood" relativity="BasePercent">
+      <effect type="Data" amount="0.9" subtype="Cost" resource="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpTilanusGrinchMerc</target>
       </effect>
     </effects>
