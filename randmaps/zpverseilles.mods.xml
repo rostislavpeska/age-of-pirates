@@ -184,9 +184,7 @@
 			<flag>StartOnNoUpdate</flag>
 		</unit>
 		<unit name="SPCFortGate">
-			<unittype>ConvertsHerds</unittype>
-			<flag>PlaceAnywhere</flag>
-			<buildpoints>0.0000</buildpoints>
+			<animfile>buildings\wall\barricade\verseilles_gate.xml</animfile>
 		</unit>
 		<unit name="Dock">
 			<placementfile>dock_city.xml</placementfile>

@@ -1,0 +1,7 @@
+<animfile>
+  <definebone>bone_main</definebone>
+  <definebone>bone_fountain</definebone>
+  <attachment>fountain<component>fountain<assetreference type="popcornfx"><file>homecity\mexico_fountain_streams.pkfx</file></assetreference></component><anim>Idle<component>fountain</component></anim></attachment>
+  <component>mexico_fountain<assetreference type="GrannyModel"><file>terrain\new_england\shorelinefoam</file></assetreference><attach a="fountain" frombone="ATTACHPOINT" tobone="bone_fountain" syncanims="0"></attach></component>
+  <anim>Idle<component>mexico_fountain</component></anim>
+</animfile>

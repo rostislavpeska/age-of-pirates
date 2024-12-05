@@ -1,0 +1,14 @@
+<animfile>
+  <component>ModelComp<assetreference type="GrannyModel"><file>homecity\homecity_units\peasant_class_entertainer_painter\peasant_class_entertainer_painter</file></assetreference><decal><effecttype>default</effecttype><texture>shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>homecity\homecity_units\peasant_class_entertainer_painter\painter_paint_A</file></assetreference><component>ModelComp</component></anim>
+  <anim>Bored<assetreference type="GrannyAnim"><file>homecity\homecity_units\peasant_class_entertainer_painter\peasant_class_entertainer_painter_idle</file></assetreference><component>ModelComp</component></anim>
+  <anim>Walk<assetreference type="GrannyAnim"><file>homecity\homecity_units\peasant_class_entertainer_painter\peasant_class_entertainer_painter_walk</file></assetreference><component>ModelComp</component></anim>
+  <anim>Unpack<assetreference type="GrannyAnim"><file>homecity\homecity_units\peasant_class_entertainer_painter\painter_unpack</file></assetreference><component>ModelComp</component></anim>
+  <anim>PackUp<assetreference type="GrannyAnim"><file>homecity\homecity_units\peasant_class_entertainer_painter\painter_packup</file></assetreference><component>ModelComp</component></anim>
+  <anim>Paint_A<assetreference type="GrannyAnim"><file>homecity\homecity_units\peasant_class_entertainer_painter\painter_paint_A</file></assetreference><component>ModelComp</component></anim>
+  <anim>Paint_B<assetreference type="GrannyAnim"><file>homecity\homecity_units\peasant_class_entertainer_painter\painter_paint_B</file></assetreference><component>ModelComp</component></anim>
+  <anim>Reload<assetreference type="GrannyAnim"><file>homecity\homecity_units\peasant_class_entertainer_painter\painter_reload</file></assetreference><component>ModelComp</component></anim>
+  <anim>Observe<assetreference type="GrannyAnim"><file>homecity\homecity_units\peasant_class_entertainer_painter\painter_observe</file></assetreference><component>ModelComp</component></anim>
+  <anim>OpenDoor<assetreference type="GrannyAnim"><file>animation_library\homecity\2_leg_task\human_opendoor_homecity_male</file></assetreference><component>ModelComp</component></anim>
+  <anim>CloseDoor<assetreference type="GrannyAnim"><file>animation_library\homecity\2_leg_task\human_closedoor_homecity_male</file></assetreference><component>ModelComp</component></anim>
+</animfile>

@@ -30,10 +30,14 @@
                 </p99>
             </logic>
             <decal>
-                <effecttype>default</effecttype>
+                <effecttype>bump</effecttype>
+                <texture>buildings\basilica\basilica_age4_ground</texture>
                 <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-                <width>17.00</width>
-                <height>13.00</height>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>20.00</width>
+                <height>20.00</height>
+                <xoffset>0.00</xoffset>
+                <zoffset>0.00</zoffset>
             </decal>
         </component>
         <component>
@@ -64,10 +68,13 @@
                 <file>buildings\constructions\drydock_con_stage1_Model</file>
             </assetreference>
             <decal>
-                <effecttype>default</effecttype>
+                <effecttype>bump</effecttype>
                 <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-                <width>17.00</width>
-                <height>13.00</height>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>20.00</width>
+                <height>20.00</height>
+                <xoffset>0.00</xoffset>
+                <zoffset>0.00</zoffset>
             </decal>
         </component>
         <anim>idle
@@ -82,10 +89,13 @@
                 <file>buildings\constructions\drydock_con_stage2_Model</file>
             </assetreference>
             <decal>
-                <effecttype>default</effecttype>
+                <effecttype>bump</effecttype>
                 <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-                <width>17.00</width>
-                <height>13.00</height>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>20.00</width>
+                <height>20.00</height>
+                <xoffset>0.00</xoffset>
+                <zoffset>0.00</zoffset>
             </decal>
         </component>
         <anim>idle
@@ -110,10 +120,13 @@
                 <file>buildings\constructions\drydock_con_stage3_Model</file>
             </assetreference>
             <decal>
-                <effecttype>default</effecttype>
+                <effecttype>bump</effecttype>
                 <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-                <width>17.00</width>
-                <height>13.00</height>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>20.00</width>
+                <height>20.00</height>
+                <xoffset>0.00</xoffset>
+                <zoffset>0.00</zoffset>
             </decal>
             <attach a="dock" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
         </component>

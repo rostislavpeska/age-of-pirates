@@ -1,0 +1,8 @@
+<animfile>
+  <component>ModelComp<assetreference type="GrannyModel"><file>homecity\homecity_units\drunk\drunk</file></assetreference><decal><effecttype>default</effecttype><texture>shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>homecity\homecity_units\drunk\drunk_idle</file></assetreference><component>ModelComp</component></anim>
+  <anim>Bored<assetreference type="GrannyAnim"><file>homecity\homecity_units\drunk\drunk_bored_a</file></assetreference><assetreference type="GrannyAnim"><file>homecity\homecity_units\drunk\drunk_bored_b</file></assetreference><component>ModelComp</component></anim>
+  <anim>Walk<assetreference type="GrannyAnim"><file>homecity\homecity_units\drunk\drunk_walk</file></assetreference><component>ModelComp</component></anim>
+  <anim>Into Idle<assetreference type="GrannyAnim"><file>homecity\homecity_units\drunk\drunk_transition_into_idle</file></assetreference><component>ModelComp</component></anim>
+  <anim>Out of Idle<assetreference type="GrannyAnim"><file>homecity\homecity_units\drunk\drunk_transition_out_of_idle</file></assetreference><component>ModelComp</component></anim>
+</animfile>
