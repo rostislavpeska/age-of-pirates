@@ -47443,7 +47443,7 @@
   <obstructionradiusx>0.4900</obstructionradiusx>
   <obstructionradiusz>0.4900</obstructionradiusz>
   <formationcategory>Body</formationcategory>
-  <maxvelocity>4.2500</maxvelocity>
+  <maxvelocity>4.0000</maxvelocity>
   <maxrunvelocity>6.2500</maxrunvelocity>
   <movementtype>land</movementtype>
   <turnrate>14.0000</turnrate>
@@ -47479,17 +47479,18 @@
   <unittype>LogicalTypeHandUnitsAttack</unittype>
   <unittype>LogicalTypeRangedUnitsAttack</unittype>
   <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-  <unittype>ConvertsHerds</unittype>
-  <unittype>AbstractHandInfantry</unittype>
-  <unittype>CountsTowardMilitaryScore</unittype>
-  <unittype>AbstractCavalryInfantry</unittype>
-  <unittype>HasBountyValue</unittype>
-  <unittype>Unit</unittype>
+  <unittype>AbstractInfantry</unittype>
+  <unittype>Mercenary</unittype>
+  <unittype>FortressMercenary</unittype>
+  <unittype>AbstractHeavyInfantry</unittype>
   <unittype>UnitClass</unittype>
   <unittype>Military</unittype>
-  <unittype>AbstractHeavyInfantry</unittype>
-  <unittype>AbstractInfantry</unittype>
-  <unittype>LogicalTypeRomanTactics</unittype>
+  <unittype>Unit</unittype>
+  <unittype>HasBountyValue</unittype>
+  <unittype>AbstractCavalryInfantry</unittype>
+  <unittype>CountsTowardMilitaryScore</unittype>
+  <unittype>ConvertsHerds</unittype>
+  <unittype>AbstractHandInfantry</unittype>
   <flag>CollidesWithProjectiles</flag>
   <flag>ApplyHandicapTraining</flag>
   <flag>CorpseDecays</flag>
@@ -47615,22 +47616,23 @@
   <unittype>LogicalTypeHandUnitsAttack</unittype>
   <unittype>LogicalTypeRangedUnitsAttack</unittype>
   <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-  <unittype>HasBountyValue</unittype>
-  <unittype>Ranged</unittype>
-  <unittype>AbstractSiegeTrooper</unittype>
+  <unittype>Military</unittype>
+  <unittype>UnitClass</unittype>
+  <unittype>Unit</unittype>
+  <unittype>AbstractHeavyInfantry</unittype>
+  <unittype>AbstractGrenadier</unittype>
+  <unittype>AbstractMusketeer</unittype>
+  <unittype>AbstractInfantry</unittype>
   <unittype>CountsTowardMilitaryScore</unittype>
   <unittype>AbstractCavalryInfantry</unittype>
-  <unittype>AbstractHeavyInfantry</unittype>
-  <unittype>ConvertsHerds</unittype>
+  <unittype>Ranged</unittype>
+  <unittype>AbstractGunpowderTrooper</unittype>
+  <unittype>HasBountyValue</unittype>
   <unittype>AbstractRangedInfantry</unittype>
   <unittype>LogicalTypeInfantryVolleyTactic</unittype>
-  <unittype>AbstractConsulateUnit</unittype>
-  <unittype>AbstractConsulateUnitColonial</unittype>
-  <unittype>AbstractInfantry</unittype>
-  <unittype>UnitClass</unittype>
-  <unittype>Military</unittype>
-  <unittype>Unit</unittype>
-  <unittype>AbstractGrenadier</unittype>
+  <unittype>ConvertsHerds</unittype>
+  <unittype>Mercenary</unittype>
+  <unittype>FortressMercenary</unittype>
   <flag>CollidesWithProjectiles</flag>
   <flag>ApplyHandicapTraining</flag>
   <flag>CorpseDecays</flag>
