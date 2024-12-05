@@ -951,10 +951,10 @@
     <tech row="0" page="1" column="1">zpGrinchVeteranTech</tech>
     <tech row="0" page="1" column="1">zpGrinchGuardTech</tech>
     <tech row="0" page="2" column="0">zpGrinchExpansion</tech>
-    <tech row="0" page="2" column="0">zpNatGrinchLargeBatch</tech>
     <tech row="0" page="2" column="1">zpNativeGrinchEmbassy</tech>
     <tech row="0" page="2" column="2">zpNatGrinchBuildingRob</tech>
     <tech row="0" page="2" column="3">zpXmassOvertime</tech>
+    <!--<tech row="0" page="2" column="0">zpNatGrinchLargeBatch</tech>-->
     <!--<tech row="0" page="2" column="2">zpNatGrinchCostReduction</tech>-->
     <!--<tech row="0" page="2" column="3">zpNatGrinchChimneyDivers</tech>-->
 
@@ -47446,7 +47446,7 @@
   <maxvelocity>4.2500</maxvelocity>
   <maxrunvelocity>6.2500</maxrunvelocity>
   <movementtype>land</movementtype>
-  <turnrate>18.0000</turnrate>
+  <turnrate>14.0000</turnrate>
   <animfile>units\christmas_units\xmass_polearm\polearm.xml</animfile>
   <impacttype>Flesh</impacttype>
   <physicsinfo>dude</physicsinfo>

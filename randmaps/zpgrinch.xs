@@ -1,8 +1,6 @@
-// CASCADE RANGE 
-// designed by Garja
-//visual update by Durokan for DE
-//Ported by Durokan and Interjection for DE
-// April 2021 edited by vividlyplain for DE, updated May 2021 and June 2021
+// Grinch Mountain
+// by AssertiveWall with help from vividlyplain, November 2024
+// started from Cascade Range script designed by Garja
 
 include "mercenaries.xs";
 include "ypAsianInclude.xs";
@@ -41,8 +39,7 @@ void main(void)
 	
 	// Picks default terrain and water
 	rmSetSeaType("great lakes");
-//	rmSetBaseTerrainMix("rockies_grass"); // nwt_grass1	// greatlakes_snow
-	rmTerrainInitialize("great_lakes\ground_snow2_gl", 4.0); // NWterritory\ground_grass2_nwt  NWterritory\ground_grass2_nwt
+	rmTerrainInitialize("great_lakes\ground_snow2_gl", 4.0);
 	rmSetMapType("yukon"); 
 	rmSetMapType("snow");
 	rmSetMapType("land");
@@ -176,23 +173,17 @@ void main(void)
 
 	int teamZeroCount = rmGetNumberPlayersOnTeam(0);
 	int teamOneCount = rmGetNumberPlayersOnTeam(1);
+	int grinchTeam = 0;		// grinches always team 0 "attackers"
 
 		if (cNumberTeams <= 2) // 1v1 and TEAM
 		{
 			if (teamZeroCount == 1 && teamOneCount == 1) // 1v1
 			{
-				float OneVOnePlacement=rmRandFloat(0.0, 0.9);
-				if ( OneVOnePlacement < 0.5)
-				{
-					rmPlacePlayer(1, 0.50, 0.20);
-					rmPlacePlayer(2, 0.50, 0.80);
-				}
-				else
-				{
-					rmPlacePlayer(2, 0.50, 0.20);
-					rmPlacePlayer(1, 0.50, 0.80);
-				}
+				rmSetPlacementTeam(0);
+				rmPlacePlayersLine(0.50, 0.80, 0.51, 0.81);	
 
+			    rmSetPlacementTeam(1);
+			    rmPlacePlayersLine(0.50, 0.20, 0.51, 0.21);
 			}
 			else if (teamZeroCount == teamOneCount) // equal N of players per TEAM
 			{
@@ -305,20 +296,40 @@ void main(void)
 	rmSetStatusText("",0.30);
 	
 	// ******************************************** MAP LAYOUT AND LANDSCAPE DESIGN **************************************************
+	string groundPaint = "";
+	string playerPaint = "";
+
+		if (rmRandFloat(0,1) <= 0.15)
+		{
+			groundPaint = "rockies_grass";
+			playerPaint = "rockies_grass_snowa";
+		}
+		else if (rmRandFloat(0,1) <= 0.20)
+		{
+			groundPaint = "rockies_grass_snow";
+			playerPaint = "rockies_grass_snowa";
+		}
+		else if (rmRandFloat(0,1) <= 0.25)
+		{
+			groundPaint = "rockies_grass_snowa";
+			playerPaint = "rockies_grass";
+		}
+		else if (rmRandFloat(0,1) <= 0.33)
+		{
+			groundPaint = "rockies_grass_snowc";
+			playerPaint = "rockies_grass_snowa";
+		}
+		else
+		{
+			groundPaint = "rockies_grass_snowb";
+			playerPaint = "rockies_grass_snowa";
+		}
+
 	int groundID = rmCreateArea("ground");
     rmSetAreaWarnFailure(groundID, false);
 	rmSetAreaObeyWorldCircleConstraint(groundID, false);
     rmSetAreaSize(groundID, 1.0, 1.0);
-	if (rmRandFloat(0,1) <= 0.15)
-		rmSetAreaMix(groundID, "rockies_grass");
-	else if (rmRandFloat(0,1) <= 0.20)
-		rmSetAreaMix(groundID, "rockies_grass_snow");
-	else if (rmRandFloat(0,1) <= 0.25)
-		rmSetAreaMix(groundID, "rockies_grass_snowa");
-	else if (rmRandFloat(0,1) <= 0.33)
-		rmSetAreaMix(groundID, "rockies_grass_snowc");
-	else
-		rmSetAreaMix(groundID, "rockies_grass_snowb");
+	rmSetAreaMix(groundID, groundPaint);
     rmSetAreaCoherence(groundID, 0.0);
     rmBuildArea(groundID); 
 
@@ -375,12 +386,78 @@ void main(void)
 	socketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID2, sktLoc3);
     rmPlaceObjectDefAtPoint(socketID2, 0, socketLoc2);
 
+	// ******************************************************************************************************
+
+	// ******************************************** CHRISTMAS VILLAGE *************************************************
+
+	int randomizerInt = rmRandInt(1, 2);
+	int christmasVillageID = -1;
+	int villageRand = rmRandInt(1,2);
+
+	// Large Xmass grouping
+	// Based on player count
+	if (PlayerNum < 4)
+	{
+		christmasVillageID = rmCreateGrouping("xmas village", "xmass_village_lrg_" + villageRand); //+1
+	}
+	else if (PlayerNum < 6)
+	{
+		christmasVillageID = rmCreateGrouping("xmas village", "xmass_village_lrg_dbl_" + villageRand); //+1
+	}
+	else if (PlayerNum < 8)
+	{
+		christmasVillageID = rmCreateGrouping("xmas village", "xmass_village_lrg_trip_" + villageRand); //+1
+	}
+	else
+	{
+		christmasVillageID = rmCreateGrouping("xmas village", "xmass_village_lrg_quad_" + villageRand); //+1
+	}
+	
+    rmSetGroupingMinDistance(christmasVillageID, 0.00);
+    rmSetGroupingMaxDistance(christmasVillageID, 10.00);
+//	rmAddGroupingConstraint(christmasVillageID, avoidImpassableLand);
+	rmAddGroupingToClass(christmasVillageID, rmClassID("natives"));
+//  rmAddGroupingToClass(christmasVillageID, rmClassID("importantItem"));
+//	rmAddGroupingConstraint(christmasVillageID, avoidNatives);
+	
+	if (PlayerNum == 2)
+	{
+		if (randomizerInt == 1)
+		{ rmPlaceGroupingAtLoc(christmasVillageID, 0, 0.62, 0.32); }
+		else
+		{ rmPlaceGroupingAtLoc(christmasVillageID, 0, 0.4, 0.34); }
+		
+	}
+	else if (PlayerNum == 3)
+	{
+		if (randomizerInt == 1)
+		{ rmPlaceGroupingAtLoc(christmasVillageID, 0, 0.53, 0.32); }
+		else
+		{ rmPlaceGroupingAtLoc(christmasVillageID, 0, 0.47, 0.34); }
+	}
+	else if (PlayerNum < 6)
+	{
+		rmPlaceGroupingAtLoc(christmasVillageID, 0, 0.5, 0.3);
+	}
+	else if (PlayerNum < 8)
+	{
+		rmPlaceGroupingAtLoc(christmasVillageID, 0, 0.5, 0.28);
+	}
+	else
+	{
+		rmPlaceGroupingAtLoc(christmasVillageID, 0, 0.5, 0.28);
+	}
+
+	// ******************************************************************************************************
+
+	// ******************************************** CLIFFS *************************************************
+
 	// Grinch Mountain
 		// cliff portion
 		int grinchMountainBaseID = rmCreateArea("grinch mountain");
 		rmSetAreaLocation(grinchMountainBaseID, 0.5, 1.0);
 		rmSetAreaWarnFailure(grinchMountainBaseID, false);
-		rmSetAreaSize(grinchMountainBaseID, 0.33);
+		rmSetAreaSize(grinchMountainBaseID, 0.30);
 		rmSetAreaCoherence(grinchMountainBaseID, 0.85);
 		rmSetAreaObeyWorldCircleConstraint(grinchMountainBaseID, false);
 		rmSetAreaTerrainType(grinchMountainBaseID, "rockies\groundsnow1_roc");  
@@ -392,6 +469,7 @@ void main(void)
 	//	rmAddAreaToClass(grinchMountainBaseID, rmClassID("classCliff"));
 		rmAddAreaConstraint(grinchMountainBaseID, avoidTradeRoute);
 		rmAddAreaConstraint(grinchMountainBaseID, avoidTradeRouteSocket);
+		rmAddAreaConstraint(grinchMountainBaseID, avoidNatives);
 		rmBuildArea(grinchMountainBaseID);	
 
 		int avoidGrinchMountain = rmCreateAreaDistanceConstraint("avoid grinch mountain", grinchMountainBaseID, 8.0);
@@ -447,16 +525,23 @@ void main(void)
 		rmAddAreaConstraint(patch2ID, avoidGrinchMountain);
         rmBuildArea(patch2ID); 
     }
-	
+
+	// ******************************************************************************************************
+
+	// ******************************************** PLAYER AREA *************************************************
+
 	// Players area
 	for (i=1; < numPlayer)
 	{
 		int playerareaID = rmCreateArea("playerarea"+i);
 		rmSetPlayerArea(i, playerareaID);
-		rmSetAreaSize(playerareaID, 0.06, 0.06);
-		rmSetAreaCoherence(playerareaID, 1.0);
+		rmSetAreaSize(playerareaID, rmAreaTilesToFraction(321));
+		rmSetAreaCoherence(playerareaID, 0.123);
 		rmSetAreaWarnFailure(playerareaID, false);
-//		rmSetAreaMix(playerareaID, "rockies_snow");
+        if (rmGetPlayerTeam(i) == grinchTeam)
+			rmSetAreaMix(playerareaID, "italy_snow_dirt");
+		else
+			rmSetAreaMix(playerareaID, playerPaint);
 		rmSetAreaLocPlayer(playerareaID, i);
 		rmBuildArea(playerareaID);
 	}
@@ -470,133 +555,49 @@ void main(void)
 
 //		invalid option
 	
-	// ******************************************** NATIVES *************************************************
-	int nativeID0 = -1;
-    int nativeID1 = -1;
-	int nativeID2 = -1;
-    int nativeID3 = -1;
+	// ******************************************** GRINCH *************************************************
+	int grinchHomeID = -1;
 	int grinchRand = rmRandInt(1,2);
-	int villageRand = rmRandInt(1,2);
 		
 	// Now Grinch grouping
-	nativeID0 = rmCreateGrouping("Nootka village 1", "grinchMtnGroup_0"+grinchRand); //+5
-    rmSetGroupingMinDistance(nativeID0, 0.00);
-    rmSetGroupingMaxDistance(nativeID0, 10.00);
-	//rmAddGroupingConstraint(nativeID0, avoidImpassableLand);
-	rmAddGroupingToClass(nativeID0, rmClassID("natives"));
-//  rmAddGroupingToClass(nativeID0, rmClassID("importantItem"));
-//	rmAddGroupingConstraint(nativeID0, avoidNatives);
-	int randomizerInt = rmRandInt(1, 2);
+	grinchHomeID = rmCreateGrouping("grinch mountain home", "grinchMtnGroup_0"+grinchRand); //+5
+    rmSetGroupingMinDistance(grinchHomeID, 0.00);
+    rmSetGroupingMaxDistance(grinchHomeID, 10.00);
+	//rmAddGroupingConstraint(grinchHomeID, avoidImpassableLand);
+	rmAddGroupingToClass(grinchHomeID, rmClassID("natives"));
+//  rmAddGroupingToClass(grinchHomeID, rmClassID("importantItem"));
+//	rmAddGroupingConstraint(grinchHomeID, avoidNatives);
 
 	if (PlayerNum == 2)
 	{
 		if (randomizerInt == 1)
-		{ rmPlaceGroupingAtLoc(nativeID0, 0, 0.4, 0.68); }
+		{ rmPlaceGroupingAtLoc(grinchHomeID, 0, 0.4, 0.68); }
 		else
-		{ rmPlaceGroupingAtLoc(nativeID0, 0, 0.6, 0.68); }
+		{ rmPlaceGroupingAtLoc(grinchHomeID, 0, 0.6, 0.68); }
 		
 	}
 	else if (PlayerNum == 3)
 	{
 		if (randomizerInt == 1)
-		{ rmPlaceGroupingAtLoc(nativeID0, 0, 0.45, 0.68); }
+		{ rmPlaceGroupingAtLoc(grinchHomeID, 0, 0.45, 0.68); }
 		else
-		{ rmPlaceGroupingAtLoc(nativeID0, 0, 0.55, 0.68); }
+		{ rmPlaceGroupingAtLoc(grinchHomeID, 0, 0.55, 0.68); }
 	}
 	else if (PlayerNum < 6)
 	{
-		rmPlaceGroupingAtLoc(nativeID0, 0, 0.5, 0.7);
+		rmPlaceGroupingAtLoc(grinchHomeID, 0, 0.5, 0.7);
 	}
 	else if (PlayerNum < 8)
 	{
-		rmPlaceGroupingAtLoc(nativeID0, 0, 0.5, 0.7);
+		rmPlaceGroupingAtLoc(grinchHomeID, 0, 0.5, 0.7);
 	}
 	else
 	{
-		rmPlaceGroupingAtLoc(nativeID0, 0, 0.5, 0.7);
+		rmPlaceGroupingAtLoc(grinchHomeID, 0, 0.5, 0.7);
 	}
 
-	// Large Xmass grouping
-	// Based on player count
-	if (PlayerNum < 4)
-	{
-		nativeID2 = rmCreateGrouping("Klamath village 1", "xmass_village_lrg_" + villageRand); //+1
-	}
-	else if (PlayerNum < 6)
-	{
-		nativeID2 = rmCreateGrouping("Klamath village 1", "xmass_village_lrg_dbl_" + villageRand); //+1
-	}
-	else if (PlayerNum < 8)
-	{
-		nativeID2 = rmCreateGrouping("Klamath village 1", "xmass_village_lrg_trip_" + villageRand); //+1
-	}
-	else
-	{
-		nativeID2 = rmCreateGrouping("Klamath village 1", "xmass_village_lrg_quad_" + villageRand); //+1
-	}
-	
-    rmSetGroupingMinDistance(nativeID2, 0.00);
-    rmSetGroupingMaxDistance(nativeID2, 10.00);
-//	rmAddGroupingConstraint(nativeID2, avoidImpassableLand);
-	rmAddGroupingToClass(nativeID2, rmClassID("natives"));
-//  rmAddGroupingToClass(nativeID2, rmClassID("importantItem"));
-//	rmAddGroupingConstraint(nativeID2, avoidNatives);
-	
-	if (PlayerNum == 2)
-	{
-		if (randomizerInt == 1)
-		{ rmPlaceGroupingAtLoc(nativeID2, 0, 0.62, 0.32); }
-		else
-		{ rmPlaceGroupingAtLoc(nativeID2, 0, 0.4, 0.32); }
-		
-	}
-	else if (PlayerNum == 3)
-	{
-		if (randomizerInt == 1)
-		{ rmPlaceGroupingAtLoc(nativeID2, 0, 0.53, 0.32); }
-		else
-		{ rmPlaceGroupingAtLoc(nativeID2, 0, 0.47, 0.32); }
-	}
-	else if (PlayerNum < 6)
-	{
-		rmPlaceGroupingAtLoc(nativeID2, 0, 0.5, 0.3);
-	}
-	else if (PlayerNum < 8)
-	{
-		rmPlaceGroupingAtLoc(nativeID2, 0, 0.5, 0.28);
-	}
-	else
-	{
-		rmPlaceGroupingAtLoc(nativeID2, 0, 0.5, 0.28);
-	}
-
-	
-	nativeID1 = rmCreateGrouping("Nootka village 2", "native nootka village "+1);
-    rmSetGroupingMinDistance(nativeID1, 0.00);
-    rmSetGroupingMaxDistance(nativeID1, 0.00);
-//  rmAddGroupingConstraint(nativeID1, avoidImpassableLand);
-	rmAddGroupingToClass(nativeID1, rmClassID("natives"));
-//  rmAddGroupingToClass(nativeID1, rmClassID("importantItem"));
-//	rmAddGroupingConstraint(nativeID1, avoidNatives);
-	/*if (TeamNum <= 2)
-		rmPlaceGroupingAtLoc(nativeID1, 0, 0.30, 0.70);  
-	else
-		rmPlaceGroupingAtLoc(nativeID1, 0, 0.55, 0.62); */ 
-	
-	nativeID3 = rmCreateGrouping("Klamath village 2", "native klamath village "+2);
-    rmSetGroupingMinDistance(nativeID3, 0.00);
-    rmSetGroupingMaxDistance(nativeID3, 0.00);
-//  rmAddGroupingConstraint(nativeID3, avoidImpassableLand);
-	rmAddGroupingToClass(nativeID3, rmClassID("natives"));
-//  rmAddGroupingToClass(nativeID3, rmClassID("importantItem"));
-//	rmAddGroupingConstraint(nativeID3, avoidNatives);
-	/*if (TeamNum <= 2)
-		rmPlaceGroupingAtLoc(nativeID3, 0, 0.42, 0.42); 
-	else
-		rmPlaceGroupingAtLoc(nativeID3, 0, 0.40, 0.62); */
-	
 	// ******************************************************************************************************
-	
+
 	// Text
 	rmSetStatusText("",0.50);
 	
