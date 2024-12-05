@@ -192,5 +192,13 @@
 			<Icon>resources\art\buildings\props_colony\gifts\gift_gold.png</Icon>
 			<PortraitIcon>resources\art\buildings\props_colony\gifts\gift_gold.png</PortraitIcon>
 		</Unit>-->
+		<Unit name='deIconEuropeanEmbassy'>
+			<icon>resources\art\units\natives\christmass_content\xmass_embassy_icon.png</icon>
+			<portraiticon>resources\art\units\natives\christmass_content\xmass_embassy.png</portraiticon>
+		</Unit>
+		<Unit name='deIconEuropeanEmbassyTravois'>
+			<Icon>resources\art\units\natives\christmass_content\xmass_embassy_icon.png</Icon>
+			<PortraitIcon>resources\art\units\trade\outpost_wagon_portrait.png</PortraitIcon>
+		</Unit>
 	</ProtoMods>
 </Mods>

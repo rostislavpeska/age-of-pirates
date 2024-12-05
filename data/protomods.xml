@@ -951,10 +951,10 @@
     <tech row="0" page="1" column="1">zpGrinchVeteranTech</tech>
     <tech row="0" page="1" column="1">zpGrinchGuardTech</tech>
     <tech row="0" page="2" column="0">zpGrinchExpansion</tech>
-    <tech row="0" page="2" column="0">zpNatGrinchLargeBatch</tech>
     <tech row="0" page="2" column="1">zpNativeGrinchEmbassy</tech>
     <tech row="0" page="2" column="2">zpNatGrinchBuildingRob</tech>
     <tech row="0" page="2" column="3">zpXmassOvertime</tech>
+    <!--<tech row="0" page="2" column="0">zpNatGrinchLargeBatch</tech>-->
     <!--<tech row="0" page="2" column="2">zpNatGrinchCostReduction</tech>-->
     <!--<tech row="0" page="2" column="3">zpNatGrinchChimneyDivers</tech>-->
 
@@ -47842,10 +47842,10 @@
   <obstructionradiusx>0.4900</obstructionradiusx>
   <obstructionradiusz>0.4900</obstructionradiusz>
   <formationcategory>Body</formationcategory>
-  <maxvelocity>4.2500</maxvelocity>
+  <maxvelocity>4.0000</maxvelocity>
   <maxrunvelocity>6.2500</maxrunvelocity>
   <movementtype>land</movementtype>
-  <turnrate>18.0000</turnrate>
+  <turnrate>14.0000</turnrate>
   <animfile>units\christmas_units\xmass_polearm\polearm.xml</animfile>
   <impacttype>Flesh</impacttype>
   <physicsinfo>dude</physicsinfo>
@@ -47878,17 +47878,18 @@
   <unittype>LogicalTypeHandUnitsAttack</unittype>
   <unittype>LogicalTypeRangedUnitsAttack</unittype>
   <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-  <unittype>ConvertsHerds</unittype>
-  <unittype>AbstractHandInfantry</unittype>
-  <unittype>CountsTowardMilitaryScore</unittype>
-  <unittype>AbstractCavalryInfantry</unittype>
-  <unittype>HasBountyValue</unittype>
-  <unittype>Unit</unittype>
+  <unittype>AbstractInfantry</unittype>
+  <unittype>Mercenary</unittype>
+  <unittype>FortressMercenary</unittype>
+  <unittype>AbstractHeavyInfantry</unittype>
   <unittype>UnitClass</unittype>
   <unittype>Military</unittype>
-  <unittype>AbstractHeavyInfantry</unittype>
-  <unittype>AbstractInfantry</unittype>
-  <unittype>LogicalTypeRomanTactics</unittype>
+  <unittype>Unit</unittype>
+  <unittype>HasBountyValue</unittype>
+  <unittype>AbstractCavalryInfantry</unittype>
+  <unittype>CountsTowardMilitaryScore</unittype>
+  <unittype>ConvertsHerds</unittype>
+  <unittype>AbstractHandInfantry</unittype>
   <flag>CollidesWithProjectiles</flag>
   <flag>ApplyHandicapTraining</flag>
   <flag>CorpseDecays</flag>
@@ -48014,22 +48015,23 @@
   <unittype>LogicalTypeHandUnitsAttack</unittype>
   <unittype>LogicalTypeRangedUnitsAttack</unittype>
   <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-  <unittype>HasBountyValue</unittype>
-  <unittype>Ranged</unittype>
-  <unittype>AbstractSiegeTrooper</unittype>
+  <unittype>Military</unittype>
+  <unittype>UnitClass</unittype>
+  <unittype>Unit</unittype>
+  <unittype>AbstractHeavyInfantry</unittype>
+  <unittype>AbstractGrenadier</unittype>
+  <unittype>AbstractMusketeer</unittype>
+  <unittype>AbstractInfantry</unittype>
   <unittype>CountsTowardMilitaryScore</unittype>
   <unittype>AbstractCavalryInfantry</unittype>
-  <unittype>AbstractHeavyInfantry</unittype>
-  <unittype>ConvertsHerds</unittype>
+  <unittype>Ranged</unittype>
+  <unittype>AbstractGunpowderTrooper</unittype>
+  <unittype>HasBountyValue</unittype>
   <unittype>AbstractRangedInfantry</unittype>
   <unittype>LogicalTypeInfantryVolleyTactic</unittype>
-  <unittype>AbstractConsulateUnit</unittype>
-  <unittype>AbstractConsulateUnitColonial</unittype>
-  <unittype>AbstractInfantry</unittype>
-  <unittype>UnitClass</unittype>
-  <unittype>Military</unittype>
-  <unittype>Unit</unittype>
-  <unittype>AbstractGrenadier</unittype>
+  <unittype>ConvertsHerds</unittype>
+  <unittype>Mercenary</unittype>
+  <unittype>FortressMercenary</unittype>
   <flag>CollidesWithProjectiles</flag>
   <flag>ApplyHandicapTraining</flag>
   <flag>CorpseDecays</flag>
