@@ -8495,7 +8495,7 @@ minInterval 3
       }
 
       // Allow civs to run their standard attack plans first
-      if (gStrategy == cStrategyRush)
+      /*if (gStrategy == cStrategyRush)
       {
          if (currentAge < cAge3) {return;}
       }
@@ -8506,7 +8506,7 @@ minInterval 3
       else
       {
          if (currentAge < cAge4 || xsGetTime() < 35 * 60 * 1000) {return;}
-      }
+      }*/
       
       if (currentAge == cAge3)
       {
