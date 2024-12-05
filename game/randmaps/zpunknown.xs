@@ -3,7 +3,7 @@
 // edited by vividlyplain June 2021 to include assets from other regions incorporated since vanilla
 // edited by vividlyplain December 2021, new trade route logic, new terrains, and some fun stuff xD
 // February 2022 and onward, updated by vivid to include more fun stuff and some added biomes
-// special thanks to Ev0lution, Daniel, Enki_ for all the help and inspiration
+// special thanks to Ev0lution, Daniel, Enki_, dansil92 for all the help and inspiration
 // updated by vivid and Roda for Age of Pirates Mod, October 2024
 
 include "ypAsianInclude.xs";
@@ -33,6 +33,7 @@ void main(void)
 	int oceanMiddle = -1;
 	int oceanOffCenter = -1;
 	int oceanRing = -1;
+	int splitIsland = -1;
 	int plateauMiddle = -1;
 	int forestMiddle = -1;
 	int blockedMiddle = -1; // used to determine if trade route should be circular.... or square
@@ -53,36 +54,38 @@ void main(void)
 		
 	float landConfig = rmRandFloat(0,1);
 	if (rmGetIsKOTH() == true)
-		landConfig = rmRandFloat(0.04,0.20);
-//		landConfig = 0.97;		// for testing
+		landConfig = rmRandFloat(0.04,0.18);
+//		landConfig = 0.20;		// for testing
 		rmEchoInfo("land configuration = "+landConfig);
 
 // ============= Land and Water Configuration =============
-	if (landConfig < 0.05)
+	if (landConfig < 0.04)
 	{
 		floodedLand = 1;
 	}
 
-	else if (landConfig < 0.20 && rmGetIsTreaty() == false)
+	else if (landConfig < 0.19)
 	{
 		oceanRing = 1;
-		allLand = -1;
 	}
 
-	else if (landConfig < 0.35)
+	else if (landConfig < 0.29)
+	{
+		splitIsland = 1;
+	}
+
+	else if (landConfig < 0.39)
 	{
 		landOnly = 1;
 	}
 
-	else if (landConfig < 0.40)
+	else if (landConfig < 0.49)
 	{
-		allLand = -1;
 		riverExists = 1;
 	}
 
-	else if (landConfig < 0.69)
+	else if (landConfig < 0.74)
 	{
-		allLand = -1;
 		oceanMiddle = 1;
 		blockedMiddle = 1;
 		if (rmRandFloat(0,1) <= 0.10)
@@ -91,20 +94,17 @@ void main(void)
 
 	else if (landConfig < 0.98)
 	{
-		allLand = -1;
-		sagTest = -1;
 		oceanOffCenter = 1;
 	}
 		
 	else
 	{
-		allLand = -1;
 		forestMiddle = 1;
 	}
 
 	// Set size.
 	int playerTiles=11000;
-	if (oceanRing == 1)	// big island
+	if (oceanRing == 1 || splitIsland == 1)	// big island
 	{
 		if (cNumberNonGaiaPlayers == 2)
 			playerTiles = 20000;
@@ -243,7 +243,7 @@ void main(void)
 		subCiv29 = rmGetCivID("Yoruba");
 		subCiv30 = rmGetCivID("DESPCLenape");
 		subCiv31 = rmGetCivID("Saltpeter");
-		subCiv32 = rmGetCivID("Bourbon");
+		subCiv32 = rmGetCivID("SPCBourbon");
 		subCiv33 = rmGetCivID("Habsburg");
 		subCiv34 = rmGetCivID("Hanover");
 		subCiv35 = rmGetCivID("Jagiellon");
@@ -300,7 +300,7 @@ void main(void)
 		rmSetSubCiv(29, "Yoruba");
 		rmSetSubCiv(30, "DESPCLenape");
 		rmSetSubCiv(31, "Saltpeter");
-		rmSetSubCiv(32, "Bourbon");
+		rmSetSubCiv(32, "SPCBourbon");
 		rmSetSubCiv(33, "Habsburg");
 		rmSetSubCiv(34, "Hanover");
 		rmSetSubCiv(35, "Jagiellon");
@@ -2544,7 +2544,7 @@ void main(void)
 
 	if (oceanRing == 1)
 	{
-		if (rmRandFloat(0,1) <= 0.999)
+		if (rmRandFloat(0,1) <= 0.10)
 		{
 			riverExists = 1;
 			riverName = oceanName;
@@ -2564,6 +2564,8 @@ void main(void)
 		rmEchoInfo("big flood");
 	else if (oceanRing == 1)
 		rmEchoInfo("big island");
+	else if (splitIsland == 1)
+		rmEchoInfo("split island");
 	else if (landOnly == 1)
 		rmEchoInfo("just land");
 	else if (riverExists == 1)
@@ -2645,8 +2647,6 @@ void main(void)
 	int avoidTradeRoute = rmCreateTradeRouteDistanceConstraint("trade route", 4.0);
 	int avoidTradeRouteSocket = rmCreateTypeDistanceConstraint("avoid trade route sockets", "sockettraderoute", 8.0);
 	int avoidTradeRouteSocketShort = rmCreateTypeDistanceConstraint("avoid trade route sockets short", "sockettraderoute", 4.0);
-   int edgeConstraintShort=rmCreatePieConstraint("continent avoids edge short",  0.5, 0.5, 0, rmGetMapXSize()-8, 0, 0, 0);
-   int edgeConstraint=rmCreatePieConstraint("continent avoids edge",  0.5, 0.5, 0, rmGetMapXSize()-30, 0, 0, 0);
 	int avoidCanyon = rmCreateClassDistanceConstraint("don't place on mesa where you can't path", classCanyon, 2.0);
 	int avoidCliffs = rmCreateClassDistanceConstraint("cliffs avoid cliffs", classCliff, 21.0);
 	int avoidCliffsMed = rmCreateClassDistanceConstraint("stuff avoid cliffs med", classCliff, 8.0);
@@ -2669,6 +2669,7 @@ void main(void)
    int whaleVsWhaleID=rmCreateTypeDistanceConstraint("whale v whale", "abstractWhale", 25.0);
    int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 4.0);
    int whaleLand = rmCreateTerrainDistanceConstraint("whale v. land", "land", true, 12.0);
+   int whaleLandFar = rmCreateTerrainDistanceConstraint("whale v. land", "land", true, 24.0);
    int avoidFood = rmCreateTypeDistanceConstraint("food avoids food", "food", 40.0);
 	int avoidFood1 = rmCreateTypeDistanceConstraint("food avoids food1", critterOneName, 40+3*cNumberNonGaiaPlayers);
 	int avoidFood2 = rmCreateTypeDistanceConstraint("food avoids food2", critterTwoName, 40+3*cNumberNonGaiaPlayers);
@@ -2678,7 +2679,8 @@ void main(void)
 	int avoidSilver = rmCreateTypeDistanceConstraint("fast coin avoids coin", "gold", 50+2.5*cNumberNonGaiaPlayers);
 	int avoidForestMin=rmCreateClassDistanceConstraint("avoid forest min", rmClassID("classForest"), 4.0);
    	int avoidPond=rmCreateClassDistanceConstraint("avoid pond min", rmClassID("pond"), 8.0);
-   	int flagVsFlag=rmCreateClassDistanceConstraint("avoid flag", rmClassID("flag"), 2.0);
+   	int flagVsFlag=rmCreateClassDistanceConstraint("avoid flag", rmClassID("flag"), 4.0);
+	int avoidPlayersSplitIsland = rmCreateClassDistanceConstraint("stay away from players split island", classPlayer, 69.0);
 	int avoidPlayers = -1;
 	int avoidPlayersShort = -1;
 	int avoidPlayersFar = -1;
@@ -2694,7 +2696,10 @@ void main(void)
 	{
 		avoidPlayers = rmCreateClassDistanceConstraint("stay away from players medium", classPlayer, 15.0);
 		avoidPlayersShort = rmCreateClassDistanceConstraint("stay away from players short", classPlayer, 8.0);
-		avoidPlayersFar = rmCreateClassDistanceConstraint("stay away from players far", classPlayer, 50.0);
+//		if (splitIsland == 1)
+//			avoidPlayersFar = rmCreateClassDistanceConstraint("stay away from players far", classPlayer, 69.0);
+//		else
+			avoidPlayersFar = rmCreateClassDistanceConstraint("stay away from players far", classPlayer, 50.0);
 		avoidPlayersFar1 = rmCreateClassDistanceConstraint("stay away from players far1", classPlayer, 30.0);
 	}
 	int avoidSilver1 = rmCreateTypeDistanceConstraint("fast coin avoids coin1", "gold", 12.0);
@@ -2708,20 +2713,39 @@ void main(void)
    int avoidAllFar=rmCreateTypeDistanceConstraint("avoid all far", "all", 8.0);
 
    // pie constraints
+   int edgeCOnstraintSplitIsland=rmCreatePieConstraint("split islands avoid edge",  0.5, 0.5, 0, rmGetMapXSize()-24, 0, 0, 0);
+   int edgeConstraintShort=rmCreatePieConstraint("continent avoids edge short",  0.5, 0.5, 0, rmGetMapXSize()-8, 0, 0, 0);
+   int edgeConstraint=rmCreatePieConstraint("continent avoids edge",  0.5, 0.5, 0, rmGetMapXSize()-30, 0, 0, 0);
 	int avoidEdge = rmCreatePieConstraint("Avoid Edge",0.5,0.5, rmXFractionToMeters(0.0),rmXFractionToMeters(0.48), rmDegreesToRadians(0),rmDegreesToRadians(360));
 	int avoidEdgeFar = rmCreatePieConstraint("Avoid Edge Far",0.5,0.5, rmXFractionToMeters(0.0),rmXFractionToMeters(0.43), rmDegreesToRadians(0),rmDegreesToRadians(360));
 	int stayNearEdge = rmCreatePieConstraint("stay near edge",0.5,0.5,rmXFractionToMeters(0.41), rmXFractionToMeters(0.48), rmDegreesToRadians(0),rmDegreesToRadians(360));
-	int avoidCenter = rmCreatePieConstraint("avoid center",0.5,0.5,rmXFractionToMeters(0.20), rmXFractionToMeters(0.43), rmDegreesToRadians(0),rmDegreesToRadians(360));
+	int stayCenter = rmCreatePieConstraint("stay center",0.5,0.5,rmXFractionToMeters(0.00), rmXFractionToMeters(0.15), rmDegreesToRadians(0),rmDegreesToRadians(360));
+	int avoidCenterMin = rmCreatePieConstraint("avoid center min",0.5,0.5,rmXFractionToMeters(0.12), rmXFractionToMeters(0.48), rmDegreesToRadians(0),rmDegreesToRadians(360));
+	int avoidCenter = rmCreatePieConstraint("avoid center",0.5,0.5,rmXFractionToMeters(0.15), rmXFractionToMeters(0.35), rmDegreesToRadians(0),rmDegreesToRadians(360));
 	int avoidCenterFar = rmCreatePieConstraint("avoid center far",0.5,0.5,rmXFractionToMeters(0.37), rmXFractionToMeters(0.43), rmDegreesToRadians(0),rmDegreesToRadians(360));
 	int avoidCenterFlag = rmCreatePieConstraint("avoid center flag",0.5,0.5,rmXFractionToMeters(0.40), rmXFractionToMeters(0.48), rmDegreesToRadians(0),rmDegreesToRadians(360));
     int staySudFar = rmCreatePieConstraint("Stay South Far", 0.50, 0.50, rmXFractionToMeters(0.35), rmXFractionToMeters(0.48), rmDegreesToRadians(200), rmDegreesToRadians(250));
     int stayNorFar = rmCreatePieConstraint("Stay North Far", 0.50, 0.50, rmXFractionToMeters(0.35), rmXFractionToMeters(0.48), rmDegreesToRadians(020), rmDegreesToRadians(070));
     int stayWstFar = rmCreatePieConstraint("Stay West Far", 0.50, 0.50, rmXFractionToMeters(0.35), rmXFractionToMeters(0.48), rmDegreesToRadians(290), rmDegreesToRadians(340));
-    int stayEstFar = rmCreatePieConstraint("Stay East Far", 0.50, 0.50, rmXFractionToMeters(0.35), rmXFractionToMeters(0.48), rmDegreesToRadians(110), rmDegreesToRadians(170));
-    int staySud = rmCreatePieConstraint("Stay South", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.43), rmDegreesToRadians(200), rmDegreesToRadians(250));
-    int stayNor = rmCreatePieConstraint("Stay North", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.43), rmDegreesToRadians(020), rmDegreesToRadians(070));
-    int stayWst = rmCreatePieConstraint("Stay West", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.43), rmDegreesToRadians(290), rmDegreesToRadians(340));
-    int stayEst = rmCreatePieConstraint("Stay East", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.43), rmDegreesToRadians(110), rmDegreesToRadians(170));
+    int stayEstFar = rmCreatePieConstraint("Stay East Far", 0.50, 0.50, rmXFractionToMeters(0.35), rmXFractionToMeters(0.48), rmDegreesToRadians(110), rmDegreesToRadians(160));
+    int staySud = -1;
+    int stayNor = -1;
+    int stayWst = -1;
+    int stayEst = -1;
+	if (splitIsland == 1)
+	{
+    	staySud = rmCreatePieConstraint("Stay South", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.43), rmDegreesToRadians(180), rmDegreesToRadians(270));
+    	stayNor = rmCreatePieConstraint("Stay North", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.43), rmDegreesToRadians(000), rmDegreesToRadians(090));
+    	stayWst = rmCreatePieConstraint("Stay West", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.43), rmDegreesToRadians(270), rmDegreesToRadians(360));
+    	stayEst = rmCreatePieConstraint("Stay East", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.43), rmDegreesToRadians(090), rmDegreesToRadians(180));
+	}
+	else
+	{
+    	staySud = rmCreatePieConstraint("Stay South", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.45), rmDegreesToRadians(200), rmDegreesToRadians(250));
+    	stayNor = rmCreatePieConstraint("Stay North", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.45), rmDegreesToRadians(020), rmDegreesToRadians(070));
+    	stayWst = rmCreatePieConstraint("Stay West", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.45), rmDegreesToRadians(290), rmDegreesToRadians(340));
+    	stayEst = rmCreatePieConstraint("Stay East", 0.50, 0.50, rmXFractionToMeters(0.00), rmXFractionToMeters(0.45), rmDegreesToRadians(110), rmDegreesToRadians(160));
+	}
 
 	// native variables
 	int nativeNumber = (rmRandInt(2,4)+(cNumberNonGaiaPlayers/4));
@@ -2745,10 +2769,17 @@ void main(void)
 	if (oceanRing == 1 && oceanMiddle == 1)
 		tpORnot = 5;
 	if (oceanOffCenter == 1 && oceanMiddle == 1)
-		tpORnot = 5;
+	{
+		if (sideBay == 1)
+			tpORnot = rmRandInt(1,5);
+		else
+			tpORnot = 5;
+	}	
 	if (oceanOffCenter == 1 && riverExists == 1)
 		tpORnot = 5;
 	if (floodedLand == 1 && riverExists == 1)
+		tpORnot = 5;
+	if (splitIsland == 1)
 		tpORnot = 5;
 //	tpORnot = 5;		// for testing
 	rmEchoInfo("tpORnot = "+tpORnot);
@@ -2760,10 +2791,7 @@ void main(void)
 		else
 			nativeNumber = (7+(cNumberNonGaiaPlayers/4));
 	}
-	if (oceanRing == 1 && riverExists == 1)
-	{
-		nativeNumber = (rmRandInt(3,4)+(cNumberNonGaiaPlayers/2));
-	}
+
 //	nativeNumber = 8; 	// for testing
 	rmEchoInfo("Native number = "+nativeNumber);
 
@@ -2788,10 +2816,11 @@ void main(void)
 	}
 	if (rmGetNomadStart() == true)
 		natDist = 24;
-	if (oceanRing == 1)
+	if (oceanRing == 1 || splitIsland == 1)
 		natDist = 44;
 
 	int avoidNatives = rmCreateClassDistanceConstraint("stay away from natives", classNatives, natDist+6*cNumberNonGaiaPlayers);
+	int avoidNativesShort = rmCreateClassDistanceConstraint("stay away from natives", classNatives, 12+cNumberNonGaiaPlayers);
 	int avoidPirates = rmCreateClassDistanceConstraint("controller avoidance", classPirates, 48);
 	int avoidPiratesMed = rmCreateClassDistanceConstraint("stay away from pirates med", classPirates, 36);
 	int avoidPiratesShort = rmCreateClassDistanceConstraint("stay away from pirates short", classPirates, 8);
@@ -2831,8 +2860,8 @@ void main(void)
         rmBuildArea(floodedContinent);
 	}
 
-// ============= Big Island =============
-	if(oceanRing == 1)
+// ============= Big Ocean =============
+	if(oceanRing == 1 || splitIsland == 1)
 	{
 		int worldOcean=rmCreateArea("ocean that covers whole map");
 		rmSetAreaWaterType(worldOcean, oceanName);
@@ -2841,7 +2870,11 @@ void main(void)
 		rmSetAreaWarnFailure(worldOcean, false);
 		rmSetAreaObeyWorldCircleConstraint(worldOcean, false);
 		rmBuildArea(worldOcean);
+	}
 
+// ============= Big Island =============
+	if(oceanRing == 1)
+	{
 		int continent=rmCreateArea("island continent in ocean");
 		rmSetAreaMix(continent, landName);
 		rmSetAreaElevationType(continent, cElevTurbulence);
@@ -2858,6 +2891,150 @@ void main(void)
 //		rmAddAreaConstraint(continent, avoidEdge);
 		rmAddAreaConstraint(continent, edgeConstraint);
 		rmBuildArea(continent);		
+	}
+
+// ============= Split Islands =============
+	if(splitIsland == 1)
+	{
+		int splitChance = rmRandInt(1,4);
+//			splitChance = 4;	// for testing
+		float isle1LocX = 0;
+		float isle1LocY = 0;
+		float isle2LocX = 0;
+		float isle2LocY = 0;
+		float influence1LocX = 0;
+		float influence1LocY = 0;
+		float influence2LocX = 0;
+		float influence2LocY = 0;
+		float isleSize = rmRandFloat(0.16,0.18);
+
+		if (splitChance == 1)	// check
+		{
+			isle1LocX = 0.70;
+			isle1LocY = 0.70;
+			isle2LocX = 0.30;
+			isle2LocY = 0.30;
+			influence1LocX = rmRandFloat(0.05,0.20);
+			influence1LocY = rmRandFloat(0.15,0.35);
+			influence2LocX = rmRandFloat(0.05,0.20);
+			influence2LocY = rmRandFloat(0.15,0.35);
+		}
+		else if (splitChance == 2)	// check
+		{
+			isle1LocX = 0.70;
+			isle1LocY = 0.50;
+			isle2LocX = 0.30;
+			isle2LocY = 0.50;
+			influence1LocX = rmRandFloat(0.05,0.20);
+			influence1LocY = rmRandFloat(0.15,0.35);
+			influence2LocX = rmRandFloat(0.05,0.20);
+			influence2LocY = rmRandFloat(0.15,0.35);
+		}
+		else if (splitChance == 3)	// check
+		{
+			isle1LocX = 0.70;
+			isle1LocY = 0.30;
+			isle2LocX = 0.30;
+			isle2LocY = 0.70;
+			influence1LocX = rmRandFloat(0.05,0.20);
+			influence1LocY = rmRandFloat(0.15,0.35);
+			influence2LocX = rmRandFloat(0.05,0.20);
+			influence2LocY = rmRandFloat(0.15,0.35);
+		}
+		else	// check
+		{
+			isle1LocX = 0.50;
+			isle1LocY = 0.30;
+			isle2LocX = 0.50;
+			isle2LocY = 0.70;
+			influence1LocX = rmRandFloat(0.10,0.25);
+			influence1LocY = rmRandFloat(0.10,0.25);
+			influence2LocX = rmRandFloat(0.10,0.25);
+			influence2LocY = rmRandFloat(0.10,0.25);
+		}
+
+		int splitIslandID1=rmCreateArea("split island 1");
+		rmSetAreaMix(splitIslandID1, landName);
+		rmSetAreaElevationType(splitIslandID1, cElevTurbulence);
+		rmSetAreaElevationVariation(splitIslandID1, 2.0);
+		rmSetAreaBaseHeight(splitIslandID1, 2.0);
+		rmSetAreaElevationMinFrequency(splitIslandID1, 0.09);
+		rmSetAreaElevationOctaves(splitIslandID1, 3);
+		rmSetAreaElevationPersistence(splitIslandID1, 0.2);
+		rmSetAreaElevationNoiseBias(splitIslandID1, 1);
+		rmSetAreaSize(splitIslandID1, isleSize);
+		rmSetAreaLocation(splitIslandID1, isle1LocX, isle1LocY);
+		if (splitChance == 1)
+		{
+			rmAddAreaInfluenceSegment(splitIslandID1, isle1LocX, isle1LocY, isle1LocX+influence1LocX, isle1LocY-influence1LocY);
+			rmAddAreaInfluenceSegment(splitIslandID1, isle1LocX, isle1LocY, isle1LocX-influence2LocX, isle1LocY+influence2LocY);
+		}
+		else if (splitChance == 2)
+		{
+			rmAddAreaInfluenceSegment(splitIslandID1, isle1LocX, isle1LocY, isle1LocX+influence1LocX, isle1LocY-influence1LocY);
+			rmAddAreaInfluenceSegment(splitIslandID1, isle1LocX, isle1LocY, isle1LocX+influence2LocX, isle1LocY+influence2LocY);
+		}
+		else if (splitChance == 3)
+		{
+			rmAddAreaInfluenceSegment(splitIslandID1, isle1LocX, isle1LocY, isle1LocX+influence1LocX, isle1LocY+influence1LocY);
+			rmAddAreaInfluenceSegment(splitIslandID1, isle1LocX, isle1LocY, isle1LocX-influence2LocX, isle1LocY-influence2LocY);
+		}
+		else
+		{
+			rmAddAreaInfluenceSegment(splitIslandID1, isle1LocX, isle1LocY, isle1LocX+influence1LocX, isle1LocY-influence1LocY);
+			rmAddAreaInfluenceSegment(splitIslandID1, isle1LocX, isle1LocY, isle1LocX-influence2LocX, isle1LocY-influence2LocY);
+		}
+		rmSetAreaSmoothDistance(splitIslandID1, 50);
+		rmSetAreaCoherence(splitIslandID1, 0.444);
+		rmAddAreaConstraint(splitIslandID1, edgeCOnstraintSplitIsland);
+		rmAddAreaConstraint(splitIslandID1, avoidCenterMin);
+		rmAddAreaConstraint(splitIslandID1, whaleLandFar);
+		rmBuildArea(splitIslandID1);
+
+		int splitIslandID2=rmCreateArea("split island 2");
+		rmSetAreaMix(splitIslandID2, landName);
+		rmSetAreaElevationType(splitIslandID2, cElevTurbulence);
+		rmSetAreaElevationVariation(splitIslandID2, 2.0);
+		rmSetAreaBaseHeight(splitIslandID2, 2.0);
+		rmSetAreaElevationMinFrequency(splitIslandID2, 0.09);
+		rmSetAreaElevationOctaves(splitIslandID2, 3);
+		rmSetAreaElevationPersistence(splitIslandID2, 0.2);
+		rmSetAreaElevationNoiseBias(splitIslandID2, 1);
+		rmSetAreaSize(splitIslandID2, isleSize);
+		rmSetAreaLocation(splitIslandID2, isle2LocX, isle2LocY);
+		if (splitChance == 1)
+		{
+			rmAddAreaInfluenceSegment(splitIslandID2, isle2LocX, isle2LocY, isle2LocX+influence1LocX, isle2LocY-influence1LocY);
+			rmAddAreaInfluenceSegment(splitIslandID2, isle2LocX, isle2LocY, isle2LocX-influence2LocX, isle2LocY+influence2LocY);
+		}
+		else if (splitChance == 2)
+		{
+			rmAddAreaInfluenceSegment(splitIslandID2, isle2LocX, isle2LocY, isle2LocX-influence1LocX, isle2LocY-influence1LocY);
+			rmAddAreaInfluenceSegment(splitIslandID2, isle2LocX, isle2LocY, isle2LocX-influence2LocX, isle2LocY+influence2LocY);
+		}
+		else if (splitChance == 3)
+		{
+			rmAddAreaInfluenceSegment(splitIslandID2, isle2LocX, isle2LocY, isle2LocX+influence1LocX, isle2LocY+influence1LocY);
+			rmAddAreaInfluenceSegment(splitIslandID2, isle2LocX, isle2LocY, isle2LocX-influence2LocX, isle2LocY-influence2LocY);
+		}
+		else
+		{
+			rmAddAreaInfluenceSegment(splitIslandID2, isle2LocX, isle2LocY, isle2LocX+influence1LocX, isle2LocY+influence1LocY);
+			rmAddAreaInfluenceSegment(splitIslandID2, isle2LocX, isle2LocY, isle2LocX-influence2LocX, isle2LocY+influence2LocY);
+		}
+		rmSetAreaSmoothDistance(splitIslandID2, 50);
+		rmSetAreaCoherence(splitIslandID2, 0.444);
+		rmAddAreaConstraint(splitIslandID2, edgeCOnstraintSplitIsland);
+		rmAddAreaConstraint(splitIslandID2, avoidCenterMin);
+		rmAddAreaConstraint(splitIslandID2, whaleLandFar);
+		rmBuildArea(splitIslandID2);		
+
+		int avoidTeam1Island = rmCreateAreaDistanceConstraint("avoid team 1 isle", splitIslandID1, 8.0);
+		int stayInTeam1Isle = rmCreateAreaMaxDistanceConstraint("stay in team 1 isle", splitIslandID1, 0.0);
+		int stayNearTeam1Isle = rmCreateAreaMaxDistanceConstraint("stay near team 1 isle", splitIslandID1, 22.0);
+		int avoidTeam2Island = rmCreateAreaDistanceConstraint("avoid team 2 isle", splitIslandID2, 8.0);
+		int stayInTeam2Isle = rmCreateAreaMaxDistanceConstraint("stay in team 2 isle", splitIslandID2, 0.0);
+		int stayNearTeam2Isle = rmCreateAreaMaxDistanceConstraint("stay near team 2 isle", splitIslandID2, 22.0);
 	}
 
 //	Other land configurations handled later
@@ -2884,12 +3061,8 @@ if (tpORnot != 5)
 	if (oceanRing == 1)
 		tpVariation = 2;
 
-//	if (sagTest == -1) {
-//		if (baseTerrain > 0.50)
-//			tpVariation = 2;
-//		else
-//			tpVariation = 5;
-//		}
+	if (sideBay == 1)
+		tpVariation = 2;
 
 //		tpVariation = 1;	// for testing
 		rmEchoInfo("trade route variation = "+tpVariation);
@@ -3189,6 +3362,12 @@ if (tpORnot != 5)
 	{
 		rmEchoInfo("ocean ring");
 	}
+   
+// ============= Split Islands =============
+	if(splitIsland == 1)
+	{
+		rmEchoInfo("split islands");
+	}
 
 // ============= Land Only =============
 	if(landOnly == 1)
@@ -3346,9 +3525,9 @@ if (tpORnot != 5)
 			rmSetAreaCliffType(mountID, cliffName); 
 			rmSetAreaTerrainType(mountID, "cave\cave_ground5");
 			if (rmRandFloat(0,1) <= 0.50 || floodedLand == 1)
-				rmSetAreaCliffHeight(mountID, 10, 0.0, 0.8);
+				rmSetAreaCliffHeight(mountID, 10, 4.0, 0.8);
 			else
-				rmSetAreaCliffHeight(mountID, -10, 0.0, 0.8);
+				rmSetAreaCliffHeight(mountID, -10, 4.0, 0.8);
 			rmSetAreaCliffEdge(mountID, 1, 1.00, 0.0, 1.0, 1);
 			rmSetAreaCoherence(mountID, 0.69);
 			rmAddAreaToClass(mountID, pondClass);
@@ -3402,9 +3581,9 @@ if (tpORnot != 5)
 			rmSetAreaCliffType(caveID, "cave"); 
 			rmSetAreaTerrainType(caveID, "cave\cave_ground5");
 			if (floodedLand == 1)
-				rmSetAreaCliffHeight(caveID, 4, 0.0, 0.8);
+				rmSetAreaCliffHeight(caveID, 4, 1.0, 0.8);
 			else
-				rmSetAreaCliffHeight(caveID, -4, 0.0, 0.8);
+				rmSetAreaCliffHeight(caveID, -4, 1.0, 0.8);
 			rmSetAreaCliffEdge(caveID, 6, 0.07, 0.0, 1.0, 1);
 			rmSetAreaCoherence(caveID, 0.69);
 			rmAddAreaToClass(caveID, classCanyon);
@@ -3456,7 +3635,7 @@ if (tpORnot != 5)
 				rmSetAreaCliffType(caveCliffID, "cave");  
 				rmSetAreaTerrainType(caveCliffID, "cave\cave_top_a");
 				rmAddAreaToClass(caveCliffID, classCliff);
-				rmSetAreaCliffHeight(caveCliffID, 8, 0.0, 0.4);
+				rmSetAreaCliffHeight(caveCliffID, 8, 2.0, 0.4);
 				rmSetAreaCliffEdge(caveCliffID, 1, 1.0, 0.0, 0.0, 1);
 				rmSetAreaCoherence(caveCliffID, 0.69);
 				rmAddAreaConstraint(caveCliffID, stayInCave);
@@ -3484,9 +3663,9 @@ if (tpORnot != 5)
 			rmSetAreaCliffType(plateauID, cliffName); 
 			rmSetAreaTerrainType(plateauID, "cave\cave_ground5");
 			if (rmRandFloat(0,1) <= 0.50 || floodedLand == 1)
-				rmSetAreaCliffHeight(plateauID, 6, 0.0, 0.8);
+				rmSetAreaCliffHeight(plateauID, 6, 2.0, 0.8);
 			else
-				rmSetAreaCliffHeight(plateauID, -6, 0.0, 0.8);
+				rmSetAreaCliffHeight(plateauID, -6, 2.0, 0.8);
 			rmSetAreaCliffEdge(plateauID, 6, 0.07, 0.0, 1.0, 1);
 			rmSetAreaCoherence(plateauID, 0.69);
 			rmAddAreaToClass(plateauID, classCanyon);
@@ -4105,9 +4284,9 @@ if (tpORnot != 5)
 			rmSetAreaCliffType(mountSideID, cliffName); 
 			rmSetAreaTerrainType(mountSideID, "cave\cave_ground5");
 			if (rmRandFloat(0,1) <= 0.50 || floodedLand == 1)
-				rmSetAreaCliffHeight(mountSideID, 10, 0.0, 0.8);
+				rmSetAreaCliffHeight(mountSideID, 10, 4.0, 0.8);
 			else
-				rmSetAreaCliffHeight(mountSideID, -10, 0.0, 0.8);
+				rmSetAreaCliffHeight(mountSideID, -10, 4.0, 0.8);
 			rmSetAreaCliffEdge(mountSideID, 1, 1.00, 0.0, 1.0, 1);
 			rmSetAreaCoherence(mountSideID, 0.69);
 			rmSetAreaReveal(mountSideID, 01);
@@ -4177,9 +4356,9 @@ if (tpORnot != 5)
 			rmSetAreaCliffType(caveSideID, "cave"); 
 			rmSetAreaTerrainType(caveSideID, "cave\cave_ground5");
 			if (floodedLand == 1)
-				rmSetAreaCliffHeight(caveSideID, 4, 0.0, 0.8);
+				rmSetAreaCliffHeight(caveSideID, 4, 1.0, 0.8);
 			else
-				rmSetAreaCliffHeight(caveSideID, -4, 0.0, 0.8);
+				rmSetAreaCliffHeight(caveSideID, -4, 1.0, 0.8);
 			rmSetAreaCliffEdge(caveSideID, 6, 0.07, 0.0, 1.0, 0);
 			rmSetAreaCoherence(caveSideID, 0.69);
 			rmAddAreaToClass(caveSideID, classCanyon);
@@ -4243,7 +4422,7 @@ if (tpORnot != 5)
 				rmSetAreaCliffType(caveSideCliffID, "cave");  
 				rmSetAreaTerrainType(caveSideCliffID, "cave\cave_top_a");
 				rmAddAreaToClass(caveSideCliffID, classCliff);
-				rmSetAreaCliffHeight(caveSideCliffID, 8, 0.0, 0.4);
+				rmSetAreaCliffHeight(caveSideCliffID, 8, 2.0, 0.4);
 				rmSetAreaCliffEdge(caveSideCliffID, 1, 1.0, 0.0, 0.0, 1);
 				rmSetAreaCoherence(caveSideCliffID, 0.69);
 				rmAddAreaConstraint(caveSideCliffID, stayInSideCave);
@@ -4274,9 +4453,9 @@ if (tpORnot != 5)
 			rmSetAreaCliffType(plateauSideID, cliffName); 
 			rmSetAreaTerrainType(plateauSideID, "cave\cave_ground5");
 			if (rmRandFloat(0,1) <= 0.50 || floodedLand == 1)
-				rmSetAreaCliffHeight(plateauSideID, 6, 0.0, 0.8);
+				rmSetAreaCliffHeight(plateauSideID, 6, 2.0, 0.8);
 			else
-				rmSetAreaCliffHeight(plateauSideID, -6, 0.0, 0.8);
+				rmSetAreaCliffHeight(plateauSideID, -6, 2.0, 0.8);
 			rmSetAreaCliffEdge(plateauSideID, 6, 0.07, 0.0, 1.0, 1);
 			rmSetAreaCoherence(plateauSideID, 0.69);
 			rmAddAreaToClass(plateauSideID, classCanyon);
@@ -4781,7 +4960,7 @@ if (tpORnot != 5)
 		ahoyMeMatey = 1;
 	if (oceanOffCenter == 1 && bayChance == 1)
 		ahoyMeMatey = 1;
-	if (oceanRing == 1)
+	if (oceanRing == 1 || splitIsland == 1)
 		ahoyMeMatey = 1;
 	if (frozenLake == 1 || floodedLand == 1)
 		ahoyMeMatey = -1;
@@ -4821,6 +5000,10 @@ if (tpORnot != 5)
 				piratePos = 4;	// first pirate west
 				rmAddObjectDefConstraint(controllerID1, stayWstFar); 
 			}
+		}
+		else if (splitIsland == 1)
+		{
+			rmAddObjectDefConstraint(controllerID1, avoidCenter); 
 		}
 		else if (oceanOffCenter != 1)
 		{
@@ -4900,8 +5083,13 @@ if (tpORnot != 5)
 				rmAddObjectDefConstraint(controllerID1, avoidCenterFar); 
 			}
 		}
-		else	// if (oceanRing == 1)
+		else if (oceanRing == 1)
 			rmAddObjectDefConstraint(controllerID1, stayInBigIsland); 
+		else // split islands
+		{
+			rmAddObjectDefConstraint(controllerID1, stayNearTeam1Isle); 
+//			rmAddObjectDefConstraint(controllerID1, avoidCenter); 
+		}
 		rmPlaceObjectDefAtLoc(controllerID1, 0, 0.5, 0.5);
 
 		int controllerID2 = rmCreateObjectDef("Controler 2");
@@ -4925,6 +5113,10 @@ if (tpORnot != 5)
 				rmAddObjectDefConstraint(controllerID2, staySudFar); 
 			else	// first pirate east
 				rmAddObjectDefConstraint(controllerID2, stayWstFar); 
+		}
+		else if (splitIsland == 1)
+		{
+			rmAddObjectDefConstraint(controllerID2, avoidCenter); 
 		}
 		else if (oceanOffCenter != 1)
 		{
@@ -4988,8 +5180,13 @@ if (tpORnot != 5)
 				rmAddObjectDefConstraint(controllerID2, avoidCenterFar); 
 			}
 		}
-		else	// if (oceanRing == 1)
+		else if (oceanRing == 1)
 			rmAddObjectDefConstraint(controllerID2, stayInBigIsland); 
+		else // split islands
+		{
+			rmAddObjectDefConstraint(controllerID2, stayNearTeam2Isle); 
+//			rmAddObjectDefConstraint(controllerID2, avoidCenter); 
+		}
 		rmPlaceObjectDefAtLoc(controllerID2, 0, 0.5, 0.5);
 
 		vector ControllerLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(controllerID1, 0));
@@ -5394,7 +5591,7 @@ if (tpORnot != 5)
 		rmSetObjectDefMaxDistance(startingTCID, TCMax);
 	}
 	rmAddObjectDefConstraint(startingTCID, TCAvoidImpassableLand);
-	if (oceanRing == 1)
+	if (oceanRing == 1 || (splitIsland == 1 && cNumberTeams == 2))
 		rmAddObjectDefConstraint(startingTCID, avoidWaterFarPlus);
 	rmAddObjectDefConstraint(startingTCID, avoidPiratesShort);
 	rmAddObjectDefConstraint(startingTCID, avoidEdgeFar);
@@ -5417,7 +5614,62 @@ if (tpORnot != 5)
 // Place Starting Units now so other stuff can avoid them
 	for(i=1; <cNumberPlayers)
 	{
-		rmPlaceObjectDefAtLoc(startingTCID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+		if (splitIsland == 1)
+		{
+			if (cNumberTeams == 2)
+			{
+				rmAddObjectDefConstraint(startingTCID, avoidPlayersSplitIsland);
+				if (rmGetPlayerTeam(i) == 0)
+					rmPlaceObjectDefInArea(startingTCID, i, rmAreaID("split island 1"), 1);
+				else
+					rmPlaceObjectDefInArea(startingTCID, i, rmAreaID("split island 2"), 1);
+			}
+			else
+			{
+				// Weird Player Islands - from dansil92
+				int weirdIsleID=rmCreateArea("playerisle "+i);
+				rmSetAreaSize(weirdIsleID, rmAreaTilesToFraction(769));		// 0.2/PlayerNum
+				rmSetAreaCoherence(weirdIsleID, 0.69);
+				rmSetAreaBaseHeight(weirdIsleID, 1.0);
+				rmSetAreaSmoothDistance(weirdIsleID, 8);
+				rmSetAreaMix(weirdIsleID, landName);
+				rmAddAreaToClass(weirdIsleID, classPlayer);
+				rmAddAreaConstraint(weirdIsleID, edgeConstraint);
+				rmAddAreaConstraint(weirdIsleID, avoidPlayersSplitIsland);
+				rmAddAreaConstraint(weirdIsleID, avoidNatives);
+				rmAddAreaConstraint(weirdIsleID, avoidTradeRouteSocket);
+				rmAddAreaConstraint(weirdIsleID, avoidTradeRoute);
+				rmSetAreaWarnFailure(weirdIsleID, false);
+				rmSetAreaObeyWorldCircleConstraint(weirdIsleID, true);
+				rmEchoInfo("Player Island "+i);
+				int fail=0;
+				for (n=2; >fail*1000) // Make sure island gets made somewhere
+				{
+					fail=rmBuildArea(weirdIsleID);
+				}
+
+				rmPlaceObjectDefInArea(startingTCID, i, rmAreaID("playerisle "+i), 1);
+
+    	    rmAddMapStartingUnit(i, "CoveredWagon");
+    		rmSetNumberInitialColonies(2);
+
+			// Increase TC BL by 1
+    		rmCreateTrigger("extraTC"+i);
+    		rmSwitchToTrigger(rmTriggerID("extraTC"+i));
+    		rmSetTriggerActive(true);
+    		rmSetTriggerRunImmediately(true);
+    		rmSetTriggerPriority(4);
+
+    		rmAddTriggerCondition("Always");
+    		rmAddTriggerEffect("Modify Protounit");
+    		rmSetTriggerEffectParam("Protounit", "TownCenter");
+    		rmSetTriggerEffectParamInt("PlayerID", i);
+    		rmSetTriggerEffectParamInt("Field", 10);		// build limit
+    		rmSetTriggerEffectParamInt("Delta", 01);		// plus one
+			}
+		}
+		else
+			rmPlaceObjectDefAtLoc(startingTCID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 		//rmPlaceObjectDefAtLoc(startingUnits, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 		if (rmGetNomadStart() == true)
 		{
@@ -5439,7 +5691,7 @@ if (tpORnot != 5)
 			rmAddObjectDefToClass(villagerID, classPlayer);
 			rmSetObjectDefMinDistance(villagerID, rmXFractionToMeters(0.15));
 			rmSetObjectDefMaxDistance(villagerID, rmXFractionToMeters(1.00));
-			if (oceanRing == 1)
+			if (oceanRing == 1 || splitIsland == 1)
 				rmAddObjectDefConstraint(villagerID, avoidWaterShort);
 			if (floodedLand != 1)
 				rmAddObjectDefConstraint(villagerID, shortAvoidImpassableLand);
@@ -5539,7 +5791,7 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 	// aop native exclusive loop
 	for(i = 0; <aopNativeNumber)
 	{
-		nativeChance = rmRandFloat(0,0.14);
+		nativeChance = rmRandFloat(0,0.15);
 		if (merryXmass == 1 && counterXmass <1)
 			nativeChance = 0.13;
 //			nativeChance = 0.41;		// for testing
@@ -5652,6 +5904,12 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 			unknownVillageID = rmCreateGrouping("xmass village 9"+i, "xmass_village0"+rmRandInt(1,3));
 			counterXmass++;
 		}
+		else if(nativeChance < 0.15 && counterBour < 1)
+		{
+			rmEchoInfo("subCiv"+i+" is SPC Bourbon");
+			unknownVillageID = rmCreateGrouping("Bourbon village "+i, "Natives_SPCBourbon_0"+rmRandInt(1,3));
+			counterBour++;
+		}
 		else // this is there to still have as much native tps as decided because some can not spawn if you have already 2. Thx Riki.
 		{
 			aopNativeNumber++;
@@ -5687,15 +5945,31 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 			{
 				rmSetGroupingMinDistance(unknownVillageID, rmXFractionToMeters(0.00));
 				rmSetGroupingMaxDistance(unknownVillageID, rmXFractionToMeters(0.20+0.005*cNumberNonGaiaPlayers));
-				rmPlaceGroupingAtLoc(unknownVillageID, 0, 0.25, 0.25);
-				rmPlaceGroupingAtLoc(unknownVillageID, 0, 0.75, 0.75);
+				if (splitIsland == 1)
+				{
+					rmPlaceGroupingInArea(unknownVillageID, 0, rmAreaID("split island 1"), 1);
+					rmPlaceGroupingInArea(unknownVillageID, 0, rmAreaID("split island 2"), 1);
+				}
+				else
+				{
+					rmPlaceGroupingAtLoc(unknownVillageID, 0, 0.25, 0.25);
+					rmPlaceGroupingAtLoc(unknownVillageID, 0, 0.75, 0.75);
+				}
 			}
 			else
 			{
 				rmSetGroupingMinDistance(unknownVillageID, rmXFractionToMeters(0.00));
 				rmSetGroupingMaxDistance(unknownVillageID, rmXFractionToMeters(0.20+0.005*cNumberNonGaiaPlayers));
-				rmPlaceGroupingAtLoc(unknownVillageID, 0, 0.25, 0.75);
-				rmPlaceGroupingAtLoc(unknownVillageID, 0, 0.75, 0.25);
+				if (splitIsland == 1)
+				{
+					rmPlaceGroupingInArea(unknownVillageID, 0, rmAreaID("split island 1"), 1);
+					rmPlaceGroupingInArea(unknownVillageID, 0, rmAreaID("split island 2"), 1);
+				}
+				else
+				{
+					rmPlaceGroupingAtLoc(unknownVillageID, 0, 0.25, 0.75);
+					rmPlaceGroupingAtLoc(unknownVillageID, 0, 0.75, 0.25);
+				}
 			}
 //		}
 	}
@@ -5715,8 +5989,8 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 
 		if(nativeChance < 0.01 && counterBour < 1)
 		{
-			rmEchoInfo("subCiv"+i+" is Bourbon");
-			unknownVillageID = rmCreateGrouping("Bourbon village "+i, "european\native eu bourbon village central "+rmRandInt(1,7));
+			rmEchoInfo("subCiv"+i+" is SPC Bourbon");
+			unknownVillageID = rmCreateGrouping("Bourbon village "+i, "Natives_SPCBourbon_0"+rmRandInt(1,3));
 			counterBour++;
 		}
 		else if(nativeChance < 0.02 && counterHabs < 1)
@@ -5796,63 +6070,54 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 		}
 		else if(nativeChance < 0.14 && counterZapo < 1)
 		{
-//			rmSetSubCiv(i, "Zapotec");
 			rmEchoInfo("subCiv"+i+" is Zapotec");
 			unknownVillageID = rmCreateGrouping("zapotec village "+i, "native zapotec village "+rmRandInt(1,5));
 			counterZapo++;
 		}
 		else if(nativeChance < 0.15 && counterApac < 1)
 		{
-//			rmSetSubCiv(i, "apache");
 			rmEchoInfo("subCiv"+i+" is Apache");
 			unknownVillageID = rmCreateGrouping("apache village "+i, "native apache village "+rmRandInt(1,5));
 			counterApac++;
 		}
 		else if(nativeChance < 0.16 && counterLena < 1)
 		{
-//			rmSetSubCiv(i, "DESPCLenape");
 			rmEchoInfo("subCiv"+i+" is Lenape");
 			unknownVillageID = rmCreateGrouping("lenape village "+i, "native lenape village "+rmRandInt(1,5));
 			counterLena++;
 		}
 		else if(nativeChance < 0.17 && counterSoma < 1)
 		{
-//			rmSetSubCiv(i, "Somali");
 			rmEchoInfo("subCiv"+i+" is Somali");
 			unknownVillageID = rmCreateGrouping("somali village "+i, "native af somali village "+rmRandInt(1,5));
 			counterSoma++;
 		}
 		else if(nativeChance < 0.18 && counterBerb < 1)
 		{
-//			rmSetSubCiv(i, "Berbers");
 			rmEchoInfo("subCiv"+i+" is Berbers");
 			unknownVillageID = rmCreateGrouping("berber village "+i, "native af berber village "+rmRandInt(1,5));
 			counterBerb++;
 		}
 		else if(nativeChance < 0.19 && counterSuda < 1)
 		{
-//			rmSetSubCiv(i, "Sudanese");
 			rmEchoInfo("subCiv"+i+" is Sudanese");
 			unknownVillageID = rmCreateGrouping("sudanese village "+i, "native af sudanese village "+rmRandInt(1,5));
 			counterSuda++;
 		}
 		else if(nativeChance < 0.20 && counterYoru < 1)
 		{
-//			rmSetSubCiv(i, "Yoruba");
 			rmEchoInfo("subCiv"+i+" is Yoruba");
 			unknownVillageID = rmCreateGrouping("yoruba village "+i, "native af yoruba village "+rmRandInt(1,5));
 			counterYoru++;
 		}
 		else if(nativeChance < 0.21 && counterAkan < 1)
 		{
-//			rmSetSubCiv(i, "Akan");
 			rmEchoInfo("subCiv"+i+" is Akan");
 			unknownVillageID = rmCreateGrouping("akan village "+i, "native af akan village "+rmRandInt(1,5));
 			counterAkan++;
 		}
 		else if(nativeChance < 0.22 && counterShao < 1)
 		{
-//			rmSetSubCiv(i, "Shaolin");
 			rmEchoInfo("subCiv"+i+" is Shaolin");
 			unknownVillageID = rmCreateGrouping("Shaolin village "+i, "native shaolin temple mongol 0"+rmRandInt(1,5));
 			counterShao++;
@@ -5892,91 +6157,78 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 		}
 		else if(nativeChance < 0.26 && counterUdas < 1)
 		{
-//			rmSetSubCiv(i, "Udasi");
 			rmEchoInfo("subCiv"+i+" is Udasi");
 			unknownVillageID = rmCreateGrouping("Udasi village "+i, "native Udasi village "+rmRandInt(1,5));
 			counterUdas++;
 		}
 		else if(nativeChance < 0.27 && counterBhak < 1)
 		{
-//			rmSetSubCiv(i, "Bhakti");
 			rmEchoInfo("subCiv"+i+" is Bhakti");
 			unknownVillageID = rmCreateGrouping("Bhakti village "+i, "native Bhakti village "+rmRandInt(1,5));
 			counterBhak++;
 		}
 		else if(nativeChance < 0.28 && counterCari < 1)
 		{
-//			rmSetSubCiv(i, "Caribs");
 			rmEchoInfo("subCiv"+i+" is Caribs");
 			unknownVillageID = rmCreateGrouping("carib village "+i, "native carib village "+rmRandInt(1,5));
 			counterCari++;
 		}
 		else if(nativeChance < 0.29 && counterHuro < 1)
 		{
-//			rmSetSubCiv(i, "Huron");
 			rmEchoInfo("subCiv"+i+" is Huron");
 			unknownVillageID = rmCreateGrouping("huron village "+i, "native huron village "+rmRandInt(1,5));
 			counterHuro++;
 		}	
 		else if(nativeChance < 0.30 && counterCher < 1)
 		{
-//			rmSetSubCiv(i, "Cherokee");
 			rmEchoInfo("subCiv"+i+" is Cherokee");
 			unknownVillageID = rmCreateGrouping("cherokee village "+i, "native cherokee village "+rmRandInt(1,5));
 			counterCher++;
 		}
 		else if(nativeChance < 0.31 && counterComa < 1)
 		{	
-//			rmSetSubCiv(i, "Comanche");
 			rmEchoInfo("subCiv"+i+" is Comanche");
 			unknownVillageID = rmCreateGrouping("comanche village "+i, "native comanche village "+rmRandInt(1,5));
 			counterComa++;
 		}
 		else if(nativeChance < 0.32 && counterCree < 1)
 		{
-//			rmSetSubCiv(i, "Cree");
 			rmEchoInfo("subCiv"+i+" is Cree");
 			unknownVillageID = rmCreateGrouping("cree village "+i, "native cree village "+rmRandInt(1,5));
 			counterCree++;
 		}	
 		else if(nativeChance < 0.33 && counterInca < 1)
 		{
-//			rmSetSubCiv(i, "Incas");
 			rmEchoInfo("subCiv"+i+" is Incas");
 			unknownVillageID = rmCreateGrouping("inca village "+i, "native inca village "+rmRandInt(1,5));
 			counterInca++;
 		}	
 		else if(nativeChance < 0.34 && counterMapu < 1)
 		{
-//			rmSetSubCiv(i, "Mapuche");
 			rmEchoInfo("subCiv"+i+" is Mapuche");
 			unknownVillageID = rmCreateGrouping("mapuche village "+i, "native mapuche village "+rmRandInt(1,5));
 			counterMapu++;
 		}	
 		else if(nativeChance < 0.35 && counterKlam < 1)
 		{
-//			rmSetSubCiv(i, "Klamath");
 			rmEchoInfo("subCiv"+i+" is Klamath");
 			unknownVillageID = rmCreateGrouping("klamath village "+i, "native klamath village "+rmRandInt(1,5));
 			counterKlam++;
 		}	
 		else if(nativeChance < 0.36 && counterChey < 1)
 		{
-//			rmSetSubCiv(i, "Cheyenne");
 			rmEchoInfo("subCiv"+i+" is Cheyenne");
 			unknownVillageID = rmCreateGrouping("cheyenne village "+i, "native cheyenne village "+rmRandInt(1,5));
 			counterChey++;
 		}		
 		else if(nativeChance < 0.37 && counterMaya < 1)
 		{
-//			rmSetSubCiv(i, "Maya");
 			rmEchoInfo("subCiv"+i+" is Maya");
 			unknownVillageID = rmCreateGrouping("maya village "+i, "native maya village "+rmRandInt(1,5));
 			counterMaya++;
 		}
 		else if(nativeChance < 0.38 && counterNoot < 1)
 		{
-//			rmSetSubCiv(i, "Nootka");
 			rmEchoInfo("subCiv"+i+" is Nootka");
 			if (rmRandFloat(0,1) <= 0.50)
 				unknownVillageID = rmCreateGrouping("nootka village "+i, "native nootka village "+rmRandInt(1,5));
@@ -5986,21 +6238,18 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 		}	
 		else if(nativeChance < 0.39 && counterNava < 1)
 		{
-//			rmSetSubCiv(i, "Navajo");
 			rmEchoInfo("subCiv"+i+" is Navajo");
 			unknownVillageID = rmCreateGrouping("navajo village "+i, "native navajo village "+rmRandInt(1,5));
 			counterNava++;
 		}	
 		else if(nativeChance < 0.40 && counterSemi < 1)
 		{
-//			rmSetSubCiv(i, "Seminoles");
 			rmEchoInfo("subCiv"+i+" is Seminoles");
 			unknownVillageID = rmCreateGrouping("seminoles village "+i, "native seminole village "+rmRandInt(1,5));
 			counterSemi++;
 		}		
 		else if(nativeChance < 0.41 && counterTupi < 1)
 		{
-//			rmSetSubCiv(i, "Tupi");
 			rmEchoInfo("subCiv"+i+" is Tupi");
 			unknownVillageID = rmCreateGrouping("tupi village "+i, "native tupi village "+rmRandInt(1,5));
 			counterTupi++;
@@ -6128,7 +6377,7 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
    rmSetStatusText("", 0.5);
 
 // ============= Add Ponds or Cliffs =============
-	if(rmRandFloat(0,1) < 0.111 && sagTest==1 && riverExists==-1 && rmGetIsKOTH() == false)
+	if(rmRandFloat(0,1) < 0.111 && riverExists == -1 && rmGetIsKOTH() == false)
 	{
 		rmEchoInfo("ponds exist");
 		int numPonds=rmRandInt(2, 3);
@@ -6162,7 +6411,7 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 			{
 				int smallPondID=rmCreateArea("small pond "+i);
 				rmSetAreaSize(smallPondID, rmAreaTilesToFraction(69), rmAreaTilesToFraction(207));
-				if (rmRandFloat(0,1) <= 0.50 && oceanRing != 1)
+				if (rmRandFloat(0,1) <= 0.50)
 				{
 					rmSetAreaWaterType(smallPondID, pondName);
 					rmSetAreaBaseHeight(smallPondID, 4);
@@ -6197,10 +6446,10 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 	}
 
 	// place flag ponds for neater water flag placement
-	if ((oceanOffCenter == 1 && bayChance == 1) || (oceanMiddle == 1 && oceanChance == 1) || oceanRing == 1)
+	if ((oceanOffCenter == 1 && bayChance == 1) || (oceanMiddle == 1 && oceanChance == 1) || oceanRing == 1 || splitIsland == 1)
 	{
 		int flagPondID1 = rmCreateArea("flag pond 1");
-		rmSetAreaSize(flagPondID1, 0.0015);
+		rmSetAreaSize(flagPondID1, 0.002);
 		rmSetAreaObeyWorldCircleConstraint(flagPondID1, true);
 //		rmSetAreaMix(flagPondID1, "testmix"); 	// for testing
 //		rmSetAreaBaseHeight(flagPondID1, 01);	// for testing
@@ -6221,6 +6470,8 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 			rmAddAreaConstraint(flagPondID1, stayInLake);
 			rmAddAreaConstraint(flagPondID1, stayNor);
 		}
+		if (splitIsland == 1)
+			rmAddAreaConstraint(flagPondID1, stayCenter);
 		rmSetAreaWarnFailure(flagPondID1, false);
 		rmBuildArea(flagPondID1);		
 
@@ -6246,6 +6497,8 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 			rmAddAreaConstraint(flagPondID2, stayInLake);
 			rmAddAreaConstraint(flagPondID2,stayEst);
 		}
+		if (splitIsland == 1)
+			rmAddAreaConstraint(flagPondID2, stayCenter);
 		rmSetAreaWarnFailure(flagPondID2, false);
 		rmBuildArea(flagPondID2);		
 
@@ -6271,6 +6524,8 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 			rmAddAreaConstraint(flagPondID3, stayInLake);
 			rmAddAreaConstraint(flagPondID3,staySud);
 		}
+		if (splitIsland == 1)
+			rmAddAreaConstraint(flagPondID3, stayCenter);
 		rmSetAreaWarnFailure(flagPondID3, false);
 		rmBuildArea(flagPondID3);		
 
@@ -6296,6 +6551,8 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 			rmAddAreaConstraint(flagPondID4, stayInLake);
 			rmAddAreaConstraint(flagPondID4,stayWst);
 		}
+		if (splitIsland == 1)
+			rmAddAreaConstraint(flagPondID4, stayCenter);
 		rmSetAreaWarnFailure(flagPondID4, false);
 		rmBuildArea(flagPondID4);		
 	}
@@ -6510,7 +6767,7 @@ int whichBerry = rmRandInt(1,100);
 	   rmAddObjectDefConstraint(farDeerID, stayNearWater);
 	   rmAddObjectDefConstraint(farDeerID, avoidWater);
    }
-	else
+	else if (splitIsland != 1)
 	   rmAddObjectDefConstraint(farDeerID, stayNearEdge);
    rmAddObjectDefConstraint(farDeerID, avoidCliffsShort);
    rmAddObjectDefConstraint(farDeerID, avoidEdge);
@@ -6528,7 +6785,7 @@ int whichBerry = rmRandInt(1,100);
    rmAddObjectDefConstraint(farDeer2ID, avoidForestMin);
    rmAddObjectDefConstraint(farDeer2ID, avoidPond);
    rmAddObjectDefConstraint(farDeer2ID, avoidPlayersShort);
-   if (oceanRing == 1)
+   if (oceanRing == 1 || splitIsland == 1)
    {
 	   rmAddObjectDefConstraint(farDeer2ID, stayNearWater);
 	   rmAddObjectDefConstraint(farDeer2ID, avoidWaterShort);
@@ -6571,7 +6828,7 @@ int whichBerry = rmRandInt(1,100);
 	rmAddObjectDefConstraint(startSilver3ID, avoidGoldMin);
 	rmAddObjectDefConstraint(startSilver3ID, avoidCliffsShort);
 	rmAddObjectDefConstraint(startSilver3ID, avoidTradeRoute);
-   if (oceanRing == 1)
+   if (oceanRing == 1 || splitIsland == 1)
    {
 	   rmAddObjectDefConstraint(startSilver3ID, stayNearWater);
 	   rmAddObjectDefConstraint(startSilver3ID, avoidWater);
@@ -6593,7 +6850,7 @@ int whichBerry = rmRandInt(1,100);
 	int nugget1= rmCreateObjectDef("nugget starter"); 
 	rmAddObjectDefItem(nugget1, "Nugget", 1, 0.0);
 		rmSetNuggetDifficulty(1, 1);
-	if (oceanRing == 1)
+   if (oceanRing == 1 || splitIsland == 1)
 		rmAddObjectDefConstraint(nugget1, avoidWaterShort);
 	if (floodedLand != 1)
 		rmAddObjectDefConstraint(nugget1, shortAvoidImpassableLand);
@@ -6608,7 +6865,7 @@ int whichBerry = rmRandInt(1,100);
 	int nugget2= rmCreateObjectDef("nugget medium"); 
 	rmAddObjectDefItem(nugget2, "Nugget", 1, 0.0);
 	rmSetNuggetDifficulty(2, 2);
-	if (oceanRing == 1)
+   if (oceanRing == 1 || splitIsland == 1)
 		rmAddObjectDefConstraint(nugget2, avoidWaterShort);
 	if (floodedLand != 1)
 		rmAddObjectDefConstraint(nugget2, shortAvoidImpassableLand);
@@ -6633,6 +6890,8 @@ int whichBerry = rmRandInt(1,100);
 		if (rmRandFloat(0,1) <= 0.005)
 			everyoneGetsAWagon = 69;		// jeff wagons (1 food age 1, 1 wood age 3, 1 coin age 4, all 3 age 5)
 		if (oceanRing == 1 && rmRandFloat(0,1) <= 0.25)
+			everyoneGetsAWagon = 1001;
+		if (splitIsland == 1 && rmRandFloat(0,1) <= 0.25)
 			everyoneGetsAWagon = 1001;
 //		if (oceanOffCenter == 1 && rmRandFloat(0,1) <= 0.25 && bayChance == 1)
 		if (rmRandFloat(0,1) <= 0.25 && bayChance == 1 && frozenLake != 1)
@@ -6913,19 +7172,13 @@ int whichBerry = rmRandInt(1,100);
 	rmAddObjectDefConstraint(waterFlagID, fishLand);
 	rmAddObjectDefConstraint(waterFlagID, avoidAllFar);
 	rmAddObjectDefConstraint(waterFlagID, avoidPiratesShort);
-//	if (oceanRing == 1)
-//		rmAddObjectDefConstraint(waterFlagID, stayNearEdge);
-//	if (oceanOffCenter == 1)
-//		rmAddObjectDefConstraint(waterFlagID, stayInBay);
 
 	// Define a parm for placing water flags on water maps
-//	if (oceanOffCenter == 1 && bayChance == 1)
 	if (bayChance == 1 && frozenLake != 1)
 		placeWaterFlag = 1;
-//	if (oceanMiddle == 1 && oceanChance == 1)
 	if (oceanChance == 1 && frozenLake != 1)
 		placeWaterFlag = 1;
-	if (oceanRing == 1)
+	if (oceanRing == 1 || splitIsland == 1)
 		placeWaterFlag = 1;
 
 	// Now place all these definitions
@@ -8063,6 +8316,8 @@ int whichBerry = rmRandInt(1,100);
 		silverCount = cNumberNonGaiaPlayers*5;
 	if (oceanRing == 1)
 		silverCount = cNumberNonGaiaPlayers*5;
+	if (splitIsland == 1)
+		silverCount = cNumberNonGaiaPlayers*3.5;
 	if (rmGetIsTreaty() == true)
 		silverCount = cNumberNonGaiaPlayers*3.5;
 	rmEchoInfo("silver count = "+silverCount);
@@ -8137,9 +8392,15 @@ int whichBerry = rmRandInt(1,100);
       rmAddObjectDefConstraint(silverID, avoidTradeRouteSocketShort);
       rmAddObjectDefConstraint(silverID, avoidTradeRoute);
       rmAddObjectDefConstraint(silverID, avoidEdge);
-	  if (oceanRing == 1)
-	      rmAddObjectDefConstraint(silverID, avoidWaterShort);
-	  rmPlaceObjectDefAtLoc(silverID, 0, 0.5, 0.5, silverCount);
+	if (oceanRing == 1 || splitIsland == 1)
+	    rmAddObjectDefConstraint(silverID, avoidWaterShort);
+	if (splitIsland == 1)
+	{
+		rmPlaceObjectDefInArea(silverID, 0, rmAreaID("split island 1"), silverCount/2);
+		rmPlaceObjectDefInArea(silverID, 0, rmAreaID("split island 2"), silverCount/2);
+	}
+	else
+		rmPlaceObjectDefAtLoc(silverID, 0, 0.5, 0.5, silverCount);
       if (rmGetIsTreaty() == true)
 	     rmPlaceObjectDefAtLoc(silverID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers);
 
@@ -8200,7 +8461,7 @@ int whichBerry = rmRandInt(1,100);
 	   rmAddObjectDefConstraint(bisonID, avoidHuntable);
    rmAddObjectDefConstraint(bisonID, avoidEdge);
    rmAddObjectDefConstraint(bisonID, avoidForestMin);
-	if (oceanRing == 1)
+   if (oceanRing == 1 || splitIsland == 1)
 	    rmAddObjectDefConstraint(bisonID, avoidWater);
 	if (frozenLake != 1)
 	{
@@ -8216,7 +8477,13 @@ int whichBerry = rmRandInt(1,100);
    else
    {
    		rmAddObjectDefConstraint(bisonID, avoidPlayers);
-   		rmPlaceObjectDefAtLoc(bisonID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers*2);
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(bisonID, 0, rmAreaID("split island 1"), 1+cNumberNonGaiaPlayers);
+			rmPlaceObjectDefInArea(bisonID, 0, rmAreaID("split island 2"), 1+cNumberNonGaiaPlayers);
+		}
+		else
+ 	   		rmPlaceObjectDefAtLoc(bisonID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers*2);
    }
    if (rmGetIsTreaty() == true)
    		rmPlaceObjectDefAtLoc(bisonID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
@@ -8244,7 +8511,7 @@ int whichBerry = rmRandInt(1,100);
    		rmAddObjectDefConstraint(pronghornID, avoidFood2);
    }
    rmAddObjectDefConstraint(pronghornID, avoidGoldMin);
-	if (oceanRing == 1)
+   if (oceanRing == 1 || splitIsland == 1)
 	    rmAddObjectDefConstraint(pronghornID, avoidWaterShort);
    if (trollMap == 1)
 	   rmAddObjectDefConstraint(pronghornID, avoidHuntable);
@@ -8259,7 +8526,13 @@ int whichBerry = rmRandInt(1,100);
    if (rmGetNomadStart() == false)
    {
    		rmAddObjectDefConstraint(pronghornID, avoidPlayersFar1);
-   		rmPlaceObjectDefAtLoc(pronghornID, 0, 0.5, 0.5, 2.5*cNumberNonGaiaPlayers);
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(pronghornID, 0, rmAreaID("split island 1"), 1.25*cNumberNonGaiaPlayers);
+			rmPlaceObjectDefInArea(pronghornID, 0, rmAreaID("split island 2"), 1.25*cNumberNonGaiaPlayers);
+		}
+		else
+ 			rmPlaceObjectDefAtLoc(pronghornID, 0, 0.5, 0.5, 2.5*cNumberNonGaiaPlayers);
    }
 	else
    {
@@ -8281,7 +8554,7 @@ int whichBerry = rmRandInt(1,100);
 	rmSetObjectDefMaxDistance(sheepID, rmXFractionToMeters(0.5));
 	rmAddObjectDefConstraint(sheepID, avoidFood);
 	rmAddObjectDefConstraint(sheepID, avoidGoldMin);
-	if (oceanRing == 1)
+   if (oceanRing == 1 || splitIsland == 1)
 	    rmAddObjectDefConstraint(sheepID, avoidWaterShort);
 	if (frozenLake != 1)
 	{
@@ -8290,7 +8563,7 @@ int whichBerry = rmRandInt(1,100);
 	}
 	rmAddObjectDefConstraint(sheepID, avoidPiratesShort);
 	rmAddObjectDefConstraint(sheepID, avoidAll);
-	if(oceanRing == 1)
+	if (splitIsland == 1)
 		rmAddObjectDefConstraint(sheepID, avoidPlayersFar1);
 	else
 		rmAddObjectDefConstraint(sheepID, avoidPlayersFar);
@@ -8298,7 +8571,13 @@ int whichBerry = rmRandInt(1,100);
 		rmAddObjectDefConstraint(sheepID, shortAvoidImpassableLand);
 	if(rmRandFloat(0,1) > 0.20)
 	{
-		rmPlaceObjectDefAtLoc(sheepID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*2);
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(sheepID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers);
+			rmPlaceObjectDefInArea(sheepID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers);
+		}
+		else
+ 	   		rmPlaceObjectDefAtLoc(sheepID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*2);
    		if (rmGetIsTreaty() == true)
 			rmPlaceObjectDefAtLoc(sheepID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
 	}
@@ -8331,7 +8610,15 @@ int nuggetHuariID= rmCreateObjectDef("huari stronghold nuggz");
 	rmAddObjectDefConstraint(nuggetHuariID, avoidPiratesShort);
 	rmAddObjectDefConstraint(nuggetHuariID, avoidAll);
 	if (andesMap == 1 && someRNG <= 0.05)
-	  	rmPlaceObjectDefAtLoc(nuggetHuariID, 0, 0.5, 0.5, 4);
+	{
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(nuggetHuariID, 0, rmAreaID("split island 1"), 2);
+			rmPlaceObjectDefInArea(nuggetHuariID, 0, rmAreaID("split island 2"), 2);
+		}
+		else
+ 		  	rmPlaceObjectDefAtLoc(nuggetHuariID, 0, 0.5, 0.5, 4);
+	}
 
 int nuggetProspectorID= rmCreateObjectDef("unknown prospector nuggets"); 
 	if (amazonMap == 1 && rmRandFloat(0,1) <= 0.50)
@@ -8358,7 +8645,15 @@ int nuggetProspectorID= rmCreateObjectDef("unknown prospector nuggets");
 			rmSetNuggetDifficulty(12345,12346);
 	}
 	if (someRNG <= 0.05 || trollMap == 1)
-	  	rmPlaceObjectDefAtLoc(nuggetProspectorID, 0, 0.5, 0.5, 1);
+	{
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(nuggetProspectorID, 0, rmAreaID("split island 1"), 1);
+			rmPlaceObjectDefInArea(nuggetProspectorID, 0, rmAreaID("split island 2"), 1);
+		}
+		else
+ 		  	rmPlaceObjectDefAtLoc(nuggetProspectorID, 0, 0.5, 0.5, 1);
+	}
 
 int nuggetUnknownID= rmCreateObjectDef("unknown special nuggets"); 
 	rmAddObjectDefItem(nuggetUnknownID, "Nugget", 1, 0.0);
@@ -8389,7 +8684,13 @@ int nuggetUnknownID= rmCreateObjectDef("unknown special nuggets");
 		else 
 			rmSetNuggetDifficulty(13,14);
 	}
-  	rmPlaceObjectDefAtLoc(nuggetUnknownID, 0, 0.5, 0.5, 3+cNumberNonGaiaPlayers*2);
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(nuggetUnknownID, 0, rmAreaID("split island 1"), 3+cNumberNonGaiaPlayers);
+			rmPlaceObjectDefInArea(nuggetUnknownID, 0, rmAreaID("split island 2"), 3+cNumberNonGaiaPlayers);
+		}
+		else
+		  	rmPlaceObjectDefAtLoc(nuggetUnknownID, 0, 0.5, 0.5, 3+cNumberNonGaiaPlayers*2);
 	if (rmGetIsTreaty() == true)
 	  	rmPlaceObjectDefAtLoc(nuggetUnknownID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
 
@@ -8410,7 +8711,15 @@ int nuggetHMID= rmCreateObjectDef("HM nuggz");
 	rmAddObjectDefConstraint(nuggetHMID, avoidAll);
 	rmSetNuggetDifficulty(104,104);
     if (euMap == 1 && cNumberNonGaiaPlayers > 2 && rmRandFloat(0,1) <= 0.05 && rmGetIsTreaty() == false)
-    	rmPlaceObjectDefAtLoc(nuggetHMID, 0, 0.5, 0.5, 2*cNumberNonGaiaPlayers);
+	{
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(nuggetHMID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers);
+			rmPlaceObjectDefInArea(nuggetHMID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers);
+		}
+		else
+	    	rmPlaceObjectDefAtLoc(nuggetHMID, 0, 0.5, 0.5, 2*cNumberNonGaiaPlayers);
+	}
 
 int nuggetAf12ID= rmCreateObjectDef("african nugget12"); 
 	rmAddObjectDefItem(nuggetAf12ID, "Nugget", 1, 0.0);
@@ -8429,7 +8738,15 @@ int nuggetAf12ID= rmCreateObjectDef("african nugget12");
 	rmAddObjectDefConstraint(nuggetAf12ID, avoidAll);
 	rmSetNuggetDifficulty(12,12);
     if (trollMap == 1 && cNumberNonGaiaPlayers > 2 && rmGetIsFFA() == false)
-    	rmPlaceObjectDefAtLoc(nuggetAf12ID, 0, 0.5, 0.5, 1);
+	{
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(nuggetAf12ID, 0, rmAreaID("split island 1"), 1);
+			rmPlaceObjectDefInArea(nuggetAf12ID, 0, rmAreaID("split island 2"), 1);
+		}
+		else
+	    	rmPlaceObjectDefAtLoc(nuggetAf12ID, 0, 0.5, 0.5, 1);
+	}
 
 int houseNuggetID= rmCreateObjectDef("house nugget");
 	rmAddObjectDefItem(houseNuggetID, "Nugget", 1, 0.0);
@@ -8448,7 +8765,15 @@ int houseNuggetID= rmCreateObjectDef("house nugget");
 	rmAddObjectDefConstraint(houseNuggetID, avoidAll);
 	rmSetNuggetDifficulty(121, 121);
 	if ((saguenayMap == 1 && someRNG <= 0.5) || (euMap == 1 && someRNG <= 0.5) || (asianMap == 1 && someRNG <= 0.5))
-		rmPlaceObjectDefAtLoc(houseNuggetID, 0, 0.5, 0.5, 1+cNumberNonGaiaPlayers/2);
+	{
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(houseNuggetID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/2);
+			rmPlaceObjectDefInArea(houseNuggetID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/2);
+		}
+		else
+			rmPlaceObjectDefAtLoc(houseNuggetID, 0, 0.5, 0.5, 1+cNumberNonGaiaPlayers/2);
+	}
 
 int crazyNugget1ID= rmCreateObjectDef("crazy nugget 1"); 
 	rmAddObjectDefItem(crazyNugget1ID, "Nugget", 1, 0.0);
@@ -8478,7 +8803,15 @@ int crazyNugget1ID= rmCreateObjectDef("crazy nugget 1");
     else
 		rmSetNuggetDifficulty(444, 444);
 	if (africanMap == 1 || trollMap == 1)
-		rmPlaceObjectDefAtLoc(crazyNugget1ID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers);
+	{
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(crazyNugget1ID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/2);
+			rmPlaceObjectDefInArea(crazyNugget1ID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/2);
+		}
+		else
+			rmPlaceObjectDefAtLoc(crazyNugget1ID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers);
+	}
 
 int crazyNuggetBorneoID= rmCreateObjectDef("crazy borneo nuggets"); 
 	rmAddObjectDefItem(crazyNuggetBorneoID, "Nugget", 1, 0.0);
@@ -8504,7 +8837,15 @@ int crazyNuggetBorneoID= rmCreateObjectDef("crazy borneo nuggets");
 	else
 		rmSetNuggetDifficulty(69, 69);
 	if (borneoMap == 1 || oceaniaMap == 1)
-		rmPlaceObjectDefAtLoc(crazyNuggetBorneoID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers);
+	{
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(crazyNuggetBorneoID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/2);
+			rmPlaceObjectDefInArea(crazyNuggetBorneoID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/2);
+		}
+		else
+			rmPlaceObjectDefAtLoc(crazyNuggetBorneoID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers);
+	}
 
 int crazyNuggetEuroID= rmCreateObjectDef("crazy euro nuggets"); 
 	rmAddObjectDefItem(crazyNuggetEuroID, "Nugget", 1, 0.0);
@@ -8528,7 +8869,15 @@ int crazyNuggetEuroID= rmCreateObjectDef("crazy euro nuggets");
 	else
 		rmSetNuggetDifficulty(69, 69);
 	if (euMap == 1)
-		rmPlaceObjectDefAtLoc(crazyNuggetEuroID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers);
+	{
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(crazyNuggetEuroID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/2);
+			rmPlaceObjectDefInArea(crazyNuggetEuroID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/2);
+		}
+		else
+			rmPlaceObjectDefAtLoc(crazyNuggetEuroID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers);
+	}
 
 int crazyNugget2ID= rmCreateObjectDef("crazy nugget 2"); 
 	rmAddObjectDefItem(crazyNugget2ID, "Nugget", 1, 0.0);
@@ -8550,7 +8899,15 @@ int crazyNugget2ID= rmCreateObjectDef("crazy nugget 2");
 	else 
 		rmSetNuggetDifficulty(667, 671);
 	if (africanMap == 1 || trollMap == 1)
-		rmPlaceObjectDefAtLoc(crazyNugget2ID, 0, 0.5, 0.5, 1+cNumberNonGaiaPlayers/2);
+	{
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(crazyNugget2ID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/2);
+			rmPlaceObjectDefInArea(crazyNugget2ID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/2);
+		}
+		else
+			rmPlaceObjectDefAtLoc(crazyNugget2ID, 0, 0.5, 0.5, 1+cNumberNonGaiaPlayers/2);
+	}
 	
 	int nuggetAm12ID= rmCreateObjectDef("american nugget12"); 
 	rmAddObjectDefItem(nuggetAm12ID, "Nugget", 1, 0.0);
@@ -8571,7 +8928,15 @@ int crazyNugget2ID= rmCreateObjectDef("crazy nugget 2");
     if (saguenayMap == 1 || amazonMap == 1 || sonoraMap == 1 || rockiesMap == 1 || caribbeanMap == 1 || carolinaMap == 1 || andesMap == 1 || californiaMap == 1)
 	{
 		if (cNumberNonGaiaPlayers > 2 && rmGetIsFFA() == false)
-	    	rmPlaceObjectDefAtLoc(nuggetAm12ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
+		{
+			if (splitIsland == 1)
+			{
+				rmPlaceObjectDefInArea(nuggetAm12ID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/2);
+				rmPlaceObjectDefInArea(nuggetAm12ID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/2);
+			}
+			else
+		    	rmPlaceObjectDefAtLoc(nuggetAm12ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
+		}
 	}
 
 int nugget12ID= rmCreateObjectDef("asian nugget12"); 
@@ -8593,7 +8958,15 @@ int nugget12ID= rmCreateObjectDef("asian nugget12");
     if (japanMap == 1 || dekkanMap == 1 || (borneoMap == 1 && asianMap == 1) || yellowRiverMap == 1 || himalMap == 1)
 	{
 		if (cNumberNonGaiaPlayers > 2 && rmGetIsFFA() == false)
-	    	rmPlaceObjectDefAtLoc(nugget12ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
+		{
+			if (splitIsland == 1)
+			{
+				rmPlaceObjectDefInArea(nugget12ID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/2);
+				rmPlaceObjectDefInArea(nugget12ID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/2);
+			}
+			else
+		    	rmPlaceObjectDefAtLoc(nugget12ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
+		}
 	}
 
 int nuggetDuberID= rmCreateObjectDef("duber nuggz"); 
@@ -8613,7 +8986,15 @@ int nuggetDuberID= rmCreateObjectDef("duber nuggz");
 	rmAddObjectDefConstraint(nuggetDuberID, avoidAll);
 	rmSetNuggetDifficulty(96,96);
     if (himalMap == 1)
-    	rmPlaceObjectDefAtLoc(nuggetDuberID, 0, 0.5, 0.5, 2*cNumberNonGaiaPlayers);
+	{
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(nuggetDuberID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers);
+			rmPlaceObjectDefInArea(nuggetDuberID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers);
+		}
+		else
+	    	rmPlaceObjectDefAtLoc(nuggetDuberID, 0, 0.5, 0.5, 2*cNumberNonGaiaPlayers);
+	}
 
 int nugget4ID= rmCreateObjectDef("map nugget4"); 
 	rmAddObjectDefItem(nugget4ID, "Nugget", 1, 0.0);
@@ -8632,7 +9013,15 @@ int nugget4ID= rmCreateObjectDef("map nugget4");
 	rmAddObjectDefConstraint(nugget4ID, avoidAll);
 	rmSetNuggetDifficulty(4,4);
 	if (cNumberNonGaiaPlayers > 2 && rmGetIsTreaty() == false)
-		rmPlaceObjectDefAtLoc(nugget4ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
+	{
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(nugget4ID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/2);
+			rmPlaceObjectDefInArea(nugget4ID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/2);
+		}
+		else
+			rmPlaceObjectDefAtLoc(nugget4ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
+	}
 	
 int nugget3ID= rmCreateObjectDef("map nugget3"); 
 	rmAddObjectDefItem(nugget3ID, "Nugget", 1, 0.0);
@@ -8650,7 +9039,13 @@ int nugget3ID= rmCreateObjectDef("map nugget3");
 	rmAddObjectDefConstraint(nugget3ID, avoidPiratesShort);
 	rmAddObjectDefConstraint(nugget3ID, avoidAll);
 	rmSetNuggetDifficulty(3,3);
-	rmPlaceObjectDefAtLoc(nugget3ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
+	if (splitIsland == 1)
+	{
+		rmPlaceObjectDefInArea(nugget3ID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/2);
+		rmPlaceObjectDefInArea(nugget3ID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/2);
+	}
+	else
+		rmPlaceObjectDefAtLoc(nugget3ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
 	if (rmGetIsTreaty() == true)
 		rmPlaceObjectDefAtLoc(nugget3ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
 	
@@ -8658,7 +9053,7 @@ int nugget2ID= rmCreateObjectDef("map nugget2");
 	rmAddObjectDefItem(nugget2ID, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(nugget2ID, 0.15);
 	rmSetObjectDefMaxDistance(nugget2ID, rmXFractionToMeters(0.45));
-	if (oceanRing == 1)
+   if (oceanRing == 1 || splitIsland == 1)
 	    rmAddObjectDefConstraint(nugget2ID, avoidWaterShort);
 	if (floodedLand != 1)
 		rmAddObjectDefConstraint(nugget2ID, shortAvoidImpassableLand);
@@ -8672,7 +9067,13 @@ int nugget2ID= rmCreateObjectDef("map nugget2");
 	rmAddObjectDefConstraint(nugget2ID, avoidPiratesShort);
 	rmAddObjectDefConstraint(nugget2ID, avoidAll);
 	rmSetNuggetDifficulty(2,2);
-	rmPlaceObjectDefAtLoc(nugget2ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
+	if (splitIsland == 1)
+	{
+		rmPlaceObjectDefInArea(nugget2ID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/2);
+		rmPlaceObjectDefInArea(nugget2ID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/2);
+	}
+	else
+		rmPlaceObjectDefAtLoc(nugget2ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
 	if (rmGetIsTreaty() == true)
 		rmPlaceObjectDefAtLoc(nugget2ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
 	
@@ -8680,7 +9081,7 @@ int nuggetID= rmCreateObjectDef("map nugget");
 	rmAddObjectDefItem(nuggetID, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(nuggetID, 0.25);
 	rmSetObjectDefMaxDistance(nuggetID, rmXFractionToMeters(0.48));
-	if (oceanRing == 1)
+   if (oceanRing == 1 || splitIsland == 1)
 	    rmAddObjectDefConstraint(nuggetID, avoidWaterShort);
 	if (floodedLand != 1)
 		rmAddObjectDefConstraint(nuggetID, shortAvoidImpassableLand);
@@ -8694,7 +9095,13 @@ int nuggetID= rmCreateObjectDef("map nugget");
 	rmAddObjectDefConstraint(nuggetID, avoidPond);
 	rmAddObjectDefConstraint(nuggetID, avoidGoldMin);
 	rmSetNuggetDifficulty(1,1);
-	rmPlaceObjectDefAtLoc(nuggetID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*3);
+	if (splitIsland == 1)
+	{
+		rmPlaceObjectDefInArea(nuggetID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers*1.5);
+		rmPlaceObjectDefInArea(nuggetID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers*1.5);
+	}
+	else
+		rmPlaceObjectDefAtLoc(nuggetID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*3);
 	if (rmGetIsTreaty() == true)
 		rmPlaceObjectDefAtLoc(nuggetID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*3);
 	
@@ -8707,8 +9114,11 @@ int nuggetID= rmCreateObjectDef("map nugget");
 		else
 			rmAddObjectDefItem(fishID, fishName, 2, 5.0);
 		rmSetObjectDefMinDistance(fishID, 0.0);
-		rmSetObjectDefMaxDistance(fishID, rmXFractionToMeters(0.5));
-		if (oceanRing == 1)
+		if (splitIsland == 1)
+			rmSetObjectDefMaxDistance(fishID, rmXFractionToMeters(0.45));
+		else
+			rmSetObjectDefMaxDistance(fishID, rmXFractionToMeters(0.50));
+		if (oceanRing == 1 || splitIsland == 1)
 			rmAddObjectDefConstraint(fishID, fishVsFishFar);
 		else
 			rmAddObjectDefConstraint(fishID, fishVsFishID);
@@ -8723,14 +9133,17 @@ int nuggetID= rmCreateObjectDef("map nugget");
 			rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, cNumberNonGaiaPlayers + 6);
 		if (oceanOffCenter == 1 && riverExists == 1)
 			rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, cNumberNonGaiaPlayers + 6);
-		if (oceanRing == 1)
+		if (oceanRing == 1 || splitIsland == 1)
 			rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 3*cNumberNonGaiaPlayers + 10);
 
 		int whaleID=rmCreateObjectDef("whale");
 		rmAddObjectDefItem(whaleID, whaleName, 1, 0.0);
 		rmSetObjectDefMinDistance(whaleID, 0.0);
-		rmSetObjectDefMaxDistance(whaleID, rmXFractionToMeters(0.5));
-		if (oceanRing == 1)
+		if (splitIsland == 1)
+			rmSetObjectDefMaxDistance(whaleID, rmXFractionToMeters(0.43));
+		else
+			rmSetObjectDefMaxDistance(whaleID, rmXFractionToMeters(0.50));
+		if (oceanRing == 1 || splitIsland == 1)
 			rmAddObjectDefConstraint(whaleID, whaleVsWhaleFar);
 		else
 			rmAddObjectDefConstraint(whaleID, whaleVsWhaleID);
@@ -8741,9 +9154,9 @@ int nuggetID= rmCreateObjectDef("map nugget");
 			rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, cNumberNonGaiaPlayers + 1);
 		if (oceanRing == 1 && oceanMiddle == 1)
 			rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, 3);
-		if (oceanRing == 1)
+		if (oceanRing == 1 || splitIsland == 1)
 			rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, 3);
-		if (oceanRing == 1)
+		if (oceanRing == 1 || splitIsland == 1)
 			rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
 	}
 
@@ -8928,7 +9341,7 @@ int nuggetID= rmCreateObjectDef("map nugget");
 			{
 				bhaktiAlliance = 1;
 			}
-			else if (rmRandFloat(0,1) <= 0.0526 && jesuitAlliance != 1)
+			else if (rmRandFloat(0,1) <= 0.0526 && jesuitAlliance != 1 && counterJesu < 0)
 			{
 				jesuitAlliance = 1;
 			}
@@ -8936,7 +9349,7 @@ int nuggetID= rmCreateObjectDef("map nugget");
 			{
 				shaolinAlliance = 1;
 			}
-			else if (rmRandFloat(0,1) <= 0.0588 && sufiAlliance != 1)
+			else if (rmRandFloat(0,1) <= 0.0588 && sufiAlliance != 1 && counterSufi < 0)
 			{
 				sufiAlliance = 1;
 			}
@@ -8944,7 +9357,7 @@ int nuggetID= rmCreateObjectDef("map nugget");
 			{
 				udasiAlliance = 1;
 			}
-			else if (rmRandFloat(0,1) <= 0.0667 && zenAlliance != 1)
+			else if (rmRandFloat(0,1) <= 0.0667 && zenAlliance != 1 && counterZen < 0)
 			{
 				zenAlliance = 1;
 			}
@@ -8976,7 +9389,7 @@ int nuggetID= rmCreateObjectDef("map nugget");
 			{
 				yorubaAlliance = 1;
 			}
-			else if (rmRandFloat(0,1) <= 0.1429 && bourbonAlliance != 1)
+			else if (rmRandFloat(0,1) <= 0.1429 && bourbonAlliance != 1 && counterBour < 0)
 			{
 				bourbonAlliance = 1;
 			}
@@ -12469,6 +12882,14 @@ int nuggetID= rmCreateObjectDef("map nugget");
 	rmAddTriggerEffect("ZP Native AutoSetup: Jewish");
 	rmAddTriggerEffect("ZP Native AutoSetup: Maltese");
 	rmAddTriggerEffect("ZP Native AutoSetup: Western");
+	if (bourbonAlliance != 1) {
+		for(i=1; <= cNumberNonGaiaPlayers) {
+			rmAddTriggerEffect("Set Tech Status");
+			rmSetTriggerEffectParamInt("TechID", rmGetTechID("zpBonusBourbon"), false);
+			rmSetTriggerEffectParamInt("PlayerID", i);
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+	}
 
 	// Activate a specific type of pirate tiggers
 	if (pirateType == 1){

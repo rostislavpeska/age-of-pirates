@@ -1,0 +1,268 @@
+<protounitsounddef>
+  <protounit name="deEmbassyTravois">
+    <soundtype name="Select">
+      <techlogic>
+        <choice name="none">
+          <soundset name="DEIncaVillagerMaleSelect">
+          </soundset>
+        </choice>
+        <choice name="derevolutionusa">
+          <soundset name="NootkaClubmanSelect">
+          </soundset>
+        </choice>
+        <choice name="derevolutioncanadabritish">
+          <soundset name="NootkaClubmanSelect">
+          </soundset>
+        </choice>
+        <choice name="derevolutioncanadafrench">
+          <soundset name="NootkaClubmanSelect">
+          </soundset>
+        </choice>
+        <choice name="derevolutionmexico">
+          <soundset name="AztecVillagerMaleSelect">
+          </soundset>
+        </choice>
+        <choice name="deage0americans">
+          <soundset name="NootkaClubmanSelect">
+          </soundset>
+        </choice>
+        <choice name="deage0hausa">
+          <soundset name="DEHausaVMSelect">
+          </soundset>
+        </choice>
+        <choice name="deage0ethiopian">
+          <soundset name="DEEthiopianVillagerMaleSelect">
+          </soundset>
+        </choice>
+        <choice name="deage0mexicans">
+          <soundset name="AztecVillagerMaleSelect">
+          </soundset>
+        </choice>
+        <choice name="dehcrevmxmayansupporters">
+          <soundset name="MayaHolcanSpearmanSelect">
+          </soundset>
+        </choice>
+        <choice name="dehcancienregime">
+          <soundset name="FrenchSettlerMaleSelect">
+          </soundset>
+        </choice>
+        <choice name="dehcprinceelectors">
+          <soundset name="GermanSettlerMaleSelect">
+          </soundset>
+        </choice>
+        <choice name="derevolutionindonesia">
+          <soundset name="DutchSettlerMaleSelect">
+          </soundset>
+        </choice>
+        <choice name="zpNativeGrinchEmbassy">
+          <soundset name="BritishSettlerMaleSelect">
+          </soundset>
+        </choice>
+      </techlogic>
+    </soundtype>
+    <soundtype name="Grunt">
+      <soundset name="GenericMaleGrunt">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="GenericMaleDeath">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="SettlerBirth">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <techlogic>
+        <choice name="none">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="DEIncaVillagerMaleAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+            </choice>
+            <choice name="build">
+              <soundset name="DEIncaVillagerMaleBuild">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="derevolutionusa">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="NootkaClubmanAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+            </choice>
+            <choice name="build">
+              <soundset name="NootkaClubmanAcknowledge">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="derevolutioncanadabritish">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="NootkaClubmanAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+            </choice>
+            <choice name="build">
+              <soundset name="NootkaClubmanAcknowledge">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="derevolutioncanadafrench">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="NootkaClubmanAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+            </choice>
+            <choice name="build">
+              <soundset name="NootkaClubmanAcknowledge">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="derevolutionmexico">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="AztecVillagerMaleAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+            </choice>
+            <choice name="build">
+              <soundset name="AztecVillagerMaleBuild">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="deage0americans">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="NootkaClubmanAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+            </choice>
+            <choice name="build">
+              <soundset name="NootkaClubmanAcknowledge">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="deage0hausa">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="DEHausaVMAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+            </choice>
+            <choice name="build">
+              <soundset name="DEHausaVMBuild">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="deage0ethiopian">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="DEEthiopianVillagerMaleAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+            </choice>
+            <choice name="build">
+              <soundset name="DEEthiopianVillagerMaleBuild">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="deage0mexicans">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="AztecVillagerMaleAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="build">
+              <soundset name="AztecVillagerMaleBuild">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="dehcrevmxmayansupporters">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="MayaHolcanSpearmanAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="build">
+              <soundset name="MayaHolcanSpearmanAcknowledge">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="dehcancienregime">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="FrenchSettlerMaleAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="build">
+              <soundset name="FrenchSettlerMaleBuild">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="dehcprinceelectors">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="GermanSettlerMaleAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="build">
+              <soundset name="GermanSettlerMaleBuild">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="derevolutionindonesia">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="PortugueseSettlerMaleAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+            </choice>
+            <choice name="build">
+              <soundset name="PortugueseSettlerMaleAcknowledge">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="zpNativeGrinchEmbassy">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="BritishSettlerMaleAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+            </choice>
+            <choice name="build">
+              <soundset name="BritishSettlerMaleAcknowledge">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+      </techlogic>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

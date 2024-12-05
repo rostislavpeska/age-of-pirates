@@ -372,9 +372,9 @@ void main(void)
 
 	int menagerieRoad = rmCreateArea("menagerieRoad");
     rmSetAreaSize(menagerieRoad , 0.002, 0.002);
-    rmSetAreaLocation(menagerieRoad , 0.51, mapCenter+rmZTilesToFraction(27));	
+    rmSetAreaLocation(menagerieRoad , 0.515, mapCenter+rmZTilesToFraction(27));	
 	rmSetAreaTerrainType(menagerieRoad, "Texas\Path_Blend");	
-	rmAddAreaInfluenceSegment(menagerieRoad,0.51, mapCenter+rmZTilesToFraction(27), 0.51, mapCenter+rmZTilesToFraction(65));
+	rmAddAreaInfluenceSegment(menagerieRoad,0.515, mapCenter+rmZTilesToFraction(27), 0.515, mapCenter+rmZTilesToFraction(65));
     rmSetAreaCoherence(menagerieRoad , 1.0);
 	rmAddAreaToClass(menagerieRoad , classStreet);
     rmBuildArea(menagerieRoad ); 
@@ -528,7 +528,7 @@ void main(void)
 // Fixed Placement
 
 	// Palace
-	int blockPalaceBig01 = rmCreateGrouping("palace1", "Verseilles_Mega2");
+	int blockPalaceBig01 = rmCreateGrouping("palace1", "Verseilles_Mega3");
     rmSetGroupingMinDistance(blockPalaceBig01, 0.00);
     rmSetGroupingMaxDistance(blockPalaceBig01, 0.50);
 	rmAddGroupingToClass(blockPalaceBig01, rmClassID("classBlock"));
@@ -732,7 +732,7 @@ int jesuitMaltese = rmRandInt(1, 2);
 
 	// Palace
 
-	int verseillesPalace1 = rmPlaceGroupingInstanceAtLoc(blockPalaceBig01, 0.513, mapCenter+rmZTilesToFraction(35), 0);
+	int verseillesPalace1 = rmPlaceGroupingInstanceAtLoc(blockPalaceBig01, 0.513, mapCenter+rmZTilesToFraction(33), 0);
 
 	//rmPlaceGroupingAtLoc(blockWall, firstDefender, 0.175, mapCenter+rmZTilesToFraction(10));
 
@@ -967,7 +967,7 @@ for (j=0; < 2) {
     rmSetGroupingMaxDistance(blockMenagerie, 0.50);
 	rmAddGroupingToClass(blockMenagerie, rmClassID("classBlock"));
 
-	rmPlaceGroupingAtLoc(blockMenagerie, 0, 0.51, mapCenter+rmZTilesToFraction(70), 1);
+	rmPlaceGroupingAtLoc(blockMenagerie, 0, 0.515, mapCenter+rmZTilesToFraction(70), 1);
 		
 
 	rmSetStatusText("",0.80);
@@ -1137,7 +1137,7 @@ for (j=0; < 2) {
 
 //starting res
 
-	int playerStart = rmCreateGrouping("player", "EU_Verseilles_2v2");
+	int playerStart = rmCreateStartingUnitsObjectDef(5.0);
 	rmSetObjectDefMinDistance(playerStart, 7.0);
 	rmSetObjectDefMaxDistance(playerStart, 12.0);
 
@@ -1159,8 +1159,6 @@ for (j=0; < 2) {
 	rmSetObjectDefMaxDistance(berryID, 17.0);
 	rmAddObjectDefConstraint(berryID, shortAvoidCoin);
 
-	int aiStartUrban = rmCreateObjectDef("is city map");
-	rmAddObjectDefItem(aiStartUrban, "zpAIStartUrbanMap", 1, 0.0);
 
 	// Attackers Blocks
 
@@ -1212,7 +1210,6 @@ for (j=0; < 2) {
 			rmPlaceObjectDefAtLoc(foodID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 			rmPlaceObjectDefAtLoc(goldID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 			rmPlaceObjectDefAtLoc(berryID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
-			rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);
 			/*if (cNumberNonGaiaPlayers >=4)
 				rmPlaceObjectDefAtLoc(goldID2, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));*/
 		}
@@ -1228,6 +1225,7 @@ for (j=0; < 2) {
 				rmPlaceGroupingAtLoc(blockConstruction, 0, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i)-rmZTilesToFraction(17));
 				rmPlaceGroupingAtLoc(blockConstruction, 0, rmPlayerLocXFraction(i)+rmXTilesToFraction(17), rmPlayerLocZFraction(i)-rmZTilesToFraction(17));
 			}
+			rmPlaceObjectDefAtLoc(playerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 		}
 
 	}
@@ -1459,6 +1457,7 @@ for (j=0; < 2) {
 	rmAddObjectDefConstraint(nuggetHard, shortAvoidImpassableLand);
 	rmAddObjectDefConstraint(nuggetHard, avoidAll);
     rmAddObjectDefConstraint(nuggetHard, avoidPark);
+	rmAddObjectDefConstraint(nuggetHard, avoidTownCenterFar);
 	rmAddObjectDefConstraint(nuggetHard, avoidBlockMedium);
 	rmAddObjectDefConstraint(nuggetHard, playerEdgeConstraint);
 	rmPlaceObjectDefInArea(nuggetHard, 0, countrysideNorth, cNumberNonGaiaPlayers);
