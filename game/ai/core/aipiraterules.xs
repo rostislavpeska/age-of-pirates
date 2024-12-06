@@ -74,7 +74,8 @@ minInterval 1
    if (cRandomMapName == "winterwonderlandii" ||
        cRandomMapName == "zpwildwest" ||
        cRandomMapName == "zpmississippi" ||
-       cRandomMapName == "zpwwcanyon")
+       cRandomMapName == "zpwwcanyon" ||
+       cRandomMapName == "zpgrinch")
    {
       gIsPirateMap = true;
       if (haveHumanAlly() == true)
