@@ -4144,7 +4144,7 @@ minInterval 30
 
    // Build limit. Wait until we have made a decent number
    bool canDisableSelf = researchSimpleTechByCondition(cTechzpNatGrinchTeammateBuildLimit,
-   []() -> bool { return ( kbUnitCount(cMyID, cUnitTypezpTilanusGrinchMerc, cUnitStateABQ) > 8 ); },
+   []() -> bool { return ( kbUnitCount(cMyID, cUnitTypezpTilanusGrinchMerc, cUnitStateABQ) > 7 ); },
    cUnitTypeNativeEmbassy);
 
    // Pathfinders. Research after getting a few, but lower priority
@@ -4189,7 +4189,7 @@ minInterval 30
 
    // TP expansion. Do it once we have a decent number of grinch sharpshooters
    canDisableSelf &= researchSimpleTechByCondition(cTechzpGrinchExpansion,
-   []() -> bool { return ( kbUnitCount(cMyID, cUnitTypezpTilanusGrinch, cUnitStateABQ) > 10 && kbGetAge() >= cAge3 ); },
+   []() -> bool { return ( kbUnitCount(cMyID, cUnitTypezpTilanusGrinch, cUnitStateABQ) > 9 && kbGetAge() >= cAge3 ); },
    cUnitTypeTradingPost);
 
    // Send cost reduction as soon as available. low priority
@@ -4199,7 +4199,7 @@ minInterval 30
 
    // Send chimney divers if we have a lot of grinch units, or are in age 4. low priority
    canDisableSelf &= researchSimpleTechByCondition(cTechzpNatGrinchChimneyDivers,
-   []() -> bool { return ( (kbUnitCount(cMyID, cUnitTypezpTilanusGrinch, cUnitStateAlive) > 10 && kbGetAge() >= cAge3) ||
+   []() -> bool { return ( (kbUnitCount(cMyID, cUnitTypezpTilanusGrinch, cUnitStateAlive) > 9 && kbGetAge() >= cAge3) ||
                            (kbUnitCount(cMyID, cUnitTypezpTilanusGrinch, cUnitStateAlive) > 0 && kbGetAge() >= cAge4)); },
    cUnitTypeTradingPost, -1, 30);
 
