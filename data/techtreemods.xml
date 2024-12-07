@@ -19933,14 +19933,17 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpChristmasPolearm</target>
       </effect>
-      <effect type="TechStatus" status="obtainable">zpXmassGrenadierShadow</effect>
+      <!--<effect type="TechStatus" status="obtainable">zpXmassGrenadierShadow</effect>-->
     </effects>
   </tech>
   <tech name="zpXmassGrenadierShadow" type="Normal">
     <dbid>50052</dbid>
     <researchpoints>0.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
+    <status>OBTAINABLE</status>
     <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpXmassMercenaries</techstatus>
+    </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="CopyTacticAnims" fromtactic="GrenadierMortar" totactic="Volley" relativity="Assign">
         <target type="ProtoUnit">zpChristmasGrenadier</target>
