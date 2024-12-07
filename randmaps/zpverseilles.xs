@@ -1691,9 +1691,9 @@ for (j=0; < 2) {
 	rmSetTriggerConditionParam("SrcObject",""+royalOrangerie);
 	rmAddTriggerEffect("Team Victory");
 	rmSetTriggerEffectParamInt("TeamID", 1);
-	rmSetTriggerPriority(4); 
+	rmSetTriggerPriority(1); 
 	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
+	rmSetTriggerRunImmediately(false);
 	rmSetTriggerLoop(false);
 
 

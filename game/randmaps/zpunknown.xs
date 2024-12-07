@@ -53,53 +53,78 @@ void main(void)
 		fullShallow = 1;
 		
 	float landConfig = rmRandFloat(0,1);
-	if (rmGetIsKOTH() == true)
-		landConfig = rmRandFloat(0.04,0.18);
+//	if (rmGetIsKOTH() == true)
+//		landConfig = rmRandFloat(0.04,0.18);
 //		landConfig = 0.20;		// for testing
 		rmEchoInfo("land configuration = "+landConfig);
 
 // ============= Land and Water Configuration =============
-	if (landConfig < 0.04)
+	if (rmGetIsKOTH() == true)
 	{
-		floodedLand = 1;
-	}
+		if (landConfig < 0.10)
+		{
+			floodedLand = 1;
+		}
 
-	else if (landConfig < 0.19)
-	{
-		oceanRing = 1;
-	}
+		else if (landConfig < 0.35)
+		{
+			oceanRing = 1;
+		}
 
-	else if (landConfig < 0.29)
-	{
-		splitIsland = 1;
-	}
+		else if (landConfig < 0.65)
+		{
+			landOnly = 1;
+		}
 
-	else if (landConfig < 0.39)
-	{
-		landOnly = 1;
+		else
+		{
+			oceanOffCenter = 1;
+		}
 	}
-
-	else if (landConfig < 0.49)
-	{
-		riverExists = 1;
-	}
-
-	else if (landConfig < 0.74)
-	{
-		oceanMiddle = 1;
-		blockedMiddle = 1;
-		if (rmRandFloat(0,1) <= 0.10)
-			fountainChance = 1;
-	}		
-
-	else if (landConfig < 0.98)
-	{
-		oceanOffCenter = 1;
-	}
-		
 	else
 	{
-		forestMiddle = 1;
+		if (landConfig < 0.04)
+		{
+			floodedLand = 1;
+		}
+
+		else if (landConfig < 0.19)
+		{
+			oceanRing = 1;
+		}
+
+		else if (landConfig < 0.29)
+		{
+			splitIsland = 1;
+		}
+
+		else if (landConfig < 0.39)
+		{
+			landOnly = 1;
+		}
+
+		else if (landConfig < 0.49)
+		{
+			riverExists = 1;
+		}
+
+		else if (landConfig < 0.74)
+		{
+			oceanMiddle = 1;
+			blockedMiddle = 1;
+			if (rmRandFloat(0,1) <= 0.10)
+				fountainChance = 1;
+		}		
+
+		else if (landConfig < 0.98)
+		{
+			oceanOffCenter = 1;
+		}
+
+		else
+		{
+			forestMiddle = 1;
+		}
 	}
 
 	// Set size.
@@ -145,6 +170,8 @@ void main(void)
 	rmEchoInfo("Map size="+size+"m x "+size+"m");
 	rmSetMapSize(size, size);
 	rmSetSeaLevel(0.0);
+	if (splitIsland == 1)
+		rmSetOceanReveal(true);
 	if (floodedLand != 1)
 		rmSetMapElevationParameters(cElevTurbulence, 0.02, rmRandFloat(2, 4), 0.7, 8.0);
 
@@ -848,7 +875,10 @@ void main(void)
 			treeName = "zpChristmassTree";
 		else
 			treeName = "treeRockiesSnow";
-		critterOneName = "caribou";
+		if (merryXmass == 1)
+			critterOneName = "reindeer";
+		else
+			critterOneName = "caribou";
 		critterTwoName = "muskOx";
 		livestockName = "cow";
 		fishName = "fishSardine";
@@ -1617,7 +1647,9 @@ void main(void)
 		treeName = "deTreeCypress";
 		critterOneName = "deer";
 		critterTwoName = "ypIbex";
-		if (rmRandFloat(0,1) <= 0.50)
+		if (rmRandFloat(0,1) <= 0.333)
+			livestockName = "zpDomesticPig";
+		else if (rmRandFloat(0,1) <= 0.50)
 			livestockName = "sheep";
 		else
 			livestockName = "cow";
@@ -2520,7 +2552,7 @@ void main(void)
 	}
 
 	// add some overlapping features
-	if (floodedLand == 1)
+	if (floodedLand == 1 && rmGetIsKOTH() == false)
 	{
 		if (rmRandFloat(0,1) <= 0.10)
 			forestMiddle = 1;
@@ -2532,7 +2564,7 @@ void main(void)
 			riverExists = 1;
 	}
 
-	if (oceanOffCenter == 1)
+	if (oceanOffCenter == 1 && rmGetIsKOTH() == false)
 	{
 		if (rmRandFloat(0,1) <= 0.05)
 			forestMiddle = 1;
@@ -2542,7 +2574,7 @@ void main(void)
 			riverExists = 1;
 	}
 
-	if (oceanRing == 1)
+	if (oceanRing == 1 && rmGetIsKOTH() == false)
 	{
 		if (rmRandFloat(0,1) <= 0.10)
 		{
@@ -2713,7 +2745,7 @@ void main(void)
    int avoidAllFar=rmCreateTypeDistanceConstraint("avoid all far", "all", 8.0);
 
    // pie constraints
-   int edgeCOnstraintSplitIsland=rmCreatePieConstraint("split islands avoid edge",  0.5, 0.5, 0, rmGetMapXSize()-24, 0, 0, 0);
+   int edgeConstraintSplitIsland=rmCreatePieConstraint("split islands avoid edge",  0.5, 0.5, 0, rmGetMapXSize()-24, 0, 0, 0);
    int edgeConstraintShort=rmCreatePieConstraint("continent avoids edge short",  0.5, 0.5, 0, rmGetMapXSize()-8, 0, 0, 0);
    int edgeConstraint=rmCreatePieConstraint("continent avoids edge",  0.5, 0.5, 0, rmGetMapXSize()-30, 0, 0, 0);
 	int avoidEdge = rmCreatePieConstraint("Avoid Edge",0.5,0.5, rmXFractionToMeters(0.0),rmXFractionToMeters(0.48), rmDegreesToRadians(0),rmDegreesToRadians(360));
@@ -2866,6 +2898,7 @@ void main(void)
 		int worldOcean=rmCreateArea("ocean that covers whole map");
 		rmSetAreaWaterType(worldOcean, oceanName);
 		rmSetAreaSize(worldOcean, 1, 1);
+//		rmSetAreaReveal(worldOcean, 01);
 		rmSetAreaLocation(worldOcean, 0.5, 0.5);
 		rmSetAreaWarnFailure(worldOcean, false);
 		rmSetAreaObeyWorldCircleConstraint(worldOcean, false);
@@ -2986,7 +3019,7 @@ void main(void)
 		}
 		rmSetAreaSmoothDistance(splitIslandID1, 50);
 		rmSetAreaCoherence(splitIslandID1, 0.444);
-		rmAddAreaConstraint(splitIslandID1, edgeCOnstraintSplitIsland);
+		rmAddAreaConstraint(splitIslandID1, edgeConstraintSplitIsland);
 		rmAddAreaConstraint(splitIslandID1, avoidCenterMin);
 		rmAddAreaConstraint(splitIslandID1, whaleLandFar);
 		rmBuildArea(splitIslandID1);
@@ -3024,7 +3057,7 @@ void main(void)
 		}
 		rmSetAreaSmoothDistance(splitIslandID2, 50);
 		rmSetAreaCoherence(splitIslandID2, 0.444);
-		rmAddAreaConstraint(splitIslandID2, edgeCOnstraintSplitIsland);
+		rmAddAreaConstraint(splitIslandID2, edgeConstraintSplitIsland);
 		rmAddAreaConstraint(splitIslandID2, avoidCenterMin);
 		rmAddAreaConstraint(splitIslandID2, whaleLandFar);
 		rmBuildArea(splitIslandID2);		
@@ -3468,7 +3501,10 @@ if (tpORnot != 5)
 				rmAddAreaToClass(lakeOfTheUnknown, classCanyon);
 			}
 			else
+			{
 				rmSetAreaWaterType(lakeOfTheUnknown, oceanName);
+//				rmSetAreaReveal(lakeOfTheUnknown, 01);
+			}
 			if(sideBay == 1)
 			{
 				rmSetAreaSize(lakeOfTheUnknown, 0.10, 0.11);
@@ -3781,6 +3817,8 @@ if (tpORnot != 5)
 							rmAddObjectDefItem(plateauPropsID, "ypSHogunTokugawa", 10, 8.0);
 						else if (rmRandFloat(0,1) <= 0.001)
 							rmAddObjectDefItem(plateauPropsID, "deMercGatlingCamel", 10, 8.0);
+						else if (euMap == 1)
+							rmAddObjectDefItem(plateauPropsID, "zpGrapeBush", 10, 8.0);
 						else if (oceaniaMap == 1)
 							rmAddObjectDefItem(plateauPropsID, "zpPineapleBush", 10, 8.0);
 						else
@@ -4245,7 +4283,10 @@ if (tpORnot != 5)
 				if (rockiesMap == 1 && rmRandFloat(0,1) <= 0.50)
 					rmSetAreaMix(unknownBay, "great_lakes_ice");
 				else
+				{
 					rmSetAreaWaterType(unknownBay, oceanName);
+//					rmSetAreaReveal(unknownBay, 01);
+				}
 			rmSetAreaWarnFailure(unknownBay, false);
 			if (oceanMiddle == 1)
 				rmSetAreaSize(unknownBay, 0.11, 0.13);
@@ -4293,7 +4334,6 @@ if (tpORnot != 5)
 			rmAddAreaToClass(mountSideID, pondClass);
 			rmAddAreaToClass(mountSideID, classCliff);
 			rmAddAreaToClass(mountSideID, classCanyon);
-			rmSetAreaReveal(mountSideID, 01);
 			// Spin bay randomly around the edge		
 			if(bayPosition < 0.12)
 				rmSetAreaLocation(mountSideID, 0.0, 0.0);
@@ -4583,6 +4623,8 @@ if (tpORnot != 5)
 							rmAddObjectDefItem(plateauSidePropsID, "ypSHogunTokugawa", 10, 8.0);
 						else if (rmRandFloat(0,1) <= 0.001)
 							rmAddObjectDefItem(plateauSidePropsID, "deMercGatlingCamel", 10, 8.0);
+						else if (euMap == 1)
+							rmAddObjectDefItem(plateauSidePropsID, "zpGrapeBush", 10, 8.0);
 						else if (oceaniaMap == 1)
 							rmAddObjectDefItem(plateauSidePropsID, "zpPineapleBush", 10, 8.0);
 						else
@@ -4687,7 +4729,9 @@ if (tpORnot != 5)
 						toFauxOrNotToFaux = 0.00;
 						if (rmRandFloat(0,1) <= 0.05)
 						{
-							if (oceaniaMap == 1)
+							if (euMap == 1)
+								rmAddObjectDefItem(rushMineID, "zpGrapeBush", 10, 8.0);
+							else if (oceaniaMap == 1)
 								rmAddObjectDefItem(rushMineID, "zpPineapleBush", 10, 8.0);
 							else
 								rmAddObjectDefItem(rushMineID, "BerryBush", 10, 8.0);
@@ -4703,6 +4747,8 @@ if (tpORnot != 5)
 							rmAddObjectDefItem(rushMineID, "ypSHogunTokugawa", 10, 8.0);
 						else if (rmRandFloat(0,1) <= 0.001)
 							rmAddObjectDefItem(rushMineID, "deMercGatlingCamel", 10, 8.0);
+						else if (euMap == 1)
+							rmAddObjectDefItem(rushMineID, "zpGrapeBush", 10, 8.0);
 						else if (oceaniaMap == 1)
 							rmAddObjectDefItem(rushMineID, "zpPineapleBush", 10, 8.0);
 						else
@@ -6701,6 +6747,8 @@ int whichBerry = rmRandInt(1,100);
 		rmAddObjectDefItem(playerBerryID, "CinematicRevealerToAll", rmRandInt(1,4), 2.0);
 	else if (whichBerry == 100)
 		rmAddObjectDefItem(playerBerryID, "deTorpBush2", rmRandInt(1,4), 2.0);
+	else if (euMap == 1)
+		rmAddObjectDefItem(playerBerryID, "zpGrapeBush", rmRandInt(1,4), 2.0);
 	else if (oceaniaMap == 1)
 		rmAddObjectDefItem(playerBerryID, "zpPineapleBush", rmRandInt(1,4), 2.0);
 	else

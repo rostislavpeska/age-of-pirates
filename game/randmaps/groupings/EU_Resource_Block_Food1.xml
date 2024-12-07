@@ -23,7 +23,7 @@
 		<unit variation="185" posx="2.3523" posz="-7.8686" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">dePropsAnimalsChicken</unit>
 		<unit variation="0" posx="-0.3715" posz="-7.5198" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">dePropsAnimalsChicken</unit>
 		<unit variation="184" posx="-0.5194" posz="-7.3719" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">dePropsAnimalsChicken</unit>
-		<unit variation="125" posx="-0.9790" posz="-6.6631" orientx="0.9294" orienty="-0.0051" orientz="0.3690">zpDomesticPig</unit>
+		<unit variation="125" posx="-0.9790" posz="-6.6631" orientx="0.9294" orienty="-0.0051" orientz="0.3690">ypGoat</unit>
 		<unit variation="12" posx="-6.0000" posz="-8.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpGrapeBush</unit>
 		<unit variation="239" posx="8.0000" posz="-8.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpGrapeBush</unit>
 		<unit variation="105" posx="2.5051" posz="-5.9489" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">dePropsAnimalsChicken</unit>
@@ -37,11 +37,11 @@
 		<unit variation="11" posx="13.6469" posz="-3.5739" orientx="-0.9249" orienty="0.0000" orientz="-0.3802">PropsPoles</unit>
 		<unit variation="126" posx="-1.0000" posz="1.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCTownMill</unit>
 		<unit variation="152" posx="-7.6898" posz="-2.0085" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">dePropsAnimalsChicken</unit>
-		<unit variation="175" posx="-6.5170" posz="-0.6392" orientx="0.2776" orienty="0.0027" orientz="-0.9607">zpDomesticPig</unit>
-		<unit variation="65" posx="5.2733" posz="-2.4896" orientx="0.0293" orienty="0.0038" orientz="-0.9996">zpDomesticPig</unit>
+		<unit variation="175" posx="-6.5170" posz="-0.6392" orientx="0.2776" orienty="0.0027" orientz="-0.9607">ypGoat</unit>
+		<unit variation="65" posx="5.2733" posz="-2.4896" orientx="0.0293" orienty="0.0038" orientz="-0.9996">ypGoat</unit>
 		<unit variation="17" posx="9.0505" posz="0.6020" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">dePropsAnimalsChicken</unit>
 		<unit variation="11" posx="-14.2534" posz="2.0676" orientx="-0.9249" orienty="0.0000" orientz="-0.3802">PropsPoles</unit>
-		<unit variation="226" posx="6.8207" posz="0.0000" orientx="-0.5348" orienty="-0.0012" orientz="0.8450">zpDomesticPig</unit>
+		<unit variation="226" posx="6.8207" posz="0.0000" orientx="-0.5348" orienty="-0.0012" orientz="0.8450">ypGoat</unit>
 		<unit variation="137" posx="-6.8677" posz="1.5486" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">dePropsAnimalsChicken</unit>
 		<unit variation="64" posx="-8.3085" posz="1.4955" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">dePropsAnimalsChicken</unit>
 		<unit variation="15" posx="8.7013" posz="2.4103" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">dePropsAnimalsChicken</unit>
