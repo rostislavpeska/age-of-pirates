@@ -262,6 +262,8 @@ minInterval 1
    if (getGaiaUnitCount(cUnitTypezpPropChristmassTree) > 0)
    {
       xsEnableRule("christmasTechMonitor");
+      xsEnableRule("grinchEmbassyTechMonitor");
+      xsEnableRule("grinchTechMonitor");
       xsEnableRule("nativeWagonMonitor");
       xsEnableRule("polarExpressUpgradeMonitor");
    }
@@ -4120,6 +4122,91 @@ minInterval 30
    []() -> bool { return ( kbTechGetStatus(cTechzpSendWorkshopGold) == cTechStatusObtainable ); },
    cUnitTypeTradingPost);
 
+
+   if (canDisableSelf == true)
+   {
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
+// Grinch Embassy Tech Monitor
+//==============================================================================
+rule grinchEmbassyTechMonitor
+inactive
+minInterval 30
+{
+   if (kbTechGetStatus(cTechzpNatGrinchTeammateBuildLimit) == cTechStatusUnobtainable && 
+       kbTechGetStatus(cTechzpNatGrinchTeammatePathfinding) == cTechStatusUnobtainable)
+   {
+      return; // Player has no techs to research
+   }
+
+   // Build limit. Wait until we have made a decent number
+   bool canDisableSelf = researchSimpleTechByCondition(cTechzpNatGrinchTeammateBuildLimit,
+   []() -> bool { return ( kbUnitCount(cMyID, cUnitTypezpTilanusGrinchMerc, cUnitStateABQ) > 8 ); },
+   cUnitTypeNativeEmbassy);
+
+   // Pathfinders. Research after getting a few, but lower priority
+   canDisableSelf = researchSimpleTechByCondition(cTechzpNatGrinchTeammatePathfinding,
+   []() -> bool { return ( kbUnitCount(cMyID, cUnitTypezpTilanusGrinchMerc, cUnitStateABQ) > 4 ); },
+   cUnitTypeNativeEmbassy, -1, 40);
+
+
+   if (canDisableSelf == true)
+   {
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
+// Grinch Mountain Tech Monitor
+//==============================================================================
+rule grinchTechMonitor
+inactive
+minInterval 30
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketGrinchVillage, cUnitStateAny) == 0)
+   {
+      return; // Player has no grinch socket.
+   }
+
+   // Team embassy, as soon as transitioning to age 2
+   bool canDisableSelf = researchSimpleTechByCondition(cTechzpNativeGrinchEmbassy,
+   []() -> bool { return ( getAgingUpAge() >= cAge2 ); },
+   cUnitTypeTradingPost);
+
+   // Building bounty, wait until we're allowed to attack and at least age 3
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpNatGrinchBuildingRob,
+   []() -> bool { return ( allowedToAttack() == true && kbGetAge() >= cAge3 ); },
+   cUnitTypeTradingPost);
+
+   // Mandatory Overtime: Extra cocoa cafe, wait until we already have one. Low priority
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpXmassOvertime,
+   []() -> bool { return ( kbUnitCount(cMyID, cUnitTypedeTavern, cUnitStateAlive) > 0 || 
+                           kbUnitCount(cMyID, cUnitTypeSaloon, cUnitStateAlive) > 0 ); },
+   cUnitTypeTradingPost, -1, 30);
+
+   // TP expansion. Do it once we have a decent number of grinch sharpshooters
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpGrinchExpansion,
+   []() -> bool { return ( kbUnitCount(cMyID, cUnitTypezpTilanusGrinch, cUnitStateABQ) > 10 && kbGetAge() >= cAge3 ); },
+   cUnitTypeTradingPost);
+
+   // Send cost reduction as soon as available. low priority
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpNatGrinchCostReduction,
+   []() -> bool { return ( kbTechGetStatus(cTechzpNatGrinchCostReduction) == cTechStatusObtainable ); },
+   cUnitTypeTradingPost, -1, 30);
+
+   // Send chimney divers if we have a lot of grinch units, or are in age 4. low priority
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpNatGrinchChimneyDivers,
+   []() -> bool { return ( (kbUnitCount(cMyID, cUnitTypezpTilanusGrinch, cUnitStateAlive) > 10 && kbGetAge() >= cAge3) ||
+                           (kbUnitCount(cMyID, cUnitTypezpTilanusGrinch, cUnitStateAlive) > 0 && kbGetAge() >= cAge4)); },
+   cUnitTypeTradingPost, -1, 30);
+
+   // Send grinch volunteer rifles as soon as possible. Standard priority
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpNatGrinchLargeBatch,
+   []() -> bool { return (  kbTechGetStatus(cTechzpNatGrinchLargeBatch) == cTechStatusObtainable ); },
+   cUnitTypeTradingPost);
 
    if (canDisableSelf == true)
    {
