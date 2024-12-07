@@ -48078,6 +48078,7 @@
     <rof>1.500000</rof>
     <damagebonus type="AbstractCavalry">1.750000</damagebonus>
     <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+    <damagebonus type="AbstractArtillery">0.500000</damagebonus>
   </protoaction>
   <protoaction>
     <name>DefendHandAttack</name>
@@ -48086,6 +48087,7 @@
     <rof>1.500000</rof>
     <damagebonus type="AbstractCavalry">1.750000</damagebonus>
     <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+    <damagebonus type="AbstractArtillery">0.500000</damagebonus>
   </protoaction>
   <protoaction>
     <name>MeleeHandAttack</name>
@@ -48094,6 +48096,7 @@
     <rof>1.500000</rof>
     <damagebonus type="AbstractCavalry">1.750000</damagebonus>
     <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+    <damagebonus type="AbstractArtillery">0.500000</damagebonus>
   </protoaction>
 </unit>
 <unit id="21155" name="zpLightProjectile">

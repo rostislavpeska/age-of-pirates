@@ -4340,6 +4340,24 @@ int getTeamStrategy(void)
       gStrategy = cStrategyGreed;
    }
 
+   // AssertiveWall: Need a couple checks in case the max age is lower than industrial
+   if (cvMaxAge <= cAge3)
+   {  // max age is under Age 4, can't fast industrial
+      if (gStrategy == cStrategyFastIndustrial)
+      {
+         gStrategy = cStrategySafeFF;
+      }
+
+      if (cvMaxAge <= cAge2)
+      {
+         if (gStrategy == cStrategySafeFF || gStrategy == cStrategyNakedFF)
+         {
+            gStrategy = cStrategyRush;
+         }
+      }
+   }
+
+
    return (gStrategy);
 }
 
@@ -4648,10 +4666,14 @@ bool allowedToAttack(void)
    //else if (cDifficultyCurrent == cDifficultyHard) {militaryStrength = militaryStrength * 1.15;} 
 
    // If we're trying to FI/FF, don't attack until appropriate age
-   if (gStrategy == cStrategyFastIndustrial && ageVar < cAge4)
-   {return false;}
-   else if ((gStrategy == cStrategyNakedFF || gStrategy == cStrategySafeFF) && ageVar < cAge3)
-   {return false;}
+   // only check if we're not in the maxage
+   if (ageVar < cvMaxAge)
+   {
+      if (gStrategy == cStrategyFastIndustrial && ageVar < cAge4)
+      {return false;}
+      else if ((gStrategy == cStrategyNakedFF || gStrategy == cStrategySafeFF) && ageVar < cAge3)
+      {return false;}
+   }
 
    // Create bounds where we shouldn't/should always attack regardless of score
    // This is based on the most hated enemy's age, not ours
@@ -8495,7 +8517,7 @@ minInterval 3
       }
 
       // Allow civs to run their standard attack plans first
-      if (gStrategy == cStrategyRush)
+      /*if (gStrategy == cStrategyRush)
       {
          if (currentAge < cAge3) {return;}
       }
@@ -8506,7 +8528,7 @@ minInterval 3
       else
       {
          if (currentAge < cAge4 || xsGetTime() < 35 * 60 * 1000) {return;}
-      }
+      }*/
       
       if (currentAge == cAge3)
       {

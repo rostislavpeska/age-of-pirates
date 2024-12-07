@@ -1715,6 +1715,23 @@ void initPersonality(void)
    {
       gStrategy = cStrategyGreed;
    }
+
+   // AssertiveWall: Need a couple checks in case the max age is lower than industrial
+   if (cvMaxAge <= cAge3)
+   {  // max age is under Age 4, can't fast industrial
+      if (gStrategy == cStrategyFastIndustrial)
+      {
+         gStrategy = cStrategySafeFF;
+      }
+
+      if (cvMaxAge <= cAge2)
+      {
+         if (gStrategy == cStrategySafeFF || gStrategy == cStrategyNakedFF)
+         {
+            gStrategy = cStrategyRush;
+         }
+      }
+   }
 }
       
 //==============================================================================
