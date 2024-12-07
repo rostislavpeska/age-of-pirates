@@ -392,7 +392,7 @@ void main(void)
 
 	int randomizerInt = rmRandInt(1, 2);
 	int christmasVillageID = -1;
-	int villageRand = rmRandInt(1,2);
+	int villageRand = 1; //rmRandInt(1,2);  //Removed variant. Only 1 grouping per player size now
 
 	// Large Xmass grouping
 	// Based on player count
