@@ -1,0 +1,1445 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>69</width>
+	<height>84</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="199" posx="-28.0000" posz="-87.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="240" posx="-17.9754" posz="-51.9191" orientx="0.7072" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-24.8362" posz="-51.8858" orientx="-0.7070" orienty="0.0000" orientz="0.7072">HarbourPathBlock</unit>
+		<unit variation="0" posx="-17.0000" posz="-52.0000" orientx="0.7781" orienty="0.0000" orientz="-0.6282">AIStart</unit>
+		<unit variation="33" posx="-17.0000" posz="-52.0000" orientx="0.3066" orienty="0.0000" orientz="-0.9518">AIStart</unit>
+		<unit variation="146" posx="-17.0000" posz="-52.0000" orientx="0.9495" orienty="0.0000" orientz="-0.3138">AIStart</unit>
+		<unit variation="240" posx="-23.9794" posz="-50.1426" orientx="-0.7070" orienty="0.0000" orientz="0.7072">HarbourPathBlock</unit>
+		<unit variation="240" posx="-13.5614" posz="-49.9006" orientx="-0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-14.9114" posz="-51.0706" orientx="-0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-27.5984" posz="-51.2709" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="37" posx="-15.6170" posz="-48.3085" orientx="0.6920" orienty="0.0000" orientz="0.7219">zpHarbourPlatform</unit>
+		<unit variation="37" posx="-26.8609" posz="-47.8533" orientx="0.6909" orienty="0.0000" orientz="0.7230">zpHarbourPlatform</unit>
+		<unit variation="240" posx="-20.2114" posz="-49.5185" orientx="0.7072" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-22.2560" posz="-49.0787" orientx="-0.7070" orienty="0.0000" orientz="0.7072">HarbourPathBlock</unit>
+		<unit variation="240" posx="-11.6456" posz="-48.0179" orientx="-0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-29.4824" posz="-48.7504" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="240" posx="-30.7623" posz="-47.7542" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="149" posx="-22.3238" posz="-46.7881" orientx="-0.7067" orienty="0.0000" orientz="-0.7076">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-19.5703" posz="-46.5345" orientx="0.7075" orienty="0.0000" orientz="-0.7067">zpNativeHouseVenetian</unit>
+		<unit variation="240" posx="-33.4214" posz="-45.0950" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="240" posx="-11.1951" posz="-45.6592" orientx="-0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="37" posx="-31.5661" posz="-42.8210" orientx="0.7229" orienty="0.0000" orientz="-0.6909">zpHarbourPlatform</unit>
+		<unit variation="149" posx="-25.0122" posz="-44.0996" orientx="-0.7067" orienty="0.0000" orientz="-0.7076">zpNativeHouseVenetian</unit>
+		<unit variation="240" posx="-8.8245" posz="-42.8979" orientx="-0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-35.4736" posz="-43.0429" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="210" posx="-25.8204" posz="-42.1001" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="5" posx="-20.7484" posz="-43.5376" orientx="-0.7069" orienty="0.0000" orientz="-0.7073">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-17.0661" posz="-43.9598" orientx="0.7075" orienty="0.0000" orientz="-0.7067">zpNativeHouseVenetian</unit>
+		<unit variation="240" posx="-37.4610" posz="-40.4153" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="240" posx="-6.6364" posz="-40.2329" orientx="-0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="52" posx="-36.4633" posz="-37.8732" orientx="-0.7133" orienty="0.0000" orientz="-0.7008">zpHarbourPlatform</unit>
+		<unit variation="149" posx="-27.8203" posz="-41.2277" orientx="-0.7067" orienty="0.0000" orientz="-0.7076">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-17.0151" posz="-41.5811" orientx="0.7067" orienty="0.0000" orientz="0.7075">zpNativeHouseVenetian</unit>
+		<unit variation="240" posx="-38.6804" posz="-38.5492" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="240" posx="-5.6148" posz="-38.2299" orientx="-0.9239" orienty="0.0000" orientz="0.3827">HarbourPathBlock</unit>
+		<unit variation="149" posx="-30.3761" posz="-38.5439" orientx="-0.7067" orienty="0.0000" orientz="-0.7076">zpNativeHouseVenetian</unit>
+		<unit variation="5" posx="-25.4253" posz="-38.9602" orientx="-0.7069" orienty="0.0000" orientz="-0.7073">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-18.8951" posz="-39.7760" orientx="0.7067" orienty="0.0000" orientz="0.7075">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-6.6203" posz="-39.4501" orientx="0.7072" orienty="0.0000" orientz="-0.7070">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-8.9714" posz="-39.1725" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-6.0270" posz="-38.8731" orientx="0.7072" orienty="0.0000" orientz="-0.7070">zpNativeHouseVenetian</unit>
+		<unit variation="33" posx="-8.1269" posz="-33.4026" orientx="-0.7196" orienty="0.0000" orientz="0.6944">zpHarbourPlatform</unit>
+		<unit variation="240" posx="-39.6159" posz="-35.8564" orientx="1.0000" orienty="0.0000" orientz="-0.0001">HarbourPathBlock</unit>
+		<unit variation="149" posx="-21.7440" posz="-36.9271" orientx="0.7067" orienty="0.0000" orientz="0.7075">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-10.8577" posz="-37.5351" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="144" posx="-9.1435" posz="-37.8081" orientx="0.7076" orienty="0.0000" orientz="-0.7066">zpNativeHouseVenetian</unit>
+		<unit variation="240" posx="-4.1333" posz="-34.8896" orientx="-0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-40.2599" posz="-33.1763" orientx="1.0000" orienty="0.0000" orientz="-0.0001">HarbourPathBlock</unit>
+		<unit variation="5" posx="-30.0808" posz="-34.3048" orientx="-0.7069" orienty="0.0000" orientz="-0.7073">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-33.1463" posz="-35.7784" orientx="-0.7067" orienty="0.0000" orientz="-0.7076">zpNativeHouseVenetian</unit>
+		<unit variation="201" posx="-30.9974" posz="-34.5566" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="8" posx="-29.7290" posz="-35.8251" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="149" posx="-23.6610" posz="-34.9229" orientx="0.7069" orienty="0.0000" orientz="0.7073">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-13.6785" posz="-34.6492" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="101" posx="-19.3698" posz="-34.5735" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseVenetianB</unit>
+		<unit variation="5" posx="-7.8496" posz="-35.5407" orientx="0.7071" orienty="0.0000" orientz="0.7072">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-4.1357" posz="-35.8670" orientx="0.9239" orienty="0.0000" orientz="-0.3826">zpNativeHouseVenetian</unit>
+		<unit variation="240" posx="-4.9998" posz="-32.8370" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">HarbourPathBlock</unit>
+		<unit variation="149" posx="-35.7557" posz="-33.3230" orientx="-0.7069" orienty="0.0000" orientz="-0.7073">zpNativeHouseVenetian</unit>
+		<unit variation="69" posx="-31.6432" posz="-33.8448" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="87" posx="-29.1956" posz="-33.2296" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="149" posx="-26.3784" posz="-32.2012" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="8" posx="-12.2941" posz="-32.2042" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="235" posx="-5.0968" posz="-31.9884" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpNativeUnitVenetianFence</unit>
+		<unit variation="121" posx="-1.6180" posz="-33.8726" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="47" posx="-4.0116" posz="-33.1317" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeUnitVenetianFence</unit>
+		<unit variation="240" posx="-41.2528" posz="-30.6332" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="240" posx="-6.2921" posz="-31.4712" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-9.8405" posz="-30.6653" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">HarbourPathBlock</unit>
+		<unit variation="52" posx="-49.5051" posz="-27.0921" orientx="-0.0088" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
+		<unit variation="149" posx="-38.4728" posz="-30.6329" orientx="-0.7069" orienty="0.0000" orientz="-0.7073">zpNativeHouseVenetian</unit>
+		<unit variation="144" posx="-34.2656" posz="-30.3964" orientx="-0.7063" orienty="0.0000" orientz="-0.7080">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-16.5262" posz="-31.8788" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-6.8985" posz="-30.2233" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpNativeUnitVenetianFence</unit>
+		<unit variation="5" posx="-12.4351" posz="-31.0677" orientx="0.7071" orienty="0.0000" orientz="0.7072">zpNativeHouseVenetian</unit>
+		<unit variation="240" posx="-43.4424" posz="-28.7566" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="240" posx="-10.4653" posz="-28.1149" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-8.0910" posz="-29.4534" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-11.1171" posz="-29.4682" orientx="-0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-12.6521" posz="-29.5052" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">HarbourPathBlock</unit>
+		<unit variation="149" posx="-29.0974" posz="-29.5898" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="5" posx="-34.8696" posz="-29.7147" orientx="-0.7069" orienty="0.0000" orientz="-0.7073">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-19.3694" posz="-29.0004" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="189" posx="-8.1569" posz="-28.9864" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpNativeUnitVenetianFence</unit>
+		<unit variation="232" posx="-4.7475" posz="-29.5567" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetianB</unit>
+		<unit variation="240" posx="-45.0715" posz="-27.7490" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="250" posx="-9.5001" posz="-23.4281" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpSocketVenetians</unit>
+		<unit variation="240" posx="-12.0862" posz="-26.1846" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-12.4535" posz="-27.7471" orientx="-0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-14.4940" posz="-27.6921" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">HarbourPathBlock</unit>
+		<unit variation="52" posx="-56.1294" posz="-24.3150" orientx="-0.7133" orienty="0.0000" orientz="-0.7008">zpHarbourPlatform</unit>
+		<unit variation="240" posx="-47.2566" posz="-26.6376" orientx="0.0001" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="240" posx="-50.3113" posz="-26.3379" orientx="0.0001" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="149" posx="-39.6261" posz="-27.5119" orientx="-1.0000" orienty="0.0000" orientz="-0.0003">zpNativeHouseVenetian</unit>
+		<unit variation="56" posx="-36.4475" posz="-26.2407" orientx="-1.0000" orienty="0.0000" orientz="-0.0005">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-31.8023" posz="-26.7657" orientx="0.7070" orienty="0.0000" orientz="0.7072">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-22.0940" posz="-26.2260" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="77" posx="-26.8491" posz="-26.1539" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeUnitVenetianShips</unit>
+		<unit variation="5" posx="-17.0673" posz="-26.4622" orientx="0.7071" orienty="0.0000" orientz="0.7072">zpNativeHouseVenetian</unit>
+		<unit variation="223" posx="-15.4184" posz="-27.0524" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianFlag</unit>
+		<unit variation="240" posx="-16.0772" posz="-25.7854" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">HarbourPathBlock</unit>
+		<unit variation="88" posx="4.1079" posz="-27.6894" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="240" posx="-52.8004" posz="-26.1393" orientx="0.0001" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="240" posx="-54.7688" posz="-25.3545" orientx="0.0001" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="240" posx="-56.5914" posz="-24.0812" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="240" posx="-14.3625" posz="-23.9769" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-14.3940" posz="-25.7521" orientx="-0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="69" posx="-19.6658" posz="-21.7789" orientx="-0.7759" orienty="0.0000" orientz="0.6309">zpHarbourPlatform</unit>
+		<unit variation="149" posx="-54.3833" posz="-24.0393" orientx="-0.7063" orienty="0.0000" orientz="-0.7079">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-51.3861" posz="-25.4298" orientx="0.0011" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-47.8648" posz="-25.4641" orientx="0.0011" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-39.6687" posz="-24.6841" orientx="-1.0000" orienty="0.0000" orientz="-0.0003">zpNativeHouseVenetian</unit>
+		<unit variation="30" posx="-42.1786" posz="-24.9521" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeUnitVenetianShips</unit>
+		<unit variation="182" posx="-19.3715" posz="-24.8612" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="240" posx="-16.5069" posz="-23.1522" orientx="-0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-17.1666" posz="-22.8989" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">HarbourPathBlock</unit>
+		<unit variation="52" posx="-61.1074" posz="-19.1333" orientx="-0.7133" orienty="0.0000" orientz="-0.7008">zpHarbourPlatform</unit>
+		<unit variation="25" posx="-52.7169" posz="-22.8459" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianFlag</unit>
+		<unit variation="5" posx="-49.5751" posz="-22.0745" orientx="1.0000" orienty="0.0000" orientz="0.0007">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-46.1410" posz="-23.4255" orientx="1.0000" orienty="0.0000" orientz="0.0011">zpNativeHouseVenetian</unit>
+		<unit variation="144" posx="-35.0095" posz="-22.7523" orientx="1.0000" orienty="0.0000" orientz="0.0006">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-33.1140" posz="-23.1688" orientx="1.0000" orienty="0.0000" orientz="0.0003">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-25.0705" posz="-23.3781" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="5" posx="-21.1920" posz="-22.1547" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="232" posx="-24.5774" posz="-23.9358" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetianB</unit>
+		<unit variation="15" posx="-17.9877" posz="-23.5645" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpNativeUnitVenetianGuard</unit>
+		<unit variation="99" posx="-1.5270" posz="-23.6783" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="88" posx="8.3772" posz="-23.9453" orientx="-0.9237" orienty="-0.0000" orientz="0.3831">zpNativeUnitVenetian</unit>
+		<unit variation="240" posx="-58.3713" posz="-21.4062" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="240" posx="-15.7112" posz="-21.1719" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">HarbourPathBlock</unit>
+		<unit variation="52" posx="-25.1736" posz="-18.4366" orientx="0.7008" orienty="0.0000" orientz="-0.7134">zpHarbourPlatform</unit>
+		<unit variation="149" posx="-56.7644" posz="-21.5605" orientx="-0.7063" orienty="0.0000" orientz="-0.7079">zpNativeHouseVenetian</unit>
+		<unit variation="5" posx="-52.3042" posz="-20.6752" orientx="0.7076" orienty="0.0000" orientz="-0.7066">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-46.1941" posz="-20.0434" orientx="1.0000" orienty="0.0000" orientz="0.0011">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-39.6101" posz="-20.8739" orientx="-1.0000" orienty="0.0000" orientz="-0.0003">zpNativeHouseVenetian</unit>
+		<unit variation="5" posx="-35.9231" posz="-21.8250" orientx="-1.0000" orienty="0.0000" orientz="-0.0003">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-25.0507" posz="-20.7663" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="216" posx="-15.1810" posz="-21.8602" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeUnitVenetianFence</unit>
+		<unit variation="212" posx="-16.4359" posz="-20.6053" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpNativeUnitVenetianFence</unit>
+		<unit variation="240" posx="-18.0415" posz="-18.9154" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-20.1207" posz="-18.1082" orientx="-0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
+		<unit variation="240" posx="-60.1454" posz="-19.6321" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="52" posx="-64.2906" posz="-15.9501" orientx="-0.7133" orienty="0.0000" orientz="-0.7008">zpHarbourPlatform</unit>
+		<unit variation="149" posx="-59.4115" posz="-18.9135" orientx="-0.7063" orienty="0.0000" orientz="-0.7079">zpNativeHouseVenetian</unit>
+		<unit variation="133" posx="-54.1086" posz="-19.6225" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="241" posx="-54.6523" posz="-19.7143" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="144" posx="-49.1726" posz="-18.8522" orientx="-0.0016" orienty="0.0000" orientz="1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-31.6014" posz="-19.9258" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-29.7114" posz="-18.0399" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-23.2560" posz="-18.9245" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="25" posx="-21.6885" posz="-19.9611" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpNativeUnitVenetianGuard</unit>
+		<unit variation="172" posx="-17.9453" posz="-19.1980" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeUnitVenetianFence</unit>
+		<unit variation="232" posx="-15.7224" posz="-18.1324" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetianB</unit>
+		<unit variation="136" posx="4.3424" posz="-18.5383" orientx="-0.7074" orienty="-0.0000" orientz="-0.7069">zpNativeUnitVenetianPoles</unit>
+		<unit variation="240" posx="-62.2628" posz="-17.5147" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="149" posx="-62.0120" posz="-16.2151" orientx="-0.7063" orienty="0.0000" orientz="-0.7079">zpNativeHouseVenetian</unit>
+		<unit variation="5" posx="-56.3224" posz="-16.6911" orientx="0.7076" orienty="0.0000" orientz="-0.7066">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-46.1908" posz="-16.2532" orientx="1.0000" orienty="0.0000" orientz="0.0011">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-39.6203" posz="-17.0499" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">zpNativeHouseVenetian</unit>
+		<unit variation="56" posx="-31.8475" posz="-17.1607" orientx="-0.7075" orienty="0.0000" orientz="0.7067">zpNativeHouseVenetian</unit>
+		<unit variation="20" posx="-19.8121" posz="-17.8606" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeUnitVenetianFence</unit>
+		<unit variation="174" posx="-4.0294" posz="-17.4721" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeStatueVenetian</unit>
+		<unit variation="144" posx="12.1529" posz="-17.8291" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="240" posx="-63.9543" posz="-15.3358" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="240" posx="-65.0798" posz="-14.1404" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="203" posx="-31.4921" posz="-12.8647" orientx="-0.0158" orienty="0.0000" orientz="0.9999">zpHarbourPlatform</unit>
+		<unit variation="122" posx="-56.7061" posz="-15.8247" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpNativeStatueVenetian</unit>
+		<unit variation="5" posx="-49.4920" posz="-15.7344" orientx="1.0000" orienty="0.0000" orientz="0.0007">zpNativeHouseVenetian</unit>
+		<unit variation="121" posx="-50.5518" posz="-14.1496" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="5" posx="-35.9700" posz="-15.3758" orientx="-1.0000" orienty="0.0000" orientz="-0.0003">zpNativeHouseVenetian</unit>
+		<unit variation="56" posx="-29.6169" posz="-14.4589" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-26.9872" posz="-15.3947" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="50" posx="-6.6944" posz="-14.1341" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeUnitVenetianFemale</unit>
+		<unit variation="123" posx="5.4689" posz="-15.3113" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpNativeUnitVenetianFemale</unit>
+		<unit variation="75" posx="9.2404" posz="-15.1550" orientx="-0.7056" orienty="0.0000" orientz="-0.7086">zpBridgeFence</unit>
+		<unit variation="240" posx="-65.6834" posz="-13.5368" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="207" posx="1.8522" posz="-12.7446" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropStatue</unit>
+		<unit variation="149" posx="-64.6516" posz="-13.4776" orientx="-0.7063" orienty="0.0000" orientz="-0.7079">zpNativeHouseVenetian</unit>
+		<unit variation="52" posx="-62.0838" posz="-12.5430" orientx="-0.7063" orienty="0.0000" orientz="-0.7079">zpNativeHouseVenetian</unit>
+		<unit variation="240" posx="-65.2457" posz="-11.0381" orientx="0.7070" orienty="0.0000" orientz="-0.7072">HarbourPathBlock</unit>
+		<unit variation="5" posx="-60.9779" posz="-12.0273" orientx="0.7076" orienty="0.0000" orientz="-0.7066">zpNativeHouseVenetian</unit>
+		<unit variation="5" posx="-51.8152" posz="-12.1017" orientx="0.7076" orienty="0.0000" orientz="-0.7066">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-47.2500" posz="-12.8086" orientx="0.7063" orienty="0.0000" orientz="0.7079">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-39.7178" posz="-13.0012" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">zpNativeHouseVenetian</unit>
+		<unit variation="232" posx="-38.1449" posz="-12.1766" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="52" posx="-29.3332" posz="-13.6962" orientx="-0.7075" orienty="0.0000" orientz="0.7067">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-27.1095" posz="-12.7454" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="189" posx="-8.8539" posz="-12.9304" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeUnitVenetianMale</unit>
+		<unit variation="251" posx="7.1090" posz="-13.8387" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="240" posx="7.3324" posz="-10.6711" orientx="-0.9240" orienty="0.0000" orientz="-0.3824">HarbourPathBlock</unit>
+		<unit variation="149" posx="-64.7509" posz="-10.9826" orientx="-0.7079" orienty="0.0000" orientz="0.7063">zpNativeHouseVenetian</unit>
+		<unit variation="77" posx="-54.2122" posz="-11.6370" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="149" posx="-49.6907" posz="-10.2205" orientx="0.7063" orienty="0.0000" orientz="0.7079">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-37.3194" posz="-11.2563" orientx="-0.0001" orienty="0.0000" orientz="1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-30.2048" posz="-11.3706" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-33.9143" posz="-11.3101" orientx="-0.0001" orienty="0.0000" orientz="1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="211" posx="-8.2263" posz="-10.9742" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="11" posx="4.3841" posz="-10.1028" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="240" posx="8.8153" posz="-8.3469" orientx="0.7069" orienty="0.0000" orientz="-0.7073">HarbourPathBlock</unit>
+		<unit variation="240" posx="6.0684" posz="-8.8116" orientx="-0.7073" orienty="0.0000" orientz="-0.7069">HarbourPathBlock</unit>
+		<unit variation="240" posx="-62.5714" posz="-8.7633" orientx="0.7070" orienty="0.0000" orientz="-0.7072">HarbourPathBlock</unit>
+		<unit variation="69" posx="-42.0036" posz="-5.3583" orientx="-0.7765" orienty="0.0000" orientz="0.6301">zpHarbourPlatform</unit>
+		<unit variation="149" posx="-63.2435" posz="-9.5445" orientx="-0.7079" orienty="0.0000" orientz="0.7063">zpNativeHouseVenetian</unit>
+		<unit variation="202" posx="-37.1207" posz="-8.7769" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetian</unit>
+		<unit variation="136" posx="-11.3317" posz="-8.1491" orientx="-0.7074" orienty="-0.0000" orientz="-0.7069">zpNativeUnitVenetianPoles</unit>
+		<unit variation="5" posx="-0.0630" posz="-9.9416" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeUnitVenetianGuard</unit>
+		<unit variation="240" posx="11.9580" posz="-6.8729" orientx="0.7069" orienty="0.0000" orientz="-0.7073">HarbourPathBlock</unit>
+		<unit variation="240" posx="-60.8965" posz="-7.2808" orientx="0.7070" orienty="0.0000" orientz="-0.7072">HarbourPathBlock</unit>
+		<unit variation="240" posx="3.7165" posz="-7.1628" orientx="-0.3830" orienty="0.0000" orientz="-0.9238">HarbourPathBlock</unit>
+		<unit variation="149" posx="-60.6945" posz="-7.0005" orientx="-0.7079" orienty="0.0000" orientz="0.7063">zpNativeHouseVenetian</unit>
+		<unit variation="127" posx="-59.3053" posz="-7.8252" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="5" posx="-56.5211" posz="-7.5915" orientx="0.7076" orienty="0.0000" orientz="-0.7066">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-41.0579" posz="-7.3155" orientx="0.7086" orienty="0.0000" orientz="-0.7056">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-44.4290" posz="-6.3304" orientx="-0.7056" orienty="0.0000" orientz="-0.7086">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-43.4422" posz="-7.2302" orientx="-0.7056" orienty="0.0000" orientz="-0.7086">zpNativeHouseVenetian</unit>
+		<unit variation="157" posx="-12.3991" posz="-7.5189" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpNativeUnitVenetianMale</unit>
+		<unit variation="229" posx="-6.3855" posz="-6.5486" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeHouseVenetian</unit>
+		<unit variation="197" posx="-0.7020" posz="-7.5044" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="240" posx="-57.3833" posz="-3.9153" orientx="0.7070" orienty="0.0000" orientz="-0.7072">HarbourPathBlock</unit>
+		<unit variation="240" posx="13.6248" posz="-5.1000" orientx="0.7069" orienty="0.0000" orientz="-0.7073">HarbourPathBlock</unit>
+		<unit variation="240" posx="-59.1202" posz="-5.5719" orientx="0.7070" orienty="0.0000" orientz="-0.7072">HarbourPathBlock</unit>
+		<unit variation="149" posx="-55.5269" posz="-4.2367" orientx="0.7063" orienty="0.0000" orientz="0.7079">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-57.9535" posz="-4.1344" orientx="-0.7079" orienty="0.0000" orientz="0.7063">zpNativeHouseVenetian</unit>
+		<unit variation="240" posx="-57.0822" posz="-3.3884" orientx="0.7070" orienty="0.0000" orientz="-0.7072">HarbourPathBlock</unit>
+		<unit variation="164" posx="-26.7109" posz="-5.3668" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="239" posx="-17.9575" posz="-4.9818" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpBridgeFace</unit>
+		<unit variation="240" posx="-3.1996" posz="-4.4797" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpBridgeFence</unit>
+		<unit variation="240" posx="15.3208" posz="-2.8044" orientx="0.7069" orienty="0.0000" orientz="-0.7073">HarbourPathBlock</unit>
+		<unit variation="240" posx="-56.8348" posz="-1.6659" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="240" posx="-58.1192" posz="-0.1911" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="100" posx="-50.5742" posz="-3.2947" orientx="0.7076" orienty="0.0000" orientz="-0.7066">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="-46.7271" posz="-3.8994" orientx="-0.7056" orienty="0.0000" orientz="-0.7086">zpNativeHouseVenetian</unit>
+		<unit variation="5" posx="-42.2056" posz="-3.8771" orientx="0.7076" orienty="0.0000" orientz="-0.7066">zpNativeHouseVenetian</unit>
+		<unit variation="52" posx="-34.8573" posz="-2.7847" orientx="-0.0002" orienty="0.0000" orientz="1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="239" posx="-15.9200" posz="-3.3911" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpBridgeFace</unit>
+		<unit variation="120" posx="0.6095" posz="-3.6883" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="240" posx="17.3016" posz="-1.4679" orientx="0.7069" orienty="0.0000" orientz="-0.7073">HarbourPathBlock</unit>
+		<unit variation="69" posx="-50.2122" posz="2.9752" orientx="-0.7765" orienty="0.0000" orientz="0.6301">zpHarbourPlatform</unit>
+		<unit variation="249" posx="-2.6719" posz="2.0450" orientx="1.0000" orienty="0.0000" orientz="0.0036">zpHarbourPlatform</unit>
+		<unit variation="149" posx="-48.9346" posz="-1.4403" orientx="-0.7056" orienty="0.0000" orientz="-0.7086">zpNativeHouseVenetian</unit>
+		<unit variation="136" posx="-30.5025" posz="-0.9801" orientx="-0.7074" orienty="-0.0000" orientz="-0.7069">zpNativeUnitVenetianPoles</unit>
+		<unit variation="136" posx="-25.7373" posz="-0.9694" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="240" posx="19.7503" posz="1.2100" orientx="0.7069" orienty="0.0000" orientz="-0.7073">HarbourPathBlock</unit>
+		<unit variation="240" posx="-59.7966" posz="1.4863" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="52" posx="-2.0385" posz="3.0324" orientx="-0.0089" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
+		<unit variation="149" posx="-51.7506" posz="1.2951" orientx="-0.7056" orienty="0.0000" orientz="-0.7086">zpNativeHouseVenetian</unit>
+		<unit variation="232" posx="-43.5973" posz="1.1118" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetianB</unit>
+		<unit variation="240" posx="22.4090" posz="3.9381" orientx="0.7069" orienty="0.0000" orientz="-0.7073">HarbourPathBlock</unit>
+		<unit variation="240" posx="-60.7171" posz="2.5977" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="240" posx="-61.0590" posz="3.2269" orientx="0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
+		<unit variation="52" posx="-54.9073" posz="6.5582" orientx="-0.7133" orienty="0.0000" orientz="-0.7008">zpHarbourPlatform</unit>
+		<unit variation="197" posx="-60.3193" posz="3.9312" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpNativeUnitVenetianShips</unit>
+		<unit variation="149" posx="-51.8581" posz="3.6924" orientx="-0.7086" orienty="0.0000" orientz="0.7057">zpNativeHouseVenetian</unit>
+		<unit variation="5" posx="-48.4359" posz="2.1895" orientx="0.7076" orienty="0.0000" orientz="-0.7066">zpNativeHouseVenetian</unit>
+		<unit variation="113" posx="-42.0458" posz="2.5018" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpBridgeFence</unit>
+		<unit variation="220" posx="-41.9937" posz="3.1541" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="107" posx="-24.0000" posz="5.0000" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">zpValuableSource</unit>
+		<unit variation="149" posx="7.8381" posz="3.8113" orientx="0.0018" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="11.2667" posz="3.8509" orientx="0.0018" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="14.9369" posz="3.9026" orientx="0.0018" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="17.1828" posz="3.9882" orientx="0.0018" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="232" posx="14.9704" posz="3.0997" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="240" posx="24.5201" posz="5.8482" orientx="1.0000" orienty="0.0000" orientz="-0.0003">HarbourPathBlock</unit>
+		<unit variation="240" posx="-61.2720" posz="5.4833" orientx="0.9238" orienty="0.0000" orientz="-0.3828">HarbourPathBlock</unit>
+		<unit variation="69" posx="12.9027" posz="7.8815" orientx="-0.9945" orienty="0.0000" orientz="-0.1052">zpHarbourPlatform</unit>
+		<unit variation="232" posx="-47.2616" posz="5.0609" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetianB</unit>
+		<unit variation="136" posx="-38.8725" posz="4.5015" orientx="-0.7074" orienty="-0.0000" orientz="-0.7069">zpNativeUnitVenetianPoles</unit>
+		<unit variation="149" posx="5.8468" posz="5.4843" orientx="-1.0000" orienty="0.0000" orientz="-0.0017">zpNativeHouseVenetian</unit>
+		<unit variation="136" posx="8.5945" posz="4.7422" orientx="-0.7074" orienty="-0.0000" orientz="-0.7069">zpNativeUnitVenetianPoles</unit>
+		<unit variation="167" posx="21.3307" posz="5.6172" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeUnitVenetianShips</unit>
+		<unit variation="222" posx="-30.0000" posz="7.0000" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpValuableSource</unit>
+		<unit variation="52" posx="-58.0321" posz="9.8164" orientx="0.7009" orienty="0.0000" orientz="-0.7133">zpHarbourPlatform</unit>
+		<unit variation="52" posx="2.0761" posz="10.7239" orientx="-0.7134" orienty="0.0000" orientz="-0.7008">zpHarbourPlatform</unit>
+		<unit variation="166" posx="-37.3022" posz="7.9364" orientx="-0.9237" orienty="-0.0000" orientz="0.3831">zpNativeUnitVenetian</unit>
+		<unit variation="166" posx="-36.1073" posz="7.9669" orientx="-0.9237" orienty="-0.0000" orientz="0.3831">zpNativeUnitVenetian</unit>
+		<unit variation="5" posx="9.4091" posz="6.9550" orientx="-1.0000" orienty="0.0000" orientz="-0.0016">zpNativeHouseVenetian</unit>
+		<unit variation="5" posx="15.8552" posz="7.0989" orientx="-1.0000" orienty="0.0000" orientz="-0.0016">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="19.0937" posz="6.0562" orientx="1.0000" orienty="0.0000" orientz="0.0018">zpNativeHouseVenetian</unit>
+		<unit variation="240" posx="26.1721" posz="9.7109" orientx="1.0000" orienty="0.0000" orientz="-0.0003">HarbourPathBlock</unit>
+		<unit variation="240" posx="-60.1658" posz="9.0585" orientx="0.7070" orienty="0.0000" orientz="-0.7072">HarbourPathBlock</unit>
+		<unit variation="217" posx="-36.6411" posz="8.4781" orientx="0.0019" orienty="0.0000" orientz="-1.0000">zpNatEUPropObelisk</unit>
+		<unit variation="52" posx="24.4314" posz="11.3371" orientx="0.7008" orienty="0.0000" orientz="-0.7134">zpHarbourPlatform</unit>
+		<unit variation="166" posx="-37.3022" posz="9.2443" orientx="-0.9237" orienty="-0.0000" orientz="0.3831">zpNativeUnitVenetian</unit>
+		<unit variation="166" posx="-36.0264" posz="9.1320" orientx="-0.9237" orienty="-0.0000" orientz="0.3831">zpNativeUnitVenetian</unit>
+		<unit variation="52" posx="-15.8645" posz="8.2303" orientx="-0.7069" orienty="0.0000" orientz="-0.7073">zpNativeHouseVenetian</unit>
+		<unit variation="137" posx="-2.9411" posz="9.9890" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNativeUnitVenetianShips</unit>
+		<unit variation="149" posx="5.9911" posz="8.0336" orientx="-1.0000" orienty="0.0000" orientz="-0.0017">zpNativeHouseVenetian</unit>
+		<unit variation="52" posx="5.1085" posz="9.4497" orientx="-0.7057" orienty="0.0000" orientz="-0.7085">zpNativeHouseVenetian</unit>
+		<unit variation="149" posx="19.0426" posz="8.7267" orientx="1.0000" orienty="0.0000" orientz="0.0018">zpNativeHouseVenetian</unit>
+		<unit variation="104" posx="26.6716" posz="9.1781" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeMooringVenetian</unit>
+		<unit variation="240" posx="-57.7535" posz="10.6315" orientx="0.7070" orienty="0.0000" orientz="-0.7072">HarbourPathBlock</unit>
+		<unit variation="223" posx="-32.0000" posz="11.0000" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpValuableSource</unit>
+		<unit variation="79" posx="-26.4161" posz="12.1587" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCNationalBank</unit>
+		<unit variation="52" posx="-60.1716" posz="11.2149" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpNativeUnitVenetianShips</unit>
+		<unit variation="240" posx="-56.5099" posz="12.3146" orientx="0.7070" orienty="0.0000" orientz="-0.7072">HarbourPathBlock</unit>
+		<unit variation="79" posx="-46.8864" posz="11.2627" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianLand</unit>
+		<unit variation="88" posx="-20.1340" posz="10.1995" orientx="-0.9237" orienty="-0.0000" orientz="0.3831">zpNativeUnitVenetian</unit>
+		<unit variation="136" posx="14.4001" posz="11.2342" orientx="-0.7074" orienty="-0.0000" orientz="-0.7069">zpNativeUnitVenetianPoles</unit>
+		<unit variation="240" posx="24.8580" posz="12.2630" orientx="0.9240" orienty="0.0000" orientz="0.3824">HarbourPathBlock</unit>
+		<unit variation="240" posx="26.9391" posz="12.5246" orientx="0.9238" orienty="0.0000" orientz="-0.3829">HarbourPathBlock</unit>
+		<unit variation="52" posx="-2.8194" posz="15.3550" orientx="-0.7134" orienty="0.0000" orientz="-0.7008">zpHarbourPlatform</unit>
+		<unit variation="249" posx="-2.6515" posz="15.2729" orientx="-0.7079" orienty="0.0000" orientz="0.7063">zpHarbourPlatform</unit>
+		<unit variation="232" posx="-16.0462" posz="12.3997" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetianB</unit>
+		<unit variation="240" posx="-53.2565" posz="14.0125" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
+		<unit variation="126" posx="-39.6976" posz="15.9558" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="144" posx="6.9000" posz="14.7676" orientx="0.7096" orienty="0.0000" orientz="-0.7046">zpNativeHouseVenetian</unit>
+		<unit variation="240" posx="-50.8776" posz="16.8696" orientx="1.0000" orienty="0.0000" orientz="-0.0002">HarbourPathBlock</unit>
+		<unit variation="52" posx="-8.3149" posz="20.7343" orientx="-0.7134" orienty="0.0000" orientz="-0.7008">zpHarbourPlatform</unit>
+		<unit variation="39" posx="21.7251" posz="17.4623" orientx="-1.0000" orienty="-0.0000" orientz="-0.0019">zpNativeHouseVenetianLand</unit>
+		<unit variation="240" posx="-51.0632" posz="19.3904" orientx="1.0000" orienty="0.0000" orientz="-0.0002">HarbourPathBlock</unit>
+		<unit variation="240" posx="-51.1996" posz="21.7605" orientx="1.0000" orienty="0.0000" orientz="-0.0002">HarbourPathBlock</unit>
+		<unit variation="227" posx="-31.4541" posz="18.2882" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="232" posx="-1.4913" posz="18.9721" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseVenetianB</unit>
+		<unit variation="74" posx="-36.6695" posz="21.7769" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFace</unit>
+		<unit variation="239" posx="-35.3307" posz="21.7025" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFace</unit>
+		<unit variation="152" posx="14.3194" posz="24.4123" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropStatue</unit>
+		<unit variation="6" posx="13.9057" posz="23.3314" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="8" posx="15.7518" posz="23.3657" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="52" posx="-25.8713" posz="26.3571" orientx="-0.0088" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
+		<unit variation="249" posx="-25.6217" posz="26.2312" orientx="-0.9861" orienty="0.0000" orientz="-0.1663">zpHarbourPlatform</unit>
+		<unit variation="52" posx="-46.0712" posz="26.0821" orientx="-0.0110" orienty="0.0000" orientz="-0.9999">zpHarbourPlatform</unit>
+		<unit variation="29" posx="-45.8172" posz="22.8395" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeUnitVenetianShips</unit>
+		<unit variation="240" posx="-50.9688" posz="25.1602" orientx="1.0000" orienty="0.0000" orientz="-0.0002">HarbourPathBlock</unit>
+		<unit variation="6" posx="12.5603" posz="24.9404" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="1" posx="15.5337" posz="25.7798" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="52" posx="-51.9200" posz="28.7902" orientx="-0.7134" orienty="0.0000" orientz="-0.7007">zpHarbourPlatform</unit>
+		<unit variation="52" posx="-10.8981" posz="27.2257" orientx="-1.0000" orienty="0.0000" orientz="0.0089">zpHarbourPlatform</unit>
+		<unit variation="204" posx="-22.7391" posz="24.4733" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeMooringVenetian</unit>
+		<unit variation="136" posx="9.0671" posz="25.3109" orientx="-0.7074" orienty="-0.0000" orientz="-0.7069">zpNativeUnitVenetianPoles</unit>
+		<unit variation="144" posx="23.9962" posz="24.5396" orientx="1.0000" orienty="0.0000" orientz="0.0018">zpNativeHouseVenetian</unit>
+		<unit variation="0" posx="13.5218" posz="26.4959" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="9" posx="15.6426" posz="28.0533" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="249" posx="-53.0935" posz="30.7613" orientx="-0.1663" orienty="0.0000" orientz="0.9861">zpHarbourPlatform</unit>
+		<unit variation="240" posx="-51.3437" posz="28.1592" orientx="1.0000" orienty="0.0000" orientz="-0.0002">HarbourPathBlock</unit>
+		<unit variation="181" posx="-18.9216" posz="26.2476" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeUnitVenetianShips</unit>
+		<unit variation="144" posx="-5.3112" posz="27.4550" orientx="0.0020" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="134" posx="1.6298" posz="26.5031" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="215" posx="4.8869" posz="29.6497" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropStatue</unit>
+		<unit variation="186" posx="-35.1459" posz="28.4149" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeUnitVenetianMale</unit>
+		<unit variation="217" posx="-33.1623" posz="28.6592" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianFemale</unit>
+		<unit variation="177" posx="-30.5754" posz="29.2280" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeUnitVenetianMale</unit>
+		<unit variation="129" posx="-31.3443" posz="28.4183" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="172" posx="-21.9521" posz="28.1215" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="150" posx="-26.4301" posz="29.1529" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpNativeUnitVenetianMale</unit>
+		<unit variation="115" posx="-25.1241" posz="28.1989" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="102" posx="-19.7904" posz="29.9141" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="201" posx="1.1151" posz="28.4358" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianLeader</unit>
+		<unit variation="105" posx="10.2498" posz="28.8731" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeUnitVenetianFemale</unit>
+		<unit variation="48" posx="16.6738" posz="29.8649" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="240" posx="-52.5902" posz="30.3279" orientx="0.3829" orienty="0.0000" orientz="0.9238">HarbourPathBlock</unit>
+		<unit variation="52" posx="-52.8976" posz="33.9752" orientx="-1.0000" orienty="0.0000" orientz="0.0089">zpHarbourPlatform</unit>
+		<unit variation="52" posx="-10.8645" posz="33.2675" orientx="-1.0000" orienty="0.0000" orientz="0.0089">zpHarbourPlatform</unit>
+		<unit variation="240" posx="-52.8745" posz="32.8210" orientx="1.0000" orienty="0.0000" orientz="-0.0002">HarbourPathBlock</unit>
+		<unit variation="128" posx="22.4430" posz="34.5412" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseMaltese</unit>
+		<unit variation="197" posx="21.3551" posz="32.9831" orientx="-0.0000" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="197" posx="17.8116" posz="33.0117" orientx="-0.0000" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="152" posx="-39.7652" posz="33.4531" orientx="1.0000" orienty="-0.0000" orientz="-0.0004">deNatEUPropStatue</unit>
+		<unit variation="3" posx="-39.9324" posz="33.3872" orientx="0.7068" orienty="-0.0000" orientz="-0.7074">zpPropsFlowers</unit>
+		<unit variation="3" posx="-40.3721" posz="34.1379" orientx="-0.9237" orienty="-0.0000" orientz="0.3831">zpPropsFlowers</unit>
+		<unit variation="39" posx="-48.4523" posz="32.5177" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianLand</unit>
+		<unit variation="185" posx="-27.1124" posz="32.9006" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHouseVenetian</unit>
+		<unit variation="166" posx="-19.5891" posz="32.8954" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="104" posx="9.9605" posz="32.7190" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeUnitVenetianFence</unit>
+		<unit variation="255" posx="7.7477" posz="33.3170" orientx="-0.9239" orienty="-0.0000" orientz="0.3827">zpNativeUnitVenetianMale</unit>
+		<unit variation="127" posx="12.2614" posz="32.5669" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeUnitVenetianFence</unit>
+		<unit variation="37" posx="16.2707" posz="32.3856" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeUnitVenetianFence</unit>
+		<unit variation="133" posx="14.1927" posz="32.6658" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeUnitVenetianFence</unit>
+		<unit variation="160" posx="17.9549" posz="32.4814" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianFence</unit>
+		<unit variation="252" posx="19.5131" posz="32.3966" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeUnitVenetianFence</unit>
+		<unit variation="240" posx="-53.2582" posz="35.7993" orientx="1.0000" orienty="0.0000" orientz="-0.0002">HarbourPathBlock</unit>
+		<unit variation="134" posx="15.1412" posz="36.9274" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseMaltese</unit>
+		<unit variation="197" posx="22.9321" posz="36.6452" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">SPCPathBlock3</unit>
+		<unit variation="197" posx="14.6324" posz="33.5002" orientx="-0.0000" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="197" posx="13.5712" posz="33.2382" orientx="-0.0000" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="197" posx="11.1362" posz="36.4962" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">SPCPathBlock3</unit>
+		<unit variation="197" posx="22.8502" posz="36.8570" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">SPCPathBlock3</unit>
+		<unit variation="197" posx="21.5618" posz="36.4490" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">SPCPathBlock3</unit>
+		<unit variation="196" posx="22.8604" posz="42.3525" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropWingC</unit>
+		<unit variation="134" posx="1.3325" posz="35.9836" orientx="-0.9240" orienty="0.0000" orientz="-0.3823">zpNativeUnitVenetianGuard</unit>
+		<unit variation="171" posx="9.9466" posz="34.4276" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeUnitVenetianFence</unit>
+		<unit variation="197" posx="22.9341" posz="38.7363" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">SPCPathBlock3</unit>
+		<unit variation="193" posx="6.3624" posz="39.1827" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSocketMaltese</unit>
+		<unit variation="181" posx="-54.8987" posz="40.7760" orientx="0.0246" orienty="0.0000" orientz="0.9997">zpHarbourPlatform</unit>
+		<unit variation="240" posx="-54.6937" posz="37.7884" orientx="0.0002" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="197" posx="11.2693" posz="40.3820" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">SPCPathBlock3</unit>
+		<unit variation="197" posx="22.3063" posz="41.0931" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">SPCPathBlock3</unit>
+		<unit variation="155" posx="-60.1059" posz="41.2002" orientx="-0.0190" orienty="0.0000" orientz="0.9998">zpHarbourPlatform</unit>
+		<unit variation="240" posx="-56.3853" posz="39.4105" orientx="0.0002" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="240" posx="-57.7475" posz="39.0608" orientx="0.0002" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="232" posx="-50.1544" posz="39.7574" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="197" posx="21.2177" posz="43.2136" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">SPCPathBlock3</unit>
+		<unit variation="197" posx="22.8441" posz="42.4702" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">SPCPathBlock3</unit>
+		<unit variation="2" posx="-2.8535" posz="41.5891" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="6" posx="20.7920" posz="42.2404" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpMalteseFlag</unit>
+		<unit variation="239" posx="-14.2300" posz="41.4847" orientx="-0.0015" orienty="0.0000" orientz="1.0000">zpBridgeFace</unit>
+		<unit variation="240" posx="-54.6668" posz="42.7448" orientx="0.0002" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="240" posx="-60.0611" posz="41.1720" orientx="0.0002" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="160" posx="16.4739" posz="47.3010" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpSPCCathedral</unit>
+		<unit variation="158" posx="-32.8850" posz="50.0048" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSanMarco</unit>
+		<unit variation="3" posx="-5.4554" posz="42.1783" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="237" posx="-3.8943" posz="43.3956" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropStatue</unit>
+		<unit variation="240" posx="-56.9694" posz="43.0479" orientx="0.0002" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="173" posx="-14.1721" posz="43.8053" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="134" posx="1.0271" posz="42.2240" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpNativeUnitVenetianGuard</unit>
+		<unit variation="240" posx="-53.4857" posz="44.3123" orientx="0.0002" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
+		<unit variation="197" posx="7.1484" posz="43.9691" orientx="0.0000" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="197" posx="4.6081" posz="46.8161" orientx="1.0000" orienty="-0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="197" posx="22.7691" posz="47.2817" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">SPCPathBlock3</unit>
+		<unit variation="11" posx="-4.2979" posz="44.5715" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="0" posx="-4.1543" posz="45.0765" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="2" posx="-2.5665" posz="44.2730" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="88" posx="-46.3850" posz="44.0725" orientx="-0.9237" orienty="-0.0000" orientz="0.3831">zpNativeUnitVenetian</unit>
+		<unit variation="183" posx="-8.9294" posz="44.2593" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeUnitVenetianMale</unit>
+		<unit variation="136" posx="3.3630" posz="44.3214" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeUnitVenetianFence</unit>
+		<unit variation="197" posx="22.1202" posz="48.8916" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">SPCPathBlock3</unit>
+		<unit variation="232" posx="-49.9763" posz="46.2750" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="239" posx="-13.8027" posz="46.0877" orientx="0.0016" orienty="0.0000" orientz="-1.0000">zpBridgeFace</unit>
+		<unit variation="4" posx="-5.1514" posz="47.2320" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeUnitVenetianFemale</unit>
+		<unit variation="221" posx="3.3894" posz="46.0357" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeUnitVenetianFence</unit>
+		<unit variation="125" posx="-1.7411" posz="48.3846" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="91" posx="3.3682" posz="48.0836" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeUnitVenetianFence</unit>
+		<unit variation="67" posx="10.8000" posz="49.5648" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="30" posx="23.4978" posz="48.2040" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="56" posx="6.3038" posz="51.3930" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseMaltese</unit>
+		<unit variation="197" posx="1.2713" posz="50.9717" orientx="-0.0000" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="197" posx="-4.1657" posz="52.9413" orientx="1.0000" orienty="-0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="117" posx="1.7346" posz="52.3138" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNatEUPropWingC</unit>
+		<unit variation="197" posx="-1.2147" posz="51.4984" orientx="-0.0000" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="75" posx="1.6855" posz="53.5435" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpBridgeFence</unit>
+		<unit variation="224" posx="12.8821" posz="53.3129" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="93" posx="11.6013" posz="53.1417" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="75" posx="14.0768" posz="53.7812" orientx="0.0020" orienty="0.0000" orientz="-1.0000">zpBridgeFence</unit>
+		<unit variation="9" posx="-4.9162" posz="55.4663" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="79" posx="-46.8877" posz="54.4060" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianLand</unit>
+		<unit variation="153" posx="15.1925" posz="55.7045" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="231" posx="17.0740" posz="54.7895" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="127" posx="15.1876" posz="54.7152" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="197" posx="9.6328" posz="56.3470" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="197" posx="18.3081" posz="56.2559" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="197" posx="16.3130" posz="56.2372" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="197" posx="20.6789" posz="56.1371" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="197" posx="-0.6802" posz="56.1712" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="197" posx="4.1986" posz="56.2791" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+	</units>
+	<tiles>
+		<tilegroup type="Shoreline" subtype="new_england\shoreline2_ne">
+			<block startx="-34" startz="-42" endx="-34" endz="-42"></block>
+			<block startx="-33" startz="-42" endx="-33" endz="-42"></block>
+			<block startx="-32" startz="-42" endx="-32" endz="-42"></block>
+			<block startx="-31" startz="-42" endx="-31" endz="-42"></block>
+			<block startx="-30" startz="-42" endx="-30" endz="-42"></block>
+			<block startx="-29" startz="-42" endx="-29" endz="-42"></block>
+			<block startx="-28" startz="-42" endx="-28" endz="-42"></block>
+			<block startx="-27" startz="-42" endx="-27" endz="-42"></block>
+			<block startx="-26" startz="-42" endx="-26" endz="-42"></block>
+			<block startx="-25" startz="-42" endx="-25" endz="-42"></block>
+			<block startx="-24" startz="-42" endx="-24" endz="-42"></block>
+			<block startx="-23" startz="-42" endx="-23" endz="-42"></block>
+			<block startx="-22" startz="-42" endx="-22" endz="-42"></block>
+			<block startx="-21" startz="-42" endx="-21" endz="-42"></block>
+			<block startx="-20" startz="-42" endx="-20" endz="-42"></block>
+			<block startx="-19" startz="-42" endx="-19" endz="-42"></block>
+			<block startx="-18" startz="-42" endx="-18" endz="-42"></block>
+			<block startx="-17" startz="-42" endx="-17" endz="-42"></block>
+			<block startx="-16" startz="-42" endx="-16" endz="-42"></block>
+			<block startx="-15" startz="-42" endx="-15" endz="-42"></block>
+			<block startx="-14" startz="-42" endx="-14" endz="-42"></block>
+			<block startx="-13" startz="-42" endx="-13" endz="-42"></block>
+			<block startx="-12" startz="-42" endx="-12" endz="-42"></block>
+			<block startx="-11" startz="-42" endx="-11" endz="-42"></block>
+			<block startx="-10" startz="-42" endx="-10" endz="-42"></block>
+			<block startx="-9" startz="-42" endx="-9" endz="-42"></block>
+			<block startx="-8" startz="-42" endx="-8" endz="-42"></block>
+			<block startx="-7" startz="-42" endx="-7" endz="-42"></block>
+			<block startx="-6" startz="-42" endx="-6" endz="-42"></block>
+			<block startx="-34" startz="36" endx="-34" endz="41"></block>
+			<block startx="-33" startz="36" endx="-33" endz="41"></block>
+			<block startx="-32" startz="36" endx="-32" endz="41"></block>
+			<block startx="-31" startz="36" endx="-31" endz="41"></block>
+			<block startx="-30" startz="36" endx="-30" endz="41"></block>
+			<block startx="-29" startz="36" endx="-29" endz="41"></block>
+			<block startx="-28" startz="36" endx="-28" endz="41"></block>
+			<block startx="-27" startz="36" endx="-27" endz="41"></block>
+			<block startx="-26" startz="36" endx="-26" endz="41"></block>
+			<block startx="-25" startz="36" endx="-25" endz="41"></block>
+			<block startx="-24" startz="36" endx="-24" endz="41"></block>
+			<block startx="-23" startz="36" endx="-23" endz="41"></block>
+			<block startx="-22" startz="36" endx="-22" endz="41"></block>
+			<block startx="-21" startz="36" endx="-21" endz="41"></block>
+			<block startx="-20" startz="36" endx="-20" endz="41"></block>
+			<block startx="-19" startz="36" endx="-19" endz="41"></block>
+			<block startx="-18" startz="36" endx="-18" endz="41"></block>
+			<block startx="-17" startz="36" endx="-17" endz="41"></block>
+			<block startx="-16" startz="36" endx="-16" endz="41"></block>
+			<block startx="-15" startz="36" endx="-15" endz="41"></block>
+			<block startx="-14" startz="36" endx="-14" endz="41"></block>
+			<block startx="-13" startz="36" endx="-13" endz="41"></block>
+			<block startx="-12" startz="36" endx="-12" endz="41"></block>
+			<block startx="-11" startz="36" endx="-11" endz="41"></block>
+			<block startx="-10" startz="36" endx="-10" endz="41"></block>
+			<block startx="-9" startz="36" endx="-9" endz="41"></block>
+			<block startx="-8" startz="36" endx="-8" endz="41"></block>
+			<block startx="-7" startz="36" endx="-7" endz="41"></block>
+			<block startx="-6" startz="36" endx="-6" endz="41"></block>
+			<block startx="-5" startz="36" endx="-5" endz="41"></block>
+			<block startx="-4" startz="36" endx="-4" endz="41"></block>
+			<block startx="-3" startz="36" endx="-3" endz="41"></block>
+			<block startx="-2" startz="36" endx="-2" endz="41"></block>
+			<block startx="-1" startz="36" endx="-1" endz="41"></block>
+			<block startx="0" startz="36" endx="0" endz="41"></block>
+			<block startx="1" startz="36" endx="1" endz="41"></block>
+			<block startx="2" startz="36" endx="2" endz="41"></block>
+			<block startx="3" startz="36" endx="3" endz="41"></block>
+			<block startx="4" startz="36" endx="4" endz="41"></block>
+			<block startx="5" startz="36" endx="5" endz="41"></block>
+			<block startx="6" startz="36" endx="6" endz="41"></block>
+			<block startx="7" startz="36" endx="7" endz="41"></block>
+			<block startx="8" startz="36" endx="8" endz="41"></block>
+			<block startx="9" startz="36" endx="9" endz="41"></block>
+			<block startx="10" startz="36" endx="10" endz="41"></block>
+			<block startx="11" startz="36" endx="11" endz="41"></block>
+			<block startx="12" startz="36" endx="12" endz="41"></block>
+			<block startx="13" startz="36" endx="13" endz="41"></block>
+			<block startx="14" startz="36" endx="14" endz="41"></block>
+			<block startx="15" startz="36" endx="15" endz="41"></block>
+			<block startx="16" startz="36" endx="16" endz="41"></block>
+			<block startx="17" startz="36" endx="17" endz="41"></block>
+			<block startx="18" startz="36" endx="18" endz="41"></block>
+			<block startx="19" startz="36" endx="19" endz="41"></block>
+			<block startx="20" startz="36" endx="20" endz="41"></block>
+			<block startx="21" startz="36" endx="21" endz="41"></block>
+			<block startx="22" startz="36" endx="22" endz="41"></block>
+			<block startx="23" startz="36" endx="23" endz="41"></block>
+			<block startx="24" startz="36" endx="24" endz="41"></block>
+			<block startx="25" startz="36" endx="25" endz="41"></block>
+			<block startx="26" startz="36" endx="26" endz="41"></block>
+			<block startx="30" startz="12" endx="30" endz="19"></block>
+			<block startx="31" startz="12" endx="31" endz="19"></block>
+			<block startx="32" startz="12" endx="32" endz="19"></block>
+			<block startx="33" startz="12" endx="33" endz="19"></block>
+			<block startx="34" startz="12" endx="34" endz="19"></block>
+			<block startx="30" startz="20" endx="30" endz="27"></block>
+			<block startx="31" startz="20" endx="31" endz="27"></block>
+			<block startx="32" startz="20" endx="32" endz="27"></block>
+			<block startx="33" startz="20" endx="33" endz="27"></block>
+			<block startx="34" startz="20" endx="34" endz="27"></block>
+			<block startx="30" startz="28" endx="30" endz="35"></block>
+			<block startx="31" startz="28" endx="31" endz="35"></block>
+			<block startx="32" startz="28" endx="32" endz="35"></block>
+			<block startx="33" startz="28" endx="33" endz="35"></block>
+			<block startx="34" startz="28" endx="34" endz="35"></block>
+			<block startx="27" startz="36" endx="27" endz="41"></block>
+			<block startx="28" startz="36" endx="28" endz="41"></block>
+			<block startx="29" startz="36" endx="29" endz="41"></block>
+			<block startx="30" startz="36" endx="30" endz="41"></block>
+			<block startx="31" startz="36" endx="31" endz="41"></block>
+			<block startx="32" startz="36" endx="32" endz="41"></block>
+			<block startx="33" startz="36" endx="33" endz="41"></block>
+			<block startx="34" startz="36" endx="34" endz="41"></block>
+			<block startx="30" startz="-20" endx="30" endz="-13"></block>
+			<block startx="31" startz="-20" endx="31" endz="-13"></block>
+			<block startx="32" startz="-20" endx="32" endz="-13"></block>
+			<block startx="33" startz="-20" endx="33" endz="-13"></block>
+			<block startx="34" startz="-20" endx="34" endz="-13"></block>
+			<block startx="30" startz="-12" endx="30" endz="-5"></block>
+			<block startx="31" startz="-12" endx="31" endz="-5"></block>
+			<block startx="32" startz="-12" endx="32" endz="-5"></block>
+			<block startx="33" startz="-12" endx="33" endz="-5"></block>
+			<block startx="34" startz="-12" endx="34" endz="-5"></block>
+			<block startx="30" startz="-4" endx="30" endz="3"></block>
+			<block startx="31" startz="-4" endx="31" endz="3"></block>
+			<block startx="32" startz="-4" endx="32" endz="3"></block>
+			<block startx="33" startz="-4" endx="33" endz="3"></block>
+			<block startx="34" startz="-4" endx="34" endz="3"></block>
+			<block startx="30" startz="4" endx="30" endz="11"></block>
+			<block startx="31" startz="4" endx="31" endz="11"></block>
+			<block startx="32" startz="4" endx="32" endz="11"></block>
+			<block startx="33" startz="4" endx="33" endz="11"></block>
+			<block startx="34" startz="4" endx="34" endz="11"></block>
+			<block startx="-5" startz="-42" endx="-5" endz="-42"></block>
+			<block startx="-4" startz="-42" endx="-4" endz="-42"></block>
+			<block startx="-3" startz="-42" endx="-3" endz="-42"></block>
+			<block startx="-2" startz="-42" endx="-2" endz="-42"></block>
+			<block startx="-1" startz="-42" endx="-1" endz="-42"></block>
+			<block startx="0" startz="-42" endx="0" endz="-42"></block>
+			<block startx="1" startz="-42" endx="1" endz="-42"></block>
+			<block startx="2" startz="-42" endx="2" endz="-42"></block>
+			<block startx="3" startz="-42" endx="3" endz="-42"></block>
+			<block startx="4" startz="-42" endx="4" endz="-42"></block>
+			<block startx="5" startz="-42" endx="5" endz="-42"></block>
+			<block startx="6" startz="-42" endx="6" endz="-42"></block>
+			<block startx="7" startz="-42" endx="7" endz="-42"></block>
+			<block startx="8" startz="-42" endx="8" endz="-42"></block>
+			<block startx="9" startz="-42" endx="9" endz="-42"></block>
+			<block startx="10" startz="-42" endx="10" endz="-42"></block>
+			<block startx="11" startz="-42" endx="11" endz="-42"></block>
+			<block startx="12" startz="-42" endx="12" endz="-42"></block>
+			<block startx="13" startz="-42" endx="13" endz="-42"></block>
+			<block startx="14" startz="-42" endx="14" endz="-42"></block>
+			<block startx="15" startz="-42" endx="15" endz="-42"></block>
+			<block startx="16" startz="-42" endx="16" endz="-42"></block>
+			<block startx="17" startz="-42" endx="17" endz="-42"></block>
+			<block startx="18" startz="-42" endx="18" endz="-42"></block>
+			<block startx="19" startz="-42" endx="19" endz="-42"></block>
+			<block startx="20" startz="-42" endx="20" endz="-42"></block>
+			<block startx="21" startz="-42" endx="21" endz="-42"></block>
+			<block startx="22" startz="-42" endx="22" endz="-42"></block>
+			<block startx="23" startz="-42" endx="23" endz="-42"></block>
+			<block startx="24" startz="-42" endx="24" endz="-42"></block>
+			<block startx="25" startz="-42" endx="25" endz="-42"></block>
+			<block startx="26" startz="-42" endx="26" endz="-42"></block>
+			<block startx="27" startz="-42" endx="27" endz="-42"></block>
+			<block startx="28" startz="-42" endx="28" endz="-42"></block>
+			<block startx="29" startz="-42" endx="29" endz="-42"></block>
+			<block startx="30" startz="-42" endx="30" endz="-37"></block>
+			<block startx="31" startz="-42" endx="31" endz="-37"></block>
+			<block startx="32" startz="-42" endx="32" endz="-37"></block>
+			<block startx="33" startz="-42" endx="33" endz="-37"></block>
+			<block startx="34" startz="-42" endx="34" endz="-37"></block>
+			<block startx="30" startz="-36" endx="30" endz="-29"></block>
+			<block startx="31" startz="-36" endx="31" endz="-29"></block>
+			<block startx="32" startz="-36" endx="32" endz="-29"></block>
+			<block startx="33" startz="-36" endx="33" endz="-29"></block>
+			<block startx="34" startz="-36" endx="34" endz="-29"></block>
+			<block startx="30" startz="-28" endx="30" endz="-21"></block>
+			<block startx="31" startz="-28" endx="31" endz="-21"></block>
+			<block startx="32" startz="-28" endx="32" endz="-21"></block>
+			<block startx="33" startz="-28" endx="33" endz="-21"></block>
+			<block startx="34" startz="-28" endx="34" endz="-21"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="caribbean\seafloor_coral0_crb">
+			<block startx="-34" startz="-41" endx="-34" endz="-37"></block>
+			<block startx="-33" startz="-41" endx="-33" endz="-37"></block>
+			<block startx="-32" startz="-41" endx="-32" endz="-37"></block>
+			<block startx="-31" startz="-41" endx="-31" endz="-37"></block>
+			<block startx="-30" startz="-41" endx="-30" endz="-37"></block>
+			<block startx="-29" startz="-41" endx="-29" endz="-37"></block>
+			<block startx="-28" startz="-41" endx="-28" endz="-37"></block>
+			<block startx="-27" startz="-41" endx="-27" endz="-37"></block>
+			<block startx="-26" startz="-41" endx="-26" endz="-37"></block>
+			<block startx="-25" startz="-41" endx="-25" endz="-37"></block>
+			<block startx="-24" startz="-41" endx="-24" endz="-37"></block>
+			<block startx="-23" startz="-41" endx="-23" endz="-37"></block>
+			<block startx="-22" startz="-41" endx="-22" endz="-37"></block>
+			<block startx="-34" startz="-36" endx="-34" endz="-29"></block>
+			<block startx="-33" startz="-36" endx="-33" endz="-29"></block>
+			<block startx="-32" startz="-36" endx="-32" endz="-29"></block>
+			<block startx="-31" startz="-36" endx="-31" endz="-29"></block>
+			<block startx="-30" startz="-36" endx="-30" endz="-29"></block>
+			<block startx="-34" startz="-28" endx="-34" endz="-21"></block>
+			<block startx="-33" startz="-28" endx="-33" endz="-21"></block>
+			<block startx="-32" startz="-28" endx="-32" endz="-21"></block>
+			<block startx="-31" startz="-28" endx="-31" endz="-21"></block>
+			<block startx="-30" startz="-28" endx="-30" endz="-21"></block>
+			<block startx="-29" startz="-28" endx="-22" endz="-21"></block>
+			<block startx="-29" startz="-36" endx="-22" endz="-29"></block>
+			<block startx="-21" startz="-36" endx="-6" endz="-21"></block>
+			<block startx="-21" startz="-41" endx="-21" endz="-37"></block>
+			<block startx="-20" startz="-41" endx="-20" endz="-37"></block>
+			<block startx="-19" startz="-41" endx="-19" endz="-37"></block>
+			<block startx="-18" startz="-41" endx="-18" endz="-37"></block>
+			<block startx="-17" startz="-41" endx="-17" endz="-37"></block>
+			<block startx="-16" startz="-41" endx="-16" endz="-37"></block>
+			<block startx="-15" startz="-41" endx="-15" endz="-37"></block>
+			<block startx="-14" startz="-41" endx="-14" endz="-37"></block>
+			<block startx="-13" startz="-41" endx="-13" endz="-37"></block>
+			<block startx="-12" startz="-41" endx="-12" endz="-37"></block>
+			<block startx="-11" startz="-41" endx="-11" endz="-37"></block>
+			<block startx="-10" startz="-41" endx="-10" endz="-37"></block>
+			<block startx="-9" startz="-41" endx="-9" endz="-37"></block>
+			<block startx="-8" startz="-41" endx="-8" endz="-37"></block>
+			<block startx="-7" startz="-41" endx="-7" endz="-37"></block>
+			<block startx="-6" startz="-41" endx="-6" endz="-37"></block>
+			<block startx="-34" startz="12" endx="-34" endz="19"></block>
+			<block startx="-33" startz="12" endx="-33" endz="19"></block>
+			<block startx="-32" startz="12" endx="-32" endz="19"></block>
+			<block startx="-31" startz="12" endx="-31" endz="19"></block>
+			<block startx="-30" startz="12" endx="-30" endz="19"></block>
+			<block startx="-34" startz="20" endx="-34" endz="27"></block>
+			<block startx="-33" startz="20" endx="-33" endz="27"></block>
+			<block startx="-32" startz="20" endx="-32" endz="27"></block>
+			<block startx="-31" startz="20" endx="-31" endz="27"></block>
+			<block startx="-30" startz="20" endx="-30" endz="27"></block>
+			<block startx="-29" startz="20" endx="-29" endz="27"></block>
+			<block startx="-28" startz="20" endx="-28" endz="27"></block>
+			<block startx="-27" startz="20" endx="-27" endz="20"></block>
+			<block startx="-27" startz="25" endx="-27" endz="27"></block>
+			<block startx="-29" startz="12" endx="-29" endz="19"></block>
+			<block startx="-28" startz="12" endx="-28" endz="19"></block>
+			<block startx="-27" startz="12" endx="-27" endz="13"></block>
+			<block startx="-26" startz="12" endx="-26" endz="12"></block>
+			<block startx="-25" startz="12" endx="-25" endz="12"></block>
+			<block startx="-24" startz="12" endx="-24" endz="12"></block>
+			<block startx="-23" startz="12" endx="-23" endz="12"></block>
+			<block startx="-22" startz="12" endx="-22" endz="12"></block>
+			<block startx="-34" startz="28" endx="-34" endz="35"></block>
+			<block startx="-33" startz="28" endx="-33" endz="35"></block>
+			<block startx="-32" startz="28" endx="-32" endz="35"></block>
+			<block startx="-31" startz="28" endx="-31" endz="35"></block>
+			<block startx="-30" startz="28" endx="-30" endz="35"></block>
+			<block startx="-29" startz="28" endx="-29" endz="35"></block>
+			<block startx="-28" startz="28" endx="-28" endz="35"></block>
+			<block startx="-27" startz="28" endx="-27" endz="35"></block>
+			<block startx="-26" startz="30" endx="-26" endz="35"></block>
+			<block startx="-25" startz="31" endx="-25" endz="35"></block>
+			<block startx="-24" startz="31" endx="-24" endz="35"></block>
+			<block startx="-23" startz="31" endx="-23" endz="35"></block>
+			<block startx="-22" startz="31" endx="-22" endz="35"></block>
+			<block startx="-21" startz="31" endx="-21" endz="35"></block>
+			<block startx="-20" startz="31" endx="-20" endz="35"></block>
+			<block startx="-19" startz="31" endx="-19" endz="35"></block>
+			<block startx="-18" startz="31" endx="-18" endz="35"></block>
+			<block startx="-17" startz="31" endx="-17" endz="35"></block>
+			<block startx="-16" startz="31" endx="-16" endz="35"></block>
+			<block startx="-15" startz="31" endx="-15" endz="35"></block>
+			<block startx="-14" startz="32" endx="-14" endz="35"></block>
+			<block startx="-13" startz="34" endx="-13" endz="35"></block>
+			<block startx="-12" startz="35" endx="-12" endz="35"></block>
+			<block startx="-11" startz="35" endx="-11" endz="35"></block>
+			<block startx="-10" startz="35" endx="-10" endz="35"></block>
+			<block startx="-7" startz="35" endx="-7" endz="35"></block>
+			<block startx="-6" startz="33" endx="-6" endz="35"></block>
+			<block startx="-34" startz="-20" endx="-34" endz="-13"></block>
+			<block startx="-33" startz="-20" endx="-33" endz="-13"></block>
+			<block startx="-32" startz="-20" endx="-32" endz="-13"></block>
+			<block startx="-31" startz="-20" endx="-31" endz="-13"></block>
+			<block startx="-30" startz="-20" endx="-30" endz="-13"></block>
+			<block startx="-34" startz="-12" endx="-34" endz="-5"></block>
+			<block startx="-33" startz="-12" endx="-33" endz="-5"></block>
+			<block startx="-32" startz="-12" endx="-32" endz="-5"></block>
+			<block startx="-31" startz="-12" endx="-31" endz="-5"></block>
+			<block startx="-30" startz="-12" endx="-30" endz="-5"></block>
+			<block startx="-29" startz="-12" endx="-22" endz="-5"></block>
+			<block startx="-29" startz="-20" endx="-22" endz="-13"></block>
+			<block startx="-34" startz="-4" endx="-34" endz="3"></block>
+			<block startx="-33" startz="-4" endx="-33" endz="3"></block>
+			<block startx="-32" startz="-4" endx="-32" endz="3"></block>
+			<block startx="-31" startz="-4" endx="-31" endz="3"></block>
+			<block startx="-30" startz="-4" endx="-30" endz="3"></block>
+			<block startx="-34" startz="4" endx="-34" endz="11"></block>
+			<block startx="-33" startz="4" endx="-33" endz="11"></block>
+			<block startx="-32" startz="4" endx="-32" endz="11"></block>
+			<block startx="-31" startz="4" endx="-31" endz="11"></block>
+			<block startx="-30" startz="4" endx="-30" endz="11"></block>
+			<block startx="-29" startz="4" endx="-29" endz="11"></block>
+			<block startx="-28" startz="7" endx="-28" endz="11"></block>
+			<block startx="-27" startz="10" endx="-27" endz="11"></block>
+			<block startx="-26" startz="11" endx="-26" endz="11"></block>
+			<block startx="-23" startz="11" endx="-23" endz="11"></block>
+			<block startx="-22" startz="10" endx="-22" endz="11"></block>
+			<block startx="-29" startz="-4" endx="-29" endz="3"></block>
+			<block startx="-28" startz="-4" endx="-28" endz="3"></block>
+			<block startx="-27" startz="-4" endx="-27" endz="0"></block>
+			<block startx="-26" startz="-4" endx="-26" endz="-2"></block>
+			<block startx="-25" startz="-4" endx="-25" endz="-3"></block>
+			<block startx="-24" startz="-4" endx="-24" endz="-4"></block>
+			<block startx="-23" startz="-4" endx="-23" endz="-4"></block>
+			<block startx="-12" startz="10" endx="-12" endz="10"></block>
+			<block startx="-11" startz="10" endx="-11" endz="10"></block>
+			<block startx="-10" startz="10" endx="-10" endz="10"></block>
+			<block startx="-9" startz="10" endx="-9" endz="11"></block>
+			<block startx="-8" startz="11" endx="-8" endz="11"></block>
+			<block startx="-21" startz="-20" endx="-14" endz="-13"></block>
+			<block startx="-21" startz="-12" endx="-21" endz="-6"></block>
+			<block startx="-20" startz="-12" endx="-20" endz="-7"></block>
+			<block startx="-19" startz="-12" endx="-19" endz="-7"></block>
+			<block startx="-18" startz="-12" endx="-18" endz="-7"></block>
+			<block startx="-17" startz="-12" endx="-17" endz="-7"></block>
+			<block startx="-16" startz="-12" endx="-16" endz="-11"></block>
+			<block startx="-15" startz="-12" endx="-15" endz="-12"></block>
+			<block startx="-13" startz="-20" endx="-13" endz="-14"></block>
+			<block startx="-12" startz="-20" endx="-12" endz="-15"></block>
+			<block startx="-11" startz="-20" endx="-11" endz="-16"></block>
+			<block startx="-10" startz="-20" endx="-10" endz="-16"></block>
+			<block startx="-9" startz="-20" endx="-9" endz="-17"></block>
+			<block startx="-8" startz="-20" endx="-8" endz="-17"></block>
+			<block startx="-7" startz="-20" endx="-7" endz="-17"></block>
+			<block startx="-6" startz="-20" endx="-6" endz="-17"></block>
+			<block startx="-5" startz="-20" endx="-5" endz="-18"></block>
+			<block startx="-4" startz="-20" endx="-4" endz="-19"></block>
+			<block startx="-3" startz="-20" endx="-3" endz="-19"></block>
+			<block startx="-2" startz="-19" endx="-2" endz="-19"></block>
+			<block startx="-1" startz="-20" endx="-1" endz="-19"></block>
+			<block startx="-5" startz="1" endx="-5" endz="3"></block>
+			<block startx="-4" startz="1" endx="-4" endz="3"></block>
+			<block startx="-3" startz="1" endx="-3" endz="3"></block>
+			<block startx="-2" startz="1" endx="-2" endz="2"></block>
+			<block startx="-1" startz="1" endx="-1" endz="1"></block>
+			<block startx="7" startz="0" endx="7" endz="1"></block>
+			<block startx="8" startz="-1" endx="8" endz="1"></block>
+			<block startx="9" startz="-1" endx="9" endz="1"></block>
+			<block startx="10" startz="-2" endx="10" endz="1"></block>
+			<block startx="11" startz="-3" endx="11" endz="2"></block>
+			<block startx="12" startz="-4" endx="12" endz="2"></block>
+			<block startx="13" startz="-4" endx="13" endz="3"></block>
+			<block startx="14" startz="-4" endx="14" endz="3"></block>
+			<block startx="15" startz="-4" endx="15" endz="3"></block>
+			<block startx="16" startz="-4" endx="16" endz="3"></block>
+			<block startx="17" startz="-4" endx="17" endz="3"></block>
+			<block startx="18" startz="-4" endx="18" endz="3"></block>
+			<block startx="14" startz="4" endx="14" endz="4"></block>
+			<block startx="15" startz="4" endx="15" endz="5"></block>
+			<block startx="16" startz="4" endx="16" endz="8"></block>
+			<block startx="17" startz="4" endx="17" endz="11"></block>
+			<block startx="18" startz="4" endx="18" endz="11"></block>
+			<block startx="19" startz="4" endx="26" endz="11"></block>
+			<block startx="19" startz="-4" endx="26" endz="3"></block>
+			<block startx="12" startz="-20" endx="12" endz="-20"></block>
+			<block startx="13" startz="-20" endx="13" endz="-18"></block>
+			<block startx="13" startz="-15" endx="13" endz="-15"></block>
+			<block startx="14" startz="-20" endx="14" endz="-15"></block>
+			<block startx="15" startz="-20" endx="15" endz="-14"></block>
+			<block startx="16" startz="-20" endx="16" endz="-13"></block>
+			<block startx="17" startz="-20" endx="17" endz="-13"></block>
+			<block startx="18" startz="-20" endx="18" endz="-13"></block>
+			<block startx="11" startz="-10" endx="11" endz="-10"></block>
+			<block startx="13" startz="-6" endx="13" endz="-5"></block>
+			<block startx="14" startz="-7" endx="14" endz="-5"></block>
+			<block startx="15" startz="-11" endx="15" endz="-11"></block>
+			<block startx="15" startz="-8" endx="15" endz="-5"></block>
+			<block startx="16" startz="-12" endx="16" endz="-5"></block>
+			<block startx="17" startz="-12" endx="17" endz="-5"></block>
+			<block startx="18" startz="-12" endx="18" endz="-5"></block>
+			<block startx="19" startz="-12" endx="26" endz="-5"></block>
+			<block startx="19" startz="-20" endx="26" endz="-13"></block>
+			<block startx="-5" startz="31" endx="-5" endz="35"></block>
+			<block startx="-4" startz="31" endx="-4" endz="35"></block>
+			<block startx="-3" startz="31" endx="-3" endz="35"></block>
+			<block startx="-2" startz="32" endx="-2" endz="35"></block>
+			<block startx="-1" startz="32" endx="-1" endz="35"></block>
+			<block startx="0" startz="32" endx="0" endz="35"></block>
+			<block startx="1" startz="32" endx="1" endz="35"></block>
+			<block startx="2" startz="32" endx="2" endz="35"></block>
+			<block startx="3" startz="32" endx="3" endz="35"></block>
+			<block startx="4" startz="32" endx="4" endz="35"></block>
+			<block startx="5" startz="32" endx="5" endz="35"></block>
+			<block startx="6" startz="32" endx="6" endz="35"></block>
+			<block startx="7" startz="31" endx="7" endz="35"></block>
+			<block startx="8" startz="32" endx="8" endz="35"></block>
+			<block startx="9" startz="32" endx="9" endz="35"></block>
+			<block startx="10" startz="32" endx="10" endz="35"></block>
+			<block startx="11" startz="32" endx="11" endz="35"></block>
+			<block startx="12" startz="32" endx="12" endz="35"></block>
+			<block startx="13" startz="32" endx="13" endz="35"></block>
+			<block startx="14" startz="31" endx="14" endz="35"></block>
+			<block startx="15" startz="30" endx="15" endz="35"></block>
+			<block startx="16" startz="29" endx="16" endz="35"></block>
+			<block startx="17" startz="28" endx="17" endz="35"></block>
+			<block startx="18" startz="28" endx="18" endz="35"></block>
+			<block startx="19" startz="28" endx="26" endz="35"></block>
+			<block startx="18" startz="12" endx="18" endz="19"></block>
+			<block startx="17" startz="23" endx="17" endz="27"></block>
+			<block startx="18" startz="20" endx="18" endz="27"></block>
+			<block startx="19" startz="20" endx="26" endz="27"></block>
+			<block startx="19" startz="12" endx="26" endz="19"></block>
+			<block startx="27" startz="12" endx="27" endz="19"></block>
+			<block startx="28" startz="12" endx="28" endz="19"></block>
+			<block startx="29" startz="12" endx="29" endz="19"></block>
+			<block startx="27" startz="20" endx="27" endz="27"></block>
+			<block startx="28" startz="20" endx="28" endz="27"></block>
+			<block startx="29" startz="20" endx="29" endz="27"></block>
+			<block startx="27" startz="28" endx="27" endz="35"></block>
+			<block startx="28" startz="28" endx="28" endz="35"></block>
+			<block startx="29" startz="28" endx="29" endz="35"></block>
+			<block startx="27" startz="-20" endx="27" endz="-13"></block>
+			<block startx="28" startz="-20" endx="28" endz="-13"></block>
+			<block startx="29" startz="-20" endx="29" endz="-13"></block>
+			<block startx="27" startz="-12" endx="27" endz="-5"></block>
+			<block startx="28" startz="-12" endx="28" endz="-5"></block>
+			<block startx="29" startz="-12" endx="29" endz="-5"></block>
+			<block startx="27" startz="-4" endx="27" endz="3"></block>
+			<block startx="28" startz="-4" endx="28" endz="3"></block>
+			<block startx="29" startz="-4" endx="29" endz="3"></block>
+			<block startx="27" startz="4" endx="27" endz="11"></block>
+			<block startx="28" startz="4" endx="28" endz="11"></block>
+			<block startx="29" startz="4" endx="29" endz="11"></block>
+			<block startx="-5" startz="-41" endx="-5" endz="-37"></block>
+			<block startx="-4" startz="-41" endx="-4" endz="-37"></block>
+			<block startx="-3" startz="-41" endx="-3" endz="-37"></block>
+			<block startx="-2" startz="-41" endx="-2" endz="-37"></block>
+			<block startx="-1" startz="-41" endx="-1" endz="-37"></block>
+			<block startx="0" startz="-41" endx="0" endz="-37"></block>
+			<block startx="1" startz="-41" endx="1" endz="-37"></block>
+			<block startx="2" startz="-41" endx="2" endz="-37"></block>
+			<block startx="3" startz="-41" endx="3" endz="-37"></block>
+			<block startx="4" startz="-41" endx="4" endz="-37"></block>
+			<block startx="5" startz="-41" endx="5" endz="-37"></block>
+			<block startx="6" startz="-41" endx="6" endz="-37"></block>
+			<block startx="7" startz="-41" endx="7" endz="-37"></block>
+			<block startx="8" startz="-41" endx="8" endz="-37"></block>
+			<block startx="9" startz="-41" endx="9" endz="-37"></block>
+			<block startx="10" startz="-41" endx="10" endz="-37"></block>
+			<block startx="-5" startz="-36" endx="2" endz="-29"></block>
+			<block startx="-5" startz="-28" endx="-5" endz="-21"></block>
+			<block startx="-4" startz="-28" endx="-4" endz="-21"></block>
+			<block startx="-3" startz="-28" endx="-3" endz="-21"></block>
+			<block startx="-2" startz="-28" endx="-2" endz="-21"></block>
+			<block startx="-1" startz="-28" endx="-1" endz="-22"></block>
+			<block startx="0" startz="-28" endx="0" endz="-23"></block>
+			<block startx="1" startz="-28" endx="1" endz="-24"></block>
+			<block startx="2" startz="-28" endx="2" endz="-24"></block>
+			<block startx="3" startz="-28" endx="3" endz="-25"></block>
+			<block startx="4" startz="-28" endx="4" endz="-25"></block>
+			<block startx="5" startz="-28" endx="5" endz="-25"></block>
+			<block startx="6" startz="-28" endx="6" endz="-24"></block>
+			<block startx="7" startz="-28" endx="7" endz="-23"></block>
+			<block startx="8" startz="-28" endx="8" endz="-23"></block>
+			<block startx="9" startz="-28" endx="9" endz="-23"></block>
+			<block startx="10" startz="-28" endx="10" endz="-22"></block>
+			<block startx="3" startz="-36" endx="10" endz="-29"></block>
+			<block startx="11" startz="-36" endx="18" endz="-29"></block>
+			<block startx="11" startz="-28" endx="18" endz="-21"></block>
+			<block startx="19" startz="-28" endx="26" endz="-21"></block>
+			<block startx="19" startz="-36" endx="19" endz="-29"></block>
+			<block startx="20" startz="-36" endx="20" endz="-29"></block>
+			<block startx="21" startz="-36" endx="21" endz="-29"></block>
+			<block startx="22" startz="-36" endx="22" endz="-35"></block>
+			<block startx="22" startz="-33" endx="22" endz="-29"></block>
+			<block startx="23" startz="-36" endx="23" endz="-29"></block>
+			<block startx="24" startz="-36" endx="24" endz="-29"></block>
+			<block startx="25" startz="-36" endx="25" endz="-29"></block>
+			<block startx="26" startz="-36" endx="26" endz="-29"></block>
+			<block startx="11" startz="-41" endx="11" endz="-37"></block>
+			<block startx="12" startz="-41" endx="12" endz="-37"></block>
+			<block startx="13" startz="-41" endx="13" endz="-37"></block>
+			<block startx="14" startz="-41" endx="14" endz="-37"></block>
+			<block startx="15" startz="-41" endx="15" endz="-37"></block>
+			<block startx="16" startz="-41" endx="16" endz="-37"></block>
+			<block startx="17" startz="-41" endx="17" endz="-37"></block>
+			<block startx="18" startz="-41" endx="18" endz="-37"></block>
+			<block startx="19" startz="-41" endx="19" endz="-37"></block>
+			<block startx="20" startz="-41" endx="20" endz="-37"></block>
+			<block startx="21" startz="-41" endx="21" endz="-37"></block>
+			<block startx="22" startz="-41" endx="22" endz="-37"></block>
+			<block startx="23" startz="-41" endx="23" endz="-37"></block>
+			<block startx="24" startz="-41" endx="24" endz="-37"></block>
+			<block startx="25" startz="-41" endx="25" endz="-37"></block>
+			<block startx="26" startz="-41" endx="26" endz="-37"></block>
+			<block startx="27" startz="-41" endx="27" endz="-37"></block>
+			<block startx="28" startz="-41" endx="28" endz="-37"></block>
+			<block startx="29" startz="-41" endx="29" endz="-37"></block>
+			<block startx="27" startz="-36" endx="27" endz="-29"></block>
+			<block startx="28" startz="-36" endx="28" endz="-29"></block>
+			<block startx="29" startz="-36" endx="29" endz="-29"></block>
+			<block startx="27" startz="-28" endx="27" endz="-21"></block>
+			<block startx="28" startz="-28" endx="28" endz="-21"></block>
+			<block startx="29" startz="-28" endx="29" endz="-21"></block>
+		</tilegroup>
+		<tilegroup type="Shoreline" subtype="caribbean\ground_shoreline1_crb">
+			<block startx="-2" startz="-20" endx="-2" endz="-20"></block>
+			<block startx="0" startz="-20" endx="0" endz="-19"></block>
+			<block startx="1" startz="-20" endx="1" endz="-19"></block>
+			<block startx="2" startz="-20" endx="2" endz="-19"></block>
+			<block startx="9" startz="-12" endx="9" endz="-11"></block>
+			<block startx="10" startz="-12" endx="10" endz="-10"></block>
+			<block startx="3" startz="-20" endx="3" endz="-19"></block>
+			<block startx="4" startz="-20" endx="4" endz="-19"></block>
+			<block startx="5" startz="-20" endx="5" endz="-19"></block>
+			<block startx="6" startz="-20" endx="6" endz="-18"></block>
+			<block startx="7" startz="-20" endx="7" endz="-18"></block>
+			<block startx="8" startz="-20" endx="8" endz="-16"></block>
+			<block startx="9" startz="-20" endx="9" endz="-13"></block>
+			<block startx="10" startz="-20" endx="10" endz="-13"></block>
+			<block startx="11" startz="-20" endx="11" endz="-13"></block>
+			<block startx="12" startz="-19" endx="12" endz="-13"></block>
+			<block startx="13" startz="-17" endx="13" endz="-16"></block>
+			<block startx="11" startz="-12" endx="11" endz="-11"></block>
+			<block startx="-1" startz="-21" endx="-1" endz="-21"></block>
+			<block startx="0" startz="-22" endx="0" endz="-21"></block>
+			<block startx="1" startz="-23" endx="1" endz="-21"></block>
+			<block startx="2" startz="-23" endx="2" endz="-21"></block>
+			<block startx="3" startz="-24" endx="3" endz="-21"></block>
+			<block startx="4" startz="-24" endx="4" endz="-21"></block>
+			<block startx="5" startz="-24" endx="5" endz="-21"></block>
+			<block startx="6" startz="-23" endx="6" endz="-21"></block>
+			<block startx="7" startz="-22" endx="7" endz="-21"></block>
+			<block startx="8" startz="-22" endx="8" endz="-21"></block>
+			<block startx="9" startz="-22" endx="9" endz="-21"></block>
+			<block startx="10" startz="-21" endx="10" endz="-21"></block>
+			<block startx="22" startz="-34" endx="22" endz="-34"></block>
+		</tilegroup>
+		<tilegroup type="Block" subtype="city\ground1_city_street_ground">
+			<block startx="-27" startz="21" endx="-27" endz="24"></block>
+			<block startx="-26" startz="20" endx="-26" endz="27"></block>
+			<block startx="-25" startz="20" endx="-25" endz="27"></block>
+			<block startx="-24" startz="20" endx="-24" endz="27"></block>
+			<block startx="-23" startz="20" endx="-23" endz="27"></block>
+			<block startx="-22" startz="20" endx="-22" endz="27"></block>
+			<block startx="-27" startz="14" endx="-27" endz="19"></block>
+			<block startx="-26" startz="13" endx="-26" endz="19"></block>
+			<block startx="-25" startz="13" endx="-25" endz="19"></block>
+			<block startx="-24" startz="13" endx="-24" endz="19"></block>
+			<block startx="-23" startz="13" endx="-23" endz="19"></block>
+			<block startx="-22" startz="13" endx="-22" endz="19"></block>
+			<block startx="-26" startz="28" endx="-26" endz="29"></block>
+			<block startx="-25" startz="28" endx="-25" endz="30"></block>
+			<block startx="-24" startz="28" endx="-24" endz="30"></block>
+			<block startx="-23" startz="28" endx="-23" endz="30"></block>
+			<block startx="-22" startz="28" endx="-22" endz="30"></block>
+			<block startx="-21" startz="28" endx="-21" endz="30"></block>
+			<block startx="-20" startz="28" endx="-20" endz="30"></block>
+			<block startx="-19" startz="28" endx="-19" endz="30"></block>
+			<block startx="-18" startz="28" endx="-18" endz="30"></block>
+			<block startx="-17" startz="28" endx="-17" endz="30"></block>
+			<block startx="-16" startz="28" endx="-16" endz="30"></block>
+			<block startx="-15" startz="28" endx="-15" endz="30"></block>
+			<block startx="-14" startz="28" endx="-14" endz="31"></block>
+			<block startx="-13" startz="28" endx="-13" endz="33"></block>
+			<block startx="-12" startz="28" endx="-12" endz="34"></block>
+			<block startx="-11" startz="28" endx="-11" endz="34"></block>
+			<block startx="-10" startz="28" endx="-10" endz="34"></block>
+			<block startx="-9" startz="28" endx="-9" endz="35"></block>
+			<block startx="-8" startz="28" endx="-8" endz="35"></block>
+			<block startx="-7" startz="28" endx="-7" endz="34"></block>
+			<block startx="-6" startz="28" endx="-6" endz="32"></block>
+			<block startx="-21" startz="12" endx="-6" endz="27"></block>
+			<block startx="-28" startz="4" endx="-28" endz="6"></block>
+			<block startx="-27" startz="4" endx="-27" endz="9"></block>
+			<block startx="-26" startz="4" endx="-26" endz="10"></block>
+			<block startx="-25" startz="4" endx="-25" endz="11"></block>
+			<block startx="-24" startz="4" endx="-24" endz="11"></block>
+			<block startx="-23" startz="4" endx="-23" endz="10"></block>
+			<block startx="-22" startz="4" endx="-22" endz="9"></block>
+			<block startx="-27" startz="1" endx="-27" endz="3"></block>
+			<block startx="-26" startz="-1" endx="-26" endz="3"></block>
+			<block startx="-25" startz="-2" endx="-25" endz="3"></block>
+			<block startx="-24" startz="-3" endx="-24" endz="3"></block>
+			<block startx="-23" startz="-3" endx="-23" endz="3"></block>
+			<block startx="-22" startz="-4" endx="-22" endz="3"></block>
+			<block startx="-21" startz="-4" endx="-14" endz="3"></block>
+			<block startx="-21" startz="4" endx="-14" endz="11"></block>
+			<block startx="-13" startz="4" endx="-13" endz="11"></block>
+			<block startx="-12" startz="4" endx="-12" endz="9"></block>
+			<block startx="-12" startz="11" endx="-12" endz="11"></block>
+			<block startx="-11" startz="4" endx="-11" endz="9"></block>
+			<block startx="-11" startz="11" endx="-11" endz="11"></block>
+			<block startx="-10" startz="4" endx="-10" endz="9"></block>
+			<block startx="-10" startz="11" endx="-10" endz="11"></block>
+			<block startx="-9" startz="4" endx="-9" endz="9"></block>
+			<block startx="-8" startz="4" endx="-8" endz="10"></block>
+			<block startx="-7" startz="4" endx="-7" endz="11"></block>
+			<block startx="-6" startz="4" endx="-6" endz="11"></block>
+			<block startx="-13" startz="-4" endx="-6" endz="3"></block>
+			<block startx="-21" startz="-5" endx="-21" endz="-5"></block>
+			<block startx="-20" startz="-6" endx="-20" endz="-5"></block>
+			<block startx="-19" startz="-6" endx="-19" endz="-5"></block>
+			<block startx="-18" startz="-6" endx="-18" endz="-5"></block>
+			<block startx="-17" startz="-6" endx="-17" endz="-5"></block>
+			<block startx="-16" startz="-10" endx="-16" endz="-5"></block>
+			<block startx="-15" startz="-11" endx="-15" endz="-5"></block>
+			<block startx="-14" startz="-12" endx="-14" endz="-5"></block>
+			<block startx="-13" startz="-12" endx="-6" endz="-5"></block>
+			<block startx="-13" startz="-13" endx="-13" endz="-13"></block>
+			<block startx="-12" startz="-14" endx="-12" endz="-13"></block>
+			<block startx="-11" startz="-15" endx="-11" endz="-13"></block>
+			<block startx="-10" startz="-15" endx="-10" endz="-13"></block>
+			<block startx="-9" startz="-16" endx="-9" endz="-13"></block>
+			<block startx="-8" startz="-16" endx="-8" endz="-13"></block>
+			<block startx="-7" startz="-16" endx="-7" endz="-13"></block>
+			<block startx="-6" startz="-16" endx="-6" endz="-13"></block>
+			<block startx="-5" startz="-17" endx="-5" endz="-13"></block>
+			<block startx="-4" startz="-18" endx="-4" endz="-13"></block>
+			<block startx="-3" startz="-18" endx="-3" endz="-13"></block>
+			<block startx="-2" startz="-18" endx="-2" endz="-13"></block>
+			<block startx="-1" startz="-18" endx="-1" endz="-13"></block>
+			<block startx="0" startz="-17" endx="0" endz="-13"></block>
+			<block startx="1" startz="-16" endx="1" endz="-13"></block>
+			<block startx="2" startz="-16" endx="2" endz="-13"></block>
+			<block startx="-5" startz="-12" endx="2" endz="-5"></block>
+			<block startx="3" startz="-12" endx="3" endz="-5"></block>
+			<block startx="4" startz="-12" endx="4" endz="-5"></block>
+			<block startx="5" startz="-12" endx="5" endz="-5"></block>
+			<block startx="6" startz="-12" endx="6" endz="-5"></block>
+			<block startx="7" startz="-12" endx="7" endz="-5"></block>
+			<block startx="8" startz="-9" endx="8" endz="-5"></block>
+			<block startx="9" startz="-10" endx="9" endz="-5"></block>
+			<block startx="10" startz="-9" endx="10" endz="-5"></block>
+			<block startx="3" startz="-16" endx="3" endz="-13"></block>
+			<block startx="4" startz="-15" endx="4" endz="-13"></block>
+			<block startx="5" startz="-13" endx="5" endz="-13"></block>
+			<block startx="6" startz="-15" endx="6" endz="-13"></block>
+			<block startx="-5" startz="-4" endx="-5" endz="0"></block>
+			<block startx="-4" startz="-4" endx="-4" endz="0"></block>
+			<block startx="-3" startz="-4" endx="-3" endz="0"></block>
+			<block startx="-2" startz="-4" endx="-2" endz="0"></block>
+			<block startx="-2" startz="3" endx="-2" endz="3"></block>
+			<block startx="-1" startz="-4" endx="-1" endz="0"></block>
+			<block startx="-1" startz="2" endx="-1" endz="3"></block>
+			<block startx="0" startz="-4" endx="0" endz="3"></block>
+			<block startx="1" startz="-4" endx="1" endz="3"></block>
+			<block startx="2" startz="-4" endx="2" endz="3"></block>
+			<block startx="-5" startz="4" endx="2" endz="11"></block>
+			<block startx="3" startz="4" endx="10" endz="11"></block>
+			<block startx="3" startz="-4" endx="3" endz="3"></block>
+			<block startx="4" startz="-4" endx="4" endz="3"></block>
+			<block startx="5" startz="-4" endx="5" endz="3"></block>
+			<block startx="6" startz="-4" endx="6" endz="3"></block>
+			<block startx="7" startz="-4" endx="7" endz="-1"></block>
+			<block startx="7" startz="2" endx="7" endz="3"></block>
+			<block startx="8" startz="-4" endx="8" endz="-2"></block>
+			<block startx="8" startz="2" endx="8" endz="3"></block>
+			<block startx="9" startz="-4" endx="9" endz="-2"></block>
+			<block startx="9" startz="2" endx="9" endz="3"></block>
+			<block startx="10" startz="-4" endx="10" endz="-3"></block>
+			<block startx="10" startz="2" endx="10" endz="3"></block>
+			<block startx="11" startz="-4" endx="11" endz="-4"></block>
+			<block startx="11" startz="3" endx="11" endz="3"></block>
+			<block startx="12" startz="3" endx="12" endz="3"></block>
+			<block startx="11" startz="4" endx="11" endz="11"></block>
+			<block startx="12" startz="4" endx="12" endz="11"></block>
+			<block startx="13" startz="4" endx="13" endz="11"></block>
+			<block startx="14" startz="5" endx="14" endz="11"></block>
+			<block startx="15" startz="6" endx="15" endz="11"></block>
+			<block startx="16" startz="9" endx="16" endz="11"></block>
+			<block startx="13" startz="-14" endx="13" endz="-13"></block>
+			<block startx="14" startz="-14" endx="14" endz="-13"></block>
+			<block startx="15" startz="-13" endx="15" endz="-13"></block>
+			<block startx="11" startz="-9" endx="11" endz="-5"></block>
+			<block startx="12" startz="-12" endx="12" endz="-5"></block>
+			<block startx="13" startz="-12" endx="13" endz="-7"></block>
+			<block startx="14" startz="-12" endx="14" endz="-8"></block>
+			<block startx="15" startz="-12" endx="15" endz="-12"></block>
+			<block startx="15" startz="-10" endx="15" endz="-9"></block>
+			<block startx="-5" startz="12" endx="10" endz="27"></block>
+			<block startx="-5" startz="28" endx="-5" endz="30"></block>
+			<block startx="-4" startz="28" endx="-4" endz="30"></block>
+			<block startx="-3" startz="28" endx="-3" endz="30"></block>
+			<block startx="-2" startz="28" endx="-2" endz="31"></block>
+			<block startx="-1" startz="28" endx="-1" endz="31"></block>
+			<block startx="0" startz="28" endx="0" endz="31"></block>
+			<block startx="1" startz="28" endx="1" endz="31"></block>
+			<block startx="2" startz="28" endx="2" endz="31"></block>
+			<block startx="3" startz="28" endx="3" endz="31"></block>
+			<block startx="4" startz="28" endx="4" endz="31"></block>
+			<block startx="5" startz="28" endx="5" endz="31"></block>
+			<block startx="6" startz="28" endx="6" endz="31"></block>
+			<block startx="7" startz="28" endx="7" endz="30"></block>
+			<block startx="8" startz="28" endx="8" endz="31"></block>
+			<block startx="9" startz="28" endx="9" endz="31"></block>
+			<block startx="10" startz="28" endx="10" endz="31"></block>
+			<block startx="11" startz="28" endx="11" endz="31"></block>
+			<block startx="12" startz="28" endx="12" endz="31"></block>
+			<block startx="13" startz="28" endx="13" endz="31"></block>
+			<block startx="14" startz="28" endx="14" endz="30"></block>
+			<block startx="15" startz="28" endx="15" endz="29"></block>
+			<block startx="16" startz="28" endx="16" endz="28"></block>
+			<block startx="11" startz="12" endx="11" endz="19"></block>
+			<block startx="12" startz="12" endx="12" endz="19"></block>
+			<block startx="13" startz="12" endx="13" endz="19"></block>
+			<block startx="14" startz="12" endx="14" endz="19"></block>
+			<block startx="15" startz="12" endx="15" endz="19"></block>
+			<block startx="16" startz="12" endx="16" endz="19"></block>
+			<block startx="17" startz="12" endx="17" endz="19"></block>
+			<block startx="11" startz="20" endx="11" endz="27"></block>
+			<block startx="12" startz="20" endx="12" endz="27"></block>
+			<block startx="13" startz="20" endx="13" endz="27"></block>
+			<block startx="14" startz="20" endx="14" endz="27"></block>
+			<block startx="15" startz="20" endx="15" endz="27"></block>
+			<block startx="16" startz="20" endx="16" endz="27"></block>
+			<block startx="17" startz="20" endx="17" endz="22"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="araucania\ground_grass1_ara">
+			<block startx="0" startz="-18" endx="0" endz="-18"></block>
+			<block startx="1" startz="-18" endx="1" endz="-17"></block>
+			<block startx="2" startz="-18" endx="2" endz="-17"></block>
+			<block startx="8" startz="-12" endx="8" endz="-12"></block>
+			<block startx="3" startz="-18" endx="3" endz="-17"></block>
+			<block startx="4" startz="-18" endx="4" endz="-17"></block>
+			<block startx="5" startz="-18" endx="5" endz="-16"></block>
+			<block startx="6" startz="-16" endx="6" endz="-16"></block>
+			<block startx="7" startz="-14" endx="7" endz="-13"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="AfricaDesert\ground_forest1_afriDesert">
+			<block startx="6" startz="-17" endx="6" endz="-17"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="california\groundforest2_cal">
+			<block startx="8" startz="-11" endx="8" endz="-10"></block>
+			<block startx="5" startz="-15" endx="5" endz="-15"></block>
+			<block startx="7" startz="-17" endx="7" endz="-17"></block>
+			<block startx="8" startz="-14" endx="8" endz="-13"></block>
+		</tilegroup>
+		<tilegroup type="Shoreline" subtype="california\groundshore4_cal">
+			<block startx="4" startz="-16" endx="4" endz="-16"></block>
+			<block startx="5" startz="-14" endx="5" endz="-14"></block>
+			<block startx="7" startz="-16" endx="7" endz="-15"></block>
+			<block startx="8" startz="-15" endx="8" endz="-15"></block>
+		</tilegroup>
+		<cliffgroup type="ZP City">
+			<block startx="-26" startz="20" endx="-26" endz="27"></block>
+			<block startx="-26" startz="14" endx="-26" endz="19"></block>
+			<block startx="-25" startz="13" endx="-25" endz="14"></block>
+			<block startx="-24" startz="13" endx="-24" endz="13"></block>
+			<block startx="-23" startz="13" endx="-23" endz="13"></block>
+			<block startx="-22" startz="13" endx="-22" endz="13"></block>
+			<block startx="-26" startz="28" endx="-26" endz="29"></block>
+			<block startx="-25" startz="29" endx="-25" endz="30"></block>
+			<block startx="-24" startz="30" endx="-24" endz="30"></block>
+			<block startx="-23" startz="30" endx="-23" endz="30"></block>
+			<block startx="-22" startz="30" endx="-22" endz="30"></block>
+			<block startx="-21" startz="30" endx="-21" endz="30"></block>
+			<block startx="-20" startz="30" endx="-20" endz="30"></block>
+			<block startx="-19" startz="30" endx="-19" endz="30"></block>
+			<block startx="-18" startz="30" endx="-18" endz="30"></block>
+			<block startx="-17" startz="30" endx="-17" endz="30"></block>
+			<block startx="-16" startz="30" endx="-16" endz="30"></block>
+			<block startx="-15" startz="30" endx="-15" endz="30"></block>
+			<block startx="-14" startz="30" endx="-14" endz="30"></block>
+			<block startx="-13" startz="30" endx="-13" endz="30"></block>
+			<block startx="-12" startz="30" endx="-12" endz="30"></block>
+			<block startx="-11" startz="30" endx="-11" endz="30"></block>
+			<block startx="-10" startz="29" endx="-10" endz="30"></block>
+			<block startx="-9" startz="28" endx="-9" endz="29"></block>
+			<block startx="-21" startz="13" endx="-21" endz="13"></block>
+			<block startx="-20" startz="12" endx="-20" endz="13"></block>
+			<block startx="-16" startz="12" endx="-16" endz="13"></block>
+			<block startx="-15" startz="13" endx="-15" endz="13"></block>
+			<block startx="-14" startz="13" endx="-14" endz="13"></block>
+			<block startx="-9" startz="25" endx="-9" endz="27"></block>
+			<block startx="-8" startz="25" endx="-8" endz="25"></block>
+			<block startx="-7" startz="25" endx="-7" endz="25"></block>
+			<block startx="-6" startz="25" endx="-6" endz="25"></block>
+			<block startx="-13" startz="13" endx="-13" endz="13"></block>
+			<block startx="-12" startz="13" endx="-12" endz="13"></block>
+			<block startx="-11" startz="13" endx="-11" endz="13"></block>
+			<block startx="-10" startz="13" endx="-10" endz="14"></block>
+			<block startx="-9" startz="14" endx="-9" endz="19"></block>
+			<block startx="-8" startz="19" endx="-8" endz="19"></block>
+			<block startx="-7" startz="19" endx="-7" endz="19"></block>
+			<block startx="-6" startz="19" endx="-6" endz="19"></block>
+			<block startx="-26" startz="4" endx="-26" endz="7"></block>
+			<block startx="-25" startz="7" endx="-25" endz="8"></block>
+			<block startx="-24" startz="8" endx="-24" endz="8"></block>
+			<block startx="-23" startz="8" endx="-23" endz="8"></block>
+			<block startx="-22" startz="8" endx="-22" endz="8"></block>
+			<block startx="-26" startz="2" endx="-26" endz="3"></block>
+			<block startx="-25" startz="1" endx="-25" endz="2"></block>
+			<block startx="-24" startz="0" endx="-24" endz="1"></block>
+			<block startx="-23" startz="-1" endx="-23" endz="0"></block>
+			<block startx="-22" startz="-2" endx="-22" endz="-1"></block>
+			<block startx="-21" startz="-3" endx="-21" endz="-2"></block>
+			<block startx="-20" startz="-4" endx="-20" endz="-3"></block>
+			<block startx="-19" startz="-4" endx="-19" endz="-4"></block>
+			<block startx="-18" startz="-4" endx="-18" endz="-4"></block>
+			<block startx="-17" startz="-4" endx="-17" endz="-4"></block>
+			<block startx="-16" startz="-4" endx="-16" endz="-4"></block>
+			<block startx="-15" startz="-4" endx="-15" endz="-4"></block>
+			<block startx="-14" startz="-4" endx="-14" endz="-4"></block>
+			<block startx="-21" startz="8" endx="-21" endz="8"></block>
+			<block startx="-20" startz="8" endx="-20" endz="11"></block>
+			<block startx="-16" startz="8" endx="-16" endz="11"></block>
+			<block startx="-15" startz="8" endx="-15" endz="8"></block>
+			<block startx="-14" startz="8" endx="-14" endz="8"></block>
+			<block startx="-13" startz="8" endx="-13" endz="8"></block>
+			<block startx="-12" startz="8" endx="-12" endz="8"></block>
+			<block startx="-11" startz="8" endx="-11" endz="8"></block>
+			<block startx="-10" startz="8" endx="-10" endz="8"></block>
+			<block startx="-9" startz="8" endx="-9" endz="8"></block>
+			<block startx="-8" startz="8" endx="-8" endz="8"></block>
+			<block startx="-7" startz="7" endx="-7" endz="8"></block>
+			<block startx="-6" startz="4" endx="-6" endz="7"></block>
+			<block startx="-13" startz="-4" endx="-13" endz="-4"></block>
+			<block startx="-12" startz="-4" endx="-12" endz="-3"></block>
+			<block startx="-11" startz="-4" endx="-11" endz="-3"></block>
+			<block startx="-10" startz="-4" endx="-10" endz="-4"></block>
+			<block startx="-8" startz="0" endx="-8" endz="1"></block>
+			<block startx="-7" startz="-1" endx="-7" endz="2"></block>
+			<block startx="-6" startz="-2" endx="-6" endz="-1"></block>
+			<block startx="-6" startz="2" endx="-6" endz="3"></block>
+			<block startx="-11" startz="-10" endx="-11" endz="-7"></block>
+			<block startx="-10" startz="-11" endx="-10" endz="-10"></block>
+			<block startx="-10" startz="-7" endx="-10" endz="-5"></block>
+			<block startx="-9" startz="-12" endx="-9" endz="-11"></block>
+			<block startx="-9" startz="-6" endx="-9" endz="-5"></block>
+			<block startx="-8" startz="-12" endx="-8" endz="-12"></block>
+			<block startx="-8" startz="-13" endx="-8" endz="-13"></block>
+			<block startx="-7" startz="-14" endx="-7" endz="-13"></block>
+			<block startx="-6" startz="-15" endx="-6" endz="-14"></block>
+			<block startx="-5" startz="-16" endx="-5" endz="-15"></block>
+			<block startx="-4" startz="-17" endx="-4" endz="-16"></block>
+			<block startx="-3" startz="-18" endx="-3" endz="-17"></block>
+			<block startx="-2" startz="-18" endx="-2" endz="-18"></block>
+			<block startx="-1" startz="-18" endx="-1" endz="-18"></block>
+			<block startx="0" startz="-19" endx="0" endz="-18"></block>
+			<block startx="1" startz="-19" endx="1" endz="-19"></block>
+			<block startx="5" startz="-5" endx="5" endz="-5"></block>
+			<block startx="6" startz="-6" endx="6" endz="-5"></block>
+			<block startx="7" startz="-7" endx="7" endz="-6"></block>
+			<block startx="8" startz="-8" endx="8" endz="-7"></block>
+			<block startx="9" startz="-11" endx="9" endz="-8"></block>
+			<block startx="-5" startz="-2" endx="-5" endz="-1"></block>
+			<block startx="-4" startz="-1" endx="-4" endz="0"></block>
+			<block startx="-3" startz="0" endx="-3" endz="0"></block>
+			<block startx="-2" startz="0" endx="-2" endz="0"></block>
+			<block startx="-1" startz="0" endx="-1" endz="0"></block>
+			<block startx="0" startz="0" endx="0" endz="0"></block>
+			<block startx="1" startz="-1" endx="1" endz="0"></block>
+			<block startx="2" startz="-2" endx="2" endz="-1"></block>
+			<block startx="-5" startz="8" endx="-5" endz="8"></block>
+			<block startx="-5" startz="11" endx="-5" endz="11"></block>
+			<block startx="-4" startz="7" endx="-4" endz="7"></block>
+			<block startx="-4" startz="9" endx="-4" endz="11"></block>
+			<block startx="-3" startz="6" endx="-3" endz="6"></block>
+			<block startx="-3" startz="8" endx="-3" endz="10"></block>
+			<block startx="-2" startz="7" endx="-2" endz="9"></block>
+			<block startx="-1" startz="7" endx="-1" endz="8"></block>
+			<block startx="0" startz="6" endx="0" endz="7"></block>
+			<block startx="1" startz="5" endx="1" endz="6"></block>
+			<block startx="2" startz="4" endx="2" endz="5"></block>
+			<block startx="3" startz="4" endx="3" endz="4"></block>
+			<block startx="4" startz="4" endx="4" endz="4"></block>
+			<block startx="5" startz="4" endx="5" endz="4"></block>
+			<block startx="6" startz="4" endx="6" endz="4"></block>
+			<block startx="7" startz="4" endx="7" endz="4"></block>
+			<block startx="8" startz="4" endx="8" endz="4"></block>
+			<block startx="9" startz="4" endx="9" endz="4"></block>
+			<block startx="10" startz="4" endx="10" endz="4"></block>
+			<block startx="3" startz="-3" endx="3" endz="-2"></block>
+			<block startx="4" startz="-4" endx="4" endz="-3"></block>
+			<block startx="5" startz="-4" endx="5" endz="-4"></block>
+			<block startx="11" startz="4" endx="11" endz="5"></block>
+			<block startx="12" startz="5" endx="12" endz="6"></block>
+			<block startx="13" startz="6" endx="13" endz="7"></block>
+			<block startx="14" startz="7" endx="14" endz="11"></block>
+			<block startx="-5" startz="12" endx="-5" endz="19"></block>
+			<block startx="-5" startz="25" endx="-5" endz="27"></block>
+			<block startx="-4" startz="27" endx="-4" endz="27"></block>
+			<block startx="-4" startz="28" endx="-4" endz="28"></block>
+			<block startx="-3" startz="28" endx="-3" endz="29"></block>
+			<block startx="-2" startz="29" endx="-2" endz="29"></block>
+			<block startx="-1" startz="29" endx="-1" endz="29"></block>
+			<block startx="0" startz="29" endx="0" endz="29"></block>
+			<block startx="1" startz="29" endx="1" endz="29"></block>
+			<block startx="2" startz="29" endx="2" endz="29"></block>
+			<block startx="3" startz="29" endx="3" endz="29"></block>
+			<block startx="4" startz="29" endx="4" endz="29"></block>
+			<block startx="5" startz="29" endx="5" endz="29"></block>
+			<block startx="6" startz="29" endx="6" endz="29"></block>
+			<block startx="7" startz="29" endx="7" endz="29"></block>
+			<block startx="8" startz="29" endx="8" endz="29"></block>
+			<block startx="9" startz="29" endx="9" endz="29"></block>
+			<block startx="10" startz="29" endx="10" endz="29"></block>
+			<block startx="11" startz="29" endx="11" endz="29"></block>
+			<block startx="12" startz="29" endx="12" endz="29"></block>
+			<block startx="13" startz="28" endx="13" endz="29"></block>
+			<block startx="14" startz="28" endx="14" endz="28"></block>
+			<block startx="14" startz="12" endx="14" endz="19"></block>
+			<block startx="14" startz="20" endx="14" endz="27"></block>
+		</cliffgroup>
+		<heights>
+			<tiles x="-34" z="-42">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-41">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-40">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-39">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-38">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-37">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-36">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-35">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-34">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-33">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-32">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-31">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-30">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-29">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-28">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-27">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-26">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-25">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-24">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-23">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-22">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.317 0.539 0.551 0.428 0.214 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-21">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.780 1.217 1.471 1.531 1.420 1.148 0.667 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-20">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.747 1.505 2.170 2.582 2.710 2.599 2.350 1.934 1.241 0.227 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-19">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 1.077 2.430 3.279 3.656 3.806 3.773 3.644 3.310 2.622 1.577 0.707 0.072 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-18">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 4.309 4.505 4.835 4.696 4.500 4.278 3.702 2.854 1.792 0.870 0.109 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-17">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.251 0.000 0.000 5.000 5.000 5.000 5.000 4.851 5.000 5.000 5.000 4.941 4.820 4.436 3.684 2.759 1.638 0.555 0.021 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-16">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.001 0.672 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 4.980 4.834 4.245 3.485 2.381 0.863 0.010 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-15">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.001 0.672 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 4.996 4.902 4.639 3.985 2.706 1.009 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-14">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.001 0.672 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 4.999 4.970 4.811 4.265 2.977 0.680 0.039 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-13">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.601 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 4.880 4.705 4.143 2.801 0.622 0.029 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-12">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.006 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 4.708 4.407 3.799 2.418 0.818 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-11">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 4.078 3.236 2.037 0.643 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-10">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 2.897 1.611 0.609 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-9">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 2.178 1.107 0.354 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-8">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.005 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 1.046 0.532 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-7">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.020 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.544 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-6">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.028 0.028 0.028 0.028 0.000 0.000 0.000 0.000 0.000 5.000 5.000 4.965 4.975 4.988 4.997 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-5">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.122 0.898 1.308 1.308 1.308 1.306 0.811 0.069 0.000 0.000 0.000 0.000 5.000 4.976 4.988 4.998 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-4">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 4.992 4.998 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-3">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-2">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.062 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="-1">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.111 1.362 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="0">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.111 1.523 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="1">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.004 1.467 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="2">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.213 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="3">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.107 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="4">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="5">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.567 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="6">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.216 1.582 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="7">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.472 2.490 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="8">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.477 2.225 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="9">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.560 2.009 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="10">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 0.000 0.065 0.999 1.326 1.326 1.346 0.660 0.258 0.243 0.002 1.412 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 4.758 4.949 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="11">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 4.620 4.880 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="12">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.015 0.354 0.454 0.976 0.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 4.906 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="13">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="14">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.238 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="15">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.177 1.463 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 4.938 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.022 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="16">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.242 1.820 0.000 5.000 5.000 5.000 5.000 4.989 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.078 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="17">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.242 1.826 0.000 5.000 4.968 4.968 4.974 4.993 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.078 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="18">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.242 1.759 0.000 5.000 4.968 4.968 4.974 4.994 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.078 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="19">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 5.000 4.977 4.977 4.983 4.997 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.071 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="20">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 4.994 4.994 4.997 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="21">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="22">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.353 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="23">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.588 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="24">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.588 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="25">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.581 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="26">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.223 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="27">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="28">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="29">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="30">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 5.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="31">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.010 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="32">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.030 0.030 0.595 1.229 1.262 1.262 0.972 0.166 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="33">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="34">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="35">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="36">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="37">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="38">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="39">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="40">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-34" z="41">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+		</heights>
+	</tiles>
+</grouping>
