@@ -1,15 +1,14 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<mapinfo details = "302019" displayNameID = "302018" loadDetails="302020"
-    imagepath = "ui\random_map\paris\paris_mini" cannotReplace = "" loadBackground="ui\random_map\paris\paris_map">
-    <loadss>ui\random_map\paris\paris_01</loadss>
-    <loadss>ui\random_map\paris\paris_02</loadss>
-    <loadss>ui\random_map\paris\paris_03</loadss>
+<mapinfo details = "302087" displayNameID = "302087" loadDetails="302087" 
+    imagepath = "ui\random_map\venicecity\venicecity_mini" cannotReplace = "" loadBackground="ui\random_map\venicecity\venicecity_map">
+    <loadss>ui\random_map\venicecity\venicecity_01</loadss>
+    <loadss>ui\random_map\venicecity\venicecity_02</loadss>
+    <loadss>ui\random_map\venicecity\venicecity_03</loadss>
     <enforcedSettings>
         <setting type="FFA" state="forbidden" />
         <setting type="RecordGame" state="forbidden" />
         <setting type="TwoTeams" state="enforced" />
         <setting type="DefaultRules" state="enforced" />
-        <setting type="AltTeamNames" state="enforced" />
     </enforcedSettings>
     <recommendedSettings>
         <civilization>French</civilization>
