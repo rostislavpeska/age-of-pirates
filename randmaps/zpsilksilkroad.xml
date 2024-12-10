@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapinfo details="70011" displayNameID="70012" loadDetails="70013" largeMapName = "silkRoadLarge"
+    imagepath="ui\random_map\silk_road\silk_road_mini" cannotReplace="" loadBackground="ui\random_map\silk_road\silk_road_map">
+  <loadss>ui\random_map\silk_road\ss_silk_road_01</loadss>
+  <loadss>ui\random_map\silk_road\ss_silk_road_02</loadss>
+  <loadss>ui\random_map\silk_road\ss_silk_road_03</loadss>
+  <loadss>ui\random_map\silk_road\ss_silk_road_04</loadss>
+</mapinfo>

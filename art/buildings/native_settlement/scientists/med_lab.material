@@ -1,0 +1,74 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\buildings_med\med_factory\textures\med_factory_01_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_med\med_factory\textures\med_factory_01_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_med\med_factory\textures\med_factory_01_mata_masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="homecity\buildings_med\med_factory\textures\med_factory_04_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_med\med_factory\textures\med_factory_04_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_med\med_factory\textures\med_factory_04_mata_masks">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="homecity\buildings_med\med_factory\textures\med_factory_02_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_med\med_factory\textures\med_factory_02_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_med\med_factory\textures\med_factory_02_mata_masks">
+      </texture>
+    </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="homecity\buildings_med\med_factory\textures\med_factory_03_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_med\med_factory\textures\med_factory_03_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_med\med_factory\textures\med_factory_03_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\buildings_med\med_factory\textures\med_factory_01_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_med\med_factory\textures\med_factory_01_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_med\med_factory\textures\med_factory_01_mata_masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="homecity\buildings_med\med_factory\textures\med_factory_04_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_med\med_factory\textures\med_factory_04_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_med\med_factory\textures\med_factory_04_mata_masks">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="homecity\buildings_med\med_factory\textures\med_factory_02_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_med\med_factory\textures\med_factory_02_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_med\med_factory\textures\med_factory_02_mata_masks">
+      </texture>
+    </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="homecity\buildings_med\med_factory\textures\med_factory_03_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\buildings_med\med_factory\textures\med_factory_03_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\buildings_med\med_factory\textures\med_factory_03_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

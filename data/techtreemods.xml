@@ -2286,6 +2286,20 @@
 			<effect type ="SetName" proto ="zpNatMalteseGuard" culture ="none" newname ="300122"></effect>
       <effect type="SetName" proto="zpNatMalteseGuard" culture="none" newname="300317" reqtech="ImpLegendaryNativesShadow">
       </effect>
+      <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMalteseKnight</target></effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMalteseKnight</target></effect>
+			<effect type ="SetName" proto ="zpNatMercMalteseKnight" culture ="none" newname ="300120"></effect>
+      <effect type="SetName" proto="zpNatMercMalteseKnight" culture="none" newname="300316" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+			<effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMalteseGuard</target></effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMalteseGuard</target></effect>
+			<effect type ="SetName" proto ="zpNatMercMalteseGuard" culture ="none" newname ="300122"></effect>
+      <effect type="SetName" proto="zpNatMercMalteseGuard" culture="none" newname="300317" reqtech="ImpLegendaryNativesShadow">
+      </effect>
 		</effects>
 	</tech>
    <tech name ="zpNatHonoredMaltese" type ="Normal">
@@ -2321,6 +2335,20 @@
 			<effect type ="SetName" proto ="zpNatMalteseGuard" culture ="none" newname ="300125"></effect>
       <effect type="SetName" proto="zpNatMalteseGuard" culture="none" newname="300317" reqtech="ImpLegendaryNativesShadow">
       </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMalteseKnight</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMalteseKnight</target></effect>
+			<effect type ="SetName" proto ="zpNatMercMalteseKnight" culture ="none" newname ="300123"></effect>
+      <effect type="SetName" proto="zpNatMercMalteseKnight" culture="none" newname="300316" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+			<effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMalteseGuard</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMalteseGuard</target></effect>
+			<effect type ="SetName" proto ="zpNatMercMalteseGuard" culture ="none" newname ="300125"></effect>
+      <effect type="SetName" proto="zpNatMercMalteseGuard" culture="none" newname="300317" reqtech="ImpLegendaryNativesShadow">
+      </effect>
 		</effects>
 	</tech>
   <tech name="zpNatMalteseMedicine" type="Normal">
@@ -2343,6 +2371,9 @@
       </effect>
       <effect type="Data" action="Heal" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpNatMalteseKnight</target>
+      </effect>
+      <effect type="Data" action="Heal" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercMalteseKnight</target>
       </effect>
     </effects>
   </tech>
@@ -4819,6 +4850,10 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMalteseKnight" culture="none" newname="300316">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercMalteseGuard" culture="none" newname="300317">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercMalteseKnight" culture="none" newname="300316">
+      </effect>
       <effect mergemode="add" type="SetName" proto="zpNatWokouPirate" culture="none" newname="300320">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMercWokouPirate" culture="none" newname="300320">
@@ -4850,6 +4885,8 @@
       <effect mergemode="add" type="SetName" proto="zpNatConquistador" culture="none" newname="61196">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatConquistadorMusketeer" culture="none" newname="300656">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercConquistadorMusketeer" culture="none" newname="300656">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatGatlingCamel" culture="none" newname="300449">
       </effect>
@@ -8687,7 +8724,7 @@
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
-      <effect type="TechStatus" status="active">ypNatDisciplinedJesuit"</effect>
+      <effect type="TechStatus" status="active">ypNatDisciplinedJesuit</effect>
       <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatConquistador</target>
       </effect>
@@ -8707,6 +8744,16 @@
       <effect type="SetName" proto="zpNatConquistadorMusketeer" culture="none" newname="300654">
       </effect>
       <effect type="SetName" proto="zpNatConquistadorMusketeer" culture="none" newname="300656" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercConquistadorMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercConquistadorMusketeer</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMercConquistadorMusketeer" culture="none" newname="300654">
+      </effect>
+      <effect type="SetName" proto="zpNatMercConquistadorMusketeer" culture="none" newname="300656" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>
@@ -8729,7 +8776,7 @@
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="TechStatus" status="active">ypNatHonoredJesuit"</effect>
+      <effect type="TechStatus" status="active">ypNatHonoredJesuit</effect>
       <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatConquistador</target>
       </effect>
@@ -8749,6 +8796,16 @@
       <effect type="SetName" proto="zpNatConquistadorMusketeer" culture="none" newname="300655">
       </effect>
       <effect type="SetName" proto="zpNatConquistadorMusketeer" culture="none" newname="300656" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercConquistadorMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercConquistadorMusketeer</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMercConquistadorMusketeer" culture="none" newname="300655">
+      </effect>
+      <effect type="SetName" proto="zpNatMercConquistadorMusketeer" culture="none" newname="300656" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>
@@ -19118,7 +19175,6 @@
       </effect>
     </effects>
   </tech>
-
   <tech name="zpDisableTradeRouteUpgrade" type="Normal">
     <dbid>40827</dbid>
     <status>UNOBTAINABLE</status>
@@ -19148,6 +19204,146 @@
       <effect type="CommandRemove" tech="DETradeRouteUpgradeEuropeAll2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainVeniceGalley3" type="Normal">
+    <dbid>40828</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpVeniceGalley</target>
+      </effect>
+      <effect type="Data" action="SpawnVeniceGalley" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpVenetianWaterSpawnFlag3">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainVeniceGalley4" type="Normal">
+    <dbid>40828</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpVeniceGalley</target>
+      </effect>
+      <effect type="Data" action="SpawnVeniceGalley" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpVenetianWaterSpawnFlag4">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainGalleass3" type="Normal">
+    <dbid>40829</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpGalleass</target>
+      </effect>
+      <effect type="Data" action="SpawnGalleass" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpVenetianWaterSpawnFlag3">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainGalleass4" type="Normal">
+    <dbid>40830</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpGalleass</target>
+      </effect>
+      <effect type="Data" action="SpawnGalleass" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpVenetianWaterSpawnFlag4">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnlockCathedralJesuit" type="Normal">
+    <dbid>40831</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="SPCJesuit" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="ypNatMercConquistador" relativity="Absolute">
+        <target type="ProtoUnit">zpConquistadorMercIcon</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypNatMercConquistador</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="PopulationCount" relativity="Assign">
+        <target type="ProtoUnit">ypNatMercConquistador</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMercConquistadorMusketeer" relativity="Absolute">
+        <target type="ProtoUnit">zpConquistadorMusketeerMercIcon</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercConquistadorMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Assign">
+        <target type="ProtoUnit">zpNatMercConquistadorMusketeer</target>
+      </effect>
+      <effect type="Data" amount="10.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">ypNatMercConquistador</target>
+      </effect>
+      <effect type="Data" amount="15.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercConquistadorMusketeer</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedJesuit</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredJesuit</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitSmokelessPowder</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitFlyingButtress</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitSchools</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnlockCathedralMaltese" type="Normal">
+    <dbid>40831</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="Maltese" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMercMalteseKnight" relativity="Absolute">
+        <target type="ProtoUnit">zpMalteseKnightMercIcon</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercMalteseKnight</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="PopulationCount" relativity="Assign">
+        <target type="ProtoUnit">zpNatMercMalteseKnight</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMercMalteseGuard" relativity="Absolute">
+        <target type="ProtoUnit">zpMalteseGuardMercIcon</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercMalteseGuard</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Assign">
+        <target type="ProtoUnit">zpNatMercMalteseGuard</target>
+      </effect>
+      <effect type="Data" amount="12.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercMalteseGuard</target>
+      </effect>
+      <effect type="Data" amount="9.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercMalteseKnight</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedMaltese</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredMaltese</effect>
+      <effect type="TechStatus" status="obtainable">zpNatMalteseFishCuisine</effect>
+      <effect type="TechStatus" status="obtainable">zpNatMalteseFortifications</effect>
+      <effect type="TechStatus" status="obtainable">zpNatMalteseArchitecture</effect>
     </effects>
   </tech>
  
