@@ -491,6 +491,16 @@
     <notcancellable>
     </notcancellable>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpSocketBuildFixedGun</name>
+    <icon>resources\images\icons\command\build_fixed_gun.png</icon>
+    <command>uiSocketBuild(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <socketbuild>
+    </socketbuild>
+    <rollovertextid>302109</rollovertextid>
+  </protounitcommand>
 
   <!--
 

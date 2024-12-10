@@ -5317,7 +5317,21 @@
       <effect mergeMode='add' type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpMalteseGun</target>
       </effect>
-      <effect mergeMode='add' type="SetName" proto="zpMalteseGun" culture="none" newname="300176">
+      <effect mergeMode='add' type="SetName" proto="zpMalteseGun" culture="none" newname="302105">
+      </effect>
+      <effect mergeMode='add' type="Data" action="CannonAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCFixedGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" action="AntiShipAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCFixedGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" action="GuardianAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCFixedGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCFixedGun</target>
+      </effect>
+      <effect mergeMode='add' type="SetName" proto="zpSPCFixedGun" culture="none" newname="302105">
       </effect>
     </effects>
   </tech>
@@ -5335,7 +5349,21 @@
       <effect mergeMode='add' type="Data" action="GuardianAttack" amount="1.00" subtype="DamageArea" relativity="Absolute">
         <target type="ProtoUnit">zpMalteseGun</target>
       </effect>
-      <effect mergeMode='add' type="SetName" proto="zpMalteseGun" culture="none" newname="300177">
+      <effect mergeMode='add' type="SetName" proto="zpMalteseGun" culture="none" newname="302106">
+      </effect>
+      <effect mergeMode='add' type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCFixedGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCFixedGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" action="CannonAttack" amount="1.00" subtype="DamageArea" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCFixedGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" action="GuardianAttack" amount="1.00" subtype="DamageArea" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCFixedGun</target>
+      </effect>
+      <effect mergeMode='add' type="SetName" proto="zpSPCFixedGun" culture="none" newname="302106">
       </effect>
     </effects>
   </tech>

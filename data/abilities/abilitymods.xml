@@ -19,6 +19,9 @@
   <zpmaltesegun>
     <ability>dePowerMalteseGunLongRangeAttack<tech>Industrialize</tech><rof>60</rof></ability>
   </zpmaltesegun>
+  <zpspcfixedgun>
+    <ability>dePowerMalteseGunLongRangeAttack<tech>Industrialize</tech><rof>60</rof></ability>
+  </zpspcfixedgun>
   <zpspctreasureship>
     <ability>PowerLongRange<rof>60</rof></ability>
     <ability>PowerBroadside<rof>60</rof></ability>

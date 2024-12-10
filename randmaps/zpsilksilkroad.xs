@@ -383,7 +383,7 @@ if(cNumberNonGaiaPlayers>2){
   float loc8 = 0.6;
   float tempLoc = 0.0;
 
-  rmPlaceObjectDefAtLoc(socketID, 0, 0.5, 0.51);
+  rmPlaceObjectDefAtLoc(socketID, 1, 0.5, 0.51);
 
   for(i = 0; < numberPosts) {
     
