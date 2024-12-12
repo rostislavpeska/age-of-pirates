@@ -44839,6 +44839,38 @@
     <flag>ForceUpdateVisualWhenCnverted</flag>
     <flag>TieToWaterSurface</flag>
   </unit>
+  <unit id="20593" name="zpSPCWaterSpawnPointB">
+    <dbid>20593</dbid>
+    <displaynameid>300061</displaynameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>air</movementtype>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <unittype>Unattackable</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>NoHPBar</flag>
+    <flag>NotDeleteable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NonCollideable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NonSolid</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>Tracked</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>DisplayRange</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <tactics>waterspawnpoint.tactics</tactics>
+  </unit>
 
 
 

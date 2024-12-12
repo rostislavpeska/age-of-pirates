@@ -35,7 +35,6 @@
 		<unit variation="0" posx="18.3152" posz="-59.9812" orientx="0.0035" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
 		<unit variation="0" posx="9.1356" posz="-58.9179" orientx="0.3859" orienty="0.0000" orientz="0.9225">HarbourPathBlock</unit>
 		<unit variation="0" posx="41.8556" posz="-58.0805" orientx="-1.0000" orienty="0.0000" orientz="0.0035">HarbourPathBlock</unit>
-		<unit variation="149" posx="50.0000" posz="-57.4113" orientx="-0.0000" orienty="-0.0039" orientz="1.0000">Travois</unit>
 		<unit variation="95" posx="12.0636" posz="-55.8535" orientx="-1.0000" orienty="0.0000" orientz="-0.0010">zpHarbourPlatform</unit>
 		<unit variation="0" posx="6.7605" posz="-58.1502" orientx="0.3859" orienty="0.0000" orientz="0.9225">HarbourPathBlock</unit>
 		<unit variation="160" posx="15.5605" posz="-59.5125" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeUnitVenetianShips</unit>
@@ -291,7 +290,6 @@
 		<unit variation="0" posx="6.9179" posz="-21.4280" orientx="-0.3797" orienty="0.0000" orientz="0.9251">HarbourPathBlock</unit>
 		<unit variation="0" posx="5.4718" posz="-21.9290" orientx="-0.3797" orienty="0.0000" orientz="0.9251">HarbourPathBlock</unit>
 		<unit variation="193" posx="10.9907" posz="-23.5535" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropMarketStall</unit>
-		<unit variation="17" posx="51.0788" posz="-17.0788" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
 		<unit variation="64" posx="-1.4650" posz="-17.5780" orientx="-0.6928" orienty="0.0000" orientz="0.7212">zpHarbourPlatform</unit>
 		<unit variation="0" posx="-19.9941" posz="-19.8449" orientx="1.0000" orienty="0.0000" orientz="-0.0013">HarbourPathBlock</unit>
 		<unit variation="0" posx="16.3430" posz="-18.3031" orientx="-1.0000" orienty="0.0000" orientz="0.0031">HarbourPathBlock</unit>
