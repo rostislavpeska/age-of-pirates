@@ -14,7 +14,7 @@
 			    </data>
                 <data>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\venice\venice_academy_Model</file>
+						<file>buildings\native_settlement\venice\venice_generic_05_Model</file>
 					</assetreference>
 			    </data>
                 <data>
@@ -44,7 +44,7 @@
 			    </data>
 				<data>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\venice\venice_church</file>
+						<file>buildings\native_settlement\venice\venice_house3c_Model</file>
 					</assetreference>
 			    </data>
 				<data>
@@ -64,7 +64,7 @@
 			    </data>
 				<data>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\venice\port_stairs_Model</file>
+						<file>buildings\native_settlement\venice\venice_generic_09_Model</file>
 					</assetreference>
 			    </data>
 

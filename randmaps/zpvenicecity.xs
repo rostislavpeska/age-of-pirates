@@ -53,11 +53,11 @@ void main(void)
 			rmSetSubCiv(3, "zpSansculottes");
 	}
 
-    int size = 360;
+    int size = 400;
 	if (cNumberNonGaiaPlayers > 4){
 	size = 480;
 	}
-	rmSetMapSize(size*1.4, size);
+	rmSetMapSize(size*1.1, size);
 	// rmSetMapElevationParameters(cElevTurbulence, 0.4, 6, 0.5, 3.0);  // DAL - original
 	
 	rmSetMapElevationHeightBlend(1);
@@ -79,7 +79,6 @@ void main(void)
 	rmEnableLocalWater(false);
 	//rmSetBaseTerrainMix("nwt_grass1");
 	//rmTerrainInitialize("nwterritory\ground_grass2_nwt", 1.0);
-    //rmSetSeaType(seaType);
     rmTerrainInitialize("water");
 	rmSetMapType("grass");
 	rmSetMapType("land");
@@ -90,7 +89,7 @@ void main(void)
 	chooseMercs();
 
 	// Corner constraint.
-	rmSetWorldCircleConstraint(true);
+	rmSetWorldCircleConstraint(false);
 
    	// Define some classes. These are used later for constraints.
 	int classPlayer=rmDefineClass("player");
@@ -231,21 +230,48 @@ void main(void)
 	int avoidTownCenter=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 25.0);
 	int avoidTownCenterShort=rmCreateTypeDistanceConstraint("avoid Town Center Short", "townCenter", 6.0);
 
+	int avoidPathBlock=rmCreateTypeDistanceConstraint("avoid pathblock", "HarbourPathBlock", 6.0);
+
 	// KOTH
 	int avoidKOTH=rmCreateTypeDistanceConstraint("avoid koth filler", "ypKingsHill", 12.0);
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.10);
 
-	int landMassID = rmCreateArea("countryside S");
-    rmSetAreaSize(landMassID , 0.55, 0.55);
+	int landMassID = rmCreateArea("countryside 1");
+    rmSetAreaSize(landMassID , 0.3, 0.3);
     rmSetAreaLocation(landMassID , 0.5, 0.5);		
     rmSetAreaCoherence(landMassID , 1.0);
     rmSetAreaBaseHeight(landMassID, 2.0);
 	rmSetAreaWarnFailure(landMassID, false);
     rmSetAreaMix(landMassID, "italy_grass");
     rmSetAreaElevationVariation(landMassID, 0.0);
+	rmAddAreaTerrainLayer(landMassID, "caribbean\ground_shoreline1_crb", 0, 3);
+	rmAddAreaInfluenceSegment(landMassID, 0.55, 1.0, 0.55, 0.5);
+	rmAddAreaInfluenceSegment(landMassID, 0.55, 0.5, 0.45, 0.5);
+	rmAddAreaInfluenceSegment(landMassID, 0.45, 0.5, 0.45, 0.0);
     rmBuildArea(landMassID ); 
+
+	int landMassID2 = rmCreateArea("countryside 2");
+    rmSetAreaSize(landMassID2 , 0.3, 0.3);
+    rmSetAreaLocation(landMassID2 , 0.5, 0.5);		
+    rmSetAreaCoherence(landMassID2 , 1.0);
+    rmSetAreaBaseHeight(landMassID2, 2.0);
+	rmSetAreaWarnFailure(landMassID2, false);
+    rmSetAreaMix(landMassID2, "italy_grass");
+    rmSetAreaElevationVariation(landMassID2, 0.0);
+	rmAddAreaTerrainLayer(landMassID2, "caribbean\ground_shoreline1_crb", 0, 3);
+	rmAddAreaInfluenceSegment(landMassID2, 1.0, 0.5, 0.0, 0.5);
+    rmBuildArea(landMassID2 ); 
+
+	int veniceArea = rmCreateArea("veniceArea");
+    rmSetAreaSize(veniceArea , 0.35, 0.35);
+    rmSetAreaLocation(veniceArea , 0.5, 0.5);		
+    rmSetAreaCoherence(veniceArea , 0.8);
+    rmSetAreaElevationVariation(veniceArea, 0.0);
+	rmAddAreaToClass(veniceArea, classGreatLake);
+    rmBuildArea(veniceArea); 
+	
 
 
    	float playerFraction=rmAreaTilesToFraction(850);
@@ -260,18 +286,30 @@ void main(void)
 	rmSetObjectDefMinDistance(stopperID, 0.0);
 	rmSetObjectDefMaxDistance(stopperID, 0.0);  
 
+	int stopperID2=rmCreateObjectDef("Armored Train Stopper2");
+	rmAddObjectDefItem(stopperID2, "zpSPCWaterSpawnPoint", 1, 0.0);
+	rmSetObjectDefAllowOverlap(stopperID2, true);
+	rmSetObjectDefMinDistance(stopperID2, 0.0);
+	rmSetObjectDefMaxDistance(stopperID2, 0.0); 
+
     int tradeRouteID = rmCreateTradeRoute();
     rmSetObjectDefTradeRouteID(stopperID, tradeRouteID);
+	rmSetObjectDefTradeRouteID(stopperID2, tradeRouteID);
    
-    rmAddTradeRouteWaypoint(tradeRouteID, 0.6, 1.0);
-    rmAddTradeRouteWaypoint(tradeRouteID, 0.6, 0.55);
-	rmAddTradeRouteWaypoint(tradeRouteID, 0.4, 0.45);
-    rmAddTradeRouteWaypoint(tradeRouteID, 0.4, 0.0);
+    rmAddTradeRouteWaypoint(tradeRouteID, 0.45, 1.0);
+    rmAddTradeRouteWaypoint(tradeRouteID, 0.45, 0.5);
+	rmAddTradeRouteWaypoint(tradeRouteID, 0.55, 0.5);
+    rmAddTradeRouteWaypoint(tradeRouteID, 0.55, 0.0);
     rmBuildTradeRoute(tradeRouteID, "water_trail");
 
     // Place train stopper, because without it the islands son't spawn
-    vector socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.5);
+    vector socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.2);
     rmPlaceObjectDefAtPoint(stopperID, 0, socketLoc1);
+	socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.8);
+	rmPlaceObjectDefAtPoint(stopperID2, 0, socketLoc1);
+
+	vector stopperLoc1  =  rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID, 0));
+	vector stopperLoc2  =  rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID2, 0));
 
 
 
@@ -281,29 +319,54 @@ void main(void)
 	//  ************************** River ******************************
 
     // River must be defined before the islands are placed
-    int riverID = rmRiverCreate(-1, "ZP Venice Lagoon Shore", 4, 4, 39, 39); //  (-1, "new england lake", 18, 14, 5, 5)
-    rmRiverAddWaypoint(riverID, 0.5, 0.0);
+    int riverID = rmRiverCreate(-1, "ZP Venice Lagoon Shore", 4, 4, 41, 41); //  (-1, "new england lake", 18, 14, 5, 5)
     rmRiverAddWaypoint(riverID, 0.5, 1.0);
+	rmRiverAddWaypoint(riverID, 0.5, 0.0);
 	rmRiverBuild(riverID);
+
+	int riverID2 = rmRiverCreate(-1, "ZP Venice Lagoon Shore", 4, 4, 39, 39); //  (-1, "new england lake", 18, 14, 5, 5)
+    rmRiverAddWaypoint(riverID2, 0.0, 0.5);
+    rmRiverAddWaypoint(riverID2, 1.0, 0.5);
+	rmRiverBuild(riverID2);
 
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!! ISLANDS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     rmDefineClass("classPlateau");
 
-    // Bastille in the center
+	int socketID=rmCreateObjectDef("sockets to dock Trade Posts");
+	rmSetObjectDefTradeRouteID(socketID, tradeRouteID);
+	rmAddObjectDefItem(socketID, "zpTradingPostCaptureNaval", 1, 6.0);
+	rmSetObjectDefMinDistance(socketID, 0.0);
+  	rmSetObjectDefMaxDistance(socketID, 3.0);
+	rmAddObjectDefConstraint(socketID, avoidPathBlock);
+	rmPlaceObjectDefAtLoc(socketID, 0, rmXMetersToFraction(xsVectorGetX(stopperLoc1))+rmXTilesToFraction(8), rmXMetersToFraction(xsVectorGetZ(stopperLoc1))-rmZTilesToFraction(17));
+
+	vector ControllerLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(socketID, 0));
+
+	// San Marco
 	int veniceSanMarco = rmCreateGrouping("bridge1", "EU_Island_Venice_SanMarco");
     rmSetGroupingMinDistance(veniceSanMarco, 0.00);
-    rmSetGroupingMaxDistance(veniceSanMarco, 0.00);
+    rmSetGroupingMaxDistance(veniceSanMarco, 0.01);
 	rmAddGroupingToClass(veniceSanMarco, rmClassID("classPlateau"));
 
-	int veniceInstanceID1 = rmPlaceGroupingInstanceAtLoc(veniceSanMarco, 0.5, 0.75, 0);
+	int veniceInstanceID1 = rmPlaceGroupingInstanceAtLoc(veniceSanMarco, rmXMetersToFraction(xsVectorGetX(ControllerLoc1))+rmXTilesToFraction(18), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1))+rmZTilesToFraction(15), 0);
+
+	int socketID2=rmCreateObjectDef("sockets to dock Trade Posts2");
+	rmSetObjectDefTradeRouteID(socketID2, tradeRouteID);
+	rmAddObjectDefItem(socketID2, "zpTradingPostCaptureNaval", 1, 6.0);
+	rmSetObjectDefMinDistance(socketID2, 0.0);
+  	rmSetObjectDefMaxDistance(socketID2, 3.0);
+	rmAddObjectDefConstraint(socketID2, avoidPathBlock);
+	rmPlaceObjectDefAtLoc(socketID2, 0, rmXMetersToFraction(xsVectorGetX(stopperLoc2))-rmXTilesToFraction(8), rmXMetersToFraction(xsVectorGetZ(stopperLoc2))-rmZTilesToFraction(17));
+
+	vector ControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(socketID2, 0));
 
 	int veniceAcademia = rmCreateGrouping("bridge2", "EU_Island_Venice_Academia");
     rmSetGroupingMinDistance(veniceAcademia, 0.00);
     rmSetGroupingMaxDistance(veniceAcademia, 0.00);
 	rmAddGroupingToClass(veniceAcademia, rmClassID("classPlateau"));
 
-	int veniceInstanceID2 = rmPlaceGroupingInstanceAtLoc(veniceAcademia, 0.5, 0.235, 0);
+	int veniceInstanceID2 = rmPlaceGroupingInstanceAtLoc(veniceAcademia, rmXMetersToFraction(xsVectorGetX(ControllerLoc2))-rmXTilesToFraction(18), rmZMetersToFraction(xsVectorGetZ(ControllerLoc2))+rmZTilesToFraction(25), 0);
 
 
     // Additional Constraints - based on dansil original constraints
@@ -317,14 +380,43 @@ void main(void)
     int classCenter = rmDefineClass("center");
     int avoidCenter = rmCreateClassDistanceConstraint("avoid center", rmClassID("center"), 6.0);
     int circleConstraint2=rmCreatePieConstraint("circle Constraint2", 0.5, 0.5, 0, rmZFractionToMeters(0.48), rmDegreesToRadians(0), rmDegreesToRadians(360));
+	int avoidFixedGun=rmCreateTypeDistanceConstraint("avoid fixed gun", "zpSPCFixedGunSocket", 20.0);
+
+
+	int NorthIslandID = rmCreateArea("north island");
+    rmSetAreaSize(NorthIslandID , 0.2, 0.2);
+    rmSetAreaLocation(NorthIslandID , 0.95, 0.5);		
+    rmSetAreaCoherence(NorthIslandID , 1.0);
+    rmSetAreaBaseHeight(NorthIslandID, 2.0);
+	rmSetAreaWarnFailure(NorthIslandID, false);
+    rmSetAreaMix(NorthIslandID, "italy_grass");
+		rmAddAreaTerrainLayer(NorthIslandID, "caribbean\ground_shoreline1_crb", 0, 3);
+    rmSetAreaElevationVariation(NorthIslandID, 0.0);
+	rmAddAreaConstraint(NorthIslandID, greatLakesConstraint);
+	rmAddAreaConstraint(NorthIslandID, avoidFixedGun);
+    rmBuildArea(NorthIslandID ); 
+
+	int SouthIslandID = rmCreateArea("south island");
+    rmSetAreaSize(SouthIslandID , 0.2, 0.2);
+    rmSetAreaLocation(SouthIslandID , 0.05, 0.5);		
+    rmSetAreaCoherence(SouthIslandID , 1.0);
+    rmSetAreaBaseHeight(SouthIslandID, 2.0);
+	rmSetAreaWarnFailure(SouthIslandID, false);
+    rmSetAreaMix(SouthIslandID, "italy_grass");
+		rmAddAreaTerrainLayer(SouthIslandID, "caribbean\ground_shoreline1_crb", 0, 3);
+    rmSetAreaElevationVariation(SouthIslandID, 0.0);
+	rmAddAreaConstraint(SouthIslandID, greatLakesConstraint);
+	rmAddAreaConstraint(SouthIslandID, avoidFixedGun);
+    rmBuildArea(SouthIslandID ); 
+
         
     
           rmSetPlacementTeam(0);
           rmSetPlacementSection(0.65, 0.85);
-          rmPlacePlayersCircular(0.35, 0.35, rmDegreesToRadians(5.0));
+          rmPlacePlayersCircular(0.4, 0.4, rmDegreesToRadians(5.0));
           rmSetPlacementTeam(1);
           rmSetPlacementSection(0.15, 0.35);
-          rmPlacePlayersCircular(0.35, 0.35, rmDegreesToRadians(5.0));
+          rmPlacePlayersCircular(0.4, 0.4, rmDegreesToRadians(5.0));
 
 
 	//town centre start
@@ -467,8 +559,8 @@ for(i=0; < 8)
 	int veniceSocket1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCSocketVeniceCityState");
 	int veniceSocket2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCSocketVeniceCityState");
 
-	int veniceSocketMod1 = veniceSocket1+1;
-	int veniceSocketMod2 = veniceSocket2+1;
+	int veniceSocketMod1 = veniceSocket1+2;
+	int veniceSocketMod2 = veniceSocket2+2;
 	int veniceSocketMod3 = -1;
 	int veniceSocketMod4 = -1;
 
@@ -481,36 +573,36 @@ for(i=0; < 8)
 	int veniceMonastery1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCCathedral");
 	int veniceMonastery2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpJesuitCathedral");
 
-	int veniceHarbour1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpTradingPostCaptureNaval");
-	int veniceHarbour2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpTradingPostCaptureNaval");
-
 	int veniceFixedGun1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCFixedGunBase");
 	int veniceFixedGun2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCFixedGunBase");
 
-	int veniceBasilicaMod1 = veniceBasilica1+1;
-	int veniceBasilicaMod2 = veniceBasilica2+1;
+	int veniceCenter1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCWaterSpawnPoint");
+	int veniceCenter2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCWaterSpawnPoint");
+
+	int veniceBasilicaMod1 = veniceBasilica1+2;
+	int veniceBasilicaMod2 = veniceBasilica2+2;
 	int veniceBasilicaMod3 = -1;
 	int veniceBasilicaMod4 = -1;
 
-	int veniceProductionMod1 = veniceProduction1+1;
-	int veniceProductionMod2 = veniceProduction2+1;
+	int veniceProductionMod1 = veniceProduction1+2;
+	int veniceProductionMod2 = veniceProduction2+2;
 	int veniceProductionMod3 = -1;
 	int veniceProductionMod4 = -1;
 
-	int veniceMonasteryMod1 = veniceMonastery1+1;
-	int veniceMonasteryMod2 = veniceMonastery2+1;
+	int veniceMonasteryMod1 = veniceMonastery1+2;
+	int veniceMonasteryMod2 = veniceMonastery2+2;
 	int veniceMonasteryMod3 = -1;
 	int veniceMonasteryMod4 = -1;
 
-	int veniceHarbourMod1 = veniceHarbour1+1;
-	int veniceHarbourMod2 = veniceHarbour2+1;
-	int veniceHarbourMod3 = -1;
-	int veniceHarbourMod4 = -1;
-
-	int veniceFixedGunMod1 = veniceFixedGun1+1;
-	int veniceFixedGunMod2 = veniceFixedGun2+1;
+	int veniceFixedGunMod1 = veniceFixedGun1+2;
+	int veniceFixedGunMod2 = veniceFixedGun2+2;
 	int veniceFixedGunMod3 = -1;
 	int veniceFixedGunMod4 = -1;
+
+	int veniceCenterMod1 = veniceCenter1+2;
+	int veniceCenterMod2 = veniceCenter2+2;
+	int veniceCenterMod3 = -1;
+	int veniceCenterMod4 = -1;
 
 	
 	// Starting techs
@@ -1265,9 +1357,6 @@ for(i=0; < 8)
 		rmSetTriggerEffectParam("SrcObject",""+veniceMonasteryMod1);
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmAddTriggerEffect("Convert");
-		rmSetTriggerEffectParam("SrcObject",""+veniceHarbourMod1);
-		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmAddTriggerEffect("Convert");
 		rmSetTriggerEffectParam("SrcObject",""+veniceFixedGunMod1);
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmAddTriggerEffect("Convert Units in Area");
@@ -1282,6 +1371,24 @@ for(i=0; < 8)
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","zpSPCFixedGunSocket");
 		rmSetTriggerEffectParamInt("Dist",10);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod1);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpCinematicRevealer");
+		rmSetTriggerEffectParamInt("Dist",60);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod1);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
+		rmSetTriggerEffectParamInt("Dist",60);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod1);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
+		rmSetTriggerEffectParamInt("Dist",60);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralMaltese"); // Mercenaries
@@ -1323,9 +1430,6 @@ for(i=0; < 8)
 		rmSetTriggerEffectParam("SrcObject",""+veniceMonasteryMod1);
 		rmSetTriggerEffectParamInt("PlayerID",0);
 		rmAddTriggerEffect("Convert");
-		rmSetTriggerEffectParam("SrcObject",""+veniceHarbourMod1);
-		rmSetTriggerEffectParamInt("PlayerID",0);
-		rmAddTriggerEffect("Convert");
 		rmSetTriggerEffectParam("SrcObject",""+veniceFixedGunMod1);
 		rmSetTriggerEffectParamInt("PlayerID",0);
 		rmAddTriggerEffect("Convert Units in Area");
@@ -1337,9 +1441,27 @@ for(i=0; < 8)
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+veniceFixedGunMod1);
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpSPCFixedGunSocket");
 		rmSetTriggerEffectParamInt("Dist",10);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod1);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpCinematicRevealer");
+		rmSetTriggerEffectParamInt("Dist",60);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod1);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
+		rmSetTriggerEffectParamInt("Dist",60);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod1);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
+		rmSetTriggerEffectParamInt("Dist",60);
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice1on_Player"+k));
@@ -1376,9 +1498,6 @@ for(i=0; < 8)
 		rmSetTriggerEffectParam("SrcObject",""+veniceMonasteryMod2);
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmAddTriggerEffect("Convert");
-		rmSetTriggerEffectParam("SrcObject",""+veniceHarbourMod2);
-		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmAddTriggerEffect("Convert");
 		rmSetTriggerEffectParam("SrcObject",""+veniceFixedGunMod2);
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmAddTriggerEffect("Convert Units in Area");
@@ -1393,6 +1512,24 @@ for(i=0; < 8)
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","zpSPCFixedGunSocket");
 		rmSetTriggerEffectParamInt("Dist",10);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod2);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpCinematicRevealer");
+		rmSetTriggerEffectParamInt("Dist",60);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod2);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
+		rmSetTriggerEffectParamInt("Dist",60);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod2);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
+		rmSetTriggerEffectParamInt("Dist",60);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralJesuit"); // Mercenaries
@@ -1434,9 +1571,6 @@ for(i=0; < 8)
 		rmSetTriggerEffectParam("SrcObject",""+veniceMonasteryMod2);
 		rmSetTriggerEffectParamInt("PlayerID",0);
 		rmAddTriggerEffect("Convert");
-		rmSetTriggerEffectParam("SrcObject",""+veniceHarbourMod2);
-		rmSetTriggerEffectParamInt("PlayerID",0);
-		rmAddTriggerEffect("Convert");
 		rmSetTriggerEffectParam("SrcObject",""+veniceFixedGunMod2);
 		rmSetTriggerEffectParamInt("PlayerID",0);
 		rmAddTriggerEffect("Convert Units in Area");
@@ -1451,6 +1585,24 @@ for(i=0; < 8)
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpSPCFixedGunSocket");
 		rmSetTriggerEffectParamInt("Dist",10);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod2);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpCinematicRevealer");
+		rmSetTriggerEffectParamInt("Dist",60);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod2);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
+		rmSetTriggerEffectParamInt("Dist",60);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod2);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
+		rmSetTriggerEffectParamInt("Dist",60);
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice2on_Player"+k));
@@ -1649,6 +1801,7 @@ for(i=0; < 8)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
 
 
     
