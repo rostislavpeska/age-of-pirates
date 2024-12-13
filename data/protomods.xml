@@ -45122,15 +45122,6 @@
 
 
 <!--BELONGS TO MAPMODS VENICE--> 
-  <unit name="zpTradingPostCaptureNaval">
-    <tactics mergeMode="remove">yptradingpostcapture.tactics</tactics>
-    <minimapicon mergeMode="remove">ui\minimap\t</minimapicon>
-    <minimapicon>ui\minimap\indicator_small</minimapicon>
-    <flag>ColorTransformNonGaia</flag>
-  </unit>
-  <unit name="deSPCCityTower">
-    <movementtype>air</movementtype>
-  </unit>
   <!--<unit name="zpMalteseGun">
     <deadreplacement>zpSPCFixedGunSocket</deadreplacement>
     <flag>DeadReplacementWhenDestroyed</flag>
