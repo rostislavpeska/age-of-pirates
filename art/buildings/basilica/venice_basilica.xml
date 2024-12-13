@@ -44,10 +44,10 @@
                     </decal>
                 </variationid0>
                 <variationid1>
-                    <assetreference type="GrannyModel"><file>buildings\basilica\basilica_major_Model</file></assetreference>
+                    <assetreference type="GrannyModel"><file>buildings\basilica\basilica_age2</file></assetreference>
                      <decal>
                         <effecttype>bump</effecttype>
-                        <texture>buildings\basilica\basilica_age4_ground</texture>
+                        <texture>buildings\basilica\basilica_age2_ground</texture>
                         <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
                         <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
                         <width>20.00</width>

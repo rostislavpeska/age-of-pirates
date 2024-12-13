@@ -4892,11 +4892,15 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatWarriorMonk" culture="none" newname="300900">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercWarriorMonk" culture="none" newname="300900">
+      </effect>
       <effect mergemode="add" type="SetName" proto="zpNatDvoryanin" culture="none" newname="300907">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMonaspa" culture="none" newname="300917">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatBulgarianBoyar" culture="none" newname="300912">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercBulgarianBoyar" culture="none" newname="300912">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatSoheiCavalry" culture="none" newname="300969">
       </effect>
@@ -10416,6 +10420,13 @@
 			<effect type ="SetName" proto ="zpNatWarriorMonk" culture ="none" newname ="300898"></effect>
       <effect type="SetName" proto="zpNatWarriorMonk" culture="none" newname="300900" reqtech="ImpLegendaryNativesShadow">
       </effect>
+      <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercWarriorMonk</target></effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercWarriorMonk</target></effect>
+			<effect type ="SetName" proto ="zpNatMercWarriorMonk" culture ="none" newname ="300898"></effect>
+      <effect type="SetName" proto="zpNatMercWarriorMonk" culture="none" newname="300900" reqtech="ImpLegendaryNativesShadow">
+      </effect>
 		</effects>
 	</tech>
    <tech name ="zpNatHonoredOrthodox" type ="Normal">
@@ -10467,6 +10478,22 @@
 			<effect type ="SetName" proto ="zpNatMonaspa" culture ="none" newname ="300916">
       </effect>
       <effect type="SetName" proto="zpNatMonaspa" culture="none" newname="300917" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercWarriorMonk</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercWarriorMonk</target></effect>
+			<effect type ="SetName" proto ="zpNatMercWarriorMonk" culture ="none" newname ="300899">
+      </effect>
+      <effect type="SetName" proto="zpNatMercWarriorMonk" culture="none" newname="300900" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercBulgarianBoyar</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercBulgarianBoyar</target></effect>
+			<effect type ="SetName" proto ="zpNatMercBulgarianBoyar" culture ="none" newname ="300911">
+      </effect>
+      <effect type="SetName" proto="zpNatMercBulgarianBoyar" culture="none" newname="300912" reqtech="ImpLegendaryNativesShadow">
       </effect>
 		</effects>
 	</tech>
@@ -19250,7 +19277,7 @@
     </effects>
   </tech>
   <tech name="zpTrainVeniceGalley4" type="Normal">
-    <dbid>40828</dbid>
+    <dbid>40833</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
@@ -19335,7 +19362,7 @@
     </effects>
   </tech>
   <tech name="zpUnlockCathedralMaltese" type="Normal">
-    <dbid>40831</dbid>
+    <dbid>40832</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -19372,6 +19399,46 @@
       <effect type="TechStatus" status="obtainable">zpNatMalteseFishCuisine</effect>
       <effect type="TechStatus" status="obtainable">zpNatMalteseFortifications</effect>
       <effect type="TechStatus" status="obtainable">zpNatMalteseArchitecture</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnlockCathedraOrthodox" type="Normal">
+    <dbid>40833</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="zpOrthodox" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMercBulgarianBoyar" relativity="Absolute">
+        <target type="ProtoUnit">zpBulgarianBoyarMercIcon</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercBulgarianBoyar</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="PopulationCount" relativity="Assign">
+        <target type="ProtoUnit">zpNatMercBulgarianBoyar</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMercWarriorMonk" relativity="Absolute">
+        <target type="ProtoUnit">zpWarriorMonkMercIcon</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercWarriorMonk</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Assign">
+        <target type="ProtoUnit">zpNatMercWarriorMonk</target>
+      </effect>
+      <effect type="Data" amount="8.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercBulgarianBoyar</target>
+      </effect>
+      <effect type="Data" amount="13.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercWarriorMonk</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedOrthodox</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredOrthodox</effect>
+      <effect type="TechStatus" status="obtainable">zpNatOrthodoxIcons</effect>
+      <effect type="TechStatus" status="obtainable">zpNatOrthodoxSauna</effect>
+      <effect type="TechStatus" status="obtainable">zpNatOrthodoxPatriarchy</effect>
     </effects>
   </tech>
  
