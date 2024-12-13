@@ -21,8 +21,8 @@ void main(void)
 
 	// Choose summer or winter 
 
-	//		seasonPicker = 0.77; 		// for testing
 	float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low is spring
+	//		seasonPicker = 0.77; 		// for testing
 
    	//Chooses which natives appear on the map
 	int subCiv0=-1;
@@ -248,7 +248,7 @@ void main(void)
 	int avoidTradeSocketFar=rmCreateTypeDistanceConstraint("stay away from Trade Socket far", "SocketTradeRoute", 40.0);
 	int avoidTradeSocketFar2=rmCreateTypeDistanceConstraint("stay away from Trade Socket far 2", "SocketTradeRoute", 45.0);
 	int avoidTradeRouteMin = rmCreateTradeRouteDistanceConstraint("trade route min", 5.0);
-	int avoidTownCenter=rmCreateTypeDistanceConstraint("avoid Town Center Far", "deSPCCommandPost", 25.0);
+	int avoidTownCenter=rmCreateTypeDistanceConstraint("avoid Town Center", "deSPCCommandPost", 25.0);
 	int avoidTownCenterShort=rmCreateTypeDistanceConstraint("avoid Town Center Short", "deSPCCommandPost", 6.0);
 
 	// KOTH
@@ -1536,7 +1536,7 @@ rmSetStatusText("",0.70);
 	rmAddObjectDefItem(countrysideTrees, "TreePonderosaPine", rmRandInt(6,7), rmRandFloat(11.0,12.0));
 	rmAddObjectDefItem(countrysideTrees, "TreeGreatPlains", rmRandInt(3,4), 10.0);
 	rmAddObjectDefItem(countrysideTrees, "underbrushTexasGrass", rmRandInt(6,7), 12.0);
-	rmAddObjectDefItem(countrysideTrees, "deer", 1, 6.0);
+	rmAddObjectDefItem(countrysideTrees, "deer", 2, 6.0);
 	rmAddObjectDefToClass(countrysideTrees, rmClassID("classForest")); 
 	rmSetObjectDefMinDistance(countrysideTrees, 0);
 	rmSetObjectDefMaxDistance(countrysideTrees, rmXFractionToMeters(0.99));

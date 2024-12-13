@@ -2116,7 +2116,10 @@
       <string _locid="302115">ZP Orthodox Cathedral</string>
       <string _locid="302116">ZP NAT MERC Warrior Monk</string>
       <string _locid="302117">ZP NAT MERC Bulgarien Boyar</string>
-
+      <string _locid="302118">The Fall of Venice</string>
+      <string _locid="302119">Battle for control the City of Venice.</string>
+      <string _locid="302120">Achieve a Team Victory by capturing and holding the majority of the Venetian Districts.</string>
+      <string _locid="302121">Once all nearby enemies are defeated, a Venetian District socket can be tasked to build a Trading Post on itself freely. Controlling and holding the majority of Venetian Districts until the end of the League Victory timer will result in victory.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
