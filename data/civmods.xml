@@ -298,6 +298,8 @@
     </agetech>
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
+    <homecityflagtexture>objects\flags\venetian</homecityflagtexture>
+    <homecityflagiconwpf>resources/images/icons/flags/flag_venetian.png</homecityflagiconwpf>
   </civ>
   <civ>
     <name>zpOrthodox</name>

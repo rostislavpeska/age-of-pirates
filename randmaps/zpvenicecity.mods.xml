@@ -180,5 +180,17 @@
 		<unit name="deSPCCityTower">
 			<movementtype>air</movementtype>
 		</unit>
+        <unit name="zpJesuitCathedral">
+            <flag mergeMode="remove">DoNotShowOnMiniMap</flag>
+        </unit>
+        <unit name="zpSPCCathedral">
+            <flag mergeMode="remove">DoNotShowOnMiniMap</flag>
+        </unit>
+        <unit name="zpCathedralOrthodox">
+            <flag mergeMode="remove">DoNotShowOnMiniMap</flag>
+        </unit>
+        <unit name="zpPalazoAuditore">
+            <flag mergeMode="remove">DoNotShowOnMiniMap</flag>
+        </unit>
 	</protomods>
 </mods>

@@ -2112,7 +2112,7 @@
       <string _locid="302111">ZP Revealer To Player</string>
       <string _locid="302112">ZP City State Flag</string>
       <string _locid="302113">ZP Academy Team</string>
-      <string _locid="302114">Orthodox Diocese</string>
+      <string _locid="302114">Byzantine Diocese</string>
       <string _locid="302115">ZP Orthodox Cathedral</string>
       <string _locid="302116">ZP NAT MERC Warrior Monk</string>
       <string _locid="302117">ZP NAT MERC Bulgarien Boyar</string>
@@ -2120,6 +2120,10 @@
       <string _locid="302119">Battle for control the City of Venice.</string>
       <string _locid="302120">Achieve a Team Victory by capturing and holding the majority of the Venetian Districts.</string>
       <string _locid="302121">Once all nearby enemies are defeated, a Venetian District socket can be tasked to build a Trading Post on itself freely. Controlling and holding the majority of Venetian Districts until the end of the League Victory timer will result in victory.</string>
+      <string _locid="302122">Palazzo Auditore</string>
+      <string _locid="302123">ZP SPC Palazzo Auditore</string>
+      <string _locid="302124">Republic of Venice</string>
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

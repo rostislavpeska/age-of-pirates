@@ -792,7 +792,7 @@ void main(void)
 	int veniceMonastery1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCCathedral");
 	int veniceMonastery2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpJesuitCathedral");
 	int veniceMonastery3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "zpCathedralOrthodox");
-	int veniceMonastery4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpMediciPalace");
+	int veniceMonastery4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpPalazoAuditore");
 
 	int veniceFixedGun1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCFixedGunBase");
 	int veniceFixedGun2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCFixedGunBase");
@@ -859,6 +859,12 @@ void main(void)
         rmSetTriggerEffectParam("TechID","cTechDEEnableSPCCityStateTechs"); // Mercenaries
         rmSetTriggerEffectParamInt("Status", 2);
 	}
+	rmAddTriggerEffect("Player : Override Civilization for Flag");
+	rmSetTriggerEffectParamInt("Player",0);
+	rmSetTriggerEffectParam("Civilization","zpVenetians");
+	rmAddTriggerEffect("Player : Override Civilization Name");
+	rmSetTriggerEffectParamInt("Player",0);
+	rmSetTriggerEffectParam("StringID","302124");
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -2205,6 +2211,7 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
 
 
 
