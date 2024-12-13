@@ -19277,7 +19277,7 @@
     </effects>
   </tech>
   <tech name="zpTrainVeniceGalley4" type="Normal">
-    <dbid>40833</dbid>
+    <dbid>40834</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
