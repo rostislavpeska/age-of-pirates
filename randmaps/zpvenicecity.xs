@@ -747,7 +747,7 @@ void main(void)
 	rmAddObjectDefConstraint(fishID, fishLand);
 	rmAddObjectDefConstraint(fishID, avoidBuilding);
 	rmAddObjectDefConstraint(fishID, avoidPathBlock);
-	rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 20*cNumberNonGaiaPlayers);
+	rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 50);
 
 	// ____________________ LOCAL MERCENARIES ____________________
 	rmDisableDefaultMercs(true);
