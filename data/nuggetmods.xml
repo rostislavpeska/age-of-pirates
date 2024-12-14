@@ -2257,6 +2257,35 @@
       </guardianunit>
       <difficulty>98</difficulty>
     </nugget>
+    <nugget>
+      <name>zpNuggetCityState</name>
+      <nuggetunit>ypNuggetTradingPost</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>zpGuardianVenice</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGuardianVenice</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGuardianVenice</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGuardianVenice</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGuardianVenice</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGuardianVenice</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGuardianVenice</unit>
+      </guardianunit>  
+      <difficulty>298</difficulty>
+    </nugget>
 
 
     <!--WATER NUGGETS-->

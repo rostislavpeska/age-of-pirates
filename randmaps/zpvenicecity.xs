@@ -65,9 +65,8 @@ void main(void)
 	rmSetSeaType("ZP Venice Lagoon");
 	rmEnableLocalWater(false);
     rmTerrainInitialize("water");
-	rmSetMapType("grass");
-	rmSetMapType("land");
-    rmSetMapType("default");
+	rmSetMapType("water");
+    rmSetMapType("piratehistoricalmap");
     rmSetMapType("mediEurope");
     rmSetMapType("euroTradeRouteCapture");
 
@@ -375,6 +374,7 @@ void main(void)
 	vector ControllerLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(socketID3, 0));
 	vector ControllerLoc4 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(socketID4, 0));
 
+	rmSetNuggetDifficulty(298, 298);
 	// San Marco
 	int veniceSanMarco = rmCreateGrouping("bridge1", "EU_Island_Venice_SanMarco");
     rmSetGroupingMinDistance(veniceSanMarco, 0.00);
@@ -400,12 +400,12 @@ void main(void)
 	int veniceInstanceID3 = rmPlaceGroupingInstanceAtLoc(veniceAcademia, rmXMetersToFraction(xsVectorGetX(ControllerLoc3))-rmXTilesToFraction(21), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3))-rmZTilesToFraction(21), 0);
 
 	// San Polo
-	int veniceSanPolo = rmCreateGrouping("bridge4", "EU_Island_Venice_SanPolo");
+	int veniceSanPolo = rmCreateGrouping("bridge4", "EU_Island_Venice_SanPolo2");
     rmSetGroupingMinDistance(veniceSanPolo, 0.00);
     rmSetGroupingMaxDistance(veniceSanPolo, 0.01);
 	rmAddGroupingToClass(veniceSanPolo, rmClassID("classPlateau"));
 
-	int veniceInstanceID4 = rmPlaceGroupingInstanceAtLoc(veniceSanPolo, rmXMetersToFraction(xsVectorGetX(ControllerLoc4))+rmXTilesToFraction(22), rmZMetersToFraction(xsVectorGetZ(ControllerLoc4))+rmZTilesToFraction(16), 0);
+	int veniceInstanceID4 = rmPlaceGroupingInstanceAtLoc(veniceSanPolo, rmXMetersToFraction(xsVectorGetX(ControllerLoc4))+rmXTilesToFraction(20), rmZMetersToFraction(xsVectorGetZ(ControllerLoc4))+rmZTilesToFraction(16), 0);
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.40);
@@ -416,7 +416,7 @@ void main(void)
 
 	int shoreLineNorth = rmCreateArea("shore North"); // Cliff to dock the Venice bridge
     rmSetAreaSize(shoreLineNorth, rmAreaTilesToFraction(400), rmAreaTilesToFraction(400));
-    rmSetAreaLocation(shoreLineNorth, rmXMetersToFraction(xsVectorGetX(ControllerLoc4))+rmXTilesToFraction(58), rmZMetersToFraction(xsVectorGetZ(ControllerLoc4))+rmZTilesToFraction(4));
+    rmSetAreaLocation(shoreLineNorth, rmXMetersToFraction(xsVectorGetX(ControllerLoc4))+rmXTilesToFraction(52), rmZMetersToFraction(xsVectorGetZ(ControllerLoc4))+rmZTilesToFraction(4));
     rmSetAreaCoherence(shoreLineNorth, 1.0);	
     rmSetAreaBaseHeight(shoreLineNorth, 3.0);
     rmSetAreaCliffType(shoreLineNorth, "Italian Cliff");
@@ -781,7 +781,7 @@ void main(void)
 	int veniceBasilica1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCSanMarco");
 	int veniceBasilica2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpGreatBasilica");
 	int veniceBasilica3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "zpGreatBasilica");
-	int veniceBasilica4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "deSPCPapalEmbassy");
+	int veniceBasilica4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpGreatBasilica");
 
 	int veniceProduction1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "deSPCGreatBank");
 	int veniceProduction2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCCapturableFactoryMed");
@@ -807,6 +807,11 @@ void main(void)
 	int veniceCenterB2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCWaterSpawnPointB");
 	int veniceCenterB3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "zpSPCWaterSpawnPointB");
 	int veniceCenterB4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpSPCWaterSpawnPointB");
+
+	int veniceNugget1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "ypNuggetTradingPost");
+	int veniceNugget2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "ypNuggetTradingPost");
+	int veniceNugget3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "ypNuggetTradingPost");
+	int veniceNugget4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "ypNuggetTradingPost");
 
 
 	int veniceBasilicaMod1 = veniceBasilica1+1;
@@ -839,6 +844,11 @@ void main(void)
 	int veniceCenterModB3 = veniceCenterB3+1;
 	int veniceCenterModB4 = veniceCenterB4+1;
 
+	int veniceNuggetMod1 = veniceNugget1+1;
+	int veniceNuggetMod2 = veniceNugget2+1;
+	int veniceNuggetMod3 = veniceNugget3+1;
+	int veniceNuggetMod4 = veniceNugget4+1;
+
 	
 	// Starting techs
 
@@ -855,7 +865,7 @@ void main(void)
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
         rmSetTriggerEffectParamInt("PlayerID", i);
-        rmSetTriggerEffectParam("TechID","cTechDEEnableSPCCityStateTechs"); // Mercenaries
+        rmSetTriggerEffectParam("TechID","cTechzpEnableSPCCityStateTechsClone"); // Mercenaries
         rmSetTriggerEffectParamInt("Status", 2);
 	}
 	rmAddTriggerEffect("Player : Override Civilization for Flag");
@@ -864,6 +874,56 @@ void main(void)
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",0);
 	rmSetTriggerEffectParam("StringID","302124");
+	rmAddTriggerEffect("Change Name As String");
+	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod1);
+	rmSetTriggerEffectParam("NewName","{302131}");
+	rmAddTriggerEffect("Change Name As String");
+	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod2);
+	rmSetTriggerEffectParam("NewName","{302133}");
+	rmAddTriggerEffect("Change Name As String");
+	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod3);
+	rmSetTriggerEffectParam("NewName","{302132}");
+	rmAddTriggerEffect("Change Name As String");
+	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod4);
+	rmSetTriggerEffectParam("NewName","{302134}");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+
+	// Conversion Suspend
+	rmCreateTrigger("Buildings Convert OFF");
+	rmAddTriggerEffect("Unit Action Suspend");
+	/*rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod1);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod2);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod3);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");*/
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod4);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Socket 4 Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+veniceNuggetMod4);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+veniceSocketMod4, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmAddTriggerEffect("Flash Units");
+	rmSetTriggerEffectParam("SrcObject", ""+veniceSocketMod4, false);
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -2211,6 +2271,30 @@ void main(void)
 	rmSetTriggerLoop(false);
 	}
 
+
+// Testing
+
+
+
+/*for (k=1; <= cNumberNonGaiaPlayers) {
+
+rmCreateTrigger("ZP Test Plr"+k);
+rmAddTriggerCondition("ZP PLAYER Human");
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("MyBool", "true");
+rmAddTriggerEffect("Set Tech Status");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParamFloat("TechID",537);
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("Set Tech Status");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParamFloat("TechID",2804);
+rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+}*/
 
 
 

@@ -43519,7 +43519,7 @@
     <train row="0" page="0" column="0">MercElmeti</train>
     <train row="0" page="0" column="1">MercSwissPikeman</train>
     <train row="0" page="0" column="2">deMercPistoleer</train>
-    <tech row="0" page="1" column="0">DESPCArtPatron</tech>
+    <tech row="0" page="1" column="0">zpSPCArtPatronClone</tech>
     <tech row="0" page="1" column="1">DESPCPapalLegate</tech>
     <tech row="0" page="1" column="2">DESPCPapalBlessing</tech>
     <tech row="0" page="1" column="3">DESPCExcommunication</tech>
@@ -43610,7 +43610,7 @@
     <train row="0" page="0" column="0">MercElmeti</train>
     <train row="0" page="0" column="1">MercSwissPikeman</train>
     <train row="0" page="0" column="2">deMercPistoleer</train>
-    <tech row="0" page="1" column="0">DESPCArtPatron</tech>
+    <tech row="0" page="1" column="0">zpSPCArtPatronClone</tech>
     <tech row="0" page="1" column="1">DESPCPapalLegate</tech>
     <tech row="0" page="1" column="2">DESPCPapalBlessing</tech>
     <tech row="0" page="1" column="3">DESPCExcommunication</tech>
@@ -45352,6 +45352,90 @@
       <minrange>4.000000</minrange>
       <maxrange>12.000000</maxrange>
       <rof>3.000000</rof>
+    </protoaction>
+  </unit>
+  <unit id="20602" name="zpGuardianVenice">
+    <dbid>20602</dbid>
+    <displaynameid>302129</displaynameid>
+    <editornameid>302130</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>7.0000</maxvelocity>
+    <maxrunvelocity>9.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <wanderdistance>3</wanderdistance>
+    <animfile>units\infantry_ranged\genoese\genoese.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\infantry_ranged\pavisier\pavisier_icon.png</icon>
+    <portraiticon>resources\art\units\infantry_ranged\pavisier\pavisier_portrait.png</portraiticon>
+    <rollovertextid>61695</rollovertextid>
+    <shortrollovertextid>61694</shortrollovertextid>
+    <initialhitpoints>225.0000</initialhitpoints>
+    <maxhitpoints>225.0000</maxhitpoints>
+    <los>20.0000</los>
+    <projectileprotounit>Arrow</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <initialunitaistance>Defensive</initialunitaistance>
+    <bounty>15.0000</bounty>
+    <armor type="Ranged" value="0.3000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>Guardian</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Wanders</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>predatorMonk.tactics</tactics>
+    <protoaction>
+      <name>BowAttack</name>
+      <damage>15.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <damagebonus type="Ship">4.000000</damagebonus>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>13.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>HandAttack</name>
+      <damage>6.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
     </protoaction>
   </unit>
 
