@@ -740,8 +740,9 @@ int jesuitMaltese = rmRandInt(1, 2);
 	rmPlaceGroupingAtLoc(blockPalaceBig02, 0, locXm1, palaceZ2);
 
 	// Palace gardens
-	rmPlaceGroupingAtLoc(blockMenagerie, 0, locX2, locZ3);
-	rmPlaceGroupingAtLoc(blockMenagerie, 0, locXm2, locZ5);
+	rmSetNuggetDifficulty(98, 98);
+	int menageriePlacement1 = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX2, locZ3, 0);
+	int menageriePlacement2 = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locXm2, locZ5, 0);
 
 	rmPlaceGroupingAtLoc(blockPark, 0, locXm2, locZ6);
 	rmPlaceGroupingAtLoc(blockPark, 0, locX2, locZ4);
@@ -786,8 +787,9 @@ int jesuitMaltese = rmRandInt(1, 2);
 		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX3, locZ2);
 		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locXm3, locZ7);
 
-		rmPlaceGroupingAtLoc(blockFactory, 0, locX3, locZ8);
-		rmPlaceGroupingAtLoc(blockFactory, 0, locXm3, locZ1);
+		rmSetNuggetDifficulty(299, 299);
+		int factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX3, locZ8, 0);
+		int factoryPlacement2 = rmPlaceGroupingInstanceAtLoc(blockFactory, locXm3, locZ1, 0);
 
 		int cityState1 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locX3, locZ4, 0);
 		int cityState2 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locXm3, locZ5, 0);
@@ -1656,6 +1658,18 @@ rmSetStatusText("",0.70);
 	int victoryFlag2 = rmGetGroupingInstanceUnitByType(victoryGrouping2, "zpSPCCapturableFlagNoIcon");
 	int victoryFlag3 = rmGetGroupingInstanceUnitByType(victoryGrouping3, "zpSPCCapturableFlagNoIcon");
 
+	int menagerieBuilding1 = rmGetGroupingInstanceUnitByType(menageriePlacement1, "zpSPCMenagerie");
+	int menagerieNugget1 = rmGetGroupingInstanceUnitByType(menageriePlacement1, "ypNuggetTradingPost");
+
+	int menagerieBuilding2 = rmGetGroupingInstanceUnitByType(menageriePlacement2, "zpSPCMenagerie");
+	int menagerieNugget2 = rmGetGroupingInstanceUnitByType(menageriePlacement2, "ypNuggetTradingPost");
+
+	int factoryBuilding1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "zpSPCCapturableFactory");
+	int factoryNugget1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "ypNuggetTradingPost");
+
+	int factoryBuilding2 = rmGetGroupingInstanceUnitByType(factoryPlacement2, "zpSPCCapturableFactory");
+	int factoryNugget2 = rmGetGroupingInstanceUnitByType(factoryPlacement2, "ypNuggetTradingPost");
+
 	int flag1ID =cityStateFlag1+1;
 	int flag2ID =cityStateFlag2+1;
 	int flag3ID =victoryFlag1+1;
@@ -1666,6 +1680,15 @@ rmSetStatusText("",0.70);
 	int socket2ID =gateSocket2+0;
 	int stopper1ID =gateStopper1+0;
 	int stopper2ID =gateStopper2+0;
+
+	int menagerieBuildingMod1 = menagerieBuilding1+1;
+	int menagerieBuildingMod2 = menagerieBuilding2+1;
+	int menagerieNuggetMod1 = menagerieNugget1+1;
+	int menagerieNuggetMod2 = menagerieNugget2+1;
+	int factoryBuildingMod1 = factoryBuilding1+1;
+	int factoryBuildingMod2 = factoryBuilding2+1;
+	int factoryNuggetMod1 = factoryNugget1+1;
+	int factoryNuggetMod2 = factoryNugget2+1;
 
 	// Victory Timer
 	int victoryCountDown = 480;
@@ -1778,6 +1801,77 @@ rmSetStatusText("",0.70);
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
 	}
+
+	// Resource Building Convert
+	rmCreateTrigger("Buildings Convert OFF");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+menagerieBuildingMod1);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+menagerieBuildingMod2);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+factoryBuildingMod1);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+factoryBuildingMod2);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Menagerie 1 Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+menagerieNuggetMod1);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+menagerieBuildingMod1, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Menagerie 2 Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+menagerieNuggetMod2);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+menagerieBuildingMod2, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Factory 1 Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+factoryNuggetMod1);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+factoryBuildingMod1, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Factory 2 Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+factoryNuggetMod2);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+factoryBuildingMod2, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 
 	//----- VICTORY CONDITIONS -----
 
