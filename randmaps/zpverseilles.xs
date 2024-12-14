@@ -773,8 +773,10 @@ int jesuitMaltese = rmRandInt(1, 2);
 		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX3, locZ2);
 		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX0, locZ3);
 
-		rmPlaceGroupingAtLoc(blockFactory, 0, locX2, locZ2);
-		rmPlaceGroupingAtLoc(blockFactory, 0, locX8, locZ1);
+		rmSetNuggetDifficulty(299, 299);
+		int factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX2, locZ2, 0);
+
+		int factoryPlacement2 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX8, locZ1, 0);
 
 	// Suburb
 
@@ -1510,6 +1512,12 @@ for (j=0; < 2) {
 	int menagerieBuilding = rmGetGroupingInstanceUnitByType(menageriePlacement, "zpSPCMenagerie");
 	int menagerieNugget = rmGetGroupingInstanceUnitByType(menageriePlacement, "ypNuggetTradingPost");
 
+	int factoryBuilding1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "zpSPCCapturableFactory");
+	int factoryNugget1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "ypNuggetTradingPost");
+
+	int factoryBuilding2 = rmGetGroupingInstanceUnitByType(factoryPlacement2, "zpSPCCapturableFactory");
+	int factoryNugget2 = rmGetGroupingInstanceUnitByType(factoryPlacement2, "ypNuggetTradingPost");
+
 	// Victory Timer
 	int victoryCountDown = 1800;
 
@@ -1621,9 +1629,17 @@ for (j=0; < 2) {
 	rmSetTriggerLoop(false);
 
 	// Menagerie Convert
-	rmCreateTrigger("Menagerie Convert OFF");
+	rmCreateTrigger("Buildings Convert OFF");
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject",""+menagerieBuilding);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+factoryBuilding1);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+factoryBuilding2);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
 	rmSetTriggerEffectParam("Suspend", "True");
 	rmSetTriggerPriority(4);
@@ -1636,6 +1652,30 @@ for (j=0; < 2) {
     rmSetTriggerConditionParam("NuggetObject", ""+menagerieNugget);
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", ""+menagerieBuilding, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Factory 1 Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+factoryNugget1);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+factoryBuilding1, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Factory 2 Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+factoryNugget2);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+factoryBuilding2, false);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
 	rmSetTriggerEffectParam("Suspend", "False", false);
 	rmSetTriggerPriority(4);

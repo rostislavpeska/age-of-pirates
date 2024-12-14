@@ -2235,10 +2235,7 @@
       <guardianunit>
         <unit>zpGuardianRevolutionary</unit>
       </guardianunit>
-      <guardianunit>
-        <unit>zpGuardianRevolutionary</unit>
-      </guardianunit>
-      <difficulty>99</difficulty>
+      <difficulty>299</difficulty>
     </nugget>
     <nugget>
       <name>zpNuggetMenagerie</name>
