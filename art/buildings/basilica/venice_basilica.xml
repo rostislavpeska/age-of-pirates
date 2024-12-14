@@ -11,10 +11,10 @@
                     <assetreference type="GrannyModel"><file>buildings\basilica\basilica_minor_Model</file></assetreference>
                 </variationid0>
                 <variationid1>
-                    <assetreference type="GrannyModel"><file>buildings\basilica\basilica_major_Model</file></assetreference>
+                    <assetreference type="GrannyModel"><file>buildings\basilica\basilica_age2</file></assetreference>
                 </variationid1>
                 <variationid2>
-                    <assetreference type="GrannyModel"><file>buildings\basilica\basilica_major2_Model</file></assetreference>
+                    <assetreference type="GrannyModel"><file>buildings\basilica\basilica_major_Model</file></assetreference>
                 </variationid2>
             </logic>
             </component>
@@ -57,7 +57,7 @@
                     </decal>
                 </variationid1>
                 <variationid2>
-                    <assetreference type="GrannyModel"><file>buildings\basilica\basilica_major2_Model</file></assetreference>
+                    <assetreference type="GrannyModel"><file>buildings\basilica\basilica_major_Model</file></assetreference>
                      <decal>
                         <effecttype>bump</effecttype>
                         <texture>buildings\basilica\basilica_age4_ground</texture>

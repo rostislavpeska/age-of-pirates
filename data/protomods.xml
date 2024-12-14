@@ -36006,6 +36006,7 @@
     <flag>BuildingShowTactics</flag>
     <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>CannotBeConvertedByAllies</flag>
     <command page="10" column="7">Delete</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
@@ -36781,6 +36782,7 @@
     <flag>ApplyFlagOverrideIfGaia</flag>
     <flag>Invulnerable</flag>
     <flag>VisibleUnderFog</flag>
+    <flag>CannotBeConvertedByAllies</flag>
     <command page="9" column="0">TacticFood</command>
     <command page="9" column="2">TacticCoin</command>
     <command page="9" column="3">TacticXPShrine</command>
@@ -45209,7 +45211,7 @@
   </unit>-->
 
   <!--BELONGS TO PARIS MAPMODS-->
-		<unit name="WallConnector">
+		<!--<unit name="WallConnector">
 			<displaynameid>301929</displaynameid>
 			<initialhitpoints>600.0000</initialhitpoints>
 			<maxhitpoints>600.0000</maxhitpoints>
@@ -45276,7 +45278,7 @@
 			<portraiticon>resources\art\buildings\spc\barricade.png</portraiticon>
 			<animfile>buildings\wall\barricade\wall_1x5.xml</animfile>
 			<command mergeMode='remove' page="6" column="0">Transform</command>
-		</unit>
+		</unit>-->
 
 
 
