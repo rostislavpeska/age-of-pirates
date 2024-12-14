@@ -967,7 +967,8 @@ for (j=0; < 2) {
     rmSetGroupingMaxDistance(blockMenagerie, 0.50);
 	rmAddGroupingToClass(blockMenagerie, rmClassID("classBlock"));
 
-	rmPlaceGroupingAtLoc(blockMenagerie, 0, 0.515, mapCenter+rmZTilesToFraction(70), 1);
+	rmSetNuggetDifficulty(98, 98);
+	int menageriePlacement = rmPlaceGroupingInstanceAtLoc(blockMenagerie, 0.515, mapCenter+rmZTilesToFraction(70), 0);
 		
 
 	rmSetStatusText("",0.80);
@@ -1506,6 +1507,8 @@ for (j=0; < 2) {
 	//----- Define Variables -----
 
 	int royalOrangerie = rmGetGroupingInstanceUnitByType(verseillesPalace1, "zpSPCRoyalOrangerie");
+	int menagerieBuilding = rmGetGroupingInstanceUnitByType(menageriePlacement, "zpSPCMenagerie");
+	int menagerieNugget = rmGetGroupingInstanceUnitByType(menageriePlacement, "ypNuggetTradingPost");
 
 	// Victory Timer
 	int victoryCountDown = 1800;
@@ -1612,6 +1615,29 @@ for (j=0; < 2) {
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",0);
 	rmSetTriggerEffectParam("StringID","302071");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Menagerie Convert
+	rmCreateTrigger("Menagerie Convert OFF");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+menagerieBuilding);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Menagerie Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+menagerieNugget);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+menagerieBuilding, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
