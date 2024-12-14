@@ -45285,7 +45285,7 @@
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\natives\europeans\royal_musketeer_icon.png</icon>
-    <portraiticon>resources\art\units\natives\europeans\royal_musketeer_portrait.png</portraiticon>
+    <portraiticon>resources\art\units\outlaw\cardinal_guard.png</portraiticon>
     <rollovertextid>29189</rollovertextid>
     <shortrollovertextid>29188</shortrollovertextid>
     <initialhitpoints>185.0000</initialhitpoints>
