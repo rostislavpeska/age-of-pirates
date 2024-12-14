@@ -131,7 +131,6 @@ void main(void)
     int flagEdgeConstraint = rmCreatePieConstraint("flags away from edge of map", 0.5, 0.5, rmGetMapXSize()-200, rmGetMapXSize()-100, 0, 0, 0);  
 
 	// Nature avoidance
-	int fishVsFishID=rmCreateTypeDistanceConstraint("fish v fish", "fish", 18.0);
 	
 	int forestObjConstraint=rmCreateTypeDistanceConstraint("forest obj", "all", 6.0);
 	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 25.0);
@@ -2211,6 +2210,7 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
 
 
 
