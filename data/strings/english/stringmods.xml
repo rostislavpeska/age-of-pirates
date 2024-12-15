@@ -2138,6 +2138,8 @@
       <string _locid="302137">All TEAM units in the vicinity of s friendly Venetin District slowly heal.</string>
       <string _locid="302138">Team Victory time remaining</string>
       <string _locid="302139">Enemy Team Victory time remaining</string>
+      <string _locid="302140">Team ATTACKERS (Revolutionaries) wins in</string>
+      <string _locid="302141">Team DEFENDERS (Royalists) wins in</string>
     
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

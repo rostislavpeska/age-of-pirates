@@ -36020,27 +36020,27 @@
     </protoaction>
     <protoaction>
       <name>AutoGatherCoin</name>
-      <rate type="Gold">5.500000</rate>
+      <rate type="Gold">4.500000</rate>
     </protoaction>
     <protoaction>
       <name>AutoGatherFood</name>
-      <rate type="Food">5.500000</rate>
+      <rate type="Food">4.500000</rate>
     </protoaction>
     <protoaction>
       <name>AutoGatherWood</name>
-      <rate type="Wood">5.500000</rate>
+      <rate type="Wood">4.500000</rate>
     </protoaction>
     <protoaction>
       <name>AutoGatherFoodTeam</name>
-      <rate type="Food">1.750000</rate>
+      <rate type="Food">1.50000</rate>
     </protoaction>
     <protoaction>
       <name>AutoGatherWoodTeam</name>
-      <rate type="Wood">1.750000</rate>
+      <rate type="Wood">1.50000</rate>
     </protoaction>
     <protoaction>
       <name>AutoGatherCoinTeam</name>
-      <rate type="Gold">1.750000</rate>
+      <rate type="Gold">1.50000</rate>
     </protoaction>
   </unit>
   <unit id="20477" name="zpSPCCityMarket">
@@ -37403,7 +37403,6 @@
     <flag>DieAtZeroResources</flag>
     <flag>Invulnerable</flag>
     <flag>DoNotValidateResourceInventory</flag>
-    <flag>ObscuredByUnits</flag>
     <flag>NeverCountDeathAsLoss</flag>
     <flag>Tracked</flag>
     <flag>StartEnabled</flag>
@@ -43549,7 +43548,7 @@
     <tactics>papalembassy.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
-      <rate type="XP">4.000000</rate>
+      <rate type="XP">2.000000</rate>
     </protoaction>
   </unit>
   <unit id="20573" name="zpSPCSanMarco">
@@ -43640,7 +43639,7 @@
     <tactics>papalembassy.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
-      <rate type="XP">4.000000</rate>
+      <rate type="XP">2.000000</rate>
     </protoaction>
   </unit>
   <unit id="20574" name="zpNativeHouseVenetianB">
@@ -43987,27 +43986,27 @@
     <tactics>teamgatherfactory.tactics</tactics>
     <protoaction>
       <name>AutoGatherCoin</name>
-      <rate type="Gold">5.500000</rate>
+      <rate type="Gold">4.500000</rate>
     </protoaction>
     <protoaction>
       <name>AutoGatherFood</name>
-      <rate type="Food">5.500000</rate>
+      <rate type="Food">4.500000</rate>
     </protoaction>
     <protoaction>
       <name>AutoGatherWood</name>
-      <rate type="Wood">5.500000</rate>
+      <rate type="Wood">4.500000</rate>
     </protoaction>
     <protoaction>
       <name>AutoGatherFoodTeam</name>
-      <rate type="Food">1.750000</rate>
+      <rate type="Food">1.50000</rate>
     </protoaction>
     <protoaction>
       <name>AutoGatherWoodTeam</name>
-      <rate type="Wood">1.750000</rate>
+      <rate type="Wood">1.50000</rate>
     </protoaction>
     <protoaction>
       <name>AutoGatherCoinTeam</name>
-      <rate type="Gold">1.750000</rate>
+      <rate type="Gold">1.50000</rate>
     </protoaction>
   </unit>
   <unit id="20579" name="zpTradingPostCaptureNaval">

@@ -8,7 +8,6 @@
 	<workonassingleunit>0</workonassingleunit>
 	<units>
 		<unit variation="160" posx="-7.1895" posz="-13.6349" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCDamagedProps</unit>
-		<unit variation="159" posx="-9.7985" posz="-11.9901" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCDamagedProps</unit>
 		<unit variation="188" posx="-6.5396" posz="-12.9435" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCDamagedProps</unit>
 		<unit variation="200" posx="-3.9394" posz="-12.1997" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCDamagedProps</unit>
 		<unit variation="33" posx="-3.7073" posz="-12.2568" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCDamagedProps</unit>
@@ -16,64 +15,56 @@
 		<unit variation="188" posx="-3.6683" posz="-14.1020" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">SPCDamagedProps</unit>
 		<unit variation="166" posx="4.8142" posz="-14.1913" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
 		<unit variation="1" posx="3.8702" posz="-13.9522" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCDamagedProps</unit>
+		<unit variation="159" posx="-9.7985" posz="-11.9901" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCDamagedProps</unit>
 		<unit variation="236" posx="11.6633" posz="-13.1677" orientx="-0.4969" orienty="0.0000" orientz="-0.8678">ypSMJesuitAccessory</unit>
 		<unit variation="11" posx="8.0567" posz="-12.0194" orientx="-0.0001" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
-		<unit variation="25" posx="-8.6600" posz="-10.3979" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCDamagedProps</unit>
 		<unit variation="190" posx="-2.1928" posz="-11.0304" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">WallWoodNative</unit>
-		<unit variation="159" posx="-2.0963" posz="-11.7586" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">SPCDamagedProps</unit>
-		<unit variation="93" posx="8.3060" posz="-10.9321" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="159" posx="-2.0963" posz="-11.7586" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCDamagedProps</unit>
+		<unit variation="25" posx="-8.6600" posz="-10.3979" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCDamagedProps</unit>
 		<unit variation="47" posx="-5.3739" posz="-9.3069" orientx="-0.3826" orienty="0.0000" orientz="-0.9239">SPCPathBlock3</unit>
+		<unit variation="93" posx="8.3060" posz="-10.9321" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCCityBuildingMix</unit>
 		<unit variation="11" posx="8.2330" posz="-10.4138" orientx="-0.0001" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="119" posx="-6.2373" posz="-9.5014" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCDamagedProps</unit>
 		<unit variation="25" posx="-9.2126" posz="-8.2331" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">WallWoodNative</unit>
 		<unit variation="68" posx="-5.7562" posz="-9.6257" orientx="0.3826" orienty="0.0000" orientz="0.9239">WallWoodNative</unit>
-		<unit variation="35" posx="-0.6107" posz="-5.6157" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">SPCDamagedProps</unit>
 		<unit variation="134" posx="-10.0667" posz="-7.9251" orientx="1.0000" orienty="0.0000" orientz="0.0001">PropsColony</unit>
 		<unit variation="233" posx="-13.9602" posz="-7.3304" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
-		<unit variation="107" posx="-3.6027" posz="-4.5327" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatRoyalMusketeer</unit>
-		<unit variation="51" posx="-5.0575" posz="-5.5561" orientx="-0.9239" orienty="0.0000" orientz="0.3826">deNatRoyalMusketeer</unit>
+		<unit variation="35" posx="-0.6107" posz="-5.6157" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">SPCDamagedProps</unit>
 		<unit variation="190" posx="6.2270" posz="-0.5363" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpRoyalCourt</unit>
 		<unit variation="45" posx="-9.6901" posz="-4.4324" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropStatue</unit>
 		<unit variation="238" posx="-9.4146" posz="-3.3065" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">SPCDamagedProps</unit>
 		<unit variation="43" posx="-5.4488" posz="-1.3699" orientx="0.9239" orienty="0.0000" orientz="0.3827">SPCDamagedCannons</unit>
-		<unit variation="3" posx="-3.2444" posz="-2.6198" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatRoyalMusketeer</unit>
-		<unit variation="51" posx="-4.7492" posz="-2.8449" orientx="-0.9239" orienty="0.0000" orientz="0.3826">deNatRoyalMusketeer</unit>
 		<unit variation="113" posx="-10.1623" posz="-3.9154" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock1</unit>
-		<unit variation="88" posx="-5.1072" posz="-0.2319" orientx="0.7071" orienty="-0.0000" orientz="-0.7071">zpSPCCapturableFlagNoIcon</unit>
+		<unit variation="88" posx="-5.1072" posz="-0.2319" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpSPCCapturableFlagNoIcon</unit>
+		<unit variation="197" posx="-5.2779" posz="-0.8652" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNuggetKidnapGuillotine</unit>
 		<unit variation="54" posx="13.6667" posz="0.7602" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
-		<unit variation="51" posx="-7.2777" posz="-0.1296" orientx="-0.9239" orienty="0.0000" orientz="0.3826">deNatRoyalMusketeer</unit>
-		<unit variation="51" posx="-7.4057" posz="1.2236" orientx="-0.9239" orienty="0.0000" orientz="0.3826">deNatRoyalMusketeer</unit>
 		<unit variation="94" posx="0.3375" posz="3.2293" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCDamagedProps</unit>
-		<unit variation="51" posx="-5.8207" posz="2.4422" orientx="0.3826" orienty="0.0000" orientz="0.9239">deNatRoyalMusketeer</unit>
-		<unit variation="51" posx="-4.0777" posz="2.4760" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatRoyalMusketeer</unit>
 		<unit variation="40" posx="-9.8709" posz="3.8449" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock1</unit>
 		<unit variation="88" posx="-9.7789" posz="4.2362" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropStatue</unit>
 		<unit variation="78" posx="-2.7705" posz="6.3460" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCDamagedCannons</unit>
 		<unit variation="37" posx="-0.4976" posz="4.0479" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCDamagedProps</unit>
-		<unit variation="226" posx="-3.9567" posz="4.4250" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatRoyalMusketeer</unit>
-		<unit variation="51" posx="-5.4379" posz="4.5575" orientx="-0.9239" orienty="0.0000" orientz="0.3826">deNatRoyalMusketeer</unit>
 		<unit variation="132" posx="-8.2385" posz="8.0964" orientx="-0.7071" orienty="0.0000" orientz="0.7071">SPCPathBlock3</unit>
-		<unit variation="134" posx="-11.6490" posz="6.3497" orientx="1.0000" orienty="-0.0000" orientz="0.0000">PropsColony</unit>
-		<unit variation="30" posx="-10.9820" posz="6.3942" orientx="-0.0000" orienty="-0.0000" orientz="1.0000">WallWoodNative</unit>
+		<unit variation="134" posx="-11.6490" posz="6.3497" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="30" posx="-10.9820" posz="6.3942" orientx="0.0000" orienty="0.0000" orientz="1.0000">WallWoodNative</unit>
 		<unit variation="200" posx="-12.0223" posz="6.2550" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCDamagedProps</unit>
 		<unit variation="34" posx="-13.4959" posz="7.1259" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCDamagedProps</unit>
-		<unit variation="182" posx="-10.6053" posz="9.3136" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">SPCDamagedProps</unit>
-		<unit variation="68" posx="-8.5497" posz="8.5957" orientx="0.7071" orienty="0.0000" orientz="-0.7071">WallWoodNative</unit>
+		<unit variation="182" posx="-10.6053" posz="9.3136" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCDamagedProps</unit>
 		<unit variation="10" posx="-7.6192" posz="8.7213" orientx="0.3827" orienty="0.0000" orientz="-0.9239">SPCDamagedProps</unit>
-		<unit variation="88" posx="-6.0667" posz="9.9139" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">SPCDamagedProps</unit>
-		<unit variation="182" posx="-8.8397" posz="10.7698" orientx="-0.0001" orienty="0.0000" orientz="1.0000">PropsColony</unit>
-		<unit variation="242" posx="-7.6684" posz="11.0934" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">SPCDamagedProps</unit>
+		<unit variation="88" posx="-6.0667" posz="9.9139" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCDamagedProps</unit>
+		<unit variation="68" posx="-8.5497" posz="8.5957" orientx="0.7071" orienty="0.0000" orientz="-0.7071">WallWoodNative</unit>
+		<unit variation="242" posx="-7.6684" posz="11.0934" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCDamagedProps</unit>
 		<unit variation="88" posx="-3.0774" posz="10.7019" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">SPCDamagedProps</unit>
-		<unit variation="128" posx="8.5227" posz="9.5357" orientx="0.0000" orienty="0.0000" orientz="-1.0000">Rubble</unit>
 		<unit variation="134" posx="-5.9510" posz="11.7893" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsColony</unit>
 		<unit variation="170" posx="-6.2669" posz="11.3540" orientx="0.3827" orienty="0.0000" orientz="-0.9239">WallWoodNative</unit>
 		<unit variation="55" posx="-5.2336" posz="11.4171" orientx="0.3827" orienty="0.0000" orientz="-0.9239">SPCDamagedProps</unit>
+		<unit variation="128" posx="8.5227" posz="9.5357" orientx="0.0000" orienty="0.0000" orientz="-1.0000">Rubble</unit>
+		<unit variation="182" posx="-8.8397" posz="10.7698" orientx="-0.0001" orienty="0.0000" orientz="1.0000">PropsColony</unit>
 		<unit variation="176" posx="-11.9732" posz="13.3784" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
-		<unit variation="89" posx="-7.7517" posz="12.0647" orientx="-0.0000" orienty="-0.0000" orientz="1.0000">PropsColony</unit>
-		<unit variation="29" posx="9.4882" posz="13.8362" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
-		<unit variation="167" posx="-5.9065" posz="13.6729" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">SPCDamagedProps</unit>
 		<unit variation="182" posx="-13.9063" posz="13.1667" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
+		<unit variation="89" posx="-7.7517" posz="12.0647" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsColony</unit>
+		<unit variation="167" posx="-5.9065" posz="13.6729" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">SPCDamagedProps</unit>
 		<unit variation="188" posx="4.1020" posz="13.0348" orientx="-0.7071" orienty="0.0000" orientz="-0.7072">SPCDamagedProps</unit>
+		<unit variation="29" posx="9.4882" posz="13.8362" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">

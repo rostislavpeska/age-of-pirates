@@ -343,7 +343,8 @@ void main(void)
     rmSetGroupingMaxDistance(bastilleGrouping, 0.00);
 	rmAddGroupingToClass(bastilleGrouping, rmClassID("classPlateau"));
 	//rmPlaceGroupingAtLoc(bastilleGrouping, 0, 0.5-rmXTilesToFraction(1), 0.5+rmXTilesToFraction(4));
-
+	
+	rmSetNuggetDifficulty(297, 297);
 	int victoryGrouping1 = rmPlaceGroupingInstanceAtLoc(bastilleGrouping, 0.5-rmXTilesToFraction(1), 0.5+rmXTilesToFraction(4), 0);
 
     // Nothe Dame West
@@ -791,11 +792,30 @@ int jesuitMaltese = rmRandInt(1, 2);
 		int factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX3, locZ8, 0);
 		int factoryPlacement2 = rmPlaceGroupingInstanceAtLoc(blockFactory, locXm3, locZ1, 0);
 
+		if (spawnSwitch ==0)
+			rmSetNuggetDifficulty(297, 297);
+		else
+			rmSetNuggetDifficulty(296, 296);
 		int cityState1 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locX3, locZ4, 0);
+
+		if (spawnSwitch ==0)
+			rmSetNuggetDifficulty(296, 296);
+		else
+			rmSetNuggetDifficulty(297, 297);
 		int cityState2 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locXm3, locZ5, 0);
 
-		int victoryGrouping2 = rmPlaceGroupingInstanceAtLoc(blockCourt, locX3, locZ1, 0);
-		int victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locXm3, locZ8, 0);
+		if (spawnSwitch ==0){
+			rmSetNuggetDifficulty(297, 297);
+			int victoryGrouping2 = rmPlaceGroupingInstanceAtLoc(blockCourt, locX3, locZ1, 0);
+			rmSetNuggetDifficulty(296, 296);
+			int victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locXm3, locZ8, 0);
+		}
+		else{
+			rmSetNuggetDifficulty(297, 297);
+			victoryGrouping2 = rmPlaceGroupingInstanceAtLoc(blockCourt, locXm3, locZ8, 0);
+			rmSetNuggetDifficulty(296, 296);
+			victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locX3, locZ1, 0);
+		}
 
 
 	// Suburb
@@ -897,8 +917,18 @@ int jesuitMaltese = rmRandInt(1, 2);
 		cityState1 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locX4, locZ4, 0);
 		cityState2 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locXm4, locZ5, 0);
 
-		victoryGrouping2 = rmPlaceGroupingInstanceAtLoc(blockCourt, locX3, locZ1, 0);
-		victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locXm3, locZ8, 0);
+		if (spawnSwitch ==0){
+			rmSetNuggetDifficulty(297, 297);
+			victoryGrouping2 = rmPlaceGroupingInstanceAtLoc(blockCourt, locX3, locZ1, 0);
+			rmSetNuggetDifficulty(296, 296);
+			victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locXm3, locZ8, 0);
+		}
+		else{
+			rmSetNuggetDifficulty(297, 297);
+			victoryGrouping2 = rmPlaceGroupingInstanceAtLoc(blockCourt, locXm3, locZ8, 0);
+			rmSetNuggetDifficulty(296, 296);
+			victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locX3, locZ1, 0);
+		}
 
 
 	// Suburb
@@ -1628,7 +1658,7 @@ rmSetStatusText("",0.70);
 	rmObjectiveAdd(302061, 302023, true, true, true); // General objective ROY
 	rmObjectiveSetTeam(2, 2);
 
-	rmObjectiveAdd(302024, 302023, true, true, true); // Royal Court REV
+	/*rmObjectiveAdd(302024, 302023, true, true, true); // Royal Court REV
 	rmObjectiveSetTeam(3, 1);
 	rmObjectiveAdd(302024, 302023, true, true, true); // Royal Court ROY
 	rmObjectiveSetTeam(4, 2);
@@ -1639,15 +1669,18 @@ rmSetStatusText("",0.70);
 	rmObjectiveAdd(302026, 302023, true, true, true); // Bastille REV
 	rmObjectiveSetTeam(7, 1);
 	rmObjectiveAdd(302026, 302023, true, true, true); // Bastille ROY
-	rmObjectiveSetTeam(8, 2);
+	rmObjectiveSetTeam(8, 2);*/
 
 	// ************************* TRIGGERS ******************************
 
 	//----- DEFINE VARIABLES -----
 
 	// Targeting Unit IDs
-	int cityStateFlag1 = rmGetGroupingInstanceUnitByType(cityState1, "zpSPCCapturableFlagInvisible");
-	int cityStateFlag2 = rmGetGroupingInstanceUnitByType(cityState2, "zpSPCCapturableFlagInvisible");
+	int cityFortFlag1 = rmGetGroupingInstanceUnitByType(cityState1, "zpSPCCapturableFlagInvisible");
+	int cityFortFlag2 = rmGetGroupingInstanceUnitByType(cityState2, "zpSPCCapturableFlagInvisible");
+
+	int cityFortNugget1 = rmGetGroupingInstanceUnitByType(cityState1, "zpNuggetInvisible");
+	int cityFortNugget2 = rmGetGroupingInstanceUnitByType(cityState2, "zpNuggetInvisible");
 
 	int gateSocket1 = rmGetGroupingInstanceUnitByType(cityWall1, "zpSPCPortSocket");
 	int gateSocket2 = rmGetGroupingInstanceUnitByType(cityWall2, "zpSPCPortSocket");
@@ -1657,6 +1690,14 @@ rmSetStatusText("",0.70);
 	int victoryFlag1 = rmGetGroupingInstanceUnitByType(victoryGrouping1, "zpSPCCapturableFlagNoIcon");
 	int victoryFlag2 = rmGetGroupingInstanceUnitByType(victoryGrouping2, "zpSPCCapturableFlagNoIcon");
 	int victoryFlag3 = rmGetGroupingInstanceUnitByType(victoryGrouping3, "zpSPCCapturableFlagNoIcon");
+
+	int victoryBuilding1 = rmGetGroupingInstanceUnitByType(victoryGrouping1, "zpBastille");
+	int victoryBuilding2 = rmGetGroupingInstanceUnitByType(victoryGrouping2, "zpRoyalCourt");
+	int victoryBuilding3 = rmGetGroupingInstanceUnitByType(victoryGrouping3, "zpCityHall");
+
+	int victoryNugget1 = rmGetGroupingInstanceUnitByType(victoryGrouping1, "zpNuggetInvisible");
+	int victoryNugget2 = rmGetGroupingInstanceUnitByType(victoryGrouping2, "zpNuggetInvisible");
+	int victoryNugget3 = rmGetGroupingInstanceUnitByType(victoryGrouping3, "zpNuggetInvisible");
 
 	int menagerieBuilding1 = rmGetGroupingInstanceUnitByType(menageriePlacement1, "zpSPCMenagerie");
 	int menagerieNugget1 = rmGetGroupingInstanceUnitByType(menageriePlacement1, "zpNuggetInvisible");
@@ -1670,11 +1711,21 @@ rmSetStatusText("",0.70);
 	int factoryBuilding2 = rmGetGroupingInstanceUnitByType(factoryPlacement2, "zpSPCCapturableFactory");
 	int factoryNugget2 = rmGetGroupingInstanceUnitByType(factoryPlacement2, "zpNuggetInvisible");
 
-	int flag1ID =cityStateFlag1+1;
-	int flag2ID =cityStateFlag2+1;
+	int flag1ID =cityFortFlag1+1;
+	int flag2ID =cityFortFlag2+1;
+	int fortNugget1ID =cityFortNugget1+1;
+	int fortNugget2ID =cityFortNugget2+1;
 	int flag3ID =victoryFlag1+1;
 	int flag4ID =victoryFlag2+1;
 	int flag5ID =victoryFlag3+1;
+
+	int vNugget1ID =victoryNugget1+1;
+	int vNugget2ID =victoryNugget2+1;
+	int vNugget3ID =victoryNugget3+1;
+
+	int vBuilding1ID =victoryBuilding1+1;
+	int vBuilding2ID =victoryBuilding2+1;
+	int vBuilding3ID =victoryBuilding3+1;
 	
 	int socket1ID =gateSocket1+0;
 	int socket2ID =gateSocket2+0;
@@ -1690,8 +1741,14 @@ rmSetStatusText("",0.70);
 	int factoryNuggetMod1 = factoryNugget1+1;
 	int factoryNuggetMod2 = factoryNugget2+1;
 
+	vector bastileLoc = rmGetUnitPosition(flag3ID);
+	vector courtLoc = rmGetUnitPosition(flag4ID);
+	vector cityHallLoc = rmGetUnitPosition(flag5ID);
+
+
 	// Victory Timer
 	int victoryCountDown = 480;
+	int socketMinimapFlareDuration = 10;
 
 	//----- START -----
 
@@ -1820,6 +1877,26 @@ rmSetStatusText("",0.70);
 	rmSetTriggerEffectParam("SrcObject",""+factoryBuildingMod2);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
 	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+flag1ID);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+flag2ID);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+flag3ID);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+flag4ID);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+flag5ID);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -1873,6 +1950,42 @@ rmSetStatusText("",0.70);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
+	rmCreateTrigger("Bastille Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+vNugget1ID);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+flag3ID, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Court Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+vNugget2ID);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+flag4ID, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("CityHall Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+vNugget3ID);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+flag5ID, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
 	//----- VICTORY CONDITIONS -----
 
 	// Convert Flags
@@ -1887,14 +2000,9 @@ rmSetStatusText("",0.70);
 	rmAddTriggerCondition("Units Owned");
 	rmSetTriggerConditionParam("SrcObject",""+flag3ID);
 	rmSetTriggerConditionParamInt("Player",k);
-	for (i=0; <= cNumberNonGaiaPlayers) {
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+flag3ID);
-		rmSetTriggerEffectParamInt("SrcPlayer",i);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpBastille");
-		rmSetTriggerEffectParamInt("Dist",35);
-	}
+	rmAddTriggerEffect("Convert");
+	rmSetTriggerEffectParam("SrcObject",""+vBuilding1ID);
+	rmSetTriggerEffectParamInt("PlayerID",k);
 	for (i=1; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ConvertBastille_Plr"+i));
@@ -1910,14 +2018,9 @@ rmSetStatusText("",0.70);
 	rmAddTriggerCondition("Units Owned");
 	rmSetTriggerConditionParam("SrcObject",""+flag4ID);
 	rmSetTriggerConditionParamInt("Player",k);
-	for (i=0; <= cNumberNonGaiaPlayers) {
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+flag4ID);
-		rmSetTriggerEffectParamInt("SrcPlayer",i);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpRoyalCourt");
-		rmSetTriggerEffectParamInt("Dist",35);
-	}
+	rmAddTriggerEffect("Convert");
+	rmSetTriggerEffectParam("SrcObject",""+vBuilding2ID);
+	rmSetTriggerEffectParamInt("PlayerID",k);
 	for (i=1; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ConvertCourt_Plr"+i));
@@ -1933,14 +2036,9 @@ rmSetStatusText("",0.70);
 	rmAddTriggerCondition("Units Owned");
 	rmSetTriggerConditionParam("SrcObject",""+flag5ID);
 	rmSetTriggerConditionParamInt("Player",k);
-	for (i=0; <= cNumberNonGaiaPlayers) {
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+flag5ID);
-		rmSetTriggerEffectParamInt("SrcPlayer",i);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpCityHall");
-		rmSetTriggerEffectParamInt("Dist",35);
-	}
+	rmAddTriggerEffect("Convert");
+	rmSetTriggerEffectParam("SrcObject",""+vBuilding3ID);
+	rmSetTriggerEffectParamInt("PlayerID",k);
 	for (i=1; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ConvertCityHall_Plr"+i));
@@ -1981,24 +2079,24 @@ rmSetStatusText("",0.70);
 		rmSetTriggerConditionParam("Protounit","zpRoyalCourt");
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
-		rmAddTriggerEffect("Objective : Complete");
-
-		if (i==1)
-			rmSetTriggerEffectParamInt("Objective", 3);
-		else
-			rmSetTriggerEffectParamInt("Objective", 4);
-
-		rmAddTriggerEffect("Objective : Incomplete");
-		if (i==1)
-			rmSetTriggerEffectParamInt("Objective", 4);
-		else
-			rmSetTriggerEffectParamInt("Objective", 3);
-
+		for(x=1; <= cNumberNonGaiaPlayers) {
+			if (rmGetPlayerTeam(x) == i-1) {
+				rmAddTriggerEffect("Flare Minimap");
+				rmSetTriggerEffectParamInt("PlayerID", x, false);
+				rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+				rmSetTriggerEffectParam("Position", ""+xsVectorGetX(courtLoc)+","+xsVectorGetY(courtLoc)+","+xsVectorGetZ(courtLoc), false);
+				rmSetTriggerEffectParam("Flash", "True", false);
+			}
+		}
+		rmAddTriggerEffect("Flash Units");
+		rmSetTriggerEffectParam("SrcObject", ""+vBuilding2ID, false);
 		rmAddTriggerEffect("Fire Event");
-		if (i==1)
+		if (i==1){
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("RoyalCourt_ON2"));
-		else
+		}
+		else{
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("RoyalCourt_ON1"));
+		}
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
@@ -2011,19 +2109,17 @@ rmSetStatusText("",0.70);
 		rmSetTriggerConditionParam("Protounit","zpBastille");
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
-		rmAddTriggerEffect("Objective : Complete");
-
-		if (i==1)
-			rmSetTriggerEffectParamInt("Objective", 7);
-		else
-			rmSetTriggerEffectParamInt("Objective", 8);
-
-		rmAddTriggerEffect("Objective : Incomplete");
-		if (i==1)
-			rmSetTriggerEffectParamInt("Objective", 8);
-		else
-			rmSetTriggerEffectParamInt("Objective", 7);
-
+		for(x=1; <= cNumberNonGaiaPlayers) {
+			if (rmGetPlayerTeam(x) == i-1) {
+				rmAddTriggerEffect("Flare Minimap");
+				rmSetTriggerEffectParamInt("PlayerID", x, false);
+				rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+				rmSetTriggerEffectParam("Position", ""+xsVectorGetX(bastileLoc)+","+xsVectorGetY(bastileLoc)+","+xsVectorGetZ(bastileLoc), false);
+				rmSetTriggerEffectParam("Flash", "True", false);
+			}
+		}
+		rmAddTriggerEffect("Flash Units");
+		rmSetTriggerEffectParam("SrcObject", ""+vBuilding1ID, false);
 		rmAddTriggerEffect("Fire Event");
 		if (i==1)
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Bastille_ON2"));
@@ -2041,19 +2137,17 @@ rmSetStatusText("",0.70);
 		rmSetTriggerConditionParam("Protounit","zpCityHall");
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
-		rmAddTriggerEffect("Objective : Complete");
-
-		if (i==1)
-			rmSetTriggerEffectParamInt("Objective", 5);
-		else
-			rmSetTriggerEffectParamInt("Objective", 6);
-
-		rmAddTriggerEffect("Objective : Incomplete");
-		if (i==1)
-			rmSetTriggerEffectParamInt("Objective", 6);
-		else
-			rmSetTriggerEffectParamInt("Objective", 5);
-
+		for(x=1; <= cNumberNonGaiaPlayers) {
+			if (rmGetPlayerTeam(x) == i-1) {
+				rmAddTriggerEffect("Flare Minimap");
+				rmSetTriggerEffectParamInt("PlayerID", x, false);
+				rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+				rmSetTriggerEffectParam("Position", ""+xsVectorGetX(cityHallLoc)+","+xsVectorGetY(cityHallLoc)+","+xsVectorGetZ(cityHallLoc), false);
+				rmSetTriggerEffectParam("Flash", "True", false);
+			}
+		}
+		rmAddTriggerEffect("Flash Units");
+		rmSetTriggerEffectParam("SrcObject", ""+vBuilding3ID, false);
 		rmAddTriggerEffect("Fire Event");
 		if (i==1)
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("CityHall_ON2"));
@@ -2077,9 +2171,9 @@ rmSetStatusText("",0.70);
 		rmSetTriggerEffectParamInt("Stop",0);
 
 		if (i==1)
-			rmSetTriggerEffectParam("Msg","Team ATTACKERS (Revolutionaries) wins in"); // Counter Revolutionaries
+			rmSetTriggerEffectParam("Msg","{302140}"); // Counter Revolutionaries
 		else
-			rmSetTriggerEffectParam("Msg","Team DEFENDERS (Royalists) wins in"); // Counter Revolutionaries
+			rmSetTriggerEffectParam("Msg","{302141}"); // Counter Revolutionaries
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+i));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+i));
@@ -2452,6 +2546,68 @@ rmSetStatusText("",0.70);
 	}
 
 	// Convert Military Blocks
+
+	rmCreateTrigger("Military_Block1_Unlock");
+	rmCreateTrigger("Military_Block2_Unlock");
+
+	rmSwitchToTrigger(rmTriggerID("Military_Block1_Unlock"));
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", ""+fortNugget1ID);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+flag1ID);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","SPCFortGate");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+flag1ID);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","Outpost");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+flag1ID);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "False");
+	/*rmAddTriggerEffect("Send Chat");
+	rmSetTriggerEffectParamInt("PlayerID",2);
+	rmSetTriggerEffectParam("Message","Convert 1");*/
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	rmSwitchToTrigger(rmTriggerID("Military_Block2_Unlock"));
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", ""+fortNugget2ID);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+flag2ID);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","SPCFortGate");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+flag2ID);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","Outpost");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+flag2ID);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "False");
+	/*rmAddTriggerEffect("Send Chat");
+	rmSetTriggerEffectParamInt("PlayerID",2);
+	rmSetTriggerEffectParam("Message","Convert 2");*/
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
 	for (k=1; <= cNumberNonGaiaPlayers) {
 		rmCreateTrigger("Military_Block1_Plr"+k);
 		rmCreateTrigger("Military_Block2_Plr"+k);
@@ -2460,20 +2616,6 @@ rmSetStatusText("",0.70);
 		rmAddTriggerCondition("Units Owned");
 		rmSetTriggerConditionParam("SrcObject",""+flag1ID);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmAddTriggerCondition("Units in Area");
-		rmSetTriggerConditionParam("DstObject",""+flag1ID);
-		rmSetTriggerConditionParamInt("Player",0);
-		rmSetTriggerConditionParam("UnitType","SPCFortGate");
-		rmSetTriggerConditionParamInt("Dist",35);
-		rmSetTriggerConditionParam("Op","==");
-		rmSetTriggerConditionParamInt("Count",0);
-		rmAddTriggerCondition("Units in Area");
-		rmSetTriggerConditionParam("DstObject",""+flag1ID);
-		rmSetTriggerConditionParamInt("Player",0);
-		rmSetTriggerConditionParam("UnitType","Outpost");
-		rmSetTriggerConditionParamInt("Dist",35);
-		rmSetTriggerConditionParam("Op","==");
-		rmSetTriggerConditionParamInt("Count",0);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+flag1ID);
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
@@ -2541,20 +2683,6 @@ rmSetStatusText("",0.70);
 		rmAddTriggerCondition("Units Owned");
 		rmSetTriggerConditionParam("SrcObject",""+flag2ID);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmAddTriggerCondition("Units in Area");
-		rmSetTriggerConditionParam("DstObject",""+flag2ID);
-		rmSetTriggerConditionParamInt("Player",0);
-		rmSetTriggerConditionParam("UnitType","SPCFortGate");
-		rmSetTriggerConditionParamInt("Dist",35);
-		rmSetTriggerConditionParam("Op","==");
-		rmSetTriggerConditionParamInt("Count",0);
-		rmAddTriggerCondition("Units in Area");
-		rmSetTriggerConditionParam("DstObject",""+flag2ID);
-		rmSetTriggerConditionParamInt("Player",0);
-		rmSetTriggerConditionParam("UnitType","Outpost");
-		rmSetTriggerConditionParamInt("Dist",35);
-		rmSetTriggerConditionParam("Op","==");
-		rmSetTriggerConditionParamInt("Count",0);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+flag2ID);
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
@@ -3109,6 +3237,7 @@ rmSetStatusText("",0.70);
 		rmSetTriggerLoop(false);
 	}
 	}
+
 
 	// Testing
 
