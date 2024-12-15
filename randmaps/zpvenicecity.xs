@@ -864,6 +864,9 @@ void main(void)
 	int socketCityStateID = -1;
 	int centerCityStateID = -1;
 
+	// Victory Timer
+	int victoryCountDown = 480;
+
 	// Starting techs
 
 	rmCreateTrigger("Starting Techs");
@@ -942,6 +945,54 @@ void main(void)
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
+
+	// Victory Conditions
+
+	for(i = 1; < cNumberTeams+1){
+		rmCreateTrigger("Victory_Counter"+i);
+		rmCreateTrigger("Victory_Counter_OFF"+i);
+	}
+
+	// Victory Counter
+	for(i = 1; < cNumberTeams+1){
+		rmSwitchToTrigger(rmTriggerID("Victory_Counter"+i));
+		rmAddTriggerCondition("Team Unit Count");
+		rmSetTriggerConditionParamInt("TeamID",i);
+		rmSetTriggerConditionParam("Protounit","zpTradingPostCaptureNaval");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",3);
+		rmAddTriggerEffect("Counter:Add Timer");
+		rmSetTriggerEffectParam("Name","VictoryCounter"+i);
+		rmSetTriggerEffectParamInt("Start", victoryCountDown);
+		rmSetTriggerEffectParamInt("Stop",0);
+		rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+i));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+i));
+		rmAddTriggerEffect("Counter Set Text Team");
+        rmSetTriggerEffectParam("Name", "VictoryCounter"+i);
+        rmSetTriggerEffectParam("Msg", "{302138}");
+        rmSetTriggerEffectParam("EnemyMsg", "{302139}");
+        rmSetTriggerEffectParamInt("RefTeamID", i);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Victory_Counter_OFF"+i));
+		rmAddTriggerCondition("Team Unit Count");
+		rmSetTriggerConditionParamInt("TeamID",i);
+		rmSetTriggerConditionParam("Protounit","zpTradingPostCaptureNaval");
+		rmSetTriggerConditionParam("Op","<");
+		rmSetTriggerConditionParamInt("Count",3);
+		rmAddTriggerEffect("Counter Stop");
+		rmSetTriggerEffectParam("Name","VictoryCounter"+i);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter"+i));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
 
 	// Italian Vilager Balance
 
@@ -2314,6 +2365,7 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
 
 
 // Testing
