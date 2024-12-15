@@ -192,5 +192,18 @@
         <unit name="zpPalazoAuditore">
             <flag mergeMode="remove">DoNotShowOnMiniMap</flag>
         </unit>
+		<unit name="deSPCCityGuard">
+			<unitregen mergeMode="remove">-1.0000</unitregen>
+			<protoaction>
+				<name>VolleyRangedAttack</name>
+				<damage>16.000000</damage>
+				<damagetype>Ranged</damagetype>
+				<maxrange>12.000000</maxrange>
+				<rof>3.000000</rof>
+				<damagebonus type="AbstractSiegeTrooper">2.000000</damagebonus>
+				<damagebonus type="AbstractVillager">0.250000</damagebonus>
+				<damagebonus type="Ship">4.000000</damagebonus>
+			</protoaction>
+		</unit>
 	</protomods>
 </mods>

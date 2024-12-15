@@ -2123,8 +2123,8 @@
       <string _locid="302122">Palazzo Auditore</string>
       <string _locid="302123">ZP SPC Palazzo Auditore</string>
       <string _locid="302124">Republic of Venice</string>
-      <string _locid="302125">Fanatic</string>
-      <string _locid="302126">ZP GRD Fanatic</string>
+      <string _locid="302125">Terrorblade</string>
+      <string _locid="302126">ZP GRD Revolutionary</string>
       <string _locid="302127">Cardinal's Guard</string>
       <string _locid="302128">ZP GRD Cardinal's Guard</string>
       <string _locid="302129">Venice Mercenary Guardian</string>
@@ -2133,7 +2133,9 @@
       <string _locid="302132">San Polo (Venice District)</string>
       <string _locid="302133">San Giorgio (Venice District)</string>
       <string _locid="302134">Castello (Venice District)</string>
-
+      <string _locid="302135">ZP Nugget Invisible</string>
+      <string _locid="302136">All Venetian Basilicas generate XP faster.</string>
+      <string _locid="302137">All TEAM units in the vicinity of s friendly Venetin District slowly heal.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

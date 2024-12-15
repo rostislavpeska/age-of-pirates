@@ -1659,16 +1659,16 @@ rmSetStatusText("",0.70);
 	int victoryFlag3 = rmGetGroupingInstanceUnitByType(victoryGrouping3, "zpSPCCapturableFlagNoIcon");
 
 	int menagerieBuilding1 = rmGetGroupingInstanceUnitByType(menageriePlacement1, "zpSPCMenagerie");
-	int menagerieNugget1 = rmGetGroupingInstanceUnitByType(menageriePlacement1, "ypNuggetTradingPost");
+	int menagerieNugget1 = rmGetGroupingInstanceUnitByType(menageriePlacement1, "zpNuggetInvisible");
 
 	int menagerieBuilding2 = rmGetGroupingInstanceUnitByType(menageriePlacement2, "zpSPCMenagerie");
-	int menagerieNugget2 = rmGetGroupingInstanceUnitByType(menageriePlacement2, "ypNuggetTradingPost");
+	int menagerieNugget2 = rmGetGroupingInstanceUnitByType(menageriePlacement2, "zpNuggetInvisible");
 
 	int factoryBuilding1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "zpSPCCapturableFactory");
-	int factoryNugget1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "ypNuggetTradingPost");
+	int factoryNugget1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "zpNuggetInvisible");
 
 	int factoryBuilding2 = rmGetGroupingInstanceUnitByType(factoryPlacement2, "zpSPCCapturableFactory");
-	int factoryNugget2 = rmGetGroupingInstanceUnitByType(factoryPlacement2, "ypNuggetTradingPost");
+	int factoryNugget2 = rmGetGroupingInstanceUnitByType(factoryPlacement2, "zpNuggetInvisible");
 
 	int flag1ID =cityStateFlag1+1;
 	int flag2ID =cityStateFlag2+1;

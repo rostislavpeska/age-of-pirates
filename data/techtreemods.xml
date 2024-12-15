@@ -19450,7 +19450,7 @@
     <researchpoints>40.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\spc\historical_battles\team_patron_of_the_arts.png</icon>
-    <rollovertextid>123049</rollovertextid>
+    <rollovertextid>302136</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>TeamTech</flag>
@@ -19477,7 +19477,7 @@
       <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
       <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
       <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
-      <effect type="TechStatus" status="obtainable">DESPCPapalBlessing</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPapalBlessingClone</effect>
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">DESPCMediciPatronage</effect>
       <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
@@ -19500,6 +19500,25 @@
         <target type="Player">
         </target>
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPapalBlessingClone" type="Normal">
+    <dbid>9069</dbid>
+    <displaynameid>122220</displaynameid>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\spc\historical_battles\papal_blessing.png</icon>
+    <rollovertextid>302137</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>TeamTech</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DEPapalBlessingShadow</effect>
+      <effect type="TextOutputTechName">123070</effect>
     </effects>
   </tech>
  

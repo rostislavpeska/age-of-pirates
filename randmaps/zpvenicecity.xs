@@ -808,10 +808,10 @@ void main(void)
 	int veniceCenterB3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "zpSPCWaterSpawnPointB");
 	int veniceCenterB4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpSPCWaterSpawnPointB");
 
-	int veniceNugget1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "ypNuggetTradingPost");
-	int veniceNugget2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "ypNuggetTradingPost");
-	int veniceNugget3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "ypNuggetTradingPost");
-	int veniceNugget4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "ypNuggetTradingPost");
+	int veniceNugget1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpNuggetInvisible");
+	int veniceNugget2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpNuggetInvisible");
+	int veniceNugget3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "zpNuggetInvisible");
+	int veniceNugget4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpNuggetInvisible");
 
 
 	int veniceBasilicaMod1 = veniceBasilica1+1;
@@ -849,7 +849,21 @@ void main(void)
 	int veniceNuggetMod3 = veniceNugget3+1;
 	int veniceNuggetMod4 = veniceNugget4+1;
 
-	
+	int cityStateSockets = xsArrayCreateInt(4, -1, "City State Sockets");
+    xsArraySetInt(cityStateSockets, 0, veniceSocketMod1);
+    xsArraySetInt(cityStateSockets, 1, veniceSocketMod2);
+    xsArraySetInt(cityStateSockets, 2, veniceSocketMod3);
+    xsArraySetInt(cityStateSockets, 3, veniceSocketMod4);
+
+	int cityStateCenters = xsArrayCreateInt(4, -1, "City State Centers");
+    xsArraySetInt(cityStateCenters, 0, veniceCenterMod1);
+    xsArraySetInt(cityStateCenters, 1, veniceCenterMod2);
+    xsArraySetInt(cityStateCenters, 2, veniceCenterMod3);
+    xsArraySetInt(cityStateCenters, 3, veniceCenterMod4);
+
+	int socketCityStateID = -1;
+	int centerCityStateID = -1;
+
 	// Starting techs
 
 	rmCreateTrigger("Starting Techs");
@@ -1618,7 +1632,7 @@ void main(void)
 		rmSetTriggerLoop(false);
 	}
 
-	// Venice trading post activation
+	// Venice City States
 
 	for (k=1; <= cNumberNonGaiaPlayers) {
 		rmCreateTrigger("Venice1on Player"+k);
@@ -2183,8 +2197,38 @@ void main(void)
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
-   }
+   	}
 
+   // Venice City States Heal
+
+	// Venice City States
+
+	for (s=1; <= 4) {
+		for (k=1; <= cNumberNonGaiaPlayers) {		
+			socketCityStateID = xsArrayGetInt(cityStateSockets, s-1);
+			centerCityStateID = xsArrayGetInt(cityStateCenters, s-1);
+			rmCreateTrigger("City State "+s+" Heal"+k);
+			rmAddTriggerCondition("Team Player Controls Socket");
+			rmSetTriggerConditionParamInt("PlayerID", 1, false);
+			rmSetTriggerConditionParamInt("Socket", socketCityStateID, false);
+			rmAddTriggerCondition("Tech Status Equals");
+			rmSetTriggerConditionParamInt("PlayerID", k, false);
+			rmSetTriggerConditionParamInt("TechID", rmGetTechID("DEPapalBlessingShadow"), false);
+			rmSetTriggerConditionParamInt("Status", 2, false);
+			rmAddTriggerCondition("Timer ms");
+            rmSetTriggerConditionParamInt("Param1", 1000, false);
+			rmAddTriggerEffect("Heal Units Percent in Area");
+			rmSetTriggerEffectParamInt("SrcObject", centerCityStateID, false);
+			rmSetTriggerEffectParamInt("Player", k, false);
+			rmSetTriggerEffectParam("UnitType", "LogicalTypeGarrisonInShips", false);
+			rmSetTriggerEffectParamFloat("Dist", 50, false);
+			rmSetTriggerEffectParamFloat("HealPct", 1.00, false);
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(true);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(true);
+		}
+   	}
    // AI Venice Captains
 
 	for (k=1; <= cNumberNonGaiaPlayers) {

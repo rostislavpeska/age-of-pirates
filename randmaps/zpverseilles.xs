@@ -775,7 +775,6 @@ int jesuitMaltese = rmRandInt(1, 2);
 
 		rmSetNuggetDifficulty(299, 299);
 		int factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX2, locZ2, 0);
-
 		int factoryPlacement2 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX8, locZ1, 0);
 
 	// Suburb
@@ -1509,14 +1508,15 @@ for (j=0; < 2) {
 	//----- Define Variables -----
 
 	int royalOrangerie = rmGetGroupingInstanceUnitByType(verseillesPalace1, "zpSPCRoyalOrangerie");
+
 	int menagerieBuilding = rmGetGroupingInstanceUnitByType(menageriePlacement, "zpSPCMenagerie");
-	int menagerieNugget = rmGetGroupingInstanceUnitByType(menageriePlacement, "ypNuggetTradingPost");
+	int menagerieNugget = rmGetGroupingInstanceUnitByType(menageriePlacement, "zpNuggetInvisible");
 
 	int factoryBuilding1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "zpSPCCapturableFactory");
-	int factoryNugget1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "ypNuggetTradingPost");
+	int factoryNugget1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "zpNuggetInvisible");
 
 	int factoryBuilding2 = rmGetGroupingInstanceUnitByType(factoryPlacement2, "zpSPCCapturableFactory");
-	int factoryNugget2 = rmGetGroupingInstanceUnitByType(factoryPlacement2, "ypNuggetTradingPost");
+	int factoryNugget2 = rmGetGroupingInstanceUnitByType(factoryPlacement2, "zpNuggetInvisible");
 
 	// Victory Timer
 	int victoryCountDown = 1800;
@@ -1628,7 +1628,7 @@ for (j=0; < 2) {
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
-	// Menagerie Convert
+	// Resource Building Convert
 	rmCreateTrigger("Buildings Convert OFF");
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject",""+menagerieBuilding);

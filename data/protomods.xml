@@ -43521,7 +43521,7 @@
     <train row="0" page="0" column="2">deMercPistoleer</train>
     <tech row="0" page="1" column="0">zpSPCArtPatronClone</tech>
     <tech row="0" page="1" column="1">DESPCPapalLegate</tech>
-    <tech row="0" page="1" column="2">DESPCPapalBlessing</tech>
+    <tech row="0" page="1" column="2">zpSPCPapalBlessingClone</tech>
     <tech row="0" page="1" column="3">DESPCExcommunication</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -43612,7 +43612,7 @@
     <train row="0" page="0" column="2">deMercPistoleer</train>
     <tech row="0" page="1" column="0">zpSPCArtPatronClone</tech>
     <tech row="0" page="1" column="1">DESPCPapalLegate</tech>
-    <tech row="0" page="1" column="2">DESPCPapalBlessing</tech>
+    <tech row="0" page="1" column="2">zpSPCPapalBlessingClone</tech>
     <tech row="0" page="1" column="3">DESPCExcommunication</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -45437,6 +45437,40 @@
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
     </protoaction>
+  </unit>
+  <unit id="20603" name="zpNuggetInvisible">
+    <dbid>20603</dbid>
+    <displaynameid>302135</displaynameid>
+    <obstructionradiusx>0.1000</obstructionradiusx>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <flattenterrainexpand>2.0000</flattenterrainexpand>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>nuggets\asian\trading_post_nugget\trading_post_nugget.xml</animfile>
+    <unittype>Unattackable</unittype>
+    <unittype>AbstractNugget</unittype>
+    <unittype>AbstractNuggetLand</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Nugget</flag>
+    <flag>OnlyInEditor</flag>
   </unit>
 
 

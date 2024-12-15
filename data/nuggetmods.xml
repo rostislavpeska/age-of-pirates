@@ -2210,7 +2210,7 @@
     </nugget>
     <nugget>
       <name>zpNuggetFactory</name>
-      <nuggetunit>ypNuggetTradingPost</nuggetunit>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
       <rolloverstringid>29084</rolloverstringid>
       <applystringid>66271</applystringid>
       <maptype>piratehistoricalmap</maptype>
@@ -2239,7 +2239,7 @@
     </nugget>
     <nugget>
       <name>zpNuggetMenagerie</name>
-      <nuggetunit>ypNuggetTradingPost</nuggetunit>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
       <rolloverstringid>29084</rolloverstringid>
       <applystringid>66271</applystringid>
       <maptype>piratehistoricalmap</maptype>
@@ -2259,31 +2259,43 @@
     </nugget>
     <nugget>
       <name>zpNuggetCityState</name>
-      <nuggetunit>ypNuggetTradingPost</nuggetunit>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
       <rolloverstringid>29084</rolloverstringid>
       <applystringid>66271</applystringid>
       <maptype>piratehistoricalmap</maptype>
       <guardianunit>
-        <unit>zpGuardianVenice</unit>
+        <unit>deSPCCityGuard</unit>
       </guardianunit>
       <guardianunit>
-        <unit>zpGuardianVenice</unit>
+        <unit>deSPCCityGuard</unit>
       </guardianunit>
       <guardianunit>
-        <unit>zpGuardianVenice</unit>
+        <unit>deSPCCityGuard</unit>
       </guardianunit>
       <guardianunit>
-        <unit>zpGuardianVenice</unit>
+        <unit>deSPCCityGuard</unit>
       </guardianunit>
       <guardianunit>
-        <unit>zpGuardianVenice</unit>
+        <unit>deSPCCityGuard</unit>
       </guardianunit>
       <guardianunit>
-        <unit>zpGuardianVenice</unit>
+        <unit>deSPCCityGuard</unit>
       </guardianunit>
       <guardianunit>
-        <unit>zpGuardianVenice</unit>
-      </guardianunit>  
+        <unit>deSPCCityGuard</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCCityGuard</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCCityGuard</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCCityGuard</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCCityGuard</unit>
+      </guardianunit>
       <difficulty>298</difficulty>
     </nugget>
 
