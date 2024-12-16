@@ -448,7 +448,7 @@ void main(void)
     rmBuildArea(NorthIslandID ); 
 
 	int shoreTerrainNorth = rmCreateArea("shore Terrain North");
-    rmSetAreaSize(shoreTerrainNorth, rmAreaTilesToFraction(350), rmAreaTilesToFraction(350));
+    rmSetAreaSize(shoreTerrainNorth, rmAreaTilesToFraction(450), rmAreaTilesToFraction(450));
     rmSetAreaLocation(shoreTerrainNorth, rmXMetersToFraction(xsVectorGetX(ControllerLoc4))+rmXTilesToFraction(58), rmZMetersToFraction(xsVectorGetZ(ControllerLoc4))+rmZTilesToFraction(4));
     rmSetAreaCoherence(shoreTerrainNorth, 1.0);	
    	rmSetAreaMix(shoreTerrainNorth, "italy_grass");
@@ -490,7 +490,7 @@ void main(void)
     rmBuildArea(SouthIslandID );
 
 	int shoreTerrainSouth = rmCreateArea("shore Terrain South");
-    rmSetAreaSize(shoreTerrainSouth, rmAreaTilesToFraction(350), rmAreaTilesToFraction(350));
+    rmSetAreaSize(shoreTerrainSouth, rmAreaTilesToFraction(450), rmAreaTilesToFraction(450));
     rmSetAreaLocation(shoreTerrainSouth, rmXMetersToFraction(xsVectorGetX(ControllerLoc3))-rmXTilesToFraction(56), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3))-rmZTilesToFraction(13));	
     rmSetAreaCoherence(shoreTerrainSouth, 1.0);	
    	rmSetAreaMix(shoreTerrainSouth, "italy_grass");
@@ -758,6 +758,7 @@ void main(void)
 	rmEnableMerc("deMercCannoneer", -1);
 	rmEnableMerc("deMercPistoleer", -1);
 
+	rmForbidTradeMonopoly(true);
 
 	// ____________________ MAP OBJECTIVES ____________________
     rmObjectiveScreenSetTitle(302118);
@@ -864,8 +865,19 @@ void main(void)
 	int socketCityStateID = -1;
 	int centerCityStateID = -1;
 
+	vector veniceLoc1 = rmGetUnitPosition(veniceCenter1);
+	vector veniceLoc2 = rmGetUnitPosition(veniceCenter2);
+	vector veniceLoc3 = rmGetUnitPosition(veniceCenter3);
+	vector veniceLoc4 = rmGetUnitPosition(veniceCenter4);
+
+	vector veniceSocketLoc1 = rmGetUnitPosition(veniceSocket1);
+	vector veniceSocketLoc2 = rmGetUnitPosition(veniceSocket2);
+	vector veniceSocketLoc3 = rmGetUnitPosition(veniceSocket3);
+	vector veniceSocketLoc4 = rmGetUnitPosition(veniceSocket4);
+
 	// Victory Timer
 	int victoryCountDown = 480;
+	int socketMinimapFlareDuration = 10;
 
 	// Starting techs
 
@@ -1759,6 +1771,13 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralMaltese"); // Mercenaries
 		rmSetTriggerEffectParamInt("Status",2);
+		for(x=1; <= cNumberNonGaiaPlayers) {
+			rmAddTriggerEffect("Flare Minimap");
+			rmSetTriggerEffectParamInt("PlayerID", x, false);
+			rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+			rmSetTriggerEffectParam("Position", ""+xsVectorGetX(veniceLoc1)+","+xsVectorGetY(veniceLoc1)+","+xsVectorGetZ(veniceLoc1), false);
+			rmSetTriggerEffectParam("Flash", "True", false);
+		}
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice1off_Player"+k));
@@ -1828,6 +1847,11 @@ void main(void)
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
 		rmSetTriggerEffectParamInt("Dist",60);
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", k, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(veniceLoc1)+","+xsVectorGetY(veniceLoc1)+","+xsVectorGetZ(veniceLoc1), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice1on_Player"+k));
@@ -1900,6 +1924,13 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralJesuit"); // Mercenaries
 		rmSetTriggerEffectParamInt("Status",2);
+		for(x=1; <= cNumberNonGaiaPlayers) {
+			rmAddTriggerEffect("Flare Minimap");
+			rmSetTriggerEffectParamInt("PlayerID", x, false);
+			rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+			rmSetTriggerEffectParam("Position", ""+xsVectorGetX(veniceLoc2)+","+xsVectorGetY(veniceLoc2)+","+xsVectorGetZ(veniceLoc2), false);
+			rmSetTriggerEffectParam("Flash", "True", false);
+		}
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice2off_Player"+k));
@@ -1969,6 +2000,11 @@ void main(void)
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
 		rmSetTriggerEffectParamInt("Dist",60);
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", k, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(veniceLoc2)+","+xsVectorGetY(veniceLoc2)+","+xsVectorGetZ(veniceLoc2), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice2on_Player"+k));
@@ -2039,6 +2075,13 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedraOrthodox"); // Mercenaries
 		rmSetTriggerEffectParamInt("Status",2);
+		for(x=1; <= cNumberNonGaiaPlayers) {
+			rmAddTriggerEffect("Flare Minimap");
+			rmSetTriggerEffectParamInt("PlayerID", x, false);
+			rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+			rmSetTriggerEffectParam("Position", ""+xsVectorGetX(veniceLoc3)+","+xsVectorGetY(veniceLoc3)+","+xsVectorGetZ(veniceLoc3), false);
+			rmSetTriggerEffectParam("Flash", "True", false);
+		}
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice3off_Player"+k));
@@ -2105,6 +2148,11 @@ void main(void)
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
 		rmSetTriggerEffectParamInt("Dist",10);
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", k, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(veniceLoc3)+","+xsVectorGetY(veniceLoc3)+","+xsVectorGetZ(veniceLoc3), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice3on_Player"+k));
@@ -2171,6 +2219,13 @@ void main(void)
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
 		rmSetTriggerEffectParamInt("Dist",10);
+		for(x=1; <= cNumberNonGaiaPlayers) {
+			rmAddTriggerEffect("Flare Minimap");
+			rmSetTriggerEffectParamInt("PlayerID", x, false);
+			rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+			rmSetTriggerEffectParam("Position", ""+xsVectorGetX(veniceLoc4)+","+xsVectorGetY(veniceLoc4)+","+xsVectorGetZ(veniceLoc4), false);
+			rmSetTriggerEffectParam("Flash", "True", false);
+		}
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice4off_Player"+k));
@@ -2237,6 +2292,11 @@ void main(void)
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
 		rmSetTriggerEffectParamInt("Dist",10);
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", k, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(veniceLoc4)+","+xsVectorGetY(veniceLoc4)+","+xsVectorGetZ(veniceLoc4), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice4on_Player"+k));
@@ -2365,6 +2425,7 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
 
 
 

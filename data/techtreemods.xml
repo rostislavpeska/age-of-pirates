@@ -18858,7 +18858,7 @@
       <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
         <target type="ProtoUnit">zpNatRoyalMusketeer</target>
       </effect>
-      <!--<effect type="CommandAdd" proto="WallConnector" page="6" column="8">
+      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
         <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
       </effect>
       <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
@@ -18875,7 +18875,7 @@
       </effect>
       <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
         <target type="ProtoUnit">deNatRoyalMusketeer</target>
-      </effect>-->
+      </effect>
     </effects>
 	</tech>
   <tech name="zpMilitaryCampBuildLimit" type="Normal">
@@ -19503,12 +19503,12 @@
       <effect type="TechStatus" status="obtainable">DESPCTaulaDeCanvi</effect>
       <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
       <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
-      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
       <effect type="TechStatus" status="obtainable">zpSPCPapalBlessingClone</effect>
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">DESPCMediciPatronage</effect>
       <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCVenetianFleet</effect>
       <effect type="CommandRemove" command="FourOfAKind">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -19556,6 +19556,35 @@
       <effect type="TransformUnit" toprotoid="deSPCCityTower" fromprotoid="deSPCEuroTower">
       </effect>
       <effect type="TechStatus" status="unobtainable">zpConvertBastions</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCVenetianFleet" type="Normal">
+    <dbid>40735</dbid>
+    <displaynameid>302145</displaynameid>
+    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\venetian_fleet.png</icon>
+    <rollovertextid>302146</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>TeamTech</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpVeniceGalley</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpVeniceGalley" page="0" column="10">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpVeniceGalley" page="0" column="10">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpVeniceGalley" page="0" column="10">
+        <target type="ProtoUnit">YPDockAsian</target>
+      </effect>
     </effects>
   </tech>
  
