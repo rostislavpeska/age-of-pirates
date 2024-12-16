@@ -19559,7 +19559,7 @@
     </effects>
   </tech>
   <tech name="zpSPCVenetianFleet" type="Normal">
-    <dbid>40735</dbid>
+    <dbid>40839</dbid>
     <displaynameid>302145</displaynameid>
     <cost resourcetype="Wood">300.0000</cost>
     <cost resourcetype="Gold">300.0000</cost>
