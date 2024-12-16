@@ -18849,6 +18849,33 @@
       <effect type="CommandAdd" proto="zpNatRoyalMusketeer" page="0" column="20">
         <target type="ProtoUnit">zpMilitaryCamp</target>
       </effect>
+      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <!--<effect type="CommandAdd" proto="WallConnector" page="6" column="8">
+        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
+        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
+        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
+      </effect>-->
     </effects>
 	</tech>
   <tech name="zpMilitaryCampBuildLimit" type="Normal">
@@ -19503,7 +19530,7 @@
     </effects>
   </tech>
   <tech name="zpSPCPapalBlessingClone" type="Normal">
-    <dbid>20837</dbid>
+    <dbid>40837</dbid>
     <displaynameid>122220</displaynameid>
     <cost resourcetype="Gold">400.0000</cost>
     <researchpoints>40.0000</researchpoints>
@@ -19519,6 +19546,16 @@
     <effects>
       <effect type="TechStatus" status="active">DEPapalBlessingShadow</effect>
       <effect type="TextOutputTechName">123070</effect>
+    </effects>
+  </tech>
+  <tech name="zpConvertCityTowers" type="Normal">
+    <dbid>40838</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="deSPCCityTower" fromprotoid="deSPCEuroTower">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConvertBastions</effect>
     </effects>
   </tech>
  

@@ -98,7 +98,7 @@
 			<placementfile>buildingsmall_city.xml</placementfile>
 		</unit>
 		<unit name="Outpost">
-			<placementfile>buildingsmall_city.xml</placementfile>
+			<placementfile>outpost_city.xml</placementfile>
 		</unit>
 		<unit name="ArtilleryDepot">
 			<placementfile>buildinglarge_city.xml</placementfile>
@@ -137,7 +137,7 @@
 			<placementfile>buildingsmall_city.xml</placementfile>
 		</unit>
 		<unit name="deOutpostAfrican">
-			<placementfile>buildingsmall_city.xml</placementfile>
+			<placementfile>outpost_city.xml</placementfile>
 		</unit>
 		<unit name="deUniversity">
 			<placementfile>university_city.xml</placementfile>
@@ -245,6 +245,9 @@
 		</unit>
 		<unit name="CWallGate">
 			<animfile>buildings\wall\barricade\verseilles_gate.xml</animfile>
+		</unit>
+		<unit name="deSPCTowerCapturable">
+			<minimapicon mergeMode="remove">ui\minimap\highlighted item</minimapicon>
 		</unit>
 	</protomods>
 </mods>

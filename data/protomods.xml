@@ -1802,7 +1802,7 @@
     <movementtype>land</movementtype>
     <animfile>ui\editor\pathblock2.xml</animfile>
     <unittype>EmbellishmentClass</unittype>
-    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractCityManisonB</unittype>
     <flag>DontMarkExtraFog</flag>
     <flag>NoHPBar</flag>
     <flag>Immoveable</flag>
@@ -15305,7 +15305,7 @@
     <unittype>Unattackable</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>Building</unittype>
-    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractCityManisonB</unittype>
     <flag>TieToWaterSurface</flag>
     <flag>Doppled</flag>
     <flag>PaintTextureWhenPlacing</flag>
@@ -35722,7 +35722,7 @@
     <unittype>Unattackable</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>Building</unittype>
-    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractCityManisonB</unittype>
     <flag>FlattenGround</flag>
     <flag>Doppled</flag>
     <flag>PaintTextureWhenPlacing</flag>
@@ -39627,7 +39627,9 @@
     </protoaction>
     <protoaction>
       <name>Build</name>
-      <rate type="zpMilitaryCamp">2.0</rate>
+      <maxrange>1.0</maxrange>
+      <active>1</active>
+      <rate type="Building">1.0</rate>
     </protoaction>
   </unit>
   <unit name="deNatRoyalMusketeer">
@@ -39637,7 +39639,9 @@
     </sharedselectionunittypes>
     <protoaction>
       <name>Build</name>
-      <rate type="zpMilitaryCamp">2.0</rate>
+      <maxrange>1.0</maxrange>
+      <active>1</active>
+      <rate type="Building">1.0</rate>
     </protoaction>
   </unit>
   <unit name="deNatMercRoyalMusketeer">
@@ -39647,7 +39651,9 @@
     </sharedselectionunittypes>
     <protoaction>
       <name>Build</name>
-      <rate type="zpMilitaryCamp">2.0</rate>
+      <maxrange>1.0</maxrange>
+      <active>1</active>
+      <rate type="Building">1.0</rate>
     </protoaction>
   </unit>
   <unit id="20522" name="zpNatRoyalDragoon">
@@ -40209,7 +40215,7 @@
     <initialhitpoints>1800.0000</initialhitpoints>
     <maxhitpoints>1800.0000</maxhitpoints>
     <los>12.0000</los>
-    <buildpoints>30.0000</buildpoints>
+    <buildpoints>20.0000</buildpoints>
     <freebuildpoints>119.7600</freebuildpoints>
     <bounty>40.0000</bounty>
     <buildbounty>20.0000</buildbounty>
@@ -43673,7 +43679,7 @@
     <unittype>Unattackable</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>Building</unittype>
-    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractCityManisonB</unittype>
     <flag>TieToWaterSurface</flag>
     <flag>Doppled</flag>
     <flag>PaintTextureWhenPlacing</flag>
@@ -45478,7 +45484,7 @@
     <obstructionradiusx>0.1000</obstructionradiusx>
     <obstructionradiusz>0.1000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
-    <movementtype>land</movementtype>
+    <movementtype>air</movementtype>
     <animfile>terrain\underbrush\bohemia_flowers.xml</animfile>
     <unittype>EmbellishmentClass</unittype>
     <flag>VariationLocked</flag>
@@ -45496,6 +45502,70 @@
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>RMCanRotate</flag>
     <flag>NonCollideable</flag>
+  </unit>
+  <unit id="20605" name="zpHarbourPathBlock1">
+    <dbid>20605</dbid>
+    <displaynameid>33736</displaynameid>
+    <editornameid>302143</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>ui\editor\pathblock1.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>AbstractCityManisonB</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>VariationLocked</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DontMarkExtraFog</flag>
+  </unit>
+  <unit id="20607" name="zpHarbourPathBlock3">
+    <dbid>20607</dbid>
+    <displaynameid>33740</displaynameid>
+    <editornameid>302144</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>ui\editor\pathblock3.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>AbstractCityManisonB</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>VariationLocked</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DontMarkExtraFog</flag>
   </unit>
 
 
@@ -45520,6 +45590,14 @@
     <flag>DeadReplacementWhenDestroyed</flag>
     <socketunittype>TowerSocket</socketunittype>
     <flag>StartEnabled</flag>
+  </unit>-->
+
+
+  <!--<unit name="SPCFortGate">
+    <animfile>buildings\wall\barricade\verseilles_gate.xml</animfile>
+  </unit>
+  <unit name="CWallGate">
+    <animfile>buildings\wall\barricade\verseilles_gate.xml</animfile>
   </unit>-->
 
   <!--BELONGS TO PARIS MAPMODS-->

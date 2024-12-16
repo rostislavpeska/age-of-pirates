@@ -24,4 +24,5 @@
   <unittype>AbstractCityManison</unittype>
   <unittype>AbstractImportantCityBuilding</unittype>
   <unittype>zpAbstractHeroMusketeer</unittype>
+  <unittype>AbstractCityManisonB</unittype>
 </unittypes>

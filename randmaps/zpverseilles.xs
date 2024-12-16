@@ -865,9 +865,9 @@ rmSetStatusText("",0.70);
 
 // Add city hills
 
-// City Hill Ramp
+	// City Hill Ramp
 
-for (j=0; < 2) {  
+	for (j=0; < 2) {  
 		int smallPatchRamp = rmCreateArea("smallPatchRamp"+j);
 		rmSetAreaSize(smallPatchRamp, rmAreaTilesToFraction(450), rmAreaTilesToFraction(450));
 		rmSetAreaHeightBlend(smallPatchRamp, 3);
@@ -885,26 +885,21 @@ for (j=0; < 2) {
 
 		}
 
-		// Cliff Monastery Groupings
-		int jesuitVillageType = rmRandInt(1, 3);
-		int jesuitMonasteryID = rmCreateGrouping("countryMonastery1", "Jesuit_Cathedral_EU_0"+jesuitVillageType);
-		rmSetGroupingMinDistance(jesuitMonasteryID, 0.00);
-		rmSetGroupingMaxDistance(jesuitMonasteryID, 0.50);
-		rmAddGroupingToClass(jesuitMonasteryID, rmClassID("classBlock"));
+	// Tower Nuggets
 
-		int jesuitVillageType2 = rmRandInt(1, 3);
-		int jesuitMonasteryID2 = rmCreateGrouping("countryMonastery2", "Jesuit_Cathedral_EU_0"+jesuitVillageType2);
-		rmSetGroupingMinDistance(jesuitMonasteryID2, 0.00);
-		rmSetGroupingMaxDistance(jesuitMonasteryID2, 0.50);
-		rmAddGroupingToClass(jesuitMonasteryID2, rmClassID("classBlock"));
+	int nuggetTower= rmCreateObjectDef("nugget tower"); 
+	rmAddObjectDefItem(nuggetTower, "Nugget", 1, 0.0);
+	rmSetNuggetDifficulty(295, 295);
+	rmSetObjectDefMinDistance(nuggetTower, 0.0);
+	rmSetObjectDefMaxDistance(nuggetTower, 0.5);
+	rmPlaceObjectDefAtLoc(nuggetTower, 0, 0.19, mapCenter+rmZTilesToFraction(21));
+	rmPlaceObjectDefAtLoc(nuggetTower, 0, 0.81, mapCenter+rmZTilesToFraction(21));
+	rmPlaceObjectDefAtLoc(nuggetTower, 0, 0.19, mapCenter+rmZTilesToFraction(44));
+	rmPlaceObjectDefAtLoc(nuggetTower, 0, 0.81, mapCenter+rmZTilesToFraction(44));
 
-		rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.08, mapCenter+rmZTilesToFraction(30), 1);
-		rmPlaceGroupingAtLoc(jesuitMonasteryID2, 0, 0.93, mapCenter+rmZTilesToFraction(30), 1);
 
-	for (j=0; < 8) {   
-
-		 
-
+	for (j=0; < 12) {   
+ 
 		// City Hill Cliff
 		int wallCliffs = rmCreateArea("wallCliffs"+j);
 		rmSetAreaObeyWorldCircleConstraint(wallCliffs, false);
@@ -932,16 +927,16 @@ for (j=0; < 2) {
 		rmAddAreaInfluenceSegment(wallCliffs, 0.0, mapCenter+rmZTilesToFraction(9), 0.26, mapCenter+rmZTilesToFraction(9));
 		}
 		if (j == 2){
-		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(80), rmAreaTilesToFraction(80));
 		rmSetAreaCoherence(wallCliffs, .93);
-		rmSetAreaLocation(wallCliffs, 0.9, mapCenter+rmZTilesToFraction(35));
-		rmAddAreaInfluenceSegment(wallCliffs, 0.78, mapCenter+rmZTilesToFraction(35), 1.0, mapCenter+rmZTilesToFraction(35));
+		rmSetAreaLocation(wallCliffs, 0.8, mapCenter+rmZTilesToFraction(35));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.78, mapCenter+rmZTilesToFraction(35), 0.84, mapCenter+rmZTilesToFraction(35));
 		}
 		if (j == 3){
-		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(80), rmAreaTilesToFraction(80));
 		rmSetAreaCoherence(wallCliffs, .93);
-		rmSetAreaLocation(wallCliffs, 0.1, mapCenter+rmZTilesToFraction(35));
-		rmAddAreaInfluenceSegment(wallCliffs, 0.0, mapCenter+rmZTilesToFraction(35), 0.27, mapCenter+rmZTilesToFraction(35));
+		rmSetAreaLocation(wallCliffs, 0.2, mapCenter+rmZTilesToFraction(35));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.16, mapCenter+rmZTilesToFraction(35), 0.27, mapCenter+rmZTilesToFraction(35));
 		}
 		if (j == 4){
 		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(1600), rmAreaTilesToFraction(1600));
@@ -967,12 +962,50 @@ for (j=0; < 2) {
 		rmSetAreaLocation(wallCliffs, 0.1, mapCenter+rmZTilesToFraction(54));
 		rmAddAreaInfluenceSegment(wallCliffs, 0.0, mapCenter+rmZTilesToFraction(54), 0.27, mapCenter+rmZTilesToFraction(54));
 		}
+		if (j == 8){
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaCoherence(wallCliffs, .93);
+		rmSetAreaLocation(wallCliffs, 0.17, mapCenter+rmZTilesToFraction(21));
+		}
+		if (j == 9){
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaCoherence(wallCliffs, .93);
+		rmSetAreaLocation(wallCliffs, 0.83, mapCenter+rmZTilesToFraction(21));
+		}
+		if (j == 10){
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaCoherence(wallCliffs, .93);
+		rmSetAreaLocation(wallCliffs, 0.17, mapCenter+rmZTilesToFraction(44));
+		}
+		if (j == 11){
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaCoherence(wallCliffs, .93);
+		rmSetAreaLocation(wallCliffs, 0.83, mapCenter+rmZTilesToFraction(44));
+		}
 		rmBuildArea(wallCliffs);  
 		
 	}
 
-	// Place additional objects
+	// Cliff Objects
 
+	// Cliff Monastery Groupings
+	int jesuitVillageType = rmRandInt(1, 3);
+	int jesuitMonasteryID = rmCreateGrouping("countryMonastery1", "Jesuit_Cathedral_EU_0"+jesuitVillageType);
+	rmSetGroupingMinDistance(jesuitMonasteryID, 0.00);
+	rmSetGroupingMaxDistance(jesuitMonasteryID, 0.50);
+	rmAddGroupingToClass(jesuitMonasteryID, rmClassID("classBlock"));
+
+	int jesuitVillageType2 = rmRandInt(1, 3);
+	int jesuitMonasteryID2 = rmCreateGrouping("countryMonastery2", "Jesuit_Cathedral_EU_0"+jesuitVillageType2);
+	rmSetGroupingMinDistance(jesuitMonasteryID2, 0.00);
+	rmSetGroupingMaxDistance(jesuitMonasteryID2, 0.50);
+	rmAddGroupingToClass(jesuitMonasteryID2, rmClassID("classBlock"));
+
+	rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.08, mapCenter+rmZTilesToFraction(30), 1);
+	rmPlaceGroupingAtLoc(jesuitMonasteryID2, 0, 0.93, mapCenter+rmZTilesToFraction(30), 1);
+
+
+	// Place additional objects
 
 	// Menagerie
 	int blockMenagerie = rmCreateGrouping("menagerie", "EU_Resource_Block_Menager2");
@@ -1162,7 +1195,7 @@ for (j=0; < 2) {
 	rmSetObjectDefCreateHerd(foodID, true);
 
 	int goldID = rmCreateObjectDef("starting gold");
-	rmAddObjectDefItem(goldID, "MineTin", 1, 2.0);
+	rmAddObjectDefItem(goldID, "SPCMine", 1, 2.0);
 	rmSetObjectDefMinDistance(goldID, 14.0);
 	rmSetObjectDefMaxDistance(goldID, 15.0);
 	rmAddObjectDefConstraint(goldID, avoidTradeRouteMin);
@@ -1433,7 +1466,7 @@ for (j=0; < 2) {
 	rmAddObjectDefConstraint(deerID, shortDeerConstraint);
 	rmSetObjectDefCreateHerd(deerID, true);
 	rmPlaceObjectDefInArea(deerID, 0, countrysideSouth, cNumberNonGaiaPlayers+2);
-	rmPlaceObjectDefInArea(deerID, 0, countrysideNorth, cNumberNonGaiaPlayers);
+	rmPlaceObjectDefInArea(deerID, 0, countrysideNorth, cNumberNonGaiaPlayers+4);
 
 	
 
@@ -1537,11 +1570,20 @@ for (j=0; < 2) {
 
 	// Convert Units
 
+	/*rmCreateTrigger("UpgradeCityTowers");
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",firstDefender);
+	rmSetTriggerEffectParam("TechID","cTechzpConvertCityTowers");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);*/
+
 	rmCreateTrigger("Convert Orangerie");
 	rmAddTriggerEffect("Convert");
 	rmSetTriggerEffectParam("SrcObject",""+royalOrangerie);
 	rmSetTriggerEffectParamInt("PlayerID",firstDefender);
-	rmSetTriggerPriority(4);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject",""+royalOrangerie);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
@@ -1566,6 +1608,9 @@ for (j=0; < 2) {
 	rmSetTriggerEffectParamInt("TrgPlayer",firstAttacker);
 	rmSetTriggerEffectParam("UnitType","Outpost");
 	rmSetTriggerEffectParamInt("Dist",200);
+	/*rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UpgradeCityTowers"));*/
+	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
@@ -1586,6 +1631,10 @@ for (j=0; < 2) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpBonusBourbon"); // No normal revolutions on this map
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpEnableSPCCityStateTechsClone"); // No normal revolutions on this map
 		rmSetTriggerEffectParamInt("Status",2);
 		if (rmGetPlayerTeam(i) == 0) {
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -2241,7 +2290,6 @@ for (j=0; < 2) {
 		rmSetTriggerLoop(false);
 	}
 	}
-
 
 	// Testing
 
