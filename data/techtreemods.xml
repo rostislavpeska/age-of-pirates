@@ -19442,7 +19442,7 @@
     </effects>
   </tech>
   <tech name="zpSPCArtPatronClone" type="Normal">
-    <dbid>40834</dbid>
+    <dbid>40836</dbid>
     <displaynameid>123050</displaynameid>
     <cost resourcetype="Food">100.0000</cost>
     <cost resourcetype="Gold">100.0000</cost>
@@ -19503,7 +19503,7 @@
     </effects>
   </tech>
   <tech name="zpSPCPapalBlessingClone" type="Normal">
-    <dbid>9069</dbid>
+    <dbid>20837</dbid>
     <displaynameid>122220</displaynameid>
     <cost resourcetype="Gold">400.0000</cost>
     <researchpoints>40.0000</researchpoints>

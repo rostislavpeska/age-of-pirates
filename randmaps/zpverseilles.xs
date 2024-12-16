@@ -427,25 +427,25 @@ void main(void)
 	rmSetAreaBaseHeight(basinsID, 1.0);
 	rmBuildArea(basinsID);
 
-	int basinsID2=rmCreateArea("Verseilles Basins2");
+	/*int basinsID2=rmCreateArea("Verseilles Basins2");
 	rmSetAreaWaterType(basinsID2, "ZP Verseilles Pond");
-	rmSetAreaSize(basinsID2, 0.007, 0.007);
+	rmSetAreaSize(basinsID2, 0.002, 0.002);
 	rmSetAreaCoherence(basinsID2, 1.0);
-	rmSetAreaLocation(basinsID2, 0.35, mapCenter+rmZTilesToFraction(37));
-	rmAddAreaInfluenceSegment(basinsID2,0.35, mapCenter+rmZTilesToFraction(14), 0.35, mapCenter+rmZTilesToFraction(41));
+	rmSetAreaLocation(basinsID2, 0.35, mapCenter+rmZTilesToFraction(16));
+	rmAddAreaInfluenceSegment(basinsID2,0.35, mapCenter+rmZTilesToFraction(16), 0.35, mapCenter+rmZTilesToFraction(28));
 	rmSetAreaSmoothDistance(basinsID2, 10);
 	rmSetAreaBaseHeight(basinsID2, 1.0);
 	rmBuildArea(basinsID2);
 
 	int basinsID3=rmCreateArea("Verseilles Basins3");
 	rmSetAreaWaterType(basinsID3, "ZP Verseilles Pond");
-	rmSetAreaSize(basinsID3, 0.007, 0.007);
+	rmSetAreaSize(basinsID3, 0.004, 0.004);
 	rmSetAreaCoherence(basinsID3, 1.0);
-	rmSetAreaLocation(basinsID3, 0.696, mapCenter+rmZTilesToFraction(37));
-	rmAddAreaInfluenceSegment(basinsID3,0.695, mapCenter+rmZTilesToFraction(14), 0.695, mapCenter+rmZTilesToFraction(41));
+	rmSetAreaLocation(basinsID3, 0.696, mapCenter+rmZTilesToFraction(16));
+	rmAddAreaInfluenceSegment(basinsID3,0.695, mapCenter+rmZTilesToFraction(16), 0.695, mapCenter+rmZTilesToFraction(28));
 	rmSetAreaSmoothDistance(basinsID3, 10);
 	rmSetAreaBaseHeight(basinsID3, 1.0);
-	rmBuildArea(basinsID3);
+	rmBuildArea(basinsID3);*/
 
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
@@ -528,7 +528,7 @@ void main(void)
 // Fixed Placement
 
 	// Palace
-	int blockPalaceBig01 = rmCreateGrouping("palace1", "Verseilles_Mega3");
+	int blockPalaceBig01 = rmCreateGrouping("palace1", "Verseilles_2v2");
     rmSetGroupingMinDistance(blockPalaceBig01, 0.00);
     rmSetGroupingMaxDistance(blockPalaceBig01, 0.50);
 	rmAddGroupingToClass(blockPalaceBig01, rmClassID("classBlock"));
@@ -876,16 +876,32 @@ for (j=0; < 2) {
 		rmSetAreaSmoothDistance(smallPatchRamp, 7);
 		rmSetAreaBaseHeight(smallPatchRamp, 6.0);
 		if (j == 0){
-		rmSetAreaLocation(smallPatchRamp, 0.08, mapCenter+rmZTilesToFraction(45));
+		rmSetAreaLocation(smallPatchRamp, 0.08, mapCenter+rmZTilesToFraction(55));
 		}
 		if (j == 1){
-		rmSetAreaLocation(smallPatchRamp, 0.93, mapCenter+rmZTilesToFraction(45));
+		rmSetAreaLocation(smallPatchRamp, 0.93, mapCenter+rmZTilesToFraction(55));
 		}
 		rmBuildArea(smallPatchRamp);  
 
 		}
 
-	for (j=0; < 6) {   
+		// Cliff Monastery Groupings
+		int jesuitVillageType = rmRandInt(1, 3);
+		int jesuitMonasteryID = rmCreateGrouping("countryMonastery1", "Jesuit_Cathedral_EU_0"+jesuitVillageType);
+		rmSetGroupingMinDistance(jesuitMonasteryID, 0.00);
+		rmSetGroupingMaxDistance(jesuitMonasteryID, 0.50);
+		rmAddGroupingToClass(jesuitMonasteryID, rmClassID("classBlock"));
+
+		int jesuitVillageType2 = rmRandInt(1, 3);
+		int jesuitMonasteryID2 = rmCreateGrouping("countryMonastery2", "Jesuit_Cathedral_EU_0"+jesuitVillageType2);
+		rmSetGroupingMinDistance(jesuitMonasteryID2, 0.00);
+		rmSetGroupingMaxDistance(jesuitMonasteryID2, 0.50);
+		rmAddGroupingToClass(jesuitMonasteryID2, rmClassID("classBlock"));
+
+		rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.08, mapCenter+rmZTilesToFraction(30), 1);
+		rmPlaceGroupingAtLoc(jesuitMonasteryID2, 0, 0.93, mapCenter+rmZTilesToFraction(30), 1);
+
+	for (j=0; < 8) {   
 
 		 
 
@@ -918,48 +934,44 @@ for (j=0; < 2) {
 		if (j == 2){
 		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
 		rmSetAreaCoherence(wallCliffs, .93);
-		rmSetAreaLocation(wallCliffs, 0.9, mapCenter+rmZTilesToFraction(46));
-		rmAddAreaInfluenceSegment(wallCliffs, 0.78, mapCenter+rmZTilesToFraction(46), 1.0, mapCenter+rmZTilesToFraction(46));
+		rmSetAreaLocation(wallCliffs, 0.9, mapCenter+rmZTilesToFraction(35));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.78, mapCenter+rmZTilesToFraction(35), 1.0, mapCenter+rmZTilesToFraction(35));
 		}
 		if (j == 3){
 		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
 		rmSetAreaCoherence(wallCliffs, .93);
-		rmSetAreaLocation(wallCliffs, 0.1, mapCenter+rmZTilesToFraction(46));
-		rmAddAreaInfluenceSegment(wallCliffs, 0.0, mapCenter+rmZTilesToFraction(46), 0.27, mapCenter+rmZTilesToFraction(46));
+		rmSetAreaLocation(wallCliffs, 0.1, mapCenter+rmZTilesToFraction(35));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.0, mapCenter+rmZTilesToFraction(35), 0.27, mapCenter+rmZTilesToFraction(35));
 		}
 		if (j == 4){
-		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(1200), rmAreaTilesToFraction(1200));
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(1600), rmAreaTilesToFraction(1600));
 		rmSetAreaCoherence(wallCliffs, .8);
 		rmSetAreaLocation(wallCliffs, 0.08, mapCenter+rmZTilesToFraction(27));
-		rmAddAreaInfluenceSegment(wallCliffs, 0.08, mapCenter+rmZTilesToFraction(17), 0.08, mapCenter+rmZTilesToFraction(38));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.08, mapCenter+rmZTilesToFraction(17), 0.08, mapCenter+rmZTilesToFraction(48));
 		}
 		if (j == 5){
-		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(1200), rmAreaTilesToFraction(1200));
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(1600), rmAreaTilesToFraction(1600));
 		rmSetAreaCoherence(wallCliffs, .8);
 		rmSetAreaLocation(wallCliffs, 0.93, mapCenter+rmZTilesToFraction(27));
-		rmAddAreaInfluenceSegment(wallCliffs, 0.93, mapCenter+rmZTilesToFraction(17), 0.93, mapCenter+rmZTilesToFraction(38));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.93, mapCenter+rmZTilesToFraction(17), 0.93, mapCenter+rmZTilesToFraction(48));
+		}
+		if (j == 6){
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaCoherence(wallCliffs, .93);
+		rmSetAreaLocation(wallCliffs, 0.9, mapCenter+rmZTilesToFraction(54));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.78, mapCenter+rmZTilesToFraction(54), 1.0, mapCenter+rmZTilesToFraction(54));
+		}
+		if (j == 7){
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaCoherence(wallCliffs, .93);
+		rmSetAreaLocation(wallCliffs, 0.1, mapCenter+rmZTilesToFraction(54));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.0, mapCenter+rmZTilesToFraction(54), 0.27, mapCenter+rmZTilesToFraction(54));
 		}
 		rmBuildArea(wallCliffs);  
 		
 	}
 
-// Place additional objects
-
-	// Groupings
-	int jesuitVillageType = rmRandInt(1, 3);
-	int jesuitMonasteryID = rmCreateGrouping("countryMonastery1", "Jesuit_Cathedral_EU_0"+jesuitVillageType);
-    rmSetGroupingMinDistance(jesuitMonasteryID, 0.00);
-    rmSetGroupingMaxDistance(jesuitMonasteryID, 0.50);
-	rmAddGroupingToClass(jesuitMonasteryID, rmClassID("classBlock"));
-
-	int jesuitVillageType2 = rmRandInt(1, 3);
-	int jesuitMonasteryID2 = rmCreateGrouping("countryMonastery2", "Jesuit_Cathedral_EU_0"+jesuitVillageType2);
-    rmSetGroupingMinDistance(jesuitMonasteryID2, 0.00);
-    rmSetGroupingMaxDistance(jesuitMonasteryID2, 0.50);
-	rmAddGroupingToClass(jesuitMonasteryID2, rmClassID("classBlock"));
-
-	rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.08, mapCenter+rmZTilesToFraction(30), 1);
-	rmPlaceGroupingAtLoc(jesuitMonasteryID2, 0, 0.93, mapCenter+rmZTilesToFraction(30), 1);
+	// Place additional objects
 
 
 	// Menagerie
