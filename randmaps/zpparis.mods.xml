@@ -248,5 +248,8 @@
 		<unit name="deSPCTowerCapturable">
 			<minimapicon mergeMode="remove">ui\minimap\highlighted item</minimapicon>
 		</unit>
+		<unit name="zpSPCCapturableFlagInvisible">
+			<minimapicon>ui\minimap\military_small</minimapicon>
+		</unit>
 	</protomods>
 </mods>

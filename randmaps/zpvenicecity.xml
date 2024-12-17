@@ -13,7 +13,9 @@
     <recommendedSettings>
         <civilization>French</civilization>
         <civilization>Spanish</civilization>
-        <civilization>British</civilization>
+        <civilization>DEMaltese</civilization>
         <civilization>DEItalians</civilization>
+        <civilization>Ottoman</civilization>
+        <civilization>Germans</civilization>
     </recommendedSettings>
 </mapinfo>
