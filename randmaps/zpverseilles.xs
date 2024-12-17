@@ -902,8 +902,8 @@ rmSetStatusText("",0.70);
     rmSetGroupingMaxDistance(fixedGunL, 0.50);
 	rmAddGroupingToClass(fixedGunL, rmClassID("classBlock"));
 
-	rmPlaceGroupingAtLoc(fixedGunR, 0, 0.805, mapCenter+rmZTilesToFraction(44));
-	rmPlaceGroupingAtLoc(fixedGunL, 0, 0.20, mapCenter+rmZTilesToFraction(44));
+	rmPlaceGroupingAtLoc(fixedGunR, 0, 0.801, mapCenter+rmZTilesToFraction(44));
+	rmPlaceGroupingAtLoc(fixedGunL, 0, 0.205, mapCenter+rmZTilesToFraction(44));
 
 
 	for (j=0; < 12) {   
@@ -1611,7 +1611,7 @@ rmSetStatusText("",0.70);
 	rmSetTriggerEffectParam("SrcObject",""+royalOrangerie);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",firstDefender);
-	rmSetTriggerEffectParam("UnitType","deSPCViennaFixedGun");
+	rmSetTriggerEffectParam("UnitType","zpSPCVerseillesFixedGun");
 	rmSetTriggerEffectParamInt("Dist",200);
 
 

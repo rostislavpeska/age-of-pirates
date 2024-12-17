@@ -45105,13 +45105,12 @@
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>buildings\native_settlement\palaces\venetian_palace.xml</animfile>
-    <civflagoverride>objects\flags\natives\bourbon_french</civflagoverride>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
-    <icon>resources\art\buildings\church\church_icon.png</icon>
-    <portraiticon>resources\art\units\natives\native_orthodox.png</portraiticon>
+    <icon>resources\art\buildings\spc\ossuary\spc_ossuary_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\natives\auditore_royal_house.png</portraiticon>
     <rollovertextid>302099</rollovertextid>
     <shortrollovertextid>302099</shortrollovertextid>
     <initialhitpoints>1500.0000</initialhitpoints>
@@ -45550,6 +45549,199 @@
     <flag>Invulnerable</flag>
     <flag>InvulnerableIfGaia</flag>
     <flag>DontMarkExtraFog</flag>
+  </unit>
+  <unit id="20608" name="zpSPCVerseillesFixedGun">
+    <dbid>20608</dbid>
+    <displaynameid>33598</displaynameid>
+    <editornameid>302147</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <turnrate>1.0000</turnrate>
+    <animfile>buildings\fixed_gun\fixed_gun_pirate.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\buildings\spc\fixed_gun\fixed_gun_icon_64x64.png</icon>
+    <minimapicon>ui\minimap\minimap_cannon</minimapicon>
+    <portraiticon>resources\art\buildings\spc\fixed_gun\fixed_gun_portrait.png</portraiticon>
+    <rollovertextid>33597</rollovertextid>
+    <shortrollovertextid>33596</shortrollovertextid>
+    <initialhitpoints>10000.0000</initialhitpoints>
+    <maxhitpoints>10000.0000</maxhitpoints>
+    <los>50.0000</los>
+    <displayedrange>40.0</displayedrange>
+    <projectileprotounit>MortarShell</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <bounty>300.0000</bounty>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractFort</unittype>
+    <unittype>AbstractFindFort</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
+    <unittype>Military</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>AbstractArtillery</unittype>
+    <flag>VisibleUnderFog</flag>
+    <flag>RotateInPlace</flag>
+    <flag>NotDeleteable</flag>
+    <flag>DontFlattenGround</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>Tracked</flag>
+    <flag>DisplayRange</flag>
+    <flag>CannotAttackIfGaia</flag>
+    <flag>DisplayMinimumRange</flag>
+    <flag>DisplayMaxRangeOnSelection</flag>
+    <flag>DisplayRangeToEnemies</flag>
+    <flag>CannotBeConvertedByEnemies</flag>
+    <notcontain>AbstractFishingBoat</notcontain>
+    <contain>AbstractVillager</contain>
+    <contain>deHomesteadWagon</contain>
+    <command page="11" column="0">Abilities</command>
+    <tactics>maltesefixedgun.tactics</tactics>
+    <protoaction>
+      <name>CannonAttack</name>
+      <damage>150.000000</damage>
+      <damagecap>600.000000</damagecap>
+      <damagearea>5.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagetype>Siege</damagetype>
+      <minrange>14.000000</minrange>
+      <maxrange>34.000000</maxrange>
+      <rof>6.000000</rof>
+      <active>1</active>
+      <projectile>FixedGunBall</projectile>
+      <damagebonus type="AbstractArtillery">0.150000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.450000</damagebonus>
+      <damagebonus type="AbstractSiegeTrooper">0.100000</damagebonus>
+      <damagebonus type="AbstractVillager">0.250000</damagebonus>
+      <damagebonus type="Huntable">0.010000</damagebonus>
+      <damagebonus type="Herdable">0.000000</damagebonus>
+      <damagebonus type="deMalteseGun">5.000000</damagebonus>
+      <damagebonus type="deMercGatlingCamel">6.666667</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>AntiShipAttack</name>
+      <damage>150.000000</damage>
+      <damagecap>600.000000</damagecap>
+      <damagearea>1.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagetype>Siege</damagetype>
+      <minrange>14.000000</minrange>
+      <maxrange>45.000000</maxrange>
+      <rof>6.000000</rof>
+      <active>1</active>
+      <projectile>FixedGunBall</projectile>
+      <attachprotounit>deLongRangeAttackRevealer</attachprotounit>
+      <damagebonus type="LogicalTypeLandMilitary">0.000000</damagebonus>
+      <damagebonus type="LogicalTypeLandEconomy">0.000000</damagebonus>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>LongRangeAttack</name>
+      <active>0</active>
+    </protoaction>
+    <protoaction>
+      <name>GuardianAttack</name>
+      <damage>150.000000</damage>
+      <damagecap>600.000000</damagecap>
+      <damagearea>5.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagetype>Siege</damagetype>
+      <minrange>14.000000</minrange>
+      <maxrange>34.000000</maxrange>
+      <rof>6.000000</rof>
+      <active>1</active>
+      <projectile>FixedGunBall</projectile>
+      <damagebonus type="AbstractArtillery">0.150000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.450000</damagebonus>
+      <damagebonus type="AbstractSiegeTrooper">0.100000</damagebonus>
+      <damagebonus type="AbstractVillager">0.250000</damagebonus>
+      <damagebonus type="Huntable">0.010000</damagebonus>
+      <damagebonus type="Herdable">0.000000</damagebonus>
+      <damagebonus type="deMalteseGun">5.000000</damagebonus>
+      <damagebonus type="deMercGatlingCamel">6.666667</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20609" name="zpSocketSPCBourbon">
+    <dbid>20609</dbid>
+    <displaynameid>302148</displaynameid>
+    <editornameid>302149</editornameid>
+    <subciv>SPCBourbon</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.0286</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildEuropean</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\europe_outpost_socket.xml</animfile>
+    <minimapicon>ui\minimap\royal_house</minimapicon>
+    <capturedminimapicon>ui\minimap\royal_house_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\auditore_royal_house.png</portraiticon>
+    <rollovertextid>302150</rollovertextid>
+    <shortrollovertextid>61104</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>9.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>FlattenGround</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
   </unit>
 
 
