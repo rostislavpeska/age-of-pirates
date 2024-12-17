@@ -293,7 +293,7 @@ void main(void)
 	int avoidWall=rmCreateTypeDistanceConstraint("avoid wall object", "AbstractWall", 0.001);
 	int avoidWallMedium=rmCreateTypeDistanceConstraint("avoid wall object medium", "AbstractWall", 2.0);
 	int avoidWallLong=rmCreateTypeDistanceConstraint("avoid wall object long", "AbstractWall", 10.0);
-	int avoidFence=rmCreateTypeDistanceConstraint("avoid palace fence", "SPCPathBlock3", 1.00);
+	int avoidFence=rmCreateTypeDistanceConstraint("avoid palace fence", "zpHarbourPathBlock3", 1.00);
 
 	int avoidBlock =rmCreateClassDistanceConstraint("stuff vs. blocks", rmClassID("classBlock"), 1.0);
 	int avoidBlockLong =rmCreateClassDistanceConstraint("stuff vs. blocks long", rmClassID("classBlock"), 10.0);
@@ -723,9 +723,6 @@ void main(void)
 
 	rmSetStatusText("",0.60);
 
-// Placement Variables
-int jesuitMaltese = rmRandInt(1, 2);
-
 //===================place the stuff=========================
 
 // Fixed stuff first
@@ -750,10 +747,8 @@ int jesuitMaltese = rmRandInt(1, 2);
 	// City Center
 
 		rmPlaceGroupingAtLoc(blockMarket, 0, locX2, locZ1);
-		rmPlaceGroupingAtLoc(blockMarket, 0, locX4, locZ1);
 
 		rmPlaceGroupingAtLoc(blockBank, 0, locX1, locZ2);
-		rmPlaceGroupingAtLoc(blockBank, 0, locX5, locZ2);
 
 		rmPlaceGroupingAtLoc(blockJewish, 0, locX8, locZ2);
 
@@ -775,7 +770,6 @@ int jesuitMaltese = rmRandInt(1, 2);
 
 		rmSetNuggetDifficulty(299, 299);
 		int factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX2, locZ2, 0);
-		int factoryPlacement2 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX8, locZ1, 0);
 
 	// Suburb
 
@@ -887,15 +881,29 @@ rmSetStatusText("",0.70);
 
 	// Tower Nuggets
 
-	int nuggetTower= rmCreateObjectDef("nugget tower"); 
+	/*int nuggetTower= rmCreateObjectDef("nugget tower"); 
 	rmAddObjectDefItem(nuggetTower, "Nugget", 1, 0.0);
 	rmSetNuggetDifficulty(295, 295);
 	rmSetObjectDefMinDistance(nuggetTower, 0.0);
 	rmSetObjectDefMaxDistance(nuggetTower, 0.5);
-	rmPlaceObjectDefAtLoc(nuggetTower, 0, 0.19, mapCenter+rmZTilesToFraction(21));
-	rmPlaceObjectDefAtLoc(nuggetTower, 0, 0.81, mapCenter+rmZTilesToFraction(21));
-	rmPlaceObjectDefAtLoc(nuggetTower, 0, 0.19, mapCenter+rmZTilesToFraction(44));
-	rmPlaceObjectDefAtLoc(nuggetTower, 0, 0.81, mapCenter+rmZTilesToFraction(44));
+	rmPlaceObjectDefAtLoc(nuggetTower, 0, 0.21, mapCenter+rmZTilesToFraction(21));
+	rmPlaceObjectDefAtLoc(nuggetTower, 0, 0.80, mapCenter+rmZTilesToFraction(21));
+	rmPlaceObjectDefAtLoc(nuggetTower, 0, 0.21, mapCenter+rmZTilesToFraction(44));
+	rmPlaceObjectDefAtLoc(nuggetTower, 0, 0.80, mapCenter+rmZTilesToFraction(44));*/
+
+
+	int fixedGunR = rmCreateGrouping("fixed gun right", "Verseilles_Fixed_Gun_R");
+    rmSetGroupingMinDistance(fixedGunR, 0.00);
+    rmSetGroupingMaxDistance(fixedGunR, 0.50);
+	rmAddGroupingToClass(fixedGunR, rmClassID("classBlock"));
+
+	int fixedGunL = rmCreateGrouping("fixed gun left", "Verseilles_Fixed_Gun_L");
+    rmSetGroupingMinDistance(fixedGunL, 0.00);
+    rmSetGroupingMaxDistance(fixedGunL, 0.50);
+	rmAddGroupingToClass(fixedGunL, rmClassID("classBlock"));
+
+	rmPlaceGroupingAtLoc(fixedGunR, 0, 0.805, mapCenter+rmZTilesToFraction(44));
+	rmPlaceGroupingAtLoc(fixedGunL, 0, 0.20, mapCenter+rmZTilesToFraction(44));
 
 
 	for (j=0; < 12) {   
@@ -965,22 +973,22 @@ rmSetStatusText("",0.70);
 		if (j == 8){
 		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
 		rmSetAreaCoherence(wallCliffs, .93);
-		rmSetAreaLocation(wallCliffs, 0.17, mapCenter+rmZTilesToFraction(21));
+		rmSetAreaLocation(wallCliffs, 0.19, mapCenter+rmZTilesToFraction(21));
 		}
 		if (j == 9){
 		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
 		rmSetAreaCoherence(wallCliffs, .93);
-		rmSetAreaLocation(wallCliffs, 0.83, mapCenter+rmZTilesToFraction(21));
+		rmSetAreaLocation(wallCliffs, 0.82, mapCenter+rmZTilesToFraction(21));
 		}
 		if (j == 10){
 		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
 		rmSetAreaCoherence(wallCliffs, .93);
-		rmSetAreaLocation(wallCliffs, 0.17, mapCenter+rmZTilesToFraction(44));
+		rmSetAreaLocation(wallCliffs, 0.19, mapCenter+rmZTilesToFraction(44));
 		}
 		if (j == 11){
 		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
 		rmSetAreaCoherence(wallCliffs, .93);
-		rmSetAreaLocation(wallCliffs, 0.83, mapCenter+rmZTilesToFraction(44));
+		rmSetAreaLocation(wallCliffs, 0.82, mapCenter+rmZTilesToFraction(44));
 		}
 		rmBuildArea(wallCliffs);  
 		
@@ -1001,9 +1009,21 @@ rmSetStatusText("",0.70);
 	rmSetGroupingMaxDistance(jesuitMonasteryID2, 0.50);
 	rmAddGroupingToClass(jesuitMonasteryID2, rmClassID("classBlock"));
 
-	rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.08, mapCenter+rmZTilesToFraction(30), 1);
-	rmPlaceGroupingAtLoc(jesuitMonasteryID2, 0, 0.93, mapCenter+rmZTilesToFraction(30), 1);
+	rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.08, mapCenter+rmZTilesToFraction(24), 1);
+	rmPlaceGroupingAtLoc(jesuitMonasteryID2, 0, 0.93, mapCenter+rmZTilesToFraction(24), 1);
 
+	rmPlaceGroupingAtLoc(blockMill, 0, 0.08, mapCenter+rmZTilesToFraction(50), 1);
+	rmPlaceGroupingAtLoc(blockMill, 0, 0.93, mapCenter+rmZTilesToFraction(50), 1);
+
+
+	// Forester
+	int foresterID = rmCreateObjectDef("random forester");
+	rmAddObjectDefItem(foresterID, "zpSPCForester", 1, 0);
+	rmAddObjectDefConstraint(foresterID, avoidBlockLong);
+	rmAddObjectDefConstraint(foresterID, avoidAll);
+	rmAddObjectDefConstraint(foresterID, playerEdgeConstraint);
+	rmPlaceObjectDefInArea(foresterID, 0, rmAreaID("wallCliffs4"), 1);
+	rmPlaceObjectDefInArea(foresterID, 0, rmAreaID("wallCliffs5"), 1);
 
 	// Place additional objects
 
@@ -1243,6 +1263,7 @@ rmSetStatusText("",0.70);
 	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
 	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
 	rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.65);
+	rmSetNuggetDifficulty(1, 1);
     
     for(i=1; <= cNumberNonGaiaPlayers) {
 		if (rmGetPlayerTeam(i) == 1) {
@@ -1364,15 +1385,6 @@ rmSetStatusText("",0.70);
 		rmAddGroupingConstraint(cemetary, avoidStreetZero);
 		rmPlaceGroupingInArea(cemetary, 0, countrysideSouth, 1);
 	}
-
-	// Forester
-	/*int foresterID = rmCreateObjectDef("random forester");
-	rmAddObjectDefItem(foresterID, "zpSPCForester", 1, 0);
-	rmAddObjectDefConstraint(foresterID, avoidBlockMedium);
-	rmAddObjectDefConstraint(foresterID, playerEdgeConstraint);
-	rmAddObjectDefConstraint(foresterID, avoidForester);
-	rmAddObjectDefConstraint(foresterID, avoidStreetZero);
-	rmPlaceObjectDefInArea(foresterID, 0, countrysideSouth, 2);*/
 
 	// Random Houses
 	int randomHouseID = rmCreateObjectDef("random house");
@@ -1504,6 +1516,7 @@ rmSetStatusText("",0.70);
 	rmAddObjectDefConstraint(nuggetHard, shortAvoidImpassableLand);
 	rmAddObjectDefConstraint(nuggetHard, avoidAll);
     rmAddObjectDefConstraint(nuggetHard, avoidPark);
+	rmAddObjectDefConstraint(nuggetHard, avoidNugget);
 	rmAddObjectDefConstraint(nuggetHard, avoidTownCenterFar);
 	rmAddObjectDefConstraint(nuggetHard, avoidBlockMedium);
 	rmAddObjectDefConstraint(nuggetHard, playerEdgeConstraint);
@@ -1560,8 +1573,6 @@ rmSetStatusText("",0.70);
 	int factoryBuilding1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "zpSPCCapturableFactory");
 	int factoryNugget1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "zpNuggetInvisible");
 
-	int factoryBuilding2 = rmGetGroupingInstanceUnitByType(factoryPlacement2, "zpSPCCapturableFactory");
-	int factoryNugget2 = rmGetGroupingInstanceUnitByType(factoryPlacement2, "zpNuggetInvisible");
 
 	// Victory Timer
 	int victoryCountDown = 1800;
@@ -1596,6 +1607,14 @@ rmSetStatusText("",0.70);
 	rmSetTriggerEffectParamInt("TrgPlayer",firstDefender);
 	rmSetTriggerEffectParam("UnitType","DESPCEuroTower");
 	rmSetTriggerEffectParamInt("Dist",200);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+royalOrangerie);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",firstDefender);
+	rmSetTriggerEffectParam("UnitType","deSPCViennaFixedGun");
+	rmSetTriggerEffectParamInt("Dist",200);
+
+
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject",""+royalOrangerie);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
@@ -1699,10 +1718,6 @@ rmSetStatusText("",0.70);
 	rmSetTriggerEffectParam("SrcObject",""+factoryBuilding1);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
 	rmSetTriggerEffectParam("Suspend", "True");
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject",""+factoryBuilding2);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -1725,18 +1740,6 @@ rmSetStatusText("",0.70);
     rmSetTriggerConditionParam("NuggetObject", ""+factoryNugget1);
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", ""+factoryBuilding1, false);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-	rmSetTriggerEffectParam("Suspend", "False", false);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmCreateTrigger("Factory 2 Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-    rmSetTriggerConditionParam("NuggetObject", ""+factoryNugget2);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", ""+factoryBuilding2, false);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
 	rmSetTriggerEffectParam("Suspend", "False", false);
 	rmSetTriggerPriority(4);
