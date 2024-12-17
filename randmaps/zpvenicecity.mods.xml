@@ -174,22 +174,29 @@
         <unit name="zpTradingPostCaptureNaval">
 			<tactics mergeMode="remove">yptradingpostcapture.tactics</tactics>
 			<minimapicon mergeMode="remove">ui\minimap\t</minimapicon>
-			<minimapicon>ui\minimap\indicator_small</minimapicon>
-			<flag>ColorTransformNonGaia</flag>
+			<minimapicon>ui\minimap\traderoute_small</minimapicon>
 		</unit>
 		<unit name="deSPCCityTower">
 			<movementtype>air</movementtype>
+			<flag mergeMode="remove">ColorTransformNonGaia</flag>
+		</unit>
+		<unit name="deSPCSocketCityTower">
+			<flag mergeMode="remove">ColorTransformNonGaia</flag>
 		</unit>
         <unit name="zpJesuitCathedral">
+			<minimapicon>ui\minimap\military_small</minimapicon>
             <flag mergeMode="remove">DoNotShowOnMiniMap</flag>
         </unit>
         <unit name="zpSPCCathedral">
+			<minimapicon>ui\minimap\military_small</minimapicon>
             <flag mergeMode="remove">DoNotShowOnMiniMap</flag>
         </unit>
         <unit name="zpCathedralOrthodox">
+			<minimapicon>ui\minimap\military_small</minimapicon>
             <flag mergeMode="remove">DoNotShowOnMiniMap</flag>
         </unit>
         <unit name="zpPalazoAuditore">
+			<minimapicon>ui\minimap\military_small</minimapicon>
             <flag mergeMode="remove">DoNotShowOnMiniMap</flag>
         </unit>
 		<unit name="deSPCCityGuard">
@@ -204,6 +211,9 @@
 				<damagebonus type="AbstractVillager">0.250000</damagebonus>
 				<damagebonus type="Ship">4.000000</damagebonus>
 			</protoaction>
+		</unit>
+		<unit name="deSPCGreatBank">
+			<minimapicon>ui\minimap\city_resource</minimapicon>
 		</unit>
 	</protomods>
 </mods>

@@ -2261,7 +2261,6 @@
     <flag>RMCanRotate</flag>
     <flag>HasGatherPoint</flag>
     <flag>VisibleUnderFogIfGaia</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
@@ -14009,7 +14008,6 @@
     <flag>RMCanRotate</flag>
     <flag>HasGatherPoint</flag>
     <flag>VisibleUnderFogIfGaia</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
@@ -35784,7 +35782,7 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\basilica\basilica_icon.png</icon>
-    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
+    <minimapicon>ui\minimap\religious_small</minimapicon>
     <portraiticon>resources\art\buildings\spc\notre_dame.png</portraiticon>
     <rollovertextid>123017</rollovertextid>
     <shortrollovertextid>123016</shortrollovertextid>
@@ -35915,7 +35913,6 @@
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
     <flag>NotDeleteable</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
     <flag>VisibleUnderFog</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
@@ -35943,7 +35940,7 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\factory\shared_factory_icon.png</icon>
-    <!--<minimapicon>ui\minimap\minimap_cog</minimapicon>-->
+    <minimapicon>ui\minimap\city_resource</minimapicon>
     <portraiticon>resources\art\buildings\factory\shared_factory_portrait.png</portraiticon>
     <rollovertextid>301886</rollovertextid>
     <shortrollovertextid>301887</shortrollovertextid>
@@ -36003,7 +36000,6 @@
     <flag>NotDeleteable</flag>
     <flag>Invulnerable</flag>
     <flag>BuildingShowTactics</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
     <flag>CannotBeConvertedByAllies</flag>
     <command page="10" column="7">Delete</command>
@@ -36056,7 +36052,7 @@
     <placementfile>villagebuildingsmall.xml</placementfile>
     <icon>resources\art\buildings\market\market_icon.png</icon>
     <portraiticon>resources\art\buildings\market\market_portrait.png</portraiticon>
-    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
+    <minimapicon>ui\minimap\city_resource</minimapicon>
     <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
     <rollovertextid>301886</rollovertextid>
     <shortrollovertextid>301887</shortrollovertextid>
@@ -36114,7 +36110,6 @@
     <flag>EnterHotkeyContext</flag>
     <flag>NotDeleteable</flag>
     <flag>Invulnerable</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
     <tactics>parismarket.tactics</tactics>
     <protoaction>
@@ -36150,7 +36145,7 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\bank\bank_icon.png</icon>
     <portraiticon>resources\art\buildings\bank\bank_portrait.png</portraiticon>
-    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
+    <minimapicon>ui\minimap\city_resource</minimapicon>
     <rollovertextid>302038</rollovertextid>
     <shortrollovertextid>301881</shortrollovertextid>
     <initialhitpoints>3000.0000</initialhitpoints>
@@ -36276,7 +36271,6 @@
     <flag>EnterHotkeyContext</flag>
     <flag>NotDeleteable</flag>
     <flag>Invulnerable</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
@@ -36298,7 +36292,7 @@
     <animfile>buildings\mill\mill_gaia.xml</animfile>
     <physicsinfo>mill</physicsinfo>
     <icon>resources\art\buildings\mill\mill_icon.png</icon>
-    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
+    <minimapicon>ui\minimap\city_resource</minimapicon>
     <portraiticon>resources\art\buildings\mill\mill_portrait.png</portraiticon>
     <civflagoverride>objects\flags\none</civflagoverride>
     <rollovertextid>301891</rollovertextid>
@@ -36337,7 +36331,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
-    <flag>ColorTransformNonGaia</flag>
     <flag>UnlimitedSupply</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -36378,7 +36371,7 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\spc\gold_smelter.png</icon>
     <portraiticon>resources\art\buildings\spc\gold_smelter.png</portraiticon>
-    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
+    <minimapicon>ui\minimap\city_resource</minimapicon>
     <rollovertextid>301884</rollovertextid>
     <shortrollovertextid>301881</shortrollovertextid>
     <initialhitpoints>2000.0000</initialhitpoints>
@@ -36435,7 +36428,6 @@
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
     <flag>NotDeleteable</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
     <flag>VisibleUnderFog</flag>
     <command page="10" column="3">SetGatherPointEconomy</command>
@@ -36463,7 +36455,7 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\spc\destilery.png</icon>
     <portraiticon>resources\art\buildings\spc\destilery.png</portraiticon>
-    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
+    <minimapicon>ui\minimap\city_resource</minimapicon>
     <rollovertextid>301883</rollovertextid>
     <shortrollovertextid>301880</shortrollovertextid>
     <initialhitpoints>2000.0000</initialhitpoints>
@@ -36520,7 +36512,6 @@
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
     <flag>NotDeleteable</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
     <flag>VisibleUnderFog</flag>
     <command page="10" column="3">SetGatherPointEconomy</command>
@@ -36548,7 +36539,7 @@
     <placementfile>buildingsmall.xml</placementfile>
     <icon>resources\art\buildings\spc\forester.png</icon>
     <portraiticon>resources\art\buildings\spc\forester.png</portraiticon>
-    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
+    <minimapicon>ui\minimap\city_resource</minimapicon>
     <rollovertextid>301882</rollovertextid>
     <shortrollovertextid>301879</shortrollovertextid>
     <initialhitpoints>2000.0000</initialhitpoints>
@@ -36604,7 +36595,6 @@
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
     <flag>NotDeleteable</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
     <flag>VisibleUnderFog</flag>
     <command page="10" column="3">SetGatherPointEconomy</command>
@@ -36633,7 +36623,7 @@
     <placementfile>buildingsmall.xml</placementfile>
     <icon>resources\art\buildings\spc\spc_warehouse.png</icon>
     <portraiticon>resources\art\buildings\spc\spc_warehouse.png</portraiticon>
-    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
+    <minimapicon>ui\minimap\city_resource</minimapicon>
     <rollovertextid>301882</rollovertextid>
     <shortrollovertextid>301879</shortrollovertextid>
     <initialhitpoints>2000.0000</initialhitpoints>
@@ -36689,7 +36679,6 @@
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
     <flag>NotDeleteable</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
     <flag>VisibleUnderFog</flag>
     <command page="10" column="3">SetGatherPointEconomy</command>
@@ -36716,7 +36705,7 @@
     <physicsinfo>barracks</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\spc\menagerie.png</icon>
-    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
+    <minimapicon>ui\minimap\city_resource</minimapicon>
     <portraiticon>resources\art\buildings\spc\menagerie.png</portraiticon>
     <rollovertextid>301889</rollovertextid>
     <shortrollovertextid>301888</shortrollovertextid>
@@ -36777,7 +36766,6 @@
     <flag>EnterHotkeyContext</flag>
     <flag>UnlimitedSupply</flag>
     <flag>Tracked</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
     <flag>Invulnerable</flag>
     <flag>VisibleUnderFog</flag>
@@ -43016,7 +43004,7 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\basilica\basilica_icon.png</icon>
-    <!--<minimapicon>ui\minimap\highlighted item</minimapicon>-->
+    <minimapicon>ui\minimap\religious_small</minimapicon>
     <portraiticon>resources\art\buildings\spc\imperial_cathedral.png</portraiticon>
     <rollovertextid>123017</rollovertextid>
     <shortrollovertextid>123016</shortrollovertextid>
@@ -43481,6 +43469,7 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\basilica\basilica_icon.png</icon>
     <portraiticon>resources\art\buildings\basilica\basilica_portrait.png</portraiticon>
+    <minimapicon>ui\minimap\religious_small</minimapicon>
     <rollovertextid>123017</rollovertextid>
     <shortrollovertextid>123016</shortrollovertextid>
     <initialhitpoints>5000.0000</initialhitpoints>
@@ -43544,7 +43533,6 @@
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
     <flag>NotDeleteable</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
@@ -43572,6 +43560,7 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\basilica\basilica_icon.png</icon>
     <portraiticon>resources\art\buildings\basilica\basilica_portrait.png</portraiticon>
+    <minimapicon>ui\minimap\religious_small</minimapicon>
     <rollovertextid>123017</rollovertextid>
     <shortrollovertextid>123016</shortrollovertextid>
     <initialhitpoints>5000.0000</initialhitpoints>
@@ -43635,7 +43624,6 @@
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
     <flag>NotDeleteable</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
@@ -43922,6 +43910,7 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\factory\shared_factory_icon.png</icon>
     <portraiticon>resources\art\buildings\factory\shared_factory_portrait.png</portraiticon>
+    <minimapicon>ui\minimap\city_resource</minimapicon>
     <rollovertextid>301886</rollovertextid>
     <shortrollovertextid>301887</shortrollovertextid>
     <legacyhotkeycontext>FactoryAccel</legacyhotkeycontext>
@@ -43980,7 +43969,6 @@
     <flag>NotDeleteable</flag>
     <flag>Invulnerable</flag>
     <flag>BuildingShowTactics</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
     <command page="10" column="7">Delete</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
@@ -44618,7 +44606,6 @@
     <flag>NonAutoFormedUnit</flag>
     <flag>Doppled</flag>
     <flag>Invulnerable</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>SelectWithObstruction</flag>
     <flag>Tracked</flag>
     <flag>AllowSocketPlacement</flag>
@@ -44798,7 +44785,6 @@
     <flag>RMCanRotate</flag>
     <flag>HasGatherPoint</flag>
     <flag>VisibleUnderFogIfGaia</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
@@ -45181,7 +45167,6 @@
     <flag>RMCanRotate</flag>
     <flag>HasGatherPoint</flag>
     <flag>VisibleUnderFogIfGaia</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
@@ -45946,7 +45931,6 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>PlaceAnywhere</flag>   
   </unit>
-
   <unit id="" name="zpWokouDiver">
     <dbid></dbid>
     <displaynameid>301699</displaynameid>
