@@ -5337,6 +5337,20 @@
       </effect>
       <effect mergeMode='add' type="SetName" proto="zpSPCFixedGun" culture="none" newname="302105">
       </effect>
+      <effect mergeMode='add' type="Data" action="CannonAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVerseillesFixedGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" action="AntiShipAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCFixedGunzpSPCVerseillesFixedGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" action="GuardianAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVerseillesFixedGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCVerseillesFixedGun</target>
+      </effect>
+      <effect mergeMode='add' type="SetName" proto="zpSPCVerseillesFixedGun" culture="none" newname="302105">
+      </effect>
     </effects>
   </tech>
   <tech name="DEImperialFixedGun">
@@ -5368,6 +5382,20 @@
         <target type="ProtoUnit">zpSPCFixedGun</target>
       </effect>
       <effect mergeMode='add' type="SetName" proto="zpSPCFixedGun" culture="none" newname="302106">
+      </effect>
+      <effect mergeMode='add' type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCVerseillesFixedGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCVerseillesFixedGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" action="CannonAttack" amount="1.00" subtype="DamageArea" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVerseillesFixedGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" action="GuardianAttack" amount="1.00" subtype="DamageArea" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVerseillesFixedGun</target>
+      </effect>
+      <effect mergeMode='add' type="SetName" proto="zpSPCVerseillesFixedGun" culture="none" newname="302106">
       </effect>
     </effects>
   </tech>

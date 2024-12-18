@@ -45601,6 +45601,8 @@
     <unittype>Military</unittype>
     <unittype>BuildingClass</unittype>
     <unittype>AbstractArtillery</unittype>
+    <tech row="0" page="20" column="0">DEHeavyFixedGun</tech>
+    <tech row="0" page="20" column="0">DEImperialFixedGun</tech>
     <flag>VisibleUnderFog</flag>
     <flag>RotateInPlace</flag>
     <flag>NotDeleteable</flag>
@@ -45924,6 +45926,30 @@
     <flag>RMCanRotate</flag>
     <flag>NonCollideable</flag>
   </unit>
+  <unit name="Sheep">
+    <protoaction>
+      <name>Gather</name>
+      <rate type="LivestockPen">0.500000</rate>
+      <rate type="Farm">0.500000</rate>
+      <rate type="ypVillage">0.500000</rate>
+      <rate type="YPLivestockPenAsian">0.500000</rate>
+      <rate type="deLivestockMarket">0.250000</rate>
+      <rate type="zpLivestockPenClone">0.500000</rate>
+      <rate type="zpSPCTownMill">0.250000</rate>
+    </protoaction>
+  </unit>
+  <unit name="ypGoat">
+    <protoaction>
+      <name>Gather</name>
+      <rate type="LivestockPen">0.500000</rate>
+      <rate type="Farm">0.500000</rate>
+      <rate type="ypVillage">0.500000</rate>
+      <rate type="YPLivestockPenAsian">0.500000</rate>
+      <rate type="deLivestockMarket">0.250000</rate>
+      <rate type="zpLivestockPenClone">0.500000</rate>
+      <rate type="zpSPCTownMill">0.250000</rate>
+    </protoaction>
+  </unit>
 
 
 
@@ -46240,19 +46266,6 @@
     <flag>DontFlattenGround</flag>
     <flag>Tracked</flag>
     <command page="10" column="7">Delete</command>
-  </unit>
-  <unit name="Sheep">
-    <protoaction>
-      <name>Gather</name>
-      <rate type="LivestockPen">0.500000</rate>
-      <rate type="Farm">0.500000</rate>
-      <rate type="ypVillage">0.500000</rate>
-      <rate type="YPLivestockPenAsian">0.500000</rate>
-      <rate type="deLivestockMarket">0.250000</rate>
-      <rate type="zpLivestockPenClone">0.500000</rate>
-      <rate type="zpSPCTownMill">0.250000</rate>
-      <!--<rate type="zpSPCCityMarket">0.250000</rate>-->
-    </protoaction>
   </unit>
 
   
