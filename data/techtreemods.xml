@@ -19509,6 +19509,8 @@
       <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
       <effect type="TechStatus" status="obtainable">zpSPCVenetianFleet</effect>
+      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
+      <effect type="TechStatus" status="obtainable">zpMonarchChurchAliance</effect>
       <effect type="CommandRemove" command="FourOfAKind">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -19584,6 +19586,33 @@
       </effect>
       <effect type="CommandAdd" proto="zpVeniceGalley" page="0" column="10">
         <target type="ProtoUnit">YPDockAsian</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpMonarchChurchAliance" type="Normal">
+    <dbid>40330</dbid>
+    <displaynameid>302153</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\monarch_church_aliance.png</icon>
+    <rollovertextid>302154</rollovertextid>
+    <flag>TeamTech</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="0.75" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractInfantry</target>
+      </effect>
+      <effect type="Data" amount="0.75" subtype="Cost" resource="Food" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractInfantry</target>
+      </effect>
+      <effect type="Data" amount="0.75" subtype="Cost" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractInfantry</target>
+      </effect>
+      <effect type="Data" amount="0.75" subtype="Cost" resource="Influence" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractInfantry</target>
       </effect>
     </effects>
   </tech>

@@ -903,7 +903,7 @@ rmSetStatusText("",0.70);
 	rmAddGroupingToClass(fixedGunL, rmClassID("classBlock"));
 
 	rmPlaceGroupingAtLoc(fixedGunR, 0, 0.801, mapCenter+rmZTilesToFraction(44));
-	rmPlaceGroupingAtLoc(fixedGunL, 0, 0.205, mapCenter+rmZTilesToFraction(44));
+	rmPlaceGroupingAtLoc(fixedGunL, 0, 0.225, mapCenter+rmZTilesToFraction(44));
 
 
 	for (j=0; < 12) {   
@@ -949,7 +949,7 @@ rmSetStatusText("",0.70);
 		if (j == 4){
 		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(1600), rmAreaTilesToFraction(1600));
 		rmSetAreaCoherence(wallCliffs, .8);
-		rmSetAreaLocation(wallCliffs, 0.08, mapCenter+rmZTilesToFraction(27));
+		rmSetAreaLocation(wallCliffs, 0.09, mapCenter+rmZTilesToFraction(27));
 		rmAddAreaInfluenceSegment(wallCliffs, 0.08, mapCenter+rmZTilesToFraction(17), 0.08, mapCenter+rmZTilesToFraction(48));
 		}
 		if (j == 5){
@@ -971,21 +971,11 @@ rmSetStatusText("",0.70);
 		rmAddAreaInfluenceSegment(wallCliffs, 0.0, mapCenter+rmZTilesToFraction(54), 0.27, mapCenter+rmZTilesToFraction(54));
 		}
 		if (j == 8){
-		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(220), rmAreaTilesToFraction(220));
 		rmSetAreaCoherence(wallCliffs, .93);
-		rmSetAreaLocation(wallCliffs, 0.19, mapCenter+rmZTilesToFraction(21));
+		rmSetAreaLocation(wallCliffs, 0.195, mapCenter+rmZTilesToFraction(44));
 		}
 		if (j == 9){
-		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
-		rmSetAreaCoherence(wallCliffs, .93);
-		rmSetAreaLocation(wallCliffs, 0.82, mapCenter+rmZTilesToFraction(21));
-		}
-		if (j == 10){
-		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
-		rmSetAreaCoherence(wallCliffs, .93);
-		rmSetAreaLocation(wallCliffs, 0.19, mapCenter+rmZTilesToFraction(44));
-		}
-		if (j == 11){
 		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
 		rmSetAreaCoherence(wallCliffs, .93);
 		rmSetAreaLocation(wallCliffs, 0.82, mapCenter+rmZTilesToFraction(44));
@@ -1542,14 +1532,13 @@ rmSetStatusText("",0.70);
 	//********************* GENERAL SETUP *************************
 
 	// ____________________ LOCAL MERCENARIES ____________________
-    rmDisableDefaultMercs(true);
+     rmDisableDefaultMercs(true);
     rmDisableCivTypeMercRestriction(true);
-    rmEnableMerc("MercSwissPikeman", -1);
-    rmEnableMerc("MercLandsknecht", -1);
-    rmEnableMerc("MercElmeti", -1);
-    rmEnableMerc("MercGreatCannon", -1);
-    rmEnableMerc("deMercCannoneer", -1);
-    rmEnableMerc("deMercPistoleer", -1);
+	rmEnableMerc("deSaloonInquisitor", -1);
+	rmEnableMerc("deMercPistoleer", -1);
+	rmEnableMerc("deMercMountedRifleman", -1);
+    rmEnableMerc("deMercNapoleonGun", -1);
+    rmEnableMerc("demercZouave", -1);
     
     rmForbidTradeMonopoly(true);
 
