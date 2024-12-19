@@ -19591,7 +19591,7 @@
     </effects>
   </tech>
   <tech name="zpMonarchChurchAliance" type="Normal">
-    <dbid>40330</dbid>
+    <dbid>40840</dbid>
     <displaynameid>302153</displaynameid>
     <cost resourcetype="Food">200.0000</cost>
     <cost resourcetype="Wood">200.0000</cost>
@@ -19622,7 +19622,7 @@
     </effects>
   </tech>
   <tech name="zpParisGaiaSetup" type="Normal">
-    <dbid>40331</dbid>
+    <dbid>40841</dbid>
     <flag>Shadow</flag>
     <effects>
       <effect type="Data" amount="0.50" subtype="Hitpoints" relativity="BasePercent">
