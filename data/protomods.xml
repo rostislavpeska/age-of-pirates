@@ -45565,15 +45565,15 @@
     <portraiticon>resources\art\buildings\spc\fixed_gun\fixed_gun_portrait.png</portraiticon>
     <rollovertextid>33597</rollovertextid>
     <shortrollovertextid>33596</shortrollovertextid>
-    <initialhitpoints>5000.0000</initialhitpoints>
-    <maxhitpoints>5000.0000</maxhitpoints>
+    <initialhitpoints>7500.0000</initialhitpoints>
+    <maxhitpoints>7500.0000</maxhitpoints>
     <los>50.0000</los>
     <displayedrange>40.0</displayedrange>
     <projectileprotounit>MortarShell</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <bounty>300.0000</bounty>
     <buildingworkrate>1.0000</buildingworkrate>
-    <unitregen damagetimeout="6.0">0.0000</unitregen>
+    <unitregen damagetimeout="6.0">0.2500</unitregen>
     <armor type="Siege" value="0.0000">
     </armor>
     <unittype>LogicalTypeValidSabotage</unittype>
@@ -45601,8 +45601,6 @@
     <unittype>Military</unittype>
     <unittype>BuildingClass</unittype>
     <unittype>AbstractArtillery</unittype>
-    <tech row="0" page="20" column="0">DEHeavyFixedGun</tech>
-    <tech row="0" page="20" column="0">DEImperialFixedGun</tech>
     <flag>VisibleUnderFog</flag>
     <flag>RotateInPlace</flag>
     <flag>NotDeleteable</flag>
@@ -45872,7 +45870,7 @@
     <train row="0" page="0" column="0">MercElmeti</train>
     <train row="0" page="0" column="1">MercSwissPikeman</train>
     <train row="0" page="0" column="2">deMercPistoleer</train>
-    <tech row="0" page="11" column="3">DESPCPapalLegate</tech>
+    <tech row="0" page="11" column="1">DESPCPapalLegate</tech>
     <tech row="0" page="11" column="2">zpMonarchChurchAliance</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -45967,6 +45965,7 @@
 
 
 
+
 <!--BELONGS TO MAPMODS VENICE--> 
   <!--<unit name="zpMalteseGun">
     <deadreplacement>zpSPCFixedGunSocket</deadreplacement>
@@ -45974,6 +45973,11 @@
     <socketunittype>TowerSocket</socketunittype>
     <flag>StartEnabled</flag>
   </unit>-->
+
+  <unit name="deSPCEuroTower">
+    <flag>InvulnerableIfGaia</flag>
+    <flag>CannotAttackIfGaia</flag>
+  </unit>
 
 
   <!--<unit name="SPCFortGate">

@@ -195,8 +195,8 @@ void main(void)
 	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 18.0);
 	int forestConstraintShort=rmCreateClassDistanceConstraint("forest vs. forest short", rmClassID("classForest"), 5.0);
 	int avoidResource=rmCreateTypeDistanceConstraint("resource avoid resource", "resource", 20.0);
-	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "MineTin", 30.0);
-	int avoidSilver=rmCreateTypeDistanceConstraint("avoid silver", "Mine", 30.0);
+	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "SPCMine", 40.0);
+	int avoidSilver=rmCreateTypeDistanceConstraint("avoid silver", "Mine", 40.0);
 	int shortAvoidCoin=rmCreateTypeDistanceConstraint("short avoid coin", "gold", 10.0);
 	int avoidStartResource=rmCreateTypeDistanceConstraint("start resource no overlap", "resource", 10.0);
     int avoidMountains=rmCreateClassDistanceConstraint("stuff avoids mountains", classMountains, 20.0);
@@ -870,10 +870,10 @@ rmSetStatusText("",0.70);
 		rmSetAreaSmoothDistance(smallPatchRamp, 7);
 		rmSetAreaBaseHeight(smallPatchRamp, 6.0);
 		if (j == 0){
-		rmSetAreaLocation(smallPatchRamp, 0.08, mapCenter+rmZTilesToFraction(55));
+		rmSetAreaLocation(smallPatchRamp, 0.08, mapCenter+rmZTilesToFraction(57));
 		}
 		if (j == 1){
-		rmSetAreaLocation(smallPatchRamp, 0.93, mapCenter+rmZTilesToFraction(55));
+		rmSetAreaLocation(smallPatchRamp, 0.93, mapCenter+rmZTilesToFraction(57));
 		}
 		rmBuildArea(smallPatchRamp);  
 
@@ -971,7 +971,7 @@ rmSetStatusText("",0.70);
 		rmAddAreaInfluenceSegment(wallCliffs, 0.0, mapCenter+rmZTilesToFraction(54), 0.27, mapCenter+rmZTilesToFraction(54));
 		}
 		if (j == 8){
-		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(220), rmAreaTilesToFraction(220));
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(230), rmAreaTilesToFraction(230));
 		rmSetAreaCoherence(wallCliffs, .93);
 		rmSetAreaLocation(wallCliffs, 0.195, mapCenter+rmZTilesToFraction(44));
 		}
@@ -1518,11 +1518,12 @@ rmSetStatusText("",0.70);
 	rmSetObjectDefMinDistance(randomGoldID, 0.0);
 	rmSetObjectDefMaxDistance(randomGoldID, rmXFractionToMeters(0.45));
 	rmAddObjectDefConstraint(randomGoldID, avoidSilver);
+	rmAddObjectDefConstraint(randomGoldID, avoidCoin);
 	rmAddObjectDefConstraint(randomGoldID, avoidAll);
 	rmAddObjectDefConstraint(randomGoldID, avoidBlockLong);
     rmAddObjectDefConstraint(randomGoldID, avoidPark);
 	rmAddObjectDefConstraint(randomGoldID, playerEdgeConstraint);
-	rmPlaceObjectDefInArea(randomGoldID, 0, countrysideNorth, cNumberNonGaiaPlayers);
+	rmPlaceObjectDefInArea(randomGoldID, 0, countrysideNorth, cNumberNonGaiaPlayers*1.5);
 
 
 
@@ -2282,6 +2283,7 @@ rmSetStatusText("",0.70);
 		rmSetTriggerLoop(false);
 	}
 	}
+
 
 	// Testing
 

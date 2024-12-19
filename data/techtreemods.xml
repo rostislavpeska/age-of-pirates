@@ -5337,20 +5337,6 @@
       </effect>
       <effect mergeMode='add' type="SetName" proto="zpSPCFixedGun" culture="none" newname="302105">
       </effect>
-      <effect mergeMode='add' type="Data" action="CannonAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpSPCVerseillesFixedGun</target>
-      </effect>
-      <effect mergeMode='add' type="Data" action="AntiShipAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpSPCFixedGunzpSPCVerseillesFixedGun</target>
-      </effect>
-      <effect mergeMode='add' type="Data" action="GuardianAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpSPCVerseillesFixedGun</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpSPCVerseillesFixedGun</target>
-      </effect>
-      <effect mergeMode='add' type="SetName" proto="zpSPCVerseillesFixedGun" culture="none" newname="302105">
-      </effect>
     </effects>
   </tech>
   <tech name="DEImperialFixedGun">
@@ -5382,20 +5368,6 @@
         <target type="ProtoUnit">zpSPCFixedGun</target>
       </effect>
       <effect mergeMode='add' type="SetName" proto="zpSPCFixedGun" culture="none" newname="302106">
-      </effect>
-      <effect mergeMode='add' type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpSPCVerseillesFixedGun</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpSPCVerseillesFixedGun</target>
-      </effect>
-      <effect mergeMode='add' type="Data" action="CannonAttack" amount="1.00" subtype="DamageArea" relativity="Absolute">
-        <target type="ProtoUnit">zpSPCVerseillesFixedGun</target>
-      </effect>
-      <effect mergeMode='add' type="Data" action="GuardianAttack" amount="1.00" subtype="DamageArea" relativity="Absolute">
-        <target type="ProtoUnit">zpSPCVerseillesFixedGun</target>
-      </effect>
-      <effect mergeMode='add' type="SetName" proto="zpSPCVerseillesFixedGun" culture="none" newname="302106">
       </effect>
     </effects>
   </tech>
@@ -19598,6 +19570,7 @@
     <icon>resources\images\icons\techs\venetian_fleet.png</icon>
     <rollovertextid>302146</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
     <flag>TeamTech</flag>
     <prereqs>
       <techstatus status="Active">Fortressize</techstatus>
@@ -19628,7 +19601,11 @@
     <icon>resources\images\icons\techs\monarch_church_aliance.png</icon>
     <rollovertextid>302154</rollovertextid>
     <flag>TeamTech</flag>
+    <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
     <effects>
       <effect type="Data" amount="0.75" subtype="Cost" resource="Gold" relativity="BasePercent">
         <target type="ProtoUnit">AbstractInfantry</target>
@@ -19641,6 +19618,15 @@
       </effect>
       <effect type="Data" amount="0.75" subtype="Cost" resource="Influence" relativity="BasePercent">
         <target type="ProtoUnit">AbstractInfantry</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpParisGaiaSetup" type="Normal">
+    <dbid>40331</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">SPCFortGate</target>
       </effect>
     </effects>
   </tech>
