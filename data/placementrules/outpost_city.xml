@@ -20,5 +20,5 @@
   <distanceatleastfromtype player="any" foundation="any" distance="16" errorstringid="125166">deRMFoodMill</distanceatleastfromtype>
   <distanceatleastfromtype player="any" foundation="any" distance="12" errorstringid="123337">deSPCHeadquartersVienna</distanceatleastfromtype>
   <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="302033">zpBridgeFace</distanceatleastfromtype>
-  <distanceatleastfromtype player="any" foundation="any" distance="3" errorstringid="302073">deSPCTreeCypressProp</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="302073">deSPCTreeCypressProp</distanceatleastfromtype>
 </placementrules>

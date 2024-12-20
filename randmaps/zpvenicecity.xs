@@ -400,7 +400,7 @@ void main(void)
 	int veniceInstanceID3 = rmPlaceGroupingInstanceAtLoc(veniceAcademia, rmXMetersToFraction(xsVectorGetX(ControllerLoc3))-rmXTilesToFraction(21), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3))-rmZTilesToFraction(21), 0);
 
 	// San Polo
-	int veniceSanPolo = rmCreateGrouping("bridge4", "EU_Island_Venice_SanPolo2");
+	int veniceSanPolo = rmCreateGrouping("bridge4", "EU_Island_Venice_SanPolo");
     rmSetGroupingMinDistance(veniceSanPolo, 0.00);
     rmSetGroupingMaxDistance(veniceSanPolo, 0.01);
 	rmAddGroupingToClass(veniceSanPolo, rmClassID("classPlateau"));
@@ -903,16 +903,16 @@ void main(void)
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",0);
 	rmSetTriggerEffectParam("StringID","302124");
-	rmAddTriggerEffect("Change Name As String");
+	rmAddTriggerEffect("Change Name");
 	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod1);
 	rmSetTriggerEffectParam("NewName","{302131}");
-	rmAddTriggerEffect("Change Name As String");
+	rmAddTriggerEffect("Change Name");
 	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod2);
 	rmSetTriggerEffectParam("NewName","{302133}");
-	rmAddTriggerEffect("Change Name As String");
+	rmAddTriggerEffect("Change Name");
 	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod3);
 	rmSetTriggerEffectParam("NewName","{302132}");
-	rmAddTriggerEffect("Change Name As String");
+	rmAddTriggerEffect("Change Name");
 	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod4);
 	rmSetTriggerEffectParam("NewName","{302134}");
 	rmSetTriggerPriority(4);

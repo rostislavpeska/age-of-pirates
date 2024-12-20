@@ -1,5 +1,5 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<mapinfo details = "302087" displayNameID = "302087" loadDetails="302087" 
+<mapinfo details = "302158" displayNameID = "302087" loadDetails="302121" 
     imagepath = "ui\random_map\venicecity\venicecity_mini" cannotReplace = "" loadBackground="ui\random_map\venicecity\venicecity_map">
     <loadss>ui\random_map\venicecity\venicecity_01</loadss>
     <loadss>ui\random_map\venicecity\venicecity_02</loadss>

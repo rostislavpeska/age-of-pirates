@@ -44343,7 +44343,7 @@
   </unit>
   <unit id="20586" name="zpSPCSocketVeniceCityState">
     <dbid>20586</dbid>
-    <displaynameid>300695</displaynameid>
+    <displaynameid>302159</displaynameid>
     <editornameid>302101</editornameid>
     <subciv>zpVenetians</subciv>
     <socketbuildprotounit>TradingPost</socketbuildprotounit>

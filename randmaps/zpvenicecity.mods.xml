@@ -128,6 +128,11 @@
             <flag>NotSelectable</flag>
             <flag>NoIdleActions</flag>
 		</unit>
+		<unit name="zpNativeHouseVenetianC">
+			<flag>StartOnNoUpdate</flag>
+            <flag>NotSelectable</flag>
+            <flag>NoIdleActions</flag>
+		</unit>
 		<unit name="deEmbassyTravois">
 			<animfile>units\trade\supply_cart\supply_cart_bank.xml</animfile>
 		</unit>
