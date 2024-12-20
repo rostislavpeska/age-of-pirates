@@ -576,20 +576,20 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 	vector park2Loc = xsVectorSet(locXm2, 0.0, locZ6);
 
 	// Normal City
-	const int NUM_BLOCKS = 58;
+	const int NUM_BLOCKS = 54;
 	const int NORTH_CENTER_START = 0;
 	const int NORTH_CENTER_END = 9;
 	const int NORTH_OUT_CENTER_START = 10;
-	const int NORTH_OUT_CENTER_END = 16;
-	const int NORTH_SUBURBS_START = 17;
-	const int NORTH_SUBURBS_END = 28;
+	const int NORTH_OUT_CENTER_END = 14;
+	const int NORTH_SUBURBS_START = 15;
+	const int NORTH_SUBURBS_END = 26;
 
-	const int SOUTH_CENTER_START = 29;
-	const int SOUTH_CENTER_END = 38;
-	const int SOUTH_OUT_CENTER_START = 39;
-	const int SOUTH_OUT_CENTER_END = 45;
-	const int SOUTH_SUBURBS_START = 46;
-	const int SOUTH_SUBURBS_END = 57;
+	const int SOUTH_CENTER_START = 27;
+	const int SOUTH_CENTER_END = 33;
+	const int SOUTH_OUT_CENTER_START = 37;
+	const int SOUTH_OUT_CENTER_END = 41;
+	const int SOUTH_SUBURBS_START = 42;
+	const int SOUTH_SUBURBS_END = 53;
 
 	// Big City
 	const int NUM_BLOCKS_BIG = 68;
@@ -614,6 +614,8 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 	gCityLocs = xsArrayCreateVector(NUM_BLOCKS, cInvalidVector, "List of locations in the city");
 	gCityLocsStatus = xsArrayCreateBool(NUM_BLOCKS, false, "Flags a loc as taken or not");
 
+	int verticalVariation =rmRandInt(1, 2);
+
 	// North
 		// North - Center
 		xsArraySetVector(gCityLocs, 0, xsVectorSet(locXm1, 0.0, locZ1));
@@ -633,58 +635,54 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 		xsArraySetVector(gCityLocs, 12, xsVectorSet(locXm3, 0.0, locZ3));
 		xsArraySetVector(gCityLocs, 13, xsVectorSet(locXm3, 0.0, locZ4));
 		xsArraySetVector(gCityLocs, 14, xsVectorSet(locXm3, 0.0, locZ6));
-		xsArraySetVector(gCityLocs, 15, xsVectorSet(locXm2, 0.0, locZ0));
-		xsArraySetVector(gCityLocs, 16, xsVectorSet(locXm2, 0.0, locZ9));
 		
 		// North - Suburbs
-		xsArraySetVector(gCityLocs, 17, xsVectorSet(locXm3, 0.0, locZ0));
-		xsArraySetVector(gCityLocs, 18, xsVectorSet(locXm3, 0.0, locZ9));
-		xsArraySetVector(gCityLocs, 19, xsVectorSet(locXm4, 0.0, locZ0));
-		xsArraySetVector(gCityLocs, 20, xsVectorSet(locXm4, 0.0, locZ1));
-		xsArraySetVector(gCityLocs, 21, xsVectorSet(locXm4, 0.0, locZ2));
-		xsArraySetVector(gCityLocs, 22, xsVectorSet(locXm4, 0.0, locZ3));
-		xsArraySetVector(gCityLocs, 23, xsVectorSet(locXm4, 0.0, locZ4));
-		xsArraySetVector(gCityLocs, 24, xsVectorSet(locXm4, 0.0, locZ5));
-		xsArraySetVector(gCityLocs, 25, xsVectorSet(locXm4, 0.0, locZ6));
-		xsArraySetVector(gCityLocs, 26, xsVectorSet(locXm4, 0.0, locZ7));
-		xsArraySetVector(gCityLocs, 27, xsVectorSet(locXm4, 0.0, locZ8));
-		xsArraySetVector(gCityLocs, 28, xsVectorSet(locXm4, 0.0, locZ9));
+		xsArraySetVector(gCityLocs, 15, xsVectorSet(locXm3, 0.0, locZ0));
+		xsArraySetVector(gCityLocs, 16, xsVectorSet(locXm3, 0.0, locZ9));
+		xsArraySetVector(gCityLocs, 17, xsVectorSet(locXm4, 0.0, locZ0));
+		xsArraySetVector(gCityLocs, 18, xsVectorSet(locXm4, 0.0, locZ1));
+		xsArraySetVector(gCityLocs, 19, xsVectorSet(locXm4, 0.0, locZ2));
+		xsArraySetVector(gCityLocs, 20, xsVectorSet(locXm4, 0.0, locZ3));
+		xsArraySetVector(gCityLocs, 21, xsVectorSet(locXm4, 0.0, locZ4));
+		xsArraySetVector(gCityLocs, 22, xsVectorSet(locXm4, 0.0, locZ5));
+		xsArraySetVector(gCityLocs, 23, xsVectorSet(locXm4, 0.0, locZ6));
+		xsArraySetVector(gCityLocs, 24, xsVectorSet(locXm4, 0.0, locZ7));
+		xsArraySetVector(gCityLocs, 25, xsVectorSet(locXm4, 0.0, locZ8));
+		xsArraySetVector(gCityLocs, 26, xsVectorSet(locXm4, 0.0, locZ9));
 
 	// South
 		// South - Center
-		xsArraySetVector(gCityLocs, 29, xsVectorSet(locX1, 0.0, locZ1));
-		xsArraySetVector(gCityLocs, 30, xsVectorSet(locX1, 0.0, locZ2));
-		xsArraySetVector(gCityLocs, 31, xsVectorSet(locX1, 0.0, locZ5));
-		xsArraySetVector(gCityLocs, 32, xsVectorSet(locX1, 0.0, locZ6));
-		xsArraySetVector(gCityLocs, 33, xsVectorSet(locX1, 0.0, locZ7));
-		xsArraySetVector(gCityLocs, 34, xsVectorSet(locX1, 0.0, locZ8));
-		xsArraySetVector(gCityLocs, 35, xsVectorSet(locX2, 0.0, locZ2));
-		xsArraySetVector(gCityLocs, 36, xsVectorSet(locX2, 0.0, locZ5));
-		xsArraySetVector(gCityLocs, 37, xsVectorSet(locX2, 0.0, locZ6));
-		xsArraySetVector(gCityLocs, 38, xsVectorSet(locX2, 0.0, locZ7));
+		xsArraySetVector(gCityLocs, 27, xsVectorSet(locX1, 0.0, locZ1));
+		xsArraySetVector(gCityLocs, 28, xsVectorSet(locX1, 0.0, locZ2));
+		xsArraySetVector(gCityLocs, 29, xsVectorSet(locX1, 0.0, locZ5));
+		xsArraySetVector(gCityLocs, 30, xsVectorSet(locX1, 0.0, locZ6));
+		xsArraySetVector(gCityLocs, 31, xsVectorSet(locX1, 0.0, locZ7));
+		xsArraySetVector(gCityLocs, 32, xsVectorSet(locX1, 0.0, locZ8));
+		xsArraySetVector(gCityLocs, 33, xsVectorSet(locX2, 0.0, locZ2));
+		xsArraySetVector(gCityLocs, 34, xsVectorSet(locX2, 0.0, locZ5));
+		xsArraySetVector(gCityLocs, 35, xsVectorSet(locX2, 0.0, locZ6));
+		xsArraySetVector(gCityLocs, 36, xsVectorSet(locX2, 0.0, locZ7));
 
 		// South - Outer Center
-		xsArraySetVector(gCityLocs, 39, xsVectorSet(locX2, 0.0, locZ1));
-		xsArraySetVector(gCityLocs, 40, xsVectorSet(locX2, 0.0, locZ8));
-		xsArraySetVector(gCityLocs, 41, xsVectorSet(locX3, 0.0, locZ3));
-		xsArraySetVector(gCityLocs, 42, xsVectorSet(locX3, 0.0, locZ5));
-		xsArraySetVector(gCityLocs, 43, xsVectorSet(locX3, 0.0, locZ6));
-		xsArraySetVector(gCityLocs, 44, xsVectorSet(locX2, 0.0, locZ0));
-		xsArraySetVector(gCityLocs, 45, xsVectorSet(locX2, 0.0, locZ9));
+		xsArraySetVector(gCityLocs, 37, xsVectorSet(locX2, 0.0, locZ1));
+		xsArraySetVector(gCityLocs, 38, xsVectorSet(locX2, 0.0, locZ8));
+		xsArraySetVector(gCityLocs, 39, xsVectorSet(locX3, 0.0, locZ3));
+		xsArraySetVector(gCityLocs, 40, xsVectorSet(locX3, 0.0, locZ5));
+		xsArraySetVector(gCityLocs, 41, xsVectorSet(locX3, 0.0, locZ6));
 
 		// South - Suburbs
-		xsArraySetVector(gCityLocs, 46, xsVectorSet(locX3, 0.0, locZ0));
-		xsArraySetVector(gCityLocs, 47, xsVectorSet(locX3, 0.0, locZ9));
-		xsArraySetVector(gCityLocs, 48, xsVectorSet(locX4, 0.0, locZ0));
-		xsArraySetVector(gCityLocs, 49, xsVectorSet(locX4, 0.0, locZ1));
-		xsArraySetVector(gCityLocs, 50, xsVectorSet(locX4, 0.0, locZ2));
-		xsArraySetVector(gCityLocs, 51, xsVectorSet(locX4, 0.0, locZ3));
-		xsArraySetVector(gCityLocs, 52, xsVectorSet(locX4, 0.0, locZ4));
-		xsArraySetVector(gCityLocs, 53, xsVectorSet(locX4, 0.0, locZ5));
-		xsArraySetVector(gCityLocs, 54, xsVectorSet(locX4, 0.0, locZ6));
-		xsArraySetVector(gCityLocs, 55, xsVectorSet(locX4, 0.0, locZ7));
-		xsArraySetVector(gCityLocs, 56, xsVectorSet(locX4, 0.0, locZ8));
-		xsArraySetVector(gCityLocs, 57, xsVectorSet(locX4, 0.0, locZ9));
+		xsArraySetVector(gCityLocs, 42, xsVectorSet(locX3, 0.0, locZ0));
+		xsArraySetVector(gCityLocs, 43, xsVectorSet(locX3, 0.0, locZ9));
+		xsArraySetVector(gCityLocs, 44, xsVectorSet(locX4, 0.0, locZ0));
+		xsArraySetVector(gCityLocs, 45, xsVectorSet(locX4, 0.0, locZ1));
+		xsArraySetVector(gCityLocs, 46, xsVectorSet(locX4, 0.0, locZ2));
+		xsArraySetVector(gCityLocs, 47, xsVectorSet(locX4, 0.0, locZ3));
+		xsArraySetVector(gCityLocs, 48, xsVectorSet(locX4, 0.0, locZ4));
+		xsArraySetVector(gCityLocs, 49, xsVectorSet(locX4, 0.0, locZ5));
+		xsArraySetVector(gCityLocs, 50, xsVectorSet(locX4, 0.0, locZ6));
+		xsArraySetVector(gCityLocs, 51, xsVectorSet(locX4, 0.0, locZ7));
+		xsArraySetVector(gCityLocs, 52, xsVectorSet(locX4, 0.0, locZ8));
+		xsArraySetVector(gCityLocs, 53, xsVectorSet(locX4, 0.0, locZ9));
 
 	shuffle(gCityLocs, NORTH_CENTER_START, NORTH_CENTER_END);
 	shuffle(gCityLocs, NORTH_OUT_CENTER_START, NORTH_OUT_CENTER_END);
@@ -701,6 +699,7 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 
 		gCityLocs = xsArrayCreateVector(NUM_BLOCKS_BIG, cInvalidVector, "List of locations in the city");
 		gCityLocsStatus = xsArrayCreateBool(NUM_BLOCKS_BIG, false, "Flags a loc as taken or not");
+
 
 	// North
 		// North - Center
@@ -1011,7 +1010,6 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 
 // Placement Variables
 int jesuitMaltese = rmRandInt(1, 2);
-int verticalVariation =rmRandInt(1, 2);
 
 //===================place the stuff=========================
 
@@ -1195,18 +1193,18 @@ int verticalVariation =rmRandInt(1, 2);
 	if (bigCity ==0){
 		if (verticalVariation ==1){
 			rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ7);
-			rmPlaceGroupingAtLoc(blockSansculot, 0, locXm3, locZ2);
+			rmPlaceGroupingAtLoc(blockSansculot, 0, locXm2, locZ2);
 			if (cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==4){
-				rmPlaceGroupingAtLoc(southNative2 , 0, locX3, locZ2);
-				rmPlaceGroupingAtLoc(northNative2, 0, locXm3, locZ7);
+				rmPlaceGroupingAtLoc(northNative2 , 0, locXm2, locZ9);
+				rmPlaceGroupingAtLoc(southNative2, 0, locX2, locZ0);
 			}
 		}
 		else{
 			rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ2);
 			rmPlaceGroupingAtLoc(blockSansculot, 0, locXm3, locZ7);
 			if (cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==4){
-				rmPlaceGroupingAtLoc(southNative2 , 0, locX3, locZ7);
-				rmPlaceGroupingAtLoc(northNative2, 0, locXm3, locZ2);
+				rmPlaceGroupingAtLoc(northNative2 , 0, locXm2, locZ0);
+				rmPlaceGroupingAtLoc(southNative2, 0, locX2, locZ9);
 			}
 		}	
 	}
@@ -1255,11 +1253,11 @@ int verticalVariation =rmRandInt(1, 2);
 		placeGroupings(southCenterGroupings, SOUTH_CENTER_START);
 
 		int northOutCenterGroupings = xsArrayCreateInt(1, -1, "List of groupings for the outer center (north).");
-		xsArraySetInt(northOutCenterGroupings, 1, blockGoldSmelter);
+		xsArraySetInt(northOutCenterGroupings, 0, blockGoldSmelter);
 		placeGroupings(northOutCenterGroupings, NORTH_OUT_CENTER_START);
 
 		int southOutCenterGroupings = xsArrayCreateInt(1, -1, "List of groupings for the outer center (south).");
-		xsArraySetInt(southOutCenterGroupings, 1, blockGoldSmelter);
+		xsArraySetInt(southOutCenterGroupings, 0, blockGoldSmelter);
 		placeGroupings(southOutCenterGroupings, SOUTH_OUT_CENTER_START);
 		
 
