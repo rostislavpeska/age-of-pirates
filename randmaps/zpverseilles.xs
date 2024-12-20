@@ -11,7 +11,7 @@ include "mercenaries.xs";
 include "ypAsianInclude.xs";
 include "ypKOTHInclude.xs";
 
- string fish1 = "ypFishCarp";
+string fish1 = "ypFishCarp";
 
 void main(void)
 {
@@ -57,6 +57,12 @@ void main(void)
 	int teamOneCount = rmGetNumberPlayersOnTeam(1);
 	int firstDefender = -1;
 	int firstAttacker = -1;
+	int secondAttacker = -1;
+	int thirdAttacker = -1;
+	int fourthAttacker = -1;
+	int fifthAttacker = -1;
+	int sixthAttacker = -1;
+	int seventhAttacker = -1;
 
 	for (i = 1; <= cNumberNonGaiaPlayers)
     {
@@ -74,6 +80,56 @@ void main(void)
             break;
         }
     }
+
+		// Additional Attackers
+		for (i = firstAttacker+1; <= cNumberNonGaiaPlayers)
+		{
+			if (rmGetPlayerTeam(i) == 0)
+			{
+				secondAttacker = i;
+				break;
+			}
+		}
+		for (i = secondAttacker+1; <= cNumberNonGaiaPlayers)
+		{
+			if (rmGetPlayerTeam(i) == 0)
+			{
+				thirdAttacker = i;
+				break;
+			}
+		}
+		for (i = thirdAttacker+1; <= cNumberNonGaiaPlayers)
+		{
+			if (rmGetPlayerTeam(i) == 0)
+			{
+				fourthAttacker = i;
+				break;
+			}
+		}
+		for (i = fourthAttacker+1; <= cNumberNonGaiaPlayers)
+		{
+			if (rmGetPlayerTeam(i) == 0)
+			{
+				fifthAttacker = i;
+				break;
+			}
+		}
+		for (i = fifthAttacker+1; <= cNumberNonGaiaPlayers)
+		{
+			if (rmGetPlayerTeam(i) == 0)
+			{
+				sixthAttacker = i;
+				break;
+			}
+		}
+		for (i = sixthAttacker+1; <= cNumberNonGaiaPlayers)
+		{
+			if (rmGetPlayerTeam(i) == 0)
+			{
+				seventhAttacker = i;
+				break;
+			}
+		}
 
     int sizeZ = 560;
 	int sizeX = 360;
@@ -304,6 +360,7 @@ void main(void)
 	int cemetaryConstraintShort=rmCreateClassDistanceConstraint("stay away from cemetary short", classCemetary, 5.0);
 
     int avoidPark = rmCreateTypeDistanceConstraint("avoid park tree", "deSPCTreeCypressProp", 30);
+	int avoidFixedGun = rmCreateTypeDistanceConstraint("avoid fixed gun", "zpSPCVerseillesFixedGun", 30);
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.10);
@@ -417,15 +474,17 @@ void main(void)
 
 	// Lakes
 
-	int basinsID=rmCreateArea("Verseilles Basins");
-	rmSetAreaWaterType(basinsID, "ZP Verseilles Pond");
-	rmSetAreaSize(basinsID, 0.008, 0.008);
-	rmSetAreaCoherence(basinsID, 1.0);
-	rmSetAreaLocation(basinsID, 0.5, mapCenter+rmZTilesToFraction(57));
-	rmAddAreaInfluenceSegment(basinsID,0.435, mapCenter+rmZTilesToFraction(57), 0.605, mapCenter+rmZTilesToFraction(57));
-	rmSetAreaSmoothDistance(basinsID, 10);
-	rmSetAreaBaseHeight(basinsID, 1.0);
-	rmBuildArea(basinsID);
+	if (teamZeroCount<=2){
+		int basinsID=rmCreateArea("Verseilles Basins");
+		rmSetAreaWaterType(basinsID, "ZP Verseilles Pond");
+		rmSetAreaSize(basinsID, 0.008, 0.008);
+		rmSetAreaCoherence(basinsID, 1.0);
+		rmSetAreaLocation(basinsID, 0.5, mapCenter+rmZTilesToFraction(57));
+		rmAddAreaInfluenceSegment(basinsID,0.435, mapCenter+rmZTilesToFraction(57), 0.605, mapCenter+rmZTilesToFraction(57));
+		rmSetAreaSmoothDistance(basinsID, 10);
+		rmSetAreaBaseHeight(basinsID, 1.0);
+		rmBuildArea(basinsID);
+	}
 
 	/*int basinsID2=rmCreateArea("Verseilles Basins2");
 	rmSetAreaWaterType(basinsID2, "ZP Verseilles Pond");
@@ -528,7 +587,10 @@ void main(void)
 // Fixed Placement
 
 	// Palace
-	int blockPalaceBig01 = rmCreateGrouping("palace1", "Verseilles_2v2");
+	if(teamOneCount<=2)
+		int blockPalaceBig01 = rmCreateGrouping("palace1", "Verseilles_2v2");
+	else
+		blockPalaceBig01 = rmCreateGrouping("palace1", "Verseilles_4v4");
     rmSetGroupingMinDistance(blockPalaceBig01, 0.00);
     rmSetGroupingMaxDistance(blockPalaceBig01, 0.50);
 	rmAddGroupingToClass(blockPalaceBig01, rmClassID("classBlock"));
@@ -735,6 +797,7 @@ void main(void)
 
 	//rmPlaceGroupingAtLoc(blockWall, firstDefender, 0.825, mapCenter+rmZTilesToFraction(10));
 
+	int verticalVariation =rmRandInt(1, 2);
 
 	// Fixed Stuff
 		rmPlaceGroupingAtLoc(blockTrade, 0, locX9, locZ1);
@@ -746,53 +809,61 @@ void main(void)
 
 	// City Center
 
-		rmPlaceGroupingAtLoc(blockMarket, 0, locX2, locZ1);
+		rmPlaceGroupingAtLoc(blockMarket, 0, locX5, locZ2);
+		rmPlaceGroupingAtLoc(blockBank, 0, locX4, locZ1);
+		rmPlaceGroupingAtLoc(blockJewish, 0, locX8, locZ1);
+		rmPlaceGroupingAtLoc(blockJewish, 0, locX1, locZ1);		
 
-		rmPlaceGroupingAtLoc(blockBank, 0, locX1, locZ2);
-
-		rmPlaceGroupingAtLoc(blockJewish, 0, locX8, locZ2);
-
-		if (cNumberNonGaiaPlayers>=4){
-			rmPlaceGroupingAtLoc(blockJewish, 0, locX1, locZ1);				
-		}
+		rmSetNuggetDifficulty(195, 195);
+		rmPlaceGroupingAtLoc(blockEmbassy, 0, locX5, locZ1);		
 
 
 	// Outer Center
 
-		rmPlaceGroupingAtLoc(blockSansculot, 0, locX1, locZ3);
+		rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ3);
+		rmPlaceGroupingAtLoc(blockSansculot, 0, locX6, locZ3);	
 
-		if (cNumberNonGaiaPlayers>=4){
-			rmPlaceGroupingAtLoc(blockSansculot, 0, locX8, locZ3);				
-		}
-
-		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX3, locZ2);
-		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX0, locZ3);
+		if (teamZeroCount>2){
+			rmPlaceGroupingAtLoc(blockSansculot, 0, locX0, locZ3);
+			rmPlaceGroupingAtLoc(blockSansculot, 0, locX9, locZ3);
+		}			
+		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX1, locZ3);
+		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX8, locZ3);
 
 		rmSetNuggetDifficulty(299, 299);
-		int factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX2, locZ2, 0);
+		if (verticalVariation ==1) 
+			int factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX2, locZ2, 0);
+		else
+			factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX7, locZ2, 0);
+
 
 	// Suburb
 
 
-		rmPlaceGroupingAtLoc(blockDestilery, 0, locX4, locZ4);
+		rmPlaceGroupingAtLoc(blockDestilery, 0, locX2, locZ4);
 		rmPlaceGroupingAtLoc(blockDestilery, 0, locX7, locZ4);
 
 		rmPlaceGroupingAtLoc(blockWarehouse, 0, locX9, locZ4);
-		rmPlaceGroupingAtLoc(blockWarehouse, 0, locX1, locZ4);
+		rmPlaceGroupingAtLoc(blockWarehouse, 0, locX0, locZ4);
 
 
 	// Everywhere
 
 		rmSetNuggetDifficulty(194, 194);
-		rmPlaceGroupingAtLoc(blockBastion01, 0, locX3, locZ3);
-		rmPlaceGroupingAtLoc(blockBastion02, 0, locX3, locZ4);
-
-		rmSetNuggetDifficulty(195, 195);
-		rmPlaceGroupingAtLoc(blockEmbassy, 0, locX5, locZ1);
+		rmPlaceGroupingAtLoc(blockBastion01, 0, locX2, locZ1);
+		rmPlaceGroupingAtLoc(blockBastion02, 0, locX7, locZ1);
+		if (teamZeroCount>2){
+			rmPlaceGroupingAtLoc(blockBastion01, 0, locX8, locZ4);
+			rmPlaceGroupingAtLoc(blockBastion02, 0, locX1, locZ4);
+		}
 
 		rmSetNuggetDifficulty(192, 192);
-		rmPlaceGroupingAtLoc(blockTreasure02, 0, locX4, locZ2);
-		rmPlaceGroupingAtLoc(blockTreasure01, 0, locX6, locZ2);
+		rmPlaceGroupingAtLoc(blockTreasure02, 0, locX1, locZ2);
+		rmPlaceGroupingAtLoc(blockTreasure01, 0, locX8, locZ2);
+		if (teamZeroCount>2){
+			rmPlaceGroupingAtLoc(blockTreasure02, 0, locX4, locZ4);
+			rmPlaceGroupingAtLoc(blockTreasure01, 0, locX5, locZ4);
+		}
 
 
 
@@ -851,7 +922,6 @@ void main(void)
 
 
 
-
 //================we will add the other 4 rows after the groupings are defined and the randomizer is working=========
 
 rmSetStatusText("",0.70);
@@ -879,19 +949,7 @@ rmSetStatusText("",0.70);
 
 		}
 
-	// Tower Nuggets
-
-	/*int nuggetTower= rmCreateObjectDef("nugget tower"); 
-	rmAddObjectDefItem(nuggetTower, "Nugget", 1, 0.0);
-	rmSetNuggetDifficulty(295, 295);
-	rmSetObjectDefMinDistance(nuggetTower, 0.0);
-	rmSetObjectDefMaxDistance(nuggetTower, 0.5);
-	rmPlaceObjectDefAtLoc(nuggetTower, 0, 0.21, mapCenter+rmZTilesToFraction(21));
-	rmPlaceObjectDefAtLoc(nuggetTower, 0, 0.80, mapCenter+rmZTilesToFraction(21));
-	rmPlaceObjectDefAtLoc(nuggetTower, 0, 0.21, mapCenter+rmZTilesToFraction(44));
-	rmPlaceObjectDefAtLoc(nuggetTower, 0, 0.80, mapCenter+rmZTilesToFraction(44));*/
-
-
+	// Fixed Guns
 	int fixedGunR = rmCreateGrouping("fixed gun right", "Verseilles_Fixed_Gun_R");
     rmSetGroupingMinDistance(fixedGunR, 0.00);
     rmSetGroupingMaxDistance(fixedGunR, 0.50);
@@ -1034,6 +1092,13 @@ rmSetStatusText("",0.70);
 //dansil player placement
 //==============================================================
 
+int listOfAttackers = xsArrayCreateInt(teamZeroCount, -1, "List of all attacking players");
+for(i=1; < cNumberNonGaiaPlayers + 1) {
+	if (rmGetPlayerTeam(1) == 0) {
+		xsArraySetInt(listOfAttackers , 0, i);
+	}
+}
+
 // =============Player placement ======================= 
 	//spawnSwitch = 0.1;
 
@@ -1079,9 +1144,9 @@ rmSetStatusText("",0.70);
 			{	
 				rmSetPlacementTeam(1);
 				rmPlacePlayersLine(0.2, 0.87, 0.8, 0.87, 0, 0);
-				rmPlacePlayer(1, locX2, locZ6);
-				rmPlacePlayer(2, locX4, locZ6);
-				rmPlacePlayer(3, locX6, locZ6);
+				rmPlacePlayer(firstAttacker, locX2, locZ6);
+				rmPlacePlayer(secondAttacker, locX4, locZ6);
+				rmPlacePlayer(thirdAttacker, locX6, locZ6);
 				playerAreaConstraint = rmCreateBoxConstraint("stay in player area", 0.1-rmZTilesToFraction(3), mapCenter-rmZTilesToFraction(70), 0.91+rmZTilesToFraction(3), mapCenter-rmZTilesToFraction(124));
 				playerStreetConstraint = rmCreateBoxConstraint("stay in street", 0.1, mapCenter-rmZTilesToFraction(70), 0.91, mapCenter-rmZTilesToFraction(122));
 			}	
@@ -1089,10 +1154,10 @@ rmSetStatusText("",0.70);
 			{	
 				rmSetPlacementTeam(1);
 				rmPlacePlayersLine(0.2, 0.87, 0.8, 0.87, 0, 0);
-				rmPlacePlayer(1, locX1, locZ6);
-				rmPlacePlayer(2, locX3, locZ6);
-				rmPlacePlayer(3, locX7, locZ6);
-				rmPlacePlayer(4, locX9, locZ6);
+				rmPlacePlayer(firstAttacker, locX1, locZ6);
+				rmPlacePlayer(secondAttacker, locX3, locZ6);
+				rmPlacePlayer(thirdAttacker, locX7, locZ6);
+				rmPlacePlayer(fourthAttacker, locX9, locZ6);
 				playerAreaConstraint = rmCreateBoxConstraint("stay in player area", 0.0, mapCenter-rmZTilesToFraction(70), 1.0, mapCenter-rmZTilesToFraction(124));
 				playerStreetConstraint = rmCreateBoxConstraint("stay in street", 0.0, mapCenter-rmZTilesToFraction(70), 1.0, mapCenter-rmZTilesToFraction(122));
 			}
@@ -1100,34 +1165,42 @@ rmSetStatusText("",0.70);
 			{	
 				rmSetPlacementTeam(1);
 				rmPlacePlayersLine(0.2, 0.87, 0.8, 0.87, 0, 0);
-				rmPlacePlayer(1, locX1, locZ6);
-				rmPlacePlayer(5, locX3, locZ6);
-				rmPlacePlayer(3, locX5, locZ6);
-				rmPlacePlayer(4, locX7, locZ6);
-				rmPlacePlayer(5, locX9, locZ6);
+				rmPlacePlayer(firstAttacker, locX1, locZ6);
+				rmPlacePlayer(secondAttacker, locX3, locZ6);
+				rmPlacePlayer(thirdAttacker, locX5, locZ6);
+				rmPlacePlayer(fourthAttacker, locX7, locZ6);
+				rmPlacePlayer(fifthAttacker, locX9, locZ6);
+				playerAreaConstraint = rmCreateBoxConstraint("stay in player area", 0.0, mapCenter-rmZTilesToFraction(70), 1.0, mapCenter-rmZTilesToFraction(124));
+				playerStreetConstraint = rmCreateBoxConstraint("stay in street", 0.0, mapCenter-rmZTilesToFraction(70), 1.0, mapCenter-rmZTilesToFraction(122));
 			}
 			if (teamZeroCount == 6)				
 			{	
 				rmSetPlacementTeam(1);
 				rmPlacePlayersLine(0.2, 0.87, 0.8, 0.87, 0, 0);
-				rmPlacePlayer(1, locX1, locZ6);
-				rmPlacePlayer(2, locX3, locZ6);
-				rmPlacePlayer(3, locX5, locZ6);
-				rmPlacePlayer(4, locX7, locZ6);
-				rmPlacePlayer(5, locX9, locZ6);
-				rmPlacePlayer(6, locX4, locZ8);
+				rmPlacePlayer(firstAttacker, locX1, locZ6);
+				rmPlacePlayer(secondAttacker, locX3, locZ6);
+				rmPlacePlayer(thirdAttacker, locX5, locZ6);
+				rmPlacePlayer(fourthAttacker, locX7, locZ6);
+				rmPlacePlayer(fifthAttacker, locX9, locZ6);
+				rmPlacePlayer(sixthAttacker, locX5, locZ8);
+
+				playerAreaConstraint = rmCreateBoxConstraint("stay in player area", 0.0, mapCenter-rmZTilesToFraction(70), 1.0, mapCenter-rmZTilesToFraction(141));
+				playerStreetConstraint = rmCreateBoxConstraint("stay in street", 0.0, mapCenter-rmZTilesToFraction(70), 1.0, mapCenter-rmZTilesToFraction(139));
 			}
 			if (teamZeroCount == 7)				
 			{	
 				rmSetPlacementTeam(1);
 				rmPlacePlayersLine(0.2, 0.87, 0.8, 0.87, 0, 0);
-				rmPlacePlayer(1, locX1, locZ6);
-				rmPlacePlayer(2, locX3, locZ6);
-				rmPlacePlayer(3, locX5, locZ6);
-				rmPlacePlayer(4, locX7, locZ6);
-				rmPlacePlayer(5, locX9, locZ6);
-				rmPlacePlayer(6, locX3, locZ8);
-				rmPlacePlayer(7, locX5, locZ8);
+				rmPlacePlayer(firstAttacker, locX1, locZ6);
+				rmPlacePlayer(secondAttacker, locX3, locZ6);
+				rmPlacePlayer(thirdAttacker, locX5, locZ6);
+				rmPlacePlayer(fourthAttacker, locX7, locZ6);
+				rmPlacePlayer(fifthAttacker, locX9, locZ6);
+				rmPlacePlayer(sixthAttacker, locX3, locZ8);
+				rmPlacePlayer(seventhAttacker, locX5, locZ8);
+
+				playerAreaConstraint = rmCreateBoxConstraint("stay in player area", 0.0, mapCenter-rmZTilesToFraction(70), 1.0, mapCenter-rmZTilesToFraction(141));
+				playerStreetConstraint = rmCreateBoxConstraint("stay in street", 0.0, mapCenter-rmZTilesToFraction(70), 1.0, mapCenter-rmZTilesToFraction(139));
 			}														
 		}
 	}
@@ -1187,6 +1260,52 @@ rmSetStatusText("",0.70);
 		rmPlaceGroupingAtLoc(blockHouse06, 0, locX7, locZ6);
 		rmPlaceGroupingAtLoc(blockHouse03, 0, locX8, locZ7);
 		rmPlaceGroupingAtLoc(blockHouse04, 0, locX7, locZ7);
+	}
+
+	//4 Attackers
+	if (teamZeroCount == 3){
+		rmPlaceGroupingAtLoc(blockHouse01, 0, locX8, locZ5);
+		rmPlaceGroupingAtLoc(blockHouse02, 0, locX7, locZ5);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX8, locZ6);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX7, locZ6);
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locX8, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse04, 0, locX7, locZ7);
+	}
+
+	//5 Attackers
+	if (teamZeroCount == 6){
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX0, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX1, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse01, 0, locX2, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse02, 0, locX3, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locX6, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse04, 0, locX7, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX8, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX9, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX0, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse01, 0, locX1, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse02, 0, locX2, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX3, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX6, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locX7, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse04, 0, locX8, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX9, locZ8);
+	}
+
+	if (teamZeroCount == 7){
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX0, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX1, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse02, 0, locX3, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locX6, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse04, 0, locX7, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX8, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX9, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX0, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse01, 0, locX1, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX6, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locX7, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse04, 0, locX8, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX9, locZ8);
 	}
 
 
@@ -1486,6 +1605,8 @@ rmSetStatusText("",0.70);
 	rmAddObjectDefConstraint(nuggetNorth, avoidStreetZero);
     rmAddObjectDefConstraint(nuggetNorth, avoidPark);
 	rmAddObjectDefConstraint(nuggetNorth, playerEdgeConstraint);
+	rmAddObjectDefConstraint(nuggetNorth, avoidFixedGun);
+	rmAddObjectDefConstraint(nuggetNorth, avoidTradeRouteFar);
 	rmPlaceObjectDefInArea(nuggetNorth, 0, countrysideNorth, cNumberNonGaiaPlayers);
 
 	int nuggetSouth= rmCreateObjectDef("nugget easy south"); 
@@ -1510,6 +1631,8 @@ rmSetStatusText("",0.70);
 	rmAddObjectDefConstraint(nuggetHard, avoidTownCenterFar);
 	rmAddObjectDefConstraint(nuggetHard, avoidBlockMedium);
 	rmAddObjectDefConstraint(nuggetHard, playerEdgeConstraint);
+	rmAddObjectDefConstraint(nuggetHard, avoidFixedGun);
+	rmAddObjectDefConstraint(nuggetHard, avoidTradeRouteFar);
 	rmPlaceObjectDefInArea(nuggetHard, 0, countrysideNorth, cNumberNonGaiaPlayers);
 
 	// Random Gold
