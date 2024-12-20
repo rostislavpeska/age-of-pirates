@@ -45948,6 +45948,28 @@
       <rate type="zpSPCTownMill">0.250000</rate>
     </protoaction>
   </unit>
+  <unit id="20612" name="zpTemporaryObstruction">
+    <dbid>20612</dbid>
+    <displaynameid>302156</displaynameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <lifespan>0.3000</lifespan>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>ForceToGaia</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+  </unit>
 
 
 
@@ -45973,11 +45995,6 @@
     <socketunittype>TowerSocket</socketunittype>
     <flag>StartEnabled</flag>
   </unit>-->
-
-  <unit name="deSPCEuroTower">
-    <flag>InvulnerableIfGaia</flag>
-    <flag>CannotAttackIfGaia</flag>
-  </unit>
 
 
   <!--<unit name="SPCFortGate">

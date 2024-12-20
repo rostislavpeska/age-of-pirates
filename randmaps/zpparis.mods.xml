@@ -251,5 +251,9 @@
 		<unit name="zpSPCCapturableFlagInvisible">
 			<minimapicon>ui\minimap\military_small</minimapicon>
 		</unit>
+		<unit name="deSPCEuroTower">
+			<flag>InvulnerableIfGaia</flag>
+			<flag>CannotAttackIfGaia</flag>
+		</unit>
 	</protomods>
 </mods>
