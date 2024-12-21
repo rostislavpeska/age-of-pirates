@@ -4,7 +4,7 @@
 		market
 		<component>MARKET
 			<assetreference type="GrannyModel">
-				<file>buildings\market\west market standin invisible</file>
+				<file>buildings\bridge\bridge_attachment</file>
 			</assetreference>
 		</component>
 		<anim>

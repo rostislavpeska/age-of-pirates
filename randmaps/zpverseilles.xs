@@ -1326,7 +1326,7 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	int goldID = rmCreateObjectDef("starting gold");
 	rmAddObjectDefItem(goldID, "SPCMine", 1, 2.0);
 	rmSetObjectDefMinDistance(goldID, 14.0);
-	rmSetObjectDefMaxDistance(goldID, 15.0);
+	rmSetObjectDefMaxDistance(goldID, 17.0);
 	rmAddObjectDefConstraint(goldID, avoidTradeRouteMin);
 
 	int berryID = rmCreateObjectDef("starting berries");
@@ -2406,7 +2406,6 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 		rmSetTriggerLoop(false);
 	}
 	}
-
 
 	// Testing
 

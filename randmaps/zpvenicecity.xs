@@ -6,7 +6,6 @@ int PlayerNum = cNumberNonGaiaPlayers;
 int numPlayer = cNumberPlayers;
 int evenOdd = -1;
 
-
 include "mercenaries.xs";
 include "ypAsianInclude.xs";
 include "ypKOTHInclude.xs";
@@ -456,7 +455,7 @@ void main(void)
 
 	int shoreTerrainNorth = rmCreateArea("shore Terrain North");
     rmSetAreaSize(shoreTerrainNorth, rmAreaTilesToFraction(450), rmAreaTilesToFraction(450));
-    rmSetAreaLocation(shoreTerrainNorth, rmXMetersToFraction(xsVectorGetX(ControllerLoc4))+rmXTilesToFraction(58), rmZMetersToFraction(xsVectorGetZ(ControllerLoc4))+rmZTilesToFraction(4));
+    rmSetAreaLocation(shoreTerrainNorth, rmXMetersToFraction(xsVectorGetX(ControllerLoc4))+rmXTilesToFraction(54), rmZMetersToFraction(xsVectorGetZ(ControllerLoc4))+rmZTilesToFraction(4));
     rmSetAreaCoherence(shoreTerrainNorth, 1.0);	
    	rmSetAreaMix(shoreTerrainNorth, "italy_grass");
     rmBuildArea(shoreTerrainNorth); 
@@ -499,7 +498,7 @@ void main(void)
 
 	int shoreTerrainSouth = rmCreateArea("shore Terrain South");
     rmSetAreaSize(shoreTerrainSouth, rmAreaTilesToFraction(450), rmAreaTilesToFraction(450));
-    rmSetAreaLocation(shoreTerrainSouth, rmXMetersToFraction(xsVectorGetX(ControllerLoc3))-rmXTilesToFraction(56), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3))-rmZTilesToFraction(13));	
+    rmSetAreaLocation(shoreTerrainSouth, rmXMetersToFraction(xsVectorGetX(ControllerLoc3))-rmXTilesToFraction(58), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3))-rmZTilesToFraction(13));	
     rmSetAreaCoherence(shoreTerrainSouth, 1.0);	
    	rmSetAreaMix(shoreTerrainSouth, "italy_grass");
     rmBuildArea(shoreTerrainSouth); 
@@ -513,23 +512,27 @@ void main(void)
 	// ************************** Place Players ****************************
 
 	float spawnSwitch = rmRandInt(0,1);
+	int weirdSpawn = 0;
     
     if (spawnSwitch ==0){
 		rmSetPlacementTeam(0);
-		rmSetPlacementSection(0.65, 0.85);
-		rmPlacePlayersCircular(0.42, 0.42, rmDegreesToRadians(5.0));
+		rmSetPlacementSection(0.64, 0.86);
+		rmPlacePlayersCircular(0.44, 0.44, rmDegreesToRadians(5.0));
 		rmSetPlacementTeam(1);
-		rmSetPlacementSection(0.15, 0.35);
-		rmPlacePlayersCircular(0.42, 0.42, rmDegreesToRadians(5.0));
+		rmSetPlacementSection(0.14, 0.36);
+		rmPlacePlayersCircular(0.44, 0.44, rmDegreesToRadians(5.0));
 	}
 	else{
 		rmSetPlacementTeam(1);
-		rmSetPlacementSection(0.65, 0.85);
-		rmPlacePlayersCircular(0.42, 0.42, rmDegreesToRadians(5.0));
+		rmSetPlacementSection(0.64, 0.86);
+		rmPlacePlayersCircular(0.44, 0.44, rmDegreesToRadians(5.0));
 		rmSetPlacementTeam(0);
-		rmSetPlacementSection(0.15, 0.35);
-		rmPlacePlayersCircular(0.42, 0.42, rmDegreesToRadians(5.0));
+		rmSetPlacementSection(0.14, 0.36);
+		rmPlacePlayersCircular(0.44, 0.44, rmDegreesToRadians(5.0));
 	}
+
+	if ( rmGetNumberPlayersOnTeam(0)>4 ||  rmGetNumberPlayersOnTeam(1)>4)
+	weirdSpawn = 1;
 
 
 	// Town Centrer Start
@@ -571,23 +574,41 @@ void main(void)
 	//place tcs
     
     for(i=1; < cNumberNonGaiaPlayers + 1) {
-		int id=rmCreateArea("Player"+i);
-		rmSetPlayerArea(i, id);
-		int startID = rmCreateObjectDef("object"+i);
-		rmAddObjectDefItem(startID, "TownCenter", 1, 2.0);
-		rmSetObjectDefMinDistance(startID, 0.0);
 
-		rmSetObjectDefMaxDistance(startID, 10.0);
-		rmAddObjectDefConstraint(startID, avoidTradeRouteMin);
-		rmAddObjectDefConstraint(startID, avoidWater20);
+		if (weirdSpawn==0){
+			int playerID=rmCreateArea("player "+i);
+			rmSetPlayerArea(i, playerID);
+			rmSetAreaSize(playerID, rmAreaTilesToFraction(700));
+			rmSetAreaLocPlayer(playerID, i);
+			rmSetAreaWarnFailure(playerID, false);
+			rmSetAreaCoherence(playerID, 1.0);
+			rmSetAreaBaseHeight(playerID, 3.5);
+			rmSetAreaSmoothDistance(playerID, 15);
+			rmEchoInfo("Team area"+i);
+			rmBuildArea(playerID); 
 
-		rmPlaceObjectDefAtLoc(startID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
-        rmPlaceObjectDefAtLoc(playerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
-        rmPlaceObjectDefAtLoc(foodID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
-        rmPlaceObjectDefAtLoc(goldID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
-        rmPlaceObjectDefAtLoc(berryID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
-		/*if (cNumberNonGaiaPlayers >=4)
-			rmPlaceObjectDefAtLoc(goldID2, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));*/
+			int playerFortID = -1;
+			playerFortID = rmCreateGrouping("player fort", "malta_player_fort");      
+			rmPlaceGroupingAtLoc(playerFortID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i), 1);
+		}
+
+		else{
+			int id=rmCreateArea("Player"+i);
+			rmSetPlayerArea(i, id);
+
+			int startID = rmCreateObjectDef("object"+i);
+			rmAddObjectDefItem(startID, "TownCenter", 1, 2.0);
+			rmSetObjectDefMinDistance(startID, 0.0);
+			rmSetObjectDefMaxDistance(startID, 10.0);
+			rmAddObjectDefConstraint(startID, avoidTradeRouteMin);
+			rmAddObjectDefConstraint(startID, avoidWater20);
+
+			rmPlaceObjectDefAtLoc(startID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			rmPlaceObjectDefAtLoc(playerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			rmPlaceObjectDefAtLoc(foodID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			rmPlaceObjectDefAtLoc(goldID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			rmPlaceObjectDefAtLoc(berryID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+		}
 
 		vector TCLocation=rmGetUnitPosition(rmGetUnitPlacedOfPlayer(startID, i));
 
@@ -2551,6 +2572,7 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
 
 
 

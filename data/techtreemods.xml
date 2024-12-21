@@ -18280,6 +18280,12 @@
       <effect type="Data" action="Autogather" amount="1.50" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCNotreDame</target>
       </effect>
+      <effect type="Data" action="Autogather" amount="1.50" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCGermanCathedral</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.50" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpVerseillesChurch</target>
+      </effect>
       <effect type="Data" action="AutoGatherCoinTeam" amount="1.50" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactory</target>
       </effect>

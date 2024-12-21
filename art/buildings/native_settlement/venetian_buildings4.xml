@@ -1,0 +1,29 @@
+<animfile>
+	<definebone>bone_smoke</definebone>
+    <attachment>chimney smoke
+        <component>smoke
+            <logic type="Destruction">
+                <p0>
+                    <assetreference type="ParticleSystem"></assetreference>
+                </p0>
+                <p99>
+                    <assetreference type="popcornFx">
+                        <file>smoke\chimney_smoke.pkfx</file>
+                    </assetreference>
+                </p99>
+            </logic>
+        </component>
+        <anim>Idle
+            <component>smoke</component>
+        </anim>
+    </attachment>
+    <component>generic_a
+        <assetreference type="GrannyModel">
+            <file>buildings\native_settlement\venice\venice_house3b_Model</file>
+        </assetreference>
+        <attach a="chimney smoke" frombone="bone_chimney" tobone="bone_smoke" syncanims="0"></attach>
+    </component>
+    <anim>Idle
+        <component>generic_a</component>
+    </anim>
+</animfile>
