@@ -36,7 +36,7 @@ void main(void)
 	}
 
     int sizeZ = 400;
-	int sizeX = 440;
+	int sizeX = 460;
 	if (cNumberNonGaiaPlayers > 2){
 		sizeX = 500;
 	}
@@ -111,8 +111,8 @@ void main(void)
 	int avoidLand = rmCreateTerrainDistanceConstraint("avoid land medium", "Water", false, 20.0);
 	
 	// Cardinal Directions
-	int Northward=rmCreatePieConstraint("northMapConstraint", 0.5, 0.5, 0, rmZFractionToMeters(0.5), rmDegreesToRadians(315), rmDegreesToRadians(135));
-	int Southward=rmCreatePieConstraint("southMapConstraint", 0.5, 0.5, 0, rmZFractionToMeters(0.5), rmDegreesToRadians(135), rmDegreesToRadians(315));
+	int Northward=rmCreateBoxConstraint("stay in the city", 0.5, 1.0, 1.0, 0.0);
+	int Southward=rmCreateBoxConstraint("stay in the city", 0.5, 1.0, 0.0, 0.0);
 	int Eastward=rmCreatePieConstraint("eastMapConstraint", 0.5, 0.5, 0, rmZFractionToMeters(0.5), rmDegreesToRadians(45), rmDegreesToRadians(225));
 	int Westward=rmCreatePieConstraint("westMapConstraint", 0.5, 0.5, 0, rmZFractionToMeters(0.5), rmDegreesToRadians(225), rmDegreesToRadians(45));
 
@@ -164,6 +164,7 @@ void main(void)
 	int mooseConstraint=rmCreateTypeDistanceConstraint("avoid the moose", "moose", 40.0);
 	int avoidSheep=rmCreateTypeDistanceConstraint("sheep avoids sheep", "sheep", 55.0);
     int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 11.0);
+    int avoidRandomBerries=rmCreateTypeDistanceConstraint("avoid random berries", "berrybush", 50.0);	//Attempting to spread them out more evenly.
 
 	// Decoration avoidance
 	int avoidAll=rmCreateTypeDistanceConstraint("avoid all", "all", 6.0);
@@ -177,7 +178,7 @@ void main(void)
 	int avoidTradeSockets = rmCreateTypeDistanceConstraint("avoid trade sockets", "sockettraderoute", 8.0);
 	int farAvoidTradeSockets = rmCreateTypeDistanceConstraint("far avoid trade sockets", "sockettraderoute", 12.0);
 	int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 6.0);
-    int avoidFish1=rmCreateTypeDistanceConstraint("fish v fish", fish1, 15.0);	
+    int avoidFish1=rmCreateTypeDistanceConstraint("fish v fish", fish1, 13.0);	
 	int HCspawnLand = rmCreateTerrainDistanceConstraint("HC spawn away from land", "land", true, 12.0);
 	int avoidTrainStationA = rmCreateTypeDistanceConstraint("avoid trainstation a", "spSocketTrainStationA", 8.0);
 	int avoidTrainStationB = rmCreateTypeDistanceConstraint("avoid trainstation b", "spSocketTrainStationB", 8.0);
@@ -191,7 +192,7 @@ void main(void)
 	int avoidDeepWater=rmCreateClassDistanceConstraint("stuff avoids deep water", classDeepWater, 30.0);
 	int avoidSocket=rmCreateTypeDistanceConstraint("avoid socket", "SocketTradeRoute", 10.0);
    	int avoidSocketLong=rmCreateTypeDistanceConstraint("avoid socket long", "Socket", 50.0);
-    int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 30);
+    int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 10);
 	int flagVsVenice1 = rmCreateTypeDistanceConstraint("flag avoid venice 1", "zpNativeWaterSpawnFlag1", 40.0);
   	int flagVsVenice2 = rmCreateTypeDistanceConstraint("flag avoid venice 2", "zpNativeWaterSpawnFlag2", 40.0);
 	int saltVsSalt = rmCreateTypeDistanceConstraint("salt avoid same", "zpSaltMineWater", 30);
@@ -355,12 +356,17 @@ void main(void)
 	rmAddObjectDefConstraint(socketID4, avoidPathBlock);
 
 	// Place Trade route sockets
-
-	if (cNumberNonGaiaPlayers <=4){
+    if (cNumberNonGaiaPlayers <=2){
+		rmPlaceObjectDefAtLoc(socketID, 0, 0.5+rmXTilesToFraction(2), 0.62);
+		rmPlaceObjectDefAtLoc(socketID2, 0, 0.5+rmXTilesToFraction(1), 0.11);
+		rmPlaceObjectDefAtLoc(socketID3, 0, 0.5-rmXTilesToFraction(19), 0.66);
+		rmPlaceObjectDefAtLoc(socketID4, 0, 0.5+rmXTilesToFraction(21), 0.35);
+	}
+	else if (cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==4){
 		rmPlaceObjectDefAtLoc(socketID, 0, 0.5+rmXTilesToFraction(1), 0.62);
 		rmPlaceObjectDefAtLoc(socketID2, 0, 0.5+rmXTilesToFraction(5), 0.11);
 		rmPlaceObjectDefAtLoc(socketID3, 0, 0.5-rmXTilesToFraction(20), 0.66);
-		rmPlaceObjectDefAtLoc(socketID4, 0, 0.5+rmXTilesToFraction(26), 0.35);
+		rmPlaceObjectDefAtLoc(socketID4, 0, 0.5+rmXTilesToFraction(24), 0.35);
 	}
 	else{
 		rmPlaceObjectDefAtLoc(socketID, 0, 0.5-rmXTilesToFraction(1), 0.62);
@@ -381,7 +387,7 @@ void main(void)
     rmSetGroupingMaxDistance(veniceSanMarco, 0.01);
 	rmAddGroupingToClass(veniceSanMarco, rmClassID("classPlateau"));
 
-	int veniceInstanceID1 = rmPlaceGroupingInstanceAtLoc(veniceSanMarco, rmXMetersToFraction(xsVectorGetX(ControllerLoc1))+rmXTilesToFraction(18), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1))+rmZTilesToFraction(15), 0);
+	int veniceInstanceID1 = rmPlaceGroupingInstanceAtLoc(veniceSanMarco, rmXMetersToFraction(xsVectorGetX(ControllerLoc1))+rmXTilesToFraction(20), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1))+rmZTilesToFraction(17), 0);
 
 	//San Giorgio
 	int veniceSanGiorgio = rmCreateGrouping("bridge2", "EU_Island_Venice_Academia");
@@ -389,7 +395,7 @@ void main(void)
     rmSetGroupingMaxDistance(veniceSanGiorgio, 0.00);
 	rmAddGroupingToClass(veniceSanGiorgio, rmClassID("classPlateau"));
 
-	int veniceInstanceID2 = rmPlaceGroupingInstanceAtLoc(veniceSanGiorgio, rmXMetersToFraction(xsVectorGetX(ControllerLoc2))-rmXTilesToFraction(17), rmZMetersToFraction(xsVectorGetZ(ControllerLoc2))+rmZTilesToFraction(25), 0);
+	int veniceInstanceID2 = rmPlaceGroupingInstanceAtLoc(veniceSanGiorgio, rmXMetersToFraction(xsVectorGetX(ControllerLoc2))-rmXTilesToFraction(17), rmZMetersToFraction(xsVectorGetZ(ControllerLoc2))+rmZTilesToFraction(22), 0);
 
 	// Academia
 	int veniceAcademia = rmCreateGrouping("bridge3", "EU_Island_Venice_SanGiorgi");
@@ -435,7 +441,8 @@ void main(void)
 	rmSetAreaWarnFailure(NorthIslandID, false);
     rmSetAreaMix(NorthIslandID, "italy_grass");
 		rmAddAreaTerrainLayer(NorthIslandID, "caribbean\ground_shoreline1_crb", 0, 3);
-    rmSetAreaElevationVariation(NorthIslandID, 4.0);
+    rmSetAreaElevationVariation(NorthIslandID, 3.0);
+    rmSetAreaElevationType(NorthIslandID, cElevTurbulence);
 	rmSetAreaElevationMinFrequency(NorthIslandID, 0.09);
 	rmSetAreaElevationOctaves(NorthIslandID, 3);
 	rmSetAreaElevationPersistence(NorthIslandID, 0.2);
@@ -477,7 +484,8 @@ void main(void)
 	rmSetAreaWarnFailure(SouthIslandID, false);
     rmSetAreaMix(SouthIslandID, "italy_grass");
 		rmAddAreaTerrainLayer(SouthIslandID, "caribbean\ground_shoreline1_crb", 0, 3);
-    rmSetAreaElevationVariation(SouthIslandID, 4.0);
+    rmSetAreaElevationVariation(SouthIslandID, 3.0);
+    rmSetAreaElevationType(SouthIslandID, cElevTurbulence);
 	rmSetAreaElevationMinFrequency(SouthIslandID, 0.09);
 	rmSetAreaElevationOctaves(SouthIslandID, 3);
 	rmSetAreaElevationPersistence(SouthIslandID, 0.2);
@@ -585,13 +593,23 @@ void main(void)
 
 		int waterSpawnPointID=rmCreateObjectDef("colony ship "+i);
 		rmAddObjectDefItem(waterSpawnPointID, "HomeCityWaterSpawnFlag", 1, 0.0);
-		rmAddClosestPointConstraint(flagVsFlag);
-		rmAddClosestPointConstraint(flagLand);
+        rmSetObjectDefMinDistance(waterSpawnPointID, 2.0);
+	    rmSetObjectDefMaxDistance(waterSpawnPointID, 20.0); 
+        rmAddObjectDefConstraint(waterSpawnPointID, flagLand);
+        rmAddObjectDefConstraint(waterSpawnPointID, flagVsFlag);
 
-		vector closestPoint = rmFindClosestPointVector(TCLocation, rmXFractionToMeters(1.0));
-		rmPlaceObjectDefAtLoc(waterSpawnPointID, i, rmXMetersToFraction(xsVectorGetX(closestPoint)), rmZMetersToFraction(xsVectorGetZ(closestPoint)));
-
-		rmClearClosestPointConstraints();
+        if (spawnSwitch ==0){
+            if(rmGetPlayerTeam(i) == 1)
+                rmPlaceObjectDefAtLoc(waterSpawnPointID, i, 0.5+rmXTilesToFraction(72), 0.5+rmZTilesToFraction(20));
+            else
+                rmPlaceObjectDefAtLoc(waterSpawnPointID, i, 0.5-rmXTilesToFraction(72), 0.5-rmZTilesToFraction(20));
+        }
+        else{
+            if(rmGetPlayerTeam(i) == 0)
+                rmPlaceObjectDefAtLoc(waterSpawnPointID, i, 0.5+rmXTilesToFraction(72), 0.5+rmZTilesToFraction(20));
+            else
+                rmPlaceObjectDefAtLoc(waterSpawnPointID, i, 0.5-rmXTilesToFraction(72), 0.5-rmZTilesToFraction(20));
+        }
 
 	}
 
@@ -634,7 +652,7 @@ void main(void)
 
 	// Forests
 	int forestTreeID = 0;
-	int numTries=6*cNumberNonGaiaPlayers;
+	int numTries=6+3*cNumberNonGaiaPlayers;
 	int failCount=0;
 	for (i=0; <numTries) {   
 		int forest=rmCreateArea("forest "+i);
@@ -655,6 +673,7 @@ void main(void)
 		rmAddAreaConstraint(forest, avoidAll);
 		rmAddAreaConstraint(forest, avoidTownCenter);
 		rmAddAreaConstraint(forest, avoidPlateauShort);
+        rmAddAreaConstraint(forest, Northward);
 		rmAddAreaConstraint(forest, shortAvoidImpassableLand); 
 		if(rmBuildArea(forest)==false) {
 		// Stop trying once we fail 3 times in a row.
@@ -668,6 +687,54 @@ void main(void)
 			failCount=0; 
 	} 
 
+    int failCount2=0;
+    for (i=0; <numTries) {   
+		int forest2=rmCreateArea("forest2 "+i);
+		rmSetAreaWarnFailure(forest2, false);
+		rmSetAreaSize(forest2, rmAreaTilesToFraction(150), rmAreaTilesToFraction(400));
+		rmSetAreaForestType(forest2, "Italian Forest");
+		rmSetAreaForestDensity(forest2, 0.6);
+		rmSetAreaForestClumpiness(forest2, 0.4);
+		rmSetAreaForestUnderbrush(forest2, 0.0);
+		rmSetAreaMinBlobs(forest2, 1);
+		rmSetAreaMaxBlobs(forest2, 5);
+		rmSetAreaMinBlobDistance(forest2, 16.0);
+		rmSetAreaMaxBlobDistance(forest2, 40.0);
+		rmSetAreaCoherence(forest2, 0.4);
+		rmSetAreaSmoothDistance(forest2, 10);
+		rmAddAreaToClass(forest2, rmClassID("classforest")); 
+		rmAddAreaConstraint(forest2, forestConstraint);
+		rmAddAreaConstraint(forest2, avoidAll);
+		rmAddAreaConstraint(forest2, avoidTownCenter);
+		rmAddAreaConstraint(forest2, avoidPlateauShort);
+        rmAddAreaConstraint(forest2, Southward);
+		rmAddAreaConstraint(forest2, shortAvoidImpassableLand); 
+		if(rmBuildArea(forest2)==false) {
+		// Stop trying once we fail 3 times in a row.
+		failCount2++;
+		
+		if(failCount2==5)
+			break;
+		}
+
+	else
+			failCount2=0; 
+	} 
+
+    // Scattered BERRRIES		
+	int berriesID=rmCreateObjectDef("random berries");
+	rmAddObjectDefItem(berriesID, "berrybush", rmRandInt(5,8), 6.0);  // (3,5) is unit count range.  10.0 is float cluster - the range area the objects can be placed.
+	rmSetObjectDefMinDistance(berriesID, 0.0);
+	rmSetObjectDefMaxDistance(berriesID, rmXFractionToMeters(0.5));
+	rmAddObjectDefConstraint(berriesID, avoidAll);
+	rmAddObjectDefConstraint(berriesID, avoidTownCenter);
+	rmAddObjectDefConstraint(berriesID, avoidAll);
+	rmAddObjectDefConstraint(berriesID, avoidRandomBerries);
+	rmAddObjectDefConstraint(berriesID, avoidImpassableLand);
+    rmAddObjectDefConstraint(berriesID, avoidWater10);
+	rmPlaceObjectDefInArea(berriesID, 0, NorthIslandID, cNumberNonGaiaPlayers);
+    rmPlaceObjectDefInArea(berriesID, 0, SouthIslandID, cNumberNonGaiaPlayers);
+
 	int food1ID=rmCreateObjectDef("huntable1");
 	rmAddObjectDefItem(food1ID, "Deer", rmRandInt(8,10), 6.0);
 	rmSetObjectDefCreateHerd(food1ID, true);
@@ -678,6 +745,7 @@ void main(void)
 	rmAddObjectDefConstraint(food1ID, avoidImpassableLand);
 	rmAddObjectDefConstraint(food1ID, southIslandConstraint);
 	rmAddObjectDefConstraint(food1ID, deerConstraint);
+    rmAddObjectDefConstraint(food1ID, avoidWater10);
 
 	int food2ID=rmCreateObjectDef("huntable2");
 	rmAddObjectDefItem(food2ID, "Deer", rmRandInt(8,10), 6.0);
@@ -689,6 +757,7 @@ void main(void)
 	rmAddObjectDefConstraint(food2ID, avoidImpassableLand);
 	rmAddObjectDefConstraint(food2ID, northIslandConstraint);
 	rmAddObjectDefConstraint(food2ID, deerConstraint);
+    rmAddObjectDefConstraint(food2ID, avoidWater10);
 
 	rmPlaceObjectDefAtLoc(food1ID, 0, 0.5, 0.5, 2*cNumberNonGaiaPlayers);
 	rmPlaceObjectDefAtLoc(food2ID, 0, 0.5, 0.5, 2*cNumberNonGaiaPlayers);
@@ -703,7 +772,8 @@ void main(void)
 	rmAddObjectDefConstraint(nuggetHard, avoidNuggets);
 	rmAddObjectDefConstraint(nuggetHard, avoidTownCenterFar);
 	rmAddObjectDefConstraint(nuggetHard, playerEdgeConstraint);
-	rmPlaceObjectDefInArea(nuggetHard, 0, SouthIslandID, cNumberNonGaiaPlayers/2);
+    rmAddObjectDefConstraint(nuggetHard, avoidWater20);
+	rmPlaceObjectDefInArea(nuggetHard, 0, SouthIslandID, 1+cNumberNonGaiaPlayers/2);
 
 	int nuggetHardNorth= rmCreateObjectDef("nugget hard north"); 
 	rmAddObjectDefItem(nuggetHardNorth, "Nugget", 1, 0.0);
@@ -713,7 +783,8 @@ void main(void)
 	rmAddObjectDefConstraint(nuggetHardNorth, avoidNuggets);
 	rmAddObjectDefConstraint(nuggetHardNorth, playerEdgeConstraint);
 	rmAddObjectDefConstraint(nuggetHardNorth, avoidTownCenterFar);
-	rmPlaceObjectDefInArea(nuggetHardNorth, 0, NorthIslandID, cNumberNonGaiaPlayers/2);
+    rmAddObjectDefConstraint(nuggetHardNorth, avoidWater20);
+	rmPlaceObjectDefInArea(nuggetHardNorth, 0, NorthIslandID, 1+cNumberNonGaiaPlayers/2);
 
 	int nuggetNorth= rmCreateObjectDef("nugget easy north"); 
 	rmAddObjectDefItem(nuggetNorth, "Nugget", 1, 0.0);
@@ -723,7 +794,8 @@ void main(void)
 	rmAddObjectDefConstraint(nuggetNorth, avoidAll);
 	rmAddObjectDefConstraint(nuggetNorth, avoidTownCenter);
 	rmAddObjectDefConstraint(nuggetNorth, playerEdgeConstraint);
-	rmPlaceObjectDefInArea(nuggetNorth, 0, SouthIslandID, cNumberNonGaiaPlayers);
+    rmAddObjectDefConstraint(nuggetNorth, avoidWater10);
+	rmPlaceObjectDefInArea(nuggetNorth, 0, SouthIslandID, 2+cNumberNonGaiaPlayers);
 
 	int nuggetSouth= rmCreateObjectDef("nugget easy south"); 
 	rmAddObjectDefItem(nuggetSouth, "Nugget", 1, 0.0);
@@ -733,7 +805,8 @@ void main(void)
 	rmAddObjectDefConstraint(nuggetSouth, avoidTownCenter);
 	rmAddObjectDefConstraint(nuggetSouth, avoidAll);
 	rmAddObjectDefConstraint(nuggetSouth, playerEdgeConstraint);
-	rmPlaceObjectDefInArea(nuggetSouth, 0, NorthIslandID, cNumberNonGaiaPlayers);
+    rmAddObjectDefConstraint(nuggetSouth, avoidWater10);
+	rmPlaceObjectDefInArea(nuggetSouth, 0, NorthIslandID, 2+cNumberNonGaiaPlayers);
 
 
 	// Fishes
@@ -886,10 +959,6 @@ void main(void)
 	for(i=1; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
-		rmSetTriggerEffectParam("TechID","cTechDEEnableTradeRouteWater"); // DEEneableTradeRouteWater
-		rmSetTriggerEffectParamInt("Status",2);
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechdeEUMapUpdateVisuals"); // Europen Map
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -903,6 +972,11 @@ void main(void)
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",0);
 	rmSetTriggerEffectParam("StringID","302124");
+	rmAddTriggerEffect("Trade Route Set Level");
+	rmSetTriggerEffectParamInt("TradeRoute",1);
+	rmSetTriggerEffectParamInt("Level",1);
+
+	// Change name does not work in RM, only in editor
 	rmAddTriggerEffect("Change Name");
 	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod1);
 	rmSetTriggerEffectParam("NewName","{302131}");
@@ -924,7 +998,7 @@ void main(void)
 	// Conversion Suspend
 	rmCreateTrigger("Buildings Convert OFF");
 	rmAddTriggerEffect("Unit Action Suspend");
-	/*rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod1);
+	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod1);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
 	rmSetTriggerEffectParam("Suspend", "True");
 	rmAddTriggerEffect("Unit Action Suspend");
@@ -934,7 +1008,7 @@ void main(void)
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod3);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");*/
+	rmSetTriggerEffectParam("Suspend", "True");
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod4);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
@@ -944,7 +1018,49 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
-	rmCreateTrigger("Socket 4 Convert ON");
+    rmCreateTrigger("Socket 1 Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+veniceNuggetMod1);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+veniceSocketMod1, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmAddTriggerEffect("Flash Units");
+	rmSetTriggerEffectParam("SrcObject", ""+veniceSocketMod1, false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+    rmCreateTrigger("Socket 2 Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+veniceNuggetMod2);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+veniceSocketMod2, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmAddTriggerEffect("Flash Units");
+	rmSetTriggerEffectParam("SrcObject", ""+veniceSocketMod2, false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Socket 3 Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+veniceNuggetMod3);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+veniceSocketMod3, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmAddTriggerEffect("Flash Units");
+	rmSetTriggerEffectParam("SrcObject", ""+veniceSocketMod3, false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+    rmCreateTrigger("Socket 4 Convert ON");
 	rmAddTriggerCondition("Nugget Is Collectable");
     rmSetTriggerConditionParam("NuggetObject", ""+veniceNuggetMod4);
 	rmAddTriggerEffect("Unit Action Suspend");
@@ -961,12 +1077,22 @@ void main(void)
 	// Victory Conditions
 
 	for(i = 1; < cNumberTeams+1){
+        rmCreateTrigger("TeamVictory"+i);
 		rmCreateTrigger("Victory_Counter"+i);
 		rmCreateTrigger("Victory_Counter_OFF"+i);
 	}
 
-	// Victory Counter
-	for(i = 1; < cNumberTeams+1){
+    for(i = 1; < cNumberTeams+1){
+        // Team Victory 
+		rmSwitchToTrigger(rmTriggerID("TeamVictory"+i));
+		rmAddTriggerEffect("Team Victory");
+        rmSetTriggerEffectParamInt("TeamID", i);
+        rmSetTriggerPriority(4); 
+        rmSetTriggerActive(false);
+        rmSetTriggerRunImmediately(true);
+        rmSetTriggerLoop(false);
+
+        // Victory Counter
 		rmSwitchToTrigger(rmTriggerID("Victory_Counter"+i));
 		rmAddTriggerCondition("Team Unit Count");
 		rmSetTriggerConditionParamInt("TeamID",i);
@@ -2425,6 +2551,7 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
 
 
 
