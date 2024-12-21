@@ -46027,53 +46027,55 @@
     <dbid>20614</dbid>
     <displaynameid>300730</displaynameid>
     <editornameid>302160</editornameid>
-    <subciv>zpVenetians</subciv>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>air</movementtype>
     <animfile>buildings\native_settlement\venetian_buildings4.xml</animfile>
-    <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
-    <initialhitpoints>1560.0000</initialhitpoints>
-    <maxhitpoints>1560.0000</maxhitpoints>
-    <los>9.0000</los>
-    <buildpoints>5.0000</buildpoints>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\house\house_icon.png</icon>
+    <portraiticon>resources\art\buildings\house\house_portrait.png</portraiticon>
+    <civflagoverride>objects\flags\italian</civflagoverride>
+    <rollovertextid>41971</rollovertextid>
+    <shortrollovertextid>41970</shortrollovertextid>
+    <initialhitpoints>1200.0000</initialhitpoints>
+    <maxhitpoints>1200.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>10.0000</buildpoints>
+    <buildlimit>20</buildlimit>
+    <bounty>40.0000</bounty>
+    <buildbounty>20.0000</buildbounty>
+    <cost resourcetype="Wood">100.0000</cost>
     <buildingworkrate>1.0000</buildingworkrate>
-    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
-    </minimapcolor>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <buildingworkrate>0.5000</buildingworkrate>
     <unittype>BuildingClass</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>NativeBuilding</unittype>
     <unittype>Building</unittype>
-    <unittype>AbstractCityManisonB</unittype>
+    <unittype>AbstractCityManison</unittype>
     <flag>TieToWaterSurface</flag>
-    <flag>Doppled</flag>
-    <flag>PaintTextureWhenPlacing</flag>
-    <flag>InvulnerableIfGaia</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>DoNotDieAtZeroHitpoints</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>Immoveable</flag>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>HideHitpointsIfGaia</flag>
-    <flag>RMCanRotate</flag>
-    <flag>HasGatherPoint</flag>
-    <flag>VisibleUnderFogIfGaia</flag>
-    <flag>ColorTransformNonGaia</flag>
-    <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
     <flag>Tracked</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>Invulnerable</flag>
+    <flag>StartOnNoUpdate</flag>
   </unit>
 
 

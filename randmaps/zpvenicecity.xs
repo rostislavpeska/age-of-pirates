@@ -93,6 +93,7 @@ void main(void)
 	int classStartingResource = rmDefineClass("startingResource");
     int classMountains=rmDefineClass("mountains");
 	int classPortSite=rmDefineClass("portSite");
+	int classBlock=rmDefineClass("classBlock");
 
 	// -------------Define constraints
 	// These are used to have objects and areas avoid each other
@@ -101,9 +102,9 @@ void main(void)
 	int playerEdgeConstraint=rmCreateBoxConstraint("player edge of map", rmXTilesToFraction(10), rmZTilesToFraction(10), 1.0-rmXTilesToFraction(10), 1.0-rmZTilesToFraction(10), 0.01);
 	int longPlayerEdgeConstraint=rmCreateBoxConstraint("long avoid edge of map", rmXTilesToFraction(20), rmZTilesToFraction(20), 1.0-rmXTilesToFraction(20), 1.0-rmZTilesToFraction(20), 0.01);
 	
-    int avoidWater10 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 2.0);
-	int avoidWater20 = rmCreateTerrainDistanceConstraint("avoid water medium", "Land", false, 10.0);
-	int avoidWater30 = rmCreateTerrainDistanceConstraint("avoid water long", "Land", false, 15.0);
+    int avoidWater10 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 10.0);
+	int avoidWater20 = rmCreateTerrainDistanceConstraint("avoid water medium", "Land", false, 20.0);
+	int avoidWater30 = rmCreateTerrainDistanceConstraint("avoid water long", "Land", false, 30.0);
 	int centerConstraint=rmCreateClassDistanceConstraint("stay away from center", rmClassID("center"), 30.0);
 	int centerConstraintFar=rmCreateClassDistanceConstraint("stay away from center far", rmClassID("center"), 60.0);
 	int circleConstraint=rmCreatePieConstraint("circle Constraint", 0.5, 0.5, 0, rmZFractionToMeters(0.47), rmDegreesToRadians(0), rmDegreesToRadians(360));
@@ -133,7 +134,7 @@ void main(void)
 	int forestObjConstraint=rmCreateTypeDistanceConstraint("forest obj", "all", 6.0);
 	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 25.0);
 	int avoidResource=rmCreateTypeDistanceConstraint("resource avoid resource", "resource", 20.0);
-	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "Mine", 50.0);
+	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "Mine", 30.0);
 	int shortAvoidCoin=rmCreateTypeDistanceConstraint("short avoid coin", "gold", 10.0);
 	int avoidStartResource=rmCreateTypeDistanceConstraint("start resource no overlap", "resource", 10.0);
     int avoidMountains=rmCreateClassDistanceConstraint("stuff avoids mountains", classMountains, 20.0);
@@ -177,7 +178,7 @@ void main(void)
 	int avoidTradeSockets = rmCreateTypeDistanceConstraint("avoid trade sockets", "sockettraderoute", 8.0);
 	int farAvoidTradeSockets = rmCreateTypeDistanceConstraint("far avoid trade sockets", "sockettraderoute", 12.0);
 	int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 6.0);
-    int avoidFish1=rmCreateTypeDistanceConstraint("fish v fish", fish1, 13.0);	
+    int avoidFish1=rmCreateTypeDistanceConstraint("fish v fish", fish1, 10.0);	
 	int HCspawnLand = rmCreateTerrainDistanceConstraint("HC spawn away from land", "land", true, 12.0);
 	int avoidTrainStationA = rmCreateTypeDistanceConstraint("avoid trainstation a", "spSocketTrainStationA", 8.0);
 	int avoidTrainStationB = rmCreateTypeDistanceConstraint("avoid trainstation b", "spSocketTrainStationB", 8.0);
@@ -229,6 +230,7 @@ void main(void)
     int circleConstraint2=rmCreatePieConstraint("circle Constraint2", 0.5, 0.5, 0, rmZFractionToMeters(0.48), rmDegreesToRadians(0), rmDegreesToRadians(360));
 	int avoidFixedGun=rmCreateTypeDistanceConstraint("avoid fixed gun", "zpSPCFixedGunSocket", 20.0);
 	int avoidBuilding=rmCreateTypeDistanceConstraint("avoid building", "Building", 20.0);
+	int avoidBlockLong =rmCreateClassDistanceConstraint("stuff vs. blocks long", rmClassID("classBlock"), 10.0);
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.10);
@@ -588,7 +590,8 @@ void main(void)
 			rmBuildArea(playerID); 
 
 			int playerFortID = -1;
-			playerFortID = rmCreateGrouping("player fort", "malta_player_fort");      
+			playerFortID = rmCreateGrouping("player fort", "malta_player_fort");
+			rmAddGroupingToClass(playerFortID, rmClassID("classBlock"));  
 			rmPlaceGroupingAtLoc(playerFortID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i), 1);
 		}
 
@@ -604,11 +607,12 @@ void main(void)
 			rmAddObjectDefConstraint(startID, avoidWater20);
 
 			rmPlaceObjectDefAtLoc(startID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
-			rmPlaceObjectDefAtLoc(playerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 			rmPlaceObjectDefAtLoc(foodID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 			rmPlaceObjectDefAtLoc(goldID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 			rmPlaceObjectDefAtLoc(berryID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 		}
+
+		rmPlaceObjectDefAtLoc(playerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 
 		vector TCLocation=rmGetUnitPosition(rmGetUnitPlacedOfPlayer(startID, i));
 
@@ -641,7 +645,7 @@ void main(void)
 
 	// Mines
 
-	for(i=0; < cNumberNonGaiaPlayers){
+	for(i=0; < cNumberNonGaiaPlayers*1.5){
 		int northMineID = rmCreateObjectDef("north mine "+i);
 		rmAddObjectDefItem(northMineID, "Mine", 1, 0.0);
 		rmSetObjectDefMinDistance(northMineID, 0.0);
@@ -652,11 +656,12 @@ void main(void)
 		rmAddObjectDefConstraint(northMineID, avoidWater10);
 		rmAddObjectDefConstraint(northMineID, northIslandConstraint);
 		rmAddObjectDefConstraint(northMineID, playerEdgeConstraint);
+		rmAddObjectDefConstraint(northMineID, avoidBlockLong);
 		rmPlaceObjectDefAtLoc(northMineID, 0, 0.5, 0.5);
 
 	} 
 
-	for(i=0; < cNumberNonGaiaPlayers){
+	for(i=0; < cNumberNonGaiaPlayers*1.5){
 		int southMineID = rmCreateObjectDef("south mine "+i);
 		rmAddObjectDefItem(southMineID, "Mine", 1, 0.0);
 		rmSetObjectDefMinDistance(southMineID, 0.0);
@@ -667,6 +672,7 @@ void main(void)
 		rmAddObjectDefConstraint(southMineID, avoidWater10);
 		rmAddObjectDefConstraint(southMineID, southIslandConstraint);
 		rmAddObjectDefConstraint(southMineID, playerEdgeConstraint);
+		rmAddObjectDefConstraint(southMineID, avoidBlockLong);
 		rmPlaceObjectDefAtLoc(southMineID, 0, 0.5, 0.5);
 
 	}
@@ -753,6 +759,7 @@ void main(void)
 	rmAddObjectDefConstraint(berriesID, avoidRandomBerries);
 	rmAddObjectDefConstraint(berriesID, avoidImpassableLand);
     rmAddObjectDefConstraint(berriesID, avoidWater10);
+	rmAddObjectDefConstraint(berriesID, avoidBlockLong);
 	rmPlaceObjectDefInArea(berriesID, 0, NorthIslandID, cNumberNonGaiaPlayers);
     rmPlaceObjectDefInArea(berriesID, 0, SouthIslandID, cNumberNonGaiaPlayers);
 
@@ -767,6 +774,7 @@ void main(void)
 	rmAddObjectDefConstraint(food1ID, southIslandConstraint);
 	rmAddObjectDefConstraint(food1ID, deerConstraint);
     rmAddObjectDefConstraint(food1ID, avoidWater10);
+	rmAddObjectDefConstraint(food1ID, avoidBlockLong);
 
 	int food2ID=rmCreateObjectDef("huntable2");
 	rmAddObjectDefItem(food2ID, "Deer", rmRandInt(8,10), 6.0);
@@ -779,6 +787,7 @@ void main(void)
 	rmAddObjectDefConstraint(food2ID, northIslandConstraint);
 	rmAddObjectDefConstraint(food2ID, deerConstraint);
     rmAddObjectDefConstraint(food2ID, avoidWater10);
+	rmAddObjectDefConstraint(food2ID, avoidBlockLong);
 
 	rmPlaceObjectDefAtLoc(food1ID, 0, 0.5, 0.5, 2*cNumberNonGaiaPlayers);
 	rmPlaceObjectDefAtLoc(food2ID, 0, 0.5, 0.5, 2*cNumberNonGaiaPlayers);
@@ -794,6 +803,7 @@ void main(void)
 	rmAddObjectDefConstraint(nuggetHard, avoidTownCenterFar);
 	rmAddObjectDefConstraint(nuggetHard, playerEdgeConstraint);
     rmAddObjectDefConstraint(nuggetHard, avoidWater20);
+	rmAddObjectDefConstraint(nuggetHard, avoidBlockLong);
 	rmPlaceObjectDefInArea(nuggetHard, 0, SouthIslandID, 1+cNumberNonGaiaPlayers/2);
 
 	int nuggetHardNorth= rmCreateObjectDef("nugget hard north"); 
@@ -805,6 +815,7 @@ void main(void)
 	rmAddObjectDefConstraint(nuggetHardNorth, playerEdgeConstraint);
 	rmAddObjectDefConstraint(nuggetHardNorth, avoidTownCenterFar);
     rmAddObjectDefConstraint(nuggetHardNorth, avoidWater20);
+	rmAddObjectDefConstraint(nuggetHardNorth, avoidBlockLong);
 	rmPlaceObjectDefInArea(nuggetHardNorth, 0, NorthIslandID, 1+cNumberNonGaiaPlayers/2);
 
 	int nuggetNorth= rmCreateObjectDef("nugget easy north"); 
@@ -816,6 +827,7 @@ void main(void)
 	rmAddObjectDefConstraint(nuggetNorth, avoidTownCenter);
 	rmAddObjectDefConstraint(nuggetNorth, playerEdgeConstraint);
     rmAddObjectDefConstraint(nuggetNorth, avoidWater10);
+	rmAddObjectDefConstraint(nuggetNorth, avoidBlockLong);
 	rmPlaceObjectDefInArea(nuggetNorth, 0, SouthIslandID, 2+cNumberNonGaiaPlayers);
 
 	int nuggetSouth= rmCreateObjectDef("nugget easy south"); 
@@ -827,6 +839,7 @@ void main(void)
 	rmAddObjectDefConstraint(nuggetSouth, avoidAll);
 	rmAddObjectDefConstraint(nuggetSouth, playerEdgeConstraint);
     rmAddObjectDefConstraint(nuggetSouth, avoidWater10);
+	rmAddObjectDefConstraint(nuggetSouth, avoidBlockLong);
 	rmPlaceObjectDefInArea(nuggetSouth, 0, NorthIslandID, 2+cNumberNonGaiaPlayers);
 
 
@@ -840,7 +853,7 @@ void main(void)
 	rmAddObjectDefConstraint(fishID, fishLand);
 	rmAddObjectDefConstraint(fishID, avoidBuilding);
 	rmAddObjectDefConstraint(fishID, avoidPathBlock);
-	rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 50);
+	rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 70);
 
 	// ____________________ LOCAL MERCENARIES ____________________
 	rmDisableDefaultMercs(true);
@@ -2572,7 +2585,6 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
-
 
 
 
