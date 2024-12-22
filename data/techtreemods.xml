@@ -19358,34 +19358,17 @@
     <dbid>40831</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
     <effects>
       <effect civ="SPCJesuit" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="ypNatMercConquistador" relativity="Absolute">
-        <target type="ProtoUnit">zpConquistadorMercIcon</target>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConquistador</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">ypNatMercConquistador</target>
-      </effect>
-      <effect type="Data" amount="2.00" subtype="PopulationCount" relativity="Assign">
-        <target type="ProtoUnit">ypNatMercConquistador</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMercConquistadorMusketeer" relativity="Absolute">
-        <target type="ProtoUnit">zpConquistadorMusketeerMercIcon</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatMercConquistadorMusketeer</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Assign">
-        <target type="ProtoUnit">zpNatMercConquistadorMusketeer</target>
-      </effect>
-      <effect type="Data" amount="10.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">ypNatMercConquistador</target>
-      </effect>
-      <effect type="Data" amount="15.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">zpNatMercConquistadorMusketeer</target>
+        <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpNatDisciplinedJesuit</effect>
       <effect type="TechStatus" status="obtainable">zpNatHonoredJesuit</effect>
@@ -19398,34 +19381,17 @@
     <dbid>40832</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
     <effects>
       <effect civ="Maltese" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMercMalteseKnight" relativity="Absolute">
-        <target type="ProtoUnit">zpMalteseKnightMercIcon</target>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMalteseKnight</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatMercMalteseKnight</target>
-      </effect>
-      <effect type="Data" amount="2.00" subtype="PopulationCount" relativity="Assign">
-        <target type="ProtoUnit">zpNatMercMalteseKnight</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMercMalteseGuard" relativity="Absolute">
-        <target type="ProtoUnit">zpMalteseGuardMercIcon</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatMercMalteseGuard</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Assign">
-        <target type="ProtoUnit">zpNatMercMalteseGuard</target>
-      </effect>
-      <effect type="Data" amount="12.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">zpNatMercMalteseGuard</target>
-      </effect>
-      <effect type="Data" amount="9.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">zpNatMercMalteseKnight</target>
+        <target type="ProtoUnit">zpNatMalteseGuard</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpNatDisciplinedMaltese</effect>
       <effect type="TechStatus" status="obtainable">zpNatHonoredMaltese</effect>
@@ -19438,34 +19404,17 @@
     <dbid>40833</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
     <effects>
       <effect civ="zpOrthodox" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMercBulgarianBoyar" relativity="Absolute">
-        <target type="ProtoUnit">zpBulgarianBoyarMercIcon</target>
-      </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatMercBulgarianBoyar</target>
+        <target type="ProtoUnit">zpNatBulgarianBoyar</target>
       </effect>
-      <effect type="Data" amount="2.00" subtype="PopulationCount" relativity="Assign">
-        <target type="ProtoUnit">zpNatMercBulgarianBoyar</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMercWarriorMonk" relativity="Absolute">
-        <target type="ProtoUnit">zpWarriorMonkMercIcon</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatMercWarriorMonk</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Assign">
-        <target type="ProtoUnit">zpNatMercWarriorMonk</target>
-      </effect>
-      <effect type="Data" amount="8.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">zpNatMercBulgarianBoyar</target>
-      </effect>
-      <effect type="Data" amount="13.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">zpNatMercWarriorMonk</target>
+            <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatWarriorMonk</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpNatDisciplinedOrthodox</effect>
       <effect type="TechStatus" status="obtainable">zpNatHonoredOrthodox</effect>
@@ -19633,6 +19582,254 @@
     <effects>
       <effect type="Data" amount="0.50" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">SPCFortGate</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeAuditore" type="Normal">
+    <dbid>40842</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatPavisier</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatVeteranAuditore</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGuardAuditore</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBorgiaConspiracy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGuerillaWarfare</effect>
+      <effect type="TechStatus" status="obtainable">zpNatMasterAssassin</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+
+    </effects>
+  </tech>
+  <tech name ="zpNatVeteranAuditore" type ="Normal">
+		<dbid>40843</dbid>
+		<displaynameid>302161</displaynameid>
+		<cost resourcetype ="Food">200.0000</cost>
+		<cost resourcetype ="Gold">100.0000</cost>
+		<researchpoints>10.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
+		<rollovertextid>302163</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>UpgradeTech</flag>
+    <flag>DENativeUnitUpgrade</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+		<prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+		<effects>
+			<effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatPavisier</target></effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatPavisier</target></effect>
+			<effect type ="SetName" proto ="zpNatPavisier" culture ="none" newname ="302164"></effect>
+      <effect type="SetName" proto="zpNatPavisier" culture="none" newname="302166" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+		</effects>
+	</tech>
+   <tech name ="zpNatGuardAuditore" type ="Normal">
+		<dbid>40844</dbid>
+		<displaynameid>302162</displaynameid>
+		<cost resourcetype ="Food">400.0000</cost>
+		<cost resourcetype ="Gold">300.0000</cost>
+		<researchpoints>10.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
+		<rollovertextid>302163</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>UpgradeTech</flag>
+    <flag>DENativeUnitUpgrade</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+		<prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+			<techstatus status ="active">zpNatVeteranAuditore</techstatus>
+		</prereqs>
+		<effects>
+			<effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatPavisier</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatPavisier</target></effect>
+			<effect type ="SetName" proto ="zpNatPavisier" culture ="none" newname ="302165">
+      </effect>
+      <effect type="SetName" proto="zpNatPavisier" culture="none" newname="302166" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+			<effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatAssassin</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatAssassin</target></effect>
+			<effect type ="SetName" proto ="zpNatAssassin" culture ="none" newname ="302168"></effect>
+      <effect type="SetName" proto="zpNatAssassin" culture="none" newname="302167" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+		</effects>
+	</tech>
+
+  <!--Veteran Native techs-->
+  <tech name="DEVeteranNativesShadow">
+    <effects>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatAssassin</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatAssassin</target>
+      </effect>
+    </effects>
+	</tech>
+
+  <tech name="zpUnlockPalazzoAuditore" type="Normal">
+    <dbid>40845</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect civ="Auditore" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatAssassin</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatPavisier</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatVeteranAuditore</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGuardAuditore</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBorgiaConspiracy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGuerillaWarfare</effect>
+      <effect type="TechStatus" status="obtainable">zpNatMasterAssassin</effect>
+    </effects>
+  </tech>
+  <tech name="zpLockPalazzoAuditore" type="Normal">
+    <dbid>40845</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect civ="Auditore" type="Data" amount="0.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatAssassin</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatPavisier</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpLockCathedralJesuit" type="Normal">
+    <dbid>40846</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect civ="SPCJesuit" type="Data" amount="0.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConquistador</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpLockCathedralMaltese" type="Normal">
+    <dbid>40847</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect civ="Maltese" type="Data" amount="0.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMalteseKnight</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMalteseGuard</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpLockCathedralOrthodox" type="Normal">
+    <dbid>40848</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect civ="zpOrthodox" type="Data" amount="0.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatBulgarianBoyar</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatWarriorMonk</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatBorgiaConspiracy" type="Normal">
+    <dbid>40849</dbid>
+    <displaynameid>302170</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\borgia_conspiracy.png</icon>
+    <rollovertextid>302171</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="Building" resource="Gold" extrabounty="true" bountyrate="40.00" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatGuerillaWarfare" type="Normal">
+    <dbid>40850</dbid>
+    <displaynameid>302172</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\guerilla_warfare.png</icon>
+    <rollovertextid>302173</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="0.9" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractInfantry</target>
+      </effect>
+      <effect type="Data" amount="0.9" subtype="Cost" resource="Food" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractInfantry</target>
+      </effect>
+      <effect type="Data" amount="0.9" subtype="Cost" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractInfantry</target>
+      </effect>
+      <effect type="Data" amount="0.9" subtype="Cost" resource="Influence" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractInfantry</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatMasterAssassin" type="Normal">
+    <dbid>40850</dbid>
+    <displaynameid>302174</displaynameid>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\master_assassin.png</icon>
+    <rollovertextid>302175</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCEzio" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>

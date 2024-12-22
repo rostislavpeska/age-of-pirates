@@ -2127,8 +2127,8 @@
       <string _locid="302126">ZP GRD Revolutionary</string>
       <string _locid="302127">Cardinal's Guard</string>
       <string _locid="302128">ZP GRD Cardinal's Guard</string>
-      <string _locid="302129">Venice Mercenary Guardian</string>
-      <string _locid="302130">ZP GRD Venetian Mercenary</string>
+      <string _locid="302129">Arbalist</string>
+      <string _locid="302130">ZP NAT Arbalist</string>
       <string _locid="302131">San Marco (Venice District)</string>
       <string _locid="302132">San Polo (Venice District)</string>
       <string _locid="302133">San Giorgio (Venice District)</string>
@@ -2159,7 +2159,24 @@
       <string _locid="302158">Achieve a Team Victory by capturing and holding the majority of the Venetian Districts. \n\nNative Settlements: Venetians \n\nShadow aliances: Maltese, Jesuit, Orthodox, House of Auditore</string>
       <string _locid="302159">District of Venice</string>
       <string _locid="302160">ZP Venetian House 4</string>
-
+      <string _locid="302161">Veteran auditore</string>
+      <string _locid="302162">Auditore Guard</string>
+      <string _locid="302163">Improves House of Auditore unit attack and hitpoints</string>
+      <string _locid="302164">Veteran Arbalist</string>
+      <string _locid="302165">Guard Arbalist</string>
+      <string _locid="302166">Legendary Arbalist</string>
+      <string _locid="302167">Legendary Assassin</string>
+      <string _locid="302168">Assassin Guard</string>
+      <string _locid="302169">Assassin Brotherhood member</string>
+      <string _locid="302170">Borgia Conspiracy</string>
+      <string _locid="302171">Get 40 Gold for every building you destroy in the future.</string>
+      <string _locid="302172">Guerilla Warfare</string>
+      <string _locid="302173">Reduces all infantry conts by 10%</string>
+      <string _locid="302174">Master Assassin</string>
+      <string _locid="302175">Ships Ezio Auditore hero</string>
+      <string _locid="302176">Ezio Auditore (Master Assassin)</string>
+      <string _locid="302177">ZP SPC Ezio</string>
+      <string _locid="302178">Master Assassin</string>
 
     
       <!-- ======================================== -->
