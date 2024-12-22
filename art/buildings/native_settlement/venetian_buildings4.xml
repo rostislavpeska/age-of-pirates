@@ -18,6 +18,6 @@
     </component>
     <anim>Idle
         <component>generic_a</component>
-        <attach a="chimney_smoke" frombone="master" tobone="bone_chimney" syncanims="0"></attach>
+        <!--<attach a="chimney_smoke" frombone="bone_chimney" tobone="bone_chimney" syncanims="0"></attach>-->
     </anim>
 </animfile>

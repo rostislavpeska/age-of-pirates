@@ -93,6 +93,7 @@
     <ability>zpNatPowerRoyalMarch<tech>Colonialize</tech><subciv>SPCBourbon</subciv><activetimecooldown>true</activetimecooldown><rof>275.0</rof><castonself>true</castonself></ability>
     <ability>zpPowerBourbonExpansion<tech>zpNatBourbonBigbuttonDisableShadow</tech><subciv>SPCBourbon</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
     <ability>zpPowerSansculotteExpansion<tech>zpNatSansculotteBigbuttonDisableShadow</tech><subciv>zpSansculottes</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>    
+    <ability>zpAuditoreLighthouse<tech>Colonialize</tech><subciv>Auditore</subciv><rof>120.0</rof><castonself>true</castonself></ability>
   </tradingpost>
   <zparmoredtraingun>
     <ability>dePowerPeninsularFixedGunLongRangeAttack<rof>60</rof><tech>zpArmoredTrainImprove</tech></ability>

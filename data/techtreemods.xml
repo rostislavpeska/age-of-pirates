@@ -19611,6 +19611,7 @@
       <effect type="TechStatus" status="obtainable">zpNatGuerillaWarfare</effect>
       <effect type="TechStatus" status="obtainable">zpNatMasterAssassin</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpAuditoreLighthouse</effect>
 
     </effects>
   </tech>
@@ -19843,6 +19844,27 @@
         </target>
       </effect>
     </effects>
+  </tech>
+  <tech name="zpNativeAuditoreColonialize" type="Normal">
+    <dbid>40843</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpAuditoreLighthouse</effect>
+    </effects>
+  </tech>
+  <tech name="zpAuditoreLighthouse" type="Normal">
+    <dbid>40854</dbid>
+    <displaynameid>302181</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\abilities\eagle_vision.png</icon>
+    <rollovertextid>300625</rollovertextid>
+    <flag>YPNoTextMessage</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEHideAdvancedRollover</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
   </tech>
  
 

@@ -1269,6 +1269,7 @@
     <tech row="0" page="2" column="0">zpNatBorgiaConspiracy</tech>
     <tech row="0" page="2" column="1">zpNatGuerillaWarfare</tech>
     <tech row="0" page="2" column="2">zpNatMasterAssassin</tech>
+    <tech row="0" page="0" column="4">zpAuditoreLighthouse</tech>
 
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia1</tech>
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia2</tech>
@@ -1288,6 +1289,7 @@
     <command page="0" column="20">zpNatArmoredTrainDisabled</command>
     <command page="0" column="20">zpNatArmoredTrainNoResource</command>
     <command page="0" column="4">zpNatBourbonRoyalMarchSmall</command>
+    <command page="0" column="4">zpAuditoreLighthouseSmall</command>
     <command page="1" column="1">zpBourbonExpansionFake</command>
     <command page="1" column="1">zpSansculottexpansionFake</command>
     <protoaction>
