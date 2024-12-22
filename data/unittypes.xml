@@ -25,4 +25,5 @@
   <unittype>AbstractImportantCityBuilding</unittype>
   <unittype>zpAbstractHeroMusketeer</unittype>
   <unittype>AbstractCityManisonB</unittype>
+  <unittype>zpAbstractAssassin</unittype>
 </unittypes>

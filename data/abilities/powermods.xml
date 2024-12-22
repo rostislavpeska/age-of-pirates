@@ -353,6 +353,12 @@
     <icon>resources\images\icons\abilities\passive_battle_bluster.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
+  <power name="zpAssassinBrotherhood" type="UnitAction">
+    <displaynameid>302179</displaynameid>
+    <rolloverid>302180</rolloverid>
+    <icon>resources\images\icons\abilities\assassin_brotherhood.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
 
 
 

@@ -249,6 +249,12 @@
   <zpnatmercconquistadormusketeer>
     <ability>dePromotionHpDMG<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpnatmercconquistadormusketeer>
+  <zpspcezio>
+    <ability>ypPowerHeavenlyFireBomb<rof>120</rof></ability>
+    <ability>ypPowerSmokeBomb<rof>60</rof><castonself>true</castonself></ability>
+    <ability>zpAssassinBrotherhood<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcezio>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

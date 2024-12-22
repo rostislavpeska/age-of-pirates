@@ -4854,7 +4854,7 @@
     </protoaction>
     <protoaction>
       <name>Build</name>
-      <rate type="Outpost">2.500000</rate>
+      <rate type="Building">1.500000</rate>
       <rate type="TradingPost">5.000000</rate>
     </protoaction>
     <protoaction>
@@ -43751,6 +43751,7 @@
     <unittype>AbstractHandInfantry</unittype>
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractCoyoteMan</unittype>
+    <unittype>zpAbstractAssassin</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -43780,24 +43781,24 @@
       <damage>6.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.250000</rof>
-      <damagebonus type="Mercenary">20.000000</damagebonus>
-      <damagebonus type="Hero">40.000000</damagebonus>
+      <damagebonus type="Mercenary">10.000000</damagebonus>
+      <damagebonus type="Hero">20.000000</damagebonus>
     </protoaction>
     <protoaction>
       <name>DefendHandAttack</name>
       <damage>12.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.250000</rof>
-      <damagebonus type="Mercenary">20.000000</damagebonus>
-      <damagebonus type="Hero">40.000000</damagebonus>
+      <damagebonus type="Mercenary">10.000000</damagebonus>
+      <damagebonus type="Hero">20.000000</damagebonus>
     </protoaction>
     <protoaction>
       <name>MeleeHandAttack</name>
       <damage>12.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.250000</rof>
-      <damagebonus type="Mercenary">20.000000</damagebonus>
-      <damagebonus type="Hero">40.000000</damagebonus>
+      <damagebonus type="Mercenary">10.000000</damagebonus>
+      <damagebonus type="Hero">20.000000</damagebonus>
     </protoaction>
   </unit>
   <unit id="20576" name="zpVenetianWaterSpawnFlag3">
@@ -46137,7 +46138,7 @@
     <buildingworkrate>0.5000</buildingworkrate>
     <unittype>BuildingClass</unittype>
     <unittype>Building</unittype>
-    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractCityManisonB</unittype>
     <flag>TieToWaterSurface</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>CollidesWithProjectiles</flag>
@@ -46171,15 +46172,15 @@
     <maxrunvelocity>8.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\natives\auditore\assassin.xml</animfile>
+    <animfile>units\natives\auditore\ezio.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
-    <icon>resources\art\units\natives\auditore_assassin_icon.png</icon>
-    <portraiticon>resources\art\units\natives\auditore_assassin.png</portraiticon>
+    <icon>resources\art\units\heroes\ezio.png</icon>
+    <portraiticon>resources\art\units\heroes\ezio.png</portraiticon>
     <rollovertextid>302178</rollovertextid>
     <shortrollovertextid>302169</shortrollovertextid>
-    <initialhitpoints>160.0000</initialhitpoints>
-    <maxhitpoints>160.0000</maxhitpoints>
+    <initialhitpoints>800.0000</initialhitpoints>
+     <maxhitpoints>800.0000</maxhitpoints>
     <los>12.0000</los>
     <unitaitype>HandCombative</unitaitype>
     <trainpoints>30.0000</trainpoints>
@@ -46215,6 +46216,11 @@
     <unittype>AbstractHandInfantry</unittype>
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractCoyoteMan</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>ExcludeFromRansom</unittype>
+    <unittype>Hero</unittype>
+    <train row="0" page="6" column="0">TradingPost</train>
+    <train row="0" page="6" column="1">zpNatAssassin</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -46223,45 +46229,62 @@
     <flag>ObscuredByUnits</flag>
     <flag>VisibleUnderFogIfGaia</flag>
     <flag>Tracked</flag>
+    <flag>KnockoutDeath</flag>
+    <flag>NotDeleteable</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
-    <command page="10" column="7">Delete</command>
-    <tactics>auditoreassassin.tactics</tactics>
+    <command page="11">Abilities</command>
+    <tactics>ezio.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
-      <damage>35.000000</damage>
+      <damage>42.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
     </protoaction>
     <protoaction>
       <name>CoverBuildingAttack</name>
-      <damage>18.000000</damage>
+      <damage>20.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
     </protoaction>
     <protoaction>
       <name>CoverHandAttack</name>
-      <damage>6.000000</damage>
+      <damage>8.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.250000</rof>
-      <damagebonus type="Mercenary">20.000000</damagebonus>
-      <damagebonus type="Hero">40.000000</damagebonus>
+      <damagebonus type="Mercenary">10.000000</damagebonus>
+      <damagebonus type="Hero">20.000000</damagebonus>
     </protoaction>
     <protoaction>
       <name>DefendHandAttack</name>
-      <damage>12.000000</damage>
+      <damage>14.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.250000</rof>
-      <damagebonus type="Mercenary">20.000000</damagebonus>
-      <damagebonus type="Hero">40.000000</damagebonus>
+      <damagebonus type="Mercenary">10.000000</damagebonus>
+      <damagebonus type="Hero">20.000000</damagebonus>
     </protoaction>
     <protoaction>
       <name>MeleeHandAttack</name>
-      <damage>12.000000</damage>
+      <damage>14.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.250000</rof>
-      <damagebonus type="Mercenary">20.000000</damagebonus>
-      <damagebonus type="Hero">40.000000</damagebonus>
+      <damagebonus type="Mercenary">10.000000</damagebonus>
+      <damagebonus type="Hero">20.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>Build</name>
+      <rate type="Building">1.000000</rate>
+      <rate type="TradingPost">5.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>HeavenlyFireBomb</name>
+      <damage>250.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="Building">3.000000</damagebonus>
+      <damagearea>4.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
 
