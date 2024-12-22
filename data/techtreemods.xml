@@ -19846,7 +19846,7 @@
     </effects>
   </tech>
   <tech name="zpNativeAuditoreColonialize" type="Normal">
-    <dbid>40843</dbid>
+    <dbid>40853</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
