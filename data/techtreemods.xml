@@ -19687,7 +19687,6 @@
       </effect>
     </effects>
 	</tech>
-
   <tech name="zpUnlockPalazzoAuditore" type="Normal">
     <dbid>40845</dbid>
     <status>UNOBTAINABLE</status>
@@ -19712,7 +19711,7 @@
     </effects>
   </tech>
   <tech name="zpLockPalazzoAuditore" type="Normal">
-    <dbid>40845</dbid>
+    <dbid>40851</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
@@ -19828,7 +19827,7 @@
     </effects>
   </tech>
   <tech name="zpNatMasterAssassin" type="Normal">
-    <dbid>40850</dbid>
+    <dbid>40852</dbid>
     <displaynameid>302174</displaynameid>
     <cost resourcetype="Food">100.0000</cost>
     <cost resourcetype="Gold">200.0000</cost>
