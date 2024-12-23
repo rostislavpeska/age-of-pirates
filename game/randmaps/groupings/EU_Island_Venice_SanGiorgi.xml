@@ -224,7 +224,6 @@
 		<unit variation="0" posx="49.5215" posz="-18.7586" orientx="0.9998" orienty="0.0000" orientz="0.0197">HarbourPathBlock</unit>
 		<unit variation="64" posx="32.4260" posz="-15.9039" orientx="-0.0180" orienty="0.0000" orientz="-0.9998">zpHarbourPlatform</unit>
 		<unit variation="64" posx="40.4023" posz="-16.0453" orientx="-0.0180" orienty="0.0000" orientz="-0.9998">zpHarbourPlatform</unit>
-		<unit variation="53" posx="60.0000" posz="-16.8191" orientx="-0.0000" orienty="-0.0039" orientz="1.0000">Travois</unit>
 		<unit variation="64" posx="-13.8342" posz="-16.5607" orientx="0.9998" orienty="0.0000" orientz="-0.0181">zpHarbourPlatform</unit>
 		<unit variation="95" posx="36.2823" posz="-16.3549" orientx="-1.0000" orienty="0.0000" orientz="-0.0028">zpHarbourPlatform</unit>
 		<unit variation="69" posx="36.8926" posz="-15.6657" orientx="-0.9999" orienty="0.0000" orientz="-0.0120">zpHarbourPlatform</unit>
