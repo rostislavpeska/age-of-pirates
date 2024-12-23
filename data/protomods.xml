@@ -11343,8 +11343,8 @@
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>4.2500</maxvelocity>
-    <maxrunvelocity>6.2500</maxrunvelocity>
+    <maxvelocity>3.2500</maxvelocity>
+    <maxrunvelocity>5.2500</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
     <animfile>units\natives\eisentruppler\eisentruppler.xml</animfile>
@@ -11751,8 +11751,8 @@
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>4.2500</maxvelocity>
-    <maxrunvelocity>6.2500</maxrunvelocity>
+    <maxvelocity>3.2500</maxvelocity>
+    <maxrunvelocity>5.2500</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
     <animfile>units\natives\eisentruppler\eisentruppler.xml</animfile>
@@ -20914,8 +20914,8 @@
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>4.2500</maxvelocity>
-    <maxrunvelocity>6.2500</maxrunvelocity>
+    <maxvelocity>3.2500</maxvelocity>
+    <maxrunvelocity>5.2500</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
     <animfile>units\natives\eisentruppler\eisentruppler.xml</animfile>

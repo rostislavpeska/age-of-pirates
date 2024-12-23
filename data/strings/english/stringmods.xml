@@ -2180,6 +2180,9 @@
       <string _locid="302179">Assassin's Brotherhood</string>
       <string _locid="302180">Nearby Assassin's hitpoints increased</string>
       <string _locid="302181">Eagle's Vision</string>
+      <string _locid="302182">Pick one of Venetian noble houses which will have the biggest influence. \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Upgrades Venetian trade route to the maximum level</string>
+      <string _locid="302183">House of Dolfin (Map Bonus)</string>
+      <string _locid="302184">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nVenetian Galleass \n\nIncreased galley build limit.\n&lt;color=0.0, 1.0, 0.0&gt;Bonus:&lt;/color&gt; Team adds Galleass Dock training \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nDry Dock</string>
 
     
       <!-- ======================================== -->

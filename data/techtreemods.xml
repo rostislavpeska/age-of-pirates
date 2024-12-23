@@ -19858,12 +19858,61 @@
     <displaynameid>302181</displaynameid>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\abilities\eagle_vision.png</icon>
-    <rollovertextid>300625</rollovertextid>
+    <rollovertextid>302182</rollovertextid>
     <flag>YPNoTextMessage</flag>
     <flag>YPNativeImprovement</flag>
     <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpBonusVenetians" type="Normal">
+    <dbid>40855</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetName" tech="zpVenetianExpansion" newname="300714" newrollover="302182">
+      </effect>
+      <effect type="SetName" tech="zpConsulateVeniceDolphin" newname="302183" newrollover="302184">
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpUnlocksGalleass</effect>
+      <effect type="TechStatus" status="obtainable">zpVeniceTradeRouteUpgrade</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnlocksGalleass" type="Normal">
+    <dbid>40856</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>TeamTech</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status ="Active">zpConsulateVeniceDolphin</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpGalleass</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpGalleass" page="0" column="11">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpGalleass" page="0" column="11">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpGalleass" page="0" column="11">
+        <target type="ProtoUnit">YPDockAsian</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceTradeRouteUpgrade" type="Normal">
+    <dbid>40857</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>OrPrereqs</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status="Active">zpConsulateVeniceDolphin</techstatus>
+      <techstatus status="Active">zpConsulateVeniceCornaro</techstatus>
+      <techstatus status="Active">zpConsulateVeniceContarini</techstatus>
     </prereqs>
   </tech>
  

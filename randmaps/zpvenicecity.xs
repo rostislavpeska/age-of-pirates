@@ -590,7 +590,7 @@ void main(void)
 			rmBuildArea(playerID); 
 
 			int playerFortID = -1;
-			playerFortID = rmCreateGrouping("player fort", "malta_player_fort");
+			playerFortID = rmCreateGrouping("player fort", "malta_player_fort2");
 			rmAddGroupingToClass(playerFortID, rmClassID("classBlock"));  
 			rmPlaceGroupingAtLoc(playerFortID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i), 1);
 		}
@@ -999,6 +999,10 @@ void main(void)
         rmSetTriggerEffectParamInt("PlayerID", i);
         rmSetTriggerEffectParam("TechID","cTechzpEnableSPCCityStateTechsClone"); // Mercenaries
         rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+        rmSetTriggerEffectParamInt("PlayerID", i);
+        rmSetTriggerEffectParam("TechID","cTechzpBonusVenetians"); // Mercenaries
+        rmSetTriggerEffectParamInt("Status", 2);
 	}
 	rmAddTriggerEffect("Player : Override Civilization for Flag");
 	rmSetTriggerEffectParamInt("Player",0);
@@ -1107,6 +1111,29 @@ void main(void)
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
+
+	// Upgrade Trade Route
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("VeniceTRUpgrade"+k);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmSwitchToTrigger(rmTriggerID("VeniceTRUpgrade"+k));
+	rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParam("TechID","cTechzpVeniceTradeRouteUpgrade");
+	rmAddTriggerEffect("Trade Route Set Level");
+	rmSetTriggerEffectParamInt("TradeRoute",1);
+	rmSetTriggerEffectParamInt("Level",2);
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("VeniceTRUpgrade"+i));
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
 
 	// Victory Conditions
 
@@ -2007,6 +2034,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
 		rmSetTriggerEffectParamInt("Dist",60);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpLockCathedralMaltese"); // Mercenaries
+		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Flare Minimap");
 		rmSetTriggerEffectParamInt("PlayerID", k, false);
 		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
@@ -2160,6 +2191,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
 		rmSetTriggerEffectParamInt("Dist",60);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpLockCathedralJesuit"); // Mercenaries
+		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Flare Minimap");
 		rmSetTriggerEffectParamInt("PlayerID", k, false);
 		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
@@ -2308,6 +2343,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
 		rmSetTriggerEffectParamInt("Dist",10);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpLockCathedralOrthodox"); // Mercenaries
+		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Flare Minimap");
 		rmSetTriggerEffectParamInt("PlayerID", k, false);
 		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
@@ -2379,6 +2418,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
 		rmSetTriggerEffectParamInt("Dist",10);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpUnlockPalazzoAuditore"); // Mercenaries
+		rmSetTriggerEffectParamInt("Status",2);
 		for(x=1; <= cNumberNonGaiaPlayers) {
 			rmAddTriggerEffect("Flare Minimap");
 			rmSetTriggerEffectParamInt("PlayerID", x, false);
@@ -2452,6 +2495,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
 		rmSetTriggerEffectParamInt("Dist",10);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpLockPalazzoAuditore"); // Mercenaries
+		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Flare Minimap");
 		rmSetTriggerEffectParamInt("PlayerID", k, false);
 		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
