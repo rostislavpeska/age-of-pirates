@@ -123,20 +123,12 @@
 		<unit variation="186" posx="18.8341" posz="-4.5508" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
 		<unit variation="180" posx="28.6359" posz="-3.9892" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
 		<unit variation="154" posx="6.9173" posz="-3.5596" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
-		<unit variation="192" posx="-2.0242" posz="-4.3917" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatRoyalMusketeer</unit>
-		<unit variation="230" posx="0.5511" posz="-4.5356" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatRoyalMusketeer</unit>
 		<unit variation="41" posx="18.1158" posz="-4.0803" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpBridgeFace</unit>
 		<unit variation="79" posx="27.5043" posz="-4.1265" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpBridgeFace</unit>
-		<unit variation="199" posx="-2.0018" posz="-2.7393" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatRoyalMusketeer</unit>
-		<unit variation="7" posx="0.4060" posz="-3.0479" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatRoyalMusketeer</unit>
 		<unit variation="106" posx="12.2848" posz="-2.1249" orientx="-0.9239" orienty="0.0051" orientz="-0.3827">deNatMercRoyalDragoon</unit>
 		<unit variation="122" posx="-16.4943" posz="-2.1567" orientx="1.0000" orienty="-0.0039" orientz="-0.0000">deNatMercRoyalDragoon</unit>
 		<unit variation="41" posx="-27.5248" posz="-3.3308" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpBridgeFace</unit>
 		<unit variation="41" posx="-18.4973" posz="-3.2766" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpBridgeFace</unit>
-		<unit variation="229" posx="-1.8747" posz="-1.1532" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatRoyalMusketeer</unit>
-		<unit variation="170" posx="0.4159" posz="-1.0976" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatRoyalMusketeer</unit>
-		<unit variation="150" posx="11.8352" posz="0.7497" orientx="-0.9239" orienty="0.0051" orientz="-0.3827">deNatMercRoyalDragoon</unit>
-		<unit variation="254" posx="-16.7311" posz="0.7636" orientx="1.0000" orienty="-0.0039" orientz="-0.0000">deNatMercRoyalDragoon</unit>
 		<unit variation="63" posx="-16.0521" posz="3.2966" orientx="1.0000" orienty="-0.0039" orientz="-0.0000">deNatMercRoyalDragoon</unit>
 		<unit variation="90" posx="11.9899" posz="3.4557" orientx="-0.9239" orienty="0.0051" orientz="-0.3827">deNatMercRoyalDragoon</unit>
 		<unit variation="83" posx="-28.1667" posz="6.1404" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
@@ -150,8 +142,6 @@
 		<unit variation="222" posx="-0.9198" posz="9.5675" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SocketTradeRoute</unit>
 		<unit variation="126" posx="12.1201" posz="8.0936" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
 		<unit variation="79" posx="12.6927" posz="7.7383" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
-		<unit variation="94" posx="8.6457" posz="8.1440" orientx="0.3827" orienty="0.0000" orientz="-0.9239">deNatRoyalMusketeer</unit>
-		<unit variation="88" posx="-9.3845" posz="7.5206" orientx="0.3827" orienty="0.0000" orientz="-0.9239">deNatRoyalMusketeer</unit>
 		<unit variation="94" posx="-12.5036" posz="8.5450" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpPropsFlowers</unit>
 		<unit variation="156" posx="8.8688" posz="11.0152" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
 		<unit variation="183" posx="-14.9785" posz="12.6761" orientx="0.0083" orienty="0.0000" orientz="1.0000">zpHarbourPlatform</unit>
@@ -246,6 +236,7 @@
 		<unit variation="174" posx="-10.8130" posz="26.7881" orientx="0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
 		<unit variation="53" posx="-8.3413" posz="26.7795" orientx="0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
 		<unit variation="186" posx="-2.0" posz="-5.3011" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCCapturableFlagNoIcon</unit>
+		<unit variation="186" posx="-2.0" posz="-5.3011" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNuggetKidnapGuillotine</unit>
 	</units>
 	<tiles>
 		<tilegroup type="Shoreline" subtype="new_england\shoreline2_ne">

@@ -7,8 +7,7 @@
 		<logic type="Variation">
 			<variationid0>
 				<assetreference type="GrannyModel">
-					<file>buildings\native_settlement\orthodox\orthodox_church_age3</file>
-					<materialvariant index="1"></materialvariant>
+					<file>buildings\church\church_orthodox_south_Model</file>
 				</assetreference>
 			</variationid0>
 			<variationid1>

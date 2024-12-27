@@ -6,9 +6,17 @@
             dock
             <component>
                 dock
-                <assetreference type="GrannyModel">
-                    <file>buildings\spc\dry_dock\spc_dry_dock_deathmodel</file>
-                </assetreference>
+                <logic type="Variation">
+                    <variationid0>
+                    <assetreference type="GrannyModel"><file>buildings\basilica\basilica_minor_Model</file></assetreference>
+                </variationid0>
+                <variationid1>
+                    <assetreference type="GrannyModel"><file>buildings\basilica\basilica_age2</file></assetreference>
+                </variationid1>
+                <variationid2>
+                    <assetreference type="GrannyModel"><file>buildings\basilica\basilica_major_Model</file></assetreference>
+                </variationid2>
+            </logic>
             </component>
             <anim>Idle<component>dock</component></anim>
         </attachment>
@@ -21,24 +29,47 @@
         </attachment>
         <component>
             dry dock
-            <logic type="Destruction">
-                <p1>
-                    <assetreference type="GrannyModel"><file>buildings\basilica\venice_basilica_age4_damaged</file></assetreference>
-                </p1>
-                <p99>
-                    <assetreference type="GrannyModel" shape="wonder_agra_fort"><file>buildings\basilica\venice_basilica_age4</file></assetreference>
-                </p99>
+            <logic type="Variation">
+                <variationid0>
+                    <assetreference type="GrannyModel"><file>buildings\basilica\basilica_minor_Model</file></assetreference>
+                     <decal>
+                        <effecttype>bump</effecttype>
+                        <texture>buildings\basilica\basilica_age2_ground</texture>
+                        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                        <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                        <width>20.00</width>
+                        <height>20.00</height>
+                        <xoffset>0.00</xoffset>
+                        <zoffset>0.00</zoffset>
+                    </decal>
+                </variationid0>
+                <variationid1>
+                    <assetreference type="GrannyModel"><file>buildings\basilica\basilica_age2</file></assetreference>
+                     <decal>
+                        <effecttype>bump</effecttype>
+                        <texture>buildings\basilica\basilica_age2_ground</texture>
+                        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                        <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                        <width>20.00</width>
+                        <height>20.00</height>
+                        <xoffset>0.00</xoffset>
+                        <zoffset>0.00</zoffset>
+                    </decal>
+                </variationid1>
+                <variationid2>
+                    <assetreference type="GrannyModel"><file>buildings\basilica\basilica_major_Model</file></assetreference>
+                     <decal>
+                        <effecttype>bump</effecttype>
+                        <texture>buildings\basilica\basilica_age4_ground</texture>
+                        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                        <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                        <width>20.00</width>
+                        <height>20.00</height>
+                        <xoffset>0.00</xoffset>
+                        <zoffset>0.00</zoffset>
+                    </decal>
+                </variationid2>
             </logic>
-            <decal>
-                <effecttype>bump</effecttype>
-                <texture>buildings\basilica\basilica_age4_ground</texture>
-                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
-                <width>20.00</width>
-                <height>20.00</height>
-                <xoffset>0.00</xoffset>
-                <zoffset>0.00</zoffset>
-            </decal>
         </component>
         <component>
             DEAD

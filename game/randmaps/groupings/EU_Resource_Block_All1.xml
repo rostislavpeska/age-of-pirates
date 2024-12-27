@@ -7,22 +7,22 @@
 	<selectassingleunit>0</selectassingleunit>
 	<workonassingleunit>0</workonassingleunit>
 	<units>
-		<unit variation="0" posx="7.3394" posz="-14.1646" orientx="-0.3832" orienty="0.0000" orientz="-0.9237">PropsPoles</unit>
 		<unit variation="30" posx="6.0158" posz="-14.1410" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCRailwayProps</unit>
+		<unit variation="0" posx="-7.1849" posz="-13.8328" orientx="-0.3832" orienty="0.0000" orientz="-0.9237">PropsPoles</unit>
+		<unit variation="0" posx="7.3394" posz="-14.1646" orientx="-0.3832" orienty="0.0000" orientz="-0.9237">PropsPoles</unit>
 		<unit variation="120" posx="-9.8852" posz="-6.8308" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropWingC</unit>
 		<unit variation="120" posx="8.5336" posz="-6.9022" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropWingC</unit>
-		<unit variation="0" posx="-7.1849" posz="-13.8328" orientx="-0.3832" orienty="0.0000" orientz="-0.9237">PropsPoles</unit>
 		<unit variation="152" posx="3.2484" posz="-13.5611" orientx="0.9239" orienty="0.0000" orientz="0.3827">SPCMineProps</unit>
 		<unit variation="187" posx="12.8508" posz="-13.4290" orientx="0.9239" orienty="0.0000" orientz="0.3827">SPCMineProps</unit>
 		<unit variation="113" posx="-2.1643" posz="-10.3751" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">PropsColony</unit>
-		<unit variation="120" posx="5.9913" posz="-9.6292" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNatEUPropWingC</unit>
-		<unit variation="120" posx="-7.1883" posz="-9.4293" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNatEUPropWingC</unit>
 		<unit variation="194" posx="13.3809" posz="-9.9390" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">SPCRailwayProps</unit>
+		<unit variation="120" posx="-7.1883" posz="-9.4293" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNatEUPropWingC</unit>
+		<unit variation="120" posx="5.9913" posz="-9.6292" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNatEUPropWingC</unit>
 		<unit variation="247" posx="6.4674" posz="-10.2553" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
-		<unit variation="150" posx="-13.5842" posz="-9.4943" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">SPCMineProps</unit>
 		<unit variation="214" posx="1.9274" posz="-10.3007" orientx="-0.3827" orienty="0.0000" orientz="0.9239">SPCMineProps</unit>
-		<unit variation="62" posx="-10.5155" posz="-6.4226" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="150" posx="-13.5842" posz="-9.4943" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">SPCMineProps</unit>
 		<unit variation="247" posx="6.3718" posz="-8.9720" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="62" posx="-10.5155" posz="-6.4226" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
 		<unit variation="247" posx="8.0306" posz="-6.8225" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
 		<unit variation="247" posx="9.0988" posz="-6.8386" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
 		<unit variation="247" posx="-6.7966" posz="-9.8503" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
@@ -32,35 +32,29 @@
 		<unit variation="0" posx="-14.0656" posz="-4.4644" orientx="-0.3832" orienty="0.0000" orientz="-0.9237">PropsPoles</unit>
 		<unit variation="252" posx="6.4737" posz="-3.9727" orientx="0.3827" orienty="0.0000" orientz="0.9239">SPCRailwayProps</unit>
 		<unit variation="214" posx="-6.8865" posz="-4.8871" orientx="-0.9239" orienty="0.0000" orientz="0.3827">SPCRailwayProps</unit>
-		<unit variation="167" posx="-0.0225" posz="-4.8175" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">xpColonialMilitia</unit>
 		<unit variation="62" posx="-4.5498" posz="-4.8286" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCMineProps</unit>
 		<unit variation="100" posx="7.6319" posz="-2.1486" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">PropsColony</unit>
-		<unit variation="59" posx="2.6481" posz="-4.2199" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">xpColonialMilitia</unit>
-		<unit variation="178" posx="-2.1326" posz="-3.2290" orientx="-1.0000" orienty="0.0000" orientz="0.0000">xpColonialMilitia</unit>
 		<unit variation="5" posx="6.1119" posz="-3.8335" orientx="-0.3827" orienty="0.0000" orientz="0.9239">SPCMineProps</unit>
+		<unit variation="27" posx="0.2774" posz="0.0677" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">PropsColony</unit>
+		<unit variation="20" posx="-1.6609" posz="-1.5227" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
 		<unit variation="57" posx="4.2357" posz="-1.4014" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCRailwayProps</unit>
 		<unit variation="0" posx="5.6394" posz="-0.2442" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">PropsColony</unit>
+		<unit variation="0" posx="13.4433" posz="-0.1677" orientx="-0.3832" orienty="0.0000" orientz="-0.9237">PropsPoles</unit>
 		<unit variation="21" posx="2.7247" posz="-1.5397" orientx="0.3827" orienty="0.0000" orientz="-0.9239">SPCRailwayProps</unit>
 		<unit variation="179" posx="3.1533" posz="-0.7353" orientx="0.9239" orienty="0.0000" orientz="-0.3827">SPCRailwayProps</unit>
 		<unit variation="112" posx="2.6590" posz="-1.5554" orientx="-0.9239" orienty="0.0000" orientz="0.3827">SPCRailwayProps</unit>
-		<unit variation="0" posx="13.4433" posz="-0.1677" orientx="-0.3832" orienty="0.0000" orientz="-0.9237">PropsPoles</unit>
-		<unit variation="27" posx="0.2774" posz="0.0677" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">PropsColony</unit>
-		<unit variation="207" posx="-1.6199" posz="-1.2243" orientx="-1.0000" orienty="0.0000" orientz="0.0000">xpColonialMilitia</unit>
-		<unit variation="228" posx="-5.1372" posz="-0.7019" orientx="0.0000" orienty="0.0000" orientz="-1.0000">xpColonialMilitia</unit>
 		<unit variation="31" posx="0.6008" posz="1.0931" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">PropsColony</unit>
+		<unit variation="41" posx="-1.2091" posz="-0.6319" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">ypNuggetTradingPost</unit>
 		<unit variation="120" posx="-9.8606" posz="6.4959" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropWingC</unit>
-		<unit variation="105" posx="-2.5312" posz="0.3830" orientx="-1.0000" orienty="0.0000" orientz="0.0000">xpColonialMilitia</unit>
 		<unit variation="204" posx="6.1537" posz="4.9887" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCCapturableFactory</unit>
-		<unit variation="150" posx="-2.3314" posz="2.2606" orientx="-1.0000" orienty="0.0000" orientz="0.0000">xpColonialMilitia</unit>
-		<unit variation="184" posx="-5.2427" posz="3.0309" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">xpColonialMilitia</unit>
 		<unit variation="247" posx="-10.2923" posz="6.6899" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
 		<unit variation="247" posx="-8.9524" posz="6.7598" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
-		<unit variation="0" posx="-14.0317" posz="6.1056" orientx="-0.3832" orienty="0.0000" orientz="-0.9237">PropsPoles</unit>
 		<unit variation="123" posx="-6.4502" posz="6.1861" orientx="0.7071" orienty="0.0000" orientz="0.7071">SPCRailwayProps</unit>
+		<unit variation="0" posx="-14.0317" posz="6.1056" orientx="-0.3832" orienty="0.0000" orientz="-0.9237">PropsPoles</unit>
+		<unit variation="169" posx="-6.3832" posz="6.9201" orientx="0.3827" orienty="0.0000" orientz="0.9239">SPCRailwayProps</unit>
 		<unit variation="246" posx="-4.7522" posz="7.1702" orientx="0.3827" orienty="0.0000" orientz="0.9239">SPCRailwayProps</unit>
 		<unit variation="58" posx="-4.8572" posz="7.2831" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsColony</unit>
 		<unit variation="135" posx="-5.2486" posz="6.0952" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsColony</unit>
-		<unit variation="169" posx="-6.3832" posz="6.9201" orientx="0.3827" orienty="0.0000" orientz="0.9239">SPCRailwayProps</unit>
 		<unit variation="185" posx="-13.8374" posz="8.7436" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCRailwayProps</unit>
 		<unit variation="120" posx="-7.2094" posz="9.1865" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNatEUPropWingC</unit>
 		<unit variation="247" posx="-7.0818" posz="9.7691" orientx="0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>

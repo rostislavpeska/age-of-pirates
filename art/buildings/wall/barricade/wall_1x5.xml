@@ -21,6 +21,18 @@
             </component>
             <anim>Idle<component>dock</component></anim>
         </attachment>
+        <attachment>
+            clickzone
+            <component>clickzone
+                <assetreference type="GrannyModel">
+                    <file>buildings\native_settlement\barricade\skeletons\wall_wood_f_Model</file>
+                </assetreference>
+            </component>
+            <anim>
+                Idle
+                <component>clickzone</component>
+            </anim>
+        </attachment>
         <component>woodWall
             <logic type="BuildingCompletion">
                 <p0>
@@ -41,7 +53,7 @@
                     <assetreference type="GrannyModel">
                         <file>buildings\native_settlement\barricade\wall_wood_f_Model</file>
                     </assetreference>
-                    <attach a="props" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+                    <attach a="clickzone" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
                     <decal>
                         <effecttype>bump</effecttype>
                         <texture>buildings\wall\wall_wood_redoubt_ground_large</texture>

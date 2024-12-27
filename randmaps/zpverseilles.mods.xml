@@ -98,7 +98,7 @@
 			<placementfile>buildingsmall_city.xml</placementfile>
 		</unit>
 		<unit name="Outpost">
-			<placementfile>buildingsmall_city.xml</placementfile>
+			<placementfile>outpost_city.xml</placementfile>
 		</unit>
 		<unit name="ArtilleryDepot">
 			<placementfile>buildinglarge_city.xml</placementfile>
@@ -137,7 +137,7 @@
 			<placementfile>buildingsmall_city.xml</placementfile>
 		</unit>
 		<unit name="deOutpostAfrican">
-			<placementfile>buildingsmall_city.xml</placementfile>
+			<placementfile>outpost_city.xml</placementfile>
 		</unit>
 		<unit name="deUniversity">
 			<placementfile>university_city.xml</placementfile>
@@ -185,6 +185,10 @@
 		</unit>
 		<unit name="SPCFortGate">
 			<animfile>buildings\wall\barricade\verseilles_gate.xml</animfile>
+			<icon>resources\art\buildings\wall\wall_portrait.png</icon>
+    		<portraiticon>resources\art\buildings\wall\gate_portrait.png</portraiticon>
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
 		</unit>
 		<unit name="Dock">
 			<placementfile>dock_city.xml</placementfile>
@@ -244,7 +248,18 @@
 			<flag>NoIdleActions</flag>
 		</unit>
 		<unit name="CWallGate">
+			<initialhitpoints>5250.0000</initialhitpoints>
+    		<maxhitpoints>5250.0000</maxhitpoints>
 			<animfile>buildings\wall\barricade\verseilles_gate.xml</animfile>
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
+		</unit>
+		<unit name="deSPCTowerCapturable">
+			<minimapicon mergeMode="remove">ui\minimap\highlighted item</minimapicon>
+		</unit>
+		<unit name="deSPCEuroTower">
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
 		</unit>
 	</protomods>
 </mods>

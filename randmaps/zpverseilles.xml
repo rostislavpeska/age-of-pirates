@@ -9,7 +9,6 @@
         <setting type="RecordGame" state="forbidden" />
         <setting type="TwoTeams" state="enforced" />
         <setting type="DefaultRules" state="enforced" />
-        <setting type="OneVsAll" state="forbidden" />
         <setting type="AltTeamNames" state="enforced" />
     </enforcedSettings>
     <recommendedSettings>
@@ -17,5 +16,6 @@
         <civilization>Spanish</civilization>
         <civilization>British</civilization>
         <civilization>DEItalians</civilization>
+        <civilization>Germans</civilization>
     </recommendedSettings>
 </mapinfo>

@@ -2029,9 +2029,9 @@
       <guardian>deGuardianHalberdier</guardian>
       <guardian>deGuardianHalberdier</guardian>
       <guardian>deGuardianHalberdier</guardian>
-      <guardian>deGuardianPikeman</guardian>
-      <guardian>deGuardianPikeman</guardian>
-      <guardian>deGuardianPikeman</guardian>
+      <guardian>zpGuardianCardinalGuard</guardian>
+      <guardian>zpGuardianCardinalGuard</guardian>
+      <guardian>zpGuardianCardinalGuard</guardian>
       <difficulty>194</difficulty>
     </nugget>
     <nugget>
@@ -2065,9 +2065,9 @@
         <unit>zpParisCitadelGaia</unit>
         <attachdummy>bone_nuggetA</attachdummy>
       </convertunit>
-      <guardian>deGuardianMusketeer</guardian>
-      <guardian>deGuardianMusketeer</guardian>
-      <guardian>deGuardianMusketeer</guardian>
+      <guardian>zpGuardianRevolutionary</guardian>
+      <guardian>zpGuardianRevolutionary</guardian>
+      <guardian>zpGuardianRevolutionary</guardian>
       <guardian>deGuardianHalberdier</guardian>
       <guardian>deGuardianHalberdier</guardian>
       <guardian>deGuardianHalberdier</guardian>
@@ -2085,11 +2085,11 @@
         <unit>zpParisCitadelGaia</unit>
         <attachdummy>bone_nuggetA</attachdummy>
       </convertunit>
-      <guardian>deGuardianMusketeer</guardian>
-      <guardian>deGuardianMusketeer</guardian>
-      <guardian>deGuardianMusketeer</guardian>
-      <guardian>deGuardianCuirassier</guardian>
-      <guardian>deGuardianCuirassier</guardian>
+      <guardian>zpGuardianCardinalGuard</guardian>
+      <guardian>zpGuardianCardinalGuard</guardian>
+      <guardian>zpGuardianCardinalGuard</guardian>
+      <guardian>zpGuardianRevolutionary</guardian>
+      <guardian>zpGuardianRevolutionary</guardian>
       <difficulty>194</difficulty>
     </nugget>
     <nugget>
@@ -2101,8 +2101,8 @@
       <resource>Wood</resource>
       <amount>120</amount>
       <maptype>piratehistoricalmap</maptype>
-      <guardian>deGuardianCuirassier</guardian>
-      <guardian>deGuardianCuirassier</guardian>
+      <guardian>zpGuardianRevolutionary</guardian>
+      <guardian>zpGuardianRevolutionary</guardian>
       <difficulty>192</difficulty>
     </nugget>
     <nugget>
@@ -2119,19 +2119,19 @@
         <attachdummy>bone_hostage_A</attachdummy>
       </convertunit>
       <guardianunit>
-        <unit>deGuardianMusketeer</unit>
+        <unit>zpGuardianCardinalGuard</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_A</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianMusketeer</unit>
+        <unit>zpGuardianCardinalGuard</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_B</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianMusketeer</unit>
+        <unit>zpGuardianCardinalGuard</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_C</attachdummy>
@@ -2162,19 +2162,19 @@
         <attachdummy>bone_hostage_B</attachdummy>
       </convertunit>
       <guardianunit>
-        <unit>deGuardianMusketeer</unit>
+        <unit>zpGuardianRevolutionary</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_A</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianMusketeer</unit>
+        <unit>zpGuardianRevolutionary</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_B</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianMusketeer</unit>
+        <unit>zpGuardianRevolutionary</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_C</attachdummy>
@@ -2200,13 +2200,200 @@
         <unit>zpNativeEmbassyParisReward</unit>
         <attachdummy>bone_nuggetA</attachdummy>
       </convertunit>
-      <guardian>deGuardianMusketeer</guardian>
-      <guardian>deGuardianMusketeer</guardian>
-      <guardian>deGuardianMusketeer</guardian>
+      <guardian>zpGuardianRevolutionary</guardian>
+      <guardian>zpGuardianRevolutionary</guardian>
+      <guardian>zpGuardianRevolutionary</guardian>
       <guardian>deGuardianHalberdier</guardian>
       <guardian>deGuardianHalberdier</guardian>
       <guardian>deGuardianHalberdier</guardian>
       <difficulty>195</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpNuggetFactory</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>zpGuardianRevolutionary</unit>
+        <idleanim>NuggetPirate2_Idle</idleanim>
+        <exitanim>NuggetPirate2_Exit</exitanim>
+        <attachdummy>bone_nuggetA</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGuardianRevolutionary</unit>
+        <idleanim>NuggetPirate2_Idle</idleanim>
+        <exitanim>NuggetPirate2_Exit</exitanim>
+        <attachdummy>bone_nuggetB</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGuardianRevolutionary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGuardianRevolutionary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGuardianRevolutionary</unit>
+      </guardianunit>
+      <difficulty>299</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpNuggetMenagerie</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>ypRhino</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>ypLion</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianBrownBear</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>ypWhiteTiger</unit>
+      </guardianunit>
+      <difficulty>98</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpNuggetCityState</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>deSPCCityGuard</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCCityGuard</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCCityGuard</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCCityGuard</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCCityGuard</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCCityGuard</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCCityGuard</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCCityGuard</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCCityGuard</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCCityGuard</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCCityGuard</unit>
+      </guardianunit>
+      <difficulty>298</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpNuggetParisBastionMusketeers</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>zpNatRoyalMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRoyalMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRoyalMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRoyalMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRoyalMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRoyalMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRoyalMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRoyalMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRoyalMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRoyalMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRoyalMusketeer</unit>
+      </guardianunit>
+      <difficulty>297</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpNuggetParisBastionRevolutionaries</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>zpNatRevolutionary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRevolutionary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRevolutionary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRevolutionary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRevolutionary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRevolutionary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRevolutionary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRevolutionary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRevolutionary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRevolutionary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatRevolutionary</unit>
+      </guardianunit>
+      <difficulty>296</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpFrenchTowerCapturable</name>
+      <type>SpawnUnit</type>
+      <nuggetunit>euNuggetRuinedTower</nuggetunit>
+      <rolloverstringid>102270</rolloverstringid>
+      <applystringid>102271</applystringid>
+      <unittype>deSPCTowerCapturable</unittype>
+      <amount>1</amount>
+      <difficulty>295</difficulty>
+      <guardian>zpGuardianRevolutionary</guardian>
+      <guardian>zpGuardianRevolutionary</guardian>
+      <guardian>zpGuardianRevolutionary</guardian>
+      <guardian>zpGuardianRevolutionary</guardian>
+      <maptype>piratehistoricalmap</maptype>
     </nugget>
 
 

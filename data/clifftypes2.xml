@@ -3487,4 +3487,24 @@
       <bottomedge>city\ground1_city_street_ground</bottomedge>
     </textures>
   </cliff>
+  <cliff name="ZP City Italian" blockland="1" blockwater="0" iconname="ui\editor\cliffnewenglandinland">
+    <modelset>Default</modelset>
+    <parameters>
+      <displacementamount>0.000001</displacementamount>
+      <displacementmedianvalue>0.000001</displacementmedianvalue>
+      <triplanarscale>0.120000</triplanarscale>
+      <normalstrength>3.000000</normalstrength>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\city\city_cliffs_basecolor</basecolor>
+      <normals>terrain\cliffs\city\city_cliffs_normals</normals>
+      <heightmap>terrain\cliffs\city\city_cliffs_heights</heightmap>
+      <mask>terrain\cliffs\city\city_cliffs_masks</mask>
+      <top>props\east_colony2</top>
+      <topedge>props\east_colony2</topedge>
+      <side>props\east_colony2</side>
+      <edge>props\east_colony2</edge>
+      <bottomedge>props\east_colony2</bottomedge>
+    </textures>
+  </cliff>
 </cliffs>

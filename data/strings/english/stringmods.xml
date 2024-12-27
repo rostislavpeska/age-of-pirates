@@ -34,7 +34,7 @@
       <string _locid="300032">Harbour Warehouse</string>
       <string _locid="300033">ZP PROP Harbour Platform</string>
       <string _locid="300034">ZP PROP Harbour Dingy</string>
-      <string _locid="300035">ZP Harbour PATH BLOCK</string>
+      <string _locid="300035">ZP Harbour Path Block 1x2</string>
       <string _locid="300036">Bloodthirsty Rebellion</string>
       <string _locid="300037">Bloodthirsty Buccaneer</string>
       <string _locid="300038">Notorious Rebellion</string>
@@ -1834,7 +1834,7 @@
       <string _locid="301833">Banque de Paris</string>
       <string _locid="301834">ZP SPC Paris Bank</string>
       <string _locid="301835">ZP SPC Paris Mill</string>
-      <string _locid="301836">Moulin Rouge</string>
+      <string _locid="301836">Wind Mill</string>
       <string _locid="301837">Gold Smelter</string>
       <string _locid="301838">ZP SPC Paris Gold Smelter</string>
       <string _locid="301839">Cognac Destilery</string>
@@ -1942,7 +1942,7 @@
       <string _locid="301941">ZP Socket EU SPC Bourbon</string>
       <string _locid="301942">The Sun King Era</string>
       <string _locid="301943">Unlocks additional Bourbon techs</string>
-      <string _locid="301944">Unlocks additional Bourbon techs \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Allows Royal Musketeers to construct Military Camps and be trained from them \n • Military Camp build limit increased to 6 \n • Ancien Régime: Status set to Active&lt;color=1.0, 0.0, 0.0&gt;\n • Avialble only for the team "DEFENDERS".&lt;/color&gt;</string>
+      <string _locid="301944">Unlocks additional Bourbon techs \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Allows Royal Musketeers to construct Military Camps and be trained from them \n • Allows Royal Musketeers to construct Barricades \n • Military Camp build limit increased to 6 \n • Ancien Régime: Status set to Active&lt;color=1.0, 0.0, 0.0&gt;\n • Avialble only for the team "DEFENDERS".&lt;/color&gt;</string>
       <string _locid="301945">Revolts to one of the revolutionary factions. \n • Initiates a special type of revolution \n • Transforms all your settlers into Sansculottes \n • Allows Sansculotte training from your Town Center \n • Unlocks Explorer Inspiring Flag ability \n • Increases Explorer hitpoints by 30% \n • Changes you civilization to one of the revolutionary factions without loosing access to your original homecity and the option to advance to higher age (including Imperial Age)\n&lt;color=1.0, 0.0, 0.0&gt; • Avialble only for the team "ATTACKERS".&lt;/color&gt;</string>
       <string _locid="301946">ZP Paris Palaces</string>
       <string _locid="301947">ZP Bourbon Chateau</string>
@@ -2016,7 +2016,7 @@
       <string _locid="302015">Leader of the crew with a powerful Hawheye attack and hitpoint aura for the others.</string>
       <string _locid="302016">Wine lover and master of pub brawls.</string>
       <string _locid="302017">Future Priest with Healing and Convert abilities.</string>
-      <string _locid="302018">Storming of the Bastille (Beta)</string>
+      <string _locid="302018">Storming of the Bastille</string>
       <string _locid="302019">Paris 1789 Historical Map: \nBoth teams start outside of the city and have the same goal: Take Bastille, Royal Court and City Hall buildings and hold them for the rest of the game. Both sides can use different native techs. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Revolutionaries which can use special Sansculotte techs \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Royalists which can use special Bourbon techs \n\nSettlements: Sansculotte, Bourbon, Jesuit, Maltese</string>
       <string _locid="302020">Achieve a Team Victory by capturing and holding all three victory buildings: Royal Court, City Hall and Bastille. Take your team natives trading post too get more advanced native improvements. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt;Sansculotte natives \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Bourbon natives</string>
       <string _locid="302021">Battle for control of the city.</string>
@@ -2067,7 +2067,7 @@
       <string _locid="302066">Destroy the Royal Orangerie building in the gardens of the Verseilles palace. The building is highlighted on the map.</string>
       <string _locid="302067">Protect the King Louis XVI and his wife Marie Antoinette in the Royal Orangerie before the Garde du Corps comes.</string>
       <string _locid="302068">Don't let your enemy to destroy the Royal Orangerie building, otherwise you lose the game.</string>
-      <string _locid="302069">March to Verseilles (Beta)</string>
+      <string _locid="302069">March to Verseilles</string>
       <string _locid="302070">After the big protests in Paris and the fall of the Bastile the king Louis XVI hid himself in the gardens of the Verseilles palace.</string>
       <string _locid="302071">City of Verseilles</string>
       <string _locid="302072">Women's March on Versailles - the second most important event during the French revolution which led to capturing the king Louis XVI. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Revolutionaries which start in the City of Verseilles surrounded by capturable buildings generating resources \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Royalists starting in the palace gardens behind a massive wall \n\nSettlements: Sansculotte, Jewish, Bourbon, Jesuit</string>
@@ -2084,8 +2084,107 @@
       <string _locid="302083">Great Basilica</string>
       <string _locid="302084">San Marco Basilica</string>
       <string _locid="302085">ZP SPC San Marco Basilica</string>
+      <string _locid="302086">ZP House venetian City</string>
+      <string _locid="302087">Fall of Venice (no ai support)</string>
+      <string _locid="302088">Assassin</string>
+      <string _locid="302089">ZP NAT Assassin</string>
+      <string _locid="302090">ZP Venetian Water Flag 3</string>
+      <string _locid="302091">ZP Venetian Water Flag 4</string>
+      <string _locid="302092">ZP SPC Venice Factory</string>
+      <string _locid="302093">ZP Trade Harbour Capturable</string>
+      <string _locid="302094">Capturable Trade Harbour</string>
+      <string _locid="302095">ZP NAT MERC Maltese Guard</string>
+      <string _locid="302096">ZP NAT MERC Maltese Knight</string>
+      <string _locid="302097">Maltese Diocese</string>
+      <string _locid="302098">Jesuit Diocese</string>
+      <string _locid="302099">Native Building</string>
+      <string _locid="302100">ZP NAT MERC Conquistador Musketeer</string>
+      <string _locid="302101">ZP SPC Socket Venetians City</string>
+      <string _locid="302102">Venice Fixed Gun</string>
+      <string _locid="302103">ZP SPC Socket Fixed Gun</string>
+      <string _locid="302104">ZP SPC Fixed Gun</string>
+      <string _locid="302105">Heavy Fixed Gun</string>
+      <string _locid="302106">Imperial Fixed Gun</string>
+      <string _locid="302107">ZP SPC Fixed Gun Base</string>
+      <string _locid="302108">Allows to build a mighty Fixed Gun</string>
+      <string _locid="302109">Build a Fixed Gun here to help secure this Settlement.</string>
+      <string _locid="302110">ZP Venetian Market Stall</string>
+      <string _locid="302111">ZP Revealer To Player</string>
+      <string _locid="302112">ZP City State Flag</string>
+      <string _locid="302113">ZP Academy Team</string>
+      <string _locid="302114">Byzantine Diocese</string>
+      <string _locid="302115">ZP Orthodox Cathedral</string>
+      <string _locid="302116">ZP NAT MERC Warrior Monk</string>
+      <string _locid="302117">ZP NAT MERC Bulgarien Boyar</string>
+      <string _locid="302118">The Fall of Venice</string>
+      <string _locid="302119">Battle for control the City of Venice.</string>
+      <string _locid="302120">Achieve a Team Victory by capturing and holding the majority of the Venetian Districts.</string>
+      <string _locid="302121">Once all nearby enemies are defeated, a Venetian District socket can be tasked to build a Trading Post on itself freely. Controlling and holding the majority of Venetian Districts until the end of the League Victory timer will result in victory.</string>
+      <string _locid="302122">Palazzo Auditore</string>
+      <string _locid="302123">ZP SPC Palazzo Auditore</string>
+      <string _locid="302124">Republic of Venice</string>
+      <string _locid="302125">Terrorblade</string>
+      <string _locid="302126">ZP GRD Revolutionary</string>
+      <string _locid="302127">Cardinal's Guard</string>
+      <string _locid="302128">ZP GRD Cardinal's Guard</string>
+      <string _locid="302129">Arbalist</string>
+      <string _locid="302130">ZP NAT Arbalist</string>
+      <string _locid="302131">San Marco (Venice District)</string>
+      <string _locid="302132">San Polo (Venice District)</string>
+      <string _locid="302133">San Giorgio (Venice District)</string>
+      <string _locid="302134">Castello (Venice District)</string>
+      <string _locid="302135">ZP Nugget Invisible</string>
+      <string _locid="302136">All Venetian Basilicas generate XP faster.</string>
+      <string _locid="302137">All TEAM units in the vicinity of s friendly Venetin District slowly heal.</string>
+      <string _locid="302138">Team Victory time remaining</string>
+      <string _locid="302139">Enemy Team Victory time remaining</string>
+      <string _locid="302140">Team ATTACKERS (Revolutionaries) wins in</string>
+      <string _locid="302141">Team DEFENDERS (Royalists) wins in</string>
+      <string _locid="302142">ZP Underbrush Flowers Bohemia</string>
+      <string _locid="302143">ZP Harbour path Block 1x1</string>
+      <string _locid="302144">ZP Harbour path Block 1x4</string>
+      <string _locid="302145">Team Venetian Navy</string>
+      <string _locid="302146">Allows you and your whole team to train Venetian galleys in your Dock.</string>
+      <string _locid="302147">ZP SPC Verseilles Fixed Gun</string>
+      <string _locid="302148">House of Auditore</string>
+      <string _locid="302149">ZP Socket Auditore</string>
+      <string _locid="302150">We work in the Dark to serve the Light. We are assassin's.</string>
+      <string _locid="302151">Palace Chappel</string>
+      <string _locid="302152">ZP SPC Verseilles Church</string>
+      <string _locid="302153">Team Monarch-Church Alliance</string>
+      <string _locid="302154">All infantry costs reduced by 25%</string>
+      <string _locid="302155">ZP Underbrush Orangerie</string>
+      <string _locid="302156">ZP SPC Temporary Obstruction</string>
+      <string _locid="302157">ZP Venetian House 3</string>
+      <string _locid="302158">Achieve a Team Victory by capturing and holding the majority of the Venetian Districts. \n\nNative Settlements: Venetians \n\nShadow aliances: Maltese, Jesuit, Orthodox, House of Auditore</string>
+      <string _locid="302159">District of Venice</string>
+      <string _locid="302160">ZP Venetian House 4</string>
+      <string _locid="302161">Veteran auditore</string>
+      <string _locid="302162">Auditore Guard</string>
+      <string _locid="302163">Improves House of Auditore unit attack and hitpoints</string>
+      <string _locid="302164">Veteran Arbalist</string>
+      <string _locid="302165">Guard Arbalist</string>
+      <string _locid="302166">Legendary Arbalist</string>
+      <string _locid="302167">Legendary Assassin</string>
+      <string _locid="302168">Assassin Guard</string>
+      <string _locid="302169">Assassin Brotherhood member</string>
+      <string _locid="302170">Borgia Conspiracy</string>
+      <string _locid="302171">Get 40 Gold for every building you destroy in the future.</string>
+      <string _locid="302172">Guerilla Warfare</string>
+      <string _locid="302173">Reduces all infantry conts by 10%</string>
+      <string _locid="302174">Master Assassin</string>
+      <string _locid="302175">Ships Ezio Auditore hero</string>
+      <string _locid="302176">Ezio Auditore (Master Assassin)</string>
+      <string _locid="302177">ZP SPC Ezio</string>
+      <string _locid="302178">Master Assassin</string>
+      <string _locid="302179">Assassin's Brotherhood</string>
+      <string _locid="302180">Nearby Assassin's hitpoints increased</string>
+      <string _locid="302181">Eagle's Vision</string>
+      <string _locid="302182">Pick one of Venetian noble houses which will have the biggest influence. \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Upgrades Venetian trade route to the maximum level</string>
+      <string _locid="302183">House of Dolfin (Map Bonus)</string>
+      <string _locid="302184">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nVenetian Galleass \n\nIncreased galley build limit.\n&lt;color=0.0, 1.0, 0.0&gt;Bonus:&lt;/color&gt; Team adds Galleass Dock training \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nDry Dock</string>
 
-
+    
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
       <!-- ======================================== -->

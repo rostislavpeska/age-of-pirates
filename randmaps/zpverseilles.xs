@@ -11,7 +11,7 @@ include "mercenaries.xs";
 include "ypAsianInclude.xs";
 include "ypKOTHInclude.xs";
 
- string fish1 = "ypFishCarp";
+string fish1 = "ypFishCarp";
 
 void main(void)
 {
@@ -57,6 +57,12 @@ void main(void)
 	int teamOneCount = rmGetNumberPlayersOnTeam(1);
 	int firstDefender = -1;
 	int firstAttacker = -1;
+	int secondAttacker = -1;
+	int thirdAttacker = -1;
+	int fourthAttacker = -1;
+	int fifthAttacker = -1;
+	int sixthAttacker = -1;
+	int seventhAttacker = -1;
 
 	for (i = 1; <= cNumberNonGaiaPlayers)
     {
@@ -74,6 +80,56 @@ void main(void)
             break;
         }
     }
+
+		// Additional Attackers
+		for (i = firstAttacker+1; <= cNumberNonGaiaPlayers)
+		{
+			if (rmGetPlayerTeam(i) == 0)
+			{
+				secondAttacker = i;
+				break;
+			}
+		}
+		for (i = secondAttacker+1; <= cNumberNonGaiaPlayers)
+		{
+			if (rmGetPlayerTeam(i) == 0)
+			{
+				thirdAttacker = i;
+				break;
+			}
+		}
+		for (i = thirdAttacker+1; <= cNumberNonGaiaPlayers)
+		{
+			if (rmGetPlayerTeam(i) == 0)
+			{
+				fourthAttacker = i;
+				break;
+			}
+		}
+		for (i = fourthAttacker+1; <= cNumberNonGaiaPlayers)
+		{
+			if (rmGetPlayerTeam(i) == 0)
+			{
+				fifthAttacker = i;
+				break;
+			}
+		}
+		for (i = fifthAttacker+1; <= cNumberNonGaiaPlayers)
+		{
+			if (rmGetPlayerTeam(i) == 0)
+			{
+				sixthAttacker = i;
+				break;
+			}
+		}
+		for (i = sixthAttacker+1; <= cNumberNonGaiaPlayers)
+		{
+			if (rmGetPlayerTeam(i) == 0)
+			{
+				seventhAttacker = i;
+				break;
+			}
+		}
 
     int sizeZ = 560;
 	int sizeX = 360;
@@ -195,8 +251,8 @@ void main(void)
 	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 18.0);
 	int forestConstraintShort=rmCreateClassDistanceConstraint("forest vs. forest short", rmClassID("classForest"), 5.0);
 	int avoidResource=rmCreateTypeDistanceConstraint("resource avoid resource", "resource", 20.0);
-	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "MineTin", 30.0);
-	int avoidSilver=rmCreateTypeDistanceConstraint("avoid silver", "Mine", 30.0);
+	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "SPCMine", 40.0);
+	int avoidSilver=rmCreateTypeDistanceConstraint("avoid silver", "Mine", 40.0);
 	int shortAvoidCoin=rmCreateTypeDistanceConstraint("short avoid coin", "gold", 10.0);
 	int avoidStartResource=rmCreateTypeDistanceConstraint("start resource no overlap", "resource", 10.0);
     int avoidMountains=rmCreateClassDistanceConstraint("stuff avoids mountains", classMountains, 20.0);
@@ -293,7 +349,7 @@ void main(void)
 	int avoidWall=rmCreateTypeDistanceConstraint("avoid wall object", "AbstractWall", 0.001);
 	int avoidWallMedium=rmCreateTypeDistanceConstraint("avoid wall object medium", "AbstractWall", 2.0);
 	int avoidWallLong=rmCreateTypeDistanceConstraint("avoid wall object long", "AbstractWall", 10.0);
-	int avoidFence=rmCreateTypeDistanceConstraint("avoid palace fence", "SPCPathBlock3", 1.00);
+	int avoidFence=rmCreateTypeDistanceConstraint("avoid palace fence", "zpHarbourPathBlock3", 1.00);
 
 	int avoidBlock =rmCreateClassDistanceConstraint("stuff vs. blocks", rmClassID("classBlock"), 1.0);
 	int avoidBlockLong =rmCreateClassDistanceConstraint("stuff vs. blocks long", rmClassID("classBlock"), 10.0);
@@ -304,6 +360,7 @@ void main(void)
 	int cemetaryConstraintShort=rmCreateClassDistanceConstraint("stay away from cemetary short", classCemetary, 5.0);
 
     int avoidPark = rmCreateTypeDistanceConstraint("avoid park tree", "deSPCTreeCypressProp", 30);
+	int avoidFixedGun = rmCreateTypeDistanceConstraint("avoid fixed gun", "zpSPCVerseillesFixedGun", 30);
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.10);
@@ -417,35 +474,37 @@ void main(void)
 
 	// Lakes
 
-	int basinsID=rmCreateArea("Verseilles Basins");
-	rmSetAreaWaterType(basinsID, "ZP Verseilles Pond");
-	rmSetAreaSize(basinsID, 0.008, 0.008);
-	rmSetAreaCoherence(basinsID, 1.0);
-	rmSetAreaLocation(basinsID, 0.5, mapCenter+rmZTilesToFraction(57));
-	rmAddAreaInfluenceSegment(basinsID,0.435, mapCenter+rmZTilesToFraction(57), 0.605, mapCenter+rmZTilesToFraction(57));
-	rmSetAreaSmoothDistance(basinsID, 10);
-	rmSetAreaBaseHeight(basinsID, 1.0);
-	rmBuildArea(basinsID);
+	if (teamZeroCount<=2){
+		int basinsID=rmCreateArea("Verseilles Basins");
+		rmSetAreaWaterType(basinsID, "ZP Verseilles Pond");
+		rmSetAreaSize(basinsID, 0.008, 0.008);
+		rmSetAreaCoherence(basinsID, 1.0);
+		rmSetAreaLocation(basinsID, 0.5, mapCenter+rmZTilesToFraction(57));
+		rmAddAreaInfluenceSegment(basinsID,0.435, mapCenter+rmZTilesToFraction(57), 0.605, mapCenter+rmZTilesToFraction(57));
+		rmSetAreaSmoothDistance(basinsID, 10);
+		rmSetAreaBaseHeight(basinsID, 1.0);
+		rmBuildArea(basinsID);
+	}
 
-	int basinsID2=rmCreateArea("Verseilles Basins2");
+	/*int basinsID2=rmCreateArea("Verseilles Basins2");
 	rmSetAreaWaterType(basinsID2, "ZP Verseilles Pond");
-	rmSetAreaSize(basinsID2, 0.007, 0.007);
+	rmSetAreaSize(basinsID2, 0.002, 0.002);
 	rmSetAreaCoherence(basinsID2, 1.0);
-	rmSetAreaLocation(basinsID2, 0.35, mapCenter+rmZTilesToFraction(37));
-	rmAddAreaInfluenceSegment(basinsID2,0.35, mapCenter+rmZTilesToFraction(14), 0.35, mapCenter+rmZTilesToFraction(41));
+	rmSetAreaLocation(basinsID2, 0.35, mapCenter+rmZTilesToFraction(16));
+	rmAddAreaInfluenceSegment(basinsID2,0.35, mapCenter+rmZTilesToFraction(16), 0.35, mapCenter+rmZTilesToFraction(28));
 	rmSetAreaSmoothDistance(basinsID2, 10);
 	rmSetAreaBaseHeight(basinsID2, 1.0);
 	rmBuildArea(basinsID2);
 
 	int basinsID3=rmCreateArea("Verseilles Basins3");
 	rmSetAreaWaterType(basinsID3, "ZP Verseilles Pond");
-	rmSetAreaSize(basinsID3, 0.007, 0.007);
+	rmSetAreaSize(basinsID3, 0.004, 0.004);
 	rmSetAreaCoherence(basinsID3, 1.0);
-	rmSetAreaLocation(basinsID3, 0.696, mapCenter+rmZTilesToFraction(37));
-	rmAddAreaInfluenceSegment(basinsID3,0.695, mapCenter+rmZTilesToFraction(14), 0.695, mapCenter+rmZTilesToFraction(41));
+	rmSetAreaLocation(basinsID3, 0.696, mapCenter+rmZTilesToFraction(16));
+	rmAddAreaInfluenceSegment(basinsID3,0.695, mapCenter+rmZTilesToFraction(16), 0.695, mapCenter+rmZTilesToFraction(28));
 	rmSetAreaSmoothDistance(basinsID3, 10);
 	rmSetAreaBaseHeight(basinsID3, 1.0);
-	rmBuildArea(basinsID3);
+	rmBuildArea(basinsID3);*/
 
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
@@ -528,7 +587,10 @@ void main(void)
 // Fixed Placement
 
 	// Palace
-	int blockPalaceBig01 = rmCreateGrouping("palace1", "Verseilles_Mega3");
+	if(teamOneCount<=2)
+		int blockPalaceBig01 = rmCreateGrouping("palace1", "Verseilles_2v2");
+	else
+		blockPalaceBig01 = rmCreateGrouping("palace1", "Verseilles_4v4");
     rmSetGroupingMinDistance(blockPalaceBig01, 0.00);
     rmSetGroupingMaxDistance(blockPalaceBig01, 0.50);
 	rmAddGroupingToClass(blockPalaceBig01, rmClassID("classBlock"));
@@ -723,9 +785,6 @@ void main(void)
 
 	rmSetStatusText("",0.60);
 
-// Placement Variables
-int jesuitMaltese = rmRandInt(1, 2);
-
 //===================place the stuff=========================
 
 // Fixed stuff first
@@ -738,6 +797,7 @@ int jesuitMaltese = rmRandInt(1, 2);
 
 	//rmPlaceGroupingAtLoc(blockWall, firstDefender, 0.825, mapCenter+rmZTilesToFraction(10));
 
+	int verticalVariation =rmRandInt(1, 2);
 
 	// Fixed Stuff
 		rmPlaceGroupingAtLoc(blockTrade, 0, locX9, locZ1);
@@ -749,55 +809,61 @@ int jesuitMaltese = rmRandInt(1, 2);
 
 	// City Center
 
-		rmPlaceGroupingAtLoc(blockMarket, 0, locX2, locZ1);
-		rmPlaceGroupingAtLoc(blockMarket, 0, locX4, locZ1);
+		rmPlaceGroupingAtLoc(blockMarket, 0, locX5, locZ2);
+		rmPlaceGroupingAtLoc(blockBank, 0, locX4, locZ1);
+		rmPlaceGroupingAtLoc(blockJewish, 0, locX8, locZ1);
+		rmPlaceGroupingAtLoc(blockJewish, 0, locX1, locZ1);		
 
-		rmPlaceGroupingAtLoc(blockBank, 0, locX1, locZ2);
-		rmPlaceGroupingAtLoc(blockBank, 0, locX5, locZ2);
-
-		rmPlaceGroupingAtLoc(blockJewish, 0, locX8, locZ2);
-
-		if (cNumberNonGaiaPlayers>=4){
-			rmPlaceGroupingAtLoc(blockJewish, 0, locX1, locZ1);				
-		}
+		rmSetNuggetDifficulty(195, 195);
+		rmPlaceGroupingAtLoc(blockEmbassy, 0, locX5, locZ1);		
 
 
 	// Outer Center
 
-		rmPlaceGroupingAtLoc(blockSansculot, 0, locX1, locZ3);
+		rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ3);
+		rmPlaceGroupingAtLoc(blockSansculot, 0, locX6, locZ3);	
 
-		if (cNumberNonGaiaPlayers>=4){
-			rmPlaceGroupingAtLoc(blockSansculot, 0, locX8, locZ3);				
-		}
+		if (teamZeroCount>2){
+			rmPlaceGroupingAtLoc(blockSansculot, 0, locX0, locZ3);
+			rmPlaceGroupingAtLoc(blockSansculot, 0, locX9, locZ3);
+		}			
+		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX1, locZ3);
+		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX8, locZ3);
 
-		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX3, locZ2);
-		rmPlaceGroupingAtLoc(blockGoldSmelter, 0, locX0, locZ3);
+		rmSetNuggetDifficulty(299, 299);
+		if (verticalVariation ==1) 
+			int factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX2, locZ2, 0);
+		else
+			factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX7, locZ2, 0);
 
-		rmPlaceGroupingAtLoc(blockFactory, 0, locX2, locZ2);
-		rmPlaceGroupingAtLoc(blockFactory, 0, locX8, locZ1);
 
 	// Suburb
 
 
-		rmPlaceGroupingAtLoc(blockDestilery, 0, locX4, locZ4);
+		rmPlaceGroupingAtLoc(blockDestilery, 0, locX2, locZ4);
 		rmPlaceGroupingAtLoc(blockDestilery, 0, locX7, locZ4);
 
 		rmPlaceGroupingAtLoc(blockWarehouse, 0, locX9, locZ4);
-		rmPlaceGroupingAtLoc(blockWarehouse, 0, locX1, locZ4);
+		rmPlaceGroupingAtLoc(blockWarehouse, 0, locX0, locZ4);
 
 
 	// Everywhere
 
 		rmSetNuggetDifficulty(194, 194);
-		rmPlaceGroupingAtLoc(blockBastion01, 0, locX3, locZ3);
-		rmPlaceGroupingAtLoc(blockBastion02, 0, locX3, locZ4);
-
-		rmSetNuggetDifficulty(195, 195);
-		rmPlaceGroupingAtLoc(blockEmbassy, 0, locX5, locZ1);
+		rmPlaceGroupingAtLoc(blockBastion01, 0, locX2, locZ1);
+		rmPlaceGroupingAtLoc(blockBastion02, 0, locX7, locZ1);
+		if (teamZeroCount>2){
+			rmPlaceGroupingAtLoc(blockBastion01, 0, locX8, locZ4);
+			rmPlaceGroupingAtLoc(blockBastion02, 0, locX1, locZ4);
+		}
 
 		rmSetNuggetDifficulty(192, 192);
-		rmPlaceGroupingAtLoc(blockTreasure02, 0, locX4, locZ2);
-		rmPlaceGroupingAtLoc(blockTreasure01, 0, locX6, locZ2);
+		rmPlaceGroupingAtLoc(blockTreasure02, 0, locX1, locZ2);
+		rmPlaceGroupingAtLoc(blockTreasure01, 0, locX8, locZ2);
+		if (teamZeroCount>2){
+			rmPlaceGroupingAtLoc(blockTreasure02, 0, locX4, locZ4);
+			rmPlaceGroupingAtLoc(blockTreasure01, 0, locX5, locZ4);
+		}
 
 
 
@@ -856,7 +922,6 @@ int jesuitMaltese = rmRandInt(1, 2);
 
 
 
-
 //================we will add the other 4 rows after the groupings are defined and the randomizer is working=========
 
 rmSetStatusText("",0.70);
@@ -864,9 +929,9 @@ rmSetStatusText("",0.70);
 
 // Add city hills
 
-// City Hill Ramp
+	// City Hill Ramp
 
-for (j=0; < 2) {  
+	for (j=0; < 2) {  
 		int smallPatchRamp = rmCreateArea("smallPatchRamp"+j);
 		rmSetAreaSize(smallPatchRamp, rmAreaTilesToFraction(450), rmAreaTilesToFraction(450));
 		rmSetAreaHeightBlend(smallPatchRamp, 3);
@@ -875,19 +940,32 @@ for (j=0; < 2) {
 		rmSetAreaSmoothDistance(smallPatchRamp, 7);
 		rmSetAreaBaseHeight(smallPatchRamp, 6.0);
 		if (j == 0){
-		rmSetAreaLocation(smallPatchRamp, 0.08, mapCenter+rmZTilesToFraction(45));
+		rmSetAreaLocation(smallPatchRamp, 0.08, mapCenter+rmZTilesToFraction(57));
 		}
 		if (j == 1){
-		rmSetAreaLocation(smallPatchRamp, 0.93, mapCenter+rmZTilesToFraction(45));
+		rmSetAreaLocation(smallPatchRamp, 0.93, mapCenter+rmZTilesToFraction(57));
 		}
 		rmBuildArea(smallPatchRamp);  
 
 		}
 
-	for (j=0; < 6) {   
+	// Fixed Guns
+	int fixedGunR = rmCreateGrouping("fixed gun right", "Verseilles_Fixed_Gun_R");
+    rmSetGroupingMinDistance(fixedGunR, 0.00);
+    rmSetGroupingMaxDistance(fixedGunR, 0.50);
+	rmAddGroupingToClass(fixedGunR, rmClassID("classBlock"));
 
-		 
+	int fixedGunL = rmCreateGrouping("fixed gun left", "Verseilles_Fixed_Gun_L");
+    rmSetGroupingMinDistance(fixedGunL, 0.00);
+    rmSetGroupingMaxDistance(fixedGunL, 0.50);
+	rmAddGroupingToClass(fixedGunL, rmClassID("classBlock"));
 
+	rmPlaceGroupingAtLoc(fixedGunR, 0, 0.801, mapCenter+rmZTilesToFraction(44));
+	rmPlaceGroupingAtLoc(fixedGunL, 0, 0.225, mapCenter+rmZTilesToFraction(44));
+
+
+	for (j=0; < 12) {   
+ 
 		// City Hill Cliff
 		int wallCliffs = rmCreateArea("wallCliffs"+j);
 		rmSetAreaObeyWorldCircleConstraint(wallCliffs, false);
@@ -915,51 +993,87 @@ for (j=0; < 2) {
 		rmAddAreaInfluenceSegment(wallCliffs, 0.0, mapCenter+rmZTilesToFraction(9), 0.26, mapCenter+rmZTilesToFraction(9));
 		}
 		if (j == 2){
-		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(80), rmAreaTilesToFraction(80));
 		rmSetAreaCoherence(wallCliffs, .93);
-		rmSetAreaLocation(wallCliffs, 0.9, mapCenter+rmZTilesToFraction(46));
-		rmAddAreaInfluenceSegment(wallCliffs, 0.78, mapCenter+rmZTilesToFraction(46), 1.0, mapCenter+rmZTilesToFraction(46));
+		rmSetAreaLocation(wallCliffs, 0.8, mapCenter+rmZTilesToFraction(35));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.78, mapCenter+rmZTilesToFraction(35), 0.84, mapCenter+rmZTilesToFraction(35));
 		}
 		if (j == 3){
-		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(80), rmAreaTilesToFraction(80));
 		rmSetAreaCoherence(wallCliffs, .93);
-		rmSetAreaLocation(wallCliffs, 0.1, mapCenter+rmZTilesToFraction(46));
-		rmAddAreaInfluenceSegment(wallCliffs, 0.0, mapCenter+rmZTilesToFraction(46), 0.27, mapCenter+rmZTilesToFraction(46));
+		rmSetAreaLocation(wallCliffs, 0.2, mapCenter+rmZTilesToFraction(35));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.16, mapCenter+rmZTilesToFraction(35), 0.27, mapCenter+rmZTilesToFraction(35));
 		}
 		if (j == 4){
-		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(1200), rmAreaTilesToFraction(1200));
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(1600), rmAreaTilesToFraction(1600));
 		rmSetAreaCoherence(wallCliffs, .8);
-		rmSetAreaLocation(wallCliffs, 0.08, mapCenter+rmZTilesToFraction(27));
-		rmAddAreaInfluenceSegment(wallCliffs, 0.08, mapCenter+rmZTilesToFraction(17), 0.08, mapCenter+rmZTilesToFraction(38));
+		rmSetAreaLocation(wallCliffs, 0.09, mapCenter+rmZTilesToFraction(27));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.08, mapCenter+rmZTilesToFraction(17), 0.08, mapCenter+rmZTilesToFraction(48));
 		}
 		if (j == 5){
-		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(1200), rmAreaTilesToFraction(1200));
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(1600), rmAreaTilesToFraction(1600));
 		rmSetAreaCoherence(wallCliffs, .8);
 		rmSetAreaLocation(wallCliffs, 0.93, mapCenter+rmZTilesToFraction(27));
-		rmAddAreaInfluenceSegment(wallCliffs, 0.93, mapCenter+rmZTilesToFraction(17), 0.93, mapCenter+rmZTilesToFraction(38));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.93, mapCenter+rmZTilesToFraction(17), 0.93, mapCenter+rmZTilesToFraction(48));
+		}
+		if (j == 6){
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaCoherence(wallCliffs, .93);
+		rmSetAreaLocation(wallCliffs, 0.9, mapCenter+rmZTilesToFraction(54));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.78, mapCenter+rmZTilesToFraction(54), 1.0, mapCenter+rmZTilesToFraction(54));
+		}
+		if (j == 7){
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaCoherence(wallCliffs, .93);
+		rmSetAreaLocation(wallCliffs, 0.1, mapCenter+rmZTilesToFraction(54));
+		rmAddAreaInfluenceSegment(wallCliffs, 0.0, mapCenter+rmZTilesToFraction(54), 0.27, mapCenter+rmZTilesToFraction(54));
+		}
+		if (j == 8){
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(230), rmAreaTilesToFraction(230));
+		rmSetAreaCoherence(wallCliffs, .93);
+		rmSetAreaLocation(wallCliffs, 0.195, mapCenter+rmZTilesToFraction(44));
+		}
+		if (j == 9){
+		rmSetAreaSize(wallCliffs, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
+		rmSetAreaCoherence(wallCliffs, .93);
+		rmSetAreaLocation(wallCliffs, 0.82, mapCenter+rmZTilesToFraction(44));
 		}
 		rmBuildArea(wallCliffs);  
 		
 	}
 
-// Place additional objects
+	// Cliff Objects
 
-	// Groupings
+	// Cliff Monastery Groupings
 	int jesuitVillageType = rmRandInt(1, 3);
 	int jesuitMonasteryID = rmCreateGrouping("countryMonastery1", "Jesuit_Cathedral_EU_0"+jesuitVillageType);
-    rmSetGroupingMinDistance(jesuitMonasteryID, 0.00);
-    rmSetGroupingMaxDistance(jesuitMonasteryID, 0.50);
+	rmSetGroupingMinDistance(jesuitMonasteryID, 0.00);
+	rmSetGroupingMaxDistance(jesuitMonasteryID, 0.50);
 	rmAddGroupingToClass(jesuitMonasteryID, rmClassID("classBlock"));
 
 	int jesuitVillageType2 = rmRandInt(1, 3);
 	int jesuitMonasteryID2 = rmCreateGrouping("countryMonastery2", "Jesuit_Cathedral_EU_0"+jesuitVillageType2);
-    rmSetGroupingMinDistance(jesuitMonasteryID2, 0.00);
-    rmSetGroupingMaxDistance(jesuitMonasteryID2, 0.50);
+	rmSetGroupingMinDistance(jesuitMonasteryID2, 0.00);
+	rmSetGroupingMaxDistance(jesuitMonasteryID2, 0.50);
 	rmAddGroupingToClass(jesuitMonasteryID2, rmClassID("classBlock"));
 
-	rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.08, mapCenter+rmZTilesToFraction(30), 1);
-	rmPlaceGroupingAtLoc(jesuitMonasteryID2, 0, 0.93, mapCenter+rmZTilesToFraction(30), 1);
+	rmPlaceGroupingAtLoc(jesuitMonasteryID, 0, 0.08, mapCenter+rmZTilesToFraction(24), 1);
+	rmPlaceGroupingAtLoc(jesuitMonasteryID2, 0, 0.93, mapCenter+rmZTilesToFraction(24), 1);
 
+	rmPlaceGroupingAtLoc(blockMill, 0, 0.08, mapCenter+rmZTilesToFraction(50), 1);
+	rmPlaceGroupingAtLoc(blockMill, 0, 0.93, mapCenter+rmZTilesToFraction(50), 1);
+
+
+	// Forester
+	int foresterID = rmCreateObjectDef("random forester");
+	rmAddObjectDefItem(foresterID, "zpSPCForester", 1, 0);
+	rmAddObjectDefConstraint(foresterID, avoidBlockLong);
+	rmAddObjectDefConstraint(foresterID, avoidAll);
+	rmAddObjectDefConstraint(foresterID, playerEdgeConstraint);
+	rmPlaceObjectDefInArea(foresterID, 0, rmAreaID("wallCliffs4"), 1);
+	rmPlaceObjectDefInArea(foresterID, 0, rmAreaID("wallCliffs5"), 1);
+
+	// Place additional objects
 
 	// Menagerie
 	int blockMenagerie = rmCreateGrouping("menagerie", "EU_Resource_Block_Menager2");
@@ -967,7 +1081,8 @@ for (j=0; < 2) {
     rmSetGroupingMaxDistance(blockMenagerie, 0.50);
 	rmAddGroupingToClass(blockMenagerie, rmClassID("classBlock"));
 
-	rmPlaceGroupingAtLoc(blockMenagerie, 0, 0.515, mapCenter+rmZTilesToFraction(70), 1);
+	rmSetNuggetDifficulty(98, 98);
+	int menageriePlacement = rmPlaceGroupingInstanceAtLoc(blockMenagerie, 0.515, mapCenter+rmZTilesToFraction(70), 0);
 		
 
 	rmSetStatusText("",0.80);
@@ -976,6 +1091,13 @@ for (j=0; < 2) {
 //==============================================================
 //dansil player placement
 //==============================================================
+
+int listOfAttackers = xsArrayCreateInt(teamZeroCount, -1, "List of all attacking players");
+for(i=1; < cNumberNonGaiaPlayers + 1) {
+	if (rmGetPlayerTeam(1) == 0) {
+		xsArraySetInt(listOfAttackers , 0, i);
+	}
+}
 
 // =============Player placement ======================= 
 	//spawnSwitch = 0.1;
@@ -1022,9 +1144,9 @@ for (j=0; < 2) {
 			{	
 				rmSetPlacementTeam(1);
 				rmPlacePlayersLine(0.2, 0.87, 0.8, 0.87, 0, 0);
-				rmPlacePlayer(1, locX2, locZ6);
-				rmPlacePlayer(2, locX4, locZ6);
-				rmPlacePlayer(3, locX6, locZ6);
+				rmPlacePlayer(firstAttacker, locX2, locZ6);
+				rmPlacePlayer(secondAttacker, locX4, locZ6);
+				rmPlacePlayer(thirdAttacker, locX6, locZ6);
 				playerAreaConstraint = rmCreateBoxConstraint("stay in player area", 0.1-rmZTilesToFraction(3), mapCenter-rmZTilesToFraction(70), 0.91+rmZTilesToFraction(3), mapCenter-rmZTilesToFraction(124));
 				playerStreetConstraint = rmCreateBoxConstraint("stay in street", 0.1, mapCenter-rmZTilesToFraction(70), 0.91, mapCenter-rmZTilesToFraction(122));
 			}	
@@ -1032,10 +1154,10 @@ for (j=0; < 2) {
 			{	
 				rmSetPlacementTeam(1);
 				rmPlacePlayersLine(0.2, 0.87, 0.8, 0.87, 0, 0);
-				rmPlacePlayer(1, locX1, locZ6);
-				rmPlacePlayer(2, locX3, locZ6);
-				rmPlacePlayer(3, locX7, locZ6);
-				rmPlacePlayer(4, locX9, locZ6);
+				rmPlacePlayer(firstAttacker, locX1, locZ6);
+				rmPlacePlayer(secondAttacker, locX3, locZ6);
+				rmPlacePlayer(thirdAttacker, locX7, locZ6);
+				rmPlacePlayer(fourthAttacker, locX9, locZ6);
 				playerAreaConstraint = rmCreateBoxConstraint("stay in player area", 0.0, mapCenter-rmZTilesToFraction(70), 1.0, mapCenter-rmZTilesToFraction(124));
 				playerStreetConstraint = rmCreateBoxConstraint("stay in street", 0.0, mapCenter-rmZTilesToFraction(70), 1.0, mapCenter-rmZTilesToFraction(122));
 			}
@@ -1043,34 +1165,42 @@ for (j=0; < 2) {
 			{	
 				rmSetPlacementTeam(1);
 				rmPlacePlayersLine(0.2, 0.87, 0.8, 0.87, 0, 0);
-				rmPlacePlayer(1, locX1, locZ6);
-				rmPlacePlayer(5, locX3, locZ6);
-				rmPlacePlayer(3, locX5, locZ6);
-				rmPlacePlayer(4, locX7, locZ6);
-				rmPlacePlayer(5, locX9, locZ6);
+				rmPlacePlayer(firstAttacker, locX1, locZ6);
+				rmPlacePlayer(secondAttacker, locX3, locZ6);
+				rmPlacePlayer(thirdAttacker, locX5, locZ6);
+				rmPlacePlayer(fourthAttacker, locX7, locZ6);
+				rmPlacePlayer(fifthAttacker, locX9, locZ6);
+				playerAreaConstraint = rmCreateBoxConstraint("stay in player area", 0.0, mapCenter-rmZTilesToFraction(70), 1.0, mapCenter-rmZTilesToFraction(124));
+				playerStreetConstraint = rmCreateBoxConstraint("stay in street", 0.0, mapCenter-rmZTilesToFraction(70), 1.0, mapCenter-rmZTilesToFraction(122));
 			}
 			if (teamZeroCount == 6)				
 			{	
 				rmSetPlacementTeam(1);
 				rmPlacePlayersLine(0.2, 0.87, 0.8, 0.87, 0, 0);
-				rmPlacePlayer(1, locX1, locZ6);
-				rmPlacePlayer(2, locX3, locZ6);
-				rmPlacePlayer(3, locX5, locZ6);
-				rmPlacePlayer(4, locX7, locZ6);
-				rmPlacePlayer(5, locX9, locZ6);
-				rmPlacePlayer(6, locX4, locZ8);
+				rmPlacePlayer(firstAttacker, locX1, locZ6);
+				rmPlacePlayer(secondAttacker, locX3, locZ6);
+				rmPlacePlayer(thirdAttacker, locX5, locZ6);
+				rmPlacePlayer(fourthAttacker, locX7, locZ6);
+				rmPlacePlayer(fifthAttacker, locX9, locZ6);
+				rmPlacePlayer(sixthAttacker, locX5, locZ8);
+
+				playerAreaConstraint = rmCreateBoxConstraint("stay in player area", 0.0, mapCenter-rmZTilesToFraction(70), 1.0, mapCenter-rmZTilesToFraction(141));
+				playerStreetConstraint = rmCreateBoxConstraint("stay in street", 0.0, mapCenter-rmZTilesToFraction(70), 1.0, mapCenter-rmZTilesToFraction(139));
 			}
 			if (teamZeroCount == 7)				
 			{	
 				rmSetPlacementTeam(1);
 				rmPlacePlayersLine(0.2, 0.87, 0.8, 0.87, 0, 0);
-				rmPlacePlayer(1, locX1, locZ6);
-				rmPlacePlayer(2, locX3, locZ6);
-				rmPlacePlayer(3, locX5, locZ6);
-				rmPlacePlayer(4, locX7, locZ6);
-				rmPlacePlayer(5, locX9, locZ6);
-				rmPlacePlayer(6, locX3, locZ8);
-				rmPlacePlayer(7, locX5, locZ8);
+				rmPlacePlayer(firstAttacker, locX1, locZ6);
+				rmPlacePlayer(secondAttacker, locX3, locZ6);
+				rmPlacePlayer(thirdAttacker, locX5, locZ6);
+				rmPlacePlayer(fourthAttacker, locX7, locZ6);
+				rmPlacePlayer(fifthAttacker, locX9, locZ6);
+				rmPlacePlayer(sixthAttacker, locX3, locZ8);
+				rmPlacePlayer(seventhAttacker, locX5, locZ8);
+
+				playerAreaConstraint = rmCreateBoxConstraint("stay in player area", 0.0, mapCenter-rmZTilesToFraction(70), 1.0, mapCenter-rmZTilesToFraction(141));
+				playerStreetConstraint = rmCreateBoxConstraint("stay in street", 0.0, mapCenter-rmZTilesToFraction(70), 1.0, mapCenter-rmZTilesToFraction(139));
 			}														
 		}
 	}
@@ -1132,6 +1262,52 @@ for (j=0; < 2) {
 		rmPlaceGroupingAtLoc(blockHouse04, 0, locX7, locZ7);
 	}
 
+	//4 Attackers
+	if (teamZeroCount == 3){
+		rmPlaceGroupingAtLoc(blockHouse01, 0, locX8, locZ5);
+		rmPlaceGroupingAtLoc(blockHouse02, 0, locX7, locZ5);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX8, locZ6);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX7, locZ6);
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locX8, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse04, 0, locX7, locZ7);
+	}
+
+	//5 Attackers
+	if (teamZeroCount == 6){
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX0, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX1, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse01, 0, locX2, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse02, 0, locX3, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locX6, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse04, 0, locX7, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX8, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX9, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX0, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse01, 0, locX1, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse02, 0, locX2, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX3, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX6, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locX7, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse04, 0, locX8, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX9, locZ8);
+	}
+
+	if (teamZeroCount == 7){
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX0, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX1, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse02, 0, locX3, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locX6, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse04, 0, locX7, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX8, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX9, locZ7);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX0, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse01, 0, locX1, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse06, 0, locX6, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse03, 0, locX7, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse04, 0, locX8, locZ8);
+		rmPlaceGroupingAtLoc(blockHouse05, 0, locX9, locZ8);
+	}
+
 
 //town centre start
 
@@ -1148,9 +1324,9 @@ for (j=0; < 2) {
 	rmSetObjectDefCreateHerd(foodID, true);
 
 	int goldID = rmCreateObjectDef("starting gold");
-	rmAddObjectDefItem(goldID, "MineTin", 1, 2.0);
+	rmAddObjectDefItem(goldID, "SPCMine", 1, 2.0);
 	rmSetObjectDefMinDistance(goldID, 14.0);
-	rmSetObjectDefMaxDistance(goldID, 15.0);
+	rmSetObjectDefMaxDistance(goldID, 17.0);
 	rmAddObjectDefConstraint(goldID, avoidTradeRouteMin);
 
 	int berryID = rmCreateObjectDef("starting berries");
@@ -1196,6 +1372,7 @@ for (j=0; < 2) {
 	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
 	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
 	rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.65);
+	rmSetNuggetDifficulty(1, 1);
     
     for(i=1; <= cNumberNonGaiaPlayers) {
 		if (rmGetPlayerTeam(i) == 1) {
@@ -1318,15 +1495,6 @@ for (j=0; < 2) {
 		rmPlaceGroupingInArea(cemetary, 0, countrysideSouth, 1);
 	}
 
-	// Forester
-	/*int foresterID = rmCreateObjectDef("random forester");
-	rmAddObjectDefItem(foresterID, "zpSPCForester", 1, 0);
-	rmAddObjectDefConstraint(foresterID, avoidBlockMedium);
-	rmAddObjectDefConstraint(foresterID, playerEdgeConstraint);
-	rmAddObjectDefConstraint(foresterID, avoidForester);
-	rmAddObjectDefConstraint(foresterID, avoidStreetZero);
-	rmPlaceObjectDefInArea(foresterID, 0, countrysideSouth, 2);*/
-
 	// Random Houses
 	int randomHouseID = rmCreateObjectDef("random house");
 	rmAddObjectDefItem(randomHouseID, "zpSPCVillageHouseProp", 1, 0);
@@ -1419,7 +1587,7 @@ for (j=0; < 2) {
 	rmAddObjectDefConstraint(deerID, shortDeerConstraint);
 	rmSetObjectDefCreateHerd(deerID, true);
 	rmPlaceObjectDefInArea(deerID, 0, countrysideSouth, cNumberNonGaiaPlayers+2);
-	rmPlaceObjectDefInArea(deerID, 0, countrysideNorth, cNumberNonGaiaPlayers);
+	rmPlaceObjectDefInArea(deerID, 0, countrysideNorth, cNumberNonGaiaPlayers+4);
 
 	
 
@@ -1437,6 +1605,8 @@ for (j=0; < 2) {
 	rmAddObjectDefConstraint(nuggetNorth, avoidStreetZero);
     rmAddObjectDefConstraint(nuggetNorth, avoidPark);
 	rmAddObjectDefConstraint(nuggetNorth, playerEdgeConstraint);
+	rmAddObjectDefConstraint(nuggetNorth, avoidFixedGun);
+	rmAddObjectDefConstraint(nuggetNorth, avoidTradeRouteFar);
 	rmPlaceObjectDefInArea(nuggetNorth, 0, countrysideNorth, cNumberNonGaiaPlayers);
 
 	int nuggetSouth= rmCreateObjectDef("nugget easy south"); 
@@ -1457,9 +1627,12 @@ for (j=0; < 2) {
 	rmAddObjectDefConstraint(nuggetHard, shortAvoidImpassableLand);
 	rmAddObjectDefConstraint(nuggetHard, avoidAll);
     rmAddObjectDefConstraint(nuggetHard, avoidPark);
+	rmAddObjectDefConstraint(nuggetHard, avoidNugget);
 	rmAddObjectDefConstraint(nuggetHard, avoidTownCenterFar);
 	rmAddObjectDefConstraint(nuggetHard, avoidBlockMedium);
 	rmAddObjectDefConstraint(nuggetHard, playerEdgeConstraint);
+	rmAddObjectDefConstraint(nuggetHard, avoidFixedGun);
+	rmAddObjectDefConstraint(nuggetHard, avoidTradeRouteFar);
 	rmPlaceObjectDefInArea(nuggetHard, 0, countrysideNorth, cNumberNonGaiaPlayers);
 
 	// Random Gold
@@ -1468,11 +1641,12 @@ for (j=0; < 2) {
 	rmSetObjectDefMinDistance(randomGoldID, 0.0);
 	rmSetObjectDefMaxDistance(randomGoldID, rmXFractionToMeters(0.45));
 	rmAddObjectDefConstraint(randomGoldID, avoidSilver);
+	rmAddObjectDefConstraint(randomGoldID, avoidCoin);
 	rmAddObjectDefConstraint(randomGoldID, avoidAll);
 	rmAddObjectDefConstraint(randomGoldID, avoidBlockLong);
     rmAddObjectDefConstraint(randomGoldID, avoidPark);
 	rmAddObjectDefConstraint(randomGoldID, playerEdgeConstraint);
-	rmPlaceObjectDefInArea(randomGoldID, 0, countrysideNorth, cNumberNonGaiaPlayers);
+	rmPlaceObjectDefInArea(randomGoldID, 0, countrysideNorth, cNumberNonGaiaPlayers*1.5);
 
 
 
@@ -1482,14 +1656,13 @@ for (j=0; < 2) {
 	//********************* GENERAL SETUP *************************
 
 	// ____________________ LOCAL MERCENARIES ____________________
-    rmDisableDefaultMercs(true);
+     rmDisableDefaultMercs(true);
     rmDisableCivTypeMercRestriction(true);
-    rmEnableMerc("MercSwissPikeman", -1);
-    rmEnableMerc("MercLandsknecht", -1);
-    rmEnableMerc("MercElmeti", -1);
-    rmEnableMerc("MercGreatCannon", -1);
-    rmEnableMerc("deMercCannoneer", -1);
-    rmEnableMerc("deMercPistoleer", -1);
+	rmEnableMerc("deSaloonInquisitor", -1);
+	rmEnableMerc("deMercPistoleer", -1);
+	rmEnableMerc("deMercMountedRifleman", -1);
+    rmEnableMerc("deMercNapoleonGun", -1);
+    rmEnableMerc("demercZouave", -1);
     
     rmForbidTradeMonopoly(true);
 
@@ -1507,6 +1680,13 @@ for (j=0; < 2) {
 
 	int royalOrangerie = rmGetGroupingInstanceUnitByType(verseillesPalace1, "zpSPCRoyalOrangerie");
 
+	int menagerieBuilding = rmGetGroupingInstanceUnitByType(menageriePlacement, "zpSPCMenagerie");
+	int menagerieNugget = rmGetGroupingInstanceUnitByType(menageriePlacement, "zpNuggetInvisible");
+
+	int factoryBuilding1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "zpSPCCapturableFactory");
+	int factoryNugget1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "zpNuggetInvisible");
+
+
 	// Victory Timer
 	int victoryCountDown = 1800;
 
@@ -1514,11 +1694,20 @@ for (j=0; < 2) {
 
 	// Convert Units
 
+	/*rmCreateTrigger("UpgradeCityTowers");
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",firstDefender);
+	rmSetTriggerEffectParam("TechID","cTechzpConvertCityTowers");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);*/
+
 	rmCreateTrigger("Convert Orangerie");
 	rmAddTriggerEffect("Convert");
 	rmSetTriggerEffectParam("SrcObject",""+royalOrangerie);
 	rmSetTriggerEffectParamInt("PlayerID",firstDefender);
-	rmSetTriggerPriority(4);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject",""+royalOrangerie);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
@@ -1534,6 +1723,14 @@ for (j=0; < 2) {
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject",""+royalOrangerie);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",firstDefender);
+	rmSetTriggerEffectParam("UnitType","zpSPCVerseillesFixedGun");
+	rmSetTriggerEffectParamInt("Dist",200);
+
+
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+royalOrangerie);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",firstAttacker);
 	rmSetTriggerEffectParam("UnitType","CWallGate");
 	rmSetTriggerEffectParamInt("Dist",200);
@@ -1543,6 +1740,9 @@ for (j=0; < 2) {
 	rmSetTriggerEffectParamInt("TrgPlayer",firstAttacker);
 	rmSetTriggerEffectParam("UnitType","Outpost");
 	rmSetTriggerEffectParamInt("Dist",200);
+	/*rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UpgradeCityTowers"));*/
+	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
@@ -1563,6 +1763,10 @@ for (j=0; < 2) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpBonusBourbon"); // No normal revolutions on this map
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpEnableSPCCityStateTechsClone"); // No normal revolutions on this map
 		rmSetTriggerEffectParamInt("Status",2);
 		if (rmGetPlayerTeam(i) == 0) {
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -1612,6 +1816,45 @@ for (j=0; < 2) {
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",0);
 	rmSetTriggerEffectParam("StringID","302071");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Resource Building Convert
+	rmCreateTrigger("Buildings Convert OFF");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+menagerieBuilding);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+factoryBuilding1);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Menagerie Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+menagerieNugget);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+menagerieBuilding, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Factory 1 Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+factoryNugget1);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+factoryBuilding1, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -2163,7 +2406,6 @@ for (j=0; < 2) {
 		rmSetTriggerLoop(false);
 	}
 	}
-
 
 	// Testing
 

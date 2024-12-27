@@ -1,0 +1,30 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\basilica_age2_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\basilica_age2_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\basilica_age2_mata_masks">
+      </texture>
+      <texture name="Details" override="buildings\basilica\textures\basilica_age2_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\basilica_age2_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\basilica_age2_matb_normals">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\basilica_age2_matb_masks">
+      </texture>
+      <texture name="Details" override="buildings\basilica\textures\basilica_age2_matb_details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

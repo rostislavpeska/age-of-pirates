@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_prop</definebone>
+		<component>
+		house
+		<logic type="Variation">
+			<variationid0>
+				<assetreference type="GrannyModel">
+					<file>buildings\church\church_orthodox_south_Model</file>
+				</assetreference>
+			</variationid0>
+			<variationid1>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_church_age3</file>
+				</assetreference>
+			</variationid1>
+		</logic>
+        <decal>
+            <effecttype>bump</effecttype>
+            <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+            <width>12.00</width>
+            <height>14.00</height>
+        </decal>
+	</component>
+	<anim>
+		Idle
+		<component>house</component>
+	</anim>
+</animfile>

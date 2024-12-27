@@ -1320,7 +1320,7 @@ else
   
   // MINES
 
-   int mineType = -1;
+  int mineType = -1;
 	int mineID = -1;
 	int mineCount = (cNumberNonGaiaPlayers*1.25);
 	rmEchoInfo("mine count = "+mineCount);
@@ -1329,30 +1329,30 @@ else
 	{
 	  int westmineID = rmCreateObjectDef("west mine "+i);
 	  rmAddObjectDefItem(westmineID, "Mine", 1, 0.0);
-      rmSetObjectDefMinDistance(westmineID, 0.0);
-      rmSetObjectDefMaxDistance(westmineID, rmXFractionToMeters(0.45));
-	  rmAddObjectDefConstraint(westmineID, avoidCoin);
-      rmAddObjectDefConstraint(westmineID, avoidAll);
-      rmAddObjectDefConstraint(westmineID, playerConstraintNugget);
-      rmAddObjectDefConstraint(westmineID, avoidTownCenterFar);
-      rmAddObjectDefConstraint(westmineID, mediumAvoidImpassableLand);
-      rmAddObjectDefConstraint(westmineID, westIslandConstraint);
-	  rmPlaceObjectDefAtLoc(westmineID, 0, 0.5, 0.5);
+    rmSetObjectDefMinDistance(westmineID, 0.0);
+    rmSetObjectDefMaxDistance(westmineID, rmXFractionToMeters(0.45));
+    rmAddObjectDefConstraint(westmineID, avoidCoin);
+    rmAddObjectDefConstraint(westmineID, avoidAll);
+    rmAddObjectDefConstraint(westmineID, playerConstraintNugget);
+    rmAddObjectDefConstraint(westmineID, avoidTownCenterFar);
+    rmAddObjectDefConstraint(westmineID, mediumAvoidImpassableLand);
+    rmAddObjectDefConstraint(westmineID, westIslandConstraint);
+    rmPlaceObjectDefAtLoc(westmineID, 0, 0.5, 0.5);
    }
 
    for(i=0; < mineCount)
 	{
 	  int eastmineID = rmCreateObjectDef("east mine "+i);
-	  rmAddObjectDefItem(eastmineID, "Mine", 1, 0.0);
-      rmSetObjectDefMinDistance(eastmineID, 0.0);
-      rmSetObjectDefMaxDistance(eastmineID, rmXFractionToMeters(0.45));
-	  rmAddObjectDefConstraint(eastmineID, avoidCoin);
-      rmAddObjectDefConstraint(eastmineID, avoidAll);
-      rmAddObjectDefConstraint(eastmineID, avoidTownCenterFar);
-      rmAddObjectDefConstraint(eastmineID, playerConstraintNugget);
-      rmAddObjectDefConstraint(eastmineID, mediumAvoidImpassableLand);
-      rmAddObjectDefConstraint(eastmineID, eastIslandConstraint);
-	  rmPlaceObjectDefAtLoc(eastmineID, 0, 0.5, 0.5);
+    rmAddObjectDefItem(eastmineID, "Mine", 1, 0.0);
+    rmSetObjectDefMinDistance(eastmineID, 0.0);
+    rmSetObjectDefMaxDistance(eastmineID, rmXFractionToMeters(0.45));
+    rmAddObjectDefConstraint(eastmineID, avoidCoin);
+    rmAddObjectDefConstraint(eastmineID, avoidAll);
+    rmAddObjectDefConstraint(eastmineID, avoidTownCenterFar);
+    rmAddObjectDefConstraint(eastmineID, playerConstraintNugget);
+    rmAddObjectDefConstraint(eastmineID, mediumAvoidImpassableLand);
+    rmAddObjectDefConstraint(eastmineID, eastIslandConstraint);
+    rmPlaceObjectDefAtLoc(eastmineID, 0, 0.5, 0.5);
    } 
  
   // Nuggets
@@ -1369,27 +1369,27 @@ else
 	rmPlaceObjectDefInArea(nuggetNorth, 0, mainIslandID, cNumberNonGaiaPlayers);
 
   int nuggetSouthHard= rmCreateObjectDef("nugget hard south"); 
-	rmAddObjectDefItem(nuggetSouthHard, "Nugget", 1, 0.0);
-	rmSetNuggetDifficulty(3, 3);
-	rmAddObjectDefConstraint(nuggetSouthHard, shortAvoidImpassableLand);
-  	rmAddObjectDefConstraint(nuggetSouthHard, avoidNugget);
-  	rmAddObjectDefConstraint(nuggetSouthHard, avoidSocket);
-	rmAddObjectDefConstraint(nuggetSouthHard, avoidTCMedium);
-   rmAddObjectDefConstraint(nuggetSouthHard, avoidWater4);
-	rmAddObjectDefConstraint(nuggetSouthHard, playerEdgeConstraint);
-	rmPlaceObjectDefInArea(nuggetSouthHard, 0, eastMountain, cNumberNonGaiaPlayers);
+  rmAddObjectDefItem(nuggetSouthHard, "Nugget", 1, 0.0);
+  rmSetNuggetDifficulty(3, 3);
+  rmAddObjectDefConstraint(nuggetSouthHard, shortAvoidImpassableLand);
+  rmAddObjectDefConstraint(nuggetSouthHard, avoidNugget);
+  rmAddObjectDefConstraint(nuggetSouthHard, avoidSocket);
+  rmAddObjectDefConstraint(nuggetSouthHard, avoidTCMedium);
+  rmAddObjectDefConstraint(nuggetSouthHard, avoidWater4);
+  rmAddObjectDefConstraint(nuggetSouthHard, playerEdgeConstraint);
+  rmPlaceObjectDefInArea(nuggetSouthHard, 0, eastMountain, cNumberNonGaiaPlayers);
 
   int nuggetSouth= rmCreateObjectDef("nugget easy south"); 
-	rmAddObjectDefItem(nuggetSouth, "Nugget", 1, 0.0);
-	rmSetNuggetDifficulty(1, 1);
-	rmAddObjectDefConstraint(nuggetSouth, shortAvoidImpassableLand);
-  	rmAddObjectDefConstraint(nuggetSouth, avoidNugget);
-  	rmAddObjectDefConstraint(nuggetSouth, avoidSocket);
-    rmAddObjectDefConstraint(nuggetSouth, avoidMountains);
-	rmAddObjectDefConstraint(nuggetSouth, avoidTCshort);
-   rmAddObjectDefConstraint(nuggetSouth, avoidWater4);
-	rmAddObjectDefConstraint(nuggetSouth, playerEdgeConstraint);
-	rmPlaceObjectDefInArea(nuggetSouth, 0, mainIslandID2, cNumberNonGaiaPlayers);
+  rmAddObjectDefItem(nuggetSouth, "Nugget", 1, 0.0);
+  rmSetNuggetDifficulty(1, 1);
+  rmAddObjectDefConstraint(nuggetSouth, shortAvoidImpassableLand);
+  rmAddObjectDefConstraint(nuggetSouth, avoidNugget);
+  rmAddObjectDefConstraint(nuggetSouth, avoidSocket);
+  rmAddObjectDefConstraint(nuggetSouth, avoidMountains);
+  rmAddObjectDefConstraint(nuggetSouth, avoidTCshort);
+  rmAddObjectDefConstraint(nuggetSouth, avoidWater4);
+  rmAddObjectDefConstraint(nuggetSouth, playerEdgeConstraint);
+  rmPlaceObjectDefInArea(nuggetSouth, 0, mainIslandID2, cNumberNonGaiaPlayers);
 
   int nuggetNorthHard= rmCreateObjectDef("nugget hard north"); 
 	rmAddObjectDefItem(nuggetNorthHard, "Nugget", 1, 0.0);
