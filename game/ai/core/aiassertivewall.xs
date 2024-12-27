@@ -9740,6 +9740,19 @@ bool shouldBuildDock()
       shouldBuild = true;
    }
 
+   // check if we're not on an island map, and if the opponent isn't attempting to contest water
+   /*int enemyWarshipCount = kbUnitCount(cPlayerRelationEnemyNotGaia, cUnitTypeAbstractWarShip, cUnitStateAlive);
+   if (gStartOnDifferentIslands == false)
+   {
+      if (enemyWarshipCount <= 0)
+      {  // Enemy hasn't built a warship
+         if (dockCount > 2)
+         {
+            //shouldBuild = false;
+         }
+      }
+   }*/
+
    // Check if we don't have enough ships queued
    // Only do this if we already have at least 1 dock
    if (dockCount >= 1 && gIsPirateMap == false)
