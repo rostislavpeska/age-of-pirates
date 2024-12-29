@@ -35,7 +35,8 @@ minInterval 1
        cRandomMapName == "zpmediterranean" ||
        cRandomMapName == "zpzealand" ||
        cRandomMapName == "zpcookislands" ||
-       cRandomMapName == "zpbarrierreef")
+       cRandomMapName == "zpbarrierreef" ||
+       cRandomMapName == "zpvenicecity")
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
@@ -53,7 +54,7 @@ minInterval 1
    }
 
    // AssertiveWall: Naval, but not starting on different islands
-      if (cRandomMapName == "zphawaii")
+   if (cRandomMapName == "zphawaii")
    {
       gIsPirateMap = true;
       gNavyMap = true;
@@ -94,6 +95,13 @@ minInterval 1
    if (cRandomMapName == "zpverseilles")
    {
       xsEnableRule("initializecheckAttackDefenseMapAoP"); // 
+   }
+
+   // Naval City Map
+   if (cRandomMapName == "zpvenicecity")
+   {
+      xsEnableRule("navalCityAttackManager");
+      gAmphibiousAssaultStage = cForbidAmphibiousAssault;
    }
 
    // AssertiveWall: Archipelago style maps
@@ -741,6 +749,142 @@ minInterval 10
             }
          }
       }
+   }
+}
+
+//==============================================================================
+/* navalCityAttackManager
+   conducts all the attack management for city maps
+
+   Unlike CityAttackmanager, this can handle water maps
+   
+   So far super simple, just runs alongside the standard attack manager and 
+   launches attacks agaisnt city states when possible
+*/
+//==============================================================================
+rule navalCityAttackManager
+inactive
+minInterval 10
+{
+   // Pretty simple, all we can do is attack city states.
+   if (isDefendingOrAttacking() == true)
+   {
+      return;
+   }
+
+   if (allowedToAttack() == false)
+   {
+      return;
+   }
+
+   if (xsIsRuleEnabled("attackManager") == true)
+   {
+      xsDisableRule("attackManager");
+   }
+
+   aiChat(1, "running");
+
+   // Go through the list of city states
+   int cityStateQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketVeniceCityState, cPlayerRelationEnemy, cUnitStateAny);
+   int numberCityStateFound = kbUnitQueryExecute(cityStateQuery);
+   int tempCityState = -1;
+   vector tempLocation = cInvalidVector;
+   int availableMilitaryStrength = -1;
+   int closestDist = 9999;
+   int tempDist = 9999;
+   int mainBaseID = kbBaseGetMainID(cMyID);
+   vector mainBaseLocation = kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
+   vector bestLocation = cInvalidVector;
+   int bestEnemyStrength = -1;
+   int tempEnemyStrength = -1;
+   int targetPlayer = -1;
+   bool transportRequired = false;
+
+
+   for (i = 0; < numberCityStateFound)
+   {
+      tempCityState = kbUnitQueryGetResult(cityStateQuery, i);
+      tempLocation = kbUnitGetPosition(tempCityState);
+      tempDist = distance(tempLocation, mainBaseLocation);
+
+      // Check if there are too many enemy there
+
+      // Check if there are no defenders?
+
+      // Closest
+      if (tempDist < closestDist)
+      {
+         closestDist = tempDist;
+         bestLocation = tempLocation;
+         bestEnemyStrength = tempEnemyStrength;
+         targetPlayer = kbUnitGetPlayerID(tempCityState);
+         if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(bestLocation), kbAreaGroupGetIDByPosition(mainBaseLocation)) == false)
+         {
+            transportRequired = true;
+         }
+         else
+         {
+            transportRequired = false;
+         }
+      }
+   }
+
+   // If we have a location, we can attack it
+   if (bestLocation != cInvalidVector)
+   {
+      aiChat(1, "found a location");
+      vector gatherPoint = kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
+      int planID = aiPlanCreate("Naval City Attack Player " + targetPlayer + "dist: " + closestDist, cPlanCombat);
+
+      aiPlanSetVariableInt(planID, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
+      aiPlanSetVariableInt(planID, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+
+      aiPlanSetVariableInt(planID, cCombatPlanTargetPlayerID, 0, targetPlayer);
+      aiPlanSetVariableVector(planID, cCombatPlanTargetPoint, 0, bestLocation); //AssertiveWall: Fixed from baselocation
+      aiPlanSetVariableVector(planID, cCombatPlanGatherPoint, 0, gatherPoint);
+      aiPlanSetVariableFloat(planID, cCombatPlanGatherDistance, 0, 40.0);
+
+      if (transportRequired == true)
+      {
+         aiPlanSetDesiredPriority(planID, 100); // AssertiveWall: Give it a 100 priority to prevent other plans from stealing ship
+         aiPlanSetRequiresAllNeedUnits(planID, true); // AssertiveWall: not entirely sure if this is helping
+      }
+
+      aiPlanSetVariableInt(planID, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternRandom);
+      if (cDifficultyCurrent >= cDifficultyHard) // AssertiveWall: Lowered from Expert
+      {
+         aiPlanSetVariableBool(planID, cCombatPlanAllowMoreUnitsDuringAttack, 0, true);
+      }
+
+      aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeNoTarget);
+      aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+      aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 30000);
+
+      aiPlanSetBaseID(planID, mainBaseID);
+      aiPlanSetInitialPosition(planID, gatherPoint);
+      addUnitsToMilitaryPlan(planID);
+
+      aiPlanSetActive(planID);
+
+      gLastAttackMissionTime = xsGetTime();
+
+      // AssertiveWall: A couple chats
+      if (getUnitCountByLocation(cUnitTypeTradingPost, cPlayerRelationEnemyNotGaia, cUnitStateAlive, bestLocation, 25.0) > 0)
+      {
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackTradeSite,
+            bestLocation);
+      }
+      else if (getUnitCountByLocation(gEconUnit, cPlayerRelationEnemyNotGaia, cUnitStateAlive, bestLocation, 15.0) > 3)
+      {
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemySettlers,
+            bestLocation);
+      }
+            
+      /*gLandAttackPlanID = planID;
+      if (transportRequired == true)
+      {
+         xsEnableRule("attackTimeoutTransportRequired");
+      }*/
    }
 }
 

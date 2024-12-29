@@ -1827,9 +1827,13 @@ minInterval 5
       aiPlanSetVariableInt(gNavyDefendPlan, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
       aiPlanAddUnitType(gNavyDefendPlan, cUnitTypeAbstractWarShip, 0, 200, 200);
       // AssertiveWall: adds artillery to water defend plan
-      if (gNavyMap == true)
+      if (gStartOnDifferentIslands == true)
       {
-         aiPlanAddUnitType(gNavyDefendPlan, cUnitTypeAbstractArtillery, 0, 3, 7);
+         aiPlanAddUnitType(gNavyDefendPlan, cUnitTypeAbstractArtillery, 0, 0, 3);
+      }
+      else if (gNavyMap == true)
+      {
+         aiPlanAddUnitType(gNavyDefendPlan, cUnitTypeAbstractArtillery, 0, 0, 1);
       }
       
       debugMilitary("Creating primary navy defend plan at: " + gNavyVec);
@@ -3653,11 +3657,12 @@ minInterval 10
    }
 
    // AssertiveWall: If we made it this far, no one is in trouble. Move defense reflex to forward base
-   if ((gForwardBaseState == cForwardBaseStateActive || gForwardBaseState == cForwardBaseStateBuilding) &&
+   // Causing issues. moveDefenseReflex actually activates the defense reflex
+   /*if ((gForwardBaseState == cForwardBaseStateActive || gForwardBaseState == cForwardBaseStateBuilding) &&
          gForwardBaseShouldDefend == true)
    {
       moveDefenseReflex(gForwardBaseLocation, 50, gForwardBaseID);
-   }
+   }*/
 }
 
 //==============================================================================
@@ -4835,6 +4840,27 @@ rule coastalGuns
 inactive
 minInterval 30
 {
+   // Some checks to see if we want this yet
+   bool allowCoastalGuns = false;
+   if (gStartOnDifferentIslands == true)
+   {  // Always do this on island maps
+      allowCoastalGuns = true;
+   }
+   else if (kbUnitCount(cMyID, gDockUnit, cUnitStateABQ) > 2)
+   {  // If we are making lots of docks (3 or more)
+      allowCoastalGuns = true;
+   }
+   
+   if (gLastWSTime == 0)
+   {  // Block this if we haven't spotted enemy warships
+      allowCoastalGuns = false;
+   }
+
+   if (allowCoastalGuns == false)
+   {
+      return;
+   }
+
    int mainBaseID = kbBaseGetMainID(cMyID);
    vector mainBaseLocation = kbBaseGetLocation(cMyID, mainBaseID);
    vector targetPoint = gNavyVec;//kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
@@ -4862,7 +4888,15 @@ minInterval 30
       gCoastalGunPlan = aiPlanCreate("Coastal Guns", cPlanCombat);
    }
    // Artillery units, keep the desired and max amounts reasonable
-   aiPlanAddUnitType(gCoastalGunPlan, cUnitTypeAbstractArtillery, 0, 3, 5); 
+   if (gStartOnDifferentIslands == true)
+   {
+      aiPlanAddUnitType(gCoastalGunPlan, cUnitTypeAbstractArtillery, 0, 1, 2); 
+   }
+   else
+   {
+      aiPlanAddUnitType(gCoastalGunPlan, cUnitTypeAbstractArtillery, 0, 1, 1); 
+   }
+
    aiPlanSetVariableInt(gCoastalGunPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeDefend);
 
    if (targetPoint == cInvalidVector)

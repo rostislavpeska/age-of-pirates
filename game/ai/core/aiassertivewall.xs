@@ -4635,6 +4635,12 @@ minInterval 20
 //==============================================================================
 bool allowedToAttack(void)
 {
+   // Quick time check to make sure they aren't too, too soon
+   if (xsGetTime() - gLastAttackMissionTime < (gAttackMissionInterval * 0.5))
+   {
+      return (false);
+   }
+
    // First make sure we have enough military depending on age
    int ageVar = getTeamAge(true);   // our team by default, currently set to our team
    int enAgeVar = getTeamAge(false);//kbGetAgeForPlayer(aiGetMostHatedPlayerID());
@@ -8224,7 +8230,7 @@ void establishForwardBase()
       gForwardBaseID = kbBaseCreate(cMyID, "Base at Amphibious Beach Head: " + kbBaseGetNextID(), gAmphibiousAssaultTarget, 60.0);
       gForwardBaseLocation = gAmphibiousAssaultTarget;
       gForwardBaseUpTime = xsGetTime();
-      gForwardBaseShouldDefend = true;
+      //gForwardBaseShouldDefend = true; // Can't transport to defend it
 
       kbBaseSetMilitary(cMyID, gForwardBaseID, true);
       //moveDefenseReflex(gAmphibiousAssaultTarget, 50.0, gForwardBaseID); // defense plans can't cross water
@@ -10799,10 +10805,27 @@ rule attackRetreatDelay
 inactive
 minInterval 10
 {
+   if (xsGetTime() > (gLastAttackMissionTime + 180000))  // three minute timeout before we just kill this plan
+   {
+      // Destroy the plan.
+      aiPlanDestroy(gLandAttackPlanID);
+      gLandAttackPlanID = -1;
+      xsDisableSelf();
+      return;
+   }
+
    if (aiPlanGetNumberUnits(gLandAttackPlanID, cUnitTypeLogicalTypeLandMilitary) > 0)
    {
       xsEnableRule("attackRetreat");
       xsDisableSelf();
+      return;
+   }
+
+   if (gLandAttackPlanID < 0)
+   {
+      // No attack plan to work with
+      xsDisableSelf();
+      return;
    }
 }
 
@@ -10887,7 +10910,7 @@ minInterval 10
       allyStrength = getAreaStrength(targetLocation, 50, cPlayerRelationAllyExcludingSelf);
 
       // Retreat if our strength is too small
-      if ((friendlyStrength + allyStrength < enemyStrength * strengthFactor) && retreat == false)
+      if (((friendlyStrength + allyStrength) < (enemyStrength * strengthFactor)) && retreat == false)
       {
          if (allyStrength > 0)
          {
@@ -10974,7 +10997,7 @@ minInterval 10
 
       // Destroy the plan.
       aiPlanDestroy(gLandAttackPlanID);
-      aiPlanSetNoMoreUnits(gLandAttackPlanID, true);
+      //aiPlanSetNoMoreUnits(gLandAttackPlanID, true);
       gLandAttackPlanID = -1;
       xsDisableSelf();
    }

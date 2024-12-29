@@ -132,6 +132,7 @@ extern const int cLoadForces = 2;               // Third Stage, try and land an 
 extern const int cLandForces = 3;               // Fourth Stage, try and land an army
 extern const int cBuildForwardBuildings = 4;    // Fifth Stage, move vills in to build
 extern const int cEstablishForwardBase = 5;     // Sixth stage, build a whole FB
+extern const int cForbidAmphibiousAssault = 99; // Used to prevent amphibious assault from occuring
 
 extern float gStartingHandicap = -1.0;       // Stores starting handicap to ensure we don't deviate too far
 
