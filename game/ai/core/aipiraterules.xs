@@ -764,8 +764,18 @@ minInterval 10
 //==============================================================================
 rule navalCityAttackManager
 inactive
-minInterval 10
+minInterval 20
 {
+   if (xsIsRuleEnabled("attackManager") == true)
+   {
+      xsDisableRule("attackManager");
+   }
+
+   if (kbGetAge() < cAge2)
+   {
+      return;
+   }
+
    // Pretty simple, all we can do is attack city states.
    if (isDefendingOrAttacking() == true)
    {
@@ -775,11 +785,6 @@ minInterval 10
    if (allowedToAttack() == false)
    {
       return;
-   }
-
-   if (xsIsRuleEnabled("attackManager") == true)
-   {
-      xsDisableRule("attackManager");
    }
 
    aiChat(1, "running");
@@ -799,6 +804,11 @@ minInterval 10
    int tempEnemyStrength = -1;
    int targetPlayer = -1;
    bool transportRequired = false;
+   int tempEnTPcount = 0;
+   int tempFrTPcount = 0;
+   bool tempUntouched = false;
+   bool bestUntouched = false;
+   int tempEnCount = 0;
 
 
    for (i = 0; < numberCityStateFound)
@@ -806,8 +816,76 @@ minInterval 10
       tempCityState = kbUnitQueryGetResult(cityStateQuery, i);
       tempLocation = kbUnitGetPosition(tempCityState);
       tempDist = distance(tempLocation, mainBaseLocation);
+      tempEnTPcount = getUnitCountByLocation(cUnitTypeTradingPost, cPlayerRelationEnemyNotGaia, cUnitStateAlive, tempLocation, 25.0);
+      tempFrTPcount = getUnitCountByLocation(cUnitTypeTradingPost, cPlayerRelationAlly, cUnitStateABQ, tempLocation, 25.0);
+      tempEnCount = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, 0, cUnitStateAlive, tempLocation, 25.0);
+
+      // Check if we have a TP and enemies there
+      if (tempFrTPcount > 0)
+      {  // If enemies there, automatically try to defend. Otherwise skip
+         if (tempEnCount > 0)
+         {
+            closestDist = tempDist;
+            bestLocation = tempLocation;
+            bestEnemyStrength = tempEnemyStrength;
+            targetPlayer = kbUnitGetPlayerID(tempCityState);
+            if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(bestLocation), kbAreaGroupGetIDByPosition(mainBaseLocation)) == false)
+            {
+               transportRequired = true;
+            }
+            else
+            {
+               transportRequired = false;
+            }
+
+            break;
+         }
+         else
+         {
+            continue;
+         }
+      }
+
+      // Check if there's no TP
+      if (tempEnTPcount <= 0)
+      {
+         // Check if there's still gaia units
+         if (tempEnCount > 0)
+         {
+            tempUntouched = true;
+         }
+      }
+
+      // Check if it's on our half of the map
+      if (distance(mainBaseLocation, kbGetMapCenter()) > tempDist)
+      {  
+         // It's on our half
+         if (tempUntouched == true)
+         {
+            // it's unclaimed and on our half, so get it
+            closestDist = tempDist;
+            bestLocation = tempLocation;
+            bestEnemyStrength = tempEnemyStrength;
+            targetPlayer = kbUnitGetPlayerID(tempCityState);
+            if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(bestLocation), kbAreaGroupGetIDByPosition(mainBaseLocation)) == false)
+            {
+               transportRequired = true;
+            }
+            else
+            {
+               transportRequired = false;
+            }
+
+            break;
+         }
+         else
+         {  // Favor it by adjusting the distance
+            tempDist = tempDist * 0.8;
+         }
+      }
 
       // Check if there are too many enemy there
+
 
       // Check if there are no defenders?
 
