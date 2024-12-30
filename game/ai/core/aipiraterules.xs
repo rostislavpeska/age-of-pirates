@@ -862,7 +862,6 @@ minInterval 20
       return;
    }
 
-   // Pretty simple, all we can do is attack city states.
    if (isDefendingOrAttacking() == true)
    {
       return;
@@ -997,6 +996,15 @@ minInterval 20
    if (bestLocation != cInvalidVector)
    {
       aiChat(1, "found a location");
+
+      if (transportRequired == true)
+      {  // Check and make sure we have a boat if we want to attack somewhere that needs a transport
+         if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) <= 0)
+         {
+            return;
+         }
+      }
+
       vector gatherPoint = kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
       int planID = aiPlanCreate("Naval City Attack Player " + targetPlayer + "dist: " + closestDist, cPlanCombat);
 
