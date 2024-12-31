@@ -44632,31 +44632,26 @@
     <movementtype>air</movementtype>
     <animfile>ui\editor\editor_revealer.xml</animfile>
     <los>30.0000</los>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
-    <unittype>TowerSocket</unittype>
-    <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>Unattackable</unittype>
-    <unittype>NativeBuilding</unittype>
-    <unittype>EmbellishmentClass</unittype>
-    <flag>Immoveable</flag>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
     <flag>NoBloodOnDeath</flag>
-    <flag>NoHPBar</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>NonAutoFormedUnit</flag>
-    <flag>Doppled</flag>
-    <flag>Invulnerable</flag>
+    <flag>ObscuresUnits</flag>
     <flag>SelectWithObstruction</flag>
-    <flag>Tracked</flag>
-    <flag>AllowSocketPlacement</flag>
-    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoHPBar</flag>
     <flag>NotDeleteable</flag>
-    <flag>PlaceAnywhere</flag>
-    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>Invulnerable</flag>
+    <flag>NonCollideable</flag>
     <flag>NotSelectable</flag>
-    <flag>OnlyInEditor</flag>
+    <flag>NotSearchable</flag>
+    <flag>NonSolid</flag>
     <flag>TieToWaterSurface</flag>
+    <flag>Tracked</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>DisplayRange</flag>
+    <flag>DoNotShowOnMiniMap</flag>
   </unit>
   <unit id="20592" name="zpCityStateFlag">
     <dbid>20592</dbid>
