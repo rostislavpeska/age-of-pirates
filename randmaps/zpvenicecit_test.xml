@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "302158" displayNameID = "302185" loadDetails="302121" 
+    imagepath = "ui\random_map\venicecity\venicecity_mini" cannotReplace = "" loadBackground="ui\random_map\venicecity\venicecity_map">
+    <loadss>ui\random_map\venicecity\venicecity_01</loadss>
+    <loadss>ui\random_map\venicecity\venicecity_02</loadss>
+    <loadss>ui\random_map\venicecity\venicecity_03</loadss>
+    <enforcedSettings>
+        <setting type="FFA" state="forbidden" />
+        <setting type="RecordGame" state="forbidden" />
+        <setting type="TwoTeams" state="enforced" />
+        <setting type="DefaultRules" state="enforced" />
+    </enforcedSettings>
+    <recommendedSettings>
+        <civilization>French</civilization>
+        <civilization>Spanish</civilization>
+        <civilization>DEMaltese</civilization>
+        <civilization>DEItalians</civilization>
+        <civilization>Ottoman</civilization>
+        <civilization>Germans</civilization>
+    </recommendedSettings>
+</mapinfo>
