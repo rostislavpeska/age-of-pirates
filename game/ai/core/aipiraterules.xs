@@ -101,6 +101,7 @@ minInterval 1
    if (cRandomMapName == "zpvenicecity")
    {
       xsEnableRule("navalCityAttackManager");
+      xsEnableRule("buildNavalCitySockets");
       gAmphibiousAssaultStage = cForbidAmphibiousAssault;
    }
 
@@ -753,6 +754,91 @@ minInterval 10
 }
 
 //==============================================================================
+/* buildNavalCitySockets
+   
+   Builds sockets that are empty
+
+   Based on cityStateMonitor
+*/
+//==============================================================================
+rule buildNavalCitySockets
+inactive
+minInterval 20
+{
+   int cityStateQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketVeniceCityState, cMyID, cUnitStateAny);
+   int numCityStates = kbUnitQueryExecute(cityStateQuery);
+
+   // Build city state TPs.
+   // AssertiveWall: Have to build them the old fashioned way
+   for (i = 0; i < numCityStates; i++)
+   {
+      int cityStateSocketID = kbUnitQueryGetResult(cityStateQuery, i);
+      int planID = aiPlanCreate("Trading Post Build Plan", cPlanBuild);
+      vector socketPosition = kbUnitGetPosition(cityStateSocketID);
+      int socketAreaGroup = kbAreaGroupGetIDByPosition(socketPosition);
+
+      aiPlanSetVariableInt(planID, cBuildPlanBuildingTypeID, 0, cUnitTypeTradingPost);
+      aiPlanSetVariableInt(planID, cBuildPlanSocketID, 0, cityStateSocketID);
+      
+      int heroID = -1;
+
+      int heroQuery = createSimpleUnitQuery(cUnitTypeHero, cMyID, cUnitStateAlive);
+      int numberHeroesFound = kbUnitQueryExecute(heroQuery);
+      int heroPlanID = -1;
+      
+      for (int n = 0; n < numberHeroesFound; n++)
+      {
+         int unitID = kbUnitQueryGetResult(heroQuery, n);
+         if (unitID < 0)
+         {
+            continue;
+         }
+         if (kbProtoUnitCanTrain(kbUnitGetProtoUnitID(unitID), cUnitTypeTradingPost) == false)
+         {
+            continue;
+         }
+         heroPlanID = kbUnitGetPlanID(heroID);
+         if ((heroPlanID < 0) || (aiPlanGetType(heroPlanID) == cPlanDefend) || (aiPlanGetType(heroPlanID) == cPlanExplore))
+         {
+            heroID = unitID;
+            //transportUnitID = heroID;
+            break;
+         }
+      }
+      
+      if (heroID != -1) // We've found a suitable Hero so add him to the plan.
+      {
+         debugBuildings("Adding 1 " + kbGetProtoUnitName(kbUnitGetProtoUnitID(heroID)) + " with ID: " +
+            heroID + " to our Trading Post build plan");
+         aiPlanAddUnitType(planID, cUnitTypeHero, 1, 1, 1);
+         aiPlanAddUnit(planID, heroID);
+      }
+
+      
+      if ((heroID < 0)) // We didn't find either so we must add a Villager. 
+      {
+         if (((gRevolutionType & cRevolutionMilitary) == 0) || ((gRevolutionType & cRevolutionFinland) == cRevolutionFinland))
+         {
+            debugBuildings("Adding 1 gEconUnit to our Trading Post build plan");
+            aiPlanAddUnitType(planID, gEconUnit, 1, 1, 1);
+         }
+         else // We didn't manage to add a Wagon or a Hero to our plan and can't use Villagers either, destroy.
+         {
+            aiPlanDestroy(planID);
+            return;
+         }   
+      }
+
+      // Priority.
+      aiPlanSetDesiredPriority(planID, 97);
+      aiPlanSetDesiredResourcePriority(planID, 70);
+
+      // Go.
+      aiPlanSetActive(planID, true);
+   }
+}
+
+//==============================================================================
 /* navalCityAttackManager
    conducts all the attack management for city maps
 
@@ -764,9 +850,18 @@ minInterval 10
 //==============================================================================
 rule navalCityAttackManager
 inactive
-minInterval 10
+minInterval 20
 {
-   // Pretty simple, all we can do is attack city states.
+   if (xsIsRuleEnabled("attackManager") == true)
+   {
+      xsDisableRule("attackManager");
+   }
+
+   if (kbGetAge() < cAge2)
+   {
+      return;
+   }
+
    if (isDefendingOrAttacking() == true)
    {
       return;
@@ -777,15 +872,10 @@ minInterval 10
       return;
    }
 
-   if (xsIsRuleEnabled("attackManager") == true)
-   {
-      xsDisableRule("attackManager");
-   }
-
    aiChat(1, "running");
 
    // Go through the list of city states
-   int cityStateQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketVeniceCityState, cPlayerRelationEnemy, cUnitStateAny);
+   int cityStateQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketVeniceCityState, cPlayerRelationAny, cUnitStateAny);
    int numberCityStateFound = kbUnitQueryExecute(cityStateQuery);
    int tempCityState = -1;
    vector tempLocation = cInvalidVector;
@@ -799,6 +889,11 @@ minInterval 10
    int tempEnemyStrength = -1;
    int targetPlayer = -1;
    bool transportRequired = false;
+   int tempEnTPcount = 0;
+   int tempFrTPcount = 0;
+   bool tempUntouched = false;
+   bool bestUntouched = false;
+   int tempEnCount = 0;
 
 
    for (i = 0; < numberCityStateFound)
@@ -806,8 +901,76 @@ minInterval 10
       tempCityState = kbUnitQueryGetResult(cityStateQuery, i);
       tempLocation = kbUnitGetPosition(tempCityState);
       tempDist = distance(tempLocation, mainBaseLocation);
+      tempEnTPcount = getUnitCountByLocation(cUnitTypeTradingPost, cPlayerRelationEnemyNotGaia, cUnitStateAlive, tempLocation, 25.0);
+      tempFrTPcount = getUnitCountByLocation(cUnitTypeTradingPost, cPlayerRelationAlly, cUnitStateABQ, tempLocation, 25.0);
+      tempEnCount = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, 0, cUnitStateAlive, tempLocation, 25.0);
+
+      // Check if we have a TP and enemies there
+      if (tempFrTPcount > 0)
+      {  // If enemies there, automatically try to defend. Otherwise skip
+         if (tempEnCount > 0)
+         {
+            closestDist = tempDist;
+            bestLocation = tempLocation;
+            bestEnemyStrength = tempEnemyStrength;
+            targetPlayer = kbUnitGetPlayerID(tempCityState);
+            if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(bestLocation), kbAreaGroupGetIDByPosition(mainBaseLocation)) == false)
+            {
+               transportRequired = true;
+            }
+            else
+            {
+               transportRequired = false;
+            }
+
+            break;
+         }
+         else
+         {
+            continue;
+         }
+      }
+
+      // Check if there's no TP
+      if (tempEnTPcount <= 0)
+      {
+         // Check if there's still gaia units
+         if (tempEnCount > 0)
+         {
+            tempUntouched = true;
+         }
+      }
+
+      // Check if it's on our half of the map
+      if (distance(mainBaseLocation, kbGetMapCenter()) > tempDist)
+      {  
+         // It's on our half
+         if (tempUntouched == true)
+         {
+            // it's unclaimed and on our half, so get it
+            closestDist = tempDist;
+            bestLocation = tempLocation;
+            bestEnemyStrength = tempEnemyStrength;
+            targetPlayer = kbUnitGetPlayerID(tempCityState);
+            if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(bestLocation), kbAreaGroupGetIDByPosition(mainBaseLocation)) == false)
+            {
+               transportRequired = true;
+            }
+            else
+            {
+               transportRequired = false;
+            }
+
+            break;
+         }
+         else
+         {  // Favor it by adjusting the distance
+            tempDist = tempDist * 0.8;
+         }
+      }
 
       // Check if there are too many enemy there
+
 
       // Check if there are no defenders?
 
@@ -833,6 +996,15 @@ minInterval 10
    if (bestLocation != cInvalidVector)
    {
       aiChat(1, "found a location");
+
+      if (transportRequired == true)
+      {  // Check and make sure we have a boat if we want to attack somewhere that needs a transport
+         if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) <= 0)
+         {
+            return;
+         }
+      }
+
       vector gatherPoint = kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
       int planID = aiPlanCreate("Naval City Attack Player " + targetPlayer + "dist: " + closestDist, cPlanCombat);
 
