@@ -1726,15 +1726,7 @@
     <movementtype>water</movementtype>
     <animfile>buildings\spc\havana_port\spc_port.xml</animfile>
     <los>0.0000</los>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeVillagersRespondToAttack</unittype>
-    <unittype>Nature</unittype>
-    <unittype>NatureClass</unittype>
-    <unittype>Unit</unittype>
+    <unittype>EmbellishmentClass</unittype>
     <flag>DontRotateObstruction</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>DieAtZeroResources</flag>
@@ -1743,7 +1735,6 @@
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>DoNotValidateResourceInventory</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>UnlimitedSupply</flag>
     <flag>DecalStickToWaterSurface</flag>
     <flag>RenderAfterWater</flag>
     <flag>DontSortAlphaPolys</flag>
@@ -1755,7 +1746,6 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>VisibleUnderFog</flag>
     <flag>NotSelectable</flag>
-    <flag>StartOnAnimationUpdate</flag>
     <flag>InvulnerableIfGaia</flag>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
 		<flag>StartOnNoUpdate</flag>
@@ -43662,39 +43652,28 @@
     <buildingworkrate>1.0000</buildingworkrate>
     <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
     </minimapcolor>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>BuildingClass</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>NativeBuilding</unittype>
-    <unittype>Building</unittype>
     <unittype>AbstractCityManisonB</unittype>
-    <flag>TieToWaterSurface</flag>
-    <flag>Doppled</flag>
-    <flag>PaintTextureWhenPlacing</flag>
-    <flag>InvulnerableIfGaia</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>DoNotDieAtZeroHitpoints</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>Immoveable</flag>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>HideHitpointsIfGaia</flag>
-    <flag>RMCanRotate</flag>
-    <flag>HasGatherPoint</flag>
-    <flag>VisibleUnderFogIfGaia</flag>
-    <flag>ColorTransformNonGaia</flag>
+    <flag>DontMarkExtraFog</flag>
     <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
     <flag>DoNotShowOnMiniMap</flag>
-    <flag>Tracked</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
   </unit>
   <unit id="20575" name="zpNatAssassin">
     <dbid>20575</dbid>
@@ -44652,6 +44631,8 @@
     <flag>OnlyInEditor</flag>
     <flag>DisplayRange</flag>
     <flag>DoNotShowOnMiniMap</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
   </unit>
   <unit id="20592" name="zpCityStateFlag">
     <dbid>20592</dbid>
@@ -46337,7 +46318,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\asian_civs\consulate\consulate_corsair.xml</animfile>
+    <animfile>buildings\asian_civs\consulate\consulate_pirate.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Wood</impacttype>

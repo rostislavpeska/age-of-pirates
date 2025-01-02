@@ -383,7 +383,7 @@ void main(void)
 
 	rmSetNuggetDifficulty(298, 298);
 	// San Marco
-	int veniceSanMarco = rmCreateGrouping("bridge1", "EU_Island_Venice_SanMarco3");
+	int veniceSanMarco = rmCreateGrouping("bridge1", "EU_Island_Venice_SanMarco");
     rmSetGroupingMinDistance(veniceSanMarco, 0.00);
     rmSetGroupingMaxDistance(veniceSanMarco, 0.01);
 	rmAddGroupingToClass(veniceSanMarco, rmClassID("classPlateau"));
@@ -391,7 +391,7 @@ void main(void)
 	int veniceInstanceID1 = rmPlaceGroupingInstanceAtLoc(veniceSanMarco, rmXMetersToFraction(xsVectorGetX(ControllerLoc1))+rmXTilesToFraction(20), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1))+rmZTilesToFraction(17), 0);
 
 	//San Giorgio
-	int veniceSanGiorgio = rmCreateGrouping("bridge2", "EU_Island_Venice_Academia3");
+	int veniceSanGiorgio = rmCreateGrouping("bridge2", "EU_Island_Venice_Academia");
     rmSetGroupingMinDistance(veniceSanGiorgio, 0.00);
     rmSetGroupingMaxDistance(veniceSanGiorgio, 0.00);
 	rmAddGroupingToClass(veniceSanGiorgio, rmClassID("classPlateau"));
@@ -399,7 +399,7 @@ void main(void)
 	int veniceInstanceID2 = rmPlaceGroupingInstanceAtLoc(veniceSanGiorgio, rmXMetersToFraction(xsVectorGetX(ControllerLoc2))-rmXTilesToFraction(17), rmZMetersToFraction(xsVectorGetZ(ControllerLoc2))+rmZTilesToFraction(22), 0);
 
 	// Academia
-	int veniceAcademia = rmCreateGrouping("bridge3", "EU_Island_Venice_SanGiorgi3");
+	int veniceAcademia = rmCreateGrouping("bridge3", "EU_Island_Venice_SanGiorgi");
     rmSetGroupingMinDistance(veniceAcademia, 0.00);
     rmSetGroupingMaxDistance(veniceAcademia, 0.00);
 	rmAddGroupingToClass(veniceAcademia, rmClassID("classPlateau"));
@@ -407,7 +407,7 @@ void main(void)
 	int veniceInstanceID3 = rmPlaceGroupingInstanceAtLoc(veniceAcademia, rmXMetersToFraction(xsVectorGetX(ControllerLoc3))-rmXTilesToFraction(21), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3))-rmZTilesToFraction(21), 0);
 
 	// San Polo
-	int veniceSanPolo = rmCreateGrouping("bridge4", "EU_Island_Venice_SanPolo3");
+	int veniceSanPolo = rmCreateGrouping("bridge4", "EU_Island_Venice_SanPolo");
     rmSetGroupingMinDistance(veniceSanPolo, 0.00);
     rmSetGroupingMaxDistance(veniceSanPolo, 0.01);
 	rmAddGroupingToClass(veniceSanPolo, rmClassID("classPlateau"));
