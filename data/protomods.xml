@@ -31828,36 +31828,27 @@
     <los>9.0000</los>
     <buildpoints>20.0000</buildpoints>
     <buildingworkrate>1.0000</buildingworkrate>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
-    <unittype>Building</unittype>
-    <unittype>BuildingClass</unittype>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>StartsAtFullEfficiency</flag>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>DoNotShowOnMiniMap</flag>
-    <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
-    <flag>Doppled</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>PaintTextureWhenPlacing</flag>
-    <flag>Invulnerable</flag>
-    <flag>PlaceAnywhere</flag>
-    <flag>TieToWaterSurface</flag>
-    <flag>InvulnerableIfGaia</flag>
-    <flag>Tracked</flag>
+    <flag>VisibleUnderFog</flag>
     <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
     <flag>StartOnNoUpdate</flag>
-    <command page="10" column="0">Delete</command>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
   </unit>
   <unit id="20367" name="zpPenalColonyFlag">
     <dbid>20367</dbid>
@@ -45085,8 +45076,8 @@
     <dbid>20599</dbid>
     <displaynameid>302122</displaynameid>
     <editornameid>302123</editornameid>
-    <obstructionradiusx>5.0000</obstructionradiusx>
-    <obstructionradiusz>1.0000</obstructionradiusz>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>buildings\native_settlement\palaces\venetian_palace.xml</animfile>
