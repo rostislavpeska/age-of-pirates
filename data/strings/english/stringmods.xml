@@ -2100,7 +2100,7 @@
       <string _locid="302099">Native Building</string>
       <string _locid="302100">ZP NAT MERC Conquistador Musketeer</string>
       <string _locid="302101">ZP SPC Socket Venetians City</string>
-      <string _locid="302102">Venice Fixed Gun</string>
+      <string _locid="302102">Fixed Gun</string>
       <string _locid="302103">ZP SPC Socket Fixed Gun</string>
       <string _locid="302104">ZP SPC Fixed Gun</string>
       <string _locid="302105">Heavy Fixed Gun</string>
@@ -2188,6 +2188,19 @@
       <string _locid="302187">ZP SPC Socket Pirates City</string>
       <string _locid="302188">Pirate Tavern</string>
       <string _locid="302189">ZP SPC Pirate Tavern</string>
+      <string _locid="302190">ZP SPC Fixed Gun Base Large</string>
+      <string _locid="302191">ZP Native House Pirate City</string>
+      <string _locid="302192">City Fort Tower</string>
+      <string _locid="302193">ZP City Fort Tower</string>
+      <string _locid="302194">ZP Socket City Fort Tower</string>
+      <string _locid="302195">House Pirates City</string>
+      <string _locid="302196">Team Hommock Beds</string>
+      <string _locid="302197">Signifficantly reduces Pirate Outlaw population costs</string>
+      <string _locid="302198">Team Tavern Wagers</string>
+      <string _locid="302199">Pirate Taverns generate gold faster</string>
+      <string _locid="302200">Team Plunder Economy</string>
+      <string _locid="302201">Team Privateer Mercenaries</string>
+      <string _locid="302202">Allows you and your team mates to hire privateers directly in your dock.</string>
 
 
     

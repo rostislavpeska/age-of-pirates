@@ -19915,6 +19915,110 @@
       <techstatus status="Active">zpConsulateVeniceContarini</techstatus>
     </prereqs>
   </tech>
+  <tech name="DESPCEuroTowerFrontierShadow" type="Normal">
+     <effects>
+      <effect mergemode="add" type="SetName" proto="zpSPCCityTowerWooden" culture="none" newname="123270">
+      </effect>
+      <effect mergemode="add" type="Data" action="RangedAttack" amount="1.50" subtype="Damage" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityTowerWooden</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="DESPCEuroTowerFortifiedShadow" type="Normal">
+    <effects>
+      <effect mergemode="add" type="SetName" proto="zpSPCCityTowerWooden" culture="none" newname="123271">
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityTowerWooden</target>
+      </effect>
+      <effect mergemode="add" type="Data" action="CannonAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCityTowerWooden</target>
+      </effect>
+      <effect mergemode="add" type="Data" action="AntiShipAttack" amount="2.00" subtype="Damage" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityTowerWooden</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHommockBeds" type="Normal">
+    <dbid>40858</dbid>
+    <displaynameid>302196</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <icon>resources\images\icons\techs\team_hommock_beds.png</icon>
+    <rollovertextid>302197</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>TeamTech</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="-2.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">SaloonPirate</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCTavernWagers" type="Normal">
+    <dbid>40859</dbid>
+    <displaynameid>302198</displaynameid>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <icon>resources\images\icons\techs\team_tavern_wagers.png</icon>
+    <rollovertextid>302199</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpPirateTavern</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPlunderEconomy" type="Normal">
+    <dbid>40849</dbid>
+    <displaynameid>302200</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <icon>resources\images\icons\techs\team_plundering_economy.png</icon>
+    <rollovertextid>302171</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="Building" resource="Gold" extrabounty="true" bountyrate="40.00" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPirateFleet" type="Normal">
+    <dbid>40839</dbid>
+    <displaynameid>302201</displaynameid>
+    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <icon>resources\images\icons\techs\team_pirates_fleet.png</icon>
+    <rollovertextid>302202</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>TeamTech</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Privateer</target>
+      </effect>
+    </effects>
+  </tech>
+  
  
 
 

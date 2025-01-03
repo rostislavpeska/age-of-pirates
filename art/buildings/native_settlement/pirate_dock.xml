@@ -3,18 +3,9 @@
 <animfile>
 	<component>
 		ModelComp
-			<logic type="Variation">
-				<v0>
 					<assetreference type="GrannyModel">
-						<file>buildings\dock\WEST\AGE_2\w_dock_2</file>
+						<file>buildings\dock\pirate_dock</file>
 					</assetreference>
-				</v0>
-				<v1>
-					<assetreference type="GrannyModel">
-						<file>buildings\dock\WEST\AGE_3\w_dock_3</file>
-					</assetreference>
-				</v1>
-			</logic>
 	</component>
 	<anim>
 		Idle
