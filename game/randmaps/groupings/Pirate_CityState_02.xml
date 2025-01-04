@@ -28,7 +28,7 @@
 		<unit variation="136" posx="-32.1086" posz="-18.4572" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">PropsColony</unit>
 		<unit variation="17" posx="-34.1192" posz="-17.9662" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsColony</unit>
 		<unit variation="103" posx="-29.4194" posz="-19.2531" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativePirates</unit>
-		<unit variation="100" posx="-49.7519" posz="-13.5958" orientx="-0.6422" orienty="0.0000" orientz="-0.7665">zpSPCPirateDock</unit>
+		<unit variation="100" posx="-49.7519" posz="-13.5958" orientx="-0.6422" orienty="0.0000" orientz="-0.7665">zpSPCPirateDockB</unit>
 		<unit variation="0" posx="-38.8501" posz="-17.2744" orientx="-1.0000" orienty="0.0000" orientz="-0.0020">HarbourPathBlock</unit>
 		<unit variation="0" posx="-29.6187" posz="-17.2026" orientx="-0.0022" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
 		<unit variation="0" posx="-32.2703" posz="-16.5392" orientx="0.9230" orienty="0.0000" orientz="0.3847">HarbourPathBlock</unit>
@@ -95,7 +95,7 @@
 		<unit variation="0" posx="-46.0071" posz="-2.8249" orientx="0.7055" orienty="0.0000" orientz="0.7087">HarbourPathBlock</unit>
 		<unit variation="80" posx="-50.8157" posz="-2.8824" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
 		<unit variation="19" posx="-55.8864" posz="-0.6448" orientx="0.9999" orienty="0.0000" orientz="0.0115">zpHarbourPlatform</unit>
-		<unit variation="209" posx="-36.8834" posz="1.0363" orientx="0.0005" orienty="0.0000" orientz="-1.0000">zpPirateTavern</unit>
+		<unit variation="209" posx="-36.8834" posz="1.0363" orientx="0.0005" orienty="0.0000" orientz="-1.0000">zpPirateTavernB</unit>
 		<unit variation="0" posx="-46.9656" posz="-1.7940" orientx="0.7055" orienty="0.0000" orientz="0.7087">HarbourPathBlock</unit>
 		<unit variation="164" posx="-25.7413" posz="-1.6692" orientx="1.0000" orienty="-0.0000" orientz="0.0028">zpCinematicRevealer</unit>
 		<unit variation="223" posx="-34.9833" posz="2.9105" orientx="1.0000" orienty="-0.0000" orientz="0.0028">zpSPCWaterSpawnPoint</unit>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tactics>
+  <action>
+    <name stringid="69155">Heal</name>
+    <type>Heal</type>
+    <maxrange>12</maxrange>
+    <rate type="Ship">10.0 </rate>
+    <anim>RangedAttack</anim>
+  </action>
+  <action>
+    <name stringid="69776">SpawnNautilus</name>
+    <type>Spawn</type>
+    <rate type="zpMercNautilus">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnGalley</name>
+    <type>Spawn</type>
+    <rate type="zpCorsairGalley">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnDutchman</name>
+    <type>Spawn</type>
+    <rate type="zpSPCFlyingDutchman">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnRiggedShip</name>
+    <type>Spawn</type>
+    <rate type="zpPirateRiggedShip">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnGalleass</name>
+    <type>Spawn</type>
+    <rate type="zpSPCPirateGalleass">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnXebec</name>
+    <type>Spawn</type>
+    <rate type="deMercXebec">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <tactic>Normal
+    <action>Heal</action>
+    <action>SpawnNautilus</action>
+    <action>SpawnXebec</action>
+    <action>SpawnGalleass</action>
+    <action>SpawnRiggedShip</action>
+    <action>SpawnDutchman</action>
+    <action>SpawnGalley</action>
+</tactic>
+</tactics>

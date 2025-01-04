@@ -66,6 +66,44 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpSPCPirateRandomShip1Shadow" type="Normal">
+    <dbid>40581</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCPirateRandomShip1</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="RandomTech" select="1" status="active">
+        <tech>zpSPCSpawnGalley1</tech>
+        <tech>zpSPCSpawnDutchman1</tech>
+        <tech>zpSPCSpawnRiggedShip1</tech>
+        <tech>zpSPCSpawnGalleass1</tech>
+        <tech>zpSPCSpawnXebec1</tech>
+        <tech>zpSPCSpawnNautilus1</tech>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPirateRandomShip2Shadow" type="Normal">
+    <dbid>40583</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCPirateRandomShip2</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="RandomTech" select="1" status="active">
+        <tech>zpSPCSpawnGalley2</tech>
+        <tech>zpSPCSpawnDutchman2</tech>
+        <tech>zpSPCSpawnRiggedShip2</tech>
+        <tech>zpSPCSpawnGalleass2</tech>
+        <tech>zpSPCSpawnXebec2</tech>
+        <tech>zpSPCSpawnNautilus2</tech>
+      </effect>
+    </effects>
+  </tech>
   <tech name="zpNativeMaltese" type="Normal">
     <dbid>40001</dbid>
     <status>UNOBTAINABLE</status>
@@ -19944,7 +19982,7 @@
     <displaynameid>302196</displaynameid>
     <cost resourcetype="Wood">400.0000</cost>
     <researchpoints>30.0000</researchpoints>
-    <status>OBTAINABLE</status>
+    <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\team_hommock_beds.png</icon>
     <rollovertextid>302197</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
@@ -19966,7 +20004,7 @@
     <cost resourcetype="Gold">100.0000</cost>
     <cost resourcetype="Wood">100.0000</cost>
     <researchpoints>40.0000</researchpoints>
-    <status>OBTAINABLE</status>
+    <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\team_tavern_wagers.png</icon>
     <rollovertextid>302199</rollovertextid>
     <flag>YPNativeImprovement</flag>
@@ -19976,6 +20014,9 @@
       <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpPirateTavern</target>
       </effect>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpPirateTavernB</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSPCPlunderEconomy" type="Normal">
@@ -19984,7 +20025,7 @@
     <cost resourcetype="Food">150.0000</cost>
     <cost resourcetype="Wood">150.0000</cost>
     <researchpoints>30.0000</researchpoints>
-    <status>OBTAINABLE</status>
+    <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\team_plundering_economy.png</icon>
     <rollovertextid>302171</rollovertextid>
     <flag>YPNativeImprovement</flag>
@@ -20003,7 +20044,7 @@
     <cost resourcetype="Wood">300.0000</cost>
     <cost resourcetype="Gold">300.0000</cost>
     <researchpoints>10.0000</researchpoints>
-    <status>OBTAINABLE</status>
+    <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\team_pirates_fleet.png</icon>
     <rollovertextid>302202</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
@@ -20016,6 +20057,275 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">Privateer</target>
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCTradeRouteStopEast" type="Normal">
+    <dbid>40840</dbid>
+    <displaynameid>302203</displaynameid>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\command\trade_blockade_on.png</icon>
+    <rollovertextid>302204</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpSPCTradeRouteStopWest" type="Normal">
+    <dbid>40841</dbid>
+    <displaynameid>302203</displaynameid>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\command\trade_blockade_on.png</icon>
+    <rollovertextid>302204</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpSPCTradeRouteGoEast" type="Normal">
+    <dbid>40842</dbid>
+    <displaynameid>302205</displaynameid>
+    <cost resourcetype="Gold">20.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\command\trade_blockade_off.png</icon>
+    <rollovertextid>302206</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpSPCTradeRouteGoWest" type="Normal">
+    <dbid>40843</dbid>
+    <displaynameid>302205</displaynameid>
+    <cost resourcetype="Gold">20.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\command\trade_blockade_off.png</icon>
+    <rollovertextid>302206</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name ="zpUpdatePortB1" type ="Normal">
+		<dbid>40843</dbid>
+		<status>UNOBTAINABLE</status>
+		<flag>Shadow</flag>
+		<flag>UpgradeTech</flag>
+		<effects>
+			<effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCPortCenterB" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+		</effects>
+	</tech>
+	<tech name ="zpUpdatePortB2" type ="Normal">
+		<dbid>40844</dbid>
+		<status>UNOBTAINABLE</status>
+		<flag>Shadow</flag>
+		<flag>UpgradeTech</flag>
+		<effects>
+			<effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCPortCenterB" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+		</effects>
+	</tech>
+  <tech name="zpSPCSpawnNautilus1" type="Normal">
+    <dbid>40845</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnNautilus" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDock">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnXebec1" type="Normal">
+    <dbid>40846</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnXebec" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDock">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnGalleass1" type="Normal">
+    <dbid>40847</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnGalleass" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDock">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnRiggedShip1" type="Normal">
+    <dbid>40848</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnRiggedShip" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDock">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnDutchman1" type="Normal">
+    <dbid>40849</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnDutchman" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDock">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnGalley1" type="Normal">
+    <dbid>40850</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnGalley" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDock">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPirateRandomShip1" type="Normal">
+    <dbid>40852</dbid>
+    <displaynameid>302215</displaynameid>
+    <cost resourcetype="Gold">999.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\unknown_pirate_ship.png</icon>
+    <rollovertextid>302216</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpSPCPirateRandomShip2</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPirateRandomShip2" type="Normal">
+    <dbid>40854</dbid>
+    <displaynameid>302215</displaynameid>
+    <cost resourcetype="Gold">999.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\unknown_pirate_ship.png</icon>
+    <rollovertextid>302216</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpSPCPirateRandomShip1</effect>
+    </effects>
+  </tech>
+    <tech name="zpSPCSpawnNautilus2" type="Normal">
+    <dbid>40855</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnNautilus" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDockB">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnXebec2" type="Normal">
+    <dbid>40856</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnXebec" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDockB">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnGalleass2" type="Normal">
+    <dbid>40857</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnGalleass" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDockB">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnRiggedShip2" type="Normal">
+    <dbid>40858</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnRiggedShip" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDockB">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnDutchman2" type="Normal">
+    <dbid>40859</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnDutchman" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDockB">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnGalley2" type="Normal">
+    <dbid>40860</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnGalley" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDockB">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPiratePorts" type="Normal">
+    <dbid>40861</dbid>
+    <displaynameid>302217</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\team_improvised_constructions.png</icon>
+    <rollovertextid>302218</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="Data" amount="0.8" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractWarship</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpEnableSPCPirateCityTechs" type="Normal">
+    <dbid>40862</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpHommockBeds</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCTavernWagers</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPlunderEconomy</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPirateFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCTradeRouteStopEast</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCTradeRouteStopWest</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPirateRandomShip1</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPirateRandomShip2</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPiratePorts</effect>
     </effects>
   </tech>
   

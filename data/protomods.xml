@@ -2382,12 +2382,13 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
-    <unittype>AbstractBank</unittype>
     <train row="0" page="0" column="0">zpPrivateerProxy</train>
     <train row="0" page="0" column="1">zpSPCQueenAnneProxy</train>
     <train row="0" page="0" column="1">zpSPCBlackPearlProxy</train>
     <train row="0" page="0" column="1">zpSPCNeptuneGalleyProxy</train>
+    <tech row="0" page="0" column="2">zpSPCPirateRandomShip1</tech>
     <tech row="0" page="1" column="0">zpSPCPirateFleet</tech>
+    <tech row="0" page="1" column="1">zpSPCPiratePorts</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -2408,7 +2409,7 @@
     <flag>HasGatherPoint</flag>
     <flag>NotDeleteable</flag>
     <flag>DisableBigButtonUI</flag>
-    <tactics>dock.tactics</tactics>
+    <tactics>piratedock.tactics</tactics>
     <protoaction>
       <name>Heal</name>
       <rate type="Ship">10.000000</rate>
@@ -30888,7 +30889,7 @@
     <trainpoints>40.0000</trainpoints>
     <maxcontained>50</maxcontained>
     <allowedage>1</allowedage>
-    <buildlimit>1</buildlimit>
+    <buildlimit>2</buildlimit>
     <armor type="Ranged" value="0.7500">
     </armor>
     <unittype>LogicalTypeNavalMilitary</unittype>
@@ -46393,7 +46394,8 @@
     <tech row="0" page="1" column="0">zpSPCPlunderEconomy</tech>
     <tech row="0" page="1" column="1">zpSPCTavernWagers</tech>
     <tech row="0" page="1" column="2">zpHommockBeds</tech>
-    <tech row="0" page="1" column="3">zpSPCTeamPrivateers</tech>
+    <tech row="0" page="1" column="3">zpSPCTradeRouteStopWest</tech>
+    <tech row="0" page="1" column="3">zpSPCTradeRouteGoWest</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -46683,6 +46685,454 @@
     <flag>AllowSocketPlacement</flag>
     <flag>NotDeleteable</flag>
     <command page="1" column="0">deSocketBuildWoodenTower</command>
+  </unit>
+  <unit id="20617" name="zpPirateTavernB">
+    <dbid>20617</dbid>
+    <displaynameid>302209</displaynameid>
+    <editornameid>302207</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\tavern\pirate_tavern.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\tavern_icon.png</icon>
+    <portraiticon>resources\art\buildings\tavern_portrait.png</portraiticon>
+    <rollovertextid>123021</rollovertextid>
+    <shortrollovertextid>123020</shortrollovertextid>
+    <initialhitpoints>3500.0000</initialhitpoints>
+    <maxhitpoints>3500.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>30.0000</buildpoints>
+    <buildlimit>5</buildlimit>
+    <bounty>280.0000</bounty>
+    <buildbounty>140.0000</buildbounty>
+    <cost resourcetype="Food">350.0000</cost>
+    <cost resourcetype="Wood">350.0000</cost>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>Economic</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractBank</unittype>
+    <train row="0" page="0" column="0">SaloonPirate</train>
+    <train row="0" page="0" column="2">MercBarbaryCorsair</train>
+    <tech row="0" page="1" column="0">zpSPCPlunderEconomy</tech>
+    <tech row="0" page="1" column="1">zpSPCTavernWagers</tech>
+    <tech row="0" page="1" column="2">zpHommockBeds</tech>
+    <tech row="0" page="1" column="3">zpSPCTradeRouteStopEast</tech>
+    <tech row="0" page="1" column="3">zpSPCTradeRouteGoEast</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>InitialGarrisonOnly</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>NotDeleteable</flag>
+    <flag>DisableBigButtonUI</flag>
+    <command page="10" column="2">SetGatherPointEconomy</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="10" column="5">Eject</command>
+    <tactics>greatbank.tactics</tactics>
+    <protoaction>
+      <name>Autogather</name>
+      <rate type="Gold">1.500000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20618" name="zpSPCPortCenterB">
+    <dbid>20618</dbid>
+    <displaynameid>300032</displaynameid>
+    <editornameid>302208</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\trading_post\water_trade_route_socketB.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\asian_civs\dock\india_dock_icon.png</icon>
+    <portraiticon>resources\art\buildings\tradeport_portrait.png</portraiticon>
+    <rollovertextid>30051</rollovertextid>
+    <shortrollovertextid>30052</shortrollovertextid>
+    <initialhitpoints>1500.0000</initialhitpoints>
+    <maxhitpoints>1500.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>10.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>40.0000</bounty>
+    <allowedage>1</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoUnitAI</flag>
+    <flag>FlattenGround</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>ForceToGaia</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+  </unit>
+  <unit id="20619" name="zpMercFlyingDutchman">
+    <dbid>20619</dbid>
+    <displaynameid>302211</displaynameid>
+    <editornameid>302210</editornameid>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>8.5000</maxvelocity>
+    <maxrunvelocity>10.5000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <turnrate>1.0000</turnrate>
+    <animfile>units\naval\fluyt\flyingdutchman.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <buildlimit>1</buildlimit>
+    <icon>resources\art\units\naval\spc\flyingdutchman_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\flyingdutchman_portrait.png</portraiticon>
+    <civflagoverride>objects\flags\pirate</civflagoverride>
+    <rollovertextid>301460</rollovertextid>
+    <shortrollovertextid>301460</shortrollovertextid>
+    <initialhitpoints>3500.0000</initialhitpoints>
+    <maxhitpoints>3500.0000</maxhitpoints>
+    <los>32.0000</los>
+    <projectileprotounit>Cannonball</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <bounty>200.0000</bounty>
+    <maxcontained>50</maxcontained>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.7500">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractSiegeTrooper</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Transport</unittype>
+    <unittype>Ship</unittype>
+    <train row="0" page="0" column="0">zpPetDolphin</train>
+    <flag>TieToWaterSurface</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>AllowTrainingOnWater</flag>
+    <flag>Tracked</flag>
+    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <command page="11" column="0">Abilities</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <tactics>frigate.tactics</tactics>
+    <protoaction>
+      <name>BroadsideAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <rof>0.050000</rof>
+      <damagecap>80.000000</damagecap>
+      <damagebonus type="Ship">2.000000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>90.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>180.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttackContained</name>
+      <damage>90.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>180.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+  </unit>
+  <unit id="20017" name="zpSPCPirateDockB">
+    <dbid>20017</dbid>
+    <displaynameid>300074</displaynameid>
+    <editornameid>302212</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <animfile>buildings\native_settlement\pirate_dock.xml</animfile>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>dock</physicsinfo>
+    <icon>resources\art\buildings\drydock_icon.png</icon>
+    <portraiticon>resources\art\buildings\drydock_portrait.png</portraiticon>
+    <rollovertextid>42013</rollovertextid>
+    <shortrollovertextid>25627</shortrollovertextid>
+    <initialhitpoints>2500.0000</initialhitpoints>
+    <maxhitpoints>2500.0000</maxhitpoints>
+    <movementtype>air</movementtype>
+    <los>34.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <freebuildpoints>149.2500</freebuildpoints>
+    <bounty>80.0000</bounty>
+    <buildbounty>40.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <maxcontained>20</maxcontained>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>Economic</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <train row="0" page="0" column="0">zpPrivateerProxy</train>
+    <train row="0" page="0" column="1">zpSPCQueenAnneProxy</train>
+    <train row="0" page="0" column="1">zpSPCBlackPearlProxy</train>
+    <train row="0" page="0" column="1">zpSPCNeptuneGalleyProxy</train>
+    <tech row="0" page="0" column="1">zpSPCPirateRandomShip2</tech>
+    <tech row="0" page="1" column="0">zpSPCPirateFleet</tech>
+    <tech row="0" page="1" column="1">zpSPCPiratePorts</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>DontFlattenGround</flag>
+    <flag>InitialGarrisonOnly</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>NotDeleteable</flag>
+    <flag>DisableBigButtonUI</flag>
+    <tactics>piratedock.tactics</tactics>
+    <protoaction>
+      <name>Heal</name>
+      <rate type="Ship">10.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20346" name="zpMercPirateGalleass">
+    <dbid>20346</dbid>
+    <displaynameid>302213</displaynameid>
+    <editornameid>302214</editornameid>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>7.0000</maxvelocity>
+    <maxrunvelocity>9.0000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <turnrate>2.0000</turnrate>
+    <animfile>units\naval\galleass\pirate_galleass.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\units\naval\spc\sultana_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\sultana_portrait.png</portraiticon>
+    <rollovertextid>301465</rollovertextid>
+    <shortrollovertextid>301465</shortrollovertextid>
+    <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
+    <initialhitpoints>2700.0000</initialhitpoints>
+    <maxhitpoints>2700.0000</maxhitpoints>
+    <los>30.0000</los>
+    <projectileprotounit>Cannonball</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>80.0000</bounty>
+    <buildbounty>80.0000</buildbounty>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <maxcontained>50</maxcontained>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.7500">
+    </armor>
+    <civflagoverride>objects\flags\barbary_pirate</civflagoverride>
+    <roundeltiercount>2</roundeltiercount>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Transport</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractSiegeTrooper</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <train row="0" page="0" column="0">zpNatCorsair</train>
+    <train row="0" page="0" column="1">deREVBarbaryMarksman</train>
+    <flag>TieToWaterSurface</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>galleass.tactics</tactics>
+    <protoaction>
+      <name>RoundelAttack</name>
+      <damage>35.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>25.000000</maxrange>
+      <rof>1.000000</rof>
+      <damagecap>70.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>RoundelPierceAttack</name>
+      <damage>45.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>35.000000</maxrange>
+      <rof>0.050000</rof>
+      <damagecap>70.000000</damagecap>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractVillager">1.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>ShuntAttack</name>
+      <damage>450.000000</damage>
+      <damagetype>Hand</damagetype>
+      <maxrange>4.000000</maxrange>
+      <rof>0.050000</rof>
+      <damagecap>700.000000</damagecap>
+      <damagearea>3.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <basedamagecap>1</basedamagecap>
+    </protoaction>
   </unit>
 
 

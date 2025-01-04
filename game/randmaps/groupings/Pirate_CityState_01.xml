@@ -104,13 +104,11 @@
 		<unit variation="120" posx="-8.6199" posz="-5.7227" orientx="-0.0002" orienty="-0.0000" orientz="1.0000">Campfire</unit>
 		<unit variation="17" posx="22.7329" posz="-5.4227" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCDamagedProps</unit>
 		<unit variation="223" posx="12.9959" posz="-3.6628" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
-		<unit variation="116" posx="3.4378" posz="-5.7807" orientx="0.0915" orienty="0.0000" orientz="-0.9958">deGuardianHaramija</unit>
 		<unit variation="5" posx="-13.2993" posz="-6.3996" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHousePirateCity</unit>
 		<unit variation="0" posx="-14.0257" posz="-5.7539" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">HarbourPathBlock</unit>
 		<unit variation="0" posx="-3.1920" posz="-5.3717" orientx="-0.7070" orienty="0.0000" orientz="-0.7072">HarbourPathBlock</unit>
 		<unit variation="16" posx="5.6568" posz="-3.3516" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCDamagedProps</unit>
 		<unit variation="60" posx="29.5076" posz="-2.3422" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCDamagedCannons</unit>
-		<unit variation="53" posx="3.4378" posz="-4.7027" orientx="0.5985" orienty="0.0000" orientz="-0.8011">deGuardianHaramija</unit>
 		<unit variation="6" posx="-14.0334" posz="-5.3376" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHousePirateCity</unit>
 		<unit variation="5" posx="-14.3369" posz="-4.0112" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHousePirateCity</unit>
 		<unit variation="0" posx="-14.8132" posz="-3.0353" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">HarbourPathBlock</unit>

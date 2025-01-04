@@ -30,7 +30,7 @@
       <string _locid="300028">ZP Native Pirates</string>
       <string _locid="300029">ZP Socket Trade Harbour</string>
       <string _locid="300030">Trade Harbour</string>
-      <string _locid="300031">ZP Harbour Center West</string>
+      <string _locid="300031">ZP Harbour Center West A</string>
       <string _locid="300032">Harbour Warehouse</string>
       <string _locid="300033">ZP PROP Harbour Platform</string>
       <string _locid="300034">ZP PROP Harbour Dingy</string>
@@ -74,7 +74,7 @@
       <string _locid="300072">Native Building</string>
       <string _locid="300073">ZP NAT House Maltese</string>
       <string _locid="300074">Pirate Dock</string>
-      <string _locid="300075">ZP SPC Pirate Dock</string>
+      <string _locid="300075">ZP SPC Pirate Dock A</string>
       <string _locid="300076">Tortuga Pirate Harbour</string>
       <string _locid="300077">ZP Socket SPC Pirates</string>
       <string _locid="300078">Tortuga Saloon</string>
@@ -2186,8 +2186,8 @@
       <string _locid="302185">Venice Lagging Test</string>
       <string _locid="302186">Pirate Town</string>
       <string _locid="302187">ZP SPC Socket Pirates City</string>
-      <string _locid="302188">Pirate Tavern</string>
-      <string _locid="302189">ZP SPC Pirate Tavern</string>
+      <string _locid="302188">Tortuga Heaven (Pirate Tavern)</string>
+      <string _locid="302189">ZP SPC Pirate Tavern A</string>
       <string _locid="302190">ZP SPC Fixed Gun Base Large</string>
       <string _locid="302191">ZP Native House Pirate City</string>
       <string _locid="302192">City Fort Tower</string>
@@ -2201,9 +2201,29 @@
       <string _locid="302200">Team Plunder Economy</string>
       <string _locid="302201">Team Privateer Mercenaries</string>
       <string _locid="302202">Allows you and your team mates to hire privateers directly in your dock.</string>
+      <string _locid="302203">Trade Blockade</string>
+      <string _locid="302204">Blocks a trade route in a reach of this Pirate settlement. (After being blocked, trade route can be opened again.)</string>
+      <string _locid="302205">Reverse Blockade</string>
+      <string _locid="302206">Opends a nearby trade route for a free trade.</string>
+      <string _locid="302207">ZP SPC Pirate Tavern B</string>
+      <string _locid="302208">ZP Harbour Center West B</string>
+      <string _locid="302209">Blackwater Bay (Pirate Tavern)</string>
+      <string _locid="302210">ZP Merc Flying Dutchman</string>
+      <string _locid="302211">Flying Dutchman (Ghost Ship)</string>
+      <string _locid="302212">ZP SPC Pirate Dock B</string>
+      <string _locid="302213">Sultana (Barbarossa's Flagship)</string>
+      <string _locid="302214">ZP Merc Pirate Gslleass</string>
+      <string _locid="302215">Unknown Pirate Ship</string>
+      <string _locid="302216">Hire an unknown pirate ship passing by the territory (single use).</string>
+      <string _locid="302217">Team Improvised Constructions</string>
+      <string _locid="302218">Imncreases Warship training</string>
+      <string _locid="302219">Caribbean Wars (Beta)</string>
+      <string _locid="302220">Caribbean Wars Description</string>
+      <string _locid="302221">Caribbean Wars Loading Screen</string>
 
 
-    
+
+
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
       <!-- ======================================== -->

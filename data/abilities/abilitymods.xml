@@ -166,6 +166,9 @@
   <zpspcflyingdutchman>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpspcflyingdutchman>
+  <zpmercspcflyingdutchman>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpmercspcflyingdutchman>
   <zpspcprau>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpspcprau>
@@ -180,6 +183,10 @@
     <ability>dePowerRoundelPierceAttack<rof>60</rof><sharedcooldown>true</sharedcooldown><castonself>true</castonself></ability>
     <ability>dePowerShunt<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>
   </zpspcpirategalleass>
+  <zpmercpirategalleass>
+    <ability>dePowerRoundelPierceAttack<rof>60</rof><sharedcooldown>true</sharedcooldown><castonself>true</castonself></ability>
+    <ability>dePowerShunt<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>
+  </zpmercpirategalleass>
   <zpcorsairgalley>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpcorsairgalley>
