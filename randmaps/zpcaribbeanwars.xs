@@ -15,7 +15,6 @@ void main(void)
 	int subCiv0=-1;
    int subCiv1=-1;
    int subCiv2=-1;
-   int subCiv3=-1;
 
    if (rmAllocateSubCivs(3) == true)
    {
@@ -24,30 +23,32 @@ void main(void)
       if (subCiv0 >= 0)
          rmSetSubCiv(0, "natpirates");
 
-      subCiv1=rmGetCivID("caribs");
-      rmEchoInfo("subCiv1 is caribs "+subCiv1);
+      subCiv1=rmGetCivID("maltese");
+      rmEchoInfo("subCiv1 is maltese "+subCiv1);
       if (subCiv1 >= 0)
-			rmSetSubCiv(1, "caribs");
+			rmSetSubCiv(1, "maltese");
   
 		subCiv2=rmGetCivID("caribs");
 		rmEchoInfo("subCiv2 is caribs "+subCiv2);
 		if (subCiv2 >= 0)
 				rmSetSubCiv(2, "caribs");
 
-      subCiv3=rmGetCivID("caribs");
-		rmEchoInfo("subCiv3 is caribs "+subCiv3);
-		if (subCiv3 >= 0)
-				rmSetSubCiv(3, "caribs");
 	}
 	
    // Set size.
-   int playerTiles=24000;
-	if (cNumberNonGaiaPlayers >4)
-		playerTiles = 17000;
-	if (cNumberNonGaiaPlayers >7)
-		playerTiles = 19000;			
-   int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
-   rmEchoInfo("Map size="+size+"m x "+size+"m");
+
+
+   int size = 500;
+   if (cNumberNonGaiaPlayers > 2){
+		size = 640;
+	}
+   if (cNumberNonGaiaPlayers > 4){
+		size = 730;
+	}
+   if (cNumberNonGaiaPlayers > 6){
+      size = 830;
+	}
+
    rmSetMapSize(size, size);
 
    // Set up default water.
@@ -150,6 +151,9 @@ void main(void)
    int avoidPirateHouse=rmCreateTypeDistanceConstraint("avoid pirate city state", "zpNativeHousePirateCity", 15.0);
    int avoidPirateDock1=rmCreateTypeDistanceConstraint("avoid pirate dock 1", "zpSPCPirateDock", 25.0);
    int avoidPirateDock2=rmCreateTypeDistanceConstraint("avoid pirate dock 2", "zpSPCPirateDockB", 25.0);
+   int avoidRevealer=rmCreateTypeDistanceConstraint("avoid city state revealer", "zpCinematicRevealerToAll", 25.0);
+   int avoidRevealerLong=rmCreateTypeDistanceConstraint("avoid city state revealer long", "zpCinematicRevealerToAll", 40.0);
+   int avoidHarbour=rmCreateTypeDistanceConstraint("avoid harbour", "zpHarbourPlatform", 20.0);
 
    // ******************* Place City states terrain and Trade Routes *************************
 
@@ -170,10 +174,12 @@ void main(void)
    int tradeRouteID = rmCreateTradeRoute();
    rmSetObjectDefTradeRouteID(tradeRouteID);
    rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 1.0);
+   rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.8);
    rmAddTradeRouteWaypoint(tradeRouteID, 0.45, 0.7);
    rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.6);
    rmAddTradeRouteWaypoint(tradeRouteID, 0.4, 0.5);
    rmAddTradeRouteWaypoint(tradeRouteID, 0.3, 0.55);
+   rmAddTradeRouteWaypoint(tradeRouteID, 0.2, 0.5);
    rmAddTradeRouteWaypoint(tradeRouteID, 0.0, 0.5);
 
    bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "water_trail");
@@ -181,10 +187,12 @@ void main(void)
    int tradeRouteID2 = rmCreateTradeRoute();
    rmSetObjectDefTradeRouteID(tradeRouteID2);
    rmAddTradeRouteWaypoint(tradeRouteID2, 0.5, 0.0);
+   rmAddTradeRouteWaypoint(tradeRouteID2, 0.5, 0.2);
    rmAddTradeRouteWaypoint(tradeRouteID2, 0.55, 0.3);
    rmAddTradeRouteWaypoint(tradeRouteID2, 0.5, 0.4);
    rmAddTradeRouteWaypoint(tradeRouteID2, 0.6, 0.5);
    rmAddTradeRouteWaypoint(tradeRouteID2, 0.7, 0.45);
+   rmAddTradeRouteWaypoint(tradeRouteID2, 0.8, 0.5);
    rmAddTradeRouteWaypoint(tradeRouteID2, 1.0, 0.5);
 
    bool placedTradeRoute2 = rmBuildTradeRoute(tradeRouteID2, "water_trail");
@@ -210,11 +218,8 @@ void main(void)
    vector socketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID2, 0.05);
 	rmPlaceObjectDefAtPoint(fakeStopperID2, 0, socketLoc2);
 
-   
-
    // Text
 	rmSetStatusText("",0.10);
-
 
    // River to dock the City States
 
@@ -222,7 +227,6 @@ void main(void)
    rmRiverAddWaypoint(riverID, 0.1, 0.9);
    rmRiverAddWaypoint(riverID, 0.9, 0.1);
    rmRiverBuild(riverID);
-
 
    // ****************************** Place Pirate City States *****************************
 
@@ -239,6 +243,8 @@ void main(void)
 
    int pirateInstanceID1 = rmPlaceGroupingInstanceAtLoc(piratesVillageID,  0.31, 0.69, 0);
 
+   // Pirate City State 2
+
    int piratesVillage2ID = rmCreateGrouping("pirate city2", "Pirate_CityState_02");
    rmSetGroupingMinDistance(piratesVillage2ID, 0.00);
    rmSetGroupingMaxDistance(piratesVillage2ID, 0.01);
@@ -247,369 +253,342 @@ void main(void)
    int pirateInstanceID2 = rmPlaceGroupingInstanceAtLoc(piratesVillage2ID,  0.73, 0.33, 0);
 
 
+   // ******************************** Place Terrain ********************************
+
+   // North Island
+   int northIsland = rmCreateArea ("north island");
+   rmSetAreaSize(northIsland, 0.19, 0.18);
+   rmSetAreaLocation(northIsland, 0.85, 0.85);
+   rmSetAreaCoherence(northIsland, 0.6);
+   rmSetAreaMinBlobs(northIsland, 8);
+   rmSetAreaMaxBlobs(northIsland, 12);
+   rmSetAreaMinBlobDistance(northIsland, 8.0);
+   rmSetAreaMaxBlobDistance(northIsland, 10.0);
+   rmSetAreaSmoothDistance(northIsland, 15);
+   rmSetAreaMix(northIsland, "caribbean grass");
+   rmSetAreaBaseHeight(northIsland, 2.2);
+   rmAddAreaConstraint(northIsland, islandConstraint);
+   rmAddAreaConstraint(northIsland, islandAvoidTradeRoute);
+   rmSetAreaElevationType(northIsland, cElevTurbulence);
+   rmSetAreaElevationVariation(northIsland, 4.0);
+   rmSetAreaElevationPersistence(northIsland, 0.2);
+   rmSetAreaElevationNoiseBias(northIsland, 1);
+   rmAddAreaToClass(northIsland, classIsland);
+   rmAddAreaToClass(northIsland, classTeamIsland);
+
+      // Port Sites
+      int portSite1 = rmCreateArea ("port_site1");
+      rmSetAreaSize(portSite1, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
+      rmSetAreaLocation(portSite1, 0.5+rmXTilesToFraction(20), 0.8);
+      rmSetAreaMix(portSite1, "caribbean grass");
+      rmSetAreaCoherence(portSite1, 1);
+      rmSetAreaSmoothDistance(portSite1, 15);
+      rmSetAreaBaseHeight(portSite1, 2.5);
+      rmAddAreaToClass(portSite1, classPortSite);
+
+      int connectionID1 = rmCreateConnection ("connection_island1");
+      rmSetConnectionType(connectionID1, cConnectAreas, false, 1);
+      rmSetConnectionWidth(connectionID1, 20, 4);
+      rmSetConnectionCoherence(connectionID1, 0.7);
+      rmSetConnectionWarnFailure(connectionID1, false);
+      rmAddConnectionArea(connectionID1, northIsland);
+      rmAddConnectionArea(connectionID1, portSite1);
+      rmSetConnectionBaseHeight(connectionID1, 2);
+      rmBuildConnection(connectionID1);
+
+      int portSite2 = rmCreateArea ("port_site2");
+      rmSetAreaSize(portSite2, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
+      rmSetAreaLocation(portSite2, 0.8, 0.5+rmZTilesToFraction(20));
+      rmSetAreaMix(portSite2, "caribbean grass");
+      rmSetAreaCoherence(portSite2, 1);
+      rmSetAreaSmoothDistance(portSite2, 15);
+      rmSetAreaBaseHeight(portSite2, 2.5);
+      rmAddAreaToClass(portSite2, classPortSite);
+
+      int connectionID2 = rmCreateConnection ("connection_island2");
+      rmSetConnectionType(connectionID2, cConnectAreas, false, 1);
+      rmSetConnectionWidth(connectionID2, 20, 4);
+      rmSetConnectionCoherence(connectionID2, 0.7);
+      rmSetConnectionWarnFailure(connectionID2, false);
+      rmAddConnectionArea(connectionID2, northIsland);
+      rmAddConnectionArea(connectionID2, portSite2);
+      rmSetConnectionBaseHeight(connectionID2, 2);
+      rmBuildConnection(connectionID2);
+
+   // South Island
+   int southIsland = rmCreateArea ("south island");
+   rmSetAreaSize(southIsland, 0.18, 0.18);
+   rmSetAreaLocation(southIsland, 0.15, 0.15);
+   rmSetAreaCoherence(southIsland, 0.60);
+   rmSetAreaMinBlobs(southIsland, 8);
+   rmSetAreaMaxBlobs(southIsland, 12);
+   rmSetAreaMinBlobDistance(southIsland, 8.0);
+   rmSetAreaMaxBlobDistance(southIsland, 10.0);
+   rmSetAreaSmoothDistance(southIsland, 15);
+   rmSetAreaMix(southIsland, "caribbean grass");
+   rmSetAreaBaseHeight(southIsland, 2.2);
+   rmAddAreaConstraint(southIsland, islandConstraint);
+   rmAddAreaConstraint(southIsland, islandAvoidTradeRoute); 
+   rmSetAreaElevationType(southIsland, cElevTurbulence);
+   rmSetAreaElevationVariation(southIsland, 4.0);
+   rmSetAreaElevationPersistence(southIsland, 0.2);
+   rmSetAreaElevationNoiseBias(southIsland, 1);
+   rmAddAreaToClass(southIsland, classIsland);
+   rmAddAreaToClass(southIsland, classTeamIsland);
+
+      // Port Sites
+
+      int portSite3 = rmCreateArea ("port_site3");
+      rmSetAreaSize(portSite3, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
+      rmSetAreaLocation(portSite3, 0.2, 0.5-rmXTilesToFraction(20));
+      rmSetAreaCoherence(portSite3, 1);
+      rmSetAreaMix(portSite3, "caribbean grass");
+      rmSetAreaSmoothDistance(portSite3, 15);
+      rmSetAreaBaseHeight(portSite3, 2.5);
+      rmAddAreaToClass(portSite3, classPortSite);
+
+      int connectionID3 = rmCreateConnection ("connection_island3");
+      rmSetConnectionType(connectionID3, cConnectAreas, false, 1);
+      rmSetConnectionWidth(connectionID3, 17, 4);
+      rmSetConnectionCoherence(connectionID3, 0.5);
+      rmSetConnectionWarnFailure(connectionID3, false);
+      rmAddConnectionArea(connectionID3, southIsland);
+      rmAddConnectionArea(connectionID3, portSite3);
+      rmSetConnectionBaseHeight(connectionID3, 2);
+      rmBuildConnection(connectionID3);
+
+      int portSite4 = rmCreateArea ("port_site4");
+      rmSetAreaSize(portSite4, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
+      rmSetAreaLocation(portSite4, 0.5-rmXTilesToFraction(20), 0.2);
+      rmSetAreaCoherence(portSite4, 1);
+      rmSetAreaMix(portSite4, "caribbean grass");
+      rmSetAreaSmoothDistance(portSite4, 15);
+      rmSetAreaBaseHeight(portSite4, 2.5);
+      rmAddAreaToClass(portSite4, classPortSite);
+
+      int connectionID4 = rmCreateConnection ("connection_island4");
+      rmSetConnectionType(connectionID4, cConnectAreas, false, 1);
+      rmSetConnectionWidth(connectionID4, 20, 4);
+      rmSetConnectionCoherence(connectionID4, 0.4);
+      rmSetConnectionWarnFailure(connectionID4, false);
+      rmAddConnectionArea(connectionID4, southIsland);
+      rmAddConnectionArea(connectionID4, portSite4);
+      rmSetConnectionBaseHeight(connectionID4, 2);
+      rmBuildConnection(connectionID4);
+
+   // Bonus Islands
+
+   int bonusIslandID = rmCreateArea ("bonus island");
+   if (cNumberNonGaiaPlayers <= 4){
+      rmSetAreaSize(bonusIslandID, 0.13, 0.13);
+   }
+   else{
+      rmSetAreaSize(bonusIslandID, 0.115, 0.115);
+   }
+   rmSetAreaLocation(bonusIslandID, 0.9, 0.1);
+   rmSetAreaCoherence(bonusIslandID, 0.4);
+   rmSetAreaMinBlobs(bonusIslandID, 8);
+   rmSetAreaMaxBlobs(bonusIslandID, 12);
+   rmSetAreaMinBlobDistance(bonusIslandID, 8.0);
+   rmSetAreaMaxBlobDistance(bonusIslandID, 10.0);
+   rmSetAreaSmoothDistance(bonusIslandID, 15);
+   rmSetAreaMix(bonusIslandID, "caribbean grass");
+   rmSetAreaBaseHeight(bonusIslandID, 2.2);
+   rmAddAreaConstraint(bonusIslandID, islandConstraint);
+   rmAddAreaConstraint(bonusIslandID, islandAvoidTradeRoute); 
+   rmAddAreaConstraint(bonusIslandID, avoidPirateHouse); 
+   rmAddAreaConstraint(bonusIslandID, avoidPirateDock1);
+   rmAddAreaConstraint(bonusIslandID, avoidPirateDock2);
+   rmSetAreaElevationType(bonusIslandID, cElevTurbulence);
+   rmSetAreaElevationVariation(bonusIslandID, 4.0);
+   rmSetAreaElevationPersistence(bonusIslandID, 0.2);
+   rmSetAreaElevationNoiseBias(bonusIslandID, 1);
+   rmAddAreaToClass(bonusIslandID, classIsland);
+   rmAddAreaToClass(bonusIslandID, classBonusIsland);
+
+   int bonusIslandID2 = rmCreateArea ("bonus island 2");
+   if (cNumberNonGaiaPlayers <= 4){
+      rmSetAreaSize(bonusIslandID2, 0.13, 0.13);
+   }
+   else{
+      rmSetAreaSize(bonusIslandID2, 0.115, 0.115);
+   }
+   rmSetAreaLocation(bonusIslandID2, 0.1, 0.9);
+   rmSetAreaCoherence(bonusIslandID2, 0.4);
+   rmSetAreaMinBlobs(bonusIslandID2, 8);
+   rmSetAreaMaxBlobs(bonusIslandID2, 12);
+   rmSetAreaMinBlobDistance(bonusIslandID2, 8.0);
+   rmSetAreaMaxBlobDistance(bonusIslandID2, 10.0);
+   rmSetAreaSmoothDistance(bonusIslandID2, 15);
+   rmSetAreaMix(bonusIslandID2, "caribbean grass");
+   rmSetAreaBaseHeight(bonusIslandID2, 2.2);
+   rmAddAreaConstraint(bonusIslandID2, islandConstraint);
+   rmAddAreaConstraint(bonusIslandID2, islandAvoidTradeRoute); 
+   rmAddAreaConstraint(bonusIslandID2, avoidPirateHouse); 
+   rmAddAreaConstraint(bonusIslandID2, avoidPirateDock1);
+   rmAddAreaConstraint(bonusIslandID2, avoidPirateDock2);
+   rmSetAreaElevationType(bonusIslandID2, cElevTurbulence);
+   rmSetAreaElevationVariation(bonusIslandID2, 4.0);
+   rmSetAreaElevationPersistence(bonusIslandID2, 0.2);
+   rmSetAreaElevationNoiseBias(bonusIslandID2, 1);
+   rmAddAreaToClass(bonusIslandID2, classIsland);
+   rmAddAreaToClass(bonusIslandID2, classBonusIsland);
 
 
-
-
-// North Island
-int northIsland = rmCreateArea ("north island");
-rmSetAreaSize(northIsland, 0.19, 0.18);
-rmSetAreaLocation(northIsland, 0.85, 0.85);
-rmSetAreaCoherence(northIsland, 0.6);
-rmSetAreaMinBlobs(northIsland, 8);
-rmSetAreaMaxBlobs(northIsland, 12);
-rmSetAreaMinBlobDistance(northIsland, 8.0);
-rmSetAreaMaxBlobDistance(northIsland, 10.0);
-rmSetAreaSmoothDistance(northIsland, 15);
-rmSetAreaMix(northIsland, "caribbean grass");
-rmSetAreaBaseHeight(northIsland, 2.2);
-rmAddAreaConstraint(northIsland, islandConstraint);
-rmAddAreaConstraint(northIsland, islandAvoidTradeRoute);
-rmSetAreaElevationType(northIsland, cElevTurbulence);
-rmSetAreaElevationVariation(northIsland, 4.0);
-rmSetAreaElevationPersistence(northIsland, 0.2);
-rmSetAreaElevationNoiseBias(northIsland, 1);
-rmAddAreaToClass(northIsland, classIsland);
-rmAddAreaToClass(northIsland, classTeamIsland);
-
-   // Port Sites
-   int portSite1 = rmCreateArea ("port_site1");
-   rmSetAreaSize(portSite1, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-    rmSetAreaLocation(portSite1, 0.45+rmXTilesToFraction(25), 0.7);
-   rmSetAreaMix(portSite1, "caribbean grass");
-   rmSetAreaCoherence(portSite1, 1);
-   rmSetAreaSmoothDistance(portSite1, 15);
-   rmSetAreaBaseHeight(portSite1, 2.5);
-   rmAddAreaToClass(portSite1, classPortSite);
-
-   int connectionID1 = rmCreateConnection ("connection_island1");
-   rmSetConnectionType(connectionID1, cConnectAreas, false, 1);
-   rmSetConnectionWidth(connectionID1, 20, 4);
-   rmSetConnectionCoherence(connectionID1, 0.7);
-   rmSetConnectionWarnFailure(connectionID1, false);
-   rmAddConnectionArea(connectionID1, northIsland);
-   rmAddConnectionArea(connectionID1, portSite1);
-   rmSetConnectionBaseHeight(connectionID1, 2);
-   rmBuildConnection(connectionID1);
-
-   int portSite2 = rmCreateArea ("port_site2");
-   rmSetAreaSize(portSite2, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-   rmSetAreaLocation(portSite2, 0.7, 0.45+rmZTilesToFraction(25));
-   rmSetAreaMix(portSite2, "caribbean grass");
-   rmSetAreaCoherence(portSite2, 1);
-   rmSetAreaSmoothDistance(portSite2, 15);
-   rmSetAreaBaseHeight(portSite2, 2.5);
-   rmAddAreaToClass(portSite2, classPortSite);
-
-   int connectionID2 = rmCreateConnection ("connection_island2");
-   rmSetConnectionType(connectionID2, cConnectAreas, false, 1);
-   rmSetConnectionWidth(connectionID2, 20, 4);
-   rmSetConnectionCoherence(connectionID2, 0.7);
-   rmSetConnectionWarnFailure(connectionID2, false);
-   rmAddConnectionArea(connectionID2, northIsland);
-   rmAddConnectionArea(connectionID2, portSite2);
-   rmSetConnectionBaseHeight(connectionID2, 2);
-   rmBuildConnection(connectionID2);
-
-// Area builder
-rmBuildAllAreas();
-
-// South Island
-int southIsland = rmCreateArea ("south island");
-rmSetAreaSize(southIsland, 0.18, 0.18);
-rmSetAreaLocation(southIsland, 0.15, 0.15);
-rmSetAreaCoherence(southIsland, 0.60);
-rmSetAreaMinBlobs(southIsland, 8);
-rmSetAreaMaxBlobs(southIsland, 12);
-rmSetAreaMinBlobDistance(southIsland, 8.0);
-rmSetAreaMaxBlobDistance(southIsland, 10.0);
-rmSetAreaSmoothDistance(southIsland, 15);
-rmSetAreaMix(southIsland, "caribbean grass");
-rmSetAreaBaseHeight(southIsland, 2.2);
-rmAddAreaConstraint(southIsland, islandConstraint);
-rmAddAreaConstraint(southIsland, islandAvoidTradeRoute); 
-rmSetAreaElevationType(southIsland, cElevTurbulence);
-rmSetAreaElevationVariation(southIsland, 4.0);
-rmSetAreaElevationPersistence(southIsland, 0.2);
-rmSetAreaElevationNoiseBias(southIsland, 1);
-rmAddAreaToClass(southIsland, classIsland);
-rmAddAreaToClass(southIsland, classTeamIsland);
-
-   // Port Sites
-
-   int portSite3 = rmCreateArea ("port_site3");
-   rmSetAreaSize(portSite3, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-   rmSetAreaLocation(portSite3, 0.3, 0.55-rmXTilesToFraction(20));
-   rmSetAreaCoherence(portSite3, 1);
-   rmSetAreaMix(portSite3, "caribbean grass");
-   rmSetAreaSmoothDistance(portSite3, 15);
-   rmSetAreaBaseHeight(portSite3, 2.5);
-   rmAddAreaToClass(portSite3, classPortSite);
-
-   int connectionID3 = rmCreateConnection ("connection_island3");
-   rmSetConnectionType(connectionID3, cConnectAreas, false, 1);
-   rmSetConnectionWidth(connectionID3, 17, 4);
-   rmSetConnectionCoherence(connectionID3, 0.5);
-   rmSetConnectionWarnFailure(connectionID3, false);
-   rmAddConnectionArea(connectionID3, southIsland);
-   rmAddConnectionArea(connectionID3, portSite3);
-   rmSetConnectionBaseHeight(connectionID3, 2);
-   rmBuildConnection(connectionID3);
-
-   int portSite4 = rmCreateArea ("port_site4");
-   rmSetAreaSize(portSite4, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-   rmSetAreaLocation(portSite4, 0.55-rmXTilesToFraction(20), 0.3);
-   rmSetAreaCoherence(portSite4, 1);
-   rmSetAreaMix(portSite4, "caribbean grass");
-   rmSetAreaSmoothDistance(portSite4, 15);
-   rmSetAreaBaseHeight(portSite4, 2.5);
-   rmAddAreaToClass(portSite4, classPortSite);
-
-   int connectionID4 = rmCreateConnection ("connection_island4");
-   rmSetConnectionType(connectionID4, cConnectAreas, false, 1);
-   rmSetConnectionWidth(connectionID4, 20, 4);
-   rmSetConnectionCoherence(connectionID4, 0.4);
-   rmSetConnectionWarnFailure(connectionID4, false);
-   rmAddConnectionArea(connectionID4, southIsland);
-   rmAddConnectionArea(connectionID4, portSite4);
-   rmSetConnectionBaseHeight(connectionID4, 2);
-   rmBuildConnection(connectionID4);
-
-
-
-// Bonus Islands
-      int bonusIslandID = rmCreateArea ("bonus island");
-      if (cNumberNonGaiaPlayers <= 4){
-         rmSetAreaSize(bonusIslandID, 0.13, 0.13);
-      }
-      else{
-         rmSetAreaSize(bonusIslandID, 0.115, 0.115);
-      }
-      rmSetAreaLocation(bonusIslandID, 0.9, 0.1);
-      rmSetAreaCoherence(bonusIslandID, 0.4);
-      rmSetAreaMinBlobs(bonusIslandID, 8);
-      rmSetAreaMaxBlobs(bonusIslandID, 12);
-      rmSetAreaMinBlobDistance(bonusIslandID, 8.0);
-      rmSetAreaMaxBlobDistance(bonusIslandID, 10.0);
-      rmSetAreaSmoothDistance(bonusIslandID, 15);
-      rmSetAreaMix(bonusIslandID, "caribbean grass");
-      rmSetAreaBaseHeight(bonusIslandID, 2.2);
-      rmAddAreaConstraint(bonusIslandID, islandConstraint);
-      rmAddAreaConstraint(bonusIslandID, islandAvoidTradeRoute); 
-      rmAddAreaConstraint(bonusIslandID, avoidPirateHouse); 
-      rmAddAreaConstraint(bonusIslandID, avoidPirateDock1);
-      rmAddAreaConstraint(bonusIslandID, avoidPirateDock2);
-      rmSetAreaElevationType(bonusIslandID, cElevTurbulence);
-      rmSetAreaElevationVariation(bonusIslandID, 4.0);
-      rmSetAreaElevationPersistence(bonusIslandID, 0.2);
-      rmSetAreaElevationNoiseBias(bonusIslandID, 1);
-      rmAddAreaToClass(bonusIslandID, classIsland);
-      rmAddAreaToClass(bonusIslandID, classBonusIsland);
-
-      int bonusIslandID2 = rmCreateArea ("bonus island 2");
-      if (cNumberNonGaiaPlayers <= 4){
-         rmSetAreaSize(bonusIslandID2, 0.13, 0.13);
-      }
-      else{
-         rmSetAreaSize(bonusIslandID2, 0.115, 0.115);
-      }
-      rmSetAreaLocation(bonusIslandID2, 0.1, 0.9);
-      rmSetAreaCoherence(bonusIslandID2, 0.4);
-      rmSetAreaMinBlobs(bonusIslandID2, 8);
-      rmSetAreaMaxBlobs(bonusIslandID2, 12);
-      rmSetAreaMinBlobDistance(bonusIslandID2, 8.0);
-      rmSetAreaMaxBlobDistance(bonusIslandID2, 10.0);
-      rmSetAreaSmoothDistance(bonusIslandID2, 15);
-      rmSetAreaMix(bonusIslandID2, "caribbean grass");
-      rmSetAreaBaseHeight(bonusIslandID2, 2.2);
-      rmAddAreaConstraint(bonusIslandID2, islandConstraint);
-      rmAddAreaConstraint(bonusIslandID2, islandAvoidTradeRoute); 
-      rmAddAreaConstraint(bonusIslandID2, avoidPirateHouse); 
-      rmAddAreaConstraint(bonusIslandID2, avoidPirateDock1);
-      rmAddAreaConstraint(bonusIslandID2, avoidPirateDock2);
-      rmSetAreaElevationType(bonusIslandID2, cElevTurbulence);
-      rmSetAreaElevationVariation(bonusIslandID2, 4.0);
-      rmSetAreaElevationPersistence(bonusIslandID2, 0.2);
-      rmSetAreaElevationNoiseBias(bonusIslandID2, 1);
-      rmAddAreaToClass(bonusIslandID2, classIsland);
-      rmAddAreaToClass(bonusIslandID2, classBonusIsland);
-
-
-// Text
+   // Text
 	rmSetStatusText("",0.20);
 
-// Area builder
-rmBuildAllAreas();
+   // Area builder
+   rmBuildAllAreas();
 
-// add island constraints
+   // add island constraints
    int northIslandConstraint=rmCreateAreaConstraint("north Island", northIsland);
    int southIslandConstraint=rmCreateAreaConstraint("south Island", southIsland);
    int bonusIslandConstraint=rmCreateAreaConstraint("bonus Island", bonusIslandID);
    int bonusIslandConstraint2=rmCreateAreaConstraint("bonus Island2", bonusIslandID2);
 
       
+   // ********************* Additional Objects *****************************
 
-
-
-// Place ports
+   // Place ports
    // Port 1
    int portID01 = rmCreateObjectDef("port 01");
    portID01 = rmCreateGrouping("portG 01", "harbour_center_sw");
-   rmPlaceGroupingAtLoc(portID01, 0, 0.45+rmXTilesToFraction(16), 0.7+rmZTilesToFraction(0));
+   rmPlaceGroupingAtLoc(portID01, 0, 0.5+rmXTilesToFraction(10), 0.8+rmZTilesToFraction(0));
 
    // Port 2
    int portID02 = rmCreateObjectDef("port 02");
    portID02 = rmCreateGrouping("portG 02", "harbour_centerb_se");
-   rmPlaceGroupingAtLoc(portID02, 0, 0.7+rmXTilesToFraction(0), 0.45+rmZTilesToFraction(16));
+   rmPlaceGroupingAtLoc(portID02, 0, 0.8+rmXTilesToFraction(0), 0.5+rmZTilesToFraction(10));
 
 
    // Port 3
    int portID03 = rmCreateObjectDef("port 03");
    portID03 = rmCreateGrouping("portG 03", "harbour_centerb_ne");
-   rmPlaceGroupingAtLoc(portID03, 0, 0.55-rmXTilesToFraction(9), 0.3+rmZTilesToFraction(1));
+   rmPlaceGroupingAtLoc(portID03, 0, 0.5-rmXTilesToFraction(9), 0.2+rmZTilesToFraction(1));
 
    // Port 4
    int portID04 = rmCreateObjectDef("port 04");
    portID04 = rmCreateGrouping("portG 04", "harbour_center_nw");
-   rmPlaceGroupingAtLoc(portID04, 0, 0.3+rmXTilesToFraction(1), 0.55-rmZTilesToFraction(9.5));
+   rmPlaceGroupingAtLoc(portID04, 0, 0.2+rmXTilesToFraction(1), 0.5-rmZTilesToFraction(9.5));
 
-// Text
+   // Text
 	rmSetStatusText("",0.30);
 
-// Place Caribs
+   // Place Caribs
 
    // Lonely Caribs
-   if (subCiv3 == rmGetCivID("caribs"))
-   {  
-		int caribsVillageID = -1;
-		int caribsVillageType = rmRandInt(1,5);
-      caribsVillageID = rmCreateGrouping("caribs1 city", "native carib village 0"+caribsVillageType);
-      rmSetGroupingMinDistance(caribsVillageID, 500);
-      rmSetGroupingMaxDistance(caribsVillageID, rmXFractionToMeters(0.3));
-		rmAddGroupingConstraint(caribsVillageID, avoidTeamIslands);
-		rmAddGroupingConstraint(caribsVillageID, avoidImpassableLand);
-      rmAddGroupingConstraint(caribsVillageID, playerEdgeConstraint);      
-      rmAddGroupingConstraint(caribsVillageID, avoidSocketLong);
-      rmAddClosestPointConstraint(villageEdgeConstraint);
+   int caribsVillageID = -1;
+   int caribsVillageType = rmRandInt(1,5);
+   caribsVillageID = rmCreateGrouping("caribs1 city", "native carib village 0"+caribsVillageType);
+   rmSetGroupingMinDistance(caribsVillageID, 500);
+   rmSetGroupingMaxDistance(caribsVillageID, rmXFractionToMeters(0.3));
+   rmAddGroupingConstraint(caribsVillageID, avoidTeamIslands);
+   rmAddGroupingConstraint(caribsVillageID, avoidImpassableLand);
+   rmAddGroupingConstraint(caribsVillageID, playerEdgeConstraint);      
+   rmAddGroupingConstraint(caribsVillageID, avoidSocketLong);
+   rmAddClosestPointConstraint(villageEdgeConstraint);
 
-		rmPlaceGroupingInArea(caribsVillageID, 0, bonusIslandID, 1);
-      rmPlaceGroupingInArea(caribsVillageID, 0, bonusIslandID2, 1);
+   rmPlaceGroupingInArea(caribsVillageID, 0, bonusIslandID, 1);
+   rmPlaceGroupingInArea(caribsVillageID, 0, bonusIslandID2, 1);
 
-   }
+   // Team Maltese
+
+   int maltese4VillageID = -1;
+   int maltese4VillageType = rmRandInt(1,3);
+   maltese4VillageID = rmCreateGrouping("maltese4 city", "Maltese_village_ME0"+maltese4VillageType);
+   rmAddGroupingConstraint(maltese4VillageID, avoidTC);
+   rmAddGroupingConstraint(maltese4VillageID, avoidCW);
+   rmAddGroupingConstraint(maltese4VillageID, avoidImpassableLand);
+   rmAddGroupingConstraint(maltese4VillageID, avoidSocketLong);
+   rmPlaceGroupingInArea(maltese4VillageID, 0, northIsland, 1);
+   rmAddClosestPointConstraint(villageEdgeConstraint);
+
+   int maltese5VillageID = -1;
+   int maltese5VillageType = rmRandInt(1,3);
+   maltese5VillageID = rmCreateGrouping("maltese5 city", "Maltese_village_ME0"+maltese5VillageType);
+   rmAddGroupingConstraint(maltese5VillageID, avoidTC);
+   rmAddGroupingConstraint(maltese5VillageID, avoidCW);
+   rmAddGroupingConstraint(maltese5VillageID, avoidImpassableLand);
+   rmAddGroupingConstraint(maltese5VillageID, avoidSocketLong);
+   rmPlaceGroupingInArea(maltese5VillageID, 0, southIsland, 1);
+   rmAddClosestPointConstraint(villageEdgeConstraint);
 
    // Team Caribs
-   if (subCiv1 == rmGetCivID("caribs"))
-   {  
-      int caribs2VillageID = -1;
-      int caribs2VillageType = rmRandInt(1,5);
-      caribs2VillageID = rmCreateGrouping("caribs2 city", "native carib village 0"+caribs2VillageType);
-      rmAddGroupingConstraint(caribs2VillageID, avoidTC);
-      rmAddGroupingConstraint(caribs2VillageID, avoidCW);
-      rmAddGroupingConstraint(caribs2VillageID, avoidImpassableLand);
-      rmAddGroupingConstraint(caribs2VillageID, avoidSocketLong);
-      rmAddClosestPointConstraint(villageEdgeConstraint);
 
-      int caribs4VillageID = -1;
-      int caribs4VillageType = rmRandInt(1,5);
-      caribs4VillageID = rmCreateGrouping("caribs4 city", "native carib village 0"+caribs4VillageType);
-      rmAddGroupingConstraint(caribs4VillageID, avoidTC);
-      rmAddGroupingConstraint(caribs4VillageID, avoidCW);
-      rmAddGroupingConstraint(caribs4VillageID, avoidImpassableLand);
-      rmAddGroupingConstraint(caribs4VillageID, avoidSocketLong);
-      rmPlaceGroupingInArea(caribs4VillageID, 0, northIsland, 1);
-      rmAddClosestPointConstraint(villageEdgeConstraint);
+   int caribs2VillageID = -1;
+   int caribs2VillageType = rmRandInt(1,5);
+   caribs2VillageID = rmCreateGrouping("caribs2 city", "native carib village 0"+caribs2VillageType);
+   rmAddGroupingConstraint(caribs2VillageID, avoidTC);
+   rmAddGroupingConstraint(caribs2VillageID, avoidCW);
+   rmAddGroupingConstraint(caribs2VillageID, avoidImpassableLand);
+   rmAddGroupingConstraint(caribs2VillageID, avoidSocketLong);
+   rmAddClosestPointConstraint(villageEdgeConstraint);
 
-      if (cNumberNonGaiaPlayers <= 4){
-      rmPlaceGroupingInArea(caribs2VillageID, 0, northIsland, 1);
-      }
+   if (cNumberNonGaiaPlayers <= 4){
+   rmPlaceGroupingInArea(caribs2VillageID, 0, northIsland, 1);
+   }
 
-      else {
-      rmPlaceGroupingInArea(caribs2VillageID, 0, northIsland, 2);
-      }
+   else {
+   rmPlaceGroupingInArea(caribs2VillageID, 0, northIsland, 2);
    }
 
    
-   if (subCiv2 == rmGetCivID("caribs"))
-   {  
-      int caribs3VillageID = -1;
-      int caribs3VillageType = rmRandInt(1,5);
-      caribs3VillageID = rmCreateGrouping("caribs3 city", "native carib village 0"+caribs3VillageType);
-      rmAddGroupingConstraint(caribs3VillageID, avoidTC);
-      rmAddGroupingConstraint(caribs3VillageID, avoidCW);
-      rmAddGroupingConstraint(caribs3VillageID, avoidImpassableLand);
-      rmAddGroupingConstraint(caribs3VillageID, avoidSocketLong);
-      rmAddClosestPointConstraint(villageEdgeConstraint);
+   int caribs3VillageID = -1;
+   int caribs3VillageType = rmRandInt(1,5);
+   caribs3VillageID = rmCreateGrouping("caribs3 city", "native carib village 0"+caribs3VillageType);
+   rmAddGroupingConstraint(caribs3VillageID, avoidTC);
+   rmAddGroupingConstraint(caribs3VillageID, avoidCW);
+   rmAddGroupingConstraint(caribs3VillageID, avoidImpassableLand);
+   rmAddGroupingConstraint(caribs3VillageID, avoidSocketLong);
+   rmAddClosestPointConstraint(villageEdgeConstraint);
+  
+   if (cNumberNonGaiaPlayers <= 4){
+   rmPlaceGroupingInArea(caribs3VillageID, 0, southIsland, 1);
+   }
 
-      int caribs5VillageID = -1;
-      int caribs5VillageType = rmRandInt(1,5);
-      caribs5VillageID = rmCreateGrouping("caribs5 city", "native carib village 0"+caribs5VillageType);
-      rmAddGroupingConstraint(caribs5VillageID, avoidTC);
-      rmAddGroupingConstraint(caribs5VillageID, avoidCW);
-      rmAddGroupingConstraint(caribs5VillageID, avoidImpassableLand);
-      rmAddGroupingConstraint(caribs5VillageID, avoidSocketLong);
-      rmPlaceGroupingInArea(caribs5VillageID, 0, southIsland, 1);
-      rmAddClosestPointConstraint(villageEdgeConstraint);
-      
-      if (cNumberNonGaiaPlayers <= 4){
-      rmPlaceGroupingInArea(caribs3VillageID, 0, southIsland, 1);
-      }
+   else {
+   rmPlaceGroupingInArea(caribs3VillageID, 0, southIsland, 2);
+   }
 
-      else {
-      rmPlaceGroupingInArea(caribs3VillageID, 0, southIsland, 2);
-      }
-
-   } 
 
    rmClearClosestPointConstraints();
 
-// Text
+   // Text
 	rmSetStatusText("",0.40);
 
-// Place Town Centers
-		rmSetTeamSpacingModifier(0.6);
+   // Place Town Centers
+   rmSetTeamSpacingModifier(0.6);
 
-      float teamStartLoc = rmRandFloat(0.0, 1.0);
-		if(cNumberTeams > 2)
-		{
-			rmSetPlacementSection(0.00, 0.73);
-			rmSetTeamSpacingModifier(0.75);
-			rmPlacePlayersCircular(0.4, 0.4, 0);
-		}
-		else
-		{
-			// 4 players in 2 teams
-			//if (teamStartLoc > 0.5)
-			//{
-				rmSetPlacementTeam(0);
-				rmSetPlacementSection(0.05, 0.2);
-				rmPlacePlayersCircular(0.40, 0.40, rmDegreesToRadians(5.0));
-				rmSetPlacementTeam(1);
-				rmSetPlacementSection(0.55, 0.7); 
-				rmPlacePlayersCircular(0.40, 0.40, rmDegreesToRadians(5.0));
-			/*}
-			else
-			{
-				rmSetPlacementTeam(0);
-				rmSetPlacementSection(0.55, 0.7); 
-				rmPlacePlayersCircular(0.40, 0.40, rmDegreesToRadians(5.0));
-				rmSetPlacementTeam(1);
-				rmSetPlacementSection(0.05, 0.2);
-				rmPlacePlayersCircular(0.40, 0.40, rmDegreesToRadians(5.0));
-			}*/
-		}
+   float teamStartLoc = rmRandFloat(0.0, 1.0);
+   if(cNumberTeams > 2)
+   {
+      rmSetPlacementSection(0.00, 0.73);
+      rmSetTeamSpacingModifier(0.75);
+      rmPlacePlayersCircular(0.4, 0.4, 0);
+   }
+   else
+   {
+      rmSetPlacementTeam(0);
+      rmSetPlacementSection(0.05, 0.2);
+      rmPlacePlayersCircular(0.40, 0.40, rmDegreesToRadians(5.0));
+      rmSetPlacementTeam(1);
+      rmSetPlacementSection(0.55, 0.7); 
+      rmPlacePlayersCircular(0.40, 0.40, rmDegreesToRadians(5.0));
+   }
 
 
 
-// Insert Players
- int TCfloat = -1;
+   // Insert Players
+   int TCfloat = -1;
    if (cNumberTeams == 2)
 	   TCfloat = 50;
    else 
 	   TCfloat = 135;
 
-int startingUnits = rmCreateStartingUnitsObjectDef(5.0);
+   int startingUnits = rmCreateStartingUnitsObjectDef(5.0);
 
-int TCID = rmCreateObjectDef("player TC");
+   int TCID = rmCreateObjectDef("player TC");
 	if (rmGetNomadStart())
 		{
 			rmAddObjectDefItem(TCID, "CoveredWagon", 1, 0.0);
@@ -618,12 +597,12 @@ int TCID = rmCreateObjectDef("player TC");
 		rmAddObjectDefItem(TCID, "TownCenter", 1, 0.0);
    }
 
-int colonyShipID = 0;
+   int colonyShipID = 0;
 
-rmSetObjectDefMinDistance(TCID, 0.0);
-rmSetObjectDefMaxDistance(TCID, TCfloat);
+   rmSetObjectDefMinDistance(TCID, 0.0);
+   rmSetObjectDefMaxDistance(TCID, TCfloat);
 
-//Player resources
+   //Player resources
    int playerSilverID = rmCreateObjectDef("player silver");
 	rmAddObjectDefItem(playerSilverID, "mine", 1, 0);
 	rmSetObjectDefMinDistance(playerSilverID, 10.0);
@@ -637,23 +616,20 @@ rmSetObjectDefMaxDistance(TCID, TCfloat);
    rmAddObjectDefConstraint(playerDeerID, avoidImpassableLand);
    rmSetObjectDefCreateHerd(playerDeerID, true);
 
-rmAddObjectDefConstraint(TCID, avoidTownCenter);
-rmAddObjectDefConstraint(TCID, playerEdgeConstraint);
-rmAddObjectDefConstraint(TCID, avoidImpassableLand);
-rmAddObjectDefConstraint(TCID, playersAwayPort);
-rmAddObjectDefConstraint(TCID, avoidBonusIslands);
-rmAddObjectDefConstraint(TCID, avoidSocketLongCarib);
-
-
-  
+   rmAddObjectDefConstraint(TCID, avoidTownCenter);
+   rmAddObjectDefConstraint(TCID, playerEdgeConstraint);
+   rmAddObjectDefConstraint(TCID, avoidImpassableLand);
+   rmAddObjectDefConstraint(TCID, playersAwayPort);
+   rmAddObjectDefConstraint(TCID, avoidBonusIslands);
+   rmAddObjectDefConstraint(TCID, avoidSocketLong);
 
 for(i=1; <cNumberPlayers) {
 
-// Place town centers
+   // Place town centers
    rmPlaceObjectDefAtLoc(TCID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
    vector TCLoc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(TCID, i));
 
-// Water flag placement rules
+   // Water flag placement rules
    colonyShipID=rmCreateObjectDef("colony ship "+i);
    rmAddObjectDefItem(colonyShipID, "HomeCityWaterSpawnFlag", 1, 1.0);
    if ( rmGetNomadStart())
@@ -665,23 +641,24 @@ for(i=1; <cNumberPlayers) {
    }
    rmAddClosestPointConstraint(flagEdgeConstraint);
    rmAddClosestPointConstraint(flagVsFlag);
+   rmAddClosestPointConstraint(avoidHarbour);
    rmAddClosestPointConstraint(flagLand);
    rmAddAreaConstraint(colonyShipID, ObjectAvoidTradeRoute);
    vector closestPoint = rmFindClosestPointVector(TCLoc, rmXFractionToMeters(1.0));
 
-// Place resources
+   // Place resources
    rmPlaceObjectDefAtLoc(colonyShipID, i, rmXMetersToFraction(xsVectorGetX(closestPoint)), rmZMetersToFraction(xsVectorGetZ(closestPoint)));
    rmPlaceObjectDefAtLoc(startingUnits, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
    rmPlaceObjectDefAtLoc(playerSilverID, 0, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
    rmPlaceObjectDefAtLoc(playerDeerID, 0, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 
    if(ypIsAsian(i) && rmGetNomadStart() == false)
-     rmPlaceObjectDefAtLoc(ypMonasteryBuilder(i, 1), i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-}
+      rmPlaceObjectDefAtLoc(ypMonasteryBuilder(i, 1), i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+   }
 
-rmClearClosestPointConstraints();
+   rmClearClosestPointConstraints();
 
-// Text
+   // Text
 	rmSetStatusText("",0.50);
 
    
@@ -694,102 +671,102 @@ rmClearClosestPointConstraints();
 
 	for(i=0; < silverCount)
 	{
-	  int southSilverID = rmCreateObjectDef("south silver "+i);
-	  rmAddObjectDefItem(southSilverID, "mine", 1, 0.0);
+	   int southSilverID = rmCreateObjectDef("south silver "+i);
+      rmAddObjectDefItem(southSilverID, "mine", 1, 0.0);
       rmSetObjectDefMinDistance(southSilverID, 0.0);
       rmSetObjectDefMaxDistance(southSilverID, rmXFractionToMeters(0.45));
-	  rmAddObjectDefConstraint(southSilverID, avoidCoin);
+      rmAddObjectDefConstraint(southSilverID, avoidCoin);
       rmAddObjectDefConstraint(southSilverID, avoidAll);
       rmAddObjectDefConstraint(southSilverID, avoidTownCenterFar);
       rmAddObjectDefConstraint(southSilverID, mediumAvoidImpassableLand);
       rmAddObjectDefConstraint(southSilverID, southIslandConstraint);
-	  rmPlaceObjectDefAtLoc(southSilverID, 0, 0.5, 0.5);
+      rmPlaceObjectDefAtLoc(southSilverID, 0, 0.5, 0.5);
    }
 
 	for(i=0; < silverCount)
 	{
-	  silverID = rmCreateObjectDef("north silver "+i);
-	  rmAddObjectDefItem(silverID, "mine", 1, 0.0);
+      silverID = rmCreateObjectDef("north silver "+i);
+      rmAddObjectDefItem(silverID, "mine", 1, 0.0);
       rmSetObjectDefMinDistance(silverID, 0.0);
       rmSetObjectDefMaxDistance(silverID, rmXFractionToMeters(0.45));
-	  rmAddObjectDefConstraint(silverID, avoidCoin);
+      rmAddObjectDefConstraint(silverID, avoidCoin);
       rmAddObjectDefConstraint(silverID, avoidAll);
       rmAddObjectDefConstraint(silverID, avoidTownCenterFar);
       rmAddObjectDefConstraint(silverID, mediumAvoidImpassableLand);
       rmAddObjectDefConstraint(silverID, northIslandConstraint);
-	  rmPlaceObjectDefAtLoc(silverID, 0, 0.5, 0.5);
+      rmPlaceObjectDefAtLoc(silverID, 0, 0.5, 0.5);
    } 
 	
    for(i=0; < 4)
 	{
-	  silverID = rmCreateObjectDef("bonus silver "+i);
-	  rmAddObjectDefItem(silverID, "mine", 1, 0.0);
+      silverID = rmCreateObjectDef("bonus silver "+i);
+      rmAddObjectDefItem(silverID, "mine", 1, 0.0);
       rmSetObjectDefMinDistance(silverID, 0.0);
       rmSetObjectDefMaxDistance(silverID, rmXFractionToMeters(0.45));
-	  rmAddObjectDefConstraint(silverID, avoidCoin);
+      rmAddObjectDefConstraint(silverID, avoidCoin);
       rmAddObjectDefConstraint(silverID, avoidAll);
       rmAddObjectDefConstraint(silverID, avoidTownCenterFar);
       rmAddObjectDefConstraint(silverID, mediumAvoidImpassableLand);
       rmAddObjectDefConstraint(silverID, bonusIslandConstraint);
-	  rmPlaceObjectDefAtLoc(silverID, 0, 0.5, 0.5);
+      rmPlaceObjectDefAtLoc(silverID, 0, 0.5, 0.5);
    } 
 
    for(i=0; < 4)
 	{
-	  silverID = rmCreateObjectDef("bonus2 silver "+i);
-	  rmAddObjectDefItem(silverID, "mine", 1, 0.0);
+      silverID = rmCreateObjectDef("bonus2 silver "+i);
+      rmAddObjectDefItem(silverID, "mine", 1, 0.0);
       rmSetObjectDefMinDistance(silverID, 0.0);
       rmSetObjectDefMaxDistance(silverID, rmXFractionToMeters(0.45));
-	  rmAddObjectDefConstraint(silverID, avoidCoin);
+      rmAddObjectDefConstraint(silverID, avoidCoin);
       rmAddObjectDefConstraint(silverID, avoidAll);
       rmAddObjectDefConstraint(silverID, avoidTownCenterFar);
       rmAddObjectDefConstraint(silverID, mediumAvoidImpassableLand);
       rmAddObjectDefConstraint(silverID, bonusIslandConstraint2);
-	  rmPlaceObjectDefAtLoc(silverID, 0, 0.5, 0.5);
+      rmPlaceObjectDefAtLoc(silverID, 0, 0.5, 0.5);
    } 
 
    // Text
 	rmSetStatusText("",0.60);
 
-// FORESTS
- int forestTreeID = 0;
-  int numTries=10*cNumberNonGaiaPlayers;
-  int failCount=0;
-  for (i=0; <numTries) {   
-    int forest=rmCreateArea("forest "+i);
-    rmSetAreaWarnFailure(forest, false);
-    rmSetAreaSize(forest, rmAreaTilesToFraction(150), rmAreaTilesToFraction(400));
-    rmSetAreaForestType(forest, "caribbean palm forest");
-    rmSetAreaForestDensity(forest, 0.6);
-    rmSetAreaForestClumpiness(forest, 0.4);
-    rmSetAreaForestUnderbrush(forest, 0.0);
-    rmSetAreaMinBlobs(forest, 1);
-    rmSetAreaMaxBlobs(forest, 5);
-    rmSetAreaMinBlobDistance(forest, 16.0);
-    rmSetAreaMaxBlobDistance(forest, 40.0);
-    rmSetAreaCoherence(forest, 0.4);
-    rmSetAreaSmoothDistance(forest, 10);
-    rmAddAreaToClass(forest, rmClassID("classForest")); 
-    rmAddAreaConstraint(forest, forestConstraint);
-    rmAddAreaConstraint(forest, avoidAll);
-    rmAddAreaConstraint(forest, avoidTCMedium);
-    rmAddAreaConstraint(forest, shortAvoidImpassableLand); 
-    if(rmBuildArea(forest)==false) {
-      // Stop trying once we fail 3 times in a row.
-      failCount++;
-      
-      if(failCount==5)
-        break;
-    }
+   // FORESTS
+   int forestTreeID = 0;
+   int numTries=10*cNumberNonGaiaPlayers;
+   int failCount=0;
+   for (i=0; <numTries) {   
+      int forest=rmCreateArea("forest "+i);
+      rmSetAreaWarnFailure(forest, false);
+      rmSetAreaSize(forest, rmAreaTilesToFraction(150), rmAreaTilesToFraction(400));
+      rmSetAreaForestType(forest, "caribbean palm forest");
+      rmSetAreaForestDensity(forest, 0.6);
+      rmSetAreaForestClumpiness(forest, 0.4);
+      rmSetAreaForestUnderbrush(forest, 0.0);
+      rmSetAreaMinBlobs(forest, 1);
+      rmSetAreaMaxBlobs(forest, 5);
+      rmSetAreaMinBlobDistance(forest, 16.0);
+      rmSetAreaMaxBlobDistance(forest, 40.0);
+      rmSetAreaCoherence(forest, 0.4);
+      rmSetAreaSmoothDistance(forest, 10);
+      rmAddAreaToClass(forest, rmClassID("classForest")); 
+      rmAddAreaConstraint(forest, forestConstraint);
+      rmAddAreaConstraint(forest, avoidAll);
+      rmAddAreaConstraint(forest, avoidTCMedium);
+      rmAddAreaConstraint(forest, shortAvoidImpassableLand); 
+      if(rmBuildArea(forest)==false) {
+         // Stop trying once we fail 3 times in a row.
+         failCount++;
+         
+         if(failCount==5)
+         break;
+      }
 
-   else
+      else
          failCount=0; 
    } 
 
    // Text
 	rmSetStatusText("",0.70);
 
-// Nuggets
+   // Nuggets
  
 	int nuggetNorth= rmCreateObjectDef("nugget easy north"); 
 	rmAddObjectDefItem(nuggetNorth, "Nugget", 1, 0.0);
@@ -813,7 +790,6 @@ rmClearClosestPointConstraints();
 	rmAddObjectDefConstraint(nuggetSouth, playerEdgeConstraint);
 	rmPlaceObjectDefInArea(nuggetSouth, 0, southIsland, cNumberNonGaiaPlayers);
 
-
 	int nugget2= rmCreateObjectDef("nugget hard"); 
 	rmAddObjectDefItem(nugget2, "Nugget", 1, 0.0);
 	rmSetNuggetDifficulty(3, 3);
@@ -826,7 +802,7 @@ rmClearClosestPointConstraints();
 	rmPlaceObjectDefInArea(nugget2, 0, bonusIslandID, cNumberNonGaiaPlayers);
    rmPlaceObjectDefInArea(nugget2, 0, bonusIslandID2, cNumberNonGaiaPlayers);
 
-      // Water nuggets
+   // Water nuggets
 
    int nuggetCount = 1;
    
@@ -875,7 +851,7 @@ rmClearClosestPointConstraints();
    // Text
 	rmSetStatusText("",0.90);
 
-//Fishes
+   //Fishes
 
    int fishID=rmCreateObjectDef("fish Mahi");
    rmAddObjectDefItem(fishID, "FishMahi", 1, 0.0);
@@ -883,6 +859,7 @@ rmClearClosestPointConstraints();
    rmSetObjectDefMaxDistance(fishID, rmXFractionToMeters(0.5));
    rmAddObjectDefConstraint(fishID, fishVsFishID);
    rmAddObjectDefConstraint(fishID, fishLand);
+   rmAddObjectDefConstraint(fishID, avoidRevealer);
    rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 11*cNumberNonGaiaPlayers);
 
    int fish2ID=rmCreateObjectDef("fish Tarpon");
@@ -891,6 +868,7 @@ rmClearClosestPointConstraints();
    rmSetObjectDefMaxDistance(fish2ID, rmXFractionToMeters(0.5));
    rmAddObjectDefConstraint(fish2ID, fishVsFishID);
    rmAddObjectDefConstraint(fish2ID, fishLand);
+   rmAddObjectDefConstraint(fish2ID, avoidRevealer);
    rmPlaceObjectDefAtLoc(fish2ID, 0, 0.5, 0.5, 5*cNumberNonGaiaPlayers);
 
    int whaleID=rmCreateObjectDef("whale");
@@ -899,6 +877,7 @@ rmClearClosestPointConstraints();
    rmSetObjectDefMaxDistance(whaleID, rmXFractionToMeters(0.5));
    rmAddObjectDefConstraint(whaleID, whaleVsWhaleID);
    rmAddObjectDefConstraint(whaleID, whaleLand);
+   rmAddObjectDefConstraint(whaleID, avoidRevealerLong);
    rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, 4*cNumberNonGaiaPlayers);
 
    // RANDOM TREES
@@ -921,6 +900,14 @@ rmClearClosestPointConstraints();
    rmEnableMerc("deMercKanuri", -1);
    rmEnableMerc("deMercBrigadier", -1);
    rmEnableMerc("MercGreatCannon", -1);
+
+   rmForbidTradeMonopoly(true);
+
+   // ____________________ MAP OBJECTIVES ____________________
+    rmObjectiveScreenSetTitle(302118);
+    rmObjectiveScreenSetGoal(302119);
+    rmObjectiveAdd(302225, 302226, true, true, true);
+    rmObjectiveAdd(302223, 302224, false, true, true);
 
 
 // ------Triggers--------//
@@ -1202,6 +1189,33 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(true);
 }
 
+for (k=1; <= cNumberNonGaiaPlayers) {
+rmCreateTrigger("Activate Maltese"+k);
+rmAddTriggerCondition("ZP Tech Researching (XS)");
+rmSetTriggerConditionParam("TechID","cTechzpMalteseCross"); //operator
+rmSetTriggerConditionParamInt("PlayerID",k);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffMaltese"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Pick Consulate Tech");
+rmSetTriggerEffectParamInt("Player",k);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(true);
+}
+
 // Specific for human players
 
 for(k=1; <= cNumberNonGaiaPlayers) {
@@ -1223,6 +1237,8 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Khmer"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Maltese"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
@@ -2304,6 +2320,50 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
+// AI Maltese Land Fractions
+
+for (k=1; <= cNumberNonGaiaPlayers) {
+
+rmCreateTrigger("ZP Pick Maltese Fraction"+k);
+rmAddTriggerCondition("ZP PLAYER Human");
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("MyBool", "false");
+rmAddTriggerCondition("Tech Status Equals");
+rmSetTriggerConditionParamInt("PlayerID",k);
+rmSetTriggerConditionParamInt("TechID",586);
+rmSetTriggerConditionParamInt("Status",2);
+
+int malteseFraction=-1;
+malteseFraction = rmRandInt(1,3);
+
+if (malteseFraction==1)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseFlorentians"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+if (malteseFraction==2)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseJerusalem"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+if (malteseFraction==3)
+   {
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseCentralEuropeans"); //operator
+      rmSetTriggerEffectParamInt("Status",2);
+   }
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+}
+
 
 
 // Testing

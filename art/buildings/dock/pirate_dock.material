@@ -9,6 +9,8 @@
       </texture>
       <texture name="Masks" override="buildings\dock\textures\pirate_dock_mata_Masks">
       </texture>
+      <texture name="Details" override="buildings\dock\textures\pirate_dock_mata_Details">
+      </texture>
     </parameters>
   </submaterial>
   <submaterial name="matb">
@@ -20,6 +22,8 @@
       <texture name="Normals" override="buildings\dock\textures\pirate_dock_mata_Normals">
       </texture>
       <texture name="Masks" override="buildings\dock\textures\pirate_dock_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings\dock\textures\pirate_dock_mata_Details">
       </texture>
     </parameters>
   </submaterial>

@@ -2190,7 +2190,7 @@
       <string _locid="302189">ZP SPC Pirate Tavern A</string>
       <string _locid="302190">ZP SPC Fixed Gun Base Large</string>
       <string _locid="302191">ZP Native House Pirate City</string>
-      <string _locid="302192">City Fort Tower</string>
+      <string _locid="302192">Wooden Tower</string>
       <string _locid="302193">ZP City Fort Tower</string>
       <string _locid="302194">ZP Socket City Fort Tower</string>
       <string _locid="302195">House Pirates City</string>
@@ -2218,9 +2218,13 @@
       <string _locid="302217">Team Improvised Constructions</string>
       <string _locid="302218">Imncreases Warship training</string>
       <string _locid="302219">Caribbean Wars (Beta)</string>
-      <string _locid="302220">Caribbean Wars Description</string>
-      <string _locid="302221">Caribbean Wars Loading Screen</string>
-
+      <string _locid="302220">Achieve a naval dominance over the Caribbean Sea. This historical map brings you to the true Golden Age of Piracy and unlocks the full Pirate potential. \n\nSettlements: Pirates Town, Maltese, Caribs</string>
+      <string _locid="302221">Local Pirates are more powerful than any other Pirates in the world. They managed to build two heavily fortified towns. Help them to build the fortifications and use these towns to achieve the true naval dominance.</string>
+      <string _locid="302222">ZP Native House Pirate No Decal</string>
+      <string _locid="302223">Capture a Pirate Town and help the Pirates to construct heavy fortifications as towers and fixed guns.</string>
+      <string _locid="302224">Every Pirate town has a tower socket and Fixed Gun socket. Use both to build either the Tower and the Fixed gun.</string>
+      <string _locid="302225">Eliminate enemies in the area</string>
+      <string _locid="302226">Eliminate all enemies on the map.</string>
 
 
 

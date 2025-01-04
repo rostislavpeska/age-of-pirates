@@ -2346,6 +2346,7 @@
     <physicsinfo>dock</physicsinfo>
     <icon>resources\art\buildings\drydock_icon.png</icon>
     <portraiticon>resources\art\buildings\drydock_portrait.png</portraiticon>
+    <minimapicon>ui\minimap\naval_site</minimapicon>
     <rollovertextid>42013</rollovertextid>
     <shortrollovertextid>25627</shortrollovertextid>
     <initialhitpoints>2500.0000</initialhitpoints>
@@ -46353,6 +46354,7 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\tavern_icon.png</icon>
     <portraiticon>resources\art\buildings\tavern_portrait.png</portraiticon>
+    <minimapicon>ui\minimap\military_small</minimapicon>
     <rollovertextid>123021</rollovertextid>
     <shortrollovertextid>123020</shortrollovertextid>
     <initialhitpoints>3500.0000</initialhitpoints>
@@ -46686,8 +46688,8 @@
     <flag>NotDeleteable</flag>
     <command page="1" column="0">deSocketBuildWoodenTower</command>
   </unit>
-  <unit id="20617" name="zpPirateTavernB">
-    <dbid>20617</dbid>
+  <unit id="20622" name="zpPirateTavernB">
+    <dbid>20622</dbid>
     <displaynameid>302209</displaynameid>
     <editornameid>302207</editornameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
@@ -46702,6 +46704,7 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\tavern_icon.png</icon>
     <portraiticon>resources\art\buildings\tavern_portrait.png</portraiticon>
+    <minimapicon>ui\minimap\military_small</minimapicon>
     <rollovertextid>123021</rollovertextid>
     <shortrollovertextid>123020</shortrollovertextid>
     <initialhitpoints>3500.0000</initialhitpoints>
@@ -46774,8 +46777,8 @@
       <rate type="Gold">1.500000</rate>
     </protoaction>
   </unit>
-  <unit id="20618" name="zpSPCPortCenterB">
-    <dbid>20618</dbid>
+  <unit id="20623" name="zpSPCPortCenterB">
+    <dbid>20623</dbid>
     <displaynameid>300032</displaynameid>
     <editornameid>302208</editornameid>
     <obstructionradiusx>3.0000</obstructionradiusx>
@@ -46828,8 +46831,8 @@
     <flag>SelectWithObstruction</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20619" name="zpMercFlyingDutchman">
-    <dbid>20619</dbid>
+  <unit id="20624" name="zpMercFlyingDutchman">
+    <dbid>20624</dbid>
     <displaynameid>302211</displaynameid>
     <editornameid>302210</editornameid>
     <obstructionradiusx>2.9900</obstructionradiusx>
@@ -46937,8 +46940,8 @@
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
-  <unit id="20017" name="zpSPCPirateDockB">
-    <dbid>20017</dbid>
+  <unit id="20625" name="zpSPCPirateDockB">
+    <dbid>20625</dbid>
     <displaynameid>300074</displaynameid>
     <editornameid>302212</editornameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
@@ -46950,6 +46953,7 @@
     <physicsinfo>dock</physicsinfo>
     <icon>resources\art\buildings\drydock_icon.png</icon>
     <portraiticon>resources\art\buildings\drydock_portrait.png</portraiticon>
+    <minimapicon>ui\minimap\naval_site</minimapicon>
     <rollovertextid>42013</rollovertextid>
     <shortrollovertextid>25627</shortrollovertextid>
     <initialhitpoints>2500.0000</initialhitpoints>
@@ -47019,8 +47023,8 @@
       <rate type="Ship">10.000000</rate>
     </protoaction>
   </unit>
-  <unit id="20346" name="zpMercPirateGalleass">
-    <dbid>20346</dbid>
+  <unit id="20626" name="zpMercPirateGalleass">
+    <dbid>20626</dbid>
     <displaynameid>302213</displaynameid>
     <editornameid>302214</editornameid>
     <obstructionradiusx>2.9900</obstructionradiusx>
@@ -47133,6 +47137,48 @@
       <damageflags>GAIAEnemy</damageflags>
       <basedamagecap>1</basedamagecap>
     </protoaction>
+  </unit>
+  <unit id="20627" name="zpNativeHousePirateNoDecal">
+    <dbid>20627</dbid>
+    <displaynameid>300011</displaynameid>
+    <editornameid>302222</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <civflagoverride>objects\flags\pirate</civflagoverride>
+    <animfile>buildings\native_settlement\native house pirate nodecal.xml</animfile>
+    <icon>resources\art\units\spc\pirates\pirate_ranged_icon.png</icon>
+    <portraiticon>resources\art\units\spc\pirates\pirate_ranged_portrait.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+   <unittype>BuildingClass</unittype>
+    <unittype>AbstractCityManisonB</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
   </unit>
 
 

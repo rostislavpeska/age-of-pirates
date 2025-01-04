@@ -3,9 +3,9 @@
 <animfile>
 	<component>
 		ModelComp
-					<assetreference type="GrannyModel">
-						<file>buildings\dock\pirate_dock</file>
-					</assetreference>
+		<assetreference type="GrannyModel">
+			<file>buildings\dock\pirate_dock</file>
+		</assetreference>
 	</component>
 	<anim>
 		Idle

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<mods>
+	<protomods>
+		<unit name="zpSPCFixedGun">
+			<animfile>buildings\fixed_gun\fixed_gun_pirate.xml</animfile>
+		</unit>
+	</protomods>
+</mods>
