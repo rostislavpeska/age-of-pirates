@@ -67,7 +67,7 @@
     </effects>
   </tech>
   <tech name="zpSPCPirateRandomShip1Shadow" type="Normal">
-    <dbid>40581</dbid>
+    <dbid>40882</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>OBTAINABLE</status>
     <flag>Shadow</flag>
@@ -86,7 +86,7 @@
     </effects>
   </tech>
   <tech name="zpSPCPirateRandomShip2Shadow" type="Normal">
-    <dbid>40583</dbid>
+    <dbid>40883</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>OBTAINABLE</status>
     <flag>Shadow</flag>
@@ -20020,7 +20020,7 @@
     </effects>
   </tech>
   <tech name="zpSPCPlunderEconomy" type="Normal">
-    <dbid>40849</dbid>
+    <dbid>40860</dbid>
     <displaynameid>302200</displaynameid>
     <cost resourcetype="Food">150.0000</cost>
     <cost resourcetype="Wood">150.0000</cost>
@@ -20039,7 +20039,7 @@
     </effects>
   </tech>
   <tech name="zpSPCPirateFleet" type="Normal">
-    <dbid>40839</dbid>
+    <dbid>40861</dbid>
     <displaynameid>302201</displaynameid>
     <cost resourcetype="Wood">300.0000</cost>
     <cost resourcetype="Gold">300.0000</cost>
@@ -20060,7 +20060,7 @@
     </effects>
   </tech>
   <tech name="zpSPCTradeRouteStopEast" type="Normal">
-    <dbid>40840</dbid>
+    <dbid>40862</dbid>
     <displaynameid>302203</displaynameid>
     <cost resourcetype="Gold">100.0000</cost>
     <researchpoints>10.0000</researchpoints>
@@ -20072,7 +20072,7 @@
     <flag>YPInfiniteTech</flag>
   </tech>
   <tech name="zpSPCTradeRouteStopWest" type="Normal">
-    <dbid>40841</dbid>
+    <dbid>40863</dbid>
     <displaynameid>302203</displaynameid>
     <cost resourcetype="Gold">100.0000</cost>
     <researchpoints>10.0000</researchpoints>
@@ -20084,7 +20084,7 @@
     <flag>YPInfiniteTech</flag>
   </tech>
   <tech name="zpSPCTradeRouteGoEast" type="Normal">
-    <dbid>40842</dbid>
+    <dbid>40864</dbid>
     <displaynameid>302205</displaynameid>
     <cost resourcetype="Gold">20.0000</cost>
     <researchpoints>60.0000</researchpoints>
@@ -20096,7 +20096,7 @@
     <flag>YPInfiniteTech</flag>
   </tech>
   <tech name="zpSPCTradeRouteGoWest" type="Normal">
-    <dbid>40843</dbid>
+    <dbid>40865</dbid>
     <displaynameid>302205</displaynameid>
     <cost resourcetype="Gold">20.0000</cost>
     <researchpoints>60.0000</researchpoints>
@@ -20108,7 +20108,7 @@
     <flag>YPInfiniteTech</flag>
   </tech>
   <tech name ="zpUpdatePortB1" type ="Normal">
-		<dbid>40843</dbid>
+		<dbid>40866</dbid>
 		<status>UNOBTAINABLE</status>
 		<flag>Shadow</flag>
 		<flag>UpgradeTech</flag>
@@ -20119,7 +20119,7 @@
 		</effects>
 	</tech>
 	<tech name ="zpUpdatePortB2" type ="Normal">
-		<dbid>40844</dbid>
+		<dbid>40867</dbid>
 		<status>UNOBTAINABLE</status>
 		<flag>Shadow</flag>
 		<flag>UpgradeTech</flag>
@@ -20130,7 +20130,7 @@
 		</effects>
 	</tech>
   <tech name="zpSPCSpawnNautilus1" type="Normal">
-    <dbid>40845</dbid>
+    <dbid>40868</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -20141,7 +20141,7 @@
     </effects>
   </tech>
   <tech name="zpSPCSpawnXebec1" type="Normal">
-    <dbid>40846</dbid>
+    <dbid>40869</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -20152,7 +20152,7 @@
     </effects>
   </tech>
   <tech name="zpSPCSpawnGalleass1" type="Normal">
-    <dbid>40847</dbid>
+    <dbid>40870</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -20163,7 +20163,7 @@
     </effects>
   </tech>
   <tech name="zpSPCSpawnRiggedShip1" type="Normal">
-    <dbid>40848</dbid>
+    <dbid>40871</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -20174,7 +20174,7 @@
     </effects>
   </tech>
   <tech name="zpSPCSpawnDutchman1" type="Normal">
-    <dbid>40849</dbid>
+    <dbid>40872</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -20185,7 +20185,7 @@
     </effects>
   </tech>
   <tech name="zpSPCSpawnGalley1" type="Normal">
-    <dbid>40850</dbid>
+    <dbid>40873</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -20196,7 +20196,7 @@
     </effects>
   </tech>
   <tech name="zpSPCPirateRandomShip1" type="Normal">
-    <dbid>40852</dbid>
+    <dbid>40874</dbid>
     <displaynameid>302215</displaynameid>
     <cost resourcetype="Gold">999.0000</cost>
     <researchpoints>10.0000</researchpoints>
@@ -20213,7 +20213,7 @@
     </effects>
   </tech>
   <tech name="zpSPCPirateRandomShip2" type="Normal">
-    <dbid>40854</dbid>
+    <dbid>40875</dbid>
     <displaynameid>302215</displaynameid>
     <cost resourcetype="Gold">999.0000</cost>
     <researchpoints>10.0000</researchpoints>
@@ -20230,7 +20230,7 @@
     </effects>
   </tech>
     <tech name="zpSPCSpawnNautilus2" type="Normal">
-    <dbid>40855</dbid>
+    <dbid>40876</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -20241,7 +20241,7 @@
     </effects>
   </tech>
   <tech name="zpSPCSpawnXebec2" type="Normal">
-    <dbid>40856</dbid>
+    <dbid>40877</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -20252,7 +20252,7 @@
     </effects>
   </tech>
   <tech name="zpSPCSpawnGalleass2" type="Normal">
-    <dbid>40857</dbid>
+    <dbid>40878</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -20263,7 +20263,7 @@
     </effects>
   </tech>
   <tech name="zpSPCSpawnRiggedShip2" type="Normal">
-    <dbid>40858</dbid>
+    <dbid>40879</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -20274,7 +20274,7 @@
     </effects>
   </tech>
   <tech name="zpSPCSpawnDutchman2" type="Normal">
-    <dbid>40859</dbid>
+    <dbid>40880</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -20285,7 +20285,7 @@
     </effects>
   </tech>
   <tech name="zpSPCSpawnGalley2" type="Normal">
-    <dbid>40860</dbid>
+    <dbid>40881</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -20296,7 +20296,7 @@
     </effects>
   </tech>
   <tech name="zpSPCPiratePorts" type="Normal">
-    <dbid>40861</dbid>
+    <dbid>40884</dbid>
     <displaynameid>302217</displaynameid>
     <cost resourcetype="Wood">500.0000</cost>
     <researchpoints>30.0000</researchpoints>
@@ -20313,7 +20313,7 @@
     </effects>
   </tech>
   <tech name="zpEnableSPCPirateCityTechs" type="Normal">
-    <dbid>40862</dbid>
+    <dbid>40885</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
