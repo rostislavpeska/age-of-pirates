@@ -24915,6 +24915,7 @@
     <flag>NonAutoFormedUnit</flag>
     <flag>VisibleUnderFogIfGaia</flag>
     <flag>Tracked</flag>
+    <flag>StartEnabled</flag>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
@@ -30080,8 +30081,8 @@
     <rollovertextid>301465</rollovertextid>
     <shortrollovertextid>301465</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>2700.0000</initialhitpoints>
-    <maxhitpoints>2700.0000</maxhitpoints>
+    <initialhitpoints>3100.0000</initialhitpoints>
+    <maxhitpoints>3100.0000</maxhitpoints>
     <los>30.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -46833,7 +46834,7 @@
   </unit>
   <unit id="20624" name="zpMercFlyingDutchman">
     <dbid>20624</dbid>
-    <displaynameid>302211</displaynameid>
+    <displaynameid>301423</displaynameid>
     <editornameid>302210</editornameid>
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
@@ -47025,7 +47026,7 @@
   </unit>
   <unit id="20626" name="zpMercPirateGalleass">
     <dbid>20626</dbid>
-    <displaynameid>302213</displaynameid>
+    <displaynameid>301464</displaynameid>
     <editornameid>302214</editornameid>
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
@@ -47042,8 +47043,8 @@
     <rollovertextid>301465</rollovertextid>
     <shortrollovertextid>301465</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>2700.0000</initialhitpoints>
-    <maxhitpoints>2700.0000</maxhitpoints>
+    <initialhitpoints>3100.0000</initialhitpoints>
+    <maxhitpoints>3100.0000</maxhitpoints>
     <los>30.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -47083,6 +47084,7 @@
     <unittype>CountsTowardMilitaryScore</unittype>
     <train row="0" page="0" column="0">zpNatCorsair</train>
     <train row="0" page="0" column="1">deREVBarbaryMarksman</train>
+    <flag>HeroName1</flag>
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>DontRotateObstruction</flag>

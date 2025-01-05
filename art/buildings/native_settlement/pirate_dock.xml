@@ -6,6 +6,7 @@
 		<assetreference type="GrannyModel">
 			<file>buildings\dock\pirate_dock</file>
 		</assetreference>
+		<decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><width>11.00</width><height>8.00</height></decal>
 	</component>
 	<anim>
 		Idle
