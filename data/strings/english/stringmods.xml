@@ -2156,7 +2156,7 @@
       <string _locid="302155">ZP Underbrush Orangerie</string>
       <string _locid="302156">ZP SPC Temporary Obstruction</string>
       <string _locid="302157">ZP Venetian House 3</string>
-      <string _locid="302158">Achieve a Team Victory by capturing and holding the majority of the Venetian Districts. \n\nNative Settlements: Venetians \n\nShadow aliances: Maltese, Jesuit, Orthodox, House of Auditore</string>
+      <string _locid="302158">Venice 1796: The republic is weak and the fight for the Venetian heritage altready started. \n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Achieve a Team Victory by capturing and holding the majority of the Venetian Districts. \n\nNative Settlements: Venetians \n\nShadow aliances: Maltese, Jesuit, Orthodox, House of Auditore</string>
       <string _locid="302159">District of Venice</string>
       <string _locid="302160">ZP Venetian House 4</string>
       <string _locid="302161">Veteran auditore</string>
@@ -2218,10 +2218,10 @@
       <string _locid="302217">Team Improvised Constructions</string>
       <string _locid="302218">Increases Warship training speed</string>
       <string _locid="302219">Caribbean Wars (Beta)</string>
-      <string _locid="302220">Achieve a naval dominance over the Caribbean Sea. This historical map brings you to the true Golden Age of Piracy and unlocks the full Pirate potential. \n\nTrade monopoly victory is not available for this map, but treaty and a special naval version of KING OF THE HILL are available. \n\nSettlements: Pirates Town, Maltese, Caribs</string>
+      <string _locid="302220">Achieve a naval dominance over the Caribbean Sea. This historical map brings you to the true Golden Age of Piracy and unlocks the full Pirate potential. \n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; variable (based on selection) including a special naval version of KING OF THE HILL. \n\nSettlements: Pirate Towns, Maltese, Caribs</string>
       <string _locid="302221">Local Pirates are more powerful than any other Pirates in the world. They managed to build two heavily fortified towns. Help them to build the fortifications and use these towns to achieve the true naval dominance.</string>
       <string _locid="302222">ZP Native House Pirate No Decal</string>
-      <string _locid="302223">Capture a Pirate Town and help the Pirates to construct heavy fortifications as towers and fixed guns.</string>
+      <string _locid="302223">Capture a Pirate Town and use pirate ships and fixed guns to protect the coast.</string>
       <string _locid="302224">Every Pirate town has a tower socket and Fixed Gun socket. Use both to build either the Tower and the Fixed gun.</string>
       <string _locid="302225">Eliminate enemies in the area</string>
       <string _locid="302226">Eliminate all enemies on the map.</string>
@@ -2232,10 +2232,13 @@
       <string _locid="302231">ZP SPC PROP Water Wall</string>
       <string _locid="302232">Controlling the Hill starts a victory countdown. Undefended, it will convert to whoever moves war ships into the area.</string>
       <string _locid="302233">Capture the Hill by moving war ships into the area</string>
-      <string _locid="302234">Your team achieve King of the Sea Victory in</string>
+      <string _locid="302234">Your team achieves King of the Sea Victory in</string>
       <string _locid="302235">Enemy team achieves King of the Sea Victory in</string>
       <string _locid="302236">Capture a King of the Sea Castle in the middle of the map and hold it until the time runs out.</string>
-
+      <string _locid="302237">Capture a &lt;color=1.0, 1.0, 0.0&gt;Sansculotte:&lt;/color&gt; Settlement and use Sansculotte units and techs.</string>
+      <string _locid="302238">Use Sansculotte settlement to initiate a revolution.</string>
+      <string _locid="302239">Capture &lt;color=1.0, 1.0, 0.0&gt;Bourbon:&lt;/color&gt; Palace and use Bourbon units and techs.</string>
+      <string _locid="302240">Advance to the Sun King Era and get more Bourbon improvements.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

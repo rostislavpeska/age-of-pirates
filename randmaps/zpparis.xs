@@ -2025,6 +2025,10 @@ rmSetStatusText("",0.70);
 	rmObjectiveSetTeam(1, 1);
 	rmObjectiveAdd(302061, 302023, true, true, true); // General objective ROY
 	rmObjectiveSetTeam(2, 2);
+	rmObjectiveAdd(302237, 302238, false, true, true); // Secondary objective REV
+	rmObjectiveSetTeam(3, 1);
+	rmObjectiveAdd(302239, 302240, false, true, true); // Secondary objective ROY
+	rmObjectiveSetTeam(4, 2);
 
 	/*rmObjectiveAdd(302024, 302023, true, true, true); // Royal Court REV
 	rmObjectiveSetTeam(3, 1);

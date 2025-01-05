@@ -154,6 +154,8 @@ void main(void)
    int avoidRevealer=rmCreateTypeDistanceConstraint("avoid city state revealer", "zpCinematicRevealer", 25.0);
    int avoidRevealerLong=rmCreateTypeDistanceConstraint("avoid city state revealer long", "zpCinematicRevealer", 40.0);
    int avoidHarbour=rmCreateTypeDistanceConstraint("avoid harbour", "zpHarbourPlatform", 20.0);
+   int avoidKOTH=rmCreateTypeDistanceConstraint("stay away from Kings Hill", "zpKingsHillNaval", 15.0);
+   int avoidKOTHLong=rmCreateTypeDistanceConstraint("stay away from Kings Hill Long", "zpKingsHillNaval", 25.0);
 
    // ******************* Place City states terrain and Trade Routes *************************
 
@@ -873,6 +875,7 @@ for(i=1; <cNumberPlayers) {
    rmAddObjectDefConstraint(fishID, fishVsFishID);
    rmAddObjectDefConstraint(fishID, fishLand);
    rmAddObjectDefConstraint(fishID, avoidRevealer);
+   rmAddObjectDefConstraint(fishID, avoidKOTH);
    rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 11*cNumberNonGaiaPlayers);
 
    int fish2ID=rmCreateObjectDef("fish Tarpon");
@@ -882,6 +885,7 @@ for(i=1; <cNumberPlayers) {
    rmAddObjectDefConstraint(fish2ID, fishVsFishID);
    rmAddObjectDefConstraint(fish2ID, fishLand);
    rmAddObjectDefConstraint(fish2ID, avoidRevealer);
+   rmAddObjectDefConstraint(fish2ID, avoidKOTH);
    rmPlaceObjectDefAtLoc(fish2ID, 0, 0.5, 0.5, 5*cNumberNonGaiaPlayers);
 
    int whaleID=rmCreateObjectDef("whale");
@@ -891,6 +895,7 @@ for(i=1; <cNumberPlayers) {
    rmAddObjectDefConstraint(whaleID, whaleVsWhaleID);
    rmAddObjectDefConstraint(whaleID, whaleLand);
    rmAddObjectDefConstraint(whaleID, avoidRevealerLong);
+   rmAddObjectDefConstraint(whaleID, avoidKOTHLong);
    rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, 4*cNumberNonGaiaPlayers);
 
    // RANDOM TREES
@@ -914,7 +919,7 @@ for(i=1; <cNumberPlayers) {
    rmEnableMerc("deMercBrigadier", -1);
    rmEnableMerc("MercGreatCannon", -1);
 
-   rmForbidTradeMonopoly(true);
+   //rmForbidTradeMonopoly(true);
 
    // ____________________ MAP OBJECTIVES ____________________
     rmObjectiveScreenSetTitle(302118);

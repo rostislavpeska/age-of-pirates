@@ -17107,6 +17107,7 @@
         <target type="ProtoUnit">zpNatRevolutionary</target>
       </effect>
       <effect type="TechStatus" status="active">zpRevolutionFrance</effect>
+      <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
   <tech name="zpConsulateRevJacobine" type="Normal">
@@ -17134,6 +17135,7 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="TechStatus" status="active">zpRevolutionFrance</effect>
+      <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
   <tech name="zpConsulateRevNapoleon" type="Normal">
@@ -17161,6 +17163,7 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="TechStatus" status="active">zpRevolutionFrance</effect>
+      <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffSansculottes" type="Normal">
@@ -20415,6 +20418,9 @@
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypTekkousen</target>
       </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xpIronclad</target>
+      </effect>
       <effect type="CommandRemove" proto="Caravel">
         <target type="ProtoUnit">Dock</target>
       </effect>
@@ -20630,10 +20636,44 @@
       </effect>
       <effect type="CommandRemove" proto="ypTekkousen">
         <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpIronclad">
+        <target type="ProtoUnit">Dock</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">ImperialManOWar</effect>
       <effect type="TechStatus" status="unobtainable">ypImperialManOWar</effect>
-      <effect type="TechStatus" status="unobtainable">ShipHowitzer</effect>
+      <effect type="TechStatus" status="unobtainable">ShipHowitzers</effect>
+      <effect type="TechStatus" status="unobtainable">DEShipHowitzersAmerican</effect>
+      <effect type="CommandRemove" tech="ImperialManOWar">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" tech="ypImperialManOWar">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" tech="ShipHowitzers">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" tech="ImperialManOWar">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" tech="ypImperialManOWar">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" tech="ShipHowitzers">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" tech="ImperialManOWar">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" tech="ypImperialManOWar">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" tech="ShipHowitzers">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" tech="DEShipHowitzersAmerican">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
     </effects>
   </tech>
   
