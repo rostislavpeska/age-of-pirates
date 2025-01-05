@@ -257,7 +257,7 @@ void main(void)
 
    // North Island
    int northIsland = rmCreateArea ("north island");
-   rmSetAreaSize(northIsland, 0.19, 0.18);
+   rmSetAreaSize(northIsland, 0.18, 0.18);
    rmSetAreaLocation(northIsland, 0.85, 0.85);
    rmSetAreaCoherence(northIsland, 0.6);
    rmSetAreaMinBlobs(northIsland, 8);
@@ -279,7 +279,7 @@ void main(void)
       // Port Sites
       int portSite1 = rmCreateArea ("port_site1");
       rmSetAreaSize(portSite1, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-      rmSetAreaLocation(portSite1, 0.5+rmXTilesToFraction(20), 0.8);
+      rmSetAreaLocation(portSite1, 0.5+rmXTilesToFraction(22), 0.8);
       rmSetAreaMix(portSite1, "caribbean grass");
       rmSetAreaCoherence(portSite1, 1);
       rmSetAreaSmoothDistance(portSite1, 15);
@@ -298,7 +298,7 @@ void main(void)
 
       int portSite2 = rmCreateArea ("port_site2");
       rmSetAreaSize(portSite2, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-      rmSetAreaLocation(portSite2, 0.8, 0.5+rmZTilesToFraction(20));
+      rmSetAreaLocation(portSite2, 0.8, 0.5+rmZTilesToFraction(25));
       rmSetAreaMix(portSite2, "caribbean grass");
       rmSetAreaCoherence(portSite2, 1);
       rmSetAreaSmoothDistance(portSite2, 15);
@@ -454,12 +454,12 @@ void main(void)
    // Port 1
    int portID01 = rmCreateObjectDef("port 01");
    portID01 = rmCreateGrouping("portG 01", "harbour_center_sw");
-   rmPlaceGroupingAtLoc(portID01, 0, 0.5+rmXTilesToFraction(10), 0.8+rmZTilesToFraction(0));
+   rmPlaceGroupingAtLoc(portID01, 0, 0.5+rmXTilesToFraction(12), 0.8+rmZTilesToFraction(0));
 
    // Port 2
    int portID02 = rmCreateObjectDef("port 02");
    portID02 = rmCreateGrouping("portG 02", "harbour_centerb_se");
-   rmPlaceGroupingAtLoc(portID02, 0, 0.8+rmXTilesToFraction(0), 0.5+rmZTilesToFraction(10));
+   rmPlaceGroupingAtLoc(portID02, 0, 0.8+rmXTilesToFraction(0), 0.5+rmZTilesToFraction(15));
 
 
    // Port 3
