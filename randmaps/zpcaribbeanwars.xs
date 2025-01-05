@@ -151,8 +151,8 @@ void main(void)
    int avoidPirateHouse=rmCreateTypeDistanceConstraint("avoid pirate city state", "zpNativeHousePirateCity", 15.0);
    int avoidPirateDock1=rmCreateTypeDistanceConstraint("avoid pirate dock 1", "zpSPCPirateDock", 25.0);
    int avoidPirateDock2=rmCreateTypeDistanceConstraint("avoid pirate dock 2", "zpSPCPirateDockB", 25.0);
-   int avoidRevealer=rmCreateTypeDistanceConstraint("avoid city state revealer", "zpCinematicRevealerToAll", 25.0);
-   int avoidRevealerLong=rmCreateTypeDistanceConstraint("avoid city state revealer long", "zpCinematicRevealerToAll", 40.0);
+   int avoidRevealer=rmCreateTypeDistanceConstraint("avoid city state revealer", "zpCinematicRevealer", 25.0);
+   int avoidRevealerLong=rmCreateTypeDistanceConstraint("avoid city state revealer long", "zpCinematicRevealer", 40.0);
    int avoidHarbour=rmCreateTypeDistanceConstraint("avoid harbour", "zpHarbourPlatform", 20.0);
 
    // ******************* Place City states terrain and Trade Routes *************************

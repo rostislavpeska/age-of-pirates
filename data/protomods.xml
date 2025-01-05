@@ -18191,7 +18191,6 @@
     <flag>PaintTextureWhenPlacing</flag>
     <flag>ColonyBuilding</flag>
     <flag>ColonyPlacementL</flag>
-    <flag>Tracked</flag>
     <flag>HasGatherPoint</flag>
     <flag>ForceToGaia</flag>
     <flag>NotSelectable</flag>
@@ -37747,7 +37746,6 @@
     <flag>PaintTextureWhenPlacing</flag>
     <flag>ColonyBuilding</flag>
     <flag>ColonyPlacementL</flag>
-    <flag>Tracked</flag>
     <flag>HasGatherPoint</flag>
     <flag>ForceToGaia</flag>
     <flag>NotSelectable</flag>
@@ -38217,7 +38215,6 @@
     <flag>PaintTextureWhenPlacing</flag>
     <flag>ColonyBuilding</flag>
     <flag>ColonyPlacementL</flag>
-    <flag>Tracked</flag>
     <flag>HasGatherPoint</flag>
     <flag>ForceToGaia</flag>
     <flag>NotSelectable</flag>
@@ -46160,7 +46157,6 @@
     <flag>PaintTextureWhenPlacing</flag>
     <flag>ColonyBuilding</flag>
     <flag>ColonyPlacementL</flag>
-    <flag>Tracked</flag>
     <flag>HasGatherPoint</flag>
     <flag>ForceToGaia</flag>
     <flag>NotSelectable</flag>
