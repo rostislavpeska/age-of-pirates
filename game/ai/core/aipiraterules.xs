@@ -175,7 +175,7 @@ minInterval 1
       xsEnableRule("underwaterOperations");
       xsEnableRule("zpDiverTechMonitor");
    }
-   if (getGaiaUnitCount(cUnitTypezpNativeHousePirate) > 0)
+   if ((getGaiaUnitCount(cUnitTypezpNativeHousePirate) > 0) || (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0))
    {
       xsEnableRule("MaintainPirateShips");
       xsEnableRule("PirateTechMonitor");
@@ -2716,11 +2716,12 @@ rule MaintainPirateShips
 inactive
 minInterval 30
 {
+
   const int list_size = 7;
   static int proxy_list = -1;
   static int ship_list = -1;
 
-  if (kbUnitCount(cMyID, cUnitTypezpSocketPirates, cUnitStateAny) == 0)
+  if ((kbUnitCount(cMyID, cUnitTypezpSocketPirates, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketPirateCityState, cUnitStateAny) == 0))
    {
       return;
    }
@@ -3127,7 +3128,8 @@ rule PirateTechMonitor
 inactive
 mininterval 60
 {
-   if (kbUnitCount(cMyID, cUnitTypezpSocketPirates, cUnitStateAny) == 0)
+
+   if ((kbUnitCount(cMyID, cUnitTypezpSocketPirates, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketPirateCityState, cUnitStateAny) == 0))
       {
       return; // Player has no pirate socket.
       }
@@ -3982,7 +3984,7 @@ rule zpMalteseTechMonitor
 inactive
 mininterval 60
 {
-   if (kbUnitCount(cMyID, cUnitTypezpSocketMaltese, cUnitStateAny) == 0)
+   if ((kbUnitCount(cMyID, cUnitTypezpSocketMaltese, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSocketMalteseMission, cUnitStateAny) == 0))
       {
       return; // Player has no Maltese socket.
       }
@@ -4260,7 +4262,7 @@ rule VeniceTechMonitor
 inactive
 minInterval 60
 {
-   if (kbUnitCount(cMyID, cUnitTypezpSocketVenetians, cUnitStateAny) == 0)
+   if ((kbUnitCount(cMyID, cUnitTypezpSocketVenetians, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketVeniceCityState, cUnitStateAny) == 0))
       {
       return; // Player has no venice socket.
       }

@@ -30,7 +30,7 @@
       <string _locid="300028">ZP Native Pirates</string>
       <string _locid="300029">ZP Socket Trade Harbour</string>
       <string _locid="300030">Trade Harbour</string>
-      <string _locid="300031">ZP Harbour Center West</string>
+      <string _locid="300031">ZP Harbour Center West A</string>
       <string _locid="300032">Harbour Warehouse</string>
       <string _locid="300033">ZP PROP Harbour Platform</string>
       <string _locid="300034">ZP PROP Harbour Dingy</string>
@@ -74,7 +74,7 @@
       <string _locid="300072">Native Building</string>
       <string _locid="300073">ZP NAT House Maltese</string>
       <string _locid="300074">Pirate Dock</string>
-      <string _locid="300075">ZP SPC Pirate Dock</string>
+      <string _locid="300075">ZP SPC Pirate Dock A</string>
       <string _locid="300076">Tortuga Pirate Harbour</string>
       <string _locid="300077">ZP Socket SPC Pirates</string>
       <string _locid="300078">Tortuga Saloon</string>
@@ -2085,7 +2085,7 @@
       <string _locid="302084">San Marco Basilica</string>
       <string _locid="302085">ZP SPC San Marco Basilica</string>
       <string _locid="302086">ZP House venetian City</string>
-      <string _locid="302087">Fall of Venice (no ai support)</string>
+      <string _locid="302087">Fall of Venice (Beta)</string>
       <string _locid="302088">Assassin</string>
       <string _locid="302089">ZP NAT Assassin</string>
       <string _locid="302090">ZP Venetian Water Flag 3</string>
@@ -2100,7 +2100,7 @@
       <string _locid="302099">Native Building</string>
       <string _locid="302100">ZP NAT MERC Conquistador Musketeer</string>
       <string _locid="302101">ZP SPC Socket Venetians City</string>
-      <string _locid="302102">Venice Fixed Gun</string>
+      <string _locid="302102">Fixed Gun</string>
       <string _locid="302103">ZP SPC Socket Fixed Gun</string>
       <string _locid="302104">ZP SPC Fixed Gun</string>
       <string _locid="302105">Heavy Fixed Gun</string>
@@ -2183,8 +2183,60 @@
       <string _locid="302182">Pick one of Venetian noble houses which will have the biggest influence. \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Upgrades Venetian trade route to the maximum level</string>
       <string _locid="302183">House of Dolfin (Map Bonus)</string>
       <string _locid="302184">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nVenetian Galleass \n\nIncreased galley build limit.\n&lt;color=0.0, 1.0, 0.0&gt;Bonus:&lt;/color&gt; Team adds Galleass Dock training \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nDry Dock</string>
+      <string _locid="302185">Venice Lagging Test</string>
+      <string _locid="302186">Pirate Town</string>
+      <string _locid="302187">ZP SPC Socket Pirates City</string>
+      <string _locid="302188">Tortuga Heaven (Pirate Tavern)</string>
+      <string _locid="302189">ZP SPC Pirate Tavern A</string>
+      <string _locid="302190">ZP SPC Fixed Gun Base Large</string>
+      <string _locid="302191">ZP Native House Pirate City</string>
+      <string _locid="302192">Wooden Tower</string>
+      <string _locid="302193">ZP City Fort Tower</string>
+      <string _locid="302194">ZP Socket City Fort Tower</string>
+      <string _locid="302195">House Pirates City</string>
+      <string _locid="302196">Team Hommock Beds</string>
+      <string _locid="302197">Signifficantly reduces Pirate Outlaw population costs</string>
+      <string _locid="302198">Team Tavern Wagers</string>
+      <string _locid="302199">Pirate Taverns generate gold faster</string>
+      <string _locid="302200">Team Plunder Economy</string>
+      <string _locid="302201">Team Privateer Mercenaries</string>
+      <string _locid="302202">Allows you and your team mates to hire privateers directly in your dock.</string>
+      <string _locid="302203">Trade Blockade</string>
+      <string _locid="302204">Blocks a trade route in a reach of this Pirate settlement. (After being blocked, trade route can be opened again.)</string>
+      <string _locid="302205">Reverse Blockade</string>
+      <string _locid="302206">Opends a nearby trade route for a free trade.</string>
+      <string _locid="302207">ZP SPC Pirate Tavern B</string>
+      <string _locid="302208">ZP Harbour Center West B</string>
+      <string _locid="302209">Isla de Muerta (Pirate Tavern)</string>
+      <string _locid="302210">ZP Merc Flying Dutchman</string>
+      <string _locid="302211">Flying Dutchman (Ghost Ship)</string>
+      <string _locid="302212">ZP SPC Pirate Dock B</string>
+      <string _locid="302213">Sultana (Barbarossa's Flagship)</string>
+      <string _locid="302214">ZP Merc Pirate Galleass</string>
+      <string _locid="302215">Unknown Pirate Ship</string>
+      <string _locid="302216">Hire an unknown pirate ship passing by the territory (single use).</string>
+      <string _locid="302217">Team Improvised Constructions</string>
+      <string _locid="302218">Increases Warship training speed</string>
+      <string _locid="302219">Caribbean Wars (Beta)</string>
+      <string _locid="302220">Achieve a naval dominance over the Caribbean Sea. This historical map brings you to the true Golden Age of Piracy and unlocks the full Pirate potential. \n\nTrade monopoly victory is not available for this map, but treaty and a special naval version of KING OF THE HILL are available. \n\nSettlements: Pirates Town, Maltese, Caribs</string>
+      <string _locid="302221">Local Pirates are more powerful than any other Pirates in the world. They managed to build two heavily fortified towns. Help them to build the fortifications and use these towns to achieve the true naval dominance.</string>
+      <string _locid="302222">ZP Native House Pirate No Decal</string>
+      <string _locid="302223">Capture a Pirate Town and help the Pirates to construct heavy fortifications as towers and fixed guns.</string>
+      <string _locid="302224">Every Pirate town has a tower socket and Fixed Gun socket. Use both to build either the Tower and the Fixed gun.</string>
+      <string _locid="302225">Eliminate enemies in the area</string>
+      <string _locid="302226">Eliminate all enemies on the map.</string>
+      <string _locid="302227">ZP SPC Rowboat</string>
+      <string _locid="302228">King of the Sea</string>
+      <string _locid="302229">ZP Naval King's Hill</string>
+      <string _locid="302230">ZP SPC PROP Water Tower</string>
+      <string _locid="302231">ZP SPC PROP Water Wall</string>
+      <string _locid="302232">Controlling the Hill starts a victory countdown. Undefended, it will convert to whoever moves war ships into the area.</string>
+      <string _locid="302233">Capture the Hill by moving war ships into the area</string>
+      <string _locid="302234">Your team achieve King of the Sea Victory in</string>
+      <string _locid="302235">Enemy team achieves King of the Sea Victory in</string>
+      <string _locid="302236">Capture a King of the Sea Castle in the middle of the map and hold it until the time runs out.</string>
 
-    
+
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
       <!-- ======================================== -->

@@ -166,6 +166,9 @@
   <zpspcflyingdutchman>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpspcflyingdutchman>
+  <zpmercflyingdutchman>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpmercflyingdutchman>
   <zpspcprau>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpspcprau>
@@ -180,6 +183,10 @@
     <ability>dePowerRoundelPierceAttack<rof>60</rof><sharedcooldown>true</sharedcooldown><castonself>true</castonself></ability>
     <ability>dePowerShunt<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>
   </zpspcpirategalleass>
+  <zpmercpirategalleass>
+    <ability>dePowerRoundelPierceAttack<rof>60</rof><sharedcooldown>true</sharedcooldown><castonself>true</castonself></ability>
+    <ability>dePowerShunt<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>
+  </zpmercpirategalleass>
   <zpcorsairgalley>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpcorsairgalley>
@@ -256,6 +263,9 @@
     <ability>zpAssassinBrotherhood<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpspcezio>
+  <zpspcrowboat>
+    <ability>deSPCStealthHide<rof>40</rof><castonself>true</castonself><donotforcestop>true</donotforcestop><activetimecooldown>true</activetimecooldown><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcrowboat>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

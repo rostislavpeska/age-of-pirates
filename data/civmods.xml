@@ -14,6 +14,87 @@
       <age>Age0</age>
       <tech>zpNativePirates</tech>
     </agetech>
+    <multipleblocktrain>
+      <building>zpSPCPirateDock</building>
+      <multipleblockunit>zpPrivateerProxy</multipleblockunit>
+      <units>
+        <unit>Privateer</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>zpSPCPirateDock</building>
+      <multipleblockunit>zpSPCQueenAnneProxy</multipleblockunit>
+      <units>
+        <unit>zpSPCQueenAnne</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>zpSPCPirateDock</building>
+      <multipleblockunit>zpSPCBlackPearlProxy</multipleblockunit>
+      <units>
+        <unit>zpSPCBlackPearl</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>zpSPCPirateDock</building>
+      <multipleblockunit>zpSPCNeptuneGalleyProxy</multipleblockunit>
+      <units>
+        <unit>zpSPCNeptuneGalley</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+
+    <multipleblocktrain>
+      <building>zpSPCPirateDockB</building>
+      <multipleblockunit>zpPrivateerProxy</multipleblockunit>
+      <units>
+        <unit>Privateer</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>zpSPCPirateDockB</building>
+      <multipleblockunit>zpSPCQueenAnneProxy</multipleblockunit>
+      <units>
+        <unit>zpSPCQueenAnne</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>zpSPCPirateDockB</building>
+      <multipleblockunit>zpSPCBlackPearlProxy</multipleblockunit>
+      <units>
+        <unit>zpSPCBlackPearl</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>zpSPCPirateDockB</building>
+      <multipleblockunit>zpSPCNeptuneGalleyProxy</multipleblockunit>
+      <units>
+        <unit>zpSPCNeptuneGalley</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>

@@ -66,6 +66,44 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpSPCPirateRandomShip1Shadow" type="Normal">
+    <dbid>40882</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCPirateRandomShip1</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="RandomTech" select="1" status="active">
+        <tech>zpSPCSpawnGalley1</tech>
+        <tech>zpSPCSpawnDutchman1</tech>
+        <tech>zpSPCSpawnRiggedShip1</tech>
+        <tech>zpSPCSpawnGalleass1</tech>
+        <tech>zpSPCSpawnXebec1</tech>
+        <tech>zpSPCSpawnNautilus1</tech>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPirateRandomShip2Shadow" type="Normal">
+    <dbid>40883</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCPirateRandomShip2</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="RandomTech" select="1" status="active">
+        <tech>zpSPCSpawnGalley2</tech>
+        <tech>zpSPCSpawnDutchman2</tech>
+        <tech>zpSPCSpawnRiggedShip2</tech>
+        <tech>zpSPCSpawnGalleass2</tech>
+        <tech>zpSPCSpawnXebec2</tech>
+        <tech>zpSPCSpawnNautilus2</tech>
+      </effect>
+    </effects>
+  </tech>
   <tech name="zpNativeMaltese" type="Normal">
     <dbid>40001</dbid>
     <status>UNOBTAINABLE</status>
@@ -13876,9 +13914,6 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCFlyingDutchmanProxy</target>
       </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpPetDolphin</target>
-      </effect>
       <effect type="TechStatus" status="unobtainable">zpTheBlackFlag</effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
       <effect type="CommandRemove" tech="zpTheBlackFlag">
@@ -18505,6 +18540,12 @@
       <effect type="CommandAdd" proto="zpMilitaryCamp" page="6" column="2">
         <target type="ProtoUnit">Explorer</target>
       </effect>
+      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
+      </effect>
       <effect type="Data" amount="80.00" subtype="PopulationCap" relativity="Absolute">
         <target type="Player">
         </target>
@@ -18534,6 +18575,7 @@
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
     </effects>
   </tech>
   <tech name="zpSansculotteSpiritRevolution" type="Normal">
@@ -19915,6 +19957,686 @@
       <techstatus status="Active">zpConsulateVeniceContarini</techstatus>
     </prereqs>
   </tech>
+  <tech name="DESPCEuroTowerFrontierShadow" type="Normal">
+     <effects>
+      <effect mergemode="add" type="SetName" proto="zpSPCCityTowerWooden" culture="none" newname="123270">
+      </effect>
+      <effect mergemode="add" type="Data" action="RangedAttack" amount="1.50" subtype="Damage" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityTowerWooden</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="DESPCEuroTowerFortifiedShadow" type="Normal">
+    <effects>
+      <effect mergemode="add" type="SetName" proto="zpSPCCityTowerWooden" culture="none" newname="123271">
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityTowerWooden</target>
+      </effect>
+      <effect mergemode="add" type="Data" action="CannonAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCityTowerWooden</target>
+      </effect>
+      <effect mergemode="add" type="Data" action="AntiShipAttack" amount="2.00" subtype="Damage" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityTowerWooden</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHommockBeds" type="Normal">
+    <dbid>40858</dbid>
+    <displaynameid>302196</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\team_hommock_beds.png</icon>
+    <rollovertextid>302197</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>TeamTech</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="-2.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">SaloonPirate</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCTavernWagers" type="Normal">
+    <dbid>40859</dbid>
+    <displaynameid>302198</displaynameid>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\team_tavern_wagers.png</icon>
+    <rollovertextid>302199</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpPirateTavern</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpPirateTavernB</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPlunderEconomy" type="Normal">
+    <dbid>40860</dbid>
+    <displaynameid>302200</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\team_plundering_economy.png</icon>
+    <rollovertextid>302171</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="Data2" amount="1.00" subtype="BountyResourceOverride" unittype="Building" resource="Gold" extrabounty="true" bountyrate="40.00" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPirateFleet" type="Normal">
+    <dbid>40861</dbid>
+    <displaynameid>302201</displaynameid>
+    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\team_pirates_fleet.png</icon>
+    <rollovertextid>302202</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>TeamTech</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Privateer</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCTradeRouteStopEast" type="Normal">
+    <dbid>40862</dbid>
+    <displaynameid>302203</displaynameid>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\command\trade_blockade_on.png</icon>
+    <rollovertextid>302204</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpSPCTradeRouteStopWest" type="Normal">
+    <dbid>40863</dbid>
+    <displaynameid>302203</displaynameid>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\command\trade_blockade_on.png</icon>
+    <rollovertextid>302204</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpSPCTradeRouteGoEast" type="Normal">
+    <dbid>40864</dbid>
+    <displaynameid>302205</displaynameid>
+    <cost resourcetype="Gold">20.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\command\trade_blockade_off.png</icon>
+    <rollovertextid>302206</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpSPCTradeRouteGoWest" type="Normal">
+    <dbid>40865</dbid>
+    <displaynameid>302205</displaynameid>
+    <cost resourcetype="Gold">20.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\command\trade_blockade_off.png</icon>
+    <rollovertextid>302206</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name ="zpUpdatePortB1" type ="Normal">
+		<dbid>40866</dbid>
+		<status>UNOBTAINABLE</status>
+		<flag>Shadow</flag>
+		<flag>UpgradeTech</flag>
+		<effects>
+			<effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCPortCenterB" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+		</effects>
+	</tech>
+	<tech name ="zpUpdatePortB2" type ="Normal">
+		<dbid>40867</dbid>
+		<status>UNOBTAINABLE</status>
+		<flag>Shadow</flag>
+		<flag>UpgradeTech</flag>
+		<effects>
+			<effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCPortCenterB" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+		</effects>
+	</tech>
+  <tech name="zpSPCSpawnNautilus1" type="Normal">
+    <dbid>40868</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnNautilus" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDock">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnXebec1" type="Normal">
+    <dbid>40869</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnXebec" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDock">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnGalleass1" type="Normal">
+    <dbid>40870</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnGalleass" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDock">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnRiggedShip1" type="Normal">
+    <dbid>40871</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnRiggedShip" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDock">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnDutchman1" type="Normal">
+    <dbid>40872</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnDutchman" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDock">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnGalley1" type="Normal">
+    <dbid>40873</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnGalley" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDock">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPirateRandomShip1" type="Normal">
+    <dbid>40874</dbid>
+    <displaynameid>302215</displaynameid>
+    <cost resourcetype="Gold">999.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\unknown_pirate_ship.png</icon>
+    <rollovertextid>302216</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpSPCPirateRandomShip2</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPirateRandomShip2" type="Normal">
+    <dbid>40875</dbid>
+    <displaynameid>302215</displaynameid>
+    <cost resourcetype="Gold">999.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\unknown_pirate_ship.png</icon>
+    <rollovertextid>302216</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpSPCPirateRandomShip1</effect>
+    </effects>
+  </tech>
+    <tech name="zpSPCSpawnNautilus2" type="Normal">
+    <dbid>40876</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnNautilus" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDockB">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnXebec2" type="Normal">
+    <dbid>40877</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnXebec" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDockB">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnGalleass2" type="Normal">
+    <dbid>40878</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnGalleass" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDockB">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnRiggedShip2" type="Normal">
+    <dbid>40879</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnRiggedShip" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDockB">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnDutchman2" type="Normal">
+    <dbid>40880</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnDutchman" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDockB">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSpawnGalley2" type="Normal">
+    <dbid>40881</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnGalley" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDockB">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPiratePorts" type="Normal">
+    <dbid>40884</dbid>
+    <displaynameid>302217</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\team_improvised_constructions.png</icon>
+    <rollovertextid>302218</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="Data" amount="0.8" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractWarship</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpEnableSPCPirateCityTechs" type="Normal">
+    <dbid>40885</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpHommockBeds</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCTavernWagers</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPlunderEconomy</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPirateFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCTradeRouteStopEast</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCTradeRouteStopWest</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPirateRandomShip1</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPirateRandomShip2</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPiratePorts</effect>
+    </effects>
+  </tech>
+  <tech name="zpForbidStandardWarshipdShadow" type="Normal">
+    <dbid>40886</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Caravel</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deSloop</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Galley</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deOrderGalley</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Galleon</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deGalleass</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deSteamer</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Frigate</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Monitor</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xpIronclad</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SPCFireship</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMalteseFireship</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Fluyt</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xpWarCanoe</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xpTlalocCanoe</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypWokouJunk</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deChinchaRaft</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deBattleCanoe</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deCannonBoat</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercXebec</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercDhow</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypFuchuan</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypFune</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypWarJunk</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypAtakabune</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypTekkousen</target>
+      </effect>
+      <effect type="CommandRemove" proto="Caravel">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="deSloop">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="Galley">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="Galleon">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="deSteamer">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="Frigate">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="Monitor">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpIronclad">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="SPCFireship">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMalteseFireship">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="Fluyt">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpWarCanoe">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpTlalocCanoe">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypWokouJunk">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="deChinchaRaft">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="deBattleCanoe">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="deCannonBoat">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMercXebec">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMercDhow">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypFuchuan">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypFune">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypWarJunk">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypAtakabune">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypTekkousen">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="Caravel">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="deSloop">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="Galley">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="Galleon">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="deSteamer">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="Frigate">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="Monitor">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpIronclad">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="SPCFireship">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMalteseFireship">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="Fluyt">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpWarCanoe">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpTlalocCanoe">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypWokouJunk">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="deChinchaRaft">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="deBattleCanoe">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="deCannonBoat">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMercXebec">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMercDhow">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypFuchuan">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypFune">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypWarJunk">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypAtakabune">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypTekkousen">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="Caravel">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="deSloop">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Galley">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Galleon">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="deSteamer">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Frigate">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Monitor">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpIronclad">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="SPCFireship">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMalteseFireship">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Fluyt">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpWarCanoe">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpTlalocCanoe">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypWokouJunk">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="deChinchaRaft">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="deBattleCanoe">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="deCannonBoat">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMercXebec">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMercDhow">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypFuchuan">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypFune">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypWarJunk">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypAtakabune">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypTekkousen">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">ImperialManOWar</effect>
+      <effect type="TechStatus" status="unobtainable">ypImperialManOWar</effect>
+      <effect type="TechStatus" status="unobtainable">ShipHowitzer</effect>
+    </effects>
+  </tech>
+  
  
 
 

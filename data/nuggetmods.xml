@@ -2264,6 +2264,38 @@
       <applystringid>66271</applystringid>
       <maptype>piratehistoricalmap</maptype>
       <guardianunit>
+        <unit>SaloonPirate</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>SaloonPirate</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>SaloonPirate</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>SaloonPirate</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatPirate</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatPirate</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatPirate</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatPirate</unit>
+      </guardianunit>
+      <difficulty>294</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpNuggetPiratesCityState</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
         <unit>deSPCCityGuard</unit>
       </guardianunit>
       <guardianunit>
