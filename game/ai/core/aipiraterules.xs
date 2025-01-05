@@ -893,7 +893,7 @@ minInterval 20
 
    aiChat(1, "running");
 
-   int cityStateQuery = -1
+   int cityStateQuery = -1;
    int numberCityStateFound = 0;
    int tempCityState = -1;
    vector tempLocation = cInvalidVector;
@@ -928,7 +928,7 @@ minInterval 20
    }
 
    cityStateQuery = createSimpleUnitQuery(citySocketType, cMyID, cUnitStateAny);
-   numCityStates = kbUnitQueryExecute(cityStateQuery);
+   numberCityStateFound = kbUnitQueryExecute(cityStateQuery);
 
 
    for (i = 0; < numberCityStateFound)
