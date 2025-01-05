@@ -938,6 +938,12 @@ for(i=1; <cNumberPlayers) {
 int pirateSocket1 = rmGetGroupingInstanceUnitByType(pirateInstanceID1, "zpSPCSocketPirateCityState");
 int pirateSocket2 = rmGetGroupingInstanceUnitByType(pirateInstanceID2, "zpSPCSocketPirateCityState");
 
+int pirateFixedGun1 = rmGetGroupingInstanceUnitByType(pirateInstanceID1, "zpSPCFixedGunSocket");
+int pirateFixedGun2 = rmGetGroupingInstanceUnitByType(pirateInstanceID2, "zpSPCFixedGunSocket");
+
+int pirateTower1 = rmGetGroupingInstanceUnitByType(pirateInstanceID1, "zpSPCSocketCityTowerWooden");
+int pirateTower2 = rmGetGroupingInstanceUnitByType(pirateInstanceID2, "zpSPCSocketCityTowerWooden");
+
 int pirateNugget1 = rmGetGroupingInstanceUnitByType(pirateInstanceID1, "zpNuggetInvisible");
 int pirateNugget2 = rmGetGroupingInstanceUnitByType(pirateInstanceID2, "zpNuggetInvisible");
 
@@ -951,6 +957,12 @@ int pirateSocketMod2 = pirateSocket2+0;
 
 int pirateNuggetMod1 = pirateNugget1+0;
 int pirateNuggetMod2 = pirateNugget2+0;
+
+int pirateFixedGunMod1 = pirateFixedGun1+0;
+int pirateFixedGunMod2 = pirateFixedGun2+0;
+
+int pirateTowerMod1 = pirateTower1+0;
+int pirateTowerMod2 = pirateTower2+0;
 
 int kothCastleMod = kothCastle+0;
 
@@ -990,6 +1002,17 @@ rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
+
+for(k=1; <= cNumberNonGaiaPlayers) {
+rmCreateTrigger("AI Techs"+k);
+rmAddTriggerCondition("ZP PLAYER Human");
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("MyBool", "false");
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpSPCPirateCityStatesAI"); // Only for the AI to train the city state units from sockets
+rmSetTriggerEffectParamInt("Status",2);
+}
 
 // **************** KotH Victory ************************
 
@@ -2101,7 +2124,134 @@ rmCreateTrigger("CaesarTrain1OFFPlr"+k);
 
 }
 
+// AI Builds Pirate City States from Sockets
+for (k=1; <= cNumberNonGaiaPlayers) {
+rmCreateTrigger("BuildFixedGun1_ON_Plr"+k);
+rmCreateTrigger("BuildFixedGun1_OFF_Plr"+k);
+rmCreateTrigger("BuildFixedGun2_ON_Plr"+k);
+rmCreateTrigger("BuildFixedGun2_OFF_Plr"+k);
+rmCreateTrigger("BuildTower1_ON_Plr"+k);
+rmCreateTrigger("BuildTower1_OFF_Plr"+k);
+rmCreateTrigger("BuildTower2_ON_Plr"+k);
+rmCreateTrigger("BuildTower2_OFF_Plr"+k);
 
+rmSwitchToTrigger(rmTriggerID("BuildFixedGun1_ON_Plr"+k));
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",""+pirateFixedGunMod1);
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("UnitType","zpSPCFixedGunAIProxy");
+rmSetTriggerConditionParamInt("Dist",10);
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("Socket Build");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("Socket",""+pirateFixedGunMod1);
+rmSetTriggerEffectParam("Protounit","zpSPCFixedGun");
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun1_OFF_Plr"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("BuildFixedGun1_OFF_Plr"+k));
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",1200);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun1_ON_Plr"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("BuildFixedGun2_ON_Plr"+k));
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",""+pirateFixedGunMod2);
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("UnitType","zpSPCFixedGunAIProxy");
+rmSetTriggerConditionParamInt("Dist",10);
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("Socket Build");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("Socket",""+pirateFixedGunMod2);
+rmSetTriggerEffectParam("Protounit","zpSPCFixedGun");
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun2_OFF_Plr"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("BuildFixedGun2_OFF_Plr"+k));
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",1200);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun2_ON_Plr"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("BuildTower1_ON_Plr"+k));
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",""+pirateTowerMod1);
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+rmSetTriggerConditionParamInt("Dist",10);
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("Socket Build");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("Socket",""+pirateTowerMod1);
+rmSetTriggerEffectParam("Protounit","zpSPCCityTowerWooden");
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower1_OFF_Plr"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("BuildTower1_OFF_Plr"+k));
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",1200);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower1_ON_Plr"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("BuildTower2_ON_Plr"+k));
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",""+pirateTowerMod2);
+rmSetTriggerConditionParamInt("Player",k);
+rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+rmSetTriggerConditionParamInt("Dist",10);
+rmSetTriggerConditionParam("Op",">=");
+rmSetTriggerConditionParamInt("Count",1);
+rmAddTriggerEffect("Socket Build");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("Socket",""+pirateTowerMod2);
+rmSetTriggerEffectParam("Protounit","zpSPCCityTowerWooden");
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower2_OFF_Plr"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("BuildTower2_OFF_Plr"+k));
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamFloat("Param1",1200);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower2_ON_Plr"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+}
 
 // Pirate trading post activation
 
@@ -2182,6 +2332,10 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain1ONPlr"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain1ONPlr"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower1_ON_Plr"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun1_ON_Plr"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
@@ -2258,6 +2412,10 @@ rmAddTriggerEffect("Disable Trigger");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain1ONPlr"+k));
 rmAddTriggerEffect("Disable Trigger");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain1ONPlr"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower1_ON_Plr"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun1_ON_Plr"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
@@ -2342,6 +2500,10 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain2ONPlr"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain2ONPlr"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower2_ON_Plr"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun2_ON_Plr"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
@@ -2418,6 +2580,10 @@ rmAddTriggerEffect("Disable Trigger");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain2ONPlr"+k));
 rmAddTriggerEffect("Disable Trigger");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain2ONPlr"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower2_ON_Plr"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun2_ON_Plr"+k));
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
@@ -2467,6 +2633,7 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
 
 // AI Maltese Land Fractions
 

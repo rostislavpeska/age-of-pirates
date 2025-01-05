@@ -20676,6 +20676,25 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpSPCPirateCityStatesAI" type="Normal">
+    <dbid>40887</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCWoodenTowerAIProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCFixedGunAIProxy</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketCityTowerWooden</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCFixedGunAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCFixedGunSocket</target>
+      </effect>
+    </effects>
+  </tech>
   
  
 
