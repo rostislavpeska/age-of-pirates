@@ -18540,6 +18540,12 @@
       <effect type="CommandAdd" proto="zpMilitaryCamp" page="6" column="2">
         <target type="ProtoUnit">Explorer</target>
       </effect>
+      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
+      </effect>
       <effect type="Data" amount="80.00" subtype="PopulationCap" relativity="Absolute">
         <target type="Player">
         </target>
@@ -18569,6 +18575,7 @@
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
     </effects>
   </tech>
   <tech name="zpSansculotteSpiritRevolution" type="Normal">
@@ -20323,6 +20330,310 @@
       <effect type="TechStatus" status="obtainable">zpSPCPirateRandomShip1</effect>
       <effect type="TechStatus" status="obtainable">zpSPCPirateRandomShip2</effect>
       <effect type="TechStatus" status="obtainable">zpSPCPiratePorts</effect>
+    </effects>
+  </tech>
+  <tech name="zpForbidStandardWarshipdShadow" type="Normal">
+    <dbid>40886</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Caravel</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deSloop</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Galley</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deOrderGalley</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Galleon</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deGalleass</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deSteamer</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Frigate</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Monitor</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xpIronclad</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SPCFireship</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMalteseFireship</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Fluyt</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xpWarCanoe</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xpTlalocCanoe</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypWokouJunk</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deChinchaRaft</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deBattleCanoe</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deCannonBoat</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercXebec</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercDhow</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypFuchuan</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypFune</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypWarJunk</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypAtakabune</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypTekkousen</target>
+      </effect>
+      <effect type="CommandRemove" proto="Caravel">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="deSloop">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="Galley">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="Galleon">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="deSteamer">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="Frigate">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="Monitor">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpIronclad">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="SPCFireship">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMalteseFireship">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="Fluyt">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpWarCanoe">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpTlalocCanoe">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypWokouJunk">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="deChinchaRaft">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="deBattleCanoe">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="deCannonBoat">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMercXebec">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMercDhow">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypFuchuan">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypFune">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypWarJunk">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypAtakabune">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypTekkousen">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" proto="Caravel">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="deSloop">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="Galley">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="Galleon">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="deSteamer">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="Frigate">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="Monitor">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpIronclad">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="SPCFireship">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMalteseFireship">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="Fluyt">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpWarCanoe">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpTlalocCanoe">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypWokouJunk">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="deChinchaRaft">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="deBattleCanoe">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="deCannonBoat">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMercXebec">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMercDhow">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypFuchuan">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypFune">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypWarJunk">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypAtakabune">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypTekkousen">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" proto="Caravel">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="deSloop">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Galley">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Galleon">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="deSteamer">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Frigate">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Monitor">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpIronclad">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="SPCFireship">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMalteseFireship">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Fluyt">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpWarCanoe">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="xpTlalocCanoe">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypWokouJunk">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="deChinchaRaft">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="deBattleCanoe">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="deCannonBoat">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMercXebec">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMercDhow">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypFuchuan">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypFune">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypWarJunk">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypAtakabune">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypTekkousen">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">ImperialManOWar</effect>
+      <effect type="TechStatus" status="unobtainable">ypImperialManOWar</effect>
+      <effect type="TechStatus" status="unobtainable">ShipHowitzer</effect>
     </effects>
   </tech>
   

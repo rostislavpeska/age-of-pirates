@@ -263,6 +263,9 @@
     <ability>zpAssassinBrotherhood<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpspcezio>
+  <zpspcrowboat>
+    <ability>deSPCStealthHide<rof>40</rof><castonself>true</castonself><donotforcestop>true</donotforcestop><activetimecooldown>true</activetimecooldown><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcrowboat>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
