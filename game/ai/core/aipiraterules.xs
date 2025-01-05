@@ -784,6 +784,7 @@ minInterval 20
       return;
    }
 
+   // Only get ones we can see, like ones we've converted or have military around
    int cityStateQuery = createSimpleUnitQuery(citySocketType, cMyID, cUnitStateAny);
    int numCityStates = kbUnitQueryExecute(cityStateQuery);
 
@@ -927,8 +928,10 @@ minInterval 20
       return;
    }
 
-   cityStateQuery = createSimpleUnitQuery(citySocketType, cMyID, cUnitStateAny);
+   cityStateQuery = createSimpleGaiaUnitQuery(citySocketType, cUnitStateAny);
    numberCityStateFound = kbUnitQueryExecute(cityStateQuery);
+
+   aiChat(1, "numberCityStateFound: " + numberCityStateFound);
 
 
    for (i = 0; < numberCityStateFound)
