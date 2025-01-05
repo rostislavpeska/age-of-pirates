@@ -253,6 +253,19 @@ void main(void)
    int pirateInstanceID2 = rmPlaceGroupingInstanceAtLoc(piratesVillage2ID,  0.73, 0.33, 0);
 
 
+   //**************************** Kongs's Castle ***********************************
+
+   if (rmGetIsKOTH()){
+      int kotHID2 = rmCreateGrouping("koth castle", "Caribbean_Naval_KotH");
+      rmSetGroupingMinDistance(kotHID2, 0.00);
+      rmSetGroupingMaxDistance(kotHID2, 0.01);
+      rmAddGroupingToClass(kotHID2, rmClassID("classPlateau"));
+      //rmPlaceGroupingAtLoc(kotHID2, 0, 0.5, 0.5, 1);
+
+      int kotHInstance = rmPlaceGroupingInstanceAtLoc(kotHID2,  0.5, 0.5, 0);
+   }
+
+
    // ******************************** Place Terrain ********************************
 
    // North Island
@@ -906,7 +919,10 @@ for(i=1; <cNumberPlayers) {
    // ____________________ MAP OBJECTIVES ____________________
     rmObjectiveScreenSetTitle(302118);
     rmObjectiveScreenSetGoal(302119);
-    rmObjectiveAdd(302225, 302226, true, true, true);
+    if (rmGetIsKOTH())
+      rmObjectiveAdd(302236, 302232, true, true, true);
+    else
+      rmObjectiveAdd(302225, 302226, true, true, true);
     rmObjectiveAdd(302223, 302224, false, true, true);
 
 
@@ -923,19 +939,25 @@ int pirateNugget2 = rmGetGroupingInstanceUnitByType(pirateInstanceID2, "zpNugget
 int pirateCenter1 = rmGetGroupingInstanceUnitByType(pirateInstanceID1, "zpSPCWaterSpawnPoint");
 int pirateCenter2 = rmGetGroupingInstanceUnitByType(pirateInstanceID2, "zpSPCWaterSpawnPoint");
 
+int kothCastle = rmGetGroupingInstanceUnitByType(kotHInstance, "zpKingsHillNaval");
+
 int pirateSocketMod1 = pirateSocket1+0;
 int pirateSocketMod2 = pirateSocket2+0;
 
 int pirateNuggetMod1 = pirateNugget1+0;
 int pirateNuggetMod2 = pirateNugget2+0;
 
+int kothCastleMod = kothCastle+0;
+
 vector pirateCityLoc1 = rmGetUnitPosition(pirateCenter1);
 vector pirateCityLoc2 = rmGetUnitPosition(pirateCenter2);
+vector kothLoc = rmGetUnitPosition(kothCastle);
 
 int TradeRouteStartID1 = rmGetUnitPlaced(fakeStopperID, 0);
 int TradeRouteStartID2 = rmGetUnitPlaced(fakeStopperID2, 0);
 
 int socketMinimapFlareDuration = 10;
+int victoryCountDown = 600;
 
 // Starting techs
 
@@ -963,6 +985,129 @@ rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
+
+// **************** KotH Victory ************************
+
+if (rmGetIsKOTH()){
+   for (k=1; <= cNumberNonGaiaPlayers) {
+   rmCreateTrigger("ConvertKotH_Player"+k);
+   }
+
+   // KotH Conversion
+   for (k=1; <= cNumberNonGaiaPlayers) {
+   rmSwitchToTrigger(rmTriggerID("ConvertKotH_Player"+k));
+   rmAddTriggerCondition("Units in Area");
+   rmSetTriggerConditionParam("DstObject",""+kothCastleMod);
+   rmSetTriggerConditionParamInt("Player",k);
+   rmSetTriggerConditionParamInt("Dist",25);
+   rmSetTriggerConditionParam("UnitType","AbstractWarShip");
+   rmSetTriggerConditionParam("Op",">=");
+   rmSetTriggerConditionParamFloat("Count",1);
+   for (i=1; <= cNumberNonGaiaPlayers) {
+      if (i != k){
+         rmAddTriggerCondition("Units in Area");
+         rmSetTriggerConditionParam("DstObject",""+kothCastleMod);
+         rmSetTriggerConditionParamInt("Player",i);
+         rmSetTriggerConditionParamInt("Dist",25);
+         rmSetTriggerConditionParam("UnitType","AbstractWarShip");
+         rmSetTriggerConditionParam("Op","==");
+         rmSetTriggerConditionParamFloat("Count",0);
+      }
+   }
+   rmAddTriggerEffect("Convert");
+   rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
+   rmSetTriggerEffectParamInt("PlayerID",k);
+   for (i=0; <= cNumberNonGaiaPlayers) {
+      rmAddTriggerEffect("Convert Units in Area");
+      rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
+      rmSetTriggerEffectParamInt("SrcPlayer",i);
+      rmSetTriggerEffectParamInt("TrgPlayer",k);
+      rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
+      rmSetTriggerEffectParamInt("Dist",15);
+      rmAddTriggerEffect("Convert Units in Area");
+      rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
+      rmSetTriggerEffectParamInt("SrcPlayer",i);
+      rmSetTriggerEffectParamInt("TrgPlayer",k);
+      rmSetTriggerEffectParam("UnitType","zpPropWaterTower");
+      rmSetTriggerEffectParamInt("Dist",15);
+   }
+   for (i=1; <= cNumberNonGaiaPlayers) {
+      if (i != k){
+         rmAddTriggerEffect("Fire Event");
+         rmSetTriggerEffectParamInt("EventID", rmTriggerID("ConvertKotH_Player"+i));
+      }
+   }
+   rmAddTriggerEffect("Play Soundset");
+   rmSetTriggerEffectParam("Soundset","SheepFound");
+   rmSetTriggerPriority(4);
+   rmSetTriggerActive(true);
+   rmSetTriggerRunImmediately(true);
+   rmSetTriggerLoop(false);
+   }
+
+   for(i = 1; < cNumberTeams+1) {
+   rmCreateTrigger("TeamVictory"+i);
+   rmCreateTrigger("KotH_ON"+i);
+   }
+   for(i = 1; < cNumberTeams+1) {
+
+   // Team Victory 
+   rmSwitchToTrigger(rmTriggerID("TeamVictory"+i));
+   rmAddTriggerEffect("Team Victory");
+   rmSetTriggerEffectParamInt("TeamID", i);
+   rmSetTriggerPriority(4); 
+   rmSetTriggerActive(false);
+   rmSetTriggerRunImmediately(true);
+   rmSetTriggerLoop(false);
+
+   // Team KotH Ownership
+   rmSwitchToTrigger(rmTriggerID("KotH_ON"+i));
+   rmAddTriggerCondition("Team Unit Count");
+   rmSetTriggerConditionParamInt("TeamID",i);
+   rmSetTriggerConditionParam("Protounit","zpKingsHillNaval");
+   rmSetTriggerConditionParam("Op",">=");
+   rmSetTriggerConditionParamInt("Count",1);
+   for(x=1; <= cNumberNonGaiaPlayers) {
+      if (rmGetPlayerTeam(x) == i-1) {
+         rmAddTriggerEffect("Flare Minimap");
+         rmSetTriggerEffectParamInt("PlayerID", x, false);
+         rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+         rmSetTriggerEffectParam("Position", ""+xsVectorGetX(kothLoc)+","+xsVectorGetY(kothLoc)+","+xsVectorGetZ(kothLoc), false);
+         rmSetTriggerEffectParam("Flash", "True", false);
+      }
+   }
+   rmAddTriggerEffect("Counter:Add Timer");
+   rmSetTriggerEffectParam("Name","VictoryCounter"+i);
+   rmSetTriggerEffectParamInt("Start", victoryCountDown);
+   rmSetTriggerEffectParamInt("Stop",0);
+   if (i==1)
+      rmSetTriggerEffectParam("Msg","{302234}"); // Counter Revolutionaries
+   else
+      rmSetTriggerEffectParam("Msg","{302235}"); // Counter Revolutionaries
+   rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+i));
+
+   rmAddTriggerEffect("Flash Units");
+   rmSetTriggerEffectParam("SrcObject", ""+kothCastleMod, false);
+   if (i==1){
+      rmAddTriggerEffect("Counter Stop");
+      rmSetTriggerEffectParam("Name","VictoryCounter2");
+      rmAddTriggerEffect("Fire Event");
+      rmSetTriggerEffectParamInt("EventID", rmTriggerID("KotH_ON2"));
+   }
+   else{
+      rmAddTriggerEffect("Counter Stop");
+      rmSetTriggerEffectParam("Name","VictoryCounter1");
+      rmAddTriggerEffect("Fire Event");
+      rmSetTriggerEffectParamInt("EventID", rmTriggerID("KotH_ON1"));
+   }
+   rmSetTriggerPriority(4);
+   rmSetTriggerActive(true);
+   rmSetTriggerRunImmediately(true);
+   rmSetTriggerLoop(false);
+   }
+}
+
+// *******************************************************
 
 // Conversion Suspend
 rmCreateTrigger("Buildings Convert OFF");
@@ -1601,9 +1746,6 @@ rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
-
-
-
 
 // Privateer training
 

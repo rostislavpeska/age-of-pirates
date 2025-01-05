@@ -2218,7 +2218,7 @@
       <string _locid="302217">Team Improvised Constructions</string>
       <string _locid="302218">Increases Warship training speed</string>
       <string _locid="302219">Caribbean Wars (Beta)</string>
-      <string _locid="302220">Achieve a naval dominance over the Caribbean Sea. This historical map brings you to the true Golden Age of Piracy and unlocks the full Pirate potential. \n\nSettlements: Pirates Town, Maltese, Caribs</string>
+      <string _locid="302220">Achieve a naval dominance over the Caribbean Sea. This historical map brings you to the true Golden Age of Piracy and unlocks the full Pirate potential. \n\nTrade monopoly victory is not available for this map, but treaty and a special naval version of KING OF THE HILL are available. \n\nSettlements: Pirates Town, Maltese, Caribs</string>
       <string _locid="302221">Local Pirates are more powerful than any other Pirates in the world. They managed to build two heavily fortified towns. Help them to build the fortifications and use these towns to achieve the true naval dominance.</string>
       <string _locid="302222">ZP Native House Pirate No Decal</string>
       <string _locid="302223">Capture a Pirate Town and help the Pirates to construct heavy fortifications as towers and fixed guns.</string>
@@ -2226,7 +2226,15 @@
       <string _locid="302225">Eliminate enemies in the area</string>
       <string _locid="302226">Eliminate all enemies on the map.</string>
       <string _locid="302227">ZP SPC Rowboat</string>
-
+      <string _locid="302228">King of the Sea</string>
+      <string _locid="302229">ZP Naval King's Hill</string>
+      <string _locid="302230">ZP SPC PROP Water Tower</string>
+      <string _locid="302231">ZP SPC PROP Water Wall</string>
+      <string _locid="302232">Controlling the Hill starts a victory countdown. Undefended, it will convert to whoever moves war ships into the area.</string>
+      <string _locid="302233">Capture the Hill by moving war ships into the area</string>
+      <string _locid="302234">Your team achieve King of the Sea Victory in</string>
+      <string _locid="302235">Enemy team achieves King of the Sea Victory in</string>
+      <string _locid="302236">Capture a King of the Sea Castle in the middle of the map and hold it until the time runs out.</string>
 
 
       <!-- ======================================== -->

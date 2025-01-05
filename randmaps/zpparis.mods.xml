@@ -228,6 +228,7 @@
 		<unit name="zpNativeHouseVenetian">
 			<flag>NoIdleActions</flag>
 			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>
 		</unit>
 		<unit name="zpNativeStatueVenetian">
 			<flag>NoIdleActions</flag>

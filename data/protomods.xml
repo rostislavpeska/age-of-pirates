@@ -41119,7 +41119,7 @@
   </unit>
   <unit name="ypKingsHill">
     <animfile>buildings\spc\koth\koth.xml</animfile>
-    <minimapicon>ui\minimap\victory_building</minimapicon>
+    <!--<minimapicon>ui\minimap\victory_building</minimapicon>-->
     <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
   </unit>
   <unit id="20534" name="zpInvisibleGateSocket">
@@ -43665,7 +43665,6 @@
     <dbid>20574</dbid>
     <displaynameid>300730</displaynameid>
     <editornameid>302086</editornameid>
-    <subciv>zpVenetians</subciv>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
@@ -46061,7 +46060,6 @@
     <dbid>20613</dbid>
     <displaynameid>300730</displaynameid>
     <editornameid>302157</editornameid>
-    <subciv>zpVenetians</subciv>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
@@ -46076,39 +46074,28 @@
     <buildingworkrate>1.0000</buildingworkrate>
     <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
     </minimapcolor>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
-    <unittype>BuildingClass</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>NativeBuilding</unittype>
-    <unittype>Building</unittype>
+   <unittype>BuildingClass</unittype>
     <unittype>AbstractCityManisonB</unittype>
-    <flag>TieToWaterSurface</flag>
-    <flag>Doppled</flag>
-    <flag>PaintTextureWhenPlacing</flag>
-    <flag>InvulnerableIfGaia</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>DoNotDieAtZeroHitpoints</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>Immoveable</flag>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>HideHitpointsIfGaia</flag>
-    <flag>RMCanRotate</flag>
-    <flag>HasGatherPoint</flag>
-    <flag>VisibleUnderFogIfGaia</flag>
-    <flag>ColorTransformNonGaia</flag>
+    <flag>DontMarkExtraFog</flag>
     <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
     <flag>DoNotShowOnMiniMap</flag>
-    <flag>Tracked</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
   </unit>
   <unit id="20614" name="zpNativeHouseVenetianD">
     <dbid>20614</dbid>
@@ -47264,6 +47251,157 @@
       <maxrange>25.000000</maxrange>
       <rof>3.000000</rof>
     </protoaction>
+  </unit>
+  <unit id="20629" name="zpKingsHillNaval">
+    <dbid>20629</dbid>
+    <displaynameid>302228</displaynameid>
+    <editornameid>302229</editornameid>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>6.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\wonders\agra_fort\water_fort.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\fort\fort_icon.png</icon>
+    <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
+    <rollovertextid>302232</rollovertextid>
+    <shortrollovertextid>302233</shortrollovertextid>
+    <initialhitpoints>6500.0000</initialhitpoints>
+    <maxhitpoints>6500.0000</maxhitpoints>
+    <los>38.0000</los>
+    <bounty>240.0000</bounty>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>AbstractTownCenter</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
+    <unittype>AbstractFindFort</unittype>
+    <flag>Invulnerable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>StartingColonyBuilding</flag>
+    <flag>ColonyPlacementCenter</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>Tracked</flag>
+    <flag>NotDeleteable</flag>
+    <flag>TieToWaterSurface</flag>
+  </unit>
+  <unit id="20630" name="zpPropWaterTower">
+    <dbid>20630</dbid>
+    <displaynameid>302230</displaynameid>
+    <editornameid>302230</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\native_settlement\venetian_buildings3.xml</animfile>
+    <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>TowerSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSelectable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>TieToWaterSurface</flag>
+  </unit>
+  <unit id="20631" name="zpPropWaterWall">
+    <dbid>20574</dbid>
+    <displaynameid>302231</displaynameid>
+    <editornameid>302231</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\native_settlement\water_wall.xml</animfile>
+    <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>BuildingClass</unittype>
+    <unittype>AbstractCityManisonB</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
   </unit>
 
 
