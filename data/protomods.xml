@@ -47330,7 +47330,7 @@
     <obstructionradiusz>0.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>air</movementtype>
-    <animfile>buildings\native_settlement\venetian_buildings3.xml</animfile>
+    <animfile>buildings\spc\lighthouse\lighthouse.xml</animfile>
     <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
     <initialhitpoints>1560.0000</initialhitpoints>
     <maxhitpoints>1560.0000</maxhitpoints>
