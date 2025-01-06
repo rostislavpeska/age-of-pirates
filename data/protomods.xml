@@ -47268,7 +47268,7 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\fort\fort_icon.png</icon>
-    <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <minimapicon>ui\minimap\fort_star_16x16</minimapicon>
     <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
     <rollovertextid>302232</rollovertextid>
     <shortrollovertextid>302233</shortrollovertextid>
