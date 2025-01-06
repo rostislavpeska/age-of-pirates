@@ -903,8 +903,6 @@ void main(void)
 
 	int veniceFixedGun1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCFixedGunBase");
 	int veniceFixedGun2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCFixedGunBase");
-	int veniceFixedGun3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "zpSPCFixedGunBase");
-	int veniceFixedGun4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpSPCFixedGunBase");
 
 	int veniceCenter1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCWaterSpawnPoint");
 	int veniceCenter2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCWaterSpawnPoint");
@@ -920,6 +918,14 @@ void main(void)
 	int veniceNugget2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpNuggetInvisible");
 	int veniceNugget3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "zpNuggetInvisible");
 	int veniceNugget4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpNuggetInvisible");
+
+	int veniceFixedGunSocket1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCFixedGunSocket");
+	int veniceFixedGunSocket2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCFixedGunSocket");
+
+	int veniceTower31 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "deSPCSocketCityTower");
+	int veniceTower32 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "zpSPCSocketCityTowerClone");
+	int veniceTower41 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "deSPCSocketCityTower");
+	int veniceTower42 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpSPCSocketCityTowerClone");
 
 
 	int veniceBasilicaMod1 = veniceBasilica1+1;
@@ -939,8 +945,6 @@ void main(void)
 
 	int veniceFixedGunMod1 = veniceFixedGun1+1;
 	int veniceFixedGunMod2 = veniceFixedGun2+1;
-	int veniceFixedGunMod3 = veniceFixedGun3+1;
-	int veniceFixedGunMod4 = veniceFixedGun4+1;
 
 	int veniceCenterMod1 = veniceCenter1+1;
 	int veniceCenterMod2 = veniceCenter2+1;
@@ -956,6 +960,14 @@ void main(void)
 	int veniceNuggetMod2 = veniceNugget2+1;
 	int veniceNuggetMod3 = veniceNugget3+1;
 	int veniceNuggetMod4 = veniceNugget4+1;
+
+	int veniceFixedGunSocketMod1 = veniceFixedGunSocket1+1;
+	int veniceFixedGunSocketMod2 = veniceFixedGunSocket2+1;
+
+	int veniceTower31Mod = veniceTower31+1;
+	int veniceTower32Mod = veniceTower32+1;
+	int veniceTower41Mod = veniceTower41+1;
+	int veniceTower42Mod = veniceTower42+1;
 
 	int cityStateSockets = xsArrayCreateInt(4, -1, "City State Sockets");
     xsArraySetInt(cityStateSockets, 0, veniceSocketMod1);
@@ -999,10 +1011,6 @@ void main(void)
         rmSetTriggerEffectParamInt("PlayerID", i);
         rmSetTriggerEffectParam("TechID","cTechzpEnableSPCCityStateTechsClone"); // Mercenaries
         rmSetTriggerEffectParamInt("Status", 2);
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-        rmSetTriggerEffectParamInt("PlayerID", i);
-        rmSetTriggerEffectParam("TechID","cTechzpBonusVenetians"); // Mercenaries
-        rmSetTriggerEffectParamInt("Status", 2);
 	}
 	rmAddTriggerEffect("Player : Override Civilization for Flag");
 	rmSetTriggerEffectParamInt("Player",0);
@@ -1014,24 +1022,16 @@ void main(void)
 	rmSetTriggerEffectParamInt("TradeRoute",1);
 	rmSetTriggerEffectParamInt("Level",1);
 
-	// Change name does not work in RM, only in editor
-	rmAddTriggerEffect("Change Name");
-	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod1);
-	rmSetTriggerEffectParam("NewName","{302131}");
-	rmAddTriggerEffect("Change Name");
-	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod2);
-	rmSetTriggerEffectParam("NewName","{302133}");
-	rmAddTriggerEffect("Change Name");
-	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod3);
-	rmSetTriggerEffectParam("NewName","{302132}");
-	rmAddTriggerEffect("Change Name");
-	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod4);
-	rmSetTriggerEffectParam("NewName","{302134}");
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
+	for(k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("AI Techs"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpSPCVeniceCityStatesAI"); // Only for the AI to train the city state units from sockets
+	rmSetTriggerEffectParamInt("Status",2);
+	}
 
 	// Conversion Suspend
 	rmCreateTrigger("Buildings Convert OFF");
@@ -1111,29 +1111,6 @@ void main(void)
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
-
-	// Upgrade Trade Route
-	for (k=1; <= cNumberNonGaiaPlayers) {
-	rmCreateTrigger("VeniceTRUpgrade"+k);
-	}
-
-	for (k=1; <= cNumberNonGaiaPlayers) {
-	rmSwitchToTrigger(rmTriggerID("VeniceTRUpgrade"+k));
-	rmAddTriggerCondition("ZP Tech Status Equals (XS)");
-	rmSetTriggerConditionParamInt("PlayerID",k);
-	rmSetTriggerConditionParam("TechID","cTechzpVeniceTradeRouteUpgrade");
-	rmAddTriggerEffect("Trade Route Set Level");
-	rmSetTriggerEffectParamInt("TradeRoute",1);
-	rmSetTriggerEffectParamInt("Level",2);
-	for(i=1; <= cNumberNonGaiaPlayers) {
-		rmAddTriggerEffect("Disable Trigger");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("VeniceTRUpgrade"+i));
-	}
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-	}
 
 	// Victory Conditions
 
@@ -1882,6 +1859,251 @@ void main(void)
 		rmSetTriggerLoop(false);
 	}
 
+	// AI Builds City states
+
+	// AI Builds Pirate City States from Sockets
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("BuildFixedGun1_ON_Plr"+k);
+	rmCreateTrigger("BuildFixedGun1_OFF_Plr"+k);
+	rmCreateTrigger("BuildFixedGun2_ON_Plr"+k);
+	rmCreateTrigger("BuildFixedGun2_OFF_Plr"+k);
+	rmCreateTrigger("BuildTower31_ON_Plr"+k);
+	rmCreateTrigger("BuildTower31_OFF_Plr"+k);
+	rmCreateTrigger("BuildTower32_ON_Plr"+k);
+	rmCreateTrigger("BuildTower32_OFF_Plr"+k);
+	rmCreateTrigger("BuildTower41_ON_Plr"+k);
+	rmCreateTrigger("BuildTower41_OFF_Plr"+k);
+	rmCreateTrigger("BuildTower42_ON_Plr"+k);
+	rmCreateTrigger("BuildTower42_OFF_Plr"+k);
+
+	rmSwitchToTrigger(rmTriggerID("BuildFixedGun1_ON_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+veniceFixedGunSocketMod1);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCFixedGunAIProxy");
+	rmSetTriggerConditionParamInt("Dist",10);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("Socket Build");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("Socket",""+veniceFixedGunSocketMod1);
+	rmSetTriggerEffectParam("Protounit","zpSPCFixedGun");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun1_OFF_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BuildFixedGun1_OFF_Plr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun1_ON_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BuildFixedGun2_ON_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+veniceFixedGunSocketMod2);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCFixedGunAIProxy");
+	rmSetTriggerConditionParamInt("Dist",10);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("Socket Build");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("Socket",""+veniceFixedGunSocketMod2);
+	rmSetTriggerEffectParam("Protounit","zpSPCFixedGun");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun2_OFF_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BuildFixedGun2_OFF_Plr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun2_ON_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BuildTower31_ON_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+veniceTower31Mod);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+	rmSetTriggerConditionParamInt("Dist",10);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("Socket Build");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("Socket",""+veniceTower31Mod);
+	rmSetTriggerEffectParam("Protounit","deSPCCityTower");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower31_OFF_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BuildTower31_OFF_Plr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower31_ON_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BuildTower32_ON_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+veniceTower32Mod);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+	rmSetTriggerConditionParamInt("Dist",10);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("Socket Build");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("Socket",""+veniceTower32Mod);
+	rmSetTriggerEffectParam("Protounit","deSPCCityTower");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower32_OFF_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BuildTower32_OFF_Plr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower32_ON_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BuildTower41_ON_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+veniceTower41Mod);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+	rmSetTriggerConditionParamInt("Dist",10);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("Socket Build");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("Socket",""+veniceTower41Mod);
+	rmSetTriggerEffectParam("Protounit","deSPCCityTower");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower41_OFF_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BuildTower41_OFF_Plr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower41_ON_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BuildTower42_ON_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+veniceTower42Mod);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+	rmSetTriggerConditionParamInt("Dist",10);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("Socket Build");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("Socket",""+veniceTower42Mod);
+	rmSetTriggerEffectParam("Protounit","deSPCCityTower");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower42_OFF_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BuildTower42_OFF_Plr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower42_ON_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	}
+
+	// Specific for AI
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("AI_Check1_Plr"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun1_ON_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("AI_Check2_Plr"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun2_ON_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("AI_Check3_Plr"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower31_ON_Plr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower32_ON_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("AI_Check4_Plr"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower41_ON_Plr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower42_ON_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
 	// Venice City States
 
 	for (k=1; <= cNumberNonGaiaPlayers) {
@@ -1972,6 +2194,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley1ON_Plr"+k));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass1ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AI_Check1_Plr"+k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
@@ -2050,6 +2274,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley1ON_Plr"+k));
 		rmAddTriggerEffect("Disable Trigger");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass1ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun1_ON_Plr"+k));
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
@@ -2129,6 +2355,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley2ON_Plr"+k));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass2ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AI_Check2_Plr"+k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
@@ -2207,6 +2435,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley2ON_Plr"+k));
 		rmAddTriggerEffect("Disable Trigger");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass2ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun2_ON_Plr"+k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -2241,6 +2471,12 @@ void main(void)
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","deSPCSocketCityTower");
+		rmSetTriggerEffectParamInt("Dist",50);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod3);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone");
 		rmSetTriggerEffectParamInt("Dist",50);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod3);
@@ -2284,6 +2520,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley3ON_Plr"+k));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass3ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AI_Check3_Plr"+k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
@@ -2318,6 +2556,12 @@ void main(void)
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","deSPCSocketCityTower");
+		rmSetTriggerEffectParamInt("Dist",50);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod3);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone");
 		rmSetTriggerEffectParamInt("Dist",50);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod3);
@@ -2359,6 +2603,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley3ON_Plr"+k));
 		rmAddTriggerEffect("Disable Trigger");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass3ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower31_ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower32_ON_Plr"+k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -2393,6 +2641,12 @@ void main(void)
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","deSPCSocketCityTower");
+		rmSetTriggerEffectParamInt("Dist",50);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod4);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone");
 		rmSetTriggerEffectParamInt("Dist",50);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod4);
@@ -2436,6 +2690,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley4ON_Plr"+k));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass4ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("AI_Check4_Plr"+k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
@@ -2470,6 +2726,12 @@ void main(void)
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","deSPCSocketCityTower");
+		rmSetTriggerEffectParamInt("Dist",50);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod4);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone");
 		rmSetTriggerEffectParamInt("Dist",50);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+veniceCenterMod4);
@@ -2511,6 +2773,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley4ON_Plr"+k));
 		rmAddTriggerEffect("Disable Trigger");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass4ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower41_ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower42_ON_Plr"+k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -2632,6 +2898,7 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
 
 
 

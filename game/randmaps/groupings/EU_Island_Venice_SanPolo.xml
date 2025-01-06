@@ -259,7 +259,7 @@
 		<unit variation="0" posx="-16.5496" posz="-16.5399" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeUnitVenetianShips</unit>
 		<unit variation="4" posx="-15.0587" posz="-17.3155" orientx="1.0000" orienty="0.0000" orientz="0.0057">zpCinematicRevealer</unit>
 		<unit variation="0" posx="-9.4169" posz="-15.1467" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
-		<unit variation="183" posx="21.1719" posz="-12.3981" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">deSPCSocketCityTower</unit>
+		<unit variation="183" posx="21.1719" posz="-12.3981" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSocketCityTowerClone</unit>
 		<unit variation="0" posx="-45.5055" posz="-12.3563" orientx="1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
 		<unit variation="152" posx="-37.2934" posz="-15.0746" orientx="1.0000" orienty="0.0000" orientz="-0.0001">zpNativeHouseVenetianB</unit>
 		<unit variation="151" posx="-38.7369" posz="-15.7693" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianShips</unit>

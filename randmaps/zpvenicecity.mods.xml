@@ -223,5 +223,10 @@
 		<unit name="deSPCGreatBank">
 			<minimapicon>ui\minimap\city_resource</minimapicon>
 		</unit>
+		<unit name="deTradingPostWagon">
+			<icon>resources\art\buildings\trading_post\trading_post_icon.png</icon>
+			<cost resourcetype="Wood">200.0000</cost>
+			<trainpoints>10.0000</trainpoints>
+		</unit>
 	</protomods>
 </mods>

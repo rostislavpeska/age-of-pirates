@@ -47365,7 +47365,7 @@
     <flag>TieToWaterSurface</flag>
   </unit>
   <unit id="20631" name="zpPropWaterWall">
-    <dbid>20574</dbid>
+    <dbid>20631</dbid>
     <displaynameid>302231</displaynameid>
     <editornameid>302231</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
@@ -47510,6 +47510,45 @@
     <flag>NotPlayerPlaceable</flag>
     <flag>AllowOverPopCap</flag>
     <flag>Tracked</flag>
+  </unit>
+  <unit id="20634" name="zpSPCSocketCityTowerClone">
+    <dbid>20634</dbid>
+    <displaynameid>123003</displaynameid>
+    <editornameid>302242</editornameid>
+    <socketbuildprotounit>deSPCCityTower</socketbuildprotounit>
+    <socketbuildrate>20.0000</socketbuildrate>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\city_tower\city_tower_socket.xml</animfile>
+    <minimapicon>ui\minimap\indicator_small</minimapicon>
+    <portraiticon>resources\art\buildings\spc\tower\battery_tower_portrait.png</portraiticon>
+    <rollovertextid>123030</rollovertextid>
+    <shortrollovertextid>123030</shortrollovertextid>
+    <los>0.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>TowerSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>NotDeleteable</flag>
+    <command page="1" column="0">deSocketBuildCityTower</command>
   </unit>
 
 

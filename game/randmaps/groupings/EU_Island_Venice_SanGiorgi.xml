@@ -478,7 +478,7 @@
 		<unit variation="0" posx="-6.0924" posz="29.2301" orientx="-1.0000" orienty="0.0000" orientz="0.0005">HarbourPathBlock</unit>
 		<unit variation="0" posx="7.0484" posz="29.0836" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
 		<unit variation="0" posx="-7.4465" posz="28.6795" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
-		<unit variation="183" posx="-15.1636" posz="31.6667" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">deSPCSocketCityTower</unit>
+		<unit variation="183" posx="-15.1636" posz="31.6667" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSocketCityTowerClone</unit>
 		<unit variation="0" posx="16.8850" posz="29.1862" orientx="0.6929" orienty="0.0000" orientz="0.7210">HarbourPathBlock</unit>
 		<unit variation="0" posx="16.5807" posz="29.9776" orientx="0.6929" orienty="0.0000" orientz="0.7210">HarbourPathBlock</unit>
 		<unit variation="0" posx="51.2397" posz="28.9301" orientx="-0.9998" orienty="0.0000" orientz="-0.0202">HarbourPathBlock</unit>

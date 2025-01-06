@@ -20695,6 +20695,46 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpSPCVeniceCityStatesAI" type="Normal">
+    <dbid>40888</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCWoodenTowerAIProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCFixedGunAIProxy</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketCityTowerClone</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">deSPCSocketCityTower</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCFixedGunAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCFixedGunSocket</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deTradingPostWagon</target>
+      </effect>
+      <effect type="CommandAdd" proto="deTradingPostWagon" page="0" column="12">
+        <target type="ProtoUnit">Galleon</target>
+      </effect>
+      <effect type="CommandAdd" proto="deTradingPostWagon" page="0" column="12">
+        <target type="ProtoUnit">deGalleass</target>
+      </effect>
+      <effect type="CommandAdd" proto="deTradingPostWagon" page="0" column="12">
+        <target type="ProtoUnit">deSteamer</target>
+      </effect>
+      <effect type="CommandAdd" proto="deTradingPostWagon" page="0" column="12">
+        <target type="ProtoUnit">Fluyt</target>
+      </effect>
+      <effect type="CommandAdd" proto="deTradingPostWagon" page="0" column="12">
+        <target type="ProtoUnit">TownCenter</target>
+      </effect>
+    </effects>
+  </tech>
   
  
 

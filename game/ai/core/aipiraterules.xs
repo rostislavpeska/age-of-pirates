@@ -4168,7 +4168,7 @@ minInterval 30
   static int proxy_list = -1;
   static int ship_list = -1;
 
-  if (kbUnitCount(cMyID, cUnitTypezpSocketVenetians, cUnitStateAny) == 0)
+  if ((kbUnitCount(cMyID, cUnitTypezpSocketVenetians, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketVeniceCityState, cUnitStateAny) == 0))
    {
       return;
    }
