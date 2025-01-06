@@ -40059,7 +40059,7 @@
     <displaynameid>301948</displaynameid>
     <editornameid>301947</editornameid>
     <obstructionradiusx>7.0000</obstructionradiusx>
-    <obstructionradiusz>3.0000</obstructionradiusz>
+    <obstructionradiusz>3.5000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>buildings\native_settlement\palaces\bourbon_summer_palace.xml</animfile>
@@ -45111,7 +45111,7 @@
     <displaynameid>302122</displaynameid>
     <editornameid>302123</editornameid>
     <obstructionradiusx>6.0000</obstructionradiusx>
-    <obstructionradiusz>3.0000</obstructionradiusz>
+    <obstructionradiusz>3.5000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>buildings\native_settlement\palaces\venetian_palace.xml</animfile>
