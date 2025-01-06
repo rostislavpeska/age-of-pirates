@@ -5,21 +5,12 @@
   <definebone>bone_shield</definebone>
   <definebone>Bip01 L ForeArm</definebone>
   <definebone>Bip01 R ForeArm</definebone>
-  <attachment>clickzone<include>units\natives\auditore\assassin_invisible.xml</include></attachment>
-  <attachment>sword<component>sword<assetreference type="GrannyModel"><file>units\natives\auditore\assasin Blades R_Model</file></assetreference></component><anim>Idle<component>sword</component></anim></attachment>
-  <attachment>torch<include>effects\projectiles\torch.xml</include></attachment>
-  <attachment>shield<component>shield<assetreference type="GrannyModel"><file>units\natives\auditore\assasin Blades L_Model</file></assetreference></component><anim>Idle<component>shield</component></anim></attachment>
-  <attachment>hat_2<component>hat_2<assetreference type="GrannyModel"><file>units\asians\indians\rajput\rajput_hat_2</file></assetreference></component><anim>Idle<component>hat_2</component></anim></attachment>
-  <attachment>shield_2<component>shield_2<assetreference type="GrannyModel"><file>units\natives\auditore\assasin Blades R_Model</file></assetreference></component><anim>Idle<component>shield_2</component></anim></attachment>
-  <attachment>sword2<component>sword2<assetreference type="GrannyModel"><file>units\natives\auditore\assasin Blades L_Model</file></assetreference></component><anim>Idle<component>sword2</component></anim></attachment>
-  <attachment>hat_3<component>hat_3<assetreference type="GrannyModel"><file>units\asians\indians\rajput\rajput_hat_3</file></assetreference></component><anim>Idle<component>hat_3</component></anim></attachment>
   <component>ModelComp
-    <assetreference type="GrannyModel">
-        <file>units\natives\auditore\Assasin_M1_Model</file>
-    </assetreference>
-    <attach a="sword" frombone="bone_sword" tobone="bip01 R ForeArm" syncanims="0"></attach>
-    <attach a="sword2" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"></attach>
-    <attach a="clickzone" frombone="MASTER" tobone="MASTER" syncanims="1"></attach>
+        <assetreference type="GrannyModel">
+            <file>units\natives\auditore\Assasin_invisible</file>
+        </assetreference>
+        <attach a="sword" frombone="bone_sword" tobone="bip01 R ForeArm" syncanims="0"></attach>
+        <attach a="sword2" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"></attach>
     <decal>
         <effecttype>default</effecttype>
         <texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>

@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\asians\indians\rajput\textures\rajput_sword_left_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\asians\indians\rajput\textures\rajput_sword_left_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\asians\indians\rajput\textures\rajput_sword_left_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

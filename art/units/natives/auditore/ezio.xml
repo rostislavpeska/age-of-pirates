@@ -5,12 +5,13 @@
   <definebone>bone_shield</definebone>
   <definebone>Bip01 L ForeArm</definebone>
   <definebone>Bip01 R ForeArm</definebone>
-  <attachment>sword<component>sword<assetreference type="GrannyModel"><file>units\asians\indians\rajput\rajput_sword_right</file></assetreference></component><anim>Idle<component>sword</component></anim></attachment>
+  <attachment>clickzone<include>units\natives\auditore\assassin_invisible.xml</include></attachment>
+  <attachment>sword<component>sword<assetreference type="GrannyModel"><file>units\natives\auditore\assasin Blades R_Model</file></assetreference></component><anim>Idle<component>sword</component></anim></attachment>
   <attachment>torch<include>effects\projectiles\torch.xml</include></attachment>
-  <attachment>shield<component>shield<assetreference type="GrannyModel"><file>units\asians\indians\rajput\rajput_sword_left</file></assetreference></component><anim>Idle<component>shield</component></anim></attachment>
+  <attachment>shield<component>shield<assetreference type="GrannyModel"><file>units\natives\auditore\assasin Blades L_Model</file></assetreference></component><anim>Idle<component>shield</component></anim></attachment>
   <attachment>hat_2<component>hat_2<assetreference type="GrannyModel"><file>units\asians\indians\rajput\rajput_hat_2</file></assetreference></component><anim>Idle<component>hat_2</component></anim></attachment>
-  <attachment>shield_2<component>shield_2<assetreference type="GrannyModel"><file>units\asians\indians\rajput\rajput_sword_right</file></assetreference></component><anim>Idle<component>shield_2</component></anim></attachment>
-  <attachment>sword2<component>sword2<assetreference type="GrannyModel"><file>units\asians\indians\rajput\rajput_sword_left</file></assetreference></component><anim>Idle<component>sword2</component></anim></attachment>
+  <attachment>shield_2<component>shield_2<assetreference type="GrannyModel"><file>units\natives\auditore\assasin Blades R_Model</file></assetreference></component><anim>Idle<component>shield_2</component></anim></attachment>
+  <attachment>sword2<component>sword2<assetreference type="GrannyModel"><file>units\natives\auditore\assasin Blades L_Model</file></assetreference></component><anim>Idle<component>sword2</component></anim></attachment>
   <attachment>hat_3<component>hat_3<assetreference type="GrannyModel"><file>units\asians\indians\rajput\rajput_hat_3</file></assetreference></component><anim>Idle<component>hat_3</component></anim></attachment>
   <attachment>katana<component>katana<assetreference type="GrannyModel"><file>units\asians\mercenaries\wayward_ronin\wRonin_katana</file></assetreference></component><anim>Idle<component>katana</component></anim></attachment>
   <attachment>measure tape<component>measure tape<assetreference type="GrannyModel"><file>units\attachments\measuring_tape</file></assetreference></component><anim>Idle<component>measure tape</component></anim></attachment>
@@ -19,16 +20,18 @@
   <attachment>grenade<component>grenade<assetreference type="GrannyModel"><file>units\asians\spc\huang\Grenade</file></assetreference></component><anim>Idle<component>grenade</component></anim></attachment>
   <component>ModelComp
     <assetreference type="GrannyModel">
-      <file>units\infantry_ranged\longbow\longbow_1age</file>
+      <file>units\natives\auditore\Assasin_M1_Model</file>
     </assetreference>
     <attach a="sword" frombone="bone_sword" tobone="bip01 R ForeArm" syncanims="0"></attach>
     <attach a="sword2" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"></attach>
+    <attach a="clickzone" frombone="MASTER" tobone="MASTER" syncanims="1"></attach>
     <decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_hero_64x64</texture><selectedtexture>shadows_selections\selection_hero_64x64</selectedtexture><width>1.50</width><height>1.50</height><selectionextrawidth>1.0</selectionextrawidth><selectionextraheight>1.0</selectionextraheight></decal>
   </component>
   <component>BuildComp
     <assetreference type="GrannyModel">
-      <file>units\infantry_ranged\longbow\longbow_1age</file>
+      <file>units\natives\auditore\Assasin_M1_Model</file>
     </assetreference>
+    <attach a="clickzone" frombone="MASTER" tobone="MASTER" syncanims="1"></attach>
    <decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_hero_64x64</texture><selectedtexture>shadows_selections\selection_hero_64x64</selectedtexture><width>1.50</width><height>1.50</height><selectionextrawidth>1.0</selectionextrawidth><selectionextraheight>1.0</selectionextraheight></decal>
   </component>
   <anim>Death_by_melee<assetreference type="GrannyAnim"><file>animation_library\shared\human_sword_death_a</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.85</tag></assetreference><component>ModelComp</component></anim>

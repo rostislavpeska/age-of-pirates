@@ -1,0 +1,72 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+   <parameters>
+      <texture name="BaseColor" override="units\natives\europeans\inquisitor\textures\inquisitor_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\natives\europeans\inquisitor\textures\inquisitor_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\natives\europeans\inquisitor\textures\inquisitor_mata_masks">
+      </texture>
+      <texture name="Details" override="units\natives\europeans\inquisitor\textures\inquisitor_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+   <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\spc\sahin\textures\sahin_spc_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\sahin\textures\sahin_spc_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\sahin\textures\sahin_spc_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\spc\sahin\textures\sahin_spc_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+   <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\natives\auditore\textures\assassin_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\natives\auditore\textures\assassin_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\natives\auditore\textures\assassin_mata_masks">
+      </texture>
+      <texture name="Details" override="units\infantry\hospitaller\textures\hospitaller_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+   <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_mata_masks">
+      </texture>
+      <texture name="Details" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+     <submaterial name="matf">
+    <materialdef name="default">
+    </materialdef>
+     <parameters>
+      <texture name="BaseColor" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_mata_masks">
+      </texture>
+      <texture name="Details" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
