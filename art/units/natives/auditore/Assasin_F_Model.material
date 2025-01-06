@@ -1,0 +1,74 @@
+<material>
+ <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\villagers\ee_villager_female\textures\ee_villager_female_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\villagers\ee_villager_female\textures\ee_villager_female_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\villagers\ee_villager_female\textures\ee_villager_female_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\villagers\ee_villager_female\textures\ee_villager_female_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+      <parameters>
+      <texture name="BaseColor" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+     <parameters>
+      <texture name="BaseColor" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+      <parameters>
+      <texture name="BaseColor" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\spc\elizabeth_ramsey\textures\spc_elizabeth_ramsey_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+    <submaterial name="matf">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\villagers\med_villager_female_2\textures\med_villager_female_2_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\villagers\med_villager_female_2\textures\med_villager_female_2_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\villagers\med_villager_female_2\textures\med_villager_female_2_mata_masks">
+      </texture>
+      <texture name="Details" override="units\villagers\med_villager_female_2\textures\med_villager_female_2_mata_details">
+      </texture>
+      <float name="AO Intensity" override="0.0000">
+      </float>
+    </parameters>
+  </submaterial>
+</material>
