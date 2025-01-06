@@ -294,7 +294,10 @@ void main(void)
       // Port Sites
       int portSite1 = rmCreateArea ("port_site1");
       rmSetAreaSize(portSite1, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-      rmSetAreaLocation(portSite1, 0.5+rmXTilesToFraction(22), 0.8);
+      if (cNumberNonGaiaPlayers>=5)
+         rmSetAreaLocation(portSite1, 0.5+rmXTilesToFraction(19), 0.8);
+      else
+         rmSetAreaLocation(portSite1, 0.5+rmXTilesToFraction(22), 0.8);
       rmSetAreaMix(portSite1, "caribbean grass");
       rmSetAreaCoherence(portSite1, 1);
       rmSetAreaSmoothDistance(portSite1, 15);
@@ -313,7 +316,10 @@ void main(void)
 
       int portSite2 = rmCreateArea ("port_site2");
       rmSetAreaSize(portSite2, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
-      rmSetAreaLocation(portSite2, 0.8, 0.5+rmZTilesToFraction(25));
+      if (cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==4)
+         rmSetAreaLocation(portSite2, 0.8, 0.5+rmZTilesToFraction(25));
+      else
+         rmSetAreaLocation(portSite2, 0.8, 0.5+rmZTilesToFraction(21));
       rmSetAreaMix(portSite2, "caribbean grass");
       rmSetAreaCoherence(portSite2, 1);
       rmSetAreaSmoothDistance(portSite2, 15);
@@ -469,12 +475,18 @@ void main(void)
    // Port 1
    int portID01 = rmCreateObjectDef("port 01");
    portID01 = rmCreateGrouping("portG 01", "harbour_center_sw");
-   rmPlaceGroupingAtLoc(portID01, 0, 0.5+rmXTilesToFraction(12), 0.8+rmZTilesToFraction(0));
+   if (cNumberNonGaiaPlayers>=5)
+      rmPlaceGroupingAtLoc(portID01, 0, 0.5+rmXTilesToFraction(9), 0.8+rmZTilesToFraction(0));
+   else
+      rmPlaceGroupingAtLoc(portID01, 0, 0.5+rmXTilesToFraction(12), 0.8+rmZTilesToFraction(0));
 
    // Port 2
    int portID02 = rmCreateObjectDef("port 02");
    portID02 = rmCreateGrouping("portG 02", "harbour_centerb_se");
-   rmPlaceGroupingAtLoc(portID02, 0, 0.8+rmXTilesToFraction(0), 0.5+rmZTilesToFraction(15));
+   if (cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==4)
+      rmPlaceGroupingAtLoc(portID02, 0, 0.8+rmXTilesToFraction(0), 0.5+rmZTilesToFraction(15));
+   else
+      rmPlaceGroupingAtLoc(portID02, 0, 0.8+rmXTilesToFraction(0), 0.5+rmZTilesToFraction(11));
 
 
    // Port 3
@@ -1051,12 +1063,6 @@ if (rmGetIsKOTH()){
       rmSetTriggerEffectParamInt("SrcPlayer",i);
       rmSetTriggerEffectParamInt("TrgPlayer",k);
       rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
-      rmSetTriggerEffectParamInt("Dist",15);
-      rmAddTriggerEffect("Convert Units in Area");
-      rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
-      rmSetTriggerEffectParamInt("SrcPlayer",i);
-      rmSetTriggerEffectParamInt("TrgPlayer",k);
-      rmSetTriggerEffectParam("UnitType","zpPropWaterTower");
       rmSetTriggerEffectParamInt("Dist",15);
    }
    for (i=1; <= cNumberNonGaiaPlayers) {
