@@ -97,12 +97,16 @@ minInterval 1
       xsEnableRule("initializecheckAttackDefenseMapAoP"); // 
    }
 
-   // Naval City Map
-   if (cRandomMapName == "zpvenicecity")
+   // Naval City Map. Enable based on sockets that it can handle
+   if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0 ||
+       getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0)
    {
       xsEnableRule("navalCityAttackManager");
       xsEnableRule("buildNavalCitySockets");
-      gAmphibiousAssaultStage = cForbidAmphibiousAssault;
+      if (cRandomMapName == "zpvenicecity")
+      {
+         gAmphibiousAssaultStage = cForbidAmphibiousAssault;
+      }
    }
 
    // AssertiveWall: Archipelago style maps
@@ -765,7 +769,23 @@ rule buildNavalCitySockets
 inactive
 minInterval 20
 {
-   int cityStateQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketVeniceCityState, cMyID, cUnitStateAny);
+   int citySocketType = -1;
+   // Create a list of city states
+   if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0)
+   {
+      citySocketType = cUnitTypezpSPCSocketVeniceCityState;
+   }
+   else if (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0)
+   {
+      citySocketType = cUnitTypezpSPCSocketPirateCityState;
+   }
+   else
+   {  // Shouldn't reach here
+      return;
+   }
+
+   // Only get ones we can see, like ones we've converted or have military around
+   int cityStateQuery = createSimpleUnitQuery(citySocketType, cMyID, cUnitStateAny);
    int numCityStates = kbUnitQueryExecute(cityStateQuery);
 
    // Build city state TPs.
@@ -852,10 +872,10 @@ rule navalCityAttackManager
 inactive
 minInterval 20
 {
-   if (xsIsRuleEnabled("attackManager") == true)
-   {
-      xsDisableRule("attackManager");
-   }
+   //if (xsIsRuleEnabled("attackManager") == true)
+   //{
+   //   xsDisableRule("attackManager");
+   //}
 
    if (kbGetAge() < cAge2)
    {
@@ -874,9 +894,8 @@ minInterval 20
 
    aiChat(1, "running");
 
-   // Go through the list of city states
-   int cityStateQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketVeniceCityState, cPlayerRelationAny, cUnitStateAny);
-   int numberCityStateFound = kbUnitQueryExecute(cityStateQuery);
+   int cityStateQuery = -1;
+   int numberCityStateFound = 0;
    int tempCityState = -1;
    vector tempLocation = cInvalidVector;
    int availableMilitaryStrength = -1;
@@ -894,6 +913,25 @@ minInterval 20
    bool tempUntouched = false;
    bool bestUntouched = false;
    int tempEnCount = 0;
+   int citySocketType = -1;
+
+   if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0)
+   {
+      citySocketType = cUnitTypezpSPCSocketVeniceCityState;
+   }
+   else if (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0)
+   {
+      citySocketType = cUnitTypezpSPCSocketPirateCityState;
+   }
+   else
+   {  // Shouldn't reach here
+      return;
+   }
+
+   cityStateQuery = createSimpleGaiaUnitQuery(citySocketType, cUnitStateAny);
+   numberCityStateFound = kbUnitQueryExecute(cityStateQuery);
+
+   aiChat(1, "numberCityStateFound: " + numberCityStateFound);
 
 
    for (i = 0; < numberCityStateFound)
