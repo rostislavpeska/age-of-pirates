@@ -115,7 +115,7 @@
         <maxrange>0.5</maxrange>
         <rate type="AbstractInfiniteCrate">1.0</rate>
     </action>
-    <tactic>StandGround
+    <tactic>Defend
         <action priority="100">BuildingAttack</action>
         <action priority="90">RangedAttack</action>
         <action priority="80">HandAttackCrate</action>
