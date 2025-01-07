@@ -650,6 +650,11 @@ void main(void)
    rmAddObjectDefConstraint(TCID, avoidBonusIslands);
    rmAddObjectDefConstraint(TCID, avoidSocketLong);
 
+   // Fake Frouping to fix the auto-grouping TC bug
+	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
+	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+	rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.65);
+
 for(i=1; <cNumberPlayers) {
 
    // Place town centers

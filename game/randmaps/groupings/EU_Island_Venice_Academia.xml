@@ -482,7 +482,7 @@
 		<unit variation="46" posx="-36.8377" posz="30.2793" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVenetianWaterSpawnFlag2</unit>
 		<unit variation="0" posx="-27.6581" posz="25.8954" orientx="-0.3751" orienty="0.0000" orientz="0.9270">HarbourPathBlock</unit>
 		<unit variation="0" posx="-25.8688" posz="25.9552" orientx="-0.3751" orienty="0.0000" orientz="0.9270">HarbourPathBlock</unit>
-		<unit variation="205" posx="-21.0600" posz="24.5039" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropMarketStall</unit>
+		<unit variation="205" posx="-21.0600" posz="24.5039" orientx="-0.3751" orienty="0.0000" orientz="0.9270">zpValuableSource</unit>
 		<unit variation="192" posx="-2.2010" posz="25.6719" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpNativeStatueVenetian</unit>
 		<unit variation="20" posx="-5.2503" posz="24.9302" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeUnitVenetianFemale</unit>
 		<unit variation="154" posx="3.8852" posz="24.6914" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeUnitVenetianShips</unit>
@@ -585,7 +585,7 @@
 		<unit variation="0" posx="7.7762" posz="43.6772" orientx="1.0000" orienty="0.0000" orientz="-0.0081">HarbourPathBlock</unit>
 		<unit variation="84" posx="21.4387" posz="41.8690" orientx="1.0000" orienty="-0.0000" orientz="-0.0001">zpNativeHouseVenetianB</unit>
 		<unit variation="0" posx="28.1181" posz="42.8825" orientx="-1.0000" orienty="0.0000" orientz="0.0080">HarbourPathBlock</unit>
-		<unit variation="27" posx="-4.0784" posz="46.6502" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCCapturableFactoryMed</unit>
+		<unit variation="27" posx="-4.0784" posz="46.6502" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deSPCGreatBank</unit>
 		<unit variation="6" posx="0.5705" posz="43.3730" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
 		<unit variation="64" posx="-34.2822" posz="46.9168" orientx="-0.9998" orienty="0.0000" orientz="0.0203">zpHarbourPlatform</unit>
 		<unit variation="193" posx="24.4393" posz="46.9286" orientx="-0.9999" orienty="0.0000" orientz="-0.0115">zpHarbourPlatform</unit>
@@ -622,7 +622,7 @@
 		<unit variation="0" posx="27.4564" posz="48.7427" orientx="-1.0000" orienty="0.0000" orientz="0.0080">HarbourPathBlock</unit>
 		<unit variation="95" posx="-33.0275" posz="51.5594" orientx="-0.7078" orienty="0.0000" orientz="0.7064">zpHarbourPlatform</unit>
 		<unit variation="209" posx="24.0332" posz="52.1622" orientx="0.9999" orienty="0.0000" orientz="-0.0168">zpHarbourShip</unit>
-		<unit variation="209" posx="-15.1069" posz="49.9997" orientx="-1.0000" orienty="-0.0000" orientz="0.0007">zpHCFountainA</unit>
+		<unit variation="209" posx="-15.1069" posz="49.9997" orientx="-1.0000" orienty="-0.0000" orientz="0.0007">zpValuableSource</unit>
 		<unit variation="202" posx="-16.4654" posz="48.7219" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
 		<unit variation="4" posx="-12.6079" posz="49.6924" orientx="-1.0000" orienty="-0.0000" orientz="0.0025">zpCinematicRevealer</unit>
 		<unit variation="5" posx="5.4228" posz="49.4962" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">zpNativeHouseVenetianB</unit>

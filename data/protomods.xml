@@ -43575,7 +43575,7 @@
     <displaynameid>302084</displaynameid>
     <editornameid>302085</editornameid>
     <obstructionradiusx>8.5000</obstructionradiusx>
-    <obstructionradiusz>8.9000</obstructionradiusz>
+    <obstructionradiusz>9.5000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>buildings\basilica\san_marco.xml</animfile>

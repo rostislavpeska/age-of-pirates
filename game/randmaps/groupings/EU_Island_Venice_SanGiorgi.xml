@@ -340,7 +340,7 @@
 		<unit variation="180" posx="20.8983" posz="3.6613" orientx="0.0016" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetianB</unit>
 		<unit variation="23" posx="29.3384" posz="3.5167" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeUnitVenetianMale</unit>
 		<unit variation="0" posx="14.6207" posz="5.1206" orientx="-0.9999" orienty="0.0000" orientz="-0.0125">HarbourPathBlock</unit>
-		<unit variation="199" posx="6.0381" posz="7.2270" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">deSPCGreatBank</unit>
+		<unit variation="199" posx="6.0381" posz="7.2270" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">zpSPCCapturableFactoryMed</unit>
 		<unit variation="0" posx="14.4779" posz="6.5997" orientx="-0.9999" orienty="0.0000" orientz="-0.0125">HarbourPathBlock</unit>
 		<unit variation="250" posx="33.7420" posz="4.0613" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
 		<unit variation="4" posx="28.8634" posz="4.7422" orientx="-1.0000" orienty="0.0000" orientz="-0.0056">zpCinematicRevealer</unit>
@@ -354,7 +354,6 @@
 		<unit variation="0" posx="-1.9309" posz="10.9228" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
 		<unit variation="0" posx="17.2653" posz="10.5979" orientx="0.6983" orienty="0.0000" orientz="0.7158">HarbourPathBlock</unit>
 		<unit variation="0" posx="14.6499" posz="10.6775" orientx="-0.7159" orienty="0.0000" orientz="0.6982">HarbourPathBlock</unit>
-		<unit variation="110" posx="11.0000" posz="11.0000" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpValuableSource</unit>
 		<unit variation="17" posx="26.0839" posz="8.5362" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="247" posx="38.2097" posz="11.9126" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">zpNativeUnitVenetianFemale</unit>
 		<unit variation="4" posx="44.3815" posz="11.1367" orientx="-1.0000" orienty="0.0000" orientz="-0.0056">zpCinematicRevealer</unit>
@@ -372,7 +371,6 @@
 		<unit variation="4" posx="29.9275" posz="13.9839" orientx="-1.0000" orienty="0.0000" orientz="-0.0056">zpCinematicRevealer</unit>
 		<unit variation="0" posx="38.2917" posz="14.8448" orientx="-0.0199" orienty="0.0000" orientz="0.9998">HarbourPathBlock</unit>
 		<unit variation="58" posx="46.3424" posz="12.3511" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropMarketStall</unit>
-		<unit variation="23" posx="13.0000" posz="15.0000" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpValuableSource</unit>
 		<unit variation="0" posx="36.6817" posz="14.5966" orientx="-0.0199" orienty="0.0000" orientz="0.9998">HarbourPathBlock</unit>
 		<unit variation="164" posx="-10.9359" posz="13.1124" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="4" posx="-42.9561" posz="14.9630" orientx="-1.0000" orienty="0.0000" orientz="-0.0056">zpCinematicRevealer</unit>
