@@ -55,6 +55,14 @@
     <persistent>0</persistent>
     <singleuse>1</singleuse>
   </action>
+  <action>
+    <name stringid="69776">SpawnSteamer</name>
+    <type>Spawn</type>
+    <rate type="zpMercPirateSteamer">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
   <tactic>Normal
     <action>Heal</action>
     <action>SpawnNautilus</action>
@@ -63,5 +71,6 @@
     <action>SpawnRiggedShip</action>
     <action>SpawnDutchman</action>
     <action>SpawnGalley</action>
+    <action>SpawnSteamer</action>
 </tactic>
 </tactics>
