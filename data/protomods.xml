@@ -46670,8 +46670,8 @@
     <minimapicon>ui\minimap\indicator_small</minimapicon>
     <icon>resources\art\buildings\spc\fort\spc_fort_wall_icon64x64.png</icon>
     <portraiticon>resources\art\buildings\spc\fort\spc_fort_wall_portrait.png</portraiticon>
-    <rollovertextid>123163</rollovertextid>
-    <shortrollovertextid>123163</shortrollovertextid>
+    <rollovertextid>302243</rollovertextid>
+    <shortrollovertextid>302243</shortrollovertextid>
     <los>0.0000</los>
     <unittype>LogicalTypeBuildingsNotWalls</unittype>
     <unittype>LogicalTypeShipsAndBuildings</unittype>
