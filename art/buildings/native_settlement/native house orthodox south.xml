@@ -12,10 +12,16 @@
 			</variationid0>
 			<variationid1>
 				<assetreference type="GrannyModel">
-					<file>buildings\native_settlement\orthodox\orthodox_church</file>
+					<file>buildings\native_settlement\maltese_convent\aos_church_dark</file>
 					<materialvariant index="1"></materialvariant>
 				</assetreference>
 			</variationid1>
+			<variationid2>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\maltese_convent\aos_house_dark</file>
+					<materialvariant index="1"></materialvariant>
+				</assetreference>
+			</variationid2>
 		</logic>
 	</component>
 	<anim>
