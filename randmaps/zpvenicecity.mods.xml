@@ -209,6 +209,7 @@
         </unit>
 		<unit name="deSPCCityGuard">
 			<unitregen mergeMode="remove">-1.0000</unitregen>
+			<tactics>standground_ranged.tactics</tactics>
 			<protoaction>
 				<name>VolleyRangedAttack</name>
 				<damage>16.000000</damage>

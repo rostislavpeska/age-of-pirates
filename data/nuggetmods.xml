@@ -2264,28 +2264,28 @@
       <applystringid>66271</applystringid>
       <maptype>piratehistoricalmap</maptype>
       <guardianunit>
-        <unit>SaloonPirate</unit>
+        <unit>zpPirateGuard</unit>
       </guardianunit>
       <guardianunit>
-        <unit>SaloonPirate</unit>
+        <unit>zpPirateGuard</unit>
       </guardianunit>
       <guardianunit>
-        <unit>SaloonPirate</unit>
+        <unit>zpPirateGuard</unit>
       </guardianunit>
       <guardianunit>
-        <unit>SaloonPirate</unit>
+        <unit>zpPirateGuard</unit>
       </guardianunit>
       <guardianunit>
-        <unit>zpNatPirate</unit>
+        <unit>zpBuccaneerGuard</unit>
       </guardianunit>
       <guardianunit>
-        <unit>zpNatPirate</unit>
+        <unit>zpBuccaneerGuard</unit>
       </guardianunit>
       <guardianunit>
-        <unit>zpNatPirate</unit>
+        <unit>zpBuccaneerGuard</unit>
       </guardianunit>
       <guardianunit>
-        <unit>zpNatPirate</unit>
+        <unit>zpBuccaneerGuard</unit>
       </guardianunit>
       <difficulty>294</difficulty>
     </nugget>
