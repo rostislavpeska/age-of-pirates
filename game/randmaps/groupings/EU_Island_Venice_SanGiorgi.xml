@@ -334,7 +334,7 @@
 		<unit variation="183" posx="-6.7359" posz="5.8956" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deSPCSocketCityTower</unit>
 		<unit variation="0" posx="14.6961" posz="3.1882" orientx="-0.9999" orienty="0.0000" orientz="-0.0125">HarbourPathBlock</unit>
 		<unit variation="0" posx="20.1201" posz="2.7539" orientx="0.9999" orienty="0.0000" orientz="0.0123">HarbourPathBlock</unit>
-		<unit variation="1" posx="-1.6961" posz="3.5444" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
+		<unit variation="0" posx="-1.6961" posz="3.5444" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCityStateFlag</unit>
 		<unit variation="64" posx="-13.7865" posz="5.5676" orientx="0.9998" orienty="0.0000" orientz="-0.0181">zpHarbourPlatform</unit>
 		<unit variation="95" posx="20.0522" posz="5.1213" orientx="-1.0000" orienty="0.0000" orientz="-0.0028">zpHarbourPlatform</unit>
 		<unit variation="180" posx="20.8983" posz="3.6613" orientx="0.0016" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetianB</unit>
@@ -351,7 +351,7 @@
 		<unit variation="4" posx="34.2546" posz="6.3270" orientx="-1.0000" orienty="0.0000" orientz="-0.0056">zpCinematicRevealer</unit>
 		<unit variation="4" posx="48.9125" posz="6.9078" orientx="-1.0000" orienty="0.0000" orientz="-0.0056">zpCinematicRevealer</unit>
 		<unit variation="0" posx="18.9249" posz="8.9869" orientx="0.6983" orienty="0.0000" orientz="0.7158">HarbourPathBlock</unit>
-		<unit variation="0" posx="-1.9309" posz="10.9228" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
+		<unit variation="0" posx="-1.9309" posz="10.9228" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCityStateFlag</unit>
 		<unit variation="0" posx="17.2653" posz="10.5979" orientx="0.6983" orienty="0.0000" orientz="0.7158">HarbourPathBlock</unit>
 		<unit variation="0" posx="14.6499" posz="10.6775" orientx="-0.7159" orienty="0.0000" orientz="0.6982">HarbourPathBlock</unit>
 		<unit variation="17" posx="26.0839" posz="8.5362" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>

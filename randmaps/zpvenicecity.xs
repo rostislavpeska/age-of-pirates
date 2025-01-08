@@ -388,7 +388,7 @@ void main(void)
     rmSetGroupingMaxDistance(veniceSanMarco, 0.01);
 	rmAddGroupingToClass(veniceSanMarco, rmClassID("classPlateau"));
 
-	int veniceInstanceID1 = rmPlaceGroupingInstanceAtLoc(veniceSanMarco, rmXMetersToFraction(xsVectorGetX(ControllerLoc1))+rmXTilesToFraction(20), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1))+rmZTilesToFraction(17), 0);
+	int veniceInstanceID1 = rmPlaceGroupingInstanceAtLoc(veniceSanMarco, rmXMetersToFraction(xsVectorGetX(ControllerLoc1))+rmXTilesToFraction(23), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1))+rmZTilesToFraction(16), 0);
 
 	//San Giorgio
 	int veniceSanGiorgio = rmCreateGrouping("bridge2", "EU_Island_Venice_Academia");
