@@ -5097,6 +5097,12 @@ minInterval 30
       xsDisableRule("waterAttack");
    }
 
+   // Keep military throttled. Will only effect ages 1, 2
+   if (kbGetAge() <= cAge2)
+   {
+      setMilPopLimit(10, 15, 25, 50, 101);
+   }
+
    int age = kbGetAge();
    int time = xsGetTime();
    int shipMin = 0;
