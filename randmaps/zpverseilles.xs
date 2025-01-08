@@ -474,7 +474,7 @@ void main(void)
 
 	// Lakes
 
-	if (teamZeroCount<=2){
+	if(teamOneCount<=2){
 		int basinsID=rmCreateArea("Verseilles Basins");
 		rmSetAreaWaterType(basinsID, "ZP Verseilles Pond");
 		rmSetAreaSize(basinsID, 0.008, 0.008);

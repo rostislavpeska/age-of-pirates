@@ -2803,7 +2803,7 @@ minInterval 60
 {
    static int jewishPlan = -1;
 
-   if (kbUnitCount(cMyID, cUnitTypezpSocketJewish, cUnitStateAny) == 0)
+   if ((kbUnitCount(cMyID, cUnitTypezpSocketJewish, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSocketJewishEU, cUnitStateAny) == 0))
    {
       return;
    }
@@ -4853,7 +4853,7 @@ rule zpJewishTechMonitor
 inactive
 mininterval 60
 {
-   if (kbUnitCount(cMyID, cUnitTypezpSocketJewish, cUnitStateAny) == 0)
+   if ((kbUnitCount(cMyID, cUnitTypezpSocketJewish, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSocketJewishEU, cUnitStateAny) == 0))
       {
       return; // Player has no Jewish socket.
       }
