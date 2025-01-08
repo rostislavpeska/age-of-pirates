@@ -15416,6 +15416,8 @@
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
+    <flag>NoIdleActions</flag>
+    <flag>StartOnNoUpdate</flag>
   </unit>
   <unit id="20408" name="zpNativeUnitVenetian">
     <dbid>20408</dbid>
@@ -15825,6 +15827,8 @@
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
     <tactics>venetianprops.tactics</tactics>
   </unit>
   <unit id="20168" name="zpGalleass">
@@ -16119,6 +16123,8 @@
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
   </unit>
   <unit id="20171" name="zpVeniceGalleyProxy">
     <dbid>20171</dbid>
@@ -17340,6 +17346,8 @@
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
   </unit>
   <unit id="20410" name="zpVeniceGalleyAutomatic">
     <dbid>20410</dbid>
@@ -43223,6 +43231,8 @@
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
+    <flag>NoIdleActions</flag>
+    <flag>StartOnNoUpdate</flag>
   </unit>
   <unit id="20567" name="zpHCFountainB">
     <dbid>20567</dbid>

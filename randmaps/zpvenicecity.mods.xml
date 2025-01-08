@@ -229,5 +229,8 @@
 			<cost resourcetype="Wood">200.0000</cost>
 			<trainpoints>10.0000</trainpoints>
 		</unit>
+		<unit name="NativeTownObstruction">
+			<flag>StartOnNoUpdate</flag>
+		</unit>
 	</protomods>
 </mods>
