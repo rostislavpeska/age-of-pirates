@@ -159,6 +159,7 @@ minInterval 1
    // Naval KOTH
    if (getGaiaUnitCount(cUnitTypezpKingsHillNaval) > 0)
    {
+      gAmphibiousAssaultStage = cForbidAmphibiousAssault;
       xsEnableRule("waterAttackKOTH");
       xsEnableRule("waterDefendKOTH");
    }
