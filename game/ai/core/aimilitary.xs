@@ -1829,7 +1829,7 @@ minInterval 5
       // AssertiveWall: adds artillery to water defend plan
       if (gStartOnDifferentIslands == true)
       {
-         aiPlanAddUnitType(gNavyDefendPlan, cUnitTypeAbstractArtillery, 0, 0, 3);
+         aiPlanAddUnitType(gNavyDefendPlan, cUnitTypeAbstractArtillery, 0, 0, 2);
       }
       else if (gNavyMap == true)
       {

@@ -36,7 +36,8 @@ minInterval 1
        cRandomMapName == "zpzealand" ||
        cRandomMapName == "zpcookislands" ||
        cRandomMapName == "zpbarrierreef" ||
-       cRandomMapName == "zpvenicecity")
+       cRandomMapName == "zpvenicecity" ||
+       cRandomMapName == "zpcaribbeanwars")
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
@@ -153,6 +154,13 @@ minInterval 1
    if (cRandomMapName == "zptasmania")
    {
       xsEnableRule("tasmaniaStart");
+   }
+
+   // Naval KOTH
+   if (getGaiaUnitCount(cUnitTypezpKingsHillNaval) > 0)
+   {
+      xsEnableRule("waterAttackKOTH");
+      xsEnableRule("waterDefendKOTH");
    }
 
    // Initializes all pirate functions
@@ -802,7 +810,7 @@ minInterval 20
       
       int heroID = -1;
 
-      int heroQuery = createSimpleUnitQuery(cUnitTypeHero, cMyID, cUnitStateAlive);
+      /*int heroQuery = createSimpleUnitQuery(cUnitTypeHero, cMyID, cUnitStateAlive);
       int numberHeroesFound = kbUnitQueryExecute(heroQuery);
       int heroPlanID = -1;
       
@@ -832,7 +840,7 @@ minInterval 20
             heroID + " to our Trading Post build plan");
          aiPlanAddUnitType(planID, cUnitTypeHero, 1, 1, 1);
          aiPlanAddUnit(planID, heroID);
-      }
+      }*/
 
       
       if ((heroID < 0)) // We didn't find either so we must add a Villager. 
@@ -892,8 +900,6 @@ minInterval 20
       return;
    }
 
-   aiChat(1, "running");
-
    int cityStateQuery = -1;
    int numberCityStateFound = 0;
    int tempCityState = -1;
@@ -930,9 +936,6 @@ minInterval 20
 
    cityStateQuery = createSimpleGaiaUnitQuery(citySocketType, cUnitStateAny);
    numberCityStateFound = kbUnitQueryExecute(cityStateQuery);
-
-   aiChat(1, "numberCityStateFound: " + numberCityStateFound);
-
 
    for (i = 0; < numberCityStateFound)
    {
@@ -1033,8 +1036,6 @@ minInterval 20
    // If we have a location, we can attack it
    if (bestLocation != cInvalidVector)
    {
-      aiChat(1, "found a location");
-
       if (transportRequired == true)
       {  // Check and make sure we have a boat if we want to attack somewhere that needs a transport
          if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) <= 0)
@@ -5080,5 +5081,436 @@ minInterval 60
    else
    {
       aiPlanSetVariableInt(convictPlan, cTrainPlanNumberToMaintain, 0, buildLimit);
+   }
+}
+
+//==============================================================================
+// waterAttack
+// Creates the attack plans for our naval units.
+//==============================================================================
+rule waterAttackKOTH
+inactive
+minInterval 30
+{
+   if (xsIsRuleEnabled("waterAttack") == true)
+   {
+      xsDisableRule("waterAttack");
+   }
+
+   int age = kbGetAge();
+   int time = xsGetTime();
+   int shipMin = 0;
+   int shipDesired = 0;
+   bool fishRaid = false;
+   int targetDockID = -1;
+   bool defendingKOTH = false;
+   bool attackingKOTH = false;
+
+   // AssertiveWall: Reset the attack if it's been too long
+   if (time > (gLastNavalAttackTime + gAttackMissionInterval))
+   {
+      gNavyAttackPlan = -1;
+   }
+
+   // AssertiveWall: Don't attack if there's a land attack going on
+   if (isDefendingOrAttacking() == true)
+   {
+      return;
+   }
+
+   // AssertiveWall: Constant attacks on water? We'll try it for hard and above
+   // AssertiveWall: Reduce attack interval to 1 - 1.5 mins
+   // if ((gLastNavalAttackTime > time - (gAttackMissionInterval / 2)) || (aiTreatyActive() == true))
+   if (aiTreatyActive() == true)
+   {
+      return;
+   }
+   else if (cDifficultyCurrent < cDifficultyHard && (gLastNavalAttackTime > time - (gAttackMissionInterval / 2)))
+   {
+      return;
+   }
+
+   if (gNavyAttackPlan >= 0)
+   {
+      return; // We don't want multiple attack plans.
+   }
+
+   if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < 1)
+   {
+      return; // We don't attack without ships
+   }
+   
+   // AssertiveWall: add warships, fishing boats, and forts to attack plan options
+   // varies the warship minimums for each attack type
+
+
+   int KOTHUnit = getUnit(cUnitTypezpKingsHillNaval, cPlayerRelationAny, cUnitStateAny);
+   if (kbGetPlayerTeam(kbUnitGetPlayerID(KOTHUnit)) == kbGetPlayerTeam(cMyID))
+   {
+      defendingKOTH = true; // We're defending, let's not go launching any attacks.
+         // If we are defending the hill, return (don't attack, let defend rule do the defend)
+      return;
+   }
+   else
+   {
+      attackingKOTH = true; // We're attacking, focus on the hill.
+   }
+   
+
+
+   // If we are attacking the hill, check the hill first. Basically see if we have more warships than the enemy,
+   //  or if we're running out of time
+   if (attackingKOTH == true)
+   {
+      int tempBoatUnit = -1;
+      int friendlyWSStrength = 0;
+      int enemyWSStrength = 0;
+      targetDockID = getUnit(cUnitTypezpKingsHillNaval, cPlayerRelationAny, cUnitStateAny);
+
+      // Get the associated strength of friendly and enemy fleets
+      int friendlyWSQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationAlly, cUnitStateAlive);
+      int friendlyWSCount = kbUnitQueryExecute(friendlyWSQuery);
+      for (i = 0; < friendlyWSCount)
+      {
+         tempBoatUnit = kbUnitGetProtoUnitID(kbUnitQueryGetResult(friendlyWSQuery, i));
+         friendlyWSStrength += kbUnitCostPerResource(tempBoatUnit, cResourceWood) + kbUnitCostPerResource(tempBoatUnit, cResourceGold) +
+                              kbUnitCostPerResource(tempBoatUnit, cResourceInfluence);
+      }
+
+      int enemyWSQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+                                             kbUnitGetPosition(targetDockID), 60);
+      int enemyWSCount = kbUnitQueryExecute(enemyWSQuery);
+      tempBoatUnit = -1;
+      for (i = 0; < enemyWSCount)
+      {
+         tempBoatUnit = kbUnitGetProtoUnitID(kbUnitQueryGetResult(enemyWSQuery, i));
+         enemyWSStrength += kbUnitCostPerResource(tempBoatUnit, cResourceWood) + kbUnitCostPerResource(tempBoatUnit, cResourceGold) +
+                              kbUnitCostPerResource(tempBoatUnit, cResourceInfluence);
+      }
+
+      if (friendlyWSStrength < enemyWSStrength)
+      {
+         targetDockID = -1;
+      }
+   }
+
+
+
+   // AssertiveWall: Fort attack plan
+   if (targetDockID < 0)
+   {
+      targetDockID = getClosestUnitByLocation(cUnitTypeAbstractFort, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
+         gNavyVec, 300.0); // Get any enemy Fishing Boat within 300 range of our gNavyVec to attack.
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < 6)
+      {
+         targetDockID = -1; // It takes 6 ships to attack a fort
+      }
+   }
+
+   // AssertiveWall: Warship attack plan
+   if (targetDockID < 0) 
+   {
+      targetDockID = getClosestVisibleUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
+         gNavyVec, 300.0); // Get any enemy Warship within 300 range of our gNavyVec to attack.
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < kbUnitCount(cPlayerRelationEnemyNotGaia, cUnitTypeAbstractWarShip, cUnitStateAlive))
+      {
+         targetDockID = -1; // We don't attack with fewer warships than our enemy
+      }
+   }
+
+   // AssertiveWall: Raid fishing boats
+   if (targetDockID < 0)
+   {
+      targetDockID = getClosestVisibleUnitByLocation(gFishingUnit, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
+         gNavyVec, 300.0); // Get any enemy Fishing Boat within 300 range of our gNavyVec to attack.
+      if (targetDockID > 0)
+      {
+         fishRaid = true;
+      }
+   }
+
+   // AssertiveWall: Dock Attack Plan
+   if (targetDockID < 0)
+   {
+      targetDockID = getClosestUnitByLocation(cUnitTypeAbstractDock, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
+         gNavyVec, 400.0); // Get any enemy Dock within 400 range of our gNavyVec to attack.
+      if (age < cAge3)
+      {
+         if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < 2)
+         {
+            targetDockID = -1; // We don't attack with fewer than 2 war ships in age 2.
+         }
+      }
+      else
+      {
+         if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < 3)
+         {
+            targetDockID = -1; // We don't attack with fewer than 3 war ships.
+         }
+      }
+   }
+
+   // AssertiveWall: Tower attack plan
+   if (targetDockID < 0)
+   {
+      targetDockID = getClosestUnitByLocation(gTowerUnit, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
+         gNavyVec, 300.0); // Get any enemy Fishing Boat within 300 range of our gNavyVec to attack.
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < 2)
+      {
+         targetDockID = -1; // It takes 2 ships to attack a tower
+      }
+   }
+
+   if (targetDockID < 0)
+   {
+      return; // AssertiveWall: return if there are no suitable targets
+   }
+
+   // AssertiveWall: Calculate minimum and desired ships
+   vector targetDockPosition = kbUnitGetPosition(targetDockID);
+   if (targetDockPosition == cInvalidVector)
+   {
+      return; // Catch any issues here
+   }
+   int towerNum = getUnitCountByLocation(gTowerUnit, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         targetDockPosition, 20.0);
+   int warshipNum = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         targetDockPosition, 20.0);
+   int fortNum = getUnitCountByLocation(cUnitTypeAbstractFort, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         targetDockPosition, 20.0);
+   int artyNum = getUnitCountByLocation(cUnitTypeAbstractArtillery, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         targetDockPosition, 20.0);
+   shipMin = 1 + towerNum + warshipNum + 3 * fortNum;
+   shipDesired = 2 + 2 * towerNum + warshipNum + 4 * fortNum + artyNum;
+   if (shipMin > 5)
+   {
+      shipMin = 5;  // Don't let this get too out of hand
+   }
+   if (civIsNative() == true)
+   {
+      shipMin = 3 * shipMin;
+      shipDesired = 4 * shipDesired;
+   }
+
+   if (targetDockID >= 0) // There's something to attack.
+   {
+      int navalTargetPlayer = kbUnitGetPlayerID(targetDockID);
+      
+      gNavyAttackPlan = aiPlanCreate("NAVAL Attack Player: " + navalTargetPlayer + ", targetDockID: " + targetDockID, cPlanCombat);
+      
+      aiPlanAddUnitType(gNavyAttackPlan, cUnitTypeAbstractWarShip, shipMin, shipDesired, 200);
+      aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
+      aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+      aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanTargetPlayerID, 0, navalTargetPlayer);
+      aiPlanSetVariableVector(gNavyAttackPlan, cCombatPlanTargetPoint, 0, targetDockPosition);
+      aiPlanSetVariableVector(gNavyAttackPlan, cCombatPlanGatherPoint, 0, gNavyVec);
+      aiPlanSetVariableFloat(gNavyAttackPlan, cCombatPlanGatherDistance, 0, 40.0);
+      aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternRandom);
+      aiPlanSetDesiredPriority(gNavyAttackPlan, 60); // Per the chart
+
+
+      if (cDifficultyCurrent >= cDifficultyModerate)
+      {  // AssertiveWall: Don't bring more ships on fishing boat raids
+         if (fishRaid == false)
+         {
+            aiPlanSetVariableBool(gNavyAttackPlan, cCombatPlanAllowMoreUnitsDuringAttack, 0, true);
+         }
+         aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanRefreshFrequency, 0, 300);
+      }
+      else
+      {
+         aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanRefreshFrequency, 0, 1000);
+      }
+
+      aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeNoTarget);
+      aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+      aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanNoTargetTimeout, 0, 30000);
+      aiPlanSetBaseID(gNavyAttackPlan, kbUnitGetBaseID(getUnit(gDockUnit, cMyID, cUnitStateAlive)));
+      aiPlanSetInitialPosition(gNavyAttackPlan, gNavyVec);
+
+      aiPlanSetActive(gNavyAttackPlan);
+      gLastNavalAttackTime = time;
+
+      debugMilitary("***** LAUNCHING NAVAL ATTACK on player: " + navalTargetPlayer + ", targetDockID: " + targetDockID);
+      aiPlanSetEventHandler(gNavyAttackPlan, cPlanEventStateChange, "navalAttackPlanHandler");
+   }
+}
+
+//==============================================================================
+// waterDefend
+// Creates and manages the persistent defend plan for our naval units.
+//==============================================================================
+rule waterDefendKOTH
+inactive
+minInterval 5  
+{  
+   if (xsIsRuleEnabled("waterDefend") == true)
+   {
+      xsDisableRule("waterDefend");
+   }
+   
+   // AssertiveWall: Reduced minInterval to 5 from 10
+   if (gNavyDefendPlan < 0) // First run, create a persistent defend plan.
+   {
+      gNavyDefendPlan = aiPlanCreate("Water Defend", cPlanCombat);
+
+      aiPlanSetVariableInt(gNavyDefendPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeDefend);
+      aiPlanSetVariableInt(gNavyDefendPlan, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+      aiPlanSetVariableInt(gNavyDefendPlan, cCombatPlanTargetPlayerID, 0, cMyID);
+      aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0, gNavyVec);
+      aiPlanSetInitialPosition(gNavyDefendPlan, gNavyVec);
+      aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanGatherPoint, 0, gNavyVec);
+      aiPlanSetVariableFloat(gNavyDefendPlan, cCombatPlanGatherDistance, 0, 80.0);  // AssertiveWall: Doubled the gather distance from 40 to 80
+      aiPlanSetVariableInt(gNavyDefendPlan, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
+      aiPlanAddUnitType(gNavyDefendPlan, cUnitTypeAbstractWarShip, 0, 200, 200);
+      // AssertiveWall: adds artillery to water defend plan
+      if (gStartOnDifferentIslands == true)
+      {
+         aiPlanAddUnitType(gNavyDefendPlan, cUnitTypeAbstractArtillery, 0, 0, 2);
+      }
+      else if (gNavyMap == true)
+      {
+         aiPlanAddUnitType(gNavyDefendPlan, cUnitTypeAbstractArtillery, 0, 0, 1);
+      }
+      
+      debugMilitary("Creating primary navy defend plan at: " + gNavyVec);
+      aiPlanSetActive(gNavyDefendPlan);
+   }
+
+   // Check if we have the hill. If we do, move defend plan there
+   int KOTHUnit = getUnit(cUnitTypezpKingsHillNaval, cPlayerRelationAny, cUnitStateAny);
+   if (kbGetPlayerTeam(kbUnitGetPlayerID(KOTHUnit)) == kbGetPlayerTeam(cMyID))
+   {
+      vector defendPoint = getRandomPoint(kbUnitGetPosition(KOTHUnit), 5 * cNumberPlayers);
+      if (distance(defendPoint, aiPlanGetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0)) > 5 * cNumberPlayers)
+      {
+         aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0, defendPoint);
+         aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanGatherPoint, 0, defendPoint);
+      }
+
+      aiPlanSetDesiredPriority(gNavyDefendPlan, 25);
+   }
+   else
+   {
+      aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0, gNavyVec);
+      aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanGatherPoint, 0, gNavyVec);
+   }
+
+   // AssertiveWall: build a dummy plan and move fishing boats into it to control them easier. 
+   //                Enables fishingBellMonitor to ungarrison boats from docks
+   if (gFishingBellPlan < 0) // first run
+   {
+      gFishingBellPlan = aiPlanCreate("Fishing Dock Bell", cPlanReserve);
+      aiPlanAddUnitType(gFishingBellPlan, gFishingUnit, 0, 200, 200);
+      aiPlanSetDesiredPriority(gFishingBellPlan, 1);
+      aiPlanSetActive(gFishingBellPlan);
+      if (xsIsRuleEnabled("fishingBellMonitor") == false)
+      {
+         xsEnableRule("fishingBellMonitor");
+      }
+   }
+   
+   int enemyQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
+   kbUnitQuerySetSeeableOnly(enemyQuery, true); // Only stop fishing when the enemy is actually near us.
+   int numberFound = kbUnitQueryExecute(enemyQuery);
+
+   if (numberFound > 0)
+   {
+      aiPlanSetDesiredPriority(gNavyDefendPlan, 25); // Above fishing when there are enemies around.
+      aiPlanSetDesiredPriority(gFishingBellPlan, 25); // AssertiveWall: Above fishing when there are enemies around.
+      gLastWSTime = 120000 + xsGetTime(); // AssertiveWall: resets clock for dock building
+   
+      // AssertiveWall: If enemy are too close to fishing ships, tell them to move
+      int fishBoatQuery = createSimpleUnitQuery(cUnitTypeAbstractFishingBoat, cMyID, cUnitStateAlive);
+      int numberFBFound = kbUnitQueryExecute(fishBoatQuery);
+      int nearbyEnFound = -1;
+      int dockUnit = -1;
+      int unitID = -1;
+      int unitPlanID = -1;
+      int enUnitID = -1;
+      vector fBLocation = cInvalidVector;
+      vector enemyLocation = cInvalidVector;
+      vector sLocation = cInvalidVector;
+      // AssertiveWall: Step through each fishing boat
+      for (i = 0; < numberFBFound)
+      {
+         unitID = kbUnitQueryGetResult(fishBoatQuery, i);
+         unitPlanID = kbUnitGetPlanID(unitID);
+         if (aiPlanGetDesiredPriority(unitPlanID) > 19 && unitPlanID != gFishingBellPlan)
+         {  // Fishing priority is 19. Let anyone above that do their thing
+            continue;
+         }
+         fBLocation = kbUnitGetPosition(unitID);
+         nearbyEnFound = getClosestVisibleUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, fBLocation, 35.0); // three bigger range than a frigate
+         if (nearbyEnFound > 0)
+         {  
+            // AssertiveWall: First add boat to gFishingBellPlan so we can control it
+            aiPlanAddUnit(gFishingBellPlan, unitID);
+
+            // AssertiveWall: Two courses of action depending on whether its a fishing boat or something else
+            if (kbUnitGetProtoUnitID(unitID) == gFishingUnit)
+            {
+               // AssertiveWall: Look for docks to garrison in. If none found then forts, town centers, towers
+               dockUnit = getUnitByLocation(gDockUnit, cPlayerRelationSelf, cUnitStateAlive, fBLocation, 200.0);
+               sLocation = kbUnitGetPosition(dockUnit);
+               if (sLocation != cInvalidVector)
+               {
+                  aiTaskUnitWork(unitID, dockUnit, true);
+                  continue;
+               }
+               
+               // Now look for the rest
+               if (sLocation == cInvalidVector)
+               {
+                  sLocation = kbUnitGetPosition(getUnitByLocation(cUnitTypeFortFrontier, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+               }
+               if (sLocation == cInvalidVector)
+               {
+                  sLocation = kbUnitGetPosition(getUnitByLocation(cUnitTypeTownCenter, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+               }
+               if (sLocation == cInvalidVector)
+               {
+                  sLocation = kbUnitGetPosition(getUnitByLocation(gTowerUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+               }
+               // No good options left, go for any dock, then gNavyVec
+               if (sLocation == cInvalidVector)
+               {
+                  dockUnit = getClosestUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 1000);
+                  sLocation = kbUnitGetPosition(dockUnit);
+                  if (sLocation != cInvalidVector)
+                  {
+                     aiTaskUnitWork(unitID, dockUnit, true);
+                     continue;
+                  }
+               }
+               if (sLocation == cInvalidVector)
+               {
+                  sLocation = gNavyVec;
+               }
+
+               if (sLocation != cInvalidVector)
+               {
+                  aiTaskUnitMove(unitID, sLocation);
+               }
+            }
+            else
+            {  // Shoot it!
+               aiTaskUnitWork(unitID, nearbyEnFound);
+            }
+         }
+         else if (nearbyEnFound <= 0)
+         {  // AssertiveWall: Ungarrison from dock. Should be unnecessary, also handled in fishingBellMonitor
+            dockUnit = getUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 1.0);
+            if (dockUnit > 0)
+            {
+               aiTaskUnitEject(dockUnit);
+            }
+         }
+      }
+   }
+   else
+   {
+      aiPlanSetDesiredPriority(gNavyDefendPlan, 15); // Below fishing when there are no enemies around.
+      aiPlanSetDesiredPriority(gFishingBellPlan, 1); // Below fishing when there are no enemies around.
    }
 }
