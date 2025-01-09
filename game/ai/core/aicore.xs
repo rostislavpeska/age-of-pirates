@@ -330,8 +330,12 @@ void popManager(bool revoltedMilitary = false, bool revoltedEconomic = false)
    // to allow AI to build big enough armies to attack
    if (gStartOnDifferentIslands == true && cDifficultyCurrent >= cDifficultyModerate)
    {
-      // AssertiveWall: a little more throttling on island maps
-      if (gStrategy == cStrategyRush)
+      // AssertiveWall: a little more throttling on island maps, and lots on naval KOTH
+      if (gIsNavalKOTH == true)
+      {
+         setMilPopLimit(maxMil / 15, maxMil / 12, maxMil / 8, maxMil / 2, maxMil);
+      }
+      else if (gStrategy == cStrategyRush)
       {
          setMilPopLimit(maxMil / 6, maxMil / 2, maxMil / 2, maxMil, maxMil);
       }
@@ -2329,7 +2333,10 @@ minInterval 5
 
       if (gNavyMap == true)
       {
-         xsEnableRule("waterDefend");
+         if (gIsNavalKOTH == false)
+         {
+            xsEnableRule("waterDefend");
+         }
          xsEnableRule("coastalGuns");
          //if (gMigrationMap == true)
          //{
@@ -2473,10 +2480,24 @@ minInterval 5
             if (gNavyMap == true)
             {
                xsEnableRule("waterAttack"); // Water attacking.
-               xsEnableRule("endlessWaterRaids"); // AssertiveWall: constant raids/patrols on water
+               // AssertiveWall: Don't do endless water raids on naval KOTH. First naval assault is rarer
+               if (gIsNavalKOTH == false)
+               {
+                  xsEnableRule("endlessWaterRaids"); // AssertiveWall: constant raids/patrols on water
+               }
                if (gStartOnDifferentIslands == true)
                {
-                  xsEnableRule("firstNavalAssault"); // AssertiveWall: handles the first few attacks on water
+                  if (gIsNavalKOTH == true)
+                  {
+                     if (aiRandInt(3) < 2)
+                     {
+                        xsEnableRule("firstNavalAssault"); // AssertiveWall: handles the first few attacks on water
+                     }
+                  }
+                  else
+                  {
+                     xsEnableRule("firstNavalAssault"); // AssertiveWall: handles the first few attacks on water
+                  }
                }
             }
          }

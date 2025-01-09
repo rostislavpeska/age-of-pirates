@@ -160,6 +160,7 @@ minInterval 1
    if (getGaiaUnitCount(cUnitTypezpKingsHillNaval) > 0)
    {
       gAmphibiousAssaultStage = cForbidAmphibiousAssault;
+      gIsNavalKOTH = true;
       xsEnableRule("waterAttackKOTH");
       xsEnableRule("waterDefendKOTH");
    }
@@ -5098,12 +5099,6 @@ minInterval 30
       xsDisableRule("waterAttack");
    }
 
-   // Keep military throttled. Will only effect ages 1, 2
-   if (kbGetAge() <= cAge2)
-   {
-      setMilPopLimit(10, 15, 25, 50, 101);
-   }
-
    int age = kbGetAge();
    int time = xsGetTime();
    int shipMin = 0;
@@ -5389,7 +5384,7 @@ minInterval 5
    if (kbGetPlayerTeam(kbUnitGetPlayerID(KOTHUnit)) == kbGetPlayerTeam(cMyID))
    {
       vector defendPoint = getRandomPoint(kbUnitGetPosition(KOTHUnit), 5 * cNumberPlayers);
-      if (distance(defendPoint, aiPlanGetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0)) > 5 * cNumberPlayers)
+      if (distance(defendPoint, aiPlanGetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0)) > 30)
       {
          aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0, defendPoint);
          aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanGatherPoint, 0, defendPoint);
