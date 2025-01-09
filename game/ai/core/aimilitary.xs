@@ -655,7 +655,7 @@ minInterval 10
       xsEnableRule("mostHatedEnemy"); // Picks a target for us to attack.
       mostHatedEnemy(); // Instantly get a target so our managers have something to work with.
       xsEnableRule("attackManager"); // Land attacking / defending allies.
-      if (gNavyMap == true)
+      if (gNavyMap == true && gIsNavalKOTH == false)
       {
          xsEnableRule("waterAttack"); // Water attacking.
       }
@@ -2171,7 +2171,11 @@ minInterval 30
       if (cDifficultyCurrent >= cDifficultyHard && gStartOnDifferentIslands == true)
       {
          // AssertiveWall: Navy size based on strategy
-         if (gStrategy == cStrategyRush)
+         if (gIsNavalKOTH == true)
+         {
+            gNetNavyValue += 2800; // two frigates and two caravels
+         }
+         else if (gStrategy == cStrategyRush)
          { 
             if (age <= cAge2)
             {
