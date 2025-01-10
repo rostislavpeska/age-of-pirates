@@ -383,36 +383,36 @@ void main(void)
 
 	rmSetNuggetDifficulty(298, 298);
 	// San Marco
-	int veniceSanMarco = rmCreateGrouping("bridge1", "EU_Island_Venice_SanMarco");
+	int veniceSanMarco = rmCreateGrouping("bridge1", "Venice_Island_01");
     rmSetGroupingMinDistance(veniceSanMarco, 0.00);
     rmSetGroupingMaxDistance(veniceSanMarco, 0.01);
 	rmAddGroupingToClass(veniceSanMarco, rmClassID("classPlateau"));
 
-	int veniceInstanceID1 = rmPlaceGroupingInstanceAtLoc(veniceSanMarco, rmXMetersToFraction(xsVectorGetX(ControllerLoc1))+rmXTilesToFraction(23), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1))+rmZTilesToFraction(16), 0);
+	int veniceInstanceID1 = rmPlaceGroupingInstanceAtLoc(veniceSanMarco, rmXMetersToFraction(xsVectorGetX(ControllerLoc1))+rmXTilesToFraction(22), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1))+rmZTilesToFraction(16), 0);
 
 	//San Giorgio
-	int veniceSanGiorgio = rmCreateGrouping("bridge2", "EU_Island_Venice_Academia");
+	int veniceSanGiorgio = rmCreateGrouping("bridge2", "Venice_Island_02");
     rmSetGroupingMinDistance(veniceSanGiorgio, 0.00);
     rmSetGroupingMaxDistance(veniceSanGiorgio, 0.00);
 	rmAddGroupingToClass(veniceSanGiorgio, rmClassID("classPlateau"));
 
-	int veniceInstanceID2 = rmPlaceGroupingInstanceAtLoc(veniceSanGiorgio, rmXMetersToFraction(xsVectorGetX(ControllerLoc2))-rmXTilesToFraction(17), rmZMetersToFraction(xsVectorGetZ(ControllerLoc2))+rmZTilesToFraction(22), 0);
+	int veniceInstanceID2 = rmPlaceGroupingInstanceAtLoc(veniceSanGiorgio, rmXMetersToFraction(xsVectorGetX(ControllerLoc2))-rmXTilesToFraction(16), rmZMetersToFraction(xsVectorGetZ(ControllerLoc2))+rmZTilesToFraction(24), 0);
 
 	// Academia
-	int veniceAcademia = rmCreateGrouping("bridge3", "EU_Island_Venice_SanGiorgi");
+	int veniceAcademia = rmCreateGrouping("bridge3", "Venice_Island_03");
     rmSetGroupingMinDistance(veniceAcademia, 0.00);
     rmSetGroupingMaxDistance(veniceAcademia, 0.00);
 	rmAddGroupingToClass(veniceAcademia, rmClassID("classPlateau"));
 
-	int veniceInstanceID3 = rmPlaceGroupingInstanceAtLoc(veniceAcademia, rmXMetersToFraction(xsVectorGetX(ControllerLoc3))-rmXTilesToFraction(21), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3))-rmZTilesToFraction(21), 0);
+	int veniceInstanceID3 = rmPlaceGroupingInstanceAtLoc(veniceAcademia, rmXMetersToFraction(xsVectorGetX(ControllerLoc3))-rmXTilesToFraction(19), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3))-rmZTilesToFraction(21), 0);
 
 	// San Polo
-	int veniceSanPolo = rmCreateGrouping("bridge4", "EU_Island_Venice_SanPolo");
+	int veniceSanPolo = rmCreateGrouping("bridge4", "Venice_Island_04");
     rmSetGroupingMinDistance(veniceSanPolo, 0.00);
     rmSetGroupingMaxDistance(veniceSanPolo, 0.01);
 	rmAddGroupingToClass(veniceSanPolo, rmClassID("classPlateau"));
 
-	int veniceInstanceID4 = rmPlaceGroupingInstanceAtLoc(veniceSanPolo, rmXMetersToFraction(xsVectorGetX(ControllerLoc4))+rmXTilesToFraction(20), rmZMetersToFraction(xsVectorGetZ(ControllerLoc4))+rmZTilesToFraction(16), 0);
+	int veniceInstanceID4 = rmPlaceGroupingInstanceAtLoc(veniceSanPolo, rmXMetersToFraction(xsVectorGetX(ControllerLoc4))+rmXTilesToFraction(21), rmZMetersToFraction(xsVectorGetZ(ControllerLoc4))+rmZTilesToFraction(15), 0);
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.40);
@@ -994,6 +994,8 @@ void main(void)
 	vector veniceSocketLoc3 = rmGetUnitPosition(veniceSocket3);
 	vector veniceSocketLoc4 = rmGetUnitPosition(veniceSocket4);
 
+	string guardianUnit = "deSPCCityGuard";
+
 	// Victory Timer
 	int victoryCountDown = 480;
 	int socketMinimapFlareDuration = 10;
@@ -1061,8 +1063,13 @@ void main(void)
 	rmSetTriggerLoop(false);
 
     rmCreateTrigger("Socket 1 Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-    rmSetTriggerConditionParam("NuggetObject", ""+veniceNuggetMod1);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+veniceSocketMod1);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType",guardianUnit);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", ""+veniceSocketMod1, false);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
@@ -1075,8 +1082,13 @@ void main(void)
 	rmSetTriggerLoop(false);
 
     rmCreateTrigger("Socket 2 Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-    rmSetTriggerConditionParam("NuggetObject", ""+veniceNuggetMod2);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+veniceSocketMod2);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType",guardianUnit);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", ""+veniceSocketMod2, false);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
@@ -1089,8 +1101,13 @@ void main(void)
 	rmSetTriggerLoop(false);
 
 	rmCreateTrigger("Socket 3 Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-    rmSetTriggerConditionParam("NuggetObject", ""+veniceNuggetMod3);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+veniceSocketMod3);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType",guardianUnit);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", ""+veniceSocketMod3, false);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
@@ -1103,8 +1120,13 @@ void main(void)
 	rmSetTriggerLoop(false);
 
     rmCreateTrigger("Socket 4 Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-    rmSetTriggerConditionParam("NuggetObject", ""+veniceNuggetMod4);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+veniceSocketMod4);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType",guardianUnit);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", ""+veniceSocketMod4, false);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
@@ -2847,6 +2869,7 @@ void main(void)
 		rmSetTriggerLoop(false);
 	}
 	}
+
 
 
 

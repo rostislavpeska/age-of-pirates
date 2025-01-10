@@ -2258,7 +2258,7 @@
       <difficulty>98</difficulty>
     </nugget>
     <nugget>
-      <name>zpNuggetCityState</name>
+      <name>zpNuggetPirateCityState</name>
       <nuggetunit>zpNuggetInvisible</nuggetunit>
       <rolloverstringid>29084</rolloverstringid>
       <applystringid>66271</applystringid>
@@ -2290,7 +2290,7 @@
       <difficulty>294</difficulty>
     </nugget>
     <nugget>
-      <name>zpNuggetPiratesCityState</name>
+      <name>zpNuggetCityState</name>
       <nuggetunit>zpNuggetInvisible</nuggetunit>
       <rolloverstringid>29084</rolloverstringid>
       <applystringid>66271</applystringid>

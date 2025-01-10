@@ -46163,25 +46163,26 @@
     <unittype>BuildingClass</unittype>
     <unittype>Building</unittype>
     <unittype>AbstractCityManisonB</unittype>
-    <flag>TieToWaterSurface</flag>
-    <flag>DoNotShowOnMiniMap</flag>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>StartsAtFullEfficiency</flag>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
-    <flag>Doppled</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>PaintTextureWhenPlacing</flag>
-    <flag>ColonyBuilding</flag>
-    <flag>ColonyPlacementL</flag>
-    <flag>HasGatherPoint</flag>
-    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFog</flag>
     <flag>NotSelectable</flag>
-    <flag>Invulnerable</flag>
+    <flag>NoUnitAI</flag>
     <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
   </unit>
   <unit id="20615" name="zpSPCEzio">
     <dbid>20615</dbid>
@@ -47983,25 +47984,26 @@
     <unittype>BuildingClass</unittype>
     <unittype>Building</unittype>
     <unittype>AbstractCityManisonB</unittype>
-    <flag>TieToWaterSurface</flag>
-    <flag>DoNotShowOnMiniMap</flag>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>StartsAtFullEfficiency</flag>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
-    <flag>Doppled</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>PaintTextureWhenPlacing</flag>
-    <flag>ColonyBuilding</flag>
-    <flag>ColonyPlacementL</flag>
-    <flag>HasGatherPoint</flag>
-    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFog</flag>
     <flag>NotSelectable</flag>
-    <flag>Invulnerable</flag>
+    <flag>NoUnitAI</flag>
     <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
   </unit>
   <unit id="20639" name="zpNativeHouseVenetianF">
     <dbid>20639</dbid>
@@ -48036,25 +48038,26 @@
     <unittype>BuildingClass</unittype>
     <unittype>Building</unittype>
     <unittype>AbstractCityManisonB</unittype>
-    <flag>TieToWaterSurface</flag>
-    <flag>DoNotShowOnMiniMap</flag>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>StartsAtFullEfficiency</flag>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
-    <flag>Doppled</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>PaintTextureWhenPlacing</flag>
-    <flag>ColonyBuilding</flag>
-    <flag>ColonyPlacementL</flag>
-    <flag>HasGatherPoint</flag>
-    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFog</flag>
     <flag>NotSelectable</flag>
-    <flag>Invulnerable</flag>
+    <flag>NoUnitAI</flag>
     <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
   </unit>
   <unit id="20640" name="zpNativeHouseVenetianG">
     <dbid>20640</dbid>
@@ -48089,25 +48092,26 @@
     <unittype>BuildingClass</unittype>
     <unittype>Building</unittype>
     <unittype>AbstractCityManisonB</unittype>
-    <flag>TieToWaterSurface</flag>
-    <flag>DoNotShowOnMiniMap</flag>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>StartsAtFullEfficiency</flag>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
-    <flag>Doppled</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>PaintTextureWhenPlacing</flag>
-    <flag>ColonyBuilding</flag>
-    <flag>ColonyPlacementL</flag>
-    <flag>HasGatherPoint</flag>
-    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFog</flag>
     <flag>NotSelectable</flag>
-    <flag>Invulnerable</flag>
+    <flag>NoUnitAI</flag>
     <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
   </unit>
 
 
