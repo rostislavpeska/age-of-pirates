@@ -2375,41 +2375,38 @@
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
-    <unittype>Economic</unittype>
     <unittype>BuildingClass</unittype>
-    <unittype>ColonyBuilding</unittype>
+    <unittype>Economic</unittype>
     <unittype>Building</unittype>
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
     <train row="0" page="0" column="0">zpPrivateerProxy</train>
     <train row="0" page="0" column="1">zpSPCQueenAnneProxy</train>
     <train row="0" page="0" column="1">zpSPCBlackPearlProxy</train>
     <train row="0" page="0" column="1">zpSPCNeptuneGalleyProxy</train>
     <tech row="0" page="0" column="2">zpSPCPirateRandomShip1</tech>
-    <tech row="0" page="1" column="0">zpSPCPirateFleet</tech>
-    <tech row="0" page="1" column="1">zpSPCPiratePorts</tech>
+    <tech row="0" page="1" column="1">zpSPCPirateFleet</tech>
+    <tech row="0" page="1" column="2">zpSPCPiratePorts</tech>
+    <tech row="0" page="1" column="0">zpSPCPirateForeignAllies</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>ObscuresUnits</flag>
-    <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
-    <flag>TieToWaterSurface</flag>
     <flag>Doppled</flag>
     <flag>SelectWithObstruction</flag>
-    <flag>PaintTextureWhenPlacing</flag>
     <flag>DontFlattenGround</flag>
-    <flag>InitialGarrisonOnly</flag>
-    <flag>ColonyBuilding</flag>
-    <flag>ColonyPlacementL</flag>
-    <flag>Tracked</flag>
-    <flag>Invulnerable</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>SnapPlacement</flag>
     <flag>HasGatherPoint</flag>
-    <flag>NotDeleteable</flag>
-    <flag>DisableBigButtonUI</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>Tracked</flag>
+    <flag>DisplayRange</flag>
+    <flag>Invulnerable</flag>
     <tactics>piratedock.tactics</tactics>
     <protoaction>
       <name>Heal</name>
@@ -44454,7 +44451,7 @@
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
     <los>75.0000</los>
-    <buildpoints>30.0000</buildpoints>
+    <buildpoints>15.0000</buildpoints>
     <displayedrange>74.0</displayedrange>
     <projectileprotounit>MortarShell</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -47001,41 +46998,38 @@
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
-    <unittype>Economic</unittype>
     <unittype>BuildingClass</unittype>
-    <unittype>ColonyBuilding</unittype>
+    <unittype>Economic</unittype>
     <unittype>Building</unittype>
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
     <train row="0" page="0" column="0">zpPrivateerProxy</train>
     <train row="0" page="0" column="1">zpSPCQueenAnneProxy</train>
     <train row="0" page="0" column="1">zpSPCBlackPearlProxy</train>
     <train row="0" page="0" column="1">zpSPCNeptuneGalleyProxy</train>
     <tech row="0" page="0" column="1">zpSPCPirateRandomShip2</tech>
-    <tech row="0" page="1" column="0">zpSPCPirateFleet</tech>
-    <tech row="0" page="1" column="1">zpSPCPiratePorts</tech>
+    <tech row="0" page="1" column="1">zpSPCPirateFleet</tech>
+    <tech row="0" page="1" column="2">zpSPCPiratePorts</tech>
+    <tech row="0" page="1" column="0">zpSPCPirateForeignAllies</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>ObscuresUnits</flag>
-    <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
-    <flag>TieToWaterSurface</flag>
     <flag>Doppled</flag>
     <flag>SelectWithObstruction</flag>
-    <flag>PaintTextureWhenPlacing</flag>
     <flag>DontFlattenGround</flag>
-    <flag>InitialGarrisonOnly</flag>
-    <flag>ColonyBuilding</flag>
-    <flag>ColonyPlacementL</flag>
-    <flag>Tracked</flag>
-    <flag>Invulnerable</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>SnapPlacement</flag>
     <flag>HasGatherPoint</flag>
-    <flag>NotDeleteable</flag>
-    <flag>DisableBigButtonUI</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>Tracked</flag>
+    <flag>DisplayRange</flag>
+    <flag>Invulnerable</flag>
     <tactics>piratedock.tactics</tactics>
     <protoaction>
       <name>Heal</name>

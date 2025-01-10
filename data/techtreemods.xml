@@ -76,7 +76,6 @@
     </prereqs>
     <effects>
       <effect type="RandomTech" select="1" status="active">
-        <tech>zpSPCSpawnGalley1</tech>
         <tech>zpSPCSpawnDutchman1</tech>
         <tech>zpSPCSpawnRiggedShip1</tech>
         <tech>zpSPCSpawnGalleass1</tech>
@@ -96,13 +95,30 @@
     </prereqs>
     <effects>
       <effect type="RandomTech" select="1" status="active">
-        <tech>zpSPCSpawnGalley2</tech>
         <tech>zpSPCSpawnDutchman2</tech>
         <tech>zpSPCSpawnRiggedShip2</tech>
         <tech>zpSPCSpawnGalleass2</tech>
         <tech>zpSPCSpawnXebec2</tech>
         <tech>zpSPCSpawnNautilus2</tech>
         <tech>zpSPCSpawnPirateSteamer</tech>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPirateForeignAlliesShadow" type="Normal">
+    <dbid>40890</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCPirateForeignAllies</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="RandomTech" select="1" status="active">
+        <tech>zpWokouExpeditionaryForce</tech>
+        <tech>zpCorsairExpeditionaryFleet</tech>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpCorsairGalley</target>
       </effect>
     </effects>
   </tech>
@@ -14787,11 +14803,11 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatCorsair</target>
       </effect>
-      <effect type="Data2" amount="2.00" amount2="8.00" subtype="FreeHomeCityUnitShipped" unittype="zpCorsairGalley" unittype2="zpNatMercCorsair" relativity="Absolute">
+      <effect type="Data2" amount="2.00" amount2="8.00" subtype="FreeHomeCityUnitShipped" unittype="zpCorsairGalley" unittype2="zpNatCorsair" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data" amount="-8.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="-7.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatCorsair</target>
       </effect>
       <effect type="CommandAdd" proto="zpNatCorsair" page="0" column="2">
@@ -15073,7 +15089,7 @@
     <flag>DECheckBuildLimit</flag>
     <flag>CheckWaterHCGatherPoint</flag>
     <prereqs>
-      <techstatus status="Active">Colonialize</techstatus>
+      <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
       <effect type="Data2" amount="1.00" amount2="8.00" subtype="FreeHomeCityUnitShipped" unittype="ypWokouJunk" unittype2="zpNatWokouPirate" relativity="Absolute">
@@ -20052,8 +20068,7 @@
   <tech name="zpSPCPirateFleet" type="Normal">
     <dbid>40861</dbid>
     <displaynameid>302201</displaynameid>
-    <cost resourcetype="Wood">300.0000</cost>
-    <cost resourcetype="Gold">300.0000</cost>
+    <cost resourcetype="Gold">1500.0000</cost>
     <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\team_pirates_fleet.png</icon>
@@ -20067,6 +20082,10 @@
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">Privateer</target>
+      </effect>
+      <effect type="Data2" amount="1.00" amount2="10.00" subtype="FreeHomeCityUnitShipped" unittype="Privateer" unittype2="zpNatPirate" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>
@@ -20209,7 +20228,7 @@
   <tech name="zpSPCPirateRandomShip1" type="Normal">
     <dbid>40874</dbid>
     <displaynameid>302215</displaynameid>
-    <cost resourcetype="Gold">999.0000</cost>
+    <cost resourcetype="Gold">1199.0000</cost>
     <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\unknown_pirate_ship.png</icon>
@@ -20226,7 +20245,7 @@
   <tech name="zpSPCPirateRandomShip2" type="Normal">
     <dbid>40875</dbid>
     <displaynameid>302215</displaynameid>
-    <cost resourcetype="Gold">999.0000</cost>
+    <cost resourcetype="Gold">1199.0000</cost>
     <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\unknown_pirate_ship.png</icon>
@@ -20318,7 +20337,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>TeamTech</flag>
     <effects>
-      <effect type="Data" amount="0.8" subtype="TrainPoints" relativity="BasePercent">
+      <effect type="Data" amount="0.75" subtype="TrainPoints" relativity="BasePercent">
         <target type="ProtoUnit">AbstractWarship</target>
       </effect>
     </effects>
@@ -20337,6 +20356,7 @@
       <effect type="TechStatus" status="obtainable">zpSPCPirateRandomShip1</effect>
       <effect type="TechStatus" status="obtainable">zpSPCPirateRandomShip2</effect>
       <effect type="TechStatus" status="obtainable">zpSPCPiratePorts</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPirateForeignAllies</effect>
     </effects>
   </tech>
   <tech name="zpForbidStandardWarshipdShadow" type="Normal">
@@ -20751,7 +20771,7 @@
     </effects>
   </tech>
   <tech name="zpFactoryAddBuildLimitShadow" type="Normal">
-    <dbid>40890</dbid>
+    <dbid>40891</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -20766,6 +20786,18 @@
         <target type="ProtoUnit">Factory</target>
       </effect>
     </effects>
+  </tech>
+  <tech name="zpSPCPirateForeignAllies" type="Normal">
+    <dbid>40892</dbid>
+    <displaynameid>302251</displaynameid>
+    <cost resourcetype="Gold">1200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\pirate_court.png</icon>
+    <rollovertextid>302252</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>TeamTech</flag>
   </tech>
   
  

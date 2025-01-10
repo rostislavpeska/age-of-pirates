@@ -12,4 +12,15 @@
 		Idle
 		<component>ModelComp</component>
 	</anim>
+	<anim>
+		RangedAttack
+		<component>ModelComp</component>
+	</anim>
+	<anim>RangedAttack
+        <assetreference type="GrannyAnim">
+            <file>animation_library\building\ranged_attack</file>
+            <tag type="Attack">0.45</tag>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
 </animfile>

@@ -2199,8 +2199,8 @@
       <string _locid="302198">Team Tavern Wagers</string>
       <string _locid="302199">Pirate Taverns generate gold faster</string>
       <string _locid="302200">Team Plunder Economy</string>
-      <string _locid="302201">Team Privateer Mercenaries</string>
-      <string _locid="302202">Allows you and your team mates to hire privateers directly in your dock.</string>
+      <string _locid="302201">Team Privateer Expedition</string>
+      <string _locid="302202">Ships a privateer full with Buccaneers. Allows the whole team to hire privateers directly in dock.</string>
       <string _locid="302203">Trade Blockade</string>
       <string _locid="302204">Blocks a trade route in a reach of this Pirate settlement. (After being blocked, trade route can be opened again.)</string>
       <string _locid="302205">Reverse Blockade</string>
@@ -2249,6 +2249,8 @@
       <string _locid="302248">ZP PROP Venetian House Solid Large</string>
       <string _locid="302249">ZP PROP Venetian House Solid Chuch</string>
       <string _locid="302250">ZP PROP Venetian House Solid Tower</string>
+      <string _locid="302251">Brethren Court</string>
+      <string _locid="302252">Sends a shipment from Corsair or Wokou allies</string>
 
 
 
