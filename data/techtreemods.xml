@@ -2728,6 +2728,7 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpFactoryAddBuildLimitShadow</effect>
     </effects>
   </tech>
   <tech name="zpNatMalteseOutposts" type="Normal">
@@ -15672,6 +15673,7 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpFactoryAddBuildLimitShadow</effect>
     </effects>
   </tech>
   <tech name="zpTransformConvictsToCitzens" type="Normal">
@@ -20745,6 +20747,23 @@
       <effect type="Data" action="SpawnSteamer" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCPirateDock">
         <target type="Player">
         </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpFactoryAddBuildLimitShadow" type="Normal">
+    <dbid>40890</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>OrPrereqs</flag>
+    <prereqs>
+      <techstatus status="Active">DERevolutionFranceNE</techstatus>
+      <techstatus status="Active">DEAge0Americans</techstatus>
+      <techstatus status="Active">DEAge0Mexicans</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">Factory</target>
       </effect>
     </effects>
   </tech>
