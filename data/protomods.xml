@@ -19475,8 +19475,8 @@
     <obstructionradiusx>0.7900</obstructionradiusx>
     <obstructionradiusz>0.7900</obstructionradiusz>
     <formationcategory>Mobile</formationcategory>
-    <maxvelocity>6.5000</maxvelocity>
-    <maxrunvelocity>8.5000</maxrunvelocity>
+    <maxvelocity>6.0000</maxvelocity>
+    <maxrunvelocity>8.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
     <animfile>units\natives\orthodox\cataphract_horse.xml</animfile>
@@ -19486,8 +19486,8 @@
     <portraiticon>resources\art\units\natives\cataphract_portrait.png</portraiticon>
     <rollovertextid>300966</rollovertextid>
     <shortrollovertextid>300966</shortrollovertextid>
-    <initialhitpoints>250.0000</initialhitpoints>
-    <maxhitpoints>250.0000</maxhitpoints>
+    <initialhitpoints>270.0000</initialhitpoints>
+    <maxhitpoints>270.0000</maxhitpoints>
     <los>24.0000</los>
     <autoattackrange>16.0000</autoattackrange>
     <unitaitype>HandCombative</unitaitype>
@@ -19496,9 +19496,9 @@
     <trainpoints>35.0000</trainpoints>
     <allowedage>1</allowedage>
     <subciv>zpOrthodox</subciv>
-    <buildlimit>9</buildlimit>
+    <buildlimit>8</buildlimit>
     <cost resourcetype="Food">50</cost>
-    <cost resourcetype="Gold">90</cost>
+    <cost resourcetype="Gold">100</cost>
     <armor type="Ranged" value="0.7500">
     </armor>
     <unittype>LogicalTypeHealed</unittype>
