@@ -283,7 +283,6 @@
 		<unit variation="178" posx="-26.1586" posz="-1.6285" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
 		<unit variation="5" posx="-22.2432" posz="-0.9406" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeHouseVenetianB</unit>
 		<unit variation="108" posx="-9.4344" posz="2.6630" orientx="0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeHouseVenetianD</unit>
-		<unit variation="126" posx="-48.4780" posz="3.5487" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
 		<unit variation="163" posx="13.9783" posz="0.7215" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">zpNativeHouseVenetianD</unit>
 		<unit variation="4" posx="-25.3264" posz="0.6196" orientx="0.0056" orienty="0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 		<unit variation="4" posx="-19.8294" posz="1.4085" orientx="1.0000" orienty="0.0000" orientz="0.0057">zpCinematicRevealer</unit>
@@ -295,7 +294,6 @@
 		<unit variation="254" posx="-45.6282" posz="2.9037" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
 		<unit variation="108" posx="-36.4470" posz="5.0041" orientx="1.0000" orienty="0.0000" orientz="-0.0001">zpNativeHouseVenetianD</unit>
 		<unit variation="2" posx="8.5067" posz="3.3578" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropMarketStall</unit>
-		<unit variation="126" posx="-50.2836" posz="6.8557" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
 		<unit variation="183" posx="15.5281" posz="8.1535" orientx="0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeHouseVenetianG</unit>
 		<unit variation="152" posx="-25.7688" posz="5.6637" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianG</unit>
 		<unit variation="79" posx="-32.6329" posz="3.0938" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
@@ -310,7 +308,6 @@
 		<unit variation="164" posx="6.4749" posz="7.6469" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="4" posx="13.9770" posz="8.2155" orientx="0.0056" orienty="0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 		<unit variation="0" posx="-0.0083" posz="10.3506" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock1</unit>
-		<unit variation="126" posx="-49.9376" posz="12.3411" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
 		<unit variation="161" posx="-41.6637" posz="8.4752" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="4" posx="4.3383" posz="11.6225" orientx="0.0056" orienty="0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 		<unit variation="212" posx="0.0798" posz="10.6328" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNatEUPropObelisk</unit>
@@ -324,7 +321,6 @@
 		<unit variation="4" posx="-6.3888" posz="14.4221" orientx="0.0056" orienty="0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 		<unit variation="64" posx="-53.8856" posz="18.7089" orientx="-0.9998" orienty="0.0000" orientz="0.0202">zpHarbourPlatform</unit>
 		<unit variation="134" posx="-15.1065" posz="15.0498" orientx="-0.0000" orienty="0.0000" orientz="1.0000">zpBridgeFace</unit>
-		<unit variation="126" posx="-50.0741" posz="18.8286" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
 		<unit variation="0" posx="-16.7094" posz="16.2635" orientx="1.0000" orienty="-0.0000" orientz="0.0005">zpCinematicRevealer</unit>
 		<unit variation="69" posx="-53.5327" posz="20.3374" orientx="-0.0087" orienty="0.0000" orientz="1.0000">zpHarbourPlatform</unit>
 		<unit variation="152" posx="-34.8331" posz="17.1792" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">zpCityStateFlag</unit>
@@ -351,7 +347,6 @@
 		<unit variation="0" posx="12.2385" posz="22.1026" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">zpPropMarketStall</unit>
 		<unit variation="165" posx="13.4621" posz="20.2692" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeUnitVenetianMale</unit>
 		<unit variation="42" posx="16.4787" posz="20.0766" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">zpHCUnitC</unit>
-		<unit variation="126" posx="-50.3905" posz="25.8811" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
 		<unit variation="0" posx="8.7521" posz="21.0747" orientx="1.0000" orienty="-0.0000" orientz="0.0000">SPCPathBlock1</unit>
 		<unit variation="72" posx="-41.8298" posz="20.2909" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="234" posx="-8.0817" posz="21.2184" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
@@ -370,8 +365,6 @@
 		<unit variation="19" posx="-6.5014" posz="25.1994" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
 		<unit variation="118" posx="-7.0609" posz="24.1075" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
 		<unit variation="83" posx="5.4234" posz="25.6224" orientx="-0.0001" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
-		<unit variation="126" posx="-49.8869" posz="28.4393" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
-		<unit variation="126" posx="-47.8969" posz="28.6804" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
 		<unit variation="254" posx="-48.7615" posz="26.0519" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeStatueVenetian</unit>
 		<unit variation="11" posx="-11.2812" posz="27.0331" orientx="0.0013" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetianB</unit>
 		<unit variation="83" posx="7.5745" posz="26.3743" orientx="-0.0001" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
