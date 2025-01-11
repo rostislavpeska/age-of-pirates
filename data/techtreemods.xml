@@ -5076,6 +5076,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
     </effects>
   </tech>
   <tech name="AAStandardNativeTechsPI">
@@ -5116,6 +5120,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
     </effects>
   </tech>
   <tech name="ypAAAsianStandardTechsPI">
@@ -5156,6 +5164,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothers">
@@ -5196,6 +5208,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
       <effect mergemode="add" type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
       </effect>
@@ -5239,6 +5255,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
       <effect mergemode="add" type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
       </effect>
@@ -5282,6 +5302,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
     </effects>
   </tech>
   <tech name="DEChampionNativeWarriorsAfricanShadow">
@@ -5322,6 +5346,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialMexicans">
@@ -5362,6 +5390,10 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardSansculottes</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBourbon</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBourbon</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
     </effects>
   </tech>
   <tech name="DEHeavyFixedGun">
