@@ -574,13 +574,13 @@
     <tactics>handCavalry.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
-      <damage>12.000000</damage>
+      <damage>10.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
     </protoaction>
     <protoaction>
       <name>DefendHandAttack</name>
-      <damage>24.000000</damage>
+      <damage>20.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
       <damagebonus type="AbstractArtillery">3.000000</damagebonus>
@@ -590,13 +590,13 @@
     </protoaction>
     <protoaction>
       <name>GuardianAttack</name>
-      <damage>25.000000</damage>
+      <damage>10.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
     </protoaction>
     <protoaction>
       <name>MeleeHandAttack</name>
-      <damage>12.000000</damage>
+      <damage>10.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
       <damagebonus type="AbstractArtillery">3.000000</damagebonus>
@@ -606,7 +606,7 @@
     </protoaction>
     <protoaction>
       <name>TrampleHandAttack</name>
-      <damage>9.000000</damage>
+      <damage>7.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>2.000000</rof>
       <damagecap>39.000000</damagecap>
@@ -19496,7 +19496,7 @@
     <trainpoints>35.0000</trainpoints>
     <allowedage>1</allowedage>
     <subciv>zpOrthodox</subciv>
-    <buildlimit>8</buildlimit>
+    <buildlimit>9</buildlimit>
     <cost resourcetype="Food">50</cost>
     <cost resourcetype="Gold">90</cost>
     <armor type="Ranged" value="0.7500">
@@ -44781,7 +44781,7 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>AbstractCityManison</unittype>
     <train row="0" page="0" column="0">zpNatWarriorMonk</train>
-    <train row="0" page="0" column="1">zpNatBulgarianBoyar</train>
+    <train row="0" page="0" column="1">zpNatCataphract</train>
     <tech row="0" page="1" column="1">zpNatDisciplinedOrthodox</tech>
     <tech row="0" page="1" column="1">zpNatHonoredOrthodox</tech>
     <tech row="0" page="2" column="0">zpNatOrthodoxIcons</tech>

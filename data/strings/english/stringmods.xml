@@ -883,8 +883,8 @@
       <string _locid="300881">Flamethrower soldier with a strong flame attack. Good against Infantry.</string>
       <string _locid="300882">Christmas Village</string>
       <string _locid="300883">ZP SPC Socket Christmas Village</string>
-      <string _locid="300884">Mountain Jaeger</string>
-      <string _locid="300885">ZP Nat Mountain Jaeger</string>
+      <string _locid="300884">Warrior Monk</string>
+      <string _locid="300885">ZP Nat Warrior Monk</string>
       <string _locid="300886">Monastery Icons</string>
       <string _locid="300887">Pilgrims are comming and giving their gifts. Buy new icons for the monastery and get a small trickle of additional resources.</string>
       <string _locid="300888">Banya</string>
@@ -897,9 +897,9 @@
       <string _locid="300895">Honored Orthodox</string>
       <string _locid="300896">Upgrades Maltese attack and hitpoints.</string>
       <string _locid="300897">Upgrades Orthodox units attack and hitpoints.</string>
-      <string _locid="300898">Disciplined Mountain Jaeger</string>
-      <string _locid="300899">Honored Mountain Jaeger</string>
-      <string _locid="300900">Legendary Mountain Jaeger</string>
+      <string _locid="300898">Disciplined Warrior Monk</string>
+      <string _locid="300899">Honored Warrior Monk</string>
+      <string _locid="300900">Legendary Warrior Monk</string>
       <string _locid="300901">Pick Patriarchate</string>
       <string _locid="300902">Pick your major patriarchate</string>
       <string _locid="300903">Dvoryanin</string>
@@ -942,7 +942,7 @@
       <string _locid="300940">ZP Nat House Orthodox South</string>
       <string _locid="300941">Russian Guard</string>
       <string _locid="300942">Ships Russian heavy Infantry</string>
-      <string _locid="300943">Ships a Bastion Wagon, allows Mountain Jaegers to construct Bastions and allows you to train all Orthodox units directly in the Bastions.</string>
+      <string _locid="300943">Ships a Bastion Wagon, allows Warrior Monks to construct Bastions and allows you to train all Orthodox units directly in the Bastions.</string>
       <string _locid="300944">Monastery Bastion</string>
       <string _locid="300945">Danube Steamers</string>
       <string _locid="300946">Ships a steam-powered Warship</string>
@@ -2251,6 +2251,9 @@
       <string _locid="302250">ZP PROP Venetian House Solid Tower</string>
       <string _locid="302251">Brethren Court</string>
       <string _locid="302252">Sends a shipment from Corsair or Wokou allies</string>
+      <string _locid="302253">Disciplined Cataphract</string>
+      <string _locid="302254">Honored Cataphract</string>
+      <string _locid="302255">Legendary Cataphract</string>
 
 
 

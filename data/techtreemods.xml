@@ -5035,6 +5035,8 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatEclaireur" culture="none" newname="302056">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatCataphract" culture="none" newname="302255">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -10583,6 +10585,14 @@
 			<effect type ="SetName" proto ="zpNatMercBulgarianBoyar" culture ="none" newname ="300911">
       </effect>
       <effect type="SetName" proto="zpNatMercBulgarianBoyar" culture="none" newname="300912" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatCataphract</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatCataphract</target></effect>
+			<effect type ="SetName" proto ="zpNatCataphract" culture ="none" newname ="302254">
+      </effect>
+      <effect type="SetName" proto="zpNatCataphract" culture="none" newname="302255" reqtech="ImpLegendaryNativesShadow">
       </effect>
 		</effects>
 	</tech>
@@ -19520,7 +19530,7 @@
         </target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatBulgarianBoyar</target>
+        <target type="ProtoUnit">zpNatCataphract</target>
       </effect>
             <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatWarriorMonk</target>
@@ -19782,6 +19792,42 @@
       </effect>
       <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatAssassin</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercBulgarianBoyar</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercBulgarianBoyar</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatBulgarianBoyar</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatBulgarianBoyar</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatDvoryanin</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatDvoryanin</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMonaspa</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMonaspa</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatCataphract</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatCataphract</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatEclaireur</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatEclaireur</target>
       </effect>
     </effects>
 	</tech>
