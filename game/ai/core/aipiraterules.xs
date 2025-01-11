@@ -806,6 +806,20 @@ minInterval 20
       int planID = aiPlanCreate("Trading Post Build Plan", cPlanBuild);
       vector socketPosition = kbUnitGetPosition(cityStateSocketID);
       int socketAreaGroup = kbAreaGroupGetIDByPosition(socketPosition);
+      vector nearestGaiaEnemyLoc = getClosestGaiaUnitPosition(cUnitTypeLogicalTypeLandMilitary, socketPosition, 30);
+
+      if (nearestGaiaEnemyLoc != cInvalidVector)
+      {
+         if (distance(nearestGaiaEnemyLoc, socketPosition) < 30)
+         {
+            continue;
+         }
+      }
+
+      if (getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, 0, cUnitStateAlive, socketPosition, 25.0) > 0)
+      {
+         continue;
+      }
 
       aiPlanSetVariableInt(planID, cBuildPlanBuildingTypeID, 0, cUnitTypeTradingPost);
       aiPlanSetVariableInt(planID, cBuildPlanSocketID, 0, cityStateSocketID);
