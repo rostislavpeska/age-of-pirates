@@ -1193,7 +1193,7 @@ int jesuitMaltese = rmRandInt(1, 2);
 	if (bigCity ==0){
 		if (verticalVariation ==1){
 			rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ7);
-			rmPlaceGroupingAtLoc(blockSansculot, 0, locXm2, locZ2);
+			rmPlaceGroupingAtLoc(blockSansculot, 0, locXm3, locZ2);
 			if (cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==4){
 				rmPlaceGroupingAtLoc(northNative2 , 0, locXm2, locZ9);
 				rmPlaceGroupingAtLoc(southNative2, 0, locX2, locZ0);

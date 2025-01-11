@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<randomMaps displayNameID="105998" imagepath="" helpTextID="105999" cannotReplace="" hideFromUI="">
+  <map>euDeluge</map>
+  <map>euEightyYearsWar</map>
+  <map>euGreatNorthernWar</map>
+  <map>euGreatTurkishWar</map>
+  <map>euItalianWars</map>
+  <map>euNapoleonicWars</map>
+  <map>euRussoTurkWar</map>
+  <map>euThirtyYearsWar</map>
+  <map>zpparis</map>
+</randomMaps>
