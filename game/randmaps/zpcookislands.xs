@@ -148,7 +148,7 @@ void main(void)
   int avoidTeamCliffs=rmCreateClassDistanceConstraint("avoid team cliff constraint", classTeamCliff, 28.0);
   int avoidTeamCliffsShort=rmCreateClassDistanceConstraint("avoid team cliff constraint short", classTeamCliff, 6.0);
   int avoidTeamIslands=rmCreateClassDistanceConstraint("avoid team island constraint", classTeamIsland, 28.0);
-  int avoidTeamIslandsShort=rmCreateClassDistanceConstraint("avoid team island short", classTeamIsland, 15.0);
+  int avoidTeamIslandsShort=rmCreateClassDistanceConstraint("avoid team island short", classTeamCliff, 10.0);
   int avoidTeamIslands1=rmCreateClassDistanceConstraint("avoid team island 1", classTeamIsland, 1.0);
   int islandEdgeConstraint=rmCreatePieConstraint("island edge of map", 0.5, 0.5, 0, rmGetMapXSize()-5, 0, 0, 0);
   
@@ -207,7 +207,12 @@ void main(void)
   int flagVsScientists2 = rmCreateTypeDistanceConstraint("flag avoid Scientists 2", "zpNativeWaterspawnFlag2", 15);
   int flagVsScientists1Short = rmCreateTypeDistanceConstraint("flag avoid Scientists 1 short", "zpNativeWaterspawnFlag1", 15);
   int flagVsScientists2Short = rmCreateTypeDistanceConstraint("flag avoid Scientists 2 short", "zpNativeWaterspawnFlag2", 15);
-  int flagEdgeConstraint=rmCreatePieConstraint("flag edge of map", 0.5, 0.5, 0, rmGetMapXSize()-100, 0, 0, 0);
+  if (cNumberNonGaiaPlayers>=6)
+    int flagEdgeConstraint=rmCreatePieConstraint("flag edge of map", 0.5, 0.5, 0, rmGetMapXSize()-150, 0, 0, 0);
+  else if (cNumberNonGaiaPlayers<=63)
+    flagEdgeConstraint=rmCreatePieConstraint("flag edge of map", 0.5, 0.5, 0, rmGetMapXSize()-70, 0, 0, 0);
+  else
+    flagEdgeConstraint=rmCreatePieConstraint("flag edge of map", 0.5, 0.5, 0, rmGetMapXSize()-110, 0, 0, 0);
   int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 8.0);
 
    //Trade Route Contstraints
