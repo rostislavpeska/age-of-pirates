@@ -22,6 +22,12 @@
 					<materialvariant index="1"></materialvariant>
 				</assetreference>
 			</variationid2>
+			<variationid3>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_tower_Model</file>
+					<materialvariant index="1"></materialvariant>
+				</assetreference>
+			</variationid3>
 		</logic>
 	</component>
 	<anim>

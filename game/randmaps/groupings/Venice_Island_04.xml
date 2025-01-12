@@ -312,6 +312,7 @@
 		<unit variation="4" posx="4.3383" posz="11.6225" orientx="0.0056" orienty="0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 		<unit variation="212" posx="0.0798" posz="10.6328" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNatEUPropObelisk</unit>
 		<unit variation="88" posx="-48.1118" posz="16.0223" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPalazoAuditore</unit>
+		<unit variation="88" posx="-48.1118" posz="16.0223" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeTowerAuditore</unit>
 		<unit variation="4" posx="-34.3224" posz="12.8155" orientx="0.0056" orienty="0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 		<unit variation="4" posx="-26.0148" posz="13.0814" orientx="0.0056" orienty="0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 		<unit variation="54" posx="14.7991" posz="13.4340" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpHCUnitB</unit>

@@ -7,7 +7,7 @@
             <component>
                 dock
                 <assetreference type="GrannyModel">
-                    <file>buildings\native_settlement\europe\palaces\roof_ge01_wall_br01</file>
+                    <file>buildings\native_settlement\palaces\palace_auditore</file>
                 </assetreference>
             </component>
             <anim>Idle<component>dock</component></anim>
@@ -21,7 +21,7 @@
         </attachment>
         <component>
             dry dock
-            <assetreference type="GrannyModel"><file>buildings\native_settlement\europe\palaces\roof_ge01_wall_br01</file></assetreference>
+            <assetreference type="GrannyModel"><file>buildings\native_settlement\palaces\palace_auditore</file></assetreference>
             <decal>
                 <effecttype>bump</effecttype>
                 <texture>buildings\state_capitol\textures\state_capitol_ground</texture>
