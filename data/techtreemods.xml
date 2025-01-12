@@ -20287,6 +20287,7 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type="TechStatus" status="active">zpImperialSubmarineClone</effect>
     </effects>
   </tech>
   <tech name="zpSPCSpawnXebec1" type="Normal">
@@ -20387,6 +20388,7 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type="TechStatus" status="active">zpImperialSubmarineClone</effect>
     </effects>
   </tech>
   <tech name="zpSPCSpawnXebec2" type="Normal">

@@ -16611,6 +16611,7 @@
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="Tree">0.000001</damagebonus>
       <damagebonus type="zpNatDottore">0.00010</damagebonus>
+      <damagebonus type="zpAbstractAssassin">0.00010</damagebonus>
     </protoaction>
   </unit>
   <unit id="20177" name="zpMustardGasWeak">
@@ -43835,6 +43836,7 @@
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="Tree">0.000001</damagebonus>
       <damagebonus type="zpNatDottore">0.00010</damagebonus>
+      <damagebonus type="zpAbstractAssassin">0.00010</damagebonus>
     </protoaction>
   </unit>
   <unit id="20576" name="zpVenetianWaterSpawnFlag3">
@@ -46348,6 +46350,7 @@
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="Tree">0.000001</damagebonus>
       <damagebonus type="zpNatDottore">0.00010</damagebonus>
+      <damagebonus type="zpAbstractAssassin">0.00010</damagebonus>
     </protoaction>
   </unit>
   <unit id="20616" name="zpSPCSocketPirateCityState">
@@ -48362,6 +48365,7 @@
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="Tree">0.000001</damagebonus>
       <damagebonus type="zpNatDottore">0.00010</damagebonus>
+      <damagebonus type="zpAbstractAssassin">0.00010</damagebonus>
     </protoaction>
   </unit>
   <unit id="20644" name="zpNatMercAssassinFemale">
@@ -48487,6 +48491,7 @@
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="Tree">0.000001</damagebonus>
       <damagebonus type="zpNatDottore">0.00010</damagebonus>
+      <damagebonus type="zpAbstractAssassin">0.00010</damagebonus>
     </protoaction>
   </unit>
   <unit id="20645" name="zpBatteryTowerWagon">
