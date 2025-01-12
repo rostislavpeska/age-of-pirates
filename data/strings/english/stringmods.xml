@@ -772,7 +772,7 @@
       <string _locid="300771">Dottore della Morte</string>
       <string _locid="300772">ZP Nat Dottore</string>
       <string _locid="300773">ZP Mustard Gas Weak</string>
-      <string _locid="300774">Plague Grenade</string>
+      <string _locid="300774">Poisoned Grenade</string>
       <string _locid="300775">Causes signifficant poison damage to nearby units including yours.</string>
       <string _locid="300776">House of Cornaro</string>
       <string _locid="300777">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDottore della Morte \n\nPerfect unit for sabotage missions in enemy base. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nVenetian Embassy</string>
@@ -2256,9 +2256,23 @@
       <string _locid="302255">Legendary Cataphract</string>
       <string _locid="302256">Can't build Dock on a city canal</string>
       <string _locid="302257">ZP Prop Auditore Tower</string>
-
-
-
+      <string _locid="302258">ZP Italian Palaces</string>
+      <string _locid="302259">ZP PROP Pavilion</string>
+      <string _locid="302260">Claudia Auditore (Mistress of Assassins)</string>
+      <string _locid="302261">ZP SPC Claudia Auditore</string>
+      <string _locid="302262">Powerful Hero Assassin which can build trading posts and train other Assassins.</string>
+      <string _locid="302263">Auditore Influence</string>
+      <string _locid="302264">Unlocks additional Auditore techs</string>
+      <string _locid="302266">Ships Claudia Auditore Hero accompanied with other female assassins.</string>
+      <string _locid="302267">Poisoned Grenades</string>
+      <string _locid="302268">Unlocks Assassin Hero Poisoned Grenade ability allowing you to throw poisoned grenades with a strong area damage</string>
+      <string _locid="302269">ZP NAT Merc Assassin Female</string>
+      <string _locid="302270">Battery Tower Wagon</string>
+      <string _locid="302271">ZP Battery Tower Wagon</string>
+      <string _locid="302272">Can construct Battery Tower</string>
+      <string _locid="302273">Fortified Villas</string>
+      <string _locid="302274">Ships Battery Tower Wagons allowing you to construct more Battery Towers. Increases Outpost hitpoints and line of sight.</string>
+      <string _locid="302275">Women's Club</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

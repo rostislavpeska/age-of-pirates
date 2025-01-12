@@ -5037,6 +5037,10 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatCataphract" culture="none" newname="302255">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercAssassinFemale" culture="none" newname="302167">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatAssassin" culture="none" newname="302167">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -12400,6 +12404,12 @@
       <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCEzio</target>
       </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCClaudiaAuditore</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCClaudiaAuditore</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpHeroImperializeShadow" type="Normal">
@@ -12449,6 +12459,12 @@
       </effect>
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCEzio</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCClaudiaAuditore</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCClaudiaAuditore</target>
       </effect>
     </effects>
   </tech>
@@ -19712,6 +19728,9 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatPavisier</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatAssassin</target>
+      </effect>
       <effect type="TechStatus" status="obtainable">zpNatVeteranAuditore</effect>
       <effect type="TechStatus" status="obtainable">zpNatGuardAuditore</effect>
       <effect type="TechStatus" status="obtainable">zpNatBorgiaConspiracy</effect>
@@ -19719,7 +19738,13 @@
       <effect type="TechStatus" status="obtainable">zpNatMasterAssassin</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">zpAuditoreLighthouse</effect>
-
+      <effect type="TechStatus" status="obtainable">zpAuditoreExpansion</effect>
+      <effect type="TechStatus" status="obtainable">zpNatClaudiaAuditore</effect>
+      <effect type="TechStatus" status="obtainable">zpNatFortifiedVillas</effect>
+      <effect type="TechStatus" status="obtainable">zpNatPlagueGrenade</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyAuditore</effect>
+      <effect type="TechStatus" status="obtainable">zpIndianFriendshipAuditore</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyAuditore</effect>
     </effects>
   </tech>
   <tech name ="zpNatVeteranAuditore" type ="Normal">
@@ -19781,52 +19806,65 @@
 			<effect type ="SetName" proto ="zpNatAssassin" culture ="none" newname ="302168"></effect>
       <effect type="SetName" proto="zpNatAssassin" culture="none" newname="302167" reqtech="ImpLegendaryNativesShadow">
       </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercAssassinFemale</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercAssassinFemale</target></effect>
+			<effect type ="SetName" proto ="zpNatMercAssassinFemale" culture ="none" newname ="302168"></effect>
+      <effect type="SetName" proto="zpNatMercAssassinFemale" culture="none" newname="302167" reqtech="ImpLegendaryNativesShadow">
+      </effect>
 		</effects>
 	</tech>
 
   <!--Veteran Native techs-->
   <tech name="DEVeteranNativesShadow">
     <effects>
-      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatAssassin</target>
       </effect>
-      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatAssassin</target>
       </effect>
-      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+      <effect  mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercAssassinFemale</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercAssassinFemale</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatMercBulgarianBoyar</target>
       </effect>
-      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatMercBulgarianBoyar</target>
       </effect>
-      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatBulgarianBoyar</target>
       </effect>
-      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatBulgarianBoyar</target>
       </effect>
-      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatDvoryanin</target>
       </effect>
-      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatDvoryanin</target>
       </effect>
-      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatMonaspa</target>
       </effect>
-      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatMonaspa</target>
       </effect>
-      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatCataphract</target>
       </effect>
-      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatCataphract</target>
       </effect>
-      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatEclaireur</target>
       </effect>
-      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatEclaireur</target>
       </effect>
     </effects>
@@ -19981,6 +20019,9 @@
     <rollovertextid>302175</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCEzio" relativity="Absolute">
         <target type="Player">
@@ -20001,7 +20042,7 @@
     <displaynameid>302181</displaynameid>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\abilities\eagle_vision.png</icon>
-    <rollovertextid>302182</rollovertextid>
+    <rollovertextid>300625</rollovertextid>
     <flag>YPNoTextMessage</flag>
     <flag>YPNativeImprovement</flag>
     <flag>DEHideAdvancedRollover</flag>
@@ -20876,6 +20917,154 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>
     <flag>TeamTech</flag>
+  </tech>
+  <tech name ="zpAuditoreExpansion" type ="Normal">
+		<dbid>40893</dbid>
+		<displaynameid>302263</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\auditore_expansion.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>302264</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="CommandAdd" tech="zpNatClaudiaAuditore" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatPlagueGrenade" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="zpNatClaudiaAuditore" type="Normal">
+    <dbid>40894</dbid>
+    <displaynameid>302275</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\heroes\claudia_tech.png</icon>
+    <rollovertextid>302266</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCClaudiaAuditore" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatMercAssassinFemale" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatPlagueGrenade" type="Normal">
+    <dbid>40895</dbid>
+    <displaynameid>302267</displaynameid>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\assassin_grenade.png</icon>
+    <rollovertextid>302268</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" action="PoisonBombWeak" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCEzio</target>
+      </effect>
+      <effect type="Data" action="PoisonBombWeak" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCClaudiaAuditore</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatFortifiedVillas" type="Normal">
+    <dbid>40896</dbid>
+    <displaynameid>302273</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\fortified_villas.png</icon>
+    <rollovertextid>302274</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsToward?ilitary</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpBatteryTowerWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractOutpost</target>
+      </effect>
+      <effect type="Data" amount="7.00" subtype="LOS" relativity="Absolute">
+        <target type="ProtoUnit">AbstractOutpost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTradeTreatyAuditore" type="Normal">
+    <dbid>40897</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIndianFriendshipAuditore" type="Normal">
+    <dbid>40898</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="4.00" subtype="FreeHomeCityUnit" unittype="zpNatPavisier" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="zpNatAssassin" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpNatVeteranAuditore</effect>
+      <effect type="TechStatus" status="active">zpNatGuardAuditore</effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTreatyAuditore" type="Normal">
+    <dbid>40899</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatPavisier" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
   </tech>
   
  

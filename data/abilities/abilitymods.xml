@@ -264,12 +264,20 @@
   <zpspcezio>
     <ability>ypPowerHeavenlyFireBomb<rof>120</rof></ability>
     <ability>ypPowerSmokeBomb<rof>60</rof><castonself>true</castonself></ability>
+    <ability>zpMustardGasWeak<tech>zpNatPlagueGrenade</tech><rof>60</rof></ability>
     <ability>zpAssassinBrotherhood<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpspcezio>
   <zpspcrowboat>
     <ability>deSPCStealthHide<rof>40</rof><castonself>true</castonself><donotforcestop>true</donotforcestop><activetimecooldown>true</activetimecooldown><forceshowrollover>true</forceshowrollover></ability>
   </zpspcrowboat>
+  <zpspcclaudiaauditore>
+    <ability>ypPowerHeavenlyFireBomb<rof>120</rof></ability>
+    <ability>ypPowerSmokeBomb<rof>60</rof><castonself>true</castonself></ability>
+    <ability>zpMustardGasWeak<tech>zpNatPlagueGrenade</tech><rof>60</rof></ability>
+    <ability>zpAssassinBrotherhood<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcclaudiaauditore>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

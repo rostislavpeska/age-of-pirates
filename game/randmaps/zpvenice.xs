@@ -17,6 +17,7 @@ void main(void)
   string nativeCiv2 = "maltese";
   string nativeCiv3 = "spcjesuit";
   string nativeCiv4 = "zporthodox";
+  string nativeCiv5 = "auditore";
   string baseMix = "italy_grass";
   string paintMix = "italy_grass_lush";
   string baseTerrain = "borneo\ground_grass4_borneo";
@@ -62,22 +63,29 @@ void main(void)
       if (subCiv0 >= 0)
          rmSetSubCiv(0, nativeCiv1);
 
-		  // Maltese or Orthodox
+		  // Maltese or Auditore
       if (monasteryPlacement == 2){
         subCiv1=rmGetCivID(nativeCiv2);
         if (subCiv1 >= 0)
           rmSetSubCiv(1, nativeCiv2);
       }
       if (monasteryPlacement == 1){
-        subCiv1=rmGetCivID(nativeCiv4);
+        subCiv1=rmGetCivID(nativeCiv5);
         if (subCiv1 >= 0)
-          rmSetSubCiv(1, nativeCiv4);
+          rmSetSubCiv(1, nativeCiv5);
       }
 
-      // Jesuit
-		  subCiv2=rmGetCivID(nativeCiv3);
-      if (subCiv2 >= 0)
-         rmSetSubCiv(2, nativeCiv3);
+      // Jesuit or Orthodox
+      if (monasteryPlacement == 2){
+        subCiv2=rmGetCivID(nativeCiv3);
+        if (subCiv2 >= 0)
+          rmSetSubCiv(2, nativeCiv3);
+      }
+      if (monasteryPlacement == 1){
+        subCiv2=rmGetCivID(nativeCiv4);
+        if (subCiv2 >= 0)
+        rmSetSubCiv(2, nativeCiv4);
+      }
   }
 	
 // Map Basics
@@ -237,7 +245,7 @@ void main(void)
   int avoidTradeSocketFar=rmCreateTypeDistanceConstraint("stay away from Trade Socket Far", "zpSPCPortSocket", 35.0);
 
   // Avoid Natives
-  int avoidMaltese=rmCreateTypeDistanceConstraint("stay away from Maltese", "zpSocketMaltese", 20.0);
+  int avoidMaltese=rmCreateTypeDistanceConstraint("stay away from Maltese", "Socket", 20.0);
   int avoidOrthodox=rmCreateTypeDistanceConstraint("stay away from TOrthodox", "zpSocketOrthodox", 20.0);
   int avoidJesuit=rmCreateTypeDistanceConstraint("stay away from Jesuit", "zpSocketJesuitEU", 20.0);
 
@@ -618,6 +626,13 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
   // Text
 	rmSetStatusText("",0.30);
 
+  // Village randomization
+  int middleSufiVillageID1Type = rmRandInt(1, 3);
+  int middleSufiVillageID2Type = rmRandInt(1, 3);
+  int middleSufiVillageID3Type = rmRandInt(1, 3);
+  int middleSufiVillageID4Type = rmRandInt(1, 5);
+  int middleSufiVillageID5Type = rmRandInt(1, 5);
+  int middleSufiVillageID6Type = rmRandInt(1, 5);
 
   // Team Jesuit
 
@@ -631,14 +646,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
     rmSetObjectDefMinDistance(zenControllerID1, 0.0);
     rmAddObjectDefConstraint(zenControllerID1, playerEdgeConstraint); 
 
-    if (monasteryPlacement == 1)
-    {
-        rmPlaceObjectDefAtLoc(zenControllerID1, 0, 0.2, 0.25);
-    }
-    else 
-    {
-        rmPlaceObjectDefAtLoc(zenControllerID1, 0, 0.8, 0.25);
-    }
+    rmPlaceObjectDefAtLoc(zenControllerID1, 0, 0.8, 0.25);
 
     vector zenControllerLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(zenControllerID1, 0));
 
@@ -672,8 +680,10 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
     rmBuildArea(westIslandVillage1Terrain);
 
     int middleSufiVillageID1 = -1;
-    int middleSufiVillageID1Type = rmRandInt(1, 3);
-    middleSufiVillageID1 = rmCreateGrouping("native1 city", "Jesuit_Cathedral_EU_0" + middleSufiVillageID1Type);
+    if (monasteryPlacement == 2)
+      middleSufiVillageID1 = rmCreateGrouping("native1 city", "Jesuit_Cathedral_EU_0" + middleSufiVillageID1Type);
+    else
+      middleSufiVillageID1 = rmCreateGrouping("native1 city", "Orthodox_Monastery0" + middleSufiVillageID4Type);
     rmAddGroupingConstraint(middleSufiVillageID1, avoidImpassableLand);
     rmPlaceGroupingAtLoc(middleSufiVillageID1, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc1)), 1);
 
@@ -687,14 +697,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       rmAddObjectDefConstraint(zenControllerID2, avoidController); 
       rmAddObjectDefConstraint(zenControllerID2, playerEdgeConstraint); 
 
-      if (monasteryPlacement == 1)
-      {
-      rmPlaceObjectDefAtLoc(zenControllerID2, 0, 0.2, 0.65);
-      }
-      else 
-      {
       rmPlaceObjectDefAtLoc(zenControllerID2, 0, 0.8, 0.65);
-      }
 
       vector zenControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(zenControllerID2, 0));
 
@@ -731,8 +734,10 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       rmBuildArea(westIslandVillage2Terrain);
 
       int middleSufiVillageID2 = -1;
-      int middleSufiVillageID2Type = rmRandInt(1,3);
-      middleSufiVillageID2 = rmCreateGrouping("native2 city", "Jesuit_Cathedral_EU_0"+middleSufiVillageID2Type);
+      if (monasteryPlacement == 2)
+        middleSufiVillageID2 = rmCreateGrouping("native2 city", "Jesuit_Cathedral_EU_0" + middleSufiVillageID2Type);
+      else
+        middleSufiVillageID2 = rmCreateGrouping("native2 city", "Orthodox_Monastery0" + middleSufiVillageID5Type);
       rmAddGroupingConstraint(middleSufiVillageID2, avoidImpassableLand);
       rmPlaceGroupingAtLoc(middleSufiVillageID2, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc2)), 1);
     }
@@ -747,14 +752,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       rmAddObjectDefConstraint(zenControllerID3, avoidController);
       rmAddObjectDefConstraint(zenControllerID3, playerEdgeConstraint);
 
-      if (monasteryPlacement == 1)
-      {
-          rmPlaceObjectDefAtLoc(zenControllerID3, 0, 0.15, 0.45);
-      }
-      else 
-      {
-          rmPlaceObjectDefAtLoc(zenControllerID3, 0, 0.85, 0.45);
-      }
+      rmPlaceObjectDefAtLoc(zenControllerID3, 0, 0.85, 0.45);
 
       vector zenControllerLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(zenControllerID3, 0));
 
@@ -788,8 +786,10 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       rmBuildArea(westIslandVillage3Terrain);
 
       int middleSufiVillageID3 = -1;
-      int middleSufiVillageID3Type = rmRandInt(1, 3);
-      middleSufiVillageID3 = rmCreateGrouping("native3 city", "Jesuit_Cathedral_EU_0" + middleSufiVillageID3Type);
+      if (monasteryPlacement == 2)
+        middleSufiVillageID3 = rmCreateGrouping("native3 city", "Jesuit_Cathedral_EU_0" + middleSufiVillageID3Type);
+      else
+        middleSufiVillageID3 = rmCreateGrouping("native3 city", "Orthodox_Monastery0" + middleSufiVillageID6Type);
       rmAddGroupingConstraint(middleSufiVillageID3, avoidImpassableLand);
       rmPlaceGroupingAtLoc(middleSufiVillageID3, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc3)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc3)), 1);
     }
@@ -805,14 +805,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
     rmAddObjectDefConstraint(zenControllerID4, avoidController);
     rmAddObjectDefConstraint(zenControllerID4, playerEdgeConstraint);
 
-    if (monasteryPlacement == 2)
-    {
-        rmPlaceObjectDefAtLoc(zenControllerID4, 0, 0.2, 0.25);
-    }
-    else 
-    {
-        rmPlaceObjectDefAtLoc(zenControllerID4, 0, 0.8, 0.25);
-    }
+    rmPlaceObjectDefAtLoc(zenControllerID4, 0, 0.2, 0.25);
 
     vector zenControllerLoc4 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(zenControllerID4, 0));
 
@@ -846,11 +839,10 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
     rmBuildArea(westIslandVillage4Terrain);
 
     int middleSufiVillageID4 = -1;
-    int middleSufiVillageID4Type = rmRandInt(1, 5);
     if (monasteryPlacement == 2)
       middleSufiVillageID4 = rmCreateGrouping("native4 city", "maltese_village0" + middleSufiVillageID4Type);
     else
-      middleSufiVillageID4 = rmCreateGrouping("native4 city", "Orthodox_Monastery0" + middleSufiVillageID4Type);
+      middleSufiVillageID4 = rmCreateGrouping("native4 city", "Palace_Auditore_0" + middleSufiVillageID1Type);
     rmAddGroupingConstraint(middleSufiVillageID4, avoidImpassableLand);
     rmPlaceGroupingAtLoc(middleSufiVillageID4, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc4)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc4)), 1);
 
@@ -864,14 +856,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       rmAddObjectDefConstraint(zenControllerID5, avoidController);
       rmAddObjectDefConstraint(zenControllerID5, playerEdgeConstraint);
 
-      if (monasteryPlacement == 2)
-      {
-          rmPlaceObjectDefAtLoc(zenControllerID5, 0, 0.2, 0.65);
-      }
-      else 
-      {
-          rmPlaceObjectDefAtLoc(zenControllerID5, 0, 0.8, 0.65);
-      }
+      rmPlaceObjectDefAtLoc(zenControllerID5, 0, 0.2, 0.65);
 
       vector zenControllerLoc5 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(zenControllerID5, 0));
 
@@ -905,11 +890,10 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       rmBuildArea(westIslandVillage5Terrain);
 
       int middleSufiVillageID5 = -1;
-      int middleSufiVillageID5Type = rmRandInt(1, 5);
       if (monasteryPlacement == 2)
         middleSufiVillageID5 = rmCreateGrouping("native5 city", "maltese_village0" + middleSufiVillageID5Type);
       else
-        middleSufiVillageID5 = rmCreateGrouping("native5 city", "Orthodox_Monastery0" + middleSufiVillageID5Type);
+        middleSufiVillageID5 = rmCreateGrouping("native5 city", "Palace_Auditore_0" + middleSufiVillageID2Type);
       rmAddGroupingConstraint(middleSufiVillageID5, avoidImpassableLand);
       rmPlaceGroupingAtLoc(middleSufiVillageID5, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc5)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc5)), 1);
     }
@@ -922,14 +906,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       rmAddObjectDefConstraint(zenControllerID6, avoidController);
       rmAddObjectDefConstraint(zenControllerID6, playerEdgeConstraint);
 
-      if (monasteryPlacement == 2)
-      {
-          rmPlaceObjectDefAtLoc(zenControllerID6, 0, 0.15, 0.45);
-      }
-      else 
-      {
-          rmPlaceObjectDefAtLoc(zenControllerID6, 0, 0.85, 0.45);
-      }
+      rmPlaceObjectDefAtLoc(zenControllerID6, 0, 0.15, 0.45);
 
       vector zenControllerLoc6 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(zenControllerID6, 0));
 
@@ -963,11 +940,10 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       rmBuildArea(westIslandVillage6Terrain);
 
       int middleSufiVillageID6 = -1;
-      int middleSufiVillageID6Type = rmRandInt(1, 5);
       if (monasteryPlacement == 2)
         middleSufiVillageID6 = rmCreateGrouping("native6 city", "maltese_village0" + middleSufiVillageID6Type);
       else
-        middleSufiVillageID6 = rmCreateGrouping("native6 city", "Orthodox_Monastery0" + middleSufiVillageID6Type);
+        middleSufiVillageID6 = rmCreateGrouping("native6 city", "Palace_Auditore_0" + middleSufiVillageID3Type);
       rmAddGroupingConstraint(middleSufiVillageID6, avoidImpassableLand);
       rmPlaceGroupingAtLoc(middleSufiVillageID6, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc6)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc6)), 1);
 
@@ -1320,7 +1296,7 @@ else
   
   // MINES
 
-  int mineType = -1;
+   int mineType = -1;
 	int mineID = -1;
 	int mineCount = (cNumberNonGaiaPlayers*1.25);
 	rmEchoInfo("mine count = "+mineCount);
@@ -1329,30 +1305,30 @@ else
 	{
 	  int westmineID = rmCreateObjectDef("west mine "+i);
 	  rmAddObjectDefItem(westmineID, "Mine", 1, 0.0);
-    rmSetObjectDefMinDistance(westmineID, 0.0);
-    rmSetObjectDefMaxDistance(westmineID, rmXFractionToMeters(0.45));
-    rmAddObjectDefConstraint(westmineID, avoidCoin);
-    rmAddObjectDefConstraint(westmineID, avoidAll);
-    rmAddObjectDefConstraint(westmineID, playerConstraintNugget);
-    rmAddObjectDefConstraint(westmineID, avoidTownCenterFar);
-    rmAddObjectDefConstraint(westmineID, mediumAvoidImpassableLand);
-    rmAddObjectDefConstraint(westmineID, westIslandConstraint);
-    rmPlaceObjectDefAtLoc(westmineID, 0, 0.5, 0.5);
+      rmSetObjectDefMinDistance(westmineID, 0.0);
+      rmSetObjectDefMaxDistance(westmineID, rmXFractionToMeters(0.45));
+	  rmAddObjectDefConstraint(westmineID, avoidCoin);
+      rmAddObjectDefConstraint(westmineID, avoidAll);
+      rmAddObjectDefConstraint(westmineID, playerConstraintNugget);
+      rmAddObjectDefConstraint(westmineID, avoidTownCenterFar);
+      rmAddObjectDefConstraint(westmineID, mediumAvoidImpassableLand);
+      rmAddObjectDefConstraint(westmineID, westIslandConstraint);
+	  rmPlaceObjectDefAtLoc(westmineID, 0, 0.5, 0.5);
    }
 
    for(i=0; < mineCount)
 	{
 	  int eastmineID = rmCreateObjectDef("east mine "+i);
-    rmAddObjectDefItem(eastmineID, "Mine", 1, 0.0);
-    rmSetObjectDefMinDistance(eastmineID, 0.0);
-    rmSetObjectDefMaxDistance(eastmineID, rmXFractionToMeters(0.45));
-    rmAddObjectDefConstraint(eastmineID, avoidCoin);
-    rmAddObjectDefConstraint(eastmineID, avoidAll);
-    rmAddObjectDefConstraint(eastmineID, avoidTownCenterFar);
-    rmAddObjectDefConstraint(eastmineID, playerConstraintNugget);
-    rmAddObjectDefConstraint(eastmineID, mediumAvoidImpassableLand);
-    rmAddObjectDefConstraint(eastmineID, eastIslandConstraint);
-    rmPlaceObjectDefAtLoc(eastmineID, 0, 0.5, 0.5);
+	  rmAddObjectDefItem(eastmineID, "Mine", 1, 0.0);
+      rmSetObjectDefMinDistance(eastmineID, 0.0);
+      rmSetObjectDefMaxDistance(eastmineID, rmXFractionToMeters(0.45));
+	  rmAddObjectDefConstraint(eastmineID, avoidCoin);
+      rmAddObjectDefConstraint(eastmineID, avoidAll);
+      rmAddObjectDefConstraint(eastmineID, avoidTownCenterFar);
+      rmAddObjectDefConstraint(eastmineID, playerConstraintNugget);
+      rmAddObjectDefConstraint(eastmineID, mediumAvoidImpassableLand);
+      rmAddObjectDefConstraint(eastmineID, eastIslandConstraint);
+	  rmPlaceObjectDefAtLoc(eastmineID, 0, 0.5, 0.5);
    } 
  
   // Nuggets
@@ -1369,27 +1345,27 @@ else
 	rmPlaceObjectDefInArea(nuggetNorth, 0, mainIslandID, cNumberNonGaiaPlayers);
 
   int nuggetSouthHard= rmCreateObjectDef("nugget hard south"); 
-  rmAddObjectDefItem(nuggetSouthHard, "Nugget", 1, 0.0);
-  rmSetNuggetDifficulty(3, 3);
-  rmAddObjectDefConstraint(nuggetSouthHard, shortAvoidImpassableLand);
-  rmAddObjectDefConstraint(nuggetSouthHard, avoidNugget);
-  rmAddObjectDefConstraint(nuggetSouthHard, avoidSocket);
-  rmAddObjectDefConstraint(nuggetSouthHard, avoidTCMedium);
-  rmAddObjectDefConstraint(nuggetSouthHard, avoidWater4);
-  rmAddObjectDefConstraint(nuggetSouthHard, playerEdgeConstraint);
-  rmPlaceObjectDefInArea(nuggetSouthHard, 0, eastMountain, cNumberNonGaiaPlayers);
+	rmAddObjectDefItem(nuggetSouthHard, "Nugget", 1, 0.0);
+	rmSetNuggetDifficulty(3, 3);
+	rmAddObjectDefConstraint(nuggetSouthHard, shortAvoidImpassableLand);
+  	rmAddObjectDefConstraint(nuggetSouthHard, avoidNugget);
+  	rmAddObjectDefConstraint(nuggetSouthHard, avoidSocket);
+	rmAddObjectDefConstraint(nuggetSouthHard, avoidTCMedium);
+   rmAddObjectDefConstraint(nuggetSouthHard, avoidWater4);
+	rmAddObjectDefConstraint(nuggetSouthHard, playerEdgeConstraint);
+	rmPlaceObjectDefInArea(nuggetSouthHard, 0, eastMountain, cNumberNonGaiaPlayers);
 
   int nuggetSouth= rmCreateObjectDef("nugget easy south"); 
-  rmAddObjectDefItem(nuggetSouth, "Nugget", 1, 0.0);
-  rmSetNuggetDifficulty(1, 1);
-  rmAddObjectDefConstraint(nuggetSouth, shortAvoidImpassableLand);
-  rmAddObjectDefConstraint(nuggetSouth, avoidNugget);
-  rmAddObjectDefConstraint(nuggetSouth, avoidSocket);
-  rmAddObjectDefConstraint(nuggetSouth, avoidMountains);
-  rmAddObjectDefConstraint(nuggetSouth, avoidTCshort);
-  rmAddObjectDefConstraint(nuggetSouth, avoidWater4);
-  rmAddObjectDefConstraint(nuggetSouth, playerEdgeConstraint);
-  rmPlaceObjectDefInArea(nuggetSouth, 0, mainIslandID2, cNumberNonGaiaPlayers);
+	rmAddObjectDefItem(nuggetSouth, "Nugget", 1, 0.0);
+	rmSetNuggetDifficulty(1, 1);
+	rmAddObjectDefConstraint(nuggetSouth, shortAvoidImpassableLand);
+  	rmAddObjectDefConstraint(nuggetSouth, avoidNugget);
+  	rmAddObjectDefConstraint(nuggetSouth, avoidSocket);
+    rmAddObjectDefConstraint(nuggetSouth, avoidMountains);
+	rmAddObjectDefConstraint(nuggetSouth, avoidTCshort);
+   rmAddObjectDefConstraint(nuggetSouth, avoidWater4);
+	rmAddObjectDefConstraint(nuggetSouth, playerEdgeConstraint);
+	rmPlaceObjectDefInArea(nuggetSouth, 0, mainIslandID2, cNumberNonGaiaPlayers);
 
   int nuggetNorthHard= rmCreateObjectDef("nugget hard north"); 
 	rmAddObjectDefItem(nuggetNorthHard, "Nugget", 1, 0.0);

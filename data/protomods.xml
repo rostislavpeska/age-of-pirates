@@ -1104,6 +1104,7 @@
 
     <!--AUDITORE-->
     <train row="0" page="0" column="1">zpNatPavisier</train>
+    <train row="0" page="0" column="2">zpNatAssassin</train>
 
     <!-- Christmas units and techs Added by AssertiveWall-->
     <train row="0" page="0" column="1">zpNatElfsGuard</train>
@@ -1265,11 +1266,13 @@
     <tech row="0" page="2" column="2">zpBourbonExpansion</tech>
 
     <tech row="0" page="1" column="1">zpNatVeteranAuditore</tech>
-    <tech row="0" page="1" column="1">zpGuardAuditore</tech>
+    <tech row="0" page="1" column="1">zpNatGuardAuditore</tech>
     <tech row="0" page="2" column="0">zpNatBorgiaConspiracy</tech>
     <tech row="0" page="2" column="1">zpNatGuerillaWarfare</tech>
     <tech row="0" page="2" column="2">zpNatMasterAssassin</tech>
     <tech row="0" page="0" column="4">zpAuditoreLighthouse</tech>
+    <tech row="0" page="2" column="2">zpAuditoreExpansion</tech>
+    <tech row="0" page="2" column="3">zpNatFortifiedVillas</tech>
 
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia1</tech>
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia2</tech>
@@ -1289,7 +1292,7 @@
     <command page="0" column="20">zpNatArmoredTrainDisabled</command>
     <command page="0" column="20">zpNatArmoredTrainNoResource</command>
     <command page="0" column="4">zpNatBourbonRoyalMarchSmall</command>
-    <command page="0" column="4">zpAuditoreLighthouseSmall</command>
+    <command page="0" column="3">zpAuditoreLighthouseSmall</command>
     <command page="1" column="1">zpBourbonExpansionFake</command>
     <command page="1" column="1">zpSansculottexpansionFake</command>
     <protoaction>
@@ -43737,9 +43740,12 @@
     <bounty>11.0000</bounty>
     <buildbounty>11.0000</buildbounty>
     <cost resourcetype="Gold">110.0000</cost>
-    <allowedage>1</allowedage>
+    <allowedage>2</allowedage>
     <armor type="Ranged" value="0.2000">
     </armor>
+    <sharedselectionunittypes>
+      <unittype>zpNatMercAssassinFemale</unittype>
+    </sharedselectionunittypes>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
@@ -43780,7 +43786,7 @@
     <tactics>auditoreassassin.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
-      <damage>35.000000</damage>
+      <damage>40.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
     </protoaction>
@@ -43813,6 +43819,22 @@
       <rof>1.250000</rof>
       <damagebonus type="Mercenary">10.000000</damagebonus>
       <damagebonus type="Hero">20.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>PoisonBombWeak</name>
+      <damage>20.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>17.000000</maxrange>
+      <minrange>5.000000</minrange>
+      <rof>5.000000</rof>
+      <maxheight>1.000000</maxheight>
+      <damagecap>50.000000</damagecap>
+      <damagearea>12.000000</damagearea>
+      <damageflags>GAIASelfAllyEnemy</damageflags>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damagebonus type="Tree">0.000001</damagebonus>
+      <damagebonus type="zpNatDottore">0.00010</damagebonus>
     </protoaction>
   </unit>
   <unit id="20576" name="zpVenetianWaterSpawnFlag3">
@@ -46196,10 +46218,10 @@
     <animfile>units\natives\auditore\ezio.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
-    <icon>resources\art\units\heroes\ezio.png</icon>
+    <icon>resources\art\units\heroes\ezio_icon.png</icon>
     <portraiticon>resources\art\units\heroes\ezio.png</portraiticon>
-    <rollovertextid>302178</rollovertextid>
-    <shortrollovertextid>302169</shortrollovertextid>
+    <rollovertextid>302262</rollovertextid>
+    <shortrollovertextid>302178</shortrollovertextid>
     <initialhitpoints>800.0000</initialhitpoints>
      <maxhitpoints>800.0000</maxhitpoints>
     <los>12.0000</los>
@@ -46239,7 +46261,11 @@
     <unittype>AbstractCoyoteMan</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
     <unittype>ExcludeFromRansom</unittype>
+    <unittype>zpAbstractAssassin</unittype>
     <unittype>Hero</unittype>
+    <sharedselectionunittypes>
+      <unittype>zpSPCClaudiaAuditore</unittype>
+    </sharedselectionunittypes>
     <train row="0" page="6" column="0">TradingPost</train>
     <train row="0" page="6" column="1">zpNatAssassin</train>
     <flag>CollidesWithProjectiles</flag>
@@ -46258,7 +46284,7 @@
     <tactics>ezio.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
-      <damage>42.000000</damage>
+      <damage>45.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
     </protoaction>
@@ -46306,6 +46332,22 @@
       <damagebonus type="Building">3.000000</damagebonus>
       <damagearea>4.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>PoisonBombWeak</name>
+      <damage>20.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>17.000000</maxrange>
+      <minrange>5.000000</minrange>
+      <rof>5.000000</rof>
+      <maxheight>1.000000</maxheight>
+      <damagecap>50.000000</damagecap>
+      <damagearea>12.000000</damagearea>
+      <damageflags>GAIASelfAllyEnemy</damageflags>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damagebonus type="Tree">0.000001</damagebonus>
+      <damagebonus type="zpNatDottore">0.00010</damagebonus>
     </protoaction>
   </unit>
   <unit id="20616" name="zpSPCSocketPirateCityState">
@@ -48147,6 +48189,373 @@
     <flag>VariationLocked</flag>
     <flag>Invulnerable</flag>
     <flag>InvulnerableIfGaia</flag>
+  </unit>
+  <unit id="20642" name="zpNatEUItalianPalaces">
+    <dbid>20642</dbid>
+    <displaynameid>62299</displaynameid>
+    <editornameid>302258</editornameid>
+    <obstructionradiusx>7.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\italian_palaces.xml</animfile>
+    <portraiticon>resources\art\units\natives\auditore_royal_house.png</portraiticon>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>RMCanRotate</flag>
+  </unit>
+  <unit id="20643" name="zpSPCClaudiaAuditore">
+    <dbid>20643</dbid>
+    <displaynameid>302260</displaynameid>
+    <editornameid>302261</editornameid>
+    <populationcount>0</populationcount>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>6.0000</maxvelocity>
+    <maxrunvelocity>8.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\auditore\claudia.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\heroes\claudia_icon.png</icon>
+    <portraiticon>resources\art\units\heroes\claudia.png</portraiticon>
+    <rollovertextid>302262</rollovertextid>
+    <shortrollovertextid>302178</shortrollovertextid>
+    <initialhitpoints>800.0000</initialhitpoints>
+     <maxhitpoints>800.0000</maxhitpoints>
+    <los>12.0000</los>
+    <unitaitype>HandCombative</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>11.0000</bounty>
+    <buildbounty>11.0000</buildbounty>
+    <cost resourcetype="Gold">110.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractLightInfantry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractHandInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCoyoteMan</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>ExcludeFromRansom</unittype>
+    <unittype>zpAbstractAssassin</unittype>
+    <unittype>Hero</unittype>
+    <sharedselectionunittypes>
+      <unittype>zpSPCEzio</unittype>
+    </sharedselectionunittypes>
+    <train row="0" page="6" column="0">TradingPost</train>
+    <train row="0" page="6" column="1">zpNatAssassin</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>KnockoutDeath</flag>
+    <flag>NotDeleteable</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="11">Abilities</command>
+    <tactics>claudiaauditore.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>45.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CoverBuildingAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CoverHandAttack</name>
+      <damage>8.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.250000</rof>
+      <damagebonus type="Mercenary">10.000000</damagebonus>
+      <damagebonus type="Hero">20.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>14.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.250000</rof>
+      <damagebonus type="Mercenary">10.000000</damagebonus>
+      <damagebonus type="Hero">20.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>14.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.250000</rof>
+      <damagebonus type="Mercenary">10.000000</damagebonus>
+      <damagebonus type="Hero">20.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>Build</name>
+      <rate type="Building">1.000000</rate>
+      <rate type="TradingPost">5.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>HeavenlyFireBomb</name>
+      <damage>250.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="Building">3.000000</damagebonus>
+      <damagearea>4.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>PoisonBombWeak</name>
+      <damage>20.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>17.000000</maxrange>
+      <minrange>5.000000</minrange>
+      <rof>5.000000</rof>
+      <maxheight>1.000000</maxheight>
+      <damagecap>50.000000</damagecap>
+      <damagearea>12.000000</damagearea>
+      <damageflags>GAIASelfAllyEnemy</damageflags>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damagebonus type="Tree">0.000001</damagebonus>
+      <damagebonus type="zpNatDottore">0.00010</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20644" name="zpNatMercAssassinFemale">
+    <dbid>20644</dbid>
+    <displaynameid>302088</displaynameid>
+    <editornameid>302269</editornameid>
+    <populationcount>0</populationcount>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>6.0000</maxvelocity>
+    <maxrunvelocity>8.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\auditore\assassin_female.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\natives\auditore_assassin_icon.png</icon>
+    <portraiticon>resources\art\units\natives\auditore_assassin.png</portraiticon>
+    <rollovertextid>46321</rollovertextid>
+    <shortrollovertextid>302169</shortrollovertextid>
+    <initialhitpoints>160.0000</initialhitpoints>
+    <maxhitpoints>160.0000</maxhitpoints>
+    <los>12.0000</los>
+    <unitaitype>HandCombative</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <buildlimit>11</buildlimit>
+    <bounty>11.0000</bounty>
+    <buildbounty>11.0000</buildbounty>
+    <cost resourcetype="Gold">110.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.2000">
+    </armor>
+    <sharedselectionunittypes>
+      <unittype>zpNatAssassin</unittype>
+    </sharedselectionunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractLightInfantry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractHandInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCoyoteMan</unittype>
+    <unittype>zpAbstractAssassin</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>auditoreassassin.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CoverBuildingAttack</name>
+      <damage>18.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CoverHandAttack</name>
+      <damage>6.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.250000</rof>
+      <damagebonus type="Mercenary">10.000000</damagebonus>
+      <damagebonus type="Hero">20.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>12.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.250000</rof>
+      <damagebonus type="Mercenary">10.000000</damagebonus>
+      <damagebonus type="Hero">20.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>12.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.250000</rof>
+      <damagebonus type="Mercenary">10.000000</damagebonus>
+      <damagebonus type="Hero">20.000000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>PoisonBombWeak</name>
+      <damage>20.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>17.000000</maxrange>
+      <minrange>5.000000</minrange>
+      <rof>5.000000</rof>
+      <maxheight>1.000000</maxheight>
+      <damagecap>50.000000</damagecap>
+      <damagearea>12.000000</damagearea>
+      <damageflags>GAIASelfAllyEnemy</damageflags>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damagebonus type="Tree">0.000001</damagebonus>
+      <damagebonus type="zpNatDottore">0.00010</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20645" name="zpBatteryTowerWagon">
+    <dbid>20645</dbid>
+    <displaynameid>302270</displaynameid>
+    <editornameid>302271</editornameid>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>5.0000</turnrate>
+    <animfile>units\trade\supply_cart\supply_cart_outpost.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trade\outpost_wagon_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trade\outpost_wagon_portrait.png</portraiticon>
+    <rollovertextid>302272</rollovertextid>
+    <shortrollovertextid>302272</shortrollovertextid>
+    <initialhitpoints>250.0000</initialhitpoints>
+    <maxhitpoints>250.0000</maxhitpoints>
+    <los>18.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>Civilian</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ValidIdleVillager</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractWagon</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>CannotConvertHill</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <train row="0" page="0" column="0">deSPCEuroTower</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>DeadReplacementWhenDestroyed</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>coveredwagon.tactics</tactics>
+    <protoaction>
+      <name>Build</name>
+      <rate type="deSPCEuroTower">5.000000</rate>
+    </protoaction>
   </unit>
 
 
