@@ -67,6 +67,9 @@
   <zpvenicegalley>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpvenicegalley>
+  <zpalexandriangalley>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpalexandriangalley>
   <zpvenicegalleyautomatic>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpvenicegalleyautomatic>

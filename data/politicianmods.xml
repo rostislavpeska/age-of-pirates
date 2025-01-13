@@ -107,6 +107,10 @@
   </zpconsulatepenalcolonylogan>
   <zpconsulatenattupi portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_tupi.png">
   </zpconsulatenattupi>
+  <zpconsulateorthodoxconstantinopole portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/orthodox_byzantine.png">
+  </zpconsulateorthodoxconstantinopole>
+  <zpconsulateorthodoxalexandria portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/orthodox_alexandria.png">
+  </zpconsulateorthodoxalexandria>
 
   <zpconsulaterevjacobine portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_jacobine.png">
   </zpconsulaterevjacobine>

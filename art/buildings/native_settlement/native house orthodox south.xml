@@ -13,21 +13,23 @@
 			<variationid1>
 				<assetreference type="GrannyModel">
 					<file>buildings\native_settlement\maltese_convent\aos_church_dark</file>
-					<materialvariant index="1"></materialvariant>
 				</assetreference>
 			</variationid1>
 			<variationid2>
 				<assetreference type="GrannyModel">
 					<file>buildings\native_settlement\maltese_convent\aos_house_dark</file>
-					<materialvariant index="1"></materialvariant>
 				</assetreference>
 			</variationid2>
 			<variationid3>
 				<assetreference type="GrannyModel">
 					<file>buildings\native_settlement\orthodox\orthodox_tower_Model</file>
-					<materialvariant index="1"></materialvariant>
 				</assetreference>
 			</variationid3>
+			<variationid4>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_church2_south</file>
+				</assetreference>
+			</variationid4>
 		</logic>
 	</component>
 	<anim>

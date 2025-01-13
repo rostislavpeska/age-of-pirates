@@ -7317,4 +7317,12 @@
     <sound filename="ambient\animals\tasmaniandevilambient.wav" volume="1.0000">
     </sound>
   </soundset>
+  <soundset name="Greek_Ship_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="zp_misc\greekShipMove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="zp_misc\greekShipMove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="zp_misc\greekShipMove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
 </soundsetdef>
