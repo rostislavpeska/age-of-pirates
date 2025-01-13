@@ -235,8 +235,9 @@ void main(void)
 	int subCiv53=-1;
 	int subCiv54=-1;
 	int subCiv55=-1;
+	int subCiv56=-1;
 
-   if (rmAllocateSubCivs(56) == true)
+   if (rmAllocateSubCivs(57) == true)
 	{
 		subCiv0 = rmGetCivID("Aztecs");
 		subCiv1 = rmGetCivID("Caribs");
@@ -294,6 +295,7 @@ void main(void)
 		subCiv53 = rmGetCivID("SPCJesuit");
 		subCiv54 = rmGetCivID("zpXmassVillage");
 		subCiv55 = rmGetCivID("zpvenetians");
+		subCiv56 = rmGetCivID("Auditore");
 
 		rmSetSubCiv(0, "Aztecs");
 		rmSetSubCiv(1, "Caribs");
@@ -351,6 +353,7 @@ void main(void)
 		rmSetSubCiv(53, "SPCJesuit");
 		rmSetSubCiv(54, "zpXmassVillage");
 		rmSetSubCiv(55, "zpvenetians");
+		rmSetSubCiv(56, "Auditore");
 	}
 
 // ============= Base terrain ============= 
@@ -1647,9 +1650,9 @@ void main(void)
 		treeName = "deTreeCypress";
 		critterOneName = "deer";
 		critterTwoName = "ypIbex";
-		if (rmRandFloat(0,1) <= 0.333)
+/*		if (rmRandFloat(0,1) <= 0.333)
 			livestockName = "zpDomesticPig";
-		else if (rmRandFloat(0,1) <= 0.50)
+		else*/ if (rmRandFloat(0,1) <= 0.50)
 			livestockName = "sheep";
 		else
 			livestockName = "cow";
@@ -5830,6 +5833,7 @@ int counterSPCZen = -1;
 int counterSPCSuf = -1;
 int counterSPCJes = -1;
 int counterXmass = -1;
+int counterEzio = -1;
 
 int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 //	aopNativeNumber = 11;	// for testing
@@ -5837,7 +5841,7 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 	// aop native exclusive loop
 	for(i = 0; <aopNativeNumber)
 	{
-		nativeChance = rmRandFloat(0,0.15);
+		nativeChance = rmRandFloat(0,0.16);
 		if (merryXmass == 1 && counterXmass <1)
 			nativeChance = 0.13;
 //			nativeChance = 0.41;		// for testing
@@ -5956,6 +5960,12 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 			unknownVillageID = rmCreateGrouping("Bourbon village "+i, "Natives_SPCBourbon_0"+rmRandInt(1,3));
 			counterBour++;
 		}
+		else if(nativeChance < 0.16 && counterEzio < 1)
+		{
+			rmEchoInfo("subCiv"+i+" is Auditore");
+			unknownVillageID = rmCreateGrouping("Auditore village "+i, "palace_auditore_0"+rmRandInt(1,3));
+			counterEzio++;
+		}
 		else // this is there to still have as much native tps as decided because some can not spawn if you have already 2. Thx Riki.
 		{
 			aopNativeNumber++;
@@ -6027,7 +6037,7 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 
 	for(i = 0; <(nativeNumber-aopNativeNumber-pirateNumber))
 	{
-		nativeChance = rmRandFloat(0,0.51);
+		nativeChance = rmRandFloat(0,0.52);
 //			nativeChance = 0.41;		// for testing
 
 		natLocX = rmRandFloat(0.05,0.95);
@@ -6370,6 +6380,12 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 			rmEchoInfo("subCiv"+i+" is xmass");
 			unknownVillageID = rmCreateGrouping("xmass village "+i, "xmass_village0"+rmRandInt(1,3));
 			counterXmass++;
+		}
+		else if(nativeChance < 0.52 && counterEzio < 1)
+		{
+			rmEchoInfo("subCiv"+i+" is Auditore");
+			unknownVillageID = rmCreateGrouping("Auditore village "+i, "palace_auditore_0"+rmRandInt(1,3));
+			counterEzio++;
 		}
 		else // this is there to still have as much native tps as decided because some can not spawn if you have already 2. Thx Riki.
 		{
