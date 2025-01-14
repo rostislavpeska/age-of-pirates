@@ -830,7 +830,7 @@ minInterval 30
       tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
       socketPosition = kbUnitGetPosition(tempSocketUnit);
 
-      if (getUnitCountByLocation(cUnitTypezpSPCWoodenTower, 0, cUnitStateABQ, socketPosition, 5.0) > 0)
+      if (getUnitCountByLocation(cUnitTypezpSPCCityTowerWooden, 0, cUnitStateABQ, socketPosition, 5.0) > 0)
       {
          continue;
       }
