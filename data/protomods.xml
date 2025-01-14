@@ -48848,8 +48848,8 @@
       <damagebonus type="AbstractCoyoteMan">2.500000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20432" name="zpNatMercCataphract">
-    <dbid>20432</dbid>
+  <unit id="20649" name="zpNatMercCataphract">
+    <dbid>20649</dbid>
     <displaynameid>300964</displaynameid>
     <editornameid>302302</editornameid>
     <obstructionradiusx>0.7900</obstructionradiusx>
@@ -48967,8 +48967,8 @@
       <rate type="LogicalTypeHealed">6.000000</rate>
     </protoaction>
   </unit>
-  <unit id="20433" name="zpNativeEmbassyWagon">
-    <dbid>20433</dbid>
+  <unit id="20650" name="zpNativeEmbassyWagon">
+    <dbid>20650</dbid>
     <displaynameid>302299</displaynameid>
     <editornameid>302300</editornameid>
     <obstructionradiusx>0.9900</obstructionradiusx>
@@ -49033,6 +49033,46 @@
     <protoaction>
       <name>Build</name>
     </protoaction>
+  </unit>
+  <unit id="20651" name="zpNativeWallFull">
+    <dbid>20651</dbid>
+    <displaynameid>302303</displaynameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <civflagoverride>objects\flags\venetian</civflagoverride>
+    <animfile>buildings\native_settlement\props\full_wall.xml</animfile>
+    <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>BuildingClass</unittype>
+    <unittype>AbstractCityManisonB</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
   </unit>
 
 

@@ -467,7 +467,7 @@
       <string _locid="300465">Bedouin</string>
       <string _locid="300466">ZP SPC Sufi Villager B</string>
       <string _locid="300467">The Dead Sea</string>
-      <string _locid="300468">The Dead Sea: Large valley with player's castles and a salty lake in the middle \n\nSettlements: Jewish, Maltese, Sufi Blue Mosque</string>
+      <string _locid="300468">The Dead Sea: Large valley with player's castles and a salty lake in the middle \n\nSettlements: Jewish, Sufi Blue Mosque, Maltese or Orthodox</string>
       <string _locid="300469">Large lake map map with several major Sufi Mosques, Maltese villages and Jewish settlements. Who controls the natives, controls the map.</string>
       <string _locid="300470">ZP Submarine</string>
       <string _locid="300471">Submerge: \nSubmerged submarine with no silent drive is not completely invisible but moves a bit faster and is hart to hit. 40% Damage bonus against ships and dock. 50% more hitpoints. Can't attack land targets.</string>
@@ -2300,6 +2300,7 @@
       <string _locid="302300">ZP Native Embassy Wagon</string>
       <string _locid="302301">Honored Cataphracts</string>
       <string _locid="302302">ZP NAT MERC Cataphract</string>
+      <string _locid="302303">ZP PROP Wall Full</string>
 
 
 

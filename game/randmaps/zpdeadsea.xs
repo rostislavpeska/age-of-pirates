@@ -21,22 +21,32 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
    int subCiv1=-1;
    int subCiv2=-1;
 
+   int christianVariation = rmRandInt(0, 1);
+
    if (rmAllocateSubCivs(3) == true)
    {
-		subCiv0=rmGetCivID("maltese");
-      rmEchoInfo("subCiv0 is maltese "+subCiv0);
-      if (subCiv0 >= 0)
-         rmSetSubCiv(0, "maltese");
+		if (christianVariation == 0){
+			subCiv0=rmGetCivID("maltese");
+			rmEchoInfo("subCiv0 is maltese "+subCiv0);
+			if (subCiv0 >= 0)
+				rmSetSubCiv(0, "maltese");
+		}
+		else{
+			subCiv0=rmGetCivID("zporthodox");
+			rmEchoInfo("subCiv0 is zporthodox "+subCiv0);
+			if (subCiv0 >= 0)
+				rmSetSubCiv(0, "zporthodox");
+		}
 
-      subCiv1=rmGetCivID("jewish");
-      rmEchoInfo("subCiv1 is jewish "+subCiv1);
-      if (subCiv1 >= 0)
+		subCiv1=rmGetCivID("jewish");
+		rmEchoInfo("subCiv1 is jewish "+subCiv1);
+		if (subCiv1 >= 0)
 			rmSetSubCiv(1, "jewish");
   
 		subCiv2=rmGetCivID("spcsufi");
 		rmEchoInfo("subCiv2 is spcsufi "+subCiv2);
 		if (subCiv2 >= 0)
-				rmSetSubCiv(2, "spcsufi");
+			rmSetSubCiv(2, "spcsufi");
 	}
 
     // Picks the map size
@@ -183,7 +193,10 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 
 	// Native Constraints
 	int avoidSufi=rmCreateTypeDistanceConstraint("stay away from Sufi", "zpSocketSPCSufi", 40.0);
-	int avoidMaltese=rmCreateTypeDistanceConstraint("stay away from Maltese", "zpSocketMalteseMission", 40.0);
+	if (christianVariation == 0)
+		int avoidMaltese=rmCreateTypeDistanceConstraint("stay away from Maltese", "zpSocketMalteseMission", 40.0);
+	else
+		avoidMaltese=rmCreateTypeDistanceConstraint("stay away from Maltese", "zpSocketOrthodox", 40.0);
 	int avoidJewish=rmCreateTypeDistanceConstraint("stay away from Jewish", "zpSocketJewish", 40.0);
 	int avoidTownCenterFar=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 40.0);
 	int avoidTownCenter=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 25.0);
@@ -562,20 +575,26 @@ int jewish3ID = rmCreateGrouping("jewish 3", "Jewish_Settlement_0"+jewish3Villag
 
 int maltese1VillageTypeID = rmRandInt(1,3);
 int maltese1ID = -1;
-   maltese1ID = rmCreateGrouping("maltese 1", "Maltese_village_ME0"+maltese1VillageTypeID);
-   rmSetGroupingMinDistance(maltese1ID, 0);
-   rmSetGroupingMaxDistance(maltese1ID, 60);
-   rmAddGroupingConstraint(maltese1ID, avoidImpassableLand);
-   rmAddGroupingConstraint(maltese1ID, avoidWater20);
-   rmAddGroupingConstraint(maltese1ID, avoidSufi);
-   rmAddGroupingConstraint(maltese1ID, avoidMaltese);
-   rmAddGroupingConstraint(maltese1ID, avoidJewish);
-   rmAddGroupingConstraint(maltese1ID, avoidTownCenterFar);
-   rmAddGroupingConstraint(maltese1ID, circleConstraint);   
+	if (christianVariation == 0)
+   		maltese1ID = rmCreateGrouping("maltese 1", "Maltese_village_ME0"+maltese1VillageTypeID);
+	else
+		maltese1ID = rmCreateGrouping("maltese 1", "Orthodox_South_0"+maltese1VillageTypeID);
+	rmSetGroupingMinDistance(maltese1ID, 0);
+	rmSetGroupingMaxDistance(maltese1ID, 60);
+	rmAddGroupingConstraint(maltese1ID, avoidImpassableLand);
+	rmAddGroupingConstraint(maltese1ID, avoidWater20);
+	rmAddGroupingConstraint(maltese1ID, avoidSufi);
+	rmAddGroupingConstraint(maltese1ID, avoidMaltese);
+	rmAddGroupingConstraint(maltese1ID, avoidJewish);
+	rmAddGroupingConstraint(maltese1ID, avoidTownCenterFar);
+	rmAddGroupingConstraint(maltese1ID, circleConstraint);   
 
 int maltese2VillageTypeID = rmRandInt(1,3);
 int maltese2ID = -1;
-   maltese2ID = rmCreateGrouping("maltese 2", "Maltese_village_ME0"+maltese2VillageTypeID);
+   if (christianVariation == 0)
+   		maltese2ID = rmCreateGrouping("maltese 2", "Maltese_village_ME0"+maltese2VillageTypeID);
+	else
+		maltese2ID = rmCreateGrouping("maltese 2", "Orthodox_South_0"+maltese2VillageTypeID);
    rmSetGroupingMinDistance(maltese2ID, 0);
    rmSetGroupingMaxDistance(maltese2ID, 60);
    rmAddGroupingConstraint(maltese2ID, avoidImpassableLand);
@@ -588,7 +607,10 @@ int maltese2ID = -1;
 
 int maltese3VillageTypeID = rmRandInt(1,3);
 int maltese3ID = -1;
-   maltese3ID = rmCreateGrouping("maltese 3", "Maltese_village_ME0"+maltese3VillageTypeID);
+   if (christianVariation == 0)
+   		maltese3ID = rmCreateGrouping("maltese 3", "Maltese_village_ME0"+maltese3VillageTypeID);
+	else
+		maltese3ID = rmCreateGrouping("maltese 3", "Orthodox_South_0"+maltese3VillageTypeID);
    rmSetGroupingMinDistance(maltese3ID, 0);
    rmSetGroupingMaxDistance(maltese3ID, 60);
    rmAddGroupingConstraint(maltese3ID, avoidImpassableLand);
@@ -1208,6 +1230,33 @@ rmSetTriggerLoop(true);
 }
 
 for (k=1; <= cNumberNonGaiaPlayers) {
+rmCreateTrigger("Activate Orthodox"+k);
+rmAddTriggerCondition("ZP Tech Researching (XS)");
+rmSetTriggerConditionParam("TechID","cTechzpOrthodoxInfluence"); //operator
+rmSetTriggerConditionParamInt("PlayerID",k);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffOrthodoxSouth"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+rmSetTriggerEffectParamInt("Status",2);
+rmAddTriggerEffect("ZP Pick Consulate Tech");
+rmSetTriggerEffectParamInt("Player",k);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(true);
+}
+
+for (k=1; <= cNumberNonGaiaPlayers) {
 rmCreateTrigger("Activate Jewish"+k);
 rmAddTriggerCondition("ZP Tech Researching (XS)");
 rmSetTriggerConditionParam("TechID","cTechzpJewishStar"); //operator
@@ -1256,8 +1305,14 @@ rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Khmer"+k));
 rmAddTriggerEffect("Fire Event");
 rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Jewish"+k));
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Maltese"+k));
+if (christianVariation == 0){
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Maltese"+k));
+}
+else{
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Orthodox"+k));
+}
 rmSetTriggerPriority(4);
 rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
@@ -1300,43 +1355,85 @@ rmSetTriggerLoop(false);
 
 for (k=1; <= cNumberNonGaiaPlayers) {
 
-rmCreateTrigger("ZP Pick Maltese Fraction"+k);
-rmAddTriggerCondition("ZP PLAYER Human");
-rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("MyBool", "false");
-rmAddTriggerCondition("Tech Status Equals");
-rmSetTriggerConditionParamInt("PlayerID",k);
-rmSetTriggerConditionParamInt("TechID",586);
-rmSetTriggerConditionParamInt("Status",2);
+if (christianVariation == 0){
+	rmCreateTrigger("ZP Pick Maltese Fraction"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerCondition("Tech Status Equals");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParamInt("TechID",586);
+	rmSetTriggerConditionParamInt("Status",2);
 
-int malteseFraction=-1;
-malteseFraction = rmRandInt(1,3);
+	int malteseFraction=-1;
+	malteseFraction = rmRandInt(1,3);
 
-if (malteseFraction==1)
-   {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseFlorentians"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-   }
-if (malteseFraction==2)
-   {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseJerusalem"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-   }
-if (malteseFraction==3)
-   {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID",k);
-      rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseCentralEuropeans"); //operator
-      rmSetTriggerEffectParamInt("Status",2);
-   }
-rmSetTriggerPriority(4);
-rmSetTriggerActive(true);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(false);
+	if (malteseFraction==1)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseFlorentians"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (malteseFraction==2)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseJerusalem"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (malteseFraction==3)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseCentralEuropeans"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+}
+
+else{
+	rmCreateTrigger("ZP Pick Orthodox Fraction"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerCondition("Tech Status Equals");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParamInt("TechID",586);
+	rmSetTriggerConditionParamInt("Status",2);
+
+	int orthodoxFraction=-1;
+	orthodoxFraction = rmRandInt(1,3);
+
+	if (orthodoxFraction==1)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateOrthodoxGeorgians"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (orthodoxFraction==2)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateOrthodoxConstantinopole"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (orthodoxFraction==3)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateOrthodoxAlexandria"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
 }
 
 // AI Jewish Fractions
