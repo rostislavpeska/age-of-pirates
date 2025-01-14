@@ -811,7 +811,7 @@ minInterval 30
       tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
       socketPosition = kbUnitGetPosition(tempSocketUnit);
 
-      if (getUnitCountByLocation(cUnitTypezpSPCFixedGunAIProxy, 0, cUnitStateABQ, socketPosition, 5.0) > 0)
+      if (getUnitCountByLocation(cUnitTypezpSPCFixedGun, 0, cUnitStateABQ, socketPosition, 5.0) > 0)
       {
          continue;
       }
@@ -830,12 +830,31 @@ minInterval 30
       tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
       socketPosition = kbUnitGetPosition(tempSocketUnit);
 
-      if (getUnitCountByLocation(cUnitTypezpSPCWoodenTowerAIProxy, 0, cUnitStateABQ, socketPosition, 5.0) > 0)
+      if (getUnitCountByLocation(cUnitTypezpSPCWoodenTower, 0, cUnitStateABQ, socketPosition, 5.0) > 0)
       {
          continue;
       }
 
       aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+      return;
+   }
+
+   // Get a list of venice socket towers
+   socketTowerQuery = createSimpleUnitQuery(cUnitTypedeSPCSocketCityTower, cMyID, cUnitStateAny);
+   socketNumber = kbUnitQueryExecute(socketTowerQuery);
+   tempSocketUnit = -1;
+
+   for (i = 0; < socketNumber)
+   {
+      tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+      socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+      if (getUnitCountByLocation(cUnitTypedeSPCCityTower, 0, cUnitStateABQ, socketPosition, 5.0) > 0)
+      {
+         continue;
+      }
+
+      aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCSocketCityTowerClone);
       return;
    }
 }
