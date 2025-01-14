@@ -800,7 +800,7 @@ minInterval 30
       }
    }
 
-   // Get a list of socket towers
+   // Get a list of socket fixed guns
    int socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCFixedGunSocket, cMyID, cUnitStateAny);
    int socketNumber = kbUnitQueryExecute(socketTowerQuery);
    int tempSocketUnit = -1;
@@ -811,13 +811,11 @@ minInterval 30
       tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
       socketPosition = kbUnitGetPosition(tempSocketUnit);
 
-      if (getUnitCountByLocation(cUnitTypezpSPCFixedGun, 0, cUnitStateABQ, socketPosition, 5.0) > 0)
+      if (getUnitCountByLocation(cUnitTypezpSPCFixedGun, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
       {
-         continue;
+         aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCFixedGunAIProxy);
+         return; // return here so we only build one at a time
       }
-
-      aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCFixedGunAIProxy);
-      return; // return here so we only build one at a time
    }
 
    // Get a list of socket towers
@@ -830,13 +828,11 @@ minInterval 30
       tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
       socketPosition = kbUnitGetPosition(tempSocketUnit);
 
-      if (getUnitCountByLocation(cUnitTypezpSPCCityTowerWooden, 0, cUnitStateABQ, socketPosition, 5.0) > 0)
+      if (getUnitCountByLocation(cUnitTypezpSPCCityTowerWooden, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
       {
-         continue;
+         aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+         return;
       }
-
-      aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
-      return;
    }
 
    // Get a list of venice socket towers
@@ -849,13 +845,11 @@ minInterval 30
       tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
       socketPosition = kbUnitGetPosition(tempSocketUnit);
 
-      if (getUnitCountByLocation(cUnitTypedeSPCCityTower, 0, cUnitStateABQ, socketPosition, 5.0) > 0)
+      if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
       {
-         continue;
+         aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCSocketCityTowerClone);
+         return;
       }
-
-      aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCSocketCityTowerClone);
-      return;
    }
 }
 
