@@ -421,7 +421,7 @@ void main(void)
 
 	// San Polo
 	if (peninsulaVariation == 0)
-		int veniceSanPolo = rmCreateGrouping("bridge4", "Venice_Island_04");
+		int veniceSanPolo = rmCreateGrouping("bridge4", "Venice_Island_04B");
 	else
 		veniceSanPolo = rmCreateGrouping("bridge4", "Venice_Island_04B");
     rmSetGroupingMinDistance(veniceSanPolo, 0.00);

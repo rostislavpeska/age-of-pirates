@@ -2117,6 +2117,9 @@ rmSetStatusText("",0.70);
 	vector courtLoc = rmGetUnitPosition(flag4ID);
 	vector cityHallLoc = rmGetUnitPosition(flag5ID);
 
+	string guardianUnit1 = "zpNatRoyalMusketeer";
+	string guardianUnit2 = "zpNatRevolutionary";
+
 
 	// Victory Timer
 	int victoryCountDown = 480;
@@ -2327,8 +2330,13 @@ rmSetStatusText("",0.70);
 	rmSetTriggerLoop(false);
 
 	rmCreateTrigger("Bastille Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-    rmSetTriggerConditionParam("NuggetObject", ""+vNugget1ID);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+flag3ID);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType",guardianUnit1);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", ""+flag3ID, false);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
@@ -2339,8 +2347,13 @@ rmSetStatusText("",0.70);
 	rmSetTriggerLoop(false);
 
 	rmCreateTrigger("Court Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-    rmSetTriggerConditionParam("NuggetObject", ""+vNugget2ID);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+flag4ID);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType",guardianUnit1);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", ""+flag4ID, false);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
@@ -2351,8 +2364,13 @@ rmSetStatusText("",0.70);
 	rmSetTriggerLoop(false);
 
 	rmCreateTrigger("CityHall Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-    rmSetTriggerConditionParam("NuggetObject", ""+vNugget3ID);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+flag5ID);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType",guardianUnit2);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", ""+flag5ID, false);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
