@@ -12709,6 +12709,7 @@
     <flag>ObscuredByUnits</flag>
     <flag>VisibleUnderFogIfGaia</flag>
     <flag>Tracked</flag>
+    <flag>DontTrainInBatches</flag>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
@@ -12729,8 +12730,8 @@
     </protoaction>
     <protoaction>
       <name>Hunting</name>
-      <rate type="Herdable">1.000000</rate>
-      <rate type="Huntable">1.000000</rate>
+      <rate type="Herdable">1.200000</rate>
+      <rate type="Huntable">1.200000</rate>
     </protoaction>
   </unit>
   <unit id="20127" name="zpInuitTorchman">
@@ -23976,11 +23977,11 @@
 		</protoaction>
     <protoaction>
       <name>Gather</name>
-      <rate type="Huntable">1.000000</rate>
+      <rate type="Huntable">0.500000</rate>
     </protoaction>
     <protoaction>
       <name>Hunting</name>
-      <rate type="Huntable">1.000000</rate>
+      <rate type="Huntable">0.500000</rate>
     </protoaction>
   </unit>
   <unit id="20263" name="zpNatAboriginalTracker">
@@ -24260,11 +24261,11 @@
 		</protoaction>
     <protoaction>
       <name>Gather</name>
-      <rate type="Huntable">1.000000</rate>
+      <rate type="Huntable">0.500000</rate>
     </protoaction>
     <protoaction>
       <name>Hunting</name>
-      <rate type="Huntable">1.000000</rate>
+      <rate type="Huntable">0.500000</rate>
     </protoaction>
   </unit>
   <unit id="20265" name="zpDingoDog">
@@ -46204,13 +46205,11 @@
     <flag>StartOnNoUpdate</flag>
     <flag>NoIdleActions</flag>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
-    <flag>RMCanRotate</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>NotSearchable</flag>
     <flag>NoFadeOnDeath</flag>
     <flag>TieToWaterSurface</flag>
     <flag>PlaceAnywhere</flag>
-    <flag>VariationLocked</flag>
     <flag>Invulnerable</flag>
     <flag>InvulnerableIfGaia</flag>
   </unit>
