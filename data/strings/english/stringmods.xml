@@ -1933,7 +1933,7 @@
       <string _locid="301932">Paris Underground</string>
       <string _locid="301933">Ships one Bastion Wagons and allows you to construct connect newly constructed Bastions with your Bastions in the city through an underground passage.</string>
       <string _locid="301934">Les barricades</string>
-      <string _locid="301935">Allows Sansculottes and revolutionaries to construct barricades to prevent enemy units to pass through the streets.</string>
+      <string _locid="301935">Allows Sansculottes, Revolutionaries (and also Royal Musketeers) to construct barricades to prevent enemy units to pass through the streets.</string>
       <string _locid="301936">Milice Révolutionnaire</string>
       <string _locid="301937">Allows you to train Sansculotte native units from all Bastions in the city.</string>
       <string _locid="301938">ZP NAT Royal Musketeer Clone</string>
@@ -1942,7 +1942,7 @@
       <string _locid="301941">ZP Socket EU SPC Bourbon</string>
       <string _locid="301942">The Sun King Era</string>
       <string _locid="301943">Unlocks additional Bourbon techs</string>
-      <string _locid="301944">Unlocks additional Bourbon techs \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Allows Royal Musketeers to construct Military Camps and be trained from them \n • Allows Royal Musketeers to construct Barricades \n • Military Camp build limit increased to 6 \n • Ancien Régime: Status set to Active&lt;color=1.0, 0.0, 0.0&gt;\n • Avialble only for the team "DEFENDERS".&lt;/color&gt;</string>
+      <string _locid="301944">Unlocks additional Bourbon techs \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Allows Royal Musketeers to construct Military Camps and be trained from them \n • Military Camp build limit increased to 6 \n • Ancien Régime: Status set to Active&lt;color=1.0, 0.0, 0.0&gt;\n • Avialble only for the team "DEFENDERS".&lt;/color&gt;</string>
       <string _locid="301945">Revolts to one of the revolutionary factions. \n • Initiates a special type of revolution \n • Transforms all your settlers into Sansculottes \n • Allows Sansculotte training from your Town Center \n • Unlocks Explorer Inspiring Flag ability \n • Increases Explorer hitpoints by 30% \n • Changes you civilization to one of the revolutionary factions without loosing access to your original homecity and the option to advance to higher age (including Imperial Age)\n&lt;color=1.0, 0.0, 0.0&gt; • Avialble only for the team "ATTACKERS".&lt;/color&gt;</string>
       <string _locid="301946">ZP Paris Palaces</string>
       <string _locid="301947">ZP Bourbon Chateau</string>

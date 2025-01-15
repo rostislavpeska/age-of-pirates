@@ -17974,6 +17974,33 @@
       <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
         <target type="ProtoUnit">zpNatMercRevolutionary</target>
       </effect>
+      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
+        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
+        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
+        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSansculotteBastions" type="Normal">
@@ -19041,33 +19068,6 @@
       </effect>
       <effect type="CommandAdd" proto="zpNatRoyalMusketeer" page="0" column="20">
         <target type="ProtoUnit">zpMilitaryCamp</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
-        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
-        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
-        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
-        <target type="ProtoUnit">deNatRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
-        <target type="ProtoUnit">deNatRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
-        <target type="ProtoUnit">deNatRoyalMusketeer</target>
       </effect>
     </effects>
 	</tech>
